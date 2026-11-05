@@ -4,7 +4,7 @@
 export type ErrorCallback = (pickerError: PickerError) => void
 ```
 
-Callback to be invoked when an error occurs in the **PhotoPickerComponent**.
+Describes the callback to be invoked when an error occurs during the use of the **PhotoPickerComponent**.
 
 **Since:** 23
 

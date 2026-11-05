@@ -18,6 +18,8 @@ Subscribes to the word selection completion event. This API is used together wit
 
 **Since:** 24
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-selectionManager-function on(type: 'selectionCompleted', callback: Callback<SelectionInfo>): void--><!--Device-selectionManager-function on(type: 'selectionCompleted', callback: Callback<SelectionInfo>): void-End-->
 
 **System capability:** SystemCapability.SelectionInput.Selection

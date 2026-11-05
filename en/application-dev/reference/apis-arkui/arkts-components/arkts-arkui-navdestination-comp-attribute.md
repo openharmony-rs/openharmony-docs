@@ -4,9 +4,9 @@
 declare class NavDestinationAttribute extends CommonMethod<NavDestinationAttribute>
 ```
 
-The [universal attributes](arkts-arkui-common-comp.md) are supported.
+The [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
-In addition to the [universal events](arkts-arkui-common-comp.md), the following events are supported.
+In addition to the [universal events](arkts-arkui-common-comp-commonmethod-c.md), the following events are supported.
 
 **Inheritance/Implementation:** NavDestinationAttribute extends CommonMethod&lt;NavDestinationAttribute&gt;
 
@@ -87,7 +87,7 @@ Sets the icon and accessibility text for the back button on the title bar.
 bindToNestedScrollable(scrollInfos: Array<NestedScrollInfo>)
 ```
 
-Binds the **NavDestination** component with a nested scrollable container, which can be a [List](arkts-arkui-list-comp.md), [Scroll](arkts-arkui-scroll-comp.md), [Grid](arkts-arkui-grid-comp.md), or [WaterFlow](arkts-arkui-waterflow-comp.md) component. This way, scrolling in the scrollable container triggers the display and hide animations of the title bar and toolbar of all **NavDestination** components that are bound to it – scrolling up triggers the hide animation, and scrolling down triggers the show animation. A single **NavDestination** component can be bound to multiple nested scrollable containers, and a single nested scrollable container can be bound to multiple **NavDestination** components. For details, see [Example 1](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#example-1-linking-the-title-bar-and-toolbar-with-scrollable-components).
+Binds the **NavDestination** component with a nested scrollable container, which can be a [List](arkts-arkui-list-comp.md), Scroll, [Grid](arkts-arkui-grid-comp.md), or [WaterFlow](arkts-arkui-waterflow-comp.md) component. This way, scrolling in the scrollable container triggers the display and hide animations of the title bar and toolbar of all **NavDestination** components that are bound to it – scrolling up triggers the hide animation, and scrolling down triggers the show animation. A single **NavDestination** component can be bound to multiple nested scrollable containers, and a single nested scrollable container can be bound to multiple **NavDestination** components. For details, see [Example 1](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#example-1-linking-the-title-bar-and-toolbar-with-scrollable-components).
 
 > **NOTE:** 
 > 
@@ -119,7 +119,7 @@ Binds the **NavDestination** component with a nested scrollable container, which
 bindToScrollable(scrollers: Array<Scroller>)
 ```
 
-Binds the **NavDestination** component with a scrollable container, which can be a [List](arkts-arkui-list-comp.md), [Scroll](arkts-arkui-scroll-comp.md), [Grid](arkts-arkui-grid-comp.md), or [WaterFlow](arkts-arkui-waterflow-comp.md) component. This way, scrolling in the scrollable container triggers the display and hide animations of the title bar and toolbar of all **NavDestination** components that are bound to it – scrolling up triggers the hide animation, and scrolling down triggers the show animation. A single **NavDestination** component can be bound to multiple scrollable containers, and a single scrollable container can be bound to multiple **NavDestination** components. For details, see [Example 1](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#example-1-linking-the-title-bar-and-toolbar-with-scrollable-components).
+Binds the **NavDestination** component with a scrollable container, which can be a [List](arkts-arkui-list-comp.md), Scroll, [Grid](arkts-arkui-grid-comp.md), or [WaterFlow](arkts-arkui-waterflow-comp.md) component. This way, scrolling in the scrollable container triggers the display and hide animations of the title bar and toolbar of all **NavDestination** components that are bound to it – scrolling up triggers the hide animation, and scrolling down triggers the show animation. A single **NavDestination** component can be bound to multiple scrollable containers, and a single scrollable container can be bound to multiple **NavDestination** components. For details, see [Example 1](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#example-1-linking-the-title-bar-and-toolbar-with-scrollable-components).
 
 > **NOTE:** 
 > 

@@ -9,7 +9,7 @@ The **NavRouter** component provides default processing logic for responding to 
 
 ## Child Components
 
-This component must contain two child components, the second of which must be NavDestination.
+This component must contain two child components, the second of which must be [NavDestination](arkts-arkui-navdestination-comp.md).
 
 > **NOTE:** 
 > 

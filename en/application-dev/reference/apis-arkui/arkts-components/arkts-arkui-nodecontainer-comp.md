@@ -1,16 +1,16 @@
 # NodeContainer
 
-**NodeContainer** is a basic component for mounting custom nodes (such as [FrameNode](../arkts-apis/arkts-arkui-typenode-n.md) or the root FrameNode obtained from [BuilderNode](../arkts-apis/arkts-arkui-buildernode-c.md)) and dynamically controlling the mounting and unmounting of nodes through [NodeController](../arkts-apis/arkts-arkui-nodecontroller-c.md). It is suitable for scenarios where custom nodes need to be dynamically inserted into and removed from the component tree to implement on-demand UI loading and node reuse, which improves page rendering efficiency and reduces node creation overhead. The component does not support appending child nodes. It accepts a [NodeController](../arkts-apis/arkts-arkui-nodecontroller-c.md) instance and must be used together with **NodeController**.
+**NodeContainer** is a basic component for mounting custom nodes (such as FrameNode or the root FrameNode obtained from BuilderNode) and dynamically controlling the mounting and unmounting of nodes through NodeController. It is suitable for scenarios where custom nodes need to be dynamically inserted into and removed from the component tree to implement on-demand UI loading and node reuse, which improves page rendering efficiency and reduces node creation overhead. The component does not support appending child nodes. It accepts a NodeController instance and must be used together with **NodeController**.
 
 > **NOTE:** 
 > 
-> - This component supports mounting only custom nodes, that is, [FrameNodes](../arkts-apis/arkts-arkui-typenode-n.md) or the root FrameNode obtained from a [BuilderNode](../arkts-apis/arkts-arkui-buildernode-c.md).
+> - This component supports mounting only custom nodes, that is, FrameNodes or the root FrameNode obtained from a BuilderNode.
 > 
-> - Mounting the proxy node of a system component obtained through a query is not supported. For details, see [isModifiable](../arkts-apis/arkts-arkui-framenode-c.md#ismodifiable).
+> - Mounting the proxy node of a system component obtained through a query is not supported. For details, see isModifiable.
 > 
 > - This component does not work with the [attribute modifier](arkts-arkui-common-comp-attributemodifier-i.md).
 > 
-> - When the node tree under this component is built, the UI instance [UIContext](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md) is used. When the instance is switched, the input parameter of the [makeNode](../arkts-apis/arkts-arkui-nodecontroller-c.md#makenode) callback of the bound [NodeController](../arkts-apis/arkts-arkui-nodecontroller-c.md) may be **undefined** due to instance mismatch.Therefore, this component does not support cross-instance node reuse.
+> - When the node tree under this component is built, the UI instance [UIContext](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md) is used. When the instance is switched, the input parameter of the makeNode callback of the bound NodeController may be **undefined** due to instance mismatch.Therefore, this component does not support cross-instance node reuse.
 > 
 > - When this component is not destroyed, it does not proactively trigger the unmounting of the mounted node.
 

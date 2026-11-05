@@ -14,6 +14,30 @@ declare interface DepthComponentOptions
 
 **系统接口：** 此接口为系统接口。
 
+## colorSpace
+
+```TypeScript
+colorSpace?: import('../api/@ohos.graphics.colorSpaceManager').default.ColorSpace
+```
+
+渲染表面的色彩空间。设置后，色彩空间信息会应用到底层渲染表面。未设置时不应用色彩空间信息，渲染表面保留默认色彩空间。默认值：**colorSpaceManager.ColorSpace.SRGB**。
+
+**类型：** import('../api/@ohos.graphics.colorSpaceManager').default.ColorSpace
+
+**默认值：** colorSpaceManager.ColorSpace.SRGB
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-DepthComponentOptions-colorSpace?: import('../api/@ohos.graphics.colorSpaceManager').default.ColorSpace--><!--Device-DepthComponentOptions-colorSpace?: import('../api/@ohos.graphics.colorSpaceManager').default.ColorSpace-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
 ## depthSpace
 
 ```TypeScript

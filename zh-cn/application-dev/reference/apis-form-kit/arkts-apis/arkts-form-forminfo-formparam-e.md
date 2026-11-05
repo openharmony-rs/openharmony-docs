@@ -288,7 +288,7 @@ TEMPORARY_KEY = "ohos.extra.param.key.form_temporary"
 UPDATE_FORM_REASON_KEY = 'ohos.extra.param.key.update_form_reason'
 ```
 
-Indicates the key specifying the reason for the form update. which is represented as want: {"parameters": {UPDATE_FORM_REASON_KEY: FormUpdateReason.FORM_NODE_REUSE}}.
+卡片更新的原因，请参考[FormUpdateReason](arkts-form-forminfo-formupdatereason-e.md)
 
 **起始版本：** 24
 

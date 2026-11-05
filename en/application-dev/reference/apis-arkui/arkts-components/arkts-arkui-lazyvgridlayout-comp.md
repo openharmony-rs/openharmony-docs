@@ -4,7 +4,7 @@ This component is used to implement a grid layout that supports lazy loading. It
 
 In versions earlier than API version 26.0.0, the parent component of the **LazyVGridLayout** component supports the [WaterFlow](arkts-arkui-waterflow-comp.md) and [FlowItem](arkts-arkui-flowitem-comp-attribute.md#flowitemattribute) components. You can also encapsulate the parent component using a custom component or [NodeContainer](arkts-arkui-nodecontainer-comp-attribute.md#nodecontainerattribute) component and use it in **WaterFlow** or **FlowItem**.
 
-Since API version 26.0.0, the parent component of this component also supports [List](arkts-arkui-list-comp.md), [Scroll](arkts-arkui-scroll-comp.md), or [LazyColumnLayout](../../../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md). Additionally, custom components or [NodeContainer](arkts-arkui-nodecontainer-comp-attribute.md#nodecontainerattribute) components can be encapsulated and then used in **List**, **Scroll**, or **LazyColumnLayout**.
+Since API version 26.0.0, the parent component of this component also supports [List](arkts-arkui-list-comp.md), Scroll, or [LazyColumnLayout](../../../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md). Additionally, custom components or [NodeContainer](arkts-arkui-nodecontainer-comp-attribute.md#nodecontainerattribute) components can be encapsulated and then used in **List**, **Scroll**, or **LazyColumnLayout**.
 
 For more usage scenarios and complete examples of lazy loading layouts, see [Creating Lazy Layouts](../../../ui/arkts-layout-development-create-lazy-layout.md).
 

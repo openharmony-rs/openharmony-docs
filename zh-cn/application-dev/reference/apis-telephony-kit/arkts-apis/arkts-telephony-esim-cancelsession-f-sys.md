@@ -12,7 +12,7 @@ import { eSIM } from '@kit.TelephonyKit';
 function cancelSession(slotId: number, transactionId: string, cancelReason: CancelReason): Promise<ResultCode>
 ```
 
-取消会话。使用Promise异步回调。
+取消与SM-DP+服务器之间正在进行的eSIM业务会话（如配置文件下载会话）。通过传入业务ID和取消原因，终止当前进行中的会话操作。使用Promise异步回调。
 
 **起始版本：** 18
 
@@ -28,8 +28,8 @@ function cancelSession(slotId: number, transactionId: string, cancelReason: Canc
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | number | 是 | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
-| transactionId | string | 是 | 业务ID。 |
+| slotId | number | 是 | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。<br>取值限定为整数。 |
+| transactionId | string | 是 | 要取消的会话的事务ID，由下载配置文件等操作返回。 |
 | cancelReason | [CancelReason](arkts-telephony-esim-cancelreason-e-sys.md) | 是 | 取消会话的原因。 |
 
 **返回值：**

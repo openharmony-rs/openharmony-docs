@@ -4,7 +4,7 @@
 declare class ImageSpanAttribute extends BaseSpan<ImageSpanAttribute>
 ```
 
-属性继承自[BaseSpan](arkts-arkui-span-comp-basespan-c.md)，通用属性方法支持[尺寸设置](arkts-arkui-common-comp.md)、[背景设置](arkts-arkui-common-comp.md)、[边框设置](arkts-arkui-common-comp.md)。
+属性继承自[BaseSpan](arkts-arkui-span-comp-basespan-c.md)，通用属性方法支持[尺寸设置](arkts-arkui-common-comp-commonmethod-c.md)、[背景设置](arkts-arkui-common-comp-commonmethod-c.md)、[边框设置](arkts-arkui-common-comp-commonmethod-c.md)。
 
 **继承/实现关系：** ImageSpanAttribute extends BaseSpan&lt;ImageSpanAttribute&gt;
 

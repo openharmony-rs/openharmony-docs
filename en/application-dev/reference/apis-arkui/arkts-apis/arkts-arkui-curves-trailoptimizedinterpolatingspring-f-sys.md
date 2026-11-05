@@ -38,4 +38,4 @@ Creates an interpolating spring curve animated from 0 to 1. The actual animation
 
 | Type | Description |
 | --- | --- |
-| [ICurve](arkts-arkui-curves-icurve-i.md) | Curve. <br>Note: The spring animation curve is physics-based. Its duration depends on the **interpolatingSpring** parameters, rather than the **duration** parameter in animation, animateTo, or pageTransition. The time cannot be normalized. Therefore, the interpolation cannot be obtained using the [interpolate](arkts-arkui-curves-icurve-i.md#interpolate) function of the curve. |
+| [ICurve](arkts-arkui-curves-icurve-i.md) | Curve. <br>Note: The spring animation curve is physics-based. Its duration depends on the **interpolatingSpring** parameters, rather than the **duration** parameter in [animation](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md), [animateTo](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md), or [pageTransition](../arkts-components/arkts-arkui-pagetransitionenter-comp.md). The time cannot be normalized. Therefore, the interpolation cannot be obtained using the [interpolate](arkts-arkui-curves-icurve-i.md#interpolate) function of the curve. |

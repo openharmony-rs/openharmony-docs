@@ -4,7 +4,7 @@
 interface RunningFormInfo
 ```
 
-已经添加到桌面的卡片信息。
+已添加的卡片信息，包括使用中的以及未使用的卡片。
 
 **起始版本：** 20
 
@@ -27,8 +27,6 @@ readonly extraData?: Record<string, Object>
 卡片的额外数据。
 
 **类型：** Record&lt;string, Object&gt;
-
-**默认值：** -
 
 **起始版本：** 12
 
@@ -86,8 +84,6 @@ readonly hostBundleName: string
 
 **类型：** string
 
-**默认值：** -
-
 **起始版本：** 10
 
 <!--Device-RunningFormInfo-readonly hostBundleName: string--><!--Device-RunningFormInfo-readonly hostBundleName: string-End-->
@@ -105,8 +101,6 @@ readonly visibilityType: VisibilityType
 卡片当前可见类型枚举。
 
 **类型：** [VisibilityType](arkts-form-forminfo-visibilitytype-e.md)
-
-**默认值：** -
 
 **起始版本：** 10
 

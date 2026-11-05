@@ -866,7 +866,7 @@ The alignment mode of the child component along the cross axis (the direction pe
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ItemAlign](../arkts-apis/arkts-arkui-itemalign-e.md) | Yes | Alignment format of the child component on the cross axis of the parent container, which overrides the alignItems setting in the [Flex](arkts-arkui-flex-comp.md), [Column](arkts-arkui-column-comp.md), [Row](arkts-arkui-row-comp.md), DynamicLayout, and GridRow layout containers. Use it when a child component needs a different alignment from other child components in the parent container (typical scenarios: most child components in the parent container are center-aligned, but a specific child component needs top or bottom alignment; or a special alignment needs to be specified for a single child component).<br>GridCol can bind the alignSelf attribute to change its own layout in the cross axis direction.<br>Default value: ItemAlign.Auto (indicates inheriting the alignment setting of the parent container) |
+| value | [ItemAlign](../arkts-apis/arkts-arkui-itemalign-e.md) | Yes | Alignment format of the child component on the cross axis of the parent container, which overrides the alignItems setting in the [Flex](arkts-arkui-flex-comp.md), Column, Row, DynamicLayout, and GridRow layout containers. Use it when a child component needs a different alignment from other child components in the parent container (typical scenarios: most child components in the parent container are center-aligned, but a specific child component needs top or bottom alignment; or a special alignment needs to be specified for a single child component).<br>GridCol can bind the alignSelf attribute to change its own layout in the cross axis direction.<br>Default value: ItemAlign.Auto (indicates inheriting the alignment setting of the parent container) |
 
 **Return value:**
 
@@ -3248,7 +3248,7 @@ Sets the display priority of the current component in a Row/Column/Flex (single-
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Sets the display priority of the current component in the layout container. The value range is [0, +∞). <br>Default value: **1** <br>**NOTE:** <br> Takes effect only in [Row](arkts-arkui-row-comp.md)/[Column](arkts-arkui-column-comp.md)/Flex (single-line) container components. <br>Used when the container space is limited and the display order of components needs to be controlled or low-priority components need to be hidden (for example, dynamically displaying content based on the available space in a Flex container). It is recommended to set the priority based on the importance of the component, with a larger value (such as 2-10) for key components and a smaller value (such as 1) for secondary components. <br>The digits after the decimal point do not affect the priority. All values not greater than 1 have the same priority. When the value is greater than 1, the larger the integer part of displayPriority, the higher the priority; values within the same integer range have the same priority. For example, **0.5** and **1.0** have the same priority (both are not greater than 1); **1.5** and **1.9** have the same priority (both have an integer part of 1); **2.0** and **2.9** have the same priority (both have an integer part of 2), and their priority is higher than that of 1.x. <br>If the parent container has insufficient space, child components with lower priority are hidden. If child components at a certain priority level are hidden, all child components with lower priority are also hidden. |
+| value | number | Yes | Sets the display priority of the current component in the layout container. The value range is 0, +∞). <br>Default value: **1** <br>**NOTE:** <br> Takes effect only in [Row/Column/Flex (single-line) container components. <br>Used when the container space is limited and the display order of components needs to be controlled or low-priority components need to be hidden (for example, dynamically displaying content based on the available space in a Flex container). It is recommended to set the priority based on the importance of the component, with a larger value (such as 2-10) for key components and a smaller value (such as 1) for secondary components. <br>The digits after the decimal point do not affect the priority. All values not greater than 1 have the same priority. When the value is greater than 1, the larger the integer part of displayPriority, the higher the priority; values within the same integer range have the same priority. For example, **0.5** and **1.0** have the same priority (both are not greater than 1); **1.5** and **1.9** have the same priority (both have an integer part of 1); **2.0** and **2.9** have the same priority (both have an integer part of 2), and their priority is higher than that of 1.x. <br>If the parent container has insufficient space, child components with lower priority are hidden. If child components at a certain priority level are hidden, all child components with lower priority are also hidden. |
 
 **Return value:**
 
@@ -3452,7 +3452,7 @@ Creates a drawing modifier.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| modifier | [DrawModifier](arkts-arkui-common-comp-drawmodifier-c.md) &#124; undefined | Yes | Custom drawing modifier, which defines the logic of custom drawing. <br>If no custom drawing modifier is set, the component uses the original default drawing behavior and does not perform custom drawing. <br>Default value: **undefined**. <br>**Note:** <br>Each custom drawing modifier takes effect only on the [FrameNode](../arkts-apis/arkts-arkui-framenode-c.md) of the currently bound component, and does not take effect on its child nodes. Each DrawModifier instance can be set to only one component, and repeated setting is prohibited. |
+| modifier | [DrawModifier](arkts-arkui-common-comp-drawmodifier-c.md) &#124; undefined | Yes | Custom drawing modifier, which defines the logic of custom drawing. <br>If no custom drawing modifier is set, the component uses the original default drawing behavior and does not perform custom drawing. <br>Default value: **undefined**. <br>**Note:** <br>Each custom drawing modifier takes effect only on the FrameNode of the currently bound component, and does not take effect on its child nodes. Each DrawModifier instance can be set to only one component, and repeated setting is prohibited. |
 
 **Return value:**
 
@@ -3636,7 +3636,7 @@ Sets the proportion of the component in the remaining space of the parent contai
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Sets the proportion of the remaining space in the parent container along the main axis (horizontal for row layout and vertical for column layout) allocated to the component where this attribute resides. The value 0 means the component does not participate in the allocation of remaining space and keeps its original size. When the value is greater than 0, the remaining space of the parent container is allocated proportionally; the larger the value, the more space is allocated.<br>Value range: [0, +∞)<br>Default value: 0<br>When the parent container is [Column](arkts-arkui-column-comp.md) or [Row](arkts-arkui-row-comp.md), you need to set the size along the main axis (width/height/size); otherwise, the remaining space allocation effect of flexGrow may be affected.<br>[constraintSize](#constraintsize) restricts the size range of the component. When the component size after flexGrow expansion exceeds the maximum limit of constraintSize, it is constrained by constraintSize.<br>When an invalid value is set, this attribute takes the default value. |
+| value | number | Yes | Sets the proportion of the remaining space in the parent container along the main axis (horizontal for row layout and vertical for column layout) allocated to the component where this attribute resides. The value 0 means the component does not participate in the allocation of remaining space and keeps its original size. When the value is greater than 0, the remaining space of the parent container is allocated proportionally; the larger the value, the more space is allocated.<br>Value range: 0, +∞)<br>Default value: 0<br>When the parent container is [Column or Row, you need to set the size along the main axis (width/height/size); otherwise, the remaining space allocation effect of flexGrow may be affected.<br>[constraintSize](#constraintsize) restricts the size range of the component. When the component size after flexGrow expansion exceeds the maximum limit of constraintSize, it is constrained by constraintSize.<br>When an invalid value is set, this attribute takes the default value. |
 
 **Return value:**
 
@@ -3675,7 +3675,7 @@ Sets the proportion of the shrink size allocated to the component where this att
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Sets the proportion of the compressed size allocated to the component to which this attribute belongs when the parent container space is insufficient. The value 0 indicates that the component does not participate in compression; when the value is greater than 0, compression is performed proportionally, and a larger value indicates a larger compression amount.<br>When the parent container is [Column](arkts-arkui-column-comp.md) or [Row](arkts-arkui-row-comp.md), default value: 0, value range: [0, +∞).<br>When the parent container is [Flex](arkts-arkui-flex-comp.md), default value: 1, value range: [0, +∞).<br>[constraintSize](#constraintsize) restricts the size range of the component. Even if [constraintSize](#constraintsize) is set for [Column](arkts-arkui-column-comp.md) and [Row](arkts-arkui-row-comp.md), when the main axis size (width/height/size) is not set in the parent container, the default layout behavior is still followed, and the component size is adapted to the children on the main axis. In this case, flexShrink does not take effect.<br>When an exception value is set, this attribute uses the default value. |
+| value | number | Yes | Sets the proportion of the compressed size allocated to the component to which this attribute belongs when the parent container space is insufficient. The value 0 indicates that the component does not participate in compression; when the value is greater than 0, compression is performed proportionally, and a larger value indicates a larger compression amount.<br>When the parent container is Column or Row, default value: 0, value range: [0, +∞).<br>When the parent container is [Flex](arkts-arkui-flex-comp.md), default value: 1, value range: [0, +∞).<br>[constraintSize](#constraintsize) restricts the size range of the component. Even if [constraintSize](#constraintsize) is set for Column and Row, when the main axis size (width/height/size) is not set in the parent container, the default layout behavior is still followed, and the component size is adapted to the children on the main axis. In this case, flexShrink does not take effect.<br>When an exception value is set, this attribute uses the default value. |
 
 **Return value:**
 
@@ -3703,7 +3703,7 @@ Sets whether the component can obtain focus. This attribute is applicable to key
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether the component is focusable.<br>**true**: The component is focusable.<br> **false**: The component is not focusable.<br>**NOTE:** <br>Components that have default interaction logic, such as [Button](arkts-arkui-common-comp-mouseevent-i.md#button) and TextInput, are focusable by default. Other components, such as Text and Image, are not focusable by default. Only focusable components can trigger a focus event. |
+| value | boolean | Yes | Whether the component is focusable.<br>**true**: The component is focusable.<br> **false**: The component is not focusable.<br>**NOTE:** <br>Components that have default interaction logic, such as Button and [TextInput](arkts-arkui-textinput-comp.md), are focusable by default. Other components, such as [Text](arkts-arkui-text-comp.md) and Image, are not focusable by default. Only focusable components can trigger a [focus event](arkts-arkui-common-comp-commonmethod-c.md). |
 
 **Return value:**
 
@@ -3983,7 +3983,7 @@ Sets the foreground color of the component. Components without explicit foregrou
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; [ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md) | Yes | Foreground color. The value can be a specific color or a coloring strategy. The attribute animation is not supported. |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; [ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md) | Yes | Foreground color. The value can be a specific color or a coloring strategy. The [attribute animation](arkts-arkui-common-comp-commonmethod-c.md) is not supported. |
 
 **Return value:**
 
@@ -4381,7 +4381,7 @@ Sets the height of the component itself. By default, the height required for the
 
 > **NOTE:** 
 > 
-> In the [Row](arkts-arkui-row-comp.md), [Column](arkts-arkui-column-comp.md), and [RelativeContainer](arkts-arkui-relativecontainer-comp.md)
+> In the Row, Column, and [RelativeContainer](arkts-arkui-relativecontainer-comp.md)
 > components, setting **width** and **height** to **auto** means that the size adapts to the size of their
 > child components.
 
@@ -4780,8 +4780,8 @@ Sets custom key combinations for a component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string &#124; [FunctionKey](../arkts-apis/arkts-arkui-functionkey-e.md) | Yes | Single character of the hotkey (a character that can be entered through the keyboard) or function key.<br>An empty string means to cancel the keyboard shortcut binding; a component with multiple keyboard shortcuts bound cannot unbind a keyboard shortcut.<br>When **value** contains multiple characters, the key combination is not bound, and the previously bound key combination remains valid.<br> |
-| keys | Array&lt;[ModifierKey](../arkts-apis/arkts-arkui-modifierkey-e.md)&gt; | Yes | Key combination.<br>The value of **keys** can be empty only when **value** is a function key.<br>When **keys** contains duplicate modifier keys, the key combination is not bound, and the previously bound key combination remains valid.<br> |
+| value | string &#124; [FunctionKey](../arkts-apis/arkts-arkui-functionkey-e.md) | Yes | Single character of the hotkey (a character that can be entered through the keyboard) or [function key](../arkts-apis/arkts-arkui-functionkey-e.md).<br>An empty string means to cancel the keyboard shortcut binding; a component with multiple keyboard shortcuts bound cannot unbind a keyboard shortcut.<br>When **value** contains multiple characters, the key combination is not bound, and the previously bound key combination remains valid.<br> |
+| keys | Array&lt;[ModifierKey](../arkts-apis/arkts-arkui-modifierkey-e.md)&gt; | Yes | Key combination.<br>The value of **keys** can be empty only when **value** is a [function key](../arkts-apis/arkts-arkui-functionkey-e.md).<br>When **keys** contains duplicate modifier keys, the key combination is not bound, and the previously bound key combination remains valid.<br> |
 | action | () =&gt; void | No | Callback for the custom event triggered after the key combination shortcut is successfully triggered. If this parameter is not set, the behavior of the key combination shortcut is the same as that of click. |
 
 **Return value:**
@@ -4828,7 +4828,7 @@ Sets the alignment rule for child components in the **Stack** container. This AP
 layoutWeight(value: number | string): T
 ```
 
-Sets the layout weight of a component so that the component is allocated a size in the main-axis direction of the parent container ([Row](arkts-arkui-row-comp.md)/[Column](arkts-arkui-column-comp.md)/[Flex](arkts-arkui-flex-comp.md)) according to the weight. It applies to scenarios where the parent container size is determined and multiple child components need to allocate the remaining space proportionally.
+Sets the layout weight of a component so that the component is allocated a size in the main-axis direction of the parent container (Row/Column/[Flex](arkts-arkui-flex-comp.md)) according to the weight. It applies to scenarios where the parent container size is determined and multiple child components need to allocate the remaining space proportionally.
 
 **Since:** 7
 
@@ -4846,7 +4846,7 @@ Sets the layout weight of a component so that the component is allocated a size 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; string | Yes | When the size of the parent container is determined, child components that do not have the **layoutWeight** attribute set or whose effective **layoutWeight** value is **0** take priority in occupying space. The space left on the main axis after these child components occupy space is called the remaining space on the main axis. Child components that have the **layoutWeight** attribute set and whose effective **layoutWeight** value is greater than 0 are allocated sizes from the remaining space on the main axis according to their respective weight proportions. During allocation, the **width**\/**height** settings of the child components are ignored, but the **minWidth**\/ **minHeight** constraints are retained.<br>Default value: 0<br>Value range: [0, +∞)<br>When the value is out of range: if a value less than 0 is passed in, it is processed as 0.<br>**NOTE:** <br>This attribute takes effect only in the [Row](arkts-arkui-row-comp.md)/[Column](arkts-arkui-column-comp.md)/[Flex](arkts-arkui-flex-comp.md) layout.<br>The optional value is a number greater than or equal to 0, or a string that can be converted to a number (integer and decimal formats are supported).<br>If a child component in the container has the **layoutWeight** attribute set and the set value is greater than 0, all child components are no longer laid out based on [flexShrink](#flexshrink) and [flexGrow](#flexgrow). |
+| value | number &#124; string | Yes | When the size of the parent container is determined, child components that do not have the **layoutWeight** attribute set or whose effective **layoutWeight** value is **0** take priority in occupying space. The space left on the main axis after these child components occupy space is called the remaining space on the main axis. Child components that have the **layoutWeight** attribute set and whose effective **layoutWeight** value is greater than 0 are allocated sizes from the remaining space on the main axis according to their respective weight proportions. During allocation, the **width**\/**height** settings of the child components are ignored, but the **minWidth**\/ **minHeight** constraints are retained.<br>Default value: 0<br>Value range: 0, +∞)<br>When the value is out of range: if a value less than 0 is passed in, it is processed as 0.<br>**NOTE:** <br>This attribute takes effect only in the [Row/Column/[Flex](arkts-arkui-flex-comp.md) layout.<br>The optional value is a number greater than or equal to 0, or a string that can be converted to a number (integer and decimal formats are supported).<br>If a child component in the container has the **layoutWeight** attribute set and the set value is greater than 0, all child components are no longer laid out based on [flexShrink](#flexshrink) and [flexGrow](#flexgrow). |
 
 **Return value:**
 
@@ -5060,7 +5060,7 @@ Sets the margin of the component. The margin is considered as a part of the comp
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Margin](../arkts-apis/arkts-arkui-margin-t.md) &#124; [Length](../arkts-apis/arkts-arkui-length-t.md) &#124; [LocalizedMargin](../arkts-apis/arkts-arkui-localizedmargin-t.md) | Yes | Margin of the component.<br>When the parameter is of the **Length** type, the margins in all four directions take effect at the same time.<br>Default value: **0**<br>Unit: vp<br>When **margin** is set as a percentage, the top, bottom, left, and right margins all use the width of the parent container as the base value. When laying out in the cross-axis direction of [Row](arkts-arkui-row-comp.md), [Column](arkts-arkui-column-comp.md), and [Flex](arkts-arkui-flex-comp.md), the space occupied by a child component in the cross-axis direction includes the size of the child component itself and the **margin** value.<br>For example, if a **Column** container has a width of 100, a child component has a width of 50, and the left and right margins are 10 and 20 respectively, the sum of the child component width and the left and right margins is 50 + 10 + 20 = 80, which is less than the container width of 100. The child component is center-aligned in the cross-axis direction, leaving (100 - 80)/2 = 10 of blank space on each of the left and right sides in the horizontal direction.<br>**Since:** 12 |
+| value | [Margin](../arkts-apis/arkts-arkui-margin-t.md) &#124; [Length](../arkts-apis/arkts-arkui-length-t.md) &#124; [LocalizedMargin](../arkts-apis/arkts-arkui-localizedmargin-t.md) | Yes | Margin of the component.<br>When the parameter is of the **Length** type, the margins in all four directions take effect at the same time.<br>Default value: **0**<br>Unit: vp<br>When **margin** is set as a percentage, the top, bottom, left, and right margins all use the width of the parent container as the base value. When laying out in the cross-axis direction of Row, Column, and [Flex](arkts-arkui-flex-comp.md), the space occupied by a child component in the cross-axis direction includes the size of the child component itself and the **margin** value.<br>For example, if a **Column** container has a width of 100, a child component has a width of 50, and the left and right margins are 10 and 20 respectively, the sum of the child component width and the left and right margins is 50 + 10 + 20 = 80, which is less than the container width of 100. The child component is center-aligned in the cross-axis direction, leaving (100 - 80)/2 = 10 of blank space on each of the left and right sides in the horizontal direction.<br>**Since:** 12 |
 
 **Return value:**
 
@@ -5514,7 +5514,7 @@ Sets how the component content is obscured.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| reasons | Array&lt;[ObscuredReasons](../arkts-apis/arkts-arkui-obscuredreasons-e.md)&gt; | Yes | How the component content is obscured.<br>This API is only available for the [Image](arkts-arkui-image-comp.md)<!--Del-->, [FormComponent](arkts-arkui-formcomponent-comp-sys.md)<sup>12+</sup>,<!--DelEnd--> and [Text](arkts-arkui-text-comp.md) components.<br>**NOTE:** <br>To obscure an image when it is being loaded, you must set the width and height of the **Image** component.<br>Obscuring is not available for **Text** components that have child components or have any [styled string](../arkts-apis/arkts-arkui-styledstring.md#styled_stringa-styled-string-is-an-object-that-associates-text-styles-with-text-content-styles-specify-text-ranges-through) configured. <br>Default value: []. |
+| reasons | Array&lt;[ObscuredReasons](../arkts-apis/arkts-arkui-obscuredreasons-e.md)&gt; | Yes | How the component content is obscured.<br>This API is only available for the Image<!--Del-->, [FormComponent](arkts-arkui-formcomponent-comp-sys.md)<sup>12+</sup>,<!--DelEnd--> and [Text](arkts-arkui-text-comp.md) components.<br>**NOTE:** <br>To obscure an image when it is being loaded, you must set the width and height of the **Image** component.<br>Obscuring is not available for **Text** components that have child components or have any [styled string](../arkts-apis/arkts-arkui-styledstring-c.md) configured. <br>Default value: []. |
 
 **Return value:**
 
@@ -6260,7 +6260,7 @@ For components that provide drag and drop capabilities by default, a custom **on
 - If a custom drag preview is returned, it is used in place of the default drag preview.  
 - If drag data is set, it is used in place of the default drag data.
 
-The custom drag preview is not supported for dragging selected text in the following components: Text, Search, TextInput, TextArea, RichEditor When **onDragStart** is used with menu preview or any component that provides default drag and drop capabilities, custom content on menu items and the preview cannot be dragged.
+The custom drag preview is not supported for dragging selected text in the following components: [Text](arkts-arkui-text-comp.md), Search, [TextInput](arkts-arkui-textinput-comp.md), [TextArea](arkts-arkui-textarea-comp.md), [RichEditor](arkts-arkui-richeditor-comp.md) When **onDragStart** is used with menu preview or any component that provides default drag and drop capabilities, custom content on menu items and the preview cannot be dragged.
 
 **Event priority**: When the long press event trigger time is less than 500 ms, the long press event is responded to before the drag event. When the long press event trigger time is greater than or equal to 500 ms, the drag event is responded to before the long press event.
 
@@ -6969,7 +6969,7 @@ Configures a callback for the **onVisibleAreaApproximateChange** event, with opt
 > 
 > - This API only takes into account the relative clipped area ratio of the component with respect to all ancestor nodes (up to the window boundary) and its own area.
 > 
-> - The following calculation scenarios are not supported: clipping by sibling nodes, clipping by siblings of any ancestor node, window-level occlusion, and component rotation. Examples include layouts using [Stack](../../apis-default/arkts-apis/arkts-lib-es5-error-i.md#stack), [z-order control](#zindex), and [rotate](#rotate-1) transformations.
+> - The following calculation scenarios are not supported: clipping by sibling nodes, clipping by siblings of any ancestor node, window-level occlusion, and component rotation. Examples include layouts using Stack, [z-order control](#zindex), and [rotate](#rotate-1) transformations.
 > 
 > - It does not support visibility change calculations for nodes that are not in the component tree. For example,preloaded nodes or custom nodes mounted using the [overlay](#overlay) capability.
 > 
@@ -7019,7 +7019,7 @@ Called when the visible area of the component changes. For details about the dev
 > 
 > - This API only takes into account the relative clipped area ratio of the component with respect to all ancestor nodes (up to the window boundary) and its own area.
 > 
-> - The following calculation scenarios are not supported: clipping by sibling nodes, clipping by siblings of any ancestor node, window-level occlusion, and component rotation. Examples include layouts using [Stack](../../apis-default/arkts-apis/arkts-lib-es5-error-i.md#stack), [z-order control](#zindex), and [rotate](#rotate-1) transformations.
+> - The following calculation scenarios are not supported: clipping by sibling nodes, clipping by siblings of any ancestor node, window-level occlusion, and component rotation. Examples include layouts using Stack, [z-order control](#zindex), and [rotate](#rotate-1) transformations.
 > 
 > - It does not support visibility change calculations for nodes that are not in the component tree. For example,preloaded nodes or custom nodes mounted using the [overlay](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md#overlay) capability.
 > 
@@ -7058,7 +7058,7 @@ Called when the visible area of the component changes. You can use **measureFrom
 > 
 > - This API only takes into account the relative clipped area ratio of the component with respect to all ancestor nodes (up to the window boundary) and its own area.
 > 
-> - The following calculation scenarios are not supported: clipping by sibling nodes, clipping by siblings of any ancestor node, window-level occlusion, and component rotation. Examples include layouts using [Stack](../../apis-default/arkts-apis/arkts-lib-es5-error-i.md#stack), [z-order control](#zindex), and [rotate](#rotate-1) transformations.
+> - The following calculation scenarios are not supported: clipping by sibling nodes, clipping by siblings of any ancestor node, window-level occlusion, and component rotation. Examples include layouts using Stack, [z-order control](#zindex), and [rotate](#rotate-1) transformations.
 > 
 > - It does not support visibility change calculations for nodes that are not in the component tree. For example,preloaded nodes or custom nodes mounted using the [overlay](#overlay) capability.
 
@@ -7695,7 +7695,7 @@ Sets the absolute positioning, which determines the position of a child componen
 > **NOTE:** 
 > 
 > - The effect of **position** on the position takes effect after the component's size measurement is complete.
-> - When the parent component is [Row](arkts-arkui-row-comp.md), [Column](arkts-arkui-column-comp.md), or [Flex](arkts-arkui-flex-comp.md), a child component with **position** set does not occupy space. In this scenario, if all child components contained in the parent component have **position** set, the parent component's size cannot be determined by other child components, and layout measurement is performed based on the size (0, 0).
+> - When the parent component is Row, Column, or [Flex](arkts-arkui-flex-comp.md), a child component with **position** set does not occupy space. In this scenario, if all child components contained in the parent component have **position** set, the parent component's size cannot be determined by other child components, and layout measurement is performed based on the size (0, 0).
 > - The Position type determines the position based on the upper left corner of the parent component's content area. The Edges type determines the position based on the four edges of the parent component's content area, where **top**, **left**, **right**, and **bottom** are the distances from each edge of the component to the corresponding edge of the parent component's content area, and the component's position relative to the parent component's content area is determined by these distances. The [LocalizedEdges](../arkts-apis/arkts-arkui-localizededges-i.md) type determines the position based on the four edges of the parent component's content area and supports mirroring mode.
 > - This attribute is applicable to scenarios where components such as top-displayed elements and floating buttons have fixed positions within the parent component.
 > - This attribute is not supported on layout components with zero width and height.
@@ -9486,7 +9486,7 @@ Sets the width of the component itself. By default, the width required for the c
 > - In the [AlphabetIndexer](./ts-container-alphabet-indexer.md) component, setting **width** to
 > **auto** means adapting to the width of the largest index item.
 > 
-> - In the [Row](arkts-arkui-row-comp.md), [Column](arkts-arkui-column-comp.md), and [RelativeContainer](arkts-arkui-relativecontainer-comp.md)components, setting width to auto means adapting to the child components.
+> - In the Row, Column, and [RelativeContainer](arkts-arkui-relativecontainer-comp.md)components, setting width to auto means adapting to the child components.
 
 **Since:** 7
 

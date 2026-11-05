@@ -802,7 +802,7 @@ Open the file and cache it in the gallery sandbox when streaming video from the 
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | Scene parameters validate failed, possible causes: The image and video files corresponding to the photoasset do not exist. Check if the photoasset is valid and the files exist in the gallery. |
-| 23800302 | Failed to open the file. Possible causes:         1. Unable to access cloud images due to network connectivity issues;         2. File system malfunction. Please check your network connection and try again. |
+| [23800302](../errorcode-medialibrary.md#23800302-failed-to-open-the-file) | Failed to open the file. Possible causes:         1. Unable to access cloud images due to network connectivity issues;         2. File system malfunction. Please check your network connection and try again. |
 
 ## getThumbnailData
 

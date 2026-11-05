@@ -99,7 +99,7 @@ function acquireFormData(formId: string): Promise<Record<string, Object>>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;{ [key: string]: Object }&gt; | 以Promise方式返回接口运行结果及卡片提供方数据。<br>**适用版本：** 10 |
-| Promise&lt;Record&lt;string, Object&gt;&gt; | Promise used to return the API call result and the shared data.<br>**适用版本：** 11 |
+| Promise&lt;Record&lt;string, Object&gt;&gt; | 以Promise方式返回接口运行结果及卡片提供方数据。<br>**适用版本：** 11 |
 
 **错误码：**
 

@@ -12,9 +12,7 @@ import { formHost } from '@kit.FormKit';
 function addForm(want: Want): Promise<formInfo.RunningFormInfo>
 ```
 
-Add a form.
-
-You can use this method to create a theme form.
+添加主题卡片。使用Promise异步回调。
 
 **起始版本：** 12
 
@@ -32,13 +30,13 @@ You can use this method to create a theme form.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | Indicates want of the form. |
+| want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 查询卡片状态时携带的want信息。需要包含bundle名、ability名、module名、卡片名、卡片规格等。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[formInfo.RunningFormInfo](arkts-form-forminfo-runningforminfo-i.md)&gt; | Return the form info. |
+| Promise&lt;[formInfo.RunningFormInfo](arkts-form-forminfo-runningforminfo-i.md)&gt; | Promise对象。返回符合条件的卡片信息，包括卡片名称、尺寸等。 |
 
 **错误码：**
 

@@ -20,7 +20,7 @@ Repeat结合，它的预加载行为和ForEach一致。
 
 > **说明：** 
 > 
-> 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](arkts-arkui-common-comp.md)进行处理。
+> 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](arkts-arkui-common-comp-commonmethod-c.md)进行处理。
 
 ## 子组件
 
@@ -90,7 +90,7 @@ List(options?: ListOptions)
 | [ListBackPressBehavior](arkts-arkui-list-comp-listbackpressbehavior-i.md) | 定义List组件的系统返回键行为。 |
 | [ListDividerOptions](arkts-arkui-list-comp-listdivideroptions-i.md) | 用于设置List或ListItemGroup组件的分割线样式。 |
 | [ListOptions](arkts-arkui-list-comp-listoptions-i.md) | 用于设置List组件参数。 |
-| [UIListEvent](arkts-arkui-list-comp-uilistevent-i.md) | frameNode中[getEvent('List')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent-2)方法的返回值，可用于给List节点设置滚动事件。 |
+| [UIListEvent](arkts-arkui-list-comp-uilistevent-i.md) | frameNode中getEvent('List')方法的返回值，可用于给List节点设置滚动事件。 |
 | [VisibleListContentInfo](arkts-arkui-list-comp-visiblelistcontentinfo-i.md) | 用于表示List可见内容区子组件的详细信息。 |
 
 <!--Del-->

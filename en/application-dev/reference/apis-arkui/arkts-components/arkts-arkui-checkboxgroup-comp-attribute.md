@@ -4,7 +4,7 @@
 declare class CheckboxGroupAttribute extends CommonMethod<CheckboxGroupAttribute>
 ```
 
-In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported.
 
 **Inheritance/Implementation:** CheckboxGroupAttribute extends CommonMethod&lt;CheckboxGroupAttribute&gt;
 
@@ -200,7 +200,7 @@ Triggered when the selected status of the check box group or any check box where
 selectAll(value: boolean)
 ```
 
-Sets whether to select all. If the **select** attribute is set for a [Checkbox](arkts-arkui-checkbox-comp.md) component in the same group, the setting of the **Checkbox** has a higher priority.
+Sets whether to select all. If the **select** attribute is set for a Checkbox component in the same group, the setting of the **Checkbox** has a higher priority.
 
 When used with components that have caching functionality (such as [List](arkts-arkui-list-comp.md)), the selection state of uncreated check boxes must be controlled by the developer.
 
@@ -224,7 +224,7 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to select all.<br>Default value: **false**<br>If the value is **true**, all check boxes in the group are selected. If the value is **false**, all check boxes in the group are deselected.<br>If the [Checkbox](arkts-arkui-checkbox-comp.md) in the same group has the **select** attribute explicitly set, the **select** attribute of the **Checkbox** takes precedence. |
+| value | boolean | Yes | Whether to select all.<br>Default value: **false**<br>If the value is **true**, all check boxes in the group are selected. If the value is **false**, all check boxes in the group are deselected.<br>If the Checkbox in the same group has the **select** attribute explicitly set, the **select** attribute of the **Checkbox** takes precedence. |
 
 ## selectAll
 
@@ -232,7 +232,7 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 selectAll(isAllSelected: Optional<boolean>)
 ```
 
-Sets whether to select all. If the **select** attribute is set for a [Checkbox](arkts-arkui-checkbox-comp.md) component in the same group, the setting of the **Checkbox** has a higher priority. Compared with [selectAll](#selectall-1), this API supports the **undefined** type for the **isAllSelected** parameter.
+Sets whether to select all. If the **select** attribute is set for a Checkbox component in the same group, the setting of the **Checkbox** has a higher priority. Compared with [selectAll](#selectall-1), this API supports the **undefined** type for the **isAllSelected** parameter.
 
 When used with components that have caching functionality (such as [List](arkts-arkui-list-comp.md)), the selected state of uncreated check boxes must be controlled by the developer.
 

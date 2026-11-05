@@ -12,7 +12,7 @@ import { eSIM } from '@kit.TelephonyKit';
 function deleteProfile(slotId: number, iccid: string): Promise<ResultCode>
 ```
 
-Deletes a profile. This API uses a promise to return the result.
+Delete configuration file. Use Promise asynchronous callback.
 
 **Since:** 18
 
@@ -28,8 +28,8 @@ Deletes a profile. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
-| iccid | string | Yes | Profile ID. |
+| slotId | number | Yes | Card slot ID. <br>The value should be an integer. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| iccid | string | Yes | Profile ID. <br>The minimum length is 19 and the maximum length is 20. <br>ID of the configuration file. Generally, the ICCID is a number of 19 to 20 digits. |
 
 **Return value:**
 

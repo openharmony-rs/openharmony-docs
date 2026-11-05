@@ -87,7 +87,7 @@ fileVersion.clearFileConflict(uri).then(() => {
 constructor()
 ```
 
-A constructor used to create a FileVersion object.
+端云文件版本管理的构造函数，用于获取FileVersion类的实例。
 
 **起始版本：** 20
 

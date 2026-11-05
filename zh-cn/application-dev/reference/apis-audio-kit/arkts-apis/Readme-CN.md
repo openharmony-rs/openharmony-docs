@@ -118,6 +118,7 @@
   <!--Del-->
   - [InterruptResult（系统接口）](arkts-audio-audio-interruptresult-i-sys.md)<!--DelEnd-->
   - [MicStateChangeEvent](arkts-audio-audio-micstatechangeevent-i.md)
+  - [NoiseReductionModeChangeInfo](arkts-audio-audio-noisereductionmodechangeinfo-i.md)
   - [SoundCardInfo](arkts-audio-audio-soundcardinfo-i.md)
   - [StreamVolumeEvent](arkts-audio-audio-streamvolumeevent-i.md)
   <!--Del-->
@@ -237,6 +238,7 @@
   <!--Del-->
   - [NetworkType（系统接口）](arkts-audio-audio-networktype-e-sys.md)<!--DelEnd-->
   - [NoiseReductionMode](arkts-audio-audio-noisereductionmode-e.md)
+  - [NoiseReductionModeChangeReason](arkts-audio-audio-noisereductionmodechangereason-e.md)
   - [OutputDeviceChangeRecommendedAction](arkts-audio-audio-outputdevicechangerecommendedaction-e.md)
   - [PlaybackCaptureStartState](arkts-audio-audio-playbackcapturestartstate-e.md)
   <!--Del-->

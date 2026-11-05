@@ -63,7 +63,7 @@ Starts a [native child process](../../../application-models/ability-terminology.
 
 **Examples**
 
-For details about the child process, see Child Process Development Guide (ArkTS) - Creating a Native Child Process That Supports Parameter Passing:
+For details about the child process, see [Child Process Development Guide (ArkTS) - Creating a Native Child Process That Supports Parameter Passing](../../../application-models/arkts-child-process-development-guideline.md#creating-a-native-child-process-that-supports-parameter-passing):
 
 ```TypeScript
 #include <AbilityKit/native_child_process.h>

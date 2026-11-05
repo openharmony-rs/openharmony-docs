@@ -24,7 +24,7 @@ import { AlbumPickerComponent, AlbumPickerOptions, AlbumInfo, EmptyAreaClickCall
 filterType?: photoAccessHelper.PhotoViewMIMETypes
 ```
 
-Type of the filter. You can use it to display images, videos, or both. If this parameter is not specified, images and videos are displayed in a specific album.
+Type of the filter. You can use it to display images, videos, or both. If this parameter is not specified, the album component displays all image and video resources.
 
 **Type:** [photoAccessHelper.PhotoViewMIMETypes](arkts-medialibrary-photoaccesshelper-photoviewmimetypes-e.md)
 
@@ -42,7 +42,7 @@ Type of the filter. You can use it to display images, videos, or both. If this p
 fontSize?: number | string
 ```
 
-Font size. For details about the value range, see [fontSize](../../apis-arkui/arkts-components/arkts-arkui-text-comp-attribute.md#fontsize).
+Font size. For details about the value range, see [fontSize](../../apis-arkui/arkts-components/arkts-arkui-text-comp-attribute.md#fontsize). If this parameter is not set, the default font size is used. You can also dynamically set the font size using [AlbumPickerController](arkts-medialibrary-file-albumpickercomponent-albumpickercontroller-c.md).setFontSize.
 
 **Type:** number &#124; string
 
@@ -60,7 +60,7 @@ Font size. For details about the value range, see [fontSize](../../apis-arkui/ar
 themeColorMode?: PickerColorMode
 ```
 
-Theme color of the album page. The options are **AUTO**, **Light**, and **Dark**. The default value is **AUTO**.
+Theme color of the album list. The options are **AUTO**, **Light**, and **Dark**. The default value is **AUTO**.
 
 **Type:** [PickerColorMode](arkts-medialibrary-file-photopickercomponent-pickercolormode-e.md)
 

@@ -68,7 +68,7 @@ Audio encoding format. The default value is DEFAULT, it will be deprecated after
 audioEncoderMime?: CodecMimeType
 ```
 
-audio encoding format MIME. it used to replace audioEncoder.
+Audio encoding format.
 
 **Type:** [CodecMimeType](arkts-media-media-codecmimetype-e.md)
 
@@ -108,7 +108,7 @@ Audio sampling rate, in Hz.
 fileFormat?: ContainerFormatType
 ```
 
-output file format. see @ContainerFormatType , it used to replace "format".
+Container format of a file.
 
 **Type:** [ContainerFormatType](arkts-media-media-containerformattype-e.md)
 

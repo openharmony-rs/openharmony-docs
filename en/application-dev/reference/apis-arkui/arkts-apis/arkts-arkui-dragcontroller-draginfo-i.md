@@ -30,7 +30,7 @@ After the proactive dragging is successfully initiated, the system automatically
 
 If the proactive dragging source also needs to be hidden, its unique ID must be passed as well.
 
-The unique ID of a component can be obtained by using [UIContext.getFrameNodeById()](arkts-arkui-arkui-uicontext-uicontext-c.md#getframenodebyid) together with [FrameNode.getUniqueId()](arkts-arkui-framenode-c.md#getuniqueid).
+The unique ID of a component can be obtained by using [UIContext.getFrameNodeById()](arkts-arkui-arkui-uicontext-uicontext-c.md#getframenodebyid) together with FrameNode.getUniqueId().
 
 You need to restore the component display status as required in the drag end callback.
 

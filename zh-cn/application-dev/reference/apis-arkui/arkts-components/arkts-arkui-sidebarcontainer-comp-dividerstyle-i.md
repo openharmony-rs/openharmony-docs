@@ -8,9 +8,9 @@ interface DividerStyle
 
 > **说明：** 
 
-> 针对侧边栏子组件设置通用属性宽高时，宽高都不生效。
+> 针对侧边栏子组件设置[通用属性宽高](arkts-arkui-common-comp-commonmethod-c.md)时，宽高都不生效。
 
-> 针对侧边栏内容区设置通用属性宽高时，宽高都不生效，默认占满SideBarContainer的剩余空间。
+> 针对侧边栏内容区设置[通用属性宽高](arkts-arkui-common-comp-commonmethod-c.md)时，宽高都不生效，默认占满SideBarContainer的剩余空间。
 
 > 当[showSideBar](arkts-arkui-sidebarcontainer-comp-attribute.md#showsidebar)属性未设置时，依据组件大小进行自动显示：
 

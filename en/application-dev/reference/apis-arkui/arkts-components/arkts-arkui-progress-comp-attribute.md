@@ -5,7 +5,7 @@ declare class ProgressAttribute<Type extends keyof ProgressStyleMap = keyof Prog
   Style extends ProgressStyleMap[Type] = ProgressStyleMap[Type]> extends CommonMethod<ProgressAttribute<Type>>
 ```
 
-In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported.
 
 > **NOTE:** 
 > 
@@ -103,7 +103,7 @@ Sets whether to enable privacy-sensitive mode.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isPrivacySensitiveMode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Sets privacy sensitivity. In privacy mode, the progress is cleared and the text is masked. true: enables privacy sensitivity; false: disables privacy sensitivity. <br> Default value: false <br>**Note:** <br>Setting null indicates that the component is not sensitive. <!--Del--> <br>To use Progress in a card and set the [privacy mask](arkts-arkui-common-comp.md) attribute with the [FormComponent](arkts-arkui-formcomponent-comp-sys.md) component, the privacy mask effect is available only when the card is displayed.<!--DelEnd--> |
+| isPrivacySensitiveMode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Sets privacy sensitivity. In privacy mode, the progress is cleared and the text is masked. true: enables privacy sensitivity; false: disables privacy sensitivity. <br> Default value: false <br>**Note:** <br>Setting null indicates that the component is not sensitive. <!--Del--> <br>To use Progress in a card and set the [privacy mask](arkts-arkui-common-comp-commonmethod-c.md) attribute with the [FormComponent](arkts-arkui-formcomponent-comp-sys.md) component, the privacy mask effect is available only when the card is displayed.<!--DelEnd--> |
 
 ## style
 

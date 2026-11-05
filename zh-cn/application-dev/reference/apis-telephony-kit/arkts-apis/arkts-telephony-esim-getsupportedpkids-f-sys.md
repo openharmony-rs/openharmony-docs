@@ -12,7 +12,7 @@ import { eSIM } from '@kit.TelephonyKit';
 function getSupportedPkids(slotId: number) : Promise<string>
 ```
 
-获取手机支持的公钥ID信息。
+获取手机支持的公钥ID信息，用于eSIM开通流程中的安全认证。在调用getContractInfo接口进行加密认证前，需先调用本接口获取可用的公钥ID。
 
 **起始版本：** 20
 
@@ -28,7 +28,7 @@ function getSupportedPkids(slotId: number) : Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | number | 是 | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
+| slotId | number | 是 | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。<br>取值限定为整数。 |
 
 **返回值：**
 

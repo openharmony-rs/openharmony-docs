@@ -4,7 +4,7 @@
 declare interface TabsOptions
 ```
 
-Tabs组件参数，设置Tabs的页签位置，当前显示页签的索引，Tabs控制器和页签栏（TabBar）的通用属性。
+Tabs组件参数，设置Tabs的页签位置，当前显示页签的索引，Tabs控制器和页签栏（TabBar）的[通用属性](arkts-arkui-common-comp-commonmethod-c.md)。
 
 **起始版本：** 15
 
@@ -18,7 +18,7 @@ Tabs组件参数，设置Tabs的页签位置，当前显示页签的索引，Tab
 barModifier?: CommonModifier
 ```
 
-设置TabBar的通用属性，用于通过CommonModifier统一管理TabBar的样式、布局等通用属性。当需要动态修改TabBar的通用属性或实现属性的状态管理时传入此参数，不传入时TabBar使用默认样式和布局，无额外通用属性设置。
+设置TabBar的[通用属性](arkts-arkui-common-comp-commonmethod-c.md)，用于通过CommonModifier统一管理TabBar的样式、布局等通用属性。当需要动态修改TabBar的通用属性或实现属性的状态管理时传入此参数，不传入时TabBar使用默认样式和布局，无额外通用属性设置。
 
 **说明：** 
 
@@ -30,7 +30,7 @@ Tabs的[barWidth](arkts-arkui-tabs-comp-attribute.md#barwidth)、[barHeight](ark
 
 [align](arkts-arkui-common-comp-commonmethod-c.md#align-1)属性仅在[BarMode.Scrollable](arkts-arkui-tabs-comp-attribute.md#barmode-2)模式下生效，且Tabs为横向时还需[nonScrollableLayoutStyle](arkts-arkui-tabs-comp-scrollablebarmodeoptions-i.md)未设置或设置为异常值时才能生效。
 
-TabContent组件的[tabBar](arkts-arkui-tabcontent-comp-attribute.md#tabbar-1)属性为底部页签样式时不支持拖拽功能。
+[TabContent](arkts-arkui-tabcontent-comp.md)组件的[tabBar](arkts-arkui-tabcontent-comp-attribute.md#tabbar-1)属性为底部页签样式时不支持拖拽功能。
 
 **类型：** [CommonModifier](arkts-arkui-tabs-comp-commonmodifier-t.md)
 

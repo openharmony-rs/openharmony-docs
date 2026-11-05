@@ -14,7 +14,7 @@ This component is implemented based on
 
 > **NOTE**
  >
- > - If the **DialogV2** component has universal attributes and universal events
+ > - If the **DialogV2** component has [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) and [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)
  > configured,
  > the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal
  > attributes and universal events

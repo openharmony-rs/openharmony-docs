@@ -4,9 +4,9 @@
 declare class WithThemeAttribute
 ```
 
-不支持通用属性。
+不支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)。
 
-不支持通用事件。
+不支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
 
 **起始版本：** 12
 

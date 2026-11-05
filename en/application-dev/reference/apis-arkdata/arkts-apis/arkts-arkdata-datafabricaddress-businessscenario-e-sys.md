@@ -14,24 +14,6 @@ Enum for business scenario types.
 
 **System API:** This is a system API.
 
-## OTHERS
-
-```TypeScript
-OTHERS = 1
-```
-
-Indicates other business scenario types.
-
-**Since:** 26.1.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-BusinessScenario-OTHERS = 1--><!--Device-BusinessScenario-OTHERS = 1-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.DataFabric.Address
-
-**System API:** This is a system API.
-
 ## SCENARIO_NAVIGATION_COMMUTE
 
 ```TypeScript

@@ -14,6 +14,8 @@ function sendPrivateCommand(commandData: Record<string, CommandDataType>): Promi
 
 发送私有命令给系统预置输入法应用。使用Promise异步回调。<br> <br>含义/功能：系统面板向系统预置输入法应用发送自定义私有数据命令，数据格式为键值对映射（Record<string, CommandDataType>）。<br> <br>使用场景：当系统面板需要向输入法应用发送自定义配置命令、状态通知等私有数据时使用此接口。私有数据通道是系统预置输入法应用与系统特定组件的通信机制，常用于设备级厂商在特定设备上实现自定义的输入法功能。<br> <br>使用后效果：调用后，私有命令数据将发送给当前系统预置输入法应用。输入法应用可通过inputMethodEngine.on('privateCommand')接收此命令数据。<br> <br>前提条件：需先调用connectSystemChannel建立系统通道连接。<br> <br>相关接口间的配合/制约关系：本接口是系统面板侧的私有命令发送接口，对应输入法应用侧的inputMethodEngine.on('privateCommand')（接收端）。私有命令通信方向：系统面板 → 输入法应用。
 
+在ArkTS动态调用中，操作队列已满或排队等待超时时，将中止本次命令发送，并通过Promise拒绝返回BusinessError 12800026。请等待操作完成后再发起其他请求。异步任务创建失败或框架报告的任务提交失败使用BusinessError 12800008；取消操作时，若没有该操作的专用错误码，也使用此错误码。如果无法准备异步输入或结果返回通道，且当前没有待处理的异常，则同步抛出BusinessError 12800008。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -41,4 +43,5 @@ function sendPrivateCommand(commandData: Record<string, CommandDataType>): Promi
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | [12800026](../errorcode-inputmethod-framework.md#12800026-输入法系统面板错误) | input method system panel error. Possible causes:         1. the system panel not connected. 2. ipc failed due to the large amount of data transferred or other reasons.         3. the caller is not system panel. |

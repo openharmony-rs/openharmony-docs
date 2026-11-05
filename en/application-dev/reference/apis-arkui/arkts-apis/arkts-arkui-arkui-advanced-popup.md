@@ -7,7 +7,7 @@ The **Popup** component is a component used to display bubbles of specific style
 
 > **NOTE**
  >
- > - It is recommended to use this component together with the custom popup feature in Popup Control.
+ > - It is recommended to use this component together with the custom popup feature in [Popup Control](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md).
 
 ## Child Components
 

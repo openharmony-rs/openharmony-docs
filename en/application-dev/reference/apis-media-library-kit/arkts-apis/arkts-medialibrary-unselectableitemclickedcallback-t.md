@@ -4,7 +4,7 @@
 export type UnselectableItemClickedCallback = (unselectableItemInfo: UnselectableItemInfo) => void
 ```
 
-The callback of onUnselectableItemInfo event
+Describes the callback invoked when an unselectable image is tapped on the picker grid or large image preview screen.
 
 **Since:** 26.0.1
 
@@ -20,4 +20,4 @@ The callback of onUnselectableItemInfo event
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| unselectableItemInfo | [UnselectableItemInfo](arkts-medialibrary-file-photopickercomponent-unselectableiteminfo-c.md) | Yes |  |
+| unselectableItemInfo | [UnselectableItemInfo](arkts-medialibrary-file-photopickercomponent-unselectableiteminfo-c.md) | Yes | Details about the image that is tapped but cannot be selected. |

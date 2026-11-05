@@ -6,7 +6,7 @@ A dialog is a modal window that temporarily displays information that requires u
 
 > **NOTE**
  >
- > - If the **Dialog** component has universal attributes and universal events
+ > - If the **Dialog** component has [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) and [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)
  > configured,
  > the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal
  > attributes and universal events on this node rather than the **Dialog** component itself.

@@ -48,7 +48,7 @@ Authenticates a UKey PIN. This API uses a promise to return the result.
 | [12000014](../errorcode-huks.md#12000014-insufficient-memory) | memory is insufficient. |
 | [12000018](../errorcode-huks.md#12000018-invalid-input-parameter) | the input parameter is invalid. |
 | [12000020](../errorcode-huks.md#12000020-dependent-module-error) | the provider operation failed. |
-| [12000021](../errorcode-huks.md#12000021-ukey-pin-locked) | the UKey PIN is locked. |
+| [12000021](../errorcode-huks.md#12000021-ukey-pin-is-locked) | the UKey PIN is locked. |
 | [12000022](../errorcode-huks.md#12000022-incorrect-ukey-pin) | the UKey PIN is incorrect. |
 | [12000024](../errorcode-huks.md#12000024-device-or-resource-busy) | the provider or UKey is busy. |
 

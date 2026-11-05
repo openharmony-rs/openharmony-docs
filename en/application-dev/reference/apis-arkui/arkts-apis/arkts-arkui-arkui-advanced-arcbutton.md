@@ -15,11 +15,11 @@ Not supported
 
 ## Attributes
 
-The universal attributes are not supported.
+The [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) are not supported.
 
 ## Events
 
-Among the universal events, the click event and touch event are supported.
+Among the universal events, the [click event](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) and [touch event](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 ## Modules to Import
 

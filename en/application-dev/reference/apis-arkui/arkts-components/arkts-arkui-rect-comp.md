@@ -6,7 +6,7 @@ The **Rect** component is used to draw a rectangle. It supports setting attribut
 > 
 > Since API version 20, this component supports using the
 > [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#properties) API of the
-> [AttributeUpdater](../arkts-apis/arkts-arkui-attributeupdater-c.md) class to update constructor parameters.
+> AttributeUpdater class to update constructor parameters.
 
 ## Child Components
 

@@ -162,7 +162,7 @@ Sets the callback for the [onHover](arkts-arkui-common-comp-commonmethod-c.md#on
 setOnKeyEvent(callback: Callback<KeyEvent> | undefined): void
 ```
 
-Sets the callback for the key event. When **callback** is undefined, resets the callback for the key event.
+Sets the callback for the [key event](arkts-arkui-common-comp-commonmethod-c.md). When **callback** is undefined, resets the callback for the key event.
 
 **Since:** 12
 

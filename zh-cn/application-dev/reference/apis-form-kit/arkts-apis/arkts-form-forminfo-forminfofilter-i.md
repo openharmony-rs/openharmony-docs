@@ -24,7 +24,7 @@ import { formInfo } from '@kit.FormKit';
 moduleName?: string
 ```
 
-optional moduleName that used to ask getFormsInfo to return form infos with the same moduleName.
+卡片所属模块的名称，用于过滤卡片信息。仅保留含moduleName与提供值相符的卡片信息，未填写时则不通过moduleName进行过滤。
 
 **类型：** string
 

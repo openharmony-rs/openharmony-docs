@@ -12,7 +12,9 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 function updateEnabledBusinessIds(templateId: Uint8Array, enabledBusinessIds: number[]): Promise<void>
 ```
 
-Updates the service scope supported by the specified companion device template. This API is used to modify the list of service IDs enabled for a registered template, thereby controlling the service scenarios in which the template can be used. This API uses a promise to return the result.
+Updates the business scope supported by the specified companion device template. This API is used to modify the list of business IDs enabled for a registered template, thereby controlling the business scenarios in which the template can be used. This API uses a promise to return the result.
+
+Effective mechanism: The update takes effect immediately. The next authentication is determined based on the new business scope, without the need to restart the application or re-authenticate.
 
 **Since:** 23
 
@@ -30,7 +32,7 @@ Updates the service scope supported by the specified companion device template. 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| templateId | Uint8Array | Yes | ID of the target template. Unique ID of the template whose service scope is to be updated, which can be obtained through [getTemplateStatus](arkts-userauthentication-companiondeviceauth-statusmonitor-i-sys.md#gettemplatestatus). |
+| templateId | Uint8Array | Yes | ID of the target template. Unique ID of the template whose business scope is to be updated, which can be obtained through [getTemplateStatus](arkts-userauthentication-companiondeviceauth-statusmonitor-i-sys.md#gettemplatestatus). |
 | enabledBusinessIds | number[] | Yes | Set of business IDs supported by the template. That is, list of business scenarios to enable, for example, **[BusinessId.DEFAULT]**. Different business IDs correspond to different authentication scenarios, and applications can configure them based on business requirements (vendor-defined business IDs must be ≥ 10000). |
 
 **Return value:**

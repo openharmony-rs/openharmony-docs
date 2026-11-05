@@ -7,8 +7,8 @@ The advanced filter component allows users to filter data with multiple criteria
 
 > **NOTE**
  >
- > - If the **Filter** component has universal attributes and
- > universal events configured, the compiler toolchain automatically generates an additional
+ > - If the **Filter** component has [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) and
+ > [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) configured, the compiler toolchain automatically generates an additional
  > \_\_Common\_\_ node and mounts the universal attributes and universal events on this node rather than
  > the **Filter** component itself. As a result, the configured universal attributes and universal events
  > may fail to take effect or behave as intended. For this reason, avoid using universal attributes

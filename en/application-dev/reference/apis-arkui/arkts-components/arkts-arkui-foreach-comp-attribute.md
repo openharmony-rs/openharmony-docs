@@ -4,7 +4,7 @@
 declare class ForEachAttribute extends DynamicNode<ForEachAttribute>
 ```
 
-The [drag-and-drop sorting](arkts-arkui-common-comp.md) attribute is supported.
+The [drag-and-drop sorting](arkts-arkui-common-comp-commonmethod-c.md) attribute is supported.
 
 **Inheritance/Implementation:** ForEachAttribute extends DynamicNode&lt;ForEachAttribute&gt;
 

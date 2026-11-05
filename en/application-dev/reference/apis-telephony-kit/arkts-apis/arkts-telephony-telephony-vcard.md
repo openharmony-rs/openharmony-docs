@@ -20,12 +20,12 @@ import { vcard } from '@kit.TelephonyKit';
 
 | Name | Description |
 | --- | --- |
-| [exportVCard](arkts-telephony-vcard-exportvcard-f.md#exportvcard-1) | Exports contacts as a vcard file (VCF). This API uses an asynchronous callback to return the result. |
-| [exportVCard](arkts-telephony-vcard-exportvcard-f.md#exportvcard-2) | Exports contacts as a vcard file (VCF). This API uses a promise to return the result. |
-| [exportVCard](arkts-telephony-vcard-exportvcard-f.md#exportvcard-3) | Exports contacts as a vcard file (VCF). This API uses an asynchronous callback to return the result. |
-| [importVCard](arkts-telephony-vcard-importvcard-f.md#importvcard-1) | Imports a VCard file (that is, **.vcf** file) to the contact database. This API uses an asynchronous callback to return the result. |
-| [importVCard](arkts-telephony-vcard-importvcard-f.md#importvcard-2) | Imports a VCard file (that is, **.vcf** file) to the contact database. This API uses a promise to return the result. |
-| [importVCard](arkts-telephony-vcard-importvcard-f.md#importvcard-3) | Imports a VCard file (that is, **.vcf** file) to the contact database. This API uses an asynchronous callback to return the result. |
+| [exportVCard](arkts-telephony-vcard-exportvcard-f.md#exportvcard-1) | Export contacts to a VCF (VCard file) file. This mode is applicable to scenarios such as contact data backup, cross-device contact migration, and contact sharing through files. Use the callback asynchronous callback. |
+| [exportVCard](arkts-telephony-vcard-exportvcard-f.md#exportvcard-2) | Export contacts to a VCF (VCard file) file. This mode is applicable to scenarios such as contact data backup, cross-device contact migration, and contact sharing through files. Use Promise asynchronous callbacks. |
+| [exportVCard](arkts-telephony-vcard-exportvcard-f.md#exportvcard-3) | Export contacts to a VCF (VCard file) file. This mode is applicable to scenarios such as contact data backup, cross-device contact migration, and contact sharing through files. Use the callback asynchronous callback. |
+| [importVCard](arkts-telephony-vcard-importvcard-f.md#importvcard-1) | Import the VCard file into the contact database. Applies to scenarios such as importing contacts in batches and restoring contact data after receiving VCard files from other devices or applications. Use the callback asynchronous callback. |
+| [importVCard](arkts-telephony-vcard-importvcard-f.md#importvcard-2) | Import the VCard file into the contact database. Applies to scenarios such as importing contacts in batches and restoring contact data after receiving VCard files from other devices or applications. Use Promise asynchronous callbacks. |
+| [importVCard](arkts-telephony-vcard-importvcard-f.md#importvcard-3) | Import the VCard file into the contact database. Applies to scenarios such as importing contacts in batches and restoring contact data after receiving VCard files from other devices or applications. Use the callback asynchronous callback. |
 
 ### Interfaces
 

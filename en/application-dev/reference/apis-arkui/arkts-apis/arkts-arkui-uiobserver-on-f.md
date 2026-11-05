@@ -176,7 +176,7 @@ struct Index {
 export function on(type: 'scrollEvent', options: ObserverOptions, callback: Callback<ScrollEventInfo>): void
 ```
 
-Listens for the start and end of scroll events of a specific scrollable component identified by its ID. Supported components include [List](../arkts-components/arkts-arkui-list-comp.md), [Grid](../arkts-components/arkts-arkui-grid-comp.md), [Scroll](../arkts-components/arkts-arkui-scroll-comp.md), [WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md), and [ArcList](../arkts-components/arkts-arkui-arclist-comp.md).
+Listens for the start and end of scroll events of a specific scrollable component identified by its ID. Supported components include [List](../arkts-components/arkts-arkui-list-comp.md), [Grid](../arkts-components/arkts-arkui-grid-comp.md), Scroll, [WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md), and [ArcList](../arkts-components/arkts-arkui-arclist-comp.md).
 
 **Since:** 12
 
@@ -203,7 +203,7 @@ Listens for the start and end of scroll events of a specific scrollable componen
 export function on(type: 'scrollEvent', callback: Callback<ScrollEventInfo>): void
 ```
 
-Listens for the start and end of scroll events of all scrollable components. Supported components include [List](../arkts-components/arkts-arkui-list-comp.md), [Grid](../arkts-components/arkts-arkui-grid-comp.md), [Scroll](../arkts-components/arkts-arkui-scroll-comp.md), [WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md), and [ArcList](../arkts-components/arkts-arkui-arclist-comp.md).
+Listens for the start and end of scroll events of all scrollable components. Supported components include [List](../arkts-components/arkts-arkui-list-comp.md), [Grid](../arkts-components/arkts-arkui-grid-comp.md), Scroll, [WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md), and [ArcList](../arkts-components/arkts-arkui-arclist-comp.md).
 
 **Since:** 12
 

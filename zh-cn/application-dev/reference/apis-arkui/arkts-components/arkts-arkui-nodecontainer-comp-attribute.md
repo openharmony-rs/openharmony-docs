@@ -4,9 +4,9 @@
 declare class NodeContainerAttribute extends CommonMethod<NodeContainerAttribute>
 ```
 
-支持[通用属性](arkts-arkui-common-comp.md)，但不支持[动态属性设置](arkts-arkui-common-comp.md)。
+支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)，但不支持[动态属性设置](arkts-arkui-common-comp-commonmethod-c.md)。
 
-支持[通用事件](arkts-arkui-common-comp.md)。
+支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
 
 **继承/实现关系：** NodeContainerAttribute extends CommonMethod&lt;NodeContainerAttribute&gt;
 

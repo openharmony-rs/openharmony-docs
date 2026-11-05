@@ -40,4 +40,4 @@ Set the mounting policy for external storage devices.
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [9200012](../errorcode-enterpriseDeviceManager.md#9200012-parameter-verification-failed) | Parameter verification failed. |
 | [9200016](../errorcode-enterpriseDeviceManager.md#9200016-service-timeout) | Service timeout. |
-| 9201056 | Invalid external storage mount policy. |
+| [9201056](../errorcode-enterpriseDeviceManager.md#9201056-invalid-external-storage-mount-policy) | Invalid external storage mount policy. |

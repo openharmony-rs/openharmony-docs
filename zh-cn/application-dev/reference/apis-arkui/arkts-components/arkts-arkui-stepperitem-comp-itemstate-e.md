@@ -98,7 +98,7 @@ Waiting
 
 **说明：** 
 
-从API version 8开始支持，从API version 22开始废弃，建议使用Swiper替代。
+从API version 8开始支持，从API version 22开始废弃，建议使用[Swiper](arkts-arkui-swiper-comp.md)替代。
 
 **起始版本：** 8
 

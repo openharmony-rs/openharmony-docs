@@ -26,7 +26,7 @@ import { eSIM } from '@kit.TelephonyKit';
 nonce: string
 ```
 
-随机数。
+随机数，采用十六进制编码格式。
 
 **类型：** string
 
@@ -44,7 +44,7 @@ nonce: string
 pkid: string
 ```
 
-选择的公钥ID。
+选择的公钥ID，需从getSupportedPkids接口返回的值中选择。
 
 **类型：** string
 
@@ -62,7 +62,7 @@ pkid: string
 publicKey: string
 ```
 
-公钥。
+公钥，采用Base64编码格式。
 
 **类型：** string
 

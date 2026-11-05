@@ -58,7 +58,7 @@ The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** mus
 | [12000014](../errorcode-huks.md#12000014-insufficient-memory) | memory is insufficient |
 | [12000018](../errorcode-huks.md#12000018-invalid-input-parameter) | the input parameter is invalid. Possible causes:         1. the aead length is invalid.         2. the group id specified by the access group tag is invalid.<br>**Applicable version:** 22 and later |
 | [12000020](../errorcode-huks.md#12000020-dependent-module-error) | the provider operation failed<br>**Applicable version:** 22 and later |
-| [12000021](../errorcode-huks.md#12000021-ukey-pin-locked) | the UKey PIN is locked<br>**Applicable version:** 22 and later |
+| [12000021](../errorcode-huks.md#12000021-ukey-pin-is-locked) | the UKey PIN is locked<br>**Applicable version:** 22 and later |
 | [12000023](../errorcode-huks.md#12000023-unauthenticated-ukey-pin) | the UKey PIN not authenticated<br>**Applicable version:** 22 and later |
 | [12000024](../errorcode-huks.md#12000024-device-or-resource-busy) | the provider or UKey is busy<br>**Applicable version:** 22 and later |
 | [12000026](../errorcode-huks.md#12000026-secure-element-fault) | the secure element is not available<br>**Applicable version:** 26.0.0 and later |
@@ -119,7 +119,7 @@ The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** mus
 | [12000014](../errorcode-huks.md#12000014-insufficient-memory) | memory is insufficient |
 | [12000018](../errorcode-huks.md#12000018-invalid-input-parameter) | the input parameter is invalid. Possible causes:         1. the aead length is invalid.         2. the group id specified by the access group tag is invalid.<br>**Applicable version:** 22 and later |
 | [12000020](../errorcode-huks.md#12000020-dependent-module-error) | the provider operation failed<br>**Applicable version:** 22 and later |
-| [12000021](../errorcode-huks.md#12000021-ukey-pin-locked) | the UKey PIN is locked<br>**Applicable version:** 22 and later |
+| [12000021](../errorcode-huks.md#12000021-ukey-pin-is-locked) | the UKey PIN is locked<br>**Applicable version:** 22 and later |
 | [12000023](../errorcode-huks.md#12000023-unauthenticated-ukey-pin) | the UKey PIN not authenticated<br>**Applicable version:** 22 and later |
 | [12000024](../errorcode-huks.md#12000024-device-or-resource-busy) | the provider or UKey is busy<br>**Applicable version:** 22 and later |
 | [12000026](../errorcode-huks.md#12000026-secure-element-fault) | the secure element is not available<br>**Applicable version:** 26.0.0 and later |

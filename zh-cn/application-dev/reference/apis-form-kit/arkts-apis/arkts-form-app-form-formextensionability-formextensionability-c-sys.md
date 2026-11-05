@@ -12,6 +12,10 @@ declare class FormExtensionAbility
 
 **系统能力：** SystemCapability.Ability.Form
 
+## ExtensionAbility使用限制
+
+为保障系统安全性和稳定性，防止FormExtensionAbility滥用系统资源，系统对其能力进行管控，不支持部分模块的引用，详情请参考[附录](#附录)。
+
 ## 导入模块
 
 ```TypeScript
@@ -119,3 +123,14 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 ```
 
 <!--DelEnd-->
+
+## 附录
+
+FormExtensionAbility不支持以下模块的引用。
+
+| Kit | 模块 |
+| --- | --- |
+| Ability Kit | [@ohos.ability.particleAbility](../../apis-ability-kit/arkts-apis/arkts-ability-ability-particleability.md) |
+| Background Tasks Kit | [@ohos.resourceschedule.backgroundTaskManager](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-resourceschedule-backgroundtaskmanager.md) |
+| Camera Kit | [@ohos.multimedia.camera](../../apis-camera-kit/arkts-apis/arkts-camera-multimedia-camera.md) |
+| Media Kit | [@ohos.multimedia.media](../../apis-media-kit/arkts-apis/arkts-media-multimedia-media.md) |

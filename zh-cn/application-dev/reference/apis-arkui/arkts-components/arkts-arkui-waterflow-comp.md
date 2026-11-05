@@ -8,7 +8,7 @@
 > 
 > WaterFlow组件支持展示瀑布流布局，不支持编辑模式和子元素拖动功能。
 > 
-> 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](arkts-arkui-common-comp.md)进行处理。
+> 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](arkts-arkui-common-comp-commonmethod-c.md)进行处理。
 
 ## 子组件
 
@@ -80,7 +80,7 @@ WaterFlow(options?: WaterFlowOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [UIWaterFlowEvent](arkts-arkui-waterflow-comp-uiwaterflowevent-i.md) | frameNode中[getEvent('WaterFlow')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent-3)方法的返回值，可用于给WaterFlow节点设置滚动事件。 |
+| [UIWaterFlowEvent](arkts-arkui-waterflow-comp-uiwaterflowevent-i.md) | frameNode中getEvent('WaterFlow')方法的返回值，可用于给WaterFlow节点设置滚动事件。 |
 | [WaterFlowOptions](arkts-arkui-waterflow-comp-waterflowoptions-i.md) | 瀑布流组件参数对象。 |
 
 ### 类型

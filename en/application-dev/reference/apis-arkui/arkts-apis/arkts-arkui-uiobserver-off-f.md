@@ -65,7 +65,7 @@ Unsubscribes from status changes of the **NavDestination** component.
 export function off(type: 'scrollEvent', options: ObserverOptions, callback?: Callback<ScrollEventInfo>): void
 ```
 
-Unregisters the listener for the start and end of scroll events of a specific scrollable component identified by its ID. Supported components include [List](../arkts-components/arkts-arkui-list-comp.md), [Grid](../arkts-components/arkts-arkui-grid-comp.md), [Scroll](../arkts-components/arkts-arkui-scroll-comp.md), [WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md), and [ArcList](../arkts-components/arkts-arkui-arclist-comp.md).
+Unregisters the listener for the start and end of scroll events of a specific scrollable component identified by its ID. Supported components include [List](../arkts-components/arkts-arkui-list-comp.md), [Grid](../arkts-components/arkts-arkui-grid-comp.md), Scroll, [WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md), and [ArcList](../arkts-components/arkts-arkui-arclist-comp.md).
 
 **Since:** 12
 
@@ -161,7 +161,7 @@ struct Index {
 export function off(type: 'scrollEvent', callback?: Callback<ScrollEventInfo>): void
 ```
 
-Unregisters the listener for the start and end of scroll events of all scrollable components. Supported components include [List](../arkts-components/arkts-arkui-list-comp.md), [Grid](../arkts-components/arkts-arkui-grid-comp.md), [Scroll](../arkts-components/arkts-arkui-scroll-comp.md), [WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md), and [ArcList](../arkts-components/arkts-arkui-arclist-comp.md).
+Unregisters the listener for the start and end of scroll events of all scrollable components. Supported components include [List](../arkts-components/arkts-arkui-list-comp.md), [Grid](../arkts-components/arkts-arkui-grid-comp.md), Scroll, [WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md), and [ArcList](../arkts-components/arkts-arkui-arclist-comp.md).
 
 **Since:** 12
 

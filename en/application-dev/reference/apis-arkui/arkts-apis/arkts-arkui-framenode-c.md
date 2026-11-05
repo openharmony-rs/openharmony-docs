@@ -4,7 +4,7 @@
 export class FrameNode
 ```
 
-**FrameNode** represents an entity node in the component tree, supporting capabilities such as node tree operations, custom drawing and layout, position query, and animation. It can be used by a [NodeController](arkts-arkui-nodecontroller-c.md) to mount a [BuilderNode](arkts-arkui-buildernode-c.md) (that holds the FrameNode) to a [NodeContainer](../arkts-components/arkts-arkui-nodecontainer-comp-attribute.md#nodecontainerattribute) or mount a [RenderNode](arkts-arkui-rendernode-c.md) to another FrameNode. It is suitable for scenarios where component node trees need to be dynamically created and managed through code, enabling flexible UI composition and custom rendering requirements that cannot be directly met by declarative components.
+**FrameNode** represents an entity node in the component tree, supporting capabilities such as node tree operations, custom drawing and layout, position query, and animation. It can be used by a NodeController to mount a BuilderNode (that holds the FrameNode) to a [NodeContainer](../arkts-components/arkts-arkui-nodecontainer-comp-attribute.md#nodecontainerattribute) or mount a RenderNode to another FrameNode. It is suitable for scenarios where component node trees need to be dynamically created and managed through code, enabling flexible UI composition and custom rendering requirements that cannot be directly met by declarative components.
 
 > **NOTE:** 
 > 
@@ -14,7 +14,7 @@ export class FrameNode
 > 
 > - FrameNode objects do not support JSON serialization.
 > 
-> - When the API of the [FrameNode](arkts-arkui-framenode-c.md) object is invoked in the scenario of [ambiguous UI context](../../../ui/arkts-global-interface.md#ambiguous-ui-context), you are advised to use the [runScopedTask](arkts-arkui-arkui-uicontext-uicontext-c.md#runscopedtask) API of [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) to specify the UI context. For details, see [Executing the Closure Bound to a UI Instance](../../../ui/arkts-global-interface.md#executing-the-closure-bound-to-a-ui-instance).
+> - When the API of the FrameNode object is invoked in the scenario of [ambiguous UI context](../../../ui/arkts-global-interface.md#ambiguous-ui-context), you are advised to use the [runScopedTask](arkts-arkui-arkui-uicontext-uicontext-c.md#runscopedtask) API of [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) to specify the UI context. For details, see [Executing the Closure Bound to a UI Instance](../../../ui/arkts-global-interface.md#executing-the-closure-bound-to-a-ui-instance).
 > 
 > - In the FrameNode APIs, only the mandatory parameters of the [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md) type can be set to null or undefined.
 
@@ -142,7 +142,7 @@ Appends a child node to the end of this FrameNode. If this FrameNode is not modi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| node | [FrameNode](arkts-arkui-framenode-c.md) | Yes | FrameNode to add.<br> The node cannot be a non-modifiable FrameNode (for example, a declarative component node obtained through APIs such as **getFrameNodeById**). Only the FrameNode obtained through the **getFrameNode** API of [BuilderNode](arkts-arkui-buildernode-c.md) can be added as a declarative child node. If the child node does not meet the specifications, an exception is thrown.<br> The node cannot have a parent node; otherwise, an exception is thrown. |
+| node | [FrameNode](arkts-arkui-framenode-c.md) | Yes | FrameNode to add.<br> The node cannot be a non-modifiable FrameNode (for example, a declarative component node obtained through APIs such as **getFrameNodeById**). Only the FrameNode obtained through the **getFrameNode** API of BuilderNode can be added as a declarative child node. If the child node does not meet the specifications, an exception is thrown.<br> The node cannot have a parent node; otherwise, an exception is thrown. |
 
 **Error codes:**
 
@@ -1397,7 +1397,7 @@ Searches for all child nodes layer by layer from the current node (which is used
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| id | string | Yes | ID of the child node to be queried, which is the same as the [component ID](../arkts-components/arkts-arkui-common-comp.md). |
+| id | string | Yes | ID of the child node to be queried, which is the same as the [component ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md). |
 
 **Return value:**
 
@@ -1580,7 +1580,7 @@ See Example of Node Operations.
 getId(): string
 ```
 
-Obtains the node ID set by the user, which is the same as the value of the [component ID](../arkts-components/arkts-arkui-common-comp.md).
+Obtains the node ID set by the user, which is the same as the value of the [component ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md).
 
 **Since:** 12
 
@@ -1596,7 +1596,7 @@ Obtains the node ID set by the user, which is the same as the value of the [comp
 
 | Type | Description |
 | --- | --- |
-| string | Node ID set by the user, which is the same as the value of the [component ID](../arkts-components/arkts-arkui-common-comp.md). |
+| string | Node ID set by the user, which is the same as the value of the [component ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md). |
 
 **Examples**
 
@@ -1821,7 +1821,7 @@ See Example of Creating and Canceling an Animation.
 getNodeType(): string
 ```
 
-Obtains the type of the node. For built-in components, the node type corresponds to the component name. For example, the node type of the [Button](../arkts-components/arkts-arkui-button-comp.md) component is **Button**. For custom components that implement rendering, the node type is **__Common__**.
+Obtains the type of the node. For built-in components, the node type corresponds to the component name. For example, the node type of the Button component is **Button**. For custom components that implement rendering, the node type is **__Common__**.
 
 **Since:** 12
 
@@ -2459,7 +2459,7 @@ See Example of Node Operations.
 getRenderNode(): RenderNode | null
 ```
 
-Obtains the [RenderNode](arkts-arkui-rendernode-c.md) held by the FrameNode.
+Obtains the RenderNode held by the FrameNode.
 
 **Since:** 11
 
@@ -2675,7 +2675,7 @@ Adds a new child node after the specified child node of this FrameNode. If the c
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| child | [FrameNode](arkts-arkui-framenode-c.md) | Yes | Child node to add.<br>The child node cannot be a non-modifiable FrameNode (for example, a declarative component node obtained through APIs such as **getFrameNodeById**). Only the FrameNode obtained by [BuilderNode](arkts-arkui-buildernode-c.md) through the **getFrameNode** API can be added as a declarative child node. If the child node does not meet the specifications, an exception is thrown.<br>The child node cannot have a parent node; otherwise, an exception is thrown. |
+| child | [FrameNode](arkts-arkui-framenode-c.md) | Yes | Child node to add.<br>The child node cannot be a non-modifiable FrameNode (for example, a declarative component node obtained through APIs such as **getFrameNodeById**). Only the FrameNode obtained by BuilderNode through the **getFrameNode** API can be added as a declarative child node. If the child node does not meet the specifications, an exception is thrown.<br>The child node cannot have a parent node; otherwise, an exception is thrown. |
 | sibling | [FrameNode](arkts-arkui-framenode-c.md) &#124; null | Yes | Node after which the new child node will be inserted. If this parameter is left empty, the new node is inserted before the first subnode. |
 
 **Error codes:**
@@ -3713,8 +3713,8 @@ Moves this FrameNode to a specified position within the target FrameNode. If thi
 > operations: [Stack](arkts-arkui-typenode-stack-t.md), [XComponent](arkts-arkui-typenode-xcomponent-t.md). This API does not work for
 > other node types.
 > 
-> This API only supports [BuilderNode](arkts-arkui-buildernode-c.md) with root components of these types:
-> [Stack](../arkts-components/arkts-arkui-stack-comp.md), [XComponent](../arkts-components/arkts-arkui-xcomponent-comp.md),
+> This API only supports BuilderNode with root components of these types:
+> Stack, [XComponent](../arkts-components/arkts-arkui-xcomponent-comp.md),
 > [EmbeddedComponent](../arkts-components/arkts-arkui-embeddedcomponent-comp.md). This API does not work for other
 > component types.
 
@@ -3754,7 +3754,7 @@ onDraw?(context: DrawContext): void
 
 Implements custom drawing for the FrameNode. This API overrides the default drawing behavior and is invoked during FrameNode content rendering.
 
-Note: The Canvas provided in the [DrawContext](arkts-arkui-graphics-drawcontext-c.md) parameter is a temporary command- recording canvas, not the actual rendering canvas of the node. For usage instructions, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-arktsNode-frameNode.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
+Note: The Canvas provided in the DrawContext parameter is a temporary command- recording canvas, not the actual rendering canvas of the node. For usage instructions, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-arktsNode-frameNode.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
 
 **Since:** 12
 
@@ -4106,14 +4106,14 @@ See Example of Customizing a Node.
 get commonAttribute(): CommonAttribute
 ```
 
-Obtains the **CommonAttribute** API associated with the FrameNode, which is used to configure [universal attributes](../arkts-components/arkts-arkui-common-comp.md) and [universal events](../arkts-components/arkts-arkui-common-comp.md).
+Obtains the **CommonAttribute** API associated with the FrameNode, which is used to configure [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) and [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md).
 
 Note that only the attributes of a custom node can be modified.
 
 > **NOTE:** 
 > 
 > The visual representation of the FrameNode is similar to that of a
-> [Stack](../arkts-components/arkts-arkui-stack-comp.md) container that is aligned to the top start edge.
+> Stack container that is aligned to the top start edge.
 > 
 > For details about the supported attributes, see
 > [attributeModifier Support for Attributes and Events](../../../ui/arkts-user-defined-extension-attributeModifier.md#attributemodifier-support-for-attributes-and-events).
@@ -4166,7 +4166,7 @@ See Basic Event Example and Example of Using Basic Events in the LazyForEach Sce
 get gestureEvent(): UIGestureEvent
 ```
 
-Obtains the **UIGestureEvent** object held by this FrameNode, which is used to set gesture events bound to the component. Gesture events set using the **gestureEvent** API will not override gestures bound using the [gesture binding API](../arkts-components/arkts-arkui-common-comp.md). If both APIs are used to set gestures, the gesture binding API takes precedence.
+Obtains the **UIGestureEvent** object held by this FrameNode, which is used to set gesture events bound to the component. Gesture events set using the **gestureEvent** API will not override gestures bound using the [gesture binding API](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md). If both APIs are used to set gestures, the gesture binding API takes precedence.
 
 In LazyForEach scenarios, due to node destruction and reconstruction, gesture event callbacks must be re-set for reconstructed nodes to ensure that the listening events respond properly.
 

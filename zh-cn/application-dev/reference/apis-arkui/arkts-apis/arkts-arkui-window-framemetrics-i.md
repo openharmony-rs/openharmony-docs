@@ -18,6 +18,24 @@ interface FrameMetrics
 import { window } from '@kit.ArkUI';
 ```
 
+## animationDuration
+
+```TypeScript
+animationDuration?: number
+```
+
+一帧中执行所有动画回调的总耗时（单位：纳秒）。
+
+**类型：** number
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FrameMetrics-animationDuration?: long--><!--Device-FrameMetrics-animationDuration?: long-End-->
+
+**系统能力：** SystemCapability.Window.SessionManager
+
 ## firstDrawFrame
 
 ```TypeScript
@@ -50,6 +68,24 @@ inputHandlingDuration: number
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+## intendedVsyncTimestamp
+
+```TypeScript
+intendedVsyncTimestamp?: number
+```
+
+当前帧预期的垂直同步（VSync）起始时间戳（单位：纳秒）。
+
+**类型：** number
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FrameMetrics-intendedVsyncTimestamp?: long--><!--Device-FrameMetrics-intendedVsyncTimestamp?: long-End-->
+
+**系统能力：** SystemCapability.Window.SessionManager
+
 ## layoutMeasureDuration
 
 ```TypeScript
@@ -63,6 +99,24 @@ layoutMeasureDuration: number
 **起始版本：** 22
 
 <!--Device-FrameMetrics-layoutMeasureDuration: long--><!--Device-FrameMetrics-layoutMeasureDuration: long-End-->
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+## totalDuration
+
+```TypeScript
+totalDuration?: number
+```
+
+渲染该帧并将其发送至显示子系统所需的总耗时（单位：纳秒）。
+
+**类型：** number
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FrameMetrics-totalDuration?: long--><!--Device-FrameMetrics-totalDuration?: long-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

@@ -5,7 +5,7 @@ The **Grid** component consists of cells formed by rows and columns. You can spe
 > **NOTE:** 
 > 
 > The component has been bound with gestures to implement functions such as follow-up scrolling. If you need to add
-> custom gestures, refer to [Gesture Blocking Enhancement](arkts-arkui-common-comp.md).
+> custom gestures, refer to [Gesture Blocking Enhancement](arkts-arkui-common-comp-commonmethod-c.md).
 
 ## Child Components
 
@@ -70,7 +70,7 @@ Creates a **Grid** component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scroller | [Scroller](arkts-arkui-scroll-comp-scroller-c.md) | No | Controller of the scrollable component. It is used to bind to the scrollable component. If it is not set, no external controller is bound, and the component manages the scrolling behavior by itself.<br>**NOTE:** <br>It is not allowed to bind the same scroll control object to other scrollable components, such as [ArcList](arkts-arkui-arclist-comp.md), [List](arkts-arkui-list-comp.md), [Grid](arkts-arkui-grid-comp.md), [Scroll](arkts-arkui-scroll-comp.md), and [WaterFlow](arkts-arkui-waterflow-comp.md). |
+| scroller | [Scroller](arkts-arkui-scroll-comp-scroller-c.md) | No | Controller of the scrollable component. It is used to bind to the scrollable component. If it is not set, no external controller is bound, and the component manages the scrolling behavior by itself.<br>**NOTE:** <br>It is not allowed to bind the same scroll control object to other scrollable components, such as [ArcList](arkts-arkui-arclist-comp.md), [List](arkts-arkui-list-comp.md), [Grid](arkts-arkui-grid-comp.md), Scroll, and [WaterFlow](arkts-arkui-waterflow-comp.md). |
 | layoutOptions | [GridLayoutOptions](arkts-arkui-grid-comp-gridlayoutoptions-i.md) | No | Grid layout options, used to configure layout information such as **GridItem** spanning rows and columns. If it is not passed in, the **Grid** performs layout based on regular attributes such as **rowsTemplate** and **columnsTemplate** and the attributes of **GridItem** itself, without enabling the layout options provided by **GridLayoutOptions**.<br> |
 
 ## Summary
@@ -81,7 +81,7 @@ Creates a **Grid** component.
 | --- | --- |
 | [ComputedBarAttribute](arkts-arkui-grid-comp-computedbarattribute-i.md) | Provides information about the position and length of the scrollbar. |
 | [GridLayoutOptions](arkts-arkui-grid-comp-gridlayoutoptions-i.md) | Defines the grid layout options. In this API, **irregularIndexes** and **onGetIrregularSizeByIndex** can be used for grids where either **rowsTemplate** or **columnsTemplate** is set. These properties allow you to specify an index array and set the number of rows and columns to be occupied by a grid item at the specified index. For details about the usage, see [Example 3](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#example-3-implementing-a-scrollable-grid-with-grid-items-spanning-rows-and-columns). On the other hand, **onGetRectByIndex** can be used for grids where both **rowsTemplate** and **columnsTemplate** are set. It allows you to specify the position and size for the grid item at the specified index. For details about the usage, see [Example 1](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#example-1-creating-a-fixed-row-and-column-grid-layout). |
-| [UIGridEvent](arkts-arkui-grid-comp-uigridevent-i.md) | Represents the return value of the [getEvent('Grid')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent-4) method in **frameNode**, which can be used to set scroll events for a **Grid** node. |
+| [UIGridEvent](arkts-arkui-grid-comp-uigridevent-i.md) | Represents the return value of the getEvent('Grid') method in **frameNode**, which can be used to set scroll events for a **Grid** node. |
 
 <!--Del-->
 ### Interfaces(System API)

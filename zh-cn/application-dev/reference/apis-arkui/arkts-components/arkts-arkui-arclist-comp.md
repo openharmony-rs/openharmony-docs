@@ -52,7 +52,7 @@ ArcList(options?: ArkListOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [ArcListItemAttribute](arkts-arkui-arclist-comp-arclistitemattribute-c.md) | 除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性： |
+| [ArcListItemAttribute](arkts-arkui-arclist-comp-arclistitemattribute-c.md) | 除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性： |
 
 ### 接口
 

@@ -13,7 +13,7 @@ function getDownloadableProfileMetadata(slotId: number, portIndex: number,
                                           profile: DownloadableProfile, forceDisableProfile: boolean): Promise<GetDownloadableProfileMetadataResult>
 ```
 
-填充可下载配置文件的元数据。使用Promise异步回调。
+根据传入的可下载配置文件信息（含激活码），向SM-DP+服务器请求并获取该配置文件的元数据（如服务提供商名称、配置文件类等）。使用Promise异步回调。
 
 **起始版本：** 18
 
@@ -29,8 +29,8 @@ function getDownloadableProfileMetadata(slotId: number, portIndex: number,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | number | 是 | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
-| portIndex | number | 是 | 插槽的端口索引。 |
+| slotId | number | 是 | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。<br>取值限定为整数。 |
+| portIndex | number | 是 | 插槽的端口索引。<br>- 0：端口1。<br>- 1：端口2。<br>取值限定为整数。 |
 | profile | [DownloadableProfile](arkts-telephony-esim-downloadableprofile-i.md) | 是 | 可下载的配置文件信息。 |
 | forceDisableProfile | boolean | 是 | 是否可直接去激活配置文件。true表示切换配置文件时，如果需要去激活当前的配置文件，则可以直接操作。false表示如果需要去激活当前的配置文件，则会返回错误，并得到用户授权后再继续调用该接口，执行切换配置文件操作。 |
 

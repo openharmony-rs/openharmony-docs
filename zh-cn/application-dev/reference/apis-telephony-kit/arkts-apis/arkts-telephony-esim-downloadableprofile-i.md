@@ -24,7 +24,7 @@ import { eSIM } from '@kit.TelephonyKit';
 accessRules?: Array<AccessRule>
 ```
 
-访问规则数组。
+访问规则数组。不传入时默认为空数组。
 
 **类型：** Array&lt;[AccessRule](arkts-telephony-esim-accessrule-i.md)&gt;
 
@@ -56,7 +56,7 @@ activationCode: string
 carrierName?: string
 ```
 
-订阅名称。
+订阅名称。不传入时默认为空字符串。
 
 **类型：** string
 
@@ -72,7 +72,7 @@ carrierName?: string
 confirmationCode?: string
 ```
 
-确认码。
+确认码。不传入时默认为空字符串。
 
 **类型：** string
 

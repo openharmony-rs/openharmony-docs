@@ -4,7 +4,7 @@
 declare class ImageSpanAttribute extends BaseSpan<ImageSpanAttribute>
 ```
 
-The attributes inherit from [BaseSpan](arkts-arkui-span-comp-basespan-c.md). Among the universal attributes, [size](arkts-arkui-common-comp.md), [background](arkts-arkui-common-comp.md), and [border](arkts-arkui-common-comp.md) are supported.
+The attributes inherit from [BaseSpan](arkts-arkui-span-comp-basespan-c.md). Among the universal attributes, [size](arkts-arkui-common-comp-commonmethod-c.md), [background](arkts-arkui-common-comp-commonmethod-c.md), and [border](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 **Inheritance/Implementation:** ImageSpanAttribute extends BaseSpan&lt;ImageSpanAttribute&gt;
 

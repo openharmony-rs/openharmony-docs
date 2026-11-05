@@ -12,7 +12,7 @@ import { eSIM } from '@kit.TelephonyKit';
 function startOsu(slotId: number): Promise<OsuStatus>
 ```
 
-如果指定卡槽的操作系统不是最新的，则执行操作系统升级。使用Promise异步回调。
+如果指定卡槽的操作系统不是最新的，则执行操作系统升级。执行升级后，可通过getOsuStatus接口查询升级状态（如正在升级、升级成功、升级失败等）。使用Promise异步回调。
 
 **起始版本：** 18
 
@@ -28,7 +28,7 @@ function startOsu(slotId: number): Promise<OsuStatus>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | number | 是 | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
+| slotId | number | 是 | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。<br>取值限定为整数。 |
 
 **返回值：**
 

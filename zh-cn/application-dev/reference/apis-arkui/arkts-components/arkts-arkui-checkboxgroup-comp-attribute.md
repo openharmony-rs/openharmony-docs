@@ -4,9 +4,9 @@
 declare class CheckboxGroupAttribute extends CommonMethod<CheckboxGroupAttribute>
 ```
 
-除支持通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性：
 
-除支持通用事件外，还支持以下事件：
+除支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下事件：
 
 **继承/实现关系：** CheckboxGroupAttribute extends CommonMethod&lt;CheckboxGroupAttribute&gt;
 
@@ -150,7 +150,7 @@ mark(style: Optional<MarkStyle>)
 onChange(callback: OnCheckboxGroupChangeCallback)
 ```
 
-CheckboxGroup的选中状态或群组内的Checkbox的选中状态发生变化时，触发回调。在与带有缓存功能的组件（如List）配合使用时，需注意未创建的Checkbox的选中状态对回调结果的影响。
+CheckboxGroup的选中状态或群组内的Checkbox的选中状态发生变化时，触发回调。在与带有缓存功能的组件（如[List](arkts-arkui-list-comp.md)）配合使用时，需注意未创建的Checkbox的选中状态对回调结果的影响。
 
 **起始版本：** 8
 
@@ -176,7 +176,7 @@ CheckboxGroup的选中状态或群组内的Checkbox的选中状态发生变化�
 onChange(callback: Optional<OnCheckboxGroupChangeCallback>)
 ```
 
-CheckboxGroup的选中状态或群组内的Checkbox的选中状态发生变化时，触发回调。与[onChange](#onchange-1)相比，callback参数新增了对undefined类型的支持。在与带有缓存功能的组件（如List）配合使用时，需注意未创建的Checkbox的选中状态对回调结果的影响。
+CheckboxGroup的选中状态或群组内的Checkbox的选中状态发生变化时，触发回调。与[onChange](#onchange-1)相比，callback参数新增了对undefined类型的支持。在与带有缓存功能的组件（如[List](arkts-arkui-list-comp.md)）配合使用时，需注意未创建的Checkbox的选中状态对回调结果的影响。
 
 **起始版本：** 18
 
@@ -204,7 +204,7 @@ selectAll(value: boolean)
 
 设置是否全选。若同组的Checkbox显式设置了select属性，则Checkbox的优先级高。
 
-在与带有缓存功能的组件（如List）配合使用时，未创建的Checkbox选中状态需由开发者控制。
+在与带有缓存功能的组件（如[List](arkts-arkui-list-comp.md)）配合使用时，未创建的Checkbox选中状态需由开发者控制。
 
 从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
@@ -236,7 +236,7 @@ selectAll(isAllSelected: Optional<boolean>)
 
 设置是否全选。若同组的Checkbox显式设置了select属性，则Checkbox的优先级高。与[selectAll](#selectall-1)相比，isAllSelected参数新增了对undefined类型的支持。
 
-在与带有缓存功能的组件（如List）配合使用时，未创建的Checkbox选中状态需由开发者控制。
+在与带有缓存功能的组件（如[List](arkts-arkui-list-comp.md)）配合使用时，未创建的Checkbox选中状态需由开发者控制。
 
 该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)、[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 

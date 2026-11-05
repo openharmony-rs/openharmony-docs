@@ -20,12 +20,12 @@ import { vcard } from '@kit.TelephonyKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [exportVCard](arkts-telephony-vcard-exportvcard-f.md#exportvcard-1) | 将联系人导出为 VCF(vcard file)文件。使用callback异步回调。 |
-| [exportVCard](arkts-telephony-vcard-exportvcard-f.md#exportvcard-2) | 将联系人导出为 VCF(vcard file)文件。使用Promise异步回调。 |
-| [exportVCard](arkts-telephony-vcard-exportvcard-f.md#exportvcard-3) | 将联系人导出为 VCF(vcard file)文件。使用callback异步回调。 |
-| [importVCard](arkts-telephony-vcard-importvcard-f.md#importvcard-1) | 将VCard文件导入联系人数据库。使用callback异步回调。 |
-| [importVCard](arkts-telephony-vcard-importvcard-f.md#importvcard-2) | 将VCard文件导入联系人数据库。使用Promise异步回调。 |
-| [importVCard](arkts-telephony-vcard-importvcard-f.md#importvcard-3) | 将VCard文件导入联系人数据库。使用callback异步回调。 |
+| [exportVCard](arkts-telephony-vcard-exportvcard-f.md#exportvcard-1) | 将联系人导出为 VCF(VCard file)文件。适用于联系人数据备份、跨设备迁移联系人、通过文件分享联系人等场景。使用callback异步回调。 |
+| [exportVCard](arkts-telephony-vcard-exportvcard-f.md#exportvcard-2) | 将联系人导出为 VCF(VCard file)文件。适用于联系人数据备份、跨设备迁移联系人、通过文件分享联系人等场景。使用Promise异步回调。 |
+| [exportVCard](arkts-telephony-vcard-exportvcard-f.md#exportvcard-3) | 将联系人导出为 VCF(VCard file)文件。适用于联系人数据备份、跨设备迁移联系人、通过文件分享联系人等场景。使用callback异步回调。 |
+| [importVCard](arkts-telephony-vcard-importvcard-f.md#importvcard-1) | 将VCard文件导入联系人数据库。适用于从其他设备或应用接收VCard文件后批量导入联系人、联系人数据恢复等场景。使用callback异步回调。 |
+| [importVCard](arkts-telephony-vcard-importvcard-f.md#importvcard-2) | 将VCard文件导入联系人数据库。适用于从其他设备或应用接收VCard文件后批量导入联系人、联系人数据恢复等场景。使用Promise异步回调。 |
+| [importVCard](arkts-telephony-vcard-importvcard-f.md#importvcard-3) | 将VCard文件导入联系人数据库。适用于从其他设备或应用接收VCard文件后批量导入联系人、联系人数据恢复等场景。使用callback异步回调。 |
 
 ### 接口
 

@@ -10,7 +10,7 @@
 > 
 > - When the **Refresh** component is nested with a [List](arkts-arkui-list-comp.md) component whose content size is smaller than the component itself, and there are other components in between, gestures may be intercepted by the intermediate components, preventing the pull-to-refresh effect. In such cases, set the [alwaysEnabled](arkts-arkui-common-comp-edgeeffectoptions-i.md) parameter to **true** to allow [List](arkts-arkui-list-comp.md) to respond to gestures and drive the **Refresh** component through nested scrolling for the pull-to-refresh effect. For details, see [Example 9: Implementing Pull-to-Refresh in the Non-Full-Screen Scenario](../../../reference/apis-arkui/arkui-ts/ts-container-refresh.md#example-9-implementing-pull-to-refresh-in-the-non-full-screen-scenario).
 > 
-> - The component has built-in gestures for functions such as drag-follow scrolling. To add custom gesture operations, refer to [Gesture Blocking Enhancement](arkts-arkui-common-comp.md).
+> - The component has built-in gestures for functions such as drag-follow scrolling. To add custom gesture operations, refer to [Gesture Blocking Enhancement](arkts-arkui-common-comp-commonmethod-c.md).
 > 
 > - Pull-to-refresh cannot be triggered by mouse click-and-drag operations.
 

@@ -52,6 +52,26 @@ It is recommended to use this in the [secondary confirmation](../../../ui/arkts-
 | --- | --- | --- | --- |
 | sheetDismiss | [SheetDismiss](arkts-arkui-common-comp-sheetdismiss-i.md) | Yes |  |
 
+## adaptToHandedness
+
+```TypeScript
+adaptToHandedness?: HandednessFollowMode
+```
+
+Set the touch follow mode of the semi-modal page. -FOLLOW_ANCHOR: Place the bindSheet near the last component to be interacted. -FOLLOW_GRIP_HAND: The layout follows the grip. -NONE: Retain the current layout.
+
+**Type:** [HandednessFollowMode](arkts-arkui-common-comp-handednessfollowmode-t.md)
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-SheetOptions-adaptToHandedness?: HandednessFollowMode--><!--Device-SheetOptions-adaptToHandedness?: HandednessFollowMode-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## blurStyle
 
 ```TypeScript

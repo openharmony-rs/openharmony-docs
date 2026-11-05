@@ -1970,6 +1970,8 @@ sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void>
 > <br>
 > msgId最大限制256B，msgParam最大限制128KB。
 
+在ArkTS动态调用中，操作队列已满或排队等待超时时，将中止本次消息发送，并通过Promise拒绝返回BusinessError 12800003。请等待操作完成后再发起其他请求。异步任务创建失败或框架报告的任务提交失败使用BusinessError 12800008；取消操作时，若没有该操作的专用错误码，也使用此错误码。如果无法准备异步输入或结果返回通道，且当前没有待处理的异常，则同步抛出BusinessError 12800008。
+
 **起始版本：** 15
 
 <!--Device-InputClient-sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void>--><!--Device-InputClient-sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void>-End-->
@@ -1995,6 +1997,7 @@ sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types. 2. Incorrect parameter length. |
 | [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | [12800009](../errorcode-inputmethod-framework.md#12800009-输入法客户端未绑定) | input method client detached. |
 | [12800014](../errorcode-inputmethod-framework.md#12800014-输入法应用非完全访问模式) | the input method is in basic mode. |
 | [12800015](../errorcode-inputmethod-framework.md#12800015-消息接收端无法接收自定义通信数据) | the other side does not accept the request. |

@@ -60,7 +60,7 @@ Sliding distance required for the blur effect to transition from fully hidden to
 maskColor?: ResourceColor
 ```
 
-Base color of the gradient mask. This color serves as the maximum color at the top of the mask. The system applies a built-in transparency curve to gradually fade it from top to bottom. When not set: on mid-to-high-performance devices: #CCF1F3F5 is used in light mode, and #66202224 is used in dark mode. On low-performance devices: #F2F1F3F5 is used in light mode, and #E5202224 is used in dark mode.
+Base color of the gradient mask. This color serves as the maximum color at the top of the mask. The system applies a built-in transparency curve to gradually fade it from top to bottom.
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 

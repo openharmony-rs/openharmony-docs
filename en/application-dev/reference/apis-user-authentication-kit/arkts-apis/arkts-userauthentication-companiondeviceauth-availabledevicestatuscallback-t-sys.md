@@ -20,4 +20,4 @@ Defines the callback triggered for receiving notifications of available device s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceStatusList | [DeviceStatus](arkts-userauthentication-companiondeviceauth-devicestatus-i-sys.md)[] | Yes | Device status list. It contains the status information about all devices that can be added as companion devices. The application can filter online devices based on the **isOnline** field and determine the service scope supported by the device based on the **supportedBusinessIds** field. |
+| deviceStatusList | [DeviceStatus](arkts-userauthentication-companiondeviceauth-devicestatus-i-sys.md)[] | Yes | Device status list. It contains the status information about all devices that can be added as companion devices. The application can filter online devices based on the **isOnline** field and determine the business scope supported by the device based on the **supportedBusinessIds** field. |

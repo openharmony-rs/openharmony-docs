@@ -152,11 +152,11 @@ readonly isPrivacySensitive?: boolean
 readonly isStandbyAdapted?: boolean
 ```
 
-卡片是否已适配灵动显示规则。
+卡片是否已适配待机屏保规则。
 
-- true：已适配灵动显示。
+- true：已适配待机屏保。
 
-- false：未适配灵动显示。
+- false：未适配待机屏保。
 
 **类型：** boolean
 
@@ -176,11 +176,11 @@ readonly isStandbyAdapted?: boolean
 readonly isStandbySupported?: boolean
 ```
 
-卡片是否支持在灵动显示界面展示。
+卡片是否支持在待机屏保界面展示。
 
-- true：支持灵动显示。
+- true：支持待机屏保。
 
-- false：不支持灵动显示。
+- false：不支持待机屏保。
 
 **类型：** boolean
 

@@ -24,7 +24,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [offDataFabricAddress](arkts-arkdata-datafabricaddress-offdatafabricaddress-f-sys.md#offdatafabricaddress-1) | 取消订阅地址数据捐赠接口。该接口应在成功调用onDataFabricAddress订阅后调用；在未成功订阅的情况下调用，将返回错误码36900004。 |
+| [offDataFabricAddress](arkts-arkdata-datafabricaddress-offdatafabricaddress-f-sys.md#offdatafabricaddress-1) | 取消订阅地址数据捐赠接口。该接口应在成功调用onDataFabricAddress订阅后调用；在未成功订阅的情况下调用，将返回错误码36900003。 |
 | [onDataFabricAddress](arkts-arkdata-datafabricaddress-ondatafabricaddress-f-sys.md#ondatafabricaddress-1) | 订阅地址数据捐赠接口。调用该接口前，需要确保定位服务可用并打开定位开关。 |
 <!--DelEnd-->
 

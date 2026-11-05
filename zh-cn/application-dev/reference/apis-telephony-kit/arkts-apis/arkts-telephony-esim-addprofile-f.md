@@ -12,7 +12,7 @@ import { eSIM } from '@kit.TelephonyKit';
 function addProfile(profile: DownloadableProfile): Promise<boolean>
 ```
 
-通过该接口拉起下载界面，允许用户添加单个配置文件。使用Promise异步回调。
+当用户需要激活新eSIM（如新开卡或换卡）时，调用此接口引导完成配置文件的下载与添加流程。使用Promise异步回调。
 
 **起始版本：** 18
 
@@ -32,7 +32,7 @@ function addProfile(profile: DownloadableProfile): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | 以Promise形式返回最终用户添加单个配置文件的结果。返回true为成功，false为失败。 |
+| Promise&lt;boolean&gt; | 以Promise形式返回用户添加单个配置文件的结果。返回true表示成功，false表示失败。 |
 
 **错误码：**
 

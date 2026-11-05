@@ -16,7 +16,7 @@ declare enum ButtonType
 > 
 > - 按钮文本通过[fontSize](arkts-arkui-button-comp-attribute.md#fontsize)、[fontColor](arkts-arkui-button-comp-attribute.md#fontcolor)、[fontStyle](arkts-arkui-button-comp-attribute.md#fontstyle)、[fontFamily](arkts-arkui-button-comp-attribute.md#fontfamily)、[fontWeight](arkts-arkui-button-comp-attribute.md#fontweight)进行设置。
 > 
-> - 设置颜色渐变需先设置[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor-1)为透明色。
+> - 设置[颜色渐变](arkts-arkui-common-comp-commonmethod-c.md)需先设置[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor-1)为透明色。
 > 
 > - 在不设置borderRadius时，圆角矩形按钮的圆角大小保持默认值不变。圆角大小不会随按钮高度变化而变化，和controlSize属性有关，controlSize为NORMAL时圆角大小20vp，controlSize为SMALL时圆角大小14vp。
 > 

@@ -14,6 +14,10 @@ This module provides the context required for APIs to access the resources of a 
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
+## ExtensionAbility Usage Restrictions
+
+To ensure system security and stability, VpnExtensionAbility is restricted from abusing system resources. The system controls its capabilities and does not support referencing some modules. For details, see [Appendix](#appendix).
+
 ## Modules to Import
 
 ```TypeScript
@@ -105,3 +109,18 @@ Specified context.
 <!--Device-VpnExtensionAbility-context: VpnExtensionContext--><!--Device-VpnExtensionAbility-context: VpnExtensionContext-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## Appendix
+
+VpnExtensionAbility does not support referencing the following modules.
+
+| Kit | Module |
+| --- | --- |
+| Contacts Kit | [@ohos.contact](../../apis-contacts-kit/arkts-apis/arkts-contacts-contact.md) |
+| Location Kit | [@ohos.geolocation](../../apis-location-kit/arkts-apis/arkts-location-geolocation.md) |
+| Location Kit | [@ohos.geoLocationManager](../../apis-location-kit/arkts-apis/arkts-location-geolocationmanager.md) |
+| Camera Kit | [@ohos.multimedia.camera](../../apis-camera-kit/arkts-apis/arkts-camera-multimedia-camera.md) |
+| Audio Kit | [@ohos.multimedia.audio](../../apis-audio-kit/arkts-apis/arkts-audio-multimedia-audio.md) |
+| Telephony Kit | [@ohos.telephony.call](../../apis-telephony-kit/arkts-apis/arkts-telephony-telephony-call.md) |
+| Telephony Kit | [@ohos.telephony.sim](../../apis-telephony-kit/arkts-apis/arkts-telephony-telephony-sim.md) |
+| Telephony Kit | [@ohos.telephony.sms](../../apis-telephony-kit/arkts-apis/arkts-telephony-telephony-sms.md) |

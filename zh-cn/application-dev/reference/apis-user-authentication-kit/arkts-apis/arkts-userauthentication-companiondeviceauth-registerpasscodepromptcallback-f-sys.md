@@ -12,7 +12,7 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 function registerPasscodePromptCallback(callback: PasscodePromptCallback): void
 ```
 
-注册当框架需要辅助设备密码时调用的回调。如果回调已经被注册，则新的回调将替换它。
+注册通行码请求回调。系统请求通行码时会调用此回调。若已注册过回调，新的回调将替换原有回调。
 
 **起始版本：** 26.0.1
 
@@ -30,7 +30,7 @@ function registerPasscodePromptCallback(callback: PasscodePromptCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [PasscodePromptCallback](arkts-userauthentication-companiondeviceauth-passcodepromptcallback-t-sys.md) | 是 | 框架调用的回调密码为必填项。 |
+| callback | [PasscodePromptCallback](arkts-userauthentication-companiondeviceauth-passcodepromptcallback-t-sys.md) | 是 | 通行码请求回调函数。系统请求通行码时调用。 |
 
 **错误码：**
 

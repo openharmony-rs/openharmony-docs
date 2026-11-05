@@ -18,7 +18,7 @@ enum State
 MISSING = 4
 ```
 
-Indicates that the download task is missing.
+云文件下载任务缺失。
 
 **起始版本：** 26.0.0
 

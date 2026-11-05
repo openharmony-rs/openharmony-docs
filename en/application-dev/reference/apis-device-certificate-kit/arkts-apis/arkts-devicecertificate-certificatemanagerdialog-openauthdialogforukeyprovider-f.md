@@ -48,5 +48,5 @@ Opens the Ukey authentication dialog box of the USB Key credential. This API is 
 | [29700003](../errorcode-certManagerDialog.md#29700003-failed-to-install-the-certificate) | The authentication operation failed, such as: The USB key certificate does not exist. The USB key status is abnormal, Please ask the user to check the status of the Ukey. |
 | [29700005](../errorcode-certManagerDialog.md#29700005-non-secure-operation) | The operation does not comply with the device security policy. Only the PC/2in1 device can open the dialog box of the UkeyAuthExtensionAbility type. |
 | [29700006](../errorcode-certManagerDialog.md#29700006-failed-to-validate-the-input-parameter) | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid. |
-| 29700009 | The operation in the Ukey authentication dialog box timed out. |
-| 29700010 | The Ukey authentication dialog box cannot be opened concurrently. Please try again later. |
+| [29700009](../errorcode-certManagerDialog.md#29700009-certificate-manager-dialog-box-operation-timed-out) | The operation in the Ukey authentication dialog box timed out. |
+| [29700010](../errorcode-certManagerDialog.md#29700010-concurrent-invocation-not-supported) | The Ukey authentication dialog box cannot be opened concurrently. Please try again later. |

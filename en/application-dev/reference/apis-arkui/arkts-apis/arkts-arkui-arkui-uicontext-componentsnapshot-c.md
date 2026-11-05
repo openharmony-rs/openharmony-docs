@@ -39,7 +39,7 @@ Builds a passed [CustomBuilder](../arkts-components/arkts-arkui-common-comp-cust
 > 
 > - Due to the need to wait for the component to be built and rendered, there is a delay of not more than 500 ms in the callback for off-screen snapshot capturing. Therefore, this API is not recommended for performance-sensitive scenarios.
 > 
-> - If a component is on a time-consuming task, for example, an [Image](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md) or Web component that is loading online images, its loading may be still in progress when this API is called. In this case, the output snapshot does not represent the component in the way it looks when the loading is successfully completed.
+> - If a component is on a time-consuming task, for example, an Image or [Web](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp.md) component that is loading online images, its loading may be still in progress when this API is called. In this case, the output snapshot does not represent the component in the way it looks when the loading is successfully completed.
 
 **Since:** 12
 
@@ -140,7 +140,7 @@ Builds a passed [CustomBuilder](../arkts-components/arkts-arkui-common-comp-cust
 > 
 > - Due to the need to wait for the component to be built and rendered, there is a delay of not more than 500 ms in the callback for off-screen snapshot capturing. Therefore, this API is not recommended for performance-sensitive scenarios.
 > 
-> - If a component is on a time-consuming task, for example, an [Image](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md) or Web component that is loading online images, its loading may be still in progress when this API is called. In this case, the output snapshot does not represent the component in the way it looks when the loading is successfully completed.
+> - If a component is on a time-consuming task, for example, an Image or [Web](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp.md) component that is loading online images, its loading may be still in progress when this API is called. In this case, the output snapshot does not represent the component in the way it looks when the loading is successfully completed.
 
 **Since:** 12
 
@@ -246,7 +246,7 @@ Captures a snapshot of the provided component content. Unlike **createFromBuilde
 > 
 > - Because the API needs to wait for the component to be built and rendered successfully, there is a certain delay in returning the screenshot. It is therefore not suitable for performance-sensitive scenarios.
 > 
-> - If a component is on a time-consuming task, for example, an [Image](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md) or Web component that is loading online images, its loading may be still in progress when this API is called. In this case, the output snapshot does not represent the component in the way it looks when the loading is successfully completed.
+> - If a component is on a time-consuming task, for example, an Image or [Web](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp.md) component that is loading online images, its loading may be still in progress when this API is called. In this case, the output snapshot does not represent the component in the way it looks when the loading is successfully completed.
 
 **Since:** 18
 
@@ -369,7 +369,7 @@ struct Index {
 get(id: string, callback: AsyncCallback<image.PixelMap>, options?: componentSnapshot.SnapshotOptions): void
 ```
 
-Obtains a screenshot of a loaded component by passing the [component ID](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-common.md). The corresponding component is captured. This is suitable for scenarios such as generating component previews, saving, or sharing partial UI screenshots. This API uses an asynchronous callback to return the result.
+Obtains a screenshot of a loaded component by passing the [component ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md). The corresponding component is captured. This is suitable for scenarios such as generating component previews, saving, or sharing partial UI screenshots. This API uses an asynchronous callback to return the result.
 
 > **NOTE:** 
 > 
@@ -390,7 +390,7 @@ Obtains a screenshot of a loaded component by passing the [component ID](../../a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| id | string | Yes | [ID](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-common.md) of the target component.<br>Note: Off-screen or cached components not mounted in the component tree are not supported. |
+| id | string | Yes | [ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) of the target component.<br>Note: Off-screen or cached components not mounted in the component tree are not supported. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | Yes | Callback used to return the result. If the snapshot capture is successful, **err** is **undefined**, and **data** contains the resulting [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md). Otherwise, **err** provides detailed error information. |
 | options | [componentSnapshot.SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md) | No | Custom settings of the snapshot. Pass this parameter when you need to customize screenshot settings such as scaling ratio and wait-for-render strategy. If not passed, the system default screenshot configuration is used. |
 
@@ -451,7 +451,7 @@ struct SnapshotExample {
 get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
 ```
 
-Obtains a screenshot of a loaded component by passing the [component ID](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-common.md). The corresponding component is captured. This is suitable for scenarios such as generating component previews, saving, or sharing partial UI screenshots. This API uses a promise to return the result.
+Obtains a screenshot of a loaded component by passing the [component ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md). The corresponding component is captured. This is suitable for scenarios such as generating component previews, saving, or sharing partial UI screenshots. This API uses a promise to return the result.
 
 > **NOTE:** 
 > 
@@ -472,7 +472,7 @@ Obtains a screenshot of a loaded component by passing the [component ID](../../a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| id | string | Yes | [ID](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-common.md) of the target component.<br>Note: Off-screen or cached components not mounted in the component tree are not supported. |
+| id | string | Yes | [ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) of the target component.<br>Note: Off-screen or cached components not mounted in the component tree are not supported. |
 | options | [componentSnapshot.SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md) | No | Custom settings of the snapshot. Pass this parameter when you need to customize screenshot settings such as scaling ratio and wait-for-render strategy. If not passed, the system default screenshot configuration is used. |
 
 **Return value:**
@@ -611,7 +611,7 @@ struct SnapshotColorModeExample {
 getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap
 ```
 
-Obtains a screenshot of a loaded component by passing the [component ID](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-common.md). The corresponding component is located and captured, and the [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) is returned after completion synchronously. This is suitable for scenarios where you need to obtain the screenshot result promptly and performance requirements are not critical. Note that this API blocks the main thread and has a 3-second timeout. If the operation exceeds this limit, it throws an exception. Use with caution in performance-critical scenarios.
+Obtains a screenshot of a loaded component by passing the [component ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md). The corresponding component is located and captured, and the [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) is returned after completion synchronously. This is suitable for scenarios where you need to obtain the screenshot result promptly and performance requirements are not critical. Note that this API blocks the main thread and has a 3-second timeout. If the operation exceeds this limit, it throws an exception. Use with caution in performance-critical scenarios.
 
 > **NOTE:** 
 > 
@@ -632,7 +632,7 @@ Obtains a screenshot of a loaded component by passing the [component ID](../../a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| id | string | Yes | [ID](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-common.md) of the target component.<br>Note: Off-screen or cached components not mounted in the component tree are not supported. |
+| id | string | Yes | [ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) of the target component.<br>Note: Off-screen or cached components not mounted in the component tree are not supported. |
 | options | [componentSnapshot.SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md) | No | Custom settings of the snapshot. |
 
 **Return value:**
@@ -718,7 +718,7 @@ Obtains a screenshot of a loaded component by passing the component's **uniqueId
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uniqueId | number | Yes | Unique ID of the target component. The unique ID of the **FrameNode** can be obtained via the [getUniqueId](arkts-arkui-framenode-c.md#getuniqueid) API.<br>Note: Components that are not attached to the tree are not supported. If the passed **uniqueId** corresponds to a node that is off-screen or cached and not attached to the tree, the system will not capture a screenshot of it. |
+| uniqueId | number | Yes | Unique ID of the target component. The unique ID of the **FrameNode** can be obtained via the getUniqueId API.<br>Note: Components that are not attached to the tree are not supported. If the passed **uniqueId** corresponds to a node that is off-screen or cached and not attached to the tree, the system will not capture a screenshot of it. |
 | options | [componentSnapshot.SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md) | No | Custom settings of the snapshot. Pass this parameter when you need to customize screenshot settings such as scaling ratio and wait-for-render strategy. If not passed, the system default screenshot configuration is used. |
 
 **Return value:**
@@ -821,7 +821,7 @@ Obtains a screenshot of a loaded component by passing the component's **uniqueId
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uniqueId | number | Yes | Unique ID of the target component. The unique ID of the **FrameNode** can be obtained via the [getUniqueId](arkts-arkui-framenode-c.md#getuniqueid) API.<br>Note: Components that are not attached to the tree are not supported. If the passed **uniqueId** corresponds to a node that is off-screen or cached and not attached to the tree, the system will not capture a screenshot of it. |
+| uniqueId | number | Yes | Unique ID of the target component. The unique ID of the **FrameNode** can be obtained via the getUniqueId API.<br>Note: Components that are not attached to the tree are not supported. If the passed **uniqueId** corresponds to a node that is off-screen or cached and not attached to the tree, the system will not capture a screenshot of it. |
 | options | [componentSnapshot.SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md) | No | Custom settings of the snapshot. |
 
 **Return value:**

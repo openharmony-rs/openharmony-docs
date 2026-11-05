@@ -4,7 +4,7 @@
 interface AVRecorderProfile
 ```
 
-Describes the audio and video recording profile.
+Describes the audio and video recording configuration parameters.
 
 **Since:** 9
 
@@ -246,11 +246,13 @@ Video encoding format. This parameter is mandatory for video recording. Currentl
 videoFrameHeight?: number
 ```
 
-Height of a video frame, in px. This parameter is mandatory for video recording. The value range is [144 - 4096].
+Height of the output video frame, in pixels. The minimum value is 240p, and the maximum value depends on the encoder capability of the device. The default value is the height of the source video frame.
 
 **Type:** number
 
 **Since:** 9
+
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-AVRecorderProfile-videoFrameHeight?: int--><!--Device-AVRecorderProfile-videoFrameHeight?: int-End-->
 
@@ -278,11 +280,13 @@ Video frame rate, in fps. This parameter is mandatory for video recording. The v
 videoFrameWidth?: number
 ```
 
-Width of a video frame, in px. This parameter is mandatory for video recording. The value range is [176 - 4096].
+Width of the output video frame, in pixels. The minimum value is 240p, and the maximum value depends on the encoder capability of the device. The default value is the width of the source video frame.
 
 **Type:** number
 
 **Since:** 9
+
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-AVRecorderProfile-videoFrameWidth?: int--><!--Device-AVRecorderProfile-videoFrameWidth?: int-End-->
 

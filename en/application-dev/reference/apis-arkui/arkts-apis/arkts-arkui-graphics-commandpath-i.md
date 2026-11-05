@@ -18,7 +18,7 @@ Describes the command for drawing a path.
 commands: string
 ```
 
-Commands for drawing a path. For details about how to convert pixel units, see [Pixel Units](../arkts-components/arkts-arkui-common-comp.md).
+Commands for drawing a path. For details about how to convert pixel units, see [Pixel Units](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md).
 
 Unit: px
 

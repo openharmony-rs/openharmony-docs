@@ -563,6 +563,8 @@
   - [SheetType](arkts-arkui-common-comp-sheettype-e.md)
   - [SourceTool](arkts-arkui-common-comp-sourcetool-e.md)
   - [SourceType](arkts-arkui-common-comp-sourcetype-e.md)
+  <!--Del-->
+  - [SpatialPositionMode（系统接口）](arkts-arkui-common-comp-spatialpositionmode-e-sys.md)<!--DelEnd-->
   - [SystemProperties](arkts-arkui-common-comp-systemproperties-e.md)
   - [ThemeColorMode](arkts-arkui-common-comp-themecolormode-e.md)
   - [TouchTestStrategy](arkts-arkui-common-comp-touchteststrategy-e.md)

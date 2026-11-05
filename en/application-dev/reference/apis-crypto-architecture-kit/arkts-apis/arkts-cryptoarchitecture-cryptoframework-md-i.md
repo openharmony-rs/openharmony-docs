@@ -404,7 +404,7 @@ Squeezes the output for XOF algorithms such as SHAKE128 and SHAKE256. This API u
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| len | number | Yes | Length of the output digest in bytes. <br>For the SHAKE128 algorithm, the supported length ranges from 32 to 65536. <br>For the SHAKE256 algorithm, the supported length ranges from 64 to 65536. |
+| len | number | Yes | Length of the output digest in bytes. <br>The value should be an integer. <br>For the SHAKE128 algorithm, the supported length ranges from 32 to 65536. <br>For the SHAKE256 algorithm, the supported length ranges from 64 to 65536. |
 
 **Return value:**
 
@@ -418,7 +418,7 @@ Squeezes the output for XOF algorithms such as SHAKE128 and SHAKE256. This API u
 | --- | --- |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
-| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes: <br>1. Invalid len value; |
+| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes: <br>1. Invalid len value. |
 | [17620004](../errorcode-crypto-framework.md#17620004-invalid-function-call) | Invalid function call. The fixed-length digest algorithm, such as SHA256, does not support this API. |
 
 ## squeezeSync
@@ -449,7 +449,7 @@ Squeezes the output for XOF algorithms such as SHAKE128 and SHAKE256. This API r
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| len | number | Yes | Length of the output digest in bytes. <br>For the SHAKE128 algorithm, the supported length ranges from 32 to 65536. <br>For the SHAKE256 algorithm, the supported length ranges from 64 to 65536. |
+| len | number | Yes | Length of the output digest in bytes. <br>The value should be an integer. <br>For the SHAKE128 algorithm, the supported length ranges from 32 to 65536. <br>For the SHAKE256 algorithm, the supported length ranges from 64 to 65536. |
 
 **Return value:**
 
@@ -463,7 +463,7 @@ Squeezes the output for XOF algorithms such as SHAKE128 and SHAKE256. This API r
 | --- | --- |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
-| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes: <br>1. Invalid len value; |
+| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes: <br>1. Invalid len value. |
 | [17620004](../errorcode-crypto-framework.md#17620004-invalid-function-call) | Invalid function call. The fixed-length digest algorithm, such as SHA256, does not support this API. |
 
 ## update

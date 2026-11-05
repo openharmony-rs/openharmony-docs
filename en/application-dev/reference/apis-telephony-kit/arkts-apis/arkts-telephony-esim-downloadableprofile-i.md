@@ -24,7 +24,7 @@ import { eSIM } from '@kit.TelephonyKit';
 accessRules?: Array<AccessRule>
 ```
 
-Access rule array.
+Access rule array. If this parameter is not transferred, the default value is null.
 
 **Type:** Array&lt;[AccessRule](arkts-telephony-esim-accessrule-i.md)&gt;
 
@@ -56,7 +56,7 @@ Activation code. For a profile that does not require an activation code, the val
 carrierName?: string
 ```
 
-Carrier name.
+Carrier name. If this parameter is not specified, the default value is null.
 
 **Type:** string
 
@@ -72,7 +72,7 @@ Carrier name.
 confirmationCode?: string
 ```
 
-Confirmation code.
+Confirmation code. If this parameter is not specified, the value is a null string by default.
 
 **Type:** string
 

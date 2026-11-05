@@ -293,13 +293,13 @@
   - [setFormNextRefreshTime](arkts-form-formprovider-setformnextrefreshtime-depr-f.md)
   - [updateForm](arkts-form-formprovider-updateform-depr-f.md)
 - application<!--arkts-formkit-application-->
-  - [FormEditExtensionContext](arkts-form-formeditextensioncontext.md)
+  - [FormEditExtensionContext（FormEditExtensionAbility上下文-FormEditExtensionContext）](arkts-form-formeditextensioncontext.md)
     - [FormEditExtensionContext](arkts-form-formeditextensioncontext-c.md)
   <!--Del-->
-  - [FormExtensionContext](arkts-form-formextensioncontext.md)<!--DelEnd-->
+  - [FormExtensionContext（FormExtensionAbility上下文-FormExtensionContext）](arkts-form-formextensioncontext.md)<!--DelEnd-->
     <!--Del-->
     - [FormExtensionContext（系统接口）](arkts-form-formextensioncontext-c-sys.md)<!--DelEnd-->
-  - [LiveFormExtensionContext](arkts-form-liveformextensioncontext.md)
+  - [LiveFormExtensionContext（LiveFormExtensionAbility上下文-LiveFormExtensionContext）](arkts-form-liveformextensioncontext.md)
     - [LiveFormExtensionContext](arkts-form-liveformextensioncontext-c.md)
     <!--Del-->
     - [LiveFormExtensionContext（系统接口）](arkts-form-liveformextensioncontext-c-sys.md)<!--DelEnd-->

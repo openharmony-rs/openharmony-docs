@@ -66,7 +66,7 @@ Creates a **Tabs** container.
 | [TabContentTransitionProxy](arkts-arkui-tabs-comp-tabcontenttransitionproxy-i.md) | Implements the proxy object returned during the execution of the custom switching animation of the **Tabs** component. You can use this object to obtain the information about the start and target pages of the custom animation. You can also call the **finishTransition** API of this object to notify the **Tabs** component that the custom animation has finished playing. |
 | [TabsAnimationEvent](arkts-arkui-tabs-comp-tabsanimationevent-i.md) | Defines a collection of animation-related information of the **Tabs** component. |
 | [TabsBreakpointType](arkts-arkui-tabs-comp-tabsbreakpointtype-i.md) | Defines the value type for different Tabs container sizes. |
-| [TabsOptions](arkts-arkui-tabs-comp-tabsoptions-i.md) | Provides parameters for configuring the **Tabs** component, including tab positions, the current index of the displayed tab, the **Tabs** controller, and [universal attributes](arkts-arkui-common-comp.md) for the **TabBar**. |
+| [TabsOptions](arkts-arkui-tabs-comp-tabsoptions-i.md) | Provides parameters for configuring the **Tabs** component, including tab positions, the current index of the displayed tab, the **Tabs** controller, and [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) for the **TabBar**. |
 | [TabsSidebarSearchableOptions](arkts-arkui-tabs-comp-tabssidebarsearchableoptions-i.md) | Defines the options for the searchable sidebar tab bar. |
 | [TopFloatingTabBarStyle](arkts-arkui-tabs-comp-topfloatingtabbarstyle-i.md) | Provides an interface for the options for the top floating tab bar style. |
 

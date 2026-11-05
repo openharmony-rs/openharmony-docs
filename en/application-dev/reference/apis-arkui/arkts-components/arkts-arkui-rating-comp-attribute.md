@@ -4,7 +4,7 @@
 declare class RatingAttribute extends CommonMethod<RatingAttribute>
 ```
 
-In addition to the universal attributes, the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported.
 
 **Inheritance/Implementation:** RatingAttribute extends CommonMethod&lt;RatingAttribute&gt;
 
@@ -172,7 +172,7 @@ Sets the total number of stars. Compared with [stars](#stars-1), this API suppor
 starStyle(options: StarStyleOptions)
 ```
 
-Sets the star style. For details about the supported image types, see [Image](arkts-arkui-image-comp.md).
+Sets the star style. For details about the supported image types, see Image.
 
 Local and network images are supported. The PixelMap type is not supported.
 
@@ -202,7 +202,7 @@ By default, the image is loaded in asynchronous mode. Synchronous loading is not
 starStyle(options: Optional<StarStyleOptions>)
 ```
 
-Sets the star style. For details about the supported image types, see [Image](arkts-arkui-image-comp.md).
+Sets the star style. For details about the supported image types, see Image.
 
 Local and network images are supported. The PixelMap type is not supported.
 

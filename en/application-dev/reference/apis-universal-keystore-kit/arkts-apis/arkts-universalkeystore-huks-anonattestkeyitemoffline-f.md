@@ -59,7 +59,7 @@ Obtains an anonymous key certificate in offline mode. This API uses a promise to
 | [12000014](../errorcode-huks.md#12000014-insufficient-memory) | The memory is insufficient. |
 | [12000018](../errorcode-huks.md#12000018-invalid-input-parameter) | The parameter is incorrect. Possible causes:         1. A mandatory parameter is left empty.         2. The parameter type is incorrect.         3. The parameter verification failed.         4. The group ID specified by the access group tag is invalid. |
 | [12000024](../errorcode-huks.md#12000024-device-or-resource-busy) | The operation times out. This may be caused by network jitter. You can try again later. |
-| 12000027 | The network is unavailable. Check network connections. |
+| [12000027](../errorcode-huks.md#12000027-network-unavailable) | The network is unavailable. Check network connections. |
 
 **Examples**
 

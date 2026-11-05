@@ -80,7 +80,7 @@ Profile nickname.
 operatorId: OperatorId
 ```
 
-Operation ID of the profile.
+Carrier ID of the configuration file.
 
 **Type:** [OperatorId](arkts-telephony-esim-operatorid-i-sys.md)
 

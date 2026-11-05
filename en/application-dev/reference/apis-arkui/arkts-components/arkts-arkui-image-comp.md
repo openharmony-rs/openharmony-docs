@@ -5,7 +5,7 @@ The **Image** component is usually used to display images in applications.
 > **NOTE:** 
 > 
 > This topic describes only system APIs provided by the module. For details about its public APIs, see
-> [Image](arkts-arkui-image-comp.md).
+> Image.
 
 ## Image
 

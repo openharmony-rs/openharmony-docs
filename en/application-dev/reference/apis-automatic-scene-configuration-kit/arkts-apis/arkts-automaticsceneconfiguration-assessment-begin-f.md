@@ -38,5 +38,5 @@ Begins an assessment session. A confirmation dialog box will be displayed for th
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| 36700001 | Assessment internal error. Possible cause: IPC invocation failed internally. |
-| 36700002 | Assessment configuration service is already active. Possible cause: Assessment resource conflict. |
+| [36700001](../../apis-assessment-kit/errorcode-assessment.md#36700001-assessment-internal-error) | Assessment internal error. Possible cause: IPC invocation failed internally. |
+| [36700002](../../apis-assessment-kit/errorcode-assessment.md#36700002-assessment-configuration-service-is-already-active) | Assessment configuration service is already active. Possible cause: Assessment resource conflict. |

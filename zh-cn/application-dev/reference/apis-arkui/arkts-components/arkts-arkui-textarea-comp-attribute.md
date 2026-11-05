@@ -4,7 +4,7 @@
 declare class TextAreaAttribute extends CommonMethod<TextAreaAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp.md)，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)，还支持以下属性：
 
 > **说明：** 
 > 
@@ -23,7 +23,7 @@ declare class TextAreaAttribute extends CommonMethod<TextAreaAttribute>
 }
 
 > 从API version 11开始，多行输入框可设置.width('auto')使组件宽度自适应文本宽度，自适应时组件宽度受constraintSize属性以及父容器传递的最大最小宽度限制，其余使用方式参考
-> [尺寸设置](arkts-arkui-common-comp.md)。
+> [尺寸设置](arkts-arkui-common-comp-commonmethod-c.md)。
 
 **继承/实现关系：** TextAreaAttribute extends CommonMethod&lt;TextAreaAttribute&gt;
 
@@ -930,7 +930,7 @@ lineHeight(value: number | string | Resource)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本的行高。需要显式指定[像素单位](arkts-arkui-common-comp.md)，如'10px'，也可设置百分比字符串，如'100%'。<br>**说明：** 不指定像素单位时，默认单位fp，如'10'，等同于10。 |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本的行高。需要显式指定[像素单位](arkts-arkui-common-comp-commonmethod-c.md)，如'10px'，也可设置百分比字符串，如'100%'。<br>**说明：** 不指定像素单位时，默认单位fp，如'10'，等同于10。 |
 
 ## lineSpacing
 
@@ -2195,7 +2195,7 @@ textOverflow(value: TextOverflow)
 
 内联模式，主动配置textOverflow才会生效按[maxLines](#maxlines-1)截断效果，不配置时，默认不截断。
 
-文本截断是按字截断。例如，英文以单词为最小单位进行截断，若需要以字母为单位进行截断，wordBreak属性可设置为WordBreak.BREAK_ALL。
+文本截断是按字截断。例如，英文以单词为最小单位进行截断，若需要以字母为单位进行截断，[wordBreak](../arkts-apis/arkts-arkui-wordbreak-e.md)属性可设置为WordBreak.BREAK_ALL。
 
 当textOverflow设置为TextOverflow.None、TextOverflow.Clip、TextOverflow.Ellipsis时，需配合[maxLines](#maxlines-1)使用，单独设置不生效。设置TextOverflow.None与TextOverflow.Clip效果一样。
 

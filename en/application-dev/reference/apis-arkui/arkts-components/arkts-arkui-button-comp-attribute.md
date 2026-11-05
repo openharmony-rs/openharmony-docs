@@ -4,9 +4,9 @@
 declare class ButtonAttribute extends CommonMethod<ButtonAttribute>
 ```
 
-In addition to the universal attributes, the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported.
 
-The universal events are supported.
+The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 **Inheritance/Implementation:** ButtonAttribute extends CommonMethod&lt;ButtonAttribute&gt;
 

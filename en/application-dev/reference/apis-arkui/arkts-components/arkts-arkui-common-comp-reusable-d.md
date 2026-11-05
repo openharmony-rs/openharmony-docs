@@ -8,7 +8,7 @@ To reduce the performance overhead caused by repeatedly creating and destroying 
 
 See the development guide: [\@Reusable Decorator: Reusing V1 Components](../../../ui/state-management/arkts-reusable.md).
 
-options: Parameters of the reusable custom component, used to configure the memory optimization policy. If this parameter is not specified, no memory optimization policy is applied. You are advised to configure this parameter in scenarios where components are frequently created and destroyed to achieve memory optimization.
+options: Parameters of the reusable custom component, used to configure the memory optimization policy. If this parameter is not specified, no memory optimization policy is applied. You are advised to configure this parameter in scenarios where components are frequently created and destroyed to achieve memory optimization.**Since:** 26.0.0
 
 **Since:** 10
 

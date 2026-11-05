@@ -4,7 +4,7 @@
 export type RecentPhotoClickCallback = (recentPhotoInfo: BaseItemInfo) => boolean
 ```
 
-Called when the recent image or video is selected. No special processing is performed on the return value.
+Describes the callback invoked when a user taps the recent photo component. The return value is meaningless and can be either **true** or **false**.
 
 **Since:** 12
 

@@ -40,7 +40,7 @@ accessType: number
 certificateHashHexStr: string
 ```
 
-证书哈希的十六进制字符串。
+证书哈希的十六进制字符串，仅包含数字0-9和字母a-f（或A-F），长度为40或64个字符。
 
 **类型：** string
 

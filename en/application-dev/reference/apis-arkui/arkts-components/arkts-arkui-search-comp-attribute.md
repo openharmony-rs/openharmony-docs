@@ -4,7 +4,7 @@
 declare class SearchAttribute extends CommonMethod<SearchAttribute>
 ```
 
-In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported:
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported:
 
 **Inheritance/Implementation:** SearchAttribute extends CommonMethod&lt;SearchAttribute&gt;
 

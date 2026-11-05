@@ -319,7 +319,7 @@ enableScrollWithMouse(enabled: boolean | undefined): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean &#124; undefined | 是 | 是否支持左键按下拖动滚动。<br>默认值：API版本26.1.0下的版本默认值为 false。API版本26.1.0及以上的版本默认值为可滚动组件水平滚动时为 true，否则为 false。 |
+| enabled | boolean &#124; undefined | 是 | 是否支持左键按下拖动滚动。<br>true：支持鼠标左键按下拖动滚动。<br>false：不支持鼠标左键按下拖动滚动。<br>undefined：首次设置为undefined时，使用默认值。非首次设置为undefined时，保持上一次设置的效果不变。<br>默认值：API版本26.1.0之前为false。从API版本26.1.0开始，当可滚动组件水平滚动时为true，否则为false。 |
 
 **返回值：**
 
@@ -728,7 +728,7 @@ onWillScroll(handler: Optional<OnWillScrollCallback>): T
 
 滚动事件回调，滚动组件滚动前触发。与onDidScroll的对比：onWillScroll在滚动发生前触发，可通过返回值指定将要滚动的偏移量，适用于需要拦截或自定义滚动行为的场景；onDidScroll在滚动发生时触发，返回当前帧的实际滚动偏移量和滑动状态，适用于仅需监听滚动过程的场景。两者可同时使用。
 
-回调当前帧将要滚动的偏移量、当前滚动状态及滚动操作来源，其中回调的偏移量为计算得到的将要滚动的偏移量值，并非最终实际滚动偏移。可以通过该回调返回值指定滚动组件将要滚动的偏移。[Scroll](arkts-arkui-scroll-comp.md)组件的[onWillScroll](arkts-arkui-scroll-comp-attribute.md#onwillscroll)接口的参数类型是[ScrollOnWillScrollCallback](arkts-arkui-scroll-comp-scrollonwillscrollcallback-t.md)。
+回调当前帧将要滚动的偏移量、当前滚动状态及滚动操作来源，其中回调的偏移量为计算得到的将要滚动的偏移量值，并非最终实际滚动偏移。可以通过该回调返回值指定滚动组件将要滚动的偏移。Scroll组件的[onWillScroll](arkts-arkui-scroll-comp-attribute.md#onwillscroll)接口的参数类型是[ScrollOnWillScrollCallback](arkts-arkui-scroll-comp-scrollonwillscrollcallback-t.md)。
 
 > **说明：** 
 > 

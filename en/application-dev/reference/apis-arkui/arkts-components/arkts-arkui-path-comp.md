@@ -6,7 +6,7 @@ The **Path** component generates a closed custom shape based on the drawing path
 > 
 > Since API version 20, this component supports updating constructor parameters through the
 > [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#properties) API of the
-> [AttributeUpdater](../arkts-apis/arkts-arkui-attributeupdater-c.md) class.
+> AttributeUpdater class.
 
 ## Child Components
 

@@ -6,13 +6,13 @@ The **SelectionContainer** component provides cross-node text selection, copying
 > 
 > - The text content returned by the selected text related callbacks in this component is concatenated in the top-to-bottom display order of the [Text](arkts-arkui-text-comp.md) components.
 > 
-> - By default, this component uses the [Stack](arkts-arkui-stack-comp.md) layout. If other container layout requirements exist, place a container component in **SelectionContainer**.
+> - By default, this component uses the Stack layout. If other container layout requirements exist, place a container component in **SelectionContainer**.
 > 
 > - When text is selected in **SelectionContainer**, the magnifier is not displayed, and [getMagnifier](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#getmagnifier) cannot be used to proactively set the magnifier.
 > 
 > - Dragging is not supported when text is selected in **SelectionContainer**.
 > 
-> - Text under the [Repeat](arkts-arkui-repeat-comp.md) component in **SelectionContainer** does not support cross-node selection.
+> - Text under the Repeat component in **SelectionContainer** does not support cross-node selection.
 > 
 > - Only the text content in **Text** components participates in cross-node selection and text concatenation.
 

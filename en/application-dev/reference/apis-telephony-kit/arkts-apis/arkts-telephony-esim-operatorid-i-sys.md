@@ -4,7 +4,7 @@
 export interface OperatorId
 ```
 
-Obtains information about the eUICC chip or device.
+Carrier ID.
 
 **Since:** 18
 

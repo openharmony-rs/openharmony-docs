@@ -30,6 +30,8 @@ createPanel(ctx: BaseContext, info: PanelInfo, callback: AsyncCallback<Panel>): 
 > **说明：** <br>
 > <br>
 > 单个输入法应用仅允许创建一个[软键盘类型](arkts-ime-inputmethodengine-paneltype-e.md)和一个[状态栏类型](arkts-ime-inputmethodengine-paneltype-e.md)的面板。<br>
+> 不允许重复创建同类型面板，应复用已有面板，或先销毁已有面板再创建同类型面板。<br>
+> 面板创建失败时，动态实现沿用历史错误码1，静态实现沿用错误码12800004。实际失败原因请结合错误信息及原生日志排查。<br>
 > <br>
 > 输入法面板不支持创建子窗口。例如：不支持使用window.createWindow[设置应用子窗口](../../../windowmanager/application-window-fa.md#设置应用子窗口)、<br>
 > [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1) <br>
@@ -101,6 +103,8 @@ createPanel(ctx: BaseContext, info: PanelInfo): Promise<Panel>
 > **说明：** <br>
 > <br>
 > 单个输入法应用仅允许创建一个[软键盘类型](arkts-ime-inputmethodengine-paneltype-e.md)和一个[状态栏类型](arkts-ime-inputmethodengine-paneltype-e.md)的面板。<br>
+> 不允许重复创建同类型面板，应复用已有面板，或先销毁已有面板再创建同类型面板。<br>
+> 面板创建失败时，动态实现沿用历史错误码1，静态实现沿用错误码12800004。实际失败原因请结合错误信息及原生日志排查。<br>
 > <br>
 > 输入法面板不支持创建子窗口。例如：不支持使用window.createWindow[设置应用子窗口](../../../windowmanager/application-window-fa.md#设置应用子窗口)、<br>
 > [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1) <br>
@@ -171,6 +175,8 @@ destroyPanel(panel: Panel, callback: AsyncCallback<void>): void
 
 销毁输入法面板。需先通过[createPanel](#createpanel-1)创建面板后调用。使用callback异步回调。<br> <br>配对调用：<br> <br>- 必须与[createPanel](#createpanel-1)方法配合使用，用于销毁由createPanel()创建的输入法面板。<br>- 销毁的面板必须是已成功创建的面板对象。<br>- 未正确销毁面板会导致资源泄漏，建议在面板使用完毕后及时调用destroyPanel()释放资源。
 
+销毁成功后，面板实例失效，不得复用。销毁旧实例不会移除同类型新面板的注册信息。原生层销毁失败时，不会使仍有效的封装对象失效，也不会移除其注册信息，可先处理错误再重试。窗口销毁失败沿用现有面板操作的错误码映射，返回错误码1。
+
 **起始版本：** 10
 
 <!--Device-InputMethodAbility-destroyPanel(panel: Panel, callback: AsyncCallback<void>): void--><!--Device-InputMethodAbility-destroyPanel(panel: Panel, callback: AsyncCallback<void>): void-End-->
@@ -189,6 +195,7 @@ destroyPanel(panel: Panel, callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | Failed to initialize or submit the asynchronous operation. @dynamiconly |
 
 **示例**
 
@@ -231,6 +238,8 @@ destroyPanel(panel: Panel): Promise<void>
 
 销毁输入法面板。使用promise异步回调。<br> <br>配对调用：<br> <br>- 必须与[createPanel](#createpanel-1)方法配合使用，用于销毁由createPanel()创建的输入法面板。<br>- 销毁的面板必须是已成功创建的面板对象。<br>- 未正确销毁面板会导致资源泄漏，建议在面板使用完毕后及时调用destroyPanel()释放资源。
 
+销毁成功后，面板实例失效，不得复用。销毁旧实例不会移除同类型新面板的注册信息。原生层销毁失败时，不会使仍有效的封装对象失效，也不会移除其注册信息，可先处理错误再重试。窗口销毁失败沿用现有面板操作的错误码映射，返回错误码1。
+
 **起始版本：** 10
 
 <!--Device-InputMethodAbility-destroyPanel(panel: Panel): Promise<void>--><!--Device-InputMethodAbility-destroyPanel(panel: Panel): Promise<void>-End-->
@@ -254,6 +263,7 @@ destroyPanel(panel: Panel): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | Failed to initialize or submit the asynchronous operation. @dynamiconly |
 
 **示例**
 

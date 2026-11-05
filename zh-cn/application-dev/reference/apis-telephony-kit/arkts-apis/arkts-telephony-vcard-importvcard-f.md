@@ -12,7 +12,7 @@ import { vcard } from '@kit.TelephonyKit';
 function importVCard(context: Context, filePath: string, accountId: number, callback: AsyncCallback<void>): void
 ```
 
-将VCard文件导入联系人数据库。使用callback异步回调。
+将VCard文件导入联系人数据库。适用于从其他设备或应用接收VCard文件后批量导入联系人、联系人数据恢复等场景。使用callback异步回调。
 
 **起始版本：** 23
 
@@ -27,8 +27,8 @@ function importVCard(context: Context, filePath: string, accountId: number, call
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | Context | 是 | 应用上下文。 |
-| filePath | string | 是 | VCF(vcard file)文件地址。 |
-| accountId | number | 是 | 联系人账户ID。 |
+| filePath | string | 是 | VCF(VCard file)文件地址。 |
+| accountId | number | 是 | 联系人账户ID。<br>取值限定为整数。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，返回导入成功或失败的状态码。 |
 
 **错误码：**
@@ -67,7 +67,7 @@ class EntryAbility extends UIAbility {
 function importVCard(context: Context, filePath: string, accountId?: number): Promise<void>
 ```
 
-将VCard文件导入联系人数据库。使用Promise异步回调。
+将VCard文件导入联系人数据库。适用于从其他设备或应用接收VCard文件后批量导入联系人、联系人数据恢复等场景。使用Promise异步回调。
 
 **起始版本：** 23
 
@@ -82,14 +82,14 @@ function importVCard(context: Context, filePath: string, accountId?: number): Pr
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | Context | 是 | 应用上下文。 |
-| filePath | string | 是 | VCF(vcard file)文件地址。 |
-| accountId | number | 否 | 联系人账户ID。 |
+| filePath | string | 是 | VCF(VCard file)文件地址。 |
+| accountId | number | 否 | 联系人账户ID。不传入时使用默认账户。<br>取值限定为整数。<br>The value should be an integer. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，返回重置的结果码。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -129,7 +129,7 @@ class EntryAbility extends UIAbility {
 function importVCard(context: Context, filePath: string, callback: AsyncCallback<void>): void
 ```
 
-将VCard文件导入联系人数据库。使用callback异步回调。
+将VCard文件导入联系人数据库。适用于从其他设备或应用接收VCard文件后批量导入联系人、联系人数据恢复等场景。使用callback异步回调。
 
 **起始版本：** 23
 
@@ -144,7 +144,7 @@ function importVCard(context: Context, filePath: string, callback: AsyncCallback
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | Context | 是 | 应用上下文。 |
-| filePath | string | 是 | VCF(vcard file)文件地址。 |
+| filePath | string | 是 | VCF(VCard file)文件地址。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，返回导入成功或失败的状态码。 |
 
 **错误码：**

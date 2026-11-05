@@ -36,6 +36,6 @@ Ends an assessment session.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| 36700001 | Assessment internal error. Possible cause: IPC invocation failed internally. |
-| 36700003 | Assessment configuration service is not active. Possible cause: Not in assessment state. |
-| 36700004 | Invalid operation. Possible cause: Cannot terminate another active assessment. |
+| [36700001](../../apis-assessment-kit/errorcode-assessment.md#36700001-assessment-internal-error) | Assessment internal error. Possible cause: IPC invocation failed internally. |
+| [36700003](../../apis-assessment-kit/errorcode-assessment.md#36700003-assessment-configuration-service-is-not-active) | Assessment configuration service is not active. Possible cause: Not in assessment state. |
+| [36700004](../../apis-assessment-kit/errorcode-assessment.md#36700004-invalid-operation) | Invalid operation. Possible cause: Cannot terminate another active assessment. |

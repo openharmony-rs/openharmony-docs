@@ -12,7 +12,7 @@ import { eSIM } from '@kit.TelephonyKit';
 function getSupportedPkids(slotId: number) : Promise<string>
 ```
 
-Obtains the public key ID information supported by the phone.
+This interface is used to obtain the public key ID information supported by the mobile phone for security authentication in the eSIM activation process. Before calling the getContractInfo interface for encryption authentication, you need to call this interface to obtain the available public key ID.
 
 **Since:** 20
 
@@ -28,7 +28,7 @@ Obtains the public key ID information supported by the phone.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| slotId | number | Yes | Card slot ID. <br>The value should be an integer. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 
 **Return value:**
 

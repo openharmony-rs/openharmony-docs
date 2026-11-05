@@ -4,7 +4,7 @@
 interface AudioRecorder
 ```
 
-AudioRecorder is a class for audio recording management. It provides APIs to record audio. Before calling any API in AudioRecorder, you must use [createAudioRecorder()](arkts-media-media-createaudiorecorder-f.md) to create an AudioRecorder instance.
+**AudioRecorder** is a class for audio recording management. It provides APIs to record audio. It supports operations such as preparing, starting, pausing, resuming, stopping, releasing, and resetting audio recording. The APIs of this class are applicable to scenarios where audio needs to be recorded, such as voice notes, call recording, and music recording. Before calling any API in **AudioRecorder**, you must use [createAudioRecorder()](arkts-media-media-createaudiorecorder-f.md) to create an **AudioRecorder** instance.
 
 **Since:** 6
 
@@ -44,7 +44,7 @@ Subscribes to the audio recording events.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'prepare' &#124; 'start' &#124; 'pause' &#124; 'resume' &#124; 'stop' &#124; 'release' &#124; 'reset' | Yes | Event type. The following events are supported: 'prepare'&#124;'start'&#124; 'pause' &#124; 'resume' &#124;'stop'&#124;'release'&#124;'reset'<br>- 'prepare': triggered when the **prepare()** API is called and the audio recording parameters are set.<br>- 'start': triggered when the **start()** API is called and audio recording starts.<br>- 'pause': triggered when the **pause()** API is called and audio recording is paused.<br>- 'resume': triggered when the **resume()** API is called and audio recording is resumed.<br>- 'stop': triggered when the **stop()** API is called and audio recording stops.<br>- 'release': triggered when the **release()** API is called and the recording resources are released.<br>- 'reset': triggered when the **reset()** API is called and audio recording is reset. |
+| type | 'prepare' &#124; 'start' &#124; 'pause' &#124; 'resume' &#124; 'stop' &#124; 'release' &#124; 'reset' | Yes | Event type. The following events are supported: 'prepare', 'start', 'pause', 'resume', 'stop', 'release', and 'reset'.<br> -&nbsp;'prepare'&nbsp;: triggered when the **prepare()** API is called and the audio recording parameters are set.<br>-&nbsp;'start'&nbsp;: triggered when the **start()** API is called and audio recording starts.<br> -&nbsp;'pause'&nbsp;: triggered when the **pause()** API is called and audio recording is paused.<br> -&nbsp;'resume'&nbsp;: triggered when the **resume()** API is called and audio recording is resumed.<br> -&nbsp;'stop'&nbsp;: triggered when the **stop()** API is called and audio recording stops.<br> -&nbsp;'release'&nbsp;: triggered when the **release()** API is called and the recording resources are released.<br>-&nbsp;'reset'&nbsp;: triggered when the **reset()** API is called and audio recording is reset. |
 | callback | () =&gt; void | Yes | Callback invoked when the event is triggered. |
 
 ## on('error')
@@ -53,7 +53,7 @@ Subscribes to the audio recording events.
 on(type: 'error', callback: ErrorCallback): void
 ```
 
-Subscribes to audio recording error events. After an error event is reported, you must handle the event and exit the recording.
+Subscribes to the audio recording error event. After an error event is received, you must handle the error, release resources, and exit the current recording.
 
 **Since:** 6
 
@@ -78,7 +78,7 @@ Subscribes to audio recording error events. After an error event is reported, yo
 pause(): void
 ```
 
-Pauses audio recording. This API can be called only after the **'start'** event is triggered.
+Pauses recording. This API can be called only after the **start()** API is called.
 
 **Since:** 6
 
@@ -96,7 +96,7 @@ Pauses audio recording. This API can be called only after the **'start'** event 
 prepare(config: AudioRecorderConfig): void
 ```
 
-Prepares for recording.
+Prepares for recording. This method can be used to initialize recording resources (including the encoder, sampling rate, and number of audio channels) based on the input configuration parameters.
 
 **Since:** 6
 
@@ -128,7 +128,7 @@ Prepares for recording.
 release(): void
 ```
 
-Releases the audio recording resources.
+Releases recording resources. After the resources are released, other recording methods cannot be called.
 
 **Since:** 6
 
@@ -146,7 +146,7 @@ Releases the audio recording resources.
 reset(): void
 ```
 
-Resets audio recording.
+Resets recording.
 
 Before resetting audio recording, you must call **stop()** to stop recording. After audio recording is reset, you must call **prepare()** to set the recording configurations for another recording.
 
@@ -166,7 +166,7 @@ Before resetting audio recording, you must call **stop()** to stop recording. Af
 resume(): void
 ```
 
-Resumes audio recording. This API can be called only after the **'pause'** event is triggered.
+Resumes recording. This API can be called only after the **pause()** API is called.
 
 **Since:** 6
 
@@ -184,7 +184,7 @@ Resumes audio recording. This API can be called only after the **'pause'** event
 start(): void
 ```
 
-Starts audio recording. This API can be called only after the **'prepare'** event is triggered.
+Starts recording. This API can be called only after the **prepare()** API is called.
 
 **Since:** 6
 
@@ -202,7 +202,7 @@ Starts audio recording. This API can be called only after the **'prepare'** even
 stop(): void
 ```
 
-Stops audio recording.
+Stops recording and saves the recorded audio data to a file. This API can be called only after the **start()** API is called.
 
 **Since:** 6
 

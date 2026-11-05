@@ -462,6 +462,7 @@
   - [FractionStop](arkts-arkui-common-comp-fractionstop-t.md)
   - [GestureCollectInterceptCallback](arkts-arkui-common-comp-gesturecollectinterceptcallback-t.md)
   - [GestureRecognizerJudgeBeginCallback](arkts-arkui-common-comp-gesturerecognizerjudgebegincallback-t.md)
+  - [HandednessFollowMode](arkts-arkui-common-comp-handednessfollowmode-t.md)
   - [HoverCallback](arkts-arkui-common-comp-hovercallback-t.md)
   - [ImageModifier](arkts-arkui-common-comp-imagemodifier-t.md)
   - [InputEventListener](arkts-arkui-common-comp-inputeventlistener-t.md)

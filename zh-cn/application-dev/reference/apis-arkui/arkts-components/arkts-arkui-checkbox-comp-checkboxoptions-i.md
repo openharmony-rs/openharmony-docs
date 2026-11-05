@@ -24,7 +24,7 @@ group?: string
 
 **说明：** 
 
-未配合使用CheckboxGroup组件时，此值无用。
+未配合使用[CheckboxGroup](arkts-arkui-checkboxgroup-comp.md)组件时，此值无用。
 
 **类型：** string
 

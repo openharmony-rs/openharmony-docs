@@ -107,3 +107,21 @@ uriAuthorizationPolicies?: Array<number>
 <!--Device-FileUri-uriAuthorizationPolicies?: Array<int>--><!--Device-FileUri-uriAuthorizationPolicies?: Array<int>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+## virtualEntry
+
+```TypeScript
+virtualEntry?: VirtualFileInfo
+```
+
+按需提供内容的虚拟文件信息。每个文件都必须声明非负的 size。
+
+**类型：** [VirtualFileInfo](arkts-arkdata-uniformdatastruct-virtualfileinfo-i.md)
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FileUri-virtualEntry?: VirtualFileInfo--><!--Device-FileUri-virtualEntry?: VirtualFileInfo-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core

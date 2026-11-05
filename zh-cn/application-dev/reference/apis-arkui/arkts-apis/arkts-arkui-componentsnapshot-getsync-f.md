@@ -12,7 +12,7 @@ import { componentSnapshot } from '@kit.ArkUI';
 function getSync(id: string, options?: SnapshotOptions): image.PixelMap
 ```
 
-获取已加载的组件的截图，传入组件的组件标识，找到对应组件进行截图。同步等待截图完成返回[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)。
+获取已加载的组件的截图，传入组件的[组件标识](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)，找到对应组件进行截图。同步等待截图完成返回[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)。
 
 > **说明：** 
 > 
@@ -32,7 +32,7 @@ function getSync(id: string, options?: SnapshotOptions): image.PixelMap
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | 目标组件的组件标识。 |
+| id | string | 是 | 目标组件的[组件标识](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)。 |
 | options | [SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md) | 否 | 截图相关的自定义参数。 |
 
 **返回值：**

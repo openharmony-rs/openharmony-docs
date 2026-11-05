@@ -937,7 +937,7 @@ openMenu<T extends Object>(content: ComponentContent<T>, target: TargetInfo, opt
 > 
 > - 由于[updateMenu](#updatemenu)和[closeMenu](#closemenu)依赖content去更新或者关闭指定的menu弹窗，开发者需自行维护传入的content。
 > 
-> - 如果在wrapBuilder中包含其他组件（例如：[Popup](arkts-arkui-arkui-advanced-popup.md)、 [Chip](arkts-arkui-arkui-advanced-chip.md)组件），则[ComponentContent](arkts-arkui-componentcontent-c.md)应采用带有四个参数的构造函数constructor，其中options参数应传递{ nestingBuilderSupported: true }。
+> - 如果在wrapBuilder中包含其他组件（例如：[Popup](arkts-arkui-arkui-advanced-popup.md)、 [Chip](arkts-arkui-arkui-advanced-chip.md)组件），则ComponentContent应采用带有四个参数的构造函数constructor，其中options参数应传递{ nestingBuilderSupported: true }。
 > 
 > - 子窗弹窗里不能再弹出子窗弹窗，例如[openMenu](#openmenu)设置了showInSubWindow为true时，则不能再弹出另一个设置了 showInSubWindow为true的弹窗。
 
@@ -1042,7 +1042,7 @@ openPopup<T extends Object>(content: ComponentContent<T>, target: TargetInfo, op
 > 
 > - 由于[updatePopup](#updatepopup)和[closePopup](#closepopup)依赖content去更新或者关闭指定的popup弹窗，开发者需自行维护传入的content。
 > 
-> - 如果在wrapBuilder中包含其他组件（例如：[Popup](arkts-arkui-arkui-advanced-popup.md)、[Chip](arkts-arkui-arkui-advanced-chip.md)组件），则[ComponentContent](arkts-arkui-componentcontent-c.md)应采用带有四个参数的构造函数constructor，其中options参数应传递{ nestingBuilderSupported: true }。
+> - 如果在wrapBuilder中包含其他组件（例如：[Popup](arkts-arkui-arkui-advanced-popup.md)、[Chip](arkts-arkui-arkui-advanced-chip.md)组件），则ComponentContent应采用带有四个参数的构造函数constructor，其中options参数应传递{ nestingBuilderSupported: true }。
 
 **起始版本：** 18
 

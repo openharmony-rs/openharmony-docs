@@ -14,6 +14,8 @@ function getStatusMonitor(localUserId: number): StatusMonitor
 
 Obtains the status monitor. This API is used to obtain the status monitor object of a specified user. The object can be used to query and subscribe to the template status, continuous authentication status, and available device status of the companion device.
 
+Lifecycle: Subscriptions are maintained per user on the system service side. Call the corresponding **off** method to unsubscribe and release resources when they are no longer needed. Registered subscriptions are automatically cleared when the application process exits.
+
 **Since:** 23
 
 **Required permissions:** ohos.permission.USE_USER_IDM
@@ -30,7 +32,7 @@ Obtains the status monitor. This API is used to obtain the status monitor object
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| localUserId | number | Yes | Local user ID. User ID on the primary device, which is a positive integer greater than or equal to 0. It is used to obtain the status monitor of the companion device corresponding to the user. |
+| localUserId | number | Yes | Local user ID. A non-negative integer that identifies the user on the primary device and is used to obtain the Companion Device status monitor for the user. An exception is thrown with error code 32600002 if a nonexistent user ID is passed in. |
 
 **Return value:**
 

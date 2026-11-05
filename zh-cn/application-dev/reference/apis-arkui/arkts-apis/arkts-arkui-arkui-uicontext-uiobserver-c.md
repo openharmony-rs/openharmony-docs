@@ -10,7 +10,7 @@ UIObserver提供了UI组件行为变化的无感监听能力，支持监听Navig
 
 > - 以下API需先使用UIContext中的[getUIObserver()](arkts-arkui-arkui-uicontext-uicontext-c.md#getuiobserver)方法获取到UIObserver对象，再通过该对象调用对应方法。
 > 
-> - UIObserver仅能监听到本进程内的UI组件状态变化信息，不支持获取<!--Del-->UIExtensionComponent等<!--DelEnd-->跨进程场景的信息。
+> - UIObserver仅能监听到本进程内的UI组件状态变化信息，不支持获取<!--Del-->[UIExtensionComponent](../arkts-components/arkts-arkui-uiextensioncomponent-comp-sys.md)等<!--DelEnd-->跨进程场景的信息。
 
 **起始版本：** 11
 
@@ -2218,7 +2218,7 @@ on(type: 'beforePanStart', callback: PanListenerCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'beforePanStart' | 是 | 监听事件，固定为'beforePanStart'，用于监听Pan手势[onActionStart](../arkts-components/arkts-arkui-tapgesture-comp-pangestureinterface-i.md#onactionstart)事件执行前的指令下发情况，所注册回调将于Pan手势[onActionStart](../arkts-components/arkts-arkui-tapgesture-comp-pangestureinterface-i.md#onactionstart)事件触发前触发。 |
-| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 是 | 回调函数。可以获得Pan手势事件的[GestureEvent](../arkts-components/arkts-arkui-tapgesture-comp-gestureevent-i.md)，[GestureRecognizer](../arkts-components/arkts-arkui-tapgesture-comp-gesturerecognizer-c.md)和组件的[FrameNode](arkts-arkui-framenode-c.md)。 |
+| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 是 | 回调函数。可以获得Pan手势事件的[GestureEvent](../arkts-components/arkts-arkui-tapgesture-comp-gestureevent-i.md)，[GestureRecognizer](../arkts-components/arkts-arkui-tapgesture-comp-gesturerecognizer-c.md)和组件的FrameNode。 |
 
 **示例**
 
@@ -2354,7 +2354,7 @@ on(type: 'beforePanEnd', callback: PanListenerCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'beforePanEnd' | 是 | 监听事件，固定为'beforePanEnd'，用于监听Pan手势[onActionEnd](../arkts-components/arkts-arkui-tapgesture-comp-pangestureinterface-i.md#onactionend)事件执行前的指令下发情况，所注册回调将于Pan手势[onActionEnd](../arkts-components/arkts-arkui-tapgesture-comp-pangestureinterface-i.md#onactionend)事件触发前触发。 |
-| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 是 | 回调函数。可以获得Pan手势事件的[GestureEvent](../arkts-components/arkts-arkui-tapgesture-comp-gestureevent-i.md)，[GestureRecognizer](../arkts-components/arkts-arkui-tapgesture-comp-gesturerecognizer-c.md)和组件的[FrameNode](arkts-arkui-framenode-c.md)。 |
+| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 是 | 回调函数。可以获得Pan手势事件的[GestureEvent](../arkts-components/arkts-arkui-tapgesture-comp-gestureevent-i.md)，[GestureRecognizer](../arkts-components/arkts-arkui-tapgesture-comp-gesturerecognizer-c.md)和组件的FrameNode。 |
 
 **示例**
 
@@ -2383,7 +2383,7 @@ on(type: 'afterPanStart', callback: PanListenerCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'afterPanStart' | 是 | 监听事件，固定为'afterPanStart'，用于监听Pan手势[onActionStart](../arkts-components/arkts-arkui-tapgesture-comp-pangestureinterface-i.md#onactionstart)事件执行后的指令下发情况，所注册回调将于Pan手势[onActionStart](../arkts-components/arkts-arkui-tapgesture-comp-pangestureinterface-i.md#onactionstart)事件触发后触发。 |
-| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 是 | 回调函数。可以获得Pan手势事件的[GestureEvent](../arkts-components/arkts-arkui-tapgesture-comp-gestureevent-i.md)，[GestureRecognizer](../arkts-components/arkts-arkui-tapgesture-comp-gesturerecognizer-c.md)和组件的[FrameNode](arkts-arkui-framenode-c.md)。 |
+| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 是 | 回调函数。可以获得Pan手势事件的[GestureEvent](../arkts-components/arkts-arkui-tapgesture-comp-gestureevent-i.md)，[GestureRecognizer](../arkts-components/arkts-arkui-tapgesture-comp-gesturerecognizer-c.md)和组件的FrameNode。 |
 
 **示例**
 
@@ -2412,7 +2412,7 @@ on(type: 'afterPanEnd', callback: PanListenerCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'afterPanEnd' | 是 | 监听事件，固定为'afterPanEnd'，用于监听Pan手势[onActionEnd](../arkts-components/arkts-arkui-tapgesture-comp-pangestureinterface-i.md#onactionend)事件执行后的指令下发情况，所注册回调将于Pan手势[onActionEnd](../arkts-components/arkts-arkui-tapgesture-comp-pangestureinterface-i.md#onactionend)事件触发后触发。 |
-| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 是 | 回调函数。可以获得Pan手势事件的[GestureEvent](../arkts-components/arkts-arkui-tapgesture-comp-gestureevent-i.md)，[GestureRecognizer](../arkts-components/arkts-arkui-tapgesture-comp-gesturerecognizer-c.md)和组件的[FrameNode](arkts-arkui-framenode-c.md)。 |
+| callback | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | 是 | 回调函数。可以获得Pan手势事件的[GestureEvent](../arkts-components/arkts-arkui-tapgesture-comp-gestureevent-i.md)，[GestureRecognizer](../arkts-components/arkts-arkui-tapgesture-comp-gesturerecognizer-c.md)和组件的FrameNode。 |
 
 **示例**
 
@@ -2883,7 +2883,7 @@ on(type: 'nodeRenderState', nodeIdentity: NodeIdentity, callback: NodeRenderStat
 
 注意节点数量的限制。出于性能考虑，在单个UI实例中，注册节点太多，将会抛出异常。
 
-通常，当组件被移动到屏幕外时，会收到RENDER_OUT的通知。但在某些情况下，即使组件移动到屏幕外也不会触发RENDER_OUT通知。例如，具有缓存功能的组件Swiper，即使[cachedCount](../arkts-components/arkts-arkui-swiper-comp-attribute.md#cachedcount-2)属性中的参数isShown配置为true，也不会触发RENDER_OUT通知。
+通常，当组件被移动到屏幕外时，会收到RENDER_OUT的通知。但在某些情况下，即使组件移动到屏幕外也不会触发RENDER_OUT通知。例如，具有缓存功能的组件[Swiper](../arkts-components/arkts-arkui-swiper-comp.md)，即使[cachedCount](../arkts-components/arkts-arkui-swiper-comp-attribute.md#cachedcount-2)属性中的参数isShown配置为true，也不会触发RENDER_OUT通知。
 
 **起始版本：** 20
 
@@ -2901,7 +2901,7 @@ on(type: 'nodeRenderState', nodeIdentity: NodeIdentity, callback: NodeRenderStat
 | --- | --- | --- | --- |
 | type | 'nodeRenderState' | 是 | 监听事件，固定为'nodeRenderState'，用于监听节点渲染状态发生改变。 |
 | nodeIdentity | [NodeIdentity](arkts-arkui-nodeidentity-t.md) | 是 | 节点标识。 |
-| callback | [NodeRenderStateChangeCallback](arkts-arkui-noderenderstatechangecallback-t.md) | 是 | 回调函数。可以获得节点渲染状态改变事件的[NodeRenderState](arkts-arkui-arkui-uicontext-noderenderstate-e.md)和组件的[FrameNode](arkts-arkui-framenode-c.md)。 |
+| callback | [NodeRenderStateChangeCallback](arkts-arkui-noderenderstatechangecallback-t.md) | 是 | 回调函数。可以获得节点渲染状态改变事件的[NodeRenderState](arkts-arkui-arkui-uicontext-noderenderstate-e.md)和组件的FrameNode。 |
 
 **错误码：**
 

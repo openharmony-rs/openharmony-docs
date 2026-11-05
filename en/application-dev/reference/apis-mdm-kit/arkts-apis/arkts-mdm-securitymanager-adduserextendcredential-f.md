@@ -47,4 +47,4 @@ Adds the extended user credential for an account.
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [9200012](../errorcode-enterpriseDeviceManager.md#9200012-parameter-verification-failed) | Parameter verification failed. |
 | [9200016](../errorcode-enterpriseDeviceManager.md#9200016-service-timeout) | Service timeout. |
-| 9201052 | USB key session time out. |
+| [9201052](../errorcode-enterpriseDeviceManager.md#9201052-session-timeout) | USB key session time out. |

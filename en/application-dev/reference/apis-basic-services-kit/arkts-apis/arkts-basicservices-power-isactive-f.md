@@ -27,7 +27,7 @@ Checks whether the current device is active.
 
 | Type | Description |
 | --- | --- |
-| boolean | Return value **true** if the device is active; returns **false** otherwise. |
+| boolean | The value true is returned for the active state, and false is returned for the inactive state or failure to obtain the device active state. |
 
 **Examples**
 

@@ -8,7 +8,7 @@ The **WaterFlow** component is a waterfall flow container that consists of cells
 > child element dragging.
 > 
 > The component has built-in gestures for functions such as scroll-following. To add custom gesture operations, refer
-> to [Gesture Blocking Enhancement](arkts-arkui-common-comp.md).
+> to [Gesture Blocking Enhancement](arkts-arkui-common-comp-commonmethod-c.md).
 > 
 > For more development instructions on **WaterFlow**, see
 > [Creating a Waterfall Flow (WaterFlow)](../../../ui/arkts-layout-development-create-waterflow.md). For NDK
@@ -102,7 +102,7 @@ Creates a **WaterFlow** component.
 
 | Name | Description |
 | --- | --- |
-| [UIWaterFlowEvent](arkts-arkui-waterflow-comp-uiwaterflowevent-i.md) | Represents the return value of the [getEvent('WaterFlow')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent-3) method in **frameNode**, which can be used to set scroll events for a **WaterFlow** node. |
+| [UIWaterFlowEvent](arkts-arkui-waterflow-comp-uiwaterflowevent-i.md) | Represents the return value of the getEvent('WaterFlow') method in **frameNode**, which can be used to set scroll events for a **WaterFlow** node. |
 | [WaterFlowOptions](arkts-arkui-waterflow-comp-waterflowoptions-i.md) | Provides parameters of the **WaterFlow** component. |
 
 ### Types

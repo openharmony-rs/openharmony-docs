@@ -4,11 +4,11 @@
 declare class InputMethodExtensionContext extends ExtensionContext
 ```
 
-@ohos.InputMethodExtensionContext模块是InputMethodExtensionAbility的上下文环境，继承于ExtensionContext，为输入法扩展能力提供上下文级别的操作接口。<br> <br>本模块是输入法ExtensionAbility的上下文类，继承自`ExtensionContext`，作为`InputMethodExtensionAbility`实例的`context`属性提供。它承载了输入法扩展应用在其生命周期内可使用的上下文能力，包括销毁自身和拉起其他应用。<br> <br>本模块提供两大核心能力：1）通过`destroy()`销毁输入法ExtensionAbility自身，实现输入法应用的生命周期终止；2）通过`startAbility()`拉起目标应用，使输入法应用能够启动其他Ability进行交互，拓展输入法功能的灵活性和可扩展性。<br> <br>当开发输入法ExtensionAbility并需要在其生命周期内执行上下文级操作时使用本模块。典型场景包括：输入法应用在`onDestroy`回调中主动销毁自身、输入法应用需要拉起设置页面或其他辅助应用等。<br> <br>  
+@ohos.InputMethodExtensionContext模块是InputMethodExtensionAbility的上下文环境，继承于ExtensionContext，为输入法扩展能力提供上下文级别的操作接口。<br> <br>本模块是输入法ExtensionAbility的上下文类，继承自`ExtensionContext`，作为`InputMethodExtensionAbility`实例的`context`属性提供。它承载了输入法扩展应用在其生命周期内可使用的上下文能力，包括销毁自身和拉起其他应用。<br> <br>本模块提供两大核心能力：1）通过`destroy()`销毁输入法ExtensionAbility自身，实现输入法应用的生命周期终止；2）通过`startAbility()`拉起目标应用，使输入法应用能够启动其他Ability进行交互，拓展输入法功能的灵活性和可扩展性。<br> <br>当开发输入法ExtensionAbility并需要在其生命周期内执行上下文级操作时使用本模块。典型场景包括：输入法应用在完成特定任务后主动请求终止自身、输入法应用需要拉起设置页面或其他辅助应用等。<br> <br>  
 > **说明：** <br>
 > <br>
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。<br>
-> 本模块接口仅可在Stage模型下使用。<br> <br>模块内的核心API按功能分为两类：<br>1. 生命周期管理：`destroy()`用于销毁输入法ExtensionAbility自身，终止输入法应用运行。<br>2. Ability交互：`startAbility()`用于从输入法应用拉起目标Ability（如设置页面等），拓展输入法应用与其他应用的交互能力。<br> <br>典型使用流程：在`InputMethodExtensionAbility`的`onCreate`回调中获取`this.context` → 在需要终止输入法时调用`context.destroy()` → 在需要拉起其他应用时调用`context.startAbility(want)`。<br>
+> 本模块接口仅可在Stage模型下使用。<br> <br>模块内的核心API按功能分为两类：<br>1. 生命周期管理：`destroy()`用于销毁输入法ExtensionAbility自身，终止输入法应用运行。<br>2. Ability交互：`startAbility()`用于从输入法应用拉起目标Ability（如设置页面等），拓展输入法应用与其他应用的交互能力。<br> <br>典型使用流程：在`InputMethodExtensionAbility`的`onCreate`回调中获取`this.context`；运行期间按需调用`context.startAbility(want)`拉起其他应用；需要主动终止时调用`context.destroy()`，随后在`onDestroy`回调中清理应用自身资源，不再调用`destroy()`。<br>
 
 | Class | 说明 |  
 |---|---|  
@@ -23,9 +23,16 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
     let context = this.context; // InputMethodExtensionContext实例
   }
 
+  requestExit() {
+    // 在正常运行期间由应用业务逻辑调用，主动请求终止
+    this.context.destroy().catch((err) =
+> {
+      console.error('Request termination failed: ' + err.code);
+    });
+  }
+
   onDestroy() {
-    // 在生命周期回调中销毁自身
-    this.context.destroy();
+    // 仅清理应用自身资源，不再调用context.destroy()
   }
 }
 
@@ -40,7 +47,7 @@ this.context.startAbility(targetWant);
 <br> <br>  
 > **说明：** <br>
 > <br>
-> `InputMethodExtensionContext`实例通过`InputMethodExtensionAbility`子类的`this.context`属性获取，不可直接创建。`destroy()`通常在`onDestroy`生命周期回调中调用，也可在其他时机主动调用以终止输入法ExtensionAbility。<br> <br> ## 使用说明<br> <br>在使用InputMethodExtensionContext的功能前，需要通过InputMethodExtensionAbility子类实例获取。<br> <br>```ts <br>import { InputMethodExtensionAbility, InputMethodExtensionContext } from '@kit.IMEKit'; <br>import { Want } from '@kit.AbilityKit'; <br> <br>class InputMethodExtAbility extends InputMethodExtensionAbility {<br> onCreate(want: Want): void {<br> console.info('onCreate, want:' + want.abilityName); <br> } <br>} <br>```
+> `InputMethodExtensionContext`实例通过`InputMethodExtensionAbility`子类的`this.context`属性获取，不可直接创建。应在`onDestroy`前调用`destroy()`请求终止输入法ExtensionAbility，不要在`onDestroy`生命周期回调中再次调用。<br> <br> ## 使用说明<br> <br>在使用InputMethodExtensionContext的功能前，需要通过InputMethodExtensionAbility子类实例获取。<br> <br>```ts <br>import { InputMethodExtensionAbility, InputMethodExtensionContext } from '@kit.IMEKit'; <br>import { Want } from '@kit.AbilityKit'; <br> <br>class InputMethodExtAbility extends InputMethodExtensionAbility {<br> onCreate(want: Want): void {<br> console.info('onCreate, want:' + want.abilityName); <br> } <br>} <br>```
 
 **继承/实现关系：** InputMethodExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
 
@@ -90,7 +97,7 @@ connectAbility(want: Want, options: ConnectOptions): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 连接的数字标识，用于后续断开连接时传入。 |
+| number | 连接标识，用于后续断开连接。获取到标识并不代表连接成功，应通过options.onConnect或options.onFailed判断连接结果；本地调度或连接失败时上报错误码1。 |
 
 **错误码：**
 
@@ -195,7 +202,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 连接的数字标识，用于后续断开连接时传入。 |
+| number | 连接标识，用于后续断开连接。获取到标识并不代表连接成功，应通过options.onConnect或options.onFailed判断连接结果；本地调度或连接失败时上报错误码1。 |
 
 **错误码：**
 
@@ -486,7 +493,7 @@ startAbilityWithAccount(want: Want, accountId: number): Promise<void>
 terminateSelf(callback: AsyncCallback<void>): void
 ```
 
-销毁输入法ExtensionAbility。使用callback异步回调。
+销毁输入法ExtensionAbility。使用callback异步回调。调用成功仅表示终止请求已被接受，生命周期处理将异步完成。
 
 **起始版本：** 9
 
@@ -508,13 +515,20 @@ terminateSelf(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当销毁输入法应用成功时，err为undefined；否则为错误对象。 |
 
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. |
+
 ## terminateSelf
 
 ```TypeScript
 terminateSelf(): Promise<void>
 ```
 
-销毁输入法ExtensionAbility。使用Promise异步回调。
+销毁输入法ExtensionAbility。使用Promise异步回调。调用成功仅表示终止请求已被接受，生命周期处理将异步完成。
 
 **起始版本：** 9
 
@@ -535,3 +549,10 @@ terminateSelf(): Promise<void>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. |

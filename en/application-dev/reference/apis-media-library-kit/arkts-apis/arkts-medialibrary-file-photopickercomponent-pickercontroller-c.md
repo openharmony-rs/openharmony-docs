@@ -6,6 +6,11 @@ export declare class PickerController
 
 Defines an instance used to send data to the **PhotoPickerComponent**.
 
+> **NOTE:** 
+> 
+> Before calling this API, ensure that the **onPickerControllerReady** callback has been triggered. Otherwise, the
+> API call does not take effect.
+
 **Since:** 12
 
 **Decorator:** @Observed
@@ -26,7 +31,7 @@ import { PhotoPickerComponent, PickerController, PickerOptions, DataType, BaseIt
 addData(dataType: DataType, data: Object): void
 ```
 
-Sends additional configuration data to the **PhotoPickerComponent**. The [DataType](arkts-medialibrary-file-photopickercomponent-datatype-e.md) parameter identifies the type of data to send. In versions earlier than API version 23, only the **SET_BADGE_CONFIGS** type is supported.
+Sends additional configuration data to the **PhotoPickerComponent**. The **DataType** parameter identifies the type of data to send. In versions earlier than API version 23, only the **SET_BADGE_CONFIGS** type is supported.
 
 **Since:** 21
 
@@ -73,7 +78,7 @@ This API is used by an application to obtain the complete data after a selection
 deleteData(dataType: DataType, data: Object): void
 ```
 
-Sends removal configuration data to the **PhotoPickerComponent**. The [DataType](arkts-medialibrary-file-photopickercomponent-datatype-e.md) parameter identifies the type of data to send, and only the **SET_BADGE_CONFIGS** type is supported currently.
+Sends removal configuration data to the **PhotoPickerComponent**. The **DataType** parameter identifies the type of data to send, and only the **SET_BADGE_CONFIGS** type is supported currently.
 
 **Since:** 21
 
@@ -90,6 +95,41 @@ Sends removal configuration data to the **PhotoPickerComponent**. The [DataType]
 | dataType | [DataType](arkts-medialibrary-file-photopickercomponent-datatype-e.md) | Yes | Type of removal configuration data to send. |
 | data | Object | Yes | Removal configuration data to send. |
 
+## enterSearchPage
+
+```TypeScript
+enterSearchPage(): Promise<void>
+```
+
+Enter the search page of the picker.
+
+Prerequisites for the call to take effect:  
+  - The picker has been initialized (onPickerControllerReady has been invoked).  
+  - The picker option `isSearchSupported` is set to `false`.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-PickerController-enterSearchPage(): Promise<void>--><!--Device-PickerController-enterSearchPage(): Promise<void>-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [23800202](../errorcode-medialibrary.md#23800202-invalid-scenario-call) | Invalid call context. That is, one of the following conditions is met:         1. The picker is not ready (onPickerControllerReady has not been invoked).         2. The search UI is rendered by the picker itself (that is, `isSearchSupported` is set to `true`).         3. The picker is in the photo browsing view. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: <br>1. The hardware does not support the capability. <br>2. The chip does not support the capability. <br>3. A dependent service feature is not supported. |
+
 ## exitPhotoBrowser
 
 ```TypeScript
@@ -98,6 +138,10 @@ exitPhotoBrowser(): void
 
 Exits the photo browser page.
 
+> **NOTE:** 
+> 
+> This API does not take effect when **PickerOptions.singleLineConfig** is set to the single-line mode.
+
 **Since:** 13
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
@@ -105,6 +149,74 @@ Exits the photo browser page.
 <!--Device-PickerController-exitPhotoBrowser(): void--><!--Device-PickerController-exitPhotoBrowser(): void-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## exitSearchPage
+
+```TypeScript
+exitSearchPage(): Promise<void>
+```
+
+Exit the search page and the picker returns to the default album grid.
+
+Prerequisites:  
+  - The picker is currently in the search state (PickerState.SEARCH).
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-PickerController-exitSearchPage(): Promise<void>--><!--Device-PickerController-exitSearchPage(): Promise<void>-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [23800202](../errorcode-medialibrary.md#23800202-invalid-scenario-call) | Invalid call context: the picker is not in the search state. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: <br>1. The hardware does not support the capability. <br>2. The chip does not support the capability. <br>3. A dependent service feature is not supported. |
+
+## navigateBackInSearchPage
+
+```TypeScript
+navigateBackInSearchPage(): Promise<void>
+```
+
+Navigates back one level within the search page.
+
+Prerequisites:  
+  - The picker is currently in the search state (PickerState.SEARCH).
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-PickerController-navigateBackInSearchPage(): Promise<void>--><!--Device-PickerController-navigateBackInSearchPage(): Promise<void>-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [23800202](../errorcode-medialibrary.md#23800202-invalid-scenario-call) | Invalid call context: the picker is not in the search state. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: <br>1. The hardware does not support the capability. <br>2. The chip does not support the capability. <br>3. A dependent service feature is not supported. |
 
 ## replacePhotoPickerPreview
 
@@ -127,7 +239,7 @@ Replaces the image selected by the user in the **PhotoPickerComponent** with the
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | originalUri | string | Yes | URI of the original image, which will be replaced. |
-| newUri | string | Yes | URI of the new image. The new image is temporarily stored in the application sandbox path. Therefore, this URI specifies a directory in the application sandbox path. |
+| newUri | string | Yes | URI of the new image. This is the URI of the image or video that is temporarily stored in the app sandbox and is used to replace the original URI on the photo picker component. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback invoked when image replacement is complete. |
 
 ## saveTrustedPhotoAssets
@@ -193,7 +305,50 @@ Saves files in a URI list. This API uses a promise to return the result.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the URI of the new asset. |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the URI array of the new asset. |
+
+## search
+
+```TypeScript
+search(searchInfo: SearchInfo): Promise<void>
+```
+
+Invoke the picker search capability with the given search information. The picker shows the search result page and the onPickerStateChanged callback is invoked with PickerState.SEARCH if the picker was not already in the search state.
+
+Prerequisites:  
+  - The picker is currently in the search state (PickerState.SEARCH).  
+If the picker is in the default state, call enterSearch first.  
+  - At least one of `searchInfo.text` and `searchInfo.smartEntityIds` is non-empty.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-PickerController-search(searchInfo: SearchInfo): Promise<void>--><!--Device-PickerController-search(searchInfo: SearchInfo): Promise<void>-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| searchInfo | [SearchInfo](arkts-medialibrary-file-photopickercomponent-searchinfo-c.md) | Yes | The search information. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | Scene parameter check failed: empty search info or invalid entity id. |
+| [23800202](../errorcode-medialibrary.md#23800202-invalid-scenario-call) | Invalid call context: the picker is not in the search state. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: <br>1. The hardware does not support the capability. <br>2. The chip does not support the capability. <br>3. A dependent service feature is not supported. |
 
 ## setData
 
@@ -264,7 +419,7 @@ This parameter takes effect only on the photo browser page. **NOT_MOVING_PHOTO**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| movingPhotoState | [photoAccessHelper.MovingPhotoBadgeStateType](arkts-medialibrary-photoaccesshelper-movingphotobadgestatetype-e.md) | Yes | State of the moving photo on the photo browser page. |
+| movingPhotoState | [photoAccessHelper.MovingPhotoBadgeStateType](arkts-medialibrary-photoaccesshelper-movingphotobadgestatetype-e.md) | Yes | State of the moving photo on the photo browser page. It can only be set to **MOVING_PHOTO_ENABLED** or **MOVING_PHOTO_DISABLED**, but not **NOT_MOVING_PHOTO**. |
 
 **Return value:**
 
@@ -276,7 +431,7 @@ This parameter takes effect only on the photo browser page. **NOT_MOVING_PHOTO**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | Scene parameters validate failed, possible causes:         1. An invalid enumeration value was passed. Only MOVING_PHOTO_ENABLED and MOVING_PHOTO_DISABLED are supported for configuration; |
+| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | Scene parameters validate failed, possible causes:         1. An invalid enumeration value was passed. Only MOVING_PHOTO_ENABLED and MOVING_PHOTO_DISABLED are supported for configuration. |
 | [23800202](../errorcode-medialibrary.md#23800202-invalid-scenario-call) | Invalid call context. Possible causes:         1. The API is called outside the photo browsing scenario.         2. The API is called when isMovingPhotoBadgeShown is already set to true. |
 
 ## setPhotoBrowserItem
@@ -286,6 +441,10 @@ setPhotoBrowserItem(uri: string, photoBrowserRange?: PhotoBrowserRange): void
 ```
 
 Switches from the **PhotoPickerComponent** to the photo browser page or from the photo browser page to the image to be viewed.
+
+> **NOTE:** 
+> 
+> This API does not take effect when **PickerOptions.singleLineConfig** is set to the single-line mode.
 
 **Since:** 12
 
@@ -309,6 +468,10 @@ setPhotoBrowserUIElementVisibility(elements: Array<PhotoBrowserUIElement>, isVis
 ```
 
 Sets whether other UI elements are visible on the photo browser page. By default, other UI elements are visible.
+
+> **NOTE:** 
+> 
+> This API does not take effect when **PickerOptions.singleLineConfig** is set to the single-line mode.
 
 **Since:** 13
 

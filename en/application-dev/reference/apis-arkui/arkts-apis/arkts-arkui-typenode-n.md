@@ -6,7 +6,7 @@ export namespace typeNode
 
 Provides APIs for creating a specific type of FrameNode, which can be mounted through the basic API of the FrameNode and be displayed using a placeholder container. It is suitable for scenarios where component nodes of specific types need to be dynamically created through code and custom-mounted.
 
-When **typeNode** is used to create [Text](../arkts-components/arkts-arkui-text-comp.md), [Image](../arkts-components/arkts-arkui-image-comp.md), [Select](../arkts-components/arkts-arkui-select-comp.md), or [Toggle](../arkts-components/arkts-arkui-toggle-comp.md) nodes, if the UI instance corresponding to the input [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) is destroyed, this API returns an invalid FrameNode that cannot be properly mounted or displayed.
+When **typeNode** is used to create [Text](../arkts-components/arkts-arkui-text-comp.md), Image, [Select](../arkts-components/arkts-arkui-select-comp.md), or [Toggle](../arkts-components/arkts-arkui-toggle-comp.md) nodes, if the UI instance corresponding to the input [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) is destroyed, this API returns an invalid FrameNode that cannot be properly mounted or displayed.
 
 **Since:** 12
 

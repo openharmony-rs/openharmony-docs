@@ -4,7 +4,7 @@
 declare class NavigationAttribute extends CommonMethod<NavigationAttribute>
 ```
 
-除支持通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性：
 
 **继承/实现关系：** NavigationAttribute extends CommonMethod&lt;NavigationAttribute&gt;
 
@@ -24,7 +24,7 @@ backButtonIcon(value: string | PixelMap | Resource | SymbolGlyphModifier)
 
 > **说明：** 
 > 
-> 不支持通过SymbolGlyphModifier对象的
+> 不支持通过[SymbolGlyphModifier](arkts-arkui-common-comp-symbolglyphmodifier-t.md)对象的
 > [fontSize](arkts-arkui-symbolglyph-comp-attribute.md#fontsize)属性修改图标大小、
 > [effectStrategy](arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy)属性修改动效、
 > [symbolEffect](arkts-arkui-symbolglyph-comp-attribute.md#symboleffect-1)属性修改动效类型。
@@ -55,7 +55,7 @@ backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier, accessi
 > 
 > 该接口不支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 > 
-> 不支持通过SymbolGlyphModifier对象的
+> 不支持通过[SymbolGlyphModifier](arkts-arkui-common-comp-symbolglyphmodifier-t.md)对象的
 > [fontSize](arkts-arkui-symbolglyph-comp-attribute.md#fontsize)属性修改图标大小、
 > [effectStrategy](arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy)属性修改动效、
 > [symbolEffect](arkts-arkui-symbolglyph-comp-attribute.md#symboleffect-1)属性修改动效类型。
@@ -232,7 +232,7 @@ enableToolBarAdaptation(enable: Optional<boolean>)
 enableVisibilityLifecycleWithContentCover(isEnabled: Optional<boolean>)
 ```
 
-设置是否启用NavDestination页面[onHidden](arkts-arkui-navdestination-comp-attribute.md#onhidden)、[onShown](arkts-arkui-navdestination-comp-attribute.md#onshown)生命周期与全模态的联动触发。
+设置是否启用[NavDestination](arkts-arkui-navdestination-comp.md)页面[onHidden](arkts-arkui-navdestination-comp-attribute.md#onhidden)、[onShown](arkts-arkui-navdestination-comp-attribute.md#onshown)生命周期与全模态的联动触发。
 
 > **说明：** 
 > 

@@ -58,7 +58,7 @@ Swiping left or right on the screen. By default, swiping right dismisses the pop
 
 **NOTE:** 
 
-This API is effective only in sheet transition.
+This API is effective only in [sheet transition](arkts-arkui-common-comp-commonmethod-c.md).
 
 **Since:** 20
 
@@ -80,7 +80,7 @@ Swiping down.
 
 **NOTE:** 
 
-This API is effective only in sheet transition.
+This API is effective only in [sheet transition](arkts-arkui-common-comp-commonmethod-c.md).
 
 **Since:** 12
 

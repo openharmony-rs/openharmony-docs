@@ -22,7 +22,7 @@ export interface RenderTarget extends Image
 getPixelMap(): Promise<image.PixelMap>
 ```
 
-从渲染目标对象获取渲染结果的PixelMap，返回的PixelMap不可编辑，使用Promise异步回调。渲染目标对象已销毁时调用该接口抛出错误码25601006。
+从渲染目标对象获取渲染结果的PixelMap，返回的PixelMap不可编辑，使用Promise异步回调。
 
 **起始版本：** 26.1.0
 
@@ -44,4 +44,4 @@ getPixelMap(): Promise<image.PixelMap>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 25601006 | Expired or invalid resource. |
+| [25601006](../errorcode-graphics3d.md#25601006-使用已失效的资源) | Expired or invalid resource. |

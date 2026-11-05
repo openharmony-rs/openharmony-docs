@@ -6,9 +6,9 @@ export class ComponentContent<T extends Object> extends Content
 
 You can create an entity encapsulation component in either of the following ways: **ComponentContent** requires manual content updates through the update API, which is mainly suitable for decoupled encapsulation scenarios such as dialog boxes. **ReactiveComponentContent** supports automatic updates of responsive data, complete lifecycle management, and component reuse, making it suitable for high-performance rendering scenarios such as long lists.
 
-**ComponentContent** represents an entity encapsulation of component content, which can be created and transmitted outside of UI components. It allows you to encapsulate and decouple dialog box components. Its underlying implementation uses BuilderNode. For details, see [BuilderNode](arkts-arkui-buildernode-c.md).
+**ComponentContent** represents an entity encapsulation of component content, which can be created and transmitted outside of UI components. It allows you to encapsulate and decouple dialog box components. Its underlying implementation uses BuilderNode. For details, see BuilderNode.
 
-**ReactiveComponentContent** represents an entity encapsulation of component content, and its objects can be created and transmitted outside of UI components. It supports automatic updates of responsive data, complete lifecycle management, and component reuse, making it suitable for scenarios requiring high-performance rendering such as long lists. Its underlying layer uses **ReactiveBuilderNode**. For specific usage specifications, see [ReactiveBuilderNode](arkts-arkui-buildernode-reactivebuildernode-c.md).
+**ReactiveComponentContent** represents an entity encapsulation of component content, and its objects can be created and transmitted outside of UI components. It supports automatic updates of responsive data, complete lifecycle management, and component reuse, making it suitable for scenarios requiring high-performance rendering such as long lists. Its underlying layer uses **ReactiveBuilderNode**. For specific usage specifications, see ReactiveBuilderNode.
 
 > **NOTE:** 
 > 

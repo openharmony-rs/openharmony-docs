@@ -151,7 +151,7 @@ selectable(value: boolean)
 
 Sets whether the grid item is selectable in the mouse selection box area. This attribute takes effect only when mouse box selection is enabled for the parent **Grid** container.
 
-This attribute must be used before the [polymorphic style](arkts-arkui-common-comp.md) is set. Otherwise, the style settings will not take effect.
+This attribute must be used before the [polymorphic style](arkts-arkui-common-comp-commonmethod-c.md) is set. Otherwise, the style settings will not take effect.
 
 **Since:** 8
 
@@ -177,7 +177,7 @@ selected(value: boolean)
 
 Sets whether the grid item is selected. This attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).
 
-This attribute must be used before the [polymorphic style](arkts-arkui-common-comp.md) is set. Otherwise, the style settings will not take effect.
+This attribute must be used before the [polymorphic style](arkts-arkui-common-comp-commonmethod-c.md) is set. Otherwise, the style settings will not take effect.
 
 **Since:** 10
 

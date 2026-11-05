@@ -26,7 +26,7 @@ enum GroupOwnerBand
 GO_BAND_2GHZ = 1
 ```
 
-2GHz。
+2.4GHz。
 
 **起始版本：** 8
 

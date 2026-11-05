@@ -52,7 +52,7 @@ Creates an **ArcList** component instance with specified configuration options.
 
 | Name | Description |
 | --- | --- |
-| [ArcListItemAttribute](arkts-arkui-arclist-comp-arclistitemattribute-c.md) | In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported. |
+| [ArcListItemAttribute](arkts-arkui-arclist-comp-arclistitemattribute-c.md) | In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported. |
 
 ### Interfaces
 

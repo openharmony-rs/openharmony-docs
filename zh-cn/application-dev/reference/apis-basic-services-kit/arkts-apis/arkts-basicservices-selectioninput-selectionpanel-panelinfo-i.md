@@ -46,8 +46,6 @@ panelType: PanelType
 
 **类型：** [PanelType](arkts-basicservices-selectioninput-selectionpanel-paneltype-e.md)
 
-**默认值：** MENU_PANEL
-
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。

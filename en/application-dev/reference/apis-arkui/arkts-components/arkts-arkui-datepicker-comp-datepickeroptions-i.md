@@ -93,7 +93,7 @@ mode?: DatePickerMode
 
 Date display mode. It applies to scenarios where the date display columns need to be customized, for example, only the year and month or the month and day need to be selected. If this parameter is not passed, **DatePickerMode.DATE** is used by default, and the year, month, and day columns are displayed.
 
-In [DatePickerDialog](arkts-arkui-datepicker-comp.md), when **showTime** of [DatePickerDialogOptions](arkts-arkui-datepicker-comp-datepickerdialogoptions-i.md) is set to **true**, this parameter does not take effect, and the year, month, and day columns are displayed by default. This is to ensure layout rationality, because an additional time column is displayed when **showTime** is set to **true**.
+In [DatePickerDialog](arkts-arkui-datepicker-comp-datepickerdialog-c.md), when **showTime** of [DatePickerDialogOptions](arkts-arkui-datepicker-comp-datepickerdialogoptions-i.md) is set to **true**, this parameter does not take effect, and the year, month, and day columns are displayed by default. This is to ensure layout rationality, because an additional time column is displayed when **showTime** is set to **true**.
 
 **Note:** 
 

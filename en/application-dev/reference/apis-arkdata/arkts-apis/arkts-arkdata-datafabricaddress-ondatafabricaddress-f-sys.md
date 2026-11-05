@@ -40,7 +40,7 @@ Subscribes to address data fabric interface. Before calling this method, ensure 
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function can not work correctly due to <br> limited device capabilities. |
-| 36900001 | Internal error in the API. |
-| 36900002 | Subscription failed. |
-| 36900004 | Operation not supported. |
-| 36900005 | Invalid parameter. |
+| [36900001](../errorcode-dataFabricAddress-sys.md#36900001-internal-error-in-the-api) | Internal error in the API. |
+| [36900002](../errorcode-dataFabricAddress-sys.md#36900002-subscription-failed) | Subscription failed. |
+| [36900004](../errorcode-dataFabricAddress-sys.md#36900004-operation-not-supported) | Operation not supported. |
+| [36900005](../errorcode-dataFabricAddress-sys.md#36900005-invalid-parameter) | Invalid parameter. |

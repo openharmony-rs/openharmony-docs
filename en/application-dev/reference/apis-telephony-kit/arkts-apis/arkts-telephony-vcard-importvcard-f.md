@@ -12,7 +12,7 @@ import { vcard } from '@kit.TelephonyKit';
 function importVCard(context: Context, filePath: string, accountId: number, callback: AsyncCallback<void>): void
 ```
 
-Imports a VCard file (that is, **.vcf** file) to the contact database. This API uses an asynchronous callback to return the result.
+Import the VCard file into the contact database. Applies to scenarios such as importing contacts in batches and restoring contact data after receiving VCard files from other devices or applications. Use the callback asynchronous callback.
 
 **Since:** 23
 
@@ -27,8 +27,8 @@ Imports a VCard file (that is, **.vcf** file) to the contact database. This API 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | context | Context | Yes | Application context. |
-| filePath | string | Yes | URL of the vcard file (VCF). |
-| accountId | number | Yes | Contact account ID. |
+| filePath | string | Yes | Change the value to the VCF (VCard file) file address. |
+| accountId | number | Yes | Contact account ID. <br>The value should be an integer. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -67,7 +67,7 @@ class EntryAbility extends UIAbility {
 function importVCard(context: Context, filePath: string, accountId?: number): Promise<void>
 ```
 
-Imports a VCard file (that is, **.vcf** file) to the contact database. This API uses a promise to return the result.
+Import the VCard file into the contact database. Applies to scenarios such as importing contacts in batches and restoring contact data after receiving VCard files from other devices or applications. Use Promise asynchronous callbacks.
 
 **Since:** 23
 
@@ -82,14 +82,14 @@ Imports a VCard file (that is, **.vcf** file) to the contact database. This API 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | context | Context | Yes | Application context. |
-| filePath | string | Yes | URL of the vcard file (VCF). |
-| accountId | number | No | Contact account ID. |
+| filePath | string | Yes | VCF (VCard file) file address. |
+| accountId | number | No | Contact account ID. If this parameter is not transferred, the default account is used. <br>The value should be an integer. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the operation result. |
+| Promise&lt;void&gt; | Promise object. No result is returned. |
 
 **Error codes:**
 
@@ -129,7 +129,7 @@ class EntryAbility extends UIAbility {
 function importVCard(context: Context, filePath: string, callback: AsyncCallback<void>): void
 ```
 
-Imports a VCard file (that is, **.vcf** file) to the contact database. This API uses an asynchronous callback to return the result.
+Import the VCard file into the contact database. Applies to scenarios such as importing contacts in batches and restoring contact data after receiving VCard files from other devices or applications. Use the callback asynchronous callback.
 
 **Since:** 23
 
@@ -144,7 +144,7 @@ Imports a VCard file (that is, **.vcf** file) to the contact database. This API 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | context | Context | Yes | Application context. |
-| filePath | string | Yes | URL of the vcard file (VCF). |
+| filePath | string | Yes | Address of the VCF (VCard file) file. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**

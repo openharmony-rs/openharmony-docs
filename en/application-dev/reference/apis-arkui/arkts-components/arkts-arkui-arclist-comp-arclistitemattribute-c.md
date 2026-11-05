@@ -4,7 +4,7 @@
 export declare class ArcListItemAttribute extends CommonMethod<ArcListItemAttribute>
 ```
 
-In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported.
 
 **Inheritance/Implementation:** ArcListItemAttribute extends CommonMethod&lt;ArcListItemAttribute&gt;
 

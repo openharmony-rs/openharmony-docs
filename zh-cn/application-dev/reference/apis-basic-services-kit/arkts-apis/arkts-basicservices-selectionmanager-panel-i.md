@@ -28,6 +28,8 @@ hide(): Promise<void>
 
 **起始版本：** 24
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-Panel-hide(): Promise<void>--><!--Device-Panel-hide(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.SelectionInput.Selection
@@ -121,6 +123,8 @@ off(type: 'destroyed', callback?: Callback<void>): void
 
 **起始版本：** 24
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-Panel-off(type: 'destroyed', callback?: Callback<void>): void--><!--Device-Panel-off(type: 'destroyed', callback?: Callback<void>): void-End-->
 
 **系统能力：** SystemCapability.SelectionInput.Selection
@@ -153,6 +157,8 @@ off(type: 'hidden', callback?: Callback<void>): void
 
 **起始版本：** 24
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-Panel-off(type: 'hidden', callback?: Callback<void>): void--><!--Device-Panel-off(type: 'hidden', callback?: Callback<void>): void-End-->
 
 **系统能力：** SystemCapability.SelectionInput.Selection
@@ -184,6 +190,8 @@ on(type: 'destroyed', callback: Callback<void>): void
 订阅划词面板销毁事件，与[off('destroyed')](#offdestroyed)搭配使用。需通过[createPanel](arkts-basicservices-selectionmanager-createpanel-f.md)获取到Panel实例后调用。
 
 **起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Panel-on(type: 'destroyed', callback: Callback<void>): void--><!--Device-Panel-on(type: 'destroyed', callback: Callback<void>): void-End-->
 
@@ -218,6 +226,8 @@ on(type: 'hidden', callback: Callback<void>): void
 订阅划词面板隐藏事件，与[off('hidden')](#offhidden)搭配使用。面板调用[hide](#hide)隐藏或失焦自动隐藏时触发该事件。需通过[createPanel](arkts-basicservices-selectionmanager-createpanel-f.md)获取到Panel实例后调用。
 
 **起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Panel-on(type: 'hidden', callback: Callback<void>): void--><!--Device-Panel-on(type: 'hidden', callback: Callback<void>): void-End-->
 

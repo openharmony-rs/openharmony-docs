@@ -26,7 +26,7 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 addedTime: Date
 ```
 
-Template adding time. Timestamp when the template is created. The value is a Unix timestamp, that is, the number of milliseconds elapsed since 00:00:00 on January 1, 1970.
+Time when the template is added, of the **Date** object type.
 
 **Type:** Date
 
@@ -66,7 +66,7 @@ Device status information. It specifies the current status of the companion devi
 enabledBusinessIds: number[]
 ```
 
-List of supported service IDs. It specifies the service scenarios where the template is enabled. You can update the service scenarios by calling the [updateEnabledBusinessIds](arkts-userauthentication-companiondeviceauth-updateenabledbusinessids-f-sys.md) API.
+List of supported business IDs. It specifies the business scenarios where the template is enabled. You can update the business scenarios by calling the [updateEnabledBusinessIds](arkts-userauthentication-companiondeviceauth-updateenabledbusinessids-f-sys.md) API.
 
 **Type:** number[]
 
@@ -126,7 +126,7 @@ Template validity. The value **true** indicates that the template is valid and c
 localUserId: number
 ```
 
-Local user ID. It specifies the user ID associated with the template on the primary device. The value is a positive integer greater than or equal to 0.
+Local user ID. The identifier of the user associated with the template on the primary device, which is a non- negative integer.
 
 **Type:** number
 
@@ -146,7 +146,7 @@ Local user ID. It specifies the user ID associated with the template on the prim
 templateId: Uint8Array
 ```
 
-Template ID. Unique ID of a companion device authentication template, which is used to specify the target template when the service scope is updated or the authentication status is subscribed to.
+Template ID. Unique ID of a companion device authentication template, which is used to specify the target template when the business scope is updated or the authentication status is subscribed to.
 
 **Type:** Uint8Array
 

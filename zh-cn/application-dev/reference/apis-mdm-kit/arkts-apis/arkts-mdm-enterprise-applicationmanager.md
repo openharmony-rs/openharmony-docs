@@ -36,6 +36,7 @@ import { applicationManager } from '@kit.MDMKit';
 | [addHideLauncherIcon](arkts-mdm-applicationmanager-addhidelaunchericon-f.md#addhidelaunchericon-1) | 添加隐藏桌面应用图标名单。 |
 | [addKeepAliveApps](arkts-mdm-applicationmanager-addkeepaliveapps-f.md#addkeepaliveapps-1) | 添加保活应用名单，添加后将自动保活应用进程。在开机和应用被杀死后，由系统主动拉起应用进程。 |
 | [addKeepAliveApps](arkts-mdm-applicationmanager-addkeepaliveapps-f.md#addkeepaliveapps-2) | 添加保活应用名单，并设置是否禁止用户手动取消保活，添加后将自动保活应用进程。在开机和应用被杀死后，由系统主动拉起应用进程。 |
+| [addOptimizationBatteryExclusionApps](arkts-mdm-applicationmanager-addoptimizationbatteryexclusionapps-f.md#addoptimizationbatteryexclusionapps-1) | 添加应用至电池优化排除列表。使用异步回调返回结果。 |
 | [addUserNonStopApps](arkts-mdm-applicationmanager-addusernonstopapps-f.md#addusernonstopapps-1) | 为指定用户添加不可关停应用名单，仅可对已安装应用设置该策略。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。 |
 | [clearUpApplicationData](arkts-mdm-applicationmanager-clearupapplicationdata-f.md#clearupapplicationdata-1) | 清除应用产生的所有数据。 |
 | [getAllowedDistributeAbilityConnBundles](arkts-mdm-applicationmanager-getalloweddistributeabilityconnbundles-f.md#getalloweddistributeabilityconnbundles-1) | 获取指定用户下特定分布式业务的允许跨设备应用名单。 |
@@ -57,6 +58,7 @@ import { applicationManager } from '@kit.MDMKit';
 | [getHideLauncherIcon](arkts-mdm-applicationmanager-gethidelaunchericon-f.md#gethidelaunchericon-1) | 查询当前用户下隐藏桌面应用图标名单。 |
 | [getKeepAliveApps](arkts-mdm-applicationmanager-getkeepaliveapps-f.md#getkeepaliveapps-1) | 获取保活应用包名。 |
 | [getKeepAliveApps](arkts-mdm-applicationmanager-getkeepaliveapps-f.md#getkeepaliveapps-2) | 获取保活应用包名。 |
+| [getOptimizationBatteryExclusionApps](arkts-mdm-applicationmanager-getoptimizationbatteryexclusionapps-f.md#getoptimizationbatteryexclusionapps-1) | 获取电池优化排除列表。 |
 | [getUserNonStopApps](arkts-mdm-applicationmanager-getusernonstopapps-f.md#getusernonstopapps-1) | 获取当前设备下所有用户不可关停应用名单。 |
 | [getUserNonStopApps](arkts-mdm-applicationmanager-getusernonstopapps-f.md#getusernonstopapps-2) | 获取当前设备下所有用户不可关停应用名单。 |
 | [isAbilityDisabled](arkts-mdm-applicationmanager-isabilitydisabled-f.md#isabilitydisabled-1) | 获取指定应用（系统应用和三方应用均支持）的Ability组件是否被禁用。 |
@@ -78,6 +80,7 @@ import { applicationManager } from '@kit.MDMKit';
 | [removeFreezeExemptedApps](arkts-mdm-applicationmanager-removefreezeexemptedapps-f.md#removefreezeexemptedapps-1) | 为指定用户删除后台防冻结应用名单。删除后，应用可以被系统冻结。执行删除策略时，若参数列表中包含未安装应用，删除操作仍能成功执行；已安装的应用将被删除，未安装的应用不影响删除操作。 |
 | [removeHideLauncherIcon](arkts-mdm-applicationmanager-removehidelaunchericon-f.md#removehidelaunchericon-1) | 取消隐藏桌面应用图标名单。 |
 | [removeKeepAliveApps](arkts-mdm-applicationmanager-removekeepaliveapps-f.md#removekeepaliveapps-1) | 移除保活应用名单中的指定应用。 |
+| [removeOptimizationBatteryExclusionApps](arkts-mdm-applicationmanager-removeoptimizationbatteryexclusionapps-f.md#removeoptimizationbatteryexclusionapps-1) | 将应用从电池优化排除列表中移除。使用异步回调返回结果。 |
 | [removeUserNonStopApps](arkts-mdm-applicationmanager-removeusernonstopapps-f.md#removeusernonstopapps-1) | 为指定用户删除不可关停应用名单。删除后，用户可以在设备上正常关停该应用。执行删除策略时，若参数列表中包含未安装应用，删除操作仍能成功执行；已安装的应用将被删除，未安装的应用不影响删除操作。 |
 | [requestExemptionResource](arkts-mdm-applicationmanager-requestexemptionresource-f.md#requestexemptionresource-1) | 为指定的应用申请备用资源豁免。申请成功后，即使设备进入待机模式，指定的应用程序也可以使用豁免的资源（如网络访问）。 |
 | [setAbilityDisabled](arkts-mdm-applicationmanager-setabilitydisabled-f.md#setabilitydisabled-1) | 设置是否禁用指定应用（系统应用和三方应用均支持）的Ability组件。当前仅支持UIAbility类型，禁用后无法拉起此Ability组件的用户界面。 |

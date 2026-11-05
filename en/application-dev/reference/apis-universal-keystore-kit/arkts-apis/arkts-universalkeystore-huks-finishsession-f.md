@@ -46,15 +46,15 @@ The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** mus
 | [12000004](../errorcode-huks.md#12000004-file-error) | operating file failed |
 | [12000005](../errorcode-huks.md#12000005-ipc-error) | IPC communication failed |
 | [12000006](../errorcode-huks.md#12000006-algorithm-library-operation-failed) | error occurred in crypto engine |
-| [12000007](../errorcode-huks.md#12000007-failed-to-access-the-key-due-to-invalidated-credential) | this credential is already invalidated permanently |
-| [12000008](../errorcode-huks.md#12000008-failed-to-access-the-key-due-to-a-failure-in-authentication-token-verification) | verify auth token failed |
-| [12000009](../errorcode-huks.md#12000009-key-access-timed-out) | auth token is already timeout |
+| [12000007](../errorcode-huks.md#12000007-key-access-failure-key-invalidated) | this credential is already invalidated permanently |
+| [12000008](../errorcode-huks.md#12000008-key-access-failure-key-authentication-failure) | verify auth token failed |
+| [12000009](../errorcode-huks.md#12000009-key-access-failure-key-access-timeout) | auth token is already timeout |
 | [12000011](../errorcode-huks.md#12000011-the-entity-does-not-exist) | queried entity does not exist |
 | [12000012](../errorcode-huks.md#12000012-external-error) | Device environment or input parameter abnormal |
 | [12000014](../errorcode-huks.md#12000014-insufficient-memory) | memory is insufficient |
 | [12000017](../errorcode-huks.md#12000017-duplicate-key-alias) | The key with the same alias already exists<br>**Applicable version:** 20 and later |
 | [12000020](../errorcode-huks.md#12000020-dependent-module-error) | the provider operation failed<br>**Applicable version:** 22 and later |
-| [12000021](../errorcode-huks.md#12000021-ukey-pin-locked) | the UKey PIN is locked<br>**Applicable version:** 22 and later |
+| [12000021](../errorcode-huks.md#12000021-ukey-pin-is-locked) | the UKey PIN is locked<br>**Applicable version:** 22 and later |
 | [12000023](../errorcode-huks.md#12000023-unauthenticated-ukey-pin) | the UKey PIN not authenticated<br>**Applicable version:** 22 and later |
 | [12000024](../errorcode-huks.md#12000024-device-or-resource-busy) | the provider or UKey is busy<br>**Applicable version:** 22 and later |
 | [12000018](../errorcode-huks.md#12000018-invalid-input-parameter) | the group id specified by the access group tag is invalid<br>**Applicable version:** 23 and later |
@@ -105,9 +105,9 @@ The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** mus
 | [12000004](../errorcode-huks.md#12000004-file-error) | operating file failed |
 | [12000005](../errorcode-huks.md#12000005-ipc-error) | IPC communication failed |
 | [12000006](../errorcode-huks.md#12000006-algorithm-library-operation-failed) | error occurred in crypto engine |
-| [12000007](../errorcode-huks.md#12000007-failed-to-access-the-key-due-to-invalidated-credential) | this credential is already invalidated permanently |
-| [12000008](../errorcode-huks.md#12000008-failed-to-access-the-key-due-to-a-failure-in-authentication-token-verification) | verify auth token failed |
-| [12000009](../errorcode-huks.md#12000009-key-access-timed-out) | auth token is already timeout |
+| [12000007](../errorcode-huks.md#12000007-key-access-failure-key-invalidated) | this credential is already invalidated permanently |
+| [12000008](../errorcode-huks.md#12000008-key-access-failure-key-authentication-failure) | verify auth token failed |
+| [12000009](../errorcode-huks.md#12000009-key-access-failure-key-access-timeout) | auth token is already timeout |
 | [12000011](../errorcode-huks.md#12000011-the-entity-does-not-exist) | queried entity does not exist |
 | [12000012](../errorcode-huks.md#12000012-external-error) | Device environment or input parameter abnormal |
 | [12000014](../errorcode-huks.md#12000014-insufficient-memory) | memory is insufficient |
@@ -160,15 +160,15 @@ The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** mus
 | [12000004](../errorcode-huks.md#12000004-file-error) | operating file failed |
 | [12000005](../errorcode-huks.md#12000005-ipc-error) | IPC communication failed |
 | [12000006](../errorcode-huks.md#12000006-algorithm-library-operation-failed) | error occurred in crypto engine |
-| [12000007](../errorcode-huks.md#12000007-failed-to-access-the-key-due-to-invalidated-credential) | this credential is already invalidated permanently |
-| [12000008](../errorcode-huks.md#12000008-failed-to-access-the-key-due-to-a-failure-in-authentication-token-verification) | verify auth token failed |
-| [12000009](../errorcode-huks.md#12000009-key-access-timed-out) | auth token is already timeout |
+| [12000007](../errorcode-huks.md#12000007-key-access-failure-key-invalidated) | this credential is already invalidated permanently |
+| [12000008](../errorcode-huks.md#12000008-key-access-failure-key-authentication-failure) | verify auth token failed |
+| [12000009](../errorcode-huks.md#12000009-key-access-failure-key-access-timeout) | auth token is already timeout |
 | [12000011](../errorcode-huks.md#12000011-the-entity-does-not-exist) | queried entity does not exist |
 | [12000012](../errorcode-huks.md#12000012-external-error) | Device environment or input parameter abnormal |
 | [12000014](../errorcode-huks.md#12000014-insufficient-memory) | memory is insufficient |
 | [12000017](../errorcode-huks.md#12000017-duplicate-key-alias) | The key with the same alias already exists<br>**Applicable version:** 20 and later |
 | [12000020](../errorcode-huks.md#12000020-dependent-module-error) | the provider operation failed<br>**Applicable version:** 22 and later |
-| [12000021](../errorcode-huks.md#12000021-ukey-pin-locked) | the UKey PIN is locked<br>**Applicable version:** 22 and later |
+| [12000021](../errorcode-huks.md#12000021-ukey-pin-is-locked) | the UKey PIN is locked<br>**Applicable version:** 22 and later |
 | [12000023](../errorcode-huks.md#12000023-unauthenticated-ukey-pin) | the UKey PIN not authenticated<br>**Applicable version:** 22 and later |
 | [12000024](../errorcode-huks.md#12000024-device-or-resource-busy) | the provider or UKey is busy<br>**Applicable version:** 22 and later |
 | [12000018](../errorcode-huks.md#12000018-invalid-input-parameter) | the group id specified by the access group tag is invalid<br>**Applicable version:** 23 and later |

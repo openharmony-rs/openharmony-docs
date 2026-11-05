@@ -26,7 +26,7 @@ import { eSIM } from '@kit.TelephonyKit';
 nonce: string
 ```
 
-Random number.
+Random number in hexadecimal format.
 
 **Type:** string
 
@@ -44,7 +44,7 @@ Random number.
 pkid: string
 ```
 
-Selected public key ID.
+Select a public key ID from the value returned by the getSupportedPkids interface.
 
 **Type:** string
 
@@ -62,7 +62,7 @@ Selected public key ID.
 publicKey: string
 ```
 
-Public key.
+Public key, which is encoded in Base64 format.
 
 **Type:** string
 

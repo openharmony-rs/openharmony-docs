@@ -18,9 +18,9 @@ type CaretOffsetsCallback = (offset: number, index: number, leadingEdge: boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 是 | Offset of each character in a text line. The value is a floating point number. |
-| index | number | 是 | Index of each character in a text line. The value is an integer. |
-| leadingEdge | boolean | 是 | Whether the cursor is located at the front of the character. The value true means that the cursor is located at the front of the character, that is, the offset does not contain the character width. The value false means that the cursor is located at the rear of the character, that is, the offset contains the character width. |
+| offset | number | 是 | 文本行中每个字符的偏移量，浮点数，单位为物理像素px。 |
+| index | number | 是 | 文本行中每个字符的索引值，整数。 |
+| leadingEdge | boolean | 是 | 光标是否位于字符的前缘，true表示位于字符前缘，即偏移量不包含该字符宽度，false表示位于字符后缘，即偏移量包含该字符宽度。 |
 
 **返回值：**
 

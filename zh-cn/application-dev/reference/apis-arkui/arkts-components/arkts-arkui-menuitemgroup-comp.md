@@ -4,11 +4,11 @@
 
 > **说明：** 
 
-> - 该组件从API版本26.0.0开始支持WithTheme。
+> - 该组件从API版本26.0.0开始支持[WithTheme](arkts-arkui-withtheme-comp.md)。
 
 ## 子组件
 
-包含MenuItem子组件。
+包含[MenuItem](arkts-arkui-menuitem-comp.md)子组件。
 
 ## MenuItemGroup
 

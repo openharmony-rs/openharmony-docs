@@ -1,6 +1,6 @@
 # FolderStack
 
-折叠屏悬停布局容器，继承自[Stack](arkts-arkui-stack-comp.md)，通过配置upperItems实现折叠屏悬停能力。当设备处于悬停态时，指定子组件自动移至上半屏，其他组件堆叠在下半屏。
+折叠屏悬停布局容器，继承自Stack，通过配置upperItems实现折叠屏悬停能力。当设备处于悬停态时，指定子组件自动移至上半屏，其他组件堆叠在下半屏。
 
 ## FolderStack
 
@@ -8,7 +8,7 @@
 FolderStack(options?: FolderStackOptions)
 ```
 
-折叠屏悬停布局容器，继承自[Stack](arkts-arkui-stack-comp.md)，通过配置upperItems实现折叠屏悬停能力。当设备处于悬停态时，指定子组件自动移至上半屏，其他组件堆叠在下半屏。
+折叠屏悬停布局容器，继承自Stack，通过配置upperItems实现折叠屏悬停能力。当设备处于悬停态时，指定子组件自动移至上半屏，其他组件堆叠在下半屏。
 
 **起始版本：** 11
 

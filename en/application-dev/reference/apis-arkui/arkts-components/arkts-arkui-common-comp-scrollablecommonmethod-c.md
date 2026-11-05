@@ -182,7 +182,7 @@ digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): T
 
 Sets the sensitivity of the digital crown's response to events.
 
-A component must have focus to receive [crown events](arkts-arkui-common-comp.md). Focus control can be managed using [focusable](arkts-arkui-common-comp-commonmethod-c.md#focusable), [defaultFocus](arkts-arkui-common-comp-commonmethod-c.md#defaultfocus), and [focusOnTouch](arkts-arkui-common-comp-commonmethod-c.md#focusontouch).
+A component must have focus to receive [crown events](arkts-arkui-common-comp-commonmethod-c.md). Focus control can be managed using [focusable](arkts-arkui-common-comp-commonmethod-c.md#focusable), [defaultFocus](arkts-arkui-common-comp-commonmethod-c.md#defaultfocus), and [focusOnTouch](arkts-arkui-common-comp-commonmethod-c.md#focusontouch).
 
 **Since:** 18
 
@@ -319,7 +319,7 @@ Set whether to support scrolling by dragging with the left mouse button pressed.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean &#124; undefined | Yes | Whether to support scrolling by dragging with the left mouse button pressed. <br>Default value: For API versions earlier than 26.1.0,the defalut value is false. For API versions 26.1.0 and later, the defalut value is true when the scrollable component scrolls horizontally,false otherwise. |
+| enabled | boolean &#124; undefined | Yes | Whether to support scrolling by dragging with the left mouse button pressed. <br>true: Supports dragging to scroll with the left mouse button pressed. <br>false: Not support dragging to scroll with the left mouse button pressed. <br>undefined: When first set to undefined, the default value is used. When set to undefined subsequently, the previous setting remains unchanged. <br>Default value: For API versions earlier than 26.1.0, the default value is false. For API versions 26.1.0 and later, the default value is true when the scrollable component scrolls horizontally, false otherwise. |
 
 **Return value:**
 
@@ -736,7 +736,7 @@ onWillScroll(handler: Optional<OnWillScrollCallback>): T
 
 Triggered before the scrollable component scrolls. Comparison with [onDidScroll](#ondidscroll): **onWillScroll** is triggered before scrolling occurs and can specify the offset to be scrolled through its return value, making it suitable for scenarios where scrolling needs to be intercepted or customized; **onDidScroll **is triggered when scrolling occurs and returns the actual scroll offset and scrolling state of the current frame, making it suitable for scenarios where only the scrolling process needs to be monitored. The two can be used together.
 
-Called to return the offset to be scrolled in the current frame, the current scroll state, and the source of the scroll operation. The offset returned in the callback is the calculated offset to be scrolled, not the final actual scroll offset. You can specify the offset to be scrolled by the scrollable component through the return value of this callback. The parameter type of the [onWillScroll](arkts-arkui-scroll-comp-attribute.md#onwillscroll) API of the [Scroll](arkts-arkui-scroll-comp.md) component is [ScrollOnWillScrollCallback](arkts-arkui-scroll-comp-scrollonwillscrollcallback-t.md).
+Called to return the offset to be scrolled in the current frame, the current scroll state, and the source of the scroll operation. The offset returned in the callback is the calculated offset to be scrolled, not the final actual scroll offset. You can specify the offset to be scrolled by the scrollable component through the return value of this callback. The parameter type of the [onWillScroll](arkts-arkui-scroll-comp-attribute.md#onwillscroll) API of the Scroll component is [ScrollOnWillScrollCallback](arkts-arkui-scroll-comp-scrollonwillscrollcallback-t.md).
 
 > **NOTE:** 
 > 

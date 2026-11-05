@@ -24,7 +24,7 @@ This module provides the capability of subscribing to and unsubscribing from add
 
 | Name | Description |
 | --- | --- |
-| [offDataFabricAddress](arkts-arkdata-datafabricaddress-offdatafabricaddress-f-sys.md#offdatafabricaddress-1) | Unsubscribes from address data fabric interface. This method should be called after successfully subscribing with onDataFabricAddress. Calling this method without <br> a successful subscription will result in error 36900004. |
+| [offDataFabricAddress](arkts-arkdata-datafabricaddress-offdatafabricaddress-f-sys.md#offdatafabricaddress-1) | Unsubscribes from address data fabric interface. This method should be called after successfully subscribing with onDataFabricAddress. Calling this method without <br> a successful subscription will result in error 36900003. |
 | [onDataFabricAddress](arkts-arkdata-datafabricaddress-ondatafabricaddress-f-sys.md#ondatafabricaddress-1) | Subscribes to address data fabric interface. Before calling this method, ensure that the location service is enabled and the location switch is turned on. |
 <!--DelEnd-->
 

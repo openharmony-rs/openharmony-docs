@@ -4,7 +4,7 @@
 export declare class ArcListAttribute extends CommonMethod<ArcListAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性（不支持[滚动组件通用属性](arkts-arkui-common-comp-scrollablecommonmethod-c.md)）：
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性（不支持[滚动组件通用属性](arkts-arkui-common-comp-scrollablecommonmethod-c.md)）：
 
 **继承/实现关系：** ArcListAttribute extends CommonMethod&lt;ArcListAttribute&gt;
 

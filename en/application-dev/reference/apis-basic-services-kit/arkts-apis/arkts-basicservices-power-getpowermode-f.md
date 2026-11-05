@@ -12,7 +12,7 @@ import { power } from '@kit.BasicServicesKit';
 function getPowerMode(): DevicePowerMode
 ```
 
-Obtains the power mode of this device.
+Obtains the power mode of the current device. Different power modes correspond to different device behavior policies. Developers can adjust application behavior based on the returned mode value to adapt to the current mode. For the definition and description of each mode, see DevicePowerMode.
 
 **Since:** 9
 
@@ -24,7 +24,7 @@ Obtains the power mode of this device.
 
 | Type | Description |
 | --- | --- |
-| [DevicePowerMode](arkts-basicservices-power-devicepowermode-e.md) | Power mode. |
+| [DevicePowerMode](arkts-basicservices-power-devicepowermode-e.md) | Indicates the power mode of the current device. The value can be Standard, Power Saving, Performance, or Super Power Saving. When the power mode of the current device fails to be obtained, the value 0 is returned. The value is not within the value range defined by the [DevicePwerMode](arkts-basicservices-power-devicepowermode-e.md) enumeration. Developers should check whether the return value is a valid enumerated value (600 or more). |
 
 **Examples**
 

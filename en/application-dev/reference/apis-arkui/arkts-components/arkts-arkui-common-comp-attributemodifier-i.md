@@ -165,7 +165,7 @@ Style of a component in the disabled state. See [Example 6: Setting the Disabled
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| instance | T | Yes | Attribute class of the component, used to identify the component type for attribute setting, for example, the [attribute](arkts-arkui-button-comp-attribute.md#buttonattribute) (**ButtonAttribute**) of the [Button](arkts-arkui-button-comp.md) component and the [attribute](arkts-arkui-text-comp-attribute.md#textattribute) (**TextAttribute**) of the [Text](arkts-arkui-text-comp.md) component. For details about the values, see [Attribute Type Support Scope](#attribute-type-support-scope). |
+| instance | T | Yes | Attribute class of the component, used to identify the component type for attribute setting, for example, the [attribute](arkts-arkui-button-comp-attribute.md#buttonattribute) (**ButtonAttribute**) of the Button component and the [attribute](arkts-arkui-text-comp-attribute.md#textattribute) (**TextAttribute**) of the [Text](arkts-arkui-text-comp.md) component. For details about the values, see [Attribute Type Support Scope](#attribute-type-support-scope). |
 
 ## applyFocusedAttribute
 
@@ -189,7 +189,7 @@ Applies the style of a component in the focused state. For the implementation ex
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| instance | T | Yes | Attribute class of the component, used to identify the component type for attribute setting, for example, the [attribute](arkts-arkui-button-comp-attribute.md#buttonattribute) (**ButtonAttribute**) of the [Button](arkts-arkui-button-comp.md) component and the [attribute](arkts-arkui-text-comp-attribute.md#textattribute) (**TextAttribute**) of the [Text](arkts-arkui-text-comp.md) component. For details about the values, see [Attribute Type Support Scope](#attribute-type-support-scope). |
+| instance | T | Yes | Attribute class of the component, used to identify the component type for attribute setting, for example, the [attribute](arkts-arkui-button-comp-attribute.md#buttonattribute) (**ButtonAttribute**) of the Button component and the [attribute](arkts-arkui-text-comp-attribute.md#textattribute) (**TextAttribute**) of the [Text](arkts-arkui-text-comp.md) component. For details about the values, see [Attribute Type Support Scope](#attribute-type-support-scope). |
 
 ## applyHoveredAttribute
 
@@ -213,7 +213,7 @@ Defines the style of a component in the hover state. See [Example 9: Implementin
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| instance | T | Yes | Component attribute class, used to identify the component type for attribute setting, for example, the [attributes](arkts-arkui-button-comp-attribute.md#buttonattribute) (ButtonAttribute) of the [Button](arkts-arkui-button-comp.md) component and the [attributes](arkts-arkui-text-comp-attribute.md#textattribute) (TextAttribute) of the [Text](arkts-arkui-text-comp.md) component. For details about the specific values, see [Attribute Type Support Scope](#attribute-type-support-scope). |
+| instance | T | Yes | Component attribute class, used to identify the component type for attribute setting, for example, the [attributes](arkts-arkui-button-comp-attribute.md#buttonattribute) (ButtonAttribute) of the Button component and the [attributes](arkts-arkui-text-comp-attribute.md#textattribute) (TextAttribute) of the [Text](arkts-arkui-text-comp.md) component. For details about the specific values, see [Attribute Type Support Scope](#attribute-type-support-scope). |
 
 ## applyNormalAttribute
 
@@ -237,7 +237,7 @@ Applies the style of a component in the normal state.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| instance | T | Yes | Attribute class of the component, used to identify the component type for attribute setting, for example, the [attribute](arkts-arkui-button-comp-attribute.md#buttonattribute) (**ButtonAttribute**) of the [Button](arkts-arkui-button-comp.md) component and the [attribute](arkts-arkui-text-comp-attribute.md#textattribute) (**TextAttribute**) of the [Text](arkts-arkui-text-comp.md) component. For details about the values, see [Attribute Type Support Scope](#attribute-type-support-scope). |
+| instance | T | Yes | Attribute class of the component, used to identify the component type for attribute setting, for example, the [attribute](arkts-arkui-button-comp-attribute.md#buttonattribute) (**ButtonAttribute**) of the Button component and the [attribute](arkts-arkui-text-comp-attribute.md#textattribute) (**TextAttribute**) of the [Text](arkts-arkui-text-comp.md) component. For details about the values, see [Attribute Type Support Scope](#attribute-type-support-scope). |
 
 ## applyPressedAttribute
 
@@ -261,7 +261,7 @@ Applies the style of a component in the pressed state. For implementation exampl
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| instance | T | Yes | Attribute class of the component, used to identify the component type for attribute setting, for example, the [attribute](arkts-arkui-button-comp-attribute.md#buttonattribute) (**ButtonAttribute**) of the [Button](arkts-arkui-button-comp.md) component and the [attribute](arkts-arkui-text-comp-attribute.md#textattribute) (**TextAttribute**) of the [Text](arkts-arkui-text-comp.md) component. For details about the values, see [Attribute Type Support Scope](#attribute-type-support-scope). |
+| instance | T | Yes | Attribute class of the component, used to identify the component type for attribute setting, for example, the [attribute](arkts-arkui-button-comp-attribute.md#buttonattribute) (**ButtonAttribute**) of the Button component and the [attribute](arkts-arkui-text-comp-attribute.md#textattribute) (**TextAttribute**) of the [Text](arkts-arkui-text-comp.md) component. For details about the values, see [Attribute Type Support Scope](#attribute-type-support-scope). |
 
 ## applySelectedAttribute
 
@@ -287,4 +287,4 @@ You can customize the implementation of the preceding callback methods as needed
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| instance | T | Yes | Attribute class of the component, used to identify the component type for attribute setting, for example, the [attribute](arkts-arkui-button-comp-attribute.md#buttonattribute) (**ButtonAttribute**) of the [Button](arkts-arkui-button-comp.md) component and the [attribute](arkts-arkui-text-comp-attribute.md#textattribute) (**TextAttribute**) of the [Text](arkts-arkui-text-comp.md) component. For details about the values, see [Attribute Type Support Scope](#attribute-type-support-scope). |
+| instance | T | Yes | Attribute class of the component, used to identify the component type for attribute setting, for example, the [attribute](arkts-arkui-button-comp-attribute.md#buttonattribute) (**ButtonAttribute**) of the Button component and the [attribute](arkts-arkui-text-comp-attribute.md#textattribute) (**TextAttribute**) of the [Text](arkts-arkui-text-comp.md) component. For details about the values, see [Attribute Type Support Scope](#attribute-type-support-scope). |

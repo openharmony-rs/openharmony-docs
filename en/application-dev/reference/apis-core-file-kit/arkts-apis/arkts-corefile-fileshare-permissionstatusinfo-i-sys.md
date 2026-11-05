@@ -28,7 +28,7 @@ grantStatus: GrantStatus
 
 URI permission authorization status.
 
-**Type:** [GrantStatus](arkts-corefile-fileshare-grantstatus-e.md)
+**Type:** [GrantStatus](arkts-corefile-fileshare-grantstatus-e-sys.md)
 
 **Since:** 26.1.0
 

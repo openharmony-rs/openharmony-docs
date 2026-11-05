@@ -20,7 +20,7 @@ The [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) and [unive
 commands(value: ResourceStr)
 ```
 
-Sets the command string that complies with the SVG Path Syntax, in px. The command string determines the drawing shape and trajectory of the path. This attribute can be dynamically set using [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier). For details about the pixel unit conversion method, see [Pixel Units](arkts-arkui-common-comp.md).
+Sets the command string that complies with the SVG Path Syntax, in px. The command string determines the drawing shape and trajectory of the path. This attribute can be dynamically set using [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier). For details about the pixel unit conversion method, see [Pixel Units](arkts-arkui-common-comp-commonmethod-c.md).
 
 **Since:** 7
 

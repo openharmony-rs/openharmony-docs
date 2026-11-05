@@ -7496,10 +7496,6 @@ removeCache(clearRom: boolean): void
 
 清除与当前WebView上下文相关的资源缓存。
 
-> **说明：** 
-> 
-> 可以通过在data/storage/el2/base/cache/web/Cache目录下查看Webview的缓存。
-
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
@@ -8038,6 +8034,8 @@ runJavaScript(script: string): Promise<string>
 > - 执行异步方法无法获取返回值，需要根据具体情境判断是否使用同步或异步方式。
 > 
 > - 前端页面传到应用侧的string数据类型会被视为JSON格式的数据，需要调用JSON.parse反序列化。
+> 
+> - 多次调用runJavaScript时，脚本按调用顺序依次执行，但Promise结果的返回顺序不保证与调用顺序一致。
 
 **起始版本：** 9
 
@@ -8144,6 +8142,8 @@ runJavaScript(script: string, callback: AsyncCallback<string>): void
 > - 执行异步方法无法获取返回值，需要根据具体情境判断是否使用同步或异步方式。
 > 
 > - 前端页面传到应用侧的string数据类型会被视为JSON格式的数据，需要调用JSON.parse反序列化。
+> 
+> - 多次调用runJavaScript时，脚本按调用顺序依次执行，但回调结果的返回顺序不保证与调用顺序一致。
 
 **起始版本：** 9
 
@@ -8243,6 +8243,8 @@ runJavaScriptExt(script: string | ArrayBuffer): Promise<JsMessageExt>
 > **说明：** 
 > 
 > - 前端页面传到应用侧的string数据类型会被视为JSON格式的数据，需要调用JSON.parse反序列化。
+> 
+> - 多次调用runJavaScriptExt时，脚本按调用顺序依次执行，但Promise结果的返回顺序不保证与调用顺序一致。
 
 **起始版本：** 10
 
@@ -8467,6 +8469,8 @@ runJavaScriptExt(script: string | ArrayBuffer, callback: AsyncCallback<JsMessage
 > **说明：** 
 > 
 > - 前端页面传到应用侧的string数据类型会被视为JSON格式的数据，需要调用JSON.parse反序列化。
+> 
+> - 多次调用runJavaScriptExt时，脚本按调用顺序依次执行，但回调结果的返回顺序不保证与调用顺序一致。
 
 **起始版本：** 10
 

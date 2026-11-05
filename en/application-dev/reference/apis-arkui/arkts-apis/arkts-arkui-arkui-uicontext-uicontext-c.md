@@ -171,7 +171,7 @@ Adds transition animations for state changes in closure code.
 > 
 > - When a component appears or disappears, animation effects can be added through
 > 
-> [component transition](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-common.md).
+> [component transition](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md).
 > 
 > - For properties that component transitions do not support, refer to
 > 

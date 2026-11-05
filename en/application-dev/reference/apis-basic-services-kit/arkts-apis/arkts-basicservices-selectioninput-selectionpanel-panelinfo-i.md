@@ -46,8 +46,6 @@ Word selection panel types, which include two options. For details, see [PanelTy
 
 **Type:** [PanelType](arkts-basicservices-selectioninput-selectionpanel-paneltype-e.md)
 
-**Default:** MENU_PANEL
-
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.

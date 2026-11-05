@@ -52,4 +52,4 @@ Creates an exact timer. This API uses a promise to return the timer ID.
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [9200012](../errorcode-enterpriseDeviceManager.md#9200012-parameter-verification-failed) | Parameter verification failed. |
 | [9200016](../errorcode-enterpriseDeviceManager.md#9200016-service-timeout) | Service timeout. |
-| 9201053 | The number of timers has reached the upper limit. |
+| [9201053](../errorcode-enterpriseDeviceManager.md#9201053-the-number-of-timers-has-reached-the-upper-limit) | The number of timers has reached the upper limit. |

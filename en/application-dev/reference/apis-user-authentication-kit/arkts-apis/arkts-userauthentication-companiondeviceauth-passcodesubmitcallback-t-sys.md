@@ -4,7 +4,7 @@
 type PasscodeSubmitCallback = (passcode: Uint8Array) => void
 ```
 
-Defines the callback used to submit a passcode entered by the user.
+Defines the passcode submission callback. The application submits the passcode entered by the user to the system through this callback.
 
 **Since:** 26.0.1
 
@@ -20,4 +20,4 @@ Defines the callback used to submit a passcode entered by the user.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| passcode | Uint8Array | Yes | Passcode entered by the user (for example, the Passcode of a USB security key). |
+| passcode | Uint8Array | Yes | Passcode entered by the user. |

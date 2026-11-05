@@ -24,7 +24,7 @@ blurEffectiveEndOffset?: LengthMetrics
 
 Maximum sliding distance for the title bar to reach the final blur style. When the sliding distance reaches this value, the blur effect reaches the final state.
 
-The maximum sliding distance cannot be set using [LengthMetrics.percent](../arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md#percent).
+The maximum sliding distance cannot be set using LengthMetrics.percent.
 
 Default value: **8vp**
 
@@ -48,7 +48,7 @@ blurEffectiveStartOffset?: LengthMetrics
 
 Minimum sliding distance for enabling the scroll blur effect of the title bar. When the sliding distance exceeds this value, the blur effect starts to be applied.
 
-The minimum sliding distance cannot be set using [LengthMetrics.percent](../arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md#percent).
+The minimum sliding distance cannot be set using LengthMetrics.percent.
 
 Default value: **0vp**
 

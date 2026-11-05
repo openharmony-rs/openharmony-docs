@@ -28,13 +28,13 @@ function getEuiccInfo(slotId: number): Promise<EuiccInfo>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | number | 是 | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。 |
+| slotId | number | 是 | 卡槽ID。<br>- 0：卡槽1。<br>- 1：卡槽2。<br>取值限定为整数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[EuiccInfo](arkts-telephony-esim-euiccinfo-i-sys.md)&gt; | Promise对象，返回eUicc信息。 |
+| Promise&lt;[EuiccInfo](arkts-telephony-esim-euiccinfo-i-sys.md)&gt; | Promise对象，返回eUICC信息。 |
 
 **错误码：**
 

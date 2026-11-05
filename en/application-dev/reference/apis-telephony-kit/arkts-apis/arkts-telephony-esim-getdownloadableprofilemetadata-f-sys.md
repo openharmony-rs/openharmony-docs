@@ -29,8 +29,8 @@ Obtains the metadata of the downloadable profile. This API uses a promise to ret
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
-| portIndex | number | Yes | Port index of the slot. |
+| slotId | number | Yes | Card slot ID. <br>The value should be an integer. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| portIndex | number | Yes | The port index of the slot. <br>- 0: port 1. <br>- 1: port 2. <br>The value should be an integer. |
 | profile | [DownloadableProfile](arkts-telephony-esim-downloadableprofile-i.md) | Yes | Downloadable profile. |
 | forceDisableProfile | boolean | Yes | Whether to forcibly deactivate the current profile during profile switching. <br> **true**: The current profile is forcibly deactivated, and profile switching can be directly performed. <br> **false**: An error is returned, and profile switching can be performed only after the user authorization is obtained. |
 

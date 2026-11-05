@@ -30,7 +30,7 @@ Registers a callback for companion device selection. When the system requires th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [DeviceSelectCallback](arkts-userauthentication-companiondeviceauth-deviceselectcallback-t-sys.md) | Yes | Callback for the companion device selection. When this callback is invoked, **selectPurpose** is passed in. The application needs to return the corresponding **DeviceSelectResult**, including the information about the selected device. |
+| callback | [DeviceSelectCallback](arkts-userauthentication-companiondeviceauth-deviceselectcallback-t-sys.md) | Yes | Callback for companion device selection. When the system invokes this callback, it passes in the selection purpose (**selectPurpose**), and the application returns a **DeviceSelectResult** containing the corresponding device information based on **selectPurpose**. |
 
 **Error codes:**
 

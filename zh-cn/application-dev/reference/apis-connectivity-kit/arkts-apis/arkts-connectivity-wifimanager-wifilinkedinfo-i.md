@@ -207,7 +207,7 @@ macAddress: string
 macType: number
 ```
 
-MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址。
+MAC地址类型。0 - 设备MAC地址，1 - 随机MAC地址。
 
 **类型：** number
 

@@ -560,8 +560,7 @@ Obtains the typographic boundaries of the typographic unit. These boundaries are
 > 
 > The figure shows the typesetting boundaries for the string "j" or "E".
 > 
-> !
-> [TypographicBounds-Character.png](../../../reference/apis-arkgraphics2d/figures/TypographicBounds-Character.png)
+> ![TypographicBounds-Character.png](../../../reference/apis-arkgraphics2d/figures/TypographicBounds-Character.png)
 
 **Since:** 18
 

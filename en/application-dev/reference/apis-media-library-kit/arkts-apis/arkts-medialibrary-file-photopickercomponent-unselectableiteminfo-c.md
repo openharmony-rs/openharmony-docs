@@ -4,7 +4,7 @@
 export declare class UnselectableItemInfo
 ```
 
-UnselectableItemInfo
+Details about the image that is tapped but cannot be selected.
 
 **Since:** 26.0.1
 
@@ -24,7 +24,7 @@ import { PhotoPickerComponent, PickerController, PickerOptions, DataType, BaseIt
 public mimeType?: string
 ```
 
-MimeType.
+Type of the file.
 
 **Type:** string
 
@@ -44,7 +44,7 @@ MimeType.
 public photoSubType?: photoAccessHelper.PhotoSubtype
 ```
 
-PhotoSubtype. Asset subtype, non-special type images default to DEFAULT(0).
+Subtype of the media asset.
 
 **Type:** [photoAccessHelper.PhotoSubtype](arkts-medialibrary-photoaccesshelper-photosubtype-e.md)
 

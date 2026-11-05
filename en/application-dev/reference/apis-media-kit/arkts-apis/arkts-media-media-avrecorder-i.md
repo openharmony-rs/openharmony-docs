@@ -4,7 +4,7 @@
 interface AVRecorder
 ```
 
-AVRecorder is a class for audio and video recording management. It provides APIs to record media assets. Before calling any API in AVRecorder, you must use [createAVRecorder()](arkts-media-media-createavrecorder-f.md#createavrecorder-1) to create an AVRecorder instance.
+The **AVRecorder** class is used to manage the entire audio and video recording process, including audio recording, video recording, and audio-video recording. It can be used to flexibly configure encoding parameters, add watermarks, set metadata, and listen for the recording status and error events. It can be used to record audio and video and saved them to files, including scenarios where recording continuity needs to be maintained when the audio is interrupted and audio amplitude needs to be monitored in real time. Before calling the methods of the AVRecorder class, you need to call the [createAVRecorder](arkts-media-media-createavrecorder-f.md) API to create an **AVRecorder** instance. Typical recording process: [createAVRecorder](arkts-media-media-createavrecorder-f.md) → [prepare](#prepare-2) → [getInputSurface](#getinputsurface) (for video-only or audio and video recording) → [start](#start) → [pause](#pause)/[resume](#resume) → [stop](#stop) → [release](#release).
 
 For details about the audio and video recording demo, see [Audio Recording](../../../media/media/using-avrecorder-for-recording.md) and [Video Recording](../../../media/media/video-recording.md).
 
@@ -31,7 +31,10 @@ import { media } from '@kit.MediaKit';
 addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise<number>
 ```
 
-add a watermark for the AVRecorder. This API uses a promise to return the result. App can add up to 5 watermarks. This API can be called only before the prepared state.
+Adds a custom watermark to a video. This method is applicable to scenarios where watermarks such as brand logos, copyright information, or timestamps need to be embedded into videos. This API uses a promise to return the result.<br>  
+> **NOTE:** 
+> - A maximum of five watermarks can be added to an application.
+> - This API must be called before [prepare](#prepare-2).
 
 **Since:** 26.0.0
 
@@ -45,14 +48,14 @@ add a watermark for the AVRecorder. This API uses a promise to return the result
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| watermark | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | Yes | : Watermark image. |
-| config | [WatermarkConfiguration](arkts-media-media-watermarkconfiguration-i.md) | Yes | : Configuration of the watermark. |
+| watermark | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | Yes | : Watermark image. The image will be overlaid as a watermark on the video. |
+| config | [WatermarkConfiguration](arkts-media-media-watermarkconfiguration-i.md) | Yes | : Parameters for configuring the watermark of video recording. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise that returns the watermark id. |
+| Promise&lt;number&gt; | Promise used to return the ID of the added watermark. The value range is [1, 5]. |
 
 **Error codes:**
 
@@ -89,11 +92,7 @@ if (watermark) {
 getAudioCapturerMaxAmplitude(callback: AsyncCallback<number>): void
 ```
 
-Obtains the maximum amplitude of the current audio capturer. This API uses an asynchronous callback to return the result.
-
-This API can be called only after the [prepare()](#prepare-1) API is called. If this API is called after [stop()](#stop-1) is successfully called, an error is reported.
-
-The return value is the maximum amplitude within the duration from the time the maximum amplitude is obtained last time to the current time. For example, if you have obtained the maximum amplitude at 1s and you call this API again at 2s, then the return value is the maximum amplitude within the duration from 1s to 2s.
+Obtains the maximum amplitude of the current audio capturer. This API is applicable to scenarios where the audio amplitude needs to be monitored in real time, such as displaying the recording volume and checking the audio quality. This API uses an asynchronous callback to return the result.<br> This API must be called after [prepare](#prepare-1) and before [stop](#stop-1).<br> The return value is the maximum amplitude within the duration from the time the maximum amplitude is obtained last time to the current time. For example, if you have obtained the maximum amplitude at 1s and you call this API again at 2s, then the return value is the maximum amplitude within the duration from 1s to 2s.
 
 **Since:** 11
 
@@ -137,11 +136,7 @@ avRecorder.getAudioCapturerMaxAmplitude((err: BusinessError, amplitude: number) 
 getAudioCapturerMaxAmplitude(): Promise<number>
 ```
 
-Obtains the maximum amplitude of the current audio capturer. This API uses a promise to return the result.
-
-This API can be called only after the [prepare()](#prepare-1) API is called. If this API is called after [stop()](#stop-1) is successfully called, an error is reported.
-
-The return value is the maximum amplitude within the duration from the time the maximum amplitude is obtained last time to the current time. For example, if you have obtained the maximum amplitude at 1s and you call this API again at 2s, then the return value is the maximum amplitude within the duration from 1s to 2s.
+Obtains the maximum amplitude of the current audio capturer. This API is applicable to scenarios where the audio amplitude needs to be monitored in real time, such as displaying the recording volume and checking the audio quality. This API uses a promise to return the result.<br> This API must be called after [prepare](#prepare-2) and before [stop](#stop).<br> The return value is the maximum amplitude within the duration from the time the maximum amplitude is obtained last time to the current time. For example, if you have obtained the maximum amplitude at 1s and you call this API again at 2s, then the return value is the maximum amplitude within the duration from 1s to 2s.
 
 **Since:** 11
 
@@ -184,7 +179,7 @@ avRecorder.getAudioCapturerMaxAmplitude().then((amplitude: number) => {
 getAvailableEncoder(callback: AsyncCallback<Array<EncoderInfo>>): void
 ```
 
-Obtains available encoders. This API uses an asynchronous callback to return the result.
+Obtains available encoders. This method is suitable for scenarios where an appropriate encoder needs to be selected based on the device capability. This API uses an asynchronous callback to return the result.<br> This API must be called when the AVRecorder is not in the released or error state.
 
 **Since:** 11
 
@@ -232,7 +227,7 @@ avRecorder.getAvailableEncoder((err: BusinessError, info: media.EncoderInfo[]) =
 getAvailableEncoder(): Promise<Array<EncoderInfo>>
 ```
 
-Obtains available encoders. This API uses a promise to return the result.
+Obtains available encoders. This method is suitable for scenarios where an appropriate encoder needs to be selected based on the device capability. This API uses a promise to return the result.<br> This API must be called when the AVRecorder is not in the released or error state.
 
 **Since:** 11
 
@@ -279,9 +274,7 @@ avRecorder.getAvailableEncoder().then((info: media.EncoderInfo[]) => {
 getAVRecorderConfig(callback: AsyncCallback<AVRecorderConfig>): void
 ```
 
-Obtains the real-time configuration of this AVRecorder. This API uses an asynchronous callback to return the result.
-
-This API can be called only after [prepare()](#prepare-1) is called.
+Obtains the real-time configuration of this AVRecorder. This method is applicable to scenarios where you need to check whether the recording configuration is correctly applied, such as debugging recording parameters and verifying whether the configuration takes effect. This API uses an asynchronous callback to return the result. <br>This API must be called after [prepare](#prepare-1).
 
 **Since:** 11
 
@@ -326,9 +319,7 @@ avRecorder.getAVRecorderConfig((err: BusinessError, config: media.AVRecorderConf
 getAVRecorderConfig(): Promise<AVRecorderConfig>
 ```
 
-Obtains the real-time configuration of this AVRecorder. This API uses a promise to return the result.
-
-This API can be called only after [prepare()](#prepare-2) is called.
+Obtains the real-time configuration of this AVRecorder. This method is applicable to scenarios where you need to check whether the recording configuration is correctly applied, such as debugging recording parameters and verifying whether the configuration takes effect. This API uses a promise to return the result.<br> This API must be called after [prepare](#prepare-2).
 
 **Since:** 11
 
@@ -372,9 +363,7 @@ avRecorder.getAVRecorderConfig().then((config: media.AVRecorderConfig) => {
 getCurrentAudioCapturerInfo(callback: AsyncCallback<audio.AudioCapturerChangeInfo>): void
 ```
 
-Obtains the information about the current audio capturer. This API uses an asynchronous callback to return the result.
-
-This API can be called only after the [prepare()](#prepare-1) API is called. If this API is called after [stop()](#stop-1) is successfully called, an error is reported.
+Obtains the information about the current audio capturer. This API is applicable to scenarios where you need to confirm the type of the current audio capture device or verify the audio configuration. This API uses an asynchronous callback to return the result.<br> This API must be called after [prepare()](#prepare-1) and before [stop()](#stop-1).
 
 **Since:** 11
 
@@ -420,9 +409,7 @@ avRecorder.getCurrentAudioCapturerInfo((err: BusinessError, capturerInfo: audio.
 getCurrentAudioCapturerInfo(): Promise<audio.AudioCapturerChangeInfo>
 ```
 
-Obtains the information about the current audio capturer. This API uses a promise to return the result.
-
-This API can be called only after the [prepare()](#prepare-1) API is called. If this API is called after [stop()](#stop-1) is successfully called, an error is reported.
+Obtains the information about the current audio capturer. This API is applicable to scenarios where you need to confirm the type of the current audio capture device or verify the audio configuration. This API uses a promise to return the result.<br> This API must be called after [prepare](#prepare-2) and before [stop](#stop).
 
 **Since:** 11
 
@@ -467,13 +454,7 @@ avRecorder.getCurrentAudioCapturerInfo().then((capturerInfo: audio.AudioCapturer
 getInputSurface(callback: AsyncCallback<string>): void
 ```
 
-Obtains the surface required for recording. This API uses an asynchronous callback to return the result.
-
-The caller obtains the surface buffer from this surface and fills in the corresponding video data.
-
-Note that the video data must carry the timestamp (in ns) and buffer size, and the start time of the timestamp must be based on the system startup time.
-
-This API can be called only after the [prepare()](#prepare-1) API is called.
+Obtains the surface required for recording. This method is applicable to scenarios where a surface is required to transfer video data during video-only or audio-video recording. The camera module is required for video recording. For details about how to use the camera module API, see [Camera Management](../../apis-camera-kit/arkts-apis/arkts-camera-multimedia-camera.md). This API uses an asynchronous callback to return the result.<br> The caller obtains the surface buffer from this surface and fills in data of the video to be recorded.<br> The video data must contain the timestamp (in ns) and buffer size. The start time of the timestamp must be based on the system startup time.<br> This API must be called between [prepare](#prepare-1) and [start](#start-1).
 
 **Since:** 9
 
@@ -518,13 +499,7 @@ avRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
 getInputSurface(): Promise<string>
 ```
 
-Obtains the surface required for recording. This API uses a promise to return the result.
-
-The caller obtains the surface buffer from this surface and fills in the corresponding video data.
-
-Note that the video data must carry the timestamp (in ns) and buffer size, and the start time of the timestamp must be based on the system startup time.
-
-This API can be called only after the [prepare()](#prepare-2) API is called.
+Obtains the surface required for recording. This method is applicable to scenarios where a surface is required to transfer video data during video-only or audio-video recording. The camera module is required for video recording. For details about how to use the camera module API, see [Camera Management](../../apis-camera-kit/arkts-apis/arkts-camera-multimedia-camera.md). This API uses a promise to return the result.<br> The caller obtains the surface buffer from this surface and fills in data of the video to be recorded. The video data to be filled must contain the timestamp (in ns) and buffer size. The start time of the timestamp must be based on the system startup time.<br> This API must be called between [prepare](#prepare-2) and [start](#start).
 
 **Since:** 9
 
@@ -536,7 +511,7 @@ This API can be called only after the [prepare()](#prepare-2) API is called.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;string&gt; | Promise used to return the surface buffer obtained from the surface. |
+| Promise&lt;string&gt; | Promise used to return the obtained surface ID. |
 
 **Error codes:**
 
@@ -583,7 +558,7 @@ Unsubscribes from AVRecorder state changes. This API uses an asynchronous callba
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'stateChange' | Yes | Event type, which is **'stateChange'** in this case. This event can be triggered by both user operations and the system. |
-| callback | [OnAVRecorderStateChangeHandler](arkts-media-media-onavrecorderstatechangehandler-t.md) | No | Callback used to return the state change event. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.<br>This parameter is supported since API version 12.<br>**Since:** 12 |
+| callback | [OnAVRecorderStateChangeHandler](arkts-media-media-onavrecorderstatechangehandler-t.md) | No | Callback used to receive the state change event. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.<br>This parameter is supported since API version 12.<br>**Since:** 12 |
 
 **Examples**
 
@@ -597,7 +572,7 @@ avRecorder.off('stateChange');
 off(type: 'error', callback?: ErrorCallback): void
 ```
 
-Unsubscribes from AVRecorder errors. After the unsubscription, your application can no longer receive AVRecorder errors. This API uses an asynchronous callback to return the result.
+Unsubscribes from AVRecorder error events. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -611,8 +586,8 @@ Unsubscribes from AVRecorder errors. After the unsubscription, your application 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'error' | Yes | Event type, which is **'error'** in this case.<br>This event is triggered when an error occurs during recording. |
-| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | No | Callback used to return the recording error event. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.<br>This parameter is supported since API version 12.<br>**Since:** 12 |
+| type | 'error' | Yes | Event type, which is **'error'** in this case. |
+| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | No | Callback used to receive AVRecorder error events. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.<br>This parameter is supported since API version 12.<br>**Since:** 12 |
 
 **Examples**
 
@@ -626,7 +601,7 @@ avRecorder.off('error');
 off(type: 'audioCapturerChange', callback?: Callback<audio.AudioCapturerChangeInfo>): void
 ```
 
-Subscribes to audio capturer configuration changes. This API uses an asynchronous callback to return the result.
+Unsubscribes from audio capturer configuration changes. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
 
@@ -639,7 +614,7 @@ Subscribes to audio capturer configuration changes. This API uses an asynchronou
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'audioCapturerChange' | Yes | Event type, which is **'audioCapturerChange'** in this case. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[audio.AudioCapturerChangeInfo](../../apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturerchangeinfo-i.md)&gt; | No | Callback used to return the changed audio capturer configuration. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.<br>This parameter is supported since API version 12.<br>**Since:** 12 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[audio.AudioCapturerChangeInfo](../../apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturerchangeinfo-i.md)&gt; | No | Callback used to receive the audio capturer configuration after change. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.<br>This parameter is supported since API version 12.<br>**Since:** 12 |
 
 **Examples**
 
@@ -666,7 +641,7 @@ Unsubscribes from media asset callback events. This API uses an asynchronous cal
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'photoAssetAvailable' | Yes | Event type, which is **'photoAssetAvailable'** in this case. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[photoAccessHelper.PhotoAsset](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoasset-i.md)&gt; | No | Callback used to return the PhotoAsset object corresponding to the resource file created by the system. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[photoAccessHelper.PhotoAsset](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoasset-i.md)&gt; | No | Callback used to receive the **PhotoAsset** object corresponding to the resource file created by the system. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled. |
 
 **Examples**
 
@@ -680,9 +655,7 @@ avRecorder.off('photoAssetAvailable');
 on(type: 'audioCapturerChange', callback: Callback<audio.AudioCapturerChangeInfo>): void
 ```
 
-Subscribes to audio capturer configuration changes. Any configuration change triggers the callback that returns the entire configuration information. This API uses an asynchronous callback to return the result.
-
-When the application initiates multiple subscriptions to this event, the last subscription is applied.
+Subscribes to audio capturer configuration changes. When the audio capturer configuration changes, the callback is triggered to return the full information about the new configuration. This API uses an asynchronous callback to return the result.<br> An app can subscribe to only one audio capturer configuration change event. When the app initiates multiple subscriptions to this event, the last subscription is applied.
 
 **Since:** 11
 
@@ -695,13 +668,13 @@ When the application initiates multiple subscriptions to this event, the last su
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'audioCapturerChange' | Yes | Event type, which is **'audioCapturerChange'** in this case. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[audio.AudioCapturerChangeInfo](../../apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturerchangeinfo-i.md)&gt; | Yes | Callback used to return the changed audio capturer configuration. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[audio.AudioCapturerChangeInfo](../../apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturerchangeinfo-i.md)&gt; | Yes | Callback used to receive the audio capturer configuration after change. The callback parameter is **audio.AudioCapturerChangeInfo**, which indicates the audio capturer configuration after change. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **Examples**
 
@@ -724,7 +697,7 @@ on(type: 'photoAssetAvailable', callback: Callback<photoAccessHelper.PhotoAsset>
 
 Subscribes to media asset callback events. When [FileGenerationMode](arkts-media-media-filegenerationmode-e.md) is used during media file creation, the [PhotoAsset](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-file-photoaccesshelper.md) object is called back to the application after the [stop](#stop-1) operation is complete. This API uses an asynchronous callback to return the result.
 
-When the application initiates multiple subscriptions to this event, the last subscription is applied.
+An app can subscribe to only one media asset callback event. When the app initiates multiple subscriptions to this event, the last subscription is applied.
 
 **Since:** 12
 
@@ -736,8 +709,8 @@ When the application initiates multiple subscriptions to this event, the last su
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'photoAssetAvailable' | Yes | Event type, which is **'photoAssetAvailable'** in this case. The event is triggered when a photo asset is available. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[photoAccessHelper.PhotoAsset](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoasset-i.md)&gt; | Yes | Callback used to return the PhotoAsset object corresponding to the resource file created by the system. |
+| type | 'photoAssetAvailable' | Yes | Event type, which is **'photoAssetAvailable'** in this case. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[photoAccessHelper.PhotoAsset](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoasset-i.md)&gt; | Yes | Callback used to receive the **PhotoAsset** object corresponding to the resource file created by the system. When **FileGenerationMode** is used during media file creation in the configuration of **prepare()**, this callback is triggered only after the **stop** operation is complete. |
 
 **Error codes:**
 
@@ -786,7 +759,7 @@ avRecorder.on('photoAssetAvailable', (asset: photoAccessHelper.PhotoAsset) => {
 on(type: 'stateChange', callback: OnAVRecorderStateChangeHandler): void
 ```
 
-Subscribes to AVRecorder state changes. An application can subscribe to only one AVRecorder state change event. When the application initiates multiple subscriptions to this event, the last subscription is applied. This API uses an asynchronous callback to return the result.
+Subscribes to [AVRecorderState](arkts-media-media-avrecorderstate-t.md) changes. An app can subscribe to only one callback. When the app initiates multiple subscriptions, the last subscription is applied. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -801,7 +774,7 @@ Subscribes to AVRecorder state changes. An application can subscribe to only one
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'stateChange' | Yes | Event type, which is **'stateChange'** in this case. This event can be triggered by both user operations and the system. |
-| callback | [OnAVRecorderStateChangeHandler](arkts-media-media-onavrecorderstatechangehandler-t.md) | Yes | Callback used to return the state change event.<br>**Since:** 12 |
+| callback | [OnAVRecorderStateChangeHandler](arkts-media-media-onavrecorderstatechangehandler-t.md) | Yes | Callback used to receive the state change event. The callback parameters include **state** (recording state, which is of the **AVRecorderState** type) and **reason** (state change reason, which is of the **StateChangeReason** type).<br>**Since:** 12 |
 
 **Error codes:**
 
@@ -824,7 +797,7 @@ avRecorder.on('stateChange', (state: media.AVRecorderState, reason: media.StateC
 on(type: 'error', callback: ErrorCallback): void
 ```
 
-Subscribes to AVRecorder errors. This event is used only for error prompt and does not require the user to stop recording control. If the [AVRecorderState](arkts-media-media-avrecorderstate-t.md) is also switched to error, call [reset()](#reset-1) or [release()] [release()](#release-1) to exit the recording. This API uses an asynchronous callback to return the result.
+Subscribes to AVRecorder error events. This event is used only for error prompt and does not require the user to stop recording. If the [AVRecorderState](arkts-media-media-avrecorderstate-t.md) is also switched to error, call [reset()](#reset-1) or [release()](#release-1) to exit the recording. This API uses an asynchronous callback to return the result.
 
 An application can subscribe to only one AVRecorder error event. When the application initiates multiple subscriptions to this event, the last subscription is applied.
 
@@ -840,20 +813,20 @@ An application can subscribe to only one AVRecorder error event. When the applic
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'error' | Yes | Event type, which is **'error'** in this case.<br>This event is triggered when an error occurs during recording. |
-| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | Yes | Callback used to return the recording error event. |
+| type | 'error' | Yes | Event type, which is **'error'** in this case. |
+| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | Yes | Callback used to receive AVRecorder error events. The callback parameter is **err**, which is an object of the **BusinessError** type and contains the error code and error message. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [5400101](../errorcode-media.md#5400101-memory-allocation-failed) | No memory. |
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. |
 | [5400103](../errorcode-media.md#5400103-io-error) | I/O error. |
-| [5400104](../errorcode-media.md#5400104-operation-timeout) | Time out. |
+| [5400104](../errorcode-media.md#5400104-operation-timeout) | Operation timeout. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. |
 | [5400106](../errorcode-media.md#5400106-format-not-supported) | Unsupported format. |
 | [5400107](../errorcode-media.md#5400107-audio-focus-conflict) | Audio interrupted.<br>**Applicable version:** 11 and later |
@@ -874,9 +847,7 @@ avRecorder.on('error', (err: BusinessError) => {
 pause(callback: AsyncCallback<void>): void
 ```
 
-Pauses video recording. This API uses an asynchronous callback to return the result.
-
-This API can be called only after the [start()](#start-1) API is called. You can call [resume()](#resume-1) to resume recording.
+Pauses recording. This API uses an asynchronous callback to return the result.<br> This API must be called after [start](#start-1). After this API is successfully called, the AVRecorder enters the paused state. You can then call [resume](#resume-1) to resume recording.
 
 **Since:** 9
 
@@ -888,7 +859,7 @@ This API can be called only after the [start()](#start-1) API is called. You can
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the recording is paused successfully, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -918,9 +889,7 @@ avRecorder.pause((err: BusinessError) => {
 pause(): Promise<void>
 ```
 
-Pauses video recording. This API uses a promise to return the result.
-
-This API can be called only after the [start()](#start) API is called. You can call [resume()](#resume) to resume recording.
+Pauses recording. This API uses a promise to return the result.<br> This API must be called after [start](#start). After this API is successfully called, the AVRecorder enters the paused state. You can then call [resume](#resume) to resume recording.
 
 **Since:** 9
 
@@ -963,7 +932,7 @@ avRecorder.pause().then(() => {
 prepare(config: AVRecorderConfig, callback: AsyncCallback<void>): void
 ```
 
-Sets audio and video recording parameters. This API uses an asynchronous callback to return the result.
+Prepares for recording. This method can be used to set audio and video recording parameters and initializes the recording context. This API uses an asynchronous callback to return the result.<br> This API must be called before [start](#start-1). After this API is successfully called, the recording enters the prepared state. For audio-only recording, you can directly call [start](#start-1) to start recording. For video-only or audio and video recording, you need to call [getInputSurface](#getinputsurface-1) to obtain the surface and then call [start](#start-1) to start recording.
 
 **Since:** 9
 
@@ -977,15 +946,15 @@ Sets audio and video recording parameters. This API uses an asynchronous callbac
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [AVRecorderConfig](arkts-media-media-avrecorderconfig-i.md) | Yes | Audio and video recording parameters to set. |
+| config | [AVRecorderConfig](arkts-media-media-avrecorderconfig-i.md) | Yes | Audio and video recording parameters to set. You need to set **audioSourceType** for audio recording and **videoSourceType** for video recording. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Return by callback. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. Return by callback. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by callback. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
 
@@ -1034,7 +1003,7 @@ avRecorder.prepare(avRecorderConfig, (err: BusinessError) => {
 prepare(config: AVRecorderConfig): Promise<void>
 ```
 
-Sets audio and video recording parameters. This API uses a promise to return the result. The MICROPHONE permission is required only if audio recording is involved.
+Prepares for recording. This method can be used to set audio and video recording parameters and initializes the recording context. This API uses a promise to return the result.<br> This API must be called before [start](#start). After this API is successfully called, the recording enters the prepared state. For audio-only recording, you can directly call [start](#start) to start recording. For video-only or audio and video recording, you need to call [getInputSurface](#getinputsurface) to obtain the surface and then call [start](#start) to start recording.
 
 **Since:** 9
 
@@ -1050,7 +1019,7 @@ Sets audio and video recording parameters. This API uses a promise to return the
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [AVRecorderConfig](arkts-media-media-avrecorderconfig-i.md) | Yes | Audio and video recording parameters to set. |
+| config | [AVRecorderConfig](arkts-media-media-avrecorderconfig-i.md) | Yes | Audio and video recording parameters to set. You need to set **audioSourceType** for audio recording and **videoSourceType** for video recording. |
 
 **Return value:**
 
@@ -1062,8 +1031,8 @@ Sets audio and video recording parameters. This API uses a promise to return the
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Return by promise. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. Return by promise. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
 
@@ -1111,9 +1080,7 @@ avRecorder.prepare(avRecorderConfig).then(() => {
 release(callback: AsyncCallback<void>): void
 ```
 
-Releases the audio and video recording resources. This API uses an asynchronous callback to return the result.
-
-After the resources are released, you can no longer perform any operation on the AVRecorder instance.
+Releases the audio and video recording resources. This API uses an asynchronous callback to return the result. <br>This API must be called when the AVRecorder is not in the released state. After this API is successfully called, the AVRecorder enters the released state.<br> This API is used together with [createAVRecorder](arkts-media-media-createavrecorder-f.md). After the recording process is complete, call this API to release resources. After the resources are released, you can no longer perform any operation on the AVRecorder instance.
 
 **Since:** 9
 
@@ -1153,9 +1120,7 @@ avRecorder.release((err: BusinessError) => {
 release(): Promise<void>
 ```
 
-Releases the audio and video recording resources. This API uses a promise to return the result.
-
-After the resources are released, you can no longer perform any operation on the AVRecorder instance.
+Releases the audio and video recording resources. This API uses a promise to return the result.<br> This API must be called when the AVRecorder is not in the released state. After this API is successfully called, the AVRecorder enters the released state.<br> This API is used together with [createAVRecorder](arkts-media-media-createavrecorder-f.md). After the recording process is complete, call this API to release resources. After the resources are released, you can no longer perform any operation on the AVRecorder instance.
 
 **Since:** 9
 
@@ -1175,7 +1140,7 @@ After the resources are released, you can no longer perform any operation on the
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
+| [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
 
 **Examples**
 
@@ -1196,9 +1161,7 @@ avRecorder.release().then(() => {
 reset(callback: AsyncCallback<void>): void
 ```
 
-Resets audio and video recording. This API uses an asynchronous callback to return the result.
-
-For audio-only recording, you can call [prepare()](#prepare-1) again for re -recording. For video-only recording or audio and video recording, you can call [prepare()](#prepare-1) and [getInputSurface()](#getinputsurface-1) again for re- recording.
+Resets audio and video recording, restoring the recorder to the initial state for reconfiguration of parameters. This API uses an asynchronous callback to return the result.<br> This API must be called when the AVRecorder is not in the released state. After this API is successfully called, the AVRecorder enters the idle state.<br> For audio-only recording, you can call [prepare()](#prepare-1) again for re -recording. For video-only recording or audio and video recording, you can call [prepare()](#prepare-1) and [getInputSurface()](#getinputsurface-1) again for re- recording.
 
 **Since:** 9
 
@@ -1239,9 +1202,7 @@ avRecorder.reset((err: BusinessError) => {
 reset(): Promise<void>
 ```
 
-Resets audio and video recording. This API uses a promise to return the result.
-
-For audio-only recording, you can call [prepare()](#prepare-2) again for re-recording. For video-only recording or audio and video recording, you can call [prepare()](#prepare-2) and [getInputSurface()](#getinputsurface) again for re-recording.
+Resets audio and video recording, restoring the recorder to the initial state for reconfiguration of parameters. This API uses a promise to return the result.<br> This API must be called when the AVRecorder is not in the released state. After this API is successfully called, the AVRecorder enters the idle state.<br> For audio-only recording, you can call [prepare()](#prepare-2) again for re-recording. For video-only recording or audio and video recording, you can call [prepare()](#prepare-2) and [getInputSurface()](#getinputsurface) again for re-recording.
 
 **Since:** 9
 
@@ -1281,9 +1242,7 @@ avRecorder.reset().then(() => {
 resume(callback: AsyncCallback<void>): void
 ```
 
-Resumes video recording. This API uses an asynchronous callback to return the result.
-
-This API can be called only after the [pause()](#pause-1) API is called.
+Resumes recording. This API uses an asynchronous callback to return the result.<br> This API must be called after [pause](#pause-1). After this API is successfully called, the AVRecorder enters the started state. You can then call [pause](#pause-1) again to pause recording or call [stop](#stop-1) to stop recording.
 
 **Since:** 9
 
@@ -1295,7 +1254,7 @@ This API can be called only after the [pause()](#pause-1) API is called.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the recording is resumed successfully, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -1325,9 +1284,7 @@ avRecorder.resume((err: BusinessError) => {
 resume(): Promise<void>
 ```
 
-Resumes video recording. This API uses a promise to return the result.
-
-This API can be called only after the [pause()](#pause) API is called.
+Resumes recording. This API uses a promise to return the result.<br> This API must be called after [pause](#pause). After this API is successfully called, the AVRecorder enters the started state. You can then call [pause](#pause) again to pause recording or call [stop](#stop) to stop recording.
 
 **Since:** 9
 
@@ -1370,9 +1327,7 @@ avRecorder.resume().then(() => {
 setMetadata(metadata: Record<string, string>): void
 ```
 
-Set metadata (key-value pairs) for the recording file of the recorder. This metadata overwrites the value in config.metadata.customInfo (see {prepare()} and {AVRecorderConfig}) if they have same key.
-
-This API can be called only after the prepare() event is successfully triggered and before the stop() API is called.
+Sets the metadata information to record. This method is applicable to scenarios where you need to embed custom metadata (such as the author, title, and tags) into recorded files. If the **metadata** parameter contains the same key as **config.metadata.customInfo** (refer to [prepare()](#prepare-2) and [AVRecorderConfig](arkts-media-media-avrecorderconfig-i.md)), the value of the former will overwrite that of the latter.<br> This API must be called after [prepare()](#prepare-2) and before [stop()](#stop).
 
 **Since:** 26.0.0
 
@@ -1384,7 +1339,7 @@ This API can be called only after the prepare() event is successfully triggered 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| metadata | Record&lt;string, string&gt; | Yes | Tag and value of the metadata in key-value pairs. <br>- The first string is the key.<br>- The second string is the value. <br> The key string should start with "com.openharmony.", the length of value can't be more than 256 bytes. |
+| metadata | Record&lt;string, string&gt; | Yes | Metadata information to record.<br>The value is a string key-value pair. The key must start with **com.openharmony**. If not, the key-value pair will be ignored. The value can contain 0 to 256 bytes. If the value is out of range, error code 5400108 is returned. |
 
 **Error codes:**
 
@@ -1419,7 +1374,7 @@ try {
 setWillMuteWhenInterrupted(muteWhenInterrupted: boolean): Promise<void>
 ```
 
-Sets whether to mute the current audio recording stream when an audio interruption occurs. This API uses a promise to return the result.
+Sets whether to mute the current audio recording stream when an audio interruption occurs. After this function is enabled, the recording will be muted instead of being stopped when the audio recording stream is interrupted by an audio stream with a higher priority. This function is applicable to scenarios where recording continuity needs to be maintained during interruptions, such as conference recording and voice notes. If this function is disabled, the default interruption mode is used, that is, recording stops when the audio stream is interrupted. This API uses a promise to return the result.<br> This API must be called before [prepare()](#prepare-2).
 
 **Since:** 20
 
@@ -1431,7 +1386,7 @@ Sets whether to mute the current audio recording stream when an audio interrupti
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| muteWhenInterrupted | boolean | Yes | Whether to mute the current audio recording stream during an audio interruption. **true** to mute, **false** otherwise. |
+| muteWhenInterrupted | boolean | Yes | Sets whether to mute the current audio recording stream when an audio interruption occurs. The value **true** indicates that the function is enabled, and the recording is muted when the audio stream is interrupted. The value **false** indicates that the function is disabled, and the recording stops when the audio stream is interrupted. |
 
 **Return value:**
 
@@ -1465,9 +1420,7 @@ avRecorder.setWillMuteWhenInterrupted(true).then(() => {
 start(callback: AsyncCallback<void>): void
 ```
 
-Starts video recording. This API uses an asynchronous callback to return the result.
-
-For audio-only recording, this API can be called only after the [prepare()](#prepare-1) API is called. For video-only recording, this API can be called only after the [getInputSurface()](#getinputsurface-1) API is called.
+Starts recording. This API uses an asynchronous callback to return the result.<br> This API must be called after [prepare](#prepare-1). After this API is successfully called, the AVRecorder enters the started state. For video recording, this API can be called only after the [getInputSurface](#getinputsurface-1) API is successfully called.
 
 **Since:** 9
 
@@ -1479,7 +1432,7 @@ For audio-only recording, this API can be called only after the [prepare()](#pre
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the recording starts successfully, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -1509,9 +1462,7 @@ avRecorder.start((err: BusinessError) => {
 start(): Promise<void>
 ```
 
-Starts video recording. This API uses a promise to return the result.
-
-For audio-only recording, this API can be called only after the [prepare()](#prepare-2) API is called. For video-only recording, this API can be called only after the [getInputSurface()](#getinputsurface) API is called.
+Starts recording. This API uses a promise to return the result.<br> This API must be called after [prepare](#prepare-2). After this API is successfully called, the AVRecorder enters the started state. For video recording, this API can be called only after the [getInputSurface](#getinputsurface) API is successfully called.
 
 **Since:** 9
 
@@ -1554,11 +1505,7 @@ avRecorder.start().then(() => {
 stop(callback: AsyncCallback<void>): void
 ```
 
-Stops video recording. This API uses an asynchronous callback to return the result.
-
-This API can be called only after the [start()](#start-1) or [pause()](#pause-1) API is called.
-
-For audio-only recording, you can call [prepare()](#prepare-1) again for re -recording. For video-only recording or audio and video recording, you can call [prepare()](#prepare-1) and [getInputSurface()](#getinputsurface-1) again for re- recording.
+Stop recording. This API uses an asynchronous callback to return the result.<br> This API must be called after [start](#start-1) or [pause](#pause-1). After this API is successfully called, the AVRecorder enters the stopped state. When **FileGenerationMode** is used during media file creation in the configuration of **prepare()**, the [on('photoAssetAvailable')](#onphotoassetavailable) callback will be triggered after this API is called.<br> For audio-only recording, you can call [prepare()](#prepare-1) again for re -recording. For video-only recording or audio and video recording, you can call [prepare()](#prepare-1) and [getInputSurface()](#getinputsurface-1) again for re- recording.
 
 **Since:** 9
 
@@ -1570,7 +1517,7 @@ For audio-only recording, you can call [prepare()](#prepare-1) again for re -rec
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the recording is stopped successfully, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -1600,11 +1547,7 @@ avRecorder.stop((err: BusinessError) => {
 stop(): Promise<void>
 ```
 
-Stops video recording. This API uses a promise to return the result.
-
-This API can be called only after the [start()](#start) or [pause()](#pause) API is called.
-
-For audio-only recording, you can call [prepare()](#prepare-2) again for re-recording. For video-only recording or audio and video recording, you can call [prepare()](#prepare-2) and [getInputSurface()](#getinputsurface) again for re-recording.
+Stop recording. This API uses a promise to return the result.<br> This API must be called after [start](#start) or [pause](#pause). After this API is successfully called, the AVRecorder enters the stopped state. When **FileGenerationMode** is used during media file creation in the configuration of **prepare()**, the [on('photoAssetAvailable')](#onphotoassetavailable) callback will be triggered after this API is called.<br> For audio-only recording, you can call [prepare()](#prepare-2) again for re-recording. For video-only recording or audio and video recording, you can call [prepare()](#prepare-2) and [getInputSurface()](#getinputsurface) again for re-recording.
 
 **Since:** 9
 
@@ -1647,9 +1590,7 @@ avRecorder.stop().then(() => {
 updateRotation(rotation: number): Promise<void>
 ```
 
-Updates the video rotation angle, in degrees. This API uses a promise to return the result.
-
-This API can be called only after the [prepare()](#prepare-2) event is triggered and before the [start()](#start-1) API is called.
+Updates the video rotation angle. This API applies to scenarios where the rotation angle of the video to record needs to be dynamically adjusted when the device orientation changes (for example, switching between landscape and portrait modes). This API uses a promise to return the result.<br> This API must be called between [prepare](#prepare-2) and [start](#start).
 
 **Since:** 12
 
@@ -1661,7 +1602,7 @@ This API can be called only after the [prepare()](#prepare-2) event is triggered
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| rotation | number | Yes | Rotation angle, which can only be 0, 90, 180, or 270 degrees. |
+| rotation | number | Yes | Angle to rotate, in degrees (°), which can only be **0**, **90**, **180**, or **270**. If an invalid value is passed, error code 401 is returned. |
 
 **Return value:**
 
@@ -1673,7 +1614,7 @@ This API can be called only after the [prepare()](#prepare-2) event is triggered
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
 | [5400103](../errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
 | [5400105](../errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |

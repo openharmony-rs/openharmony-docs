@@ -34,7 +34,7 @@ Checks whether a given instance is of a specified component type. For example, w
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| instance | T | Yes | Instance to check. T is the component attribute type that inherits from [universal attributes](../arkts-components/arkts-arkui-common-comp.md) (CommonMethod). |
+| instance | T | Yes | Instance to check. T is the component attribute type that inherits from [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) (CommonMethod). |
 | componentName | string | Yes | Name of the component type to check. The value is the component class name (such as 'Text' or 'Button') and must exactly match the component class name (case-sensitive). Returns **false** if an invalid or nonexistent component class name is passed in. |
 
 **Return value:**

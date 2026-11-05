@@ -739,8 +739,12 @@
 - [@ohos.wifiManager（WLAN）](arkts-connectivity-wifimanager.md)
   - [addCandidateConfig](arkts-connectivity-wifimanager-addcandidateconfig-f.md)
   - [addDeviceConfig](arkts-connectivity-wifimanager-adddeviceconfig-f.md)
+  - [addDnsSdLocalP2pService](arkts-connectivity-wifimanager-adddnssdlocalp2pservice-f.md)
+  - [addDnsSdServiceRequest](arkts-connectivity-wifimanager-adddnssdservicerequest-f.md)
   <!--Del-->
   - [addHotspotBlockList（系统接口）](arkts-connectivity-wifimanager-addhotspotblocklist-f-sys.md)<!--DelEnd-->
+  - [addUpnpLocalP2pService](arkts-connectivity-wifimanager-addupnplocalp2pservice-f.md)
+  - [addUpnpServiceRequest](arkts-connectivity-wifimanager-addupnpservicerequest-f.md)
   <!--Del-->
   - [allowAutoConnect（系统接口）](arkts-connectivity-wifimanager-allowautoconnect-f-sys.md)<!--DelEnd-->
   - [connectToCandidateConfig](arkts-connectivity-wifimanager-connecttocandidateconfig-f.md)
@@ -759,6 +763,8 @@
   - [disableNetwork（系统接口）](arkts-connectivity-wifimanager-disablenetwork-f-sys.md)<!--DelEnd-->
   - [disableWifi](arkts-connectivity-wifimanager-disablewifi-f.md)
   - [disconnect](arkts-connectivity-wifimanager-disconnect-f.md)
+  - [disconnectFromCandidateConfig](arkts-connectivity-wifimanager-disconnectfromcandidateconfig-f.md)
+  - [discoverServices](arkts-connectivity-wifimanager-discoverservices-f.md)
   <!--Del-->
   - [enableHiLinkHandshake（系统接口）](arkts-connectivity-wifimanager-enablehilinkhandshake-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -787,12 +793,14 @@
   - [getIpv6Info](arkts-connectivity-wifimanager-getipv6info-f.md)
   - [getLinkedInfo](arkts-connectivity-wifimanager-getlinkedinfo-f.md)
   - [getLinkedInfoSync](arkts-connectivity-wifimanager-getlinkedinfosync-f.md)
+  - [getLocalP2pServices](arkts-connectivity-wifimanager-getlocalp2pservices-f.md)
   - [getMultiLinkedInfo](arkts-connectivity-wifimanager-getmultilinkedinfo-f.md)
   <!--Del-->
   - [getP2pGroups（系统接口）](arkts-connectivity-wifimanager-getp2pgroups-f-sys.md)<!--DelEnd-->
   - [getP2pLinkedInfo](arkts-connectivity-wifimanager-getp2plinkedinfo-f.md)
   - [getP2pLocalDevice](arkts-connectivity-wifimanager-getp2plocaldevice-f.md)
   - [getP2pPeerDevices](arkts-connectivity-wifimanager-getp2ppeerdevices-f.md)
+  - [getP2pServiceRequest](arkts-connectivity-wifimanager-getp2pservicerequest-f.md)
   <!--Del-->
   - [getScanAlwaysAllowed（系统接口）](arkts-connectivity-wifimanager-getscanalwaysallowed-f-sys.md)<!--DelEnd-->
   - [getScanInfoList](arkts-connectivity-wifimanager-getscaninfolist-f.md)
@@ -821,9 +829,11 @@
   - [off](arkts-connectivity-wifimanager-off-f.md)
   <!--Del-->
   - [off（系统接口）](arkts-connectivity-wifimanager-off-f-sys.md)<!--DelEnd-->
+  - [offP2pServiceDiscovery](arkts-connectivity-wifimanager-offp2pservicediscovery-f.md)
   - [on](arkts-connectivity-wifimanager-on-f.md)
   <!--Del-->
   - [on（系统接口）](arkts-connectivity-wifimanager-on-f-sys.md)<!--DelEnd-->
+  - [onP2pServiceDiscovery](arkts-connectivity-wifimanager-onp2pservicediscovery-f.md)
   - [p2pCancelConnect](arkts-connectivity-wifimanager-p2pcancelconnect-f.md)
   - [p2pConnect](arkts-connectivity-wifimanager-p2pconnect-f.md)
   <!--Del-->
@@ -832,9 +842,12 @@
   - [reconnect（系统接口）](arkts-connectivity-wifimanager-reconnect-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [removeAllNetwork（系统接口）](arkts-connectivity-wifimanager-removeallnetwork-f-sys.md)<!--DelEnd-->
+  - [removeAllP2pServiceRequests](arkts-connectivity-wifimanager-removeallp2pservicerequests-f.md)
   - [removeCandidateConfig](arkts-connectivity-wifimanager-removecandidateconfig-f.md)
   - [removeDevice](arkts-connectivity-wifimanager-removedevice-f.md)
   - [removeGroup](arkts-connectivity-wifimanager-removegroup-f.md)
+  - [removeLocalP2pService](arkts-connectivity-wifimanager-removelocalp2pservice-f.md)
+  - [removeP2pServiceRequest](arkts-connectivity-wifimanager-removep2pservicerequest-f.md)
   <!--Del-->
   - [setDeviceName（系统接口）](arkts-connectivity-wifimanager-setdevicename-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -878,6 +891,7 @@
   - [WifiP2pDevice](arkts-connectivity-wifimanager-wifip2pdevice-i.md)
   - [WifiP2pGroupInfo](arkts-connectivity-wifimanager-wifip2pgroupinfo-i.md)
   - [WifiP2pLinkedInfo](arkts-connectivity-wifimanager-wifip2plinkedinfo-i.md)
+  - [WifiP2pServiceInfo](arkts-connectivity-wifimanager-wifip2pserviceinfo-i.md)
   <!--Del-->
   - [WifiProxyConfig（系统接口）](arkts-connectivity-wifimanager-wifiproxyconfig-i-sys.md)<!--DelEnd-->
   - [WifiScanInfo](arkts-connectivity-wifimanager-wifiscaninfo-i.md)
@@ -894,6 +908,7 @@
   - [IpType（系统接口）](arkts-connectivity-wifimanager-iptype-e-sys.md)<!--DelEnd-->
   - [P2pConnectState](arkts-connectivity-wifimanager-p2pconnectstate-e.md)
   - [P2pDeviceStatus](arkts-connectivity-wifimanager-p2pdevicestatus-e.md)
+  - [P2pServiceProtocolType](arkts-connectivity-wifimanager-p2pserviceprotocoltype-e.md)
   - [Phase2Method](arkts-connectivity-wifimanager-phase2method-e.md)
   <!--Del-->
   - [ProxyMethod（系统接口）](arkts-connectivity-wifimanager-proxymethod-e-sys.md)<!--DelEnd-->

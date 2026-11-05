@@ -70,6 +70,24 @@ enableBFrame?: boolean
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
+## enableHDR
+
+```TypeScript
+enableHDR?: boolean
+```
+
+录屏指定是否以HDR格式输出图像。<br> true表示图像为HDR格式，false表示图像为SDR格式。<br>默认为false。
+
+**类型：** boolean
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AVScreenCaptureStrategy-enableHDR?: boolean--><!--Device-AVScreenCaptureStrategy-enableHDR?: boolean-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
 ## enablePause
 
 ```TypeScript

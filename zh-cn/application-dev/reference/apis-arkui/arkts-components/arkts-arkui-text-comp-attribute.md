@@ -4,7 +4,7 @@
 declare class TextAttribute extends CommonMethod<TextAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp.md)，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)，还支持以下属性：
 
 **继承/实现关系：** TextAttribute extends CommonMethod&lt;TextAttribute&gt;
 
@@ -51,7 +51,7 @@ bindSelectionMenu(spanType: TextSpanType, content: CustomBuilder, responseType: 
 
 bindSelectionMenu的长按响应时长为600ms，[bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1)的长按响应时长为800ms，当两者同时绑定且触发方式均为长按时，优先响应bindSelectionMenu。
 
-自定义菜单超长时，建议内部嵌套使用[Scroll](arkts-arkui-scroll-comp.md)组件，避免键盘被遮挡。
+自定义菜单超长时，建议内部嵌套使用Scroll组件，避免键盘被遮挡。
 
 从API版本26.0.0开始，文本组件调用该接口时，options中的menuType属性传入MenuType.PREVIEW_MENU，设置图片预览菜单的能力生效。
 
@@ -347,6 +347,8 @@ EllipsisMode.START和EllipsisMode.CENTER仅在单行文本超长时生效。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
 <!--Device-TextAttribute-ellipsisMode(value: EllipsisMode): TextAttribute--><!--Device-TextAttribute-ellipsisMode(value: EllipsisMode): TextAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -634,8 +636,8 @@ fontFeature(value: string)
 > 
 > 字体排版引擎会对开发者传入的宽度[width](arkts-arkui-common-comp-commonmethod-c.md#width-1)进行向下取整，保证是整型像素后进行排版。如果向上取整，可能会出现文字右侧被截断。
 > 
-> 当多个Text组件在[Row](arkts-arkui-row-comp.md)容器内布局且没有设置具体的布局分配信息时，Text会以Row的最大尺寸进行布局。如果需要子组件主轴累加的尺寸不超过Row容器主轴的尺寸，可以设置
-> [layoutWeight](arkts-arkui-common-comp-commonmethod-c.md#layoutweight)或者是以[Flex](arkts-arkui-common-comp.md)布局来约束子组件的主轴尺寸。
+> 当多个Text组件在Row容器内布局且没有设置具体的布局分配信息时，Text会以Row的最大尺寸进行布局。如果需要子组件主轴累加的尺寸不超过Row容器主轴的尺寸，可以设置
+> [layoutWeight](arkts-arkui-common-comp-commonmethod-c.md#layoutweight)或者是以[Flex](arkts-arkui-common-comp-commonmethod-c.md)布局来约束子组件的主轴尺寸。
 > 
 > 系统默认字体支持的liga连字：Th fb ff fb ffb ffh ffi ffk ffl fh fi fk fl rf rt rv rx ry。常导致Span、属性字符串的效果不符合预期，关闭liga连字特性可以规避。
 > 
@@ -2036,6 +2038,8 @@ WordBreak.BREAK_ALL与{overflow:&nbsp;TextOverflow.Ellipsis}、maxLines组合使
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-TextAttribute-wordBreak(value: WordBreak): TextAttribute--><!--Device-TextAttribute-wordBreak(value: WordBreak): TextAttribute-End-->
 

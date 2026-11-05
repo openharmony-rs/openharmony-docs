@@ -1,10 +1,10 @@
 # StepperItem
 
-用作Stepper组件的页面子组件。
+用作[Stepper](arkts-arkui-stepper-comp-attribute.md)组件的页面子组件。
 
 > **说明：** 
 
-> - 从API version 8开始支持，从API version 22开始废弃，建议使用Swiper替代。
+> - 从API version 8开始支持，从API version 22开始废弃，建议使用[Swiper](arkts-arkui-swiper-comp.md)替代。
 
 ## 子组件
 
@@ -16,7 +16,7 @@
 StepperItem()
 ```
 
-创建Stepper组件的页面子组件。
+创建[Stepper](arkts-arkui-stepper-comp-attribute.md)组件的页面子组件。
 
 > **说明：** 
 

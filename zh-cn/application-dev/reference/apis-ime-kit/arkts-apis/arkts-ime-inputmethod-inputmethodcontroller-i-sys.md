@@ -9,6 +9,8 @@ interface InputMethodController
 > <br>
 > attach和detach必须配对使用，showTextInput和hideTextInput必须配对使用，否则可能导致资源泄漏或状态不一致。
 
+在ArkTS动态调用中，on/off传入无效的事件类型或回调函数时，将抛出BusinessError 401。注册监听时，callback必须为函数；取消监听时，不传callback或传入null、undefined将移除该事件的所有回调，传入其他值时必须为函数。
+
 **起始版本：** 6
 
 <!--Device-inputMethod-interface InputMethodController--><!--Device-inputMethod-interface InputMethodController-End-->

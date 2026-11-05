@@ -404,7 +404,7 @@ squeeze(len: number): Promise<DataBlob>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| len | number | 是 | 输出摘要的字节长度。<br>SHAKE128算法支持的长度范围为32到65536。<br>SHAKE256算法支持的长度范围为64到65536。 |
+| len | number | 是 | 输出摘要的字节长度。<br>取值限定为整数。<br>SHAKE128算法支持的长度范围为32到65536。<br>SHAKE256算法支持的长度范围为64到65536。 |
 
 **返回值：**
 
@@ -418,7 +418,7 @@ squeeze(len: number): Promise<DataBlob>
 | --- | --- |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
-| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. Possible causes: <br>1. Invalid len value; |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. Possible causes: <br>1. Invalid len value. |
 | [17620004](../errorcode-crypto-framework.md#17620004-无效的函数调用) | Invalid function call. The fixed-length digest algorithm, such as SHA256, does not support this API. |
 
 **示例**
@@ -463,7 +463,7 @@ squeezeSync(len: number): DataBlob
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| len | number | 是 | 输出摘要的字节长度。<br>SHAKE128算法支持的长度范围为32到65536。<br>SHAKE256算法支持的长度范围为64到65536。 |
+| len | number | 是 | 输出摘要的字节长度。<br>取值限定为整数。<br>SHAKE128算法支持的长度范围为32到65536。<br>SHAKE256算法支持的长度范围为64到65536。 |
 
 **返回值：**
 
@@ -477,7 +477,7 @@ squeezeSync(len: number): DataBlob
 | --- | --- |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-获取native对象失败或参数转换失败) | Failed to obtain the native object or convert parameters. |
-| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. Possible causes: <br>1. Invalid len value; |
+| [17620003](../errorcode-crypto-framework.md#17620003-参数检查失败) | Parameter check failed. Possible causes: <br>1. Invalid len value. |
 | [17620004](../errorcode-crypto-framework.md#17620004-无效的函数调用) | Invalid function call. The fixed-length digest algorithm, such as SHA256, does not support this API. |
 
 **示例**

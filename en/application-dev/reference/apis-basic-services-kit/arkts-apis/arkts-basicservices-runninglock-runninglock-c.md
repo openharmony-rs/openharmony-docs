@@ -4,7 +4,7 @@
 class RunningLock
 ```
 
-Defines a **RunningLock** object.
+The lock that prevents the system from sleeping or enanles the proximity sensor to control screen on/off. Different types of locks have diffrent functions. For details, see RunningLockType. This API must be used together with [create]{@liink runninglockcreate9} to create a lock, hold to hold the lock, and unhold to release the lock. For details, see the example. A RunningLock object cannot be shared among multiple Worker or TaskPool threads. The hold(), unhold(), and isHolding() methods of the same RunningLock instance must be called in the same thread. If the methods are called in different threads, the lock status may be inconsistent and no error will be reported. After the power service restarts unexpectedly, the craeted RunningLock object is still valid, but the service restart scenario and call the hold() method again if necessary. When the JS object of a RunningLock is garbage collected, the lock held by the underlying layer is automatically released. To hold the lock for a long time, keep the reference to the RunningLock object.
 
 **Since:** 7
 
@@ -24,7 +24,7 @@ import { runningLock } from '@kit.BasicServicesKit';
 hold(timeout: number): void
 ```
 
-Holds a running lock.
+Lock and hold RunningLock. This mode is applicable to scenarios where the system sleeps when apps are running continuously in the background(such as background download and long-term location tracking) or scenarios where the proximity sensor is required to turn on and off the screen during a call. When this method is called, You must call unhold() to release the lock when the use is complete, or set the timeout release time when the call is complete so that the system automatically releases the lock. This method is used together with the unhold() method. If the lock is not released, the sleep or screen control function will continue to take effect. No error is reported when hold() is called repeatedly. Note: If hold(-1) is called before hold(timeout) is called, the lock is released after timeout milliseconds. That is, the timeout parameter of the next call overwrites the previous one. To update the timeout interval, call unhold() to release the lock and then call hold(newTimeout).
 
 **Since:** 9
 
@@ -135,7 +135,7 @@ class RunningLockTest {
 unhold(): void
 ```
 
-Releases this running lock.
+Release the RunningLock lock. This method is used in conjunction with hold() to release the lock after holding() is called. Calling unhold() on an unheld lock does not report an error and is considered as no operation.
 
 **Since:** 9
 

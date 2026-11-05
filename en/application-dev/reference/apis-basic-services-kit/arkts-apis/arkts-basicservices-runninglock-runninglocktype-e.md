@@ -18,7 +18,7 @@ Enumerates the types of **RunningLock** objects.
 BACKGROUND_USER_IDLE = 129
 ```
 
-A background lock that prevents the system from automatically entering sleep mode when the user is inactive for a period of time. Note: This lock cannot prevent the system from entering the forced sleep state in scenarios such as closing the PC lid. The user must listen for the [COMMON_EVENT_ENTER_FORCE_SLEEP](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12) event and release this lock after receiving the event. The behavior of this lock varies with devices. For details about how to use this type of lock, see [Preventing the Idle System from Entering Sleep Mode](../../../basic-services/powermgr/runningLock/runningLock-dev.md).
+A background lock that prevents the system from automatically entering sleep mode when the user is inactive for a period of time. Note: This lock cannot prevent the system from entering the forced sleep state in scenarios such as closing the PC lid. The user must listen for the [COMMON_EVENT_ENTER_FORCE_SLEEP](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12) event and release this lock after receiving the event. The behavior of this lock varies with devices. For details about how to use this type of lock, see [Preventing the Idle System from Entering Sleep Mode](../../../basic-services/powermgr/runningLock/runningLock-dev.md). If the device does not support the BACKGBACK_USER_IDLE type, create() still returns success, but hold() does not take effect and no error is reported. You are advised to use isSupported() after creating() to check whether the device supports this type.
 
 **Since:** 23
 

@@ -1,19 +1,24 @@
 # @ohos.file.RecentPhotoComponent(RecentPhotoComponent)
 
-The RecentPhotoComponent embedded in the UI of an application allows the application to access the recent image or
- video in the user directory without the required permission. This component grants the application only the read
- permission.
+**RecentPhotoComponent** is a UI component that allows an application to access the latest photo/video in the user
+ directory without the required permission. This component grants the application only the read permission. This
+ component is applicable to scenarios where the latest photos or videos need to be quickly displayed or selected, such
+ as sending photos in a chat app or quickly sharing photos in a social app.
 
-Note that **RecentPhotoComponent** does not support nesting. Additionally, prevent overlaying components with the
- **overlay** attribute or of higher levels on top it, as this will prevent it from receiving gesture events.
+Note that the recent photo component does not support nesting. Additionally, prevent overlaying components with the
+ **overlay** attribute or of higher levels on top the component, as this will prevent it from receiving gesture
+ events.
 
 > **NOTE**
+ >
+ > - This component is supported since API version 12. Newly added APIs will be marked with a superscript to indicate
+ > their
  >
  > - This component does not support [same-layer rendering](../../../web/web-same-layer.md).
 
 ## Properties
 
-The universal properties are supported.
+The [universal properties](../../apis-arkui/arkts-components/arkts-arkui-common-comp.md) are supported.
 
 ## Modules to Import
 
@@ -42,7 +47,7 @@ import { RecentPhotoComponent, RecentPhotoCheckResultCallback, RecentPhotoInfo, 
 | --- | --- |
 | [RecentPhotoCheckInfoCallback](arkts-medialibrary-recentphotocheckinfocallback-t.md) | Called to return whether the recent image or video exists and the information about it. |
 | [RecentPhotoCheckResultCallback](arkts-medialibrary-recentphotocheckresultcallback-t.md) | Called to return the query result of the recent image or video. |
-| [RecentPhotoClickCallback](arkts-medialibrary-recentphotoclickcallback-t.md) | Called when the recent image or video is selected. No special processing is performed on the return value. |
+| [RecentPhotoClickCallback](arkts-medialibrary-recentphotoclickcallback-t.md) | Describes the callback invoked when a user taps the recent photo component. The return value is meaningless and can be either **true** or **false**. |
 
 ### Enums
 

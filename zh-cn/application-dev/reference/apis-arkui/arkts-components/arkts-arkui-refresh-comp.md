@@ -6,9 +6,9 @@ Refresh是提供下拉刷新交互的容器组件，适用于列表数据刷新�
 > 
 > - 该组件从API version 12开始支持与垂直滚动的[Swiper](arkts-arkui-swiper-comp.md)和[Web](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp.md)的联动。当[Swiper](arkts-arkui-swiper-comp.md)设置[loop](arkts-arkui-swiper-comp-attribute.md#loop)属性为true时，Refresh无法和[Swiper](arkts-arkui-swiper-comp.md)产生联动。
 > 
-> - Refresh和内容大小小于组件自身的[List](arkts-arkui-list-comp.md)组件嵌套使用并且中间还有其他组件时，手势可能会被中间组件响应，导致Refresh未产生下拉刷新效果。此时可以将[alwaysEnabled](arkts-arkui-common-comp-edgeeffectoptions-i.md)参数设为true，[List](arkts-arkui-list-comp.md)会响应手势并通过嵌套滚动带动Refresh组件产生下拉刷新效果。具体可以参考[示例9（不满一屏场景实现下拉刷新）](arkts-arkui-refresh-comp.md)。
+> - Refresh和内容大小小于组件自身的[List](arkts-arkui-list-comp.md)组件嵌套使用并且中间还有其他组件时，手势可能会被中间组件响应，导致Refresh未产生下拉刷新效果。此时可以将[alwaysEnabled](arkts-arkui-common-comp-edgeeffectoptions-i.md)参数设为true，[List](arkts-arkui-list-comp.md)会响应手势并通过嵌套滚动带动Refresh组件产生下拉刷新效果。具体可以参考示例9（不满一屏场景实现下拉刷新）。
 > 
-> - 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](arkts-arkui-common-comp.md)进行处理。
+> - 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](arkts-arkui-common-comp-commonmethod-c.md)进行处理。
 > 
 > - 组件无法通过鼠标按下拖动操作进行下拉刷新。
 

@@ -4,7 +4,7 @@
 declare class TextInputAttribute extends CommonMethod<TextInputAttribute>
 ```
 
-In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported:
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported:
 
 > **NOTE:** 
 > 
@@ -43,7 +43,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp.md), the follo
 > 
 > Since API version 10, a single-line input box can be set with .width('auto') to make the component width adapt to
 > the text width. During adaptation, the component width is limited by the constraintSize attribute and the maximum
-> and minimum widths passed by the parent container. For other usage, see [Sizing](arkts-arkui-common-comp.md).
+> and minimum widths passed by the parent container. For other usage, see [Sizing](arkts-arkui-common-comp-commonmethod-c.md).
 
 **Inheritance/Implementation:** TextInputAttribute extends CommonMethod&lt;TextInputAttribute&gt;
 

@@ -14,6 +14,10 @@ NotificationSubscriberExtensionAbility是[通知订阅](../../../notification/no
 
 **系统能力：** SystemCapability.Notification.Notification
 
+## ExtensionAbility使用限制
+
+为保障系统安全性和稳定性，防止NotificationSubscriberExtensionAbility滥用系统资源，系统对其能力进行管控，不支持部分模块的引用，详情请参考[附录](#附录)。
+
 ## 导入模块
 
 ```TypeScript
@@ -133,3 +137,25 @@ NotificationSubscriberExtensionAbility的上下文环境。
 <!--Device-NotificationSubscriberExtensionAbility-context: NotificationSubscriberExtensionContext--><!--Device-NotificationSubscriberExtensionAbility-context: NotificationSubscriberExtensionContext-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
+
+## 附录
+
+NotificationSubscriberExtensionAbility不支持以下模块的引用。
+
+| Kit | 模块 |
+| --- | --- |
+| Form Kit | [@ohos.app.form.formBindingData](../../apis-form-kit/arkts-apis/arkts-form-app-form-formbindingdata.md) |
+| Form Kit | [@ohos.app.form.formHost](../../apis-form-kit/arkts-apis/arkts-form-app-form-formhost.md) |
+| Form Kit | [@ohos.app.form.formInfo](../../apis-form-kit/arkts-apis/arkts-form-app-form-forminfo.md) |
+| Form Kit | [@ohos.app.form.formProvider](../../apis-form-kit/arkts-apis/arkts-form-app-form-formprovider.md) |
+| Form Kit | [@ohos.app.form.FormExtensionAbility](../../apis-form-kit/arkts-apis/arkts-form-app-form-formextensionability.md) |
+| Form Kit | [@ohos.application.formBindingData](../../apis-form-kit/arkts-apis/arkts-form-application-formbindingdata.md) |
+| Form Kit | [@ohos.application.formHost](../../apis-form-kit/arkts-apis/arkts-form-application-formhost.md) |
+| Form Kit | [@ohos.application.formInfo](../../apis-form-kit/arkts-apis/arkts-form-application-forminfo.md) |
+| Form Kit | [@ohos.application.formProvider](../../apis-form-kit/arkts-apis/arkts-form-application-formprovider.md) |
+| Notification Kit | [@ohos.notification](../../apis-notification-kit/arkts-apis/arkts-notification-notification.md) |
+| Notification Kit | [@ohos.notificationManager](../../apis-notification-kit/arkts-apis/arkts-notification-notificationmanager.md) |
+| ArkUI | [@ohos.prompt](../../apis-arkui/arkts-apis/arkts-arkui-prompt.md) |
+| ArkUI | [@ohos.promptAction](../../apis-arkui/arkts-apis/arkts-arkui-promptaction.md) |
+| Telephony Kit | [telephony.voipCall](../../apis-telephony-kit/arkts-apis/arkts-telephony-voipcall.md) |
+| ArkUI | [@ohos.window](../../apis-arkui/arkts-apis/arkts-arkui-window.md) |

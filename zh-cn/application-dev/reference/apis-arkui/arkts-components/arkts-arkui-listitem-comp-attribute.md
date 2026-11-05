@@ -4,7 +4,7 @@
 declare class ListItemAttribute extends CommonMethod<ListItemAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性：
 
 **继承/实现关系：** ListItemAttribute extends CommonMethod&lt;ListItemAttribute&gt;
 
@@ -74,7 +74,7 @@ selectable(value: boolean)
 selected(value: boolean)
 ```
 
-设置当前ListItem选中状态。该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。该属性需要在设置[多态样式](arkts-arkui-common-comp.md)前使用才能生效选中态样式。
+设置当前ListItem选中状态。该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。该属性需要在设置[多态样式](arkts-arkui-common-comp-commonmethod-c.md)前使用才能生效选中态样式。
 
 **起始版本：** 10
 

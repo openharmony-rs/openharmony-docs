@@ -4,7 +4,7 @@
 interface Panel
 ```
 
-Panel是输入法面板对象，提供面板页面加载、显示/隐藏、尺寸调整、位置移动、模式切换等功能。Panel实例通过InputMethodAbility的[createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel-1)接口获取，使用完毕后需调用[destroyPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#destroypanel-1)销毁以释放资源。createPanel与destroyPanel必须配对调用。<br> <br>核心功能概述：<br> <br>- 页面加载：通过[setUiContent](#setuicontent-1)为面板加载键盘页面内容，支持加载普通页面和与LocalStorage关联的页面。<br>- 显示与隐藏：通过[show](#show-1)显示面板，通过[hide](#hide-1)隐藏面板。面板的显示/隐藏也可通过订阅on('show')/on('hide')事件监听状态变化。<br>- 尺寸与位置调整：通过[resize](#resize)调整面板尺寸，通过[moveTo](#moveto)移动面板位置，通过[startMoving](#startmoving)拖拽移动面板，通过[adjustPanelRect](#adjustpanelrect-1)/ [updatePanelRect](#updatepanelrect-1)/ [updateRegion](#updateregion)调整面板区域。<br>- 模式设置：通过[changeFlag](#changeflag)切换面板固定态/浮动态，通过[setPrivacyMode](#setprivacymode)设置隐私模式，通过[setImmersiveMode](#setimmersivemode)/ [getImmersiveMode](#getimmersivemode)设置/获取沉浸模式。<br>- 事件监听：通过on('show')/on('hide')/on('sizeChange')监听面板状态变化事件。<br> <br>面板生命周期：<br> <br>1. 在InputMethodAbility的[createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel-1)中创建Panel实例并指定面板类型和标志位。<br>2. 调用[setUiContent](#setuicontent-1)加载键盘页面内容。<br>3. 调用[show](#show-1)显示面板，用户可交互。<br>4. 根据需要调用resize、moveTo、changeFlag等接口动态调整面板。<br>5. 使用完毕后调用[destroyPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#destroypanel-1)销毁面板，释放资源。<br> <br>下列API均需使用[createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel-1)获取到Panel实例后，通过实例调用。
+Panel是输入法面板对象，提供面板页面加载、显示/隐藏、尺寸调整、位置移动、模式切换等功能。Panel实例通过InputMethodAbility的[createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel-1)接口获取，使用完毕后需调用[destroyPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#destroypanel-1)销毁以释放资源。createPanel与destroyPanel必须配对调用。<br> <br>核心功能概述：<br> <br>- 页面加载：通过[setUiContent](#setuicontent-1)为面板加载键盘页面内容，支持加载普通页面和与LocalStorage关联的页面。<br>- 显示与隐藏：通过[show](#show-1)显示面板，通过[hide](#hide-1)隐藏面板。面板的显示/隐藏也可通过订阅on('show')/on('hide')事件监听状态变化。<br>- 尺寸与位置调整：通过[resize](#resize)调整面板尺寸，通过[moveTo](#moveto)移动面板位置，通过[startMoving](#startmoving)拖拽移动面板，通过[adjustPanelRect](#adjustpanelrect-1)/ [updatePanelRect](#updatepanelrect-1)/ [updateRegion](#updateregion)调整面板区域。<br>- 模式设置：通过[changeFlag](#changeflag)切换面板固定态/浮动态，通过[setPrivacyMode](#setprivacymode)设置隐私模式，通过[setImmersiveMode](#setimmersivemode)/ [getImmersiveMode](#getimmersivemode)设置/获取沉浸模式。<br>- 事件监听：通过on('show')/on('hide')/on('sizeChange')监听面板状态变化事件。<br> <br>面板生命周期：<br> <br>1. 在InputMethodAbility的[createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel-1)中创建Panel实例并指定面板类型和标志位。<br>2. 调用[setUiContent](#setuicontent-1)加载键盘页面内容。<br>3. 调用[show](#show-1)显示面板，用户可交互。<br>4. 根据需要调用resize、moveTo、changeFlag等接口动态调整面板。<br>5. 使用完毕后调用[destroyPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#destroypanel-1)销毁面板，释放资源。<br> <br>下列API均需使用[createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel-1)获取到Panel实例后，通过实例调用。destroyPanel成功销毁后，不得复用该实例，应创建并使用新的面板。
 
 **起始版本：** 10
 
@@ -54,6 +54,7 @@ adjustPanelRect(flag: PanelFlag, rect: PanelRect): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
 
 **示例**
 
@@ -130,6 +131,7 @@ adjustPanelRect(flag: PanelFlag, rect: EnhancedPanelRect): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
 | [12800017](../errorcode-inputmethod-framework.md#12800017-无效的面板类型或面板状态) | invalid panel type or panel flag. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
 
 **示例**
 
@@ -189,6 +191,8 @@ changeFlag(flag: PanelFlag): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
+| [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
 
 **示例**
 
@@ -256,6 +260,13 @@ getImmersiveMode(): ImmersiveMode
 | --- | --- |
 | [ImmersiveMode](arkts-ime-inputmethodengine-immersivemode-e.md) | 沉浸模式。 |
 
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | Failed to obtain panel execution order. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
+
 **示例**
 
 ```TypeScript
@@ -295,6 +306,7 @@ getSystemPanelCurrentInsets(displayId: number): Promise<SystemPanelInsets>
 | [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
 | [12800017](../errorcode-inputmethod-framework.md#12800017-无效的面板类型或面板状态) | invalid panel type or panel flag. Possible causes:         1. Current panel's type is not SOFT_KEYBOARD. 2. Panel's flag is not FLG_FIXED or FLG_FLOATING. |
 | [12800022](../errorcode-inputmethod-framework.md#12800022-无效的displayid) | invalid displayId. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
 
 **示例**
 
@@ -344,6 +356,13 @@ hide(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当面板隐藏成功，err为undefined，否则err为错误对象。 |
 
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
+| [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
+
 **示例**
 
 ```TypeScript
@@ -377,6 +396,13 @@ hide(): Promise<void>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
+| [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
 
 **示例**
 
@@ -417,6 +443,8 @@ moveTo(x: number, y: number, callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
+| [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
 
 **示例**
 
@@ -465,6 +493,8 @@ moveTo(x: number, y: number): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
+| [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
 
 **示例**
 
@@ -505,6 +535,7 @@ off(type: 'show', callback?: () => void): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
 
 **示例**
 
@@ -538,6 +569,7 @@ off(type: 'hide', callback?: () => void): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
 
 **示例**
 
@@ -573,6 +605,12 @@ off(type: 'sizeChange', callback?: SizeChangeCallback): void
 | type | 'sizeChange' | 是 | 监听当前面板的大小是否产生变化，固定取值为'sizeChange'。 |
 | callback | [SizeChangeCallback](arkts-ime-inputmethodengine-sizechangecallback-t.md) | 否 | 回调函数。返回当前软键盘面板的大小，包含宽度和高度值。参数不填写时，取消订阅type对应的所有回调事件。<br>**适用版本：** 15 |
 
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
+
 **示例**
 
 ```TypeScript
@@ -604,6 +642,12 @@ on(type: 'show', callback: () => void): void
 | type | 'show' | 是 | 监听当前面板的状态类型，固定取值为'show'。 |
 | callback | () =&gt; void | 是 | 回调函数。 |
 
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
+
 **示例**
 
 ```TypeScript
@@ -632,6 +676,12 @@ on(type: 'hide', callback: () => void): void
 | --- | --- | --- | --- |
 | type | 'hide' | 是 | 监听当前面板的状态类型，固定取值为'hide'。 |
 | callback | () =&gt; void | 是 | 回调函数。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
 
 **示例**
 
@@ -668,6 +718,12 @@ on(type: 'sizeChange', callback: SizeChangeCallback): void
 | --- | --- | --- | --- |
 | type | 'sizeChange' | 是 | 监听当前面板的大小是否产生变化，固定值为'sizeChange'。 |
 | callback | [SizeChangeCallback](arkts-ime-inputmethodengine-sizechangecallback-t.md) | 是 | 回调函数。返回当前软键盘面板的大小，包含宽度和高度值。<br>**适用版本：** 15 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
 
 **示例**
 
@@ -718,6 +774,8 @@ resize(width: number, height: number, callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
+| [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
 
 **示例**
 
@@ -771,6 +829,8 @@ resize(width: number, height: number): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
+| [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
 
 **示例**
 
@@ -894,6 +954,7 @@ setKeepScreenOn(isKeepScreenOn: boolean): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
 
 **示例**
 
@@ -935,6 +996,8 @@ setPrivacyMode(isPrivacyMode: boolean): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
+| [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
 
 **示例**
 
@@ -969,6 +1032,13 @@ setSystemPanelButtonColor(fillColor: string | undefined, backgroundColor: string
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | Failed to obtain panel execution order. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
 
 **示例**
 
@@ -1016,6 +1086,8 @@ setUiContent(path: string, callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
+| [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
 
 **示例**
 
@@ -1064,6 +1136,8 @@ setUiContent(path: string): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
+| [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
 
 **示例**
 
@@ -1104,6 +1178,8 @@ setUiContent(path: string, storage: LocalStorage, callback: AsyncCallback<void>)
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
+| [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
 
 **示例**
 
@@ -1154,6 +1230,8 @@ setUiContent(path: string, storage: LocalStorage): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
+| [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
 
 **示例**
 
@@ -1190,6 +1268,14 @@ show(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当面板显示成功，err为undefined，否则err为错误对象。 |
 
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
+| [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input client error. Bind the input method to an editor before showing the panel. |
+| [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
+
 **示例**
 
 ```TypeScript
@@ -1223,6 +1309,14 @@ show(): Promise<void>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
+| [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input client error. Bind the input method to an editor before showing the panel. |
+| [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
 
 **示例**
 
@@ -1306,6 +1400,7 @@ updatePanelRect(flag: PanelFlag, rect: PanelRect): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
 
 **示例**
 
@@ -1383,6 +1478,7 @@ updatePanelRect(flag: PanelFlag, rect: EnhancedPanelRect): Promise<void>
 | --- | --- |
 | [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
 | [12800017](../errorcode-inputmethod-framework.md#12800017-无效的面板类型或面板状态) | invalid panel type or panel flag. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
 
 **示例**
 
@@ -1455,6 +1551,7 @@ updatePanelRectSync(flag: PanelFlag, rect: PanelRect): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
 
 **示例**
 
@@ -1529,6 +1626,7 @@ updatePanelRectSync(flag: PanelFlag, rect: EnhancedPanelRect): void
 | --- | --- |
 | [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
 | [12800017](../errorcode-inputmethod-framework.md#12800017-无效的面板类型或面板状态) | invalid panel type or panel flag. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
 
 **示例**
 
@@ -1597,6 +1695,7 @@ updateRegion(inputRegion: Array<window.Rect>): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [12800013](../errorcode-inputmethod-framework.md#12800013-窗口管理服务错误) | window manager service error. |
 | [12800017](../errorcode-inputmethod-framework.md#12800017-无效的面板类型或面板状态) | invalid panel type or panel flag. |
+| [12800002](../errorcode-inputmethod-framework.md#12800002-输入法应用异常) | input method engine error. The panel has been destroyed or is unavailable. |
 
 **示例**
 

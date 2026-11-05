@@ -55,6 +55,6 @@ Decapsulates a post-quantum cryptography key. This operation can be managed by H
 | [12000013](../errorcode-huks.md#12000013-the-credential-does-not-exist) | Queried credential does not exist |
 | [12000014](../errorcode-huks.md#12000014-insufficient-memory) | Insufficient memory. |
 | [12000015](../errorcode-huks.md#12000015-failed-to-invoke-other-system-services) | Failed to obtain the security information using UserIAM. |
-| 12000016 | The lock screen password is not set. |
+| [12000016](../errorcode-huks.md#12000016-device-password-not-set) | The lock screen password is not set. |
 | [12000017](../errorcode-huks.md#12000017-duplicate-key-alias) | A key with the same alias already exists. |
 | [12000018](../errorcode-huks.md#12000018-invalid-input-parameter) | Invalid input parameter. |

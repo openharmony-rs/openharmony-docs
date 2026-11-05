@@ -55,7 +55,7 @@ Performs HTTP authentication with the user name and password provided by the use
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns **true** if authentication succeeds; returns **false** otherwise. |
+| boolean | The return value indicates only the call status, not the authentication outcome. Returns **true** if the call is successful; returns **false** otherwise. |
 
 ## constructor
 

@@ -12,7 +12,7 @@ import { runningLock } from '@kit.BasicServicesKit';
 function create(name: string, type: RunningLockType, callback: AsyncCallback<RunningLock>): void
 ```
 
-Creates a [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) object. This API uses an asynchronous callback to return the result.
+Creates a [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) object. This API uses an asynchronous callback to return the result. After a lock object is created, you need to call the hold() method to lock and hold the lock to make the lock function take effect. You are not advised to invoke create concurrently in multiple Worker/TaskPools to create lock objects.
 
 **Since:** 9
 
@@ -56,7 +56,7 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 function create(name: string, type: RunningLockType): Promise<RunningLock>
 ```
 
-Creates a [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) object. This API uses a promise to return the result.
+Creates a [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) object. This API uses a promise to return the result. After a lock object is created, you need to call the hold() method to lock and hold the lock to make the lock function take effect. You are not advised to invoke create concurrently in multiple Worker/TaskPools to create lock objects.
 
 **Since:** 9
 

@@ -16,6 +16,8 @@ Obtains the content of the selected text. This API uses a promise to return the 
 
 **Since:** 24
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-selectionManager-function getSelectionContent(): Promise<string>--><!--Device-selectionManager-function getSelectionContent(): Promise<string>-End-->
 
 **System capability:** SystemCapability.SelectionInput.Selection

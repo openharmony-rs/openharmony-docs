@@ -4,7 +4,7 @@
 declare class ListItemAttribute extends CommonMethod<ListItemAttribute>
 ```
 
-In addition to the universal attributes, the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported.
 
 **Inheritance/Implementation:** ListItemAttribute extends CommonMethod&lt;ListItemAttribute&gt;
 
@@ -74,7 +74,7 @@ Sets whether the current **ListItem** element can be selected by mouse frame sel
 selected(value: boolean)
 ```
 
-Sets whether the list item is selected. This attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md). This attribute must be used before the polymorphic style is set. Otherwise, the style settings will not take effect.
+Sets whether the list item is selected. This attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md). This attribute must be used before the [polymorphic style](arkts-arkui-common-comp-commonmethod-c.md) is set. Otherwise, the style settings will not take effect.
 
 **Since:** 10
 

@@ -12,7 +12,7 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 function registerPasscodePromptCallback(callback: PasscodePromptCallback): void
 ```
 
-Registers the callback invoked when the framework needs a companion device passcode. If a callback has already been registered, the new one replaces it.
+Registers a passcode request callback. This callback is invoked when the system requests a passcode. If a callback has already been registered, the new callback replaces the original one.
 
 **Since:** 26.0.1
 
@@ -30,7 +30,7 @@ Registers the callback invoked when the framework needs a companion device passc
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [PasscodePromptCallback](arkts-userauthentication-companiondeviceauth-passcodepromptcallback-t-sys.md) | Yes | Callback invoked by the framework when a passcode is required. |
+| callback | [PasscodePromptCallback](arkts-userauthentication-companiondeviceauth-passcodepromptcallback-t-sys.md) | Yes | Passcode request callback. Invoked when the system requests a passcode. |
 
 **Error codes:**
 

@@ -16,6 +16,8 @@ function getSelectionContent(): Promise<string>
 
 **起始版本：** 24
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-selectionManager-function getSelectionContent(): Promise<string>--><!--Device-selectionManager-function getSelectionContent(): Promise<string>-End-->
 
 **系统能力：** SystemCapability.SelectionInput.Selection

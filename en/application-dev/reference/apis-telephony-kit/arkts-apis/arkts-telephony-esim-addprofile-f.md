@@ -12,7 +12,7 @@ import { eSIM } from '@kit.TelephonyKit';
 function addProfile(profile: DownloadableProfile): Promise<boolean>
 ```
 
-Launches the download page for the user to add a single profile. This API uses a promise to return the result.
+When a user needs to activate a new eSIM (for example, registering a new SIM card or changing a SIM card), this interface is invoked to guide the process of downloading and adding a configuration file. Use Promise asynchronous callbacks.
 
 **Since:** 18
 
@@ -32,7 +32,7 @@ Launches the download page for the user to add a single profile. This API uses a
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite. |
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates successful, and **false** indicates fails. |
 
 **Error codes:**
 

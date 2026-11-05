@@ -436,7 +436,7 @@ pageTransition函数用于定义页面入场和页面退场的转场动效。
 queryNavDestinationInfo(): NavDestinationInfo | undefined
 ```
 
-查询自定义组件所属的NavDestination信息，仅当自定义组件在NavDestination的内部时才生效。
+查询自定义组件所属的[NavDestination](arkts-arkui-navdestination-comp.md)信息，仅当自定义组件在NavDestination的内部时才生效。
 
 **起始版本：** 11
 
@@ -490,7 +490,7 @@ queryNavDestinationInfo(isInner: Optional<boolean>): NavDestinationInfo | undefi
 queryNavigationInfo(): NavigationInfo | undefined
 ```
 
-查询自定义组件所属的Navigation信息。
+查询自定义组件所属的[Navigation](arkts-arkui-navigation-comp.md)信息。
 
 **起始版本：** 12
 

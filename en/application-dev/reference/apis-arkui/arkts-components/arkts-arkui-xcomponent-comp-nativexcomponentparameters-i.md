@@ -4,7 +4,7 @@
 declare interface NativeXComponentParameters
 ```
 
-Defines the specific configuration parameters used by XComponent on the native side. An XComponent created with this constructor can pass its corresponding [FrameNode](../arkts-apis/arkts-arkui-typenode-n.md) object to the native side, where NDK APIs can be used to configure the surface lifecycle and [add event listeners] (../../../ui/ndk-listen-to-component-events.md).
+Defines the specific configuration parameters used by XComponent on the native side. An XComponent created with this constructor can pass its corresponding FrameNode object to the native side, where NDK APIs can be used to configure the surface lifecycle and [add event listeners] (../../../ui/ndk-listen-to-component-events.md).
 
 **Since:** 19
 

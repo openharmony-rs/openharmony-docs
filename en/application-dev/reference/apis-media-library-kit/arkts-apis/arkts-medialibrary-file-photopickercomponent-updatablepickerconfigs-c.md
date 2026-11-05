@@ -4,7 +4,7 @@
 export declare class UpdatablePickerConfigs
 ```
 
-Describes the updatable attributes of the **PhotoPickerComponent**. These attributes are a subset of [PickerOptions](arkts-medialibrary-file-photopickercomponent-pickeroptions-c.md).
+New attributes, which are a subset of [PickerOptions](arkts-medialibrary-file-photopickercomponent-pickeroptions-c.md).
 
 **Since:** 22
 
@@ -44,7 +44,7 @@ Used to display only the album content corresponding to the specified bundle nam
 autoPlayScenes?: Array<photoAccessHelper.AutoPlayScene>
 ```
 
-Playback mode of the moving photo. The maximum array length is 2. If this limit is exceeded, the first two elements are used, and the extra ones are automatically ignored.
+Automatic playback scenarios for moving photos. A maximum of two automatic playback scenarios can be configured. If more than two scenarios are configured, only the first two are used, and the extra ones are automatically ignored.
 
 **Type:** Array&lt;[photoAccessHelper.AutoPlayScene](arkts-medialibrary-photoaccesshelper-autoplayscene-c.md)&gt;
 
@@ -64,9 +64,9 @@ Playback mode of the moving photo. The maximum array length is 2. If this limit 
 backgroundColor?: string
 ```
 
-Background color of the Picker grid page.
+Background color of the grid page of the photo picker component. The value is an 8-digit hexadecimal color code. The first two digits indicate the transparency, and the last six digits indicate the RGB color value.
 
-The value is an 8-digit hexadecimal color code.
+For example, '#FFFFFFFF' indicates a white opaque background.
 
 **Type:** string
 
@@ -84,7 +84,7 @@ The value is an 8-digit hexadecimal color code.
 backgroundOpacity?: number
 ```
 
-Background opacity of the picker. The value range is [0, 1]. **0** indicates completely transparent, and **1** indicates completely opaque.
+Background transparency of the photo picker component. The value range is [0, 1]. **0** indicates completely transparent, and **1** indicates completely opaque.
 
 **Type:** number
 
@@ -144,7 +144,7 @@ The value is an 8-digit hexadecimal color code.
 edgeEffect?: EdgeEffect
 ```
 
-Scrolling effect when the Picker grid page reaches the edge.
+Scrolling effect when the grid page of the photo picker component reaches the edge.
 
 The default value is [EdgeEffect.Spring](../../apis-arkui/arkts-apis/arkts-arkui-edgeeffect-e.md).
 
@@ -188,7 +188,7 @@ isRepeatSelectSupported?: boolean
 
 Whether a single image can be repeatedly selected.
 
-**true** if supported, **false** otherwise. The default value is **false**.
+**true** if supported, **false** otherwise. If this parameter is not set, the default value **false** is used.
 
 **Type:** boolean
 
@@ -206,9 +206,13 @@ Whether a single image can be repeatedly selected.
 isSlidingSupported?: boolean
 ```
 
-Whether scrolling in the **PhotoPickerComponent** is enabled. The value **true** means that scrolling is not blocked and the component responds to user scroll gestures. The value **false** means that scrolling is blocked and the component does not respond to user scroll gestures.
+Whether to block scrolling of the photo picker component. The value **true** means that scrolling is not blocked and the component responds to user scroll gestures. The value **false** means that scrolling is blocked and the component does not respond to user scroll gestures.
 
 The default value is **true**.
+
+**NOTE:** 
+
+When **isSlidingSupported** is set to **false**, the grid thumbnail does not respond to the user's tap gesture to view the full image. Callbacks related to large image browsing, such as **onEnterPhotoBrowser**, will not be triggered.
 
 **Type:** boolean
 
@@ -228,9 +232,7 @@ The default value is **true**.
 maxPhotoSelectNumber?: number
 ```
 
-Maximum number of images that can be selected (unit: number).
-
-The maximum value is **500**, which is limited by **MaxSelected**. The default value is **500**.
+Maximum number of images that can be selected. The value range is [0, 500], and this parameter is limited by the total number of images that can be selected. The default value is **500**.
 
 **Type:** number
 
@@ -248,9 +250,7 @@ The maximum value is **500**, which is limited by **MaxSelected**. The default v
 maxSelectNumber?: number
 ```
 
-Maximum number of media files that can be selected.
-
-The maximum value is 500, and the default value is 50.
+Maximum number of media files that can be selected. The value range is [0, 500], and the default value is **50**.
 
 **Type:** number
 
@@ -268,9 +268,7 @@ The maximum value is 500, and the default value is 50.
 maxVideoSelectNumber?: number
 ```
 
-Maximum number of videos that can be selected (unit: number).
-
-The maximum value is **500**, and it is restricted by the maximum number of media files that can be selected in the system. The default value is **500**.
+Maximum number of videos that can be selected. The value range is [0, 500]. The value is limited by the maximum number of media files that can be selected in the system. The default value is **500**.
 
 **Type:** number
 
@@ -291,6 +289,10 @@ mimeType?: photoAccessHelper.PhotoViewMIMETypes
 MIME types.
 
 If this parameter is not specified, **IMAGE_VIDEO_TYPE** is used by default.
+
+**NOTE:** 
+
+When this parameter is set, the **mimeType** configuration automatically becomes invalid.
 
 **Type:** [photoAccessHelper.PhotoViewMIMETypes](arkts-medialibrary-photoaccesshelper-photoviewmimetypes-e.md)
 
@@ -370,7 +372,7 @@ Margin of the component large image.
 preselectedUris?: Array<string>
 ```
 
-URIs of the selected images.
+URIs of the preselected images. The array length is specified by [BaseSelectOptions](arkts-medialibrary-photoaccesshelper-baseselectoptions-c.md).maxSelectNumber, [BaseSelectOptions](arkts-medialibrary-photoaccesshelper-photoselectoptions-c.md).maxPhotoSelectNumber, and [BaseSelectOptions](arkts-medialibrary-photoaccesshelper-photoselectoptions-c.md). maxVideoSelectNumber. The value range is [0, 500], and the default value is **50**. If the value is out of the range, the excess part does not take effect. If this parameter is not set, no image is preselected by default.
 
 **Type:** Array&lt;string&gt;
 
@@ -388,7 +390,7 @@ URIs of the selected images.
 selectMode?: SelectMode
 ```
 
-Picker selection mode.
+Selection mode of the photo picker component.
 
 **SINGLE_SELECT** or **MULTI_SELECT**. The default value is **MULTI_SELECT**.
 
@@ -428,7 +430,7 @@ uiComponentColorMode?: PickerColorMode
 
 Color mode of the Picker UI component.
 
-Dark/Light color mode (excluding the background color) of other components on the Picker grid page, including the search box, camera entry, safety tips for using Gallery, and recommendation bubble. This attribute is usually used together with **backgroundColor**. The default value is **PickerColorMode.AUTO**, which follows the system's dark/ light color mode.
+Dark/light color mode of components other than the background color on the grid page of the photo picker component, including the search box, camera entry, safety tips for using Gallery, and recommendation bubble. This attribute is usually used together with **backgroundColor**. The default value is **PickerColorMode.AUTO**, which follows the system's dark/light color mode.
 
 When setting this attribute, avoid using **PickerColorMode.LIGHT** with a dark background color, as it may make components or text hard to see. Avoid using **PickerColorMode.DARK** with a light background color for the same reason.
 

@@ -10,10 +10,10 @@ interface Cipher
 
 <br>一次完整的加/解密流程在对称加密和非对称加密中略有不同：
 
-- 对称加解密：init为必选，update为可选（且允许多次update加/解密大数据），doFinal为必选；doFinal结束后可以重新init开始新一轮加/解密  
-流程。  
-- RSA、SM2非对称加解密：init为必选，不支持update操作，doFinal为必选（允许连续多次doFinal加/解密大数据）；RSA不支持重复init，切换  
-加解密模式或填充方式时，需要重新创建Cipher对象。
+- 对称加解密：init为必选，update为可选（且允许多次update加/解密大数据），doFinal为必选；  
+doFinal结束后可以重新init开始新一轮加/解密流程。  
+- RSA、SM2非对称加解密：init为必选，不支持update操作，doFinal为必选（允许连续多次doFinal加/解密大数据）；  
+RSA不支持重复init，切换加解密模式或填充方式时，需要重新创建Cipher对象。
 
 **起始版本：** 9
 
@@ -35,7 +35,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 doFinal(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 ```
 
-完成加密操作，对输入数据进行加密或解密，然后反馈输出数据。加密操作完成后，数据无法更新。使用Callback异步回调。
+完成加解密操作，对输入数据进行加密或解密，然后反馈输出数据。加解密操作完成后，数据无法更新。使用Callback异步回调。
 
 **起始版本：** 9
 
@@ -285,7 +285,7 @@ async function cipherByPromise() {
 doFinal(data: DataBlob | null, callback: AsyncCallback<DataBlob>): void
 ```
 
-完成加密操作，对输入数据进行加密或解密，然后反馈输出数据。加密操作完成后，数据无法更新。使用Callback异步回调。
+完成加解密操作，对输入数据进行加密或解密，然后反馈输出数据。加解密操作完成后，数据无法更新。使用Callback异步回调。
 
 <br>（1）在对称加解密中**doFinal**用于处理剩余数据和本次传入的数据，并最终结束加密或解密操作，使用callback异步回调函数获取加密或解密后的数据。如果数据量较小，可以在**doFinal**中一次性传入数据，而不使用**update**；如果在本次加解密流程中已经使用**update**传入过数据，可以在**doFinal**的data参数处传入null。根据对称加解密的模式不同，**doFinal**的输出有以下区别：  
 - 在GCM和CCM模式的对称加密中，一次加密流程中，将每次**update**和**doFinal**的结果拼接起来，会得到“密文 + authTag”。GCM模式下，  
@@ -505,7 +505,7 @@ export default {
 doFinal(data: DataBlob): Promise<DataBlob>
 ```
 
-完成加密操作，对输入数据进行加密或解密，然后反馈输出数据。加密操作完成后，数据无法更新。使用Promise异步回调。
+完成加解密操作，对输入数据进行加密或解密，然后反馈输出数据。加解密操作完成后，数据无法更新。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -761,13 +761,13 @@ async function cipherByPromise() {
 doFinal(data: DataBlob | null): Promise<DataBlob>
 ```
 
-完成加密操作，对输入数据进行加密或解密，然后反馈输出数据。加密操作完成后，数据无法更新。使用Promise异步回调。
+完成加解密操作，对输入数据进行加密或解密，然后反馈输出数据。加解密操作完成后，数据无法更新。使用Promise异步回调。
 
 <br>（1）在对称加解密中，**doFinal**加/解密（分组模式产生的）剩余数据和本次传入的数据，最后结束加密或者解密数据操作，使用Promise异步回调获取加密或者解密数据。如果数据量较小，可以在**doFinal**中一次性传入数据，而不使用**update**；如果在本次加解密流程中，已经使用**update**传入过数据，可以在**doFinal**的data参数处传入null。根据对称加解密的模式不同，**doFinal**的输出有如下区别：  
 - 对于GCM和CCM模式的对称加密：一次加密流程中，如果将每一次**update**和**doFinal**的结果拼接起来，会得到“密文+authTag”，即末尾的  
 16字节（GCM模式）或12字节（CCM模式）是authTag，而其余部分均为密文。（也就是说，如果**doFinal**的data参数传入null，则**doFinal**的结果就是authTag）authTag需要填入解密时的[GcmParamsSpec](arkts-cryptoarchitecture-cryptoframework-gcmparamsspec-i.md)或[CcmParamsSpec](arkts-cryptoarchitecture-cryptoframework-ccmparamsspec-i.md)；密文则作为解密时的入参data。  
-- 对于其他模式的对称加解密及GCM和CCM模式的对称解密：一次加解密流程中，每次**update**和**doFinal**的结果拼接起来，得到完整的明文或  
-密文。
+- 对于其他模式的对称加解密及GCM和CCM模式的对称解密：一次加解密流程中，每次**update**和**doFinal**的结果拼接起来，  
+得到完整的明文或密文。
 
 （2）在RSA和SM2非对称加解密中，使用**doFinal**方法加解密传入的数据，并使用Promise异步回调获取加密或解密结果。如果数据量较大，可以多次调用**doFinal**，拼接结果以获得完整的明文或密文。
 
@@ -865,13 +865,13 @@ async function cipherByPromise() {
 doFinalSync(data: DataBlob | null): DataBlob
 ```
 
-完成加密操作，对输入数据进行加密或解密，然后反馈输出数据。加密操作完成后，数据无法更新。
+完成加解密操作，对输入数据进行加密或解密，然后反馈输出数据。加解密操作完成后，数据无法更新。
 
 <br>（1）在对称加解密中，**doFinal**加/解密（分组模式产生的）剩余数据和本次传入的数据，最后结束加密或者解密数据操作，使用Promise异步回调获取加密或者解密数据。如果数据量较小，可以在**doFinal**中一次性传入数据，而不使用**update**；如果在本次加解密流程中，已经使用**update**传入过数据，可以在**doFinal**的data参数处传入null。根据对称加解密的模式不同，**doFinal**的输出有如下区别：  
 - 对于GCM和CCM模式的对称加密：一次加密流程中，如果将每一次**update**和**doFinal**的结果拼接起来，会得到“密文+authTag”，即末尾的  
 16字节（GCM模式）或12字节（CCM模式）是authTag，而其余部分均为密文。（也就是说，如果**doFinal**的data参数传入null，则**doFinal**的结果就是authTag）authTag需要填入解密时的[GcmParamsSpec](arkts-cryptoarchitecture-cryptoframework-gcmparamsspec-i.md)或[CcmParamsSpec](arkts-cryptoarchitecture-cryptoframework-ccmparamsspec-i.md)；密文则作为解密时的入参data。  
-- 对于其他模式的对称加解密及GCM和CCM模式的对称解密：一次加解密流程中，每次**update**和**doFinal**的结果拼接起来，得到完整的明文或  
-密文。
+- 对于其他模式的对称加解密及GCM和CCM模式的对称解密：一次加解密流程中，每次**update**和**doFinal**的结果拼接起来，  
+得到完整的明文或密文。
 
 （2）在RSA和SM2非对称加解密中，使用**doFinal**方法加解密传入的数据，并使用Promise异步回调获取加密或解密结果。如果数据量较大，可以多次调用**doFinal**，拼接结果以获得完整的明文或密文。
 

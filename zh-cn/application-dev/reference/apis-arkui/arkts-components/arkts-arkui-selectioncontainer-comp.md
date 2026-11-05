@@ -6,13 +6,13 @@ SelectionContainer组件用于为多个文本节点提供跨节点文本选中�
 > 
 > - 本组件中选中文本相关回调返回的文本内容，按照[Text](arkts-arkui-text-comp.md)组件的从上到下显示顺序进行拼接。
 > 
-> - 本组件默认布局走[Stack](arkts-arkui-stack-comp.md)，如有其他容器布局需求请在SelectionContainer内放置一个容器组件。
+> - 本组件默认布局走Stack，如有其他容器布局需求请在SelectionContainer内放置一个容器组件。
 > 
 > - SelectionContainer内选中文本时不显示放大镜，也不支持[getMagnifier](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#getmagnifier)主动设置放大镜。
 > 
 > - SelectionContainer内选中文本时不支持拖拽。
 > 
-> - SelectionContainer内[Repeat](arkts-arkui-repeat-comp.md)组件下的文本不支持跨节点选中。
+> - SelectionContainer内Repeat组件下的文本不支持跨节点选中。
 > 
 > - 仅Text组件中的文本内容参与跨节点选中与文本拼接。
 

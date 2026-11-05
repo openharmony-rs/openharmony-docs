@@ -104,7 +104,7 @@ import { sim } from '@kit.TelephonyKit';
 | [getVoiceMailIdentifier](arkts-telephony-sim-getvoicemailidentifier-f-sys.md#getvoicemailidentifier-2) | Obtains the alpha identifier of the voice mailbox of the SIM card in a specified slot. |
 | [getVoiceMailNumber](arkts-telephony-sim-getvoicemailnumber-f-sys.md#getvoicemailnumber-1) | Obtains the voice mailbox number of the SIM card in a specified slot. |
 | [getVoiceMailNumber](arkts-telephony-sim-getvoicemailnumber-f-sys.md#getvoicemailnumber-2) | Obtains the voice mailbox number of the SIM card in a specified slot. |
-| [isOperatorSimCard](arkts-telephony-sim-isoperatorsimcard-f-sys.md#isoperatorsimcard-1) | Indicates whether the SIM card in a specified slot is a specified operator. |
+| [isOperatorSimCard](arkts-telephony-sim-isoperatorsimcard-f-sys.md#isoperatorsimcard-1) | 获取指定卡槽SIM卡是否为指定运营商卡。例如，运营商专属应用在启动时可通过此接口判断当前SIM卡是否为自家运营商卡，从而决定是否展示运营商专属服务或功能。 |
 | [queryIccDiallingNumbers](arkts-telephony-sim-queryiccdiallingnumbers-f-sys.md#queryiccdiallingnumbers-1) | Query dialing number information on SIM card. |
 | [queryIccDiallingNumbers](arkts-telephony-sim-queryiccdiallingnumbers-f-sys.md#queryiccdiallingnumbers-2) | Query dialing number information on SIM card. |
 | [sendEnvelopeCmd](arkts-telephony-sim-sendenvelopecmd-f-sys.md#sendenvelopecmd-1) | Send envelope command to SIM card. |

@@ -12,7 +12,7 @@ import { componentSnapshot } from '@kit.ArkUI';
 function getSync(id: string, options?: SnapshotOptions): image.PixelMap
 ```
 
-Obtains the snapshot of a component that has been loaded based on the provided component ID. This API synchronously waits for the snapshot to complete and returns a [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) object.
+Obtains the snapshot of a component that has been loaded based on the provided [component ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md). This API synchronously waits for the snapshot to complete and returns a [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) object.
 
 > **NOTE:** 
 > 
@@ -33,7 +33,7 @@ Obtains the snapshot of a component that has been loaded based on the provided c
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| id | string | Yes | ID of the target component. |
+| id | string | Yes | [ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) of the target component. |
 | options | [SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md) | No | Custom options related to the snapshot, which are passed when custom snapshot behavior is needed, for example, setting the scale ratio, waiting for rendering to complete, snapshot area, color space, or dynamic range. Default snapshot configuration is used when this parameter is not passed. |
 
 **Return value:**

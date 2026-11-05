@@ -29,4 +29,4 @@ import { LiveFormExtensionAbility, LiveFormInfo } from '@kit.FormKit';
 
 | Name | Description |
 | --- | --- |
-| [LiveFormInfo](arkts-form-app-form-liveformextensionability-liveforminfo-i.md) | Provides information about a live form. @typedef { LiveFormInfo } |
+| [LiveFormInfo](arkts-form-app-form-liveformextensionability-liveforminfo-i.md) | Provides information about a live form. |

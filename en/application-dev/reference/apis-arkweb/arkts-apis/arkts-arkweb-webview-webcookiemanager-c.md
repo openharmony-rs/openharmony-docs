@@ -10,7 +10,7 @@ When browsing web pages in Privacy Mode, data such as cookies and caches are not
 
 > **NOTE:** 
 > 
-> - Static methods must be used on the user interface (UI) thread.
+> - By default, static methods must be called on the user interface (UI) thread. Starting from API version 26.0.1,static methods can be called on non-UI threads when [setLazyInitializeWebEngine](#setlazyinitializewebengine) is set to true.
 
 **Since:** 9
 
@@ -1685,7 +1685,7 @@ Sets whether to delay the initialization of the ArkWeb kernel. If this method is
 > 
 > - This API applies only to APIs that initialize CookieManager when called, such as other APIs of this class WebCookieManager. After this API is called and set to **true**, calling applicable APIs skips the initialization of the ArkWeb kernel when initializing CookieManager. You need to initialize the ArkWeb kernel separately afterwards.
 > 
-> -Since API version 26.0.1, when set to **true**, CookieManager interfaces can be used in asynchronous threads.
+> - Since API version 26.0.1, when set to **true**, WebCookieManager interfaces can be called in non-UI threads.
 
 **Since:** 22
 

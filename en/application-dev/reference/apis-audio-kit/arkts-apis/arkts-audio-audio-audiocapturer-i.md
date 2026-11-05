@@ -797,6 +797,8 @@ getSupportedNoiseReductionModes(): Array<NoiseReductionMode>
 
 Gets all the supported noise reduction modes for current device platform. Currently the noise reduction effect is only supported when using [SOURCE_TYPE_VOICE_MESSAGE](arkts-audio-audio-sourcetype-e.md#source_type_voice_message), other supported usage may be extened later. The supported modes will only consider the audio format and device platform, audio input device and stream concurrency will not be considered.
 
+Obtains the recording noise reduction mode supported by the current device. The application can call [setNoiseReductionMode](#setnoisereductionmode) to set the noise reduction mode to be switched. The NR modes in some scenarios can be set only by the system. These modes are not returned by this API. The application can sense the noise reduction mode currently selected by the system through [getNoiseReductionMode](#getnoisereductionmode) and [onNoiseReductionModeChanged](#onnoisereductionmodechanged).
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -1124,6 +1126,30 @@ audioCapturer.on('readData', readDataCallback);
 audioCapturer.off('readData', readDataCallback);
 ```
 
+## offNoiseReductionModeChanged
+
+```TypeScript
+offNoiseReductionModeChanged(callback?: Callback<NoiseReductionModeChangeInfo>): void
+```
+
+Unsubscribe from the NR mode change event.
+
+Application scenario: This interface is invoked when the application no longer needs to detect the NR mode change. Constraint: If the callback parameter is transferred, only the registered callback that matches the callback instance is canceled. If the callback parameter is not transferred, all registered NR mode change callbacks are canceled.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioCapturer-offNoiseReductionModeChanged(callback?: Callback<NoiseReductionModeChangeInfo>): void--><!--Device-AudioCapturer-offNoiseReductionModeChanged(callback?: Callback<NoiseReductionModeChangeInfo>): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Capturer
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NoiseReductionModeChangeInfo](arkts-audio-audio-noisereductionmodechangeinfo-i.md)&gt; | No | Callback function, which is used to cancel subscription. If this parameter is not specified, all registered callbacks are canceled. <br>Default value: Default behavior: Cancel all registered noise reduction mode change callbacks by default. |
+
 ## on('markReach')
 
 ```TypeScript
@@ -1448,6 +1474,30 @@ audioCapturer.start((err: BusinessError) => {
 });
 ```
 
+## onNoiseReductionModeChanged
+
+```TypeScript
+onNoiseReductionModeChanged(callback: Callback<NoiseReductionModeChangeInfo>): void
+```
+
+Subscribes to the noise reduction mode change event, which is triggered when the noise reduction mode is changed for the audio capturer. The change may be triggered by the user through the system record controller panel, by the application calling [setNoiseReductionMode](#setnoisereductionmode), or by the system adjusting the mode due to device changes or stream concurrency. For details, see [NoiseReductionModeChangeReason](arkts-audio-audio-noisereductionmodechangereason-e.md).
+
+Application scenario: Applies to scenarios where applications need to detect noise reduction mode changes in real time, such as [SOURCE_TYPE_LIVE](arkts-audio-audio-sourcetype-e.md#source_type_live) live broadcast, [SOURCE_TYPE_MIC](arkts-audio-audio-sourcetype-e.md#source_type_mic) recording, [SOURCE_TYPE_CAMCORDER](arkts-audio-audio-sourcetype-e.md#source_type_camcorder) recording, [SOURCE_TYPE_VOICE_COMMUNICATION](arkts-audio-audio-sourcetype-e.md#source_type_voice_communication) VoIP, and [SOURCE_TYPE_VOICE_MESSAGE](arkts-audio-audio-sourcetype-e.md#source_type_voice_message) voice messages. After detecting the noise reduction mode change, an application can determine whether to disable the noise reduction algorithm superimposed by the application based on the actual situation to achieve the best E2E overall noise reduction experience.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioCapturer-onNoiseReductionModeChanged(callback: Callback<NoiseReductionModeChangeInfo>): void--><!--Device-AudioCapturer-onNoiseReductionModeChanged(callback: Callback<NoiseReductionModeChangeInfo>): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Capturer
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NoiseReductionModeChangeInfo](arkts-audio-audio-noisereductionmodechangeinfo-i.md)&gt; | Yes | Callback used to return the noise reduction mode change information. |
+
 ## release
 
 ```TypeScript
@@ -1649,6 +1699,14 @@ setNoiseReductionMode(noiseReductionMode: NoiseReductionMode): void
 ```
 
 Sets noise reduction mode for current audio capturer. The supported mode should be obtained by [getSupportedNoiseReductionModes](#getsupportednoisereductionmodes). The actual effect may vary from different audio devices, and will be invalid when there are multiple recording streams running simultaneously. The mode can only be changed in created and stopped state.
+
+Sets the noise reduction mode of the current recording stream. You are advised to call [getSupportedNoiseReductionModes](#getsupportednoisereductionmodes) to obtain the NR mode supported by the current recording stream, and then call this API to set the NR mode.
+
+> **NOTE:** 
+> 
+> - Currently, only the recording streams created by [SourceType.SOURCE_TYPE_VOICE_MESSAGE](arkts-audio-audio-sourcetype-e.md) can be used to set the noise reduction mode. Other stream types may be supported in the future.
+> - The noise reduction effect is affected by the device platform, audio device, and recording concurrency.
+> - This interface can be invoked only when recording is not started after the recording stream is created or when recording is stopped. The call throws an exception when the recording stream is running or has been released.
 
 **Since:** 26.0.0
 

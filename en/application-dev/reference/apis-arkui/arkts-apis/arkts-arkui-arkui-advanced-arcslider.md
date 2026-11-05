@@ -14,11 +14,11 @@ Not supported
 
 ## Attributes
 
-The universal attributes are not supported.
+The [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) are not supported.
 
 ## Events
 
-The universal events are not supported.
+The [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) are not supported.
 
 ## Modules to Import
 

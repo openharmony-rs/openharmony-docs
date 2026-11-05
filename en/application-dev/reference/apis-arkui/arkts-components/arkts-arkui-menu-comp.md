@@ -35,7 +35,7 @@ Creates a fixed container for a menu. This API does not have any parameters.
 > 
 > - The minimum width is 64 vp.
 > 
-> - Common attributes that are not supported by **Menu** include the following: attributes [Outline Styling](arkts-arkui-common-comp.md) and the [shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow-1) attribute.
+> - Common attributes that are not supported by **Menu** include the following: attributes [Outline Styling](arkts-arkui-common-comp-commonmethod-c.md) and the [shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow-1) attribute.
 
 **Since:** 9
 

@@ -8,7 +8,7 @@ Defines the size constraints of a component during layout.
 
 > **NOTE:** 
 > 
-> In the [Row](../arkts-components/arkts-arkui-row-comp.md), [Column](../arkts-components/arkts-arkui-column-comp.md), and [RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md)
+> In the Row, Column, and [RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md)
 > components, setting **width** and **height** to **auto** means that the size adapts to the size of their child
 > components. In the [TextInput](../arkts-components/arkts-arkui-textinput-comp.md) component, setting **width** to **auto** means that the width
 > adapts to the width of the text content.

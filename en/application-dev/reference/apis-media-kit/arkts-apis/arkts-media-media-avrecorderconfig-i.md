@@ -110,7 +110,7 @@ Recording profile. This parameter is mandatory.<br>**Atomic service API**: This 
 url: string
 ```
 
-Recording output URL: fd://xx (fd number).<br>This parameter is mandatory.<br>**Atomic service API**: This API can be used in atomic services since API version 12.
+Recording output URL: fd://xx (fd number)  This parameter is mandatory.
 
 **Type:** string
 
@@ -164,7 +164,7 @@ Geographical location of the recorded video. By default, the geographical locati
 rotation?: number
 ```
 
-Rotation angle of the recorded video, in degrees. The value can be 0 (default), 90, 180, or 270 for MP4 videos. <br>This API is supported since API version 6 and deprecated since API version 12. You are advised to use. **AVMetadata.videoOrientation** instead. If both parameters are set, **AVMetadata.videoOrientation** is used.
+Rotation angle of the video to record, in degrees. For MP4 videos, the value can be **0°** (default), **90°**, **180°**, or **270°**.<br>This API is supported since API version 6 and deprecated since API version 12. You are advised to use **[AVMetadata](arkts-media-media-avmetadata-i.md).videoOrientation** instead.<br>If both parameters are set, **[AVMetadata](arkts-media-media-avmetadata-i.md).videoOrientation** is used.
 
 **Type:** number
 

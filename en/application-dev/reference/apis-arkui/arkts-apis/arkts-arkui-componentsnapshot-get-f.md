@@ -12,7 +12,7 @@ import { componentSnapshot } from '@kit.ArkUI';
 function get(id: string, callback: AsyncCallback<image.PixelMap>, options?: SnapshotOptions): void
 ```
 
-Obtains the snapshot of a component that has been loaded based on the provided component ID. This API uses an asynchronous callback to return the result.
+Obtains the snapshot of a component that has been loaded based on the provided [component ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md). This API uses an asynchronous callback to return the result.
 
 > **NOTE:** 
 > 
@@ -38,7 +38,7 @@ Obtains the snapshot of a component that has been loaded based on the provided c
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| id | string | Yes | ID of the target component. |
+| id | string | Yes | [ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) of the target component. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | Yes | Callback used to return the result. |
 | options | [SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md) | No | Custom settings of the snapshot.<br>**Since:** 12 |
 
@@ -99,7 +99,7 @@ struct SnapshotExample {
 function get(id: string, options?: SnapshotOptions): Promise<image.PixelMap>
 ```
 
-Obtains the snapshot of a component that has been loaded based on the provided component ID. This API uses a promise to return the result.
+Obtains the snapshot of a component that has been loaded based on the provided [component ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md). This API uses a promise to return the result.
 
 > **NOTE:** 
 > 
@@ -125,7 +125,7 @@ Obtains the snapshot of a component that has been loaded based on the provided c
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| id | string | Yes | ID of the target component. |
+| id | string | Yes | [ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) of the target component. |
 | options | [SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md) | No | Custom settings of the snapshot.<br>**Since:** 12 |
 
 **Return value:**

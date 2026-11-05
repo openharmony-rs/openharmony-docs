@@ -24,7 +24,7 @@ import { RecentPhotoComponent, RecentPhotoCheckResultCallback, RecentPhotoInfo, 
 dateTaken?: number
 ```
 
-Time when the recent image or video is taken, in ms. The value is the number of milliseconds elapsed since the Unix epoch (00:00:00 UTC on January 1, 1970).
+Time when the recent photo or video is taken, in ms. The value is the number of milliseconds elapsed since the Unix epoch (00:00:00 UTC on January 1, 1970).
 
 **Type:** number
 
@@ -42,7 +42,7 @@ Time when the recent image or video is taken, in ms. The value is the number of 
 identifier?: string
 ```
 
-Hash value of the name of the recent image or video, which is used to help the application determine whether the image or video to be displayed is the same as the one displayed before.
+Hash value of the name of the recent photo or video, which is used to help the application determine whether the image or video to be displayed is the same as the one displayed before.
 
 **Type:** string
 

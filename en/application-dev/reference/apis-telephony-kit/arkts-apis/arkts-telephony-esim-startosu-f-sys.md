@@ -12,7 +12,7 @@ import { eSIM } from '@kit.TelephonyKit';
 function startOsu(slotId: number): Promise<OsuStatus>
 ```
 
-Upgrades the OS if the OS version of the eSIM in the specified slot is not the latest. This API uses a promise to return the result.
+If the operating system of the specified card slot is not the latest, perform the operating system upgrade. After the upgrade, you can use the getOsuStatus interface to query the upgrade status. (for example, the upgrade is in progress, the upgrade is successful, or the upgrade fails.) Use Promise asynchronous callback.
 
 **Since:** 18
 
@@ -28,7 +28,7 @@ Upgrades the OS if the OS version of the eSIM in the specified slot is not the l
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| slotId | number | Yes | Card slot ID. <br>The value should be an integer. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 
 **Return value:**
 

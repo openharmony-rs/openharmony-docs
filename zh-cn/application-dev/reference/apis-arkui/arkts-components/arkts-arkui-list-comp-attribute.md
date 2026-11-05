@@ -4,9 +4,9 @@
 declare class ListAttribute extends ScrollableCommonMethod<ListAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp.md)和[滚动组件通用属性](arkts-arkui-common-comp-scrollablecommonmethod-c.md)外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)和[滚动组件通用属性](arkts-arkui-common-comp-scrollablecommonmethod-c.md)外，还支持以下属性：
 
-除支持[通用事件](arkts-arkui-common-comp.md)和[滚动组件通用事件](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#事件)外，还支持以下事件：
+除支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)和[滚动组件通用事件](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#事件)外，还支持以下事件：
 
 **继承/实现关系：** ListAttribute extends ScrollableCommonMethod&lt;ListAttribute&gt;
 
@@ -343,7 +343,7 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 内容区域起始偏移量。<br>默认值：0<br>参数类型为number时单位为vp。 <br>设置异常值如负数、非数字Resource时，按默认值处理。<br>参数类型为number时取值范围：0, +∞) |
+| offset | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 内容区域起始偏移量。<br>默认值：0<br>参数类型为number时单位为vp。 <br>设置异常值如负数、非数字Resource时，按默认值处理。<br>参数类型为number时取值范围：[0, +∞) |
 
 ## divider
 
@@ -359,7 +359,7 @@ List的分割线画在主轴方向两个子组件之间，第一个子组件上�
 
 多列模式下，ListItem与ListItem之间的分割线起始边距从每一列的交叉轴方向起始边开始计算，单列模式从List交叉轴方向起始边开始计算。
 
-ListItem设置[多态样式时，被按压的子组件上下的分割线不绘制。
+ListItem设置[多态样式](arkts-arkui-common-comp-commonmethod-c.md)时，被按压的子组件上下的分割线不绘制。
 
 **起始版本：** 7
 

@@ -4,9 +4,9 @@
 declare class WaterFlowAttribute extends ScrollableCommonMethod<WaterFlowAttribute>
 ```
 
-In addition to [universal attributes](arkts-arkui-common-comp.md) and [universal attributes of scrollable components](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#attributes), the following attributes are supported:
+In addition to [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) and [universal attributes of scrollable components](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#attributes), the following attributes are supported:
 
-In addition to [universal events](arkts-arkui-common-comp.md) and [scrollable component common events](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#events), the following events are also supported.
+In addition to [universal events](arkts-arkui-common-comp-commonmethod-c.md) and [scrollable component common events](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#events), the following events are also supported.
 
 **Inheritance/Implementation:** WaterFlowAttribute extends ScrollableCommonMethod&lt;WaterFlowAttribute&gt;
 

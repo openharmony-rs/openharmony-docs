@@ -18,4 +18,4 @@ Called to return the query result of the recent image or video.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| recentPhotoExists | boolean | Yes | Whether the recent image or video exists. **true** if it exists, **false** otherwise. The default value is **true**. |
+| recentPhotoExists | boolean | Yes | Whether the recent image or video exists. **true** if it exists, and **false** otherwise. |

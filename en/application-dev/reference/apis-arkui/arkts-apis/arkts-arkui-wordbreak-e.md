@@ -26,7 +26,7 @@ Line breaks can occur between any two characters for non-CJK text. For CJK text,
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 11.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
 
 <!--Device-WordBreak-BREAK_ALL = 1--><!--Device-WordBreak-BREAK_ALL = 1-End-->
 
@@ -46,7 +46,7 @@ This option has the same effect as **BREAK_ALL** for non-CJK text, except that i
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 11.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
 
 <!--Device-WordBreak-BREAK_WORD = 2--><!--Device-WordBreak-BREAK_WORD = 2-End-->
 
@@ -66,7 +66,7 @@ Attempts are made to hyphenate words at the end of each line using a hyphen. If 
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 18.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
 
 <!--Device-WordBreak-HYPHENATION = 3--><!--Device-WordBreak-HYPHENATION = 3-End-->
 
@@ -86,7 +86,7 @@ Word breaks can occur between any two characters for Chinese, Japanese, and Kore
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 11.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
 
 <!--Device-WordBreak-NORMAL = 0--><!--Device-WordBreak-NORMAL = 0-End-->
 

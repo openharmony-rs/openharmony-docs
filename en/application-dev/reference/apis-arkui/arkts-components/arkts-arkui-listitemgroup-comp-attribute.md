@@ -55,7 +55,7 @@ Sets the style of the divider for the list items. By default, there is no divide
 
 **strokeWidth**, **startMargin**, and **endMargin** cannot be set in percentage.
 
-When a list item has [polymorphic styles](arkts-arkui-common-comp.md) applied, the dividers above and below the pressed child component are not rendered.
+When a list item has [polymorphic styles](arkts-arkui-common-comp-commonmethod-c.md) applied, the dividers above and below the pressed child component are not rendered.
 
 **Since:** 9
 

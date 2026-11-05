@@ -18,7 +18,7 @@ Enumerates the selection modes.
 MULTI_SELECT = 1
 ```
 
-Select multiple options.
+Select multiple options. Multiple images and videos can be selected at the same time.
 
 **Since:** 12
 
@@ -34,7 +34,7 @@ Select multiple options.
 SINGLE_SELECT = 0
 ```
 
-Select a single option.
+Select a single option. Only one image or video can be selected.
 
 **Since:** 12
 

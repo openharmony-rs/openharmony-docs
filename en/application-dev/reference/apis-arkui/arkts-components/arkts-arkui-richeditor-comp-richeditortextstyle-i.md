@@ -304,7 +304,7 @@ Default value: StrokeJoinStyle.MITER_JOIN.
 strokeWidth?: LengthMetrics | number
 ```
 
-Text stroke width. If the unit value of LengthMetrics is [PERCENT](../arkts-apis/arkts-arkui-graphics-lengthunit-e.md), the current setting does not take effect and is treated as 0.
+Text stroke width. If the unit value of LengthMetrics is PERCENT, the current setting does not take effect and is treated as 0.
 
 If the value is less than 0, the text is rendered as solid; if greater than 0, the text is rendered as outline; if equal to 0, no stroke effect is applied.
 

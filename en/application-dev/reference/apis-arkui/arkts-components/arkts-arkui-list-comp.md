@@ -23,7 +23,7 @@ creating and laying out child components within the display area, child componen
 > **NOTE:** 
 > 
 > The component has been bound with gestures to implement functions such as follow-up scrolling. If you need to add
-> custom gestures, refer to [Gesture Blocking Enhancement](arkts-arkui-common-comp.md).
+> custom gestures, refer to [Gesture Blocking Enhancement](arkts-arkui-common-comp-commonmethod-c.md).
 
 ## Child Components
 
@@ -98,7 +98,7 @@ Creates a list container.
 | [ListBackPressBehavior](arkts-arkui-list-comp-listbackpressbehavior-i.md) | Defines the system back button behavior of the **List** component. |
 | [ListDividerOptions](arkts-arkui-list-comp-listdivideroptions-i.md) | Defines the divider style of the list or list item group. |
 | [ListOptions](arkts-arkui-list-comp-listoptions-i.md) | Defines the options of the **List** component. |
-| [UIListEvent](arkts-arkui-list-comp-uilistevent-i.md) | Represents the return value of the [getEvent('List')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent-2) method in **frameNode**, which can be used to set scroll events for a **List** node. |
+| [UIListEvent](arkts-arkui-list-comp-uilistevent-i.md) | Represents the return value of the getEvent('List') method in **frameNode**, which can be used to set scroll events for a **List** node. |
 | [VisibleListContentInfo](arkts-arkui-list-comp-visiblelistcontentinfo-i.md) | Describes the details of the child components in the visible area of a list. |
 
 <!--Del-->

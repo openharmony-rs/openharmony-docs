@@ -12,7 +12,7 @@ import { runningLock } from '@kit.BasicServicesKit';
 function create(name: string, type: RunningLockType, callback: AsyncCallback<RunningLock>): void
 ```
 
-创建RunningLock锁对象。使用callback异步回调。创建锁对象后，需调用hold()方法锁定和持有该锁，才能使锁功能生效。
+创建RunningLock锁对象。使用callback异步回调。创建锁对象后，需调用hold()方法锁定和持有该锁，才能使锁功能生效。不建议在多个 Worker/TaskPool 中并发调用 create 创建锁对象。
 
 **起始版本：** 9
 
@@ -56,7 +56,7 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 function create(name: string, type: RunningLockType): Promise<RunningLock>
 ```
 
-创建RunningLock锁对象。使用Promise异步回调。创建锁对象后，需调用hold()方法锁定和持有该锁，才能使锁功能生效。
+创建RunningLock锁对象。使用Promise异步回调。创建锁对象后，需调用hold()方法锁定和持有该锁，才能使锁功能生效。不建议在多个 Worker/TaskPool 中并发调用 create 创建锁对象。
 
 **起始版本：** 9
 

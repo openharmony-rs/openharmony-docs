@@ -795,6 +795,8 @@ getSupportedNoiseReductionModes(): Array<NoiseReductionMode>
 > 
 > - 返回结果仅考虑音频格式和设备平台，不考虑当前输入设备和录音并发情况。
 
+获取当前设备支持应用设置的录音降噪模式。返回的是应用调用setNoiseReductionMode可以设置切换的降噪模式。部分场景的降噪模式只能由系统设置，该接口不会返回这些模式。应用可以通过getNoiseReductionMode和onNoiseReductionModeChanged感知系统当前选择的降噪模式。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1122,6 +1124,30 @@ audioCapturer.on('readData', readDataCallback);
 audioCapturer.off('readData', readDataCallback);
 ```
 
+## offNoiseReductionModeChanged
+
+```TypeScript
+offNoiseReductionModeChanged(callback?: Callback<NoiseReductionModeChangeInfo>): void
+```
+
+取消订阅降噪模式变更事件。
+
+使用场景：当应用不再需要感知降噪模式变更时调用。使用约束：如果传入callback参数，则仅取消与该callback实例匹配的已注册回调；如果不传callback参数，则取消所有已注册的降噪模式变更回调。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AudioCapturer-offNoiseReductionModeChanged(callback?: Callback<NoiseReductionModeChangeInfo>): void--><!--Device-AudioCapturer-offNoiseReductionModeChanged(callback?: Callback<NoiseReductionModeChangeInfo>): void-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NoiseReductionModeChangeInfo](arkts-audio-audio-noisereductionmodechangeinfo-i.md)&gt; | 否 | 回调函数，用于取消订阅。不传入时，表示取消所有已注册的回调。<br>默认值：缺省行为：默认取消所有已注册的降噪模式变更回调。 |
+
 ## on('markReach')
 
 ```TypeScript
@@ -1433,6 +1459,30 @@ audioCapturer.start((err: BusinessError) => {
   }
 });
 ```
+
+## onNoiseReductionModeChanged
+
+```TypeScript
+onNoiseReductionModeChanged(callback: Callback<NoiseReductionModeChangeInfo>): void
+```
+
+订阅降噪模式变更事件，当音频采集器的降噪模式发生变更时触发。变更可能由用户通过系统录音控制面板切换、应用调用[setNoiseReductionMode](#setnoisereductionmode)接口设置，或系统因设备变更、录音流并发冲突而调整降噪模式触发。详见[NoiseReductionModeChangeReason](arkts-audio-audio-noisereductionmodechangereason-e.md)。
+
+使用场景：适用于应用需要实时感知降噪模式变更的场景，如[SOURCE_TYPE_LIVE](arkts-audio-audio-sourcetype-e.md#source_type_live)直播、[SOURCE_TYPE_MIC](arkts-audio-audio-sourcetype-e.md#source_type_mic)录音、 [SOURCE_TYPE_CAMCORDER](arkts-audio-audio-sourcetype-e.md#source_type_camcorder)录像、[SOURCE_TYPE_VOICE_COMMUNICATION](arkts-audio-audio-sourcetype-e.md#source_type_voice_communication)VoIP、 [SOURCE_TYPE_VOICE_MESSAGE](arkts-audio-audio-sourcetype-e.md#source_type_voice_message)语音消息等。应用感知到降噪模式变更后，可根据情况自行决策是否需要关闭应用自身叠加的降噪算法，从而达到端到端的整体降噪体验最佳。使用约束：多次订阅时，如果订阅的callback函数对象不同，会记录所有callback函数，按照订阅顺序依次回调。请勿在回调中调用AudioCapturer相关接口。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AudioCapturer-onNoiseReductionModeChanged(callback: Callback<NoiseReductionModeChangeInfo>): void--><!--Device-AudioCapturer-onNoiseReductionModeChanged(callback: Callback<NoiseReductionModeChangeInfo>): void-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NoiseReductionModeChangeInfo](arkts-audio-audio-noisereductionmodechangeinfo-i.md)&gt; | 是 | 返回降噪模式变更信息的回调。 |
 
 ## release
 

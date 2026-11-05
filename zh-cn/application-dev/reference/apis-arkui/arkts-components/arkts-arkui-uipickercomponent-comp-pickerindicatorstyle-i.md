@@ -55,7 +55,7 @@ borderRadius?: LengthMetrics | BorderRadiuses | LocalizedBorderRadiuses
 > **说明：** 
 > 
 > 1. 当type为PickerIndicatorType.BACKGROUND时生效。
-> 2. [LengthMetrics](../arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md)：统一设置四个圆角半径的大小和单位。
+> 2. LengthMetrics：统一设置四个圆角半径的大小和单位。
 > 3. [BorderRadiuses](../arkts-apis/arkts-arkui-borderradiuses-t.md)：单独设置四个圆角半径的大小（单位为vp）。
 > 4. [LocalizedBorderRadiuses](../arkts-apis/arkts-arkui-localizedborderradiuses-i.md)：单独设置四个圆角半径的大小和单位。
 

@@ -26,7 +26,7 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 deviceKeys: DeviceKey[]
 ```
 
-Device information list. It contains the device service identifier information selected by the user. Each **DeviceKey** contains the device ID type, device ID, device user ID, and device sub-profile ID. The system will perform subsequent operations such as adding a template or performing authentication based on this information.
+Device information list. It contains the business identifier information of the devices selected by the user. Each **DeviceKey** contains the device ID type, device ID, device user ID, and device sub-identity credential ID. The system performs subsequent template addition or authentication operations based on this information.
 
 **Type:** [DeviceKey](arkts-userauthentication-companiondeviceauth-devicekey-i-sys.md)[]
 
@@ -46,7 +46,7 @@ Device information list. It contains the device service identifier information s
 selectionContext?: Uint8Array
 ```
 
-Device selection context. It carries extension information in JSON format and can be used to pass additional parameters in the device selection process, such as authentication configuration and service scenario identifier.
+Device selection context. Carries extended information in JSON format (the specific fields are defined by the service party), which can be used to pass additional parameters during device selection. If this field is not provided, it is empty by default and carries no extended information.
 
 **Type:** Uint8Array
 

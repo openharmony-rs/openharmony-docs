@@ -16,7 +16,7 @@ Enumerates the button types.
 > 
 > - The button text is set using [fontSize](arkts-arkui-button-comp-attribute.md#fontsize),[fontColor](arkts-arkui-button-comp-attribute.md#fontcolor), [fontStyle](arkts-arkui-button-comp-attribute.md#fontstyle),[fontFamily](arkts-arkui-button-comp-attribute.md#fontfamily), and [fontWeight](arkts-arkui-button-comp-attribute.md#fontweight).
 > 
-> - Before setting the gradient color, you need to set [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor-1) to transparent.
+> - Before setting the [gradient color](arkts-arkui-common-comp-commonmethod-c.md), you need to set [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor-1) to transparent.
 > 
 > - When **borderRadius** is not set, the corner radius of the rounded rectangle button remains at the default value.In this case, the corner radius does not change with the button height and is subject to the **controlSize**property. When **controlSize** is **NORMAL**, the corner radius is 20 vp; when **controlSize** is **SMALL**, the corner radius is 14 vp.
 > 

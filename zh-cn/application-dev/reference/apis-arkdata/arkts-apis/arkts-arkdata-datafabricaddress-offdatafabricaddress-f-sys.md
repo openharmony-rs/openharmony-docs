@@ -12,7 +12,7 @@ function offDataFabricAddress(inputParams: DataFabricAddressParams,
     callback?: Callback<DataProcessingResponse>): void
 ```
 
-取消订阅地址数据捐赠接口。该接口应在成功调用onDataFabricAddress订阅后调用；在未成功订阅的情况下调用，将返回错误码36900004。
+取消订阅地址数据捐赠接口。该接口应在成功调用onDataFabricAddress订阅后调用；在未成功订阅的情况下调用，将返回错误码36900003。
 
 **起始版本：** 26.1.0
 
@@ -42,5 +42,4 @@ function offDataFabricAddress(inputParams: DataFabricAddressParams,
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Function can not work correctly due to <br> limited device capabilities. |
 | [36900001](../errorcode-dataFabricAddress-sys.md#36900001-接口内部错误) | Internal error in the API. |
 | [36900003](../errorcode-dataFabricAddress-sys.md#36900003-取消订阅失败) | Unsubscription failed. |
-| [36900004](../errorcode-dataFabricAddress-sys.md#36900004-操作不支持) | Operation not supported. |
 | [36900005](../errorcode-dataFabricAddress-sys.md#36900005-参数错误) | Invalid parameter. |

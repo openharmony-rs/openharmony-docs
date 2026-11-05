@@ -122,7 +122,7 @@ ERR_CERT_NOT_YET_VALID = 19030003
 ERR_CERT_SIGNATURE_FAILURE = 19030002
 ```
 
-证书签名验证错误。
+证书验签错误。
 
 **起始版本：** 9
 
@@ -228,7 +228,7 @@ ERR_CRL_NOT_YET_VALID = 19030016
 ERR_CRL_SIGNATURE_FAILURE = 19030018
 ```
 
-证书吊销列表签名验证失败。
+证书吊销列表验签失败。
 
 **起始版本：** 26.0.0
 
@@ -382,7 +382,7 @@ ERR_OCSP_RESPONSE_NOT_FOUND = 19030020
 ERR_OCSP_SIGNATURE_FAILURE = 19030022
 ```
 
-OCSP签名验证失败。
+OCSP验签失败。
 
 **起始版本：** 26.0.0
 

@@ -4,7 +4,7 @@
 declare class TextAreaAttribute extends CommonMethod<TextAreaAttribute>
 ```
 
-In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported:
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported:
 
 > **NOTE:** 
 > 
@@ -24,7 +24,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp.md), the follo
 
 > Since API version 11, the multi-line text box can be set with .width('auto') so that the component width adapts to
 > the text width. When adapting, the component width is limited by the constraintSize attribute and the maximum and
-> minimum widths passed by the parent container. For other usage, see [Sizing](arkts-arkui-common-comp.md).
+> minimum widths passed by the parent container. For other usage, see [Sizing](arkts-arkui-common-comp-commonmethod-c.md).
 
 **Inheritance/Implementation:** TextAreaAttribute extends CommonMethod&lt;TextAreaAttribute&gt;
 
@@ -932,7 +932,7 @@ Sets the line height of the text. If the value is not greater than 0, the line h
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Line height of the text. A [pixel unit](arkts-arkui-common-comp.md) must be explicitly specified, for example, '10px'. A percentage string can also be set, for example, '100%'. <br>**Note:** If no pixel unit is specified, the default unit fp is used. For example, '10' is equivalent to 10. |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Line height of the text. A [pixel unit](arkts-arkui-common-comp-commonmethod-c.md) must be explicitly specified, for example, '10px'. A percentage string can also be set, for example, '100%'. <br>**Note:** If no pixel unit is specified, the default unit fp is used. For example, '10' is equivalent to 10. |
 
 ## lineSpacing
 
@@ -2198,7 +2198,7 @@ Sets how the text is displayed when it is too long. If this API is not called, t
 
 In inline mode, the truncation effect of [maxLines](#maxlines-1) takes effect only when textOverflow is actively configured. If it is not configured, the text is not truncated by default.
 
-Text is truncated by character. For example, English text is truncated by word as the minimum unit. To truncate by letter, set wordBreak to WordBreak.BREAK_ALL.
+Text is truncated by character. For example, English text is truncated by word as the minimum unit. To truncate by letter, set [wordBreak](../arkts-apis/arkts-arkui-wordbreak-e.md) to WordBreak.BREAK_ALL.
 
 When textOverflow is set to TextOverflow.None, TextOverflow.Clip, or TextOverflow.Ellipsis, it must be used together with [maxLines](#maxlines-1); setting it alone does not take effect. Setting TextOverflow.None has the same effect as TextOverflow.Clip.
 
