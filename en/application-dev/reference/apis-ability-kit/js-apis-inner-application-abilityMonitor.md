@@ -7,7 +7,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-The module provides the capability of listening for lifecycle state changes of a specified [UIAbility](js-apis-app-ability-uiAbility.md). You can use AbilityMonitor as an input parameter of [abilityDelegator.addAbilityMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addabilitymonitor9) to register a listener.
+The module provides the capability of listening for lifecycle state changes of a specified [UIAbility](js-apis-app-ability-uiAbility.md). You can use AbilityMonitor as an input parameter of [abilityDelegator.addAbilityMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addabilitymonitor) to register a listener.
 
 > **NOTE**
 > 
@@ -21,7 +21,7 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 ## Usage
 
-AbilityMonitor can be used as an input parameter of [addAbilityMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addabilitymonitor9) in **abilityDelegator** to listen for lifecycle changes of an ability.
+AbilityMonitor can be used as an input parameter of [addAbilityMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addabilitymonitor) in **abilityDelegator** to listen for lifecycle changes of an ability.
 
 ## AbilityMonitor
 
