@@ -33,70 +33,72 @@
 
 1. 导入相关依赖。
 
-    <!-- @[calendarData_entryAbilityImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    <!-- @[calendarData_entryAbilityImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) --> 
     
     ``` TypeScript
     import { abilityAccessCtrl, AbilityConstant, common, PermissionRequestResult, Permissions, UIAbility, Want } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     import { calendarManager } from '@kit.CalendarKit';
     import { window } from '@kit.ArkUI';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
 2. 申请权限。使用Calendar Kit时，需要在module.json5中声明申请读写日历日程所需的权限：`ohos.permission.READ_CALENDAR`和`ohos.permission.WRITE_CALENDAR`。具体指导可见[声明权限](../security/AccessToken/declare-permissions.md)。
 
 3. 根据上下文获取日历管理器对象calendarMgr，用于对日历账户进行相关管理操作。推荐在`EntryAbility.ets`文件中进行操作。
 
-    <!-- @[calendarData_entryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    <!-- @[calendarData_entryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) --> 
     
     ``` TypeScript
-    
+    const DOMAIN = 0x0000;
+        
     export let calendarMgr: calendarManager.CalendarManager | null = null;
     
     export let mContext: common.UIAbilityContext | null = null;
     
     export default class EntryAbility extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        console.info('%{public}s', 'Ability onCreate');
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
       }
     
       onDestroy(): void {
-        console.info('%{public}s', 'Ability onDestroy');
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
       }
     
       onWindowStageCreate(windowStage: window.WindowStage): void {
         // 主窗口已创建，请为此Ability设置主页
-        console.info('%{public}s', 'Ability onWindowStageCreate');
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
         windowStage.loadContent('pages/Index', (err, data) => {
           if (err.code) {
-            console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+            hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
             return;
           }
-          console.info('Succeeded in loading the content.');
+          hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
         });
         mContext = this.context;
         const permissions: Permissions[] = ['ohos.permission.READ_CALENDAR', 'ohos.permission.WRITE_CALENDAR'];
         let atManager = abilityAccessCtrl.createAtManager();
         atManager.requestPermissionsFromUser(mContext, permissions).then((result: PermissionRequestResult) => {
-          console.info('get Permission success');
+          hilog.info(DOMAIN, 'testTag', 'get Permission success');
           calendarMgr = calendarManager.getCalendarManager(mContext);
         }).catch((error: BusinessError) => {
-          console.error('get Permission error, Cause: %{public}s', JSON.stringify(error));
+          hilog.error(DOMAIN, 'testTag', 'get Permission error, Cause: %{public}s', JSON.stringify(error));
         })
       }
     
       onWindowStageDestroy(): void {
         // 主窗口已销毁，释放 UI 相关资源
-        console.info('%{public}s', 'Ability onWindowStageDestroy');
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
       }
     
       onForeground(): void {
         // Ability 进入前台
-        console.info('%{public}s', 'Ability onForeground');
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
       }
     
       onBackground(): void {
         // Ability 进入后台
-        console.info('%{public}s', 'Ability onBackground');
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onBackground');
       }
     }
     ```
