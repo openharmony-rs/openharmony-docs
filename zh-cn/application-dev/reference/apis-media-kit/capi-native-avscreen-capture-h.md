@@ -1585,7 +1585,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForContentAutoPauseScenes
 
 **描述**
 
-设置自动暂停屏幕内容采集的场景集合。<br>当指定的场景发生时，系统将自动暂停屏幕内容采集。可调用[OH_AVScreenCapture_ResumeScreenCapture](#oh_avscreencapture_resumescreencapture)接口恢复屏幕内容采集。
+当指定的场景发生时，系统将自动暂停屏幕内容采集。可调用[OH_AVScreenCapture_ResumeScreenCapture](#oh_avscreencapture_resumescreencapture)接口恢复屏幕内容采集。
 
 **起始版本：** 26.1.0
 
