@@ -64,14 +64,14 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
 
   系统为不同类型的子窗口分配了默认层级。优先级由高到低如下所示：
 
-  | 窗口类型     | 创建方式 |
-  | -------- | -------- |
+  | 窗口类型    | 创建方式 |
+  |---------| -------- |
   | 模应用子窗   | 调用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-Window.md#createsubwindowwithoptions12)接口，并设置子窗口参数[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的isModal为true，modalityType为APPLICATION_MODALITY。 |
-  | Toast子窗  | 调用[showToast()](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showtoast)接口，并设置showMode为TOP_MOST。 |
-  | 文本菜单子窗   | 调用[showActionMenu()](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)接口，并设置showInSubWindow为true。 |
+  | Toast子窗 | 调用[showToast()](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showtoast)接口，并设置showMode为TOP_MOST。 |
+  | 文本菜单子窗  | 调用[showActionMenu()](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)接口，并设置showInSubWindow为true。 |
   | Dialog子窗 | 调用[openCustomDialog()](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)传入dialogContent、options参数，并设置showInSubWindow为true。<br>调用[openCustomDialog()](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12-1)传入options参数，并设置showInSubWindow为true。<br>调用[openCustomDialogWithController()](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)，并设置showInSubWindow为true。 |
-  | 模态子窗     | 调用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-Window.md#createsubwindowwithoptions12)接口，并设置子窗口参数[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的isModal为true，modalityType为WINDOW_MODALITY。 |
-  | 普通子窗     | 调用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-Window.md#createsubwindowwithoptions12)接口创建的默认子窗。 |
+  | 模态子窗    | 调用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-Window.md#createsubwindowwithoptions12)接口，并设置子窗口参数[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的isModal为true，modalityType为WINDOW_MODALITY。 |
+  | 普通子窗    | 调用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-Window.md#createsubwindowwithoptions12)接口创建的默认子窗。 |
 
   不同类型窗口之间不能通过点击或API调整跨越层级范围。
 
@@ -92,7 +92,7 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
 
 | 特性/操作 | 控制方式 | 生效范围 | 适用场景 |
 | -------- | -------- | -------- | -------- |
-| ZOrder | 系统管理 | 可跨应用生效| 内部渲染顺序管理 |
+| ZOrder | 系统管理 | 可跨应用生效 | 内部渲染顺序管理 |
 | zLevel | [setSubWindowZLevel()](../reference/apis-arkui/arkts-apis-window-Window.md#setsubwindowzlevel18)/创建窗口时设置 | 仅同应用内生效 | 子窗口层级管理 |
 | 窗口置顶 | [setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14) | 可跨应用生效 | 视频、导航等常驻窗口 |
 | 点击抬升 | [setRaiseByClickEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setraisebyclickenabled14) | 同应用内同类型子窗口之间 | 防误触、固定布局 |
@@ -121,21 +121,23 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
 
 ### 使用模态子窗实现关键操作确认
 
-删除、支付或退出登录等关键操作通常需要用户二次确认，且确认完成前应阻断页面的其他操作。此时可创建模态子窗承载确认弹窗：模态子窗的层级高于所属主窗口及普通子窗，弹出后其遮蔽范围内的窗口不可交互，直至子窗关闭。
+推荐在删除、支付或退出登录等关键操作的场景创建模态子窗。这些操作通常需要用户二次确认，且确认完成前应阻断页面的其他操作。模态子窗的层级高于所属主窗口及普通子窗，弹出后其遮蔽范围内的窗口不可交互，直至子窗关闭。
 
-1. 主窗口可通过调用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-Window.md#createsubwindowwithoptions12)接口并设置isModal字段为true以创建模态子窗。模态子窗的默认层级高于普通子窗和文本菜单子窗，无需额外调用[setSubWindowZLevel()](../reference/apis-arkui/arkts-apis-window-Window.md#setsubwindowzlevel18)调整层级。
+1. 主窗口可通过调用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-Window.md#createsubwindowwithoptions12)接口并设置isModal字段为true以创建模态子窗。模态子窗的默认层级高于普通子窗，无需额外调用[setSubWindowZLevel()](../reference/apis-arkui/arkts-apis-window-Window.md#setsubwindowzlevel18)调整层级。
    - 当设置modalityType为WINDOW_MODALITY时，仅遮蔽父窗口，适合单页面内的操作确认。
    - 当设置modalityType为APPLICATION_MODALITY时，遮蔽当前应用的所有窗口，适合全局性阻断。
    - 如需中途取消模态，可调用[setSubWindowModal()](../reference/apis-arkui/arkts-apis-window-Window.md#setsubwindowmodal12)传入false。
 2. 调用[loadContent()](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)加载确认弹窗页面，调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9-1)显示子窗。
 3. 用户确认或取消后，调用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9)销毁子窗，被遮蔽窗口恢复交互。
 
+<!-- @[modal_sub_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowZOrder/entry/src/main/ets/pages/Index.ets) -->
+
 ```ts
-// 弹出确认删除操作的模态子窗
 import { window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 弹出确认删除操作的模态窗口
 async function showDeleteConfirm(context: common.UIAbilityContext): Promise<void> {
   let mainWindow = context.windowStage.getMainWindowSync();
   let options: window.SubWindowOptions = {
@@ -145,7 +147,9 @@ async function showDeleteConfirm(context: common.UIAbilityContext): Promise<void
     modalityType: window.ModalityType.WINDOW_MODALITY
   };
   try {
+    // 步骤1：创建模态窗口
     let subWindow = await mainWindow.createSubWindowWithOptions('deleteConfirm', options);
+    // 步骤2：加载确认弹窗页面并显示
     subWindow.loadContent('pages/DeleteConfirm', (err: BusinessError) => {
       if (err.code) {
         console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
@@ -159,13 +163,56 @@ async function showDeleteConfirm(context: common.UIAbilityContext): Promise<void
 }
 ```
 
+步骤3中模态窗口的销毁逻辑位于确认弹窗页面（DeleteConfirm.ets）中，用户点击“Cancel”或“Delete”按钮后销毁模态窗口，示例代码如下：
+
+<!-- @[modal_sub_window_close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowZOrder/entry/src/main/ets/pages/DeleteConfirm.ets) -->
+
+```ts
+@Entry
+@Component
+struct DeleteConfirm {
+  build() {
+    Column({ space: 24 }) {
+      Text('Are you sure you want to delete this item?')
+        .fontSize(20)
+        .fontWeight(FontWeight.Medium)
+
+      Row({ space: 16 }) {
+        Button('Cancel')
+          .onClick(() => {
+            this.destroySubWindow();
+          })
+        Button('Delete')
+          .onClick(() => {
+            // 执行删除逻辑
+            this.destroySubWindow();
+          })
+      }
+    }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+
+  // 步骤3：用户确认或取消后，销毁模态窗口，被遮蔽窗口恢复交互
+  private destroySubWindow(): void {
+    let subWindow = window.findWindow('deleteConfirm');
+    subWindow.destroyWindow().then(() => {
+      console.info('Succeeded in destroying the subwindow.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to destroy the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
 ### 实现应用主窗口置顶
 
-视频通话、实时导航等场景中，应用主窗口需要常驻显示、不被其他应用窗口遮挡，可通过[setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14)实现置顶。
+视频通话、实时导航等场景中，应用主窗口需要常驻显示且不被其他应用窗口遮挡，可通过[setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14)实现置顶。
 
 > **说明：**
 >
-> - 置顶主窗口仅高于其他应用的普通主窗口，仍低于层级更高的窗口（如画中画窗口、全局悬浮窗、输入法窗口）。
+> - 置顶主窗口仅高于其他应用的普通主窗口，仍低于层级更高的窗口（如画中画窗口、全局悬浮窗）。
 > - 建议在页面中提供明显的置顶/取消置顶入口，避免长期置顶干扰用户的多任务操作。
 
 1. 在[module.json5](../quick-start/module-configuration-file.md)中声明权限[ohos.permission.WINDOW_TOPMOST](../security/AccessToken/permissions-for-all.md#ohospermissionwindow_topmost)。
@@ -185,13 +232,10 @@ async function showDeleteConfirm(context: common.UIAbilityContext): Promise<void
 2. 调用[isInFreeWindowMode()](../reference/apis-arkui/arkts-apis-window-Window.md#isinfreewindowmode22)确认当前是否处于[自由窗口](window-terminology.md#freeform-window自由窗口)状态（置顶仅在该状态下生效）；必要时注册[on('freeWindowModeChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onfreewindowmodechange22)监听窗口模式变化。
 3. 调用[setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14)传入true实现主窗口置顶；当窗口不再需要置顶显示时，可调用setWindowTopmost()传入false取消置顶。
 
+<!-- @[window_topmost](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowZOrder/entry/src/main/ets/pages/Index.ets) -->
+
 ```ts
 // Index.ets
-// 示例：在页面中提供置顶/取消置顶按钮入口
-import { window } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 @Entry
 @Component
 struct Index {
@@ -199,14 +243,17 @@ struct Index {
   private context = (this.getUIContext()?.getHostContext() as common.UIAbilityContext);
 
   build() {
-    Column() {
+    Column({ space: 24 }) {
+      // ...
       Button(this.isTopmost ? 'Cancel Topmost' : 'Set Topmost')
         .onClick(() => {
           let mainWindow = this.context.windowStage.getMainWindowSync();
+          // 步骤2：确认当前是否处于自由窗口状态（置顶仅在该状态下生效）
           if (!mainWindow.isInFreeWindowMode()) {
             console.info('The window is not in free window mode, topmost is not supported.');
             return;
           }
+          // 步骤3：调用setWindowTopmost()传入true实现主窗口置顶；窗口已置顶时传入false取消置顶
           this.isTopmost = !this.isTopmost;
           mainWindow.setWindowTopmost(this.isTopmost).then(() => {
             console.info('Succeeded in setting window topmost.');
