@@ -45,7 +45,7 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
      rendererFlags: 1 // 音频渲染器标志。
    }
    // 创建soundPool实例。
-   this.soundPool = await media.createSoundPool(14,audioRendererInfo);
+   this.soundPool = await media.createSoundPool(14, audioRendererInfo);
    ```
 
 2. 调用[on('loadComplete')](../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md#onloadcomplete)方法，用于监听“资源加载完成”。
