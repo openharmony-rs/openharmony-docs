@@ -40,7 +40,6 @@
     import { BusinessError } from '@kit.BasicServicesKit';
     import { calendarManager } from '@kit.CalendarKit';
     import { window } from '@kit.ArkUI';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
 2. 申请权限。使用Calendar Kit时，需要在module.json5中声明申请读写日历日程所需的权限：`ohos.permission.READ_CALENDAR`和`ohos.permission.WRITE_CALENDAR`。具体指导可见[声明权限](../security/AccessToken/declare-permissions.md)。
@@ -50,55 +49,54 @@
     <!-- @[calendarData_entryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
     ``` TypeScript
-    const DOMAIN = 0x0000;
-        
+    
     export let calendarMgr: calendarManager.CalendarManager | null = null;
     
     export let mContext: common.UIAbilityContext | null = null;
     
     export default class EntryAbility extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
+        console.info('%{public}s', 'Ability onCreate');
       }
     
       onDestroy(): void {
-        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
+        console.info('%{public}s', 'Ability onDestroy');
       }
     
       onWindowStageCreate(windowStage: window.WindowStage): void {
         // 主窗口已创建，请为此Ability设置主页
-        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+        console.info('%{public}s', 'Ability onWindowStageCreate');
         windowStage.loadContent('pages/Index', (err, data) => {
           if (err.code) {
-            hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+            console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
             return;
           }
-          hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
+          console.info('Succeeded in loading the content.');
         });
         mContext = this.context;
         const permissions: Permissions[] = ['ohos.permission.READ_CALENDAR', 'ohos.permission.WRITE_CALENDAR'];
         let atManager = abilityAccessCtrl.createAtManager();
         atManager.requestPermissionsFromUser(mContext, permissions).then((result: PermissionRequestResult) => {
-          hilog.info(DOMAIN, 'testTag', 'get Permission success');
+          console.info('get Permission success');
           calendarMgr = calendarManager.getCalendarManager(mContext);
         }).catch((error: BusinessError) => {
-          hilog.error(DOMAIN, 'testTag', 'get Permission error, Cause: %{public}s', JSON.stringify(error));
+          console.error('get Permission error, Cause: %{public}s', JSON.stringify(error));
         })
       }
     
       onWindowStageDestroy(): void {
         // 主窗口已销毁，释放 UI 相关资源
-        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+        console.info('%{public}s', 'Ability onWindowStageDestroy');
       }
     
       onForeground(): void {
         // Ability 进入前台
-        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
+        console.info('%{public}s', 'Ability onForeground');
       }
     
       onBackground(): void {
         // Ability 进入后台
-        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onBackground');
+        console.info('%{public}s', 'Ability onBackground');
       }
     }
     ```
