@@ -26306,7 +26306,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub_Sta/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":26,
+						"end_line":28,
 						"name":"AppEvent_Crash_Click_ArkTS_Header",
 						"start_line":23
 					},
@@ -49396,9 +49396,9 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub_Sta/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":93,
+						"end_line":97,
 						"name":"ExternalLogManager",
-						"start_line":35
+						"start_line":39
 					},
 					{
 						"end_line":111,
