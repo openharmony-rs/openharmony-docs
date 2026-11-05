@@ -5,7 +5,7 @@
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=a200f12b3c07f37fb080224a65f9be5397544a01 translatedAt=2026-09-20T06:45:58.912Z pushedAt=2026-09-20T08:15:49.839Z -->
+<!-- md-trans-meta sourceCommit=e5521e4e68d4358f2c99dbebfb237c12bb0173c0 translatedAt=2026-11-05T01:00:48.370Z pushedAt=2026-09-20T08:15:49.839Z nl=2 -->
 
 Image: a two-dimensional texture resource in 3D rendering, essentially a memory buffer that stores pixel data. It provides the data required for rendering object surfaces, including maps such as base color, normal, metallic, roughness, and ambient occlusion. It can also serve as the texture input of a material or a custom shader, ultimately determining the appearance of an object surface.
 

@@ -6,12 +6,13 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=c0242b9f557a90ad752097b505e94c965b1162a4 translatedAt=2026-11-05T00:59:45.673Z nl=1 -->
 
 Starting from API version 20, audio decoding in synchronous mode is supported.
 
 You can call native APIs to perform audio decoding in synchronous mode, which decodes media data into PCM streams.
 
-For details about the implementation, see the [sample project](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec).
+For implementation details, see the [sample project](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVCodec/AVCodec).
 
 For details about the supported decoding capabilities, see [AVCodec Supported Formats](avcodec-support-formats.md#audio-decoding).
 
@@ -28,6 +29,8 @@ This guide outlines the audio decoding process: inputting audio frames and decod
 Read [AudioCodec](../../reference/apis-avcodec-kit/capi-native-avcodec-audiocodec-h.md) for the API reference.
 
 Refer to the code snippet below to complete the entire audio decoding process, including creating a decoder, setting decoding parameters (such as the sample rate, bit rate, and audio channel count), and starting, refreshing, resetting, and destroying the decoder.
+
+The sample code uses custom utility macros and data structures defined in the sample project, such as CHECK_AND_RETURN_RET_LOG, AVCODEC_SAMPLE_ERR_\*, AVCODEC_SAMPLE_LOG\*, CodecUserData, CodecBufferInfo, SampleInfo. These are not SDK APIs. Refer to the sample project for their complete definitions, and implement or replace them when porting the code.
 
 During application development, you must call the APIs in the defined sequence. Otherwise, an exception or undefined behavior may occur.  
 
@@ -70,18 +73,38 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    You can create a decoder by MIME type or codec name.
 
-   Method 1: Create a decoder by MIME type.
-    ```c++
-    // Create a decoder by MIME type. The following example creates an AAC decoder. The second parameter is set to false to indicate decoding.
-    OH_AVCodec *audioDec_ = OH_AudioCodec_CreateByMime(OH_AVCODEC_MIMETYPE_AUDIO_AAC, false);
-    ```
-   Method 2: Create a decoder by codec name.
-    ```c++
-    // Create a decoder by name.
-    OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_AUDIO_AAC, false);
-    const char *name = OH_AVCapability_GetName(capability);
-    OH_AVCodec *audioDec_ = OH_AudioCodec_CreateByName(name);
-    ```
+   - Method 1: Create a decoder by MIME type.
+
+   <!-- @[AudioDecoder::Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   
+   ``` C++
+   int32_t AudioDecoder::Create(const std::string &codecMime)
+   {
+       // Set the encoding flag. false indicates decoding.
+       constexpr bool isEncoder = false;
+       // Create the decoder by MIME type. Use the MIME type of the actual decoding format.
+       decoder_ = OH_AudioCodec_CreateByMime(codecMime.c_str(), isEncoder);
+       CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Create failed");
+       return AVCODEC_SAMPLE_ERR_OK;
+   }
+   ```
+
+   - Method 2: Create a decoder by codec name.
+
+   <!-- @[AudioDecoder::CreateByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   
+   ``` C++
+   int32_t AudioDecoder::CreateByName(const std::string &codecMime)
+   {
+       // Create the decoder by codec name.
+       OH_AVCapability *capability = OH_AVCodec_GetCapability(codecMime.c_str(), false);
+       CHECK_AND_RETURN_RET_LOG(capability != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "GetCapability failed");
+       const char *name = OH_AVCapability_GetName(capability);
+       decoder_ = OH_AudioCodec_CreateByName(name);
+       CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "CreateByName failed");
+       return AVCODEC_SAMPLE_ERR_OK;
+   }
+   ```
 
 3. (Optional) Call **OH_AudioCodec_SetDecryptionConfig** to set the decryption configuration.
 
@@ -156,62 +179,78 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    | Vorbis      | 8000-192000  |
    | APE         | 1-2147483647 |
 
-   ```c++
-   // The values configured below are examples. Set the values dynamically based on actual decoding capabilities.
-   // (Mandatory) Configure the audio sample rate.
-   constexpr uint32_t DEFAULT_SAMPLERATE = 44100;
-   // (Mandatory) Configure the audio channel count.
-   constexpr uint32_t DEFAULT_CHANNEL_COUNT = 2;
-   // Configure whether to use ADTS decoding (optional for AAC decoding).
-   constexpr uint32_t DEFAULT_AAC_TYPE = 1;
-   OH_AVFormat *format = OH_AVFormat_Create();
-   // Set the format.
-   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_SAMPLE_RATE, DEFAULT_SAMPLERATE);
-   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_CHANNEL_COUNT, DEFAULT_CHANNEL_COUNT);
-   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AAC_IS_ADTS, DEFAULT_AAC_TYPE);
-   OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, 1); // Set synchronous mode.
-   // Configure the decoder.
-   OH_AVErrCode ret = OH_AudioCodec_Configure(audioDec_, format);
-   if (ret != AV_ERR_OK) {
-       // Handle exceptions.
+   Enable synchronous mode with OH_MD_KEY_ENABLE_SYNC_MODE: set it to 1 in the OH_AVFormat passed to Configure when synchronous mode is required. The sample sets this parameter only when synchronous mode is used:
+
+   <!-- @[AudioDecoder::Configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   
+   ``` C++
+   int32_t AudioDecoder::Configure(const SampleInfo &sampleInfo)
+   {
+       // The decoding capability table may not fully list the sample rates and channel information of some container codec formats.
+       // The return value of the decoder Configure call is authoritative. The capability query result is logged for reference only.
+       if (!CodecCapability::ValidateAudioConfiguration(sampleInfo, false)) {
+           AVCODEC_SAMPLE_LOGW("Audio capability query did not fully describe mime: %{public}s; "
+               "continue with decoder configure", sampleInfo.audio.audioCodecMime.c_str());
+       }
+       // The format is used only for this Configure call. Destroy it before returning on every failure and success path.
+       OH_AVFormat *format = OH_AVFormat_Create();
+       CHECK_AND_RETURN_RET_LOG(format != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "AVFormat create failed");
+   
+       // Required: sample format, channel count, channel layout, and sample rate.
+       OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, SAMPLE_S16LE);
+       OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_CHANNEL_COUNT, sampleInfo.audio.audioChannelCount);
+       OH_AVFormat_SetLongValue(format, OH_MD_KEY_CHANNEL_LAYOUT, sampleInfo.audio.audioChannelLayout);
+       OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_SAMPLE_RATE, sampleInfo.audio.audioSampleRate);
+       // Optional: synchronous mode. Set it as needed.
+       if (sampleInfo.codec.codecSyncMode) {
+           OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, sampleInfo.codec.codecSyncMode);
+       }
+   
+       // Optional: codec-specific configuration data obtained by demuxing. Do not set it if unavailable.
+       if (sampleInfo.audio.codecConfigLen > 0 &&
+           sampleInfo.audio.codecConfig.size() >= sampleInfo.audio.codecConfigLen) {
+           OH_AVFormat_SetBuffer(format, OH_MD_KEY_CODEC_CONFIG, sampleInfo.audio.codecConfig.data(),
+               sampleInfo.audio.codecConfigLen);
+       }
+   
+       // Configure the decoder.
+       int ret = OH_AudioCodec_Configure(decoder_, format);
+       CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Config failed, ret: %{public}d", ret);
+       OH_AVFormat_Destroy(format);
+       format = nullptr;
+   
+       return AVCODEC_SAMPLE_ERR_OK;
    }
    ```
 
 5. Call **OH_AudioCodec_Prepare()** to prepare internal resources for the decoder.
 
-   ```c++
-   OH_AVErrCode ret = OH_AudioCodec_Prepare(audioDec_);
-   if (ret != AV_ERR_OK) {
-       // Handle exceptions.
+   The sample project wraps OH_AudioCodec_Prepare() in Config(). Config() first completes Configure(), then calls OH_AudioCodec_Prepare() to prepare the decoder. The following snippet shows the preparation part:
+
+   <!-- @[AudioDecoder::Config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   
+   ``` C++
+   {
+       // Prepare the decoder.
+       int ret = OH_AudioCodec_Prepare(decoder_);
+       CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Prepare failed, ret: %{public}d", ret);
    }
    ```
 
 6. Call **OH_AudioCodec_Start()** to start the decoder.
 
-   Add the header file.
-    ```c++
-    #include <fstream>
-    ```
-
-   The sample code is as follows:
-    ```c++
-    ifstream inputFile_;
-    ofstream outFile_;
-
-    // Set the input file path based on the actual situation. To demonstrate audio decoding, the input file here contains audio frames and related information (not a directly playable audio file).
-    const char* inputFilePath = "/";
-    // Set the output file path based on the actual situation. This guide only demonstrates audio decoding; decoded PCM data is saved to a file without further processing.
-    const char* outputFilePath = "/";
-    // Open the path of the binary file to be decoded.
-    inputFile_.open(inputFilePath, ios::in | ios::binary); 
-    // Set the path of the output file.
-    outFile_.open(outputFilePath, ios::out | ios::binary);
-    // Start decoding.
-    OH_AVErrCode ret = OH_AudioCodec_Start(audioDec_);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
+   <!-- @[AudioDecoder::Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   
+   ``` C++
+   int32_t AudioDecoder::Start()
+   {
+       CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null");
+   
+       int ret = OH_AudioCodec_Start(decoder_);
+       CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Start failed, ret: %{public}d", ret);
+       return AVCODEC_SAMPLE_ERR_OK;
+   }
+   ```
    
 7. (Optional) Call **OH_AVCencInfo_SetAVBuffer()** to set the Common Encryption Scheme (CENC) information.
 
@@ -229,174 +268,219 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     ```
 
     The sample code is as follows:
-    ```c++
-    auto buffer = signal_->inBufferQueue_.front();
-    uint32_t keyIdLen = DRM_KEY_ID_SIZE;
-    uint8_t keyId[] = {
-        0xd4, 0xb2, 0x01, 0xe4, 0x61, 0xc8, 0x98, 0x96,
-        0xcf, 0x05, 0x22, 0x39, 0x8d, 0x09, 0xe6, 0x28};
-    uint32_t ivLen = DRM_KEY_IV_SIZE;
-    uint8_t iv[] = {
-        0xbf, 0x77, 0xed, 0x51, 0x81, 0xde, 0x36, 0x3e,
-        0x52, 0xf7, 0x20, 0x4f, 0x72, 0x14, 0xa3, 0x95};
-    uint32_t encryptedBlockCount = 0;
-    uint32_t skippedBlockCount = 0;
-    uint32_t firstEncryptedOffset = 0;
-    uint32_t subsampleCount = 1;
-    DrmSubsample subsamples[1] = { {0x10, 0x16} };
-    // Create a CencInfo instance.
-    OH_AVCencInfo *cencInfo = OH_AVCencInfo_Create();
-    if (cencInfo == nullptr) {
-        // Handle exceptions.
-    }
-    // Set the decryption algorithm.
-    OH_AVErrCode errNo = OH_AVCencInfo_SetAlgorithm(cencInfo, DRM_ALG_CENC_AES_CTR);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Set KeyId and Iv.
-    errNo = OH_AVCencInfo_SetKeyIdAndIv(cencInfo, keyId, keyIdLen, iv, ivLen);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Set the sample information.
-    errNo = OH_AVCencInfo_SetSubsampleInfo(cencInfo, encryptedBlockCount, skippedBlockCount, firstEncryptedOffset,
-        subsampleCount, subsamples);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Set the mode. KeyId, Iv, and SubSamples have been set.
-    errNo = OH_AVCencInfo_SetMode(cencInfo, DRM_CENC_INFO_KEY_IV_SUBSAMPLES_SET);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Set CencInfo to the AVBuffer.
-    errNo = OH_AVCencInfo_SetAVBuffer(cencInfo, buffer);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Destroy the CencInfo instance.
-    errNo = OH_AVCencInfo_Destroy(cencInfo);
-    if (errNo != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
+   ```c++
+   OH_AVBuffer *buffer = ...; // Input buffer to decrypt. For how to obtain it, see step 8.
+   uint32_t keyIdLen = DRM_KEY_ID_SIZE;
+   uint8_t keyId[] = {
+       0xd4, 0xb2, 0x01, 0xe4, 0x61, 0xc8, 0x98, 0x96,
+       0xcf, 0x05, 0x22, 0x39, 0x8d, 0x09, 0xe6, 0x28};
+   uint32_t ivLen = DRM_KEY_IV_SIZE;
+   uint8_t iv[] = {
+       0xbf, 0x77, 0xed, 0x51, 0x81, 0xde, 0x36, 0x3e,
+       0x52, 0xf7, 0x20, 0x4f, 0x72, 0x14, 0xa3, 0x95};
+   uint32_t encryptedBlockCount = 0;
+   uint32_t skippedBlockCount = 0;
+   uint32_t firstEncryptedOffset = 0;
+   uint32_t subsampleCount = 1;
+   DrmSubsample subsamples[1] = { {0x10, 0x16} };
+   // Create a CencInfo instance.
+   OH_AVCencInfo *cencInfo = OH_AVCencInfo_Create();
+   if (cencInfo == nullptr) {
+       // Handle exceptions.
+   }
+   // Set the decryption algorithm.
+   OH_AVErrCode errNo = OH_AVCencInfo_SetAlgorithm(cencInfo, DRM_ALG_CENC_AES_CTR);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Set KeyId and Iv.
+   errNo = OH_AVCencInfo_SetKeyIdAndIv(cencInfo, keyId, keyIdLen, iv, ivLen);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Set sample information.
+   errNo = OH_AVCencInfo_SetSubsampleInfo(cencInfo, encryptedBlockCount, skippedBlockCount, firstEncryptedOffset,
+       subsampleCount, subsamples);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Set the mode: KeyId, Iv, and SubSamples have been set.
+   errNo = OH_AVCencInfo_SetMode(cencInfo, DRM_CENC_INFO_KEY_IV_SUBSAMPLES_SET);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Set CencInfo in AVBuffer.
+   errNo = OH_AVCencInfo_SetAVBuffer(cencInfo, buffer);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Destroy the CencInfo instance.
+   errNo = OH_AVCencInfo_Destroy(cencInfo);
+   if (errNo != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   cencInfo = nullptr;
+   ```
    
 8. Invoke synchronous mode to write the data to decode and obtain the decoded output.
 
-   Read data:
-   ```c++
-   // size is the length of each frame of the data to decode. pts is the timestamp of each frame and is used to indicate when the audio should be played.
-   // The values of size and pts are obtained from an audio and video resource file or data stream to decode.
-   // In the case of an audio and video resource file, the values are obtained from the buffer in the demultiplexed OH_AVDemuxer_ReadSampleBuffer.
-   // In the case of a data stream, the values are obtained from the data stream provider.
-   // In this example, the values of size and pts are obtained from the test file.
-   bool DecoderFillInputBuffer(OH_AVBuffer *buffer, ifstream &inputFile)
-   {
-       OH_AVCodecBufferAttr attr;
-       memset(&attr, 0, sizeof(attr));
-       attr.flags = AVCODEC_BUFFER_FLAGS_EOS;
-       bool finished = true;
-       do {
-           int64_t size;
-           inputFile.read(reinterpret_cast<char *>(&size), sizeof(size));
-           if (inputFile.eof() || inputFile.gcount() != sizeof(size)) {
-               break;
-           }
-           inputFile.read(reinterpret_cast<char *>(&attr.pts), sizeof(attr.pts));
-           if (inputFile.gcount() != sizeof(attr.pts)) {
-               break;
-           }
-           attr.size = static_cast<int32_t>(size);
-           if (attr.size > 0) {
-               inputFile.read((char *)OH_AVBuffer_GetAddr(buffer), attr.size);
-               attr.flags = AVCODEC_BUFFER_FLAGS_NONE;
-               finished = false;
-           }
-       } while (0);
-       OH_AVBuffer_SetBufferAttr(buffer, &attr);
-       return finished;
-   }
-   bool InputOneFrame(OH_AVCodec *codec, ifstream &inputFile)
-   {
-       uint32_t index = 0;
-       bool finished = true;
-       OH_AVErrCode ret = OH_AudioCodec_QueryInputBuffer(codec, &index, 20000); // 20000us
-       if (ret == AV_ERR_TRY_AGAIN_LATER) {
-           // Timeout: exception handling. The timeout period is too short, or input/output buffers are not consumed/released (causing decoding blocking).
-           return finished;
-       }
-       if (ret != AV_ERR_OK) {
-           // Handle exceptions.
-           return finished;
-       }
-       OH_AVBuffer *inputBuf = OH_AudioCodec_GetInputBuffer(codec, index);
-       if (inputBuf == nullptr) {
-           // Handle exceptions.
-           return finished;
-       }
-       finished = DecoderFillInputBuffer(inputBuf, inputFile);
-       OH_AudioCodec_PushInputBuffer(codec, index);
-       return finished;
-   }
+   Request an input buffer: call OH_AudioCodec_QueryInputBuffer() to query an available input buffer index (AV_ERR_TRY_AGAIN_LATER is returned on timeout), then call OH_AudioCodec_GetInputBuffer() to obtain the buffer.
+
+   <!-- @[AudioDecoder::GetInputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
    
+   ``` C++
+   OH_AVBuffer *AudioDecoder::GetInputBuffer(CodecBufferInfo &info, int64_t timeoutUs)
+   {
+       CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, nullptr, "Decoder is null");
+       int32_t ret = OH_AudioCodec_QueryInputBuffer(decoder_, &info.bufferIndex, timeoutUs);
+       switch (ret) {
+           case AV_ERR_OK: {
+               OH_AVBuffer *buffer = OH_AudioCodec_GetInputBuffer(decoder_, info.bufferIndex);
+               CHECK_AND_RETURN_RET_LOG(buffer != nullptr, nullptr, "Input buffer is null");
+               // The codec owns the buffer. Write to it only before PushInputBuffer; do not cache its address or retain it across threads for an extended period.
+               info.buffer = buffer;
+               return buffer;
+           }
+           case AV_ERR_TRY_AGAIN_LATER: {
+               AVCODEC_SAMPLE_LOGE("Get input buffer timeout.");
+               return nullptr;
+           }
+           default: {
+               return nullptr;
+           }
+       }
+       return nullptr;
+   }
    ```
 
-   You should fill in complete input data before calling this API.
+   Fill in the complete input data before calling this API. In this sample, data to decode is read from the demuxer. OH_AVDemuxer_ReadSampleBuffer writes pts, size, and flags to the buffer attributes. The following example shows the synchronous input thread:
+
+   <!-- @[Player::AudioDecInputSyncThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/output/audio/PlayerAudioOutput.cpp) -->   
+   
+   ``` C++
+   void Player::AudioDecInputSyncThread()
+   {
+       while (isStarted_ && audioWorkerRunning_) {
+           WaitIfPaused(true);
+           CHECK_AND_BREAK_LOG(isStarted_ && audioWorkerRunning_, "Decoder input thread out");
+           std::unique_lock<std::mutex> lock(audioDecContext_->inputMutex);
+           CodecBufferInfo bufferInfo;
+           auto buffer = audioDecoder_->GetInputBuffer(bufferInfo, CODEC_BUFFER_TIMEOUT_US);
+           CHECK_AND_CONTINUE_LOG(buffer != nullptr, "Get input buffer timeout, retry");
+           CHECK_AND_BREAK_LOG(isStarted_ && audioWorkerRunning_, "Work done, thread out");
+           bufferInfo.buffer = buffer;
+           // ...
+           audioDecContext_->inputFrameCount++;
+           lock.unlock();
+           int32_t ret = demuxer_->ReadSample(demuxer_->GetAudioTrackId(), buffer, bufferInfo.attr);
+           if (ret != AVCODEC_SAMPLE_ERR_OK) {
+               AVCODEC_SAMPLE_LOGE("Read audio sample failed");
+               playbackFailed_ = true;
+               isStarted_ = false;
+               break;
+           }
+           if ((bufferInfo.attr.flags & AVCODEC_BUFFER_FLAGS_EOS) && isLoop_) {
+               ret = demuxer_->Seek(0);
+               if (ret != AVCODEC_SAMPLE_ERR_OK) {
+                   playbackFailed_ = true;
+                   isStarted_ = false;
+                   break;
+               }
+               ret = demuxer_->ReadSample(demuxer_->GetAudioTrackId(), bufferInfo.buffer, bufferInfo.attr);
+               if (ret != AVCODEC_SAMPLE_ERR_OK) {
+                   playbackFailed_ = true;
+                   isStarted_ = false;
+                   break;
+               }
+           }
+           ret = audioDecoder_->PushInputBuffer(bufferInfo);
+           if (ret != AVCODEC_SAMPLE_ERR_OK) {
+               playbackFailed_ = true;
+               isStarted_ = false;
+               break;
+           }
+           CHECK_AND_BREAK_LOG(!(bufferInfo.attr.flags & AVCODEC_BUFFER_FLAGS_EOS), "Catch EOS, thread out");
+       }
+   }
+   ```
 
    When finished, set the flags to **AVCODEC_BUFFER_FLAGS_EOS**.
 
-    ```c++
-    bool inputFinished = false;
-    for (;;) {
-        if (!inputFinished) {
-            inputFinished = InputOneFrame(audioDec_, inputFile_);
-        }
-        uint32_t index;
-        OH_AVErrCode ret = OH_AudioCodec_QueryOutputBuffer(audioDec_, &index, 20000); // 20000us
-        if (ret == AV_ERR_TRY_AGAIN_LATER) {
-            // Timeout: exception handling. The timeout period is too short, or input/output buffers are not consumed/released (causing decoding blocking).
-            continue;
-        } else if (ret == AV_ERR_STREAM_CHANGED) {
-            // Callback processing after the decoding output parameters are changed. The application performs processing as required.
-            OH_AVFormat *outFormat = OH_AudioCodec_GetOutputDescription(audioDec_);
-            int32_t sampleRate;
-            int32_t channelCount;
-            int32_t sampleFormat;
-            if (OH_AVFormat_GetIntValue(outFormat, OH_MD_KEY_AUD_SAMPLE_RATE, &sampleRate)) {
-                // Check whether the sample rate changes and perform processing as required.
-            }
-            if (OH_AVFormat_GetIntValue(outFormat, OH_MD_KEY_AUD_CHANNEL_COUNT, &channelCount)) {
-                // Check whether the audio channel count changes and perform processing as required.
-            }
-            if (OH_AVFormat_GetIntValue(outFormat, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, &sampleFormat)) {
-                // Check whether the audio sample format changes and perform processing as required.
-            }
-            continue;
-        }
-        if (ret != AV_ERR_OK) {
-            // Handle exceptions.
-            break;
-        }
-        OH_AVBuffer *outputBuf = OH_AudioCodec_GetOutputBuffer(audioDec_, index);
-        if (outputBuf == nullptr) {
-            // Handle exceptions.
-            break;
-        }
-        OH_AVCodecBufferAttr attr;
-        if (OH_AVBuffer_GetBufferAttr(outputBuf, &attr) != AV_ERR_OK) {
-            // Handle exceptions.
-            break;
-        }
-        if (attr.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-            OH_AudioCodec_FreeOutputBuffer(audioDec_, index);
-            // Decoding output completed.
-            break;
-        }
-        outFile_.write(reinterpret_cast<char *>(OH_AVBuffer_GetAddr(outputBuf)), attr.size);
-        OH_AudioCodec_FreeOutputBuffer(audioDec_, index);
-    }
-    ```
+   Obtain decoded output: call OH_AudioCodec_QueryOutputBuffer() to query an available output buffer. AV_ERR_TRY_AGAIN_LATER is returned on timeout. AV_ERR_STREAM_CHANGED indicates a change in stream information, such as the sample rate, channel count, or sample format. Call OH_AudioCodec_GetOutputDescription() to obtain the new stream information, handle the change, and continue querying decoded output:
+
+   <!-- @[AudioDecoder::GetOutputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   
+   ``` C++
+   int32_t AudioDecoder::GetOutputBuffer(CodecBufferInfo &info, int64_t timeoutUs)
+   {
+       info.buffer = nullptr;
+       CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null");
+       OH_AVErrCode ret = OH_AudioCodec_QueryOutputBuffer(decoder_, &info.bufferIndex, timeoutUs);
+       if (ret == AV_ERR_TRY_AGAIN_LATER) {
+           // A timeout usually means the wait is too short, or output buffers have not been returned promptly, leaving no buffers available to the codec.
+           AVCODEC_SAMPLE_LOGW("Get output buffer timeout.");
+           return AVCODEC_SAMPLE_ERR_AGAIN; // continue;
+       }
+       if (ret != AV_ERR_OK) {
+           AVCODEC_SAMPLE_LOGE("query output buffer failed, ret: %{public}d", ret);
+           return AVCODEC_SAMPLE_ERR_ERROR; // break;
+       }
+   
+       OH_AVBuffer *outputBuf = OH_AudioCodec_GetOutputBuffer(decoder_, info.bufferIndex);
+       if (outputBuf == nullptr) {
+           // Return the acquired output index even if obtaining its buffer fails, to avoid filling the codec output queue.
+           const int32_t freeRet = OH_AudioCodec_FreeOutputBuffer(decoder_, info.bufferIndex);
+           AVCODEC_SAMPLE_LOGE("Get output buffer failed, free ret: %{public}d", freeRet);
+           return AVCODEC_SAMPLE_ERR_ERROR; // break;
+       }
+   
+       ret = OH_AVBuffer_GetBufferAttr(outputBuf, &info.attr);
+       if (ret != AV_ERR_OK) {
+           const int32_t freeRet = OH_AudioCodec_FreeOutputBuffer(decoder_, info.bufferIndex);
+           AVCODEC_SAMPLE_LOGE("Get output buffer attr failed, ret: %{public}d, free ret: %{public}d", ret, freeRet);
+           return AVCODEC_SAMPLE_ERR_ERROR; // break;
+       }
+       info.buffer = outputBuf;
+       if (info.attr.flags & AVCODEC_BUFFER_FLAGS_EOS) {
+           // Return EOS output as well. Do not access outputBuf or its index afterward.
+           OH_AudioCodec_FreeOutputBuffer(decoder_, info.bufferIndex);
+           info.buffer = nullptr;
+           AVCODEC_SAMPLE_LOGI("Out buffer end");
+           // Decoded output ends.
+           return AVCODEC_SAMPLE_ERR_END;
+       }
+       return AVCODEC_SAMPLE_ERR_OK;
+   }
+   ```
+
+   After retrieving the decoded PCM stream, promptly call OH_AudioCodec_FreeOutputBuffer() to release the output buffer. The following example shows the synchronous output thread:
+
+   <!-- @[AudioOutputPump::ProcessSyncOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/output/audio/AudioOutputPump.cpp) -->
+   
+   ``` C++
+   bool AudioOutputPump::ProcessSyncOutput()
+   {
+       CHECK_AND_RETURN_RET_LOG(running_, false, "Audio decoder output sync thread out");
+       CodecBufferInfo bufferInfo;
+       int32_t errCode = decoder_.GetOutputBuffer(bufferInfo, CODEC_BUFFER_TIMEOUT_US);
+       if (errCode == AVCODEC_SAMPLE_ERR_END) {
+           // The synchronous decoder has already returned the EOS index in GetOutputBuffer(). Do not release it again here.
+           AVCODEC_SAMPLE_LOGI("Audio decoder reached EOS");
+           return false;
+       }
+       if (errCode == AVCODEC_SAMPLE_ERR_ERROR) {
+           // If the query succeeds but reading attributes fails, the wrapper may retain the acquired buffer. Return it only if the pointer is valid.
+           (void)ReleaseOutputBuffer(bufferInfo, "get audio output buffer failed");
+           MarkPlaybackFailed("Audio decoder output failed");
+           return false;
+       }
+       if (errCode != AVCODEC_SAMPLE_ERR_OK) {
+           AVCODEC_SAMPLE_LOGI("No audio output buffer available, continue");
+           return true;
+       }
+       return HandleOutputBuffer(bufferInfo, false);
+   }
+   ```
 
 9. (Optional) Call **OH_AudioCodec_Flush()** to refresh the decoder.
 
@@ -409,33 +493,35 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    * To use the same decoder configuration after **AVCODEC_BUFFER_FLAGS_EOS** of the output buffer is set, call **OH_AudioCodec_Flush()** to refresh the decoder.
    * If a recoverable error occurs during the execution (**OH_AudioCodec_IsValid()** returns **true**), you can call **OH_AudioCodec_Flush()** to refresh the decoder and then call **OH_AudioCodec_Start()** to start decoding again.
 
-    ```c++
-    // Refresh the decoder.
-    OH_AVErrCode ret = OH_AudioCodec_Flush(audioDec_);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Start decoding again.
-    ret = OH_AudioCodec_Start(audioDec_);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
+   <!-- @[AudioDecoder::Flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   
+   ``` C++
+   int32_t AudioDecoder::Flush()
+   {
+       CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null");
+   
+       // Flush the decoder and clear the current queue. Call Start() afterward to restart decoding.
+       int32_t ret = OH_AudioCodec_Flush(decoder_);
+       CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Flush failed, ret: %{public}d", ret);
+       return AVCODEC_SAMPLE_ERR_OK;
+   }
+   ```
 
 10. (Optional) Call **OH_AudioCodec_Reset()** to reset the decoder.
 
     After **OH_AudioCodec_Reset()** is called, the decoder returns to the initialized state. The input and output buffers obtained before the reset cannot be used. You must call **OH_AudioCodec_Configure()** to reconfigure the decoder and then call **OH_AudioCodec_Start()** to start decoding again. Obtain the input and output buffers again after the decoder is started.
 
-    ```c++
-    // Reset the decoder.
-    OH_AVErrCode ret = OH_AudioCodec_Reset(audioDec_);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Reconfigure the decoder.
-    ret = OH_AudioCodec_Configure(audioDec_, format);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
+    <!-- @[AudioDecoder::Reset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+    
+    ``` C++
+    int32_t AudioDecoder::Reset()
+    {
+        CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null");
+    
+        // Reset the decoder. Call Configure() again to configure it, and Start() to start it.
+        int32_t ret = OH_AudioCodec_Reset(decoder_);
+        CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Reset failed, ret: %{public}d", ret);
+        return AVCODEC_SAMPLE_ERR_OK;
     }
     ```
 
@@ -443,11 +529,16 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
     After the decoder is stopped, you can call **OH_AudioCodec_Start()** to start it again. The input and output buffers obtained before the decoder is stopped cannot be reused. You must obtain them again after the decoder is started.
 
-    ```c++
-    // Stop the decoder.
-    OH_AVErrCode ret = OH_AudioCodec_Stop(audioDec_);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
+    <!-- @[AudioDecoder::Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+    
+    ``` C++
+    int32_t AudioDecoder::Stop()
+    {
+        CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null");
+    
+        int32_t ret = OH_AudioCodec_Stop(decoder_);
+        CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Stop failed, ret: %{public}d", ret);
+        return AVCODEC_SAMPLE_ERR_OK;
     }
     ```
 
@@ -457,12 +548,18 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     >
     > You only need to call this API once.
 
-    ```c++
-    // Call OH_AudioCodec_Destroy to destroy the decoder.
-    OH_AVErrCode ret = OH_AudioCodec_Destroy(audioDec_);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    } else {
-        audioDec_ = NULL; // The decoder cannot be destroyed repeatedly.
+    <!-- @[AudioDecoder::Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+    
+    ``` C++
+    int32_t AudioDecoder::Release()
+    {
+        if (decoder_ != nullptr) {
+            // Flush and stop the decoder before destruction. Do not destroy it more than once.
+            Flush();
+            Stop();
+            OH_AudioCodec_Destroy(decoder_);
+            decoder_ = nullptr;
+        }
+        return AVCODEC_SAMPLE_ERR_OK;
     }
     ```

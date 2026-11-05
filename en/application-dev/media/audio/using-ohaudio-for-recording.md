@@ -6,7 +6,7 @@
 <!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=e5ffacb738adcbcbdef8bb46a1f51b91ed565ad8 translatedAt=2026-08-06T01:54:36.184Z pushedAt=2026-08-06T09:45:51.610Z -->
+<!-- md-trans-meta sourceCommit=3b8a0d17c5c2caf9a98560e7e5f6e195bf7195f7 translatedAt=2026-11-05T00:59:45.666Z pushedAt=2026-08-06T09:45:51.610Z nl=2 -->
 
 OHAudio is a set of C APIs introduced in API version 10. These APIs are designed with a unified approach and support both regular audio paths and low-latency paths. Only PCM format is supported, making OHAudio suitable for scenarios where audio input is implemented at the native layer.
 
@@ -254,9 +254,13 @@ For samples related to audio recording development with OHAudio, see [OHAudio Re
 
 ## Precautions
 
-Starting from API version 12, using [OH_AudioCapturer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md) to set audio callback functions is **no longer recommended**. If you must use it, set the audio callback functions in either of the following two ways to avoid unexpected behavior.
+Starting from API version 12, using [OH_AudioCapturer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md) to set audio callback functions is **no longer recommended**. If you must use it, initialize the structure in either of the following ways before configuring the callback functions.
 
-- Method 1: Ensure that every callback in [OH_AudioCapturer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md) is initialized with either a **custom callback method** or a **null pointer**.
+> **NOTE**
+>
+> You must initialize the `OH_AudioCapturer_Callbacks` structure. Uninitialized callback fields may contain random addresses. When a callback is triggered, the system may treat these addresses as callback functions, resulting in wild pointers and a process crash.
+
+- Method 1: Ensure that every callback in [OH_AudioCapturer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md) is explicitly initialized with either a **custom callback method** or a **null pointer**. Unused callbacks must be set to null pointers; do not leave them uninitialized.
 
   <!-- @[callback_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
 
@@ -289,7 +293,7 @@ Starting from API version 12, using [OH_AudioCapturer_Callbacks](../../reference
       callbacks.OH_AudioCapturer_OnError = nullptr;
   ```
 
-- Method 2: Before use, initialize and zero out the structure.
+- Method 2: Before use, you must initialize and zero out the structure to ensure that all unconfigured callback fields are null pointers.
 
   <!-- @[callbackNullptr_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
 

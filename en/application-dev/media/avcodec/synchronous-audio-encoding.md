@@ -6,7 +6,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=1a0a8839cc296b62401e7fa32035cb66940b184d translatedAt=2026-08-06T13:47:04.324Z pushedAt=2026-08-07T07:31:07.593Z -->
+<!-- md-trans-meta sourceCommit=c0242b9f557a90ad752097b505e94c965b1162a4 translatedAt=2026-11-05T00:59:45.673Z pushedAt=2026-08-07T07:31:07.593Z nl=2 -->
 
 Starting from API version 20, audio encoding in synchronous mode is supported.
 
@@ -36,6 +36,8 @@ Asynchronous mode is generally recommended for most use cases. For details, see 
 Read [AudioCodec](../../reference/apis-avcodec-kit/capi-native-avcodec-audiocodec-h.md) for the API reference.
 
 Refer to the code snippet below to complete the entire audio encoding process, including creating an encoder, setting encoding parameters (such as the sample rate, bit rate, and audio channel count), and starting, refreshing, resetting, and destroying the encoder.
+
+The sample code uses custom utility macros and data structures defined in the sample project, such as CHECK_AND_RETURN_RET_LOG, AVCODEC_SAMPLE_ERR_\*, AVCODEC_SAMPLE_LOG\*, CodecUserData, CodecBufferInfo, SampleInfo. These are not SDK APIs. Refer to the sample project for their complete definitions, and implement or replace them when porting the code.
 
 During application development, you must call the APIs in the defined sequence. Otherwise, an exception or undefined behavior may occur.  
 
@@ -79,20 +81,37 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    You can create an encoder by MIME type or codec name.
 
-   Method 1: Create an encoder by MIME type.
+   - Method 1: Create a encoder by MIME type.
 
-   ```cpp
-   // Create an encoder by MIME type. This example creates an AAC encoder. The second parameter set to true indicates encoding.
-   OH_AVCodec *audioEnc_ = OH_AudioCodec_CreateByMime(OH_AVCODEC_MIMETYPE_AUDIO_AAC, true);
+   <!-- @[AudioEncoder::Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
+   
+   ``` C++
+   int32_t AudioEncoder::Create(const std::string &codecMime)
+   {
+       // Set the encoding flag. true indicates encoding.
+       constexpr bool isEncoder = true;
+       // Create the encoder by MIME type. Use the MIME type of the actual encoding format.
+       encoder_ = OH_AudioCodec_CreateByMime(codecMime.c_str(), isEncoder);
+       CHECK_AND_RETURN_RET_LOG(encoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Create failed");
+       return AVCODEC_SAMPLE_ERR_OK;
+   }
    ```
 
-   Method 2: Create an encoder by codec name.
+   - Method 2: Create a encoder by codec name.
 
-   ```cpp
-   // Create an encoder by codec name.
-   OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_AUDIO_AAC, true);
-   const char *name = OH_AVCapability_GetName(capability);
-   OH_AVCodec *audioEnc_ = OH_AudioCodec_CreateByName(name);
+   <!-- @[AudioEncoder::CreateByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
+   
+   ``` C++
+   int32_t AudioEncoder::CreateByName(const std::string &codecMime)
+   {
+       // Create the encoder by codec name.
+       OH_AVCapability *capability = OH_AVCodec_GetCapability(codecMime.c_str(), true);
+       CHECK_AND_RETURN_RET_LOG(capability != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "GetCapability failed");
+       const char *name = OH_AVCapability_GetName(capability);
+       encoder_ = OH_AudioCodec_CreateByName(name);
+       CHECK_AND_RETURN_RET_LOG(encoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "CreateByName failed");
+       return AVCODEC_SAMPLE_ERR_OK;
+   }
    ```
 
 3. Call **OH_AudioCodec_Configure** to configure the encoder.
@@ -113,73 +132,46 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    <!--RP2End-->
 
-   The code snippet below shows the API call process, where AAC encoding at the bit rate of 32000 bit/s is carried out on the PCM audio with the 44100 Hz sample rate, 2-channel stereo, and SAMPLE_S16LE sample format.
-
-   <!--RP3-->
-
-   ```cpp
-   OH_AVErrCode ret;
-   // Configure the audio sample rate (mandatory).
-   constexpr uint32_t DEFAULT_SAMPLERATE = 44100;
-   // Configure the audio bitrate (mandatory).
-   constexpr uint64_t DEFAULT_BITRATE = 32000;
-   // Configure the number of audio channels (mandatory).
-   constexpr uint32_t DEFAULT_CHANNEL_COUNT = 2;
-   // Configure the audio bit depth (mandatory).
-   constexpr OH_BitsPerSample SAMPLE_FORMAT = OH_BitsPerSample::SAMPLE_S16LE;
-   // Configure the audio channel layout (optional).
-   constexpr OH_AudioChannelLayout CHANNEL_LAYOUT = OH_AudioChannelLayout::CH_LAYOUT_STEREO;
-
-   OH_AVFormat *format = OH_AVFormat_Create();
-   // Write format.
-   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_CHANNEL_COUNT, DEFAULT_CHANNEL_COUNT);
-   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_SAMPLE_RATE, DEFAULT_SAMPLERATE);
-   OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, DEFAULT_BITRATE);
-   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, SAMPLE_FORMAT);
-   OH_AVFormat_SetLongValue(format, OH_MD_KEY_CHANNEL_LAYOUT, CHANNEL_LAYOUT);
-   OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, 1); // Synchronous mode configuration.
-   // Configure the encoder.
-   ret = OH_AudioCodec_Configure(audioEnc_, format);
-   if (ret != AV_ERR_OK) {
-       // Exception handling.
-   }
-   ```
-
-   <!--RP3End-->
+   The following example performs AAC encoding at 32000 bit/s on PCM audio with a 44100 Hz sample rate, two stereo channels, and the SAMPLE_S16LE sample format:
 
    Example of calling FLAC encoding:
 
-   ```cpp
-   OH_AVErrCode ret;
-   // Configure the audio sample rate (required).
-   constexpr uint32_t DEFAULT_SAMPLERATE = 44100;
-   // Configure the audio bitrate (required).
-   constexpr uint64_t DEFAULT_BITRATE = 261000;
-   // Configure the number of audio channels (required).
-   constexpr uint32_t DEFAULT_CHANNEL_COUNT = 2;
-   // Configure the audio channel layout (required).
-   // The value is one of CH_LAYOUT_MONO, CH_LAYOUT_STEREO, CH_LAYOUT_SURROUND, CH_LAYOUT_QUAD, CH_LAYOUT_5POINT0, CH_LAYOUT_5POINT1, CH_LAYOUT_6POINT1, or CH_LAYOUT_7POINT1.
-   constexpr OH_AudioChannelLayout CHANNEL_LAYOUT = OH_AudioChannelLayout::CH_LAYOUT_STEREO;
-   // Configure the audio bit depth (required). For FLAC, only SAMPLE_S16LE and SAMPLE_S32LE are supported.
-   constexpr OH_BitsPerSample SAMPLE_FORMAT = OH_BitsPerSample::SAMPLE_S32LE;
-   // Configure the audio compliance level (default value: 0, value range: [-2, 2]).
-   constexpr int32_t COMPLIANCE_LEVEL = 0;
+   Before configuration, use the OH_AVCapability query APIs to check whether the encoder supports the parameters. Enable synchronous mode with OH_MD_KEY_ENABLE_SYNC_MODE: set it to 1 in the OH_AVFormat passed to Configure when synchronous mode is required. The sample sets this parameter only when synchronous mode is used.
 
-   OH_AVFormat *format = OH_AVFormat_Create();
-   // Write the format.
-   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_CHANNEL_COUNT, DEFAULT_CHANNEL_COUNT);
-   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_SAMPLE_RATE, DEFAULT_SAMPLERATE);
-   OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, DEFAULT_BITRATE);
-   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, SAMPLE_FORMAT); 
-   OH_AVFormat_SetLongValue(format, OH_MD_KEY_CHANNEL_LAYOUT, CHANNEL_LAYOUT);
-   OH_AVFormat_SetLongValue(format, OH_MD_KEY_COMPLIANCE_LEVEL, COMPLIANCE_LEVEL); 
-   OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, 1); // Configure the sync mode.
-   // Configure the encoder.
-   ret = OH_AudioCodec_Configure(audioEnc_, format);
-   if (ret != AV_ERR_OK) {
-       // Handle exceptions.
+   <!--RP3-->
+   <!-- @[AudioEncoder::Configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
+   
+   ``` C++
+   int32_t AudioEncoder::Configure(const SampleInfo &sampleInfo)
+   {
+       CHECK_AND_RETURN_RET_LOG(CodecCapability::ValidateAudioConfiguration(sampleInfo, true),
+           AVCODEC_SAMPLE_ERR_ERROR, "Audio encoder configuration is not supported");
+       // The encoder does not take ownership of the configuration object. This function destroys it after successful configuration; the caller does not need to take ownership.
+       OH_AVFormat *format = OH_AVFormat_Create();
+       CHECK_AND_RETURN_RET_LOG(format != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "AVFormat create failed");
+   
+       // Required: sample format, channel count, sample rate, bit rate, and channel layout.
+       OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, sampleInfo.audio.audioSampleFormat);
+       OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_CHANNEL_COUNT, sampleInfo.audio.audioChannelCount);
+       OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_SAMPLE_RATE, sampleInfo.audio.audioSampleRate);
+       OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, sampleInfo.audio.audioBitRate);
+       OH_AVFormat_SetLongValue(format, OH_MD_KEY_CHANNEL_LAYOUT, sampleInfo.audio.audioChannelLayout);
+       // Optional: maximum input size. Setting this allows input data that is not frame-aligned for frame-aligned encoders such as FLAC and MP3.
+       OH_AVFormat_SetIntValue(format, OH_MD_KEY_MAX_INPUT_SIZE, sampleInfo.audio.audioMaxInputSize);
+       if (sampleInfo.codec.codecSyncMode) {
+           OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, sampleInfo.codec.codecSyncMode);
+       }
+   
+       // Configure the encoder.
+       int ret = OH_AudioCodec_Configure(encoder_, format);
+       CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Config failed, ret: %{public}d", ret);
+       OH_AVFormat_Destroy(format);
+       format = nullptr;
+   
+       return AVCODEC_SAMPLE_ERR_OK;
    }
    ```
+   <!--RP3End-->
 
    In addition to the parameters configured above, you can also configure the following optional parameters during the Configure phase:
 
@@ -207,39 +199,30 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 4. Call **OH_AudioCodec_Prepare()** to prepare internal resources for the encoder.
 
-   ```cpp
-   OH_AVErrCode ret = OH_AudioCodec_Prepare(audioEnc_);
-   if (ret != AV_ERR_OK) {
-       // Handle exceptions.
+   The sample project wraps OH_AudioCodec_Prepare() in Config(). Config() first completes Configure(), then calls OH_AudioCodec_Prepare() to prepare the encoder. The following snippet shows the preparation part:
+
+   <!-- @[AudioEncoder::Config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
+   
+   ``` C++
+   {
+       // Prepare the encoder.
+       int ret = OH_AudioCodec_Prepare(encoder_);
+       CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Prepare failed, ret: %{public}d", ret);
    }
    ```
 
 5. Call **OH_AudioCodec_Start()** to start the encoder.
 
-   Add the header file.
-
-   ```c++
-   #include <fstream>
-   ```
-
-   The sample code is as follows:
-
-   ```c++
-   ifstream inputFile_;
-   ofstream outFile_;
-
-   // Fill in the input file path based on actual usage.
-   const char* inputFilePath = "/";
-   // Fill in the output file path based on actual usage.
-   const char* outputFilePath = "/";
-   // Open the binary file path to be encoded (using a PCM file as the input example).
-   inputFile_.open(inputFilePath, ios::in | ios::binary); 
-   // Configure the encoding file output path (using the encoded stream file as the output example; this is not a playable audio file — a playable audio file requires the audio stream to be muxed into a container).
-   outFile_.open(outputFilePath, ios::out | ios::binary);
-   // Start encoding.
-   OH_AVErrCode ret = OH_AudioCodec_Start(audioEnc_);
-   if (ret != AV_ERR_OK) {
-       // Handle exceptions.
+   <!-- @[AudioEncoder::Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
+   
+   ``` C++
+   int32_t AudioEncoder::Start()
+   {
+       CHECK_AND_RETURN_RET_LOG(encoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Encoder is null");
+   
+       int ret = OH_AudioCodec_Start(encoder_);
+       CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Start failed, ret: %{public}d", ret);
+       return AVCODEC_SAMPLE_ERR_OK;
    }
    ```
 
@@ -267,103 +250,230 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    Data volume (in bytes) of a single encoding input: Number of samples (**SAMPLES_PER_FRAME**) * Number of channels * Number of bytes per sample.
 
-   The sample code is as follows:
+   Request an input buffer: call OH_AudioCodec_QueryInputBuffer() to query an available input buffer index (AV_ERR_TRY_AGAIN_LATER is returned on timeout), then call OH_AudioCodec_GetInputBuffer() to obtain the buffer.
 
-   ```c++
-   int32_t SAMPLES_PER_FRAME = 1024;
-   // AAC LC encoding involves 1024 samples per frame, 2 channels, and uses S16LE format for the input data. Each 16-bit sample occupies 2 bytes.
-   int32_t inputFrameBytes = SAMPLES_PER_FRAME * 2 * 2;
-   bool inputFinished = false;
-   OH_AVErrCode ret;
-   OH_AVCodecBufferAttr attr;
+   <!-- @[AudioEncoder::GetInputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
+   
+   ``` C++
+   OH_AVBuffer *AudioEncoder::GetInputBuffer(CodecBufferInfo &info, int64_t timeoutUs)
+   {
+       CHECK_AND_RETURN_RET_LOG(encoder_ != nullptr, nullptr, "Encoder is null");
+       auto ret = OH_AudioCodec_QueryInputBuffer(encoder_, &info.bufferIndex, timeoutUs);
+       switch (ret) {
+           case AV_ERR_OK: {
+               OH_AVBuffer *buffer = OH_AudioCodec_GetInputBuffer(encoder_, info.bufferIndex);
+               CHECK_AND_RETURN_RET_LOG(buffer != nullptr, nullptr, "Input buffer is null");
+               // Fill this buffer only before PushInputData. Ownership returns to the codec after submission.
+               info.buffer = buffer;
+               return buffer;
+           }
+           case AV_ERR_TRY_AGAIN_LATER: {
+               AVCODEC_SAMPLE_LOGE("Get input buffer timeout.");
+               return nullptr;
+           }
+           default: {
+               return nullptr;
+           }
+       }
+       return nullptr;
+   }
+   ```
 
-   for (;;) {
-       uint32_t index = 0;
-       if (!inputFinished) {
-           ret = OH_AudioCodec_QueryInputBuffer(audioEnc_, &index, 20000); // 20000us
-           if (ret == AV_ERR_TRY_AGAIN_LATER) {
+   Fill in the complete input data before calling this API. This sample uses microphone recording (AudioCapturer) as the PCM data source. Recorded data is first written to an app-defined PCM cache. Once enough data is available for an input buffer, it is copied to an encoder input buffer and submitted to the encoder. The following example shows the synchronous input thread:
+
+   <!-- @[Recorder::AudioEncInputSyncThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp) -->
+   
+   ``` C++
+   void Recorder::AudioEncInputSyncThread()
+   {
+       while (true) {
+           CHECK_AND_BREAK_LOG(isStarted_, "Audio encoder sync thread out");
+           // Stop submitting new input after receiving EOS. The output thread continues draining encoded samples.
+           if (isEos_.load()) {
+               AVCODEC_SAMPLE_LOGI("Audio input thread received EOS signal, stopping input");
+               break;
+           }
+           // Wait until the cache contains a full frame. Incomplete audio data causes incorrect durations and timestamps.
+           if (!WaitForAudioInputFrame(100ms)) {
+               if (!isStarted_ || isEos_.load()) {
+                   break;
+               }
                continue;
            }
-           if (ret != AV_ERR_OK) {
-               // Handle exceptions.
+           // Request a codec input buffer only when enough data is available, reducing the risk of failing to return an acquired buffer promptly due to insufficient cached data.
+           CodecBufferInfo bufferInfo;
+           bufferInfo.bufferIndex = std::numeric_limits<uint32_t>::max();
+           auto buffer = audioEncoder_->GetInputBuffer(bufferInfo, TIMEOUT_US);
+           if (buffer == nullptr) {
+               if (bufferInfo.bufferIndex != std::numeric_limits<uint32_t>::max()) {
+                   // If Query succeeds but Get fails, the app may still hold the index. End the session so that the codec reclaims it.
+                   AbortRecording("Synchronous audio input buffer retrieval failed");
+                   break;
+               }
+               AVCODEC_SAMPLE_LOGW("Get input buffer timeout, retry");
+               continue;
+           }
+           if (!SubmitAudioInputFrame(bufferInfo, buffer, true)) {
                break;
            }
-           OH_AVBuffer *inputBuf = OH_AudioCodec_GetInputBuffer(audioEnc_, index);
-           if (inputBuf == nullptr) {
-               // Handle exceptions.
-               break;
-           }
-           memset(&attr, 0, sizeof(attr));
-           if (!inputFile_.eof()) {
-               inputFile_.read((char *)OH_AVBuffer_GetAddr(inputBuf), inputFrameBytes);
-               int32_t readSize = inputFile_.gcount();
-               attr.size = readSize;
-               attr.flags = readSize != 0 ? AVCODEC_BUFFER_FLAGS_NONE : AVCODEC_BUFFER_FLAGS_EOS;
-           } else {
-               inputFinished = true;
-               attr.size = 0;
-               attr.flags = AVCODEC_BUFFER_FLAGS_EOS;
-           }
-           if (OH_AVBuffer_SetBufferAttr(inputBuf, &attr) != AV_ERR_OK) {
-               // Handle exceptions.
-           }
-           if (OH_AudioCodec_PushInputBuffer(audioEnc_, index) != AV_ERR_OK) {
-               // Handle exceptions.
-           }
        }
-       // If the input data can generate multiple encoded frames, you need to call the output buffer several times to obtain all the encoded data.
-       ret = OH_AudioCodec_QueryOutputBuffer(audioEnc_, &index, 20000); // 20000us
-       if (ret == AV_ERR_TRY_AGAIN_LATER) {
-           // Timeout: There is not enough input data to encode a frame, or the timeout period is too short.
-           continue;
-       }
-       if (ret != AV_ERR_OK) {
-           // Handle exceptions.
-           break;
-       }
-       OH_AVBuffer *outputBuf = OH_AudioCodec_GetOutputBuffer(audioEnc_, index);
-       if (outputBuf == nullptr) {
-           // Handle exceptions.
-           break;
-       }
-       if (OH_AVBuffer_GetBufferAttr(outputBuf, &attr) != AV_ERR_OK) {
-           // Handle exceptions.
-           break;
-       }
-       if (attr.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-           // The output ends.
-           break;
-       }
-       // In this example, the data is written to a file for logging purposes. To encapsulate the data into an audio file, call OH_AVMuxer_WriteSampleBuffer.
-       outFile_.write(reinterpret_cast<char *>(OH_AVBuffer_GetAddr(outputBuf)), attr.size);
-       OH_AudioCodec_FreeOutputBuffer(audioEnc_, index);
    }
    ```
 
    In the preceding example, **attr.flags** indicates the type of the buffer flag.
 
-   When finished, set the flags to **AVCODEC_BUFFER_FLAGS_EOS**.
+   At the end, set flags to AVCODEC_BUFFER_FLAGS_EOS. In this sample, when recording ends, an input buffer is obtained, filled with zero-length data, marked with EOS, and submitted to the encoder.
 
-   | Value| Description| 
+   <!-- @[AudioEncoder::NotifyEndOfStream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
+   
+   ``` C++
+   int32_t AudioEncoder::NotifyEndOfStream()
+   {
+       CHECK_AND_RETURN_RET_LOG(encoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Encoder is null");
+   
+       // Use an empty input buffer to carry EOS. Submit it even if there is no media data so that the encoder outputs the trailing data.
+       CodecBufferInfo bufferInfo;
+       auto buffer = GetInputBuffer(bufferInfo, TIMEOUT_US);
+       if (buffer == nullptr) {
+           AVCODEC_SAMPLE_LOGW("GetInputBuffer for EOS failed");
+           return AVCODEC_SAMPLE_ERR_ERROR;
+       }
+   
+       // EOS contains no valid audio bytes. The buffer returns to codec ownership immediately after PushInputBuffer is called.
+       bufferInfo.attr.size = 0;
+       bufferInfo.attr.flags = AVCODEC_BUFFER_FLAGS_EOS;
+       int32_t ret = OH_AVBuffer_SetBufferAttr(buffer, &bufferInfo.attr);
+       if (ret != AV_ERR_OK) {
+           AVCODEC_SAMPLE_LOGE("SetBufferAttr for EOS failed, ret: %{public}d", ret);
+           return AVCODEC_SAMPLE_ERR_ERROR;
+       }
+   
+       bufferInfo.buffer = buffer;
+       ret = OH_AudioCodec_PushInputBuffer(encoder_, bufferInfo.bufferIndex);
+       CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
+                                "PushInputBuffer for EOS failed, ret: %{public}d", ret);
+       return AVCODEC_SAMPLE_ERR_OK;
+   }
+   ```
+
+   | Value | Description |
    | -------- | -------- |
-   | AVCODEC_BUFFER_FLAGS_NONE | Common frame.| 
-   | AVCODEC_BUFFER_FLAGS_EOS | The buffer is an end-of-stream frame.| 
-   | AVCODEC_BUFFER_FLAGS_CODEC_DATA | The buffer contains codec-specific data.| 
+   | AVCODEC_BUFFER_FLAGS_NONE | Indicates a common frame. |
+   | AVCODEC_BUFFER_FLAGS_EOS | Indicates an end-of-stream frame. |
+   | AVCODEC_BUFFER_FLAGS_CODEC_DATA | Indicates that the buffer contains codec-specific data. |
+
+   Obtain encoded output: call OH_AudioCodec_QueryOutputBuffer() to query an available output buffer. If the input produces multiple encoded frames, obtain output buffers repeatedly to retrieve all encoded data:
+
+   <!-- @[AudioEncoder::GetOutputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
+   
+   ``` C++
+   int32_t AudioEncoder::GetOutputBuffer(CodecBufferInfo &info, int64_t timeoutUs)
+   {
+       info.buffer = nullptr;
+       CHECK_AND_RETURN_RET_LOG(encoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Encoder is null");
+       // One input batch may produce multiple output frames. Keep obtaining and returning them until no output is available or the codec returns EOS.
+       OH_AVErrCode ret = OH_AudioCodec_QueryOutputBuffer(encoder_, &info.bufferIndex, timeoutUs);
+       if (ret == AV_ERR_TRY_AGAIN_LATER) {
+           // Timeout: There is not enough input data to encode a frame, or the timeout period is too short.
+           AVCODEC_SAMPLE_LOGW("Get output buffer timeout.");
+           return AVCODEC_SAMPLE_ERR_AGAIN; // continue;
+       }
+       if (ret != AV_ERR_OK) {
+           AVCODEC_SAMPLE_LOGE("query output buffer failed, ret: %{public}d", ret);
+           return AVCODEC_SAMPLE_ERR_ERROR; // break;
+       }
+   
+       OH_AVBuffer *outputBuf = OH_AudioCodec_GetOutputBuffer(encoder_, info.bufferIndex);
+       if (outputBuf == nullptr) {
+           // A successful query transfers the index from the codec to the app. Return it on error paths as well.
+           const int32_t freeRet = OH_AudioCodec_FreeOutputBuffer(encoder_, info.bufferIndex);
+           AVCODEC_SAMPLE_LOGE("Get output buffer failed, free ret: %{public}d", freeRet);
+           return AVCODEC_SAMPLE_ERR_ERROR; // break;
+       }
+       ret = OH_AVBuffer_GetBufferAttr(outputBuf, &info.attr);
+       if (ret != AV_ERR_OK) {
+           const int32_t freeRet = OH_AudioCodec_FreeOutputBuffer(encoder_, info.bufferIndex);
+           AVCODEC_SAMPLE_LOGE("Get output buffer attr failed, ret: %{public}d, free ret: %{public}d", ret, freeRet);
+           return AVCODEC_SAMPLE_ERR_ERROR; // break;
+       }
+   
+       info.buffer = outputBuf;
+       if (info.attr.flags & AVCODEC_BUFFER_FLAGS_EOS) {
+           AVCODEC_SAMPLE_LOGI("Out buffer EOS flag detected");
+           return AVCODEC_SAMPLE_ERR_OK;
+       }
+       return AVCODEC_SAMPLE_ERR_OK;
+   }
+   ```
+
+   After retrieving the encoded stream, promptly call OH_AudioCodec_FreeOutputBuffer() to release the output buffer. In this sample, the encoded stream is written to the muxer. To multiplex it into an audio file, see [Media Data Multiplexing](audio-video-muxer.md). The following example shows the synchronous output thread:
+
+   <!-- @[Recorder::AudioEncOutputSyncThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp) -->
+   
+   ``` C++
+   void Recorder::AudioEncOutputSyncThread()
+   {
+       while (true) {
+           CHECK_AND_BREAK_LOG(isStarted_, "Audio encoder output thread out");
+           CodecBufferInfo bufferInfo;
+           int32_t errCode = audioEncoder_->GetOutputBuffer(bufferInfo, TIMEOUT_US);
+           if (errCode == AVCODEC_SAMPLE_ERR_OK) {
+               AVCODEC_SAMPLE_LOGI("AVCODEC_SAMPLE_ERR_OK");
+           } else if (errCode == AVCODEC_SAMPLE_ERR_END || errCode == AVCODEC_SAMPLE_ERR_ERROR) {
+               AVCODEC_SAMPLE_LOGW("Audio output thread received END or ERROR");
+               break;
+           } else {
+               AVCODEC_SAMPLE_LOGW("Get output buffer timeout, retry");
+               continue;
+           }
+   
+           audioEncContext_->outputFrameCount++;
+           AVCODEC_SAMPLE_LOGW(
+               "Audio Out buffer sync count: %{public}u, size: %{public}d, flag: %{public}u, pts: %{public}" PRId64,
+               audioEncContext_->outputFrameCount, bufferInfo.attr.size, bufferInfo.attr.flags, bufferInfo.attr.pts);
+           const bool isEosBuffer = (bufferInfo.attr.flags & AVCODEC_BUFFER_FLAGS_EOS) != 0;
+           int32_t writeRet = AVCODEC_SAMPLE_ERR_OK;
+           if (!isEosBuffer && bufferInfo.attr.size > 0) {
+               // Muxer writes do not take ownership of the buffer. Explicitly return the original index after writing to both targets.
+               writeRet = muxer_->WriteSample(muxer_->GetAudioTrackId(), bufferInfo.buffer, bufferInfo.attr);
+               if (writeRet == AVCODEC_SAMPLE_ERR_OK && secondaryMuxer_ != nullptr) {
+                   writeRet = secondaryMuxer_->WriteSample(secondaryMuxer_->GetAudioTrackId(), bufferInfo.buffer,
+                       bufferInfo.attr);
+               }
+           }
+           int32_t ret = audioEncoder_->FreeOutputData(bufferInfo.bufferIndex);
+           CHECK_AND_BREAK_LOG(ret == AVCODEC_SAMPLE_ERR_OK, "Encoder output thread out");
+           if (writeRet != AVCODEC_SAMPLE_ERR_OK) {
+               AbortRecording("Write encoded audio sample failed");
+               break;
+           }
+           if (isEosBuffer) {
+               isAudioEos_.store(true);
+               videoEosCond_.notify_all();
+               AVCODEC_SAMPLE_LOGI("Audio EOS processed, exiting output thread");
+               break;
+           }
+       }
+       // In synchronous mode, the video thread still triggers release. If audio ends first, video is still using the muxer.
+       AVCODEC_SAMPLE_LOGI("Audio output thread exited, waiting for video thread to trigger release");
+   }
+   ```
 
 7. (Optional) Call **OH_AudioCodec_Reset()** to reset the encoder.
 
    After **OH_AudioCodec_Reset()** is called, the encoder returns to the initialized state. The input and output buffers obtained before the reset cannot be used. You must call **OH_AudioCodec_Configure()** to reconfigure the encoder and then call **OH_AudioCodec_Start()** to start encoding again. Obtain the input and output buffers again after the encoder is started.
 
-   ```c++
-   // Reset the encoder.
-   OH_AVErrCode ret = OH_AudioCodec_Reset(audioEnc_);
-   if (ret != AV_ERR_OK) {
-       // Exception handling.
-   }
-   // Reconfigure encoder parameters.
-   ret = OH_AudioCodec_Configure(audioEnc_, format);
-   if (ret != AV_ERR_OK) {
-       // Exception handling.
+   <!-- @[AudioEncoder::Reset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
+   
+   ``` C++
+   int32_t AudioEncoder::Reset()
+   {
+       CHECK_AND_RETURN_RET_LOG(encoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Encoder is null");
+   
+       // Reset the encoder. Call Configure() again to configure it, and Start() to start it.
+       int32_t ret = OH_AudioCodec_Reset(encoder_);
+       CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Reset failed, ret: %{public}d", ret);
+       return AVCODEC_SAMPLE_ERR_OK;
    }
    ```
 
@@ -371,11 +481,20 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    After the encoder is stopped, you can call **OH_AudioCodec_Start()** to start it again. The input and output buffers obtained before the decoder is stopped cannot be reused. You must obtain them again after the decoder is started.
 
-   ```c++
-   // Stop the encoder.
-   OH_AVErrCode ret = OH_AudioCodec_Stop(audioEnc_);
-   if (ret != AV_ERR_OK) {
-       // Exception handling.
+   <!-- @[AudioEncoder::Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
+   
+   ``` C++
+   int32_t AudioEncoder::Stop()
+   {
+       CHECK_AND_RETURN_RET_LOG(encoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Encoder is null");
+   
+       int ret = Flush();
+       CHECK_AND_RETURN_RET_LOG(ret == AVCODEC_SAMPLE_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
+                                "Flush failed, ret: %{public}d", ret);
+   
+       ret = OH_AudioCodec_Stop(encoder_);
+       CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Stop failed, ret: %{public}d", ret);
+       return AVCODEC_SAMPLE_ERR_OK;
    }
    ```
 
@@ -385,12 +504,18 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    >
    > Do not destroy the encoder repeatedly.
 
-   ```c++
-   // Call OH_AudioCodec_Destroy to destroy the encoder.
-   OH_AVErrCode ret = OH_AudioCodec_Destroy(audioEnc_);
-   if (ret != AV_ERR_OK) {
-       // Handle exceptions.
-   } else {
-       audioEnc_ = NULL; // Do not destroy repeatedly.
+   <!-- @[AudioEncoder::Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
+   
+   ``` C++
+   int32_t AudioEncoder::Release()
+   {
+       if (encoder_ != nullptr) {
+           // Flush and stop the encoder before destruction. Do not destroy it more than once.
+           Flush();
+           Stop();
+           OH_AudioCodec_Destroy(encoder_);
+           encoder_ = nullptr;
+       }
+       return AVCODEC_SAMPLE_ERR_OK;
    }
    ```
