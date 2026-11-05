@@ -179,7 +179,7 @@ libhid.z.so
    使用 **hid_ddk_api.h** 的 **OH_Hid_Open** 打开HID设备，需要传入 deviceId 和 interfaceIndex 接口编号。其中 deviceId 可通过USB DDK接口 **OH_Usb_GetDevices** 获取（需先调用 **OH_Usb_Init** 初始化USB DDK），interfaceIndex 可通过 **OH_Usb_GetConfigDescriptor** 获取配置描述符后从中读取各接口的 `bInterfaceNumber`。
 
    <!-- @[driver_hid_report_step2_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/data_parser.cpp) --> 
-
+   
    ``` C++
    // 初始化USB DDK并获取deviceId
    ret = OH_Usb_Init();
@@ -198,7 +198,7 @@ libhid.z.so
    }
    deviceID_ = deviceArray.deviceIds[0];
    delete[] deviceArray.deviceIds;
-
+   
    // 获取配置描述符（configIndex默认取1），读取HID接口的bInterfaceNumber（这里用前两个HID类型的Interface为例）
    struct UsbDdkConfigDescriptor *config = nullptr;
    ret = OH_Usb_GetConfigDescriptor(deviceID_, 1, &config);
