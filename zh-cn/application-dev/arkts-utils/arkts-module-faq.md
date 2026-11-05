@@ -1,8 +1,16 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "汇总ArkTS模块化加载的常见问题解答：涵盖循环依赖导致的Object is not initialized报错、入口模块cannot find module报错、动态import路径错误的cannot find record报错等问题的原因分析与解决方法。"
+keywords: [模块化FAQ, 循环依赖, Object is not initialized, cannot find module, Entry Point, cannot find record, 动态import, 模块加载链路, normalized]
+doctype: faq
+status: active
+---
+
 # 模块化常见问题
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @yao_dashuai-->
-<!--Designer: @yao_dashuai-->
+<!--Owner: @shilei123-->
+<!--Designer: @shilei123; @li-jiangfeng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
