@@ -111,7 +111,7 @@ status: active
      // 创建AVMetadataExtractor对象。
      let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
      // 调用setUrlSource设置网络点播媒体资源URL，用来获取在线音视频元数据和在线视频缩略图。
-     let url: string = 'http://xx.mp4';
+     let url: string = '/test.mp4';
      let headers: Record<string, string> = {
        'User-Agent' : 'User-Agent-Value'
      };
