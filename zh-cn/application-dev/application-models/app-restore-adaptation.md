@@ -5,7 +5,7 @@
 <!--Owner: @zhang_hao_zheng-->
 <!--Designer: @wendel-->
 <!--Tester: @liangchengguang-->
-<!--Adviser: @zyn_1; @HelloCrease-->
+<!--Adviser:  @HelloCrease-->
 
 应用退后台被系统回收后，用户重新打开应用会回到首页，回收前的页面与操作上下文全部丢失。接入UIAbility备份恢复后，应用重拉可恢复到回收前的页面与数据。
 
