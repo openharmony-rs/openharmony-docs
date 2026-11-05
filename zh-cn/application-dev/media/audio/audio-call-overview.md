@@ -1,7 +1,7 @@
 ---
 kits: ["Audio Kit / 音频服务"]
 description: "区分VoIP与蜂窝通话，介绍音频场景、3A处理和铃声模式，帮助选择通话提示策略并了解设备切换方式。"
-keywords: [VoIP, 蜂窝通话, 音频场景模式, 3A算法, AudioScene, 铃声模式, ringerModeChange, 音频设备切换]
+keywords: [VoIP, 蜂窝通话, 音频场景模式, 3A算法, 铃声模式, 铃声模式监听, 通话音频设备切换]
 doctype: guide
 status: active
 ---
