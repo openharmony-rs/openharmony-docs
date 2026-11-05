@@ -1,7 +1,7 @@
 ---
 kits: ["Audio Kit / 音频服务"]
 description: "为K歌、直播配置OHAudio低时延录制，查询模式状态并优化数据回调，避免采集杂音和卡顿。"
-keywords: [OHAudio, 低时延音频录制, K歌录音, 直播录音, 录音数据回调, 录音低时延状态, 低时延录音不生效, 录音有杂音, 录音卡顿]
+keywords: [OHAudio, 低时延音频录制, K歌录音, 直播录音, 录音数据回调, 录音低时延状态]
 doctype: guide
 status: active
 ---
