@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=b3add22a83b286a77b59d5322d3bf8b5f1998739 translatedAt=2026-10-31T01:17:28.252Z pushedAt=2026-10-31T01:36:12.329Z nl=1 -->
+<!-- md-trans-meta sourceCommit=1533e3b9c2e1f6338d66cec2b3bebc32c9125cd1 translatedAt=2026-11-04T08:33:57.445Z pushedAt=2026-11-04T08:38:10.405Z nl=1 -->
 
 ## A
 ### A2DP
@@ -97,6 +97,7 @@ Protocol/Service Multiplexer. As a parameter on an [L2CAP](#l2cap) link, it is u
 Radio Frequency Communication. This protocol is used to simulate traditional RS232 serial communication, a common wired data transmission standard. It provides upper-layer applications with a simple and reliable data transmission method and supports multiple simultaneously connected channels.
 ### RSSI
 Received Signal Strength Indicator. It quantifies the signal strength at the receiving end in wireless communication by using a relative value, in dBm. It can be used to evaluate the distance between devices and signal quality.
+## S
 ### SCO
 Synchronous Connection-Oriented. This is a connection-oriented synchronous data link in the Bluetooth protocol stack. It is mainly used to transmit time-sensitive audio data, such as voice calls.
 ### SDP

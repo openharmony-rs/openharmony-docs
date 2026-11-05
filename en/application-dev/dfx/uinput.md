@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=ea995360514e4a997c0b326ffcf6b6b3cfa19571 translatedAt=2026-09-16T02:39:44.044Z pushedAt=2026-09-16T06:14:43.657Z -->
+<!-- md-trans-meta sourceCommit=615911b0ee49fce00580141968cadc359896d5c7 translatedAt=2026-11-05T01:04:41.202Z pushedAt=2026-09-16T06:14:43.657Z nl=2 -->
 
 uinput can simulate operations on devices such as the mouse, keyboard, and touchpad for pressure tests like stability tests.
 
@@ -26,6 +26,7 @@ uinput <option> <command> <arg> ...
 **Available Commands**
 | Abbreviation | Full Command  | Description       | 
 | -------- | --------   | --------       |
+| -D       | --display  | [Specifies the target display for injected events](#specifying-the-target-display).|
 | -M       | --mouse    | Injects a mouse event. | 
 | -K       | --keyboard | Injects a keyboard event. |
 | -S       | --stylus   | Injects a stylus event.| 
@@ -55,6 +56,9 @@ uinput -?
 
 # Execution result.
 Usage: uinput <option> <command> <arg>...
+-D <displayId>  --display <displayId>  -inject event to target display (optional, before device option)
+example: uinput -D 0 -M -m 100 200
+
 The options are:
 -K  --keyboard
 commands for keyboard:
@@ -67,6 +71,31 @@ commands for keyboard:
 ...
 
 ```
+
+## Specifying the Target Display
+
+The optional target display parameter must precede the device type option (such as -M or -K). When specified, injected mouse, touch, and touchpad events apply to the screen corresponding to the target display, while injected keyboard events apply to the screen group. When omitted, event injection retains its original default behavior.
+
+**Command**
+```bash
+uinput -D <displayId> <option> <command> <arg> ...
+uinput --display <displayId> <option> <command> <arg> ...
+
+# <displayId> is the target display ID. Only non-negative integers are supported.
+```
+
+**Example**
+```bash
+# Simulate a mouse movement to (100, 100) on display 0, relative to the upper-left corner of the specified screen.
+uinput -D 0 -M -m 100 100
+
+# Simulate a finger tap at (100, 100) on display 1.
+uinput --display 1 -T -c 100 100
+```
+
+> **NOTE**
+>
+> If displayId is invalid (not an integer or negative), the command reports: invalid displayId.
 
 ## Mouse Events
 

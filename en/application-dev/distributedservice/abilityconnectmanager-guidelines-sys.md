@@ -5,7 +5,7 @@
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=265662c3f1bebcccc82375e5952ee48da32366a3 translatedAt=2026-09-16T02:42:21.340Z pushedAt=2026-09-16T06:28:52.611Z -->
+<!-- md-trans-meta sourceCommit=eba46a583601faaae2404a4630e28d85cc91087a translatedAt=2026-11-05T00:49:58.892Z pushedAt=2026-11-05T00:49:58.892Z nl=1 -->
 
 
 ## Introduction
@@ -74,7 +74,7 @@ You have logged in to devices A and B with the same HUAWEI ID and the two device
 ### Setting Up the Environment
 
 1. Install [DevEco Studio](https://developer.huawei.com/consumer/en/download/deveco-studio) 4.1 or later on the PC.
-2. Update the public-SDK to API 18 or later.
+2. Update the public-SDK to API 18 or later. For details, see [OpenHarmony SDK Upgrade Assistant](../tools/openharmony-sdk-upgrade-assistant.md).
 3. Connect device A and device B to the PC using USB cables.
 4. Enable Wi-Fi and Bluetooth on devices A and B. If they are logged in with the same HUAWEI ID, they will automatically form a trusted network. If they use different HUAWEI IDs, establish a trusted relationship through [device discovery](devicemanager-guidelines.md#discovering-devices) and [device binding](devicemanager-guidelines.md#binding-a-device) to complete networking.
 
@@ -153,7 +153,7 @@ function initDmClass(): void {
   try {
     dmClass = distributedDeviceManager.createDeviceManager('com.example.remotephotodemo');
   } catch (err) {
-    hilog.info(0x0000, 'testTag', 'createDeviceManager err');
+    hilog.error(0x0000, 'testTag', 'createDeviceManager err');
   }
 }
 
@@ -164,17 +164,17 @@ function getRemoteDeviceId(): string | undefined {
     hilog.info(0x0000, 'testTag', 'getRemoteDeviceId begin');
     let list = dmClass.getAvailableDeviceListSync();
     if (typeof (list) === 'undefined' || typeof (list.length) === 'undefined') {
-      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is null');
+      hilog.error(0x0000, 'testTag', 'getRemoteDeviceId err: list is null');
       return;
     }
     if (list.length === 0) {
-      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is empty');
+      hilog.error(0x0000, 'testTag', 'getRemoteDeviceId err: list is empty');
       return;
     }
     // Select the target device in the dialog box.
     return list[0].networkId;
   } else {
-    hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: dmClass is null');
+    hilog.error(0x0000, 'testTag', 'getRemoteDeviceId err: dmClass is null');
     return;
   }
 }
@@ -209,7 +209,7 @@ function getRemoteDeviceId(): string | undefined {
       hilog.info(0x0000, 'testTag', 'createSession sessionId is', this.sessionId);
       abilityConnectionManager.connect(this.sessionId).then((connectResult) => {
         if (!connectResult.isConnected) {
-          hilog.info(0x0000, 'testTag', 'connect failed');
+          hilog.error(0x0000, 'testTag', 'connect failed');
           return;
         }
       }).catch(() => {
@@ -330,7 +330,7 @@ After the applications are successfully connected, you can call **sendData()** o
   abilityConnectionManager.sendData(this.sessionId, arrayBuffer.buffer).then(() => {
     hilog.info(0x0000, 'testTag', "sendData success");
   }).catch(() => {
-    hilog.info(0x0000, 'testTag', "sendData failed");
+    hilog.error(0x0000, 'testTag', "sendData failed");
   })
   ```
 

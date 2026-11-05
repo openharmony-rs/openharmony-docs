@@ -6,7 +6,7 @@
 <!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=d22176aef2aefeb271d9bd1f54001223b0683394 translatedAt=2026-09-20T06:39:18.986Z pushedAt=2026-09-20T08:10:01.082Z -->
+<!-- md-trans-meta sourceCommit=0eadc7145d55448866af7053a7ca91be41222d24 translatedAt=2026-11-05T01:04:41.128Z pushedAt=2026-09-20T08:10:01.082Z nl=2 -->
 
 HiDebug can obtain the memory, CPU, and GPU data of the system or application processes, and enable process trace collection.
 
@@ -369,6 +369,17 @@ Starting from API version 24, HiDebug adds the resource collection capability, w
 |--------|------|
 | OH_HiDebug_StartProfiler | Starts resource allocation stack information collection of the specified type. This API must be used in paired usage with OH_HiDebug_StopProfiler.<br/>**Note:** This API is supported since API version 24. |
 | OH_HiDebug_StopProfiler | Stops resource allocation stack information collection. This API must be used in paired usage with OH_HiDebug_StartProfiler.<br/>**Note:** This API is supported since API version 24. |
+| OH_HiDebug_CreateProfilerOptions | Creates a resource profiler configuration object. Must be used with OH_HiDebug_DestroyProfilerOptions.<br/>**Note:** This API is supported since API version 26.0.1. |
+| OH_HiDebug_DestroyProfilerOptions | Releases a configuration object created by OH_HiDebug_CreateProfilerOptions.<br/>**Note:** This API is supported since API version 26.0.1. |
+| OH_HiDebug_SetMaxAsyncNestingDepth | Sets the maximum asynchronous call nesting depth (maximum number of nesting levels).<br/>**Note:** This API is supported since API version 26.0.1. |
+| OH_HiDebug_SetMaxAsyncTaskStackDepth | Sets the maximum stack unwind depth for asynchronous task functions.<br/>**Note:** This API is supported since API version 26.0.1. |
+| OH_HiDebug_SetSampleIntervalBytes | Sets the sampling interval, in bytes.<br/>**Note:** This API is supported since API version 26.0.1. |
+| OH_HiDebug_SetStatisticsIntervalSec | Sets the statistics interval, in seconds.<br/>**Note:** This API is supported since API version 26.0.1. |
+| OH_HiDebug_SetMaxStackDepth | Sets the maximum stack unwind depth.<br/>**Note:** This API is supported since API version 26.0.1. |
+| OH_HiDebug_SetFilterSize | Sets the memory allocation filter size.<br/>**Note:** This API is supported since API version 26.0.1. |
+| OH_HiDebug_SetMaxDurationSec | Sets the maximum collection duration, in seconds.<br/>**Note:** This API is supported since API version 26.0.1. |
+| OH_HiDebug_SetStackTraceMode | Sets the stack trace mode to configure how destroyed stack traces are handled during resource collection.<br/>**Note:** This API is supported since API version 26.0.1. |
+| OH_HiDebug_StartProfilerWithOptions | Starts collecting resource allocation stack information for the specified resource type and configuration. Must be used with OH_HiDebug_StopProfiler.<br/>**Note:** This API is supported since API version 26.0.1. |
 
 ## Exporting Memory Snapshots
 
