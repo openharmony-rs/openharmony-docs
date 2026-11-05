@@ -1,4 +1,4 @@
-# Cleaning Up external_log (C/C++)
+# Cleaning Up external_log Files(C/C++)
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->

@@ -1,4 +1,4 @@
-# Introduction to external_log Logs
+# Introduction to external_log
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
