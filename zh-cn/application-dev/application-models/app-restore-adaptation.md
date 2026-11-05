@@ -5,7 +5,7 @@
 <!--Owner: @zhang_hao_zheng-->
 <!--Designer: @wendel-->
 <!--Tester: @liangchengguang-->
-<!--Adviser:  @HelloCrease-->
+<!--Adviser: @HelloCrease-->
 
 应用退后台被系统回收后，用户重新打开应用会回到首页，回收前的页面与操作上下文全部丢失。接入UIAbility备份恢复后，应用重拉可恢复到回收前的页面与数据。
 
@@ -15,9 +15,9 @@
 
 [UIAbility备份恢复](ability-recover-guideline.md)基础文档介绍了通过[setRestoreEnabled()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setrestoreenabled14)开启备份恢复、通过[onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)保存临时数据的基本用法：应用切后台时系统调用onSaveState()并把页面栈序列化落盘；应用被回收后重拉时，系统把保存的数据合并进本次启动Want的parameters字段带回（一次性，读取后即清除），页面栈由系统注入恢复。
 
-接入前请确认设备API版本不低于14（各能力的版本要求见[约束与限制](#约束与限制)）。对照下表定位你的应用：
+接入前请确认设备API版本不低于14（各能力的版本要求见[约束与限制](#约束与限制)）。对照下表按第一列描述的应用情况对号入座，第二列是该情况的典型应用例子：
 
-| 你的应用 | 典型例子 | 适配动作 | 详见 |
+| 应用情况 | 典型例子 | 适配动作 | 详见 |
 | --- | --- | --- | --- |
 | 可接受重拉后回到首页，且没有未持久化的临时数据 | 简单工具类应用 | 无需适配，重拉后重新加载即可 | — |
 | 单页应用，需要恢复未持久化的临时数据 | 计算器历史记录、备忘录草稿 | 开启总开关 + onSaveState()保存数据 | [场景一](#场景一仅恢复业务数据) |
@@ -30,7 +30,7 @@
 
 > **说明：**
 >
-> 场景二/三/四只解决"页面恢复到哪"，业务数据（草稿、进度等）的保存与恢复一律复用[场景一](#场景一仅恢复业务数据)的数据通道。
+> 场景二/三/四只负责页面栈的恢复，业务数据（草稿、进度等）的保存与恢复一律复用[场景一](#场景一仅恢复业务数据)的数据通道。
 
 无论选了哪个场景，以下常见问题按需叠加处理：
 
@@ -73,11 +73,11 @@ export default class EntryAbility extends UIAbility {
 
 已持久化的数据不要进备份快照——进程重建后持久化数据仍在，快照里只存定位键。
 
-### 通过onSaveState() + want.parameters保存临时数据
+### 通过onSaveState()和want.parameters保存临时数据
 
 临时数据（非持久化的页面状态、定位键、路由快照等）通过`onSaveState()`写入`wantParam`，恢复启动时从`want.parameters`读回。适合数据量小、随页面栈一起保存恢复的场景。
 
-**数据通道模式**——四个动作：
+数据通道模式——四个动作：
 
 1. 页面平时把可序列化状态发布到AppStorage（数据通道）；
 2. `onSaveState()`同步读取AppStorage写入wantParam，返回`ALL_AGREE`；
@@ -306,7 +306,7 @@ NavDestination() {
 - 只有**参数可序列化且有空值兜底**的页面才可参与恢复；广告页、登录页等无需恢复的页面因NavDestination默认值为true，**必须显式设置`.recoverable(false)`排除**——不设置不等于不恢复；
 - **页面名必须静态稳定**：系统恢复按NavDestination的name在PageMap中匹配页面，运行时动态拼接或加密生成的页面名，恢复时匹配不上，该页面无法恢复。此类工程需把页面名改为静态常量；确需加密的改为加密param，页面名保持明文静态；
 - **懒加载页面需保证恢复时映射可解析**：PageMap中懒加载（动态import等）的页面，需保证恢复启动时按name能同步取到组件（如预注册name到组件构建器的映射，或在补推前完成动态加载），否则恢复的页面无法构建；
-- 若工程入口是广告页/闪屏页，恢复启动时应直接加载内容页绕过广告页，否则广告页会把恢复出的栈顶页顶掉。
+- 若工程入口是广告页/闪屏页，恢复启动时应直接加载内容页绕过广告页，否则广告页会把恢复出的栈顶页覆盖。
 
 ### 空值兜底
 
@@ -552,7 +552,7 @@ onSaveState()按数据长度分流（短数据直接放，超长走落盘，见[
 
 **环境与版本**
 
-- API版本≥14是硬门槛：`setRestoreEnabled()`与router页面`recoverable`属性自API版本14起可用，Navigation/NavDestination的`recoverable`属性ArkTS动态类型（ArkTS-Dyn）自API版本14起可用，静态类型（ArkTS-Sta）自API版本23起可用，低于API版本14无从适配。
+- API版本≥14是硬门槛：`setRestoreEnabled()`与router页面`recoverable`属性自API版本14起可用，Navigation/NavDestination的`recoverable`属性自API版本14起可用，低于API版本14无从适配。
 - 应用正常关闭不触发备份；设备重启后不支持还原备份；备份数据保存7天。
 - 备份恢复机制依赖任务保留机制：设置`removeMissionAfterTerminate`为true或设备不支持任务保留（如PC/2in1设备）时机制不生效；[UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)不支持备份恢复。
 
