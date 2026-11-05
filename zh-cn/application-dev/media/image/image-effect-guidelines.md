@@ -230,7 +230,7 @@ target_link_libraries(entry PUBLIC
 
    <!-- @[image_effect_save](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
-   // 序列化效果器(可选)。
+   // 序列化效果器（可选）。
    char *imageinfo = nullptr;
    errorCode = OH_ImageEffect_Save(imageEffect, &imageinfo);
    CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result, "OH_ImageEffect_Save fail!");
