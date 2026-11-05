@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何使用OH_JSVM_GetSymbolToStringTag等JSVM-API接口快速获取Symbol.toStringTag、Symbol.iterator等11个JavaScript内建符号（Well-known symbols），供Native侧直接获取引用，适用于需要使用内建符号扩展对象行为的开发场景。"
+keywords: [OH_JSVM_GetSymbolToStringTag, OH_JSVM_GetSymbolIterator, OH_JSVM_GetSymbolToPrimitive, OH_JSVM_GetSymbolHasInstance, Well-known symbols, Symbol.toStringTag, Symbol.iterator]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口进行Well-known symbols相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

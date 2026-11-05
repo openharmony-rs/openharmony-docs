@@ -29,7 +29,7 @@ NetConnection常用接口如下表所示，详细的接口说明请参考[net_co
 | OHOS_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver) | 注册自定义DNS解析器。<br/>**弃用：** 从API version 13开始废弃。<br/>**替代：** 推荐使用OH_NetConn_RegisterDnsResolver。|
 | OHOS_NetConn_UnregisterDnsResolver(void) | 取消注册自定义DNS解析器。<br/>**弃用：** 从API version 13开始废弃。<br/>**替代：** 推荐使用OH_NetConn_UnregisterDnsResolver。|
 | OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver) | 注册自定义DNS解析器。 |
-| OH_NetConn_UnregisterDnsResolver(void) | 取消注册自定义DNS解析器。|
+| OH_NetConn_UnregisterCustomDnsResolver(void) | 取消注册自定义DNS解析器。|
 | OH_NetConn_SetPacUrl(const char \*pacUrl) | 设置系统级代理自动配置(PAC)脚本地址。 |
 | OH_NetConn_GetPacUrl(char \*pacUrl) | 获取系统级代理自动配置(PAC)脚本地址。 |
 | OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn_ProbeResultInfo *probeResultInfo)| 查询探测结果。 |
@@ -84,7 +84,7 @@ libnet_connection.so
        napi_get_value_int32(env, args[0], &param); // 从 args[0] 获取整数值并存储到 param 中
        
        NetConn_NetHandle netHandle;
-       if (param == 0) { // 如果参数是0
+       if (param == 0) { // 如果参数是0，传入NULL用于演示参数错误场景，接口将返回401
            param = OH_NetConn_GetDefaultNet(NULL);
        } else {
            param = OH_NetConn_GetDefaultNet(&netHandle);
@@ -214,6 +214,7 @@ libnet_connection.so
      }
    
      CodeNumber() {
+       // 非0表示传入有效的netHandle指针；0表示传入NULL，用于演示参数错误（401）
        let testParam = 1;
        // ...
          let codeNumber = testNetManager.GetDefaultNet(testParam);

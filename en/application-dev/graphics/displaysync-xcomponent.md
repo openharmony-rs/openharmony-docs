@@ -1,10 +1,20 @@
+---
+kits: ["ArkGraphics 2D"]
+description: "Describes how to request an independent drawing frame rate and register per-frame callbacks for self-drawn content through the XComponent native APIs."
+keywords: [XComponent, self-drawing, per-frame callback, expected callback, expected frame rate]
+doctype: guide
+status: active
+---
+
 # Requesting Frame Rates for Custom Content
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @wh_qwe-->
 <!--Designer: @wh_qwe-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=263f6d28c3a62b89d47845e6da97eea2212aedc9 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 When you use native APIs to develop an application based on the [XComponent](../ui/napi-xcomponent-guidelines.md), you can request an independent frame rate for custom content in scenarios such as gaming and custom UI framework interconnection.
 
@@ -12,9 +22,9 @@ When you use native APIs to develop an application based on the [XComponent](../
 
 | Name | Description    |
 |-----|--------|
-| OH_NativeXComponent_SetExpectedFrameRateRange (OH_NativeXComponent *component, OH_NativeXComponent_ExpectedRateRange *range) | Sets the expected frame rate range.|
-| OH_NativeXComponent_RegisterOnFrameCallback (OH_NativeXComponent *component, OH_NativeXComponent_OnFrameCallback *callback) | Registers the display update callback and enables the callback for each frame.|
-| OH_NativeXComponent_UnRegisterOnFrameCallback (OH_NativeXComponent *component) | Deregisters the display update callback and disables the callback for each frame.|
+| OH_NativeXComponent_SetExpectedFrameRateRange(OH_NativeXComponent* component, OH_NativeXComponent_ExpectedRateRange* range) | Sets the expected frame rate range. |
+| OH_NativeXComponent_RegisterOnFrameCallback(OH_NativeXComponent* component, void (\*callback)(OH_NativeXComponent* component, uint64_t timestamp, uint64_t targetTimestamp)) | Sets the per-frame callback function and starts the per-frame callback. |
+| OH_NativeXComponent_UnregisterOnFrameCallback(OH_NativeXComponent* component) | Unregisters the per-frame callback function and stops invoking the callback function. |
 
 For details about the APIs, see [OH_NativeXComponent Native XComponent](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent.md).
 
@@ -71,7 +81,7 @@ For details about the APIs, see [OH_NativeXComponent Native XComponent](../refer
    ```
 
 3. Define a demo page, which contains two **XComponents**.
-   <!-- @[display_sync_create_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/XComponentDisplaySync.ets) -->
+   <!-- @[display_sync_create_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/XComponentDisplaySync.ets) -->
    
    ``` TypeScript
    import XComponentContext from '../interface/XComponentContext';
@@ -180,8 +190,8 @@ For details about the APIs, see [OH_NativeXComponent Native XComponent](../refer
    }
    ```
 
-5. Register and deregister the callback function for each frame at the TS layer.
-   <!-- @[display_sync_start_and_stop_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/XComponentDisplaySync.ets) -->
+5. Register and unregister the callback function for each frame at the TS layer.
+   <!-- @[display_sync_start_and_stop_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/XComponentDisplaySync.ets) -->
    
    ``` TypeScript
    Row() {

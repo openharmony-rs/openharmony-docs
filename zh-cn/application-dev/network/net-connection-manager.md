@@ -342,13 +342,12 @@ function socketTest() {
                   }
                 }
               });
+            // 获取netHandle对应的网络的连接信息。需在获取到有效netHandle后调用。
+            connection.getConnectionProperties(netHandleInfo).then((data: connection.ConnectionProperties) => {
+              hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
+            })
           }
         });
-    
-        // 获取netHandle对应的网络的连接信息。
-        connection.getConnectionProperties(netHandleInfo).then((data: connection.ConnectionProperties) => {
-          hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
-        })
       // ...
     ```
     
@@ -397,10 +396,12 @@ function socketTest() {
 
 2. 代码示例
    
-   调用[getDefaultNetSync](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetdefaultnetsync9)方法，获取当前默认网络的netHandle，netHandle有效的情况下，调用[getNetCapabilitiesSync](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilitiessync10)方法，获取NetHandle对应网络的能力信息，根据获取到的能力信息，判断networkCap数组中的值判断网络是否可用。
+   调用[getDefaultNetSync](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetdefaultnetsync9)方法获取当前默认网络的netHandle。若netHandle有效，再调用[getNetCapabilitiesSync](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilitiessync10)方法获取该NetHandle对应网络的能力信息，并根据能力信息中networkCap数组的取值判断网络是否可用。
    
-   NET_CAPABILITY_CHECKING_CONNECTIVITY表示在进行连通性判断的过程中，当不处于连通性判断过程中，且networkCap数组中包含NET_CAPABILITY_VALIDATED表示网络连通性校验通过，可以访问互联网。
-
+   NET_CAPABILITY_CHECKING_CONNECTIVITY：表示系统正在进行连通性校验，此时网络可用性尚不确定。
+   
+   NET_CAPABILITY_VALIDATED：表示连通性校验通过，当networkCap数组中不包含NET_CAPABILITY_CHECKING_CONNECTIVITY（即未处于连接性校验过程中）、且包含NET_CAPABILITY_VALIDATED时，表示网络可用，可以访问互联网。
+   
     <!-- @[NetConnection_manage_case_default_net_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/DefaultNetSyncBtn.ets) -->
     
     ``` TypeScript
@@ -456,7 +457,7 @@ function socketTest() {
     import { hilog } from '@kit.PerformanceAnalysisKit';
     // ...
           // 使用默认网络解析主机名以获取所有IP地址
-          connection.getAddressesByName('xxxx').then((data: connection.NetAddress[]) => {
+          connection.getAddressesByName('www.example.com').then((data: connection.NetAddress[]) => {
             hilog.info(0x0000, 'testTag', 'Successfully retrieved default network IP address: ' + JSON.stringify(data));
             // ...
           })

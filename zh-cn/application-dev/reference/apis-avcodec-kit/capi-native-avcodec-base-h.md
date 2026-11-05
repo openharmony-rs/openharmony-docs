@@ -272,6 +272,7 @@
 | const char * OH_MD_KEY_AUDIO_MAX_INPUT_BUFFER_SIZE | 设置或查询音频编解码器最大输入缓冲区大小的键，值类型为int32_t，单位为字节。<br> 该键用于配置或获取音频编解码器的最大输入缓冲区大小，实际缓冲区大小受编解码器实现限制，超出上限的值不生效。<br> 该键是可选的。不设置时编解码器使用默认缓冲区大小。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_AUDIO_ENCODER_PTS_MODE | 配置音频编码器输出PTS模式的键，值类型为int32_t，取值参见[OH_AudioEncoderPTSMode](#oh_audioencoderptsmode)。<br> 该键是可选的，不设置时默认为OH_AUDIO_ENCODER_PTS_MODE_DEFAULT。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_AUDIO_ENCODER_ENABLE_SAMPLE_FORMAT_CONVERT | 使能音频编码器采样格式转换的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。<br> 音频编码器仅支持有限的采样格式，使能后，如果使用不支持的采样格式，编码器会将采样格式转换为支持的格式进行编码。<br> 使能后支持的输入采样格式为：SAMPLE_U8、SAMPLE_S16LE、SAMPLE_S24LE、SAMPLE_S32LE、SAMPLE_F32LE，请参见[OH_BitsPerSample](#oh_bitspersample)。<br> 该键是可选的，仅在音频编码Configure阶段使用。<br>**起始版本：** 26.0.0 |
+| const char *OH_MD_KEY_VIDEO_SET_DMABUF_NAME_SUFFIX | 设置视频编解码器DMABUF名称后缀的键，值类型为字符串。<br>后缀使用英文冒号`:`作为分隔符，拼接在编解码器内部DMABUF名称之后。最终的DMABUF名称格式为：{系统自定义字符串}:{后缀}。<br>后缀值的约束条件如下：<br>1. 仅允许ASCII可打印字符，若后缀包含任何非ASCII字符、空格、换行、制表符或其他不可见（控制）字符，将返回AV_ERR_INVALID_VAL。<br>2. 后缀必须至少包含一个非数字字符，否则将返回AV_ERR_INVALID_VAL。<br>该键是可选项，未设置时DMABUF名称保持不变。可通过[OH_VideoDecoder_Configure()](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)或[OH_VideoEncoder_Configure()](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)进行配置。<br>**起始版本：** 26.0.1 |
 
 ## 枚举类型说明
 

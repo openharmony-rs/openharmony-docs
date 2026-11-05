@@ -1,14 +1,13 @@
 # In-Application Embedded Component (EmbeddedComponent)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=04ff9074f3c577e505d0a99eec93fa72810d5fa3 translatedAt=2026-07-30T11:34:52.114Z pushedAt=2026-07-31T01:46:04.974Z -->
+<!-- md-trans-meta sourceCommit=33898b66eb6c0bf66810bb0d90faa36b55a4ad07 translatedAt=2026-11-03T08:30:06.026Z pushedAt=2026-11-03T08:50:30.633Z nl=1 -->
 
-The **EmbeddedComponent** allows the current page to embed UI content provided by other EmbeddedUIExtensionAbility instances within the same app. These UIs run in independent processes, offering higher security and stability.
+The **EmbeddedComponent** allows the current page to embed UI content provided by other EmbeddedUIExtensionAbility instances within the same app or by other apps that meet the cross-app embedding permission conditions. These UIs run in independent processes, offering higher security and stability.
 
 The **EmbeddedComponent** is primarily used for cross-module, cross-process embedded UI integration. Its core objective is to improve application flexibility and user experience through modular design.
 
@@ -18,7 +17,7 @@ Be aware of the component's usage constraints and lifecycle management to maximi
 
 - [EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md)
 
-  The **EmbeddedComponent** enables embedding UI content from another EmbeddedUIExtensionAbility within the same application. It supports modular development scenarios requiring process isolation, allowing flexible UI design by integrating specific functionalities or interfaces into another page.
+  The **EmbeddedComponent** is used to embed, in the current page, UI provided by the EmbeddedUIExtensionAbility of the same app or of other apps that meet the cross-app embedding permission conditions. It allows developers to embed certain functionalities or interfaces of an app into another interface, enabling more flexible UI design and supporting modular development scenarios that require process isolation.
 
 - [EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)
 
@@ -37,9 +36,9 @@ Be aware of the component's usage constraints and lifecycle management to maximi
 - Attribute Restrictions
 
   The **EmbeddedComponent** supports [universal attributes](../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md), with default and minimum width and height values set to 10 vp.
-
+  
   The following width- and height-related attributes are not supported:
-
+  
   "[constraintSize](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)", "[aspectRatio](../reference/apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#aspectratio)", "[layoutWeight](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight)", "[flexBasis](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexbasis)", "[flexGrow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexgrow)", and "[flexShrink](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink)".
 
 - Event handling
@@ -51,9 +50,7 @@ Be aware of the component's usage constraints and lifecycle management to maximi
 ## Focus Behavior
 
 Before API version 26.0.0, when the **EmbeddedComponent** gained focus, the focus within the EmbeddedUIExtensionAbility process it started was directly dispatched to the first focusable child node. Starting from API version 26.0.0,
-
 1. If focus moves from outside to the EmbeddedUIExtensionAbility, focus is normally dispatched to the first focusable child node.
-
 2. If focus is transferred to the EmbeddedUIExtensionAbility due to page level switching, the same rule as the UIAbility applies. When either starts a hierarchical page and that page has neither set [defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9) nor [actively requested focus](arkts-common-events-focus-event.md#active-focus-acquisitionloss), focus remains on the root container and is not dispatched to child nodes.
 
 ## Scenario Example
@@ -62,7 +59,7 @@ This example demonstrates the basic usage of the **EmbeddedComponent** and Embed
 
 **Host Page**
 
-The add-on home page is the host page for the **EmbeddedComponent**, responsible for loading and displaying the content of the embedded UI extension capability. The following is a complete implementation example of an add-on home page.
+The add-on home page is the host page of the **EmbeddedComponent**, responsible for loading and displaying the content of the embedded UI extension capability. The following is an implementation example of an add-on home page:
 
 <!-- @[embedded_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Embedded.ets) -->
 
@@ -108,9 +105,9 @@ In an ArkTS project, the implementation code of the EmbeddedUIExtensionAbility i
 
 Key considerations for implementing the host page:
 
-- Multi-process model check
+- Multi-process permission check
 
-  Check whether the device has multi-process mode enabled during application startup. Provide clear error messages or guidance if it is disabled.
+  When the app starts, it is recommended to check whether the current device has the multi-process permission (for device scope and constraint descriptions, see [Usage Constraints](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#constraints)). If not, a clear error message should be provided.
 
 - Exception handling
 
@@ -235,11 +232,11 @@ Key considerations for implementing the entry page:
 
 2. Result return
 
-   When returning results to the host through **terminateSelfWithResult**, specify:
+   When returning a result to the host app through the terminateSelfWithResult method, the mandatory parameter resultCode must be specified; want is an optional parameter (representing the result data returned to the host app, which defaults to undefined when not passed):
 
    - **resultCode**: result code.
 
-   - **want**: recipient of the result.
+   - want: result data returned to the host app.
 
 3. Page lifecycle
 

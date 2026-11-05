@@ -6,13 +6,13 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=336b192b15b46c20e4683cc1c73802a6eb6f0201 translatedAt=2026-08-21T03:20:20.948Z pushedAt=2026-08-21T09:20:53.507Z -->
+<!-- md-trans-meta sourceCommit=246321a9c1b2f451d348043e5cf027e2ad88a771 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 ## Overview
 
 Resource leaks occur when resources, such as handles, threads, or memory, are not properly released during application running. As a result, the resources are occupied for a long time and cannot be used by other applications. If a certain type of resource is exhausted, the system may crash or restart.
 
-This topic describes the fields of the resource leak event. For details about how to use the ArkTs and C/C++ APIs provided by HiAppEvent to subscribe to system resource leak events, see the following documents:  
+This topic describes the fields and specifications of the resource leak event. For details about how to use the ArkTS and C/C++ APIs provided by HiAppEvent to subscribe to system resource leak events, see the following documents:
 
 - [Subscribing to Resource Leak Events (ArkTS)](hiappevent-watcher-resourceleak-events-arkts.md)
 
@@ -157,24 +157,23 @@ The **params** parameter in the event information is described as follows.
 
 | Name | Type | Description |
 | -------- | -------- | -------- |
-| .db | number | Memory size occupied by database files, in KB. |
-| .hap | number | Memory size occupied by HAP files, in KB. |
-| .so | number | Memory size occupied by shared library files, in KB. |
-| .ttf | number | Memory size occupied by font files, in KB. |
-| anon_page_other | number | Memory size occupied by other anonymous pages, in KB. |
-| ark ts heap | number | Memory size occupied by the ArkTS heap, in KB. |
-| arkts-static heap | number | Memory size occupied by the ArkTS static heap, in KB. |
-| arkweb-js heap | number | Memory size occupied by the ArkWeb JS heap, in KB. |
-| arkweb-pa heap | number | Memory size occupied by the ArkWeb PA heap, in KB. |
-| dart heap | number | Memory size occupied by the Dart heap, in KB. |
-| dev | number | Memory size occupied by various files starting with /dev, in KB. |
-| file_page_other | number | Memory size occupied by other file pages, in KB. |
-| jsvm heap | number | Memory size occupied by the JSVM heap, in KB. |
-| kotlin heap | number | Memory size occupied by the Kotlin heap, in KB. |
-| native heap | number | Memory size occupied by the Native heap, in KB. |
-| other | number | Memory size occupied by other types, in KB. |
-| rn-hermes heap | number | Memory size occupied by the React Native Hermes heap, in KB. |
-| stack | number | Memory size occupied by the stack space, in KB. |
+| .db | number | Memory occupied by database files, in KB. |
+| .hap | number | Memory occupied by HAP files, in KB. |
+| .so | number | Memory occupied by shared library files, in KB. |
+| .ttf | number | Memory occupied by font files, in KB. |
+| anon_page_other | number | Memory occupied by other anonymous pages, in KB. |
+| ark ts heap | number | Memory occupied by the ArkTS heap, in KB. |
+| arkweb-js heap | number | Memory occupied by the ArkWeb JS heap, in KB. |
+| arkweb-pa heap | number | Memory occupied by the ArkWeb PA heap, in KB. |
+| dart heap | number | Memory occupied by the Dart heap, in KB. |
+| dev | number | Memory occupied by various files under /dev, in KB. |
+| file_page_other | number | Memory occupied by other file pages, in KB. |
+| jsvm heap | number | Memory occupied by the JSVM heap, in KB. |
+| kotlin heap | number | Memory occupied by the Kotlin heap, in KB. |
+| native heap | number | Memory occupied by the Native heap, in KB. |
+| other | number | Memory occupied by other types, in KB. |
+| rn-hermes heap | number | Memory occupied by the React Native Hermes heap, in KB. |
+| stack | number | Memory occupied by the stack space, in KB. |
 
 ### fd
 

@@ -82,7 +82,7 @@
 | forms | 表示应用的全部卡片配置信息。<br/>最多支持配置16个卡片，若超过16个，则保留配置的前16个。 | 数组 | 否 |
 | name | 表示卡片的名称，字符串最大长度为127字节。用于开发者区分不同的卡片。<br/>**说明：**<br/> 该字段不建议引用资源文件。 | 字符串 | 否 |
 | displayName | 表示卡片的展示名称。主要在卡片管理页面显示，对应卡片预览下[卡片管理页面](./formkit-overview.md#卡片使用场景)中的<!--RP3-->"ArkTSCard"<!--RP3End-->，用于展示卡片信息，建议能够体现卡片的核心功能或用途。支持字符串或字符串资源索引，建议使用字符串资源索引方式声明，以支持完整多语言能力。字符串最小长度为1字节，最大长度为30字节。 | 字符串 | 否 |
-| description | 表示卡片的描述。用于在卡片管理页面展示卡片功能描述，对应卡片预览下[卡片管理页面](./formkit-overview.md#卡片使用场景)中的<!--RP4-->"This is a ArkTS card game by canvas."<!--RP4End-->。支持字符串或字符串资源索引，建议使用字符串资源索引方式声明，以支持完整多语言能力。字符串最大长度为255字节。 | 字符串 | 可缺省，缺省为空。 |
+| description | 表示卡片的描述。用于在卡片管理页面展示卡片功能描述，对应卡片预览下[卡片管理页面](./formkit-overview.md#卡片使用场景)中的<!--RP4-->"This is an ArkTS card game by canvas."<!--RP4End-->。支持字符串或字符串资源索引，建议使用字符串资源索引方式声明，以支持完整多语言能力。字符串最大长度为255字节。 | 字符串 | 可缺省，缺省为空。 |
 | src | 表示卡片对应的UI代码的完整路径。当为ArkTS卡片时，完整路径需要包含卡片文件的后缀，如："./ets/widget/pages/WidgetCard.ets"。当为JS卡片时，完整路径无需包含卡片文件的后缀，如："./js/widget/pages/WidgetCard"。 | 字符串 | 否 |
 | uiSyntax | 表示该卡片的类型，当前支持如下两种类型：<br/>-&nbsp;arkts：当前卡片为ArkTS卡片。<br/>-&nbsp;hml：当前卡片为JS卡片。 | 字符串 | 可缺省，缺省值为“hml”。 |
 | window | 用于定义与显示窗口相关的配置。<br/>**说明：**<br/>该字段仅对JS卡片生效。 | 对象 | 可缺省，缺省值参考[window标签](#window标签)表格。 |
@@ -112,7 +112,8 @@
 | groupId | 表示一组卡片的共同id。多张卡片的groupId相同且resizable为true时，多张卡片的supportDimensions配置共享，推荐多张卡片功能相同且需要调整卡片尺寸时配置。<br>示例一：卡片A的groupId配置为'1'，resizable配置为true，supportDimensions为2\*2。卡片B的groupId配置为'1'，resizable配置为true，supportDimensions为2\*4。那么支持卡片A、B之间调整大小。<br>示例二：当supportDimensions存在多个，resizable设置为true时，优先在同一张卡片之间调整大小。卡片A的resizable配置为true，supportDimensions为2\*2、2\*4，支持卡片A的两个尺寸之间调整大小。<br>示例三：卡片A的groupId配置为'1'，resizable配置为true，supportDimensions为1\*2。卡片B的groupId配置为'1'，resizable配置为true，supportDimensions为2\*2、2\*4、4\*4。卡片A可以调整到卡片B的默认尺寸，卡片B只支持在B卡片支持的三个尺寸之间调整大小，无法调整为卡片A。<br/>**说明：**<br/>从API version 20开始，支持该字段。 | 字符串 | 可缺省，空字符串。 |
 | [supportDeviceTypes](#supportdevicetypes标签) | 表示特定卡片支持的设备类型。例如，卡片的supportDeviceTypes字段配置了“phone”、“tablet”、“tv”，那么该卡片就支持在手机、平板、大屏上面显示。<br/>**说明：**<br/>从API version 22开始，支持该字段。 | 字符串数组 | 可缺省，缺省值：["phone", "tablet", "tv", "wearable", "car", "2in1"]。 |
 | [supportDevicePerformanceClasses](#supportdeviceperformanceclasses标签) | 表示特定卡片支持的设备性能等级信息。例如，卡片的supportDevicePerformanceClasses字段配置了“high”、“medium”、“low”，那么该卡片就支持在性能等级为“high”、“medium”、“low”设备上面显示。<br/>**说明：**<br/>从API version 22开始，支持该字段。 | 字符串数组 | 可缺省，缺省值：["high", "medium", "low"]。 |
-| [standby](#standby标签) | 待机屏保显示页面卡片扩展字段。<br/>**说明：**<br/>从API version 23开始，支持该字段。依赖系统实现待机屏保显示应用后展示 | 对象 | 可缺省，属性缺省值见[standby标签](#standby标签)。 |
+| [standby](#standby标签) | 待机屏保显示页面卡片扩展字段。<br/>**说明：**<br/>从API version 23开始，支持该字段。依赖系统实现待机屏保应用。 | 对象 | 可缺省，属性缺省值见[standby标签](#standby标签)。 |
+| isColorModeRefreshEnabled | 表示卡片是否使能深浅色模式切换触发刷新。<br/>-&nbsp;true：使能。<br/>-&nbsp;false：不使能。<br/>**说明：**<br/>从API版本26.1.0开始，支持该字段。 | 布尔类型 | 可缺省，缺省值为false。 |
 
 ### supportDeviceTypes标签
 

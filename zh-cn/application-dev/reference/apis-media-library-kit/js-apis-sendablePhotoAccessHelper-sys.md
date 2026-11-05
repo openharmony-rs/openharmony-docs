@@ -29,6 +29,8 @@ getPhotoAccessHelper(context: Context, userId: number): PhotoAccessHelper
 
 **系统接口**：此接口为系统接口。
 
+**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **参数：**
@@ -280,14 +282,14 @@ async function getHiddenAlbumsView(phAccessHelper: sendablePhotoAccessHelper.Pho
       fetchColumns: [],
       predicates: predicates
     };
-    for (let i = 0; i < albums.length; i++) {
+    albums.forEach((album) => {
       // 获取相册中的隐藏文件。
-      albums[i].getAssets(fetchOption).then((assetFetchResult) => {
+      album.getAssets(fetchOption).then((assetFetchResult) => {
         console.info('album get hidden assets successfully, getCount: ' + assetFetchResult.getCount());
       }).catch((err: BusinessError) => {
         console.error(`album get hidden assets failed with error: ${err.code}, ${err.message}`);
       });
-    }
+    });
     fetchResult.close();
   }).catch((err: BusinessError) => {
     console.error(`getHiddenAlbumsViewPromise failed with err: ${err.code}, ${err.message}`);

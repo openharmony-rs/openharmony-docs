@@ -12,8 +12,6 @@
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**设备类型说明：** 支持所有设备类型
-
 **起始版本：** 12
 
 ## 文件汇总

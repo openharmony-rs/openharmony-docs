@@ -35,18 +35,24 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   async function doMd() {
-    let mdAlgName = 'SHA256'; // 摘要算法名
-    let message = 'mdTestMessage'; // 待摘要的数据
-    let md = cryptoFramework.createMd(mdAlgName);
-    // 数据量较少时，可以只做一次update，将数据全部传入，接口未对入参长度做限制
-    await md.update({ data: new Uint8Array(buffer.from(message, 'utf-8').buffer) });
-    let mdResult = await md.digest();
-    console.info('Md result: ' + mdResult.data);
-    let mdLen = md.getMdLength();
-    console.info('md len: ' + mdLen);
+    try {
+      let mdAlgName = 'SHA256'; // 摘要算法名
+      let message = 'mdTestMessage'; // 待摘要的数据
+      let md = cryptoFramework.createMd(mdAlgName);
+      // 数据量较少时，可以只做一次update，将数据全部传入，接口未对入参长度做限制
+      await md.update({ data: new Uint8Array(buffer.from(message, 'utf-8').buffer) });
+      let mdResult = await md.digest();
+      console.info('Md result: ' + mdResult.data);
+      let mdLen = md.getMdLength();
+      console.info('md len: ' + mdLen);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```
 
@@ -57,18 +63,24 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   function doMdBySync() {
-    let mdAlgName = 'SHA256'; // 摘要算法名
-    let message = 'mdTestMessage'; // 待摘要的数据
-    let md = cryptoFramework.createMd(mdAlgName);
-    // 数据量较少时，可以只做一次update，将数据全部传入，接口未对入参长度做限制
-    md.updateSync({ data: new Uint8Array(buffer.from(message, 'utf-8').buffer) });
-    let mdResult = md.digestSync();
-    console.info('[Sync]:Md result: ' + mdResult.data);
-    let mdLen = md.getMdLength();
-    console.info('md len: ' + mdLen);
+    try {
+      let mdAlgName = 'SHA256'; // 摘要算法名
+      let message = 'mdTestMessage'; // 待摘要的数据
+      let md = cryptoFramework.createMd(mdAlgName);
+      // 数据量较少时，可以只做一次update，将数据全部传入，接口未对入参长度做限制
+      md.updateSync({ data: new Uint8Array(buffer.from(message, 'utf-8').buffer) });
+      let mdResult = md.digestSync();
+      console.info('[Sync]:Md result: ' + mdResult.data);
+      let mdLen = md.getMdLength();
+      console.info('md len: ' + mdLen);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```
 
@@ -88,24 +100,30 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   async function doLoopMd() {
-    let mdAlgName = 'SHA256'; // 摘要算法名
-    let md = cryptoFramework.createMd(mdAlgName);
-    // 假设信息总共43字节，根据utf-8解码后，也是43字节
-    let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
-    let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
-    let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求
-    for (let i = 0; i < messageData.length; i += updateLength) {
-      let updateMessage = messageData.subarray(i, i + updateLength);
-      let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
-      await md.update(updateMessageBlob);
+    try {
+      let mdAlgName = 'SHA256'; // 摘要算法名
+      let md = cryptoFramework.createMd(mdAlgName);
+      // 假设信息总共43字节，根据utf-8解码后，也是43字节
+      let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
+      let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
+      let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求
+      for (let i = 0; i < messageData.length; i += updateLength) {
+        let updateMessage = messageData.subarray(i, i + updateLength);
+        let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
+        await md.update(updateMessageBlob);
+      }
+      let mdOutput = await md.digest();
+      console.info('md result: ' + mdOutput.data);
+      let mdLen = md.getMdLength();
+      console.info('md len: ' + mdLen);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
-    let mdOutput = await md.digest();
-    console.info('md result: ' + mdOutput.data);
-    let mdLen = md.getMdLength();
-    console.info('md len: ' + mdLen);
   }
   ```
 
@@ -117,23 +135,29 @@
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   function doLoopMdBySync() {
-    let mdAlgName = 'SHA256'; // 摘要算法名
-    let md = cryptoFramework.createMd(mdAlgName);
-    // 假设信息总共43字节，根据utf-8解码后，也是43字节
-    let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
-    let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
-    let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求
-    for (let i = 0; i < messageData.length; i += updateLength) {
-      let updateMessage = messageData.subarray(i, i + updateLength);
-      let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
-      md.updateSync(updateMessageBlob);
+    try {
+      let mdAlgName = 'SHA256'; // 摘要算法名
+      let md = cryptoFramework.createMd(mdAlgName);
+      // 假设信息总共43字节，根据utf-8解码后，也是43字节
+      let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
+      let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
+      let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求
+      for (let i = 0; i < messageData.length; i += updateLength) {
+        let updateMessage = messageData.subarray(i, i + updateLength);
+        let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
+        md.updateSync(updateMessageBlob);
+      }
+      let mdOutput = md.digestSync();
+      console.info('[Sync]:md result: ' + mdOutput.data);
+      let mdLen = md.getMdLength();
+      console.info('md len: ' + mdLen);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
-    let mdOutput = md.digestSync();
-    console.info('[Sync]:md result: ' + mdOutput.data);
-    let mdLen = md.getMdLength();
-    console.info('md len: ' + mdLen);
   }
   ```

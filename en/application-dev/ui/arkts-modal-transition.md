@@ -5,6 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=95916eb3eda3c7cecf8d515362b934cf84716126 translatedAt=2026-11-04T01:27:41.092Z pushedAt=2026-11-04T01:45:23.339Z nl=1 -->
 
 
 Modal transition is a type of transition achieved by a modal – a view that appears on top of the current view while the current view remains.
@@ -33,9 +34,9 @@ You can bind a full-screen modal to a component through the [bindContentCover](.
    // Use @Builder to build a modal view.
    @Builder MyBuilder() {
      Column() {
-      Text('my modal view')
+       Text('my modal view')
      }
-     // Use the transition API to implement the transition animation for component appearance and disappearance. The transition API must be added to the first component of the builder.
+     // Use the transition API to implement the transition animation for component appearance and disappearance. The transition API must be added to the first component of the builder. 
      .transition(TransitionEffect.translate({ y: 1000 }).animation({ curve: curves.springMotion(0.6, 0.8) }))
    }
    ```
@@ -446,7 +447,7 @@ struct BindMenuDemo {
 }
 ```
 
-<!--Del-->![image_0000001599643478]  (figures/Creating-Menu-bindMenu.gif)<!--DelEnd-->
+<!--Del-->  <!--DelEnd-->
 
 
 ## Creating a Context Menu with bindContextMenu
@@ -471,7 +472,7 @@ struct BindContextMenuDemo {
     $r('app.string.modal_transition_text26'),
     // Replace $r('app.string.modal_transition_text27') with the actual resource file. In this example, the value in the resource file is "Search".
     $r('app.string.modal_transition_text27')];
-  // Replace $r('app.media.icon_2') with the actual resource file.
+  // Replace $r('app.media.icon_2') with the actual resource file. 
   private pics: Resource[] = [$r('app.media.icon_1'), $r('app.media.icon_2')];
 
   // Use @Builder to build custom menu items.

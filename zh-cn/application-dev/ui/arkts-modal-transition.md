@@ -33,7 +33,7 @@
    // 通过@Builder构建模态展示界面
    @Builder MyBuilder() {
      Column() {
-      Text('my modal view')
+       Text('my modal view')
      }
      // 通过转场动画实现出现消失转场动画效果，transition需要加在builder下的第一个组件 
      .transition(TransitionEffect.translate({ y: 1000 }).animation({ curve: curves.springMotion(0.6, 0.8) }))

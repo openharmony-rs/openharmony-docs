@@ -75,6 +75,7 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND = 106213 | 在[ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md)上未找到指定的动画组。错误码的详细介绍请参见[106213 在UIContext上未找到指定的动画组](errorcode-animation.md#106213-在uicontext上未找到指定的动画组)。<br>**起始版本：** 26.0.1 |
 | ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL = 106214 | 检测到同一线程上对动画组接口的重入调用。错误码的详细介绍请参见[106214 检测到同一线程上对动画组接口的重入调用](errorcode-animation.md#106214-检测到同一线程上对动画组接口的重入调用)。<br>**起始版本：** 26.0.1 |
 | ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE = 106215 | 动画组未处于操作所需的状态。错误码的详细介绍请参见[106215 动画组未处于操作所需的状态](errorcode-animation.md#106215-动画组未处于操作所需的状态)。<br>**起始版本：** 26.0.1 |
+| ARKUI_ERROR_CODE_TARGET_NODE_NOT_IN_SAME_CONTEXT = 106216 | 解析的目标节点不属于注册动画组时传入的context所在的UIContext。错误码的详细介绍请参见[106216 解析的目标节点不属于注册动画组时传入的context所在的UIContext](errorcode-animation.md#106216-解析的目标节点不属于注册动画组时传入的context所在的uicontext)。<br>**起始版本：** 26.0.1 |
 | ARKUI_ERROR_CODE_NOT_CUSTOM_NODE = 106401 |  当前节点不是自定义节点。错误码的详细介绍请参见[渲染节点错误码](errorcode-node-render.md)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_CHILD_EXISTED = 106402 |  当前节点已存在子节点。错误码的详细介绍请参见[渲染节点错误码](errorcode-node-render.md)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 |  当前渲染节点存在父节点。错误码的详细介绍请参见[渲染节点错误码](errorcode-node-render.md)。<br>**起始版本：** 20 |
@@ -83,6 +84,14 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE = 106406 |  当前渲染节点从[FrameNode](js-apis-arkui-frameNode.md)中获取。错误码的详细介绍请参见[106406 当前渲染节点从FrameNode中获取](errorcode-node-render.md#106406-当前渲染节点从framenode中获取)。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE = 106407 |  当前渲染节点从[FrameNode](js-apis-arkui-frameNode.md)中获取且该[FrameNode](js-apis-arkui-frameNode.md)已被取消接纳为附属节点或销毁。错误码的详细介绍请参见[106407 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁](errorcode-node-render.md#106407-当前渲染节点从framenode中获取且该framenode已被取消接纳为附属节点或销毁)。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_RENDER_NOT_ADOPTED_NODE = 106408 |  当前节点不处于被接纳状态。错误码的详细介绍请参见[106408 当前节点不处于被接纳状态](errorcode-node-render.md#106408-当前节点不处于被接纳状态)。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_COMMAND_UNFINISHED = 106409 | 上一次请求尚未完成。<br>**起始版本：** 26.1.0 |
+| ARKUI_ERROR_CODE_NODE_NOT_FOUND = 106410 | 未找到节点ID对应的ArkUI节点。<br>**起始版本：** 26.1.0 |
+| ARKUI_ERROR_CODE_RESULT_TOO_LARGE = 106411 | 结果数据过大。<br>**起始版本：** 26.1.0 |
+| ARKUI_ERROR_CODE_RESOURCE_EXHAUSTED = 106412 | 资源已耗尽。<br>**起始版本：** 26.1.0 |
+| ARKUI_ERROR_CODE_DUPLICATE_NODE_ID = 106413 | 节点ID重复。<br>**起始版本：** 26.1.0 |
+| ARKUI_ERROR_CODE_COLLECTION_PARTIAL_FAILED = 106414 | 部分集合项失败。<br>**起始版本：** 26.1.0 |
+| ARKUI_ERROR_CODE_COLLECTION_ITEM_NOT_FOUND = 106415 | 集合项未找到。<br>**起始版本：** 26.1.0 |
+| ARKUI_ERROR_CODE_COLLECTION_ITEM_ALREADY_TAKEN = 106416 | 集合项已被取出使用。<br>**起始版本：** 26.1.0 |
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE = 150001 |  当前节点无法获得焦点。错误码的详细介绍请参见[150001 节点无法获得焦点](errorcode-focus.md#150001-节点无法获得焦点)。<br>**起始版本：** 15 |
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR = 150002 |  当前节点对应的祖先节点中存在无法获焦节点。错误码的详细介绍请参见[150002 祖先节点无法获得焦点](errorcode-focus.md#150002-祖先节点无法获得焦点)。<br>**起始版本：** 15 |
 | ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT = 150003 |  当前节点不存在。错误码的详细介绍请参见[150003 节点不存在](errorcode-focus.md#150003-节点不存在)。<br>**起始版本：** 15 |
@@ -100,5 +109,5 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_CALLBACK_INVALID = 190002 |  无效的回调函数。错误码的详细介绍请参见[UI上下文错误码](errorcode-uicontext.md)。<br>**起始版本：** 18 |
 | ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED = 180102 |  不支持手势识别器类型。错误码的详细介绍请参见[交互事件错误码](errorcode-event.md)。<br>**起始版本：** 18 |
 | ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED = 190004 | 当前拖拽事件处理阶段不允许执行请求的操作。错误码的详细介绍请参见[拖拽事件错误码](errorcode-drag-event.md)。<br>**起始版本：** 19 |
-| ARKUI_ERROR_CODE_DIALOG_NODE_MOUNT_FAILURE = 103306 |  由于节点挂载失败，弹窗无法打开。错误码的详细介绍请参见[弹窗错误码](errorcode-promptAction.md)。<br>**起始版本：** 26.0.1 |
-| ARKUI_ERROR_CODE_DIALOG_SUBWINDOW_CREATE_FAILURE = 103308 |  由于子窗口创建失败，弹窗无法打开。错误码的详细介绍请参见[弹窗错误码](errorcode-promptAction.md)。<br>**起始版本：** 26.0.1 |
+| ARKUI_ERROR_CODE_DIALOG_NODE_MOUNT_FAILURE = 103306 |  节点挂载失败导致无法打开对话框。错误码的详细介绍请参见[弹窗错误码](errorcode-promptAction.md)。<br>**起始版本：** 26.0.1 |
+| ARKUI_ERROR_CODE_DIALOG_SUBWINDOW_CREATE_FAILURE = 103308 |  子窗口创建失败导致无法打开对话框。错误码的详细介绍请参见[弹窗错误码](errorcode-promptAction.md)。<br>**起始版本：** 26.0.1 |

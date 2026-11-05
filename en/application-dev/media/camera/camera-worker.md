@@ -5,8 +5,9 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=a0d61469bb44afa5cea84cd5263c0bce0cfd4fdf translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
-[Worker](../../arkts-utils/worker-introduction.md) is mainly used to offer applications a multithreaded environment. It enables applications to perform time-consuming operations in background threads. This greatly prevents computing-intensive or high-latency tasks from blocking the running of the main thread.
+The primary role of [Worker](../../arkts-utils/worker-introduction.md) is to provide a multi-threaded runtime environment for apps. It allows an app to separate certain execution from the main thread and run a script in a background thread for time-consuming operations, thereby greatly preventing compute-intensive or high-latency tasks from blocking the main thread.
 
 When using camera capabilities, you often need to create camera sessions and continuously receive and process preview, photo, and video streams to achieve the desired camera functionalities. If these resource-demanding operations are performed in the main thread (UI thread), UI rendering may be blocked. Therefore, you are advised to implement the camera functionalities in the Worker thread.
 
@@ -180,6 +181,10 @@ When using camera capabilities, you often need to create camera sessions and con
      private workerInstance: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/CameraWorker.ets');
      private uiContext: UIContext = this.getUIContext();
      private context: Context | undefined = this.uiContext.getHostContext();
+    private mXComponentOptions: XComponentOptions = {
+      type: XComponentType.SURFACE,
+      controller: this.mXComponentController
+    }
    
      onPageShow(): void {
        if ('' !== this.surfaceId) {
@@ -202,11 +207,7 @@ When using camera capabilities, you often need to create camera sessions and con
      build() {
        Column() {
          Column() {
-           XComponent({
-             id: 'componentId',
-             type: XComponentType.SURFACE,
-             controller: this.mXComponentController
-           })
+           XComponent(this.mXComponentOptions)
              .onLoad(async () => {
                console.info('onLoad is called');
                // Initialize the XComponent to obtain the surface ID of the preview stream.

@@ -142,6 +142,118 @@ shadow(options: Optional\<ShadowOptions \| ShadowStyle>): T
 | ------ | ------------------------ |
 | T | 返回当前组件，用于链式调用。 |
 
+## shadowShape
+
+shadowShape(shape: CircleShape \| EllipseShape \| PathShape \| RectShape \| undefined): T
+
+设置组件阴影的渲染形状，阴影按指定形状渲染。该接口需与[shadow](#shadow)属性配合使用：当组件设置了阴影后，阴影默认按组件自身形状（即组件大小、位置和圆角形成的形状）渲染，使用本接口后阴影将按指定的形状渲染。指定的形状对象的属性参数支持百分比尺寸。
+
+> **说明：**
+>
+> 该接口对[ShadowOptions](#shadowoptions对象说明)中type取值为[ShadowType](#shadowtype10枚举说明).BLUR的阴影不生效。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明                                                         |
+| ------ | ---- | ---- | ------------------------------------------------------------ |
+| shape  | [CircleShape](ts-universal-attributes-sharp-clipping.md#circleshape12) \| [EllipseShape](ts-universal-attributes-sharp-clipping.md#ellipseshape12) \| [PathShape](ts-universal-attributes-sharp-clipping.md#pathshape12) \| [RectShape](ts-universal-attributes-sharp-clipping.md#rectshape12) \| undefined | 是   | 阴影形状。<br>当值类型为CircleShape、EllipseShape、PathShape或RectShape时，阴影渲染为对应形状。<br>当shape的值为undefined时，清除阴影形状属性，阴影恢复为按组件自身形状渲染。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| T | 返回当前组件，用于链式调用。 |
+
+**示例：**
+
+请参考[shadowClipMode](#shadowclipmode)接口的示例。
+
+## shadowClipMode
+
+shadowClipMode(mode: ShadowClipMode \| undefined): T
+
+设置[shadow](#shadow)在不填充时的裁剪方式：按指定形状对绘制的阴影进行裁切，阴影与该形状相交的部分被裁去，不予绘制。仅在[ShadowOptions](#shadowoptions对象说明)的fill字段设为false（即阴影不内部填充）时生效。
+
+> **说明：**
+>
+> 该接口对[ShadowOptions](#shadowoptions对象说明)中type取值为[ShadowType](#shadowtype10枚举说明).BLUR的阴影不生效。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明                                                         |
+| ------ | ---- | ---- | ------------------------------------------------------------ |
+| mode   | [ShadowClipMode](ts-appendix-enums.md#shadowclipmode) \| undefined | 是   | 阴影裁切方式。<br>当mode的值为undefined时，恢复为默认裁切方式DEFAULT_SHAPE。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| T | 返回当前组件，用于链式调用。 |
+
+**示例：**
+
+该示例主要演示通过[shadowShape](#shadowshape)设置阴影的渲染形状，并通过[shadowClipMode](#shadowclipmode)设置阴影不填充时的裁剪方式。
+
+```ts
+// xxx.ets
+import { RectShape } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ShadowShapeExample {
+  build() {
+    Column() {
+      Row({ space: 60 }) {
+        Column() {
+          Text('BOUNDS_SHAPE').fontSize(12)
+        }
+        .width(100)
+        .height(100)
+        .borderRadius(16)
+        .justifyContent(FlexAlign.Center)
+        .backgroundColor('#8092D6CC')
+        .shadow({ radius: 15, color: Color.Gray }) // ShadowOptions中fill默认为false
+        .shadowShape(new RectShape({ width: 120, height: 120, radius: 20 }).position({ x: -10, y: -10 }))
+        .shadowClipMode(ShadowClipMode.BOUNDS_SHAPE) // 组件边界内的阴影被裁切，不予绘制
+
+        Column() {
+          Text('DEFAULT_SHAPE').fontSize(12)
+        }
+        .width(100)
+        .height(100)
+        .borderRadius(16)
+        .justifyContent(FlexAlign.Center)
+        .backgroundColor('#8092D6CC')
+        .shadow({ radius: 15, color: Color.Gray }) // ShadowOptions中fill默认为false
+        .shadowShape(new RectShape({ width: 120, height: 120, radius: 20 }).position({ x: -10, y: -10 }))
+        .shadowClipMode(ShadowClipMode.DEFAULT_SHAPE) // 默认阴影裁切方式，shadowShape内的阴影被裁切，不予绘制
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+![shadowShapeEffect](figures/shadowShapeEffect.png)
+
 ## grayscale
 
 grayscale(value: number): T
@@ -1183,14 +1295,14 @@ freeze(freeze: Optional\<boolean>): T
 
 systemMaterial(material: SystemUiMaterial \| undefined): T
 
-设置组件的系统材质。不同系统材质对应不同的属性影响效果，该接口可以影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](#shadow)、材质层滤镜[materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23)效果，影响的属性与设备材质等级相关，参考[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)。[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)只有在支持沉浸式材质的设备上设置才有效果，在不支持沉浸式材质的设备上可设置但无效果，可通过[isImmersiveMaterialSupported](../arkts-apis-uimaterial.md#uimaterialisimmersivematerialsupported)判断设备是否支持沉浸式材质。使用示例请参考[示例1（设置沉浸式系统材质）](../arkts-apis-uimaterial.md#示例1设置沉浸式系统材质)。
+设置组件的系统材质。不同系统材质对应不同的属性影响效果，该接口可以影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](#shadow)、材质层滤镜[materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23)效果，影响的属性与设备材质等级相关，参考[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)。使用示例请参考[示例1（设置沉浸式系统材质）](../arkts-apis-uimaterial.md#示例1设置沉浸式系统材质)。
 
 > **说明：**
 >
 > - 通过该属性设置组件的系统材质时，仅在Navigation或NavDestination的标题栏，或横向Tabs中barPosition为BarPosition.End的底部TabBar中生效。
 >
 > - [ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)只有在支持沉浸式材质的设备上设置才有效果，在不支持沉浸式材质的设备上可设置但无效果，可通过[isImmersiveMaterialSupported](../arkts-apis-uimaterial.md#uimaterialisimmersivematerialsupported)判断设备是否支持沉浸式材质。在不支持沉浸式材质的设备上，设置ImmersiveMaterial后，组件的样式仍由已设置的通用属性决定，ImmersiveMaterial不会覆盖任何通用属性。
-> - 在同时设置了材质影响的通用属性发生冲突时，除阴影外，总体原则为后设置的生效，对于阴影属性取决于[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)的applyShadow参数。
+> - 当[systemMaterial](#systemmaterial)与其影响的通用属性（背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](#shadow)、材质层滤镜[materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23)）同时设置时，二者会发生冲突。除阴影外，总体原则为后设置的生效；对于阴影属性，哪个生效取决于[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)的applyShadow参数。
 >   - 先设置[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)属性后设置[systemMaterial](#systemmaterial)属性：backgroundColor属性被覆盖。在支持沉浸式材质的高算力和中算力设备上，背景色属性被清空为透明色；在支持沉浸式材质的低算力设备上，材质自带的背景色效果覆盖了先设置的backgroundColor属性。开发者可通过[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)的接口判断当前设备的算力档位。
 >   - 先设置[systemMaterial](#systemmaterial)属性后设置[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)属性：systemMaterial属性影响的背景色效果被覆盖，背景色属性生效为后设置的backgroundColor属性的颜色。
 > - 对于所有设备算力档位均需要材质颜色的场景，可以通过[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)的materialColor参数承载，不再设置[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)属性。

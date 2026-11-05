@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=c363c4134c11bcec868cc8b279dc8af0b7551cf3 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
@@ -183,7 +184,7 @@ async function deferredPhotoCase(context: Context, surfaceId: string): Promise<v
     console.error("createOutput photoProfilesArray == null || undefined");
   }
 
-  // Create a preview output stream. For details about the surfaceId parameter, see the XComponent. The preview stream uses the surface provided by the XComponent.
+  // Create a preview output stream. The surfaceId parameter is provided by the XComponent component described above. The preview stream uses the surface provided by the XComponent component.
   let previewOutput: camera.PreviewOutput | undefined = undefined;
   try {
     previewOutput = cameraManager.createPreviewOutput(previewProfilesArray[0], surfaceId);
@@ -287,13 +288,13 @@ async function deferredPhotoCase(context: Context, surfaceId: string): Promise<v
     });
   });
     
-  // Check whether deferred photo delivery is supported.
+  // Check whether deferred photo capture is supported.
   let isSupportDeferred: boolean = photoOutput.isDeferredImageDeliverySupported(camera.DeferredDeliveryImageType.PHOTO);
   console.info('isDeferredImageDeliverySupported res:' + isSupportDeferred);
   if (isSupportDeferred) {
-    // Enable deferred photo delivery.
-	photoOutput.deferImageDelivery(camera.DeferredDeliveryImageType.PHOTO);
-    // Check whether deferred photo delivery is enabled.
+    // Enable deferred photo capture.
+    photoOutput.deferImageDelivery(camera.DeferredDeliveryImageType.PHOTO);
+    // Check whether deferred photo capture is enabled.
     let isSupportEnabled: boolean = photoOutput.isDeferredImageDeliveryEnabled(camera.DeferredDeliveryImageType.PHOTO);
     console.info('isDeferredImageDeliveryEnabled res:' + isSupportEnabled);
   }
@@ -336,7 +337,7 @@ async function deferredPhotoCase(context: Context, surfaceId: string): Promise<v
     }
   }
 
-  // Check whether the continuous auto focus is supported.
+  // Check whether continuous autofocus mode is supported.
   let focusModeStatus: boolean = false;
   try {
     let status: boolean = photoSession.isFocusModeSupported(camera.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
@@ -347,7 +348,7 @@ async function deferredPhotoCase(context: Context, surfaceId: string): Promise<v
   }
 
   if (focusModeStatus) {
-    // Set the focus mode to continuous auto focus.
+    // Set continuous autofocus mode.
     try {
       photoSession.setFocusMode(camera.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
     } catch (error) {

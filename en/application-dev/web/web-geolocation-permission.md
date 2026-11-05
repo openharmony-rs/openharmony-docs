@@ -5,7 +5,7 @@
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=c28ea2927014e45f20905be7ea794f64672608e9 translatedAt=2026-09-21T02:13:39.115Z pushedAt=2026-09-21T12:44:41.560Z -->
+<!-- md-trans-meta sourceCommit=ec7c4d6039480424fb9a02d246bce504dfd4da6b translatedAt=2026-11-03T03:07:28.437Z pushedAt=2026-11-03T03:22:22.253Z nl=1 -->
 
 Since API version 9, the **Web** component supports the [GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md) class and [onGeolocationShow](../reference/apis-arkweb/arkts-basic-components-web-events.md#ongeolocationshow) method for managing web page location permissions. For details, see <!--RP1-->[Privacy Protection](../../device-dev/security/security-privacy-protection.md)<!--RP1End-->.
 
@@ -34,116 +34,121 @@ In the following example, when a user clicks the **Get Location** button on the 
 
 - Frontend page code:
 
-  ```html
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Location Information</title>
-  </head>
-  <body>
-      <p id="locationInfo">Location information</p>
-      <button onclick="getLocation()">Obtain Location</button>
+<!-- @[getLocation_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/resources/rawfile/getLocation.html) -->
 
-      <script>
-          var locationInfo=document.getElementById("locationInfo");
-          function getLocation(){
-              if (navigator.geolocation) {
-                  // Access the device's geolocation.
-                  navigator.geolocation.getCurrentPosition(showPosition);
-              }
-          }
-          function showPosition(position){
-              locationInfo.innerHTML="Latitude: " + position.coords.latitude + "<br />Longitude: " + position.coords.longitude;
-          }
-      </script>
-  </body>
-  </html>
-  ```
+``` HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Information</title>
+</head>
+<body>
+    <p id="locationInfo">Location Information</p>
+    <button onclick="getLocation()">Get Location</button>
 
-
+    <script>
+        let locationInfo = document.getElementById('locationInfo');
+        function getLocation() {
+            if (navigator.geolocation) {
+                // Access the device's geographic location.
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+        }
+        function showPosition(position) {
+            locationInfo.innerHTML = 'Latitude: ' + position.coords.latitude + '<br />Longitude: ' + position.coords.longitude;
+        }
+    </script>
+</body>
+</html>
+```
+ 
 - Application code:
 
-  ```ts
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { abilityAccessCtrl, common } from '@kit.AbilityKit';
+<!-- @[a_pop_up_window_is_used_to_notify_the_app_side_location_permission_request_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ManageLocPerms.ets) -->
 
-  let atManager = abilityAccessCtrl.createAtManager();
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { abilityAccessCtrl, common } from '@kit.AbilityKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    uiContext: UIContext = this.getUIContext();
+let atManager = abilityAccessCtrl.createAtManager();
 
-    // Component lifecycle function, which is triggered after a component instance is created.
-    aboutToAppear(): void {
-      let context : Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
-      if (!context) {
-        console.error("context is undefined");
-        return;
-      }
-      // Request the location permission from the user, which takes effect for the entire application.
-      atManager.requestPermissionsFromUser(context, ["ohos.permission.APPROXIMATELY_LOCATION"]).then((data) => {
-        console.info('data:' + JSON.stringify(data));
-        console.info('data permissions:' + data.permissions);
-        console.info('data authResults:' + data.authResults);
-      }).catch((error: BusinessError) => {
-        console.error(`Failed to request permissions from user. Code is ${error.code}, message is ${error.message}`);
-      })  
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  uiContext: UIContext = this.getUIContext();
+
+  // Lifecycle function of the component, triggered after the component instance is created.
+  aboutToAppear(): void {
+    let context : Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+    if (!context) {
+      console.error('context is undefined');
+      return;
     }
+    // Request location permission from the user, which takes effect for the entire application.
+    atManager.requestPermissionsFromUser(context, ['ohos.permission.APPROXIMATELY_LOCATION']).then((data) => {
+      console.info('data:' + JSON.stringify(data));
+      console.info('data permissions:' + data.permissions);
+      console.info('data authResults:' + data.authResults);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to request permissions from user. Code is ${error.code}, message is ${error.message}`);
+    })  
+  }
 
-    build() {
-      Column() {
-        // The geolocationAccess attribute of the Web component is true by default. You can explicitly set it to false to disable the Web component from obtaining the geolocation information.
-        Web({ src: $rawfile('getLocation.html'), controller: this.controller })
-          .geolocationAccess(true)
-          .onGeolocationShow((event) => {
-            // The location permission request is notified only to the current Web component. Other Web components in the application are not affected.
-            this.uiContext.showAlertDialog({
-              title: 'Location Permission',
-              message: 'Grant access to the device location?',
-              primaryButton: {
-                value: 'cancel',
-                action: () => {
-                  if (event) {
-                    // Deny the location permission request of this site.
-                    // Note that the third parameter of invoke indicates whether to remember the current selection. If true is passed, the dialog box will not be displayed next time.
-                    event.geolocation.invoke(event.origin, false, false);
-                  }
-                }
-              },
-              secondaryButton: {
-                value: 'ok',
-                action: () => {
-                  if (event) {
-                    // Allow the location permission request of this site.
-                    // Note that the third parameter of invoke indicates whether to remember the current selection. If true is passed, the dialog box will not be displayed next time.
-                    event.geolocation.invoke(event.origin, true, false);
-                  }
-                }
-              },
-              cancel: () => {
+  build() {
+    Column() {
+      // The geolocationAccess attribute of the Web component defaults to true. You can explicitly set it to false to prohibit the Web component from obtaining geolocation information.
+      Web({ src: $rawfile('getLocation.html'), controller: this.controller })
+        .geolocationAccess(true)
+        .onGeolocationShow((event) => {
+          // The location permission request notification takes effect only for the current Web component and does not affect other Web components in the application.
+          this.uiContext.showAlertDialog({
+            title: 'Location permission request',
+            message: 'Allow access to location information?',
+            primaryButton: {
+              value: 'cancel',
+              action: () => {
                 if (event) {
                   // Deny the location permission request of this site.
                   // Note that the third parameter of invoke indicates whether to remember the current selection. If true is passed, the dialog box will not be displayed next time.
                   event.geolocation.invoke(event.origin, false, false);
                 }
               }
-            })
+            },
+            secondaryButton: {
+              value: 'ok',
+              action: () => {
+                if (event) {
+                  // Allow the location permission request for this site.
+                  // Note that the third parameter of invoke indicates whether to remember the current choice. If true is passed, the dialog will not be displayed again next time.
+                  event.geolocation.invoke(event.origin, true, false);
+                }
+              }
+            },
+            cancel: () => {
+              if (event) {
+                // Deny the location permission request for this site.
+                // Note that the third parameter of invoke indicates whether to remember the current choice. If true is passed, the dialog will not be displayed again next time.
+                event.geolocation.invoke(event.origin, false, false);
+              }
+            }
           })
-      }
+        })
     }
   }
-  ```
+}
+```
+
 
 ## Managing Location Permissions
 You can manage the location permissions of web pages through the [GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md) class of the Web component. This class provides methods for adding ([allowGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#allowgeolocation)), viewing ([getAccessibleGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#getaccessiblegeolocation)), and deleting ([deleteGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#deletegeolocation)) the location permissions of web pages. For example, you can check whether a web page has applied for the location permission and delete the location permission that a web page has applied for.
 
+<!-- @[create_a_web_component_use_GeolocationPermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/GeolocationPermissions.ets) -->
 
-```ts
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -151,7 +156,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-  origin: string = "www.example.com";
+  origin: string = 'www.example.com';
 
   build() {
     Column() {

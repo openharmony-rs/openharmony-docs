@@ -6,15 +6,18 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=45bd746ae860f1fef969073ffaa0af763a0251fa translatedAt=2026-06-29T06:19:04.268Z pushedAt=2026-06-29T14:05:12.771Z -->
+<!-- md-trans-meta sourceCommit=3ecffa13c66bb2511918ef6f532330628c3630c6 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## When to Use
 
-Since API version 12, the multimodal module provides applications with the ability to listen for key and input events (including mouse, touch, and axis events). Currently, event listening is available only for screen recording applications. For example, when a user starts screen recording, your application can listen for key, mouse, touch, and axis events of the device.
+Since API version 12, the multimodal module allows applications to listen for key and input events, including mouse, touch, and axis events. Typical scenarios include:
+
+- Screen recording applications: Listen for key, mouse, touch, and axis events while screen recording is active.
+- Input recording and automated testing applications (supported only on PCs and 2-in-1 devices since API version 26.1.0): After the user grants permission, listen for these events at any time, even when screen recording is not active.
 
 ## Available APIs
 
-The following table lists the APIs for creating and deleting event listening. For details, see [input](../../reference/apis-input-kit/capi-input.md).
+The following table lists the APIs for adding and removing event listeners. For details, see [oh_input_manager.h](../../reference/apis-input-kit/capi-oh-input-manager-h.md).
 
 | API | Description|
 | ------------------------------------------------------------ | -------------------------- |
@@ -41,15 +44,36 @@ target_link_libraries(entry PUBLIC libohinput.so)
 
 ### Applying for Required Permissions
 
-Declare the required permission in the **module.json5** file. For details, see [Declaring Permissions in the Configuration File](../../security/AccessToken/declare-permissions.md).
+Declare the required permission in the **module.json5** file. For details, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md). The two permissions use different authorization methods:
 
-```json
-"requestPermissions": [
-    {
-        "name": "ohos.permission.INPUT_MONITORING"
-    }
-]
-```
+- **ohos.permission.INPUT_MONITORING** (system authorization): For screen recording applications. The application can listen for key, mouse, touch, and axis events while screen recording is active. Request this permission through the ACL. For details, see [Requesting Restricted Permissions](../../security/AccessToken/declare-permissions-in-acl.md).
+
+    ```json
+    "requestPermissions": [
+        {
+            "name": "ohos.permission.INPUT_MONITORING"
+        }
+    ]
+    ```
+
+- **ohos.permission.INPUT_RECORDING** (manual authorization, supported only on PCs and 2-in-1 devices since API version 26.1.0): For input recording and automated testing applications. After the user grants permission, the application can listen for key, mouse, touch, and axis events at any time, regardless of the screen recording state. For details, see [Manual Authorization](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings-manual-authorization).
+
+    The `reason` and `usedScene` fields are mandatory. This permission cannot be requested through a dialog. After the application passes release review, guide the user to grant it manually in **Settings > Privacy > Permission Management**.
+
+    ```json
+    "requestPermissions": [
+        {
+            "name": "ohos.permission.INPUT_RECORDING",
+            "reason": "$string:input_recording_permission_reason",
+            "usedScene": {
+                "abilities": [
+                    "EntryAbility"
+                ],
+                "when": "inuse"
+            }
+        }
+    ]
+    ```
 
 ### Creating an Event Listener
 

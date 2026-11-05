@@ -1,12 +1,11 @@
 # Prebuilt UTDs
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=a92c62906a53dbb211f0a7456ddb51494343703a translatedAt=2026-08-20T06:24:32.679Z pushedAt=2026-08-20T12:47:41.639Z -->
+<!-- md-trans-meta sourceCommit=00e8a691b2086a9b716dad517d6dbbefa0524493 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=1 -->
 
 A Uniform Type Descriptor (UTD) is used to address data type ambiguity in a system. It provides a standardized way to describe the same data type in different representations, such as MIME types and file name extensions. For example, when describing a JPG/JPEG image, you can use **image/jpeg**, **.jpg**, **.jpeg**, or **image/picture**. For details, see [Generic UTDs](#generic-utds).
 
@@ -386,7 +385,7 @@ Application-specific UTDs are defined and maintained by a specific application o
 | com.sun.java-class                                          | general.executable                                                       | .class                  |                                   -                                       | Java class file.                                |
 | com.sun.java-archive                                        | general.archive,general.executable                                       | .jar                    | application/java-archive                                                  | Java archive format.                               |
 | com.sun.raster                                              | general.image                                                            | .ras                    | image/x-cmu-raster                                                        | Sun Raster image format.                           |
-| org.gnu.gnu-tar-archive                                     | general.archive                                                          | .gtar                   | application/x-gtar                                                        | GUN archive format.                                |
+| org.gnu.gnu-tar-archive                                     | general.archive                                                          | .gtar                   | application/x-gtar                                                        | GNU archive format.                                |
 | org.gnu.gnu-zip-archive                                     | general.archive                                                          | .gz, .gzip              | application/x-gzip, application/gzip                                      | gzip archive format.                               |
 | org.gnu.gnu-zip-tar-archive                                 | general.archive                                                          | .tgz                    | application/x-gtar                                                        | gzip TAR archive format.                           |
 | org.gnu.texinfo                                             | general.source-code                                                      | .texinfo,.texi          | application/x-texinfo                                                     | GNU Texinfo source file format.                         |

@@ -6,13 +6,15 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-URL是统一资源定位符，本模块提供了常用的工具函数，实现了解析URL字符串、构造URL对象以及对URL查询参数的解析和操作等功能。<br>
+URL是统一资源定位符，本模块提供了常用的工具函数，实现了解析URL字符串、构造URL对象以及对URL查询参数的解析和操作等功能。此外，URLUtil工具类提供将URLParams对象序列化为字符串（空格百分比编码为%20）的辅助能力。<br>
 
 模块主要包含以下核心类：<br>
 
 - [URL](#url)：用于解析和构造完整URL。 <br>
 
 - [URLParams](#urlparams9)：用于操作URL查询参数。 <br>
+
+- [URLUtil](#urlutil)：用于将URLParams对象序列化为字符串，空格编码为%20。 <br>
 
 - [URLSearchParams](#urlsearchparamsdeprecated)：从API version 9开始废弃，建议使用[URLParams](#urlparams9)替代。 <br>
 
@@ -463,6 +465,61 @@ let params = new url.URLParams(urlObject.search.slice(1));
 params.append('fod', '3');
 // 将参数序列化为字符串
 console.info(params.toString()); // Output 'fod=1&bard=2&fod=3'
+```
+
+## URLUtil
+
+URLUtil是URL相关的工具类，提供URL查询参数序列化的辅助能力。[URLParams.toString](#tostring9)遵循application/x-www-form-urlencoded规范将空格编码为'+'，在需要将空格编码为%20的场景（如URL参数序列化后再解析、与其他系统对接）下，可以使用URLUtil的序列化能力。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+### toString
+
+static toString(urlParams: URLParams): string
+
+将URLParams对象序列化为查询字符串，其中空格百分比编码为%20（而非'+'）。该接口不会修改入参urlParams及其所属URL对象的状态。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| urlParams | [URLParams](#urlparams9) | 是 | 待序列化的URLParams对象。可通过构造函数创建，也可通过[URL](#url)对象的params属性获取。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| string | 返回序列化后的查询字符串，其中空格百分比编码为%20。当URLParams对象不包含任何键值对时，返回空字符串。 |
+
+**示例：**
+
+```ts
+// 序列化URLParams对象，空格编码为%20
+let params = new url.URLParams('detailAddress=a%20b');
+let result = url.URLUtil.toString(params); // Output 'detailAddress=a%20b'
+// 对比URLParams.toString：遵循application/x-www-form-urlencoded规范，空格编码为'+'
+let result1 = params.toString(); // Output 'detailAddress=a+b'
+
+// 序列化时对特殊字符进行百分比编码
+let params1 = new url.URLParams();
+params1.append('k&y', 'v=l');
+let result2 = url.URLUtil.toString(params1); // Output 'k%26y=v%3Dl'
+
+// 通过URL对象的params属性获取URLParams对象并序列化
+let urlObject = url.URL.parseURL('https://www.example.com/path?a=b c');
+let result3 = url.URLUtil.toString(urlObject.params); // Output 'a=b%20c'
 ```
 
 ## URL

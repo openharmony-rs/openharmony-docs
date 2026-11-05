@@ -12,7 +12,7 @@
   - [@ohos.accessibility.GesturePath (Gesture Path)](js-apis-accessibility-GesturePath.md)
   - [@ohos.accessibility.GesturePoint (Gesture Point)](js-apis-accessibility-GesturePoint.md)
   - [@ohos.application.AccessibilityExtensionAbility (AccessibilityExtensionAbility)](js-apis-application-accessibilityExtensionAbility.md)
-  - [AccessibilityExtensionContext](js-apis-inner-application-accessibilityExtensionContext.md)
+  - [AccessibilityExtensionContext (Accessibility Extension Context)](js-apis-inner-application-accessibilityExtensionContext.md)
   <!--Del-->
   - [@ohos.accessibility (Accessibility) (System API)](js-apis-accessibility-sys.md)
   - [@ohos.accessibility.config (System Accessibility Configuration) (System API)](js-apis-accessibility-config-sys.md)

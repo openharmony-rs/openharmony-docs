@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=716304dd0f214493c61a62f4ca83a3f10fd2771c translatedAt=2026-11-03T05:19:10.464Z pushedAt=2026-11-03T12:08:25.546Z nl=1 -->
 
 The **securityManager** module provides device security management capabilities, including obtaining the security patch status and file system encryption status.
 

@@ -45,7 +45,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message           |
 |-----------|--------------------|
-| 202        | Not System App. Interface caller is not a system app. |
+| 202        | Permission verification failed. A non-system application calls a system API. |
 | 401        | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000007   | Service busy. There are concurrent tasks. Try again later. |
 | 16000015   | Service timeout.|
@@ -152,7 +152,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message           |
 |-----------|--------------------|
-| 202        | Not System App. Interface caller is not a system app. |
+| 202        | Permission verification failed. A non-system application calls a system API. |
 | 401        | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000007   | Service busy. There are concurrent tasks. Try again later. |
 | 16000015   | Service timeout.|
@@ -247,7 +247,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message           |
 |-----------|--------------------|
-| 202       | Not System App. Interface caller is not a system app. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
@@ -346,8 +346,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message           |
 |-----------|--------------------|
-| 201       | The application does not have permission to call the interface. |
-| 202       | The application is not system-app, can not use system-api. |
+| 201       | Permission verification failed. The application does not have the permission required to call the API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 16000020   | The context is not ability context. |
 | 16000151   | Invalid wantAgent object.|
 | 16000153   | The WantAgent has been canceled.|
@@ -463,7 +463,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message           |
 |-----------|--------------------|
-| 202       | Not System App. Interface caller is not a system app. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
 
@@ -537,7 +537,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message           |
 |-----------|--------------------|
-| 202       | Not System App. Interface caller is not a system app. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
 

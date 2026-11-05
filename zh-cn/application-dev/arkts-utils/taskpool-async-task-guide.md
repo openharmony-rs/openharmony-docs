@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "提供TaskPool指定任务并发度场景的开发指导：使用AsyncRunner异步队列控制任务并发执行，以相机预览流采集数据处理为例演示实现，适用于网络请求、视频流处理和数据库操作等高频任务场景。"
+keywords: [任务并发度, 异步队列, AsyncRunner, TaskPool, 相机预览流, 视频流处理, 资源过载]
+doctype: guide
+status: active
+---
+
 # TaskPool指定任务并发度场景
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

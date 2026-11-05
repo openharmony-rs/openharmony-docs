@@ -6,7 +6,7 @@
 <!--Designer: @qq_42718467-->
 <!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=1261675227cc6cdcc1de52f55ec6ca59a8d9110a translatedAt=2026-07-31T01:15:48.277Z pushedAt=2026-07-31T12:04:26.621Z -->
+<!-- md-trans-meta sourceCommit=2dc2419eec9cffd5743a313c50b0eee331eff33c translatedAt=2026-11-03T03:38:22.967Z pushedAt=2026-11-03T07:41:55.885Z nl=1 -->
 
 > **NOTE**
 >

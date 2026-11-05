@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:03:47.505Z pushedAt=2026-07-22T07:57:35.667Z -->
+<!-- md-trans-meta sourceCommit=59c43aed2026bf661a322032daecc86d61224e0f translatedAt=2026-10-28T03:58:04.189Z pushedAt=2026-10-28T07:38:04.082Z nl=1 -->
 
 To improve the performance and memory efficiency of component recycling and reuse, the global reuse pool feature allows you to configure a reuse pool for specified @Reusable/@ReusableV2 reusable components on any custom component. This global reuse pool has a higher priority than the default reuse pool bound to the parent component.
 
@@ -200,6 +200,8 @@ Lifecycle of the `shared` reuse pool:
 4. When the second (last) instance is destroyed, the reuse pool is also destroyed. All recycled components within it are deleted.
 5. If a new instance of the owning component is created later, a new reuse pool is created.
 
+For the sample code of the `shared` reuse pool, see the usage scenario: [Sharing a Reuse Pool Across Multiple Parent Components](#sharing-a-reuse-pool-across-multiple-parent-components).
+
 **NOTE**
 >
 > The `shared` ownership is different from a `static` class attribute. The global reuse pool has cross-instance reference counting, rather than being a permanent singleton.
@@ -207,6 +209,8 @@ Lifecycle of the `shared` reuse pool:
 **`"perInstance"`**: Each instance of the owning @Component/@ComponentV2 has its own reuse pool instance. The lifecycle of the reuse pool is the same as that of its owning component instance. When the owning component is destroyed, its reuse pool and all recycled components within it are also destroyed.
 
 ![](./figures/arkts-global-reuse-reusable-perinstance.png)
+
+For the sample code of the `perInstance` reuse pool, see the usage scenario: [Independent Reuse Pool Using @Provider/@Consumer](#independent-reuse-pool-using-providerconsumer).
 
 It is recommended that developers configure the `shared` ownership. This achieves a better reuse rate and lower memory usage.
 

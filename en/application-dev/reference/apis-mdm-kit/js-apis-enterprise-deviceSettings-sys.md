@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=53d50360ce53faca27f6775c91d2277907b242a2 translatedAt=2026-11-03T05:15:13.497Z pushedAt=2026-11-03T12:08:25.537Z nl=1 -->
 
 This module provides enterprise device settings capabilities, including obtaining the device screen-off time and power policy.
 
@@ -224,7 +225,7 @@ Installs a user certificate. This API uses a callback to return the result.
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.           |
-| certificate    | [CertBlob](#certblob)     | Yes   | Certificate information. The certificate file must be stored in the path that the app has the permission to access, such as the app sandbox path. For details about the mapping between the app sandbox path and the actual physical path, see [Mappings Between App Sandbox Paths and Physical Paths](../../file-management/app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths).|
+| certificate    | [CertBlob](#certblobdeprecated)     | Yes    | Certificate information. The certificate file should be placed in a path that the application has permission to access, such as the application sandbox path (for the correspondence between application sandbox paths and real physical paths, see [Correspondence Between Application Sandbox Paths and Real Physical Paths](../../file-management/app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths)). |
 | callback | AsyncCallback&lt;string&gt;            | Yes   | Callback invoked to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.     |
 
 **Error codes**
@@ -296,7 +297,7 @@ Installs a user certificate. This API uses a promise to return the result.
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
-| certificate    | [CertBlob](#certblob)     | Yes   | Certificate information. The certificate file must be stored in the path that the app has the permission to access, such as the app sandbox path. For details about the mapping between the app sandbox path and the actual physical path, see [Mappings Between App Sandbox Paths and Physical Paths](../../file-management/app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths).|
+| certificate    | [CertBlob](#certblobdeprecated)     | Yes    | Certificate information. The certificate file should be placed in a path that the application has permission to access, such as the application sandbox path (for the correspondence between application sandbox paths and real physical paths, see [Correspondence Between Application Sandbox Paths and Real Physical Paths](../../file-management/app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths)). |
 
 **Return value**
 
@@ -599,9 +600,15 @@ try {
 }
 ```
 
-## CertBlob
+## CertBlob<sup>(deprecated)</sup>
 
 Represents the certificate information.
+
+**Since:** 10
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [CertBlob](./js-apis-enterprise-securityManager.md#certblob)
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -1,10 +1,12 @@
 # Drawing and Displaying Simple Text (ArkTS)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @gmiao522-->
-<!--Designer: @liumingxiang-->
-<!--Tester: @yhl0101-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @KejiePeng-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=5284e30f06236fe06b1ce39618ec19c1d67b8d4a translatedAt=2026-10-19T01:31:51.486Z pushedAt=2026-10-19T10:19:42.804Z -->
+
 ## Overview
 
 In a simple user interface, only a few lines of static text need to be displayed, such as the text on a label, button, menu item, or status bar. In this case, you only need to select a proper font, size, and color to complete the rendering.
@@ -29,12 +31,12 @@ In this scenario, the following text style attributes are involved. For details,
    ```
    <!-- -->
 
-2. Initialize the text style. Set the font color to red and font size to 50.
+2. Initialize the text style. Here, set the font color to red and the font size to 100 px.
 
    <!-- @[arkts_drawing_simple_text_create_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SimpleTextDrawing/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   // Obtain the text style.
+   // Initialize the text style.
    let myTextStyle: text.TextStyle = {
      // Text color.
      color: {
@@ -66,11 +68,11 @@ In this scenario, the following text style attributes are involved. For details,
    
    ``` TypeScript
    let fontCollection = text.FontCollection.getGlobalInstance();
-   let ParagraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+   let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
    // Push the text style.
-   ParagraphGraphBuilder.pushStyle(myTextStyle);
+   paragraphBuilder.pushStyle(myTextStyle);
    // Add text.
-   ParagraphGraphBuilder.addText("Hello World");
+   paragraphBuilder.addText("Hello World");
    ```
    <!-- -->
 
@@ -80,7 +82,7 @@ In this scenario, the following text style attributes are involved. For details,
    
    ``` TypeScript
    // Generate a paragraph.
-   let paragraph = ParagraphGraphBuilder.build();
+   let paragraph = paragraphBuilder.build();
    // Layout.
    paragraph.layoutSync(1250);
    // Draw the text.

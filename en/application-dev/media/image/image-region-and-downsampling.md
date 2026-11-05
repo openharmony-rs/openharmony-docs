@@ -1,17 +1,15 @@
 # Image Region Decoding and Downsampling (ArkTS)
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=02a76210ad9a480aced53e2ee2f43b01791ed8f2 translatedAt=2026-07-22T07:47:49.026Z pushedAt=2026-07-22T11:12:15.031Z -->
+<!-- md-trans-meta sourceCommit=a8e5f209bdfcab62e56e463970b1713c80f1b681 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 When processing large images, directly decoding the entire image may cause excessive memory usage and long decoding time for an app. Region decoding and downsampling decoding can effectively optimize these scenarios:
 
 - **Region decoding**: Decodes only a specified rectangular region of the image, suitable for scenarios where only a portion of the image needs to be viewed.
-
 - **Downsampling**: Decodes the image to the desired dimensions, with the decoder automatically selecting the optimal sampling rate, suitable for large image preview scenarios.
 
 **Application scenarios**:
@@ -28,12 +26,12 @@ Region decoding specifies the rectangular region to decode by setting the decodi
 
 ### How to Develop
 
-1. Create an `ImageSource` instance by referring to [Using ImageSource to Decode Images](image-decoding.md).
+1. Refer to [Using ImageSource to Decode Images](image-decoding.md) to create an `ImageSource` instance.
 
 2. Set the `desiredRegion` parameter to perform region decoding.
 
    <!-- @[decode_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) --> 
-
+   
    ``` TypeScript
    async DecodeRegion(imageSource: image.ImageSource): Promise<image.PixelMap | undefined> {
      let decodingOptions: image.DecodingOptions = {
@@ -58,7 +56,6 @@ Region decoding specifies the rectangular region to decode by setting the decodi
 ### Constraints
 
 - The region coordinates and size must be within the original image boundaries.
-
 - The region size must be a positive integer.
 
 ## Downsampling
@@ -66,21 +63,19 @@ Region decoding specifies the rectangular region to decode by setting the decodi
 Downsampling specifies the desired output image size by setting the decoding parameter `desiredSize`. The decoder outputs a `PixelMap` based on the desired size, reducing the final memory usage.
 
 **Decoding differences**:
-
 - **JPEG, PNG, and HEIF formats**: A downsampling strategy is used during decoding, with the optimal sampling rate applied for higher decoding efficiency.
-
 - **Other formats**: The original image is fully decoded first, and then scaled to the desired size.
 
 For parameter details, see [DecodingOptions](../../reference/apis-image-kit/arkts-apis-image-i.md#decodingoptions7).
 
 ### How to Develop
 
-1. Create an `ImageSource` instance by following the instructions in [Using ImageSource to Decode Images](image-decoding.md).
+1. Refer to [Using ImageSource to Decode Images](image-decoding.md) to create an `ImageSource` instance.
 
 2. Set the `desiredSize` parameter to perform downsampling.
 
    <!-- @[decode_downsample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) --> 
-
+   
    ``` TypeScript
    async DownsampleDecode(imageSource: image.ImageSource): Promise<image.PixelMap | undefined> {
      let decodingOptions: image.DecodingOptions = {
@@ -120,7 +115,7 @@ For parameter details, see [CropAndScaleStrategy](../../reference/apis-image-kit
 2. Set the `desiredRegion`, `desiredSize`, and `cropAndScaleStrategy` parameters.
 
    <!-- @[decode_combined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) --> 
-
+   
    ``` TypeScript
    async CombinedDecode(imageSource: image.ImageSource): Promise<image.PixelMap | undefined> {
      let decodingOptions: image.DecodingOptions = {
@@ -147,5 +142,4 @@ For parameter details, see [CropAndScaleStrategy](../../reference/apis-image-kit
 ## Notes
 
 - When setting both `desiredRegion` and `desiredSize`, you are advised to set `cropAndScaleStrategy` to `CROP_FIRST` to ensure consistent decoding results.
-
 - For images whose original pixel memory exceeds 2 GB, you are advised to use downsampling to avoid memory overflow.

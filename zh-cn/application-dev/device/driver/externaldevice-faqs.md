@@ -47,7 +47,7 @@
 
 ### 解决措施
 
-根据应用调试中[安装HAP时提示“code:9568347 error: install parse native so failed”错误，或者运行时候提示“TypeError：Cannot read property xxx of undefined”错误](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-app-debugging-14-V5)提供的解决方法，在`build-profile.json5`中的`buildOption/externalNativeOptions`内手动配置`abiFilters`的值。
+设备支持的Abi类型与C++工程中配置的Abi类型不匹配。请参考[bm工具错误码9568347](https://developer.huawei.com/consumer/cn/doc/doccenter-capabilities/bm-tool#section9568347-解析本地so文件失败)提供的解决方法，通过`hdc shell`执行`param get const.product.cpu.abilist`查询设备支持的Abi列表，在模块级`build-profile.json5`的`abiFilters`参数中配置设备支持的Abi类型。
 
 ## 已申请ohos.permission.ACCESS_DDK_DRIVERS权限，安装HAP时报错9568289
 

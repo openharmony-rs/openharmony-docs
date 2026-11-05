@@ -1,12 +1,11 @@
 # @ohos.distributedsched.proxyChannelManager (Proxy Channel Management)
-
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @jzy_123-->
 <!--Designer: @zhaopeng_gitee-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=6bfcf5261eb2f83e0869ab9ec15c9d0a1edd6edd translatedAt=2026-08-04T03:18:45.226Z pushedAt=2026-08-10T09:31:58.457Z -->
+<!-- md-trans-meta sourceCommit=ee620829e2ec652c549d2074af7c20193a0d1aac translatedAt=2026-11-03T11:10:20.939Z pushedAt=2026-11-03T12:24:07.653Z nl=1 -->
 
 DSoftBus provides stable and reliable underlying channels for cross-device communication. This module is developed based on DSoftBus. It supports data exchange between phones and wearables, providing users with a seamless device interconnection experience. It also simplifies cross-device communication for developers, eliminating the need to handle underlying communication protocols and process wakeup logic. Use scenarios: During collaboration between the phone app and wearable app, if the phone app is not running in the foreground, its downlink messages are forwarded to the notification server and then sent to the wearable through the proxy module. When the wearable sends data to the phone, the proxy module can dynamically wake up the corresponding app process on the phone to receive and process the data. The core functions of this module include proxy channel management, data route management, application state awareness and wakeup, and link state monitoring.
 
@@ -22,7 +21,7 @@ DSoftBus provides stable and reliable underlying channels for cross-device commu
 >
 > The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> **Model restriction**: This API can be used only in the stage model.
+> **Model restriction**: The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -80,7 +79,7 @@ For details about the following error codes, see [Proxy Channel Management Error
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 801      | Capability not supported because bluetooth proxy function has been trimmed.<br>Applicable versions: 26.0.0+|
 | 32390001      | BR is disabled.|
 | 32390002 | Device not paired.  |
@@ -155,7 +154,7 @@ For details about the following error codes, see [Proxy Channel Management Error
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 801      | Capability not supported because bluetooth proxy function has been trimmed.<br>Applicable versions: 26.0.0+|
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
@@ -216,7 +215,7 @@ Sends data to the peer end. This API uses a promise to return the result. This m
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| &nbsp;Promise&lt;void&gt; | Promise that returns no value. If the data is sent successfully, **resolve** returns a value. If the data fails to be sent, **reject** returns an error message. |
+| &nbsp;Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -224,7 +223,7 @@ For details about the following error codes, see [Proxy Channel Management Error
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 801      | Capability not supported because bluetooth proxy function has been trimmed.<br>Applicable versions: 26.0.0+|
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
@@ -294,7 +293,7 @@ For details about the following error codes, see [Proxy Channel Management Error
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|
@@ -357,7 +356,7 @@ For details about the following error codes, see [Proxy Channel Management Error
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|
@@ -418,7 +417,7 @@ For details about the following error codes, see [Proxy Channel Management Error
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|
@@ -481,7 +480,7 @@ For details about the following error codes, see [Proxy Channel Management Error
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|

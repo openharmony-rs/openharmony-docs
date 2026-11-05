@@ -1,10 +1,20 @@
+---
+kits: ["ArkGraphics 2D"]
+description: "Describes how to control the frame rate with DisplaySoloist on an independent native thread and drive graphics drawing through VSync callbacks."
+keywords: [NativeDisplaySoloist, DisplaySoloist, frame rate control, per-frame callback, variable frame rate, expected frame rate]
+doctype: guide
+status: active
+---
+
 # Native DisplaySoloist Development (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @wh_qwe-->
 <!--Designer: @wh_qwe-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=263f6d28c3a62b89d47845e6da97eea2212aedc9 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 To develop a native service that controls the frame rate in an independent thread, you use **DisplaySoloist** to implement the services, such as gaming and self-drawing UI framework interconnection.
 
@@ -16,7 +26,7 @@ A **DisplaySoloist** instance can exclusively occupy a thread or share a thread 
 | ------------------------------------------------------------ | ----------------------------------------------------- |
 | OH_DisplaySoloist* OH_DisplaySoloist_Create (bool useExclusiveThread) | Creates an **OH_DisplaySoloist** instance.                      |
 | OH_DisplaySoloist_Destroy (OH_DisplaySoloist * displaySoloist) | Destroys an **OH_DisplaySoloist** instance.                      |
-| OH_DisplaySoloist_Start (OH_DisplaySoloist * displaySoloist, OH_DisplaySoloist_FrameCallback callback, void * data ) | Sets a callback function for each frame. The callback function is triggered each time a VSync signal arrives.  |
+| OH_DisplaySoloist_Start (OH_DisplaySoloist * displaySoloist, OH_DisplaySoloist_FrameCallback callback, void * data ) | Starts the per-frame callback, sets the callback function `callback`, and invokes the callback each time a VSync signal arrives. |
 | OH_DisplaySoloist_Stop (OH_DisplaySoloist * displaySoloist)  | Stops requesting the next VSync signal and triggering the callback function.|
 | OH_DisplaySoloist_SetExpectedFrameRateRange (OH_DisplaySoloist* displaySoloist, DisplaySoloist_ExpectedRateRange* range) | Sets the expected frame rate range.                                   |
 
@@ -131,7 +141,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
 
 3. Obtain the native **XComponent** at the C++ layer. You are advised to save the **XComponent** in a singleton. This step must be performed during napi_init.
 
-    Create a **PluginManger** singleton to manage the native **XComponent**.
+    Create a PluginManager singleton class to manage the NativeXComponent.
    <!-- @[display_soloist_create_plugin_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/cpp/plugin/plugin_manager.h) -->
    
    ``` C
@@ -223,23 +233,25 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
    
        std::string id(idStr);
        auto render = SampleXComponent::GetInstance(id);
-       OHNativeWindow *nativeWindow = render->GetNativeWindow();
-       uint64_t width;
-       uint64_t height;
+       if (render != nullptr) {
+           OHNativeWindow *nativeWindow = render->GetNativeWindow();
+           uint64_t width;
+           uint64_t height;
    
-       int32_t xSize = OH_NativeXComponent_GetXComponentSize(component, nativeWindow, &width, &height);
-       if ((xSize == OH_NATIVEXCOMPONENT_RESULT_SUCCESS) && (render != nullptr)) {
-           render->Prepare();
-           render->Create();
-           if (id == "xcomponentId_30") {
-               int offset = 16;
-               render->ConstructPath(offset, offset, render->defaultOffsetY);
+           int32_t xSize = OH_NativeXComponent_GetXComponentSize(component, nativeWindow, &width, &height);
+           if (xSize == OH_NATIVEXCOMPONENT_RESULT_SUCCESS) {
+               render->Prepare();
+               render->Create();
+               if (id == "xcomponentId_30") {
+                   int offset = 16;
+                   render->ConstructPath(offset, offset, render->defaultOffsetY);
+               }
+               if (id == "xcomponentId_120") {
+                   int offset = 4;
+                   render->ConstructPath(offset, offset, render->defaultOffsetY);
+               }
+               // ...
            }
-           if (id == "xcomponentId_120") {
-               int offset = 4;
-               render->ConstructPath(offset, offset, render->defaultOffsetY);
-           }
-           // ...
        }
    }
    ```
@@ -299,15 +311,15 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
        }
        SAMPLE_LOGI("RegisterID = %{public}s", idStr);
        std::string id(idStr);
-       SampleXComponent *render = SampleXComponent().GetInstance(id);
+       SampleXComponent *render = SampleXComponent::GetInstance(id);
        if (render != nullptr) {
            DisplaySoloist_ExpectedRateRange range;
            bool useExclusiveThread = false;
-           if (id == "xcomponentId30") {
+           if (id == "xcomponentId_30") {
                range = {30, 120, 30};
            }
    
-           if (id == "xcomponentId120") {
+           if (id == "xcomponentId_120") {
                range = {30, 120, 120};
            }
            ExecuteDisplaySoloist(id, range, useExclusiveThread, nativeXComponent);

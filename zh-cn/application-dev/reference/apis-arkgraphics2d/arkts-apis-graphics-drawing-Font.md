@@ -513,14 +513,6 @@ measureTextWithFallback(text: string, encoding: TextEncoding): number
 | --- | --- |
 | number | 返回包含回退字体的文本宽度，浮点数。单位为物理像素px。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
-
 **示例：**
 
 ```ts
@@ -1026,7 +1018,7 @@ getWidths(glyphs: Array\<number>): Array\<number>
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| Array\<number> | 返回字形宽度数组，浮点数。单位为物理像素px。 |
+| Array\<number> | 返回字形宽度数组，浮点数。单位为物理像素px。获取失败时返回undefined。 |
 
 **错误码：**
 
@@ -1313,7 +1305,7 @@ createPathForGlyph(index: number): Path
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| [Path](arkts-apis-graphics-drawing-Path.md) | 返回指定字形的路径轮廓。 |
+| [Path](arkts-apis-graphics-drawing-Path.md) | 返回指定字形的路径轮廓。获取失败时返回undefined。 |
 
 **示例：**
 

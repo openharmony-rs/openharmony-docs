@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API扩展接口加速属性访问，通过调用点缓存机制为每个调用点创建napi_callsite_info句柄，在重复访问相同属性时显著提升性能，适用于热点循环中批量属性读写场景。"
+keywords: [Node-API, 属性访问加速, napi_callsite_info, 调用点缓存, 属性读写, 性能优化, 快速路径]
+doctype: guide
+status: active
+---
+
 # 使用扩展的Node-API接口加速属性访问
 
 <!--Kit: ArkTS-->

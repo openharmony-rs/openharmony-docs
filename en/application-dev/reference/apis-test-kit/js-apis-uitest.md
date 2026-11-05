@@ -5,7 +5,8 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @chen8281-->
+<!-- md-trans-meta sourceCommit=22ead41a37cf4713be8672d6bdcc4cfa3f5851f0 translatedAt=2026-11-03T01:22:37.528Z pushedAt=2026-11-03T03:30:57.548Z nl=1 -->
 
 
 The **UiTest** module provides UI automation test capabilities, such as component search and operation, coordinate clicking/sliding, key injections, screenshot, window management, multi-finger operations, and mouse/stylus/touchpad operations.
@@ -135,7 +136,7 @@ Provides the flag attributes of this window.
 | bundleName           | string  | No | Yes | Bundle name of the application to which the window belongs, which is used to filter the target window in multi-window scenarios. This parameter is left empty by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
 | title                | string  | No | Yes | Window title, which is used to filter the target window in multi-window scenarios. This parameter is left empty by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                         |
 | focused              | boolean | No | Yes  | Whether the window is focused. The value **true** indicates that the window is focused, and **false** indicates the opposite. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| actived(deprecated)  | boolean | No  | Yes | Whether the window is interacting with the user. The value **true** indicates that the window is interacting with the user, and **false** indicates the opposite.<br>This API is supported since API version 9 and deprecated since API version 11. You are advised to use [active<sup>11+</sup>](#windowfilter9) instead.                                               |
+| actived<sup>deprecated</sup> | boolean | No | Yes | Whether the window is interacting with the user. The value **true** indicates that the window is interacting with the user, and **false** indicates the opposite. The default value is **false**.<br>This API is supported since API version 9 and deprecated since API version 11. You are advised to use [active<sup>11+</sup>](#windowfilter9) instead. |
 | active<sup>11+</sup> | boolean | No | Yes | Whether the window is interacting with the user. The value **true** indicates that the window is interacting with the user, and **false** indicates the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                    |
 | displayId<sup>20+</sup> | number | No  | Yes | ID of the display to which the window belongs. The value is an integer greater than or equal to 0. The default value is the default screen ID of the device.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
 
@@ -2618,7 +2619,7 @@ async function demo() {
 
 The **Driver** class is the main entrance of the UiTest framework. This class provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot. Call [Driver.create()](#create9) to create an instance.
 
-All APIs provided by this class, except **Driver.create()** and **Driver.createUIEventObserver()**, use an asynchronous method (promise) to return the result and must be invoked using **await**.  
+All APIs provided by this class, except **Driver.create()** and **Driver.createUIEventObserver()**, use an asynchronous method (promise) to return the result and must be invoked using **await**.
 
 ### create<sup>9+</sup>
 
@@ -7832,7 +7833,7 @@ inputText(text: string): Promise\<void>
 Inputs text to a component. This API takes effect only for editable text components. This API uses a promise to return the result.
 
 > **NOTE**
-
+>
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [inputText<sup>9+</sup>](#inputtext9) instead.
 
 **System capability**: SystemCapability.Test.UiTest

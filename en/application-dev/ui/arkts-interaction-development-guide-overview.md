@@ -1,10 +1,11 @@
 # Implementing Interaction Responses
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T08:23:52.728Z pushedAt=2026-11-03T09:14:53.535Z nl=1 -->
 
 The ArkUI framework offers a comprehensive set of APIs for handling input events from various peripherals. Beyond basic input handling, ArkUI also provides advanced APIs for responding to normalized user interactions such as gestures, drag and drop, and focus management.
 

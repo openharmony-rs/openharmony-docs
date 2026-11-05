@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍ArkTS反汇编工具Disassembler的用途与获取路径，提供命令行参数说明和使用示例，帮助开发者将abc字节码文件反汇编为可读汇编指令以分析问题。"
+keywords: [Disassembler, 反汇编, DevEco Studio, ark_disasm, abc文件, 方舟字节码, 汇编指令]
+doctype: guide
+status: active
+---
+
 # Disassembler反汇编工具
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

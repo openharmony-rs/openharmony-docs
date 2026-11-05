@@ -6,7 +6,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供企业设备信息管理能力，支持获取设备序列号、设备名称、SIM卡信息等。企业管理员可通过此模块查询设备详细信息，实现设备资产的统一管理和追踪。
+本模块提供企业设备信息管理能力，支持获取设备序列号、设备名称、SIM卡信息、补丁信息等。企业管理员可通过此模块查询设备详细信息，实现设备资产的统一管理和追踪。
 
 **使用场景：**
 - 设备资产管理与追踪
@@ -85,3 +85,94 @@ try {
   console.error(`Failed to get device name. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+## deviceInfo.getPatchInfo
+
+getPatchInfo(): Promise&lt;Array&lt;PatchInfo&gt;&gt;
+
+获取设备补丁信息。调用本接口后，系统将返回设备上已安装补丁的信息列表，包括补丁名称、安装补丁使用的设备系统账号、补丁安装时间及补丁说明等。如果设备上未安装补丁，返回空数组。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_GET_DEVICE_INFO
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;Array&lt;[PatchInfo](#patchinfo)&gt;&gt; | Promise对象，返回设备补丁信息数组。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout.                                             |
+
+**示例：**
+
+```ts
+import { deviceInfo } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+deviceInfo.getPatchInfo().then((data: Array<deviceInfo.PatchInfo>) => {
+  console.info(`Succeeded in getting patch info, result : ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get patch info. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## PatchInfo
+
+描述设备补丁信息。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称        | 类型                                     | 只读 | 可选 | 说明       |
+| ----------- | ---------------------------------------- | ---- | ---- | ---------- |
+| name        | string                                   | 否   | 否   | 补丁名称。 |
+| accountName | string                                   | 否   | 否   | 补丁安装程序使用的设备系统账号的用户名。命名格式以设备上实际存在的账号为准。 |
+| installTime | number                                   | 否   | 否   | 补丁安装时间戳（Unix时间戳），表示从1970-01-01 00:00:00 UTC逝去的毫秒数，单位毫秒。 |
+| description | [PatchDescription](#patchdescription) | 否   | 否   | 补丁说明。 |
+
+## PatchDescription
+
+补丁描述信息。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称    | 类型                                                    | 只读 | 可选 | 说明         |
+| ------- | ------------------------------------------------------- | ---- | ---- | ------------ |
+| headers | Array&lt;string&gt;                                     | 否   | 否   | 描述标题。   |
+| bodies  | Array&lt;[PatchDescriptionBody](#patchdescriptionbody)&gt; | 否   | 否   | 说明正文项。 |
+
+## PatchDescriptionBody
+
+补丁描述正文项。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称     | 类型          | 只读 | 可选 | 说明           |
+| -------- | ------------- | ---- | ---- | -------------- |
+| title    | string        | 否   | 否   | 描述正文标题。 |
+| contents | Array&lt;string&gt; | 否   | 否   | 描述正文内容。 |

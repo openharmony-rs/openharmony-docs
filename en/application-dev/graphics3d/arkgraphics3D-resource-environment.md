@@ -1,10 +1,20 @@
+---
+kits: ["ArkGraphics 3D"]
+description: "Describes how to create and use environment resources in a 3D scene, including loading environment maps with createEnvironment(), setting an equirectangular background and image-based lighting (IBL), and adjusting indirect diffuse lighting intensity."
+keywords: [ArkGraphics 3D, IBL, environment map, scene background]
+doctype: guide
+status: active
+---
+
 # Creating and Using Environment Resources
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=bfc96144fd212df11635a7acc693723c4ad0b55f translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 Environment is a description of the 3D scene background, which can be created based on images. To simulate a real-world environment in a 3D scene, you can map a square or sphere onto an image and wrap the image around the square or sphere.
 
@@ -53,7 +63,7 @@ ArkGraphics 3D allows you to create environment resources and define the backgro
    <!-- @[scene_camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
-   this.cam = await this.rf.createCamera({ 'name': 'Camera1' });
+   this.cam = await this.rf.createCamera({ name: 'Camera1' });
    this.cam.enabled = true;
    this.cam.position.z = 5;
    ```
@@ -101,7 +111,7 @@ ArkGraphics 3D allows you to create environment resources and define the backgro
              envEntity.indirectDiffuseFactor.w = 1;
              resolve(envEntity);
            }).catch((err: string) => {
-             console.error('Environment mapping material create failed: ' + err + '.');
+             console.error('Environment create failed: ' + err + '.');
              reject(err);
            });
          }).catch((err: string) => {
@@ -125,7 +135,7 @@ ArkGraphics 3D allows you to create environment resources and define the backgro
    Button('Add to Environment')
      // ...
      .onClick(async (): Promise<void> => {
-       console.info('Start to replace with a material of image');
+       console.info('Start to add environment to scene');
    
        if (!this.scene || !this.cam) {
          return;

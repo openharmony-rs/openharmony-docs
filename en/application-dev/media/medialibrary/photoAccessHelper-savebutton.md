@@ -5,6 +5,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6d4ec718e22999dd8a5ad5acdd716bed7f226e83 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 To save images, videos, or similar files to Gallery, it is not necessary for the application to request the ohos.permission.WRITE_IMAGEVIDEO permission. Instead, the application can use the [SaveButton](#creating-a-media-asset-using-savebutton) or [authorization pop-up](#saving-a-media-asset-using-an-authorization-pop-up) to save the media assets to Gallery.
 
@@ -19,7 +20,7 @@ The following describes how to obtain image resource formats that can be saved.
 
 Call [phAccessHelper.getSupportedPhotoFormats](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getsupportedphotoformats18) to obtain the supported image formats that can be saved.
 
-<!-- @[Supported_Resource_Formats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene1.ets) -->
+<!-- @[Supported_Resource_Formats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene1.ets) --> 
 
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -57,8 +58,8 @@ export struct Scene1 {
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper): Promise<string> {
   try {
     let outputText = 'Supported formats:\n';
-    // The value 1 means the supported image formats, and 2 means the supported video formats.
-    let imageFormat = await phAccessHelper.getSupportedPhotoFormats(1);
+    // A value of 1 indicates image support, and 2 indicates video support.
+    let imageFormat = await phAccessHelper.getSupportedPhotoFormats(photoAccessHelper.PhotoType.IMAGE);
     let result = '';
     for (let i = 0; i < imageFormat.length; i++) {
       result += imageFormat[i];
@@ -108,7 +109,7 @@ export struct Scene2 {
     icon: SaveIconStyle.FULL_FILLED,
     text: SaveDescription.SAVE_IMAGE,
     buttonType: ButtonType.Capsule
-  }// Set properties of SaveButton.
+  }// Set the properties of the save button.
 
  // ...
 
@@ -143,7 +144,7 @@ export struct Scene2 {
       Column({ space: 20 }) {
         // ...
 
-        SaveButton(this.saveButtonOptions) // Create a button with SaveButton.
+        SaveButton(this.saveButtonOptions) // Create a button labeled Save.
           .onClick(async (event, result: SaveButtonOnClickResult) => {
             if (result == SaveButtonOnClickResult.SUCCESS) {
               try {
@@ -199,7 +200,7 @@ The following walks you through on how to save an image using an authorization p
    To display the application name in the dialog box, the API relies on the configuration of **label** and **icon** under **abilities** in the **module.json5** file. If they are not configured, no application name is displayed in the dialog box. If the passed URI is a sandbox path, images or videos can be saved but cannot be previewed.
 4. Write the image content from the application sandbox to the file specified by the target URI in the media library.
 
-<!-- @[Saving_MediaAsset_Using_Authorization_Popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene3.ets) -->
+<!-- @[Saving_MediaAsset_Using_Authorization_Popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene3.ets) --> 
 
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -212,6 +213,8 @@ async function example(
   phAccessHelper: photoAccessHelper.PhotoAccessHelper,
   context: common.UIAbilityContext
 ): Promise<string> {
+  let desFile: fileIo.File | null = null;
+  let srcFile: fileIo.File | null = null;
   try {
     // Specify the URI of the image to be saved to the application sandbox directory.
     let srcFileUri = context.filesDir + '/test.jpg';
@@ -234,16 +237,21 @@ async function example(
       await phAccessHelper.showAssetsCreationDialog(srcFileUris, photoCreationConfigs);
     console.info('Destination URIs: ' + JSON.stringify(desFileUris));
     // Write the image from the sandbox directory to the file specified by the target URI in the media library.
-    let desFile: fileIo.File = await fileIo.open(desFileUris[0], fileIo.OpenMode.WRITE_ONLY);
-    let srcFile: fileIo.File = await fileIo.open(srcFileUri, fileIo.OpenMode.READ_ONLY);
+    desFile = await fileIo.open(desFileUris[0], fileIo.OpenMode.WRITE_ONLY);
+    srcFile = await fileIo.open(srcFileUri, fileIo.OpenMode.READ_ONLY);
     await fileIo.copyFile(srcFile.fd, desFile.fd);
-    fileIo.closeSync(srcFile);
-    fileIo.closeSync(desFile);
     console.info('create asset by dialog successfully');
     return 'create asset by dialog successfully';
   } catch (err) {
     console.error(`failed to create asset by dialog successfully errCode is: ${err.code}, ${err.message}`);
     return `failed to create asset by dialog successfully errCode is: ${err.code}, ${err.message}`;
+  } finally {
+    if (srcFile) {
+      fileIo.closeSync(srcFile);
+    }
+    if (desFile) {
+      fileIo.closeSync(desFile);
+    }
   }
 }
 ```

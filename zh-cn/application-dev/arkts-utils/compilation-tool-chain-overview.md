@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "ArkTS编译工具链将应用源码编译为方舟字节码，涵盖语法检查、UI转换、源码混淆、字节码自定义修改及反汇编，帮助开发者理解HAP构建流程。"
+keywords: [ArkTS, Hvigor, 语法检查, UI转换, ArkGuard源码混淆, 方舟字节码, 字节码自定义修改, Disassembler反汇编, HAP构建]
+doctype: guide
+status: active
+---
+
 # ArkTS编译工具链概述
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

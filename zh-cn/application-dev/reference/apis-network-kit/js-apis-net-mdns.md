@@ -351,7 +351,7 @@ resolveLocalService(context: Context, serviceInfo: LocalServiceInfo, callback: A
 |-------------|----------------------------------|-----------|-------------------------------------------------------------|
 | context     | Context                          | 是       | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | serviceInfo | [LocalServiceInfo](#localserviceinfo)                 | 是        |   MDNS服务的信息。      |
-| callback | AsyncCallback\<[LocalServiceInfo](#localserviceinfo)> | 是        |   回调函数。成功移除error为undefined，data为解析的MDNS服务信息；否则为错误对象。      |
+| callback | AsyncCallback\<[LocalServiceInfo](#localserviceinfo)> | 是        |   回调函数。成功解析时error为undefined，data为解析的MDNS服务信息；否则为错误对象。      |
 
 **错误码：**
 

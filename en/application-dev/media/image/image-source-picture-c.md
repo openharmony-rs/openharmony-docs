@@ -2,11 +2,27 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=b837f04ec16fd55599b79fabccd55aa56d6b02bf translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
-This topic describes how to create an ImageSource instance, decode it to obtain Picture object, and release the ImageSource instance.
+You can create an **ImageSource** instance and decode a supported image file into a Picture object for HDR image display, auxiliary image processing, and other operations in an app or the system. Currently supported image file formats include JPEG and HEIF.
+
+Picture is a multi-image object that contains a main image, auxiliary images, and metadata. The main image carries the primary image information, auxiliary images store additional information related to the main image (such as the HDR Gain Map, i.e., GAINMAP), and metadata holds other image-related information. Picture is suitable for scenarios such as HDR image processing and HEIF professional format decoding.
+
+## Differences Between Picture and PixelMap
+
+Picture and PixelMap are two different image decoding objects, each suitable for different scenarios.
+
+| Object Type | Applicable Scenario | Feature |
+|---|---|---|
+| [PixelMap](../../reference/apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md) | Single-image display, basic image processing | Single pixel data, supporting image transformations (cropping, scaling, rotation, etc.) and PixelMap operations. |
+| [Picture](../../reference/apis-image-kit/capi-image-nativemodule-oh-picturenative.md) | HDR images, HEIF professional format, auxiliary image processing | Contains main image + auxiliary images + metadata. You can extract the main image, gain map, or composite HDR image as a PixelMap for display or processing, and perform auxiliary image and metadata operations. |
+
+> **Suggestion:**
+> - Use PixelMap when you need to directly display a single image or perform image processing such as cropping, scaling, and rotation.
+> - Use Picture when you need to process HDR images, obtain auxiliary images (such as GAINMAP), or manipulate image metadata. If you need to crop or scale the content of a Picture, you can extract a PixelMap first through APIs such as [OH_PictureNative_GetMainPixelmap()](../../reference/apis-image-kit/capi-picture-native-h.md#oh_picturenative_getmainpixelmap) and then process it.
 
 ## How to Develop
 
@@ -22,7 +38,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
 
 For details about the APIs, see [Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md).
 
-Create a native C++ application in DevEco Studio. The project created by default contains the **index.ets** file, and a **hello.cpp** or **napi_init.cpp** file is generated in the **entry\src\main\cpp** directory. In this example, the generated file is **hello.cpp**. Implement the C APIs in **hello.cpp**. Refer to the sample code below.
+When creating a Native C++ app in DevEco Studio, the generated project includes an `index.ets` file by default, and a `cpp` file (`hello.cpp` or `napi_init.cpp`; this example uses `hello.cpp` as the file name) is automatically generated in the `entry\src\main\cpp` directory. Implement the C API call logic in `hello.cpp`. The sample code is as follows:
 
 **Example of Using the Decoding APIs**
 
@@ -120,7 +136,22 @@ Create a native C++ application in DevEco Studio. The project created by default
 
 8. Create and configure decoding options, and call the decoding API to decode the image and obtain an auxiliary image.
 
-   <!-- @[picture_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->     
+   During decoding, you can specify the types of auxiliary images to decode. Auxiliary images are not directly displayed as standalone images; instead, they participate in image processing as auxiliary data (such as HDR compositing and depth information extraction). Common auxiliary image types include:
+
+   | Auxiliary Image Type | Description |
+   |---|---|
+   | GAINMAP | Gain map, used for high dynamic range rendering of HDR images. |
+   | DEPTH_MAP | Depth map, storing pixel distance information for scenarios such as 3D reconstruction and background separation. |
+   | UNREFOCUS_MAP | Unrefocused original image, used for portrait bokeh post-processing. |
+   | LINEAR_MAP | Linear map, used for visual effect enhancement and color post-processing. |
+   | FRAGMENT_MAP | Watermark crop map, used for scenarios such as watermark removal and original image restoration. |
+
+   > **NOTE**
+   >
+   > Not all images contain auxiliary images. Before obtaining an auxiliary image, call the `OH_PictureNative_GetAuxiliaryPicture` API to attempt retrieval. For other auxiliary image types, see [Image_AuxiliaryPictureType](../../reference/apis-image-kit/capi-picture-native-h.md#image_auxiliarypicturetype).
+
+
+   <!-- @[picture_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->      
    
    ``` C++
    // Release the image source.
@@ -171,8 +202,8 @@ Create a native C++ application in DevEco Studio. The project created by default
        uint32_t length = 0;
        napi_get_array_length(env, args[0], &length);
        if (length <= 0) {
-           OH_LOG_ERROR(LOG_APP, "napi_get_array_length failed !");
-           return GetJsResult(env, IMAGE_UNKNOWN_ERROR);
+           OH_LOG_INFO(LOG_APP, "Desired auxiliary picture type list is empty.");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
        }
        Image_AuxiliaryPictureType typeList[length];
        for (int index = 0; index < length; index++) {
@@ -210,9 +241,13 @@ Create a native C++ application in DevEco Studio. The project created by default
            return GetJsResult(env, IMAGE_BAD_PARAMETER);
        }
        
-       char filePath[MAX_SIZE];
-       size_t pathSize;
-       napi_get_value_string_utf8(env, args[0], filePath, MAX_SIZE, &pathSize);
+       char filePath[MAX_SIZE] = {0};
+       size_t pathSize = 0;
+       if (napi_get_value_string_utf8(env, args[0], filePath, sizeof(filePath), &pathSize) != napi_ok) {
+           OH_LOG_ERROR(LOG_APP, "CreatePictureByImageSource napi_get_value_string_utf8 failed !");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
+       }
+       filePath[MAX_SIZE - 1] = '\0';
    
        g_thisPicture->errorCode = OH_ImageSourceNative_CreateFromUri(filePath, pathSize, &g_thisPicture->source);
        if (g_thisPicture->errorCode != IMAGE_SUCCESS) {
@@ -235,8 +270,11 @@ Create a native C++ application in DevEco Studio. The project created by default
            g_thisAuxiliaryPicture ->type, &g_thisAuxiliaryPicture ->auxiliaryPicture);
        if (g_thisAuxiliaryPicture ->errorCode == IMAGE_SUCCESS) {
            uint8_t* buff = new uint8_t[g_thisAuxiliaryPicture ->buffSize];
-           OH_AuxiliaryPictureNative_ReadPixels(g_thisAuxiliaryPicture ->auxiliaryPicture, buff,
+           Image_ErrorCode readCode = OH_AuxiliaryPictureNative_ReadPixels(g_thisAuxiliaryPicture ->auxiliaryPicture, buff,
                &g_thisAuxiliaryPicture ->buffSize);
+           if (readCode != IMAGE_SUCCESS) {
+               OH_LOG_ERROR(LOG_APP, "OH_AuxiliaryPictureNative_ReadPixels failed, errCode: %{public}d.", readCode);
+           }
            OH_AuxiliaryPictureNative_Release(g_thisAuxiliaryPicture ->auxiliaryPicture);
            g_thisAuxiliaryPicture ->auxiliaryPicture = nullptr;
            delete []buff;

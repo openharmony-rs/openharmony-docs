@@ -2,10 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-29T11:07:44.970Z pushedAt=2026-09-30T07:40:46.812Z -->
+<!-- md-trans-meta sourceCommit=3e6a64491cc90c6990b3231ac614d6d55ecbf6a5 translatedAt=2026-11-03T09:17:02.335Z pushedAt=2026-11-03T09:17:02.335Z nl=1 -->
 
 An app must obtain user authorization before it can send notifications. Before publishing a notification, call [requestEnableNotification()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10-1) to display a dialog box for the user to choose whether to allow notifications. If the user denies authorization, the dialog box cannot be displayed again through this API. If the app needs to request [notification authorization](notification-glossary.md#notification-authorization) from the user again, it can use [openNotificationSettingsWithResult](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanageropennotificationsettingswithresult) to display a semi-modal dialog for notification management.
 
@@ -71,7 +71,7 @@ For details about the APIs, see [@ohos.notificationManager (NotificationManager)
 
    After the user completes authorization, the setting result is returned, which includes the notification authorization switch and the setting results of the lock screen, banner, badge, ringtone, and vibration switches.
 
-   <!-- @[reapply_notify_auth_halfModal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/RequestEnableNotification.ets) -->    
+   <!-- @[reapply_notify_auth_halfModal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/RequestEnableNotification.ets) -->
    
    ``` TypeScript
    let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;

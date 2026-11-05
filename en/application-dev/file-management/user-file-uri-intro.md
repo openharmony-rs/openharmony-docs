@@ -5,7 +5,7 @@
 <!--Designer: @rainlost-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=df6561cd1fa48d9a9e0010adeaf5f5f945da452e translatedAt=2026-08-26T04:39:46.287Z pushedAt=2026-08-28T07:45:03.922Z -->
+<!-- md-trans-meta sourceCommit=df6561cd1fa48d9a9e0010adeaf5f5f945da452e translatedAt=2026-10-29T10:30:53.880Z pushedAt=2026-10-29T10:30:53.880Z nl=1 -->
 
 As a unique identifier of a user file, the uniform resource identifier (URI) is usually used to specify the user file to be accessed or modified. Avoid using part of a URI for service code development.
 
@@ -73,9 +73,9 @@ The following table describes the fields in a media file URI.
 | 'IMG_datetime_0001' | Name of the image stored in the user file system without the file name extension.|
 | 'VID_datetime_0001' | Name of the video stored in the user file system without the file name extension.|
 | 'AUD_datetime_0001' | Name of the audio file stored in the user file system without the file name extension.|
-|<!--DelRow--> 'displayName.jpg' | Indicates the displayName of an image file shown externally. Renaming via the [photoAccessHelper.PhotoAsset.commitModify](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#commitmodify) API modifies this value. Note that the URI also changes after this value is modified. |
-|<!--DelRow--> 'displayName.mp4' | Indicates the displayName of a video file shown externally. Renaming via the [photoAccessHelper.PhotoAsset.commitModify](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#commitmodify) API modifies this value. Note that the URI also changes after this value is modified. |
-|<!--DelRow--> 'displayName.mp3' | Indicates the displayName of an audio file shown externally. Renaming via the [photoAccessHelper.PhotoAsset.commitModify](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#commitmodify) API modifies this value. Note that the URI also changes after this value is modified. |
+| <!--DelRow--> 'displayName.jpg' | Indicates the displayName of an image file shown externally. Renaming via the [photoAccessHelper.PhotoAsset.commitModify](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#commitmodify) API modifies this value. Note that the URI also changes after this value is modified. |
+| <!--DelRow--> 'displayName.mp4' | Indicates the displayName of a video file shown externally. Renaming via the [photoAccessHelper.PhotoAsset.commitModify](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#commitmodify) API modifies this value. Note that the URI also changes after this value is modified. |
+| <!--DelRow--> 'displayName.mp3' | Indicates the displayName of an audio file shown externally. Renaming via the [photoAccessHelper.PhotoAsset.commitModify](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md#commitmodify) API modifies this value. Note that the URI also changes after this value is modified. |
 
 ### Obtaining a Media File URI
 
@@ -98,18 +98,18 @@ The following information can be obtained from **PhotoKeys** through temporary a
 
 | Name         | Value             | Description                                                      |
 | ------------- | ------------------- | ---------------------------------------------------------- |
-| URI           | 'uri'                 | URI of the file.                                                  |
-| PHOTO_TYPE    | 'media_type'           | Type of the media file.                                             |
-| DISPLAY_NAME  | 'display_name'        | File name displayed.                                                  |
-| SIZE          | 'size'                | Size of the file.                                                  |
-| DATE_ADDED    | 'date_added'          | Unix timestamp when the file was added, in seconds.           |
+| URI | 'uri'                 | URI of the file.                                                  |
+| PHOTO_TYPE | 'media_type'           | Type of the media file.                                             |
+| DISPLAY_NAME | 'display_name'        | File name displayed.                                                  |
+| SIZE | 'size'                | Size of the file.                                                  |
+| DATE_ADDED | 'date_added'          | Unix timestamp when the file was added, in seconds.           |
 | DATE_MODIFIED | 'date_modified'       | Unix timestamp when the file content (not the file name) was last modified, in seconds.  |
-| DURATION      | 'duration'            | Duration, in milliseconds.                                   |
-| WIDTH         | 'width'               | Image width, in pixels.                                   |
-| HEIGHT        | 'height'              | Image height, in pixels.                                     |
-| DATE_TAKEN    | 'date_taken'          | Unix timestamp when the photo was taken, in seconds.               |
-| ORIENTATION   | 'orientation'         | Orientation of the image file.                                            |
-| TITLE         | 'title'               | Title of the file.                                                  |
+| DURATION | 'duration'            | Duration, in milliseconds.                                   |
+| WIDTH | 'width'               | Image width, in pixels.                                   |
+| HEIGHT | 'height'              | Image height, in pixels.                                     |
+| DATE_TAKEN | 'date_taken'          | Unix timestamp when the photo was taken, in seconds.               |
+| ORIENTATION | 'orientation'         | Orientation of the image file.                                            |
+| TITLE | 'title'               | Title of the file.                                                  |
 
 The following example shows how to obtain the thumbnail and file information based on the media file URI with temporary authorization.
 

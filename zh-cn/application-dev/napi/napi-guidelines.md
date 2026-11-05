@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Node-API开发规范，涵盖参数获取、作用域管理、引用管理等编码规则，帮助开发者编写安全可靠的Node-API代码，避免内存越界和泄漏等问题。"
+keywords: [Node-API, 开发规范, 编码规则, napi_get_cb_info, 作用域管理, 引用管理, 参数校验, 内存安全]
+doctype: guide
+status: active
+---
+
 # Node-API开发规范
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -101,13 +109,13 @@ napi_create_string_utf8(env1, "bar", NAPI_AUTO_LENGTH, &string);
 // 线程2执行，在env2创建object对象，并将上述的string对象设置到object对象中
 napi_status status = napi_create_object(env2, &object);
 if (status != napi_ok) {
-    napi_throw_error(env, ...);
+    napi_throw_error(env2, ...);
     return;
 }
 
 status = napi_set_named_property(env2, object, "foo", string);
 if (status != napi_ok) {
-    napi_throw_error(env, ...);
+    napi_throw_error(env2, ...);
     return;
 }
 ```
@@ -519,7 +527,7 @@ napi_object_freeze等同于Object.freeze语义，freeze后对象的所有属性�
 
 ## 参考文档
 
-[Native侧子线程与UI主线程通信开发](https://developer.huawei.com/consumer/cn/doc/best-practices-V5/bpta-native-sub-main-comm-V5);
+[Native侧子线程与UI主线程通信](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/native_subthread-to-uimain);
 
 [如何在Native侧C++子线程直接调用ArkTS接口，不用通过ArkTS侧触发回调](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-ndk-8-V5);
 

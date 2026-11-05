@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:26:10.942Z pushedAt=2026-10-08T09:34:28.476Z -->
+<!-- md-trans-meta sourceCommit=523587af0396fce9af8dfb1a1fcd6595324a4b23 translatedAt=2026-10-28T11:25:22.103Z pushedAt=2026-10-28T12:15:40.124Z nl=1 -->
 
 This module provides the capabilities for managing notification extensions, including opening the notification extension subscription settings page, subscribing to and unsubscribing from notification extensions, and obtaining and setting the [notification authorization](../../notification/notification-glossary.md#notification-authorization) status.
 
@@ -275,5 +275,57 @@ notificationExtensionSubscription.setUserGrantedBundleState(targetBundle, enable
   console.info(`setUserGrantedBundleState successfully.`);
 }).catch((err: BusinessError) => {
   console.error(`setUserGrantedBundleState fail, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationExtensionSubscription.subscribeNotification
+
+subscribeNotification(priorityStrategy?: number): Promise\<void\>
+
+Subscribes to notifications based on the [priority notification](../../notification/notification-glossary.md#priority-notification) filter criteria. This API uses a promise to return the result.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ---------------- | ------ | ---- | ---- |
+| priorityStrategy | number | No | Priority notification filter criteria. The default value is **0**, and the value must be an integer. This parameter is obtained by performing a bitwise OR operation on the enums of [PriorityStrategyStatus](js-apis-notificationManager-sys.md#prioritystrategystatus23).<br>After subscribing to a priority notification policy, when an application publishes a notification, only notifications that meet the corresponding policy are returned.<br>When the default priority policy `STATUS_SYSTEM_DEFAULT` is subscribed to, it indicates that the priority rule `STATUS_SYSTEM_RULE`, intelligent recognition `STATUS_INTELLIGENT`, user-defined `STATUS_USER_DEFINED`, and application-defined `STATUS_APPLICATION_DEFINED` policies are subscribed to at the same time.<br>When `priorityStrategy` is **0**, it indicates that priority notification policies are not filtered, and all notifications published by applications can be received. |
+
+**Return value**
+
+| Type            | Description                       |
+| --------------- | -------------------------- |
+| Promise\<void\> | Promise that returns no value. |
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 801      | Capability not supported. |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600023  | The application does not implement the NotificationSubscriberExtensionAbility. |
+
+**Example**
+
+```ts
+notificationExtensionSubscription.subscribeNotification(0).then(() => {
+  console.info(`subscribeNotification successfully.`);
+}).catch((err: BusinessError) => {
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```

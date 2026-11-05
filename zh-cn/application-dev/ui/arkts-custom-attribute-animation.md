@@ -100,7 +100,7 @@ class PointVector extends Array<PointClass> implements AnimatableArithmetic<Arra
     }
   }
 
-  // implement the IAnimatableArithmetic interface
+  // 实现AnimatableArithmetic<T>接口
   plus(rhs: PointVector): PointVector {
     let result = new PointVector([]);
     const len = Math.min(this.length, rhs.length);

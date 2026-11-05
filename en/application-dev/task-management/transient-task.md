@@ -6,30 +6,31 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=e5d872e28c74e6f8db1f14af764a11ea86b159b5 translatedAt=2026-11-02T07:50:20.675Z pushedAt=2026-11-02T11:45:09.728Z nl=1 -->
 
 ## Overview
 
-An application is suspended after it runs in the background for a short period of time. If the application needs to execute a short-time task in the background, for example, saving the status or sending messages, it can request a transient task to extend the running time in the background.
+An application is suspended after it runs in the background for a short period of time. If the application needs to execute a transient task in the background, for example, saving the status or sending messages, it can request a transient task to extend the running time in the background.
 
 
 ## Constraints
 
-- **Request time**: An application can request a transient task only when it runs in the foreground or in the [onBackground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onbackground) callback. Otherwise, the request will fail.
+- **Request time:** An application can request a transient task only when it runs in the foreground or in the [onBackground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onbackground) callback. Otherwise, the request will fail.
 
-- **Quantity limit**: An application can request a maximum of three transient tasks running at the same time. As shown in Figure 1, at any given moment within time periods ①, ②, and ③, the application has requested two transient tasks; within time period ④, it has requested one transient task.
+- **Quantity limit:** An application can request a maximum of three transient tasks running at the same time. As shown in Figure 1, at any given moment within time periods ①, ②, and ③, the application has requested two transient tasks; within time period ④, it has requested one transient task.
 
-- **Quota mechanism**: An application has a certain quota for transient tasks (adjusted based on the system status and user habits). The default quota for a single day (within 24 hours) is 10 minutes, and the maximum quota for each request is 3 minutes. In case of the battery with [BatteryCapacityLevel](../reference/apis-basic-services-kit/js-apis-battery-info.md#batterycapacitylevel9) set to **LEVEL_LOW**, the default quota for each request is 1 minute. After the quota is used up, the application cannot request transient tasks anymore. The system also provides the [backgroundTaskManager.getRemainingDelayTime](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagergetremainingdelaytime-1) API for an application to query the remaining duration of a transient task so as to determine whether to continue running other services.
+- **Quota mechanism**: An application has a certain quota for transient tasks (adjusted based on the system status and user habits). The default quota for a single day (within 24 hours) is 10 minutes, and the maximum quota for each request is 3 minutes. When the battery level is low (with [BatteryCapacityLevel](../reference/apis-basic-services-kit/js-apis-battery-info.md#batterycapacitylevel9) set to **LEVEL_LOW**), the default quota for each request is 1 minute. After the quota is used up, the application cannot request transient tasks anymore. The system also provides the [backgroundTaskManager.getRemainingDelayTime](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagergetremainingdelaytime-1) API for an application to query the remaining time of a transient task so as to determine whether to continue running other services.
 
-- **Quota calculation**: Transient tasks are timed only when the application is running in the background. If the application has multiple transient tasks during the same time segment, no repeated timing is performed. As in the figure below, the application has two transient tasks, A and B. Task A is requested when the application is running in the foreground, and the timing starts when the application switches to the background (marked as ①). When the application switches to the foreground, the timing stops (marked as ②). When the application switches to the background again, the timing starts again (marked as ③). When task A is finished, task B still exists, and therefore the timing continues (marked as ④). In this process, the total time consumed by the transient tasks is ①+③+④. 
+- **Quota calculation:** The time of a transient task is counted only when the application runs in the background. Transient tasks of the same application that overlap in the same time period are not counted repeatedly. Take the following figure as an example: the application has two transient tasks, A and B. Transient task A is requested while the application is in the foreground. The time counting starts at ① after the application moves to the background, pauses at ② when the application returns to the foreground, and resumes at ③ when the application moves to the background again. After transient task A ends, the counting continues in time period ④ because transient task B is still running. Therefore, the total time consumed by the transient tasks of this application is ①+③+④.  
   
-  **Figure 1** Quota calculation for transient tasks     
+  **Figure 1** Quota calculation for transient tasks      
   ![transient-task](figures/transient-task.png)
     
   > **NOTE**
   >
   > The application shall proactively cancel a transient task when it is finished. Otherwise, the time frame allowed for the application to run in the background will be affected.
 
-- **Timeout**: If a transient task is about to time out, the system notifies the application of the timeout by using a callback (usually 6 seconds before the timeout). The application must cancel the task in the callback. If the task is not cancelled, the system will manage the application, for example, suspending or terminating the process.
+- **Timeout:** If a transient task is about to time out, the system notifies the application of the timeout by using a callback (usually 6 seconds before the timeout). The application must cancel the transient task in the callback. If the task is not cancelled, the system will manage the application, for example, suspending or terminating the process.
 
 ## Available APIs
 

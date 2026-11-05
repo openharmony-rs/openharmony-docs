@@ -2,12 +2,12 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
-<!--Owner: @guoshengbang-->
+<!--Owner: @Zouhaifeng1-->
 <!--Designer: @baozewei-->
-<!--Tester:@baozewei-->
+<!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
 
-该模块为扫描框架的 js-api 接口文档，提供发现、添加、删除扫描仪以及获取已添加扫描仪列表的能力，同时支持监听扫描仪设备的添加和删除事件，适用于需要在应用内集成扫描仪设备管理并实时感知设备状态变化的场景。扫描框架通过发现模式发现扫描仪设备，添加设备后可通过事件监听设备的添加和删除状态，完成扫描任务后可删除设备，帮助开发者便捷地完成扫描仪的接入与生命周期管理。
+该模块为扫描框架的js-api接口文档，提供发现、添加、删除扫描仪以及获取已添加扫描仪列表的能力，同时支持监听扫描仪设备的添加和删除事件，适用于需要在应用内集成扫描仪设备管理并实时感知设备状态变化的场景。扫描框架通过发现模式发现扫描仪设备，添加设备后可通过事件监听设备的添加和删除状态，完成扫描任务后可删除设备，帮助开发者便捷地完成扫描仪的接入与生命周期管理。
 
 > **说明：**  
 > 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -41,7 +41,7 @@ addScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt;vo
 
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。resolve表示接口调用成功，reject表示接口调用失败。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -55,8 +55,7 @@ addScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt;vo
 **示例：**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 // uniqueId可通过getAddedScanners()获取已添加扫描仪的唯一ID，或从scan.on('scanDeviceAdd')事件回调中获得
 let uniqueId: string = 'unique_scanner_001';
@@ -91,7 +90,7 @@ deleteScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt
 
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。resolve表示接口调用成功，reject表示接口调用失败。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -105,8 +104,7 @@ deleteScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt
 **示例：**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 // uniqueId可通过getAddedScanners()获取已添加扫描仪的唯一ID，或从scan.on('scanDeviceAdd')事件回调中获得
 let uniqueId: string = 'unique_scanner_001';
@@ -148,8 +146,7 @@ getAddedScanners(): Promise&lt;ScannerDevice[]&gt;
 **示例：**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 scan.getAddedScanners().then((scanners: scan.ScannerDevice[]) => {
     console.info('get added scanners success: ' + JSON.stringify(scanners));

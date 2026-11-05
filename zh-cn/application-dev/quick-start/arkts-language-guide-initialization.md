@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "讲解ArkTS对象初始化机制，涵盖构造函数声明与重载、属性初始化与初始化顺序、静态初始化块、初始化安全检查及declare字段声明。"
+keywords: [ArkTS, 初始化, 构造函数, 构造函数重载, 属性初始化, 初始化顺序, 静态初始化块, declare]
+doctype: guide
+status: active
+---
+
 # 初始化
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

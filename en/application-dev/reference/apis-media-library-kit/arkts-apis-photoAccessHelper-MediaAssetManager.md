@@ -5,6 +5,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=d036437fca9f1387f05ed5f1104d3980c50e5643 translatedAt=2026-11-03T07:05:45.250Z pushedAt=2026-11-04T03:11:19.961Z nl=1 -->
 
 The MediaAssetManager class is used for manipulating the read and write operations of media assets.
 
@@ -53,9 +54,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.        |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Parameter types or count are invalid, please check if asset is PhotoAsset, requestOptions is RequestOptions, dataHandler is a valid MediaAssetDataHandler object.<br>2. User file service initialization failed, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please check if the context is valid and retry.<br>3. Failed to initialize the dataHandler callback, possible causes: <br>(1) Memory insufficient; <br>(2) IPC timeout. Please retry. |
 
 **Example**
 
@@ -88,6 +89,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   const handler = new MediaHandler();
 
   phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+    if (err) {
+      console.error(`Failed to get assets. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
     console.info('fetchResult success');
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     if (photoAsset === undefined) {
@@ -104,7 +109,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static requestImageData(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: MediaAssetDataHandler&lt;ArrayBuffer&gt;): Promise&lt;string&gt;
 
-Requests image data. This API uses a promise to return the result.
+Requests image asset data based on different strategy modes. This is applicable to scenarios such as image upload and filter processing that require obtaining raw data. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -119,8 +124,8 @@ Requests image data. This API uses a promise to return the result.
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                      | Yes  | Context of the ability instance.|
 | asset | [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)                                            | Yes  | Image to request.|
-| requestOptions  | [RequestOptions](arkts-apis-photoAccessHelper-i.md#requestoptions11)                                  | Yes  | Options for requesting the image.|      
-| dataHandler  | [MediaAssetDataHandler](arkts-apis-photoAccessHelper-MediaAssetDataHandler.md)&lt;ArrayBuffer&gt; | Yes  | Media asset handler, which invokes a callback to return the image when the requested image is ready.|
+| requestOptions  | [RequestOptions](arkts-apis-photoAccessHelper-i.md#requestoptions11)                                  | Yes  | Options for requesting the image.|
+| dataHandler  | [MediaAssetDataHandler](arkts-apis-photoAccessHelper-MediaAssetDataHandler.md)&lt;ArrayBuffer&gt; | Yes   | Media asset processor, which triggers the callback when the request is complete.          |
 
 **Return value**
 
@@ -134,9 +139,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.        |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Parameter types or count are invalid, please check if asset is PhotoAsset, requestOptions is RequestOptions, dataHandler is a valid MediaAssetDataHandler object.<br>2. User file service initialization failed, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please check if the context is valid and retry.<br>3. Failed to initialize the dataHandler callback, possible causes: <br>(1) Memory insufficient; <br>(2) IPC timeout. Please retry. |
 
 **Example**
 
@@ -168,6 +173,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   const handler = new MediaDataHandler();
 
   phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+    if (err) {
+      console.error(`Failed to get assets. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
       console.info('fetchResult success');
       let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
       if (photoAsset === undefined) {
@@ -184,7 +193,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static requestMovingPhoto(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: MediaAssetDataHandler&lt;MovingPhoto&gt;): Promise&lt;string&gt;
 
-Requests a moving photo object, which can be used to request the asset data of the moving photo. This API uses a promise to return the result.
+Requests a dynamic photo object based on different strategy modes. This is applicable to viewing dynamic photos. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -214,10 +223,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 801   | Capability not supported.       |
-| 14000011       | System inner fail         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Possible causes:<br>1. The hardware does not support the capability.<br>2. The chip does not support the capability.<br>3. A dependent service feature is not supported. <br> Applicable version: 18+ |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Parameter parsing failed, please check the number and types of parameters.<br>2. User file service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is valid and retry.<br>3. Failed to initialize the dataHandler callback, possible causes: <br>(1) Memory insufficient; <br>(2) IPC timeout. Please retry. |
 
 **Example**
 
@@ -245,6 +254,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   };
   // Ensure that there are moving photos in Gallery.
   let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+  if (!assetResult) {
+    console.error('Failed to get assets');
+    return;
+  }
   let asset: photoAccessHelper.PhotoAsset = await assetResult.getFirstObject();
   let requestOptions: photoAccessHelper.RequestOptions = {
     deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
@@ -254,7 +267,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     let requestId: string = await photoAccessHelper.MediaAssetManager.requestMovingPhoto(context, asset, requestOptions, handler);
     console.info("moving photo requested successfully, requestId: " + requestId);
   } catch (err) {
-    console.error(`failed to request moving photo, error code is ${err.code}, message is ${err.message}`);
+    console.error(`Failed to request moving photo. Code: ${err.code}, message: ${err.message}`);
   }
 }
 
@@ -264,7 +277,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static requestVideoFile(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, fileUri: string, dataHandler: MediaAssetDataHandler&lt;boolean&gt;): Promise&lt;string&gt;
 
-Requests a video and saves it to the specified sandbox directory. This API uses a promise to return the result.
+Requests video asset data to a sandbox path based on different strategy modes. This is applicable to scenarios such as uploading videos to a server or playing them in a player. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -295,10 +308,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 801  | Capability not supported.       |
-| 14000011       | System inner fail.        |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Possible causes:<br>1. The hardware does not support the capability.<br>2. The chip does not support the capability.<br>3. A dependent service feature is not supported. <br> Applicable version: 15+ |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Parameter parsing failed, please check the number and types of parameters.<br>2. The dataHandler parameter must be a valid object.<br>3. User file service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is valid and retry.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -326,8 +339,16 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   const handler = new MediaDataHandler();
   let fileUri = 'file://com.example.temptest/data/storage/el2/base/haps/entry/files/test.mp4';
   phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+    if (err) {
+      console.error(`Failed to get assets. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
       console.info('fetchResult success');
       let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+      if (photoAsset === undefined) {
+        console.error('photoAsset is undefined');
+        return;
+      }
       await photoAccessHelper.MediaAssetManager.requestVideoFile(context, photoAsset, requestOptions, fileUri, handler);
       console.info('requestVideoFile successfully');
   });
@@ -349,7 +370,7 @@ Cancels a request for the asset, the callback of which has not been triggered ye
 | Name  | Type                                                                  | Mandatory| Description                     |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                      | Yes  | Context of the ability instance.|
-| requestId | string     | Yes  | ID of the request to cancel. It is a valid request ID returned by **requestImage**.|
+| requestId | string     | Yes   | ID of the request to cancel, which is a valid request ID returned by APIs such as requestImage. After this parameter is passed in, the corresponding request operation is canceled, the allocated resources are released, and the callback corresponding to the request will not be triggered. |
 
 **Return value**
 
@@ -363,9 +384,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. User file service initialization failed, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please check if the context is valid and retry.<br>2. The requestId parameter is invalid, please check if it is a valid non-empty string returned by a prior request. |
 
 **Example**
 
@@ -378,7 +399,7 @@ async function example(context: Context) {
     await photoAccessHelper.MediaAssetManager.cancelRequest(context, requestId);
     console.info("request cancelled successfully");
   } catch (err) {
-    console.error(`cancelRequest failed with error: ${err.code}, ${err.message}`);
+    console.error(`Failed to cancel request. Code: ${err.code}, message: ${err.message}`);
   }
 }
 
@@ -399,8 +420,8 @@ Loads a moving photo in the application sandbox. This API uses a promise to retu
 | Name  | Type                                                                  | Mandatory| Description                     |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md)   | Yes  | AbilityContext or UIExtensionContext instance.|
-| imageFileUri | string     | Yes  | URI of the image file of the moving photo in the application sandbox.<br>Example: **'file://com.example.temptest/data/storage/el2/base/haps/ImageFile.jpg'**.|
-| videoFileUri | string     | Yes  | URI of the video file of the moving photo in the application sandbox.<br>Example: **'file://com.example.temptest/data/storage/el2/base/haps/VideoFile.mp4'**.|
+| imageFileUri | string     | Yes   | Image URI of the dynamic photo in the application sandbox, used to create the image component of the dynamic photo object.<br>Example: 'file://com.example.temptest/data/storage/el2/base/haps/ImageFile.jpg' |
+| videoFileUri | string     | Yes   | Video URI of the dynamic photo in the application sandbox, used to create the video component of the dynamic photo object.<br>Example: 'file://com.example.temptest/data/storage/el2/base/haps/VideoFile.mp4' |
 
 **Return value**
 
@@ -414,8 +435,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 | Internal system error. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Failed to parse parameters. Please check the number and types of parameters.<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -426,7 +447,7 @@ async function example(context: Context) {
     let videoFileUri: string = 'file://com.example.temptest/data/storage/el2/base/haps/VideoFile.mp4'; // Video URI of the moving photo in the application sandbox.
     let movingPhoto: photoAccessHelper.MovingPhoto = await photoAccessHelper.MediaAssetManager.loadMovingPhoto(context, imageFileUri, videoFileUri);
   } catch (err) {
-    console.error(`loadMovingPhoto failed with error: ${err.code}, ${err.message}`);
+    console.error(`Failed to load moving photo. Code: ${err.code}, message: ${err.message}`);
   }
 }
 
@@ -436,7 +457,7 @@ async function example(context: Context) {
 
 static quickRequestImage(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: QuickImageDataHandler&lt;image.Picture&gt;): Promise&lt;string&gt;
 
-Requests an image quickly. This API uses a promise to return the result.
+Quickly requests image assets based on different strategy modes. This is applicable to scenarios with high loading speed requirements, such as loading thumbnails in an image list. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -465,9 +486,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011       | Internal system error.         |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>User file client initialization failed, possible causes: 1. Database exception; 2. IPC timeout. Please retry. |
 
 **Example**
 
@@ -496,10 +517,110 @@ async function example(context: Context) {
   const handler = new MediaHandler();
   let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
   phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+    if (err) {
+      console.error(`Failed to get assets. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
       console.info('fetchResult success');
       let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+      if (photoAsset === undefined) {
+        console.error('photoAsset is undefined');
+        return;
+      }
       await photoAccessHelper.MediaAssetManager.quickRequestImage(context, photoAsset, requestOptions, handler);
       console.info('quickRequestImage successfully');
+  });
+}
+```
+
+## requestCompositeAuxiliaryImageData
+
+static requestCompositeAuxiliaryImageData(context: Context, asset: PhotoAsset, dataHandler: MediaAssetDataHandler&lt;ArrayBuffer&gt;): Promise&lt;string&gt;
+
+Requests the data of the auxiliary image in a composite image.
+
+AI enhancement additionally generates an image, which together with the original image forms a composite image. The additionally generated image in the composite image is used for display by default, and the other original image is called the auxiliary image.
+
+**Since:** 26.0.1
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Required permissions**: ohos.permission.READ_IMAGEVIDEO
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+|----------------|-----------------------------------------------------------------------------------------------------------| ---- | ------------------------- |
+| context        | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context)                                                           | Yes   | Context of the Ability instance. |
+| asset         | [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)                                                                                | Yes   | Asset to be requested. |
+| dataHandler    | [MediaAssetDataHandler](arkts-apis-photoAccessHelper-MediaAssetDataHandler.md)&lt;ArrayBuffer&gt; | Yes   | Callback function. The ArrayBuffer contains the complete data of the auxiliary image in the composite image. |
+
+**Return value**
+
+| Type | Description |
+| --------------------------------------- | ----------------- |
+| Promise\<string> | Promise object that returns the request ID, which can be used to cancel the request through [cancelRequest](#cancelrequest12). |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID | Error Message |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151      | Scene parameters validate failed, possible causes: 1. The asset is not a cloud-enhanced composite photo asset.        |
+| 23800301      | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. The database is corrupted.<br>2. The file system is abnormal.<br>3. The IPC request timed out.         |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<ArrayBuffer> {
+  onDataPrepared(data: ArrayBuffer) {
+    if (data === undefined) {
+      console.error('Error occurred when preparing data');
+      return;
+    }
+    console.info('Succeeded in preparing composite auxiliary image data');
+  }
+}
+
+async function example(context: Context) {
+  console.info('requestCompositeAuxiliaryImageData');
+  // Construct the query conditions to obtain the composite image (cloud-enhanced) photo asset in the media library.
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  // Create a data processor to receive the auxiliary image data in the composite image.
+  const handler = new MediaHandler();
+  let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+  phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+    if (err) {
+      console.error(`Failed to get assets. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in getting assets');
+    // Obtain the first asset in the query result.
+    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (photoAsset === undefined) {
+      console.error('photoAsset is undefined');
+      return;
+    }
+    try {
+      // Request the auxiliary image data in the composite image. The returned requestId can be used to cancel the request through the cancelRequest API.
+      let requestId: string = await photoAccessHelper.MediaAssetManager.requestCompositeAuxiliaryImageData(context, photoAsset, handler);
+      console.info('Succeeded in requesting composite auxiliary image data, requestId: ' + requestId);
+    } catch (err) {
+      console.error(`failed to requestCompositeAuxiliaryImageData, error code is ${err.code}, message is ${err.message}`);
+    }
   });
 }
 ```
