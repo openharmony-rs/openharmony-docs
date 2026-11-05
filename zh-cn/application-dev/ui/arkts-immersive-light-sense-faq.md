@@ -232,6 +232,48 @@ Button('Click Me')
 - 使用较厚的材质样式（如REGULAR、THICK或ULTRA_THICK），降低材质透明度以减少折射效果。
 - 为材质层添加[materialColor](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)赋色，通过叠加一层半透明颜色降低折射的可见程度。
 
+**代码示例**
+
+```ts
+// 薄材质样式透明度较高，边框折射周围背景颜色的效果更明显
+Column() {
+  Text('ULTRA_THIN')
+}
+.width(328)
+.height(56)
+.borderRadius(28)
+.backgroundColor(Color.Transparent)
+.systemMaterial(new uiMaterial.ImmersiveMaterial({
+  style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+}))
+
+// 推荐写法一：使用较厚的材质样式，降低材质透明度以减少折射效果
+Column() {
+  Text('THICK')
+}
+.width(328)
+.height(56)
+.borderRadius(28)
+.backgroundColor(Color.Transparent)
+.systemMaterial(new uiMaterial.ImmersiveMaterial({
+  style: uiMaterial.ImmersiveStyle.THICK,
+}))
+
+// 推荐写法二：通过materialColor叠加一层半透明颜色，降低折射的可见程度
+// 注意颜色需带有透明度，纯不透明颜色会遮挡材质效果
+Column() {
+  Text('materialColor')
+}
+.width(328)
+.height(56)
+.borderRadius(28)
+.backgroundColor(Color.Transparent)
+.systemMaterial(new uiMaterial.ImmersiveMaterial({
+  style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+  materialColor: '#80FFFFFF', // 带有50%透明度的白色
+}))
+```
+
 ## materialColor传入不透明颜色后材质效果消失
 
 **问题现象**
@@ -300,6 +342,39 @@ new uiMaterial.ImmersiveMaterial({
 1. 确认材质样式为THIN或ULTRA_THIN。
 2. 确认文字颜色通过资源接口（如`$r('app.color.xxx')`）设置，而非硬编码颜色值。
 3. 将系统沉浸光感配置调高后再观察效果。
+
+**代码示例**
+
+```ts
+// 错误写法：REGULAR样式下自动反色不生效，且硬编码颜色值不会触发自动反色
+Column() {
+  Text('自动反色')
+    .fontColor(Color.White) // 硬编码颜色，不参与自动反色
+}
+.width(328)
+.height(56)
+.borderRadius(28)
+.backgroundColor(Color.Transparent)
+.systemMaterial(new uiMaterial.ImmersiveMaterial({
+  style: uiMaterial.ImmersiveStyle.REGULAR, // 自动反色仅在THIN或ULTRA_THIN样式下生效
+  colorInvert: true,
+}))
+
+// 推荐写法：材质样式为THIN，文字颜色通过资源接口设置
+Column() {
+  Text('自动反色')
+    // 使用带深浅色值的系统资源，也可使用自定义资源$r('app.color.text_color')
+    .fontColor($r('sys.color.font_primary'))
+}
+.width(328)
+.height(56)
+.borderRadius(28)
+.backgroundColor(Color.Transparent)
+.systemMaterial(new uiMaterial.ImmersiveMaterial({
+  style: uiMaterial.ImmersiveStyle.THIN,
+  colorInvert: true,
+}))
+```
 
 ## 同时设置shadow属性和沉浸式系统材质后阴影效果不符合预期
 
