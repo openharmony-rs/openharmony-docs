@@ -89,7 +89,7 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     console.info('Ability onCreate');
   }
- 
+
   onDestroy(): void {
     console.info('Ability onDestroy');
   }
