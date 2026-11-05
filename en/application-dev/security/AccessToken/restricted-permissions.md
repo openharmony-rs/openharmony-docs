@@ -1196,3 +1196,31 @@ Allows an application to obtain the device hardware information.
 **Supported devices**: PCs/2-in-1 devices
  
 **Since**: 26.0.1
+
+## ohos.permission.vehicle.MMA_OCCUPANT
+ 
+Allows system applicatons to call the passenger perception interface to identify the number and status of passengers in the vehicle.
+ 
+<!--RP119--><!--RP119End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: cars
+ 
+**Since**: 26.0.1
+ 
+## ohos.permission.vehicle.MMA_CARSTATUS
+ 
+Allows system applications to obtain vehicle status information.
+ 
+<!--RP120--><!--RP120End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: cars
+ 
+**Since**: 26.0.1
