@@ -1,6 +1,6 @@
 ---
 kits: ["Audio Kit / 音频服务"]
-description: "指导开发者在非实时场景下使用 OHAudioSuite 离线编辑管线组合输入、效果、输出节点处理 PCM 音频数据，涵盖基础均衡器编辑、音源分离、多路混音与级联等场景的完整开发步骤。"
+description: "指导开发者在非实时场景下使用OHAudioSuite离线编辑管线组合输入、效果、输出节点处理PCM音频数据，涵盖基础均衡器编辑、音源分离、多路混音与级联等场景的完整开发步骤。"
 keywords: [OHAudioSuite, 离线编辑, 均衡器, 混音, 级联, 音源分离, AUDIOSUITE_PIPELINE_EDIT_MODE, OH_AudioSuiteEngine_RenderFrame, OH_AudioSuiteEngine_MultiRenderFrame]
 doctype: guide
 status: active
@@ -645,9 +645,3 @@ target_link_libraries(entry PUBLIC libohaudiosuite.so)
 
 - [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
 <!--RP1End-->
-
-## 相关主题推荐
-
-- [音频编创开发概述(C/C++)](audio-suite.md)
-- [实时预览(C/C++)](audio-suite-real-time-rendering.md)
-- [音频效果(C/C++)](audio-suite-effects.md)
