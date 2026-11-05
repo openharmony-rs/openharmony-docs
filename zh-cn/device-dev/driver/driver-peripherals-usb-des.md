@@ -1683,7 +1683,7 @@ USB ACM设备核心代码路径为drivers\peripheral\usb\gadget\function\acm\cdc
         }
         // 释放通知请求
         AcmFreeCtrlRequests(acm);
-        AcmFreeNotifyRequest(acm);
+        AcmFreeNotifyReqeust(acm);
          /* 停止接收Event EP0控制传输 */
         (void)UsbFnCloseInterface(acm->ctrlIface.handle);
         (void)UsbFnCloseInterface(acm->dataIface.handle);
