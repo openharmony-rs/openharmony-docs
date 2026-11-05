@@ -47,7 +47,7 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
      rendererFlags: 1 // 音频渲染器标志。
    }
    // 创建soundPool实例。
-   this.soundPool = await media.createSoundPool(14,audioRendererInfo);
+   this.soundPool = await media.createSoundPool(14, audioRendererInfo);
    ```
    
    ArkTS-Sta示例：
