@@ -878,9 +878,9 @@ static void OnMIDIReceived(void *userData, const OH_MIDIEvent *events, size_t ev
 ```
 
 ## 完整示例
-<!--RR1-->
+<!--RP1-->
 完整的示例代码请参考[MIDI示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi)。
-<!--RR1End-->
+<!--RP1End-->
 示例项目展示了：
 - 创建和销毁MIDI客户端。
 - 设备枚举和设备变化回调。
