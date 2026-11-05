@@ -82,22 +82,22 @@ import {
 import { BusinessError } from '@kit.BasicServicesKit';
 import { calendarManager } from '@kit.CalendarKit';
 import { window } from '@kit.ArkUI';
- 
+
 export let calendarMgr: calendarManager.CalendarManager | null = null;
 export let mContext: common.UIAbilityContext | null = null;
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     console.info('Ability onCreate');
   }
- 
+
   onDestroy(): void {
     console.info('Ability onDestroy');
   }
- 
+
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // 主窗口已创建，请为此Ability设置主页
     console.info('Ability onWindowStageCreate');
- 
+
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
         console.error(`Failed to load the content. Code: ${err.code}, message: ${err.message}`);
@@ -115,17 +115,17 @@ export default class EntryAbility extends UIAbility {
       console.error(`get Permission error, error. Code: ${error.code}, message: ${error.message}`);
     })
   }
- 
+
   onWindowStageDestroy(): void {
     // 主窗口已销毁，释放 UI 相关资源
     console.info('Ability onWindowStageDestroy');
   }
- 
+
   onForeground(): void {
     // Ability 进入前台
     console.info('Ability onForeground');
   }
- 
+
   onBackground(): void {
     // Ability 进入后台
     console.info('Ability onBackground');
