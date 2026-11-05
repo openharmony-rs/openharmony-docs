@@ -2,10 +2,11 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-10-29T09:12:45.860Z pushedAt=2026-10-30T07:06:03.688Z nl=1 -->
 
 This file describes the types related to ArkUI UIContext, including types for custom component building, UIObserver event listener callbacks, node identifier, pointer style, and context.
 
@@ -122,8 +123,8 @@ Defines the callback type for listening for the rendering state of a specific no
 
 | Name | Type             | Mandatory| Description                               |
 | ------- | ----------------- | ---- | --------------------------------- |
-| state | [NodeRenderState](arkts-apis-uicontext-e.md#noderenderstate20) | Yes| Current rendering status of the node, which indicates whether the monitored node is in the renderable state.|
-| node | [FrameNode](js-apis-arkui-frameNode.md) | No| Component that triggers the rendering status change listener. When you need to obtain the component node information for which the rendering state has changed, you can retrieve it via this parameter. If the component has been released, null is returned. If this parameter is not passed, **undefined** is used by default.|
+| state | [NodeRenderState](arkts-apis-uicontext-e.md#noderenderstate20) | Yes| Current rendering state of the node, which indicates whether the monitored node is in the renderable state.|
+| node | [FrameNode](js-apis-arkui-frameNode.md) | No| Component that triggers the rendering state change listener. When you need to obtain the component node information for which the rendering state has changed, you can retrieve it via this parameter. If the component has been released, null is returned. If this parameter is not passed, **undefined** is used by default.|
 
 ## GestureListenerCallback<sup>20+</sup>
 

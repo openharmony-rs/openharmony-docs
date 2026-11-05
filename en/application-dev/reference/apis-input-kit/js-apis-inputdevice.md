@@ -6,18 +6,22 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:23:48.181Z pushedAt=2026-06-12T07:38:31.757Z -->
+<!-- md-trans-meta sourceCommit=c7eb0f7a0e5ece46961597d0139b9fc3f22f29e0 translatedAt=2026-11-04T04:38:06.468Z pushedAt=2026-11-04T08:04:44.691Z nl=1 -->
 
 The inputDevice module implements input device management functions such as listening for the connection and disconnection of input devices and querying input device information such as the device name.
+
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
+
 ## Modules to Import
+
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## inputDevice.getDeviceList<sup>9+</sup>
@@ -67,7 +71,7 @@ struct Index {
           } catch (error) {
             console.error(`Failed to get device id list, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
-        })
+        });
     }
   }
 }
@@ -261,6 +265,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -284,9 +289,9 @@ struct Index {
 
 ## inputDevice.on('change')<sup>9+</sup>
 
-on(type: "change", listener: Callback&lt;DeviceListener&gt;): void
+on(type: 'change', listener: Callback&lt;DeviceListener&gt;): void
 
-Enables listening for device hot swap events. When performing this operation, you need to connect to external devices such as a mouse, keyboard, and touchscreen. This API uses an asynchronous callback to return the result.
+Registers a listener for the hot-plug event of input devices. This API requires an external device such as a mouse, keyboard, or touchscreen to be connected. This API uses an asynchronous callback to return the result. It is recommended to perform this operation in the main thread of the application, and unsubscribe before the thread exits.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -310,6 +315,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```js
 import { inputDevice } from '@kit.InputKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const DOMAIN = 0x0000;
 
@@ -317,7 +323,7 @@ const DOMAIN = 0x0000;
 @Component
 struct Index {
   @State isPhysicalKeyboardExist: boolean = false;
-  @State message: string = "Click to obtain the device list and monitor device hot-plug events";
+  @State message: string = 'Click to obtain the device list and monitor device hot-plug events';
   keyboards: Map<number, inputDevice.KeyboardType> = new Map();
 
   build() {
@@ -337,14 +343,14 @@ struct Index {
                       this.keyboards.set(data[i], type);
                     }
                   }).catch((error: BusinessError) => {
-                    console.error(`Failed to connect KeyBoard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                    console.error(`Failed to get keyboard type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                   });
                 }
               }).catch((error: BusinessError) => {
                 console.error(`Failed to get Device List, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               });
               // 2. Listen for device hot-swap events.
-              inputDevice.on("change", (data) => {
+              inputDevice.on('change', (data) => {
                 // Print Log
                 hilog.info(DOMAIN, 'InputDevice', `Device event info: %{public}s`, JSON.stringify(data));
                 // Get Keyboard Type
@@ -357,7 +363,7 @@ struct Index {
                     this.keyboards.set(data.deviceId, type);
                   }
                 }).catch((error: BusinessError) => {
-                  console.error(`Failed to get DeviceId, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                  console.error(`Failed to get keyboard type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 });
                 if (this.keyboards.get(data.deviceId) === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD &&
                   data.type === 'remove') {
@@ -366,11 +372,11 @@ struct Index {
                   this.keyboards.delete(data.deviceId);
                 }
               });
-              this.message = "Device monitoring enabled successfully"
+              this.message = 'Device monitoring enabled successfully'
             } catch (error) {
               // Print Error Log
               hilog.error(DOMAIN, 'InputDevice', `Execute failed, error: %{public}s`,
-                JSON.stringify(error, ["code", "message"]));
+                JSON.stringify(error, ['code', 'message']));
               this.message = `Failed to enable device monitoring. Click to retry. Error message:${JSON.stringify(error,
                 ["code", "message"])}`
             }
@@ -383,9 +389,9 @@ struct Index {
 
 ## inputDevice.off('change')<sup>9+</sup>
 
-off(type: "change", listener?: Callback&lt;DeviceListener&gt;): void
+off(type: 'change', listener?: Callback&lt;DeviceListener&gt;): void
 
-Disables listening for device hot swap events. This API is called before the application exits. This API uses an asynchronous callback to return the result.
+Unsubscribes from the hot-plug event of input devices. This API uses an asynchronous callback to return the result. The unsubscription must be performed in the same thread as the subscription.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -408,6 +414,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -422,23 +429,23 @@ struct Index {
 
           try {
             // Listen for Device Hot Swap Events
-            inputDevice.on("change", callback);
+            inputDevice.on('change', callback);
           } catch (error) {
-            console.error(`Failed to listen device event , Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            console.error(`Failed to listen to device event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
 
           // Disable this listener.
           try {
             // Cancel Listening for Device Hot Swap Events
-            inputDevice.off("change", callback);
+            inputDevice.off('change', callback);
           } catch (error) {
-            console.error(`Failed to cancel listening device event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            console.error(`Failed to cancel listening to device event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
 
           // Disable all listeners.
           try {
             // Cancel Listening for Device Hot Swap Events
-            inputDevice.off("change");
+            inputDevice.off('change');
           } catch (error) {
             console.error(`Failed to cancel all listening device event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -672,6 +679,10 @@ struct Index {
           try {
             // Querying Key Support
             inputDevice.supportKeys(1, [17, 22, 2055], (error: BusinessError, supportResult: Array<Boolean>) => {
+              if (error) {
+                console.error(`Failed to query support key, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
               console.info(`Succeeded in querying support keys, supportResult: ${JSON.stringify(supportResult)}.`);
             });
           } catch (error) {
@@ -775,6 +786,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -785,10 +797,10 @@ struct Index {
         .onClick(() => {
           // Check whether the input device whose ID is 1 supports keys 17, 22, and 2055.
           try {
-            let supportResult: Array<Boolean> = inputDevice.supportKeysSync(1, [17, 22, 2055])
-            console.info(`Succeeded in querying support keys, result: ${JSON.stringify(supportResult)}.`)
+            let supportResult: Array<Boolean> = inputDevice.supportKeysSync(1, [17, 22, 2055]);
+            console.info(`Succeeded in querying support keys, result: ${JSON.stringify(supportResult)}.`);
           } catch (error) {
-            console.error(`Failed to query support key, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`)
+            console.error(`Failed to query support key, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -941,6 +953,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -951,10 +964,10 @@ struct Index {
         .onClick(() => {
           // Query the keyboard type of the input device whose ID is 1.
           try {
-            let type: inputDevice.KeyboardType = inputDevice.getKeyboardTypeSync(1)
-            console.info(`Succeeded in getting keyboard type: ${JSON.stringify(type)}.`)
+            let type: inputDevice.KeyboardType = inputDevice.getKeyboardTypeSync(1);
+            console.info(`Succeeded in getting keyboard type: ${JSON.stringify(type)}.`);
           } catch (error) {
-            console.error(`Failed to get keyboard type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`)
+            console.error(`Failed to get keyboard type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1047,9 +1060,10 @@ Specifies whether to enable a function key (for example, **CapsLock**). This API
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Input Device Error Codes](errorcode-inputdevice.md).
 
+
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 3900002      | There is currently no keyboard device connected. |
 | 3900003      | It is prohibited for non-input applications. |
@@ -1144,7 +1158,6 @@ Provides information about an input device.
 **System capability**: SystemCapability.MultimodalInput.Input.InputDevice
 
 <!--Table: 20%; 20%; 10%; 10%; 40%-->
-
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
 | id                   | number                                 | No| No| Unique ID of the input device. If a physical device is repeatedly plugged and unplugged, its ID may change.|
@@ -1157,8 +1170,9 @@ Provides information about an input device.
 | version<sup>9+</sup> | number                                 | No| No| Version information of the input device.                                        |
 | phys<sup>9+</sup>    | string                                 | No| No| Physical address of the input device.                                        |
 | uniq<sup>9+</sup>    | string                                 | No| No| Unique ID of the input device.                                        |
-| isVirtual<sup>23+</sup>    | boolean                                 | No| Yes| Whether the input device is a virtual device.<br>The value **true** indicates that the device is a virtual device, and the value **false** indicates that the device is a non-virtual device.                                     |
-| isLocal<sup>23+</sup>    | boolean                                 | No| Yes| Whether the input device is a local device.<br>The value **true** indicates that the device is a local device, and the value **false** indicates that the device is a non-local device.                                      |
+| isVirtual<sup>23+</sup>    | boolean                                 | No | Yes | Whether the input device is a virtual device.<br>true indicates a virtual device, and false indicates a non-virtual device. If this field is absent, the default value is false.                                      |
+| isLocal<sup>23+</sup>    | boolean                                 | No | Yes | Whether the input device is a local device.<br>true indicates a local device, and false indicates a non-local device. If this field is absent, the default value is false.                                       |
+| displayId  | number                                  | Yes | Yes | ID of the bound target display. This field exists when there is a binding relationship in the system, and does not exist when there is no binding.<br>**Since:** 26.0.1<br>**Model restriction:** This API can be used only in the stage model.|
 
 ## AxisType<sup>9+</sup>
 

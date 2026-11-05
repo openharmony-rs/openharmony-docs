@@ -34,7 +34,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | ERR_RUNTIME_ERROR                     | 19020002 | 运行时错误。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。              |
 | ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>             | 19020003 | 参数检查失败。 <br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。               |
 | ERR_CRYPTO_OPERATION                  | 19030001 | 调用三方算法库API出错。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
-| ERR_CERT_SIGNATURE_FAILURE            | 19030002 | 证书签名验证错误。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
+| ERR_CERT_SIGNATURE_FAILURE            | 19030002 | 证书验签错误。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
 | ERR_CERT_NOT_YET_VALID                | 19030003 | 证书尚未生效。  <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。              |
 | ERR_CERT_HAS_EXPIRED                  | 19030004 | 证书过期。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                  |
 | ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY | 19030005 | 无法获取证书的颁发者。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
@@ -50,11 +50,11 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | ERR_CRL_NOT_FOUND                | 19030015 | 无法获取证书吊销列表。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 | ERR_CRL_NOT_YET_VALID            | 19030016 | 证书吊销列表尚未生效。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 | ERR_CRL_HAS_EXPIRED              | 19030017 | 证书吊销列表已过期。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
-| ERR_CRL_SIGNATURE_FAILURE        | 19030018 | 证书吊销列表签名验证失败。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| ERR_CRL_SIGNATURE_FAILURE        | 19030018 | 证书吊销列表验签失败。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 | ERR_CRL_ISSUER_NOT_FOUND         | 19030019 | 无法获取证书吊销列表颁发者。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 | ERR_OCSP_RESPONSE_NOT_FOUND      | 19030020 | 无法获取在线证书状态协议（OCSP）响应。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 | ERR_OCSP_RESPONSE_INVALID        | 19030021 | OCSP响应无效。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
-| ERR_OCSP_SIGNATURE_FAILURE       | 19030022 | OCSP签名验证失败。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| ERR_OCSP_SIGNATURE_FAILURE       | 19030022 | OCSP验签失败。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 | ERR_OCSP_CERT_STATUS_UNKNOWN     | 19030023 | OCSP证书状态未知。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 | ERR_NETWORK_TIMEOUT              | 19030024 | 网络连接超时。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
@@ -483,7 +483,7 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 | hostnames | Array\<string> | 否   | 是   | 主机名列表。验证证书的主体备用名（SAN）或通用名（CN）是否包含指定的主机名。最大数量：100，每个主机名最大长度：128。<br>用于HTTPS等场景。<br>只要匹配其中一个主机名即校验成功。 |
 | emailAddresses | Array\<string> | 否   | 是   | 邮箱地址列表。验证证书是否包含指定的邮箱地址。最大数量：1，邮箱地址最大长度：128。 |
 | keyUsage | Array\<[KeyUsageType](#keyusagetype12)> | 否   | 是   | 密钥用途列表。验证证书的密钥用途扩展是否包含指定的用途。最大数量：9。<br>证书必须包含所有指定的密钥用途才校验成功。 |
-| userId | Uint8Array | 否   | 是   | 用户ID。用于验证国密SM2证书时设置签名验证所需的用户标识符。最大长度：128。<br>国密证书场景最常用的值为`[0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38]`（对应ASCII字符串为"1234567812345678"，16字节）。<br>设置userId后不支持证书吊销检查。 |
+| userId | Uint8Array | 否   | 是   | 用户ID。用于验证国密SM2证书时设置验签所需的用户标识符。最大长度：128。<br>国密证书场景最常用的值为`[0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38]`（对应ASCII字符串为"1234567812345678"，16字节）。<br>设置userId后不支持证书吊销检查。 |
 | revokedParams | [X509CertRevokedParams](#x509certrevokedparams) | 否   | 是   | 证书吊销检查参数。用于检查证书是否被吊销。包含CRL列表、OCSP响应数据、是否允许在线检查等配置。 |
 
 ## CertValidationResult
@@ -8496,7 +8496,7 @@ validateCert(cert: X509Cert, params: CertValidationParams): Promise&lt;CertValid
 2. 颁发者搜索顺序：系统首先从信任锚源中搜索颁发者。如果无法找到颁发者，系统将在不受信任的证书列表（untrustedCerts）中搜索。在线下载的中间CA证书即为不受信任的证书。
 3. 信任锚锁定：一旦在信任锚源中找到颁发者，后续的查找过程就不会回溯到不受信任的证书，即后续的证书必须来自信任锚源。
 4. 构建完成条件：如果partialChain为false（默认值），则仅当找到根证书（来自签名证书）时，构建才算完成。如果partialChain为true，则当在信任锚源中首次找到颁发者时，构建即完成。
-5. 后续验证：证书链构建完成后，执行其他验证操作，如证书签名验证和证书吊销检查。
+5. 后续验证：证书链构建完成后，执行其他验证操作，如证书验签和证书吊销检查。
 
 **起始版本**：26.0.0
 
@@ -11265,13 +11265,13 @@ function doTestParsePkcs12() {
       needsOtherCerts: false
     };
     let p12: cert.Pkcs12Data = cert.parsePkcs12(p12Cert, conf);
-    console.info('parsePKCS12 result: success.');
+    console.info('parsePkcs12 result: success.');
     if (p12.privateKey) {
       console.info('privateKey:' + p12.privateKey.toString());
     }
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error(`parsePKCS12 failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    console.error(`parsePkcs12 failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -11472,7 +11472,7 @@ async function doTestParsePkcs12() {
         0x7e, 0x02, 0x02, 0x08, 0x00]);
 
     let p12: cert.Pkcs12Data = await cert.parsePkcs12(p12Cert, '123456');
-    console.info('parsePKCS12 result: success.');
+    console.info('parsePkcs12 result: success.');
     if (p12.privateKey) {
       console.info('privateKey:' + p12.privateKey.toString());
     }
@@ -11489,7 +11489,7 @@ async function doTestParsePkcs12() {
     }
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error(`parsePKCS12 failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    console.error(`parsePkcs12 failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```

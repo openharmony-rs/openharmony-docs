@@ -2,11 +2,11 @@
 
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=29f3919446ee01733553b9b39493ee11224dad86 translatedAt=2026-07-31T02:11:32.451Z pushedAt=2026-07-31T03:50:50.524Z -->
+<!--Adviser: @qin_wei_jie-->
+<!-- md-trans-meta sourceCommit=2058a696dfae025aecb385ae301d1efe33545c92 translatedAt=2026-11-04T04:09:57.538Z pushedAt=2026-11-04T10:12:50.063Z nl=1 -->
 
 > **NOTE**
 >
@@ -22,10 +22,10 @@ Enumerates the DRM error codes.
 
 | Name                      | Value  | Description           |
 | ------------------------- | ---- | ------------    |
-| ERROR_UNKNOWN       | 24700101    | Unknown error. It is returned when an unclassifiable exception occurs.   |
-| MAX_SYSTEM_NUM_REACHED   | 24700103    | Maximum number (64) of **MediaKeySystem** instances reached.   |
-| MAX_SESSION_NUM_REACHED    | 24700104    | Maximum number (64) of **MediaKeySession** instances reached.    |
-| SERVICE_FATAL_ERROR  | 24700201    | DRM service exception.    |
+| ERROR_UNKNOWN       | 24700101    | Unknown error. Returned when an exception that cannot be classified occurs. Check whether the input parameters are valid and whether the DRM service is running properly.   |
+| MAX_SYSTEM_NUM_REACHED   | 24700103    | The number of MediaKeySystem instances exceeds the upper limit (64). Call [destroy](arkts-apis-drm-MediaKeySystem.md#destroy) to destroy the unnecessary MediaKeySystem instances and try again.    |
+| MAX_SESSION_NUM_REACHED    | 24700104    | The number of MediaKeySession instances exceeds the upper limit (64). Call [destroy](arkts-apis-drm-MediaKeySession.md#destroy) to destroy the unnecessary MediaKeySession instances and try again.     |
+| SERVICE_FATAL_ERROR  | 24700201    | DRM service error. Returned when a fatal error occurs in the DRM service. Possible causes: insufficient system resources, DRM service process crash, or system exception. Restart the application or the device and try again.     |
 
 ## PreDefinedConfigName
 
@@ -38,8 +38,8 @@ Enumerates the predefined configuration properties.
 | Name                      | Value  | Description           |
 | ------------------------- | ---- | ------------    |
 | CONFIG_DEVICE_VENDOR        | 'vendor'    | Plugin vendor name, which corresponds to the value of **vendor** in the return value of [getConfigurationString](arkts-apis-drm-MediaKeySystem.md#getconfigurationstring).  |
-| CONFIG_DEVICE_VERSION    | 'version'    | Plugin version number, which corresponds to the value of **version** in the return value of [getConfigurationString](arkts-apis-drm-MediaKeySystem.md#getconfigurationstring).    |
-| CONFIG_DEVICE_DESCRIPTION     | 'description'    | Device description, which corresponds to the value of **description** in the return value of [getConfigurationString](arkts-apis-drm-MediaKeySystem.md#getconfigurationstring).     |
+| CONFIG_DEVICE_VERSION    | 'version'    | Plugin version number, obtained through the [getConfigurationString](arkts-apis-drm-MediaKeySystem.md#getconfigurationstring) API to get the corresponding configuration value of the version.     |
+| CONFIG_DEVICE_DESCRIPTION     | 'description'    | Device description, obtained through the [getConfigurationString](arkts-apis-drm-MediaKeySystem.md#getconfigurationstring) API to get the corresponding configuration value of the description.      |
 | CONFIG_DEVICE_ALGORITHMS   | 'algorithms'    | Supported algorithms, which correspond to the value of **algorithms** in the return value of [getConfigurationString](arkts-apis-drm-MediaKeySystem.md#getconfigurationstring).    |
 | CONFIG_DEVICE_UNIQUE_ID    | 'deviceUniqueId'    | Unique device ID, which corresponds to the value of **deviceUniqueId** in the return value of [getConfigurationByteArray](arkts-apis-drm-MediaKeySystem.md#getconfigurationbytearray).    |
 | CONFIG_SESSION_MAX         | 'maxSessionNum'    | Maximum number of supported sessions, which corresponds to the value of **maxSessionNum** in the return value of [getConfigurationString](arkts-apis-drm-MediaKeySystem.md#getconfigurationstring).    |
@@ -70,7 +70,7 @@ Enumerates the statuses of offline media keys.
 | ------------------------- | ---- | ------------    |
 | OFFLINE_MEDIA_KEY_STATUS_UNKNOWN        | 0    | Unknown status.  |
 | OFFLINE_MEDIA_KEY_STATUS_USABLE   | 1    | The media key is available.    |
-| OFFLINE_MEDIA_KEY_STATUS_INACTIVE     | 2    | The media key is inactive.      |
+| OFFLINE_MEDIA_KEY_STATUS_INACTIVE     | 2    | Inactive state, possibly caused by key expiration or server-side disabling, requiring the key to be re-obtained.       |
 
 ## CertificateStatus
 
@@ -84,7 +84,7 @@ Enumerates the statuses of device certificates.
 | ------------------------- | ---- | ------------    |
 | CERT_STATUS_PROVISIONED        | 0    | A device certificate is provisioned.  |
 | CERT_STATUS_NOT_PROVISIONED   | 1    | A device certificate is not provisioned.    |
-| CERT_STATUS_EXPIRED    | 2    | The device certificate has expired.      |
+| CERT_STATUS_EXPIRED    | 2    | The device certificate has expired. A new device certificate needs to be applied for.       |
 | CERT_STATUS_INVALID  | 3    | The device certificate is invalid.    |
 | CERT_STATUS_UNAVAILABLE  | 4    | The device certificate is unavailable.    |
 
@@ -99,9 +99,9 @@ Enumerates the types of media key requests.
 | Name                      | Value  | Description           |
 | ------------------------- | ---- | ------------    |
 | MEDIA_KEY_REQUEST_TYPE_UNKNOWN        | 0    | Unknown type.  |
-| MEDIA_KEY_REQUEST_TYPE_INITIAL    | 1    | Initial request.    |
-| MEDIA_KEY_REQUEST_TYPE_RENEWAL     | 2    | Renewal request.      |
-| MEDIA_KEY_REQUEST_TYPE_RELEASE   | 3    | Release request.    |
+| MEDIA_KEY_REQUEST_TYPE_INITIAL    | 1    | Initial request, triggered when a media key is obtained for the first time.     |
+| MEDIA_KEY_REQUEST_TYPE_RENEWAL     | 2    | Renewal request, triggered when a license is about to expire or its validity period needs to be extended.       |
+| MEDIA_KEY_REQUEST_TYPE_RELEASE   | 3    | Release request, triggered when an offline key is actively released or a session is closed, used to notify the server to release resources.     |
 | MEDIA_KEY_REQUEST_TYPE_NONE    | 4    | No request.    |
 | MEDIA_KEY_REQUEST_TYPE_UPDATE    | 5    | Update request.    |
 
@@ -116,7 +116,7 @@ Enumerates the content protection levels.
 | Name                      | Value  | Description           |
 | ------------------------- | ---- | ------------    |
 | CONTENT_PROTECTION_LEVEL_UNKNOWN        | 0    | Unknown content protection level.  |
-| CONTENT_PROTECTION_LEVEL_SW_CRYPTO   | 1    | Software-based content protection.    |
-| CONTENT_PROTECTION_LEVEL_HW_CRYPTO    | 2    | Hardware-based content protection.      |
-| CONTENT_PROTECTION_LEVEL_ENHANCED_HW  | 3    | Enhanced hardware-based content protection.    |
+| CONTENT_PROTECTION_LEVEL_SW_CRYPTO   | 1    | Software content protection level. Uses software decryption and is suitable for playback scenarios with low security requirements.     |
+| CONTENT_PROTECTION_LEVEL_HW_CRYPTO    | 2    | Hardware content protection level. Uses hardware decryption, provides higher security, and is suitable for most commercial content playback scenarios.       |
+| CONTENT_PROTECTION_LEVEL_ENHANCED_HW  | 3    | Hardware-enhanced content protection level. Uses a hardware security module for decryption, provides the highest security, and is suitable for high-value content playback scenarios.     |
 | CONTENT_PROTECTION_LEVEL_MAX  | 4    | Maximum content protection level.    |

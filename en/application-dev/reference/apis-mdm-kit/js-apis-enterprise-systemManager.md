@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=8c71691a46c8cb9a09ff65ce169e908716aff94c translatedAt=2026-11-04T05:36:05.777Z pushedAt=2026-11-04T08:04:44.798Z nl=1 -->
 
 This module provides system management capabilities, including NTP time server settings, OTA update policy management, system update management, key event handling policies, log collection, and device activation lock management. It is suitable for enterprise device management scenarios, helping enterprise administrators uniformly manage device system configurations, update policies, and security policies, thereby improving enterprise device management efficiency and security.
 
@@ -28,13 +29,15 @@ setNTPServer(admin: Want, server: string): void
 
 Sets the Network Time Protocol (NTP) time server. After successful configuration, the system will use the specified NTP server for time synchronization to calibrate the system time. This API is suitable for scenarios where enterprise devices require unified time synchronization, ensuring that device time remains consistent with standard time and avoiding business issues caused by inaccurate time, such as inconsistent log timestamps and certificate validation failures.
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -122,8 +125,8 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-  systemManager.getNTPServer(wantTemp);
-  console.info('Succeeded in getting NTP server.');
+  let result: string = systemManager.getNTPServer(wantTemp);
+  console.info(`Succeeded in getting NTP server. result: ${result}`);
 } catch (err) {
   console.error(`Failed to get ntp server. Code is ${err.code}, message is ${err.message}`);
 }
@@ -135,13 +138,15 @@ setOtaUpdatePolicy(admin: Want, policy: OtaUpdatePolicy): void
 
 Sets the update policy. After the setting is successful, the system performs OTA updates based on the specified policy type. Different policy types correspond to different update behaviors. In intranet updates, call [systemManager.notifyUpdatePackages](#systemmanagernotifyupdatepackages) to notify the system of the update packages and then call this API to set the upgrade policy.
 
+> **NOTE**
+>
+> In a multi-MDM application scenario, the [exclusive](../../mdm/mdm-kit-multi-mdm.md#rule-2-policy-exclusivity) rule applies.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy exclusivity](../../mdm/mdm-kit-multi-mdm.md#rule-2-policy-exclusivity).
 
 **Parameters**
 
@@ -175,7 +180,7 @@ let wantTemp: Want = {
 // Default update policy.
 let otaUpdatePolicy1: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.DEFAULT,
-  "version": "version_1.0.0.0",
+  "version": "version_1.0.0.0"
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy1);
@@ -186,7 +191,7 @@ try {
 // Prohibit update.
 let otaUpdatePolicy2: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.PROHIBIT,
-  "version": "version_1.0.0.1",
+  "version": "version_1.0.0.1"
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy2);
@@ -194,11 +199,11 @@ try {
 } catch (err) {
   console.error(`Failed to set ota update policy. Code is ${err.code}, message is ${err.message}`);
 }
-// Enforce update. 
+// Enforce update.
 let otaUpdatePolicy3: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.UPDATE_TO_SPECIFIC_VERSION,
   "version": "version_1.0.0.2",
-  "latestUpdateTime": 1716343200, // Timestamp
+  "latestUpdateTime": 1716343200 // Timestamp
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy3);
@@ -211,7 +216,7 @@ let otaUpdatePolicy4: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.WINDOWS,
   "version": "version_1.0.0.3",
   "installStartTime": 1716281049, // Timestamp.
-  "installEndTime": 1716343200, // Timestamp.
+  "installEndTime": 1716343200 // Timestamp
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy4);
@@ -223,7 +228,7 @@ try {
 let otaUpdatePolicy5: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.POSTPONE,
   "version": "version_1.0.0.4",
-  "delayUpdateTime": 5, // Unit: hour
+  "delayUpdateTime": 5 // Unit (hour)
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy5);
@@ -235,7 +240,7 @@ try {
 let otaUpdatePolicy6: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.DEFAULT,
   "version": "version_1.0.0.5",
-  "disableSystemOtaUpdate": true,
+  "disableSystemOtaUpdate": true
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy6);
@@ -292,7 +297,7 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-  let policy: systemManager.OtaUpdatePolicy= systemManager.getOtaUpdatePolicy(wantTemp);
+  let policy: systemManager.OtaUpdatePolicy = systemManager.getOtaUpdatePolicy(wantTemp);
   console.info(`Succeeded in getting update policy: ${JSON.stringify(policy)}`);
 } catch (err) {
   console.error(`Failed to get update policy. Code is ${err.code}, message is ${err.message}`);
@@ -345,7 +350,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 import { systemManager } from '@kit.MDMKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -367,9 +372,9 @@ let fileDir = "/xxxx/xxxx/";
 let path1: string = "update_sd_base.zip";
 let path2: string = "update_sd_cust_xxxxx_all_cn.zip";
 let path3: string = "update_sd_preload_xxxxx_all_cn_R1.zip";
-let fd1: number = fs.openSync(fileDir + path1, fs.OpenMode.READ_ONLY).fd;
-let fd2: number = fs.openSync(fileDir + "xxxxx/" + path2, fs.OpenMode.READ_ONLY).fd;
-let fd3: number = fs.openSync(fileDir + "xxxxx/" + path3, fs.OpenMode.READ_ONLY).fd;
+let fd1: number = fileIo.openSync(fileDir + path1, fileIo.OpenMode.READ_ONLY).fd;
+let fd2: number = fileIo.openSync(fileDir + "xxxxx/" + path2, fileIo.OpenMode.READ_ONLY).fd;
+let fd3: number = fileIo.openSync(fileDir + "xxxxx/" + path3, fileIo.OpenMode.READ_ONLY).fd;
 let package1: systemManager.Package = {
   // Replace with actual values.
   "type": systemManager.PackageType.FIRMWARE,
@@ -515,10 +520,12 @@ systemManager.getUpdateAuthData(wantTemp).then((result: string) => {
 
 setOtaUpdateNonceEnable(admin: Want, isEnable: boolean): void
 
-Sets whether to enable nonce for OTA update (nonce is enabled by default). When nonce is enabled, the system verifies the validity of the nonce during the OTA update process to prevent replay attacks and enhance system security.
+Sets the enablement status of Nonce during OTA updates (enabled by default). After it is enabled, the system verifies the validity of Nonce during the OTA update process, thereby preventing replay attacks and improving system security.
 > **NOTE**
 > 
-> To ensure system security, it is not advised to disable nonce verification unless required by specific use cases such as intranet updates.
+> To ensure system security, it is not recommended to disable Nonce verification unless there are special service requirements such as intranet upgrades.
+>
+> In multiple MDM application scenarios, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
 
 **Since:** 26.0.0
 
@@ -529,8 +536,6 @@ Sets whether to enable nonce for OTA update (nonce is enabled by default). When 
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices but returns error code 801 on other devices.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -580,15 +585,15 @@ Checks whether nonce is enabled for OTA update. This API is applicable to scenar
 
 **Since:** 26.0.0
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices but returns error code 801 on other devices.
-
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -612,7 +617,6 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 9200016  | Service timeout. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **Example**
 
@@ -633,11 +637,151 @@ try {
 }
 ```
 
+## systemManager.setLocalHotaDomain
+
+setLocalHotaDomain(domain: string): void
+
+Sets the local HOTA (Huawei Over-the-Air) domain of the device. After the setting is successful, the system uses the specified HOTA domain for upgrades. This API applies to enterprise intranet upgrade scenarios. It helps enterprise administrators specify the local HOTA domain of the device, so that the device can obtain upgrade packages from the upgrade server specified by the enterprise, avoiding upgrades over the public network and improving the security and controllability of upgrades. Before calling this API, you can call [common.isFeatureSupported](./js-apis-enterprise-common.md#commonisfeaturesupported) (with the input parameter set to common.ManagedFeature.LOCAL_HOTA_DOMAIN) to check whether the device supports the local HOTA domain feature.
+
+HOTA domain usage process:
+1. The enterprise administrator calls [systemManager.setLocalHotaDomain](#systemmanagersetlocalhotadomain) through the MDM application to set the local HOTA domain of the device and specify the server for downloading upgrade packages.
+2. When the device performs an HOTA upgrade, the system searches for and downloads the upgrade package based on the locally configured HOTA domain to complete the upgrade.
+3. The enterprise administrator can call [systemManager.getLocalHotaDomain](#systemmanagergetlocalhotadomain) to query the local HOTA domain currently configured on the device and verify whether the configuration is correct.
+4. To restore the default upgrade server of the system, call this API and pass an empty string to restore the domain to the default domain.
+
+Application scenarios:
+- Intranet upgrade: In an enterprise intranet environment where the public network upgrade server is inaccessible, the administrator specifies the domain of the enterprise intranet HOTA upgrade server, so that the device can obtain upgrade packages from the intranet server.
+- Upgrade server change: After the enterprise upgrade server is migrated or replaced, the administrator resets the local HOTA domain to ensure that the device obtains upgrade packages from the new server.
+- Upgrade server failover: When the enterprise upgrade server fails, the administrator can switch to the backup upgrade server domain to ensure the continuity of upgrade services.
+
+> **NOTE**
+> 
+> When the upgrade policy is set to prohibit upgrades through the [systemManager.setOtaUpdatePolicy](#systemmanagersetotaupdatepolicy) API, the device prohibits OTA upgrades. In this scenario, the local HOTA domain set here does not take effect.
+>
+> In scenarios with multiple MDM applications, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
+
+The domain passed in must comply with the domain naming rules. The validation rules are as follows:
+1. The length cannot exceed 64 characters.
+2. IP addresses and localhost are not supported.
+3. The domain must start with https\://.
+4. The domain must match the regular expression: ^(?:\[a-zA-Z0-9\](?:\[a-zA-Z0-9.-\]*\[a-zA-Z0-9\])?\\.)+\[a-zA-Z\]{2,}$. This regular expression does not participate in validating the https\:// part.
+5. Passing an empty string restores the domain to the default domain. An empty string is not subject to the preceding validation rules.
+
+**Since:** 26.0.1
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices but returns error code 801 on other devices.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ----- | ----------------------------------- | ---- | ------- |
+| domain | string | Yes | Local HOTA domain. For details about the validation rules, see the API description. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                                      |
+| ------- | ---------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device. |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 9200012 | Parameter verification failed. |
+| 9200016 | Service timeout. |
+| 9200018 | This device is not an enterprise device. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { common, systemManager } from '@kit.MDMKit';
+
+// Replace it based on the actual situation.
+let domain: string = "https://www.hotaExample.com";
+// Before calling this API, query whether the device supports the local HOTA domain name feature.
+let isSupported: boolean = common.isFeatureSupported(common.ManagedFeature.LOCAL_HOTA_DOMAIN);
+if (isSupported) {
+  try {
+    systemManager.setLocalHotaDomain(domain);
+    console.info('Succeeded in setting local HOTA domain.');
+  } catch (err) {
+    console.error(`Failed to set local HOTA domain. Code is ${err.code}, message is ${err.message}`);
+  }
+} else {
+  console.info('The local HOTA domain feature is not supported.');
+}
+```
+
+## systemManager.getLocalHotaDomain
+
+getLocalHotaDomain(): string
+
+Obtains the local HOTA (Huawei Over-the-Air) domain of the device. This API applies to scenarios where the local HOTA domain configured on the current device needs to be queried.
+
+Application scenarios:
+- Configuration verification: Before an upgrade or after an upgrade exception, query the local HOTA domain to confirm whether the current upgrade server configuration of the device is correct.
+- Batch management: Enterprise administrators can query the local HOTA domain configuration of each device in batches through the MDM platform to centrally manage the upgrade direction of devices.
+
+**Since:** 26.0.1
+
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices but returns an empty string on other devices.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type   | Description                                |
+| ------ | ----------------------------------- |
+| string | Local HOTA domain. An empty string is returned as the default value when the device does not support this API. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+| 9200018  | This device is not an enterprise device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+
+try {
+  let domain: string = systemManager.getLocalHotaDomain();
+  console.info(`Succeeded in getting local HOTA domain: ${domain}`);
+} catch (err) {
+  console.error(`Failed to get local HOTA domain. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## systemManager.addDisallowedNearLinkProtocols<sup>20+</sup>
 
 addDisallowedNearLinkProtocols(admin: Want, protocols: Array&lt;NearLinkProtocol&gt;, accountId: number): void
 
 Adds a list of NearLink protocols that are not allowed to be used for a specified user. NearLink Kit provides a low-power, high-speed short-range communication service that supports connection and data interaction between NearLink devices. <!--RP3--><!--RP3End-->This API does not take effect for system services and system applications such as the keyboard and stylus.
+
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -646,8 +790,6 @@ Adds a list of NearLink protocols that are not allowed to be used for a specifie
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -706,6 +848,10 @@ removeDisallowedNearLinkProtocols(admin: Want, protocols: Array&lt;NearLinkProto
 Removes the list of disallowed NearLink protocols for a specified user. After successful removal, the specified user can use the removed NearLink protocols for communication again, restoring the corresponding protocol connection capabilities. Use cases: In enterprise device management scenarios, administrators can use this API to remove previously set NearLink protocol disabling policies, allowing users to resume communication between devices via NearLink protocols. This is suitable for scenarios where there is a need to restore NearLink communication capabilities for specific users, helping enterprise administrators flexibly adjust NearLink protocol access permissions of user devices to meet communication requirements in different business scenarios.
 
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -713,8 +859,6 @@ Removes the list of disallowed NearLink protocols for a specified user. After su
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -829,6 +973,10 @@ setInstallLocalEnterpriseAppEnabled(admin: Want, isEnable: boolean): void
 
 Sets whether local installation of enterprise applications is supported. When local installation is enabled, users can install enterprise applications (signing certificate distribution type: **enterprise_normal**) by double-tapping their installation packages on enterprise PCs/2-in-1 devices with the local installation capability.<!--RP8--><!--RP8End-->
 
+> **NOTE**
+>
+> In a multi-MDM application scenario, the [strictest control](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) rule is followed. If any MDM application sets support for local installation of enterprise applications, the combined policy is to support local installation of enterprise applications.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -836,8 +984,6 @@ Sets whether local installation of enterprise applications is supported. When lo
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices but returns error code 801 on other devices.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) If any MDM app supports local installation of enterprise apps, the comprehensive policy is to support local installation of enterprise apps.
 
 **Parameters**
 
@@ -883,7 +1029,7 @@ try {
 
 getInstallLocalEnterpriseAppEnabled(admin: Want | null): boolean
 
-Checks whether local installation of enterprise applications is supported. This API is applicable to scenarios where there is a need to verify whether the local installation of enterprise applications is enabled on the device, helping enterprise administrators confirm the policy configuration status to ensure that enterprise applications can be properly installed.<!--RP8--><!--RP8End-->
+Queries whether local installation of enterprise applications is supported. This API is applicable to scenarios where you need to verify whether the local installation of enterprise applications is enabled on a device, helping enterprise administrators confirm the policy configuration status and ensure that the device can install enterprise applications properly.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -942,6 +1088,10 @@ setAutoUnlockAfterReboot(admin: Want, isAllowed: boolean): void
 
 Sets automatic unlocking upon device reboot. This setting takes effect only on devices without a screen lock password. This API is applicable to enterprise unattended devices or scenarios where services need to be quickly restored through a restart, avoiding device downtime caused by manual unlocking, thereby improving device operation and maintenance efficiency and service continuity.
 
+> **NOTE**
+>
+> In a multi-MDM application scenario, the [strictest control](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) rule is followed. If any MDM application sets automatic unlock after device restart, the combined policy is automatic unlock after device restart.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -949,8 +1099,6 @@ Sets automatic unlocking upon device reboot. This setting takes effect only on d
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first). If any MDM app sets automatic unlocking upon device restart, the comprehensive policy is automatic unlocking upon device restart.
 
 **Parameters**
 
@@ -992,9 +1140,70 @@ try {
 
 ## systemManager.getAutoUnlockAfterReboot<sup>20+</sup>
 
+getAutoUnlockAfterReboot(admin: Want): boolean
+
+Obtains whether the device automatically unlocks after restart. This API is applicable to scenarios where you need to verify whether the device restart unlock policy is correctly configured, helping enterprise administrators confirm the device automatic unlock status.
+
+This API queries the policy set by the corresponding enterprise device management application by passing in a Want. To query the policy that actually takes effect, use the [systemManager.getAutoUnlockAfterReboot](#systemmanagergetautounlockafterreboot) API.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type                                                    | Mandatory | Description                   |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+
+**Return value**
+
+| Type   | Description                                |
+| ------ | ----------------------------------- |
+| boolean | true indicates that the device is automatically unlocked after restart; false indicates the opposite. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { systemManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace it based on the actual situation.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+  let result: boolean = systemManager.getAutoUnlockAfterReboot(wantTemp);
+  console.info(`Succeeded in getting auto unlock after reboot. result: ${result}`);
+} catch (err) {
+  console.error(`Failed to get auto unlock after reboot. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+
+## systemManager.getAutoUnlockAfterReboot
+
 getAutoUnlockAfterReboot(admin: Want | null): boolean
 
 Checks whether the device is automatically unlocked upon reboot. This API is applicable to scenarios where there is a need to verify whether the device reboot unlock policy is correctly configured, helping enterprise administrators confirm the status of the automatic device unlock function.
+
+**Since**: 26.0.0
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1008,7 +1217,7 @@ Checks whether the device is automatically unlocked upon reboot. This API is app
 
 | Name| Type                                                   | Mandatory| Description                  |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.<br>When multiple MDM applications exist on the device, passing a **Want** parameter queries the policies set by the corresponding enterprise device administrator application for versions earlier than API version 26.0.0. Since API version 26.0.0, passing null is additionally supported to query the policies that actually take effect.|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise device management extension component. The Want must contain the abilityName of the enterprise device management extension capability and the bundleName of the application where it resides.<br>When multiple MDM applications exist on the device, passing Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect. |
 
 **Return value**
 
@@ -1030,27 +1239,21 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
-import { Want } from '@kit.AbilityKit';
 import { systemManager } from '@kit.MDMKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
 try {
-  systemManager.getAutoUnlockAfterReboot(wantTemp);
+  // Replace the parameters based on the actual situation.
+  systemManager.getAutoUnlockAfterReboot(null);
   console.info('Succeeded in getting auto unlock after reboot.');
 } catch (err) {
   console.error(`Failed to get auto unlock after reboot. Code is ${err.code}, message is ${err.message}`);
 }
 ```
-
 ## systemManager.addKeyEventPolicies<sup>23+</sup>
 
 addKeyEventPolicies(admin: Want, keyPolicies: Array&lt;KeyEventPolicy&gt;): void
 
-Adds a key event handling policy. When the system triggers a key event, if the event matches the delivered key event policy, the MDM app will be notified via the [EnterpriseAdminExtensionAbility.onKeyEvent](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23) callback, with the key event information of the matched policy carried in the callback.
+Adds a key event handling policy. When the system triggers a key event, if the event matches the delivered key event policy, the MDM app will be notified via the [EnterpriseAdminExtensionAbility.onKeyEvent](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23) callback, with the key event information of the matched policy carried in the callback. 
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1157,7 +1360,7 @@ let wantTemp: Want = {
 };
 
 let keyCodes: Array<systemManager.KeyCode> = [
-  systemManager.KeyCode.POWER, systemManager.KeyCode.VOLUME_UP,
+  systemManager.KeyCode.POWER, systemManager.KeyCode.VOLUME_UP
 ];
 
 try {
@@ -1170,9 +1373,71 @@ try {
 
 ## systemManager.getKeyEventPolicies<sup>23+</sup>
 
+getKeyEventPolicies(admin: Want): Array&lt;KeyEventPolicy&gt;
+
+Obtains the key event handling policy. This API is applicable to scenarios where you need to query the current key event handling policy configuration. It helps enterprise administrators verify whether the policy is correctly delivered, or obtain the current configuration before making policy adjustments.
+
+This API queries the policy set by the corresponding enterprise device management application by passing in a Want. To query the policy that actually takes effect, use the [systemManager.getKeyEventPolicies](#systemmanagergetkeyeventpolicies) API.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type                                                    | Mandatory | Description                   |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+
+**Return value**
+
+| Type   | Description                                |
+| ------ | ----------------------------------- |
+| Array&lt;[KeyEventPolicy](#keyeventpolicy23)&gt; | List of currently configured key event policies. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { systemManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace it based on the actual situation.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let result: Array<systemManager.KeyEventPolicy> = [];
+try {
+  result = systemManager.getKeyEventPolicies(wantTemp);
+  console.info('Succeeded in getting key event policies.');
+} catch (err) {
+  console.error(`Failed to get key event policies. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+
+## systemManager.getKeyEventPolicies
+
 getKeyEventPolicies(admin: Want | null): Array&lt;KeyEventPolicy&gt;
 
 Obtains the key event handling policy. This API is applicable to scenarios where you need to query the current key event handling policy configuration. It helps enterprise administrators verify whether the policy has been correctly applied or obtain the current configuration before making policy adjustments.
+
+**Since**: 26.0.0
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1186,7 +1451,7 @@ Obtains the key event handling policy. This API is applicable to scenarios where
 
 | Name| Type                                                   | Mandatory| Description                  |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.<br>When multiple MDM applications exist on the device, passing a **Want** parameter queries the policies set by the corresponding enterprise device administrator application for versions earlier than API version 26.0.0. Since API version 26.0.0, passing null is additionally supported to query the policies that actually take effect.|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise device management extension component. The Want must contain the abilityName of the enterprise device management extension capability and the bundleName of the application where it resides.<br>When multiple MDM applications exist on the device, passing Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect.|
 
 **Return value**
 
@@ -1208,34 +1473,31 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
-import { Want } from '@kit.AbilityKit';
 import { systemManager } from '@kit.MDMKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
 let result: Array<systemManager.KeyEventPolicy> = [];
 try {
-  result = systemManager.getKeyEventPolicies(wantTemp);
+  // Replace the parameters based on the actual situation.
+  result = systemManager.getKeyEventPolicies(null);
   console.info('Succeeded in getting key event policies.');
 } catch (err) {
   console.error(`Failed to get key event policies. Code is ${err.code}, message is ${err.message}`);
 }
 ```
-
 ## systemManager.startCollectLog<sup>23+</sup>
 
 startCollectLog(admin: Want): Promise&lt;void&gt;
 
-Starts to collect the fault logs of the [FaultType](../apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) type that have been generated and stored on the device's hard disk. The fault logs, application service logs, and system runtime logs that are not stored on the hard disk cannot be collected.
+Starts to collect faultlog logs of the [FaultType](../apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) type that have been generated on the device and stored on the hard disk. It does not support collecting faultlog logs that are not stored on the hard disk, application service logs, or system running logs. This API uses a promise to return the result.
 
 - After the API is called, the system starts a log collection task. The API returns a response immediately after the task is started. The task may fail due to system performance constraints.
-- This API can be called by multiple MDM apps. Logs collected by different MDM apps under different users are saved separately and do not affect each other. Only one MDM app can start a log collection task at a time. If this API is called before the task is complete, the error code 9201009 is returned, and other MDM apps may call the API only after the task finishes.
 - Upon task completion, the MDM app is notified via the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23) callback. The system mounts the collected log files to the MDM app sandbox path, enabling the MDM app to read the logs within the callback.
 - If the log collection task takes more than 5 minutes, the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23) callback returns a task execution failure message.
 - After the app obtains the logs, you are advised to call [systemManager.finishLogCollected](#systemmanagerfinishlogcollected23) to remove the collected logs.
+
+> **NOTE**
+>
+> In a multi-MDM application scenario, multiple MDM applications are allowed to call this API. Logs collected by different MDM applications under different users are stored separately and do not affect each other. Only one MDM application is allowed to start a log collection task at a time. If this API is called before the task is completed, error code 9201009 is returned. After the task is completed, other MDM applications are allowed to call this API.
 
 **Required permissions**: ohos.permission.ENTERPRISE_READ_LOG
 
@@ -1244,8 +1506,6 @@ Starts to collect the fault logs of the [FaultType](../apis-performance-analysis
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: This API can be called by multiple MDM apps. Logs collected by different MDM apps under different users are stored separately and do not affect each other. Only one MDM app can start a log collection task at a time. If this API is called before the task is complete, the error code 9201009 is returned, and other MDM apps may call the API only after the task finishes.
 
 **Parameters**
 
@@ -1299,9 +1559,9 @@ Deletes the device logs collected by the current MDM app under the current user.
 
 > **NOTE**
 > 
-> After the app calls [startCollectLog](#systemmanagerstartcollectlog23) to initiate log collection and receives the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23) callback, you are advised to immediately copy or process the logs, and then call this API to delete the collected logs.
+> After an application calls [startCollectLog](#systemmanagerstartcollectlog23) to start collecting logs, when the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23) callback is received, it is recommended to copy or process the logs immediately and call this API to delete the collected logs.
 > 
-> If this API is not called, device logs will occupy the system storage space, which does not affect the next call of [startCollectLog](#systemmanagerstartcollectlog23) to start a log collection task.
+> If this API is not called, the device logs occupy system storage space, but this does not affect the next call to [startCollectLog](#systemmanagerstartcollectlog23) to start a log collection task.
 
 **Required permissions**: ohos.permission.ENTERPRISE_READ_LOG
 
@@ -1352,7 +1612,11 @@ try {
 
 setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?: string): Promise&lt;void&gt;
 
-Enables or disables the device activation lock. After the device activation lock is disabled, the Find Device function will no longer be available. This function is only available on certain devices.<!--RP5--><!--RP5End-->
+Disables or enables the device activation lock. This API uses a promise to return the result. After the device activation lock is disabled, the Find Device feature cannot be used. This feature is applicable only to specific devices<!--RP5--><!--RP5End-->
+
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1361,8 +1625,6 @@ Enables or disables the device activation lock. After the device activation lock
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -1419,7 +1681,7 @@ systemManager.setActivationLockDisabled(wantTemp, isDisabled, credential).then((
 
 isActivationLockDisabled(admin: Want): Promise&lt;boolean&gt;
 
-Checks whether the device activation lock is disabled. This API is applicable to scenarios where you need to verify the device activation lock status. It helps enterprise administrators confirm the device's security configuration, especially when understanding the activation lock state is necessary for device transfer or recycling.
+Obtains the disabled state of the device activation lock. This API uses a promise to return the result. It is applicable to scenarios where the state of the device activation lock feature needs to be verified, helping enterprise administrators confirm the security configuration of the device, especially when the activation lock state needs to be known during device transfer or recycling.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1485,8 +1747,10 @@ Only enterprise applications signed with the **enterprise_normal** or **enterpri
 >
 > A PC/2-in-1 enterprise device supports local installation of enterprise applications for the current user if any of the following conditions is met:
 >
-> 1. The offline installer has been enabled by calling [setInstallLocalEnterpriseAppEnabled](#systemmanagersetinstalllocalenterpriseappenabled20).
-> 2. Local installation of enterprise applications is enabled for the current user by calling this API.
+> 1. The offline installer has been enabled through [setInstallLocalEnterpriseAppEnabled](#systemmanagersetinstalllocalenterpriseappenabled20).
+> 2. The current user has been set to support local installation of enterprise applications through this API.
+>
+> 3. In a multi-MDM application scenario, the [strictest control](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) rule is followed. If any MDM application sets support for local installation of enterprise applications, the combined policy is to support local installation of enterprise applications.
 <!--RP7--><!--RP7End-->
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
@@ -1496,8 +1760,6 @@ Only enterprise applications signed with the **enterprise_normal** or **enterpri
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices but returns error code 801 on other devices.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) If any MDM app supports local installation of enterprise apps, the comprehensive policy is to support local installation of enterprise apps.
 
 **Parameters**
 
@@ -1546,7 +1808,7 @@ try {
 
 getInstallLocalEnterpriseAppEnabledForAccount(admin: Want | null, accountId: number): boolean
 
-Checks whether local installation of enterprise applications is supported for a specified user. This API is applicable to scenarios where there is a need to verify whether local installation of enterprise applications is enabled for a specific user, helping enterprise administrators confirm the policy configuration status and ensure that users can normally install enterprise applications.<!--RP8--><!--RP8End-->
+Queries whether a specified user supports local installation of enterprise applications. It is applicable to scenarios where the state of the local installation of enterprise applications feature for a specific user needs to be verified, helping enterprise administrators confirm the policy configuration state and ensure that users can install enterprise applications normally.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1602,11 +1864,600 @@ try {
 }
 ```
 
+## systemManager.addAllowedPrinterIPAddressesForDevice
+ 
+addAllowedPrinterIPAddressesForDevice(ipAddresses: Array&lt;string&gt;): void
+ 
+Adds an IP-based network printer allowlist policy for the current device. After this policy is set, only network printers whose IP addresses are in the allowlist are allowed to print, and network printers whose IP addresses are not in the allowlist cannot print.
+- If this API is called after the allowlist has been set through [addAllowedPrinterIPAddressesForAccount](#systemmanageraddallowedprinteripaddressesforaccount), a policy conflict (9200010) is reported.
+- If the printer function has been disabled through [restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated) or the printing function of the current user has been disabled through [restrictions.setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated), calling this API can still set the policy successfully, but the printing function remains disabled.
+- After the allowlist is added for the device, it can be removed through [removeAllowedPrinterIPAddressesForDevice](#systemmanagerremoveallowedprinteripaddressesfordevice). When the allowlist is empty, all network printers are not governed by this policy.
+ 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
+ 
+**Since:** 26.0.1
+ 
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+ 
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+ 
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+ 
+**Model restriction**: This API can be used only in the stage model.
+ 
+**Parameters**
+ 
+| Name   | Type                                                    | Mandatory | Description                                                         |
+| -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| ipAddresses  | Array&lt;string&gt;               | Yes   | IP addresses (IPv4 and IPv6; only addresses in complete standard format are allowed). A maximum of 100 IP addresses can be set (if 60 IP addresses have already been set in the allowlist, a maximum of 40 more can be set).|
+ 
+ 
+**Error codes**
+ 
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+ 
+ 
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200010  | A conflict policy has been configured.|
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
+| 9200019  | The policy list has exceeded the limit. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+ 
+ 
+**Example**
+ 
+```ts
+import { systemManager } from '@kit.MDMKit';
+ 
+// Replace it based on the actual situation.
+const ipArray: Array<string> = ['192.1.1.1', '2001:0db8:0000:0000:0000:0000:1428:57ab'];
+try {
+  systemManager.addAllowedPrinterIPAddressesForDevice(ipArray);
+  console.info('Succeeded in adding the allowed printer IP Addresses for the device.');
+} catch (err) {
+  console.error(`Failed to add the allowed printer IP Addresses for the device. Code is ${err.code}, message is ${err.message}`);
+}
+```
+ 
+## systemManager.removeAllowedPrinterIPAddressesForDevice
+ 
+removeAllowedPrinterIPAddressesForDevice(ipAddresses: Array&lt;string&gt;): void
+ 
+Removes the IP-based network printer allowlist for the current device. After successful removal, when the allowlist is empty, no network printer is governed by this policy; when the allowlist is not empty, network printers whose IP addresses have been removed from the allowlist cannot print.
+ 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
+ 
+**Since:** 26.0.1
+ 
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+ 
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+ 
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+ 
+**Model restriction**: This API can be used only in the stage model.
+ 
+**Parameters**
+ 
+| Name   | Type                                                    | Mandatory | Description                                                         |
+| -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| ipAddresses  | Array&lt;string&gt;               | Yes   | IP addresses (IPv4 and IPv6; only complete standard-format addresses are allowed). |
+ 
+**Error codes**
+ 
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+ 
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. | 
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |                
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+ 
+**Example**
+ 
+```ts
+import { systemManager } from '@kit.MDMKit';
+ 
+// Replace it based on the actual situation.
+const ipArray: Array<string> = ['192.1.1.1', '2001:0db8:0000:0000:0000:0000:1428:57ab'];
+try {
+  systemManager.removeAllowedPrinterIPAddressesForDevice(ipArray);
+  console.info('Succeeded in removing the allowed printer IP Addresses for the device.');
+} catch (err) {
+  console.error(`Failed to remove the allowed printer IP Addresses for the device. Code is ${err.code}, message is ${err.message}`);
+}
+```
+ 
+## systemManager.getAllowedPrinterIPAddressesForDevice
+ 
+getAllowedPrinterIPAddressesForDevice(queryPolicy?: common.QueryPolicy): Array&lt;string&gt;
+ 
+Obtains the whitelist of network printers managed by IP address on the device.
+ 
+**Since:** 26.0.1
+ 
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+ 
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+ 
+**Device behavior differences:** This API can normally return the whitelist array on PC/2in1 devices. It returns an empty array on other devices.
+ 
+**Model restriction**: This API can be used only in the stage model.
+ 
+**Parameters**
+ 
+| Name  | Type                                                    | Mandatory | Description                                                         |
+| ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| queryPolicy   | [common.QueryPolicy](js-apis-enterprise-common.md#querypolicy) | No   | Policy to obtain. The type can be SELF or ALL. If this parameter is not passed, SELF is used by default.                                   |
+ 
+**Return value**
+ 
+| Type    | Description                                                         |
+| ------- | ------------------------------------------------------------ |
+| Array&lt;string&gt;          | Whitelist of network printers managed by IP address. |
+ 
+**Error codes**
+ 
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+ 
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+ 
+**Example**
+ 
+```ts
+import { common, systemManager } from '@kit.MDMKit';
+ 
+try {
+  let result: string[] = systemManager.getAllowedPrinterIPAddressesForDevice(common.QueryPolicy.ALL);
+  console.info(`Succeeded in querying the allowed printer IP Addresses for the device.`);
+} catch (err) {
+  console.error(`Failed to query the allowed printer IP Addresses for the device. Code is ${err.code}, message is ${err.message}`);
+}
+```
+## systemManager.addAllowedPrinterIPAddressesForAccount
+ 
+addAllowedPrinterIPAddressesForAccount(ipAddresses: Array&lt;string&gt;): void
+ 
+Adds an IP-based network printer allowlist policy for the current user. After this policy is set, only network printers whose IP addresses are in the allowlist are allowed to print, and network printers whose IP addresses are not in the allowlist cannot print.
+- If the allowlist has been set through [addAllowedPrinterIPAddressesForDevice](#systemmanageraddallowedprinteripaddressesfordevice), calling this API again reports a policy conflict (9200010).
+- If the printer function has been disabled through [restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated) or the printing function of the current user has been disabled through [restrictions.setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated), calling this API can still set the policy successfully, but the printing function remains disabled.
+- After the allowlist is added for the current user, it can be removed through [removeAllowedPrinterIPAddressesForAccount](#systemmanagerremoveallowedprinteripaddressesforaccount). When the allowlist is empty, all network printers are not governed by this policy.
+- To add an IP-based network printer allowlist policy for the current device, refer to [addAllowedPrinterIPAddressesForDevice](#systemmanageraddallowedprinteripaddressesfordevice).
+ 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
+ 
+**Since:** 26.0.1
+ 
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+ 
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+ 
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+ 
+**Model restriction**: This API can be used only in the stage model.
+ 
+ 
+**Parameters**
+ 
+| Name   | Type                                                    | Mandatory | Description                                                         |
+| -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| ipAddresses  | Array&lt;string&gt;               | Yes   | IP addresses (IPv4 and IPv6; only complete standard-format addresses are allowed). A maximum of 100 IP addresses can be set (if 60 IP addresses have been set in the allowlist, a maximum of 40 more can be set). |
+ 
+ 
+**Error code:**
+ 
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+ 
+ 
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200010  | A conflict policy has been configured.|
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
+| 9200019  | The policy list has exceeded the limit. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+ 
+ 
+**Example**
+ 
+```ts
+import { systemManager } from '@kit.MDMKit';
+ 
+// Replace it based on the actual situation.
+const ipArray: Array<string> = ['192.1.1.1', '2001:0db8:0000:0000:0000:0000:1428:57ab'];
+ 
+try {
+  systemManager.addAllowedPrinterIPAddressesForAccount(ipArray);
+  console.info('Succeeded in adding the allowed printer IP Addresses for current user.');
+} catch (err) {
+  console.error(`Failed to add the allowed printer IP Addresses for current user. Code is ${err.code}, message is ${err.message}`);
+}
+```
+ 
+## systemManager.removeAllowedPrinterIPAddressesForAccount
+ 
+removeAllowedPrinterIPAddressesForAccount(ipAddresses: Array&lt;string&gt;): void
+ 
+Removes network printers from the IP-based allowlist for the current user. After the removal, when the allowlist is empty, no network printer is controlled by this policy; when the allowlist is not empty, network printers whose IP addresses have been removed from the allowlist cannot print.
+ 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
+ 
+**Since:** 26.0.1
+ 
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+ 
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+ 
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+ 
+**Model restriction**: This API can be used only in the stage model.
+ 
+ 
+**Parameters**
+ 
+| Name   | Type                                                    | Mandatory | Description                                                         |
+| -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| ipAddresses  | Array&lt;string&gt;               | Yes   | IP address (IPv4 and IPv6; only complete standard-format addresses are allowed). |
+ 
+**Error codes**
+ 
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+ 
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. | 
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |                
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+ 
+**Example**
+ 
+```ts
+import { systemManager } from '@kit.MDMKit';
+ 
+// Replace it based on the actual situation.
+const ipArray: Array<string> = ['192.1.1.1', '2001:0db8:0000:0000:0000:0000:1428:57ab'];
+try {
+  systemManager.removeAllowedPrinterIPAddressesForAccount(ipArray);
+  console.info('Succeeded in removing the allowed printer IP Addresses for current user.');
+} catch (err) {
+  console.error(`Failed to remove the allowed printer IP Addresses for current user. Code is ${err.code}, message is ${err.message}`);
+}
+```
+ 
+## systemManager.getAllowedPrinterIPAddressesForAccount
+ 
+getAllowedPrinterIPAddressesForAccount(queryPolicy?: common.QueryPolicy): Array&lt;string&gt;
+ 
+Obtains the whitelist of network printers managed based on IP for the current user.
+ 
+**Since:** 26.0.1
+ 
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+ 
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+ 
+**Device behavior differences:** This API can normally return the whitelist array on PC/2in1 devices. It returns an empty array on other devices.
+ 
+**Model restriction**: This API can be used only in the stage model.
+ 
+**Parameters**
+ 
+| Name  | Type                                                    | Mandatory | Description                                                         |
+| ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| queryPolicy   | [common.QueryPolicy](js-apis-enterprise-common.md#querypolicy) | No   | Policy to obtain. The type can be SELF or ALL. If this parameter is not passed, it is equivalent to SELF.                                   |
+ 
+**Return value**
+ 
+| Type    | Description                                                         |
+| ------- | ------------------------------------------------------------ |
+| Array&lt;string&gt;          | Whitelist of network printers managed based on IP for the current user. |
+ 
+**Error codes**
+ 
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+ 
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+ 
+**Example**
+ 
+```ts
+import { common, systemManager } from '@kit.MDMKit';
+ 
+try {
+  let result: string[] = systemManager.getAllowedPrinterIPAddressesForAccount(common.QueryPolicy.SELF);
+  console.info(`Succeeded in querying the allowed printer IP Addresses for current user.`);
+} catch (err) {
+  console.error(`Failed to query the allowed printer IP Addresses for current user. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.createExactTimer
+
+createExactTimer(config: ExactTimerConfig): Promise&lt;number&gt;
+
+Creates an exact timer. This API is applicable to scenarios where enterprise devices need to execute tasks at precise times, such as scheduled inspection, scheduled data reporting, and scheduled policy delivery, helping enterprise administrators implement automated scheduled execution of device tasks. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> 1. This API must be used together with [systemManager.destroyExactTimer](#systemmanagerdestroyexacttimer). Otherwise, memory leaks may occur.
+>
+> 2. When the device management application is deactivated or its process is terminated, the EDM service automatically destroys all timers created by the device management application.
+>
+> 3. If the name of the timer to be created is the same as that of an existing timer, the existing timer with the same name is automatically stopped and destroyed, and the newly created timer is assigned a new timer ID, which is different from the ID of the destroyed timer.
+>
+> 4. A single device management application can create a maximum of 5 timers that take effect simultaneously. If the limit is exceeded, error code 9201053 is returned.
+>
+> 5. When an application process runs in the background for a long time, it may be frozen or terminated by the system, causing the timer to be destroyed. To avoid this issue, add the application to the freeze-exempt list by calling [addFreezeExemptedApps](./js-apis-enterprise-applicationManager.md#applicationmanageraddfreezeexemptedapps22).
+
+**Since:** 26.0.1
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API is supported on phones and tablets. On other device types, it returns error code 801.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type                                                    | Mandatory | Description                   |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| config  | [ExactTimerConfig](#exacttimerconfig) | Yes   | Initial configuration of the timer, including whether it is a repeating timer, the trigger interval, the callback, and the name. |
+
+**Return value**
+
+| Type   | Description                                |
+| ------ | ----------------------------------- |
+| Promise&lt;number&gt; | Promise used to return the timer ID. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
+| 9201053  | The number of timers has reached the upper limit. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let config: systemManager.ExactTimerConfig = {
+  name: 'timer1',
+  repeat: true,
+  interval: 5000,
+  callback: () => {
+    console.info('Timer expired.');
+  }
+};
+systemManager.createExactTimer(config).then((timerId: number) => {
+  console.info(`Succeeded in creating exact timer, timerId: ${timerId}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create exact timer. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## systemManager.startExactTimer
+
+startExactTimer(timer: number, triggerTime: number): Promise&lt;void&gt;
+
+Starts an exact timer. When the timer expires, the callback configured when the timer was created is triggered. For a repeating timer, after the trigger time is reached, the callback is triggered periodically at the configured interval. For a one-shot timer, the callback is triggered once after the trigger time is reached. This API is applicable to scenarios where a scheduled task needs to be started. This API uses an asynchronous callback to return the result.
+
+**Since:** 26.0.1
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API is supported on phones and tablets. On other device types, it returns error code 801.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type                                                    | Mandatory | Description                   |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| timer  | number | Yes   | Timer ID, obtained through [systemManager.createExactTimer](#systemmanagercreateexacttimer). |
+| triggerTime  | number | Yes   | Timer trigger time, in milliseconds. This value is the elapsed time since system startup at the target trigger moment. It must be calculated by adding the expected delay to the elapsed time since the current system startup. For example, to trigger the timer after 5 seconds, obtain the elapsed time since the current system startup through [systemDateTime.getUptime](../apis-basic-services-kit/js-apis-date-time.md#systemdatetimegetuptime10) (with [TimeType.STARTUP](../apis-basic-services-kit/js-apis-date-time.md#timetype10) passed in), and then add 5s. |
+
+**Return value**
+
+| Type   | Description                                |
+| ------ | ----------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. If the timer fails to be started, an error object is thrown. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
+| 9201054  | The specified timer does not exist or does not belong to the current administrator. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { systemDateTime } from '@kit.BasicServicesKit';
+
+// Replace it based on the actual situation. The timerId is obtained from the createExactTimer API.
+let timerId: number = 1;
+// Trigger the timer after 10 seconds.
+let triggerTime: number = systemDateTime.getUptime(systemDateTime.TimeType.STARTUP) + 10000;
+systemManager.startExactTimer(timerId, triggerTime).then(() => {
+  console.info('Succeeded in starting exact timer.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to start exact timer. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## systemManager.stopExactTimer
+
+stopExactTimer(timer: number): Promise&lt;void&gt;
+
+Stops an exact timer. After the timer is stopped, its callback is no longer triggered, but the timer resources are not released. The timer can be restarted by calling [systemManager.startExactTimer](#systemmanagerstartexacttimer). This API is applicable to the scenario of pausing a scheduled task. This API uses a promise to return the result.
+
+**Since:** 26.0.1
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API is supported on phones and tablets. On other device types, it returns error code 801.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type                                                    | Mandatory | Description                   |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| timer  | number | Yes   | Timer ID, which is obtained by calling [systemManager.createExactTimer](#systemmanagercreateexacttimer). |
+
+**Return value**
+
+| Type   | Description                                |
+| ------ | ----------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. If the timer fails to be stopped, an error object is thrown. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+| 9201054  | The specified timer does not exist or does not belong to the current administrator. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Replace it based on the actual situation. The timerId is obtained from the createExactTimer API.
+let timerId: number = 1;
+systemManager.stopExactTimer(timerId).then(() => {
+  console.info('Succeeded in stopping exact timer.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to stop exact timer. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## systemManager.destroyExactTimer
+
+destroyExactTimer(timer: number): Promise&lt;void&gt;
+
+Destroys an exact timer. After the timer is destroyed, its resources are released and its ID becomes invalid, so that it can no longer be used to start or stop the timer. This API is suitable for scenarios where the timing task is no longer needed, helping enterprise administrators release system resources in a timely manner. This API uses a promise to return the result.
+
+**Since:** 26.0.1
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API is supported on phones and tablets. On other device types, it returns error code 801.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type                                                    | Mandatory | Description                   |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| timer  | number | Yes   | Timer ID, obtained by [systemManager.createExactTimer](#systemmanagercreateexacttimer). |
+
+**Return value**
+
+| Type   | Description                                |
+| ------ | ----------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. If the timer fails to be destroyed, an error object is thrown. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+| 9201054  | The specified timer does not exist or does not belong to the current administrator. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Replace it based on the actual situation. The timerId is obtained from the createExactTimer API.
+let timerId: number = 1;
+systemManager.destroyExactTimer(timerId).then(() => {
+  console.info('Succeeded in destroying exact timer.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to destroy exact timer. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## SystemUpdateInfo
 
 Represents information about the system version to update.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name               | Type    | Read-Only | Optional| Description           |
 | ----------------- | ------ | --- | --- |------------- |
@@ -1619,6 +2470,8 @@ Represents information about the system version to update.
 Represents an OTA update policy.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name        | Type    | Read-Only| Optional| Description                           |
 | ----------- | --------| ---- | -----| -------------------------- |
@@ -1636,12 +2489,14 @@ Enumerates the update policy types.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name               | Value | Description   |
 | ----------------- | ---- | ----- |
-| DEFAULT | 0 | Default update policy, which periodically notifies the user of the update and starts the update after user confirmation.|
+| DEFAULT | 0 | Default upgrade policy. Periodically reminds the user to upgrade through a dialog box. The period starts from 24 hours and gradually extends. |
 | PROHIBIT  | 1 | Prohibit updates.|
-| UPDATE_TO_SPECIFIC_VERSION | 2 | Enforce updates. In this case, **latestUpdateTime** must be specified.|
-| WINDOWS | 3 | Update at the specified time window. In this case, **installStartTime** and **installEndTime** must be specified.|
+| UPDATE_TO_SPECIFIC_VERSION | 2 | Forced upgrade policy. The latest update time (latestUpdateTime) parameter must be specified. 1. If the device is not upgraded when the time remaining before the latest update time is more than 48 hours, a reminder dialog box appears once every 24 hours. 2. If the device is not upgraded when the time remaining before the latest update time is less than 48 hours, a reminder to install the upgrade appears periodically every X hours. The message is displayed in the notification center and cannot be removed. 3. If the device is still not upgraded after the latest update time, a forced upgrade reminder appears during idle time.  |
+| WINDOWS | 3 | Upgrade policy within a specified time window. The time window parameters (installStartTime and installEndTime) must be specified. The time window must be longer than 5 minutes. 1. Configure the time window [A, B], obtain a random upgrade time C within the window, and automatically upgrade when the idle condition is met at time C. 2. Configure the time window [A, B], obtain a random upgrade time C within the window. If the idle condition is not met at time C and B - C is more than half an hour, refresh a random time D between C and B, and automatically upgrade when the idle condition is met at time D. 3. Configure the time window [A, B], obtain a random upgrade time C within the window. If the idle condition is not met at time C and B - C is more than half an hour, refresh a random time D between C and B. If the idle condition is not met at time D, check again after 24 hours, that is, postpone the window task to the next [A, B] window. 4. Configure the time window [A, B], obtain a random upgrade time C within the window. If the idle condition is not met at time C and B - C is less than or equal to half an hour, check again after 24 hours, that is, postpone the window task to the next [A, B] window. |
 | POSTPONE | 4 | Postpone updates. After the time specified by **delayUpdateTime** is over, the default update policy is used.|
 
 ## UpdatePackageInfo
@@ -1649,6 +2504,8 @@ Enumerates the update policy types.
 Represents information about the system update packages.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name               | Type    | Read-Only | Optional| Description           |
 | ----------------- | ------ | --- | ---- |------------- |
@@ -1663,6 +2520,8 @@ Represents the details about a system update package.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name               | Type    | Read-Only | Optional| Description           |
 | ----------------- | ------ | --- | --- | ------------- |
 | type       | [PackageType](#packagetype) | No  | No|  Type of the system update package.  |
@@ -1675,6 +2534,8 @@ Represents the description of a system update package.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name               | Type    | Read-Only | Optional| Description           |
 | ----------------- | ------ | --- | --- | ------------- |
 | notify       | [NotifyDescription](#notifydescription) | No  | Yes| Update notification defined by an enterprise.  |
@@ -1684,6 +2545,8 @@ Represents the description of a system update package.
 Represents the update notification defined by an enterprise.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name               | Type    | Read-Only |  Optional| Description           |
 | ----------------- | ------ | --- | ---- | ------------- |
@@ -1695,6 +2558,8 @@ Represents the update notification defined by an enterprise.
 Represents the update result information.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name               | Type  | Read-Only | Optional  | Description           |
 | ----------------- | ------ | ------ | ------ | ------------- |
@@ -1708,6 +2573,8 @@ Represents the update error information.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name               | Type    | Read-Only | Optional| Description           |
 | ----------------- | ------ | ------ | ------ | ------------- |
 | code       | number | No| No| Error code.  |
@@ -1719,6 +2586,8 @@ Enumerates the update package types.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name               | Value | Description   |
 | ----------------- | ---- | ----- |
 | FIRMWARE | 1 | Firmware.|
@@ -1728,6 +2597,8 @@ Enumerates the update package types.
 Enumerates the system update statuses.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name              | Value | Description   |
 | -----------------  | ---- | ----- |
@@ -1835,3 +2706,39 @@ Enumerates other key information. This refers to the information of other keys t
 | keyCode       | [KeyCode](#keycode23) | No| No| Key code.  |
 | pressed       | boolean  | No| No| Key action. It indicates whether the key is pressed: **true** for pressed; **false** for released. |
 | downTime      | number | No| No| Time when the key action occurs. The value is a microsecond-level timestamp after the system is powered on. Navigation keys do not support combination expansion, so their occurrence time is displayed as 0.|
+
+## ExactTimerConfig
+
+Defines the initial configuration of an exact timer. It is used as an input parameter of [systemManager.createExactTimer](#systemmanagercreateexacttimer) to configure the timer name, whether the timer is recurring, the trigger interval, and the expiration callback.
+
+**Since:** 26.0.1
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+### Attributes
+
+**Since:** 26.0.1
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name                | Type     | Read-Only  | Optional | Description            |
+| ----------------- | ------ | ------ | ------ | ------------- |
+| name       | string | No | No | Timer name. The maximum length is 64 bytes and it cannot be empty.   |
+| repeat       | boolean | No | No | Whether the timer is recurring. The value **true** indicates a recurring timer, and **false** indicates a one-shot timer.   |
+| interval       | number | No | No | Trigger interval of the timer. For a recurring timer, the minimum value of **interval** is 1000 ms and the maximum value is 86400000 ms. For a one-shot timer, the value is 0. Unit: millisecond (ms).   |
+
+### callback
+
+callback(): void
+
+Callback invoked when the timer expires.
+
+**Since:** 26.0.1
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.

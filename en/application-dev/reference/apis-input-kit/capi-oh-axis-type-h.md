@@ -6,11 +6,11 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:20:55.825Z pushedAt=2026-06-12T03:30:41.755Z -->
+<!-- md-trans-meta sourceCommit=1a59b01eb09cbde916aad8893b634e85d3707880 translatedAt=2026-11-04T04:31:43.839Z pushedAt=2026-11-04T08:04:44.669Z nl=1 -->
 
 ## Overview
 
-Defines the device axis event struct and enumerates device axis events. The axis type defines the physical behavior characteristics of an input device in different interaction scenarios. The system uses the axis type to distinguish and transmit different gesture interaction information.
+Enumerates the axis events of an input device. The axis type defines the physical behavior characteristics of an input device in different interaction scenarios, and the system uses the axis type to distinguish and deliver different gesture interaction information.
 
 **File to include**: <multimodalinput/oh_axis_type.h>
 
@@ -89,3 +89,5 @@ Action of the input device.
 | AXIS_ACTION_BEGIN = 1 | The axis event begins.|
 | AXIS_ACTION_UPDATE = 2 | The axis event is updated.|
 | AXIS_ACTION_END = 3 | The axis event ends.|
+
+

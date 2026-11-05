@@ -8324,6 +8324,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.CAMERA_DRIVER_MONITOR
+
+允许应用可以访问驾驶员监控相机。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
 ## ohos.permission.vehicle.CAMERA_EVS
 
 允许应用使用车载相机。
@@ -8732,6 +8746,20 @@
  
 **起始版本**：26.0.1
 
+## ohos.permission.AUTH_MODEL_DOWNLOAD
+
+允许系统应用将下载模型的授权结果发送给模型管理服务。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.1
+
 ## ohos.permission.GET_ENTERPRISE_UNLOCK_CONFIGS
  
 允许应用获取企业账号解锁设备的相关配置。
@@ -8758,4 +8786,88 @@
  
 **支持设备**：PC/2in1
  
+**起始版本**：26.0.1
+
+## ohos.permission.SET_DSL_MODE
+
+允许应用修改DSL（Device security level）配置。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.VEHICLE_POWER
+
+允许系统应用订阅和查询座舱电源状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.NONRDA_SCREEN
+
+允许系统应用控制除仪表外其他屏幕的亮灭。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.CLUSTER_SCREEN
+
+允许系统应用控制仪表屏的亮灭。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.SHUTDOWN
+
+允许系统应用关闭座舱电源。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.KEEP_STANDBY
+
+允许系统应用申请座舱保电。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
 **起始版本**：26.0.1

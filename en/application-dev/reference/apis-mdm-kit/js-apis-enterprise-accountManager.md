@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=1854279ca5c3b8287e7fe40051c3af03e6c01b98 translatedAt=2026-11-04T05:05:41.187Z pushedAt=2026-11-04T08:04:44.747Z nl=1 -->
 
 This module provides device account management capabilities, including forbidding the creation of local accounts.
 
@@ -28,13 +29,15 @@ disallowOsAccountAddition(admin: Want, disallow: boolean, accountId?: number): v
 
 Users are not allowed to add accounts. After the API is successfully called, the system forbids the specified user or all users from adding new accounts. This API is applicable to enterprise device management scenarios, such as preventing employees from creating local accounts and enhancing device security management.
 
+> **NOTE**
+>
+> In a multi-MDM application scenario, the [Strict Control](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) rule applies.
+
 **Required permissions**: ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first)
 
 **Parameters**
 
@@ -78,9 +81,11 @@ try {
 
 ## accountManager.isOsAccountAdditionDisallowed
 
-isOsAccountAdditionDisallowed(admin: Want | null, accountId?: number): boolean
+isOsAccountAdditionDisallowed(admin: Want, accountId?: number): boolean
 
 Queries whether a user is not allowed to add an account. This API is applicable to enterprise audit and compliance check scenarios, helping administrators confirm the execution of account policies.
+
+This API queries the policy set by the corresponding enterprise device management application by passing Want. To query the policy that actually takes effect, use the [accountManager.isOsAccountAdditionDisallowed](#accountmanagerisosaccountadditiondisallowed-1) API.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -93,7 +98,7 @@ Queries whether a user is not allowed to add an account. This API is applicable 
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.<br>When multiple MDM applications exist on the device, passing a **Want** parameter queries the policies set by the corresponding enterprise device administrator application for versions earlier than API version 26.0.0. Since API version 26.0.0, passing null is additionally supported to query the policies that actually take effect.                         |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                         |
 | accountId | number                                                  | No  | User ID, which specifies a user. If this parameter is not specified, the system queries whether all users are not allowed to add accounts. If this parameter is specified, the system queries whether specified users are not allowed to add accounts. The value must be greater than or equal to 0.<br>**accountId** can be obtained via APIs such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1).|
 
 **Return value**
@@ -134,6 +139,59 @@ try {
 }
 ```
 
+## accountManager.isOsAccountAdditionDisallowed
+
+isOsAccountAdditionDisallowed(admin: Want | null, accountId?: number): boolean
+
+Queries whether a user is not allowed to add an account. This API is applicable to enterprise audit and compliance check scenarios, helping administrators confirm the execution of account policies.
+
+**Since**: 26.0.0
+
+**Required permissions**: ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+
+**Parameters**
+
+| Name | Type                                                    | Mandatory | Description                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise device management extension component. The Want must contain the abilityName of the enterprise device management extension ability and the bundleName of the application where it resides.<br>When multiple MDM applications exist on the device, passing Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect.                          |
+| accountId | number                                                  | No   | User ID, which specifies a user. If this parameter is not specified, the system queries whether all users are not allowed to add accounts. If this parameter is specified, the system queries whether specified users are not allowed to add accounts. The value must be greater than or equal to 0.<br>**accountId** can be obtained via APIs such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1). |
+
+**Return value**
+
+| Type    | Description                                                       |
+| ------- | ---------------------------------------------------------- |
+| boolean | Whether to disallow adding an account. The value **true** indicates disallow adding an account.<br/>The value **false** indicates allow adding an account. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Example**
+
+```ts
+import { accountManager } from '@kit.MDMKit';
+
+try {
+  // Replace the parameters based on the actual situation.
+  let isDisallowed: boolean = accountManager.isOsAccountAdditionDisallowed(null, 100);
+  console.info(`Succeeded in querying the os account addition or not: ${isDisallowed}`);
+} catch (err) {
+  console.error(`Failed to query the os account addition or not. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## accountManager.addOsAccountAsync
 
 addOsAccountAsync(admin: Want, name: string, type: osAccount.OsAccountType): Promise&lt;osAccount.OsAccountInfo&gt;
@@ -142,15 +200,15 @@ Adds an account in the background. This API uses a promise to return the result.
 
 > **NOTE**
 > 
-> This API is time-consuming. Subsequent calls to other synchronous APIs in the application main thread must wait for the asynchronous return of this API.
+> Creating an account is time-consuming. After this API is called, if other synchronous APIs are subsequently called on the main thread of the application, you need to wait for this API to return asynchronously.
+>
+> In multiple MDM application scenarios, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -204,6 +262,10 @@ setDomainAccountPolicy(admin: Want, domainAccountInfo: osAccount.DomainAccountIn
 
 Sets the domain account policy.
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -211,8 +273,6 @@ Sets the domain account policy.
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -251,7 +311,8 @@ async function setDomainAccountPolicy() {
     // Replace with actual values.
     authenticationValidityPeriod: 300,
     passwordValidityPeriod: 420,
-    passwordExpirationNotification: 60
+    passwordExpirationNotification: 60,
+    supportUKeyAuthentication: true
   };
   // Set the global domain account policy.
   let accountInfo: osAccount.DomainAccountInfo = {
@@ -278,7 +339,7 @@ async function setDomainAccountPolicy() {
       accountInfo2 = domainAccountInfo;
     }).catch((err: BusinessError) => {
       console.error(`Failed to get account domain info. Code: ${err.code}, message: ${err.message}`);
-    })
+    });
   try {
     accountManager.setDomainAccountPolicy(wantTemp, accountInfo2, policy);
     console.info('Succeeded in setting domain account policy.');
@@ -369,7 +430,7 @@ async function getDomainAccountPolicy() {
     })
     .catch((err: BusinessError) => {
       console.error(`Failed to get account domain info. Code: ${err.code}, message: ${err.message}`);
-    })
+    });
   try {
     domainAccountPolicy = accountManager.getDomainAccountPolicy(wantTemp, accountInfo2);
     console.info('Succeeded in getting domain account policy.');
@@ -385,25 +446,28 @@ Domain account policy.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 <!--Table: 28%; 10%; 8%; 8%; 46%-->
 | Name                          | Type  | Read-Only| Optional| Description                                                        |
 | ------------------------------ | ------ | ---- | ---- |------------------------------------------------------------ |
-| authenticationValidityPeriod   | number | No  | Yes  |Validity period (in seconds) of the token for domain account authentication. This parameter is used to control that a user can access system resources without repeated authentication within the validity period of the token. The value range is [-1,2147483647]. The validity period starts from the time when the domain account is authenticated for the last time, for example, login or unlocking after the screen is locked.<br>The default value is **-1**, indicating that the token is permanently valid. The value **0** indicates that the token becomes invalid immediately. After the token expires or becomes invalid, the domain account and password must be authenticated when a user logs in to the system.|
-| passwordValidityPeriod         | number | No  | Yes  |Validity period (in seconds) of the domain account password. It is used to require users to change their passwords periodically to enhance account security. The value range is [-1, 2147483647]. The validity period starts from the time of the last password change on the device side.<br>The default value is **-1**, indicating that the domain account password is permanently valid.|
-| passwordExpirationNotification | number | No  | Yes  |Notification period before a domain account password expires, in seconds. The value range is [0, 2147483647].<br>The default value is **0**, indicating that the system does not display a message indicating that the domain account password has expired.<br>**Note:** **passwordExpirationNotification** must be used together with **passwordValidityPeriod**. When the system time is later than or equal to (the time when the domain account password is last changed on the device + the value of **passwordValidityPeriod** – the value of **passwordExpirationNotification**), a message is displayed, indicating that the password is about to expire.|
+| authenticationValidityPeriod   | number | No   | Yes   |Indicates the validity period (in seconds) of the domain account authentication token, which is used to control that users can access system resources without repeated authentication within the token validity period. The value range is [-1, 2147483647]. The validity period starts from the last domain account authentication time, such as login or unlocking after the screen is locked.<br/>The default value is -1, indicating that the token is permanently valid. The value 0 indicates that the token expires immediately. After the token expires or becomes invalid, the user must perform domain account authentication when entering the system to verify the domain account and password. |
+| passwordValidityPeriod         | number | No   | Yes   |Indicates the validity period (in seconds) of the domain account password, which is used for users to change the password periodically to improve account security. The value range is [-1, 2147483647], and the validity period starts from the last time the password was changed on the device side.<br/>The default value is -1, indicating that the domain account password is permanently valid. |
+| passwordExpirationNotification | number | No   | Yes   |Indicates the notification time (in seconds) before the domain account password expires. The value range is [0, 2147483647].<br/>The default value is 0, indicating that no notification is sent when the domain account password expires.<br/>**Note:** passwordExpirationNotification must be used together with passwordValidityPeriod. When the system time is greater than or equal to (the last time the domain account password was changed on the device side + passwordValidityPeriod - passwordExpirationNotification), a page notification is sent to remind that the password is about to expire. |
+| supportUKeyAuthentication | boolean | No   | Yes   |Whether the domain account supports USB Key authentication.<br/>If this parameter is set to true, the domain account supports USB Key authentication. If the domain server supports USB Key authentication, the system automatically adds the USB Key credential as a system credential. In this case, the USB Key option appears in the system credential list on the lock screen, and the USB Key can be used to log in and unlock the device. If this parameter is set to false, the domain account does not support USB Key authentication, and the system does not automatically add the USB Key credential as a system credential. In this case, the USB Key option does not appear in the system credential list on the lock screen, and the USB Key cannot be used to log in and unlock the device.<br/>The default value is false.<br>**Since:** 26.0.1 |
 
 ## accountManager.createNormalOsAccount
 
 createNormalOsAccount(admin: Want, name: string): Promise&lt;osAccount.OsAccountInfo&gt;
 
-Creates a normal system account. A maximum of two normal system accounts ([osAccount.OsAccountType](../apis-basic-services-kit/js-apis-osAccount.md#osaccounttype)) can be created.
+Creates a normal system account. This API uses an asynchronous callback to return the result. A maximum of two system accounts of the normal type ([osAccount.OsAccountType](../apis-basic-services-kit/js-apis-osAccount.md#osaccounttype)) can be created.
 > **NOTE**
 > 
-> The account creation process is time-consuming. Subsequent calls to other synchronous APIs in the application main thread must wait for the asynchronous return of this API.
+> Creating an account is time-consuming. After this API is called, if other synchronous APIs are subsequently called on the main thread of the application, you need to wait for this API to return asynchronously.
 > 
-> Creating a system account has a significant impact on device performance. This API is supported only on phones and tablets with 12 GB or more of RAM.
+> Creating a system account has a significant impact on device performance. This API can be used only on phones and tablets with 12 GB or more of RAM.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_LOCAL_ACCOUNTS
 
@@ -443,8 +507,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 
 ```ts
 import { accountManager } from '@kit.MDMKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { osAccount } from '@kit.BasicServicesKit';
+import { BusinessError, osAccount } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
@@ -465,9 +528,9 @@ accountManager.createNormalOsAccount(wantTemp, "TestAccountName").then((accountI
 
 removeOsAccount(admin: Want, accountId: number): Promise&lt;void&gt;
 
-Removes a system account. Currently, this API is supported only on phones and tablets. It can remove normal system accounts (of the normal type) created via [createNormalOsAccount](#accountmanagercreatenormalosaccount) and system accounts (of the admin, normal, and guest types) created via [addOsAccountAsync](#accountmanageraddosaccountasync). The default system account (ID: 100) cannot be removed.
+Removes a system account. This API uses a promise to return the result. Currently, this API is supported only on phones and tablets, and can remove normal system accounts (of the normal type) created via [createNormalOsAccount](#accountmanagercreatenormalosaccount) and system accounts (of the admin, normal, and guest types) created via [addOsAccountAsync](#accountmanageraddosaccountasync). It cannot remove the default system account (with ID 100).
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_LOCAL_ACCOUNTS
 
@@ -507,8 +570,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 
 ```ts
 import { accountManager } from '@kit.MDMKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { osAccount } from '@kit.BasicServicesKit';
+import { BusinessError, osAccount } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
@@ -534,9 +596,9 @@ accountManager.createNormalOsAccount(wantTemp, "TestAccountName").then((accountI
 
 activateOsAccount(admin: Want, accountId: number): Promise&lt;void&gt;
 
-Switches the system account. Currently, this API is supported only on phones and tablets, and can only switch between normal system accounts created via [createNormalOsAccount](#accountmanagercreatenormalosaccount) and the default system account (ID: 100).
+Switches the system account. This API uses a promise to return the result. Currently, this API is supported only on phones and tablets, and can only switch between normal system accounts created via [createNormalOsAccount](#accountmanagercreatenormalosaccount) and the default system account (with ID 100).
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
 **Required permissions:** ohos.permission.ENTERPRISE_INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -576,8 +638,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 
 ```ts
 import { accountManager } from '@kit.MDMKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { osAccount } from '@kit.BasicServicesKit';
+import { BusinessError, osAccount } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {

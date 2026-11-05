@@ -1,6 +1,6 @@
 # Firewall Error Codes
 
-<!-- md-trans-meta sourceCommit=ee448149a8347a637ea937a637907792c01e5f07 translatedAt=2026-09-28T01:20:34.648Z pushedAt=2026-10-09T02:28:18.436Z -->
+<!-- md-trans-meta sourceCommit=c8d611da517c0df9bbfb2e4952764bf8397e713e translatedAt=2026-11-04T06:37:33.843Z pushedAt=2026-11-04T08:04:44.873Z nl=1 -->
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -43,9 +43,9 @@ The number of firewall rules exceeds the maximum.
 
 **Possible Causes**
 
-1. The number of firewall rules of a single **userid** exceeds 1000.
+1. The number of firewall rules of a single user (userid) exceeds 1000;
 
-2. The number of firewall rules of all **userid**s exceeds 2000.
+2. The number of firewall rules of all users (userid) exceeds 2000.
 
 **Solution**
 
@@ -99,9 +99,9 @@ The number of domain rules in the firewall rule of the **domain** type exceeds t
 
 **Possible Causes**
 
-1. The number of **NetFirewallDomainParams** in the added or updated domain rule is greater than 100.
+1. The number of domain parameters NetFirewallDomainParams in a domain rule to be added or updated exceeds 100.
 
-2. The number of **NetFirewallDomainParams** in all domain rules of a single user ID is greater than 1000.
+2. The number of domain parameters NetFirewallDomainParams in all domain rules of a single user (userid) exceeds 1000.
 
 **Solution**
 

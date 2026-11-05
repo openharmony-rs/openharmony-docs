@@ -1,12 +1,11 @@
 # mutableBuilder: Implementing Dynamic Update of Global @Builder
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhangboren-->
 <!--Designer: @zhangboren-->
 <!--Tester: @zhangwenhan-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:05:17.954Z pushedAt=2026-07-22T09:32:58.295Z -->
+<!-- md-trans-meta sourceCommit=8917fa9a06fba0322d5ee6f97bf1bc1616272188 translatedAt=2026-11-04T05:21:08.807Z pushedAt=2026-11-04T07:08:14.527Z nl=1 -->
 
  When multiple global [\@Builder](./arkts-builder.md) functions are used within a single custom component to achieve different UI effects, code maintenance becomes very difficult, and the page is not neat enough. In this case, you can use [wrapBuilder](./arkts-wrapBuilder.md) to encapsulate the global @Builder. However, wrapBuilder does not support dynamically switching @Builder. The [mutableBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-mutableBuilder.md) API is introduced to implement the dynamic switching of global @Builder.
 
@@ -17,9 +16,7 @@
 > Since API version 22, **mutableBuilder** can be used in atomic services.
 
 ## **wrapBuilder** Does Not Support Dynamic Global @Builder
-
 Currently, **wrapBuilder** does not support secondary value assignment. If \@Builder is changed, the UI remains unchanged.
-
 ```ts
 class TextContent {
   text: string = '';
@@ -51,20 +48,17 @@ struct Index {
   }
 }
 ```
-
 In the preceding code, **textBuilder** is used to initialize **wrapBuilder**. When the **onClick** event of the **Button** is triggered, reinitializing **wrapBuilder** with **buttonBuilder** does not trigger the update of the corresponding @Builder.
 
-To solve this problem, **mutableBuilder** is introduced as an encapsulation function for dynamic global @Builder. **mutableBuilder** returns a **MutableBuilder** object, which is used for the dynamic refresh of [global \@Builder](arkts-builder.md#global-custom-builder-function)
+To solve this problem, **mutableBuilder** is introduced as an encapsulation function for dynamic global @Builder. **mutableBuilder** returns a **MutableBuilder** object, which is used for the dynamic refresh of [global \@Builder](arkts-builder.md#global-custom-builder-function) 
 
 ## API Description
 
-mutableBuilder is a template function that returns a [MutableBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-mutableBuilder.md#mutablebuilder-2) object. Compared with [WrappedBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder), MutableBuilder can dynamically switch global @Builder functions.
-
+mutableBuilder is a template function that returns a [MutableBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-mutableBuilder.md#mutablebuilder-2) object. Compared with [WrappedBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder), **MutableBuilder** can dynamically switch global @Builder functions.
 ```ts
 declare function mutableBuilder<Args extends Object[]>(builder: BuilderCallback): MutableBuilder<Args>;
 ```
-
-In addition, the **MutableBuilder** object is a template class , which is inherited from [WrappedBuilder](./arkts-wrapBuilder.md#available-apis).
+In addition, `MutableBuilder` is a template class, which is inherited from [WrappedBuilder](./arkts-wrapBuilder.md#available-apis).
 
 ```ts
 declare class MutableBuilder<Args extends Object[]> extends WrappedBuilder<Args> {
@@ -81,6 +75,8 @@ Invocation pattern:
 let builderVar: MutableBuilder<[string, number]> = mutableBuilder(MyBuilder);
 let builderArr: MutableBuilder<[string, number]>[] = [mutableBuilder(MyBuilder)]; // mutableBuilder can be placed in an array.
 ```
+
+
 
 ## Constraints
 
@@ -173,12 +169,13 @@ let builderArr: MutableBuilder<[string, number]>[] = [mutableBuilder(MyBuilder)]
    ```
 
 ## Dynamically Changing the Global @Builder Instance
-
 Use the **textBuilder** method decorated with the \@Builder decorator as the parameter of **mutableBuilder**, and assign the return value of **mutableBuilder** to the **switchingBuilder** variable. In the **Button** click event, use the **buttonBuilder** method decorated with the \@Builder as the parameter of **mutableBuilder**, and assign the return value of **mutableBuilder** to the **switchingBuilder** variable again. In this way, **textBuilder** can be updated to **buttonBuilder**, solving the problem that **wrapBuilder** does not support secondary assignment.
 
-```ts
+<!-- @[mutable_builder_dynamic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/mutableBuilder/entry/src/main/ets/pages/MutableBuilderDynamic.ets) --> 
+
+``` TypeScript
 class TextContent {
-  text: string = '';
+  public text: string = '';
 }
 
 @Builder
@@ -215,16 +212,18 @@ struct MyApp {
   }
 }
 ```
-
 Click the button to dynamically change **textBuilder** to **buttonBuilder**, as shown in the following figure.
 
 ![arkts-mutableBuilder-dynamic-demo1](figures/mutableBuilder-dynamic-demo1.gif)
+
 
 ## Using mutableBuilder to Display Pop-up Menus
 
 Since **MutableBuilder** inherits from **WrappedBuilder**, the @Builder corresponding to **mutableBuilder** has the same capabilities as **WrappedBuilder**. As shown in the following example, the @Builder method corresponding to **mutableBuilder** can be used as an input parameter for **bindMenu**, supporting the display of a pop-up menu when clicked.
 
-```ts
+<!-- @[mutable_builder_context_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/mutableBuilder/entry/src/main/ets/pages/MutableBuilderContextMenu.ets) --> 
+
+``` TypeScript
 @Builder
 function overBuilder() {
   Row() {
@@ -266,7 +265,9 @@ struct Index {
 
  In the @Builder function corresponding to **mutableBuilder**, [MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20) can be used to encapsulate state variables to observe changes in them. At the same time, changes to the @Builder in **mutableBuilder** can be listened to via [@Monitor](./arkts-new-monitor.md) or [addMonitor](./arkts-new-addMonitor-clearMonitor.md).
 
-```ts
+<!-- @[mutable_builder_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/mutableBuilder/entry/src/main/ets/pages/MutableBuilderBinding.ets) --> 
+
+``` TypeScript
 import { UIUtils, MutableBinding } from '@kit.ArkUI';
 
 @Builder
@@ -317,9 +318,9 @@ struct MyApp {
   }
 }
 ```
-
 Click **Click to change** to dynamically switch **textBuilder** to **buttonBuilder**. **this.message** will be automatically added with **B**, and the **initB** button will be displayed on the page. Click **initB**. **p.value** in **buttonBuilder** is automatically added with **b**, as shown in the following figure.
 
 ![arkts-mutableBuilder-dynamic-demo2](figures/mutableBuilder-dynamic-demo2.gif)
 
 When the `Click to change` button is tapped to dynamically switch `textBuilder` to `buttonBuilder`, @Monitor detects the change of the global @Builder and prints the log `Builder changed. is buttonBuilder: true`.
+

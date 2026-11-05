@@ -5,7 +5,7 @@
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=676f6d27174ea722c497b7a1f1f7a960444d82e4 translatedAt=2026-08-31T01:10:50.750Z pushedAt=2026-08-31T10:49:58.401Z -->
+<!-- md-trans-meta sourceCommit=59c3d4cb2a1fa94afc606906902fd7f0bcad78c2 translatedAt=2026-11-04T04:50:50.966Z pushedAt=2026-11-04T10:12:33.508Z nl=1 -->
 
 ## Overview
 
@@ -58,6 +58,7 @@ Enumerates the DLP error codes.
 | Enum| Description|
 | -- | -- |
 | ERR_OH_SUCCESS = 0 | The operation is successful.|
+| OH_DLP_NOT_SUPPORTED = 801 | Indicates that the current device does not support the capability due to lack of the DLP feature.<br>**Since version:** 26.0.1 |
 | ERR_OH_INVALID_PARAMETER = 19100001 | Invalid parameters are specified.|
 | ERR_OH_API_ONLY_FOR_SANDBOX = 19100006 | The caller is not a DLP sandbox application.|
 | ERR_OH_API_NOT_FOR_SANDBOX = 19100007 | The API is not available to a DLP sandbox application.|
@@ -111,7 +112,7 @@ Obtains the permission information of this DLP file.
 
 | Type| Description|
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | Returns **0** if the operation is successful.<br>         Returns **19100001** if invalid parameters are detected.<br>         Returns **19100006** when the access is denied for a non-DLP sandbox application.<br>         Returns **19100011** when the system service is abnormal.<br>         Returns **19100012** if the memory allocation fails.|
+| [DLP_ErrCode](#dlp_errcode) | 0 - operation succeeded.<br>         801 - (added in API 26.0.1) capability not supported because the current device lacks the DLP feature.<br>         19100001 - invalid input parameter.<br>         19100006 - not a DLP sandbox application.<br>         19100011 - abnormal operation of the system service.<br>         19100012 - memory allocation failed. |
 
 ### OH_DLP_GetOriginalFileName()
 
@@ -137,7 +138,7 @@ Obtains the original file name of a DLP file.
 
 | Type| Description|
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | Returns **0** if the operation is successful.<br>        Returns **19100001** if invalid parameters are detected.<br>         Returns **19100012** if the memory allocation fails.|
+| [DLP_ErrCode](#dlp_errcode) | 0 - operation succeeded.<br>         801 - (added in API 26.0.1) the current device does not support the capability due to lack of the DLP feature.<br>        19100001 - invalid input parameter.<br>         19100012 - memory allocation failed. |
 
 ### OH_DLP_IsInSandbox()
 
@@ -162,7 +163,7 @@ Checks whether this application is running in a DLP sandbox environment.
 
 | Type| Description|
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | Returns **0** if the operation is successful.<br>         Returns **19100011** when the system service is abnormal.<br>         Returns **19100012** if the memory allocation fails.|
+| [DLP_ErrCode](#dlp_errcode) | 0 - operation succeeded.<br>         801 - (added in API 26.0.1) the current device does not support the capability due to lack of the DLP feature.<br>         19100011 - abnormal operation of the system service.<br>         19100012 - memory allocation failed. |
 
 ### OH_DLP_SetSandboxAppConfig()
 
@@ -187,7 +188,7 @@ Sets sandbox application configuration.
 
 | Type| Description|
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | Returns **0** if the operation is successful.<br>         Returns **19100001** if invalid parameters are detected.<br>         Returns **19100007** if the API cannot be called by a DLP sandbox application.<br>         Returns **19100011** when the system service is abnormal.<br>         Returns **19100018** if the application is unauthorized.|
+| [DLP_ErrCode](#dlp_errcode) | 0 - operation succeeded.<br>         801 - (added in API 26.0.1) the current device does not support the capability due to lack of the DLP feature.<br>         19100001 - invalid input parameter.<br>         19100007 - the DLP sandbox application is not allowed to call this interface.<br>         19100011 - abnormal operation of the system service.<br>         19100018 - application not authorized. |
 
 ### OH_DLP_GetSandboxAppConfig()
 
@@ -212,7 +213,7 @@ Obtains the sandbox application configuration.
 
 | Type| Description|
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | Returns **0** if the operation is successful.<br>         Returns **19100011** when the system service is abnormal.<br>         Returns **19100012** if the memory allocation fails.<br>         Returns **19100018** if the application is unauthorized.|
+| [DLP_ErrCode](#dlp_errcode) | 0 - operation succeeded.<br>         801 - (added in API 26.0.1) the current device does not support the capability due to lack of the DLP feature.<br>         19100011 - abnormal operation of the system service.<br>         19100012 - memory allocation failed.<br>         19100018 - application not authorized. |
 
 ### OH_DLP_CleanSandboxAppConfig()
 
@@ -230,6 +231,6 @@ Cleans the sandbox application configuration.
 
 | Type| Description|
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | Returns **0** if the operation is successful.<br>         Returns **19100007** if the API cannot be called by a DLP sandbox application.<br>         Returns **19100011** when the system service is abnormal.<br>         Returns **19100018** if the application is unauthorized.|
+| [DLP_ErrCode](#dlp_errcode) | 0 - operation succeeded.<br>         801 - (added in API 26.0.1) the current device does not support the capability due to lack of the DLP feature.<br>         19100007 - the DLP sandbox application is not allowed to call this interface.<br>         19100011 - abnormal operation of the system service.<br>         19100018 - the application is not authorized. |
 
 

@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=57645ba74f01764ddb3b8358750b6e21af9c6099 translatedAt=2026-09-28T01:37:16.201Z pushedAt=2026-10-09T03:38:39.277Z -->
+<!-- md-trans-meta sourceCommit=e59db8207b0a4b8a833fcdc8e4604f4259c052d3 translatedAt=2026-11-04T06:41:39.165Z pushedAt=2026-11-04T08:04:44.884Z nl=1 -->
 
 The **netFirewall** module implements the network firewall functionality for applications. It allows applications to query the firewall interception records of the device.
 
@@ -159,7 +159,7 @@ Adds a firewall rule for the system user ID. The supported rule types are IP, Do
 >      - If **rule.action** is **RULE_ALLOW** and neither **rule.localIps** nor **rule.remoteIps** is configured, the rule takes effect as allowing all IP segments.
 >      - If **rule.action** is **RULE_DENY** and neither **rule.localIps** nor **rule.remoteIps** is configured, the rule takes effect as denying all IP segments.
 >    - When **rule.type** in the input parameter of **addNetFirewallRule** is set to **RULE_DOMAIN**, if **rule.domains** is not configured, the rule does not take effect.
-> 3. Description of the upper limit of firewall rules:
+> 3. Description of the upper limit of firewall rules: 
 >    - The upper limit of firewall rules added for a single system user ID is 1000. If this limit is exceeded, error code 29400001 is reported.
 >    - The upper limit of the total number of firewall rules added for all system user IDs is 2000. If this limit is exceeded, error code 29400001 is reported.
 >    - The upper limit of the total number of fuzzy domain rules added for all system user IDs is 100. If this limit is exceeded, error code 29400005 is reported.
@@ -277,13 +277,13 @@ let domainRule: netFirewall.NetFirewallRule = {
       domain: "*.example.cn"
     },{
       isWildcard: true,
-      domain: "*w.example.cn"  // Supported since API version 26.0.0.
+      domain: "*w.example.cn"  // Supported since API version 26.0.1.
     },{
       isWildcard: true,
-      domain: "www.example.*"  // Supported since API version 26.0.0.
+      domain: "www.example.*"  // Supported since API version 26.0.1.
     },{
       isWildcard: true,
-      domain: "www.example.c*"  // Supported since API version 26.0.0.
+      domain: "www.example.c*"  // Supported since API version 26.0.1.
     }],
   userId: 100,
   interface:"wlan0" // Supported since API version 26.0.0.
@@ -351,7 +351,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 2100003  | System internal error.                                                          |
 | 29400000 | The specified user does not exist.                                              |
 | 29400006 | The specified rule does not exist.                                              |
-
+  
 **Example**
 
 ```ts
@@ -405,7 +405,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 29400005 | The number of domain rules exceeds the maximum.                                 |
 | 29400006 | The specified rule does not exist.                                              |
 | 29400007 | The dns rule is duplication.                                                    |
-
+  
 **Example**
 
 ```ts
@@ -478,7 +478,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 2100002  | Operation failed. Cannot connect to service.                                    |
 | 2100003  | System internal error.                                                          |
 | 29400000 | The specified user does not exist.                                              |
-
+  
 **Example**
 
 ```ts
@@ -534,7 +534,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 2100003  | System internal error.                                                          |
 | 29400000 | The specified user does not exist.                                              |
 | 29400006 | The specified rule does not exist.                                              |
-
+  
 **Example**
 
 ```ts
@@ -710,13 +710,13 @@ Defines domain name parameters of a firewall rule. Currently, Chinese domain nam
 | ------------ | --------|------|-----|------------------------------------- |
 | isWildcard   | boolean | No | No|Whether to contain wildcards. The value **true** means to contain wildcards; and the value **false** means the opposite.                         |
 | domain       | string  | No  | No | When **isWildcard** is **false**, a complete domain is required, for example, "www.example.com"; when **isWildcard** is **true**, wildcard rules are supported. For details about the format, see the description below. |
-
+ 
 When **isWildcard** is **true**, **domain** supports the wildcard character *"\*"*, which can appear at the beginning, the end, or both the beginning and the end of a domain name, indicating that it matches any character of any length (including zero). The following wildcard formats are supported:
-
+ 
 - `"*.xxx.xxx"`: prefix wildcard, matching xxx.xxx and all its subdomains. For example, "*.example.com" can match "example.com", "www.example.com", and "a.b.example.com". (Supported since API version 21)
-- `"*xx.xxx.xxx"`: prefix wildcard, matching domain names ending with "xx.xxx.xxx". For example, "*a.example.com" can match "a.example.com" and "www.a.example.com". (Supported since API version 26.0.0)
-- `"xxx.xxx.xxx.*"`: suffix wildcard, matching domain names starting with "xxx.xxx.xxx.". For example, "www.example.*" can match "www.example.com" and "www.example.cn". (Supported since API version 26.0.0)
-- `"xxx.xxx.xxx.xx*"`: suffix wildcard, matching domain names starting with "xxx.xxx.xxx.xx". For example, "www.example.co*" can match "www.example.com" and "www.example.com.cn". (Supported since API version 26.0.0)
+- `"*xx.xxx.xxx"`: prefix wildcard, matching domain names ending with "xx.xxx.xxx". For example, "*a.example.com" can match "a.example.com" and "www.a.example.com". (Supported since API version 26.0.1)
+- `"xxx.xxx.xxx.*"`: suffix wildcard, matching domain names starting with "xxx.xxx.xxx.". For example, "www.example.*" can match "www.example.com" and "www.example.cn". (Supported since API version 26.0.1)
+- `"xxx.xxx.xxx.xx*"`: suffix wildcard, matching domain names starting with "xxx.xxx.xxx.xx". For example, "www.example.co*" can match "www.example.com" and "www.example.com.cn". (Supported since API version 26.0.1)
 
 ## NetFirewallDnsParams
 
