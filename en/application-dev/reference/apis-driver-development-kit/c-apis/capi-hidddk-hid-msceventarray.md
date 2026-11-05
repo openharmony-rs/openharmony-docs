@@ -6,7 +6,7 @@ struct Hid_MscEventArray {...}
 
 ## Overview
 
-Defines an array of miscellaneous events.
+Defines an array of miscellaneous events, which stores information about the miscellaneous events supported by an HID device.
 
 **System capability**: SystemCapability.Driver.HID.Extension
 
@@ -22,7 +22,7 @@ Defines an array of miscellaneous events.
 
 | Name | Description |
 | -- | -- |
-| Hid_MscEvent *hidMscEvent | Miscellaneous events. |
-| uint16_t length | Valid length of an array. |
+| Hid_MscEvent *hidMscEvent | Pointer to the array of miscellaneous events, which points to the array pre-allocated by the caller. The pointer cannot be null. The array size must be greater than or equal to the value of length. |
+| uint16_t length | Valid length of the array, which cannot exceed the actual length of the **hidEventType** array. |
 
 

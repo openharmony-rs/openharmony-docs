@@ -22,11 +22,11 @@ Defines standard endpoint descriptors, which correspond to **Standard Endpoint D
 
 | Name | Description |
 | -- | -- |
-| uint8_t bLength | Size of the descriptor, in bytes. |
+| uint8_t bLength | Size of this descriptor, in bytes. |
 | uint8_t bDescriptorType | Descriptor type. |
 | uint8_t bEndpointAddress | Endpoint address, including the endpoint number and endpoint direction. |
 | uint8_t bmAttributes | Endpoint attributes, including the transfer type, synchronization type, and usage type. |
-| uint16_t wMaxPacketSize | Maximum packet size supported by an endpoint. |
+| uint16_t wMaxPacketSize | Maximum packet size supported by an endpoint, in bytes. |
 | uint8_t bInterval | Interval for polling endpoints for data transfer. |
 | uint8_t bRefresh | Refresh rate for audio devices. |
 | uint8_t bSynchAddress | Endpoint synchronization address for audio devices. |

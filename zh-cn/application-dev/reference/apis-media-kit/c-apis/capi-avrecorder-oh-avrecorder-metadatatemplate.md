@@ -22,7 +22,7 @@ struct OH_AVRecorder_MetadataTemplate {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| char *key | 元数据的键。 |
-| char *value | 元数据的值。 |
+| char *key | 元数据的键。<br>**起始版本：** 18 |
+| char *value | 元数据的值。<br>**起始版本：** 18 |
 
 

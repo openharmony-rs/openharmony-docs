@@ -18,7 +18,7 @@ NODE_CHECKBOX_GROUP_NAME  = MAX_NODE_SCOPE_NUM * ARKUI_NODE_CHECKBOX_GROUP
 
 **描述：**
 
-Defines the name of the checkboxgroup. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.string: component name.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.string: component name.</li> </ul>
+定义复选框组的名称，支持属性设置，属性重置和属性获取。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.string: 组件名称。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.string: 组件名称。</li> </ul>
 
 **起始版本：** 15
 
@@ -30,7 +30,7 @@ NODE_CHECKBOX_GROUP_SELECT_ALL
 
 **描述：**
 
-Defines whether the checkboxgroup is selected. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].i32: whether the checkboxgroup is selected. The value <b>1</b> means that the checkboxgroup is selected, and <b>0</b> means the opposite.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].i32: The value <b>1</b> means that the checkboxgroup is selected, and <b>0</b> means the opposite.</li> </ul>
+CheckBoxGroup多选框组是否全选，支持属性设置，属性重置和属性获取。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].i32: 是否设置全选1表示选中，0表示不选中。 </li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].i32: 1表示选中，0表示不选中。</li> </ul>
 
 **起始版本：** 15
 
@@ -42,7 +42,7 @@ NODE_CHECKBOX_GROUP_SELECTED_COLOR
 
 **描述：**
 
-Defines the color of the checkboxgroup when it is selected. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].u32: color of the checkboxgroup when it is selected, in 0xARGB format, for example, <b>0xFF1122FF</b>.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].u32: color of the checkboxgroup when it is selected, in 0xARGB format, for example, <b>0xFF1122FF</b>.</li> </ul>
+CheckBoxGroup多选框选中状态颜色，支持属性设置，属性重置和属性获取。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].u32: CheckBoxGroup多选框选中状态颜色，0xARGB格式。例如0xFF1122FF。 </li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].u32: [CheckBoxGroup](arkui-ts/ts-basic-components-checkboxgroup.md)多选框选中状态颜色，0xARGB格式。例如0xFF1122FF。</li> </ul>
 
 **起始版本：** 15
 
@@ -54,7 +54,7 @@ NODE_CHECKBOX_GROUP_UNSELECTED_COLOR
 
 **描述：**
 
-Defines the border color of the checkboxgroup when it is not selected. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].u32: border color, in 0xARGB format, for example, <b>0xFF1122FF</b>.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].u32: border color, in 0xARGB format, for example, <b>0xFF1122FF</b>.</li> </ul>
+CheckBoxGroup多选框未选中边框颜色，支持属性设置，属性重置和属性获取。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].u32: 边框颜色，类型为0xARGB，如0xFF1122FF。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].u32: 边框颜色，类型为0xARGB，如0xFF1122FF。</li> </ul>
 
 **起始版本：** 15
 
@@ -66,7 +66,7 @@ NODE_CHECKBOX_GROUP_MARK
 
 **描述：**
 
-Defines the internal icon style of the checkboxgroup. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].u32: border color, in 0xARGB format, for example, <b>0xFF1122FF</b>.</li> <li>.value[1]?.f32: size of the internal mark, in vp. Optional.</li> <li>.value[2]?.f32: stroke width of the internal mark, in vp. Optional. The default value is <b>2</b>.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].u32: border color, in 0xARGB format, for example, <b>0xFF1122FF</b>.</li> <li>.value[1].f32: size of the internal mark, in vp.</li> <li>.value[2].f32: stroke width of the internal mark, in vp. The default value is <b>2</b>.</li> </ul>
+CheckBoxGroup多选框内部图标样式，支持属性设置，属性重置和属性获取。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].u32: 边框颜色，类型为0xARGB，如0xFF1122FF。</li><br> <li>.value[1]?.f32: 可选，内部图标大小，单位vp。</li> <li>.value[2]?.f32: 可选，内部图标粗细，单位vp，默认值2。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].u32: 边框颜色，类型为0xARGB，如0xFF1122FF。</li><br> <li>.value[1].f32: 可选，内部图标大小，单位vp。</li> <li>.value[2].f32: 可选，内部图标粗细，单位vp，默认值2。</li> </ul>
 
 **起始版本：** 15
 
@@ -78,7 +78,7 @@ NODE_CHECKBOX_GROUP_SHAPE
 
 **描述：**
 
-Defines the shape of the checkboxgroup. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].i32: component shape. The parameter type is [ArkUI_CheckboxShape](capi-checkbox-h.md#arkui_checkboxshape).</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].i32: component shape. The parameter type is [ArkUI_CheckboxShape](capi-checkbox-h.md#arkui_checkboxshape).</li> </ul>
+CheckBoxGroup组件形状，支持属性设置，属性重置和属性获取。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].i32: 组件形状，参数类型[ArkUI_CheckboxShape](capi-checkbox-h.md#arkui_checkboxshape)。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].i32: 组件形状，参数类型[ArkUI_CheckboxShape](capi-checkbox-h.md#arkui_checkboxshape)。</li> </ul>
 
 **起始版本：** 15
 

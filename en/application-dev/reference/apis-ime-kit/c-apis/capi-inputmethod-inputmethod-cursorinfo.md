@@ -6,7 +6,7 @@ typedef struct InputMethod_CursorInfo InputMethod_CursorInfo
 
 ## Overview
 
-Represents the cursor information, including the coordinates, width, and height of the cursor.<br> *
+Represents the cursor information, Coordinates, width, and height of the cursor.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 

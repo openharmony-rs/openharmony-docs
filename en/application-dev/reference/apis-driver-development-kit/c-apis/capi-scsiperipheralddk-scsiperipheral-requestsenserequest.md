@@ -6,7 +6,7 @@ struct ScsiPeripheral_RequestSenseRequest {...}
 
 ## Overview
 
-Defines the request structure of the **Request Sense** command.
+Defines the SCSI **REQUEST SENSE** request struct. This command is usually used to obtain device error information.
 
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
@@ -22,9 +22,9 @@ Defines the request structure of the **Request Sense** command.
 
 | Name | Description |
 | -- | -- |
-| uint8_t allocationLength | Allocation length** field used to specify the size of the buffer prepared by the request initiator (usually the host) for the response data. |
-| uint8_t control | Control** field used to specify control information. |
-| uint8_t byte1 | First byte of the CDB. |
-| uint32_t timeout | Timeout duration, in ms. |
+| uint8_t allocationLength | Allocation length** field used to specify the size of the buffer prepared by the request initiator (usually the host) for the response data, in bytes. |
+| uint8_t control | Control** field, which specifies the control flags of a SCSI command, such as the priority and linked command. |
+| uint8_t byte1 | First byte of the SCSI command descriptor block (CDB), which usually contains the operation code and operation group information. |
+| uint32_t timeout | Timeout interval, in milliseconds. |
 
 

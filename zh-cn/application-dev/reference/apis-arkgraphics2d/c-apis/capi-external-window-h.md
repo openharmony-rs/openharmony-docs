@@ -19,6 +19,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [Region](capi-nativewindow-region.md) | - | 表示本地窗口OHNativeWindow需要更新内容的矩形区域（脏区）。 |
+| [OH_NativeWindow_ScreenInfoRect](capi-nativewindow-oh-nativewindow-screeninforect.md) | - | 定义一个包含坐标和尺寸信息的矩形描述屏幕信息<br> 该结构体用于 [OH_NativeWindow_NativeWindowHandleOpt](capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt) 接口的 SET_SCREEN_INFO 和 GET_SCREEN_INFO 操作码， 用来承载当前帧的偏移/尺寸以及 原始内容在屏幕中的偏移/尺寸 |
 | [OHHDRMetaData](capi-nativewindow-ohhdrmetadata.md) | OHHDRMetaData | HDR元数据结构体定义。 |
 | [OHExtDataHandle](capi-nativewindow-ohextdatahandle.md) | - | 扩展数据句柄结构体定义。 |
 | [OH_NativeBuffer](capi-nativewindow-oh-nativebuffer.md) | OH_NativeBuffer | 提供对OH_NativeBuffer的访问功能。 |
@@ -122,6 +123,8 @@ OH_NativeWindow_NativeWindowHandleOpt函数中的操作码。
 | SET_SDR_WHITE_POINT_BRIGHTNESS | 设置SDR白点亮度，函数中的可变参数是 [输入] float brightness，取值范围为0.0f到1.0f。<br>**起始版本：** 12 |
 | SET_DESIRED_PRESENT_TIMESTAMP = 24 | 设置本地窗口缓冲区期望上屏时间的时间戳。 该时间戳应由std::chrono::steady_clock标准库时钟生成，单位为纳秒。 当且仅当RenderService为本地窗口的消费者时，该时间戳生效。 生产者下一次放入队列的buffer，达到该期望上屏时间后，才会被RenderService消费并上屏。 如果buffer队列中存在多个生产者放入的buffer都设置了desiredPresentTimestamp并已达到期望上屏时间，则较早入队的buffer将被消费者丢弃回队列。 如果期望上屏时间大于消费者提供的时间1秒以上，则该期望上屏时间戳将被忽略。 本操作执行后需要配合调用OH_NativeWindow_NativeWindowFlushBuffer生效。 函数中的可变参数是 [输入] int64_t desiredPresentTimestamp。<br>**起始版本：** 13 |
 | OH_NATIVEWINDOW_SET_DMABUFFER_NAME = 25 | 设置DMA buffer名称，函数中的可变参数是 [输入] const char* name，为DMA buffer名称字符串。名称必须以字母开头， 只能包含字母或数字，且长度不超过64字节。<br>**起始版本：** 26.0.1 |
+| OH_NATIVEWINDOW_SET_SCREEN_INFO = 26 | 设置本地窗口屏幕信息，函数中的可变参数是 [输入] const OH_NativeWindow_ScreenInfoRect *currentFrameRect, 为当前帧的位置和大小， [输入] const OH_NativeWindow_ScreenInfoRect *originalRect, 为原始屏幕的位置和大小， [输入] float angle。旋转角度，用度表示。 说明：该操作始终向调用方返回GSERROR_OK，IPC远端的错误信息在其回传消息体中。<br>**起始版本：** 26.1.0 |
+| OH_NATIVEWINDOW_GET_SCREEN_INFO = 27 | 获取本地窗口屏幕信息，函数中的可变参数是 [输出] OH_NativeWindow_ScreenInfoRect *currentFrameRect, 为当前帧的位置和大小， [输出] OH_NativeWindow_ScreenInfoRect *originalRect, 为原始屏幕的位置和大小， [输出] float *angle。旋转角度，用度表示。 说明: 和OH_NATIVEWINDOW_SET_SCREEN_INFO有相同的返回值限制。<br>**起始版本：** 26.1.0 |
 
 ### OHScalingMode
 

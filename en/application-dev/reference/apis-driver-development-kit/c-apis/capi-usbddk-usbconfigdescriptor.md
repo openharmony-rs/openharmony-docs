@@ -22,9 +22,9 @@ Defines standard configuration descriptors, which correspond to **Standard Confi
 
 | Name | Description |
 | -- | -- |
-| uint8_t bLength | Size of the descriptor, in bytes. |
+| uint8_t bLength | Size of this descriptor, in bytes. |
 | uint8_t bDescriptorType | Descriptor type. |
-| uint16_t wTotalLength | Total length of the configuration descriptor, including the configuration, interface, endpoint, and class- or vendor-specific descriptors. |
+| uint16_t wTotalLength | Total length of the configuration descriptor, in bytes, including the configuration, interface, endpoint, and class- or vendor-specific descriptors. |
 | uint8_t bNumInterfaces | Number of interfaces supported by the configuration. |
 | uint8_t bConfigurationValue | Configuration index, which is used to select the configuration. |
 | uint8_t iConfiguration | Index of the string descriptor that describes the configuration. |

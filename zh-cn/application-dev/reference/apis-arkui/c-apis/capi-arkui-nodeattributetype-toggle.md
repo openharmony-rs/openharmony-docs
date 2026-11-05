@@ -18,7 +18,7 @@ NODE_TOGGLE_SELECTED_COLOR = MAX_NODE_SCOPE_NUM * ARKUI_NODE_TOGGLE
 
 **描述：**
 
-Defines the color of the component when it is selected. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].u32: background color, in 0xARGB format. For example, 0xFFFF0000 indicates red.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].u32: background color, in 0xARGB format.</li> </ul>
+组件打开状态的背景颜色属性。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].u32: 背景色数值，0xARGB格式，形如 0xFFFF0000 表示红色。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].u32: 背景色数值，0xARGB格式。</li> </ul>
 
 **起始版本：** 12
 
@@ -30,7 +30,7 @@ NODE_TOGGLE_SWITCH_POINT_COLOR
 
 **描述：**
 
-Defines the color of the circular slider for the component of the switch type. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].u32: color of the circular slider, in 0xARGB format. For example, 0xFFFF0000 indicates red.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].u32: color of the circular slider, in 0xARGB format.</li> </ul>
+Switch类型的圆形滑块颜色属性，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].u32: 圆形滑块颜色数值，0xARGB格式，形如 0xFFFF0000 表示红色。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].u32: 圆形滑块颜色数值，0xARGB格式。</li> </ul>
 
 **起始版本：** 12
 
@@ -42,7 +42,7 @@ NODE_TOGGLE_VALUE
 
 **描述：**
 
-Defines the toggle switch value. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].i32: whether to enable the toggle. The value <b>true</b> means to enable the toggle.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].i32: whether to enable the toggle.</li> </ul>
+Switch类型的开关值，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].i32: 设置开关的值，true表示开启。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].i32: 设置开关的值。</li> </ul>
 
 **起始版本：** 12
 
@@ -54,7 +54,7 @@ NODE_TOGGLE_UNSELECTED_COLOR
 
 **描述：**
 
-Defines the color of the component when it is deselected. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].u32: background color, in 0xARGB format. For example, 0xFFFF0000 indicates red.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].u32: background color, in 0xARGB format.</li> </ul>
+组件关闭状态的背景颜色属性，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].u32: 背景色数值，0xARGB格式，形如 0xFFFF0000 表示红色。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].u32: 背景色数值，0xARGB格式。</li> </ul>
 
 **起始版本：** 12
 

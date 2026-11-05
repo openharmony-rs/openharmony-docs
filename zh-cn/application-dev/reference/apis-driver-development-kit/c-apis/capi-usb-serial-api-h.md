@@ -108,7 +108,7 @@ int32_t OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_D
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [USB_SERIAL_DDK_SUCCESS](capi-usb-serial-types-h.md#usbserial_ddkretcode) 调用接口成功。<br>[USB_SERIAL_DDK_NO_PERM](capi-usb-serial-types-h.md#usbserial_ddkretcode) 权限校验失败。请检查应用是否正确获取了ohos.permission.ACCESS_DDK_USB_SERIAL权限。<br>[USB_SERIAL_DDK_INVALID_PARAMETER](capi-usb-serial-types-h.md#usbserial_ddkretcode) 参数检查失败。可能原因为：dev为空指针或\*dev为空指针。请检查参数的有效性。<br>[USB_SERIAL_DDK_INIT_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) 未初始化DDK。请先调用[OH_UsbSerial_Init](capi-usb-serial-api-h.md#oh_usbserial_init)初始化DDK。<br>[USB_SERIAL_DDK_SERVICE_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) DDK服务执行失败。请检查参数和设备状态。<br>[USB_SERIAL_DDK_MEMORY_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) 内存不足。<br>[USB_SERIAL_DDK_IO_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) DDK发生I/O错误。请检查设备规格和参数。<br>[USB_SERIAL_DDK_DEVICE_NOT_FOUND](capi-usb-serial-types-h.md#usbserial_ddkretcode) 找不到设备或接口。 |
+| int32_t | [USB_SERIAL_DDK_SUCCESS](capi-usb-serial-types-h.md#usbserial_ddkretcode) 调用接口成功。<br>[USB_SERIAL_DDK_NO_PERM](capi-usb-serial-types-h.md#usbserial_ddkretcode) 权限校验失败。请检查应用是否正确获取了ohos.permission.ACCESS_DDK_USB_SERIAL权限。<br>[USB_SERIAL_DDK_INVALID_PARAMETER](capi-usb-serial-types-h.md#usbserial_ddkretcode) 参数检查失败。可能原因为：dev为空指针或*dev为空指针。请检查参数的有效性。<br>[USB_SERIAL_DDK_INIT_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) 未初始化DDK。请先调用[OH_UsbSerial_Init](capi-usb-serial-api-h.md#oh_usbserial_init)初始化DDK。<br>[USB_SERIAL_DDK_SERVICE_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) DDK服务执行失败。请检查参数和设备状态。<br>[USB_SERIAL_DDK_MEMORY_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) 内存不足。<br>[USB_SERIAL_DDK_IO_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) DDK发生I/O错误。请检查设备规格和参数。<br>[USB_SERIAL_DDK_DEVICE_NOT_FOUND](capi-usb-serial-types-h.md#usbserial_ddkretcode) 找不到设备或接口。 |
 
 ### OH_UsbSerial_Close()
 
@@ -136,7 +136,7 @@ int32_t OH_UsbSerial_Close(UsbSerial_Device **dev)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [USB_SERIAL_DDK_SUCCESS](capi-usb-serial-types-h.md#usbserial_ddkretcode) 调用接口成功。<br>[USB_SERIAL_DDK_NO_PERM](capi-usb-serial-types-h.md#usbserial_ddkretcode) 权限校验失败。请检查应用是否正确获取了ohos.permission.ACCESS_DDK_USB_SERIAL权限。<br>[USB_SERIAL_DDK_INVALID_PARAMETER](capi-usb-serial-types-h.md#usbserial_ddkretcode) 参数检查失败。可能原因：dev为空指针或\*dev为空指针。请检查参数的有效性。<br>[USB_SERIAL_DDK_INIT_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) 未初始化DDK。请先调用[OH_UsbSerial_Init](capi-usb-serial-api-h.md#oh_usbserial_init)初始化DDK。<br>[USB_SERIAL_DDK_SERVICE_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) DDK服务执行失败。请检查参数和设备状态。<br>[USB_SERIAL_DDK_IO_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) DDK发生I/O错误。请检查设备规格和参数。<br>[USB_SERIAL_DDK_INVALID_OPERATION](capi-usb-serial-types-h.md#usbserial_ddkretcode) 无效操作。请确保设备已正常打开。 |
+| int32_t | [USB_SERIAL_DDK_SUCCESS](capi-usb-serial-types-h.md#usbserial_ddkretcode) 调用接口成功。<br>[USB_SERIAL_DDK_NO_PERM](capi-usb-serial-types-h.md#usbserial_ddkretcode) 权限校验失败。请检查应用是否正确获取了ohos.permission.ACCESS_DDK_USB_SERIAL权限。<br>[USB_SERIAL_DDK_INVALID_PARAMETER](capi-usb-serial-types-h.md#usbserial_ddkretcode) 参数检查失败。可能原因：dev为空指针或*dev为空指针。请检查参数的有效性。<br>[USB_SERIAL_DDK_INIT_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) 未初始化DDK。请先调用[OH_UsbSerial_Init](capi-usb-serial-api-h.md#oh_usbserial_init)初始化DDK。<br>[USB_SERIAL_DDK_SERVICE_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) DDK服务执行失败。请检查参数和设备状态。<br>[USB_SERIAL_DDK_IO_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) DDK发生I/O错误。请检查设备规格和参数。<br>[USB_SERIAL_DDK_INVALID_OPERATION](capi-usb-serial-types-h.md#usbserial_ddkretcode) 无效操作。请确保设备已正常打开。 |
 
 ### OH_UsbSerial_Read()
 
@@ -161,13 +161,13 @@ int32_t OH_UsbSerial_Read(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferS
 | [UsbSerial_Device](capi-usbserialddk-usbserial-device.md) *dev | 设备句柄，需调用[OH_UsbSerial_Open](capi-usb-serial-api-h.md#oh_usbserial_open)接口打开设备并获取。 |
 | uint8_t *buff | 从USB串口设备读取数据的缓冲区，需由调用方分配且容量不小于bufferSize。 |
 | uint32_t bufferSize | 缓冲区的大小。 |
-| uint32_t *bytesRead | 实际读取的字节数，如果设置了阻塞模式，则实际读取到的数据等于bufferSize后才会返回；如果设置了超时，则返回值可能小于bufferSize。 详见[OH_UsbSerial_SetTimeout](capi-usb-serial-api-h.md#oh_usbserial_settimeout)。 |
+| uint32_t *bytesRead | 实际读取的字节数，如果设置了阻塞模式，则实际读取到的数据等于bufferSize后才会返回；如果设置了超时，则返回值可能小于bufferSize。 <br>详见[OH_UsbSerial_SetTimeout](capi-usb-serial-api-h.md#oh_usbserial_settimeout)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [USB_SERIAL_DDK_SUCCESS](capi-usb-serial-types-h.md#usbserial_ddkretcode) 调用接口成功。<br>[USB_SERIAL_DDK_NO_PERM](capi-usb-serial-types-h.md#usbserial_ddkretcode) 权限校验失败。请检查应用是否正确获取了ohos.permission.ACCESS_DDK_USB_SERIAL权限。<br>[USB_SERIAL_DDK_INVALID_PARAMETER](capi-usb-serial-types-h.md#usbserial_ddkretcode) 参数检查失败。可能原因：1. dev为空指针；2. buff为空指针；3. bufferSize等于0；4. <br>bytesRead为空指针。请检查参数的有效性。<br>[USB_SERIAL_DDK_INIT_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) 未初始化DDK。请先调用[OH_UsbSerial_Init](capi-usb-serial-api-h.md#oh_usbserial_init)初始化DDK。<br>[USB_SERIAL_DDK_SERVICE_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) DDK服务执行失败。请检查参数和设备状态。<br>[USB_SERIAL_DDK_MEMORY_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) buff地址无效。<br>[USB_SERIAL_DDK_IO_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) DDK发生I/O错误。请检查设备规格和参数。<br>[USB_SERIAL_DDK_INVALID_OPERATION](capi-usb-serial-types-h.md#usbserial_ddkretcode) 无效操作。请确保设备已正常打开。 |
+| int32_t | [USB_SERIAL_DDK_SUCCESS](capi-usb-serial-types-h.md#usbserial_ddkretcode) 调用接口成功。<br>[USB_SERIAL_DDK_NO_PERM](capi-usb-serial-types-h.md#usbserial_ddkretcode) 权限校验失败。请检查应用是否正确获取了ohos.permission.ACCESS_DDK_USB_SERIAL权限。<br>[USB_SERIAL_DDK_INVALID_PARAMETER](capi-usb-serial-types-h.md#usbserial_ddkretcode) 参数检查失败。可能原因：1. dev为空指针；2. buff为空指针；3. bufferSize等于0；4. bytesRead为空指针。请检查参数的有效性。<br>[USB_SERIAL_DDK_INIT_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) 未初始化DDK。请先调用[OH_UsbSerial_Init](capi-usb-serial-api-h.md#oh_usbserial_init)初始化DDK。<br>[USB_SERIAL_DDK_SERVICE_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) DDK服务执行失败。请检查参数和设备状态。<br>[USB_SERIAL_DDK_MEMORY_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) buff地址无效。<br>[USB_SERIAL_DDK_IO_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) DDK发生I/O错误。请检查设备规格和参数。<br>[USB_SERIAL_DDK_INVALID_OPERATION](capi-usb-serial-types-h.md#usbserial_ddkretcode) 无效操作。请确保设备已正常打开。 |
 
 ### OH_UsbSerial_Write()
 
@@ -191,14 +191,14 @@ int32_t OH_UsbSerial_Write(UsbSerial_Device *dev, uint8_t *buff, uint32_t buffer
 | -- | -- |
 | [UsbSerial_Device](capi-usbserialddk-usbserial-device.md) *dev | 设备句柄，需调用[OH_UsbSerial_Open](capi-usb-serial-api-h.md#oh_usbserial_open)接口打开设备并获取。 |
 | uint8_t *buff | 写入USB串口设备数据的缓冲区，需由调用方分配且容量不小于bufferSize。 |
-| uint32_t bufferSize | 缓冲区的大小。 |
+| uint32_t bufferSize | 缓冲区的大小。最大4096字节，超出内容会被截断。 |
 | uint32_t *bytesWritten | 实际写入的字节数。仅在接口返回成功时有效，且可能小于bufferSize。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [USB_SERIAL_DDK_SUCCESS](capi-usb-serial-types-h.md#usbserial_ddkretcode) 调用接口成功。<br>[USB_SERIAL_DDK_NO_PERM](capi-usb-serial-types-h.md#usbserial_ddkretcode) 权限校验失败。请检查应用是否正确获取了ohos.permission.ACCESS_DDK_USB_SERIAL权限。<br>[USB_SERIAL_DDK_INVALID_PARAMETER](capi-usb-serial-types-h.md#usbserial_ddkretcode) 参数检查失败。可能原因：1. dev为空指针；2. buff为空指针；3. bufferSize等于0；4. <br>bytesWritten为空指针。请检查参数的有效性。<br>[USB_SERIAL_DDK_INIT_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) 未初始化DDK。请先调用[OH_UsbSerial_Init](capi-usb-serial-api-h.md#oh_usbserial_init)初始化DDK。<br>[USB_SERIAL_DDK_SERVICE_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) DDK服务执行失败。请检查参数和设备状态。<br>[USB_SERIAL_DDK_IO_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) DDK发生I/O错误。请检查设备规格和参数。<br>[USB_SERIAL_DDK_INVALID_OPERATION](capi-usb-serial-types-h.md#usbserial_ddkretcode) 无效操作。请确保设备已正常打开。 |
+| int32_t | [USB_SERIAL_DDK_SUCCESS](capi-usb-serial-types-h.md#usbserial_ddkretcode) 调用接口成功。<br>[USB_SERIAL_DDK_NO_PERM](capi-usb-serial-types-h.md#usbserial_ddkretcode) 权限校验失败。请检查应用是否正确获取了ohos.permission.ACCESS_DDK_USB_SERIAL权限。<br>[USB_SERIAL_DDK_INVALID_PARAMETER](capi-usb-serial-types-h.md#usbserial_ddkretcode) 参数检查失败。可能原因：1. dev为空指针；2. buff为空指针；3. bufferSize等于0；4. bytesWritten为空指针。请检查参数的有效性。<br>[USB_SERIAL_DDK_INIT_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) 未初始化DDK。请先调用[OH_UsbSerial_Init](capi-usb-serial-api-h.md#oh_usbserial_init)初始化DDK。<br>[USB_SERIAL_DDK_SERVICE_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) DDK服务执行失败。请检查参数和设备状态。<br>[USB_SERIAL_DDK_IO_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode) DDK发生I/O错误。请检查设备规格和参数。<br>[USB_SERIAL_DDK_INVALID_OPERATION](capi-usb-serial-types-h.md#usbserial_ddkretcode) 无效操作。请确保设备已正常打开。 |
 
 ### OH_UsbSerial_SetBaudRate()
 

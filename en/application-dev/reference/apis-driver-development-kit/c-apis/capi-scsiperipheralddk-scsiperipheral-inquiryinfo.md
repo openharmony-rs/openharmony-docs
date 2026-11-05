@@ -6,7 +6,7 @@ struct ScsiPeripheral_InquiryInfo {...}
 
 ## Overview
 
-Defines the SCSI inquiry data.
+Defines the SCSI **INQUIRY** data, which is used to store the query result of the **INQUIRY** command of SCSI peripherals.
 
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
@@ -22,10 +22,10 @@ Defines the SCSI inquiry data.
 
 | Name | Description |
 | -- | -- |
-| uint8_t deviceType | Device type. |
+| uint8_t deviceType | Device type of the SCSI peripheral. For details about the type values, see the SCSI protocol. |
 | char idVendor[SCSIPERIPHERAL_VENDOR_ID_LEN + 1] | Vendor ID. |
 | char idProduct[SCSIPERIPHERAL_PRODUCT_ID_LEN + 1] | Product ID. |
 | char revProduct[SCSIPERIPHERAL_PRODUCT_REV_LEN + 1] | Product version. |
-| ScsiPeripheral_DeviceMemMap *data | Inquiry data. |
+| ScsiPeripheral_DeviceMemMap *data | Pointer to the device memory mapping, which is used to store the queried data. |
 
 

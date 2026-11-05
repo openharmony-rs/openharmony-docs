@@ -6,7 +6,7 @@ typedef struct InputMethod_InputMethodProxy InputMethod_InputMethodProxy
 
 ## Overview
 
-A struct that serves as the proxy between an application and the input method. The application can call APIs of the input method through this proxy and receive event callbacks from the input method.
+Provides an interaction proxy object between the app and the input method service. The app can call relevant APIs of the input method service and receive event callbacks from the input method service through this object. This struct is an opaque type. Its internal members shall not be accessed directly. Operations can only be performed through the function interfaces provided by this module.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 

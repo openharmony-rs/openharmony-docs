@@ -46,7 +46,7 @@ uint32_t OH_Drawing_RegisterFont(OH_Drawing_FontCollection* fontCollection, cons
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* fontCollection | Indicates the pointer to an <b>OH_Drawing_FontCollection</b> object. |
+| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* fontCollection | 指向[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)对象的指针。 |
 | const char* fontFamily | 需要注册的字体的字体名称。 |
 | const char* familySrc | 需要注册的字体文件的路径。 |
 
@@ -74,7 +74,7 @@ uint32_t OH_Drawing_RegisterFontBuffer(OH_Drawing_FontCollection* fontCollection
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* fontCollection | Indicates the pointer to an <b>OH_Drawing_FontCollection</b> object. |
+| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* fontCollection | 指向[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)对象的指针。 |
 | const char* fontFamily | 需要注册的字体名称。 |
 | uint8_t* fontBuffer | 需要注册的字体文件的缓冲区。 |
 | size_t length | 需要注册的字体文件的长度，需与fontBuffer实际长度保持一致。 |

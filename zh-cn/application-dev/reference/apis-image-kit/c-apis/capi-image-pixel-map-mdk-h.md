@@ -76,7 +76,7 @@ PixelMap透明度类型的枚举。
 | OHOS_PIXEL_MAP_ALPHA_TYPE_UNKNOWN = 0 | 未知的格式。 |
 | OHOS_PIXEL_MAP_ALPHA_TYPE_OPAQUE = 1 | 不透明的格式。 |
 | OHOS_PIXEL_MAP_ALPHA_TYPE_PREMUL = 2 | 预乘的格式。 |
-| OHOS_PIXEL_MAP_ALPHA_TYPE_UNPREMUL = 3 | 预除的格式。 |
+| OHOS_PIXEL_MAP_ALPHA_TYPE_UNPREMUL = 3 | 非预乘的格式。 |
 
 ### anonymous1
 

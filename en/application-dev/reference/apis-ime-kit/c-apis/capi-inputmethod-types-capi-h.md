@@ -2,7 +2,7 @@
 
 ## Overview
 
-Provides the input method types.
+Defines the types related to the input method.
 
 **File to Include**: <inputmethod/inputmethod_types_capi.h>
 
@@ -33,7 +33,7 @@ Provides the input method types.
 
 | Name | Description |
 | -- | -- |
-| OHOS_INPUTMETHOD_TYPES_CAPI_H | Provides the input method types.<br>**Since**: 12<br>**System capability**: SystemCapability.MiscServices.InputMethodFramework |
+| OHOS_INPUTMETHOD_TYPES_CAPI_H | Defines the types related to the input method.<br>**Since**: 12<br>**System capability**: SystemCapability.MiscServices.InputMethodFramework |
 
 ## Enum type description
 
@@ -53,9 +53,9 @@ Enumerates the keyboard status.
 
 | Enum item | Description |
 | -- | -- |
-| IME_KEYBOARD_STATUS_NONE = 0 | The keyboard status is none. |
-| IME_KEYBOARD_STATUS_HIDE = 1 | The keyboard status is hide. |
-| IME_KEYBOARD_STATUS_SHOW = 2 | The keyboard status is show. |
+| IME_KEYBOARD_STATUS_NONE = 0 | NONE. |
+| IME_KEYBOARD_STATUS_HIDE = 1 | Invisible. |
+| IME_KEYBOARD_STATUS_SHOW = 2 | Visible. |
 
 ### InputMethod_EnterKeyType
 
@@ -73,15 +73,15 @@ Enumerates the Enter key types.
 
 | Enum item | Description |
 | -- | -- |
-| IME_ENTER_KEY_UNSPECIFIED = 0 | The enter key type is UNSPECIFIED. |
-| IME_ENTER_KEY_NONE = 1 | The enter key type is NONE. |
-| IME_ENTER_KEY_GO = 2 | The enter key type is GO. |
-| IME_ENTER_KEY_SEARCH = 3 | The enter key type is SEARCH. |
-| IME_ENTER_KEY_SEND = 4 | The enter key type is SEND. |
-| IME_ENTER_KEY_NEXT = 5 | The enter key type is NEXT. |
-| IME_ENTER_KEY_DONE = 6 | The enter key type is DONE. |
-| IME_ENTER_KEY_PREVIOUS = 7 | The enter key type is PREVIOUS. |
-| IME_ENTER_KEY_NEWLINE = 8 | The enter key type is NEWLINE. |
+| IME_ENTER_KEY_UNSPECIFIED = 0 | Unspecified. |
+| IME_ENTER_KEY_NONE = 1 | NONE. |
+| IME_ENTER_KEY_GO = 2 | Go. |
+| IME_ENTER_KEY_SEARCH = 3 | Search. |
+| IME_ENTER_KEY_SEND = 4 | Send. |
+| IME_ENTER_KEY_NEXT = 5 | Next. |
+| IME_ENTER_KEY_DONE = 6 | Done. |
+| IME_ENTER_KEY_PREVIOUS = 7 | Previous. |
+| IME_ENTER_KEY_NEWLINE = 8 | Line break. |
 
 ### InputMethod_Direction
 
@@ -99,11 +99,11 @@ Enumerates the moving directions.
 
 | Enum item | Description |
 | -- | -- |
-| IME_DIRECTION_NONE = 0 | The direction is NONE. |
-| IME_DIRECTION_UP = 1 | The direction is UP. |
-| IME_DIRECTION_DOWN = 2 | The direction is DOWN. |
-| IME_DIRECTION_LEFT = 3 | The direction is LEFT. |
-| IME_DIRECTION_RIGHT = 4 | The direction is RIGHT. |
+| IME_DIRECTION_NONE = 0 | NONE. |
+| IME_DIRECTION_UP = 1 | Upward. |
+| IME_DIRECTION_DOWN = 2 | Downward. |
+| IME_DIRECTION_LEFT = 3 | Leftward. |
+| IME_DIRECTION_RIGHT = 4 | Rightward. |
 
 ### InputMethod_ExtendAction
 
@@ -121,10 +121,10 @@ Enumerates the types of the extended edit action on the text box.
 
 | Enum item | Description |
 | -- | -- |
-| IME_EXTEND_ACTION_SELECT_ALL = 0 | Select all text. |
-| IME_EXTEND_ACTION_CUT = 3 | Cut selected text. |
-| IME_EXTEND_ACTION_COPY = 4 | Copy selected text. |
-| IME_EXTEND_ACTION_PASTE = 5 | Paste from paste board. |
+| IME_EXTEND_ACTION_SELECT_ALL = 0 | Select all. |
+| IME_EXTEND_ACTION_CUT = 3 | Cut. |
+| IME_EXTEND_ACTION_COPY = 4 | Copy. |
+| IME_EXTEND_ACTION_PASTE = 5 | Paste. |
 
 ### InputMethod_TextInputType
 
@@ -142,21 +142,21 @@ Enumerates the text input types.
 
 | Enum item | Description |
 | -- | -- |
-| IME_TEXT_INPUT_TYPE_NONE = -1 | The text input type is NONE. |
-| IME_TEXT_INPUT_TYPE_TEXT = 0 | The text input type is TEXT. |
-| IME_TEXT_INPUT_TYPE_MULTILINE = 1 | The text input type is MULTILINE. |
-| IME_TEXT_INPUT_TYPE_NUMBER = 2 | The text input type is NUMBER. |
-| IME_TEXT_INPUT_TYPE_PHONE = 3 | The text input type is PHONE. |
-| IME_TEXT_INPUT_TYPE_DATETIME = 4 | The text input type is DATETIME. |
-| IME_TEXT_INPUT_TYPE_EMAIL_ADDRESS = 5 | The text input type is EMAIL ADDRESS. |
-| IME_TEXT_INPUT_TYPE_URL = 6 | The text input type is URL. |
-| IME_TEXT_INPUT_TYPE_VISIBLE_PASSWORD = 7 | The text input type is VISIBLE PASSWORD. |
-| IME_TEXT_INPUT_TYPE_NUMBER_PASSWORD = 8 | The text input type is NUMBER PASSWORD. |
-| IME_TEXT_INPUT_TYPE_SCREEN_LOCK_PASSWORD = 9 | The text input type is SCREEN LOCK PASSWORD. |
-| IME_TEXT_INPUT_TYPE_USER_NAME = 10 | The text input type is USER NAME. |
-| IME_TEXT_INPUT_TYPE_NEW_PASSWORD = 11 | The text input type is NEW PASSWORD. |
-| IME_TEXT_INPUT_TYPE_NUMBER_DECIMAL = 12 | The text input type is NUMBER DECIMAL. |
-| IME_TEXT_INPUT_TYPE_ONE_TIME_CODE = 13 | The text input type is ONE TIME CODE.<br>**Since**: 20 |
+| IME_TEXT_INPUT_TYPE_NONE = -1 | NONE. |
+| IME_TEXT_INPUT_TYPE_TEXT = 0 | Text. |
+| IME_TEXT_INPUT_TYPE_MULTILINE = 1 | Multi-line. |
+| IME_TEXT_INPUT_TYPE_NUMBER = 2 | Number. |
+| IME_TEXT_INPUT_TYPE_PHONE = 3 | Phone number. |
+| IME_TEXT_INPUT_TYPE_DATETIME = 4 | Date. |
+| IME_TEXT_INPUT_TYPE_EMAIL_ADDRESS = 5 | Email address. |
+| IME_TEXT_INPUT_TYPE_URL = 6 | URL. |
+| IME_TEXT_INPUT_TYPE_VISIBLE_PASSWORD = 7 | Password. |
+| IME_TEXT_INPUT_TYPE_NUMBER_PASSWORD = 8 | Numeric password. |
+| IME_TEXT_INPUT_TYPE_SCREEN_LOCK_PASSWORD = 9 | Lock screen password. |
+| IME_TEXT_INPUT_TYPE_USER_NAME = 10 | Username. |
+| IME_TEXT_INPUT_TYPE_NEW_PASSWORD = 11 | New password. |
+| IME_TEXT_INPUT_TYPE_NUMBER_DECIMAL = 12 | Decimal number. |
+| IME_TEXT_INPUT_TYPE_ONE_TIME_CODE = 13 | Verification code.<br>**Since**: 20 |
 
 ### InputMethod_CommandValueType
 
@@ -174,10 +174,10 @@ Enumerates the private data types.
 
 | Enum item | Description |
 | -- | -- |
-| IME_COMMAND_VALUE_TYPE_NONE = 0 | Value type is NONE. |
-| IME_COMMAND_VALUE_TYPE_STRING = 1 | Value type is STRING. |
-| IME_COMMAND_VALUE_TYPE_BOOL = 2 | Value type is BOOL. |
-| IME_COMMAND_VALUE_TYPE_INT32 = 3 | Value type is INT32. |
+| IME_COMMAND_VALUE_TYPE_NONE = 0 | NONE. |
+| IME_COMMAND_VALUE_TYPE_STRING = 1 | String. |
+| IME_COMMAND_VALUE_TYPE_BOOL = 2 | Boolean. |
+| IME_COMMAND_VALUE_TYPE_INT32 = 3 | 32-bit signed integer. |
 
 ### InputMethod_ErrorCode
 
@@ -195,19 +195,19 @@ Enumerates the input method error codes.
 
 | Enum item | Description |
 | -- | -- |
-| IME_ERR_OK = 0 | &nbsp;The error code in the correct case. |
-| IME_ERR_UNDEFINED = 1 | &nbsp;The error code when error is undefined. |
-| IME_ERR_PARAMCHECK = 401 | &nbsp;The error code when parameter check failed. |
-| IME_ERR_PACKAGEMANAGER = 12800001 | &nbsp;The error code when the bundle manager error. |
-| IME_ERR_IMENGINE = 12800002 | &nbsp;The error code when input method engine error. |
-| IME_ERR_IMCLIENT = 12800003 | &nbsp;The error code when input method client error. |
-| IME_ERR_CONFIG_PERSIST = 12800005 | &nbsp;The error code when configuration persistence error. This error code is reported when the configuration fails to be saved. |
-| IME_ERR_CONTROLLER = 12800006 | &nbsp;The error code when input method controller error. |
-| IME_ERR_SETTINGS = 12800007 | &nbsp;The error code when input method setting error. |
-| IME_ERR_IMMS = 12800008 | &nbsp;The error code when input method manager service error. |
-| IME_ERR_DETACHED = 12800009 | &nbsp;The error code when input method client detached. |
-| IME_ERR_NULL_POINTER = 12802000 | &nbsp;The error code when unexpected null pointer. |
-| IME_ERR_QUERY_FAILED = 12802001 | &nbsp;The error code when query failed. |
+| IME_ERR_OK = 0 | &nbsp;Success. |
+| IME_ERR_UNDEFINED = 1 | &nbsp;Undefined error. |
+| IME_ERR_PARAMCHECK = 401 | &nbsp;Parameter check failed. |
+| IME_ERR_PACKAGEMANAGER = 12800001 | &nbsp;Package management error. |
+| IME_ERR_IMENGINE = 12800002 | &nbsp;Input method application error. |
+| IME_ERR_IMCLIENT = 12800003 | &nbsp;Text box client error. |
+| IME_ERR_CONFIG_PERSIST = 12800005 | &nbsp;Configuration persistence failed. This error code is reported when the configuration fails to be saved. |
+| IME_ERR_CONTROLLER = 12800006 | &nbsp;Input method controller error. |
+| IME_ERR_SETTINGS = 12800007 | &nbsp;Input method setter error. |
+| IME_ERR_IMMS = 12800008 | &nbsp;Input method manager service error. |
+| IME_ERR_DETACHED = 12800009 | &nbsp;Text box unbound. |
+| IME_ERR_NULL_POINTER = 12802000 | &nbsp;Null pointer. |
+| IME_ERR_QUERY_FAILED = 12802001 | &nbsp;Query failed. |
 
 ### InputMethod_RequestKeyboardReason
 
@@ -225,9 +225,9 @@ Enumerates the reasons for requesting the keyboard.
 
 | Enum item | Description |
 | -- | -- |
-| IME_REQUEST_REASON_NONE = 0 | The request keyboard reason is NONE. |
-| IME_REQUEST_REASON_MOUSE = 1 | The request keyboard reason is MOUSE. |
-| IME_REQUEST_REASON_TOUCH = 2 | The request keyboard reason is TOUCH. |
-| IME_REQUEST_REASON_OTHER = 20 | The request keyboard reason is OTHER. |
+| IME_REQUEST_REASON_NONE = 0 | No reason. |
+| IME_REQUEST_REASON_MOUSE = 1 | Mouse operation. |
+| IME_REQUEST_REASON_TOUCH = 2 | Touch operation. |
+| IME_REQUEST_REASON_OTHER = 20 | Other reasons. |
 
 

@@ -2,7 +2,7 @@
 
 ## 概述
 
-Provides Button node type definitions for <b>NativeNode</b> APIs.
+为NativeNode API提供Button节点类型定义。
 
 **库：** libace_ndk.z.so
 

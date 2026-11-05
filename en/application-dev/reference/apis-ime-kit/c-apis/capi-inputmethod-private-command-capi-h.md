@@ -26,17 +26,17 @@ Provides methods for creating, destroying, reading, and writing private data obj
 
 | Name | Description |
 | -- | -- |
-| [InputMethod_PrivateCommand *OH_PrivateCommand_Create(char key[], size_t keyLength)](#oh_privatecommand_create) | Create a new [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance. |
-| [void OH_PrivateCommand_Destroy(InputMethod_PrivateCommand *command)](#oh_privatecommand_destroy) | Destroy a [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance. |
-| [InputMethod_ErrorCode OH_PrivateCommand_SetKey(InputMethod_PrivateCommand *command, char key[], size_t keyLength)](#oh_privatecommand_setkey) | Set key value into [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md). |
-| [InputMethod_ErrorCode OH_PrivateCommand_SetBoolValue(InputMethod_PrivateCommand *command, bool value)](#oh_privatecommand_setboolvalue) | Set bool data value into [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md). |
-| [InputMethod_ErrorCode OH_PrivateCommand_SetIntValue(InputMethod_PrivateCommand *command, int32_t value)](#oh_privatecommand_setintvalue) | Set integer data value into [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md). |
-| [InputMethod_ErrorCode OH_PrivateCommand_SetStrValue(InputMethod_PrivateCommand *command, char value[], size_t valueLength)](#oh_privatecommand_setstrvalue) | Set string data value into [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md). |
-| [InputMethod_ErrorCode OH_PrivateCommand_GetKey(InputMethod_PrivateCommand *command, const char **key, size_t *keyLength)](#oh_privatecommand_getkey) | Get key value from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md). |
-| [InputMethod_ErrorCode OH_PrivateCommand_GetValueType(InputMethod_PrivateCommand *command, InputMethod_CommandValueType *type)](#oh_privatecommand_getvaluetype) | Get value type from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md). |
-| [InputMethod_ErrorCode OH_PrivateCommand_GetBoolValue(InputMethod_PrivateCommand *command, bool *value)](#oh_privatecommand_getboolvalue) | Get bool data value from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md). |
-| [InputMethod_ErrorCode OH_PrivateCommand_GetIntValue(InputMethod_PrivateCommand *command, int32_t *value)](#oh_privatecommand_getintvalue) | Get integer data value from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md). |
-| [InputMethod_ErrorCode OH_PrivateCommand_GetStrValue(InputMethod_PrivateCommand *command, const char **value, size_t *valueLength)](#oh_privatecommand_getstrvalue) | Get string data value from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md). |
+| [InputMethod_PrivateCommand *OH_PrivateCommand_Create(char key[], size_t keyLength)](#oh_privatecommand_create) | Creates an [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance. |
+| [void OH_PrivateCommand_Destroy(InputMethod_PrivateCommand *command)](#oh_privatecommand_destroy) | Destroys an [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance. |
+| [InputMethod_ErrorCode OH_PrivateCommand_SetKey(InputMethod_PrivateCommand *command, char key[], size_t keyLength)](#oh_privatecommand_setkey) | Sets the key value for [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md). |
+| [InputMethod_ErrorCode OH_PrivateCommand_SetBoolValue(InputMethod_PrivateCommand *command, bool value)](#oh_privatecommand_setboolvalue) | Sets the value of the Boolean type for [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md). |
+| [InputMethod_ErrorCode OH_PrivateCommand_SetIntValue(InputMethod_PrivateCommand *command, int32_t value)](#oh_privatecommand_setintvalue) | Sets the value of the integer type for [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md). |
+| [InputMethod_ErrorCode OH_PrivateCommand_SetStrValue(InputMethod_PrivateCommand *command, char value[], size_t valueLength)](#oh_privatecommand_setstrvalue) | Sets the value of the string type for [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md). |
+| [InputMethod_ErrorCode OH_PrivateCommand_GetKey(InputMethod_PrivateCommand *command, const char **key, size_t *keyLength)](#oh_privatecommand_getkey) | Obtains the key value from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md). |
+| [InputMethod_ErrorCode OH_PrivateCommand_GetValueType(InputMethod_PrivateCommand *command, InputMethod_CommandValueType *type)](#oh_privatecommand_getvaluetype) | Obtains the data type of value from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md). |
+| [InputMethod_ErrorCode OH_PrivateCommand_GetBoolValue(InputMethod_PrivateCommand *command, bool *value)](#oh_privatecommand_getboolvalue) | Obtains the value of the Boolean type from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md). |
+| [InputMethod_ErrorCode OH_PrivateCommand_GetIntValue(InputMethod_PrivateCommand *command, int32_t *value)](#oh_privatecommand_getintvalue) | Obtains the value of the integer type from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md). |
+| [InputMethod_ErrorCode OH_PrivateCommand_GetStrValue(InputMethod_PrivateCommand *command, const char **value, size_t *valueLength)](#oh_privatecommand_getstrvalue) | Obtains the value of the string type from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md). |
 
 ## Function description
 
@@ -48,7 +48,7 @@ InputMethod_PrivateCommand *OH_PrivateCommand_Create(char key[], size_t keyLengt
 
 **Description**
 
-Create a new [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance.
+Creates an [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -58,14 +58,14 @@ Create a new [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privateco
 
 | Parameter | Description |
 | -- | -- |
-| char key[] | The key of the private command. |
+| char key[] | Key value of the private data. |
 | size_t keyLength | Key length. The total size of all private data and keys in a single operation cannot exceed 32 KB. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [InputMethod_PrivateCommand *](capi-inputmethod-inputmethod-privatecommand.md) | If the creation succeeds, a pointer to the newly created [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance is returned. If the creation fails, NULL is returned, possible cause is insufficient memory. |
+| [InputMethod_PrivateCommand *](capi-inputmethod-inputmethod-privatecommand.md) | If the operation is successful, a pointer to the created [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance is returned. <br>If the operation failed, **NULL** is returned, which may be caused by insufficient application address space. |
 
 ### OH_PrivateCommand_Destroy()
 
@@ -75,7 +75,7 @@ void OH_PrivateCommand_Destroy(InputMethod_PrivateCommand *command)
 
 **Description**
 
-Destroy a [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance.
+Destroys an [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -85,7 +85,7 @@ Destroy a [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecomma
 
 | Parameter | Description |
 | -- | -- |
-| [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) *command | Represents a pointer to an [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance which will be destroyed. |
+| [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) *command | Pointer to the [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance to be destroyed. |
 
 ### OH_PrivateCommand_SetKey()
 
@@ -95,7 +95,7 @@ InputMethod_ErrorCode OH_PrivateCommand_SetKey(InputMethod_PrivateCommand *comma
 
 **Description**
 
-Set key value into [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
+Sets the key value for [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -105,15 +105,15 @@ Set key value into [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-pri
 
 | Parameter | Description |
 | -- | -- |
-| [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) *command | Represents a pointer to an [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance which will be set value. |
-| char key[] | Represents key value. |
-| size_t keyLength | Represents key length. |
+| [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) *command | Pointer to the [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance to be set. |
+| char key[] | Key value. |
+| size_t keyLength | Key length. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | Returns a specific error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer. <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | An error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - Success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - An unexpected null pointer. <br>For details about the error codes, see [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
 ### OH_PrivateCommand_SetBoolValue()
 
@@ -123,7 +123,7 @@ InputMethod_ErrorCode OH_PrivateCommand_SetBoolValue(InputMethod_PrivateCommand 
 
 **Description**
 
-Set bool data value into [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
+Sets the value of the Boolean type for [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -133,14 +133,14 @@ Set bool data value into [InputMethod_PrivateCommand](capi-inputmethod-inputmeth
 
 | Parameter | Description |
 | -- | -- |
-| [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) *command | Represents a pointer to an [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance which will be set value. |
-| bool value | Represents bool data value. |
+| [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) *command | Pointer to the [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance to be set. |
+| bool value | Boolean value. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | Returns a specific error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer. <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | An error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - Success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - An unexpected null pointer. <br>For details about the error codes, see [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
 ### OH_PrivateCommand_SetIntValue()
 
@@ -150,7 +150,7 @@ InputMethod_ErrorCode OH_PrivateCommand_SetIntValue(InputMethod_PrivateCommand *
 
 **Description**
 
-Set integer data value into [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
+Sets the value of the integer type for [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -160,14 +160,14 @@ Set integer data value into [InputMethod_PrivateCommand](capi-inputmethod-inputm
 
 | Parameter | Description |
 | -- | -- |
-| [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) *command | Represents a pointer to an [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance which will be set value. |
-| int32_t value | Represents integer data value. |
+| [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) *command | Pointer to the [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance to be set. |
+| int32_t value | Value of the integer type. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | Returns a specific error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer. <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | An error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - Success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - An unexpected null pointer. <br>For details about the error codes, see [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
 ### OH_PrivateCommand_SetStrValue()
 
@@ -177,7 +177,7 @@ InputMethod_ErrorCode OH_PrivateCommand_SetStrValue(InputMethod_PrivateCommand *
 
 **Description**
 
-Set string data value into [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
+Sets the value of the string type for [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -187,15 +187,15 @@ Set string data value into [InputMethod_PrivateCommand](capi-inputmethod-inputme
 
 | Parameter | Description |
 | -- | -- |
-| [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) *command | Represents a pointer to an [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance which will be set value. |
-| char value[] | Represents string data value. |
-| size_t valueLength | Represents the length of string data value. |
+| [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) *command | Pointer to the [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance to be set. |
+| char value[] | Value of the string type. |
+| size_t valueLength | Value length. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | Returns a specific error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer. <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | An error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - Success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - An unexpected null pointer. <br>For details about the error codes, see [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
 ### OH_PrivateCommand_GetKey()
 
@@ -205,7 +205,7 @@ InputMethod_ErrorCode OH_PrivateCommand_GetKey(InputMethod_PrivateCommand *comma
 
 **Description**
 
-Get key value from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
+Obtains the key value from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -215,15 +215,15 @@ Get key value from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-pri
 
 | Parameter | Description |
 | -- | -- |
-| [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) *command | Represents a pointer to an [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance which will be get value from. |
-| const char **key | The lifespan of key is consistent with that of command. You are advised to copy instead of directly saving the key address or writing key. |
-| size_t *keyLength | Represents key length. |
+| [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) *command | Pointer to the [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance from which the key value is to be obtained. |
+| const char **key | The lifespan of **key** is consistent with that of **command**. You are advised to copy instead of directly saving the key address or writing **key**. |
+| size_t *keyLength | Key length. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | Returns a specific error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer. <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | An error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - Success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - An unexpected null pointer. <br>For details about the error codes, see [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
 ### OH_PrivateCommand_GetValueType()
 
@@ -233,7 +233,7 @@ InputMethod_ErrorCode OH_PrivateCommand_GetValueType(InputMethod_PrivateCommand 
 
 **Description**
 
-Get value type from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
+Obtains the data type of value from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -243,14 +243,14 @@ Get value type from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-pr
 
 | Parameter | Description |
 | -- | -- |
-| [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) *command | Represents a pointer to an [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance which will be get value from. |
-| [InputMethod_CommandValueType](capi-inputmethod-types-capi-h.md#inputmethod_commandvaluetype) *type | Represents a pointer to a [InputMethod_CommandValueType](capi-inputmethod-types-capi-h.md#inputmethod_commandvaluetype) instance. Indicates the data type of the value. |
+| [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) *command | Pointer to the [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance from which the value is to be obtained. |
+| [InputMethod_CommandValueType](capi-inputmethod-types-capi-h.md#inputmethod_commandvaluetype) *type | Pointer to the [InputMethod_CommandValueType](capi-inputmethod-types-capi-h.md#inputmethod_commandvaluetype) instance, used to indicate the data type of the value. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | Returns a specific error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer. <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | An error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - Success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - An unexpected null pointer. <br>For details about the error codes, see [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
 ### OH_PrivateCommand_GetBoolValue()
 
@@ -260,7 +260,7 @@ InputMethod_ErrorCode OH_PrivateCommand_GetBoolValue(InputMethod_PrivateCommand 
 
 **Description**
 
-Get bool data value from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
+Obtains the value of the Boolean type from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -270,14 +270,14 @@ Get bool data value from [InputMethod_PrivateCommand](capi-inputmethod-inputmeth
 
 | Parameter | Description |
 | -- | -- |
-| [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) *command | Represents a pointer to an [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance which will be get value from. |
-| bool *value | Represents bool data value. |
+| [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) *command | Pointer to the [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance from which the value is to be obtained. |
+| bool *value | Boolean value. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | Returns a specific error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer. <br>[IME_ERR_QUERY_FAILED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - query failed, no bool value in command. <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | An error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - Success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - An unexpected null pointer. <br>[IME_ERR_QUERY_FAILED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - Query failed as the command contains no Boolean value. <br>For details about the error codes, see [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
 ### OH_PrivateCommand_GetIntValue()
 
@@ -287,7 +287,7 @@ InputMethod_ErrorCode OH_PrivateCommand_GetIntValue(InputMethod_PrivateCommand *
 
 **Description**
 
-Get integer data value from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
+Obtains the value of the integer type from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -297,14 +297,14 @@ Get integer data value from [InputMethod_PrivateCommand](capi-inputmethod-inputm
 
 | Parameter | Description |
 | -- | -- |
-| [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) *command | Represents a pointer to an [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance which will be get value from. |
-| int32_t *value | Represents integer data value. |
+| [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) *command | Pointer to the [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance from which the value is to be obtained. |
+| int32_t *value | Value of the integer type. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | Returns a specific error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer. <br>[IME_ERR_QUERY_FAILED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - query failed, no integer value in command. <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | An error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - Success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - An unexpected null pointer. <br>[IME_ERR_QUERY_FAILED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - Query failed because the command does not contain an integer value. <br>For details about the error codes, see [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
 ### OH_PrivateCommand_GetStrValue()
 
@@ -314,7 +314,7 @@ InputMethod_ErrorCode OH_PrivateCommand_GetStrValue(InputMethod_PrivateCommand *
 
 **Description**
 
-Get string data value from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
+Obtains the value of the string type from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -324,14 +324,14 @@ Get string data value from [InputMethod_PrivateCommand](capi-inputmethod-inputme
 
 | Parameter | Description |
 | -- | -- |
-| [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) *command | Represents a pointer to an [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance which will be get value from. |
-| const char **value | Represents string data value. |
-| size_t *valueLength | The lifespan of value is consistent with that of command. You are advised to copy instead of directly saving the value address or writing value. |
+| [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) *command | Pointer to the [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance from which the value is to be obtained. |
+| const char **value | Value of the string type. |
+| size_t *valueLength | The lifespan of **value** is consistent with that of **command**. You are advised to copy instead of directly saving the value address or writing **value**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | Returns a specific error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer. <br>[IME_ERR_QUERY_FAILED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - query failed, no string value in command. <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | An error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - Success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - An unexpected null pointer. <br>[IME_ERR_QUERY_FAILED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - Query failed because the command does not contain a string value. <br>For details about the error codes, see [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
 

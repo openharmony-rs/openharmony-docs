@@ -2,7 +2,7 @@
 
 ## 概述
 
-提供USB DDK接口，包括主机侧打开和关闭接口、管道同步异步读写通信、控制传输、中断传输等，适用于需要与USB设备进行底层交互和数据通信的场景，帮助开发者实现高效的USB设备驱动开发。
+Provides USB DDK types and declares the macros, enumerated variables, and data structures required by the USB DDK APIs.
 
 **系统能力：** SystemCapability.Driver.USB.Extension
 

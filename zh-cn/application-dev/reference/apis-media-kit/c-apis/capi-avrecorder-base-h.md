@@ -73,12 +73,12 @@ AVRecorder的音频源类型。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AVRECORDER_DEFAULT = 0 | 默认音频源类型。适用于无需指定特定音频源类型的通用录制场景。 |
-| AVRECORDER_MIC = 1 | 麦克风音频源类型。 |
-| AVRECORDER_VOICE_RECOGNITION = 2 | 语音识别场景的音频源。 |
-| AVRECORDER_VOICE_COMMUNICATION = 7 | 语音通话场景的音频源。 |
-| AVRECORDER_VOICE_MESSAGE = 10 | 语音消息的音频源。 |
-| AVRECORDER_CAMCORDER = 13 | 相机录像的音频源。 |
+| AVRECORDER_DEFAULT = 0 | 默认音频源类型。适用于无需指定特定音频源类型的通用录制场景。<br>**起始版本：** 18 |
+| AVRECORDER_MIC = 1 | 麦克风音频源类型。<br>**起始版本：** 18 |
+| AVRECORDER_VOICE_RECOGNITION = 2 | 语音识别场景的音频源。<br>**起始版本：** 18 |
+| AVRECORDER_VOICE_COMMUNICATION = 7 | 语音通话场景的音频源。<br>**起始版本：** 18 |
+| AVRECORDER_VOICE_MESSAGE = 10 | 语音消息的音频源。<br>**起始版本：** 18 |
+| AVRECORDER_CAMCORDER = 13 | 相机录像的音频源。<br>**起始版本：** 18 |
 
 ### OH_AVRecorder_VideoSourceType
 
@@ -96,8 +96,8 @@ AVRecorder的视频源类型。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AVRECORDER_SURFACE_YUV = 0 | 原始数据Surface。适用于需要对原始视频帧数据进行编码处理的场景。 |
-| AVRECORDER_SURFACE_ES = 1 | ES数据Surface。适用于已有编码数据（如硬编码输出）无需再次编码的场景。 |
+| AVRECORDER_SURFACE_YUV = 0 | 原始数据Surface。适用于需要对原始视频帧数据进行编码处理的场景。<br>**起始版本：** 18 |
+| AVRECORDER_SURFACE_ES = 1 | ES数据Surface。适用于已有编码数据（如硬编码输出）无需再次编码的场景。<br>**起始版本：** 18 |
 
 ### OH_AVRecorder_CodecMimeType
 
@@ -115,14 +115,14 @@ enum OH_AVRecorder_CodecMimeType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AVRECORDER_VIDEO_AVC = 2 | H.264视频编码器MIME类型。需与mp4容器格式匹配使用。 |
-| AVRECORDER_AUDIO_AAC = 3 | AAC音频编码器MIME类型。需与aac、mp4或m4a容器格式匹配使用。 |
-| AVRECORDER_AUDIO_MP3 = 4 | MP3音频编码器MIME类型。需与mp3容器格式匹配使用。 |
-| AVRECORDER_AUDIO_G711MU = 5 | G711-mulaw音频编码器MIME类型。需与wav容器格式匹配使用。 |
-| AVRECORDER_VIDEO_MPEG4 = 6 | MPEG4视频编码器MIME类型。需与mp4容器格式匹配使用。 |
-| AVRECORDER_VIDEO_HEVC = 8 | H.265视频编码器MIME类型。需与mp4容器格式匹配使用。 |
-| AVRECORDER_AUDIO_AMR_NB = 9 | AMR_NB音频编码器MIME类型。需与amr容器格式匹配使用。 |
-| AVRECORDER_AUDIO_AMR_WB = 10 | AMR_WB音频编码器MIME类型。需与amr容器格式匹配使用。 |
+| AVRECORDER_VIDEO_AVC = 2 | H.264视频编码器MIME类型。需与mp4容器格式匹配使用。<br>**起始版本：** 18 |
+| AVRECORDER_AUDIO_AAC = 3 | AAC音频编码器MIME类型。需与aac、mp4或m4a容器格式匹配使用。<br>**起始版本：** 18 |
+| AVRECORDER_AUDIO_MP3 = 4 | MP3音频编码器MIME类型。需与mp3容器格式匹配使用。<br>**起始版本：** 18 |
+| AVRECORDER_AUDIO_G711MU = 5 | G711-mulaw音频编码器MIME类型。需与wav容器格式匹配使用。<br>**起始版本：** 18 |
+| AVRECORDER_VIDEO_MPEG4 = 6 | MPEG4视频编码器MIME类型。需与mp4容器格式匹配使用。<br>**起始版本：** 18 |
+| AVRECORDER_VIDEO_HEVC = 8 | H.265视频编码器MIME类型。需与mp4容器格式匹配使用。<br>**起始版本：** 18 |
+| AVRECORDER_AUDIO_AMR_NB = 9 | AMR_NB音频编码器MIME类型。需与amr容器格式匹配使用。<br>**起始版本：** 18 |
+| AVRECORDER_AUDIO_AMR_WB = 10 | AMR_WB音频编码器MIME类型。需与amr容器格式匹配使用。<br>**起始版本：** 18 |
 
 ### OH_AVRecorder_ContainerFormatType
 
@@ -140,11 +140,11 @@ enum OH_AVRecorder_ContainerFormatType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AVRECORDER_CFT_MPEG_4 = 2 | 视频容器格式类型mp4。支持AAC音频编码器及MPEG4、H.264或H.265视频编码器。 |
-| AVRECORDER_CFT_MPEG_4A = 6 | 音频容器格式类型m4a。支持AAC音频编码器。 |
-| AVRECORDER_CFT_AMR = 8 | 音频容器格式类型amr。支持AMR_NB、AMR_WB音频编码器。 |
-| AVRECORDER_CFT_MP3 = 9 | 音频容器格式类型mp3。支持MP3音频编码器。 |
-| AVRECORDER_CFT_WAV = 10 | 音频容器格式类型wav。支持G711-mulaw音频编码器。 |
+| AVRECORDER_CFT_MPEG_4 = 2 | 视频容器格式类型mp4。支持AAC音频编码器及MPEG4、H.264或H.265视频编码器。<br>**起始版本：** 18 |
+| AVRECORDER_CFT_MPEG_4A = 6 | 音频容器格式类型m4a。支持AAC音频编码器。<br>**起始版本：** 18 |
+| AVRECORDER_CFT_AMR = 8 | 音频容器格式类型amr。支持AMR_NB、AMR_WB音频编码器。<br>**起始版本：** 18 |
+| AVRECORDER_CFT_MP3 = 9 | 音频容器格式类型mp3。支持MP3音频编码器。<br>**起始版本：** 18 |
+| AVRECORDER_CFT_WAV = 10 | 音频容器格式类型wav。支持G711-mulaw音频编码器。<br>**起始版本：** 18 |
 | AVRECORDER_CFT_AAC = 11 | 音频容器格式类型aac（带ADTS头）。支持AAC音频编码器。<br>**起始版本：** 20 |
 
 ### OH_AVRecorder_State
@@ -163,13 +163,13 @@ AVRecorder状态，用于表示录制器在生命周期中的不同阶段，不�
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AVRECORDER_IDLE = 0 | 空闲状态，为AVRecorder实例创建后的默认初始状态。此时可以调用[OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare)接口设置录制参数，进入AVRECORDER_PREPARED状态。 |
-| AVRECORDER_PREPARED = 1 | 准备状态。参数设置完成，此时可以调用[OH_AVRecorder_Start](capi-avrecorder-h.md#oh_avrecorder_start)接口开始录制，进入AVRECORDER_STARTED状态。 |
-| AVRECORDER_STARTED = 2 | 启动状态。正在录制，此时可以调用[OH_AVRecorder_Pause](capi-avrecorder-h.md#oh_avrecorder_pause)接口暂停录制，进入AVRECORDER_PAUSED状态。<br> 也可以调用[OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop)接口结束录制，进入AVRECORDER_STOPPED状态。 |
-| AVRECORDER_PAUSED = 3 | 暂停状态。此时可以调用[OH_AVRecorder_Resume](capi-avrecorder-h.md#oh_avrecorder_resume)接口继续录制，进入AVRECORDER_STARTED状态。<br> 也可以调用[OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop)接口结束录制，进入AVRECORDER_STOPPED状态。 |
-| AVRECORDER_STOPPED = 4 | 停止状态。此时可以调用[OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare)接口设置录制参数，重新进入AVRECORDER_PREPARED状态。 |
-| AVRECORDER_RELEASED = 5 | 释放状态。录制资源释放，此时不能再进行任何操作。在任何其他状态下，均可以通过调用[OH_AVRecorder_Release](capi-avrecorder-h.md#oh_avrecorder_release)接口进入AVRECORDER_RELEASED状态。 |
-| AVRECORDER_ERROR = 6 | 错误状态。当AVRecorder实例发生不可逆错误，会转换至该状态。<br>在AVRECORDER_ERROR状态时，不能再进行录制相关操作， 用户需要调用[OH_AVRecorder_Reset](capi-avrecorder-h.md#oh_avrecorder_reset)接口重置AVRecorder实例，或者调用[OH_AVRecorder_Release](capi-avrecorder-h.md#oh_avrecorder_release)接口释放资源。 |
+| AVRECORDER_IDLE = 0 | 空闲状态，为AVRecorder实例创建后的默认初始状态。此时可以调用[OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare)接口设置录制参数，进入AVRECORDER_PREPARED状态。<br>**起始版本：** 18 |
+| AVRECORDER_PREPARED = 1 | 准备状态。参数设置完成，此时可以调用[OH_AVRecorder_Start](capi-avrecorder-h.md#oh_avrecorder_start)接口开始录制，进入AVRECORDER_STARTED状态。<br>**起始版本：** 18 |
+| AVRECORDER_STARTED = 2 | 启动状态。正在录制，此时可以调用[OH_AVRecorder_Pause](capi-avrecorder-h.md#oh_avrecorder_pause)接口暂停录制，进入AVRECORDER_PAUSED状态。<br> 也可以调用[OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop)接口结束录制，进入AVRECORDER_STOPPED状态。<br>**起始版本：** 18 |
+| AVRECORDER_PAUSED = 3 | 暂停状态。此时可以调用[OH_AVRecorder_Resume](capi-avrecorder-h.md#oh_avrecorder_resume)接口继续录制，进入AVRECORDER_STARTED状态。<br> 也可以调用[OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop)接口结束录制，进入AVRECORDER_STOPPED状态。<br>**起始版本：** 18 |
+| AVRECORDER_STOPPED = 4 | 停止状态。此时可以调用[OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare)接口设置录制参数，重新进入AVRECORDER_PREPARED状态。<br>**起始版本：** 18 |
+| AVRECORDER_RELEASED = 5 | 释放状态。录制资源释放，此时不能再进行任何操作。在任何其他状态下，均可以通过调用[OH_AVRecorder_Release](capi-avrecorder-h.md#oh_avrecorder_release)接口进入AVRECORDER_RELEASED状态。<br>**起始版本：** 18 |
+| AVRECORDER_ERROR = 6 | 错误状态。当AVRecorder实例发生不可逆错误，会转换至该状态。<br>在AVRECORDER_ERROR状态时，不能再进行录制相关操作， 用户需要调用[OH_AVRecorder_Reset](capi-avrecorder-h.md#oh_avrecorder_reset)接口重置AVRecorder实例，或者调用[OH_AVRecorder_Release](capi-avrecorder-h.md#oh_avrecorder_release)接口释放资源。<br>**起始版本：** 18 |
 
 ### OH_AVRecorder_StateChangeReason
 
@@ -187,8 +187,8 @@ AVRecorder状态变化的原因，用于区分状态变化是由用户操作还�
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AVRECORDER_USER = 0 | 用户操作导致的状态变化。例如用户主动调用Start、Pause、Resume、Stop等接口时触发。 |
-| AVRECORDER_BACKGROUND = 1 | 后台操作导致的状态变化。例如因音频打断、录制超时等原因自动改变录制状态时触发。 |
+| AVRECORDER_USER = 0 | 用户操作导致的状态变化。例如用户主动调用Start、Pause、Resume、Stop等接口时触发。<br>**起始版本：** 18 |
+| AVRECORDER_BACKGROUND = 1 | 后台操作导致的状态变化。例如因音频打断、录制超时等原因自动改变录制状态时触发。<br>**起始版本：** 18 |
 
 ### OH_AVRecorder_FileGenerationMode
 
@@ -206,8 +206,8 @@ enum OH_AVRecorder_FileGenerationMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AVRECORDER_APP_CREATE = 0 | 由应用自行在沙箱中创建媒体文件，此模式下不会触发[OH_AVRecorder_OnUri](capi-avrecorder-base-h.md#oh_avrecorder_onuri)回调。 |
-| AVRECORDER_AUTO_CREATE_CAMERA_SCENE = 1 | 由系统创建媒体文件，此模式下会触发[OH_AVRecorder_OnUri](capi-avrecorder-base-h.md#oh_avrecorder_onuri)回调，应用可通过回调获取录制生成的媒体资源对象。 |
+| AVRECORDER_APP_CREATE = 0 | 由应用自行在沙箱中创建媒体文件，此模式下不会触发[OH_AVRecorder_OnUri](capi-avrecorder-base-h.md#oh_avrecorder_onuri)回调。<br>**起始版本：** 18 |
+| AVRECORDER_AUTO_CREATE_CAMERA_SCENE = 1 | 由系统创建媒体文件，此模式下会触发[OH_AVRecorder_OnUri](capi-avrecorder-base-h.md#oh_avrecorder_onuri)回调，应用可通过回调获取录制生成的媒体资源对象。<br>**起始版本：** 18 |
 
 
 ## 函数说明

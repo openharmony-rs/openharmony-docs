@@ -113,7 +113,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_GetContext(ContentEmbed_Extensi
 | 参数项 | 描述 |
 | -- | -- |
 | [ContentEmbed_ExtensionContextHandle](capi-contentembed-contentembed-extensioncontext8h.md) ceContext | OE Extension上下文对象的指针。 |
-| [AbilityRuntime_ContextHandle](../../apis-ability-kit/c-apis/capi-abilityruntime-abilityruntime-context8h.md) *context | 输出参数。调用成功后，该指针指向[AbilityRuntime_ContextHandle](../../apis-ability-kit/c-apis/capi-abilityruntime-abilityruntime-context8h.md)上下文对象。 |
+| [AbilityRuntime_ContextHandle](../../apis-ability-kit/c-apis/capi-abilityruntime-abilityruntime-context8h.md) *context | 输出参数。调用成功后，该指针指向[AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md)上下文对象。 |
 
 **返回值：**
 

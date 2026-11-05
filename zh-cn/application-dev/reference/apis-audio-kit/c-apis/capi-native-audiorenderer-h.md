@@ -59,6 +59,7 @@ OH_AudioRenderer提供音频播放流功能，目前主要用于播放PCM（Puls
 | [typedef int32_t (\*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)](#oh_audiorenderer_onwritedatacallbackadvanced) | OH_AudioRenderer_OnWriteDataCallbackAdvanced | 音频播放流写入音频数据回调函数的原型定义。 <br>不同于OH_AudioRenderer_OnWriteDataCallback，此函数允许应用填充[0, audioDataSize]长度的数据。 <br>其中audioDataSize为回调buffer的长度。调用方通过返回值告知系统写入的数据长度。 <br>如果返回0，回调线程将会sleep一段时间。 <br>否则，系统可能会立刻进行下一次回调。 |
 | [OH_AudioStream_Result OH_AudioRenderer_GetLatency(OH_AudioRenderer* renderer, OH_AudioStream_LatencyType type, int32_t* latencyMs)](#oh_audiorenderer_getlatency) | - | 获取当前音频路由的估算时延（单位：ms）。无线连接的音频设备，时延估算可能存在误差，结果仅供参考。 <br>由于时延未计入实时缓冲区，建议仅在音频播放开始时获取，避免频繁调用，否则可能因路由切换而阻塞该接口调用。 <br>当音频数据输出到硬件后，建议使用[OH_AudioRenderer_GetAudioTimestampInfo](capi-native-audiorenderer-h.md#oh_audiorenderer_getaudiotimestampinfo)进行音视频同步。 |
 | [OH_AudioStream_Result OH_AudioRenderer_SetIndependentAudioSessionStrategy(OH_AudioRenderer* renderer, const OH_AudioSession_Strategy* strategy, uint32_t behavior)](#oh_audiorenderer_setindependentaudiosessionstrategy) | - | 设置音频播放流的独立音频会话策略和行为参数，这些参数主要用于扩展音频流的默认并发策略。 <br>建议在音频流处于运行状态前设置。当在音频流运行时调用此接口， 只会在下次调用接口[OH_AudioRenderer_Start](capi-native-audiorenderer-h.md#oh_audiorenderer_start)启动音频流后参数才会生效。 |
+| [OH_AudioStream_Result OH_AudioRenderer_Standby(OH_AudioRenderer* renderer, bool on)](#oh_audiorenderer_standby) | - | 进入或退出音频standby状态。 standby状态主要用于音频播放过程中短暂无数据的情况，如流媒体播放等待网络下载。 进入standby状态后，音频通路保持不变，仅向应用请求数据的循环线程暂停，也不接受主动写入数据，已写入系统的数据会继续播放。 只有在播放流状态为AUDIOFLOW_STATE_RUNNING时可以调用此接口进入standby状态。standby状态下才能再次调用接口退出。 standby状态下也可以直接调用[OH_AudioRenderer_Pause](capi-native-audiorenderer-h.md#oh_audiorenderer_pause), [OH_AudioRenderer_Stop](capi-native-audiorenderer-h.md#oh_audiorenderer_stop), [OH_AudioRenderer_Release](capi-native-audiorenderer-h.md#oh_audiorenderer_release)停止播放，但不可调用[OH_AudioRenderer_Start](capi-native-audiorenderer-h.md#oh_audiorenderer_start)。 注意，此接口并不会改变通过[OH_AudioRenderer_GetCurrentState](capi-native-audiorenderer-h.md#oh_audiorenderer_getcurrentstate)获取的状态。 |
 
 ## 函数说明
 
@@ -1173,5 +1174,32 @@ OH_AudioStream_Result OH_AudioRenderer_SetIndependentAudioSessionStrategy(OH_Aud
 | 类型 | 说明 |
 | -- | -- |
 | [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) 函数执行成功。</li> <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) 参数为空指针或超出范围。</li> <li>[AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) 执行状态异常。</li> </ul> |
+
+### OH_AudioRenderer_Standby()
+
+```c
+OH_AudioStream_Result OH_AudioRenderer_Standby(OH_AudioRenderer* renderer, bool on)
+```
+
+**描述：**
+
+进入或退出音频standby状态。standby状态主要用于音频播放过程中短暂无数据的情况，如流媒体播放等待网络下载。进入standby状态后，音频通路保持不变，仅向应用请求数据的循环线程暂停，也不接受主动写入数据，已写入系统的数据会继续播放。只有在播放流状态为AUDIOFLOW_STATE_RUNNING时可以调用此接口进入standby状态。standby状态下才能再次调用接口退出。standby状态下也可以直接调用[OH_AudioRenderer_Pause](capi-native-audiorenderer-h.md#oh_audiorenderer_pause), [OH_AudioRenderer_Stop](capi-native-audiorenderer-h.md#oh_audiorenderer_stop),[OH_AudioRenderer_Release](capi-native-audiorenderer-h.md#oh_audiorenderer_release)停止播放，但不可调用[OH_AudioRenderer_Start](capi-native-audiorenderer-h.md#oh_audiorenderer_start)。注意，此接口并不会改变通过[OH_AudioRenderer_GetCurrentState](capi-native-audiorenderer-h.md#oh_audiorenderer_getcurrentstate)获取的状态。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] 指向通过[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频播放流 |
+| bool on | [in] 进入或退出standby状态，true表示进入，false表示退出。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) 接口调用成功。 </li> <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) builder参数为空指针。 </li> <li>[AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) 1. 非running状态不能进入；2. 非standby状态不能调用退出。 </li> </ul> |
 
 

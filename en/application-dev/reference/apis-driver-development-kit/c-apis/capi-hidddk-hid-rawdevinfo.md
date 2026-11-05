@@ -6,7 +6,7 @@ struct Hid_RawDevInfo {...}
 
 ## Overview
 
-Defines the raw device information.
+Describes the original HID device information, including key identifiers such as the bus type, vendor ID, and product ID. You can use this struct to identify and distinguish different HID devices. It is typically used in scenarios such as device identification, device matching, and device filtering.
 
 **System capability**: SystemCapability.Driver.HID.Extension
 
@@ -22,7 +22,7 @@ Defines the raw device information.
 
 | Name | Description |
 | -- | -- |
-| uint32_t busType | Bus type. |
+| uint32_t busType | Bus type. For details about the value, see the bus type definition in the standard HID protocol. |
 | uint16_t vendor | Vendor ID. |
 | uint16_t product | Product ID. |
 

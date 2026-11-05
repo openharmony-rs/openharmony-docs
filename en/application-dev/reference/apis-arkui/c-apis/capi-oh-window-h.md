@@ -46,6 +46,9 @@ The file declares the window management APIs. You can use the APIs to set and ob
 | [int32_t OH_WindowManager_FrameMetrics_GetInputHandlingDuration(const OH_WindowManager_FrameMetrics* metrics, uint64_t* duration)](#oh_windowmanager_framemetrics_getinputhandlingduration) | - | Get the time taken to process external input events in one frame. |
 | [int32_t OH_WindowManager_FrameMetrics_GetLayoutMeasureDuration(const OH_WindowManager_FrameMetrics* metrics, uint64_t* duration)](#oh_windowmanager_framemetrics_getlayoutmeasureduration) | - | Get the time taken for layout measurement in one frame. |
 | [int32_t OH_WindowManager_FrameMetrics_GetVsyncTimestamp(const OH_WindowManager_FrameMetrics* metrics, uint64_t* timestamp)](#oh_windowmanager_framemetrics_getvsynctimestamp) | - | Get the start timestamp of the current frame. |
+| [int32_t OH_WindowManager_FrameMetrics_GetTotalDuration(const OH_WindowManager_FrameMetrics *metrics, uint64_t *duration)](#oh_windowmanager_framemetrics_gettotalduration) | - | Get the total time for this frame took to render and be issued to the display subsystem. |
+| [int32_t OH_WindowManager_FrameMetrics_GetAnimationDuration(const OH_WindowManager_FrameMetrics *metrics, uint64_t *duration)](#oh_windowmanager_framemetrics_getanimationduration) | - | Get the time for elapsed issuing animation callbacks in one frame. |
+| [int32_t OH_WindowManager_FrameMetrics_GetIntendedVsyncTimestamp(const OH_WindowManager_FrameMetrics *metrics, uint64_t *timestamp)](#oh_windowmanager_framemetrics_getintendedvsynctimestamp) | - | Get the intended start point for the frame. |
 | [int32_t OH_WindowManager_RegisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)](#oh_windowmanager_registerframemetricsmeasuredcallback) | - | Registers a callback for window frame metric change events. This API depends on the loading of the window page content. That is, this API can be called only after the **<br>loadContent()** or **setUIContent()** API in ArkTS takes effect. The callback is triggered only when the client UI content is redrawn (for example, page switching, interaction with responsive components, or background color and opacity setting). To cancel the registration, call the [OH_WindowManager_UnregisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_unregisterframemetricsmeasuredcallback) API. |
 | [int32_t OH_WindowManager_UnregisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)](#oh_windowmanager_unregisterframemetricsmeasuredcallback) | - | Unregisters the callback for window frame metric change events. This API depends on the loading of the window page content. That is, this API can be called only after the **<br>loadContent()** or **setUIContent()** API in ArkTS takes effect. To register such a callback, call the [OH_WindowManager_RegisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_registerframemetricsmeasuredcallback) API. |
 | [int32_t OH_WindowManager_DensityInfo_GetDefaultDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getdefaultdensity) | - | Gets the system default display size scaling factor of the screen where the window is located. |
@@ -802,6 +805,87 @@ Get the start timestamp of the current frame.
 | Type | Description |
 | -- | -- |
 | int32_t | Returns the status code of the execution. WS_OK the function call is successful. [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause: 1. Invalid parameter range. |
+
+### OH_WindowManager_FrameMetrics_GetTotalDuration()
+
+```c
+int32_t OH_WindowManager_FrameMetrics_GetTotalDuration(const OH_WindowManager_FrameMetrics *metrics, uint64_t *duration)
+```
+
+**Description**
+
+Get the total time for this frame took to render and be issued to the display subsystem.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md) *metrics | [in] Frame metrics data object. It must not be NULL. |
+| uint64_t *duration | [out] This parameter is the return value of the function, indicating the total time for this frame took to render and be issued to the display subsystem, in nanoseconds. It must not be NULL. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| int32_t | Returns the status code of the execution. <ul><li>WS_OK the function call is successful.</li> <li>[WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause: Invalid parameter range.</li></ul> |
+
+### OH_WindowManager_FrameMetrics_GetAnimationDuration()
+
+```c
+int32_t OH_WindowManager_FrameMetrics_GetAnimationDuration(const OH_WindowManager_FrameMetrics *metrics, uint64_t *duration)
+```
+
+**Description**
+
+Get the time for elapsed issuing animation callbacks in one frame.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md) *metrics | [in] Frame metrics data object. It must not be NULL. |
+| uint64_t *duration | [out] This parameter is the return value of the function, indicating the time for elapsed issuing animation callbacks in one frame, in nanoseconds. It must not be NULL. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| int32_t | Returns the status code of the execution. <ul><li>WS_OK the function call is successful.</li> <li>[WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause: Invalid parameter range.</li></ul> |
+
+### OH_WindowManager_FrameMetrics_GetIntendedVsyncTimestamp()
+
+```c
+int32_t OH_WindowManager_FrameMetrics_GetIntendedVsyncTimestamp(const OH_WindowManager_FrameMetrics *metrics, uint64_t *timestamp)
+```
+
+**Description**
+
+Get the intended start point for the frame.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md) *metrics | [in] Frame metrics data object. It must not be NULL. |
+| uint64_t *timestamp | [out] This parameter is the return value of the function, indicating the the intended start point for the frame, in nanoseconds. It must not be NULL. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| int32_t | Returns the status code of the execution. <ul><li>WS_OK the function call is successful.</li> <li>[WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause: Invalid parameter range.</li></ul> |
 
 ### OH_WindowManager_RegisterFrameMetricsMeasuredCallback()
 

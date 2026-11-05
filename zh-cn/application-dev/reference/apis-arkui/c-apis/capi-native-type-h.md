@@ -22,8 +22,8 @@
 | [ArkUI_TranslationOptions](capi-arkui-nativemodule-arkui-translationoptions.md) | ArkUI_TranslationOptions | Defines the translation options for component transition. |
 | [ArkUI_ScaleOptions](capi-arkui-nativemodule-arkui-scaleoptions.md) | ArkUI_ScaleOptions | Defines the scaling options for component transition. |
 | [ArkUI_RotationOptions](capi-arkui-nativemodule-arkui-rotationoptions.md) | ArkUI_RotationOptions | Defines the rotation options for component transition. |
-| [ArkUI_NativeDialog](capi-arkui-nativemodule-arkui-nativedialog.md) | - | Defines the custom dialog box controller of ArkUI on the native side. |
-| [ArkUI_NativeDialog*](capi-arkui-nativemodule-arkui-nativedialog8h.md) | ArkUI_NativeDialogHandle | Defines the pointer to the custom dialog box controller of ArkUI on the native side. |
+| [ArkUI_NativeDialog](capi-arkui-nativemodule-arkui-nativedialog.md) | - | 提供ArkUI在Native侧的自定义弹窗控制器对象定义。 |
+| [ArkUI_NativeDialog*](capi-arkui-nativemodule-arkui-nativedialog8h.md) | ArkUI_NativeDialogHandle | 指向ArkUI Native侧自定义弹窗控制器对象的指针类型，用于标识和操作自定义弹窗实例。 |
 | [ArkUI_GestureCollectInterceptInfo](capi-arkui-nativemodule-arkui-gesturecollectinterceptinfo.md) | ArkUI_GestureCollectInterceptInfo | 定义手势收集拦截信息。在触摸测试收集手势的过程中，该类型用于向拦截回调提供响应链中的手势识别器和触摸识别器，并承载回调设置的手势收集干预结果。 相关接口请参见[native_gesture.h](capi-native-gesture-h.md)中的手势收集拦截接口说明。 |
 | [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md) | ArkUI_SwiperIndicator | Defines the navigation indicator style for the swiper. |
 | [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md) | ArkUI_SwiperDigitIndicator | Defines the digital indicator style for the swiper. |
@@ -58,14 +58,14 @@
 | [ArkUI_SwiperAnimationMode](#arkui_swiperanimationmode) | ArkUI_SwiperAnimationMode | Enumerates the animation modes for [NODE_SWIPER_INDEX](capi-native-node-h.md#arkui_nodeattributetype). |
 | [ArkUI_AccessibilityMode](#arkui_accessibilitymode) | ArkUI_AccessibilityMode | 定义无障碍辅助服务模式。 |
 | [ArkUI_AnimationPlayMode](#arkui_animationplaymode) | ArkUI_AnimationPlayMode | Enumerates the animation playback modes. |
-| [ArkUI_AdaptiveColor](#arkui_adaptivecolor) | ArkUI_AdaptiveColor | Enumerates the adaptive color modes. |
-| [ArkUI_ColorMode](#arkui_colormode) | ArkUI_ColorMode | Enumerates the color modes. |
+| [ArkUI_AdaptiveColor](#arkui_adaptivecolor) | ArkUI_AdaptiveColor | 定义取色模式。 |
+| [ArkUI_ColorMode](#arkui_colormode) | ArkUI_ColorMode | 定义深浅色模式。 |
 | [ArkUI_SystemColorMode](#arkui_systemcolormode) | ArkUI_SystemColorMode | 定义系统深浅色模式。 |
 | [ArkUI_BlurStyle](#arkui_blurstyle) | ArkUI_BlurStyle | Enumerates the blur styles. |
 | [ArkUI_BlurStyleActivePolicy](#arkui_blurstyleactivepolicy) | ArkUI_BlurStyleActivePolicy | Enumerates the activation policies for the background blur effect. |
 | [ArkUI_BlendMode](#arkui_blendmode) | ArkUI_BlendMode | Enumerates the blend modes. |
-| [ArkUI_ColorStrategy](#arkui_colorstrategy) | ArkUI_ColorStrategy | Enumerates the foreground colors. |
-| [ArkUI_MaskType](#arkui_masktype) | ArkUI_MaskType | Enumerates the mask types. |
+| [ArkUI_ColorStrategy](#arkui_colorstrategy) | ArkUI_ColorStrategy | 前景和阴影颜色的枚举值。 |
+| [ArkUI_MaskType](#arkui_masktype) | ArkUI_MaskType | 遮罩类型枚举。遮罩是一种用于限制组件显示区域的手段，它利用特定的形状对组件内容进行裁剪，从而实现只有遮罩区域内的内容才可见的效果。 |
 | [ArkUI_ClipType](#arkui_cliptype) | ArkUI_ClipType | Enumerates the clipping region types. |
 | [ArkUI_ShapeType](#arkui_shapetype) | ArkUI_ShapeType | Enumerates the custom shapes. |
 | [ArkUI_LinearGradientDirection](#arkui_lineargradientdirection) | ArkUI_LinearGradientDirection | Enumerates the gradient directions. |
@@ -83,12 +83,12 @@
 | [ArkUI_NavDestinationState](#arkui_navdestinationstate) | ArkUI_NavDestinationState | 定义NavDestination组件的状态，用于描述NavDestination在导航过程中的生命周期状态变化。 |
 | [ArkUI_RouterPageState](#arkui_routerpagestate) | ArkUI_RouterPageState | Define the state of Router Page. |
 | [ArkUI_SafeAreaType](#arkui_safeareatype) | ArkUI_SafeAreaType | 定义扩展安全区域的枚举值。 |
-| [ArkUI_KeyboardAvoidMode](#arkui_keyboardavoidmode) | ArkUI_KeyboardAvoidMode | defines the enumerated value of the customDialog's keyboard avoid mode. |
-| [ArkUI_HoverModeAreaType](#arkui_hovermodeareatype) | ArkUI_HoverModeAreaType | defines the enumerated value of area in hover mode. |
+| [ArkUI_KeyboardAvoidMode](#arkui_keyboardavoidmode) | ArkUI_KeyboardAvoidMode | 键盘避让模式。 |
+| [ArkUI_HoverModeAreaType](#arkui_hovermodeareatype) | ArkUI_HoverModeAreaType | 悬停态显示区域。 |
 | [ArkUI_ExpandMode](#arkui_expandmode) | ArkUI_ExpandMode | 定义子节点展开模式枚举值。 |
 | [ArkUI_EdgeDirection](#arkui_edgedirection) | ArkUI_EdgeDirection | 定义矩形边方向。 |
 | [ArkUI_CornerDirection](#arkui_cornerdirection) | ArkUI_CornerDirection | 定义角度方向。 |
-| [ArkUI_MenuPolicy](#arkui_menupolicy) | ArkUI_MenuPolicy | Menu pop-up strategy. |
+| [ArkUI_MenuPolicy](#arkui_menupolicy) | ArkUI_MenuPolicy | 菜单弹出策略。 |
 | [ArkUI_RenderStrategy](#arkui_renderstrategy) | ArkUI_RenderStrategy | 定义图形渲染策略。 |
 | [OH_ArkUI_CrossLanguageOperatingStatus](#oh_arkui_crosslanguageoperatingstatus) | OH_ArkUI_CrossLanguageOperatingStatus | Enumerates the tree operating status for the cross-language option. |
 | [OH_ArkUI_NodeMountPolicy](#oh_arkui_nodemountpolicy) | OH_ArkUI_NodeMountPolicy | Enumeration of the policy for mounting child node to the target node. |
@@ -688,7 +688,7 @@ enum ArkUI_AdaptiveColor
 
 **描述：**
 
-Enumerates the adaptive color modes.
+定义取色模式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -696,8 +696,8 @@ Enumerates the adaptive color modes.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ADAPTIVE_COLOR_DEFAULT = 0 | Adaptive color mode is not used. |
-| ARKUI_ADAPTIVE_COLOR_AVERAGE | Adaptive color mode is used. |
+| ARKUI_ADAPTIVE_COLOR_DEFAULT = 0 | 不使用取色模糊。 |
+| ARKUI_ADAPTIVE_COLOR_AVERAGE | 使用取色模糊。 |
 
 ### ArkUI_ColorMode
 
@@ -707,7 +707,7 @@ enum ArkUI_ColorMode
 
 **描述：**
 
-Enumerates the color modes.
+定义深浅色模式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -715,9 +715,9 @@ Enumerates the color modes.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_COLOR_MODE_SYSTEM = 0 | Following the system color mode. |
-| ARKUI_COLOR_MODE_LIGHT | Light color mode. |
-| ARKUI_COLOR_MODE_DARK | Dark color mode. |
+| ARKUI_COLOR_MODE_SYSTEM = 0 | 跟随系统深浅色模式。 |
+| ARKUI_COLOR_MODE_LIGHT | 固定使用浅色模式。 |
+| ARKUI_COLOR_MODE_DARK | 固定使用深色模式。 |
 
 ### ArkUI_SystemColorMode
 
@@ -843,7 +843,7 @@ enum ArkUI_ColorStrategy
 
 **描述：**
 
-Enumerates the foreground colors.
+前景和阴影颜色的枚举值。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -851,9 +851,9 @@ Enumerates the foreground colors.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_COLOR_STRATEGY_INVERT = 0 | The foreground colors are the inverse of the component background colors. |
-| ARKUI_COLOR_STRATEGY_AVERAGE | The shadow colors of the component are the average color obtained from the component background shadow area. |
-| ARKUI_COLOR_STRATEGY_PRIMARY | The shadow colors of the component are the primary color obtained from the component background shadow area. |
+| ARKUI_COLOR_STRATEGY_INVERT = 0 | 前景色为控件背景色的反色。 |
+| ARKUI_COLOR_STRATEGY_AVERAGE | 控件背景阴影色为控件背景阴影区域的平均色。 |
+| ARKUI_COLOR_STRATEGY_PRIMARY | 控件背景阴影色为控件背景阴影区域的主色。 |
 
 ### ArkUI_MaskType
 
@@ -863,7 +863,7 @@ enum ArkUI_MaskType
 
 **描述：**
 
-Enumerates the mask types.
+遮罩类型枚举。遮罩是一种用于限制组件显示区域的手段，它利用特定的形状对组件内容进行裁剪，从而实现只有遮罩区域内的内容才可见的效果。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -871,11 +871,11 @@ Enumerates the mask types.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_MASK_TYPE_RECTANGLE = 0 | Rectangle. |
-| ARKUI_MASK_TYPE_CIRCLE | Circle. |
-| ARKUI_MASK_TYPE_ELLIPSE | Ellipse. |
-| ARKUI_MASK_TYPE_PATH | Path. |
-| ARKUI_MASK_TYPE_PROGRESS | Progress indicator. |
+| ARKUI_MASK_TYPE_RECTANGLE = 0 | 矩形类型。 |
+| ARKUI_MASK_TYPE_CIRCLE | 圆形类型。 |
+| ARKUI_MASK_TYPE_ELLIPSE | 椭圆形类型。 |
+| ARKUI_MASK_TYPE_PATH | 路径类型。 |
+| ARKUI_MASK_TYPE_PROGRESS | 进度类型。 |
 
 ### ArkUI_ClipType
 
@@ -1260,7 +1260,7 @@ enum ArkUI_KeyboardAvoidMode
 
 **描述：**
 
-defines the enumerated value of the customDialog's keyboard avoid mode.
+键盘避让模式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1268,8 +1268,8 @@ defines the enumerated value of the customDialog's keyboard avoid mode.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_KEYBOARD_AVOID_MODE_DEFAULT = 0 | Defines avoid keyboard when keyboard shows. |
-| ARKUI_KEYBOARD_AVOID_MODE_NONE | Defines not avoid keyboard when keyboard shows. |
+| ARKUI_KEYBOARD_AVOID_MODE_DEFAULT = 0 | 默认避让软键盘并在到达极限高度之后进行高度压缩。 |
+| ARKUI_KEYBOARD_AVOID_MODE_NONE | 不避让键盘。 |
 
 ### ArkUI_HoverModeAreaType
 
@@ -1279,7 +1279,7 @@ enum ArkUI_HoverModeAreaType
 
 **描述：**
 
-defines the enumerated value of area in hover mode.
+悬停态显示区域。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1287,8 +1287,8 @@ defines the enumerated value of area in hover mode.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_HOVER_MODE_AREA_TYPE_TOP = 0 | Layout top half screen when the phone in hover mode. |
-| ARKUI_HOVER_MODE_AREA_TYPE_BOTTOM | Layout bottom half screen when the phone in hover mode. |
+| ARKUI_HOVER_MODE_AREA_TYPE_TOP = 0 | 上半屏。 |
+| ARKUI_HOVER_MODE_AREA_TYPE_BOTTOM | 下半屏。 |
 
 ### ArkUI_ExpandMode
 
@@ -1362,7 +1362,7 @@ enum ArkUI_MenuPolicy
 
 **描述：**
 
-Menu pop-up strategy.
+菜单弹出策略。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1370,9 +1370,9 @@ Menu pop-up strategy.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_MENU_POLICY_DEFAULT = 0 | Determine whether to pop up the menu according to the underlying default logic. |
-| ARKUI_MENU_POLICY_HIDE = 1 | Never pop up the menu. |
-| ARKUI_MENU_POLICY_SHOW = 2 | Always pop up the menu. |
+| ARKUI_MENU_POLICY_DEFAULT = 0 | 根据底层默认逻辑确定是否弹出菜单。 |
+| ARKUI_MENU_POLICY_HIDE = 1 | 不弹出菜单。 |
+| ARKUI_MENU_POLICY_SHOW = 2 | 弹出菜单。 |
 
 ### ArkUI_RenderStrategy
 
