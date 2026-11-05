@@ -8814,6 +8814,34 @@ Allows a system application to control the on/off state of the instrument cluste
 
 **Valid since**: 26.0.1
 
+## ohos.permission.vehicle.HIMA_COOPERATE
+ 
+Allows an application to call the device-cloud synergy API to query and download resources and configuration files.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+ 
+## ohos.permission.vehicle.HIMA_DEVICE_AUTH
+ 
+Allows an application to call the genuine device authentication API to perform device authenticity verification.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+
 ## ohos.permission.vehicle.SHUTDOWN
 
 Allows a system application to turn off the vehicle cabin power.
