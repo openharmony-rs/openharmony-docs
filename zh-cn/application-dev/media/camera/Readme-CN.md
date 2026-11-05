@@ -23,7 +23,6 @@
     - [双路预览(ArkTS)](camera-dual-channel-preview.md)
     - [拍照(ArkTS)](camera-shooting.md)
     - [分段式拍照(ArkTS)](camera-deferred-capture.md)
-    - [分段式拍照实践(ArkTS)](camera-deferred-capture-case.md)
     - [YUV拍照(ArkTS)](camera-yuv-shooting.md)<!--RP1--><!--RP1End-->
     - [相机基础动效(ArkTS)](camera-animation.md)
     - [元数据(ArkTS)](camera-metadata.md)

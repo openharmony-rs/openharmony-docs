@@ -1749,7 +1749,6 @@
         - [手电筒使用(ArkTS)](media/camera/camera-torch-use.md)
         - [适配不同折叠状态的摄像头变更(ArkTS)](media/camera/camera-foldable-display.md)
         - [分段式拍照(ArkTS)](media/camera/camera-deferred-capture.md)
-        - [分段式拍照实践(ArkTS)](media/camera/camera-deferred-capture-case.md)
         - [动态照片拍摄(ArkTS)](media/camera/camera-moving-photo.md)
         - [相机基础动效(ArkTS)](media/camera/camera-animation.md)
         - [在Worker线程中使用相机(ArkTS)](media/camera/camera-worker.md)
