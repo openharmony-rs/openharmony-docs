@@ -285,7 +285,7 @@ export class ExamHardeningUtil {
     await ExamHardeningUtil.clearPasteboard();
   }
 
-  // 退出评估页面时恢复窗口形态与输入法，并再次清空剪切板
+  // 退出评估页面时恢复窗口形态与输入法，并再次清空剪贴板
   public static async releaseHardening(context: common.UIAbilityContext): Promise<void> {
     await ExamHardeningUtil.setWindowHardening(context, false);
     ExamHardeningUtil.setSimpleKeyboard(false);
@@ -331,7 +331,7 @@ export class ExamHardeningUtil {
     }
   }
 
-  // 清空剪切板，避免残留数据被粘贴进评估页面
+  // 清空剪贴板，避免残留数据被粘贴进评估页面
   private static async clearPasteboard(): Promise<void> {
     try {
       await pasteboard.getSystemPasteboard().clearData();
