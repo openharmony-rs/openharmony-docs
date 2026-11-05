@@ -445,7 +445,7 @@ function nfcTechDemo() {
             }
         });
     } catch (businessError) {
-        console.error(`isoDep isExtendedApduSupported AsyncCallback Code: ${(businessError as Business).code}, message: ${(businessError as Business).message}`);
+        console.error(`isoDep isExtendedApduSupported AsyncCallback Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 
@@ -809,7 +809,7 @@ function nfcTechDemo() {
     try {
         ndefTag.writeNdef(ndefMessage, (err : BusinessError)=> {
             if (err) {
-                console.error("ndef writeNdef AsyncCallback Code: ${err.code}, message: ${err.message}");
+                console.error(`ndef writeNdef AsyncCallback Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("ndef writeNdef AsyncCallback success.");
             }
