@@ -12090,7 +12090,7 @@
 						"start_line":160
 					},
 					{
-						"end_line":31,
+						"end_line":33,
 						"name":"Crash_Click_ArkTS_Header",
 						"start_line":20
 					}
@@ -69529,14 +69529,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":26,
+						"end_line":27,
 						"name":"AppEvent_Crash_Click_ArkTS_Header",
 						"start_line":21
 					},
 					{
-						"end_line":110,
+						"end_line":129,
 						"name":"RegisterExternalLogManager",
-						"start_line":40
+						"start_line":59
 					}
 				]
 			}
@@ -69554,9 +69554,9 @@
 						"start_line":24
 					},
 					{
-						"end_line":1434,
+						"end_line":1518,
 						"name":"RegisterExternalLogMgr",
-						"start_line":1405
+						"start_line":1489
 					}
 				]
 			}
@@ -70403,7 +70403,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":25,
+						"end_line":26,
 						"name":"AppHicollie_ArkTS_Header",
 						"start_line":22
 					},
@@ -70483,7 +70483,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":34,
+						"end_line":38,
 						"name":"MainThreadJank_ArkTS_Header",
 						"start_line":23
 					},
