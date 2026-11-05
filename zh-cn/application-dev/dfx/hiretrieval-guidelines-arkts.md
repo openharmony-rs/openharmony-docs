@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @ljy_love_code-->
+<!--Owner: @buzhenwang-->
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -13,10 +13,6 @@
 应用灰度采集功能通过云端平台（OS开发者参考[HiRetrieval云端功能说明](hiretrieval-cloud-server-guidelines.md)自行提供适配）<!--RP1End-->圈选设备，精准采集故障日志上报云端，帮助开发者定位线上故障，适用于需要获取线上故障详细信息的场景。<!--RP2-->端侧实现故障日志的采集和上传。
 
 开发者在云端新建任务时，可以选择已实现的一类故障。<!--RP2End-->在任务激活期间，被圈选的设备发生了对应故障，则会自动采集对应的日志并上传到云端。
-
-> **注意：**
->
-> 当前暂不支持多实例应用，若在多实例应用中调用[hiRetrieval.init()](../reference/apis-performance-analysis-kit/js-apis-hiretrieval.md#hiretrievalinit)，会抛出错误码36000002，详细处理步骤请参考应用灰度错误码[36000002](../reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hiretrieval.md#36000002)。
 
 ## 工作原理
 
