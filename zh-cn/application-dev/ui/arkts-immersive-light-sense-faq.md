@@ -235,7 +235,7 @@ Button('Click Me')
 **代码示例**
 
 ```ts
-// 薄材质样式透明度较高，边框折射周围背景颜色的效果更明显
+// 折射明显场景：薄材质透明度高，边框呈现出周围背景的颜色
 Column() {
   Text('ULTRA_THIN')
 }
@@ -335,7 +335,7 @@ new uiMaterial.ImmersiveMaterial({
 - 设备算力档位需为高算力或中算力，低算力设备上自动反色不产生视觉效果差异。
 - 材质样式需要为THIN或ULTRA_THIN，在REGULAR、THICK、ULTRA_THICK样式下不生效。
 - 系统沉浸光感的强弱配置影响反色触发阈值，沉浸式系统材质越薄、系统沉浸光感设置越强，越容易触发自动反色。
-- 自动反色仅对通过资源接口设置的特殊系统资源颜色值（`sys.color.xxx`）生效，包括[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件的[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontcolor)、[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)组件的[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#fontcolor)、[SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md)组件的[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#fontcolor)、[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)组件的[fillColor](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#fillcolor)、TextInput、TextArea、Chip、ChipGroup、SegmentButton、Swiper等组件的颜色属性，完整生效属性清单请参见[colorInvert](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)参数说明。使用代码中硬编码的颜色值（如`Color.White`、`'#FFFFFFFF'`）不会触发自动反色。
+- 自动反色仅对通过资源接口设置的特殊系统资源颜色值（`sys.color.xxx`）生效，支持的属性包括[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件的[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontcolor)、[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)组件的[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#fontcolor)、[SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md)组件的[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#fontcolor)、[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)组件的[fillColor](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#fillcolor)、TextInput、TextArea、Chip、ChipGroup、SegmentButton、Swiper等组件的颜色属性，完整生效属性清单请参见[colorInvert](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)参数说明。使用代码中硬编码的颜色值（如`Color.White`、`'#FFFFFFFF'`）不会触发自动反色。
 
 **解决措施**
 
