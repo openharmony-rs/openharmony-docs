@@ -23,6 +23,6 @@ Defines a USB DDK API, which is a collection of alternate settings for a particu
 | Name | Description |
 | -- | -- |
 | uint8_t numAltsetting | Number of alternate settings of the USB interface. |
-| struct UsbDdkInterfaceDescriptor *altsetting | Alternate setting of the USB interface. |
+| struct UsbDdkInterfaceDescriptor *altsetting | Pointer to the array of alternate settings of the USB interface. The length of the array is specified by **<br>numAltsetting**. |
 
 

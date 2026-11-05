@@ -760,7 +760,7 @@ Sets a playback window. This function must be called after **SetSource** and bef
 | Parameter | Description |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance. |
-| [OHNativeWindow](../../apis-avcodec-kit/c-apis/capi-codecbase-nativewindow.md) *window | Pointer to the OHNativeWindow instance. |
+| [OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-nativewindow.md) *window | Pointer to the OHNativeWindow instance. |
 
 **Returns**:
 
@@ -2064,7 +2064,7 @@ Method to set video decoded frame output callback. This API can be called only w
 | Parameter | Description |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to an OH_AVPlayer instance. |
-| [OHNativeWindow](../../apis-avcodec-kit/c-apis/capi-codecbase-nativewindow.md) *window | A pointer to a OHNativeWindow instance, see [OHNativeWindow](../../apis-avcodec-kit/c-apis/capi-codecbase-nativewindow.md) |
+| [OHNativeWindow](../../apis-arkgraphics2d/c-apis/capi-nativewindow-nativewindow.md) *window | A pointer to a OHNativeWindow instance, see [OHNativeWindow](../../apis-avcodec-kit/c-apis/capi-codecbase-nativewindow.md) |
 
 **Returns**:
 

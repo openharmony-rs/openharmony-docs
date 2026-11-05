@@ -34,8 +34,8 @@ ArkWeb_ControllerAPI is a native API struct related to the controller. This stru
 | [void (\*deleteJavaScriptRegister)(const char* webTag, const char* objName)](#deletejavascriptregister) | - | Deletes the app-side JavaScript object with the specified name that is registered with the window through registerJavaScriptProxy. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. This method unbinds the JavaScript object from the native object and releases related resources. Use Cases: for example, cleaning up registered objects to avoid residue when a component is destroyed, a module is unloaded, or services are switched. |
 | [void (\*refresh)(const char* webTag)](#refresh) | - | Refreshes the current web page. The page stack is cleared during the refresh, as a result, the current page cannot be navigated forward or backward. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. |
 | [void (\*registerAsyncJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* proxyObject)](#registerasyncjavascriptproxy) | - | Injects a JavaScript object into the window object and calls the asynchronous methods of this object in the window object. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. This method implements asynchronous calls through a message queue mechanism to avoid blocking the main thread. Compared with registerJavaScriptProxy, this method is suitable for time-consuming operations or scenarios where a synchronous return value is not needed. If a synchronous return value is needed, you are advised to use registerJavaScriptProxy. |
-| [ArkWeb_WebMessagePortPtr* (\*createWebMessagePorts)(const char* webTag, size_t* size)](#createwebmessageports) | - | Creates a Post Message port. The Post Message port provides a bidirectional communication mechanism, allowing the native layer and the web layer to securely exchange data messages. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Use Cases: for example, implementing cross-context message channels to support data transfer between iframes and the main page, and between Web and Worker. |
-| [void (\*destroyWebMessagePorts)(ArkWeb_WebMessagePortPtr** ports, size_t size)](#destroywebmessageports) | - | Destroys a port. This method closes the port connection, releases related system resources, and stops message transmission. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Use Cases: for example, releasing port resources to avoid leaks when communication ends or the component lifecycle ends. |
+| [ArkWeb_WebMessagePortPtr* (\*createWebMessagePorts)(const char* webTag, size_t* size)](#createwebmessageports) | - | Creates a Post Message port. The Post Message port provides a bidirectional communication mechanism, allowing the native layer and the web layer to securely exchange data messages. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Use Cases: for example, implementing cross-context message channels to support data transfer between iframes and the main page, and between Web and Worker.<br> <br> **Paired call:**<br><br>- Ports created by calling createWebMessagePorts() must be destroyed by calling destroyWebMessagePorts() <br> after use. Undestroyed ports will cause resource leaks and affect app performance. <br> **Combined usage:**<br><br>- After creating ports, you need to send the ports to the HTML main page through postWebMessage() to <br> establish a communication channel. Typical usage flow: createWebMessagePorts() → postWebMessage() <br> → communication interaction → destroyWebMessagePorts(). |
+| [void (\*destroyWebMessagePorts)(ArkWeb_WebMessagePortPtr** ports, size_t size)](#destroywebmessageports) | - | Destroys a port. This method closes the port connection, releases related system resources, and stops message transmission. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Use Cases: for example, releasing port resources to avoid leaks when communication ends or the component lifecycle ends.<br> <br> **Paired call:**<br><br>- Must be used in pair with createWebMessagePorts() to destroy the created Post Message ports. Only ports created through createWebMessagePorts() can be destroyed. After destruction, the ports will be unusable and message delivery cannot continue. You are advised to destroy ports in a timely manner after communication ends to release resources. Destroying ports that are not properly created may lead to undefined behavior. |
 | [ArkWeb_ErrorCode (\*postWebMessage)(const char* webTag, const char* name, ArkWeb_WebMessagePortPtr* webMessagePorts, size_t size, const char* url)](#postwebmessage) | - | Sends ports to the HTML main page. This method passes Post Message ports to the specified HTML page through a message delivery mechanism to establish a cross-origin communication channel. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Use Cases: for example, establishing a bidirectional message channel between the main page and an iframe, or pushing messages across frames. |
 | [const char* (\*getLastJavascriptProxyCallingFrameUrl)()](#getlastjavascriptproxycallingframeurl) | - | Obtains the URL of the last frame that calls JavaScriptProxy. This method records the frame context of the last JavaScript call through a frame stack tracing mechanism. It is called on the thread where JavaScriptProxy is called. A JavaScript object is injected into the window object through registerJavaScriptProxy or JavaScriptProxy. This API can obtain the URL of the frame that last called the injected object. If the injected object has never been called, the return value is undefined. The correct URL can be obtained only when this API is called inside the called function. You can obtain the URL inside the function and save it. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. |
 | [void (\*registerJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObjectWithResult* proxyObject,const char* permission)](#registerjavascriptproxyex) | - | Injects a JavaScript object into the window object and calls the synchronous methods of this object in the window object. The synchronous methods of this object can carry return values. This method implements bidirectional data transfer and synchronous calls between JavaScript and native through a synchronous bridging mechanism. Compared with registerJavaScriptProxy, this method adds a permission parameter for configuring JSBridge permission restrictions, and is suitable for scenarios that require permission control or synchronous return values. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Use Cases: for example, business scenarios where synchronous return results are needed when JS calls native. |
@@ -51,7 +51,7 @@ void (*runJavaScript)(const char* webTag, const ArkWeb_JavaScriptObject* javascr
 
 **Description**
 
-Injects a JavaScript script. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPImethod. This method injects a JavaScript script into the execution context of the **Web** component and executesit after the page is loaded.
+Injects a JavaScript script. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. This method injects a JavaScript script into the execution context of the **Web** component and executes it after the page is loaded.
 
 **Parameters**:
 
@@ -68,7 +68,7 @@ void (*registerJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* pr
 
 **Description**
 
-Injects a JavaScript object into the window object and calls the synchronous methods of this object in thewindow object. This method maps native objects to the JavaScript environment through a bridging mechanism toimplement bidirectional communication. Use Cases: for example, JS calls native capabilities to obtain deviceinformation or execute native business logic. This API must be called on the UI thread by calling theOH_ArkWeb_GetNativeAPI method. Compared with registerAsyncJavaScriptProxy, this method is suitable for scenarioswhere a synchronous return value is required. If a synchronous return value is not needed or the operation istime-consuming, you are advised to use registerAsyncJavaScriptProxy to avoid blocking the UI thread.
+Injects a JavaScript object into the window object and calls the synchronous methods of this object in the window object. This method maps native objects to the JavaScript environment through a bridging mechanism to implement bidirectional communication. Use Cases: for example, JS calls native capabilities to obtain device information or execute native business logic. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Compared with registerAsyncJavaScriptProxy, this method is suitable for scenarios where a synchronous return value is required. If a synchronous return value is not needed or the operation is time-consuming, you are advised to use registerAsyncJavaScriptProxy to avoid blocking the UI thread.
 
 **Parameters**:
 
@@ -85,7 +85,7 @@ void (*deleteJavaScriptRegister)(const char* webTag, const char* objName)
 
 **Description**
 
-Deletes the app-side JavaScript object with the specified name that is registered with the window throughregisterJavaScriptProxy. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method.This method unbinds the JavaScript object from the native object and releases related resources. Use Cases: forexample, cleaning up registered objects to avoid residue when a component is destroyed, a module is unloaded, orservices are switched.
+Deletes the app-side JavaScript object with the specified name that is registered with the window through registerJavaScriptProxy. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. This method unbinds the JavaScript object from the native object and releases related resources. Use Cases: for example, cleaning up registered objects to avoid residue when a component is destroyed, a module is unloaded, or services are switched.
 
 **Parameters**:
 
@@ -102,7 +102,7 @@ void (*refresh)(const char* webTag)
 
 **Description**
 
-Refreshes the current web page. The page stack is cleared during the refresh, as a result, the current pagecannot be navigated forward or backward. This API must be called on the UI thread by calling theOH_ArkWeb_GetNativeAPI method.
+Refreshes the current web page. The page stack is cleared during the refresh, as a result, the current page cannot be navigated forward or backward. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method.
 
 **Parameters**:
 
@@ -118,7 +118,7 @@ void (*registerAsyncJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObjec
 
 **Description**
 
-Injects a JavaScript object into the window object and calls the asynchronous methods of this object in thewindow object. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Thismethod implements asynchronous calls through a message queue mechanism to avoid blocking the main thread.Compared with registerJavaScriptProxy, this method is suitable for time-consuming operations or scenarios wherea synchronous return value is not needed. If a synchronous return value is needed, you are advised to useregisterJavaScriptProxy.
+Injects a JavaScript object into the window object and calls the asynchronous methods of this object in the window object. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. This method implements asynchronous calls through a message queue mechanism to avoid blocking the main thread. Compared with registerJavaScriptProxy, this method is suitable for time-consuming operations or scenarios where a synchronous return value is not needed. If a synchronous return value is needed, you are advised to use registerJavaScriptProxy.
 
 **Parameters**:
 
@@ -135,7 +135,7 @@ ArkWeb_WebMessagePortPtr* (*createWebMessagePorts)(const char* webTag, size_t* s
 
 **Description**
 
-Creates a Post Message port. The Post Message port provides a bidirectional communication mechanism, allowing the native layer and the web layer to securely exchange data messages. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Use Cases: for example, implementing cross-context message channels to support data transfer between iframes and the main page, and between Web and Worker.
+Creates a Post Message port. The Post Message port provides a bidirectional communication mechanism, allowing the native layer and the web layer to securely exchange data messages. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Use Cases: for example, implementing cross-context message channels to support data transfer between iframes and the main page, and between Web and Worker.<br> <br> **Paired call:**<br><br>- Ports created by calling createWebMessagePorts() must be destroyed by calling destroyWebMessagePorts() <br> after use. Undestroyed ports will cause resource leaks and affect app performance. <br> **Combined usage:**<br><br>- After creating ports, you need to send the ports to the HTML main page through postWebMessage() to <br> establish a communication channel. Typical usage flow: createWebMessagePorts() → postWebMessage() <br> → communication interaction → destroyWebMessagePorts().
 
 **Parameters**:
 
@@ -143,6 +143,12 @@ Creates a Post Message port. The Post Message port provides a bidirectional comm
 | -- | -- |
 | const char* webTag | Name of the **Web** component. |
 |  size_t* size | Number of ports, which is an output parameter. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [ArkWeb_WebMessagePortPtr*](capi-web-arkweb-webmessageport8h.md) | Pointer to the message port. |
 
 ### destroyWebMessagePorts()
 
@@ -152,7 +158,7 @@ void (*destroyWebMessagePorts)(ArkWeb_WebMessagePortPtr** ports, size_t size)
 
 **Description**
 
-Destroys a port. This method closes the port connection, releases related system resources, and stops message transmission. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Use Cases: for example, releasing port resources to avoid leaks when communication ends or the component lifecycle ends.
+Destroys a port. This method closes the port connection, releases related system resources, and stops message transmission. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Use Cases: for example, releasing port resources to avoid leaks when communication ends or the component lifecycle ends.<br> <br> **Paired call:**<br><br>- Must be used in pair with createWebMessagePorts() to destroy the created Post Message ports. Only ports created through createWebMessagePorts() can be destroyed. After destruction, the ports will be unusable and message delivery cannot continue. You are advised to destroy ports in a timely manner after communication ends to release resources. Destroying ports that are not properly created may lead to undefined behavior.
 
 **Parameters**:
 
@@ -177,6 +183,7 @@ Sends ports to the HTML main page. This method passes Post Message ports to the 
 | -- | -- |
 | const char* webTag | Name of the Web component. It must match the bound Web component; otherwise, ARKWEB_INIT_ERROR is returned. |
 |  const char* name | Name of the message sent to the HTML page. |
+|  [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md)* webMessagePorts | Pointer to the message port. |
 |  size_t size | Number of ports. |
 |  const char* url | URL of the page that receives the message. |
 

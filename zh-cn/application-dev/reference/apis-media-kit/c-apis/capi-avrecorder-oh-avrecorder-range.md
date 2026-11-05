@@ -22,7 +22,7 @@ struct OH_AVRecorder_Range {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t min | AVRecorder相关参数取值范围的最小值。单位与所描述的参数一致。 |
-| int32_t max | AVRecorder相关参数取值范围的最大值。单位与所描述的参数一致。 |
+| int32_t min | AVRecorder相关参数取值范围的最小值。单位与所描述的参数一致。<br>**起始版本：** 18 |
+| int32_t max | AVRecorder相关参数取值范围的最大值。单位与所描述的参数一致。<br>**起始版本：** 18 |
 
 

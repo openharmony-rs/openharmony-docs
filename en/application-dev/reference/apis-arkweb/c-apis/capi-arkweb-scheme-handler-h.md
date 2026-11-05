@@ -24,7 +24,7 @@ The `arkweb_scheme_handler.h` file is a complete C API header file in ArkWeb for
 | [ArkWeb_ResourceRequest_](capi-web-arkweb-resourcerequest-.md) | ArkWeb_ResourceRequest | ArkWeb_ResourceRequest is a struct that contains detailed information about an intercepted scheme request, including the request URL, HTTP method, request headers, and other metadata. This struct is passed as a parameter in the onRequestStart callback of ArkWeb_SchemeHandler and is applicable to scenarios such as custom protocol handling and resource interception. It helps developers implement features like cross-origin request control and local resource mapping, thereby enhancing security and performance. Developers can use it to obtain complete information about the intercepted request and decide whether to intercept it and how to construct a custom response. |
 | [ArkWeb_RequestHeaderList_](capi-web-arkweb-requestheaderlist-.md) | ArkWeb_RequestHeaderList | ArkWeb_RequestHeaderList is an HTTP request header list struct used to represent and manage a collection of key-value pairs of HTTP request headers in the ArkWeb NDK. This struct contains a request header array (headers) and the array length (headerCount), where headers is a pointer array of ArkWeb_RequestHeader and headerCount indicates the number of elements in the array. This struct is used together with ArkWeb_ResourceRequest and other structs to provide the capability of reading and setting network request headers for Web components. Use cases: processing HTTP request headers in a custom protocol handler, modifying request headers in a network request interceptor, adding authentication headers in API authentication scenarios, and configuring request headers in scenarios such as cache control and content negotiation. |
 | [ArkWeb_HttpBodyStream_](capi-web-arkweb-httpbodystream-.md) | ArkWeb_HttpBodyStream | Defines the uploaded data of the request. You can use the **OH_ArkWebHttpBodyStream_** API to read the uploaded data. |
-| [ArkWeb_ErrorInfo_](capi-web-arkweb-errorinfo-.md) | ArkWeb_ErrorInfo | The error info for setting response error details. |
+| [ArkWeb_ErrorInfo_](capi-web-arkweb-errorinfo-.md) | ArkWeb_ErrorInfo | ArkWeb_ErrorInfo is a structure that details response errors, used to set error information for responses in custom scheme request interception scenarios. Developers can use this structure to configure the error code, custom error code, and whether to automatically generate a response when no response is received. This structure is typically used in conjunction with ArkWeb_ResourceHandler to pass error information via OH_ArkWebResourceHandler_DidFailWithErrorInfo when a request fails. |
 
 ### Enum
 
@@ -72,8 +72,8 @@ The `arkweb_scheme_handler.h` file is a complete C API header file in ArkWeb for
 | [bool OH_ArkWebResourceRequest_IsMainFrame(const ArkWeb_ResourceRequest* resourceRequest)](#oh_arkwebresourcerequest_ismainframe) | - | Determines whether a request is from main frame. |
 | [bool OH_ArkWebResourceRequest_HasGesture(const ArkWeb_ResourceRequest* resourceRequest)](#oh_arkwebresourcerequest_hasgesture) | - | Determines whether a request is triggered by a user gesture. |
 | [int32_t OH_ArkWeb_RegisterCustomSchemes(const char* scheme, int32_t option)](#oh_arkweb_registercustomschemes) | - | Registers a custom scheme with **ArkWeb**. This function should not be called for built-in HTTP, HTTPS, FILE, FTP, ABOUT, and DATA protocols. This function should be called on the main thread before kernel initialization. |
-| [bool OH_ArkWebServiceWorker_SetSchemeHandler(const char* scheme, ArkWeb_SchemeHandler* schemeHandler)](#oh_arkwebserviceworker_setschemehandler) | - | Sets an **ArkWeb_SchemeHandler** for a specified scheme to intercept requests of the scheme type triggered by **ServiceWorker**. **SchemeHandler** should be set after **BrowserContext** is created. <br>You can use **WebviewController.initializeWebEngine** to initialize **BrowserContext** without creating the **Web** component. |
-| [bool OH_ArkWeb_SetSchemeHandler(const char* scheme, const char* webTag, ArkWeb_SchemeHandler* schemeHandler)](#oh_arkweb_setschemehandler) | - | Sets an **ArkWeb_SchemeHandler** to intercept requests of a specified scheme type. **SchemeHandler** should be set after **BrowserContext** is created. <br>You can use **WebviewController.initializeWebEngine** to initialize **BrowserContext** without creating the **Web** component. |
+| [bool OH_ArkWebServiceWorker_SetSchemeHandler(const char* scheme, ArkWeb_SchemeHandler* schemeHandler)](#oh_arkwebserviceworker_setschemehandler) | - | Sets an **ArkWeb_SchemeHandler** for a specified scheme to intercept requests of the scheme type triggered by **ServiceWorker**. **SchemeHandler** should be set after **BrowserContext** is created. <br>You can use **WebviewController.initializeWebEngine** to initialize **BrowserContext** without creating the **Web** component.<br> > **NOTE**<br>> > - Redirected URLs cannot be intercepted individually. To intercept a redirected URL, you must also intercept > the original request URL. |
+| [bool OH_ArkWeb_SetSchemeHandler(const char* scheme, const char* webTag, ArkWeb_SchemeHandler* schemeHandler)](#oh_arkweb_setschemehandler) | - | Sets an **ArkWeb_SchemeHandler** to intercept requests of a specified scheme type. **SchemeHandler** should be set after **BrowserContext** is created. <br>You can use **WebviewController.initializeWebEngine** to initialize **BrowserContext** without creating the **Web** component.<br> > **NOTE**<br>> > - Redirected URLs cannot be intercepted individually. To intercept a redirected URL, you must also intercept > the original request URL. |
 | [int32_t OH_ArkWebServiceWorker_ClearSchemeHandlers()](#oh_arkwebserviceworker_clearschemehandlers) | - | Clears the **SchemeHandler** registered for **ServiceWorker**. |
 | [int32_t OH_ArkWeb_ClearSchemeHandlers(const char* webTag)](#oh_arkweb_clearschemehandlers) | - | Clears the **SchemeHandler** registered for the specified **Web** component. |
 | [void OH_ArkWeb_CreateSchemeHandler(ArkWeb_SchemeHandler** schemeHandler)](#oh_arkweb_createschemehandler) | - | Creates an **ArkWeb_SchemeHandler** object. |
@@ -104,9 +104,9 @@ The `arkweb_scheme_handler.h` file is a complete C API header file in ArkWeb for
 | [int32_t OH_ArkWebResourceHandler_DidFinish(const ArkWeb_ResourceHandler* resourceHandler)](#oh_arkwebresourcehandler_didfinish) | - | Notifies the ArkWeb kernel that the intercepted request is complete and no more data is available. This function sends a completion signal to the kernel, which will end the processing of the request and clean up related internal resources. After calling this function, no other processing functions can be called for this request. If an error occurs during the request, use **OH_ArkWebResourceHandler_DidFailWithError** to notify the kernel. |
 | [int32_t OH_ArkWebResourceHandler_DidFailWithError(const ArkWeb_ResourceHandler* resourceHandler, ArkWeb_NetError errorCode)](#oh_arkwebresourcehandler_didfailwitherror) | - | Notifies the ArkWeb kernel that the intercepted request should fail. Called in scenarios such as permission verification failure, resource not found, or network errors, it is used to mark the request as failed and inform the client of the specific failure reason through an error code. |
 | [int32_t OH_ArkWebResourceHandler_DidFailWithErrorV2(const ArkWeb_ResourceHandler* resourceHandler, ArkWeb_NetError errorCode, bool completeIfNoResponse)](#oh_arkwebresourcehandler_didfailwitherrorv2) | - | Notifies the ArkWeb kernel that the intercepted request fails. Compared with the [OH_ArkWebResourceHandler_DidFailWithError](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherror) API, the **completeIfNoResponse** parameter is added. With this parameter set to **true**, if [OH_ArkWebResourceHandler_DidReceiveResponse](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) has not been called, a response is automatically generated to complete the network request and the network error code is **-104**. With this parameter set to **false**, the system waits for the application to call [OH_ArkWebResourceHandler_DidReceiveResponse](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) and pass the response. |
-| [void OH_ArkWeb_CreateErrorInfo(ArkWeb_ErrorInfo** errorInfo)](#oh_arkweb_createerrorinfo) | - | Creates an ArkWeb_ErrorInfo object. |
+| [void OH_ArkWeb_CreateErrorInfo(ArkWeb_ErrorInfo** errorInfo)](#oh_arkweb_createerrorinfo) | - | Creates an ArkWeb_ErrorInfo object. If errorInfo is nullptr, this function does nothing. If the creation succeeds, *errorInfo points to the newly created object, which must be destroyed using [OH_ArkWeb_DestroyErrorInfo](capi-arkweb-scheme-handler-h.md#oh_arkweb_destroyerrorinfo) when no longer needed. If the creation fails, *errorInfo is set to NULL. |
 | [void OH_ArkWeb_DestroyErrorInfo(ArkWeb_ErrorInfo* errorInfo)](#oh_arkweb_destroyerrorinfo) | - | Destroys the ArkWeb_ErrorInfo. |
-| [int32_t OH_ArkWebErrorInfo_SetCompleteIfNoResponse(ArkWeb_ErrorInfo* errorInfo, bool completeIfNoResponse)](#oh_arkweberrorinfo_setcompleteifnoresponse) | - | Sets whether to automatically generate a response if no response has been received. |
+| [int32_t OH_ArkWebErrorInfo_SetCompleteIfNoResponse(ArkWeb_ErrorInfo* errorInfo, bool completeIfNoResponse)](#oh_arkweberrorinfo_setcompleteifnoresponse) | - | Sets whether to automatically generate a response if no response has been received. If completeIfNoResponse is set to true, when calling [OH_ArkWebResourceHandler_DidFailWithErrorInfo](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherrorinfo), if [OH_ArkWebResourceHandler_DidReceiveResponse](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) has not been called before, a response will be automatically constructed to complete the request. |
 | [bool OH_ArkWebErrorInfo_GetCompleteIfNoResponse(const ArkWeb_ErrorInfo* errorInfo)](#oh_arkweberrorinfo_getcompleteifnoresponse) | - | Gets whether to automatically generate a response if no response has been received. |
 | [int32_t OH_ArkWebErrorInfo_SetCustomErrorCode(ArkWeb_ErrorInfo* errorInfo, int32_t errorCode)](#oh_arkweberrorinfo_setcustomerrorcode) | - | Sets the custom error code for ArkWeb_ErrorInfo. |
 | [int32_t OH_ArkWebErrorInfo_GetCustomErrorCode(const ArkWeb_ErrorInfo* errorInfo)](#oh_arkweberrorinfo_getcustomerrorcode) | - | Gets the custom error code from the ArkWeb_ErrorInfo. |
@@ -114,7 +114,7 @@ The `arkweb_scheme_handler.h` file is a complete C API header file in ArkWeb for
 | [ArkWeb_NetError OH_ArkWebErrorInfo_GetErrorCode(const ArkWeb_ErrorInfo* errorInfo)](#oh_arkweberrorinfo_geterrorcode) | - | Gets the error code from the ArkWeb_ErrorInfo. Refer to arkweb_net_error_list.h. |
 | [int32_t OH_ArkWebResponse_SetErrorInfo(ArkWeb_Response* response, ArkWeb_ErrorInfo* errorInfo)](#oh_arkwebresponse_seterrorinfo) | - | Sets the error info for the ArkWeb_Response. |
 | [ArkWeb_ErrorInfo* OH_ArkWebResponse_GetErrorInfo(const ArkWeb_Response* response)](#oh_arkwebresponse_geterrorinfo) | - | Gets the error info from the ArkWeb_Response. |
-| [int32_t OH_ArkWebResourceHandler_DidFailWithErrorInfo(const ArkWeb_ResourceHandler* resourceHandler, const ArkWeb_ErrorInfo* errorInfo)](#oh_arkwebresourcehandler_didfailwitherrorinfo) | - | Notify the web engine that this request should fail with error info. |
+| [int32_t OH_ArkWebResourceHandler_DidFailWithErrorInfo(const ArkWeb_ResourceHandler* resourceHandler, const ArkWeb_ErrorInfo* errorInfo)](#oh_arkwebresourcehandler_didfailwitherrorinfo) | - | Notifies the Web engine that the request should fail with error information. Compared to [OH_ArkWebResourceHandler_DidFailWithErrorV2](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherrorv2), this interface uses an ArkWeb_ErrorInfo object to carry the error code, custom error code, and the completeIfNoResponse setting. |
 | [void OH_ArkWeb_ReleaseString(char* string)](#oh_arkweb_releasestring) | - | Releases the string created by NDK APIs. |
 | [void OH_ArkWeb_ReleaseByteArray(uint8_t* byteArray)](#oh_arkweb_releasebytearray) | - | Releases the byte array created by NDK APIs. |
 
@@ -1040,7 +1040,11 @@ bool OH_ArkWebServiceWorker_SetSchemeHandler(const char* scheme, ArkWeb_SchemeHa
 
 **Description**
 
-Sets an **ArkWeb_SchemeHandler** for a specified scheme to intercept requests of the scheme type triggered by **ServiceWorker**. **SchemeHandler** should be set after **BrowserContext** is created. <br>You can use **WebviewController.initializeWebEngine** to initialize **BrowserContext** without creating the **Web** component.
+Sets an **ArkWeb_SchemeHandler** for a specified scheme to intercept requests of the scheme type triggered by **ServiceWorker**. **SchemeHandler** should be set after **BrowserContext** is created. <br>You can use **WebviewController.initializeWebEngine** to initialize **BrowserContext** without creating the **Web** component.<br>
+> **NOTE**
+>
+> - Redirected URLs cannot be intercepted individually. To intercept a redirected URL, you must also intercept
+> the original request URL.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1067,7 +1071,11 @@ bool OH_ArkWeb_SetSchemeHandler(const char* scheme, const char* webTag, ArkWeb_S
 
 **Description**
 
-Sets an **ArkWeb_SchemeHandler** to intercept requests of a specified scheme type. **SchemeHandler** should be set after **BrowserContext** is created. <br>You can use **WebviewController.initializeWebEngine** to initialize **BrowserContext** without creating the **Web** component.
+Sets an **ArkWeb_SchemeHandler** to intercept requests of a specified scheme type. **SchemeHandler** should be set after **BrowserContext** is created. <br>You can use **WebviewController.initializeWebEngine** to initialize **BrowserContext** without creating the **Web** component.<br>
+> **NOTE**
+>
+> - Redirected URLs cannot be intercepted individually. To intercept a redirected URL, you must also intercept
+> the original request URL.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1794,7 +1802,7 @@ Notifies the ArkWeb kernel that the intercepted request should fail. Called in s
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler-.md)* resourceHandler | Handler for intercepted URL requests. You can use **ArkWeb_ResourceHandler** to send custom request headers and bodies. |
+| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler-.md)* resourceHandler | Handler for intercepted URL requests. You can use **ArkWeb_ResourceHandler** to send custom response headers and bodies. |
 | [ArkWeb_NetError](capi-arkweb-net-error-list-h.md#arkweb_neterror) errorCode | Error code of the request. For details, see [arkweb_net_error_list.h](capi-arkweb-net-error-list-h.md). |
 
 **Returns**:
@@ -1821,7 +1829,7 @@ Notifies the ArkWeb kernel that the intercepted request fails. Compared with the
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler-.md)* resourceHandler | Handler for intercepted URL requests. You can use **ArkWeb_ResourceHandler** to send custom request headers and bodies. |
+| [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler-.md)* resourceHandler | Handler for intercepted URL requests. You can use **ArkWeb_ResourceHandler** to send custom response headers and bodies. |
 | [ArkWeb_NetError](capi-arkweb-net-error-list-h.md#arkweb_neterror) errorCode | Error code of the request. For details, see [arkweb_net_error_list.h](capi-arkweb-net-error-list-h.md). |
 | bool completeIfNoResponse | Whether the network request is complete when [OH_ArkWebResourceHandler_DidFailWithErrorV2](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherrorv2) is called if [OH_ArkWebResourceHandler_DidReceiveResponse](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) is not called before. If the value is **true** and [OH_ArkWebResourceHandler_DidReceiveResponse](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) is not called before, a response is automatically generated to complete the network request, and the network error code is **-104**. If the value is **false**, the system waits for the application to call [OH_ArkWebResourceHandler_DidReceiveResponse](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) and pass the response. |
 
@@ -1839,7 +1847,7 @@ void OH_ArkWeb_CreateErrorInfo(ArkWeb_ErrorInfo** errorInfo)
 
 **Description**
 
-Creates an ArkWeb_ErrorInfo object.
+Creates an ArkWeb_ErrorInfo object. If errorInfo is nullptr, this function does nothing. If the creation succeeds, *errorInfo points to the newly created object, which must be destroyed using [OH_ArkWeb_DestroyErrorInfo](capi-arkweb-scheme-handler-h.md#oh_arkweb_destroyerrorinfo) when no longer needed. If the creation fails, *errorInfo is set to NULL.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1849,7 +1857,7 @@ Creates an ArkWeb_ErrorInfo object.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo-.md)** errorInfo | The created ArkWeb_ErrorInfo object. If errorInfo is nullptr, this function does nothing. If the creation succeeds, *errorInfo points to the newly created object, which must be destroyed using [OH_ArkWeb_DestroyErrorInfo](capi-arkweb-scheme-handler-h.md#oh_arkweb_destroyerrorinfo) when no longer needed. If the creation fails, *errorInfo is set to NULL. |
+| [ArkWeb_ErrorInfo](capi-web-arkweb-errorinfo-.md)** errorInfo | The created ArkWeb_ErrorInfo object. |
 
 ### OH_ArkWeb_DestroyErrorInfo()
 
@@ -1879,7 +1887,7 @@ int32_t OH_ArkWebErrorInfo_SetCompleteIfNoResponse(ArkWeb_ErrorInfo* errorInfo, 
 
 **Description**
 
-Sets whether to automatically generate a response if no response has been received.
+Sets whether to automatically generate a response if no response has been received. If completeIfNoResponse is set to true, when calling [OH_ArkWebResourceHandler_DidFailWithErrorInfo](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherrorinfo), if [OH_ArkWebResourceHandler_DidReceiveResponse](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) has not been called before, a response will be automatically constructed to complete the request.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2091,7 +2099,7 @@ int32_t OH_ArkWebResourceHandler_DidFailWithErrorInfo(const ArkWeb_ResourceHandl
 
 **Description**
 
-Notify the web engine that this request should fail with error info.
+Notifies the Web engine that the request should fail with error information. Compared to [OH_ArkWebResourceHandler_DidFailWithErrorV2](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherrorv2), this interface uses an ArkWeb_ErrorInfo object to carry the error code, custom error code, and the completeIfNoResponse setting.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

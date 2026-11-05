@@ -6,7 +6,7 @@ typedef struct InputMethod_TextEditorProxy InputMethod_TextEditorProxy
 
 ## Overview
 
-Define the InputMethod_TextEditorProxy structure type.<br> Provides methods for getting requests and notifications from input method. When input method sends request or notification to editor, the methods will be called.
+Represents the proxy class for the input method text editor. It handles the interaction between the input method app and the text editor, provides methods for receiving input method requests and notifications, and is suitable for scenarios requiring bidirectional communication between the input method and the editor. This struct is an opaque type. You cannot directly access its internal members and can only operate on it through the functions provided by this module.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 

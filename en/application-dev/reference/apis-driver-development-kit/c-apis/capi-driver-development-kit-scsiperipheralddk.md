@@ -12,5 +12,5 @@ Provide ScsiPeripheral DDK interface, including initializing DDK, releasing DDK,
 
 | Name | Description |
 | -- | -- |
-| [scsi_peripheral_api.h](capi-scsi-peripheral-api-h.md) | Declares the SCSI Peripheral DDK APIs used by the host to access the SCSI device. |
+| [scsi_peripheral_api.h](capi-scsi-peripheral-api-h.md) | Declares the SCSI Peripheral DDK APIs used by the host to access the SCSI device. This module provides the SCSI device access capability through the DDK driver service based on the SCSI protocol. |
 | [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md) | Provides the enum variables, structures, and macros used in the SCSI Peripheral DDK APIs. |

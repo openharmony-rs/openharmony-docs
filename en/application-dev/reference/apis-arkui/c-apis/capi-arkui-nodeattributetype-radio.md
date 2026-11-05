@@ -18,7 +18,7 @@ NODE_RADIO_CHECKED = MAX_NODE_SCOPE_NUM * ARKUI_NODE_RADIO
 
 **Description**
 
-Set the selection status of an option button. Attribute setting, attribute resetting, and attribute obtaining are supported. **Attribute setting method [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) Parameter format:** <ul> <li>.value[0].i32: check status of an option button. The default value is false.</li> </ul> **Attribute obtaining method return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) format:** <ul> <li>.value[0].i32: selection status of an option button.</li> </ul>
+Set the selection status of an option button. Attribute setting, attribute resetting, and attribute obtaining are supported. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0].i32: check status of an option button. The default value is false.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].i32: selection status of an option button.</li> </ul>
 
 **Since**: 12
 

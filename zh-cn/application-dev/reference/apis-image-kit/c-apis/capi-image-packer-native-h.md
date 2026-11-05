@@ -36,9 +36,9 @@
 | 名称 | 描述 |
 | -- | -- |
 | [Image_ErrorCode OH_PackingOptions_Create(OH_PackingOptions **options)](#oh_packingoptions_create) | 创建PackingOptions结构体的指针。 <br>使用约束：options不能为空指针；接口返回失败时，输出参数内容不应使用。 <br>资源管理：接口成功返回的OH_PackingOptions对象由调用方管理，使用完成后应调用[OH_PackingOptions_Release](capi-image-packer-native-h.md#oh_packingoptions_release)释放。 |
-| [Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetype) | 获取编码参数中的MIME类型。该接口获取的format.data缺少字符串结束符'\0'，请谨慎使用。 <br>使用约束：options和format均不能为空指针。调用前若format->size不为0，则format->size必须大于或等于当前MIME类型长度。接口返回失败时，不应读取format.data。 <br>资源管理：接口执行成功后，format.data由接口分配，调用方使用完成后应使用free()释放。该接口返回的format.data不以字符串结束符'\0'结尾，如需按C字符串处理，建议使用 [OH_PackingOptions_GetMimeTypeWithNull](capi-image-packer-native-h.md#oh_packingoptions_getmimetypewithnull)。 |
+| [Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetype) | 获取 MIME 类型。通过这个API获取的value.data缺少字符串结束符'\0'，请谨慎使用。 |
 | [Image_ErrorCode OH_PackingOptions_GetMimeTypeWithNull(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetypewithnull) | 获取编码参数中的MIME类型。该接口获取的format.data以字符串结束符'\0'结尾。 <br>使用场景：适用于读取字符串形式的MIME类型。与[OH_PackingOptions_GetMimeType](capi-image-packer-native-h.md#oh_packingoptions_getmimetype)相比，本接口返回的format.data以'\0'结尾，更适合直接按C字符串处理。 <br>使用约束：options和format均不能为空指针。调用前若format->size不为0，则format->size必须大于或等于当前MIME类型长度。接口返回失败时，不应读取format.data。 <br>资源管理：接口执行成功后，format.data由接口分配，调用方使用完成后应使用free()释放。 |
-| [Image_ErrorCode OH_PackingOptions_SetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_setmimetype) | Sets the MIME type. |
+| [Image_ErrorCode OH_PackingOptions_SetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_setmimetype) | 设置 MIME 类型。 |
 | [Image_ErrorCode OH_PackingOptions_GetQuality(OH_PackingOptions *options, uint32_t *quality)](#oh_packingoptions_getquality) | 获取编码质量。 <br>使用约束：options和quality均不能为空指针。接口返回失败时，输出参数内容不应使用。 |
 | [Image_ErrorCode OH_PackingOptions_SetQuality(OH_PackingOptions *options, uint32_t quality)](#oh_packingoptions_setquality) | 设置编码质量。 <br>使用约束：options不能为空指针，quality取值范围为[0, 100]。OH_PackingOptions创建后，quality默认值为0，建议设置quality不低于80。quality的实际效果取决于目标编码格式。 |
 | [Image_ErrorCode OH_PackingOptions_GetNeedsPackProperties(OH_PackingOptions *options, bool *needsPackProperties)](#oh_packingoptions_getneedspackproperties) | 获取OH_PackingOptions结构体的needsPackProperties参数。 <br>使用约束：options和needsPackProperties均不能为空指针。接口返回失败时，输出参数内容不应使用。 |
@@ -128,7 +128,7 @@ Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_
 
 **描述：**
 
-获取编码参数中的MIME类型。该接口获取的format.data缺少字符串结束符'\0'，请谨慎使用。 <br>使用约束：options和format均不能为空指针。调用前若format->size不为0，则format->size必须大于或等于当前MIME类型长度。接口返回失败时，不应读取format.data。 <br>资源管理：接口执行成功后，format.data由接口分配，调用方使用完成后应使用free()释放。该接口返回的format.data不以字符串结束符'\0'结尾，如需按C字符串处理，建议使用 [OH_PackingOptions_GetMimeTypeWithNull](capi-image-packer-native-h.md#oh_packingoptions_getmimetypewithnull)。
+获取 MIME 类型。通过这个API获取的value.data缺少字符串结束符'\0'，请谨慎使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -138,14 +138,14 @@ Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 被操作的OH_PackingOptions指针。 |
-| [Image_MimeType](capi-image-nativemodule-image-string.md) *format | 图像格式。format无需手动初始化，系统将分配内存，但必须在使用后释放内存。 <br>该接口获取到的format.data缺少字符串结束符'\0'，需要检查实际数据长度是否超出了申请缓冲区的长度。 |
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 指向 OH_PackingOptions 结构体的指针。 |
+| [Image_MimeType](capi-image-nativemodule-image-string.md) *format | 指向 MIME 类型的指针。你可以传入一个空指针，并将大小设置为零。在这种情况下，系统会分配内存，但你用完后必须释放内存。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：options为空，或者format为空。<br>IMAGE_ALLOC_FAILED：内存分配失败。<br>IMAGE_COPY_FAILED：内存拷贝失败。 |
 
 ### OH_PackingOptions_GetMimeTypeWithNull()
 
@@ -182,7 +182,7 @@ Image_ErrorCode OH_PackingOptions_SetMimeType(OH_PackingOptions *options, Image_
 
 **描述：**
 
-Sets the MIME type.
+设置 MIME 类型。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -192,14 +192,14 @@ Sets the MIME type.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct. |
-| [Image_MimeType](capi-image-nativemodule-image-string.md) *format | Pointer to a MIME type string in the form "type/subtype". |
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 指向 OH_PackingOptions 结构体的指针。 |
+| [Image_MimeType](capi-image-nativemodule-image-string.md) *format | 指向 MIME 类型字符串的指针，格式type/subtype"。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr, or format is nullptr. <br>[IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) allocate memory failed. <br>[IMAGE_COPY_FAILED](capi-image-common-h.md#image_errorcode) copy memory failed. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：options为空，或者format为空。<br>IMAGE_ALLOC_FAILED：内存分配失败。<br>IMAGE_COPY_FAILED：内存拷贝失败。 |
 
 ### OH_PackingOptions_GetQuality()
 
@@ -717,7 +717,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromImageSource(OH_ImagePackerNat
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。<br>IMAGE_DECODE_FAILED：解码失败。<br>IMAGE_ALLOC_FAILED：申请内存失败。<br>IMAGE_TOO_LARGE：数据或图片过大。<br>IMAGE_UNKNOWN_ERROR：未知错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：imagePacker为空，或者options为空，或者imageSource为空，或者outData为空。<br>IMAGE_ENCODE_FAILED：编码失败。 |
 
 ### OH_ImagePackerNative_PackToDataFromPixelmap()
 
@@ -747,7 +747,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmap(OH_ImagePackerNative
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。<br>IMAGE_DECODE_FAILED：解码失败。<br>IMAGE_ALLOC_FAILED：申请内存失败。<br>IMAGE_TOO_LARGE：数据或图片过大。<br>IMAGE_UNKNOWN_ERROR：未知错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：imagePacker为空，或者options为空，或者pixelmap为空，或者outData为空。<br>IMAGE_ENCODE_FAILED：编码失败。 |
 
 ### OH_ImagePackerNative_PackToDataFromPicture()
 
@@ -777,7 +777,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPicture(OH_ImagePackerNative 
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。<br>IMAGE_DECODE_FAILED：解码失败。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：imagePacker为空，或者options为空，或者picture为空，或者size无效。<br>IMAGE_ENCODE_FAILED：编码失败。 |
 
 ### OH_ImagePackerNative_PackToDataFromPixelmapSequence()
 
@@ -808,7 +808,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmapSequence(OH_ImagePack
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。<br>IMAGE_DECODE_FAILED：解码失败。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：其中一个指针类型的参数是空，或者size/length无效。<br>IMAGE_ENCODE_FAILED：编码失败。 |
 
 ### OH_ImagePackerNative_PackToFileFromImageSource()
 
@@ -837,7 +837,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromImageSource(OH_ImagePackerNat
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。<br>IMAGE_DECODE_FAILED：解码失败。<br>IMAGE_UNKNOWN_ERROR：未知错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：imagePacker为空，或者options为空，或者imageSource为空，或者fd无效。<br>IMAGE_ENCODE_FAILED：编码失败。 |
 
 ### OH_ImagePackerNative_PackToFileFromPixelmap()
 
@@ -866,7 +866,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromPixelmap(OH_ImagePackerNative
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。<br>IMAGE_DECODE_FAILED：解码失败。<br>IMAGE_UNKNOWN_ERROR：未知错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：imagePacker为空，或者options为空，或者pixelmap为空，或者fd无效。<br>IMAGE_ENCODE_FAILED：编码失败。 |
 
 ### OH_ImagePackerNative_PackToFileFromPicture()
 
@@ -895,7 +895,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromPicture(OH_ImagePackerNative 
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。<br>IMAGE_DECODE_FAILED：解码失败。<br>IMAGE_UNKNOWN_ERROR：未知错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：imagePacker为空，或者picture为空，或者fd无效。<br>IMAGE_ENCODE_FAILED：编码失败。 |
 
 ### OH_ImagePackerNative_PackToFileFromPixelmapSequence()
 
@@ -925,7 +925,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromPixelmapSequence(OH_ImagePack
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。<br>IMAGE_DECODE_FAILED：解码失败。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：其中一个指针类型的参数是空，或者length无效。<br>IMAGE_ENCODE_FAILED：编码失败。 |
 
 ### OH_ImagePackerNative_Release()
 

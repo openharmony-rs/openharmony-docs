@@ -6,7 +6,7 @@ typedef struct InputMethod_TextAvoidInfo InputMethod_TextAvoidInfo
 
 ## Overview
 
-Represents the information used by the input box to avoid the keyboard.
+Information used by the input box to avoid the keyboard.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 

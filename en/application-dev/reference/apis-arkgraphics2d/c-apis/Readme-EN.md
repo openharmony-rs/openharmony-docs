@@ -83,6 +83,7 @@
     - [OH_NativeBuffer](capi-vulkan-oh-nativebuffer.md)
     - [BufferHandle](capi-nativewindow-bufferhandle.md)
     - [Region](capi-nativewindow-region.md)
+    - [OH_NativeWindow_ScreenInfoRect](capi-nativewindow-oh-nativewindow-screeninforect.md)
     - [OHHDRMetaData](capi-nativewindow-ohhdrmetadata.md)
     - [OHExtDataHandle](capi-nativewindow-ohextdatahandle.md)
     - [OH_NativeBuffer](capi-nativewindow-oh-nativebuffer.md)

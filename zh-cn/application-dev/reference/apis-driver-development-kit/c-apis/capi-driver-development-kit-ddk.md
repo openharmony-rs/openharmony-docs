@@ -2,7 +2,7 @@
 
 ## 概述
 
-提供Base DDK接口，包括创建、映射、取消映射以及销毁共享内存。
+Provides Base DDK APIs, including creating the shared memory, mapping the shared memory, unmapping the shared memory, and destroying the shared memory.
 
 **系统能力：** SystemCapability.Driver.DDK.Extension
 

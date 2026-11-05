@@ -22,7 +22,7 @@ Defines standard interface descriptors, which correspond to **Standard Interface
 
 | Name | Description |
 | -- | -- |
-| uint8_t bLength | Size of the descriptor, in bytes. |
+| uint8_t bLength | Size of this descriptor, in bytes. |
 | uint8_t bDescriptorType | Descriptor type. |
 | uint8_t bInterfaceNumber | Interface ID. |
 | uint8_t bAlternateSetting | Value used to select the alternate setting of the interface. |

@@ -6,7 +6,7 @@ typedef struct InputMethod_TextConfig InputMethod_TextConfig
 
 ## Overview
 
-Define the InputMethod_TextConfig structure type.<br> The configuration of the text editor.
+A struct that configures input behaviors of text boxes. It is used to pass core input rules to the input method framework for input behavior adaptation.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 

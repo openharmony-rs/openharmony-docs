@@ -12,5 +12,5 @@ Provides USB DDK types and declares the macros, enumerated variables, and data s
 
 | Name | Description |
 | -- | -- |
-| [usb_ddk_types.h](capi-usb-ddk-types-h.md) | Provides the enumerated variables, structures, and macros used in USB DDK APIs. |
-| [usb_ddk_api.h](capi-usb-ddk-api-h.md) | Declares the USB DDK APIs used by the USB host to access USB devices. |
+| [usb_ddk_types.h](capi-usb-ddk-types-h.md) | Provides the enumeration types and structures used in USB DDK APIs, including core data structures such as USB device description, control transfer, and request pipe, to facilitate driver development. |
+| [usb_ddk_api.h](capi-usb-ddk-api-h.md) | Declares the USB DDK APIs used by the host to access the device. These APIs provide functions such as USB device management, configuration, and data transmission, helping developers implement underlying interaction and data communication with the USB device. |

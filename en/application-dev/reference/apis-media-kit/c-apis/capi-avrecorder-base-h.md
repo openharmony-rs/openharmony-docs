@@ -2,7 +2,9 @@
 
 ## Overview
 
-The file declares the struct and enums used by the AVRecorder.
+Defines the struct, enums, and callbacks used by AVRecorder.
+
+**File to Include**: <multimedia/player_framework/avrecorder_base.h>
 
 **Library**: libavrecorder.so
 
@@ -16,14 +18,14 @@ The file declares the struct and enums used by the AVRecorder.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AVRecorder_Profile](capi-avrecorder-oh-avrecorder-profile.md) | - | The struct describes the parameters used for audio and video recording. |
-| [OH_AVRecorder_Location](capi-avrecorder-oh-avrecorder-location.md) | - | The struct describes the geographical location information about a media asset. |
-| [OH_AVRecorder_MetadataTemplate](capi-avrecorder-oh-avrecorder-metadatatemplate.md) | - | The struct describes the basic template of metadata. |
-| [OH_AVRecorder_Metadata](capi-avrecorder-oh-avrecorder-metadata.md) | - | The struct describes the metadata. |
-| [OH_AVRecorder_Config](capi-avrecorder-oh-avrecorder-config.md) | - | The struct describes the AVRecorder configuration. |
-| [OH_AVRecorder_Range](capi-avrecorder-oh-avrecorder-range.md) | - | The struct describes the range. |
-| [OH_AVRecorder_EncoderInfo](capi-avrecorder-oh-avrecorder-encoderinfo.md) | - | The struct describes the encoder information. |
-| [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) | OH_AVRecorder | The struct initializes an AVRecorder. |
+| [OH_AVRecorder_Profile](capi-avrecorder-oh-avrecorder-profile.md) | - | Describes the parameters used for audio and video recording. By configuring parameters such as the audio/video encoding format, bitrate, sampling rate, frame rate, resolution, container format, HDR recording, and whether to enable temporally scalable video encoding, you can flexibly control the recording quality and file size. This is applicable to scenarios where you need to customize the recording quality, select the recording content type (audio-only, video-only, or both), and enable HDR recording or temporally scalable video encoding.<br>You can choose to record only audio, only video, or both by setting the parameters.<br>1. When **audioBitrate** or **audioChannels**<br>is set to **0**, audio recording is disabled.<br>2. When **videoFrameWidth** or **videoFrameHeight** is set to **0**, video recording is disabled.<br>For details about the value range of each parameter, see [AVRecorderProfile](arkts-apis-media-i.md#avrecorderprofile9). |
+| [OH_AVRecorder_Location](capi-avrecorder-oh-avrecorder-location.md) | - | Describes the geographical location information about a media asset and supports the annotation of latitude and longitude during audio and video recording. This struct uses the [OH_AVRecorder_Prepare][OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare) API of AVRecorder to write the latitude and longitude information into the metadata of the recording file. You need to set the latitude and longitude parameters of this structure before recording. During recording, the geographical location information is automatically embedded into the generated media file. This struct is applicable to scenarios where geographical locations need to be embedded in the recording result, such as marking the shooting location during video shooting, marking the track location in activity record apps, and recording the itinerary coordinates in travel diary apps. This facilitates subsequent retrieval and classification management of media resources by location. |
+| [OH_AVRecorder_MetadataTemplate](capi-avrecorder-oh-avrecorder-metadatatemplate.md) | - | Defines the basic template of metadata during audio and video recording. Metadata is organized in key-value pair format. This struct is applicable to scenarios where custom metadata (such as title, author, and description) needs to be added to the recording output, facilitating the classification, retrieval, and management of recorded files. You can use the [OH_AVRecorder_Prepare][OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare) API of AVRecorder to set the metadata in this struct to the recording output file. |
+| [OH_AVRecorder_Metadata](capi-avrecorder-oh-avrecorder-metadata.md) | - | Defines the metadata structure for recording, which is used to describe the genre, video rotation angle, geographical location, and custom parameters of media resources. This struct is applicable to scenarios where media metadata needs to be carried or read during recording. |
+| [OH_AVRecorder_Config](capi-avrecorder-oh-avrecorder-config.md) | - | Describes the AVRecorder configuration, which is used to set the audio source type, video source type, encoding configuration, output file URL, file generation mode, metadata, and maximum recording duration during audio and video recording. This struct is applicable to scenarios where custom recording configurations are required. |
+| [OH_AVRecorder_Range](capi-avrecorder-oh-avrecorder-range.md) | - | Defines the value range of AVRecorder parameters (such as the bit rate and frame rate) to limit the configurable range of recording parameters. You can use the [OH_AVRecorder_GetAvailableEncoder][OH_AVRecorder_GetAvailableEncoder](capi-avrecorder-h.md#oh_avrecorder_getavailableencoder) API to obtain the value range of encoder parameters and set the parameter values within the range from **min** to **max** to ensure that the configuration is valid. |
+| [OH_AVRecorder_EncoderInfo](capi-avrecorder-oh-avrecorder-encoderinfo.md) | - | Provides AVRecorder encoder capability information, including the MIME type, bit rate range, and frame rate range of the encoder. This struct is applicable to scenarios where you need to query and select a proper audio or video encoder configuration before recording, helping you select the optimal encoding configuration based on the encoder capability parameters. You can obtain this struct object by calling [OH_AVRecorder_GetAvailableEncoder][OH_AVRecorder_GetAvailableEncoder](capi-avrecorder-h.md#oh_avrecorder_getavailableencoder). |
+| [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) | OH_AVRecorder | Defines a struct for audio and video recording, which is used to represent an AVRecorder instance. It supports audio and video data collection and recording, and provides capabilities such as recording process control and callbacks for event listeners. It is applicable to scenarios where audio and video need to be recorded and saved as files, such as video conference recording, screen recording apps, and security surveillance recording. |
 
 ### Enum
 
@@ -31,17 +33,17 @@ The file declares the struct and enums used by the AVRecorder.
 | -- | -- | -- |
 | [OH_AVRecorder_AudioSourceType](#oh_avrecorder_audiosourcetype) | OH_AVRecorder_AudioSourceType | Enumerates the audio source types of the AVRecorder. |
 | [OH_AVRecorder_VideoSourceType](#oh_avrecorder_videosourcetype) | OH_AVRecorder_VideoSourceType | Enumerates the video source types of the AVRecorder. |
-| [OH_AVRecorder_CodecMimeType](#oh_avrecorder_codecmimetype) | OH_AVRecorder_CodecMimeType | Enumerates the MIME types of the encoder. |
-| [OH_AVRecorder_ContainerFormatType](#oh_avrecorder_containerformattype) | OH_AVRecorder_ContainerFormatType | Enumerates the Container Format Types (CFTs). |
-| [OH_AVRecorder_State](#oh_avrecorder_state) | OH_AVRecorder_State | Enumerates the AVRecorder states. |
-| [OH_AVRecorder_StateChangeReason](#oh_avrecorder_statechangereason) | OH_AVRecorder_StateChangeReason | Enumerates the reasons for AVRecorder state changes. |
-| [OH_AVRecorder_FileGenerationMode](#oh_avrecorder_filegenerationmode) | OH_AVRecorder_FileGenerationMode | Enumerates the modes available for creating a recording file. |
+| [OH_AVRecorder_CodecMimeType](#oh_avrecorder_codecmimetype) | OH_AVRecorder_CodecMimeType | Enumerates the MIME types of the encoder, which are used to specify the encoding format of audio and video data during recording. The encoder type must match the container format. If they do not match, the recording will fail. For details about the mapping, see the description of the corresponding encoder type. |
+| [OH_AVRecorder_ContainerFormatType](#oh_avrecorder_containerformattype) | OH_AVRecorder_ContainerFormatType | Enumerates the Container Format Types (CFTs), which are used to specify the encapsulation format of recording files. The container format must be compatible with the MIME type of the encoder. If they are incompatible, the recording will fail. For details about the encoder types supported by each container format, see the description of the corresponding container format. |
+| [OH_AVRecorder_State](#oh_avrecorder_state) | OH_AVRecorder_State | Enumerates the AVRecorder states, which indicate the different phases of the recorder in its lifecycle. The operations that can be performed vary depending on the state. |
+| [OH_AVRecorder_StateChangeReason](#oh_avrecorder_statechangereason) | OH_AVRecorder_StateChangeReason | Enumerates the reasons for AVRecorder state changes, which are used to determine whether the state change is triggered by a user operation or a background event. This helps the app execute the corresponding processing logic based on the reason. |
+| [OH_AVRecorder_FileGenerationMode](#oh_avrecorder_filegenerationmode) | OH_AVRecorder_FileGenerationMode | Defines the mode for generating a recording file. This mode specifies how media files are created. It is applicable to recording scenarios where you need to choose whether the app or the system automatically manages the files. |
 
 ### Macro
 
 | Name | Description |
 | -- | -- |
-| MULTIMEDIA_PLAYER_FRAMEWORK_NATIVE_AVRECORDER_BASE_H | The file declares the struct and enums used by the AVRecorder.<br>**Since**: 18 |
+| MULTIMEDIA_PLAYER_FRAMEWORK_NATIVE_AVRECORDER_BASE_H | Defines the struct, enums, and callbacks used by AVRecorder.<br>**Since**: 18 |
 
 ### Function
 
@@ -49,7 +51,7 @@ The file declares the struct and enums used by the AVRecorder.
 | -- | -- | -- |
 | [typedef void (\*OH_AVRecorder_OnStateChange)(OH_AVRecorder *recorder, OH_AVRecorder_State state, OH_AVRecorder_StateChangeReason reason, void *userData)](#oh_avrecorder_onstatechange) | OH_AVRecorder_OnStateChange | Called when the AVRecorder state changes. |
 | [typedef void (\*OH_AVRecorder_OnError)(OH_AVRecorder *recorder, int32_t errorCode, const char *errorMsg, void *userData)](#oh_avrecorder_onerror) | OH_AVRecorder_OnError | Called when an error occurs during recording. |
-| [typedef void (\*OH_AVRecorder_OnUri)(OH_AVRecorder *recorder, OH_MediaAsset *asset, void *userData)](#oh_avrecorder_onuri) | OH_AVRecorder_OnUri | Called when the recording is in [OH_AVRecorder_FileGenerationMode](capi-avrecorder-base-h.md#oh_avrecorder_filegenerationmode).AVRECORDER_AUTO_CREATE_CAMERA_SCENE mode. |
+| [typedef void (\*OH_AVRecorder_OnUri)(OH_AVRecorder *recorder, OH_MediaAsset *asset, void *userData)](#oh_avrecorder_onuri) | OH_AVRecorder_OnUri | Called when the recording file is generated in [OH_AVRecorder_FileGenerationMode][OH_AVRecorder_FileGenerationMode](capi-avrecorder-base-h.md#oh_avrecorder_filegenerationmode).AVRECORDER_AUTO_CREATE_CAMERA_SCENE mode to notify the app to obtain the media resources generated during recording. |
 
 ## Enum type description
 
@@ -67,12 +69,12 @@ Enumerates the audio source types of the AVRecorder.
 
 | Enum item | Description |
 | -- | -- |
-| AVRECORDER_DEFAULT = 0 | Default audio source type. |
-| AVRECORDER_MIC = 1 | Source type mic. |
-| AVRECORDER_VOICE_RECOGNITION = 2 | Source type Voice recognition. |
-| AVRECORDER_VOICE_COMMUNICATION = 7 | Source type Voice communication. |
-| AVRECORDER_VOICE_MESSAGE = 10 | Source type Voice message. |
-| AVRECORDER_CAMCORDER = 13 | Source type Camcorder. |
+| AVRECORDER_DEFAULT = 0 | Default audio source. This parameter is applicable to common recording scenarios where no specific audio source type needs to be specified.<br>**Since**: 18 |
+| AVRECORDER_MIC = 1 | Microphone audio source.<br>**Since**: 18 |
+| AVRECORDER_VOICE_RECOGNITION = 2 | Audio source in speech recognition scenarios.<br>**Since**: 18 |
+| AVRECORDER_VOICE_COMMUNICATION = 7 | Voice communication source.<br>**Since**: 18 |
+| AVRECORDER_VOICE_MESSAGE = 10 | Voice message source.<br>**Since**: 18 |
+| AVRECORDER_CAMCORDER = 13 | Audio source in camera recording scenarios.<br>**Since**: 18 |
 
 ### OH_AVRecorder_VideoSourceType
 
@@ -88,8 +90,8 @@ Enumerates the video source types of the AVRecorder.
 
 | Enum item | Description |
 | -- | -- |
-| AVRECORDER_SURFACE_YUV = 0 | Surface raw data. |
-| AVRECORDER_SURFACE_ES = 1 | Surface ES data. |
+| AVRECORDER_SURFACE_YUV = 0 | Raw data surface. This parameter is applicable to scenarios where the original video frame data needs to be encoded.<br>**Since**: 18 |
+| AVRECORDER_SURFACE_ES = 1 | ES data surface. This parameter is applicable to scenarios where the existing encoded data (such as the hard coding output) does not need to be encoded again.<br>**Since**: 18 |
 
 ### OH_AVRecorder_CodecMimeType
 
@@ -99,20 +101,20 @@ enum OH_AVRecorder_CodecMimeType
 
 **Description**
 
-Enumerates the MIME types of the encoder.
+Enumerates the MIME types of the encoder, which are used to specify the encoding format of audio and video data during recording. The encoder type must match the container format. If they do not match, the recording will fail. For details about the mapping, see the description of the corresponding encoder type.
 
 **Since**: 18
 
 | Enum item | Description |
 | -- | -- |
-| AVRECORDER_VIDEO_AVC = 2 | H.264 codec MIME type. |
-| AVRECORDER_AUDIO_AAC = 3 | AAC codec MIME type. |
-| AVRECORDER_AUDIO_MP3 = 4 | mp3 codec MIME type. |
-| AVRECORDER_AUDIO_G711MU = 5 | G711-mulaw codec MIME type. |
-| AVRECORDER_VIDEO_MPEG4 = 6 | MPEG4 codec MIME type. |
-| AVRECORDER_VIDEO_HEVC = 8 | H.265 codec MIME type. |
-| AVRECORDER_AUDIO_AMR_NB = 9 | AMR-NB codec MIME type. |
-| AVRECORDER_AUDIO_AMR_WB = 10 | AMR-WB codec MIME type. |
+| AVRECORDER_VIDEO_AVC = 2 | MIME type of the H.264 video encoder. It must be used together with the MP4 container format.<br>**Since**: 18 |
+| AVRECORDER_AUDIO_AAC = 3 | MIME type of the AAC audio encoder. It must be used together with the AAC, MP4, or M4A container format.<br>**Since**: 18 |
+| AVRECORDER_AUDIO_MP3 = 4 | MIME type of the MP3 audio encoder. It must be used together with the MP3 container format.<br>**Since**: 18 |
+| AVRECORDER_AUDIO_G711MU = 5 | MIME type of the G711-mulaw audio encoder. It must be used together with the WAV container format.<br>**Since**: 18 |
+| AVRECORDER_VIDEO_MPEG4 = 6 | MIME type of the MPEG4 video encoder. It must be used together with the MP4 container format.<br>**Since**: 18 |
+| AVRECORDER_VIDEO_HEVC = 8 | MIME type of the H.265 video encoder. It must be used together with the MP4 container format.<br>**Since**: 18 |
+| AVRECORDER_AUDIO_AMR_NB = 9 | MIME type of the AMR_NB audio encoder. It must be used together with the AMR container format.<br>**Since**: 18 |
+| AVRECORDER_AUDIO_AMR_WB = 10 | MIME type of the AMR_WB audio encoder. It must be used together with the AMR container format.<br>**Since**: 18 |
 
 ### OH_AVRecorder_ContainerFormatType
 
@@ -122,18 +124,18 @@ enum OH_AVRecorder_ContainerFormatType
 
 **Description**
 
-Enumerates the Container Format Types (CFTs).
+Enumerates the Container Format Types (CFTs), which are used to specify the encapsulation format of recording files. The container format must be compatible with the MIME type of the encoder. If they are incompatible, the recording will fail. For details about the encoder types supported by each container format, see the description of the corresponding container format.
 
 **Since**: 18
 
 | Enum item | Description |
 | -- | -- |
-| AVRECORDER_CFT_MPEG_4 = 2 | A video container format type mp4. |
-| AVRECORDER_CFT_MPEG_4A = 6 | An audio container format type m4a. |
-| AVRECORDER_CFT_AMR = 8 | An audio container format type amr. |
-| AVRECORDER_CFT_MP3 = 9 | An audio container format type mp3. |
-| AVRECORDER_CFT_WAV = 10 | An audio container format type wav. |
-| AVRECORDER_CFT_AAC = 11 | Audio container format aac (with ADTS header).<br>**Since**: 20 |
+| AVRECORDER_CFT_MPEG_4 = 2 | Video container format mp4. AAC audio encoder and MPEG4, H.264, or H.265 video encoder are supported.<br>**Since**: 18 |
+| AVRECORDER_CFT_MPEG_4A = 6 | Audio container format m4a. AAC audio encoder is supported.<br>**Since**: 18 |
+| AVRECORDER_CFT_AMR = 8 | Audio container format amr. AMR_NB and AMR_WB audio encoders are supported.<br>**Since**: 18 |
+| AVRECORDER_CFT_MP3 = 9 | Audio container format mp3. MP3 audio encoder is supported.<br>**Since**: 18 |
+| AVRECORDER_CFT_WAV = 10 | Audio container format wav. G711-mulaw audio encoder is supported.<br>**Since**: 18 |
+| AVRECORDER_CFT_AAC = 11 | Audio container format aac (with ADTS header). AAC audio encoder is supported.<br>**Since**: 20 |
 
 ### OH_AVRecorder_State
 
@@ -143,19 +145,19 @@ enum OH_AVRecorder_State
 
 **Description**
 
-Enumerates the AVRecorder states.
+Enumerates the AVRecorder states, which indicate the different phases of the recorder in its lifecycle. The operations that can be performed vary depending on the state.
 
 **Since**: 18
 
 | Enum item | Description |
 | -- | -- |
-| AVRECORDER_IDLE = 0 | idle states |
-| AVRECORDER_PREPARED = 1 | prepared states |
-| AVRECORDER_STARTED = 2 | started states |
-| AVRECORDER_PAUSED = 3 | paused states |
-| AVRECORDER_STOPPED = 4 | stopped states |
-| AVRECORDER_RELEASED = 5 | released states |
-| AVRECORDER_ERROR = 6 | error states |
+| AVRECORDER_IDLE = 0 | Idle. This is the default initial state after an AVRecorder instance is created. In this state, you can call [OH_AVRecorder_Prepare][OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare) to set recording parameters, and the AVRecorder transitions to the **AVRECORDER_PREPARED** state.<br>**Since**: 18 |
+| AVRECORDER_PREPARED = 1 | Prepared. After the parameters are set, you can call [OH_AVRecorder_Start][OH_AVRecorder_Start](capi-avrecorder-h.md#oh_avrecorder_start) to start recording, and the AVRecorder transitions to the **AVRECORDER_STARTED** state.<br>**Since**: 18 |
+| AVRECORDER_STARTED = 2 | Started. Recording is in progress. In this case, you can call [OH_AVRecorder_Pause][OH_AVRecorder_Pause](capi-avrecorder-h.md#oh_avrecorder_pause) to pause recording, and the AVRecorder transitions to the **AVRECORDER_PAUSED** state.<br>You can also call [OH_AVRecorder_Stop][OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop) to stop recording, and the AVRecorder transitions to the **AVRECORDER_STOPPED** state.<br>**Since**: 18 |
+| AVRECORDER_PAUSED = 3 | Paused. In this state, you can call [OH_AVRecorder_Resume][OH_AVRecorder_Resume](capi-avrecorder-h.md#oh_avrecorder_resume) to resume recording, and the AVRecorder transitions to the **AVRECORDER_STARTED** state.<br>You can also call [OH_AVRecorder_Stop][OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop) to stop recording, and the AVRecorder transitions to the **AVRECORDER_STOPPED** state.<br>**Since**: 18 |
+| AVRECORDER_STOPPED = 4 | Stopped. In this state, you can call [OH_AVRecorder_Prepare][OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare) to set recording parameters, and the AVRecorder reenters the **AVRECORDER_PREPARED** state.<br>**Since**: 18 |
+| AVRECORDER_RELEASED = 5 | Released. The recording resources are released. No operation can be performed at this time. In any other state, you can call [OH_AVRecorder_Release][OH_AVRecorder_Release](capi-avrecorder-h.md#oh_avrecorder_release) to transition to the **AVRECORDER_RELEASED** state.<br>**Since**: 18 |
+| AVRECORDER_ERROR = 6 | Error state. AVRecorder transitions to this state when an irreversible error occurs in the AVRecorder instance. <br>You should call [OH_AVRecorder_Reset][OH_AVRecorder_Reset](capi-avrecorder-h.md#oh_avrecorder_reset) to reset the AVRecorder instance or call [OH_AVRecorder_Release][OH_AVRecorder_Release](capi-avrecorder-h.md#oh_avrecorder_release) to release resources in the **AVRECORDER_ERROR**<br>state. The recording cannot continue.<br>**Since**: 18 |
 
 ### OH_AVRecorder_StateChangeReason
 
@@ -165,14 +167,14 @@ enum OH_AVRecorder_StateChangeReason
 
 **Description**
 
-Enumerates the reasons for AVRecorder state changes.
+Enumerates the reasons for AVRecorder state changes, which are used to determine whether the state change is triggered by a user operation or a background event. This helps the app execute the corresponding processing logic based on the reason.
 
 **Since**: 18
 
 | Enum item | Description |
 | -- | -- |
-| AVRECORDER_USER = 0 | State changed by user operation |
-| AVRECORDER_BACKGROUND = 1 | State changed by background action |
+| AVRECORDER_USER = 0 | The state change is caused by user operations. For example, when the user proactively calls the **Start**, **Pause**, **Resume**, or **Stop** API.<br>**Since**: 18 |
+| AVRECORDER_BACKGROUND = 1 | The state change is caused by background operations. For example, when the recording state is automatically changed due to audio interruption or recording timeout.<br>**Since**: 18 |
 
 ### OH_AVRecorder_FileGenerationMode
 
@@ -182,14 +184,14 @@ enum OH_AVRecorder_FileGenerationMode
 
 **Description**
 
-Enumerates the modes available for creating a recording file.
+Defines the mode for generating a recording file. This mode specifies how media files are created. It is applicable to recording scenarios where you need to choose whether the app or the system automatically manages the files.
 
 **Since**: 18
 
 | Enum item | Description |
 | -- | -- |
-| AVRECORDER_APP_CREATE = 0 | Application Creation |
-| AVRECORDER_AUTO_CREATE_CAMERA_SCENE = 1 | System Creation. Valid only in camera scene |
+| AVRECORDER_APP_CREATE = 0 | The app creates a media file in the sandbox. In this mode, the [OH_AVRecorder_OnUri][OH_AVRecorder_OnUri](capi-avrecorder-base-h.md#oh_avrecorder_onuri) callback will not be triggered.<br>**Since**: 18 |
+| AVRECORDER_AUTO_CREATE_CAMERA_SCENE = 1 | The system creates a media file. In this mode, the [OH_AVRecorder_OnUri][OH_AVRecorder_OnUri](capi-avrecorder-base-h.md#oh_avrecorder_onuri) callback will be triggered. The app can obtain the media resource object generated during recording through the callback.<br>**Since**: 18 |
 
 
 ## Function description
@@ -213,7 +215,7 @@ Called when the AVRecorder state changes.
 | [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | Pointer to the OH_AVRecorder instance. |
 | [OH_AVRecorder_State](capi-avrecorder-base-h.md#oh_avrecorder_state) state | AVRecorder state. |
 | [OH_AVRecorder_StateChangeReason](capi-avrecorder-base-h.md#oh_avrecorder_statechangereason) reason | Reason for the AVRecorder state change. |
-| void *userData | Pointer to user-defined data. |
+| void *userData | Pointer to the custom data passed during callback registration. When the callback is triggered, the system returns the custom data to the caller. |
 
 ### OH_AVRecorder_OnError()
 
@@ -233,8 +235,8 @@ Called when an error occurs during recording.
 | -- | -- |
 | [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | Pointer to the OH_AVRecorder instance. |
 | int32_t errorCode | Error code. For details, see [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode). |
-| const char *errorMsg | Pointer to the error message. |
-| void *userData | Pointer to user-defined data. |
+| const char *errorMsg | A character string that describes the error message. |
+| void *userData | Pointer to the custom data passed during callback registration. When the callback is triggered, the system returns the custom data to the caller. |
 
 ### OH_AVRecorder_OnUri()
 
@@ -244,7 +246,7 @@ typedef void (*OH_AVRecorder_OnUri)(OH_AVRecorder *recorder, OH_MediaAsset *asse
 
 **Description**
 
-Called when the recording is in [OH_AVRecorder_FileGenerationMode](capi-avrecorder-base-h.md#oh_avrecorder_filegenerationmode).AVRECORDER_AUTO_CREATE_CAMERA_SCENE mode.
+Called when the recording file is generated in [OH_AVRecorder_FileGenerationMode][OH_AVRecorder_FileGenerationMode](capi-avrecorder-base-h.md#oh_avrecorder_filegenerationmode).AVRECORDER_AUTO_CREATE_CAMERA_SCENE mode to notify the app to obtain the media resources generated during recording.
 
 **Since**: 18
 
@@ -253,7 +255,7 @@ Called when the recording is in [OH_AVRecorder_FileGenerationMode](capi-avrecord
 | Parameter | Description |
 | -- | -- |
 | [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | Pointer to the OH_AVRecorder instance. |
-| [OH_MediaAsset](../../apis-media-library-kit/c-apis/capi-mediaassetmanager-oh-mediaasset.md) *asset | Pointer to the OH_MediaAsset instance. |
-| void *userData | Pointer to user-defined data. |
+| [OH_MediaAsset](../../apis-media-library-kit/c-apis/capi-mediaassetmanager-oh-mediaasset.md) *asset | Pointer to the **OH_MediaAsset** instance, which is used to return the media resource object automatically created by the system. Your app can use this object to access the media file generated after recording. |
+| void *userData | Pointer to the custom data passed during callback registration. When the callback is triggered, the system returns the custom data to the caller. |
 
 

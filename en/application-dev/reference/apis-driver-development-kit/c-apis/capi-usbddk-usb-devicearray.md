@@ -6,7 +6,7 @@ struct Usb_DeviceArray {...}
 
 ## Overview
 
-Defines the device ID list, which is used to store the device IDs and device quantity obtained using [OH_Usb_GetDevices](capi-usb-ddk-api-h.md#oh_usb_getdevices).
+Defines the device ID array, which is used to store the device IDs and device quantity obtained using [OH_Usb_GetDevices](capi-usb-ddk-api-h.md#oh_usb_getdevices). After using the structure, you must release the memory allocated for the device ID array. Otherwise, resource leaks may occur.
 
 **System capability**: SystemCapability.Driver.USB.Extension
 
@@ -22,7 +22,7 @@ Defines the device ID list, which is used to store the device IDs and device qua
 
 | Name | Description |
 | -- | -- |
-| uint64_t* deviceIds | Pointer to the start address of the device ID array that you have applied for. To avoid excessive memory consumption, the recommended maximum size of the allocated array is generally 128. |
-| uint32_t num | Defines the device quantity. Device IDs are obtained by traversing **deviceIds** based on the value of this parameter. If the value is **0**, there is no USB device. |
+| uint64_t* deviceIds | Pointer to the start address of the device ID array that you have applied for. To avoid excessive memory consumption, it is recommended that the maximum size of the allocated array be 128. |
+| uint32_t num | Device quantity. Device IDs are obtained by traversing **deviceIds** based on the value of this parameter. If the value is **0**, there is no USB device. |
 
 

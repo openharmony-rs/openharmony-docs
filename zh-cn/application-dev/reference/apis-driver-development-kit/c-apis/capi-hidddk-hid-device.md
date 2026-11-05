@@ -22,7 +22,7 @@ struct Hid_Device {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| const char* deviceName | 设备名称，最大长度128字符，不能为NULL。超出长度或为NULL时返回错误。 |
+| const char *deviceName | 设备名称，最大长度128字符，不能为NULL。超出长度或为NULL时返回错误。 |
 | uint16_t vendorId | 厂商ID。 |
 | uint16_t productId | 产品ID。 |
 | uint16_t version | 版本号。 |

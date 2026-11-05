@@ -6,7 +6,7 @@ struct OH_AVRecorder_MetadataTemplate {...}
 
 ## Overview
 
-The struct describes the basic template of metadata.
+Defines the basic template of metadata during audio and video recording. Metadata is organized in key-value pair format. This struct is applicable to scenarios where custom metadata (such as title, author, and description) needs to be added to the recording output, facilitating the classification, retrieval, and management of recorded files. You can use the [OH_AVRecorder_Prepare][OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare) API of AVRecorder to set the metadata in this struct to the recording output file.
 
 **Since**: 18
 
@@ -20,7 +20,7 @@ The struct describes the basic template of metadata.
 
 | Name | Description |
 | -- | -- |
-| char *key | key value of the metadata |
-| char *value | contents of the metadata |
+| char *key | Metadata key.<br>**Since**: 18 |
+| char *value | Metadata value.<br>**Since**: 18 |
 
 

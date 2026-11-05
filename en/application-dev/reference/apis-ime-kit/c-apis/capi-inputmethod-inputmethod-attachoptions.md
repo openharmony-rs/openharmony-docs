@@ -6,7 +6,7 @@ typedef struct InputMethod_AttachOptions InputMethod_AttachOptions
 
 ## Overview
 
-Options for binding the input method.<br> The options when attaching input method.
+Options for binding the input method.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 

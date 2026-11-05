@@ -45,16 +45,16 @@ Provides UI capabilities of ArkUI on the native side, such as UI component creat
 | [rich_editor.h](capi-rich-editor-h.md) | 定义文本编辑器相关的结构体、枚举和函数。文本编辑器提供富文本编辑能力，支持自定义文本选择菜单、属性字符串控制器、段落样式和文本样式设置，以及触感反馈控制等功能，适用于需要在应用中实现富文本编辑和自定义交互菜单的场景。 |
 | [image_span.h](capi-image-span-h.md) | 定义ImageSpan相关的枚举，用于在富文本中嵌入图片并控制图片与文本的对齐方式。支持多种对齐模式，适用于图文混排场景，可实现图片与文本的精确对齐，提升富文本的展示效果。 |
 | [progress.h](capi-progress-h.md) | 定义Progress相关的枚举和接口，支持线性、环形、圆形、胶囊等多种进度条类型，并提供线性进度条样式选项的自定义能力（平滑动效、扫光效果、宽度、圆角），适用于需要展示任务进度、加载状态等场景， 帮助开发者快速实现多样化的进度展示和交互反馈。 |
-| [slider.h](capi-slider-h.md) | Provides Slider node type definitions for <b>NativeNode</b> APIs. |
+| [slider.h](capi-slider-h.md) | 为NativeNode API提供Slider节点类型定义。 |
 | [image_animator.h](capi-image-animator-h.md) | 为NativeNode API提供ImageAnimator节点类型定义。 |
 | [layout.h](capi-layout-h.md) | 定义布局相关的枚举和接口。 |
 | [text_common.h](capi-text-common-h.md) | 定义文本类组件通用的枚举和接口，涵盖文本对齐、装饰线样式、复制粘贴、溢出处理、断行策略、菜单定制等多种能力，适用于文本输入框、文本显示等场景，帮助开发者灵活控制文本样式与交互行为，降低开发复杂度。 |
 | [text_input.h](capi-text-input-h.md) | 定义TextInput相关的枚举。支持多种输入类型配置（包括文本、数字、密码、邮箱、电话号码等）、清除按钮样式定制、自动填充内容类型设置和输入框风格选择，适用于登录注册、表单填写、搜索输入等需要用户交互输入的场景， 帮助开发者快速实现符合业务需求的单行文本输入功能。 |
-| [checkbox.h](capi-checkbox-h.md) | Provides Checkbox node type definitions for <b>NativeNode</b> APIs. |
+| [checkbox.h](capi-checkbox-h.md) | 为NativeNode API提供Checkbox节点类型定义。 |
 | [list.h](capi-list-h.md) | 定义List组件相关的枚举和接口。 |
 | [text.h](capi-text-h.md) | 定义Text相关的枚举和接口，用于配置文本样式、控制跑马灯效果、实现文本实体识别以及管理文本控制器等功能。适用于需要自定义文本显示效果、实现动态文本交互、识别文本中特殊实体（如地址、电话号码） 以及精确控制文本字体粗细等场景。通过这些配置接口，开发者可以灵活控制文本组件的显示效果和交互行为，提升用户体验。 |
 | [image.h](capi-image-h.md) | 为NativeNode API提供Image节点类型定义，用于在Native应用中创建和配置Image组件， 支持图片重复铺设、宽高样式、填充效果、插值优化、动态范围、旋转方向和渲染模式等多种属性配置。 |
 | [embedded_component.h](capi-embedded-component-h.md) | 声明EmbeddedComponent组件选项（ArkUI_EmbeddedComponentOption）相关的结构体和方法。 开发者可通过这些方法创建、销毁组件选项对象，并为EmbeddedComponent组件设置运行异常回调（onError）和正常退出回调（onTerminated）。 适用于需要在应用中嵌入EmbeddedUIExtensionAbility组件并管理其生命周期、监听运行异常与正常退出事件的应用场景，帮助开发者灵活处理组件运行过程中的状态变化。 |
 | [picker.h](capi-picker-h.md) | 为NativeNode API提供Picker节点类型定义，支持日期选择器、文本选择器等多种类型的选择器组件， 适用于需要在原生层实现滚动选择功能的场景， 提供了丰富的样式配置和数据联动能力，帮助开发者灵活构建各类选择交互。 |
-| [button.h](capi-button-h.md) | Provides Button node type definitions for <b>NativeNode</b> APIs. |
+| [button.h](capi-button-h.md) | 为NativeNode API提供Button节点类型定义。 |
 | [text_area.h](capi-text-area-h.md) | 定义TextArea相关的枚举类型。TextArea组件用于接收多行文本输入，枚举值用于指定不同的输入类型，会影响输入内容的验证规则，例如支持基本输入、纯数字、电话号码、邮箱地址、验证码等模式。 开发者可根据表单类型选择合适的枚举值，系统将自动提供对应的内容验证，从而优化用户输入体验并确保数据格式的正确性。 |

@@ -406,18 +406,6 @@ Defines whether to display the password icon at the end of the password text edi
 
 **Since**: 26.1.0
 
-### NODE_TEXT_EDITOR_PASSWORD_ICON
-
-```c
-NODE_TEXT_EDITOR_PASSWORD_ICON = 22033
-```
-
-**Description**
-
-Defines the password icon of the text editor. This attribute can be set and reset as required through APIs.<br> Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute: .value[0].string: show icon image source. .value[1].string: hide icon image source.<br> Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md): .value[0].string: show icon image source. .value[1].string: hide icon image source.
-
-**Since**: 26.1.0
-
 ### NODE_TEXT_EDITOR_ENABLE_AUTO_FILL
 
 ```c

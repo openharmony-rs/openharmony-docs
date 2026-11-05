@@ -59,6 +59,7 @@ Declare audio stream related interfaces for output type.
 | [typedef int32_t (\*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)](#oh_audiorenderer_onwritedatacallbackadvanced) | OH_AudioRenderer_OnWriteDataCallbackAdvanced | Callback function of write data on Render.<br> Different with OH_AudioRenderer_OnWriteDataCallback, this function allows the caller to write partial data which ranges from 0 to the callback buffer size. If 0 is returned, the callback thread will sleep for a while. Otherwise, the system may callback again immediately. |
 | [OH_AudioStream_Result OH_AudioRenderer_GetLatency(OH_AudioRenderer* renderer, OH_AudioStream_LatencyType type, int32_t* latencyMs)](#oh_audiorenderer_getlatency) | - | Gets the estimated audio latency in milliseconds for current audio route. For wireless connection audio devices cases, the latency result may not be very accurate, system just provides it for reference only. The real-time buffer status is also not taken into consideration, so it is recommended to get it only at the beginning of audio playback, and do not call th function very frequently because it may be blocked by route change. Applications should still use [OH_AudioRenderer_GetAudioTimestampInfo](capi-native-audiorenderer-h.md#oh_audiorenderer_getaudiotimestampinfo) to handle A/V sync after audio data has been output to hardware. |
 | [OH_AudioStream_Result OH_AudioRenderer_SetIndependentAudioSessionStrategy(OH_AudioRenderer* renderer, const OH_AudioSession_Strategy* strategy, uint32_t behavior)](#oh_audiorenderer_setindependentaudiosessionstrategy) | - | Configure audio session strategy and behavior parameters to adjust the focus preemption policy. Each time you call this interface to set parameters, you need to call the interface [OH_AudioRenderer_Start](capi-native-audiorenderer-h.md#oh_audiorenderer_start) again for the settings to take effect. |
+| [OH_AudioStream_Result OH_AudioRenderer_Standby(OH_AudioRenderer* renderer, bool on)](#oh_audiorenderer_standby) | - | Enters or exits the audio standby state. The standby state is used when there is no data for a short period of time during audio playing. For example, the streaming media is waiting for network download. After the audio channel enters the standby state, the audio channel remains unchanged. The cyclic thread that only requests data from applications pauses and does not receive proactively written data. The data that has been written to the system continues to be played. You can invoke this interface to enter the standby state only when the stream is in AUDIOFLOW_STATE_RUNNING state. The interface can be invoked to exit only when the interface is in standby state. In the standby state, you can also directly call [OH_AudioRenderer_Pause](capi-native-audiorenderer-h.md#oh_audiorenderer_pause), [OH_AudioRenderer_Stop](capi-native-audiorenderer-h.md#oh_audiorenderer_stop), [OH_AudioRenderer_Release](capi-native-audiorenderer-h.md#oh_audiorenderer_release) stops playing, but [OH_AudioRenderer_Start](capi-native-audiorenderer-h.md#oh_audiorenderer_start) cannot be called. Note that this interface does not change the state obtained through [OH_AudioRenderer_GetCurrentState](capi-native-audiorenderer-h.md#oh_audiorenderer_getcurrentstate). |
 
 ## Function description
 
@@ -1173,5 +1174,32 @@ Configure audio session strategy and behavior parameters to adjust the focus pre
 | Type | Description |
 | -- | -- |
 | [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | [AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful. or [AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) If the parameter is null or out of range. or [AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Running and released are illegal states. |
+
+### OH_AudioRenderer_Standby()
+
+```c
+OH_AudioStream_Result OH_AudioRenderer_Standby(OH_AudioRenderer* renderer, bool on)
+```
+
+**Description**
+
+Enters or exits the audio standby state.The standby state is used when there is no data for a short period of time during audio playing.For example, the streaming media is waiting for network download.After the audio channel enters the standby state, the audio channel remains unchanged.The cyclic thread that only requests data from applications pauses and does not receive proactively written data.The data that has been written to the system continues to be played.You can invoke this interface to enter the standby state only when the stream is in AUDIOFLOW_STATE_RUNNINGstate. The interface can be invoked to exit only when the interface is in standby state.In the standby state, you can also directly call [OH_AudioRenderer_Pause](capi-native-audiorenderer-h.md#oh_audiorenderer_pause), [OH_AudioRenderer_Stop](capi-native-audiorenderer-h.md#oh_audiorenderer_stop),[OH_AudioRenderer_Release](capi-native-audiorenderer-h.md#oh_audiorenderer_release) stops playing, but [OH_AudioRenderer_Start](capi-native-audiorenderer-h.md#oh_audiorenderer_start) cannot be called.Note that this interface does not change the state obtained through [OH_AudioRenderer_GetCurrentState](capi-native-audiorenderer-h.md#oh_audiorenderer_getcurrentstate).
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | [in] Point to the audio renderer created by [OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer). |
+| bool on | [in] Enter or exit the waiting state. The options are as follows: true: enter; false: exit. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul> <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) interface is successfully invoked. </li> <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) builder parameter is a null pointer. </li> <li>[AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) 1. is not in the running state. 2. Exit cannot be called in non-standby state. </li> </ul> |
 
 

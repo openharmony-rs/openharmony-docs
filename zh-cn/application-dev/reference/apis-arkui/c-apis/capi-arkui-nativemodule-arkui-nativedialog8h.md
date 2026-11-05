@@ -6,7 +6,7 @@ typedef struct ArkUI_NativeDialog* ArkUI_NativeDialogHandle
 
 ## 概述
 
-Defines the pointer to the custom dialog box controller of ArkUI on the native side.
+指向ArkUI Native侧自定义弹窗控制器对象的指针类型，用于标识和操作自定义弹窗实例。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

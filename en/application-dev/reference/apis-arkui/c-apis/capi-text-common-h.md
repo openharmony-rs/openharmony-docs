@@ -392,6 +392,7 @@ Enumerates the IDs of text menu items.
 | ARKUI_TEXT_MENU_ITEM_ID_ASK_AI = 15 | Ask AI. This menu item provides the AI query capability for the selected text. This menu item depends on a large language model to take effect. |
 | ARKUI_TEXT_MENU_ITEM_ID_AUTO_FILL = 16 | Autofill. For example, the account and password can be automatically filled.<br>**Since**: 24 |
 | ARKUI_TEXT_MENU_ITEM_ID_PASSWORD_VAULT = 17 | Password vault.<br>**Since**: 24 |
+| ARKUI_TEXT_MENU_ITEM_ID_TRANSLATE_INPUT = 18 | Quick translation.<br>**Since**: 26.1.0 |
 | ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_BEGIN = 10000 | Start ID of a custom menu item. In addition to the built-in menu item IDs, you can also customize menu item IDs. |
 | ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_END = 20000 | End ID of a custom menu item. In addition to the built-in menu item IDs, you can also customize menu item IDs. |
 

@@ -26,6 +26,6 @@ Defines the request structure.
 | uint8_t cdbLength | Length of the command descriptor block. |
 | int8_t dataTransferDirection | Data transfer direction: **–1** indicates no data transfer, **–2** indicates data transfer (write) from the host to the device, **–3** indicates data transfer (read) from the device to the host, and **–4** indicates bidirectional data transfer. |
 | ScsiPeripheral_DeviceMemMap *data | Buffer for data transmission. |
-| uint32_t timeout | Timeout duration, in ms. |
+| uint32_t timeout | Timeout interval, in milliseconds. |
 
 

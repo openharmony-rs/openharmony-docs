@@ -6,7 +6,7 @@ struct Hid_EventTypeArray {...}
 
 ## Overview
 
-Defines a struct for an array of event types.
+Defines an array of event type codes, which stores information about the event types supported by an HID device.
 
 **System capability**: SystemCapability.Driver.HID.Extension
 
@@ -22,7 +22,7 @@ Defines a struct for an array of event types.
 
 | Name | Description |
 | -- | -- |
-| Hid_EventType *hidEventType | Array of event types. |
-| uint16_t length | Valid length of an array. |
+| Hid_EventType *hidEventType | Pointer to the array of event type codes, which points to the array pre-allocated by the caller. The pointer cannot be null. The array size must be greater than or equal to the value of length. |
+| uint16_t length | Valid length of the array, which cannot exceed the actual length of the **hidEventType** array. |
 
 

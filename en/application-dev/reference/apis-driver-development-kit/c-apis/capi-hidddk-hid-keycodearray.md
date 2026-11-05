@@ -6,7 +6,7 @@ struct Hid_KeyCodeArray {...}
 
 ## Overview
 
-Defines a struct for the key code array.
+Defines an array of key value attribute codes, which stores information about the key value codes supported by an HID device.
 
 **System capability**: SystemCapability.Driver.HID.Extension
 
@@ -22,7 +22,7 @@ Defines a struct for the key code array.
 
 | Name | Description |
 | -- | -- |
-| Hid_KeyCode *hidKeyCode | Key code array. |
-| uint16_t length | Valid length of an array. |
+| Hid_KeyCode *hidKeyCode | Pointer to the array of key codes, which points to the array pre-allocated by the caller. The pointer cannot be null. The array size must be greater than or equal to the value of length. |
+| uint16_t length | Valid length of the array, which cannot exceed the actual length of the **hidEventType** array. |
 
 

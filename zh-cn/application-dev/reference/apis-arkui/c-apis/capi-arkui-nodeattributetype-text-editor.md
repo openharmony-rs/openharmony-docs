@@ -406,18 +406,6 @@ NODE_TEXT_EDITOR_SHOW_PASSWORD_ICON = 22032
 
 **起始版本：** 26.1.0
 
-### NODE_TEXT_EDITOR_PASSWORD_ICON
-
-```c
-NODE_TEXT_EDITOR_PASSWORD_ICON = 22033
-```
-
-**描述：**
-
-设置TextEditor组件的密码图标，支持属性设置和属性重置。 **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].string：显示密码图标时的图片资源。</li> <li>.value[1].string：隐藏密码图标时的图片资源。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].string：显示密码图标时的图片资源。</li> <li>.value[1].string：隐藏密码图标时的图片资源。</li> </ul>
-
-**起始版本：** 26.1.0
-
 ### NODE_TEXT_EDITOR_ENABLE_AUTO_FILL
 
 ```c
