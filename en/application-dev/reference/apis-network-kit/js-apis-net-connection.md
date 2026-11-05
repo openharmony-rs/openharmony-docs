@@ -6,8 +6,9 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=ede2473bcfdd173278c84f213a25b67a0910ea5b translatedAt=2026-11-04T06:41:12.076Z pushedAt=2026-11-04T08:04:44.879Z nl=1 -->
 
-The network connection management module provides basic network management capabilities. You can obtain the default active network, the list of all active networks, and network capability information. 
+The network connection management module provides basic network management capabilities. You can obtain the default active network, the list of all active networks, and network capability information.
 
 > **NOTE**
 >
@@ -40,7 +41,7 @@ Creates a **NetConnection** object, which can be used to listen for the network 
 | Name      | Type                         | Mandatory| Description                                                        |
 | ------------ | ----------------------------- | ---- | ------------------------------------------------------------ |
 | netSpecifier | [NetSpecifier](#netspecifier) | No  | Specification of the network to be listened for. If this parameter is not specified, the default network is listened for.                  |
-| timeout      | number                        | No  | Timeout interval for obtaining the network specified by **netSpecifier**. The input value must be an uint32_t integer. This parameter is valid only when **netSpecifier** is present. The default value is **0**.<br>**Note**: If the network to be listened for does not exist, the system attempts to activate the network. If the timeout interval is exceeded and the network status listener is registered, the **netUnavailable** event is triggered.|
+| timeout      | number                        | No   | Timeout for obtaining the network specified by netSpecifier (unit: ms). The value must be an integer within the uint32_t range. It takes effect only when netSpecifier exists. The default value is 0.<br>**Note:** When the listened network does not exist, the system attempts to activate this network. If the timeout period is exceeded and a network status listener is registered, the netUnavailable event is triggered.|
 
 **Return value**
 
@@ -256,7 +257,9 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { http } from '@kit.NetworkKit';
 
-let exclusionStr = "192.168,baidu.com";
+// Split exclusionStr into an array by commas.
+let exclusionStr = "192.168,test.com";
+// exclusionArray splits exclusionStr into an array by commas.
 let exclusionArray = exclusionStr.split(',');
 connection.setAppHttpProxy({
   host: "192.168.xx.xxx",
@@ -270,15 +273,16 @@ let options: http.HttpRequestOptions = {
 // Initiate an HTTP request.
 httpRequest.request("EXAMPLE_URL", options, (err: BusinessError, data: http.HttpResponse) => {
   if (!err) {
-   console.info(`Result: ${data.result}`);
-   console.info(`code: ${data.responseCode}`);
-   console.info(`type: ${JSON.stringify(data.resultType)}`);
-   console.info(`header: ${JSON.stringify(data.header)}`);
-   console.info(`cookies: ${data.cookies}`); // Cookies are supported since API version 8.
+   console.info('Succeeded to get result: ' + JSON.stringify(data.result));
+   console.info('Succeeded to get code: ' + JSON.stringify(data.responseCode));
+   console.info('Succeeded to get type: ' + JSON.stringify(data.resultType));
+   console.info('Succeeded to get header: ' + JSON.stringify(data.header));
+   console.info('Succeeded to get cookies: ' + JSON.stringify(data.cookies)); // Cookies are supported since API version 8.
   } else {
-   console.error(`error: ${JSON.stringify(err)}`);
+   console.error(`Failed to get request. Code:${err.code}, message:${err.message}`);
   }
 });
+
 ```
 
 ## connection.getDefaultHttpProxy<sup>10+</sup>
@@ -359,9 +363,9 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getDefaultHttpProxy().then((data: connection.HttpProxy) => {
-  console.info(JSON.stringify(data));
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 }).catch((error: BusinessError) => {
-  console.info(JSON.stringify(error));
+  console.error(`Failed to get request. Code:${error.code}, message:${error.message} `);
 });
 ```
 
@@ -434,9 +438,9 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getAppNet().then((data: connection.NetHandle) => {
-  console.info(JSON.stringify(data));
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 }).catch((error: BusinessError) => {
-  console.info(JSON.stringify(error));
+  console.error(`Failed to get request. Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -566,7 +570,7 @@ netCon.on('netLost', (netHandle: connection.NetHandle) => {
 // Register a listener for network status change events. This API must be called after the on API.
 netCon.register((error: BusinessError) => {
   if (error) {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
   }
 });
 
@@ -597,7 +601,7 @@ Binds an application to the network specified by **netHandle**, so that the appl
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   netHandle.netId = 0;
   connection.setAppNet(netHandle).then(() => {
-    console.info("setAppNet success");
+    console.info("Succeeded to setAppNet");
   }).catch((error: BusinessError) => {
     console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
   })
@@ -644,7 +648,7 @@ let netCon = connection.createNetConnection({
 netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
   console.info("Succeeded to get data: " + JSON.stringify(netHandle));
   connection.setAppNet(netHandle).then(() => {
-    console.info("setAppNet success, netid: " + JSON.stringify(netHandle.netId));
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
   }).catch((error: BusinessError) => {
     console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
   })
@@ -656,7 +660,7 @@ netCon.on('netLost', (netHandle: connection.NetHandle) => {
   // When the network is lost, proactively unbind the specified network.
   netHandle.netId = 0;
   connection.setAppNet(netHandle).then(() => {
-    console.info("setAppNet success, netid: " + JSON.stringify(netHandle.netId));
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
   }).catch((error: BusinessError) => {
     console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
   })
@@ -665,7 +669,7 @@ netCon.on('netLost', (netHandle: connection.NetHandle) => {
 // Register a listener for network status change events. This API must be called after the on API.
 netCon.register((error: BusinessError) => {
   if (error) {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
   }
 });
 
@@ -925,16 +929,12 @@ For details about the error codes, see [Network Connection Management Error Code
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let netHandle: connection.NetHandle;
-let connectionproperties: connection.ConnectionProperties;
-
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   if (netHandle.netId == 0) {
     // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
     return;
   }
-  netHandle = connection.getDefaultNetSync();
-  connectionproperties = connection.getConnectionPropertiesSync(netHandle);
+  let connectionproperties = connection.getConnectionPropertiesSync(netHandle);
   console.info("Succeeded to get connectionproperties: " + JSON.stringify(connectionproperties));
 });
 ```
@@ -989,7 +989,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     console.info("Succeeded to get data: " + JSON.stringify(data));
   })
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -1044,7 +1044,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
       console.info("Succeeded to get data: " + JSON.stringify(data));
   })
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -1090,16 +1090,13 @@ For details about the error codes, see [Network Connection Management Error Code
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let netHandle: connection.NetHandle;
-let getNetCapabilitiesSync: connection.NetCapabilities;
-
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   if (netHandle.netId == 0) {
     // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
     return;
   }
 
-  getNetCapabilitiesSync = connection.getNetCapabilitiesSync(netHandle);
+  let getNetCapabilitiesSync = connection.getNetCapabilitiesSync(netHandle);
   console.info("Succeeded to get net capabilities sync: " + JSON.stringify(getNetCapabilitiesSync));
 });
 ```
@@ -1138,8 +1135,8 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.isDefaultNetMetered((error: BusinessError, data: boolean) => {
-  console.error(JSON.stringify(error));
-  console.info('data: ' + data);
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1175,7 +1172,7 @@ For details about the error codes, see [Network Connection Management Error Code
 import { connection } from '@kit.NetworkKit';
 
 connection.isDefaultNetMetered().then((data: boolean) => {
-  console.info('data: ' + data);
+console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1247,8 +1244,8 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.hasDefaultNet((error: BusinessError, data: boolean) => {
-  console.error(JSON.stringify(error));
-  console.info('data: ' + data);
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1284,7 +1281,7 @@ For details about the error codes, see [Network Connection Management Error Code
 import { connection } from '@kit.NetworkKit';
 
 connection.hasDefaultNet().then((data: boolean) => {
-  console.info('data: ' + data);
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1364,7 +1361,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetConnected(netHandle, (error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
   });
 });
 ```
@@ -1409,7 +1406,7 @@ import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetConnected(netHandle).then(() => {
-    console.info(`report success`);
+    console.info(`Succeeded to report`);
   });
 });
 ```
@@ -1459,7 +1456,7 @@ connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle)
       console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info("report success");
+    console.info("Succeeded to report");
   });
 });
 ```
@@ -1504,7 +1501,7 @@ import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetDisconnected(netHandle).then( () => {
-    console.info(`report success`);
+    console.info(`Succeeded to report`);
   });
 });
 ```
@@ -1638,13 +1635,14 @@ For details about the error codes, see [Network Connection Management Error Code
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let option: connection.QueryOptions = {
   family: connection.FamilyType.FAMILY_TYPE_IPV4
 };
 connection.getAddressesByNameWithOptions("www.example.com", option).then((data: connection.NetAddress[]) => {
   console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`get ERROR msg: ${JSON.stringify(err)}`)
+  console.error(`Failed to get msg. Code:${err.code}, message:${err.message}`)
 });
 ```
 
@@ -1679,8 +1677,10 @@ Adds custom DNS rules for the specified host of the current application. This AP
 
 > **NOTE**
 >
-> You can call [removeCustomDnsRule](#connectionremovecustomdnsrule11) to delete a custom DNS rule or call [clearCustomDnsRules](#connectionclearcustomdnsrules11) to delete all custom DNS rules of the current application.<br>
-> After a custom DNS rule is added by calling this API, it takes effect persistently, and there is no need to add the same rule repeatedly. When it is no longer needed, you can delete it using the methods described above.
+> When the rules are no longer needed, you can call [removeCustomDnsRule](#connectionremovecustomdnsrule11) to delete a specific custom rule or call [clearCustomDnsRules](#connectionclearcustomdnsrules11) to delete all custom DNS rules of the current application.<br>
+> After a custom DNS rule is added by calling this API, it takes effect continuously, and you do not need to add the same rule repeatedly. When the rule is no longer needed, delete it as described above.
+>
+> **Network switch note:** When the device switches from a Wi-Fi network to a cellular data network, an application with custom DNS rules configured may fail to access the target system or service. In this case, you can turn on and then turn off airplane mode, or call [clearCustomDnsRules](#connectionclearcustomdnsrules11) to clear the custom DNS rules of the current application and try again.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -1774,7 +1774,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.addCustomDnsRule("xxxx", ["xx.xx.xx.xx","xx.xx.xx.xx"]).then(() => {
     console.info("success");
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 })
 ```
 
@@ -1876,10 +1876,12 @@ For details about the error codes, see [Network Connection Management Error Code
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.removeCustomDnsRule("xxxx").then(() => {
-    console.info("success");
-}).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+connection.removeCustomDnsRule("xxxx", (error: BusinessError, data: void) => {
+  if (error) {
+    console.error(`Failed to remove custom dns rule. Code:${error.code}, message:${error.message}`);
+    return;
+  }
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 })
 ```
 
@@ -1972,7 +1974,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.clearCustomDnsRules().then(() => {
     console.info("success");
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 })
 ```
 
@@ -1980,12 +1982,12 @@ connection.clearCustomDnsRules().then(() => {
 
 setPacFileUrl(pacFileUrl: string): void
 
-Sets the URL of the Proxy Auto-Configuration Script (PAC) and enables the PAC proxy capability, for example, http://127.0.0.1:21998/PacProxyScript.pac. You can call [findProxyForUrl](#connectionfindproxyforurl20) to parse the URL and obtain the proxy information.
+Sets the URL of a PAC script (Proxy Auto-Configuration Script) and enables the PAC proxy capability, for example, `http://127.0.0.1:21998/PacProxyScript.pac`. You can call [findProxyForUrl](#connectionfindproxyforurl20) to parse the URL to obtain the proxy information.
 
->**NOTE**
+> **NOTE**
 >
-> 1. This API can parse scripts and enable the PAC proxy capability on **PC/2in1<sup>20+</sup>**, **Phone<sup>23+</sup>**, **Tablet<sup>23+</sup>** and **TV<sup>23+</sup>** devices. For wearable devices, only the script address is saved, and the PAC proxy capability is not enabled.<br>
-> 2. This API does not verify the URL authenticity. If the URL is incorrect when the PAC proxy is enabled, the proxy fails to be enabled and error code 2100002 is returned.
+> 1. This API currently supports parsing the script and enabling the PAC proxy capability on PC/2in1<sup>20+</sup>, Phone<sup>23+</sup>, Tablet<sup>23+</sup>, and TV<sup>23+</sup> devices. On Wearable devices, only the script address is saved, and the PAC proxy capability is not enabled.<br>
+> 2. This API does not verify the authenticity of the URL. When the PAC proxy is started, if the URL is incorrect, the proxy fails to start and error code 2100002 is returned.
 
 **Required permissions**: ohos.permission.SET_PAC_URL
 
@@ -2042,7 +2044,7 @@ For details about the error codes, see [Network Connection Management Error Code
 import { connection } from '@kit.NetworkKit';
 
 let pacFileUrl = connection.getPacFileUrl();
-console.info(pacFileUrl);
+console.info("Succeeded to get pacFileUrl");
 ```
 
 ## connection.findProxyForUrl<sup>20+</sup>
@@ -2053,9 +2055,9 @@ Parses the specified URL proxy address based on the configured PAC script and re
 
 > **NOTE**
 >
-> 1. You can use [setPacFileUrl](#connectionsetpacfileurl20) or [setPacUrl](#connectionsetpacurl15) to set the PAC script.<br>
-> 2. If no PAC script is set before this interface is called, an empty string is returned.<br>
-> 3. The [setPacFileUrl](#connectionsetpacfileurl20) API supports parsing scripts and enabling the PAC proxy capability on PC/2in1<sup>20+</sup>, Phone<sup>23+</sup>, Tablet<sup>23+</sup> and TV<sup>23+</sup> devices. Therefore, this API can be used to obtain the PAC proxy information on the preceding devices. For wearable devices, this API does not take effect, and an empty string is returned.
+> 1. You can set the PAC script through [setPacFileUrl](#connectionsetpacfileurl20) or [setPacUrl](#connectionsetpacurl15).<br>
+> 2. If no PAC script is set before this API is called, an empty string is returned.<br>
+> 3. Since the [setPacFileUrl](#connectionsetpacfileurl20) API supports parsing the script and enabling the PAC proxy capability on PC/2in1<sup>20+</sup>, Phone<sup>23+</sup>, Tablet<sup>23+</sup>, and TV<sup>23+</sup> devices, this API supports obtaining PAC proxy information on the preceding devices. Calling this API on a Wearable device does not take effect, and an empty string is returned.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -2202,7 +2204,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   }
   let netExtAttribute: string = "xxx";
   connection.setNetExtAttribute(netHandle, netExtAttribute).then(() => {
-    console.info("setNetExtAttribute success");
+    console.info("Succeeded to setNetExtAttribute");
   }).catch((error: BusinessError) => {
     console.error("setNetExtAttribute failed, err: " + error.code);
   })
@@ -2298,7 +2300,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     return;
   }
   connection.getNetExtAttribute(netHandle).then((netExtAttribute: string) => {
-    console.info("getNetExtAttribute: " + netExtAttribute);
+    console.info("Succeeded to getNetExtAttribute: " + netExtAttribute);
   }).catch((error: BusinessError) => {
     console.error("getNetExtAttribute failed, err: " + error.code);
   })
@@ -2348,7 +2350,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let netHandle = connection.getDefaultNetSync();
 if (netHandle.netId != 0) {
   let netExtAttribute: string = connection.getNetExtAttributeSync(netHandle);
-  console.info("getNetExtAttribute: " + netExtAttribute);
+  console.info("Succeeded to getNetExtAttribute: " + netExtAttribute);
 }
 ```
 
@@ -2392,13 +2394,13 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
-  if (data.length !== 0) {
-    console.info(`ipAddress:${data[0].ipAddress}`);
-    console.info(`ifaceName:${data[0].iface}`);
-    console.info(`macAddress:${data[0].macAddress}`);
-  }
+  data.forEach((info: connection.NetIpMacInfo) => {
+    console.info(`Succeeded to get ipAddress: ${JSON.stringify(info.ipAddress)}`);
+    console.info(`Succeeded to get iface: ${JSON.stringify(info.iface)}`);
+    console.info(`Succeeded to get macAddress: ${JSON.stringify(info.macAddress)}`);
+  });
 }).catch((error: BusinessError) => {
-  console.error(`error fetching ip neigh table. Code:${error.code}, message:${error.message}`);
+  console.error(`Failed to get ip neigh table. Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -2454,9 +2456,9 @@ let protocol = connection.ProtocolType.PROTO_TYPE_TCP;
 let local: connection.NetAddress = { address: '192.168.1.100', family: 1, port: 6666 };
 let remote: connection.NetAddress = { address: '192.168.1.200', family: 1, port: 8888 };
 connection.getConnectOwnerUid(protocol, local, remote).then((uid) => {
-  console.info(`uid: ${uid}`);
+  console.info(`Succeeded to get uid: ${uid}`);
 }).catch((error: BusinessError) => {
-  console.error(`getConnectOwnerUid failed. errorCode: ${error.code} message:${error.message}`);
+  console.error(`Failed to get ConnectOwnerUid. errorCode: ${error.code} message:${error.message}`);
 });
 ```
 
@@ -2515,10 +2517,10 @@ let local: connection.NetAddress = { address: '192.168.1.100', family: 1, port: 
 let remote: connection.NetAddress = { address: '192.168.1.200', family: 1, port: 8888 };
 try {
   let uid = connection.getConnectOwnerUidSync(protocol, local, remote);
-  console.info(`uid: ${uid}`);
+  console.info(`Succeeded to get uid: ${uid}`);
 } catch (e) {
   let err = e as BusinessError;
-  console.error(`getConnectOwnerUid failed. errorCode: ${err.code} message:${err.message}`);
+  console.error(`Failed to get ConnectOwnerUid. errorCode: ${err.code} message:${err.message}`);
 }
 ```
 
@@ -2566,9 +2568,9 @@ For details about the error codes, see [Network Connection Management Error Code
 import { connection } from '@kit.NetworkKit';
 
 let result = connection.getDnsAscii("www.example.com," connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // Expected result: www.xn--fsq092h.com
+console.info("Succeeded to getDnsAscii: " + result);  // Expected result: www.xn--fsq092h.com
 let result = connection.getDnsAscii("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // Expected result: www.example.com
+console.info("Succeeded to getDnsAscii: " + result);  // Expected result: www.example.com
 ```
 
 ## connection.getDnsUnicode<sup>23+</sup>
@@ -2608,24 +2610,24 @@ For details about the error codes, see [Network Connection Management Error Code
 import { connection } from '@kit.NetworkKit';
 
 let result = connection.getDnsUnicode("www.xn--fsq092h.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // Expected result: www.example.com
+console.info("Succeeded to getDnsUnicode: " + result);  // Expected result: www.example.com
 let result = connection.getDnsUnicode("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // Expected result: www.example.com
+console.info("Succeeded to getDnsUnicode: " + result);  // Expected result: www.example.com
 ```
 
 ## connection.getSystemNetPortStates<sup>24+</sup>
 
 getSystemNetPortStates(): Promise\<NetPortStatesInfo>
 
-Obtains information about all TCP and UDP ports currently listened by the system, and the PID and UID of the processes that listen for the ports. Both IPv4 and IPv6 addresses are supported. 
+Obtains information about all TCP and UDP ports currently listened by the system, and the PID and UID of the processes that listen for the ports. Both IPv4 and IPv6 addresses are supported.  
 
 > **NOTE**
 >
 > This API is used to obtain information about the TCP and UDP ports currently listened by the system. The detailed fields are as follows:
 >
->  TCP port fields: local address, local port, remote address, remote port, TCP connection status, process PID, and process UID 
+>  TCP port fields: local address, local port, remote address, remote port, TCP connection status, process PID, and process UID  
 >
->  UDP port fields: local address, local port, process PID, and process UID 
+>  UDP port fields: local address, local port, process PID, and process UID  
 
 **Required permissions**: ohos.permission.GET_IP_MAC_INFO
 
@@ -2731,9 +2733,9 @@ let options: connection.TraceRouteOptions = {
 };
 
 connection.queryTraceRoute(dest, options).then((data: connection.TraceRouteInfo[]) => {
-    console.info(JSON.stringify(data));
+    console.info('Succeeded to getDefaultHttpProxy:' + JSON.stringify(data));
 }).catch((err: BusinessError) => {
-    console.error(JSON.stringify(err));
+    console.error(`Failed to get request. Code:${err.code}, message:${err.message}`);
 });
 ```
 
@@ -2788,9 +2790,56 @@ let dest: string = "www.example.com";
 let duration: number = 10;
 
 connection.queryProbeResult(dest, duration).then((data: connection.ProbeResultInfo) => {
-    console.info(`LossRate: ${data.lossRate}, RTT: ${data.rtt}`);
+    console.info(`Succeeded to get LossRate: ${data.lossRate}, Succeeded to getRTT: ${data.rtt}`);
 }).catch((err: BusinessError) => {
-    console.error(JSON.stringify(err));
+    console.error(`Failed to get request. Code:${err.code}, message:${err.message}`);
+});
+```
+
+## connection.refreshGlobalHttpProxy
+
+refreshGlobalHttpProxy(): Promise\<HttpProxy\>
+
+Notifies the system to re-authenticate the global proxy.
+
+> **NOTE**
+>
+> If no global proxy is currently configured or the proxy configuration is incorrect (for example, the username and password are not correctly configured), error code 2100003 is thrown. You can call [getDefaultHttpProxy](#connectiongetdefaulthttpproxy10) to query the current proxy configuration.
+
+**Since**: 26.0.0
+
+**Required permissions**: ohos.permission.INTERNET
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+**Return value**
+
+| Type   | Description                     |
+| ------ | ----------------------- |
+| Promise\<[HttpProxy](#httpproxy10)\> | Promise object used to return the global proxy configuration. The username and password fields are fixed to empty strings and do not return valid information.|
+
+**Error codes**
+
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                          |
+| ------- | --------------------------------- |
+| 201     | Permission denied.                |
+| 2100002 | Failed to connect to the service.|
+| 2100003 | System internal error.            |
+
+**Example**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.refreshGlobalHttpProxy().then((data: connection.HttpProxy) => {
+  console.info(`Succeeded to refresh global http proxy: ${JSON.stringify(data)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to refresh global http proxy. Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -2800,13 +2849,13 @@ Represents the network connection object type.
 
 > **NOTE**
 >
->(1) When the network transitions from unavailable to available, the **netAvailable**, **netCapabilitiesChange**, and **netConnectionPropertiesChange** events are triggered.
+> (1) When the device transitions from the no-network state to the network-available state, the [on('netAvailable')](#onnetavailable), [on('netCapabilitiesChange')](#onnetcapabilitieschange), and [on('netConnectionPropertiesChange')](#onnetconnectionpropertieschange) events are triggered;
 >
->(2) If the network transitions from available to unavailable after a **netAvailable** event is received, a **netLost** event is triggered.
+> (2) After the [on('netAvailable')](#onnetavailable) event is received, if the device transitions from the network-available state to the no-network state, the [on('netLost')](#onnetlost) event is triggered;
 >
->(3) If no **netAvailable** event is received, a **netUnavailable** event is directly triggered.
+> (3) If the [on('netAvailable')](#onnetavailable) event is not received, the [on('netUnavailable')](#onnetunavailable) event is directly received;
 >
->(4) When the network transitions from Wi-Fi to cellular, a **netLost** event is first triggered to indicate that the Wi-Fi network is lost and then a **netAvailable** event is triggered to indicate that the cellular network is available.
+> (4) When the device switches from a Wi-Fi network to a cellular network, the [on('netLost')](#onnetlost) event (Wi-Fi lost) is triggered first, followed by the [on('netAvailable')](#onnetavailable) event (cellular available).
 
 ### register
 
@@ -2814,9 +2863,9 @@ register(callback: AsyncCallback\<void>): void
 
 Registers a listener for network status changes. To listen for a specific type of events, call **on** to enable listening and then call **register** to register an event listener.
 
->**NOTE**
+> **NOTE**
 >
->After using the **register** API, you need to call **unregister** to deregister the listener.
+> After using the register API, call [unregister](#unregister) in a timely manner to unregister the listener.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -2851,7 +2900,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let netCon: connection.NetConnection = connection.createNetConnection();
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to register.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -2890,7 +2939,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let netCon: connection.NetConnection = connection.createNetConnection();
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to unregister.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -2898,7 +2947,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netAvailable', callback: Callback\<NetHandle>): void
 
-Registers a listener for **netAvailable** events. Before you call this API, make sure that you have called **register** to add a listener for network status changes. When the listener is no longer needed, call **unregister** to remove it.
+Subscribes to the network available event. This API must be called before [register](#register) is called. If you do not need to receive callback notifications of network status changes, use [unregister](#unregister) to unsubscribe from the default network status change notifications.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2927,12 +2976,12 @@ netCon.on('netAvailable', (data: connection.NetHandle) => {
 
 // Register a listener for network status change events. This API must be called after the on API.
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to register.Code:${error.code}, message:${error.message}`);
 });
 
 // Use the unregister API to unsubscribe from netAvailable events.
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to unregister.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -2940,7 +2989,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netBlockStatusChange', callback: Callback\<NetBlockStatusInfo>): void
 
-Registers a listener for **netBlockStatusChange** events. Before you call this API, make sure that you have called **register** to add a listener for network status changes. When the listener is no longer needed, call **unregister** to remove it.
+Subscribes to the network block status event. This API must be called before [register](#register) is called. If you do not need to receive callback notifications of network status changes, use [unregister](#unregister) to unsubscribe from the default network status change notifications.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -2967,12 +3016,12 @@ netCon.on('netBlockStatusChange', (data: connection.NetBlockStatusInfo) => {
 
 // Register a listener for network status change events. This API must be called after the on API.
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 
 // Use the unregister API to remove the listener for netBlockStatusChange events.
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -2980,7 +3029,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netCapabilitiesChange', callback: Callback\<NetCapabilityInfo\>): void
 
-Registers a listener for **netCapabilitiesChange** events. Before you call this API, make sure that you have called **register** to add a listener for network status changes. When the listener is no longer needed, call **unregister** to remove it.
+Subscribes to the network capability change event. This API must be called before [register](#register) is called. When callback notifications of network status changes are not needed, use [unregister](#unregister) to unsubscribe from the default network status change notifications.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3009,12 +3058,12 @@ netCon.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo) => {
 
 // Register a listener for network status change events. This API must be called after the on API.
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 
 // Unsubscribe from netCapabilitiesChange events.
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -3022,7 +3071,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netConnectionPropertiesChange', callback: Callback\<NetConnectionPropertyInfo\>): void
 
-Registers a listener for **netConnectionPropertiesChange** events. Before you call this API, make sure that you have called **register** to add a listener for network status changes. When the listener is no longer needed, call **unregister** to remove it.
+Subscribes to the network connection information change event. This API must be called before [register](#register) is called. When callback notifications of network status changes are not needed, use [unregister](#unregister) to unsubscribe from the default network status change notifications.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -3049,12 +3098,12 @@ netCon.on('netConnectionPropertiesChange', (data: connection.NetConnectionProper
 
 // Register a listener for network status change events. This API must be called after the on API.
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 
 // Use the unregister API to remove the listener for netConnectionPropertiesChange events.
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -3062,7 +3111,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netLost', callback: Callback\<NetHandle>): void
 
-Registers a listener for **netLost** events. Before you call this API, make sure that you have called **register** to add a listener for network status changes. When the listener is no longer needed, call **unregister** to remove it.
+Subscribes to the network lost event. This API must be called before [register](#register) is called. When callback notifications of network status changes are not needed, use [unregister](#unregister) to unsubscribe from the default network status change notifications.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3091,12 +3140,12 @@ netCon.on('netLost', (data: connection.NetHandle) => {
 
 // Register a listener for network status change events. This API must be called after the on API.
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 
 // Use the unregister API to remove the listener for netLost events.
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -3104,7 +3153,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netUnavailable', callback: Callback\<void>): void
 
-Registers a listener for **netUnavailable** events. Before you call this API, make sure that you have called **register** to add a listener for network status changes. When the listener is no longer needed, call **unregister** to remove it.
+Subscribes to the network unavailable event. This API must be called before [register](#register) is called. When callback notifications of network status changes are not needed, use [unregister](#unregister) to unsubscribe from the default network status change notifications.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3133,12 +3182,12 @@ netCon.on('netUnavailable', () => {
 
 // Register a listener for network status change events. This API must be called after the on API.
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get register.Code:${error.code}, message:${error.message}`);
 });
 
 // Use the unregister API to remove the listener for netUnavailable events.
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get unregister.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -3203,9 +3252,9 @@ interface Data {
   if (socketType == "TCPSocket") {
     tcp.bind({address:"192.168.xxx.xxx",
               port:8080,
-              family:1} as socket.NetAddress, (error: Error) => {
+              family:1} as socket.NetAddress, (error: BusinessError) => {
       if (error) {
-        console.error('bind fail');
+        console.error(`Failed to bind. Code:${error.code}, message:${error.message}`);
         return;
       }
       netHandle.bindSocket(tcp, (error: BusinessError, data: void) => {
@@ -3213,13 +3262,13 @@ interface Data {
           console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
           return;
         } else {
-          console.info(JSON.stringify(data));
+          console.info('Succeeded to getdefaultHttpProxy:' + JSON.stringify(data));
         }
       });
     });
   } else {
     let callback: (value: Data) => void = (value: Data) => {
-      console.info("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
+      console.info("Succeeded to get message, message:" + value.message + ", Succeeded to get remoteInfo:" + value.remoteInfo);
     };
     udp.bind({address:"192.168.xxx.xxx",
               port:8080,
@@ -3236,7 +3285,7 @@ interface Data {
           console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
           return;
         } else {
-          console.info(JSON.stringify(data));
+          console.info('Succeeded to get defaultHttpProxy: ' + JSON.stringify(data));
         }
       });
     });
@@ -3299,11 +3348,11 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
               port:8080,
               family:1} as socket.NetAddress, (error: Error) => {
       if (error) {
-        console.error('bind fail');
+        console.error('Failed to bind');
         return;
       }
       netHandle.bindSocket(tcp).then(() => {
-        console.info("bind socket success");
+        console.info("Succeeded to bind socket");
       }).catch((error: BusinessError) => {
         console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
       });
@@ -3323,7 +3372,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
         console.info("Succeeded to get data: " + JSON.stringify(data));
       });
       netHandle.bindSocket(udp).then(() => {
-        console.info("bind socket success");
+        console.info("Succeeded to bind socket");
       }).catch((error: BusinessError) => {
         console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
       });
@@ -3492,7 +3541,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   netHandle.getAddressesByNameWithOptions(host, option).then((data: connection.NetAddress[]) => {
     console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
-    console.error(`get ERROR msg: ${JSON.stringify(err)}`)
+    console.error(`Failed to get addresses by name. Code:${err.code}, message:${err.message}`);
   });
 });
 ```
@@ -3612,7 +3661,7 @@ Defines the network capability.
 | NET_CAPABILITY_INTERNET  | 12   | The network is capable of Internet access but the network connectivity is not successfully verified by the network management module. This capability is configured by the network provider. Your application can determine the network connectivity by **NET_CAPABILITY_VALIDATED** and **NET_CAPABILITY_CHECKING_CONNECTIVITY**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | NET_CAPABILITY_NOT_VPN | 15 | The network does not use a virtual private network (VPN).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | NET_CAPABILITY_VALIDATED | 16   | The network management module successfully connects to the Huawei Cloud address through this network. This capability is configured by the network management module.<br>Note: If the network management module fails to connect to the Huawei Cloud address, this flag is not available in the network capability, but this does not mean a complete loss in Internet access. Note that for a newly connected network, this value may not reflect the actual verification result as network connectivity verification is in progress. Your application can use **NET_CAPABILITY_CHECKING_CONNECTIVITY**<sup>12+</sup> to check whether network connectivity verification is in progress.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| NET_CAPABILITY_PORTAL<sup>12+</sup> | 17   | The network is found to have a captive portal and user login authentication is required. This capability is set by the connection management module.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| NET_CAPABILITY_PORTAL<sup>12+</sup> | 17   | Indicates that the system detects a captive portal on this network, which requires user login authentication. This capability is set by the network management module.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services. |
 | NET_CAPABILITY_CHECKING_CONNECTIVITY<sup>12+</sup> | 31   | The network management module is verifying the network connectivity. This flag remains valid until the network connectivity check is complete. During this period, the value of **NET_CAPABILITY_VALIDATED** may be incorrect. After the network connectivity check is complete, this flag is cleared and your application can determine the network connectivity by checking **NET_CAPABILITY_VALIDATED**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## NetBearType
@@ -3663,7 +3712,7 @@ Enumerates TCP states.
 | TCP_LISTEN      | 10 | The server listens and waits for the client to connect.|
 | TCP_CLOSING     | 11 | Both ends send FIN and wait for ACK from each other.  |
   
-  ## PacketsType
+## PacketsType
 
 Defines the type of network probe data packets.
 
@@ -3760,7 +3809,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
    bearerPrivateIdentifier: `${networkId}`
  });
  netConnectionWlan.register((error: BusinessError) => {
-   console.error(JSON.stringify(error));
+   console.error(`Failed to get register.Code:${error.code}, message:${error.message}`);
  });
 });
 ```
@@ -3784,10 +3833,10 @@ Defines the network capability set.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name   | Type  | Read Only|Optional|Description                     |
+| Name   | Type  | Read-Only|Optional|Description                     |
 | ------ | ------ | --- |---|------------------------- |
-| linkUpBandwidthKbps   | number                             |  No| Yes |  Uplink (device-to-network) bandwidth, in kbit/s. The value **0** indicates that the current network bandwidth cannot be evaluated.|
-| linkDownBandwidthKbps | number                             |  No| Yes|  Downlink (network-to-device) bandwidth, in kbit/s. The value **0** indicates that the current network bandwidth cannot be evaluated.|
+| linkUpBandwidthKbps   | number                             |  No | Yes |  Uplink (device to network) bandwidth, in Kbps (kilobits per second). 0 indicates that the current network bandwidth cannot be evaluated.|
+| linkDownBandwidthKbps | number                             |  No | Yes |  Downlink (network to device) bandwidth, in Kbps (kilobits per second). 0 indicates that the current network bandwidth cannot be evaluated.|
 | networkCap            | Array\<[NetCap](#netcap)>           |  No| Yes|  Network capability.<br>**Atomic service API**: This API can be used in atomic services since API version 11.          |
 | bearerTypes           | Array\<[NetBearType](#netbeartype)> |  No| No|  Network type. The array contains only one network type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
 
@@ -3822,7 +3871,7 @@ Obtains the network block status information.
 Defines the network connection properties.
 >**NOTE**
 >
-> The values of **linkAddresses**, **routes**, and **dnses** may be empty. You need to protect the empty values. You are advised to check whether the objects exist before using the values. 
+> The values of **linkAddresses**, **routes**, and **dnses** may be empty. You need to protect the empty values. You are advised to check whether the objects exist before using the values.  
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 

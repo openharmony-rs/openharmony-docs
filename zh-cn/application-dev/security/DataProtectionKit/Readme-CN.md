@@ -11,3 +11,7 @@
   - [数据防泄漏服务开发指导(ArkTS)](dlp-guidelines.md)
   - [数据防泄漏服务开发指导(C/C++)](dlp-guidelines-ndk.md)<!--RP1--><!--RP1End-->
   - [Data Protection Kit术语](dlp-glossary.md)
+- 隐私计算<!--privacy-computation-->
+  - [隐私计算简介](privacy-computation-guidelines.md)
+  - [使用PSI协议进行隐私集合求交](privacy-computation-psi.md)
+  - [使用PIR协议进行隐私信息检索](privacy-computation-pir.md)

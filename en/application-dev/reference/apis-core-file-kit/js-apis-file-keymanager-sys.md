@@ -5,8 +5,9 @@
 <!--Designer: @renguang1116; @wang_zhangjun-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=ff62f8c702663521fd152ddf1e530fb50b947f5e translatedAt=2026-11-04T04:22:06.742Z pushedAt=2026-11-04T10:12:33.470Z nl=1 -->
 
-This module provides common features related to user key management, including user key uninstallation.
+This module provides user key management capabilities. It currently supports synchronously unloading the key of a specified user when the user locks the screen, meeting the requirement of lock screen applications to protect user data security when the device is locked. User keys are related to the encryption protection of user data. In scenarios such as user screen lock, the keys need to be unloaded to manage the encryption state of the data.
 
 > **NOTE**
 >
@@ -16,14 +17,18 @@ This module provides common features related to user key management, including u
 ## Modules to Import
 
 ```ts
-import { keyManager } from "@kit.CoreFileKit";
+import { keyManager } from '@kit.CoreFileKit';
 ```
 
 ## keyManager.deactivateUserKey
 
 deactivateUserKey(userId: number):void
 
-Uninstalls the specified user key synchronously when the screen is locked. **(Currently, this API is available only to lock screen applications.)**
+When the user locks the screen, synchronously unloads the key corresponding to the specified user. After unloading, the encrypted data corresponding to the user cannot be decrypted and accessed, thereby protecting user data security.
+
+> **NOTE**
+>
+> This API is currently available only to lock screen applications.
 
 **Required permission**: ohos.permission.STORAGE_MANAGER_CRYPT
 
@@ -35,7 +40,7 @@ Uninstalls the specified user key synchronously when the screen is locked. **(Cu
 
   | Name    | Type  | Mandatory| Description|
   | ---------- | ------ | ---- | ---- |
-  | userId | number | Yes  | User ID. This parameter specifies the user who currently logs in to the lock screen application.|
+  | userId | number | Required   | User ID. Value range [100, 10738]. The lock screen application obtains the currently logged-in user of the device and specifies userId as the ID of that user.|
 
 **Error codes**
 
@@ -47,20 +52,20 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: Mandatory parameters are left unspecified; Or input parameter has type different from the type the interface requires. |
 | 13600001 | IPC error. |
-| 13600008 | No such object. Possible causes: Cannot find user key for the specified user. |
+| 13600008 | No such object. Possible causes: Cannot find userkey for the specified user. |
 | 13600009 | User ID out of range. Possible causes: input parameter userId < 100 or userId > 10736. |
 
 **Example**:
 
   ```ts
-  import { keyManager } from "@kit.CoreFileKit";
+  import { keyManager } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   let userId: number = 100;
   try {
     keyManager.deactivateUserKey(userId);
-    console.info("deactivateUserKey success");
+    console.info('deactivateUserKey success');
   } catch (err) {
     let error: BusinessError = err as BusinessError;
-    console.error("deactivateUserKey failed with error:" + JSON.stringify(error));
+    console.error(`deactivateUserKey failed with error. Code: ${error.code}, message: ${error.message}`);
   }
   ```

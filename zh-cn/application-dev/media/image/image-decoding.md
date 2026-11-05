@@ -156,7 +156,7 @@
    
 4. 创建ImageSource实例。
 
-   - 方法一：通过沙箱路径创建ImageSource。沙箱路径可以通过步骤2的方法一获取。
+   - 方法一：通过沙箱路径创建ImageSource。沙箱路径可以通过步骤3的方法一获取。
 
      <!-- @[createImageSource_filePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
@@ -165,7 +165,7 @@
      const imageSource : image.ImageSource = image.createImageSource(filePath);
      ```
 
-   - 方法二：通过文件描述符fd创建ImageSource。文件描述符可以通过步骤2的方法二获取。
+   - 方法二：通过文件描述符fd创建ImageSource。文件描述符可以通过步骤3的方法二获取。
 
      <!-- @[createImageSource_fd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
@@ -174,7 +174,7 @@
      const imageSource: image.ImageSource = image.createImageSource(fd);
      ```
 
-   - 方法三：通过缓冲区数组创建ImageSource。缓冲区数组可以通过步骤2的方法三获取。
+   - 方法三：通过缓冲区数组创建ImageSource。缓冲区数组可以通过步骤3的方法三获取。
 
      <!-- @[createImageSource_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
@@ -182,7 +182,7 @@
      const imageSource: image.ImageSource = image.createImageSource(buffer);
      ```
 
-   - 方法四：通过资源文件的RawFileDescriptor创建ImageSource。RawFileDescriptor可以通过步骤2的方法四获取。
+   - 方法四：通过资源文件的RawFileDescriptor创建ImageSource。RawFileDescriptor可以通过步骤3的方法四获取。
 
      <!-- @[createImageSource_rawFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
@@ -211,7 +211,7 @@
      };
    
      try {
-       // 生成 pixelMap 并返回
+       // 生成 pixelMap 并返回。
        const pixelMap = await imageSource.createPixelMap(decodingOptions);
        if (pixelMap) {
          console.info('Create PixelMap successfully.');
@@ -220,7 +220,7 @@
          console.info(`Create PixelMap successfully with imageInfo.isHdr: ${imageInfo.isHdr}.`);
          return pixelMap;
        } else {
-         console.info('Create PixelMap failed.');
+         console.error('Create PixelMap failed.');
          return undefined;
        }
      } catch (error) {

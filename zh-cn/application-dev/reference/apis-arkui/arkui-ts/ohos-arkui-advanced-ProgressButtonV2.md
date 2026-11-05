@@ -179,4 +179,4 @@ struct Index {
 ```
 
 
-![img.png](./figures/img.png)
+![progressButtonV2.gif](./figures/progressButtonV2.gif)

@@ -1,12 +1,11 @@
 # Geocoding and Reverse Geocoding
-
 <!--Kit: Location Kit-->
 <!--Subsystem: Location-->
 <!--Owner: @xxthadsl-->
 <!--Designer: @liu-binjun-->
 <!--Tester: @gcw_MslijYkf-->
 <!--Adviser: @RayShih-->
-<!-- md-trans-meta sourceCommit=4f1f82da82ec1da992bee864d1f41f66de3c9d98 translatedAt=2026-07-28T02:35:28.680Z pushedAt=2026-07-28T03:16:08.532Z -->
+<!-- md-trans-meta sourceCommit=2c7620d54062997379c5f7d2a16c6e4e49a1ae66 translatedAt=2026-10-31T01:28:27.005Z pushedAt=2026-10-31T03:41:39.404Z nl=1 -->
 
 ## Scenario
 
@@ -34,57 +33,62 @@ The APIs used for conversion between latitude and longitude coordinates and geoc
 > The geocoding and reverse geocoding services need to access backend services. Ensure that your device is connected to the network to obtain information.
 
 1. Import the **geoLocationManager** module. All functional APIs related to geocoding and reverse geocoding capabilities are provided by this module.
-
+   
    ```ts
    import { geoLocationManager } from '@kit.LocationKit';
    ```
 
 2. Check whether the geocoding and reverse geocoding services are available.
-
    - Call **isGeocoderAvailable** to check whether the geocoding and reverse geocoding services are available. If yes, proceed to step 3. If the services are unavailable, the device does not have the geocoding and reverse geocoding capabilities. Do not use the related APIs.
-
+     
       ```ts
       import { geoLocationManager } from '@kit.LocationKit';
       try {
           let isAvailable = geoLocationManager.isGeocoderAvailable();
+          if (!isAvailable) {
+              console.error("current device do not support geocoder");
+          }
       } catch (err) {
-          console.error("errCode:" + JSON.stringify(err));
+          console.error("errCode:" + err.code + ", message:"  + err.message);
       }
       ```
 
 3. Obtain the geocoding conversion result.
-
    - Call **getAddressesFromLocation** to convert coordinates into geographic descriptions (i.e., location information). Your application can obtain the list of [GeoAddress](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geoaddress) objects that match the coordinates and read the corresponding parameter data based on actual usage requirements.
-
+     
       ```ts
       let reverseGeocodeRequest:geoLocationManager.ReverseGeoCodeRequest = {"latitude": 31.12, "longitude": 121.11, "maxItems": 1};
       try {
-          geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest, (err, data) => {
+          if (geoLocationManager.isGeocoderAvailable()) {
+            geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest, (err,data) => {
               if (err) {
-                  console.error('getAddressesFromLocation err: ' + JSON.stringify(err));
+                console.error("getAddressesFromLocation errCode:" + err.code + ", message:"  + err.message);
               } else {
-                  console.info('getAddressesFromLocation data: ' + JSON.stringify(data));
+                console.info('getAddressesFromLocation data: ' + JSON.stringify(data));
               }
-          });
+            });
+          }
       } catch (err) {
-          console.error("errCode:" + JSON.stringify(err));
+          console.error("errCode:" + err.code + ", message:"  + err.message);
       }
       ```
 
    - Call **getAddressesFromLocationName** to convert geographic descriptions (i.e., location information) into coordinates.
-
+     
       ```ts
-      let geocodeRequest:geoLocationManager.GeoCodeRequest = {"description": "No. xx, xx Road, Pudong District, Shanghai", "maxItems": 1};
+      let geocodeRequest:geoLocationManager.GeoCodeRequest = {"description": "Zhangjiang Road, Pudong New Area, Shanghai", "maxItems": 1};
       try {
-          geoLocationManager.getAddressesFromLocationName(geocodeRequest, (err, data) => {
+          if (geoLocationManager.isGeocoderAvailable()) {
+            geoLocationManager.getAddressesFromLocationName(geocodeRequest, (err, data) => {
               if (err) {
-                  console.error('getAddressesFromLocationName err: ' + JSON.stringify(err));
+                console.error("getAddressesFromLocationName errCode:" + err.code + ", message:"  + err.message);
               } else {
-                  console.info('getAddressesFromLocationName data: ' + JSON.stringify(data));
+                console.info('getAddressesFromLocationName data: ' + JSON.stringify(data));
               }
-          });
+            });
+          }
       } catch (err) {
-          console.error("errCode:" + JSON.stringify(err));
+          console.error("errCode:" + err.code + ", message:"  + err.message);
       }
       ```
 

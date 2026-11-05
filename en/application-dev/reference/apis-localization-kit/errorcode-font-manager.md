@@ -2,10 +2,11 @@
 
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
-<!--Owner: @liule_123-->
+<!--Owner: @OningO-->
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=a04b9be3bedef1b09b05f9b1b2ad2d7c971b4692 translatedAt=2026-11-04T04:11:24.467Z pushedAt=2026-11-04T10:13:14.918Z nl=1 -->
 
 > **NOTE**
 >
@@ -15,7 +16,7 @@
 
 **Error Message**
 
-Font does not exist.
+The font does not exist.
 
 **Symptom**
 
@@ -33,7 +34,7 @@ Ensure that the input file is in **.ttf** or **.ttc** format and the path is cor
 
 **Error Message**
 
-Font is not supported.
+The font is not supported.
 
 **Symptom**
 
@@ -52,7 +53,7 @@ Ensure that the input file is in **.ttf** or **.ttc** format.
 
 **Error Message**
 
-Font file copy failed.
+Failed to copy the font file.
 
 **Symptom**
 
@@ -70,7 +71,7 @@ Try again, or restart the device and try again.
 
 **Error Message**
 
-Font file installed.
+The font file is installed.
 
 **Symptom**
 
@@ -88,7 +89,7 @@ Uninstall the existing font with the same name and reinstall the font file.
 
 **Error Message**
 
-Exceeded maximum number of installed files.
+Exceeded the maximum number of installed files.
 
 **Symptom**
 
@@ -96,7 +97,7 @@ This error code is reported if the number of installed font files reaches the ma
 
 **Possible Causes**
 
-The number of installed font files reaches the maximum (200).
+The number of installed font files exceeds the maximum limit.
  
 **Solution**
 
@@ -106,11 +107,11 @@ Uninstall unnecessary font files and try again.
 
 **Error Message**
 
-Other error.
+The system ability works abnormally.
 
 **Symptom**
 
-This error code is reported if the font file installation fails because of a system error. 
+This error code is reported if the font file installation fails because of a system error.
 
 **Possible Causes**
 
@@ -124,7 +125,7 @@ Try again, or restart the device and try again.
 
 **Error Message**
 
-Font file does not exist.
+The font file does not exist.
 
 **Symptom**
 
@@ -142,7 +143,7 @@ Check whether the input font name is correct. If not, correct it and try again.
 
 **Error Message**
 
-Font file delete error.
+Failed to delete the font file.
 
 **Symptom**
 
@@ -160,11 +161,11 @@ Try again, or restart the device and try again.
 
 **Error Message**
 
-Other error.
+The system ability works abnormally.
 
 **Symptom**
 
-This error code is reported if the font file uninstallation fails because of a system error. 
+This error code is reported if the font file uninstallation fails because of a system error.
 
 **Possible Causes**
 
@@ -178,7 +179,7 @@ Try again, or restart the device and try again.
 
 **Error Message**
 
-System error.
+Call failed due to system error.
 
 **Symptom**
 
@@ -186,7 +187,7 @@ The system service is abnormal, and the API fails to be called.
 
 **Possible Causes**
 
-An exception occurs during data migration task startup.
+A system exception occurs when starting a data migration task.
  
 **Solution**
 
@@ -196,11 +197,11 @@ Perform the operation again or restart the device and then perform the operation
 
 **Error Message**
 
-DataMigrationing.
+Data migration is in progress.
 
 **Symptom**
 
-The data migration task is being executed and cannot be started again.
+A data migration task is in progress and cannot be started again.
 
 **Possible Causes**
 
@@ -208,4 +209,78 @@ The data migration task is being executed.
  
 **Solution**
 
-The migration task cannot be started again. Wait until the current task is complete.
+Do not start the migration task again. Wait until the current task is complete.
+
+## 31100112 Scope Font Not Found
+
+**Error Message**
+
+The scope font is not found.
+
+**Description**
+
+When uninstalling or querying a font, the font record corresponding to the specified font path (url) is not found.
+
+**Possible Causes**
+
+The font is not installed, or the font path (url) is entered incorrectly.
+ 
+**Solution**
+
+Check whether the application has installed this font and whether the font path (url) is correct.
+
+## 31100113 Font Service State Listener Already Registered
+
+**Error Message**
+
+The font observer is already registered.
+
+**Description**
+
+The font service state listener is already registered and cannot be registered again.
+
+**Possible Causes**
+
+The same application repeatedly calls [fontManager.onFontObserver](js-apis-font-manager.md#fontmanageronfontobserver) to register the font service state listener.
+
+**Solution**
+
+No repeated registration is required. To update the font service state listener, call [fontManager.offFontObserver](js-apis-font-manager.md#fontmanagerofffontobserver) to unregister it first, and then register it again.
+
+## 31100114 Maximum Number of Font Service State Listeners Exceeded
+
+**Error Message**
+
+The maximum number of font observers has been reached.
+
+**Description**
+
+The number of font service state change listeners registered by the same user exceeds the maximum limit (5).
+
+**Possible Causes**
+
+Five different applications have registered font service state change listeners for the same user.
+
+**Solution**
+
+Wait until other applications unregister their font service state change listeners, and then try again.
+
+## 31100115 Font Service State Change Listener Not Registered
+
+**Error Message**
+
+The font observer is not registered.
+
+**Description**
+
+The font service state change listener is not registered when installing an application-level font or unregistering the font service state change listener.
+
+**Possible Causes**
+
+1. When calling [fontManager.installScopeFont](js-apis-font-manager.md#fontmanagerinstallscopefont) to install an application-level font, [fontManager.onFontObserver](js-apis-font-manager.md#fontmanageronfontobserver) is not called first to register the font service state change listener.
+2. When calling [fontManager.offFontObserver](js-apis-font-manager.md#fontmanagerofffontobserver) to unregister the font service state change listener, the listener is not registered or has already been unregistered.
+
+**Solution**
+
+1. Before calling [fontManager.installScopeFont](js-apis-font-manager.md#fontmanagerinstallscopefont) to install an application-level font, call [fontManager.onFontObserver](js-apis-font-manager.md#fontmanageronfontobserver) to register the font service state change listener.
+2. Before calling [fontManager.offFontObserver](js-apis-font-manager.md#fontmanagerofffontobserver) to unregister the font service state change listener, ensure that the listener is registered and has not been unregistered.

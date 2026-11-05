@@ -5,7 +5,7 @@
 <!--Designer: @charlie3wx-->
 <!--Tester: @fhzs-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=561a48f0279b682322ad16aa122a3161b679e716 translatedAt=2026-09-14T01:47:38.457Z pushedAt=2026-09-14T10:03:33.569Z -->
+<!-- md-trans-meta sourceCommit=01d1471d1b3feacf3bb141df076ec7fcc5391556 translatedAt=2026-11-04T06:11:35.782Z pushedAt=2026-11-04T08:04:44.815Z nl=1 -->
 
 This module provides car awareness capabilities, including spatial motion interaction, real-time weather recognition, and refueling status recognition.
 
@@ -29,16 +29,9 @@ Enumerates the capability types supported by car awareness.
 
 | Name | Value | Description |
 | ---- | ---- | ---- |
-| SPATIAL_MOTION | 'SpatialMotion' | Spatial motion capability, which supports recognizing the user's air gestures for operating the screen. |
-| SPATIAL_POINT | 'SpatialPoint' | Spatial point capability, which supports recognizing the in-car components pointed to by the user.<br>**System API:** This enum member is a system API. |
-| SPATIAL_GESTURE | 'SpatialGesture' | Spatial gesture capability, which supports recognizing the user's specific postures and actions.<br>**System API:** This enum member is a system API. |
-| REALTIME_WEATHER | 'RealTimeWeather' | Real-time weather capability, which supports recognizing the weather conditions of the environment where the car is currently located. |
-| REFUELING | 'Refueling' | Refueling capability, which supports recognizing the start and end states of car refueling. |
-| CAR_STATUS | 'CarStatus' | Car status capability, which supports obtaining vehicle-related status information.<br>**System API:** This enum member is a system API. |
-| HABIT_RECOMMENDATION | 'HabitRecommendation' | Habit recommendation capability, which supports generating recommendations based on user habits.<br>**System API:** This enum member is a system API. |
-| SPATIAL_DRAW | 'SpatialDraw' | Spatial draw capability, which supports identifying the users' air gestures during mid-air drawing.<br>**System API:** This enum member is a system API. |
-| GESTURE_CLOSEDOOR | 'GestureCloseDoor' | Gesture close door capability, which supports recognizing user's hand action for closing the doors.<br>**System API:** This enum member is a system API. |
-| OCCUPANT_SENSE | 'OccupantSense' | Occupant sense capability, which supports recognizing position and classification of in-car occupants.<br>**System API:** This enum member is a system API. |
+| SPATIAL_MOTION | 'SpatialMotion' | Air gesture awareness capability. Supports recognition of the user's air gestures for operating the screen. |
+| REALTIME_WEATHER | 'RealTimeWeather' | Real-time weather awareness capability. Supports recognition of the weather status of the environment where the vehicle is currently located. |
+| REFUELING | 'Refueling' | Recharge recognition capability. Supports recognition of the start and end status of vehicle refueling. |
 
 ## SpatialMotionInfo
 
@@ -50,18 +43,18 @@ Interface for spatial motion response info.
 
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
-| Name | Type | Read Only | Optional | Description |
+| Name | Type | Read-Only | Optional | Description |
 | ---- | ---- | ---- | ---- | ---- |
 | timestamp | number | No | No | Timestamp of the recognition result.<br>Unit: ms. |
 | pointX | number | No | No | X-axis coordinate of the hand on the screen. |
 | pointY | number | No | No | Y-axis coordinate of the hand on the screen. |
-| event | number | No | No | Gesture event type.<br>**-1**: invalid<br>**0**: ready<br>**1**: move<br>**2**: tap |
+| event | number | No | No | Gesture event type.<br>-1: invalid<br>0: ready<br>1: move<br>2: tap |
 
 ## carAwareness.onSpatialMotion
 
 onSpatialMotion(callback: Callback\<SpatialMotionInfo\>): void
 
-Subscribes to spatial motion awareness results. If the device does not support this capability, error code 34000002 is thrown. You can obtain the supported capabilities by calling the getAllCapabilityList method. The data is returned asynchronously through the callback.
+Subscribes to spatial motion awareness results. If the device does not support this capability, error code 34000002 is thrown. You can obtain the supported capabilities by calling getAllCapabilityList. The data is returned asynchronously via callback.
 
 **Since:** 26.0.1
 
@@ -179,16 +172,16 @@ Interface for real-time weather response info.
 
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
-| Name | Type | Read Only | Optional | Description |
+| Name | Type | Read-Only | Optional | Description |
 | ---- | ---- | ---- | ---- | ---- |
 | timestamp | number | No | No | Timestamp of the recognition result.<br>Unit: ms. |
-| weather | number | No | No | Weather status.<br>-1: Invalid<br>0: Other<br>1: Fog<br>2: Dense fog<br>3: Snow<br>4: Heavy snow<br>5: Rain<br>6: Heavy rain |
+| weather | number | No | No | Weather status.<br>-1: invalid<br>0: other<br>1: fog<br>2: dense fog<br>3: snow<br>4: heavy snow<br>5: rain<br>6: heavy rain |
 
 ## carAwareness.onRealTimeWeather
 
 onRealTimeWeather(callback: Callback\<RealTimeWeatherInfo\>): void
 
-Subscribes to real-time weather awareness results. If the device does not support this capability, error code 34000002 is thrown. You can obtain the supported capabilities by calling the getAllCapabilityList method. The data is returned asynchronously through the callback.
+Subscribes to real-time weather awareness results. If the device does not support this capability, error code 34000002 is thrown. You can obtain the supported capabilities by calling getAllCapabilityList. The data is returned asynchronously via callback.
 
 **Since:** 26.0.1
 
@@ -294,16 +287,16 @@ Interface for refueling response info.
 
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
-| Name | Type | Read Only | Optional | Description |
+| Name | Type | Read-Only | Optional | Description |
 | ---- | ---- | ---- | ---- | ---- |
 | timestamp | number | No | No | Timestamp of the recognition result.<br>Unit: ms. |
-| status | number | No | No | Refueling status.<br>-1: invalid<br>0: idle (refueling is not started)<br>1: refueling started<br>2: refueling finished |
+| status | number | No | No | Refueling status.<br>-1: invalid<br>0: idle (refueling not started)<br>1: refueling started<br>2: refueling finished |
 
 ## carAwareness.onRefueling
 
 onRefueling(callback: Callback\<RefuelingInfo\>): void
 
-Subscribes to the refueling status awareness result. If the device does not support this capability, error code 34000002 is thrown. You can obtain the supported capabilities by calling the getAllCapabilityList method. The data is returned asynchronously through the callback.
+Subscribes to the refueling status awareness result. If the device does not support this capability, error code 34000002 is thrown. You can obtain the supported capabilities by calling getAllCapabilityList. This API uses an asynchronous callback to return the data.
 
 **Since:** 26.0.1
 
@@ -446,4 +439,3 @@ carAwareness.getAllCapabilityList()
     hilog.error(DOMAIN, TAG, 'Get capability list failed, error code: %{public}d', err.code);
   });
 ```
-<!--no_check-->

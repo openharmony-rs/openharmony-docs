@@ -23,6 +23,16 @@ import { a2dp } from '@kit.ConnectivityKit';
 ```
 
 
+## A2dpSourceProfile
+
+Represents the [A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source) role in A2DP.
+- The **A2dpSourceProfile** class is inherited from [BaseProfile](js-apis-bluetooth-a2dp.md#baseprofile). Therefore, you can use the APIs in its parent class.
+- Before using the APIs of this class, you need to construct an **A2dpSourceProfile** instance by calling [createA2dpSrcProfile](js-apis-bluetooth-a2dp.md#a2dpcreatea2dpsrcprofile).
+- The counterpart of the A2DP Source role is the [A2DP Sink](../../connectivity/bluetooth/terminology.md#a2dp-sink) role.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+
 ### connect
 
 connect(deviceId: string): void
@@ -827,6 +837,174 @@ try {
     a2dpSrc.getAutoPlayDisabledDuration('XX:XX:XX:XX:XX:XX').then((data: number) => {
         console.info('number' + JSON.stringify(data));
     });
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+## A2dpSinkProfile
+
+Represents the [A2DP Sink](../../connectivity/bluetooth/terminology.md#a2dp-sink) role in A2DP.
+- The **A2dpSinkProfile** class is inherited from [BaseProfile](js-apis-bluetooth-a2dp.md#baseprofile). Therefore, you can use the APIs in its parent class.
+- Before using the APIs of this class, you need to construct an **A2dpSinkProfile** instance by calling [createA2dpSnkProfile](js-apis-bluetooth-a2dp.md#a2dpcreatea2dpsnkprofile).
+- The counterpart of the A2DP Sink role is the [A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source) role.
+
+**Since:** 26.0.1
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+
+### connect
+
+connect(deviceId: string): void
+
+Connects to the A2DP Sink service of a remote device.
+
+**Since:** 26.0.1
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name   | Type    | Mandatory  | Description     |
+| ------ | ------ | ---- | ------- |
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API. |
+|202 | Permission verification failed. A non-system application calls a system API. |
+|801 | Capability not supported. |
+|2900003 | Bluetooth disabled. |
+|2900004 | Profile not supported. |
+|2900099 | Internal system error. For example, IPC error. Detailed error messages can be used to assist in locating the problem. |
+|2904000 | The a2dp sink service is not running. |
+|2904002 | The connection is rejected due to the connection policy. For example, connection limit restrictions. |
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let a2dpSink = a2dp.createA2dpSnkProfile();
+    a2dpSink.connect('XX:XX:XX:XX:XX:XX');
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+### disconnect
+
+disconnect(deviceId: string): void
+
+Disconnects the A2DP Sink connection of a remote device.
+
+**Since:** 26.0.1
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name   | Type    | Mandatory  | Description     |
+| ------ | ------ | ---- | ------- |
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API. |
+|202 | Permission verification failed. A non-system application calls a system API. |
+|801 | Capability not supported. |
+|2900003 | Bluetooth disabled. |
+|2900004 | Profile not supported. |
+|2900099 | Internal system error. For example, IPC error. Detailed error messages can be used to assist in locating the problem. |
+|2904000 | The a2dp sink service is not running. |
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let a2dpSink = a2dp.createA2dpSnkProfile();
+    a2dpSink.disconnect('XX:XX:XX:XX:XX:XX');
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+### getPlayingState
+
+getPlayingState(deviceId: string): PlayingState
+
+Obtains the playback state of a device.
+
+**Since:** 26.0.1
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name   | Type    | Mandatory  | Description     |
+| ------ | ------ | ---- | ------- |
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+
+**Return value**
+
+| Type                           | Description        |
+| ----------------------------- | ---------- |
+| [PlayingState](js-apis-bluetooth-a2dp.md#playingstate) | Playback state. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API. |
+|202 | Permission verification failed. A non-system application calls a system API. |
+|801 | Capability not supported. |
+|2900003 | Bluetooth disabled. |
+|2900004 | Profile not supported. |
+|2900099 | Internal system error. For example, IPC error. Detailed error messages can be used to assist in locating the problem. |
+|2904001 | The a2dp sink not connected. |
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let a2dpSink = a2dp.createA2dpSnkProfile();
+    let state = a2dpSink.getPlayingState('XX:XX:XX:XX:XX:XX');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }

@@ -889,6 +889,116 @@ Allows an application to add, remove, or change all calendar events.
 
 **Changelog**: This permission is available only to system applications in API versions 9 to 19. From API version 20, it's also available to normal applications.
 
+## ohos.permission.vehicle.CAR_CONTROL
+
+Allows an application to query, set, and subscribe to the mating part status information via the head unit.
+
+<!--RP102--><!--RP102End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.STEERINGWHEEL_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (steering wheel).
+
+You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+
+<!--RP102--><!--RP102End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.INTERIOR_LIGHT_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (interior light).
+
+You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+
+<!--RP102--><!--RP102End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_INTERIOR_LIGHT
+
+Allows an application to set the status of the mating part (interior light).
+
+You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+
+<!--RP102--><!--RP102End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.DRIVE_INFORMATION_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (driving information module).
+
+You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+
+<!--RP102--><!--RP102End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.ACCELERATOR_PEDAL_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (accelerator pedal).
+
+You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+
+<!--RP102--><!--RP102End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.BRAKE_PEDAL_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (brake pedal).
+
+You must request ohos.permission.vehicle.CAR_CONTROL before requesting this permission.
+
+<!--RP102--><!--RP102End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
 ## ohos.permission.SET_SYSTEMSHARE_APPLAUNCHTRUSTLIST
 
 Allows an application to set the trustlist of target applications for system sharing.
@@ -1521,6 +1631,20 @@ Allows an application on the rear display to call spatial gesture APIs to enable
  
 **Since**: 26.0.1
 
+## ohos.permission.LOCAL_DEBUG_OTHER_APPS
+ 
+Allows an application to use the aa tool to debug other applications locally in developer mode.
+ 
+<!--RP107--><!--RP107End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: PCs/2-in-1 devices | tablets
+ 
+**Since**: 26.0.1
+
 ## ohos.permission.ACCESS_SE_KEY
 
 Allows an application to generate, use, and delete secure element keys.
@@ -1534,6 +1658,20 @@ Allows an application to generate, use, and delete secure element keys.
 **Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
 
 **Since**: 26.0.0
+
+## ohos.permission.DEFAULT_WEB_BROWSER
+ 
+Allows an application to be set as the user's default browser.
+ 
+<!--RP103--><!--RP103End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
+ 
+**Since**: 26.0.1
 
 ## ohos.permission.kernel.LOAD_CERTSIGN_LIBRARY
  
@@ -1576,3 +1714,79 @@ Allows an application to obtain the list of applications installed on the device
 **Supported devices**: PCs/2-in-1 devices
  
 **Since**: 26.0.1
+
+## ohos.permission.ASSESSMENT_CONFIGURATION
+
+Allows an application to enter exam mode. The system service will display a dialog to remind the user that system capabilities will be restricted once exam mode is enabled. This prevents cheating or information leakage during exams, ensuring exam fairness while protecting user rights.
+
+<!--RP112--><!--RP112End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.1
+
+## ohos.permission.DIRECT_CALL
+ 
+Allows an application to make calls with one tap.
+
+With this permission, the application can make calls directly without opening the Contacts screen when the device has a single SIM card or a default SIM card has been specified on a multi-SIM device. 
+ 
+<!--RP114--><!--RP114End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: user_grant
+ 
+**Supported devices**: phones
+ 
+**Since**: 26.0.1
+
+## ohos.permission.ACCESS_BOARD_INFO
+ 
+Allows an application to obtain the device hardware information.
+ 
+<!--RP118--><!--RP118End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: PCs/2-in-1 devices
+ 
+**Since**: 26.0.1
+
+## ohos.permission.SYNC_ROOT_MANAGER
+ 
+Allows an application to manage cloud drive sync folders.
+ 
+With this permission, the application can add sync root folders to the sidebar of the file manager and customize the icons of sync root folders.
+ 
+<!--RP115--><!--RP115End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: PCs/2-in-1 devices | tablets
+ 
+**Since**: 26.0.1
+
+## ohos.permission.HIDDEN_CAMERA_DETECTION
+
+Allows an application to detect hidden cameras.
+
+With this permission, the application can assist users in detecting whether hidden cameras exist in the current space (such as hotels or guesthouses) to protect user privacy.
+
+<!--RP120--><!--RP120End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones
+
+**Valid since**: 26.0.1

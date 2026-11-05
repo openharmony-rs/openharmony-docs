@@ -121,40 +121,41 @@ OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_
 
 在ArkTS中可以通过customizeSchemes注册自定义协议，示例如下：
 
-  ``` ts
-    // xxx.ets
-    import { webview } from '@kit.ArkWeb';
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    @Entry
-    @Component
-    struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    responseWeb: WebResourceResponse = new WebResourceResponse();
-    scheme1: webview.WebCustomScheme = { schemeName: "name1", isSupportCORS: true, isSupportFetch: true };
-    scheme2: webview.WebCustomScheme = { schemeName: "name2", isSupportCORS: true, isSupportFetch: true };
-    scheme3: webview.WebCustomScheme = { schemeName: "name3", isSupportCORS: true, isSupportFetch: true };
-
-    aboutToAppear(): void {
-        try {
-        webview.WebviewController.customizeSchemes([this.scheme1, this.scheme2, this.scheme3]);
-        } catch (error) {
-        console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-        }
-    }
-
-    build() {
-        Column() {
-        Web({ src: 'www.example.com', controller: this.controller })
-            .onInterceptRequest((event) => {
-            if (event) {
-                console.info('url:' + event.request.getRequestUrl());
-            }
-            return this.responseWeb;
-            })
-        }
+  <!-- @[register_custom_schemes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/pages/CustomizeSchemes.ets) -->
+  
+  ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  responseWeb: WebResourceResponse = new WebResourceResponse();
+  scheme1: webview.WebCustomScheme = { schemeName: 'name1', isSupportCORS: true, isSupportFetch: true };
+  scheme2: webview.WebCustomScheme = { schemeName: 'name2', isSupportCORS: true, isSupportFetch: true };
+  scheme3: webview.WebCustomScheme = { schemeName: 'name3', isSupportCORS: true, isSupportFetch: true };
+  
+  aboutToAppear(): void {
+      try {
+      webview.WebviewController.customizeSchemes([this.scheme1, this.scheme2, this.scheme3]);
+      } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
       }
-    }
+  }
+  
+  build() {
+      Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+          .onInterceptRequest((event) => {
+          if (event) {
+              console.info('url:' + event.request.getRequestUrl());
+          }
+          return this.responseWeb;
+          })
+      }
+      }
+  }
   ```
 
 ### 获取被拦截请求的信息
@@ -182,7 +183,7 @@ OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_
     OH_ArkWebResourceRequest_GetHttpBodyStream(resourceRequest(), &stream_);
     // 设置读取上传数据的读回调。
     OH_ArkWebHttpBodyStream_SetReadCallback(stream_, ReadCallback);
-    // 初始化ArkWeb_HttpBodyStream，其它OH_ArkWebHttpBodyStream*函数需要在初始化进行调用。
+    // 初始化ArkWeb_HttpBodyStream，其它OH_ArkWebHttpBodyStream*函数需要在初始化之后进行调用。
     OH_ArkWebHttpBodyStream_Init(stream_, InitCallback);
   ```
 
@@ -261,8 +262,8 @@ ArkTS：[@ohos.web.netErrorList (ArkWeb网络协议栈错误列表)](../referenc
 
 在ArkTS中，为被拦截的请求提供自定义的响应信息：
 
-   ```ts
-   this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
+  ```ts
+  this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
     let response = new webview.WebSchemeHandlerResponse();
     try {
       // 设置网络错误代码为OK，表示请求成功。
@@ -295,8 +296,8 @@ ArkTS：[@ohos.web.netErrorList (ArkWeb网络协议栈错误列表)](../referenc
       console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
     return true;
-   })
-   ```
+  })
+  ```
 
 网络拦截支持流式请求，可以通过多次调用[didReceiveResponseBody](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponsebody12)或者[OH_ArkWebResourceHandler_DidReceiveData](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceivedata)，分块构造返回响应体。最后一次返回响应体时，再调用[didFinish](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfinish12)或者[OH_ArkWebResourceHandler_DidFinish](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfinish)通知Web组件被拦截的请求已经完成。
 

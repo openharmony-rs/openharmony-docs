@@ -45,6 +45,22 @@ import { childProcessManager } from '@kit.AbilityKit';
 | SELF_FORK |  0   | 从App自身进程Fork子进程。以该模式启动的子进程会继承父进程资源，不能使用Binder IPC和其他进程通信，否则会导致子进程崩溃退出。 |
 | APP_SPAWN_FORK |  1   | 从AppSpawn Fork子进程。以该模式启动的子进程不会继承父进程资源，可以使用Binder IPC和其他进程通信。 |
 
+## ChildProcessInformation
+
+type ChildProcessInformation = _ChildProcessInformation
+
+定义子进程信息。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 类型    | 说明                                          |
+| :------ | --------------------------------------------- |
+| _[ChildProcessInformation](./js-apis-inner-application-childProcessRunningInfo.md) | 定义子进程信息，包含子进程的PID、所属父进程的PID、子进程的进程名。|
+
 ## childProcessManager.startChildProcess
 
 startChildProcess(srcEntry: string, startMode: StartMode): Promise&lt;number&gt;
@@ -375,7 +391,7 @@ void Main(NativeChildProcess_Args args)
         char *fdName = current->fdName;
         int32_t fd = current->fd;
         current = current->next;
-        // 业务逻辑..
+        // 业务逻辑...
     }
 }
 } // extern "C"
@@ -526,4 +542,51 @@ struct Index {
     .height('100%')
   }
 }
+```
+
+## childProcessManager.getChildProcessInfos
+
+getChildProcessInfos(): Promise&lt;Array&lt;ChildProcessInformation&gt;&gt;
+
+获取当前应用的所有子进程信息，使用Promise异步回调。包括通过以下方式启动的子进程：
+- [OH_Ability_CreateNativeChildProcess](capi-native-child-process-h.md#oh_ability_createnativechildprocess) / [OH_Ability_CreateNativeChildProcessWithConfigs](capi-native-child-process-h.md#oh_ability_createnativechildprocesswithconfigs)
+- [OH_Ability_StartNativeChildProcess](capi-native-child-process-h.md#oh_ability_startnativechildprocess) / [OH_Ability_StartNativeChildProcessWithConfigs](capi-native-child-process-h.md#oh_ability_startnativechildprocesswithconfigs)
+- [childProcessManager.startChildProcess](#childprocessmanagerstartchildprocess)（非SELF_FORK模式）
+- [childProcessManager.startArkChildProcess](#childprocessmanagerstartarkchildprocess12)
+- [childProcessManager.startNativeChildProcess](#childprocessmanagerstartnativechildprocess13)
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;Array&lt;[ChildProcessInformation](js-apis-inner-application-childProcessRunningInfo.md)&gt;&gt; | Promise对象，返回当前应用的子进程信息。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 16000050 | Connect to system service failed. |
+
+**示例：**
+
+```ts
+import { childProcessManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+childProcessManager.getChildProcessInfos().then((data) => {
+  console.info(`getChildProcessInfos success, count: ${data.length}`);
+  for (let info of data) {
+    console.info(`pid: ${info.pid}, parentPid: ${info.parentPid}, processName: ${info.processName}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`getChildProcessInfos failed, code: ${err.code}, msg: ${err.message}`);
+});
 ```

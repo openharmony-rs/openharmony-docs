@@ -6,6 +6,7 @@
 <!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
 <!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=9515dc361850eeb43776683d84a005b612b90624 translatedAt=2026-10-31T01:20:18.017Z pushedAt=2026-10-31T03:29:14.188Z nl=1 -->
 
 This topic describes terms related to Content Embed Kit.
 
@@ -23,7 +24,7 @@ A data format in which object data that complies with the object linking and emb
 
 ## OE Document Storage Structure
 
-An OE document is a compound file that uses structured storage. Structured storage defines how a single file can be treated as a hierarchical collection consisting of two types of objects: storage objects and stream objects. These two object types are represented as directories and files, respectively, as shown below.
+An OE document is a compound file that uses structured storage. Structured storage defines how a single file is treated as a hierarchical collection of two types of objects (storage objects and stream objects), which are represented as directories and files respectively, as shown in the following figure:
 
 ![OE document storage structure](figures/document_storage_structure.jpg)
 
@@ -52,9 +53,7 @@ A program object used by client developers to encapsulate object embedding and e
 A program object used by server developers to encapsulate object embedding and editing for an OE document. It points to the same OE document as the client OE object and can interact with the client OE object.
 
 ## AMS
-
 AMS (Ability Manager Service): Provides internal `ConnectExtensionAbility/DisconnectExtensionAbility` APIs for **OE SA** to start and stop OE Extensions.
 
 ## BMS
-
 BMS (Bundle Manager Service): Provides **OE SA** with the capability to query OE Extension information registered by installed applications, and supports dynamic addition, modification, and deletion of OE Extension information through event notifications.

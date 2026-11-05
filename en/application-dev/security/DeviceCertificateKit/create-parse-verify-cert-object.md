@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e80025ed82ed281bac11c255d720292d542f564f translatedAt=2026-10-10T03:25:51.222Z pushedAt=2026-10-10T03:27:11.757Z -->
+<!-- md-trans-meta sourceCommit=3cabfb41c56c012808b2e0701411bdb2e0217269 translatedAt=2026-10-31T02:52:13.709Z pushedAt=2026-10-31T06:04:46.936Z nl=1 -->
 
 This topic walks you through on how to create a certificate object, obtain information about the certificate, and check the validity period of the certificate.
 
@@ -78,8 +78,8 @@ function certSample(): void {
 
     // Obtain the certificate subject name.
     let subjectNameBin = x509Cert.getSubjectName(cert.EncodingType.ENCODING_UTF8);
-    let encoder = util.TextDecoder.create();
-    let subjectName = encoder.decodeToString(subjectNameBin.data);
+    let decoder = util.TextDecoder.create();
+    let subjectName = decoder.decodeToString(subjectNameBin.data);
     console.info(`X509 subjectName: ${subjectName}`);
 
     // Obtain the string-type data of the certificate object.

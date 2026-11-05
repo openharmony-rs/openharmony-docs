@@ -84,42 +84,18 @@
     <!--Del-->
     - [指定用户身份操作（仅对系统应用开放）](huks-as-user-sys.md)
     <!--DelEnd-->
-- 外部密钥管理扩展<!--huks-external-key-management-->
-  - [外部密钥管理扩展简介](huks-external-hardware-key-management-overview.md)
-  - Provider管理<!--huks-provider-management-->
-    - [Provider管理介绍及规格](huks-provider-management-overview.md)
-    - [注册/注销Provider(ArkTS)](huks-extension-registration-and-unregistration-arkts.md)
-    - [注册/注销Provider(C/C++)](huks-extension-registration-and-unregistration-ndk.md)
-  - 资源管理<!--huks-resource-management-->
-    - [资源管理介绍及规格](huks-resource-management-overview.md)
-    - [获取资源ID(ArkTS)](huks-extension-get-resource-id-arkts.md)
-    - [打开资源/关闭资源(ArkTS)](huks-open-close-resource-arkts.md)
-    - [打开资源/关闭资源(C/C++)](huks-open-close-resource-ndk.md)
-  - 密钥管理<!--huks-extension-key-management-->
-    - [密钥生成与导入导出介绍](huks-extension-key-generation-import-overview.md)
-    - [密钥生成(ArkTS)](huks-extension-key-generation-arkts.md)
-    - [密钥导入(ArkTS)](huks-extension-key-import-arkts.md)
-    - [公钥导出(ArkTS)](huks-extension-key-export-arkts.md)
-  - UKeyPIN码认证管理<!--huks-ukey-pin-authentication-management-->
-    - [UKey PIN码认证介绍及规格](huks-ukey-pin-authentication-management-overview.md)
-    <!--Del-->
-    - [UKey PIN码认证(ArkTS)](huks-ukey-pin-authentication-arkts-sys.md)
-    <!--DelEnd-->
-    - [查询认证状态(ArkTS)](huks-query-authentication-status-arkts.md)
-    - [查询认证状态(C/C++)](huks-query-authentication-status-ndk.md)
-    - [清除UKey PIN码认证状态(ArkTS)](huks-clear-pin-auth-state-arkts.md)
-  - 签名/验签<!--huks-ukey-signing-signature-verification-->
-    - [签名/验签介绍及算法规格](huks-ukey-signing-signature-verification-overview.md)
-    - [签名/验签(ArkTS)](huks-ukey-signing-signature-verification-arkts.md)
-    - [签名/验签(C/C++)](huks-ukey-signing-signature-verification-ndk.md)
-  - 通用操作<!--huks-ukey-general-operation-->
-    - [通用查询介绍及规格](huks-ukey-general-query-overview.md)
-    - [通用查询(ArkTS)](huks-ukey-general-query-arkts.md)
-    - [通用查询(C/C++)](huks-ukey-general-query-ndk.md)
-    - [属性设置(ArkTS)](huks-extension-set-property-arkts.md)
-    - [获取错误信息(ArkTS)](huks-ukey-get-error-info-arkts.md)
-  - [UKey流程示例指导](huks-ukey-best-dev.md)
-  - 驱动HAP ExtensionAbility适配指导<!--huks-extension-ability-support-->
+- 密钥管理扩展<!--huks-key-management-extension-->
+  - [密钥管理扩展介绍](huks-external-hardware-key-management-overview.md)
+  - CryptoExtensionAbility适配<!--huks-cryptoextensionability-adaptation-->
     - [CryptoExtensionAbility扩展能力介绍](huks-extension-ability-support-overview.md)
-    - [CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)<!--RP4--><!--RP4End-->
+    - [CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)
+    - [CryptoExtensionAbility注册与注销](huks-extension-registration-and-unregistration-arkts-ndk.md)
+  - 密钥管理扩展使用<!--huks-key-management-extension-usage-->
+    - [密钥生成与导入导出](huks-extension-key-generation-import-export.md)
+    - [签名/验签](huks-extension-ability-signing-signature-verification.md)
+    - [PIN码访问控制](huks-extension-ability-pin-authentication-management.md)
+    - [通用操作](huks-extension-ability-general-operation.md)
+- 应用场景<!--huks-application-scenarios-->
+  - [浏览器双向SSL登录](huks-extension-ability-best-dev.md)
+<!--RP4--><!--RP4End-->
 - [Universal Keystore Kit术语](universal-keystore-glossary.md)

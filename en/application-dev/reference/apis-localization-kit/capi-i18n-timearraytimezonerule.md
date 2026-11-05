@@ -3,10 +3,10 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
-<!-- md-trans-meta sourceCommit=635c96c73146bacf985d294d6e608687bbdae586 translatedAt=2026-07-30T09:53:32.193Z pushedAt=2026-07-31T01:23:10.406Z -->
+<!-- md-trans-meta sourceCommit=1a7fdda7cb0bdacc6b1c367c8fd0def17530cd88 translatedAt=2026-11-04T03:47:58.439Z pushedAt=2026-11-04T10:13:14.872Z nl=1 -->
 
 ```c
 typedef struct TimeArrayTimeZoneRule {...} TimeArrayTimeZoneRule
@@ -34,3 +34,5 @@ Time zone rule defined by the start timestamp array.
 | double* startTimes | Array of start timestamps when the rule takes effect. The timestamp unit is milliseconds. |
 | int32_t numStartTimes | Size of the start timestamp array of the rule.|
 | [TimeRuleType](capi-timezone-h.md#timeruletype) timeRuleType | Time rule type.|
+
+

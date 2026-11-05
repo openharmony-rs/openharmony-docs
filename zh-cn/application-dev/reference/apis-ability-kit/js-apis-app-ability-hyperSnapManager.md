@@ -74,9 +74,9 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| code | [HyperSnapErrorCode](#hypersnaperrorcode) | 是 | 否 | 错误码。 |
-| msg | string | 是 | 否 | 错误消息，表明快启失败的原因。 |
-| occurTimeStamp | number | 是 | 否 | 发生错误时的时间戳，即自Unix纪元（1970-01-01 00:00:00 UTC）以来经过的时间，单位为毫秒，取值为整数。 |
+| code | [HyperSnapErrorCode](#hypersnaperrorcode) | 否 | 否 | 错误码。 |
+| msg | string | 否 | 否 | 错误消息，表明快启失败的原因。 |
+| occurTimeStamp | number | 否 | 否 | 发生错误时的时间戳，即自Unix纪元（1970-01-01 00:00:00 UTC）以来经过的时间，单位为毫秒，取值为整数。 |
 
 ## hyperSnapManager.setHyperSnapEnabled
 
@@ -194,12 +194,11 @@ getLastError(errType: HyperSnapErrorType): Promise&lt;HyperSnapErrorInfo&gt;
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+以下错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000050 | Internal error. |
+| 16000050 | Connect to system service failed. |
 
 **示例：**
 

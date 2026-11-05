@@ -11,7 +11,6 @@
 > **说明**
 >
 > - 从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
 
 ## 导入模块
 
@@ -667,7 +666,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 | rect   | [window.Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 组件矩形变化后的值。 |
 | reason    | [RectChangeReason](#rectchangereason14) | 否   | 否   | 组件矩形变化的原因。 |
 
-## 完整示例
+## 示例
 
 本示例展示文档中所有API在[EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md)中的基础使用方式，示例应用的`bundleName`为"com.example.embeddeddemo"，被拉起的`EmbeddedUIExtensionAbility`为"ExampleEmbeddedAbility"。
 

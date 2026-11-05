@@ -2,11 +2,11 @@
 
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=29f3919446ee01733553b9b39493ee11224dad86 translatedAt=2026-07-31T02:11:58.000Z pushedAt=2026-07-31T03:50:48.736Z -->
+<!--Adviser: @qin_wei_jie-->
+<!-- md-trans-meta sourceCommit=a9776cf91359a852d7804f0b36513c7852570375 translatedAt=2026-11-04T04:12:29.547Z pushedAt=2026-11-04T10:12:50.065Z nl=1 -->
 
 > **NOTE**
 >
@@ -24,7 +24,7 @@ createMediaKeySystem(name: string): MediaKeySystem
 
 Creates a MediaKeySystem instance. A maximum of 64 MediaKeySystem instances can be created. If the number of MediaKeySystem instances exceeds this limit, error code 24700103 will be reported. You are advised to call the [destroy](arkts-apis-drm-MediaKeySystem.md#destroy) API in a timely manner to release MediaKeySystem instances that are no longer used.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -47,9 +47,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.               |
-| 24700101                |  All unknown errors                  |
-| 24700103                |  Meet max MediaKeySystem num limit                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                  |
+| 24700103                |  Meet max MediaKeySystem num limit.                  |
+| 24700201                |  Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -67,7 +67,7 @@ isMediaKeySystemSupported(name: string): boolean
 
 Checks whether the device supports the specified DRM solution.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -75,7 +75,7 @@ Checks whether the device supports the specified DRM solution.
 
 | Name    | Type                                            | Mandatory| Description                          |
 | -------- | ----------------------------------------------- | ---- | ---------------------------- |
-| name  | string     | Yes  | DRM solution name. You can obtain the DRM solution name supported by the device through the [drm.getMediaKeySystems](arkts-apis-drm-f.md#drmgetmediakeysystems12) API, for example, **com.clearplay.drm**.                    |
+| name  | string     | Yes   | Name of the DRM solution, with a maximum length of 4096 bytes. The name of the DRM solution supported by the device can be obtained through the [drm.getMediaKeySystems](arkts-apis-drm-f.md#drmgetmediakeysystems12) API, for example, "com.clearplay.drm".                     |
 
 **Return value**
 
@@ -90,8 +90,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed, the param name's length is zero or too big(exceeds 4096 Bytes).               |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                  |
+| 24700201                |  Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -108,7 +108,7 @@ isMediaKeySystemSupported(name: string, mimeType: string): boolean
 
 Checks whether the device supports the specified DRM solution and MIME type.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -116,7 +116,7 @@ Checks whether the device supports the specified DRM solution and MIME type.
 
 | Name    | Type                                            | Mandatory| Description                                                                                                         |
 | -------- | ----------------------------------------------- | ---- |-------------------------------------------------------------------------------------------------------------|
-| name  | string     | Yes  | DRM solution name. You can obtain the DRM solution name supported by the device through the [drm.getMediaKeySystems](arkts-apis-drm-f.md#drmgetmediakeysystems12) API, for example, **com.clearplay.drm**.|
+| name  | string     | Yes   | DRM solution name. Since API version 12, the DRM solution names supported by the device, such as "com.clearplay.drm", can be obtained through the [drm.getMediaKeySystems](arkts-apis-drm-f.md#drmgetmediakeysystems12) interface.                   |
 | mimeType  | string     | Yes  | MIME type. The supported MIME types depend on the DRM solution. For example, video/avc and video/hevc.                                                              |
 
 **Return value**
@@ -132,8 +132,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.                |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                  |
+| 24700201                |  Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -148,9 +148,9 @@ console.info("isMediaKeySystemSupported: ", supported);
 
 isMediaKeySystemSupported(name: string, mimeType: string, level: ContentProtectionLevel): boolean
 
-Checks whether the device supports the specified DRM solution, MIME type, and content protection level.
+Checks whether the device supports the specified DRM solution, media type, and content protection level.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -175,8 +175,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.               |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                  |
+| 24700201                |  Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -193,7 +193,7 @@ getMediaKeySystemUuid(name: string): string
 
 Obtains the UUID of the DRM content protection system supported by the specified DRM solution.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -215,9 +215,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 401                |  The parameter check failed. Possibly because: 1. Mandatory parameters are left unspecified. 2. Parameter verification failed.                |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 401                |  The parameter check failed.Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.                |
+| 24700101                |  All unknown errors.                  |
+| 24700201                |  Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -234,7 +234,7 @@ getMediaKeySystems(): MediaKeySystemDescription[]
 
 Obtains the list of plugins supported by the device.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -250,8 +250,8 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                  |
+| 24700201                |  Fatal service error, for example, service died.                  |
 
 **Example**
 

@@ -12,6 +12,8 @@
 > **说明：**
 >
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 有源标签能力仅对系统应用开放。
 
 ## 导入模块
 
@@ -340,7 +342,7 @@ write(data: number[]): Promise&lt;void&gt;
 | 错误码ID | 错误信息|
 | -------- | -------- |
 |201 | Permission denied.                 |
-|401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
+|401 | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
 |3200101 | Connected NFC tag running state is abnormal in service. |
 
@@ -418,7 +420,7 @@ write(data: number[], callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息|
 | -------- | -------- |
 |201 | Permission denied.                 |
-|401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
+|401 | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
 |3200101 | Connected NFC tag running state is abnormal in service. |
 
@@ -439,7 +441,7 @@ connectedTag.write(rawData, (err)=> {
 
 ## connectedTag.on('notify')
 
-on(type: "notify", callback: Callback&lt;number&gt;): void
+on(type: 'notify', callback: Callback&lt;number&gt;): void
 
 注册NFC场强状态事件。
 
@@ -456,7 +458,7 @@ on(type: "notify", callback: Callback&lt;number&gt;): void
 
 ## connectedTag.off('notify')
 
-off(type: "notify", callback?: Callback&lt;number&gt;): void
+off(type: 'notify', callback?: Callback&lt;number&gt;): void
 
 取消NFC场强状态事件的注册。
 
@@ -489,7 +491,7 @@ async function nfcTagTestOn(): Promise<void> {
         console.error("initialize error:" + error);
     }
     // 注册回调以接收nfc进离场状态更改通知
-    connectedTag.on("notify", nfcStatusCb);
+    connectedTag.on('notify', nfcStatusCb);
     try {
         let tag = [3, 1, 0];
         console.info("connectedTag write: tag=" + tag);
@@ -504,7 +506,7 @@ async function nfcTagTestOn(): Promise<void> {
 // 业务退出时，取消注册回调、取消初始化
 async function nfcTagTestOff(): Promise<void> {
     // 取消注册回调
-    connectedTag.off("notify", nfcStatusCb);
+    connectedTag.off('notify', nfcStatusCb);
     try {
         console.info("connectedTag uninitialize");
         connectedTag.uninitialize();

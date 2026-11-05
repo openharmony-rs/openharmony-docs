@@ -95,7 +95,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
    // 为自定义数据源创建 source 资源实例（可选）。使用该方式前，需要先实现AVSourceReadAt接口函数实现。
    // 当使用OH_AVSource_CreateWithDataSource时需要补充g_filePath。
-   // g_filePath = filePath ;
+   // g_filePath = filePath;
    // OH_AVDataSource dataSource = {fileSize, AVSourceReadAt};
    // OH_AVSource *source = OH_AVSource_CreateWithDataSource(&dataSource);
    ```

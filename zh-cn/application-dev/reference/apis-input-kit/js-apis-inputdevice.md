@@ -1062,7 +1062,7 @@ setFunctionKeyEnabled(functionKey: FunctionKey, enabled: boolean): Promise&lt;vo
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 3900002      | There is currently no keyboard device connected. |
 | 3900003      | It is prohibited for non-input applications. |
@@ -1171,7 +1171,7 @@ struct Index {
 | uniq<sup>9+</sup>    | string                                 | 否 | 否 | 输入设备的唯一标识。                                         |
 | isVirtual<sup>23+</sup>    | boolean                                 | 否 | 是 | 输入设备是否为虚拟设备。<br>true表示是虚拟设备，false表示是非虚拟设备。当该字段不存在时，默认值为false。                                      |
 | isLocal<sup>23+</sup>    | boolean                                 | 否 | 是 | 输入设备是否为本地设备。<br>true表示是本地设备，false表示是非本地设备。当该字段不存在时，默认值为false。                                       |
-| displayId  | number                                  | 是 | 是 | 绑定的目标显示器ID。当系统中有绑定关系时存在该字段，未绑定时不存在该字段。<br>**起始版本**：26.0.1|
+| displayId  | number                                  | 是 | 是 | 绑定的目标显示器ID。当系统中有绑定关系时存在该字段，未绑定时不存在该字段。<br>**起始版本**：26.0.1<br>**模型约束**：此接口仅可在Stage模型下使用。|
 
 ## AxisType<sup>9+</sup>
 

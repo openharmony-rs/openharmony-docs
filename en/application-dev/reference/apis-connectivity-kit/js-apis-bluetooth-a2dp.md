@@ -38,7 +38,7 @@ type BaseProfile = baseProfile.BaseProfile
 
 createA2dpSrcProfile(): A2dpSourceProfile
 
-Creates an [A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source) instance. Through this instance, you can use the methods provided by the local device when it functions as the A2DP source device, such as obtaining the audio playback state based on the Bluetooth protocol between the local device and other devices.
+Creates an [A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source) instance. Through this instance, you can use the methods provided by the local device when it functions as the A2DP Source device, such as obtaining the audio playback state based on the Bluetooth protocol between the local device and other devices.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -71,12 +71,51 @@ try {
 ```
 
 
+## a2dp.createA2dpSnkProfile
+
+createA2dpSnkProfile(): A2dpSinkProfile
+
+Creates an [A2DP Sink](../../connectivity/bluetooth/terminology.md#a2dp-sink) instance. Through this instance, you can call the methods required when the local device functions as an A2DP Sink device.
+
+**Since:** 26.0.1
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Return value**
+
+| Type                           | Description        |
+| ----------------------------- | ---------- |
+| [A2dpSinkProfile](#a2dpsinkprofile) | **A2dpSinkProfile** instance. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|801 | Capability not supported. |
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let a2dpSinkProfile = a2dp.createA2dpSnkProfile();
+    console.info('a2dpSink success');
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
 ## A2dpSourceProfile
 
 Represents the [A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source) role in A2DP.
 - The **A2dpSourceProfile** class is inherited from [BaseProfile](#baseprofile). Therefore, you can use the APIs in its parent class.
 - Before using the APIs of this class, you need to construct an **A2dpSourceProfile** instance by calling [createA2dpSrcProfile](#a2dpcreatea2dpsrcprofile).
-- The counterpart of the A2DP source role is the [A2DP Sink](../../connectivity/bluetooth/terminology.md#a2dp-sink) role.
+- The counterpart of the A2DP Source role is the [A2DP Sink](../../connectivity/bluetooth/terminology.md#a2dp-sink) role.
 
 ### getPlayingState
 
@@ -127,6 +166,20 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+
+## A2dpSinkProfile
+
+Represents the [A2DP Sink](../../connectivity/bluetooth/terminology.md#a2dp-sink) role in A2DP.
+- The **A2dpSinkProfile** class is inherited from [BaseProfile](#baseprofile). Therefore, you can use the APIs in its parent class.
+- Before using the APIs of this class, you need to construct an **A2dpSinkProfile** instance by calling [createA2dpSnkProfile](#a2dpcreatea2dpsnkprofile).
+- The counterpart of the A2DP Sink role is the [A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source) role.
+
+**Since:** 26.0.1
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction:** This API can be used only in the stage model.
 
 
 ## PlayingState

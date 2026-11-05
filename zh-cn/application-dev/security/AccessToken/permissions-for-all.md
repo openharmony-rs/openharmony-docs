@@ -751,6 +751,34 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.QUERY_PUBLIC_CLI_TOOL
+
+允许应用查询可用的CLI工具。
+
+获取该权限后，可帮助三方智能体应用接入Claw功能。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.1
+
+## ohos.permission.EXEC_PUBLIC_CLI_TOOL
+
+允许应用执行可用的CLI工具。
+
+获取该权限后，可帮助三方智能体应用接入Claw功能。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.1
+
 ## ohos.permission.GET_ENTERPRISE_CONFIG
 
 允许应用获取行业定制配置文件。
@@ -807,6 +835,34 @@
 
 **起始版本**：26.0.1
 
+## ohos.permission.vehicle.ACCESS_CAR_SECURITY_PRIVACY
+
+允许应用访问车载安全隐私服务的接口。
+
+获取该权限后，应用可以查询整车隐私相关协议或政策、主驾隐私模式、一键除痕状态等。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.kernel.USB_CAPTURE
+
+允许应用抓取USB数据包。
+
+获取此权限后，应用程序需用户认证后才可以进行USB抓包，无此权限不允许抓取。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.1
+
 ## ohos.permission.ACCESS_USER_PASSIVE_RECOGNITION
 
 允许应用识别当前使用者是否为用户本人。
@@ -818,5 +874,19 @@
 **授权方式**：系统授权（system_grant）
 
 **支持设备**：Phone | PC/2in1 | Tablet | Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.UPDATE_SCOPE_FONT
+
+允许应用管理应用级和会话级字体。
+
+获取该权限后，应用可使用字体管理接口安装、卸载和查询应用级和会话级字体，并注册字体服务状态监听器。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.1

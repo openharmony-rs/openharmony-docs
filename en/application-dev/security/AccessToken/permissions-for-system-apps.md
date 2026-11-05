@@ -455,6 +455,1798 @@ Allows a system application to forcibly restore a device to its factory settings
 
 **Since**: 23
 
+## ohos.permission.vehicle.HVAC_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (air conditioner).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_HVAC
+
+Allows an application to set the status of the mating part (air conditioner).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.FRIDGE_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (refrigerator).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_FRIDGE
+
+Allows an application to set the status of the mating part (refrigerator).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.SEAT_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (seat).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_SEAT
+
+Allows an application to set the status of the mating part (seat).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.DOOR_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (door).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_DOOR
+
+Allows an application to set the status of the mating part (door).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.LOCK_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (car lock).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_LOCK
+
+Allows an application to set the status of the mating part (car lock).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.WINDOW_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (car window).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_WINDOW
+
+Allows an application to set the status of the mating part (car window).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.SUNROOF_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (sunroof).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_SUNROOF
+
+Allows an application to set the status of the mating part (sunroof).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_STEERINGWHEEL
+
+Allows an application to set the status of the mating part (steering wheel).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.ENERGY_PORT_COVER_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (energy port cover).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_ENERGY_PORT_COVER
+
+Allows an application to set the status of the mating part (energy port cover).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.EXTERIOR_LIGHT_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (exterior light).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_EXTERIOR_LIGHT
+
+Allows an application to set the status of the mating part (exterior light).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.INTERIOR_CAMERA_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (interior camera).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_INTERIOR_CAMERA
+
+Allows an application to set the status of the mating part (interior camera).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.EXTERIOR_CAMERA_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (exterior camera).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_EXTERIOR_CAMERA
+
+Allows an application to set the status of the mating part (exterior camera).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.INTERIOR_SPEAKER_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (interior speaker).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_INTERIOR_SPEAKER
+
+Allows an application to set the status of the mating part (interior speaker).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.EXTERIOR_SPEAKER_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (exterior speaker).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_EXTERIOR_SPEAKER
+
+Allows an application to set the status of the mating part (exterior speaker).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.WIPER_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (wiper).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_WIPER
+
+Allows an application to set the status of the mating part (wiper).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.MIRROR_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (mirror).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_MIRROR
+
+Allows an application to set the status of the mating part (mirror).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.HORN_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (horn).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_HORN
+
+Allows an application to set the status of the mating part (horn).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CHB_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (cooling and heating box).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_CHB
+
+Allows an application to set the status of the mating part (cooling and heating box).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CODEBOX_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (code box).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_CODEBOX
+
+Allows an application to set the status of the mating part (code box).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.STANDEMBLEM_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (standing emblem).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_STANDEMBLEM
+
+Allows an application to set the status of the mating part (standing emblem).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.GRILLE_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (grille).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_GRILLE
+
+Allows an application to set the status of the mating part (grille).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.WIRELESSCHARGER_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (wireless charger).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_WIRELESSCHARGER
+
+Allows an application to set the status of the mating part (wireless charger).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.PROJECTORSCREEN_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (projector screen).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_PROJECTORSCREEN
+
+Allows an application to set the status of the mating part (projector screen).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_DRIVE_INFORMATION
+
+Allows an application to set the status of the mating part (drive information module).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.BODY_SENSOR_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (body sensor).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_BODY_SENSOR
+
+Allows an application to set the status of the mating part (body sensor).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.VSC_SYSTEM_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (vehicle stability control system).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_VSC_SYSTEM
+
+Allows an application to set the status of the mating part (vehicle stability control system).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CHG_DISCHG_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (charge and discharge control system).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_CHG_DISCHG
+
+Allows an application to set the status of the mating part (charge and discharge control system).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.EPB_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (electronic parking brake).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_EPB
+
+Allows an application to set the status of the mating part (electronic parking brake).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.PBS_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (power battery system).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_PBS
+
+Allows an application to set the status of the mating part (power battery system).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.TIRE_SYSTEM_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (tire system).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_TIRE_SYSTEM
+
+Allows an application to set the status of the mating part (tire system).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.TOW_SYSTEM_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (tow system).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_TOW_SYSTEM
+
+Allows an application to set the status of the mating part (tow system).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.SUSPENSION_SYSTEM_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (suspension system).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_SUSPENSION_SYSTEM
+
+Allows an application to set the status of the mating part (suspension system).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_ACCELERATOR_PEDAL
+
+Allows an application to set the status of the mating part (accelerator pedal).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_BRAKE_PEDAL
+
+Allows an application to set the status of the mating part (brake pedal).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CAR_MODE_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (vehicle mode).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_CAR_MODE
+
+Allows an application to set the status of the mating part (vehicle mode).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.DRIVING_MODE_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (driving mode).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_DRIVING_MODE
+
+Allows an application to set the status of the mating part (driving mode).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.INTERIOR_HEATING_MODULE_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (interior heating module).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_INTERIOR_HEATING_MODULE
+
+Allows an application to set the status of the mating part (interior heating module).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.SPECIAL_MOBILITY_MODE_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (special mobility mode).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_SPECIAL_MOBILITY_MODE
+
+Allows an application to set the status of the mating part (special mobility mode).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.BUTTON_LEVER_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (button and lever).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_BUTTON_LEVER
+
+Allows an application to set the status of the mating part (button and lever).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.WHC_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (water dispenser).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_WHC
+
+Allows an application to set the status of the mating part (water dispenser).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.PRIVACYCURTAIN_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (privacy curtain).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_PRIVACYCURTAIN
+
+Allows an application to set the status of the mating part (privacy curtain).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.POWER_MANAGEMENT_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (vehicle power management).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_POWER_MANAGEMENT
+
+Allows an application to set the status of the mating part (vehicle power management).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.SMARTKEY_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (smart key).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_SMARTKEY
+
+Allows an application to set the status of the mating part (smart key).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.ETC_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (ETC).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_ETC
+
+Allows an application to set the status of the mating part (ETC).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.HUD_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (HUD).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_HUD
+
+Allows an application to set the status of the mating part (HUD).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.NAVIGATION_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (navigation).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_NAVIGATION
+
+Allows an application to set the status of the mating part (navigation).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.OXYGEN_CONCENTRATOR_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (oxygen concentrator).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_OXYGEN_CONCENTRATOR
+
+Allows an application to set the status of the mating part (oxygen concentrator).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.ELECTRIC_SEAT_BELT_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (electric seat belt).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_ELECTRIC_SEAT_BELT
+
+Allows an application to set the status of the mating part (electric seat belt).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.FRONT_REAR_TRUNK_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (front and rear trunk).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_FRONT_REAR_TRUNK
+
+Allows an application to set the status of the mating part (front and rear trunk).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.RANGE_EXTENDER_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (range extender).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_RANGE_EXTENDER
+
+Allows an application to set the status of the mating part (range extender).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.DIFFERENTIAL_LOCK_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (differential lock).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_DIFFERENTIAL_LOCK
+
+Allows an application to set the status of the mating part (differential lock).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.ARMREST_SCREEN_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (armrest screen).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_ARMREST_SCREEN
+
+Allows an application to set the status of the mating part (armrest screen).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.ARMREST_BOX_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (armrest box).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_ARMREST_BOX
+
+Allows an application to set the status of the mating part (armrest box).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.ELECTRIC_REAR_SPOILER_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (electric rear spoiler).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_ELECTRIC_REAR_SPOILER
+
+Allows an application to set the status of the mating part (electric rear spoiler).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.ELECTRIC_PEDAL_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (electric pedal).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_ELECTRIC_PEDAL
+
+Allows an application to set the status of the mating part (electric pedal).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.ELECTRIC_DRIVE_SYSTEM_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (electric drive system).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_ELECTRIC_DRIVE_SYSTEM
+
+Allows an application to set the status of the mating part (electric drive system).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.SPACE_PARTITIONING_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (space partitioning).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_SPACE_PARTITIONING
+
+Allows an application to set the status of the mating part (space partitioning).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.USB_INFO
+
+Allows an application to subscribe to and obtain the status of the mating part (USB).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_USB
+
+Allows an application to set the status of the mating part (USB).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
 ## ohos.permission.ASSIST_DEVICE_UPDATE
 
 Allows an application to start the upgrade service to perform assisted or collaborative update for other devices.
@@ -6502,6 +8294,20 @@ Allows a system application to access the file cache path of the file transfer s
  	 
 **Valid since**: 26.0.0
 
+## ohos.permission.CAMERA_DRIVER_MONITOR
+
+Allows an application to access the driver monitoring camera.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
 ## ohos.permission.vehicle.CAMERA_EVS
 
 Allows an application to access the vehicle camera.
@@ -6514,7 +8320,7 @@ Allows an application to access the vehicle camera.
 
 **Supported devices**: cars
 
-**Valid since**: 26.0.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.SAMBA_CLIENT_ACCESS
 
@@ -6678,6 +8484,122 @@ Allows an application to manage clone preferences.
  	 
 **Valid since**: 26.0.0
 
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_PRIVACY_CONSENT
+
+Allows an application to sign vehicle privacy agreements or policies.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_DRIVER_SEAT_PRIVACY
+
+Allows an application to set the status of driver-seat privacy mode.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_CLEAR_TRACE
+
+Allows an application to configure trace removal and update the trace removal status.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_SENSORTYPE_STATE
+
+Allows an application to set the validity period of sensitive permissions.
+
+With this permission, the application can configure the validity period for permissions involving sensitive user data, such as the microphone, in-vehicle cameras, and location services.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_REMOTELOCATION
+
+Allows an application to configure the toggle switch status for remote location control.
+
+With this permission, the application can enable or disable remote viewing of the vehicle's location.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_ANONYMIZE_VOICE
+
+Allows an application to use voiceprint anonymization capabilities.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_SUPER_PRIVACY
+
+Allows an application to set the in-vehicle privacy protection status.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.MULTI_SCREEN_MANAGER
+
+Allows a system application to manage the on/off states of multiple screens.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
 ## ohos.permission.SWITCH_MULTI_MODE_BUNDLE
 
 Allows an application to switch the list of displayable applications on multi-mode devices.
@@ -6706,6 +8628,20 @@ Allows an application to skip enterprise re-signing certificate verification.
  
 **Since**: 26.0.1
 
+## ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE
+ 
+Allows an application to install freely distributable applications.
+ 
+**Permission level**: system_core
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: PCs/2-in-1 devices
+ 
+**Valid since**: 26.0.1
+
 ## ohos.permission.SOFTBUS_MANAGER_RESOURCE
 
 Allows a system application to manage SoftBus resources.
@@ -6731,5 +8667,177 @@ Allows an application to install other applications of the debug type.
 **Certificate-based authorization**: true
 
 **Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.1
+
+## ohos.permission.MANAGE_VM
+ 	 
+Allows an application to call basic virtual machine capabilities.
+ 
+With this permission, the application can call basic virtual machine capabilities, such as installing, deleting, starting, and pausing virtual machines.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: PCs/2-in-1 devices | tablets
+ 
+**Valid since**: 26.0.1
+ 
+## ohos.permission.MANAGE_VM_EXTENDED
+ 	 
+Allows an application to call enhanced virtual machine capabilities.
+ 
+With this permission, the application can call enhanced virtual machine capabilities, such as importing and exporting virtual machine disk images and obtaining the host serial number (SN).
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: PCs/2-in-1 devices | tablets
+ 
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.DEVICE_AUTH
+ 
+Allows an application on the rear armrest screen to connect to the head unit for device authentication.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Since**: 26.0.1
+
+## ohos.permission.AUTH_MODEL_DOWNLOAD
+
+Allows a system application to send the authorization results for model download requests to the model management service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.1
+
+## ohos.permission.GET_ENTERPRISE_UNLOCK_CONFIGS
+ 
+Allows an application to obtain configurations related to device unlocking via enterprise accounts.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: PCs/2-in-1 devices
+ 
+**Valid since**: 26.0.1
+ 
+## ohos.permission.MANAGE_ENTERPRISE_UNLOCK_CONFIGS
+ 
+Allows an application to configure the capability of unlocking devices via enterprise accounts.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: PCs/2-in-1 devices
+ 
+**Valid since**: 26.0.1
+
+## ohos.permission.SET_DSL_MODE
+
+Allows an application to modify the device security level (DSL) configuration.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.VEHICLE_POWER
+
+Allows a system application to subscribe to and query the vehicle cabin power status.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.NONRDA_SCREEN
+
+Allows a system application to control the on/off state of screens other than the instrument cluster screen.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CLUSTER_SCREEN
+
+Allows a system application to control the on/off state of the instrument cluster screen.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.SHUTDOWN
+
+Allows a system application to turn off the vehicle cabin power.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.KEEP_STANDBY
+
+Allows a system application to request keeping the vehicle cabin awake.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
 
 **Valid since**: 26.0.1

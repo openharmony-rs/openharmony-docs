@@ -342,13 +342,12 @@ Close the original socket and re-establish a socket connection when the default 
                   }
                 }
               });
+            // Obtain network connection information based on the specified netHandle. Call this only after a valid netHandle is obtained.
+            connection.getConnectionProperties(netHandleInfo).then((data: connection.ConnectionProperties) => {
+              hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
+            })
           }
         });
-    
-        // Obtain network connection information based on the specified netHandle.
-        connection.getConnectionProperties(netHandleInfo).then((data: connection.ConnectionProperties) => {
-          hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
-        })
     // ···
     ```
     
@@ -456,7 +455,7 @@ If an application needs to check whether the current network supports Internet a
     import { hilog } from '@kit.PerformanceAnalysisKit';
     // ...
           // Use the default network to resolve the host name to obtain the list of all IP addresses.
-          connection.getAddressesByName('xxxx').then((data: connection.NetAddress[]) => {
+          connection.getAddressesByName('www.example.com').then((data: connection.NetAddress[]) => {
             hilog.info(0x0000, 'testTag', 'Successfully retrieved default network IP address: ' + JSON.stringify(data));
             // ...
           })

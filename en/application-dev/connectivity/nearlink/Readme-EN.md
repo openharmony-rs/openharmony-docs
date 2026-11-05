@@ -14,5 +14,5 @@
 - [Managing SSAP Connections and Services](nearlink-ssap-connection-guide.md)
 - [Transferring Data over NearLink](nearlink-data-transfer-guide.md)
 - [Obtaining NearLink Coordinated Devices Set Information](nearlink-cdsm-information-guide.md)
-- [FAQs](nearlink-faq-guide.md)
-- [Glossary](nearlink-glossary-guide.md)
+- [NearLink FAQs](nearlink-faq-guide.md)
+- [NearLink Glossary](nearlink-glossary-guide.md)

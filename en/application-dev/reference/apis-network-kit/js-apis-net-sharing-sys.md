@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=742fd8e7f742ee980eb300ddfd075065ca362dff translatedAt=2026-11-04T06:47:05.485Z pushedAt=2026-11-04T08:04:44.888Z nl=1 -->
 
 The Network Sharing module allows you to share your device's Internet connection with other connected devices by means of Wi-Fi hotspot, Bluetooth, and USB sharing. It also allows you to query the network sharing state and shared mobile data volume.
 
@@ -309,7 +310,7 @@ Disables sharing of a specified type. This API uses an asynchronous callback to 
 | Name  | Type                                 | Mandatory| Description                                    |
 | -------- | ------------------------------------- | ---- | ---------------------------------------- |
 | type     | [SharingIfaceType](#sharingifacetype) | Yes  | Sharing type. The value **0** means Wi-Fi hotspot sharing, **1** means USB sharing, and **2** means Bluetooth sharing.|
-| callback | AsyncCallback\<void>                  | Yes  | Callback used to return the result.         |
+| callback | AsyncCallback\<void>                  | Yes   | Callback function used to return the result of stopping network sharing.          |
 
 **Error codes**
 
@@ -817,7 +818,7 @@ Obtains the network sharing state of the specified type. This API uses a promise
 
 | Type                                             | Description                                     |
 | ------------------------------------------------- | ----------------------------------------- |
-| Promise\<[SharingIfaceState](#sharingifacestate)> | Promise used to return the network sharing state.|
+| Promise\<[SharingIfaceState](#sharingifacestate)> | Returns the network sharing state of the specified type in the form of a Promise. |
 
 **Example**
 

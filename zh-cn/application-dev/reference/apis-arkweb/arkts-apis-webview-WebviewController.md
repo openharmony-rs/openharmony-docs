@@ -1571,7 +1571,7 @@ struct WebComponent {
                   try {
                     if (result.getErrorDescription()) {
                       // 若发生异常或返回类型不支持时，getErrorDescription不为空
-                      console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                      console.error(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
                       return;
                     }
                     let type = result.getType();
@@ -1668,7 +1668,7 @@ struct WebComponent {
                   try {
                     if (result.getErrorDescription()) {
                       // 若发生异常或返回类型不支持时，getErrorDescription不为空
-                      console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                      console.error(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
                       return;
                     }
                     let type = result.getType();
@@ -1798,7 +1798,7 @@ struct WebComponent {
               try {
                 if (result.getErrorDescription()) {
                   // 若发生异常或返回类型不支持时，getErrorDescription不为空
-                  console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                  console.error(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
                   return;
                 }
                 let type = result.getType();
@@ -1884,7 +1884,7 @@ struct WebComponent {
                 try {
                   if (result.getErrorDescription()) {
                     // 若发生异常或返回类型不支持时，getErrorDescription不为空
-                    console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                    console.error(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
                     return;
                   }
                   let type = result.getType();
@@ -3850,7 +3850,7 @@ struct WebComponent {
 
 removeCache(clearRom: boolean): void
 
-清除应用内所有Webview产生的资源缓存。
+清除与当前WebView上下文相关的资源缓存。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -11406,7 +11406,9 @@ struct WebComponent {
 </html>
 ```
 
-> **示例说明：** 示例中使用的`iframe_error.html`文件需放置在应用资源的`resources/rawfile/`目录下，该HTML文件中包含一个加载失败URL的iframe，用于触发subframe错误页。
+> **示例说明：**
+>
+> 示例中使用的`iframe_error.html`文件需放置在应用资源的`resources/rawfile/`目录下，该HTML文件中包含一个加载失败URL的iframe，用于触发subframe错误页。
 
 ## getSubframeErrorPageEnabled
 

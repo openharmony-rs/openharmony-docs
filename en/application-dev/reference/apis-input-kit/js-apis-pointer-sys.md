@@ -1,4 +1,4 @@
-# @ohos.multimodalInput.pointer (Mouse Pointer) (System API)
+# @ohos.multimodalInput.pointer (Mouse Cursor and Cursor-Type Peripherals) (System API)
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
@@ -6,14 +6,15 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=75a70e5a15b5ea0c24fc13bdbd45b0795fb27131 translatedAt=2026-11-04T04:51:55.826Z pushedAt=2026-11-04T08:04:44.711Z nl=1 -->
 
-The **pointer** module provides APIs to query and set pointer attributes.
+This module provides the management functions for the mouse cursor and cursor-type peripheral devices, which are used to query and set the related attributes of the mouse cursor and cursor-type peripheral devices.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.multimodalInput.pointer (Mouse Pointer)](js-apis-pointer.md).
+> - This topic describes only the system APIs provided by this module. For details about its public APIs, see [@ohos.multimodalInput.pointer (Mouse Cursor and Cursor-Type Peripheral Devices)](js-apis-pointer.md).
 
 ## Modules to Import
 
@@ -173,20 +174,20 @@ import { pointer } from '@kit.InputKit';
 @Entry
 @Component
 struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            let speed = pointer.setPointerSpeedSync(5);
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        try {
+          let speed = pointer.setPointerSpeedSync(5);
             console.info(`Succeeded in setting pointer speed.`);
-          } catch (error) {
-            console.error(`Failed to set pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
+            } catch (error) {
+          console.error(`Failed to set pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            }
+          })
+        }
     }
   }
-}
 ```
 
 ## pointer.getPointerSpeed
@@ -332,20 +333,20 @@ import { pointer } from '@kit.InputKit';
 @Entry
 @Component
 struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            let speed = pointer.getPointerSpeedSync();
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        try {
+          let speed = pointer.getPointerSpeedSync();
             console.info(`Succeeded in getting pointer speed, speed: ${JSON.stringify(speed)}.`);
-          } catch (error) {
-            console.error(`Failed to get pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
+            } catch (error) {
+          console.error(`Failed to get pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            }
+          })
+        }
     }
   }
-}
 ```
 
 ## pointer.setHoverScrollState<sup>10+</sup>
@@ -1359,119 +1360,13 @@ struct Index {
         .onClick(() => {
           try {
             // Set the touchpad scroll direction.
-            pointer.setTouchpadScrollDirection (false).then(() => {
+            pointer.setTouchpadScrollDirection(false).then(() => {
               console.info(`Succeeded in setting touchpad scroll direction.`);
             }).catch((error: BusinessError) => {
               console.error(`Failed to set touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
             console.error(`Failed to set touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
-## pointer.getTouchpadScrollDirection<sup>10+</sup>
-
-getTouchpadScrollDirection(callback:  AsyncCallback\<boolean>): void
-
-Obtains the touchpad scroll direction. This API uses an asynchronous callback to return the result.
-
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
-
-**System API**: This is a system API.
-
-**Parameters**
-
-| Name      | Type                         | Mandatory  | Description            |
-| -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **state** indicates whether the touchpad scroll direction matches the direction of finger movement (**true** indicates yes). Otherwise, **err** is an error object.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID | Error Message            |
-| ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
-**Example**
-
-```js
-import { pointer } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // Obtain the touchpad scroll direction.
-            pointer.getTouchpadScrollDirection ((error: BusinessError, state: boolean) => {
-              console.info(`Succeeded in getting touchpad scroll direction, state: ${JSON.stringify(state)}.`);
-            });
-          } catch (error) {
-            console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
-## pointer.getTouchpadScrollDirection<sup>10+</sup>
-
-getTouchpadScrollDirection(): Promise\<boolean>
-
-Obtains the scroll direction of the touchpad. This API uses a promise to return the result.
-
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
-
-**System API**: This is a system API.
-
-**Return value**
-
-| Type                   | Description                 |
-| --------------------- | ------------------- |
-| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the touchpad scroll direction matches the direction of finger movement, and the value **false** indicates the opposite. The default value is **true**.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID | Error Message            |
-| ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
-**Example**
-
-```js
-import { pointer } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // Obtain the touchpad scroll direction.
-            pointer.getTouchpadScrollDirection().then((state: boolean) => {
-              console.info(`Succeeded in getting touchpad scroll direction, state: ${JSON.stringify(state)}.`);
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-            })
-          } catch (error) {
-            console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -2318,15 +2213,15 @@ struct Index {
             // Obtain the touchpad multi-finger swipe switch state.
             pointer.getTouchpadSwipeSwitch((error: BusinessError, state: boolean) => {
               console.info(`Succeeded in getting touchpad swipe switch, state: ${JSON.stringify(state)}.`);
-            });
-          } catch (error) {
-            console.error(`Failed to get touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                });
+                } catch (error) {
+              console.error(`Failed to get touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              }
+            })
           }
-        })
-    }
-  }
-}
-```
+            }
+          }
+        ```
 
 ## pointer.getTouchpadSwipeSwitch<sup>10+</sup>
 
@@ -2541,15 +2436,15 @@ struct Index {
             // Obtain the touchpad right-click menu type.
             pointer.getTouchpadRightClickType((error: BusinessError, type: pointer.RightClickType) => {
               console.info(`Succeeded in getting touchpad right click type, type: ${JSON.stringify(type)}.`);
-            });
-          } catch (error) {
-            console.error(`Failed to get touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                });
+                } catch (error) {
+              console.error(`Failed to get touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              }
+            })
           }
-        })
-    }
-  }
-}
-```
+            }
+          }
+        ```
 
 ## pointer.getTouchpadRightClickType<sup>10+</sup>
 
@@ -2755,21 +2650,21 @@ import { pointer } from '@kit.InputKit';
 @Entry
 @Component
 struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // Set the mouse pointer size synchronously.
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        try {
+          // Set the mouse pointer size synchronously.
             pointer.setPointerSizeSync(5);
             console.info(`Succeeded in setting pointer size sync.`);
-          } catch (error) {
-            console.error(`Failed to set pointer size sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
+            } catch (error) {
+          console.error(`Failed to set pointer size sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            }
+          })
+        }
     }
   }
-}
 ```
 
 ## pointer.getPointerSize<sup>10+</sup>
@@ -2915,20 +2810,20 @@ import { pointer } from '@kit.InputKit';
 @Entry
 @Component
 struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            let pointerSize = pointer.getPointerSizeSync();
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        try {
+          let pointerSize = pointer.getPointerSizeSync();
             console.info(`Succeeded in getting pointer size sync, pointerSize: ${JSON.stringify(pointerSize)}.`);
-          } catch (error) {
-            console.error(`Failed to get pointer size sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
+            } catch (error) {
+          console.error(`Failed to get pointer size sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            }
+          })
+        }
     }
   }
-}
 ```
 
 ## pointer.setPointerColor<sup>10+</sup>
@@ -3093,21 +2988,21 @@ import { pointer } from '@kit.InputKit';
 @Entry
 @Component
 struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // Set the mouse pointer color synchronously.
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        try {
+          // Set the mouse pointer color synchronously.
             pointer.setPointerColorSync(0xF6C800);
             console.info(`Succeeded in setting pointer color sync.`);
-          } catch (error) {
-            console.error(`Failed to set pointer color sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
+            } catch (error) {
+          console.error(`Failed to set pointer color sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            }
+          })
+        }
     }
   }
-}
 ```
 
 ## pointer.getPointerColor<sup>10+</sup>
@@ -3253,20 +3148,20 @@ import { pointer } from '@kit.InputKit';
 @Entry
 @Component
 struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            let pointerColor = pointer.getPointerColorSync();
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        try {
+          let pointerColor = pointer.getPointerColorSync();
             console.info(`Succeeded in getting pointer color sync, pointerColor: ${JSON.stringify(pointerColor)}.`);
-          } catch (error) {
-            console.error(`Failed to get pointer color sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
+            } catch (error) {
+          console.error(`Failed to get pointer color sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            }
+          })
+        }
     }
   }
-}
 ```
 
 ## pointer.setTouchpadDoubleTapAndDragState<sup>14+</sup>

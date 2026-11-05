@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=e2ead4182a742ea838590ac97906a19d2185754f translatedAt=2026-11-04T05:38:22.459Z pushedAt=2026-11-04T08:04:44.795Z nl=1 -->
 
 The **telephonyManager** module provides the telephony management capability.
 
@@ -14,9 +15,9 @@ The **telephonyManager** module provides the telephony management capability.
 >
 > The APIs of this module can be used only in the stage model.
 >
-> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module are open only to device management applications. Before calling an API, you must activate the application. For details, see [MDM Kit Development Guide](../../mdm/mdm-kit-guide.md).
 >
-> The global restriction policy is provided by **restrictions**. To disable telephony globally, see [@ohos.enterprise.restrictions (Restrictions)](js-apis-enterprise-restrictions.md).
+> Global common restriction policies are provided by restrictions. To globally disable calls, see [@ohos.enterprise.restrictions (Restriction Policies)](js-apis-enterprise-restrictions.md).
 
 ## Modules to Import
 
@@ -30,6 +31,10 @@ setSimDisabled(admin: Want, slotId: number): void
 
 Disables the SIM card in the specified slot. After being disabled, the SIM card in the specified slot cannot be used for making or receiving calls, sending or receiving SMSs, or accessing the internet. For example, an enterprise device administrator can disable the SIM card when an employee leaves the company or a device is lost, preventing unauthorized use. This is applicable in scenarios where enterprises need to restrict employee devices' communication capabilities, such as preventing SIM card misuse after employee departure or device loss, thereby ensuring enterprise communication security and cost control.
 
+> **NOTE**
+>
+> In a multi-MDM application scenario, the [Strict Control](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) rule applies.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -37,8 +42,6 @@ Disables the SIM card in the specified slot. After being disabled, the SIM card 
 **Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first)
 
 **Parameters**
 
@@ -86,6 +89,10 @@ setSimEnabled(admin: Want, slotId: number): void
 
 Enables the SIM card in a specified slot. After it has been disabled with **setSimDisabled**, the card must be turned back on manually in **Settings** > **Mobile network** > **SIM management**, as this **setSimEnabled** API cannot re-enable it directly.
 
+> **NOTE**
+>
+> In a multi-MDM application scenario, the [Strict Control](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) rule applies.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -93,8 +100,6 @@ Enables the SIM card in a specified slot. After it has been disabled with **setS
 **Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first)
 
 **Parameters**
 
@@ -209,6 +214,10 @@ A policy conflict is reported when this API is called in the following scenarios
 3. If an outgoing call trustlist has been set via this API, using this API again to add an outgoing call blocklist will return error code 9200010. To resolve the conflict, remove the previously set trustlist via the [removeOutgoingCallPolicyNumbers](#telephonymanagerremoveoutgoingcallpolicynumbers) API.
 
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -216,8 +225,6 @@ A policy conflict is reported when this API is called in the following scenarios
 **Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -245,8 +252,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 
 ```ts
 import { Want } from '@kit.AbilityKit';
-import { telephonyManager } from '@kit.MDMKit';
-import { adminManager } from '@kit.MDMKit';
+import { adminManager, telephonyManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
   // Replace the values as required.
@@ -280,6 +286,10 @@ A policy conflict is reported when this API is called in the following scenario:
 If the device's call capability has been disabled via the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated) API, using this API to remove an outgoing call trustlist or blocklist will return error code 203. To resolve the conflict, enable the call capability via [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated).
 
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -287,8 +297,6 @@ If the device's call capability has been disabled via the [setDisallowedPolicy](
 **Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -316,8 +324,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 
 ```ts
 import { Want } from '@kit.AbilityKit';
-import { telephonyManager } from '@kit.MDMKit';
-import { adminManager } from '@kit.MDMKit';
+import { adminManager, telephonyManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
   // Replace the values as required.
@@ -342,10 +349,75 @@ try {
 
 ## telephonyManager.getOutgoingCallPolicyNumbers
 
+getOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy): Array\<string>
+
+Obtains the trustlist or blocklist for outgoing calls.
+
+This API queries the policy set by the corresponding enterprise device management application by passing in a Want. To query the policy that actually takes effect, use the [telephonyManager.getOutgoingCallPolicyNumbers](#telephonymanagergetoutgoingcallpolicynumbers-1) API.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name     | Type                                                    | Mandatory | Description                                                         |
+| ---------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+| policy | [adminManager.Policy](js-apis-enterprise-adminManager.md#policy20)    | Yes   | Policy for allowing or blocking the list. BLOCK_LIST indicates a blocklist, and TRUST_LIST indicates a trustlist.  |
+
+
+**Return value**
+
+| Type                                     | Description                    |
+| ---------------------------------------- | ----------------------- |
+| Array\<string> | An array of numbers in the outgoing call blocklist or trustlist. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { adminManager, telephonyManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace it based on the actual situation.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+  // Set the policy type to the blocklist.
+  let policy: adminManager.Policy = adminManager.Policy.BLOCK_LIST;
+  // Obtain the blocklist for call dialing.
+  let numbers: Array<string> = telephonyManager.getOutgoingCallPolicyNumbers(wantTemp, policy);
+  console.info(`Succeeded in getting outgoing call policy. result: ${JSON.stringify(numbers)}`);
+} catch (err) {
+  console.error(`Failed to get outgoing call policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+
+## telephonyManager.getOutgoingCallPolicyNumbers
+
 getOutgoingCallPolicyNumbers(admin: Want | null, policy: adminManager.Policy): Array\<string>
 
 Obtains the trustlist or blocklist for outgoing calls.
 
+**Since**: 26.0.0
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
 
@@ -359,9 +431,8 @@ Obtains the trustlist or blocklist for outgoing calls.
 
 | Name    | Type                                                   | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.<br>When multiple MDM applications exist on the device, passing a **Want** parameter queries the policies set by the corresponding enterprise device administrator application for versions earlier than API version 26.0.0. Since API version 26.0.0, passing null is additionally supported to query the policies that actually take effect.|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise device management extension component. The Want must contain the abilityName of the enterprise device management extension capability and the bundleName of the host application.<br>When multiple MDM applications exist on the device, passing Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect.|
 | policy | [adminManager.Policy](js-apis-enterprise-adminManager.md#policy20)    | Yes  | Policy for trustlist or blocklist. **BLOCK_LIST** indicates a blocklist, and **TRUST_LIST** indicates a trustlist. |
-
 
 **Return value**
 
@@ -383,26 +454,19 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
-import { Want } from '@kit.AbilityKit';
-import { telephonyManager } from '@kit.MDMKit';
-import { adminManager } from '@kit.MDMKit';
+import { adminManager, telephonyManager } from '@kit.MDMKit';
 
-let wantTemp: Want = {
-  // Replace the values as required.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
 try {
   // Set the policy type to blocklist.
+  // Replace the parameters based on the actual situation.
   let policy: adminManager.Policy = adminManager.Policy.BLOCK_LIST;
   // Obtain the outgoing call blocklist.
-  let numbers: Array<string> = telephonyManager.getOutgoingCallPolicyNumbers(wantTemp, policy);
+  let numbers: Array<string> = telephonyManager.getOutgoingCallPolicyNumbers(null, policy);
   console.info(`Succeeded in getting outgoing call policy. result: ${JSON.stringify(numbers)}`);
 } catch (err) {
   console.error(`Failed to get outgoing call policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
 ## telephonyManager.addIncomingCallPolicyNumbers
 
 addIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: Array\<string>): void
@@ -415,6 +479,10 @@ A policy conflict is reported when this API is called in the following scenarios
 2. If an incoming call blocklist has been set via this API, using this API again to add an incoming call trustlist will return error code 9200010. To resolve the conflict, remove the previously set blocklist via the [removeIncomingCallPolicyNumbers](#telephonymanagerremoveincomingcallpolicynumbers) API.
 3. If an incoming call trustlist has been set via this API, using this API again to add an incoming call blocklist will return error code 9200010. To resolve the conflict, remove the previously set trustlist via the [removeIncomingCallPolicyNumbers](#telephonymanagerremoveincomingcallpolicynumbers) API.
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -422,8 +490,6 @@ A policy conflict is reported when this API is called in the following scenarios
 **Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -451,8 +517,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 
 ```ts
 import { Want } from '@kit.AbilityKit';
-import { telephonyManager } from '@kit.MDMKit';
-import { adminManager } from '@kit.MDMKit';
+import { adminManager, telephonyManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
   // Replace the values as required.
@@ -486,6 +551,10 @@ A policy conflict is reported when this API is called in the following scenario:
 1. If the device's call capability has been disabled via the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated) API, using this API to remove an incoming call trustlist or blocklist will return error code 203. To resolve the conflict, enable the call capability via [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated).
 
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -493,8 +562,6 @@ A policy conflict is reported when this API is called in the following scenario:
 **Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -522,8 +589,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 
 ```ts
 import { Want } from '@kit.AbilityKit';
-import { telephonyManager } from '@kit.MDMKit';
-import { adminManager } from '@kit.MDMKit';
+import { adminManager, telephonyManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
   // Replace the values as required.
@@ -548,10 +614,75 @@ try {
 
 ## telephonyManager.getIncomingCallPolicyNumbers
 
+getIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy): Array\<string>
+
+Obtains the trustlist or blocklist for incoming calls.
+
+This API queries the policy set by the corresponding enterprise device management application by passing in a Want. To query the policy that actually takes effect, use the [telephonyManager.getIncomingCallPolicyNumbers](#telephonymanagergetincomingcallpolicynumbers-1) API.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name     | Type                                                    | Mandatory | Description                                                         |
+| ---------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+| policy | [adminManager.Policy](js-apis-enterprise-adminManager.md#policy20)    | Yes   | Policy for trustlist or blocklist. **BLOCK_LIST** indicates a blocklist, and **TRUST_LIST** indicates a trustlist.   |
+
+
+**Return value**
+
+| Type                                     | Description                    |
+| ---------------------------------------- | ----------------------- |
+| Array\<string> | Array of numbers in the incoming call blocklist or allowlist. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { adminManager, telephonyManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace it based on the actual situation.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+  // Set the policy type to the blocklist.
+  let policy: adminManager.Policy = adminManager.Policy.BLOCK_LIST;
+  // Obtain the blocklist for incoming calls.
+  let numbers: Array<string> = telephonyManager.getIncomingCallPolicyNumbers(wantTemp, policy);
+  console.info(`Succeeded in getting incoming call policy. result: ${JSON.stringify(numbers)}`);
+} catch (err) {
+  console.error(`Failed to get incoming call policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+
+## telephonyManager.getIncomingCallPolicyNumbers
+
 getIncomingCallPolicyNumbers(admin: Want | null, policy: adminManager.Policy): Array\<string>
 
 Obtains the trustlist or blocklist for incoming calls.
 
+**Since**: 26.0.0
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
 
@@ -565,9 +696,8 @@ Obtains the trustlist or blocklist for incoming calls.
 
 | Name    | Type                                                   | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.<br>When multiple MDM applications exist on the device, passing a **Want** parameter queries the policies set by the corresponding enterprise device administrator application for versions earlier than API version 26.0.0. Since API version 26.0.0, passing null is additionally supported to query the policies that actually take effect.|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise device management extension component. The Want must contain the abilityName of the enterprise device management extension capability and the bundleName of the host application.<br>When multiple MDM applications exist on the device, passing in Want queries the policy set by the corresponding enterprise device management application, and passing in null queries the policy that actually takes effect.|
 | policy | [adminManager.Policy](js-apis-enterprise-adminManager.md#policy20)    | Yes  | Policy for trustlist or blocklist. **BLOCK_LIST** indicates a blocklist, and **TRUST_LIST** indicates a trustlist.  |
-
 
 **Return value**
 
@@ -589,26 +719,19 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
-import { Want } from '@kit.AbilityKit';
-import { telephonyManager } from '@kit.MDMKit';
-import { adminManager } from '@kit.MDMKit';
+import { adminManager, telephonyManager } from '@kit.MDMKit';
 
-let wantTemp: Want = {
-  // Replace the values as required.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
 try {
   // Set the policy type to blocklist.
+  // Replace the parameters based on the actual situation.
   let policy: adminManager.Policy = adminManager.Policy.BLOCK_LIST;
   // Obtain the incoming call blocklist.
-  let numbers: Array<string> = telephonyManager.getIncomingCallPolicyNumbers(wantTemp, policy);
+  let numbers: Array<string> = telephonyManager.getIncomingCallPolicyNumbers(null, policy);
   console.info(`Succeeded in getting incoming call policy. result: ${JSON.stringify(numbers)}`);
 } catch (err) {
   console.error(`Failed to get incoming call policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
 ## telephonyManager.hangupCalling<sup>23+</sup>
 
 hangupCalling(admin: Want): void
@@ -663,7 +786,7 @@ try {
 
 activeSim(admin: Want, slotId: number): void
 
-Activates the SIM card in the specified slot. In scenarios where a SIM card is inserted but not yet activated, this API can be used to activate the SIM card without requiring manual user action. After the SIM card is activated, it can be used for communication. To successfully call this API, the SIM card must be inserted and airplane mode must be turned off.
+Enables the SIM card in the specified card slot. After the SIM card is enabled, the SIM card menu item is turned on. This API applies to the scenario where a SIM card has been inserted into the device but not yet enabled. You can use this API to enable the SIM card without requiring the user to enable it manually. After the SIM card is enabled, it can be used for communication. To call this API successfully, a SIM card must be inserted and airplane mode must be turned off.
 
 **Since:** 26.0.0
 
@@ -712,9 +835,9 @@ let slotId: number = 0;
 try {
   // Activate the SIM card in the specified slot.
   telephonyManager.activeSim(wantTemp, slotId);
-  console.info(`success to active SIM`);
+  console.info(`success in activating SIM card on slot ${slotId}`);
 } catch (err) {
-  console.error(`Failed to active SIM. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to activate SIM on slot ${slotId}. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -722,7 +845,7 @@ try {
 
 deactiveSim(admin: Want, slotId: number): void
 
-Deactivates the SIM card in the specified slot. After deactivation, the SIM card in that slot cannot be used for making or receiving calls, sending or receiving SMSs, or accessing the internet. For example, an enterprise can temporarily deactivate a SIM card during employee leave or device maintenance. To successfully call this API, the SIM card must be inserted and airplane mode must be turned off.
+Disables the SIM card in the specified card slot. After the SIM card is disabled, the SIM card menu item is turned off, and the SIM card in this card slot cannot be used to make or receive calls, send or receive SMS messages, or access the Internet. For example, an enterprise can temporarily disable a SIM card while an employee is on leave or during device maintenance. To call this API successfully, a SIM card must be inserted and airplane mode must be turned off.
 
 **Since:** 26.0.0
 
@@ -771,9 +894,9 @@ let slotId: number = 0;
 try {
   // Deactivate the SIM card in the specified slot.
   telephonyManager.deactiveSim(wantTemp, slotId);
-  console.info(`success to deactive SIM`);
+  console.info(`success in deactivating SIM card on slot ${slotId}`);
 } catch (err) {
-  console.error(`Failed to deactive SIM. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to deactivate SIM on slot ${slotId}. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -830,9 +953,9 @@ let slotId: number = 0;
 try {
   // Sets the specified slot as the default data SIM.
   telephonyManager.setDefaultData(wantTemp, slotId);
-  console.info(`success to set default data SIM ID`);
+  console.info(`success in setting default data SIM ID on slot ${slotId}`);
 } catch (err) {
-  console.error(`Failed to set default data. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set default data on slot ${slotId}. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -887,12 +1010,12 @@ let wantTemp: Want = {
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
-
+let slotId: number = 0;
 try {
   // Obtain the slot ID of the SIM card currently used as the default data SIM card.
-  let slotId: number = telephonyManager.getDefaultData(wantTemp);
-  console.info(`success to get default data SIM ID, current is ${slotId}`);
+  slotId = telephonyManager.getDefaultData(wantTemp);
+  console.info(`success in getting default data SIM ID on slot ${slotId}`);
 } catch (err) {
-  console.error(`Failed to get default data. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get default data on slot ${slotId}. Code: ${err.code}, message: ${err.message}`);
 }
 ```

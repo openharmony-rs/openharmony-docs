@@ -90,7 +90,7 @@ MDNS管理的典型场景有：
 
 ## 发现本地服务
 
-1. 设备连接WiFi。
+1. 设备连接Wi-Fi。
 2. 从@kit.NetworkKit里导入mdns的命名空间。
 
    <!-- @[MDNS_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->

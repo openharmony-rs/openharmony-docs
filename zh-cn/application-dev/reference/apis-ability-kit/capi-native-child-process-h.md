@@ -74,6 +74,7 @@
 | [Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationUid(Ability_ChildProcessConfigs* configs, bool isolationUid)](#oh_ability_childprocessconfigs_setisolationuid) | - | 设置子进程配置信息对象的uid是否隔离。该设置仅在NativeChildProcess_IsolationMode为NCP_ISOLATION_MODE_ISOLATED时生效，且仅当调用[OH_Ability_StartNativeChildProcessWithConfigs](#oh_ability_startnativechildprocesswithconfigs)、[OH_Ability_CreateNativeChildProcessWithConfigs](#oh_ability_createnativechildprocesswithconfigs)接口时生效。 |
 | [Ability_NativeChildProcess_ErrCode OH_Ability_KillChildProcess(int32_t pid)](#oh_ability_killchildprocess) | - | 终止当前进程创建的子进程。 |
 | [bool OH_Ability_IsNativeChildProcessSupported()](#oh_ability_isnativechildprocesssupported) | - | 查询是否允许调用者在此设备上创建Native子进程。 |
+| [Ability_NativeChildProcess_ErrCode OH_Ability_AcquireChildProcessInfos(OH_AbilityRuntime_ChildProcessInfosHandle* infos, uint32_t* count)](#oh_ability_acquirechildprocessinfos) | - | 获取当前应用的所有子进程信息。 |
 
 ## 枚举类型说明
 
@@ -284,7 +285,7 @@ int OH_Ability_CreateNativeChildProcess(const char* libName,OH_Ability_OnNativeC
 
 创建子进程并加载参数中指定的动态链接库文件，进程启动结果通过回调参数异步通知，需注意回调通知为独立线程，回调函数实现需要注意线程同步，且不能执行高耗时操作避免长时间阻塞。子进程中不支持创建ArkTS基础运行时环境。
 
-参数所指定的动态库必须实现并导出下列函数：<br>1. OHIPCRemoteStub* NativeChildProcess_OnConnect()<br>2. void NativeChildProcess_MainProc()<br>处理逻辑顺序如下列伪代码所示：<br>主进程：<br>1. OH_Ability_CreateNativeChildProcess(libName, onProcessStartedCallback)<br>子进程：<br>2. dlopen(libName)<br>3. dlsym("NativeChildProcess_OnConnect")<br>4. dlsym("NativeChildProcess_MainProc")<br>5. ipcRemote = NativeChildProcess_OnConnect()<br>6. NativeChildProcess_MainProc()<br>主进程：<br>7. onProcessStartedCallback(ipcRemote, errCode)<br>子进程：<br>8. 在NativeChildProcess_MainProc()函数返回后子进程退出。
+参数所指定的动态库必须实现并导出下列函数：<br>1. OHIPCRemoteStub* NativeChildProcess_OnConnect()<br>2. void NativeChildProcess_MainProc()<br>处理逻辑顺序如下列伪代码所示：<br>主进程：<br>1. OH_Ability_CreateNativeChildProcess(libName, onProcessStartedCallback)<br>子进程：<br>2. dlopen(libName)<br>3. dlsym("NativeChildProcess_OnConnect")<br>4. dlsym("NativeChildProcess_MainProc")<br>5. ipcRemote = NativeChildProcess_OnConnect()<br>6. NativeChildProcess_MainProc()<br>主进程：<br>7. onProcessStartedCallback(errCode, ipcRemote)<br>子进程：<br>8. 在NativeChildProcess_MainProc()函数返回后子进程退出。
 
 **设备行为差异：** 对于API version 13及之前版本，该接口在PC/2in1中可正常使用，在Tablet设备中返回[NCP_ERR_NOT_SUPPORTED](#ability_nativechildprocess_errcode)错误码，在其他设备中返回[NCP_ERR_MULTI_PROCESS_DISABLED](#ability_nativechildprocess_errcode)错误码。对于API version 14及之后版本，该接口在PC/2in1、Tablet设备可正常使用，在其他设备中返回[NCP_ERR_MULTI_PROCESS_DISABLED](#ability_nativechildprocess_errcode)错误码。
 
@@ -553,3 +554,35 @@ bool OH_Ability_IsNativeChildProcessSupported()
 | 类型 | 说明 |
 | -- | -- |
 | bool | 是否允许调用者创建Native子进程。<br>true：允许创建Native子进程。<br>false：不允许创建Native子进程。<br>默认值：false。 |
+
+### OH_Ability_AcquireChildProcessInfos()
+
+```c
+Ability_NativeChildProcess_ErrCode OH_Ability_AcquireChildProcessInfos(OH_AbilityRuntime_ChildProcessInfosHandle* infos, uint32_t* count)
+```
+
+**描述**
+
+获取当前应用的所有子进程信息。包括通过以下方式启动的子进程：
+- [OH_Ability_CreateNativeChildProcess](#oh_ability_createnativechildprocess) / [OH_Ability_CreateNativeChildProcessWithConfigs](#oh_ability_createnativechildprocesswithconfigs)
+- [OH_Ability_StartNativeChildProcess](#oh_ability_startnativechildprocess) / [OH_Ability_StartNativeChildProcessWithConfigs](#oh_ability_startnativechildprocesswithconfigs)
+- [childProcessManager.startChildProcess](js-apis-app-ability-childProcessManager.md#childprocessmanagerstartchildprocess)（非SELF_FORK模式）
+- [childProcessManager.startArkChildProcess](js-apis-app-ability-childProcessManager.md#childprocessmanagerstartarkchildprocess12)
+- [childProcessManager.startNativeChildProcess](js-apis-app-ability-childProcessManager.md#childprocessmanagerstartnativechildprocess13)
+
+获取到的 `infos` 使用完毕后需要调用[OH_AbilityRuntime_ReleaseChildProcessInfos](capi-child-process-info-h.md#oh_abilityruntime_releasechildprocessinfos)释放，避免内存泄漏。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AbilityRuntime_ChildProcessInfosHandle](capi-nativechildprocess-infos.md)* infos | 输出参数，子进程信息集合句柄的指针，不能为nullptr。调用成功后，`*infos` 指向子进程信息集合。使用完毕后需要调用[OH_AbilityRuntime_ReleaseChildProcessInfos](capi-child-process-info-h.md#oh_abilityruntime_releasechildprocessinfos)释放。 |
+| uint32_t* count | 输出参数，子进程数量，不能为nullptr。调用成功后，`*count` 表示当前应用的子进程数量；当无子进程时，`*count` 为 0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Ability_NativeChildProcess_ErrCode](#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 操作成功。<br>NCP_ERR_INVALID_PARAM - 传入参数infos或count为nullptr。<br>NCP_ERR_INTERNAL - 内部错误，例如连接系统服务失败。<br>详见Ability_NativeChildProcess_ErrCode定义。 |

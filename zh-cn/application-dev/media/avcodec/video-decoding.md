@@ -164,7 +164,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    // 视频帧高度。
    int32_t height = 240;
    // 视频像素格式。
-    OH_AVPixelFormat pixelFormat = AV_PIXEL_FORMAT_NV12;
+   OH_AVPixelFormat pixelFormat = AV_PIXEL_FORMAT_NV12;
    // 视频宽跨距。
    int32_t widthStride = 0;
    // 视频高跨距。
@@ -390,7 +390,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    target_link_libraries(sample PUBLIC libnative_window.so)
    ```
 
-   6.1.1 在ArkTS侧，通过xComponentController组件的getXComponentSurfaceId接口获取XComponent对应的surface的ID。详情请参考[自定义渲染 (XComponent)](../../ui/napi-xcomponent-guidelines.md)。
+   6.1.1 在ArkTS侧，通过xComponentController组件的getXComponentSurfaceId()接口获取XComponent对应的surface的ID。详情请参考[自定义渲染 (XComponent)](../../ui/napi-xcomponent-guidelines.md)。
 
    6.1.2 在Native侧，调用OH_NativeWindow_CreateNativeWindowFromSurfaceId接口创建出NativeWindow实例。
 
