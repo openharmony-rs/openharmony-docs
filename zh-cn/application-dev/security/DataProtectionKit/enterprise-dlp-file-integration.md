@@ -12,10 +12,12 @@ Data Protection Kit为应用提供了根据文件标签查询或关闭某一类D
 
 除此之外，Data Protection Kit为应用提供向SA（System Ability）侧注册通信插件的能力，应用注册通信插件后，系统SA可通过该插件向应用发起通信。涉及DLP文件的生成、还原等相关能力，均依赖企业预先注册该通信插件，系统SA通过该插件可实时向应用获取需要的信息。
 
+<!--RP1--><!--RP1End-->
+
 ## 开发步骤
 
 1. 导入模块。
-    <!-- @[dlp_include_dlpPermission](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_include_dlpPermission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     import { dlpPermission } from '@kit.DataProtectionKit';
@@ -29,7 +31,7 @@ Data Protection Kit为应用提供了根据文件标签查询或关闭某一类D
 
     2.3 调用[dlpPermission.queryOpenedEnterpriseDlpFiles](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionqueryopenedenterprisedlpfiles)查询已打开且符合指定选项的企业DLP文件的URI列表。
 
-    <!-- @[dlp_queryOpenedEnterpriseDlpFiles](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_queryOpenedEnterpriseDlpFiles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     queryOpenedEnterpriseDlpFiles() {
@@ -63,7 +65,7 @@ Data Protection Kit为应用提供了根据文件标签查询或关闭某一类D
 
     3.3 调用[dlpPermission.closeOpenedEnterpriseDlpFiles](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissioncloseopenedenterprisedlpfiles)关闭当前打开的所有符合指定选项的企业DLP文件。
 
-    <!-- @[dlp_closeOpenedEnterpriseDlpFiles](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_closeOpenedEnterpriseDlpFiles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     closeOpenedEnterpriseDlpFiles() {
@@ -95,7 +97,7 @@ Data Protection Kit为应用提供了根据文件标签查询或关闭某一类D
 
     4.3 [connectServer](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#connectserver21)提供给SA侧调用，处理完连接云端服务的请求后，通过callback将结果返回给SA。
 
-    <!-- @[dlp_DlpConnPlugin](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_DlpConnPlugin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     export default class DataCapsulePlugin implements dlpPermission.DlpConnPlugin {
@@ -116,7 +118,7 @@ Data Protection Kit为应用提供了根据文件标签查询或关闭某一类D
 
     5.3 [registerPlugin](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#registerplugin21)将plugin注册到SA侧，待SA调用。
 
-    <!-- @[dlp_registerPlugin](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_registerPlugin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     registerPlugin() {
