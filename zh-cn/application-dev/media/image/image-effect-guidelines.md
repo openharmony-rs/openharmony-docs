@@ -416,7 +416,7 @@ target_link_libraries(entry PUBLIC
    <!-- @[image_effect_set_filter_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    
    ``` C++
-   // 设置滤镜参数, 滤镜强度设置为传入参数。
+   // 设置滤镜参数，滤镜强度设置为传入参数。
    ImageEffect_Any value;
    value.dataType = ImageEffect_DataType::EFFECT_DATA_TYPE_FLOAT;
    value.dataValue.floatValue = static_cast<float>(filterValue);
