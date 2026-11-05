@@ -47,7 +47,6 @@
 3. 根据上下文获取日历管理器对象calendarMgr，用于对日历账户进行相关管理操作。推荐在`EntryAbility.ets`文件中进行操作。
 
     <!-- @[calendarData_entryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) --> 
-    <!-- @[calendarData_entryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) --> 
     
     ``` TypeScript
     
