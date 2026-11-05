@@ -54,53 +54,54 @@ status: active
      
      ``` TypeScript
      let fd: number = -1;
-      try {
-        // 创建AVMetadataExtractor对象。
-        let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
-        let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-        let rootPath: string = context.filesDir; // 应用文件目录。
-        let testFilename: string = '/test.mp3'; // test.mp3为应用文件目录下的预置资源，需要开发者根据实际情况进行替换。
-        // 使用fileIo文件系统打开沙箱地址获取媒体文件地址，设置dataSrc属性。
-        // 通过UIAbilityContext获取沙箱地址filesDir（以Stage模型为例）。
-        fd = fileIo.openSync(rootPath + testFilename).fd;
-        let fileSize: number = fileIo.statSync(this.rootPath + this.testFilename).size;
-        // 设置dataSrc描述符，通过callback从文件中获取资源，写入buffer中。
-        let dataSrc: media.AVDataSrcDescriptor = {
-          fileSize: fileSize,
-          callback: (buffer, len: number, pos: number) => {
-            if (buffer == undefined || len == undefined || pos == undefined) {
-              console.error(TAG, `dataSrc callback param invalid`);
-              return -1;
-            }
-            let options: ReadOptions = {
-              offset: pos,
-              length: len
-            };
-            let num = fileIo.readSync(fd, buffer, options);
-            console.info(TAG, 'readAt end, num: ' + num);
-            if (num > 0 && fileSize >= pos) {
-              return num;
-            }
-            return -1;
-          }
-        };
-        // 设置dataSrc。
-        avMetadataExtractor.dataSrc = dataSrc;
+     let fd: number = -1;
+     try {
+       // 创建AVMetadataExtractor对象。
+       let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
+       let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+       let rootPath: string = context.filesDir; // 应用文件目录。
+       let testFilename: string = '/test.mp3'; // test.mp3为应用文件目录下的预置资源，需要开发者根据实际情况进行替换。
+       // 使用fileIo文件系统打开沙箱地址获取媒体文件地址，设置dataSrc属性。
+       // 通过UIAbilityContext获取沙箱地址filesDir（以Stage模型为例）。
+       fd = fileIo.openSync(rootPath + testFilename).fd;
+       let fileSize: number = fileIo.statSync(this.rootPath + this.testFilename).size;
+       // 设置dataSrc描述符，通过callback从文件中获取资源，写入buffer中。
+       let dataSrc: media.AVDataSrcDescriptor = {
+         fileSize: fileSize,
+         callback: (buffer, len: number, pos: number) => {
+           if (buffer == undefined || len == undefined || pos == undefined) {
+             console.error(TAG, `dataSrc callback param invalid`);
+             return -1;
+           }
+           let options: ReadOptions = {
+             offset: pos,
+             length: len
+           };
+           let num = fileIo.readSync(fd, buffer, options);
+           console.info(TAG, 'readAt end, num: ' + num);
+           if (num > 0 && fileSize >= pos) {
+             return num;
+           }
+           return -1;
+         }
+       };
+       // 设置dataSrc。
+       avMetadataExtractor.dataSrc = dataSrc;
 
-        // ...
-      } catch (e) {
-        console.error(TAG + `FetchMetadataFromDataSrc, code is ${e.code}, message is ${e.message}`);
-      } finally {
-        // 确保文件流关闭
-        if (fd >= 0) {
-          try {
-            // 在执行完后续获取元数据或者抽帧操作后，需要关闭fd。
-            fileIo.closeSync(fd);
-          } catch (e) {
-            console.error(TAG + `closeSync failed, code is ${e.code}, message is ${e.message}`);
-          }
-        }
-      }
+       // ...
+     } catch (e) {
+       console.error(TAG + `FetchMetadataFromDataSrc, code is ${e.code}, message is ${e.message}`);
+     } finally {
+       // 确保文件流关闭
+       if (fd >= 0) {
+         try {
+           // 在执行完后续获取元数据或者抽帧操作后，需要关闭fd。
+           fileIo.closeSync(fd);
+         } catch (e) {
+           console.error(TAG + `closeSync failed, code is ${e.code}, message is ${e.message}`);
+         }
+       }
+     }
      ```
 
    - 如果设置[setUrlSource](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md#seturlsource20)，必须正确设置setUrlSource中的url和headers属性，确保正确访问url。
@@ -120,7 +121,7 @@ status: active
 
    - 不同AVMetadataExtractor或者[AVImageGenerator](../../reference/apis-media-kit/arkts-apis-media-AVImageGenerator.md)实例，如果需要操作同一资源，需要多次打开文件描述符，不要共用同一文件描述符。
 
-    <!-- @[AVMetadataExtractor_SetOpenSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @[AVMetadataExtractor_SetOpenSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
      // 创建AVMetadataExtractor对象。
@@ -236,7 +237,7 @@ status: active
 8. 释放资源：调用release()销毁实例，释放资源。
 
    <!-- @[AVMetadataExtractor_Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
-  
+   
    ``` TypeScript
    // 释放资源（callback模式）。
    avMetadataExtractor.release((error) => {
