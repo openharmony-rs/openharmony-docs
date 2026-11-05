@@ -294,7 +294,7 @@ target_link_libraries(entry PUBLIC
                    ImageEffect_Any value;
                    value.dataType = ImageEffect_DataType::EFFECT_DATA_TYPE_FLOAT;
                    value.dataValue.floatValue = brightness;
-                   // 设置滤镜参数, value为info中按json解析出来的参数。
+                   // 设置滤镜参数，value为info中按json解析出来的参数。
                    LOG_E("brightness value: %{public}f ", value.dataValue.floatValue);
                    ImageEffect_ErrorCode errorCode = OH_EffectFilter_SetValue(filter, "brightness", &value);
                    CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, nullptr,
