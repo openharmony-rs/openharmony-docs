@@ -54,7 +54,6 @@ status: active
      
      ``` TypeScript
      let fd: number = -1;
-     let fd: number = -1;
      try {
        // 创建AVMetadataExtractor对象。
        let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
@@ -87,7 +86,7 @@ status: active
        };
        // 设置dataSrc。
        avMetadataExtractor.dataSrc = dataSrc;
-
+       
        // ...
      } catch (e) {
        console.error(TAG + `FetchMetadataFromDataSrc, code is ${e.code}, message is ${e.message}`);
@@ -229,7 +228,7 @@ status: active
        this.pixelMap = frameInfo.image;
      }
    });
-
+   
    // 批量获取缩略图任务耗时可能较长，可以调用cancelAllFetchFrames停止在当前extractor上所有缩略图获取任务（仅对批量获取接口生效）。
    avMetadataExtractor.cancelAllFetchFrames();
    ```

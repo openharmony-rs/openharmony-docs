@@ -62,7 +62,7 @@ status: active
      width : 300, // 输出的缩略图宽度。
      height : 300 // 输出的缩略图高度。
    };
-
+   
    // 获取缩略图（promise模式）。
    this.pixelMap = await avImageGenerator.fetchFrameByTime(timeUs, queryOption, param);
    ```
