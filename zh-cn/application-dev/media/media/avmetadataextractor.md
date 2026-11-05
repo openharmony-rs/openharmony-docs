@@ -86,7 +86,7 @@ status: active
        };
        // 设置dataSrc。
        avMetadataExtractor.dataSrc = dataSrc;
-       
+     
        // ...
      } catch (e) {
        console.error(TAG + `FetchMetadataFromDataSrc, code is ${e.code}, message is ${e.message}`);
