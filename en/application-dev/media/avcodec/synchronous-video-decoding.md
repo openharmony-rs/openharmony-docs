@@ -6,7 +6,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b9c98a219f801ec4122d94457486779ae7ed9ac3 translatedAt=2026-08-22T07:44:02.905Z pushedAt=2026-08-22T10:37:40.816Z -->
+<!-- md-trans-meta sourceCommit=0640a98c9000e8f3a4c820149c95a6ae567dd89e translatedAt=2026-11-05T00:59:45.674Z pushedAt=2026-08-22T10:37:40.816Z nl=2 -->
 
 Starting from API version 20, video decoding in synchronous mode is supported.
 
@@ -240,7 +240,7 @@ The following walks you through how to implement the entire video decoding proce
                    return false;
                }
                if (inFile_->eof()) {
-                   inputDone = 1;
+                   inputDone = true;
                }
                break;
            }
@@ -287,7 +287,7 @@ The following walks you through how to implement the entire video decoding proce
                    return false;
                }
                if (info.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-                   outputDone = 1;
+                   outputDone = true;
                }
                
                // Handle the decoded output data.
@@ -576,7 +576,7 @@ The following walks you through how to implement the entire video decoding proce
                     return false;
                 }
                 if (inFile_->eof()) {
-                    inputDone = 1;
+                    inputDone = true;
                 }
                 break;
             }
@@ -629,7 +629,7 @@ The following walks you through how to implement the entire video decoding proce
                     return false;
                 }
                 if (info.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-                    outputDone = 1;
+                    outputDone = true;
                 }
                 
                 // Free the output buffer. index is the index of the buffer.

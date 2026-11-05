@@ -6,13 +6,13 @@
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=0edaaef5de1186c959319c99afaf3d467527fe8c translatedAt=2026-09-01T02:30:44.141Z pushedAt=2026-09-02T01:50:00.610Z -->
+<!-- md-trans-meta sourceCommit=24c8295b341559f93154a8b98db4410e65f15465 translatedAt=2026-11-05T01:00:48.368Z pushedAt=2026-09-02T01:50:00.610Z nl=2 -->
 
 ## Overview
 
 A TextBlob is a collection of text. You can draw both a single character and a large block of text by using TextBlobs.
 
-In addition to the basic TextBlob drawing, you can add various drawing effects to texts. Common TextBlob drawing scenarios include [text stroke](#text-stroke) and [text gradient](#text-gradient). For more effects, see [Overview of Drawing Effects](drawing-effect-overview.md).
+In addition to the basic TextBlob drawing, you can add various drawing effects to texts. Common TextBlob drawing scenarios include [text stroke](#text-stroke), [text gradient](#text-gradient), and [font fallback](#font-fallback). For more effects, see [Overview of Drawing Effects](drawing-effect-overview.md).
 
 This topic does not involve text measurement and typography. For details about how to handle text drawing requirements, see [Introduction to Text Development](text-overview.md).
 
@@ -258,6 +258,148 @@ for (let s of text) {
 >
 > If `drawSingleCharacterWithFeatures` and `measureSingleCharacter` are used together, or `drawSingleCharacter` and `measureSingleCharacterWithFeatures` are used together, font drawing may overlap.
 
+## Font Fallback
+
+The specified font may not cover all characters in the text. For example, a font containing only Latin characters cannot display Chinese or Arabic characters. If you draw text directly with this font, unsupported characters cannot be displayed correctly. Font fallback automatically finds system fonts that support these characters, maintaining a consistent font style while displaying the complete text. You do not need to determine character coverage or specify separate fonts for different languages. If no system font supports a character, that character still cannot be displayed correctly.
+
+Use the APIs in this section when character coverage matters or when text contains multiple languages. [Single-Character Drawing](#single-character-drawing) also supports font fallback for character-by-character rendering. This section covers font fallback for TextBlob creation, glyph conversion, and text width measurement. For API details, see [TextBlob](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-TextBlob.md) and [Font](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Font.md).
+
+> **NOTE**
+>
+> Font fallback is supported since API version 26.0.1.
+
+### Font Fallback for TextBlob Drawing
+
+If the specified font does not cover all characters in the text, use [makeFromStringWithFallback()](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-TextBlob.md#makefromstringwithfallback) or [makeFromPosTextWithFallback()](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-TextBlob.md#makefrompostextwithfallback) to create TextBlobs with font fallback. These APIs automatically find fallback system fonts for unsupported characters and group the text by font to create an array of TextBlobs. Draw all TextBlobs at the same coordinate origin to display the complete text.
+
+The main steps are as follows: create a font and set its typeface; prepare the text; call a fallback API to obtain a TextBlob array; and draw every TextBlob at the same origin.
+
+The following example uses [makeFromStringWithFallback()](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-TextBlob.md#makefromstringwithfallback) to create a TextBlob array with font fallback from a string and draw it:
+
+<!-- @[arkts_graphics_draw_textblob_string_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
+
+``` TypeScript
+// Create a font object.
+const font = new drawing.Font();
+// Create a typeface object.
+const myTypeface = drawing.Typeface.makeFromFile('/system/fonts/NotoSansArmenian[wdth,wght].ttf');
+// Set the typeface for the font.
+font.setTypeface(myTypeface);
+// Set the font size.
+font.setSize(VALUE_100);
+// Create a TextBlob array with font fallback.
+const textBlobs = drawing.TextBlob.makeFromStringWithFallback('Hello世界', font);
+// Draw each TextBlob in the array at the same origin.
+for (let textBlob of textBlobs) {
+  canvas.drawTextBlob(textBlob, VALUE_200, VALUE_300);
+}
+```
+
+| Without fallback: makeFromString() | With fallback: makeFromStringWithFallback() |
+| -------- | -------- |
+| ![Without font fallback](figures/makefromstring.png) | ![With font fallback](figures/makefromstringwithfallback.png) |
+
+The following example uses [makeFromPosTextWithFallback()](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-TextBlob.md#makefrompostextwithfallback) to create a TextBlob array with font fallback from text and an array of coordinates and draw it:
+
+<!-- @[arkts_graphics_draw_textblob_postext_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
+
+``` TypeScript
+// Create a font object.
+const font = new drawing.Font();
+// Create a typeface object.
+const myTypeface = drawing.Typeface.makeFromFile('/system/fonts/NotoSansArmenian[wdth,wght].ttf');
+// Set the typeface for the font.
+font.setTypeface(myTypeface);
+// Set the font size.
+font.setSize(VALUE_100);
+// Text to draw.
+const text = 'Hello世界';
+// Obtain the glyph count.
+const glyphCount = font.countText(text);
+// Specify the coordinates of each character.
+let points: common2D.Point[] = [];
+let xOffset = 0;
+for (let i = 0; i < glyphCount; i++) {
+  points.push({ x: VALUE_200 + xOffset, y: VALUE_300 });
+  xOffset += 60;
+}
+// Create a TextBlob array with font fallback.
+const textBlobs = drawing.TextBlob.makeFromPosTextWithFallback(text, glyphCount, points, font);
+// Draw each TextBlob in the array.
+for (let textBlob of textBlobs) {
+  canvas.drawTextBlob(textBlob, 0, 0);
+}
+```
+
+| Without fallback: makeFromPosText() | With fallback: makeFromPosTextWithFallback() |
+| -------- | -------- |
+| ![Without font fallback](figures/makefrompostext.png) | ![With font fallback](figures/makefrompostextwithfallback.png) |
+
+### Font Fallback for Glyph Conversion and Text Width Measurement
+
+To convert text to glyphs for drawing or measure its actual width after font fallback, use the font fallback glyph conversion API [textToGlyphsWithFallback()](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Font.md#texttoglyphswithfallback) and text width measurement API [measureTextWithFallback()](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Font.md#measuretextwithfallback).
+
+Use [textToGlyphsWithFallback()](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Font.md#texttoglyphswithfallback) to convert text to glyph information, automatically grouped by fallback font. Set the corresponding font for each group, calculate positions based on glyph widths, and draw the glyphs with [drawGlyphs()](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#drawglyphs). The following is an example:
+
+<!-- @[arkts_graphics_draw_font_texttoglyphs_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
+
+``` TypeScript
+// Create a font object.
+const font = new drawing.Font();
+// Create a typeface object.
+const myTypeface = drawing.Typeface.makeFromFile('/system/fonts/NotoSansArmenian[wdth,wght].ttf');
+// Set the typeface for the font.
+font.setTypeface(myTypeface);
+// Set the font size.
+font.setSize(VALUE_100);
+// Text to convert.
+const text = 'Hello世界';
+// Obtain the glyph count.
+const glyphCount = font.countText(text);
+// Convert text to glyph indices with font fallback.
+const fallbackInfos = font.textToGlyphsWithFallback(text, glyphCount);
+// Use drawGlyphs to draw glyphs grouped by fallback font.
+let xOffset = 0;
+// Iterate over the fallback information. Each element contains glyph IDs for the same typeface.
+for (let info of fallbackInfos) {
+  // info.typeface is the matched typeface.
+  // info.glyphIds contains the glyph IDs for this typeface.
+  font.setTypeface(info.typeface);
+  let positions: common2D.Point[] = [];
+  let glyphWidths = font.getWidths(info.glyphIds);
+  for (let j = 0; j < info.glyphIds.length; j++) {
+    positions.push({ x: VALUE_200 + xOffset, y: VALUE_300 });
+    xOffset += glyphWidths[j];
+  }
+  canvas.drawGlyphs(info.glyphIds, 0, positions, 0, info.glyphIds.length, font);
+}
+```
+
+| Without fallback: textToGlyphs() | With fallback: textToGlyphsWithFallback() |
+| -------- | -------- |
+| ![Without font fallback](figures/textToGlyphs.png) | ![With font fallback](figures/textToGlyphsWithFallback.png) |
+
+The following example uses [measureTextWithFallback()](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Font.md#measuretextwithfallback) to measure the actual text width after font fallback:
+
+<!-- @[arkts_graphics_draw_font_measure_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
+
+``` TypeScript
+// Create a font object.
+const font = new drawing.Font();
+// Create a typeface object.
+const myTypeface = drawing.Typeface.makeFromFile('/system/fonts/NotoSansArmenian[wdth,wght].ttf');
+// Set the typeface for the font.
+font.setTypeface(myTypeface);
+// Set the font size.
+font.setSize(VALUE_100);
+// Text to measure.
+const text = 'Hello世界';
+// Measure the text width with font fallback.
+const textWidth = font.measureTextWithFallback(text, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+console.info('textWidth: ' + textWidth);
+```
+
+
 <!--RP1-->
 ## Samples
 
@@ -265,3 +407,5 @@ The following samples are provided to help you better understand how to use the 
 
 - [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw)
 <!--RP1End-->
+
+<!--no_check-->

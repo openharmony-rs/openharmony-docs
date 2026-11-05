@@ -6,7 +6,7 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=0876b7ba2fa1777332890da7f5059310feded633 translatedAt=2026-08-22T01:38:08.571Z pushedAt=2026-08-22T03:33:26.778Z -->
+<!-- md-trans-meta sourceCommit=48d25fbfce6ff5915476dbc43637ec03a10f637a translatedAt=2026-11-05T01:00:48.369Z pushedAt=2026-08-22T03:33:26.778Z nl=2 -->
 
 ## Overview
 
@@ -68,7 +68,7 @@ The following table lists the APIs for registering and using theme fonts. For de
    // Create a paragraph style object to set the typography style.
    let myParagraphStyle: text.ParagraphStyle = {
      textStyle: myTextStyle,
-     align: 3,
+     align: text.TextAlign.JUSTIFY,
      wordBreak: text.WordBreak.NORMAL
    };
    // Create a paragraph generator.

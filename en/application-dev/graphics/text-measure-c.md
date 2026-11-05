@@ -6,7 +6,7 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=8e9d3b746529fedba672cd46a96d4746984bcb6c translatedAt=2026-08-15T01:52:00.573Z pushedAt=2026-08-15T08:35:47.980Z -->
+<!-- md-trans-meta sourceCommit=21d5d5f3f928e5fc857cd41aae0935ab534c5ac6 translatedAt=2026-11-05T01:00:48.367Z pushedAt=2026-08-15T08:35:47.980Z nl=2 -->
 
 ## Overview
 
@@ -63,10 +63,12 @@ The following table lists the common APIs for text measurement. For details, see
    <!-- @[c_text_metrics_create_paragraph](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
    ``` C++
-   // Create a text style, set the text color to black, and set the font size to 50.
+   // Set the font size to 50.
+   constexpr double fontSize = 50.0;
+   // Create a text style and set the text color to black.
    OH_Drawing_TextStyle *myTextStyle = OH_Drawing_CreateTextStyle();
    OH_Drawing_SetTextStyleColor(myTextStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-   OH_Drawing_SetTextStyleFontSize(myTextStyle, 50.0);
+   OH_Drawing_SetTextStyleFontSize(myTextStyle, fontSize);
    // Create a paragraph style object to set the typography style.
    OH_Drawing_TypographyStyle *typographyStyle = OH_Drawing_CreateTypographyStyle();
    // Set the alignment mode of the paragraph style to left alignment.
@@ -80,6 +82,9 @@ The following table lists the common APIs for text measurement. For details, see
    OH_Drawing_TypographyHandlerAddText(handler, text);
    // Generate a paragraph using the paragraph generator.
    OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+   // After creating the paragraph, release the paragraph builder and paragraph style.
+   OH_Drawing_DestroyTypographyHandler(handler);
+   OH_Drawing_DestroyTypographyStyle(typographyStyle);
    ```
 
 4. Call the layout API and set the paragraph layout width to perform text shaping and layout on the paragraph.
@@ -114,6 +119,8 @@ The following table lists the common APIs for text measurement. For details, see
        DRAWING_LOGI("Line %{public}d lineMetrics ascender: %{public}f", i + 1, curLineAscender);
        DRAWING_LOGI("Line %{public}d lineMetrics width: %{public}f", i + 1, curLineWidth);
    }
+   // Release the line metrics object.
+   OH_Drawing_DestroyLineMetrics(lineMetrics);
    
    // Case 4: Obtain the width of the longest line in the paragraph and the width of the longest line with indentation.
    double longestLineWithIndent = OH_Drawing_TypographyGetLongestLineWithIndent(typography);

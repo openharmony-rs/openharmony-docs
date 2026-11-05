@@ -6,7 +6,7 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=cc9ab098c82a97707ffdb5b7d7053b861bc0839c translatedAt=2026-08-03T11:20:09.448Z pushedAt=2026-08-04T03:22:17.422Z -->
+<!-- md-trans-meta sourceCommit=48d25fbfce6ff5915476dbc43637ec03a10f637a translatedAt=2026-11-05T01:00:48.365Z pushedAt=2026-08-04T03:22:17.422Z nl=2 -->
 
 Simple text can be drawn and displayed with appropriate fonts, sizes, and colors selected. Additionally, complex text drawing is supported by setting other styles, languages, paragraphs, etc.
 
@@ -475,7 +475,7 @@ class MyRenderNode extends RenderNode {
 
 // Create a MyRenderNode object.
 const textNode = new MyRenderNode();
-// Define the pixel format of MyRenderNode.
+// Define the pixel format of textNode.
 textNode.frame = {
   x: 0,
   y: 0,
@@ -651,7 +651,7 @@ class MyRenderNode extends RenderNode {
 
 // Create a MyRenderNode object.
 const textNode = new MyRenderNode();
-// Define the pixel format of MyRenderNode.
+// Define the pixel format of textNode.
 textNode.frame = {
   x: 0,
   y: 0,
@@ -793,7 +793,7 @@ class MyRenderNode extends RenderNode {
 
 // Create a MyRenderNode object.
 const textNode = new MyRenderNode();
-// Define the pixel format of MyRenderNode.
+// Define the pixel format of textNode.
 textNode.frame = {
   x: 0,
   y: 0,
@@ -946,7 +946,7 @@ class MyRenderNode extends RenderNode {
 
 // Create a MyRenderNode object.
 const textNode = new MyRenderNode();
-// Define the pixel format of MyRenderNode.
+// Define the pixel format of textNode.
 textNode.frame = {
   x: 0,
   y: 0,
@@ -1084,7 +1084,7 @@ class MyRenderNode extends RenderNode {
 
 // Create a MyRenderNode object.
 const textNode = new MyRenderNode();
-// Define the pixel format of MyRenderNode.
+// Define the pixel format of textNode.
 textNode.frame = {
   x: 0,
   y: 0,
@@ -1222,7 +1222,7 @@ In this example, the maximum and minimum line heights are set to the same value 
 
   // Create a MyRenderNode object.
   const textNode = new MyRenderNode()
-  // Define the pixel format of MyRenderNode.
+  // Define the pixel format of textNode.
   textNode.frame = {
     x: 0,
     y: 0,
@@ -1363,7 +1363,7 @@ The following uses line height scaling (**FontHeight**) as an example to describ
 
   // Create a MyRenderNode object.
   const textNode = new MyRenderNode();
-  // Define the pixel format of MyRenderNode.
+  // Define the pixel format of textNode.
   textNode.frame = {
     x: 0,
     y: 0,
@@ -1502,7 +1502,7 @@ The following uses the example of disabling the paragraph ascent and descent and
 
   // Create a MyRenderNode object.
   const textNode = new MyRenderNode();
-  // Define the pixel format of MyRenderNode.
+  // Define the pixel format of textNode.
   textNode.frame = {
     x: 0,
     y: 0,
