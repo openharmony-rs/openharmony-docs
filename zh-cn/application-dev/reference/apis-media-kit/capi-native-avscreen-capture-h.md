@@ -85,7 +85,7 @@
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResumeScreenCapture(struct OH_AVScreenCapture *capture)](#oh_avscreencapture_resumescreencapture) | 恢复屏幕捕获。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForMicAEC(OH_AVScreenCapture_CaptureStrategy *strategy, bool enable)](#oh_avscreencapture_strategyformicaec) | 在使用麦克风时是否开启回声消除（Acoustic Echo Cancellation）功能。<br>此功能需要使用[OH_AVScreenCapture_SetCaptureStrategy](#oh_avscreencapture_setcapturestrategy)在录屏启动前完成配置。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForHDRCapture(OH_AVScreenCapture_CaptureStrategy *strategy, bool enable)](#oh_avscreencapture_strategyforhdrcapture) | 录屏是否以HDR格式输出图像。<br>此功能需要使用[OH_AVScreenCapture_SetCaptureStrategy](#oh_avscreencapture_setcapturestrategy)在录屏启动前完成配置。 |
-| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForContentAutoPauseScenes(OH_AVScreenCapture_CaptureStrategy *strategy, OH_AVScreenCapture_AutoPauseSceneSet scenes)](#oh_avscreencapture_strategyforcontentautopausescenes) | 设置自动暂停屏幕内容采集的场景集合。 |
+| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForContentAutoPauseScenes(OH_AVScreenCapture_CaptureStrategy *strategy, OH_AVScreenCapture_AutoPauseSceneSet scenes)](#oh_avscreencapture_strategyforcontentautopausescenes) | 设置自动暂停屏幕内容采集的场景集合。<br>此功能需要使用[OH_AVScreenCapture_SetCaptureStrategy](#oh_avscreencapture_setcapturestrategy)在录屏启动前完成配置。 |
 
 ## 函数说明
 
@@ -1585,7 +1585,9 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForContentAutoPauseScenes
 
 **描述**
 
-当指定的场景发生时，系统将自动暂停屏幕内容采集。可调用[OH_AVScreenCapture_ResumeScreenCapture](#oh_avscreencapture_resumescreencapture)接口恢复屏幕内容采集。
+设置自动暂停屏幕内容采集的场景集合。
+
+当指定的场景发生时，系统将自动暂停屏幕内容采集。可调用[OH_AVScreenCapture_ResumeScreenCapture](#oh_avscreencapture_resumescreencapture)接口恢复屏幕内容采集。<br>此功能需要使用[OH_AVScreenCapture_SetCaptureStrategy](#oh_avscreencapture_setcapturestrategy)在录屏启动前完成配置。
 
 **起始版本：** 26.1.0
 
