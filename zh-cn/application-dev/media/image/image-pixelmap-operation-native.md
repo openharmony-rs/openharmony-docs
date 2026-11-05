@@ -177,9 +177,9 @@ EXTERN_C_END
         float scaleY = 0.5;
         OH_PixelMap_Scale(native, scaleX, scaleY);
 
-        // 设置偏移。
-        // translateX：向下偏移50像素。
-        // translateY：向右偏移50像素。
+        // 设置平移。
+        // translateX：向右平移50像素。
+        // translateY：向下平移50像素。
         float translateX = 50;
         float translateY = 50;
         OH_PixelMap_Translate(native, translateX, translateY);

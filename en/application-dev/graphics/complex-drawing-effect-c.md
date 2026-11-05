@@ -7,7 +7,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-You can use a brush or a pen to implement complex drawing effects in addition to the basic fill color, stroke color, and style settings. The following lists some major challenges:
+You can use a brush or a pen to implement complex drawing effects in addition to the basic fill color, stroke color, and style settings. The following lists some major effects:
 
 
 - Blend mode

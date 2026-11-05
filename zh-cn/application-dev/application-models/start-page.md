@@ -30,7 +30,7 @@ const domain: number = 0xFF00;
     parameters: { page: 'pages/second' }
   };
   featureAbility.startAbility({ want: wantInfo }).then((data) => {
-    hilog.debug(domain, TAG, `restartAbility success : ${data}`);
+    hilog.info(domain, TAG, `restartAbility success : ${data}`);
   });
 })()
 ```
@@ -173,7 +173,7 @@ struct PagePageAbilityFirst {
             featureAbility.startAbility({ want: want }).then((data) => {
               hilog.info(domain, TAG, `startAbility finish:${data}`);
             }).catch((err: BusinessError) => {
-              hilog.info(domain, TAG, `startAbility failed errcode:${err.code}`);
+              hilog.error(domain, TAG, `startAbility failed errcode:${err.code}`);
             })
           })
         }
@@ -191,7 +191,7 @@ struct PagePageAbilityFirst {
             featureAbility.startAbility({ want: want }).then((data) => {
               hilog.info(domain, TAG, `startAbility finish:${data}`);
             }).catch((err: BusinessError) => {
-              hilog.info(domain, TAG, `startAbility failed errcode:${err.code}`);
+              hilog.error(domain, TAG, `startAbility failed errcode:${err.code}`);
             })
           })
         }

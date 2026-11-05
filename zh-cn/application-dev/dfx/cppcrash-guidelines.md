@@ -1131,5 +1131,61 @@ SIGPIPE异常退出时关键日志如下所示：
   ...
   ```
 
+### 应用主动退出缺失崩溃日志
+
+为解决应用调用`exit()`、`_exit()`等函数主动退出时因缺失调用栈而难以定位的问题，从API版本26.1.0开始，系统支持“退出捕获”功能。该功能默认关闭且仅限于[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)的开发调试，开启后会将符合条件的主动退出转换为`SIGABRT`信号，从而生成包含调用栈的CppCrash日志。
+
+开发者可通过hdc工具设置系统参数`hilog.exit.catch.abort`，该参数控制退出捕获功能的开启和关闭。由于该参数在应用进程启动时读取，修改后必须重启目标应用进程才能生效。
+
+`hilog.exit.catch.abort`参数的取值说明如下。
+
+| 参数值 | 处理方式 |
+| --- | --- |
+| `true` | 开启功能。 |
+| `false` | 关闭功能。 |
+| 未设置、空字符串或其他值 | 保持原有功能状态。 |
+
+`true`、`false`必须使用小写完整字符串，`0`、`1`、`TRUE`等不属于支持的取值。
+
+- **开启功能**
+
+  在电脑终端执行以下命令，确认参数读回值为`true`后，结束旧应用进程并重新启动应用。
+
+  ```shell
+  hdc shell param set hilog.exit.catch.abort true
+  hdc shell param get hilog.exit.catch.abort
+  ```
+
+- **获取并分析日志**
+
+  在应用中重新触发调用`exit()`的业务操作。对于`_exit()`、`exit_group`或第三方库内部调用`exit()`的场景，同样触发对应的业务路径。
+
+  日志获取方式参见[日志获取](#日志获取)。根据本次退出的时间、进程ID和进程名，在日志目录中定位对应的CppCrash日志文件。
+
+  经本功能转换生成的日志，其`Reason`预期为`SIGABRT(SI_USER)`。在`Fault thread info`中沿调用栈查找退出函数及其调用方；第三方库退出场景还需关注栈中的动态库名称。
+
+  以下是`_exit()`退出日志的节选，具体地址和符号以实际日志为准。
+
+  ```text
+  Reason:Signal:SIGABRT(SI_USER)@0x01317c0100005c7a from:23674:20020225
+  Fault thread info:
+  Tid:23674, Name:e.exitcatchdemo
+  #00 pc 000000000016c9b8 /system/lib/ld-musl-aarch64.so.1(_Exit+60)(951a5903172d64d042a1ddca18a46e4b)
+  #01 pc 00000000001ee76c /system/lib/ld-musl-aarch64.so.1(_exit+12)(951a5903172d64d042a1ddca18a46e4b)
+  #02 pc 0000000000002628 /data/storage/el1/bundle/libs/arm64/libentry.so(DfxExitDemoImmediateExit24+24)(1e3581c0417480e1)
+  #03 pc 000000000000295c /data/storage/el1/bundle/libs/arm64/libentry.so(1e3581c0417480e1)
+  ```
+
+  其中`#00`、`#01`为系统退出函数，`#02`、`#03`为应用动态库中的栈帧。
+
+- **关闭功能**
+
+  执行以下命令，确认参数读回值为`false`后，重新启动应用使配置生效。
+
+  ```shell
+  hdc shell param set hilog.exit.catch.abort false
+  hdc shell param get hilog.exit.catch.abort
+  ```
+
 <!--RP10-->
 <!--RP10End-->

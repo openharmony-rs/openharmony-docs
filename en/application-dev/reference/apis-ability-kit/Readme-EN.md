@@ -65,7 +65,7 @@
     - [@ohos.app.ability.StartOptions (StartOptions) (System API)](js-apis-app-ability-startOptions-sys.md)
     - [@ohos.app.ability.UIServiceExtensionAbility (UIServiceExtensionAbility) (System API)](js-apis-app-ability-uiServiceExtensionAbility-sys.md)
     - [@ohos.app.ability.verticalPanelManager (Vertical Panel Management) (System API)](js-apis-app-ability-verticalpanelmanager-sys.md)
-    - [@ohos.app.ability.UIExtensionContentSession (UIExtensionAbility UI Operation Class) (System API)](js-apis-app-ability-uiExtensionContentSession-sys.md)
+    - [@ohos.app.ability.UIExtensionContentSession (UI Operation Class for ExtensionAbility with UI) (System API)](js-apis-app-ability-uiExtensionContentSession-sys.md)
     <!--DelEnd-->
   - FA Model<!--fa-model-->
     - [@ohos.ability.ability (Ability Module)](js-apis-ability-ability.md)

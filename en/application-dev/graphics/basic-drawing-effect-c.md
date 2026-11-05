@@ -115,7 +115,7 @@ The following table lists the APIs for setting the drawing effect using a pen. F
 | void OH_Drawing_PenSetAntiAlias (OH_Drawing_Pen\* , bool ) | Enables or disables anti-aliasing for a pen. Anti-aliasing makes the pixels around the shape edges semi-transparent.|
 | void OH_Drawing_PenSetCap (OH_Drawing_Pen\* , OH_Drawing_PenLineCapStyle) | Sets the line cap style for a pen.|
 | void OH_Drawing_PenSetJoin (OH_Drawing_Pen\* , OH_Drawing_PenLineJoinStyle) | Sets the line join style for a pen.|
-| void OH_Drawing_CanvasDetachPen (OH_Drawing_Canvas\*) | Removes the brush from the canvas. After the execution, the canvas does not outline the shape and restores to the default fill effect.|
+| void OH_Drawing_CanvasDetachPen (OH_Drawing_Canvas\*) | Removes the pen from the canvas. After the execution, the canvas does not outline the shape and restores to the default fill effect.|
 | void OH_Drawing_PenDestroy (OH_Drawing_Pen\*) | Destroys a pen object and reclaims the memory occupied by the object.|
 
 

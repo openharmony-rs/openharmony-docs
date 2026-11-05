@@ -6,7 +6,7 @@
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-多级[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)通信是指一个EAWorker创建或管理其他EAWorker，并在多个EAWorker之间分发任务、回收结果。这里的“多级”描述的是任务分发链路，不表示线程之间存在父子从属关系；参与通信的EAWorker本质上都是独立工作线程。ArkTS-Sta采用共享内存模型，对象跨EAWorker传递时默认共享对象引用。
+多级[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker-managed.md)通信是指一个EAWorker创建或管理其他EAWorker，并在多个EAWorker之间分发任务、回收结果。这里的“多级”描述的是任务分发链路，不表示线程之间存在父子从属关系；参与通信的EAWorker本质上都是独立工作线程。ArkTS-Sta采用共享内存模型，对象跨EAWorker传递时默认共享对象引用。
 
 多级EAWorker适合任务需要长期驻留、按固定线程分组处理，或需要由一个调度EAWorker统一管理多个处理EAWorker的场景。使用时需要注意生命周期管理：退出调度EAWorker前，应先让处理EAWorker完成任务并退出。
 

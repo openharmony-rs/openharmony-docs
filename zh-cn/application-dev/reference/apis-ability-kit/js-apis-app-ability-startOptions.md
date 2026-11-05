@@ -50,7 +50,7 @@ StartOptions用于指定启动目标UIAbility时的选项。
 | completionHandler<sup>20+</sup> | [CompletionHandler](js-apis-app-ability-completionHandler.md) | 否 | 是 | 拉起应用结果的操作类，用于处理拉起应用的结果。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。如果不指定，不处理拉起应用的结果。<br>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 | hideStartWindow<sup>20+</sup> | boolean | 否 | 是 | 启动当前应用的UIAbility时，控制是否隐藏窗口的启动页，true表示隐藏启动页，false表示不隐藏启动页。启动页介绍和规格详见[StartWindow](../../quick-start/module-configuration-file.md#startwindow标签)。<br>**约束：**<br/>1.该功能仅在2in1设备和自由多窗模式下的Tablet设备上生效。<br/>2.该功能仅在启动当前应用的UIAbility时生效。<br>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 | windowCreateParams<sup>20+</sup> | [window.WindowCreateParams](../apis-arkui/arkts-apis-window-i.md#windowcreateparams20) | 否 | 是 | 启动UIAbility时的窗口参数。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 20 |
-| preferDefaultBrowser | boolean | 否 | 是 | 当目标URI为http或https链接时，是否优先使用默认浏览器打开该链接。取值为true时表示使用默认浏览器，取值为false时表示使用正常的startAbility流程。<br>**约束：**<br>1.该功能仅在目标URI以http或https开头时生效。<br>2.若无默认浏览器可用，则使用正常的startAbility流程。<br>**起始版本**：26.0.1。<br>**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| preferDefaultBrowser | boolean | 否 | 是 | 当目标URI为http或https链接时，是否优先使用默认浏览器打开该链接。取值为true时表示使用默认浏览器，取值为false时表示使用正常的startAbility流程。<br>**约束：**<br>1.该功能仅在目标URI以http或https开头时生效。<br>2.若无默认浏览器可用，则使用正常的startAbility流程。<br>**起始版本**：26.0.1 <br>**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 

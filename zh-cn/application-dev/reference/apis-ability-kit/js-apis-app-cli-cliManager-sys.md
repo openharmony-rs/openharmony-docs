@@ -40,6 +40,23 @@ import { cliManager } from '@kit.AbilityKit';
 | toolCallId | string | 否 | 表示工具调用的唯一标识符，由Agent分配。取值由字母、数字、'_'和'-'组成，最大长度为256。<br>**说明**：从API版本26.0.1开始支持。 |
 | dmSessionId | string | 否 | 表示对话管理器（DM）的会话ID，用于唯一标识Agent会话。取值由字母、数字、'_'和'-'组成，最大长度为256。<br>**说明**：从API版本26.0.1开始支持。 |
 
+## ExecCmdOptions
+
+执行Shell命令的可选参数。在公开接口[ExecCmdOptions](js-apis-app-cli-cliManager.md#execcmdoptions)的基础上，新增以下系统接口字段。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+| 名称 | 类型 | 必填 | 说明 |
+| ---------- | ---- | ---- | ------------------ |
+| toolCallId | string | 否 | 表示工具调用的唯一标识符，由Agent分配。取值由字母、数字、'_'和'-'组成，最大长度为256。 |
+| dmSessionId | string | 否 | 表示对话管理器（DM）的会话ID，用于唯一标识Agent会话。取值由字母、数字、'_'和'-'组成，最大长度为256。 |
+
 ## cliManager.queryToolSummaries
 
 queryToolSummaries(): Promise\<Array\<ToolSummary>>

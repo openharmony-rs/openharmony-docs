@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何使用JSVM-API创建和获取JavaScript字符串，支持UTF8、UTF16、Latin1三种编码格式的字符串读写。"
+keywords: [OH_JSVM_CreateStringUtf8, OH_JSVM_GetValueStringUtf8, OH_JSVM_CreateStringUtf16, OH_JSVM_GetValueStringUtf16, OH_JSVM_CreateStringLatin1, OH_JSVM_GetValueStringLatin1, 编码方案, UTF-8, Latin-1]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口创建和获取string值
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

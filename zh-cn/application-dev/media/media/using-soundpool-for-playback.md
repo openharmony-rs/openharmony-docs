@@ -1,3 +1,10 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍如何使用SoundPool实现低时延短音频播放，支持一次加载多次播放，适用于相机快门音效、系统通知音效等短促音效场景。"
+keywords: [SoundPool, 短音频播放, 低时延, ArkTS, 音效播放, createSoundPool, loadComplete, playFinished, 音频焦点]
+doctype: guide
+status: active
+---
 # 使用SoundPool播放短音频(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->

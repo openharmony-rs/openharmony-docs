@@ -1,4 +1,4 @@
-# USB中断传输
+# USB中断传输（ArkTS）
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: USB-->

@@ -145,10 +145,6 @@ setUrl(url: string): void
 | --------| ------- | ---- | ---------------------------|
 | url | string | 是 | 重定向或因HSTS而更改后的URL。 |
 
-**示例：**
-
-完整示例代码参考[constructor](#constructor12)。
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
@@ -156,6 +152,10 @@ setUrl(url: string): void
 | 错误码ID | 错误信息                  |
 | -------- | ----------------------- |
 |  401 | Parameter error. Possible causes: 1. Incorrect parameter types.    |
+
+**示例：**
+
+完整示例代码参考[constructor](#constructor12)。
 
 ## setNetErrorCode<sup>12+</sup>
 

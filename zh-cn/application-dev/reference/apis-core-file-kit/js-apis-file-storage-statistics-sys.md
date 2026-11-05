@@ -52,7 +52,7 @@ ArkTS-Sta: getTotalSizeOfVolume(volumeUuid: string): Promise&lt;long&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -128,7 +128,7 @@ ArkTS-Sta: getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;l
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -215,7 +215,7 @@ ArkTS-Sta: getFreeSizeOfVolume(volumeUuid: string): Promise&lt;long&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -291,7 +291,7 @@ ArkTS-Sta: getFreeSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;lo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -379,7 +379,7 @@ ArkTS-Sta: getBundleStats(packageName: string, index?: int): Promise&lt;BundleSt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -474,7 +474,7 @@ ArkTS-Sta: getBundleStats(packageName: string, callback: AsyncCallback&lt;Bundle
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -568,7 +568,7 @@ ArkTS-Sta: getSystemSize(): Promise&lt;long&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -630,7 +630,7 @@ ArkTS-Sta: getSystemSize(callback: AsyncCallback&lt;long&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -696,7 +696,7 @@ getUserStorageStats(): Promise&lt;StorageStats&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -756,7 +756,7 @@ getUserStorageStats(callback: AsyncCallback&lt;StorageStats&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -830,7 +830,7 @@ ArkTS-Sta: getUserStorageStats(userId: long): Promise&lt;StorageStats&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -896,7 +896,7 @@ ArkTS-Sta: getUserStorageStats(userId: long, callback: AsyncCallback&lt;StorageS
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |

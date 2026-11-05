@@ -67,7 +67,9 @@ Device Certificate Kit的CA证书管理功能包含如下能力：
 
 2. 导入相关模块。
 
-   ```ts
+   <!-- @[certificate_management_user_ca_import](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCASample.ets)  -->
+   
+   ``` TypeScript
    import { certificateManager, certificateManagerDialog } from '@kit.DeviceCertificateKit';
    import { util } from '@kit.ArkTS';
    import { common } from '@kit.AbilityKit';
@@ -102,7 +104,7 @@ Device Certificate Kit的CA证书管理功能包含如下能力：
 
 ## 样例代码
 
-<!-- @[certificate_management_user_ca](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCASample.ets)  -->
+<!-- @[certificate_management_user_ca](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCASample.ets) -->
 
 ``` TypeScript
 import { certificateManager, certificateManagerDialog } from '@kit.DeviceCertificateKit';

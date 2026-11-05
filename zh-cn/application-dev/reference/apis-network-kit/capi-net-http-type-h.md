@@ -63,7 +63,7 @@
 | NET_HTTPMETHOD_DELETE "DELETE"   | HTTP请求DELETE方法。<br>**起始版本：** 20  |
 | NET_HTTP_METHOD_POST "POST"      | HTTP请求POST方法。<br>**起始版本：** 20    |
 | NET_HTTP_METHOD_PUT "PUT"        | HTTP请求PUT方法。<br>**起始版本：** 20     |
-| NET_HTTP_METHOD_PATCH "PATCH"  | HTTP请求PATCH方法。<br>**起始版本：** 20 |
+| NET_HTTP_METHOD_PATCH "CONNECT"  | HTTP请求CONNECT方法。<br>**起始版本：** 20 |
 
 ### 函数
 
@@ -272,7 +272,7 @@ typedef void (*Http_ResponseCallback)(struct Http_Response *response, uint32_t e
 | 参数项 | 描述 |
 | -- | -- |
 | [struct Http_Response](capi-netstack-http-response.md) *response | HTTP响应结构体，指向Http_Response的指针，参考[Http_Response](capi-netstack-http-response.md)。 |
-|  uint32_t errCode | 响应码。 |
+|  uint32_t errCode | HTTP请求错误码，参考 [Http_ErrCode](#http_errcode)。 |
 
 ### Http_OnDataReceiveCallback()
 

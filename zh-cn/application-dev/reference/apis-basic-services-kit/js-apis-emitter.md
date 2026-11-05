@@ -24,7 +24,7 @@
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn和ArkTS-Sta。
-> - 本模块首批接口从API version 7开始支持。后续版本新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API版本7开始支持。后续版本新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -42,7 +42,7 @@ on(event: InnerEvent, callback: Callback\<EventData\>): void
 
 持续订阅指定的事件，并在接收到该事件时，执行对应的回调处理函数。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -97,7 +97,7 @@ on(eventId: string, callback: Callback\<EventData\>): void
 
 持续订阅指定的事件，并在接收到该事件时，执行对应的回调处理函数。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -166,7 +166,7 @@ on<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
 持续订阅指定的事件，并在接收到该事件时，执行对应的回调处理函数。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -261,7 +261,7 @@ once(event: InnerEvent, callback: Callback\<EventData\>): void
 
 单次订阅指定的事件，在接收到该事件且执行完对应的回调处理函数后，自动取消订阅。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -314,7 +314,7 @@ once(eventId: string, callback: Callback\<EventData\>): void
 
 单次订阅指定的事件，在接收到该事件且执行完对应的回调处理函数后，自动取消订阅。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -382,7 +382,7 @@ once<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
 单次订阅指定的事件，在接收到该事件且执行完对应的回调处理函数后，自动取消订阅。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -481,7 +481,7 @@ ArkTS-Sta: off(eventId: long): void
 
 使用该接口取消某个事件订阅后，已通过[emit](#emitteremit)接口发布但尚未被执行的事件将被取消。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -510,7 +510,7 @@ off(eventId: string): void
 
 使用该接口取消某个事件订阅后，已通过[emit](#emitteremit11)接口发布但尚未被执行的事件将被取消。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -541,7 +541,7 @@ ArkTS-Sta: off(eventId: long, callback: Callback\<EventData\>): void
 
 使用该接口取消某个事件订阅后，已通过[emit](#emitteremit)接口发布但尚未被执行的事件将被取消。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -590,7 +590,7 @@ off(eventId: string, callback: Callback\<EventData\>): void
 
 使用该接口取消某个事件订阅后，已通过[emit](#emitteremit11)接口发布但尚未被执行的事件将被取消。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -665,7 +665,7 @@ off<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
 使用该接口取消某个事件订阅后，已通过[emit](#emitteremit12)接口发布但尚未被执行的事件将被取消。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -767,7 +767,7 @@ emit(event: InnerEvent, data?: EventData): void
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -832,7 +832,7 @@ emit(eventId: string, data?: EventData): void
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -870,7 +870,7 @@ emit(eventId: string): void
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力**: SystemCapability.Notification.Emitter
 
@@ -900,7 +900,7 @@ emit(eventId: string, data: EventData): void
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力**: SystemCapability.Notification.Emitter
 
@@ -945,7 +945,7 @@ emit<T\>(eventId: string, data?: GenericEventData<T\>): void
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -990,7 +990,7 @@ emit<T\>(eventId: string, data: GenericEventData<T\>): void
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力**: SystemCapability.Notification.Emitter
 
@@ -1037,7 +1037,7 @@ emit(eventId: string, options: Options, data?: EventData): void
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -1081,7 +1081,7 @@ emit(eventId: string, options: Options): void
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力**: SystemCapability.Notification.Emitter
 
@@ -1116,7 +1116,7 @@ emit(eventId: string, options: Options, data: EventData): void
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力**: SystemCapability.Notification.Emitter
 
@@ -1165,7 +1165,7 @@ ArkTS-Sta: emit<T\>(eventId: string, options: Options, data: GenericEventData<T\
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -1237,7 +1237,7 @@ ArkTS-Sta: getListenerCount(eventId: long | string): long
 
 获取指定事件的订阅数。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -1274,7 +1274,7 @@ let count: long = emitter.getListenerCount("eventId");
 
 表示事件的优先级。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力**： SystemCapability.Notification.Emitter
 
@@ -1293,7 +1293,7 @@ let count: long = emitter.getListenerCount("eventId");
 
 订阅或发送的事件，订阅事件时`EventPriority`不生效。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -1310,7 +1310,7 @@ let count: long = emitter.getListenerCount("eventId");
 
 发送事件时传递的数据。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -1326,7 +1326,7 @@ let count: long = emitter.getListenerCount("eventId");
 
 发送事件的优先级。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -1342,7 +1342,7 @@ let count: long = emitter.getListenerCount("eventId");
 
 发送事件时传递的泛型数据。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -1359,7 +1359,7 @@ let count: long = emitter.getListenerCount("eventId");
 
 该功能支持在同一进程的同一Emitter类实例中，跨不同线程或同一线程内发送和处理事件。它能够实现持续订阅事件、单次订阅事件、取消订阅事件以及将事件发送到事件队列，适用于需要基于独立实例进行线程间通信和事件管理的场景，不同Emitter实例类之间相互隔离，互不影响。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.Emitter
 
@@ -1373,7 +1373,7 @@ constructor()
 
 构造函数。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.Emitter
 
@@ -1394,7 +1394,7 @@ on(eventId: string, callback: Callback\<EventData\>): void
 
 持续订阅当前Emitter类实例指定的事件，并在接收到该事件时，使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -1431,7 +1431,7 @@ on<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
 持续订阅当前Emitter类实例指定的事件，并在接收到该事件时，使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -1482,7 +1482,7 @@ onEventData(eventId: string, callback: Callback\<EventData\>): void
 
 持续订阅当前Emitter类实例指定的事件，并在接收到该事件时，使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力**: SystemCapability.Notification.Emitter
 
@@ -1519,7 +1519,7 @@ onGenericEventData<T\>(eventId: string, callback: Callback\<GenericEventData<T\>
 
 持续订阅当前Emitter类实例指定的事件，并在接收到该事件时，使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力**: SystemCapability.Notification.Emitter
 
@@ -1570,7 +1570,7 @@ once(eventId: string, callback: Callback\<EventData\>): void
 
 单次订阅当前Emitter类实例指定的事件，在接收到该事件且执行完对应的回调函数后，自动取消订阅。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -1607,7 +1607,7 @@ once<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
 单次订阅当前Emitter类实例指定的事件，在接收到该事件且执行完相应的回调函数后，自动取消订阅。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -1658,7 +1658,7 @@ onceEventData(eventId: string, callback: Callback\<EventData\>): void
 
 单次订阅当前Emitter类实例指定的事件，在接收到该事件且执行完对应的回调函数后，自动取消订阅。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力**: SystemCapability.Notification.Emitter
 
@@ -1695,7 +1695,7 @@ onceGenericEventData<T\>(eventId: string, callback: Callback\<GenericEventData<T
 
 单次订阅当前Emitter类实例指定的事件，在接收到该事件且执行完相应的回调函数后，自动取消订阅。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力**: SystemCapability.Notification.Emitter
 
@@ -1748,7 +1748,7 @@ off(eventId: string): void
 
 使用该接口取消某个事件订阅后，已通过[emit](#emit22)接口发布但尚未被执行的事件将被取消。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -1778,7 +1778,7 @@ off(eventId: string, callback: Callback\<EventData\>): void
 
 使用该接口取消事件订阅后，已通过[emit](#emit22)接口发布但尚未执行的事件将被取消。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -1817,7 +1817,7 @@ off<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
 使用该接口取消事件订阅后，已通过[emit](#emit22-1)接口发布但尚未执行的事件将被取消。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -1870,7 +1870,7 @@ offEventData(eventId: string, callback: Callback\<EventData\>): void
 
 使用该接口取消事件订阅后，已通过[emit](#emit22)接口发布但尚未执行的事件将被取消。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力**: SystemCapability.Notification.Emitter
 
@@ -1909,7 +1909,7 @@ offGenericEventData<T\>(eventId: string, callback: Callback\<GenericEventData<T\
 
 使用该接口取消事件订阅后，已通过[emit](#emit22-1)接口发布但尚未执行的事件将被取消。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力**: SystemCapability.Notification.Emitter
 
@@ -1964,7 +1964,7 @@ emit(eventId: string, data?: EventData): void
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始支持原子化服务。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始支持原子化服务。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -2021,7 +2021,7 @@ emit<T\>(eventId: string, data?: GenericEventData<T\>): void
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -2069,7 +2069,7 @@ emit<T\>(eventId: string, options: Options, data?: GenericEventData<T\>): void
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力**: SystemCapability.Notification.Emitter
 
@@ -2120,7 +2120,7 @@ emit(eventId: string, options: Options, data?: EventData): void
 
 该接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始支持原子化服务。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始支持原子化服务。
 
 **系统能力**：SystemCapability.Notification.Emitter
 
@@ -2182,7 +2182,7 @@ ArkTS-Sta: getListenerCount(eventId: string): long
 
 获取当前Emitter类实例指定事件的订阅数。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Emitter
 

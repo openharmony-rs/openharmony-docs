@@ -35,7 +35,7 @@ Repeat\<T\>(arr: RepeatArray\<T\>, options?: RepeatOptions)
 | 参数名 | 类型       | 必填 | 说明      |
 | ------ | ---------- | -------- | -------- |
 | arr    | [RepeatArray\<T\>](#repeatarrayt) | 是 | 数据源，为`RepeatArray<T>`类型的数组，由开发者决定数据类型。 |
-| options    | [RepeatOptions](#repeatoptions) | 否 | 创建Repeat组件时的配置项，用于绑定控制器。不传入时使用默认配置（不绑定控制器）。<br>**起始版本：** 26.2.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| options    | [RepeatOptions](#repeatoptions) | 否 | 创建Repeat组件时的配置项，用于绑定控制器、设置动效过程中的子组件复用策略。不传入时使用默认配置（不绑定控制器）。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ArkTS-Sta中Repeat()强制要求声明数组类型`<T>`。
 
@@ -217,7 +217,7 @@ Repeat数据源参数联合类型。
 
 创建Repeat组件时的配置项。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -226,6 +226,69 @@ Repeat数据源参数联合类型。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
 | controller | [RepeatController](#repeatcontroller) | 否 | 是 | 绑定到Repeat组件上的控制器。绑定后，需要清理缓存时可调用[clearCache](#clearcache)清理Repeat组件懒加载模式下缓存池中的组件。该控制器仅在创建Repeat时绑定，不支持动态修改。<br>默认值：undefined，即不绑定控制器。 |
+| allowReuseInAnimation | boolean | 否 | 是 | Repeat在[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)动效过程中更新时，是否允许复用子组件。仅在Repeat的父容器组件为[List](./ts-container-list.md)、[Grid](./ts-container-grid.md)、[WaterFlow](./ts-container-waterflow.md)时生效。<br>Repeat与动效一起使用时，Repeat的复用能力会与动效产生冲突，导致动效异常。在涉及动效的场景下，需将该参数设置为false，Repeat在动效过程中更新时将不复用子组件，从而支持动效。<br>true：动效过程中复用能力仍保持开启。<br>false：动效过程中复用能力关闭。<br>默认值：Repeat的父容器组件为List时为false；父容器组件为Grid或WaterFlow时为true。 |
+
+**示例：**
+
+以下示例中，通过[RepeatOptions](#repeatoptions)的allowReuseInAnimation属性适配了动效能力。
+
+从API版本26.1.0开始，Repeat接口新增options参数。
+
+```ts
+import { Entry, ComponentV2, Column, Row, Text, Button, ClickEvent, Grid, GridItem, Repeat, RepeatItem, TransitionEffect, ColumnOptions, RowOptions } from '@ohos.arkui.component';
+import { Local } from '@ohos.arkui.stateManagement';
+
+@Entry
+@ComponentV2
+struct RepeatAnimationDemo {
+  @Local dataArray: Array<string> = new Array<string>();
+  private count: number = 0;
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 20; i++) {
+      this.dataArray.push(`Item ${i}`);
+    }
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Row({ space: 5 } as RowOptions) {
+        Button('Update Repeat in Animation')
+          .onClick((e: ClickEvent) => { // 在动效过程中插入子组件
+            this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+              this.dataArray.splice(0, 0, `New item ${this.count++}`);
+            });
+          })
+      }
+      Row({ space: 5 } as RowOptions) {
+        Grid() {
+          Repeat<string>(this.dataArray, { allowReuseInAnimation: false }) // Repeat在动效过程中不复用子组件，从而适配动效
+            .each((ri: RepeatItem<string>) => {
+              GridItem() {
+                Text(ri.item)
+              }
+              .width(150)
+              .height(50)
+              .border({ width: 1 })
+              .transition(TransitionEffect.translate({ x: 300 })) // 设置子组件插入时的过渡效果
+            })
+            .key((item: string) => item)
+            .virtualScroll()
+        }
+        .columnsTemplate('1fr')
+        .columnsGap(5)
+        .rowsGap(5)
+        .width('80%')
+      }
+    }
+    .width('100%')
+  }
+}
+```
+
+运行效果：
+
+![Repeat-animate-grid](figures/repeat-animate-grid.gif)
 
 ## RepeatController
 
@@ -236,7 +299,7 @@ Repeat组件的控制器。通过[RepeatOptions](#repeatoptions)中的controller
 > 1. controller仅在Repeat创建时绑定，不支持动态修改。
 > 2. 一个控制器只能控制一个Repeat组件。若将控制器绑定到另一个Repeat，则之前的绑定自动失效，控制器仅控制最后绑定的组件。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -248,7 +311,7 @@ constructor()
 
 RepeatController的构造函数。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -260,7 +323,7 @@ clearCache(): void
 
 清理该控制器绑定的Repeat组件懒加载模式下缓存池中的组件。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -270,7 +333,7 @@ clearCache(): void
 
 以下示例中，通过[RepeatOptions](#repeatoptions)的controller属性绑定了[RepeatController](#repeatcontroller)，点击Scroll按钮跳转列表，使旧的子组件进入缓存池，然后点击Clear按钮，主动清理Repeat懒加载模式下缓存池中的组件。
 
-从API版本26.2.0开始，Repeat接口新增options参数。
+从API版本26.1.0开始，Repeat接口新增options参数。
 
 ```ts
 import { Entry, ComponentV2, Column, Text, Repeat, RepeatItem, RepeatController, List, ListItem, Button, ClickEvent, Scroller } from '@ohos.arkui.component';

@@ -8,7 +8,9 @@
 
 ## 简介
 
-> 注意：本文档介绍的是使用`@async`和`@promise`注解来将C++侧的同步函数自动转换为ArkTS侧的异步函数的方式。对于需要在C++侧实现真正的异步逻辑（如跨线程、异步I/O等）的场景，请参考[使用Taihe进行底层异步相关开发](use-taihe-about-async-types.md)。
+> **注意：**
+>
+> 本文档介绍的是使用`@async`和`@promise`注解来将C++侧的同步函数自动转换为ArkTS侧的异步函数的方式。对于需要在C++侧实现真正的异步逻辑（如跨线程、异步I/O等）的场景，请参考[使用Taihe进行底层异步相关开发](use-taihe-about-async-types.md)。
 
 在Taihe中使用注解`@async`将声明的函数或方法转换为接收`AsyncCallback`的异步版本，使用注解`@promise`将声明的函数或方法转换为返回`Promise`的异步版本。
 

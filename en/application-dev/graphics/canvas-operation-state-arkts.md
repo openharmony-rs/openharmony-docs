@@ -47,7 +47,7 @@ The following table lists the APIs for clipping. For details, see [drawing.Canva
 | clipRect(rect: common2D.Rect, clipOp?: ClipOp, doAntiAlias?: boolean): void | Clips a rectangle.|
 | clipRoundRect(roundRect: RoundRect, clipOp?: ClipOp, doAntiAlias?: boolean): void | Clips a rounded rectangle.|
 | clipPath(path: Path, clipOp?: ClipOp, doAntiAlias?: boolean): void | Clips a path.|
-| clipRegion(region: Region, clipOp?: ClipOp): void | Clips a rectangle.|
+| clipRegion(region: Region, clipOp?: ClipOp): void | Clips a region.|
 
 
 ### How to Develop

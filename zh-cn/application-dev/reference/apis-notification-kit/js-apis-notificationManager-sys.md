@@ -11,7 +11,7 @@
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn和ArkTS-Sta。
-> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API版本9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前界面仅包含本模块的系统接口，其他公开接口参见[NotificationManager](js-apis-notificationManager.md)。
 
@@ -2264,6 +2264,78 @@ notificationManager.getAllActiveNotifications().then((data: Array<notificationMa
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`getAllActiveNotifications failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
+## notificationManager.getActiveNotification
+
+getActiveNotification(hashCode: string): Promise\<NotificationRequest\>
+
+根据通知的唯一标识hashCode获取当前未删除的通知信息。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.1.0
+
+**ArkTS-Sta起始版本**：26.1.0
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明             |
+| -------- | ------ | ---- | ---------------- |
+| hashCode | string | 是   | 通知的唯一标识。 |
+
+**返回值：**
+
+| 类型                                                                                                          | 说明                             |
+| ------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| Promise\<[NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)\> | Promise对象。返回获取到的通知信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600007  | The notification does not exist. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 此处应改为开发者需要查询的通知唯一标识
+let hashCode: string = 'hashCode';
+notificationManager.getActiveNotification(hashCode).then((data: notificationManager.NotificationRequest) => {
+    console.info(`getActiveNotification success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getActiveNotification failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 此处应改为开发者需要查询的通知唯一标识
+let hashCode: string = 'hashCode';
+notificationManager.getActiveNotification(hashCode).then((data: notificationManager.NotificationRequest) => {
+    console.info(`getActiveNotification success, data: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`getActiveNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -6019,7 +6091,7 @@ setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: 
 | 参数名   | 类型                     | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | -------------------------- |
 | bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | 是   | 应用的包信息。                   |
-| deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
+| deviceType | string | 是   | 设备类型。<br>从API版本18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API版本20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 | enable   | boolean                  | 是   | 指定应用是否支持跨设备协同（true：支持，false：不支持）。|
 
 **返回值：**
@@ -6106,7 +6178,7 @@ setDistributedEnableByBundles(bundleEnableInfos: Array\<DistributedBundleEnableI
 | 参数名   | 类型                     | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | -------------------------- |
 | bundleEnableInfos   | Array\<[DistributedBundleEnableInfo](#distributedbundleenableinfo20)\>             | 是   | 需要设置的应用数组。                   |
-| deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
+| deviceType | string | 是   | 设备类型。<br>从API版本18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API版本20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 
 
 **返回值：**
@@ -6208,7 +6280,7 @@ isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<
 | 参数名   | 类型                     | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | -------------------------- |
 | bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | 是   | 应用的包信息。                   |
-| deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
+| deviceType | string | 是   | 设备类型。<br>从API版本18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API版本20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 
 **返回值：**
 
@@ -6291,7 +6363,7 @@ setSmartReminderEnabled(deviceType: string, enable: boolean): Promise<void\>
 
 | 参数名   | 类型                     | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | -------------------------- |
-| deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
+| deviceType | string | 是   | 设备类型。<br>从API版本18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API版本20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 | enable   | boolean                  | 是   | 指定应用是否支持设置设备与其他设备协同智能提醒（true：支持，false：不支持）。|
 
 **返回值：**
@@ -6368,7 +6440,7 @@ isSmartReminderEnabled(deviceType: string): Promise<boolean\>
 
 | 参数名   | 类型                     | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | -------------------------- |
-| deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
+| deviceType | string | 是   | 设备类型。<br>从API版本18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API版本20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 
 **返回值：**
 
@@ -7456,7 +7528,7 @@ setDistributedEnabledBySlot(slot: SlotType, deviceType: string, enabled: boolean
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | slot | [SlotType](js-apis-notificationManager.md#slottype) | 是   | [通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)类型。 |
-| deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
+| deviceType | string | 是   | 设备类型。<br>从API版本18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API版本20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 | enabled | boolean | 是   | 是否开启通知跨设备协同开关。取值为true表示打开，取值为false表示关闭。 |
 
 **返回值：**
@@ -7530,7 +7602,7 @@ isDistributedEnabledBySlot(slot: SlotType, deviceType: string): Promise\<boolean
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | slot | [SlotType](js-apis-notificationManager.md#slottype) | 是   | [通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)类型。 |
-| deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
+| deviceType | string | 是   | 设备类型。<br>从API版本18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API版本20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 
 **返回值：**
 

@@ -31,7 +31,7 @@ Taihe提供基础类型和字符串类型。
 
 注意，目前Taihe支持unsigned类型，但ets并不支持，如果进行ets相关开发，请避免直接使用`u8`、`u16`、`u32`、`u64`。`Array<u8>`，`Array<u64>`等特例，后续会在[bigint](./use-taihe-about-bigint.md)，[arraybuffer](./use-taihe-about-arraybuffer-and-typedarray.md)章节介绍。
 
-作为参数时，string类型有view类型和非view类型，其中，view类型的语义是不拥有所有权，只是对现有类型的引用，而非view类型则是拥有当前类型的所有权，用户可以根据使用场景来进行使用。
+作为参数时，string类型有view类型和非view类型，其中，view类型的语义是不拥有所有权，只是对现有类型的引用，而非view类型则是拥有当前类型的所有权，用户可以根据使用场景来进行使用。默认的`String`使用UTF-8编码，对应C++侧的`taihe::string`和`taihe::string_view`。如需指定其他字符串编码，请参见[使用Taihe进行String可选编码相关开发](use-taihe-about-string-encoding.md)。
 
 ## 使用示例
 
