@@ -2,10 +2,11 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4406a1fcebfd3a8963726b8dfa66bed58dd98b9c translatedAt=2026-10-31T06:42:38.096Z pushedAt=2026-10-31T08:35:43.689Z nl=1 -->
 
 ## Available APIs
 
@@ -27,14 +28,14 @@ The following table describes the attributes of **AssetMap** for updating assets
   | AUTH_TYPE             | Type: number<br>Value range: see [AuthType](../../reference/apis-asset-store-kit/js-apis-asset.md#authtype)| No    | Type of user authentication required for accessing the asset.                  |
   | SYNC_TYPE             | Type: number<br>Value range: see [SyncType](../../reference/apis-asset-store-kit/js-apis-asset.md#synctype)| No    | Type of sync supported by the asset.                          |
   | IS_PERSISTENT         | Type: Boolean                                                  | No    | Whether to retain the asset when the application is uninstalled. The value **true** means to retain the asset even after the application is uninstalled. The value **false** means the opposite.              |
-  | DATA_LABEL_CRITICAL_1 | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-  | DATA_LABEL_CRITICAL_2 | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-  | DATA_LABEL_CRITICAL_3 | Type: Uint8Array<br>Length: 1-2048 bytes                      | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-  | DATA_LABEL_CRITICAL_4 | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-  | DATA_LABEL_NORMAL_1   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-  | DATA_LABEL_NORMAL_2   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-  | DATA_LABEL_NORMAL_3   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-  | DATA_LABEL_NORMAL_4   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
+  | DATA_LABEL_CRITICAL_1 | Type: Uint8Array, length: 1-2048 bytes.                        | Optional     | Attached information of the asset. The content is customized by the service and has integrity protection.<br/>**Note:** In API version 12 and earlier, the length is 1-512 bytes. |
+  | DATA_LABEL_CRITICAL_2 | Type: Uint8Array, length: 1-2048 bytes.                        | Optional     | Attached information of the asset. The content is customized by the service and has integrity protection.<br/>**Note:** In API version 12 and earlier, the length is 1-512 bytes. |
+  | DATA_LABEL_CRITICAL_3 | Type: Uint8Array, length: 1-2048 bytes.                       | Optional     | Attached information of the asset. The content is customized by the service and has integrity protection.<br/>**Note:** In API version 12 and earlier, the length is 1-512 bytes. |
+  | DATA_LABEL_CRITICAL_4 | Type: Uint8Array, length: 1-2048 bytes.                        | Optional     | Attached information of the asset. The content is customized by the service and has integrity protection.<br/>**Note:** In API version 12 and earlier, the length is 1-512 bytes. |
+  | DATA_LABEL_NORMAL_1   | Type: Uint8Array, length: 1-2048 bytes.                        | Optional     | Attached information of the asset. The content is customized by the service and has no integrity protection.<br/>**Note:** In API version 12 and earlier, the length is 1-512 bytes. |
+  | DATA_LABEL_NORMAL_2   | Type: Uint8Array, length: 1-2048 bytes.                        | Optional     | Attached information of the asset. The content is customized by the service and has no integrity protection.<br/>**Note:** In API version 12 and earlier, the length is 1-512 bytes. |
+  | DATA_LABEL_NORMAL_3   | Type: Uint8Array, length: 1-2048 bytes.                        | Optional     | Attached information of the asset. The content is customized by the service and has no integrity protection.<br/>**Note:** In API version 12 and earlier, the length is 1-512 bytes. |
+  | DATA_LABEL_NORMAL_4   | Type: Uint8Array, length: 1-2048 bytes.                        | Optional     | Attached information of the asset. The content is customized by the service and has no integrity protection.<br/>**Note:** In API version 12 and earlier, the length is 1-512 bytes. |
   | DATA_LABEL_NORMAL_LOCAL_1<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
   | DATA_LABEL_NORMAL_LOCAL_2<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
   | DATA_LABEL_NORMAL_LOCAL_3<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
@@ -47,10 +48,10 @@ The following table describes the attributes of **AssetMap** for updating assets
   | Attribute Name (Tag)       | Value                     | Mandatory | Description                                                        |
   | --------------------- | -------------------------------| -------- | ------------------------------- |
   | SECRET                | Type: Uint8Array<br>Length: 1-1024 bytes                          | No    | Asset in plaintext.                                                |
-  | DATA_LABEL_NORMAL_1   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-  | DATA_LABEL_NORMAL_2   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-  | DATA_LABEL_NORMAL_3   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-  | DATA_LABEL_NORMAL_4   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
+  | DATA_LABEL_NORMAL_1   | Type: Uint8Array, length: 1-2048 bytes.                        | Optional     | Attached information of the asset. The content is customized by the service and has no integrity protection.<br/>**Note:** In API version 12 and earlier, the length is 1-512 bytes. |
+  | DATA_LABEL_NORMAL_2   | Type: Uint8Array, length: 1-2048 bytes.                        | Optional     | Attached information of the asset. The content is customized by the service and has no integrity protection.<br/>**Note:** In API version 12 and earlier, the length is 1-512 bytes. |
+  | DATA_LABEL_NORMAL_3   | Type: Uint8Array, length: 1-2048 bytes.                        | Optional     | Attached information of the asset. The content is customized by the service and has no integrity protection.<br/>**Note:** In API version 12 and earlier, the length is 1-512 bytes. |
+  | DATA_LABEL_NORMAL_4   | Type: Uint8Array, length: 1-2048 bytes.                        | Optional     | Attached information of the asset. The content is customized by the service and has no integrity protection.<br/>**Note:** In API version 12 and earlier, the length is 1-512 bytes. |
   | DATA_LABEL_NORMAL_LOCAL_1<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
   | DATA_LABEL_NORMAL_LOCAL_2<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
   | DATA_LABEL_NORMAL_LOCAL_3<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
@@ -123,4 +124,5 @@ Update two assets in batches. Update the plaintext of the assets whose aliases a
      console.error(`Failed to batch update Asset. Code is ${err.code}, message is ${err.message}`);
    }
    ```
-<!--no_check-->
+
+   <!--no_check-->

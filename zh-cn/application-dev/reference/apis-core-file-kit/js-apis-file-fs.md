@@ -4405,6 +4405,8 @@ createRandomAccessFile(file: string | File, mode?: number, options?: RandomAcces
 
 接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
+**示例：**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 

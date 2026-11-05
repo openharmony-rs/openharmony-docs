@@ -1,12 +1,11 @@
 # Subscribing to Crash Events (ArkTS)
-
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @chenshi51-->
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=b1cebd3e52b147006adf492647d8b8e3c5a664e2 translatedAt=2026-08-21T03:19:08.955Z pushedAt=2026-08-21T09:04:11.428Z -->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 ## Overview
 
@@ -34,7 +33,7 @@ The following describes how to subscribe to the crash event triggered by a butto
 1. Create a Native C++ template project in DevEco Studio, edit the **entry > src > main > ets > entryability > EntryAbility.ets** file, and import dependent modules. The sample code is as follows:
 
     <!-- @[Crash_Click_ArkTS_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+    
     ``` TypeScript
     import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
     import { deviceInfo } from '@kit.BasicServicesKit';
@@ -42,12 +41,13 @@ The following describes how to subscribe to the crash event triggered by a butto
 
 2. Edit the **entry > src > main > ets > entryability > EntryAbility.ets** file in the project, and set the [custom crash event parameters](hiappevent-watcher-crash-events.md#customizing-crash-event-parameters) and crash log [custom specification settings](hiappevent-watcher-crash-events.md#customizing-crash-log-specifications) in the `onCreate` function. The sample code is as follows:
 
-    <!-- @[Crash_ArkTS_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+    <!-- @[Crash_ArkTS_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+    
     ``` TypeScript
     // Build custom parameters for the crash event.
     let crashParams: Record<string, hiAppEvent.ParamType> = {
-      "test_data": 100, // test_data is custom data. You can customize the params parameter based on your actual needs.
+      "test_data": 100, // test_data is custom data. You can customize the params parameter based on your needs.
     };
     // Set custom parameters for the crash event.
     hiAppEvent.setEventParam(crashParams, hiAppEvent.domain.OS, hiAppEvent.event.APP_CRASH).then(() => {
@@ -75,7 +75,8 @@ The following describes how to subscribe to the crash event triggered by a butto
       let crashEventPolicy : hiAppEvent.EventPolicy = {
         "appCrashPolicy": { // Crash event configuration policy.
           "pageSwitchLogEnable": true, // Starting from API version 24, page switch logging is supported.
-          "collectMinidump": true // Starting from API version 26.0.0, minidump is supported.
+          "collectMinidump": true // Support enabling minidump from API version 26.0.0.
+          "publishOnNextLaunch": true // Starting from API version 26.1.0, callbacks can be configured for delivery only after restart.
         }
       };
       // You can set the crash event configuration policy.
@@ -90,7 +91,7 @@ The following describes how to subscribe to the crash event triggered by a butto
 3. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, add a watcher in **onCreate()** to subscribe to system events. The sample code is as follows:
 
     <!-- @[CrashEvent_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
-
+    
     ``` TypeScript
     // Add a crash event watcher.
     let watcher: hiAppEvent.Watcher = {
@@ -163,7 +164,7 @@ The following describes how to subscribe to the crash event triggered by a butto
       In **entry/src/main/cpp/napi_init.cpp** of the project, add the **TestNullptr** method, and register it as an ArkTS API as follows:
 
       <!-- @[Sys_Native_Nullptr_Event_C++](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
-
+      
       ``` C++
       static napi_value TestNullptr(napi_env env, napi_callback_info info)
       {
@@ -174,7 +175,7 @@ The following describes how to subscribe to the crash event triggered by a butto
       ```
 
       <!-- @[Sys_Native_Nullptr_Event_C++_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
-
+      
       ``` C++
       static napi_value Init(napi_env env, napi_value exports)
       {
@@ -191,7 +192,7 @@ The following describes how to subscribe to the crash event triggered by a butto
       In the **entry > src > main > cpp > types > libentry > Index.d.ts** file, define the ArkTS API:
 
       <!-- @[Sys_Native_Crash_Event_C++_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-
+      
       ``` TypeScript
       export const testNullptr: () => void;
       ```
@@ -199,7 +200,7 @@ The following describes how to subscribe to the crash event triggered by a butto
       In the **entry/src/main/ets/pages/index.ets** file, add the **appCrash** button and construct a scenario for triggering a crash event in **onClick()**. The sample code is as follows:
 
       <!-- @[Native_CrashEvent_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
-
+      
       ``` TypeScript
       Button('NativeCrash')
         .type(ButtonType.Capsule)
@@ -220,7 +221,7 @@ The following describes how to subscribe to the crash event triggered by a butto
       In the **entry/src/main/ets/pages/index.ets** file, add the **appCrash** button and construct a scenario for triggering a crash event in **onClick()**. The sample code is as follows:
 
       <!-- @[JsError_CrashEvent_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
-
+      
       ``` TypeScript
       Button('JsError')
         .type(ButtonType.Capsule)
@@ -244,23 +245,21 @@ The following describes how to subscribe to the crash event triggered by a butto
 
 ### Checking Whether a Watcher Subscribes to Crash Events
 
-Depending on whether an application proactively captures crash events, callbacks are triggered for the crash events at different times. You need to check whether crash events are subscribed to at different times.
+Starting from API version 26.1.0, if the application has enabled callbacks to be delivered only after its next launch, HiAppEvent reports crash events to registered watchers and invokes their callbacks after the application restarts.
 
-**Application not proactively captures crash events**
+Before API version 26.1.0, or if the application has not enabled delivery only after restart, event callbacks are delivered as soon as possible:
 
-If the application does not proactively capture the crash exception, the application will exit after the system handles the crash. When the application restarts, HiAppEvent reports the crash event to the registered watcher to complete the callback.
+- After a fault log is generated, the callback is invoked as soon as the callback conditions are met.
+- Callbacks that cannot be delivered in time are retained and delivered after the application next restarts.
 
-If the application fails to start or remains unstarted for a long time, you can delay the event notification by referring to [Using FaultLogExtensionAbility to Subscribe to Events](./fault-log-extension-app-events-arkts.md).
+Crash event callback timing can vary:
 
-**Application proactively captures crash events**
+- If the application does not exit immediately after a crash, for example because it captures the crash exception and continues running or exception handling takes a long time, it is more likely to receive the fault event callback during the current lifecycle.
+- If the application exits immediately after a crash, the callback is more likely to be delivered after the next restart.
 
-If an application proactively captures the crash event, a callback is triggered before the application exits. The following are examples:
+Therefore, verify crash event subscription at different callback times.
 
-1. The application does not exit during exception handling.
-
-   When [errorManager.on](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror) is used to capture the **JsError** crash event, a callback is triggered before the application exits. If the application registers the [crash signal](cppcrash-guidelines.md#crash-signals) processing function but does not exit, the **NativeCrash** event triggers a callback before the application exits.
-
-2. If the exception handling takes a long time, the application exits with a delay.
+Starting from API version 21, if the application cannot start or has not started for a long time, you can override the callback described in [Using FaultLogExtensionAbility to Subscribe to Events](./fault-log-extension-app-events-arkts.md) for delayed reporting.
 
 In the development and debugging phase, after HiAppEvent reports a crash event and completes the callback, you can view the **JsError** event information in the **HiLog** window of DevEco Studio. The content of the **NativeCrash** event is different. For details, see [Event Fields](hiappevent-watcher-crash-events.md#fields). The following is an example of a **JsError** event:
 
@@ -302,14 +301,12 @@ Through HiAppEvent, you can subscribe to crash events by setting the event name 
 You can identify the specific crash event by the **crash_type** field in [hiAppEvent.AppEventInfo.params](./hiappevent-watcher-crash-events.md#params).
 
 The following table shows the mapping between the crash events.
-
 | Faultlogger.FaultType | hiAppEvent.AppEventInfo.params.crash_type |
 | --- | --- |
 | CPP_CRASH | NativeCrash |
 | JS_CRASH | JsError |
 
 The following table shows the mapping between [FaultLogInfo](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloginfo) and [hiAppEvent.AppEventInfo.params](./hiappevent-watcher-crash-events.md#params).
-
 | Faultlogger.FaultLogInfo | hiAppEvent.AppEventInfo.params | Description|
 | --- | --- | --- |
 | pid | pid | None|
@@ -324,6 +321,5 @@ The following table shows the mapping between [FaultLogInfo](../reference/apis-p
 Both the callback-based [FaultLogger.query](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9) and the promise-based [FaultLogger.query](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9-1) can be replaced with [hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher) to achieve the same functionality.
 
 For details about how to use HiAppEvent to subscribe to crash events (ArkTS), see [How to Develop](#how-to-develop) and [Checking Whether a Watcher Subscribes to Crash Events](#checking-whether-a-watcher-subscribes-to-crash-events).
-
 <!--RP1-->
 <!--RP1End-->

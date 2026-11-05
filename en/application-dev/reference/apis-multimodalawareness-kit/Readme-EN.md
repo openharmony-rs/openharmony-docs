@@ -5,14 +5,14 @@
 <!--Designer: @zou_ye-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=561a48f0279b682322ad16aa122a3161b679e716 translatedAt=2026-09-14T02:29:01.036Z pushedAt=2026-09-14T10:03:33.587Z -->
+<!-- md-trans-meta sourceCommit=535da5fa1a4f632e9b32ff60824cd7d59fa27647 translatedAt=2026-11-03T06:07:26.447Z pushedAt=2026-11-03T12:08:25.593Z nl=1 -->
 
 - ArkTS APIs<!--multimodal-awareness-arkts-->
   - [@ohos.stationary (Device Status Awareness Framework)](js-apis-stationary.md)
   - [@ohos.multimodalAwareness.motion (Motion Awareness)](js-apis-awareness-motion.md)
   - [@ohos.multimodalAwareness.metadataBinding (Metadata Binding)](js-apis-awareness-metadataBinding.md)
   - [@ohos.multimodalAwareness.deviceStatus (Device Status Awareness)](js-apis-awareness-deviceStatus.md)
-  - [@ohos.multimodalAwareness.userStatus (User Status Awareness)](js-apis-awareness-userStatus.md)
+  - [@ohos.multimodalAwareness.userStatus (User Status Awareness)](js-apis-awareness-userStatus.md) 
   - [@ohos.multimodalAwareness.carAwareness (Car Awareness)](js-apis-awareness-carAwareness.md)
   <!--Del-->
   - [@ohos.multimodalAwareness.metadataBinding (Metadata Binding) (System API)](js-apis-awareness-metadataBinding-sys.md)

@@ -184,6 +184,159 @@ try {
 ```
 
 
+### getServicesByUuid
+
+getServicesByUuid(service: Service): Promise&lt;Service[]&gt;
+
+获取服务端支持的服务中与指定服务UUID匹配的服务。使用Promise异步回调。
+
+与[getServices](js-apis-nearlink-ssap.md#getservices)不同，本接口仅获取与指定UUID匹配的服务，且仅使用传入service的serviceUuid字段在服务端匹配目标服务，其余字段不参与匹配。无匹配服务时返回空数组。
+
+需在调用[connect](js-apis-nearlink-ssap.md#connect)建立连接成功后使用。
+
+> **说明：**
+>
+> serviceUuid若为星闪标准UUID（以"37BEA880-FC70-11EA-B720"为前缀的UUID），接口将返回36100044错误，请使用自定义UUID。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：**  此接口为系统接口。
+
+**需要权限：** ohos.permission.ACCESS_NEARLINK
+
+**系统能力：** SystemCapability.Communication.NearLink.Base
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| service | [Service](js-apis-nearlink-ssap.md#service) | 是 | 待获取的服务。仅serviceUuid字段用于在服务端匹配目标服务。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[Service](js-apis-nearlink-ssap.md#service)[]&gt; | Promise对象，返回与指定UUID匹配的服务列表。无匹配服务时返回空数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[星闪错误码](errorcode-nearlink-service.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 36100003 | NearLink disabled. |
+| 36100043 | Invalid UUID. |
+| 36100044 | NearLink standard UUID not allowed. |
+| 36100099 | Operation failed. |
+
+**示例：**
+```typescript
+import { ssap } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let addr: string = '00:11:22:33:AA:FF'; // 扫描获取到的远端设备地址
+let client: ssap.Client;
+try {
+  client = ssap.createClient(addr); // 同一应用针对同一远端设备只需创建一个实例
+  client.connect().then((): Promise<ssap.Service[]> => {
+    console.info('connect success');
+    let service: ssap.Service = { // 仅serviceUuid字段用于匹配目标服务；properties为类型必填字段，本接口不使用
+      serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386', // 自定义UUID，不能使用星闪标准UUID
+      properties: []
+    };
+    return client.getServicesByUuid(service);
+  }).then((result: ssap.Service[]) => {
+    console.info('getServicesByUuid successfully: ' + JSON.stringify(result));
+  }).catch((err: BusinessError) => {
+    console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
+  });
+} catch (err) {
+  console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+### readPropertiesByUuid
+
+readPropertiesByUuid(property: Property): Promise&lt;Property[]&gt;
+
+根据属性UUID读取服务端属性。使用Promise异步回调。
+
+与[readProperty](js-apis-nearlink-ssap.md#readproperty)（读取单个属性）不同，本接口读取与指定属性UUID匹配的所有属性，仅使用传入property的propertyUuid字段匹配待读取的属性，匹配范围为服务端全部服务，不限定在serviceUuid对应的服务内。无匹配属性时返回空数组。
+
+需在调用[connect](js-apis-nearlink-ssap.md#connect)建立连接成功后使用。
+
+> **说明：**
+>
+> propertyUuid或serviceUuid若为星闪标准UUID（以"37BEA880-FC70-11EA-B720"为前缀的UUID），接口将返回36100044错误，请使用自定义UUID。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：**  此接口为系统接口。
+
+**需要权限：** ohos.permission.ACCESS_NEARLINK
+
+**系统能力：** SystemCapability.Communication.NearLink.Base
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| property | [Property](js-apis-nearlink-ssap.md#property) | 是 | 待读取的服务端属性。仅propertyUuid字段用于匹配待读取的属性；serviceUuid与value为[Property](js-apis-nearlink-ssap.md#property)类型的必填字段，本接口不使用：serviceUuid传入任意合法的自定义UUID即可，value传入空ArrayBuffer即可（其大小与内容不参与读取，读取到的属性值在返回结果中）。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[Property](js-apis-nearlink-ssap.md#property)[]&gt; | Promise对象，返回读取到的服务端属性列表。无匹配属性时返回空数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[星闪错误码](errorcode-nearlink-service.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 36100003 | NearLink disabled. |
+| 36100043 | Invalid UUID. |
+| 36100044 | NearLink standard UUID not allowed. |
+| 36100099 | Operation failed. |
+
+**示例：**
+```typescript
+import { ssap } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let addr: string = '00:11:22:33:AA:FF'; // 扫描获取到的远端设备地址
+let client: ssap.Client;
+try {
+  client = ssap.createClient(addr); // 同一应用针对同一远端设备只需创建一个实例
+  client.connect().then((): Promise<ssap.Property[]> => {
+    console.info('connect success');
+    let property: ssap.Property = { // 仅propertyUuid字段用于匹配待读取的属性；serviceUuid、value为类型必填字段，本接口不使用
+      serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386', // 自定义UUID，不能使用星闪标准UUID
+      propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234', // 自定义UUID，不能使用星闪标准UUID
+      value: new ArrayBuffer(0)
+    };
+    return client.readPropertiesByUuid(property);
+  }).then((result: ssap.Property[]) => {
+    console.info('readPropertiesByUuid successfully: ' + JSON.stringify(result));
+  }).catch((err: BusinessError) => {
+    console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
+  });
+} catch (err) {
+  console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
 ### readDescriptor
 
 readDescriptor(descriptor: PropertyDescriptor): Promise&lt;PropertyDescriptor&gt;

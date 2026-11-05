@@ -5,7 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4882f47f6c64101d8a55c7806ce63e17e8122e38 translatedAt=2026-09-18T02:49:05.369Z pushedAt=2026-09-18T09:02:22.697Z -->
+<!-- md-trans-meta sourceCommit=4882f47f6c64101d8a55c7806ce63e17e8122e38 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Starting from API version 26.0.0, the system provides audio snapshot (Audio Debugging Info) capability, which allows apps to obtain the runtime status of the audio subsystem in the current process. Audio Debugging Info captures a point-in-time snapshot of the audio subsystem, including key information such as audio stream parameters, routing status, volume information, audio focus state, and error records. It helps you inspect the internal state of the audio subsystem without affecting app behavior. You can use the captured snapshot to obtain diagnostic information for troubleshooting issues related to audio rendering, audio capture, audio loopback, and audio sessions, such as silent playback, abnormal volume levels, and audio focus loss.
 
@@ -70,7 +70,7 @@ Before using the debugging APIs, obtain an audio debugging manager instance firs
 
 For API details, see [getDebuggingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getdebuggingmanager).
 
-**C/C++ API:**
+**C/C++ APIs:**
 
 <!-- @[get_debug_manager_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/cpp/audio.cpp) -->
 
@@ -113,7 +113,7 @@ The following table lists the information in app snapshots.
 
 For API details, see [printAppInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printappinfo).
 
-**C/C++ API:**
+**C/C++ APIs:**
 
 <!-- @[print_app_snapshot_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/cpp/audio.cpp) -->
 
@@ -146,7 +146,7 @@ fileio.closeSync(file);
 debugManager.printAppInfo(-1);
 ```
 
-**Example:**
+**Output example:**
 
 ```text
 audioApp {
@@ -185,11 +185,11 @@ The following table lists the information in audio renderer snapshots.
 
 > **NOTE**
 >
-> See the output example below for detailed field information.
+> For detailed field information, see the output example below.
 
 For API details, see [printRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printrendererinfo).
 
-**C/C++ API:**
+**C/C++ APIs:**
 
 <!-- @[print_renderer_snapshot_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/cpp/audio.cpp) -->
 
@@ -216,7 +216,7 @@ debugManager.printRendererInfo(renderer, file.fd);
 fileio.closeSync(file);
 ```
 
-**Example:**
+**Output example:**
 
 ```text
 audioRenderer {
@@ -287,7 +287,7 @@ The following table lists the information in audio capturer snapshots.
 
 For API reference, see [printCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printcapturerinfo).
 
-**C/C++ API:**
+**C/C++ APIs:**
 
 <!-- @[print_capturer_snapshot_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/cpp/audio.cpp) -->
 
@@ -314,7 +314,7 @@ debugManager.printCapturerInfo(capturer, file.fd);
 fileio.closeSync(file);
 ```
 
-**Example:**
+**Output example:**
 
 ```text
 audioCapturer {
@@ -500,7 +500,7 @@ import { fileIo as fs } from '@kit.CoreFileKit';
   fs.closeSync(fd);
 ```
 
-**Example:**
+**Output example:**
 
 ```text
 audioSession {

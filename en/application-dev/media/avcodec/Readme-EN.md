@@ -6,9 +6,10 @@
 <!--Designer: @dpy2650-->
 <!--Tester: @cyakee; @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=a97bafa60b418a6aa9bd1a00412d13c18f9a66e3 translatedAt=2026-10-22T13:52:24.789Z pushedAt=2026-10-22T13:59:04.534Z nl=1 -->
+<!-- md-trans-meta sourceCommit=47f3a1569aa4a1120b9ead8c85c19b618ca1ae15 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 - [About This Kit](avcodec-kit-intro.md)
+- [AVCodec Kit Samples](avcodec-kit-samples.md)
 - [AVCodec Supported Formats](avcodec-support-formats.md)
 - Audio and Video Codecs<!--audio-video-codec-->
   - [Obtaining Supported Codecs](obtain-supported-codecs.md)

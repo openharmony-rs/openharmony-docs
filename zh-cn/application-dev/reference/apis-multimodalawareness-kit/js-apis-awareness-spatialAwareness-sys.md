@@ -112,7 +112,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 | 名称               | 类型                   | 只读      | 可选       | 说明     |
 | -------------------| ----------------------| ----------|----------|--------|
-| doorLockCode       | int                   | 是        | 否         | 表示门锁校验码，结果≥0。|
+| doorLockCode       | number                   | 是        | 否         | 表示门锁校验码，结果≥0。|
 | position           | PositionRelativeToDoor| 是        | 否          | 表示门内外位置信息。|
 | deviceId           | string                | 是        | 否         | 表示设备Id号，字符串长度：[1,128]。  |
 
@@ -131,7 +131,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 | deviceList         | string[]              | 是         | 否 | 表示设备列表，设备唯一标识符，字符串长度取值范围：[1,128]，数组长度取值范围：[1,128]。|
 | techType           | TechnologyType        | 是         | 否 | 表示信号类型。|
 | reportMode         | ReportingMode         | 是         | 否  | 表示结果上报模式。|
-| reportFrequency    | int                   | 是         | 否  | 表示结果上报频率，单位：Hz，取值范围：[0,999999]。|
+| reportFrequency    | number                   | 是         | 否  | 表示结果上报频率，单位：Hz，取值范围：[0,999999]。|
 
 ## spatialAwareness.onDistanceMeasure
 

@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=a845c476ce2343c19fff0bcc26c64859afe6b660 translatedAt=2026-08-26T04:48:30.252Z pushedAt=2026-08-28T08:42:47.415Z -->
+<!-- md-trans-meta sourceCommit=3bef641539163230930467cf43754c9df02e807a translatedAt=2026-11-03T07:51:08.458Z pushedAt=2026-11-03T07:51:08.458Z -->
 
 ArkTS widgets provide widget page editing capabilities, allowing users to customize widget content, for example, editing a contact widget, modifying the contacts displayed in a widget, and editing a weather widget.
 
@@ -115,7 +115,7 @@ The following example describes how to use semi-modal widget editing.
    import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
    import { ExtensionEvent } from '../model/ExtensionEvent';
    
-   const TAG: string = 'FormEditExtensionAbility';
+   const TAG: string = 'FormEditSecPageAbility';
    
    export default class FormEditSecPageAbility extends FormEditExtensionAbility {
      public storage: LocalStorage = new LocalStorage();
@@ -143,9 +143,9 @@ The following example describes how to use semi-modal widget editing.
    
        try {
          session.loadContent('pages/FormEditSecPage', this.storage);
-         console.info(TAG, `loadContent first edit page success`);
+         console.info(TAG, 'loadContent second edit page success');
        } catch (e) {
-         console.error(TAG, `EntryFormEditAbility loadContent err, want: ${e?.message}`);
+         console.error(TAG, `FormEditSecPageAbility loadContent err, want: ${e?.message}`);
        }
      }
    
@@ -262,7 +262,7 @@ The following example describes how to use semi-modal widget editing.
          // Refresh the information of the edited card.
          formProvider.updateForm(this.formId, obj, (error: BusinessError) => {
            if (error) {
-             console.error(TAG, `callback error, code: ${error.code}, message: ${error.message})`);
+             console.error(TAG, `callback error, code: ${error.code}, message: ${error.message}`);
              return;
            }
            console.info(TAG, `formProvider updateForm success`);
@@ -278,7 +278,7 @@ The following example describes how to use semi-modal widget editing.
          // Refresh the information of the preview card.
          formProvider.updateForm(this.previewFormId, obj, (error: BusinessError) => {
            if (error) {
-             console.error(TAG, `callback error, code: ${error.code}, message: ${error.message})`);
+             console.error(TAG, `callback error, code: ${error.code}, message: ${error.message}`);
              return;
            }
            console.info(TAG, `formProvider updateForm success`);
@@ -535,18 +535,6 @@ The following example describes how to use semi-modal widget editing.
          return formBindingData.createFormBindingData('');
        }
      
-       onCastToNormalForm(formId: string) {
-       }
-     
-       onUpdateForm(formId: string) {
-       }
-     
-       onFormEvent(formId: string, message: string) {
-       }
-     
-       onRemoveForm(formId: string) {
-       }
-     
        onAcquireFormState(want: Want) {
          return formInfo.FormState.READY;
        }
@@ -637,8 +625,6 @@ The following example describes how to use semi-modal widget editing.
     }
     ```
 
-6. The running effect is as follows:<br>
-<!--Del--> <!--DelEnd-->
 
 ## Full-Screen Widget Editing
 ### Implementation Principles
@@ -801,7 +787,7 @@ The following example implements the following functions: long press on a widget
        if (!formId) {
          return;
        }
-       console.info(TAG, `doy: formId: ${formId}, message: ${message}`)
+       console.info(TAG, `formId: ${formId}, message: ${message}`)
        let param: Record<string, string> = {
          'message': message
        }
@@ -1005,5 +991,3 @@ The following example implements the following functions: long press on a widget
      ]
    }
    ```
-6. The running effect is as follows:<br>
-<!--Del--> <!--DelEnd-->

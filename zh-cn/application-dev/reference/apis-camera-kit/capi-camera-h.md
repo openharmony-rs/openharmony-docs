@@ -583,6 +583,7 @@ enum Camera_HostDeviceType
 | HOST_DEVICE_TYPE_UNKNOWN_TYPE = 0 | 未知设备类型。 |
 | HOST_DEVICE_TYPE_PHONE = 0x0E | 手机设备。 |
 | HOST_DEVICE_TYPE_TABLET = 0x11 | 平板设备。 |
+| HOST_DEVICE_TYPE_GLASSES = 0xA31 | 眼镜设备。<br>**起始版本：** 26.0.1 |
 
 ### Camera_FoldStatus
 

@@ -57,7 +57,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 
 1. 导入DRM Kit接口。
 
-   <!-- @[drm_import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+   <!-- @[drm_import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
    
    ``` C++
    // ...
@@ -70,7 +70,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 
 2. 获取设备支持的DRM解决方案名称和唯一标识的列表。
 
-   <!-- @[drm_getMediaKeySystems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+   <!-- @[drm_getMediaKeySystems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
    
    ``` C++
    uint32_t count = 3; // count是当前设备实际支持的DRM插件的个数，用户根据实际情况设置。
@@ -86,7 +86,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 
 3. 创建MediaKeySystem实例。
 
-   <!-- @[drm_createMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+   <!-- @[drm_createMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
    
    ``` C++
    Drm_ErrCode ret = OH_MediaKeySystem_Create(name, &mediaKeySystem);
@@ -99,7 +99,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 
 4. 创建MediaKeySession实例。
 
-   <!-- @[drm_createMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+   <!-- @[drm_createMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
    
    ``` C++
    DRM_ContentProtectionLevel securityLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
@@ -109,7 +109,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 
 5. 查询是否需要安全解码。
 
-   <!-- @[drm_requireSecureDecoderModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+   <!-- @[drm_requireSecureDecoderModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
    
    ``` C++
    bool requireSecureDecoder = false;
@@ -119,7 +119,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 
 6. 生成媒体密钥请求与处理媒体密钥响应。
 
-   <!-- @[drm_generateMediaKeyRequest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+   <!-- @[drm_generateMediaKeyRequest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
    
    ``` C++
    DRM_MediaKeyRequest mediaKeyRequest;
@@ -138,7 +138,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
    // ...
    ```
 
-   <!-- @[drm_processMediaKeyResponse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+   <!-- @[drm_processMediaKeyResponse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
    
    ``` C++
    // 应用通过网络请求DRM服务获取媒体密钥响应mediaKeyResponse，请按实际数据传入。
@@ -155,7 +155,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 
 7. 销毁MediaKeySession实例。
 
-   <!-- @[drm_destroyMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+   <!-- @[drm_destroyMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
    
    ``` C++
    ret = OH_MediaKeySession_Destroy(mediaKeySession);
@@ -164,7 +164,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 
 8. 销毁MediaKeySystem实例。
 
-   <!-- @[drm_destroyMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+   <!-- @[drm_destroyMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
    
    ``` C++
    ret = OH_MediaKeySystem_Destroy(mediaKeySystem);

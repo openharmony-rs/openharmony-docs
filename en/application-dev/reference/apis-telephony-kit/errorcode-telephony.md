@@ -5,6 +5,7 @@
 <!--Designer: @wnazgul-->
 <!--Tester: @jiang_99-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=e18aa6ae4cd46a6bbc1dd1cc86ff0e2296e9d983 translatedAt=2026-11-03T03:44:32.668Z pushedAt=2026-11-03T08:26:09.015Z nl=1 -->
 
 > **NOTE**
 >
@@ -47,6 +48,10 @@ Service startup or IPC connection has failed.
 **Procedure**
 
 Operation error. Try again later.
+
+<!--RP1-->
+
+<!--RP1End-->
 
 
 
@@ -104,7 +109,7 @@ The problem may arise due to insufficient memory, memory operation errors, or nu
 
 **Procedure**
 
-Operation error. Try again later.
+This operation is abnormal. Please retry later.
 
 
 ## 8301001 SIM Card Not Activated
@@ -330,4 +335,4 @@ The problem may arise due to insufficient memory, memory operation errors, or nu
 
 **Procedure**
 
-Operation error. Try again later.
+This operation is abnormal. Please retry later.

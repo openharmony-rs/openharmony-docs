@@ -81,8 +81,7 @@ status: active
      <!-- @[pixelmap_translate_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
-     // 向下平移100。
-     // 向右平移100。
+     // 向右平移100像素并向下平移100像素。
      this.pixelMap.translate(100, 100).then(() => {
        // ...
      });

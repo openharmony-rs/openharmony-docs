@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=f66217a374191afa08e6502e3cd59173c85fd1ac translatedAt=2026-08-26T04:56:22.776Z pushedAt=2026-08-28T08:49:09.221Z -->
+<!-- md-trans-meta sourceCommit=4f5f7145ce4df78a7db41fc5d8e12bc7c44b2404 translatedAt=2026-11-03T07:51:08.458Z pushedAt=2026-11-03T07:51:08.458Z -->
 
 This section provides the development guidelines for passive update. For details about the update process, see [Passive Update](./arkts-ui-widget-interaction-overview.md#passive-update).
 
@@ -77,7 +77,7 @@ Form Kit provides the following methods for interval-based update:
               `Failed to setFormNextRefreshTime. Code: ${err.code}, message: ${err.message}`);
             return;
           } else {
-            hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in setFormNextRefreshTiming.');
+            hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in setFormNextRefreshTime.');
           }
         });
       } catch (err) {
@@ -184,6 +184,7 @@ Form Kit provides the following methods for conditional updates:
 >
 > - To minimize the frequency of widget process initiations during frequent network on/off scenarios, a no-network condition is determined after the network has been continuously unavailable for 10 minutes. Upon reconnection, a network-based update is then triggered.
 
+  The following is a configuration example:
 
   ```json
   {
@@ -212,3 +213,40 @@ Form Kit provides the following methods for conditional updates:
     ]
   }
   ```
+
+<!--Del-->
+- Account-change-triggered update: Starting from API version 26.1.0, only system applications support automatically updating widget content through the [onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform) lifecycle callback when the account changes. To enable this feature, add `{"name": "enableAccountSwitchRefresh", "value": "true"}` to `metadata` in the [form_config.json](arkts-ui-widget-configuration.md) configuration file.
+
+  The following is a configuration example:
+
+  ```json
+  {
+    "forms": [
+      {
+        "name": "UpdateDuration",
+        "description": "$string:widget_updateduration_desc",
+        "src": "./ets/updateduration/pages/UpdateDurationCard.ets",
+        "uiSyntax": "arkts",
+        "window": {
+          "designWidth": 720,
+          "autoDesignWidth": true
+        },
+        "isDefault": true,
+        "updateEnabled": true,
+        "scheduledUpdateTime": "10:30",
+        "updateDuration": 2,
+        "defaultDimension": "2*2",
+        "supportDimensions": [
+          "2*2"
+        ],
+        "metadata": [
+          {
+            "name": "enableAccountSwitchRefresh",
+            "value": "true"
+          }
+        ]
+      }
+    ]
+  }
+  ```
+<!--DelEnd-->

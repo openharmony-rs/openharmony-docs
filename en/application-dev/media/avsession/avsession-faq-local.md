@@ -5,7 +5,7 @@
 <!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=6db95933f92c36be892f64316b822565946ecf49 translatedAt=2026-09-03T09:01:20.481Z pushedAt=2026-09-03T09:04:52.939Z -->
+<!-- md-trans-meta sourceCommit=9db8f1f2d5fb9478a25d79ce8f5ed2a1d2c3c91f translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 This document summarizes typical issues encountered by audio and video apps during local media session integration with [AVSession Kit](avsession-overview.md), along with their diagnosis and resolution methods. You can use [AVSession management error codes](../../reference/apis-avsession-kit/errorcode-avsession.md) and HiLog logs to further diagnose issues.
 
@@ -104,87 +104,4 @@ After the app is switched to the background, audio and video playback is forcibl
 
      For more details, see [Configuring Background Playback Mode](avsession-background-scene.md#configuring-background-playback-mode).
 
-## Media Controller Not Displaying the App Session
-
-**Symptom**
-
-The app has created an AVSession, but the Media Controller does not display the corresponding media information or control bar.
-
-**Possible Causes**
-
-- Metadata is not set, or metadata setting fails.
-- No control command callback is registered. For a session to be displayed in the Media Controller, at least one control command (such as play/pause) must be registered.
-- Fields such as cover image contain illegal characters, causing the image not to be displayed. If the file path passed to the mediaImage field in [AVMetadata](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avmetadata10) contains Chinese characters or special characters (such as `/`, `·`, etc.), the image cannot be displayed properly. Similarly, illegal characters in `avQueueName` and `avQueueId` may also cause the image not to be displayed.
-- The lyric content exceeds the length limit. The `lyric` field (lyric content) string in [AVMetadata](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avmetadata10) must be less than 40960 bytes. If the limit is exceeded, the Media Controller will not display the lyric content.
-- A call app does not use the call session type, or the system version/app classification does not meet the requirements.<!--RP1--><!--RP1End-->
-
-**Solution**
-
-1. Set media information such as the title, subtitle/artist, and cover image. For details, see [Setting Metadata Information](avsession-access-scene.md#setting-metadata-information). Ensure that key metadata fields such as `assetId` use valid values, and avoid passing empty strings, which may cause the setting to fail.
-2. Register at least one control command. For details, see [Control Command Processing](avsession-access-scene.md#control-command-processing).
-3. Ensure that fields such as `mediaImage`, `avQueueName`, and `avQueueId` use valid characters.
-4. Ensure that the lyric content does not exceed the length limit of 40960 bytes.
-5. When a call app integrates AVSession, the session type ([AVSessionType](../../reference/apis-avsession-kit/arkts-apis-avsession-t.md#avsessiontype10)) must be set to `voice_call` or `video_call`.<!--RP2--><!--RP2End-->
-
-## Control Command Unresponsive or Media Control Display Mismatch
-
-**Symptom**
-
-When control buttons (play, pause, previous, next, etc.) are tapped in the Media Controller, there is no response, and neither the app nor the media control interface is updated. Alternatively, the actual playback state of the app is out of sync with the state displayed in the Media Controller — for example, the app is playing but the media control still shows paused.
-
-**Possible Causes**
-
-- The session is not activated. Control commands can be delivered through the Media Controller only after the session is activated.
-- No control command listener is registered. If no listener is registered, control commands cannot be delivered to the app.
-- The app's playback state is not synchronized with the Media Controller. The state displayed in the Media Controller (such as play/pause, progress, etc.) is based on the state reported by the app through control commands. If the app does not synchronize its playback state in a timely manner when the actual state changes, the Media Controller display will not match the actual state.
-
-**Solution**
-
-1. Activate the session through [activate](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#activate10) and confirm that the session has been activated.
-2. Register listeners for the corresponding control commands through the AVSession object's `on('play')`, `on('pause')`, `on('playNext')`, `on('playPrevious')`, and other APIs, and drive the player to perform the corresponding operations in the callbacks. Refer to [Control Command Processing](avsession-access-scene.md#control-command-processing) to complete the registration logic.
-3. Call [setAVPlaybackState](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setavplaybackstate10) to update the playback state when the playback state changes. When the state is set to [PLAYBACK_STATE_PAUSE](../../reference/apis-avsession-kit/arkts-apis-avsession-e.md#playbackstate10), the system reclaims the media control card in the capsule area 5 seconds after the app is relegated to the background, and reclaims the media control cards in the Notification Bar and Lock Screen positions 10 minutes later.
-
-## Playback Progress Bar Rewinds and Flickers
-
-**Symptom**
-
-After tapping the play button in the Media Controller, the playback progress bar rewinds and flickers.
-
-**Possible Causes**
-
-The player startup delay causes progress inconsistency. After the play button is tapped, the playback progress bar in the Media Controller starts timing immediately, while the player in the app has not actually started playback yet, causing its progress to lag behind the Media Controller. When the app subsequently synchronizes the progress, the progress value is smaller than the elapsed time tracked by the Media Controller, resulting in the progress bar rewinding and flickering.
-
-**Solution**
-
-Before the player starts playback, call [setAVPlaybackState](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setavplaybackstate10) to set the state to [PLAYBACK_STATE_BUFFERING](../../reference/apis-avsession-kit/arkts-apis-avsession-e.md#playbackstate10) (buffering). After the player actually starts playback, synchronize the state and progress.
-
-```TypeScript
-import { avSession } from '@kit.AVSessionKit';
-import { media } from '@kit.MediaKit';
-
-// avPlayer is the player instance created through media.createAVPlayer(), and currentAVSession is the created AVSession object.
-
-async listenAVPlayer(avPlayer: media.AVPlayer, currentAVSession: avSession.AVSession) {
-    // Listen for AVPlayer state machine transitions in advance. After playback actually starts (entering the playing state), synchronize the real state and progress.
-    avPlayer.on('stateChange', async (state: string) => {
-        if (state === 'playing') {
-        let playingState: avSession.AVPlaybackState = {
-            state: avSession.PlaybackState.PLAYBACK_STATE_PLAY,
-            speed: 1.0,
-            // currentTime is the actual playback progress of AVPlayer, in milliseconds (ms).
-            position: { elapsedTime: avPlayer.currentTime, updateTime: (new Date()).getTime() }
-        };
-        await currentAVSession.setAVPlaybackState(playingState);
-        }
-    });
-
-    // After receiving the playback command and before AVPlayer actually starts playing, set the playback state to buffering to prevent the playback progress bar from starting to count down prematurely.
-    let bufferingState: avSession.AVPlaybackState = {
-        state: avSession.PlaybackState.PLAYBACK_STATE_BUFFERING,
-        speed: 0,
-        position: { elapsedTime: 0, updateTime: (new Date()).getTime() }
-    };
-    await currentAVSession.setAVPlaybackState(bufferingState);
-    await avPlayer.play();
-}
-```
+<!--RP1--><!--RP1End-->

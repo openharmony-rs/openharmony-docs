@@ -5,6 +5,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=2786bd4aa64bff4deee4e0970c4c614dc7ac119c translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T06:41:24.028Z nl=1 -->
 
 ## Overview
 
@@ -93,7 +94,7 @@ The implementation is similar for UDP socket and TCP socket connections. The fol
       ```
 
 4. Bind the IP address and port number. The port number can be specified or randomly allocated by the system. After the binding is successful, you can establish a connection to the specified IP address and port number and send data over the connection.
-	 ```ts
+   ```ts
     // Bind the local IP address and port number.
     let ipAddress : socket.NetAddress = {} as socket.NetAddress;
     ipAddress.address = "192.168.xxx.xxx";
@@ -107,37 +108,37 @@ The implementation is similar for UDP socket and TCP socket connections. The fol
     <!-- @[tcp_client_worker_ipAddress](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpClientWorker.ets) -->
     
     ``` TypeScript
-      // Bind the local IP address and port number.
-    // ···
-      tcpClient.bind(ipAddress, (err: BusinessError) => {
-        if (err) {
-          hilog.error(0x0000, 'testTag', 'bind fail');
-          return;
-        }
-        hilog.info(0x0000, 'testTag', 'bind success');
+    // Bind the local IP address and port number.
+    // ...
+    tcpClient.bind(ipAddress, (err: BusinessError) => {
+      if (err) {
+        hilog.error(0x0000, 'testTag', 'bind fail');
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'bind success');
     
-      // Set up a connection to the specified IP address and port number.
-        // ···
-        let tcpConnect: socket.TCPConnectOptions = {
-          address: netAddress,
-          timeout: 6000 // Set the timeout interval.
+    // Set up a connection to the specified IP address and port number.
+      // ...
+      let tcpConnect: socket.TCPConnectOptions = {
+        address: netAddress,
+        timeout: 6000 // Set the timeout interval.
+      };
+      tcpClient.connect(tcpConnect).then(() => {
+        hilog.info(0x0000, 'testTag', 'connect success');
+        let tcpSendOptions: socket.TCPSendOptions = {
+          data: tcpMessage.message!
         };
-        tcpClient.connect(tcpConnect).then(() => {
-          hilog.info(0x0000, 'testTag', 'connect success');
-          let tcpSendOptions: socket.TCPSendOptions = {
-            data: tcpMessage.message!
-          };
-          tcpClient.send(tcpSendOptions).then(() => {
-            hilog.info(0x0000, 'testTag', 'send success');
-            // ···
-          }).catch(() => {
-            hilog.info(0x0000, 'testTag', 'send fail');
-            // ···
-          });
-        }).catch((err: BusinessError) => {
-          hilog.error(0x0000, 'testTag', 'connect fail');
+        tcpClient.send(tcpSendOptions).then(() => {
+          hilog.info(0x0000, 'testTag', 'send success');
+          // ...
+        }).catch(() => {
+          hilog.error(0x0000, 'testTag', 'send fail');
+          // ...
         });
-      })
+      }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', 'connect fail');
+      });
+    })
     ```
 
 5. Enable the TCP socket connection to be automatically closed after use.
@@ -184,7 +185,7 @@ The TCP socket connection process on the server is as follows:
     ```
 
 3. Bind the local IP address and port, and listen for and accept TCP socket connections established over the socket.
-	 ```ts
+   ```ts
     // Bind the local IP address and port number for listening.
     let ipAddress : socket.NetAddress = {} as socket.NetAddress;
     ipAddress.address = "192.168.xxx.xxx";
@@ -196,10 +197,10 @@ The TCP socket connection process on the server is as follows:
     // Bind the local IP address and port number for listening.
     tcpServer.listen(ipAddress).then(() => {
       hilog.info(0x0000, 'testTag', 'listen success');
-      // ···
+      // ...
     }).catch(() => {
-      hilog.info(0x0000, 'testTag', 'listen fail');
-      // ···
+      hilog.error(0x0000, 'testTag', 'listen fail');
+      // ...
     });
     ```
 
@@ -208,62 +209,62 @@ The TCP socket connection process on the server is as follows:
     <!-- @[tcp_server_worker_socketInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpServerWorker.ets) -->
     
     ``` TypeScript
-      class SocketInfo {
-        public message: ArrayBuffer = new ArrayBuffer(1);
-        public remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
-      }
-      // Subscribe to connect events of the TCPSocketServer object.
-      // Set up a connection between the client and the server. A **TCPSocketConnection** object is returned.
-      tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
-        // ···
+    class SocketInfo {
+      public message: ArrayBuffer = new ArrayBuffer(1);
+      public remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
+    }
+    // Subscribe to connect events of the TCPSocketServer object.
+    // Set up a connection between the client and the server. A **TCPSocketConnection** object is returned.
+    tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
+      // ...
     
-        // client is the connection object obtained after the connection is established. You can subscribe to events of TCPSocketConnection through this object.
-        client.on('close', () => {
-          hilog.info(0x0000, 'testTag', 'client on close success');
-        // ···
-        });
-    
-        client.on('message', (value: SocketInfo) => {
-          let buffer = value.message;
-          let dataView = new DataView(buffer);
-          let str = '';
-          for (let i = 0; i < dataView.byteLength; ++i) {
-            str += String.fromCharCode(dataView.getUint8(i));
-          }
-          hilog.info(0x0000, 'testTag', 'received message--:' + str);
-          hilog.info(0x0000, 'testTag', 'received address--:' + value.remoteInfo.address);
-          hilog.info(0x0000, 'testTag', 'received family--:' + value.remoteInfo.family);
-          hilog.info(0x0000, 'testTag', 'received port--:' + value.remoteInfo.port);
-          hilog.info(0x0000, 'testTag', 'received size--:' + value.remoteInfo.size);
-        // ···
-        });
+      // client is the connection object obtained after the connection is established. You can subscribe to events of TCPSocketConnection through this object.
+      client.on('close', () => {
+        hilog.info(0x0000, 'testTag', 'client on close success');
+        // ...
       });
-    // ···
-        let tcpSendOptions: socket.TCPSendOptions = {} as socket.TCPSendOptions;
-        // Define the data to be sent as required.
-        tcpSendOptions.data = tcpMessage.message!;
     
-        client.send(tcpSendOptions).then(() => {
-          hilog.info(0x0000, 'testTag', 'send success');
-        // ···
-        }).catch((err: Object) => {
-          hilog.error(0x0000, 'testTag', 'send fail: ' + JSON.stringify(err));
-        // ···
-        });
-        // ···
-        client.close().then(() => {
-          hilog.info(0x0000, 'testTag', 'close success');
-        // ···
-        }).catch((err: BusinessError) => {
-          hilog.info(0x0000, 'testTag', 'close fail');
-        // ···
-        });
+      client.on('message', (value: SocketInfo) => {
+        let buffer = value.message;
+        let dataView = new DataView(buffer);
+        let str = '';
+        for (let i = 0; i < dataView.byteLength; ++i) {
+          str += String.fromCharCode(dataView.getUint8(i));
+        }
+        hilog.info(0x0000, 'testTag', 'received message--:' + str);
+        hilog.info(0x0000, 'testTag', 'received address--:' + value.remoteInfo.address);
+        hilog.info(0x0000, 'testTag', 'received family--:' + value.remoteInfo.family);
+        hilog.info(0x0000, 'testTag', 'received port--:' + value.remoteInfo.port);
+        hilog.info(0x0000, 'testTag', 'received size--:' + value.remoteInfo.size);
+        // ...
+      });
+    });
+    // ...
+      let tcpSendOptions: socket.TCPSendOptions = {} as socket.TCPSendOptions;
+      // Define the data to be sent as required.
+      tcpSendOptions.data = tcpMessage.message!;
     
-        // Disable listening for events. Set the timeout interval for closing the connection (for example, 10 seconds).
-        setTimeout(() => {
-          client?.off('message');
-          client?.off('close');
-        }, 10 * 1000);
+      client.send(tcpSendOptions).then(() => {
+        hilog.info(0x0000, 'testTag', 'send success');
+        // ...
+      }).catch((err: Object) => {
+        hilog.error(0x0000, 'testTag', 'send fail: ' + JSON.stringify(err));
+        // ...
+      });
+      // ...
+      client.close().then(() => {
+        hilog.info(0x0000, 'testTag', 'close success');
+        // ...
+      }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', 'close fail');
+        // ...
+      });
+    
+      // Disable listening for events. Set the timeout interval for closing the connection (for example, 10 seconds).
+      setTimeout(() => {
+        client?.off('message');
+        client?.off('close');
+      }, 10 * 1000);
     ```
 
 5. Disable listening for events of the **TCPSocketServer** object.
@@ -448,10 +449,10 @@ The TCP socket connection process on the server is as follows:
      client.send(sendOpt).then(() => {
        hilog.info(0x0000, 'testTag', `send success`);
      }).catch((err: Object) => {
-       hilog.info(0x0000, 'testTag', `send failed: ` + JSON.stringify(err));
+       hilog.error(0x0000, 'testTag', `send failed: ` + JSON.stringify(err));
      });
    }).catch((err: Object) => {
-     hilog.info(0x0000, 'testTag', `connect fail: ` + JSON.stringify(err));
+     hilog.error(0x0000, 'testTag', `connect fail: ` + JSON.stringify(err));
    });
    ```
 
@@ -527,7 +528,7 @@ The local socket connection process on the server is as follows:
    server.on('connect', (connection: socket.LocalSocketConnection) => {
      // Subscribe to events of the LocalSocketConnection object.
      connection.on('error', (err: Object) => {
-       hilog.info(0x0000, 'testTag', 'on error success');
+       hilog.error(0x0000, 'testTag', 'on error received');
      });
    
      connection.on('message', (value: socket.LocalSocketMessageInfo) => {
@@ -681,7 +682,7 @@ To implement the TLS socket process (two-way authentication) on the client, perf
    });
    ```
 
-5. Enable the TLS socket connection to be automatically closed after use.
+4. Enable the TLS socket connection to be automatically closed after use.
 
    <!-- @[two-way_closeTlsSocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TwoWayTlsWorker.ets) -->
    
@@ -834,7 +835,7 @@ The following uses two-way authentication as an example to describe how to upgra
    let tcpSocket: socket.TCPSocket = socket.constructTCPSocketInstance();
    ```
 
-3. Bind the local IP address and port. After the binding is successful, connect to the specified IP address and port of the server. After the connection is successful, use the **TCPSocket** object to create a **TLSSocket** object, enable two-way authentication, and upload the client CA certificate and digital certificate to establish a TLS socket connection. If the connection is no longer needed, close the connection and unsubscribe from related events.
+3. Bind the local IP address and port. After the binding succeeds, connect to the server IP address and port. After the connection succeeds, use the TCPSocket object to create a TLSSocket, configure mutual authentication, and upload the client CA certificate and digital certificate to establish a TLSSocket connection. After the connection is no longer needed, actively close it and cancel the subscription to related events.
    ```ts
    // Connect to the specified IP address and port of the server.
    let serverAddress: socket.NetAddress = {} as socket.NetAddress;
@@ -895,7 +896,7 @@ The following uses two-way authentication as an example to describe how to upgra
        hilog.info(0x0000, 'testTag', 'tls connect success');
        // ...
      }).catch((e: BusinessError) => {
-       hilog.info(0x0000, 'testTag', 'tls connect fail');
+       hilog.error(0x0000, 'testTag', 'tls connect fail');
        // ...
      });
    }).catch((e: BusinessError) => {
@@ -904,7 +905,7 @@ The following uses two-way authentication as an example to describe how to upgra
    });
    ```
 
-4. Enable the TCPSocket connection to be automatically closed after use. Then, disable listening for TCPSocket events.
+4. After the connection is no longer needed, actively close it and cancel the subscription to related events.
 
    <!-- @[tls_server_close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/Tcp2TwoWayTlsWorker.ets) -->
    
@@ -982,7 +983,7 @@ The TLS socket connection process on the server is as follows:
    });
    ```
 
-4. Subscribe to the **connect** events of the **TLSSocketServer** object. After receiving a client connection, obtain the **TLSSocketConnection** object through the callback. Through this object, you can subscribe to events of the **TLSSocketConnection** object and send data to the client. If the TLS socket connection is no longer needed, close the connection and unsubscribe from related events.
+4. Subscribe to the connection event of TLSSocketServer. When a client connection is received, obtain the TLSSocketConnection object through the callback. Through this object, you can subscribe to events related to TLSSocketConnection and send data to the client. After the TLSSocketConnection is no longer needed, actively disconnect it and cancel the subscription callback.
 
    <!-- @[tlsServer_connection_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TlsServerWorker.ets) -->
    
@@ -1026,6 +1027,7 @@ The TLS socket connection process on the server is as follows:
        // You can pass the callback of the on function if you want to unsubscribe from a certain type of events. If you do not pass the callback, you will unsubscribe from all events.
        client.off('message', callback);
        client.off('message');
+     });
    ```
 
 5. // Unsubscribe from events of the TLSSocketServer object.

@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / Audio and Video Codec Services"]
+description: "Describes synchronous audio encoding by actively requesting buffers to compress PCM data into AAC, FLAC, and other bitstreams for recording and export after editing with app-controlled frame submission."
+keywords: [audio encoding, synchronous mode, PCM, AAC, active buffer requests, OH_AudioCodec, audio recording, audio editing]
+doctype: guide
+status: active
+---
+
 # Synchronous Audio Encoding
 
 <!--Kit: AVCodec Kit-->
@@ -6,7 +14,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=66c49c549588a50aa036f806393d8098f913c4aa translatedAt=2026-10-22T04:06:16.862Z pushedAt=2026-10-22T13:24:02.694Z nl=1 -->
+<!-- md-trans-meta sourceCommit=75a2c3e9f72396952a89950f3f36a78407fa2619 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Starting from API version 20, audio encoding in synchronous mode is supported.
 
@@ -80,7 +88,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    - Method 1: Create an encoder by MIME type.
 
-   <!-- @[AudioEncoder::Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
+   <!-- @[AudioEncoder::Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
    
    ``` C++
    int32_t AudioEncoder::Create(const std::string &codecMime)
@@ -96,7 +104,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    - Method 2: Create an encoder by codec name.
 
-   <!-- @[AudioEncoder::CreateByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
+   <!-- @[AudioEncoder::CreateByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
    
    ``` C++
    int32_t AudioEncoder::CreateByName(const std::string &codecMime)
@@ -130,7 +138,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    Before configuration, you are advised to call the OH_AVCapability query API to verify that the parameters to be configured are within the range supported by the encoder. In synchronous mode, enable the mode through **OH_MD_KEY_ENABLE_SYNC_MODE**: when synchronous mode is required, set **OH_MD_KEY_ENABLE_SYNC_MODE** to **1** in the **OH_AVFormat** passed to **Configure**. In the sample, whether to set this parameter is determined by whether synchronous mode is used.
 
    <!--RP3-->
-   <!-- @[AudioEncoder::Configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
+   <!-- @[AudioEncoder::Configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
    
    ``` C++
    int32_t AudioEncoder::Configure(const SampleInfo &sampleInfo)
@@ -189,7 +197,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    In the sample project, **OH_AudioCodec_Prepare()** is encapsulated in the **Config()** function: the **Config()** function first completes the **Configure()** configuration, and then calls **OH_AudioCodec_Prepare()** to make the encoder ready. The following is the code of the **Prepare** part:
 
-   <!-- @[AudioEncoder::Config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
+   <!-- @[AudioEncoder::Config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
    
    ``` C++
    {
@@ -201,7 +209,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 5. Call **OH_AudioCodec_Start()** to start the encoder.
 
-   <!-- @[AudioEncoder::Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
+   <!-- @[AudioEncoder::Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
    
    ``` C++
    int32_t AudioEncoder::Start()
@@ -240,7 +248,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    Actively request an input buffer: first call **OH_AudioCodec_QueryInputBuffer()** to query the index of an available input buffer. If the call times out, **AV_ERR_TRY_AGAIN_LATER** is returned. Then call **OH_AudioCodec_GetInputBuffer()** to obtain the input buffer.
 
-   <!-- @[AudioEncoder::GetInputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
+   <!-- @[AudioEncoder::GetInputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
    
    ``` C++
    OH_AVBuffer *AudioEncoder::GetInputBuffer(CodecBufferInfo &info, int64_t timeoutUs)
@@ -269,7 +277,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    This API must be called after you have filled in the complete input data. In the sample, the microphone recording (AudioCapturer) is used as the PCM data source. The recorded data is first written to the application-defined PCM cache. After enough data for one input buffer is accumulated, it is filled into the encoder input buffer and sent to the encoder. The following is an example of the synchronous input thread:
 
-   <!-- @[Recorder::AudioEncInputSyncThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp) -->
+   <!-- @[Recorder::AudioEncInputSyncThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp) -->
    
    ``` C++
    void Recorder::AudioEncInputSyncThread()
@@ -312,7 +320,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    At the end, set flags to **AVCODEC_BUFFER_FLAGS_EOS**. In the sample, when recording ends, an input buffer is obtained, data of length 0 is filled in, and the EOS flag is set before the buffer is sent to the encoder.
 
-   <!-- @[AudioEncoder::NotifyEndOfStream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
+   <!-- @[AudioEncoder::NotifyEndOfStream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
    
    ``` C++
    int32_t AudioEncoder::NotifyEndOfStream()
@@ -352,7 +360,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    Obtain the encoded output: call **OH_AudioCodec_QueryOutputBuffer()** to query an available output buffer. When the input data can be encoded into multiple frames, you need to call the API multiple times to obtain output buffers until all encoded data is retrieved:
 
-   <!-- @[AudioEncoder::GetOutputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
+   <!-- @[AudioEncoder::GetOutputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
    
    ``` C++
    int32_t AudioEncoder::GetOutputBuffer(CodecBufferInfo &info, int64_t timeoutUs)
@@ -396,7 +404,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    After the encoded stream is retrieved, call **OH_AudioCodec_FreeOutputBuffer()** in time to release the output buffer. In the sample, the encoded output stream is written to the encapsulation module. If you need to encapsulate it into an audio file, see [Media Data Multiplexing](audio-video-muxer.md). The following is an example of the synchronous output thread:
 
-   <!-- @[Recorder::AudioEncOutputSyncThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp) -->
+   <!-- @[Recorder::AudioEncOutputSyncThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp) -->
    
    ``` C++
    void Recorder::AudioEncOutputSyncThread()
@@ -419,12 +427,28 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
            AVCODEC_SAMPLE_LOGW(
                "Audio Out buffer sync count: %{public}u, size: %{public}d, flag: %{public}u, pts: %{public}" PRId64,
                audioEncContext_->outputFrameCount, bufferInfo.attr.size, bufferInfo.attr.flags, bufferInfo.attr.pts);
-           // Muxer writing does not take over the buffer; after writing, it must still be explicitly returned to the audio encoder.
-           muxer_->WriteSample(muxer_->GetAudioTrackId(), bufferInfo.buffer,
-                               bufferInfo.attr);
+           const bool isEosBuffer = (bufferInfo.attr.flags & AVCODEC_BUFFER_FLAGS_EOS) != 0;
+           int32_t writeRet = AVCODEC_SAMPLE_ERR_OK;
+           if (!isEosBuffer && bufferInfo.attr.size > 0) {
+               // Writing to a muxer does not transfer ownership of the buffer. Explicitly return the original index after writing to both destinations.
+               writeRet = muxer_->WriteSample(muxer_->GetAudioTrackId(), bufferInfo.buffer, bufferInfo.attr);
+               if (writeRet == AVCODEC_SAMPLE_ERR_OK && secondaryMuxer_ != nullptr) {
+                   writeRet = secondaryMuxer_->WriteSample(secondaryMuxer_->GetAudioTrackId(), bufferInfo.buffer,
+                       bufferInfo.attr);
+               }
+           }
            int32_t ret = audioEncoder_->FreeOutputData(bufferInfo.bufferIndex);
            CHECK_AND_BREAK_LOG(ret == AVCODEC_SAMPLE_ERR_OK, "Encoder output thread out");
-           CHECK_AND_BREAK_LOG(!(bufferInfo.attr.flags & AVCODEC_BUFFER_FLAGS_EOS), "Catch EOS, thread out");
+           if (writeRet != AVCODEC_SAMPLE_ERR_OK) {
+               AbortRecording("Write encoded audio sample failed");
+               break;
+           }
+           if (isEosBuffer) {
+               isAudioEos_.store(true);
+               videoEosCond_.notify_all();
+               AVCODEC_SAMPLE_LOGI("Audio EOS processed, exiting output thread");
+               break;
+           }
        }
        // In synchronous mode, release is still triggered by the video thread; when audio ends first, the video is still using the Muxer.
        AVCODEC_SAMPLE_LOGI("Audio output thread exited, waiting for video thread to trigger release");
@@ -435,7 +459,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    After **OH_AudioCodec_Reset()** is called, the encoder returns to the initialized state. The input and output buffers obtained before the reset cannot be used. You must call **OH_AudioCodec_Configure()** to reconfigure the encoder and then call **OH_AudioCodec_Start()** to start encoding again. Obtain the input and output buffers again after the decoder is started.
 
-   <!-- @[AudioEncoder::Reset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
+   <!-- @[AudioEncoder::Reset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
    
    ``` C++
    int32_t AudioEncoder::Reset()
@@ -453,7 +477,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    After the encoder is stopped, you can call **OH_AudioCodec_Start()** to start it again. The input and output buffers obtained before the decoder is stopped cannot be reused. You must obtain them again after the decoder is started.
 
-   <!-- @[AudioEncoder::Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
+   <!-- @[AudioEncoder::Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
    
    ``` C++
    int32_t AudioEncoder::Stop()
@@ -476,7 +500,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    >
    > You only need to call this API once.
 
-   <!-- @[AudioEncoder::Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
+   <!-- @[AudioEncoder::Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
    
    ``` C++
    int32_t AudioEncoder::Release()

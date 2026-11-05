@@ -6,7 +6,7 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=7bb26c61ea8a340708fd981ae4e6341180afc9e5 translatedAt=2026-08-14T06:44:34.416Z pushedAt=2026-08-14T07:59:38.451Z -->
+<!-- md-trans-meta sourceCommit=b799bd137584a338db2107c2101b1d6091a6feea translatedAt=2026-11-03T05:44:00.885Z pushedAt=2026-11-03T07:44:20.977Z nl=1 -->
 
 The unified user authentication framework provides **cancel()** for terminating the authentication process.
 
@@ -76,6 +76,7 @@ cancelingUserAuthentication() {
 }
 ```
 
+
 ## Sample Code
 
-  - [Canceling authentication during the authentication process](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
+  - You can refer to the [User Authentication Service](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication) example code.

@@ -1,10 +1,11 @@
 # EnterpriseAdminExtensionAbility Development
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=81589b3242b5e7e14772612ab266596c738e5aab translatedAt=2026-11-03T09:17:02.335Z pushedAt=2026-11-03T09:17:02.335Z nl=1 -->
 
 ## Introduction
 
@@ -38,21 +39,21 @@ Open the **EnterpriseAdminAbility.ets** file, import the **EnterpriseAdminExtens
 
 ``` TypeScript
 import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
-// ···
+// ...
 
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
-// ···
+  // ...
 
   // Callback to be invoked when the device administrator application is enabled. Initialization policy can be set in this callback.
   onAdminEnabled() {
     console.info('onAdminEnabled');
-    // ···
+    // ...
   }
 
   // Callback to be invoked when the device administrator application is disabled. This callback can be used to notify the enterprise administrator application that the device is no longer under management.
   onAdminDisabled() {
     console.info('onAdminDisabled');
-    // ···
+    // ...
   }
 
   // Callback to be invoked when an application is installed. This callback can be used to report events.
@@ -62,17 +63,17 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
   // Callback to be invoked when an application is uninstalled. This callback can be used to report events.
   onBundleRemoved(bundleName: string) {
-    console.info('EnterpriseAdminAbility onBundleRemoved bundleName' + bundleName);
+    console.info('EnterpriseAdminAbility onBundleRemoved bundleName:' + bundleName);
   }
 
-  // Callback to be invoked when a common device administrator application is enabled. Initialization policy can be set in this callback.
+  // Callback for standard device management app activation. You can set initialization policies in this callback.
   onDeviceAdminEnabled(bundleName: string) {
-    console.info("EnterpriseAdminAbility onDeviceAdminEnabled bundleName:" + bundleName);
+    console.info('EnterpriseAdminAbility onDeviceAdminEnabled bundleName:' + bundleName);
   }
 
-  // Callback to be invoked when a common device administrator application is disabled. This callback can be used to notify the enterprise administrator that the device is no longer under management.
+  // Callback for standard device management app deactivation. You can notify the enterprise administrator that the device is unmanaged in this callback.
   onDeviceAdminDisabled(bundleName: string) {
-    console.info("EnterpriseAdminAbility onDeviceAdminDisabled bundleName" + bundleName);
+    console.info('EnterpriseAdminAbility onDeviceAdminDisabled bundleName:' + bundleName);
   }
 };
 ```
@@ -92,4 +93,11 @@ In the [module.json5](../quick-start/module-configuration-file.md) file of the p
   }
 ],
 ```
+
+
+## Samples
+
+The following sample is available for EnterpriseAdminExtensionAbility development:
+
+- [Enterprise Device Management Extension (ArkTS)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility)
 

@@ -6,11 +6,13 @@
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
-<!-- md-trans-meta sourceCommit=9d4329aa9b07ce81fc1a2c848fb4cea93e274a8e translatedAt=2026-08-13T03:17:41.501Z pushedAt=2026-08-13T06:53:21.783Z -->
+<!-- md-trans-meta sourceCommit=22e592a5f31cf5718999a125ac330d3ec01459ed translatedAt=2026-11-03T02:26:13.465Z pushedAt=2026-11-03T02:37:13.988Z nl=1 -->
 
 ## Overview
 
-restool is a resource compilation tool that creates resource indexes and parses resources by compiling resource files. You can call the [resource management APIs](../reference/apis-localization-kit/js-apis-resource-manager.md) to obtain resources. The tool is stored in the **toolchains** subdirectory of the SDK installation directory.
+restool is an application resource compilation tool. It parses application resource files to generate artifacts such as resource index files and resource binary files. The generated artifacts are packed into the application package by the [packing tool](../tools/packing-tool.md). During the application running phase, developers can obtain resources in the application package through the [resource management](../reference/apis-localization-kit/js-apis-resource-manager.md) API.
+
+The restool tool is stored in the toolchains folder under the SDK installation directory.
 
 ## Description
 
@@ -23,8 +25,8 @@ restool is a resource compilation tool that creates resource indexes and parses 
 | -o/--outputPath | No| Yes| Output path of the compiled resource.|
 | -p/--packageName | No| Yes| Bundle name of the compiled resource.|
 | -r/--resHeader | No| Yes| Output path of the header file of the resource. The file contains the mapping between resource names and resource IDs. The file can be in **.txt**, **.js**, **.h**, or **.ts** format.<br>**NOTE**<br>- The **.txt**, **.js**, and **.h** files contain the resource mapping tables in all resource directories specified by **-i**.<br>- Since API version 23, the **.ts** format is supported. The file contains only the resource mapping table in the resource directory of the HAR build product specified by **-i**.|
-| -e/--startId | Yes| Yes| Start ID of the generated resource, for example, **0x01000000**. The value range is [0x01000000, 0x06FFFFFF) and [0x08000000, 0xFFFFFFFF).|
-| -f/--forceWrite | Yes| No| An existing output path will be forcibly deleted and a new one will be generated.|
+| -e/--startId | Optional | With parameters | Specifies the start ID value for generating resources, for example, 0x01000000, in the range [0x01000000, 0x06FFFFFF) or [0x08000000, 0xFFFFFFFF). |
+| -f/--forceWrite | Optional | Without parameters | If the output path already exists, forcibly delete it and regenerate. |
 | -h/--help | Yes| No| Help information.|
 | -m/--modules | Yes| Yes| Module name. During joint module compilation, multiple module names can be specified, separated by commas (,).|
 | -x/--append | Yes| Yes| Resource directory for generating intermediate files or a single resource path. The same command can run multiple times.|
@@ -51,11 +53,11 @@ Format: Use semicolons to separate different parameter configurations. Use squar
 
 **Locale** matching rules:
 
-1. The language must always be used for matching.
+1. The language must be the same.
 
-2. If a script (text) is not included, a match is found as long as the language is the same. If a script is included, a match is found when both the language and script are the same.
+2. If a script (text) is not included, a match is found by default. If a script is included, it must be the same.
 
-3. If a country/region is not included, a match is found as long as the language is the same. If a country/region is included, a match is found when both the language and country/region are the same.
+3. If a country/region is not included, a match is found by default. If a country/region is included, it must be the same.
 
 Example: Locale[zh_CN,en_US];Device[phone]. This configuration uses the languages zh_CN and en_US and the device phone as filter criteria. A match is found only when the resources use zh_CN and en_US as the languages and apply to phones. Other parameters (such as **MccMnc** and **Orientation**) are not configured and any values of them can match.
 
@@ -197,7 +199,6 @@ restool dump config entry.hap
 ## Example
 
 An example **entry** directory structure is as follows:
-
 ```text
 entry/src/main
 |    |----resource
@@ -216,30 +217,29 @@ There are three resource compilation modes: full resource compilation, increment
 
 1. To compile all resources, run the following command:
 
-```sh
-restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out -r out/ResourceTable.txt -f
-```
+   ```sh
+   restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out -r out/ResourceTable.txt -f
+   ```
 
 2. To compile incremental resources, perform the following steps:
 
-Step 1: Generate the resource middleware.
+   Step 1: Generate the resource middleware.
 
-```sh
-restool -x entry/src/main/resource -o out
-```
+   ```sh
+   restool -x entry/src/main/resource -o out
+   ```
+   Step 2: Compile the resource middleware.
 
-Step 2: Compile the resource middleware.
-
-```sh
-restool -i out1 -i out2 -o out -p com.ohos.demo -r out/ResourceTable.txt -j entry/src/main/module.json -f -z
-```
+   ```sh
+   restool -i out1 -i out2 -o out -p com.ohos.demo -r out/ResourceTable.txt -j entry/src/main/module.json -f -z
+   ```
 
 3. To compile overlay resources, run the following command:
 
-```sh
-# hapResource is the path of the decompressed HAP file.
-restool -i entry/src/main -i hapResource -j entry/src/main/module.json -p com.ohos.demo -o out -r out/ResourceTable.txt -f
-```
+   ```sh
+   # hapResource is the path of the decompressed HAP package
+   restool -i entry/src/main -i hapResource -j entry/src/main/module.json -p com.ohos.demo -o out -r out/ResourceTable.txt -f
+   ```
 
 ### Fixing the Resource ID
 
@@ -271,17 +271,14 @@ restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out 
 Step 2: Fix the resource ID. There are two ways to fix the resource ID.
 
 + Run the following command to fix the resource ID:
-
 ```sh
 restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out1 -r out1/ResourceTable.txt --defined-ids out/id_defined.json -f
 ```
 
 + Place the customized **id_defined.json** file in the **resource/base/element/** directory and then run the following command to fix the resource ID:
-
 ```sh
 restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out1 -r out1/ResourceTable.txt  -f
 ```
-
 ## Error Codes
 
 ### 11201001 Failed to Load the Dependency Library
@@ -297,17 +294,13 @@ Failed to load the dependency library.
 **Possible Causes**
 
 1. The path of the dependency library is incorrect or you do not have the permission to access the path.
-
 2. The third-party dependency library is not installed, the path is incorrect, or you do not have the permission to access the path.
-
 3. An error is reported on Windows. The files before the **xxx.dll** path in the user environment variables and system environment variables cannot be accessed. As a result, the environment variables are incorrectly searched during dependency library loading.
 
 **Solution**
 
 1. Check whether the dependency library path is correct and whether you have the access permission.
-
 2. Install the missing third-party dependency library based on the error message. Ensure that the path of the third-party dependency library is correct and you have the access permission.
-
 3. Add the **xxx/openharmony/previewer/common/bin** path of the SDK and the path of the dependent library to the first two lines of the environment variable **Path**. The sequence is not required.
 
 ### 11203001 Failed to Open the JSON File
@@ -452,7 +445,13 @@ The file path is incorrect or you do not have the permission to access the file.
 
 **Solution**
 
-Check whether the file path is correct and whether you have the access permission.
+1. Check whether the file path is accurate.
+2. Check the file permission. If the file permission is read-only, modify the file permission to readable and writable. The specific operation is as follows:
+   - Windows: Select the file, right-click, select Properties, and uncheck the "Read-only" attribute.
+   - Linux/MacOS: Run the chmod command "chmod 644 file path".
+    > **Note:**
+    >
+    > If the reported file path is a path under the build directory of the compilation output, manually delete the reported file first, and then modify the permission of its corresponding source file. For example, if the reported path is "entry\build\default\intermediates\res\default\resources\base\profile\form_config.json", modify the permission of the corresponding source file "entry\src\main\resources\base\profile\form_config.json".
 
 ### 11204003 Failed to Delete the File
 
@@ -470,7 +469,13 @@ The file path is incorrect or you do not have the permission to access the file.
 
 **Solution**
 
-Check whether the file path is correct and whether you have the access permission.
+1. Check whether the file path is accurate.
+2. Check the file permission. If the file permission is read-only, modify the file permission to readable and writable. The specific operation is as follows:
+   - Windows: Select the file, right-click, select Properties, and uncheck the "Read-only" attribute.
+   - Linux/MacOS: Run the chmod command "chmod 644 file path".
+    > **Note:**
+    >
+    > If the reported file path is a path under the build directory of the compilation output, manually delete the reported file first, and then modify the permission of its corresponding source file. For example, if the reported path is "entry\build\default\intermediates\res\default\resources\base\profile\form_config.json", modify the permission of the corresponding source file "entry\src\main\resources\base\profile\form_config.json".
 
 ### 11204004 Failed to Copy the File
 
@@ -488,7 +493,13 @@ The file path is incorrect or you do not have the permission to access the file.
 
 **Solution**
 
-Check whether the file path is correct and whether you have the access permission.
+1. Check whether the file path is accurate.
+2. Check the file permission. If the file permission is read-only, modify the file permission to readable and writable. The specific operation is as follows:
+   - Windows: Select the file, right-click the mouse, select properties, and uncheck the "Read-only" property.
+   - Linux/MacOS: Run the chmod command "chmod 644 file path".
+    > **Note:**
+    >
+    > If the file path reported in the error is a path under the build directory of the compilation output, manually delete the file that caused the error first, and then modify the permission of its corresponding source file. For example, if the error path is "entry\build\default\intermediates\res\default\resources\base\profile\form_config.json", modify the permission of the corresponding source file "entry\src\main\resources\base\profile\form_config.json".
 
 ### 11204005 Failed to Open the File
 
@@ -506,7 +517,13 @@ The file path is incorrect or you do not have the permission to access the file.
 
 **Solution**
 
-Check whether the file path is correct and whether you have the access permission.
+1. Check whether the file path is accurate.
+2. Check the file permission. If the file permission is read-only, modify the file permission to readable and writable. The specific operations are as follows:
+   - Windows: Select the file, click the right mouse button, select Properties, and uncheck the "Read-only" property.
+   - Linux/MacOS: Run the chmod command "chmod 644 file path".
+    > **Note:**
+    >
+    > If the file path in the error is a path under the build output directory, manually delete the file that caused the error first, and then modify the permission of its corresponding source file. For example, if the error path is "entry\build\default\intermediates\res\default\resources\base\profile\form_config.json", modify the permission of the corresponding source file "entry\src\main\resources\base\profile\form_config.json".
 
 ### 11204006 Failed to Read the File
 
@@ -521,13 +538,11 @@ Failed to read the file.
 **Possible Causes**
 
 1. The file path is incorrect or you do not have the permission to access the file.
-
 2. The file is empty.
 
 **Solution**
 
 1. Check whether the file path is correct and whether you have the access permission.
-
 2. Check whether the file is empty.
 
 ### 11210001 Unknown Command Option
@@ -1010,7 +1025,7 @@ The output path already exists.
 
 **Possible Causes**
 
-The output path specified by **-o/--output** already has files, and they cannot be overwritten.
+The output path specified by -o/--outputPath already has files, and they cannot be overwritten.
 
 **Solution**
 
@@ -1065,9 +1080,7 @@ The resource start ID specified by **-e/--startId** conflicts with the **id_defi
 **Possible Causes**
 
 By default, the start resource ID is **0x01000000**. During compilation, the resource IDs increase in ascending order. In addition, restool provides two methods to customize them:
-
 1. **-e/--startId**: specifies the start resource ID in the range of [0x01000000, 0x06FFFFFF) or [0x08000000, 0xFFFFFFFF).
-
 2. [Fixing the Resource ID](#fixing-the-resource-id): specifies the resource ID in the **id_defined.json** file.
 
 If the two methods are used at the same time, the resource IDs calculated in the two methods may be different, causing conflicts.
@@ -1107,7 +1120,6 @@ The resource ID in the **id_defined.json** file is invalid.
 **Possible Causes**
 
 1. The resource ID in **id_defined.json** is not a hexadecimal number.
-
 2. The ID is not in the range of [0x01000000,0x06FFFFFF] or [0x08000000,0xFFFFFFFF].
 
 **Solution**
@@ -1115,7 +1127,6 @@ The resource ID in the **id_defined.json** file is invalid.
 Check whether the resource ID is in hexadecimal format and the value range is [0x01000000,0x06FFFFFF] or [0x08000000,0xFFFFFFFF].
 
 <!--Del-->
-
 ### 11211010 Invalid Resource Sequence in id_defined.json
 
 **Error Message**
@@ -1153,7 +1164,6 @@ Two resources are declared. The index of the **record** array starts from 0. The
 **Solution**
 
 Check whether the **order** value of is consistent with the declaration sequence in the array.
-
 <!--DelEnd-->
 
 ### 11211012 Duplicate IDs Defined in id_defined.json
@@ -1187,7 +1197,6 @@ The module name in the application configuration file is not in the module name 
 **Possible Causes**
 
 1. The module name list specified by **-m/--modules** is incorrect.
-
 2. The module name specified by **name** in the application configuration file [module.json (of stage model)](../quick-start/module-configuration-file.md) or [config.json (of FA model)](../quick-start/application-configuration-file-overview-fa.md) is incorrect.
 
 **Solution**
@@ -1207,9 +1216,7 @@ Resource scanning fails because the resource file is invalid.
 **Possible Causes**
 
 The resource file does not meet the requirements. For example:
-
 1. **rawfile** is expected to be a folder, but it is actually a file.
-
 2. **base/element** is expected to contain only JSON files, but actually contains folders.
 
 **Solution**
@@ -1301,9 +1308,7 @@ The color value is invalid.
 **Possible Causes**
 
 The color resource supports only the following formats:
-
 1. Referencing other color resources. For example, **$color:xxx** references the application's color resource, or **$ohos:color:xxx** references the system color resource.
-
 2. RGB color value starting with **#**, for example, **#rgb**, **#argb**, **#rrggbb**, and **#aarrggbb**.
 
 **Solution**
@@ -1341,7 +1346,6 @@ The **parent** value of the **theme** resource is empty.
 **Possible Causes**
 
 The **parent** property of the **theme** resource is optional. Its value must be the name of another **theme** resource and cannot be an empty string. The following is a correct example:
-
 ```json
 {
   "theme": [
@@ -1375,7 +1379,6 @@ The **parent** property of the **theme** resource is optional. Its value must be
   ]
 }
 ```
-
 Two theme resources **base** and **child** are declared. **base** does not contain the **parent** property, and the **parent** property of the **child** resource is set to **"base"**.
 
 **Solution**
@@ -1431,7 +1434,6 @@ The plural resource type is duplicate.
 **Possible Causes**
 
 The same type is declared repeatedly in the plural resource. For example, the **one** type is declared repeatedly for **eat_apple** in the following error example:
-
 ```json
 {
   "plural": [
@@ -1549,7 +1551,6 @@ The application resource ID is in the range of [0x01000000,0x06FFFFFF] or [0x080
 **Solution**
 
 1. Delete unnecessary resources.
-
 2. Specify a smaller resource start ID.
 
 ### 11211120 Referenced Resource Not Defined
@@ -1565,13 +1566,11 @@ The referenced resource is not defined.
 **Possible Causes**
 
 1. The referenced resource does not exist. For example, the resource has been deleted or renamed.
-
 2. The directory where the referenced resource is located is not specified as the input path using **-i/--inputPath**.
 
 **Solution**
 
 1. Check whether the resource reported in the error information exists.
-
 2. Check whether the parent directory of **resources** where the resource is located is specified as the input path using **-i/--inputPath**. For example, if the resource in the error information is defined in **xxx/entry/src/main/resources/base/element/string.json**, you need to specify **xxx/entry/src/main** as the input path.
 
 ### 11211124 Failed to Parse the resources.index File

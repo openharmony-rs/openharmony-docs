@@ -10,7 +10,7 @@
 - ArkTS APIs<!--device-certificate-arkts-->
   - [@ohos.security.cert (Certificate)](js-apis-cert.md)
   - [@ohos.security.certManager (Certificate Management)](js-apis-certManager.md)
-  - [@ohos.security.certManagerDialog (Certificate Management Dialog Box](js-apis-certManagerDialog.md)
+  - [@ohos.security.certManagerDialog (Certificate Management Dialog Box)](js-apis-certManagerDialog.md)
   - [@ohos.security.UkeyAuthExtensionAbility (UKey Authentication Extension Ability)](js-apis-UkeyAuthExtensionAbility.md)
   - [@ohos.security.UkeyAuthExtensionContext (UKey Authentication Extension Context)](js-apis-UkeyAuthExtensionContext.md)
   <!--Del-->

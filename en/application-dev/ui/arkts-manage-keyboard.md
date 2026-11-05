@@ -5,6 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=d522686e9af45ce3e6a73e24892114a450ee98ce translatedAt=2026-11-04T01:27:04.661Z pushedAt=2026-11-04T01:45:23.335Z nl=1 -->
 
 The soft keyboard serves as a critical user interaction channel for text input. This topic explains how to control soft keyboard display and hiding when using system input components ([TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md), [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md), [Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md), and [RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)).
 
@@ -16,7 +17,7 @@ through the following methods:
 
 1. Interactive focus: tapping, double-tapping, or long-pressing the input field
 
-2. Programmatic focus: using the [requestFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9) API or [defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9) attribute
+2. Programmatic focus: using the [requestFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#requestfocus12) method or the [defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9) attribute to transfer focus to the input box.
 
 3. External keyboard navigation: pressing **Tab**, **Shift+Tab**, or arrow keys (which shows the physical keyboard toolbar instead of the soft keyboard)
 
@@ -26,38 +27,40 @@ The system distinguishes between system soft keyboards and custom keyboards. The
 
 The following demonstrates soft keyboard behavior during input field tapping, double-tapping, or long-pressing.
 
-<!--Del-->![click]  (figures/click.gif)<!--DelEnd-->
+<!--Del-->  <!--DelEnd-->
 
 ### Programmatic Focus
 
-Use focus control methods, such as the [defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9) attribute and [requestFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9) API, to programmatically focus input fields and trigger keyboard display. For details, see [Implementing Focus Support](./arkts-common-events-focus-event.md).
+You can programmatically transfer focus to the input box, including using the [defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9) attribute and the [requestFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#requestfocus12) method. For more details, see [Focus Handling](./arkts-common-events-focus-event.md).
 
 The following example demonstrates transferring focus to a text input field and displaying the soft keyboard when a button is clicked.
 
-```ts
-@Entry
-@Component
-struct demo {
+<!-- @[requestFocus_ShowKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/RequestFocusShowKeyboard.ets) -->
+
+``` TypeScript
+struct RequestFocusShowKeyboard {
   controller: TextInputController = new TextInputController();
-  @State inputValue: string = "";
+  @State inputValue: string = '';
 
   build() {
-    Column({ space: 20 }) {
-      Button('Focus Input Field').onClick(() => {
-        this.getUIContext().getFocusController().requestFocus("textInput1")
-      })
-      TextInput({ controller: this.controller, text: this.inputValue })
-        .id("textInput1")
+    NavDestination() {
+      Column({ space: 20 }) {
+        Button('Text input field requests focus').onClick(() => {
+          this.getUIContext().getFocusController().requestFocus('textInput1')
+        })
+        TextInput({ controller: this.controller, text: this.inputValue })
+          .id('textInput1')
+      }
+      .height('100%')
+      .width('80%')
+      .margin('10%')
+      .justifyContent(FlexAlign.Center)
     }
-    .height('100%')
-    .width('80%')
-    .margin('10%')
-    .justifyContent(FlexAlign.Center)
   }
 }
 ```
 
-<!--Del-->![getFocus]  (figures/getFocus.gif)<!--DelEnd-->
+<!--Del-->  <!--DelEnd-->
 
 ### External Keyboard Navigation
 
@@ -65,27 +68,29 @@ When a physical keyboard is connected, users can use **Tab**, **Shift+Tab**, or 
 
 The following example demonstrates a scenario where, when an external keyboard is connected, pressing the **Tab** key multiple times transfers focus to the **TextInput** and displays the physical keyboard floating bar. Repeatedly pressing the **Tab** key cycles focus among the three page components. Focus transitions are visually indicated by the **Text** component's blue border and the **TextInput** component's blinking cursor. When the **TextInput** component gains focus, the cursor appears and the physical keyboard's floating toolbar is displayed.
 
-```ts
-@Entry
-@Component
-struct Index {
+<!-- @[tabKey_FocusShowKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/TabKeyFocusShowKeyboard.ets) -->
+
+``` TypeScript
+struct TabKeyFocusShowKeyboard {
   build() {
-    Column({ space: 20 }) {
-      Text('Text.focusable(true)')
-        .focusable(true)
+    NavDestination() {
+      Column({ space: 20 }) {
+        Text('Text.focusable(true)')
+          .focusable(true)
 
-      TextInput({ placeholder: "TextInput" })
+        TextInput({ placeholder: 'TextInput' })
 
-      TextInput({ placeholder: "TextInput" })
+        TextInput({ placeholder: 'TextInput' })
+      }
+      .height('100%')
+      .width('80%')
+      .margin('10%')
+      .justifyContent(FlexAlign.Center)
     }
-    .height('100%')
-    .width('80%')
-    .margin('10%')
-    .justifyContent(FlexAlign.Center)
   }
 }
 ```
-<!--Del-->![keyboard_textInput_tab]  (figures/keyboard_textInput_tab.gif)<!--DelEnd-->
+<!--Del-->   <!--DelEnd-->
 
 ## Hiding the Soft Keyboard
 
@@ -111,22 +116,24 @@ The soft keyboard provides a close button that users can tap to hide the keyboar
 
 The following example demonstrates this dismissal scenario:
 
-```ts
-@Entry
-@Component
-struct Index {
+<!-- @[closeButton_ClickKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/CloseButtonClickKeyboard.ets) -->
+
+``` TypeScript
+struct CloseButtonClickKeyboard {
   build() {
-    Column({ space: 20 }) {
-      Blank()
-        .height(350)
-      Flex({ direction: FlexDirection.Row }) {
-        TextInput({ placeholder: 'TextInput' })
+    NavDestination() {
+      Column({ space: 20 }) {
+        Blank()
+          .height(350)
+        Flex({ direction: FlexDirection.Row }) {
+          TextInput({ placeholder: 'TextInput' })
+        }
+        .width(250)
       }
-      .width(250)
+      .height('100%')
+      .width('90%')
+      .padding('5%')
     }
-    .height('100%')
-    .width('90%')
-    .padding('5%')
   }
 }
 ```
@@ -139,29 +146,31 @@ Dragging selected text in the text input field automatically hides the keyboard.
 
 The following example demonstrates keyboard dismissal during text dragging operations:
 
-```ts
-@Entry
-@Component
-struct Index {
+<!-- @[dragText_CloseKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/DragTextCloseKeyboard.ets) -->
+
+``` TypeScript
+struct DragTextCloseKeyboard {
   build() {
-    Column({ space: 20 }) {
-      Blank()
-        .height(350)
-      Flex({ direction: FlexDirection.Row }) {
-        TextInput({ text: 'Drag this text to hide keyboard' })
-          .selectAll(true)
-          .defaultFocus(true)
+    NavDestination() {
+      Column({ space: 20 }) {
+        Blank()
+          .height(350)
+        Flex({ direction: FlexDirection.Row }) {
+          TextInput({ text: 'User actively drags text' })
+            .selectAll(true)
+            .defaultFocus(true)
+        }
+        .width(250)
       }
-      .width(250)
+      .height('100%')
+      .width('90%')
+      .padding('5%')
     }
-    .height('100%')
-    .width('90%')
-    .padding('5%')
   }
 }
 ```
 
-<!--Del-->![keyboard_textInput_drag_1]  (figures/keyboard_textInput_drag_1.gif)<!--DelEnd-->
+<!--Del-->  <!--DelEnd-->
 
 ### Swipe Gestures
 
@@ -177,44 +186,47 @@ For details about the page navigation syntax, see [Page Routing](./arkts-navigat
 
 Source page:
 
-```ts
-// Index.ets
-@Entry
-@Component
-struct Index {
+<!-- @[page_ChangeSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/PageChangeSource.ets) -->
+
+``` TypeScript
+struct PageChangeSource {
   // Create a navigation controller object and pass it to the Navigation component.
   pathStack: NavPathStack = new NavPathStack()
 
   build() {
-    Navigation(this.pathStack) {
-      Column({ space: 30 }) {
-        Blank().height(150)
-        TextInput({ placeholder: 'TextInput' })
-        Button('Navigate to Next Page')
-          .onClick(() => {
-            this.pathStack.pushPath({ name: 'demo_text_1' })
-          })
+    NavDestination() {
+      Navigation(this.pathStack) {
+        Column({ space: 30 }) {
+          Blank().height(150)
+          TextInput({ placeholder: 'TextInput' })
+          Button('Jump to the next page')
+            .onClick(() => {
+              this.pathStack.pushPath({ name: 'pageChangeDestination' })
+            })
+        }
+        .height('100%')
+        .width('80%')
+        .margin('10%')
       }
-      .height('100%')
-      .width('80%')
-      .margin('10%')
+      .title('Implement page navigation with Navigation')
+      .navDestination(pageChangeNavDestination)
     }
-    .title('Page Navigation Example')
   }
 }
 ```
 
 Destination page:
 
-```ts
-// demo_text_1.ets
+<!-- @[page_ChangeDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/PageChangeDestination.ets) -->
+
+``` TypeScript
 @Builder
-export function demo_text_1_Builder() {
-  demo_text_1()
+export function pageChangeDestinationBuilder() {
+  PageChangeDestination()
 }
 
 @Component
-struct demo_text_1 {
+struct PageChangeDestination {
   pathStack: NavPathStack = new NavPathStack()
   // Destination page
   build() {
@@ -254,15 +266,15 @@ Create the **route_map.json** file in the **resources/base/profile** directory o
 {
   "routerMap": [
     {
-      "name": "demo_text_1",
-      "pageSourceFile": "src/main/ets/pages/demo_text_1.ets",
-      "buildFunction": "demo_text_1_Builder"
+      "name": "pageChangeDestination",
+      "pageSourceFile": "src/main/ets/pages/PageChangeDestination.ets",
+      "buildFunction": "pageChangeDestinationBuilder"
     }
   ]
 }
 ```
 
-<!--Del-->![keyboard_textInput_navigation_page_change]  (figures/keyboard_textInput_navigation_page_change.gif)<!--DelEnd-->
+<!--Del-->  <!--DelEnd-->
 
 ### TextInputController-Based Dismissal
 
@@ -273,7 +285,7 @@ The following example shows how to hide the soft keyboard using the [TextInputCo
 <!-- @[textInputController_CloseKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/TextInputControllerCloseKeyboard.ets) --> 
 
 ``` TypeScript
-struct textInputControllerCloseKeyboard {
+struct TextInputControllerCloseKeyboard {
   controller: TextInputController = new TextInputController();
   @State inputValue: string = '';
 
@@ -294,13 +306,13 @@ struct textInputControllerCloseKeyboard {
   }
 }
 ```
-<!--Del-->![stopEditing]  (figures/stopEditing.gif)<!--DelEnd-->
+<!--Del-->  <!--DelEnd-->
 
 ### Focus Transfer
 
 Moving focus to non-input components automatically hides the soft keyboard.
 
-Focus transfer can be controlled programmatically using [requestFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9) and [clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12). For details, see [Implementing Focus Support](./arkts-common-events-focus-event.md).
+Methods for programmatically controlling focus transfer include [requestFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#requestfocus12) and [clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12). For more details, see [Focus Handling](./arkts-common-events-focus-event.md).
 
 Compared with using text input controllers to exit edit mode, focus transfer offers better scalability for pages with multiple input fields, eliminating the need for configuring individual controllers for each text input.
 
@@ -309,7 +321,7 @@ The following example demonstrates keyboard dismissal by transferring focus to a
 <!-- @[requestFocus_CloseKeyBoard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/RequestFocusCloseKeyBoard.ets) -->
 
 ``` TypeScript
-struct requestFocusCloseKeyBoard {
+struct RequestFocusCloseKeyBoard {
   controller: TextInputController = new TextInputController();
   @State inputValue: string = '';
 
@@ -331,44 +343,46 @@ struct requestFocusCloseKeyBoard {
 }
 ```
 
-<!--Del-->![changeFocus]  (figures/changeFocus.gif)<!--DelEnd-->
+<!--Del-->  <!--DelEnd-->
 
 The following example demonstrates automatic soft keyboard dismissal when scrolling begins. As the scroll container [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) starts scrolling, the [clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12) API clears current focus, transferring it to the page's root container node. Since root containers do not require soft keyboard input, the keyboard automatically hides.
 
-```ts
-@Entry
-@Component
-struct Index {
+<!-- @[listScroll_ClearFocus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/ListScrollClearFocus.ets) -->
+
+``` TypeScript
+struct ListScrollClearFocus {
   private arr: number[] = Array.from<number, number>(
     { length: 100 } as ArrayLike<number>,
     (_, i: number) => i + 1
   );
 
   build() {
-    Column() {
-      List({ space: 20, initialIndex: 0 }) {
-        ForEach(this.arr, (item: number, index?: number) => {
-          ListItem() {
-            Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) {
-              TextInput({ placeholder: 'TextInput ' + item })
+    NavDestination() {
+      Column() {
+        List({ space: 20, initialIndex: 0 }) {
+          ForEach(this.arr, (item: number, index?: number) => {
+            ListItem() {
+              Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) {
+                TextInput({ placeholder: 'TextInput ' + item })
+              }
             }
-          }
-        }, (item: string) => item)
+          }, (item: string) => item)
+        }
+        .onScrollStart(() => {
+          // Clear the focus when the list starts scrolling to collapse the keyboard.
+          this.getUIContext().getFocusController().clearFocus()
+        })
+        .width('80%')
+        .height('80%')
+        .margin('10%')
       }
-      .onScrollStart(() => {
-        // Clear current focus when the List component starts to scroll.
-        this.getUIContext().getFocusController().clearFocus()
-      })
-      .width('80%')
-      .height('80%')
-      .margin('10%')
+      .justifyContent(FlexAlign.Center)
     }
-    .justifyContent(FlexAlign.Center)
   }
 }
 ```
 
-<!--Del-->![keyboard_textInput_onScrollStart]  (figures/keyboard_textInput_onScrollStart.gif)<!--DelEnd-->
+<!--Del-->  <!--DelEnd-->
 
 ## FAQs
 
@@ -389,12 +403,13 @@ By default, tapping a text input field triggers focus acquisition and automatica
 Configure an empty custom keyboard to prevent any keyboard display while maintaining the input field focus.
 
 The sample code is as follows:
-``` ts
-@Entry
-@Component
-struct demo {
+
+<!-- @[empty_CustomKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/EmptyCustomKeyboard.ets) -->
+
+``` TypeScript
+struct EmptyCustomKeyboard {
   controller: TextInputController = new TextInputController();
-  @State inputValue: string = "";
+  @State inputValue: string = '';
 
   // Create a custom keyboard component.
   @Builder
@@ -404,14 +419,16 @@ struct demo {
   }
 
   build() {
-    Column() {
-      TextInput({ placeholder: 'TextInput', controller: this.controller, text: this.inputValue })// Bind a custom keyboard.
-        .customKeyboard(this.CustomKeyboardBuilder())
+    NavDestination() {
+      Column() {
+        TextInput({ placeholder: 'TextInput', controller: this.controller, text: this.inputValue })// Bind the custom keyboard.
+          .customKeyboard(this.CustomKeyboardBuilder())
+      }
+      .justifyContent(FlexAlign.Center)
+      .width('80%')
+      .margin('10%')
+      .height('100%')
     }
-    .justifyContent(FlexAlign.Center)
-    .width('80%')
-    .margin('10%')
-    .height('100%')
   }
 }
 ```
@@ -434,28 +451,30 @@ Configure [enterKeyType](../reference/apis-arkui/arkui-ts/ts-basic-components-te
 
 The following example demonstrates a send-style Enter key that maintains keyboard visibility after being tapped:
 
-```ts
-@Entry
-@Component
-struct demo {
-  build() {
-    Column({ space: 20 }) {
-      TextArea({ placeholder: 'The keyboard dismisses after the send key is tapped' })
-        .enterKeyType(EnterKeyType.Send)
+<!-- @[keepEditableState_OnSubmit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/KeepEditableStateOnSubmit.ets) -->
 
-      TextArea({ placeholder: 'Set keepEditableState in onSubmit. The keyboard persists after the send key is tapped' })
-        .enterKeyType(EnterKeyType.Send)
-        .onSubmit((enterKey: EnterKeyType, event: SubmitEvent) => {
-          // Call keepEditableState to maintain the edit state of the text input field.
-          event.keepEditableState();
-        })
+``` TypeScript
+struct KeepEditableStateOnSubmit {
+  build() {
+    NavDestination() {
+      Column({ space: 20 }) {
+        TextArea({ placeholder: 'Click send to collapse the keyboard' })
+          .enterKeyType(EnterKeyType.Send)
+
+        TextArea({ placeholder: 'Set keepEditableState in onSubmit, click send without collapsing the keyboard' })
+          .enterKeyType(EnterKeyType.Send)
+          .onSubmit((enterKey: EnterKeyType, event: SubmitEvent) => {
+            // Call the keepEditableState method to keep the text input field in editing state.
+            event.keepEditableState();
+          })
+      }
+      .justifyContent(FlexAlign.Center)
+      .height('100%')
+      .width('80%')
+      .margin('10%')
     }
-    .justifyContent(FlexAlign.Center)
-    .height('100%')
-    .width('80%')
-    .margin('10%')
   }
 }
 ```
 
-<!--Del-->![keyboard_textInput_onSubmit]  (figures/keyboard_textInput_onSubmit.gif)<!--DelEnd-->
+<!--Del-->  <!--DelEnd-->

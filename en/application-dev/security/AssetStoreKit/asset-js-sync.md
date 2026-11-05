@@ -6,6 +6,7 @@
 <!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=878a214020b090430fbfc011fb9e9d5b26ec4594 translatedAt=2026-10-31T06:47:01.926Z pushedAt=2026-10-31T08:44:06.925Z nl=1 -->
 
 ## Adding Assets That Support Sync
 
@@ -62,10 +63,10 @@ You can call [asset.querySyncResult](../../reference/apis-asset-store-kit/js-api
 
 The following table describes the attributes of **AssetMap** for querying the sync result of assets.
 
-| Attribute Name (Tag)       | Attribute Content (Asset_Value)                                            | Mandatory/Optional  | Description                                                        |
+| Attribute Name (Tag)        | Value                                             | Mandatory  | Description                                                         |
 | --------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
-| REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | Type: Boolean| Yes| Whether to query the sync result of the asset whose custom additional information is encrypted. The value **true** means to query the sync result; the value **false** means the opposite. The default value is **false**.|
-| GROUP_ID<sup>18+</sup> | Type: Uint8Array<br>Length: 7-127 bytes| Yes| Group to which the asset to be queried belongs. By default, this parameter is not specified.|
+| REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | Type: Boolean | Optional | Whether to query the asset synchronization result for assets whose service-defined additional information is encrypted. **true** indicates to query the synchronization result of assets for which the service-defined additional information is stored in encrypted form. **false** indicates to query the synchronization result of assets for which the service-defined additional information is stored in unencrypted form. The default value is **false**.|
+| GROUP_ID<sup>18+</sup> | Type: Uint8Array<br>Length: 7-127 bytes | Optional | Group to which the assets to be queried belong. By default, the synchronization result of assets that do not belong to any group is queried.|
 
 ### Sample Code
 
@@ -101,3 +102,4 @@ For a successful sync between trusted devices, the assets of both old and new de
 - For assets that are accessible only when the screen is unlocked, the sync will fail if the screen of either the old or new device is locked.
 
 - For assets that are accessible only after user authentication, the sync will fail if no lock screen password is set on the old device.
+

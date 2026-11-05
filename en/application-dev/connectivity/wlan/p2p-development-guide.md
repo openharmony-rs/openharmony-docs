@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:38:55.718Z pushedAt=2026-06-22T07:28:22.372Z -->
+<!-- md-trans-meta sourceCommit=393e4c1fba444fc360bbd35a1699da817cae9a32 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## Introduction
 The peer-to-peer (P2P) mode provides a point-to-point connection between devices in a WLAN. It enables the direct establishment of a TCP/IP connection between two stations (STAs) without the involvement of an access point (AP).
@@ -19,7 +19,7 @@ You can use the APIs provided to:
 
 ## Available APIs
 
-For details about the JavaScript APIs and sample code, see the [P2P API Reference](../../reference/apis-connectivity-kit/js-apis-wifiManager.md).
+For details about the JavaScript APIs and sample code, see [@ohos.wifiManager (WLAN)](../../reference/apis-connectivity-kit/js-apis-wifiManager.md).
 
 The following table describes the APIs used in this topic.
 
@@ -107,6 +107,13 @@ The following table describes the APIs used in this topic.
    // Remove a P2P group.
    try {
      wifiManager.removeGroup();
+   } catch (error) {
+     console.error("failed:" + JSON.stringify(error));
+   }
+
+   // Unregister the listener to stop receiving persistent group state change events.
+   try {
+     wifiManager.off("p2pPersistentGroupChange", recvP2pPersistentGroupChangeFunc);
    } catch (error) {
      console.error("failed:" + JSON.stringify(error));
    }

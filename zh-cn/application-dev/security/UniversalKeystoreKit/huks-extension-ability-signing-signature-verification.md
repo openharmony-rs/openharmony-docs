@@ -316,15 +316,15 @@ static napi_value SignVerifyKey(napi_env env, napi_callback_info info)
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        /* 1. Sign */
-        // Init
+        /* 1. 签名 */
+        // 初始化会话
         uint8_t handleS[sizeof(uint64_t)] = {0};
         struct OH_Huks_Blob handleSign = { (uint32_t)sizeof(uint64_t), handleS };
         ohResult = OH_Huks_InitSession(&keyAlias, signParamSet, &handleSign, nullptr);
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        // Finish
+        // 结束会话
         uint8_t outDataS[RSA_COMMON_SIZE] = {0};
         struct OH_Huks_Blob outDataSign = { RSA_COMMON_SIZE, outDataS };
         ohResult = OH_Huks_FinishSession(&handleSign, signParamSet,  &inData, &outDataSign);
@@ -332,22 +332,22 @@ static napi_value SignVerifyKey(napi_env env, napi_callback_info info)
             break;
         }
         
-        /* 2. Verify */
-        // Init
+        /* 2. 验签 */
+        // 初始化会话
         uint8_t handleV[sizeof(uint64_t)] = {0};
         struct OH_Huks_Blob handleVerify = { (uint32_t)sizeof(uint64_t), handleV };
         ohResult = OH_Huks_InitSession(&keyAlias, verifyParamSet, &handleVerify, nullptr);
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        // Update loop
+        // 更新会话
         uint8_t temp[] = "out";
         struct OH_Huks_Blob verifyOut = { (uint32_t)sizeof(temp), temp };
         ohResult = OH_Huks_UpdateSession(&handleVerify, verifyParamSet, &inData, &verifyOut);
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        // Finish
+        // 结束会话
         ohResult = OH_Huks_FinishSession(&handleVerify, verifyParamSet, &outDataSign, &verifyOut);
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;

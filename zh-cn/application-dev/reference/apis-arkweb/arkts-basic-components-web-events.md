@@ -525,9 +525,9 @@ onErrorReceive(callback: Callback\<OnErrorReceiveEvent\>)
         Web({ src: 'www.example.com', controller: this.controller })
           .onErrorReceive((event) => {
             if (event) {
-              console.info('getErrorInfo:' + event.error.getErrorInfo());
-              console.info('getErrorCode:' + event.error.getErrorCode());
-              console.info('getCustomErrorCode:' + event.error.getCustomErrorCode());
+              console.error('getErrorInfo:' + event.error.getErrorInfo());
+              console.error('getErrorCode:' + event.error.getErrorCode());
+              console.error('getCustomErrorCode:' + event.error.getCustomErrorCode());
               console.info('url:' + event.request.getRequestUrl());
               console.info('isMainFrame:' + event.request.isMainFrame());
               console.info('isRedirect:' + event.request.isRedirect());
@@ -1612,10 +1612,10 @@ onSslErrorEvent(callback: OnSslErrorEventCallback)
         Web({ src: 'www.example.com', controller: this.controller })
           .onSslErrorEvent((event: SslErrorEvent) => {
             console.info("onSslErrorEvent url: " + event.url);
-            console.info("onSslErrorEvent error: " + event.error);
+            console.error("onSslErrorEvent error: " + event.error);
             console.info("onSslErrorEvent originalUrl: " + event.originalUrl);
             console.info("onSslErrorEvent referrer: " + event.referrer);
-            console.info("onSslErrorEvent isFatalError: " + event.isFatalError);
+            console.error("onSslErrorEvent isFatalError: " + event.isFatalError);
             console.info("onSslErrorEvent isMainFrame: " + event.isMainFrame);
             LogCertInfo(event.certChainData);
             this.uiContext.showAlertDialog({
@@ -1729,8 +1729,8 @@ struct Index {
               message: `ErrorCode: ${event.error.getErrorCode()}, ErrorInfo: ${event.error.getErrorInfo()}`,
               alignment: Alignment.Center
             })
-            console.info('getErrorInfo:' + event.error.getErrorInfo());
-            console.info('getErrorCode:' + event.error.getErrorCode());
+            console.error('getErrorInfo:' + event.error.getErrorInfo());
+            console.error('getErrorCode:' + event.error.getErrorCode());
             console.info('url:' + event.request.getRequestUrl());
           }
         })
@@ -1922,7 +1922,7 @@ struct Index {
               })
             })
             .onSslErrorEventReceive(e => {
-              console.info(`onSslErrorEventReceive->${e.error.toString()}`);
+              console.error(`onSslErrorEventReceive->${e.error.toString()}`);
             })
             .onErrorReceive((event) => {
               if (event) {
@@ -1930,8 +1930,8 @@ struct Index {
                   message: `ErrorCode: ${event.error.getErrorCode()}, ErrorInfo: ${event.error.getErrorInfo()}`,
                   alignment: Alignment.Center
                 })
-                console.info('getErrorInfo:' + event.error.getErrorInfo());
-                console.info('getErrorCode:' + event.error.getErrorCode());
+                console.error('getErrorInfo:' + event.error.getErrorInfo());
+                console.error('getErrorCode:' + event.error.getErrorCode());
                 console.info('url:' + event.request.getRequestUrl());
               }
             })
@@ -2027,7 +2027,7 @@ struct Index {
           })
         })
         .onSslErrorEventReceive(e => {
-          console.info(`onSslErrorEventReceive->${e.error.toString()}`);
+          console.error(`onSslErrorEventReceive->${e.error.toString()}`);
         })
         .onErrorReceive((event) => {
           if (event) {
@@ -2035,8 +2035,8 @@ struct Index {
               message: `ErrorCode: ${event.error.getErrorCode()}, ErrorInfo: ${event.error.getErrorInfo()}`,
               alignment: Alignment.Center
             })
-            console.info('getErrorInfo:' + event.error.getErrorInfo());
-            console.info('getErrorCode:' + event.error.getErrorCode());
+            console.error('getErrorInfo:' + event.error.getErrorInfo());
+            console.error('getErrorCode:' + event.error.getErrorCode());
             console.info('url:' + event.request.getRequestUrl());
           }
         })
@@ -5083,7 +5083,9 @@ struct WebComponent {
 }
 ```
 
-> **示例说明：** 示例中使用的`iframe_error.html`文件与[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled)示例中相同，需放置在应用资源的`resources/rawfile/`目录下。
+> **示例说明：**
+>
+> 示例中使用的`iframe_error.html`文件与[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled)示例中相同，需放置在应用资源的`resources/rawfile/`目录下。
 
 
 ## onSslErrorReceive<sup>(deprecated)</sup>

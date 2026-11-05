@@ -5,7 +5,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=11655b69cefb34a4a6c47c3aed59ee25121a8162 translatedAt=2026-09-22T13:40:27.747Z pushedAt=2026-09-23T09:56:29.560Z -->
+<!-- md-trans-meta sourceCommit=11655b69cefb34a4a6c47c3aed59ee25121a8162 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 ## When to Use
 
@@ -53,7 +53,7 @@ libhttp_interceptor.so
 1. Write code in the source file to call the API, implementing the handler functions and related operations for HTTP global interceptors.
 
    <!-- @[HttpInterceptor_build_project](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_C/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    #include "napi/native_api.h"
    #include "network/netstack/http_interceptor.h"
@@ -312,7 +312,7 @@ libhttp_interceptor.so
    {
        napi_value result;
        
-       // Set the interceptor handler.
+       // Set the interceptor handler function.
        g_readOnlyResponseInterceptor.handler = ReadOnlyResponseInterceptorHandler;
        
        // Add the interceptor.
@@ -511,13 +511,13 @@ libhttp_interceptor.so
        return result;
    }
    ```
-
+   
    The preceding code implements multiple HTTP global interceptors, including a read-only response interceptor, a modifiable request interceptor, and a modifiable response interceptor. In the interceptor handler functions, information about the request or response is printed, such as the status code, request body/response body, request header/response header, and performance metrics.
 
 2. Initialize and export the `napi_value` object encapsulated through N-API, and expose the functions to JavaScript through the external function interface.
 
    <!-- @[HttpInterceptor_extern_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_C/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    EXTERN_C_START
    static napi_value Init(napi_env env, napi_value exports)
@@ -563,7 +563,7 @@ libhttp_interceptor.so
 3. Register the objects successfully initialized in the previous step into `Node.js` by using the `napi_module_register` function in `RegisterEntryModule`.
 
    <!-- @[HttpInterceptor_napi_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_C/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    static napi_module demoModule = {
        .nm_version = 1,
@@ -584,7 +584,7 @@ libhttp_interceptor.so
 4. Define the function types in the `Index.d.ts` file of the project.
 
    <!-- @[HttpInterceptor_defining_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_C/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-
+   
    ``` TypeScript
    export const AddReadOnlyResponseInterceptor: () => number;
    export const RemoveReadOnlyResponseInterceptor: () => number;
@@ -606,7 +606,7 @@ libhttp_interceptor.so
 5. Call the encapsulated APIs in the `Index.ets` file.
 
    <!-- @[HttpInterceptor_C_full_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_C/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import httpInterceptor from 'libentry.so';

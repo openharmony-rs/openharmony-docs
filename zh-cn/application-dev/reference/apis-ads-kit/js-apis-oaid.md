@@ -101,6 +101,7 @@ getOAID(callback: AsyncCallback&lt;string&gt;): void
 ```typescript
 import { identifier } from '@kit.AdsKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 identifier.getOAID((err: BusinessError, data: string) => {
   if (err.code) {

@@ -159,9 +159,19 @@ onOpenResource用于打开指定资源（如建立会话或连接），handle为
        return Promise.resolve(result);
      }
 
-     // 解析resource index，API版本不同解析方式也不同
+     // 解析resource index，API版本22需要解析index字段，在API版本26.0.0及以上可直接使用。
      const apiVersion = deviceInfo.sdkApiVersion;
-     const index = apiVersion >= 26 ? resourceId : JSON.parse(resourceId)['index'];
+     let index: string;
+     if (apiVersion >= 26) {
+       index = resourceId;
+     } else {
+       try {
+        index = JSON.parse(resourceId)['index'];
+       } catch (e) {
+        result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL;
+        return Promise.resolve(result);
+       }
+     }
 
      let driverHandle: YourDriverHandle | null = null;
      try {

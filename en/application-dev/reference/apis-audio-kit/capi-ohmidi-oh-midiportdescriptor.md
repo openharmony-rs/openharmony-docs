@@ -1,12 +1,11 @@
 # OH_MIDIPortDescriptor
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @owen_creeper-->
 <!--Designer: @trytocalm-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=1961de06e85063963f633ec54a8a4baaf5cb7dc8 translatedAt=2026-07-21T04:01:35.882Z pushedAt=2026-07-22T01:12:44.752Z -->
+<!-- md-trans-meta sourceCommit=0578931480203da834b543b8c823f3ce7e94473d translatedAt=2026-11-03T04:32:28.098Z pushedAt=2026-11-04T03:11:47.059Z nl=1 -->
 
 ```c
 typedef struct {...} OH_MIDIPortDescriptor
@@ -14,7 +13,7 @@ typedef struct {...} OH_MIDIPortDescriptor
 
 ## Overview
 
-This struct describes the port descriptor, which is used to specify the port index and protocol behavior for opening a port.
+Port descriptor struct used to specify the port index and the MIDI protocol version (MIDI 1.0 or MIDI 2.0) when opening a port. The system automatically performs protocol adaptation and data conversion between the application and the hardware, making it suitable for scenarios that require compatible communication between different MIDI protocol versions.
 
 **Since:** 24
 
@@ -28,5 +27,7 @@ This struct describes the port descriptor, which is used to specify the port ind
 
 | Name| Description|
 | -- | -- |
-| uint32_t portIndex | Index of the port to be opened.<br>**Since**: 24|
-| [OH_MIDIProtocol](capi-native-midi-base-h.md#oh_midiprotocol) protocol | MIDI protocol version to be used (MIDI 1.0 or MIDI 2.0). The service converts data between applications and hardware based on the value of this parameter. An application merely declares the expected protocol version. The following system behavior applies when the protocol version does not match the hardware:<br> 1. Requesting OH_MIDI_PROTOCOL_1.0 on a MIDI 2.0 device (lossless compatibility): <br>    The application sends UMP Type 2 (MIDI 1.0 channel voice) messages. The service forwards them directly to the device. No data loss occurs.<br> 2. Requesting OH_MIDI_PROTOCOL_2.0 on a MIDI 1.0 device (lossy conversion): <br>    The application sends UMP Type 4 (MIDI 2.0 channel voice) messages. The service down-converts them to Type 2 messages (for example, truncating velocity values and discarding per-note data). Data precision is lost, and advanced messages may be discarded.<br>**Since**: 24|
+| uint32_t portIndex | Index of the port to open. The value ranges from 0 to the actual number of ports on the device minus 1. The valid index must be obtained through the device enumeration API.<br>**Since:** 24 |
+| [OH_MIDIProtocol](capi-native-midi-base-h.md#oh_midiprotocol) protocol | Specifies the MIDI protocol version to use (MIDI 1.0 or MIDI 2.0). The service converts data between the application and the hardware based on this field. The application only needs to declare the expected protocol version. The following describes the system behavior when the protocol version does not match the hardware:<br> 1. Requesting OH_MIDI_PROTOCOL_1_0 on a MIDI 2.0 device: (lossless compatibility)<br>    The application sends UMP Type 2 (MIDI 1.0 channel voice) messages, and the service forwards them directly to the device without data loss.<br> 2. Requesting OH_MIDI_PROTOCOL_2_0 on a MIDI 1.0 device: (lossy conversion)<br>    The application sends UMP Type 4 (MIDI 2.0 channel voice) messages, and the service downgrades Type 4 to Type 2 (for example, truncating velocity values and discarding per-note data), which loses data precision. Messages newly added in MIDI 2.0 that cannot be expressed in MIDI 1.0 (such as per-note controller messages) may be discarded.<br>**Since:** 24 |
+
+

@@ -5,7 +5,7 @@
 <!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=d862c1854b2a1b490393efe922403ee29cdf113a translatedAt=2026-10-22T03:45:20.223Z pushedAt=2026-10-22T07:26:56.813Z nl=1 -->
+<!-- md-trans-meta sourceCommit=d862c1854b2a1b490393efe922403ee29cdf113a translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 The AudioCapturer is used to record Pulse Code Modulation (PCM) audio data. It is suitable if you have extensive audio development experience and want to implement more flexible recording features.
 
@@ -342,7 +342,7 @@ async function releaseRender(updateCallback?: (msg: string, isError: boolean) =>
       console.error('Renderer already released');
       return;
     }
-    // Release resources.
+    // Release the resources.
     audioRenderer.release((err: BusinessError) => {
       if (err) {
         console.error('Renderer release failed.');

@@ -1,12 +1,11 @@
 # Reading and Editing Image XMP Metadata
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=02a76210ad9a480aced53e2ee2f43b01791ed8f2 translatedAt=2026-07-22T07:47:54.687Z pushedAt=2026-07-22T11:55:23.377Z -->
+<!-- md-trans-meta sourceCommit=9a5d11ace507ae2a5f05e1e571b2d135f70c7b30 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Extensible Metadata Platform (XMP) is a standard format for describing metadata of digital resources such as images, documents, and audio files. Based on XML, it allows rich descriptive information to be added to resources and supports custom namespaces and extensions. XMP metadata is typically embedded in images of formats such as JPEG, PNG, GIF, DNG, and TIFF.
 
@@ -19,7 +18,7 @@ Obtain the image, create an `ImageSource` (optional), then obtain the `XMPMetada
 1. Import the relevant modules.
 
    <!-- @[xmp_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
-
+   
    ``` TypeScript
    // Import the relevant modules.
    import { image } from '@kit.ImageKit';
@@ -28,12 +27,12 @@ Obtain the image, create an `ImageSource` (optional), then obtain the `XMPMetada
 
 2. Obtain the `XMPMetadata` object.
 
-Before using XMP metadata APIs, you need to obtain an [XMPMetadata](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md) instance. The following methods are supported:
+   Before using XMP metadata APIs, you need to obtain an [XMPMetadata](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md) instance. The following methods are supported:
 
-- Method 1: Manually create a `XMPMetadata` object. This applies to scenarios where you need to construct brand-new XMP metadata.
+   - Method 1: Manually create a `XMPMetadata` object. This applies to scenarios where you need to construct brand-new XMP metadata.
 
      <!-- @[create_xmp_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
-
+     
      ``` TypeScript
      async createXMPMetadata(): Promise<image.XMPMetadata> {
        let xmpMetadata = new image.XMPMetadata();
@@ -42,10 +41,10 @@ Before using XMP metadata APIs, you need to obtain an [XMPMetadata](../../refere
      }
      ```
 
-- Method 2: Read the XMP metadata from an image through `ImageSource`. This applies to scenarios where you need to read or modify the XMP metadata in an existing image.<br>You are advised to use the [readImageMetadataByType](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#readimagemetadatabytype24) API to obtain XMP metadata. You can directly pass `MetadataType.XMP_METADATA` to precisely retrieve XMP-type metadata, avoiding reading other irrelevant metadata.
+   - Method 2: Read the XMP metadata from an image through `ImageSource`. This applies to scenarios where you need to read or modify the XMP metadata in an existing image.<br>You are advised to use the [readImageMetadataByType](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#readimagemetadatabytype24) API to obtain XMP metadata. You can directly pass `MetadataType.XMP_METADATA` to precisely retrieve XMP-type metadata, avoiding reading other irrelevant metadata.
 
      <!-- @[read_xmp_metadata_from_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
-
+     
      ``` TypeScript
      async readXMPMetadataFromImage(imageSource: image.ImageSource): Promise<image.XMPMetadata | undefined> {
        let types: image.MetadataType[] = [image.MetadataType.XMP_METADATA];
@@ -68,10 +67,10 @@ Before using XMP metadata APIs, you need to obtain an [XMPMetadata](../../refere
 
 3. Edit the XMP metadata.
 
-After locating the target tag using an XMP path, call the corresponding method to edit it. For example, use [setValue](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md#setvalue) to set a tag value, [getTag](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md#gettag) to obtain a tag value, and [removeTag](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md#removetag) to delete a tag.
+   After locating the target tag using an XMP path, call the corresponding method to edit it. For example, use [setValue](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md#setvalue) to set a tag value, [getTag](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md#gettag) to obtain a tag value, and [removeTag](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md#removetag) to delete a tag.
 
    <!-- @[operate_xmp_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
-
+   
    ``` TypeScript
    async operateXMPMetadata(xmpMetadata: image.XMPMetadata): Promise<void> {
      try {
@@ -99,7 +98,7 @@ After locating the target tag using an XMP path, call the corresponding method t
    > DNG and TIFF images do not support writing XMP metadata back to the image file.
 
    <!-- @[write_xmp_metadata_to_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
-
+   
    ``` TypeScript
    async writeXMPMetadataToImage(imageSource: image.ImageSource, xmpMetadata: image.XMPMetadata): Promise<void> {
      try {
@@ -256,11 +255,11 @@ async setAndGetQualifierValue(xmpMetadata: image.XMPMetadata): Promise<void> {
   try {
     // Set the main tag book:bookTitle.
     await xmpMetadata.setValue('book:bookTitle', image.XMPTagType.STRING, 'My Book Title');
-    // Add the qualifier book:lastUpdated to the main tag.
+    // Add the book:lastUpdated qualifier to the main tag.
     await xmpMetadata.setValue('book:bookTitle/?book:lastUpdated', image.XMPTagType.STRING, '2024-01-15');
     console.info('Succeeded in setting tag and qualifier.');
 
-    // Obtain the value of the qualifier.
+    // Obtain the qualifier value.
     let qualifierTag: image.XMPTag | null = await xmpMetadata.getTag('book:bookTitle/?book:lastUpdated');
     console.info(`book:bookTitle/?book:lastUpdated: ${qualifierTag?.value}`);
   } catch (error) {

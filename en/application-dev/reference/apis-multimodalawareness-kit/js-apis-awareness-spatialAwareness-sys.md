@@ -5,7 +5,7 @@
 <!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=c8917731060061a309b23d8368826387d9702519 translatedAt=2026-09-14T02:16:03.236Z pushedAt=2026-09-14T10:03:33.582Z -->
+<!-- md-trans-meta sourceCommit=9f43df2647b9205ab9047df95572afe540e74b86 translatedAt=2026-11-03T06:05:10.317Z pushedAt=2026-11-03T12:08:25.589Z nl=1 -->
 
 This module provides the distance measurement awareness capability and supports ultrasound signal testing.
 
@@ -23,6 +23,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 Provides the type of an input signal. This API executes the corresponding algorithm based on the type of the input signal.
 
+**Model restriction:** This API can be used only in the stage model.
+
+**System API**: This API is a system API.
+
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 | Name               | Value  | Description                   |
@@ -37,6 +41,10 @@ Provides the type of an input signal. This API executes the corresponding algori
 
 Provides the reporting mode of the result after the distance measurement API is executed.
 
+**Model restriction:** This API can be used only in the stage model.
+
+**System API**: This API is a system API.
+
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 | Name                                | Value  | Description                  |
@@ -47,6 +55,10 @@ Provides the reporting mode of the result after the distance measurement API is 
 ## spatialAwareness.DistanceRank
 
 Enumerates the distance ranks of distance measurement results, with each rank corresponding to a different distance range.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API**: This API is a system API.
 
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -61,6 +73,10 @@ Enumerates the distance ranks of distance measurement results, with each rank co
 
 Provides the callback result after the distance measurement API is executed.
 
+**Model restriction:** This API can be used only in the stage model.
+
+**System API**: This API is a system API.
+
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 | Name              | Type           | Read-Only  | Optional  | Description    |
@@ -74,6 +90,10 @@ Provides the callback result after the distance measurement API is executed.
 
 Enumerates the inside or outside of the door in the result returned by the door inside-outside recognition API.
 
+**Model restriction:** This API can be used only in the stage model.
+
+**System API**: This API is a system API.
+
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 | Name              | Value            | Description                  |
@@ -84,6 +104,10 @@ Enumerates the inside or outside of the door in the result returned by the door 
 ## spatialAwareness.DoorPositionResponse
 
 Provides the callback result after the door inside-outside recognition API is executed.
+
+**Model restriction:**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -97,6 +121,10 @@ Provides the callback result after the door inside-outside recognition API is ex
 
 Provides the input parameter configuration of the distance measurement API. This API executes the corresponding algorithm based on the parameter configuration.
 
+**Model restriction:**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 | Name              |  Type                  | Read-Only     | Optional      | Description    |
@@ -106,13 +134,17 @@ Provides the input parameter configuration of the distance measurement API. This
 | reportMode         | ReportingMode         | Yes        | No | Result reporting mode.|
 | reportFrequency    | int                   | Yes         | No  | Result reporting frequency, unit: Hz, value range: [0,999999]. |
 
-## spatialAwareness.onDistanceMeasure<sup>23+</sup>
+## spatialAwareness.onDistanceMeasure
 
 onDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback: Callback&lt;DistanceMeasurementResponse&gt;): void;
 
 Enables distance measurement. This API triggers the execution of a distance measurement algorithm and returns the distance measurement result.
 
 **Required permissions**: ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API** This is a system API.
 
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -157,13 +189,17 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    }
 ```
 
-## spatialAwareness.offDistanceMeasure<sup>23+</sup>
+## spatialAwareness.offDistanceMeasure
 
 offDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback?: Callback&lt;DistanceMeasurementResponse&gt;): void;
 
 Disables distance measurement. This API stops the execution of the distance measurement algorithm.
 
 **Required permissions**: ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
 
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -208,13 +244,17 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    }
 ```
 
-## spatialAwareness.onIndoorOrOutdoorIdentify<sup>23+</sup>
+## spatialAwareness.onIndoorOrOutdoorIdentify
 
 onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callback: Callback&lt;DoorPositionResponse&gt;): void;
 
 Enables door inside-outside recognition. This API triggers the execution of a door inside-outside recognition algorithm and returns whether the device is inside or outside the door.
 
 **Required permissions**: ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API** This is a system API.
 
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -259,13 +299,17 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    }
 ```
 
-## spatialAwareness.offIndoorOrOutdoorIdentify<sup>23+</sup>
+## spatialAwareness.offIndoorOrOutdoorIdentify
 
 offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callback?: Callback&lt;DoorPositionResponse&gt;): void;
 
 Disables door inside-outside recognition. This API stops the execution of the door inside-outside recognition algorithm.
 
 **Required permissions**: ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
 
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 

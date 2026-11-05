@@ -1,10 +1,11 @@
 # OH_AudioRenderer_Callbacks_Struct
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=4a6423166cec7f4a80883cd681b0b752ac39bc94 translatedAt=2026-11-03T04:20:39.737Z pushedAt=2026-11-04T03:11:46.995Z nl=1 -->
 
 ```c
 typedef struct OH_AudioRenderer_Callbacks_Struct {...} OH_AudioRenderer_Callbacks
@@ -14,7 +15,7 @@ typedef struct OH_AudioRenderer_Callbacks_Struct {...} OH_AudioRenderer_Callback
 
 The struct defines a pointer to the callback functions related to an audio renderer.
 
-To avoid unexpected behavior, ensure that every member variable of the struct is initialized by a custom callback method or a null pointer when setting the audio callback functions.
+To avoid unexpected behavior, when setting audio callback functions, ensure that every member variable of this struct is initialized with a custom callback function or a null pointer.
 
 For details, see [(Recommended) Using OHAudio for Audio Playback (C/C++)](../../media/audio/using-ohaudio-for-playback.md).
 
@@ -26,7 +27,7 @@ For details, see [(Recommended) Using OHAudio for Audio Playback (C/C++)](../../
 
 Use the following callback types for substitute:
 
-[OH_AudioRenderer_OnWriteDataCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallback), [OH_AudioRenderer_OutputDeviceChangeCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_outputdevicechangecallback), [OH_AudioRenderer_OnInterruptCallback](capi-native-audiorenderer-h.md#oh_audiorenderer_oninterruptcallback), and [OH_AudioRenderer_OnErrorCallback](capi-native-audiorenderer-h.md#oh_audiorenderer_onerrorcallback)
+[OH_AudioRenderer_OnWriteDataCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallback), [OH_AudioRenderer_OutputDeviceChangeCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_outputdevicechangecallback), [OH_AudioRenderer_OnInterruptCallback](capi-native-audiorenderer-h.md#oh_audiorenderer_oninterruptcallback), and [OH_AudioRenderer_OnErrorCallback](capi-native-audiorenderer-h.md#oh_audiorenderer_onerrorcallback).
 
 **Related module**: [OHAudio](capi-ohaudio.md)
 
@@ -57,7 +58,7 @@ int32_t (*OH_AudioRenderer_OnWriteData)(OH_AudioRenderer* renderer, void* userDa
 
 **Description**
 
-Defines a function pointer to the callback function used to write audio data.<br> The callback function is used only to write audio data. Do not call AudioRenderer APIs in it.<br> Once the callback function finishes its execution, the audio service queues the data pointed to by **buffer** for playback. Therefore, do not change the data outside the callback. It is crucial to fill **buffer** with the exact length (specified by **length**) of data designated for playback; otherwise, noises may occur during playback.
+This function pointer points to the callback function used to write audio data.<br> The callback function is used only to write audio data. Do not call AudioRenderer-related APIs in the callback function.<br> After the callback function ends, the audio service places the buffer data into a queue to wait for playback. Therefore, do not modify the data pointed to by the buffer outside the callback, and ensure that the buffer is filled with data of the length to be played. Otherwise, the audio service may play noise.
 
 **Since**: 10
 
@@ -72,7 +73,7 @@ Defines a function pointer to the callback function used to write audio data.<br
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Pointer to an audio renderer instance, which is created by calling [OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer).|
 | void* userData | Pointer to the data storage area customized by the application.|
 | void* buffer | Pointer to the playback data storage area, which is used by the application to fill in playback data.|
-| int32_t length | Length of the buffer.|
+| int32_t length | Length of the buffer, in bytes. |
 
 ### OH_AudioRenderer_OnStreamEvent()
 
@@ -84,7 +85,7 @@ int32_t (*OH_AudioRenderer_OnStreamEvent)(OH_AudioRenderer* renderer, void* user
 
 Defines a function pointer to the callback function used to process audio playback stream events.
 
-**OH_AudioRenderer_OnStreamEvent** is a reserved API and does not trigger callbacks. Starting from API version 11, if you need to listen for device changes, use [OH_AudioRenderer_OutputDeviceChangeCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_outputdevicechangecallback) instead.
+OH_AudioRenderer_OnStreamEvent currently has no trigger scenario and is a reserved interface. Starting from API version 11, if developers need to listen for device changes, they can directly use [OH_AudioRenderer_OutputDeviceChangeCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_outputdevicechangecallback) as a replacement.
 
 **Since**: 10
 
@@ -148,3 +149,5 @@ Defines a function pointer to the callback function used to process audio playba
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Pointer to an audio renderer instance, which is created by calling [OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer).|
 | void* userData | Pointer to the data storage area customized by the application.|
 | [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) error | Audio playback error result, which may be **AUDIOSTREAM_ERROR_INVALID_PARAM**, **AUDIOSTREAM_ERROR_ILLEGAL_STATE**, or **AUDIOSTREAM_ERROR_SYSTEM**.|
+
+

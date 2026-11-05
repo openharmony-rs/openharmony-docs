@@ -6,7 +6,7 @@
 <!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=b3d7dfbe2fa529bc73b95e1c96626be3db8049ef translatedAt=2026-07-30T03:05:36.779Z pushedAt=2026-07-30T08:57:05.666Z -->
+<!-- md-trans-meta sourceCommit=b3d7dfbe2fa529bc73b95e1c96626be3db8049ef translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 ## Available APIs
 
@@ -43,6 +43,7 @@ The APIs listed in the following table provide extended operations on **HiTraceI
 | int OH_HiTrace_IdToBytes(const HiTraceId\* id, uint8_t\* pIdArray, int len) | Serializes a **HiTraceId** into a big-endian byte array, supporting local caching and cross-device transmission. |
 | void OH_HiTrace_IdFromBytes(HiTraceId \*id, const uint8_t \*pIdArray, int len) | Creates a **HiTraceId** from a big-endian byte array. |
 
+
 ## How to Develop
 
 **std::thread** does not support automatic transfer of **HiTraceId**. The following example shows how to use distributed tracing in this scenario. For details about the common mechanisms that support and do not support HiTraceChain automatic transfer, see [Constraints](hitracechain-intro.md#constraints).
@@ -72,9 +73,9 @@ The APIs listed in the following table provide extended operations on **HiTraceI
 2. In the **entry > src > main > cpp > CMakeLists.txt** file, add **libhitrace_ndk.z.so** and **libhilog_ndk.z.so**. The complete file content is as follows:
 
    <!-- @[hitracechain_ndk_cmake_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/cpp/CMakeLists.txt) -->
-
+   
    ``` cmake
-   # Minimum version of CMake.
+   # the minimum version of CMake.
    cmake_minimum_required(VERSION 3.5.0)
    project(HiTraceChainTest03)
    
@@ -91,10 +92,11 @@ The APIs listed in the following table provide extended operations on **HiTraceI
    target_link_libraries(entry PUBLIC libace_napi.z.so libhitrace_ndk.z.so libhilog_ndk.z.so)
    ```
 
+
 3. In the **entry > src > main > cpp > napi_init.cpp** file, use HiTraceChain to trace multi-thread tasks. The sample code is as follows:
 
    <!-- @[hitracechain_ndk_native_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    #include <thread>
    
@@ -204,11 +206,11 @@ The APIs listed in the following table provide extended operations on **HiTraceI
        napi_module_register(&demoModule);
    }
    ```
-
+   
    In the **entry > src > main > ets > pages > Index.ets** file, call the **Add** method in the button click event. The sample code is as follows:
-
+   
    <!-- @[hitracechain_ndk_page_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import testNapi from 'libentry.so';
@@ -242,13 +244,11 @@ The APIs listed in the following table provide extended operations on **HiTraceI
      }
    }
    ```
-
+   
 4. Click the **Run** button in DevEco Studio to run the project. Then, click **clickTime=0** on the device to trigger the service logic.
 
 5. In the **Log** window of DevEco Studio, view the distributed tracing information.
-
    - If **clickTime=1** is displayed on the device screen, the button is clicked once and the service logic is triggered.
-
    - All HiLog logs in this example use **testTag**. You can filter logs by the keyword **testTag** to view the HiLog logs printed by the service code.
 
       ```txt
@@ -264,7 +264,5 @@ The APIs listed in the following table provide extended operations on **HiTraceI
       ```
 
    - The **[chainId spanId parentSpanId]** information added before the HiLog log is **HiTraceId** information. For example, **[a92ab19ae90197d 236699a 2544fdb]** indicates that the trace chain ID (**chainId**) is **a92ab19ae90197d**, the span ID (**spanId**) is **236699a**, and the parent span ID (**parentSpanId**) is **2544fdb**.
-
    - Transfer the **HiTraceId**, create a **spanId**, and set it to the child thread created by **std::thread**. The HiLog logs of the Print1 and Print2 services running in the child thread also carry the same trace ID **a92ab19ae90197d** as that of the main thread.
-
    - After the distributed tracing is ended using **OH_HiTrace_EndChain()** or **OH_HiTrace_ClearId()**, the HiLog print information does not carry the **HiTraceId** information.

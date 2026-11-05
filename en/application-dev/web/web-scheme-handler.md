@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=44074eb669a65d5d46a3aac2d813b50b6e6b1689 translatedAt=2026-09-21T02:32:26.697Z pushedAt=2026-09-21T14:05:07.778Z -->
+<!-- md-trans-meta sourceCommit=c2be3abe94ed6c91175ab7c2d1b71d1ec29601bc translatedAt=2026-11-03T03:12:40.794Z pushedAt=2026-11-03T03:25:12.671Z nl=1 -->
 
 The application can use [onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9) or the ArkTS and NDK APIs provided by **SchemeHandler** to intercept network requests initiated by **Web** components.
 
@@ -122,40 +122,41 @@ OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_
 
 In ArkTS, you can register a custom scheme using **customizeSchemes**. The sample code is as follows:
 
-  ``` ts
-    // xxx.ets
-    import { webview } from '@kit.ArkWeb';
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    @Entry
-    @Component
-    struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    responseWeb: WebResourceResponse = new WebResourceResponse();
-    scheme1: webview.WebCustomScheme = { schemeName: "name1", isSupportCORS: true, isSupportFetch: true };
-    scheme2: webview.WebCustomScheme = { schemeName: "name2", isSupportCORS: true, isSupportFetch: true };
-    scheme3: webview.WebCustomScheme = { schemeName: "name3", isSupportCORS: true, isSupportFetch: true };
-
-    aboutToAppear(): void {
-        try {
-        webview.WebviewController.customizeSchemes([this.scheme1, this.scheme2, this.scheme3]);
-        } catch (error) {
-        console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-        }
-    }
-
-    build() {
-        Column() {
-        Web({ src: 'www.example.com', controller: this.controller })
-            .onInterceptRequest((event) => {
-            if (event) {
-                console.info('url:' + event.request.getRequestUrl());
-            }
-            return this.responseWeb;
-            })
-        }
+  <!-- @[register_custom_schemes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/pages/CustomizeSchemes.ets) -->
+  
+  ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  responseWeb: WebResourceResponse = new WebResourceResponse();
+  scheme1: webview.WebCustomScheme = { schemeName: 'name1', isSupportCORS: true, isSupportFetch: true };
+  scheme2: webview.WebCustomScheme = { schemeName: 'name2', isSupportCORS: true, isSupportFetch: true };
+  scheme3: webview.WebCustomScheme = { schemeName: 'name3', isSupportCORS: true, isSupportFetch: true };
+  
+  aboutToAppear(): void {
+      try {
+      webview.WebviewController.customizeSchemes([this.scheme1, this.scheme2, this.scheme3]);
+      } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
       }
-    }
+  }
+  
+  build() {
+      Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+          .onInterceptRequest((event) => {
+          if (event) {
+              console.info('url:' + event.request.getRequestUrl());
+          }
+          return this.responseWeb;
+          })
+      }
+      }
+  }
   ```
 
 ### Obtaining Information About Intercepted Requests
@@ -183,35 +184,41 @@ In the NDK, obtain information about intercepted requests:
     OH_ArkWebResourceRequest_GetHttpBodyStream(resourceRequest(), &stream_);
     // Set the read callback used to read the uploaded data.
     OH_ArkWebHttpBodyStream_SetReadCallback(stream_, ReadCallback);
-    // Initialize ArkWeb_HttpBodyStream. Other OH_ArkWebHttpBodyStream* functions need to be called during initialization.
+    // Initialize ArkWeb_HttpBodyStream. Other OH_ArkWebHttpBodyStream* functions must be called after initialization.
     OH_ArkWebHttpBodyStream_Init(stream_, InitCallback);
   ```
 
 In ArkTS, obtain information about intercepted requests:
-  ```ts
-  this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
+  <!-- @[Intercept_requested_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/pages/SchemeHandlerArkts.ets) -->
+  
+  ``` TypeScript
+  this.schemeHandler.onRequestStart
+  ((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
+    console.info('[schemeHandler] onRequestStart');
     try {
-      console.info("[schemeHandler] onRequestStart url:" + request.getRequestUrl());
-      console.info("[schemeHandler] onRequestStart method:" + request.getRequestMethod());
-      console.info("[schemeHandler] onRequestStart referrer:" + request.getReferrer());
-      console.info("[schemeHandler] onRequestStart isMainFrame:" + request.isMainFrame());
-      console.info("[schemeHandler] onRequestStart hasGesture:" + request.hasGesture());
-      console.info("[schemeHandler] onRequestStart header size:" + request.getHeader().length);
-      console.info("[schemeHandler] onRequestStart resource type:" + request.getRequestResourceType());
-      console.info("[schemeHandler] onRequestStart frame url:" + request.getFrameUrl());
+      console.info('[schemeHandler] onRequestStart url:' + request.getRequestUrl());
+      console.info('[schemeHandler] onRequestStart method:' + request.getRequestMethod());
+      console.info('[schemeHandler] onRequestStart referrer:' + request.getReferrer());
+      console.info('[schemeHandler] onRequestStart isMainFrame:' + request.isMainFrame());
+      console.info('[schemeHandler] onRequestStart hasGesture:' + request.hasGesture());
+      console.info('[schemeHandler] onRequestStart header size:' + request.getHeader().length);
+      console.info('[schemeHandler] onRequestStart resource type:' + request.getRequestResourceType());
+      console.info('[schemeHandler] onRequestStart frame url:' + request.getFrameUrl());
       let header = request.getHeader();
       for (let i = 0; i < header.length; i++) {
-        console.info("[schemeHandler] onRequestStart header:" + header[i].headerKey + " " + header[i].headerValue);
+        console.info('[schemeHandler] onRequestStart header:' + header[i].headerKey + ' ' + header[i].headerValue);
       }
       let stream = request.getHttpBodyStream();
       if (stream) {
-        console.info("[schemeHandler] onRequestStart has http body stream");
+        console.info('[schemeHandler] onRequestStart has http body stream');
       } else {
-        console.info("[schemeHandler] onRequestStart has no http body stream");
+        console.info('[schemeHandler] onRequestStart has no http body stream');
       }
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
+  
+    // ...
     return true;
   })
   ```

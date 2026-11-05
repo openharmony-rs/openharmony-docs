@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=b5b6b01d9a6d838f0233eb9681dbc03ce52a038e translatedAt=2026-08-26T04:42:50.844Z pushedAt=2026-08-28T08:05:26.716Z -->
+<!-- md-trans-meta sourceCommit=3d88c7ae24e860f42daeed81a30fca056541e740 translatedAt=2026-11-03T07:51:08.458Z pushedAt=2026-11-03T07:51:08.458Z -->
 
 For details about the development guidelines of scene-based widgets, see [Developing a Scene-based Widget](arkts-ui-liveform-sceneanimation-development.md). For system applications, scene-based widgets provide two extended capabilities: gesture suspension configuration and long-term widget activation.
 
@@ -34,12 +34,12 @@ For [scene-based interactive cards](arkts-ui-liveform-sceneanimation-development
 
 ## Long-term Widget Activation
 
-System applications can control widget state switching via APIs, allowing widgets to remain active for extended periods (hereafter referred to as the "long-term activated state"). A widget in this state is called a "long-term activated widget." Widget state transitions are managed through [formProvider.activateSceneAnimation](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#activatesceneanimation20) and [formProvider.deactivateSceneAnimation](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#deactivatesceneanimation20). In this case, the widget's animation rendering area is the same size as the widget itself, with no overflow effect displayed.
+System applications can control widget state switching via APIs, allowing widgets to remain active for extended periods (hereafter referred to as the "long-term activated state"). A widget in this state is called a "long-term activated widget." Widget state transitions are managed through [formProvider.activateSceneAnimation](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#formprovideractivatesceneanimation20) and [formProvider.deactivateSceneAnimation](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#formproviderdeactivatesceneanimation20). In this case, the widget's animation rendering area is the same size as the widget itself, with no overflow effect displayed.
 
 ### Widget Animation
 
 You can call the [formProvider.requestOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20) API to initiate interactive widget animation requests.
-- If the animation duration (**overflowInfo.duration**) requested by the API is greater than or equal to 60 seconds, the request will succeed and the animation will remain displayed. The widget exits the animation and switches to the inactive state only when the [cancelOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20) API is called to cancel the animation, the [formProvider.deactivateSceneAnimation](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#deactivatesceneanimation20) API is called to switch the widget to the inactive state, or another widget successfully applies for the animation.
+- If the animation duration (**overflowInfo.duration**) requested by the API is greater than or equal to 60 seconds, the request will succeed and the animation will remain displayed. The widget exits the animation and switches to the inactive state only when the [cancelOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20) API is called to cancel the animation, the [formProvider.deactivateSceneAnimation](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#formproviderdeactivatesceneanimation20) API is called to switch the widget to the inactive state, or another widget successfully applies for the animation.
 - If the animation duration (**overflowInfo.duration**) passed in via the API is less than 60 seconds, the request will fail.
 
 ### Widget State Synchronization
@@ -60,7 +60,7 @@ In addition to [animation request constraints](arkts-ui-liveform-sceneanimation-
 1. The system allows a maximum of five widgets in active state at a time. If more than five widgets are in active state, the widget that first switched to the active state will be deactivated.
 2. After an interactive widget successfully requests an animation, the current widget's animation will be interrupted and the widget will switch to the inactive state if any of the following conditions are met:
    - The [cancelOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20) API is called to cancel the animation.
-   - The [formProvider.deactivateSceneAnimation](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#deactivatesceneanimation20) API is called to switch the widget to the inactive state.
+   - The [formProvider.deactivateSceneAnimation](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#formproviderdeactivatesceneanimation20) API is called to switch the widget to the inactive state.
    - The user taps another interactive widget, and that widget successfully applies for an animation.
    - Within 60 seconds after an animation is requested, animation requests triggered by non-user taps of other widgets will fail. After 60 seconds since an animation is requested, animation requests triggered by non-user taps of other widgets will interrupt the current animation.
 
@@ -72,8 +72,8 @@ The following table lists the key APIs for a scene-based widget.
 
 | API                                                                                                                                                                      | Description                                                                                                                 |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
-| [formProvider.activateSceneAnimation(formId: string): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#activatesceneanimation20)     | Called to switch the interactive widget state to active.|
-| [formProvider.deactivateSceneAnimation(formId: string): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#deactivatesceneanimation20) | Called to switch the interactive widget state to inactive.|
+| [formProvider.activateSceneAnimation(formId: string): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#formprovideractivatesceneanimation20)     | Called to switch the interactive widget state to active.|
+| [formProvider.deactivateSceneAnimation(formId: string): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider-sys.md#formproviderdeactivatesceneanimation20) | Called to switch the interactive widget state to inactive.|
 | [formProvider.requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20) | Called by the widget provider to request interactive widget animations.  |
 | [formProvider.cancelOverflow(formId: string): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20)                                        | Called by the widget provider to cancel interactive widget animations.|
 
@@ -115,7 +115,7 @@ The following table lists the key APIs for a scene-based widget.
           // The widget provider needs to notify the widget host via session when the activated page is ready.
           session.sendData({['isFormReady']: true});
         } catch (e) {
-          console.info(`sth wrong when load content ${e.code}, ${e.message}`);
+          console.error(`sth wrong when load content ${e.code}, ${e.message}`);
         }
       }
     

@@ -34,6 +34,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
    import { media } from '@kit.MediaKit';
    import { fileIo } from '@kit.CoreFileKit';
    import { common } from '@kit.AbilityKit';
+   import { colorSpaceManager } from '@kit.ArkGraphics2D';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
@@ -325,6 +326,8 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
        handlePhotoAssetCb(photoAsset);
      });
      } catch (err) {
+      let error = err as BusinessError;
+      console.error(`photoOutputCallback failed, err code: ${error.code}`);
      }
    }
 
@@ -508,5 +511,27 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
         return;
       }
       session?.setFocusMode(focusMode);
+    }
+
+    // 设置防抖。
+    function setStabilizationFn(session: camera.VideoSession, stabilizationMode: camera.VideoStabilizationMode)
+    {
+      try {
+        session.setVideoStabilizationMode(stabilizationMode);
+      } catch (error) {
+        let err = error as BusinessError;
+        console.error(`setVideoStabilizationMode failed, err code: ${err.code}`);
+      }
+    }
+
+    // 设置色彩空间。
+    function setColorSpaceFn(session: camera.PhotoSession | camera.VideoSession, color: colorSpaceManager.ColorSpace) 
+    {
+      try {
+        session.setColorSpace(color);
+      } catch (error) {
+        let err = error as BusinessError;
+        console.error(`setColorspace failed, err code: ${err.code}`);
+      }
     }
     ```

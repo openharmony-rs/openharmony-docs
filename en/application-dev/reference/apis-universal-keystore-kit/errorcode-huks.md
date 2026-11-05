@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=3f649803adbf2db68193ff689b90e27d6586122e translatedAt=2026-11-03T06:31:43.876Z pushedAt=2026-11-03T12:08:25.643Z nl=1 -->
 
 > **NOTE**
 >
@@ -15,104 +16,96 @@
 
 **Error Message**
 
-The `${messageInfo}` is not supported.
+The feature or capability is not supported.
 
 **Description**
 
-The features specified in `${messageInfo}` are not supported.
+The currently called feature (capability) is not supported. The specific feature (capability) can be obtained from the printed errorMessage.
 
 **Possible Causes**
 
-The API is supported, but certain features in the API, such as the algorithm, are not supported.
+1. The sub-feature used is not supported.
+2. The algorithm parameter used is not supported.
 
 **Solution**
 
-Adjust the API parameters and use the supported alternative parameters.
+1. View the errorMessage to identify the unsupported sub-feature, and avoid calling this feature in the current device environment. If it is necessary for your service, submit feedback in the official developer community.
+2. Refer to the specific sections on capability introduction and algorithm specifications in [HUKS Development Guide](../../security/UniversalKeystoreKit/huks-overview.md), confirm the API specification to be called, adjust the API parameters, and use the supported algorithm parameters.
 
 ## 12000002 Missing Key Algorithm Parameter
 
 **Error Message**
 
-Failed to obtain the `${messageInfo}`. It is not set in ParamSet.
+The algorithm param is missing.
 
 **Description**
 
-The parameters in `${messageInfo}` cannot be obtained because related parameters are not set.
+The algorithm parameter required for the key operation is missing.
 
 **Possible Causes**
 
-The key parameter is not set.
+The parameter required for the current key operation, such as the key algorithm, key length, or padding algorithm, is not added.
 
 **Solution**
 
-1. Determine the missing parameter from the error message.
-2. Set the parameter.
+1. View the errorMessage to identify the missing key parameter.
+2. Refer to the capability descriptions and algorithm specification sections in the [HUKS Development Guide](../../security/UniversalKeystoreKit/huks-overview.md), check the API specification to be called, adjust the API parameters, and add the corresponding key parameters.
 
 ## 12000003 Invalid Key Algorithm Parameter
 
 **Error Message**
 
-Invalid `${messageInfo}`.
+The algorithm argument is invalid.
 
 **Description**
 
-An invalid parameter is used. For details, see `${messageInfo}`.
+The key algorithm parameter is invalid.
 
 **Possible Causes**
 
-The related parameters are invalid when the key is used.
+The related parameters are invalid when a key is used, for example, the algorithm does not match the padding algorithm, or the algorithm does not match the key operation.
 
 **Solution**
 
 1. Determine the invalid parameter from the error message.
-2. Correct the invalid parameter.
+2. Refer to the capability descriptions and algorithm specification sections in the [HUKS Development Guide](../../security/UniversalKeystoreKit/huks-overview.md), check the API specification to be called, adjust the API parameters, and change the corresponding key parameters to valid values.
 
 ## 12000004 File Error
 
 **Error Message**
 
-A file error can be any of the following: 
-
-- Insufficient storage space.
-- Invalid file size.
-- Failed to `${messageInfo}`.
+The file operation failed.
 
 **Description**
 
-A file error can be any of the following: 
-
-- Disk is full.
-- Invalid file size.
-- The file cannot be accessed. For details, see `${messageInfo}` in the log.
+The file operation failed.
 
 **Possible Causes**
 
-The file operation failed.
+1. The disk is full.
+2. Failed to obtain the file size.
+3. The file cannot be operated. For details, see the returned errorMessage.
 
 **Solution**
 
-1. Check whether the sufficient disk space is available and whether the file system is normal.
-2. Clear the disk space.
+1. If the disk space is full, clear the disk space first.
+2. Check the operation permission of the corresponding file. For details, see [File Directory Description](../../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path).
+3. If any other exception occurs in the file system, submit your feedback in the official developer community.
 
 ## 12000005 IPC Error
 
 **Error Message**
 
-A file error can be any of the following: 
-
-- Failed to get messages from IPC.
-- IPC `${messageInfo}`.
+IPC communication failed.
 
 **Description**
 
-A file error can be any of the following: 
-
-- Failed to obtain messages from the IPC.
-- An IPC error occurs. For details about the cause, see `${messageInfo}` in the log.
+IPC communication failed.
 
 **Possible Causes**
 
-The Inter-Process Communication (IPC) failed.
+1. Failed to obtain messages from the IPC.
+2. An IPC error occurs. For details about the cause, see the returned errorMessage.
 
 **Solution**
 
@@ -140,7 +133,7 @@ The possible causes are as follows:
 1. Check and correct the ciphertext data.
 2. Check and correct the key parameters.
 
-## 12000007 Failed to Access the Key Due to Invalidated Credential
+## 12000007 Key Access Failure - Key Invalidated
 
 **Error Message**
 
@@ -159,10 +152,10 @@ The possible causes include the following:
 
 **Solution**
 
-1. Locate the cause of the authentication failure based on the log.
+1. Check the authentication failure mode recorded in the log.
 2. If the authentication fails due to the configuration of the access control attribute, the key cannot be used any longer.
 
-## 12000008 Failed to Access the Key Due to a Failure in Authentication Token Verification
+## 12000008 Key Access Failure - Key Authentication Failure
 
 **Error Message**
 
@@ -181,7 +174,7 @@ The challenge value is incorrect.
 1. Check whether the challenge for user IAM authentication is correctly assembled.
 2. If the challenge value is incorrect, modify the assembly mode, use the bytes generated by HUKS to assembly the challenge value, and pass it to user IAM for authentication.
 
-## 12000009 Key Access Timed Out
+## 12000009 Key Access Failure - Key Access Timeout
 
 **Error Message**
 
@@ -211,7 +204,7 @@ The number of key operation sessions has reached the limit.
 
 **Possible Causes**
 
-The number of concurrent key operation sessions has reached the maximum (15).
+The number of HUKS key operation sessions has reached the upper limit (15), and no more call requests from the same or cross applications can be processed.
 
 **Solution**
 
@@ -283,14 +276,14 @@ Enroll the credential or change the authentication type bound to the key.
 
 **Error Message**
 
-A file error can be any of the following: 
+A file error can be any of the following:
 
 - Insufficient memory.
 - Malloc failed.
 
 **Description**
 
-A file error can be any of the following: 
+A file error can be any of the following:
 
 - The memory is insufficient.
 - Failed to allocate memory.
@@ -308,11 +301,11 @@ The system memory is insufficient, or the buffer allocated for the output parame
 
 **Error Message**
 
-Failed to obtain the `${messageInfo}` information via UserIAM.
+Failed to obtain the information via UserIAM.
 
 **Description**
 
-Failed to obtain the `${messageInfo}` information through UserIAM.
+Failed to obtain the authentication-related information via UserIAM.
 
 **Possible Causes**
 
@@ -322,11 +315,29 @@ The called system service has not started.
 
 Wait for the system service to start and call the API again.
 
+## 12000016 Device Password Not Set
+
+**Error Message**
+
+A device password is required but not set.
+
+**Description**
+
+The device password is not set.
+
+**Possible Causes**
+
+The key is configured with a user access authentication attribute that depends on the device password, but the device password is not set, so the key cannot be operated.
+
+**Solution**
+
+Set the device password first, and then perform the key operation.
+
 ## 12000017 Duplicate Key Alias
 
 **Error Message**
 
-The key with same alias is already exist.
+The key with the same alias already exists.
 
 **Description**
 
@@ -400,7 +411,7 @@ The downstream dependent module reports an error.
 
 Check the cause of the error reported by the downstream module based on the error code or error message returned.
 
-## 12000021 UKey PIN Locked
+## 12000021 UKey PIN Is Locked
 
 **Error Message**
 
@@ -508,3 +519,24 @@ The secure element is faulty.
 
 1. Try again later or restart the device and try again.
 2. If the fault persists, submit the error code and logs to the community.
+
+## 12000027 Network Unavailable
+
+**Error Message**
+
+The Internet is unavailable.
+
+**Description**
+
+The network is unavailable.
+
+**Possible Causes**
+
+The device network connection is unavailable.
+
+**Solution**
+
+1. Check whether the device network connection is normal.
+2. Restore the network connection and try again.
+
+<!--RP3--><!--RP3End-->

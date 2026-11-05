@@ -5,7 +5,7 @@
 <!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4cc0edff6acd51eb4f570568307815e72c5fd2c0 translatedAt=2026-10-22T03:41:02.147Z pushedAt=2026-10-22T04:08:11.110Z nl=2 -->
+<!-- md-trans-meta sourceCommit=9f698f1a1008578108c1a931ca1eb6c0a8f939e2 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=2 -->
 
  
 When an app plays or records audio, it may encounter audio focus conflicts with other apps or with other audio streams within the same app. This section provides an overview of how these conflicts are handled and explains how to use the system's audio focus management capabilities to resolve audio interruption issues.
@@ -91,7 +91,6 @@ App A is playing music. The user then launches App B, which also starts audio pl
 | Default scenario | Starts a call. | Starts recording. | Recording fails. | - |
 | Solution 1 | No configuration required. | Uses the [setWillMuteWhenInterrupted](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setwillmutewheninterrupted20) API. | Recording can start, but the recorded data is a silent stream. | - |
 | Solution 2 | No configuration required. | Uses the recording API [setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24) with `AudioSessionBehaviorFlags` set to `MUTE_WHEN_INTERRUPTED`. | Recording can start, but the recorded data is a silent stream. | Equivalent to Solution 1; Solution 2 is recommended. |
-| Solution 3 | No configuration required. | Uses the recording API [setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24) with `AudioSessionBehaviorFlags` set to `PAUSE_WHEN_INTERRUPTED`. | Recording is paused. After App A's call ends, App B receives a `RESUME` event and resumes recording. | - |
 
 ### Scenario 4: Recording Started During Music Playback, Interrupting the Music
 

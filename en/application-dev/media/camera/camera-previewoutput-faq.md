@@ -1,12 +1,11 @@
 # Camera Preview Stream Startup Issues
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=45526eba67080b876eb51af31a33be43ae26f701 translatedAt=2026-07-13T13:20:41.782Z pushedAt=2026-07-21T07:14:43.595Z -->
+<!-- md-trans-meta sourceCommit=c363c4134c11bcec868cc8b279dc8af0b7551cf3 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 ## Symptom
 
@@ -14,7 +13,7 @@ The application displays a black screen or distorted images when opening the cam
 
 ## Possible Causes
 
-The preview stream (`previewOutput`) startup workflow consists of three stages: creation, addition, and start. These stages have dependencies on each other. If a previous stage fails, subsequent stages may also fail, resulting in a black screen. Possible causes include:
+The preview stream (`previewOutput`) in the camera process consists of three stages: creation, addition, and startup. Dependencies exist between these stages. If a previous stage fails, subsequent stages will also fail, resulting in a black screen on the camera. Possible causes include the following:
 
 1. The `SurfaceId` is not passed correctly, preventing images from being displayed properly.
 
