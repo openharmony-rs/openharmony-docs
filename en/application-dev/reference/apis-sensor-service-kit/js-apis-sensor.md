@@ -296,6 +296,8 @@ on(type: SensorId.BAROMETER, callback: Callback&lt;BarometerResponse&gt;, option
 
 Subscribes to data of the barometer sensor. This API uses an asynchronous callback to return the result. The barometric pressure sensor is used to measure atmospheric pressure. It is applicable to scenarios such as altitude estimation and weather forecast assistance. After this method is called, the system continuously reports barometric pressure data at the specified frequency through the callback.
 
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
 **System capability**: SystemCapability.Sensors.Sensor
 
 **Parameters**
@@ -2751,6 +2753,8 @@ off(type: SensorId.BAROMETER, callback?: Callback&lt;BarometerResponse&gt;): voi
 
 Unsubscribes from data of the barometer sensor. Call this method to cancel the subscription when the barometric pressure sensor data is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs.
 
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
 **System capability**: SystemCapability.Sensors.Sensor
 
 **Parameters**
@@ -2801,6 +2805,8 @@ try {
 off(type: SensorId.BAROMETER, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;BarometerResponse&gt;): void
 
 Unsubscribes from data of the barometer sensor. Call this method to cancel the subscription when the barometric pressure sensor data is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -6481,7 +6487,7 @@ Enumerates the sensor types.
 | GYROSCOPE                   | 2    | Gyroscope sensor, which is used to measure the angular velocity of the device.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | AMBIENT_LIGHT               | 5    | Ambient light sensor, which is used to measure the ambient light intensity.                                              |
 | MAGNETIC_FIELD              | 6    | Magnetic field sensor, which is used to measure the ambient magnetic field strength around the device.                                                |
-| BAROMETER                   | 8    | Barometric pressure sensor, which is used to measure atmospheric pressure.                                              |
+| BAROMETER                   | 8    | Barometric pressure sensor, which is used to measure atmospheric pressure.<br>**Atomic service API**: This API can be used in atomic services since API version 26.1.0. |
 | HALL                        | 10   | Hall effect sensor, which is used to detect whether there is a magnetic force around the device.                                                |
 | PROXIMITY                   | 12   | Proximity sensor, which is used to detect the proximity between an object and the device display.                                              |
 | HUMIDITY                    | 13   | Humidity sensor, which is used to measure the relative humidity of the environment.                                              |
@@ -6852,12 +6858,14 @@ Describes the ambient temperature sensor data. It extends from [Response](#respo
 
 Describes the barometer sensor data. It extends from [Response](#response).
 
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
 **System capability**: SystemCapability.Sensors.Sensor
 
 
 | Name    | Type  | Read-Only| Optional| Description                  |
 | -------- | ------ | ---- | ---- | ---------------------- |
-| pressure | number | No  | No  | Atmospheric pressure, in hPa.|
+| pressure | number | No  | No  | Atmospheric pressure, in hPa.<br>**Atomic service API**: This API can be used in atomic services since API version 26.1.0. |
 
 
 ## HeartRateResponse

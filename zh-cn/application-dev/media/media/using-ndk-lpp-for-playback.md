@@ -111,7 +111,9 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
     
     ``` C++
     source_ = OH_AVSource_CreateWithFD(info.inputFd, info.inputFileOffset, info.inputFileSize);
+    // ...
     demuxer_ = OH_AVDemuxer_CreateWithSource(source_);
+    // ...
     int32_t ret = GetTrackInfo(sourceFormat, info);
     ```
 
@@ -139,8 +141,10 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
     lppAudioStreamerCallback_ = OH_LowPowerAudioSinkCallback_Create();
     OH_LowPowerAudioSinkCallback_SetDataNeededListener(lppAudioStreamerCallback_,
         LppCallback::OnDataNeeded, lppUserData);
+    // ...
     OH_LowPowerAudioSinkCallback_SetPositionUpdateListener(lppAudioStreamerCallback_,
         LppCallback::OnPositionUpdated, lppUserData);
+    // ...
     ret = OH_LowPowerAudioSink_RegisterCallback(lppAudioStreamer_, lppAudioStreamerCallback_);
     ```
 

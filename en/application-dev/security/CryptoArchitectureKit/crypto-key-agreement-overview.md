@@ -1,4 +1,4 @@
-# Key Agreement Overview and Algorithm Specifications
+# Key Agreement
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=78d27a16851062ae03d6a51de8b99e33aec772a0 translatedAt=2026-08-07T03:30:01.652Z pushedAt=2026-08-10T09:18:56.410Z -->
+<!-- md-trans-meta sourceCommit=fd500ca82713c7732ea8f0441b20e4da66f10c9e translatedAt=2026-10-30T03:44:40.189Z pushedAt=2026-10-30T07:23:20.179Z nl=1 -->
 
 A key agreement algorithm can be used when two communicating parties need to negotiate a secure shared secret over an insecure channel without pre-sharing any secret.
 

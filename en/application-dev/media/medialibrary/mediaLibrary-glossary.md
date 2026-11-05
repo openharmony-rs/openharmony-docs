@@ -1,12 +1,11 @@
 # Glossary
-
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @xuchangda; @yixiaoff-->
 <!--Designer: @guxinggang; @liweilu1-->
 <!--Tester: @wangbeibei; @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=be1284f3fa5fa2a0aa17a86ac585ca0e13c05ae4 translatedAt=2026-07-23T10:54:13.131Z pushedAt=2026-07-23T12:11:49.612Z -->
+<!-- md-trans-meta sourceCommit=66183155b71c33584dc3e9817f44323594fa1359 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 ## D
 
@@ -73,6 +72,7 @@
   A system-provided component for users to interactively select assets. It includes `PhotoViewPicker` (photo picker), `AudioViewPicker` (audio picker), and other pickers. By launching a system UI, it allows users to select assets to be shared or operated on, enabling secure asset access without requiring sensitive permissions.
 
 ## T
+
 
 ### Thumbnail
 

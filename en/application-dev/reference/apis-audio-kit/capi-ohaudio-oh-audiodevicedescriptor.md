@@ -2,9 +2,10 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=b6df2b7e0ebfe1d3ad7614c1acb5050cb14b218b translatedAt=2026-11-03T04:19:47.969Z pushedAt=2026-11-04T03:11:46.989Z nl=1 -->
 
 ```c
 typedef struct OH_AudioDeviceDescriptor OH_AudioDeviceDescriptor
@@ -12,10 +13,11 @@ typedef struct OH_AudioDeviceDescriptor OH_AudioDeviceDescriptor
 
 ## Overview
 
-The struct describes an audio device descriptor, which provides attributes of an audio device.
+Declares an audio device descriptor. This struct is used to obtain the detailed attribute information of an audio device.
 
 **Since**: 12
 
 **Related module**: [OHAudio](capi-ohaudio.md)
 
 **Header file**: [native_audio_device_base.h](capi-native-audio-device-base-h.md)
+

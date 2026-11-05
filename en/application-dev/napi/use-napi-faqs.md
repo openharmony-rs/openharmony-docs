@@ -1,10 +1,11 @@
 # Node-API FAQs
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=ba58f4c127ff6cd3de11ea1ec576ea3c9cd72e8f translatedAt=2026-11-03T12:47:30.238Z pushedAt=2026-11-03T12:47:30.238Z nl=1 -->
 
 ## Stability 
 1. [How do I troubleshoot the issue that an application often crashes during running?](napi-faq-about-stability.md#how-do-i-troubleshoot-the-issue-that-an-application-often-crashes-during-running) 

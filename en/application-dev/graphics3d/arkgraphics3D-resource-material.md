@@ -1,10 +1,20 @@
+---
+kits: ["ArkGraphics 3D"]
+description: "Describes how to create and use PBR standard materials and custom Shader materials in ArkGraphics 3D, configure metallic, roughness, normal, clear-coat, and emissive properties, and create effects such as outlines and highlights."
+keywords: [ArkGraphics 3D, PBR, Shader material, clear coat, ambient occlusion]
+doctype: guide
+status: active
+---
+
 # Creating and Using Material Resources
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=99d9dfdb15c27a9f11b4d4ea5d78e8d33f4eb115 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 Materials are essential resources that define the visual appearance of an object's surface. They determine how an object interacts with light, thereby affecting its final rendering result, such as color, metallic appearance, and roughness.
 
@@ -49,7 +59,7 @@ All materials have the following basic properties (such as **materialType**, **s
 
   Use case: Enable for ordinary solid models to improve rendering efficiency. Disable for transparent or double-sided materials (such as leaves and fabrics) to display the complete model.
 
-- **blend**: whether to enable the material's transparency mode. **true** means to enable, **false** otherwise. The default value is **false**.
+- **blend**: transparency settings for the material. The default value is **undefined**, which disables transparency.
 
   Use case: Enable for materials that need to display transparency or translucency, such as glass, water surfaces, smoke, and transparent plastics.
 
@@ -60,6 +70,10 @@ All materials have the following basic properties (such as **materialType**, **s
 - **renderSort**: rendering sort setting, used to control the rendering order of materials in the rendering queue to ensure correct overlay display of transparent or special effect materials.
 
   Use case: For scenes with multiple transparent materials, overlay effects, and UI elements, where strict rendering order is required.
+
+- **polygonMode**: the polygon drawing mode of the model. The default value is **FILL**.
+
+  Use case: Render a 3D object's mesh in wireframe mode to inspect its modeling structure.
 
 ### PBR Material Properties
 The metallic-roughness material based on PBR rendering, which conforms to the glTF standard, is implemented by setting [MetallicRoughnessMaterial](../reference/apis-arkgraphics3d/js-apis-inner-scene-resources.md#metallicroughnessmaterial20). Each property is encapsulated using the [MaterialProperty](../reference/apis-arkgraphics3d/js-apis-inner-scene-resources.md#materialproperty20) type, supporting binding textures and setting factor values. Specific properties include:
@@ -149,7 +163,7 @@ You can create shader materials using the **MaterialType.SHADER** type when you 
    <!-- @[scene_camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
-   this.cam = await this.rf.createCamera({ 'name': 'Camera1' });
+   this.cam = await this.rf.createCamera({ name: 'Camera1' });
    this.cam.enabled = true;
    this.cam.position.z = 5;
    ```
@@ -301,6 +315,7 @@ In ArkGraphics 3D, Physically Based Rendering (PBR) materials allow you to preci
    import { Scene, Camera, Material, Node, Image, SceneResourceFactory, Geometry, EnvironmentBackgroundType,
      PostProcessSettings, ToneMappingType, MetallicRoughnessMaterial, Vec4 } from '@kit.ArkGraphics3D';
    import {lookAt, OrbitCameraHelper } from '../common/utils';
+   import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
 2. Load scene resources.
@@ -321,6 +336,9 @@ In ArkGraphics 3D, Physically Based Rendering (PBR) materials allow you to preci
          let rf: SceneResourceFactory = scene.getResourceFactory();
    
          // ...
+       })
+       .catch((err: BusinessError): void => {
+         console.error('Failed to load scene, code is %{public}d, message is %{public}s', err.code, err.message);
        });
    }
    ```
@@ -379,7 +397,7 @@ In ArkGraphics 3D, Physically Based Rendering (PBR) materials allow you to preci
    <!-- @[pbr_clearcoat_createCamera](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
    
    ``` TypeScript
-   this.cam = await rf.createCamera({ 'name': 'ClearcoatCam' });
+   this.cam = await rf.createCamera({ name: 'ClearcoatCam' });
    this.cam.enabled = true;
    lookAt(this.cam,{x:0,y:0,z:-3},{x:0,y:0,z:0},{x:0,y:1,z:0});
    this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;

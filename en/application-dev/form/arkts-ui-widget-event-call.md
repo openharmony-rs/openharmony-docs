@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=f66217a374191afa08e6502e3cd59173c85fd1ac translatedAt=2026-08-26T04:46:50.005Z pushedAt=2026-08-28T08:40:15.975Z -->
+<!-- md-trans-meta sourceCommit=3ce1ce21ff3578621ebfbdafe5eaf98595976661 translatedAt=2026-11-03T07:51:08.458Z pushedAt=2026-11-03T07:51:08.458Z -->
 
 Many apps want to leverage widget capabilities to achieve the same functionality as when the app is running in the foreground. For example, a music widget provides buttons such as play and pause. Tapping different buttons triggers different functions of the music app, thereby improving the user experience. Using the call capability of the [postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1) API in a widget, you can pull the UIAbility specified by the widget provider app to the background. In addition, the call capability allows you to invoke a specified method of the app and pass data, so that the app can execute different functions through the buttons on the widget while running in the background.
 
@@ -154,7 +154,7 @@ Many apps want to leverage widget capabilities to achieve the same functionality
           this.callee.off('funA');
           this.callee.off('funB');
         } catch (error) {
-          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee off. error code: ${error.code}, error message: ${error.message}`);
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to unregister callee off. error code: ${error.code}, error message: ${error.message}`);
         }
       }
     }

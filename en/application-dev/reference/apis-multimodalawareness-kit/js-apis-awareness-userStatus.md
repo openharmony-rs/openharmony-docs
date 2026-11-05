@@ -5,7 +5,7 @@
 <!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=06c751e035ad62c8d7f27ef01002e3d38739d6ba translatedAt=2026-09-14T02:28:22.172Z pushedAt=2026-09-14T10:03:33.585Z -->
+<!-- md-trans-meta sourceCommit=e98d9dbb00880c3983b0d3e888a32f6a37b9f2fd translatedAt=2026-11-03T06:06:17.246Z pushedAt=2026-11-03T12:08:25.590Z nl=1 -->
 
 The **UserStatus** module, designed for user state awareness, empowers the system to perceive specific conditions of users, such as determining their age group.
 

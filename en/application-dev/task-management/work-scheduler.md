@@ -6,6 +6,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=049952087e96be170b63f07370c78b601dbc0c63 translatedAt=2026-11-02T07:51:58.704Z pushedAt=2026-11-02T11:48:43.072Z nl=1 -->
 
 ## Overview
 
@@ -15,7 +16,7 @@ If an application needs to execute a non-real-time task after switching to the b
 
 ### Working Principle
 
-**Figure 1** Working principle of deferred task scheduling 
+**Figure 1** Working principle of deferred task scheduling  
 ![WorkScheduler](figures/WorkScheduler.png)
 
 An application calls the deferred task API to add, delete, and query deferred tasks. The deferred task management module determines the scheduling time based on the task conditions (set by the [WorkInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workinfo) parameter, including the network type, charging type, and storage status) and system status (including the memory, power consumption, device temperature, and user habits).
@@ -25,11 +26,11 @@ When the scheduling conditions are met or the task scheduling ends, the system c
 
 ### Constraints
 
-- **Quantity limit**: An application can request a maximum of 10 deferred tasks during a time segment.
+- **Quantity limit**: An application can request a maximum of 10 deferred tasks at the same time.
 
-- **Execution frequency limit**: The system controls the execution frequency of deferred tasks <!--RP1-->based on the application activity group in the [device usage statistics](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-deviceUsageStatistics-sys.md)<!--RP1End-->. <!--Del-->Applications that request the WORK_SCHEDULER resource are placed in the efficiency resource exemption group.<!--DelEnd-->
+- **Execution frequency limit**: The system performs hierarchical control over deferred tasks based on the active application group in the <!--RP1-->[device usage statistics](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-deviceUsageStatistics-sys.md)<!--RP1End-->, limiting the execution frequency of deferred task scheduling. <!--Del-->Applications that request the WORK_SCHEDULER resource through the energy efficiency resource API are placed in the energy efficiency resource exemption group.<!--DelEnd-->
 
-  **Table 1** Application activity groups  
+  **Table 1** Application activity groups   
   | Group| Deferred Task Execution Frequency|
   | -------- | -------- |
   | Group of active applications| At a minimum interval of 2 hours|
@@ -40,9 +41,9 @@ When the scheduling conditions are met or the task scheduling ends, the system c
   | Group of applications never used| Forbidden|
   | <!--DelRow-->Exemption group for efficiency resources| No restriction|
   
-- **Timeout**: The WorkSchedulerExtensionAbility can run for a maximum of 2 minutes for a single callback. If the application does not cancel the deferred task upon a timeout, the system forcibly terminates the process for the WorkSchedulerExtensionAbility. <!--Del-->Privileged system applications can request the WORK_SCHEDULER resource to extend the duration to 20 minutes in the charging state and 10 minutes in the non-charging state.<!--DelEnd-->
+- **Timeout**: The WorkSchedulerExtensionAbility can run for a maximum of 2 minutes for a single callback. If the application does not cancel the deferred task upon a timeout, the system forcibly terminates the corresponding Extension process. <!--Del-->Privileged system applications can request the WORK_SCHEDULER resource through the energy efficiency resource API to extend the duration of a single callback to 20 minutes in the charging state and 10 minutes in the non-charging state.<!--DelEnd-->
 
-- **Scheduling delay**: The system schedules deferred tasks in a unified manner based on the memory, power consumption, device temperature, and user habits. For example, when the system memory resources are insufficient or the temperature reaches a certain level, the system delays task scheduling.
+- **Scheduling delay**: The system schedules deferred tasks in a unified manner based on the memory, power consumption, device temperature, and user usage habits. For example, when the system memory resources are insufficient or the temperature reaches a certain level, the system defers task scheduling.
 
 - For details about the restrictions on calling [WorkSchedulerExtensionAbility](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md) APIs, see [Constraints](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md#constraints).
 
@@ -77,9 +78,9 @@ The table below lists the APIs used for developing deferred task scheduling call
 
 The development of deferred task scheduling consists of two steps: implementing the deferred task scheduling capability and implementing deferred task scheduling.
 
-1. **Implementing the deferred task scheduling capability**: Implement the callbacks for starting and stopping the WorkSchedulerExtensionAbility.
+1. **Implementing the deferred task scheduling capability**: Implement the callback APIs for starting and stopping the WorkSchedulerExtensionAbility.
 
-2. **Implementing deferred task scheduling**: Call the **WorkScheduler** APIs to start and stop delayed tasks.
+2. **Implementing deferred task scheduling**: Call the deferred task APIs to request and cancel deferred tasks.
 
 ### Implementing Callbacks for Work Scheduler
 
@@ -96,7 +97,7 @@ The development of deferred task scheduling consists of two steps: implementing 
    ```
 
 3. Implement the lifecycle callbacks for the WorkSchedulerExtensionAbility.
-   <!-- @[workSchedulerExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) --> 
+   <!-- @[workSchedulerExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) -->
    
    ``` TypeScript
    export default class WorkSchedulerAbility extends WorkSchedulerExtensionAbility {
@@ -104,8 +105,6 @@ The development of deferred task scheduling consists of two steps: implementing 
      onWorkStart(workInfo: workScheduler.WorkInfo) {
        // ...
        console.info(`onWorkStart, workInfo = ${JSON.stringify(workInfo)}`);
-       // Print the parameter, for example, key1, in parameters.
-       console.info(`work info parameters: ${JSON.parse(workInfo.parameters?.toString()).key1}`);
      }
    
      // Callback invoked when the deferred task ends. This callback is triggered when the deferred task times out for 2 minutes or the stopWork API is called to cancel the task.
@@ -199,9 +198,9 @@ Check whether the **onWorkStart** and **onWorkStop** methods of WorkSchedulerExt
    
    > **NOTE**
    > 
-   > - `-s 1904`: sends a command to the WorkScheduler system service (1904 is the service ID).
-   > - `-a`: carries additional parameters, which must be enclosed in quotation marks.
-   > - `-t`: specifies the target application package name and **ExtensionAbility** name. The example values `com.example.application` and `MyWorkSchedulerExtensionAbility` need to be replaced with actual ones.
+   > - `-s 1904`: Sends a command to the WorkScheduler system service (1904 is the service ID).
+   > - `-a`: Carries additional parameters, which must be enclosed in quotation marks.
+   > - `-t`: Specifies the target application bundle name and ExtensionAbility name. Replace `com.example.application` and `MyWorkSchedulerExtensionAbility` in the example with actual values.
    
    ```ts
    $ hidumper -s 1904 -a '-t com.example.application MyWorkSchedulerExtensionAbility'
@@ -216,7 +215,4 @@ Check whether the **onWorkStart** and **onWorkStop** methods of WorkSchedulerExt
 
 The following sample is provided to help you better understand how to develop deferred task scheduling:
 
-- [Delayed Task Scheduling (ArkTS, API version 9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/BackGroundTasksKit/WorkScheduler)
-
-
-<!--no_check-->
+- [Delayed Task Scheduling (ArkTS, API Version 9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/BackGroundTasksKit/WorkScheduler)

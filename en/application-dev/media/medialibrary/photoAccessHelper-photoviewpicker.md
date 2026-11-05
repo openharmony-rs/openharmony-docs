@@ -5,6 +5,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=dac9741c9213e2b47019472271436524bc89ad3c translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 When a user needs to share files such as images and videos, use **Picker** to start Gallery for the user to select the files to share. No permission is required when Picker is used. Currently, a UIAbility is used to start Gallery with the window component. The procedure is as follows:
 
@@ -19,7 +20,7 @@ When a user needs to share files such as images and videos, use **Picker** to st
    import { photoAccessHelper } from '@kit.MediaLibraryKit';
    ```
 
-2. Create a PhotoSelectOptions instance.
+2. Create a PhotoSelectOptions instance for image-video files.
 
    <!-- @[PickerMediaLibrary_createOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/pages/Index.ets) -->
    
@@ -29,7 +30,7 @@ When a user needs to share files such as images and videos, use **Picker** to st
 
 3. Set the type and maximum number of media files to select.
 
-The following uses images as an example. For details about the media file types, see [PhotoViewMIMETypes](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photoviewmimetypes).
+   The following example selects images. For media file types, see [PhotoViewMIMETypes](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photoviewmimetypes).
 
    <!-- @[PickerMediaLibrary_configOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/pages/Index.ets) -->
    
@@ -66,7 +67,7 @@ The following uses images as an example. For details about the media file types,
 
    You can also [obtain an image or video based on the URI](#obtaining-an-image-or-video-by-uri).
 
-   If metadata needs to be obtained, you can use the [@ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md) and [@ohos.file.fileuri](../../reference/apis-core-file-kit/js-apis-file-fileuri.md) APIs to obtain file attribute information, such as the file name, size, access time, modification time, and path, based on the URI.
+   If you need to obtain metadata, you can use [@ohos.file.fs (File Management)](../../reference/apis-core-file-kit/js-apis-file-fs.md) and [File URI](../../reference/apis-core-file-kit/js-apis-file-fileuri.md) to get some file attribute information based on the URI, such as file size, access time, modification time, file name, and file path.
 
 ## Reading File Data by URI
 
@@ -107,7 +108,7 @@ The media library allows **Picker** to select a [media file URI](../../file-mana
 
 1. Define a media asset handler called [MediaAssetDataHandler](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetDataHandler.md). The system calls back to the application with **onDataPrepared** when the asset is ready.
 
-   <!-- @[PickerMediaLibrary_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) -->
+   <!-- @[PickerMediaLibrary_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) --> 
    
    ``` TypeScript
    export class MediaAssetDataHandler implements photoAccessHelper.MediaAssetDataHandler<ArrayBuffer> {
@@ -118,12 +119,12 @@ The media library allows **Picker** to select a [media file URI](../../file-mana
      }
    
      // Use the arrow function to ensure that the this reference is not lost.
-     onDataPrepared = (data: ArrayBuffer) => {
+     onDataPrepared = (data: ArrayBuffer, map?: Map<string, string>) => {
        if (data === undefined) {
          console.error('Error occurred when preparing data');
          return;
        }
-       console.info('on image data prepared');
+       console.info('on image data prepared, photo quality is ' + map?.get('quality'));
        // Now this always points to the MediaAssetDataHandler instance.
        if (this.callback) {
          this.callback(data);
@@ -137,11 +138,12 @@ The media library allows **Picker** to select a [media file URI](../../file-mana
    > **NOTE**
    > To protect user privacy, sensitive EXIF metadata, including geographical location and shooting parameters, is automatically anonymized in media files. To retrieve the original, non-anonymized EXIF information, your application must [request the permission](photoAccessHelper-preparation.md#requesting-permissions) ohos.permission.MEDIA_LOCATION from the **PhotoAccessHelper** module.
 
-   <!-- @[PickerMediaLibrary_getMediaResource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) -->
+   <!-- @[PickerMediaLibrary_getMediaResource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) --> 
    
    ``` TypeScript
    static async getMediaResourceByUri(uri: string, context: common.Context, callback?: MediaDataHandlerCallback)
    : Promise<void> {
+     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | null = null;
      try {
        // Create a PhotoAccessHelper instance.
        const phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
@@ -157,8 +159,7 @@ The media library allows **Picker** to select a [media file URI](../../file-mana
        };
    
        // Query assets.
-       const fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
-         await phAccessHelper.getAssets(fetchOptions);
+       fetchResult = await phAccessHelper.getAssets(fetchOptions);
          
        const photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
        if (photoAsset) {
@@ -180,10 +181,13 @@ The media library allows **Picker** to select a [media file URI](../../file-mana
          console.error('No asset found for URI: ' + uri);
        }
          
-       // Close the query result.
-       fetchResult.close();
      } catch (err) {
        console.error('getMediaResourceByUri failed with err: ' + err);
+     } finally {
+       // Close the query result.
+       if (fetchResult !== null) {
+         fetchResult.close();
+       }
      }
    }
    ```

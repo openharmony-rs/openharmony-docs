@@ -275,7 +275,7 @@
     - [Inspecting Page Layouts](arkts-inspector-overview.md)
     - [Media Query (@ohos.mediaquery)](arkts-layout-development-media-query.md)
     - Using Embedded Components<!--arkts-ui-cross-process-->
-      - [Atomic Service Full Screen Launch Component (FullScreenLaunchComponent)](arkts-FullScreenComponent.md)
+      - [Full-Screen Launch of Atomic Services (FullScreenLaunchComponent)](arkts-FullScreenComponent.md)
       - [In-Application Embedded Component (EmbeddedComponent)](arkts-embedded-components.md)
     <!--Del-->
     - [Cross-Process Application Capability Extension (UIExtension, for System Applications Only)](arkts-ui-extension-components-sys.md)
@@ -415,7 +415,7 @@
     - [FAQs About Dynamic Attribute Setting](arkts-attribute-modifier-faq.md)
     - [FAQs About Imperative Nodes](arkts-arkui-frameNode-faq.md)
     - [FAQs About UI Parallelization](multi-thread-ui-build-faq.md)<!--RP6--><!--RP6End-->
-    - [FAQs About Immersive Light Sense](arkts-immersive-light-sense-faq.md)
+    - [FAQs About Immersive Lighting](arkts-immersive-light-sense-faq.md)
     
 - [Window Manager](../windowmanager/Readme-EN.md)<!--window-manager-->
 - [Display Management](../displaymanager/Readme-EN.md)<!--display-manager-->

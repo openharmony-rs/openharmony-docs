@@ -7714,20 +7714,6 @@
 
 **起始版本**：26.0.1
 
-## ohos.permission.vehicle.WRITE_HARDWARE_CONFIG
-
-允许应用写入车辆硬件信息。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**是否支持证书授权**：true
-
-**支持设备**：Car
-
-**起始版本**：26.0.1
-
 ## ohos.permission.vehicle.READ_CAR_CDC_CONFIG
 
 允许应用读取车辆与车机配置。
@@ -8860,7 +8846,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.0.0
+**起始版本**：26.0.1
 
 ## ohos.permission.MANAGE_CLONE_BUNDLE_PREFERENCES
 
@@ -8904,6 +8890,20 @@
 
 **起始版本**：26.0.1
 
+## ohos.permission.MOUNT_BUNDLE_INFO
+ 
+允许应用将指定文件目录挂载到SceneBoard应用沙箱目录。
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**是否支持证书授权**：true
+ 
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car | LiteWearable
+ 
+**起始版本**：26.0.1
+ 
 ## ohos.permission.ACCESS_ASSOCIATE_ASSISTANT
 
 允许应用接入互联互通助手服务。
@@ -8995,6 +8995,20 @@
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0
+
+## ohos.permission.CAMERA_DRIVER_MONITOR
+
+允许应用可以访问驾驶员监控相机。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
 
 ## ohos.permission.ACCESS_MEDIALIB_SANDBOX
 
@@ -9831,3 +9845,59 @@
 **支持设备**：PC/2in1
 
 **起始版本**：26.1.0
+
+## ohos.permission.vehicle.AALE_LIGHTRES_SERVICE
+
+允许应用绑定灯效资源管理服务（LightResManagerService）。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.AALE_AMBIENT_SERVICE
+
+允许应用绑定车载氛围灯引擎服务（AaleService）。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.PROMPT_INJECT_DETECTION
+
+允许应用检测提示词（prompt）间接注入攻击。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.0.1
+
+## ohos.permission.MOUNT_SANDBOX_SETTINGSDATA
+
+允许应用将指定文件目录挂载到settingsData应用沙箱目录。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
+**起始版本**：26.0.1

@@ -113,7 +113,7 @@ ArkWeb_WebMessageType (*getType)(ArkWeb_WebMessagePtr webMessage)
 
 | 类型 | 说明    |
 |----|-------|
-| [ArkWeb_WebMessageType](capi-arkweb-type-h.md#arkweb_webmessagetype)   | 返回消息的类型枚举值，如ARKWEB_WEB_MESSAGE_TYPE_STRING或ARKWEB_WEB_MESSAGE_TYPE_ARRAY_BUFFER等。   |
+| [ArkWeb_WebMessageType](capi-arkweb-type-h.md#arkweb_webmessagetype)   | 返回消息的类型枚举值。   |
 
 ### setData()
 

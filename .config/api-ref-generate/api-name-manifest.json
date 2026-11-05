@@ -1,0 +1,334 @@
+[
+  {
+    "_comment": "专供 API-REF 生成工具使用。该文件由领域方维护，工具仅负责读取。文件中声明的接口均为同名接口，在文档生成时会产生名称冲突，需通过此配置对这批同名接口进行强制命名以消除歧义。该文件包含 5 个字段。字段 'kit' 标识接口所属的Kit名称；字段 'overrideLevel' 指定替换粒度，取值为 'file'（文件级）或 'api'（接口级）；字段 'file' 指明接口定义所在的.d.ts文件路径；字段 'api' 指明接口名称。当 overrideLevel 为 'file' 时，api 字段置空，表示不涉及具体API名称；当 overrideLevel 为 'api' 时，file 字段指向接口所在d.ts文件，api 字段指向接口名称；字段 'mdNamePrefix' 指定强制命名后生成的目标文件名。"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/@ohos.ability.wantConstant.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-wantconstant-depr-*.md"
+  },
+  {
+    "kit": "TestKit",
+    "overrideLevel": "file",
+    "file": "api/@ohos.application.abilityDelegatorRegistry.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-test-abilitydelegatorregistry-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/@ohos.application.abilityManager.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-abilitymanager-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/@ohos.application.appManager.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-appmanager-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/@ohos.application.Configuration.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-configuration-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/@ohos.application.ConfigurationConstant.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-configurationconstant-depr-*.md"
+  },
+  {
+    "kit": "FormKit",
+    "overrideLevel": "file",
+    "file": "api/@ohos.application.formBindingData.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-form-formbindingdata-depr-*.md"
+  },
+  {
+    "kit": "FormKit",
+    "overrideLevel": "file",
+    "file": "api/@ohos.application.formHost.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-form-formhost-depr-*.md"
+  },
+  {
+    "kit": "FormKit",
+    "overrideLevel": "file",
+    "file": "api/@ohos.application.formInfo.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-form-forminfo-depr-*.md"
+  },
+  {
+    "kit": "FormKit",
+    "overrideLevel": "file",
+    "file": "api/@ohos.application.formProvider.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-form-formprovider-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/@ohos.application.missionManager.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-missionmanager-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/@ohos.application.Want.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-want-depr-*.md"
+  },
+  {
+    "kit": "BackgroundTasksKit",
+    "overrideLevel": "file",
+    "file": "api/@ohos.backgroundTaskManager.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-backgroundtasks-backgroundtaskmanager-depr-*.md"
+  },
+  {
+    "kit": "BasicServicesKit",
+    "overrideLevel": "file",
+    "file": "api/@ohos.commonEvent.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-basicservice-commonevent-depr-*.md"
+  },
+  {
+    "kit": "CoreFileKit",
+    "overrideLevel": "file",
+    "file": "api/@ohos.document.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-corefile-document-depr-*.md"
+  },
+  {
+    "kit": "CoreFileKit",
+    "overrideLevel": "file",
+    "file": "api/@ohos.fileio.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-corefile-fileio-depr-*.md"
+  },
+  {
+    "kit": "PerformanceAnalysisKit",
+    "overrideLevel": "file",
+    "file": "api/@ohos.hiAppEvent.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-performanceanalysis-hiappevent-depr-*.md"
+  },
+  {
+    "kit": "CoreFileKit",
+    "overrideLevel": "file",
+    "file": "api/@ohos.statfs.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-corefile-statfs-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/@ohos.wantAgent.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-wantagent-depr-*.md"
+  },
+  {
+    "kit": "ArkData",
+    "overrideLevel": "file",
+    "file": "api/data/rdb/resultSet.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-arkdata-resultset-depr-*.md"
+  },
+  {
+    "kit": "CoreFileKit",
+    "overrideLevel": "file",
+    "file": "api/@system.file.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-corefile-file-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/@ohos.ability.dataUriUtils.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-datauriutils-depr-*.md"
+  },
+  {
+    "kit": "NotificationKit",
+    "overrideLevel": "file",
+    "file": "api/@ohos.notification.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-notification-notification-depr-*.md"
+  },
+  {
+    "kit": "NetworkKit",
+    "overrideLevel": "file",
+    "file": "api/@system.fetch.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-network-fetch-depr-*.md"
+  },
+  {
+    "kit": "NetworkKit",
+    "overrideLevel": "file",
+    "file": "api/@system.network.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-network-network-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/app/appVersionInfo.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-appversioninfo-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/app/context.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-context-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/app/processInfo.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-processinfo-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/PermissionDef.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-permissiondef-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/abilityInfo.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-abilityinfo-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/applicationInfo.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-applicationinfo-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/bundleInfo.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-bundleinfo-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/bundleInstaller.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-bundleinstaller-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/bundleStatusCallback.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-bundlestatuscallback-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/customizeData.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-customizedata-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/elementName.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-elementname-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/hapModuleInfo.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-hapmoduleinfo-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/launcherAbilityInfo.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-launcherabilityinfo-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/moduleInfo.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-moduleinfo-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/remoteAbilityInfo.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-remoteabilityinfo-depr-*.md"
+  },
+  {
+    "kit": "AbilityKit",
+    "overrideLevel": "file",
+    "file": "api/bundle/shortcutInfo.d.ts",
+    "api": "",
+    "mdNamePrefix": "arkts-ability-shortcutinfo-depr-*.md"
+  },
+  {
+    "kit": "ArkUI",
+    "overrideLevel": "api",
+    "file": "api/@ohos.arkui.advanced.ComposeListItemV2.d.ets",
+    "api": "declare type OnActionCallback = () => void;",
+    "mdNamePrefix": "arkts-arkui-composelistitemv2-onactioncallback-t.md"
+  },
+  {
+    "kit": "ArkUI",
+    "overrideLevel": "api",
+    "file": "api/@ohos.arkui.advanced.ComposeTitleBarV2.d.ets",
+    "api": "declare type OnActionCallback = () => void;",
+    "mdNamePrefix": "arkts-arkui-composetitlebarv2-onactioncallback-t.md"
+  },
+  {
+    "kit": "ArkUI",
+    "overrideLevel": "api",
+    "file": "api/@ohos.arkui.advanced.EditableTitleBarV2.d.ets",
+    "api": "declare type OnActionCallback = () => void;",
+    "mdNamePrefix": "arkts-arkui-editabletitlebarv2-onactioncallback-t.md"
+  },
+  {
+    "kit": "ArkUI",
+    "overrideLevel": "api",
+    "file": "api/@internal/component/ets/custom_dialog_controller.d.ts",
+    "api": "declare interface DismissDialogAction",
+    "mdNamePrefix": "arkts-arkui-customdialog-comp-dismissdialogaction-i.md"
+  },
+  {
+    "kit": "ArkUI",
+    "overrideLevel": "api",
+    "file": "api/@internal/component/ets/action_sheet.d.ts",
+    "api": "declare interface DismissDialogAction",
+    "mdNamePrefix": "arkts-arkui-actionsheet-comp-dismissdialogaction-i.md"
+  },
+  {
+    "kit": "ArkUI",
+    "overrideLevel": "api",
+    "file": "api/@internal/component/ets/alert_dialog.d.ts",
+    "api": "declare interface DismissDialogAction",
+    "mdNamePrefix": "arkts-arkui-alertdialog-comp-dismissdialogaction-i.md"
+  }
+]

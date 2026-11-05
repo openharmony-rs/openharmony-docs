@@ -5,10 +5,11 @@
 <!--Designer: @ghxbob-->
 <!--Tester: @weitiantian-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=c2e9b54f01e8d3ed1b4f2c04564da915879d953c translatedAt=2026-11-03T04:01:27.614Z pushedAt=2026-11-03T10:00:03.664Z nl=1 -->
 
-The **sim** module provides basic SIM card management functions. You can obtain the name, number, ISO country code, home PLMN ID, service provider name, SIM card status, type, installation status, activation status, and lock status of the SIM card in the specified slot. Besides, you can set the name, number, and lock status of the SIM card, activate or deactivate the SIM card, and change the PIN or unlock the PIN or PUK of the SIM card.
+The SIM card management module provides basic SIM card management capabilities, including obtaining the name, number, ISO country code, home PLMN, service provider name, SIM card state, card type, whether a card is inserted, whether it is activated, and the lock state of the SIM card in a specified SIM slot. The APIs provided by this module can also be used to set the displayed name, number, and lock state of the SIM card in a specified SIM slot, activate and disable the SIM card in a specified SIM slot, change the PIN, and unlock the password of the SIM card in a specified SIM slot and the unlock password of the SIM card password.
 
->**NOTE**
+>**NOTE** 
 >
 >The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.telephony.sim (SIM Management)](js-apis-sim.md).
@@ -23,7 +24,7 @@ import { sim } from '@kit.TelephonyKit';
 
 isOperatorSimCard\(slotId: number, operator: OperatorSimCard\): boolean
 
-Checks whether the SIM card in the specified slot is provided by a specified carrier.
+Obtains whether the SIM card in a specified SIM slot is a card of a specified carrier. For example, a carrier-specific app can use this API at startup to determine whether the current SIM card belongs to its own carrier, so as to decide whether to display carrier-specific services or functions.
 
 **System API**: This is a system API.
 
@@ -34,7 +35,7 @@ Checks whether the SIM card in the specified slot is provided by a specified car
 | Name | Type                                    | Mandatory| Description                               |
 | ------ | --------------------------------------- | ---- | ---------------------------------  |
 | slotId | number                                  | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
-| operator | [OperatorSimCard](#operatorsimcard11) | Yes  | Carrier name. (Currently, only SIM cards of China Telecom are supported.)|
+| operator | [OperatorSimCard](#operatorsimcard11) | Yes | Name of the carrier SIM card. Currently only China Telecom SIM cards are supported. |
 
 **Return value**
 
@@ -67,7 +68,7 @@ try {
     let isOperatorSimCard: boolean = sim.isOperatorSimCard(slotId, operator);
     console.info(`is operator sim card: ` + isOperatorSimCard);
 } catch (err) {
-    console.error("isOperatorSimCard err: " + JSON.stringify(err));
+    console.error('isOperatorSimCard err: ' + JSON.stringify(err));
 }
 ```
 
@@ -79,7 +80,7 @@ Sets the default slot ID of the SIM card that provides voice services. This API 
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -126,7 +127,7 @@ Sets the default slot ID of the SIM card that provides voice services. This API 
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -179,7 +180,7 @@ Sets a display name for the SIM card in the specified slot. This API uses an asy
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -212,7 +213,7 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-let name: string = "ShowName";
+let name: string = 'ShowName';
 sim.setShowName(0, name, (err: BusinessError) => {
     console.info(`callback: err->${JSON.stringify(err)}`);
 });
@@ -226,7 +227,7 @@ Sets a display name for the SIM card in the specified slot. This API uses a prom
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -280,7 +281,7 @@ Obtains the name of the SIM card in the specified slot. This API uses an asynchr
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -326,7 +327,7 @@ Obtains the name of the SIM card in the specified slot. This API uses a promise 
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -378,7 +379,7 @@ Sets a display number for the SIM card in the specified slot. This API uses an a
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -387,7 +388,7 @@ Sets a display number for the SIM card in the specified slot. This API uses an a
 | Name  | Type                     | Mandatory| Description                                  |
 | -------- | ------------------------- | ---- | -------------------------------------- |
 | slotId   | number                    | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
-| teleNumber   | string                    | Yes  | SIM card number.                             |
+| teleNumber   | string                    | Yes   | SIM card number. The value can be a digit number with a plus sign (+) prefix.                              |
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.                            |
 
 **Error codes**
@@ -426,7 +427,7 @@ Sets a display number for the SIM card in the specified slot. This API uses a pr
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -480,7 +481,7 @@ Obtains the display number of the SIM card in the specified slot. This API uses 
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -526,7 +527,7 @@ Obtains the display number of the SIM card in the specified slot. This API uses 
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -578,7 +579,7 @@ Activates the SIM card in the specified slot. This API uses an asynchronous call
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -624,7 +625,7 @@ Activates the SIM card in the specified slot. This API uses a promise to return 
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -676,7 +677,7 @@ Disables the SIM card in the specified slot. This API uses an asynchronous callb
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -722,7 +723,7 @@ Disables the SIM card in the specified slot. This API uses a promise to return t
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -774,7 +775,7 @@ Sets the lock status of the SIM card in the specified slot. This API uses an asy
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -810,7 +811,7 @@ import { sim } from '@kit.TelephonyKit';
 
 let lockInfo: sim.LockInfo = {
     lockType: sim.LockType.PIN_LOCK,
-    password: "1234",
+    password: '1234',
     state: sim.LockState.LOCK_OFF
 };
 sim.setLockState(0, lockInfo, (err: BusinessError, data: sim.LockStatusResponse) => {
@@ -827,7 +828,7 @@ Sets the lock status of the SIM card in the specified slot. This API uses a prom
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -886,7 +887,7 @@ Obtains the lock status of the SIM card in the specified slot. This API uses an 
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -895,8 +896,8 @@ Obtains the lock status of the SIM card in the specified slot. This API uses an 
 | Name  | Type                                     | Mandatory| Description                                   |
 | -------- | ----------------------------------------- | ---- | --------------------------------------- |
 | slotId   | number                                    | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2 |
-| callback | AsyncCallback\<[LockState](#lockstate8)\> | Yes  | Callback used to return the result.                             |
-| options  | [LockType](#locktype8)                    | Yes  | Lock type.<br>- **1**: PIN lock<br>- **2**: PIN 2 lock|
+| callback | AsyncCallback\<[LockState](#lockstate8)\> | Yes | Callback used to return the lock state of the SIM card in the specified SIM slot.<br/>- **0**: **LOCK_OFF**, indicating the lock is disabled.<br/>- **1**: **LOCK_ON**, indicating the lock is enabled. |
+| lockType  | [LockType](#locktype8)                    | Yes | Lock type.<br/>- **1**: PIN lock<br/>- **2**: PIN 2 lock |
 
 **Error codes**
 
@@ -934,7 +935,7 @@ Obtains the lock status of the SIM card in the specified slot. This API uses a p
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -943,13 +944,13 @@ Obtains the lock status of the SIM card in the specified slot. This API uses a p
 | Name | Type                  | Mandatory| Description                                   |
 | ------- | ---------------------- | ---- | --------------------------------------- |
 | slotId  | number                 | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2 |
-| options | [LockType](#locktype8) | Yes  | Lock type.<br>- **1**: PIN lock<br>- **2**: PIN 2 lock|
+| lockType | [LockType](#locktype8) | Yes | Lock type.<br/>- **1**: PIN lock<br/>- **2**: PIN 2 lock |
 
 **Return value**
 
 | Type                              | Description                                        |
 | ---------------------------------- | -------------------------------------------- |
-| Promise<[LockState](#lockstate8)\> | Promise used to return the result.|
+| Promise<[LockState](#lockstate8)\> | Promise used to return the lock state of the SIM card in the specified SIM slot.<br/>- **0**: **LOCK_OFF**, indicating the lock is disabled.<br/>- **1**: **LOCK_ON**, indicating the lock is enabled. |
 
 **Error codes**
 
@@ -988,7 +989,7 @@ Changes the PIN of the SIM card in the specified slot. This API uses an asynchro
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -998,7 +999,7 @@ Changes the PIN of the SIM card in the specified slot. This API uses an asynchro
 | -------- | ----------------------------------------------------------- | ---- | -------------------------------------- |
 | slotId   | number                                                      | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
 | callback | AsyncCallback\<[LockStatusResponse](#lockstatusresponse7)\> | Yes  | Callback used to return the result.                            |
-| newPin   | string                                                      | Yes  | New PIN.                              |
+| newPin   | string                                                      | Yes   | New password. The value contains 4 to 8 digits.                               |
 | oldPin   | string                                                      | Yes  | Old PIN.                              |
 
 **Error codes**
@@ -1023,7 +1024,7 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-sim.alterPin(0, "1234", "0000", (err: BusinessError, data: sim.LockStatusResponse) => {
+sim.alterPin(0, '1234', '0000', (err: BusinessError, data: sim.LockStatusResponse) => {
     console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
@@ -1037,7 +1038,7 @@ Changes the PIN of the SIM card in the specified slot. This API uses a promise t
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1092,7 +1093,7 @@ Changes PIN 2 of the SIM card in the specified slot. This API uses an asynchrono
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1141,7 +1142,7 @@ Changes PIN 2 of the SIM card in the specified slot. This API uses a promise to 
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1196,7 +1197,7 @@ Unlocks the PIN of the SIM card in the specified slot. This API uses an asynchro
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1205,7 +1206,7 @@ Unlocks the PIN of the SIM card in the specified slot. This API uses an asynchro
 | Name  | Type                                                        | Mandatory| Description                                  |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | slotId   | number                                                       | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
-| pin      | string                                                       | Yes  | PIN of the SIM card.                           |
+| pin      | string                                                       | Yes   | Unlock password of the SIM card password. The value contains 8 digits.                            |
 | callback | AsyncCallback&lt;[LockStatusResponse](#lockstatusresponse7)> | Yes  | Callback used to return the result.                            |
 
 **Error codes**
@@ -1245,7 +1246,7 @@ Unlocks the PIN of the SIM card in the specified slot. This API uses a promise t
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1296,11 +1297,11 @@ sim.unlockPin(0, pin).then((data: sim.LockStatusResponse) => {
 
 unlockPuk\(slotId: number, newPin: string, puk: string, callback: AsyncCallback\<LockStatusResponse\>\): void
 
-Unlocks the PUK of the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
+Uses the PUK unlock code to remove the locked state of the PIN of the SIM card in a specified SIM slot. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1310,7 +1311,7 @@ Unlocks the PUK of the SIM card in the specified slot. This API uses an asynchro
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | slotId   | number                                                       | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
 | newPin   | string                                                       | Yes  | New PIN.                       |
-| puk      | string                                                       | Yes  | PUK of the SIM card.                   |
+| puk      | string                                                       | Yes   | Unlock password of the SIM card password. The value range is 8 digits.                    |
 | callback | AsyncCallback&lt;[LockStatusResponse](#lockstatusresponse7)&gt; | Yes  | Callback used to return the result.                            |
 
 **Error codes**
@@ -1351,7 +1352,7 @@ Unlocks the PUK of the SIM card in the specified slot. This API uses a promise t
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1404,11 +1405,11 @@ sim.unlockPuk(0, newPin, puk).then((data: sim.LockStatusResponse) => {
 
 unlockPin2\(slotId: number, pin2: string, callback: AsyncCallback\<LockStatusResponse\>\): void
 
-Unlocks the PIN of the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
+Unlocks the PIN2 of the SIM card in a specified SIM slot. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1457,7 +1458,7 @@ Unlocks the PIN of the SIM card in the specified slot. This API uses a promise t
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1508,11 +1509,11 @@ sim.unlockPin2(0, pin2).then((data: sim.LockStatusResponse) => {
 
 unlockPuk2\(slotId: number, newPin2: string, puk2: string, callback: AsyncCallback\<LockStatusResponse\>\): void
 
-Unlocks the PUK of the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
+Uses the PUK2 unlock code to remove the locked state of the PIN2 of the SIM card in a specified SIM slot. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1563,7 +1564,7 @@ Unlocks the PUK of the SIM card in the specified slot. This API uses a promise t
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1620,7 +1621,7 @@ Obtains the ICCID of the SIM card in the specified slot. This API uses an asynch
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1666,7 +1667,7 @@ Obtains the ICCID of the SIM card in the specified slot. This API uses a promise
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1718,7 +1719,7 @@ Obtains the voice mailbox alpha identifier of the SIM card in the specified slot
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1764,7 +1765,7 @@ Obtains the voice mailbox alpha identifier of the SIM card in the specified slot
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1816,7 +1817,7 @@ Obtains the voice mailbox number of the SIM card in the specified slot. This API
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1862,7 +1863,7 @@ Obtains the voice mailbox number of the SIM card in the specified slot. This API
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1911,11 +1912,11 @@ sim.getVoiceMailNumber(0).then((data: string) => {
 
 setVoiceMailInfo\(slotId: number, mailName: string, mailNumber: string, callback: AsyncCallback\<void\>\): void
 
-Sets voice mailbox information for the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
+Sets the voicemail information. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1925,7 +1926,7 @@ Sets voice mailbox information for the SIM card in the specified slot. This API 
 | ---------- | -------------------- | ---- | -------------------------------------- |
 | slotId     | number               | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
 | mailName   | string               | Yes  | Voice mailbox name.                              |
-| mailNumber | string               | Yes  | Voice mailbox number.                             |
+| mailNumber | string               | Yes   | Voicemail number. The value can be a digit number with a plus sign (+) prefix.                              |
 | callback   | AsyncCallback<void\> | Yes  | Callback used to return the result.                            |
 
 **Error codes**
@@ -1950,7 +1951,7 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-sim.setVoiceMailInfo(0, "mail", "xxx@xxx.com", (err: BusinessError) => {
+sim.setVoiceMailInfo(0, 'mail', 'xxx@xxx.com', (err: BusinessError) => {
     console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
@@ -1960,11 +1961,11 @@ sim.setVoiceMailInfo(0, "mail", "xxx@xxx.com", (err: BusinessError) => {
 
 setVoiceMailInfo\(slotId: number, mailName: string, mailNumber: string\): Promise\<void\>
 
-Sets voice mailbox information for the SIM card in the specified slot. This API uses a promise to return the result.
+Sets the voicemail information. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -2019,7 +2020,7 @@ Obtains the MSISDN of the SIM card in the specified slot. This API uses an async
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_PHONE_NUMBERS
+**Required permissions**: ohos.permission.GET_PHONE_NUMBERS
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -2065,7 +2066,7 @@ Obtains the MSISDN of the SIM card in the specified slot. This API uses a promis
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_PHONE_NUMBERS
+**Required permissions**: ohos.permission.GET_PHONE_NUMBERS
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -2117,7 +2118,7 @@ Obtains the group identifier level 1 (GID1) of the SIM card in the specified slo
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -2163,7 +2164,7 @@ Obtains the GID1 of the SIM card in the specified slot. This API uses a promise 
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -2215,7 +2216,7 @@ Obtains the international mobile subscriber identity (IMSI) of the SIM card in t
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -2261,7 +2262,7 @@ Obtains the IMSI of the SIM card in the specified slot. This API uses a promise 
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -2313,7 +2314,7 @@ Obtains the carrier configuration of the SIM card in the specified slot. This AP
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -2358,7 +2359,7 @@ Obtains the carrier configuration of the SIM card in the specified slot. This AP
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -2407,14 +2408,14 @@ queryIccDiallingNumbers\(slotId: number, type: ContactType, callback: AsyncCallb
 
 Queries contact numbers of the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
 
->**NOTE**
+>**NOTE** 
 >
 >A cache mechanism is available for SIM card contacts. When a contact is added, deleted, or modified, a SIM card contact cache is maintained based on the corresponding card slot ID and contact type. Therefore, when calling **sim.queryIccDiallingNumbers** to query contact numbers, you must pass the card slot ID and contact type to generate a SIM card contact cache. If no cache is generated, the attempt to call the **sim.addIccDiallingNumbers**, **sim.delIccDiallingNumbers**, or **sim.updateIccDiallingNumbers** API will fail.
 >
 
 **System API**: This is a system API.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -2460,14 +2461,14 @@ queryIccDiallingNumbers\(slotId: number, type: ContactType\): Promise\<Array\<Di
 
 Queries contact numbers of the SIM card in the specified slot. This API uses a promise to return the result.
 
->**NOTE**
+>**NOTE** 
 >
 >A cache mechanism is available for SIM card contacts. When a contact is added, deleted, or modified, a SIM card contact cache is maintained based on the corresponding card slot ID and contact type. Therefore, when calling **sim.queryIccDiallingNumbers** to query contact numbers, you must pass the card slot ID and contact type to generate a SIM card contact cache. If no cache is generated, the attempt to call the **sim.addIccDiallingNumbers**, **sim.delIccDiallingNumbers**, or **sim.updateIccDiallingNumbers** API will fail.
 >
 
 **System API**: This is a system API.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -2519,14 +2520,14 @@ addIccDiallingNumbers\(slotId: number, type: ContactType, diallingNumbers: Diall
 
 Adds contact numbers to the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
 
->**NOTE**
+>**NOTE** 
 >
 >A cache mechanism is available for SIM card contacts. When a contact is added, deleted, or modified, a SIM card contact cache is maintained based on the corresponding card slot ID and contact type. Therefore, when calling **sim.queryIccDiallingNumbers** to query contact numbers, you must pass the card slot ID and contact type to generate a SIM card contact cache. If no cache is generated, the attempt to call the **sim.addIccDiallingNumbers**, **sim.delIccDiallingNumbers**, or **sim.updateIccDiallingNumbers** API will fail.
 >
 
 **System API**: This is a system API.
 
-**Permission required**: ohos.permission.WRITE_CONTACTS
+**Required permissions**: ohos.permission.WRITE_CONTACTS
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -2578,14 +2579,14 @@ addIccDiallingNumbers\(slotId: number, type: ContactType, diallingNumbers: Diall
 
 Adds contact numbers to the SIM card in the specified slot. This API uses a promise to return the result.
 
->**NOTE**
+>**NOTE** 
 >
 >A cache mechanism is available for SIM card contacts. When a contact is added, deleted, or modified, a SIM card contact cache is maintained based on the corresponding card slot ID and contact type. Therefore, when calling **sim.queryIccDiallingNumbers** to query contact numbers, you must pass the card slot ID and contact type to generate a SIM card contact cache. If no cache is generated, the attempt to call the **sim.addIccDiallingNumbers**, **sim.delIccDiallingNumbers**, or **sim.updateIccDiallingNumbers** API will fail.
 >
 
 **System API**: This is a system API.
 
-**Permission required**: ohos.permission.WRITE_CONTACTS
+**Required permissions**: ohos.permission.WRITE_CONTACTS
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -2642,14 +2643,14 @@ delIccDiallingNumbers\(slotId: number, type: ContactType, diallingNumbers: Diall
 
 Deletes contact numbers from the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
 
->**NOTE**
+>**NOTE** 
 >
 >A cache mechanism is available for SIM card contacts. When a contact is added, deleted, or modified, a SIM card contact cache is maintained based on the corresponding card slot ID and contact type. Therefore, when calling **sim.queryIccDiallingNumbers** to query contact numbers, you must pass the card slot ID and contact type to generate a SIM card contact cache. If no cache is generated, the attempt to call the **sim.addIccDiallingNumbers**, **sim.delIccDiallingNumbers**, or **sim.updateIccDiallingNumbers** API will fail.
 >
 
 **System API**: This is a system API.
 
-**Permission required**: ohos.permission.WRITE_CONTACTS
+**Required permissions**: ohos.permission.WRITE_CONTACTS
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -2702,14 +2703,14 @@ delIccDiallingNumbers\(slotId: number, type: ContactType, diallingNumbers: Diall
 
 Deletes contact numbers from the SIM card in the specified slot. This API uses a promise to return the result.
 
->**NOTE**
+>**NOTE** 
 >
 >A cache mechanism is available for SIM card contacts. When a contact is added, deleted, or modified, a SIM card contact cache is maintained based on the corresponding card slot ID and contact type. Therefore, when calling **sim.queryIccDiallingNumbers** to query contact numbers, you must pass the card slot ID and contact type to generate a SIM card contact cache. If no cache is generated, the attempt to call the **sim.addIccDiallingNumbers**, **sim.delIccDiallingNumbers**, or **sim.updateIccDiallingNumbers** API will fail.
 >
 
 **System API**: This is a system API.
 
-**Permission required**: ohos.permission.WRITE_CONTACTS
+**Required permissions**: ohos.permission.WRITE_CONTACTS
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -2766,14 +2767,14 @@ updateIccDiallingNumbers\(slotId: number, type: ContactType, diallingNumbers: Di
 
 Updates contact numbers for the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
 
->**NOTE**
+>**NOTE** 
 >
 >A cache mechanism is available for SIM card contacts. When a contact is added, deleted, or modified, a SIM card contact cache is maintained based on the corresponding card slot ID and contact type. Therefore, when calling **sim.queryIccDiallingNumbers** to query contact numbers, you must pass the card slot ID and contact type to generate a SIM card contact cache. If no cache is generated, the attempt to call the **sim.addIccDiallingNumbers**, **sim.delIccDiallingNumbers**, or **sim.updateIccDiallingNumbers** API will fail.
 >
 
 **System API**: This is a system API.
 
-**Permission required**: ohos.permission.WRITE_CONTACTS
+**Required permissions**: ohos.permission.WRITE_CONTACTS
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -2826,14 +2827,14 @@ updateIccDiallingNumbers\(slotId: number, type: ContactType, diallingNumbers: Di
 
 Updates contact numbers for the SIM card in the specified slot. This API uses a promise to return the result.
 
->**NOTE**
+>**NOTE** 
 >
 >A cache mechanism is available for SIM card contacts. When a contact is added, deleted, or modified, a SIM card contact cache is maintained based on the corresponding card slot ID and contact type. Therefore, when calling **sim.queryIccDiallingNumbers** to query contact numbers, you must pass the card slot ID and contact type to generate a SIM card contact cache. If no cache is generated, the attempt to call the **sim.addIccDiallingNumbers**, **sim.delIccDiallingNumbers**, or **sim.updateIccDiallingNumbers** API will fail.
 >
 
 **System API**: This is a system API.
 
-**Permission required**: ohos.permission.WRITE_CONTACTS
+**Required permissions**: ohos.permission.WRITE_CONTACTS
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -2889,11 +2890,11 @@ sim.updateIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbers
 
 sendEnvelopeCmd\(slotId: number, cmd: string, callback: AsyncCallback\<void\>\): void
 
-Sends an envelope command to the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
+Sends an envelope command to deliver event information (such as menu selection and call control events) to the STK (SIM Tool Kit) application on the SIM card. A typical scenario is when an STK application needs to interact with the SIM card application. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -2902,7 +2903,7 @@ Sends an envelope command to the SIM card in the specified slot. This API uses a
 | Name  | Type                | Mandatory| Description                                  |
 | -------- | -------------------- | ---- | -------------------------------------- |
 | slotId   | number               | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
-| cmd      | string               | Yes  | Envelope command.                                  |
+| cmd      | string               | Yes   | Command. The value is a hexadecimal APDU command string in encoded BER-TLV format .                                   |
 | callback | AsyncCallback<void\> | Yes  | Callback used to return the result.                                    |
 
 **Error codes**
@@ -2940,7 +2941,7 @@ Sends an envelope command to the SIM card in the specified slot. This API uses a
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -2989,11 +2990,11 @@ sim.sendEnvelopeCmd(0, "ls").then(() => {
 
 sendTerminalResponseCmd\(slotId: number, cmd: string, callback: AsyncCallback\<void\>\): void
 
-Sends a terminal response command to the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
+Sends a terminal response command to feed back to the SIM card the terminal's processing result of a proactive command in an STK (SIM Tool Kit) session. A typical scenario is when an STK application needs to reply after processing a command delivered by the SIM card. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -3002,7 +3003,7 @@ Sends a terminal response command to the SIM card in the specified slot. This AP
 | Name  | Type                | Mandatory| Description                                  |
 | -------- | -------------------- | ---- | -------------------------------------- |
 | slotId   | number               | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
-| cmd      | string               | Yes  | Envelope command.                                  |
+| cmd      | string               | Yes   | Terminal response command content. The specific format complies with the 3GPP TS 11.14 specification.                                   |
 | callback | AsyncCallback<void\> | Yes  | Callback used to return the result.                            |
 
 **Error codes**
@@ -3040,7 +3041,7 @@ Sends a terminal response command to the SIM card in the specified slot. This AP
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -3049,7 +3050,7 @@ Sends a terminal response command to the SIM card in the specified slot. This AP
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
 | slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
-| cmd    | string | Yes  | Envelope command.                                  |
+| cmd    | string | Yes   | Content of the terminal response command. The specific format complies with the 3GPP TS 11.14 specification.                                   |
 
 **Return value**
 
@@ -3094,7 +3095,7 @@ Unlocks the SIM card in the specified slot. This API uses an asynchronous callba
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -3146,7 +3147,7 @@ Unlocks the SIM card in the specified slot. This API uses a promise to return th
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -3200,11 +3201,11 @@ sim.unlockSimLock(0, persoLockInfo).then((data: sim.LockStatusResponse) => {
 
 getDsdsMode\(callback: AsyncCallback\<DsdsMode\>\): void
 
-Obtains the Dual Sim Dual Standby (DSDS) mode supported by the device. This API uses an asynchronous callback to return the result.
+Obtains the DSDS (Dual Sim Dual Standby) mode supported by the device, which is used to determine the dual-SIM dual-standby capability level supported by the device. A typical scenario is when a dual-SIM management application adapts dual-SIM calling and data services based on device capabilities. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -3212,7 +3213,7 @@ Obtains the Dual Sim Dual Standby (DSDS) mode supported by the device. This API 
 
 | Name  | Type                       | Mandatory| Description      |
 | -------- | --------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;DsdsMode&gt; | Yes  | Callback used to return the result, which can be:<br>- **0**: DSDS_MODE_V2<br>- **1**: DSDS_MODE_V3<br>- **2**: DSDS_MODE_V5_TDM<br>- **3**: DSDS_MODE_V5_DSDA|
+| callback | AsyncCallback&lt;[DsdsMode](#dsdsmode11)&gt; | Yes | Callback used to return the DSDS mode supported by the device.<br/>- **0**: **DSDS_MODE_V2**<br/>- **1**: **DSDS_MODE_V3**<br/>- **2**: **DSDS_MODE_V5_TDM**<br/>- **3**: **DSDS_MODE_V5_DSDA** |
 
 **Error codes**
 
@@ -3250,7 +3251,7 @@ Obtains the Dual Sim Dual Standby (DSDS) mode supported by the device. This API 
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -3258,7 +3259,7 @@ Obtains the Dual Sim Dual Standby (DSDS) mode supported by the device. This API 
 
 | Type             | Description                                   |
 | ----------------- | --------------------------------------- |
-| Promise\<DsdsMode\> | Promise used to return the result.<br>- **0**: DSDS_MODE_V2<br>- **1**: DSDS_MODE_V3<br>- **2**: DSDS_MODE_V5_TDM<br>- **3**: DSDS_MODE_V5_DSDA|
+| Promise\<[DsdsMode](#dsdsmode11)\> | DSDS mode supported by the device, returned in Promise form.<br/>- **0**: **DSDS_MODE_V2**<br/>- **1**: **DSDS_MODE_V3**<br/>- **2**: **DSDS_MODE_V5_TDM**<br/>- **3**: **DSDS_MODE_V5_DSDA** |
 
 **Error codes**
 
@@ -3291,11 +3292,11 @@ promise.then((data: sim.DsdsMode) => {
 
 getSimAuthentication\(slotId: number, authType: AuthType, authData: string\): Promise\<SimAuthenticationResponse\>
 
-Obtains SIM card authentication information. This API uses a promise to return the result.
+Performs SIM card authentication to complete identity verification through the SIM card (for example, EAP-SIM/EAP-AKA authentication). Typical scenarios include Wi-Fi network access authentication and carrier security services that require SIM card-level verification of user identity. This API uses an asynchronous callback.
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -3305,7 +3306,7 @@ Obtains SIM card authentication information. This API uses a promise to return t
 | -------- | -------------------------------- | ---- | -------------------------------------- |
 | slotId   | number                           | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
 | authType | [AuthType](#authtype14)          | Yes  | Authentication type.                        |
-| authData | string                           | Yes  | Password or other authentication information.                  |
+| authData | string                           | Yes   | Password or other authentication information. The authentication data format is related to the value of authType, and the hexadecimal encoded string required by the corresponding authentication type must be passed in.                   |
 
 **Return value**
 
@@ -3350,13 +3351,15 @@ Obtains the list of all SIM card accounts. This API uses an asynchronous callbac
 
 **System capability**: SystemCapability.Telephony.CoreService
 
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
+
 **System API**: This is a system API.
 
 **Parameters**
 
 | Name  | Type                    | Mandatory| Description                                    |
 | -------- | ------------------------ | ---- | ---------------------------------------- |
-| callback | AsyncCallback&lt;Array&lt;[IccAccountInfo](js-apis-sim.md#iccaccountinfo10)&gt;&gt; | Yes  | Callback used to return the result, which is an **IccAccountInfo** object containing the list of all SIM card accounts.|
+| callback | AsyncCallback&lt;Array&lt;[IccAccountInfo](js-apis-sim.md#iccaccountinfo10)&gt;&gt; | Yes | Callback used to return the list of SIM card account information. |
 
 **Error codes**
 
@@ -3366,6 +3369,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.|
 | 202 | Non-system applications use system APIs.         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
 | 8300001 | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service.                      |
 | 8300003 | System internal error.                               |
@@ -3378,7 +3382,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-sim.getAllSimAccountInfoList((err: BusinessError) => {
+sim.getAllSimAccountInfoList((err: BusinessError, data: Array<sim.IccAccountInfo>) => {
     console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
@@ -3390,6 +3394,8 @@ getAllSimAccountInfoList(): Promise\<Array\<IccAccountInfo\>\>
 Obtains the list of all SIM card accounts. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
+
+**Required permissions**: ohos.permission.GET_TELEPHONY_STATE
 
 **System API**: This is a system API.
 
@@ -3418,7 +3424,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-async getAllSimAccountInfoList(): Promise<ResponseData<sim.IccAccountInfo[] | null>> {
+sim.getAllSimAccountInfoList().then((data: Array<sim.IccAccountInfo>) => {
     try {
       const accountInfoList: sim.IccAccountInfo[] =
         await sim.getAllSimAccountInfoList();
@@ -3433,11 +3439,11 @@ async getAllSimAccountInfoList(): Promise<ResponseData<sim.IccAccountInfo[] | nu
 
 setSimLabelIndex(simId: number, simLabelIndex: number): Promise\<void\>
 
-Sets the label index of a SIM card. This API uses a promise to return the result.
+Sets the label index of a SIM card, which is used to identify and sort SIM cards in the dual-SIM management screen. A typical scenario is customizing the label of a SIM card or adjusting the display order in the settings application. This API uses an asynchronous callback.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
-**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+**Required permissions**: ohos.permission.SET_TELEPHONY_STATE
 
 **System API**: This is a system API.
 
@@ -3446,7 +3452,7 @@ Sets the label index of a SIM card. This API uses a promise to return the result
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
 | simId | number | Yes  | SIM ID of the SIM account information.<br>Value range: [1, 500].|
-| simLabelIndex    | number | Yes  | Label index of the SIM card.<br>Value range: [1, 10].                                  |
+| simLabelIndex    | number | Yes   | Label index of the SIM card, used to set the display order of the SIM card on the UI. A smaller value indicates a higher display priority.<br/>Value range: [1, 10].                                   |
 
 **Return value**
 
@@ -3462,9 +3468,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.|
 | 202 | Non-system applications use system APIs.                     |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
 | 8300001  | Invalid parameter value.                      |
 | 8300002 | Service connection failed.                               |
-| 8300003  |Do not have sim card.|
+| 8300003  | System internal error.  |
+| 8300004  | Do not have SIM card. |
 | 8300999  |Unknown error code.|
 
 **Example**
@@ -3473,7 +3481,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-sim.setSimLabelIndex(1,  0).then(() => {
+sim.setSimLabelIndex(1, 1).then(() => {
     console.info(`setSimLabelIndex success.`);
 }).catch((err: BusinessError) => {
     console.error(`setSimLabelIndex failed, promise: err->${JSON.stringify(err)}`);
@@ -3516,15 +3524,15 @@ Enumerates personalized lock types.
 
 | Name        | Value  | Description                                            |
 | ------------ | ---- | ------------------------------------------------ |
-| PN_PIN_LOCK  | 0    | Personalized network PIN lock. For details, see *3GPP TS 22.022 [33]*.        |
-| PN_PUK_LOCK  | 1    | Personalized network PUK lock.                                  |
-| PU_PIN_LOCK  | 2    | Personalized network subset PIN lock. For details, see *3GPP TS 22.022 [33]*.    |
+| PN_PIN_LOCK  | 0    | Customized network PIN lock (refer to 3GPP TS 22.022 [33]).         |
+| PN_PUK_LOCK  | 1    | Customized network PUK lock.                                   |
+| PU_PIN_LOCK  | 2    | Customized network subset PIN lock (refer to 3GPP TS 22.022 [33]).     |
 | PU_PUK_LOCK  | 3    | Personalized network subset PUK lock.                              |
-| PP_PIN_LOCK  | 4    | Personalized service provider PIN lock. For details, see *3GPP TS 22.022 [33]*.  |
+| PP_PIN_LOCK  | 4    | Customized service provider PIN lock (refer to 3GPP TS 22.022 [33]).   |
 | PP_PUK_LOCK  | 5    | Personalized service provider PUK lock.                             |
-| PC_PIN_LOCK  | 6    | Personalized corporate PIN lock. For details, see *3GPP TS 22.022 [33]*.        |
-| PC_PUK_LOCK  | 7    | Personalized corporate PUK lock.                                   |
-| SIM_PIN_LOCK | 8    | Personalized SIM card PIN lock. For details, see *3GPP TS 22.022 [33]*.       |
+| PC_PIN_LOCK  | 6    | Customized corporate PIN lock (refer to 3GPP TS 22.022 [33]).         |
+| PC_PUK_LOCK  | 7    | Customized corporate PUK lock.                                   |
+| SIM_PIN_LOCK | 8    | Customized SIM PIN lock (refer to 3GPP TS 22.022 [33]).        |
 | SIM_PUK_LOCK | 9    | Personalized SIM card PUK lock.                                  |
 
 ## LockStatusResponse<sup>7+</sup>
@@ -3542,7 +3550,7 @@ Defines the personalized lock information.
 
 ## LockInfo<sup>8+</sup>
 
-Defines the personalized lock information.
+Lock information.
 
 **System API**: This is a system API.
 
@@ -3551,12 +3559,12 @@ Defines the personalized lock information.
 | Name    |           Type          | Mandatory|   Description  |
 | -------- | ------------------------ | ---- | -------- |
 | lockType | [LockType](#locktype8)   |  Yes | Lock type.|
-| password | string                   |  Yes | Password.  |
+| password | string                   |  Yes  | Password. Only digits are supported, with a length of 4 to 8 characters.   |
 | state    | [LockState](#lockstate8) |  Yes | Lock state.|
 
 ## PersoLockInfo<sup>8+</sup>
 
-Defines the personalized lock information.
+Custom lock type information.
 
 **System API**: This is a system API.
 
@@ -3593,9 +3601,9 @@ Defines the contact number information.
 | Name        | Type  | Mandatory|    Description   |
 | ------------ | ------ | ---- | ---------- |
 | alphaTag     | string |  Yes | Tag.    |
-| number       | string |  Yes | Call transfer number.    |
-| recordNumber | number |  No | Record number. If no record number is specified, the value is **undefined** by default.|
-| pin2         | string |  No | PIN 2.|
+| number       | string |  Yes  | Number. Supports digits and dialing symbols such as *, #, and +.     |
+| recordNumber | number |  No  | Record number. If not passed, the default value is undefined. |
+| pin2         | string |  No  | PIN2 password. If not passed, the default value is undefined. |
 
 ## ContactType<sup>8+</sup>
 
@@ -3609,6 +3617,7 @@ Enumerates contact types.
 | --------------- | ---- | ---------- |
 | GENERAL_CONTACT | 1    | Common contact number.|
 | FIXED_DIALING   | 2    | Fixed dialing number.  |
+| SDN_DIALING<sup>24+</sup>     | 3    | Dialing function.  |
 
 ## OperatorConfigKey<sup>9+</sup>
 
@@ -3621,7 +3630,7 @@ Enumerates carrier configuration keys.
 |                             Name                       |                             Value                        |         Description        |
 | ------------------------------------------------------- | ------------------------------------------------------ | -------------------- |
 | KEY_VOICE_MAIL_NUMBER_STRING                            | "voice_mail_number_string"                             | Voice mailbox number.      |
-| KEY_IMS_SWITCH_ON_BY_DEFAULT_BOOL                       | "ims_switch_on_by_default_bool"                        | Fixed dialing number.          |
+| KEY_IMS_SWITCH_ON_BY_DEFAULT_BOOL                       | "ims_switch_on_by_default_bool"                        | Default IMS switch.           |
 | KEY_HIDE_IMS_SWITCH_BOOL                                | "hide_ims_switch_bool"                                 | Whether to hide the IMS switch.   |
 | KEY_VOLTE_SUPPORTED_BOOL                                | "volte_supported_bool"                                 | Whether to support VoLTE. |
 | KEY_NR_MODE_SUPPORTED_LIST_INT_ARRAY                    | "nr_mode_supported_list_int_array"                     | List of supported NR modes.  |
@@ -3694,3 +3703,20 @@ Defines the SIM card authentication response.
 | simStatusWord1 | number |  Yes | SIM card status word 1.|
 | simStatusWord2 | number |  Yes | SIM card status word 2.|
 | response       | string |  Yes | Authentication response.    |
+
+## IccAccountInfo<sup>10+</sup>
+
+Icc account information.
+
+**System API**: This is a system API.
+
+**System capability:** SystemCapability.Telephony.CoreService
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+| Name       | Type    | Read-Only|Optional| Description             |
+| -------------| ------ | ---- | ---------- |---------- |
+| simLabelIndex  | number  |  No | Yes| Label index of the SIM card. |
+| operatorName | string  |  No | Yes| Carrier name of the SIM card.    |

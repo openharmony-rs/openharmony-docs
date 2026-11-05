@@ -20,7 +20,7 @@ status: active
 
 1. 导入DRM Kit和Media Kit接口。
 
-   <!-- @[avplayer_import_kits](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
+   <!-- @[avplayer_import_kits](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmAVPlayer/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
    
    ``` TypeScript
    import { drm } from '@kit.DrmKit';
@@ -29,7 +29,7 @@ status: active
 
 2. 导入BusinessError模块抛出Drm Kit接口的错误码。
 
-   <!-- @[avplayer_import_business_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
+   <!-- @[avplayer_import_business_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmAVPlayer/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -37,7 +37,7 @@ status: active
 
 3. 调用[createAVPlayer](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavplayer9)，创建AVPlayer实例并设置DRM信息监听事件。
 
-   <!-- @[avplayer_initPlayer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
+   <!-- @[avplayer_initPlayer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmAVPlayer/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
    
    ``` TypeScript
    private playerHandle?: media.AVPlayer;
@@ -59,7 +59,7 @@ status: active
 
 4. 调用[createMediaKeySystem](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmcreatemediakeysystem)和[createMediaKeySession](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySystem.md#createmediakeysession-1)根据DRM信息中的uuid创建MediaKeySystem和MediaKeySession实例。
 
-   <!-- @[avplayer_processDrmInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
+   <!-- @[avplayer_processDrmInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmAVPlayer/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
    
    ``` TypeScript
    private mediaKeySystem?: drm.MediaKeySystem;
@@ -95,7 +95,7 @@ status: active
 
 5. 调用[generateMediaKeyRequest](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#generatemediakeyrequest)生成媒体密钥请求，并调用[processMediaKeyResponse](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#processmediakeyresponse)处理媒体密钥响应。
 
-   <!-- @[avplayer_processMediaKey](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
+   <!-- @[avplayer_processMediaKey](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmAVPlayer/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
    
    ``` TypeScript
    async processMediaKey(pssh: Uint8Array, mimeType: string): Promise<void> {
@@ -123,7 +123,7 @@ status: active
 
 6. 调用[requireSecureDecoderModule](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#requiresecuredecodermodule)和[setDecryptionConfig](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#setdecryptionconfig11)，在处理媒体密钥响应成功后设置解密session。
 
-   <!-- @[avplayer_setDecryptionConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
+   <!-- @[avplayer_setDecryptionConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmAVPlayer/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
    
    ``` TypeScript
    setDecryptionConfig(): void {
@@ -138,7 +138,7 @@ status: active
 
 7. 销毁AVPlayer实例并根据released事件监听销毁MediaKeySession和MediaKeySystem实例。
 
-   <!-- @[avplayer_releasePlayer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
+   <!-- @[avplayer_releasePlayer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmAVPlayer/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
    
    ``` TypeScript
    async releasePlayer(): Promise<void> {

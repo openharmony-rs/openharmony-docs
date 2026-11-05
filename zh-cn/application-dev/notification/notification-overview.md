@@ -53,6 +53,8 @@ Notification Kit中常用的通知样式如下：
 <!--RP5--><!--RP5End-->
 
 ## 约束限制
+<!--RP6--><!--RP6End-->
+### 发布通知约束
 - 单个应用已发布的通知在[通知中心](notification-glossary.md#notification-center通知中心)等系统入口的留存数量有限（当前规格最多24条）。
 - 通知的长度不能超过200KB（跨进程序列化大小限制）。
 - 通知的发布频次和更新频次需要满足如下要求，否则会导致发布或更新失败，返回相应错误码。
@@ -67,8 +69,8 @@ Notification Kit中常用的通知样式如下：
 
 ## 与相关Kit的关系
 - Notification Kit创建的通知会即时显示在[通知中心](notification-glossary.md#notification-center通知中心)等系统入口。如果开发者希望在应用退到后台或进程终止后仍然有一些提醒用户的定时类通知，例如购物类应用抢购提醒等，可通过[`Background Tasks Kit`](../task-management/background-task-overview.md)创建。目前支持基于倒计时、日历、闹钟等类型的通知提醒功能。
-- 对于上传下载等数据传输场景，从API version 26.0.1开始，推荐使用[`Background Tasks Kit`](../task-management/continuous-task.md)提供的[`backgroundTaskManager.updateDataTransferProgress`](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerupdatedatatransferprogress)接口更新进度通知，无需调用notificationManager.publish。使用该接口前，需先申请数据传输类型的长时任务。
-- 开发者可通过[`Ability Kit`](../application-models/abilitykit-overview.md)的[`getWantAgent`](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagentgetwantagent)接口设置用户点击通知后的行为意图。<!--RP2-->
+- 对于上传下载等数据传输场景，从API版本26.0.1开始，推荐使用[`Background Tasks Kit`](../task-management/continuous-task.md)提供的[backgroundTaskManager.updateDataTransferProgress](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerupdatedatatransferprogress)接口更新进度通知，无需调用notificationManager.publish。使用该接口前，需先申请数据传输类型的长时任务。
+- 开发者可通过[`Ability Kit`](../application-models/abilitykit-overview.md)的[getWantAgent](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagentgetwantagent)接口设置用户点击通知后的行为意图。<!--RP2-->
 <!--RP2End-->
 
 <!--RP4--><!--RP4End-->

@@ -90,7 +90,7 @@ TabBar显示样式枚举。
 | BOTTOM | 0 | 底部页签栏样式。页签栏位置可通过Tabs的vertical、barPosition属性调整。 |
 | SIDEBAR | 1 | 侧边页签栏样式。页签栏显示为侧边栏。 |
 | SIDEBAR_ADAPTABLE | 2 | 自适应侧边页签栏样式。页签栏可根据Tabs容器大小在底部页签栏样式和侧边栏样式之间切换。 |
-| TOP | 3 | 顶部悬浮页签栏样式。页签栏始终以悬浮形式显示在顶部。使用该样式时，BarPosition设置不生效。<br/>**起始版本：** 26.2.0 |
+| TOP | 3 | 顶部悬浮页签栏样式。页签栏始终以悬浮形式显示在顶部。使用该样式时，BarPosition设置不生效。<br/>**起始版本：** 26.1.0 |
 
 ## 属性
 
@@ -574,11 +574,11 @@ topBarFloatingStyle(style: Optional\<TopFloatingTabBarStyle\>)
 
 设置TabBar的顶部悬浮样式。仅当[barStyle](#barstyle)设置为TabBarStyle.TOP时生效。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1187,18 +1187,18 @@ TabBar悬浮样式。
 | maskHeight   | [Length](ts-types.md#length)           | 否 | 是    | 蒙层的高度。蒙层显示上边缘默认比TabBar上边缘高16vp。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | adaptToHandedness   | boolean           | 否 | 是    | 是否跟随操作手左右布局显示。<br/>true表示跟随操作手左右布局显示；false表示不跟随操作手左右布局显示。<br/>默认值：false<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | systemMaterial | [UIMaterial](#uimaterial).[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial) | 否 | 是 | TabBar的背板沉浸式材质样式。仅当Tabs为横向布局且barPosition为BarPosition.End时，底部TabBar的沉浸光感效果生效。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| maxWidth | [Length](ts-types.md#length) | 否 | 是 | TabBar的最大宽度。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**起始版本：** 26.2.0<br/>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。 |
-| offset | [Position](ts-types.md#position) \| [Edges](ts-types.md#edges12) \| [LocalizedEdges](ts-types.md#localizededges12) | 否 | 是 | TabBar的偏移量。<br/>单位：vp<br/>默认值为{ x: 0, y: 0 }。<br/>x、y的取值范围：(-∞, +∞)<br/>**起始版本：** 26.2.0<br/>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。 |
+| maxWidth | [Length](ts-types.md#length) | 否 | 是 | TabBar的最大宽度。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+| offset | [Position](ts-types.md#position) \| [Edges](ts-types.md#edges12) \| [LocalizedEdges](ts-types.md#localizededges12) | 否 | 是 | TabBar的偏移量。<br/>单位：vp<br/>默认值为{ x: 0, y: 0 }。<br/>x、y的取值范围：(-∞, +∞)<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## TopFloatingTabBarStyle
 
 TabBar顶部悬浮样式的配置选项。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1388,7 +1388,7 @@ Tabs组件和父组件的嵌套滚动模式枚举。
 | ------ | -- | ------  |
 | BOTTOM_TABBAR | 0 | 底部页签栏显示模式。可以通过[vertical](#vertical)和[barPosition](#barposition9)属性调整页签栏实际显示位置。 |
 | SIDEBAR | 1 | 侧边页签栏显示模式。可以通过[sidebarPosition](#sidebarposition)属性调整页签栏实际显示位置。 |
-| TOP_TABBAR | 2 | 顶部悬浮页签栏显示模式。页签栏以悬浮形式显示在顶部。<br/>**起始版本：** 26.2.0 |
+| TOP_TABBAR | 2 | 顶部悬浮页签栏显示模式。页签栏以悬浮形式显示在顶部。<br/>**起始版本：** 26.1.0 |
 
 ## TabsSidebarDisplayStyle
 
@@ -4082,7 +4082,7 @@ struct TabsExample {
 
 该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
-从API版本26.0.0开始，新增barFloatingStyle接口。从API版本26.2.0开始，[FloatingTabBarStyle](#floatingtabbarstyle)新增maxWidth、offset属性。
+从API版本26.0.0开始，新增barFloatingStyle接口。从API版本26.1.0开始，[FloatingTabBarStyle](#floatingtabbarstyle)新增maxWidth、offset属性。
 
 ```ts
 // xxx.ets
@@ -4555,7 +4555,7 @@ struct TabsSidebarBreakpointExample {
 
 本示例展示了如何通过[barStyle](#barstyle)接口设置TabBar为顶部悬浮页签栏样式（TabBarStyle.TOP），并通过[topBarFloatingStyle](#topbarfloatingstyle)接口设置TabBar的顶部悬浮样式，包括以下属性：页签栏宽度、左右边距、顶部边距、蒙层颜色、蒙层高度、最大宽度、偏移量。
 
-从API版本26.2.0开始，新增topBarFloatingStyle接口、[TabBarStyle](#tabbarstyle).TOP枚举值。
+从API版本26.1.0开始，新增topBarFloatingStyle接口、[TabBarStyle](#tabbarstyle).TOP枚举值。
 
 ```ts
 @Entry

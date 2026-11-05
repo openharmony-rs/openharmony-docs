@@ -1,10 +1,11 @@
 # OH_AudioNodeStruct
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @xxngwang-->
+<!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6482e1478c8300c06759225778677b39973d7297 translatedAt=2026-11-03T04:24:45.336Z pushedAt=2026-11-04T03:11:47.021Z nl=1 -->
 
 ```c
 typedef struct OH_AudioNodeStruct OH_AudioNode

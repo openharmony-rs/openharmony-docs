@@ -5,8 +5,9 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=35275ad1fec674addf0ad74b53e102b4f36f1eef translatedAt=2026-10-29T08:55:42.720Z pushedAt=2026-10-30T03:01:20.764Z nl=1 -->
 
-The **\<dialog>** component is custom pop-up container for showing critical information or calling for an action. For details, see [dialog](../reference/apis-arkui/arkui-js/js-components-container-dialog.md).
+The **\<dialog>** component is custom dialog container for showing critical information or calling for an action. For details, see [dialog](../reference/apis-arkui/arkui-js/js-components-container-dialog.md).
 
 
 ## Creating a \<dialog> Component
@@ -72,7 +73,7 @@ export default {
 
 ## Setting Dialog Box Response
 
-Add a **cancel** event that is triggered when a user touches a non-dialog area to cancel the pop-up dialog box. Add the **show** and **close** methods to display and close the dialog box, respectively.
+Add a **cancel** event that is triggered when a user touches a non-dialog area to cancel the dialog box. Add the **show** and **close** methods to display and close the dialog box, respectively.
 
 
 ```html
@@ -162,7 +163,7 @@ export default {
 ## Example Scenario
 
 
-Use the **\<dialog>** component to implement a schedule. Use the **&lt;dialog&gt;** component to implement a schedule. When the dialog box is open, use the [&lt;textarea&gt;](../reference/apis-arkui/arkui-js/js-components-basic-textarea.md) component to add an event and touch the OK button to obtain the current time and save the input text. The events in the calendar are displayed in a list. The events in the calendar are displayed in a list.
+In this scenario, developers can use the dialog component to implement a schedule. When the dialog is open, use the [textarea](../reference/apis-arkui/arkui-js/js-components-basic-textarea.md) component to enter the current schedule, and after tapping the confirm button, obtain the current date and save the entered text. Finally, display each schedule in the form of a list.
 
 
 ```html
@@ -325,4 +326,5 @@ export default {
 ## Samples
 
 The following sample is provided to help you better understand how to develop **dialog**:
+
 - [Basic Usage of Dialogs (JS, API version 9)](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/DialogDemo)

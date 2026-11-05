@@ -5,11 +5,11 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=6731353e95ca92d0b8b50de9083fe2085729362a translatedAt=2026-10-28T04:05:12.559Z pushedAt=2026-10-28T08:00:37.919Z nl=1 -->
+<!-- md-trans-meta sourceCommit=ad6e19148a2e0fc0380b16e183aef2ad5ce1d4ae translatedAt=2026-11-03T06:34:34.036Z pushedAt=2026-11-03T07:54:40.199Z nl=1 -->
 
 The decorators described above (including [\@State](./arkts-state.md), [\@Prop](./arkts-prop.md), [\@Link](./arkts-link.md), and [\@Provide and \@Consume](./arkts-provide-and-consume.md)) can only observe changes at the first layer. However, in actual app development, developers often encapsulate their own data models based on requirements. For multi-level nesting scenarios, such as two-dimensional arrays, object arrays, and nested classes, changes to second-layer properties cannot be observed. Therefore, the [\@Observed](../../reference/apis-arkui/arkui-ts/ts-state-management-observed.md#observed) and [\@ObjectLink](../../reference/apis-arkui/arkui-ts/ts-state-management-objectlink.md#objectlink) decorators are introduced to enable observation of deep property changes in nested data structures.
 
-\@Observed/\@ObjectLink is suitable for observing property changes in nested objects (where an object's property is itself an object). Before reading this document, you are advised to have a basic understanding of the observation capabilities of decorators. It is recommended to read [\@State](./arkts-state.md) for basic usage first. For best practices, see [State Management Best Practices](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management). For FAQs, see [State Management FAQs](./arkts-state-management-faq.md).
+\@Observed/\@ObjectLink is suitable for observing changes to properties of nested objects (objects whose properties are objects). Developers need a certain understanding of the basic observation capabilities of decorators before reading this document in comparison. It is recommended to read the following in advance:[\@State](./arkts-state.md) basic usage. For FAQ, see [State Management FAQ](./arkts-state-management-faq.md).
 
 > **NOTE**
 >

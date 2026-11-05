@@ -1,10 +1,19 @@
+---
+kits: ["Media Kit / Media Services"]
+description: "Describes end-to-end video playback using AVPlayer, including player creation, source and window settings, state callbacks, playback/pause/seek/stop control, reset, and resource release."
+keywords: [AVPlayer, video playback, callbacks, playback control, background playback]
+doctype: guide
+status: active
+---
+
 # Using AVPlayer to Play Videos (ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Owner: @chennotfound-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=d14b2c7a45c50a915ec878b22f98f961a1264b59 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 The system provides two solutions for video playback development:
 

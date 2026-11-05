@@ -46,10 +46,10 @@ swapfs模块的错误码。
 | -- | -- |
 | SWAPFS_E_OK = 0 | 操作成功。<br>**起始版本：** 26.0.0 |
 | SWAPFS_E_INVAL = 36200001 | 无效参数。可能的原因包括空指针、零长度或无效的配置值。请检查传入参数是否合法。<br>**起始版本：** 26.0.0 |
-| SWAPFS_E_DIO_ALIGN = 36200002 | Direct I/O缓冲区地址或长度未对齐到SWAPFS_DIO_ALIGNMENT。<br>**起始版本：** 26.0.0 |
-| SWAPFS_E_BUFFER_TOO_SMALL = 36200003 | 换入缓冲区大小小于所需大小（Direct I/O模式下为occupiedSize，缓冲模式下为dataSize）。<br> dataSize为实际写入的数据字节数。<br> occupiedSize为磁盘上占用的物理空间字节数（Direct I/O模式下对齐到 4096，等于dataSize向上取整到SWAPFS_DIO_ALIGNMENT的倍数）。<br>**起始版本：** 26.0.0 |
+| SWAPFS_E_DIO_ALIGN = 36200002 | Direct I/O缓冲区地址或长度未对齐到[SWAPFS_DIO_ALIGNMENT](capi-oh-swapfs-h-sys.md#宏定义)。<br>**起始版本：** 26.0.0 |
+| SWAPFS_E_BUFFER_TOO_SMALL = 36200003 | 换入缓冲区大小小于所需大小（Direct I/O模式下为occupiedSize，缓冲模式下为dataSize）。<br> dataSize为实际写入的数据字节数。<br> occupiedSize为磁盘上占用的物理空间字节数（Direct I/O模式下对齐到 4096，等于dataSize向上取整到[SWAPFS_DIO_ALIGNMENT](capi-oh-swapfs-h-sys.md#宏定义)的倍数）。<br>**起始版本：** 26.0.0 |
 | SWAPFS_E_KEY_NOT_FOUND = 36200004 | 指定的keyId在当前管理器中不存在。请确认keyId是否正确或已创建。<br>**起始版本：** 26.0.0 |
-| SWAPFS_E_KEY_STATE_INVALID = 36200005 | key处于OH_SWAPFS_KEY_STATUS_REMOVING状态，无法进行操作。请等待key删除完成或使用其他可用的key。<br>**起始版本：** 26.0.0 |
+| SWAPFS_E_KEY_STATE_INVALID = 36200005 | key处于[OH_SWAPFS_KEY_STATUS_REMOVING](capi-oh-swapfs-h-sys.md#oh_swapfskeystatus)状态，无法进行操作。请等待key删除完成或使用其他可用的key。<br>**起始版本：** 26.0.0 |
 | SWAPFS_E_BUSY = 36200006 | 检测到并发冲突。<br> [OH_Swapfs_RemoveAllData](./capi-oh-swapfs-h-sys.md#oh_swapfs_removealldata)或[OH_Swapfs_DestroyManager](./capi-oh-swapfs-h-sys.md#oh_swapfs_destroymanager)检测到有活跃操作正在进行。请稍后重试或等待当前操作完成。<br>**起始版本：** 26.0.0 |
 | SWAPFS_E_NOSPC = 36200007 | 设备存储空间不足。请清理存储空间后重试。<br>**起始版本：** 26.0.0 |
 | SWAPFS_E_QUOTA_EXCEEDED = 36200008 | 换出空间配额超限。总占用空间已达到配置的上限。请清理已换出的数据或调整配额上限。<br>**起始版本：** 26.0.0 |

@@ -194,7 +194,7 @@ struct Index {
     try {
       curFoldStatus = display.getFoldStatus();
     } catch (error) {
-      console.info(`${TAG} getFoldStatus call failed, error: ${error.code}`);
+      console.error(`${TAG} getFoldStatus call failed, error: ${error.code}`);
     }
     return curFoldStatus;
   }

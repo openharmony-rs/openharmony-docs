@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=8206b4517f6911f415eabe97c00d211b77dc20ce translatedAt=2026-11-03T06:27:37.779Z pushedAt=2026-11-03T12:08:25.631Z nl=1 -->
 
 ```c
 struct OH_Huks_KeyMaterialRsa {...}
@@ -28,7 +29,9 @@ Defines the struct for an RSA key.
 | Name| Description|
 | -- | -- |
 | enum [OH_Huks_KeyAlg](capi-native-huks-type-h.md#oh_huks_keyalg) keyAlg | Algorithm of the key.|
-| uint32_t keySize | Length of the key.|
-| uint32_t nSize | Length of **n**.|
-| uint32_t eSize | Length of **e**.|
-| uint32_t dSize | Length of **d**.|
+| uint32_t keySize | Length of the key, in bits. |
+| uint32_t nSize | Length of the n value, in bytes. |
+| uint32_t eSize | Length of the e value, in bytes. |
+| uint32_t dSize | Length of the d value, in bytes. |
+
+

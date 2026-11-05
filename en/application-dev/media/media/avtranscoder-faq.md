@@ -1,14 +1,22 @@
+---
+kits: ["Media Kit / Media Services"]
+description: "Summarizes common AVTranscoder issues, including automatic audio codec changes and handling transcoding failures, for troubleshooting video transcoding."
+keywords: [AVTranscoder, transcoding, FAQs, audio encoding formats, AAC, transcoding failure, error handling, format support]
+doctype: faq
+status: active
+---
 # Transcoding FAQs
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=c54ee3c703f5cc7ef1444d6932d400b405f9ea74 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 ## Why does the audio encoding format change when the application sends a video for transcoding?
 
-If the audio track format is not specified during transcoding, the system converts it to AAC by default.
+If no audio encoding format is specified during transcoding, the system converts the audio to AAC by default.
 
 <!--RP2--><!--RP2End-->
 

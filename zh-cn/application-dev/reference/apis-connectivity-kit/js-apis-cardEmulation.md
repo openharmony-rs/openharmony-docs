@@ -593,9 +593,9 @@ on(type: 'hceCmd', callback: AsyncCallback\<number[]>): void
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-|201 | Permission denied.                 |
-|401 | Invalid parameter.                 |
-|801 | Capability not supported.          |
+|201 | Permission denied.<br>适用版本：12+                 |
+|401 | Invalid parameter.<br>适用版本：12+                 |
+|801 | Capability not supported.<br>适用版本：12+          |
 
 **示例：**
 

@@ -5,6 +5,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=66af66ed19e8004054f445afe723cb0f7c78edff translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T06:41:24.028Z nl=1 -->
 
 ## Overview
 
@@ -14,21 +15,22 @@ OpenHarmony provides the VPN Extension solution for enhanced VPN management. Cur
 
 > **NOTE**
 >
->- To maximize the application running efficiency, all APIs are called asynchronously in callback or promise mode. The following code examples use the promise mode. For details about the APIs, see [API Reference](../reference/apis-network-kit/js-apis-net-vpnExtension.md).
->- For details about the complete JavaScript APIs and sample code, see [API Reference](../reference/apis-network-kit/js-apis-net-vpnExtension.md).
->- To use related APIs, you must declare the [ohos.permission.INTERNET](../security/AccessToken/permissions-for-all.md#ohospermissioninternet) permission.
+> - To ensure app running efficiency, all API calls are asynchronous. For asynchronous APIs, the promise mode is provided. The following examples use the promise mode. For more modes, see [@ohos.net.vpnExtension (Enhanced VPN Management)](../reference/apis-network-kit/js-apis-net-vpnExtension.md).
+> - For the complete JS API description and sample code, see [@ohos.net.vpnExtension (Enhanced VPN Management)](../reference/apis-network-kit/js-apis-net-vpnExtension.md).
+> - To use this feature, you need the [ohos.permission.INTERNET](../security/AccessToken/permissions-for-all.md#ohospermissioninternet) permission.
+> - For the restrictions on VpnExtensionAbility API calls, see [Constraints](../reference/apis-network-kit/js-apis-net-vpnExtension.md#constraints) in the API reference.
 
 ## VPN Extension Ability UI
 
-With the VPN Extension APIs provided by OpenHarmony, you can build VPN services that support different protocols. OpenHarmony provides a UI for users to learn about VPN startup and connection.
+You can use [@ohos.net.vpnExtension (VPN Extension)](../reference/apis-network-kit/js-apis-net-vpnExtension.md) to build VPN services that support different protocols. OpenHarmony provides a UI for users to view VPN application service startup and connection information:
 
 - When the VPN application sets up a connection for the first time, the VPN connection authorization dialog box is displayed. The dialog box prompts users whether to trust the VPN application and accept the VPN connection request.
-- If the VPN connection is successful, a VPN icon (a key) is displayed in the status bar to remind the user that the VPN is connected.
+- When the VPN connection is started successfully, a VPN (key) icon is displayed in the status bar to remind users that the VPN is connected.
 
 To facilitate the query and configuration, your VPN application needs to provide the following UIs:
 
 - UI for manually starting and stopping the VPN connection.
-- UI for displaying the connection status of the VPN application in the notification bar or providing network statistics (such as the connection duration and traffic) of the VPN connection. Touching the notification in notification bar should bring your VPN application to the foreground.
+- When the VPN connection is started, the connection status of the VPN app is displayed in the notification panel, or network statistics (such as connection duration and traffic) are provided. Tapping the notification brings your VPN app to the foreground.
 
 
 ## How to Develop
@@ -42,10 +44,10 @@ To enable your application to support the VPN functionality, you need to create 
 ``` JSON5
 // Assume that the VNP application is named MyVpnExtAbility. Define it in module.json5.
 "extensionAbilities": [
-// ···
+  // ...
   {
     "name": "MyVpnExtAbility",
-    "srcEntry": "./ets/vpnability/VPNExtentionAbility.ets",
+    "srcEntry": "./ets/vpnability/VPNExtensionAbility.ets",
     "type": "vpn"
   }
 ],
@@ -261,7 +263,10 @@ export class VpnTest extends VpnExtensionAbility {
     // ...
       this.vpnConnection = vpnExtension.createVpnConnection(this.context);
       hilog.info(0x0000, 'testTag', 'create success');
-      this.vpnConnection?.destroy(this.vpnId);
+      this.vpnConnection?.destroy(this.vpnId).catch(() => {
+        hilog.error(0x0000, 'testTag', 'destroy fail');
+        return false;
+      });
       // ...
   }
 };
@@ -276,13 +281,14 @@ To ensure network connectivity, the system automatically stops the VPN connectio
 
 ## Description of VPN Config parameters
 
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | Name      | Type                                      | Read-only|Optional| Description         |
 | ------------------- | ------------------------------------------------------------ | ---- | ---|------------------------------------------------------------ |
 | addresses           | Array\<[LinkAddress](../reference/apis-network-kit/js-apis-net-connection.md#linkaddress)\> | No  |No| IP addresses of virtual network interface cards (vNICs).                                         |
-| routes              | Array\<[RouteInfo](../reference/apis-network-kit/js-apis-net-connection.md#routeinfo)\> | No  | Yes|Routes of vNICs. Currently, a maximum of 1024 routes can be configured.             |
+| routes | Array\<[RouteInfo](../reference/apis-network-kit/js-apis-net-connection.md#routeinfo)\> | No | Yes | Routing information for the VPN virtual network interface. Up to 1024 routes can be configured before API version 23, and up to 10000 starting from API version 23. |
 | dnsAddresses        | Array\<string\>                                              | No  |Yes|IP addresses of DNS servers. After the IP address is configured, when the VPN is active and proxy-enabled applications access the Internet, the configured DNS server will be used for DNS queries.|
 | searchDomains       | Array\<string\>                                              | No  |Yes|List of DNS search domains.                                           |
-| mtu                 | number                                                       | No  |Yes| Maximum transmission unit (MTU), in bytes.                              |
+| mtu | number | No | Yes | Maximum transmission unit (MTU), in bytes. |
 | isIPv4Accepted      | boolean                                                      | No  |Yes|Whether IPv4 is supported. The default value is **true**. The value **true** indicates that IPV4 is supported, and the value **false** indicates the opposite.                                |
 | isIPv6Accepted      | boolean                                                      | No  |Yes|Whether IPv6 is supported. The default value is **false**. The value **true** indicates that IPV6 is supported, and the value **false** indicates the opposite.                               |
 | isInternal          | boolean                                                      | No  |Yes| Whether the built-in VPN is supported. The default value is **false**. The value **true** indicates that the built-in VPN is supported, and the value **false** indicates the opposite.                            |
@@ -305,7 +311,7 @@ let vpnConfig: vpnExtension.VpnConfig = {
   // Configure the IP address of the vNIC.
   addresses: [{
     address: {
-      address:'192.x.x.5',
+      address:'192.xxx.xxx.5',
       family:1
     },
     prefixLength:24
@@ -316,14 +322,14 @@ let vpnConfig: vpnExtension.VpnConfig = {
     interface: 'vpn-tun',
     destination: {
       address: {
-        address:'10.x.x.8',
+        address:'10.xxx.xxx.8',
         family:1,
         port:8080
       },
       prefixLength:24
     },
     gateway: {
-      address:'10.x.x.5',
+      address:'10.xxx.xxx.5',
       family:1,
       port:8080
     },
@@ -333,10 +339,10 @@ let vpnConfig: vpnExtension.VpnConfig = {
   // Configure the MTU.
   mtu: 1400,
   // Configure IP addresses of DNS serves.
-  dnsAddresses: ['223.x.x.5', '223.x.x.6'],
-  // List of trusted applications.
+  dnsAddresses: ['223.xxx.xxx.5', '223.xxx.xxx.6'],
+  // Trusted app information list. When this item is configured, the blocked app information list must be empty.
   trustedApplications: ['com.test.browser'],
-  // List of blocked applications.
+  // Blocked app information list. When this item is configured, the trusted app information list must be empty.
   blockedApplications: ['com.test.games'],
 }
 ```
