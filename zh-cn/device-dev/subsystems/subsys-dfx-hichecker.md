@@ -33,10 +33,10 @@ HiChecker提供的主要接口及功能如下：
 
 | **方法（包括返回值、方法名、参数列表）** | **描述** | 
 | -------- | -------- | 
-| AddRule(uint_64_t&nbsp;rule)&nbsp;:&nbsp;void | 添加一条或者多条[规则](#规则说明)到系统，系统根据添加的规则进行检测或反馈。 | 
-| RemoveRule(uint_64_t&nbsp;rule)&nbsp;:&nbsp;void | 删除一组规则，删除的规则后续将不再生效。 | 
-| GetRule()&nbsp;:&nbsp;uint_64_t | 获取当前线程规则、进程规则、告警规则的合集。 | 
-| Contains(uint_64_t&nbsp;rule)&nbsp;:&nbsp;bool | 当前已添加的规则集中是否包含了某一个特定的规则,&nbsp;如果传入的rule是线程级别的rule，仅查询当前线程中是否包含。 | 
+| AddRule(uint64_t&nbsp;rule)&nbsp;:&nbsp;void | 添加一条或者多条[规则](#规则说明)到系统，系统根据添加的规则进行检测或反馈。 | 
+| RemoveRule(uint64_t&nbsp;rule)&nbsp;:&nbsp;void | 删除一组规则，删除的规则后续将不再生效。 | 
+| GetRule()&nbsp;:&nbsp;uint64_t | 获取当前线程规则、进程规则、告警规则的合集。 | 
+| Contains(uint64_t&nbsp;rule)&nbsp;:&nbsp;bool | 当前已添加的规则集中是否包含了某一个特定的规则,&nbsp;如果传入的rule是线程级别的rule，仅查询当前线程中是否包含。 | 
 | NotifySlowProcess(std::string&nbsp;tag)&nbsp;:&nbsp;void | 通知有慢处理，通知系统当前代码调用了耗时较长的慢处理流程，以告知应用重要线程中尽量避开直接调用。 | 
 | NotifySlowEvent(std::string&nbsp;tag)&nbsp;:&nbsp;void | 通知发生事件分发超时或执行超时。 | 
 | NotifyAbilityConnectionLeak(Caution&nbsp;caution)&nbsp;:&nbsp;void | 通知发生AbilityConnection泄露。 | 
@@ -46,7 +46,7 @@ HiChecker提供的主要接口及功能如下：
 
 | **方法（包括返回值、方法名、参数列表）** | **描述** | 
 | -------- | -------- | 
-| GetTriggerRule()&nbsp;:&nbsp;uint_64_t  | 获取触发当前告警的检测规则。 | 
+| GetTriggerRule()&nbsp;:&nbsp;uint64_t  | 获取触发当前告警的检测规则。 | 
 | GetCautionMsg()&nbsp;:&nbsp;std::string | 获取更多辅助信息。 | 
 | GetStackTrace()&nbsp;:&nbsp;std::string | 获取告警触发时的堆栈信息。 | 
 
