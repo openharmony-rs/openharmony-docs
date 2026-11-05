@@ -135,7 +135,7 @@ avSession.getSessionDescriptors(avSession.SessionCategory.CATEGORY_ALL).then((de
 
 ## avSession.getSessionDescriptorsForAudioZone
  
-getSessionDescriptorsForAudioZone(userId: number): Promise\<Array\<Readonly\<AVSessionDescriptor>>> 
+getSessionDescriptorsForAudioZone(userId: int): Promise\<Array\<Readonly\<AVSessionDescriptor>>> 
  
 获取userId用户所属音区的会话描述信息。使用Promise异步回调。<br> 音区指音频输出区域，不同音区可独立播放媒体。
  
@@ -153,7 +153,7 @@ getSessionDescriptorsForAudioZone(userId: number): Promise\<Array\<Readonly\<AVS
  
 | 参数名        | 类型           | 必填 | 说明 |
 | ------------ | -------------- |------|------|
-| userId       | number            | 是   | 指定用户userId。 |
+| userId       | int            | 是   | 指定用户userId。 |
  
 **返回值：**
  
@@ -167,8 +167,8 @@ getSessionDescriptorsForAudioZone(userId: number): Promise\<Array\<Readonly\<AVS
  
 | 错误码ID | 错误信息 | 
 | -------- | ---------------------------------------- | 
-| 201 |  Permission verification failed. The application does not have the permission required to call the API.  | 
-| 202 |  Permission verification failed. A non-system application calls a system API.  |
+| 201 | Permission denied. |
+| 202 | Not System App. |
 | 6700101  |  Session service is not running.  | 
  
 **示例：** 
@@ -584,7 +584,7 @@ avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
 
 ## avSession.startAVPlaybackForAudioZone
  
-startAVPlaybackForAudioZone(userId: number, bundleName: string, assetId: string, info?: CommandInfo, extraInfo?: ExtraInfo): Promise\<void\>
+startAVPlaybackForAudioZone(userId: int, bundleName: string, assetId: string, info?: CommandInfo, extraInfo?: ExtraInfo): Promise\<void\>
  
 启动指定用户的媒体播放应用程序。使用Promise异步回调。
  
@@ -602,7 +602,7 @@ startAVPlaybackForAudioZone(userId: number, bundleName: string, assetId: string,
  
 | 参数名        | 类型           | 必填 | 说明 |
 | ------------ | -------------- |------|------|
-| userId       | number            | 是   | 指定用户userId。 |
+| userId       | int            | 是   | 指定用户userId。 |
 | bundleName   | string         | 是   | 指定应用包名。   |
 | assetId      | string         | 是   | 指定媒体ID。    |
 | info         | [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)    | 否   | 发送到会话的命令信息。 |
