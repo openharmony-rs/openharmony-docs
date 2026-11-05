@@ -65,15 +65,11 @@ status: active
 
 在CMake脚本中链接动态库。
 
-<!-- @[OH_Libraries_Lowpower_Avsink](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/CMakeLists.txt) -->
-
 ```c
-target_link_libraries(player PUBLIC liblowpower_avsink.so)
+target_link_libraries(sample PUBLIC liblowpower_avsink.so)
 ```
 
 头文件引入。
-
-<!-- @[OH_Include_Lowpower](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/lpp_video_streamer.cpp) -->
 
 ```c++
 #include "multimedia/player_framework/lowpower_audio_sink_base.h"
@@ -84,32 +80,25 @@ target_link_libraries(player PUBLIC liblowpower_avsink.so)
 
 开发者使用系统日志能力时，需引入如下头文件：
 
-<!-- @[OH_Include_hilog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/common/dfx/log/av_codec_sample_log.h) -->
-
 ```c++
 #include <hilog/log.h>
 ```
 
 并需要在CMake脚本中链接如下动态库：
 
-<!-- @[OH_Libraries_Hilog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/CMakeLists.txt) -->
-
 ```c
-target_link_libraries(player PUBLIC libhilog_ndk.z.so)
+target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 ```
 
 使用该模块时，需要链接的库如下所示：解封装、基础解码、显示渲染等能力。
 
-<!-- @[OH_Libraries_Otherso](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/CMakeLists.txt) -->
-
 ```c
 set(BASE_LIBRARY
-    libace_napi.z.so libEGL.so libGLESv3.so libace_ndk.z.so libuv.so libhilog_ndk.z.so
     libnative_media_codecbase.so libnative_media_core.so libnative_media_vdec.so libnative_window.so
     libnative_media_venc.so libnative_media_acodec.so libnative_media_avdemuxer.so libnative_media_avsource.so
-    libnative_media_avmuxer.so libohaudio.so
+    libohaudio.so
 )
-target_link_libraries(player PUBLIC ${BASE_LIBRARY})
+target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 ```
 
 开发者通过引入[lowpower_audio_sink_base.h](../../reference/apis-media-kit/capi-lowpower-audio-sink-base-h.md)、[lowpower_audio_sink.h](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md)、[lowpower_video_sink.h](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md)、 [lowpower_video_sink_base.h](../../reference/apis-media-kit/capi-lowpower-video-sink-base-h.md) 头文件，使用音视频播放相关API。
@@ -122,7 +111,9 @@ target_link_libraries(player PUBLIC ${BASE_LIBRARY})
     
     ``` C++
     source_ = OH_AVSource_CreateWithFD(info.inputFd, info.inputFileOffset, info.inputFileSize);
+    // ...
     demuxer_ = OH_AVDemuxer_CreateWithSource(source_);
+    // ...
     int32_t ret = GetTrackInfo(sourceFormat, info);
     ```
 
@@ -150,8 +141,10 @@ target_link_libraries(player PUBLIC ${BASE_LIBRARY})
     lppAudioStreamerCallback_ = OH_LowPowerAudioSinkCallback_Create();
     OH_LowPowerAudioSinkCallback_SetDataNeededListener(lppAudioStreamerCallback_,
         LppCallback::OnDataNeeded, lppUserData);
+    // ...
     OH_LowPowerAudioSinkCallback_SetPositionUpdateListener(lppAudioStreamerCallback_,
         LppCallback::OnPositionUpdated, lppUserData);
+    // ...
     ret = OH_LowPowerAudioSink_RegisterCallback(lppAudioStreamer_, lppAudioStreamerCallback_);
     ```
 
@@ -163,13 +156,15 @@ target_link_libraries(player PUBLIC ${BASE_LIBRARY})
     
     ``` C++
     OH_AVFormat *format = OH_AVFormat_Create();
-     
+    
+    // ...
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, sampleInfo.videoWidth);
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, sampleInfo.videoHeight);
     OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, sampleInfo.frameRate);
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, sampleInfo.pixelFormat);
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_ROTATION, sampleInfo.rotation);
-     
+    
+    // ...
     int ret = OH_LowPowerVideoSink_Configure(lppVideoStreamer_, format);
     ```
 
