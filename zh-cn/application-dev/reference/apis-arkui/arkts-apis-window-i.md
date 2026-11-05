@@ -293,8 +293,8 @@
 
 1. 应用通过[setWindowLimits](arkts-apis-window-Window.md#setwindowlimits11)设置窗口尺寸限制。
 2. 应用在[startAbility](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2)拉起窗口时通过[StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)指定窗口尺寸限制（API version 17开始支持）。
-3. 应用在[module.json5配置文件中的abilities标签](../../quick-start/module-configuration-file.md#abilities标签)中配置windowLimits。
-4. 默认系统限制（基于不同产品和窗口类型，其windowLimits系统默认限制存在差异）。
+3. 应用在[module.json5配置文件中的abilities标签](../../quick-start/module-configuration-file.md#abilities标签)中配置WindowLimits。
+4. 默认系统限制（基于不同产品和窗口类型，其WindowLimits系统默认限制存在差异）。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
