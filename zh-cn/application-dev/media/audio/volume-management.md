@@ -204,7 +204,7 @@ import { audio } from '@kit.AudioKit';
 
 | 流类型（StreamUsage） | PC上对应的系统音量类型 |
 | -------- | -------- |
-| STREAM_USAGE_MUSIC<br>STREAM_USAGE_MOVIE<br>STREAM_USAGE_GAME<br>STREAM_USAGE_AUDIOBOOK<br>STREAM_USAGE_VOICE_COMMUNICATION<br>STREAM_USAGE_VIDEO_COMMUNICATION<br>STREAM_USAGE_VOICE_MESSAGE<br>STREAM_USAGE_RINGTONE<br>STREAM_USAGE_ALARM<br>STREAM_USAGE_VOICE_ASSISTANT<br>STREAM_USAGE_ACCESSIBILITY | 媒体音量 |
+| STREAM_USAGE_MUSIC<br>STREAM_USAGE_MOVIE<br>STREAM_USAGE_GAME<br>STREAM_USAGE_AUDIOBOOK<br>STREAM_USAGE_VOICE_COMMUNICATION<br>STREAM_USAGE_VIDEO_COMMUNICATION<br>STREAM_USAGE_VOICE_MESSAGE<br>STREAM_USAGE_RINGTONE<br>STREAM_USAGE_ALARM<br>STREAM_USAGE_VOICE_ASSISTANT<br>STREAM_USAGE_ACCESSIBILITY | 输出音量 |
 | STREAM_USAGE_NOTIFICATION | 系统音量 |
 
 与手机等形态相比，PC设备形态的系统音量映射存在以下差异：
@@ -213,6 +213,7 @@ import { audio } from '@kit.AudioKit';
 - **铃声/闹钟音量合并到媒体音量**：铃声、闹钟在PC上使用媒体音量，不提供单独的铃声、闹钟音量调节入口。
 - **通知音量合并到系统音量**：PC上没有独立的通知音量，系统提示音与通知音统一由系统音量控制。
 - **不提供独立的铃声模式调节入口**：PC上铃声已合并到媒体音量，设置界面不提供独立的铃声模式（静音/振动）调节入口。
+- **输出静音联动系统静音**：PC的输出音量静音时，系统音量会跟随一起静音，从而实现整机静音的效果。
 
 > **说明：**
 >
