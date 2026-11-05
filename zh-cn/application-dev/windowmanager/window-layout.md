@@ -169,7 +169,7 @@ const TAG = 'IndexPage';
   > 
   > - 不建议在除自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowstatus12)获取）外的其他窗口模式下使用以下接口。
   > 
-  > - 使用以下移动接口时，如果主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。只在除2in1设备的自由悬浮窗口上生效。
+  > - 使用以下移动接口时，如果主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。只在除PC/2in1设备的自由悬浮窗口上生效。
 
   | 接口 | 坐标系原点 | 说明 |
   | -------- | -------- | -------- |
