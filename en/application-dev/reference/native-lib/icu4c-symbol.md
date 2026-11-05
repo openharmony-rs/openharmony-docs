@@ -6,7 +6,7 @@
 <!--Designer: @sunyaozu-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=7b6457384d7436049674f0ad05334900db2e0f92 translatedAt=2026-11-04T04:18:37.304Z pushedAt=2026-11-04T08:04:44.634Z nl=1 -->
+<!-- md-trans-meta sourceCommit=7b6457384d7436049674f0ad05334900db2e0f92 translatedAt=2026-11-04T12:08:24.722Z pushedAt=2026-11-04T12:09:51.122Z nl=1 -->
 
 |Type|Symbol|Start API Version|
 | --- | --- | --- |

@@ -2,11 +2,12 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @zhangyao75477-->
-<!--Designer: @qiu-gongkai-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=de20a970584b932eea9895c9f5355c8d2b47458e translatedAt=2026-11-04T10:55:21.292Z pushedAt=2026-11-04T11:20:33.951Z nl=1 -->
 
-Implements a **NativeMediaPlayerSurfaceInfo** object to provide the surface information used for same-layer rendering [when the application takes over the media playback of the web page](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12).
+NativeMediaPlayerSurfaceInfo uses [enableNativeMediaPlayer](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12) to configure the surface information for same-layer rendering. This class allows an app to take over the web media playback functionality, configuring the surface ID and position information to integrate web media content with the app UI through same-layer rendering and enhance the media playback experience.
 
 > **NOTE**
 >
@@ -22,5 +23,5 @@ Implements a **NativeMediaPlayerSurfaceInfo** object to provide the surface info
 
 | Name| Type| Read-Only| Optional | Description|
 |------|------|------|------|------|
-| id<sup>12+</sup> | string | No| No| Surface ID, which is the **psurfaceid** of the native image used for rendering at the same layer.<br>For details, see [NativeEmbedDataInfo](./arkts-basic-components-web-i.md#nativeembeddatainfo11).|
-| rect<sup>12+</sup> | [RectEvent](./arkts-apis-webview-i.md#rectevent12) | No| No| Position of the surface.|
+| id<sup>12+</sup> | string | No | No | ID of the surface, which is the surfaceId of the NativeImage used for same-layer rendering.<br>For details, see [NativeEmbedDataInfo](./arkts-basic-components-web-i.md#nativeembeddatainfo11). |
+| rect<sup>12+</sup> | [RectEvent](./arkts-apis-webview-i.md#rectevent12) | No | No | Position information of the surface, which is used to specify the display position and size of the surface during same-layer rendering. |

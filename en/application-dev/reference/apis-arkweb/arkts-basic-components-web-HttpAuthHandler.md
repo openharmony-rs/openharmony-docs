@@ -2,17 +2,18 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-11-04T11:18:00.848Z pushedAt=2026-11-04T11:23:46.552Z nl=1 -->
 
-Implements the **HttpAuthHandler** object. For details about the sample code, see [onHttpAuthRequest](./arkts-basic-components-web-events.md#onhttpauthrequest9).
+HttpAuthHandler is a handler class used by the Web component to process HTTP authentication requests. When the server returns 401 Unauthorized to request authentication, the Web component obtains an HttpAuthHandler instance through the onHttpAuthRequest event callback, and the app decides whether to provide authentication credentials. For sample code, see [onHttpAuthRequest](./arkts-basic-components-web-events.md#onhttpauthrequest9).
 
 > **NOTE**
 >
-> - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - The initial APIs of this class are supported since API version 9.
+> - This class is supported since API version 9.
 >
 > - The sample effect is subject to the actual device.
 
@@ -44,20 +45,20 @@ Performs HTTP authentication with the user name and password provided by the use
 
 | Name     | Type  | Mandatory | Description      |
 | -------- | ------ | ---- | ---------- |
-| userName | string | Yes  | HTTP authentication user name.|
-| password      | string | Yes  | HTTP authentication password. |
+| userName | string | Yes | HTTP authentication user name. It is recommended to pass a non-empty string. |
+| password      | string | Yes | HTTP authentication password. It is recommended to pass a non-empty string.  |
 
 **Return value**
 
 | Type     | Description                   |
 | ------- | --------------------- |
-| boolean | **true** is returned if the authentication is successful; otherwise, **false** is returned.|
+| boolean | The return value only indicates the API call status, not the authentication result. true indicates that the call is successful, and false indicates that the call fails. |
 
 ## isHttpAuthInfoSaved<sup>9+</sup>
 
 isHttpAuthInfoSaved(): boolean
 
-Sets whether to use the account name and password cached on the server for authentication.
+Checks whether the credentials stored for the current host are applicable. The credentials are not applicable if they have been rejected by the server in the current request.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -65,4 +66,4 @@ Sets whether to use the account name and password cached on the server for authe
 
 | Type     | Description                       |
 | ------- | ------------------------- |
-| boolean | **true** is returned if the authentication is successful; otherwise, **false** is returned.|
+| boolean | Returns true when the stored credentials are applicable, and returns false otherwise. |

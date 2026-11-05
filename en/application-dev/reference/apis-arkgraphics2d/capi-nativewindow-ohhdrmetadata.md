@@ -1,11 +1,13 @@
 # OHHDRMetaData
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-```
+<!-- md-trans-meta sourceCommit=c9742d4d4a757fbb6f0510281af0e732af135c64 translatedAt=2026-11-04T10:33:27.902Z pushedAt=2026-11-04T10:35:28.152Z nl=2 -->
+
+```c
 typedef struct {...} OHHDRMetaData
 ```
 
@@ -29,3 +31,4 @@ Describes the HDR metadata.
 | ------------------------------------------------------------ | ----------------- |
 | [OHHDRMetadataKey](capi-external-window-h.md#ohhdrmetadatakey) key | HDR metadata key.|
 | float value                                                  | Value of the key. |
+

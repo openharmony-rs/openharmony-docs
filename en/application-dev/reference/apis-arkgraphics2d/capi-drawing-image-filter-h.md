@@ -2,14 +2,15 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=357665bbb6caa6d8123e7eb4a2cbf8a969d1a249 translatedAt=2026-11-04T10:26:44.517Z pushedAt=2026-11-04T10:29:36.206Z nl=1 -->
 
 ## Overview
 
-This file declares the functions related to the image filter in the drawing module.
+Declares functions related to the image filter object in the drawing module.<br>This module adopts a single-thread model policy, and the caller must manage thread safety and context state switching.
 
 **File to include**: <native_drawing/drawing_image_filter.h>
 
@@ -201,3 +202,5 @@ Destroys an **OH_Drawing_ImageFilter** object and reclaims the memory occupied b
 | Name| Description|
 | -- | -- |
 | [OH_Drawing_ImageFilter](capi-drawing-oh-drawing-imagefilter.md)* imageFilter | Pointer to an [OH_Drawing_ImageFilter](capi-drawing-oh-drawing-imagefilter.md) object.|
+
+

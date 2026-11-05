@@ -2,19 +2,30 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @qq_42700029-->
-<!--Designer: @qiu-gongkai-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=1e9d7894dc2ab962288e1d5089fec42d46f9817c translatedAt=2026-11-04T11:20:27.190Z pushedAt=2026-11-04T11:28:00.127Z nl=1 -->
 
-Implements the **PermissionRequest** object. For details about the sample code, see [onPermissionRequest](./arkts-basic-components-web-events.md#onpermissionrequest9).
+PermissionRequest is an object used by the Web component to grant or deny permission requests. When a web page attempts to access protected system resources (such as the camera, microphone, geolocation, and so on), the ArkWeb kernel sends a permission request to the application through the [onPermissionRequest](./arkts-basic-components-web-events.md#onpermissionrequest9) event callback, and the application uses the PermissionRequest object to decide whether to grant these requests. This object is suitable for scenarios where the application needs to manage web page access permissions to sensitive resources, protect user privacy, and ensure secure and controllable resource access, helping developers flexibly handle web page permission requests.
 
 > **NOTE**
 >
-> - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. For newly added APIs in later versions, the initial version of each API is marked separately with a superscript.
 >
-> - The initial APIs of this class are supported since API version 9.
+> - This class is supported since API version 9.
 >
-> - The sample effect is subject to the actual device.
+> - The sample effects are subject to the actual running on a real device.
+>
+> - The [grant](./arkts-basic-components-web-PermissionRequest.md#grant9)() and [deny](./arkts-basic-components-web-PermissionRequest.md#deny9)() methods are mutually exclusive. For the same PermissionRequest object, only one of them can be called.
+>
+> - After grant() or deny() is called, the PermissionRequest object has completed its response and cannot be called repeatedly.
+>
+> - A PermissionRequest object that has not called any method to respond will cause the permission request to time out.
+>
+> - The resources parameter of the grant() method usually uses the return value of the getAccessibleResource() method.
+>
+> - Typical usage flow: call getAccessibleResource() to obtain the requested resource list, select the resources to be authorized, and then call grant() to authorize them.
 
 ## constructor<sup>9+</sup>
 
@@ -50,7 +61,7 @@ Obtains the origin of this web page.
 
 getAccessibleResource(): Array\<string\>
 
-Obtains the list of accessible resources requested for the web page. For details about the resource types, see [ProtectedResourceType](./arkts-basic-components-web-e.md#protectedresourcetype9).
+Obtains the list of permission resources requested by the web page. For details about the type, see [ProtectedResourceType](./arkts-basic-components-web-e.md#protectedresourcetype9).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -64,7 +75,7 @@ Obtains the list of accessible resources requested for the web page. For details
 
 grant(resources: Array\<string\>): void
 
-Grants the permission for resources requested by the web page.
+Grants the permission requested by the web page.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -72,4 +83,4 @@ Grants the permission for resources requested by the web page.
 
 | Name      | Type           | Mandatory  | Description           |
 | --------- | --------------- | ---- | --------------- |
-| resources | Array\<string\> | Yes  | List of resources that can be requested by the web page with the permission to grant.|
+| resources | Array\<string\> | Yes   | List of permission resources granted to the web page, which must be obtained through getAccessibleResource(). For the type, see [ProtectedResourceType](./arkts-basic-components-web-e.md#protectedresourcetype9). After this parameter is passed in, the web page will obtain access to the specified resources. If an empty list is passed in, all permission requests are denied. |

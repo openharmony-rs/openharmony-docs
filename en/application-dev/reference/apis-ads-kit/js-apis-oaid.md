@@ -5,7 +5,7 @@
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
-<!-- md-trans-meta sourceCommit=0c8a16f2f37045e8dab4d32079468a2615074183 translatedAt=2026-10-09T12:19:14.581Z pushedAt=2026-10-10T09:42:16.760Z -->
+<!-- md-trans-meta sourceCommit=2a36eb7b8d62796367f055f20f554d9487c340ff translatedAt=2026-11-04T10:20:38.197Z pushedAt=2026-11-04T10:29:00.187Z nl=1 -->
 
 
 This module provides the capability of obtaining the Open Anonymous Device Identifier (OAID).
@@ -102,6 +102,7 @@ For details about the error codes, see [OAID Error Codes](errorcode-oaid.md).
 ```typescript
 import { identifier } from '@kit.AdsKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 identifier.getOAID((err: BusinessError, data: string) => {
   if (err.code) {
