@@ -504,7 +504,7 @@ async function setupPlayer() {
 | enablePause | boolean | 否 | 是 | 表示录屏过程中是否允许暂停录屏。<br>true表示允许，false表示不允许。默认是false。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 | enableAEC | boolean | 否 | 是 | 表示当麦克风采集开启时，是否开启回声检测与回声消除功能。<br>true表示开启回声消除功能，false表示关闭回声消除功能，默认值为false。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 | enableHDR | boolean | 否 | 是 | 录屏指定是否以HDR格式输出图像。<br> true表示图像为HDR格式，false表示图像为SDR格式。<br> 默认值为false。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
-| contentAutoPauseScenes | Array<[AVScreenCaptureAutoPauseCaptureScene](arkts-apis-media-e.md#avscreencaptureautopausecapturescene)> | 否 | 是 | 设置自动暂停屏幕内容采集的场景集合。<br>当采集会话运行时，若场景集合中的任一场景发生，系统将自动暂停屏幕内容采集。<br>可通过OH_AVScreenCapture_ResumeScreenCapture()接口恢复屏幕内容采集。<br>默认不自动暂停屏幕内容采集（即不设置该参数时的默认行为）。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| contentAutoPauseScenes | Array<[AVScreenCaptureAutoPauseCaptureScene](arkts-apis-media-e.md#avscreencaptureautopausecapturescene)> | 否 | 是 | 设置自动暂停屏幕内容采集的场景集合。<br>当采集会话运行时，若场景集合中的任一场景发生，系统将自动暂停屏幕内容采集。<br>可通过[resumeRecording](arkts-apis-media-AVScreenCaptureRecorder.md#resumerecording)方法恢复屏幕内容采集。<br>默认不自动暂停屏幕内容采集（即不设置该参数时的默认行为）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0|
 
 ## AVScreenCaptureRecordConfig<sup>12+</sup>
 
