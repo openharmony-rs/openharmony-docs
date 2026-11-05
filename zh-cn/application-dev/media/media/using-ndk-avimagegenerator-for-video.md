@@ -72,10 +72,6 @@ target_link_libraries(entry PUBLIC libavmetadata_extractor.so libnative_media_co
    <!-- @[OH_AVImageGenerator_SetFDSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorNDK/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
-   int64_t offset = 0; // 媒体源在文件描述符中的偏移量。
-   int32_t fileDescribe = -1; // 媒体文件描述符。
-   int64_t fileSize = 0; // 媒体文件大小。
-   // ...
    // 设置视频资源的文件描述符。
    OH_AVErrCode avErrCode = OH_AVImageGenerator_SetFDSource(generator, fileDescribe, offset, fileSize);
    // 异常处理。

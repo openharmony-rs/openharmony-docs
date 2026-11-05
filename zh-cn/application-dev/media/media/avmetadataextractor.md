@@ -43,7 +43,7 @@ status: active
      let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
      // 获取rawfile目录下资源文件描述符，设置fdSrc属性。
      // 获取当前组件所在Ability的Context，并通过Context获取应用文件路径。
-     let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
      // 设置fdSrc，test.mp3为rawfile目录下的预置资源，需要开发者根据实际情况进行替换。
      avMetadataExtractor.fdSrc = await context.resourceManager.getRawFd('test.mp3');
      ```
