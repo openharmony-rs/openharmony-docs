@@ -8,7 +8,7 @@ USB（Universal Serial Bus）通用串行总线，包含了主机端（Host）�
 
 OpenHarmony系统USB模块支持USB业务的开发，提供USB相关的功能，提供用户态第三方功能驱动的USB设备数据读写接口，以及提供创建和删除USB设备，接口的事件获取、打开和关闭等，管道同步异步读写通信，设置USB自定义属性等。
 
-USB DDK（USB DriverDevelop Kit）是HDF驱动框架为开发者提供的USB驱动程序开发套件，包括USB Host DDK及USB Device DDK两部分，支持基于用户态开发USB设备驱动的同时，还提供了丰富的USB驱动开发能力，让广大开发者能精准且高效的开发USB驱动程序。
+USB DDK（USB Driver Development Kit）是HDF驱动框架为开发者提供的USB驱动程序开发套件，包括USB Host DDK及USB Device DDK两部分，支持基于用户态开发USB设备驱动的同时，还提供了丰富的USB驱动开发能力，让广大开发者能精准且高效的开发USB驱动程序。
 
 ### 基本概念
 
@@ -76,7 +76,7 @@ USB Device DDK向开发者提供了设备端USB驱动开发能力。例如，USB
 
 ### 场景介绍
 
-USB Host DDK为开发者提供了普通模式和专家模式，普通模式下，开发者可通过USB DDK API直接完成相关USB数据读写操作，不需要过多关注底层的传输细节。专家模式下，开发者通过USB RAW API直接访问OS平台中USB通道的接口，自定义实现更加复杂的功能。USB Device DDk为开发者提供了管理USB设备、接口定义及USB数据请求等功能。下文将介绍相关API。
+USB Host DDK为开发者提供了普通模式和专家模式，普通模式下，开发者可通过USB DDK API直接完成相关USB数据读写操作，不需要过多关注底层的传输细节。专家模式下，开发者通过USB RAW API直接访问OS平台中USB通道的接口，自定义实现更加复杂的功能。USB Device DDK为开发者提供了管理USB设备、接口定义及USB数据请求等功能。下文将介绍相关API。
 
 ### 接口说明
 
@@ -345,7 +345,7 @@ USB驱动基于HDF框架、Platform和OSAL基础接口进行开发，不区分�
     };
     ```
 
-2. 创建设备。描述符构造完成后，使用UsbFnDeviceCreate函数创建一个USB设备，并传入UDC控制器和UsbFnDescriptorData结构体。
+2. 创建设备。描述符构造完成后，使用UsbFnCreateDevice函数创建一个USB设备，并传入UDC控制器和UsbFnDescriptorData结构体。
 
     ```cpp
     if (useHcs == 0) { // 使用代码编写的描述符
@@ -474,7 +474,7 @@ static int32_t SerialCtrlMsg(struct AcmDevice *acm, uint8_t request, uint16_t va
     }
     uint16_t index = acm->intPipe->interfaceId;
     struct UsbControlParams controlParams = {};
-    struct UsbRequestParams parmas = {}; // 定义一个USB请求参数对象
+    struct UsbRequestParams params = {}; // 定义一个USB请求参数对象
     if (acm->ctrlReq == NULL) {
         // 为获取到的UsbInterfaceHandle预先分配待发送的IO Request对象
         acm->ctrlReq = UsbAllocRequest(acm->ctrDevHandle, 0, len);
@@ -493,17 +493,17 @@ static int32_t SerialCtrlMsg(struct AcmDevice *acm, uint8_t request, uint16_t va
     controlParams.data = buf;
     controlParams.size = len;
 
-    parmas.interfaceId = USB_CTRL_INTERFACE_ID; // 定义USB控制接口的默认ID
+    params.interfaceId = USB_CTRL_INTERFACE_ID; // 定义USB控制接口的默认ID
     if (acm->ctrPipe != NULL) {
-        parmas.pipeAddress = acm->ctrPipe->pipeAddress; 
-        parmas.pipeId = acm->ctrPipe->pipeId;
+        params.pipeAddress = acm->ctrPipe->pipeAddress; 
+        params.pipeId = acm->ctrPipe->pipeId;
     }
-    parmas.requestType = USB_REQUEST_PARAMS_CTRL_TYPE; // 控制类型
-    parmas.timeout = USB_CTRL_SET_TIMEOUT; // 设置超时时间
-    parmas.ctrlReq = UsbControlSetUp(&controlParams);
-    parmas.callback = NULL;
+    params.requestType = USB_REQUEST_PARAMS_CTRL_TYPE; // 控制类型
+    params.timeout = USB_CTRL_SET_TIMEOUT; // 设置超时时间
+    params.ctrlReq = UsbControlSetUp(&controlParams);
+    params.callback = NULL;
     // 根据params填充预先分配的IO Request
-    ret = UsbFillRequest(acm->ctrlReq, acm->ctrDevHandle, &parmas);
+    ret = UsbFillRequest(acm->ctrlReq, acm->ctrDevHandle, &params);
     if (ret != HDF_SUCCESS) {
         HDF_LOGE("%s: UsbFillRequest failed, ret = %d ", __func__, ret);
         return ret;
@@ -640,7 +640,7 @@ ERROR:
 static int32_t AcmAllocReadRequests(struct AcmDevice *acm)
 {
     int32_t ret;
-    struct UsbRequestParams readParmas = {};
+    struct UsbRequestParams readParams = {};
     for (int32_t i = 0; i < ACM_NR; i++) {
         // 分配待发送的readReq IO Request对象
         acm->readReq[i] = UsbAllocRequest(InterfaceIdToHandle(acm, acm->dataInPipe->interfaceId), 0, acm->readSize);
@@ -648,18 +648,18 @@ static int32_t AcmAllocReadRequests(struct AcmDevice *acm)
             HDF_LOGE("readReq request failed\n");
             goto ERROR;
         }
-        readParmas.userData = (void *)acm;
-        readParmas.pipeAddress = acm->dataInPipe->pipeAddress;
-        readParmas.pipeId = acm->dataInPipe->pipeId;
-        readParmas.interfaceId = acm->dataInPipe->interfaceId;
-        readParmas.callback = AcmReadBulk;
-        readParmas.requestType = USB_REQUEST_PARAMS_DATA_TYPE; /* Data type */
-        readParmas.timeout = USB_CTRL_SET_TIMEOUT;
-        readParmas.dataReq.numIsoPackets = 0;
-        readParmas.dataReq.directon = (((uint8_t)acm->dataInPipe->pipeDirection) >> USB_PIPE_DIR_OFFSET) & 0x1;
-        readParmas.dataReq.length = (int)acm->readSize;
+        readParams.userData = (void *)acm;
+        readParams.pipeAddress = acm->dataInPipe->pipeAddress;
+        readParams.pipeId = acm->dataInPipe->pipeId;
+        readParams.interfaceId = acm->dataInPipe->interfaceId;
+        readParams.callback = AcmReadBulk;
+        readParams.requestType = USB_REQUEST_PARAMS_DATA_TYPE; /* Data type */
+        readParams.timeout = USB_CTRL_SET_TIMEOUT;
+        readParams.dataReq.numIsoPackets = 0;
+        readParams.dataReq.directon = (((uint8_t)acm->dataInPipe->pipeDirection) >> USB_PIPE_DIR_OFFSET) & 0x1;
+        readParams.dataReq.length = (int)acm->readSize;
         // 根据readParams填充预先分配待发送的readReq IO Request对象
-        ret = UsbFillRequest(acm->readReq[i], InterfaceIdToHandle(acm, acm->dataInPipe->interfaceId), &readParmas);
+        ret = UsbFillRequest(acm->readReq[i], InterfaceIdToHandle(acm, acm->dataInPipe->interfaceId), &readParams);
         if (ret != HDF_SUCCESS) {
             HDF_LOGE("%s: UsbFillRequest failed, ret=%d \n", __func__, ret);
             goto ERROR;
@@ -675,25 +675,25 @@ ERROR:
 static int32_t AcmAllocNotifyRequest(struct AcmDevice *acm)
 {
     int32_t ret;
-    struct UsbRequestParams intParmas = {};
+    struct UsbRequestParams intParams = {};
     // 分配待发送的中断IO Request对象
     acm->notifyReq = UsbAllocRequest(InterfaceIdToHandle(acm, acm->intPipe->interfaceId), 0, acm->intSize);
     if (!acm->notifyReq) {
         HDF_LOGE("notifyReq request failed.\n");
         return HDF_ERR_MALLOC_FAIL;
     }
-    intParmas.userData = (void *)acm;
-    intParmas.pipeAddress = acm->intPipe->pipeAddress;
-    intParmas.pipeId = acm->intPipe->pipeId;
-    intParmas.interfaceId = acm->intPipe->interfaceId;
-    intParmas.callback = AcmCtrlIrq;
-    intParmas.requestType = USB_REQUEST_PARAMS_DATA_TYPE;
-    intParmas.timeout = USB_CTRL_SET_TIMEOUT;
-    intParmas.dataReq.numIsoPackets = 0;
-    intParmas.dataReq.directon = (((uint8_t)acm->intPipe->pipeDirection) >> USB_PIPE_DIR_OFFSET) & DIRECTION_MASK;
-    intParmas.dataReq.length = (int)acm->intSize;
+    intParams.userData = (void *)acm;
+    intParams.pipeAddress = acm->intPipe->pipeAddress;
+    intParams.pipeId = acm->intPipe->pipeId;
+    intParams.interfaceId = acm->intPipe->interfaceId;
+    intParams.callback = AcmCtrlIrq;
+    intParams.requestType = USB_REQUEST_PARAMS_DATA_TYPE;
+    intParams.timeout = USB_CTRL_SET_TIMEOUT;
+    intParams.dataReq.numIsoPackets = 0;
+    intParams.dataReq.directon = (((uint8_t)acm->intPipe->pipeDirection) >> USB_PIPE_DIR_OFFSET) & DIRECTION_MASK;
+    intParams.dataReq.length = (int)acm->intSize;
     // 填充预先分配的中断IO Request
-    ret = UsbFillRequest(acm->notifyReq, InterfaceIdToHandle(acm, acm->intPipe->interfaceId), &intParmas);
+    ret = UsbFillRequest(acm->notifyReq, InterfaceIdToHandle(acm, acm->intPipe->interfaceId), &intParams);
     if (ret != HDF_SUCCESS) {
         HDF_LOGE("%s: UsbFillRequest failed, ret = %d", __func__, ret);
         goto ERROR;
@@ -1683,7 +1683,7 @@ USB ACM设备核心代码路径为drivers\peripheral\usb\gadget\function\acm\cdc
         }
         //释放通知请求
         AcmFreeCtrlRequests(acm);
-        AcmFreeNotifyRequest(acm);
+        AcmFreeNotifyReqeust(acm);
          /* 停止接收Event EP0控制传输 */
         (void)UsbFnCloseInterface(acm->ctrlIface.handle);
         (void)UsbFnCloseInterface(acm->dataIface.handle);
