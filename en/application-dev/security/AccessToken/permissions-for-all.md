@@ -850,6 +850,34 @@ With this permission, the application can query vehicle privacy agreements or po
 
 **Since**: 26.0.1
 
+## ohos.permission.vehicle.HIMA_DATA_READ
+ 
+Allows an application to read data from the HIMA cloud.
+ 
+With this permission, the application can read vehicle-related data from the HIMA cloud.
+ 
+**Permission level**: normal
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+ 
+## ohos.permission.vehicle.HIMA_DATA_WRITE
+ 
+Allows an application to write data to the HIMA cloud.
+ 
+With this permission, the application can write vehicle-related data to the HIMA cloud.
+ 
+**Permission level**: normal
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+
 ## ohos.permission.kernel.USB_CAPTURE
 
 Allows an application to capture USB data packets.
