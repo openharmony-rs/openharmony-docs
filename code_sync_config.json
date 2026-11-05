@@ -47290,7 +47290,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h",
 				"functions":[
 					{
-						"end_line":195,
+						"end_line":220,
 						"name":"import_header",
 						"start_line":18
 					}
@@ -47325,7 +47325,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h",
 				"functions":[
 					{
-						"end_line":195,
+						"end_line":220,
 						"name":"import_header",
 						"start_line":18
 					}
@@ -47405,7 +47405,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h",
 				"functions":[
 					{
-						"end_line":195,
+						"end_line":220,
 						"name":"import_header",
 						"start_line":18
 					}
@@ -47460,7 +47460,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h",
 				"functions":[
 					{
-						"end_line":195,
+						"end_line":220,
 						"name":"import_header",
 						"start_line":18
 					}
@@ -47515,7 +47515,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h",
 				"functions":[
 					{
-						"end_line":195,
+						"end_line":220,
 						"name":"import_header",
 						"start_line":18
 					}
@@ -47530,9 +47530,9 @@
 						"start_line":475
 					},
 					{
-						"end_line":1496,
+						"end_line":1471,
 						"name":"photo_available",
-						"start_line":1334
+						"start_line":1309
 					},
 					{
 						"end_line":811,
@@ -55392,9 +55392,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets",
 				"functions":[
 					{
-						"end_line":134,
+						"end_line":136,
 						"name":"camera_getPhotoOutput",
-						"start_line":117
+						"start_line":119
 					},
 					{
 						"end_line":939,
@@ -55407,9 +55407,9 @@
 						"start_line":940
 					},
 					{
-						"end_line":736,
+						"end_line":860,
 						"name":"photo_asset_available",
-						"start_line":676
+						"start_line":800
 					}
 				]
 			}
@@ -55442,14 +55442,14 @@
 						"start_line":1033
 					},
 					{
-						"end_line":793,
+						"end_line":940,
 						"name":"camera_video_frameStart",
-						"start_line":788
+						"start_line":933
 					},
 					{
-						"end_line":798,
+						"end_line":948,
 						"name":"camera_video_frameEnd",
-						"start_line":794
+						"start_line":941
 					},
 					{
 						"end_line":803,
@@ -55467,14 +55467,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets",
 				"functions":[
 					{
-						"end_line":134,
+						"end_line":136,
 						"name":"camera_getPhotoOutput",
-						"start_line":117
+						"start_line":119
 					},
 					{
-						"end_line":675,
+						"end_line":799,
 						"name":"camera_photoAvailable",
-						"start_line":630
+						"start_line":754
 					},
 					{
 						"end_line":1198,
@@ -55482,9 +55482,9 @@
 						"start_line":1132
 					},
 					{
-						"end_line":342,
+						"end_line":419,
 						"name":"camera_capture",
-						"start_line":309
+						"start_line":387
 					},
 					{
 						"end_line":747,
@@ -55502,9 +55502,9 @@
 						"start_line":760
 					},
 					{
-						"end_line":773,
+						"end_line":897,
 						"name":"photoOutput_error",
-						"start_line":768
+						"start_line":892
 					}
 				]
 			}
