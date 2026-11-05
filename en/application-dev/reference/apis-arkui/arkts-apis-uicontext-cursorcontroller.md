@@ -1,12 +1,11 @@
 # Class (CursorController)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-08-05T03:04:10.359Z pushedAt=2026-08-06T00:58:08.341Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-02T12:39:54.509Z pushedAt=2026-11-05T07:18:38.640Z nl=1 -->
 
 Provides the capability to set mouse cursor styles, including restoring the default cursor style, setting a system cursor style, and setting a custom cursor style. It is suitable for scenarios where the mouse cursor display effect needs to be dynamically adjusted based on interface interaction states, helping improve the clarity of interface interaction cues.
 
@@ -64,7 +63,6 @@ struct CursorControlExample {
   }
 }
 ```
-
 ![cursor-restoreDefault](figures/cursor-restoreDefault.gif)
 
 ## setCursor<sup>12+</sup>
@@ -87,7 +85,7 @@ Sets the cursor style.
 
 | Name    | Type                                      | Mandatory  | Description     |
 | ------- | ---------------------------------------- | ---- | ------- |
-| value | [PointerStyle](arkts-apis-uicontext-t.md#pointerstyle12) | Yes    | Mouse cursor style. It specifies the system-defined cursor type to set, such as arrow, hand pointer, and crosshair. For details about the meaning of each style, see the PointerStyle enum description. |
+| value | [PointerStyle](arkts-apis-uicontext-t.md#pointerstyle12) | Yes | Mouse cursor style, specifying the system-defined cursor type to set (such as arrow, hand pointer, and crosshair). For the meaning of each style, see the **PointerStyle** enumeration description. |
 
 **Example**
 
@@ -116,7 +114,6 @@ struct CursorControlExample {
   }
 }
 ```
-
 ![cursor-setCursor](figures/cursor-setCursor.gif)
 
 ## setCustomCursor
@@ -184,11 +181,19 @@ struct CustomCursorExample {
       const buffer = fileData.buffer.slice(0);
       // 3. Create an ImageSource.
       const imageSource = image.createImageSource(buffer);
-      // 4. Create a PixelMap (you can specify the desired size).
-      const pixelMap = await imageSource.createPixelMap({
-        desiredSize: { width: 32, height: 32 }
-      });
-      this.pixelMap = pixelMap;
+      try {
+        // 4. Create a PixelMap object (you can specify the expected size).
+        const pixelMap = await imageSource.createPixelMap({
+          desiredSize: { width: 32, height: 32 }
+        });
+        if (this.pixelMap !== undefined) {
+          this.pixelMap.release();
+        }
+        this.pixelMap = pixelMap;
+      } finally {
+        imageSource.release();
+      }
+
       console.info('Custom cursor loaded successfully');
     } catch (error) {
       let err = error as BusinessError;

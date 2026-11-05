@@ -5,14 +5,17 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=351b0e0181e93f32d7c3404bfca57b0044c5218c translatedAt=2026-11-02T12:47:25.158Z pushedAt=2026-11-05T09:08:30.572Z nl=1 -->
 
-Provides the capability to draw overlays.
+Provides the capability to draw overlays. **OverlayManager** allows you to manage overlay nodes by setting layer levels, display orders, and display modes. It is suitable for scenarios where overlays need to be displayed for a long time above pages but below dialogs, popups, and menus. This class provides flexible overlay management capabilities.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The initial APIs of this class are supported since API version 12.
+>
+> - The APIs of this module can be used only in the stage model.
 >
 > - In the following API examples, you must first use [getOverlayManager()](arkts-apis-uicontext-uicontext.md#getoverlaymanager12) in **UIContext** to obtain an **OverlayManager** instance, and then call the APIs using the obtained instance.
 >
@@ -22,11 +25,125 @@ Provides the capability to draw overlays.
 >
 > - For properties related to **OverlayManager**, you are advised to use AppStorage for global storage across the application to prevent changes in property values when switching pages, which could lead to service errors.
 
+## openOrderOverlay
+
+openOrderOverlay(content: ComponentContent, options?: OrderOverlayOptions): Promise&lt;void&gt;
+
+Opens an overlay that supports level configuration on **OverlayManager**. The content of the overlay is determined by the **content** parameter. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name     | Type                                       | Mandatory    | Description          |
+| ------- | ---------------------------------------- | ------ | ----------- |
+| content | [ComponentContent](js-apis-arkui-ComponentContent.md#componentcontent-1) | Yes    | Content to be displayed on the overlay. This content node needs to be added to **OverlayManager**.<br>**NOTE**<br> By default, the new node is centered on the page and stacked according to its stacking level.|
+| options | [OrderOverlayOptions](#orderoverlayoptions) | No    | Layer level configuration options of the overlay. If this parameter is not passed, the default configuration is used. |
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, no result is returned. If the operation fails, an error is thrown. For details about the error codes, see the error code description. |
+
+**Error codes**
+
+For details about the error codes, see [Popup Window Error Codes](errorcode-promptAction.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 103307 | The overlay cannot be opened due to the system pop-up window. |
+
+**Example**
+
+```ts
+import { ComponentContent, OverlayManager, LevelOrder, LevelMode } from '@kit.ArkUI';
+
+class Params {
+  text: string = '';
+  offset: Position;
+
+  constructor(text: string, offset: Position) {
+    this.text = text;
+    this.offset = offset;
+  }
+}
+
+@Builder
+function builderText(params: Params) {
+  Column() {
+    Text(params.text)
+      .fontSize(30)
+      .fontWeight(FontWeight.Bold)
+  }.offset(params.offset)
+}
+
+@Entry
+@Component
+struct OverlayExample {
+  @State message: string = 'ComponentContent';
+  private uiContext: UIContext = this.getUIContext();
+  private overlayNode: OverlayManager = this.uiContext.getOverlayManager();
+  @StorageLink('contentArray') contentArray: ComponentContent<Params>[] = [];
+
+  build() {
+    Column({ space: 5 }) {
+      Button('openOrderOverlay').onClick(() => {
+        let componentContent = new ComponentContent(
+          this.uiContext, wrapBuilder<[Params]>(builderText),
+          new Params(this.message, { x: 0, y: 110 })
+        );
+        this.contentArray.push(componentContent);
+        this.overlayNode.openOrderOverlay(componentContent, {
+          levelOrder: LevelOrder.clamp(100),
+          levelMode: LevelMode.OVERLAY
+        });
+      })
+      Button('close overlay').onClick(() => {
+        if (this.contentArray.length > 0) {
+          this.overlayNode.removeComponentContent(this.contentArray.pop());
+        } else {
+          console.info('Incorrect arrayIndex');
+        }
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## OrderOverlayOptions
+
+Defines the layer level configuration options of the overlay.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name | Type | Read-Only | Optional | Description |
+| -------- | -------- | -------- |--------| -------- |
+| levelOrder | [LevelOrder](js-apis-promptAction.md#levelorder18) | No | Yes | Display order of the overlay.<br>**NOTE**<br>- Default value: **LevelOrder.clamp(0)** |
+| levelMode | [LevelMode](js-apis-promptAction.md#levelmode15) | No | Yes | Display mode of the overlay.<br>**NOTE**<br>- Default value: **LevelMode.OVERLAY** |
+| levelUniqueId | number | No | Yes | Unique ID of the node under the layer level where the overlay is displayed, which is obtained by [getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12). The value must be greater than or equal to 0. This parameter takes effect only when **levelMode** is set to **LevelMode.EMBEDDED**. |
+
 ## addComponentContent<sup>12+</sup>
 
 addComponentContent(content: ComponentContent, index?: number): void
 
-Adds a specified **ComponentContent** node to the **OverlayManager**.
+Adds a specified node to **OverlayManager**. You can use the **index** parameter to control the level of the new node.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -36,8 +153,8 @@ Adds a specified **ComponentContent** node to the **OverlayManager**.
 
 | Name    | Type                                      | Mandatory  | Description         |
 | ------- | ---------------------------------------- | ---- | ----------- |
-| content | [ComponentContent](js-apis-arkui-ComponentContent.md) | Yes   | Content to add to the target node on the **OverlayManager**.<br>**NOTE**<br> By default, the new node is centered on the page and stacked according to its stacking level.|
-| index | number | No   | Stacking level of the new node on the **OverlayManager**.<br>**NOTE**<br> If the value is greater than or equal to 0, a larger value means a higher layer for the **ComponentContent** node. If multiple **ComponentContent** nodes have the same index, the later-added ones appear above earlier ones.<br> If the value is less than 0, **null**, or **undefined**, the **ComponentContent** node is added at the highest level by default.<br>If the same **ComponentContent** node is added multiple times, only the last added one is retained.|
+| content | [ComponentContent](js-apis-arkui-ComponentContent.md) | Yes | Content to add to the target node on **OverlayManager**.<br>**NOTE**<br> By default, the new node is centered on the page and stacked according to its stacking level. |
+| index | number | No    | Stacking level of the new node on **OverlayManager**.<br>**NOTE**<br> If the value is greater than or equal to 0, a larger value means a higher layer for the **ComponentContent** node. If multiple **ComponentContent** nodes have the same index, the later-added ones appear above earlier ones.<br> If the value is less than **0**, **null**, or **undefined**, the **ComponentContent** node is added at the highest level by default.<br>If the same **ComponentContent** node is added multiple times, only the last added one is retained.|
 
 **Example**
 
@@ -45,7 +162,7 @@ Adds a specified **ComponentContent** node to the **OverlayManager**.
 import { ComponentContent, OverlayManager } from '@kit.ArkUI';
 
 class Params {
-  text: string = "";
+  text: string = '';
   offset: Position;
 
   constructor(text: string, offset: Position) {
@@ -72,17 +189,17 @@ struct OverlayExample {
   @StorageLink('contentArray') contentArray: ComponentContent<Params>[] = [];
   @StorageLink('componentContentIndex') componentContentIndex: number = 0;
   @StorageLink('arrayIndex') arrayIndex: number = 0;
-  @StorageLink("componentOffset") componentOffset: Position = { x: 0, y: 110 };
+  @StorageLink('componentOffset') componentOffset: Position = { x: 0, y: 110 };
 
   build() {
     Column({ space: 5 }) {
-      Button("++componentContentIndex: " + this.componentContentIndex).onClick(() => {
+      Button('++componentContentIndex: ' + this.componentContentIndex).onClick(() => {
         ++this.componentContentIndex;
       })
-      Button("--componentContentIndex: " + this.componentContentIndex).onClick(() => {
+      Button('--componentContentIndex: ' + this.componentContentIndex).onClick(() => {
         --this.componentContentIndex;
       })
-      Button("Add ComponentContent" + this.contentArray.length).onClick(() => {
+      Button('Add ComponentContent' + this.contentArray.length).onClick(() => {
         let componentContent = new ComponentContent(
           this.uiContext, wrapBuilder<[Params]>(builderText),
           new Params(this.message + (this.contentArray.length), this.componentOffset)
@@ -90,40 +207,40 @@ struct OverlayExample {
         this.contentArray.push(componentContent);
         this.overlayNode.addComponentContent(componentContent, this.componentContentIndex);
       })
-      Button("++arrayIndex: " + this.arrayIndex).onClick(() => {
+      Button('++arrayIndex: ' + this.arrayIndex).onClick(() => {
         ++this.arrayIndex;
       })
-      Button("--arrayIndex: " + this.arrayIndex).onClick(() => {
+      Button('--arrayIndex: ' + this.arrayIndex).onClick(() => {
         --this.arrayIndex;
       })
-      Button("Delete ComponentContent" + this.arrayIndex).onClick(() => {
+      Button('Delete ComponentContent' + this.arrayIndex).onClick(() => {
         if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
           let componentContent = this.contentArray.splice(this.arrayIndex, 1);
           this.overlayNode.removeComponentContent(componentContent.pop());
         } else {
-          console.info("Invalid arrayIndex.");
+          console.info('Incorrect arrayIndex');
         }
       })
-      Button("Show ComponentContent" + this.arrayIndex).onClick(() => {
+      Button('Show ComponentContent' + this.arrayIndex).onClick(() => {
         if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
           let componentContent = this.contentArray[this.arrayIndex];
           this.overlayNode.showComponentContent(componentContent);
         } else {
-          console.info("Invalid arrayIndex.");
+          console.info('Incorrect arrayIndex');
         }
       })
-      Button("Hide ComponentContent" + this.arrayIndex).onClick(() => {
+      Button('Hide ComponentContent' + this.arrayIndex).onClick(() => {
         if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
           let componentContent = this.contentArray[this.arrayIndex];
           this.overlayNode.hideComponentContent(componentContent);
         } else {
-          console.info("Invalid arrayIndex.");
+          console.info('Incorrect arrayIndex');
         }
       })
-      Button("Show All ComponentContent").onClick(() => {
+      Button('Show All ComponentContent').onClick(() => {
         this.overlayNode.showAllComponentContents();
       })
-      Button("Hide All ComponentContent").onClick(() => {
+      Button('Hide All ComponentContent').onClick(() => {
         this.overlayNode.hideAllComponentContents();
       })
     }
@@ -139,9 +256,9 @@ struct OverlayExample {
 
 addComponentContentWithOrder(content: ComponentContent, levelOrder?: LevelOrder): void
 
-Creates an overlay node with the specified display order.
+Creates an overlay node with the specified display order. This API allows you to define the display order of the nodes when they are created.
 
-This API allows you to define the stacking order of the nodes when they are created.
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -151,8 +268,8 @@ This API allows you to define the stacking order of the nodes when they are crea
 
 | Name    | Type                                      | Mandatory  | Description         |
 | ------- | ---------------------------------------- | ---- | ----------- |
-| content | [ComponentContent](js-apis-arkui-ComponentContent.md) | Yes   | Content to add to the target node on the **OverlayManager**.<br>**NOTE**<br> By default, the new node is centered on the page and stacked according to its stacking level.|
-| levelOrder | [LevelOrder](js-apis-promptAction.md#levelorder18) | No   | Display order of the new floating layer node.<br>**NOTE**<br>- Default value: **LevelOrder.clamp(0)**|
+| content | [ComponentContent](js-apis-arkui-ComponentContent.md) | Yes    | Content to add to the target node on **OverlayManager**.<br>**NOTE**<br> By default, the new node is centered on the page and stacked according to its stacking level.|
+| levelOrder | [LevelOrder](js-apis-promptAction.md#levelorder18) | No    | Display order of the new overlay node.<br>**NOTE**<br>- Default value: **LevelOrder.clamp(0)**|
 
 **Example**
 
@@ -162,7 +279,7 @@ This example demonstrates how to use **addComponentContentWithOrder** to create 
 import { ComponentContent, PromptAction, LevelOrder, UIContext, OverlayManager } from '@kit.ArkUI';
 
 class Params {
-  text: string = "";
+  text: string = '';
   offset: Position;
   constructor(text: string, offset: Position) {
     this.text = text;
@@ -188,7 +305,7 @@ struct Index {
   @StorageLink('contentArray') contentArray: ComponentContent<Params>[] = [];
   @StorageLink('componentContentIndex') componentContentIndex: number = 0;
   @StorageLink('arrayIndex') arrayIndex: number = 0;
-  @StorageLink("componentOffset") componentOffset: Position = { x: 0, y: 80 };
+  @StorageLink('componentOffset') componentOffset: Position = { x: 0, y: 80 };
 
   build() {
     Row() {
@@ -204,11 +321,11 @@ struct Index {
             this.overlayNode.addComponentContentWithOrder(componentContent, LevelOrder.clamp(100.1));
             let topOrder: LevelOrder = this.promptAction.getTopOrder();
             if (topOrder !== undefined) {
-              console.error('topOrder: ' + topOrder.getOrder());
+              console.info('topOrder: ' + topOrder.getOrder());
             }
             let bottomOrder: LevelOrder = this.promptAction.getBottomOrder();
             if (bottomOrder !== undefined) {
-              console.error('bottomOrder: ' + bottomOrder.getOrder());
+              console.info('bottomOrder: ' + bottomOrder.getOrder());
             }
           })
         Button('OverlayManager Top Overlay')
@@ -222,11 +339,11 @@ struct Index {
             this.overlayNode.addComponentContentWithOrder(componentContent, LevelOrder.clamp(100.2));
             let topOrder: LevelOrder = this.promptAction.getTopOrder();
             if (topOrder !== undefined) {
-              console.error('topOrder: ' + topOrder.getOrder());
+              console.info('topOrder: ' + topOrder.getOrder());
             }
             let bottomOrder: LevelOrder = this.promptAction.getBottomOrder();
             if (bottomOrder !== undefined) {
-              console.error('bottomOrder: ' + bottomOrder.getOrder());
+              console.info('bottomOrder: ' + bottomOrder.getOrder());
             }
           })
       }.width('100%')
@@ -241,7 +358,9 @@ struct Index {
 
 removeComponentContent(content: ComponentContent): void
 
-Removes a specified node from the **OverlayManager**.
+Removes a specified node from **OverlayManager**.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -255,13 +374,15 @@ Removes a specified node from the **OverlayManager**.
 
 **Example**
 
-See the example for [addComponentContent](#addcomponentcontent12).
+For details, see the example of [addComponentContent](#addcomponentcontent12).
 
 ## showComponentContent<sup>12+</sup>
 
 showComponentContent(content: ComponentContent): void
 
 Shows a specified **ComponentContent** node on the **OverlayManager**.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -275,13 +396,15 @@ Shows a specified **ComponentContent** node on the **OverlayManager**.
 
 **Example**
 
-See the example for [addComponentContent](#addcomponentcontent12).
+For details, see the example of [addComponentContent](#addcomponentcontent12).
 
 ## hideComponentContent<sup>12+</sup>
 
 hideComponentContent(content: ComponentContent): void
 
 Hides a specified **ComponentContent** node on the **OverlayManager**.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -295,7 +418,7 @@ Hides a specified **ComponentContent** node on the **OverlayManager**.
 
 **Example**
 
-See the example for [addComponentContent](#addcomponentcontent12).
+For details, see the example of [addComponentContent](#addcomponentcontent12).
 
 ## showAllComponentContents<sup>12+</sup>
 
@@ -303,13 +426,15 @@ showAllComponentContents(): void
 
 Shows all **ComponentContent** nodes on the **OverlayManager**.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Example**
 
-See the example for [addComponentContent](#addcomponentcontent12).
+For details, see the example of [addComponentContent](#addcomponentcontent12).
 
 ## hideAllComponentContents<sup>12+</sup>
 
@@ -317,10 +442,12 @@ hideAllComponentContents(): void
 
 Hides all **ComponentContent** nodes on the **OverlayManager**.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Example**
 
-See the example for [addComponentContent](#addcomponentcontent12).
+For details, see the example of [addComponentContent](#addcomponentcontent12).
