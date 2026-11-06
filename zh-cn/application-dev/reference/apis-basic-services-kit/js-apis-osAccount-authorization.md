@@ -122,7 +122,7 @@ requestBatchAuthorization(privileges: Array&lt;Privilege&gt;, context: UIAbility
 
 当应用处于前台且不存在有效授权时，将以模应用弹窗方式显示授权弹窗。若已存在有效授权，则会直接复用。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.Account.OsAccount
 
