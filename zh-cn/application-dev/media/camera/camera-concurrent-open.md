@@ -271,34 +271,29 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
      }
      // 保存avRecorder，供停止录制和释放时使用。
      this.avRecorder = avRecorder;
-     await this.prepareAVRecorderForConcurrent(videoProfileObj, curCameraDeviceFront, avRecorder, context);
-     let videoSurfaceId = await avRecorder.getInputSurface();
-     let videoOutput = cameraManager.createVideoOutput(videoProfileObj, videoSurfaceId);
-     if (videoOutput === undefined) {
-       return undefined;
-     }
-     return videoOutput;
-   }
-   ```
-   }
-   ```
-  
-7. 打开相机。通过[open](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#open18)以多摄同开状态打开指定相机。在使用[open](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#open18)接口前，请先查询接口是否支持并发能力集，并优先调用[getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18)方法，获取多摄同开状态下的相机并发能力集。请勿在未查询并发能力集的情况下使用[open](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#open18)，否则会导致打开相机失败。
-
    <!-- @[camera_openCamera_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
-   ```ts
-   async function initCamera(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice) {
+   
+   ``` TypeScript
+   async openCameraForConcurrent(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice) {
      let cameraInput: camera.CameraInput | undefined = undefined;
      try {
        cameraInput = cameraManager.createCameraInput(cameraDevice);
-       console.info('createCameraInputFn success');
+       console.info(`createCameraInputFn success`);
      } catch (error) {
        console.error(`createCameraInputFn failed`);
      }
      if (cameraInput === undefined) {
        return;
      }
+     try {
+       // 当前版本支持camera.CameraConcurrentType.CAMERA_LIMITED_CAPABILITY模式并发打开相机。
+       await cameraInput.open(camera.CameraConcurrentType.CAMERA_LIMITED_CAPABILITY);
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`createCameraInput failed, err code: ${err.code}.`);
+     }
+   }
+   ```
      let isOpenSuccess = false;
      try {
 
