@@ -163,7 +163,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
    ArkTS-Sta示例：
 
-   <!-- @[set_hapticparam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRendererAndHapticSampleJS-Sta/entry/src/main/ets/pages/haptic.ets) -->
+   <!-- @[set_hapticparam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRendererAndHapticSampleJS-Sta/entry/src/main/ets/pages/haptic.ets) -->  
    
    ``` TypeScript
    let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_NORMAL;
