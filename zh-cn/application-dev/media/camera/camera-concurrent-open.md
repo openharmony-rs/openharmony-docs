@@ -462,7 +462,29 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
    
    <!-- @[camera_setExposureMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    
+   <!-- @[camera_setZoomRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   
    ``` TypeScript
+   setZoomRatioFn(zoomRatio: number): void {
+     Logger.info(TAG, `setZoomRatioFn value ${zoomRatio}`);
+     // 获取支持的变焦范围
+     try {
+       let zoomRatioRange = this.getZoomRatioRange();
+       Logger.info(TAG, `getZoomRatioRange success: ${JSON.stringify(zoomRatioRange)}`);
+     } catch (error) {
+       let err = error as BusinessError;
+       Logger.error(TAG, `getZoomRatioRange fail: ${err.code}`);
+     }
+   
+     try {
+       this.session?.setZoomRatio(zoomRatio);
+       Logger.info(TAG, 'setZoomRatioFn success');
+     } catch (error) {
+       let err = error as BusinessError;
+       Logger.error(TAG, `setZoomRatioFn fail: ${err.code}`);
+     }
+   }
+   ```
    // 曝光。
    setExposureModeForConcurrentFn(exposureMode: camera.ExposureMode,
      session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
