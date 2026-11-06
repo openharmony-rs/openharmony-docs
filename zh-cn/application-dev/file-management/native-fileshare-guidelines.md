@@ -29,6 +29,8 @@
 
 - 在调用文件分享的相关接口前，需要申请权限："[ohos.permission.FILE_ACCESS_PERSIST](../security/AccessToken/restricted-permissions.md#ohospermissionfile_access_persist)"，申请方式请参考[选择申请权限的方式](../security/AccessToken/determine-application-mode.md)。
 
+- 从API version 26.0.1开始，新增外接存储介质授权保留机制。当外接存储介质（如U盘、TF卡等）拔出时，该介质下的临时授权会被清除，已持久化的授权记录会被保留（保留期限为30天）。当同一介质再次插入时，系统会自动恢复该介质下已保留的持久化授权至可用状态，无需用户重新授权。具体机制详见[外接存储介质授权保留机制](file-persistPermission.md#外接存储介质授权保留机制)。
+
 ## 开发步骤
 
 以下步骤描述了如何使用`FileShare`提供的Native API接口。
