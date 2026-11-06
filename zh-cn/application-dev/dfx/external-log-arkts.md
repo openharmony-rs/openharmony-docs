@@ -26,6 +26,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 
    ``` TypeScript
    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+   // ...
    import { fileIo } from '@kit.CoreFileKit';
    ```
 
