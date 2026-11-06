@@ -1914,7 +1914,7 @@ struct TabContentTest {
           TabContent() {
             Column() {
               FreezeBuildNode({ message: this.message })
-              // 请将$r('app.string.text3')替换为实际资源文件，在本示例中该资源文件的value值为"Tabs遍历后BuilderNode处于冻结："
+              // Replace $r('app.string.text3') with the actual resource file. In this example, the value of this resource file is "BuilderNode is frozen after Tabs traversal:".
               Text($r('app.string.text3'))
                 .fontWeight(FontWeight.Bold)
                 .margin({ top: 48, bottom: 48 })
@@ -2116,7 +2116,7 @@ struct PageTwoStack {
     NavDestination() {
       Column() {
         NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
-        // 请将$r('app.string.text1')替换为实际资源文件，在本示例中该资源文件的value值为"BuilderNode处于冻结"。
+        // Replace $r('app.string.text1') with the actual resource file. In this example, the value of this resource file is "BuilderNode is frozen".
         Text($r('app.string.text1'))
           .fontWeight(FontWeight.Bold)
           .margin({ top: 48, bottom: 48 })
@@ -2163,7 +2163,7 @@ struct TextBuilder {
   build() {
     Row() {
       Column() {
-        // 请在resources\base\element\string.json文件中配置name为'text2'的资源，在本示例中该资源的value值为"文本更新次数："。
+        // Configure a resource named 'text2' in the resources\base\element\string.json file. In this example, the value of this resource is "Text update count: ".
         Text(this.context.resourceManager.getStringByNameSync('text2') + `${this.message}`)
           .fontWeight(FontWeight.Bold)
           .margin({ top: 48, bottom: 48 })

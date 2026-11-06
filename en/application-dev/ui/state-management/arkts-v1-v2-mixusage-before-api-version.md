@@ -1,4 +1,4 @@
-# Guidelines for Mixed Use of State Management V1 and V2 (Before API Version 19)
+# Mixed Use of State Management V1 and V2 (Before API Version 19)
 <!--Kit: ArkUI--> 
 <!--Subsystem: ArkUI--> 
 <!--Owner: @jiyujia926--> 

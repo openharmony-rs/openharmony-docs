@@ -1,4 +1,4 @@
-# @ObservedV2 and @Trace Decorators: Observing Property Changes in Classes
+# \@ObservedV2 and \@Trace Decorators: Observing Class Property Changes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->

@@ -470,7 +470,7 @@ Grid() {
 
 For Grid development, the following related examples are available for reference:
 
-- [Game 2048（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Game/Game2048)
+- [Game 2048 (ArkTS) (API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Game/Game2048)
 
 - [Distributed Calculator](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/ArkTSDistributedCalc)
 <!--RP1End-->
