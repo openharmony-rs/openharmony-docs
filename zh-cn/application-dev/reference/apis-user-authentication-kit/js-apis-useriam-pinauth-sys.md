@@ -15,11 +15,10 @@
 - 系统应用需要设置PIN复杂度校验策略，约束用户创建或修改锁屏密码时必须满足复杂度要求。
 - 设置界面需要查询当前已生效的PIN策略并回显。
 
+**起始版本：** 26.1.0
 > **说明：**
 >
-> - 本模块首批接口从API version 26.1.0开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
-> - 本模块为系统接口。
+> 本模块接口为系统接口。
 
 ## 关键Class/Interface介绍
 
@@ -70,11 +69,13 @@ import { pinAuth } from '@kit.UserAuthenticationKit';
 
 PIN复杂度校验策略。用于定义用户创建或修改锁屏PIN时必须满足的复杂度规则，以及该规则的描述信息。
 
-**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -87,18 +88,22 @@ setPinValidityPeriod(userId: number, validityPeriod: number): void
 
 设置PIN有效期。策略设置成功后，当PIN过期时，系统将弹出安全提示，要求用户重置PIN。
 
+**起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| userId | number | 是 | 用户ID。策略对指定用户生效。取值限定为整数。 |
-| validityPeriod | number | 是 | PIN有效期，单位为毫秒。取值必须大于等于0且小于2^50，当设置有效期为0时，表示不设置有效期。 |
+| userId | number | 是 | 用户ID。如果取值为0，则对所有用户生效，否则对指定用户生效。取值限定为整数。 |
+| validityPeriod | number | 是 | PIN有效期，单位为毫秒。合法有效值为大于等于0并且小于2的50次方的整数。当设置有效期为0时，表示不设置有效期。 |
 
 **错误码：**
 
@@ -137,11 +142,15 @@ getPinValidityPeriod(userId: number): number | undefined
 
 查询PIN有效期。
 
+**起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -193,17 +202,21 @@ setPinDeletionDisabledState(userId: number, isDisabled: boolean): void
 
 设置PIN删除功能的禁用状态。策略设置成功后，当该功能被禁用时，用户将无法删除PIN。
 
+**起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| userId | number | 是 | 用户ID。策略对指定用户生效。取值限定为整数。 |
+| userId | number | 是 | 用户ID。如果取值为0，则对所有用户生效，否则对指定用户生效。取值限定为整数。 |
 | isDisabled | boolean | 是 | PIN删除功能是否被禁用。true表示禁用PIN删除功能，false表示允许用户删除PIN。 |
 
 **错误码：**
@@ -241,11 +254,15 @@ getPinDeletionDisabledState(userId: number): boolean | undefined
 
 查询PIN删除功能的禁用状态。
 
+**起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -297,17 +314,21 @@ setPinComplexityPolicy(userId: number, policy: PinComplexityPolicy): void
 
 设置PIN复杂度校验策略及其描述。策略设置成功后，用户创建或修改锁屏PIN时，输入的PIN必须匹配策略中的复杂度正则表达式。
 
+**起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| userId | number | 是 | 用户ID。策略对指定用户生效。取值限定为整数。 |
+| userId | number | 是 | 用户ID。如果取值为0，则对所有用户生效，否则对指定用户生效。取值限定为整数。 |
 | policy | [PinComplexityPolicy](#pincomplexitypolicy) | 是 | PIN复杂度校验策略及描述，包含复杂度校验正则表达式和策略描述信息。 |
 
 **错误码：**
@@ -348,11 +369,15 @@ getPinComplexityPolicy(userId: number): PinComplexityPolicy | undefined
 
 查询PIN复杂度校验策略及其描述。
 
+**起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -364,7 +389,7 @@ getPinComplexityPolicy(userId: number): PinComplexityPolicy | undefined
 
 | 类型 | 说明 |
 | ---- | ---- |
-| [PinComplexityPolicy](#pincomplexitypolicy) \| undefined | PIN复杂度校验策略及描述。若未给指定用户设置复杂度策略，或者该用户的复杂度正则表达式和策略描述均为空，则返回undefined。 |
+| [PinComplexityPolicy](#pincomplexitypolicy) \| undefined | PIN复杂度校验策略及描述。若未给指定用户设置复杂度策略或者为指定用户同时设置的复杂度正则表达式和策略描述均为空，则返回undefined。 |
 
 **错误码：**
 
