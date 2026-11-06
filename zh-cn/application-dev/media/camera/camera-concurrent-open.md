@@ -581,103 +581,19 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
      } catch (error) {
        let err = error as BusinessError;
        console.error(`setExposureModeForConcurrentFn failed, err code: ${err.code}.`);
-     }
-   }
-   ```
-   hasFlashFn(flashMode: camera.FlashMode): void {
-     try {
-       // 检测是否有闪关灯
-       let hasFlash = this.session?.hasFlash();
-       Logger.debug(TAG, `hasFlash success, hasFlash: ${hasFlash}`);
-       // 检测闪光灯模式是否支持
-       let isFlashModeSupported = this.session?.isFlashModeSupported(flashMode);
-       Logger.debug(TAG, `isFlashModeSupported success, isFlashModeSupported: ${isFlashModeSupported}`);
-       // 设置闪光灯模式
-       if (isFlashModeSupported) {
-         this.session?.setFlashMode(flashMode);
-       }
-     } catch (error) {
-       console.error(`hasFlashFn failed, err: ${error.code}`);
-     }
-   }
-   ```
-   <!-- @[camera_setExposureMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
-   <!-- @[camera_setZoomRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
-   <!-- @[camera_setExposureBias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-  
-   <!-- @[camera_setFocusMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
-   <!-- @[camera_setStabilization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
    <!-- @[camera_setColorSpace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
-    ```ts
-    // 闪光灯。
-    function hasFlashFn(flashMode: camera.FlashMode, session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
-
-      // 检测是否有闪光灯。
-      let hasFlash = session?.hasFlash();
-
-      // 检测闪光灯模式是否支持。
-      let isFlashModeSupported = session?.isFlashModeSupported(flashMode);
-
-      // 设置闪光灯模式。
-      if (isFlashModeSupported) {
-        session?.setFlashMode(flashMode);
-      }
-    }
-
-    // 曝光。
-    function hasExposureFn(ExposureMode: camera.ExposureMode, session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
-
-      // 检测曝光模式是否支持。
-      let isExposureSupported = session?.isExposureModeSupported(ExposureMode);
-  
-      // 设置曝光模式。
-      if (isExposureSupported) {
-        session?.setExposureMode(ExposureMode);
-      }
-    }
-
-    // 获取可变焦距范围。
-    function getZoomRatioRange(session: camera.PhotoSession | camera.VideoSession | undefined = undefined): Array<number> {
-      let zoomRatioRange: Array<number> = [];
-      if (session !== undefined) {
-        zoomRatioRange = session.getZoomRatioRange();
-      }
-      return zoomRatioRange;
-    }
-
-    // 变焦。
-    function setZoomRatioFn(zoomRatio: number, session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
-
-      // 获取支持的变焦范围。
-      let zoomRatioRange = getZoomRatioRange();
-      try {
-        session?.setZoomRatio(zoomRatio);
-      } catch (error) {
-        console.error(`setZoomRatioFn fail`);
-      }
-    }
-
-    // 曝光补偿。
-    function setExposureBiasFn(exposureBias: number, session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
-
-      // 查询曝光补偿范围。
-      let biasRangeArray: Array<number> | undefined = [];
-      biasRangeArray = session?.getExposureBiasRange();
-
-      // 设置曝光补偿。
-      session?.setExposureBias(exposureBias);
-    }
-
-    // 对焦模式。
-    function setFocusMode(focusMode: camera.FocusMode, session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
-
-      // 检测对焦模式是否支持。
-      let isSupported = session?.isFocusModeSupported(focusMode);
+   
+   ``` TypeScript
+   // 设置色彩空间。
+   setColorSpaceFn(session: camera.PhotoSession | camera.VideoSession, color: colorSpaceManager.ColorSpace) {
+     try {
+       session.setColorSpace(color);
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`setColorspace failed, err code: ${err.code}`);
+     }
+   }
+   ```
 
       // 设置对焦模式。
       if (!isSupported) {
