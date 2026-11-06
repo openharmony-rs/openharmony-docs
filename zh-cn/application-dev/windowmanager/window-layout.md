@@ -168,7 +168,7 @@ const TAG = 'IndexPage';
 
   | 接口 | 坐标系原点 | 说明 |
   | -------- | -------- | -------- |
-  | [moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1) | [自由窗口](freeform-window-overview.md#自由窗口)状态下：原点为屏幕左上顶点<br/>非[自由窗口](freeform-window-overview.md#自由窗口)状态下：子窗、模态窗口移动时原点为父窗口左上顶点，其他窗口移动时原点为屏幕左上顶点 | 移动窗口位置，调用成功即返回，返回后无法立即获取最终生效结果。 |
+  | [moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1) | [自由窗口](freeform-window-overview.md#自由窗口)状态下：原点为屏幕左上顶点<br/>非自由窗口状态下：子窗、模态窗口移动时原点为父窗口左上顶点，其他窗口移动时原点为屏幕左上顶点 | 移动窗口位置，调用成功即返回，返回后无法立即获取最终生效结果。 |
   | [moveWindowToAsync()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoasync12)传入参数x、y<br/>[moveWindowToAsync()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoasync15)传入参数x、y、moveConfiguration | [自由窗口](freeform-window-overview.md#自由窗口)状态下：原点为屏幕左上顶点<br/>非[自由窗口](freeform-window-overview.md#自由窗口)状态下：原点为主窗口左上顶点 | 移动窗口位置，调用生效后返回。 |
   | [moveWindowToGlobal()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobal15)传入参数x、y<br/>[moveWindowToGlobal()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobal15)传入参数x、y、moveConfiguration | 目标屏幕左上顶点 | 基于屏幕坐标移动窗口位置，调用生效后返回。 |
   | [moveWindowToGlobalDisplay()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobaldisplay20) | 主屏幕左上顶点（全局坐标系） | 基于[全局坐标系](window-terminology.md#global-coordinate-system全局坐标系)移动窗口位置。 |
