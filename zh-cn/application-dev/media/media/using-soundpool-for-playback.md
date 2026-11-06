@@ -100,8 +100,8 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
    let playParameters: media.PlayParameters = {
      loop: 1, // 循环1次，即播放2次。
      rate: 1, // 1倍速播放。
-     leftVolume: 0.5, // 取值范围0.0-1.0。
-     rightVolume: 0.5, // 取值范围0.0-1.0。
+     leftVolume: 0.5, // 取值范围[0.0, 1.0]。
+     rightVolume: 0.5, // 取值范围[0.0, 1.0]。
      priority: 0, // 最低优先级。
    };
    // 开始播放，这里play也可携带播放参数PlayParameters，请在音频资源加载完毕，即收到loadComplete回调之后再执行play操作。
@@ -126,12 +126,12 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
 8. 调用setPriority方法设置优先级。
 
-    <!-- @[SoundPool_SetPriority](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
-    
-    ``` TypeScript
-    // 设置对应流的优先级。
-    await this.soundPool!.setPriority(this.streamId, 1);
-    ```
+   <!-- @[SoundPool_SetPriority](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 设置对应流的优先级。
+   await this.soundPool!.setPriority(this.streamId, 1);
+   ```
 
 9. 调用setVolume方法设置音量。
 
@@ -144,54 +144,54 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
 10. 调用stop方法终止指定流的播放。
 
-     <!-- @[SoundPool_Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
-     
-     ``` TypeScript
-     // 终止指定流的播放。
-     await this.soundPool!.stop(this.streamId);
-     ```
+    <!-- @[SoundPool_Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    // 终止指定流的播放。
+    await this.soundPool!.stop(this.streamId);
+    ```
 
 11. 调用unload方法卸载音频资源。
 
-     <!-- @[SoundPool_Unload](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
-     
-     ``` TypeScript
-     // 卸载音频资源。
-     await this.soundPool!.unload(this.soundId);
-     ```
+    <!-- @[SoundPool_Unload](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    // 卸载音频资源。
+    await this.soundPool!.unload(this.soundId);
+    ```
 
 12. 调用off('loadComplete')方法注销加载完成监听。
 
-     <!-- @[SoundPool_offLoadComplete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
-     
-     ``` TypeScript
-     this.soundPool!.off('loadComplete');
-     ```
+    <!-- @[SoundPool_offLoadComplete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    this.soundPool!.off('loadComplete');
+    ```
 
 13. 调用off('playFinished')方法注销播放完成监听。
 
-     <!-- @[SoundPool_offPlayFinished](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
-     
-     ``` TypeScript
-     this.soundPool!.off('playFinished');
-     ```
+    <!-- @[SoundPool_offPlayFinished](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    this.soundPool!.off('playFinished');
+    ```
 
 14. 调用off('error')方法注销错误类型监听。
 
-     <!-- @[SoundPool_offError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
-     
-     ``` TypeScript
-     this.soundPool!.off('error');
-     ```
+    <!-- @[SoundPool_offError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    this.soundPool!.off('error');
+    ```
 
 15. 调用release方法释放SoundPool实例。
 
-     <!-- @[SoundPool_Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
-     
-     ``` TypeScript
-     // 释放SoundPool。
-     await this.soundPool!.release();
-     ```
+    <!-- @[SoundPool_Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    // 释放SoundPool。
+    await this.soundPool!.release();
+    ```
 
 ## 运行示例工程
 
