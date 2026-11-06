@@ -6,7 +6,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=03da8d98875c99278437bdd28f12d4fdb3efd8f7 translatedAt=2026-08-10T09:15:56.876Z pushedAt=2026-08-10T12:20:56.305Z -->
+<!-- md-trans-meta sourceCommit=416db6eb13a016384f62df8f06e9a44f2b2b3fc1 translatedAt=2026-11-05T06:16:33.950Z pushedAt=2026-08-10T12:20:56.305Z nl=1 -->
 
 Before using the camera application for preview, photo capture, video recording, and metadata management, you must create a camera session.
 
@@ -94,7 +94,7 @@ Call the [commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Sessio
        let err = error as BusinessError;
        console.error(`Failed to add previewOutput. error: ${err.code}`);
      }
-     let canAddPhotoOutput : boolean = false
+     let canAddPhotoOutput : boolean = false;
      try {
        canAddPhotoOutput = videoSession.canAddOutput(photoOutput);
      } catch (error) {

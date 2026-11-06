@@ -5,6 +5,7 @@
 <!--Designer: @liyiming13-->
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=4b07e88550e0184fe83fe80e1f31b5c935b7680c translatedAt=2026-11-05T00:56:15.859Z nl=1 -->
 
 The OpenHarmony NDK provides industry standard libraries [musl libc](../reference/native-lib/musl.md) and [C++ Standard Library](../reference/native-lib/cpp.md). This topic describes the mechanisms of these libraries in OpenHarmony. Understanding these mechanisms helps you avoid pitfalls during NDK development.
 

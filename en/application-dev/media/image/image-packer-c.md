@@ -5,7 +5,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=7309d91550473d80535b32eca83cb9c0b600f845 translatedAt=2026-09-28T02:47:07.804Z pushedAt=2026-09-29T08:34:41.967Z -->
+<!-- md-trans-meta sourceCommit=85a926ddceef5f9e033a53ba010e7068c47cb6b7 translatedAt=2026-11-05T06:16:33.954Z pushedAt=2026-09-29T08:34:41.967Z nl=1 -->
 
 You can use the **ImagePacker** class to create and release ImagePacker instances.
 
@@ -290,7 +290,7 @@ When creating a Native C++ app in DevEco Studio, the generated project includes 
        napi_value argv[1] = {0};
        size_t argc = 1;
        if (napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr) != napi_ok) {
-           OH_LOG_ERROR(LOG_APP, "PackToFileFromImageSourceTestJs napi_get_cb_info failed.");
+           OH_LOG_ERROR(LOG_APP, "PackToFileFromPixelmapTestJs napi_get_cb_info failed.");
            return nullptr;
        }
        

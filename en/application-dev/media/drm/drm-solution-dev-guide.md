@@ -6,7 +6,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @qin_wei_jie-->
-<!-- md-trans-meta sourceCommit=d9644ac53de2ba4e110100631e42acd24fe6adf3 translatedAt=2026-09-14T09:57:53.130Z pushedAt=2026-09-15T13:38:44.019Z -->
+<!-- md-trans-meta sourceCommit=0e08e12bae99830d20b6ede0435aa0868ae8be86 translatedAt=2026-11-05T06:16:33.954Z pushedAt=2026-09-15T13:38:44.019Z nl=1 -->
 
 DRM plugins provide implementations of the DRM HDI APIs. The DRM framework of DRM Kit loads DRM plugins through the HDI APIs.
 

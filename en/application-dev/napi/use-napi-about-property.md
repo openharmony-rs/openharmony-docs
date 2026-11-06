@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=099d2f0bb805c74cb41780582ea4e8e363b016e3 translatedAt=2026-09-16T03:37:20.462Z pushedAt=2026-09-16T08:36:25.741Z -->
+<!-- md-trans-meta sourceCommit=94d23140eb6ac5aa5651cf35a86ccd6f8005d9de translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 ## Introduction
 
@@ -160,7 +160,7 @@ try {
     JSON.stringify(result));
   // ...
 } catch (error) {
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_set_property error: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Test Node-API napi_set_property error: %{public}s', error.message);
   // ...
 }
 ```
@@ -217,7 +217,7 @@ try {
     testNapi.getProperty(obj, 'message'));
   // ...
 } catch (error) {
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_property error: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Test Node-API napi_get_property error: %{public}s', error.message);
   // ...
 }
 ```
@@ -282,7 +282,7 @@ try {
     JSON.stringify(resultTrue));
   // ...
 } catch (error) {
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_property error: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Test Node-API napi_has_property error: %{public}s', error.message);
   // ...
 }
 ```
@@ -848,14 +848,14 @@ hilog.info(0x0000, 'testTag', 'Test Node-API define_method_properties:%{public}d
   testNapi.defineMethodProperties()
     .defineMethodPropertiesExample());
 // Define a property of the string type.
-hilog.info(0x0000, 'testTag', 'Test Node-API define_string_properties::%{public}s ',
+hilog.info(0x0000, 'testTag', 'Test Node-API define_string_properties:%{public}s ',
   testNapi.defineStringProperties()
     .defineStringPropertiesExample);
 // Getter and setter.
-hilog.info(0x0000, 'testTag', 'Test Node-API get::%{public}s ',
+hilog.info(0x0000, 'testTag', 'Test Node-API get:%{public}s ',
   testNapi.createStringWithGetterSetter()
     .getterCallback());
-hilog.info(0x0000, 'testTag', 'Test Node-API setter::%{public}s ',
+hilog.info(0x0000, 'testTag', 'Test Node-API setter:%{public}s ',
   testNapi.createStringWithGetterSetter()
     .setterCallback('set data'));
 ```
@@ -917,7 +917,7 @@ try {
     JSON.stringify(propertyNames));
   // ...
 } catch (error) {
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_all_property_names error: %{public}s',
+  hilog.error(0x0000, 'testTag', 'Test Node-API napi_get_all_property_names error: %{public}s',
     error.message);
   // ...
 }

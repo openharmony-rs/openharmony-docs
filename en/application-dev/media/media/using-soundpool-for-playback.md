@@ -1,10 +1,11 @@
 # Using SoundPool to Play Short Sounds (ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=2a2bdc1242c7ecfe3d781d7980b3ff83613b9126 translatedAt=2026-11-05T06:16:33.958Z pushedAt=2026-11-05T06:16:33.958Z nl=1 -->
 
 The [SoundPool](media-kit-intro.md#soundpool) class provides APIs to implement low-latency playback of short sounds.
 
@@ -81,7 +82,7 @@ During application development, you must subscribe to playback state changes and
 
 5. Call **load()** to load a sound.
 
-    You can pass in a URI or an FD to load the sound. The following uses the FD as an example. For more methods, see [SoundPool](../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md#load).
+    You can pass in a URI or an FD to load the sound. The following uses the FD as an example. For more methods, see [load](../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md#load).
 
     When the system finishes loading the sound, the **loadComplete** callback is invoked to notify the user that the loading is complete. Perform the subsequent play operation after the callback is received.
 

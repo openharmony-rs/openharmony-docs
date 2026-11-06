@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:45:07.944Z pushedAt=2026-09-16T08:26:42.978Z -->
+<!-- md-trans-meta sourceCommit=8d95ce71a533e95ed95b7973acfeabe378d2316f translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 ## When to Use
 
@@ -83,7 +83,7 @@ You can use **napi_wrap** to wrap a C++ object in an ArkTS object, and use **nap
     {
         napi_status status = napi_delete_reference(env_, wrapper_);
         if (status != napi_ok) {
-            OH_LOG_INFO(LOG_APP, "Failed to delete reference, return code: %{public}d", status);
+            OH_LOG_ERROR(LOG_APP, "Failed to delete reference, return code: %{public}d", status);
         }
     }
 

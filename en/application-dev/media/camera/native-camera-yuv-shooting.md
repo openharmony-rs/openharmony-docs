@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=132342cdd19e09e8d1c7a964e48a57b6cf30fc8d translatedAt=2026-09-28T02:51:19.256Z pushedAt=2026-09-29T08:31:40.322Z -->
+<!-- md-trans-meta sourceCommit=416db6eb13a016384f62df8f06e9a44f2b2b3fc1 translatedAt=2026-11-05T06:16:33.953Z pushedAt=2026-09-29T08:31:40.322Z nl=1 -->
 
 Starting from API version 23, the camera framework provides the capability to capture photos in YUV format. Compared with regular photo capture, YUV photo capture obtains unencoded image data, which fully preserves the raw luminance and chrominance information captured by the sensor. This makes it suitable for video encoding or professional processing. However, the capture process incurs higher power consumption, and saving the data occupies more storage space.
 
@@ -403,11 +403,11 @@ During camera app development, you can listen for photo output stream status at 
 
 - Listen for error results of the photo output stream by registering the fixed `onError` callback function. The callback returns the corresponding error code when an error occurs in using the photo output interface. For details about the error codes, see [Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode).
 
-  <!-- @[photo_output_error_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  <!-- @[photo_output_error_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->    
   
   ``` C++
   void PhotoOutputOnError(Camera_PhotoOutput *photoOutput, Camera_ErrorCode errorCode)
   {
-      OH_LOG_INFO(LOG_APP, "PhotoOutput errorCode = %{public}d", errorCode);
+      OH_LOG_ERROR(LOG_APP, "PhotoOutput errorCode = %{public}d", errorCode);
   }
   ```

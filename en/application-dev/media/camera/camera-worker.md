@@ -6,7 +6,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=a0d61469bb44afa5cea84cd5263c0bce0cfd4fdf translatedAt=2026-08-10T09:17:33.059Z pushedAt=2026-08-10T12:58:49.035Z -->
+<!-- md-trans-meta sourceCommit=416db6eb13a016384f62df8f06e9a44f2b2b3fc1 translatedAt=2026-11-05T06:16:33.951Z pushedAt=2026-08-10T12:58:49.035Z nl=1 -->
 
 The primary role of [Worker](../../arkts-utils/worker-introduction.md) is to provide a multi-threaded runtime environment for apps. It allows an app to separate certain execution from the main thread and run a script in a background thread for time-consuming operations, thereby greatly preventing compute-intensive or high-latency tasks from blocking the main thread.
 
@@ -163,10 +163,12 @@ When using camera capabilities, you often need to create camera sessions and con
      }
    }
    
-   workerPort.onmessageerror = (e: MessageEvents) => {
+   workerPort.onmessageerror = (error: MessageEvents) => {
+    console.error(`onmessage error is called, ${error}`);
    }
    
-   workerPort.onerror = (e: ErrorEvent) => {
+   workerPort.onerror = (error: ErrorEvent) => {
+    console.error(`onerror is called, ${error}`);
    }
    ```
 

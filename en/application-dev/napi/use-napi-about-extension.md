@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:33:42.893Z pushedAt=2026-09-16T08:21:31.001Z -->
+<!-- md-trans-meta sourceCommit=b012a51a6084f7c49d451afbd0dd054409ee7026 translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 ## Introduction
 
@@ -543,7 +543,7 @@ napi_value AttachCallback(napi_env env, void* value, void* hint)
     // Bind the ArkTS object named object to the lifecycle of the native object named value.
     napi_status status = napi_wrap(env, object, value, FinalizerCallback, nullptr, nullptr);
     if (status != napi_ok) {
-        OH_LOG_INFO(LOG_APP, "Node-API attachCallback is failed.");
+        OH_LOG_ERROR(LOG_APP, "Node-API attachCallback is failed.");
     }
     // Enable the ArkTS object to carry native information.
     napi_coerce_to_native_binding_object(env, object, DetachCallback, AttachCallback, value, hint);
@@ -563,7 +563,7 @@ static napi_value Init(napi_env env, napi_value exports)
     auto object = Object::GetInstance();
     napi_status status = napi_wrap(env, exports, reinterpret_cast<void*>(object), FinalizerCallback, nullptr, nullptr);
     if (status != napi_ok) {
-        OH_LOG_INFO(LOG_APP, "Node-API napi_wrap is failed.");
+        OH_LOG_ERROR(LOG_APP, "Node-API napi_wrap is failed.");
     }
     napi_coerce_to_native_binding_object(env, exports, DetachCallback, AttachCallback, reinterpret_cast<void*>(object),
                                          nullptr);

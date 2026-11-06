@@ -6,7 +6,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=0621a1292f318505a386f6e1294f16ca68e36951 translatedAt=2026-08-10T09:12:48.800Z pushedAt=2026-08-10T10:40:52.659Z -->
+<!-- md-trans-meta sourceCommit=416db6eb13a016384f62df8f06e9a44f2b2b3fc1 translatedAt=2026-11-05T06:16:33.949Z pushedAt=2026-08-10T10:40:52.659Z nl=1 -->
 
 Starting from API version 18, multi-camera concurrent opening is supported, allowing an app to simultaneously open the front and rear cameras for preview and video recording. (Concurrent photo capture with both front and rear cameras is not yet available.)
 
@@ -35,6 +35,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
    import { media } from '@kit.MediaKit';
    import { fileIo } from '@kit.CoreFileKit';
    import { common } from '@kit.AbilityKit';
+   import { colorSpaceManager } from '@kit.ArkGraphics2D';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
@@ -47,7 +48,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
 
      // Exit if fewer than two cameras are available (multi-camera not supported).
      if (cameras.length < 2) {
-      return;
+       return;
      }
 
      // Obtain the logical rear and front cameras.
@@ -78,7 +79,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
      let concurrentInfo: Array<camera.CameraConcurrentInfo> = cameraManager.getCameraConcurrentInfos(deviceArray);
 
      if (concurrentInfo.length === 0) {
-      return;
+       return;
      }
 
      // Replace the original capability set with the concurrent capability set.
@@ -142,7 +143,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
      // Query whether the corresponding photoProfile exists. The corresponding photoProfile must be within the range of the concurrent capability information array obtained from getCameraConcurrentInfos.
      let photoProfiles = cameraOutputCapability.photoProfiles;
      if (photoProfiles.length < 1) {
-      return;
+       return;
      }
      let index = photoProfiles.findIndex((photoProfile: camera.Profile) => {
        return photoProfile.size.width === photoProfileObj.size.width &&
@@ -326,6 +327,8 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
        handlePhotoAssetCb(photoAsset);
      });
      } catch (err) {
+      let error = err as BusinessError;
+      console.error(`photoOutputCallback failed, err code: ${error.code}`);
      }
    }
 
@@ -458,10 +461,10 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
     function hasExposureFn(ExposureMode: camera.ExposureMode, session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
 
       // Check whether an exposure mode is supported.
-      let hasFlash = session?.isExposureModeSupported(ExposureMode);
+      let isExposureSupported = session?.isExposureModeSupported(ExposureMode);
 
       // Set the exposure mode.
-      if (hasFlash) {
+      if (isExposureSupported) {
         session?.setExposureMode(ExposureMode);
       }
     }
@@ -509,5 +512,27 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
         return;
       }
       session?.setFocusMode(focusMode);
+    }
+
+    // Set video stabilization.
+    function setStabilizationFn(session: camera.VideoSession, stabilizationMode: camera.VideoStabilizationMode)
+    {
+      try {
+        session.setVideoStabilizationMode(stabilizationMode);
+      } catch (error) {
+        let err = error as BusinessError;
+        console.error(`setVideoStabilizationMode failed, err code: ${err.code}`);
+      }
+    }
+
+    // Set the color space.
+    function setColorSpaceFn(session: camera.PhotoSession | camera.VideoSession, color: colorSpaceManager.ColorSpace) 
+    {
+      try {
+        session.setColorSpace(color);
+      } catch (error) {
+        let err = error as BusinessError;
+        console.error(`setColorspace failed, err code: ${err.code}`);
+      }
     }
     ```

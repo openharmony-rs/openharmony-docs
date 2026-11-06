@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=8b512243901c55915aa61df5cc70cfb3620f6e97 translatedAt=2026-09-28T02:39:45.922Z pushedAt=2026-09-29T10:29:23.705Z -->
+<!-- md-trans-meta sourceCommit=416db6eb13a016384f62df8f06e9a44f2b2b3fc1 translatedAt=2026-11-05T06:16:33.949Z pushedAt=2026-09-29T10:29:23.705Z nl=1 -->
 
 When using the camera, transitions such as changing camera modes or switching between front and rear cameras will always involve replacing the preview stream. To enhance user experience, smooth animations can be effectively incorporated. This topic describes how to use preview stream snapshots and how to trigger explicit animations using the [animateToImmediately](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animatetoimmediately23) API provided by ArkUI, to implement three key scene transitions:
 
@@ -234,7 +234,7 @@ The sample code in the following steps (except step 2) is the internal method or
    >
    > Since the [image.createPixelMapFromSurface](../../reference/apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11) API provided by the graphics framework retrieves a [PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md) by capturing the surface, its output differs from the rendering logic of the [XComponent](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md) component. You must apply different **rotation compensation to both the image content and the component** based on **whether the front or rear camera is in use**.
 
-   <!-- @[show_blur_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[show_blur_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->    
    
    ``` TypeScript
    private async showBlurAnim() {
@@ -242,7 +242,7 @@ The sample code in the following steps (except step 2) is the internal method or
      // Obtain the surface snapshot.
      let shotPixel = BlurAnimateUtil.getSurfaceShot();
      // The rear camera is used.
-     if (this.curPosition === 0) {
+     if (this.curPosition === 1) {
        Logger.info(TAG, 'showBlurAnim BACK');
        // Rotation compensation of 90° for rear camera snapshots on bar phones.
        await shotPixel.rotate(BlurAnimateUtil.IMG_ROTATE_ANGLE_90);
@@ -312,7 +312,7 @@ The sample code in the following steps (except step 2) is the internal method or
 
    To ensure that the preview stream is not exposed during flip, you must also build a blackout component to mask the XComponent, following the instructions provided in step 2 in [Blackout Animation](#blackout-animation).
 
-   <!-- @[rotate_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->   
+   <!-- @[rotate_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->     
    
    ``` TypeScript
    /**

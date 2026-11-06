@@ -5,7 +5,7 @@
 <!--Designer: @hanfeng6-->
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=9d9497e8c2e8385296e1f7f6903962bd5a0e71a6 translatedAt=2026-09-08T08:10:06.092Z pushedAt=2026-09-08T08:22:58.347Z -->
+<!-- md-trans-meta sourceCommit=9508d2691354e231d198cb0b19067fa55ea35d02 translatedAt=2026-11-05T00:54:18.361Z pushedAt=2026-09-08T08:22:58.347Z nl=2 -->
 
 ## How Do I Obtain the Fingerprint in the Signature Information?
 
@@ -91,6 +91,10 @@ bm dump -n com.example.myapplication | grep appIdentifier
 ```
 
 ![alt text](figures/get_appIdentifier.png)
+
+> **NOTE**
+>
+> If **appIdentifier** is empty, for example, because the signing file is outdated, you can use [appId](#what-is-appid) as the unique identifier of the application.
 
 
 ## What Is appId?

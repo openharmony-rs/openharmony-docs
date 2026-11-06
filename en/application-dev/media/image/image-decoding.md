@@ -5,6 +5,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=aad831774b1da8de19dc0461cecd5eff8a4db830 translatedAt=2026-11-05T06:16:33.954Z pushedAt=2026-11-05T06:16:33.954Z nl=1 -->
 
 When an application needs to read image content, display an image, or process an image by scaling or cropping it, you can use [ImageSource](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md) to decode the image. An application can create an ImageSource instance by using the image path in the application sandbox, a file descriptor, or a buffer, and decode the image into a PixelMap.
 
@@ -155,7 +156,7 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
 
 4. Create an ImageSource instance.
 
-   - Method 1: Create an ImageSource instance using the sandbox path. The sandbox path can be obtained by using method 1 in step 2.
+   - Method 1: Create an ImageSource instance using the sandbox path. The sandbox path can be obtained by using method 1 in step 3.
 
      <!-- @[createImageSource_filePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->
 
@@ -164,7 +165,7 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
      const imageSource : image.ImageSource = image.createImageSource(filePath);
      ```
 
-   - Method 2: Create an ImageSource instance using the file descriptor. The file descriptor can be obtained by using method 2 in step 2.
+   - Method 2: Create an ImageSource instance using the file descriptor. The file descriptor can be obtained by using method 2 in step 3.
 
      <!-- @[createImageSource_fd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->
 
@@ -173,7 +174,7 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
      const imageSource: image.ImageSource = image.createImageSource(fd);
      ```
 
-   - Method 3: Create an ImageSource instance using an array buffer. The array buffer can be obtained by using method 3 in step 2.
+   - Method 3: Create an ImageSource instance using an array buffer. The array buffer can be obtained by using method 3 in step 3.
 
      <!-- @[createImageSource_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->
 
@@ -181,7 +182,7 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
      const imageSource: image.ImageSource = image.createImageSource(buffer);
      ```
 
-   - Method 4: Create an ImageSource instance using the raw file descriptor of the resource file. The raw file descriptor can be obtained by using method 4 in step 2.
+   - Method 4: Create an ImageSource instance using the raw file descriptor of the resource file. The raw file descriptor can be obtained by using method 4 in step 3.
 
      <!-- @[createImageSource_rawFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->
 
@@ -218,7 +219,7 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
          console.info(`Create PixelMap successfully with imageInfo.isHdr: ${imageInfo.isHdr}.`);
          return pixelMap;
        } else {
-         console.info('Create PixelMap failed.');
+         console.error('Create PixelMap failed.');
          return undefined;
        }
      } catch (error) {
@@ -234,18 +235,10 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
 
    Ensure that the asynchronous operations of the PixelMap and ImageSource instances have finished executing. After these variables are no longer needed, you can manually call the APIs below to release them.
 
-   <!-- @[release_pixelMapDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->
+   <!-- @[release_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->  
 
    ``` TypeScript
-   async release() {
-     try {
-       await this.pixelMap?.release();
-     } catch (error) {
-       console.error(`Failed to release PixelMap: ${error}.`);
-     } finally {
-       this.pixelMap = undefined;
-     }
-
+   async release_imageSource() {
      try {
        await this.imageSource?.release();
      } catch (error) {

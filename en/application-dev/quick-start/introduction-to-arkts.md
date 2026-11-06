@@ -6,7 +6,7 @@
 <!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=9389b4377843102b8f7fb1d104bdafe9f6f56511 translatedAt=2026-08-26T03:00:32.452Z pushedAt=2026-08-26T04:01:23.705Z -->
+<!-- md-trans-meta sourceCommit=c8d611da517c0df9bbfb2e4952764bf8397e713e translatedAt=2026-11-05T00:54:18.361Z pushedAt=2026-08-26T04:01:23.705Z nl=2 -->
 
 Welcome to the tutorial for ArkTS, a TypeScript-based programming language designed specifically to build high-performance mobile applications! ArkTS is optimized to provide better performance and efficiency, while still maintaining the familiar syntax of TypeScript.
 

@@ -6,7 +6,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=00d7cb908705b920a9ee7ee48de288635f9580c9 translatedAt=2026-08-11T01:56:37.404Z pushedAt=2026-08-12T03:39:04.412Z -->
+<!-- md-trans-meta sourceCommit=28c81be11ef0ed2cdec47ce8544bf69833833feb translatedAt=2026-11-05T06:16:33.959Z pushedAt=2026-08-12T03:39:04.412Z nl=1 -->
 
 A moving photo is a photo form that combines an image and a video, empowering a static image with dynamic video effect. It helps users capture dynamic moments and improves the fault tolerance rate of photographing.
 

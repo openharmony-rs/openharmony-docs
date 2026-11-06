@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-08T03:49:50.194Z pushedAt=2026-10-08T06:50:37.571Z -->
+<!-- md-trans-meta sourceCommit=d13608155981ddb4a909ac86f719d96a9e2b7178 translatedAt=2026-11-05T01:00:48.378Z pushedAt=2026-10-08T06:50:37.571Z nl=2 -->
 
 Starting from API version 18, applications can update only published notifications, such as the upload/download progress and IMs.
 

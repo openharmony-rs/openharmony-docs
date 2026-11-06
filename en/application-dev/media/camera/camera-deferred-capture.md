@@ -6,7 +6,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=03da8d98875c99278437bdd28f12d4fdb3efd8f7 translatedAt=2026-08-10T09:12:42.010Z pushedAt=2026-08-10T10:53:02.112Z -->
+<!-- md-trans-meta sourceCommit=92d23587f57517bc67a056b91a04869f5b7e579b translatedAt=2026-11-05T06:16:33.949Z pushedAt=2026-08-10T10:53:02.112Z nl=1 -->
 
 As an important feature of the camera, deferred photo delivery enables the system, after receiving a photo capture task from an application, to report images of different quality levels in multiple phases.
 
@@ -39,7 +39,25 @@ For detailed API descriptions, see [@ohos.multimedia.camera (Camera Management)]
    import { photoAccessHelper } from '@kit.MediaLibraryKit';
    ```
 
-2. Determine the photo output stream.
+2. Check whether the camera supports photo capture mode.
+
+   Call [getSupportedSceneModes](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedscenemodes11) to obtain the modes supported by the specified camera and check whether photo capture mode is supported.
+
+   ```ts
+   function isCaptureModeSupported(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): boolean
+   {
+     try {
+       let modeArray = cameraManager.getSupportedSceneModes(cameraDevice);
+       return modeArray.includes(camera.SceneMode.NORMAL_PHOTO);
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`failed to getSupportedSceneModes, err code: ${err.code}`);
+       return false;
+     }
+   }
+   ```
+
+3. Determine the photo output stream.
 
    You can use the **photoProfiles** property of [CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability) to obtain the photo output streams supported by the device and use [createPhotoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11) to create a photo output stream.
 
@@ -67,7 +85,7 @@ For detailed API descriptions, see [@ohos.multimedia.camera (Camera Management)]
    }
    ```
 
-3. Set the **photoAssetAvailable** callback.
+4. Set the **photoAssetAvailable** callback.
 
    > **NOTE**
    >
@@ -137,7 +155,7 @@ For detailed API descriptions, see [@ohos.multimedia.camera (Camera Management)]
 
    For details about the APIs used to request images, see [requestImageData](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetManager.md#requestimagedata11) and [onDataPrepared](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetDataHandler.md#ondataprepared11).
 
-4. The session configuration and photo capture triggering mode are the same as those in the common photo capture mode. For details, see steps 4-5 in [Photo Capture (ArkTS)](camera-shooting.md).
+5. The session configuration and photo capture triggering mode are the same as those in the common photo capture mode. For details, see steps 6-7 in [Photo Capture (ArkTS)](camera-shooting.md).
 
 ## Status Listening
 

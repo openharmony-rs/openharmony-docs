@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:40:44.102Z pushedAt=2026-09-16T08:26:10.230Z -->
+<!-- md-trans-meta sourceCommit=8d95ce71a533e95ed95b7973acfeabe378d2316f translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 ## When to Use
 
@@ -15,7 +15,7 @@ After creating a thread using **pthread_create**, you can use **napi_create_ark_
 
 A maximum of 64 runtime environments can be created for a process.
 
-### Sample Code
+## Sample Code
 
 - API declaration
 
@@ -123,7 +123,7 @@ A maximum of 64 runtime environments can be created for a process.
       ret = napi_load_module_with_info(env, "entry/src/main/ets/pages/ObjectUtils", "com.example.myapplication/entry",
                                        &objUtils);
       if (ret != napi_ok) {
-          OH_LOG_INFO(LOG_APP, "Failed to load module");
+          OH_LOG_ERROR(LOG_APP, "Failed to load module");
           napi_close_handle_scope(env, scope);
           napi_destroy_ark_runtime(&env);
           return nullptr;
@@ -149,7 +149,7 @@ A maximum of 64 runtime environments can be created for a process.
       // 4. Destroy the ArkTS runtime environment.
       ret = napi_destroy_ark_runtime(&env);
       if (ret != napi_ok) {
-          OH_LOG_INFO(LOG_APP, "Failed to destroy ark runtime");
+          OH_LOG_ERROR(LOG_APP, "Failed to destroy ark runtime");
       }
   
       return nullptr;

@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=563c3fe9cdad6b385a7bab92806c6884fd9ba7f9 translatedAt=2026-08-13T03:09:49.833Z pushedAt=2026-08-13T07:19:46.445Z -->
+<!-- md-trans-meta sourceCommit=ddfb612b69f0239598ba3f945d8c45f883f4229d translatedAt=2026-11-05T00:50:31.271Z pushedAt=2026-08-13T07:19:46.445Z nl=2 -->
 
 ## D
 
@@ -40,7 +40,7 @@ An application-layer protocol designed for distributed, collaborative, and hyper
 
 A security-enhanced communication protocol built upon HTTP, leveraging SSL/TLS encryption to ensure data transmission confidentiality, integrity, and identity authentication.
 
-### Interceptor
+### HTTP Interceptor
 
 A component used to intercept and modify HTTP requests and responses. It supports creating an interceptor chain and customizing a set of interceptors to modify network requests/responses as needed.
 

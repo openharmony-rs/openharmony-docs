@@ -6,7 +6,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=d228d9b301ba35d506aa913944616051f7e32689 translatedAt=2026-08-10T09:14:36.758Z pushedAt=2026-08-10T11:39:34.976Z -->
+<!-- md-trans-meta sourceCommit=416db6eb13a016384f62df8f06e9a44f2b2b3fc1 translatedAt=2026-11-05T06:16:33.950Z pushedAt=2026-08-10T11:39:34.976Z nl=1 -->
 
 Foldable devices come in various forms. When developing camera applications, a consistent camera switching solution is necessary to enhance user experience during photo and video capture.
 
@@ -210,7 +210,7 @@ struct Index {
     try {
       curFoldStatus = display.getFoldStatus();
     } catch (error) {
-      console.info(`${TAG} getFoldStatus call failed, error: ${error.code}`);
+      console.error(`${TAG} getFoldStatus call failed, error: ${error.code}`);
     }
     return curFoldStatus;
   }

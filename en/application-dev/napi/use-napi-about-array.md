@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:26:26.739Z pushedAt=2026-09-16T08:20:49.367Z -->
+<!-- md-trans-meta sourceCommit=2d4ccf619f49d6bb0f84f2d649430a5d81fe94fa translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 ## Introduction
 
@@ -525,7 +525,7 @@ export const napiDeleteElement: <T>(arr: Array<T>,
 
 ArkTS code:
 
-Import **napiHasElement** and **napiGetElement** in the preceding sample code to **index.d.ts**.
+Import **napiHasElement()** and **napiGetElement()** in the preceding sample code to **index.d.ts**.
 
 <!-- @[ark_napi_delete_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
 
@@ -838,7 +838,7 @@ try {
   // Convert arraybuffer to an array.
   let arr = new Array(new Int8Array(arrBuffer));
   hilog.info(0x0000, 'Node-API', 'get_typedarray_info_arraybuffer: %{public}s', arr.toString());
-  hilog.info(0x0000, 'Node-API', 'get_typedarray_info_isIn8Array: %{public}s', testNapi.getTypedarrayInfo(int8Array, InfoType.TYPE).toString());
+  hilog.info(0x0000, 'Node-API', 'get_typedarray_info_isInt8Array: %{public}s', testNapi.getTypedarrayInfo(int8Array, InfoType.TYPE).toString());
   hilog.info(0x0000, 'Node-API', 'get_typedarray_info_length: %{public}d', testNapi.getTypedarrayInfo(int8Array, InfoType.LENGTH));
   hilog.info(0x0000, 'Node-API', 'get_typedarray_info_byte_offset: %{public}d', testNapi.getTypedarrayInfo(int8Array, InfoType.BYTE_OFFSET));
 } catch (error) {
