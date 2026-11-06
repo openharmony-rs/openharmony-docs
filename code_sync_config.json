@@ -3358,6 +3358,11 @@
 						"end_line":456,
 						"name":"release",
 						"start_line":448
+					},
+					{
+						"end_line":118,
+						"name":"createAVPlayer",
+						"start_line":19
 					}
 				]
 			}
@@ -3422,6 +3427,11 @@
 						"end_line":407,
 						"name":"release",
 						"start_line":399
+					},
+					{
+						"end_line":116,
+						"name":"createAVPlayer",
+						"start_line":19
 					}
 				]
 			}
