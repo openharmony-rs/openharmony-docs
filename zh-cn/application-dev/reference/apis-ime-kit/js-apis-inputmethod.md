@@ -1456,7 +1456,7 @@ requestSystemInputCapability(type: InputCapabilityType): Promise&lt;void&gt;
 
 请求系统输入能力。使用promise异步回调。
 
-当type为TRANSLATION时，当前输入法须为系统预置默认输入法，否则请求被拒绝。
+当type为TRANSLATION时，当前输入法须为系统配置的默认输入法，否则请求被拒绝。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1482,7 +1482,7 @@ requestSystemInputCapability(type: InputCapabilityType): Promise&lt;void&gt;
 | -------- | -------------------------------------- |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
-| 12800010 | current ime application is not the system-configured default input method. |
+| 12800010 | Not the preconfigured default input method. |
 | 12800029 | the input type is not supported. |
 
 **示例：**
@@ -4354,4 +4354,4 @@ inputMethod.getSetting().getInputMethodState().then((status: inputMethod.Enabled
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| TRANSLATION | 0 | 翻译输入能力。<br/>使用场景：用于请求输入法切换到翻译模式。当前输入法须为系统预置默认输入法，否则请求将被拒绝并返回12800010错误码。 |
+| TRANSLATION | 0 | 翻译输入能力。<br/>使用场景：用于请求输入法切换到翻译模式。当前输入法须为系统配置的默认输入法，否则请求将被拒绝并返回12800010错误码。 |

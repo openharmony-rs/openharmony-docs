@@ -35,7 +35,7 @@
 | [InputMethod_ErrorCode OH_InputMethodController_Attach(InputMethod_TextEditorProxy *textEditorProxy, InputMethod_AttachOptions *options, InputMethod_InputMethodProxy **inputMethodProxy)](#oh_inputmethodcontroller_attach) | 将应用绑定到输入法服务。必须在创建TextEditorProxy和AttachOptions之后调用，绑定成功后返回InputMethodProxy用于后续交互。必须与OH_InputMethodController_Detach配对调用。 |
 | [InputMethod_ErrorCode OH_InputMethodController_AttachWithUIContext(ArkUI_ContextHandle context, InputMethod_TextEditorProxy *textEditorProxy, InputMethod_AttachOptions *options, InputMethod_InputMethodProxy **inputMethodProxy)](#oh_inputmethodcontroller_attachwithuicontext) | 将应用绑定到输入法服务，同时携带UI上下文信息。适用于需要将输入法与特定UI页面关联的场景（如多窗口场景下指定绑定到哪个页面）。必须在创建TextEditorProxy和AttachOptions之后调用，必须与OH_InputMethodController_Detach配对调用。 |
 | [InputMethod_ErrorCode OH_InputMethodController_Detach(InputMethod_InputMethodProxy *inputMethodProxy)](#oh_inputmethodcontroller_detach) | 将应用从输入法服务解除绑定。必须在OH_InputMethodController_Attach或AttachWithUIContext之后调用，解绑后inputMethodProxy不再有效，不可继续使用。 |
-| [InputMethod_ErrorCode OH_InputMethod_InputMethodController_GetCurrentInputMethod(char **bundleName, uint32_t *bundleNameLength, char **abilityName, uint32_t *abilityNameLength)](#oh_inputmethod_getcurrentinputmethod) | 查询当前正在使用的输入法信息。 |
+| [InputMethod_ErrorCode OH_InputMethod_InputMethodController_GetCurrentInputMethod(char **bundleName, uint32_t *bundleNameLength, char **abilityName, uint32_t *abilityNameLength)](#oh_inputmethod_inputmethodcontroller_getcurrentinputmethod) | 查询当前正在使用的输入法信息。 |
 
 ## 函数说明
 
@@ -201,7 +201,7 @@ InputMethod_ErrorCode OH_InputMethod_InputMethodController_GetCurrentInputMethod
 
 查询当前正在使用的输入法信息。调用此函数后，系统将返回当前输入法的bundleName和abilityName。
 
-使用场景：当应用需要获取当前输入法身份信息（如判断当前输入法是否为系统预置默认输入法）时调用此函数，适用于在请求翻译输入能力前判断当前输入法身份的场景。
+使用场景：当应用需要获取当前输入法身份信息（如判断当前输入法是否为系统配置的默认输入法）时调用此函数，适用于在请求翻译输入能力前判断当前输入法身份的场景。
 
 使用后效果：调用成功后，*bundleName指向系统分配的bundleName字符串，*abilityName指向系统分配的abilityName字符串，bundleNameLength和abilityNameLength更新为实际字符串长度。调用者需在使用完毕后通过free()释放*bundleName和*abilityName，避免内存泄漏。
 
