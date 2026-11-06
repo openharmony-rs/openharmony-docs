@@ -1,3 +1,11 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍使用AVPlayer实现视频端到端播放的开发流程，覆盖创建播放器、设置资源与窗口、状态监听、播放控制（播放/暂停/跳转/停止）、重置与资源释放等完整步骤。"
+keywords: [AVPlayer, 视频播放, 回调监听, 播放控制, 后台播放]
+doctype: guide
+status: active
+---
+
 # 使用AVPlayer播放视频(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
@@ -37,12 +45,14 @@
 
 1. 调用createAVPlayer()创建AVPlayer实例，初始化进入idle状态。
 
-    ```ts
-    import { media } from '@kit.MediaKit';
-
-    // 创建avPlayer实例对象。
-    let avPlayer = await media.createAVPlayer();
-    ```
+   <!-- @[createAVPlayer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { media } from '@kit.MediaKit';
+   // ...
+       // 创建avPlayer实例对象。
+       this.avPlayer = await media.createAVPlayer();
+   ```
 
 2. 设置业务需要的监听事件，搭配全流程场景使用。支持的监听事件包括：
    | 事件类型 | 说明 |
