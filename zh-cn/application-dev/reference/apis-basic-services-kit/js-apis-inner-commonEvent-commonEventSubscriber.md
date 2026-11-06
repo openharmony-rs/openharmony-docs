@@ -8,13 +8,13 @@
 
 > **说明：**
 >
-> 本模块首批接口从API版本7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## CommonEventSubscriber
 
 表示公共事件的订阅者。CommonEventSubscriber提供了对[有序公共事件](../../basic-services/common-event/common-event-glossary.md#ordered-common-event有序公共事件)的处理能力，包括获取和设置事件传递的Code和Data数据、查询当前公共事件是否为有序或[粘性公共事件](../../basic-services/common-event/common-event-glossary.md#sticky-common-event粘性公共事件)、中止或清理有序公共事件的中止状态、结束对当前有序公共事件的处理，以及获取订阅者的订阅信息等，适用于订阅者需要对接收到的公共事件进行数据处理和流程控制的场景。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -43,7 +43,7 @@ getCode(callback: AsyncCallback\<number>): void
 
 获取有序公共事件传递的数据。使用callback异步回调。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -81,7 +81,7 @@ getCode(): Promise\<number>
 
 获取有序公共事件传递的数据。使用Promise异步回调。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -109,7 +109,7 @@ getCodeSync(): number
 
 同步获取有序公共事件传递的数据。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -134,7 +134,7 @@ setCode(code: number, callback: AsyncCallback\<void>): void
 
 设置有序公共事件传递的数据。使用callback异步回调。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -173,7 +173,7 @@ setCode(code: number): Promise\<void>
 
 设置有序公共事件传递的数据。使用Promise异步回调。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -215,7 +215,7 @@ setCodeSync(code: number): void
 
 同步设置有序公共事件传递的数据。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -252,7 +252,7 @@ getData(callback: AsyncCallback\<string>): void
 
 获取有序公共事件传递的数据。使用callback异步回调。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -291,7 +291,7 @@ getData(): Promise\<string>
 
 获取有序公共事件传递的数据。使用Promise异步回调。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -319,7 +319,7 @@ getDataSync(): string
 
 同步获取有序公共事件传递的数据。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -344,7 +344,7 @@ setData(data: string, callback: AsyncCallback\<void>): void
 
 设置有序公共事件传递的数据。使用callback异步回调。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -383,7 +383,7 @@ setData(data: string): Promise\<void>
 
 设置有序公共事件传递的数据。使用Promise异步回调。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -425,7 +425,7 @@ setDataSync(data: string): void
 
 同步设置有序公共事件传递的数据。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -462,7 +462,7 @@ setCodeAndData(code: number, data: string, callback: AsyncCallback\<void\>): voi
 
 设置有序公共事件传递的数据。使用callback异步回调。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -502,7 +502,7 @@ setCodeAndData(code: number, data: string): Promise\<void>
 
 设置有序公共事件传递的数据。使用Promise异步回调。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -545,7 +545,7 @@ setCodeAndDataSync(code: number, data: string): void
 
 同步设置有序公共事件传递的数据。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1029,7 +1029,7 @@ getSubscribeInfo(callback: AsyncCallback\<CommonEventSubscribeInfo>): void
 
 获取订阅者的订阅信息。使用callback异步回调。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1067,7 +1067,7 @@ getSubscribeInfo(): Promise\<CommonEventSubscribeInfo>
 
 获取订阅者的订阅信息。使用Promise异步回调。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1095,7 +1095,7 @@ getSubscribeInfoSync(): CommonEventSubscribeInfo
 
 同步获取订阅者的订阅信息。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 

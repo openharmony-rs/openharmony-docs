@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API版本9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前界面仅包含本模块的系统接口，其他公开接口参见[NotificationManager](js-apis-notificationManager.md)。
 
@@ -2384,7 +2384,7 @@ setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
 > **说明：**
 >
-> 从API版本9开始支持，从API版本26.0.0开始废弃，建议使用[setDistributedEnabled](#notificationmanagersetdistributedenabled20)替代。
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[setDistributedEnabled](#notificationmanagersetdistributedenabled20)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2438,7 +2438,7 @@ setDistributedEnable(enable: boolean): Promise\<void>
 
 > **说明：**
 >
-> 从API版本9开始支持，从API版本26.0.0开始废弃，建议使用[setDistributedEnabled](#notificationmanagersetdistributedenabled20)替代。
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[setDistributedEnabled](#notificationmanagersetdistributedenabled20)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2494,7 +2494,7 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 
 > **说明：**
 >
-> 从API版本9开始支持，从API版本26.0.0开始废弃，建议使用[setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)替代。
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2555,7 +2555,7 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 
 > **说明：**
 >
-> 从API版本9开始支持，从API版本26.0.0开始废弃，建议使用[setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)替代。
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2616,7 +2616,7 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 
 > **说明：**
 >
-> 从API版本9开始支持，从API版本26.0.0开始废弃，建议使用[isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)替代。
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2673,7 +2673,7 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
 > **说明：**
 >
-> 从API版本9开始支持，从API版本26.0.0开始废弃，建议使用[isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)替代。
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2733,7 +2733,7 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 > **说明：**
 >
-> 从API版本9开始支持，从API版本26.0.0开始废弃。
+> 从API version 9开始支持，从API版本26.0.0开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2784,7 +2784,7 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 
 > **说明：**
 >
-> 从API版本9开始支持，从API版本26.0.0开始废弃。
+> 从API version 9开始支持，从API版本26.0.0开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3673,7 +3673,7 @@ setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean, callback: 
 
 > **说明：**
 >
-> 从API版本9开始支持，从API版本26.0.0开始废弃。
+> 从API version 9开始支持，从API版本26.0.0开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3731,7 +3731,7 @@ setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean): Promise\<
 
 > **说明：**
 >
-> 从API版本9开始支持，从API版本26.0.0开始废弃。
+> 从API version 9开始支持，从API版本26.0.0开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3791,7 +3791,7 @@ getSyncNotificationEnabledWithoutApp(userId: number, callback: AsyncCallback\<bo
 
 > **说明：**
 >
-> 从API版本9开始支持，从API版本26.0.0开始废弃。
+> 从API version 9开始支持，从API版本26.0.0开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3847,7 +3847,7 @@ getSyncNotificationEnabledWithoutApp(userId: number): Promise\<boolean>
 
 > **说明：**
 >
-> 从API版本9开始支持，从API版本26.0.0开始废弃。
+> 从API version 9开始支持，从API版本26.0.0开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -4195,7 +4195,7 @@ setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: 
 | 参数名   | 类型                     | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | -------------------------- |
 | bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | 是   | 应用的包信息。                   |
-| deviceType | string | 是   | 设备类型。<br>从API版本18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API版本20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
+| deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 | enable   | boolean                  | 是   | 指定应用是否支持跨设备协同（true：支持，false：不支持）。|
 
 **返回值：**
@@ -4258,7 +4258,7 @@ setDistributedEnableByBundles(bundleEnableInfos: Array\<DistributedBundleEnableI
 | 参数名   | 类型                     | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | -------------------------- |
 | bundleEnableInfos   | Array\<[DistributedBundleEnableInfo](#distributedbundleenableinfo20)\>             | 是   | 需要设置的应用数组。                   |
-| deviceType | string | 是   | 设备类型。<br>从API版本18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API版本20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
+| deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 
 
 **返回值：**
@@ -4328,7 +4328,7 @@ isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<
 | 参数名   | 类型                     | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | -------------------------- |
 | bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | 是   | 应用的包信息。                   |
-| deviceType | string | 是   | 设备类型。<br>从API版本18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API版本20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
+| deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 
 **返回值：**
 
@@ -4388,7 +4388,7 @@ setSmartReminderEnabled(deviceType: string, enable: boolean): Promise<void\>
 
 | 参数名   | 类型                     | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | -------------------------- |
-| deviceType | string | 是   | 设备类型。<br>从API版本18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API版本20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
+| deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 | enable   | boolean                  | 是   | 指定应用是否支持设置设备与其他设备协同智能提醒（true：支持，false：不支持）。|
 
 **返回值：**
@@ -4446,7 +4446,7 @@ isSmartReminderEnabled(deviceType: string): Promise<boolean\>
 
 | 参数名   | 类型                     | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | -------------------------- |
-| deviceType | string | 是   | 设备类型。<br>从API版本18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API版本20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
+| deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 
 **返回值：**
 
@@ -5224,7 +5224,7 @@ setDistributedEnabledBySlot(slot: SlotType, deviceType: string, enabled: boolean
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | slot | [SlotType](js-apis-notificationManager.md#slottype) | 是   | [通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)类型。 |
-| deviceType | string | 是   | 设备类型。<br>从API版本18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API版本20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
+| deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 | enabled | boolean | 是   | 是否开启通知跨设备协同开关。取值为true表示打开，取值为false表示关闭。 |
 
 **返回值：**
@@ -5277,7 +5277,7 @@ isDistributedEnabledBySlot(slot: SlotType, deviceType: string): Promise\<boolean
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | slot | [SlotType](js-apis-notificationManager.md#slottype) | 是   | [通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)类型。 |
-| deviceType | string | 是   | 设备类型。<br>从API版本18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API版本20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
+| deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 
 **返回值：**
 

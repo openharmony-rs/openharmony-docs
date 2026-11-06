@@ -10,7 +10,7 @@ NotificationContent中定义通知的内容结构，提供多种通知类型的�
 
 > **说明：**
 >
-> 本模块首批接口从API版本7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## NotificationContent
 
@@ -26,7 +26,7 @@ NotificationContent中定义通知的内容结构，提供多种通知类型的�
 | multiLine      | [NotificationMultiLineContent](#notificationmultilinecontent)              | 否  | 是  | 多行类型通知内容。当notificationContentType为NOTIFICATION_CONTENT_MULTILINE时使用，通知展开后以多行列表样式展示。   |
 | picture        | [NotificationPictureContent](#notificationpicturecontent)                  | 否  | 是  | 图片类型通知内容。当notificationContentType为NOTIFICATION_CONTENT_PICTURE时使用。通知展开后可展示图片。   |
 | systemLiveView<sup>11+</sup> | [NotificationSystemLiveViewContent](#notificationsystemliveviewcontent)    | 否  | 是  | [系统实况窗](../../notification/notification-glossary.md#system-live-view系统实况窗)类型通知内容。不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后，三方应用发布同ID的通知来更新指定内容。|
-| contentType<sup>(deprecated)</sup> | [notification.ContentType](js-apis-notification.md#contenttype)  | 否  | 是  | 通知内容类型。<br>从API版本7开始支持，从API版本11开始废弃，建议使用notificationContentType替代。       |
+| contentType<sup>(deprecated)</sup> | [notification.ContentType](js-apis-notification.md#contenttype)  | 否  | 是  | 通知内容类型。<br>从API version 7开始支持，从API version 11开始废弃，建议使用notificationContentType替代。       |
 
 ## NotificationBasicContent
 
