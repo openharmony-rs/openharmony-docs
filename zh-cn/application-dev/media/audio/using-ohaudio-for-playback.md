@@ -311,7 +311,7 @@ int32_t MyOnWriteDataWithMetadata_New(
 > - Pause、Stop、Release不会退出standby状态。如果应用在standby状态下Stop后重新Start，需要先调用OH_AudioRenderer_Standby(renderer, false)退出standby。
 > - 仅AUDIOSTREAM_USAGE_MUSIC、AUDIOSTREAM_USAGE_MOVIE、AUDIOSTREAM_USAGE_GAME、AUDIOSTREAM_USAGE_AUDIOBOOK类型的播放流支持standby，其他类型调用会返回AUDIOSTREAM_ERROR_ILLEGAL_STATE。
 
-<!-- @[Render_Standby](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+<!-- @[Render_Standby](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) --> 
 
 ### 相关实例
 

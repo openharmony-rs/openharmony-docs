@@ -212,9 +212,9 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
            // ...
          }
        });
-    // 关闭沙箱文件。
-    await context.resourceManager.closeRawFd('S16LE_2_48000.pcm');
-    ```
+       // 关闭沙箱文件。
+       await context.resourceManager.closeRawFd('S16LE_2_48000.pcm');
+   ```
 
 ### 进入和退出standby状态
 
@@ -230,11 +230,11 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
 
 **进入standby状态：**
 
-<!-- @[render_standby_enter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+<!-- @[render_standby_enter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) --> 
 
 **退出standby状态：**
 
-<!-- @[render_standby_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+<!-- @[render_standby_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) --> 
 
 ### 选择正确的StreamUsage
 
