@@ -1466,6 +1466,8 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
 获取Wi-Fi连接信息。使用Promise异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 > **说明：**
@@ -2229,6 +2231,8 @@ getCurrentGroup(): Promise&lt;WifiP2pGroupInfo&gt;
 
 获取P2P当前组信息。使用Promise异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：**
 
 API 10起：ohos.permission.GET_WIFI_INFO
@@ -2303,6 +2307,8 @@ API 10起：ohos.permission.GET_WIFI_INFO
 getP2pPeerDevices(): Promise&lt;WifiP2pDevice[]&gt;
 
 获取P2P对端设备列表信息。使用Promise异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：**
 
@@ -2410,6 +2416,8 @@ API 10起：ohos.permission.GET_WIFI_INFO
 getP2pLocalDevice(): Promise&lt;WifiP2pDevice&gt;
 
 获取P2P本端设备信息，使用Promise异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** 
 
@@ -2869,6 +2877,8 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
 注册Wi-Fi状态改变事件，在业务退出时，要调用off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -2957,6 +2967,8 @@ on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
 注册Wi-Fi连接状态改变事件，在业务退出时，要调用off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -3040,6 +3052,8 @@ off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
 on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 
 注册扫描状态改变事件，在业务退出时，要调用off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3125,6 +3139,8 @@ on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
 注册Wi-Fi接收信号强度(RSSI)变化事件，在业务退出时，要调用off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -3197,6 +3213,8 @@ off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
 on(type: 'hotspotStateChange', callback: Callback&lt;number&gt;): void
 
 注册热点状态改变事件，在业务退出时，要调用off(type: 'hotspotStateChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3281,6 +3299,8 @@ on(type: 'p2pStateChange', callback: Callback&lt;number&gt;): void
 
 注册P2P开关状态改变事件，在业务退出时，要调用off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
@@ -3364,6 +3384,8 @@ on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): vo
 
 注册P2P连接状态改变事件，在业务退出时，要调用off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
@@ -3436,6 +3458,8 @@ off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;): 
 on(type: 'p2pDeviceChange', callback: Callback&lt;WifiP2pDevice&gt;): void
 
 注册P2P设备状态改变事件，在业务退出时，要调用off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;)接口去掉之前的注册回调。使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：**
 
@@ -3510,6 +3534,8 @@ on(type: 'p2pPeerDeviceChange', callback: Callback&lt;WifiP2pDevice[]&gt;): void
 
 注册P2P对端设备状态改变事件，在业务退出时，要调用off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：**
 
 API 10起：ohos.permission.GET_WIFI_INFO
@@ -3583,6 +3609,8 @@ on(type: 'p2pPersistentGroupChange', callback: Callback&lt;void&gt;): void
 
 注册P2P永久组状态改变事件，在业务退出时，要调用off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
@@ -3655,6 +3683,8 @@ off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;): void
 on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
 
 注册发现设备状态改变事件，在业务退出时，要调用off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
