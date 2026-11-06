@@ -525,11 +525,11 @@ The input type is not supported.
 
 **错误描述**
 
-请求的输入能力类型在当前输入法中未配置对应子类型。
+当前输入法未设置对应的输入类型。
 
 **可能原因**
 
-调用[requestSystemInputCapability](js-apis-inputmethod.md#requestsysteminputcapability)请求翻译输入能力时，当前输入法未配置翻译子类型。
+调用[requestSystemInputCapability](js-apis-inputmethod.md#requestsysteminputcapability)请求翻译输入能力时，当前输入法未设置翻译输入类型。
 
 **处理步骤**
 
