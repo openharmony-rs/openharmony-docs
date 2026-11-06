@@ -51414,5 +51414,25 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/calendarmanager/calendarmanager-calendar-developer.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":21,
+						"name":"calendarData_entryAbilityImport",
+						"start_line":16
+					},
+					{
+						"end_line":74,
+						"name":"calendarData_entryAbility",
+						"start_line":23
+					}
+				]
+			}
+		]
 	}
 ]
