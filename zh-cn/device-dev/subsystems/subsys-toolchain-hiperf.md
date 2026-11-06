@@ -18,11 +18,11 @@ hiperf支持的命令有：list、stat、record、report等，可以通过hiperf
 列出设备上支持的所有perf事件名称，事件名称用于 stat 和 record命令的 -e 和 -g 参数。
 
   
-```
+```shell
 Usage: hiperf list [event type]
 ```
 
-  | 参数 | 功能说明 | 
+| 参数 | 功能说明 | 
 | -------- | -------- |
 | hw | 列出支持的&nbsp;hardware&nbsp;事件（PMU支持） | 
 | sw | 列出支持的&nbsp;software&nbsp;事件 | 
@@ -36,7 +36,7 @@ Usage: hiperf list [event type]
 下面列出了设备支持的hardware事件，并且会提示哪些事件此设备不支持。
 
   
-```
+```shell
 hiperf list hw
 event not support hw-stalled-cycles-backend
 event not support hw-stalled-cycles-frontend
@@ -60,13 +60,13 @@ Supported events for hardware:
 
 监听指定目标程序，周期性打印性能计数器的值。
   
-```
+```shell
 Usage: hiperf stat [options]
        Collect performance counter information.
 ```
 
 
-  | 参数 | 功能说明 | 
+| 参数 | 功能说明 | 
 | -------- | -------- |
 | -a | 采集监听整个系统的所有线程和默认的性能计数器的值。 | 
 | -c | 指定cpu&nbsp;id，可以是0,1,2用逗号分隔。 | 
@@ -85,7 +85,7 @@ Usage: hiperf stat [options]
 下面是通过 stat 监听整个系统3秒的示例：
 
   
-```
+```shell
 hiperf stat -d 3 -a
 this is root mode, perfEventParanoid assume as -1
 Start Profiling...
@@ -103,7 +103,7 @@ Timeout exit (total 3009 ms)
 
 ### 字段说明
 
-  | 字段名 | 含义 | 
+| 字段名 | 含义 | 
 | -------- | -------- |
 | count | 表示事件发生的次数。 | 
 | name | 事件的名称，在&nbsp;list&nbsp;命令中可以看到所有支持的命令，hw&nbsp;和&nbsp;sw&nbsp;的前缀分别代表是hardware事件还是software事件。 | 
@@ -119,12 +119,12 @@ Timeout exit (total 3009 ms)
 采样指定目标程序，并且将采样数据保存到指定的文件中（默认为perf.data）
 
   
-```
+```shell
 Usage: hiperf record [options]
        Collect performance sampling information.
 ```
 
-  | 参数 | 功能说明 | 
+| 参数 | 功能说明 | 
 | -------- | -------- |
 | -a | 对整个系统的所有进程和线程进行采样。 | 
 | --exclude-hiperf | 不采样hiperf自身进程。 | 
@@ -158,49 +158,49 @@ Usage: hiperf record [options]
 
 - 对整机所有进程采样3秒，并且显示详细的日志信息
     
-  ```
+  ```shell
   hiperf record -d 3 -a --verbose
   ```
 
 - 指定使用fp方式进行回栈
     
-  ```
+  ```shell
   hiperf record -s fp -d 3 -a
   ```
 
 - 指定使用dwarf方式进行回栈
     
-  ```
+  ```shell
   hiperf record -s dwarf -d 3 -a
   ```
 
 - 指定采样offcpu事件
     
-  ```
+  ```shell
   hiperf record --offcpu -s dwarf -d 3 -a
   ```
 
 - 指定延迟回栈
     
-  ```
+  ```shell
   hiperf record -d 3 -s dwarf --delay-unwind -a
   ```
 
 - 禁用堆栈展开，此时会保存堆栈数据到perf.data文件
     
-  ```
+  ```shell
   hiperf record -d 3 -s dwarf --disable-unwind -a
   ```
 
 - 指定追踪的包名，如果指定的包名对应的进程不存在则会延迟等待10秒，超时后进程退出
     
-  ```
+  ```shell
   hiperf record -d 3 -s dwarf --app com.ohos.launch
   ```
 
 - 指定对采样结果数据进行压缩保存
     
-  ```
+  ```shell
   hiperf record -z -s dwarf -d 3  -a
   ```
 
@@ -213,12 +213,12 @@ Usage: hiperf record [options]
 此命令主要用于展示record中抓取的采样数据
 
   
-```
+```shell
 Usage: hiperf report [option]     
        Report sampling information from perf.data.
 ```
 
-  | 参数 | 功能说明 | 
+| 参数 | 功能说明 | 
 | -------- | -------- |
 | --symbol-dir&nbsp;&lt;_dir_&gt; | 指定符号表路径。 | 
 | --limit-percent&nbsp;&lt;_number_&gt; | 指定展示结果的最低百分比（低于的不显示）。 | 
@@ -237,14 +237,14 @@ Usage: hiperf report [option]
 
 - 输出采样数据的报告，默认读取perf.data文件
     
-  ```
+  ```shell
   hiperf report
   ```
 
   输出结果举例：
 
     
-  ```
+  ```shell
   Heating count    comm            pid  tid  dso                                func
    5.68%  15073949 hiperf_example_ 1085 1091 /system/lib/ld-musl-arm.so.1       malloc
    2.57%   6834119 hiperf_example_ 1085 1091 [kernel.kallsyms]                  vector_swi
@@ -256,25 +256,25 @@ Usage: hiperf report [option]
 
 - 输出采集数据的调用栈报告
     
-  ```
+  ```shell
   hiperf report -s
   ```
 
 - 指定符号表路径
     
-  ```
+  ```shell
   hiperf report -s --symbol-dir /data/local/tmp
   ```
 
 - 指定结果过滤的关键字，指定后会只显示包含该关键字的信息。例如要过滤libutils.z.so，命令如下：
     
-  ```
+  ```shell
   hiperf report --dsos libutils.z.so
   ```
 
 - 指定按照特定的关键字进行排序展示，比如按照dso进行排序：
     
-  ```
+  ```shell
   hiperf report --sort dso
   ```
 
@@ -344,13 +344,13 @@ Usage: hiperf report [option]
     
 1. 引入hiperf_client模块头文件。
      
-   ```
+   ```cpp
    #include "hiperf_client.h"
    ```
 
 2. 调用hiperf_client提供的接口开始和终止采集。
      
-   ```
+   ```cpp
    HiperfClient::Client myHiperf;  // 创建通信管道
    myHiperf.Start();  // 启动采集
    myHiperf.Stop();  // 结束采集，采集结束后文件会被保存至/data/local/tmp/perf.data，调用Setup()接口并传入文件路径参数可以修改文件保存路径
@@ -358,6 +358,6 @@ Usage: hiperf report [option]
 
 3. 在BUILD.gn对应的编译目标中增加编译依赖。
      
-   ```
+   ```cpp
    external_deps = [ "hiperf:hiperf_client" ]
    ```
