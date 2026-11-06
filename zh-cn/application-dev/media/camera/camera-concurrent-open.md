@@ -173,31 +173,36 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
    ```
    ```
 
-6. 确定录像输出流。
-
    <!-- @[camera_createVideoOutput_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
-   ```ts
-   async function createAVRecorder(): Promise<media.AVRecorder | undefined> {
+   
+   ``` TypeScript
+   async createAVRecorderForConcurrent(): Promise<media.AVRecorder | undefined> {
      let avRecorder: media.AVRecorder | undefined = undefined;
      try {
        avRecorder = await media.createAVRecorder();
      } catch (error) {
-     console.error('createAVRecorder error')
+       console.error(`createAVRecorder error`)
      }
      return avRecorder;
    }
-
-   function initFd(context: common.Context): number {
+   
+   initFdForConcurrent(context: common.Context): number {
      let filesDir = context.filesDir;
      let filePath = filesDir + `/${Date.now()}.mp4`;
      AppStorage.setOrCreate<string>('filePath', filePath);
-     let file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-     return file.fd;
+     try {
+       let file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+       return file.fd;
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`openSync failed, err code: ${err.code}.`);
+       return -1;
+     }
    }
-
-   async function prepareAVRecorder(videoProfileObj: camera.VideoProfile, curCameraDevice: camera.CameraDevice, avRecorder: media.AVRecorder, context: common.Context): Promise<void> {
-     let fd = initFd(context);
+   
+   async prepareAVRecorderForConcurrent(videoProfileObj: camera.VideoProfile, curCameraDevice: camera.CameraDevice,
+     avRecorder: media.AVRecorder, context: common.Context): Promise<void> {
+     let fd = this.initFdForConcurrent(context);
      let videoConfig: media.AVRecorderConfig = {
        audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
        videoSourceType: media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
@@ -217,13 +222,15 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
        rotation: curCameraDevice?.cameraOrientation
      };
      await avRecorder?.prepare(videoConfig).catch((err: BusinessError): void => {
-       console.error(`prepareAVRecorder prepare err`);
+       console.error(`prepareAVRecorder prepare err code: ${err.code}.`);
      });
    }
-
-   async function getVideoOutputFn(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability, concurrentInfo: Array<camera.CameraConcurrentInfo>, curCameraDeviceFront: camera.CameraDevice, context: common.Context)
-   {
-    // 此处创建录像输出流以format：1003，size：1920*1080的videoProfile为例，对应的videoProfile必须在getCameraConcurrentInfos获取到的并发能力信息数组范围内。
+   
+   async getVideoOutputFn(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability,
+     concurrentInfo: camera.CameraConcurrentInfo[], curCameraDeviceFront: camera.CameraDevice,
+     context: common.Context): Promise<camera.VideoOutput | undefined> {
+     // 此处创建录像输出流以format：1003，size：1920*1080的录像配置项为例，
+     // 对应的录像配置项必须在getCameraConcurrentInfos获取到的并发能力信息数组范围内。
      let videoProfileObj: camera.VideoProfile = {
        format: 1003,
        size: {
@@ -235,7 +242,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
          max: 60
        }
      };
-
+   
      // 替换相应能力集。
      for (let i = 0; i < concurrentInfo.length; i++) {
        if (concurrentInfo[i].device.cameraPosition == camera.CameraPosition.CAMERA_POSITION_FRONT) {
@@ -245,7 +252,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
      }
      let videoProfiles = cameraOutputCapability.videoProfiles;
      if (videoProfiles.length < 1) {
-       return;
+       return undefined;
      }
      let index = videoProfiles.findIndex((videoProfile: camera.VideoProfile) => {
        return videoProfile.size.width === videoProfileObj.size.width &&
@@ -255,19 +262,24 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
          videoProfile.frameRateRange.max <= 60;
      });
      if (index === -1) {
-       return;
+       return undefined;
      }
      videoProfileObj = videoProfiles[index];
-     let avRecorder = await createAVRecorder();
+     let avRecorder = await this.createAVRecorderForConcurrent();
      if (avRecorder === undefined) {
-       return;
+       return undefined;
      }
-     await prepareAVRecorder(videoProfileObj, curCameraDeviceFront, avRecorder, context);
+     // 保存avRecorder，供停止录制和释放时使用。
+     this.avRecorder = avRecorder;
+     await this.prepareAVRecorderForConcurrent(videoProfileObj, curCameraDeviceFront, avRecorder, context);
      let videoSurfaceId = await avRecorder.getInputSurface();
      let videoOutput = cameraManager.createVideoOutput(videoProfileObj, videoSurfaceId);
      if (videoOutput === undefined) {
-       return;
+       return undefined;
      }
+     return videoOutput;
+   }
+   ```
    }
    ```
   
