@@ -252,8 +252,7 @@ getConnectedBLEDevices(profile: BleProfile): Array&lt;string&gt;
 - 若指定本机设备作为server端，则返回与本机设备连接的所有client端设备地址集合。
 - 若指定本机设备同时作为client端和server端，则返回与本机设备连接的所有client端和server端设备地址集合。
 
-**需要权限**：
-- API版本21-24：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 

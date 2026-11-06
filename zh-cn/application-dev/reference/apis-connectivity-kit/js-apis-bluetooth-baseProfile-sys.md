@@ -26,9 +26,11 @@ import { baseProfile } from '@kit.ConnectivityKit';
 
 枚举，表示Profile的连接策略。
 
-**系统接口：** 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称                             | 值      | 说明            |
 | -------------------------------- | ------ | --------------- |
@@ -50,7 +52,9 @@ setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy, callback: 
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
@@ -73,7 +77,7 @@ setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy, callback: 
 |2900004 | Profile not supported.                |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
@@ -81,7 +85,7 @@ import { a2dp } from '@kit.ConnectivityKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
     a2dpSrc.setConnectionStrategy('XX:XX:XX:XX:XX:XX', 0, (err: BusinessError) => {
-        console.info('setConnectionStrategy, err: ' + JSON.stringify(err));
+        console.error('setConnectionStrategy, err: ' + JSON.stringify(err));
     });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -100,14 +104,16 @@ setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy): Promise&l
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
 | deviceId | string | 是    | 表示配对的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | strategy | [ConnectionStrategy](#connectionstrategy)   | 是    |Profile的连接策略。 |
 
-**返回值：**
+**返回值**：
 
 | 类型                  | 说明            |
 | ------------------- | ------------- |
@@ -128,7 +134,7 @@ setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy): Promise&l
 |2900004 | Profile not supported.                |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
@@ -157,7 +163,9 @@ getConnectionStrategy(deviceId: string, callback: AsyncCallback&lt;ConnectionStr
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
@@ -179,7 +187,7 @@ getConnectionStrategy(deviceId: string, callback: AsyncCallback&lt;ConnectionStr
 |2900004 | Profile not supported.                |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
@@ -206,13 +214,15 @@ getConnectionStrategy(deviceId: string): Promise&lt;ConnectionStrategy&gt;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
 | deviceId | string | 是    | 表示配对的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
-**返回值：**
+**返回值**：
 
 | 类型                  | 说明            |
 | ------------------- | ------------- |
@@ -233,7 +243,7 @@ getConnectionStrategy(deviceId: string): Promise&lt;ConnectionStrategy&gt;
 |2900004 | Profile not supported.                |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
