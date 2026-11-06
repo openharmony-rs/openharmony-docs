@@ -5,7 +5,7 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=48ed70950d1393d9376b16ef0c38bd1178ae36e5 translatedAt=2026-10-10T06:08:14.954Z pushedAt=2026-10-12T07:42:36.018Z -->
+<!-- md-trans-meta sourceCommit=7e8235b0dc708a3dc818264b2e0246d5ba0758b6 translatedAt=2026-11-05T03:18:07.341Z pushedAt=2026-11-05T08:31:34.259Z nl=2 -->
 
 CustomDialog is a custom dialog used for user interaction scenarios such as advertisements, prize notifications, warnings, and software updates. You can display a custom dialog through the **CustomDialogController** class. For details, see [Custom Dialog](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md).
 
@@ -31,9 +31,9 @@ Starting from API version 19, the custom dialog provides lifecycle functions to 
 ## Creating a Custom Dialog Box
 
 1. Use the \@CustomDialog decorator to decorate a custom dialog. You can customize the dialog content within this decorator. CustomDialogController must be defined inside @Component.
-
+   
    <!-- @[create_custom_dialog_new_customDialog_controller_default](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/CreateCustomDialogNew.ets) -->
-
+   
    ``` TypeScript
    @CustomDialog
    struct CustomDialogExample {
@@ -48,12 +48,12 @@ Starting from API version 19, the custom dialog provides lifecycle functions to 
      }
    }
    ```
-
+   
 
 
 2. Create a constructor and connect it to the decorator.
    <!-- @[create_custom_dialog_new_customDialog_controller_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/CreateCustomDialogNew.ets) -->
-
+   
    ``` TypeScript
    @Entry
    @Component
@@ -64,12 +64,12 @@ Starting from API version 19, the custom dialog provides lifecycle functions to 
    // ···
    }
    ```
-
+   
 
 3. Tap the component bound to the onClick event to display the dialog.
-
+   
    <!-- @[create_custom_dialog_new_customDialog_controller_on_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/CreateCustomDialogNew.ets) -->
-
+   
    ``` TypeScript
    @Entry
    @Component
@@ -89,8 +89,8 @@ Starting from API version 19, the custom dialog provides lifecycle functions to 
      }
    }
    ```
-
-
+   
+   
    ![custom-dialog-create](figures/custom-dialog-create.png)
 
 ## Dialog Box Interaction
@@ -99,7 +99,7 @@ A dialog can be used for data interaction to complete a series of user response 
 
 1. Add buttons and data functions inside the \@CustomDialog decorator.
    <!-- @[dialog_interaction_use_constructor_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogInteractionUseConstructor.ets) -->
-
+   
    ``` TypeScript
    @CustomDialog
    struct CustomDialogExample {
@@ -133,12 +133,12 @@ A dialog can be used for data interaction to complete a series of user response 
      }
    }
    ```
-
-
-
+   
+   
+   
 2. Receive them in the constructor on the page and create the corresponding function operations.
    <!-- @[dialog_interaction_use_constructor_user](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogInteractionUseConstructor.ets) -->
-
+   
    ``` TypeScript
    @Entry
    @Component
@@ -176,7 +176,7 @@ A dialog can be used for data interaction to complete a series of user response 
 
 3. You can use buttons in a dialog to navigate to another page and obtain the parameters passed from that page to the current page.
     <!-- @[dialog_interaction_use_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogInteractionUseButton.ets) -->
-
+    
     ``` TypeScript
     @CustomDialog
     struct CustomDialogExample {
@@ -278,10 +278,10 @@ A dialog can be used for data interaction to complete a series of user response 
       }
     }
     ```
-
+    
 
     <!-- @[index_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/IndexNew.ets) -->
-
+    
     ``` TypeScript
     @Entry
     @Component
@@ -307,8 +307,8 @@ A dialog can be used for data interaction to complete a series of user response 
       }
     }
     ```
-
-
+    
+   
    ![DialogRouter](figures/DialogRouter.gif)
 
 ## Dialog Box Animation
@@ -563,8 +563,8 @@ Because custom dialogs have a parent-child relationship in state management, if 
 
 ## Implementing Physical Back Press Interception for a Dialog Box
 
-When you perform interactive operations such as tapping the mask layer to close, swiping left or right, pressing the three-key Back button, or pressing ESC to close the dialog, if the onWillDismiss callback in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) is registered, the dialog is not closed immediately. In the callback, you can obtain the type of operation that prevented the dialog from closing through the reason property in [DismissDialogAction](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#dismissdialogaction12), and decide whether to close the dialog based on the reason.
-
+When you perform interactive operations such as tapping the mask layer to close, swiping left or right, pressing the three-key Back button, or pressing ESC to close the dialog, if the onWillDismiss() callback in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) is registered, the dialog is not closed immediately. In the callback, you can obtain the type of operation that prevented the dialog from closing through the reason property in [DismissDialogAction](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#dismissdialogaction12), and decide whether to close the dialog based on the reason.
+ 
 <!-- @[dialog_with_physical_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogWithPhysicalBack.ets) -->
 
 ``` TypeScript
@@ -674,7 +674,7 @@ export struct DialogWithPhysicalBack {
 To ensure the independence of the displayed dialog, it avoids surrounding elements such as the status bar, navigation bar, and keyboard by maintaining a margin when it appears. Therefore, when the soft keyboard appears, the dialog automatically avoids it and keeps a distance of 16 vp by default. Starting from API version 15, you can use the **keyboardAvoidMode** and **keyboardAvoidDistance** configuration options in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) to set the behavior of the dialog when the soft keyboard appears, including whether to avoid the soft keyboard and the distance from it.
 
 To set the distance from the soft keyboard, you must set **keyboardAvoidMode** to **KeyboardAvoidMode.DEFAULT**.
-
+  
 <!-- @[dialog_avoid_soft_key_board](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogAvoidSoftKeyboard.ets) -->
 
 ``` TypeScript
@@ -741,7 +741,7 @@ export struct DialogAvoidSoftKeyboard {
 
 In a business module, multiple dialogs may appear on a page at the same time. To avoid opening the same dialog repeatedly, check its current state through the controller before displaying it. If the dialog is already in the displayed state, do not open it again.
 
-Starting from API version 20, the **getState** API is provided for obtaining the current state of a dialog. For details about dialog states, see the [CommonState](../reference/apis-arkui/js-apis-promptAction.md#commonstate20) enumeration.
+Starting from API version 20, the getState() API is provided for obtaining the current state of a dialog. For details about dialog states, see the [CommonState](../reference/apis-arkui/js-apis-promptAction.md#commonstate20) enumeration.
 
 The following example demonstrates how to obtain the current state of a dialog using both [getDialogController](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getdialogcontroller18) and [CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller).
 

@@ -1,12 +1,11 @@
 # getTarget API: Obtaining Original Objects
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:05:47.921Z pushedAt=2026-07-23T11:59:45.042Z -->
+<!-- md-trans-meta sourceCommit=8917fa9a06fba0322d5ee6f97bf1bc1616272188 translatedAt=2026-11-05T04:07:49.743Z pushedAt=2026-11-05T08:31:34.513Z nl=1 -->
 
 To obtain the original object before a proxy is added by the state management framework, you can use the [getTarget](../../reference/apis-arkui/js-apis-stateManagement.md#gettarget) API.
 
@@ -27,7 +26,6 @@ The state management framework adds proxies to original objects of the class, Da
   ```
 
 - In state management V1, proxies are added to the following to observe changes in top-level properties or changes triggered by API calls: (1) instances of classes decorated with \@Observed; (2) objects of the class, Date, Map, Set, and Array types decorated with [\@State](./arkts-state.md) or other state variable decorators.
-
 - In state management V2, proxies are added to the following to observe changes triggered by API calls: objects of the Date, Map, Set, and Array types decorated with [\@Trace](./arkts-new-observedV2-and-trace.md), [\@Local](./arkts-new-local.md), or other state variable decorators.
 
 The **getTarget** API is used to obtain the original objects of these proxy objects.
@@ -41,7 +39,7 @@ The **getTarget** API is used to obtain the original objects of these proxy obje
   let resNumber = UIUtils.getTarget(2); // Passing a non-object type argument causes a compilation error.
   let resObject = UIUtils.getTarget(2 as Object); // Non-object type input parameter. The input value is returned directly, bypassing the compilation interception. This is an incorrect usage.
   ```
-
+  
   ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
   @Observed
@@ -52,10 +50,10 @@ The **getTarget** API is used to obtain the original objects of these proxy obje
   let rawInfo: Info = UIUtils.getTarget (info); // Correct usage.
   ```
 
+
 - Changes to the content in the original object obtained by **getTarget** cannot be observed nor trigger UI re-renders.
-
   <!-- @[Changes_to_the_content_in_the_original](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetTargetObject.ets) --> 
-
+  
   ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
   @Observed
@@ -91,7 +89,7 @@ The **getTarget** API is used to obtain the original objects of these proxy obje
   }
   ```
 
-![gettarget-sync-0](./figures/gettarget-sync-0.gif)
+  ![gettarget-sync-0](./figures/gettarget-sync-0.gif)
 
 ## Use Scenarios
 
@@ -100,7 +98,6 @@ The **getTarget** API is used to obtain the original objects of these proxy obje
 State management V1 adds proxies to the following objects:
 
 1. Instances of classes decorated with \@Observed. A proxy is automatically added to an instance of a class decorated with \@Observed when the instance is created. This occurs during the **new** process. In the following example, classes not decorated with \@Observed are not proxied.
-
 <!-- @[nonObservedClass_outOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetTargetAgent.ets) --> 
 
 ``` TypeScript
@@ -115,8 +112,7 @@ let observedClass: ObservedClass = new ObservedClass(); // Proxied.
 let nonObservedClass: NonObservedClass = new NonObservedClass(); // Not proxied.
 ```
 
-2. Complex-type objects decorated with state variable decorators Proxies are added to objects of the Class, Map, Set, Date, or Array type decorated with \@State, [\@Prop](./arkts-prop.md), or other state variable decorators. If the object is already a proxy, no new proxy is added.
-
+2. Complex-type objects decorated with state variable decorators. Proxies are added to objects of the Class, Map, Set, Date, or Array type decorated with \@State, [\@Prop](./arkts-prop.md), or other state variable decorators. If the object is already a proxy, no new proxy is added.
 <!-- @[nonObservedObject_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetTargetNoChange.ets) --> 
 
 ``` TypeScript
@@ -156,7 +152,6 @@ struct GetTargetNoChange {
 ![gettarget-sync-1](./figures/gettarget-sync-1.png)
 
 Use **UIUtils.getTarget** to obtain the original objects before proxies are added.
-
 <!-- @[nonObservedClass_out](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetTargetAgent.ets) --> 
 
 ``` TypeScript
@@ -221,7 +216,6 @@ struct GetTargetAgent {
 ### Obtaining the Original Object Before Proxy Addition in State Management V2
 
 In state management V2, proxies are added to objects of the Map, Set, Date, and Array type decorated with \@Trace, \@Local, or other state variable decorators. Unlike in state management V1, no proxies are added to class instances in state management V2.
-
 <!-- @[observedObject_globalObservedObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetAgentObject.ets) --> 
 
 ``` TypeScript
@@ -260,7 +254,6 @@ struct GetAgentObject {
 ![gettarget-sync-3](./figures/gettarget-sync-3.png)
 
 Use **UIUtils.getTarget** to obtain the original objects before proxies are added.
-
 <!-- @[NonObservedClass_outs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetBeforeAgent.ets) --> 
 
 ``` TypeScript

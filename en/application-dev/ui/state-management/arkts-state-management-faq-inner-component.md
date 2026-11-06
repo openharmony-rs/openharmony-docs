@@ -1,12 +1,11 @@
 # In-Component State Management FAQs
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zany_pink-->
 <!--Designer: @zhangboren-->
 <!--Tester: @zhangwenhan12-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:13:35.947Z pushedAt=2026-07-23T02:26:57.219Z -->
+<!-- md-trans-meta sourceCommit=5c247b82ce85865eb0a403efc1424399c7afe7c1 translatedAt=2026-11-05T04:19:58.084Z pushedAt=2026-11-05T08:31:34.558Z nl=1 -->
 
 In ArkUI application development, proper use of state management within components directly affects the application performance and development efficiency. However, developers often have insufficient understanding of the update mechanism in practice. As a result, the component behavior is abnormal or the rendering efficiency is reduced. This section describes the common problems and solutions of component state management.
 
@@ -21,13 +20,9 @@ The rendering process is as follows:
 2. Execute the **build** method of **Index** as follows:
 
    - Create a **Column** component.
-
    - Create a **Text** component. **this.count++** is triggered when the **Text** component is created.
-
    - The value change of **count** triggers the re-render of the **Text** component.
-
    - During the refresh, the component does not mark itself as dirty.
-
    - The **Text** component finally displays **2**.
 
 <!-- @[state_problem_not_update_in_build_error_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError01.ets) --> 
@@ -60,7 +55,6 @@ FIX THIS APPLICATION ERROR: @Component 'Index': State variable 'count' has chang
 In the preceding example, even though the **Text** component is rendered one extra time, this error does not cause immediate serious consequences and may be overlooked.
 
 However, this behavior poses significant hidden risks that escalate as project complexity increases. Example:
-
 <!-- @[state_problem_not_update_in_build_error_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError02.ets) -->   
 
 ``` TypeScript
@@ -84,17 +78,11 @@ struct Index {
 The rendering process in the preceding example is as follows:
 
 1. Create the first **Text** component, trigger the change of **this.message**, and [mark the first Text component as dirty](./arkts-state-management-glossary.md#mark-dirty).
-
 2. Create the second Text component, trigger the change of this.message, and mark the two Text components as dirty.
-
 3. When the next frame arrives, the dirty system components are refreshed.
-
 4. When the first Text component is refreshed, this.message is changed. Only the second Text component is marked dirty.
-
 5. When the second Text component is refreshed, this.message is changed. Only the first Text component is marked dirty.
-
 6. Steps 4 and 5 are repeated.
-
 7. The system becomes unresponsive for an extended period, causing an application freeze.
 
 Therefore, modifying state variables within the build method constitutes a critical error. When the error "FIX THIS APPLICATION ERROR: @Component ...has changed during render! It's illegal to change @Component state while build (initial render or re-render) is on-going. Application error!" log is found, immediate correction is required even if no immediate severe consequences are observed.
@@ -168,7 +156,6 @@ In addition, you can use LocalStorage to [change the state variable outside the 
 In the **build** method, when an \@State decorated variable is an object and called in the **a.b(this.object)** format, the original object of **this.object** is passed to method b. Modifying properties of **this.object** within method b does not trigger UI re-rendering. In the following example, when the static method **Balloon.increaseVolume** or **this.reduceVolume** is used to change the **volume** of **Balloon**, the UI fails to update.
 
 **Incorrect Usage**
-
 <!-- @[state_problem_a_b_call_ui_refresh_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemABCallUiRefreshOpposite.ets) --> 
 
 ``` TypeScript
@@ -217,13 +204,11 @@ struct Index {
 State variables observe property changes through proxy objects. When **a.b(this.object)** is used, the framework converts the proxy object to its original form, losing observation capabilities. Consequently, property changes on the original object go undetected, preventing UI re-rendering. Use the following approaches to modify properties:
 
 1. Assign **this.balloon** to a temporary variable.
-
 2. Use the temporary variable to execute the original invocation logic.
 
    For details, see the correct usage.
 
 **Correct Usage**
-
 <!-- @[state_problem_a_b_call_ui_refresh_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemABCallUiRefreshPositive.ets) --> 
 
 ``` TypeScript
@@ -333,7 +318,6 @@ In the preceding example, each time the **change to self** button is clicked, th
 To avoid unnecessary value changes and re-renders, use \@Observed to decorate the class, or use [UIUtils.getTarget()](./arkts-new-getTarget.md) to obtain the original value and compare it with the new value. If they are the same, skip the assignment.
 
 Method 1: Apply the \@Observed decorator.
-
 <!-- @[state_problem_complex_solution_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution01.ets) -->  
 
 ``` TypeScript
@@ -385,7 +369,6 @@ struct ConsumerChild {
 In the preceding example, the class is decorated with the \@Observed decorator, making **list[0]** a Proxy instance. In this case, when the same value is reassigned, the identical object will not trigger re-rendering.
 
 Method 2: Use [UIUtils.getTarget()](./arkts-new-getTarget.md) to obtain the original object.
-
 <!-- @[state_problem_complex_solution_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution02.ets) -->  
 
 ``` TypeScript
@@ -598,7 +581,7 @@ struct Parent {
 
 ## Performance Deteriorates Due to Too Many Components Associated with State Variables
 
-It is recommended that the number of components associated with each state variable be fewer than 20. Precisely controlling the number of components associated with a state variable can reduce unnecessary component refreshes and improve refresh efficiency. Sometimes developers bind the same state variable to multiple sibling component attributes. When the state changes, these components are updated synchronously, causing unnecessary refreshes. When component complexity is high, this significantly affects overall performance. Conversely, binding the state variable to the parent component of these components can reduce the number of components that need to be refreshed, thereby improving performance. During app development, HiDumper can be used to view the number of components associated with a state variable.
+It is recommended that each state variable be associated with fewer than 20 components. Precisely controlling the number of components associated with a state variable reduces unnecessary component refreshes and improves refresh efficiency. Sometimes developers bind the same state variable to properties of multiple sibling components, so that a state change causes these components to update simultaneously and produces unnecessary refreshes. When the components are complex, this significantly affects overall performance. Instead, binding the state variable to the parent component of these components reduces the number of components that need to be refreshed and improves performance. During application development, you can use HiDumper to view the number of components associated with a state variable.
 
 **Incorrect Usage**
 
@@ -905,10 +888,10 @@ Temporary variables are used to replace the calculation of state variables. The 
 
 [Summary]
 
-| **Computation Method**    | **Time Required (for Reference Only)**| **Remarks**                                         |
+| **Calculation method**     | **Time consumed (varies with device and scenario; for reference only)** | **Description**                                          |
 | ---------------- | ------------------------------------------ | ------------------------------------------------- |
-| Changing state variables| 1.01ms                                     | Increases unnecessary query and rendering of ArkUI, causing poor performance.|
-| Using temporary variables for computing| 0.63ms                                     | Streamlines ArkUI behaviors and improve application performance.              |
+| Directly operating state variables | 1.01ms                                     | Adds unnecessary query and rendering behaviors to ArkUI, causing performance degradation. |
+| Using temporary variables for calculation | 0.63ms                                     | Reduces unnecessary ArkUI behaviors and optimizes performance.               |
 
 ## Performance Deteriorates When the LazyForEach Rebuilding Mechanism Is Used to Refresh the UI
 
@@ -1054,6 +1037,8 @@ struct MyComponent {
   }
 }
 ```
+
+
 
 Below you can see how the preceding code snippet works.
 
@@ -1273,6 +1258,8 @@ struct Page {
   }
 }
 ```
+
+
 
 Below you can see how the preceding code snippet works.
 

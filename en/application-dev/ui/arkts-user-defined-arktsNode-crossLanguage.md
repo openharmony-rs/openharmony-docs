@@ -1,12 +1,11 @@
 # Setting Custom Node Cross-Language Attributes
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=4cd6ff07550739998f1b5508c7b8a32b6b4ff448 translatedAt=2026-08-05T01:24:22.786Z pushedAt=2026-08-05T01:42:39.644Z -->
+<!-- md-trans-meta sourceCommit=45ecd1166fde580bc074b0d878bf55fb7dff09b0 translatedAt=2026-11-05T03:39:26.558Z pushedAt=2026-11-05T08:31:34.389Z nl=1 -->
 
 ## Overview
 
@@ -115,7 +114,6 @@ After obtaining a node, if its cross-language configuration allows attribute set
 The following example creates an ArkTS [Scroll](../reference/apis-arkui/js-apis-arkui-frameNode.md#scroll12) node and modifies its properties on the native side.
 
 1. Create an imperative node of type Scroll on the ArkTS side.
-
     ```ts
     // Index.ets
     import nativeNode from 'libentry.so';
@@ -210,7 +208,6 @@ The following example creates an ArkTS [Scroll](../reference/apis-arkui/js-apis-
     ```
 
 2. Create **CrossLanguageExample.h** to obtain the target node (created in ArkTS) and set its properties.
-
     ```c
     // CrossLanguageExample.h
     #ifndef MYAPPLICATION_CROSSLANGUAGEEXAMPLE_H
@@ -333,7 +330,6 @@ The following example creates an ArkTS [Scroll](../reference/apis-arkui/js-apis-
     ```
 
 3. Mount the native node in **NativeEntry.cpp**.
-
     ```c
     // NativeEntry.cpp
 
@@ -382,7 +378,6 @@ The following example creates an ArkTS [Scroll](../reference/apis-arkui/js-apis-
     ```
 
 4. Update the **CMakeLists.txt** file and add the required link libraries.
-
    ```c
    // CMakeLists.txt
    # the minimum version of CMake.
@@ -409,6 +404,10 @@ The following example creates an ArkTS [Scroll](../reference/apis-arkui/js-apis-
 ## Node Types Supporting Cross-Language Attribute Setting
 
 Only the following node types support cross-language attribute setting. The native side must use [OH_ArkUI_NodeUtils_GetAttachedNodeHandleById](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getattachednodehandlebyid) to obtain the node whose attributes are to be modified. Cross-language attribute setting is not supported for target nodes obtained via [OH_ArkUI_GetNodeHandleFromNapiValue](../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnodehandlefromnapivalue).
+
+> **NOTE**
+>
+> Scroll, WaterFlow, Grid, and List nodes created through the C API support binding the scroll controller [Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller) on the ArkTS side by using `bindController`. Starting from API version 26.0.0, calling the corresponding APIs of the four components above does not require enabling cross-language attribute setting.
 
 | ArkTS [TypedFrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typedframenode12) type| Native [ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype) type| ArkTS Attribute Getter| ArkTS Controller Getter/Binding|
 | -------- | -------- | -------- | -------- |

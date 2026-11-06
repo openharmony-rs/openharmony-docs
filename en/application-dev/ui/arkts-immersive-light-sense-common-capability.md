@@ -5,7 +5,7 @@
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=96058fa5ed998d30421d812a34634716f19e7d96 translatedAt=2026-10-12T09:15:51.811Z pushedAt=2026-10-12T11:10:05.369Z -->
+<!-- md-trans-meta sourceCommit=f5ea9e9a794bbe8a78b96466497468b41088007d translatedAt=2026-11-05T03:22:40.231Z pushedAt=2026-11-05T08:31:34.347Z nl=1 -->
 
 This topic describes how to customize the visual effects of the immersive system material by scenario, including setting immersive system material color inversion, applying color tinting to the immersive system material, setting immersive system material interactive effects, and setting immersive system material shadow effects.
 
@@ -152,12 +152,12 @@ struct MaterialColorExample {
 
 ## Setting Interactive Effects for Immersive System Material
 
-The immersive system material supports setting interactive deformation and point light effects:
+The immersive system material supports setting interactive deformation and lighting interaction feedback effects:
 
 - **Interactive deformation**: Enable interactive deformation through [interactive](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions). When a component is pressed, it produces elastic deformation and automatically recovers after release, enhancing the visual feedback of interaction.
-- **Point light effect**: Enable the point light effect through [lightEffect](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions). When the user touches a component, a flowing light effect follows the finger. The effect is enabled when a valid object is passed to `lightEffect`, and disabled when `null` or `undefined` is passed. The `color` field in the object customizes the flowing light color, with the default value `Color.White`.
+- **Lighting interaction feedback**: Enable lighting interaction feedback through [lightEffect](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions). When the user touches a component, a flowing light trail effect is produced. The effect is enabled when a valid object is passed to `lightEffect`, explicitly disabled when `null` is passed, and defaults to `undefined` when not passed, in which case the component's default effect is followed. The `color` field in the object customizes the flowing light color, with the default value `Color.White`.
 
-The following example demonstrates the effects of interactive deformation and point light in the balanced mode of a high computing power device: After `interactive` is set to `true` and a `lightEffect` object is passed, pressing the component causes elastic deformation, and touching it with a finger produces a flowing light follow effect.
+The following example demonstrates the effects of interactive deformation and lighting interaction feedback in the balanced level of a high-computing-power device: After `interactive` is set to `true` and a `lightEffect` object is passed, pressing the component causes elastic deformation, and touching it with a finger produces a flowing light trail effect.
 
 <!-- @[material_interactive_light](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialInteractiveLightExample.ets) -->
 

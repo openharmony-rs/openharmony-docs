@@ -1,12 +1,12 @@
 # stateStyles: Applying Polymorphic Styles
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c6d2a51ae0d4d741fa9801df0b2e84e58290f6c1 translatedAt=2026-07-24T01:21:35.328Z pushedAt=2026-07-24T03:22:43.813Z -->
+<!-- md-trans-meta sourceCommit=1e593c98c8a2fdd17e3bb69683a63dbdeefcb9da translatedAt=2026-11-05T04:21:38.260Z pushedAt=2026-11-05T08:31:34.565Z nl=1 -->
+
 
 Unlike \@Styles, which are used to reuse styles only on static pages, stateStyles enables you to set dynamic, state-specific styles. This topic explores the implementation of polymorphic styles through stateStyles.
 
@@ -16,7 +16,7 @@ Unlike \@Styles, which are used to reuse styles only on static pages, stateStyle
 
 ## Overview
 
-stateStyles is an attribute method that sets the style based on the internal state of a component. It is similar to a CSS pseudo-class, with different syntax. ArkUI provides the following states:
+**stateStyles** is an attribute method that sets styles based on the internal state of the UI, similar to CSS pseudo-classes but with different syntax. ArkUI provides the following seven states:
 
 - focused
 
@@ -30,11 +30,15 @@ stateStyles is an attribute method that sets the style based on the internal sta
 
 - selected<sup>10+</sup>
 
+- hovered: hovered state. **Since:** 26.0.0
+
 > **NOTE**
 >
 > Currently, the focused state can be triggered only by pressing the **Tab** or arrow keys on an external keyboard. Triggering through key presses in nested scrollable components is not supported.
 
+
 ## Use Scenarios
+
 
 ### Common Scenarios
 
@@ -78,13 +82,17 @@ struct StateStylesSample {
 }
 ```
 
-  **Figure 1** Focused and pressed states 
+
+
+  **Figure 1** Focused and pressed states
 
 ![Video_2023-03-17_120758](figures/Video_2023-03-17_120758.gif)
+
 
 ### Combined Use of \@Styles and stateStyles
 
 The following example uses \@Styles to specify different states of stateStyles.
+
 
 <!-- @[normal_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateStyle/entry/src/main/ets/pages/NormalStyle/MyComponent.ets) -->
 
@@ -113,9 +121,10 @@ struct MyComponent {
 }
 ```
 
-  **Figure 2** Normal and pressed states 
+  **Figure 2** Normal and pressed states
 
 ![Video_2023-03-17_144824](figures/Video_2023-03-17_144824.gif)
+
 
 ### Using Regular Variables and State Variables in stateStyles
 
@@ -154,6 +163,6 @@ struct CompWithInlineStateStyles {
 
 By default, the button is displayed in blue in the normal state. When you press the **Tab** key for the first time, the button obtains focus and is displayed in the light gray style specified for **focused**. After a click event occurs and you press the **Tab** key again, the button obtains focus and changes to dark gray.
 
-  **Figure 3** Change of the styles in focused state by a click 
+  **Figure 3** Change of the styles in focused state by a click
 
 ![focus-stateStyles](figures/focus-stateStyles.gif)

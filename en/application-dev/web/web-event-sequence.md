@@ -5,7 +5,7 @@
 <!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:12:22.400Z pushedAt=2026-09-15T13:41:28.249Z -->
+<!-- md-trans-meta sourceCommit=12f1fd1c79094e17f837f00557dcb2c4a101aa25 translatedAt=2026-11-05T03:12:09.264Z pushedAt=2026-11-05T08:31:34.235Z nl=1 -->
 
 ## Overview
 
@@ -50,7 +50,9 @@ When a custom component is destructed, the [aboutToDisappear](../reference/apis-
 
 - App-side code.
 
-  ```ts
+  <!-- @[the_status_of_web_component_web_page_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/LifecycleWebComp/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -188,7 +190,9 @@ ArkWeb is a **Web** component platform designed to display web page content for 
 If the web page is suspended when the ArkWeb child process exits abnormally, the application can listen for the [onRenderExited](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderexited9) event to obtain the specific exit cause [RenderExitReason](../reference/apis-arkweb/arkts-basic-components-web-e.md#renderexitreason9) and handle the exception in the callback correspondingly.
 
 **Development in Practice**
-```ts
+<!-- @[avoid_page_stuck_caused_by_render_process_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/LifecycleWebComp/entry/src/main/ets/pages/OnRenderExitedReload.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -207,7 +211,7 @@ struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
 
   // Specify the page to be loaded.
-  url: string = "www.example.com";
+  url: string = 'www.example.com';
   build() {
     Column() {
       Web({ src: this.url, controller: this.controller })

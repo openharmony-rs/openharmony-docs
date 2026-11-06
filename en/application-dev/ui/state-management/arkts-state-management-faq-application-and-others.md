@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @zhangwenhan12-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=62b5c3450a87bdc5e575e58aa760685da7a65e8a translatedAt=2026-07-01T11:08:12.900Z pushedAt=2026-07-01T11:11:01.918Z -->
+<!-- md-trans-meta sourceCommit=8917fa9a06fba0322d5ee6f97bf1bc1616272188 translatedAt=2026-11-05T04:18:23.848Z pushedAt=2026-11-05T08:31:34.555Z nl=1 -->
 
 This section describes the common problems of in-app state management and other common problems.
 
@@ -13,7 +13,7 @@ This section describes the common problems of in-app state management and other 
 
 ### Lazy Loading of Files Containing Decorators
 
-State management decorators are restricted to being used in the UI thread and cannot be used in [concurrent threads](../../arkts-utils/multi-thread-concurrency-overview.md) in which the ArkUI framework is not loaded. Since the complete ArkUI framework logic is not loaded in concurrent threads, the state management decorators defined in the framework are not loaded into the concurrent threads. If the state management decorator is used in concurrent threads, "ReferenceError: xxx is not defined" is displayed. In the following example, although concurrent threads do not actually use the class decorated with [\@Observed](./arkts-observed-and-objectlink.md), the error message "ReferenceError: Observed is not defined" is displayed. This is because when concurrent threads parse file dependencies layer by layer, they eventually load the **Observed.ets** file where the \@Observed decorator is defined, thus triggering this error.
+State management decorators are restricted to the UI thread and must not be used in a [concurrent thread](../../arkts-utils/multi-thread-concurrency-overview.md) where the ArkUI framework is not loaded. Because a concurrent thread does not load the complete ArkUI framework logic, the state management decorators defined in the framework are not loaded into the concurrent thread either. If state management decorators are used in a concurrent thread, `ReferenceError: xxx is not defined` is reported. In the following example, although the concurrent thread does not actually use the class decorated by [\@Observed](./arkts-observed-and-objectlink.md), the error message `ReferenceError: Observed is not defined` is still printed. This is because, when the concurrent thread resolves file dependencies layer by layer, it eventually loads the `Observed.ets` file that uses the \@Observed decorator, thereby triggering the error.
 
 **Incorrect Usage**
 

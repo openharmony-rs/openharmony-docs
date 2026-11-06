@@ -258,7 +258,7 @@ Step 3: Select a trace point to view triggering of component re-rendering and th
 
 <!--RP3End-->
 
-### Status Management: ArkUI Inspector
+### State Management: ArkUI Inspector
 
 DevEco Studio's ArkUI Inspector displays detailed state variable information within custom components, including the following.
 

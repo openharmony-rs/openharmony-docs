@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=6e0cfd8f83967d543c9f6622b6054d6211da68ad translatedAt=2026-11-04T02:02:48.805Z pushedAt=2026-11-04T04:24:15.637Z nl=1 -->
+<!-- md-trans-meta sourceCommit=ad6ced26cc6d07e7edb233db13ece1e5c00ccbd7 translatedAt=2026-11-05T03:13:47.052Z pushedAt=2026-11-05T08:31:34.241Z nl=1 -->
 
 Web page loading failures can be caused by various factors. This topic lists troubleshooting methods for common issues to help you quickly locate the cause.
 
@@ -243,10 +243,10 @@ Cross-origin errors and Service Worker request failures generally report ERR_FAI
                   const element = document.getElementById('text');
                   element.textContent = "load " + file + " success";
                 } else {
-                    // If the path list is not set on the ETS side, a CORS cross-origin check error is triggered here.
-                    const element = document.getElementById('text');
-                    element.textContent = "load " + file + " failed";
-                  }
+                  // If the ETS side does not set the path list, a CORS cross-origin check error is triggered here.
+                  const element = document.getElementById('text');
+                  element.textContent = "load " + file + " failed";
+                }
               }
             }
             xmlHttpReq.open("GET", file);

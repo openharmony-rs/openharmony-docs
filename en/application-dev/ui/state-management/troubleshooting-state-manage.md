@@ -17,14 +17,14 @@ The UI refresh triggered by the status variable is divided into two steps:
 
 This document briefly describes the principles. For details, see [State Management Principles](./arkts-state-management-introduce.md). Based on the preceding status variable-triggered UI refresh process, you can perform the following steps to locate the fault that the UI is not refreshed:
 ### Step 1: State variable collection dependency
-In the update process based on status management, the prerequisite for the status variable to trigger the UI component update is that the current status variable has collected the dependency of the UI component. Specifically, the "read" operation of the status variable is triggered in the component initialization process.
+In the update process based on state management, the prerequisite for the status variable to trigger the UI component update is that the current status variable has collected the dependency of the UI component. Specifically, the "read" operation of the status variable is triggered in the component initialization process.
 
 You can use the following tool to check whether the status variable collects the component ID:
 - Use the ArkUI Inspector of DevEco Studio. For details, see [Inspector Debugging Capability](../ui-inspector-profiler.md#inspector-debugging-capability).
 - Use the [hidumper](../../dfx/hidumper.md) tool. For details, see [State Management: hidumper](../ui-inspector-profiler.md#state-management-hidumper).
 
 ### Step 2: The state variable changes.
-When a value is assigned to a status variable, the status management framework checks whether the value of the status variable is changed. If the value is not changed, the status management framework directly returns the value and does not perform any operation. The simplest troubleshooting method is to print the values before and after the status variable is modified and check whether the values change. Example:
+When a value is assigned to a status variable, the state management framework checks whether the value of the status variable is changed. If the value is not changed, the state management framework directly returns the value and does not perform any operation. The simplest troubleshooting method is to print the values before and after the status variable is modified and check whether the values change. Example:
 ```ts
 @Entry
 @Component
@@ -51,7 +51,7 @@ message set after Welcome
 ### Step 3: Check whether the value assignment of the state variable can be observed.
 **State Management (V1)**
 
-In status management V1, if you confirm that the value has changed before and after the value assignment but the UI update is not triggered, check whether the current value assignment operation can be observed. An example is as follows:
+In state management V1, if you confirm that the value has changed before and after the value assignment but the UI update is not triggered, check whether the current value assignment operation can be observed. An example is as follows:
 
 In the following example, the value assigned to **this.inner.value** cannot trigger the refresh of the **Text(`Child: inner value: ${this.inner.value}`)** component, check whether the current value assignment operation can be observed from the following aspects:
   - Whether the listening function of [\@Watch](./arkts-watch.md) is executed.
@@ -240,7 +240,7 @@ Based on the preceding example, observe the ArkUI State lane. Two state variable
 ![image](./figures/arkui_state_profiler3.png)
 
 ### Step 4: Check whether the data source is associated with the object to be synchronized.
-In status management, the data source notifies the synchronization object through the bidirectional or unidirectional mechanism. If the data source is changed but the synchronization object is not notified, perform the following steps to locate the fault:
+In state management, the data source notifies the synchronization object through the bidirectional or unidirectional mechanism. If the data source is changed but the synchronization object is not notified, perform the following steps to locate the fault:
 **State Management (V1)**
 
 State management V1 supports the following synchronization modes:

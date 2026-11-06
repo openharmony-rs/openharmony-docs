@@ -351,10 +351,10 @@ export struct WaterFlowGroupingMixing {
 >
 >Always update the corresponding **itemCount** when adding or removing data to maintain layout consistency.
 
-<!--Del-->##  
+## Samples
 
- 
+For WaterFlow development, the following examples are available for reference:
 
--  <!--DelEnd-->
+- [WaterFlow Sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/waterFlow)
 
 <!--RP1--><!--RP1End-->

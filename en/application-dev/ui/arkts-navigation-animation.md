@@ -5,6 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=08bb0489caeb9ce8165ee6084dfbe14de2ba8bcc translatedAt=2026-11-05T03:29:54.810Z pushedAt=2026-11-05T08:31:34.361Z nl=1 -->
 
 [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) provides default transition animations, as well as custom transition animations and shared element transition animations.
 
@@ -45,7 +46,7 @@ You can disable the default transition animations in either of the following way
 
   1. Implement a custom transition animation utility class **CustomNavigationUtils** to manage custom animation objects **CustomTransition** for each page via a **Map**. A page registers its custom transition animation object when created and unregisters it when destroyed.
   2. Implement a transition protocol object [NavigationAnimatedTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationanimatedtransition11), where: **transition** contains the custom animation logic. The system calls this method when the transition starts. **timeout** specifies the maximum duration of the transition (default: 1000 ms). **onTransitionEnd** represents the callback invoked when the transition finishes.
-  3. Call the **customNavContentTransition** API and return the implemented transition protocol object. If **undefined** is returned, the system default transition will be used.
+  3. Call the customNavContentTransition() method and return the implemented transition protocol object. If undefined is returned, the system default transition is used.
 
 - The **NavDestination** component supports custom transition animations, which are used to control the transition effect of a single page. You can set the [customTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#customtransition15) attribute to implement the custom transition effect of a single page. The procedure is as follows. For details about the sample code, see [Setting a Custom Transitions for the NavDestination Component](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#example-2-setting-a-custom-transitions-for-the-navdestination-component).
 

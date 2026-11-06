@@ -1,12 +1,11 @@
 # Rotation Transition Animation
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=4074739ec104663f417d9981273bcd01b284c4ca translatedAt=2026-08-04T06:36:10.390Z pushedAt=2026-08-04T08:22:48.818Z -->
+<!-- md-trans-meta sourceCommit=4383f98ec81f42258fabd52047d88567e29a9467 translatedAt=2026-11-05T03:30:53.651Z pushedAt=2026-11-05T08:31:34.362Z nl=1 -->
 
 Rotation transition animations are designed to create seamless visual transitions when the screen display orientation changes. There are two approaches to choose from:<br> [Rotation transition animation with layout switching](#rotation-transition-animation-with-layout-switching): This animation is your go-to solution for an out-of-the-box implementation experience. It can be achieved by simply configuring automatic rotation (or setting the window display orientation) in the **module.json5** file.<br> [Rotation transition animation with opacity changing](#rotation-transition-animation-with-opacity-changing): This animation adds a touch of sophistication with fade-in and fade-out effects for components during screen rotations. It requires additional setup beyond the **module.json5** configuration, including the preparation of two sets of visuals.
 
@@ -21,7 +20,7 @@ This animation is activated once the user rotates the screen.
 ``` TypeScript
 @Entry
 @Component
-struct rotation {
+struct RotationTest {
   build() {
     Stack() {
       // Replace $r('app.media.tree') with the actual resource file.
@@ -36,8 +35,8 @@ struct rotation {
 }
 ```
 
-Add **"orientation": "auto_rotation"** to the **abilities** list in the **module.json5** file of the project.
 
+Add **"orientation": "auto_rotation"** to the **abilities** list in the **module.json5** file of the project.
 ```json
 {
   "orientation": "auto_rotation"
@@ -59,7 +58,7 @@ import { display } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct rotation {
+struct RotationTest {
 
   // Get the screen display orientation obtained by listening to the window's windowSizeChange event.
   @StorageLink('orientation') myOrientation: display.Orientation = display.Orientation.PORTRAIT;
@@ -94,7 +93,6 @@ struct rotation {
 ```
 
 Listen for the **windowSizeChange** event to manage the transitions. For example, you can add processing logic to the [onWindowStageCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate) method in the **EntryAbility.ets** file to obtain the display orientation of the screen.
-
 <!-- @[window_stage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
@@ -144,7 +142,6 @@ const TAG: string = 'EntryAbility';
 ```
 
 Add **"orientation": "auto_rotation"** to the **abilities** list in the **module.json5** file of the project.
-
 ```json
 {
   "orientation": "auto_rotation"

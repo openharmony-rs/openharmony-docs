@@ -55,7 +55,7 @@ ArkUI provides four types of damped spring curve APIs:
 The following shows a complete example and effect of spring curves. For details about how to connect gestures and animations using **responsiveSpringMotion** and **springMotion**, see [Animation Smoothing](arkts-animation-smoothing.md).
 
 
- 
+The sample code and effect is as follows:
 
 
 

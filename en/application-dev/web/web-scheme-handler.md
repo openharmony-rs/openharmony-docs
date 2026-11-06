@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=47a4f62946a838a006159c1aa78fa3bb0c8bc27b translatedAt=2026-11-04T02:04:35.193Z pushedAt=2026-11-04T04:26:10.854Z nl=1 -->
+<!-- md-trans-meta sourceCommit=ad6ced26cc6d07e7edb233db13ece1e5c00ccbd7 translatedAt=2026-11-05T03:14:47.937Z pushedAt=2026-11-05T08:31:34.245Z nl=1 -->
 
 The application can use [onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9) or the ArkTS and NDK APIs provided by **SchemeHandler** to intercept network requests initiated by **Web** components.
 
@@ -263,8 +263,8 @@ In the NDK, provide custom responses for intercepted requests.
 
 In ArkTS, provide custom response information for intercepted requests.
 
-   ```ts
-   this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
+  ```ts
+  this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
     let response = new webview.WebSchemeHandlerResponse();
     try {
       // Set the network error code to OK, indicating that the request is successful.
@@ -297,8 +297,8 @@ In ArkTS, provide custom response information for intercepted requests.
       console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
     return true;
-   })
-   ```
+  })
+  ```
 
 Network interception supports streaming requests. You can call [didReceiveResponseBody](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponsebody12) or [OH_ArkWebResourceHandler_DidReceiveData](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceivedata) multiple times to construct the response body in chunks. When returning the response body for the last time, call [didFinish](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfinish12) or [OH_ArkWebResourceHandler_DidFinish](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfinish) to notify the Web component that the intercepted request has been completed.
 

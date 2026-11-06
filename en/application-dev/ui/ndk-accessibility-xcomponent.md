@@ -1,24 +1,25 @@
-# Integrating Accessibility Through Custom Drawing
+# Accessing Accessibility Through Self-Drawing
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=de2cbbad2e242bbdc0d24308a806d704a23e2435 translatedAt=2026-11-05T03:47:41.070Z pushedAt=2026-11-05T08:35:48.206Z nl=1 -->
 
-For third-party framework platforms that are accessed through [custom drawing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/arkts-user-defined-draw), the NDK provides functions for interoperability with accessibility services, enabling third-party framework components to support basic accessibility features in ArkUI. These include focus acquisition, accessibility node retrieval, and operation response.
+For third-party framework platforms that integrate through [custom drawing](./arkts-user-defined-draw.md), the NDK provides interface functions for connecting to the accessibility service, enabling third-party framework components to support the basic accessibility features in ArkUI, including focus acquisition, accessibility node retrieval, and operation response.
 
-Since API version 13, the self-drawing integration method based on **XComponent** is supported.
+Starting from API version 13, the self-drawing access method based on XComponent is supported.
 
-Since API version 23, the self-drawing integration method that builds a rendering node tree based on **CustomNode** is supported.
+Starting from API version 23, the self-drawing access method that builds and renders a node tree based on CustomNode is supported.
 
-A third-party framework obtains the [ArkUI_AccessibilityProvider](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityprovider.md) from the drawing container component, adapts to the operation [Action](../reference/apis-arkui/capi-native-interface-accessibility-h.md#arkui_accessibility_actiontype) sent by the accessibility system by implementing the callback function for accessibility interconnection, and sends the accessibility event [Event](../reference/apis-arkui/capi-native-interface-accessibility-h.md#arkui_accessibilityeventtype) to the accessibility subsystem based on the component interaction behavior. In this way, the interaction experience of the accessibility application is implemented.
+The third-party framework obtains the [ArkUI_AccessibilityProvider](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityprovider.md) from the drawing container component, and implements the accessibility callback functions in it to adapt to the [Action](../reference/apis-arkui/capi-native-interface-accessibility-h.md#arkui_accessibility_actiontype) issued by the accessibility system. It also sends accessibility [Event](../reference/apis-arkui/capi-native-interface-accessibility-h.md#arkui_accessibilityeventtype) to the accessibility subsystem based on component interaction behavior, thereby enabling the interactive experience of accessibility assistive applications.
 
-In the self-drawing mode based on **XComponent**, use [OH_NativeXComponent_GetNativeAccessibilityProvider](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_nativexcomponent_getnativeaccessibilityprovider) to obtain [ArkUI_AccessibilityProvider](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityprovider.md) for accessibility integration.
+The XComponent-based self-drawing access method obtains the accessibility access [ArkUI_AccessibilityProvider](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityprovider.md) through [OH_NativeXComponent_GetNativeAccessibilityProvider](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_nativexcomponent_getnativeaccessibilityprovider).
 
-If you build a rendering node tree based on **CustomNode**, use [OH_ArkUI_NativeModule_GetNativeAccessibilityProvider](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_nativemodule_getnativeaccessibilityprovider) to obtain [ArkUI_AccessibilityProvider](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityprovider.md) for accessibility integration.
+The self-drawing access method that builds and renders a node tree based on CustomNode obtains the accessibility access [ArkUI_AccessibilityProvider](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityprovider.md) through [OH_ArkUI_NativeModule_GetNativeAccessibilityProvider](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_nativemodule_getnativeaccessibilityprovider).
 
-To support a single instance, use [OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback) to register the necessary callback function [ArkUI_AccessibilityProviderCallbacks](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md) for accessibility integration.
+For single-instance scenarios, register the callback functions [ArkUI_AccessibilityProviderCallbacks](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md) required for accessibility access through [OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback).
 
 For multi-instance scenarios, register callback functions [ArkUI_AccessibilityProviderCallbacksWithInstance](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityprovidercallbackswithinstance.md) using [OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance).
 
@@ -26,16 +27,16 @@ For multi-instance scenarios, register callback functions [ArkUI_AccessibilityPr
 > **NOTE**
 >
 > - Accessibility capability enables you to create accessible application UIs for users with visual, auditory, motor, and cognitive disabilities.
-> - When implementing query APIs ([OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback) or [OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance)), the information of each accessibility node queried should be used to allocate element memory via [OH_ArkUI_AddAndGetAccessibilityElementInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_addandgetaccessibilityelementinfo), and then added to the specified **elementList**.
+> - When implementing query APIs ([OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback) or [OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance)), use [OH_ArkUI_AddAndGetAccessibilityElementInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_addandgetaccessibilityelementinfo) to create and manage accessibility node information.
 > - When sending events with [OH_ArkUI_SendAccessibilityAsyncEvent](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_sendaccessibilityasyncevent), create event and element info objects using the appropriate creation functions and destroy them after use. Specifically, create an [ArkUI_AccessibilityEventInfo](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityeventinfo.md) object using [OH_ArkUI_CreateAccessibilityEventInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_createaccessibilityeventinfo) and an [ArkUI_AccessibilityElementInfo](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityelementinfo.md) object using [OH_ArkUI_CreateAccessibilityElementInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_createaccessibilityelementinfo), and then destroy the objects after use with [OH_ArkUI_DestoryAccessibilityEventInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_destoryaccessibilityeventinfo) and [OH_ArkUI_DestoryAccessibilityElementInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_destoryaccessibilityelementinfo).
 > - When logging within callback functions, include the provided **requestId** parameter to link logs to a specific interaction process. This practice facilitates indexing and querying and aids in troubleshooting and pinpointing issues.
 
-## Integrating Accessibility Through Custom Drawing Based on XComponent
+## Self-Drawing Access Method Based on XComponent
 This example demonstrates accessibility integration. For the complete implementation, see [AccessibilityCapiSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AccessibilityCapi). Once integrated, third-party framework components in **XComponent** will support accessibility interactions when accessibility features are enabled.
 
 1. Create a project based on [OH_ArkUI_SurfaceHolder for surface lifecycle management](napi-xcomponent-guidelines.md#managing-the-lifecycle-of-the-surface-held-by-xcomponent) in custom rendering (XComponent).
 
-2. Obtain the accessibility Provider and register callbacks (the following uses the multi-instance scenario as an example).
+2. Obtain the accessibility Provider and register callback functions (using the multi-instance scenario as an example).
 
    <!-- @[abilitycap_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
@@ -48,10 +49,10 @@ This example demonstrates accessibility integration. For the complete implementa
    // For details about the complete implementation, see AccessibilityCapiSample.
    #include "AccessibilityManager.h"
    
-   // ...
+   // ···
    AccessibilityManager::AccessibilityManager()
    {
-   // Multi-instance scenario
+   // Multi-instance scenario.
        accessibilityProviderCallbacksWithInstance_.findAccessibilityNodeInfosById = FindAccessibilityNodeInfosById;
        accessibilityProviderCallbacksWithInstance_.findAccessibilityNodeInfosByText = FindAccessibilityNodeInfosByText;
        accessibilityProviderCallbacksWithInstance_.findFocusedAccessibilityNode = FindFocusedAccessibilityNode;
@@ -59,7 +60,7 @@ This example demonstrates accessibility integration. For the complete implementa
        accessibilityProviderCallbacksWithInstance_.executeAccessibilityAction = ExecuteAccessibilityAction;
        accessibilityProviderCallbacksWithInstance_.clearFocusedFocusAccessibilityNode = ClearFocusedFocusAccessibilityNode;
        accessibilityProviderCallbacksWithInstance_.getAccessibilityNodeCursorPosition = GetAccessibilityNodeCursorPosition;
-   // Single-instance scenario
+   // Single-instance scenario.
        accessibilityProviderCallbacks_.findAccessibilityNodeInfosById = FindAccessibilityNodeInfosById;
        accessibilityProviderCallbacks_.findAccessibilityNodeInfosByText = FindAccessibilityNodeInfosByText;
        accessibilityProviderCallbacks_.findFocusedAccessibilityNode = FindFocusedAccessibilityNode;
@@ -87,19 +88,19 @@ This example demonstrates accessibility integration. For the complete implementa
        g_provider = provider;
    }
    
-   // ...
+   // ···
    ```
 
 3. Third-party frameworks must implement the following callbacks:
 
-- Find the information about an accessibility node based on the specified node ID.
+- Query the required node information based on the specified node.
   > **NOTE**
   >
-  > - When the element ID passed by the accessibility system is **-1**, it represents the root node ID. The third-party framework must map this external ID to the ID of the unique root node in its internal node tree so that the accessibility system can correctly locate the root node of the framework.
-  > - The third-party framework must provide only one root node.
-  > - The [parentId](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityelementinfosetparentid) attribute of the root node must be set to the special value **-2100000**. In the accessibility tree, the root node is the topmost node and does not have a parent element. The special value **-2100000** is hardcoded in the ArkUI accessibility framework and is used to explicitly indicate that "this node is the root node and has no parent." Using a special value instead of **0** or **-1** is to prevent conflicts with valid IDs within the third-party framework and ensure that the system can accurately identify the root node.
-  > - The [enabled](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityelementinfosetenabled) attribute of the root node must be set to **true**. If this attribute is set to **false**, the root node is disabled. In this case, the accessibility system considers the entire component tree non-interactive and ignores the queries and operations on all child nodes. As the entry point to the entire control tree, the root node must be enabled to ensure proper accessibility service functionality.
-  > - The [visible](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityelementinfosetvisible) attribute of the root node must be set to **true**. The accessibility system only traverses and interacts with visible nodes. If this attribute is set to **false**, the root node becomes invisible, and the entire component tree will be ignored by the accessibility service. As a result, the accessibility capabilities of the third-party framework become completely ineffective. This ensures that users can perceive all UI elements rendered by the third‑party framework when using accessibility features.
+  > - When the `elementId` passed in by the accessibility system is `-1`, it represents the agreed "root node identifier". The third-party framework must map this external identifier to the ID of the unique root node in its internal node tree so that the accessibility system can correctly locate the framework's root node.
+  > - The third-party framework must provide one and only one root node.
+  > - The [parentId](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityelementinfosetparentid) in the root node's attributes must be set to the special value `-2100000`. In the accessibility tree, the root node is the topmost node and has no parent node. This special value `-2100000` is a hard-coded convention of the ArkUI accessibility framework, used to explicitly identify that "this node is the root node and has no parent node". A special value is used instead of `0` or `-1` to prevent conflicts with valid IDs inside the third-party framework, ensuring that the system can accurately identify the root node.
+  > - The [enabled](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityelementinfosetenabled) attribute of the root node must be set to `true`. If it is set to `false`, the root node is disabled, and the accessibility system considers the entire control tree non-interactive, thus ignoring the query and operation of all child nodes. As the entry point of the entire control tree, the root node must be in an available state to ensure that accessibility services work properly.
+  > - The [visible](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityelementinfosetvisible) attribute of the root node must be set to `true`. The accessibility system only traverses and interacts with visible nodes. If it is set to `false`, the root node is invisible, and the entire control tree is ignored by the accessibility service, causing the third-party framework's accessibility capability to fail completely. Ensure that users can perceive all UI elements rendered by the third-party framework when using accessibility features.
 
    <!-- @[abilitycap_two_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
@@ -123,8 +124,8 @@ This example demonstrates accessibility integration. For the complete implementa
        }
        
        if (mode == ARKUI_ACCESSIBILITY_NATIVE_SEARCH_MODE_PREFETCH_RECURSIVE_CHILDREN) {
-           // Third-party frameworks must implement custom search logic in this method and return accessibility node information to the accessibility service. The following implementation serves as a reference example only.
-           // Special constant defined for ArkUI framework compatibility. Root node parent ID must be set to this specific value.
+           // The third-party framework needs to implement its own search strategy in this method and return accessibility node information to the accessibility service. The following logic is for illustration only.
+           // A special value designed by the ArkUI framework. The root node must set parentId to this value.
            auto rootNode = OH_ArkUI_AddAndGetAccessibilityElementInfo(elementList);
            if (!rootNode) {
                return OH_NATIVEXCOMPONENT_RESULT_FAILED;
@@ -142,7 +143,7 @@ This example demonstrates accessibility integration. For the complete implementa
            rect.rightBottomX = NUMBER_THIRD;
            rect.rightBottomY = NUMBER_THIRD;
            ret = OH_ArkUI_AccessibilityElementInfoSetScreenRect(rootNode, &rect);
-           // Set the root node to be ignored by accessibility services.
+           // Set the root node to be unrecognizable by the accessibility service.
            OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(rootNode, "no");
            auto objects = FakeWidget::Instance().GetAllObjects(instanceId);
            int64_t childNodes[1024];
@@ -153,7 +154,7 @@ This example demonstrates accessibility integration. For the complete implementa
                // Set the child node information.
                OH_ArkUI_AccessibilityElementInfoSetElementId(child, elementId);
                OH_ArkUI_AccessibilityElementInfoSetParentId(child, 0);
-               // Set the current component to be accessible to accessibility services.
+               // Set the current component to be recognizable by the accessibility service.
                OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(child, "yes");
                objects[i]->fillAccessibilityElement(child);
    
@@ -243,7 +244,7 @@ This example demonstrates accessibility integration. For the complete implementa
    }
    ```
 
-- Queries the next focusable accessibility node based on the specified node.
+- Query the next focusable accessibility node based on the specified node.
 
    <!-- @[abilitycap_three_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
@@ -252,14 +253,14 @@ This example demonstrates accessibility integration. For the complete implementa
        ArkUI_AccessibilityFocusMoveDirection direction, int32_t requestId,
        ArkUI_AccessibilityElementInfo *elementInfo)
    {
-       // Search for the next focusable accessibility node. The third-party framework needs to implement its own search policy in this method. The following logic is only an example.
+       // Find the next focusable accessibility node. The third-party framework needs to implement its own search strategy in this method. The following logic is for illustration only.
        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
                     "FindNextFocusAccessibilityNode instanceId %{public}s "
                     "elementId: %{public}ld, requestId: %{public}d, direction: %{public}d",
                     instanceId, elementId, requestId, static_cast<int32_t>(direction));
        auto objects = FakeWidget::Instance().GetAllObjects(instanceId);
        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "objects.size() %{public}d", objects.size());
-       // object.size does not contain the root node.
+       // object.size does not include the root node.
        if ((elementId < 0) || (elementId > objects.size())) {
            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "elementId invalid");
            return OH_NATIVEXCOMPONENT_RESULT_FAILED;
@@ -271,7 +272,7 @@ This example demonstrates accessibility integration. For the complete implementa
            nextElementId = elementId - 1;
        }
        
-       // Screen reader constraint: If it is the root node and navigating backward, return to the last node.
+       // Screen reader constraint: if it is the root node and the direction is backward, return to the last node.
        if ((nextElementId == -1) && (direction == ARKUI_ACCESSIBILITY_NATIVE_DIRECTION_BACKWARD)) {
            nextElementId = objects.size();
        }
@@ -287,7 +288,7 @@ This example demonstrates accessibility integration. For the complete implementa
        }
        OH_ArkUI_AccessibilityElementInfoSetElementId(elementInfo, nextElementId);
        OH_ArkUI_AccessibilityElementInfoSetParentId(elementInfo, 0);
-       // The ID is 1 greater than the object index.
+       // The id is 1 greater than the object index.
        objects[nextElementId - 1]->fillAccessibilityElement(elementInfo);
        ArkUI_AccessibleRect rect;
        rect.leftTopX = nextElementId * NUMBER_FIRST;
@@ -298,14 +299,14 @@ This example demonstrates accessibility integration. For the complete implementa
        auto eventInfo = OH_ArkUI_CreateAccessibilityEventInfo();
        OH_ArkUI_AccessibilityEventSetRequestFocusId(eventInfo, nextElementId);
        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "%{public}ld", nextElementId);
-       // This function is used only to create event information and does not send the event. If the event does not need to be sent, call **OH_ArkUI_DestoryAccessibilityEventInfo**.
-       // Release the memory. If you need to send an event, call OH_ArkUI_SendAccessibilityAsyncEvent and release the memory in the callback.
+       // This function only demonstrates creating event information and does not send the event. If you do not need to send the event, call OH_ArkUI_DestoryAccessibilityEventInfo.
+       // Release the memory. If you need to send the event, call OH_ArkUI_SendAccessibilityAsyncEvent and release the memory in the callback.
        OH_ArkUI_DestoryAccessibilityEventInfo(eventInfo);
        return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
    }
    ```
 
-- Find the node information matching the specified text content based on the specified node.
+- Query the node information that matches the specified component text content based on the specified node.
 
    <!-- @[abilitycap_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
@@ -322,7 +323,7 @@ This example demonstrates accessibility integration. For the complete implementa
    }
    ```
 
-- Find the information about the focused node based on the specified node ID.
+- Query the information of the currently focused node based on the specified node.
 
    <!-- @[abilitycap_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
@@ -339,7 +340,7 @@ This example demonstrates accessibility integration. For the complete implementa
    }
    ```
 
-- Perform a specified action on the specified node.
+- Perform the specified operation based on the specified node.
 
    <!-- @[abilitycap_six_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
@@ -361,8 +362,8 @@ This example demonstrates accessibility integration. For the complete implementa
        OH_ArkUI_AccessibilityEventSetElementInfo(eventInfo, elementInfo);
        
        if (eventType == ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ANNOUNCE_FOR_ACCESSIBILITY && announcedText.size() > 0) {
-           // Set the prioritized accessibility text for the accessibility node.
-           // The Set API is called in synchronous mode and copies the text. announcedText is a local object passed by value, whose lifetime covers this call, so it is safe to pass data() directly.
+           // Set the accessibility text to be announced first for the accessibility node.
+           // This Set API is a synchronous call and copies the text. announcedText is a local object passed by value, and its lifetime covers this call, so passing data() directly is safe.
            OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(eventInfo, announcedText.data());
        }
    }
@@ -374,15 +375,15 @@ This example demonstrates accessibility integration. For the complete implementa
                                                           std::string announcedText)
    {
        auto eventInfo = OH_ArkUI_CreateAccessibilityEventInfo();
-       // 1. Enter the event content.
+       // 1. Fill in the event content.
        FillEvent(eventInfo, elementInfo, eventType, announcedText);
-       // 2. Callback
+       // 2.callback
        auto callback = [](int32_t errorCode) {
            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "result: %{public}d", errorCode);
        };
-       // 3. Call the API to send the event to the OpenHarmony side.
+       // 3. Call the API to send the event to the OH side.
        OH_ArkUI_SendAccessibilityAsyncEvent(g_provider, eventInfo, callback);
-       // Release the memory of eventInfo after the event is sent.
+       // Release the eventInfo memory after sending is complete.
        OH_ArkUI_DestoryAccessibilityEventInfo(eventInfo);
    }
    // ...
@@ -390,25 +391,25 @@ This example demonstrates accessibility integration. For the complete implementa
    int32_t AccessibilityManager::ExecuteAccessibilityAction(const char* instanceId, int64_t elementId,
        ArkUI_Accessibility_ActionType action, ArkUI_AccessibilityActionArguments *actionArguments, int32_t requestId)
    {
-       // The third-party framework needs to implement the logic for executing the accessibility node behavior.
+       // The third-party framework needs to implement the logic for executing accessibility node actions.
        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
                     "ExecuteAccessibilityAction instanceId %{public}s elementId: %{public}ld, "
                     "action: %{public}d, requestId: %{public}d",
                     instanceId, elementId, action, requestId);
        auto object = FakeWidget::Instance().GetChild(elementId);
-       // The passed accessibility node object may be null. A null check is required.
+       // The passed accessibility node object may be null, so a null check is required.
        if (!object) {
            return 0;
        }
-       // Obtain the accessibility node element.
+        // Obtain the announced text of the accessibility node.
        auto announcedText = object->GetAnnouncedForAccessibility();
        auto element = OH_ArkUI_CreateAccessibilityElementInfo();
        OH_ArkUI_AccessibilityElementInfoSetElementId(element, elementId);
        const char *actionKey = "some_key";
        char *actionValue = nullptr;
        OH_ArkUI_FindAccessibilityActionArgumentByKey(actionArguments, actionKey, &actionValue);
-       // Execute the corresponding logic based on actionValue, or remove the query code that is not used.
-       // Execute the corresponding behavior based on the action type.
+       // Execute the corresponding logic based on actionValue, or remove the unused query code.
+       // Execute the corresponding action based on the action type.
        switch (action) {
            case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLICK:
                object->OnClick();
@@ -434,7 +435,7 @@ This example demonstrates accessibility integration. For the complete implementa
                    announcedText);
                break;
            default:
-               // Handle unsupported action types.
+               // Handle unsupported action behaviors.
                break;
        }
        OH_ArkUI_DestoryAccessibilityElementInfo(element);
@@ -442,7 +443,7 @@ This example demonstrates accessibility integration. For the complete implementa
    }
    ```
 
-- Remove focus from the node.
+- Clear the currently focused node.
 
    <!-- @[abilitycap_seven_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
@@ -473,19 +474,19 @@ This example demonstrates accessibility integration. For the complete implementa
    }
    ```
 
-After the provider is successfully connected using the [OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback) or [OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance) callback, the accessibility function can be enabled.
+After the provider is successfully connected through the callback function [OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback) or [OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance), the accessibility feature can be enabled.
 
-## Integrating Accessibility Through Custom Drawing Based on CustomNode
+## Self-Drawing Access Method Based on CustomNode
 
-> **NOTE**
+> **NOTE:**
 >
-> - The custom drawing container component based on **CustomNode** only supports [ArkUI_Node](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) whose type is [ARKUI_NODE_CUSTOM](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype) and that have no other child nodes. The width and height of the drawing container component must not be **0**, to avoid being ignored by accessibility applications or causing incorrect handling of the child node tree.
+> - A custom drawing container component based on CustomNode. It supports only an [ArkUI_Node](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) of type [ARKUI_NODE_CUSTOM](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype) with no other child nodes. The width and height of the drawing container component cannot be 0; otherwise, the component may be ignored by accessibility assistant applications, or the child node tree may be handled incorrectly.
 
-This example demonstrates accessibility integration. For the complete implementation, see [AccessibilityCustomCapi](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AccessibilityCustomCapi). For details about how to implement a callback, see [Integrating Accessibility Through Custom Drawing Based on XComponent](#integrating-accessibility-through-custom-drawing-based-on-xcomponent). After implementing the callback, enable the accessibility function. The third-party framework that builds the rendering node tree based on **CustomNode** can then integrate with the accessibility service to implement accessibility interaction and information query for the component tree.
+The following example provides the implementation method for integrating accessibility capabilities and includes only the main steps. For the complete example, see [AccessibilityCustomCapi](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AccessibilityCustomCapi). For the callback function implementation, see [Self-Drawing Access Method Based on XComponent](#self-drawing-access-method-based-on-xcomponent). After the callback functions are implemented, enable the accessibility feature. A third-party framework that builds and renders a node tree based on CustomNode can then access the accessibility service to implement accessibility interaction and information query of the control tree.
 
-1. Create a pre-integration project by referring to [Building a Rendering Node Based on CustomNode](ndk-embed-render-components.md).
+1. Create the prerequisite project as described in [Building and Rendering a Node Tree Based on CustomNode](ndk-embed-render-components.md).
 
-2. Obtain the accessibility integration **Provider** instance, bind the callback to the **Provider** instance, and complete the registration.
+2. Obtain the accessibility access Provider instance, bind the callback functions to the Provider instance, and complete the registration.
 
     <!-- @[abilitycap_nine_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCustomCapi/entry/src/main/cpp/AccessibilityMaker.cpp) -->
     
@@ -507,7 +508,7 @@ This example demonstrates accessibility integration. For the complete implementa
         AccessibilityMaker::accessibilityProviderCallbacksWithInstance_.getAccessibilityNodeCursorPosition =
             GetAccessibilityNodeCursorPosition;
     
-        // Obtain the accessibility provider provided by the native layer and register the callback.
+        // Obtain the accessibility provider provided by the native layer and register callbacks for it.
         OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(customNode, &accessibilityProvider_);
         if (accessibilityProvider_ == nullptr) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AccessibilityMaker", "accessibilityProvider_ is null");
@@ -523,4 +524,4 @@ This example demonstrates accessibility integration. For the complete implementa
     }
     ```
 
-3. A third-party framework must implement the callback. For details, see [Integrating Accessibility Through Custom Drawing Based on XComponent](#integrating-accessibility-through-custom-drawing-based-on-xcomponent).
+3. The third-party framework needs to implement the callback functions. For details, see [Self-Drawing Access Method Based on XComponent](#self-drawing-access-method-based-on-xcomponent) above.

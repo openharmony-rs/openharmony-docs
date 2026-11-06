@@ -5,8 +5,9 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=f91aced2140630182df560d0e98df0c86b14aaf3 translatedAt=2026-11-05T03:34:04.238Z pushedAt=2026-11-05T08:31:34.372Z nl=1 -->
 
-This topic outlines frequent misuse patterns of ArkUI APIs that may lead to application crashes. It is intended to help you recognize and avoid common pitfalls during development.
+This document summarizes common ArkUI API misuse scenarios that may cause application crashes, and provides guidance to help you understand the related issues and avoid similar mistakes during development.
 
 ## Premature Release of the OH_NativeXComponent Callback Object
 

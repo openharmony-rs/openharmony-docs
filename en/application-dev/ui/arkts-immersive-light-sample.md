@@ -5,7 +5,7 @@
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9f63f40b3e116345ab86f953c047b83bea02a0fb translatedAt=2026-11-04T02:25:59.423Z pushedAt=2026-11-04T03:25:08.183Z nl=1 -->
+<!-- md-trans-meta sourceCommit=09072f550e95bcc48e2e25f1892f09e5275416b8 translatedAt=2026-11-05T03:22:32.428Z pushedAt=2026-11-05T08:31:34.345Z nl=1 -->
 
 This document provides development guidance for two typical scenarios of immersive light sensing, including the search box title bar effect and enabling immersive light sensing for the content area title bar.
 
@@ -13,7 +13,7 @@ This document provides development guidance for two typical scenarios of immersi
 
 In information browsing applications (such as news, forums, and novel reading applications), when you swipe up the home page content area, the title bar display range shrinks accordingly, while Immersive Light Sensing enhances the interactive experience of the title bar.
 
-1. Set the bottom Tabs to float and enable immersive light sensing for the Tabs component. Also use [ExpandSafeArea](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea) to extend the displayed content to the status bar area, making the overall application experience more consistent.
+1. Set the bottom Tabs to float and enable immersive light sensing for the Tabs component. Also use [ExpandSafeArea](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20) to extend the displayed content to the status bar area, making the overall application experience more consistent.
    <!-- @[immersive_tabs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/BestPractice.ets) -->
    ```TypeScript
    @Entry
@@ -43,7 +43,6 @@ In information browsing applications (such as news, forums, and novel reading ap
        // Configure the corresponding page navigation through the system route table.
        Navigation(this.exploreStack, { name: 'explore' })
          .hideTitleBar(true)
-         .expandSafeArea([SafeAreaType.SYSTEM])
      }
 
      @Builder
@@ -51,7 +50,6 @@ In information browsing applications (such as news, forums, and novel reading ap
        // Configure the corresponding page navigation through the system route table.
        Navigation(this.gameStack, { name: 'game' })
          .hideTitleBar(true)
-         .expandSafeArea([SafeAreaType.SYSTEM])
      }
 
      build() {
@@ -59,13 +57,10 @@ In information browsing applications (such as news, forums, and novel reading ap
          TabContent() {
            this.tabExploreContent()
          }.tabBar(this.BottomTabBarItem('Explore', $r('sys.symbol.compass'), 0))
-         // Extend the content area to the status bar area to create a unified interactive experience.
-         .expandSafeArea([SafeAreaType.SYSTEM])
 
          TabContent() {
            this.tabGameContent()
          }.tabBar(this.BottomTabBarItem('Games', $r('sys.symbol.gamecontroller'), 1))
-         .expandSafeArea([SafeAreaType.SYSTEM])
 
          TabContent() {
          }.tabBar(this.BottomTabBarItem('Apps', $r('sys.symbol.grid'), 2))
@@ -76,13 +71,9 @@ In information browsing applications (such as news, forums, and novel reading ap
        .barPosition(BarPosition.End)
        .barMode(BarMode.Fixed)
        .barOverlap(true)
-       .barHeight(56)
-       .barFloatingStyle({
-         barBottomMargin: 8,
-         systemMaterial: new uiMaterial.ImmersiveMaterial({})
-       })
-       .scrollable(true)
-       .expandSafeArea([SafeAreaType.SYSTEM])
+       .barFloatingStyle({ systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.THIN }) })
+       .ignoreLayoutSafeArea([LayoutSafeAreaType.SYSTEM], [LayoutSafeAreaEdge.BOTTOM])
+       .height(LayoutPolicy.matchParent)
        .onChange((index: number) => {
          this.currentTab = index
        })
@@ -99,7 +90,6 @@ In information browsing applications (such as news, forums, and novel reading ap
      @Local searchOpacity: number = 1
      @Local classifyType: Array<string> = []
      totalTitleHeight = 110
-     @Local titleHeight: number = this.totalTitleHeight
      @Local scrollOffset: number = 0
      @Local titleOffset: number = 0
 
@@ -117,15 +107,14 @@ In information browsing applications (such as news, forums, and novel reading ap
              .height(40)
              .width(220)
              .systemMaterial(new uiMaterial.ImmersiveMaterial({}))
-         }.expandSafeArea([SafeAreaType.SYSTEM])
+         }
          .width('100%')
          .opacity(this.searchOpacity)
          .height(50)
 
          ClassifyComponent()
-       }.expandSafeArea([SafeAreaType.SYSTEM])
+       }
        .width('100%')
-       .height(this.titleHeight)
        .padding({ left: 20, right: 20 })
        .position({ x: 0, y: -this.titleOffset })
      }
@@ -165,15 +154,13 @@ In information browsing applications (such as news, forums, and novel reading ap
          .height('100%')
          .onDidScroll((xOffset: number, yOffset: number, state: ScrollState) => {
            this.scrollOffset += yOffset
-           // Within the search box size range.
            if (this.scrollOffset <= 50) {
              this.titleOffset = this.scrollOffset
-             this.titleHeight = this.totalTitleHeight - this.titleOffset
              this.searchOpacity = 1 - this.titleOffset / 50
            }
          })
        }.title(
-         { builder: this.exploreTitleBar, height: this.titleHeight },
+         { builder: this.exploreTitleBar, height: this.totalTitleHeight },
          { barStyle: BarStyle.STACK,
            // Set the title bar blur.
            scrollEffectOptions: {
@@ -181,7 +168,6 @@ In information browsing applications (such as news, forums, and novel reading ap
            }
          }
        ).hideBackButton(true)
-       .expandSafeArea([SafeAreaType.SYSTEM])
      }
    }
    ```
@@ -276,7 +262,7 @@ Immersive light sensing is currently subject to certain constraints. For details
            lightEffect: { color: Color.White },
            materialColor: '#80d3d3d3'
          }))
-       }.expandSafeArea([SafeAreaType.SYSTEM])
+       }
        .width('100%')
        .height('100%')
        .padding({ left: 20, right: 20 })
@@ -347,7 +333,6 @@ Immersive light sensing is currently subject to certain constraints. For details
            this.getUIContext().getComponentUtils().getRectangleById('content').windowOffset.y
          )
        })
-       .expandSafeArea([SafeAreaType.SYSTEM])
        .hideBackButton(true)
        .title({ builder: this.gameTitleBar, height: this.titleHeight }, {
          barStyle: BarStyle.STACK,

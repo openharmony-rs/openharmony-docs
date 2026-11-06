@@ -466,13 +466,11 @@ Grid() {
 >A greater **cachedCount** value may result in higher CPU and memory overhead of the UI. Adjust the value by taking into account both the comprehensive performance and user experience.
 
 <!--RP1-->
-<!--Del-->##  
+## Samples
 
- 
+For Grid development, the following related examples are available for reference:
 
--  
+- [Game 2048 (ArkTS) (API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Game/Game2048)
 
--  
-<!--DelEnd--><!--RP1End-->
-
-<!--no_check-->
+- [Distributed Calculator](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/ArkTSDistributedCalc)
+<!--RP1End-->
