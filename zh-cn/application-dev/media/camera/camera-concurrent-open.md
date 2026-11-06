@@ -41,20 +41,21 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 2. 通过[getCameraDevice](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameradevice18)获取对应的前置和后置相机。如果接口返回undefined，基于示例中的配置信息，表示当前设备不支持指定位置（前置/后置）的默认类型相机，无法实现多摄同开功能。
 
    <!-- @[camera_getSupportedCameras_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
-   ```ts
-   function getSupportedCamerasFn(cameraManager: camera.CameraManager)
-   {
+   
+   ``` TypeScript
+   getSupportedCamerasForConcurrentFn(cameraManager: camera.CameraManager) {
      let cameras = cameraManager.getSupportedCameras();
-
+   
      // 如果相机数量少于2，说明只存在单侧相机，返回。
      if (cameras.length < 2) {
        return;
      }
-
+   
      // 获取逻辑后置和逻辑前置。
-     let curCameraDeviceBack = cameraManager.getCameraDevice(camera.CameraPosition.CAMERA_POSITION_BACK, camera.CameraType.CAMERA_TYPE_DEFAULT);
-     let curCameraDeviceFront = cameraManager.getCameraDevice(camera.CameraPosition.CAMERA_POSITION_FRONT, camera.CameraType.CAMERA_TYPE_DEFAULT);
+     let curCameraDeviceBack = cameraManager.getCameraDevice(camera.CameraPosition.CAMERA_POSITION_BACK,
+       camera.CameraType.CAMERA_TYPE_DEFAULT);
+     let curCameraDeviceFront = cameraManager.getCameraDevice(camera.CameraPosition.CAMERA_POSITION_FRONT,
+       camera.CameraType.CAMERA_TYPE_DEFAULT);
    }
    ```
 
