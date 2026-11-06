@@ -7,7 +7,7 @@
 <!--Tester: @sunzibin001-->
 <!--Adviser: @zengyawen-->
 
-从API版本26.0.1开始，提供证书管理命令行工具（certmgr），主要用于在设备上通过命令行方式安装用户CA证书。支持安装当前用户级和所有用户级（GlobalUser）的CA证书，支持PEM/DER和PKCS#7（P7B）格式的证书文件，同时支持通过管道输入证书数据。
+从API版本26.0.1开始，提供证书管理命令行工具（certmgr），主要用于在设备上通过命令行方式安装和查询用户CA证书。支持安装当前用户级和所有用户级（GlobalUser）的CA证书，支持PEM/DER和PKCS#7（P7B）格式的证书文件，同时支持通过管道输入证书数据；支持按当前用户、所有用户级（GlobalUser）或两者同时查询已安装的用户CA证书，并可输出证书的PEM编码与哈希值。
 
 ## 命令行工具获取
 
@@ -19,6 +19,7 @@
 | ------------- | ------------------------------------------------------------ |
 | -h            | 帮助命令，用于查询工具支持的命令信息。                         |
 | installUserCA | 安装用户CA证书。  |
+| findUserCA    | 查询用户CA证书。  |
 
 ## 帮助命令（-h）
 
@@ -28,6 +29,9 @@ certmgr -h
 
 # 查询installUserCA命令的参数信息
 certmgr installUserCA -h
+
+# 查询findUserCA命令的参数信息
+certmgr findUserCA -h
 ```
 
 ## 安装用户CA证书命令（installUserCA）
@@ -70,6 +74,82 @@ certmgr installUserCA ca_cert.pem
 > - 安装证书时系统会拉起身份认证界面，认证界面标题会根据设备系统语言进行本地化显示。
 > - P7B格式证书可能包含多张证书，安装成功后会输出每个证书的URI。
 
+## 查询用户CA证书命令（findUserCA）
+
+查询设备上已安装的用户CA证书。支持按当前用户、所有用户级（GlobalUser）或两者同时查询，支持按名称过滤、限制返回数量，并可选择输出证书的PEM编码或哈希值。查询操作不会拉起身份认证。
+
+**命令参数列表**
+
+| 参数             | 参数说明               |
+| ---------------- | ---------------------- |
+| -h               | 显示帮助信息。    |
+| -g               | 仅查询所有用户级（GlobalUser）目录下的CA证书。可选项。 |
+| -gu              | 同时查询当前用户目录和所有用户级（GlobalUser）目录下的CA证书。可选项。 |
+| -n name          | 按证书名称过滤，匹配证书别名（alias）或证书主体（subject），支持部分匹配。可选项。 |
+| -c count         | 最多返回的证书数量，`0`表示不限制（返回全部），默认为`0`。可选项。 |
+| -p               | 额外输出证书的PEM编码。可选项。 |
+| -z               | 额外输出证书的SHA-256和SHA-1哈希值。可选项。 |
+
+**示例**：
+
+```bash
+# 1. 查询当前用户目录下的所有用户CA证书
+certmgr findUserCA
+
+# 2. 仅查询所有用户级（GlobalUser）目录下的CA证书
+certmgr findUserCA -g
+
+# 3. 同时查询当前用户目录和所有用户级（GlobalUser）目录下的CA证书
+certmgr findUserCA -gu
+
+# 4. 按名称过滤（别名或主体包含test）
+certmgr findUserCA -n test
+
+# 5. 最多返回2本证书
+certmgr findUserCA -c 2
+
+# 6. 返回全部证书，并输出PEM编码和哈希值
+certmgr findUserCA -c 0 -p -z
+```
+
+**输出格式**：
+
+查询成功时，首先输出匹配到的证书总数，随后逐本输出证书信息，多本证书之间以空行分隔：
+
+```
+certificate count: 2
+URI: oh:t=c;o=xxx;u=100;a=500
+certType: userCA
+scope: currentUser
+attributes:
+  "alias": my_ca
+  "subject": CN=My Test CA
+  "state": enable
+
+URI: oh:t=c;o=yyy;u=0;a=0
+certType: userCA
+scope: globalUser
+attributes:
+  "alias": global_ca
+  "subject": CN=Global Test CA
+  "state": disable
+```
+
+- `scope`取值为`currentUser`（当前用户目录）或`globalUser`（所有用户级目录）。
+- `state`取值为`enable`（已启用）或`disable`（已禁用）。
+- 指定`-z`时，在`attributes`之后额外输出`SHA-256 hash:`和`SHA-1 hash:`两行。
+- 指定`-p`时，在`attributes`之后额外输出`pem:`及证书的PEM编码内容。
+- 同时指定`-z`和`-p`时，先输出哈希值（`-z`），再输出PEM编码（`-p`）。
+
+> **说明：**
+>
+> - 未指定`-g`或`-gu`时，默认仅查询当前用户目录。
+> - `-g`与`-gu`不能同时指定。
+> - `-c`限制的是查询结果的最大数量，并非强制返回数量。实际返回数量可能小于该值，例如匹配到的证书数量较少，或部分证书的证书文件不可读而被跳过。
+> - `-c`取值为负数时按`0`处理，即不限制数量。
+> - `-p`与`-z`可以同时使用。
+> - 查询结果按证书属性库中的记录顺序返回，该顺序不保证与安装顺序一致；如需稳定顺序，请结合`-n`过滤后自行排序。
+
 ## 错误信息
 
 ### CM_CMD_ERR_PARAM_INVALID
@@ -83,6 +163,11 @@ certmgr installUserCA ca_cert.pem
 - `Install failed: Invalid argument`
 - `Invalid file size: <size>`
 - `No data from pipe input`
+- `Missing value for -n parameter`
+- `Missing value for -c parameter`
+- `Invalid count value: <value>`
+- `Cannot specify both -g and -gu`
+- `Name too long`
 
 **可能原因**
 
@@ -92,6 +177,10 @@ certmgr installUserCA ca_cert.pem
 4. 未通过文件路径或管道输入提供证书数据。
 5. 证书文件大小为0或超过对应格式的最大限制（PEM_DER格式为8196字节，P7B格式为307200字节即300KB）。
 6. 通过管道输入时未提供任何数据。
+7. 使用`-n`或`-c`参数时未指定值。
+8. `-c`参数的取值不是合法的整数。
+9. `findUserCA`同时指定了`-g`和`-gu`参数。
+10. `-n`参数指定的名称长度超过上限（256字节）。
 
 **处理步骤**
 
@@ -101,6 +190,10 @@ certmgr installUserCA ca_cert.pem
 4. 如未指定证书文件路径，请通过管道输入证书数据。
 5. 检查证书文件是否有有效内容，且文件大小不超过对应格式的限制（PEM_DER格式不超过8196字节，P7B格式不超过307200字节即300KB）。
 6. 使用管道输入时，确保管道中包含有效的证书数据。例如通过`cat ca_cert.pem | certmgr installUserCA`方式传入证书文件内容，避免管道为空或未传入任何数据导致读取失败。
+7. 为`-n`或`-c`参数补充取值，例如`certmgr findUserCA -c 2`。
+8. 检查`-c`参数是否为合法整数，例如`-c 0`或`-c 2`。
+9. `findUserCA`的`-g`与`-gu`互斥，请只保留其中一个参数。
+10. 缩短`-n`参数指定的名称长度后重试。
 
 ### CM_CMD_ERR_OPEN_FILE_FAIL
 
@@ -192,3 +285,19 @@ Internal error，报错提示：`Install failed: Permission denied`
 **处理步骤**
 
 重新执行命令，并在认证界面完成身份认证或管理员授权。
+
+### 查询失败（findUserCA）
+
+查询用户CA证书失败，报错提示：`Find failed: <detail>`
+
+**可能原因**
+
+1. 证书管理服务不可用或查询接口返回错误。
+2. 调用方缺少访问证书管理服务的权限。
+3. 证书属性库查询异常。
+
+**处理步骤**
+
+1. 重新执行查询命令，确认证书管理服务已正常启动。
+2. 确认当前进程具备访问证书管理服务的权限；如为权限问题，请联系系统管理员。
+3. 若问题持续存在，通过`hilog`查看证书管理服务的日志（日志域`0xD002F09`，标签`CertManager`）进一步定位。
