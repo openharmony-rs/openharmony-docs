@@ -9579,7 +9579,6 @@ update(input: DataBlob): Promise\<void>
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
 | 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001| Memory operation failed. |
 | 17630001 | Crypto operation error. |
 
@@ -10488,6 +10487,7 @@ update(input: DataBlob): Promise\<void>
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
 | 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
 | 17620001| Memory operation failed. |
 | 17630001 | Crypto operation error. |
 
