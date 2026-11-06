@@ -1707,21 +1707,21 @@ ListItem() {
 >- When using [LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md), after the data source changes, you must notify the component to refresh via [DataChangeListener](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#datachangelistener) to ensure that list item states remain consistent with the data source during swipe multi‑selection.
 
 <!--RP2-->
-<!--Del-->##  
+## Samples
 
- 
+For details about how to create and use lists in ArkUI, see the following samples:
 
--  
+- [News Data Loading](https://gitcode.com/openharmony/codelabs/tree/master/NetworkManagement/NewsDataArkTS)
 
--  
+- [Common Components and Containers Low-Code Development Sample (ArkTS) (API9)](https://gitcode.com/openharmony/codelabs/tree/master/EfficiencyEnhancementKit/SuperVisualSample)
 
--  
+- [Second-Level Linkage (ArkTS) (API9)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/SecondLevelLinkage)
 
--  
+- [Using the List Component: Product List (ArkTS) (API9)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/List)
 
--  
+- [Using the List Component: Settings Items (ArkTS) (API9)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/List_HDC)
 
-- [PullToRefresh](https://gitcode.com/CPF-ApplicationTPC/ohos_pull_to_refresh)<!--DelEnd-->
+- [PullToRefresh](https://gitcode.com/CPF-ApplicationTPC/ohos_pull_to_refresh)
 
 <!--RP2End-->
 

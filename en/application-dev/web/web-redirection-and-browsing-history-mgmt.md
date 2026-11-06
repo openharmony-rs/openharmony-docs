@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-09-01T02:55:01.986Z pushedAt=2026-09-02T07:30:34.992Z -->
+<!-- md-trans-meta sourceCommit=72bbc0c0544d33f8e63055267fe026c0f977638a translatedAt=2026-11-05T10:43:59.442Z pushedAt=2026-11-06T00:54:52.669Z nl=1 -->
 
 To improve page access speed, history navigation allows users to switch between pages in the history using the **Forward** and **Backward** buttons. The **Web** component supports redirecting users to other pages within the app or performing cross-app redirection.
 
@@ -60,7 +60,7 @@ In the following example, the app home page **Index.ets** loads the frontend pag
 
 - Code of the **Index.ets** page:
   <!-- @[index_load_route_link_to_profile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/PageRedirection.ets) -->
-
+  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { router } from '@kit.ArkUI';
@@ -91,7 +91,7 @@ In the following example, the app home page **Index.ets** loads the frontend pag
   ```
 
 - Code of the **route.html** page:
-
+  
   ```html
   <!-- route.html -->
   <!DOCTYPE html>
@@ -106,7 +106,7 @@ In the following example, the app home page **Index.ets** loads the frontend pag
 
 - Code of the **ProfilePage.ets** page:
   <!-- @[navigate_to_profile_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/ProfilePage.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -131,7 +131,7 @@ In the following example, when a user clicks the link on the frontend page **cal
 
 - Application code:
   <!-- @[click_link_call_html_to_reach_phone_dialing_screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/CrossApplicationRedirection.ets) -->
-
+  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { call } from '@kit.TelephonyKit';
@@ -154,7 +154,7 @@ In the following example, when a user clicks the link on the frontend page **cal
                   if (!err) {
                     console.info('make call succeeded.');
                   } else {
-                    console.info('make call fail, err is:' + JSON.stringify(err));
+                    console.error('make call fail, err is:' + JSON.stringify(err));
                   }
                 });
                 return true;
@@ -168,7 +168,7 @@ In the following example, when a user clicks the link on the frontend page **cal
   ```
 
 - Code of the **call.html** page:
-
+  
   ```html
   <!-- call.html -->
   <!DOCTYPE html>

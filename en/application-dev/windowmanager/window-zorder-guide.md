@@ -4,9 +4,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=58ff40ad92758153f7b55166a9e6e0a0e9be5d28 translatedAt=2026-07-13T10:01:23.573Z pushedAt=2026-07-13T12:09:08.568Z -->
+<!-- md-trans-meta sourceCommit=92a8a31355b3b2b4d4bcc649453e0fffcb0eae69 translatedAt=2026-11-05T10:56:36.236Z pushedAt=2026-11-06T01:58:00.503Z nl=1 -->
 
 ## When to Use
 
@@ -66,31 +66,31 @@ This section systematically explains the window z-order management mechanism fro
 ### Z-Order Rules for Parent-Child Windows
 
 - When a parent window is raised, all its child windows are raised along with it; when a child window is raised, its parent window is also raised.
-
 - The z-order of a child window is always higher than that of its parent window.
-
 - A window can be raised by calling the [raiseToAppTop()](../reference/apis-arkui/arkts-apis-window-Window.md#raisetoapptop14) API or by tapping the window.
 
 ### Z-Order Rules for TopMost Windows
 
-- In the [freeform window](window-terminology.md#freeform-window) state, an app's main window can call the [setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14) API with **true** to place itself above other app windows, achieving an always-on-top display effect that is not obscured. This should be used appropriately to avoid affecting the user experience.
+- In the [freeform window](window-terminology.md#freeform-window) state, the main window of an application can call the [setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14) API with `true` to place itself above other application windows, achieving a "not obscured" resident display effect. Use this API properly to avoid affecting user experience. Using this API requires the [`ohos.permission.WINDOW_TOPMOST`](../security/AccessToken/permissions-for-all.md#ohospermissionwindow_topmost) permission.
 
-- Using this API requires the ohos.permission.WINDOW_TOPMOST permission.
+- Starting from API version 26.0.1, the topmost state of the main window can also be adjusted through the [setWindowPosition()](../reference/apis-arkui/arkts-apis-window-f.md#windowsetwindowposition) API. When using this API to set the main window to topmost or to cancel the topmost state of a topmost main window, the [ohos.permission.WINDOW_TOPMOST](../security/AccessToken/permissions-for-all.md#ohospermissionwindow_topmost) permission is required.
 
 ## Z-Order Control Mechanisms
+
 
 | Feature/Operation | Control Method | Effective Scope | Applicable Scenario |
 | -------- | -------- | -------- | -------- |
 | Z-order | System-managed | Effective across apps | Internal rendering order management |
-| zLevel | setSubWindowZLevel()/Set when creating a window | Effective only within the same app | z-order management for subwindows |
-| Window topmost | setWindowTopmost() | Effective across apps | Persistent windows such as video and navigation |
-| Raise on tap | setRaiseByClickEnabled() | Effective across apps | Preventing accidental touches, fixed layouts |
+| zLevel | [setSubWindowZLevel()](../reference/apis-arkui/arkts-apis-window-Window.md#setsubwindowzlevel18)/set when creating the window | Effective only within the same app | z-order management for subwindows |
+| Window topmost | [setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14) | Effective across apps | Persistent windows such as video and navigation |
+| Raise by click | [setRaiseByClickEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setraisebyclickenabled14) | Between subwindows of the same type within the same application | Prevent accidental touches, fixed layout |
 
 ## Z-Order Related Development Scenarios
 
 | Feature | Typical Scenario | Corresponding API |
 | -------- | -------- | -------- |
 | Set main window to topmost | Used to place a window above other app windows without being obscured, such as in video calls, navigation, and other scenarios. | [setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14) |
+| Adjust the Z-order of the main window | Can be used to adjust the Z-order of multiple windows at the same time, for example, in cloud application scenarios. | [setWindowPosition()](../reference/apis-arkui/arkts-apis-window-f.md#windowsetwindowposition) |
 | Raise a subwindow to the top | Used to raise a subwindow to the topmost position among subwindows of the same type within the current app. This only takes effect within the scope of subwindows that share the same parent window and the same **zLevel** value in the current app.<br>For example, in a video conference with a floating toolbar, the main window displays the video feed, while subwindows include a chat box, a sharing control bar, and so on. When the chat box is tapped, **raiseToAppTop()** can be called to bring it to the top, preventing it from being obscured by other subwindows. | [raiseToAppTop()](../reference/apis-arkui/arkts-apis-window-Window.md#raisetoapptop14) |
 | Disable/enable the subwindow raise-on-tap feature | Can be used for tool panels with fixed layouts to prevent z-order confusion caused by accidental user operations. | [setRaiseByClickEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setraisebyclickenabled14) |
 | Get the topmost window in the current app | Can determine the currently displayed topmost window (which may be the main window or a subwindow), used for scenarios such as logging or state synchronization. | [getLastWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetlastwindow9-1) |

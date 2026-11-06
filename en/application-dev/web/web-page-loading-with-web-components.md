@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-09-01T02:54:39.335Z pushedAt=2026-09-02T07:30:22.736Z -->
+<!-- md-trans-meta sourceCommit=ef6db1718b2d3485b19f8944abcbd56a26449da9 translatedAt=2026-11-05T10:43:13.619Z pushedAt=2026-11-06T00:42:55.438Z nl=1 -->
 
 
 Page loading is a basic capability of the **Web** component. Depending on the data source, page loading falls into three types: loading of network pages, loading of local pages, and loading of HTML rich text data.
@@ -75,14 +75,14 @@ To reference a local CSS file when loading a local HTML file, perform the follow
 
 - Local page file in the application's resources/rawfile directory:
 
-    **Figure 1** Path of local page files 
+    **Figure 1** Path of local page files
 
     ![resource-path](figures/resource-path.png)
 
 
 - Application code:
   <!-- @[after_load_complete_call_to_change_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingLocalPages.ets) -->
-
+  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -139,7 +139,7 @@ Example of loading local page files in the sandbox:
 
 1. Obtain the sandbox path through the constructed singleton object **GlobalContext**. You need to enable the [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) permission of the file system in the application.
    <!-- @[after_load_complete_call_to_change_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/GlobalContext.ets) -->
-
+   
    ``` TypeScript
    export class GlobalContext {
      private constructor() {}
@@ -163,9 +163,9 @@ Example of loading local page files in the sandbox:
    }
    ```
    <!-- -->
-
+   
    <!-- @[load_local_page_file_in_sandbox_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadLocalPageFileInSandboxPath_one.ets) -->
-
+   
    ``` TypeScript
    import { webview } from '@kit.ArkWeb';
    import { GlobalContext } from './GlobalContext';
@@ -180,7 +180,7 @@ Example of loading local page files in the sandbox:
      build() {
        Column() {
        // ···
-         // Load the files in the sandbox.
+         // Load the sandbox path files.
          Web({ src: url, controller: this.controller })
          .fileAccess(true);
        }
@@ -191,21 +191,23 @@ Example of loading local page files in the sandbox:
 2. Modify the **EntryAbility.ets** file.
 
    The following uses **filesDir** as an example to describe how to obtain the path of the sandbox. For details about how to obtain other paths, see [Obtaining Application File Paths](../application-models/application-context-stage.md#obtaining-application-file-paths).
-
-   ```ts
-   // xxx.ets
-   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-   import { webview } from '@kit.ArkWeb';
-   import { GlobalContext } from '../GlobalContext';
-
-   export default class EntryAbility extends UIAbility {
-     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-       // Data synchronization between the UIAbility component and UI can be implemented by binding filesDir to the GlobalContext object.
-       GlobalContext.getContext().setObject("filesDir", this.context.filesDir);
-       console.info("Sandbox path is " + GlobalContext.getContext().getObject("filesDir"));
-     }
-   }
-   ```
+  <!-- @[EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  
+  ``` TypeScript
+  import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { window } from '@kit.ArkUI';
+  import { GlobalContext } from '../pages/GlobalContext';
+  
+  export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {    
+         // Bind filesDir to the GlobalContext object to synchronize data between the UIAbility component and the UI.    
+         GlobalContext.getContext().setObject('filesDir', this.context.filesDir);    
+         console.info('Sandbox path is ' + GlobalContext.getContext().getObject('filesDir'));    
+       }
+    // ...
+  }
+  ```
 
    HTML file to be loaded:
 

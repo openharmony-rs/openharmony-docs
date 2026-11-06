@@ -4,9 +4,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=0d88cc2609499932569930500f1a6723fd824448 translatedAt=2026-08-11T10:11:42.071Z pushedAt=2026-08-11T11:30:25.595Z -->
+<!-- md-trans-meta sourceCommit=710e9748de0b0abf2ab8443301cb1cb80616c651 translatedAt=2026-11-05T10:52:47.873Z pushedAt=2026-11-06T01:44:16.375Z nl=1 -->
 
 ## When to Use
 
@@ -39,7 +39,6 @@ A screen group is a set of logically associated display areas in the system, wit
 **Window Highlight State** indicates whether the current window is in a visual highlight state. Visual highlight is a UI feedback mechanism that communicates to the user that this window is currently active, interactive, or being emphasized by the system by changing the window's appearance (such as title bar color, border style, transparency, and shadow).
 
 - Window highlight state supports app windows (including main windows and subwindows), but does not support system windows.
-
 - A window being in the highlight state does not mean it has gained focus; however, a focus window is always in the highlight state.
 
 - There are two highlight modes: exclusive highlight and non-exclusive highlight.
@@ -69,10 +68,10 @@ A screen group is a set of logically associated display areas in the system, wit
 
 > **NOTE**
 >
-> - For listener APIs: Use the corresponding **off()** API to remove the relevant listener when the page is destroyed to avoid memory leaks.
+> - For listening APIs: use the corresponding `off()` API to remove the related listeners when the page is destroyed, to avoid memory leaks.
 >
-> - Page loading takes precedence over display: When calling APIs such as **showWindow()** to display a window, ensure that the page has been loaded using **loadContent()** or **setUIContent**.
+> - Load the page before displaying it: when calling APIs such as [showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow20) to display the window, ensure that the page has been loaded using APIs such as [loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9) or [setUIContent](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9-1).
 >
-> - Use the exclusive window highlight mode appropriately: Avoid abusing [setExclusivelyHighlighted()](../reference/apis-arkui/arkts-apis-window-Window.md#setexclusivelyhighlighted15), which may lead to a fragmented user experience.
+> - Use the exclusive highlight mode properly: avoid abusing [setExclusivelyHighlighted()](../reference/apis-arkui/arkts-apis-window-Window.md#setexclusivelyhighlighted15), which may fragment the user experience.
 >
-> - Combining state query and listening APIs: When entering a page for the first time, use **isWindowHighlighted()**/**isFocused()** to obtain the initial state, and then listen for subsequent changes through the corresponding **on('windowHighlightChange')**/**on('windowEvent')** APIs to implement relevant adaptations and operations.
+> - Combine state query and listening APIs: when entering the page for the first time, use `isWindowHighlighted()`/`isFocused()` to obtain the initial state, and then listen for subsequent changes through the corresponding `on('windowHighlightChange')`/`on('windowEvent')` APIs to implement related adaptation and operations.

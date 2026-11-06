@@ -4,9 +4,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @yyuehao-->
 <!--Designer: @yyuehao-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=975702a2d077718c3bdd4829338e3368ce6451f2 translatedAt=2026-10-08T09:03:57.551Z pushedAt=2026-10-08T11:39:34.991Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-05T10:53:38.387Z pushedAt=2026-11-06T01:44:46.998Z nl=1 -->
 
 ## When to Use
 
@@ -192,7 +192,7 @@ After a window is created, you can dynamically adjust its position and size thro
   Sample
 
   <!-- @[sub_move_resize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+  
   ``` TypeScript
   // EntryAbility.ets
   import { UIAbility } from '@kit.AbilityKit';
@@ -277,7 +277,7 @@ Currently, the following two window dragging capabilities are provided.
   Sample:
 
   <!-- @[startMoving](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/pages/SubWindowPage.ets) -->
-
+  
   ``` TypeScript
   import { window } from '@kit.ArkUI';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -341,7 +341,7 @@ Currently, the following two window dragging capabilities are provided.
         })
   
         Column() {
-          Text('Current sub-window size')
+          Text('Current subwindow size')
             .fontSize(16)
             .fontWeight(FontWeight.Bold)
   
@@ -418,7 +418,7 @@ Currently, the following two window dragging capabilities are provided.
   > During drag resizing, the window size is subject to [WindowLimits](../reference/apis-arkui/arkts-apis-window-i.md#windowlimits11) constraints.
 
   <!-- @[enableDrag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   // Index.ets
   import { window } from '@kit.ArkUI';

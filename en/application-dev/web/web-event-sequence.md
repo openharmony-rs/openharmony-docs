@@ -5,7 +5,7 @@
 <!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:12:22.400Z pushedAt=2026-09-15T13:41:28.249Z -->
+<!-- md-trans-meta sourceCommit=4f945590f61307c03472767556879a597fa3ab93 translatedAt=2026-11-05T10:40:09.446Z pushedAt=2026-11-05T11:55:22.061Z nl=1 -->
 
 ## Overview
 
@@ -50,7 +50,9 @@ When a custom component is destructed, the [aboutToDisappear](../reference/apis-
 
 - App-side code.
 
-  ```ts
+  <!-- @[the_status_of_web_component_web_page_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/LifecycleWebComp/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -183,12 +185,14 @@ Pay attention to some important performance indicators during web page loading. 
 
 ## How can I prevent page suspension when the Web component's rendering child process exits unexpectedly
 
-ArkWeb is a **Web** component platform designed to display web page content for applications and provide capabilities such as page loading, interaction, and debugging. When an ArkWeb application is used, the page may be suspended due to various reasons. For example, the ArkWeb child rendering process crashes due to front-end exceptions, or the background ArkWeb child rendering process is terminated due to insufficient system resources. In this case, you need to open the page again or restart the application.
+ArkWeb is a **Web** component platform designed to display web page content for applications and provide capabilities such as page loading, interaction, and debugging. When an ArkWeb application is used, the page may be suspended due to various reasons. For example, the ArkWeb rendering child process crashes due to front-end exceptions, or the background ArkWeb rendering child process is terminated due to insufficient system resources. In this case, you need to open the page again or restart the application.
 
 If the web page is suspended when the ArkWeb child process exits abnormally, the application can listen for the [onRenderExited](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderexited9) event to obtain the specific exit cause [RenderExitReason](../reference/apis-arkweb/arkts-basic-components-web-e.md#renderexitreason9) and handle the exception in the callback correspondingly.
 
 **Development in Practice**
-```ts
+<!-- @[avoid_page_stuck_caused_by_render_process_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/LifecycleWebComp/entry/src/main/ets/pages/OnRenderExitedReload.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -200,14 +204,14 @@ struct WebComponent {
   // The child process crash is distinguished from other exceptions. You can refine the exception handling policy based on the actual service.
   renderReloadMaxForCrashed: number = 5;    // Set the maximum number of retries for reloading after a crash. The application can set this parameter based on service characteristics.
   renderReloadCountForCrashed: number = 0;  // Number of reload times after a crash.
-  renderReloadMaxForOthers: number = 10;    // Set the maximum number of retry times for exiting due to other exceptions. The application can set this parameter based on service characteristics.
+  renderReloadMaxForOthers: number = 10;    // Set the maximum number of reload retries after exit due to other exceptions. The application can set this parameter based on service characteristics.
   renderReloadCountForOthers: number = 0;   // Number of reload times after exit due to other exceptions.
 
   // Create a Web component.
   controller: webview.WebviewController = new webview.WebviewController();
 
   // Specify the page to be loaded.
-  url: string = "www.example.com";
+  url: string = 'www.example.com';
   build() {
     Column() {
       Web({ src: this.url, controller: this.controller })
@@ -218,21 +222,21 @@ struct WebComponent {
             this.controller.loadUrl(this.url);
           }
         })
-        // The application listens for the callback triggered when the child rendering process exits abnormally and handles the exception.
+        // The application listens for the callback triggered when the rendering child process exits abnormally and handles the exception.
         .onRenderExited((event) => {
           if (!event) {
             return;
           }
           if (event.renderExitReason == RenderExitReason.ProcessCrashed) {
             if (this.renderReloadCountForCrashed >= this.renderReloadMaxForCrashed) {
-              // Set the maximum number of reload times to prevent the page from being cyclically loaded.
+              // Set a retry limit to prevent the page from being loaded in a loop due to a recurring issue.
               return;
             }
             console.info('renderReloadCountForCrashed: ' + this.renderReloadCountForCrashed);
             this.renderReloadCountForCrashed++;
           } else {
             if (this.renderReloadCountForOthers >= this.renderReloadMaxForOthers) {
-              // Set the maximum number of reload times to prevent the page from being cyclically loaded.
+              // Set a retry limit to prevent the page from being loaded in a loop due to a recurring issue.
               return;
             }
             console.info('renderReloadCountForOthers: ' + this.renderReloadCountForOthers);

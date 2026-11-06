@@ -1,12 +1,11 @@
 # Using Offline Web Components
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @lollipopolive-->
 <!--Designer: @qianlf-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=0a43bcf9ac84df1582b95762db09368c35ebe01b translatedAt=2026-08-14T03:48:41.808Z pushedAt=2026-08-14T09:17:43.305Z -->
+<!-- md-trans-meta sourceCommit=c8d611da517c0df9bbfb2e4952764bf8397e713e translatedAt=2026-11-05T10:43:14.995Z pushedAt=2026-11-06T00:42:03.961Z nl=1 -->
 
 The **Web** component can be attached to and detached from the component trees in different windows. With this capability, you can create **Web** components in advance to optimize performance. For example, when a tab page is implemented with a **Web** component, pre-creation of the **Web** component allows for ahead-of-time rendering, so that the page appears instantly when accessed.
 
@@ -14,8 +13,7 @@ The offline **Web** component is created based on the custom placeholder compone
 
 Offline **Web** components can be used to pre-start the rendering process and pre-render web pages.
 
-- Pre-start rendering process: By creating an empty **Web** component prior to the user's access of the web page, the rendering process is initiated in advance, preparing for subsequent use of the page. 
-
+- Pre-start rendering process: By creating an empty **Web** component prior to the user's access of the web page, the rendering process is initiated in advance, preparing for subsequent use of the page.
 - Pre-render web pages: In the web page startup or redirection scenario, creating **Web** components in the background in advance allows for ahead-of-time data loading and rendering. In this way, web pages can be instantly displayed when being redirected to.
 
 ## Overall Architecture
@@ -55,7 +53,6 @@ import { window } from '@kit.ArkUI';
     });
   }
 ```
-
 <!--  -->
 <!-- @[manage_dynamic_webview_components_in_harmonyos_app](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Common.ets) -->
 
@@ -171,6 +168,7 @@ struct Index {
   }
 }
 ```
+
 
 ## Pre-starting the Web Rendering Process
 
@@ -313,7 +311,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct Index1 {
   webviewController: webview.WebviewController = new webview.WebviewController();
-      
+
   build() {
     Column() {
       Button('Jump to web page').onClick(()=> {
@@ -352,7 +350,6 @@ struct Index2 {
 ```
 
 <!--  -->
-
 ## Pre-rendering Web Pages
 
 Pre-rendering optimization is particularly beneficial for scenarios involving web page startup and redirection. For example, you can apply it in the situation where the user accesses the home page and is then redirected to a different page. For best possible effects, use this solution on pages that have a high cache hit ratio, meaning they are frequently revisited by users.
@@ -388,7 +385,6 @@ import { window } from '@kit.ArkUI';
     });
   }
 ```
-
 <!--  -->
 <!-- @[offline_web_component_builder_with_render_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry2/src/main/ets/pages/Common.ets) --> 
 
@@ -523,6 +519,7 @@ struct Index {
 }
 ```
 
+
 ## Reusing and Releasing Offline Web Components
 
 By reusing and releasing offline Web components, you can optimize memory usage and reduce the probability that the app is terminated by the system due to excessive memory usage.
@@ -537,9 +534,7 @@ By reusing and releasing offline Web components, you can optimize memory usage a
 If multiple UI pages of an application all need to display web content, you are advised to reuse offline **Web** components. This reduces the performance consumption of component creation and destruction and the memory usage of creating multiple **Web** components.
 
 **Reusing methods**:
-
 1. When an offline Web component is no longer used, call the **loadUrl** method of **WebviewController** to load the **about:blank** blank page, preparing the offline Web component for reuse by other UI pages.
-
 2. When a new UI page reuses this offline Web component, call the **loadUrl** method of **WebviewController** again to load the required web page.
 
 ### Releasing Offline Web Components
@@ -623,7 +618,6 @@ export const restoreNWebs = (uiContext: UIContext | undefined = undefined) => {
   recycledNWebs.clear()
 }
 ```
-
 <!--  -->
 
 ### Example of Reusing and Releasing Offline Web Components
@@ -633,12 +627,10 @@ export const restoreNWebs = (uiContext: UIContext | undefined = undefined) => {
 This example demonstrates how to reuse and release offline **Web** components and how to perform pre-rendering. Note that multiple offline **Web** components are used in this example for demonstrating related functionalities and the usage of offline **Web** components. In principle, you are advised to use only one **Web** component for each window. The functionalities are as follows:
 
 1. Effect comparison between pre-rendering and non-pre-rendering offline **Web** components.
-
 2. Steps for releasing offline **Web** components when the application is in the background.
-
 3. Steps for reusing offline **Web** components.
 
-The example demonstrates how to release the offline Web component when the app moves to the background and restore it when the app switches to the foreground. The offline Web component is released and restored in the **onBackground** and **onForeground** callbacks of [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md), respectively.
+The example demonstrates how to release the offline Web component when the app moves to the background and restore it when the app switches to the foreground. The offline Web component is released and restored in the **onBackground** and **onForeground** callbacks of [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md), respectively. 
 
 <!-- @[entry_ability_on_background_and_foreground_to_recycle_and_restore_NWebs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry3/src/main/ets/entry3ability/Entry3Ability.ets) -->
 
@@ -663,37 +655,23 @@ onBackground(): void {
 The following four UI pages are used as examples: Index, Home, Page1, and Page2. The core functionalities of each UI page are as follows:
 
 * The index page serves as the entry point for demonstrating page redirection, as well as the reclaiming, resuming, and statistics display of offline **Web** components.
-
   * Button for redirecting to the home page.
-
   * Button for reclaiming offline **Web** components (only offline **Web** components that are not bound can be reclaimed).
-
   * Button for forcibly reclaiming offline **Web** components (all offline **Web** components, including bound and unbound components, will be forcibly reclaimed, which will cause the NodeContainer to display a blank screen).
-
   * Button for resuming offline **Web** components.
-
   * Displaying the number, status, and URLs of offline **Web** components.
-
 * The home page acts as the UI homepage, demonstrating the creation of offline **Web** components as well as the implementation methods and timing of pre-rendering.
-
   * Three offline components are created when the home page is created. One of them loads the specified web page and performs pre-rendering, and the other two are blank offline **Web** components.
-
   * The home page provides navigation buttons for redirecting to Page1 or Page2.
-
 * Page1 displays two web pages at the same time. Each page uses one offline **Web** component to load and display the content of the same URL. This page is used to demonstrate the effect comparison between pre-rendering and non-pre-rendering, and how to reuse offline components.
-
-  * The first offline **Web** component performs pre-rendering and can directly display the page content, which is faster than the second offline **Web** component.
-
+  * The first offline **Web** component performs pre-rendering and can directly display the page content, which is faster than the second offline **Web** component. 
   * The second offline **Web** component reuses the idle offline **Web** component and dynamically loads the URL in the **aboutToAppear** lifecycle of the UI page.
 
   ![web-offline-preload-compare](figures/offline-nweb-preload-compare.gif)
 
 * Page2 displays a single web page and loads the specified URL by reusing the idle offline **Web** component.
-
   * Page2 can load a specified URL by passing parameters and allows users to redirect to another URL after the loading.
-
   * In the **onWillHide** callback of **NavDestination**, Page2 will make the current **Web** component load a blank page and disassociate itself from the current UI, so as to prepare for subsequent reuse.
-
   * Page2 supports nesting. Even if there are multiple layers of UI pages, the number of **Web** components does not increase because offline **Web** components are reused.
 
 ![web-offline-reuse-recycle-restore](figures/offline-nweb-reuse-recycle-restore.gif)
@@ -701,18 +679,16 @@ The following four UI pages are used as examples: Index, Home, Page1, and Page2.
 **Sample Code**
 
 <!--RP1-->
-
 [Sample Code for Reusing and Releasing Offline Web Components](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry3)
-
 <!--RP1End-->
 
 ## Common Troubleshooting Procedure
 
-1. Check the network permission of the application.
+1. Check the application's network permission configuration.
 
-Check whether the network permission has been added to **module.json5**. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md).
+    Check whether the network permission has been added to module.json5. For details about how to add it, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
-<!-- @[add_network_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry2/src/main/module.json5) -->
+    <!-- @[add_network_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry2/src/main/module.json5) -->
 
 ``` JSON5
 "requestPermissions":[
@@ -722,22 +698,23 @@ Check whether the network permission has been added to **module.json5**. For det
 ],
 ```
 
-2. Check the logic for binding [NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md) to the node.
 
-Check whether the node has been added to the component tree. For diagnostics purposes, you are advised to add a **Text** component above the existing **Web** component, as shown in the following example. If the **Text** component is not displayed on the white screen, there is a potential issue with the binding between the [NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md) and the node.
+2. Check the logic of binding [NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md) to the node.
 
-```ts
-@Builder
-function WebBuilder(data:Data) {
-  Column() {
-    Text('test')
-    Web({ src: data.url, controller: data.controller })
-      .width("100%")
-      .height("100%")
-  }
-}
-```
+    Check whether the node has been mounted on the component tree. It is recommended that you add a Text component above the existing Web component (see the following example). If the Text component does not appear when the screen is blank, check the binding between [NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md) and the node.
 
-3. Check the visibility of the **Web** component.
+    ```ts
+    @Builder
+    function WebBuilder(data:Data) {
+      Column() {
+        Text('test')
+        Web({ src: data.url, controller: data.controller })
+          .width("100%")
+          .height("100%")
+      }
+    }
+    ```
 
-If the node has been added to the tree, examine the [WebPattern::OnVisibleAreaChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange) log to check whether the **Web** component is visible. Invisible **Web** components may cause a white screen.
+3. Check the Web visibility state.
+
+    If the entire node has been mounted on the tree, check whether the Web component's visibility state is correct through the log [WebPattern::OnVisibleAreaChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange). An invisible Web component may cause a blank screen.

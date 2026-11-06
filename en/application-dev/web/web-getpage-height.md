@@ -1,12 +1,11 @@
 # Obtaining the Web Page Content Height
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @sinat_22543221-->
 <!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=1a96632fba2a4580ec09c0d977471feef6b32786 translatedAt=2026-08-14T03:46:47.182Z pushedAt=2026-08-14T08:39:40.815Z -->
+<!-- md-trans-meta sourceCommit=db997b7b2bf80ce82bf23c07da01ff7aca61a238 translatedAt=2026-11-05T10:40:51.535Z pushedAt=2026-11-05T11:55:36.522Z nl=1 -->
 
 The [getPageHeight](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageheight) API can obtain the actual height of the current web page content. You can select a proper method as required.
 
@@ -21,27 +20,40 @@ For a non-static web page, you are advised to not obtain the web page content he
 For a common static web page, you can obtain the page content height through **getPageHeight()** in the **Web** component lifecycle callback (such as **onPageEnd**) and web performance metric callback.
 
 Code on the application side:
+<!-- @[ordinary_static_display_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPageHeight/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-
-@Entry
+``` TypeScript
 @Component
-struct Index {
+struct Scene1Static {
   controller: webview.WebviewController = new webview.WebviewController();
+  @State heightText: ResourceStr = $r('app.string.waiting_for_height');
 
   build() {
-    Row() {
-      Column() {
-        Web({ src: $rawfile('index.html'), controller: this.controller })
-          .onPageEnd(() => {
-            console.info("page height: onPageEnd: " + this.controller.getPageHeight());
-          })
-      }
-      .width('100%')
-      .height('100%')
+    Column() {
+      Text('getPageHeight: ' + this.heightText)
+        .width('100%')
+        .padding(12)
+        .fontSize(16)
+        .backgroundColor('#f5f5f5')
+        .textAlign(TextAlign.Center)
+
+      Web({ src: $rawfile('scene1_index.html'), controller: this.controller })
+        .layoutWeight(1)
+        .onPageEnd(() => {
+          this.heightText = $r('app.string.scene1_on_page_end');
+          setTimeout(() => {
+            try {
+              const h: number = this.controller.getPageHeight();
+              console.info(`page height: onPageEnd: ${h}`);
+              this.heightText = String(h) + ' px';
+            } catch (err) {
+              console.error(`page height: onPageEnd error: ${JSON.stringify(err)}`);
+              this.heightText = $r('app.string.get_height_failed');
+            }
+          }, 300)
+        })
     }
+    .width('100%')
     .height('100%')
   }
 }
@@ -52,44 +64,41 @@ struct Index {
 The dynamic web page can pass a specific callback through JSBridge to notify the application side to call it.
 
 Code on the application side:
+<!-- @[complex_dynamic_web_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPageHeight/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-
-class TestClass {
-  testController: webview.WebviewController;
-
-  constructor(controller: webview.WebviewController) {
-    this.testController = controller;
-  }
-
-  notifyToGet(): void {
-    console.info("page height: " + this.testController.getPageHeight());
-  }
-}
-
-@Entry
+``` TypeScript
 @Component
-struct Index {
+struct Scene2JsBridge {
   controller: webview.WebviewController = new webview.WebviewController();
+  @State heightText: ResourceStr = $r('app.string.waiting_for_height');
   @State jsbObj: TestClass = new TestClass(this.controller);
 
+  aboutToAppear(): void {
+    this.jsbObj.onGetHeight = (h: string) => {
+      this.heightText = h + ' px';
+    };
+  }
+
   build() {
-    Row() {
-      Column() {
-        Web({ src: $rawfile('index.html'), controller: this.controller })
-          .javaScriptAccess(true)
-          .javaScriptProxy({
-            object: this.jsbObj,
-            name: "jsbObj",
-            methodList: ["notifyToGet"],
-            controller: this.controller
-          })
-      }
-      .width('100%')
-      .height('100%')
+    Column() {
+      Text('getPageHeight: ' + this.heightText)
+        .width('100%')
+        .padding(12)
+        .fontSize(16)
+        .backgroundColor('#f5f5f5')
+        .textAlign(TextAlign.Center)
+
+      Web({ src: $rawfile('scene2_index.html'), controller: this.controller })
+        .layoutWeight(1)
+        .javaScriptAccess(true)
+        .javaScriptProxy({
+          object: this.jsbObj,
+          name: "jsbObj",
+          methodList: ["notifyToGet"],
+          controller: this.controller
+        })
     }
+    .width('100%')
     .height('100%')
   }
 }
@@ -100,7 +109,6 @@ struct Index {
 For a common web page, you can trigger height measurement via the load event once all resources have finished loading.
 
 Frontend code:
-
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -115,7 +123,7 @@ Frontend code:
         if (typeof jsbObj !== 'undefined') {
             jsbObj.notifyToGet();
         } else {
-            console.info("jsbObj is undefined");
+            console.error("jsbObj is undefined");
         }
     })
 </script>
@@ -128,7 +136,6 @@ Frontend code:
 When a web page contains large images, use the image loading completion callback to trigger the height measurement.
 
 In the frontend code, replace the sample image path with the actual image resource.
-
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -146,7 +153,7 @@ In the frontend code, replace the sample image path with the actual image resour
         if (typeof jsbObj !== 'undefined') {
             jsbObj.notifyToGet();
         } else {
-            console.info("jsbObj is error");
+            console.error("jsbObj is undefined");
         }
     });
 </script>
@@ -159,7 +166,6 @@ In the frontend code, replace the sample image path with the actual image resour
 When a web page contains a large number of images, trigger the height measurement after all images are loaded.
 
 Replace the image in the frontend code with a real image.
-
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -185,7 +191,7 @@ Replace the image in the frontend code with a real image.
             if (typeof jsbObj !== 'undefined') {
                 jsbObj.notifyToGet();
             } else {
-                console.info("jsbObj is error");
+                console.error("jsbObj is undefined");
             }
         })
     }
@@ -200,29 +206,40 @@ Replace the image in the frontend code with a real image.
 If JSBridge is unavailable, you can add functions such as **setTimeout** to delay the height measurement of the current page. You can determine the specific delay time based on the complexity of the web page.
 
 Code on the application side:
+<!-- @[jsb_cannot_be_used](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPageHeight/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-
-@Entry
+``` TypeScript
 @Component
-struct Index {
+struct Scene3SetTimeout {
   controller: webview.WebviewController = new webview.WebviewController();
+  @State heightText: ResourceStr = $r('app.string.waiting_for_height');
 
   build() {
-    Row() {
-      Column() {
-        Web({ src: $rawfile('index.html'), controller: this.controller })
-          .onPageEnd(() => {
-            setTimeout(()=>{
-                console.info("page height: onPageEnd: setTimeout: " + this.controller.getPageHeight());
-            },2000)
-          })
-      }
-      .width('100%')
-      .height('100%')
+    Column() {
+      Text('getPageHeight: ' + this.heightText)
+        .width('100%')
+        .padding(12)
+        .fontSize(16)
+        .backgroundColor('#f5f5f5')
+        .textAlign(TextAlign.Center)
+
+      Web({ src: $rawfile('scene3_index.html'), controller: this.controller })
+        .layoutWeight(1)
+        .onPageEnd(() => {
+          this.heightText = $r('app.string.scene3_on_page_end');
+          setTimeout(() => {
+            try {
+              const h: number = this.controller.getPageHeight();
+              console.info(`page height: onPageEnd: setTimeout: ${h}`);
+              this.heightText = String(h) + ' px';
+            } catch (err) {
+              console.error(`page height: onPageEnd setTimeout error: ${JSON.stringify(err)}`);
+              this.heightText = $r('app.string.get_height_failed');
+            }
+          }, 2000)
+        })
     }
+    .width('100%')
     .height('100%')
   }
 }
