@@ -39,7 +39,9 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
    ```
 
 2. 通过[getCameraDevice](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameradevice18)获取对应的前置和后置相机。如果接口返回undefined，基于示例中的配置信息，表示当前设备不支持指定位置（前置/后置）的默认类型相机，无法实现多摄同开功能。
-   
+
+   <!-- @[camera_getSupportedCameras_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
    ```ts
    function getSupportedCamerasFn(cameraManager: camera.CameraManager)
    {
@@ -57,6 +59,8 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
    ```
 
 3. 获取对应的并发能力集。通过[getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18)获取相机的输出并发能力信息数组[CameraConcurrentInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraconcurrentinfo18)，数组内部包含相机在对应并发模式下支持的模式和输出能力，**在多摄同开场景下设置的模式和输出能力必须在并发能力集的范围之内**。若[getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18)接口返回空数组，则表明当前设备不支持并发功能。
+
+   <!-- @[camera_getSupportedOutputCapability_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
    ```ts
    function getSupportedOutputCapabilityFn(cameraManager: camera.CameraManager, curCameraDeviceFront: camera.CameraDevice, curCameraDeviceBack: camera.CameraDevice)
@@ -93,6 +97,8 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 
 4. 确定预览输出流。
 
+   <!-- @[camera_createPreviewOutput_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
    ```ts
    function getPreviewOutputFn(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability, surfaceId: string)
    {
@@ -128,6 +134,8 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 
 5. 确定拍照输出流。
 
+   <!-- @[camera_createPhotoOutput_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
    ```ts
    function getPhotoOutputFn(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability)
    {
@@ -160,6 +168,8 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
    ```
 
 6. 确定录像输出流。
+
+   <!-- @[camera_createVideoOutput_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
    ```ts
    async function createAVRecorder(): Promise<media.AVRecorder | undefined> {
@@ -257,6 +267,8 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
   
 7. 打开相机。通过[open](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#open18)以多摄同开状态打开指定相机。在使用[open](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#open18)接口前，请先查询接口是否支持并发能力集，并优先调用[getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18)方法，获取多摄同开状态下的相机并发能力集。请勿在未查询并发能力集的情况下使用[open](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#open18)，否则会导致打开相机失败。
 
+   <!-- @[camera_openCamera_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
    ```ts
    async function initCamera(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice) {
      let cameraInput: camera.CameraInput | undefined = undefined;
@@ -285,6 +297,8 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
    ```
 
 8. 会话流程。
+
+   <!-- @[camera_sessionFlow_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
    ```ts
     // 监听捕获会话错误变化。
@@ -386,6 +400,8 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 
 9. 拍照，通过步骤8中配置的photoOutput使用前置或后置相机进行拍照，多摄同开状态下不支持前后相机同时拍照。
 
+   <!-- @[camera_takePicture_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
     ```ts
     async function takePicture(photoOutput: camera.PhotoOutput): Promise<void> {
       if (photoOutput === undefined) {
@@ -404,6 +420,8 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
     ```
 
 10. 录制。
+
+   <!-- @[camera_startVideo_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
     ```ts
     let isRecording = false;
@@ -439,7 +457,21 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
     ```
 
 11. 在多摄同开状态下，前/后置相机可配置的能力示例如下（当前版本仅支持本文开头部分所示的七项基础功能）。
-   
+
+   <!-- @[camera_flash](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
+   <!-- @[camera_setExposureMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
+   <!-- @[camera_setZoomRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
+   <!-- @[camera_setExposureBias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  
+   <!-- @[camera_setFocusMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
+   <!-- @[camera_setStabilization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
+   <!-- @[camera_setColorSpace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
     ```ts
     // 闪光灯。
     function hasFlashFn(flashMode: camera.FlashMode, session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
