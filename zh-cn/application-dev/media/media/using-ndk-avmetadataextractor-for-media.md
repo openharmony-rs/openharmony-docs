@@ -58,8 +58,10 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 详细的API说明请参考[AVMetadataExtractor API参考](../../reference/apis-media-kit/capi-avmetadataextractor.md)。
 
 1. 使用[OH_AVMetadataExtractor_Create()](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_create)创建实例。
-    ```c
-    #include <multimedia/player_framework/avmetadata_extractor.h>
+    
+    <!-- @[OH_AVMetadataExtractor_Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorNDK/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
     // 创建OH_AVMetadataExtractor实例。
     OH_AVMetadataExtractor* mainExtractor = OH_AVMetadataExtractor_Create();
     ```
@@ -67,18 +69,20 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 2. 设置媒体资源的文件描述符：调用[OH_AVMetadataExtractor_SetFDSource()](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_setfdsource)。
 
    不同AVMetadataExtractor或者[AVImageGenerator](../../reference/apis-media-kit/capi-avimagegenerator.md)实例，如果需要操作同一资源，需要多次打开文件描述符，不要共用同一文件描述符。
-    ```c
-    #include "napi/native_api.h"
-    #include <multimedia/player_framework/avmetadata_extractor.h>
+    
+    <!-- @[OH_AVMetadataExtractor_SetFDSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorNDK/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
     int64_t offset = 0; // 媒体源在文件描述符中的偏移量。
     int32_t fileDescribe = -1; // 媒体文件描述符。
-    int32_t fileSize = 0; // 媒体文件大小。
+    int64_t fileSize = 0; // 媒体文件大小。
     
     // GetInputParams为辅助函数，用于获取FetchAlbumCover、FetchMetadata的输入参数，实现见完整示例。
     if (!GetInputParams(env, info, offset, fileDescribe, fileSize)) {
         return nullptr;
     }
-     // 设置媒体资源的文件描述符。
+    // ...
+    // 设置媒体资源的文件描述符。
     OH_AVErrCode avErrCode = OH_AVMetadataExtractor_SetFDSource(mainExtractor, fileDescribe, offset, fileSize);
     // 异常处理。
     if (avErrCode != AV_ERR_OK) {
@@ -91,13 +95,19 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 3. 获取元数据：调用[OH_AVMetadataExtractor_FetchMetadata()](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_fetchmetadata)。
 
    需要先调用OH_AVFormat_Create()函数创建一个OH_AVFormat对象，通过访问该对象的各个键值对，可以获取到元数据。使用完成需要调用OH_AVFormat_Destroy销毁该对象，防止产生内存泄漏，详细使用方法请参阅[native_avformat.h](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)。
-   ```c
+   
+   <!-- @[OH_AVMetadataExtractor_FetchMetadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorNDK/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
    // 获取元数据。
    avErrCode = OH_AVMetadataExtractor_FetchMetadata(mainExtractor, avMetadata);
    ```
 
 4. 对于视频资源：可以通过OH_AVMetadataExtractor_FetchMetadata设置的OH_AVFormat对象，根据每种元信息的类型，通过OH_AVFormat_GetIntValue、GetStringValueFromAVFormat等函数获取宽、高等数据。
-    ```c
+    
+    <!-- @[OH_AVMetadataExtractor_AVFormat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorNDK/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
     // 从OH_AVFormat对象中解析出int32_t类型的视频资源宽高信息。
     int32_t width = 0;
     int32_t height = 0;
@@ -108,18 +118,20 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 5. 对于音频资源而言，除了可以通过OH_AVFormat对象来获取音频资源的标题、时长等元数据外，还可以获取专辑封面（例如，调用[OH_AVMetadataExtractor_FetchAlbumCover()](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_fetchalbumcover)，可以获取到专辑封面）。
 
    使用完成需要调用OH_PixelmapNative_Release释放OH_PixelmapNative对象资源，详细使用方法请参阅[OH_PixelmapNative_Release()](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release)。
-    ```c
-    #include <multimedia/image_framework/image/pixelmap_native.h>
-    #include <multimedia/player_framework/avmetadata_extractor.h>
-
-    #include <hilog/log.h>
+    
+    <!-- @[OH_AVMetadataExtractor_FetchAlbumCover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorNDK/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
     // 获取专辑封面。
     OH_PixelmapNative* pixelMap = nullptr;
     avErrCode = OH_AVMetadataExtractor_FetchAlbumCover(mainExtractor, &pixelMap);
     ```
 
 6. 释放资源：调用[OH_AVMetadataExtractor_Release()](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_release)销毁实例，释放资源。
-    ```c
+    
+    <!-- @[OH_AVMetadataExtractor_Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorNDK/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
     // 释放OH_AVMetadataExtractor资源。
     OH_AVMetadataExtractor_Release(mainExtractor);
     ```
