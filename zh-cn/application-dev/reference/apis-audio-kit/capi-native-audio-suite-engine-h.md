@@ -290,7 +290,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_RenderFrame(OH_AudioSuitePipeline* audi
 | void* audioData | 获取音频需要写入的数据地址。 |
 | int32_t requestFrameSize | audioData的内存字节大小，需大于0。 |
 | int32_t* responseSize | 管线写入audioData的音频数据大小，不会大于requestFrameSize，单位为字节。 |
-| bool* finishedFlag | 标识当前管线是否渲染完成。 |
+| bool* finishedFlag | 标识当前管线是否渲染完成。true表示所有数据处理已完成，应用不应再调用此接口，false表示数据处理尚未完成。 |
 
 **返回：**
 
