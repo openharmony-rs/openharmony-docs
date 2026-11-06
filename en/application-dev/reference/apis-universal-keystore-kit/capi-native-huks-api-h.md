@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=8b530f14c009705c7aea4b60dcbef92721a75cbd translatedAt=2026-11-03T06:28:53.586Z pushedAt=2026-11-03T12:08:25.635Z nl=1 -->
 
 ## Overview
 
@@ -15,10 +16,7 @@ Declares the APIs used to access HUKS.
 
 **Library**: libhuks_ndk.z.so
 
-**System capability**:
-
-- API version 20 +: SystemCapability.Security.Huks.Core
-- API version 9 - 19: SystemCapability.Security.Huks
+**System capability:** SystemCapability.Security.Huks.Core
 
 **Since**: 9
 
@@ -270,9 +268,9 @@ Obtains the certificate chain of a key. This API is open only to system applicat
 **Since**: 9
 
 <!--RP1-->
-> **NOTE**<br>
+> **NOTE** 
 >
-> The certificate chain generated during non-anonymous certificate key attestation may contain the device identifier (confirm the specific implementation with the vendor). If the device identifier is included, you can determine its use, retention, and destruction. It is recommended that you describe the use purpose, retention policy, and destruction method in the privacy statement.
+> When non-anonymous certificate key attestation is used, the generated certificate chain may contain device identifiers (for the specific implementation, confirm with the vendor). If device identifiers are included, their use, retention, and destruction are determined by the developer. It is recommended that the developer explain the purpose of use, retention policy, and destruction method in its privacy statement.
 <!--RP1End-->
 
 **Parameters**
@@ -534,3 +532,5 @@ Imports a wrapped key.
 | Type| Description|
 | -- | -- |
 | [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | Possible error codes (**errorCode**):<br>         **OH_HUKS_SUCCESS 0**: Operation successful.<br>         **OH_HUKS_ERR_CODE_NOT_SUPPORTED_API 801**: The API is not supported.<br>         **OH_HUKS_ERR_CODE_FILE_OPERATION_FAIL 12000004**: Failed to delete or write the file.<br>         **OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005**: IPC communication failed.<br>         **OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012**: The device environment or input parameters are abnormal.<br>         **OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014**: Insufficient memory.<br>         **OH_HUKS_ERR_CODE_CALL_SERVICE_FAILED 12000015**: Failed to connect to the user IAM.<br>         **OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018**: The key alias, parameter set, or wrapped key is invalid.|
+
+

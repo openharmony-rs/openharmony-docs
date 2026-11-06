@@ -571,7 +571,10 @@ loadAndUseAdd();
 export function c1(d1: number, e1: number): number {
     return d1 + e1;
 }
+```
 
+``` TypeScript
+// 混淆后
 // MainPage.ets
 async function i() {
     try {
@@ -623,7 +626,10 @@ import { NS } from './ExportNs';
 export namespace i {
     export function j() {}
 }
+```
 
+``` TypeScript
+// 混淆后
 // MainPage.ets
 import { i } from './ExportNs';
 
@@ -675,12 +681,14 @@ Error message: is not callable
 Stacktrace: Cannot get SourceMap info, dump raw stack: at anonymous (ads_service|@hw-ads/ohos-ads-model|1.0.1|src/main/ets/annotations/FieldType.ts:6:1。
 ```
 
-```js
+``` JSON5
 // oh-package.json5
 "dependencies": {
   "reflect-metadata": "0.2.1"
 }
-  
+```
+
+``` TypeScript
 // test.ts
 import 'reflect-metadata';
 

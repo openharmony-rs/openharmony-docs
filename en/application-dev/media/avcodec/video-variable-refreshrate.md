@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / Audio and Video Codec Services"]
+description: "Describes dynamically adjusting the display refresh rate and discarding some video frames during playback to reduce display power consumption while maintaining smooth playback, for full-screen playback of high-frame-rate sources."
+keywords: [variable frame rate video, VRR, display refresh rate, dynamic adjustment, low power consumption, high-frame-rate playback, frame dropping, full-screen playback, hardware decoding]
+doctype: guide
+status: active
+---
+
 # Video Variable Frame Rate
 
 <!--Kit: AVCodec Kit-->
@@ -6,7 +14,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=5f480f231e1dcdff747a41e57f60f399a370f067 translatedAt=2026-10-22T04:18:29.912Z pushedAt=2026-10-22T13:41:05.946Z nl=1 -->
+<!-- md-trans-meta sourceCommit=2ad293edae36fdd9e0da20f8f6b6d2798fbf3d07 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Starting from API version 15, the video variable refresh rate feature is supported.
 

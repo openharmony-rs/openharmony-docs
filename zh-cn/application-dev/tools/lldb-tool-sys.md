@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "LLDB是新一代高性能调试器，支持断点设置、变量查看与修改、内存操作、线程控制、表达式计算、堆栈回溯等调试功能，并提供本地调试和远程调试两种方式，适用于OpenHarmony系统应用的C/C++代码调试场景。"
+keywords: [LLDB, 调试器, 断点设置, 观察点, 变量查看, 堆栈回溯, 远程调试, lldb-server, 汇编处理]
+doctype: guide
+status: active
+---
+
 # LLDB工具（仅对系统应用开放）
 
 <!--Kit: ArkTS-->

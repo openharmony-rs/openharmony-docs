@@ -2,10 +2,11 @@
 
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=82cd7d8df08f9f009907ab6dc8749110ae837884 translatedAt=2026-11-03T08:26:27.517Z pushedAt=2026-11-03T08:26:27.517Z nl=1 -->
 
 ## When to Use
 
@@ -42,9 +43,13 @@ If you need to draw an input box in a non-focusable window and expect the input 
          }
          let options: window.SubWindowOptions = { title: 'title', decorEnabled: true };
          let subWindow = await windowStage?.createSubWindowWithOptions('mySubWindow', options);
+         if (!subWindow) {
+          console.error('Failed to create subWindow');
+          return;
+         }
          const subWindowId: number | undefined = subWindow?.getWindowProperties().id;
          AppStorage.setOrCreate('subWindowId', subWindowId);
-         // 2. Set the subwindow to be non-focusable.
+         // 2. Set the child window as non-focusable. true indicates that focus is allowed, and false indicates that focus is not allowed.
          subWindow?.resize(500, 500);
          subWindow?.setUIContent("pages/SubWindowIndex");
          subWindow?.setWindowFocusable(false);
@@ -145,7 +150,7 @@ If you need to draw an input box in a non-focusable window and expect the input 
          }
          let subWindowList: window.Window[] = await windowStage?.getSubWindow();
          let subWindow: window.Window = subWindowList[0];
-         // Set the subwindow to be non-focusable.
+         // Set the child window to non-focusable. true means focus is allowed, and false means it is not.
          subWindow?.setWindowFocusable(false);
        } catch (exception) {
          console.error(`Failed to shift focus to main window. Cause code: ${exception.code}, message: ${exception.message}`);

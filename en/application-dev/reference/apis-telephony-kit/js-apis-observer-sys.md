@@ -5,14 +5,15 @@
 <!--Designer: @wnazgul-->
 <!--Tester: @jiang_99-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=a64e73c35f7fb6dab50a7c26545aed09dc775fc0 translatedAt=2026-11-03T03:53:51.522Z pushedAt=2026-11-03T09:10:25.895Z nl=1 -->
 
-The **observer** module provides event subscription management functions. With the APIs provided by this module, you can register or unregister an observer that listens cell information events (for the SIM card in the specified slot).
+This module provides event subscription management functions. With the APIs provided by this module, you can register or unregister an observer that listens cell information events (for the SIM card in the specified slot).
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.telephony.observer (Telephony Status Observer)](js-apis-observer.md).
+> This page contains only the system APIs of this module. For details about other public APIs, see [@ohos.telephony.observer (Telephony State Observation)](js-apis-observer.md).
 
 ## Modules to Import
 
@@ -25,7 +26,7 @@ import { observer } from '@kit.TelephonyKit';
 
 on\(type: \'cellInfoChange\', callback: Callback\<Array\<CellInformation\>\>\): void
 
-Registers an observer for cell information change events. This API uses an asynchronous callback to return the result.
+Subscribes to the cell information change event. This API uses an asynchronous callback to return the result. It applies to scenarios where the cell information changes of base stations need to be obtained, such as assisted positioning in location services, network signal quality monitoring, and base station handover tracking.
 
 **System API**: This is a system API.
 
@@ -57,19 +58,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { observer, radio } from '@kit.TelephonyKit';
 import { radio } from '@kit.TelephonyKit';
 
-observer.on('cellInfoChange', (data: Array<radio.CellInformation>) => {
-    console.info("on cellInfoChange, data:" + JSON.stringify(data));
-});
+// Subscribe to the cell information change event.
+try {
+  observer.on('cellInfoChange', (data: Array<radio.CellInformation>) => {
+      console.info("on cellInfoChange, data:" + JSON.stringify(data));
+  });
+} catch (err) {
+  console.error(`observer.on failed, err: ${JSON.stringify(err)}`);
+}
 ```
 
 
-## observer.on('cellInfoChange')<sup>8+</sup>
+## observer.on('cellInfoChange')<sup>8+</sup>(Specified Slot)
 
 on\(type: \'cellInfoChange\', options: ObserverOptions, callback: Callback\<Array\<CellInformation\>\>\): void
 
-Registers an observer for signal status change events of the SIM card in the specified slot. This API uses an asynchronous callback to return the execution result.
+Subscribes to the cell information change event of a specified slot. This API uses an asynchronous callback. It applies to applications that need to listen for cell information changes of a specified slot in multi-SIM scenarios, for example, a dual-SIM device that separately monitors the base station signal quality and location services of different carriers.
 
 **System API**: This is a system API.
 
@@ -82,7 +89,7 @@ Registers an observer for signal status change events of the SIM card in the spe
 | Name| Type                                              | Mandatory| Description                                     |
 | ------ |--------------------------------------------------| ---- |--------------------------------------------|
 | type     | string                                           | Yes  | Cell information change event. This field has a fixed value of **cellInfoChange**.|
-| options  | [ObserverOptions](js-apis-observer.md#observeroptions11)            | Yes  | Event subscription parameters.               |
+| options  | [ObserverOptions](js-apis-observer.md#observeroptions11)            | Yes   | Event subscription options, which can specify the slot ID (**slotId**) to subscribe to and other information.                |
 | callback | Callback\<Array\<[CellInformation](js-apis-radio.md#cellinformation8)\>\> | Yes  | Callback used to return the result.      |
 
 **Error codes**
@@ -102,14 +109,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { observer, radio } from '@kit.TelephonyKit';
 import { radio } from '@kit.TelephonyKit';
 
+// Set the subscription parameters and specify the slot.
 let options: observer.ObserverOptions = {
     slotId: 0
 }
-observer.on('cellInfoChange', options, (data: Array<radio.CellInformation>) => {
-    console.info("on cellInfoChange, data:" + JSON.stringify(data));
-});
+// Subscribe to the cell information change event of the specified slot.
+try {
+  observer.on('cellInfoChange', options, (data: Array<radio.CellInformation>) => {
+      console.info("on cellInfoChange, data:" + JSON.stringify(data));
+  });
+} catch (err) {
+  console.error(`observer.on failed, err: ${JSON.stringify(err)}`);
+}
 ```
 
 
@@ -117,11 +131,11 @@ observer.on('cellInfoChange', options, (data: Array<radio.CellInformation>) => {
 
 off\(type: \'cellInfoChange\', callback?: Callback\<Array\<CellInformation\>\>\): void
 
-Unregisters the observer for cell information change events. This API uses an asynchronous callback to return the result.
+Unsubscribes from the cell information change event.
 
 > **NOTE**
 >
-> You can pass the callback of the **on** function if you want to cancel listening for a certain type of event. If you do not pass the callback, you will cancel listening for all events.
+>You can pass the **callback** in **on** to cancel a subscription. You can also cancel all subscriptions without specifying **callback**.
 
 **System API**: This is a system API.
 
@@ -132,7 +146,7 @@ Unregisters the observer for cell information change events. This API uses an as
 | Name  | Type                                                     | Mandatory| Description                                                        |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                    | Yes  | Cell information change event. This field has a fixed value of **cellInfoChange**.                                           |
-| callback | Callback\<Array\<[CellInformation](js-apis-radio.md#cellinformation8)\>\> | No  | Callback used to return the result.|
+| callback | Callback\<Array\<[CellInformation](js-apis-radio.md#cellinformation8)\>\> | No | Unsubscribes from the specified callback. If a callback in **on** is specified, the specified callback is unregistered. If this parameter is left empty, all callbacks are unregistered. |
 
 **Error codes**
 
@@ -150,13 +164,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { observer, radio } from '@kit.TelephonyKit';
 import { radio } from '@kit.TelephonyKit';
 
 let callback: (data: Array<radio.CellInformation>) => void = (data: Array<radio.CellInformation>) => {
     console.info("on cellInfoChange, data:" + JSON.stringify(data));
 }
-observer.on('cellInfoChange', callback);
-// You can pass the callback of the on method to cancel listening for a certain type of callback. If you do not pass the callback, you will cancel listening for all callbacks.
-observer.off('cellInfoChange', callback);
-observer.off('cellInfoChange');
+try {
+  observer.on('cellInfoChange', callback);
+  // You can specify a callback in **on** to unregister the specified callback or unregister all callbacks without specifying a callback.
+  observer.off('cellInfoChange', callback);
+  observer.off('cellInfoChange');
+} catch (err) {
+  console.error(`observer on/off failed, err: ${JSON.stringify(err)}`);
+}
+
 ```
+

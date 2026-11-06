@@ -1,24 +1,51 @@
-# Using Image_NativeModule to Edit Exif Data
+# Using Image_NativeModule to Read and Edit Image Exif Data
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=321da5ebb71b094146c5110d3cfc3fff30ba1916 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Image Kit provides the capabilities of reading and editing Exchangeable Image File Format (Exif) data.
 
-Exif is a file format dedicated for photos taken by digital cameras and is used to record attributes and shooting data of the photos. Currently, JPEG, PNG, HEIF, and WEBP<sup>23+</sup> images that contain Exif data are supported.
+Exchangeable image file format (Exif) is a file format dedicated for photos taken by digital cameras and is used to record attributes and shooting data of the photos. The image must contain Exif data.
 
-Users may need to view or modify the Exif data of photos in the Gallery application. When the manual lens parameters of the camera are not automatically written as part of the Exif data or the shooting time is incorrect due to camera power-off, you can manually correct the Exif data.
+In Gallery, camera, image editing, and other apps, you can read Exif data such as shooting time, orientation, focal length, and geographic location, and modify part of the Exif data when needed. For example, when the manual lens parameters of the camera are not automatically written as part of the Exif data, or when the shooting time is incorrect due to a camera power failure, you can manually correct the corresponding Exif data.
 
-Currently, OpenHarmony allows you to view and modify part of Exif data. For details, see [OHOS_IMAGE_PROPERTY_XXX](../../reference/apis-image-kit/capi-image-common-h.md#variables).
+Currently, the system allows you to read and modify only part of Exif data. For details about the supported scope, see the `OHOS_IMAGE_PROPERTY_XXX` types in [Variables](../../reference/apis-image-kit/capi-image-common-h.md#variables). The following table lists the read and write support for Exif data by image format.
+
+| Image Format | Read Exif Information | Modify Exif Information |
+| -------- | -------- | -------- |
+| JPG/JPEG | Supported | Supported |
+| PNG | Supported | Supported |
+| HEIF | Supported | Supported |
+| WebP<sup>23+</sup> | Supported | Supported |
+| DNG<sup>23+</sup> | Supported | Not supported |
+
+## Available APIs
+
+The following table lists the C APIs for reading and editing Exif data. For details, see [image_source_native.h](../../reference/apis-image-kit/capi-image-source-native-h.md).
+
+| API | Description |
+| -------- | -------- |
+| [OH_ImageSourceNative_GetImagePropertyWithNull()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertywithnull) | Obtains the Exif data of a specified key. |
+| [OH_ImageSourceNative_ModifyImageProperty()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_modifyimageproperty) | Modifies the Exif data of a specified property key. |
+
+## Precautions
+
+- You must create an `OH_ImageSourceNative` object before reading or editing Exif data.
+- Before reading the Exif data of an image, ensure that the app has the read permission on the target image. Before modifying the Exif data of an image, ensure that the app has the write permission on the target image.
+- In certain image source or access scenarios, the system may remove privacy information such as GPS data even if the app has the image read permission. In this case, the corresponding Exif data cannot be obtained.
+- The image file must contain Exif data. For images that do not contain Exif data or do not contain the target attribute key, the read result may be empty or an error code may be returned.
+- Before modifying Exif data, confirm that the image format and the target attribute key support writing.
+- Image metadata may contain privacy information such as shooting location. Before displaying, uploading, or sharing images, ensure that user authorization and privacy protection are properly handled based on the service scenario.
 
 ## How to Develop
 
 ### Adding a Link Library
 
-Open the **src/main/cpp/CMakeLists.txt** file of the native project, add **libimage_source.so** and **libhilog_ndk.z.so** (on which the log APIs depend) to the **target_link_libraries** dependency.
+Before developing an app, open the `src/main/cpp/CMakeLists.txt` file of the native project, and add `libimage_source.so` and `libhilog_ndk.z.so` (required for logging) to the `target_link_libraries` dependency.
 
 ```txt
 target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
@@ -26,9 +53,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
 
 ### Calling the Native APIs
 
-For details about the C APIs for reading and editing Exif data, see [OH_ImageSource_GetImageProperty](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_getimageproperty) and [OH_ImageSource_ModifyImageProperty](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_modifyimageproperty).
-
-Create a native C++ application in DevEco Studio. The project created by default contains the **index.ets** file, and a **hello.cpp** or **napi_init.cpp** file is generated in the **entry\src\main\cpp** directory. In this example, the generated file is **hello.cpp**. Implement the C APIs in **hello.cpp**. Refer to the sample code below.
+When creating a Native C++ app in DevEco Studio, the generated project includes an `index.ets` file by default, and a `cpp` file (`hello.cpp` or `napi_init.cpp`; this example uses `hello.cpp` as the file name) is automatically generated in the `entry/src/main/cpp` directory. Implement the C API call logic in `hello.cpp`. The sample code is as follows:
 
 **Example for Reading and Editing Exif Data**
 
@@ -103,7 +128,7 @@ Create a native C++ application in DevEco Studio. The project created by default
    >
    > For details about how to create an ImageSource object, see [Image Decoding](../image/image-source-c.md).
 
-   <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
+   <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->  
    
    ``` C++
    // Obtain the value of a specified property.
@@ -116,19 +141,27 @@ Create a native C++ application in DevEco Studio. The project created by default
            OH_LOG_ERROR(LOG_APP, "GetImageProperty napi_get_cb_info failed!");
            return GetJsResult(env, IMAGE_BAD_PARAMETER);
        }
-       // Modify the value of a specified property key.
-       char key[MAX_STRING_LENGTH];
-       size_t keySize = MAX_STRING_LENGTH;
-       napi_get_value_string_utf8(env, argValue[0], (char *)key, sizeof(key), &keySize);
+       // Obtain the value of the specified property key.
+       char key[MAX_STRING_LENGTH] = {0};
+       size_t keySize = 0;
+       if (napi_get_value_string_utf8(env, argValue[0], key, sizeof(key), &keySize) != napi_ok) {
+           OH_LOG_ERROR(LOG_APP, "GetImageProperty napi_get_value_string_utf8 failed!");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
+       }
+       key[MAX_STRING_LENGTH - 1] = '\0';
        Image_String getKey;
        getKey.data = key;
        getKey.size = keySize;
-       Image_String getValue;
+       Image_String getValue = {nullptr, 0};
        OH_LOG_INFO(LOG_APP, "OH_ImageSourceNative_GetImageProperty key: %{public}s.", getKey.data);
        Image_ErrorCode errCode = OH_ImageSourceNative_GetImagePropertyWithNull(g_thisImageSource->source,
                                                                                &getKey, &getValue);
        if (errCode != IMAGE_SUCCESS) {
            OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_GetImageProperty failed, errCode: %{public}d.", errCode);
+           if (getValue.data != nullptr) {
+               free(getValue.data);
+               getValue.data = nullptr;
+           }
            return GetJsResult(env, errCode);
        }
        napi_value resultNapi = nullptr;
@@ -151,24 +184,32 @@ Create a native C++ application in DevEco Studio. The project created by default
        }
    
        // Obtain the key to be modified.
-       char key[MAX_STRING_LENGTH];
-       size_t keySize = MAX_STRING_LENGTH;
-       napi_get_value_string_utf8(env, argValue[0], (char *)key, sizeof(key), &keySize);
+       char key[MAX_STRING_LENGTH] = {0};
+       size_t keySize = 0;
+       if (napi_get_value_string_utf8(env, argValue[0], key, sizeof(key), &keySize) != napi_ok) {
+           OH_LOG_ERROR(LOG_APP, "ModifyImageProperty key napi_get_value_string_utf8 failed!");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
+       }
+       key[MAX_STRING_LENGTH - 1] = '\0';
        Image_String setKey;
        setKey.data = key;
        setKey.size = keySize;
        OH_LOG_INFO(LOG_APP, "ModifyImageProperty key: %{public}s.", setKey.data);
        
        // Obtain the value to be modified.
-       char value[MAX_STRING_LENGTH];
-       size_t valueSize;
-       napi_get_value_string_utf8(env, argValue[1], (char *)value, MAX_STRING_LENGTH, &valueSize);
+       char value[MAX_STRING_LENGTH] = {0};
+       size_t valueSize = 0;
+       if (napi_get_value_string_utf8(env, argValue[1], value, sizeof(value), &valueSize) != napi_ok) {
+           OH_LOG_ERROR(LOG_APP, "ModifyImageProperty value napi_get_value_string_utf8 failed!");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
+       }
+       value[MAX_STRING_LENGTH - 1] = '\0';
        Image_String setValue;
        setValue.data = value;
        setValue.size = valueSize;
        OH_LOG_INFO(LOG_APP, "ModifyImageProperty value: %{public}s.", setValue.data);
    
        Image_ErrorCode errCode = OH_ImageSourceNative_ModifyImageProperty(g_thisImageSource->source, &setKey, &setValue);
-       return ReturnErrorCode(env, errCode, "OH_ImageSourceNative_ModifyImageProperty");
+       return GetJsResult(env, errCode);
    }
    ```

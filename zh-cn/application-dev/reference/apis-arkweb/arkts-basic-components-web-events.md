@@ -525,9 +525,9 @@ onErrorReceive(callback: Callback\<OnErrorReceiveEvent\>)
         Web({ src: 'www.example.com', controller: this.controller })
           .onErrorReceive((event) => {
             if (event) {
-              console.info('getErrorInfo:' + event.error.getErrorInfo());
-              console.info('getErrorCode:' + event.error.getErrorCode());
-              console.info('getCustomErrorCode:' + event.error.getCustomErrorCode());
+              console.error('getErrorInfo:' + event.error.getErrorInfo());
+              console.error('getErrorCode:' + event.error.getErrorCode());
+              console.error('getCustomErrorCode:' + event.error.getCustomErrorCode());
               console.info('url:' + event.request.getRequestUrl());
               console.info('isMainFrame:' + event.request.isMainFrame());
               console.info('isRedirect:' + event.request.isRedirect());
@@ -1612,10 +1612,10 @@ onSslErrorEvent(callback: OnSslErrorEventCallback)
         Web({ src: 'www.example.com', controller: this.controller })
           .onSslErrorEvent((event: SslErrorEvent) => {
             console.info("onSslErrorEvent url: " + event.url);
-            console.info("onSslErrorEvent error: " + event.error);
+            console.error("onSslErrorEvent error: " + event.error);
             console.info("onSslErrorEvent originalUrl: " + event.originalUrl);
             console.info("onSslErrorEvent referrer: " + event.referrer);
-            console.info("onSslErrorEvent isFatalError: " + event.isFatalError);
+            console.error("onSslErrorEvent isFatalError: " + event.isFatalError);
             console.info("onSslErrorEvent isMainFrame: " + event.isMainFrame);
             LogCertInfo(event.certChainData);
             this.uiContext.showAlertDialog({
@@ -1721,7 +1721,7 @@ struct Index {
           event.handler.confirm(this.uri);
         })
         .onSslErrorEventReceive(e => {
-          console.info(`onSslErrorEventReceive->${e.error.toString()}`);
+          console.error(`onSslErrorEventReceive->${e.error.toString()}`);
         })
         .onErrorReceive((event) => {
           if (event) {
@@ -1729,8 +1729,8 @@ struct Index {
               message: `ErrorCode: ${event.error.getErrorCode()}, ErrorInfo: ${event.error.getErrorInfo()}`,
               alignment: Alignment.Center
             })
-            console.info('getErrorInfo:' + event.error.getErrorInfo());
-            console.info('getErrorCode:' + event.error.getErrorCode());
+            console.error('getErrorInfo:' + event.error.getErrorInfo());
+            console.error('getErrorCode:' + event.error.getErrorCode());
             console.info('url:' + event.request.getRequestUrl());
           }
         })
@@ -1922,7 +1922,7 @@ struct Index {
               })
             })
             .onSslErrorEventReceive(e => {
-              console.info(`onSslErrorEventReceive->${e.error.toString()}`);
+              console.error(`onSslErrorEventReceive->${e.error.toString()}`);
             })
             .onErrorReceive((event) => {
               if (event) {
@@ -1930,8 +1930,8 @@ struct Index {
                   message: `ErrorCode: ${event.error.getErrorCode()}, ErrorInfo: ${event.error.getErrorInfo()}`,
                   alignment: Alignment.Center
                 })
-                console.info('getErrorInfo:' + event.error.getErrorInfo());
-                console.info('getErrorCode:' + event.error.getErrorCode());
+                console.error('getErrorInfo:' + event.error.getErrorInfo());
+                console.error('getErrorCode:' + event.error.getErrorCode());
                 console.info('url:' + event.request.getRequestUrl());
               }
             })
@@ -2022,12 +2022,12 @@ struct Index {
               event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_SUCCESS);
             }).catch((err: BusinessError) => {
             // 通知webPIN码认证失败
-            console.info(`onVerifyPin fail`);
+            console.error(`onVerifyPin fail`);
             event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_FAILED);
           })
         })
         .onSslErrorEventReceive(e => {
-          console.info(`onSslErrorEventReceive->${e.error.toString()}`);
+          console.error(`onSslErrorEventReceive->${e.error.toString()}`);
         })
         .onErrorReceive((event) => {
           if (event) {
@@ -2035,8 +2035,8 @@ struct Index {
               message: `ErrorCode: ${event.error.getErrorCode()}, ErrorInfo: ${event.error.getErrorInfo()}`,
               alignment: Alignment.Center
             })
-            console.info('getErrorInfo:' + event.error.getErrorInfo());
-            console.info('getErrorCode:' + event.error.getErrorCode());
+            console.error('getErrorInfo:' + event.error.getErrorInfo());
+            console.error('getErrorCode:' + event.error.getErrorCode());
             console.info('url:' + event.request.getRequestUrl());
           }
         })
@@ -5083,7 +5083,9 @@ struct WebComponent {
 }
 ```
 
-> **示例说明：** 示例中使用的`iframe_error.html`文件与[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled)示例中相同，需放置在应用资源的`resources/rawfile/`目录下。
+> **示例说明：**
+>
+> 示例中使用的`iframe_error.html`文件与[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled)示例中相同，需放置在应用资源的`resources/rawfile/`目录下。
 
 
 ## onSslErrorReceive<sup>(deprecated)</sup>
@@ -5287,6 +5289,53 @@ Web组件检测到白屏时触发此回调。
     }
   }
   ```
+## onMonitoredBlankScreen
+
+onMonitoredBlankScreen(callback: OnMonitorBlankScreenCallback)
+
+Web组件检测到白屏时会触发回调。
+
+> **说明：**
+>
+> - 需配合[enableBlankScreenMonitor](./arkts-basic-components-web-attributes.md#enableblankscreenmonitor)使用。未开启白屏检测时，不会触发本回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名        | 类型    | 必填   | 说明          |
+| ---------- | ------- | ---- | ------------- |
+| callback | [OnMonitorBlankScreenCallback](./arkts-basic-components-web-t.md#onmonitorblankscreencallback) | 是 | 检测到白屏时触发。事件对象包含页面URL、白屏根因、归因详情等诊断信息。 |
+
+**示例：**
+
+  ```ts
+  // onMonitoredBlankScreen.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .enableBlankScreenMonitor(true)
+          .onMonitoredBlankScreen((event: MonitoredBlankScreenEventInfo)=>{
+            console.info(`Monitored blank screen on ${event.url}.`);
+            console.info(`The blank screen reason is ${event.reason}.`);
+            console.info(`The extra message is ${event.extraMsg}.`);
+          })
+      }
+    }
+  }
+  ```
+
 ## onRenderExited<sup>(deprecated)</sup>
 
 onRenderExited(callback: (event?: { detail: object }) => boolean)

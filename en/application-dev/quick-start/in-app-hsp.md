@@ -3,15 +3,16 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=850c7d4f71d6bc50d82f299a21bb9cea3a266f3d translatedAt=2026-10-30T06:21:33.935Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
 
 A Harmony Shared Package (HSP) is a dynamic shared package that can contain code, C++ libraries, resource files, and configuration files (also called profiles) and allows for code and resource sharing. An HSP is released with the Application Package (App Pack) of the host application, shares a process with the host application, and has the same bundle name and lifecycle as the host application.
 > **NOTE**
 > 
 > * In-app HSP: a type of HSP that is closely coupled with an application bundle name (**bundleName**) during compilation and can be used only by the specified application.
 > 
-> * [Integrated HSP](integrated-hsp.md): a type of HSP that is not coupled with specific application bundle names during building and publishing. The toolchain can automatically replace the bundle name of the integrated HSP with that of the host application and generate a new HSP as the installation package of the host application. The new HSP also belongs to the in-app HSP of the host application's HAP.
+> * [Integrated HSP](integrated-hsp.md): a type of HSP that is not coupled with specific application bundle names during building and publishing. The toolchain can automatically replace the bundle name of the integrated HSP with that of the host application and re-sign it to generate a new HSP as the installation package of the host application. The new HSP also belongs to the in-app HSP of the host application's HAP.
 >
 > * Unless otherwise specified, all HSPs in the guide and API reference documents are in-app HSPs by default.
 >
@@ -126,7 +127,7 @@ export { Log, add, minus } from './src/main/ets/utils/test';
 ```
 
 ### Exporting Native Methods
-The HSP can contain .so files compiled in C++. The HSP indirectly exports the native method in the .so file. In this example, the **multi** API in the **liblibrary.so** file is exported.
+The HSP can contain .so files written in C++. The HSP indirectly exports native methods from the .so file. In this example, the multiplication API **multi** in **liblibrary.so** is exported.
 
 <!-- @[in_app_hsp_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/utils/nativeTest.ets) -->
 
@@ -209,7 +210,7 @@ export { ResManager } from './src/main/ets/ResManager';
 
 ## Using an HSP
 
-You can reference APIs in an HSP and implement page redirection in the HSP through page routing.
+This section describes how to reference APIs in an HSP and use page routing to navigate to and return from its pages.
 
 ### Referencing APIs
 To use APIs in the HSP, first configure the dependency on the HSP in the **oh-package.json5** file of the module that needs to call the APIs (called the invoking module). For details, see [Referencing a Shared Package](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-har-import).

@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 3D / 方舟3D图形"]
+description: "介绍ArkGraphics 3D的整体能力、框架原理与核心特性，涵盖glTF模型加载、自定义场景节点、资源创建、动画控制及后处理等能力，帮助开发者快速了解3D图形渲染的入口与适用场景。"
+keywords: [ArkGraphics 3D, 方舟3D图形, 3D渲染, glTF, 3D引擎]
+doctype: guide
+status: active
+---
+
 # ArkGraphics 3D简介
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->

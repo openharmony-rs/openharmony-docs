@@ -7688,20 +7688,6 @@ Allows an application to read vehicle hardware information.
 
 **Since**: 26.0.1
 
-## ohos.permission.vehicle.WRITE_HARDWARE_CONFIG
-
-Allows an application to write vehicle hardware information.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Supported devices**: cars
-
-**Since**: 26.0.1
-
 ## ohos.permission.vehicle.READ_CAR_CDC_CONFIG
 
 Allows an application to read vehicle and head unit configurations.
@@ -8833,7 +8819,7 @@ Allows an application to access the vehicle camera.
 
 **Supported devices**: cars
 
-**Valid since**: 26.0.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.MANAGE_CLONE_BUNDLE_PREFERENCES
  	 
@@ -8876,6 +8862,20 @@ Allows an application to configure the capability of unlocking devices via enter
 **Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 26.0.1
+
+## ohos.permission.MOUNT_BUNDLE_INFO
+ 
+Allows an application to mount the specified file directory to the sandbox directory of the SceneBoard application.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars| lite wearables
+ 
+**Since**: 26.0.1
 
 ## ohos.permission.ACCESS_ASSOCIATE_ASSISTANT
 
@@ -8968,6 +8968,20 @@ With this permission, the application can add file event records, search for fil
 **Supported devices**: Phone | PC/2in1 | Tablet
 
 **Since**: 26.0.0
+
+## ohos.permission.CAMERA_DRIVER_MONITOR
+
+Allows an application to access the driver monitoring camera.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
 
 ## ohos.permission.ACCESS_MEDIALIB_SANDBOX
 
@@ -9758,3 +9772,105 @@ Allows a system application to connect an agent in the background.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets |  TVs | wearables | cars
 
 **Valid since**: 26.1.0
+
+## ohos.permission.ALLOW_DIRECT_BOOT
+
+Allows an application to start after a device cold boot or restart, before the user unlocks the device for the first time.
+
+> **NOTE**
+>
+> Applications requesting this permission must not access storage paths at the EL2 level or higher before the user unlocks the device for the first time.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.1.0
+
+## ohos.permission.vehicle.AALE_LIGHTRES_SERVICE
+
+Allows an application to bind to the Light Resource Management Service (LightResManagerService).
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.AALE_AMBIENT_SERVICE
+
+Allows an application to bind to the automotive ambient light engine service (AaleService).
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.HIMA_COOPERATE
+
+Allows an application to call the device-cloud synergy API to query and download resources and configuration files.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+ 
+## ohos.permission.vehicle.HIMA_DEVICE_AUTH
+ 
+Allows an application to call the genuine device authentication API to perform device authenticity verification.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+
+## ohos.permission.PROMPT_INJECT_DETECTION
+
+Allows an application to detect indirect prompt injection attacks.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.0.1
+
+## ohos.permission.MOUNT_SANDBOX_SETTINGSDATA
+
+Allows an application to mount the specified file directory to the sandbox directory of the SettingsData application.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
+
+**Since**: 26.0.1

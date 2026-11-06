@@ -2251,4 +2251,63 @@ napi_status napi_get_global_handle_count(napi_env env, size_t* count);
 **返回：**
 
 如果API成功，则返回napi_ok。
+
+### napi_open_microtask_scope
+
+```cpp
+napi_status napi_open_microtask_scope(napi_env env, napi_microtask_scope* scope);
+```
+
+**描述：**
+
+打开微任务作用域。微任务作用域打开期间，微任务（如Promise回调）不会被触发执行，而是被保留在微任务队列中。使用该接口需要注意以下几点：
+1. 微任务作用域不支持嵌套打开，必须在关闭当前作用域后才能再次打开。
+2. 作用域打开期间累积的微任务不会丢失，会在关闭作用域时同步执行。
+3. 若调用本接口前或调用过程中存在未捕获的ArkTS异常，本接口返回napi_pending_exception，不会打开微任务作用域；处理完异常后可重新调用。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [out] scope：一个napi_microtask_scope的指针，用于表示打开的微任务作用域。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+如果调用该接口前或调用过程中出现未捕获的ArkTS异常，则返回napi_pending_exception，此时微任务作用域未被打开，出参scope不会被赋值。可通过napi_get_last_error_info查询错误详情，并使用napi_get_and_clear_last_exception处理异常后重新调用本接口。
+
+如果env为空指针或scope为空指针，或已存在打开的微任务作用域（微任务作用域不支持嵌套打开），则返回napi_invalid_arg。
+
+### napi_close_microtask_scope
+
+```cpp
+napi_status napi_close_microtask_scope(napi_env env, napi_microtask_scope scope);
+```
+
+**描述：**
+
+关闭微任务作用域，并同步执行作用域打开期间累积的微任务。使用该接口需要注意以下几点：
+1. 必须在微任务作用域打开后才能关闭，不支持重复关闭。
+2. 关闭微任务作用域后，请勿继续使用该scope句柄。
+3. 作用域打开期间累积的微任务会在本接口调用中同步执行，本接口返回时已全部执行完毕。
+4. 若调用本接口前或调用过程中存在未捕获的ArkTS异常，本接口返回napi_pending_exception，此时微任务作用域已完成关闭，异常仍保留在环境中。尚未执行的累积微任务不会丢失，将保留在微任务队列中，待异常处理完成后，在后续微任务队列清空时执行。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [in] scope：表示需要被关闭的微任务作用域。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+如果调用该接口前或调用过程中出现未捕获的ArkTS异常，则返回napi_pending_exception，此时微任务作用域已完成关闭，异常仍保留在环境中。可通过napi_get_and_clear_last_exception处理异常。尚未执行的累积微任务不会丢失，将保留在微任务队列中，待异常处理完成后，在后续微任务队列清空时执行。
+
+如果env为空指针或scope为空指针，或微任务作用域未打开（包括对同一作用域重复关闭），则返回napi_invalid_arg。
 <!--no_check-->

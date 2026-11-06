@@ -1,5 +1,13 @@
 # DRM Error Codes
 
+<!--Kit: Drm Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @qin_wei_jie-->
+<!-- md-trans-meta sourceCommit=21259e195bf1b8fc84db30d7d959f8dc56433790 translatedAt=2026-11-03T06:47:42.662Z pushedAt=2026-11-04T03:11:19.915Z nl=1 -->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -77,3 +85,4 @@ The DRM service encountered a fatal error.
 **Procedure**
 
 Check the exception description for details, review system error logs for additional context, and address the issue based on the error information found.
+

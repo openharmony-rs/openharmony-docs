@@ -543,8 +543,8 @@
 | animationParams             | [StartAnimationParams](arkts-apis-window-i.md#startanimationparams20)                 | 否   | 是   | 启动动画参数配置。默认值为undefined，若不配置将保持系统默认动效。 |
 | needAnimation<sup>23+</sup> | boolean | 否 | 是 | 是否启用窗口创建动效。<br>传入true时，跟随系统默认动效。传入false时，表示关闭窗口创建动效，仅在[自由窗口状态](../../windowmanager/window-terminology.md#freeform-window自由窗口)的情况下生效。<br>此参数不填时，默认为undefined，跟随系统默认动效。<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
 | minimizeOnStart| boolean | 否 | 是 | 窗口是否以最小化状态启动。<br>true表示当前窗口以最小化状态启动，false表示窗口启动到前台。默认值为false。<br>仅在同应用间传递参数生效；如果拉起的主窗口已经在前台，传true和false都不生效不报错；如果拉起的主窗口已经在后台，传true不生效不报错，传false生效；如果主窗首次启动，传true和false都生效。<br> **设备行为差异：** 该参数在PC/2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，不生效不报错。<br> **起始版本：** 26.0.1 <br> **模型约束：** 此接口仅可在Stage模型下使用。|
-| excludeFromDock| boolean | 否 | 是 | 是否屏蔽Dock栏图标及预览窗。<br>true表示当前窗口屏蔽Dock栏图标及预览窗，false表示窗口正常显示Dock栏图标及预览窗。默认值为undefined，不改变Dock栏图标及预览窗的显示。<br>仅在同应用间传递参数生效；需要被拉起方添加应用图标到状态栏，参考[应用接入状态栏](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/statusbar-extension-guide)；被拉起的主窗在前台时设置无效。<br> **设备行为差异：** 该参数在PC/2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，不生效不报错。<br> **起始版本：** 26.0.1 <br> **模型约束：** 此接口仅可在Stage模型下使用。|
-| excludeFromRecent| boolean | 否 | 是 | 是否屏蔽多任务视图预览窗。<br>true表示当前窗口屏蔽多任务视图预览窗，false表示窗口正常显示多任务视图预览窗。默认值为undefined，不改变多任务视图预览窗的显示。<br>仅在同应用间传递参数生效；需要被拉起方添加应用图标到状态栏，参考[应用接入状态栏](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/statusbar-extension-guide)；被拉起的主窗在前台时设置无效。<br>**设备行为差异：** 该参数在PC/2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，不生效不报错。<br> **起始版本：** 26.0.1 <br> **模型约束：** 此接口仅可在Stage模型下使用。|
+| excludeFromDock| boolean | 否 | 是 | 是否屏蔽Dock栏图标及预览窗。<br>true表示当前窗口屏蔽Dock栏图标及预览窗，false表示窗口正常显示Dock栏图标及预览窗。默认值为undefined，不改变Dock栏图标及预览窗的显示。<br>仅在同应用间传递参数生效；需要被拉起方添加应用图标到状态栏；被拉起的主窗在前台时设置无效。<br> **设备行为差异：** 该参数在PC/2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，不生效不报错。<br> **起始版本：** 26.0.1 <br> **模型约束：** 此接口仅可在Stage模型下使用。|
+| excludeFromRecent| boolean | 否 | 是 | 是否屏蔽多任务视图预览窗。<br>true表示当前窗口屏蔽多任务视图预览窗，false表示窗口正常显示多任务视图预览窗。默认值为undefined，不改变多任务视图预览窗的显示。<br>仅在同应用间传递参数生效；需要被拉起方添加应用图标到状态栏；被拉起的主窗在前台时设置无效。<br>**设备行为差异：** 该参数在PC/2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，不生效不报错。<br> **起始版本：** 26.0.1 <br> **模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## Callback<sup>15+</sup>
 
@@ -630,7 +630,7 @@ Callback<T, V = void> {
 | ---------- | ---- | ---- | ---- | ----------- |
 | title<sup>11+</sup>    | string | 否 | 否 | 子窗口标题。标题显示区域最右端不超过系统三键区域最左端，超过部分以省略号表示。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
 | decorEnabled<sup>11+</sup> | boolean | 否 | 否 | 子窗口是否显示标题栏。true表示子窗口显示标题栏，false表示子窗口不显示标题栏。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
-| isModal<sup>12+</sup>    | boolean | 否 | 是 | 子窗口是否启用模态属性。true表示子窗口启用模态属性，false表示子窗口禁用模态属性。不设置，则默认为false。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
+| isModal<sup>12+</sup>    | boolean | 否 | 是 | 子窗口是否启用模态属性，仅当子窗口未启用独立子窗属性，即未设置zLevelAboveParentLoosened时生效。true表示子窗口启用模态属性，false表示子窗口禁用模态属性。不设置，则默认为false。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
 | modalityType<sup>14+</sup>    | [ModalityType](arkts-apis-window-e.md#modalitytype14) | 否 | 是 | 子窗口模态类型，仅当子窗口启用模态属性（即[isModal](#subwindowoptions11)为true）时可设置并生效，否则设置该参数会抛异常（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。不设置，则默认为WINDOW_MODALITY。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。       |
 | windowRect<sup>18+</sup>    | [Rect](arkts-apis-window-i.md#rect7) | 否 | 是 | 子窗口矩形区域，其中子窗口存在大小限制，具体参考[resize()](arkts-apis-window-Window.md#resize9)方法。不设置且未调用[showWindow()](arkts-apis-window-Window.md#showwindow9)显示前，则默认为{left: 0, top: 0, width: 0, height: 0}。具体参考[子窗口开发指导](../../windowmanager/subwindow-guide.md)。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | zLevel<sup>18+</sup>    | number | 否 | 是 | 子窗口层级级别，仅当子窗口未启用模态属性，即未设置isModal时生效。该参数应为整数，取值范围为[-10000, 10000]，浮点数输入将向下取整。不设置，则默认为0。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|

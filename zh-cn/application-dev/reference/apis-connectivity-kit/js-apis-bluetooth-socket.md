@@ -118,7 +118,6 @@ getL2capPsm(serverSocket: number): number
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 服务端获取客户端设备地址。
 let serverNumber = 1; // 此处serverNumber需赋值为调用sppListen接口后，回调中得到的serverNumber。
 try {
     let l2capPsm: number = socket.getL2capPsm(serverNumber);

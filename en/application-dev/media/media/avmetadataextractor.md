@@ -1,3 +1,10 @@
+---
+kits: ["Media Kit / Media Services"]
+description: "Describes using AVMetadataExtractor ArkTS APIs to extract metadata, album covers, and video thumbnails from audio and video resources for media information display."
+keywords: [AVMetadataExtractor, metadata extraction, ArkTS, fdSrc, dataSrc, setUrlSource, album cover, video thumbnails, media information query]
+doctype: guide
+status: active
+---
 # Using AVMetadataExtractor to Extract Audio and Video Metadata (ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
@@ -5,6 +12,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=c54ee3c703f5cc7ef1444d6932d400b405f9ea74 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 You can use [AVMetadataExtractor](media-kit-intro.md#avmetadataextractor) to obtain metadata from a raw media asset. This topic walks you through on how to obtain the metadata of a media resource.
 
@@ -25,7 +33,7 @@ For details about the APIs, see [AVMetadataExtractor](../../reference/apis-media
    
    You need to check the resource validity and set either property based on the actual situation.
    
-   - To set **fdSrc**, use **ResourceManager.getRawFd** to obtain the file descriptor of the resource file packed in the HAP. For details, see [ResourceManager API Reference](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9). You can also access the resource through the application sandbox path (ensure that the resource is available). For details, see [Obtaining Application File Paths](../../application-models/application-context-stage.md#obtaining-application-file-paths). For details about the application sandbox and how to push files to the application sandbox directory, see [File Management](../../file-management/app-sandbox-directory.md).
+   - If **fdSrc** is set, you can use **ResourceManager.getRawFd** to open the HAP resource file descriptor. For details, see [getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9) in the **ResourceManager** API. You can also access the corresponding resource through the app sandbox path (ensure the resource is available). For details, see [Obtaining Application File Paths](../../application-models/application-context-stage.md#obtaining-application-file-paths). For an introduction to the app sandbox and how to push files to it, see [Application Sandbox](../../file-management/app-sandbox-directory.md).
      ```ts
      import { common } from '@kit.AbilityKit';
      import { media } from '@kit.MediaKit';
@@ -77,6 +85,9 @@ For details about the APIs, see [AVMetadataExtractor](../../reference/apis-media
      };
      // Set the dataSrc property.
      avMetadataExtractor.dataSrc = dataSrc;
+
+     // Close the fd after completing subsequent metadata retrieval or frame extraction operations.
+     fileIo.closeSync(fd);
      ```
 
    - If [setUrlSource](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md#seturlsource20) is used, fill in both the **url** and **headers** properties correctly to ensure that the URL is accessible.
@@ -177,12 +188,12 @@ For details about the APIs, see [AVMetadataExtractor](../../reference/apis-media
      height : 300
    }
    // Obtain the video thumbnail (callback mode).
-   avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
+   avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, (frameInfo: media.FrameInfo, err: BusinessError) => {
      if (err) {
-       console.error(`fetch failed, error = ${JSON.stringify(err)}`);
+       console.error(TAG, `fetch frame failed, error code: ${err.code}, error message: ${err.message}`);
        return;
      }
-     console.info(`fetch success.`);
+     console.info(TAG, `fetch frame successfully.`);
      if (frameInfo !== undefined && frameInfo.image !== undefined) {
        this.pixelMap = frameInfo.image;
      }

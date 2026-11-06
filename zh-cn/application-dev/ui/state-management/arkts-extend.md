@@ -8,6 +8,8 @@
 
 在前文的示例中，可以使用[\@Styles](arkts-style.md)复用样式。在\@Styles的基础上，ArkUI提供了[\@Extend](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-extend.md#extend)，用于扩展组件样式。
 
+\@Extend同样支持通过版本条件参数（VersionCondition）声明扩展样式的生效系统版本区间，详见[版本条件参数（VersionCondition）](#版本条件参数versioncondition)。
+
 > **说明：**
 >
 > 从API version 9开始支持。
@@ -15,6 +17,8 @@
 > 从API version 9开始，该装饰器支持在ArkTS卡片中使用。
 >
 > 从API version 11开始，该装饰器支持在原子化服务中使用。
+>
+> 从API版本26.1.0开始，该装饰器支持传入可选的版本条件参数（VersionCondition）作为第二个参数。
 
 ## 装饰器使用说明
 
@@ -24,6 +28,7 @@
 
 ```ts
 @Extend(UIComponentName) function functionName() { ... }
+@Extend(UIComponentName, VersionCondition) function functionName() { ... }
 ```
 
 
@@ -148,6 +153,24 @@
   ```
   
   ![](figures/arkts-extend-1.gif)
+
+### 版本条件参数（VersionCondition）
+
+\@Extend装饰器支持传入可选的版本条件参数[VersionCondition](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-styles.md#versioncondition)作为第二个参数，用于声明扩展样式的生效系统版本区间。携带版本条件时，扩展样式的属性语句仅在设备系统版本位于声明区间内时生效。
+
+``` TypeScript
+// 该扩展样式仅在API版本大于等于26.0.0时生效
+@Extend(Text, { minApiVersion: '26.0.0' })
+function fancy() {
+  .fontColor(Color.Red)
+}
+```
+
+版本条件的参数说明、取值形态与取值范围与\@Styles一致，请参见[版本条件参数（VersionCondition）](arkts-style.md#版本条件参数versioncondition)。
+
+> **说明：**
+>
+> 携带版本条件的扩展样式在生效区间外的系统版本上调用时，样式属性不生效，函数参数仍正常传递。
 
 ## 限制条件
 
@@ -358,3 +381,53 @@ struct FancyUse {
   }
 }
 ```
+
+当扩展样式需要限定在特定系统版本区间内生效时（如新样式仅面向高版本系统启用、需要对低版本系统做差异化适配），可以通过版本条件参数声明生效区间，无需在每个调用点手写版本判断。
+
+在组件中调用后，设备系统版本位于生效区间内时样式正常生效，位于区间外时该扩展样式不产生任何效果：
+<!-- @[Extend_Version_Condition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendVersionCondition.ets) -->
+
+``` TypeScript
+const lowVersionExtendText: string = 'Lower version performance';
+const hightVersionExtendText: string = 'Higher version performance';
+
+// 低版本适配样式：仅在系统版本大于等于Api version 12且小于Api version 26.0.0时生效
+@Extend(Text, { minApiVersion: 12, maxApiVersion: '26.0.0' })
+function lowVersionText(color: Color) {
+  .fontColor(color)
+  .fontSize(16)
+}
+
+// 高版本样式：仅在系统版本大于等于Api version 26.0.0时生效
+@Extend(Text, { minApiVersion: '26.0.0' })
+function highVersionText(color: Color) {
+  .fontColor(color)
+  .fontSize(20)
+  .fontWeight(700)
+}
+
+@Entry
+@Component
+struct VersionConditionUseDemo {
+  build() {
+    Column({ space: 30 }) {
+      Text(lowVersionExtendText)
+        .lowVersionText(Color.Gray)
+      Text(hightVersionExtendText)
+        .highVersionText(Color.Blue)
+    }
+    .width('90%')
+    .height(80)
+    .margin(20)
+    .borderWidth(1)
+  }
+}
+```
+
+**在系统版本小于API版本26.0.0的设备上表现如：**
+
+![](figures/arkts-extend-versionCondition-low.png)
+
+**在系统版本大于等于API版本26.0.0的设备上表现如：**
+
+![](figures/arkts-extend-versionCondition-high.png)

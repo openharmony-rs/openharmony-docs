@@ -753,6 +753,34 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.QUERY_PUBLIC_CLI_TOOL
+
+允许应用查询可用的CLI工具。
+
+获取该权限后，可帮助三方智能体应用接入Claw功能。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.1
+
+## ohos.permission.EXEC_PUBLIC_CLI_TOOL
+
+允许应用执行可用的CLI工具。
+
+获取该权限后，可帮助三方智能体应用接入Claw功能。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.1
+
 ## ohos.permission.GET_ENTERPRISE_CONFIG
 
 允许应用获取行业定制配置文件。
@@ -793,6 +821,34 @@
 
 **支持设备**：Car
 
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.HIMA_DATA_READ
+
+允许应用读取HIMA云数据。
+ 
+通过此权限，应用程序可以从HIMA云读取车辆相关数据。
+ 
+**权限级别**：normal
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**支持设备**：Car
+ 
+**起始版本**：26.0.1
+ 
+## ohos.permission.vehicle.HIMA_DATA_WRITE
+
+允许应用将数据写入HIMA云。
+ 
+通过此权限，应用程序可以向HIMA云写入车辆相关数据。
+ 
+**权限级别**：normal
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**支持设备**：Car
+ 
 **起始版本**：26.0.1
 
 ## ohos.permission.DCAS_RUN_MODEL

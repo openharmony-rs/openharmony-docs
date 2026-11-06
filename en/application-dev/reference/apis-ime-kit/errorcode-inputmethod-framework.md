@@ -5,7 +5,7 @@
 <!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c066f5124ef720a50174e3224b1ec8b8036dfa24 translatedAt=2026-09-11T09:32:01.071Z pushedAt=2026-09-14T01:52:44.834Z -->
+<!-- md-trans-meta sourceCommit=bd0f7f0d2b5cbb7da282700783b226eef5361df4 translatedAt=2026-11-03T04:20:29.185Z pushedAt=2026-11-03T12:08:25.474Z nl=1 -->
 
 > **NOTE**
 >
@@ -127,7 +127,8 @@ This error code is thrown if an application encounters an exception when calling
 
 **Solution**
 
-None
+1. The developer executes the command `ps -A | grep inputmethod` to check whether the input method manager service process is running properly. If the process does not exist, it is recommended to restart the device and try again.
+2. If the process exists but the error persists, kill the application background process and restart the application, then call [getController](js-apis-inputmethod.md#inputmethodgetcontroller9) again to obtain the InputMethodController instance.
 
 ## 12800007 Input Method Setter Error
 
@@ -145,7 +146,8 @@ This error code is thrown if an application encounters an exception when calling
 
 **Solution**
 
-None
+1. The developer executes the command `ps -A | grep inputmethod` to check whether the input method manager service process is running properly. If the process does not exist, it is recommended to restart the device and try again.
+2. If the process exists but the error persists, kill the application background process and restart the application, then call [getSetting](js-apis-inputmethod.md#inputmethodgetsetting9) again to obtain the InputMethodSetting instance.
 
 ## 12800008 Input Method Manager Service Error
 
@@ -416,7 +418,7 @@ The [setImmersiveEffect](js-apis-inputmethodengine.md#setimmersiveeffect20) API 
 The **setImmersiveEffect** API can be called only after any of the following APIs is called:
   - **adjustPanelRect** (available since API version 12 or 15)
   - **resize** (available since API version 10)
-
+  
 ## 12800022 Invalid displayId
 
 **Error Message**

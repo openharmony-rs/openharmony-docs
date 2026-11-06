@@ -1079,11 +1079,17 @@ try {
 
 setPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance, permissions: Array\<string>, managedState: PermissionManagedState): void
 
-设置指定应用的[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)的管理策略。适用于企业应用批量部署场景，如静默授权减少权限弹窗干扰、统一企业应用权限管理策略，提升员工使用体验和管理效率。
+设置指定应用的[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)和[manual_settings权限](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)的管理策略。适用于企业应用批量部署场景，如静默授权减少权限弹窗干扰、统一企业应用权限管理策略，提升员工使用体验和管理效率。
 
 > **说明：**
 >
+> 在接入、使用本能力前，您需要在隐私政策中向用户告知收集的个人信息类型、使用目的及隐私政策链接等信息，并获取用户的同意或取得其他合法性基础。
+>
 > 在多个MDM应用场景下，同一个应用实例的同一个权限[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)，不同应用实例不同权限[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+>
+> 从API版本26.1.0开始，支持管理[manual_settings](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型的权限。
+>
+> 未设置管理策略（managedState为DEFAULT）时，权限由用户按默认方式管理：user_grant权限由用户在权限弹窗中授权，manual_settings权限由用户在系统设置应用中授权。策略设置后，对应权限的授权状态将被固定为策略指定的状态：设置为GRANTED表示权限被静默授予，设置为DENIED表示权限被静默拒绝。权限被管控期间，用户无法通过权限弹窗或系统设置界面修改该权限的授权状态，应用可通过权限校验接口（如[checkAccessTokenSync](../apis-ability-kit/js-apis-abilityAccessCtrl.md#checkaccesstokensync10)）感知权限的授权结果。将managedState设置为DEFAULT可取消管控，取消管控后权限恢复为用户可管理的状态。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION
 
@@ -1097,7 +1103,7 @@ setPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance,
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |
 | applicationInstance    | [ApplicationInstance](#applicationinstance20)  | 是 | 指定应用实例。 |
-| permissions | Array&lt;string&gt;  | 是 | 需要管理的权限名称列表，仅支持[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)。权限名称列表以[应用权限组](../../security/AccessToken/app-permission-group-list.md)为单位。列表中应包含应用在[module.json5](../../quick-start/module-configuration-file.md)中声明的同一权限组内的所有权限。例如：应用如果在module.json5中声明需要ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR权限，则传入的权限名称列表必须同时包含ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR两个权限。 |
+| permissions | Array&lt;string&gt;  | 是 | 需要管理的权限名称列表，支持[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)和[manual_settings权限](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)。权限名称列表以[应用权限组](../../security/AccessToken/app-permission-group-list.md)为单位。列表中应包含应用在[module.json5](../../quick-start/module-configuration-file.md)中声明的同一权限组内的所有权限。例如：应用如果在module.json5中声明需要ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR权限，则传入的权限名称列表必须同时包含ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR两个权限。 |
 | managedState | [PermissionManagedState](#permissionmanagedstate20) | 是 | 应用权限的管理策略。 |
 
 **错误码**：
@@ -1143,7 +1149,15 @@ try {
 
 getPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance, permission: string): PermissionManagedState
 
-获取指定应用的指定[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)的管理策略。
+获取指定应用的指定[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)和[manual_settings权限](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)的管理策略。
+
+> **说明：**
+>
+> 在接入、使用本能力前，您需要在隐私政策中向用户告知收集的个人信息类型、使用目的及隐私政策链接等信息，并获取用户的同意或取得其他合法性基础。
+>
+> 在多个MDM应用场景下，同一个应用实例的同一个权限[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)，不同应用实例不同权限[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+>
+> 从API版本26.1.0开始，支持获取[manual_settings](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型的权限的管理策略。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION
 
@@ -1157,7 +1171,7 @@ getPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance,
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |
 | applicationInstance  | [ApplicationInstance](#applicationinstance20)  | 是 | 指定应用实例。 |
-| permission | string | 是 | 需要获取管理策略的权限名称，仅支持user_grant权限。 |
+| permission | string | 是 | 需要获取管理策略的权限名称，支持[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)和[manual_settings权限](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)。 |
 
 **返回值：**
 
@@ -2209,6 +2223,7 @@ setDeviceSecurityLevelPolicy(level: DeviceSecurityLevelPolicy): void
 | 9200001 | The application is not an administrator application of the device. |
 | 9200002 | The administrator application does not have permission to manage the device. |
 | 9200012 | Parameter verification failed. |
+| 9200016 | Service timeout. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 
@@ -2265,6 +2280,7 @@ getDeviceSecurityLevelPolicy(): DeviceSecurityLevelPolicy
 | -------- | -------- |
 | 9200001 | The application is not an administrator application of the device. |
 | 9200002 | The administrator application does not have permission to manage the device. |
+| 9200016 | Service timeout. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
@@ -2779,6 +2795,63 @@ try {
   console.info(`Succeeded in checking weak pin enabled, result: ${result}`);
 } catch (err) {
   console.error(`Failed to check weak pin enabled. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## securityManager.getPasswordLastChangedTime
+
+getPasswordLastChangedTime(accountId: number): number
+
+根据系统账号ID获取用户最近一次修改锁屏密码的时间，以同步方式返回。账号ID指系统账号ID（首用户为100，子用户依次递增），非三方应用账号；密码指设备锁屏密码（口令），不包含指纹、人脸等其他认证凭据。企业可以通过该接口查询最近一次修改密码的时间，用于密码策略审计和合规性检查。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型   | 必填 | 说明                                                         |
+| --------- | ------ | ---- | ------------------------------------------------------------ |
+| accountId | number | 是   | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+
+**返回值：**
+
+| 类型   | 说明                               |
+| ------ | ---------------------------------- |
+| number | 最近一次修改密码的时间戳，单位为毫秒 (ms) 。返回值为Unix时间戳（自1970-01-01 00:00:00 UTC起算的毫秒数），应用需结合时区设置将其转换为本地时间。如果用户从未设置锁屏密码或已关闭锁屏密码，接口返回错误码9200016。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200006  | The specified account ID is invalid. |
+| 9200016  | Service timeout. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+
+// 需根据实际情况进行替换
+let accountId: number = 100;
+try {
+  let result: number = securityManager.getPasswordLastChangedTime(accountId);
+  console.info(`Succeeded in getting password last changed time, result: ${result}`);
+  // result为Unix时间戳（毫秒），需结合时区设置转换为本地时间。
+  // 例如一个小时前修改的密码，当前UTC时间为2026-08-27 16:01:36，则返回值为1787842896000，表示UTC时间2026-08-27 15:01:36。
+  let date: Date = new Date(result);
+  console.info(`Password last changed time: ${date.toLocaleString()}`);
+} catch (err) {
+  console.error(`Failed to get password last changed time. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

@@ -6,11 +6,12 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=336b192b15b46c20e4683cc1c73802a6eb6f0201 translatedAt=2026-08-21T03:19:05.571Z pushedAt=2026-08-21T09:06:57.704Z -->
+<!-- md-trans-meta sourceCommit=ac0fe5669df91677159af67fa84464beeb446ebe translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 ## Available APIs
 
 This document describes how to use the ArkTS APIs provided by HiAppEvent to subscribe to resource leak events. For detailed usage instructions (parameter constraints, value ranges, etc.) of the APIs, see [@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
+
 
 ### APIs for Setting Custom Parameters
 
@@ -30,7 +31,6 @@ This document describes how to use the ArkTS APIs provided by HiAppEvent to subs
 | -------- | -------- |
 | addWatcher(watcher: Watcher): AppEventPackageHolder | Adds a watcher to listen for application events.|
 | removeWatcher(watcher: Watcher): void | Removes a watcher to unsubscribe from application events.|
-
 ## How to Develop
 
 The following example describes how to subscribe to the memory leak event.
@@ -112,15 +112,13 @@ The following example describes how to subscribe to the memory leak event.
    In this case, use [hidebug.setAppResourceLimit](../reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebugsetappresourcelimit12) to set the memory limit to trigger a memory leak event, and enable **System resource leak log** in **Developer options**. (Restart the device to enable or disable this functionality.)
 
    <!--RP1-->
-
    For details about how to locate resource leak errors, see [Memory Leak Analysis](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-session-snapshot).
-
    <!--RP1End-->
 
    The sample code is as follows:
 
    <!-- @[PssLeakEventTS_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    Button('pss leak')
      .type(ButtonType.Capsule)
@@ -153,11 +151,11 @@ The following example describes how to subscribe to the memory leak event.
 2. Add the PSS leak-related content.
 
    Edit the **napi_init.cpp** file.
-
+   
    - Add the following header files:
 
    <!-- @[Pss_Leak_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    #include <iostream>
    #include <fstream>
@@ -168,7 +166,7 @@ The following example describes how to subscribe to the memory leak event.
    - Define the PSS leak-related methods.
 
    <!-- @[Pss_Leak](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    // Read the PSS field in /proc/self/smaps_rollup to calculate the PSS of the current process (unit: KB).
    static int GetCurrentProcessPss()
@@ -296,7 +294,7 @@ The following example describes how to subscribe to the memory leak event.
    - Perform the initialization.
 
    <!-- @[Pss_Leak_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    static napi_value Init(napi_env env, napi_value exports)
    {
@@ -314,14 +312,20 @@ The following example describes how to subscribe to the memory leak event.
    - Add the following type declaration:
 
    <!-- @[Pss_Leak_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-
+   
    ``` TypeScript
    export const leakMB: (size: number) => void;
    ```
 
 3. Click the **Run** button in DevEco Studio to run the project, click the **pss leak** button, and then a PSS memory leak event will be reported after 15 to 30 minutes.
 
-   For the same application, the resource leak event can be reported at most once within 24 hours. If the memory leak needs to be reported again within a shorter time, restart the device.
+   > **NOTE**
+   >
+   > 1. A [nolog version](performance-analysis-kit-terminology.md#nolog-version) does not capture memory call stack logs by default.
+   >
+   > 2. A resource leak event is reported at most once per application within 24 hours. To report another event sooner, restart the device first. After triggering a memory leak, wait 15 to 30 minutes to receive the memory leak event.
+   >
+   > 3. Enabling **System resource leak log** in **Developer options** enables memory call stack capture. Restart the device after changing the setting. Capturing the call stack typically delays memory leak event reporting by at least another half hour. This setting also affects other resource leak events that involve call stack capture.
 
 4. After a PSS memory leak event is reported, the system calls **onReceive()**. You can view the following event information in the **Log** window.
 
@@ -375,12 +379,10 @@ You can select either of the following methods:
 The heap snapshot file size is about 0.4 GB to 1.2 GB (about 50 MB to 100 MB after being compressed into a .zip package). Due to the large size, the system controls the number of times that heap snapshots can be generated. The specifications are as follows:
 
 - Device: The JS heap snapshot file can be generated for five times a week. If this limit is exceeded, all apps cannot generate heap snapshots.
-
 - App: The JS heap snapshot file can be generated only once a week. Within seven days after the app triggers the oomdump function, it cannot be triggered again.
-
 - If the remaining storage space of the device is less than 30 GB, the oomdump function is not triggered.
 
-During debugging, you can adjust the system time to seven days later and restart the device to reset the number of times that the app triggers oomdump, so that you can quickly complete function adaptation and verification.
+  During debugging, you can adjust the system time to seven days later and restart the device to reset the number of times that the app triggers oomdump, so that you can quickly complete function adaptation and verification.
 
 > **NOTE**
 >

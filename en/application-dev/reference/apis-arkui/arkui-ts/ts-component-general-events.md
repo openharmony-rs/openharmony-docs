@@ -43,7 +43,7 @@ Universal events provide component event capabilities such as tap, touch, drag, 
 
 - [Custom Event Interception](ts-universal-attributes-on-touch-intercept.md)
 
-- [Focus Axis Event](ts-universal-events-focus_axis.md)
+- [Focus Axis Event](ts-universal-events-focus-axis.md)
 
 - [Axis Event](ts-universal-events-axis.md)
 

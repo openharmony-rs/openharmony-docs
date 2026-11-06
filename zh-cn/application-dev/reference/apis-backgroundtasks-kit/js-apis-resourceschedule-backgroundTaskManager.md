@@ -616,7 +616,7 @@ startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promis
 | 9800005 | Continuous task verification failed. |
 | 9800006 | Notification verification failed for a continuous task. |
 | 9800007 | Continuous task storage failed. |
-| 9800008 | The requested continuous task is not supported on this device type.<br/>**起始版本：** 26.0.1 |
+| 9800008 | The requested continuous task is not supported on this device type.<br>适用版本：26.0.1+ |
 
 **示例：**
 
@@ -1052,7 +1052,7 @@ updateBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promi
 更新长时任务还存在如下约束限制：
 1. 本接口仅支持更新如下接口申请的长时任务：[startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promise&lt;ContinuousTaskNotification&gt;](#backgroundtaskmanagerstartbackgroundrunning21)。
 2. 已经合并的长时任务，且后台任务主类型和子类型均相同，仅支持更新ContinuousTaskRequest.wantAgent中的wants信息（abilityName等），如果类型不同，更新失败。
-3. 如果待更新的长时任务或指定的更新类型中包含数据传输类型，直接返回失败。
+3. 当待更新的长时任务类型包含数据传输，或本次更新指定的类型包含数据传输时，如果更新操作相对原类型新增了录音、定位或VOIP类型，则返回失败。
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -1085,7 +1085,7 @@ updateBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promi
 | 9800005 | Continuous task verification failed. |
 | 9800006 | Notification verification failed for a continuous task. |
 | 9800007 | Continuous task storage failed. |
-| 9800008 | The requested continuous task is not supported on this device type.<br/>**起始版本：** 26.0.1 |
+| 9800008 | The requested continuous task is not supported on this device type.<br>适用版本：26.0.1+ |
 
 **示例：**
 

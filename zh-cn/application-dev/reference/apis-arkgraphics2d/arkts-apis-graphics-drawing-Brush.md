@@ -625,7 +625,7 @@ getColorFilter(): ColorFilter
 
 | 类型                        | 说明               |
 | --------------------------- | ------------------ |
-| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | 返回画刷的颜色滤波器，用于对绘制内容进行颜色调整，如伽马校正、颜色矩阵变换等。 |
+| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | 返回画刷的颜色滤波器，用于对绘制内容进行颜色调整，如伽马校正、颜色矩阵变换等。当前画刷未设置颜色滤波器时返回undefined。 |
 
 **示例：**
 

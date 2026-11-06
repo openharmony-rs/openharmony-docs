@@ -5,6 +5,7 @@
 <!--Designer: @hwzhangchuang-->
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=b3983b412d768174e668e83c49d9e8872f20d278 translatedAt=2026-11-03T10:53:24.114Z pushedAt=2026-11-03T11:24:41.096Z nl=1 -->
 
 > **NOTE**
 >
@@ -36,7 +37,7 @@ Failed to obtain the service.
 
 **Description**
 
-This error code is reported if the service fails to start, resulting in a service access failure.
+The service fails to start, and the service cannot be accessed.
 
 **Possible Causes**
 
@@ -153,6 +154,24 @@ The new device name contains unlawful information.
 **Solution**
 
 Ensure that the device name complies with laws and regulations.
+
+## 11600110 Invalid Network ID
+
+**Error Message**
+
+Invalid network ID.
+
+**Description**
+
+The passed in network ID is invalid.
+
+**Possible Causes**
+
+The passed in network ID does not exist.
+
+**Solution**
+
+Check whether the network ID is correct, and ensure that a valid network ID is used for the retry call of the API.
 
 ## 32300001 Transport Stream Repeatedly Created
 

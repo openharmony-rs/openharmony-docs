@@ -1,16 +1,15 @@
 # OHIPCParcel
-
 <!--Kit: IPC Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @xdx19211@luodonghui0157-->
 <!--Designer: @zhaopeng_gitee-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=ceec5d18179ba29b1eca79fa9240e27795b5216c translatedAt=2026-07-28T02:19:43.282Z pushedAt=2026-07-29T06:58:45.388Z -->
+<!-- md-trans-meta sourceCommit=45a81b7bea817baeae8988e7a761257052387361 translatedAt=2026-10-23T03:17:44.328Z pushedAt=2026-10-26T03:26:23.133Z nl=1 -->
 
 ## Overview
 
-This module provides C APIs for IPC serialization/deserialization, mainly used for data packing and unpacking during cross-process communication.
+This file provides C APIs for IPC serialization and deserialization, which are used to serialize and deserialize data during IPC communication.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 

@@ -937,9 +937,9 @@ Represents the Bluetooth protocol type.
 
 | Name               | Value | Description   |
 | ----------------- | ---- | ----- |
-| GATT | 0 | [Generic Attribute Profile (GATT)](../../connectivity/terminology.md#gatt)|
-| SPP | 1 | [Serial Port Profile (SPP)](../../connectivity/terminology.md#spp)|
-| OPP | 2 | [Object Push Profile (OPP)](../../connectivity/terminology.md#opp)|
+| GATT | 0 | [Generic Attribute Profile (GATT)](../../connectivity/bluetooth/terminology.md#gatt)|
+| SPP | 1 | [Serial Port Profile (SPP)](../../connectivity/bluetooth/terminology.md#spp)|
+| OPP | 2 | [Object Push Profile (OPP)](../../connectivity/bluetooth/terminology.md#opp)|
 
 ## TransferPolicy
 

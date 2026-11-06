@@ -1,7 +1,7 @@
 # !!语法：双向绑定
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Cuecuexiaoyu-->
+<!--Owner: @BIYynNe-->
 <!--Designer: @VictorS67-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->

@@ -5,12 +5,13 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=803b34d075250a5bf659cc7ec17fef8fcb5cf6aa translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Depth data reflects the spatial arrangement of image pixels in relation to the camera lens. It facilitates enhanced focus precision, background blurring effects, and the like. Depth data can be reported in the preview, photo capture, and video scenarios of camera applications.
 
 ## How to Develop
 
-Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API reference.
+For detailed API descriptions, see [@ohos.multimedia.camera (Camera Management) (System API)](../../reference/apis-camera-kit/js-apis-camera-sys.md).
 
 1. Import the camera module, which provides camera-related properties and methods.
      
@@ -19,7 +20,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. Use **depthProfiles** in [CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability) to obtain the depth data capabilities, in the format of an **depthProfilesArray** array, supported by the current device. Call [createDepthDataOutput](../../reference/apis-camera-kit/js-apis-camera-sys.md#createdepthdataoutput13) to create a depth data stream.
+2. Use **depthProfiles** in [CameraOutputCapability](../../reference/apis-camera-kit/js-apis-camera-sys.md#cameraoutputcapability) to obtain the depth data capabilities, in the format of a **depthProfilesArray** array, supported by the current device. Call [createDepthDataOutput](../../reference/apis-camera-kit/js-apis-camera-sys.md#createdepthdataoutput13) to create a depth data stream.
 
    ```ts
    function getDepthDataOutput(cameraManager: camera.CameraManager,
@@ -45,7 +46,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
    }
    ```
 
-3. Call [start](../../reference/apis-camera-kit/js-apis-camera-sys.md#start13) in **depthDataOutput** to start outputting the depth data stream. If the call fails, an error code is returned. For details about the error code types, see [CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode).
+3. Use the [start](../../reference/apis-camera-kit/js-apis-camera-sys.md#start13) method of **depthDataOutput** to output the depth stream. If the API call fails, the corresponding error code is returned. For details about the error codes, see [CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode).
      
    ```ts
    async function startDepthDataOutput(depthDataOutput: camera.DepthDataOutput): Promise<void> {
@@ -70,16 +71,17 @@ During camera application development, you can listen for depth data and depth d
     
   ```ts
   function onDepthDataAvailable(depthDataOutput: camera.DepthDataOutput): void {
-    depthDataOutput.on('depthDataAvailable', (err: BusinessError) => {
-      if (err !== undefined && err.code !== 0) {
+    depthDataOutput.on('depthDataAvailable', (err: BusinessError, depthData: camera.DepthData) => {
+      if (err == undefined || err.code !== 0) {
+        console.error(`Depth data callback error: ${err.code}`);
         return;
       }
-      console.info('Depth data available');
+      console.info(`Depth data available: ${depthData}`);
     });
   }
   ```
 
-- Register the **'error'** event to listen for depth data output errors. The callback function returns an error code when an API is incorrectly used. For details about the error code types, see [CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode).
+- Register a fixed error callback to listen for error results of the depth stream output. The callback returns the error code corresponding to the error when using the depth output API. For details about the error codes, see [CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode).
     
   ```ts
   function onDepthDataOutputError(depthDataOutput: camera.DepthDataOutput): void {

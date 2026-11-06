@@ -6,8 +6,9 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=ee3aff3c192b61804c6eafd655527edff9eb980a translatedAt=2026-10-30T03:49:09.761Z pushedAt=2026-10-30T07:26:02.699Z nl=1 -->
 
-From API version 22, the crypto algorithm library supports key derivation with X963KDF.
+Starting from API version 22, the algorithm library supports key derivation using this algorithm.
 
 For details about the corresponding algorithm specifications, see [X963KDF](crypto-key-derivation-overview.md#x963kdf).
 
@@ -21,7 +22,7 @@ For details about the corresponding algorithm specifications, see [X963KDF](cryp
    - **key**: original key material.
 
       If the string type is used, pass in the data used for key derivation instead of the string type such as HexString or base64. In addition, ensure that the string is encoded in UTF-8 format. Otherwise, the derived key may be different from what you expected.
-   - **info**: optional context and application information used to extend the short key. This parameter can be empty.
+   - info: optional context and application-related information, which can be empty and is used to extend short keys.
    - **keySize**: length of the key to derive, in bytes. The value must be a positive integer.
 
 2. Call [cryptoFramework.createKdf](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekdf11) with the string parameter **'X963KDF|SHA256'** to create a **Kdf** object. The key derivation algorithm is **X963KDF**, and HMAC algorithm is **SHA256**.
@@ -112,3 +113,4 @@ For details about the corresponding algorithm specifications, see [X963KDF](cryp
     console.info('[Sync]key derivation output: ' + secret.data);
   }
   ```
+

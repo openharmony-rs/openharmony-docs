@@ -6,20 +6,22 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=205f3acb276420a792c1ba70147af638f33c6902 translatedAt=2026-08-07T03:31:58.370Z pushedAt=2026-08-10T09:28:40.887Z -->
+<!-- md-trans-meta sourceCommit=99672258e158c110c5ee74a166a44dafda8d8dee translatedAt=2026-10-30T03:48:00.808Z pushedAt=2026-10-30T07:25:41.890Z nl=1 -->
 
 For details about the corresponding algorithm specifications, see [PBKDF2](crypto-key-derivation-overview.md#pbkdf2).
+
+## Linking Related Dynamic Libraries in the CMake Script
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
 
 ## How to Develop
 
 1. Call [OH_CryptoKdfParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdfparams_create) with the string parameter **PBKDF2** to create a key derivation parameter object.
 
 2. Call [OH_CryptoKdfParams_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdfparams_setparam) to set the parameters required by PBKDF2. Example:
-
    - **CRYPTO_KDF_KEY_DATABLOB**: original password used to generate the derived key.
-
    - **CRYPTO_KDF_SALT_DATABLOB**: salt value.
-
    - **CRYPTO_KDF_ITER_COUNT_INT**: number of iterations. The value must be a positive integer.
 
 3. Call [OH_CryptoKdf_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_create) with the string parameter **PBKDF2|SHA256** to create a key derivation function object.

@@ -33,17 +33,23 @@
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function prikeyEncoding() {
-    let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-    let keyPair = rsaGenerator.generateKeyPairSync();
-    let options : cryptoFramework.KeyEncodingConfig = {
-        password: '123456',
-        cipherName: 'AES-128-CBC'
+    try {
+      let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+      let keyPair = rsaGenerator.generateKeyPairSync();
+      let options : cryptoFramework.KeyEncodingConfig = {
+          password: '123456',
+          cipherName: 'AES-128-CBC'
+      }
+      let priPemKey = keyPair.priKey;
+      let priString = priPemKey.getEncodedPem('PKCS1', options);
+      console.info('[sync]TestPriKeyPkcs1Encoded priString output: ' + priString);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`prikeyEncoding failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
-    let priPemKey = keyPair.priKey;
-    let priString = priPemKey.getEncodedPem('PKCS1', options);
-    console.info('[sync]TestPriKeyPkcs1Encoded priString output: ' + priString);
   }
   ```
 

@@ -1,11 +1,11 @@
 # $$ Syntax: Implementing Two-Way Synchronization for Built-in Components
 <!--Kit: ArkUI--> 
 <!--Subsystem: ArkUI--> 
-<!--Owner: @Cuecuexiaoyu--> 
+<!--Owner: @BIYynNe--> 
 <!--Designer: @VictorS67--> 
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=843d6fa3247ca83eb1fb22363d3e4b77bc027d58 translatedAt=2026-09-21T11:43:34.279Z pushedAt=2026-09-23T09:32:34.003Z -->
+<!-- md-trans-meta sourceCommit=d842580cc8ee05f69976d9458c9fcd43c930e94f translatedAt=2026-11-03T06:39:03.072Z pushedAt=2026-11-03T08:06:55.436Z nl=1 -->
 
 The **$$** operator provides a reference to a TS variable for system components, so that the TS variable and the internal state of the system component remain synchronized.
 

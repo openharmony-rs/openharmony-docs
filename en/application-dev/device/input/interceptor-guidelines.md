@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=45bd746ae860f1fef969073ffaa0af763a0251fa translatedAt=2026-06-29T06:18:52.275Z pushedAt=2026-06-29T13:50:57.711Z -->
+<!-- md-trans-meta sourceCommit=ef82cca841698662683ced0e7b548e38614518fe translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## Introduction
 
@@ -14,20 +14,20 @@ Since API version 12, the multimodal module provides applications with the abili
 
 ## Available APIs
 
-The following table lists the APIs for creating and deleting event interception. For details, see [input](../../reference/apis-input-kit/capi-input.md).
+The following table lists the APIs for creating and deleting event interception. For details about the APIs, see [oh_input_manager.h](../../reference/apis-input-kit/capi-oh-input-manager-h.md).
 
 | API | Description|
 | ------------------------------------------------------------ | -------------------------- |
-| Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, Input_InterceptorOptions *option) |Creates a key event interceptor. |
-| Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *callback, Input_InterceptorOptions *option) |Creates an input event interceptor. Input events include mouse, touch, and axis events. |
-| Input_Result OH_Input_RemoveKeyEventInterceptor() |Removes a key event interceptor. |
-| Input_Result OH_Input_RemoveInputEventInterceptor() |Removes an input event interceptor. |
+| Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, Input_InterceptorOptions *option) | Adds the interceptor for key events. |
+| Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *callback, Input_InterceptorOptions *option) | Adds the interceptor for input events, including mouse, touch, and axis events. |
+| Input_Result OH_Input_RemoveKeyEventInterceptor(void) | Removes the interceptor for key events. |
+| Input_Result OH_Input_RemoveInputEventInterceptor(void) | Removes the interceptor for input events, including mouse, touch, and axis events. |
 
 ## How to Develop
 
 ### Linking a Dynamic Library
 
-Before calling interception-related APIs, you need to link the related dynamic library. You can do this by editing the **CMakeLists.txt** file as follows:
+Before calling the APIs for creating and deleting event interception, you need to link the related dynamic library. You can do this by editing the CMakeLists.txt file as follows:
 
 ```txt
 target_link_libraries(entry PUBLIC libohinput.so)
@@ -62,7 +62,7 @@ struct KeyEvent {
 void OnKeyEventCallback(const Input_KeyEvent* keyEvent)
 {
     KeyEvent event;
-    // The lifecycle of Input_KeyEvent is limited to the callback function. It is automatically destroyed after the callback function is executed.
+    // The lifecycle of Input_KeyEvent is limited to the callback function. It is automatically destroyed after the callback function finishes executing.
     event.action = OH_Input_GetKeyEventAction(keyEvent);
     event.keyCode = OH_Input_GetKeyEventKeyCode(keyEvent);
     event.actionTime = OH_Input_GetKeyEventActionTime(keyEvent);
@@ -81,6 +81,7 @@ static napi_value RemoveKeyEventInterceptor(napi_env env, napi_callback_info inf
     // ...
 }
 ```
+
 
 - **Input Events (Mouse, Touch, and Axis Events)**
 
@@ -115,11 +116,11 @@ struct AxisEvent {
     int32_t axisEventType { -1 };
 };
 
-// Define the mouse event callback.
+// Define the mouse event callback function.
 void OnMouseEventCallback(const Input_MouseEvent* mouseEvent)
 {
     MouseEvent event;
-    // The lifecycle of Input_MouseEvent is only within the callback. It is destroyed when the callback ends.
+    // The lifecycle of Input_MouseEvent is limited to the callback function. It is destroyed when the callback ends.
     event.action = OH_Input_GetMouseEventAction(mouseEvent);
     event.displayX = OH_Input_GetMouseEventDisplayX(mouseEvent);
     event.displayY = OH_Input_GetMouseEventDisplayY(mouseEvent);
@@ -130,11 +131,11 @@ void OnMouseEventCallback(const Input_MouseEvent* mouseEvent)
     // ...
 }
 
-// Define the touch event callback.
+// Define the touch event callback function.
 void OnTouchEventCallback(const Input_TouchEvent* touchEvent)
 {
     TouchEvent event;
-    // The lifecycle of Input_TouchEvent is only within the callback. It is destroyed when the callback ends.
+    // The lifecycle of Input_TouchEvent is limited to the callback function. It is destroyed when the callback ends.
     event.action = OH_Input_GetTouchEventAction(touchEvent);
     event.id = OH_Input_GetTouchEventFingerId(touchEvent);
     event.displayX = OH_Input_GetTouchEventDisplayX(touchEvent);
@@ -143,12 +144,12 @@ void OnTouchEventCallback(const Input_TouchEvent* touchEvent)
     // ...
 }
 
-// Define the axis event callback.
+// Define the axis event callback function.
 void OnAxisEventCallback(const Input_AxisEvent* axisEvent)
 {
     AxisEvent event;
     
-    // The lifecycle of Input_AxisEvent is only within the callback. It is destroyed when the callback ends.
+    // The lifecycle of Input_AxisEvent is limited to the callback function. It is destroyed when the callback ends.
     InputEvent_AxisAction action;
     Input_Result ret = OH_Input_GetAxisEventAction(axisEvent, &action);
     event.axisAction = action;
@@ -177,16 +178,16 @@ void OnAxisEventCallback(const Input_AxisEvent* axisEvent)
     // ...
 }
 
-// Input event callback structure.
+// Input event callback function struct.
 Input_InterceptorEventCallback g_eventCallback;
 
 static napi_value AddEventInterceptor(napi_env env, napi_callback_info info)
 {
-    // Set the mouse event callback.
+    // Set the mouse event callback function.
     g_eventCallback.mouseCallback = OnMouseEventCallback;
-    // Set the touch event callback.
+    // Set the touch event callback function.
     g_eventCallback.touchCallback = OnTouchEventCallback;
-    // Set the axis event callback.
+    // Set the axis event callback function.
     g_eventCallback.axisCallback = OnAxisEventCallback;
     Input_Result ret = OH_Input_AddInputEventInterceptor(&g_eventCallback, nullptr);
     // ...

@@ -57,6 +57,7 @@
       - [使用扩展的Node-API接口在当前线程中创建、切换和销毁上下文环境](use-napi-about-context.md)
       - [使用扩展的Node-API接口创建对ArkTS对象的强引用](use-napi-about-strong-reference.md)
       - [使用扩展的Node-API接口创建和销毁临界区作用域及访问字符串内容](use-napi-about-critical.md)
+      - [使用扩展的Node-API接口限制微任务的执行](use-napi-about-microtask.md)
       - [使用Node-API接口产生的异常日志/崩溃分析](use-napi-about-crash.md)
       - [使用Node-API调用返回值为promise的ArkTS方法](use-napi-method-promise.md)
       - [使用扩展的Node-API接口创建对ArkTS对象的Sendable强引用](use-napi-about-sendable-reference.md)

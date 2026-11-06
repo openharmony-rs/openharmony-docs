@@ -263,3 +263,35 @@
 **替代方案**：
 
 请参考[文件权限组废弃替代方案](app-permission-group-list.md#文件deprecated)。
+
+## ohos.permission.WINDOW_CAPTURE
+
+允许应用获取指定窗口的内容信息并对其执行截图操作。
+
+获取该权限后，应用可查询指定窗口的ID及其所属应用包名等信息，并在指定窗口上执行截图操作。
+
+适用于智能体（Agent）应用的窗口内容感知场景，例如将窗口画面交由大模型进行分析运算。
+
+**权限级别**：normal
+
+**授权方式**：用户授权（user_grant）
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.1.0
+
+## ohos.permission.DISABLE_SCREEN_PRIVACY_PROTECTION
+
+允许应用录制受屏幕隐私保护的内容。
+
+获取此权限后，应用在录屏时可正常录制被屏幕隐私保护默认屏蔽的界面元素，如系统的状态通知、输入法等。 
+
+**申请条件**：应用需申请[ohos.permission.CUSTOM_SCREEN_RECORDING](restricted-permissions.md#ohospermissioncustom_screen_recording)（用户授权后不再弹出隐私告警弹窗），才可以申请此权限。
+
+**权限级别**：normal
+
+**授权方式**：手动设置授权（manual_settings）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.1.0

@@ -303,3 +303,199 @@ struct Index {
   }
 }
 ```
+
+## InsightIntentExecutionCallBack
+
+意图执行回调接口，用于注册意图执行前的回调。
+
+**起始版本**：26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| onWillInsightIntentExecuteCallBack | [OnWillInsightIntentExecuteCallBackFn](#onwillinsightintentexecutecallbackfn) | 否 | 是 | 意图执行前的回调。 |
+
+## OnWillInsightIntentExecuteCallBackFn
+
+type OnWillInsightIntentExecuteCallBackFn = (executionInfo: insightIntent.InsightIntentExecutionInfo) => void
+
+意图执行前的回调函数类型。
+
+**起始版本**：26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| executionInfo | [insightIntent.InsightIntentExecutionInfo](./js-apis-app-ability-insightIntent.md#insightintentexecutioninfo) | 是 | 意图执行信息。 |
+
+## insightIntentProvider.onWillInsightIntentExecute
+
+onWillInsightIntentExecute(callback: InsightIntentExecutionCallBack): void
+
+注册意图执行监听器，在意图执行前触发回调。
+
+**起始版本**：26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [InsightIntentExecutionCallBack](#insightintentexecutioncallback) | 是 | 意图执行前触发的回调。 |
+
+**示例：**
+
+  由于回调注册与意图执行可能位于不同文件，这里使用一个跨文件共享的全局单例`CallerInfoStorage`来保存调用方信息。该单例定义在一个单独的文件`CallerInfoStorage.ets`中。
+
+  ```ts
+  // CallerInfoStorage.ets
+  import { insightIntent } from '@kit.AbilityKit';
+
+  export class CallerInfoStorage {
+    private static callerInfo: insightIntent.InsightIntentExecutionInfo | undefined = undefined;
+
+    static setCallerInfo(info: insightIntent.InsightIntentExecutionInfo): void {
+      CallerInfoStorage.callerInfo = info;
+    }
+
+    static getCallerInfo(): insightIntent.InsightIntentExecutionInfo | undefined {
+      return CallerInfoStorage.callerInfo;
+    }
+  }
+  ```
+
+  在`onWillInsightIntentExecute`回调中，将调用方信息写入`CallerInfoStorage`：
+
+  ```ts
+  import { AbilityConstant, UIAbility, Want, insightIntent, insightIntentProvider } from '@kit.AbilityKit';
+  import { CallerInfoStorage } from './CallerInfoStorage';
+
+  export default class EntryAbility extends UIAbility {
+    private executionCallBack: insightIntentProvider.InsightIntentExecutionCallBack = {
+      onWillInsightIntentExecuteCallBack: (executionInfo: insightIntent.InsightIntentExecutionInfo) => {
+        // 将调用方信息写入全局单例，供其它文件的意图执行逻辑取用
+        CallerInfoStorage.setCallerInfo(executionInfo);
+      }
+    };
+
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+      // 在Ability创建时注册意图执行监听器，在意图执行前触发回调
+      insightIntentProvider.onWillInsightIntentExecute(this.executionCallBack);
+    }
+  }
+  ```
+
+`onWillInsightIntentExecuteCallBack`在意图执行前触发，可将调用方信息写入全局单例，供意图执行逻辑通过权限管理接口`checkAccessTokenSync`校验调用方权限。对于使用装饰器开发的Function类意图，可在意图定义接口中通过`permissions`字段声明执行该意图所需的权限，实际权限校验由意图提供方在意图执行逻辑中完成，示例如下。
+
+  ```ts
+  import { abilityAccessCtrl, InsightIntentFunction, InsightIntentFunctionMethod } from '@kit.AbilityKit';
+  import { CallerInfoStorage } from './CallerInfoStorage';
+
+  @InsightIntentFunction()
+  export class ClassForFuncDemo {
+    @InsightIntentFunctionMethod({
+      intentName: 'GetWeather',
+      domain: 'LifeDomain',
+      intentVersion: '1.0.1',
+      displayName: '查询天气',
+      displayDescription: '显示天气信息',
+      icon: $r('app.media.app_icon'), // $r表示本地图标，需要在资源目录中定义
+      llmDescription: 'Get weather of a location',
+      // 声明执行该意图所需的权限，实际校验由意图提供方在意图执行逻辑中完成
+      permissions: ['ohos.permission.GET_WEATHER'],
+      parameters: {
+        'type': 'object',
+        'title': 'Weather Schema',
+        'description': 'A schema for getting weather of a location',
+        'properties': {
+          'location': {
+            'type': 'string',
+            'description': 'The city and state, e.g. Hangzhou',
+            'minLength': 1
+          }
+        },
+        'required': ['location'],
+        'additionalProperties': false
+      }
+    })
+    static getWeather(location: string): string {
+      // 从全局单例取出调用方信息，进行权限校验
+      const callerInfo = CallerInfoStorage.getCallerInfo();
+      if (callerInfo === undefined) {
+        console.error('caller info is empty');
+        throw new Error('caller info is empty');
+      }
+      // 将调用方Token ID转换为number后，调用checkAccessTokenSync校验调用方权限
+      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+      const tokenID: number = Number(callerInfo.callerTokenId);
+      const grantStatus: abilityAccessCtrl.GrantStatus =
+        atManager.checkAccessTokenSync(tokenID, 'ohos.permission.GET_WEATHER');
+      if (grantStatus !== abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED) {
+        console.error('caller is not allowed to execute this intent');
+        throw new Error('caller is not allowed to execute this intent');
+      }
+      // 校验通过，返回意图执行结果
+      console.info(`location: ${location}`);
+      return 'The current temperature is 24℃';
+    }
+  }
+  ```
+
+## insightIntentProvider.offWillInsightIntentExecute
+
+offWillInsightIntentExecute(callback?: InsightIntentExecutionCallBack): void
+
+注销意图执行监听器。使用callback异步回调。
+
+**起始版本**：26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [InsightIntentExecutionCallBack](#insightintentexecutioncallback) | 否 | 意图执行前触发的回调。传入回调时注销该回调对应的监听器，不传入时默认注销所有意图执行监听器。 |
+
+**示例：**
+
+  ```ts
+  import { AbilityConstant, UIAbility, Want, insightIntent, insightIntentProvider } from '@kit.AbilityKit';
+
+  export default class EntryAbility extends UIAbility {
+    private executionCallBack: insightIntentProvider.InsightIntentExecutionCallBack = {
+      onWillInsightIntentExecuteCallBack: (executionInfo: insightIntent.InsightIntentExecutionInfo) => {
+        console.info(`intentName: ${executionInfo.intentName}`);
+      }
+    };
+
+    onDestroy(): void {
+      // 在Ability销毁时注销监听器，避免内存泄漏
+      // 若传入已注册的callback，则仅注销该callback对应的监听器
+      insightIntentProvider.offWillInsightIntentExecute(this.executionCallBack);
+      // 若不传callback，则注销所有意图执行监听器
+      insightIntentProvider.offWillInsightIntentExecute();
+    }
+  }
+  ```

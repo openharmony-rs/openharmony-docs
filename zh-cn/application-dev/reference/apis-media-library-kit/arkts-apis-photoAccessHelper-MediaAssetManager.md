@@ -435,7 +435,7 @@ static loadMovingPhoto(context: Context, imageFileUri: string, videoFileUri: str
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Failed to parse parameters. Please check the number and types of parameters.<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>User file client initialization failed, possible causes: (1)Database exception; (2)IPC timeout. Please retry. |
 
 **示例：**
 
@@ -487,7 +487,7 @@ static quickRequestImage(context: Context, asset: PhotoAsset, requestOptions: Re
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>User file client initialization failed, possible causes: 1. Database exception; 2. IPC timeout. Please retry. |
+| 14000011 | Internal system error. |
 
 **示例：**
 
