@@ -51,20 +51,26 @@
     > 逻辑相机是系统定义的虚拟相机，由多个物理镜头组合而成。系统在内部完成物理镜头间的切换等处理，应用无需感知镜头变化，只需通过[getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)获取相机列表时，根据[CameraPosition](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraposition)区分前置镜头与后置镜头即可。
 
    <!-- @[camera_getSupportedCameras](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
-   ```ts
-   function getCameraDevices(cameraManager: camera.CameraManager): Array<camera.CameraDevice> {
-     let cameraArray: Array<camera.CameraDevice> = cameraManager.getSupportedCameras();
-     if (cameraArray != undefined && cameraArray.length > 0) {
-       for (let index = 0; index < cameraArray.length; index++) {
-         console.info('cameraId : ' + cameraArray[index].cameraId);  // 获取相机ID。
-         console.info('cameraPosition : ' + cameraArray[index].cameraPosition);  // 获取相机位置。
-         console.info('cameraType : ' + cameraArray[index].cameraType);  // 获取相机类型。
-         console.info('connectionType : ' + cameraArray[index].connectionType);  // 获取相机连接类型。
+   
+   ``` TypeScript
+   getSupportedCamerasFn(cameraManager: camera.CameraManager): camera.CameraDevice[] {
+     let supportedCameras: camera.CameraDevice[] = [];
+     try {
+       supportedCameras = cameraManager.getSupportedCameras();
+     } catch (error) {
+       let err = error as BusinessError;
+       Logger.error(TAG, `getSupportedCameras failed: ${err.code}`);
+     }
+     if (supportedCameras != undefined && supportedCameras.length > 0) {
+       for (let index = 0; index < supportedCameras.length; index++) {
+         console.info(`cameraId : ${supportedCameras[index].cameraId}`);  // 获取相机ID。
+         console.info(`cameraPosition : ${supportedCameras[index].cameraPosition}`);  // 获取相机位置。
+         console.info(`cameraType : ${supportedCameras[index].cameraType}`);  // 获取相机类型。
+         console.info(`connectionType : ${supportedCameras[index].connectionType}`);  // 获取相机连接类型。
        }
-       return cameraArray;
+       return supportedCameras;
      } else {
-       console.error("cameraManager.getSupportedCameras error");
+       console.error(`cameraManager.getSupportedCameras error`);
        return [];
      }
    }
