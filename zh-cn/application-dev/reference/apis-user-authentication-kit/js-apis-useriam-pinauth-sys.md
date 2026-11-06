@@ -15,12 +15,11 @@
 - 系统应用需要设置PIN复杂度校验策略，约束用户创建或修改锁屏密码时必须满足复杂度要求。
 - 设置界面需要查询当前已生效的PIN策略并回显。
 
+**起始版本：** 26.1.0
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-> - 本模块首批接口从API version 26.1.0开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
-> - 本模块为系统接口。
+> - 本模块接口为系统接口。
 
 ## 关键Class/Interface介绍
 
@@ -71,15 +70,15 @@ import { pinAuth } from '@kit.UserAuthenticationKit';
 
 PIN复杂度校验策略。用于定义用户创建或修改锁屏PIN时必须满足的复杂度规则，以及该规则的描述信息。
 
-**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
 
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -88,19 +87,23 @@ PIN复杂度校验策略。用于定义用户创建或修改锁屏PIN时必须�
 
 ## pinAuth.setPinValidityPeriod
 
-setPinValidityPeriod(userId: int, validityPeriod: long): void
+ArkTS-Dyn: setPinValidityPeriod(userId: number, validityPeriod: number): void
+
+ArkTS-Sta: setPinValidityPeriod(userId: int, validityPeriod: long): void
 
 设置PIN有效期。策略设置成功后，当PIN过期时，系统将弹出安全提示，要求用户重置PIN。
-
-**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
 
+**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -163,19 +166,23 @@ try {
 
 ## pinAuth.getPinValidityPeriod
 
-getPinValidityPeriod(userId: int): long | undefined
+ArkTS-Dyn: getPinValidityPeriod(userId: number): number | undefined
+
+ArkTS-Sta: getPinValidityPeriod(userId: int): long | undefined
 
 查询PIN有效期。
-
-**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
 
+**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -246,17 +253,19 @@ try {
 
 ## pinAuth.setPinDeletionDisabledState
 
-setPinDeletionDisabledState(userId: int, isDisabled: boolean): void
+ArkTS-Dyn: setPinDeletionDisabledState(userId: number, isDisabled: boolean): void
+
+ArkTS-Sta: setPinDeletionDisabledState(userId: int, isDisabled: boolean): void
 
 设置PIN删除功能的禁用状态。策略设置成功后，当该功能被禁用时，用户将无法删除PIN。
-
-**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **系统接口：** 此接口为系统接口。
 
@@ -320,17 +329,19 @@ try {
 
 ## pinAuth.getPinDeletionDisabledState
 
-getPinDeletionDisabledState(userId: int): boolean | undefined
+ArkTS-Dyn: getPinDeletionDisabledState(userId: number): boolean | undefined
+
+ArkTS-Sta: getPinDeletionDisabledState(userId: int): boolean | undefined
 
 查询PIN删除功能的禁用状态。
-
-**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **系统接口：** 此接口为系统接口。
 
@@ -405,17 +416,19 @@ try {
 
 ## pinAuth.setPinComplexityPolicy
 
-setPinComplexityPolicy(userId: int, policy: PinComplexityPolicy): void
+ArkTS-Dyn: setPinComplexityPolicy(userId: number, policy: PinComplexityPolicy): void
+
+ArkTS-Sta: setPinComplexityPolicy(userId: int, policy: PinComplexityPolicy): void
 
 设置PIN复杂度校验策略及其描述。策略设置成功后，用户创建或修改锁屏PIN时，输入的PIN必须匹配策略中的复杂度正则表达式。
-
-**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **系统接口：** 此接口为系统接口。
 
@@ -485,17 +498,19 @@ try {
 
 ## pinAuth.getPinComplexityPolicy
 
-getPinComplexityPolicy(userId: int): PinComplexityPolicy | undefined
+ArkTS-Dyn: getPinComplexityPolicy(userId: number): PinComplexityPolicy | undefined
+
+ArkTS-Sta: getPinComplexityPolicy(userId: int): PinComplexityPolicy | undefined
 
 查询PIN复杂度校验策略及其描述。
-
-**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **系统接口：** 此接口为系统接口。
 
