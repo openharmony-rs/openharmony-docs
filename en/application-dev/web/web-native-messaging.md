@@ -5,11 +5,11 @@
 <!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=ad5469fbcda822087d5c238527a41ea4012361c4 translatedAt=2026-09-16T04:02:08.059Z pushedAt=2026-09-16T08:46:09.208Z -->
+<!-- md-trans-meta sourceCommit=4f945590f61307c03472767556879a597fa3ab93 translatedAt=2026-11-05T10:42:40.038Z pushedAt=2026-11-06T00:41:34.990Z nl=1 -->
 
 ## Overview
 
-Browser extensions can communicate with applications to access services for implementing the application's capabilities. For example, in a password manager, the application stores and encrypts passwords, allowing the browser extension to automatically fill in form fields on web pages.
+Browser extensions support exchanging messages with applications installed on the system. Applications provide services to extensions, helping extensions implement capabilities that only applications possess. A common example is a password manager: the application is responsible for storing and encrypting the developer's password information so that the browser extension can automatically fill in form fields on web pages.
 
 Since API version 21, you can use the [WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md) component in applications to provide backend services for browser extensions.
 
@@ -139,9 +139,9 @@ Implement the **main.js** file.
 ```js
 // Trigger the calling from HTML.
 function sendMessageToNative() {
-  var message = "ping"; // Send a ping packet.
+  let message = 'ping'; // Send ping.
   chrome.runtime.sendMessage({
-    type: "sendMessage",
+    type: 'sendMessage',
     message: message
   }, function (response) {});
 }
@@ -149,48 +149,48 @@ function sendMessageToNative() {
 Implement the **background.js** file.
 
 1. Use **chrome.runtime.connectNative** for connection.
-   ``` ts	
-   var port = null;	
+   ``` ts
+   let port = null;
    // Listen for messages from main.js.
-   chrome.runtime.onMessage.addListener(	
-     function (request, sender, sendResponse) {	
-       if (request.type == "sendMessage") {	
-         if (port == null) {	
-           connectToNativeHost();	
-         }	
+   chrome.runtime.onMessage.addListener(
+     function (request, sender, sendResponse) {
+       if (request.type === 'sendMessage') {
+         if (port == null) {
+           connectToNativeHost();
+         }
          port.postMessage(request.message); // Send the message to the app.
-       }	
+       }
        return true; // Keep the message channel open.
-   });	
-   function connectToNativeHost() {	
-     var bundleName = "com.example.app"; // The bundleName of the app corresponding to the extension.
+   });
+   function connectToNativeHost() {
+     let bundleName = 'com.example.app'; // bundleName of the app corresponding to the extension.
      port = chrome.runtime.connectNative(bundleName); // Obtain the communication port based on the bundleName.
      port.onMessage.addListener(onNativeMessage); // Listen for messages from the native app.
      port.onDisconnect.addListener(onDisconnected); // Listen for disconnection.
-   }	
+   }
     // Triggered when a message is received from the native program.
-   async function onNativeMessage(message) {	
+   async function onNativeMessage(message) {
      console.info('Message received from the local app:' + JSON.stringify(message)); // The pong in the example.
-   }	
+   }
    // Triggered when the connection is disconnected.
-   function onDisconnected() {	
-     port = null;	
-   }	
+   function onDisconnected() {
+     port = null;
+   }
    ```
-
+ 
 2. Use **chrome.runtime.sendNativeMessage** for connection.
    ``` ts
    function sendNativeMessage() {
-     var bundleName = "com.example.app"; // bundleName of the app corresponding to the plugin
-     var nativeMessage = "ping"; // Content that the plugin sends to the app
+     let bundleName = 'com.example.app'; // bundleName of the app corresponding to the extension.
+     let nativeMessage = 'ping'; // Content to be sent from the extension to the app.
      chrome.runtime.sendNativeMessage(
        bundleName,
        {message: nativeMessage},
        function(response) {
        // Disconnect the connection after receiving a response from the application.
-       console.info("sendNativeMessage received the application response:", JSON.stringify(response));
+       console.info('sendNativeMessage received a response from the app:', JSON.stringify(response));
        }
-     )
+     );
    }
    ```
 
@@ -209,7 +209,9 @@ To manually create a WebNativeMessagingExtensionAbility in the DevEco Studio pro
     └
    ```
 3. In the **MyWebNativeMessageExtAbility.ets** file, import the [WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md) module. Customize a class that inherits from WebNativeMessagingExtensionAbility and implement the lifecycle callbacks.
-   ```ts
+   <!-- @[MyWebNativeMessageExtAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebNativeMessaging/entry/src/main/ets/MyWebNativeMessageExtAbility/MyWebNativeMessageExtAbility.ets) -->
+   
+   ``` TypeScript
    import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import {buffer, util} from '@kit.ArkTS';
@@ -232,8 +234,8 @@ To manually create a WebNativeMessagingExtensionAbility in the DevEco Studio pro
          hilog.info(DOMAIN_NUMBER, TAG, 'read pipe %{public}s', buffer.from(arrayBuffer, 4, readLen - 4).toString());
 
          // write
-         let strResponse : string = "pong";
-         const encoder = new util.TextEncoder("utf-8");
+         let strResponse : string = 'pong';
+         const encoder = new util.TextEncoder('utf-8');
          const strBytes = encoder.encodeInto(strResponse);
          let bufferLen = strBytes.length;
          const lenBytes = new Uint8Array(4);
@@ -247,7 +249,7 @@ To manually create a WebNativeMessagingExtensionAbility in the DevEco Studio pro
          let writeLen = await fileIo.write(fdWrite, writeBuffer.buffer);
          hilog.info(DOMAIN_NUMBER, TAG, 'write pipe length %{public}d', writeLen);
        } catch (err) {
-         hilog.error(DOMAIN_NUMBER, TAG, 'fileIo failed, error code: ' + err.code + " message: " + err.message);
+         hilog.error(DOMAIN_NUMBER, TAG, 'fileIo failed, error code: ' + err.code + ' message: ' + err.message);
        }
      }
 
@@ -316,14 +318,16 @@ To manually create a WebNativeMessagingExtensionAbility in the DevEco Studio pro
 The browser is responsible for implementing the extension runtime API, starting the WebNativeMessagingExtensionAbility, and establishing and managing NativeMessaging connections. The following permission is required: **ohos.permission.WEB_NATIVE_MESSAGING**.
 
 1. When receiving a NativeMessaging connection creation request, the browser obtains the extension configuration of the target application through the [get20](../reference/apis-arkdata/js-apis-data-dataShare.md#get20) API, reads the name of WebNativeMessagingExtensionAbility and the list of extensions that can be accessed, and checks whether the access is allowed.
-   ```ts
+   <!-- @[GetManifestData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebNativeMessaging/entry2/src/main/ets/pages/GetManifestData.ets) -->
+   
+   ``` TypeScript
    import { dataShare } from '@kit.ArkData';
 
    interface ExtensionConfig {
      abilityName:string;
      allowed_origins:string[];
    }
- 
+
    async function getManifestData(bundleName:string, connectExtensionOrigin:string) {
      try {
       // Call the dataShare API to obtain the extension configuration.
@@ -338,7 +342,7 @@ The browser is responsible for implementing the extension runtime API, starting 
          try {
            const result = results[i];
            const json = result.value;
-           if (typeof json !== "string") {
+           if (typeof json !== 'string') {
              continue;
            }
            let jsonStr:string = json as string;
@@ -370,14 +374,16 @@ The browser is responsible for implementing the extension runtime API, starting 
    }
    ```
 2. Call [webNativeMessagingExtensionManager.connectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerconnectnative) to create a NativeMessaging connection. If the WebNativeMessagingExtensionAbility is not yet running, this API starts the ExtensionAbility and triggers it.
-   ```ts
+   <!-- @[ConnectNative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebNativeMessaging/entry2/src/main/ets/pages/ConnectNative.ets) -->
+   
+   ``` TypeScript
    import { UIAbility, Want, common } from '@kit.AbilityKit';
    import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
 
    class ConnectionCallback implements webNativeMessagingExtensionManager.WebExtensionConnectionCallback {
      onConnect(connection:webNativeMessagingExtensionManager.ConnectionNativeInfo) {
        // connected
-       console.error(`onConnect id ${connection.connectionId} is connected`);
+       console.info(`onConnect id ${connection.connectionId} is connected`);
      }
      onDisconnect(connection:webNativeMessagingExtensionManager.ConnectionNativeInfo) {
        // disconnect
@@ -405,13 +411,15 @@ The browser is responsible for implementing the extension runtime API, starting 
        let connectId = webNativeMessagingExtensionManager.connectNative(abilityContext, wantInfo, options);
        console.info(`innerWebNativeMessageManager  connectionId : ${connectId}` );
      } catch (error) {
-       console.info(`inner callback error Message: ${JSON.stringify(error)}`);
+       console.error(`inner callback error Message: ${JSON.stringify(error)}`);
      }
    }
    ```
 
 3. Call [webNativeMessagingExtensionManager.disconnectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerdisconnectnative) to destroy the NativeMessaging connection.
-   ```ts
+   <!-- @[DisconnectNative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebNativeMessaging/entry2/src/main/ets/pages/DisconnectNative.ets) -->
+   
+   ``` TypeScript
    import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
 
    function disconnectNative(connectId: number) : void {

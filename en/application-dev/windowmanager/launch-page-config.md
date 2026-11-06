@@ -1,12 +1,11 @@
 # Configuring the Application Starting Window
-
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
-<!--Tester: @qinliwen0417-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=8cf28b4bed336bbf294d28e16d1b89c3a99ffbe9 translatedAt=2026-08-11T10:10:57.686Z pushedAt=2026-08-11T11:08:02.614Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-05T10:48:07.782Z pushedAt=2026-11-06T01:01:07.178Z nl=1 -->
 
 ## Classification and Implementation of Starting Windows
 
@@ -29,7 +28,6 @@ A simple starting window is mandatory for every UIAbility. You can set the **sta
 > - For details about full-screen resource display, see [Configuring an Enhanced Starting Window](#configuring-an-enhanced-starting-window).
 
 In the created UIAbility template, the default configuration for the simple starting window fields is as follows:
-
 <!-- @[startWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StartWindow/sampleForStartWindow/entry/src/main/module.json5) -->
 
 ``` JSON5
@@ -60,9 +58,8 @@ The **startWindow** field provides enhanced capabilities for configuring startin
 1. In the created UIAbility template, add the **startWindow** field to point to a level-2 JSON file to enable enhanced configuration for the starting window.
 
    You are advised to create a JSON file named **start_window.json** and place it in the **resources/base/profile** directory. In this case, configure the following field in the **abilities** tag of the **module.json5** file:
-
    <!-- @[enhancedStartWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StartWindow/EnhancedStartingWindow/entry/src/main/module.json5) -->
-
+   
    ``` JSON5
    "startWindow": "$profile:start_window",
    ```
@@ -80,17 +77,15 @@ The **startWindow** field provides enhanced capabilities for configuring startin
    | startWindowBackgroundColor | string | Yes | Index of the background color resource file for the enhanced launch of the current UIAbility component. The value is a string of no more than 255 bytes.<br>The background color fills the entire window and is at the lowest display layer. Transparent colors are not recommended.<br>If this field is not configured, the enhanced starting window configuration file does not take effect, and the simple starting window configuration is used instead.<br><!--RP2-->This field is supported since API version 20.<!--RP2End--> |
    | startWindowBackgroundImage | string | Yes | Index of the background image resource file for the enhanced launch of the current UIAbility component. The value is a string of no more than 255 bytes.<br>The entire window serves as the container, and the fill mode is specified by the **startWindowBackgroundImageFit** field.<br><!--RP2-->This field is supported since API version 20.<!--RP2End--> |
    | startWindowBackgroundImageFit | string | Yes | Fill mode of the background image for the enhanced launch of the current UIAbility component. The supported values are:<br>- "Contain": Scales the image up or down while maintaining the aspect ratio so that the image fits fully within the display boundary.<br>- "Cover": Scales the image up or down while maintaining the aspect ratio so that both sides of the image are greater than or equal to the display boundary.<br>- "Auto": Scales the image appropriately based on its own dimensions and the component dimensions to fill the view while maintaining the aspect ratio.<br>- "Fill": Scales the image up or down without maintaining the aspect ratio so that the image fills the display boundary.<br>- "ScaleDown": Displays the image while maintaining the aspect ratio, scaling it down or keeping it unchanged.<br>- "None": Displays the image at its original dimensions.<br>If this field is not configured, the default fill mode is "Cover".<br><!--RP2-->This field is supported since API version 20.<!--RP2End--> |
-
    <!--RP3--><!--RP3End-->
-
+   
 **Figure 2** Enhanced starting window
-
+   
 ![Enhanced-starting-window](figures/Enhanced-starting-window.png)
-
+   
 Example:
-
+   
    <!--RP4-->
-
    ```json
    {
      "startWindowType": "REQUIRED_SHOW",
@@ -102,5 +97,4 @@ Example:
      "startWindowBackgroundImageFit": "Contain"
    }
    ```
-
    <!--RP4End-->

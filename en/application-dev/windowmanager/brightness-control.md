@@ -4,9 +4,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=58ff40ad92758153f7b55166a9e6e0a0e9be5d28 translatedAt=2026-07-10T07:15:20.416Z pushedAt=2026-07-13T02:01:38.569Z -->
+<!-- md-trans-meta sourceCommit=2790fc004834a3d244989501ed6aacaf9dca08f7 translatedAt=2026-11-05T10:46:44.268Z pushedAt=2026-11-06T00:59:58.281Z nl=1 -->
 
 ## When to Use
 
@@ -30,7 +30,7 @@ Always-on control is used to determine whether the screen remains lit for a peri
 
 - **Display brightness**: Refers to the global display brightness of the device screen. Its scope covers the entire screen and affects the display effect of the system UI and all app windows.  
 
-  Display brightness can be adjusted through the **Control Center** or **Settings &gt; Display & brightness**. There is currently no API for directly setting the system display brightness, but when **-1** is passed to [setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1), the window brightness is restored to the system display brightness.
+  Display brightness can be adjusted through the **Control Center** or **Settings &gt; Display & brightness**. There is currently no API for directly setting the system display brightness, but when **-1.0** is passed to [setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1), the window brightness is restored to the system display brightness.
 
 ## Controlling Screen Always-On
 

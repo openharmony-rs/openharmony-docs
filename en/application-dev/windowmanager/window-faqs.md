@@ -3,9 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @JUGaaab-->
 <!--Designer: @ki_ja-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=3bd46a1d3614ecae7d45fa7b3b78285ce9f7a1da translatedAt=2026-10-08T09:03:40.451Z pushedAt=2026-10-08T11:31:17.831Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-05T10:51:06.235Z pushedAt=2026-11-06T01:43:32.806Z nl=1 -->
 
 ## How to Launch Application B During the Startup of Application A
 
@@ -837,3 +837,18 @@ windowClass.on('avoidAreaChange', (data) => {
   }
 });
 ```
+
+## Brief Window Size and App Layout Desynchronization During Rapid Resizing in Free Windows Mode
+
+**Symptom**
+
+On devices that support [free windows mode](window-terminology.md#free-windows), when the window border is dragged rapidly, the window border follows the mouse in real time, but the layout refresh of the application content inside the window is delayed, resulting in a brief out-of-sync between the window size and the application layout. After the drag ends, the application layout becomes consistent with the window size.
+
+**Possible Causes**
+
+This behavior is a system specification. Window management adopts a client-server architecture. During the dragging of the window border, the window size update and the application layout refresh are handled by independent links in two processes:
+
+- The window border is rendered directly by the window management service process and follows the mouse position in real time, thereby ensuring rendering continuity and low-latency tracking during the drag.
+- The refresh management of the application content layout runs in the application process and can be completed only after cross-process size notification, application-side calculation, and re-layout.
+
+Based on the preceding design, the brief out-of-sync between the window frame and the application layout during rapid dragging of the window border is by design. After the drag ends, the system synchronizes the final window size to the application process, and the two become consistent after the application side completes the layout re-layout.

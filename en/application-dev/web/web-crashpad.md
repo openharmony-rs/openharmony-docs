@@ -1,12 +1,11 @@
 # Using Crashpad to Collect Web Component Crash Information
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @qq_44167590-->
-<!--Designer: @hjoksky-->
+<!--Owner: @zwpless1-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=6f1cd3840c5f7e83241b79517353499343338b04 translatedAt=2026-08-14T03:43:08.545Z pushedAt=2026-08-14T07:34:12.203Z -->
+<!-- md-trans-meta sourceCommit=f2cb90ea9079d0191b3ff88af7f2dba948359c80 translatedAt=2026-11-05T10:38:14.393Z pushedAt=2026-11-05T11:28:35.145Z nl=1 -->
 
 The Web component supports using Crashpad to record process crash information. Crashpad is a process crash information processing tool provided by the Chromium kernel. After a process (Web rendering process) crash caused by the app using the Web component occurs, Crashpad writes a dmp file to the app main process sandbox directory. This file is in binary format with the dmp suffix, and records the cause of the process crash, thread information, register information, and so on. The app can use this file to analyze crash issues related to Web component processes. The Web component supports the [onRenderExited](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderexited9) and [onRenderProcessNotResponding](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderprocessnotresponding12) APIs starting from API version 9 and API version 12, respectively. You can use these Web APIs to detect rendering process exit and rendering process unresponsiveness, and add app processing logic in these APIs.
 
@@ -14,14 +13,14 @@ Procedure:
 
 1. After a process crash caused by the app using the Web component occurs, Crashpad receives the signal, and the corresponding Hilog log (excerpt) is as follows:
 
-  ```c
-  pid-30069             I     [crashpad_ohos.cc:254] crashpad SandboxedHandler::HandleCrash, received signo = 6
-  pid-30069             I     [crashpad_ohos.cc:182] crashpad SandboxedHandler::HandleCrashNonFatal, connect to handler successfully, need to request dump
-  ...
-  arkweb_cr..._handler  I     [crash_report_database.cc:91] crash dmp path : /data/storage/el2/log/crashpad/new/xxx.dmp
-  ```
+   ```c
+   pid-30069             I     [crashpad_ohos.cc:254] crashpad SandboxedHandler::HandleCrash, received signo = 6
+   pid-30069             I     [crashpad_ohos.cc:182] crashpad SandboxedHandler::HandleCrashNonFatal, connect to handler successfully, need to request dump
+   ...
+   arkweb_cr..._handler  I     [crash_report_database.cc:91] crash dmp path : /data/storage/el2/log/crashpad/new/xxx.dmp
+   ```
 
-At this point, Crashpad starts requesting a dump. After the dump succeeds, a corresponding dmp file is generated in the app main process sandbox directory. The corresponding sandbox path is as follows:
+   At this point, Crashpad starts requesting a dump. After the dump succeeds, a corresponding dmp file is generated in the sandbox directory of the application's main process. The corresponding sandbox path is as follows:
 
    ```c
    /data/storage/el2/log/crashpad
@@ -29,49 +28,49 @@ At this point, Crashpad starts requesting a dump. After the dump succeeds, a cor
 
 2. Refer to <!--RP1-->Native Access to the App Sandbox<!--RP1End--> to access the dmp file in the app sandbox. You can also copy the file from the sandbox path where the dmp file is stored to a path that can be viewed. The example is as follows:
 
-<!-- @[web_get_dmp_files](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebGetDmpFiles/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[web_get_dmp_files](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebGetDmpFiles/entry/src/main/ets/pages/Index.ets) --> 
 
-``` TypeScript
-import { fileIo as fs } from '@kit.CoreFileKit'
-import { BusinessError } from '@kit.BasicServicesKit'
-import { webview } from '@kit.ArkWeb'
+   ``` TypeScript
+   import { fileIo } from '@kit.CoreFileKit'
+   import { BusinessError } from '@kit.BasicServicesKit'
+   import { webview } from '@kit.ArkWeb'
 
-@Entry
-@Component
-struct Index {
-  controller: webview.WebviewController = new webview.WebviewController();
-  uiContext: UIContext = this.getUIContext();
-  build() {
-    RelativeContainer() {
-      Web({src:'chrome://memory-exhaust/', controller:this.controller})
-      Button('file')
-        .onClick(() => {
-          let pathDir = this.uiContext.getHostContext()?.filesDir;
-          console.info("pathdir=" + pathDir);
-          fs.copyDir("/data/storage/el2/log/crashpad/pending/", pathDir, 0)
-            .then(()=>{
-              console.info("copy files success");
-            })
-            .catch((err: BusinessError)=>{
-              console.error("copy failed with error message: " + err.message + ", error code: " + err.code);
-            })
-        })
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
+   @Entry
+   @Component
+   struct Index {
+     controller: webview.WebviewController = new webview.WebviewController();
+     uiContext: UIContext = this.getUIContext();
+     build() {
+       RelativeContainer() {
+         Web({src:'chrome://memory-exhaust/', controller:this.controller})
+         Button('file')
+           .onClick(() => {
+             let pathDir = this.uiContext.getHostContext()?.filesDir;
+             console.info("pathdir=" + pathDir);
+             fileIo.copyDir("/data/storage/el2/log/crashpad/pending/", pathDir, 0)
+               .then(()=>{
+                 console.info("copy files success");
+               })
+               .catch((err: BusinessError)=>{
+                 console.error("copy failed with error message: " + err.message + ", error code: " + err.code);
+               })
+           })
+       }
+       .height('100%')
+       .width('100%')
+     }
+   }
+   ```
 
-The preceding example copies all dmp files to a sandbox path that can be viewed. You can also search for ".dmp" in the Hilog log to obtain the dmp file name, so that a specific dmp file can be copied to another sandbox path. The specific path is:
+   The preceding example copies all dmp files to a viewable sandbox path. You can also search for ".dmp" in Hilog logs to obtain the dmp file name, and then copy a specific dmp file to another sandbox path. The specific path is
 
-  ```c
-  /data/app/el2/100/base/com.example.myapplication/haps/entry/files/
-  ```
+   ```c
+   /data/app/el2/100/base/com.example.myapplication/haps/entry/files/
+   ```
 
-This path can be viewed using DevEco Studio.
+   This path can be viewed using DevEco Studio.
 
-![image.png](figures/arkweb-visible-sandbox-path.png 'image.png')
+   ![image.png](figures/arkweb-visible-sandbox-path.png 'image.png')
 
 3. Parse the DMP file as follows:
 
@@ -131,5 +130,4 @@ This path can be viewed using DevEco Studio.
      ```
 
      The llvm-addr2line toolchain is located in the SDK.
-
 <!--no_check-->

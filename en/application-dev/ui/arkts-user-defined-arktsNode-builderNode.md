@@ -1728,13 +1728,17 @@ When BuilderNode freezing is enabled ([inheritFreezeOptions](../reference/apis-a
 
 Sample code for page 1:
 
-```ts
+<!-- @[Main_inheritFreezeRouterPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/inheritFreezeRouterPage1.ets) -->
+
+``` TypeScript
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const BOOK_INITIAL_NAME = '100';
 
 @ObservedV2
 export class Book {
-  @Trace name: string = "100";
-
+  @Trace public name: string = BOOK_INITIAL_NAME;
   constructor(name: string) {
     this.name = name;
   }
@@ -1748,10 +1752,10 @@ function buildText(book: Book) {
 }
 
 class TextNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-  private textNode: BuilderNode<[Book]> | null = null;
-  index: number = 0;
-  name: string = "100";
+  public rootNode: FrameNode | null = null;
+  public textNode: BuilderNode<[Book]> | null = null;
+  public index: number = 0;
+  public name: string = BOOK_INITIAL_NAME;
 
   makeNode(context: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(context);
@@ -1779,30 +1783,27 @@ export struct Index3 {
 
 @ComponentV2({ freezeWhenInactive: true })
 struct BuildNodeChild {
-  @Local bookTest: Book = new Book("A Midsummer Night's Dream");
+  @Local bookTest: Book = new Book(`A Midsummer Night's Dream`);
 
-  @Monitor("bookTest.name")
+  @Monitor('bookTest.name')
   onMessageChange(monitor: IMonitor) {
-    console.info(`The book name change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+    hilog.info(0xF811, 'testTag', '%{public}s',`The book name change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
 
   build() {
     Column() {
       Text(`Book name is  ${this.bookTest.name}`).fontSize(30)
-      Button('change')
-        .width('60%')
-        .height(40)
-        .fontSize(30)
+      Button('change').width('60%').height(40).fontSize(30)
         .onClick(() => {
-          this.bookTest.name = "The Old Man and the Sea";
+          this.bookTest.name = 'The Old Man and the Sea';
         })
         .margin(5)
       Button('next').width('60%').height(40).fontSize(30)
         .onClick(() => {
-          this.getUIContext().getRouter().pushUrl({ url: 'pages/routing' });
+          this.getUIContext().getRouter().pushUrl({ url: 'pages/inheritFreezeRouterPage2' });
           setTimeout(() => {
-            this.bookTest = new Book("Jane Austen's Pride and Prejudice");
-          }, 1000)
+            this.bookTest = new Book(`Jane Austen's Pride and Prejudice`);
+          }, 1000);
         })
     }
   }
@@ -1811,7 +1812,9 @@ struct BuildNodeChild {
 
 Sample code for page 2 (**Routing2**, the next page of page 1):
 
-```ts
+<!-- @[Main_inheritFreezeRouterPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/inheritFreezeRouterPage2.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Page2 {
@@ -1845,8 +1848,11 @@ For details, see the following.
 
 ![freezeWithTab](state-management/figures/freezewithTabs.png)
 
-```ts
+<!-- @[Main_TabContentPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/TabContentPage.ets) -->
+
+``` TypeScript
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class Params {
   message: number = 0;
@@ -1908,7 +1914,8 @@ struct TabContentTest {
           TabContent() {
             Column() {
               FreezeBuildNode({ message: this.message })
-              Text('BuilderNode frozen after Tabs traversal')
+              // Replace $r('app.string.text3') with the actual resource file. In this example, the value of this resource file is "BuilderNode is frozen after Tabs traversal:".
+              Text($r('app.string.text3'))
                 .fontWeight(FontWeight.Bold)
                 .margin({ top: 48, bottom: 48 })
                 .fontSize(30)
@@ -1972,11 +1979,18 @@ In the preceding example:
 
 The BuilderNode freezing capability for the **Navigation** component (enabled by setting [inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20) to **true**) extends the component freezing mechanism to navigation scenarios. Its core purpose is to optimize the performance of **Navigation** components containing BuilderNodes during page switching or state updates, avoiding redundant calculations and rendering for components in an inactive state. When the **Navigation** page hosting the BuilderNode enters an inactive state (for example, the page is switched to the background, hidden behind a tab page, or obscured by a sidebar), the system marks the page as frozen. In the frozen state, child components of the BuilderNode suspend state updates, event responses, and rendering refreshes. For example, state changes (such as @State and @Prop updates) do not trigger re-rendering, and lifecycle callbacks are temporarily invalidated. By setting [inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20) to **true**, the BuilderNode inherits the frozen state of its parent component (such as **Navigation**). This ensures the entire child component tree under the BuilderNode enters a frozen state synchronously, preventing performance overhead caused by partial unfreezing of components.
 
-```ts
+<!-- @[Main_NavigationPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/NavigationPage.ets) -->
+
+``` TypeScript
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { common } from '@kit.AbilityKit';
+
+const PAGE_ONE_INDEX = 1;
+const PAGE_TWO_INDEX = 2;
 
 class Params {
-  count: number = 0;
+  public count: number = 0;
 
   constructor(count: number) {
     this.count = count;
@@ -2059,7 +2073,7 @@ struct MyNavigationTestStack {
 @ComponentV2
 struct PageOneStack {
   @Consumer('pageInfo') pageInfo: NavPathStack=new NavPathStack();
-  @Local index: number = 1;
+  @Local index: number = PAGE_ONE_INDEX;
   @Param @Require  message: number;
   @Param @Require logNumber: number;
 
@@ -2093,15 +2107,17 @@ struct PageOneStack {
 @ComponentV2
 struct PageTwoStack {
   @Consumer('pageInfo') pageInfo: NavPathStack=new NavPathStack();
-  @Local index: number = 2;
+  @Local index: number = PAGE_TWO_INDEX;
   @Param @Require message: number;
   @Param @Require logNumber: number;
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   build() {
     NavDestination() {
       Column() {
         NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
-        Text('BuilderNode is frozen')
+        // 请将$r('app.string.text1')替换为实际资源文件，在本示例中该资源文件的value值为"BuilderNode处于冻结"。
+        Text($r('app.string.text1'))
           .fontWeight(FontWeight.Bold)
           .margin({ top: 48, bottom: 48 })
         Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
@@ -2137,7 +2153,8 @@ struct NavigationContentMsgStack {
 
 @ComponentV2({ freezeWhenInactive: true }) // Set the freeze policy to freeze when inactive.
 struct TextBuilder {
-  @Param  message: number = 0;
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  @Param message: number = 0;
 
   @Monitor('message')
   info() {
@@ -2146,7 +2163,8 @@ struct TextBuilder {
   build() {
     Row() {
       Column() {
-        Text(`Update count: ${this.message}`)
+        // Configure a resource with the name 'text2' in the resources\base\element\string.json file. In this example, the value of this resource is "Text update count: ".
+        Text(this.context.resourceManager.getStringByNameSync('text2') + `${this.message}`)
           .fontWeight(FontWeight.Bold)
           .margin({ top: 48, bottom: 48 })
       }
@@ -2169,8 +2187,11 @@ In the preceding example:
 
 The BuilderNode freezing capability for the **Repeat** component (enabled by setting [inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20) of BuilderNode to **true**) is a scenario-specific implementation of the component freezing mechanism for cyclic list use cases. Its core goal is to optimize performance for repeatedly generated child components in an inactive state within a list, reducing unnecessary resource overhead. When a child component generated by the BuilderNode enters an inactive state (for example, a list item is scrolled off-screen, the parent component is frozen, or the entire list is invisible), the system marks the BuilderNode and its child component tree as frozen. In the frozen state, the list item associated with the BuilderNode suspends the following to avoid invalid background computations: state updates (for example, @Local or @Param state changes do not trigger re-rendering), event responses (for example, click and swipe events are invalidated), and lifecycle callbacks. By setting [inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20) to **true**, the BuilderNode inherits the frozen state of its parent **Repeat** component. This ensures all cyclically generated child components adhere to the freezing rules consistently, preventing performance overhead caused by partial unfreezing of components.
 
-```ts
+<!-- @[Main_RepeatPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RepeatPage.ets) -->
+
+``` TypeScript
 import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 // Define a Parameter class for passing data.
 @ObservedV2
@@ -2192,7 +2213,7 @@ class Params {
   index: number = 0;
 
   constructor( message: string) {
-    this. message = message;
+    this.message = message;
   }
 }
 
@@ -2301,7 +2322,6 @@ struct BuildNodeChild {
       .margin(2)
   }
 }
-
 ```
 
   ![inheritFreezeOptions](figures/20251015-191040.gif)
@@ -2316,8 +2336,11 @@ When component freezing (**freezeWhenInactive: true**) and BuilderNode freezing 
 
 When freezing is enabled for a BuilderNode (by setting [inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20) to **true**), the BuilderNode can be used in combination with components like **Repeat** and **TabContent**. See the example below:
 
-```ts
+<!-- @[Main_RepeatTabPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RepeatTabPage.ets) -->
+
+``` TypeScript
 import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 // Define a Parameter class for passing data.
 @ObservedV2
@@ -2507,12 +2530,11 @@ Pre-rendering is particularly suitable for scenarios such as web page initializa
 
 2. Create a NodeContainer and the corresponding NodeController for background rendering.
 
-    <!-- @[Common_CommonIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/Common/CommonIndex.ets) --> 
+    <!-- @[Common_CommonIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/Common/CommonIndex.ets) -->   
     
     ``` TypeScript
-    import { UIContext } from '@kit.ArkUI';
+    import { UIContext, NodeController, BuilderNode, Size, FrameNode } from '@kit.ArkUI';
     import { webview } from '@kit.ArkWeb';
-    import { NodeController, BuilderNode, Size, FrameNode } from '@kit.ArkUI';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     
     // @Builder content for dynamic component content

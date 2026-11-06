@@ -5,7 +5,7 @@
 <!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=99172dd31019643b43682667d3a165e8d9e0347f translatedAt=2026-09-16T03:58:43.485Z pushedAt=2026-09-16T08:57:39.050Z -->
+<!-- md-trans-meta sourceCommit=4f945590f61307c03472767556879a597fa3ab93 translatedAt=2026-11-05T10:39:43.917Z pushedAt=2026-11-05T11:30:50.829Z nl=1 -->
 
 By docking the **Web** component to the soft keyboard, you can manage the display and interaction of the soft keyboard in your application, and can also customize its features to suit your specific needs. The main scenarios are as follows:
 
@@ -95,7 +95,9 @@ To improve user experience, you can call the [showTextInput()](../reference/apis
 </html>
 ```
 
-```ts
+<!-- @[soft_keyboard_auto_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/AutoShowSoftKeyboard.ets) -->
+
+``` TypeScript
 // Index.ets
 import { webview } from '@kit.ArkWeb';
 import { inputMethod } from '@kit.IMEKit';
@@ -106,7 +108,7 @@ struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   build() {
     Column() {
-      Web({ src: $rawfile("index.html"), controller: this.controller})
+      Web({ src: $rawfile('index.html'), controller: this.controller})
         .onPageEnd(() => {
           this.controller.runJavaScript(`document.getElementById('input_a').focus()`).then(() => {
             setTimeout(() => {
@@ -190,11 +192,11 @@ On a mobile device, you can set the avoidance mode for the soft keyboard on the 
 
    **Figure 1** Soft keyboard in the default avoidance mode
 
-   ![default-keyboardavoid](figures/default-keyboardavoid.png)
+  <!--Del-->   <!--DelEnd-->
 
    **Figure 2** Soft keyboard re-arranged with ArkUI
 
-   ![arkui-keyboardavoid](figures/arkui-keyboardavoid.png)
+   <!--Del-->   <!--DelEnd-->
 
 2. When the keyboard avoidance mode of **UIContext** is **Offset**, the application can set the keyboard avoidance mode of the **Web** component through the [WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12) API of the **Web** component. This API is at a higher priority than **virtualKeyboard.overlayContent** on the W3C side.
 
@@ -202,7 +204,7 @@ On a mobile device, you can set the avoidance mode for the soft keyboard on the 
    - **RESIZE_CONTENT**: Both the size of the visual viewport and the size of the layout viewport are adjusted.
    - **OVERLAYS_CONTENT**: No viewport size is adjusted, and the focused input element is not scrolled into the visible area.
 
-   > **NOTE**
+   > **NOTE** 
    >
    > The visual viewport refers to the area of the website that the user is currently viewing, whose width equals the width of the browser window on the mobile device.
    >
@@ -238,11 +240,13 @@ On a mobile device, you can set the avoidance mode for the soft keyboard on the 
 
    **Figure 3** Soft keyboard avoidance mode of the **Web** component page
 
-   ![web-keyboardavoid](figures/web-keyboardavoid.png)
+   <!--Del-->   <!--DelEnd-->
 
 3. When the soft keyboard is displayed, you can call [expandSafeArea()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea) to expand the safe area of the **Web** component to prevent the **Web** component from avoiding the soft keyboard. For more examples, see [Calculating and Adjusting Safe Area Insets](../web/web-safe-area-insets.md).
 
-     ```ts
+     <!-- @[soft_keyboard_expand_safe_area](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/ExpandSafeArea.ets) -->
+     
+     ``` TypeScript
      // xxx.ets
      import { webview } from '@kit.ArkWeb';
 
@@ -283,113 +287,115 @@ An application can listen for the [onInterceptKeyboardAttach](../reference/apis-
 - The system soft keyboard with a custom **Enter** key
 - The custom soft keyboard of the application
 
-```ts
-  // Index.ets
-  import { webview } from '@kit.ArkWeb';
-  import { inputMethodEngine } from '@kit.IMEKit';
+<!-- @[soft_keyboard_web](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/OnIntKbdAttachSysCustIn.ets) -->
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    webKeyboardController: WebKeyboardController = new WebKeyboardController();
-    inputAttributeMap: Map<string, number> = new Map([
-        ['UNSPECIFIED', inputMethodEngine.ENTER_KEY_TYPE_UNSPECIFIED],
-        ['GO', inputMethodEngine.ENTER_KEY_TYPE_GO],
-        ['SEARCH', inputMethodEngine.ENTER_KEY_TYPE_SEARCH],
-        ['SEND', inputMethodEngine.ENTER_KEY_TYPE_SEND],
-        ['NEXT', inputMethodEngine.ENTER_KEY_TYPE_NEXT],
-        ['DONE', inputMethodEngine.ENTER_KEY_TYPE_DONE],
-        ['PREVIOUS', inputMethodEngine.ENTER_KEY_TYPE_PREVIOUS]
-      ])
+``` TypeScript
+// Index.ets
+import { webview } from '@kit.ArkWeb';
+import { inputMethodEngine } from '@kit.IMEKit';
 
-      /**
-       * Builder for a custom keyboard component
-       */
-      @Builder
-      customKeyboardBuilder() {
-      // Implement the custom keyboard component here, and connect it to WebKeyboardController to implement input, deletion, closing, and other operations.
-        Row() {
-          Text("Finish")
-            .fontSize(20)
-            .fontColor(Color.Blue)
-            .onClick(() => {
-              this.webKeyboardController.close();
-            })
-          // Insert characters.
-          Button("insertText").onClick(() => {
-            this.webKeyboardController.insertText('insert ');
-          }).margin({
-            bottom: 200,
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  webKeyboardController: WebKeyboardController = new WebKeyboardController();
+  inputAttributeMap: Map<string, number> = new Map([
+      ['UNSPECIFIED', inputMethodEngine.ENTER_KEY_TYPE_UNSPECIFIED],
+      ['GO', inputMethodEngine.ENTER_KEY_TYPE_GO],
+      ['SEARCH', inputMethodEngine.ENTER_KEY_TYPE_SEARCH],
+      ['SEND', inputMethodEngine.ENTER_KEY_TYPE_SEND],
+      ['NEXT', inputMethodEngine.ENTER_KEY_TYPE_NEXT],
+      ['DONE', inputMethodEngine.ENTER_KEY_TYPE_DONE],
+      ['PREVIOUS', inputMethodEngine.ENTER_KEY_TYPE_PREVIOUS]
+    ])
+
+    /**
+     * Custom keyboard component Builder
+     */
+    @Builder
+    customKeyboardBuilder() {
+    // Implement the custom keyboard component here, and integrate with WebKeyboardController to implement input, deletion, closing, and other operations.
+      Row() {
+        Text($r('app.string.custom_keyboard_done'))
+          .fontSize(20)
+          .fontColor(Color.Blue)
+          .onClick(() => {
+            this.webKeyboardController.close();
           })
-          // Delete characters from the end to the beginning for the length specified by the length parameter.
-          Button("deleteForward").onClick(() => {
-            this.webKeyboardController.deleteForward(1);
-          }).margin({
-            bottom: 200,
-          })
-          // Delete characters from the beginning to the end for the length specified by the length parameter.
-          Button("deleteBackward").onClick(() => {
-            this.webKeyboardController.deleteBackward(1);
-          }).margin({
-            left: -220,
-          })
-          // Insert a function key.
-          Button("sendFunctionKey").onClick(() => {
-            this.webKeyboardController.sendFunctionKey(6);
-          })
-        }
-      }
-
-    build() {
-      Column() {
-        Web({ src: $rawfile('index.html'), controller: this.controller })
-        .onInterceptKeyboardAttach((KeyboardCallbackInfo) => {
-          // Initialize option. By default, the default keyboard is used.
-          let option: WebKeyboardOptions = {
-            useSystemKeyboard: true,
-          };
-          if (!KeyboardCallbackInfo) {
-            return option;
-          }
-
-          // Save the WebKeyboardController. When a custom keyboard is used, this handler is required to control behaviors such as input, deletion, and closing of the keyboard.
-          this.webKeyboardController = KeyboardCallbackInfo.controller;
-          let attributes: Record<string, string> = KeyboardCallbackInfo.attributes;
-          // Traverse attributes.
-          let attributeKeys = Object.keys(attributes);
-          for (let i = 0; i < attributeKeys.length; i++) {
-            console.info('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]]);
-          }
-
-          if (attributes) {
-            if (attributes['data-keyboard'] == 'customKeyboard') {
-              // Determine the soft keyboard to use based on the attributes of editable HTML elements. For example, if the attribute includes data-keyboard and its value is customKeyboard, use a custom keyboard.
-              console.info('WebCustomKeyboard use custom keyboard');
-              option.useSystemKeyboard = false;
-              // Set the custom keyboard builder.
-              option.customKeyboard = () => {
-                this.customKeyboardBuilder()
-              }
-              return option;
-            }
-
-            if (attributes['keyboard-return'] != undefined) {
-              // Determine the soft keyboard to use based on the attributes of editable HTML elements. For example, if the attribute includes keyboard-return, use the system keyboard and specify the type of the system soft keyboard's Enter key.
-              option.useSystemKeyboard = true;
-              let enterKeyType: number | undefined = this.inputAttributeMap.get(attributes['keyboard-return']);
-              if (enterKeyType != undefined) {
-                option.enterKeyType = enterKeyType;
-              }
-              return option;
-            }
-          }
-
-          return option;
+        // Insert a character.
+        Button('insertText').onClick(() => {
+          this.webKeyboardController.insertText('insert ');
+        }).margin({
+          bottom: 200,
+        })
+        // Delete characters of the length specified by the length parameter from back to front.
+        Button('deleteForward').onClick(() => {
+          this.webKeyboardController.deleteForward(1);
+        }).margin({
+          bottom: 200,
+        })
+        // Delete characters of the length specified by the length parameter from front to back.
+        Button('deleteBackward').onClick(() => {
+          this.webKeyboardController.deleteBackward(1);
+        }).margin({
+          left: -220,
+        })
+        // Insert a function key.
+        Button('sendFunctionKey').onClick(() => {
+          this.webKeyboardController.sendFunctionKey(6);
         })
       }
     }
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+      .onInterceptKeyboardAttach((keyboardCallbackInfo) => {
+        // Initialize option. The system default keyboard is used by default.
+        let option: WebKeyboardOptions = {
+          useSystemKeyboard: true,
+        };
+        if (!keyboardCallbackInfo) {
+          return option;
+        }
+
+        // Save WebKeyboardController. When using a custom keyboard, use this handler to control input, deletion, soft keyboard closing, and other behaviors.
+        this.webKeyboardController = keyboardCallbackInfo.controller;
+        let attributes: Record<string, string> = keyboardCallbackInfo.attributes;
+        // Traverse attributes.
+        let attributeKeys = Object.keys(attributes);
+        for (let i = 0; i < attributeKeys.length; i++) {
+          console.info('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]]);
+        }
+
+        if (attributes) {
+          if (attributes['data-keyboard'] == 'customKeyboard') {
+            // Determine which soft keyboard to use based on the attributes of the HTML editable element. For example, if the attribute contains data-keyboard with the value customKeyboard, use the custom keyboard.
+            console.info('WebCustomKeyboard use custom keyboard');
+            option.useSystemKeyboard = false;
+            // Set the custom keyboard builder.
+            option.customKeyboard = () => {
+              this.customKeyboardBuilder()
+            }
+            return option;
+          }
+
+          if (attributes['keyboard-return'] != undefined) {
+            // Determine which soft keyboard to use based on the attributes of the HTML editable element. For example, if the attribute contains keyboard-return, use the system keyboard and specify the enterKey type of the system soft keyboard.
+            option.useSystemKeyboard = true;
+            let enterKeyType: number | undefined = this.inputAttributeMap.get(attributes['keyboard-return']);
+            if (enterKeyType != undefined) {
+              option.enterKeyType = enterKeyType;
+            }
+            return option;
+          }
+        }
+
+        return option;
+      })
+    }
   }
+}
 ```
 
 ```html
