@@ -302,7 +302,7 @@ DepthComponent(背景资源) {
 <!--deprecated_code_no_check-->
 ``` TypeScript
 // 第 ① 步：传入背景资源，并设置深度图
-DepthComponent($r('app.media.background')) {
+DepthComponent($r('app.media.depthcomponent_background')) {
   // 子组件在闭包内声明，稍后为其配置空间效果
 }
   .width('100%')
