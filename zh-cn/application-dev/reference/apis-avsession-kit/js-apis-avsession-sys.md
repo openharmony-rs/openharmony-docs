@@ -153,7 +153,7 @@ getSessionDescriptorsForAudioZone(userId: number): Promise\<Array\<Readonly\<AVS
  
 | 参数名        | 类型           | 必填 | 说明 |
 | ------------ | -------------- |------|------|
-| userId       | number           | 是   | 指定用户userId。 |
+| userId       | number            | 是   | 指定用户userId。 |
  
 **返回值：**
  
