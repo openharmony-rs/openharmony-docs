@@ -290,7 +290,7 @@ export class AVTranscoderDemo {
    ```
    this.avTranscoder.fdDst = file.fd;
    ```
-
+   
    ArkTS-Sta示例：
 
    <!-- @[create_fddst](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
@@ -309,9 +309,9 @@ export class AVTranscoderDemo {
    > 支持配置转码的数据格式请参考AVTranscoder[支持的格式](media-kit-intro.md#支持的格式)。
 
    ArkTS-Dyn示例：
-
+   
    转码参数设置：
-
+   
    <!-- @[createTranscoderConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
    ``` TypeScript
@@ -323,9 +323,9 @@ export class AVTranscoderDemo {
      videoCodec: media.CodecMimeType.VIDEO_AVC, // 视频编码格式。
    };
    ```
-
+   
    调用prepare()接口：
-
+   
    <!-- @[doPrepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
    ``` TypeScript
@@ -333,11 +333,11 @@ export class AVTranscoderDemo {
    await this.avTranscoder.prepare(this.avConfig);
    ```
    <!--RP2--><!--RP2End-->
-
-   ArkTS-Sta示例：
    
+   ArkTS-Sta示例：
+  
    转码参数设置：
-
+   
    <!-- @[create_transcoderconfig](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
    ``` TypeScript
@@ -349,11 +349,11 @@ export class AVTranscoderDemo {
      videoCodec: media.CodecMimeType.VIDEO_AVC, // 视频编码格式。
    };
    ```
-
-   调用prepare()接口：
-
-   <!-- @[doPrepare](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
+   调用prepare()接口：
+   
+   <!-- @[doPrepare](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
+  
    ``` TypeScript
    // 3.配置转码参数完成准备工作。
    await this.avTranscoder!.prepare(this.avConfig);
@@ -362,16 +362,16 @@ export class AVTranscoderDemo {
 6. 开始转码，调用start()接口。
 
    ArkTS-Dyn示例：
-
+   
    <!-- @[doStart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
    ``` TypeScript
    // 4.开始转码。
    await this.avTranscoder.start();
    ```
-
+   
    ArkTS-Sta示例：
-
+   
    <!-- @[doStart](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
    ``` TypeScript
@@ -382,7 +382,7 @@ export class AVTranscoderDemo {
 7. 暂停转码，调用pause()接口。
 
    ArkTS-Dyn示例：
-
+   
    <!-- @[doPause](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
    ``` TypeScript
@@ -397,9 +397,9 @@ export class AVTranscoderDemo {
    ```
 
    ArkTS-Sta示例：
-
+   
    <!-- @[doPause](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
-    
+   
    ``` TypeScript
    // 暂停转码对应的流程。
    async pauseTranscoderingProcess(): Promise<void> {
@@ -412,7 +412,7 @@ export class AVTranscoderDemo {
 8. 恢复转码，调用resume()接口。
 
    ArkTS-Dyn示例：
-
+   
    <!-- @[doResume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
    ``` TypeScript
@@ -427,7 +427,7 @@ export class AVTranscoderDemo {
    ```
 
    ArkTS-Sta示例：
-
+   
    <!-- @[doResume](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
    ``` TypeScript
@@ -442,7 +442,7 @@ export class AVTranscoderDemo {
 9. 销毁实例，调用release()接口，退出转码。
 
    ArkTS-Dyn示例：
-
+   
    <!-- @[doRelease](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
    ``` TypeScript
@@ -489,9 +489,9 @@ export class AVTranscoderDemo {
 10. 完整的【开始转码-暂停转码-恢复转码-转码完成】流程。
 
     ArkTS-Dyn示例：
-
+    
     <!-- @[transcoderProcess](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
-
+    
     ``` TypeScript
     // 一个完整的【开始转码-暂停转码-恢复转码-转码完成】示例。
     async avTranscoderDemo() {
@@ -500,9 +500,9 @@ export class AVTranscoderDemo {
       await this.resumeTranscoderingProcess(); // 恢复转码。
     }
     ```
-
+    
     ArkTS-Sta示例：
-
+    
     <!-- @[transcoder_process](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
     
     ``` TypeScript
