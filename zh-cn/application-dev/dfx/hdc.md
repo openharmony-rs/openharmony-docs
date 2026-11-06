@@ -1117,11 +1117,26 @@ Reconnecting connect-key ...
 hdc server loglevel [level]
 ```
 
+- 缺省`level`参数时，执行查询功能，返回服务进程当前的日志等级。
+- 指定`level`参数时，执行设置功能，将服务进程日志等级调整为指定值，立即生效。
+
 **参数**：
 
 | 参数 | 说明 |
 | -------- | -------- |
-| level | 可选参数，指定服务进程新的日志等级，取值范围为0~6，仅支持单个数字。<br/>0：LOG_OFF<br/>1：LOG_FATAL<br/>2：LOG_WARN<br/>3：LOG_INFO<br/>4：LOG_DEBUG<br/>5：LOG_ALL<br/>6：LOG_VERBOSE（即LOG_LIBUSB，同时开启libusb增量日志）<br/>缺省该参数时，查询服务进程当前的日志等级。 |
+| level | 可选参数，指定服务进程新的日志等级，取值范围为0~6，仅支持单个数字。缺省时执行查询功能，指定时执行设置功能。 |
+
+**日志等级取值**：
+
+| 取值 | 说明 |
+| -------- | -------- |
+| 0 | LOG_OFF |
+| 1 | LOG_FATAL |
+| 2 | LOG_WARN |
+| 3 | LOG_INFO |
+| 4 | LOG_DEBUG |
+| 5 | LOG_ALL |
+| 6 | LOG_VERBOSE（即LOG_LIBUSB，同时开启libusb增量日志） |
 
 **返回信息**：
 
