@@ -3,7 +3,7 @@ kits: ["Audio Kit / 音频服务"]
 description: "为存量应用提供OpenSL ES录音与缓冲队列示例，新开发推荐使用OHAudio。"
 keywords: [OpenSL ES, OHAudio, 录音缓冲队列, CreateAudioRecorder, SetRecordState]
 doctype: guide
-status: not recommended
+status: not_recommended
 ---
 
 # 使用OpenSL ES开发音频录制功能(C/C++)
