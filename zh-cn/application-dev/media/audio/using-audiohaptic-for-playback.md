@@ -150,7 +150,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
    ArkTS-Dyn示例：
 
-   <!-- @[set_hapticparam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->  
+   <!-- @[set_hapticparam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->    
    
    ``` TypeScript
    let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_NORMAL;
@@ -166,7 +166,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    
    ``` TypeScript
    let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_NORMAL;
-   // idForFd为步骤1中获取的资源ID，这里以Fd注册的资源为例。
+   // idForFd
    audioHapticManagerInstance.setAudioLatencyMode(idForFd, latencyMode);
    
    let usage: audio.StreamUsage = audio.StreamUsage.STREAM_USAGE_NOTIFICATION;
