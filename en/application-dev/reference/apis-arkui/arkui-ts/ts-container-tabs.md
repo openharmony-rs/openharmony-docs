@@ -5,6 +5,7 @@
 <!--Designer: @Hu_ZeQi-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=1c696d216f4f31130e5496faf1e6b330866bd1af translatedAt=2026-11-05T10:04:38.216Z pushedAt=2026-11-05T10:52:58.491Z nl=1 -->
 
 The **Tabs** component is a container component that allows users to switch between content views through tabs. Each tab page corresponds to a content view.
 
@@ -48,15 +49,17 @@ Create a **Tabs** container.
 
 Provides parameters for configuring the **Tabs** component, including tab positions, the current index of the displayed tab, the **Tabs** controller, and [universal attributes](ts-component-general-attributes.md) for the **TabBar**.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 15%; 15%; 8%; 8%; 54%-->
 | Name        | Type                             | Read Only| Optional  | Description                                    |
 | ----------- | --------------------------------- | ---- | --------- | ------------------------------- |
 | barPosition<sup>7+</sup> | [BarPosition](#barposition)| No| Yes   | Position of the **Tabs** component.<br>Default value: **BarPosition.Start**<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
-| index<sup>7+</sup>       | number                            | No| Yes  | Index of the currently displayed tab.<br>Default value: **0**<br>**NOTE**<br>A value less than 0 evaluates to the default value.<br>The value ranges from 0 to the number of **TabContent** nodes minus 1.<br>When the tab is switched by changing the index, the tab switching animation does not take effect. When [changeIndex](#changeindex) of **TabController** is used, the tab switching animation takes effect by default. You can set [animationDuration](#animationduration) to **0** to disable the animation.<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>When the **Tabs** component is rebuilt, system resources are switched (for example, system font or theme changes), or component attributes change, the **Tab** component will switch to the one specified by **index**. To prevent this behavior, you are advised to use two-way binding.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| index<sup>7+</sup>       | number                            | No | Yes   | Index of the currently displayed tab.<br/>Default value: **0**<br/>**Note:** <br/>When the value is set to less than 0, the default value is used for display.<br/>The value range is [0, number of TabContent child nodes - 1].<br/>When the index is directly modified to switch pages, the switch animation does not take effect. When [changeIndex](#changeindex) of **TabsController** is used, the switch animation takes effect by default. [animationDuration](#animationduration) can be set to **0** to disable the animation.<br />Since API version 10, this parameter supports [$](../../../ui/state-management/arkts-two-way-sync.md) two-way binding.<br/>When **Tabs** is rebuilt, system resources are switched (such as system font switching or system light/dark mode switching), or component attributes change, the page corresponding to the index is displayed. If no jump is required in the preceding cases, two-way binding is recommended.<br/>**Atomic service API**: This API can be used in atomic services since API version 11. |
 | controller<sup>7+</sup>  | [TabsController](#tabscontroller) | No| Yes   | Tab controller.<br>**Atomic service API**: This API can be used in atomic services since API version 11.        |
-| barModifier<sup>15+</sup>  | [CommonModifier](#commonmodifier15) | No| Yes   | [Universal attributes](ts-component-general-attributes.md) of the tab bar.<br>**NOTE**<br>If this parameter is dynamically set to **undefined**, the current state will be preserved, and universal attributes will not be reset.<br>If the setting switches from one **CommonModifier** to another, overlapping attributes will be overwritten, while non-overlapping attributes will coexist without resetting the attributes of the previous **CommonModifier**.<br>The [barWidth](#barwidth), [barHeight](#barheight), [barBackgroundColor](#barbackgroundcolor10), [barBackgroundBlurStyle](#barbackgroundblurstyle18), and [barBackgroundEffect](#barbackgroundeffect18) attributes of **Tabs** will overwrite the [width](ts-universal-attributes-size.md#width), [height](ts-universal-attributes-size.md#height), [backgroundColor](ts-universal-attributes-background.md#backgroundcolor18), [backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle18), and [backgroundEffect](ts-universal-attributes-background.md#backgroundeffect18) attributes of **CommonModifier**.<br>The [align](ts-universal-attributes-location.md#align) attribute works only in [BarMode.Scrollable](#barmode10-1) mode. In addition, for a horizontal **Tabs** component, it only takes effect when [nonScrollableLayoutStyle](#scrollablebarmodeoptions10) is set to an invalid value or is not set.<br>When set to the bottom tab style, [tabBar](ts-container-tabcontent.md#tabbar18) attribute of the [TabContent](ts-container-tabcontent.md) component does not support the dragging feature.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| barModifier  | [CommonModifier](#commonmodifier15) | No | Yes    | [Universal attributes](ts-component-general-attributes.md) of the tab bar.<br/>**Note:** <br/>When dynamically set to **undefined**, the current state is retained and the universal attributes are not reset. <br/>When switching from one **CommonModifier** to another, duplicate attributes are overwritten, non-duplicate attributes take effect simultaneously, and the universal attributes of the previous **CommonModifier** are not reset.<br/>The [barWidth](#barwidth), [barHeight](#barheight), [barBackgroundColor](#barbackgroundcolor10), [barBackgroundBlurStyle](#barbackgroundblurstyle18), and [barBackgroundEffect](#barbackgroundeffect18) attributes of **Tabs** override the [width](ts-universal-attributes-size.md#width), [height](ts-universal-attributes-size.md#height), [backgroundColor](ts-universal-attributes-background.md#backgroundcolor18), [backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle18), and [backgroundEffect](ts-universal-attributes-background.md#backgroundeffect18) attributes of **CommonModifier**.<br/>The [align](ts-universal-attributes-location.md#align) attribute takes effect only in [BarMode.Scrollable](#barmode10-1) mode. In addition, when **Tabs** is horizontal, it takes effect only when [nonScrollableLayoutStyle](#scrollablebarmodeoptions10) is not set or is set to an invalid value.<br/>The [tabBar](ts-container-tabcontent.md#tabbar18) attribute of the [TabContent](ts-container-tabcontent.md) component does not support the drag function when it is a bottom tab style.<br/>**Atomic service API**: This API can be used in atomic services since API version 15.|
 
 ## BarPosition
 
@@ -86,7 +89,7 @@ Sets whether the tabs are vertical.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 <!--Table: 10%; 10%; 10%; 70%-->
 | Name| Type   | Mandatory| Description                                                        |
@@ -103,7 +106,7 @@ Sets whether the tabs are scrollable.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
@@ -119,12 +122,12 @@ Sets the tab bar layout mode.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name               | Type                                                        | Mandatory| Description                                                        |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value                 | [BarMode](#barmode)                                  | Yes  | Layout mode.<br>Default value: **BarMode.Fixed**                                                |
-| options<sup>10+</sup> | [ScrollableBarModeOptions](#scrollablebarmodeoptions10)| No  | Layout style of the tab bar in scrollable mode.<br>**NOTE**<br>This parameter is effective only when the tab bar is in horizontal scrollable mode.|
+| value                 | [BarMode](#barmode-1)                                  | Yes  | Layout mode.<br>Default value: **BarMode.Fixed**                                                |
+| options<sup>10+</sup> | [ScrollableBarModeOptions](#scrollablebarmodeoptions10) | No   | Layout style of the tab bar in Scrollable mode.<br/>**Note:** <br/>Valid only in Scrollable and horizontal mode.<br/>**Model restriction:** This API can only be used in the stage model. |
 
 ### barMode<sup>10+</sup>
 
@@ -134,9 +137,11 @@ Sets the tab bar layout mode to **BarMode.Fixed**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name   | Type                            | Mandatory| Description                                   |
 | -------- | -------------------------------- | ---- | ------------------------------------ |
@@ -150,9 +155,11 @@ Sets the tab bar layout mode to **BarMode.Scrollable**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name   | Type                             | Mandatory| Description                                   |
 | -------- | --------------------------------- | ---- | ------------------------------------- |
@@ -169,7 +176,7 @@ Sets the width of the tab bar. If the set value is less than 0 or greater than t
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 <!--Table: 10%; 10%; 10%; 70%-->
 | Name| Type                                     | Mandatory| Description                                                        |
@@ -188,7 +195,7 @@ In versions earlier than API version 14, setting **barHeight** to a fixed value 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 <!--Table: 10%; 10%; 10%; 70%-->
 | Name| Type                                     | Mandatory| Description                                                        |
@@ -203,9 +210,11 @@ Sets the height of the tab bar. For horizontal **Tabs** components, you can set 
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 <!--Table: 20%; 10%; 10%; 60%-->
 | Name          | Type                        | Mandatory| Description                                                        |
@@ -221,9 +230,11 @@ Sets the tab switching animation curve for the **Tabs** component. For details a
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 <!--Table: 10%; 20%; 10%; 60%-->
 | Name| Type                                                        | Mandatory| Description                                       |
@@ -244,7 +255,7 @@ For details about curves unaffected by **animationDuration**, see [Interpolation
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 <!--Table: 10%; 10%; 10%; 70%-->
 | Name| Type  | Mandatory| Description                                                        |
@@ -262,6 +273,8 @@ Sets the animation mode for tab switching initiated by clicking a specific tab o
 > This attribute cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -282,7 +295,7 @@ Sets the position of the **Tabs** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                              | Mandatory| Description                 |
 | ----- | ---------------------------------- | ---- | -------------------- |
@@ -296,9 +309,11 @@ Sets the divider between the **TabBar** and **TabContent** components.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                     | Mandatory| Description                                                        |
 | ------ | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -312,9 +327,11 @@ Sets whether the tabs fade out when they exceed the container width. It is recom
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                              |
 | ------ | ------- | ---- | -------------------------------------------------- |
@@ -328,9 +345,11 @@ Sets whether the tab bar overlaps the **TabContent** component with a blurred ba
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
@@ -344,9 +363,11 @@ Sets the background color of the tab bar.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                      | Mandatory| Description                                |
 | ------ | ------------------------------------------ | ---- | ------------------------------------ |
@@ -364,9 +385,11 @@ Sets the background blur style of the tab bar.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                        | Mandatory| Description                                    |
 | ------ | -------------------------------------------- | ---- | ---------------------------------------- |
@@ -380,9 +403,11 @@ Defines the blur style to apply between the background and content of a tab bar.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name               | Type                                                        | Mandatory| Description                                                        |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -397,9 +422,11 @@ Sets the visible area of the tab bar in grid mode. For details, see **BarGridCol
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                   | Mandatory| Description                              |
 | ------ | ------------------------------------------------------- | ---- | ---------------------------------- |
@@ -417,9 +444,11 @@ Sets the effect used when the scroll boundary is reached.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                         | Mandatory| Description                                        |
 | ------ | --------------------------------------------- | ---- | -------------------------------------------- |
@@ -433,9 +462,11 @@ Sets the background effect of the tab bar, including the blur radius, brightness
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                        | Mandatory| Description                                      |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
@@ -448,6 +479,8 @@ pageFlipMode(mode: Optional\<PageFlipMode>)
 Sets the mode for flipping pages using the mouse wheel.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -465,6 +498,8 @@ Sets the maximum number of child components to cache and the caching mode. If th
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -480,7 +515,7 @@ nestedScroll(value: TabsNestedScrollMode | undefined)
 
 Sets the nested scrolling mode of the **Tabs** component and its parent component. If this API is not called, the default nested scrolling mode is [SELF_ONLY](#tabsnestedscrollmode24).
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
@@ -492,11 +527,37 @@ Sets the nested scrolling mode of the **Tabs** component and its parent componen
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | value   | [TabsNestedScrollMode](#tabsnestedscrollmode24) \| undefined               | Yes  | Nested scrolling mode of the **Tabs** component and its parent container.<br>When this parameter is set to **undefined**, the scrolling is contained within the **Tabs** component, and no scroll chaining occurs, that is, the parent component does not scroll when the component scrolling reaches the boundary.  |
 
+### barFloatingStyle
+
+barFloatingStyle(style: Optional\<FloatingTabBarStyle>)
+
+Sets the floating style of the tab bar.
+
+>**NOTE**
+>
+> The floating style allows the tab bar to be displayed in a floating manner at the bottom of the **Tabs**. This API takes effect only when [barOverlap](#baroverlap10) is **true**, [vertical](#vertical) is **false**, and [barPosition](#barposition9) is **BarPosition.End**.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type                                                        | Mandatory | Description                                                         |
+| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| style   | Optional<[FloatingTabBarStyle](#floatingtabbarstyle)>           | Yes   | Floating style configuration of the tab bar.<br/>When set to **undefined**, the floating style is canceled and the default style is restored.   |
+
 ## DividerStyle<sup>10+</sup>
 
 Describes the divider style.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -512,6 +573,8 @@ Describes the divider style.
 Implements a **BarGridColumnOptions** object for setting the visible area of the tab bar in grid mode, including the column margin and gutter, as well as the number of columns occupied by tabs under small, medium, and large screen sizes.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -529,12 +592,89 @@ Implements a **ScrollableBarModeOptions** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name         | Type                                    | Read Only| Optional  | Description                                      |
 | ----------- | ---------------------------------------- | ---- | ------- | --------------------------------- |
 | margin | [Dimension](ts-types.md#dimension10)          | No| Yes   | Left and right margin of the tab bar in scrollable mode. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞)|
 | nonScrollableLayoutStyle      | [LayoutStyle](#layoutstyle10) | No| Yes  | Tab layout mode of the tab bar when not scrolling in scrollable mode.<br>Default value: **LayoutStyle.ALWAYS_CENTER**          |
+
+## FloatingTabBarWidth
+
+Defines the width of the tab bar under different **Tabs** widths.
+
+> **NOTE**
+>
+> - [barWidth](#barwidth) takes precedence over this API. When neither **barWidth** nor this API takes effect, the tab bar width uses the default calculation rule.
+>
+> - The default calculation rule of the tab bar width is as follows. When the number of child nodes is 4, the maximum tab bar width is 328 vp. When the number of child nodes is greater than or equal to 5, the maximum tab bar width is 360 vp. When the **Tabs** width is greater than or equal to 1140 vp, the tab bar width and height are scaled up by 1.15 times.
+
+| Number of Child Nodes | Tabs Width | Calculation Rule        |
+| --------- | -------- | -------------- |
+| Less than or equal to 2 | Less than 600 vp | Fixed value 168 vp.   |
+| Less than or equal to 2 | Greater than or equal to 600 vp | Fixed value 184 vp.   |
+| 3 | Less than 600 vp | Fixed value 248 vp.   |
+| 3 | Greater than or equal to 600 vp | Fixed value 272 vp.   |
+| Greater than or equal to 4 | Less than 600 vp | Tabs width - 2 × [barSideMargin](#floatingtabbarstyle).   |
+| Greater than or equal to 4 | Greater than or equal to 600 vp, less than 840 vp | Tabs width - 2 × (barSideMargin + 12 vp + tab bar height).   |
+| Greater than or equal to 4 | Greater than 840 vp | (Tabs width / 2 - 2 × barSideMargin) × 2.   |
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name          | Type                                     | Read-Only | Optional   | Description                                       |
+| ----------- | ---------------------------------------- | ---- | ---- | ------------------------------------ |
+| smallBarWidth | [Length](ts-types.md#length) | No | Yes    | Width of the tab bar when the **Tabs** width is less than 440 vp. |
+| mediumBarWidth | [Length](ts-types.md#length) | No | Yes   | Width of the tab bar when the **Tabs** width is between 440 vp and 600 vp, or when the width is between 600 vp and 840 vp and the height-to-width ratio is less than 0.8. |
+| largeBarWidth | [Length](ts-types.md#length) | No | Yes    | Width of the tab bar when the **Tabs** width is greater than 840 vp, or when the width is between 600 vp and 840 vp and the height-to-width ratio is greater than 0.8. |
+
+
+## UIMaterial
+
+type UIMaterial = import('../api/@ohos.arkui.uiMaterial').uiMaterial
+
+Defines the system material module. Use the **ImmersiveMaterial** type in it when setting the system material attribute of the tab bar floating style.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type     | Description               |
+| -------- | ------------------ |
+| import('../api/@ohos.arkui.uiMaterial').uiMaterial   | System material module.|
+
+## FloatingTabBarStyle
+
+Defines the floating style of the TabBar.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name          | Type                                     | Read-Only | Optional   | Description                                       |
+| ----------- | ---------------------------------------- | ---- | ---- | ------------------------------------ |
+| barWidth | [FloatingTabBarWidth](#floatingtabbarwidth)             | No | Yes    | Width of the tab bar under different **Tabs** widths. For the default width calculation rule, see [FloatingTabBarWidth](#floatingtabbarwidth). |
+| barSideMargin      | [Length](ts-types.md#length) | No | Yes   | Left and right margins in the default tab bar width calculation rule.<br/>When the **Tabs** width is less than 600 vp, the default value is **16 vp**. When the **Tabs** width is between 600 vp and 840 vp, the default value is **24 vp**. When the **Tabs** width is greater than 840 vp, the default value is **32 vp**. |
+| barBottomMargin   | [Length](ts-types.md#length)           | No | Yes    | Distance between the tab bar and the bottom of the **Tabs**. The default value is **28 vp**. |
+| maskColor   | [ResourceColor](ts-types.md#resourcecolor)           | No | Yes    | Color of the mask. In the vertical direction, the mask display area is rendered with an opacity gradient based on the mask color, with the opacity decreasing from bottom to top. In light mode, the default value is **#CCF1F3F5**, displayed as white. In dark mode, the default value is **#99000000**, displayed as black. |
+| maskHeight   | [Length](ts-types.md#length)           | No | Yes    | Height of the mask. The top edge of the mask display is 16 vp higher than the top edge of the tab bar by default. |
+| adaptToHandedness   | boolean           | No | Yes    | Whether to follow the left-right layout of the operating hand.<br/>**true** indicates following the left-right layout of the operating hand; **false** indicates not following the left-right layout of the operating hand.<br/>Default value: **false** |
+| systemMaterial | [UIMaterial](#uimaterial).[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial) | No | Yes | Immersive material style of the tab bar background. The immersive light effect of the bottom tab bar takes effect only when the **Tabs** is in horizontal layout and **barPosition** is **BarPosition.End**. |
 
 ## BarMode
 
@@ -553,21 +693,25 @@ Enumerates layout modes of the tab bar.
 
 Enumerates the animation modes for switching between tab contents when a [TabBar](./ts-container-tabcontent.md#tabbar) is clicked.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name         | Value  | Description                                                        |
 | ------------- | ---- | ------------------------------------------------------------ |
 | CONTENT_FIRST | 0    | Loads the content of the target page before starting the switching animation.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| ACTION_FIRST  | 1    | Starts the switching animation before loading the content of the target page. This mode works only when neither the height or width of tabs is set to **auto**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| ACTION_FIRST  | 1    | Starts the switch animation first, and then loads the target page content. This takes effect only when both the **height** and **width** of the **Tabs** are not set to **auto**.<br/>**Atomic service API:** This API is supported in atomic services since API version 12. |
 | NO_ANIMATION  | 2    | Disables the default switching animation. Note that this mode is ineffective when the [changeIndex](#changeindex) API of **TabsController** is used to switch tab contents.<br>To disable the animation under this scenario, set [animationDuration](#animationduration) to **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | CONTENT_FIRST_WITH_JUMP<sup>15+</sup> | 3    | Loads the content of the target page first, then jumps to the vicinity of the target page without animation, and finally jumps to the target page with animation.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-| ACTION_FIRST_WITH_JUMP<sup>15+</sup>  | 4    | Jumps to the vicinity of the target page without animation first, then jumps to the target page with animation, and finally loads the content of the target page. This mode works only when neither the height or width of tabs is set to **auto**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| ACTION_FIRST_WITH_JUMP<sup>15+</sup>  | 4    | Jumps to the vicinity of the target page without animation first, then jumps to the target page with animation, and finally loads the target page content. This takes effect only when both the **height** and **width** of the **Tabs** are not set to **auto**.<br/>**Atomic service API:** This API is supported in atomic services since API version 15. |
 
 ## LayoutStyle<sup>10+</sup>
 
 Enumerates the tab layout styles of the tab bar when not scrolling in [scrollable](#barmode) mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -580,23 +724,27 @@ Enumerates the tab layout styles of the tab bar when not scrolling in [scrollabl
 
 ## CommonModifier<sup>15+</sup>
 
-type CommonModifier = CommonModifier
+type CommonModifier = import('../api/arkui/CommonModifier').CommonModifier
 
 Defines a parameter object for the **Tabs** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type        | Description                                    |
 | ---------- | ---------------------------------------- |
-| [CommonModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) | Universal attributes for the tab bar.|
+| import('../api/arkui/CommonModifier').[CommonModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | Sets the universal attributes of the tab bar. |
 
 ## TabsCacheMode<sup>19+</sup>
 
 Enumerates the caching modes for child components.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -609,7 +757,7 @@ Enumerates the caching modes for child components.
 
 Enumerates the nested scrolling modes of the **Tabs** component and its parent container.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
@@ -632,13 +780,13 @@ Triggered after the active tab changes.
 
 This event is triggered when any of the following occurs:
 
-1. After completing a swipe-triggered tab switching animation.
+1. Triggered after the component sliding animation ends when the page is switched by swiping.
 
-2. After the active tab changes by calling the [changeIndex](#changeindex) API of [Controller](#tabscontroller).
+2. Triggered after the tab is switched by calling the [changeIndex](#changeindex) API through the [controller](#tabscontroller).
 
-3. After the active tab changes by updating the index through the bound [state variable](../../../ui/state-management/arkts-state.md).
+3. Triggered after the tab is switched when the **index** attribute value constructed by the [state variable](../../../ui/state-management/arkts-state.md) is dynamically changed.
 
-4. After the active tab changes by tapping a tab in the tab bar.
+4. Triggered after the tab is switched when a tab bar tab is tapped.
 
 >  **NOTE**
 >
@@ -648,7 +796,7 @@ This event is triggered when any of the following occurs:
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
@@ -662,9 +810,11 @@ Triggered when a tab is clicked.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                |
 | ------ | ------ | ---- | ------------------------------------ |
@@ -678,9 +828,11 @@ Triggered when the transition animation starts. If [animationDuration](#animatio
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
@@ -694,9 +846,11 @@ Triggered when the tab switching animation is completed, including cases where t
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
@@ -710,9 +864,11 @@ Triggered on a frame-by-frame basis during swipe gestures for tab switching.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
@@ -741,9 +897,11 @@ Instructions:
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
@@ -758,15 +916,15 @@ Triggered when a new page is about to be displayed.
 
 This event is triggered when any of the following occurs:
 
-1. When the user swipes through the **TabContent** to switch to a new page.
+1. Triggered when swiping the **TabContent** to switch to a new page.
 
-2. When the TabsController.[changeIndex](#changeindex) API is called to switch to a new page.
+2. Triggered when switching to a new page through the **TabsController**.[changeIndex](#changeindex) API.
 
-3. When the **index** attribute is changed to switch to a new page.
+3. Triggered when switching to a new page by dynamically changing the **index** attribute value.
 
-4. When the user taps a tab on the tab bar to switch to a new page.
+4. Triggered when switching to a new page by tapping a **TabBar** tab.
 
-5. When the user presses the left or right arrow key on the keyboard to switch to a new page while the tab bar has focus.
+5. Triggered when switching to a new page using the left/right arrow keys on the keyboard after a **TabBar** tab gains focus.
 
 >**NOTE**
 >
@@ -774,9 +932,11 @@ This event is triggered when any of the following occurs:
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
@@ -804,9 +964,11 @@ This event is triggered when any of the following occurs:
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
@@ -834,9 +996,11 @@ This event is triggered when any of the following occurs:
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
@@ -851,6 +1015,8 @@ Triggered when content in the **Tabs** component scrolls.
 During page scrolling, the [OnTabsContentDidScrollCallback](#ontabscontentdidscrollcallback23) callback is invoked for all pages in the viewport on a frame-by-frame basis. For example, when there are two pages whose subscripts are 0 and 1 in the viewport, two callbacks whose indexes are 0 and 1 are invoked in each frame.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -868,9 +1034,11 @@ Defines the callback triggered when the tab switching animation starts.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                                                  | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -886,9 +1054,11 @@ Defines the callback triggered when the tab switching animation ends.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                  | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -903,9 +1073,11 @@ Defines the callback triggered on a frame-by-frame basis during a swipe-based pa
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                  | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -920,16 +1092,18 @@ Defines the callback invoked when the custom tab transition animation starts.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
 | from   | number | Yes  | Index of the currently displayed tab before the animation starts. The index is zero-based.<br>Value range: [0, Index value – 1]. If the value exceeds the index value or is less than 0, no transition animation is displayed.|
 | to     | number | Yes  | Index of the target tab before the animation starts. The index is zero-based.<br>Value range: [0, Index value – 1]. If the value exceeds the index value or is less than 0, no transition animation is displayed.|
 
-**Return value**
+**Return value** 
 
 | Type                                                        | Description                    |
 | ------------------------------------------------------------ | ------------------------ |
@@ -943,16 +1117,18 @@ Defines the callback invoked when a new page is about to be displayed.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name      | Type  | Mandatory| Description                                      |
 | ------------ | ------ | ---- | ------------------------------------------ |
 | currentIndex | number | Yes  | Index of the active tab. The index starts from 0.|
 | comingIndex  | number | Yes  | Index of the new tab to be displayed.             |
 
-**Return value**
+**Return value** 
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
@@ -963,6 +1139,8 @@ Defines the callback invoked when a new page is about to be displayed.
 Describes the animation information of the **Tabs** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -980,6 +1158,8 @@ Provides the information about the custom tab switching animation.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name           | Type        | Read Only| Optional  | Description                                      |
@@ -995,6 +1175,8 @@ Implements the proxy object returned during the execution of the custom switchin
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### Attributes
@@ -1004,7 +1186,7 @@ Implements the proxy object returned during the execution of the custom switchin
 | from | number | No| No| Zero-based index of the source page in the custom animation.|
 | to | number | No| No| Zero-based index of the target page in the custom animation.|
 
-### finishTransition
+### finishTransition<sup>11+</sup>
 
 finishTransition(): void
 
@@ -1014,6 +1196,8 @@ Notifies the **Tabs** component that the custom animation has finished playing.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ## OnTabsContentDidScrollCallback<sup>23+</sup>
@@ -1022,13 +1206,15 @@ type OnTabsContentDidScrollCallback = (selectedIndex: number, index: number, pos
 
 Defines the callback triggered when content in the **Tabs** component scrolls.
 
->**NOTE**
+>**NOTE** 
 >
 >- For example, when the index of the currently selected tab page is **0**, during a transition animation from page 0 to page 1, the callback is triggered for all pages within the viewport on every frame. When pages 0 and 1 are both in the viewport, the callback is triggered twice per frame. The first callback has **selectedIndex** as **0**, **index** as **0**, **position** as the ratio of how much page 0 has moved relative to its position before the animation started on the current frame, and **mainAxisLength** as the length of page 0 on the main axis. The second callback has **selectedIndex** as **0**, **index** as **1**, **position** as the ratio of how much page 1 has moved relative to page 0 before the animation started on the current frame, and **mainAxisLength** as the length of page 1 on the main axis.
 >
 >- If the animation curve is a spring interpolation curve, during the transition animation from page 0 to page 1, due to the position and velocity when the user lifts their finger off the screen, animation may overshoot and slide past to page 2, then bounce back to page 1. Throughout this process, a callback is triggered for pages 1 and 2 within the viewport on every frame.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1083,13 +1269,15 @@ Preloads child nodes. After this API is called, all specified child nodes will b
 
 > **NOTE**
 >
-> - **preloadItems** of **Tabs** needs to be called after **Tabs** is created. You are advised to control the first preloading in the [onAppear](./ts-universal-events-show-hide.md#onappear) lifecycle of **Tabs**.
+> - The **preloadItems** of **Tabs** needs to be called after **Tabs** is created. For the first preload, it is recommended to control it in the [onAppear](./ts-universal-events-show-hide.md#onappear) lifecycle of **Tabs**.
 > 
-> - If the **TabsController** object is not bound to any **Tabs** component, a JavaScript exception will be thrown when this API is called. Therefore, you are advised to use **try-catch** to handle potential exceptions when calling this API.
+> - If the **TabsController** object is not bound to any **Tabs** component, calling this API directly throws a JS exception. Therefore, when using this API, it is recommended to catch the exception through try-catch.
 >
-> - When using **preloadItems** to preload tabs, you are advised to use **ComponentContent** to customize the content displayed on the tab bar. For details, see [Example 9](./ts-container-tabcontent.md#example-9-setting-tabbar-using-componentcontent).
+> - When using **preloadItems** to preload tab pages, if you need to customize the content displayed on the **TabBar**, it is recommended to use **ComponentContent** to implement it. For a usage example, see [Example 10](./ts-container-tabcontent.md#example-10-preloading-child-nodes-using-componentcontent).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1099,7 +1287,7 @@ Preloads child nodes. After this API is called, all specified child nodes will b
 | ----- | ------ | ---- | ---------------------------------------- |
 | indices | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<Array\<number>> | Yes| Array of indexes of the child nodes to preload.<br>The default value is an empty array.|
 
-**Return value**
+**Return value** 
 
 | Type                                                        | Description                    |
 | ------------------------------------------------------------ | ------------------------ |
@@ -1126,6 +1314,8 @@ Sets the translation distance of the tab bar.
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -1146,6 +1336,8 @@ Sets the opacity of the tab bar.
 >
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1413,7 +1605,7 @@ struct TabsExample {
         if (index === targetIndex) {
           return;
         }
-        // selectedIndex controls the color switching for the image and text in the custom tab bar.
+        // selectedIndex controls the color switching of Text in the custom TabBar.
         this.selectedIndex = targetIndex;
       })
       .width(360)
@@ -2424,8 +2616,8 @@ struct TabsExample {
   }
 
   @Builder
-  tabBuilder(title: string,targetIndex: number) {
-    Column(){
+  tabBuilder(title: string, targetIndex: number) {
+    Column() {
       Text(title).fontColor(this.currentIndex === targetIndex ? '#FF0000' : '#6B6B6B')
     }.width('100%')
     .height(50)
@@ -2435,13 +2627,13 @@ struct TabsExample {
   build() {
     Column() {
       Tabs({ barPosition: BarPosition.End, controller: this.controller, index: this.currentIndex }) {
-        ForEach(this.data, (item: string) => {
+        ForEach(this.data, (item: number) => {
           TabContent() {
-            Column(){
+            Column() {
               Text('' + item)
             }.width('100%').height('100%').backgroundColor('#00CB87').justifyContent(FlexAlign.Center)
-          }.tabBar(this.tabBuilder('P' + item, parseInt(item)))
-        }, (item: string) => item)
+          }.tabBar(this.tabBuilder('P' + item, item))
+        }, (item: number) => item.toString())
       }
       .barWidth(360)
       .barHeight(60)
@@ -2457,7 +2649,7 @@ struct TabsExample {
       Text('AnimationMode:' + AnimationMode[this.currentAnimationMode])
 
       Button('AnimationMode').width('50%').margin({ top: 1 }).height(25)
-        .onClick(()=>{
+        .onClick(() => {
           if (this.currentAnimationMode === AnimationMode.CONTENT_FIRST) {
             this.currentAnimationMode = AnimationMode.ACTION_FIRST;
           } else if (this.currentAnimationMode === AnimationMode.ACTION_FIRST) {
@@ -2809,7 +3001,7 @@ struct MyComponent {
 
 ### Example 19: Setting the Tab Bar Background Blur Effect
 
-This example demonstrates how to set the background blur style and effect of **TabBar** in [barBackgroundBlurStyle](#barbackgroundblurstyle18) and [barBackgroundEffect](#barbackgroundeffect18) APIs.
+This example sets the background blur style and effect of the tab bar through [barBackgroundBlurStyle](#barbackgroundblurstyle18) and [barBackgroundEffect](#barbackgroundeffect18), respectively.
 
 The **barBackgroundBlurStyle** and **barBackgroundEffect** APIs are added since API version 18.
 
@@ -3061,7 +3253,7 @@ struct TabsDidScrollExample {
 
   build() {
     Column() {
-      Text ('Swipe page to trigger callback')
+      Text('Swipe page to trigger callback')
         .width("80%")
         .fontSize(20)
         .margin(5)
@@ -3104,7 +3296,7 @@ struct TabsDidScrollExample {
         if (index === targetIndex) {
           return;
         }
-        // selectedIndex controls the color switching for the image and text in the custom tab bar.
+        // selectedIndex controls the color switching of Text in the custom TabBar.
         this.selectedIndex = targetIndex;
       })
       .width(360)
@@ -3124,6 +3316,7 @@ struct TabsDidScrollExample {
 }
 ```
 
+<!--Del--> <!--DelEnd-->
 
 ### Example 23: Implementing Nested Scrolling of Tabs
 
@@ -3190,3 +3383,60 @@ struct TabsExample {
   }
 }
 ```
+<!--Del--> <!--DelEnd-->
+
+### Example 24 Setting the TabBar Floating Style
+
+This example shows how to set the floating style and immersive material of the background for the tab bar through the [barFloatingStyle](#barfloatingstyle) API.
+
+The illustration for this example shows the strong effect on a high-computing-power device. The immersive light effect of the component is adaptively adjusted based on the device computing power and the immersive light effect set by the user in the system, so you do not need to perform additional adaptation.
+
+Since API version 26.0.0, the **barFloatingStyle** API is added.
+
+```ts
+// xxx.ets
+import { uiMaterial } from '@kit.ArkUI';
+@Entry
+@Component
+struct TabsFloatingStyleExample {
+  build() {
+    Column() {
+      Tabs({ barPosition: BarPosition.End }) {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Blue)
+        }.tabBar('Blue')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Green)
+        }.tabBar('Green')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Orange)
+        }.tabBar('Orange')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Pink)
+        }.tabBar('Pink')
+      }
+      .barFloatingStyle({
+        adaptToHandedness: true, systemMaterial: new uiMaterial.ImmersiveMaterial(
+          {
+            style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+            applyShadow: true,
+            interactive: true,
+            lightEffect: { color: Color.White }
+          }
+        )
+      })
+      .barOverlap(true)
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+The figure in this example shows the strong effect on a high-computing-power device:
+
+![tabs_floating_style](figures/tabsFloatingBar.gif)
