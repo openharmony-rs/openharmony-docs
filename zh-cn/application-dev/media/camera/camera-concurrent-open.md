@@ -460,7 +460,25 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
    <!-- @[camera_flash](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    <!-- @[camera_flash](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    
+   <!-- @[camera_setExposureMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   
    ``` TypeScript
+   // 曝光。
+   setExposureModeForConcurrentFn(exposureMode: camera.ExposureMode,
+     session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
+     try {
+       // 检测曝光模式是否支持。
+       let isExposureSupported = session?.isExposureModeSupported(exposureMode);
+       // 设置曝光模式。
+       if (isExposureSupported) {
+         session?.setExposureMode(exposureMode);
+       }
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`setExposureModeForConcurrentFn failed, err code: ${err.code}.`);
+     }
+   }
+   ```
    hasFlashFn(flashMode: camera.FlashMode): void {
      try {
        // 检测是否有闪关灯
