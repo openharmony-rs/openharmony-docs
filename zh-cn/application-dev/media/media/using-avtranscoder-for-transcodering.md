@@ -59,18 +59,18 @@ export class AVTranscoderDemo {
 1. 创建[AVTranscoder](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavtranscoder12)实例。
 
    ArkTS-Dyn示例：
-
+   
    <!-- @[createInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
    ``` TypeScript
    // 1.创建转码实例。
    this.avTranscoder = await media.createAVTranscoder();
    ```
-
+   
    ArkTS-Sta示例：
-
+   
    <!-- @[create_instance](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
-
+   
    ``` TypeScript
    // 1.创建转码实例。
    this.avTranscoder = await media.createAVTranscoder();
@@ -83,9 +83,9 @@ export class AVTranscoderDemo {
    | complete | 必要事件，监听AVTranscoder的转码完成。 | 
    | error | 必要事件，监听AVTranscoder的错误信息。 |
    | progressUpdate | 监听AVTranscoder的进度。 |
-
+   
    ArkTS-Dyn示例：
-
+   
    <!-- @[createCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
    ``` TypeScript
@@ -117,11 +117,11 @@ export class AVTranscoderDemo {
      return this.currentProgress;
    }
    ```
-
+   
    ArkTS-Sta示例：
-
+   
    <!-- @[create_callback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
-
+   
    ``` TypeScript
    // 注册avTranscoder回调函数。
    setAVTranscoderCallback(): void {
@@ -154,11 +154,11 @@ export class AVTranscoderDemo {
    > - 应通过Context属性获取应用文件路径，建议使用getUIContext获取UIContext实例，并使用getHostContext调用绑定实例的getContext，请参考[getHostContext](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)。
    >
    > - 如果使用ResourceManager.getRawFd()打开HAP资源文件描述符，使用方法可参考ResourceManager中的[getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。
-
+   
    ArkTS-Dyn示例：
    
    UI界面：
-
+   
    <!-- @[transcoderUi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -195,9 +195,9 @@ export class AVTranscoderDemo {
      }
    }
    ```
-
+   
    源文件设置：
-
+   
    <!-- @[createFdsrc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
    ``` TypeScript
@@ -210,11 +210,11 @@ export class AVTranscoderDemo {
      console.error('Failed to get the file descriptor, please check the resource and path.');
    }
    ```
-
+   
    ArkTS-Sta示例：
-
+   
    UI界面：
-
+   
    <!-- @[transcoder_ui](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -259,9 +259,9 @@ export class AVTranscoderDemo {
      }
    }
    ```
-
+   
    源文件设置：
-
+   
    <!-- @[create_fdsrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
    ``` TypeScript
@@ -288,11 +288,9 @@ export class AVTranscoderDemo {
    // 设置转码的目标文件属性fdDst。
    this.avTranscoder.fdDst = file.fd;
    ```
-   this.avTranscoder.fdDst = file.fd;
-   ```
    
    ArkTS-Sta示例：
-
+   
    <!-- @[create_fddst](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
    ``` TypeScript
@@ -307,7 +305,7 @@ export class AVTranscoderDemo {
    >
    > 写入配置参数时需要注意，prepare()接口的入参avConfig中仅设置转码相关的配置参数。<br>
    > 支持配置转码的数据格式请参考AVTranscoder[支持的格式](media-kit-intro.md#支持的格式)。
-
+   
    ArkTS-Dyn示例：
    
    转码参数设置：
@@ -335,7 +333,7 @@ export class AVTranscoderDemo {
    <!--RP2--><!--RP2End-->
    
    ArkTS-Sta示例：
-  
+   
    转码参数设置：
    
    <!-- @[create_transcoderconfig](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
@@ -353,7 +351,7 @@ export class AVTranscoderDemo {
    调用prepare()接口：
    
    <!-- @[doPrepare](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
-  
+   
    ``` TypeScript
    // 3.配置转码参数完成准备工作。
    await this.avTranscoder!.prepare(this.avConfig);
@@ -395,7 +393,7 @@ export class AVTranscoderDemo {
      }
    }
    ```
-
+   
    ArkTS-Sta示例：
    
    <!-- @[doPause](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
@@ -425,7 +423,7 @@ export class AVTranscoderDemo {
      }
    }
    ```
-
+   
    ArkTS-Sta示例：
    
    <!-- @[doResume](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
@@ -469,7 +467,7 @@ export class AVTranscoderDemo {
    ```
 
    ArkTS-Sta示例：
-
+   
    <!-- @[doRelease](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
    ``` TypeScript
