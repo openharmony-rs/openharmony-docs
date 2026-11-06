@@ -1252,7 +1252,7 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
   }
   ```
   
-- BottomView：负责提供与任务操作相关的按钮和输入框，如“全部完成”、“全部未完成”和“设置”三个按钮，以及添加新任务的输入框。点击"全部完成"和"全部未完成"时，通过TaskListViewModel更改所有任务的状态。点击"设置"按钮时，会导航到SettingAbility的设置页面。添加新任务时，通过TaskListViewModel新增任务到任务列表中。
+- BottomView：负责提供与任务操作相关的按钮和输入框，如“全部完成”、“全部未完成”和“设置”三个按钮，以及添加新任务的输入框。点击“全部完成”和“全部未完成”时，通过TaskListViewModel更改所有任务的状态。点击“设置”按钮时，会导航到SettingAbility的设置页面。添加新任务时，通过TaskListViewModel新增任务到任务列表中。
 
   <!-- @[View_BottomView](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/view/BottomView.ets) --> 
   
