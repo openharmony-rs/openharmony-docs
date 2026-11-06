@@ -458,7 +458,26 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 11. 在多摄同开状态下，前/后置相机可配置的能力示例如下（当前版本仅支持本文开头部分所示的七项基础功能）。
 
    <!-- @[camera_flash](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
+   <!-- @[camera_flash](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   
+   ``` TypeScript
+   hasFlashFn(flashMode: camera.FlashMode): void {
+     try {
+       // 检测是否有闪关灯
+       let hasFlash = this.session?.hasFlash();
+       Logger.debug(TAG, `hasFlash success, hasFlash: ${hasFlash}`);
+       // 检测闪光灯模式是否支持
+       let isFlashModeSupported = this.session?.isFlashModeSupported(flashMode);
+       Logger.debug(TAG, `isFlashModeSupported success, isFlashModeSupported: ${isFlashModeSupported}`);
+       // 设置闪光灯模式
+       if (isFlashModeSupported) {
+         this.session?.setFlashMode(flashMode);
+       }
+     } catch (error) {
+       console.error(`hasFlashFn failed, err: ${error.code}`);
+     }
+   }
+   ```
    <!-- @[camera_setExposureMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
    <!-- @[camera_setZoomRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
