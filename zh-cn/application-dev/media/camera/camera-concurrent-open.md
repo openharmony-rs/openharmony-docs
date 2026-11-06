@@ -102,10 +102,10 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 4. 确定预览输出流。
 
    <!-- @[camera_createPreviewOutput_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
-   ```ts
-   function getPreviewOutputFn(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability, surfaceId: string)
-   {
+   
+   ``` TypeScript
+   getPreviewOutputForConcurrentFn(cameraManager: camera.CameraManager,
+     cameraOutputCapability: camera.CameraOutputCapability, surfaceId: string): camera.PreviewOutput | undefined {
      // 此处创建预览输出流以format：1003，size：1920*1080的previewProfile为例。
      let previewProfileObj: camera.Profile = {
        format: 1003,
@@ -117,22 +117,23 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
      // 查询对应previewProfile是否存在，对应的previewProfile必须在getCameraConcurrentInfos获取到的并发能力信息数组范围内。
      let previewProfiles = cameraOutputCapability.previewProfiles;
      if (previewProfiles.length < 1) {
-       return;
+       return undefined;
      }
      let index = previewProfiles.findIndex((previewProfile: camera.Profile) => {
        return previewProfile.size.width === previewProfileObj.size.width &&
-       previewProfile.size.height === previewProfileObj.size.height &&
-       previewProfile.format === previewProfileObj.format;
+         previewProfile.size.height === previewProfileObj.size.height &&
+         previewProfile.format === previewProfileObj.format;
      });
      if (index === -1) {
-       return;
+       return undefined;
      }
-
+   
      // 创建previewOutput输出对象。
      let previewOutput = cameraManager.createPreviewOutput(previewProfileObj, surfaceId);
      if (previewOutput === undefined) {
-       return;
+       return undefined;
      }
+     return previewOutput;
    }
    ```
 
