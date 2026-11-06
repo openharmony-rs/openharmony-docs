@@ -659,6 +659,25 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | networkId  | string                              | 否 | 否 | 网络id。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 | percentage<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 音量百分比，取值范围为[0, 100]。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
 
+## VolumeLimitExceededEvent
+
+音量超过阈值时，应用接收的通知事件。收到通知后，应用必须通过**confirmVolumeLimitExceeded**提交确认结果，才能继续调节音量。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| uid | number | 否 | 否 | 触发音量超过阈值的进程UID。该值为整数。 |
+| volumeType | [AudioVolumeType](#audiovolumetype) | 否 | 否 | 当前音量类型。 |
+| currentVolume | number | 否 | 否 | 当前音量级别。该值为整数，范围介于**getMinSystemVolume**和**getMaxSystemVolume**接口获取的值之间。 |
+| volumeThreshold | number | 否 | 否 | 当前音量类型的音量阈值。该值为整数，范围介于**getMinSystemVolume**和**getMaxSystemVolume**接口获取的值之间。 |
+
 ## ConnectType<sup>9+</sup>
 
 枚举，设备连接类型。
@@ -2549,6 +2568,131 @@ let volumePercentageChangeCallback = (volumeEvent: audio.VolumeEvent) => {
 audioVolumeManager.onVolumePercentageChange(volumePercentageChangeCallback);
 
 audioVolumeManager.offVolumePercentageChange(volumePercentageChangeCallback);
+```
+
+### onVolumeLimitExceeded
+
+onVolumeLimitExceeded(callback: Callback\<VolumeLimitExceededEvent>): void
+
+监听当前音量超过音量保护阈值的事件。使用callback异步回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | Callback\<[VolumeLimitExceededEvent](#volumelimitexceededevent)> | 是 | 回调函数，返回音量超过阈值的事件信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioVolumeManager.onVolumeLimitExceeded((event: audio.VolumeLimitExceededEvent) => {
+  console.info(`UID: ${event.uid}`);
+  console.info(`Volume type: ${event.volumeType}`);
+  console.info(`Current volume: ${event.currentVolume}`);
+  console.info(`Volume threshold: ${event.volumeThreshold}`);
+});
+```
+
+### offVolumeLimitExceeded
+
+offVolumeLimitExceeded(callback?: Callback\<VolumeLimitExceededEvent>): void
+
+取消监听当前音量超过音量保护阈值的事件。callback不传时，取消该事件的所有监听。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | Callback\<[VolumeLimitExceededEvent](#volumelimitexceededevent)> | 否 | 需要取消监听的回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+let volumeLimitExceededCallback = (event: audio.VolumeLimitExceededEvent) => {
+  console.info(`UID: ${event.uid}`);
+  console.info(`Volume type: ${event.volumeType}`);
+  console.info(`Current volume: ${event.currentVolume}`);
+  console.info(`Volume threshold: ${event.volumeThreshold}`);
+};
+
+audioVolumeManager.onVolumeLimitExceeded(volumeLimitExceededCallback);
+audioVolumeManager.offVolumeLimitExceeded(volumeLimitExceededCallback);
+
+// 取消该事件的所有监听。
+audioVolumeManager.offVolumeLimitExceeded();
+```
+
+### confirmVolumeLimitExceeded
+
+confirmVolumeLimitExceeded(volumeType: AudioVolumeType, result: boolean): void
+
+确认音量调节超过音量保护阈值的结果。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| volumeType | [AudioVolumeType](#audiovolumetype) | 是 | 音量类型。不同音量类型的保护阈值不同，此参数用于确定当前音量类型对应的阈值。 |
+| result | boolean | 是 | 是否确认音量调节超过音量保护阈值。true表示确认，false表示不确认。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+| 6800301 | System error. |
+
+**示例：**
+
+```ts
+audioVolumeManager.onVolumeLimitExceeded((event: audio.VolumeLimitExceededEvent) => {
+  audioVolumeManager.confirmVolumeLimitExceeded(event.volumeType, true);
+});
 ```
 
 ## AudioVolumeGroupManager<sup>9+</sup>
