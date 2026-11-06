@@ -258,49 +258,49 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
 10. 调用stop方法终止指定流的播放。
 
-     <!-- @[SoundPool_Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
-     
-     ``` TypeScript
-     // 终止指定流的播放。
-     await this.soundPool!.stop(this.streamId);
-     ```
+    <!-- @[SoundPool_Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    // 终止指定流的播放。
+    await this.soundPool!.stop(this.streamId);
+    ```
 
 11. 调用unload方法卸载音频资源。
 
-     <!-- @[SoundPool_Unload](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
-     
-     ``` TypeScript
-     // 卸载音频资源。
-     await this.soundPool!.unload(this.soundId);
-     ```
+    <!-- @[SoundPool_Unload](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    // 卸载音频资源。
+    await this.soundPool!.unload(this.soundId);
+    ```
 
 12. 调用off('loadComplete')方法注销加载完成监听。
 
     ArkTS-Dyn示例：
 
-     <!-- @[SoundPool_offLoadComplete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[SoundPool_offLoadComplete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
      
-     ``` TypeScript
-     this.soundPool!.off('loadComplete');
-     ```
+    ``` TypeScript
+    this.soundPool!.off('loadComplete');
+    ```
 
     ArkTS-Sta示例：
 
-     <!-- @[off_callback_load_completed](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/SoundPool/SoundPoolStaArkTS/entry/src/main/ets/pages/Index.ets) -->
-     
-     ``` TypeScript
-     this.soundPool!.offLoadComplete();
-     ```
+    <!-- @[off_callback_load_completed](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/SoundPool/SoundPoolStaArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    this.soundPool!.offLoadComplete();
+    ```
 
 13. 调用off('playFinished')方法注销播放完成监听。
 
     ArkTS-Dyn示例：
 
-     <!-- @[SoundPool_offPlayFinished](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
-     
-     ``` TypeScript
-     this.soundPool!.off('playFinished');
-     ```
+    <!-- @[SoundPool_offPlayFinished](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    this.soundPool!.off('playFinished');
+    ```
     
     ArkTS-Sta示例：
 
@@ -314,11 +314,11 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
     ArkTS-Dyn示例：
 
-     <!-- @[SoundPool_offError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
-     
-     ``` TypeScript
-     this.soundPool!.off('error');
-     ```
+    <!-- @[SoundPool_offError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    this.soundPool!.off('error');
+    ```
     
     ArkTS-Sta示例：
 
@@ -332,10 +332,10 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
      <!-- @[SoundPool_Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
      
-     ``` TypeScript
-     // 释放SoundPool。
-     await this.soundPool!.release();
-     ```
+    ``` TypeScript
+    // 释放SoundPool。
+    await this.soundPool!.release();
+    ```
 
 ## 运行示例工程
 
