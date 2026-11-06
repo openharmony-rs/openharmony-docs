@@ -39,7 +39,7 @@
 | [InputMethod_ErrorCode OH_InputMethodProxy_NotifyConfigurationChange(InputMethod_InputMethodProxy *inputMethodProxy,InputMethod_EnterKeyType enterKey, InputMethod_TextInputType textType)](#oh_inputmethodproxy_notifyconfigurationchange) | 通知输入框配置变化。 |
 | [InputMethod_ErrorCode OH_InputMethodProxy_NotifyCursorUpdate(InputMethod_InputMethodProxy *inputMethodProxy, InputMethod_CursorInfo *cursorInfo)](#oh_inputmethodproxy_notifycursorupdate) | 通知光标位置变化。 |
 | [InputMethod_ErrorCode OH_InputMethodProxy_SendPrivateCommand(InputMethod_InputMethodProxy *inputMethodProxy, InputMethod_PrivateCommand *privateCommand[], size_t size)](#oh_inputmethodproxy_sendprivatecommand) | 发送私有数据命令。 |
-| [InputMethod_ErrorCode OH_InputMethod_InputMethodProxy_RequestSystemInputCapability(InputMethod_InputMethodProxy *inputMethodProxy, InputMethod_InputCapabilityType type)](#oh_inputmethodproxy_requestsysteminputcapability) | 请求系统输入能力。 |
+| [InputMethod_ErrorCode OH_InputMethod_InputMethodProxy_RequestSystemInputCapability(InputMethod_InputMethodProxy *inputMethodProxy, InputMethod_InputCapabilityType type)](#oh_inputmethod_inputmethodproxy_requestsysteminputcapability) | 请求系统输入能力。 |
 
 ## 函数说明
 
@@ -309,11 +309,11 @@ InputMethod_ErrorCode OH_InputMethod_InputMethodProxy_RequestSystemInputCapabili
 
 使用场景：当应用需要请求输入法切换到翻译模式时调用此函数，传入type为[IME_INPUT_CAPABILITY_TYPE_TRANSLATION](capi-inputmethod-types-capi-h.md#inputmethod_inputcapabilitytype)。
 
-使用后效果：当type为TRANSLATION且当前输入法为系统预置默认输入法时，输入法将切换到翻译模式。调用失败后，返回对应的错误码。
+使用后效果：当type为TRANSLATION且当前输入法为系统配置的默认输入法时，输入法将切换到翻译模式。调用失败后，返回对应的错误码。
 
 前置条件：必须先调用[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)获取inputMethodProxy实例，且当前处于已绑定（Attached）状态。
 
-约束限制：当type为TRANSLATION时，当前输入法须为系统预置默认输入法，否则返回OH_INPUTMETHOD_ERR_NOT_DEFAULT_IME错误码。
+约束限制：当type为TRANSLATION时，当前输入法须为系统配置的默认输入法，否则返回OH_INPUTMETHOD_ERR_NOT_DEFAULT_IME错误码。
 
 线程安全：此函数非线程安全，不建议在多线程环境下同时操作同一个inputMethodProxy对象。
 
