@@ -42,6 +42,7 @@ status: active
 > **说明：**
 >
 > - 封装的输出文件描述符（fd）必须以读写方式打开，由调用者负责关闭，要求详见[OH_AVMuxer_Create()](../../reference/apis-avcodec-kit/capi-native-avmuxer-h.md#oh_avmuxer_create)。
+>
 > - 如需将封装结果保存到媒体库（图库）并获取可写fd，可参考[保存媒体库资源](../medialibrary/photoAccessHelper-savebutton.md)文档，通过安全控件或授权弹窗创建媒体资源，无需申请ohos.permission.WRITE_IMAGEVIDEO权限。
 
 ### 在 CMake 脚本中链接动态库
