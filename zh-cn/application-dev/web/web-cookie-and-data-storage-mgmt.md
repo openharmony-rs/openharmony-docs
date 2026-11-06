@@ -44,7 +44,7 @@ struct WebComponent {
 }
 ```
 
-从API version 22开始，开发者可以通过[setLazyInitializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#setlazyinitializewebengine22)延后初始化ArkWeb内核，在调用configCookieSync()为“www\.example.com”设置单个Cookie的值“value=test”时跳过初始化ArkWeb内核，以节省[configCookieSync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11)接口耗时。其他Cookie的相关功能及使用，请参考[WebCookieManager()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md)接口文档。
+从API version 22开始，开发者可以通过[setLazyInitializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#setlazyinitializewebengine22)延后初始化ArkWeb内核，在调用configCookieSync()为“www\.example.com”设置单个Cookie的值“value=test”时跳过初始化ArkWeb内核，以节省[configCookieSync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11)接口耗时。其他Cookie的相关功能及使用，请参考[WebCookieManager](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md)接口文档。
 
 <!-- @[set_lazy_initialize_web_engine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/CookieManagement_LazyInitializeWebEngine.ets) -->
 
@@ -78,7 +78,7 @@ struct WebComponent {
 
 > **说明：**
 >
-> Cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#savecookieasync)进行强制落盘（PC/2in1和Tablet设备不会持久化session cookie，即使调用saveCookieAsync，也不会将session cookie写入磁盘）。
+> Cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#savecookieasync)进行强制落盘（PC/2in1和Tablet设备不会持久化session cookie，即使调用saveCookieAsync()，也不会将session cookie写入磁盘）。
 
 ## 缓存与存储管理
 
