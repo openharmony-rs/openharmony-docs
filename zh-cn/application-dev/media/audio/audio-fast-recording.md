@@ -8,9 +8,9 @@
 
 从API version 10开始支持低时延音频录制。
 
-低时延音频录制是一种通过软硬芯协同设计实现的音频采集方案。其核心机制是通过减少buffer大小、优化读写数据架构，使该模式下音频录制具有更低的时延。
+低时延音频录制是一种通过软硬芯协同设计实现的音频录制方案。其核心机制是通过减少buffer大小、优化读写数据架构，使该模式下音频录制具有更低的时延。
 
-从API version 26.1.0开始，在低时延模式的基础上新增超低时延（Ultra Fast）模式。超低时延模式为音频采集开辟独立的超低时延通路，通过更小的span（帧长低至2.5ms）与专用的pipe资源，进一步降低采集时延，适用于对采集时延极度敏感的场景。
+从API version 26.1.0开始，在低时延模式的基础上新增超低时延（Ultra Fast）模式。超低时延模式为音频录制开辟独立的超低时延通路，通过更小的span（帧长低至2.5ms）与专用的pipe资源，进一步降低录制时延，适用于对录制时延极度敏感的场景。
 
 当前OHAudio录制支持三种时延模式：
 
@@ -18,7 +18,7 @@
 | -------- | ------ | ---- |
 | 普通模式 | AUDIOSTREAM_LATENCY_MODE_NORMAL | 默认模式，适用于普通录音、录像、录屏等无实时要求的场景。 |
 | 低时延模式 | AUDIOSTREAM_LATENCY_MODE_FAST | 软硬芯协同降低buffer与读写时延，适用于k歌、直播等对时延要求较高的场景。 |
-| 超低时延模式 | AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST | 独立通路、span低至2.5ms，适用于专业音频、实时互动等对采集时延极度敏感的场景。 |
+| 超低时延模式 | AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST | 独立通路、span低至2.5ms，适用于专业音频、实时互动等对录制时延极度敏感的场景。 |
 
 ## 使用前提
 
@@ -53,7 +53,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 
 ### 设置超低时延模式
 
-从API version 26.1.0开始，开发者可将[OH_AudioStream_LatencyMode](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode)设置为AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST，使用独立的超低时延通路进行采集。
+从API version 26.1.0开始，开发者可将[OH_AudioStream_LatencyMode](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode)设置为AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST，使用独立的超低时延通路进行录制。
 
 超低时延通路对采样率、声道数、采样格式等参数有设备相关约束，起流前请以[OH_AudioStreamManager_IsUltraFastRecordingSupported()](../../reference/apis-audio-kit/capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastrecordingsupported)的查询结果为准。
 
@@ -83,7 +83,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 
 ### 超低时延模式并发限制
 
-超低时延录制流占用专用pipe资源：同时存在的超低时延录制流不超过2条，且会计入低时延采集流的总并发限额（总限额为6条）。超出限额后起流将失败或回落到低时延/普通模式。
+超低时延录制流占用专用pipe资源：同时存在的超低时延录制流不超过2条，且会计入低时延录制流的总并发限额（总限额为6条）。超出限额后起流将失败或回落到低时延/普通模式。
 
 从API version 20开始，支持低时延相关查询接口。
 - 开发者通过调用[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)来获取音频录制流是否正在低时延状态下工作。
@@ -92,7 +92,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 
 ### 使用低时延流的场景
 - k歌、直播等对时延要求较高的场景，建议使用低时延模式。
-- 专业音频处理、实时互动等对采集时延极度敏感的场景，建议使用超低时延模式。
+- 专业音频处理、实时互动等对录制时延极度敏感的场景，建议使用超低时延模式。
 - 普通录音、录像、录屏等没有实时要求的场景，不建议使用低时延模式或超低时延模式。
 
 ### 确保数据及时读入
