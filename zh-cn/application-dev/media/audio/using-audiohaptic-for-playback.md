@@ -43,7 +43,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
      let audioUri = 'data/audioTest.wav'; // 此处仅作示例，实际使用时需要将文件替换为应用目标音频资源的URI。
      let hapticUri = 'data/hapticTest.json'; // 此处仅作示例，实际使用时需要将文件替换为应用目标振动资源的URI。
      let idForUri = 0;
-
+   
      audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
        console.info(`Succeeded in registering source, sourceId is ${value}.`);
        idForUri = value;
@@ -69,7 +69,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
        length: hapticFile.length,
      };
      let idForFd = 0;
-
+   
      audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: number) => {
        console.info(`Succeeded in registering source from fd, sourceId is ${value}.`);
        idForFd = value;
