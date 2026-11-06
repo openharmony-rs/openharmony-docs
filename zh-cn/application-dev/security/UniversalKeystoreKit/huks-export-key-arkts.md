@@ -34,6 +34,7 @@ let emptyOptions: huks.HuksOptions = {
 properties: []
 };
 
+/* 2. 初始化密钥属性集 */
 let properties1: huks.HuksParam[] = [
   {
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
