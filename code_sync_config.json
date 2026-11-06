@@ -30126,14 +30126,14 @@
 						"start_line":147
 					},
 					{
-						"end_line":26,
+						"end_line":27,
 						"name":"arkts_graphics_draw_import_ui_and_graphics2d",
 						"start_line":17
 					},
 					{
-						"end_line":147,
+						"end_line":150,
 						"name":"arkts_graphics_draw_indirect_canvas_api",
-						"start_line":79
+						"start_line":80
 					}
 				]
 			}
