@@ -52,13 +52,6 @@ status: active
    ArkTS-Sta:
    <!-- @[set_fdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
    ```ts
-   import common from '@ohos.app.ability.common';
-   import { globalContext } from '../entryability/GlobalContext';
-   private avImageGenerator: media.AVImageGenerator | undefined;
-   private context: Context | undefined;
-   private fileDescriptor: resourceManager.RawFileDescriptor | undefined;
-   private testFilename: string = 'H264_AAC.mp4';
-
    // 获取当前组件所在Ability的Context，并通过Context获取应用文件路径。
    this.context = globalContext.getAbilityContext();
    // 设置fdSrc，H264_AAC.mp4为rawfile目录下的预置资源，需要开发者根据实际情况进行替换。
@@ -91,12 +84,6 @@ status: active
    ArkTS-Sta:
    <!-- @[fetch_frame](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
    ```ts
-   import { image } from '@kit.ImageKit';
-
-   // pixelMap对象声明，用于图片显示。
-   @State pixelMap: image.PixelMap | undefined = undefined;
-   private avImageGenerator: media.AVImageGenerator | undefined;
-
    // 初始化入参。
    let timeUs: Long = 0; // 需要获取的缩略图在视频中的时间点。
    let queryOption = media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC; // AV_IMAGE_QUERY_NEXT_SYNC表示选取传入时间点或之后的关键帧。

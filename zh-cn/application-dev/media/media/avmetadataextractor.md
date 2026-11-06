@@ -52,12 +52,6 @@ status: active
      <!-- @[set_fdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
      
      ```ts
-     import media from '@ohos.multimedia.media';
-     import { globalContext } from '../entryability/GlobalContext';
-     private avMetadataExtractor: media.AVMetadataExtractor | undefined;
-     private context: Context | undefined;
-     private fileDescriptor: resourceManager.RawFileDescriptor | undefined;
-  
      // 创建AVMetadataExtractor对象。
      this.avMetadataExtractor = await media.createAVMetadataExtractor();
      // 获取rawfile目录下资源文件描述符，设置fdSrc属性。
@@ -131,14 +125,6 @@ status: active
      ArkTS-Sta:
      <!-- @[set_dataSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
      ```ts
-     import { fileIo as fs, ReadOptions } from '@kit.CoreFileKit';
-     import common from '@ohos.app.ability.common';
-     import media from '@ohos.multimedia.media';
-     private avMetadataExtractor: media.AVMetadataExtractor | undefined;
-     private context: Context | undefined;
-     private fileDescriptor: resourceManager.RawFileDescriptor | undefined;
-     const TAG = 'MetadataDemo';
-
      // 创建AVMetadataExtractor对象。
      this.avMetadataExtractor = await media.createAVMetadataExtractor();
      this.context = globalContext.getAbilityContext();
@@ -203,21 +189,14 @@ status: active
      avMetadataExtractor.fdSrc = file;
      ```
      ArkTS-Sta:
-     <!-- @[set_dataSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @[set_openSync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
      ```ts
-     import { common } from '@kit.AbilityKit';
-     import { fileIo as fs } from '@kit.CoreFileKit';
-     import media from '@ohos.multimedia.media';
-     private avMetadataExtractor: media.AVMetadataExtractor | undefined;
-     private context: Context | undefined;
-
      // 创建AVMetadataExtractor对象。
-      this.avMetadataExtractor = await media.createAVMetadataExtractor();
-      this.context = globalContext.getAbilityContext();
-      let rootPath: string = this.context!!.filesDir; // 应用文件目录。
-      let fileName: string = '/test.mp4'; // test.mp4为应用文件目录下的预置资源，需要开发者根据实际情况进行替换。
-      let fd: Int = fs.openSync(rootPath + fileName).fd; // 获取fdSrc属性。
-     
+     let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
+     let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+     let rootPath: string = context.filesDir; // 应用文件目录。
+     let testFilename: string = '/test.mp4'; // test.mp3为应用文件目录下的预置资源，需要开发者根据实际情况进行替换。
+     fd = fileIo.openSync(rootPath + testFilename).fd; // 获取fdSrc属性。
      ```
 3. 获取元数据：调用fetchMetadata()，可以获取到一个[AVMetadata](../../reference/apis-media-kit/arkts-apis-media-i.md#avmetadata11)对象，通过访问该对象的各个属性，可以获取到元数据。
 
@@ -293,17 +272,12 @@ status: active
    ArkTS-Sta:
    <!-- @[fetch_frame](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
    ```ts
-   import { image } from '@kit.ImageKit';
-   // pixelMap对象声明，用于图片显示。
-   @State pixelMap: image.PixelMap | undefined = undefined;
-   private avMetadataExtractor: media.AVMetadataExtractor | undefined; 
-   // 接口入参声明。
    let timeUs: Long = 0;
-   let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
+   let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC;
    let param: media.PixelMapParams = {
      width : 300,
      height : 300
-   }
+   };
    // 获取视频缩略图（promise模式）。
    this.pixelMap = await this.avMetadataExtractor!!.fetchFrameByTime(timeUs, queryOption, param);
    ```
@@ -339,27 +313,22 @@ status: active
    ArkTS-Sta:
    <!-- @[fetch_frames](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
    ```ts
-   import image from '@ohos.multimedia.image';
-   // pixelMap对象声明，用于图片显示。
-   @State pixelMap: image.PixelMap | undefined = undefined;
-   private avMetadataExtractor: media.AVMetadataExtractor | undefined;
-   // 回调函数声明。
    let onFrameFetched = (frameInfo: media.FrameInfo, err?: BusinessError | undefined): void => {
-        if (err) {
-          console.info(TAG, `fetchFramesByTimes callback fail, error = ${JSON.stringify(err)}`);
-          return;
-        }
-        if (frameInfo !== undefined && frameInfo.image !== undefined && frameInfo.actualTimeUs != undefined) {
-          this.pixelMap = frameInfo.image;
-          console.info(TAG, `fetchFrameByTime callback succ.`);
-        }
-      };
-      let timesUs: Long[] = [0];
-      let queryOption = media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC;
-      let param: media.PixelMapParams = {
-        width: 300,
-        height: 300
-      };
+     if (err) {
+       console.info(TAG, `fetchFramesByTimes callback fail, error = ${JSON.stringify(err)}`);
+       return;
+     }
+     if (frameInfo !== undefined && frameInfo.image !== undefined && frameInfo.actualTimeUs != undefined) {
+       this.pixelMap = frameInfo.image;
+       console.info(TAG, `fetchFrameByTime callback succ.`);
+     }
+   };
+   let timesUs: Long[] = [0];
+   let queryOption = media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC;
+   let param: media.PixelMapParams = {
+     width: 300,
+     height: 300
+   };
    // 批量获取视频缩略图（callback模式）。
    this.avMetadataExtractor!!.fetchFramesByTimes(timesUs, queryOption, param, onFrameFetched);
    // 暂停批量获取视频缩略图。
