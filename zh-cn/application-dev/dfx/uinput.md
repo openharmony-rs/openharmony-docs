@@ -33,6 +33,7 @@ uinput <option> <command> <arg> ...
 | -P       | --touchpad | 注入触控板事件。|
 | -?       | --help     | 帮助命令。      | 
 | enable_key_status | enable_key_status | [控制注入的修饰键状态](#控制注入的修饰键状态)。| 
+| motion_down/motion_move/motion_up/motion_reset | motion_down/motion_move/motion_up/motion_reset | [原子化注入触摸事件](#原子化注入触摸事件)。| 
 
 > **说明：**
 >
@@ -676,6 +677,87 @@ uinput --touch --knuckle --double <dx1> <dy1> <dx2> <dy2> [interval time]
 ```bash
 # 模拟双指关节分别在(100, 100)、(100, 130)位置间隔200ms敲击2次。
 uinput -T -k -d 100 100 100 130
+```
+
+## 原子化注入触摸事件
+
+以命令为粒度模拟单次触摸事件（按下、移动、抬起），适用于需要在每次注入操作后进行截图、断言等分析的自动化测试场景。与[触摸事件](#触摸事件)在单条命令内完成完整手势不同，原子化注入触摸事件每条命令仅注入一个事件，手指按下状态通过本地状态文件跨进程保持，支持多指（fingerId取值范围[0, 9]）和多显示器（screenId）场景。
+
+> **说明：**
+>
+> - 手指需按照"按下→移动→抬起"的顺序注入，同一手指不支持重复按下。违反顺序时命令报错：finger 1 is already pressed或finger 1 is not pressed, cannot lift。
+> - 注入的事件中手指pointerId与fingerId一致。
+> - 命令执行成功退出码为0，失败为1。参数非法时命令报错，例如：invalid fingerId, range is 0-9、Coordinate value must be greater or equal than 0。
+> - 建议避免与真实触摸操作并发使用；测试结束或状态异常时，可执行[重置触摸原子化状态](#重置触摸原子化状态)清理未完成的手势。
+
+### 触摸原子化按下事件
+模拟手指在（dx, dy）按下，仅注入按下事件，建议与触摸原子化抬起事件搭配使用，确保事件闭环。
+
+**命令**
+```bash
+uinput motion_down <dx> <dy> [-f fingerId] [-s screenId]
+
+# <dx> <dy>以屏幕左上角为原点的相对坐标系的位置坐标。
+# [-f fingerId]手指编号，可选参数，默认值为0，取值范围：[0, 9]，仅支持整数。
+# [-s screenId]目标显示器编号，可选参数，默认值为0，仅支持非负整数。
+```
+
+**使用示例**
+```bash
+# 模拟手指1在显示器0的(100, 100)位置按下。
+uinput motion_down 100 100 -f 1 -s 0
+```
+
+### 触摸原子化移动事件
+模拟已按下的手指移动到（dx, dy），仅注入移动事件，注入的事件自动携带同屏所有已按下手指的状态。需在触摸原子化按下事件之后使用。
+
+**命令**
+```bash
+uinput motion_move <dx> <dy> [-f fingerId] [-s screenId]
+
+# <dx> <dy>以屏幕左上角为原点的相对坐标系的位置坐标。
+# [-f fingerId]手指编号，可选参数，默认值为0，取值范围：[0, 9]，仅支持整数。
+# [-s screenId]目标显示器编号，可选参数，默认值为0，仅支持非负整数。
+```
+
+**使用示例**
+```bash
+# 模拟手指1移动到(200, 100)。
+uinput motion_move 200 100 -f 1
+```
+
+### 触摸原子化抬起事件
+模拟已按下的手指在（dx, dy）抬起，仅注入抬起事件。需与触摸原子化按下事件搭配使用，确保事件闭环。
+
+**命令**
+```bash
+uinput motion_up <dx> <dy> [-f fingerId] [-s screenId]
+
+# <dx> <dy>以屏幕左上角为原点的相对坐标系的位置坐标。
+# [-f fingerId]手指编号，可选参数，默认值为0，取值范围：[0, 9]，仅支持整数。
+# [-s screenId]目标显示器编号，可选参数，默认值为0，仅支持非负整数。
+```
+
+**使用示例**
+```bash
+# 模拟手指1在(200, 100)位置抬起。
+uinput motion_up 200 100 -f 1
+```
+
+### 重置触摸原子化状态
+将所有已按下未抬起的手指依次抬起，并清空手指状态。
+
+**命令**
+```bash
+uinput motion_reset
+```
+
+**使用示例**
+```bash
+# 模拟手指0、手指1分别按下后，一键抬起全部手指并清理状态。
+uinput motion_down 100 100 -f 0
+uinput motion_down 200 200 -f 1
+uinput motion_reset
 ```
 
 ## 触控板事件
