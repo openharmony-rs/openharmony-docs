@@ -1127,13 +1127,13 @@ hdc server loglevel [level]
 
 | 取值 | 说明 |
 | -------- | -------- |
-| 0 | LOG_OFF |
-| 1 | LOG_FATAL |
-| 2 | LOG_WARN |
-| 3 | LOG_INFO |
-| 4 | LOG_DEBUG |
-| 5 | LOG_ALL |
-| 6 | LOG_VERBOSE（即LOG_LIBUSB，同时开启libusb增量日志） |
+| 0 | LOG_OFF：关闭日志输出。 |
+| 1 | LOG_FATAL：仅输出致命错误日志。 |
+| 2 | LOG_WARN：输出警告及致命错误日志。 |
+| 3 | LOG_INFO：输出提示、警告及致命错误日志。 |
+| 4 | LOG_DEBUG：输出调试及以下级别日志。 |
+| 5 | LOG_ALL：输出全部等级日志。 |
+| 6 | LOG_VERBOSE：输出最详细日志（即LOG_LIBUSB），同时开启libusb增量日志。 |
 
 **返回信息**：
 
