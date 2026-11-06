@@ -60,32 +60,33 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
    ```
 
 3. 获取对应的并发能力集。通过[getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18)获取相机的输出并发能力信息数组[CameraConcurrentInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraconcurrentinfo18)，数组内部包含相机在对应并发模式下支持的模式和输出能力，**在多摄同开场景下设置的模式和输出能力必须在并发能力集的范围之内**。若[getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18)接口返回空数组，则表明当前设备不支持并发功能。
-
    <!-- @[camera_getSupportedOutputCapability_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
-   ```ts
-   function getSupportedOutputCapabilityFn(cameraManager: camera.CameraManager, curCameraDeviceFront: camera.CameraDevice, curCameraDeviceBack: camera.CameraDevice)
-   {
+   
+   ``` TypeScript
+   getSupportedOutputCapabilityForConcurrentFn(cameraManager: camera.CameraManager,
+     curCameraDeviceFront: camera.CameraDevice,
+     curCameraDeviceBack: camera.CameraDevice): camera.CameraOutputCapability | undefined {
      // 检查当前相机是否支持拍照模式，获取原始能力集。
      let sceneModes = cameraManager.getSupportedSceneModes(curCameraDeviceFront);
      if (sceneModes === undefined) {
-       return;
+       return undefined;
      }
-     let isSupported: boolean = sceneModes.includes(camera.SceneMode.NORMAL_PHOTO); 
+     let isSupported: boolean = sceneModes.includes(camera.SceneMode.NORMAL_PHOTO);
      if (!isSupported) {
-       return;
+       return undefined;
      }
-     let cameraOutputCapability = cameraManager.getSupportedOutputCapability(curCameraDeviceFront, camera.SceneMode.NORMAL_PHOTO);
-
-     let deviceArray: Array<camera.CameraDevice> = [curCameraDeviceFront, curCameraDeviceBack];
-
+     let cameraOutputCapability = cameraManager.getSupportedOutputCapability(curCameraDeviceFront,
+       camera.SceneMode.NORMAL_PHOTO);
+   
+     let deviceArray: camera.CameraDevice[] = [curCameraDeviceFront, curCameraDeviceBack];
+   
      // 获取并发能力集。
-     let concurrentInfo: Array<camera.CameraConcurrentInfo> = cameraManager.getCameraConcurrentInfos(deviceArray);
-
+     let concurrentInfo: camera.CameraConcurrentInfo[] = cameraManager.getCameraConcurrentInfos(deviceArray);
+   
      if (concurrentInfo.length === 0) {
-       return;
+       return undefined;
      }
-
+   
      // 用并发能力集替换原始能力集。
      for (let i = 0; i < concurrentInfo.length; i++) {
        if (concurrentInfo[i].device.cameraPosition == camera.CameraPosition.CAMERA_POSITION_FRONT) {
@@ -93,7 +94,9 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
          break;
        }
      }
+     return cameraOutputCapability;
    }
+   ```
    ```
 
 4. 确定预览输出流。
