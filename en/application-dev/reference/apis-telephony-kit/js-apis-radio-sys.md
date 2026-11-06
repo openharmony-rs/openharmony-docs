@@ -1753,7 +1753,7 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
+| 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.                             |
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
@@ -1808,7 +1808,7 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
+| 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.                             |
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
@@ -1857,7 +1857,7 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
+| 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.                             |
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
@@ -1902,7 +1902,7 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
+| 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.                             |
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
@@ -2499,13 +2499,8 @@ Obtains the software version of the SIM card in the specified slot.
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
+| slotId | number | No  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
 
-**Return value**
-
-| Type              | Description                                     |
-| ------------------ | ---------------------------------------- |
-| string | Software version of the SIM card in the specified slot.|
 
 **Error codes**
 
@@ -2578,7 +2573,7 @@ radio.isManualNetworkScanning(0).then((state: boolean) => {
 
 ## radio.startManualNetworkScan<sup>23+</sup>
 
-startManualNetworkScan\(slotId: number, callback: Callback\<NetworkSearchRealTimeResult\>\): void
+startManualNetworkScan\(slotId: number, callback: AsyncCallback\<NetworkSearchRealTimeResult\>\): void
 
 Starts manual network scanning. This API uses an asynchronous callback to return the result.
 
@@ -2593,7 +2588,7 @@ Starts manual network scanning. This API uses an asynchronous callback to return
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
 | slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
-| callback | Callback\<[NetworkSearchRealTimeResult](#networksearchrealtimeresult23)\> | Yes  | Callback used to return the network scanning result.    |
+| callback | AsyncCallback\<[NetworkSearchRealTimeResult](#networksearchrealtimeresult23)\> | Yes  | Callback used to return the network scanning result.    |
 
 **Error codes**
 
@@ -2611,8 +2606,11 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 **Example**
 
 ```ts
-let slotId: number = 0;
-radio.startManualNetworkScan(slotId, (data: radio.NetworkSearchRealTimeResult) => {
+radio.startManualNetworkScan(0, (err: BusinessError, data: radio.NetworkSearchRealTimeResult) => {
+    if (err) {
+        console.error(`startManualNetworkScan failed, callback: err->${JSON.stringify(err)}`);
+        return;
+    }
     console.info(`startManualNetworkScan success, callback: data->${JSON.stringify(data)}`);
 });
 ```
@@ -2657,10 +2655,13 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 **Example**
 
 ```ts
-let slotId: number = 0;
-radio.startManualNetworkScan(slotId, (data: radio.NetworkSearchRealTimeResult) => {
+radio.startManualNetworkScan(0, (err: BusinessError, data: radio.NetworkSearchRealTimeResult) => {
+    if (err) {
+        console.error(`startManualNetworkScan failed, callback: err->${JSON.stringify(err)}`);
+        return;
+    }
     console.info(`startManualNetworkScan success, callback: data->${JSON.stringify(data)}`);
-    radio.stopManualNetworkScan(slotId);
+    radio.stopManualNetworkScan(0);
 });
 ```
 
@@ -2866,10 +2867,10 @@ Defines the network search result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
-| Name                  | Type                                             |  Read-Only| Optional | Description          |
-| ---------------------- | ------------------------------------------------- | ---- | ---- | -------------- |
-| isNetworkSearchSuccess | boolean                                           |  No | No| Whether the network search is successful.<br>The value **true** indicates that the network search is successful, and the value **false** indicates the opposite.|
-| networkSearchResult    | Array<[NetworkInformation](#networkinformation)\> |  No | No| Network search result.|
+| Name                  | Type                                             | Mandatory| Description          |
+| ---------------------- | ------------------------------------------------- | ---- | -------------- |
+| isNetworkSearchSuccess | boolean                                           |  Yes | Whether the network search is successful.<br>The value **true** indicates that the network search is successful, and the value **false** indicates the opposite.|
+| networkSearchResult    | Array<[NetworkInformation](#networkinformation)\> |  Yes | Network search result.|
 
 ## NetworkInformation
 
@@ -2879,12 +2880,12 @@ Defines the network information.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
-| Name           |                         Type                       |  Read-Only| Optional | Description          |
-| --------------- | --------------------------------------------------- | ---- | ---- | -------------- |
-| operatorName    | string                                              |  No | No| Carrier name.|
-| operatorNumeric | string                                              |  No | No| Carrier number.  |
-| state           | [NetworkInformationState](#networkinformationstate) |  No | No| Network information status.|
-| radioTech       | string                                              |  No | No| Radio access technology.  |
+| Name           |                         Type                       | Mandatory| Description          |
+| --------------- | --------------------------------------------------- | ---- | -------------- |
+| operatorName    | string                                              |  Yes | Carrier name.|
+| operatorNumeric | string                                              |  Yes | Carrier number.  |
+| state           | [NetworkInformationState](#networkinformationstate) |  Yes | Network information status.|
+| radioTech       | string                                              |  Yes | Radio access technology.  |
 
 ## NetworkInformationState
 
@@ -2909,12 +2910,12 @@ Defines the network selection mode.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
-| Name              |                    Type                      |  Read-Only| Optional |                 Description                  |
-| ------------------ | --------------------------------------------- | ---- | ---- | -------------------------------------- |
-| slotId             | number                                        |  No | No| Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
-| selectMode         | [NetworkSelectionMode](js-apis-radio.md#networkselectionmode) |  No | No| Network selection mode.                        |
-| networkInformation | [NetworkInformation](#networkinformation)     |  No | No| Network information.                            |
-| resumeSelection    | boolean                                       |  No | No| Whether to resume selection.<br>The value **true** means to resume selection, and the value **false** means the opposite.                             |
+| Name              |                    Type                      | Mandatory|                 Description                  |
+| ------------------ | --------------------------------------------- | ---- | -------------------------------------- |
+| slotId             | number                                        |  Yes | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
+| selectMode         | [NetworkSelectionMode](js-apis-radio.md#networkselectionmode) |  Yes | Network selection mode.                        |
+| networkInformation | [NetworkInformation](#networkinformation)     |  Yes | Network information.                            |
+| resumeSelection    | boolean                                       |  Yes | Whether to resume selection.<br>The value **true** means to resume selection, and the value **false** means the opposite.                             |
 
 ## ImsRegState<sup>9+</sup>
 
@@ -2952,10 +2953,10 @@ Defines the IMS registration information.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
-| Name       | Type                        |  Read-Only| Optional | Description         |
-| ----------- | ---------------------------- | ---- | ---- | ------------- |
-| imsRegState | [ImsRegState](#imsregstate9) |  No | No| IMS registration state.|
-| imsRegTech  | [ImsRegTech](#imsregtech9)   |  No | No| IMS registration technology.|
+| Name       | Type                        | Mandatory| Description         |
+| ----------- | ---------------------------- | ---- | ------------- |
+| imsRegState | [ImsRegState](#imsregstate9) |  Yes | IMS registration state.|
+| imsRegTech  | [ImsRegTech](#imsregtech9)   |  Yes | IMS registration technology.|
 
 ## ImsServiceType<sup>9+</sup>
 
@@ -3006,7 +3007,7 @@ Returns the result of manual network scanning.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
-| Name              |                    Type                      |  Read-Only| Optional |                 Description                  |
-| ------------------ | --------------------------------------------- | ---- | ---- | -------------------------------------- |
-| networkInfos    | Array<[NetworkInformation](#networkinformation)\> |  No | No| List of scanning results containing available network information.|
-| isFinish        | boolean     |  No | No| Whether network scanning has finished.<br>**true**: yes; **false**: no.                |
+| Name              |                    Type                      | Mandatory|                 Description                  |
+| ------------------ | --------------------------------------------- | ---- | -------------------------------------- |
+| networkInfos    | Array<[NetworkInformation](#networkinformation)\> |  Yes | List of scanning results containing available network information.|
+| isFinish        | boolean     |  Yes | Whether network scanning has finished.<br>**true**: yes; **false**: no.                |
