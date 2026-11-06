@@ -10155,7 +10155,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/AutoShowSoftKeyboard.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":41,
 						"name":"soft_keyboard_auto_popup",
 						"start_line":15
 					}
