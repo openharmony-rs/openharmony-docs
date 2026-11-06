@@ -89,7 +89,7 @@ struct MaterialScopeAdaptExample {
           Row() {
             // 请将$r('app.string.content_area')替换为实际资源文件，在本示例中该资源文件的value值为"内容区"
             Text($r('app.string.content_area'))
-				.fontColor('#182431')
+                .fontColor('#182431')
                 .fontSize(30)
                 .lineHeight(41)
                 .fontWeight(700)
