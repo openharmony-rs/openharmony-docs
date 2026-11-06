@@ -168,7 +168,36 @@
 
    <!-- @[settings_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
    
+   <!-- @[set_exposure_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   
    ``` C++
+   // 曝光。
+   void NDKCamera::SetExposureModeFn(uint32_t mode, Camera_CaptureSession *captureSession)
+   {
+       Camera_ExposureMode exposureMode = static_cast<Camera_ExposureMode>(mode);
+       bool isExposureModeSupported = false;
+       Camera_ErrorCode ret =
+           OH_CaptureSession_IsExposureModeSupported(captureSession, exposureMode, &isExposureModeSupported);
+       if (isExposureModeSupported == false || ret != CAMERA_OK) {
+           return;
+       }
+       ret = OH_CaptureSession_SetExposureMode(captureSession, exposureMode);
+       if (ret != CAMERA_OK) {
+           return;
+       }
+       Camera_ExposureMode curMode = static_cast<Camera_ExposureMode>(0);
+       ret = OH_CaptureSession_GetExposureMode(captureSession, &curMode);
+       if (ret != CAMERA_OK) {
+           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetExposureMode failed.");
+           return;
+       }
+       if (curMode == exposureMode) {
+           OH_LOG_INFO(LOG_APP, "setExposureMode success.");
+       } else {
+           OH_LOG_ERROR(LOG_APP, "setExposureMode failed.");
+       }
+   }
+   ```
    Camera_ErrorCode NDKCamera::HasFlashFn(uint32_t mode)
    {
        Camera_FlashMode flashMode = static_cast<Camera_FlashMode>(mode);
