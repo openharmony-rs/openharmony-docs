@@ -29,7 +29,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
    ArkTS-Dyn示例：
 
-   <!-- @[get_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->  
+   <!-- @[get_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->    
    
    ``` TypeScript
    import { audio, audioHaptic } from '@kit.AudioKit';
@@ -176,7 +176,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 3. 调用[createPlayer](../../reference/apis-audio-kit/js-apis-audioHaptic.md#createplayer)方法，创建AudioHapticPlayer实例，其中options参数控制是否将音频静音，是否禁止振动。参数为空时，播放器默认开启音频，允许振动。
 
-   <!-- @[create_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+   <!-- @[create_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->  
    
    ``` TypeScript
    let options: audioHaptic.AudioHapticPlayerOptions = {muteAudio: false, muteHaptics: false};
@@ -322,7 +322,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
    ArkTS-Dyn示例：
 
-   <!-- @[haptic_unregist](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->  
+   <!-- @[haptic_unregist](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->    
    
    ``` TypeScript
    // idForFd为步骤1中获取的资源ID，这里以Fd注册的资源为例。
