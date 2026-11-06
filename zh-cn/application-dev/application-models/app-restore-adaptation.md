@@ -393,8 +393,9 @@ private replayDeepStack(): void {
     for (let i = current.length; i < names.length; i++) {
       this.pathStack.pushPathByName(names[i], {} as Record<string, Object>);
     }
-  } catch (e) {
-    // 快照损坏则跳过补推
+  } catch (_) {
+    // 快照损坏则跳过补推，停在已恢复页不白屏；打日志便于排障
+    hilog.warn(DOMAIN, TAG, 'replayDeepStack skipped: broken snapshot');
   }
 }
 ```
