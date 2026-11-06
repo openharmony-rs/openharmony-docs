@@ -302,68 +302,79 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
        isOpenSuccess = true;
      } catch (error) {
        console.error(`createCameraInput failed`);
-     }
-     if (!isOpenSuccess) {
-       return;
-     }
-   }
-   ```
-
-8. 会话流程。
-
    <!-- @[camera_sessionFlow_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
-   ```ts
-    // 监听捕获会话错误变化。
-   function onSessionErrorChange(session: camera.PhotoSession | camera.VideoSession): void {
+   
+   ``` TypeScript
+   // 监听捕获会话错误变化。
+   onSessionErrorChangeForConcurrent(session: camera.PhotoSession | camera.VideoSession): void {
      try {
        session.on('error', (captureSessionError: BusinessError): void => {
        });
      } catch (error) {
-       console.error('onCaptureSessionErrorChange error');
+       let err = error as BusinessError;
+       console.error(`onSessionErrorChangeForConcurrent err code: ${err.code}`);
      }
    }
-
-   let handlePhotoAssetCb: (photoAsset: photoAccessHelper.PhotoAsset) => void = () => {
-   };
-
+   
    // 监听拍照事件。
-   function photoOutputCallBack(photoOutput: camera.PhotoOutput): void {
+   photoOutputCallBackForConcurrent(photoOutput: camera.PhotoOutput): void {
      try {
-
+   
        // 监听拍照开始。
        photoOutput.on('captureStartWithInfo', (err: BusinessError, captureStartInfo: camera.CaptureStartInfo): void => {
-     });
-
-     // 监听拍照帧输出捕获。
-     photoOutput.on('frameShutter', (err: BusinessError, frameShutterInfo: camera.FrameShutterInfo): void => {
-     });
-
-    // 监听拍照结束。
-     photoOutput.on('captureEnd', (err: BusinessError, captureEndInfo: camera.CaptureEndInfo): void => {
-     });
-
-     // 监听拍照异常。
-     photoOutput.on('error', (data: BusinessError): void => {
-     });
-     photoOutput.on('photoAssetAvailable', (err: BusinessError, photoAsset: photoAccessHelper.PhotoAsset) => {
-       if (photoAsset === undefined) {
-         return;
-       }
-       handlePhotoAssetCb(photoAsset);
-     });
-     } catch (err) {
-      let error = err as BusinessError;
-      console.error(`photoOutputCallback failed, err code: ${error.code}`);
+         if (err) {
+           console.error(`captureStartWithInfo failed, err code:${err.code}`);
+           return;
+         }
+         console.info(`capture is called, captureId: ${captureStartInfo.captureId}.`);
+       });
+   
+       // 监听拍照帧输出捕获。
+       photoOutput.on('frameShutter', (err: BusinessError, frameShutterInfo: camera.FrameShutterInfo): void => {
+         if (err) {
+           console.error(`frameShutter failed, err code:${err.code}`);
+           return;
+         }
+         console.info(`frameShutter is called, captureId: ${frameShutterInfo.captureId}.`);
+       });
+   
+       // 监听拍照结束。
+       photoOutput.on('captureEnd', (err: BusinessError, captureEndInfo: camera.CaptureEndInfo): void => {
+         if (err) {
+           console.error(`captureEnd failed, err code:${err.code}.`);
+           return;
+         }
+         console.info(`captureEnd is called, captureId: ${captureEndInfo.captureId}.`);
+       });
+   
+       // 监听拍照异常。
+       photoOutput.on('error', (err: BusinessError): void => {
+         console.error(`photoOutput error, err code: ${err.code}.`);
+       });
+       photoOutput.on('photoAssetAvailable', (err: BusinessError, photoAsset: photoAccessHelper.PhotoAsset) => {
+         if (err) {
+           console.error(`photoAssetAvailable error: ${err.code}.`);
+           return;
+         }
+         console.info(`photoOutPutCallBack photoAssetAvailable`);
+         // 开发者可通过photoAsset调用媒体库相关接口，自定义处理图片。
+         // 调用媒体库落盘接口保存一阶段图，二阶段图就绪后媒体库会主动帮应用替换落盘图片。
+         let accessHelper: photoAccessHelper.PhotoAccessHelper =
+           photoAccessHelper.getPhotoAccessHelper(this.context);
+         this.mediaLibSavePhoto(photoAsset, accessHelper);
+       });
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`photoOutputCallBackForConcurrent failed, err code: ${err.code}`);
      }
    }
-
+   
    // 会话流程。
-   async function sessionFlowFn(cameraManager: camera.CameraManager, cameraInput: camera.CameraInput,
-     previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput | undefined, videoOutput: camera.VideoOutput | undefined, curSceneMode: camera.SceneMode): Promise<void> {
+   async sessionFlowForConcurrentFn(cameraManager: camera.CameraManager, cameraInput: camera.CameraInput,
+     previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput | undefined,
+     videoOutput: camera.VideoOutput | undefined, curSceneMode: camera.SceneMode): Promise<void> {
      let session: camera.PhotoSession | camera.VideoSession | undefined = undefined;
      try {
-
        // 创建CaptureSession实例。
        if (curSceneMode === camera.SceneMode.NORMAL_PHOTO) {
          session = cameraManager.createSession(curSceneMode) as camera.PhotoSession;
@@ -373,34 +384,44 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
        if (session === undefined) {
          return;
        }
-       onSessionErrorChange(session);
-
+       this.onSessionErrorChangeForConcurrent(session);
+   
        // 开始配置会话。
        session.beginConfig();
-
+   
        // 向会话中添加相机输入流。
        session.addInput(cameraInput);
-
+   
        // 向会话中添加预览输出流。
        session.addOutput(previewOutput);
-
+   
        if (curSceneMode === camera.SceneMode.NORMAL_PHOTO) {
          if (photoOutput === undefined) {
            return;
          }
-
+   
          // 拍照监听事件。
-         photoOutputCallBack(photoOutput);
-
+         this.photoOutputCallBackForConcurrent(photoOutput);
+   
          // 向会话中添加拍照输出流。
          session.addOutput(photoOutput);
        } else if (curSceneMode === camera.SceneMode.NORMAL_VIDEO) {
          if (videoOutput === undefined) {
            return;
          }
-
          // 向会话中添加录像输出流。
          session.addOutput(videoOutput);
+       }
+       // 提交配置信息。
+       await session.commitConfig();
+       // 启动会话。
+       await session.start();
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`sessionFlowForConcurrentFn fail, err code: ${err.code}.`);
+     }
+   }
+   ```
        }
 
        // 提交配置信息。
