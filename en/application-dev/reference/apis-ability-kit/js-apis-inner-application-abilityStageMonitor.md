@@ -7,7 +7,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-The module provides the capability to listen for a specified [AbilityStage](js-apis-app-ability-abilityStage.md) object. You can use AbilityStageMonitor as an input parameter of [abilityDelegator.waitAbilityStageMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#waitabilitystagemonitor9) to register a listener.
+The module provides the capability to listen for a specified [AbilityStage](js-apis-app-ability-abilityStage.md) object. You can use AbilityStageMonitor as an input parameter of [abilityDelegator.waitAbilityStageMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#waitabilitystagemonitor) to register a listener.
 
 > **NOTE**
 > 
