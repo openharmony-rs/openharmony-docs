@@ -50,6 +50,8 @@
     >
     > 逻辑相机是系统定义的虚拟相机，由多个物理镜头组合而成。系统在内部完成物理镜头间的切换等处理，应用无需感知镜头变化，只需通过[getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)获取相机列表时，根据[CameraPosition](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraposition)区分前置镜头与后置镜头即可。
 
+   <!-- @[camera_getSupportedCameras](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
    ```ts
    function getCameraDevices(cameraManager: camera.CameraManager): Array<camera.CameraDevice> {
      let cameraArray: Array<camera.CameraDevice> = cameraManager.getSupportedCameras();
@@ -70,6 +72,8 @@
 
    方法二：获取物理相机，通过[CameraManager](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md)的[getCameraDevices](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameradevices23)方法，获取获取当前设备支持的相机列表，筛选相机属性[CameraDevice](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameradevice).isLogicalCamera为false的相机。
    物理镜头根据[CameraType](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameratype)区分各自镜头属性，开发者可根据使用场景使用符合采集诉求的相机镜头。
+
+   <!-- @[camera_getCameraDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
    ```ts
    function getPhysicalCameraDevicesFn(cameraManager: camera.CameraManager,
@@ -107,6 +111,8 @@
 在相机应用开发过程中，可以随时监听相机状态，包括新相机的出现、相机的移除、相机的可用状态。在回调函数中，通过相机ID、相机状态这两个参数进行监听，如当有新相机出现时，可以将新相机加入到应用的备用相机中。
 
   通过注册cameraStatus事件，通过回调返回监听结果，callback返回CameraStatusInfo参数，参数的具体内容可参考相机管理器回调接口实例[CameraStatusInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#camerastatusinfo)。
+
+<!-- @[on_camera_status](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
 ```ts
 function onCameraStatusChange(cameraManager: camera.CameraManager): void {
