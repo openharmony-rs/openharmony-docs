@@ -421,40 +421,35 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
         console.info('photoOutput is undefined or null');
       }
     }
-    ```
-
-10. 录制。
-
    <!-- @[camera_startVideo_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
-    ```ts
-    let isRecording = false;
-
-    // 启动录制。
-    async function startVideo(videoOutput: camera.VideoOutput, avRecorder: media.AVRecorder): Promise<void> {
-      try {
-        await videoOutput?.start();
-        await avRecorder?.start();
-        isRecording = true;
-      } catch (error) {
-        console.error(`startVideo err`);
-      }
-    }
-
-    // 停止录制。
-    async function stopVideo(videoOutput: camera.VideoOutput, avRecorder: media.AVRecorder): Promise<void> {
-      if (!isRecording) {
-        return;
-      }
-      try {
-        if (avRecorder) {
-          await avRecorder.stop();
-        }
-        if (videoOutput) {
-          await videoOutput.stop();
-        }
-        isRecording = false;
-      } catch (error) {
+   
+   ``` TypeScript
+   // 启动录制。
+   async startVideoForConcurrent(videoOutput: camera.VideoOutput, avRecorder: media.AVRecorder): Promise<void> {
+     try {
+       await videoOutput?.start();
+       await avRecorder?.start();
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`startVideo failed, err code: ${err.code}.`);
+     }
+   }
+   
+   // 停止录制。
+   async stopVideoForConcurrent(videoOutput: camera.VideoOutput, avRecorder: media.AVRecorder): Promise<void> {
+     try {
+       if (avRecorder) {
+         await avRecorder.stop();
+       }
+       if (videoOutput) {
+         await videoOutput.stop();
+       }
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`stopVideo failed, err code: ${err.code}.`);
+     }
+   }
+   ```
         console.error(`stopVideo err`);
       }
     }
