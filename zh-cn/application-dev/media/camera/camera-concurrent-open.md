@@ -138,13 +138,12 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
    ```
 
 5. 确定拍照输出流。
-
    <!-- @[camera_createPhotoOutput_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
-   ```ts
-   function getPhotoOutputFn(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability)
-   {
-    // 此处创建拍照输出流以format：2000，size：1920*1080的photoProfile为例。
+   
+   ``` TypeScript
+   getPhotoOutputForConcurrentFn(cameraManager: camera.CameraManager,
+     cameraOutputCapability: camera.CameraOutputCapability): camera.PhotoOutput | undefined {
+     // 此处创建拍照输出流以format：2000，size：1920*1080的photoProfile为例。
      let photoProfileObj: camera.Profile = {
        format: 2000,
        size: {
@@ -155,21 +154,23 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
      // 查询对应photoProfile是否存在，对应的photoProfile必须在getCameraConcurrentInfos获取到的并发能力信息数组范围内。
      let photoProfiles = cameraOutputCapability.photoProfiles;
      if (photoProfiles.length < 1) {
-       return;
+       return undefined;
      }
      let index = photoProfiles.findIndex((photoProfile: camera.Profile) => {
        return photoProfile.size.width === photoProfileObj.size.width &&
-       photoProfile.size.height === photoProfileObj.size.height &&
-       photoProfile.format === photoProfileObj.format;
+         photoProfile.size.height === photoProfileObj.size.height &&
+         photoProfile.format === photoProfileObj.format;
      });
      if (index === -1) {
-       return;
+       return undefined;
      }
      let photoOutput = cameraManager.createPhotoOutput(photoProfileObj);
      if (photoOutput === undefined) {
-       return;
+       return undefined;
      }
+     return photoOutput;
    }
+   ```
    ```
 
 6. 确定录像输出流。
