@@ -109,7 +109,7 @@ NFC英文全称Near Field Communication，近距离无线通信。NFC服务提�
   提供SSAP服务端/客户端连接建立、属性读写与通知等能力。详情请参考API [@ohos.nearlink.ssap (星闪SSAP连接能力)](../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md)。
 
 - **dataTransfer模块**<br/>
-  提供基于端口通道的数据传输能力。详情请参考API [@ohos.nearlink.dataTransfer (星闪数传能力)](../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md)。
+  提供基于端口通道的数据传输能力。详情请参考API [@ohos.nearlink.dataTransfer (星闪数据传输能力)](../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md)。
 
 - **cdsm模块**<br/>
   提供合作设备集合成员设备信息的查询与订阅等能力。详情请参考API [@ohos.nearlink.cdsm (星闪合作设备集合管理能力)](../reference/apis-connectivity-kit/js-apis-nearlink-cdsm.md)。
