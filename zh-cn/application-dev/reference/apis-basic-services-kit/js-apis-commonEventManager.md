@@ -37,7 +37,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API版本9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -55,7 +55,7 @@ publish(event: string, callback: AsyncCallback\<void>): void
 
 发布公共事件。使用callback异步回调。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -103,7 +103,7 @@ publish(event: string, options: CommonEventPublishData, callback: AsyncCallback\
 
 发布公共事件。使用callback异步回调。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -159,7 +159,7 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallbac
 
 创建订阅者。使用callback异步回调。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -213,7 +213,7 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise\<CommonEventS
 
 创建订阅者。使用Promise异步回调。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -262,7 +262,7 @@ createSubscriberSync(subscribeInfo: CommonEventSubscribeInfo): CommonEventSubscr
 
 同步创建订阅者的接口。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -311,7 +311,7 @@ subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback\<CommonEven
 
 订阅公共事件。使用callback异步回调。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -381,7 +381,7 @@ unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback\<void>):
 
 取消订阅公共事件。使用callback异步回调。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -470,7 +470,7 @@ subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback\<CommonEv
 
 订阅公共事件，并返回订阅成功或失败信息。使用Promise异步回调。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -545,7 +545,7 @@ type CommonEventData = _CommonEventData
 
 描述公共事件的数据。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -559,7 +559,7 @@ type CommonEventSubscriber = _CommonEventSubscriber
 
 描述公共事件的订阅者。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -573,7 +573,7 @@ type CommonEventSubscribeInfo = _CommonEventSubscribeInfo
 
 描述公共事件订阅者的信息。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -587,7 +587,7 @@ type CommonEventPublishData = _CommonEventPublishData
 
 描述公共事件内容和属性。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
