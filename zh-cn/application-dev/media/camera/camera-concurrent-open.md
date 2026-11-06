@@ -466,7 +466,26 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
    
    <!-- @[camera_setExposureBias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    
+   <!-- @[camera_setFocusMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   
    ``` TypeScript
+   // 对焦模式。
+   setFocusMode(focusMode: camera.FocusMode,
+     session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
+     try {
+       // 检测对焦模式是否支持。
+       let isSupported = session?.isFocusModeSupported(focusMode);
+       // 设置对焦模式。
+       if (!isSupported) {
+         return;
+       }
+       session?.setFocusMode(focusMode);
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`setFocusMode failed, err code: ${err.code}`);
+     }
+   }
+   ```
    // 曝光补偿。
    setExposureBiasFn(exposureBias: number,
      session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
