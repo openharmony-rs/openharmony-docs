@@ -8621,7 +8621,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/MultimediaPixelArt.ets",
 				"functions":[
 					{
-						"end_line":65,
+						"end_line":67,
 						"name":"multimedia_pixel",
 						"start_line":17
 					}
