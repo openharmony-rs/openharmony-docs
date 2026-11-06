@@ -98,7 +98,7 @@ export class AVTranscoderDemo {
      }
    }
    // ...
-   // 获取当前进度
+   // 获取当前进度。
    getCurrentProgress(): number {
      console.info(`getCurrentProgress = ${this.currentProgress}`);
      return this.currentProgress;
@@ -106,6 +106,7 @@ export class AVTranscoderDemo {
    ```
 
 3. 设置源视频文件fd：设置属性fdSrc。
+
    > **说明：**
    >
    > 下面代码示例中的fdSrc仅作示意使用，开发者需根据实际情况，确认资源有效性并设置：
@@ -167,6 +168,7 @@ export class AVTranscoderDemo {
    ```
 
 4. 设置目标视频文件fd：设置属性fdDst。
+
    > **说明：**
    >
    > 转码输出文件fd（即示例里fdDst），形式为number。需要调用基础文件操作接口（[@ohos.file.fs (文件管理)](../../reference/apis-core-file-kit/js-apis-file-fs.md)）实现应用文件访问能力，获取方式参考[应用文件访问(ArkTS)](../../file-management/app-file-access.md)。
@@ -184,8 +186,8 @@ export class AVTranscoderDemo {
 
    > **说明：**
    >
-   > 写入配置参数时需要注意，prepare()接口的入参avConfig中仅设置转码相关的配置参数。<br>
-   > 支持配置转码的数据格式请参考AVTranscoder[支持的格式](media-kit-intro.md#支持的格式)。
+   > - 写入配置参数时需要注意，prepare()接口的入参avConfig中仅设置转码相关的配置参数。
+   > - 支持配置转码的数据格式请参考AVTranscoder[支持的格式](media-kit-intro.md#支持的格式)。
 
    <!-- @[createTranscoderConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
@@ -274,6 +276,7 @@ export class AVTranscoderDemo {
    ```
 
 10. 完整的【开始转码-暂停转码-恢复转码-转码完成】流程。
+
     <!-- @[transcoderProcess](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
 
     ``` TypeScript
