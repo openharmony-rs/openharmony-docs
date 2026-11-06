@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=2ad93db7c4d6f14c715bbc16dab3df992aeec8e8 translatedAt=2026-11-03T05:37:58.695Z pushedAt=2026-11-03T07:38:52.328Z nl=1 -->
 
 HUKS provides attestation for the public keys of asymmetric key pairs.
 
@@ -20,7 +21,7 @@ HUKS issues a certificate for the public key of an asymmetric key pair stored in
 
 The [Group Key](huks-group-key-overview.md) feature is supported since API version 23.
 
-The **Extensions** field is in the ASN.1 DER encoding format. The data structure is defined as follows:
+The key attestation extension field uses the ASN.1 DER standard encoding format. The data structure is defined as follows:
 ```asn1
 KeyAttestation ::= SEQUENCE {
   version            AttestationVersion DEFAULT v1,

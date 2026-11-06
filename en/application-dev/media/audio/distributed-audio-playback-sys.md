@@ -2,13 +2,14 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=5b3ab60fe000eb4bad70440a3e7f30019a2671f9 translatedAt=2026-09-18T03:27:07.564Z pushedAt=2026-09-18T10:12:17.075Z -->
 
-Distributed audio playback enables an application to continue audio playback on another device in the same network.
+With distributed audio playback, users can cast audio to a remote device, enabling audio to flow between different devices in the network.
 
-You can use distributed audio playback to transfer all audio streams or the specified audio stream being played on the current device to a remote device.
+With distributed audio playback, you can cast all audio streams currently playing on this device to a specified remote device, or cast a specific audio stream to a specified remote device.
 
 ## How to Develop
 
@@ -26,7 +27,7 @@ When obtaining the device list on the network, you can specify **DeviceFlag** to
 | DISTRIBUTED_INPUT_DEVICES_FLAG<sup>9+</sup> | Remote input device. This is a system API.| 
 | ALL_DISTRIBUTED_DEVICES_FLAG<sup>9+</sup> | Remote input and output device. This is a system API.| 
 
-For details about the API reference, see [AudioRoutingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md).
+For details about the APIs, see [AudioRoutingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md).
 
 ### Continuing the Playing of All Audio Streams
 
@@ -34,7 +35,7 @@ For details about the API reference, see [AudioRoutingManager](../../reference/a
 
 2. Create an AudioDeviceDescriptor instance to describe an audio output device.
 
-3. Call **selectOutputDevice** to select a remote device, on which all the audio streams will continue playing.
+3. Call **selectOutputDevice** to cast all audio streams currently playing on this device to the specified remote device.
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -51,13 +52,13 @@ let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
   sampleRates: [44100],
   channelCounts: [2],
   channelMasks: [0],
-  networkId: audio.LOCAL_NETWORK_ID,
+  networkId: "",  // Enter the networkId of the remote device here.
   interruptGroupId: 1,
   volumeGroupId: 1,
   displayName: ""
 }];
 
-async function selectOutputDevice(): Promise<void> {
+async function exampleSelectOutputDevice(): Promise<void> {
   audioRoutingManager.selectOutputDevice(outputAudioDeviceDescriptor, (err: BusinessError) => {
     if (err) {
       console.error(`Invoke selectOutputDevice failed, code is ${err.code}, message is ${err.message}`);
@@ -76,8 +77,8 @@ async function selectOutputDevice(): Promise<void> {
 
 3. Create an AudioDeviceDescriptor instance to describe an audio output device.
 
-4. Call **selectOutputDeviceByFilter** to select a remote device, on which the specified audio stream will continue playing.
- 
+4. Call **selectOutputDeviceByFilter** to cast the specified audio stream currently playing on this device to the specified remote device.
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -90,7 +91,7 @@ let outputAudioRendererFilter: audio.AudioRendererFilter  = {
     usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // Audio stream usage type: music. Set this parameter based on the service scenario.
     rendererFlags: 0 // AudioRenderer flag.
   } as audio.AudioRendererInfo,
-  rendererId: 0
+  rendererId: 0 // This value is an example. Replace it with the actual ID when using it.
 };
 
 let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
@@ -102,13 +103,13 @@ let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
   sampleRates: [44100],
   channelCounts: [2],
   channelMasks: [0],
-  networkId: audio.LOCAL_NETWORK_ID,
+  networkId: "",  // Enter the networkId of the remote device here.
   interruptGroupId: 1,
   volumeGroupId: 1,
   displayName: ""
 }];
 
-async function selectOutputDeviceByFilter(): Promise<void> {
+async function exampleSelectOutputDeviceByFilter(): Promise<void> {
   audioRoutingManager.selectOutputDeviceByFilter(outputAudioRendererFilter, outputAudioDeviceDescriptor, (err: BusinessError) => {
     if (err) {
       console.error(`Invoke selectOutputDeviceByFilter failed, code is ${err.code}, message is ${err.message}`);

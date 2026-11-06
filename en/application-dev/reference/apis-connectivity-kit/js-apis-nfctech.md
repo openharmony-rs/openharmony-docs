@@ -2,10 +2,11 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=37e87e28b1f57566fffb557016c871f107cbe03a translatedAt=2026-09-08T07:25:41.835Z pushedAt=2026-09-08T11:18:44.973Z -->
 
 The **nfctech** module provides APIs for reading and writing tags that use different Near-Field Communication (NFC) technologies.
 
@@ -25,7 +26,7 @@ import { tag } from '@kit.ConnectivityKit';
 
 ## NfcATag
 
-Provides APIs to access NFC-A (ISO 14443-3A) properties and perform I/O operations on a tag. This class inherits from **[TagSession](js-apis-tagSession.md)**.
+The **NfcATag** module provides APIs to access NFC-A (ISO 14443-3A) properties and perform I/O operations on a tag. This class inherits from [TagSession](js-apis-tagSession.md).
 
 **TagSession** is the base class of all NFC tag technologies. It provides common interfaces for establishing connections and transferring data. For more details, see [TagSession](js-apis-tagSession.md).
 
@@ -271,7 +272,7 @@ let dsfId : number = nfcV.getDsfId();
 console.info("nfcV dsfId: " + dsfId);
 ```
 
-## IsoDepTag<sup>9+</sup> 
+## IsoDepTag<sup>9+</sup>
 
 Provides APIs to access ISO-DEP (ISO 14443-4) properties and I/O operations on a tag. This class inherits from **TagSession**.
 
@@ -484,7 +485,7 @@ console.info("ndef ndefRecords number: " + ndefRecords.length);
 
 ## NdefTag<sup>9+</sup>
 
-Provides APIs to access the tags in the NFC Data Exchange Format (NDEF). This class inherits from **TagSession**.
+The **NdefTag** module provides APIs to access the tags in the NFC Data Exchange Format (NDEF). This class inherits from [TagSession](js-apis-tagSession.md).
 
 **TagSession** is the base class of all NFC tag technologies. It provides common interfaces for establishing connections and transferring data. For more details, see [TagSession](js-apis-tagSession.md).
 
@@ -618,7 +619,7 @@ function nfcTechDemo(){
         ndefTag.readNdef().then((ndefmessage : tag.NdefMessage) => {
             console.info("ndef readNdef Promise ndefmessage: " + ndefmessage);
         }).catch((err : BusinessError)=> {
-            console.error("ndef readNdef Promise err Code: ${err.code}, message: ${err.message}");
+            console.error(`ndef readNdef Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
         console.error(`ndef readNdef Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
@@ -1087,7 +1088,7 @@ function nfcTechDemo() {
 
     try {
         let sectorIndex = 1; // Set a correct index.
-        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06]  // Set a correct key. The value must contain six bytes. 
+        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06];  // Set a correct key. The value must contain six bytes. 
         mifareClassic.authenticateSector(sectorIndex, key, true).then(() => {
             console.info("mifareClassic authenticateSector Promise success.");
         }).catch((err : BusinessError)=> {
@@ -1149,7 +1150,7 @@ function nfcTechDemo() {
 
     try {
         let sectorIndex = 1; // Set a correct index.
-        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06]  // Set a correct key. The value must contain six bytes. 
+        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06];  // Set a correct key. The value must contain six bytes. 
         mifareClassic.authenticateSector(sectorIndex, key, true, (err : BusinessError)=> {
             if (err) {
                 console.error(`mifareClassic authenticateSector AsyncCallback errCode: ${err.code}, message: ${err.message}`);

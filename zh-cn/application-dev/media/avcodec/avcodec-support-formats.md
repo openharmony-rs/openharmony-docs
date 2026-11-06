@@ -1,15 +1,23 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "汇总AVCodec Kit的音视频编解码及媒体数据封装、解封装格式支持情况，涵盖H.264、H.265、AAC、MP3等MIME类型及mp4、flv等封装格式，帮助开发者了解平台能力差异并选择合适的编解码格式。"
+keywords: [格式支持, MIME类型, 视频编解码格式, 音频编解码格式, 封装格式, 解封装格式, H.264, AAC, mp4]
+doctype: guide
+status: active
+---
+
 # AVCodec支持的格式
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran; @mr-chencxy-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
 音视频的编解码能力以及文件格式封装和解封装能力的支持情况，在不同平台存在能力和规格的差异。开发者可以通过[获取支持的编解码能力](obtain-supported-codecs.md)来获取实际的支持情况和规格情况。
 
-## 媒体编解码
+## 音视频编解码
 
 ### 视频解码
 当前支持的解码能力如下：
@@ -41,7 +49,7 @@
 
 例如可以通过<!--RP15-->OH_AVCODEC_MIMETYPE_VIDEO_AVC、OH_AVCODEC_MIMETYPE_VIDEO_HEVC<!--RP15End-->来查询系统平台支持的<!--RP16-->H.264、H.265的硬件解码能力。<!--RP16End-->
 
-具体开发指导请参考[视频解码](video-decoding.md)。
+具体开发指导请参考[异步模式视频解码](video-decoding.md)。
 
 ### 视频编码
 当前支持的编码能力如下：
@@ -56,7 +64,7 @@
 
 系统平台支持情况和每种编码的能力范围，可以通过[获取支持的编解码能力](obtain-supported-codecs.md)获取。
 
-具体开发指导请参考[视频编码](video-encoding.md)。
+具体开发指导请参考[异步模式视频编码](video-encoding.md)。
 
 ### 音频解码
 当前支持的解码能力：
@@ -84,7 +92,7 @@
 
 从API version 23开始支持：TWINVQ、ILBC、TRUEHD、DVAUDIO、DTS、COOK。
 
-具体开发指导请参考[音频解码](audio-decoding.md)。
+具体开发指导请参考[异步模式音频解码](audio-decoding.md)。
 
 ### 音频编码
 当前支持的编码能力：
@@ -102,11 +110,11 @@
 
 系统平台提供的编码能力和设备强相关，开发者可以通过[获取支持的编解码能力](obtain-supported-codecs.md)获取系统平台支持的编码能力和能力规格。
 
-具体开发指导请参考[音频编码](audio-encoding.md)。
+具体开发指导请参考[异步模式音频编码](audio-encoding.md)。
 
-## 媒体数据封装与解析
+## 媒体数据封装与解封装
 
-### 媒体数据解析
+### 媒体数据解封装
 支持的解封装格式如下：
 | 媒体格式  | 封装格式                      | 轨道格式                      |
 | -------- | :----------------------------| :----------------------------|
@@ -120,7 +128,7 @@
 | 音视频     | 3gp<sup>22+</sup>                        |视频轨：H.263、AVC(H.264)、MPEG4<br>音频轨：AAC、AMR(amrnb、amrwb)|
 | 音视频     | 3g2<sup>22+</sup>                        |视频轨：H.263、AVC(H.264)、MPEG4<br>音频轨：AAC、AMR(amrnb、amrwb)|
 | 音视频     | m4v<sup>22+</sup>                        |<!--RP12-->视频轨：AVC(H.264)、MPEG4<!--RP12End--><br>音频轨：AAC、ALAC、AC3|
-| 音视频     | wmv<sup>22+</sup>                        |视频轨：AVC(H.264)、WMV3<br>音频轨：WMAV1、WMAV2、WMAPRO|
+| 音视频     | wmv<sup>22+</sup>                        |视频轨：AVC(H.264)、WMV3、WMV1（从API版本26.1.0开始支持）<br>音频轨：WMAV1、WMAV2、WMAPRO|
 | 音视频     | rm<sup>23+</sup>、rmvb<sup>23+</sup>                        |视频轨：RV30、RV40<br>音频轨：AAC、AC3、COOK|
 | 音频       | m4a                        |<!--RP9-->音频轨：AAC、ALAC<sup>22+</sup><!--RP9End-->|
 | 音频       | aac                        |音频轨：AAC|
@@ -133,12 +141,14 @@
 | 音频       | wma<sup>22+</sup>                        |音频轨：AC3、WMAV1、WMAV2、Vorbis、Flac、AMR(amrnb、amrwb)、AAC、MPEG(MP2、MP3)、GSM_MS、G711mu、G711a、PCM、ADPCM_G722、ADPCM_G726、ADPCM_IMA_WAV、ADPCM_MS、ADPCM_YAMAHA、DVAUDIO<sup>23+</sup>、DTS<sup>23+</sup>|
 | 音频       | sunAU<sup>24+</sup>          |音频轨：PCM、ADPCM_G722、ADPCM_G726LE、G711mu、G711a|
 | 音频       | dts<sup>23+</sup>          |音频轨：DTS|
+| 音频       | dsf<br>**起始版本：** 26.1.0          |音频轨：DSD|
+| 音频       | dff<br>**起始版本：** 26.1.0          |音频轨：DSD|
 | 外挂字幕   | srt                        |字幕轨：SRT|
 | 外挂字幕   | webvtt                     |字幕轨：WEBVTT|
 
 DRM解密能力支持的解封装格式：<!--RP10-->mp4(H.264，AAC)、mpeg-ts(H.264，AAC)<!--RP10End-->。
 
-具体开发指导请参考[媒体数据解析](audio-video-demuxer.md)。
+具体开发指导请参考[媒体数据解封装](audio-video-demuxer.md)。
 
 ### 媒体数据封装
 当前支持的封装能力如下：

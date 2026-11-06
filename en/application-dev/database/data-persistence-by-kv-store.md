@@ -5,7 +5,7 @@
 <!--Designer: @ding_dong_dong-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-
+<!-- md-trans-meta sourceCommit=986d1cb5e3914fb11967cf9fe6c64e0607e31e45 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
 
 ## When to Use
 
@@ -25,11 +25,11 @@ The key-value (KV) database stores data in the form of KV pairs. You can use KV 
 
 ## Available APIs
 
-The following table lists the APIs used for KV data persistence. Most of the APIs are executed asynchronously, using a callback or promise to return the result. The following table uses the callback-based APIs as an example. For more information about the APIs, see [Distributed KV Store](../reference/apis-arkdata/js-apis-distributedKVStore.md).
+The following are APIs related to the KV store persistence feature. For more APIs and their usage, see [@ohos.data.distributedKVStore (Distributed KV Store)](../reference/apis-arkdata/js-apis-distributedKVStore.md).
 
 | API| Description| 
 | -------- | -------- |
-| createKVManager(config: KVManagerConfig): KVManager | Creates a **KvManager** instance to manage database objects.| 
+| createKVManager(config: KVManagerConfig): KVManager | Creates a **KVManager** instance to manage database objects.| 
 | getKVStore&lt;T&gt;(storeId: string, options: Options, callback: AsyncCallback&lt;T&gt;): void | Obtains a KV store of the specified type.| 
 | put(key: string, value: Uint8Array \| string \| number \| boolean, callback: AsyncCallback&lt;void&gt;): void | Adds a KV pair of the specified type to this KV store.| 
 | get(key: string, callback: AsyncCallback\<boolean \| string \| number \| Uint8Array>): void | Obtains the value of the specified key.| 
@@ -40,55 +40,43 @@ The following table lists the APIs used for KV data persistence. Most of the API
 
 ## How to Develop
 
-1. Use the **createKVManager()** method to create a **KVManager** instance for managing database objects. <br>Example:
+1. To use a KV store, first call the `createKVManager()` method to obtain a `KVManager` instance for managing database objects. The following example uses the Stage model to obtain the context. For details about how to obtain the context in the FA model, see [context](../application-models/application-context-fa.md). The example code is as follows:
 
-   ```ts
-   // Import the module.
-   // Create a KvStoreInterface.ets file in the pages directory.
+   <!-- @[CreateKvManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
    import { distributedKVStore } from '@kit.ArkData';
    import { BusinessError } from '@kit.BasicServicesKit';
+   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    import EntryAbility from '../entryability/EntryAbility';
-   // Logger implements the print feature after Hilog is encapsulated.
    import Logger from '../common/Logger';
-
+   
    let kvManager: distributedKVStore.KVManager | undefined = undefined;
    let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
    let appId: string = 'com.example.kvstoresamples';
    let storeId: string = 'storeId';
-   // Obtain the context of the stage model from EntryAbility.ets.
+   // Obtain the context.
    const context = EntryAbility.getContext();
-
-   // Obtain the context of the FA model.
-   import { featureAbility } from '@kit.AbilityKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-
-   let context = featureAbility.getContext();
-
-   // The code of all the following APIs is implemented in KvInterface.
-   export class KvInterface {
-   }
-   ```
-   <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
-   ``` TypeScript
-   public CreateKvManager = (() => {
-     Logger.info('CreateKvManager start');
-     if (typeof (kvManager) === 'undefined') {
-       const kvManagerConfig: distributedKVStore.KVManagerConfig = {
-         bundleName: appId,
-         context: context
-       };
-       try {
-         // Create a KVManager instance.
-         kvManager = distributedKVStore.createKVManager(kvManagerConfig);
-         Logger.info('Succeeded in creating KVManager.');
-       } catch (err) {
-         Logger.error(`Failed to create KVManager. Code:${err.code},message:${err.message}`);
+   // ...
+     public CreateKvManager = (() => {
+       Logger.info('CreateKvManager start');
+       if (typeof (kvManager) === 'undefined') {
+         const kvManagerConfig: distributedKVStore.KVManagerConfig = {
+           bundleName: appId,
+           context: context
+         };
+         try {
+           // Create a KVManager instance.
+           kvManager = distributedKVStore.createKVManager(kvManagerConfig);
+           Logger.info('Succeeded in creating KVManager.');
+         } catch (err) {
+           Logger.error(`Failed to create KVManager. Code:${err.code},message:${err.message}`);
+         }
+       } else {
+         Logger.info ('KVManager has created');
        }
-     } else {
-       Logger.info ('KVManager has created');
-     }
-   })
+     })
    ```
 
 2. Use the **getKVStore()** method to create and obtain a KV store. <br>Example:

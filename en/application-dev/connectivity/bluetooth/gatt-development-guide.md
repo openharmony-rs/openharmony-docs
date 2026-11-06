@@ -3,14 +3,15 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=cc0fc565309f1feee1e8ea853938538a7ace0021 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## Introduction
 This document guides you through implementing Bluetooth Low Energy (BLE) connection and data transmission between devices in accordance with the Generic Attribute Profile (GATT). When two devices communicate via GATT, they can be distinguished as client and server based on their respective functions. This guide describes the implementation methods for both the client and server.
 
-GATT is the core protocol of BLE, defining the mechanism for Bluetooth communication and data transmission based on services, characteristics, and descriptors. For details about related terms, see [Terminology](../terminology.md).
+GATT is the core protocol of BLE, defining the mechanism for Bluetooth communication and data transmission based on services, characteristics, and descriptors. For details about related terms, see [Glossary](terminology.md).
 
 ## How to Implement
 After obtaining the server's device address, the client can initiate a connection to the server. The server's device address can be obtained through the BLE scanning process. Once the connection between the server and the client is successfully established, the client can initiate operations such as querying services, reading from and writing to characteristics, and receiving notifications from the server, thereby enabling the client to send data to and receive data from the server.
@@ -33,7 +34,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ### Client
 
 **1. Creating a Client Instance**<br>
-After the client discovers the target device through the device discovery process, it can instantiate a client object. All subsequent operations will be performed using this client instance.
+After the target device is found through the device discovery process, you can create a client instance. All subsequent operations are based on this client instance. To connect to multiple target devices, create multiple client instances to enable multi-device connections.
 ```ts
 // The following is pseudo code.
 let device = 'XX:XX:XX:XX:XX:XX';
@@ -196,7 +197,7 @@ When the server's characteristic value changes, the client can receive notificat
 
 Notifications do not require a client response, while indications mandate an acknowledgment. This acknowledgment mechanism is handled by the Bluetooth subsystem and therefore you do not need to implement this mechanism on your own. To enable the client to receive notifications or indications, also perform the following:
 
-- Subscribe to server's characteristic changes. For details, see [on('BLECharacteristicChange ')](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onblecharacteristicchange).
+- Subscribe to server's characteristic changes. For details, see [on('BLECharacteristicChange')](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onblecharacteristicchange).
 - Depending on the use case, enable the notification or indication function for server's characteristic changes. For details about related APIs, see [setCharacteristicChangeNotification](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#setcharacteristicchangenotification) and [setCharacteristicChangeIndication](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#setcharacteristicchangeindication).
 ```ts
 // The following is pseudo code.
@@ -279,7 +280,7 @@ try {
   gattClient.disconnect();
 
   // Close the gattClient instance if it is no longer needed. It becomes unavailable after being closed.
-  gattClient.close() 
+  gattClient.close();
 } catch (err) {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -362,9 +363,9 @@ try {
 Data transmission can be implemented by reading and writing characteristics, reading and writing descriptors, and actively sending notifications or indications of characteristic changes.
 
 **4.1 Subscribing to Characteristic Read or Write Events**<br>
-You can subscribe to characteristic read or write events to obtain the operation requests of the client. For details about the related APIs, see [on('characteristicRead ')](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#oncharacteristicread) and [on('characteristicWrite ')](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#oncharacteristicwrite).
+You can subscribe to characteristic read or write events to obtain the operation requests of the client. For details about the related APIs, see [on('characteristicRead')](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#oncharacteristicread) and [on('characteristicWrite')](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#oncharacteristicwrite).
 
-- When receiving a characteristic read request, call [sendResponse](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#sendresponse) needs to be called to return the value of the corresponding characteristic.
+- When receiving a characteristic read request, [sendResponse](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#sendresponse) needs to be called to return the value of the corresponding characteristic.
 - When receiving a characteristic write request, save the characteristic value written by the client. Based on the **needRsp** parameter in [CharacteristicWriteRequest](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#characteristicwriterequest), determine whether to call [sendResponse](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#sendresponse) to acknowledge the write operation.
 ```ts
 let gattServer: ble.GattServer = ble.createGattServer();
@@ -403,7 +404,7 @@ function writeCharacteristicReq(characteristicWriteRequest: ble.CharacteristicWr
   if (!needRsp) { // Check whether a response needs to be returned to the client.
       return;
   }
-  let value: Uint8Array = new Uint8Array(characteristicWriteRequest.value); // Save the written characteristic value.
+  let value: Uint8Array =  new Uint8Array(characteristicWriteRequest.value); // Save the written characteristic value.
   let characteristicUuid: string = characteristicWriteRequest.characteristicUuid;
   cccValue[0] = value[0];
   let serverResponse: ble.ServerResponse = {
@@ -497,7 +498,7 @@ gattServer.on('descriptorRead', readDescriptorReq);
 gattServer.on('descriptorWrite', writeDescriptorReq);
 ```
 
-**4.3 Sending Notifications or Indications of Descriptor Value Changes**<br>
+**4.3 Sending Notifications or Indications of Characteristic Value Changes**<br>
 When the server's characteristic value changes, the server can notify the client of the change using a notification or indication. For details about the related APIs, see [notifyCharacteristicChanged](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#notifycharacteristicchanged).
 
 Notifications do not require a client response, while indications mandate an acknowledgment. The application determines whether to send a notification or indication based on the **confirm** parameter in [NotifyCharacteristic](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#notifycharacteristic). To enable the server to notify the client of characteristic value changes, also perform the following:
@@ -511,7 +512,7 @@ let notifyCharacter: ble.NotifyCharacteristic = {
   serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
   characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
   characteristicValue: arrayBufferC,
-  confirm: true // Determine whether to send a notification or instruction.
+  confirm: true // Determine whether to send a notification or indication.
 };
 try {
   let gattServer: ble.GattServer = ble.createGattServer();
@@ -834,7 +835,7 @@ export class GattClientManager {
     this.logCharacteristic(this.myCharacteristic);
   }
 
-  // 9. Enable the notification or indication function for characteristic value changes.
+  // 9. Called to enable or disable the capability to receive notifications of characteristic value changes from the server. Generally, use either notification or indication.
   public Notify(enable: boolean) {
     if (!this.gattClient || this.connectState != constant.ProfileConnectionState.STATE_CONNECTED) {
       console.error(TAG, 'gattClient does not exist or state not connected');
@@ -863,7 +864,7 @@ export class GattClientManager {
     }
   }
 
-  // 10. Enable the indication function for characteristic value changes.
+  // 10. Called to enable or disable the capability to receive indications of characteristic value changes from the server. Generally, use either notification or indication.
   public Indicate(enable: boolean) {
     if (!this.gattClient || this.connectState != constant.ProfileConnectionState.STATE_CONNECTED) {
       console.error(TAG, 'gattClient does not exist or state not connected');
@@ -1194,11 +1195,11 @@ export class GattServerManager {
     console.info(TAG, 'unRegisterServer ' + this.myServiceUuid);
     try {
       this.gattServer.removeService(this.myServiceUuid); // 8.1 Delete the service.
-      this.gattServer.off('connectionStateChange', this.onGattServerStateChange) // 8.2 Unsubscribe from the connection state changes.
-      this.gattServer.on('characteristicRead', this.onCharacteristicRead); // 8.3 Subscribe to characteristic read events.
-      this.gattServer.on('characteristicWrite', this.onCharacteristicWrite); // 8.4 Subscribe to characteristic write events.
-      this.gattServer.on('descriptorRead', this.onDescriptorRead); // 8.5 Subscribe to descriptor read events.
-      this.gattServer.on('descriptorWrite', this.onDescriptorWrite); // 8.6 Subscribe to descriptor write events.
+      this.gattServer.off('connectionStateChange', this.onGattServerStateChange); // 8.2 Unsubscribe from connection state.
+      this.gattServer.off('characteristicRead', this.onCharacteristicRead); // 8.3 Unsubscribe from characteristic read event.
+      this.gattServer.off('characteristicWrite', this.onCharacteristicWrite); // 8.4 Unsubscribe from characteristic write event.
+      this.gattServer.off('descriptorRead', this.onDescriptorRead); // 8.5 Unsubscribe from descriptor read event.
+      this.gattServer.off('descriptorWrite', this.onDescriptorWrite); // 8.6 Unsubscribe from descriptor write event.
       this.gattServer.close() // 8.7 Close the gattServer instance if it is no longer needed.
     } catch (err) {
       console.error(TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);

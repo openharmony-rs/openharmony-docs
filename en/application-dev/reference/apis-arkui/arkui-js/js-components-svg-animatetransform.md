@@ -155,7 +155,7 @@ Animation overlay
 ```
 
 
-![en-us_image_0000001127125192](figures/en-us_image_0000001127125192.gif)
+![Triangular-movement](figures/Triangular-movement.gif)
 
 
 Example of involved components

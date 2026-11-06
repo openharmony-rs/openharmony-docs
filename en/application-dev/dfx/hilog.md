@@ -2,10 +2,11 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @liuyifeifei;@buzhenwang-->
-<!--Designer: @shenchenkai-->
-<!--Tester: @liyang2235-->
-<!--Adviser: @foryourself-->
+<!--Owner: @suxunquan-->
+<!--Designer: @milkbread123-->
+<!--Tester: @yufeifei-->
+<!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=8a6b11fea7973c7d62e9681bda45dfb291a66cde translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 HiLog is a log system that provides logging for the system framework, services, and applications to record information on user operations and system running status. You can run the hilog commands to query related log information.
 
@@ -48,76 +49,78 @@ If the HiLog API is called in the service code, HiLog logs are generated during 
 
 > **NOTE**
 >
-> Log level: **I** indicates the **Info** level. For details about other levels, see [Log Level](../reference/apis-performance-analysis-kit/capi-log-h.md#loglevel)
+> Log level: I indicates the Info level. For other levels, see the first letter of [LogLevel](../reference/apis-performance-analysis-kit/capi-log-h.md#loglevel).
 >
-> **domainID**: In **A03200**, **A** indicates application logs (**LOG_APP**), and **3200** indicates that the **domainID** is **0x3200**.
+> domainID: In A03200, A indicates an app log (LOG_APP), and 3200 indicates that the domainID is 0x3200.
+>
+> Log tag: The maximum length is 31 bytes. Tags exceeding this limit are truncated. Chinese characters are not recommended, as they may cause garbled text or alignment issues.
 
 <!--RP15End-->
 
 ## Commands
 
 <!--RP18-->
-| Short Option| Long Option| Parameter| Description| 
+| Short Option | Long Option | Parameter | Description |
 | -------- | -------- | -------- | -------- |
-| -h | --help | - | Shows help information.| 
-| Default| Default| - | Performs a blocking read on logs, with no exiting after the read finishes.| 
-| -x | --exit | - | Performs a non-blocking read on logs, with exiting after the read finishes.| 
-| -a | --head | &lt;n&gt; | Shows the first several lines of logs. The parameter **\<n>** indicates the number of first lines to show.| 
-| -z | --tail | &lt;n&gt; | Shows the last several lines of logs. The parameter **\<n>** indicates the number of last lines to show.| 
-| -t | --type | &lt;type&gt; | Views logs of a specified type.| 
-|  |  | app | Views application logs.| 
-|  |  | core | Views system logs.| 
-|  |  | init | Views startup logs.| 
-|  |  | kmsg | Views kernel logs.| 
-|  |  | only_prerelease | Views logs that are printed before the system release version. Application developers do not need to pay attention to these logs.| 
-| -L | --level | &lt;level&gt; | Sets the log level, for example, **-L D/I/W/E/F**.| 
-| -D | --domain | &lt;domain&gt; | Sets the domain.| 
-| -T | --tag | &lt;tag&gt; | Sets the tag.| 
-| -P | --pid | &lt;pid&gt; | Identifies a process.| 
-| -e | --regex | &lt;expr&gt; | Prints only the lines of logs that match the regular expression specified through **\<expr>**.|
-| -v | --format | &lt;format&gt; | Sets the display format.|
-|  |  | color/colour | Displays logs in different colors. By default, logs are displayed in black and white.|  
-|  |  | time | Displays the local time.| 
-|  |  | epoch | Displays the amount of time elapsed since the epoch time.| 
-|  |  | monotonic | Displays the amount of time elapsed since the system startup time.| 
-|  |  | msec | Displays the time in milliseconds.|
-|  |  | usec | Displays the time in microseconds.| 
-|  |  | nsec | Displays the time in nanoseconds.| 
-|  |  | year | Displays the time with the year portion.| 
-|  |  | zone | Displays the time with the local time zone.| 
-|  |  | wrap | Displays logs in different lines without adding prefixes such as the timestamp to the new line.|
-|  |  | long | Displays all data fields separated by spaces.|
-| -r | - | - | Clears the buffer for logs of a specified type. This option is used together with **-t**, which specifies a log type. By default, the **app** or **core** types are used.| 
-| -g | - | - | Checks the buffer size for logs of a specified type. This option is used together with **-t**, which specifies a log type. By default, the **app** or **core** types are used.| 
-| -G | --buffer-size | &lt;size&gt; | Sets the size of the buffer for logs of a specified type. This option is used together with **-t**, which specifies a log type. By default, the **app** or **core** types are used. The unit can be B, KB, MB, or GB. The value ranges from 64 KB to 16 MB.| 
-| -s | --statistics | - | Shows statistics. This option must be used together with **-t** or **-D**.| 
-| -S | - | - | Clears statistics. This option must be used together with **-t** or **-D**.| 
-| -w | --write | &lt;control&gt; | Controls a flushing task.| 
-|  |  | query | Queries flushing tasks.| 
-|  |  | start | Starts a flushing task. The command line parameters are the file name, size of a single file, flushing mode, and number of rotated files.| 
-|  |  | stop | Stops a flushing task.|
-|  |  | refresh | Refreshes the logs in the buffer to the flushed file.|
-|  |  | clear | Deletes log files that are flushed to disks.| 
-| -f | --filename | &lt;filename&gt; | Sets the names of the files to be flushed to disk.| 
-| -l | --length | &lt;length&gt; | Sets the size of the files to be flushed to disk. The value must be greater than or equal to 64 KB.| 
-| -n | --number | &lt;number&gt; | Sets the number of files to be flushed to disk.| 
-| -m | --stream | &lt;algorithm&gt; | Sets the flushing mode.| 
-|  |  | none | Indicates that data is flushed to disks in non-compression mode.| 
-|  |  | zlib | Indicates that data is flushed to disks using the zlib compression algorithm. The flushed file is in .gz format.| 
-| -j | --jobid | &lt;jobid&gt; | Sets the ID of a flushing task.| 
-| -p | --privacy | &lt;on/off&gt; | Specifies whether to enable privacy for logs during system debugging.| 
-|  |  | on | Enables privacy so that parameters are displayed as **\<private>** in printed logs.| 
-|  |  | off | Disables privacy so that parameters are displayed as they are in printed logs.| 
-| -k | - | &lt;on/off&gt; | Specifies whether to enable kernel logging.| 
-|  |  | on | Enables kernel logging.| 
-|  |  | off | Disables kernel logging.| 
-| -Q | - | &lt;control-type&gt; | Controls whether to enable the default quota when the threshold is exceeded.| 
-|  |  | pidon | Enables the process flow control.| 
-|  |  | pidoff | Disables the process flow control.| 
-|  |  | domainon | Enables the domain flow control.| 
-|  |  | domainoff | Disables the domain flow control.| 
-| -b | --baselevel | &lt;loglevel&gt; | Sets the lowest level of logs that can be printed: D(DEBUG)/I(INFO)/W(WARN)/E(ERROR)/F(FATAL). This command can be used together with **-D** and **-T** to set the lowest log level.| 
-| - | --persist| - |Persists the log level setting command. (The setting will not be lost after the system is restarted.)|
+| -h | --help | - | Help command. |
+| default | default | - | Blocking read of logs without exiting. |
+| -x | --exit | - | Non-blocking read of logs, exiting after reading. |
+| -a | --head | &lt;n&gt; | Display only the first &lt;n&gt; lines of logs. |
+| -z | --tail | &lt;n&gt; | Display only the last &lt;n&gt; lines of logs. |
+| -t | --type | &lt;type&gt; | View logs of a specified type. |
+| - | - | app | View app logs. |
+| - | - | core | View system logs. |
+| - | - | init | View init logs. |
+| - | - | kmsg | View kernel logs. |
+| - | - | only_prerelease | View logs printed only before the system release version. You do not need to pay attention to this type. |
+| -L | --level | &lt;level&gt; | Specify the log level, for example: -L D/I/W/E/F. |
+| -D | --domain | &lt;domain&gt; | Specify the domain. |
+| -T | --tag | &lt;tag&gt; | Specify the tag. |
+| -P | --pid | &lt;pid&gt; | Identify different PIDs. |
+| -e | --regex | &lt;expr&gt; | Print only lines whose log message matches &lt;expr&gt;, where &lt;expr&gt; is a regular expression. |
+| -v | --format | &lt;format&gt; | Display format control. |
+| - | - | color/colour | Display different colors for different levels. The default is black-and-white mode. |
+| - | - | time | Display local time. |
+| - | - | epoch | Display time relative to 1970. |
+| - | - | monotonic | Display time relative to system startup. |
+| - | - | msec | Display time with millisecond precision. |
+| - | - | usec | Display time with microsecond precision. |
+| - | - | nsec | Display time with nanosecond precision. |
+| - | - | year | Add the year to the displayed time. |
+| - | - | zone | Add the local time zone to the displayed time. |
+| - | - | wrap | When a log line wraps, do not add prefixes such as timestamps to the new line. |
+| - | - | long | Display all data fields, with information separated by spaces. |
+| -r | - | - | Clear buffer logs. Use with -t to specify a type. The default types are app and core. |
+| -g | - | - | Query the buffer size. Use with -t to specify a type. The default types are app and core. |
+| -G | --buffer-size | &lt;size&gt; | Set the buffer size for the specified log &lt;type&gt;. Use with -t to specify a type. The default types are app and core. The unit can be B/K/M, with a range of 64K to 16M. |
+| -s | --statistics | - | Query statistics. Must be used with -t or -D. |
+| -S | - | - | Clear statistics. Must be used with -t or -D. |
+| -w | --write | &lt;control&gt; | Persist task control. |
+| - | - | query | Query persist tasks. |
+| - | - | start | Start a persist task. The command-line parameters are the file name, single file size, persist algorithm, and number of rotate files. |
+| - | - | stop | Stop the persist task. |
+| - | - | refresh | Flush logs from the buffer to the persist file. |
+| - | - | clear | Delete the persisted log files. |
+| -f | --filename | &lt;filename&gt; | Set the persist file name. |
+| -l | --length | &lt;length&gt; | Set the persist file size, which must be greater than or equal to 64K. |
+| -n | --number | &lt;number&gt; | Set the number of persist files. |
+| -m | --stream | &lt;algorithm&gt; | Persist mode control. |
+| - | - | none | Persist without compression. |
+| - | - | zlib | Persist using the zlib compression algorithm. The persist file has the .gz extension. |
+| -j | --jobid | &lt;jobid&gt; | Set the persist task ID. |
+| -p | --privacy | &lt;on/off&gt; | Control the log privacy switch during system debugging. |
+| - | - | on | Turn on the privacy switch, displaying &lt;private&gt;. |
+| - | - | off | Turn off the privacy switch, displaying plaintext. |
+| -k | - | &lt;on/off&gt; | Control the kernel log read switch. |
+| - | - | on | Turn on kernel log reading. |
+| - | - | off | Turn off kernel log reading. |
+| -Q | - | &lt;control-type&gt; | Control the flow control default quota switch. |
+| - | - | pidon | Turn on process flow control. |
+| - | - | pidoff | Turn off process flow control. |
+| - | - | domainon | Turn on domain flow control. |
+| - | - | domainoff | Turn off domain flow control. |
+| -b | --baselevel | &lt;loglevel&gt; | Set the minimum log level that can be printed: D(DEBUG)/I(INFO)/W(WARN)/E(ERROR)/F(FATAL). Can be used with -D and -T to set the minimum log level for a specified log. |
+| - | --persist | - | Persist the log level setting command (the setting is retained after a restart). |
 <!--RP18End-->
 
 
@@ -441,7 +444,7 @@ $ param get hilog.loggable.global
 I
 ```
 <!--RP17-->
-The default global log level is **INFO**.
+The global log level is INFO by default.
 <!--RP17End-->
 
 <!--RP16-->
@@ -576,12 +579,12 @@ app----- 0x0------- -------------------------------- 285.00---- 11-15 16:04:34.8
 **Description**
 
 ```shell
-MAX_FREQ: the maximum number of log lines per second
-TIME: occurrence time
-MAX_TP: the maximum number of bytes per second
-LINES: the total number of lines in a statistical period
-LENGTH: the total number of bytes in a statistical period
-DROPPED: the number of dropped lines in a statistical period
+MAX_FREQ: Maximum log output rate, in lines per second.
+TIME:     Time when the maximum occurred.
+MAX_TP:   Maximum log output rate, in bytes per second.
+LINES:    Total lines during the statistics period.
+LENGTH:   Total bytes during the statistics period.
+DROPPED:  Lines dropped during the statistics period.
 ```
 
 ### Clearing Statistics
@@ -681,7 +684,7 @@ This log indicates that the number of logs whose domain ID is **02C02** exceeds 
 
 Currently, maintenance and debugging information is available in all log loss scenarios. You can search for the corresponding keyword in HiLog to view the causes.
 
-You can use regular expressions to search for log lines containing the keywords **LOGLIMIT**, **Slow reader missed**, and **write socket failed**.
+You can use regular expressions to search for log lines containing the keywords `LOGLIMIT|Slow reader missed|write socket failed`.
 
 **LOGLIMIT** indicates that log loss occurs due to process or domain flow control. **Slow reader missed** indicates that global logs are lost. **write socket failed** indicates that process logs are lost.
 
@@ -767,15 +770,15 @@ You can use regular expressions to search for log lines containing the keywords 
   **LOG_APP**:
 
   ```shell
-  hilog -b I -D 0x3200  (Set the log print level of the 03200 domain to INFO.)
+  hilog -b I -D 0x3200 (Set the log level for domain 03200 to INFO.)
   
-  hilog -b I -D 0x3201  (Set the log print level of the 03201 domain to INFO.)
+  hilog -b I -D 0x3201 (Set the log level for domain 03201 to INFO.)
   ```
 
   **LOG_CORE**:
 
   ```shell
-  hilog -b I -D d003200  (Set the log print level of the 03200 domain to INFO.)
+  hilog -b I -D d003200 (Set the log level for domain 03200 to INFO.)
   
-  hilog -b I -D d003201  (Set the log print level of the 03201 domain to INFO.)
+  hilog -b I -D d003201 (Set the log level for domain 03201 to INFO.)
   ```

@@ -6,10 +6,11 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=ce38dccd1ec5f587cf7d6bc68b44aa475ae014f7 translatedAt=2026-11-03T06:29:16.329Z pushedAt=2026-11-03T12:08:25.636Z nl=1 -->
 
 ## Overview
 
-Defines the structs and enums for external key management extensions.
+Defines the structs, enums, and macros for external key management extensions.
 
 **File to include**: <huks/native_huks_external_crypto_type.h>
 
@@ -35,12 +36,13 @@ Defines the structs and enums for external key management extensions.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [OH_Huks_ExternalCryptoTag](#oh_huks_externalcryptotag) | OH_Huks_ExternalCryptoTag | Enumerates the tag values used in a parameter set.|
+| [OH_Huks_ExternalPinAuthState](#oh_huks_externalpinauthstate) | OH_Huks_ExternalPinAuthState | Enumerates the UKey PIN authentication states.|
 
 ### Macros
 
 | Name| Description|
-| -- | -- |
-| OH_HUKS_EXTERNAL_CRYPTO_MAX_PROVIDER_NAME_LEN 100 | Defines the maximum length of the provider name.<br>**Since**: 22|
+|---|---|
+| OH_HUKS_EXTERNAL_CRYPTO_MAX_PROVIDER_NAME_LEN 100 | Defines the maximum length of the provider name.<br>**Since**: 22| 
 | OH_HUKS_EXTERNAL_CRYPTO_MAX_RESOURCE_ID_LEN   512 | Defines the maximum length of the resource ID.<br>**Since**: 22|
 
 ## Enum Description
@@ -74,7 +76,7 @@ enum OH_Huks_ExternalPinAuthState
 
 **Description**
 
-Enumerates the Ukey PIN authentication states.
+Enumerates the UKey PIN authentication states.
 
 **Since**: 22
 
@@ -82,4 +84,6 @@ Enumerates the Ukey PIN authentication states.
 | -- | -- |
 | OH_HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0 | PIN code not authenticated.|
 | OH_HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED = 1 | PIN code authentication succeeded.|
-| OH_HUKS_EXT_CRYPTO_PIN_LOCKED = 2 | PIN code locked.|
+| OH_HUKS_EXT_CRYPTO_PIN_LOCKED = 2 | The PIN code is locked. |
+
+

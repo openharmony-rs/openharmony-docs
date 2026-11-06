@@ -1,4 +1,4 @@
-# Encryption and Decryption with a DES Symmetric Key (ECB Mode) (ArkTS)
+# Encryption and Decryption with a DES Symmetric Key (ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,14 +6,17 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=54563f4d762a79828d807de44c3263058eb36558 translatedAt=2026-10-30T03:36:54.288Z pushedAt=2026-10-30T07:03:51.221Z nl=1 -->
 
-For details about the algorithm specifications, see [DES](crypto-sym-encrypt-decrypt-spec.md#des).
+For details about the algorithm specifications, see [DES](crypto-encryption-decryption.md#des).
+
+## Encrypting and Decrypting with DES Symmetric Key (ECB Mode)
 
 **Encryption**
 
 1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a 64-bit DES symmetric key (**SymKey**).
    
-   In addition to the example in this topic, [DES](crypto-sym-key-generation-conversion-spec.md#des) and [Converting Binary Data into a Symmetric Key](crypto-convert-binary-data-to-sym-key.md) may help you better understand how to generate a DES symmetric key pair. Note that the input parameters in the reference documents may be different from those in the example below.
+   To generate a DES symmetric key, refer to the following example, together with [DES](crypto-key-generation-conversion.md#des) and [Converting Binary Data into a Symmetric Key](crypto-convert-binary-data-to-sym-key.md). Note that the referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
 2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'DES64|ECB|PKCS7'** to create a **Cipher** instance for encryption. The key type is **DES64**, block cipher mode is **ECB**, and the padding mode is **PKCS7**.
 
@@ -25,7 +28,7 @@ For details about the algorithm specifications, see [DES](crypto-sym-encrypt-dec
    
    - If a small amount of data is to be encrypted, you can use **Cipher.doFinal** immediately after **Cipher.init**.
    - If a large amount of data is to be encrypted, you can call **Cipher.update** multiple times to pass in the data by segment.
-   - You can determine the method to use based on the data size. For example, if the message is greater than 20 bytes, use **Cipher.update**.
+   - You can determine the method to use based on the data size. For example, if the data exceeds 20 bytes, use `update`.
 
 5. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the encrypted data.
    
@@ -36,11 +39,13 @@ For details about the algorithm specifications, see [DES](crypto-sym-encrypt-dec
 
 1. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'DES64|ECB|PKCS7'** to create a **Cipher** instance for decryption. The key type is **DES64**, block cipher mode is **ECB**, and the padding mode is **PKCS7**.
 
-2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.DECRYPT_MODE** (decryption) and key to **SymKey** (the key used for decryption). If ECB mode is used, pass in **null**.
+2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.DECRYPT_MODE** (decryption) and key to **SymKey** (the key used for decryption). The ECB mode has no encryption parameters, so pass in **null**.
 
 3. Call [Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1) to pass in the data to be decrypted (ciphertext).
 
 4. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the decrypted data.
+
+If DES decryption fails with error code 17630001, see [DES/3DES Decryption doFinal Failure](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#failed-to-call-dofinal-during-decryption-using-des-or-3des).
 
 - Example (using asynchronous APIs):
 
@@ -49,6 +54,7 @@ For details about the algorithm specifications, see [DES](crypto-sym-encrypt-dec
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   // Encrypt the message.
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
@@ -75,21 +81,26 @@ For details about the algorithm specifications, see [DES](crypto-sym-encrypt-dec
   }
   
   async function main() {
-    let keyData = new Uint8Array([238, 249, 61, 55, 128, 220, 183, 224]);
-    let symKey = await genSymKeyByData(keyData);
-    let message = 'This is a test';
-    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-    let encryptText = await encryptMessagePromise(symKey, plainText);
-    let decryptText = await decryptMessagePromise(symKey, encryptText);
-    if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok.');
-      console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
-    } else {
-      console.error('decrypt failed.');
+    try {
+      let keyData = new Uint8Array([238, 249, 61, 55, 128, 220, 183, 224]);
+      let symKey = await genSymKeyByData(keyData);
+      let message = 'This is a test';
+      let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+      let encryptText = await encryptMessagePromise(symKey, plainText);
+      let decryptText = await decryptMessagePromise(symKey, encryptText);
+      if (plainText.data.toString() === decryptText.data.toString()) {
+        console.info('decrypt ok.');
+        console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
+      } else {
+        console.error('decrypt failed.');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
+  
   }
   ```
-
 
 - Example (using synchronous APIs):
 
@@ -98,6 +109,7 @@ For details about the algorithm specifications, see [DES](crypto-sym-encrypt-dec
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   // Encrypt the message.
   function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
@@ -124,17 +136,22 @@ For details about the algorithm specifications, see [DES](crypto-sym-encrypt-dec
   }
   
   function main() {
-    let keyData = new Uint8Array([238, 249, 61, 55, 128, 220, 183, 224]);
-    let symKey = genSymKeyByData(keyData);
-    let message = 'This is a test';
-    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-    let encryptText = encryptMessage(symKey, plainText);
-    let decryptText = decryptMessage(symKey, encryptText);
-    if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok.');
-      console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
-    } else {
-      console.error('decrypt failed.');
+    try {
+      let keyData = new Uint8Array([238, 249, 61, 55, 128, 220, 183, 224]);
+      let symKey = genSymKeyByData(keyData);
+      let message = 'This is a test';
+      let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+      let encryptText = encryptMessage(symKey, plainText);
+      let decryptText = decryptMessage(symKey, encryptText);
+      if (plainText.data.toString() === decryptText.data.toString()) {
+        console.info('decrypt ok.');
+        console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
+      } else {
+        console.error('decrypt failed.');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```

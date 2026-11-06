@@ -1,10 +1,11 @@
 # Detecting Component Visibility
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-04T01:26:24.083Z pushedAt=2026-11-04T01:45:23.332Z nl=1 -->
 
 ## Overview
 Component visibility refers to the display state of a component on the screen. By detecting visibility, applications can implement the following typical scenarios:
@@ -16,9 +17,9 @@ For the above scenarios, the following strategies are recommended:
 
 |Scenario|Recommendation API|Description|
 |----- |---- |--- |
-|[Component exposure tracking and analysis](#component-exposure-tracking-and-analysis)| onVisibleAreaApproximateChange |Ideal for a large number of components; uses low-frequency calculation to reduce overhead.|
-|[On-demand resource loading and releasing](#on-demand-resource-loading-and-releasing)| onVisibleAreaChange |Ideal for a small number of components; uses per-frame detection for timely updates.|
-|[Detection of complex view switching](#detection-of-complex-view-switching)| nodeRenderState listener| Suitable for visibility changes caused by page or view switching.|
+|[Component Exposure Tracking and Analysis](#component-exposure-tracking-and-analysis)| onVisibleAreaApproximateChange |Ideal for a large number of components; uses low-frequency calculation to reduce overhead.|
+|[On-demand Resource Loading and Releasing](#on-demand-resource-loading-and-releasing)| onVisibleAreaChange |Ideal for a small number of components; uses per-frame detection for timely updates.|
+|[Detection of Complex View Switching](#detection-of-complex-view-switching) | nodeRenderState listening | Suitable for perceiving visibility changes caused by page switching. |
 
 Applications can also traverse and calculate component visibility manually, but due to the complex hierarchy of components, such calculations involve heavy computation and are generally not recommended.
 
@@ -245,10 +246,10 @@ Use [onVisibleAreaChange](../reference/apis-arkui/arkui-ts/ts-universal-componen
 
 > **NOTE**
 > 
-> This feature is supported since API version 9.
-> - The visible area is limited by the boundaries of the parent component; the part beyond the parent will not be counted in the visible ratio calculation.
-> - Because of floating-point comparisons, the system will trigger callbacks when the result approaches the set threshold.
-> - To ensure timely visibility change notifications, the system detects ratio changes per frame. To reduce system load, minimize the use of this API.
+> This capability is supported since API version 9.
+> - The visible area is bounded by the parent component boundaries. The portion beyond the parent component is not counted in the visible ratio calculation.
+> - Due to floating-point comparison, the system triggers the callback when the calculated result is close to the configured threshold.
+> - To ensure timely visibility change notifications, the system performs visible ratio change detection on every frame. To reduce system load, use this API as sparingly as possible.
 
 ```typescript
 import { image } from '@kit.ImageKit';
@@ -360,7 +361,7 @@ struct Index {
 
     try {
       this.getUIContext().getHostContext()!.resourceManager.getMediaContent($r('app.media.startIcon').id,
-        (error, value: ArrayBuffer) => {
+        (error, value: Uint8Array) => {
           let opts: image.InitializationOptions = {
             editable: true,
             pixelFormat: 3,
@@ -589,7 +590,6 @@ The UI stutters during scrolling, and logs show that visibility callbacks are be
 **nodeRenderState** listening fails, and logs indicate that the maximum number of listeners has been exceeded.
 
 **Solution**
-- Replace the **nodeRenderState** listener with the more efficient **onVisibleAreaApproximateChange** API.
-- Apply the listener to a parent container that stays on screen longer.
+- Replace the **nodeRenderState** listener with the **onVisibleAreaApproximateChange** API.
+- Replace it with listening on a parent container component that has a larger visible area.
 - Remove listeners that are no longer needed by using the **off** API.
-<!--no_check-->

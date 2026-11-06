@@ -5,7 +5,8 @@
 <!--Owner: @mzyan-->
 <!--Designer: @liyueric-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=5c6e03ec7cfff0172ce10c87fa36d9c242ac74fb translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 - [About This Kit](performance-analysis-kit-overview.md)
 - Fault Detection<!--fault-analysis-->
@@ -13,10 +14,16 @@
   - Crash Detection<!--crash-detection-->
     - [JS Crash (Process Crash) Detection](jscrash-guidelines.md)
     - [C++ Crash (Process Crash) Detection](cppcrash-guidelines.md)
-  - [Address Sanitizer detection](address-sanitizer-guidelines.md)
+  - [Address Sanitizer Detection](address-sanitizer-guidelines.md)
   - [Application Freeze Detection](appfreeze-guidelines.md)<!--RP1--><!--RP1End-->
   - [Task Timeout Detection](apptask-timeout-guidelines.md)
-  - [Application Killed Detection](appkilled-guidelines.md)<!--RP2--><!--RP2End-->
+  - [Application Killed Detection](appkilled-guidelines.md)
+  - General Logs<!--general-log-->
+    - [Page Switch Logs](pageswitch-log.md)<!--RP2--><!--RP2End-->
+    - external_log Files<!--external_log-->
+      - [Introduction to external_log](external-log.md)
+      - [Cleaning Up external_log Files (ArkTS)](external-log-arkts.md)
+      - [Cleaning Up external_log Files (C/C++)](external-log-ndk.md)
 - Log Printing<!--hilog-dev-->
   - [Using HiLog (ArkTS)](hilog-guidelines-arkts.md)
   - [Using HiLog (C/C++)](hilog-guidelines-ndk.md)
@@ -35,6 +42,10 @@
         - [Application Freeze Event Overview](hiappevent-watcher-freeze-events.md)
         - [Subscribing to Application Freeze Events (ArkTS)](hiappevent-watcher-freeze-events-arkts.md)
         - [Subscribing to Application Freeze Events (C/C++)](hiappevent-watcher-freeze-events-ndk.md)
+      - App Freeze Warning Events<!--appfreezewarning-events-->
+        - [App Freeze Warning Event Overview](hiappevent-watcher-appfreezewarning-events.md)
+        - [Subscribing to App Freeze Warning Events (ArkTS)](hiappevent-watcher-appfreezewarning-events-arkts.md)
+        - [Subscribing to App Freeze Warning Events (C/C++)](hiappevent-watcher-appfreezewarning-events-ndk.md)
       - Resource Leak Events<!--resource-leak-events-->
         - [Resource Leak Event Overview](hiappevent-watcher-resourceleak-events.md)
         - [Subscribing to Resource Leak Events (ArkTS)](hiappevent-watcher-resourceleak-events-arkts.md)
@@ -73,28 +84,21 @@
   - [Using HiTraceChain (ArkTS)](hitracechain-guidelines-arkts.md)
   - [Using HiTraceChain (C/C++)](hitracechain-guidelines-ndk.md)
 - Check Mode<!--hichecker-->
-  - [Using HiChecker(ArkTS)](hichecker-guidelines-arkts.md)
+  - [Using HiChecker (ArkTS)](hichecker-guidelines-arkts.md)
 - Obtaining System Debugging Information<!--hidebug-->
   - [Introduction to HiDebug](hidebug-guidelines.md)
   - [Using HiDebug APIs (ArkTS)](hidebug-guidelines-arkts.md)
   - [Using HiDebug APIs (C/C++)](hidebug-guidelines-ndk.md)
 - Service Thread Timeout Detection<!--hicollie-->
-  - [Using HiCollie to Detect Service Thread Stuck and Jank Events](hicollie-guidelines-ndk.md)
-  - [Using HiCollie to Monitor the Function Execution Time (C/C++)](hicollie-settimer-guidelines-ndk.md)
+  - [Using HiCollie to Detect Service Thread Stuck and Jank Events (C/C++)](hicollie-guidelines-ndk.md)
+  - [Using HiCollie to Detect Function Execution Timeout Events (C/C++)](hicollie-settimer-guidelines-ndk.md)
 - Error Manager and Application Recovery<!--error-manager-->
   - [Development of Error Manager](errormanager-guidelines.md)
   - [Development of Application Recovery](apprecovery-guidelines.md)
-- [Performance Analysis Kit Terminology](performance-analysis-kit-terminology.md)
-- Command Line Tools<!--perform-command-line-utilities-->
-  - [hdc](hdc.md)
-  - [hilog](hilog.md)<!--RP4--><!--RP4End-->
-  - hidumper<!--hidumper-tool-->
-    - [hidumper](hidumper.md)
-    - [PrivacyManagerService](hidumper-PrivacyManagerService.md)
-  - [hitrace](hitrace.md)
-  - [hiperf](hiperf.md)
-  - [hiprofiler](hiprofiler.md)
-  - [uinput](uinput.md)
+- App Gray-scale Collection<!--hiretrieval-->
+  - [App Gray-scale Data Collection Overview](hiretrieval-intro.md)
+  - [Using HiRetrieval for App Gray-Scale Data Collection (ArkTS)](hiretrieval-guidelines-arkts.md)
   <!--Del-->
-  - [hisysevent (for System Applications Only)](hisysevent-sys.md)
+  - [HiRetrieval Cloud-Side Capabilities](hiretrieval-cloud-server-guidelines.md)
   <!--DelEnd-->
+- [Performance Analysis Kit Terminology](performance-analysis-kit-terminology.md)<!--RP5--><!--RP5End-->

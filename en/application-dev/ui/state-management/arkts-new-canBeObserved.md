@@ -5,6 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=b4c16a3481f0a0bf24de133bf760018019cda10c translatedAt=2026-09-21T11:10:05.269Z pushedAt=2026-09-23T08:39:45.837Z -->
 
 To determine whether an object is observable and to obtain component information associated with the object, you can use [canBeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#canbeobserved23).
 
@@ -16,7 +17,7 @@ Before using this API, you are advised to read [State Management Overview](./ark
 
 ## Overview
 
-During development and debugging, you may encounter issues where the UI page does not refresh after modifying an object's value (for details, see [State Management Development](./arkts-state-management-faq.md)). Troubleshooting such issues is particularly inconvenient in complex business scenarios. To address this, the **canBeObserved** API is provided to help you locate and analyze problems. Using this API, you cannot only determine whether an object is observable, but also obtain component information associated with the object.
+During development and debugging, you may encounter issues where the UI page does not refresh after modifying an object's value (for details, see [State Management Development](./arkts-state-management-faq.md)). Troubleshooting such issues is particularly inconvenient in complex business scenarios. To address this, the **canBeObserved** API is provided to help you locate and analyze problems. Using this API, you can not only determine whether an object is observable, but also obtain component information associated with the object.
 
 To use the **canBeObserved** API, you need to import the UIUtils.
 
@@ -51,8 +52,8 @@ The object calls the **canBeObserved** API. The value of **reason** in the retur
 | The object data is decorated with @Observed or wrapped by makeV1Observed | The object is decorated with the [@Observed](./arkts-observed-and-objectlink.md) decorator or wrapped by the [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19) method. For details, see [Scenarios Where V1 Component Objects Can Be Observed](#scenarios-where-v1-component-objects-can-be-observed).|
 | The object data is decorated with V2 @ObservedV2 and @Trace | The object and its properties are decorated with the [@ObservedV2 and @Trace](./arkts-new-observedV2-and-trace.md) decorators. For details, see [Scenarios Where V2 Component Objects Can Be Observed](#scenarios-where-v2-component-objects-can-be-observed).|
 | The object data is wrapped by V2's makeObserved | The object is wrapped using the [makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved) method. For details, see [Scenarios Where V2 Component Objects Can Be Observed](#scenarios-where-v2-component-objects-can-be-observed).|
-| The object data is built-in type proxy data (Array/Map/Set/Date) decorated with @Trace | Data objects of the **Array**, **Set**, **Map**, and **Date** types are decorated with the state management V2 decorators or decorated with the [@Trace](./arkts-new-observedV2-and-trace.md) decorator as object properties. For details, see [Scenarios Where V2 Component Objects Can Be Observed](#scenarios-where-v2-component-objects-can-be-observed).|
-| The V1 Observed object data is wrapped by enableV2Compatibility and used in @ComponentV2 | When V1 and V2 components are mixed up, the object is wrapped using the [enableV2Compatibility](./arkts-v1-v2-mixusage.md#enablev2compatibility) method. For details, see [Scenarios Where Objects Become Observable When Mixing V1 and V2 Components](#scenarios-where-objects-become-observable-when-mixing-v1-and-v2-components).|
+| The object data is built-in type proxy data (Array/Map/Set/Date) decorated with @Trace | Proxy data of built-in types such as Array, Map, Set, and Date decorated with the [@Trace](./arkts-new-observedV2-and-trace.md) decorator. See [V2 component object observation scenario](#scenarios-where-v2-component-objects-can-be-observed). |
+| The V1 Observed object data is wrapped by enableV2Compatibility and used in @ComponentV2 | When V1 and V2 components are mixed, the V1 observable object is wrapped using the [enableV2Compatibility](./arkts-v1-v2-mixusage.md#enablev2compatibility) method and used in @ComponentV2. For details, see [Scenarios Where Objects Become Observable When Mixing V1 and V2 Components](#scenarios-where-objects-become-observable-when-mixing-v1-and-v2-components). |
 
 Note that if the value of **reason** ends with **but not used in UI** or **but not used in @ComponentV2**, the object is observable but not used by any UI component. Therefore, changing the object value will not refresh the UI.
 
@@ -249,7 +250,7 @@ Returned result:
     "decoratorInfo": [{
         // When the object property is decorated with @Track, the decorator name is fixed to @Track.
         "decoratorName": "@Track",
-        // When the object property is decorated with @Track, stateVariableName indicates the name of the property decorated with @Track.
+        // When an object property uses the @Track decorator, stateVariableName indicates the name of the property decorated with @Track.
         "stateVariableName": "name",
         // When the object property is decorated with @Track, owningComponentOrClassName indicates the class name.
         "owningComponentOrClassName": "TrackUser",
@@ -618,7 +619,7 @@ reduceVolume(balloon: Balloon) {
 }
 ```
 
-The return results of calling the **canBeObserved** API in both methods are the same (as shown below), indicating that the parameters received by both methods are observable objects and are used by UI components. The UI can refresh normally.
+The two methods call the **canBeObserved** API and return the same result (as shown below), indicating that the input parameters received by both methods are observable objects and are used by UI components, so the UI can be refreshed properly.
 
 ``` json5
 {
@@ -886,7 +887,7 @@ The key information in the returned result is as follows, indicating that **this
             "elementId": 16
         }]
     }, 
-    ...
+    // ...
     //The following result is omitted.
   ]
 }

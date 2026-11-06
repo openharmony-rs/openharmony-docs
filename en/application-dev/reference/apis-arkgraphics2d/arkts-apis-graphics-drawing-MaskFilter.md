@@ -2,12 +2,13 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=9d24e15ef82b33c8322a412e3fad5e8314ad7c4e translatedAt=2026-08-24T07:59:07.853Z pushedAt=2026-08-25T06:53:58.048Z -->
 
-Implements a mask filter.
+Mask filter object, used to apply a blur effect to the drawn content.
 
 > **NOTE**
 >
@@ -37,8 +38,8 @@ Creates a mask filter with a blur effect.
 
 | Name    | Type                  | Mandatory| Description                                |
 | ---------- | --------------------- | ---- | ----------------------------------- |
-| blurType   | [BlurType](arkts-apis-graphics-drawing-e.md#blurtype12) | Yes  | Blur type.                          |
-| sigma      | number                | Yes  | Standard deviation of the Gaussian blur to apply. The value must be a floating point number greater than 0.|
+| blurType   | [BlurType](arkts-apis-graphics-drawing-e.md#blurtype12) | Yes   | Blur type, which specifies the blur operation mode of the mask filter.                           |
+| sigma      | number                | Yes   | Standard deviation of the Gaussian blur. It must be a floating point number greater than 0, in physical pixels (px). |
 
 **Returns**
 
@@ -46,9 +47,9 @@ Creates a mask filter with a blur effect.
 | ------------------------- | ------------------ |
 | [MaskFilter](arkts-apis-graphics-drawing-MaskFilter.md) | **Maskfilter** object created.|
 
-**Error codes**
+**Error codes** 
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). 
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -57,13 +58,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
-    const canvas = context.canvas;
-    let maskFilter = drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10);
+  draw(context: DrawContext) {
+    const maskFilter = drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10);
   }
 }
 ```

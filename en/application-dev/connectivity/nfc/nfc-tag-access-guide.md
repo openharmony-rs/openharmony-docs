@@ -2,13 +2,14 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=fb683f019c942b7ee1feffd8c72d462c7f16cdd9 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## Introduction
-Near Field Communication (NFC) is a high-frequency radio technology that enables communication between devices over a distance less than 10 cm. NFC operates at 13.56 MHz. With NFC technologies, electronic devices can read and write NFC tags.<br>
+Near Field Communication (NFC) is a high-frequency radio technology that enables communication between devices over a distance less than 10 cm. NFC operates at 13.56 MHz. With NFC technologies, electronic devices can read data from tags or write data to tags.<br>
 NFC tags support one or more communications technologies listed as follows:
 - NFC-A (also known as ISO 14443-3A)
 - NFC-B (also known as ISO 14443-3B)
@@ -20,49 +21,55 @@ NFC tags support one or more communications technologies listed as follows:
 - MIFARE Ultralight
 
 ## When to Use
-An electronic device touches an NFC tag via the NFC antenna to read and write the NFC tag data. NFC tags can be read and written by a started application (foreground mode) on a device or without starting an application (background mode).
+An electronic device touches an NFC tag via the NFC antenna to read or write the NFC tag data. NFC tags can be read and written by a started application (foreground mode) on a device or without starting an application (background mode).
 - Reading or writing an NFC tag by a started application<br>
 An application started on a device reads or writes the NFC tag. That is, the user starts the application to read and write the NFC tag. The user starts the application, opens the application page, and taps the device on the NFC tag. In this case, the retrieved tag data can be distributed only to the foreground application.
 - Reading or writing an NFC tag without starting an application<br>
-The user taps the device on an NFC tag without starting any application. Then, the device selects an application based on the type of the NFC tag technology. If multiple applications are matched, an application selector will be displayed, listing all the available applications for the user to choose. After the user selects an application, the NFC tag read/write page of the application is automatically displayed.
+The user taps the device on an NFC tag without starting any application. Then, the device selects an application based on the type of the NFC tag technology. If multiple applications are matched, an application selector will be displayed, listing all the available applications for the user to choose from. After the user selects an application, the NFC tag read/write page of the application is automatically displayed.
 - Reading or writing an NDEF tag to implement common features<br>
-Reading the content of a custom tag in NDEF format starts the AirTouch service to meet users' fragmented requirements through OneHop, such as NFC one-tap ordering, payment, and activity promotion. For details about how to develop and access an application and how to make tags, see the description related to the AirTouch service. For more NDEF tag specifications, visit the NFC forum.
+  NFC on phones supports reading card information and redirecting users to ecosystem apps. Two methods are available: using the general-purpose NDEF protocol or integrating with the AirTouch service.
+     1. Redirect to an application through the general-purpose NDEF protocol: Write the application information into the tag. When an electronic device touches and discovers the NFC tag, the device dispatches the tag to the corresponding application based on the NDEF information of the NFC tag.
+     2. Integrate with the AirTouch service: This is a more advanced application launch solution that provides direct access through touch-based services to meet fragmented user needs, such as NFC tap ordering, payment, and event promotion.
+
+   For more information about the NDEF tag format specifications, see the [NFC Forum](https://nfc-forum.org/).
 - Constraints<br>
 No matter whether the foreground mode or background mode is used, the NFC tag can be discovered by the device only when the device screen is unlocked and illuminated.
 
 ## Available APIs
 
-For details about the JS APIs and sample code, see [Standard NFC Tags](../../reference/apis-connectivity-kit/js-apis-nfcTag.md).
+For details about the JS APIs and sample code for NFC tag read/write, see [@ohos.nfc.tag (Standard NFC Tags)](../../reference/apis-connectivity-kit/js-apis-nfcTag.md).
 
 The following table describes the APIs for obtaining objects of the tags that use different NFC tag technologies. The objects obtained are used to read and write NFC tags.
 
-| API                            | Description                                                                      |
-| ---------------------------------- | ------------------------------------------------------------------------------ |
-| getNfcA(tagInfo: TagInfo): NfcATag                    | Obtains an **NfcATag** object, which allows access to the tags that use the NFC-A technology.                                                              |
-| getNfcB(tagInfo: TagInfo): NfcBTag                      | Obtains an **NfcBTag** object, which allows access to the tags that use the NFC-B technology.                                                               |
-| getNfcF(tagInfo: TagInfo): NfcFTag                 | Obtains an **NfcFTag** object, which allows access to the tags that use the NFC-F technology.                                                              |
-| getNfcV(tagInfo: TagInfo): NfcVTag                  | Obtains an **NfcVTag** object, which allows access to the tags that use the NFC-V technology.                                                               |
-| getIsoDep(tagInfo: TagInfo): IsoDepTag | Obtains an **IsoDepTag** object, which allows access to the tags that use the ISO-DEP technology.                                                               |
-| getNdef(tagInfo: TagInfo): NdefTag | Obtains an **NdefTag** object, which allows access to the tags that use the NDEF technology.                                                           |
-| getMifareClassic(tagInfo: TagInfo): MifareClassicTag         | Obtains a **MifareClassicTag** object, which allows access to the tags that use the MIFARE Classic technology.                                                       |
-| getMifareUltralight(tagInfo: TagInfo): MifareUltralightTag         | Obtains a **MifareUltralightTag** object, which allows access to the tags that use the MIFARE Ultralight technology.                                                    |
+| Name                           | Supported Since    | Function Description                                                                       |
+| ---------------------------------- | -------------- | --------------------------------------------------------------- |
+| getNfcA(tagInfo: TagInfo): NfcATag           |    API version 9     | Obtains the tag object of the NfcA technology type.                                 |
+| getNfcB(tagInfo: TagInfo): NfcBTag            |     API version 9     | Obtains the tag object of the NfcB technology type.                    |
+| getNfcF(tagInfo: TagInfo): NfcFTag           |   API version 9   | Obtains the tag object of the NfcF technology type.                                    |
+| getNfcV(tagInfo: TagInfo): NfcVTag           |   API version 9    | Obtains the tag object of the NfcV technology type.                           |
+| getIsoDep(tagInfo: TagInfo): IsoDepTag |  API version 9 | Obtains the tag object of the IsoDep technology type.                                              |
+| getNdef(tagInfo: TagInfo): NdefTag |  API version 9 | Obtains the tag object of the NDEF technology type.                     |
+| getMifareClassic(tagInfo: TagInfo): MifareClassicTag     |  API version 9  | Obtains the tag object of the MIFARE Classic technology type.                 |
+| getMifareUltralight(tagInfo: TagInfo): MifareUltralightTag   |  API version 9    | Obtains the tag object of the MifareUltralight technology type.              |
 
 ## Preparations
 
-### Reading/Writing NFC Tags in the Foreground or Background
-NFC tag application developers can choose to read/write NFC tags in the foreground or background based on service requirements. These two methods differ in their code implementations.
+### Choosing Between NFC Tag Foreground Read/Write, Background Read/Write, or Tag Customization
+Based on service requirements, you can implement foreground card reading, background card reading, or jump to the corresponding application through a customized tag. The three card reading methods differ in code implementation and tag content.
 - Reading or writing an NFC tag by a started application<br>
-1. In the **module.json5** configuration file, you do not need to statically declare the technology type of the target NFC tag. Instead, dynamically register the technology type by using [tag.registerForegroundDispatch](../../reference/apis-connectivity-kit/js-apis-nfcTag.md#tagregisterforegrounddispatch10) or [tag.on](../../reference/apis-connectivity-kit/js-apis-nfcTag.md#tagon11).
-2. During dynamic registration via **registerForegroundDispatch** or **tag.on**, specify the technology type of the target NFC tags in the input parameters.
-3. If **registerForegroundDispatch** is used for registration: When the application runs in the foreground and enters the card swiping page, the NFC card emulation function is enabled, allowing card swiping to be performed simultaneously. If **tag.on** is used for registration: When the application runs in the foreground and enters the card swiping page, the NFC card emulation function is disabled, making simultaneous card swiping unavailable.
-4. When the app page switches to the background, explicitly call [tag.unregisterForegroundDispatch](../../reference/apis-connectivity-kit/js-apis-nfcTag.md#tagunregisterforegrounddispatch10) or [tag.off](../../reference/apis-connectivity-kit/js-apis-nfcTag.md#tagoff11) to unregister technology type and exit the foreground dispatch mode.
+1. In the **module.json5** configuration file, you do not need to statically declare the technology type of the target NFC tag. Instead, dynamically register the technology type by using [tag.registerForegroundDispatch](../../reference/apis-connectivity-kit/js-apis-nfcTag.md#tagregisterforegrounddispatch10) or [tag.on](../../reference/apis-connectivity-kit/js-apis-nfcTag.md#tagonreadermode11).
+2. When dynamically registering foreground tag read/write via **tag.registerForegroundDispatch** or **tag.on**, you must specify the technology type of the NFC tags to be read in the input parameters.
+3. If you use **tag.registerForegroundDispatch** for registration, NFC card emulation can remain enabled and card interactions can be performed at the same time when the application is running in the foreground and enters the page. If you use **tag.on** for registration, NFC card emulation is disabled when the application is running in the foreground and enters the page, and card interactions cannot be performed at the same time.
+4. When the application page switches to the background, explicitly call [tag.unregisterForegroundDispatch](../../reference/apis-connectivity-kit/js-apis-nfcTag.md#tagunregisterforegrounddispatch10) or [tag.off](../../reference/apis-connectivity-kit/js-apis-nfcTag.md#tagoffreadermode11) to unregister and exit the foreground dispatch mode.
 - Reading or writing an NFC tag without starting an application<br>
 1. In the **module.json5** configuration file, statically declare the technology type of the target NFC tag. You must define at least one technology type based on service requirements. **tag-tech/** is the prefix, followed by the technology type description.
 2. The technology type description is case-sensitive and must exactly match the actual technology type.
+- NDEF format tag customization<br>
+There are requirements on the content of NFC tags. An NDEF tag may contain one or more records, in which application-related information (package name/URI/AirtouchId) must be written. This enables the application to be launched with a single tap when it is running in the background.
 
 > **NOTE**
-> - Starting from API version 9, application development supports the Stage model, which is recommended for long-term evolution.
-> - All the sample code in this document is based on the Stage model.
+> - Application development since API version 9 supports the [stage model](../../application-models/ability-terminology.md#stage-model), which is the mainstream and long-term evolution model.
+> - All NFC tag read/write sample code is provided based on the [stage model](../../application-models/ability-terminology.md#stage-model).
 
 ## How to Develop
 
@@ -70,7 +77,7 @@ NFC tag application developers can choose to read/write NFC tags in the foregrou
 1. Declare the permission required for NFC tag operations and the action for filtering the application in the **module.json5** file.
 2. Import related modules.
 3. Check whether the device supports the NFC feature.
-4. Register a listener for the NFC tag read event so that the tag can be preferentially dispatched to a foreground application.
+4. Call the foreground-priority API of the tag module to enable the foreground app to preferentially process discovered NFC tags.
 5. Obtain an NFC tag object of the specific technology type.
 6. Read and write the tag data.
 7. Exit the foreground dispatch mode when the application exits the NFC tag page.
@@ -111,7 +118,7 @@ NFC tag application developers can choose to read/write NFC tags in the foregrou
 ```
 
 ```ts
-import { tag } from '@kit.ConnectivityKit';
+import { tag, nfcController } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { AbilityConstant, UIAbility, Want, bundleManager } from '@kit.AbilityKit';
@@ -190,7 +197,11 @@ export default class EntryAbility extends UIAbility {
 
     // Check whether the device supports the NFC feature.
     if (!canIUse("SystemCapability.Communication.NFC.Core")) {
-      hilog.error(0x0000, 'testTag', 'nfc unavailable.');
+      hilog.error(0x0000, 'testTag', 'NFC System Capability not supported.');
+      return;
+    }
+    if (!nfcController.isNfcSupported()) {
+      hilog.error(0x0000, 'testTag', 'NFC not supported on this device.');
       return;
     }
 
@@ -243,7 +254,7 @@ To enable NFC tags to be read without starting an application, declare NFC-relat
 > **NOTE**
 >
 >1. The **actions** field must contain **ohos.nfc.tag.action.TAG_FOUND** and cannot be changed.
->2. The **type** field under **uris** must start with **tag-tech/**, followed by NfcA, NfcB, NfcF, NfcV, IsoDep, Ndef, MifareClassic, MifareUL, or NdefFormatable. If there are multiple types, enter them in different lines. Incorrect setting will cause a parsing failure.
+>2. The **type** field under **uris** must start with **tag-tech/**, followed by NfcA, NfcB, NfcF, NfcV, IsoDep, Ndef, MifareClassic, MifareUL, or NdefFormatable. If there are multiple types, enter each on a separate line. Incorrect settings will cause a parsing failure.
 >3. The **name** field of **requestPermissions** is mandatory. It must be **ohos.permission.NFC_TAG** and cannot be changed.
 >4. Wearable devices do not support reading NFC tags without starting an application.
 
@@ -373,3 +384,70 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+### NDEF Format Tag Customization
+- NFC tag customization<br>
+  1. An NDEF tag may contain one or more Records. To launch an OpenHarmony application by bundle name, a specific Record is required: its `type` is "ohos.com:pkg" and its `payload` is the actual bundle name of the application.
+  2. Depending on the application's service logic, the first Record in the tag can contain URI-type data (optional). If a URI-type Record exists, when NFC launches the application, it is passed to the application in the `want.uri` format, and the application can then identify the URI to navigate to a specified page.
+
+  > **NOTE**
+  >
+  > If URI data is required when the application is launched, the first Record must be of the URI type.
+
+- Example of receiving parameters in an application<br>
+When the application is launched, it can complete its service logic through the parameters passed in `want`. When the application is launched through a card, the `want` content carried is as follows:
+
+```ts
+want = {
+    "deviceId": "",
+    "bundleName": "xxx",
+    "abilityName": "xxx",
+    "moduleName": "xxx",
+    "uri": "https://xxx.com", // URI written into the NFC card.
+    "type": "",
+    "flags": 0,
+    "action": "action.system.home",
+    "parameters": {
+        // NFC-related fields.
+        "Atqa": "4400",
+        "MifareUltralightC": false,
+        "NdefForumType": 2,
+        "NdefMsg": "xxxxxxxxxx", // Complete NDEF message in hexadecimal bytecode format.
+        "NdefTagLength": 868,
+        "NdefTagMode": 2,
+        "Sak": 0,
+        "tagRfDiscId": 2,
+        "technology": [1, 9, 6], // Protocol types supported by the read card, such as NfcA, NfcB, NfcF, NfcV, Ndef, and IsoDep.
+        "uid": "xxxxxxxx", // UID of the read card.
+        // Other content.
+        "component.startup.newRules": true,
+        "isCallBySCB": false,
+        "isShellCall": false,
+        "moduleName": "entry",
+        "ohos.aafwk.param.callerAbilityName": "",
+        "ohos.aafwk.param.callerBundleName": "",
+        "ohos.aafwk.param.callerNativeName": "_nfc_service", // NFC process name.
+        "ohos.aafwk.param.callerPid": xxx,
+        "ohos.aafwk.param.callerToken": xxxx,
+        "ohos.aafwk.param.callerUid": xxxx,
+        "ohos.aafwk.param.displayId": 0,
+        "ohos.dlp.params.sandbox": false,
+        "ohos.param.callerAppCloneIndex": 0,
+        "remoteTagService": {
+            "type": "RemoteObject",
+            "value": {}
+            }
+        },
+        "fds": {},
+        "entities": ["entity.system.home"]
+    }
+```
+
+## FAQs
+
+### What Are the Commonly Used Apps for Reading and Writing NFC Tags?
+
+NFC tag assistant and NFC tag tools.
+
+### How to Implement App Redirection Through NFC Tap?
+
+Write an NDEF record containing the redirection information of the target app to the NFC tag. After the device taps the tag, the system parses the NDEF record and redirects to the corresponding app. For the tag format and card writing method, see [NDEF Format Tag Customization](#ndef-format-tag-customization).

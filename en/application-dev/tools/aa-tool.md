@@ -5,7 +5,8 @@
 <!--Owner: @lidongrui-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=9475b58747157bfd14bf8bbea9278bd5015b1d7a translatedAt=2026-11-02T07:54:52.500Z pushedAt=2026-11-03T01:19:20.250Z nl=1 -->
 
 Ability Assistant (aa) is a tool used to start applications and test cases. It provides basic application debugging and testing capabilities, for example, starting application components, forcibly stopping processes, and printing application component information.
 
@@ -25,19 +26,20 @@ hdc shell "aa process -b com.example.myapplication -a EntryAbility -p perf-cmd"
 
 ## aa Commands
 
-| Command| Description|
+| Command | Description |
 |--------|--------|
-| -h/help |  Displays the help information of the aa tool.|
-| start |  Starts an application component. The target component can be the PageAbility and ServiceAbility components of the FA model or the UIAbility and ServiceExtensionAbility components of the Stage model. The **exported** tag in the configuration file of the target component cannot be set to **false**.|
-| stop-service | Stops the service. Stops an application component. The target component can be the **ServiceAbility** component of the FA model or the **ExtensionAbility** component of the Stage model.|
-| dump<sup>(deprecated)</sup> |  Prints information about an application component.|
-| force-stop |  Forcibly stops a process based on the bundle name.|
-| test |  Starts the test framework based on the carried parameters.|
-| attach |  Attaches an application to enable it to enter the debugging mode.|
-| detach |  Detaches an application to enable it to exit the debugging mode.|
-| appdebug |  Sets or cancels the waiting-for-debugging state of an application, and obtains the bundle name and persistence flag of an application in the waiting-for-debugging state. The waiting-for-debugging state takes effect only for debugging applications. The setting command of **appdebug** takes effect only for a single application. Once the command is executed repeatedly, the bundle name and persistence flag are replaced with the latest settings.|
-| process |  Debugs or optimizes an application. In DevEco Studio, this command is used to integrate debugging and optimization tools.|
-| send-memory-level |  Triggers the **onMemoryLevel** lifecycle callback of a process based on its PID and memory usage level.|
+| -h/help | Displays the help information of the aa tool. |
+| start | Starts an application component. The target component can be the PageAbility and ServiceAbility components of the FA model or the UIAbility and ServiceExtensionAbility components of the Stage model. The **exported** tag in the configuration file of the target component cannot be set to **false**. |
+| stop-service | Stops the service. Stops an application component. The target component can be the **ServiceAbility** component of the FA model or the **ExtensionAbility** component of the Stage model. |
+| dump<sup>(deprecated)</sup> | Prints information about an application component. |
+| force-stop | Forcibly stops a process based on the bundle name. |
+| test | Starts the test framework based on the carried parameters. |
+| attach | Attaches an application to enable it to enter the debug mode. |
+| detach | Detaches an application to enable it to exit the debug mode. |
+| appdebug | Sets or cancels the waiting-for-debugging state of an application, and obtains the bundle name and persistence flag of an application in the waiting-for-debugging state. The waiting-for-debugging state takes effect only for debugging applications. The setting command of **appdebug** takes effect only for a single application. Once the command is executed repeatedly, the bundle name and persistence flag are replaced with the latest settings. |
+| process | Debugs or optimizes an application. In DevEco Studio, this command is used to integrate debugging and optimization tools. |
+| send-memory-level | onMemoryLevel() callback command. Triggers the **onMemoryLevel()** lifecycle callback of a process based on its PID and memory usage level. |
+| pre-start | Pre-starts an application. Pre-starts an application in the background to a specific lifecycle phase, to improve the startup speed when the user clicks the application. |
 
 ## help
 
@@ -53,10 +55,10 @@ Starts an application component. The target component can be the PageAbility and
 ```bash
 # Start an ability explicitly.
 # To enable an application clone, use [--pi ohos.extra.param.key.appCloneIndex <unsigned integer-value>] to specify the index of the application clone.
-aa start [-d <deviceId>] [-a <abilityName> -b <bundleName>] [-m <moduleName>] [-c] [-E] [-D] [-R] [-S] [-W] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f is case-insensitive] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
+[-d <deviceId>] [-a <abilityName> -b <bundleName>] [-m <moduleName>] [-u <userId>] [-c] [-E] [-D] [-R] [-S] [-W] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f (case-insensitive)] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
 
 # Implicitly start an ability. If none of the parameters in the command is set, the startup fails.
-aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c] [-D] [-E] [-R] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f is case insensitive] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
+aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-u <userId>] [-c] [-D] [-E] [-R] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f (case-insensitive)] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>] 
 ```
 
   **Parameters**
@@ -71,6 +73,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
   | -U | URI. This parameter is optional.<br>Note: Only strings can be passed.|
   | -A | Action. This parameter is optional.     |
   | -e | Entity. This parameter is optional.     |
+  | -u | User ID. This parameter is optional. In multi-user scenarios, this parameter is used to differentiate applications under different user accounts on the same device.<br>**Note**: This parameter is supported since API version 26.0.0.|
   | -t | Type. This parameter is optional.       |
   | --pi  | Key-value pair of the integer type. This parameter is optional.<br>Note: Only unsigned integer values are supported.    |
   | --pb  | Key-value pair of the Boolean type. This parameter is optional.    |
@@ -246,7 +249,7 @@ aa dump -a
   | -------- | -------- | -------- |
   | -h/--help | - | Help information.|
   | -a/--all | - | Application component information in all missions.|
-  | -l/--mission-list | type (All logs are printed if this parameter is left unspecified.)| For better management, the service side maintains four types of MissionLists,<br>as described below:<br>- **NORMAL**: MissionList that is started normally. For example, if A starts B and C, the corresponding MissionList is A->B->C.<br>- **DEFAULT_STANDARD**: If a MissionList is damaged, missions with the launch type set to **multiton** are removed to this MissionList. The Missions in it are not associated with each other.<br>- **DEFAULT_SINGLE**: If a MissionList is damaged, missions with the launch type set to **singleton** are removed to this MissionList. The Missions in it are not associated with each other.<br>- **LAUNCHER**: MissionList for launcher abilities.|
+  | -l/--mission-list | type (all by default) | To facilitate task chain management, the service side maintains four types of task chains.<br/>Possible values:<br/>-&nbsp;NORMAL: a task chain started normally (for example, if A starts B and B starts C, the corresponding task chain is A->B->C)<br/>-&nbsp;DEFAULT_STANDARD: tasks in a broken task chain whose startup mode is `multiton` are placed in this task chain, and these tasks are not associated with each other<br/>-&nbsp;DEFAULT_SINGLE: tasks in a broken task chain whose startup mode is `singleton` are placed in this task chain, and these tasks are not associated with each other<br/>-&nbsp;LAUNCHER: the task chain of the launcher |
   | -e/--extension | elementName | Extended component information.|
   | -u/--userId | UserId | Mission stack information of a specified user ID. This parameter must be used together with other parameters. Example commands: **aa dump -a -u 100** and **aa dump -d -u 100**.|
   | -d/--data | - | DataAbility information.|
@@ -291,15 +294,16 @@ aa dump -a
 Forcibly stops a process based on the bundle name.
 
 ```bash
-aa force-stop <bundle-name> [-p pid] [-r kill-reason]
+aa force-stop <bundle-name> [-p pid] [-r kill-reason] [-u userId]
 ```
 
   **Parameters**
 
   | Name| Description             |
   | -------- |-------------------|
-  | -p | PID. This parameter must be used together with **-r** to set the exit reason of the process with the specified PID.|
-  | -r | Exit reason of the process. This parameter must be used together with **-p** to set the exit reason of the process with the specified PID.|
+  | -p | Specifies the PID. This parameter must be used together with **-r** to set the exit reason of the process with the specified PID.|
+  | -r | Specifies the exit reason of the process. This parameter must be used together with **-p** to set the exit reason of the process with the specified PID.|
+  | -u | Optional parameter. `userId` indicates the ID of the user whose process is to be terminated. In multi-user scenarios, it distinguishes applications under different user accounts on the same device, so that the process of the specified user can be terminated.<br>**Note:** Support for this parameter starts from API version 26.1.0. |
 
   **Return value**
 
@@ -349,6 +353,7 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
   | -s \<any-key> | Any key-value pair. This parameter is optional.|
   | -w | Test running time, in ms. This parameter is optional.|
   | -D | Debugging mode. This parameter is optional.|
+  | -u | Optional parameter, userId, indicating the user ID, specifying the user where the test suite or test case to be executed resides.<br>**NOTE:** This parameter is supported since API version 26.0.0.|
 
   **Return value**
 
@@ -362,6 +367,7 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
   | 10105001 | Failed to connect to the ability service. |
   | 10106002 | The aa start command's window option or the aa test command does not support app with release signature. |
   | 10108501 | An internal error occurs during the execution of the aa test command. |
+  | 10104005 | The userId specified by the aa test command is not currently a foreground user. |
 
   **Example**
 
@@ -372,6 +378,8 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
   aa test -b com.example.myapplication -m entry_test -s unittest ActsAbilityTest
   # Start the test framework and specify the timeout interval.
   aa test -b com.example.myapplication -m entry_test -s timeout 10000 -s unittest ActsAbilityTest
+  # Start the Test Framework and Specify the User
+  aa test -b com.example.myapplication -m entry_test -s timeout 10000 -s unittest ActsAbilityTest -u 100
   ```
 
 ## attach
@@ -535,10 +543,10 @@ aa process -b <bundleName> -a <abilityName> [-m <moduleName>] [-p <perf-cmd>] [-
 
 ## send-memory-level
 
-Since API version 13, you can use this command to debug the [onMemoryLevel](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel) lifecycle of an application. You can specify the PID and memory usage level of a process to trigger the **onMemoryLevel** lifecycle callback of the process. This command provides only basic application debugging capabilities and cannot completely simulate real memory pressure test scenarios.
+Since API version 13, you can use this command to debug the [onMemoryLevel](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel) lifecycle of an application. You can specify the PID and memory usage level of a process to trigger the **onMemoryLevel()** lifecycle callback of the process. This command provides only basic application debugging capabilities and cannot completely simulate real memory pressure test scenarios.
 
 ```bash
-# Trigger the onMemoryLevel callback.
+# Triggering the onMemoryLevel() Callback
 aa send-memory-level -p <processId> -l <memoryLevel>
 ```
 
@@ -562,8 +570,45 @@ aa send-memory-level -p <processId> -l <memoryLevel>
 **Example**
 
 ```bash
-# Trigger the onMemoryLevel callback of the application whose process ID is 6066. The callback level is 0.
+# Trigger the onMemoryLevel() callback of the process with PID 6066, where the callback level is 0
 aa send-memory-level -p 6066 -l 0
+```
+
+## pre-start
+
+Since API version 26.0.0, you can use this command to prestart an application in the background to improve the startup speed when a user clicks the application. Currently, the system supports prestarting an application to a specific lifecycle stage. Specifically, the application is first pre‑started to the [onDidForeground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondidforeground20) stage (the foreground window is hidden). If the user does not manually click the application within 30 seconds by default, the system automatically pre‑starts the application to the [onDidBackground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondidbackground20) stage.
+
+```bash
+aa pre-start -m <MODE> -b <BUNDLE-NAME> -u <USER-ID>
+```
+
+**Parameters**
+
+| Name| Description|
+| -------- | -------- |
+| -h/--help | Help information. Displays help information about commands.|
+| -m | Prestart mode. This parameter is mandatory. Currently, only **1** is supported, indicating that the application is prestarted to a specific stage of the lifecycle. The parameter value must be set to **1**.|
+| -b | Bundle name. This parameter is mandatory. Bundle name of the application to be prestarted.|
+| -u | User ID. This parameter is mandatory. This ID specifies the user who prestarts the application.|
+
+**Return value**
+
+If the command is executed successfully, "prestart successfully." is returned. If the command fails to be executed, "error: failed to prestart." is returned. If an unknown parameter is entered, "fail: unknown option." is returned and the help information is displayed.
+
+**Error codes**
+
+| ID| Error Message|
+| ------- | -------- |
+| 10106003 | Currently, only mode 1 (Specific stage prelaunch) is supported. |
+
+**Example**
+
+```bash
+# Prestarts the application with the specified bundle name.
+aa pre-start -m 1 -b com.example.myapplication -u 100
+
+# View the help Information.
+aa pre-start -h
 ```
 
 ## Error Codes
@@ -743,6 +788,24 @@ The target application is signed by the release certificate.
 
 Use the signing certificate of the **debug** type and install the newly signed HAP. Then, run the command again.
 
+### 10106003 Unsupported Prestart Mode
+
+**Error Message**
+
+Currently, only mode 1 (Specific stage prelaunch) is supported.
+
+**Symptom**
+
+If the prestart mode specified in the **aa pre-start** command is not supported, the system returns this error code.
+
+**Possible Causes**
+
+The value of the **-m** parameter in the **aa pre-start** command is not **1**. Currently, only **1** is supported, indicating to prestart the application to a specific lifecycle stage.
+
+**Solution**
+
+Check the value of the **-m** parameter and ensure that it is set to **1**.
+
 ### 10100101 Failed to Obtain Application Information
 
 **Error Message**
@@ -893,11 +956,17 @@ The application is controlled by the application market.
 
 - The target application is suspected to have malicious behavior and is not allowed to start due to application market control.
 - The target application is a pre-installed system application, and it is overwritten by a locally compiled version.
+- The development certificate of the target application has expired, and the application is intercepted by the system during startup. In this case, a message is displayed, indicating that the application has expired.
+- The target application has just been cloned and is in the data restoration state. In this case, a message is displayed, indicating that the data is being restored and asking you to try again later.
+- The 5‑day validity period of the [trial debug profile](https://developer.huawei.com/consumer/en/doc/app/agc-help-apply-acl-0000002394212138#section1443958124819) has expired, causing the application to be blocked by system control when it is launched.
 
 **Solution**
 
 - For possible cause 1, you are advised to uninstall the application.
 - For possible cause 2, you need to uninstall the application and then install it using the locally compiled version.
+- For possible cause 3, you need to [replace the certificate](https://developer.huawei.com/consumer/en/doc/app/agc-help-cert-faq-0000002329508280#section11365113515519).
+- For possible cause 4, wait until the data restoration is complete and then try again.
+- For possible cause 5, you need to [create a trial debugging profile](https://developer.huawei.com/consumer/en/doc/app/agc-help-apply-acl-0000002394212138#section1443958124819).
 
 ### 10106106 The Target Application Is Managed by EDM
 
@@ -1134,3 +1203,21 @@ The value of the **type** parameter in the signing tool is not **debug**.
 Use the signing certificate of the **debug** type and install the newly signed HAP. Then, run the command again.
 
 For details about the signing tool and certificate, see [Signing Your App/Atomic Service](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing).
+
+### 10104005 The specified userId is not a foreground user
+
+**Error Message**
+
+The specified userId is not a foreground user.
+
+**Error Description**
+
+The specified userId is not a foreground user.
+
+**Possible Causes**
+
+The specified userId user is not currently in the foreground.
+
+**Solution**
+
+Check whether the specified userId user is in the foreground

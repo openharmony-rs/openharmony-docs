@@ -1,8 +1,8 @@
 # StepperItem
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
-<!--Designer: @jiangdayuan-->
+<!--Owner: @huangxiaolinabc-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -13,7 +13,7 @@ The **StepperItem** component represents a page component used within a [Stepper
 > 
 > - This component is supported since API version 8 and deprecated since API version 22. You are advised to use [Swiper](ts-container-swiper.md) instead.
 >
->  Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 
 ## Child Components
@@ -29,7 +29,7 @@ Creates a page component for the [Stepper](ts-basic-components-stepper.md) conta
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 22. You are advised to use [Swiper](ts-container-swiper.md#attributes) instead.
+> This component is supported since API version 8 and deprecated since API version 22. You are advised to use [Swiper](ts-container-swiper.md) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

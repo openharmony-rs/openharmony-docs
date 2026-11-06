@@ -67,7 +67,9 @@ Device Certificate Kit的CA证书管理功能包含如下能力：
 
 2. 导入相关模块。
 
-   ```ts
+   <!-- @[certificate_management_user_ca_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCASample.ets)  -->
+   
+   ``` TypeScript
    import { certificateManager, certificateManagerDialog } from '@kit.DeviceCertificateKit';
    import { util } from '@kit.ArkTS';
    import { common } from '@kit.AbilityKit';
@@ -199,7 +201,7 @@ function installUserCACertEnterprise(userCAData: Uint8Array): string {
 
 async function uninstallUserCACertDialog(certUri: string): Promise<void> {
   try {
-    /* 场景2：在BYOD设备卸载用户CA证书 */
+    /* 场景1：在BYOD设备卸载用户CA证书 */
     /* context为应用的上下文信息，调用方自行获取，此处仅为示例 */
     let context: common.Context = new UIContext().getHostContext() as common.Context;
     certificateManagerDialog.openUninstallCertificateDialog(

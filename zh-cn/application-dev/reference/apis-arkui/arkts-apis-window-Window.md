@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 当前窗口实例，窗口管理器管理的基本单元。
@@ -32,7 +32,7 @@ showWindow(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 调用该接口前，建议先通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用主窗口没有完成页面加载，直接调用该接口，界面会一直显示启动界面；如果系统窗口、应用子窗口、模态窗和全局悬浮窗没有完成页面加载，直接调用该接口，窗口会处于前台，但不可见。
+> 调用该接口前，建议先通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者[setUIContent](#setuicontent9-1)方法完成页面加载。如果应用主窗口没有完成页面加载，直接调用该接口，界面会一直显示启动界面；如果系统窗口、应用子窗口、模态窗和全局悬浮窗没有完成页面加载，直接调用该接口，窗口会处于前台，但不可见。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -42,7 +42,7 @@ showWindow(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | --------- |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当窗口显示成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -50,7 +50,7 @@ showWindow(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -65,20 +65,20 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('Succeeded in loading the content.');
       try {
         // 创建子窗
-        windowStage.createSubWindow("testSubWindow").then((subWindow) => {
+        windowStage.createSubWindow('testSubWindow').then((subWindow) => {
           if (subWindow == null) {
             console.error('Failed to create the subWindow. Cause: The data is empty');
             return;
           }
           subWindow.setUIContent('pages/Index', (err) => {
             if (err.code) {
-              console.error('Failed to load the subWindow content. Cause: %{public}s', JSON.stringify(err));
+              console.error(`Failed to load the subWindow content. Cause code: ${err.code}, message: ${err.message}`);
               return;
             }
             console.info('Succeeded in loading the subWindow content.');
@@ -112,7 +112,7 @@ showWindow(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 调用该接口前，建议优先通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用主窗口没有完成页面加载，直接调用该接口，界面会一直显示启动界面；如果系统窗口、应用子窗口、模态窗和全局悬浮窗没有完成页面加载，直接调用该接口，窗口会处于前台，但不可见。
+> 调用该接口前，建议优先通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者[setUIContent](#setuicontent9-1)方法完成页面加载。如果应用主窗口没有完成页面加载，直接调用该接口，界面会一直显示启动界面；如果系统窗口、应用子窗口、模态窗和全局悬浮窗没有完成页面加载，直接调用该接口，窗口会处于前台，但不可见。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -130,7 +130,7 @@ showWindow(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -146,20 +146,20 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('Succeeded in loading the content.');
       try {
         // 创建子窗
-        windowStage.createSubWindow("testSubWindow").then((subWindow) => {
+        windowStage.createSubWindow('testSubWindow').then((subWindow) => {
           if (subWindow == null) {
             console.error('Failed to create the subWindow. Cause: The data is empty');
             return;
           }
           subWindow.setUIContent('pages/Index', (err) => {
             if (err.code) {
-              console.error('Failed to load the subWindow content. Cause: %{public}s', JSON.stringify(err));
+              console.error(`Failed to load the subWindow content. Cause code: ${err.code}, message: ${err.message}`);
               return;
             }
             console.info('Succeeded in loading the subWindow content.');
@@ -189,11 +189,11 @@ showWindow(options: ShowWindowOptions): Promise&lt;void&gt;
 
 显示当前窗口或将已显示的应用主窗口的层级提升至顶部，支持传入参数来控制窗口显示的行为，使用Promise异步回调。
 
-仅支持除TYPE_DIALOG类型的窗口和模态子窗口（即使用setSubWindowModal启用了子窗的模态属性）之外的应用子窗口、应用主窗、全局悬浮窗以及系统窗口。
+仅支持除TYPE_DIALOG类型的窗口和模态子窗口（即使用setSubWindowModal启用了子窗口的模态属性）之外的应用子窗口、应用主窗口、全局悬浮窗口以及系统窗口。
 
 > **说明：**
 >
-> 调用该接口前，建议优先通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用主窗口没有完成页面加载，直接调用该接口，界面会一直显示启动界面；如果系统窗口、应用子窗口和全局悬浮窗没有完成页面加载，直接调用该接口，窗口会处于前台，但不可见。
+> 调用该接口前，建议优先通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者[setUIContent](#setuicontent9-1)方法完成页面加载。如果应用主窗口没有完成页面加载，直接调用该接口，界面会一直显示启动界面；如果系统窗口、应用子窗口和全局悬浮窗没有完成页面加载，直接调用该接口，窗口会处于前台，但不可见。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -203,7 +203,7 @@ showWindow(options: ShowWindowOptions): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | --------- |
-| options | [ShowWindowOptions](arkts-apis-window-i.md#showwindowoptions20) | 是 | 显示子窗口或系统窗口时的参数。 |
+| options | [ShowWindowOptions](arkts-apis-window-i.md#showwindowoptions20) | 是 | 显示子窗口、应用主窗口、全局悬浮窗口或系统窗口时的参数。 |
 
 **返回值：**
 
@@ -217,9 +217,9 @@ showWindow(options: ShowWindowOptions): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 801     | Capability not supported. Function showWindow can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. Function showWindow cannot work correctly due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
-| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Modal subwindow and dialog window can not set focusOnShow. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Modal subwindow and dialog window cannot set focusOnShow. |
 | 1300016 | Parameter validation error. Possible cause: 1. The value of the parameter is out of the allowed range; 2. The length of the parameter exceeds the allowed length; 3. The parameter format is incorrect. |
 
 **示例：**
@@ -235,7 +235,7 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('Succeeded in loading the content.');
@@ -248,7 +248,7 @@ export default class EntryAbility extends UIAbility {
           }
           data.setUIContent('pages/Index', (err) => {
             if (err.code) {
-              console.error('Failed to load the subWindow content. Cause: %{public}s', JSON.stringify(err));
+              console.error(`Failed to load the subWindow content. Cause code: ${err.code}, message: ${err.message}`);
               return;
             }
             console.info('Succeeded in loading the subWindow content.');
@@ -278,7 +278,7 @@ export default class EntryAbility extends UIAbility {
 
 destroyWindow(callback: AsyncCallback&lt;void&gt;): void
 
-销毁当前窗口，使用callback异步回调，支持系统窗口及应用子窗口，全局悬浮窗和模态窗。
+销毁当前窗口，使用callback异步回调，支持系统窗口、应用子窗口、全局悬浮窗口和模态窗口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -288,7 +288,7 @@ destroyWindow(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | --------- |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当窗口销毁成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -297,12 +297,14 @@ destroyWindow(callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.              |
+| 1300003 | This window manager service works abnormally.<br>适用版本：9                |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.destroyWindow((err) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -317,7 +319,7 @@ windowClass.destroyWindow((err) => {
 
 destroyWindow(): Promise&lt;void&gt;
 
-销毁当前窗口，使用Promise异步回调，支持系统窗口及应用子窗口，全局悬浮窗和模态窗。
+销毁当前窗口，使用Promise异步回调，支持系统窗口、应用子窗口、全局悬浮窗口和模态窗口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -336,12 +338,14 @@ destroyWindow(): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.              |
+| 1300003 | This window manager service works abnormally.<br>适用版本：9                |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.destroyWindow();
 promise.then(() => {
   console.info('Succeeded in destroying the window.');
@@ -376,9 +380,9 @@ moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | --------------------------------------------- |
-| x        | number                    | 是 | 窗口在x轴方向移动到的坐标位置，单位为px，值为正表示在原点右侧，值为负表示在原点左侧。该参数仅支持整数输入，浮点数输入将向下取整。 |
-| y        | number                    | 是 | 窗口在y轴方向移动到的坐标位置，单位为px，值为正表示在原点下方，值为负表示在原点上方。该参数仅支持整数输入，浮点数输入将向下取整。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。                                     |
+| x        | number                    | 是 | 窗口在x轴方向移动到的坐标位置，单位为px，值为正表示在原点右侧，值为负表示在原点左侧。该参数仅支持整数输入，浮点数输入将向下取整。|
+| y        | number                    | 是 | 窗口在y轴方向移动到的坐标位置，单位为px，值为正表示在原点下方，值为负表示在原点上方。该参数仅支持整数输入，浮点数输入将向下取整。|
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。|
 
 **错误码：**
 
@@ -387,7 +391,7 @@ moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. The main windows in non-freeform window mode are not supported.              |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -396,6 +400,7 @@ moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -435,8 +440,8 @@ moveWindowTo(x: number, y: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | ----- | -- | --------------------------------------------- |
-| x | number | 是 | 窗口在x轴方向移动到的坐标位置，单位为px，值为正表示在原点右侧，值为负表示在原点左侧。该参数仅支持整数输入，浮点数输入将向下取整。 |
-| y | number | 是 | 窗口在y轴方向移动到的坐标位置，单位为px，值为正表示在原点下方，值为负表示在原点上方。该参数仅支持整数输入，浮点数输入将向下取整。 |
+| x | number | 是 | 窗口在x轴方向移动到的坐标位置，单位为px，值为正表示在原点右侧，值为负表示在原点左侧。该参数仅支持整数输入，浮点数输入将向下取整。|
+| y | number | 是 | 窗口在y轴方向移动到的坐标位置，单位为px，值为正表示在原点下方，值为负表示在原点上方。该参数仅支持整数输入，浮点数输入将向下取整。|
 
 **返回值：**
 
@@ -451,7 +456,7 @@ moveWindowTo(x: number, y: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. The main windows in non-freeform window mode are not supported.              |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -460,6 +465,7 @@ moveWindowTo(x: number, y: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.moveWindowTo(300, 300);
   promise.then(() => {
     console.info('Succeeded in moving the window.');
@@ -477,7 +483,7 @@ moveWindowToAsync(x: number, y: number): Promise&lt;void&gt;
 
 移动窗口位置，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
 
-该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010。
 
 在自由悬浮窗口模式下，不同类型窗口的移动行为如下：
 
@@ -525,6 +531,7 @@ moveWindowToAsync(x: number, y: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.moveWindowToAsync(300, 300);
   promise.then(() => {
     console.info('Succeeded in moving the window.');
@@ -544,7 +551,7 @@ moveWindowToAsync(x: number, y: number, moveConfiguration?: MoveConfiguration): 
 
 移动窗口位置，支持配置moveConfiguration参数指定窗口移动的目标屏幕ID，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
 
-该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010。
 
 在自由悬浮窗口模式下，不同类型窗口的移动行为如下：
 
@@ -597,6 +604,7 @@ try {
   let moveConfiguration: window.MoveConfiguration = {
     displayId: 0
   };
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.moveWindowToAsync(300, 300, moveConfiguration);
   promise.then(() => {
     console.info('Succeeded in moving the window.');
@@ -616,7 +624,7 @@ moveWindowToGlobal(x: number, y: number): Promise&lt;void&gt;
 
 基于屏幕坐标移动窗口位置，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
 
-该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010。
 
 > **说明：**
 >
@@ -658,6 +666,7 @@ moveWindowToGlobal(x: number, y: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.moveWindowToGlobal(300, 300);
   promise.then(() => {
     console.info('Succeeded in moving the window.');
@@ -677,7 +686,7 @@ moveWindowToGlobal(x: number, y: number, moveConfiguration?: MoveConfiguration):
 
 基于屏幕坐标移动窗口位置，支持配置moveConfiguration参数指定窗口移动的目标屏幕ID，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
 
-该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010。
 
 > **说明：**
 >
@@ -724,6 +733,7 @@ try {
   let moveConfiguration: window.MoveConfiguration = {
     displayId: 0
   };
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.moveWindowToGlobal(300, 300, moveConfiguration);
   promise.then(() => {
     console.info('Succeeded in moving the window.');
@@ -743,7 +753,7 @@ moveWindowToGlobalDisplay(x: number, y: number): Promise&lt;void&gt;
 
 基于[全局坐标系](../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)移动窗口位置，使用Promise异步回调。
 
-该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010。
 
 > **说明：**
 >
@@ -751,7 +761,7 @@ moveWindowToGlobalDisplay(x: number, y: number): Promise&lt;void&gt;
 > 
 > - 窗口移动后，如果窗口跨越多个屏幕，窗口将归属于与其重叠面积最大的屏幕。
 >
-> - [自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
+> - [自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。回弹规格详情请参考：[窗口回弹规格](https://developer.huawei.com/consumer/cn/doc/design-guides/window-0000002321868010#section142701449114818)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -786,6 +796,7 @@ moveWindowToGlobalDisplay(x: number, y: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.moveWindowToGlobalDisplay(300, 300);
   promise.then(() => {
     console.info('Succeeded in moving the window in global display.');
@@ -827,7 +838,7 @@ clientToGlobalDisplay(winX: number, winY: number): Position
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300010 | The operation in the current window status is invalid. |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
@@ -835,6 +846,7 @@ clientToGlobalDisplay(winX: number, winY: number): Position
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let position = windowClass.clientToGlobalDisplay(100, 100);
   console.info(`Succeeded in converting the position in the current window to the position in global display. Position: ` + JSON.stringify(position));
 } catch (exception) {
@@ -872,7 +884,7 @@ globalDisplayToClient(globalDisplayX: number, globalDisplayY: number): Position
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300010 | The operation in the current window status is invalid. |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
@@ -880,6 +892,7 @@ globalDisplayToClient(globalDisplayX: number, globalDisplayY: number): Position
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let position = windowClass.globalDisplayToClient(100, 100);
   console.info(`Succeeded in converting in the position in global display to the position in the current window. Position: ` + JSON.stringify(position));
 } catch (exception) {
@@ -917,9 +930,9 @@ resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | ------------------------ |
-| width    | number                    | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
-| height   | number                    | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。                |
+| width    | number                    | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。实际设置的大小受窗口配置的最小/最大宽度限制，超出限制时自动修正为边界值。|
+| height   | number                    | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。实际设置的大小受窗口配置的最小/最大高度限制，超出限制时自动修正为边界值。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。|
 
 **错误码：**
 
@@ -937,6 +950,7 @@ resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.resize(500, 1000, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -980,8 +994,8 @@ resize(width: number, height: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | -- | ------------------------ |
-| width  | number | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
-| height | number | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
+| width  | number | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。实际设置的大小受窗口配置的最小/最大宽度限制，超出限制时自动修正为边界值。 |
+| height | number | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。实际设置的大小受窗口配置的最小/最大高度限制，超出限制时自动修正为边界值。 |
 
 **返回值：**
 
@@ -1005,6 +1019,7 @@ resize(width: number, height: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.resize(500, 1000);
   promise.then(() => {
     console.info('Succeeded in changing the window size.');
@@ -1036,7 +1051,7 @@ resizeAsync(width: number, height: number): Promise&lt;void&gt;
 
 > **说明：**
 >
-> - 在非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，主窗口调用不生效。
+> - 主窗口处于自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）时，在非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下调用不生效不报错。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1046,8 +1061,8 @@ resizeAsync(width: number, height: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | -- | ------------------------ |
-| width  | number | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
-| height | number | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
+| width  | number | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。实际设置的大小受窗口配置的最小/最大宽度限制，超出限制时自动修正为边界值。 |
+| height | number | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。实际设置的大小受窗口配置的最小/最大高度限制，超出限制时自动修正为边界值。 |
 
 **返回值：**
 
@@ -1073,6 +1088,7 @@ resizeAsync(width: number, height: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.resizeAsync(500, 1000);
   promise.then(() => {
     console.info('Succeeded in changing the window size.');
@@ -1114,6 +1130,7 @@ getWindowProperties(): WindowProperties
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let properties = windowClass.getWindowProperties();
 } catch (exception) {
   console.error(`Failed to obtain the window properties. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1149,6 +1166,7 @@ getWindowDensityInfo(): WindowDensityInfo
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let densityInfo = windowClass.getWindowDensityInfo();
 } catch (exception) {
   console.error(`Failed to obtain the window densityInfo. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1165,7 +1183,7 @@ setWindowContainerColor(activeColor: string, inactiveColor: string): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **需要权限：** ohos.permission.SET_WINDOW_TRANSPARENT
 
@@ -1185,7 +1203,7 @@ setWindowContainerColor(activeColor: string, inactiveColor: string): void
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
-| 1300004 | Unauthorized operation.                      |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例：**
 
@@ -1197,7 +1215,7 @@ import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    windowStage.loadContent("pages/page2", (err: BusinessError) => {
+    windowStage.loadContent('pages/page2', (err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {
         console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
@@ -1256,10 +1274,10 @@ setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 201     | Permission verification failed. The application does not have the permission required or a non-system application calls the API.|
+| 201     | Permission verification failed. The application does not have the permission required or a non-system application calls the API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例：**
 
@@ -1267,10 +1285,11 @@ setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    windowStage.loadContent("pages/Index", (err: BusinessError) => {
+    windowStage.loadContent('pages/Index', (err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {
         console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
@@ -1332,6 +1351,7 @@ getGlobalRect(): Rect
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let rect = windowClass.getGlobalRect();
   console.info(`Succeeded in getting window rect: ` + JSON.stringify(rect));
 } catch (exception) {
@@ -1345,18 +1365,16 @@ getWindowAvoidArea(type: AvoidAreaType): AvoidArea
 
 获取当前窗口避让区域。
 
-主窗口/子窗口：
-- [自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的自由悬浮窗口模式（即窗口模式为[window.WindowStatusType.FLOATING](arkts-apis-window-e.md#windowstatustype11)）下，仅存在固定态软键盘（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD）类型的避让区域。
-- 主窗口在非自由窗口状态的自由悬浮窗口模式下，仅存在系统栏（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM）类型的避让区域。
-- 主窗口在其余场景下，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
-- 子窗口在非自由窗口状态或非自由悬浮窗口模式下，仅当窗口的位置和大小与主窗口一致时，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
-
 全局悬浮窗、模态窗或系统窗口：
-- 仅在调用[setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18)方法使能后，才能通过此接口获取避让区域，否则获取的避让区域为空。
+- 仅在调用[setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18)方法使能后，才能通过此接口获取避让区域。
 
 该接口一般适用于两种场景：
 - 在[onWindowStageCreate()](../apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)方法中，获取应用启动时的初始布局避让区域时可调用该接口。
 - 当应用内子窗需要临时显示，对显示内容做布局避让时可调用该接口。
+
+> **说明：**
+>
+> TV 设备不显示状态栏。若未显式设置状态栏隐藏，调用该接口仍可获取状态栏对应的避让区域。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1372,7 +1390,7 @@ getWindowAvoidArea(type: AvoidAreaType): AvoidArea
 
 | 类型 | 说明 |
 |--------------------------| ----------------- |
-| [AvoidArea](arkts-apis-window-i.md#avoidarea7) | 窗口内容避让区域。 |
+| [AvoidArea](arkts-apis-window-i.md#avoidarea7) | 窗口内容避让区域。当获取到的避让区域值全为0，表示避让区域为空。 |
 
 **错误码：**
 
@@ -1388,6 +1406,7 @@ getWindowAvoidArea(type: AvoidAreaType): AvoidArea
 ```ts
 let type = window.AvoidAreaType.TYPE_SYSTEM;
 try {
+  // windowClass为已创建/获取的Window实例
   let avoidArea = windowClass.getWindowAvoidArea(type);
 } catch (exception) {
   console.error(`Failed to obtain the area. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1400,13 +1419,12 @@ getWindowAvoidAreaIgnoringVisibility(type: AvoidAreaType): AvoidArea
 
 获取当前应用窗口的避让区域，即使避让区域当前处于不可见状态。
 
-主窗口/子窗口：
-- 主窗口在非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的自由悬浮窗口模式（即窗口模式为[window.WindowStatusType.FLOATING](arkts-apis-window-e.md#windowstatustype11)）下，仅存在系统栏（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM）类型的避让区域。
-- 主窗口在其余场景下，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
-- 子窗口在非自由窗口状态或非自由悬浮窗口模式下，仅当窗口的位置和大小与主窗口一致时，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
-
 全局悬浮窗、模态窗或系统窗口：
-- 仅在调用[setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18)方法使能后，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
+- 仅在调用[setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18)方法使能后，才能通过此接口获取避让区域。
+
+> **说明：**
+>
+> TV 设备不显示状态栏。若未显式设置状态栏隐藏，调用该接口仍可获取状态栏对应的避让区域。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1431,13 +1449,14 @@ getWindowAvoidAreaIgnoringVisibility(type: AvoidAreaType): AvoidArea
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Convert avoid area failed. |
 | 1300003 | This window manager service works abnormally. |
-| 1300016 | Parameter error. |
+| 1300016 | Parameter error. Possible cause: Invalid parameter range.|
 
 **示例：**
 
 ```ts
 let type = window.AvoidAreaType.TYPE_SYSTEM;
 try {
+  // windowClass为已创建/获取的Window实例
   let avoidArea = windowClass.getWindowAvoidAreaIgnoringVisibility(type);
 } catch (exception) {
   console.error(`Failed to obtain the area. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1472,7 +1491,7 @@ setSystemAvoidAreaEnabled(enabled: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. Possible cause: The device does not support the API itself. |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only global floating windows, dialog windows, or Window Type as system windows are supported.|
@@ -1510,7 +1529,7 @@ export default class EntryAbility extends UIAbility {
             return;
           }
           windowClass = data;
-          windowClass.setUIContent("pages/Test");
+          windowClass.setUIContent('pages/Test');
           let enabled = true;
           let promise = windowClass.setSystemAvoidAreaEnabled(enabled);
           promise.then(() => {
@@ -1588,7 +1607,7 @@ export default class EntryAbility extends UIAbility {
             return;
           }
           windowClass = data;
-          windowClass.setUIContent("pages/Test");
+          windowClass.setUIContent('pages/Test');
           let promise = windowClass.setSystemAvoidAreaEnabled(true);
           promise.then(() => {
             let enabled = windowClass?.isSystemAvoidAreaEnabled();
@@ -1608,9 +1627,9 @@ export default class EntryAbility extends UIAbility {
 
 setTitleAndDockHoverShown(isTitleHoverShown?: boolean, isDockHoverShown?: boolean): Promise&lt;void&gt;
 
-设置主窗口进入全屏模式时鼠标Hover到热区上是否显示窗口标题栏和dock栏，使用Promise异步回调。
+设置主窗口进入全屏模式时鼠标Hover到热区上是否显示窗口标题栏和Dock栏，使用Promise异步回调。
 
-**系统能力**：SystemCapability.Window.SessionManager
+**系统能力：** SystemCapability.Window.SessionManager
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
@@ -1621,7 +1640,7 @@ setTitleAndDockHoverShown(isTitleHoverShown?: boolean, isDockHoverShown?: boolea
 | 参数名      | 类型    | 必填 | 说明                                                         |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
 | isTitleHoverShown    | boolean | 否   | 是否显示窗口标题栏。<br>true表示显示窗口标题栏；false表示不显示窗口标题栏。默认值是true。</br> |
-| isDockHoverShown    | boolean | 否   | 是否显示dock栏。<br>true表示显示dock栏；false表示不显示dock栏。默认值是true。</br> |
+| isDockHoverShown    | boolean | 否   | 是否显示Dock栏。<br>true表示显示Dock栏；false表示不显示Dock栏。默认值是true。</br> |
 
 **返回值：**
 
@@ -1637,7 +1656,7 @@ setTitleAndDockHoverShown(isTitleHoverShown?: boolean, isDockHoverShown?: boolea
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
-| 1300004 | Unauthorized operation. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported.|
 
 **示例：**
 
@@ -1664,7 +1683,7 @@ export default class EntryAbility extends UIAbility {
           console.info(`Succeeded in obtaining the main window. Data: ${JSON.stringify(data)}`);
           // 调用maximize接口，设置窗口进入全屏模式。
           mainWindow.maximize(window.MaximizePresentation.ENTER_IMMERSIVE);
-          // 调用setTitleAndDockHoverShown接口，隐藏标题栏和dock栏。
+          // 调用setTitleAndDockHoverShown接口，隐藏标题栏和Dock栏。
           mainWindow.setTitleAndDockHoverShown(false, false);
         }
       ).catch((err: BusinessError) => {
@@ -1683,9 +1702,9 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
 设置应用主窗口或应用子窗口的布局是否为[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)，使用Promise异步回调。其余窗口调用不生效也不报错。
 
-沉浸式布局生效时，布局不避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
+沉浸式布局生效时，布局不避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。<!--Del-->当前工具栏的显示或隐藏设置仅Car设备支持。<!--DelEnd-->
 
-非沉浸式布局生效时，布局避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件不会与其重叠。
+非沉浸式布局生效时，布局避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件不会与其重叠。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1695,13 +1714,15 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
 在OpenHarmony 5.0.2之前，该接口在所有设备中可正常调用。
 
-从OpenHarmony 5.0.2开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态时生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
+从OpenHarmony 5.0.2开始至OpenHarmony 5.1.1之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于自由窗口状态的设备及不支持自由窗口状态的设备上可正常调用。
+
+从OpenHarmony 5.1.1开始，该接口在PC/2in1设备、其他设备的[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)调用不生效也不报错；在其他设备和其他模式中可正常调用。
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------------------ | ------- | -- | ------------------------------------------------------------------------------------------------ |
-| isLayoutFullScreen | boolean | 是 | 窗口的布局是否为沉浸式布局（该沉浸式布局状态栏、<!--RP15-->三键导航栏<!--RP15End-->仍然显示）。true表示沉浸式布局；false表示非沉浸式布局。 |
+| isLayoutFullScreen | boolean | 是 | 窗口的布局是否为沉浸式布局（该沉浸式布局状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->仍然显示）。true表示沉浸式布局；false表示非沉浸式布局。|
 
 **返回值：**
 
@@ -1769,7 +1790,9 @@ setImmersiveModeEnabledState(enabled: boolean): void
 
 在OpenHarmony 5.0.2之前，该接口在所有设备中可正常调用。
 
-从OpenHarmony 5.0.2开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
+从OpenHarmony 5.0.2开始至OpenHarmony 5.1.1之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于自由窗口状态的设备及不支持自由窗口状态的设备上可正常调用。
+
+从OpenHarmony 5.1.1开始，该接口在PC/2in1设备、其他设备的[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)调用不生效也不报错；在其他设备和其他模式中可正常调用。
 
 **参数：**
 
@@ -1793,6 +1816,7 @@ setImmersiveModeEnabledState(enabled: boolean): void
 ```ts
 try {
   let enabled = false;
+  // windowClass为已创建/获取的Window实例
   windowClass.setImmersiveModeEnabledState(enabled);
 } catch (exception) {
   console.error(`Failed to set the window immersive mode enabled status. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1809,7 +1833,7 @@ getImmersiveModeEnabledState(): boolean
 
 返回值与[setImmersiveModeEnabledState()](#setimmersivemodeenabledstate12)以及[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)设置结果一致，若未调用上述两个接口则默认返回false。
 
-**系统能力**：SystemCapability.WindowManager.WindowManager.Core
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1831,6 +1855,7 @@ getImmersiveModeEnabledState(): boolean
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let isEnabled = windowClass.getImmersiveModeEnabledState();
 } catch (exception) {
   console.error(`Failed to get the window immersive mode enabled status. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1880,6 +1905,7 @@ setFloatNavigationAvoidAreaEnabled(enabled: boolean): Promise\<void>
 ```ts
 try {
   let enabled = false;
+  // windowClass为已创建/获取的Window实例
   windowClass.setFloatNavigationAvoidAreaEnabled(enabled);
 } catch (exception) {
   console.error(`Failed to set the window float navigation avoid area enabled status. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1918,6 +1944,7 @@ isFloatNavigationAvoidAreaEnabled(): boolean
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let isEnabled = windowClass.isFloatNavigationAvoidAreaEnabled();
 } catch (exception) {
   console.error(`Failed to check if the window is enabled float navigation avoid area. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1930,7 +1957,7 @@ isImmersiveLayout(): boolean
 
 查询当前窗口是否处于[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
-**系统能力**：SystemCapability.Window.SessionManager
+**系统能力：** SystemCapability.Window.SessionManager
 
 **返回值：**
 | 类型     | 说明                                                                                 |
@@ -1950,6 +1977,7 @@ isImmersiveLayout(): boolean
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let isEnabled = windowClass.isImmersiveLayout();
 } catch (exception) {
   console.error(`Failed to check if the window layout is in immersive mode. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1966,7 +1994,7 @@ setWindowDelayRaiseOnDrag(isEnabled: boolean): void
 
 调用此接口使能延迟抬升后，在跨窗拖拽场景，可拖拽组件所在窗口在鼠标左键按下时不会立即抬升，直到鼠标左键抬起。
 
-**系统能力**：SystemCapability.Window.SessionManager
+**系统能力：** SystemCapability.Window.SessionManager
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -1984,13 +2012,14 @@ setWindowDelayRaiseOnDrag(isEnabled: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801     | Capability not supported.function setWindowDelayRaiseOnDrag can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported.function setWindowDelayRaiseOnDrag cannot work correctly due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.setWindowDelayRaiseOnDrag(true);
 } catch (exception) {
   console.error(`Failed to set window delay raise. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -2030,7 +2059,7 @@ setDragKeyFramePolicy(keyFramePolicy: KeyFramePolicy): Promise&lt;KeyFramePolicy
 | 错误码ID | 错误信息                                      |
 | ------- | --------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.               |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation.                       |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range; 2. The parameter format is incorrect.|
@@ -2077,9 +2106,9 @@ export default class EntryAbility extends UIAbility {
 
 setWindowSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void&gt;
 
-<!--RP14-->设置主窗口状态栏、三键导航栏的可见模式，状态栏通过status控制、三键导航栏通过navigation控制<!--RP14End-->，使用Promise异步回调。
+设置主窗口状态栏、<!--RP18-->工具栏或三键导航栏的显示或隐藏，状态栏通过status控制、工具栏或三键导航栏通过navigation控制。当前工具栏的显示或隐藏设置仅Car设备支持。<!--RP18End-->使用Promise异步回调。
 
-调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
+调用生效后返回并不表示状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->的显示或隐藏已完成。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2095,7 +2124,7 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void
 
 | 参数名 | 类型  | 必填 | 说明 |
 | ----- | ---------------------------- | -- | --------------------------------- |
-| names | Array<'status'\|'navigation'> | 是 | 设置窗口全屏/最大化模式时状态栏、<!--RP15-->三键导航栏<!--RP15End-->是否显示。<br>例如，需全部显示，该参数设置为['status',&nbsp;'navigation']；设置为[]，则不显示。 |
+| names | Array<'status'\|'navigation'> | 是 | 设置窗口全屏/最大化模式时状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->是否显示。<br>例如，需全部显示，该参数设置为['status',&nbsp;'navigation']；设置为[]，则不显示。 |
 
 **返回值：**
 
@@ -2154,9 +2183,9 @@ export default class EntryAbility extends UIAbility {
 
 setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnimation?: boolean): Promise&lt;void&gt;
 
-设置主窗口状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏，使用Promise异步回调。
+设置主窗口状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->的显示或隐藏。<!--Del-->当前工具栏的显示或隐藏设置仅Car设备支持。<!--DelEnd-->使用Promise异步回调。
 
-调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
+调用生效后返回并不表示状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -2173,8 +2202,8 @@ setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnim
 | 参数名 | 类型  | 必填 | 说明 |
 | ----- | ---------------------------- | -- | --------------------------------- |
 | name  | [SpecificSystemBar](arkts-apis-window-t.md#specificsystembar11) | 是 | 设置窗口全屏模式时，显示或隐藏的系统栏类型。 |
-| enable  | boolean | 是 | 设置窗口全屏模式时状态栏或<!--RP15-->三键导航栏<!--RP15End-->是否显示，true表示显示， false表示隐藏。|
-| enableAnimation<sup>12+</sup>  | boolean | 否 | 设置状态栏或<!--RP15-->三键导航栏<!--RP15End-->显示状态变化时是否使用动画，true表示使用， false表示不使用，默认值为false。|
+| enable  | boolean | 是 | 设置窗口全屏模式时状态栏或<!--RP15-->工具栏或三键导航栏<!--RP15End-->是否显示，true表示显示， false表示隐藏。|
+| enableAnimation<sup>12+</sup>  | boolean | 否 | 设置状态栏或<!--RP15-->工具栏或三键导航栏<!--RP15End-->显示状态变化时是否使用动画，true表示使用， false表示不使用，默认值为false。|
 
 **返回值：**
 
@@ -2233,7 +2262,7 @@ export default class EntryAbility extends UIAbility {
 
 setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&lt;void&gt;
 
-设置主窗口<!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性，使用Promise异步回调。
+设置主窗口状态栏<!--Del-->、工具栏或三键导航栏<!--DelEnd-->的属性。<!--Del-->当前工具栏的属性设置仅Car设备支持。<!--DelEnd-->使用Promise异步回调。
 
 子窗口调用后不生效。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
@@ -2241,13 +2270,17 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
+**设备行为差异：**
+
+在OpenHarmony 5.0.0之前，该接口在所有设备中可正常调用。
+
+从OpenHarmony 5.0.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
 
 **参数：**
 
 | 参数名              | 类型                                        | 必填 | 说明                   |
 | ------------------- | ------------------------------------------- | ---- | ---------------------- |
-| systemBarProperties | [SystemBarProperties](arkts-apis-window-i.md#systembarproperties) | 是   | <!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性。 |
+| systemBarProperties | [SystemBarProperties](arkts-apis-window-i.md#systembarproperties) | 是   | <!--Del-->三键导航栏或工具栏、<!--DelEnd-->状态栏的属性。 |
 
 **返回值：**
 
@@ -2285,15 +2318,15 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       windowClass = data;
-      let SystemBarProperties: window.SystemBarProperties = {
+      let systemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        // 以下两个属性从API Version8开始支持
+        // 以下两个属性从API version 8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
       try {
-        let promise = windowClass.setWindowSystemBarProperties(SystemBarProperties);
+        let promise = windowClass.setWindowSystemBarProperties(systemBarProperties);
         promise.then(() => {
           console.info('Succeeded in setting the system bar properties.');
         }).catch((err: BusinessError) => {
@@ -2383,7 +2416,7 @@ setStatusBarColor(color: ColorMetrics): Promise&lt;void&gt;
 
 | 参数名              | 类型                                        | 必填 | 说明                   |
 | ------------------- | ------------------------------------------- | ---- | ---------------------- |
-| color | [ColorMetrics](js-apis-arkui-graphics.md#colormetrics12) | 是   | 要设置的状态栏颜色值。 |
+| color | [ColorMetrics](js-apis-arkui-graphics.md#colormetrics12) | 是   | 要设置的状态栏文字颜色值。 |
 
 **返回值：**
 
@@ -2408,7 +2441,6 @@ setStatusBarColor(color: ColorMetrics): Promise&lt;void&gt;
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { ColorMetrics, window } from '@kit.ArkUI';
-import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -2510,7 +2542,7 @@ getWindowStateSnapshot(): Promise&lt;string&gt;
 
 | 类型 | 说明 |
 | ------------------------------------- | ------------- |
-| Promise&lt;string&gt; | 返回当前窗口的设备形态信息，是JSON对象序列化后的结果，使用时需要先反序列化成JSON对象。返回示例：`{"isPcMode":false,"isSupportFreeWindowMode":true,"systemUiVisible":"1100"}`。<br/>返回值包含的不同字段的含义如下： <br/>- isPcMode：表示当前设备是否处于[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)，true表示处于[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)，false表示不处于[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)。当前在PC/2in1设备上返回true。<br/>- isSupportFreeWindowMode：表示当前设备是否支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)，true表示支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)，false表示不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)。<br/>- systemUiVisible：表示系统UI的显隐状态，是由0和1组成的长度为4的字符串，其中0表示隐藏，1表示显示。从左到右，第一位表示状态栏的显隐状态，第二位表示导航条的显隐状态，<!--RP17-->第三位在OpenHarmony设备上暂不支持，默认值为0，第四位表示三键导航栏的显隐状态。<!--RP17End-->|
+| Promise&lt;string&gt; | 返回当前窗口的设备形态信息，是JSON对象序列化后的结果，使用时需要先反序列化成JSON对象。返回示例：`{"isPcMode":false,"isSupportFreeWindowMode":true,"systemUiVisible":"1100"}`。<br>返回值包含的不同字段的含义如下： <br>- isPcMode：表示当前设备是否处于[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)，true表示处于[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)，false表示不处于[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)。当前在PC/2in1设备上返回true。<br>- isSupportFreeWindowMode：表示当前设备是否支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)，true表示支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)，false表示不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)。<br>- systemUiVisible：表示系统UI的显隐状态，是由0和1组成的长度为4的字符串，其中0表示隐藏，1表示显示。从左到右，第一位表示状态栏的显隐状态，第二位表示导航条的显隐状态，<!--RP17-->第三位在OpenHarmony设备上暂不支持，默认值为0，第四位表示三键导航栏或工具栏的显隐状态。当前工具栏的显隐状态仅Car设备支持。<!--RP17End-->|
 
 **错误码：**
 
@@ -2518,7 +2550,7 @@ getWindowStateSnapshot(): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 801      | Capability not supported. Failed to call the api due to limited device capabilities. Possible cause: The device does not support the api itself. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. Possible cause: The device does not support the API itself. |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
 
@@ -2528,8 +2560,9 @@ getWindowStateSnapshot(): Promise&lt;string&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.getWindowStateSnapshot().then((data) => {
-    let jsonObj: object = JSON.parse(data);
+    let jsonObj: Record<string, Object> = JSON.parse(data);
     console.info(`Succeeded, data=${data}, isPcMode=${jsonObj["isPcMode"]}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed. Cause code: ${err.code}, cancel message: ${err.message}`);
@@ -2552,7 +2585,7 @@ setPreferredOrientation(orientation: Orientation, callback: AsyncCallback&lt;voi
 **设备行为差异：**
 
 - 设备支持sensor旋转且未处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态：立即生效。
-- 设备支持sensor旋转且处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态：调用不生效不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态后生效。
+- 设备支持sensor旋转且处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态：调用不生效不报错，切换到非自由窗口状态后生效。
 - 其他情况：不生效不报错。
 
 **参数：**
@@ -2851,7 +2884,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // 为主窗口加载对应的目标页面。
-    windowStage.loadContent("pages/page2", (err: BusinessError) => {
+    windowStage.loadContent('pages/page2', (err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {
         console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
@@ -2892,7 +2925,7 @@ setUIContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | -------------------- |
 | path     | string                    | 是 | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。不支持相对路径写法，需与main_pages.json或config.json中的src取值保持一致。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。          |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当页面内容加载成功，err为undefined，否则为错误对象。          |
 
 **错误码：**
 
@@ -2902,6 +2935,7 @@ setUIContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally.<br>适用版本：9                |
 
 **示例：**
 
@@ -2909,6 +2943,7 @@ setUIContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.setUIContent('pages/page2/page3', (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -2952,6 +2987,7 @@ setUIContent(path: string): Promise&lt;void&gt;
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.              |
+| 1300003 | This window manager service works abnormally.<br>适用版本：9                |
 
 **示例：**
 
@@ -2959,6 +2995,7 @@ setUIContent(path: string): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setUIContent('pages/page2/page3');
   promise.then(() => {
     console.info('Succeeded in loading the content.');
@@ -3002,6 +3039,7 @@ loadContent(path: string, storage: LocalStorage, callback: AsyncCallback&lt;void
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter.|
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.    |
+| 1300003 | This window manager service works abnormally.<br>适用版本：9                |
 
 **示例：**
 
@@ -3010,6 +3048,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let storage: LocalStorage = new LocalStorage();
 storage.setOrCreate('storageSimpleProp', 121);
+// windowClass为已创建/获取的Window实例
 windowClass.loadContent('pages/page2', storage, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -3057,6 +3096,7 @@ loadContent(path: string, storage: LocalStorage): Promise&lt;void&gt;
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter.|
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.    |
+| 1300003 | This window manager service works abnormally.<br>适用版本：9                |
 
 **示例：**
 
@@ -3065,6 +3105,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let storage: LocalStorage = new LocalStorage();
 storage.setOrCreate('storageSimpleProp', 121);
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.loadContent('pages/page2', storage);
 promise.then(() => {
   console.info('Succeeded in loading the content.');
@@ -3093,9 +3134,9 @@ loadContentByName(name: string, storage: LocalStorage, callback: AsyncCallback&l
 
 | 参数名   | 类型                                                    | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| name     | string                                                  | 是   | 命名路由页面的名称。                                             |
+| name     | string                                                  | 是   | 命名路由页面的名称，该名称需在页面的@Entry装饰器中通过[routeName](arkui-ts/ts-universal-entry.md#entryoptions10)属性定义。 |
 | storage  | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 是   | 页面级UI状态存储单元，这里用于为加载到窗口的页面内容传递状态属性。 |
-| callback | AsyncCallback&lt;void&gt;                               | 是   | 回调函数。                                                   |
+| callback | AsyncCallback&lt;void&gt;                               | 是   | 回调函数。当命名路由页面加载成功，err为undefined，否则为错误对象。                                                   |
 
 **错误码：**
 
@@ -3121,7 +3162,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('onWindowStageCreate');
     let storage: LocalStorage = new LocalStorage();
-    let newValue: Number = 121;
+    let newValue: number = 121;
     storage.setOrCreate('storageSimpleProp', newValue);
     try {
       let windowClass: window.Window = windowStage.getMainWindowSync();
@@ -3186,8 +3227,8 @@ loadContentByName(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明             |
 | -------- | ------------------------- | ---- | ---------------- |
-| name     | string                    | 是   | 命名路由页面的名称。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。       |
+| name     | string                    | 是   | 命名路由页面的名称，该名称需在页面的@Entry装饰器中通过[routeName](arkui-ts/ts-universal-entry.md#entryoptions10)属性定义。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当命名路由页面加载成功，err为undefined，否则为错误对象。       |
 
 **错误码：**
 
@@ -3206,6 +3247,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import * as Index from '../pages/Index'; // 导入命名路由页面
 
 try {
+  // windowClass为已创建/获取的Window实例
   (windowClass as window.Window).loadContentByName(Index.entryName, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -3260,7 +3302,7 @@ loadContentByName(name: string, storage?: LocalStorage): Promise&lt;void&gt;
 
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| name    | string                                                  | 是   | 命名路由页面的名称。                                             |
+| name    | string                                                  | 是   | 命名路由页面的名称，该名称需在页面的@Entry装饰器中通过[routeName](arkui-ts/ts-universal-entry.md#entryoptions10)属性定义。   |
 | storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 否   | 页面级UI状态存储单元，这里用于为加载到窗口的页面内容传递状态属性，默认值为空。 |
 
 **返回值：**
@@ -3288,6 +3330,7 @@ import * as Index from '../pages/Index'; // 导入命名路由页面
 let storage: LocalStorage = new LocalStorage();
 storage.setOrCreate('storageSimpleProp', 121);
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = (windowClass as window.Window).loadContentByName(Index.entryName, storage);
   promise.then(() => {
     console.info('Succeeded in loading the content.');
@@ -3349,6 +3392,7 @@ isWindowShowing(): boolean
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let data = windowClass.isWindowShowing();
   console.info('Succeeded in checking whether the window is showing. Data: ' + JSON.stringify(data));
 } catch (exception) {
@@ -3365,6 +3409,10 @@ on(type:  'windowSizeChange', callback: Callback&lt;Size&gt;): void
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+> **说明：**
+>
+> 窗口拖动或窗口拖拽缩放后，无论窗口大小是否发生变化，均会通知应用windowSizeChange回调。
 
 **参数：**
 
@@ -3385,6 +3433,7 @@ on(type:  'windowSizeChange', callback: Callback&lt;Size&gt;): void
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('windowSizeChange', (data) => {
     console.info('Succeeded in enabling the listener for window size changes. Data: ' + JSON.stringify(data));
   });
@@ -3425,6 +3474,7 @@ const callback = (size: window.Size) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.on('windowSizeChange', callback);
   // 关闭指定callback的监听
@@ -3442,16 +3492,14 @@ on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaOptions&gt;): void
 
 开启当前应用窗口系统避让区域变化的监听。
 
-主窗口/子窗口：
-- [自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的自由悬浮窗口模式（即窗口模式为[window.WindowStatusType.FLOATING](arkts-apis-window-e.md#windowstatustype11)）下触发回调时，仅存在固定态软键盘（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD）类型的避让区域。
-- 主窗口在非自由窗口状态的自由悬浮窗口模式下触发回调时，仅存在系统栏（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM）类型的避让区域。
-- 主窗口在其余场景下触发回调时，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能返回计算后的避让区域，否则直接返回空的避让区域。
-- 子窗口在非自由窗口状态或非自由悬浮窗口模式下触发回调时，仅当子窗口的位置和大小与主窗口一致时，才能返回计算后的子窗口避让区域，否则直接返回空的避让区域。
-
 全局悬浮窗、模态窗或系统窗口：
-- 仅在调用[setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18)方法使能后，触发回调时才能返回计算后的避让区域，否则直接返回空的避让区域。
+- 仅在调用[setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18)方法使能后，才能通过此接口获取避让区域。
 
 <!--RP7-->常见的触发避让区回调的场景如下：应用窗口在全屏模式、悬浮模式、分屏模式之间的切换；应用窗口旋转；可折叠设备在屏幕折叠状态发生变化；应用窗口在多设备之间的流转。<!--RP7End-->
+
+> **说明：**
+>
+> TV 设备不显示状态栏。若未显式设置状态栏隐藏，调用该接口仍可获取状态栏对应的避让区域。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -3476,6 +3524,7 @@ on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaOptions&gt;): void
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('avoidAreaChange', (data) => {
     console.info('Succeeded in enabling the listener for system avoid area changes. type:' +
     JSON.stringify(data.type) + ', area: ' + JSON.stringify(data.area));
@@ -3521,6 +3570,7 @@ const callback = (data: Param) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('avoidAreaChange', callback);
 
   windowClass.off('avoidAreaChange', callback);
@@ -3535,7 +3585,7 @@ try {
 
 on(type: 'keyboardHeightChange', callback: Callback&lt;number&gt;): void
 
-开启固定态软键盘高度变化的监听。当软键盘从本窗口唤出且与窗口有重叠区域时，通知键盘高度变化。从API version 10开始，有关将软键盘设置为固定态或悬浮态的方法，请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+开启固定态软键盘高度变化的监听。当软键盘从本窗口唤出且与窗口有重叠区域时，通知键盘高度变化。从API version 10开始，将软键盘设置为固定态或悬浮态的方法，请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3562,6 +3612,7 @@ on(type: 'keyboardHeightChange', callback: Callback&lt;number&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('keyboardHeightChange', (data) => {
     console.info('Succeeded in enabling the listener for keyboard height changes. Data: ' + JSON.stringify(data));
   });
@@ -3574,7 +3625,7 @@ try {
 
 off(type: 'keyboardHeightChange', callback?: Callback&lt;number&gt;): void
 
-关闭固定态软键盘高度变化的监听，使应用程序不再接收键盘高度变化的通知。从API version 10开始，有关将软键盘设置为固定态或悬浮态的方法，请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+关闭固定态软键盘高度变化的监听，使应用不再接收键盘高度变化的通知。从API version 10开始，将软键盘设置为固定态或悬浮态的方法，请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3604,6 +3655,7 @@ const callback = (height: number) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('keyboardHeightChange', callback);
 
   windowClass.off('keyboardHeightChange', callback);
@@ -3620,7 +3672,7 @@ on(type: 'keyboardWillShow', callback: Callback&lt;KeyboardInfo&gt;): void
 
 开启固定态软键盘即将开始显示的监听。此监听在固定态软键盘即将开始显示或软键盘由悬浮态切换为固定态时触发，仅对当前拉起或隐藏固定态软键盘的应用窗口生效。对于虚拟屏上应用拉起输入法键盘到主屏上，输入法键盘显隐通知只会给主屏上获焦窗口，而不是虚拟屏上应用窗口。
 
-改变软键盘为固定态或者悬浮态方法详细介绍请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+将软键盘设置为固定态或悬浮态的方法请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3653,6 +3705,7 @@ const callback = (keyboardInfo: window.KeyboardInfo) => {
   console.info(`Keyboard will show animation. keyboardInfo: ` + JSON.stringify(keyboardInfo));
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('keyboardWillShow', callback);
   console.info(`Register keyboard will show animation success`);
 } catch (exception) {
@@ -3664,13 +3717,13 @@ try {
 
 off(type: 'keyboardWillShow', callback?: Callback&lt;KeyboardInfo&gt;): void
 
-关闭固定态软键盘即将开始显示的监听。改变输入法窗口为固定态或者悬浮态方法详细介绍请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+关闭固定态软键盘即将开始显示的监听。将软键盘设置为固定态或悬浮态的方法请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在Phone设备、Tablet设备和PC/2in1设备上可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在Phone设备、Tablet设备和PC/2in1设备上可正常调用，在其他设备中不报错不生效。
 
 **参数：**
 
@@ -3697,6 +3750,7 @@ const callback = (keyboardInfo: window.KeyboardInfo) => {
   console.info(`Keyboard will show animation. keyboardInfo: ` + JSON.stringify(keyboardInfo));
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('keyboardWillShow', callback);
   windowClass.off('keyboardWillShow', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -3713,7 +3767,7 @@ on(type: 'keyboardWillHide', callback: Callback&lt;KeyboardInfo&gt;): void
 
 开启固定态软键盘即将开始隐藏的监听。此监听在固定态软键盘即将开始隐藏或软键盘由固定态切换为悬浮态时触发，仅对当前拉起或隐藏固定态软键盘的应用窗口生效。对于虚拟屏上应用拉起输入法键盘到主屏上，输入法键盘显隐通知只会给主屏上获焦窗口，而不是虚拟屏上应用窗口。
 
-改变软键盘为固定态或者悬浮态方法详细介绍请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+将软键盘设置为固定态或悬浮态的方法请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3746,6 +3800,7 @@ const callback = (keyboardInfo: window.KeyboardInfo) => {
   console.info(`Keyboard will hide animation. keyboardInfo: ` + JSON.stringify(keyboardInfo));
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('keyboardWillHide', callback);
   console.info(`Register keyboard will hide animation success`);
 } catch (exception) {
@@ -3757,13 +3812,13 @@ try {
 
 off(type: 'keyboardWillHide', callback?: Callback&lt;KeyboardInfo&gt;): void
 
-关闭固定态软键盘即将开始隐藏的监听。改变输入法窗口为固定态切换至悬浮态方法详细介绍请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+关闭固定态软键盘即将开始隐藏的监听。将软键盘设置为固定态或悬浮态的方法请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在Phone设备、Tablet设备和PC/2in1设备上可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在Phone设备、Tablet设备和PC/2in1设备上可正常调用，在其他设备中不报错不生效。
 
 **参数：**
 
@@ -3790,6 +3845,7 @@ const callback = (keyboardInfo: window.KeyboardInfo) => {
   console.info(`Keyboard will hide animation. keyboardInfo: ` + JSON.stringify(keyboardInfo));
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('keyboardWillHide', callback);
   windowClass.off('keyboardWillHide', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -3806,7 +3862,7 @@ on(type: 'keyboardDidShow', callback: Callback&lt;KeyboardInfo&gt;): void
 
 开启固定态软键盘显示动画完成的监听。此监听在固定态软键盘显示动画完成或软键盘由悬浮态切换至固定态时触发，仅对当前拉起或隐藏固定态软键盘的应用窗口生效。对于虚拟屏上应用拉起输入法键盘到主屏上，输入法键盘显隐通知只会给主屏上获焦窗口，而不是虚拟屏上应用窗口。
 
-改变软键盘为固定态或者悬浮态方法详细介绍请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+将软键盘设置为固定态或悬浮态的方法请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -3836,6 +3892,7 @@ on(type: 'keyboardDidShow', callback: Callback&lt;KeyboardInfo&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('keyboardDidShow', (keyboardInfo) => {
     console.info('keyboard show animation completion. keyboardInfo: ' + JSON.stringify(keyboardInfo));
   });
@@ -3848,7 +3905,7 @@ try {
 
 off(type: 'keyboardDidShow', callback?: Callback&lt;KeyboardInfo&gt;): void
 
-关闭固定态软键盘显示动画完成的监听。改变输入法窗口为固定态或者悬浮态方法详细介绍请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+关闭固定态软键盘显示动画完成的监听。将软键盘设置为固定态或悬浮态的方法请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -3881,6 +3938,7 @@ const callback = (keyboardInfo: window.KeyboardInfo) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('keyboardDidShow', callback);
   windowClass.off('keyboardDidShow', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -3896,7 +3954,7 @@ on(type: 'keyboardDidHide', callback: Callback&lt;KeyboardInfo&gt;): void
 
 开启固定态软键盘隐藏动画完成的监听。此监听在固定态软键盘隐藏动画完成或软键盘由固定态切换至悬浮态时触发，仅对当前拉起或隐藏固定态软键盘的应用窗口生效。对于虚拟屏上应用拉起输入法键盘到主屏上，输入法键盘显隐通知只会给主屏上获焦窗口，而不是虚拟屏上应用窗口。
 
-改变软键盘为固定态或者悬浮态方法详细介绍请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+将软键盘设置为固定态或悬浮态的方法请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -3926,6 +3984,7 @@ on(type: 'keyboardDidHide', callback: Callback&lt;KeyboardInfo&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('keyboardDidHide', (keyboardInfo) => {
     console.info('keyboard hide animation completion. keyboardInfo: ' + JSON.stringify(keyboardInfo));
   });
@@ -3938,7 +3997,7 @@ try {
 
 off(type: 'keyboardDidHide', callback?: Callback&lt;KeyboardInfo&gt;): void
 
-关闭固定态软键盘隐藏动画完成的监听。改变输入法窗口为固定态切换至悬浮态方法详细介绍请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+关闭固定态软键盘隐藏动画完成的监听。将软键盘设置为固定态或悬浮态的方法请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -3971,6 +4030,7 @@ const callback = (keyboardInfo: window.KeyboardInfo) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('keyboardDidHide', callback);
   windowClass.off('keyboardDidHide', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -3994,7 +4054,7 @@ on(type: 'touchOutside', callback: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                | 必填 | 说明                                                         |
 | -------- | ------------------- | ---- | ------------------------------------------------------------ |
-| type     | string              | 是   | 监听事件，固定为'touchOutside'，即本窗口范围外的点击事件。 |
+| type     | string              | 是   | 监听事件，固定为'touchOutside'，即本窗口范围外发生点击事件时的回调函数。 |
 | callback | Callback&lt;void&gt; | 是   | 回调函数。当点击事件发生在本窗口范围之外的回调。                               |
 
 **错误码：**
@@ -4009,6 +4069,7 @@ on(type: 'touchOutside', callback: Callback&lt;void&gt;): void
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('touchOutside', () => {
     console.info('touch outside');
   });
@@ -4049,6 +4110,7 @@ const callback = () => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('touchOutside', callback);
   windowClass.off('touchOutside', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -4072,7 +4134,7 @@ on(type: 'screenshot', callback: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                | 必填 | 说明                                                         |
 | -------- | ------------------- | ---- | ------------------------------------------------------------ |
-| type     | string              | 是   | 监听事件，固定为'screenshot'，即截屏事件，对控制中心截屏、hdc命令截屏、整屏截屏接口生效。 |
+| type     | string              | 是   | 监听事件，固定为'screenshot'，即截屏事件，对控制中心截屏、hdc命令截屏、[screenshot.capture()](js-apis-screenshot.md#screenshotcapture14)接口截屏生效。 |
 | callback | Callback&lt;void&gt; | 是   | 回调函数。发生截屏事件时的回调。                               |
 
 **错误码：**
@@ -4087,6 +4149,7 @@ on(type: 'screenshot', callback: Callback&lt;void&gt;): void
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('screenshot', () => {
     console.info('screenshot happened');
   });
@@ -4127,6 +4190,7 @@ let callback = () => {
   console.info('screenshot happened');
 };
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('screenshot', callback);
   windowClass.off('screenshot', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -4140,7 +4204,7 @@ try {
 
 on(type: 'screenshotAppEvent', callback: Callback&lt;ScreenshotEventType&gt;): void
 
-开启屏幕截屏事件类型的监听。
+开启截屏事件类型的监听。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -4148,7 +4212,7 @@ on(type: 'screenshotAppEvent', callback: Callback&lt;ScreenshotEventType&gt;): v
 
 | 参数名   | 类型                | 必填 | 说明                                                         |
 | -------- | ------------------- | ---- | ------------------------------------------------------------ |
-| type     | string              | 是   | 监听事件，固定为'screenshotAppEvent'，即屏幕截屏的事件类型，对控制中心截屏、快捷键截屏以及滚动截屏生效。 |
+| type     | string              | 是   | 监听事件，固定为'screenshotAppEvent'，即截屏的事件类型，对控制中心截屏、快捷键截屏以及滚动截屏生效。 |
 | callback | Callback&lt;[ScreenshotEventType](arkts-apis-window-e.md#screenshoteventtype20)&gt; | 是   | 回调函数。返回触发的截屏事件类型。                 |
 
 **错误码：**
@@ -4157,7 +4221,7 @@ on(type: 'screenshotAppEvent', callback: Callback&lt;ScreenshotEventType&gt;): v
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -4167,6 +4231,7 @@ const callback = (eventType: window.ScreenshotEventType) => {
   console.info(`screenshotAppEvent happened. Event: ${eventType}`);
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('screenshotAppEvent', callback);
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -4177,7 +4242,7 @@ try {
 
 off(type: 'screenshotAppEvent', callback?: Callback&lt;ScreenshotEventType&gt;): void
 
-关闭屏幕截屏事件类型的监听。
+关闭截屏事件类型的监听。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -4185,8 +4250,8 @@ off(type: 'screenshotAppEvent', callback?: Callback&lt;ScreenshotEventType&gt;):
 
 | 参数名   | 类型                | 必填 | 说明                                                         |
 | -------- | ------------------- | ---- | ------------------------------------------------------------ |
-| type     | string              | 是   | 监听事件，固定为'screenshotAppEvent'，即屏幕截屏的事件类型。 |
-| callback | Callback&lt;[ScreenshotEventType](arkts-apis-window-e.md#screenshoteventtype20)&gt; | 否   | 回调函数。返回触发的截屏事件类型。若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口截图事件的监听。                 |
+| type     | string              | 是   | 监听事件，固定为'screenshotAppEvent'，即截屏的事件类型。 |
+| callback | Callback&lt;[ScreenshotEventType](arkts-apis-window-e.md#screenshoteventtype20)&gt; | 否   | 回调函数。返回触发的截屏事件类型。若传入参数，则关闭该监听。若未传入参数，则关闭所有截屏事件的监听。                 |
 
 **错误码：**
 
@@ -4194,7 +4259,7 @@ off(type: 'screenshotAppEvent', callback?: Callback&lt;ScreenshotEventType&gt;):
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -4204,6 +4269,7 @@ const callback = (eventType: window.ScreenshotEventType) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.on('screenshotAppEvent', callback);
   // 关闭指定callback的监听
@@ -4219,7 +4285,7 @@ try {
 
 on(type: 'dialogTargetTouch', callback: Callback&lt;void&gt;): void
 
-开启模态窗口所遮盖窗口的点击或触摸事件的监听，除模态窗口以外其他窗口调用此接口不生效。
+开启TYPE_DIALOG类型的窗口、模态子窗口（即使用[setSubWindowModal](#setsubwindowmodal12)启用了子窗口的模态属性）或模态主窗口（即使用[setWindowModal](arkts-apis-window-WindowStage.md#setwindowmodal14)启用了主窗口的模态属性）所遮罩区域的点击或触摸事件的监听，除此以外其他窗口调用此接口不生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4229,8 +4295,8 @@ on(type: 'dialogTargetTouch', callback: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                          |
 | -------- | ------------------- | ---- | ------------------------------------------------------------ |
-| type     | string              | 是   | 监听事件，固定为'dialogTargetTouch'，即模态窗口所遮盖窗口的点击或触摸事件。 |
-| callback | Callback&lt;void&gt;| 是   | 回调函数。当点击或触摸事件发生在模态窗口所遮盖窗口的回调。 |
+| type     | string              | 是   | 监听事件，固定为'dialogTargetTouch'，即TYPE_DIALOG类型的窗口、模态子窗口或模态主窗口所遮罩区域的点击或触摸事件。 |
+| callback | Callback&lt;void&gt;| 是   | 回调函数。当点击或触摸事件发生在TYPE_DIALOG类型的窗口、模态子窗口或模态主窗口所遮罩区域的回调。 |
 
 **错误码：**
 
@@ -4244,6 +4310,7 @@ on(type: 'dialogTargetTouch', callback: Callback&lt;void&gt;): void
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('dialogTargetTouch', () => {
     console.info('touch dialog target');
   });
@@ -4256,7 +4323,7 @@ try {
 
 off(type: 'dialogTargetTouch', callback?: Callback&lt;void&gt;): void
 
-关闭模态窗口目标窗口的点击事件的监听。
+关闭TYPE_DIALOG类型的窗口、模态子窗口（即使用[setSubWindowModal](#setsubwindowmodal12)启用了子窗口的模态属性）或模态主窗口（即使用[setWindowModal](arkts-apis-window-WindowStage.md#setwindowmodal14)启用了主窗口的模态属性）所遮罩区域的点击或触摸事件的监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4266,8 +4333,8 @@ off(type: 'dialogTargetTouch', callback?: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                    | 必填 | 说明                                                          |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                 | 是   | 监听事件，固定为'dialogTargetTouch'，即模态窗口目标窗口的点击事件。 |
-| callback | Callback&lt;void&gt;      | 否   | 回调函数。当点击事件发生在模态窗口目标窗口的回调。若传入参数，则关闭该监听。若未传入参数，则关闭所有模态窗口目标窗口的点击事件的监听。 |
+| type     | string                 | 是   | 监听事件，固定为'dialogTargetTouch'，即TYPE_DIALOG类型的窗口、模态子窗口或模态主窗口所遮罩区域的点击或触摸事件。 |
+| callback | Callback&lt;void&gt;      | 否   | 回调函数。当点击或触摸事件发生在TYPE_DIALOG类型的窗口、模态子窗口或模态主窗口所遮罩区域的回调。若传入参数，则关闭该监听。若未传入参数，则关闭该窗口所有遮罩区域的点击或触摸事件的监听。 |
 
 **错误码：**
 
@@ -4284,6 +4351,7 @@ const callback = () => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('dialogTargetTouch', callback);
   windowClass.off('dialogTargetTouch', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -4297,7 +4365,7 @@ try {
 
 on(type: 'windowEvent', callback: Callback&lt;WindowEventType&gt;): void
 
-开启窗口生命周期变化的监听。
+开启窗口生命周期状态变化的监听。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -4307,7 +4375,7 @@ on(type: 'windowEvent', callback: Callback&lt;WindowEventType&gt;): void
 
 | 参数名   | 类型                                                       | 必填 | 说明                                                         |
 | -------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                     | 是   | 监听事件，固定为'windowEvent'，即窗口生命周期变化事件。 |
+| type     | string                                                     | 是   | 监听事件，固定为'windowEvent'，即窗口生命周期状态变化事件。 |
 | callback | Callback&lt;[WindowEventType](arkts-apis-window-e.md#windoweventtype10)&gt; | 是   | 回调函数。返回当前的窗口生命周期状态。                 |
 
 **错误码：**
@@ -4322,6 +4390,7 @@ on(type: 'windowEvent', callback: Callback&lt;WindowEventType&gt;): void
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('windowEvent', (data) => {
     console.info('Window event happened. Event:' + JSON.stringify(data));
   });
@@ -4334,7 +4403,7 @@ try {
 
 off(type: 'windowEvent', callback?: Callback&lt;WindowEventType&gt;): void
 
-关闭窗口生命周期变化的监听。
+关闭窗口生命周期状态变化的监听。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -4343,9 +4412,9 @@ off(type: 'windowEvent', callback?: Callback&lt;WindowEventType&gt;): void
 **参数：**
 
 | 参数名   | 类型                                                       | 必填 | 说明                                                         |
-| -------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                     | 是   | 监听事件，固定为'windowEvent'，即窗口生命周期变化事件。 |
-| callback | Callback&lt;[WindowEventType](arkts-apis-window-e.md#windoweventtype10)&gt; | 否   | 回调函数。返回当前的窗口生命周期状态。若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口生命周期变化的监听。                 |
+| -------- | ---------------------------------------------------------- | ---- |------------------------------------------------------------|
+| type     | string                                                     | 是   | 监听事件，固定为'windowEvent'，即窗口生命周期状态变化事件。                       |
+| callback | Callback&lt;[WindowEventType](arkts-apis-window-e.md#windoweventtype10)&gt; | 否   | 回调函数。返回当前的窗口生命周期状态。若传入参数，则关闭该监听。若未传入参数，则关闭窗口所有生命周期状态变化的监听。 |
 
 **错误码：**
 
@@ -4362,6 +4431,7 @@ const callback = (windowEventType: window.WindowEventType) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.on('windowEvent', callback);
   // 关闭指定callback的监听
@@ -4377,7 +4447,7 @@ try {
 
 on(type: 'displayIdChange', callback: Callback&lt;number&gt;): void
 
-开启本窗口所处屏幕变化事件的监听。比如，当前窗口移动到其他屏幕时，可以从此接口监听到这个行为。
+开启本窗口所处屏幕变化事件的监听。比如，当前窗口移动到其他屏幕时，可以从此接口监听到这个行为（非实时通知，如跨屏拖拽时需要抬手后才会触发回调通知）。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -4398,12 +4468,13 @@ on(type: 'displayIdChange', callback: Callback&lt;number&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('displayIdChange', (data) => {
     console.info('Window displayId changed, displayId=' + JSON.stringify(data));
   });
@@ -4436,7 +4507,7 @@ off(type: 'displayIdChange', callback?: Callback&lt;number&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 
 **示例：**
 
@@ -4445,6 +4516,7 @@ const callback = (displayId: number) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.on('displayIdChange', callback);
   // 关闭指定callback的监听
@@ -4485,13 +4557,14 @@ on(type: 'windowVisibilityChange', callback: Callback&lt;boolean&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('windowVisibilityChange', (boolean) => {
     console.info('Window visibility changed, isVisible=' + boolean);
   });
@@ -4515,7 +4588,7 @@ off(type: 'windowVisibilityChange', callback?: Callback&lt;boolean&gt;): void
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- |----------------------------| ---- |--------------------------------------|
 | type     | string                     | 是   | 监听事件，固定为'windowVisibilityChange'，即本窗口可见状态变化的事件。 |
-| callback | Callback&lt;boolean&gt;    | 否   | 回调函数。当本窗口可见状态发生变化时的回调。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有本窗口可见状态变化事件的回调。            |
+| callback | Callback&lt;boolean&gt;    | 否   | 回调函数。当本窗口可见状态发生变化时的回调。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有本窗口可见状态变化事件的监听。            |
 
 **错误码：**
 
@@ -4525,7 +4598,7 @@ off(type: 'windowVisibilityChange', callback?: Callback&lt;boolean&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -4535,6 +4608,7 @@ const callback = (bool: boolean) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.on('windowVisibilityChange', callback);
   // 关闭指定callback的监听
@@ -4550,10 +4624,10 @@ try {
 
 on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): void
 
-开启窗口可见性状态变化事件的监听。本接口返回的可见性与肉眼所见的可见性可能存在区别，如以下场景：
-- 非主窗口的阴影区域（可分别通过[setWindowShadowEnabled](arkts-apis-window-Window.md#setwindowshadowenabled20)和[setWindowShadowRadius](arkts-apis-window-Window.md#setwindowshadowradius17)设置是否显示阴影以及对应的阴影半径）被挡住也算遮挡，此时肉眼所见虽是完全可见，但实际返回的是部分可见。
+开启窗口可见性状态变化事件的监听，相较于[on('windowVisibilityChange')](#onwindowvisibilitychange11)接口，此接口回调函数参数可以判断部分可见状态。本接口返回的可见性与肉眼所见的可见性可能存在区别，如以下场景：
+- 非主窗口的阴影区域（可分别通过[setWindowShadowEnabled](#setwindowshadowenabled20)和[setWindowShadowRadius](#setwindowshadowradius17)设置是否显示阴影以及对应的阴影半径）被挡住也算遮挡，此时肉眼所见虽是完全可见，但实际返回的是部分可见。
 - 上层窗口带有透明效果时（包括完全不透明之外的所有透明程度）不会遮挡下层窗口，此时下层窗口是可见的。
-- 窗口通过[setWindowMask](arkts-apis-window-Window.md#setwindowmask12)接口设置异形窗口蒙层时，不会影响窗口可见状态计算，窗口仍可见，即使掩码全部设置为0，窗口依然按照其原本矩形大小参与可见状态计算。
+- 窗口通过[setWindowMask](#setwindowmask12)接口设置异形窗口蒙层时，不会影响窗口可见状态计算，窗口仍可见，即使掩码全部设置为0，窗口依然按照其原本矩形大小参与可见状态计算。
 - 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动智慧多窗悬浮窗时返回的下层窗口依然是可见的。
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -4563,7 +4637,7 @@ on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): voi
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
 | type     | string                         | 是   | 监听事件，固定为'occlusionStateChanged'，即窗口可见性变化事件。 |
-| callback | Callback&lt;[OcclusionState](arkts-apis-window-e.md#occlusionstate22)&gt; | 是   | 窗口可见性变化时的回调函数。详情见[可见性状态](arkts-apis-window-e.md#occlusionstate22)。|
+| callback | Callback&lt;[OcclusionState](arkts-apis-window-e.md#occlusionstate22)&gt; | 是   | 窗口可见性变化时的回调函数。|
 
 **错误码：**
 
@@ -4572,7 +4646,7 @@ on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): voi
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -4582,6 +4656,7 @@ try {
   let callback: Callback<window.OcclusionState> = (data: window.OcclusionState) => {
     console.info(`Window occlusion state changed: ${data}`);
   };
+  // windowClass为已创建/获取的Window实例
   windowClass.on('occlusionStateChanged', callback);
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -4610,7 +4685,7 @@ off(type: 'occlusionStateChanged', callback?: Callback&lt;OcclusionState&gt;): v
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -4620,6 +4695,7 @@ try {
   let callback: Callback<window.OcclusionState> = (data: window.OcclusionState) => {
     console.info(`Window occlusion state changed: ${data}`);
   };
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.on('occlusionStateChanged', callback);
   // 关闭指定callback的监听
@@ -4655,7 +4731,7 @@ on(type: 'frameMetricsMeasured', callback: Callback&lt;FrameMetrics&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -4664,6 +4740,7 @@ try {
   let callback: Callback<window.FrameMetrics> = (data: window.FrameMetrics) => {
     console.info(`Window frame metrics changed: ${JSON.stringify(data)}`);
   };
+  // windowClass为已创建/获取的Window实例
   windowClass.on('frameMetricsMeasured', callback);
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -4692,7 +4769,7 @@ off(type: 'frameMetricsMeasured', callback?: Callback&lt;FrameMetrics&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 
 **示例：**
 
@@ -4701,6 +4778,7 @@ try {
   let callback: Callback<window.FrameMetrics> = (data: window.FrameMetrics) => {
     console.info(`Window frame metrics changed: ${JSON.stringify(data)}`);
   };
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.on('frameMetricsMeasured', callback);
   // 关闭指定callback的监听
@@ -4740,7 +4818,7 @@ on(type: 'systemDensityChange', callback: Callback&lt;number&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -4752,6 +4830,7 @@ const callback = (density: number) => {
   let px = vp * density;
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('systemDensityChange', callback);
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -4784,7 +4863,7 @@ off(type: 'systemDensityChange', callback?: Callback&lt;number&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 
 **示例：**
 
@@ -4793,6 +4872,7 @@ const callback = (density: number) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.on('systemDensityChange', callback);
   // 关闭指定callback的监听
@@ -4819,7 +4899,7 @@ on(type: 'noInteractionDetected', timeout: number, callback: Callback&lt;void&gt
 | 参数名   | 类型                       | 必填 | 说明                                                         |
 | -------- | --------------------------| ---- | ------------------------------------------------------------ |
 | type     | string                    | 是   | 监听事件，固定为'noInteractionDetected'，即本窗口在指定超时时间内无交互的事件。 |
-| timeout     | number                    | 是   | 指定本窗口在多长时间内无交互即回调，单位为秒(s)。该参数仅支持整数输入，负数和小数为非法参数。 |
+| timeout     | number                    | 是   | 指定本窗口在多长时间内无交互即回调，单位为秒（s）。该参数仅支持整数输入，负数和小数为非法参数。 |
 | callback | Callback&lt;void&gt;      | 是   | 回调函数。当本窗口在指定超时时间内无交互事件时的回调。  |
 
 **错误码：**
@@ -4830,13 +4910,14 @@ on(type: 'noInteractionDetected', timeout: number, callback: Callback&lt;void&gt
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('noInteractionDetected', 60, () => {
     console.info('no interaction in 60s');
   });
@@ -4870,7 +4951,7 @@ off(type: 'noInteractionDetected', callback?: Callback&lt;void&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -4880,6 +4961,7 @@ const callback = () => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('noInteractionDetected', 60, callback);
   windowClass.off('noInteractionDetected', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -4899,7 +4981,7 @@ on(type:  'windowStatusChange', callback: Callback&lt;WindowStatusType&gt;): voi
 
 > **说明：**
 >
-> 在[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置小于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::FULL_SCREEN。应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置大于等于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::MAXIMIZE。
+> 在[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置小于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有Dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::FULL_SCREEN。应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置大于等于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有Dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::MAXIMIZE。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4925,6 +5007,7 @@ on(type:  'windowStatusChange', callback: Callback&lt;WindowStatusType&gt;): voi
 
 ```ts
 try {
+    // windowClass为已创建/获取的Window实例
     windowClass.on('windowStatusChange', (WindowStatusType) => {
         console.info('Succeeded in enabling the listener for window status changes. Data: ' + JSON.stringify(WindowStatusType));
     });
@@ -4966,6 +5049,7 @@ const callback = (windowStatusType: window.WindowStatusType) => {
     // ...
 }
 try {
+    // windowClass为已创建/获取的Window实例
     windowClass.on('windowStatusChange', callback);
     windowClass.off('windowStatusChange', callback);
     // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -4997,12 +5081,13 @@ on(type: 'windowStatusDidChange', callback: Callback&lt;WindowStatusType&gt;): v
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
 ```ts
 try {
+    // windowClass为已创建/获取的Window实例
     windowClass.on('windowStatusDidChange', (WindowStatusType) => {
         console.info(`Succeeded in enabling the listener for window status changes. Data: ${JSON.stringify(WindowStatusType)}`);
     });
@@ -5033,7 +5118,7 @@ off(type: 'windowStatusDidChange', callback?: Callback&lt;WindowStatusType&gt;):
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 
 **示例：**
 
@@ -5042,6 +5127,7 @@ const callback = (windowStatusType: window.WindowStatusType) => {
     // ...
 }
 try {
+    // windowClass为已创建/获取的Window实例
     windowClass.on('windowStatusDidChange', callback);
     windowClass.off('windowStatusDidChange', callback);
     // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -5081,7 +5167,7 @@ setWindowGrayScale(grayScale: number): Promise&lt;void&gt;
 | ------- | --------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -5089,6 +5175,7 @@ setWindowGrayScale(grayScale: number): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass?.setUIContent('pages/Index', (error: BusinessError) => {
   if (error.code) {
     console.error(`Failed to set the content. Cause code: ${error.code}`);
@@ -5097,7 +5184,7 @@ windowClass?.setUIContent('pages/Index', (error: BusinessError) => {
   console.info('Succeeded in setting the content.');
   let grayScale: number = 0.5;
   try {
-    if (canIUse("SystemCapability.Window.SessionManager")) {
+    if (canIUse('SystemCapability.Window.SessionManager')) {
       let promise = windowClass?.setWindowGrayScale(grayScale);
       promise?.then(() => {
         console.info('Succeeded in setting the grayScale.');
@@ -5136,11 +5223,12 @@ on(type: 'windowTitleButtonRectChange', callback: Callback&lt;TitleButtonRect&gt
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
 ```ts
+// windowClass为已创建/获取的Window实例
 windowClass.setUIContent('pages/WindowPage').then(() => {
   try {
     windowClass?.on('windowTitleButtonRectChange', (titleButtonRect) => {
@@ -5177,11 +5265,12 @@ off(type: 'windowTitleButtonRectChange', callback?: Callback&lt;TitleButtonRect&
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created. |
 
 **示例：**
 
 ```ts
+// windowClass为已创建/获取的Window实例
 windowClass.setUIContent('pages/WindowPage').then(() => {
     const callback = (titleButtonRect: window.TitleButtonRect) => {
         // ...
@@ -5224,13 +5313,14 @@ on(type:  'windowRectChange', callback: Callback&lt;RectChangeOptions&gt;): void
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('windowRectChange', (data: window.RectChangeOptions) => {
       console.info(`Succeeded in enabling the listener for window rect changes. Data: ${JSON.stringify(data)}`);
   });
@@ -5264,7 +5354,7 @@ off(type: 'windowRectChange', callback?: Callback&lt;RectChangeOptions&gt;): voi
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -5275,6 +5365,7 @@ const callback = (rectChangeOptions: window.RectChangeOptions) => {
 }
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('windowRectChange', callback);
   windowClass.off('windowRectChange', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -5297,7 +5388,7 @@ on(type: 'rectChangeInGlobalDisplay', callback: Callback&lt;RectChangeOptions&gt
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
 | type     | string                         | 是   | 监听事件，固定为'rectChangeInGlobalDisplay'，即全局坐标系下窗口矩形变化事件。 |
-| callback | Callback&lt;[RectChangeOptions](arkts-apis-window-i.md#rectchangeoptions12)&gt; | 是   | 回调函数。返回当前窗口矩形变化值及变化原因。 |
+| callback | Callback&lt;[RectChangeOptions](arkts-apis-window-i.md#rectchangeoptions12)&gt; | 是   | 回调函数。返回当前窗口矩形变化后的值及变化原因。 |
 
 **错误码：**
 
@@ -5306,7 +5397,7 @@ on(type: 'rectChangeInGlobalDisplay', callback: Callback&lt;RectChangeOptions&gt
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -5317,6 +5408,7 @@ const callback = (rectChangeOptions: window.RectChangeOptions) => {
 }
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('rectChangeInGlobalDisplay', callback);
 } catch (exception) {
   console.error(`Failed to enable the listener for window rect changes in global display. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -5345,7 +5437,7 @@ off(type: 'rectChangeInGlobalDisplay', callback?: Callback&lt;RectChangeOptions&
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -5356,6 +5448,7 @@ const callback = (rectChangeOptions: window.RectChangeOptions) => {
 }
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('rectChangeInGlobalDisplay', callback);
   windowClass.off('rectChangeInGlobalDisplay', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -5381,12 +5474,15 @@ on(type:  'subWindowClose', callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**设备行为差异：**
+该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不报错不生效。
+
 **参数：**
 
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
 | type     | string                         | 是   | 监听事件，固定为'subWindowClose'，即子窗口关闭事件。 |
-| callback | Callback&lt;void&gt; | 是   | 回调函数。当点击子窗口右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑的返回值决定当前子窗是否继续关闭，如果返回boolean类型的true表示不关闭子窗，返回false或者其他非boolean类型表示关闭子窗。   |
+| callback | Callback&lt;void&gt; | 是   | 回调函数。点击子窗口右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑的返回值决定当前子窗是否继续关闭，如果返回boolean类型的true表示不关闭子窗，返回false或者其他非boolean类型表示关闭子窗。   |
 
 **错误码：**
 
@@ -5396,8 +5492,8 @@ on(type:  'subWindowClose', callback: Callback&lt;void&gt;): void
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported. |
 
 **示例：**
 
@@ -5407,6 +5503,7 @@ const callback = () => {
   return true;
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('subWindowClose', callback);
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -5428,7 +5525,7 @@ off(type: 'subWindowClose', callback?: Callback&lt;void&gt;): void
 | 参数名   | 类型                           | 必填 | 说明                                                         |
 | -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                         | 是   | 监听事件，固定为'subWindowClose'，即子窗口关闭事件。     |
-| callback | Callback&lt;void&gt; | 否   | 回调函数。当点击子窗口右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑的返回值决定当前子窗是否继续关闭，如果返回boolean类型的true表示不关闭子窗，返回false或者其他非boolean类型表示关闭子窗。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有子窗口关闭的监听。 |
+| callback | Callback&lt;void&gt; | 否   | 回调函数，用于指定要注销的监听。如果传入参数，则关闭该监听。如果未传入参数，则关闭子窗口所有关闭的监听。 |
 
 **错误码：**
 
@@ -5438,8 +5535,8 @@ off(type: 'subWindowClose', callback?: Callback&lt;void&gt;): void
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported. |
 
 **示例：**
 
@@ -5449,6 +5546,7 @@ const callback = () => {
   return true;
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('subWindowClose', callback);
   windowClass.off('subWindowClose', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -5481,7 +5579,7 @@ on(type: 'windowWillClose', callback: Callback&lt;void, Promise&lt;boolean&gt;&g
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
 | type     | string                         | 是   | 监听事件，固定为'windowWillClose'，即窗口关闭事件。 |
-| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 是   | 回调函数。当点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有Promise&lt;boolean&gt;类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。|
+| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 是   | 回调函数。点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有Promise&lt;boolean&gt;类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。|
 
 **错误码：**
 
@@ -5491,8 +5589,8 @@ on(type: 'windowWillClose', callback: Callback&lt;void, Promise&lt;boolean&gt;&g
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Not called from mainWindow or subWindow. |
 
 **示例：**
 
@@ -5544,7 +5642,7 @@ off(type: 'windowWillClose', callback?: Callback&lt;void, Promise&lt;boolean&gt;
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
 | type     | string                         | 是   | 监听事件，固定为'windowWillClose'，即窗口关闭事件。 |
-| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 否   | 回调函数。当点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有Promise&lt;boolean&gt;类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。|
+| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 否   | 回调函数，用于指定要注销的监听。如果传入参数，则关闭该监听。如果未传入参数，则关闭主窗口或子窗口所有关闭事件的监听。|
 
 **错误码：**
 
@@ -5554,8 +5652,8 @@ off(type: 'windowWillClose', callback?: Callback&lt;void, Promise&lt;boolean&gt;
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Not called from mainWindow or subWindow. |
 
 **示例：**
 
@@ -5614,13 +5712,14 @@ on(type: 'windowHighlightChange', callback: Callback&lt;boolean&gt;): void
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('windowHighlightChange', (data: boolean) => {
     console.info(`Window highlight Change: ${data}`);
   });
@@ -5654,7 +5753,7 @@ off(type: 'windowHighlightChange', callback?: Callback&lt;boolean&gt;): void
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -5664,12 +5763,101 @@ const callback = (data: boolean) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.on('windowHighlightChange', callback);
   // 关闭指定callback的监听
   windowClass.off('windowHighlightChange', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
   windowClass.off('windowHighlightChange');
+} catch (exception) {
+  console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## onWindowFocusStateChange
+
+onWindowFocusStateChange(callback: Callback&lt;WindowFocusState&gt;): void
+
+开启窗口焦点状态变化事件的监听。当窗口焦点状态发生变化时，会触发回调，返回窗口的焦点状态变化信息。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | 是 | 回调函数。返回窗口的焦点状态变化信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (data: window.WindowFocusState) => {
+  console.info(`Window focus state changed. isFocused: ${data.isFocused}, focusChangeReason: ${data.focusChangeReason}`);
+}
+try {
+  // 通过onWindowFocusStateChange接口开启监听
+  windowClass.onWindowFocusStateChange(callback);
+} catch (exception) {
+  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offWindowFocusStateChange
+
+offWindowFocusStateChange(callback?: Callback&lt;WindowFocusState&gt;): void
+
+关闭窗口焦点状态变化事件的监听。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | 否 | 回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭该窗口的所有监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (data: window.WindowFocusState) => {
+  // ...
+}
+try {
+  // 通过onWindowFocusStateChange接口开启监听
+  windowClass.onWindowFocusStateChange(callback);
+  // 关闭指定callback的监听
+  windowClass.offWindowFocusStateChange(callback);
+  // 如果通过onWindowFocusStateChange接口开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offWindowFocusStateChange();
 } catch (exception) {
   console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
 }
@@ -5702,7 +5890,7 @@ on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInf
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
 | type     | string                         | 是   | 监听事件，固定为'rotationChange'，即窗口旋转变化事件。 |
-| callback | RotationChangeCallback&lt;[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19), [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void&gt; | 是 | 回调函数。返回窗口旋转信息[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)，应用返回当前窗口变化结果[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)。   |
+| callback | [RotationChangeCallback](arkts-apis-window-t.md#rotationchangecallback19)&lt;[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19), [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void&gt; | 是 | 回调函数。返回窗口旋转信息[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)，应用返回当前窗口变化结果[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)。 |
 
 **错误码：**
 
@@ -5711,7 +5899,7 @@ on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInf
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -5820,7 +6008,7 @@ off(type: 'rotationChange', callback?: RotationChangeCallback&lt;RotationChangeI
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -5831,6 +6019,7 @@ const callback = (info: window.RotationChangeInfo): window.RotationChangeResult 
   return;
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.off('rotationChange', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听。
   windowClass.off('rotationChange');
@@ -5843,7 +6032,7 @@ try {
 
 on(eventType: 'uiExtensionSecureLimitChange', callback: Callback&lt;boolean&gt;): void
 
-开启窗口内uiExtension安全限制变化事件的监听, 建议在窗口创建后立即监听。
+开启窗口内uiExtension安全限制变化事件的监听，建议在窗口创建后立即监听。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -5862,14 +6051,15 @@ on(eventType: 'uiExtensionSecureLimitChange', callback: Callback&lt;boolean&gt;)
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801     | Capability not supported.Function on('uiExtensionSecureLimitChange') can not work correctly due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 801     | Capability not supported. Function on('uiExtensionSecureLimitChange') cannot work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('uiExtensionSecureLimitChange', (data: boolean) => {
     console.info(`Window secure limit Change: ${data}`);
   });
@@ -5882,7 +6072,7 @@ try {
 
 off(eventType: 'uiExtensionSecureLimitChange', callback?: Callback&lt;boolean&gt;): void
 
-关闭窗口内uiextension安全限制变化事件的监听。
+关闭窗口内uiExtension安全限制变化事件的监听。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -5901,8 +6091,8 @@ off(eventType: 'uiExtensionSecureLimitChange', callback?: Callback&lt;boolean&gt
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801     | Capability not supported.Function off('uiExtensionSecureLimitChange') can not work correctly due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 801     | Capability not supported. Function off('uiExtensionSecureLimitChange') cannot work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -5912,6 +6102,7 @@ const callback = (data: boolean) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.on('uiExtensionSecureLimitChange', callback);
   // 关闭指定callback的监听
@@ -5952,6 +6143,7 @@ isWindowSupportWideGamut(callback: AsyncCallback&lt;boolean&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.isWindowSupportWideGamut((err: BusinessError, data) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -5991,6 +6183,7 @@ isWindowSupportWideGamut(): Promise&lt;boolean&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.isWindowSupportWideGamut();
 promise.then((data) => {
   console.info(`Succeeded in checking whether the window support WideGamut. Data: ${data}`);
@@ -6014,7 +6207,7 @@ setWindowColorSpace(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;):
 | 参数名 | 类型 | 必填 | 说明 |
 | ---------- | ------------------------- | -- | ----------- |
 | colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | 是 | 色域模式。 |
-| callback   | AsyncCallback&lt;void&gt; | 是 | 回调函数。   |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置色域模式成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -6031,6 +6224,7 @@ setWindowColorSpace(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;):
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.setWindowColorSpace(window.ColorSpace.WIDE_GAMUT, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -6081,6 +6275,7 @@ setWindowColorSpace(colorSpace:ColorSpace): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setWindowColorSpace(window.ColorSpace.WIDE_GAMUT);
   promise.then(() => {
     console.info('Succeeded in setting window colorspace.');
@@ -6122,6 +6317,7 @@ getWindowColorSpace(): ColorSpace
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let colorSpace = windowClass.getWindowColorSpace();
   console.info(`Succeeded in getting the window color space. ColorSpace: ${colorSpace}`);
 } catch (exception) {
@@ -6165,7 +6361,8 @@ import { ColorMetrics } from '@kit.ArkUI';
 
 let storage: LocalStorage = new LocalStorage();
 storage.setOrCreate('storageSimpleProp', 121);
-windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
+// windowClass为已创建/获取的Window实例
+windowClass.loadContent('pages/page2', storage, (err: BusinessError) => {
   let errCode: number = err.code;
   if (errCode) {
     console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
@@ -6193,7 +6390,7 @@ setWindowShadowEnabled(enable: boolean): Promise&lt;void&gt;
 
 **设备行为差异：**
 - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
-- 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1和Tablet设备中可正常调用，在Tablet设备时仅在开启[自由多窗模式](../../windowmanager/window-terminology.md#free-multi-window-mode自由多窗模式)或[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)下生效，在其他设备中返回801错误码。
+- 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在PC/2in1和Tablet设备中可正常调用，在Tablet设备时仅在开启[自由多窗模式](../../windowmanager/window-terminology.md#free-windows自由多窗模式)或[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)下生效，在其他设备中返回801错误码。
 
 **需要权限：** ohos.permission.SET_WINDOW_TRANSPARENT
 
@@ -6217,9 +6414,9 @@ setWindowShadowEnabled(enable: boolean): Promise&lt;void&gt;
 | ------- | ------------------------------ |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                      |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例：**
 
@@ -6231,7 +6428,7 @@ import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    windowStage.loadContent("pages/page2", (err: BusinessError) => {
+    windowStage.loadContent('pages/page2', (err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {
         console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
@@ -6264,22 +6461,22 @@ export default class EntryAbility extends UIAbility {
 
 setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): void
 
-主窗口设置窗口亮度。当窗口处于前台且获焦时，窗口亮度生效。使用callback异步回调。
+设置主窗口亮度。当窗口处于前台且获焦时，窗口亮度生效。使用callback异步回调。
 
-窗口亮度生效时只会影响当前设备屏幕亮度，无法修改虚拟屏（如投屏所在的屏幕）的屏幕亮度。
+设置主窗口亮度只会影响当前设备内置屏的屏幕亮度，无法修改外接屏、[虚拟屏](../../displaymanager/display-terminology.md#虚拟屏)（如投屏所在的屏幕）的屏幕亮度（内置屏和外接屏具体请见[实体屏](../../displaymanager/display-terminology.md#实体屏)）。
 
-当接口入参为-1时，窗口亮度恢复为系统屏幕亮度（可以通过控制中心或快捷键调整）。
-
-当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。不建议连续调用或窗口退至后台时调用此接口，否则可能产生时序问题。
+不建议连续调用或窗口退至后台时调用此接口，否则可能产生时序问题。
 
 **设备行为差异：**
 - 针对TV设备：当前接口不生效也不报错。
 - 针对非2in1设备（不包含TV设备）：
+  - 当接口入参为-1时，窗口亮度恢复为系统屏幕亮度（可以通过控制中心或快捷键调整）。
+  - 当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。
   - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，当前窗口的窗口亮度生效时，控制中心调整系统屏幕亮度不生效。
   - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，当前窗口的窗口亮度生效时，控制中心可以调整系统屏幕亮度，同时会将当前窗口恢复为系统屏幕亮度。
 - 针对2in1设备：
   - 在OpenHarmony 5.0.2之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
-  - 从OpenHarmony 5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
+  - 从OpenHarmony 5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度，但不支持通过本接口设置为-1来恢复系统屏幕亮度，传入-1时不生效也不报错，并且已设置的系统屏幕亮度在当前窗口退后台后也依然生效，不会恢复成设置前的屏幕亮度。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -6289,7 +6486,7 @@ setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): vo
 
 | 参数名 | 类型 | 必填 | 说明                                        |
 | ---------- | ------------------------- | -- |-------------------------------------------|
-| brightness | number                    | 是 | 屏幕亮度值。该参数为浮点数，取值范围为[0.0, 1.0]或-1.0。1.0表示最亮，-1.0表示恢复成设置窗口亮度前的系统控制中心亮度。 |
+| brightness | number                    | 是 | 屏幕亮度值。该参数为浮点数，取值范围为[0.0, 1.0]或-1.0。0.0表示最暗，1.0表示最亮，特殊值-1.0表示恢复成设置窗口亮度前的系统控制中心亮度。 |
 | callback   | AsyncCallback&lt;void&gt; | 是 | 回调函数。                                     |
 
 **错误码：**
@@ -6350,22 +6547,22 @@ export default class EntryAbility extends UIAbility {
 
 setWindowBrightness(brightness: number): Promise&lt;void&gt;
 
-主窗口设置窗口亮度。当窗口处于前台且获焦时，窗口亮度生效。使用Promise异步回调。
+设置主窗口亮度。当窗口处于前台且获焦时，窗口亮度生效。使用Promise异步回调。
 
-窗口亮度生效时只会影响当前设备屏幕亮度，无法修改虚拟屏（如投屏所在的屏幕）的屏幕亮度。
+设置主窗口亮度只会影响当前设备内置屏的屏幕亮度，无法修改外接屏、[虚拟屏](../../displaymanager/display-terminology.md#虚拟屏)（如投屏所在的屏幕）的屏幕亮度（内置屏和外接屏具体请见[实体屏](../../displaymanager/display-terminology.md#实体屏)）。
 
-当接口入参为-1时，窗口亮度恢复为系统屏幕亮度（可以通过控制中心或快捷键调整）。
-
-当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。不建议连续调用或窗口退至后台时调用此接口，否则可能产生时序问题。
+不建议连续调用或窗口退至后台时调用此接口，否则可能产生时序问题。
 
 **设备行为差异：**
 - 针对TV设备：当前接口不生效也不报错。
 - 针对非2in1设备（不包含TV设备）：
+  - 当接口入参为-1时，窗口亮度恢复为系统屏幕亮度（可以通过控制中心或快捷键调整）。
+  - 当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。
   - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，当前窗口的窗口亮度生效时，控制中心调整系统屏幕亮度不生效。
   - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，当前窗口的窗口亮度生效时，控制中心可以调整系统屏幕亮度，同时会将当前窗口恢复为系统屏幕亮度。
 - 针对2in1设备：
   - 在OpenHarmony 5.0.2之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
-  - 从OpenHarmony 5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
+  - 从OpenHarmony 5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度，但不支持通过本接口设置为-1来恢复系统屏幕亮度，传入-1时不生效也不报错，并且已设置的系统屏幕亮度在当前窗口退后台后也依然生效，不会恢复成设置前的屏幕亮度。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -6375,7 +6572,7 @@ setWindowBrightness(brightness: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明                                     |
 | ---------- | ------ | -- |----------------------------------------|
-| brightness | number | 是 | 屏幕亮度值。该参数为浮点数，取值范围为[0.0, 1.0]或-1.0。1.0表示最亮，-1.0表示恢复成设置窗口亮度前的系统控制中心亮度。 |
+| brightness | number | 是 | 屏幕亮度值。该参数为浮点数，取值范围为[0.0, 1.0]或-1.0。0.0表示最暗，1.0表示最亮，特殊值-1.0表示恢复成设置窗口亮度前的系统控制中心亮度。 |
 
 **返回值：**
 
@@ -6452,7 +6649,7 @@ setWindowFocusable(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;): v
 | 参数名 | 类型 | 必填 | 说明 |
 | ----------- | ------------------------- | -- | ------------------------------------------------------- |
 | isFocusable | boolean                   | 是 | 窗口是否可获焦。true表示支持；false表示不支持。设置为false时，该窗口不支持绑定输入法和接收键盘事件，如需处理输入逻辑，建议参考[不可获焦窗口中输入框与输入法交互指南](../../inputmethod/use-inputmethod-in-not-focusable-window.md)。|
-| callback    | AsyncCallback&lt;void&gt; | 是 | 回调函数。                                               |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置窗口可获焦属性成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -6461,7 +6658,7 @@ setWindowFocusable(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;): v
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. The screen of the window is not allowed to be focused. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -6471,6 +6668,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isFocusable: boolean = true;
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.setWindowFocusable(isFocusable, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -6515,7 +6713,7 @@ setWindowFocusable(isFocusable: boolean): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. The screen of the window is not allowed to be focused. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -6525,6 +6723,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isFocusable: boolean = true;
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setWindowFocusable(isFocusable);
   promise.then(() => {
     console.info('Succeeded in setting the window to be focusable.');
@@ -6553,7 +6752,7 @@ setWindowKeepScreenOn(isKeepScreenOn: boolean, callback: AsyncCallback&lt;void&g
 | 参数名 | 类型 | 必填 | 说明 |
 | -------------- | ------------------------- | -- | ---------------------------------------------------- |
 | isKeepScreenOn | boolean                   | 是 | 设置屏幕是否为常亮状态。true表示常亮；false表示不常亮。  |
-| callback       | AsyncCallback&lt;void&gt; | 是 | 回调函数。                                            |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置屏幕常亮/不常亮成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -6562,7 +6761,7 @@ setWindowKeepScreenOn(isKeepScreenOn: boolean, callback: AsyncCallback&lt;void&g
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -6572,6 +6771,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isKeepScreenOn: boolean = true;
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.setWindowKeepScreenOn(isKeepScreenOn, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -6616,7 +6816,7 @@ setWindowKeepScreenOn(isKeepScreenOn: boolean): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -6626,6 +6826,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isKeepScreenOn: boolean = true;
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setWindowKeepScreenOn(isKeepScreenOn);
   promise.then(() => {
     console.info('Succeeded in setting the screen to be always on.');
@@ -6660,7 +6861,7 @@ setWindowPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;
 | 参数名 | 类型 | 必填 | 说明 |
 | ------------- | ------------------------- | -- | ------------------------------------------------------ |
 | isPrivacyMode | boolean                   | 是 | 窗口是否为隐私模式。true表示为隐私模式，false表示为非隐私模式。  |
-| callback      | AsyncCallback&lt;void&gt; | 是 | 回调函数。                                              |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置隐私/非隐私模式成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -6678,6 +6879,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isPrivacyMode: boolean = true;
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.setWindowPrivacyMode(isPrivacyMode, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -6737,6 +6939,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isPrivacyMode: boolean = true;
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setWindowPrivacyMode(isPrivacyMode);
   promise.then(() => {
     console.info('Succeeded in setting the window to privacy mode.');
@@ -6784,6 +6987,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isTouchable = true;
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.setWindowTouchable(isTouchable, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -6838,6 +7042,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isTouchable: boolean = true;
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setWindowTouchable(isTouchable);
   promise.then(() => {
     console.info('Succeeded in setting the window to be touchable.');
@@ -6863,7 +7068,7 @@ snapshot(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 | 参数名      | 类型                      | 必填 | 说明                 |
 | ----------- | ------------------------- | ---- | -------------------- |
-| callback    | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 是   | 回调函数。  |
+| callback    | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 是   | 回调函数，返回当前窗口截图。  |
 
 **错误码：**
 
@@ -6879,6 +7084,7 @@ snapshot(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.snapshot((err: BusinessError, pixelMap: image.PixelMap) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -6920,6 +7126,7 @@ snapshot(): Promise&lt;image.PixelMap&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.snapshot();
 promise.then((pixelMap: image.PixelMap) => {
   console.info('Succeeded in snapshotting window. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
@@ -6962,6 +7169,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let pixelMap = windowClass.snapshotSync();
   console.info(`Succeeded in snapshotting window`);
   pixelMap.release(); // PixelMap使用完后及时释放内存
@@ -7001,6 +7209,7 @@ snapshotIgnorePrivacy(): Promise&lt;image.PixelMap&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.snapshotIgnorePrivacy();
 promise.then((pixelMap: image.PixelMap) => {
   console.info('Succeeded in snapshotting window. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
@@ -7047,7 +7256,7 @@ setAspectRatio(ratio: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: Invalid parameter range. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.              |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例：**
@@ -7114,7 +7323,7 @@ setAspectRatio(ratio: number, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: Invalid parameter range. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.              |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例：**
@@ -7175,8 +7384,8 @@ setContentAspectRatio(ratio: number, isPersistent?: boolean, needUpdateRect?: bo
 | 参数名 | 类型 | 必填 | 说明                                        |
 | --- | ------- | ---- |-------------------------------------------|
 | ratio | number | 是   | 窗口内容布局（不含边框和标题栏等装饰）的宽高比。该参数为浮点数，受窗口最大最小尺寸限制，比例值下限为最小宽度/最大高度，上限为最大宽度/最小高度。窗口最大最小尺寸由[WindowLimits](arkts-apis-window-i.md#windowlimits11)和系统限制的交集决定，系统限制优先级高于[WindowLimits](arkts-apis-window-i.md#windowlimits11)。ratio的有效范围会随[WindowLimits](arkts-apis-window-i.md#windowlimits11)变化而变化。如果先设置了[WindowLimits](arkts-apis-window-i.md#windowlimits11)，后设置的ratio与其冲突，会返回错误码；如果先设置了ratio，后设置的[WindowLimits](arkts-apis-window-i.md#windowlimits11)与其冲突，窗口的宽高比可能会不跟随设置的宽高比（ratio）。|
-| isPersistent | boolean | 否 | 是否持久化保存该比例参数。<br/>如为`true`，比例参数会持久化保存，销毁窗口、关闭应用或重启设备后，当再次切换到自由悬浮窗口模式时仍然生效。可通过[resetAspectRatio](#resetaspectratio10)清除持久化保存的比例参数。<br/>如为`false`，比例参数仅对当前窗口生效，窗口销毁后清除该数据。<br/>默认值为`true`。|
-| needUpdateRect | boolean | 否 | 是否立即根据当前比例更新窗口大小。<br/>如为`true`，立即根据当前比例更新窗口大小。<br/>如为`false`，窗口将在拖拽缩放时根据当前比例更新，也可以使用[resize](#resize9)或[resizeAsync](#resizeasync12)进行主动更新。<br/>默认值为`true`。|
+| isPersistent | boolean | 否 | 是否持久化保存该比例参数。<br>如为`true`，比例参数会持久化保存，销毁窗口、关闭应用或重启设备后，当再次切换到自由悬浮窗口模式时仍然生效。可通过[resetAspectRatio](#resetaspectratio10)清除持久化保存的比例参数。<br>如为`false`，比例参数仅对当前窗口生效，窗口销毁后清除该数据。<br>默认值为`true`。|
+| needUpdateRect | boolean | 否 | 是否立即根据当前比例更新窗口大小。<br>如为`true`，立即根据当前比例更新窗口大小。<br>如为`false`，窗口将在拖拽缩放时根据当前比例更新，也可以使用[resize](#resize9)或[resizeAsync](#resizeasync12)进行主动更新。<br>默认值为`true`。|
 
 **返回值：**
 
@@ -7191,7 +7400,7 @@ setContentAspectRatio(ratio: number, isPersistent?: boolean, needUpdateRect?: bo
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. |
@@ -7229,7 +7438,7 @@ resetAspectRatio(): Promise&lt;void&gt;
 
 取消设置窗口内容布局的比例，使用Promise异步回调。
 
-仅主窗可设置，调用后将清除持久化储存的比例信息。
+仅主窗可设置，调用后将清除持久化存储的比例信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7247,8 +7456,8 @@ resetAspectRatio(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 1300002 | This window state is abnormal.               |
-| 1300004 | Unauthorized operation.                      |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.              |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported.                   |
 
 **示例：**
 <!--code_no_check-->
@@ -7287,7 +7496,7 @@ resetAspectRatio(callback: AsyncCallback&lt;void&gt;): void
 
 取消设置窗口内容布局的比例，使用callback异步回调。
 
-仅主窗可设置，调用后将清除持久化储存的比例信息。
+仅主窗可设置，调用后将清除持久化存储的比例信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7305,8 +7514,8 @@ resetAspectRatio(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 1300002 | This window state is abnormal.               |
-| 1300004 | Unauthorized operation.                      |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.              |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported.                     |
 
 **示例：**
 <!--code_no_check-->
@@ -7347,11 +7556,17 @@ minimize(callback: AsyncCallback&lt;void&gt;): void
 
 此接口根据调用对象不同，实现不同的功能：
 
-- 当调用对象为主窗口时，实现最小化功能，可在Dock栏中还原，2in1 设备上可以使用[restore()](#restore14)进行还原。
+- 当调用对象为主窗口时，实现最小化功能，可在多任务中还原，在PC/2in1设备上可通过Dock栏或使用[restore()](#restore14)进行还原。
 
-- 当调用对象为子窗口或全局悬浮窗时，实现隐藏功能，不可在Dock栏中还原，可以使用[showWindow()](#showwindow9)进行还原。
+- 当调用对象为子窗口或全局悬浮窗时，实现隐藏功能，可以使用[showWindow()](#showwindow9)进行还原。
 
-该接口仅支持主窗口、子窗口或全局悬浮窗，其它窗口调用返回1300002错误码，使用callback异步回调。
+该接口仅支持主窗口、子窗口或全局悬浮窗，其他窗口调用返回1300002错误码，使用callback异步回调。
+
+> **说明：**
+>
+> - 当窗口已创建且未处于前台状态时，调用该接口不生效不报错。建议在调用该接口前确保窗口已创建并处于前台状态。
+>
+> - 主窗口最小化后进入后台状态时，不同设备上UIAbility生命周期的行为存在差异，请参考[不同设备UIAbility生命周期的差异化行为](../../windowmanager/window-lifecycle.md#不同设备uiability生命周期的差异化行为)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7361,7 +7576,7 @@ minimize(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当窗口最小化成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -7378,6 +7593,7 @@ minimize(callback: AsyncCallback&lt;void&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.minimize((err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -7394,11 +7610,17 @@ minimize(): Promise&lt;void&gt;
 
 此接口根据调用对象不同，实现不同的功能：
 
-- 当调用对象为主窗口时，实现最小化功能，可在Dock栏中还原，2in1 设备上可以使用[restore()](#restore14)进行还原。
+- 当调用对象为主窗口时，实现最小化功能，可在多任务中还原，在PC/2in1设备上可通过Dock栏或使用[restore()](#restore14)进行还原。
 
-- 当调用对象为子窗口或全局悬浮窗时，实现隐藏功能，不可在Dock栏中还原，可以使用[showWindow()](#showwindow9)进行还原。
+- 当调用对象为子窗口或全局悬浮窗时，实现隐藏功能，可以使用[showWindow()](#showwindow9)进行还原。
 
-该接口仅支持主窗口、子窗口或全局悬浮窗，其它窗口调用返回1300002错误码，使用Promise异步回调。
+该接口仅支持主窗口、子窗口或全局悬浮窗，其他窗口调用返回1300002错误码，使用Promise异步回调。
+
+> **说明：**
+>
+> - 当窗口已创建且未处于前台状态时，调用该接口不生效不报错。建议在调用该接口前确保窗口已创建并处于前台状态。
+>
+> - 主窗口最小化后进入后台状态时，不同设备上UIAbility生命周期的行为存在差异，请参考[不同设备UIAbility生命周期的差异化行为](../../windowmanager/window-lifecycle.md#不同设备uiability生命周期的差异化行为)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7425,6 +7647,7 @@ minimize(): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.minimize();
 promise.then(() => {
   console.info('Succeeded in minimizing the window.');
@@ -7466,6 +7689,7 @@ maximize(presentation?: MaximizePresentation): Promise&lt;void&gt;
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.    |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows and maximizable subwindows are supported.       |
+| 1300005 | This window stage is abnormal.<br>适用版本：12-19 |
 
 **示例：**
 
@@ -7515,7 +7739,7 @@ maximize(presentation?: MaximizePresentation, acrossDisplay?: boolean): Promise&
 | 参数名 | 类型  | 必填 | 说明 |
 | ----- | ---------------------------- | -- | --------------------------------- |
 | presentation | [MaximizePresentation](arkts-apis-window-e.md#maximizepresentation12) | 否 | 主窗口或子窗口最大化时的布局枚举。默认值window.MaximizePresentation.ENTER_IMMERSIVE，即默认最大化时进入全屏模式。 |
-| acrossDisplay | boolean | 否 | 控制悬停态下主窗口在最大化时的瀑布流模式行为。默认值为`undefined`。<br>仅主窗口可设置此参数，非主窗口调用时返回错误码`1300004`。<br>取值为`true`时：<br>- 悬停态下，窗口将直接进入瀑布流模式；<br>- 展开态下，窗口进入最大化，并在悬停态下保持瀑布流模式。<br>取值为`false`时：<br>- 悬停态下，窗口将退出瀑布流模式，进入单面最大化（即窗口最大化时只在上半屏或下半屏显示）；<br>- 展开态下，窗口进入最大化，并在悬停态下退出瀑布流模式。<br>取值为`undefined`时，不修改窗口瀑布流模式行为：<br>- 悬停态下，窗口进入单面最大化；<br>- 展开态下，窗口进入最大化，并在悬停态下默认保持瀑布流模式。<br>**设备行为差异：** 仅在具备折叠功能的2in1设备可正常调用；在其他设备上调用不生效。 |
+| acrossDisplay | boolean | 否 | 控制悬停态下主窗口在最大化时的瀑布流模式行为。默认值为`undefined`。<br>仅主窗口可设置此参数，非主窗口调用时返回错误码`1300004`。<br>取值为`true`时：<br>- 悬停态下，窗口将直接进入瀑布流模式；<br>- 展开态下，窗口进入最大化，并在悬停态下保持瀑布流模式。<br>取值为`false`时：<br>- 悬停态下，窗口将退出瀑布流模式，进入单面最大化（即窗口最大化时只在上半屏或下半屏显示）；<br>- 展开态下，窗口进入最大化，并在悬停态下退出瀑布流模式。<br>取值为`undefined`时，不修改窗口瀑布流模式行为：<br>- 悬停态下，窗口进入单面最大化；<br>- 展开态下，窗口进入最大化，并在悬停态下默认保持瀑布流模式。<br>**设备行为差异：** 仅在具备折叠功能的PC/2in1设备可正常调用；在其他设备上调用不生效。 |
 
 **返回值：**
 
@@ -7599,10 +7823,10 @@ maximizeWithOptions(maximizeOptions?: MaximizeOptions): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 801     | Capability not supported. Function maximize can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only main windows and maximizable subwindows are supported; 2. The acrossDisplayPresentation parameter only supports main windows; 3. The snapshotAnimationConfig parameter only supports main windows. |
+| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only main windows and maximizable subwindows are supported; 2. The acrossDisplay parameter only supports main windows; 3. The snapshotAnimationConfig parameter only supports main windows. |
 | 1300016 | Parameter error. Possible cause: Invalid parameter range. |
 
 **示例：**
@@ -7649,7 +7873,7 @@ setResizeByDragEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 
 > **说明：**
 >
-> - 针对主窗口，仅在[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下生效，非自由窗口状态下不生效不报错。
+> - 针对主窗口，仅在[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下生效，非自由窗口状态下不生效也不报错，切换到[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态后生效。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -7670,7 +7894,7 @@ setResizeByDragEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Invalid window type. Only main windows and child windows with decorations are supported.               |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -7678,6 +7902,7 @@ setResizeByDragEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 ```ts
 try {
   let enabled = false;
+  // windowClass为已创建/获取的Window实例
   windowClass.setResizeByDragEnabled(enabled, (err) => {
     if (err.code) {
       console.error(`Failed to set the function of disabling the resize by drag window. Cause code: ${err.code}, message: ${err.message}`);
@@ -7723,7 +7948,7 @@ setResizeByDragEnabled(enable: boolean): Promise&lt;void&gt;
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Invalid window type. Only main windows and child windows with decorations are supported.               |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -7733,6 +7958,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let enabled = false;
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setResizeByDragEnabled(enabled);
   promise.then(() => {
     console.info(`Succeeded in setting the function of disabling the resize by drag window.`);
@@ -7887,7 +8113,7 @@ restore(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在PC/2in1设备、其他设备的[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)下可正常调用，在其他设备和其他模式下返回801错误码。
+**设备行为差异：** 该接口在PC/2in1设备、Tablet设备的[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)下可正常调用，在其他设备和其他模式下返回801错误码。
 
 **返回值：**
 
@@ -7906,7 +8132,7 @@ restore(): Promise&lt;void&gt;
 | 1300003      | This window manager service works abnormally.                |
 | 1300004      | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported.                 |
 
-**示例**
+**示例：**
 
 ```ts
 // EntryAbility.ets
@@ -7976,7 +8202,7 @@ restoreMainWindow(wantParameters?: Record<string, Object>): Promise&lt;void&gt;
 <!--no-check-->
 ```ts
 // Float.ets
-import { window } from '@kit.ArkUI'
+import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { JSON } from '@kit.ArkTS';
 
@@ -8012,13 +8238,13 @@ struct Float {
         }).catch((err: BusinessError) => {
           console.error(`Failed to change the window size. Cause code: ${err.code}, message: ${err.message}`);
         });
-        windowClass.setUIContent("pages/FloatWindowInfo").then(() => {
+        windowClass.setUIContent('pages/FloatWindowInfo').then(() => {
           console.info('Succeeded in loading the content.');
         }).catch((err: BusinessError) => {
           console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
         });
         windowClass.showWindow().then(() => {
-          console.info("showWindow success");
+          console.info('showWindow success');
         }).catch((err: BusinessError) => {
           console.error(`showWindow err: ${JSON.stringify(err)}`);
         });
@@ -8037,7 +8263,7 @@ struct Float {
 <!--no-check-->
 ```ts
 // FloatWindowInfo.ets
-import { window } from '@kit.ArkUI'
+import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -8101,12 +8327,13 @@ getWindowLimits(): WindowLimits
 | 错误码ID | 错误信息                       |
 | :------- | :----------------------------- |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let windowLimits = windowClass.getWindowLimits();
 } catch (exception) {
   console.error(`Failed to obtain the window limits of window. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -8136,12 +8363,13 @@ getWindowLimitsVP(): WindowLimits
 | 错误码ID | 错误信息                       |
 | :------- | :----------------------------- |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let windowLimits: window.WindowLimits = windowClass.getWindowLimitsVP();
 } catch (exception) {
   console.error(`Failed to obtain the window limits. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -8188,7 +8416,7 @@ setWindowLimits(windowLimits: WindowLimits): Promise&lt;WindowLimits&gt;
 | :------- | :-------------------------------------------- |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal.                |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.               |
 | 1300003  | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation.                |
 
@@ -8203,6 +8431,7 @@ try {
     minWidth: 500,
     minHeight: 400
   };
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setWindowLimits(windowLimits);
     promise.then((data) => {
     console.info('Succeeded in changing the window limits. Cause:' + JSON.stringify(data));
@@ -8263,7 +8492,7 @@ setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;Win
 | :------- | :-------------------------------------------- |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal.                |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.               |
 | 1300003  | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation.                |
 
@@ -8278,6 +8507,7 @@ try {
     minWidth: 100,
     minHeight: 100
   };
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setWindowLimits(windowLimits, true);
   promise.then((data) => {
     console.info(`Succeeded in changing the window limits. Cause: ${JSON.stringify(data)}`);
@@ -8293,11 +8523,11 @@ try {
 
 setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 
-设置异形窗口的掩码，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
+设置异形窗口的掩码，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗口和全局悬浮窗可用。
 
 当异形窗口大小发生变化时，实际的显示内容为掩码大小和窗口大小的交集部分。
 
-异形窗口蒙层设置不会影响窗口可见状态(可通过[on('windowVisibilityChange')](arkts-apis-window-Window.md#onwindowvisibilitychange11)或[on('occlusionStateChanged')](arkts-apis-window-Window.md#onocclusionstatechanged22)监听）计算。即使掩码全部设置为0，窗口仍可见，窗口依然按照其原本矩形大小参与可见状态计算。
+异形窗口蒙层设置不会影响窗口可见状态（可通过[on('windowVisibilityChange')](#onwindowvisibilitychange11)或[on('occlusionStateChanged')](#onocclusionstatechanged22)监听）计算。即使掩码全部设置为0，窗口仍可见，窗口依然按照其原本矩形大小参与可见状态计算。
 
 该接口只在多个线程操作同一个窗口时可能返回错误码1300002。窗口被销毁场景下错误码返回401。
 
@@ -8315,7 +8545,7 @@ setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 
 | 类型                                         | 说明                                |
 | :------------------------------------------- | :---------------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -8334,6 +8564,7 @@ setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
+  // windowClass为已创建/获取的Window实例
   let maskWidth = windowClass.getWindowProperties().windowRect.width;
   let maskHeight = windowClass.getWindowProperties().windowRect.height;
   let windowMask = Array<Array<number>>(maskHeight).fill([]).map((_, row) => {
@@ -8358,11 +8589,11 @@ try {
 
 setWindowMaskWithAlpha(windowMask: Uint8Array, maskWidth: number, maskHeight: number): Promise&lt;void&gt;
 
-通过按像素顺序排列的Alpha数组设置异形窗口的掩码，像素顺序以窗口左上角为像素起点，同行内从左到右依次排列，从上至下逐行排列。使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
+通过按像素顺序排列的Alpha数组设置异形窗口的掩码，像素顺序以窗口左上角为像素起点，同行内从左到右依次排列，从上至下逐行排列。使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗口和全局悬浮窗可用。
 
 当异形窗口大小发生变化时，实际的显示内容为掩码大小和窗口大小的交集部分。
 
-异形窗口蒙层设置不会影响窗口可见状态（可通过[on('windowVisibilityChange')](arkts-apis-window-Window.md#onwindowvisibilitychange11)或[on('occlusionStateChanged')](arkts-apis-window-Window.md#onocclusionstatechanged22)监听）计算。即使掩码全部设置为0，窗口仍可见，窗口依然按照其原本矩形大小参与可见状态计算。
+异形窗口蒙层设置不会影响窗口可见状态（可通过[on('windowVisibilityChange')](#onwindowvisibilitychange11)或[on('occlusionStateChanged')](#onocclusionstatechanged22)监听）计算。即使掩码全部设置为0，窗口仍可见，窗口依然按照其原本矩形大小参与可见状态计算。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -8375,8 +8606,8 @@ setWindowMaskWithAlpha(windowMask: Uint8Array, maskWidth: number, maskHeight: nu
 | 参数名       | 类型                          | 必填 | 说明                           |
 | :----------- | :---------- | :--- | :----------------------------- |
 | windowMask   | Uint8Array  | 是   | 异形窗口的掩码，为按像素顺序排列的Alpha数组，该数组中每个元素代表对应像素的透明度，取值范围[0, 255]，0表示完全透明，255表示完全不透明，数组长度等于maskWidth乘以maskHeight。 |
-| maskWidth    | number      | 是   | 表示异形窗口掩码的宽度，必须等于窗口宽度。 |
-| maskHeight   | number      | 是   | 表示异形窗口掩码的高度，必须等于窗口高度。 |
+| maskWidth    | number      | 是   | 表示异形窗口掩码的宽度，必须等于窗口宽度，单位为px。 |
+| maskHeight   | number      | 是   | 表示异形窗口掩码的高度，必须等于窗口高度，单位为px。 |
 
 **返回值：**
 
@@ -8401,6 +8632,7 @@ setWindowMaskWithAlpha(windowMask: Uint8Array, maskWidth: number, maskHeight: nu
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
+  // windowClass为已创建/获取的Window实例
   let maskWidth = windowClass.getWindowProperties().windowRect.width;
   let maskHeight = windowClass.getWindowProperties().windowRect.height;
   let windowMask = new Uint8Array(maskWidth * maskHeight);
@@ -8423,7 +8655,7 @@ try {
 
 clearWindowMask(): Promise&lt;void&gt;
 
-清除异形窗口的掩码使其恢复为矩形窗口，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
+清除异形窗口的掩码使其恢复为矩形窗口，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗口和全局悬浮窗可用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8451,6 +8683,7 @@ clearWindowMask(): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
+  // windowClass为已创建/获取的Window实例
   let maskWidth = windowClass.getWindowProperties().windowRect.width;
   let maskHeight = windowClass.getWindowProperties().windowRect.height;
   let windowMask = Array<Array<number>>(maskHeight).fill([]).map((_, row) => {
@@ -8493,7 +8726,7 @@ setTouchableAreas(rects: Array&lt;Rect&gt;): Promise&lt;void&gt;
 
 **设备行为差异：**
 
-在PC/2in1设备、其他设备的[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)下，当窗口的大小或位置发生变化后，通过该接口设置的可触摸区域不会被重置；在其他设备和其他模式下，当窗口的大小或位置发生变化后，通过该接口设置的可触摸区域会被重置，需调用此接口重新设置。
+在PC/2in1设备、Tablet设备的[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)下，当窗口的大小或位置发生变化后，通过该接口设置的可触摸区域不会被重置；在其他设备和其他模式下，当窗口的大小或位置发生变化后，通过该接口设置的可触摸区域会被重置，需调用此接口重新设置。
 
 **参数：**
 
@@ -8513,8 +8746,8 @@ setTouchableAreas(rects: Array&lt;Rect&gt;): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                      |
 | :------- | :-------------------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required or a non-system application calls the API.                    |
-| 1300002  | This window state is abnormal.    |
+| 201      | Permission verification failed. The application does not have the permission required or a non-system application calls the API. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally.                                                                      |
 | 1300016 | Parameter error. Possible cause: Invalid parameter range. |
 
@@ -8528,6 +8761,7 @@ const touchableRects: Array<window.Rect> = [
   { left: 0, top: 50, width: 150, height: 200 }
 ];
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.setTouchableAreas(touchableRects).then(() => {
     console.info('Succeeded in setting the touchable areas.');
   }).catch((err: BusinessError) => {
@@ -8569,6 +8803,7 @@ keepKeyboardOnFocus(keepKeyboardFlag: boolean): void
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.keepKeyboardOnFocus(true);
 } catch (exception) {
   console.error(`Failed to keep keyboard onFocus. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -8587,6 +8822,8 @@ setWindowDecorVisible(isVisible: boolean): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态后生效。在不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不报错不生效。
+
 **参数：**
 
 | 参数名    | 类型    | 必填 | 说明                                          |
@@ -8602,6 +8839,7 @@ setWindowDecorVisible(isVisible: boolean): void
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300004  | Unauthorized operation. <br>适用版本：11-19 |
 
 **示例：**
 
@@ -8609,7 +8847,8 @@ setWindowDecorVisible(isVisible: boolean): void
 import { BusinessError } from '@kit.BasicServicesKit';
 let storage: LocalStorage = new LocalStorage();
 storage.setOrCreate('storageSimpleProp', 121);
-windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
+// windowClass为已创建/获取的Window实例
+windowClass.loadContent('pages/page2', storage, (err: BusinessError) => {
   let errCode: number = err.code;
   if (errCode) {
     console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
@@ -8657,6 +8896,7 @@ getWindowDecorVisible(): boolean
 
 ```ts
 let isVisible: boolean | undefined = undefined;
+// windowClass为已创建/获取的Window实例
 windowClass.setUIContent('pages/WindowPage').then(() => {
   try {
     isVisible = windowClass?.getWindowDecorVisible();
@@ -8685,7 +8925,7 @@ setWindowTitle(titleName: string): Promise&lt;void&gt;
  - 对于显示标题栏的子窗口（即创建子窗口时设置[SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中的decorEnabled为true）：
    - 在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；
    - 在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态后生效；
-   - 在不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
+   - 在不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回1300002或801错误码。
 
  - 对于不显示标题栏的子窗口（即创建子窗口时设置[SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中的decorEnabled为false），调用本接口将返回1300002或801错误码。
 
@@ -8718,6 +8958,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let title = "title";
+  // windowClass为已创建/获取的Window实例
   windowClass.setWindowTitle(title).then(() => {
     console.info('Succeeded in setting the window title.');
   }).catch((err: BusinessError) => {
@@ -8732,7 +8973,7 @@ try {
 
 setWindowTitleMoveEnabled(enabled: boolean): void
 
-禁止/使能主窗或子窗标题栏默认移动窗口和双击最大化的功能，当禁用标题栏默认移动窗口和双击最大化的功能时，可使用[startMoving()](#startmoving14)在应用热区中发起拖拽移动，使用[maximize()](#maximize12)实现最大化功能。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
+禁止/使能主窗或子窗标题栏默认移动窗口和双击最大化的功能，当禁用该功能时，可使用[startMoving()](#startmoving14)在应用热区中发起拖拽移动，使用[maximize()](#maximize12)实现最大化功能。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -8755,7 +8996,7 @@ setWindowTitleMoveEnabled(enabled: boolean): void
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
-| 1300004  | Unauthorized operation.        |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported. |
 
 **示例：**
 
@@ -8767,7 +9008,7 @@ import { window } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     try {
-      windowStage.loadContent("pages/Index").then(() =>{
+      windowStage.loadContent('pages/Index').then(() =>{
         let windowClass = windowStage.getMainWindowSync();
         let enabled = false;
         windowClass.setWindowTitleMoveEnabled(enabled);
@@ -8786,9 +9027,9 @@ setSubWindowModal(isModal: boolean): Promise&lt;void&gt;
 
 设置子窗的模态属性是否启用，使用Promise异步回调。
 
-子窗口调用该接口时，设置子窗口模态属性是否启用。启用子窗口模态属性后，其父级窗口不能响应用户操作，直到子窗口关闭或者子窗口的模态属性被禁用。
+启用子窗口模态属性后，其父级窗口不能响应用户操作，直到子窗口关闭或者子窗口的模态属性被禁用。
 
-非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。子窗之外的窗口调用该接口时会报错。
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。子窗之外的窗口调用该接口时会返回1300004错误码。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -8815,9 +9056,9 @@ setSubWindowModal(isModal: boolean): Promise&lt;void&gt;
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
-| 1300003  | This window manager service works abnormally. |
-| 1300004  | Unauthorized operation.        |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003  | This window manager service works abnormally.<br>适用版本：20+ |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported. |
 
 **示例：**
 
@@ -8834,10 +9075,10 @@ export default class EntryAbility extends UIAbility {
     let windowClass: window.Window | undefined = undefined;
     // 创建子窗
     try {
-      let subWindow = windowStage.createSubWindow("testSubWindow");
+      let subWindow = windowStage.createSubWindow('testSubWindow');
       subWindow.then((data) => {
         if (data == null) {
-          console.error("Failed to create the subWindow. Cause: The data is empty");
+          console.error('Failed to create the subWindow. Cause: The data is empty');
           return;
         }
         windowClass = data;
@@ -8859,15 +9100,15 @@ export default class EntryAbility extends UIAbility {
 
 setSubWindowModal(isModal: boolean, modalityType: ModalityType): Promise&lt;void&gt;
 
-设置子窗的模态类型，使用Promise异步回调。
+设置子窗的模态属性是否启用，并设置其模态类型，使用Promise异步回调。
 
-当子窗口模态类型为模窗口子窗时，其父级窗口不能响应用户操作，直到子窗口关闭或者子窗口的模态类型被禁用。
+当子窗口模态类型为[WINDOW_MODALITY](arkts-apis-window-e.md#modalitytype14)时，其父级窗口不能响应用户操作，直到子窗口关闭或者子窗口的模态类型被禁用。
 
-当子窗口模态类型为模应用子窗时，其父级窗口与该应用其他实例的窗口不能响应用户操作，直到子窗口关闭或者子窗口的模态类型被禁用。
+当子窗口模态类型为[APPLICATION_MODALITY](arkts-apis-window-e.md#modalitytype14)时，其父级窗口与所在应用进程下的其他主窗口及其他主窗口的子窗口不能响应用户操作，直到子窗口关闭或者子窗口的模态类型被禁用。
 
 此接口仅支持设置子窗口模态类型，当需要禁用子窗口模态属性时，建议使用[setSubWindowModal<sup>12+</sup>](#setsubwindowmodal12)。
 
-非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。子窗之外的窗口调用该接口时会报错。
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。子窗之外的窗口调用该接口时会返回1300004错误码。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -8877,7 +9118,7 @@ setSubWindowModal(isModal: boolean, modalityType: ModalityType): Promise&lt;void
 
 | 参数名    | 类型    | 必填 | 说明                                          |
 | --------- | ------- | ---- | --------------------------------------------- |
-| isModal | boolean | 是   | 设置子窗口模态属性是否启用，true为启用，false为不启用。当前仅支持设置为true。 |
+| isModal | boolean | 是   | 设置子窗口模态属性是否启用，true为启用，false为不启用。当前仅支持设置为true，为false将返回401错误码。 |
 | modalityType | [ModalityType](arkts-apis-window-e.md#modalitytype14) | 是   | 子窗口模态类型。 |
 
 **返回值：**
@@ -8890,13 +9131,13 @@ setSubWindowModal(isModal: boolean, modalityType: ModalityType): Promise&lt;void
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
-| 错误码ID | 错误信息                       |
-| -------- | ------------------------------ |
+| 错误码ID | 错误信息                                                                                                         |
+| -------- |--------------------------------------------------------------------------------------------------------------|
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
-| 1300003  | This window manager service works abnormally. |
-| 1300004  | Unauthorized operation.        |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.                       |
+| 1300003  | This window manager service works abnormally. <br>适用版本：20+                                                               |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported.                  |
 
 **示例：**
 
@@ -8913,10 +9154,10 @@ export default class EntryAbility extends UIAbility {
     let windowClass: window.Window | undefined = undefined;
     // 创建子窗
     try {
-      let subWindow = windowStage.createSubWindow("testSubWindow");
+      let subWindow = windowStage.createSubWindow('testSubWindow');
       subWindow.then((data) => {
         if (!data) {
-          console.error("Failed to create the subWindow. Cause: The data is empty");
+          console.error('Failed to create the subWindow. Cause: The data is empty');
           return;
         }
         windowClass = data;
@@ -8969,6 +9210,7 @@ setWindowDecorHeight(height: number): void
 **示例：**
 
 ```ts
+// windowClass为已创建/获取的Window实例
 windowClass.setUIContent('pages/WindowPage').then(() => {
   let height: number = 50;
   try {
@@ -9024,7 +9266,7 @@ import { window } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     try {
-      windowStage.loadContent("pages/Index").then(() =>{
+      windowStage.loadContent('pages/Index').then(() =>{
         let windowClass = windowStage.getMainWindowSync();
         let colorMode : ConfigurationConstant.ColorMode = ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT;
         let style: window.DecorButtonStyle = {
@@ -9061,8 +9303,6 @@ getDecorButtonStyle(): DecorButtonStyle
 
 从OpenHarmony 5.1.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在各设备均可正常调用。
-
 **返回值：**
 
 | 类型                                  | 说明                                                         |
@@ -9078,12 +9318,13 @@ getDecorButtonStyle(): DecorButtonStyle
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally. |
-| 1300004  | Unauthorized operation. |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported. |
 
 **示例：**
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let decorButtonStyle = windowClass.getDecorButtonStyle();
   console.info(`Succeeded in getting the style of button. Data: ${JSON.stringify(decorButtonStyle)}`);
 } catch (exception) {
@@ -9123,6 +9364,7 @@ getWindowDecorHeight(): number
 **示例：**
 
 ```ts
+// windowClass为已创建/获取的Window实例
 windowClass.setUIContent('pages/WindowPage').then(() => {
   try {
     let height = windowClass?.getWindowDecorHeight();
@@ -9137,7 +9379,7 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
 
 getTitleButtonRect(): TitleButtonRect
 
-获取主窗口或启用标题栏的子窗口的标题栏上的最小化、最大化、关闭按钮矩形区域。
+对存在标题栏和三键区的窗口形态生效，获取主窗口或启用标题栏的子窗口的标题栏上的最小化、最大化、关闭按钮矩形区域。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -9197,7 +9439,7 @@ getWindowStatus(): WindowStatusType
 
 > **说明：**
 >
-> 在[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置小于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::FULL_SCREEN。应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置大于等于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::MAXIMIZE。
+> 在[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置小于14时，在窗口最大化状态（窗口铺满整个屏幕，PC/2in1设备会有Dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::FULL_SCREEN。应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置大于等于14时，在窗口最大化状态（窗口铺满整个屏幕，PC/2in1设备会有Dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::MAXIMIZE。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -9216,12 +9458,13 @@ getWindowStatus(): WindowStatusType
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let windowStatusType = windowClass.getWindowStatus();
 } catch (exception) {
   console.error(`Failed to obtain the window status of window. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -9263,7 +9506,7 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error.|
 | 1300003  | This window manager service works abnormally. |
-| 1300004  | Unauthorized operation. Possible cause: Only main windows and subwindows are supported. |
+| 1300004  | Unauthorized operation. Possible cause: 1. Only main windows and subwindows are supported. 2. Not supported when subwindows are set to follow the main window. |
 | 1300016  | Parameter error. Possible cause: 1. When called on a main window, the parameter should not only contain SPLIT. 2. When called on a sub window, the parameter should not contain SPLIT. |
 
 **示例：**
@@ -9328,6 +9571,7 @@ isFocused(): boolean
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let focus = windowClass.isFocused();
   console.info(`Succeeded in checking whether the window is focused. Data: ${focus}`);
 } catch (exception) {
@@ -9374,9 +9618,9 @@ createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error; 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed; 2. Internal task error; 3. The subWindow has been created and cannot be created again; 4. It is not allowed to create non-secure window when secure extension exists; 5. The parent window and the subwindow are not created by the same process; 6. Subwindow level exceeds the maximum limit. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows, subwindows, and floating windows are supported. |
+| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only main windows, subwindows, and floating windows are supported; 2. When SubWindowOptions.zLevelAboveParentLoosened is true, only main windows are supported. |
 
 **示例：**
 
@@ -9389,6 +9633,7 @@ try {
     decorEnabled: true,
     isModal: true
   };
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.createSubWindowWithOptions('mySubWindow', options);
   promise.then((data) => {
     console.info(`Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
@@ -9441,10 +9686,10 @@ setParentWindow(windowId: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.    |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
-| 1300009 | The parent window is invalid. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported. |
+| 1300009 | The parent window is invalid. Possible cause: The parent window does not exist or has been destroyed. |
 
 **示例：**
 
@@ -9452,8 +9697,8 @@ setParentWindow(windowId: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let windowClass: window.Window = window.findWindow("subWindow");
-  let newParentWindow: window.Window = window.findWindow("newParentWindow");
+  let windowClass: window.Window = window.findWindow('subWindow');
+  let newParentWindow: window.Window = window.findWindow('newParentWindow');
   let newParentWindowId: number = newParentWindow.getWindowProperties().id;
   let promise = windowClass.setParentWindow(newParentWindowId);
   promise.then(() => {
@@ -9496,14 +9741,14 @@ getParentWindow(): Window
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.    |
-| 1300004 | Unauthorized operation. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Not called from subWindow. |
 | 1300009 | The parent window is invalid. |
 
 **示例：**
 
 ```ts
 try {
-  let windowClass: window.Window = window.findWindow("subWindow");
+  let windowClass: window.Window = window.findWindow('subWindow');
   let parentWindow: window.Window = windowClass.getParentWindow();
   let properties = parentWindow.getWindowProperties();
   console.info(`Succeeded in obtaining parent window properties. Property: ${JSON.stringify(properties)}`);
@@ -9543,7 +9788,7 @@ setWindowTitleButtonVisible(isMaximizeButtonVisible: boolean, isMinimizeButtonVi
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
-| 1300004  | Unauthorized operation. |
+| 1300004  | Unauthorized operation. Possible cause: Only main windows and subwindows with subwindowoptions.zlevelaboveparentloosened set to true are supported. |
 
 **示例：**
 
@@ -9571,7 +9816,7 @@ export default class EntryAbility extends UIAbility {
           mainWindow.setWindowTitleButtonVisible(false, false, false);
         }
       ).catch((err: BusinessError) => {
-          if(err.code){
+          if (err.code) {
             console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
           }
       });
@@ -9617,7 +9862,7 @@ setWindowTopmost(isWindowTopmost: boolean): Promise&lt;void&gt;
 | 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例：**
@@ -9639,7 +9884,7 @@ struct Index {
 
   build() {
     RelativeContainer() {
-      Button("窗口置顶")
+      Button('窗口置顶')
         .onClick(() => {
           try {
             windowClass = this.windowStage.getMainWindowSync();
@@ -9659,14 +9904,14 @@ struct Index {
     .height('100%')
     .width('100%')
     .onKeyEvent((event) => {
-      if(event) {
-        if(event.type === KeyType.Down) {
+      if (event) {
+        if (event.type === KeyType.Down) {
           keyUpEventAry = [];
         }
-        if(event.type === KeyType.Up) {
+        if (event.type === KeyType.Up) {
           keyUpEventAry.push(event.keyText);
           // 自定义快捷键 ctrl+T 执行主窗口置顶、取消置顶的操作
-          if(windowClass && keyUpEventAry.includes('KEYCODE_CTRL_LEFT') && keyUpEventAry.includes('KEYCODE_T')) {
+          if (windowClass && keyUpEventAry.includes('KEYCODE_CTRL_LEFT') && keyUpEventAry.includes('KEYCODE_T')) {
             let isWindowTopmost: boolean = false;
             windowClass.setWindowTopmost(isWindowTopmost);
           }
@@ -9701,10 +9946,10 @@ raiseToAppTop(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. The window is not shown. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
-| 1300009 | The parent window is invalid. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported. |
+| 1300009 | The parent window is invalid. Possible cause: The parent window does not exist or has been destroyed. |
 
 **示例：**
 
@@ -9742,7 +9987,7 @@ setRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
 
 禁止/使能子窗点击抬升功能。使用Promise异步回调。
 
-通常来说，点击一个子窗口，会将该子窗口显示抬升到应用内同一个父窗口下同类型子窗口的最上方，如果设置为false，那么点击子窗口的时候，不会将该子窗口进行抬升，而是保持不变。
+默认情况下，点击一个子窗口，会将该子窗口显示到最上层，如果设置为false，那么点击子窗口的时候，不会将该子窗口显示到最上层，而是保持原有层级不变。
 
 使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](#showwindow9)并执行完毕。
 
@@ -9768,10 +10013,10 @@ setRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. The window is not shown. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
-| 1300009 | The parent window is invalid. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported. |
+| 1300009 | The parent window is invalid. Possible cause: The parent window does not exist or has been destroyed. |
 
 **示例：**
 
@@ -9786,7 +10031,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
     // 创建子窗
-    windowStage.createSubWindow("testSubWindow").then((subWindow) => {
+    windowStage.createSubWindow('testSubWindow').then((subWindow) => {
       if (subWindow == null) {
         console.error('Failed to create the subWindow. Cause: The data is empty');
         return;
@@ -9812,9 +10057,9 @@ export default class EntryAbility extends UIAbility {
 
 enableLandscapeMultiWindow(): Promise&lt;void&gt;
 
-应用部分界面支持横向布局时，在进入该界面时使能，使能后可支持进入横向多窗。不建议竖向布局界面使用。
+应用部分界面支持横向布局时，在进入该界面时使能，使能后可支持进入横向[智慧多窗](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro)。不建议竖向布局界面使用。
 
-此接口只对应用主窗口生效，且需要在module.json5配置文件中[abilities](../../quick-start/module-configuration-file.md#abilities标签)标签中配置preferMultiWindowOrientation属性为"landscape_auto"。
+此接口只对应用主窗口生效，且需要在module.json5配置文件中[abilities](../../quick-start/module-configuration-file.md#abilities标签)标签中配置[preferMultiWindowOrientation](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-support)属性为"landscape_auto"。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -9832,8 +10077,8 @@ enableLandscapeMultiWindow(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 **示例：**
 
@@ -9870,9 +10115,9 @@ export default class EntryAbility extends UIAbility {
 
 disableLandscapeMultiWindow(): Promise&lt;void&gt;
 
-应用部分界面支持横向布局时，在退出该界面时去使能，去使能后不支持进入横向多窗。
+应用部分界面支持横向布局时，在退出该界面时去使能，去使能后不支持进入横向[智慧多窗](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro)。
 
-此接口只对应用主窗口生效，且需要在module.json5配置文件中[abilities](../../quick-start/module-configuration-file.md#abilities标签)标签中配置preferMultiWindowOrientation属性为"landscape_auto"。
+此接口只对应用主窗口生效，且需要在module.json5配置文件中[abilities](../../quick-start/module-configuration-file.md#abilities标签)标签中配置[preferMultiWindowOrientation](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-support)属性为"landscape_auto"。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -9890,8 +10135,8 @@ disableLandscapeMultiWindow(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 **示例：**
 
@@ -9928,9 +10173,9 @@ export default class EntryAbility extends UIAbility {
 
 setDialogBackGestureEnabled(enabled: boolean): Promise&lt;void&gt;
 
-设置模态窗口是否响应手势返回事件，非模态窗口调用返回错误码。
+设置模态窗口是否响应手势返回事件，非模态窗口调用返回1300004错误码。
 
-**系统能力**：SystemCapability.Window.SessionManager
+**系统能力：** SystemCapability.Window.SessionManager
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -9938,7 +10183,7 @@ setDialogBackGestureEnabled(enabled: boolean): Promise&lt;void&gt;
 
 | 参数名      | 类型    | 必填 | 说明                                                         |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
-| enabled    | boolean | 是   | 是否响应手势返回事件。<br>true表示响应手势返回事件，触发onBackPress回调；false表示不响应手势返回事件，不触发onBackPress回调。</br> |
+| enabled    | boolean | 是   | 是否响应手势返回事件。<br>true表示响应手势返回事件；false表示不响应手势返回事件。<br> |
 
 **返回值：**
 
@@ -9954,9 +10199,9 @@ setDialogBackGestureEnabled(enabled: boolean): Promise&lt;void&gt;
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only dialog windows are supported.|
 
 **示例：**
 
@@ -9983,7 +10228,7 @@ export default class EntryAbility extends UIAbility {
           return;
         }
         windowClass = data;
-        windowClass.setUIContent("pages/Index");
+        windowClass.setUIContent('pages/Index');
         let enabled = true;
         let promise = windowClass.setDialogBackGestureEnabled(enabled);
         promise.then(() => {
@@ -10027,7 +10272,7 @@ struct Index {
 
 enableDrag(enable: boolean): Promise&lt;void&gt;
 
-使能/禁止拖拽窗口，仅对系统窗口、应用子窗口、全局悬浮窗和模态窗口生效。使用Promise异步回调。
+使能/禁止拖拽窗口，仅对系统窗口、应用子窗口、全局悬浮窗口和模态窗口生效。使用Promise异步回调。
 
 使能后，将允许通过鼠标操作或触摸对窗口进行拉伸操作。
 
@@ -10037,7 +10282,7 @@ enableDrag(enable: boolean): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ---------------------------- | -- | --------- |
-| enable| boolean | 是 | 是否允许拖拽。<br>true表示允许，false表示不允许。</br> |
+| enable| boolean | 是 | 是否允许拖拽。<br>true表示允许，false表示不允许。 |
 
 **返回值：**
 
@@ -10052,9 +10297,9 @@ enableDrag(enable: boolean): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.               |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                       |
+| 1300004 | Unauthorized operation. Possible cause: 1.Invalid window type. Only system windows, application child windows, global floating windows and modal windows are supported.                     |
 
 **示例：**
 
@@ -10062,6 +10307,7 @@ enableDrag(enable: boolean): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.enableDrag(true).then(() => {
     console.info('succeeded in setting window draggable');
   }).catch((err: BusinessError) => {
@@ -10078,7 +10324,7 @@ startMoving(): Promise&lt;void&gt;
 
 开始移动窗口，使用Promise异步回调。
 
-[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，对系统窗口、应用主窗口、应用子窗口、全局悬浮窗和模态窗口生效。非自由窗口状态下，仅对系统窗口、应用子窗口、全局悬浮窗和模态窗口生效，应用主窗口调用该接口返回801或1300004错误码。
+[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，对系统窗口、应用主窗口、应用子窗口、全局悬浮窗口和模态窗口生效。非自由窗口状态下，仅对系统窗口、应用子窗口、全局悬浮窗口和模态窗口生效，应用主窗口调用该接口返回801或1300004错误码。
 
 仅在[onTouch](arkui-ts/ts-universal-events-touch.md#ontouch)事件（其中，事件类型必须为TouchType.Down）的回调方法中调用此接口才会有移动效果，成功调用此接口后，窗口将跟随鼠标或触摸点移动。
 
@@ -10102,9 +10348,9 @@ startMoving(): Promise&lt;void&gt;
 | -------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300001 | Repeated operation. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                       |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type, main windows are not supported in non-free window mode. |
 
 **示例：**
 
@@ -10123,7 +10369,7 @@ struct Index {
         Blank('160')
           .color(Color.Red)
           .onTouch((event: TouchEvent) => {
-            if(event.type == TouchType.Down){
+            if (event.type == TouchType.Down) {
               this.isTouchDown = true;
             } else if (event.type === TouchType.Move && this.isTouchDown) {
               try {
@@ -10197,9 +10443,9 @@ startMoving(offsetX: number, offsetY: number): Promise&lt;void&gt;
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300001 | Repeated operation. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error.              |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                       |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type.                      |
 
 **示例：**
 
@@ -10218,7 +10464,7 @@ struct Index {
         Blank('160')
           .color(Color.Red)
           .onTouch((event: TouchEvent) => {
-            if(event.type == TouchType.Down){
+            if (event.type == TouchType.Down) {
               this.isTouchDown = true;
             } else if (event.type === TouchType.Move && this.isTouchDown) {
               try {
@@ -10273,7 +10519,7 @@ stopMoving(): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error.      |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation.                       |
 
@@ -10306,7 +10552,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## setGestureBackEnabled<sup>13+<sup>
+## setGestureBackEnabled<sup>13+</sup>
 
 setGestureBackEnabled(enabled: boolean): Promise&lt;void&gt;
 
@@ -10318,7 +10564,7 @@ setGestureBackEnabled(enabled: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1、其他设备的电脑模式中调用会返回801错误码，在其他设备和其他模式中可正常调用。
+**设备行为差异：** 该接口在PC/2in1设备、Tablet的[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)中调用会返回801错误码，在其他设备和其他模式中可正常调用。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -10384,7 +10630,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## isGestureBackEnabled<sup>13+<sup>
+## isGestureBackEnabled<sup>13+</sup>
 
 isGestureBackEnabled(): boolean
 
@@ -10392,7 +10638,7 @@ isGestureBackEnabled(): boolean
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1、其他设备的电脑模式中调用会返回801错误码，在其他设备和其他模式中可正常调用。
+**设备行为差异：** 该接口在PC/2in1设备、Tablet的[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)中调用会返回801错误码，在其他设备和其他模式中可正常调用。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -10451,11 +10697,11 @@ setSeparationTouchEnabled(enabled: boolean): Promise&lt;void&gt;
 
 设置当前窗口是否支持事件分离状态，使用Promise异步回调。默认场景下为true，支持事件分离状态。
 
-当enable为true，支持事件分离状态下：
+当enabled为true，支持事件分离状态下：
 
 - 所有手指点击产生的事件均会发送给其手指命中的窗口。
 
-当enable为false，不支持事件分离状态下：
+当enabled为false，不支持事件分离状态下：
 
 - 当第一根手指点击持续命中该窗口未抬起时，后续其他手指无论是否点击命中该窗口，其产生的事件均会分发给该窗口。
 
@@ -10483,7 +10729,7 @@ setSeparationTouchEnabled(enabled: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801      | Capability not supported. Function can not work because the current device does not support this ability. |
+| 801      | Capability not supported. Function cannot work because the current device does not support this ability. |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally. Possible cause: Internal IPC error. |
 
@@ -10494,6 +10740,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let enabled = false;
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setSeparationTouchEnabled(enabled);
   promise.then(() => {
     console.info('Succeeded in setting the window to be separationTouchEnabled.');
@@ -10520,7 +10767,7 @@ isSeparationTouchEnabled():boolean
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| boolean          |  当前窗口是否支持事件分离。</br>true表示支持窗口事件分离，false表示不支持窗口事件分离。 |
+| boolean          |  当前窗口是否支持事件分离。<br>true表示支持窗口事件分离，false表示不支持窗口事件分离。 |
 
 **错误码：**
 
@@ -10528,7 +10775,7 @@ isSeparationTouchEnabled():boolean
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801      | Capability not supported. Function can not work because the current device does not support this ability. |
+| 801      | Capability not supported. Function cannot work because the current device does not support this ability. |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally.        |
 
@@ -10538,6 +10785,7 @@ isSeparationTouchEnabled():boolean
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let isSeparationTouchEnabled = windowClass.isSeparationTouchEnabled();
   console.info(`Succeeded in getting the window separationTouchEnabled status: ${isSeparationTouchEnabled}`);
 } catch (exception) {
@@ -10553,7 +10801,7 @@ setReceiveDragEventEnabled(enabled: boolean): Promise&lt;void&gt;
 
 默认场景下为true，能够接收拖拽事件。
 
-当enable为false，当前窗口不能接收拖拽事件。
+当enabled为false，当前窗口不能接收拖拽事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -10577,7 +10825,7 @@ setReceiveDragEventEnabled(enabled: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801      | Capability not supported. Function can not work because the current device does not support this ability. |
+| 801      | Capability not supported. Function cannot work because the current device does not support this ability. |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally. Possible cause: Internal IPC error. |
 
@@ -10588,6 +10836,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let enabled = false;
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setReceiveDragEventEnabled(enabled);
   promise.then(() => {
     console.info('Succeeded in setting the window to be WindowReceiveDragEventEnabled.');
@@ -10614,7 +10863,7 @@ isReceiveDragEventEnabled():boolean
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| boolean          |  当前窗口是否能接收拖拽事件的状态。</br>true表示能接收拖拽事件的状态，false表示不能接收拖拽事件的状态。 |
+| boolean          |  当前窗口是否能接收拖拽事件的状态。<br>true表示能接收拖拽事件的状态，false表示不能接收拖拽事件的状态。 |
 
 **错误码：**
 
@@ -10622,7 +10871,7 @@ isReceiveDragEventEnabled():boolean
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801      | Capability not supported. Function can not work because the current device does not support this ability. |
+| 801      | Capability not supported. Function cannot work because the current device does not support this ability. |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally.        |
 
@@ -10632,6 +10881,7 @@ isReceiveDragEventEnabled():boolean
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let isReceiveDragEventEnabled = windowClass.isReceiveDragEventEnabled();
   console.info(`Succeeded in getting the window receiveDragEvent status: ${isReceiveDragEventEnabled}`);
 } catch (exception) {
@@ -10649,9 +10899,9 @@ setWindowShadowRadius(radius: number): void
 
 **设备行为差异：** 
 
-在OpenHarmony 5.1.0之前，该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+在OpenHarmony 5.1.0之前，该接口在Tablet设备、PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
-从OpenHarmony 5.1.0开始，该接口在Phone设备、Tablet设备和2in1设备中可正常调用，在其他设备中返回801错误码。
+从OpenHarmony 5.1.0开始，该接口在Phone设备、Tablet设备和PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -10659,7 +10909,7 @@ setWindowShadowRadius(radius: number): void
 
 | 参数名  | 类型   | 必填 | 说明                                                          |
 | ------- | ------ | ---- |-------------------------------------------------------------|
-| radius  | number | 是   | 表示窗口边缘阴影的模糊半径。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0时表示关闭窗口边缘阴影。     |
+| radius  | number | 是   | 表示窗口边缘阴影的模糊半径。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0时表示关闭窗口边缘阴影。 |
 
 **错误码：**
 
@@ -10676,6 +10926,7 @@ setWindowShadowRadius(radius: number): void
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.setWindowShadowRadius(4.0);
 } catch (exception) {
   console.error(`Failed to set shadow. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -10692,13 +10943,13 @@ setWindowCornerRadius(cornerRadius: number): Promise&lt;void&gt;
 
 在调用此接口之前调用[getWindowCornerRadius()](#getwindowcornerradius17)接口可以获得窗口默认圆角半径值。
 
-**系统能力**：SystemCapability.Window.SessionManager
+**系统能力：** SystemCapability.Window.SessionManager
 
 **设备行为差异：**
 
 在<!--RP16-->OpenHarmony 6.0<!--RP16End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
-从<!--RP16-->OpenHarmony 6.0<!--RP16End-->开始，该接口在Phone设备、Tablet设备和2in1设备下可正常调用，在其他设备中返回801错误码。
+从<!--RP16-->OpenHarmony 6.0<!--RP16End-->开始，该接口在Phone设备、Tablet设备和PC/2in1设备下可正常调用，在其他设备中返回801错误码。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -10724,7 +10975,7 @@ setWindowCornerRadius(cornerRadius: number): Promise&lt;void&gt;
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities.                              |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally.                                                                     |
-| 1300004 | Unauthorized operation.                                                                                           |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only subwindows and float windows are supported.     |
 
 **示例：**
 
@@ -10732,6 +10983,7 @@ setWindowCornerRadius(cornerRadius: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setWindowCornerRadius(1.0);
   promise.then(() => {
     console.info('Succeeded in setting window corner radius.');
@@ -10750,7 +11002,7 @@ getWindowCornerRadius(): number
 
 该接口用于获取子窗或全局悬浮窗的圆角半径值，在未调用[setWindowCornerRadius()](#setwindowcornerradius17)接口设置窗口圆角半径值时，调用此接口可获取窗口默认圆角半径值。
 
-**系统能力**：SystemCapability.Window.SessionManager
+**系统能力：** SystemCapability.Window.SessionManager
 
 **设备行为差异：**
 
@@ -10780,19 +11032,20 @@ getWindowCornerRadius(): number
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let cornerRadius = windowClass.getWindowCornerRadius();
 } catch (exception) {
   console.error(`Failed to get corner radius. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
-## setExclusivelyHighlighted<sup>15+<sup>
+## setExclusivelyHighlighted<sup>15+</sup>
 
 setExclusivelyHighlighted(exclusivelyHighlighted: boolean): Promise&lt;void&gt;
 
 设置窗口独占激活态属性。独占激活态表示窗口获焦时，会导致当前父子窗口链中处于激活态的其他窗口失去激活态。使用Promise异步回调。
 
-此接口对主窗、模态窗不生效。
+此接口对主窗、模态窗和配置了模态属性的子窗不生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -10818,9 +11071,9 @@ setExclusivelyHighlighted(exclusivelyHighlighted: boolean): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
-| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally.                                                                |
-| 1300004  | Unauthorized operation.                                                                                |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Main window, dialog window and the subwindow with modal attributes are not supported. |
 
 **示例：**
 
@@ -10829,6 +11082,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let exclusivelyHighlighted: boolean = true;
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setExclusivelyHighlighted(exclusivelyHighlighted);
   promise.then(() => {
     console.info('Succeeded in setting the window to be exclusively highlight.');
@@ -10840,7 +11094,7 @@ try {
 }
 ```
 
-## isWindowHighlighted<sup>18+<sup>
+## isWindowHighlighted<sup>18+</sup>
 
 isWindowHighlighted(): boolean
 
@@ -10865,7 +11119,7 @@ isWindowHighlighted(): boolean
 | 错误码ID | 错误信息                                                                                                     |
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
-| 1300002  | This window state is abnormal  Possible cause: The window is not created or destroyed. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -10873,6 +11127,7 @@ isWindowHighlighted(): boolean
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let isHighlighted = windowClass.isWindowHighlighted();
   console.info(`Succeeded in getting the window highlight status: ${isHighlighted}`);
 } catch (exception) {
@@ -10880,7 +11135,7 @@ try {
 }
 ```
 
-## setFollowParentMultiScreenPolicy<sup>17+<sup>
+## setFollowParentMultiScreenPolicy<sup>17+</sup>
 
 setFollowParentMultiScreenPolicy(enabled: boolean): Promise&lt;void&gt;
 
@@ -10920,9 +11175,9 @@ setFollowParentMultiScreenPolicy(enabled: boolean): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported.Function setFollowParentMultiScreenPolicy can not work correctly due to limited device capabilities.|
-| 1300002  | This window state is abnormal.                                                                               |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.                        |
 | 1300003  | This window manager service works abnormally.                                                                |
-| 1300004  | Unauthorized operation.                                                                                |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported.                   |
 
 **示例：**
 
@@ -10930,7 +11185,7 @@ setFollowParentMultiScreenPolicy(enabled: boolean): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let windowClass: window.Window = window.findWindow("subWindow");
+  let windowClass: window.Window = window.findWindow('subWindow');
   let enabled: boolean = true;
   let promise = windowClass?.setFollowParentMultiScreenPolicy(enabled);
   promise.then(() => {
@@ -10949,13 +11204,13 @@ setFollowParentWindowLayoutEnabled(enabled: boolean): Promise&lt;void&gt;
 
 设置子窗或模态窗口（即WindowType为TYPE_DIALOG的窗口）的布局信息（position和size）是否跟随主窗，使用Promise异步回调。
 
-1、只支持主窗的一级子窗或模态窗口使用该接口。其中非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用此接口时，将返回1300004错误码。
+1. 只支持主窗的一级子窗或模态窗口使用该接口。其中非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用此接口时，将返回1300004错误码。
 
-2、当子窗或模态窗口调用该接口后，立即使其布局信息与主窗完全一致并保持，除非传入false再次调用该接口，否则效果将持续。
+2. 当子窗或模态窗口调用该接口后，立即使其布局信息与主窗完全一致并保持，除非传入false再次调用该接口，否则效果将持续。
 
-3、当子窗或模态窗口调用该接口后，再调用moveTo、resize等修改布局信息的接口将不生效。
+3. 当子窗或模态窗口调用该接口后，再调用moveTo、resize等修改布局信息的接口将不生效。
 
-4、当子窗或模态窗口不再使用该功能后，不保证子窗或模态窗口的布局信息（position和size）为确定的值，需要应用重新进行设置。
+4. 当子窗或模态窗口不再使用该功能后，不保证子窗或模态窗口的布局信息（position和size）为确定的值，需要应用重新进行设置。
 
 该接口调用生效后，[setRelativePositionToParentWindowEnabled()](#setrelativepositiontoparentwindowenabled20)接口调用不生效。
 
@@ -11004,14 +11259,14 @@ export default class EntryAbility extends UIAbility {
         console.error(`Failed to load the content. Cause code: ${loadError.code}, message: ${loadError.message}`);
         return;
       }
-      console.info("Succeeded in loading the content.");
-      windowStage.createSubWindow("subWindow").then((subWindow: window.Window) => {
+      console.info('Succeeded in loading the content.');
+      windowStage.createSubWindow('subWindow').then((subWindow: window.Window) => {
         if (subWindow == null) {
-          console.error("Failed to create the subWindow. Cause: The data is empty");
+          console.error('Failed to create the subWindow. Cause: The data is empty');
           return;
         }
         subWindow.setFollowParentWindowLayoutEnabled(true).then(() => {
-          console.info("after set follow parent window layout")
+          console.info('after set follow parent window layout')
         }).catch((error: BusinessError) => {
           console.error(`setFollowParentWindowLayoutEnabled failed. ${error.code} ${error.message}`);
         })
@@ -11023,7 +11278,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## setRelativePositionToParentWindowEnabled<sup>20+<sup>
+## setRelativePositionToParentWindowEnabled<sup>20+</sup>
 
 setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor, offsetX?: number, offsetY?: number): Promise&lt;void&gt;
 
@@ -11047,7 +11302,7 @@ setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor
 
 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备（Phone设备除外，在Phone设备上调用该接口会返回801错误码）上可正常调用；在支持并不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不报错不生效；在不支持自由窗口的设备中返回801错误码。
 
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在Phone、Tablet、2in1设备上可调用且不报错（当设备处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态时可正常调用此接口并生效；当设备不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态时调用此接口不生效不报错，设备切换到自由窗口状态时生效）；在其他设备中调用返回801错误码。
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在Phone、Tablet、PC/2in1设备上可调用且不报错（当设备处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态时可正常调用此接口并生效；当设备不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态时调用此接口不生效不报错，设备切换到自由窗口状态时生效）；在其他设备中调用返回801错误码。
 
 **参数：**
 
@@ -11090,14 +11345,14 @@ export default class EntryAbility extends UIAbility {
         console.error(`Failed to load the content. Cause code: ${loadError.code}, message: ${loadError.message}`);
         return;
       }
-      console.info("Succeeded in loading the content.");
-      windowStage.createSubWindow("subWindow").then((subWindow: window.Window) => {
+      console.info('Succeeded in loading the content.');
+      windowStage.createSubWindow('subWindow').then((subWindow: window.Window) => {
         if (subWindow == null) {
-          console.error("Failed to create the subWindow. Cause: The data is empty");
+          console.error('Failed to create the subWindow. Cause: The data is empty');
           return;
         }
         subWindow.setRelativePositionToParentWindowEnabled(true).then(() => {
-          console.info("after set relative position to parent window enabled");
+          console.info('after set relative position to parent window enabled');
         }).catch((error: BusinessError) => {
           console.error(`setRelativePositionToParentWindowEnabled failed. ${error.code} ${error.message}`);
         })
@@ -11147,7 +11402,7 @@ setWindowTransitionAnimation(transitionType: WindowTransitionType, animation: Tr
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities.                              |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally.                                                                     |
-| 1300004 | Unauthorized operation.                                                                                           |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported.                                                                                          |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range; 2. Invalid parameter length.                         |
 
 **示例：**
@@ -11230,7 +11485,7 @@ getWindowTransitionAnimation(transitionType: WindowTransitionType): TransitionAn
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities.                                |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.   |
 | 1300003 | This window manager service works abnormally.                                                                       |
-| 1300004 | Unauthorized operation.                                                                                             |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported.                                                                                             |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range.                                                        |
 
 **示例：**
@@ -11303,7 +11558,7 @@ setSubWindowZLevel(zLevel: number): Promise&lt;void&gt;
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only non-modal subwindows are supported. |
-| 1300009 | The parent window is invalid.                 |
+| 1300009 | The parent window is invalid. Possible cause: The parent window does not exist or has been destroyed. |
 
 **示例：**
 
@@ -11342,7 +11597,7 @@ export default class EntryAbility extends UIAbility {
 
 getSubWindowZLevel(): number
 
-获取当前子窗口层级级别。不支持主窗、系统窗调用。
+获取当前子窗口层级级别。
 
 非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错，返回默认值0。
 
@@ -11365,8 +11620,8 @@ getSubWindowZLevel(): number
 | 错误码ID | 错误信息                                                                                                     |
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 801      | Capability not supported. Function getSubWindowZLevel can not work correctly due to limited device capabilities. |
-| 1300002  | This window state is abnormal.                                                                               |
-| 1300004  | Unauthorized operation.                                                                                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported. |
 
 **示例：**
 
@@ -11419,12 +11674,13 @@ isInFreeWindowMode(): boolean
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 1300002  | This window state is abnormal.                       |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally.        |
 
 **示例：**
 
 ```ts
+// windowClass为已创建/获取的Window实例
 let isInFreeWindowMode: boolean = windowClass.isInFreeWindowMode();
 console.info(`isInFreeWindowMode: ${isInFreeWindowMode}`);
 ```
@@ -11452,13 +11708,14 @@ on(type: 'freeWindowModeChange', callback: Callback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 1300002  | This window state is abnormal.                       |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally.        |
 
 **示例：**
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('freeWindowModeChange', (data) => {
     console.info('Succeeded in enabling the listener for free window mode changes. Data: ' + JSON.stringify(data));
   });
@@ -11490,7 +11747,7 @@ off(type: 'freeWindowModeChange', callback?: Callback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 1300002  | This window state is abnormal.                       |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003  | This window manager service works abnormally.        |
 
 **示例：**
@@ -11500,6 +11757,7 @@ const callback = (isInFreeWindowMode: boolean) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.on('freeWindowModeChange', callback);
   // 关闭指定callback的监听
@@ -11508,6 +11766,142 @@ try {
   windowClass.off('freeWindowModeChange');
 } catch (exception) {
   console.error(`Failed to disable the listener for free window mode change. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## isInWindowPostureMode
+
+isInWindowPostureMode(mode: WindowPostureMode): boolean
+
+查询当前窗口是否处于指定的窗口姿态模式。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| mode | [WindowPostureMode](arkts-apis-window-e.md#windowposturemode) | 是 | 窗口姿态模式。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| boolean | 当前窗口是否处于指定的窗口姿态模式。true表示当前窗口处于指定的窗口姿态模式，false表示不处于。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
+| 1300016 | Parameter error. Possible cause: Invalid parameter range. |
+
+**示例：**
+
+```ts
+try {
+  // windowClass为已创建/获取的Window实例
+  let isInDesktopMode: boolean = windowClass.isInWindowPostureMode(window.WindowPostureMode.DESKTOP_MODE);
+  console.info(`isInDesktopMode: ${isInDesktopMode}`);
+} catch (exception) {
+  console.error(`Failed to check window posture mode. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## onWindowPostureModeChange
+
+onWindowPostureModeChange(mode: WindowPostureMode, callback: Callback&lt;boolean&gt;): void
+
+开启窗口所处指定姿态模式变化的监听。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| mode | [WindowPostureMode](arkts-apis-window-e.md#windowposturemode) | 是 | 监听的窗口姿态模式。 |
+| callback | Callback&lt;boolean&gt; | 是 | 回调函数。当窗口所处指定窗口姿态模式变化时触发，返回当前窗口是否处于指定的窗口姿态模式，true表示处于，false表示不处于。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
+| 1300016 | Parameter error. Possible cause: Invalid parameter range. |
+
+**示例：**
+
+```ts
+try {
+  // windowClass为已创建/获取的Window实例
+  windowClass.onWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE, (isInDesktopMode: boolean) => {
+    console.info(`Succeeded in enabling the listener for window posture mode changes. isInDesktopMode: ${isInDesktopMode}`);
+  });
+} catch (exception) {
+  console.error(`Failed to enable the listener for window posture mode changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offWindowPostureModeChange
+
+offWindowPostureModeChange(mode: WindowPostureMode, callback?: Callback&lt;boolean&gt;): void
+
+关闭窗口所处指定姿态模式变化的监听。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| mode | [WindowPostureMode](arkts-apis-window-e.md#windowposturemode) | 是 | 监听的窗口姿态模式。 |
+| callback | Callback&lt;boolean&gt; | 否 | 回调函数。返回当前窗口是否处于指定的窗口姿态模式。如果传入参数，则关闭该监听；如果不传入参数，则关闭所有注册到指定窗口姿态模式的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
+| 1300016 | Parameter error. Possible cause: Invalid parameter range. |
+
+**示例：**
+
+```ts
+const callback = (isInDesktopMode: boolean) => {
+  // ...
+}
+try {
+  // windowClass为已创建/获取的Window实例
+  // 通过on接口开启监听
+  windowClass.onWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE, callback);
+  // 关闭指定callback的监听
+  windowClass.offWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE, callback);
+  // 如果通过onWindowPostureModeChange接口开启多个callback进行监听，同时关闭所有监听
+  windowClass.offWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE);
+} catch (exception) {
+  console.error(`Failed to disable the listener for window posture mode change. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -11525,12 +11919,12 @@ convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, valu
 >
 >  ![orientationAndRotation](figures/orientationAndRotation.PNG)
 >
-  | 屏幕角度 | 屏幕方向 | 窗口方向 |
-  | -------  | ------- | ------- |
-  | 0        | PORTRAIT  | PORTRAIT   |
-  | 90       | LANDSCAPE | LANDSCAPE_INVERTED |
-  | 180      | PORTRAIT_INVERTED | PORTRAIT_INVERTED |
-  | 270      | LANDSCAPE_INVERTED | LANDSCAPE |
+  | value | WINDOW_ORIENTATION<br>（窗口方向） | DISPLAY_ORIENTATION<br>（屏幕方向） | DISPLAY_ROTATION<br>（屏幕角度） |
+  | ----- | ---------------------------------- | ----------------------------------- | --------------------------------- |
+  | 0     | 竖屏（PORTRAIT）                   | 竖屏（PORTRAIT）                    | 顺时针旋转0°                      |
+  | 1     | 反向横屏（LANDSCAPE_INVERTED）     | 横屏（LANDSCAPE）                   | 顺时针旋转90°                     |
+  | 2     | 反向竖屏（PORTRAIT_INVERTED）      | 反向竖屏（PORTRAIT_INVERTED）       | 顺时针旋转180°                    |
+  | 3     | 横屏（LANDSCAPE）                  | 反向横屏（LANDSCAPE_INVERTED）      | 顺时针旋转270°                    |
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -11542,13 +11936,13 @@ convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, valu
 | -------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | from     | [RotationInfoType](arkts-apis-window-e.md#rotationinfotype23)  | 是   | 待转换的值的类型。 |
 | to       | [RotationInfoType](arkts-apis-window-e.md#rotationinfotype23)  | 是   | 目标值的类型。 |
-| value    | number               | 是   | 待转换的值。该参数为整数，浮点数输入将向下取整，取值范围为[0, 3]，范围外为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。|
+| value    | number               | 是   | 待转换的值。该参数为整数，浮点数输入将向下取整，取值范围为[0, 3]，范围外为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。值的含义取决于参数from的类型，具体对应关系详见上文表格。|
 
 **返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| number | 返回目标类型的转换值。 |
+| number | 返回目标类型的转换值，该参数为整数，取值范围为[0, 3]。值的含义取决于参数to的类型，具体对应关系详见上文表格。 |
 
 **错误码：**
 
@@ -11567,6 +11961,7 @@ try {
   let originalValue: number = 0;
   let fromType: window.RotationInfoType = window.RotationInfoType.WINDOW_ORIENTATION;
   let toType: window.RotationInfoType = window.RotationInfoType.DISPLAY_ORIENTATION;
+  // windowClass为已创建/获取的Window实例
   let convertedValue: number = windowClass.convertOrientationAndRotation(fromType, toType, originalValue);
   console.info(`Convert ${originalValue} of type: ${fromType} to ${convertedValue} of type: ${toType}`);
 } catch (exception) {
@@ -11584,7 +11979,7 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties, callback:
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，建议使用Promise方式的[setWindowSystemBarProperties()](#setwindowsystembarproperties9)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[setWindowSystemBarProperties()](#setwindowsystembarproperties9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -11628,15 +12023,15 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       windowClass = data;
-      let SystemBarProperties: window.SystemBarProperties = {
+      let systemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        // 以下两个属性从API Version8开始支持
+        // 以下两个属性从API version 8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
       try {
-        windowClass.setWindowSystemBarProperties(SystemBarProperties, (err: BusinessError) => {
+        windowClass.setWindowSystemBarProperties(systemBarProperties, (err: BusinessError) => {
           const errCode: number = err.code;
           if (errCode) {
             console.error(`Failed to set the system bar properties. Cause code: ${err.code}, message: ${err.message}`);
@@ -11662,7 +12057,7 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncC
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，建议使用Promise方式的[setWindowSystemBarEnable()](#setwindowsystembarenable9)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)替代。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -11736,7 +12131,7 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&l
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，建议使用Promise方式的[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -11746,7 +12141,9 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&l
 
 在OpenHarmony 5.0.2之前，该接口在所有设备中可正常调用。
 
-从OpenHarmony 5.0.2开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
+从OpenHarmony 5.0.2开始至OpenHarmony 5.1.1之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于自由窗口状态的设备及不支持自由窗口状态的设备上可正常调用。
+
+从OpenHarmony 5.1.1开始，该接口在PC/2in1设备、其他设备的[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)调用不生效也不报错；在其他设备和其他模式中可正常调用。
 
 **参数：**
 
@@ -11762,7 +12159,7 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&l
 | 错误码ID | 错误信息                                                                                                     |
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002  | This window state is abnormal.                                                                               |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.                                                                               |
 | 1300003  | This window manager service works abnormally.                                                                |
 
 **示例：**
@@ -11826,6 +12223,7 @@ show(callback: AsyncCallback&lt;void&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.show((err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -11859,6 +12257,7 @@ show(): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.show();
 promise.then(() => {
   console.info('Succeeded in showing the window.');
@@ -11890,6 +12289,7 @@ destroy(callback: AsyncCallback&lt;void&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.destroy((err: BusinessError) => {
   const errCode: number = err.code;
   if (err.code) {
@@ -11923,6 +12323,7 @@ destroy(): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.destroy();
 promise.then(() => {
   console.info('Succeeded in destroying the window.');
@@ -11950,7 +12351,7 @@ moveTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 | 参数名   | 类型                      | 必填 | 说明                                              |
 | -------- | ------------------------- | ---- | ------------------------------------------------- |
 | x        | number                    | 是   | 窗口在x轴方向移动到的坐标位置，单位为px，值为正表示位置在x轴右侧；值为负表示位置在x轴左侧；值为0表示位置在x轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
-| y        | number                    | 是   | 窗口在y轴方向移动到的坐标位置，单位为px，值为正表示位置在y轴下侧；值为负表示位置在y轴上侧；值为0表示位置在x轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
+| y        | number                    | 是   | 窗口在y轴方向移动到的坐标位置，单位为px，值为正表示位置在y轴下侧；值为负表示位置在y轴上侧；值为0表示位置在y轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。                                        |
 
 **示例：**
@@ -11958,6 +12359,7 @@ moveTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.moveTo(300, 300, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -12000,6 +12402,7 @@ moveTo(x: number, y: number): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.moveTo(300, 300);
 promise.then(() => {
   console.info('Succeeded in moving the window.');
@@ -12016,7 +12419,7 @@ resetSize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): v
 
 应用主窗口与子窗口存在大小限制，默认宽度范围：[320, 1920]，默认高度范围：[240, 1920]，单位为vp。
 
-应用主窗口与子窗口的最小宽度与最小高度可由产品端进行配置，配置后的最小宽度与最小高度以产品段配置值为准，具体尺寸限制范围可以通过[getWindowLimits](#getwindowlimits11)接口进行查询。
+应用主窗口与子窗口的最小宽度与最小高度可由产品端进行配置，配置后的最小宽度与最小高度以产品端配置值为准，具体尺寸限制范围可以通过[getWindowLimits](#getwindowlimits11)接口进行查询。
 
 系统窗口存在大小限制，宽度范围：(0, 1920]，高度范围：(0, 1920]，单位为vp。
 
@@ -12038,8 +12441,8 @@ resetSize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): v
 
 | 参数名   | 类型                      | 必填 | 说明                       |
 | -------- | ------------------------- | ---- | -------------------------- |
-| width    | number                    | 是   | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。 |
-| height   | number                    | 是   | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。 |
+| width    | number                    | 是   | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。 |
+| height   | number                    | 是   | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。                 |
 
 **示例：**
@@ -12047,6 +12450,7 @@ resetSize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): v
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.resetSize(500, 1000, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -12065,7 +12469,7 @@ resetSize(width: number, height: number): Promise&lt;void&gt;
 
 应用主窗口与子窗口存在大小限制，默认宽度范围：[320, 1920]，默认高度范围：[240, 1920]，单位为vp。
 
-应用主窗口与子窗口的最小宽度与最小高度可由产品端进行配置，配置后的最小宽度与最小高度以产品段配置值为准，具体尺寸限制范围可以通过[getWindowLimits](#getwindowlimits11)接口进行查询。
+应用主窗口与子窗口的最小宽度与最小高度可由产品端进行配置，配置后的最小宽度与最小高度以产品端配置值为准，具体尺寸限制范围可以通过[getWindowLimits](#getwindowlimits11)接口进行查询。
 
 系统窗口存在大小限制，宽度范围：(0, 1920]，高度范围：(0, 1920]，单位为vp。
 
@@ -12087,8 +12491,8 @@ resetSize(width: number, height: number): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| width  | number | 是   | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。 |
-| height | number | 是   | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。 |
+| width  | number | 是   | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。 |
+| height | number | 是   | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。 |
 
 **返回值：**
 
@@ -12101,6 +12505,7 @@ resetSize(width: number, height: number): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.resetSize(500, 1000);
 promise.then(() => {
   console.info('Succeeded in changing the window size.');
@@ -12132,6 +12537,7 @@ getProperties(callback: AsyncCallback&lt;WindowProperties&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.getProperties((err: BusinessError, data) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -12165,6 +12571,7 @@ getProperties(): Promise&lt;WindowProperties&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.getProperties();
 promise.then((data) => {
   console.info('Succeeded in obtaining the window properties. Data: ' + JSON.stringify(data));
@@ -12179,18 +12586,13 @@ getAvoidArea(type: AvoidAreaType, callback: AsyncCallback&lt;AvoidArea&gt;): voi
 
 获取当前窗口内容规避的区域；如系统栏区域、刘海屏区域、手势区域、软键盘区域等与窗口内容重叠时，需要窗口内容避让的区域。
 
-主窗口/子窗口：
-- [自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下，仅存在固定态软键盘（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD）类型的避让区域。
-- 主窗口在非自由窗口状态的自由悬浮窗口模式下，仅存在系统栏（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM）类型的避让区域。
-- 主窗口在其余场景下，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
-- 子窗口在非自由窗口状态或非自由悬浮窗口模式下，仅当窗口的位置和大小与主窗口一致时，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
-
 全局悬浮窗、模态窗或系统窗口：
-- 仅在调用[setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18)方法使能后，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
+- 仅在调用[setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18)方法使能后，才能通过此接口获取避让区域。
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[getWindowAvoidArea()](#getwindowavoidarea9)替代。
+> - TV 设备不显示状态栏。若未显式设置状态栏隐藏，调用该接口仍可获取状态栏对应的避让区域。
+> - 从API version 7开始支持，从API version 9开始废弃，建议使用[getWindowAvoidArea()](#getwindowavoidarea9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -12199,7 +12601,7 @@ getAvoidArea(type: AvoidAreaType, callback: AsyncCallback&lt;AvoidArea&gt;): voi
 | 参数名   | 类型                                            | 必填 | 说明                                                         |
 | -------- |-----------------------------------------------| ---- | ------------------------------------------------------------ |
 | type     | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)              | 是   | 表示避让区类型。|
-| callback | AsyncCallback&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | 是   | 回调函数。返回窗口内容避让区域。                             |
+| callback | AsyncCallback&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | 是   | 回调函数。返回窗口内容避让区域。当获取到的避让区域值全为0，表示避让区域为空。 |
 
 **示例：**
 
@@ -12207,6 +12609,7 @@ getAvoidArea(type: AvoidAreaType, callback: AsyncCallback&lt;AvoidArea&gt;): voi
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let type = window.AvoidAreaType.TYPE_SYSTEM;
+// windowClass为已创建/获取的Window实例
 windowClass.getAvoidArea(type, (err: BusinessError, data) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -12223,18 +12626,13 @@ getAvoidArea(type: AvoidAreaType): Promise&lt;AvoidArea&gt;
 
 获取当前窗口内容规避的区域；如系统栏区域、刘海屏区域、手势区域、软键盘区域等与窗口内容重叠时，需要窗口内容避让的区域。
 
-主窗口/子窗口：
-- [自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下，仅存在固定态软键盘（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD）类型的避让区域。
-- 主窗口在非自由窗口状态的自由悬浮窗口模式下，仅存在系统栏（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM）类型的避让区域。
-- 主窗口在其余场景下，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
-- 子窗口在非自由窗口状态或非自由悬浮窗口模式下，仅当窗口的位置和大小与主窗口一致时，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
-
 全局悬浮窗、模态窗或系统窗口：
-- 仅在调用[setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18)方法使能后，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
+- 仅在调用[setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18)方法使能后，才能通过此接口获取避让区域。
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[getWindowAvoidArea()](#getwindowavoidarea9)替代。
+> - TV设备不显示状态栏。若未显式设置状态栏隐藏，调用该接口仍可获取状态栏对应的避让区域。
+> - 从API version 7开始支持，从API version 9开始废弃，建议使用[getWindowAvoidArea()](#getwindowavoidarea9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -12248,7 +12646,7 @@ getAvoidArea(type: AvoidAreaType): Promise&lt;AvoidArea&gt;
 
 | 类型                                      | 说明                                |
 |-----------------------------------------| ----------------------------------- |
-| Promise&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | Promise对象。返回窗口内容避让区域。 |
+| Promise&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | Promise对象。返回窗口内容避让区域。当获取到的避让区域值全为0，表示避让区域为空。 |
 
 **示例：**
 
@@ -12256,6 +12654,7 @@ getAvoidArea(type: AvoidAreaType): Promise&lt;AvoidArea&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let type = window.AvoidAreaType.TYPE_SYSTEM;
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.getAvoidArea(type);
 promise.then((data) => {
   console.info('Succeeded in obtaining the area. Data:' + JSON.stringify(data));
@@ -12276,7 +12675,7 @@ setFullScreen(isFullScreen: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃，建议联合使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代实现全屏。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -12333,7 +12732,7 @@ setFullScreen(isFullScreen: boolean): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃，建议联合使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代实现全屏。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -12656,14 +13055,14 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       windowClass = data;
-      let SystemBarProperties: window.SystemBarProperties = {
+      let systemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        // 以下两个属性从API Version8开始支持
+        // 以下两个属性从API version 8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
-      windowClass.setSystemBarProperties(SystemBarProperties, (err) => {
+      windowClass.setSystemBarProperties(systemBarProperties, (err) => {
         const errCode: number = err.code;
         if (errCode) {
           console.error(`Failed to set the system bar properties. Cause code: ${err.code}, message: ${err.message}`);
@@ -12722,14 +13121,14 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       windowClass = data;
-      let SystemBarProperties: window.SystemBarProperties = {
+      let systemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        // 以下两个属性从API Version8开始支持
+        // 以下两个属性从API version 8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
-      let promise = windowClass.setSystemBarProperties(SystemBarProperties);
+      let promise = windowClass.setSystemBarProperties(systemBarProperties);
       promise.then(() => {
         console.info('Succeeded in setting the system bar properties.');
       }).catch((err: BusinessError) => {
@@ -12761,13 +13160,14 @@ loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名   | 类型                      | 必填 | 说明                 |
 | -------- | ------------------------- | ---- | -------------------- |
 | path     | string                    | 是   | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。不支持相对路径写法，需与main_pages.json或config.json中的src取值保持一致。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。           |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当页面内容加载成功，err为undefined，否则为错误对象。           |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.loadContent('pages/page2/page3', (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -12811,6 +13211,7 @@ loadContent(path: string): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.loadContent('pages/page2/page3');
 promise.then(() => {
   console.info('Succeeded in loading the content.');
@@ -12842,6 +13243,7 @@ isShowing(callback: AsyncCallback&lt;boolean&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.isShowing((err: BusinessError, data) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -12875,6 +13277,7 @@ isShowing(): Promise&lt;boolean&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.isShowing();
 promise.then((data) => {
   console.info('Succeeded in checking whether the window is showing. Data: ' + JSON.stringify(data));
@@ -12906,6 +13309,7 @@ on(type: 'systemAvoidAreaChange', callback: Callback&lt;AvoidArea&gt;): void
 **示例：**
 
 ```ts
+// windowClass为已创建/获取的Window实例
 windowClass.on('systemAvoidAreaChange', (data) => {
   console.info('Succeeded in enabling the listener for system avoid area changes. Data: ' + JSON.stringify(data));
 });
@@ -12936,6 +13340,7 @@ off(type: 'systemAvoidAreaChange', callback?: Callback&lt;AvoidArea&gt;): void
 const callback = (avoidArea: window.AvoidArea) => {
   // ...
 }
+// windowClass为已创建/获取的Window实例
 windowClass.on('systemAvoidAreaChange', callback);
 windowClass.off('systemAvoidAreaChange', callback);
 // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -12965,6 +13370,7 @@ isSupportWideGamut(callback: AsyncCallback&lt;boolean&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.isSupportWideGamut((err: BusinessError, data) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -12998,6 +13404,7 @@ isSupportWideGamut(): Promise&lt;boolean&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.isSupportWideGamut();
 promise.then((data) => {
   console.info('Succeeded in checking whether the window support WideGamut. Data: ' + JSON.stringify(data));
@@ -13031,6 +13438,7 @@ setColorSpace(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.setColorSpace(window.ColorSpace.WIDE_GAMUT, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13071,6 +13479,7 @@ setColorSpace(colorSpace:ColorSpace): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.setColorSpace(window.ColorSpace.WIDE_GAMUT);
 promise.then(() => {
   console.info('Succeeded in setting window colorspace.');
@@ -13102,6 +13511,7 @@ getColorSpace(callback: AsyncCallback&lt;ColorSpace&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.getColorSpace((err: BusinessError, data) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13135,6 +13545,7 @@ getColorSpace(): Promise&lt;ColorSpace&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.getColorSpace();
 promise.then((data) => {
   console.info('Succeeded in getting window color space. Cause:' + JSON.stringify(data));
@@ -13169,6 +13580,7 @@ setBackgroundColor(color: string, callback: AsyncCallback&lt;void&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let color: string = '#00ff33';
+// windowClass为已创建/获取的Window实例
 windowClass.setBackgroundColor(color, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13210,6 +13622,7 @@ setBackgroundColor(color: string): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let color: string = '#00ff33';
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.setBackgroundColor(color);
 promise.then(() => {
   console.info('Succeeded in setting the background color.');
@@ -13246,6 +13659,7 @@ setBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let brightness: number = 1;
+// windowClass为已创建/获取的Window实例
 windowClass.setBrightness(brightness, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13289,6 +13703,7 @@ setBrightness(brightness: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let brightness: number = 1;
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.setBrightness(brightness);
 promise.then(() => {
   console.info('Succeeded in setting the brightness.');
@@ -13321,6 +13736,7 @@ setDimBehind(dimBehindValue: number, callback: AsyncCallback&lt;void&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.setDimBehind(0.5, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13360,6 +13776,7 @@ setDimBehind(dimBehindValue: number): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.setDimBehind(0.5);
 promise.then(() => {
   console.info('Succeeded in setting the dimness.');
@@ -13394,6 +13811,7 @@ setFocusable(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isFocusable: boolean = true;
+// windowClass为已创建/获取的Window实例
 windowClass.setFocusable(isFocusable, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13435,6 +13853,7 @@ setFocusable(isFocusable: boolean): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isFocusable: boolean = true;
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.setFocusable(isFocusable);
 promise.then(() => {
   console.info('Succeeded in setting the window to be focusable.');
@@ -13469,6 +13888,7 @@ setKeepScreenOn(isKeepScreenOn: boolean, callback: AsyncCallback&lt;void&gt;): v
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isKeepScreenOn: boolean = true;
+// windowClass为已创建/获取的Window实例
 windowClass.setKeepScreenOn(isKeepScreenOn, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13509,11 +13929,12 @@ setKeepScreenOn(isKeepScreenOn: boolean): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isKeepScreenOn: boolean = true;
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.setKeepScreenOn(isKeepScreenOn);
 promise.then(() => {
   console.info('Succeeded in setting the screen to be always on.');
 }).catch((err: BusinessError) => {
-  console.info(`Failed to set the screen to be always on. Cause code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set the screen to be always on. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -13543,6 +13964,7 @@ setOutsideTouchable(touchable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.setOutsideTouchable(true, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13584,6 +14006,7 @@ setOutsideTouchable(touchable: boolean): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.setOutsideTouchable(true);
 promise.then(() => {
   console.info('Succeeded in setting the area to be touchable.');
@@ -13617,6 +14040,7 @@ setPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;): voi
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isPrivacyMode: boolean = true;
+// windowClass为已创建/获取的Window实例
 windowClass.setPrivacyMode(isPrivacyMode, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13657,6 +14081,7 @@ setPrivacyMode(isPrivacyMode: boolean): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isPrivacyMode: boolean = true;
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.setPrivacyMode(isPrivacyMode);
 promise.then(() => {
   console.info('Succeeded in setting the window to privacy mode.');
@@ -13691,6 +14116,7 @@ setTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isTouchable = true;
+// windowClass为已创建/获取的Window实例
 windowClass.setTouchable(isTouchable, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13732,6 +14158,7 @@ setTouchable(isTouchable: boolean): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isTouchable = true;
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.setTouchable(isTouchable);
 promise.then(() => {
   console.info('Succeeded in setting the window to be touchable.');

@@ -29,7 +29,41 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. 创建拍照输出流。
+2. 查询相机是否支持拍照模式。
+
+   通过[getSupportedSceneModes](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedscenemodes11)接口获取传入镜头支持的模式，查询是否支持拍照模式。
+
+   ```ts
+   function isCaptureModeSupported(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): boolean
+   {
+     try {
+       let modeArray = cameraManager.getSupportedSceneModes(cameraDevice);
+       return modeArray.includes(camera.SceneMode.NORMAL_PHOTO);
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`failed to getSupportedSceneModes, err code: ${err.code}`);
+       return false;
+     }
+   }
+   ```
+
+3. 通过[getSupportedOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11)接口获取镜头支持的[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)列表。
+
+   ```ts
+   function getSupportedOutputCapability(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): camera.CameraOutputCapability | undefined
+   {
+     try {
+       // 接口传入要使能的模式。
+       return cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`failed to getSupportedOutputCapability, err code: ${err.code}`);
+       return undefined;
+     }
+   }
+   ```
+
+4. 创建拍照输出流。
 
    通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的photoProfiles属性，可获取当前设备支持的拍照输出流。通过[createPhotoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11)方法传入支持的某一个输出流[Profile](../../reference/apis-camera-kit/arkts-apis-camera-i.md#profile)创建拍照输出流。
 
@@ -54,7 +88,7 @@
    }
    ```
 
-3. 设置拍照[on('photoAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11)的回调，并将拍照的buffer保存为图片。
+5. 设置拍照[on('photoAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11)的回调，并将拍照的buffer保存为图片。
 
    Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -62,7 +96,7 @@
 
    需要在[photoOutput.on('photoAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11)接口获取到buffer时，将buffer在安全控件中保存到媒体库。
 
-   <!-- @[camera_photoAvailable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   <!-- @[camera_photoAvailable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
    
    ``` TypeScript
    setPhotoOutputCb(photoOutput: camera.PhotoOutput, context: Context) {
@@ -70,7 +104,7 @@
      photoOutput.on('photoAvailable', (errCode: BusinessError, photo: camera.Photo): void => {
        console.info('getPhoto start');
        if (errCode || photo === undefined) {
-         console.error('getPhoto failed, err: ${errCode}');
+         console.error(`getPhoto failed, err: ${errCode}`);
          return;
        }
          // 如需要在图库中看到所保存的图片、视频资源，请使用用户无感的安全控件创建媒体资源。
@@ -111,14 +145,14 @@
    }
    ```
 
-4. 参数配置。
+6. 参数配置。
 
    配置相机的参数可以调整拍照的一些功能，包括闪光灯、变焦、焦距等。
 
 
-   <!-- @[camera_param_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-   ```ts
-   function configuringSession(photoSession: camera.PhotoSession): void {
+   <!-- @[camera_param_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
+   ``` TypeScript
+   configuringSession(photoSession: camera.PhotoSession | camera.VideoSession): void {
      // 判断设备是否支持闪光灯。
      let flashStatus: boolean = false;
      try {
@@ -129,18 +163,18 @@
      }
      console.info(`Returned with the flash light support status: ${flashStatus}`);
      if (flashStatus) {
-       // 判断是否支持自动闪光灯模式。
+       // 判断是否支持关闭闪光灯模式。
        let flashModeStatus: boolean = false;
        try {
-         flashModeStatus = photoSession?.isFlashModeSupported(camera.FlashMode.FLASH_MODE_AUTO);
+         flashModeStatus = photoSession?.isFlashModeSupported(camera.FlashMode.FLASH_MODE_CLOSE);
        } catch (error) {
          let err = error as BusinessError;
          console.error(`Failed to check whether the flash mode is supported. error: ${err}`);
        }
        if (flashModeStatus) {
-         // 设置自动闪光灯模式。
+         // 设置闪光灯模式关闭。
          try {
-           photoSession?.setFlashMode(camera.FlashMode.FLASH_MODE_AUTO);
+           photoSession?.setFlashMode(camera.FlashMode.FLASH_MODE_CLOSE);
          } catch (error) {
            let err = error as BusinessError;
            console.error(`Failed to set the flash mode. error: ${err}`);
@@ -165,7 +199,7 @@
        }
      }
      // 获取相机支持的可变焦距比范围。
-     let zoomRatioRange: Array<number> = [];
+     let zoomRatioRange: number[] = [];
      try {
        zoomRatioRange = photoSession?.getZoomRatioRange();
      } catch (error) {
@@ -185,7 +219,7 @@
    }
    ```
 
-5. 触发拍照。
+7. 触发拍照。
 
    通过photoOutput的[capture](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-2)方法，执行拍照任务。该方法有两个参数，第一个参数为拍照设置参数的setting，setting中可以设置照片的质量和旋转角度，第二参数为回调函数。
 
@@ -252,7 +286,7 @@
 
 ### 如何正确设置画质优先策略
 
-为了正确的在单段式拍照中设置画质优先策略，高性能拍照功能提供了如下两个接口：
+为了正确地在单段式拍照中设置画质优先策略，高性能拍照功能提供了如下两个接口：
 
 - [isPhotoQualityPrioritizationSupported](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#isphotoqualityprioritizationsupported21)：查询当前设备是否支持指定的画质优先策略。返回true表示支持，返回false表示不支持。在进行设置画质优先策略之前，必须先查询将要设置的画质优先策略在当前设备上是否可用。 
 - [setPhotoQualityPrioritization](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#setphotoqualityprioritization21)：画质优先策略设置接口，通过该接口设置对应的画质优先策略，实现高性能拍照。

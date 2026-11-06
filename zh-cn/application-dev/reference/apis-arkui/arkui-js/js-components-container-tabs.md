@@ -113,4 +113,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001127125116](figures/zh-cn_image_0000001127125116.gif)
+![zh-cn_image_0000001127125116](figures/tab-example.gif)

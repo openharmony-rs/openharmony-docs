@@ -6,22 +6,21 @@
 <!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
 <!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=2e23c2b6aa53f33aac5a467fbcaf0f2f7a3d3bf0 translatedAt=2026-10-30T03:21:54.321Z pushedAt=2026-08-20T12:06:28.830Z nl=1 -->
 
 ## When to Use
 
 The [OH_ContentEmbed](../reference/apis-content-embed-kit/capi-contentembed.md) content embedding module provides an object editing framework and technology for inter-application document embedding and collaborative editing.
 
-An OE client application is an application that embeds documents from other applications. By calling [OE framework APIs](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md), it can embed external documents, display document snapshots, and start OE server applications on demand to edit documents.
+An OE client application embeds external documents into its own application. By calling the APIs provided by [content_embed_proxy.h](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md) in the OE framework layer, it can embed external documents, display document snapshots, and launch an OE server application on demand to edit the documents.
 
 Typical use cases include:
-
 - Embedding an Excel spreadsheet into a CAD document and starting Excel to edit the spreadsheet by clicking the embedded object.
 - Embedding documents in various formats, such as images and tables, into a document editor.
 - Embedding documents from other applications into a note-taking application for cross-application collaboration.
 
 ## Constraints
-
-Before using the APIs, check whether the device supports the `SystemCapability.ContentEmbed.ObjectEditor` system capability. For details about how to check system capabilities, see [Querying Whether a Specified System Capability Is Supported](../reference/common/init.md#caniuse). In addition, request the `ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION` permission. For details about how to configure the permission, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
+Before using the APIs, ensure that the device supports the `SystemCapability.ContentEmbed.ObjectEditor` system capability. Call [canIUse()](../reference/common/syscap-ndk-8h.md#caniuse) to check whether the specified capability is supported. Also request the `ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION` permission. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
 
 ## Available APIs
 
@@ -32,7 +31,7 @@ Common APIs are listed in the following table. For more API details, see [OH_Con
 | API | Description |
 | ------- | ---- |
 | OH_ContentEmbed_CreateDocumentByFile | Creates an [OE document](content-embed-kit-terminology.md#oe-document) based on the path of the embedded document. |
-| OH_ContentEmbed_CreateDocumentByOEId | Creates an OE document based on an [OEID](content-embed-kit-terminology.md#oeid). |
+| OH_ContentEmbed_CreateDocumentByOEid | Creates an OE document using an [OEID](content-embed-kit-terminology.md#oeid).|
 | OH_ContentEmbed_LoadDocumentFromFile | Loads an OE document from an existing [OE format file](content-embed-kit-terminology.md#oe-format-file). |
 | OH_ContentEmbed_CreateExtensionProxy | Creates a [client OE object](content-embed-kit-terminology.md#client-oe-object). |
 | OH_ContentEmbed_DestroyExtensionProxy | Destroys the client OE object and releases related resources. |
@@ -53,18 +52,15 @@ Common APIs are listed in the following table. For more API details, see [OH_Con
 The following example shows the complete process of developing an OE client application using Native APIs.
 
 ### Adding Dynamic Libraries
+Add the following libraries to `src/main/cpp/CMakeLists.txt` in the native project:
 
-Add the following libraries to `CMakeLists.txt`.
-
-```text
-# content embed
-libcontent_embed_ndk.so
-# hilog
-libhilog_ndk.z.so
-# ace
-libace_napi.z.so
-# pixelmap
-libpixelmap.so
+```txt
+target_link_libraries(entry PUBLIC
+    libcontent_embed_ndk.so
+    libhilog_ndk.z.so
+    libace_napi.z.so
+    libpixelmap.so
+)
 ```
 
 ### Including Header Files
@@ -169,6 +165,7 @@ void QueryFormatByOEid(const std::string &oeid, const std::string &locale)
         OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_GetContentEmbedFormatByOEidAndLocale failed, errCode: %{public}d.", errCode);
         // Destroy the ContentEmbed_Format object if the query fails.
         OH_ContentEmbed_DestroyContentEmbedFormat(ceFormat);
+        return;
     }
     char name[MAX_NAME_LENGTH];
     char description[MAX_DESCRIPTION_LENGTH];
@@ -277,7 +274,7 @@ void ClientCallBack_OnUpdateFunc(ContentEmbed_ExtensionProxy *proxy)
 
 void ClientCallBack_OnErrorFunc(ContentEmbed_ExtensionProxy *proxy, ContentEmbed_ErrorCode error)
 {
-    OH_LOG_INFO(LOG_APP, "Enter ClientCallBack_OnErrorFunc, error: %{public}d", error);
+    OH_LOG_ERROR(LOG_APP, "Enter ClientCallBack_OnErrorFunc, error: %{public}d", error);
 }
 
 void ClientCallBack_OnEditingFinishedFunc(ContentEmbed_ExtensionProxy *proxy, bool dataModified)

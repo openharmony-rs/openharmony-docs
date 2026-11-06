@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口进行线程安全开发，通过napi_create_threadsafe_function创建线程安全函数，支持多线程间安全调用ArkTS方法，避免竞争条件和死锁。"
+keywords: [Node-API, 线程安全, napi_create_threadsafe_function, 多线程, 竞争条件, 死锁, 线程间通信, 异步计算]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口进行线程安全开发
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 
 ## 场景介绍
@@ -73,7 +81,7 @@
            auto result = future.get();
            OH_LOG_INFO(LOG_APP, "XXX, Result from JS %{public}s", result.c_str());
        } catch (const std::exception &e) {
-           OH_LOG_INFO(LOG_APP, "XXX, Result from JS %{public}s", e.what());
+           OH_LOG_ERROR(LOG_APP, "XXX, Result from JS %{public}s", e.what());
        }
    }
    
@@ -264,7 +272,7 @@
    void NativeThread(void* arg)
    {
        auto* data = static_cast<ThreadData*>(arg);
-       OH_LOG_INFO(LOG_APP, "[C++ SubThread] Received from Worker: %{public}s\n", data->inputStr.c_str());
+       OH_LOG_INFO(LOG_APP, "[C++ SubThread] Received from %{public}s\n", data->inputStr.c_str());
        std::string str = "Hello from C++!";
        std::string msg = "Echo of " + str;
        char* cstr = strdup(msg.c_str());
@@ -389,7 +397,7 @@
    
    port.onmessage = (e: MessageEvents) => {
      console.info('Worker thread received:' + e.data);
-     nativeModule.startWithCallback('Hello', (result: string) => {
+     nativeModule.startWithCallback('Worker', (result: string) => {
        console.info('[Worker] Got from native:', result);
        port.postMessage(result);
      });
@@ -425,9 +433,9 @@
    ``` txt
    运行结果：
    Worker thread received:Start
-   [C++ SubThread] Received from Worker: Hello
+   [C++ SubThread] Received from Worker
    [Worker] Got from native: Echo of Hello from C++!
-   [Main] Received: Echo of Hello from C++
+   [Main] Received: Echo of Hello from C++!
    ```
 
 ### 基于[Taskpool](../../application-dev/arkts-utils/taskpool-introduction.md)实现的C++子线程与ArkTS子线程交互场景
@@ -442,8 +450,8 @@
 
    @Concurrent
    function nativeCall(input : string): void {
-     console.info('Taskpool thread received:%s', input);
-     nativeModule.startWithCallback('Hello', (result: string) => {
+     console.info('Taskpool thread received:', input);
+     nativeModule.startWithCallback('Taskpool', (result: string) => {
        console.info('[Taskpool] Got from native:', result);
      });
    }
@@ -468,6 +476,6 @@
    ``` txt
    运行结果：
    Taskpool thread received:Start
-   [C++ SubThread] Received from Worker: Hello
+   [C++ SubThread] Received from Taskpool
    [Taskpool] Got from native: Echo of Hello from C++!
    ```

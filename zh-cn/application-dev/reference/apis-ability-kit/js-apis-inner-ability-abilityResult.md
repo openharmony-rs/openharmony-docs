@@ -6,7 +6,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-定义UIAbility被拉起并退出后返回给调用方的结果码和数据。
+定义[UIAbility](../../application-models/ability-terminology.md#uiability)被拉起并退出后返回给调用方的结果码和数据。
 
 > **说明：**
 >
@@ -39,4 +39,4 @@ FA模型下：可以通过[startAbilityForResult](js-apis-ability-featureAbility
 | 名称        |  类型                 | 只读 | 可选 | 说明                                                         |
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
 | resultCode  | number               | 否   | 否   | 目标方的UIAbility被拉起并退出后，目标方返回给拉起方的结果码。<br/>-&nbsp;正常情况下，返回目标方传递的结果码。<br/>-&nbsp;异常情况下，返回-1。                                |
-| want  | [Want](js-apis-app-ability-want.md) | 否   | 是   | 表示UIAbility被拉起并退出后返回的数据。 |
+| want  | [Want](js-apis-app-ability-want.md) | 否   | 是   | 表示UIAbility被拉起并退出后返回给调用方的数据，可以携带返回的参数或信息。不传入时默认为null。 |

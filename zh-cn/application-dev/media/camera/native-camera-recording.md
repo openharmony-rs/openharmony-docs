@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-录像也是相机应用的最重要功能之一，录像是循环帧的捕获。对于录像的流畅度，开发者可以参考[拍照参考](native-camera-shooting.md)中的步骤5，设置分辨率、闪光灯、焦距、照片质量及旋转角度等信息。
+录像是循环帧的捕获，同时也是相机应用的最重要功能之一。对于录像的流畅度，开发者可以参考拍照(C/C++)中的[开发步骤](native-camera-shooting.md#开发步骤)7，设置分辨率、闪光灯、焦距、照片质量及旋转角度等信息。
 
 ## 开发步骤
 
@@ -14,7 +14,7 @@
 
 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
-   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->
+   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->     
    
    ``` C
    #include <cstdint>
@@ -25,7 +25,6 @@
    #include <cstdio>
    #include <fcntl.h>
    #include <map>
-   #include <string>
    #include <vector>
    #include <native_buffer/native_buffer.h>
    #include "iostream"
@@ -71,11 +70,13 @@
    )
    ```
 
-3. 获取SurfaceId。
+3. 创建并打开相机设备，参考设备输入(C/C++)的[开发步骤](./native-camera-device-input.md#开发步骤)3-5。
+
+4. 获取SurfaceId。
 
    系统提供的[OH_AVRecorder_Create()](../../reference/apis-media-kit/capi-avrecorder-h.md#oh_avrecorder_create)接口可以创建一个录像AVRecorder实例，通过该实例的[OH_AVRecorder_GetInputSurface()](../../reference/apis-media-kit/capi-avrecorder-h.md#oh_avrecorder_getinputsurface)方法获取SurfaceId。
 
-4. 创建录像输出流。
+5. 创建录像输出流。
 
    根据传入的SurfaceId，通过[OH_CameraManager_GetSupportedCameraOutputCapability](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameraoutputcapability)接口获取[Camera_OutputCapability](../../reference/apis-camera-kit/capi-oh-camera-camera-outputcapability.md)能力，可以通过[Camera_OutputCapability](../../reference/apis-camera-kit/capi-oh-camera-camera-outputcapability.md)中的videoProfiles，获取当前设备支持的录像输出流。然后，定义创建录像的参数，通过OH_CameraManager_CreateVideoOutput方法创建录像输出流。
   
@@ -85,7 +86,7 @@
    >
    > - 在设置预览输出流的分辨率宽高前，需要先通过[OH_AVRecorder_Profile](../../reference/apis-media-kit/capi-avrecorder-oh-avrecorder-profile.md)查询视频帧支持可配置的宽高范围。
 
-   <!-- @[create_video_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @[create_video_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->     
    
    ``` C++
    Camera_ErrorCode NDKCamera::CreateVideoOutput(char *videoId)
@@ -95,7 +96,7 @@
            return CAMERA_INVALID_ARGUMENT;
        }
        ret_ = OH_CameraManager_CreateVideoOutput(cameraManager_, videoProfile_, videoId, &videoOutput_);
-       OH_LOG_ERROR(LOG_APP, " create video width: %{public}d, height: %{public}d, format: %{public}d",
+       OH_LOG_INFO(LOG_APP, " create video width: %{public}d, height: %{public}d, format: %{public}d",
            videoProfile_->size.width, videoProfile_->size.height, videoProfile_->format);
        if (videoId == nullptr || videoOutput_ == nullptr || ret_ != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "CreateVideoOutput failed.");
@@ -106,7 +107,7 @@
    }
    ```
 
-5. 开始录像。
+6. 开始录像。
 
    通过[OH_VideoOutput_Start()](../../reference/apis-camera-kit/capi-video-output-h.md#oh_videooutput_start)方法启动录像输出流。
 
@@ -126,16 +127,16 @@
    }
    ```
 
-6. 停止录像。
+7. 停止录像。
 
    通过[OH_VideoOutput_Stop()](../../reference/apis-camera-kit/capi-video-output-h.md#oh_videooutput_stop)方法停止录像输出流。
 
-   <!-- @[video_output_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @[video_output_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->   
    
    ``` C++
    Camera_ErrorCode NDKCamera::VideoOutputStop(void)
    {
-       OH_LOG_ERROR(LOG_APP, "enter VideoOutputStop.");
+       OH_LOG_INFO(LOG_APP, "enter VideoOutputStop.");
        ret_ = OH_VideoOutput_Stop(videoOutput_);
        if (ret_ != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "VideoOutputStop failed.");
@@ -173,12 +174,12 @@
 
 - 通过注册固定的error回调函数获取监听录像输出错误结果，callback返回录像输出接口使用错误时对应的错误码，错误码类型参见[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)。
 
-  <!-- @[video_callback_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  <!-- @[video_callback_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->     
   
   ``` C++
   void VideoOutputOnError(Camera_VideoOutput *videoOutput, Camera_ErrorCode errorCode)
   {
-      OH_LOG_INFO(LOG_APP, "VideoOutput errorCode = %{public}d", errorCode);
+      OH_LOG_ERROR(LOG_APP, "VideoOutput errorCode = %{public}d", errorCode);
   }
   ```
 

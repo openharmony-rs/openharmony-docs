@@ -6,11 +6,11 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-**TimePicker** is a component that allows users to select a time from the given range through scrolling.
+The **TimePicker** component is used to select time by sliding. It supports the 12-hour and 24-hour formats, multiple time formats (hour/minute/second), cyclic scrolling, style customization, and time range limitation. It is applicable to scenarios where users need to select time, such as schedule arrangement, time reservation, and task management. It improves user experience, reduces input errors, and can be quickly integrated into applications.
 
 >  **NOTE**
 >
-> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - Avoid changing component attributes during animation processes.
 >
@@ -19,14 +19,14 @@
 
 ## Child Components
 
-Not supported
+This component is a basic component and does not contain child components.
 
 
 ## APIs
 
 TimePicker(options?: TimePickerOptions)
 
-Creates a time picker, which uses the 24-hour time format by default.
+Creates a time picker, which uses the 24-hour time format by default. It is applicable to scenarios where time needs to be selected, such as scheduling, reminder settings, and time recording.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -36,7 +36,7 @@ Creates a time picker, which uses the 24-hour time format by default.
 
 | Name | Type                                           | Mandatory| Description                    |
 | ------- | ----------------------------------------------- | ---- | ------------------------ |
-| options | [TimePickerOptions](#timepickeroptions) | No  | Parameters of the time picker.|
+| options | [TimePickerOptions](#timepickeroptions) | No  | Parameters of the time picker. This parameter is passed when you need to customize the initial selected time, time format, and time range. If this parameter is not passed, the default settings are used. (The initial selected time is the current system time, the default time format is hour and minute, and the default time range is 00:00-23:59 (the default end time is 23:59:59).)|
 
 ## TimePickerOptions
 
@@ -47,9 +47,9 @@ Describes the parameters of the time picker.
 | Name                | Type                                           | Read Only| Optional| Description                                                        |
 | -------------------- | ----------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | selected             | Date                                            | No  | Yes  | Time of the selected item.<br>Default value: current system time<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| format<sup>11+</sup> | [TimePickerFormat](#timepickerformat11)| No  | Yes  | Time format.<br>Default value: **TimePickerFormat.HOUR_MINUTE**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| start<sup>18+</sup>  | Date                                            | No  | Yes  | Start time of the time picker.<br>Default value: **Date(0, 0, 0, 0, 0, 0)**<br>**NOTE**<br>1. Only the hour and minute values take effect.<br>2. If **start** is set and is not the default value, **loop** does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| end<sup>18+</sup>    | Date                                            | No  | Yes  | End time of the time picker.<br>Default value: **Date(0, 0, 0, 23, 59, 59)**.<br>**NOTE**<br>1. Only the hour and minute values take effect.<br>2. If **end** is set and is not the default value, **loop** does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| format<sup>11+</sup> | [TimePickerFormat](#timepickerformat11)| No  | Yes  | Time format.<br>Default value: **TimePickerFormat.HOUR_MINUTE**<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction**: This API can be used only in the stage model.|
+| start<sup>18+</sup>  | Date                                            | No  | Yes  | Start time of the time picker.<br>Default value: **00:00:00** (hour = 0, minute = 0)<br>**NOTE**<br>1. Only the hour and minute values take effect.<br>2. If **start** or **end** is set and is not the default value, **loop** does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 18.<br>**Model restriction**: This API can be used only in the stage model.|
+| end<sup>18+</sup>    | Date                                            | No  | Yes  | End time of the time picker.<br>Default value: **23:59:59** (hour = 23, minute = 59)<br>**NOTE**<br>1. Only the hour and minute values take effect.<br>2. If **start** or **end** is set and is not the default value, **loop** does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 18.<br>**Model restriction**: This API can be used only in the stage model.|
 
 Property modifications made to **TimePickerOptions** during the **TimePicker** scrolling process may not take effect.
 
@@ -63,19 +63,19 @@ Obtains the current system date and time.
 
 | Name  | Type  | Mandatory| Description  |
 | ------- | ------ | ---- | ------ |
-| value   | number&nbsp;\|&nbsp;string  | Yes| Date format.<br>**number**: number of milliseconds since 00:00:00 on January 1, 1970.<br>**string**: date string in formats such as 2025-02-20 08:00:00 or 2025-02-20T08:00:00.|
+| value   | number&nbsp;\|&nbsp;string  | Yes| Date format.<br>**number**: number of milliseconds since 00:00:00 on January 1, 1970. The value range is [0, +∞).<br>**string**: date string in formats such as 2025-02-20 08:00:00 or 2025-02-20T08:00:00.|
 
 **Method 3**: new Date(year: number, monthIndex: number, date?: number, hours?: number, minutes?: number, seconds?: number, ms?: number)
 
 | Name  | Type  | Mandatory| Description  |
 | --------| ------ | ---- | ------ |
 | year        | number | Yes  | Year, for example, **2025**.|
-| monthIndex  | number | Yes  | Month index, for example, **2** for March.|
+| monthIndex  | number | Yes  | Month index (value range: 0-11), where **0** indicates January and **11** indicates December. For example, the value **0** indicates January, and the value **2** indicates March. If the value is out of range, the date calculation will be incorrect.|
 | date        | number | No  | Date, for example, **10** (if **hours** is set, **date** cannot be omitted).|
-| hours       | number | No  | Hour, for example, **15** (if **minutes** is set, **hours** cannot be omitted).|
-| minutes     | number | No  | Minute, for example, **20** (if **seconds** is set, **minutes** cannot be omitted).|
-| seconds     | number | No  | Second, for example, **20** (if **ms** is set, **seconds** cannot be omitted).|
-| ms          | number | No  | Millisecond, for example, **10**.|
+| hours       | number | No  | Hour. The value range is [0, 23]. If the value is out of range, the date calculation will be incorrect. For example, **15** (if **minutes** is set, **hours** cannot be omitted). Unit: hour|
+| minutes     | number | No  | Minute. The value range is [0, 59]. If the value is out of range, the date calculation will be incorrect. For example, **20** (if **seconds** is set, **minutes** cannot be omitted). Unit: minute|
+| seconds     | number | No  | Second. The value range is [0, 59]. If the value is out of range, the date calculation will be incorrect. For example, **20** (if **ms** is set, **seconds** cannot be omitted). Unit: second|
+| ms          | number | No  | Millisecond. The value range is [0, 999]. If the value is out of range, the date calculation will be incorrect. For example, **10**. Unit: ms.|
 
 **Handling in the case of date configuration exceptions**
 
@@ -94,6 +94,8 @@ Enumerates time display formats of the time picker.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name              | Value| Description                    |
@@ -109,7 +111,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 useMilitaryTime(value: boolean)
 
-Sets whether the time is displayed in 24-hour format. If this attribute is not specified, the system time format is used by default.
+Sets whether the time is displayed in 24-hour format. If this attribute is not specified, the system time format is used by default. The 24-hour format is suitable for precise time recording and scheduling, while the 12-hour format is applicable to more intuitive time display requirements such as daily reminder settings.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -129,6 +131,8 @@ Sets whether the time is displayed in 24-hour format. If this attribute is not s
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -145,13 +149,15 @@ Sets the text color, font size, and font weight of edge items (the second item a
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes  | Text color, font size, and font weight for edge items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>}<br>} |
+| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes  | Text color, font size, and font weight of edge items (the second item above or below the selected item).<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>}<br>} |
 
 >  **NOTE**
 >
@@ -164,6 +170,8 @@ disappearTextStyle(style: Optional\<PickerTextStyle>)
 Sets the text color, font size, and font weight of edge items (the second item above or below the selected item). Compared with [disappearTextStyle<sup>10+</sup>](#disappeartextstyle10), this API supports the **undefined** type for the **style** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -185,6 +193,8 @@ Sets the text color, font size, and font weight of candidate items (the item imm
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -204,6 +214,8 @@ textStyle(style: Optional\<PickerTextStyle>)
 Sets the text color, font size, and font weight of candidate items (the item immediately adjacent to the selected item, above or below). Compared with [textStyle<sup>10+</sup>](#textstyle10), this API supports the **undefined** type for the **style** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -225,9 +237,9 @@ Sets the text color, font size, and font weight of the selected item.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+**Model restriction**: This API can be used only in the stage model.
 
-**Device behavior**: This API has no effect on wearables and works on other devices.
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
@@ -243,9 +255,9 @@ Sets the text color, font size, and font weight of the selected item. Compared w
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+**Model restriction**: This API can be used only in the stage model.
 
-**Device behavior**: This API has no effect on wearables and works on other devices.
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
@@ -257,9 +269,11 @@ Sets the text color, font size, and font weight of the selected item. Compared w
 
 loop(value: boolean)
 
-Sets whether to enable loop scrolling.
+Sets whether to enable loop scrolling. The loop mode is applicable to scenarios where time needs to be continuously scrolled, while the non-loop mode is applicable to scenarios where the time range is fixed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -267,7 +281,7 @@ Sets whether to enable loop scrolling.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether to enable loop scrolling.<br>- **true**: Enable loop scrolling.<br>- **false**: Disable loop scrolling.<br>Default value: **true**.|
+| value  | boolean | Yes  | Whether to enable loop scrolling.<br>- **true**: Enable loop scrolling.<br>- **false**: Disable loop scrolling.<br>Default value: **true**.<br>**Note**: If **start** or **end** is set and is not the default value, **loop** does not take effect.|
 
 ### loop<sup>18+</sup>
 
@@ -275,7 +289,13 @@ loop(isLoop: Optional\<boolean>)
 
 Sets whether to enable loop scrolling. Compared with [loop<sup>11+</sup>](#loop11), this API supports the **undefined** type for the **isLoop** parameter.
 
+> **NOTE**
+>
+> If **start** or **end** is set and is not the default value, **loop** does not take effect.
+
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -289,9 +309,11 @@ Sets whether to enable loop scrolling. Compared with [loop<sup>11+</sup>](#loop1
 
 dateTimeOptions(value: DateTimeOptions)
 
-Sets whether to display a leading zero for the hours, minutes, and seconds.
+Sets whether to display a leading zero for the hours, minutes, and seconds. **'2-digit'** is applicable to scenarios where a unified format is required (such as tables and reports), while **'numeric'** is suitable for simpler display requirements.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -299,7 +321,7 @@ Sets whether to display a leading zero for the hours, minutes, and seconds.
 
 | Name| Type                                     | Mandatory| Description                                                        |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [DateTimeOptions](#datetimeoptions12) | Yes  | Whether to display a leading zero for the hours, minutes, and seconds.<br>Default value:<br>**hour**: For the 24-hour format, the default value is **"2-digit"**, meaning the hour is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X". For the 12-hour format, the default value is **"numeric"**, meaning no leading zero.<br>**minute**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br>**second**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br> If **hour**, **minute**, or **second** is set to **undefined**, the display follows the default rules.|
+| value  | [DateTimeOptions](#datetimeoptions12) | Yes  | Whether to display a leading zero for the hours, minutes, and seconds.<br>Default value:<br>**hour**: For the 24-hour format, the default value is **"2-digit"**, meaning the hour is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X". For the 12-hour format, the default value is **"numeric"**, meaning no leading zero.<br>**minute**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br>**second**: The default value is **"2-digit"**, meaning the second is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br> If **hour**, **minute**, or **second** is set to **undefined**, the display follows the default rules.|
 
 ### dateTimeOptions<sup>18+</sup>
 
@@ -309,26 +331,28 @@ Sets whether to display a leading zero for the hours, minutes, and seconds. Comp
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| timeFormat  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[DateTimeOptions](#datetimeoptions12)> | Yes  | Whether to display a leading zero for the hours, minutes, and seconds. Currently only the configuration of the **hour**, **minute**, and **second** parameters is supported.<br>Default value:<br>**hour**: For the 24-hour format, the default value is **"2-digit"**, meaning the hour is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X". For the 12-hour format, the default value is **"numeric"**, meaning no leading zero.<br>**minute**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br>**second**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br> If **hour**, **minute**, or **second** is set to **undefined**, the display follows the default rules.|
+| timeFormat  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[DateTimeOptions](#datetimeoptions12)> | Yes  | Whether to display a leading zero for the hours, minutes, and seconds. Currently only the configuration of the **hour**, **minute**, and **second** parameters is supported.<br>Default value:<br>**hour**: For the 24-hour format, the default value is **"2-digit"**, meaning the hour is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X". For the 12-hour format, the default value is **"numeric"**, meaning no leading zero.<br>**minute**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br>**second**: The default value is **"2-digit"**, meaning the second is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br> If **hour**, **minute**, or **second** is set to **undefined**, the display follows the default rules.|
 
 ### enableHapticFeedback<sup>12+</sup>
 
 enableHapticFeedback(enable: boolean)
 
-Sets whether to enable haptic feedback.
+Whether to enable haptic feedback.
 
 To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
 
 ``` json
 "requestPermissions": [
    {
-      "name": "ohos.permission.VIBRATE",
+      "name": "ohos.permission.VIBRATE"
    }
 ]
 ```
@@ -339,47 +363,53 @@ To enable haptic feedback, you must declare the following permission under **req
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                         | Mandatory | Description                                                                                 |
 | ------ | --------------------------------------------- | ----- |-------------------------------------------------------------------------------------|
-| enable  | boolean | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**.<br>Whether this parameter takes effect after being set to **true** depends on hardware support.|
+| enable  | boolean | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**.<br>If this parameter is set to **true** and the system hardware does not support vibration, no haptic vibration will be generated.|
 
 ### enableHapticFeedback<sup>18+</sup>
 
 enableHapticFeedback(enable: Optional\<boolean>)
 
-Sets whether to enable haptic feedback. Compared with [enableHapticFeedback<sup>12+</sup>](#enablehapticfeedback12), this API supports the **undefined** type for the **enable** parameter.
+Whether to enable haptic feedback. Compared with [enableHapticFeedback<sup>12+</sup>](#enablehapticfeedback12), this API supports the **undefined** type for the **enable** parameter.
 
 To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
 
 ``` json
 "requestPermissions": [
   {
-    "name": "ohos.permission.VIBRATE",
+    "name": "ohos.permission.VIBRATE"
   }
 ]
 ```
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                         | Mandatory | Description                                                                                 |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**.<br>If the value of **enable** is **undefined**, the default value is used.<br>Whether this parameter takes effect after being set to **true** depends on hardware support.|
+| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**.<br>If the value of **enable** is **undefined**, the default value is used.<br>If this parameter is set to **true** and the system hardware does not support vibration, no haptic vibration will be generated.|
 
 ### enableCascade<sup>18+</sup>
 
 enableCascade(enabled: boolean)
 
-Sets whether the AM/PM indicator automatically switches based on the hour value. Only takes effect when [useMilitaryTime](#usemilitarytime) is set to **false**.
+Sets whether the AM/PM indicator automatically switches based on the hour value. Only takes effect when [useMilitaryTime](#usemilitarytime) is set to **false**. Automatic switching is suitable for daily consumer scenarios that prioritize operational efficiency and smooth user experience, such as alarm clocks and calendars. Manual switching is ideal for scenarios that demand high time accuracy and clarity, such as healthcare and legal services.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -387,14 +417,25 @@ Sets whether the AM/PM indicator automatically switches based on the hour value.
 
 | Name| Type                                         | Mandatory | Description                                                                                 |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enabled | boolean | Yes  | Sets whether the AM/PM indicator automatically switches based on the hour value. This setting only takes effect when **useMilitaryTime** is set to **false**.<br>- **true**: The AM/PM indicator automatically switches based on the hour value.<br>- **false**: The AM/PM indicator remains static regardless of hour changes.<br>Default value: **false**.<br>When **enabled** is set to **true**, it only takes effect if the **loop** parameter is also **true**.|
+| enabled | boolean | Yes  | Sets whether the AM/PM indicator automatically switches based on the hour value. This setting only takes effect when **useMilitaryTime** is set to **false**.<br>- **true**: The AM/PM indicator automatically switches based on the hour value. When **enabled** is set to **true**, it only takes effect if the **loop** parameter is also **true**.<br>- **false**: The AM/PM indicator remains static regardless of hour changes. The AM/PM indicator needs to be manually selected and does not automatically adjust based on the hour value.<br>Default value: **false**.|
+
+>**NOTE**
+>
+> **Constraints:**
+>
+> - If the **loop** parameter is set to **false** or not set to **true**, **enableCascade(true)** will not take effect, and the AM/PM indicator will not automatically switch.
+> - The automatic switching feature can be enabled only when **loop(true)** is also set.
+> - If **start** or **end** is set and is not the default value, the automatic switching of **enableCascade** does not take effect.
+> - This parameter depends on **useMilitaryTime**. **enableCascade** takes effect only when **useMilitaryTime** is set to **false** (12-hour format).
 
 ### digitalCrownSensitivity<sup>18+</sup>
 digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
 
-Sets the sensitivity to the digital crown rotation.
+Sets the sensitivity to the digital crown rotation. High sensitivity is suitable for scenarios where time needs to be quickly adjusted, while low sensitivity is suitable for scenarios where time needs to be precisely adjusted.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -416,9 +457,9 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 onChange(callback:&nbsp;(value:&nbsp;TimePickerResult )&nbsp;=&gt;&nbsp;void)
 
-Triggered when the time picker snaps to the selected item. This event cannot be triggered by two-way bound state variables.
+Triggered when the time picker snaps to the selected item. This event cannot be triggered by two-way bound state variables. This event is applicable to scenarios where users need to save data or update the UI after they confirm the time selection.
 
-This callback is triggered only after the scroll animation completes. To obtain real-time index changes, use [onEnterSelectedArea](#onenterselectedarea18) instead.
+This callback is triggered only after the scroll animation completes. To obtain real-time index changes, use [onEnterSelectedArea](#onenterselectedarea18) instead. Note that when [enableCascade](#enablecascade18) is set to **true**, the callback behavior may not meet expectations because the AM/PM column is linked with the hour column. Therefore, this callback is not recommended in this scenario.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -428,7 +469,7 @@ This callback is triggered only after the scroll animation completes. To obtain 
 
 | Name| Type                                         | Mandatory| Description          |
 | ------ | --------------------------------------------- | ---- | -------------- |
-| value  | [TimePickerResult](#timepickerresult)| Yes  | Time in 24-hour format.|
+| value  | [TimePickerResult](#timepickerresult)| Yes  | Selected time. The value of **hour** ranges from 0 to 23, regardless of the display format.|
 
 ### onChange<sup>18+</sup>
 
@@ -436,9 +477,11 @@ onChange(callback: Optional\<OnTimePickerChangeCallback>)
 
 Triggered when the time picker snaps to the selected item. This event cannot be triggered by two-way bound state variables. Compared with [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter.
 
-This callback is triggered only after the scroll animation completes. To obtain real-time index changes, use [onEnterSelectedArea](#onenterselectedarea18) instead.
+This callback is triggered only after the scroll animation completes. To obtain real-time index changes, use [onEnterSelectedArea](#onenterselectedarea18) instead. Note that when [enableCascade](#enablecascade18) is set to **true**, the callback behavior may not meet expectations because the AM/PM column is linked with the hour column. Therefore, this callback is not recommended in this scenario.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -452,15 +495,17 @@ This callback is triggered only after the scroll animation completes. To obtain 
 
 onEnterSelectedArea(callback: Callback\<TimePickerResult>)
 
-Triggered during the scrolling of the time picker when an item enters the divider area.
+Triggered during the scrolling of the time picker when an item enters the divider area. It applies to scenarios that require quick response, such as real-time UI update and time range verification during the scrolling process. Compared with **onChange**, this callback is triggered earlier and is suitable for scenarios that require instant feedback.
 
-Compared with the [onChange](#onchange) event, this event is triggered earlier, specifically when the scroll distance of the current column exceeds half the height of the selected item, which indicates that the item has entered the divider area. When [enableCascade](#enablecascade18) is set to **true**, using this callback is not recommended due to the interdependent relationship between the AM/PM and hour columns. This callback indicates the moment an option enters the divider area during scrolling, and only the value of the currently scrolled column will change. The values of other non-scrolled columns will remain unchanged.
+Compared with the [onChange](#onchange) event, this event is triggered earlier, specifically when the scroll distance of the column exceeds half the height of the selected item, which indicates that the item has entered the divider area. When [enableCascade](#enablecascade18) is set to **true**, this callback is not recommended because the AM/PM column is linked with the hour column (the AM/PM identifier automatically adjusts based on the hour). This callback indicates the moment an option enters the divider area during scrolling, and only the value of the currently scrolled column will change. The values of other non-scrolled columns will remain unchanged.
 
 > **NOTE**
 >
 > This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -472,17 +517,19 @@ Compared with the [onChange](#onchange) event, this event is triggered earlier, 
 
 ## DateTimeOptions<sup>12+</sup>
 
-type DateTimeOptions = DateTimeOptions
+type DateTimeOptions = import('../api/@ohos.intl').default.DateTimeOptions
 
 Defines the options for a **DateTimeOptions** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                        | Description                                      |
 | ------------------------------------------------------------ | ------------------------------------------ |
-| [DateTimeOptions](../../apis-localization-kit/js-apis-intl.md#datetimeoptionsdeprecated) | Options for creating the **DateTimeOptions** object.|
+| import('../api/@ohos.intl').default.[DateTimeOptions](../../apis-localization-kit/js-apis-intl.md#datetimeoptionsdeprecated) | Options for creating the **DateTimeOptions** object.|
 
 ## OnTimePickerChangeCallback<sup>18+</sup>
 
@@ -492,17 +539,19 @@ Triggered when a time is selected.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                         | Mandatory| Description          |
 | ------ | --------------------------------------------- | ---- | -------------- |
-| result | [TimePickerResult](#timepickerresult)| Yes  | Time in 24-hour format.|
+| result | [TimePickerResult](#timepickerresult)| Yes  | Selected time. The value of **hour** ranges from 0 to 23, regardless of the display format.|
 
 ## TimePickerResult
 
-Describes a time in 24-hour format.
+Returns the selected time. The value of **hour** ranges from 0 to 23, regardless of the display format.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -510,9 +559,9 @@ Describes a time in 24-hour format.
 
 | Name                | Type  | Read Only| Optional| Description                               |
 | -------------------- | ------ | ---- | ---- | ----------------------------------- |
-| hour                 | number | No  | No  | Hour portion of the selected time.<br>Value range: [0-23]|
+| hour                 | number | No  | No  | Hour portion of the selected time.<br>Value range: [0-23], irrelevant to the display format.|
 | minute               | number | No  | No  | Minute portion of the selected time.<br>Value range: [0-59]|
-| second<sup>11+</sup> | number | No  | No  | Second portion of the selected time.<br>Value range: [0-59]|
+| second<sup>11+</sup> | number | No  | No  | Second portion of the selected time.<br>Value range: [0-59]<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## Example
 
@@ -537,7 +586,7 @@ struct TimePickerExample {
       .onChange((value: TimePickerResult) => {
         if (value.hour >= 0) {
           this.selectedTime.setHours(value.hour, value.minute);
-          console.info('select current date is: ' + JSON.stringify(value));
+          console.info('select current time is: ' + JSON.stringify(value));
         }
       })
   }
@@ -606,8 +655,8 @@ struct TimePickerExample {
         .dateTimeOptions({ hour: "numeric", minute: "2-digit", second: "2-digit" })
         .onChange((value: TimePickerResult) => {
           if (value.hour >= 0) {
-            this.selectedTime.setHours(value.hour, value.minute);
-            console.info('select current date is: ' + JSON.stringify(value));
+            this.selectedTime.setHours(value.hour, value.minute, value.second);
+            console.info('select current time is: ' + JSON.stringify(value));
           }
         })
     }.width('100%')
@@ -638,7 +687,7 @@ struct TimePickerExample {
         .onChange((value: TimePickerResult) => {
           if (value.hour >= 0) {
             this.selectedTime.setHours(value.hour, value.minute);
-            console.info('select current date is: ' + JSON.stringify(value));
+            console.info('select current time is: ' + JSON.stringify(value));
           }
         })
 
@@ -680,7 +729,7 @@ struct TimePickerExample {
         .onChange((value: TimePickerResult) => {
           if (value.hour >= 0) {
             this.selectedTime.setHours(value.hour, value.minute);
-            console.info('select current date is: ' + JSON.stringify(value));
+            console.info('select current time is: ' + JSON.stringify(value));
           }
         })
     }.width('100%')
@@ -710,8 +759,8 @@ struct TimePickerExample {
         .dateTimeOptions({ hour: "numeric", minute: "2-digit", second: "2-digit" })
         .onChange((value: TimePickerResult) => {
           if (value.hour >= 0) {
-            this.selectedTime.setHours(value.hour, value.minute);
-            console.info('select current date is: ' + JSON.stringify(value));
+            this.selectedTime.setHours(value.hour, value.minute, value.second);
+            console.info('select current time is: ' + JSON.stringify(value));
           }
         })
     }.width('100%')
@@ -739,12 +788,13 @@ struct TimePickerExample {
       TimePicker({
         selected: this.selectedTime,
       })
+        .useMilitaryTime(false)
         .enableCascade(true)
         .loop(true)
         .onChange((value: TimePickerResult) => {
           if (value.hour >= 0) {
             this.selectedTime.setHours(value.hour, value.minute);
-            console.info('select current date is: ' + JSON.stringify(value));
+          console.info('select current time is: ' + JSON.stringify(value));
           }
         })
     }.width('100%')

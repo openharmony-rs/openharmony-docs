@@ -6,17 +6,18 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=527ac908d69187319557716a0a0cfad380663b5d translatedAt=2026-09-11T01:20:31.788Z pushedAt=2026-09-11T03:21:15.557Z -->
 
 The **gestureEvent** module provides APIs for gesture events reported by devices.
 
->  **NOTE**
+> **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
 ```js
-import { Rotate, Pinch, ThreeFingersSwipe, FourFingersSwipe, ActionType } from '@kit.InputKit';
+import { Rotate, Pinch, ThreeFingersSwipe, FourFingersSwipe, ThreeFingersTap, ActionType } from '@kit.InputKit';
 ```
 
 ## Pinch
@@ -27,7 +28,7 @@ Defines a pinch event.
 
 | Name            | Type       | Read-Only  | Optional  | Description                                      |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
-| type         | [ActionType](#actiontype)   | No   | No   | Gesture event type, for example, gesture start, gesture update, or gesture end.                                  |
+| type         | [ActionType](#actiontype)   | No    | No    | Gesture event type, including gesture cancel, gesture start, gesture update, and gesture end.                                   |
 | scale        | number      | No   | No   | Pinch scale factor. The value is greater than or equal to 0.                            |
 
 ## Rotate<sup>11+</sup>
@@ -39,7 +40,7 @@ Defines a rotation gesture event.
 | Name            | Type       | Read-Only  | Optional  | Description                                      |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
 | type | [ActionType](#actiontype)   | No   | No   | Gesture event type, for example, gesture start, gesture update, or gesture end.                                  |
-| angle | number      | No   | No   | Angle to rotate.                            |
+| angle | number      | No    | No    | Rotation angle, in degrees.                             |
 
 ## ThreeFingersSwipe
 
@@ -50,8 +51,8 @@ Defines a three-finger swipe gesture event.
 | Name            | Type       | Read-Only  | Optional  | Description                                      |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
 | type         | [ActionType](#actiontype)   | No   | No   | Gesture event type, for example, gesture start, gesture update, or gesture end.                                  |
-| x        | number      | No   | No   | X coordinate.                            |
-| y        | number      | No   | No   | Y coordinate.                            |
+| x        | number      | No    | No    | X coordinate, in px.                             |
+| y        | number      | No    | No    | Y coordinate, in px.                             |
 
 ## FourFingersSwipe
 
@@ -62,8 +63,8 @@ Defines a four-finger swipe gesture event.
 | Name            | Type       | Read-Only  | Optional  | Description                                      |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
 | type         | [ActionType](#actiontype)   | No   | No   | Gesture event type, for example, gesture start, gesture update, or gesture end.                                  |
-| x        | number      | No   | No   | X coordinate.                            |
-| y        | number      | No   | No   | Y coordinate.                            |
+| x        | number      | No    | No    | X coordinate, in px.                               |
+| y        | number      | No    | No    | Y coordinate, in px.                              |
 
 ## ThreeFingersTap<sup>11+</sup>
 

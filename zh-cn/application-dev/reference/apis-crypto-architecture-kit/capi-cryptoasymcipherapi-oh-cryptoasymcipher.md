@@ -13,7 +13,7 @@ typedef struct OH_CryptoAsymCipher OH_CryptoAsymCipher
 
 ## 概述
 
-定义非对称加密结构。
+非对称加解密结构体，表示非对称加解密上下文。
 
 **起始版本：** 20
 

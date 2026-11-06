@@ -89,8 +89,8 @@
        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
        formProvider.updateForm(formId, formInfo);
    
-       // 注意：FormExtensionAbility在触发生命周期回调时被拉起，仅能在后台存在5秒
-       // 建议下载能快速下载完成的小文件，如在5秒内未下载完成，则此次网络图片无法刷新至卡片页面上
+       // 注意：FormExtensionAbility在触发生命周期回调时被拉起，仅能在后台存在10秒
+       // 建议下载能快速下载完成的小文件，如在10秒内未下载完成，则此次网络图片无法刷新至卡片页面上
        let netFile =
          'https://cn-assets.gitee.com/assets/mini_app-e5eee5a21c552b69ae6bf2cf87406b59.jpg';
        // 需要在此处使用真实的网络图片下载链接
@@ -219,6 +219,6 @@
 
 > **说明：**
 >
-> - Image组件入参格式为`memory://fileName`时表示进行远端内存图片显示，`fileName`来自WgtImgUpdateEntryFormAbility传递对象('formImages': {key: fd})中的key。
+> - Image组件或backgroundImage属性的入参格式为`memory://fileName`时表示进行远端内存图片显示，`fileName`来自WgtImgUpdateEntryFormAbility传递对象('formImages': {key: fd})中的key。
 >
-> - Image组件通过传入的参数是否有变化来决定是否刷新图片，因此WgtImgUpdateEntryFormAbility每次传递过来的imgName都需要不同，连续传递两个相同的imgName时，图片不会刷新。
+> - Image组件或backgroundImage属性通过传入的参数是否有变化来决定是否刷新图片，因此WgtImgUpdateEntryFormAbility每次传递过来的imgName都需要不同，连续传递两个相同的imgName时，图片不会刷新。

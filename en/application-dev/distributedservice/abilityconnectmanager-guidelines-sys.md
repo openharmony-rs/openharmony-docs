@@ -1,37 +1,37 @@
-# Cross-Device UIAbility Connection Development (For System Applications Only)
+# Cross-Device UIAbility Connection Development (for System Applications Only)
+
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
-<!--Adviser: @w_Machine_cc-->
-
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=405ff88200c2ec4181f73862bbec8846cb359b2c translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## Introduction
 
 Cross-device connection and communication (including data transmission) is supported since API version 18. This feature utilizes the distributed component management framework to enable multi-device collaboration (that is, applications on different devices working together to fulfill the same service scenario), which has become one of the core functionalities of the distributed system. A typical use case is that the photo control application on the smart watch can remotely invoke the camera function on the mobile phone and implement real-time bidirectional data interaction across devices.
 
-
 ### Available Capabilities
 
 - Cross-device application launch: Supports launching associated applications in a distributed networking environment to implement multi-device service collaboration (application adaptation required).
+
 - Cross-device data interaction: Supports cross-device data transmission. The cross-device data interaction capability varies depending on the application type. Specifically, system applications can transmit text, byte streams, images, and transport streams, while third-party applications can only transmit text.
 
 ### Fundamental Concepts
 
 Before you get started, familiarize yourself with the following concepts:
 
-- **DMS**
-  
+- **Distributedsched Management Service (DMS)**
+
   A framework that provides distributed component management capabilities.
 
 - **UIAbility**
 
-  [UIAbility](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/uiability-overview) is a component that implements tasks specific to application UIs, such as lifecycle management, user interaction, and UI rendering.
-
+  [UIAbility](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/uiability-overview) is a component that implements tasks specific to application UIs, such as lifecycle management, user interaction, and UI rendering.
 
 - **Byte stream**
-  
+
   Data of the [ArrayBuffer](../arkts-utils/arraybuffer-object.md) type, which can be used to store binary data, for example, image or audio data.
 
 - **Transport stream**
@@ -46,12 +46,11 @@ Cross-device connection management is built on a distributed component managemen
 
 ![how-abilityconnectmanager-works](figures/how-abilityconnectmanager-works.png)
 
-
 ### Constraints
 
-- This feature is supported only on devices whose API version is 18 or later, and you need to log in with the same HUAWEI ID on related devices.
+- This feature is supported only on devices whose API version is 18 or later.
 
-- Cross-device collaboration is supported only for UIAbility applications with the same bundle name on different devices.
+- When devices are logged in with the same account, collaboration is supported between applications with the same or different bundle names. When devices are logged in with different accounts, the system verifies the application AppID, and collaboration is supported only between applications with the same AppID.
 
 - The byte stream, image, and transport stream capabilities are supported only for system applications.
 
@@ -62,21 +61,21 @@ Cross-device connection management is built on a distributed component managemen
 <!--RP1-->
 <!--RP1End-->
 
-
 ## Environment setup
 
 ### Environment requirement
 
-You have logged in to devices A and B with the same HUAWEI ID and the two devices are successfully networked via [Device Manager](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/devicemanager-guidelines) APIs.
-
+You have logged in to devices A and B with the same HUAWEI ID and the two devices are successfully networked via [Device Manager](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/devicemanager-guidelines) APIs.
 
 ### Setting Up the Environment
 
 1. Install [DevEco Studio](https://developer.huawei.com/consumer/en/download/deveco-studio) 4.1 or later on the PC.
-2. Update the public-SDK to API 18 or later. For details about how to update the SDK, see OpenHarmony SDK Upgrade Assistant.
-3. Connect device A and device B to the PC using USB cables.
-4. Enable Bluetooth on devices A and B to implement networking.
 
+2. Update the public-SDK to API 18 or later. For details about how to update the SDK, see [OpenHarmony SDK Upgrade Assistant]( ../tools/openharmony_sdk_upgrade_assistant.md).
+
+3. Connect device A and device B to the PC using USB cables.
+
+4. Enable Wi-Fi and Bluetooth on devices A and B. If they are logged in with the same HUAWEI ID, networking is automatically implemented. If they are logged in with different HUAWEI IDs, establish a trusted relationship by referring to [Discovering Devices](devicemanager-guidelines.md#discovering-devices) and [Binding a Device](devicemanager-guidelines.md#binding-a-device) to implement networking.
 
 ### Verifying the Environment
 
@@ -88,7 +87,6 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 ```
 
 If the networking is successful, the number of networking devices is displayed, for example, **remote device num = 1**.
-
 
 ## How to Develop
 
@@ -115,7 +113,6 @@ The following table describes the APIs for cross-device connection management. F
 |<!--DelRow--> createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise&lt;number&gt;; | Creates transport streams (supported only for system applications).|
 |<!--DelRow--> destroyStream(sessionId:&nbsp;number):&nbsp;void; | Destroys transport streams (supported only for system applications).|
 
-
 ### How to Develop
 
 The application on device A starts and connects to the application on device B through the cross-device application management module. After the connection is successful, the applications on device A and device B register a callback listener for corresponding events through the **on** interface. The application on device A or device B calls **sendMessage**, **sendData**, **sendImage**, or **createStream** to send text messages, byte streams, or transport streams. The peer end performs subsequent service coordination based on the received callback.
@@ -128,11 +125,9 @@ The application on device A starts and connects to the application on device B t
 import {abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
 ```
 
-
 **Discovering Devices**
 
-The application on device A needs to discover device B and use its **netWorkId** as the input parameter of the collaboration API. You can call APIs of the distributed device management module to discover and select the peer device. For details, see [Distributed Device Management Development](devicemanager-guidelines.md).
-
+The application on device A needs to discover device B and use its [networkId](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo) as the input parameter of the collaboration API. You can call APIs of the distributed device management module to discover and select the peer device. For details, see [Distributed Device Management Development](devicemanager-guidelines.md).
 
 **Initiating a Session Between Applications**
 
@@ -152,7 +147,7 @@ function initDmClass(): void {
   try {
     dmClass = distributedDeviceManager.createDeviceManager('com.example.remotephotodemo');
   } catch (err) {
-    hilog.info(0x0000, 'testTag', 'createDeviceManager err');
+    hilog.error(0x0000, 'testTag', 'createDeviceManager err');
   }
 }
 
@@ -163,17 +158,17 @@ function getRemoteDeviceId(): string | undefined {
     hilog.info(0x0000, 'testTag', 'getRemoteDeviceId begin');
     let list = dmClass.getAvailableDeviceListSync();
     if (typeof (list) === 'undefined' || typeof (list.length) === 'undefined') {
-      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is null');
+      hilog.error(0x0000, 'testTag', 'getRemoteDeviceId err: list is null');
       return;
     }
     if (list.length === 0) {
-      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is empty');
+      hilog.error(0x0000, 'testTag', 'getRemoteDeviceId err: list is empty');
       return;
     }
     // Select the target device in the dialog box.
     return list[0].networkId;
   } else {
-    hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: dmClass is null');
+    hilog.error(0x0000, 'testTag', 'getRemoteDeviceId err: dmClass is null');
     return;
   }
 }
@@ -208,7 +203,7 @@ function getRemoteDeviceId(): string | undefined {
       hilog.info(0x0000, 'testTag', 'createSession sessionId is', this.sessionId);
       abilityConnectionManager.connect(this.sessionId).then((connectResult) => {
         if (!connectResult.isConnected) {
-          hilog.info(0x0000, 'testTag', 'connect failed');
+          hilog.error(0x0000, 'testTag', 'connect failed');
           return;
         }
       }).catch(() => {
@@ -219,7 +214,6 @@ function getRemoteDeviceId(): string | undefined {
     }
   }
 ```
-
 
 **2. Device B**
 
@@ -266,37 +260,36 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 }
 ```
 
-
 **Enabling Event Listening**
 
 After the application creates a session and obtains the session ID, you can call **on()** to listen for the corresponding events and notify the listener through a callback.
+
 <!-- @[abilityconnectionmanager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
-  registerSessionEvent(sessionId: number) {
-    abilityConnectionManager.on('connect',sessionId,(callbackInfo) => {
-      AppStorage.setOrCreate<boolean>('isConnected', true);
-      AppStorage.setOrCreate<string>('receiveMessage', 'connect success');
-    });
-    abilityConnectionManager.on('disconnect',sessionId,(callbackInfo) => {
-      abilityConnectionManager.destroyAbilityConnectionSession(sessionId)
-      AppStorage.setOrCreate<boolean>('isConnected', false);
-      AppStorage.setOrCreate<string>('receiveMessage', 'session disconnect');
-    })
-    abilityConnectionManager.on('receiveMessage',sessionId,(callbackInfo) => {
-      AppStorage.setOrCreate<string>('receiveMessage', callbackInfo.msg);
-      if (callbackInfo.msg == 'startStream') {
-        hilog.info(0x0000, 'testTag', 'startStream');
-      }
-    })
-    abilityConnectionManager.on('receiveData',sessionId,(callbackInfo) => {
-      let decoder = util.TextDecoder.create('utf-8');
-      let str = decoder.decodeWithStream(new Uint8Array(callbackInfo.data));
-      AppStorage.setOrCreate<string>('receiveMessage', str);
-    })
-  }
+registerSessionEvent(sessionId: number) {
+  abilityConnectionManager.on('connect',sessionId,(callbackInfo) => {
+    AppStorage.setOrCreate<boolean>('isConnected', true);
+    AppStorage.setOrCreate<string>('receiveMessage', 'connect success');
+  });
+  abilityConnectionManager.on('disconnect',sessionId,(callbackInfo) => {
+    abilityConnectionManager.destroyAbilityConnectionSession(sessionId)
+    AppStorage.setOrCreate<boolean>('isConnected', false);
+    AppStorage.setOrCreate<string>('receiveMessage', 'session disconnect');
+  })
+  abilityConnectionManager.on('receiveMessage',sessionId,(callbackInfo) => {
+    AppStorage.setOrCreate<string>('receiveMessage', callbackInfo.msg);
+    if (callbackInfo.msg == 'startStream') {
+      hilog.info(0x0000, 'testTag', 'startStream');
+    }
+  })
+  abilityConnectionManager.on('receiveData',sessionId,(callbackInfo) => {
+    let decoder = util.TextDecoder.create('utf-8');
+    let str = decoder.decodeToString(new Uint8Array(callbackInfo.data));
+    AppStorage.setOrCreate<string>('receiveMessage', str);
+  })
+}
 ```
-
 
 **Sending Data**
 **1. Send messages.**
@@ -327,9 +320,9 @@ After the applications are successfully connected, you can call **sendData()** o
   const arrayBuffer  = textEncoder.encodeInto("data send success");
 
   abilityConnectionManager.sendData(this.sessionId, arrayBuffer.buffer).then(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage success");
+    hilog.info(0x0000, 'testTag', "sendData success");
   }).catch(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage failed");
+    hilog.error(0x0000, 'testTag', "sendData failed");
   })
   ```
 
@@ -342,7 +335,7 @@ After the applications are successfully connected, you can call **sendImage()** 
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { photoAccessHelper } from '@kit.MediaLibraryKit';
   import { image } from '@kit.ImageKit';
-  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { fileIo } from '@kit.CoreFileKit';
 
   try {
     let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
@@ -355,7 +348,7 @@ After the applications are successfully connected, you can call **sendImage()** 
       return;
       }
 
-      let file = fs.openSync(photoSelectResult.photoUris[0], fs.OpenMode.READ_ONLY);
+      let file = fileIo.openSync(photoSelectResult.photoUris[0], fileIo.OpenMode.READ_ONLY);
       hilog.info(0x0000, 'testTag', 'file.fd:' + file.fd);
 
       let imageSourceApi: image.ImageSource = image.createImageSource(file.fd);
@@ -374,7 +367,7 @@ After the applications are successfully connected, you can call **sendImage()** 
 
 **4. Send streams.**
 
-After the applications are successfully connected, you can call **createStream()** on device A or device B to create transport streams and call **startStream()** to send the transport streams to the peer application. (This function is supported only for system applications.)
+After the applications are successfully connected, you can call **createStream()** on device A or device B to create transport streams and call **startStream()** to send the transport streams to the peer device. (This function is supported only for system applications.)
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
@@ -413,16 +406,20 @@ After the service collaboration is complete, the collaboration status must be en
   abilityConnectionManager.destroyAbilityConnectionSession(this.sessionId);
   ```
 
-
 ### Debugging and Verification
 
 After application development is complete, you can install the application on device A and device B. The test procedure is as follows:
 
 1. Tap the **Connect** button of the application on device A. The application on device B is started.
+
 2. Tap the **sendMessage** button of the application on device A. The application on device B triggers the callback of the **on()** API to receive the text strings.
+
 3. Tap the **sendData** button of the application on device A. The application on device B triggers the callback of the **on()** API to receive the byte streams.
+
 4. Tap the **sendImage** button of the application on device A. The application on device B triggers the callback of the **on()** API to receive the images.
+
 5. Tap the **createStream** button of the application on device A. The application on device B triggers the callback of the **on()** API to receive the transport streams.
+
 6. Tap the **Disconnect** button of the application on device A or device B. The connection between the two devices is disconnected. The callback of the **connect()** API is triggered to report a disconnection event to the applications on both devices.
 
 ## FAQs
@@ -438,20 +435,21 @@ After application development is complete, you can install the application on de
 **Solution**
 
 - For cause 1, enable the USB debugging function on device A and device B, and use a USB cable to connect the devices to the PC. Run the following shell command on the PC:
-   
+
   ```shell
   hdc shell
   hidumper -s 4700 -a "buscenter -l remote_device_info"
   ```
+
   If **remote device num = 0** is displayed in the command output, the networking has failed. Ensure that you log in to devices using the same HUAWEI ID and connect them through Bluetooth. If the networking is successful, the number of networking devices is displayed, for example, **remote device num = 1**.
 
-- For cause 2, add the desired to the device list to ensure that it is selected during device query and selection.
+- For cause 2, add the desired device to the device list to ensure that it is selected during device query and selection.
 
 ### What should I do if the ongoing service collaboration is interrupted after the application screen is locked or the application is running in the background for a period of time?
 
 **Possible Causes**
 
-During service collaboration, DMS keeps listening for the collaboration lifecycle. If the application screen is locked or the application is running in the background for 5 seconds, the collaboration will be ended if the application does not apply for a continuous task.
+During service collaboration, DMS keeps listening for the application lifecycle. If the application screen is locked or the application is running in the background for 5 seconds, the collaboration will be ended if the application does not apply for a continuous task.
 
 **Solution**
 

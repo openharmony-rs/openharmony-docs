@@ -5,10 +5,11 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=4556237c40588b45737665445826f2a954e917fa translatedAt=2026-09-21T11:06:47.785Z pushedAt=2026-09-23T08:32:48.489Z -->
 
-To enhance the capability of the state management framework to share the global UI state variables of applications, you are advised to use AppStorageV2.
+To enhance the state management framework's capability of sharing application‑wide UI state variables, you can use AppStorageV2 to store the data of global UI state variables for the application.
 
-AppStorageV2 provides the capability of globally sharing state variables within an application. You can bind the same key through **connect** to share data across abilities.
+AppStorageV2 provides the capability of globally sharing state variables within an application. You can bind the same key through **connect** to share data across UIAbility instances.
 
 Before reading this topic, you are advised to read [\@ComponentV2](./arkts-create-custom-components.md#componentv2), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), and API reference of [AppStorageV2-API](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2).
 
@@ -21,7 +22,7 @@ Before reading this topic, you are advised to read [\@ComponentV2](./arkts-creat
 
 AppStorageV2 is a singleton created when the application UI is started. It is used to provide a central storage of application status data that can be accessed at the application level and remains persistent throughout the application lifecycle. Properties in AppStorageV2 are accessed using unique key strings. It should be noted that data between AppStorage and AppStorageV2 is not shared.
 
-The **connect** API of AppStorageV2 enables customizable synchronization between stored data and UI components.
+You can synchronize data with UI components by modifying the return value of the **connect** API of AppStorageV2.
 
 AppStorageV2 supports state sharing among multiple UIAbility instances in the [main thread](../../application-models/thread-model-stage.md) of the same application.
 
@@ -31,15 +32,15 @@ AppStorageV2 supports state sharing among multiple UIAbility instances in the [m
 
 >**NOTE**
 >
->1. The second parameter is used when no **key** is specified, and the third parameter is used otherwise (including when the second parameter is invalid).
+>1. If no key is specified, the second parameter is used as the default constructor; otherwise, the third parameter is used as the default constructor (if the second parameter is invalid, the third parameter is also used as the default constructor).
 >
->2. If the data has been stored in AppStorageV2, you can obtain the stored data without using the default constructor. If the data has not been stored, you must specify a default constructor; otherwise, an application exception will be thrown.
+>2. If the data is already stored in AppStorageV2, you can omit the default constructor to obtain the stored data; otherwise, you must specify the default constructor. Failure to specify it will cause an application exception.
 >
->3. Ensure that the data types match the key. Connecting different types of data to the same key will result in an application exception.
+>3. Connecting data of different types to the same key will cause an application exception. Ensure that the types match.
 >
->4. You are advised to use meaningful values for keys. The values can contain letters, digits, and underscores (_) and a maximum of 255 characters. Using invalid characters or null characters will result in undefined behavior.
+>4. Use a meaningful key. The key can consist of letters, digits, and underscores, with a length not exceeding 255. The behavior of using invalid characters or an empty character is undefined.
 >
->5. When matching the key with the [\@Observed](arkts-observed-and-objectlink.md) object, specify the key or customize the **name** property.
+>5. When associating an [\@Observed](arkts-observed-and-objectlink.md) object, because the name attribute of this type is undefined, you need to specify a key or customize the name attribute.
 
 - **remove**: deletes the stored data of a specified key.
 
@@ -70,7 +71,7 @@ For details about the preceding APIs, see [AppStorageV2](../../reference/apis-ar
 
 AppStorageV2 provides the **connect** API to enable data modification and synchronization. When modified data is decorated with @Trace, changes automatically trigger UI re-rendering. Note that the **remove** API only deletes data from AppStorageV2 without affecting already instantiated component data.
 
-<!-- @[appStorageV2_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/AppStorageV2.ets) -->    
+<!-- @[appStorageV2_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/AppStorageV2.ets) -->
 
 ``` TypeScript
 import { AppStorageV2 } from '@kit.ArkUI';
@@ -97,23 +98,31 @@ struct Index {
     Column() {
       // Modifying class properties decorated with @Trace will synchronously update the UI.
       Button(`Index userID: ${this.message.userID}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.message.userID += 1;
         })
       // Modifying class properties not decorated with @Trace will not update the UI, but changes are still synchronized back to AppStorageV2.
       Button(`Index userName: ${this.message.userName}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.message.userName += 'suf';
         })
       // Clicking the button deletes the object with key Message from AppStorageV2.
-      // After removal, changes to the parent component's userId are still synchronized to the child component, because remove only deletes the object from AppStorageV2 and does not affect the existing component data.
+      // After remove, modifying the userID of the parent and child components causes both components to change synchronously, because remove only deletes from AppStorageV2 and does not affect the data already existing in the component.
       Button('remove key: Message')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           AppStorageV2.remove<Message>(Message);
         })
       // Clicking the button adds an object with key Message to AppStorageV2.
-      // After removal, when the key is re-added and the userID in both parent and child components is modified, it is found that the data is out of sync. Once the child component reconnects via connect(), the data becomes consistent again.
+      // After remove, when the key is re-added and the userID in both parent and child components is modified, it is found that the data is out of sync. Once the child component reconnects via connect(), the data becomes consistent again.
       Button('connect key: Message')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.message = AppStorageV2.connect<Message>(Message, () => new Message(5, 'Rose'))!;
         })
@@ -135,21 +144,31 @@ struct Child {
     Column() {
       // Modifying @Trace decorated properties updates the UI, and the change is propagated to the parent component.
       Button(`Child userID: ${this.message.userID}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.message.userID += 5;
         })
       // After the userName property is modified in the parent component, clicking the name button synchronizes the parent's class property changes.
       Button(`Child name: ${this.name}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.name = this.message.userName;
         })
       // Clicking the button deletes the object with key Message from AppStorageV2.
+      // After remove, modifying userID in the parent and child components causes them to change synchronously, because remove only deletes from AppStorageV2 without affecting the data already existing in the components.
       Button('remove key: Message')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           AppStorageV2.remove<Message>(Message);
         })
       // Clicking the button adds an object with key Message to AppStorageV2.
+      // After remove and re-add, modifying userID in the parent and child components shows that the data is no longer synchronized. After the parent component reconnects, the data becomes consistent.
       Button('connect key: Message')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.message = AppStorageV2.connect<Message>(Message, () => new Message(10, 'Lucy'))!;
         })
@@ -160,10 +179,12 @@ struct Child {
 }
 ```
 
+![appstoragev2-sync-0](./figures/appstoragev2-sync-0.gif)
+
 ### Storing Data Between Two Pages
 
 Data page
-<!-- @[appStorageV2_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/Sample.ets) -->    
+<!-- @[appStorageV2_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/Sample.ets) -->
 
 ``` TypeScript
 // Data center.
@@ -176,7 +197,7 @@ export class Sample {
 ```
 
 Page 1
-<!-- @[appStorageV2_pageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageOne.ets) -->    
+<!-- @[appStorageV2_pageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageOne.ets) -->
 
 ``` TypeScript
 import { AppStorageV2 } from '@kit.ArkUI';
@@ -193,17 +214,23 @@ struct PageOne {
     Navigation(this.pageStack) {
       Column() {
         Button('Go to pageTwo')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.pageStack.pushPathByName('PageTwo', null);
           })
 
         Button('PageOne connect the key Sample')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             // Create a key-value pair with Sample as the key in AppStorageV2 (if the key exists, existing data in AppStorageV2 is returned) and associate it with prop.
             this.prop = AppStorageV2.connect(Sample, 'Sample', () => new Sample())!;
           })
 
         Button('PageOne remove the key Sample')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             // After deletion from AppStorageV2, prop will no longer be associated with the value whose key is Sample.
             AppStorageV2.remove(Sample);
@@ -211,20 +238,23 @@ struct PageOne {
 
         Text(`PageOne add 1 to prop.p1: ${this.prop.p1}`)
           .fontSize(30)
+          .margin(10)
           .onClick(() => {
             this.prop.p1++;
           })
 
         Text(`PageOne add 1 to prop.p2: ${this.prop.p2}`)
           .fontSize(30)
+          .margin(10)
           .onClick(() => {
             // The page is not re-rendered, but the value of p2 is changed.
             this.prop.p2++;
           })
 
         // Obtain all current keys in AppStorageV2.
-        Text(`all keys in AppStorage: ${AppStorageV2.keys()}`)
+        Text(`all keys in AppStorageV2: ${AppStorageV2.keys()}`)
           .fontSize(30)
+          .margin(10)
       }
     }
   }
@@ -232,7 +262,7 @@ struct PageOne {
 ```
 
 Page 2
-<!-- @[appStorageV2_pageTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageTwo.ets) -->    
+<!-- @[appStorageV2_pageTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageTwo.ets) -->
 
 ``` TypeScript
 import { AppStorageV2 } from '@kit.ArkUI';
@@ -253,6 +283,8 @@ struct PageTwo {
     NavDestination() {
       Column() {
         Button('PageTwo connect the key Sample1')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             // Create a key-value pair with Sample1 as the key in AppStorageV2 (if the key exists, existing data in AppStorageV2 is returned) and associate it with prop.
             this.prop = AppStorageV2.connect(Sample, 'Sample1', () => new Sample())!;
@@ -260,20 +292,23 @@ struct PageTwo {
 
         Text(`PageTwo add 1 to prop.p1: ${this.prop.p1}`)
           .fontSize(30)
+          .margin(10)
           .onClick(() => {
             this.prop.p1++;
           })
 
         Text(`PageTwo add 1 to prop.p2: ${this.prop.p2}`)
           .fontSize(30)
+          .margin(10)
           .onClick(() => {
             // The page is not re-rendered, but the value of p2 is changed, which is performed after re-initialization.
             this.prop.p2++;
           })
 
         // Obtain all current keys in AppStorageV2.
-        Text(`all keys in AppStorage: ${AppStorageV2.keys()}`)
+        Text(`all keys in AppStorageV2: ${AppStorageV2.keys()}`)
           .fontSize(30)
+          .margin(10)
       }
     }
     .onReady((context: NavDestinationContext) => {
@@ -293,9 +328,11 @@ When using **Navigation**, create a **route_map.json** file as shown below in th
       "pageSourceFile": "src/main/ets/pages/PageTwo.ets",
       "buildFunction": "PageTwoBuilder",
       "data": {
-        "description" : "AppStorageV2 example"
+        "description": "AppStorageV2 example"
       }
     }
   ]
 }
 ```
+
+![appstoragev2-sync-1](./figures/appstoragev2-sync-1.gif)

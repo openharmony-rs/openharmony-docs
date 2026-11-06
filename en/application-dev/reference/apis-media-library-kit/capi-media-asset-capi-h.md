@@ -6,6 +6,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6a96f2b8f99f158608ec5045488b853b4cc6044f translatedAt=2026-11-03T07:11:40.744Z pushedAt=2026-11-04T03:11:19.973Z nl=1 -->
 
 ## Overview
 
@@ -195,7 +196,7 @@ Obtains the date when a media asset was added.
 | Parameter| Description|
 | -- | -- |
 | [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance.|
-| uint32_t* dateAdded | Pointer to the date obtained. The value is the number of seconds elapsed since the Unix Epoch time (00:00:00 UTC on January 1, 1970).|
+| uint32_t* dateAdded | Date when the asset was added. The value is the number of seconds from the time the file was added to January 1, 1970. Unit: second (s). |
 
 **Return value**
 
@@ -393,7 +394,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetOrientation(OH_MediaAsset* mediaAsset, u
 
 **Description**
 
-Obtains the orientation of a media asset, in degrees.
+Obtains the rotation angle of an image, in degrees (°).
 
 **Since**: 12
 
@@ -403,7 +404,7 @@ Obtains the orientation of a media asset, in degrees.
 | Parameter| Description|
 | -- | -- |
 | [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance.|
-| uint32_t* orientation | Pointer to the orientation of the image obtained, in degrees.|
+| uint32_t* orientation | Pointer to the rotation angle of an image, in degrees (°). |
 
 **Return value**
 
@@ -487,3 +488,5 @@ Releases a media asset.
 | Type| Description|
 | -- | -- |
 | [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | **MEDIA_LIBRARY_OK**: operation success.<br>      **MEDIA_LIBRARY_PARAMETER_ERROR**: incorrect parameters. Possible causes:<br>                                      1. A mandatory parameter is not specified.<br>                                      2. A parameter type is incorrect.<br>                                      3. Parameter verification fails.|
+
+

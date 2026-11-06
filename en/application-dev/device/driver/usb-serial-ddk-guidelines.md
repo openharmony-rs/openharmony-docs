@@ -4,11 +4,12 @@
 <!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=f78ab21ce47ccf91f4a9260cbc609297b8e86f9f translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## Overview
 
-Non-standard serial port devices, such as temperature and humidity meters and special identity card readers, are used in industrial scenarios and on some legacy devices. If the system does not have a driver that adapts to the devices, the devices cannot be used after being connected. The USB Serial Driver Development Kit (USBSerialDDK) is a toolset that helps you develop USB serial drivers at the application layer based on the user mode. The USBSerialDDK provides a series of APIs for the host to access devices, including APIs for enabling and disabling devices on the host and data read/write through serial ports. With these APIs, third-party peripheral devices can seamlessly integrate with the OpenHarmony ecosystem.
+Non-standard serial port devices, such as temperature and humidity meters and special identity card readers, are used in industrial scenarios and on some legacy devices. If the system does not have a driver that adapts to the devices, the devices cannot be used after being connected. The USB Serial Driver Development Kit (USBSerialDDK) is a toolkit that helps you develop USB serial drivers at the application layer based on the user mode. The USBSerialDDK provides a series of APIs for the host to access devices, including APIs for opening and closing devices on the host and data read/write through serial ports. With these APIs, third-party peripheral devices can seamlessly integrate with the OpenHarmony ecosystem.
 
 ### Basic Concepts
 
@@ -40,7 +41,7 @@ Before you get started, understand the following concepts:
 
 ### Implementation Principles
 
-A non-standard peripheral application obtains the USB serial port device ID by using the peripheral management service, and delivers the ID and the action to the USB serial port driver application through RPC. The USB serial port driver application can set the serial port attributes (such as the baud rate, data bit, and parity bit) and read the serial port data by calling the USBSerialDDK API. Then, the DDK API uses the HDI service to deliver instructions to the kernel driver, and the kernel driver uses instructions to communicate with the device.
+A non-standard peripheral application obtains the USB serial port device ID by using the peripheral management service, and delivers the ID and the action to the USB serial port driver application through RPC. The USB serial port driver application can set the serial port attributes (such as baud rate, data bit, and parity bit) and read the serial port data by calling the USBSerialDDK API. Then, the DDK API uses the HDI service to deliver instructions to the kernel driver, and the kernel driver uses instructions to communicate with the device.
 
 **Figure 1** Principles of invoking the USBSerialDDK
 
@@ -66,17 +67,17 @@ Before you get started, make necessary preparations by following instructions in
 | -------- | -------- |
 | OH_UsbSerial_Init(void) | Initializes the USBSerialDDK.|
 | OH_UsbSerial_Release(void) | Releases the USBSerialDDK.|
-| OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_Device **dev) | Opens the USB serial port device based on the specified **deviceId** and **interfaceIndex**. Call **OH_UsbSerial_Close ()** to close the device after use. Otherwise, memory leakage occurs.|
+| OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_Device **dev) | Opens the USB serial port device based on the specified **deviceId** and **interfaceIndex**. Call **OH_UsbSerial_Close()** to close the device after use. Otherwise, memory leakage occurs.|
 | OH_UsbSerial_Close(UsbSerial_Device **dev) | Closes the USB serial port device after use. Otherwise, memory leakage occurs.|
 | OH_UsbSerial_Read(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesRead) | Reads data from the USB serial port device to the buffer.|
 | OH_UsbSerial_Write(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesWritten) | Writes the data in the buffer to the USB serial port device.|
-| OH_UsbSerial_SetBaudRate(UsbSerial_DeviceHandle *dev, uint32_t baudRate) | Sets the baud rate for a USB serial port device. Call this API if the data bit of the serial port is **8**, the stop bit is **1**, and parity check is not performed.|
-| OH_UsbSerial_SetParams(UsbSerial_Device *dev, UsbSerial_Params *params) | Sets the parameters of the USB serial port device, including the baud rate, data transfer bit, stop bit, and parity check.|
+| OH_UsbSerial_SetBaudRate(UsbSerial_Device *dev, uint32_t baudRate) | Sets the baud rate for a USB serial port device. Call this API if the data bit of the serial port is **8**, the stop bit is **1**, and parity check is not performed.|
+| OH_UsbSerial_SetParams(UsbSerial_Device *dev, UsbSerial_Params *params) | Sets the parameters of the USB serial port device, including the baud rate, data bits, stop bits, and parity check. |
 | OH_UsbSerial_SetTimeout(UsbSerial_Device *dev, int timeout) | Sets the timeout interval for reading data reported by a USB serial port device. The default value is **0**.|
 | OH_UsbSerial_SetFlowControl(UsbSerial_Device *dev, UsbSerial_FlowControl flowControl) | Sets flow control parameters.|
 | OH_UsbSerial_Flush(UsbSerial_Device *dev) | Flushes the input and output buffers after the write operation is complete.|
-| OH_UsbSerial_FlushInput(UsbSerial_Device *dev) | Refreshes the input buffer. The data in the buffer is cleared immediately.|
-| OH_UsbSerial_FlushOutput(UsbSerial_Device *dev) | Refreshes the output buffer. The data in the buffer is cleared immediately.|
+| OH_UsbSerial_FlushInput(UsbSerial_Device *dev) | Flushes the input buffer. The data in the buffer is flushed immediately.|
+| OH_UsbSerial_FlushOutput(UsbSerial_Device *dev) | Flushes the output buffer. The data in the buffer is flushed immediately.|
 
 For details about the APIs, see [USBSerialDDK](../../reference/apis-driverdevelopment-kit/capi-serialddk.md).
 
@@ -102,7 +103,7 @@ libusb_serial_ndk.z.so
    Use **OH_UsbSerial_Init** in **usb_serial_api.h** to initialize the USBSerialDDK.
 
    <!-- @[driver_serial_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    // Initialize the USBSerialDDK.
    OH_UsbSerial_Init();
@@ -110,10 +111,10 @@ libusb_serial_ndk.z.so
 
 2. Open the USB serial port device.
 
-   Use **OH_UsbSerial_Open** in **usb_serial_api.h** to enable the device.
+   Use **OH_UsbSerial_Open** in **usb_serial_api.h** to open the device.
 
    <!-- @[driver_serial_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    UsbSerial_Device *dev = NULL;
    uint64_t deviceId = 1;
@@ -127,13 +128,13 @@ libusb_serial_ndk.z.so
    Use **OH_UsbSerial_SetParams** in **usb_serial_api.h** to set the serial port parameters, or directly use **OH_UsbSerial_SetBaudRate** to set the baud rate, and use **OH_UsbSerial_SetTimeout** to set the timeout interval for reading data.
 
    <!-- @[driver_serial_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    UsbSerial_Params params;
    params.baudRate = NUM_BAUDRATE;
    params.nDataBits = NUM_EIGHT;
    params.nStopBits = 1;
-   params.parity = 0;
+   params.parity = USB_SERIAL_PARITY_NONE;
    // Set serial port parameters.
    OH_UsbSerial_SetParams(dev, &params);
        
@@ -151,7 +152,7 @@ libusb_serial_ndk.z.so
    Use **OH_UsbSerial_SetFlowControl** in **usb_serial_api.h** to set the flow control mode, use **OH_UsbSerial_Flush** to flush the buffer, use **OH_UsbSerial_FlushInput** to flush the input buffer, and use **OH_UsbSerial_FlushOutput** to flush the output buffer.
 
    <!-- @[driver_serial_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    // Set flow control.
    OH_UsbSerial_SetFlowControl(dev, USB_SERIAL_SOFTWARE_FLOW_CONTROL);
@@ -171,7 +172,7 @@ libusb_serial_ndk.z.so
    Use **OH_UsbSerial_Write** in **usb_serial_api.h** to send data to the device, and use **OH_UsbSerial_Read** to read the data sent by the device.
 
    <!-- @[driver_serial_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    uint32_t bytesWritten = 0;
    // Command used by the test device to read data. The command varies depending on the device protocol.
@@ -179,7 +180,7 @@ libusb_serial_ndk.z.so
    // Send data over the connection.
    OH_UsbSerial_Write(dev, writeBuff, sizeof(writeBuff), &bytesWritten);
        
-   // Callback invoked to receive data.
+   // Receive data.
    uint8_t readBuff[100];
    uint32_t bytesRead = 0;
    OH_UsbSerial_Read(dev, readBuff, sizeof(readBuff), &bytesRead);
@@ -190,7 +191,7 @@ libusb_serial_ndk.z.so
    After all requests are processed and before the program exits, use **OH_UsbSerial_Close** in **usb_serial_api.h** to close the device.
 
    <!-- @[driver_serial_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    // Close the device.
    OH_UsbSerial_Close(&dev);
@@ -201,7 +202,7 @@ libusb_serial_ndk.z.so
    After the USB serial port device is closed, use **OH_UsbSerial_Release** in **usb_serial_api.h** to release the USBSerialDDK.
 
    <!-- @[driver_serial_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    // Release the USBSerialDDK.
    OH_UsbSerial_Release();

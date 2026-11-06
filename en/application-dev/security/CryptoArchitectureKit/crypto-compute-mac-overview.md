@@ -1,4 +1,4 @@
-# MAC Overview and Algorithm Specifications
+# Message Authentication Code Computation
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,15 +6,16 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=fd500ca82713c7732ea8f0441b20e4da66f10c9e translatedAt=2026-10-30T03:33:23.479Z pushedAt=2026-10-30T06:55:55.889Z nl=1 -->
 
-A message authentication code (MAC) is used to check the authenticity and integrity of a message transmitted between two parties that share a secret key.
+A Message Authentication Code (MAC) is used to verify message integrity. By using a key shared by both parties, it can detect message forgery, tampering, and other malicious behaviors.
 
-This topic describes the key agreement algorithms and specifications supported by the system.
+This topic describes the algorithms and specifications supported by the system.
 
 ## HMAC
-A hash-based message authentication code (HMAC) is a type of MAC involving a hash function and a secret key.
+A hash-based message authentication code (HMAC) is a hash-based message authentication code algorithm.
 
-A HMAC uses a specified digest algorithm to generate a MAC based on the key and message shared by communicating parties. The MAC is used to check the integrity of transmitted packets. The HMAC adds key input on the basis of the message digest algorithm to ensure information correctness. The length of the generated MAC is fixed.
+The HMAC uses a specified digest algorithm to generate a MAC based on the key and message shared by communicating parties. The MAC is used to check the integrity of transmitted packets. The HMAC adds key input on the basis of the message digest algorithm to ensure information correctness. The length of the generated MAC is fixed.
 
 The **Supported Type** column in the following table lists the algorithm to be used when a **MAC** instance is created.
 
@@ -33,9 +34,9 @@ The **Supported Type** column in the following table lists the algorithm to be u
 
 ## CMAC
 
-A Cipher-based Message Authentication Code (‌CMAC) is a type of cryptographic checksum used to ensure data integrity and authenticity.
+Cipher-based Message Authentication Code (CMAC) is a cipher-based message authentication code algorithm primarily used to ensure message integrity and authenticity.
 
-A block cipher (such as AES) and a key are used to generate a MAC, which verifies that a message has not been alerted during transmission.
+CMAC uses a block cipher (such as AES) and a key to generate a message authentication code, ensuring that the message has not been tampered with during transmission.
 
 | Encryption Algorithm| API Version|
 | -------- | -------- |

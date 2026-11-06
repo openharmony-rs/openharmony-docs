@@ -2,9 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:35:34.266Z pushedAt=2026-10-08T10:04:19.053Z -->
 
 - ArkTS APIs<!--notification-arkts-->
   - [@ohos.notificationManager (NotificationManager)](js-apis-notificationManager.md)

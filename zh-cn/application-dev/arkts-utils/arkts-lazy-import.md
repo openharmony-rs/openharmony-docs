@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍ArkTS延迟加载（lazy import）特性，使文件在冷启动阶段不被加载而按需加载，缩短冷启动时间，适用于优化应用启动性能场景。"
+keywords: [ArkTS, lazy import, 延迟加载, 冷启动, 性能优化, 按需加载, 启动性能, 模块加载]
+doctype: guide
+status: active
+---
+
 # 延迟加载 (lazy import)
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @DaiHuina1997-->
-<!--Designer: @yao_dashuai-->
+<!--Owner: @shilei123-->
+<!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 随着应用程序功能的扩展，冷启动时间显著增加，主要是因为启动初期加载了大量未实际执行的模块。这不仅延长了应用的初始化时间，还浪费了资源。需要精简加载流程，剔除非必需的文件执行，优化冷启动性能，确保用户体验流畅。
 
@@ -39,15 +47,19 @@ import { c } from "./mod2";         // "mod2" 执行
 // ...
 
 console.info("main executed");
-while (false) {
+function useModules(): void{
     let xx = a;
     let yy = c;
 }
+```
 
+```typescript
 // mod1.ets
 export let a = "mod1 executed"
 console.info(a);
+```
 
+```typescript
 // mod2.ets
 export let c = "mod2 executed"
 console.info(c);
@@ -75,7 +87,7 @@ import { b } from './mod1'; // 'mod1' 执行
 
 ``` TypeScript
 console.info('main executed');
-while (false) {
+function useModules(): void{
   let xx = a;
   let yy = c;
   let zz = b;
@@ -186,11 +198,15 @@ import type lazy { obj } from "./mod";    // 不支持，编译器、应用编�
 export let a = "Variable A from mod1";
 export let b = "Variable B from mod1";
 console.info("mod1 executed");
+```
 
+```typescript
 // mod2.ets
 export let c = "Variable C from mod2";
 console.info("mod2 executed");
+```
 
+```typescript
 // main.ets
 import lazy { a } from "./mod1";    // 从"mod1"内获取a对象，标记为延迟加载
 import { c } from "./mod2";
@@ -312,7 +328,7 @@ ReferenceError: module environment is undefined
     hdc shell param set persist.ark.importDuration 1000
     ```
 
-3. 清除应用后台进程后，重新启动应用进程，等待抓取时间结束，会在应用沙箱下（data/app/el2/100/base/${bundlename}/files/）生成主/子线程对应文件。
+3. 清除应用后台进程后，重新启动应用进程，等待抓取时间结束，会在应用沙箱下（data/app/el2/100/base/${bundleName}/files/）生成主/子线程对应的文件。
 
     > **注意：**
     >
@@ -403,7 +419,7 @@ export function func() {
 <----Summary----> Total file number: 13, total time: 2ms, including used file:12, cost time: 1ms, and unused file: 1, cost time: 1ms
 ```
 
-上述信息表示应用当前线程在冷启动抓取时间段内加载了13个文件，共耗时2ms。其中，12个文件导出内容被其他文件加载使用，执行这12个文件共耗时1ms；1个文件执行完成，但是其导出内容没有被其他文件在冷启阶段用到，耗时1ms。
+上述信息表示应用当前线程在冷启动抓取时间段内加载了13个文件，共耗时2ms。其中，12个文件导出内容被其他文件加载使用，执行这12个文件共耗时1ms；1个文件执行完成，但是其导出内容没有被其他文件在冷启动阶段用到，耗时1ms。
 
 ### 被使用文件
 
@@ -501,6 +517,8 @@ export function func() {
     ``` TypeScript
     import('./1').then((ns:ESObject) => {
       console.info('import file 1 success');
+    }).catch((e: Error) => {
+      console.error('import file 1 failed: ' + e.message);
     });
     ```
 
@@ -565,7 +583,9 @@ export function func() {
 ```javascript
 // A.ets
 export let A = "A";
+```
 
+```javascript
 // Index.ets
 import { A } from "./A";
 
@@ -615,7 +635,9 @@ struct Index {
 ```javascript
 // A.ets
 export let A = "A";
+```
 
+```javascript
 // Index.ets
 import lazy { A } from "./A"; // 此处添加lazy关键字，标记该文件可延迟加载
 
@@ -643,7 +665,7 @@ struct Index {
 
 | 优化效果 | 加载文件耗时（微秒μs） |
 |---------| --------------------- |
-| 优化前 | 412us              |
-| 优化后 | 350us              |
+| 优化前 | 412μs              |
+| 优化后 | 350μs              |
 
 根据上述优化前后案例Trace图对比分析，使用延迟加载后应用冷启动时不再加载A文件，在资源加载阶段减少因加载冗余文件产生的耗时约15%，提高了应用冷启动性能。（由于案例仅演示场景，优化数据仅做参考，在实际业务中随着引用文件的复杂度提高，引用文件数量增多，优化效果也会随之提升。）

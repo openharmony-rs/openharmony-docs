@@ -30,8 +30,8 @@
 
 跨应用协作：打破应用间的壁垒，实现不同类型文档的无缝嵌入与编辑。
 
+<!--RP1--><!--RP1End-->
+
 ## 与相关Kit的关系
 
 [Ability Kit](../application-models/abilitykit-overview.md)：Content Embed Kit内部实现依赖Ability Kit提供的Extension基础能力，与Ability Kit存在生命周期调度交互。
-
-<!--RP1--><!--RP1End-->

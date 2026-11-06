@@ -195,7 +195,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDateAdded(OH_MediaAsset* mediaAsset, uin
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)* mediaAsset | [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)实例。 |
-| uint32_t* dateAdded | 资产添加日期。该值是添加文件时间距1970年1月1日的秒数值。 |
+| uint32_t* dateAdded | 资产添加日期。该值是添加文件时间距1970年1月1日的秒数值。单位：秒（s）。 |
 
 **返回：**
 

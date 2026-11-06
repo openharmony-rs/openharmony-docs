@@ -8,7 +8,7 @@
 
 inspector用于检查页面布局，通过双向定位功能帮助开发者在DevEco Studio中快速定位组件、修改属性和调试组件，以提高开发效率。
 
-ArkUI获取当前显示页面中所有组件的信息，包括组件树的父子结构、尺寸、位置、样式、属性和状态。获取组件树信息后，生成并展示为Inspector组件树。DevEco Studio的使用具体可以参考[Inspector调试能力](ui-inspector-profiler.md#inspector调试能力)。
+ArkUI获取当前显示页面中所有组件的信息，包括组件树的父子结构、尺寸、位置、样式、属性和状态。获取组件树信息后，生成并展示为inspector组件树。DevEco Studio的使用具体可以参考[Inspector调试能力](ui-inspector-profiler.md#inspector调试能力)。
 
 inspector针对UI组件的布局或绘制送显完成，还提供了注册与取消监听函数的C API接口，具体使用可以参考[添加事件监听](ndk-add-component-events.md)。
 
@@ -74,7 +74,7 @@ struct ComponentPage {
           hilog.info(0x0000,`result2: ${inspectorStr}`, 'result2');
           inspectorStr = uiContext.getFilteredInspectorTreeById('TEXT', 1, ['src']);
           inspectorStr = JSON.stringify(JSON.parse(inspectorStr)['$children'][0]);
-          hilog.info(0x0000,`result3: ${inspectorStr}`, 'result13');
+          hilog.info(0x0000,`result3: ${inspectorStr}`, 'result3');
         } catch (e) {
           hilog.error(0x0000, `getFilteredInspectorTreeById error: ${e}`, 'error');
         }
@@ -85,7 +85,6 @@ struct ComponentPage {
     .height('100%')
   }
 }
-
 ```
 
 ## 布局回调
@@ -162,6 +161,7 @@ struct ImageExample {
 <!-- @[componentIdentifier_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ComponentPage1.ets) --> 
 
 ``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
 @Entry
 @Component
 struct ComponentPage {
@@ -189,5 +189,4 @@ struct ComponentPage {
     .height('100%')
   }
 }
-
 ```

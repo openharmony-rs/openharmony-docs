@@ -1,12 +1,23 @@
 # @ohos.enterprise.wifiManager (Wi-Fi Management)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=716304dd0f214493c61a62f4ca83a3f10fd2771c translatedAt=2026-11-03T05:42:35.523Z pushedAt=2026-11-03T12:08:25.568Z nl=1 -->
 
-The **wifiManager** module provides Wi-Fi management capabilities for enterprise devices, including obtaining the Wi-Fi status.
+This module provides Wi-Fi management capabilities for enterprise devices, including querying the Wi-Fi enabling status, configuring Wi-Fi connections, and managing the Wi-Fi list.
+
+**Use cases:**
+- Configuring Wi-Fi connections for enterprise devices in batches, simplifying the device initialization process
+- Controlling the Wi-Fi networks that devices can connect to, implementing network access compliance management
+- Managing the Wi-Fi switch of enterprise devices and unifying network policies
+
+**Benefits:**
+- Improves enterprise network management efficiency and reduces IT (Information Technology) operation and maintenance costs.
+- Ensure that devices connect only to secure Wi-Fi networks, reducing security risks.
+- Implement unified management and control of network policies to meet enterprise compliance requirements.
 
 > **NOTE**
 >
@@ -14,9 +25,9 @@ The **wifiManager** module provides Wi-Fi management capabilities for enterprise
 >
 > The APIs of this module can be used only in the stage model.
 >
-> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module are open only to device management applications. Before calling the APIs, you must activate the device management application. For details, see [MDM Kit Development Guide](../../mdm/mdm-kit-guide.md).
 >
-> The global restriction policies are provided by **restrictions**. To disable Wi-Fi globally, see [@ohos.enterprise.restrictions](js-apis-enterprise-restrictions.md).
+> Global universal restriction policies are provided by restrictions. To disable Wi-Fi globally, see [@ohos.enterprise.restrictions (Restriction Policies)](js-apis-enterprise-restrictions.md).
 
 ## Modules to Import
 
@@ -68,7 +79,7 @@ import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -85,20 +96,22 @@ setWifiProfileSync(admin: Want, profile: WifiProfile): void
 
 Configures Wi-Fi for the current device to connect to a specified network.
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_WIFI
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
-
 **Parameters**
 
 | Name | Type                                                   | Mandatory| Description                  |
 | ------- | ------------------------------------------------------- | ---- | ---------------------- |
 | admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
-| profile | [WifiProfile](#wifiprofile)                             | Yes  | Wi-Fi configuration information.        |
+| profile | [WifiProfile](#wifiprofile)                             | Yes  | Wi-Fi configuration information, which is used to specify the configuration parameters of the Wi-Fi network to be connected, including the SSID, BSSID, key, and security type.        |
 
 **Error codes**
 
@@ -113,16 +126,15 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 
 **Example**
 
-Scenario 1: public Wi-Fi development
+***Scenario 1: public Wi-Fi development***
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let profile: wifiManager.WifiProfile = {
@@ -140,16 +152,15 @@ try {
 }
 ```
 
-***Multiple Wi-Fi networks with the same name but different BSSIDs***
+***Scenario 2: Multiple Wi-Fi networks with the same name but different BSSIDs***
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let profile: wifiManager.WifiProfile = {
@@ -168,16 +179,15 @@ try {
 }
 ```
 
-Scenario 3: old industrial devices with low security
+***Scenario 3: old industrial devices with low security***
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let profile: wifiManager.WifiProfile = {
@@ -196,16 +206,15 @@ try {
 }
 ```
 
-Scenario 4: home networks, small offices, and consumer routers
+***Scenario 4: home networks, small offices, and consumer routers***
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let profile: wifiManager.WifiProfile = {
@@ -223,16 +232,15 @@ try {
 }
 ```
 
-Scenario 5: modern IoT device networks
+***Scenario 5: modern IoT device networks***
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let profile: wifiManager.WifiProfile = {
@@ -250,16 +258,15 @@ try {
 }
 ```
 
-Scenario 6: company networks and university campus networks
+***Scenario 6: company networks and university campus networks***
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // EAP-PEAP configuration example
@@ -275,7 +282,7 @@ let profile: wifiManager.WifiProfile = {
     password: 'passwd',
     anonymousIdentity: '',
     caPath: '/system/etc/security/caCerts/company-ca.pem',
-    caCertAliases:  '',
+    caCertAliases: '',
     clientCertAliases: '',
     certEntry: new Uint8Array(),
     certPassword: '',
@@ -298,12 +305,11 @@ try {
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // EAP-TLS configuration example
@@ -342,12 +348,11 @@ try {
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // EAP-TTLS configuration example
@@ -386,12 +391,11 @@ try {
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // EAP-SIM configuration example
@@ -407,7 +411,7 @@ let profile: wifiManager.WifiProfile = {
     password:'',
     anonymousIdentity: '',
     caPath: '',
-    caCertAliases:  'carrier-root-ca',
+    caCertAliases: 'carrier-root-ca',
     clientCertAliases: '',
     certEntry: new Uint8Array(),
     certPassword: '',
@@ -427,16 +431,15 @@ try {
 }
 ```
 
-Scenario 7: fixed IP address for client access
+***Scenario 7: fixed IP address for client access***
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let profile: wifiManager.WifiProfile = {
@@ -466,20 +469,22 @@ try {
 
 addAllowedWifiList(admin: Want, list: Array&lt;WifiAccessInfo&gt;): void
 
-Adds allowed Wi-Fi networks. The current device can only connect to the allowed Wi-Fi networks.
+Adds allowed Wi-Fi networks. The current device can only connect to the allowed Wi-Fi networks. This API is applicable to enterprise security management scenarios, for example, restricting employees' devices to connect only to Wi-Fi networks authorized by the enterprise, preventing connection to insecure external Wi-Fi networks and ensuring enterprise network and data security.
 
 A policy conflict is reported when this API is called in the following scenarios:
 
-1. Wi-Fi networks have been disabled by calling [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy). You can resolve the conflict by enabling the Wi-Fi networks through [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy).
+1. The device Wi-Fi capability has been disabled via [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated). You can resolve the conflict by enabling Wi-Fi via [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated).
 2. Disallowed Wi-Fi networks have been added by calling [addDisallowedWifiList](#wifimanageradddisallowedwifilist19). You can resolve the conflict by removing the disallowed Wi-Fi networks through [removeDisallowedWifiList](#wifimanagerremovedisallowedwifilist19).
+
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_WIFI
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -527,15 +532,17 @@ try {
 
 removeAllowedWifiList(admin: Want, list: Array&lt;WifiAccessInfo&gt;): void
 
-Removes Wi-Fi networks from the allowed list. If some Wi-Fi networks are removed from the allowed list, the current device can only connect to the remaining ones; if all Wi-Fi networks are removed from the allowed list, the current device can connect to any Wi-Fi network.
+Removes Wi-Fi networks from the allowed list. If some Wi-Fi networks are removed from the allowed list, the current device can only connect to the remaining ones; if all Wi-Fi networks are removed from the allowed list, the current device can connect to any Wi-Fi network. This API is applicable to enterprise Wi-Fi policy adjustment scenarios, such as removing restrictions on old Wi-Fi networks when the company switches to a new Wi-Fi network, or lifting some Wi-Fi restrictions to allow employees to connect to new office networks.
+
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_WIFI
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -582,7 +589,66 @@ try {
 
 getAllowedWifiList(admin: Want): Array&lt;WifiAccessInfo&gt;
 
+Obtains the Wi-Fi allow list.
+
+This API queries the policy set by the corresponding enterprise device management application by passing in a Want. To query the policy that actually takes effect, use the [wifiManager.getAllowedWifiList](#wifimanagergetallowedwifilist) API.
+
+**Required permissions:** ohos.permission.ENTERPRISE_MANAGE_WIFI
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+
+**Parameters**
+
+| Parameter Name | Type                                                    | Mandatory | Description                                   |
+| ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Enterprise device management extension component. The Want must contain the abilityName of the enterprise device management extension capability and the bundleName of the application where it resides. |
+
+**Return value**
+
+| Type                              | Description                     |
+| ---------------------------------- | ------------------------- |
+| Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt; | Array of Wi-Fi allow lists. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { wifiManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it with the actual value.
+  bundleName: 'com.example.edmtest',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+  let result: Array<wifiManager.WifiAccessInfo> = wifiManager.getAllowedWifiList(wantTemp);
+  console.info(`Succeeded in getting allowed Wi-Fi list. Result: ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get allowed Wi-Fi list. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+
+## wifiManager.getAllowedWifiList
+
+getAllowedWifiList(admin: Want | null): Array&lt;WifiAccessInfo&gt;
+
 Obtains Wi-Fi networks from the allowed list.
+
+**Since:** 26.0.0
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_WIFI
 
@@ -590,12 +656,11 @@ Obtains Wi-Fi networks from the allowed list.
 
 **Model restriction**: This API can be used only in the stage model.
 
-
 **Parameters**
 
 | Name| Type                                                   | Mandatory| Description                                  |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise Device Management Extension component. The Want must contain the abilityName of the Enterprise Device Management Extension capability and the bundleName of the application where it resides.<br>When multiple MDM applications exist on the device, passing Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect.|
 
 **Return value**
 
@@ -617,39 +682,35 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 
 ```ts
 import { wifiManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.edmtest',
-  abilityName: 'EnterpriseAdminAbility'
-};
 try {
-  let result: Array<wifiManager.WifiAccessInfo> = wifiManager.getAllowedWifiList(wantTemp);
+  // Replace the parameters based on the actual situation.
+  let result: Array<wifiManager.WifiAccessInfo> = wifiManager.getAllowedWifiList(null);
   console.info(`Succeeded in getting allowed Wi-Fi list. Result: ${JSON.stringify(result)}`);
 } catch (err) {
   console.error(`Failed to get allowed Wi-Fi list. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
 ## wifiManager.addDisallowedWifiList<sup>19+</sup>
 
 addDisallowedWifiList(admin: Want, list: Array&lt;WifiAccessInfo&gt;): void
 
-Adds disallowed Wi-Fi networks. The current device cannot connect to the disallowed Wi-Fi networks.
+Adds disallowed Wi-Fi networks. The current device cannot connect to the disallowed Wi-Fi networks. This API is applicable to enterprise security control and management scenarios, such as preventing devices from connecting to insecure public Wi-Fi networks (for example, those in cafes or airports), and preventing employees from connecting to competitor or malicious networks, thereby safeguarding enterprise data security.
 
 A policy conflict is reported when this API is called in the following scenarios:
 
-1. Wi-Fi networks have been disabled by calling [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy). You can resolve the conflict by enabling the Wi-Fi networks through [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy).
+1. The device Wi-Fi capability has been disabled via [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated). You can resolve the conflict by enabling Wi-Fi via [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated).
 2. Allowed Wi-Fi networks have been added by calling [addAllowedWifiList](#wifimanageraddallowedwifilist19). You can resolve the conflict by removing the allowed Wi-Fi networks through [removeAllowedWifiList](#wifimanagerremoveallowedwifilist19).
+
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_WIFI
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -697,15 +758,17 @@ try {
 
 removeDisallowedWifiList(admin: Want, list: Array&lt;WifiAccessInfo&gt;): void
 
-Removes disallowed Wi-Fi networks. If some Wi-Fi networks are removed from the disallowed list, the current device cannot connect to the remaining ones; if all Wi-Fi networks are removed from the disallowed list, the current device can connect to any Wi-Fi network.
+Removes disallowed Wi-Fi networks. If some Wi-Fi networks are removed from the disallowed list, the current device cannot connect to the remaining ones; if all Wi-Fi networks are removed from the disallowed list, the current device can connect to any Wi-Fi network. This API is applicable to enterprise Wi-Fi policy adjustment scenarios, such as lifting restrictions on a specific Wi-Fi network, allowing employees to connect to newly approved office networks, or completely removing the disabling policy.
+
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_WIFI
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -752,7 +815,66 @@ try {
 
 getDisallowedWifiList(admin: Want): Array&lt;WifiAccessInfo&gt;
 
+Obtains the Wi-Fi disable list.
+
+This API queries the policy set by the corresponding enterprise device management application by passing in a Want. To query the policy that actually takes effect, use the [wifiManager.getDisallowedWifiList](#wifimanagergetdisallowedwifilist) API.
+
+**Required permissions:** ohos.permission.ENTERPRISE_MANAGE_WIFI
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the stage model.
+
+
+**Parameters**
+
+| Name | Type                                                   | Mandatory| Description                                                        |
+| ------- | ------------------------------------------------------- | ---- | -------------------------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Enterprise device management extension component. The Want must contain the abilityName of the enterprise device management extension ability and the bundleName of the application where it is located.|
+
+**Return value**
+
+| Type                               | Description                      |
+| ---------------------------------- | ------------------------- |
+| Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt; | Array of Wi-Fi disable list. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { wifiManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it with the actual value.
+  bundleName: 'com.example.edmtest',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+  let result: Array<wifiManager.WifiAccessInfo> = wifiManager.getDisallowedWifiList(wantTemp);
+  console.info(`Succeeded in getting disallowed Wi-Fi list. Result: ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get disallowed Wi-Fi list. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+
+## wifiManager.getDisallowedWifiList
+
+getDisallowedWifiList(admin: Want | null): Array&lt;WifiAccessInfo&gt;
+
 Obtains disallowed Wi-Fi networks.
+
+**Since:** 26.0.0
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_WIFI
 
@@ -760,12 +882,11 @@ Obtains disallowed Wi-Fi networks.
 
 **Model restriction**: This API can be used only in the stage model.
 
-
 **Parameters**
 
 | Name| Type                                                   | Mandatory| Description                                  |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise Device Management Extension component. The Want must contain the abilityName of the Enterprise Device Management Extension capability and the bundleName of the application where it resides.<br>When multiple MDM applications exist on the device, passing a Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect.|
 
 **Return value**
 
@@ -787,36 +908,34 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 
 ```ts
 import { wifiManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.edmtest',
-  abilityName: 'EnterpriseAdminAbility'
-};
 try {
-  let result: Array<wifiManager.WifiAccessInfo> = wifiManager.getDisallowedWifiList(wantTemp);
+  // Replace the parameters based on the actual situation.
+  let result: Array<wifiManager.WifiAccessInfo> = wifiManager.getDisallowedWifiList(null);
   console.info(`Succeeded in getting disallowed Wi-Fi list. Result: ${JSON.stringify(result)}`);
 } catch (err) {
   console.error(`Failed to get disallowed Wi-Fi list. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
 ## wifiManager.turnOnWifi<sup>20+</sup>
 
 turnOnWifi(admin: Want, isForce: boolean): void
 
-Enables Wi-Fi.
+Enables Wi-Fi. This API is applicable to enterprise device remote management scenarios, such as administrators remotely enabling Wi-Fi on employee devices, or ensuring that Wi-Fi is turned on when specific policies are enforced.
 
 In the following scenario, attempting to enable Wi-Fi using this API will fail, and a message indicating that the system function is disabled will be returned:
 
-​Wi-Fi has been disabled using the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) API. In this case, you must call [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) to enable Wi-Fi.
+​Wi-Fi has been disabled via [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated). In this case, you must call [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated) to enable Wi-Fi.
+
+> **NOTE**
+>
+> In multiple MDM application scenarios, if any MDM application disables Wi-Fi through the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated) API, Wi-Fi cannot be directly turned on through this API.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_WIFI
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Conflict rule**: If any MDM app disables Wi-Fi via [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy), Wi-Fi cannot be enabled through this API.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -864,13 +983,17 @@ Disables Wi-Fi.
 
 In the following scenario, attempting to disable Wi-Fi using this API will fail, and a message indicating that the system function is disabled will be returned:
 
-​Wi-Fi has been disabled using the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) API. In this case, you must call [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) to enable Wi-Fi.
+​Wi-Fi has been disabled via [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated). In this case, you must call [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated) to enable Wi-Fi.
+
+> **NOTE**
+>
+> In multiple MDM application scenarios, if any MDM application disables Wi-Fi through the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated) API, Wi-Fi cannot be directly turned off through this API.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_WIFI
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Conflict rule**: If any MDM app disables Wi-Fi via [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy), Wi-Fi cannot be disabled through this API.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -913,7 +1036,11 @@ try {
 
 Represents Wi-Fi access information containing Service Set Identifier (SSID) and Basic Service Set Identifier (BSSID).
 
+When setting the allow list, both the SSID and BSSID must be matched to connect to the Wi-Fi network; when setting the disable list, matching either the SSID or BSSID prevents connection to the Wi-Fi network.
+
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the stage model.
 
 <!--Table: 10%; 10%; 10%; 10%; 60%-->
 | Name         | Type                            | Read-Only| Optional| Description                                                       |
@@ -927,21 +1054,21 @@ Represents the Wi-Fi configuration information.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
+**Model restriction:** This API can be used only in the stage model.
 
 | Name         | Type                             | Read-Only| Optional| Description                                                       |
 | ------------- | ----------------------------------| ---- | ----| ------------------------------------------------------- |
-| ssid          | string                                | No  | No| Name of the Wi-Fi hotspot, in UTF-8 format.                              |
-| bssid         | string                                | No  | Yes| MAC address of the Wi-Fi hotspot. To obtain the MAC address, enable **Enable Wi-Fi verbose logging** under **Settings** > **System & updates** > **Developer options** first, and then go to the WLAN list to check the MAC address. If a Wi-Fi network has multiple MAC addresses, all of them must be added here.                                         |
-| preSharedKey  | string                                | No  | No| Pre-shared key.                                               |
-| isHiddenSsid  | boolean                               | No  | Yes| Whether the network is hidden. The value **true** indicates that the network is hidden; the value **false** indicates the opposite.|
+| ssid          | string                                | No  | No| Wi-Fi hotspot name. The maximum length is 32 bytes, and the encoding format is UTF-8.         |
+| bssid         | string                                | No  | Yes| MAC address of the Wi-Fi hotspot, with a length of 6 bytes. For example, **00:11:22:33:44:55**. To obtain the MAC address, enable **Enable Wi-Fi verbose logging** under **Settings** > **System & updates** > **Developer options** first, and then go to the WLAN list to check the MAC address. If a Wi-Fi network has multiple MAC addresses, all of them must be added here.                                         |
+| preSharedKey  | string                                | No  | No| Key of the hotspot, which is used for Wi-Fi connection authentication. The maximum length is 64 bytes.                              |
+| isHiddenSsid  | boolean                               | No  | Yes| Whether the network is hidden. The value **true** indicates yes, and the value **false** indicates no. The default value is **false**.|
 | securityType  | [WifiSecurityType](#wifisecuritytype) | No  | No| Security type.                                                |
-| creatorUid    | number                                | No  | Yes| ID of the creator.                                             |
-| disableReason | number                                | No  | Yes| Reason for disabling Wi-Fi.                                                 |
-| netId         | number                                | No  | Yes| Network ID allocated.                                             |
-| randomMacType | number                                | No  | Yes| Random MAC. The value **0** indicates a random MAC address, and the value **1** indicates device MAC address.                 |
+| creatorUid    | number                                | No  | Yes| ID of the user who creates the network. The default value is **-1**.                                   |
+| disableReason | number                                | No  | Yes| Disabling reason. The default value is **0**.                                        |
+| netId         | number                                | No  | Yes| Allocated network ID. The default value is **-1**.                                    |
+| randomMacType | number                                | No  | Yes| Random MAC. The value **0** indicates random MAC address, and the value **1** indicates device MAC address. The default value is **0**.        |
 | randomMacAddr | string                                | No  | Yes| MAC address. This field is mandatory when **randomMacType** is set to device MAC address.              |
-| ipType        | [IpType](#iptype)                     | No  | Yes| IP address type.                                               |
+| ipType        | [IpType](#iptype)                     | No  | Yes| IP address type. The default value is **DHCP**.                                        |
 | staticIp      | [IpProfile](#ipprofile)               | No  | Yes| Static IP address information. This field is mandatory when **ipType** is set to **STATIC**.               |
 | eapProfile    | [WifiEapProfile](#wifieapprofile)     | No  | Yes| Extensible Authentication Protocol (EAP) configuration. This field is mandatory only when **securityType** is set to **WIFI_SEC_TYPE_EAP**.    |
 
@@ -951,7 +1078,7 @@ Enumerates the Wi-Fi security types.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
+**Model restriction:** This API can be used only in the stage model.
 
 | Name                     | Value  | Description                                                        |
 | ------------------------- | ---- | ------------------------------------------------------------ |
@@ -961,7 +1088,7 @@ Enumerates the Wi-Fi security types.
 | WIFI_SEC_TYPE_PSK         | 3    | PSK. For example, home and small office Wi-Fi.        |
 | WIFI_SEC_TYPE_SAE         | 4    | Simultaneous Authentication of Equals (SAE). For example, smart home and small- and medium-sized enterprise networks.|
 | WIFI_SEC_TYPE_EAP         | 5    | EAP. For example, large enterprise authentication and university campus networks.                 |
-| WIFI_SEC_TYPE_EAP_SUITE_B | 6    | Suite B 192-bit encryption. For example, government and high-security organization networks.                  |
+| WIFI_SEC_TYPE_EAP_SUITE_B | 6    | Suite B 192-bit encryption. After the setting, Wi-Fi will use Suite-B 192-bit high-strength encryption, providing a high level of security authentication. It is suitable for government and high-security institutions.                  |
 | WIFI_SEC_TYPE_OWE         | 7    | Opportunistic Wireless Encryption (OWE). For example, public Wi-Fi in a coffee shop, which does not require a password to provide encryption for connections.|
 | WIFI_SEC_TYPE_WAPI_CERT   | 8    | WLAN Authentication and Privacy Infrastructure (WAPI) in certificate-based mode (WAPI-CERT). It is China's own wireless security standard.                    |
 | WIFI_SEC_TYPE_WAPI_PSK    | 9    | WAPI-PSK.                                          |
@@ -971,6 +1098,8 @@ Enumerates the Wi-Fi security types.
 Enumerates the IP address types.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the stage model.
 
 
 
@@ -986,14 +1115,16 @@ Represents IP configuration information.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction:** This API can be used only in the stage model.
+
 
 
 | Name        | Type               | Read-Only| Optional| Description       |
 | ------------ | ------------------- | ---- | ----| ----------- |
-| ipAddress    | number              | No  | No | IP address, represented in decimal format. For example, the standard dotted decimal notation **192.168.1.1** corresponds to the decimal value **3232235777**.   |
-| gateway      | number              | No  | No | Default gateway, represented in decimal format, usually the IP address of the router.     |
-| prefixLength | number              | No  | No | Subnet mask.     |
-| dnsServers   | number[]            | No  | No | DNS server. The array can contain a maximum of two addresses: the primary DNS server and the secondary DNS server.|
+| ipAddress    | number              | No  | No | IP address, represented in decimal format. For example, the standard dotted decimal notation **192.168.1.1** corresponds to the decimal value **3232235777**. The address ranges from 0.0.0.0 to 255.255.255.255.   |
+| gateway      | number              | No  | No | Default gateway, represented in decimal format, usually the IP address of the router. The address ranges from 0.0.0.0 to 255.255.255.255.     |
+| prefixLength | number              | No  | No | Subnet mask. The address ranges from 0.0.0.0 to 255.255.255.255.     |
+| dnsServers   | number[]            | No  | No | DNS server. The array can contain a maximum of two addresses: the primary DNS server and the secondary DNS server. The address ranges from 0.0.0.0 to 255.255.255.255.|
 | domains      | Array&lt;string&gt; | No  | No | Domain information.   |
 
 ## WifiEapProfile
@@ -1001,6 +1132,8 @@ Represents IP configuration information.
 Represents EAP profile (configuration) information.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the Stage model.
 
 
 
@@ -1032,6 +1165,8 @@ Enumerates the EAP authentication methods.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction:** This API can be used only in the Stage model.
+
 
 
 | Name          | Value  | Description            |
@@ -1051,6 +1186,8 @@ Enumerates the EAP authentication methods.
 Enumerates the Phase 2 authentication methods.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the Stage model.
 
 
 

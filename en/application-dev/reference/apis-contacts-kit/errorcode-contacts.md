@@ -3,9 +3,11 @@
 <!--Kit: Contacts Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @librahCode-->
-<!--Designer: @yanghaoqian-->
+<!--Designer: @jiayanhong-hw-->
 <!--Tester: @shangzhijie-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=9abb8457b230a737b4e708b27dfb1c20fc137015 translatedAt=2026-11-03T03:40:18.832Z pushedAt=2026-11-03T07:46:21.944Z nl=2 -->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -14,13 +16,13 @@
 
 **Error Message**
 
-general error.
+General error.
 
-**Symptom**
+**Description**
 
 This error code is reported if an internal system error occurs.
 
-**Possible Cause**
+**Possible Causes**
 
 The internal system processing is abnormal.
 
@@ -36,11 +38,11 @@ A system error has occurred. Try again later.
 
 Invalid parameter value.
 
-**Symptom**
+**Description**
 
 Parameter verification failed.
 
-**Possible Cause**
+**Possible Causes**
 
 1. A null parameter is incorrect (Null Argument Error).
 
@@ -54,17 +56,57 @@ Please review the parameter specification constraints and perform troubleshootin
 
 
 
+## 16700003 Background Service Calling Prohibited
+ 
+**Error Message**
+
+Background usage is prohibited.
+
+**Description**
+
+Background service calling is prohibited.
+
+**Possible Causes**
+
+The service is called in the background.
+
+**Solution**
+
+Ensure that the caller is running in the foreground.
+
+
+
+## 16700004 Number of Contacts Exceeds the Limit
+
+**Error Message**
+
+The number of contacts exceeds the upper limit.
+
+**Description**
+
+The number of contacts exceeds the limit.
+
+**Possible Causes**
+
+The number of contacts passed in exceeds the upper limit.
+
+**Solution**
+
+Check the number of contacts.
+
+
+
 ## 16700101 Database Query Failed
 
 **Error Message**
 
 Failed to get value from contacts data.
 
-**Symptom**
+**Description**
 
 This error code is reported if database query fails.
 
-**Possible Cause**
+**Possible Causes**
 
 Database operation has failed.
 
@@ -80,11 +122,11 @@ Database access has failed. Try again later.
 
 Failed to set value to contacts data.
 
-**Symptom**
+**Description**
 
 This error is reported if the attempt to add, delete, or modify data in the database fails.
 
-**Possible Cause**
+**Possible Causes**
 
 Database operation has failed.
 
@@ -98,16 +140,128 @@ Database access has failed. Try again later.
 
 **Error Message**
 
-User canceled.
+User cancel.
 
-**Symptom**
+**Description**
 
 This error code is reported if an operation is canceled by the user.
 
-**Possible Cause**
+**Possible Causes**
 
 The user cancels the operation.
 
 **Solution**
 
 The user cancels the operation. Try again later.
+
+
+
+## Error Code 401 Returned Upon Contacts Call Failure
+
+### Invalid Internal Associated Contact ID
+
+**Error Message**
+
+Internal error. Invalid contact id. Failed to generate contact profile.
+
+**Description**
+
+The ID of the internal associated contact is invalid.
+
+**Possible Causes**
+
+The internal system processing is abnormal.
+
+**Solution**
+
+A system error has occurred. Try again later.
+
+### Failed to Save the Contact Portrait
+
+**Error Message**
+
+Internal error. Failed to save contact portrait.
+
+**Description**
+
+The contact portrait fails to be saved.
+
+**Possible Causes**
+
+The portrait file is abnormal, or the internal system processing is abnormal.
+
+**Solution**
+
+Check the file.
+
+### Database Query Result Set is a Null Pointer
+
+**Error Message**
+
+Internal error. The query resultSet is nullptr.
+
+**Description**
+
+The database query result set is a null pointer.
+
+**Possible Causes**
+
+The internal system processing is abnormal.
+
+**Solution**
+
+A system error has occurred. Try again later.
+
+### Database Query Result Set Exists But Contains No Data
+
+**Error Message**
+
+Internal error. The query resultSet is empty.
+
+**Description**
+
+The database query result set exists but contains no data.
+
+**Possible Causes**
+
+The internal system processing is abnormal.
+
+**Solution**
+
+A system error has occurred. Try again later.
+
+### Invalid Internal Associated Contact rawId
+
+**Error Message**
+
+Internal error. Invalid contact rawId.
+
+**Description**
+
+The **rawId** value of the internal associated contact is invalid.
+
+**Possible Causes**
+
+The internal system processing is abnormal.
+
+**Solution**
+
+A system error has occurred. Try again later.
+
+### Failed to Open Contact Portrait File
+
+**Error Message**
+
+Failed to open contact portrait file.
+
+**Description**
+
+The contact portrait file fails to be opened.
+
+**Possible Causes**
+
+The portrait file path is incorrect, the file does not exist, or the disk is damaged.
+
+**Solution**
+
+Check whether the file exists.

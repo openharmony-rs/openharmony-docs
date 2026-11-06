@@ -105,7 +105,7 @@
 
 1. 创建域名配置文件applinking.json。
 
-   内容为如下：
+   内容如下：
 
    ```json
    {
@@ -140,6 +140,10 @@
 ``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { url } from '@kit.ArkTS';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN_NUMBER = 0xF811;
+const TAG  = '[AppLinkEntryAbility]';
 
 export default class AppLinkEntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -148,11 +152,15 @@ export default class AppLinkEntryAbility extends UIAbility {
     let uri = want?.uri;
     if (uri) {
       // 从链接中解析query参数，拿到参数后，开发者可根据自己的业务需求进行后续的处理。
-      let urlObject = url.URL.parseURL(want?.uri);
-      let action = urlObject.params.get('action');
-      // 例如，当action为showall时，展示所有的节目。
-      if (action === 'showall') {
-        // ...
+      try {
+        let urlObject = url.URL.parseURL(want?.uri);
+        let action = urlObject.params.get('action');
+        // 例如，当action为showall时，展示所有的节目。
+        if (action === 'showall') {
+          // ...
+        }
+      } catch (error) {
+        hilog.error(DOMAIN_NUMBER, TAG, 'Failed to parse URL: %{public}s', JSON.stringify(error));
       }
     }
   }
@@ -199,10 +207,10 @@ struct Index {
         // 仅以App Linking的方式打开应用
         context.openLink(link, { appLinkingOnly: true })
           .then(() => {
-            hilog.info(DOMAIN_NUMBER, TAG, 'openlink success.');
+            hilog.info(DOMAIN_NUMBER, TAG, 'openLink success.');
           })
           .catch((error: BusinessError) => {
-            hilog.error(DOMAIN_NUMBER, TAG, `openlink failed. error:${JSON.stringify(error)}`);
+            hilog.error(DOMAIN_NUMBER, TAG, `openLink failed. error:${JSON.stringify(error)}`);
           });
       })
   }
@@ -210,12 +218,12 @@ struct Index {
 ```
 
 
-在拉起方应用中执行上述代码，如果能够成功拉起目标应用，表明目标应的App Linking配置正确。
+在拉起方应用中执行上述代码，如果能够成功拉起目标应用，表明目标应用的App Linking配置正确。
 
 ## FAQ
 
 
-1. 应用的Modules.json5文件skills设置不正确。
+1. 应用的module.json5文件skills设置不正确。
 
    检查"host"字段中是否是应用所对应的域名。
 

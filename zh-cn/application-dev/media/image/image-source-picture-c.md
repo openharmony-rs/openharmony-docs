@@ -37,7 +37,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
 
 具体接口说明请参考[Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md)。
 
-在Deveco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\src\main\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下：
+在DevEco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\src\main\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下：
 
 **解码接口使用示例**
 
@@ -240,9 +240,13 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
            return GetJsResult(env, IMAGE_BAD_PARAMETER);
        }
        
-       char filePath[MAX_SIZE];
-       size_t pathSize;
-       napi_get_value_string_utf8(env, args[0], filePath, MAX_SIZE, &pathSize);
+       char filePath[MAX_SIZE] = {0};
+       size_t pathSize = 0;
+       if (napi_get_value_string_utf8(env, args[0], filePath, sizeof(filePath), &pathSize) != napi_ok) {
+           OH_LOG_ERROR(LOG_APP, "CreatePictureByImageSource napi_get_value_string_utf8 failed !");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
+       }
+       filePath[MAX_SIZE - 1] = '\0';
    
        g_thisPicture->errorCode = OH_ImageSourceNative_CreateFromUri(filePath, pathSize, &g_thisPicture->source);
        if (g_thisPicture->errorCode != IMAGE_SUCCESS) {

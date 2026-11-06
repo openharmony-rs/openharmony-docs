@@ -1,12 +1,16 @@
 # Class (WebDownloadDelegate)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:46:33.402Z pushedAt=2026-08-07T08:11:33.312Z -->
 
-Implements a **WebDownloadDelegate** object to notify users of the download state.
+WebDownloadDelegate is a delegate class in the ArkWeb framework used to listen for and handle download task events of the Web component. When a web page in the Web component triggers a file download (for example, when the user taps a download link or the **startDownload** method is called), the download task state changes are notified to the app through the callback APIs of this class. Developers register a **WebDownloadDelegate** instance with the Web component through **setDownloadDelegate** to take over the complete lifecycle management of the download process.
+
+WebDownloadDelegate defines four download lifecycle callbacks: [onBeforeDownload](#onbeforedownload11) is invoked before the download starts, and the app must call [WebDownloadItem.start](./arkts-apis-webview-WebDownloadItem.md#start11) in this callback and specify a download path; otherwise, the download remains in the PENDING state. [onDownloadUpdated](#ondownloadupdated11) is invoked during the download process, providing updated information such as the download progress (percentage) and the number of bytes received. [onDownloadFinish](#ondownloadfinish11) is invoked when the download is complete. [onDownloadFailed](#ondownloadfailed11) is invoked when the download fails, and the failed task can be saved through [WebDownloadItem.serialize](./arkts-apis-webview-WebDownloadItem.md#serialize11) for later recovery.
 
 > **NOTE**
 >
@@ -26,11 +30,11 @@ import { webview } from '@kit.ArkWeb';
 
 onBeforeDownload(callback: Callback\<WebDownloadItem>): void
 
-Invoked to notify users before the download starts. **WebDownloadItem.start("xxx")** must be called in this API, with a download path provided. Otherwise, the download remains in the PENDING state.
+Invoked to notify the app before the download starts. The app must call **WebDownloadItem.start("xxx")** in this API and provide a download path. Otherwise, the download remains in the PENDING state.
 
 > **NOTE**
 >
->The file of the download task in the PENDING state is saved to a temporary directory. After the target path is specified by invoking **WebDownloadItem.start**, the temporary file is renamed as the target file, and the unfinished part is directly downloaded to the target path. To avoid generating temporary files before invoking **WebDownloadItem.start**, you can call **WebDownloadItem.cancel** to cancel the current download task and then call **WebDownloadManager.resumeDownload** to resume it.
+>For a download task in the PENDING state, the file is first saved to a temporary directory. After [WebDownloadItem.start](./arkts-apis-webview-WebDownloadItem.md#start11) is called and the target path is specified, the temporary file is renamed to the target file name, and the remaining part of the download is saved directly to the target path. To avoid generating a temporary file before **WebDownloadItem.start** is called, you can first cancel the current download task through [WebDownloadItem.cancel](./arkts-apis-webview-WebDownloadItem.md#cancel11), and then use [WebDownloadManager.resumeDownload](./arkts-apis-webview-WebDownloadManager.md#resumedownload11) to resume the canceled download task.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -38,7 +42,7 @@ Invoked to notify users before the download starts. **WebDownloadItem.start("xxx
 
 | Name | Type  | Mandatory| Description          |
 | ------- | ------ | ---- | :------------- |
-| callback | Callback\<[WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)> | Yes  | Callback for triggering a download.|
+| callback | Callback\<[WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)> | Yes   | Callback invoked before the download starts. |
 
 **Example**
 
@@ -132,7 +136,7 @@ struct WebComponent {
 
 onDownloadUpdated(callback: Callback\<WebDownloadItem>): void
 
-Invoked when the download progress is updated.
+Callback invoked during the download process. The app can obtain information such as the download progress (percentage) and the number of bytes received through this callback to monitor or update the download status.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -140,7 +144,7 @@ Invoked when the download progress is updated.
 
 | Name | Type  | Mandatory| Description          |
 | ------- | ------ | ---- | :------------- |
-| callback | Callback\<[WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)> | Yes  | Callback invoked when the downloaded progress is updated.|
+| callback | Callback\<[WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)> | Yes   | Callback used to return the download update. |
 
 **Example**
 
@@ -234,7 +238,7 @@ struct WebComponent {
 
 onDownloadFinish(callback: Callback\<WebDownloadItem>): void
 
-Invoked when the download is complete.
+Callback invoked when the download is complete. The app can obtain the information of the completed download task through this callback for subsequent processing (such as updating the UI or notifying the user).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -242,7 +246,7 @@ Invoked when the download is complete.
 
 | Name | Type  | Mandatory| Description          |
 | ------- | ------ | ---- | :------------- |
-| callback | Callback\<[WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)> | Yes  | Callback invoked when the download is complete.|
+| callback | Callback\<[WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)> | Yes   | Callback invoked when the download is complete. |
 
 **Example**
 
@@ -336,7 +340,7 @@ struct WebComponent {
 
 onDownloadFailed(callback: Callback\<WebDownloadItem>): void
 
-Invoked when the download fails.
+Callback invoked when the download fails. The app can obtain detailed information about the download failure through this callback for error handling, retry, or logging.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -344,7 +348,7 @@ Invoked when the download fails.
 
 | Name | Type  | Mandatory| Description          |
 | ------- | ------ | ---- | :------------- |
-| callback | Callback\<[WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)> | Yes  | Callback invoked when the download fails.|
+| callback | Callback\<[WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)> | Yes | Callback for the download failure. |
 
 **Example**
 

@@ -2,9 +2,10 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=e98d9dbb00880c3983b0d3e888a32f6a37b9f2fd translatedAt=2026-11-03T06:06:17.246Z pushedAt=2026-11-03T12:08:25.590Z nl=1 -->
 
 The **UserStatus** module, designed for user state awareness, empowers the system to perceive specific conditions of users, such as determining their age group.
 
@@ -71,7 +72,7 @@ For details about the error codes, see [User Status Awareness Error Codes](error
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 33900001 | Service exception. Possible causes: <br>1. System error, such as a null pointer and container-related exception. <br>2. Node-API invocation exception, such as invalid Node-API status.|
 | 33900002 | Subscription failed. Possible causes: <br>1. Callback registration failed. <br>2. Failed to bind the native object to the JS wrapper. <br>3. Node-API invocation exception, such as invalid Node-API status. <br>4. IPC request exception. |
 
@@ -112,7 +113,7 @@ Disables the age group detection function.
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                           | Yes  | Event type. The value **userAgeGroupDetected** indicates the event of enabling age group detection.|
-| callback | Callback&lt;[UserClassification](#userclassificationdeprecated)&gt; | No  | Callback used to return the detection result.|
+| callback | Callback&lt;[UserClassification](#userclassificationdeprecated)&gt; | No  | Callback used to return the detection result. The callback to be unsubscribed must be the same as the one passed in during subscription. If not specified, all callbacks currently listening for this event will be unsubscribed. |
 
 **Error codes**
 
@@ -120,7 +121,7 @@ For details about the error codes, see [User Status Awareness Error Codes](error
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 33900001 | Service exception. Possible causes: <br>1. System error, such as a null pointer and container-related exception. <br>2. Node-API invocation exception, such as invalid Node-API status. |
 | 33900003 | Unsubscription failed. Possible causes: <br>1. Callback failure. <br>2. Node-API invocation exception, such as invalid Node-API status. <br>3. IPC request exception.|
 

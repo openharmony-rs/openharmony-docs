@@ -1,10 +1,11 @@
 # Modal Transition
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=95916eb3eda3c7cecf8d515362b934cf84716126 translatedAt=2026-11-04T01:27:41.092Z pushedAt=2026-11-04T01:45:23.339Z nl=1 -->
 
 
 Modal transition is a type of transition achieved by a modal – a view that appears on top of the current view while the current view remains.
@@ -33,9 +34,9 @@ You can bind a full-screen modal to a component through the [bindContentCover](.
    // Use @Builder to build a modal view.
    @Builder MyBuilder() {
      Column() {
-       Text('my model view')
+       Text('my modal view')
      }
-     // Use the transition API to implement the transition animation for component appearance and disappearance. The transition API must be added to the first component of the builder.
+     // Use the transition API to implement the transition animation for component appearance and disappearance. The transition API must be added to the first component of the builder. 
      .transition(TransitionEffect.translate({ y: 1000 }).animation({ curve: curves.springMotion(0.6, 0.8) }))
    }
    ```
@@ -46,7 +47,7 @@ You can bind a full-screen modal to a component through the [bindContentCover](.
    // Define the state variable to control the visibility of the modal.
    @State isPresent: boolean = false;
 
-   Button('Click to present model view')
+   Button('Click to present modal view')
      // Bind a modal to the component. ModalTransition.NONE means not to use the default transition animation for the modal. You can use onDisappear to control state variable changes.
      .bindContentCover(this.isPresent, this.MyBuilder(), {
                modalTransition: ModalTransition.NONE,
@@ -264,7 +265,7 @@ struct BindContentCoverDemo {
 
 
 
-![en-us_image_0000001646921957](figures/en-us_image_0000001646921957.gif)
+![en-us_image_0000001646921957](figures/Modal-Transition-bindContentCover.gif)
 
 
 
@@ -306,7 +307,7 @@ struct BindSheetDemo {
   mySheet() {
     Column() {
       Flex({ direction: FlexDirection.Row, wrap: FlexWrap.Wrap }) {
-        ForEach(this.menuList, (item: string) => {
+        ForEach(this.menuList, (item: Resource) => {
           Text(item)
             .fontSize(16)
             .fontColor(0x333333)
@@ -386,7 +387,7 @@ struct BindSheetDemo {
 }
 ```
 
-![en-us_image_0000001599977924](figures/en-us_image_0000001599977924.gif)
+![en-us_image_0000001599977924](figures/Sheet-Transition-bindSheet.gif)
 
 
 ## Creating a Menu with bindMenu
@@ -446,7 +447,7 @@ struct BindMenuDemo {
 }
 ```
 
-
+<!--Del-->  <!--DelEnd-->
 
 
 ## Creating a Context Menu with bindContextMenu
@@ -471,14 +472,14 @@ struct BindContextMenuDemo {
     $r('app.string.modal_transition_text26'),
     // Replace $r('app.string.modal_transition_text27') with the actual resource file. In this example, the value in the resource file is "Search".
     $r('app.string.modal_transition_text27')];
-  // Replace $r('app.mdia.icon_2') with the actual resource file.
+  // Replace $r('app.media.icon_2') with the actual resource file. 
   private pics: Resource[] = [$r('app.media.icon_1'), $r('app.media.icon_2')];
 
   // Use @Builder to build custom menu items.
   @Builder
   myMenu() {
     Column() {
-      ForEach(this.menu, (item: string) => {
+      ForEach(this.menu, (item: Resource) => {
         Row() {
           Text(item)
             .fontSize(18)
@@ -531,7 +532,7 @@ struct BindContextMenuDemo {
 }
 ```
 
-![en-us_image_0000001600137920](figures/en-us_image_0000001600137920.gif)
+![en-us_image_0000001600137920](figures/Context-Menu-bindContextMenu.gif)
 
 
 ## Creating a Popup with bindPopup
@@ -599,7 +600,7 @@ struct BindPopupDemo {
 
 
 
-![en-us_image_0000001649282285](figures/en-us_image_0000001649282285.gif)
+![en-us_image_0000001649282285](figures/Creating-Popup-with-bindPopup.gif)
 
 
 ## Creating Modal Transition with if
@@ -809,4 +810,4 @@ struct ModalTransitionWithIf {
 }
 ```
 
-![en-us_image_0000001597792146](figures/en-us_image_0000001597792146.gif)
+![en-us_image_0000001597792146](figures/Modal-Transition.gif)

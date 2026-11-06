@@ -1,9 +1,9 @@
 # 应用文件访问(ArkTS)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
 应用需要对应用文件目录下的应用文件进行查看、创建、读写、删除、移动、复制、获取属性等访问操作，下文介绍具体方法。
@@ -371,8 +371,7 @@ function copyFileWithData(context: common.UIAbilityContext): void {
 
 ```ts
 // pages/xxx.ets
-import { fileIo } from '@kit.CoreFileKit';
-import { hash } from '@kit.CoreFileKit';
+import { fileIo, hash } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 
 // 获取应用文件路径，请在组件内获取context

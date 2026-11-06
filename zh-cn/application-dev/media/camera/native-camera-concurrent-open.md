@@ -47,7 +47,6 @@
    #include "ohcamera/video_output.h"
    #include "napi/native_api.h"
    #include "ohcamera/camera_manager.h"
-   #include "common/log_common.h"
    ```
 
 2. 在CMake脚本中链接相关动态库。
@@ -131,7 +130,7 @@
    }
    ```
 
-7. 会话流程。配置对应的相机输入流[Camera_Input](../../reference/apis-camera-kit/capi-oh-camera-camera-input.md)和需要的相机输出流，此处以预览输出流[Camera_PreviewOutput](../../reference/apis-camera-kit/capi-oh-camera-camera-previewoutput.md)为例 。
+7. 会话流程。配置对应的相机输入流[Camera_Input](../../reference/apis-camera-kit/capi-oh-camera-camera-input.md)和需要的相机输出流，此处以预览输出流[Camera_PreviewOutput](../../reference/apis-camera-kit/capi-oh-camera-camera-previewoutput.md)为例。
 
    ```c++
    void SessionFlowFn(Camera_CaptureSession *captureSession, Camera_Input *cameraInput, Camera_PreviewOutput *previewOutput)

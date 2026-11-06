@@ -1,10 +1,11 @@
 # @ohos.data.sendablePreferences (Shared User Preferences)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @ding_dong_dong-->
-<!--Designer: @ding_dong_dong-->
+<!--Owner: @cuile44-->
+<!--Designer: @cuile44-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=baacd5e603827a8080bb1e15309bc06852b1fd80 translatedAt=2026-09-04T03:45:42.185Z pushedAt=2026-09-09T09:11:03.728Z -->
 
 
 The **sendablePreferences** module provides APIs for processing data in the form of key-value (KV) pairs, including querying, modifying, and persisting KV pairs.
@@ -44,6 +45,8 @@ getPreferences(context: Context, options: Options): Promise&lt;Preferences&gt;
 
 Obtains a **Preferences** instance. This API uses a promise to return the result.
 
+After the first application calls this interface to obtain a **Preferences** instance, this instance will be cached. Subsequent calls will not read from the persistent file again, but directly retrieve the **Preferences** instance from cache.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
@@ -53,13 +56,13 @@ Obtains a **Preferences** instance. This API uses a promise to return the result
 | Name | Type            | Mandatory| Description                                                                                                                                                                          |
 | ------- | ---------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md)          | Yes  | Application context.|
-| options | [Options](#options) | Yes  | Configuration options of the **Preferences** instance.       |
+| options | [Options](#options) | Yes | Configuration options related to the **Preferences** instance. The **name** field is mandatory. The name length must be greater than zero and less than or equal to 255 bytes. The name must not contain '/' and must not end with '/'. The **dataGroupId** field is optional. |
 
 **Return value**
 
 | Type                                   | Description                              |
 | --------------------------------------- | ---------------------------------- |
-| Promise&lt;[Preferences](#preferences)&gt; | Promise used to return the **Preferences** instance obtained.<br>This instance inherits from [ISendable](../../arkts-utils/arkts-sendable.md#isendable) and can be passed between concurrent ArkTS instances (including the main thread and the TaskPool or Worker threads) by reference. For details, see [Using Sendable Objects](../../arkts-utils/sendable-guide.md).|
+| Promise&lt;[Preferences](#preferences)&gt; | Promise object that returns a **Preferences** instance. |
 
 **Error codes**
 
@@ -102,6 +105,8 @@ getPreferencesSync(context: Context, options: Options): Preferences
 
 Obtains a **Preferences** instance. This API returns the result synchronously.
 
+After the first application calls this interface to obtain a **Preferences** instance, this instance will be cached. Subsequent calls will not read from the persistent file again, but directly retrieve the **Preferences** instance from cache.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
@@ -117,7 +122,7 @@ Obtains a **Preferences** instance. This API returns the result synchronously.
 
 | Type                       | Description                 |
 | --------------------------- | --------------------- |
-| [Preferences](#preferences) | **Preferences** instance obtained.<br>This instance inherits from [ISendable](../../arkts-utils/arkts-sendable.md#isendable) and can be passed between concurrent ArkTS instances (including the main thread and the TaskPool or Worker threads) by reference. For details, see [Using Sendable Objects](../../arkts-utils/sendable-guide.md).|
+| [Preferences](#preferences) | Returns a **Preferences** instance. |
 
 **Error codes**
 
@@ -164,7 +169,7 @@ Avoid using a deleted **Preferences** instance to perform data operations, which
 | Name | Type            | Mandatory| Description                                                                        |
 | ------- | ---------------- | ---- | ----------------------------------------------------------------------------|
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md)          | Yes  | Application context.|
-| options | [Options](#options) | Yes  | Configuration options of the **Preferences** instance.                                                                           |
+| options | [Options](#options) | Yes  | Instance-related configuration options for the **Preferences** instance. The name field is mandatory. The name length must be greater than zero and less than or equal to 255 bytes. The name must not contain '/' and must not end with '/'. dataGroupId is an optional field.                            |
 
 **Return value**
 
@@ -317,8 +322,8 @@ Represents the configuration options of a **Preferences** instance.
 
 | Name       | Type  | Read-Only| Optional| Description                                                        |
 | ----------- | ------ | ---- | ----| ------------------------------------------------------------ |
-| name        | string | No | No | Name of the **Preferences** instance.                                     |
-| dataGroupId | string\|null | No | Yes | Application group ID. <!--RP1-->Currently, this parameter is not supported.<!--RP1End--><br>This parameter is optional. A **Preferences** instance will be created in the sandbox path corresponding to the specified **dataGroupId**. If this parameter is not specified, the **Preferences** instance is created in the sandbox directory of the application.<br> **Model restriction**: This attribute can be used only in the stage model.|
+| name        | string | No  | No  | Name of the **Preferences** instance. The name length must be greater than zero and less than or equal to 255 bytes. The name must not contain '/' and must not end with '/'.                                   |
+| dataGroupId | string \| null | No  | Yes  | Application group ID. <!--RP1-->Currently, specifying **dataGroupId** to create a Preferences instance in the corresponding shared sandbox path is not supported. <!--RP1End--><br/>This is an optional parameter. It specifies to create a **Preferences** instance in the sandbox path corresponding to this **dataGroupId**. If this parameter is not specified, the Preferences instance is created in the application sandbox directory by default.<br/> **Model constraint:** This attribute is available only in the stage model.|
 
 
 ## Preferences
@@ -348,7 +353,7 @@ Obtains the value of a key from this **Preferences** instance. This API uses a p
 
 | Type                               | Description                         |
 | ----------------------------------- | ----------------------------- |
-| Promise&lt;[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)&gt; | Promise used to return the value obtained.<br>This instance inherits from [ISendable](../../arkts-utils/arkts-sendable.md#isendable) and can be passed between concurrent ArkTS instances (including the main thread and the TaskPool or Worker threads) by reference. For details, see [Using Sendable Objects](../../arkts-utils/sendable-guide.md).|
+| Promise&lt;[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)&gt; | Promise object used to return the value corresponding to the key.|
 
 **Error codes**
 
@@ -395,7 +400,7 @@ Obtains the value of a key from this **Preferences** instance. This API returns 
 
 | Type                               | Description                         |
 | ----------------------------------- | ----------------------------- |
-| [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable) | Value obtained.<br>This instance inherits from [ISendable](../../arkts-utils/arkts-sendable.md#isendable) and can be passed between concurrent ArkTS instances (including the main thread and the TaskPool or Worker threads) by reference. For details, see [Using Sendable Objects](../../arkts-utils/sendable-guide.md).|
+| [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable) | Value corresponding to the key. |
 
 **Error codes**
 
@@ -410,6 +415,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { lang } from '@kit.ArkTS';
+
 let value: lang.ISendable = preferences.getSync('startup', 'default');
 ```
 
@@ -417,7 +423,7 @@ let value: lang.ISendable = preferences.getSync('startup', 'default');
 
 getAll(): Promise&lt;lang.ISendable&gt;
 
-Obtains all KV pairs from this **Preferences** instance. This API uses a promise to return the result.
+Obtains all data in the cached **Preferences** instance. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -427,7 +433,7 @@ Obtains all KV pairs from this **Preferences** instance. This API uses a promise
 
 | Type                 | Description                                       |
 | --------------------- | ------------------------------------------- |
-| Promise&lt;[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)&gt; | Promise used to return the KV pairs obtained.<br>This object inherits from [ISendable](../../arkts-utils/arkts-sendable.md#isendable) and can be passed between concurrent ArkTS instances (including the main thread and the TaskPool or Worker threads) by reference. For details, see [Using Sendable Objects](../../arkts-utils/sendable-guide.md). |
+| Promise&lt;[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)&gt; | Promise object that returns all the key-value data contained. |
 
 **Error codes**
 
@@ -467,7 +473,7 @@ Obtains all KV pairs from this **Preferences** instance. This API returns the re
 
 | Type                 | Description                                       |
 | --------------------- | ------------------------------------------- |
-| [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable) | All KV pairs obtained.<br>This object inherits from [ISendable](../../arkts-utils/arkts-sendable.md#isendable) and can be passed between concurrent ArkTS instances (including the main thread and the TaskPool or Worker threads) by reference. For details, see [Using Sendable Objects](../../arkts-utils/sendable-guide.md).|
+| [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable) | All the key-value data contained. |
 
 **Error codes**
 
@@ -591,13 +597,13 @@ Checks whether this **Preferences** instance contains the KV pair of the given k
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key to be checked. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
+| key    | string | Yes   | Name of the storage key to check. It cannot be empty and has a maximum length of [MAX_KEY_LENGTH](#constants). |
 
 **Return value**
 
 | Type                  | Description                                                        |
 | ---------------------- | ------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the **Preferences** instance contains the KV pair; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return whether the **Preferences** instance contains the key-value pair of the given key. The value **true** indicates that it exists, and **false** indicates that it does not. |
 
 **Error codes**
 
@@ -618,7 +624,7 @@ promise.then((val: boolean) => {
   if (val) {
     console.info("The key 'startup' is contained.");
   } else {
-    console.error("The key 'startup' does not contain.");
+    console.info("The key 'startup' does not contain.");
   }
 }).catch((err: BusinessError) => {
   console.error(`Failed to check the key 'startup'. code: ${err.code}, message: ${err.message}`);
@@ -639,13 +645,13 @@ Checks whether this **Preferences** instance contains the KV pair of the given k
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key to be checked. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
+| key    | string | Yes   | Name of the storage key to check. It cannot be empty, and its maximum length is limited to [MAX_KEY_LENGTH](#constants). |
 
 **Return value**
 
 | Type                  | Description                                                        |
 | ---------------------- | ------------------------------------------------------------ |
-| boolean | The value **true** means the **Preferences** instance contains the KV pair; the value **false** means the opposite.|
+| boolean | Whether the **Preferences** instance contains the stored key-value pair for the given key. **true** indicates that it exists, and **false** indicates that it does not. |
 
 **Error codes**
 
@@ -663,7 +669,7 @@ let isExist: boolean = preferences.hasSync('startup');
 if (isExist) {
   console.info("The key 'startup' is contained.");
 } else {
-  console.error("The key 'startup' does not contain.");
+  console.info("The key 'startup' does not contain.");
 }
 ```
 
@@ -681,7 +687,7 @@ Deletes a KV pair from this **Preferences** instance. This API uses a promise to
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key to be deleted. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
+| key    | string | Yes   | Name of the storage key to delete. It cannot be empty, and its maximum length is [MAX_KEY_LENGTH](#constants). |
 
 **Return value**
 
@@ -725,7 +731,7 @@ Deletes a KV pair from this **Preferences** instance. This API returns the resul
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key to be deleted. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
+| key    | string | Yes   | Name of the storage key to delete. It cannot be empty, and its maximum length is [MAX_KEY_LENGTH](#constants). |
 
 **Error codes**
 
@@ -876,7 +882,13 @@ preferences.clearSync();
 
 on(type: 'change', callback: Callback&lt;string&gt;): void
 
-Subscribes to data changes. The registered callback will be invoked to return the new value if the data change is [flushed](#flush).
+Subscribes to data changes. When the value of a subscribed key changes, the callback is triggered after the flush method is executed.
+
+> **Comparison of different subscription methods:**
+> - **on('change')**: Subscribes to changes of all keys. It is suitable for scenarios where global data change awareness is required.
+> - **on('dataChange')**: Precisely subscribes to changes of specified keys. It is suitable for scenarios that focus on specific data, and the callback can return the specific value.
+> 
+> **Selection suggestion:** Use **on('change')** when you need to listen for all data changes; use **on('dataChange')** when you need to precisely know the change of a specific key and obtain the new value.
 
   > **NOTE**
   >
@@ -925,11 +937,11 @@ on(type: 'multiProcessChange', callback: Callback&lt;string&gt;): void
 
 Subscribes to data changes between processes. When multiple processes hold the same preference file, calling [flush](#flush) in any process (including the current process) will trigger the callback in this API.
 
-This API is provided for applications that have applied for [dataGroupId](#options). Avoid using this API for the applications that have not applied for **dataGroupId** because calling it in multiple process may damage the persistent files and cause data loss.
+This API is provided for applications that have applied for [dataGroupId](#options). Avoid using this API for the applications that have not applied for **dataGroupId** because calling it in multiple processes may damage the persistent files and cause data loss.
 
   > **NOTE**
   >
-  > The maximum number of subscriptions for inter-process data change of the same persistent file for the current process is 50. Once the limit is reached, the subscription will fail. You are advised to cancel the subscription in a timely manner after the callback is triggered.
+  > The maximum number of subscriptions for inter-process data change of the same persistent file in the current process is 50. Once the limit is reached, the subscription will fail. You are advised to cancel the subscription in a timely manner after the callback is triggered.
   >
   > After [removePreferencesFromCache](#sendablepreferencesremovepreferencesfromcache) or [deletePreferences](#sendablepreferencesdeletepreferences) is called, the data change subscription will be automatically canceled. After [getPreferences](#sendablepreferencesgetpreferences) is called again, you need to subscribe to data changes again.
 
@@ -975,7 +987,7 @@ preferences.flush().then(() => {
 
 on(type: 'dataChange', keys: Array&lt;string&gt;, callback: Callback&lt;lang.ISendable&gt;): void
 
-Subscribes to changes of specific data. The registered callback will be invoked only after the values of the specified keys are changed and [flushed](#flush).
+Precisely subscribes to data changes. Only when the value of a subscribed key changes is the callback triggered after the [flush](#flush) method is executed.
 
   > **NOTE**
   >
@@ -990,8 +1002,8 @@ Subscribes to changes of specific data. The registered callback will be invoked 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value is **'dataChange'**, which indicates data changes.          |
-| keys     | Array&lt;string&gt;                                          | Yes  | Keys to be observed.                                         |
-| callback | Callback&lt;[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)&gt; | Yes  | Callback used to return the KV pairs changed. The keys are the keys observed, and the values are the new values. The values support the following types: number, string, boolean, bigint, and serializable object.|
+| keys     | Array&lt;string&gt;                                          | Yes   | Set of keys to subscribe to.                                          |
+| callback | Callback&lt;[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)&gt; | Yes   | Callback invoked to return multiple key-value pairs, where the key is the subscribed key that has changed and the value is the changed data, which can be number, string, boolean, bigint, or a serializable object. |
 
 **Error codes**
 
@@ -1028,6 +1040,13 @@ off(type: 'change', callback?: Callback&lt;string&gt;): void
 
 Unsubscribes from data changes.
 
+**Paired call**
+- Used together with **on('change')** to unsubscribe from data changes.
+- If you do not need to listen for data changes, call **off** to unsubscribe in a timely manner.
+
+**Related methods:**
+- **on('change')**: Subscribes to data changes.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
@@ -1037,7 +1056,7 @@ Unsubscribes from data changes.
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | Yes  | Event type. The value is **'change'**, which indicates data changes.                    |
-| callback | Callback&lt;string&gt; | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for data changes.|
+| callback | Callback&lt;string&gt; | No   | Callback function to cancel. If not specified, all registered callback functions are canceled; if specified, only the specified callback function is canceled. |
 
 **Error codes**
 
@@ -1072,7 +1091,7 @@ off(type: 'multiProcessChange', callback?: Callback&lt;string&gt;): void
 
 Unsubscribes from inter-process data changes.
 
-This API is provided for applications that have applied for [dataGroupId](#options). Avoid using this API for the applications that have not applied for **dataGroupId** because calling it in multiple process may damage the persistent files and cause data loss.
+This API is provided for applications that have applied for [dataGroupId](#options). Avoid using this API for the applications that have not applied for **dataGroupId** because calling it in multiple processes may damage the persistent files and cause data loss.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1083,7 +1102,7 @@ This API is provided for applications that have applied for [dataGroupId](#optio
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | Yes  | Event type. The value is **'multiProcessChange'**, which indicates inter-process data changes.|
-| callback | Callback&lt;string&gt; | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for data changes.|
+| callback | Callback&lt;string&gt; | No | Callback function to be unsubscribed. If this parameter is not specified, all registered callback functions are unsubscribed; if it is specified, only the specified callback function is unsubscribed. |
 
 **Error codes**
 
@@ -1117,6 +1136,13 @@ off(type: 'dataChange', keys: Array&lt;string&gt;, callback?: Callback&lt;lang.I
 
 Unsubscribes from changes of specific data.
 
+**Paired call**
+- Used in pair with **on('dataChange')** to cancel the precise data change subscription.
+- If you do not need to listen for data changes of specific keys, call **off** to unsubscribe in a timely manner.
+
+**Related Methods**
+- **on('dataChange')**: subscribes to precise data changes
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
@@ -1126,8 +1152,8 @@ Unsubscribes from changes of specific data.
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value is **'dataChange'**, which indicates data changes.          |
-| keys     | Array&lt;string&gt;                                          | Yes  | Keys to be unsubscribed from. If this parameter is not specified, this API unsubscribes from the changes of all keys.|
-| callback | Callback&lt;[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)&gt; | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the changes of the specified data.|
+| keys     | Array&lt;string&gt;                                          | Yes   | Set of keys to unsubscribe from. When keys is an empty array, all keys are unsubscribed from; when keys is a non-empty array, only the keys in the set are unsubscribed from. |
+| callback | Callback&lt;[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)&gt; | No   | Callback to unsubscribe. If this parameter is not specified, all registered callbacks are unsubscribed from; if it is specified, only the specified callback is unsubscribed from. |
 
 **Error codes**
 

@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API的napi_wrap_sendable和napi_unwrap_sendable接口实现Native C++对象与Sendable ArkTS对象绑定，支持跨线程安全访问。"
+keywords: [Node-API, Sendable, 对象绑定, napi_wrap_sendable, napi_unwrap_sendable, 跨线程, Sendable对象, 线程安全]
+doctype: guide
+status: active
+---
+
 # Native与Sendable ArkTS对象绑定
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 场景介绍
 
@@ -23,7 +31,7 @@
       constructor(arg: number);
       plusOne(): number;
 
-      public get value();
+      public get value(): number;
       public set value(newVal: number);
     }
     ```

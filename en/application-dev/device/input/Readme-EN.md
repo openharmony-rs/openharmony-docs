@@ -5,7 +5,8 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=18359e890002e2283dcf682885faf6a8f0e4e03f translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 - [About This Kit](input-overview.md)
 - [Input Device Development](inputdevice-guidelines.md)
@@ -17,3 +18,4 @@
 - [Preset Global Hotkey Development (for System Applications Only)](shortkey-guidelines-sys.md)<!--DelEnd-->
 - [Event Listening Development (C/C++)](monitor-guidelines.md)
 - [Event Interception Development (C/C++)](interceptor-guidelines.md)
+- [Glossary](input-kit-glossary.md)

@@ -1,14 +1,15 @@
 # System Window Development (Stage Model Only) (for System Applications Only)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
-<!--Tester: @qinliwen0417-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-03T02:49:54.928Z pushedAt=2026-11-03T02:57:58.469Z nl=1 -->
 
 ## Overview
 
-In the stage model, system applications are allowed to create and manage system windows, including the volume bar, wallpaper, notification panel, status bar, and navigation bar. For details about the supported system window types, see [WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7).
+In the stage model, system apps are allowed to create and manage system windows, including the volume bar, wallpaper, notification bar, status bar, navigation bar, and more. For details about the supported system window types, see [WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7).
 
 When a window is displayed, hidden, or switched, an animation is usually used to smooth the interaction process.
 
@@ -23,11 +24,11 @@ However, you can customize an animation to be played during the display or hidin
 
 ## Available APIs
 
-For details about more APIs, see [Window](../reference/apis-arkui/js-apis-window-sys.md).
+For more API details, see [@ohos.window (System API)](../reference/apis-arkui/js-apis-window-sys.md).
 
 | Instance           | API                                                      | Description                                                        |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Window static method   | createWindow(config: Configuration, callback: AsyncCallback\<Window>): void | Creates a child window or system window.<br>**config**: parameters used for creating the window.    |
+| Window static method    | createWindow(config: Configuration, callback: AsyncCallback\<Window>): void | Creates a subwindow or system window.<br>-`config`: parameters for creating the window.     |
 | Window            | resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void | Changes the window size.                                          |
 | Window            | moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void | Moves this window.                                          |
 | Window            | setUIContent(path: string, callback: AsyncCallback&lt;void&gt;): void | Loads the content of a page, with its path in the current project specified, to this window.<br>**path**: path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project in the stage model.                                    |
@@ -150,11 +151,11 @@ export default class ServiceExtensionAbility1 extends ServiceExtensionAbility {
 
 ## Customizing an Animation to Be Played During the Display or Hiding of a System Window
 
-You can determine whether to play an animation when a system window is showing or hiding.
+You can customize an animation to be played for showing or hiding a system window. The following use the show and hide animations as examples.
 
 ### How to Develop
 
-1. Obtain the transition animation controller.
+1. Obtain the window attribute transition controller.
 
    Call **getTransitionController** to obtain the controller, which completes subsequent animation operations.
 
@@ -262,8 +263,7 @@ export default class EntryAbility extends UIAbility {
 
 ```ts
 // In the xxx.ets file, implement the attribute setting of the child window.
-import { window, router } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -294,9 +294,8 @@ struct transferCtrlSubWindow {
 
 ```ts
 // In the .ets file, implement the operations of creating a child window and displaying or hiding a window.
-import { window, router } from '@kit.ArkUI';
-import { common, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 import { AnimationConfig } from '../entryability/AnimationConfig';
 
 @Entry
@@ -325,7 +324,7 @@ struct Index {
     promise.then(async(subWin: window.Window) => {
       this.subWindow_ = subWin;
       AppStorage.setOrCreate<window.Window>("systemTypeWindow", subWin);
-      await subWin.setUIContent("pages/transferCtrlSubWindow",()=>{});
+      await subWin.setUIContent("pages/transferCtrlSubWindow");
       await subWin.moveWindowTo(100,100);
       await subWin.resize(200,200);
     }).catch((err:Error)=>{

@@ -4,10 +4,8 @@
 <!--Subsystem: Security-->
 <!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
-<!--Tester: @leiyuqian-->
+<!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
-
-## 模块简介
 
 程序访问控制提供应用程序的权限校验和管理能力，支持应用在访问受保护资源前进行权限状态判断、运行时授权申请、设置页授权引导和权限状态变化监听。权限分为system_grant（系统自动授权）、user_grant（需用户手动授权）和[manual_settings](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)（手动设置授权）三类，应用需在配置文件中声明所需权限。权限管理机制详见[应用权限管控概述](../../security/AccessToken/app-permission-mgmt-overview.md)。
 
@@ -41,7 +39,7 @@
 
 - **[AtManager](#atmanager)：** 程序访问控制管理类，提供权限校验、权限弹窗申请、设置页授权引导和权限状态监听等能力。
 
-![](figures/accessAccessCtrl.png)
+![](figures/abilityAccessCtrl.png)
 
 ### API组合使用关系说明
 
@@ -304,7 +302,7 @@ on(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;, 
 | 12100001 | Invalid parameter. Possible causes: 1. The permissionList exceeds the size limit; 2. The permissionNames in the list are all invalid. |
 | 12100004 | The API is used repeatedly with the same input. |
 | 12100005 | The registration time has exceeded the limit. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **示例：**
 
@@ -360,7 +358,7 @@ off(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;,
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100004 | The API is not used in pair with "on". |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **示例：**
 
@@ -387,7 +385,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 
 用于<!--RP1-->[UIAbility](js-apis-app-ability-uiAbility.md#uiability)<!--RP1End-->拉起弹窗请求[用户授权](../../security/AccessToken/request-user-authorization.md)，返回本次请求权限的授权结果。使用callback异步回调。
 
-适用于应用首次访问受保护资源前主动向用户申请 [user_grant](../../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权) 权限的场景。
+适用于应用首次访问受保护资源前主动向用户申请[user_grant](../../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权)权限的场景。
 
 如果用户拒绝授权，将无法通过此接口再次拉起授权弹窗。开发者可引导用户前往系统设置界面手动授权，或调用[requestPermissionOnSetting](#requestpermissiononsetting12)拉起权限设置弹窗，引导用户完成授权。
 
@@ -400,6 +398,8 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
+
+<!--RP6--><!--RP6End-->
 
 **参数：**
 
@@ -453,7 +453,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 
 用于<!--RP1-->[UIAbility](js-apis-app-ability-uiAbility.md#uiability)<!--RP1End-->拉起弹窗请求[用户授权](../../security/AccessToken/request-user-authorization.md)，返回本次请求权限的授权结果。使用Promise异步回调。
 
-适用于应用首次访问受保护资源前主动向用户申请user_grant权限的场景。
+适用于应用首次访问受保护资源前主动向用户申请[user_grant](../../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权)权限的场景。
 
 如果用户拒绝授权，将无法通过此接口再次拉起授权弹窗。开发者可引导用户前往系统设置界面手动授权，或调用[requestPermissionOnSetting](#requestpermissiononsetting12)拉起权限设置弹窗，引导用户完成授权。
 
@@ -462,6 +462,8 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
+
+<!--RP6--><!--RP6End-->
 
 **参数：**
 
@@ -484,7 +486,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | (Deprecated in 12) Invalid parameter. The context is invalid when it does not belong to the application itself. |
-| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation results. |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining the user operation result. <br>适用版本：11+ |
 
 **示例：**
 
@@ -532,6 +534,8 @@ requestPermissionOnSetting(context: Context, permissionList: Array&lt;Permission
 
 **系统能力：** SystemCapability.Security.AccessToken
 
+<!--RP6--><!--RP6End-->
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -552,12 +556,14 @@ requestPermissionOnSetting(context: Context, permissionList: Array&lt;Permission
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 12100001 | Invalid parameter. Possible causes:<br>1. The context is invalid because it does not belong to the application itself;<br>2. The permission list contains the permission that is not declared in the module.json file;<br>3. The permission list is invalid because the permissions in it do not belong to the same permission group;<br>4. The permission list contains one or more system_grant permissions. |
-| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation result. |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining the user operation result. |
+| 12100010 | The request already exists. <br>适用版本：12-20 |
 | 12100011 | All permissions in the permission list have been granted. |
 | 12100012 | The permission list contains the permission that has not been revoked by the user. |
-| 12100014 | Unexpected permission. You cannot request this type of permission from users via a pop-up window. |
+| 12100014 | Unexpected permission. You cannot request this type of permission from users via a pop-up window. <br>适用版本：21+ |
 
 **示例：**
+
 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 <!--code_no_check-->
 ```ts
@@ -596,6 +602,8 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.Security.AccessToken
 
+<!--RP6--><!--RP6End-->
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -616,11 +624,12 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12100001 | Invalid parameter. Possible causes: 1. The context is invalid because it does not belong to the application itself; 2. The type of global switch is not support. |
+| 12100001 | Invalid parameter. Possible causes: 1. The context is invalid because it does not belong to the application itself; 2. The type of global switch is not supported. |
 | 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation result. |
 | 12100013 | The specific global switch is already open. |
 
 **示例：**
+
 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 <!--code_no_check-->
 ```ts
@@ -670,7 +679,7 @@ getSelfPermissionStatus(permissionName: Permissions): PermissionStatus
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 12100001 | Invalid parameter. The permissionName is empty or exceeds 256 characters. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **示例：**
 
@@ -690,6 +699,59 @@ try {
 }
 ```
 
+### isPermissionSupported
+
+isPermissionSupported(permissionName: Permissions): boolean
+
+查询当前设备是否支持该权限，同步返回结果。调用成功后，返回该权限在当前设备上的支持状态。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | 是   | 需要查询支持状态的权限名称。权限名不能为空，且长度不能超过256个字符，传入无效值时返回错误码12100001。 |
+
+**返回值：**
+
+| 类型          | 说明                                |
+| :------------ | :---------------------------------- |
+| boolean | 返回true表示当前设备支持该权限；返回false表示当前设备不支持该权限。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 12100001 | Invalid parameter. The permissionName is empty or exceeds 256 characters. |
+| 12100007 | Service exception. |
+
+**示例：**
+
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建权限管理实例
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+try {
+  // 查询目标权限的支持状态
+  let result: boolean = atManager.isPermissionSupported('ohos.permission.CAMERA');
+  console.info(`isPermissionSupported success, result: ${result}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`isPermissionSupported fail, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ### openPermissionOnSetting<sup>22+</sup>
 
 openPermissionOnSetting(context: Context, permission: Permissions): Promise&lt;SelectedResult&gt;
@@ -701,6 +763,8 @@ openPermissionOnSetting(context: Context, permission: Permissions): Promise&lt;S
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
+
+<!--RP6--><!--RP6End-->
 
 **参数：**
 
@@ -722,7 +786,7 @@ openPermissionOnSetting(context: Context, permission: Permissions): Promise&lt;S
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 12100001 | Invalid parameter. Possible causes:<br>1. The context is invalid because it does not belong to the application itself;<br>2. The permission is invalid or not declared in the module.json file. |
-| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation result. |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining the user operation result. |
 | 12100014 | Unexpected permission. The permission is not a manual_settings permission. |
 
 **示例：**
@@ -920,6 +984,8 @@ atManager.verifyAccessToken(tokenID, permissionName).then((data: abilityAccessCt
 
 **系统能力：** SystemCapability.Security.AccessToken
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称               |    值 | 说明        |
 | ------------------ | ----- | ----------- |
 | CAMERA  | 0    | 表示相机全局开关。 |
@@ -1006,6 +1072,8 @@ type Context = _Context
 表示跳转设置页弹窗结果的枚举。
 
 **系统能力：** SystemCapability.Security.AccessToken
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称               |    值 | 说明        |
 | ------------------ | ----- | ----------- |

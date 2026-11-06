@@ -6,12 +6,18 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=99672258e158c110c5ee74a166a44dafda8d8dee translatedAt=2026-10-30T03:50:37.421Z pushedAt=2026-10-30T07:29:01.437Z nl=1 -->
+
+## Linking Related Dynamic Libraries in the CMake Script
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
 
 **Encoding**
 
 1. Call [OH_CryptoAsymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_create) and [OH_CryptoAsymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_generate) to generate an asymmetric key pair (**keyPair**) of the RSA2048 type with two prime numbers. The **keyPair** object includes a public key (**PubKey**) and a private key (**PriKey**).
 
-   For details about how to generate an RSA asymmetric key pair, see the following example. To learn more, see [RSA](crypto-asym-key-generation-conversion-spec.md#rsa) and [Randomly Generating an Asymmetric Key Pair (C/C++)](crypto-generate-asym-key-pair-randomly-ndk.md). There may be differences between the input parameters in the reference documents and those in the following example.
+   For details on how to generate an RSA asymmetric key pair, you can refer to the following example and understand it in conjunction with [Asymmetric Key Generation and Conversion Specifications: RSA](crypto-key-generation-conversion.md#rsa) and [Randomly Generating an Asymmetric Key Pair (C/C++)](crypto-generate-asym-key-pair-randomly-ndk.md). The referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
 2. Call [OH_CryptoPrivKeyEncodingParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoprivkeyencodingparams_create) to create a parameter object (**params**), and call [OH_CryptoPrivKeyEncodingParams_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoprivkeyencodingparams_setparam) to set the encryption algorithm and password.
 
@@ -21,7 +27,7 @@
 
 1. Call [OH_CryptoAsymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_create) to generate an RSA asymmetric key generator (**keyGen**).
 
-   For details about how to generate an RSA asymmetric key pair, see the following example and [RSA](crypto-asym-key-generation-conversion-spec.md#rsa).
+   For details on how to generate an RSA asymmetric key pair, you can refer to the following example and understand it in conjunction with [Asymmetric Key Generation and Conversion Specifications: RSA](crypto-key-generation-conversion.md#rsa).
 
 2. Call [OH_CryptoAsymKeyGenerator_SetPassword](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_setpassword) and pass the encoded private key string and encoding password.
 

@@ -2,10 +2,11 @@
 
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25-->
-<!--Designer: @bubble_mao; @gzhuangzhuang; @gsl_1234-->
-<!--Tester: @liuhonggang123-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=99e141b81829cba41486c7ce7b2aa2cb918eb96e translatedAt=2026-10-29T10:30:53.839Z pushedAt=2026-10-29T10:30:53.839Z nl=1 -->
 
 - [About This Kit](core-file-kit-intro.md)
 - Application Files<!--app-file-->
@@ -46,3 +47,12 @@
   - [Setting the Security Level of a Distributed File](set-security-label.md)
   - [Sharing and Accessing Files Across Devices](file-access-across-devices.md)
   - [Copying Files Across Devices](file-copy-across-devices.md)<!--RP1--><!--RP1End-->
+- Cloud Disk Service Foundation<!--clouddisk-foundation-->
+  - [Cloud Disk Service Foundation Overview](clouddisk-overview.md)
+  - [Cloud Disk Service Foundation Adaptation Guide](clouddisk-guidelines.md)
+- File Compression and Decompression<!--compression-->
+  - [Compression and Decompression Overview](archive-overview.md)
+  - [Archive File Compression and Decompression (C/C++)](archive-file-compression-guidelines.md)
+  - [Streaming Compression and Decompression (C/C++)](archive-stream-compression-guidelines.md)
+  - [Buffer Compression and Decompression (C/C++)](archive-buffer-compression-guidelines.md)
+  <!--RP3--><!--RP3End-->

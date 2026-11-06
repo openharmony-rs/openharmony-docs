@@ -5,10 +5,12 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-Form Kit provides a development framework and APIs for embedding application information into system entries like the home screen <!--RP3--><!--RP3End-->. It can extract key user information or frequent operations into service widgets (referred to as "widgets"), which can be added to the home screen <!--RP3--><!--RP3End--> for easy access to information and direct service interactions.
+<!-- md-trans-meta sourceCommit=f24779815c61dc6c7687b87c7545a9c01d10eeb9 translatedAt=2026-11-03T07:51:08.458Z pushedAt=2026-11-03T07:51:08.458Z -->
+
+Form Kit provides a development framework and APIs for embedding app information on the home screen<!--RP3--><!--RP3End-->. It allows you to extract important information or frequently used operations from an app into service widgets (widgets for short). By adding widgets to the home screen<!--RP3--><!--RP3End-->, you can achieve convenient information display and direct service access.
 
 ## Scenarios for Widget Usage
-- Supported devices: smartphones, tablets, PCs/2-in-1 devices, smart TVs, smart watches, and head units. This kit is not supported on lite wearables.
+- Supported device types: phones, tablets, PCs/2-in-1 devices, TVs, wearables, and head units. Lite wearables do not support this Kit.
 - Supported application types: Widgets can be developed in both applications and atomic services.
 - Supported positions: Users can add widgets to the home screen <!--RP3--><!--RP3End-->. Widgets cannot be embedded in common applications.
 - To use a widget:
@@ -59,6 +61,20 @@ ArkTS widgets and JS widgets have different implementation principles and featur
 | Custom animation  | Not supported   | Supported      |
 | Custom drawing  | Not supported   | Supported      |
 | Logic code execution| Not supported   | Supported      |
+
+## Constraints
+
+<!--RP4--><!--RP4End-->
+<!--Del-->
+### Widget Quantity Limits
+
+The system limits the number of widgets that can be added. The default limits for normal and temporary widgets are as follows:
+
+| Scope | Default Limit | Description |
+| --- | --- | --- |
+| Per device | 512 normal widgets and 256 temporary widgets | Maximum total number of widgets on a device. |
+| Per host | 256 | Maximum number of normal widgets for a single host. |
+<!--DelEnd-->
 
 ## Related Kits
 

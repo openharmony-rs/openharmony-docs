@@ -1,12 +1,14 @@
 # Class (SslErrorHandler)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:50:45.106Z pushedAt=2026-08-07T08:12:32.590Z -->
 
-Implements an **SslErrorHandler** object to handle SSL error notification events returned by the **Web** component. For details about the sample code, see the [onSslErrorEvent](./arkts-basic-components-web-events.md#onsslerrorevent12) event.
+SslErrorHandler is a class in the Web component for handling SSL certificate verification errors. When an SSL certificate error (such as certificate expiration, hostname mismatch, or untrusted CA) is encountered while loading a secure page, the app can obtain an SslErrorHandler instance through the onSslErrorEvent callback and decide whether to continue loading or cancel navigation. For sample code, see the [onSslErrorEvent](./arkts-basic-components-web-events.md#onsslerrorevent12) event.
 
 > **NOTE**
 >
@@ -28,7 +30,7 @@ Constructs a **SslErrorHandler** object.
 
 handleCancel(): void
 
-Cancels this request.
+Notifies the Web component to cancel this request and stops the current SSL certificate verification process.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -36,7 +38,7 @@ Cancels this request.
 
 handleConfirm(): void
 
-Continues using the SSL certificate.
+Ignores the SSL certificate verification error and continues loading the page.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -52,4 +54,4 @@ Cancels this request and determines whether to stop loading based on the **abort
 
 | Name         | Type| Mandatory | Description            |
 | --------------- | -------- | ----  |------- |
-| abortLoading    | boolean  | Yes   | Whether to stop loading the page after the request is canceled.<br>The value **true** means to stop loading the page, and **false** means to continue loading the page.<br>The default value is **false**.|
+| abortLoading    | boolean  | Yes    | Whether to stop loading the page after canceling the request.<br>The value **true** indicates that the page stops loading, and **false** indicates that the page continues loading. |

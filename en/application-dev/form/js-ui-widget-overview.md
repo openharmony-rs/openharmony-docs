@@ -5,8 +5,9 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=7a6d398221af0c0954de71a28d5d895ba00d5b2f translatedAt=2026-11-03T07:51:08.458Z pushedAt=2026-11-03T07:51:08.458Z -->
 
-JS widgets, developed using a web-like paradigm (HML + CSS + JSON), now support two [application models](../application-models/application-models.md): the FA model and the stage model. For details, see [Developing a JS Widget (Stage Model)](js-ui-widget-development.md) and [Developing a JS Widget (FA Model)](widget-development-fa.md). When developing a new widget, you are advised to use the ArkTS declarative syntax to build UIs. For details about the differences between the declarative paradigm and web-like paradigm, see [About This Kit](../ui/arkui-overview.md).
+A JS widget is a widget whose pages are developed using the web-like paradigm (HML+CSS+JSON). It now supports both the FA model and the stage model [app models](../application-models/stage-model-development-overview.md). For development guides, see [Developing a JS Widget (Stage Model)](js-ui-widget-development.md) and [Developing a JS Widget (FA Model)](widget-development-fa.md). When developing a new widget, you are advised to use ArkTS declarative development to build the UI. For differences between the declarative and web-like paradigms, see [ArkUI Overview](../ui/arkui-overview.md).
 
 ## How to Implement
 
@@ -30,7 +31,7 @@ The Widget Manager consists of the following modules:
 
 - Lifecycle manager: suspends update when a widget is switched to the background or is blocked, and updates and/or clears widget data during upgrade and deletion.
 
-- Object manager: manages RPC objects of the widget host. It is used to verify requests from the widget host and process callbacks after the widget update.
+- Object manager: manages RPC proxy objects of the widget host to validate host requests and notify the host through callbacks after widget data is updated.
 
 - Communication adapter: communicates with the widget host and provider through RPCs.
 
@@ -45,3 +46,4 @@ The widget provider consists of the following modules:
 > **NOTE**
 > 
 > You only need to develop the widget provider. The system automatically handles the work of the widget host and Widget Manager.
+

@@ -1,10 +1,12 @@
 # button
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=0e195b413ac684e2f8f44c9b887d66d23c5fa72f translatedAt=2026-06-22T03:29:01.642Z pushedAt=2026-06-22T06:09:40.052Z -->
 
 >  **NOTE**
 >
@@ -12,11 +14,9 @@
 
 The **\<button>** component includes capsule, circle, text, arc, and download buttons.
 
-
 ## Child Components
 
 Not supported
-
 
 ## Attributes
 
@@ -24,15 +24,13 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 
 | Name                    | Type     | Default Value  | Mandatory  | Description                                      |
 | ---------------------- | ------- | ----- | ---- | ---------------------------------------- |
-| type                   | string  | -     | No   | Button type. The value cannot be dynamically updated. By default, a capsule-like button is displayed. Unlike the capsule button, the capsule-like button allows its corners to be configured using **border-radius**. The options are as follows:<br>- **capsule**: capsule button with fillets, background color, and text.<br>- **circle**: circle button that can accommodate icons.<br>- **text**: text button, which displays only text.<br>- **arc**: arc button. This value is applicable to wearables only.<br>- **download**: download button, with an extra download progress bar.|
+| type                   | string  | -     | No    | Button type. The value cannot be dynamically updated. By default, a capsule-like button is displayed. Unlike the capsule button, the capsule-like button allows its corners to be configured using **border-radius**. The options are as follows:<br/>-&nbsp;**capsule**: capsule button with fillets, background color, and text.<br/>-&nbsp;**circle**: circle button that can accommodate icons.<br/>-&nbsp;**text**: text button, which displays only text.<br/>-&nbsp;**arc**: arc button. This value is applicable to wearables only.<br/>-&nbsp;**download**: download button, with an extra download progress bar. |
 | value                  | string  | -     | No   | Text value of the button.                             |
 | icon                   | string  | -     | No   | Path of the button icon. The supported icon formats are JPG, PNG, and SVG.           |
 | placement<sup>5+</sup> | string  | end   | No   | Position of the button icon in text. This attribute is valid only when **type** is not set. Available values are as follows:<br>- **start**: The button icon is at the beginning of the text.<br>- **end**: The button icon is at the end of the text.<br>- **top**: The button icon is at the top of the text.<br>- **bottom**: The button icon is at the bottom of the text.|
-| waiting                | boolean | false | No   | Waiting status. When this attribute is set to **true**, a loading animation is displayed on the left of the text. This attribute does not work for download buttons.|
-
+| waiting                | boolean | false | No   | Waiting status. When this attribute is set to **true**, a loading animation is displayed on the left of the text. If its value is **false**, the loading animation is not displayed. This attribute does not work for download buttons.|
 
 ## Styles
-
 
 ### When the Button Type Is Not arc
 
@@ -50,7 +48,6 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | icon-height | &lt;length&gt;             | -               | No   | Height of the internal icon of a circle button. The entire circle button is filled by default.<br>This style must be set when the icon uses the SVG image.|
 | radius      | &lt;length&gt;             | -               | No   | Corner radius of the button. For a circle button, this style takes precedence over **width** and **height** in the universal styles.|
 
-
 ### When the Button Type Is arc
 
 In addition to the **background-color**, **opacity**, **display**, **visibility**, **position**, and **[left|top|right|bottom]** styles in [Universal Styles](js-components-common-styles.md), the following styles are supported.
@@ -59,16 +56,14 @@ In addition to the **background-color**, **opacity**, **display**, **visibility*
 | ----------- | -------------------------- | ---------- | ---- | ---------------------------------------- |
 | text-color  | &lt;color&gt;              | \#de0000   | No   | Text color of the arc button.                              |
 | font-size   | &lt;length&gt;             | 37.5px     | No   | Font size of the arc button.                              |
-| allow-scale | boolean                    | true       | No   | Whether the font size changes with the system's font size settings.          |
+| allow-scale | boolean                    | true       | No   | Whether the font size changes with the system's font size settings. The value **true** indicates the font size changes with the system's font size settings, and **false** indicates the opposite.       |
 | font-style  | string                     | normal     | No   | Font style of the arc button.                              |
 | font-weight | number \| string | normal     | No   | Font weight of the arc button. For details, see **font-weight** of the [**\<text>**](js-components-basic-text.md#styles) component. |
 | font-family | &lt;string&gt;             | sans-serif | No   | Font family, in which fonts are separated by commas (,). Each font is set using a font name or font family name. The first font in the family or the specified [custom font](js-components-common-customizing-font.md) is used for the text.|
 
-
 ## Events
 
 The [universal events](js-components-common-events.md) are supported.
-
 
 ## Methods
 
@@ -155,4 +150,4 @@ export default {
 }
 ```
 
-![1](figures/1.png)
+![Text-button](figures/Text-button.png)

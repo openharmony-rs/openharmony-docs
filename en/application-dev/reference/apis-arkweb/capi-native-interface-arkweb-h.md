@@ -1,14 +1,16 @@
 # native_interface_arkweb.h
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=6dc65b94c463ca3425d83a7f4a2fceb5d5ec4ab7 translatedAt=2026-08-03T09:46:22.720Z pushedAt=2026-08-06T07:37:28.643Z -->
 
 ## Overview
 
-Declares APIs used to register objects and execute JavaScript code.
+native_interface_arkweb.h is the core entry header file of ArkWeb Native API. It defines the enums, structs, and NDK function interfaces required for interaction between apps and the ArkWeb engine, covering features such as JavaScript execution and proxy injection, cookie management, blankless loading control, and kernel version selection. This module is suitable for scenarios that require deep interaction with the **Web** component through native methods. It addresses the technical challenge that complex capabilities of the ArkWeb component (such as JavaScript bidirectional communication, cookie persistence, and kernel version switching) cannot be directly called at the ArkTS layer, providing developers with complete low-level control to implement high-performance, customizable **Web** component features.
 
 **File to include**: <web/native_interface_arkweb.h>
 
@@ -32,8 +34,7 @@ Declares APIs used to register objects and execute JavaScript code.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkWebEngineVersion](#arkwebengineversion) | ArkWebEngineVersion | For details about the ArkWeb kernel version, see [Adaptation Guide for the M114 Kernel on OpenHarmony 6.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/132_trunk/web/ReleaseNote/CompatibleWithLegacyWebEngine.md).|
-
+| [ArkWebEngineVersion](#arkwebengineversion) | ArkWebEngineVersion | ArkWeb kernel version. For details, see [M114 Kernel Adaptation Guide on OpenHarmony 6.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_6.0.md), [M132 Kernel Adaptation Guide on OpenHarmony 7.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_7.0.md). |
 
 ### Functions
 
@@ -44,25 +45,28 @@ Declares APIs used to register objects and execute JavaScript code.
 | [typedef void (\*NativeArkWeb_OnValidCallback)(const char*)](#nativearkweb_onvalidcallback) | NativeArkWeb_OnValidCallback | Called when a **Web** component is valid.|
 | [typedef void (\*NativeArkWeb_OnDestroyCallback)(const char*)](#nativearkweb_ondestroycallback) | NativeArkWeb_OnDestroyCallback | Called when a **Web** component is destroyed.|
 | [typedef void (\*OH_ArkWeb_OnCookieSaveCallback)(ArkWeb_ErrorCode errorCode)](#oh_arkweb_oncookiesavecallback) | OH_ArkWeb_OnCookieSaveCallback | Called when a cookie is saved.<br>**Since**: 20|
+| [typedef void (\*OH_ArkWeb_OnCookieFetchCallback)(ArkWeb_ErrorCode errorCode, char\* cookieValue)](#oh_arkweb_oncookiefetchcallback) | OH_ArkWeb_OnCookieFetchCallback | Defines a pointer to the callback invoked when the cookie fetch operation is complete.<br>**Since:** 26.0.0 |
 | [void OH_NativeArkWeb_RunJavaScript(const char* webTag, const char* jsCode, NativeArkWeb_OnJavaScriptCallback callback)](#oh_nativearkweb_runjavascript) | - | Loads and asynchronously executes a JavaScript code in the current page.|
-| [void OH_NativeArkWeb_RegisterJavaScriptProxy(const char* webTag, const char* objName, const char** methodList,NativeArkWeb_OnJavaScriptProxyCallback* callback, int32_t size, bool needRefresh)](#oh_nativearkweb_registerjavascriptproxy) | - | Displays the list of registered objects and function names.|
+| [void OH_NativeArkWeb_RegisterJavaScriptProxy(const char\* webTag, const char\* objName, const char\*\* methodList, NativeArkWeb_OnJavaScriptProxyCallback\* callback, int32_t size, bool needRefresh)](#oh_nativearkweb_registerjavascriptproxy) | - | Registers an object and a list of function names. |
 | [void OH_NativeArkWeb_UnregisterJavaScriptProxy(const char* webTag, const char* objName)](#oh_nativearkweb_unregisterjavascriptproxy) | - | Deletes a registered object and its callback.|
 | [void OH_NativeArkWeb_SetJavaScriptProxyValidCallback(const char* webTag, NativeArkWeb_OnValidCallback callback)](#oh_nativearkweb_setjavascriptproxyvalidcallback) | - | Sets a callback used when an object is valid.|
 | [NativeArkWeb_OnValidCallback OH_NativeArkWeb_GetJavaScriptProxyValidCallback(const char* webTag)](#oh_nativearkweb_getjavascriptproxyvalidcallback) | - | Obtains the callback used when a registered object is valid.|
-| [void OH_NativeArkWeb_SetDestroyCallback(const char* webTag, NativeArkWeb_OnDestroyCallback callback)](#oh_nativearkweb_setdestroycallback) | - | Sets a callback used when a component is destroyed.|
-| [NativeArkWeb_OnDestroyCallback OH_NativeArkWeb_GetDestroyCallback(const char* webTag)](#oh_nativearkweb_getdestroycallback) | - | Obtains the callback used when a registered component is destroyed.|
+| [void OH_NativeArkWeb_SetDestroyCallback(const char\* webTag, NativeArkWeb_OnDestroyCallback callback)](#oh_nativearkweb_setdestroycallback) | - | Sets the callback invoked when the Web component is destroyed. |
+| [NativeArkWeb_OnDestroyCallback OH_NativeArkWeb_GetDestroyCallback(const char\* webTag)](#oh_nativearkweb_getdestroycallback) | - | Obtains the registered callback invoked when the Web component is destroyed. |
 | [ArkWeb_ErrorCode OH_NativeArkWeb_LoadData(const char* webTag,const char* data,const char* mimeType,const char* encoding,const char* baseUrl,const char* historyUrl)](#oh_nativearkweb_loaddata) | - | Loads data or URLs. This function must be called in the main thread.|
 | [void OH_NativeArkWeb_RegisterAsyncThreadJavaScriptProxy(const char* webTag,const ArkWeb_ProxyObjectWithResult* proxyObject, const char* permission)](#oh_nativearkweb_registerasyncthreadjavascriptproxy) | - | Registers a JavaScript object that contains callback methods, which can have return values. This object will be registered into all frames of the current page, including all iframes, and can be accessed by using the name specified in **ArkWeb_ProxyObjectWithResult**. The object takes effect in JavaScript only after the page is loaded or reloaded next time. Its methods are executed in the worker thread of ArkWeb.|
-| [ArkWeb_ErrorCode OH_ArkWebCookieManager_SaveCookieSync()](#oh_arkwebcookiemanager_savecookiesync) | - | Saves all cookies that can be accessed through the **CookieManager** API to disks. To use this API in a non-UI thread, you need to use **OH_ArkWeb_GetNativeAPI** to initialize the **CookieManager** API.<br>**Since**: 20|
-| [void OH_ArkWebCookieManager_SaveCookieAsync(OH_ArkWeb_OnCookieSaveCallback callback)](#oh_arkwebcookiemanager_savecookieasync) | - | Saves all cookies that can be accessed through the **CookieManager** API to disks. If the **CookieManager** API is not initialized, this API is automatically executed on the UI thread.<br>**Since**: 20|
+| [ArkWeb_ErrorCode OH_ArkWebCookieManager_SaveCookieSync()](#oh_arkwebcookiemanager_savecookiesync) | - | Persists all cookies currently accessible through the CookieManager API to the disk. To use this API on a non-UI thread, initialize the CookieManager API using OH_ArkWeb_GetNativeAPI first.<br>**Since:** 20 |
+| [void OH_ArkWebCookieManager_SaveCookieAsync(OH_ArkWeb_OnCookieSaveCallback callback)](#oh_arkwebcookiemanager_savecookieasync) | - | Persists all cookies currently accessible through the CookieManager API to the disk. Without initializing the CookieManager API, this API is automatically executed on the UI thread.<br>**Since:** 20 |
 | [ArkWeb_BlanklessInfo OH_NativeArkWeb_GetBlanklessInfoWithKey(const char* webTag, const char* key)](#oh_nativearkweb_getblanklessinfowithkey) | - | Obtains the first screen loading prediction information, and starts to generate the loading transition frame. The application determines whether to enable blankless loading based on the information. For details, see [ArkWeb_BlanklessInfo](capi-web-arkweb-blanklessinfo.md). This API must be used together with the [OH_NativeArkWeb_SetBlanklessLoadingWithKey](#oh_nativearkweb_setblanklessloadingwithkey) API and must be called before the page loading API is triggered and after **WebViewController** is bound to the **Web** component.|
 | [ArkWeb_BlanklessErrorCode OH_NativeArkWeb_SetBlanklessLoadingWithKey(const char* webTag, const char* key, bool isStarted)](#oh_nativearkweb_setblanklessloadingwithkey) | - | Sets whether to enable blankless loading. This API must be used together with the [OH_NativeArkWeb_GetBlanklessInfoWithKey](#oh_nativearkweb_getblanklessinfowithkey) API.|
 | [void OH_NativeArkWeb_ClearBlanklessLoadingCache(const char* key[], uint32_t size)](#oh_nativearkweb_clearblanklessloadingcache) | - | Clears the blankless loading cache of the page with a specified key value.|
 | [uint32_t OH_NativeArkWeb_SetBlanklessLoadingCacheCapacity(uint32_t capacity)](#oh_nativearkweb_setblanklessloadingcachecapacity) | - | Sets the persistent cache capacity of the blankless loading solution and returns the value that takes effect. The default cache capacity is 30 MB, and the maximum cache capacity is 100 MB. When this limit is exceeded, transition frames that are not frequently used are eliminated.|
-| [void OH_NativeArkWeb_SetActiveWebEngineVersion(ArkWebEngineVersion webEngineVersion)](#oh_nativearkweb_setactivewebengineversion) | - | Sets the ArkWeb kernel version. If the system does not support the specified version, the setting is invalid. This API is a global static method and must be called before **initializeWebEngine** is called. If any **Web** component has been loaded, the setting of this API is invalid.|
+| [void OH_NativeArkWeb_SetActiveWebEngineVersion(ArkWebEngineVersion webEngineVersion)](#oh_nativearkweb_setactivewebengineversion) | - | Sets the ArkWeb kernel version. If the system does not support the specified version, the setting does not take effect and the system default kernel is used (see [Constraints](../../web/web-component-overview.md#constraints)). This API is a global static method and must be called before initializeWebEngine. If any Web component has already been loaded, the setting does not take effect. |
 | [ArkWebEngineVersion OH_NativeArkWeb_GetActiveWebEngineVersion()](#oh_nativearkweb_getactivewebengineversion) | - | Obtain the current ArkWeb kernel version.|
 | [bool OH_NativeArkWeb_IsActiveWebEngineEvergreen()](#oh_nativearkweb_isactivewebengineevergreen) | - | Checks whether the ArkWeb kernel used by the application is the evergreen kernel, that is, the latest kernel of the system.|
 | [void OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager(bool lazy)](#oh_nativearkweb_lazyinitializewebengineincookiemanager) | - | Sets whether to delay the initialization of the ArkWeb kernel. If this method is not called, the ArkWeb kernel is not delayed by default.|
+| [void OH_ArkWebCookieManager_FetchCookieAsync(const char\* url, bool incognito, bool includeHttpOnly, bool includePartitionedCookies, OH_ArkWeb_OnCookieFetchCallback callback)](#oh_arkwebcookiemanager_fetchcookieasync) | - | Asynchronously obtains the cookies corresponding to the specified URL. Without initializing the CookieManager API, this API is automatically executed on the UI thread.<br>**Since:** 26.0.0 |
+| [ArkWeb_ErrorCode OH_ArkWebCookieManager_FetchCookieSync(const char\* url, bool incognito, bool includeHttpOnly, bool includePartitionedCookies, char\*\* cookieValue)](#oh_arkwebcookiemanager_fetchcookiesync) | - | Obtains the cookies corresponding to the specified URL. To use this API on a non-UI thread, initialize the CookieManager API using OH_ArkWeb_GetNativeAPI first.<br>**Since:** 26.0.0 |
 
 ## Enum Description
 
@@ -74,7 +78,7 @@ enum ArkWebEngineVersion
 
 **Description**
 
-For details about the ArkWeb kernel version, see [Adaptation Guide for the M114 Kernel on OpenHarmony 6.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/132_trunk/web/ReleaseNote/CompatibleWithLegacyWebEngine.md).
+For ArkWeb kernel versions, see [Adaptation Guide for the M114 Kernel on OpenHarmony 6.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_6.0.md) and [Adaptation Guide for the M132 Kernel on OpenHarmony 7.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_7.0.md).
 
 | **Kernel Type**| **Name**| **Description**|
 | ----------- | -------- | -------- |
@@ -85,10 +89,11 @@ For details about the ArkWeb kernel version, see [Adaptation Guide for the M114 
 
 | Enum              | Description                |
 | -------------------- | ------------------- |
-| SYSTEM_DEFAULT = 0   | Default system kernel. For OpenHarmony 6.0, the default kernel is M132.          |
-| ARKWEB_M114 = 1      | Legacy kernel of OpenHarmony 6.0. You can select this legacy kernel. If it does not exist, the setting is invalid.|
-| ARKWEB_M132 = 2      | Evergreen kernel of OpenHarmony 6.0, which is M132 by default. If it does not exist, the setting is invalid.   |
-| ARKWEB_EVERGREEN = 99999 | Evergreen kernel, which is the latest kernel of the system. You can choose to use the latest kernel for each system version. This setting takes effect for OpenHarmony 6.1 and later versions.<br>**Since**: 23|
+| SYSTEM_DEFAULT = 0   | System default kernel (see [Constraints](../../web/web-component-overview.md#constraints)). The default kernel is M132 for OpenHarmony 6.0 and M144 for OpenHarmony 7.0.           |
+| ARKWEB_M114 = 1      | Legacy kernel of OpenHarmony 6.0. Developers can select this legacy kernel. If this kernel does not exist on the system version, the setting does not take effect and the system default kernel is used. |
+| ARKWEB_M132 = 2      | Evergreen kernel of OpenHarmony 6.0 (legacy kernel of OpenHarmony 7.0). M132 is the default kernel of OpenHarmony 6.0. If this kernel does not exist on the system version, the setting does not take effect and the system default kernel is used.    |
+| ARKWEB_M144 = 3      | Evergreen kernel of OpenHarmony 7.0. M144 is the default kernel of OpenHarmony 7.0. If this kernel does not exist on the system version, the setting does not take effect and the system default kernel is used.<br>**Since:** 26.0.0    |
+| ARKWEB_EVERGREEN = 99999 | Latest kernel of the system (evergreen kernel). Developers can select to use the latest kernel on each system version.<br>**Since:** 23 |
 
 ## Function Description
 
@@ -158,6 +163,25 @@ Called when a cookie is saved.
 | -- | -- |
 | [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) errorCode | [ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode): The cookie is successfully saved.<br> [ARKWEB_COOKIE_SAVE_FAILED](capi-arkweb-error-code-h.md#arkweb_errorcode): Failed to save the cookie.<br> [ARKWEB_COOKIE_MANAGER_INITIALIZE_FAILED](capi-arkweb-error-code-h.md#arkweb_errorcode): The **CookieManager** initialization failed.|
 
+### OH_ArkWeb_OnCookieFetchCallback()
+
+```c
+typedef void (*OH_ArkWeb_OnCookieFetchCallback)(ArkWeb_ErrorCode errorCode, char* cookieValue)
+```
+
+**Description**
+
+Defines a pointer to the callback invoked when the cookie fetch operation is complete.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) errorCode | Error code for the cookie fetch callback.<br> [ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode): The cookie is fetched successfully.<br> [ARKWEB_INVALID_URL](capi-arkweb-error-code-h.md#arkweb_errorcode): Invalid URL.<br> [ARKWEB_LIBRARY_OPEN_FAILURE](capi-arkweb-error-code-h.md#arkweb_errorcode): Failed to open the dynamic link library.<br> [ARKWEB_LIBRARY_SYMBOL_NOT_FOUND](capi-arkweb-error-code-h.md#arkweb_errorcode): The required symbol is not found in the dynamic link library. |
+| char* cookieValue | Cookies corresponding to the URL. The function allocates memory for cookieValue, and the developer must release the string using [OH_ArkWeb_ReleaseString](capi-arkweb-scheme-handler-h.md#oh_arkweb_releasestring). |
+
 ### OH_NativeArkWeb_RunJavaScript()
 
 ```c
@@ -166,12 +190,11 @@ void OH_NativeArkWeb_RunJavaScript(const char* webTag, const char* jsCode, Nativ
 
 **Description**
 
-Loads and asynchronously executes a JavaScript code in the current page.
+Loads and asynchronously executes a piece of JavaScript code in the context of the current page. This function must be called in the main thread. **Use case**: Used when you need to dynamically modify page content, obtain page runtime information, or interact with page JavaScript at the native layer, for example, obtaining form data or executing custom scripts.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -184,17 +207,16 @@ Loads and asynchronously executes a JavaScript code in the current page.
 ### OH_NativeArkWeb_RegisterJavaScriptProxy()
 
 ```c
-void OH_NativeArkWeb_RegisterJavaScriptProxy(const char* webTag, const char* objName, const char** methodList,NativeArkWeb_OnJavaScriptProxyCallback* callback, int32_t size, bool needRefresh)
+void OH_NativeArkWeb_RegisterJavaScriptProxy(const char* webTag, const char* objName, const char** methodList, NativeArkWeb_OnJavaScriptProxyCallback* callback, int32_t size, bool needRefresh)
 ```
 
 **Description**
 
-Displays the list of registered objects and function names.
+Registers a list of object and function names, used to inject native objects into web pages and implement bidirectional communication between the app side and the frontend page. This is used in scenarios such as web pages calling native functions, native code controlling web page behavior, and cross-layer interaction in hybrid apps.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -215,12 +237,11 @@ void OH_NativeArkWeb_UnregisterJavaScriptProxy(const char* webTag, const char* o
 
 **Description**
 
-Deletes a registered object and its callback.
+Deletes a registered object and its callback functions, used to clean up JavaScript injection objects that are no longer needed. Typical use cases: cleaning up injected objects when a page is destroyed, removing corresponding native interfaces when a function module is unloaded, and preventing memory leaks.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -237,12 +258,11 @@ void OH_NativeArkWeb_SetJavaScriptProxyValidCallback(const char* webTag, NativeA
 
 **Description**
 
-Sets a callback used when an object is valid.
+Sets the callback invoked when an object can be registered. Used when specific logic needs to be executed after a JavaScript proxy object is successfully registered, for example, notifying the page or logging after successful registration.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -265,7 +285,6 @@ Obtains the callback used when a registered object is valid.
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
@@ -286,19 +305,18 @@ void OH_NativeArkWeb_SetDestroyCallback(const char* webTag, NativeArkWeb_OnDestr
 
 **Description**
 
-Sets a callback used when a component is destroyed.
+Sets the callback invoked when the **Web** component is destroyed. Typical use cases: releasing resources, cleaning up states, or performing finalization operations when the **Web** component is destroyed, for example, releasing JavaScript proxy objects, canceling network requests, or closing file handles.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 11
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | const char* webTag | Name of the **Web** component.|
-| [NativeArkWeb_OnDestroyCallback](#nativearkweb_ondestroycallback) callback | Callback used when a component is destroyed.|
+| [NativeArkWeb_OnDestroyCallback](#nativearkweb_ondestroycallback) callback | Callback invoked when the Web component is destroyed. |
 
 ### OH_NativeArkWeb_GetDestroyCallback()
 
@@ -308,12 +326,11 @@ NativeArkWeb_OnDestroyCallback OH_NativeArkWeb_GetDestroyCallback(const char* we
 
 **Description**
 
-Obtains the callback used when a registered component is destroyed.
+Obtains the registered callback invoked when the **Web** component is destroyed.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -325,22 +342,21 @@ Obtains the callback used when a registered component is destroyed.
 
 | Type| Description|
 | -- | -- |
-| [NativeArkWeb_OnDestroyCallback](#nativearkweb_ondestroycallback) | Callback used when a registered component is destroyed. If no destroy callback function is set for the **webTag** parameter, a null pointer is returned.|
+| [NativeArkWeb_OnDestroyCallback](#nativearkweb_ondestroycallback) | Returns the registered callback for when the Web component is destroyed. If the destroy callback specified by the **webTag** parameter is not set, a null pointer is returned. |
 
 ### OH_NativeArkWeb_LoadData()
 
 ```c
-ArkWeb_ErrorCode OH_NativeArkWeb_LoadData(const char* webTag,const char* data,const char* mimeType,const char* encoding,const char* baseUrl,const char* historyUrl)
+ArkWeb_ErrorCode OH_NativeArkWeb_LoadData(const char* webTag, const char* data, const char* mimeType, const char* encoding, const char* baseUrl, const char* historyUrl)
 ```
 
 **Description**
 
-Loads data or URLs. This function must be called in the main thread.
+Loads data or a URL. This function must be called in the main thread. Typical use cases: loading page content from the network or local files, dynamically generating and displaying HTML content, implementing offline page display, and custom page rendering.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 15
-
 
 **Parameters**
 
@@ -350,27 +366,26 @@ Loads data or URLs. This function must be called in the main thread.
 | const char* data | String being base64 or URL encoded, which cannot be empty.|
 | const char* mimeType | Media type, such as **text/html**, which cannot be empty.|
 | const char* encoding | Encoding type, such as **UTF-8**, which cannot be empty.|
-| const char* baseUrl | URL (HTTP/HTTPS/Data), which is assigned by the **Web** component to **window.origin**.|
+| const char* baseUrl | Specified URL path (using the "http", "https", or "data" protocol), assigned to window.origin by the Web component. |
 | const char* historyUrl | Historical URL. If this parameter is not empty, it can be managed in historical records to implement backward and forward navigation.|
 
 **Returns**
 
 | Type                                                              | Description                                                                                                                                                                                                                                                                                                                        |
 |------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) | Error codes of **LoadData**.<br>         [ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode): The data is successfully loaded.<br>         [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode): The mandatory parameter is not specified, the parameter type is incorrect, or the parameter verification fails.<br>         [ARKWEB_INIT_ERROR](capi-arkweb-error-code-h.md#arkweb_errorcode): The initialization failed because no valid **Web** component is found based on the input **webTag**.<br>         [ARKWEB_LIBRARY_OPEN_FAILURE](capi-arkweb-error-code-h.md#arkweb_errorcode): Failed to open the dynamic link library.<br>         [ARKWEB_LIBRARY_SYMBOL_NOT_FOUND](capi-arkweb-error-code-h.md#arkweb_errorcode): The required symbol is not found in the dynamic link library.|
+| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) | Error codes of OH_NativeArkWeb_LoadData.<br>         [ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode): data loaded successfully.<br>         [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode): a required parameter is not specified, the parameter type is incorrect, or parameter verification fails.<br>         [ARKWEB_INIT_ERROR](capi-arkweb-error-code-h.md#arkweb_errorcode): initialization fails. No valid Web component is found based on the passed "webTag".<br>         [ARKWEB_LIBRARY_OPEN_FAILURE](capi-arkweb-error-code-h.md#arkweb_errorcode): failed to open the dynamic link library. Check whether the library file path is correct, whether the library file is corrupted, and whether you have sufficient access permissions.<br>         [ARKWEB_LIBRARY_SYMBOL_NOT_FOUND](capi-arkweb-error-code-h.md#arkweb_errorcode): the required symbol is not found in the dynamic link library. |
 
 ### OH_NativeArkWeb_RegisterAsyncThreadJavaScriptProxy()
 
 ```c
-void OH_NativeArkWeb_RegisterAsyncThreadJavaScriptProxy(const char* webTag,const ArkWeb_ProxyObjectWithResult* proxyObject, const char* permission)
+void OH_NativeArkWeb_RegisterAsyncThreadJavaScriptProxy(const char* webTag, const ArkWeb_ProxyObjectWithResult* proxyObject, const char* permission)
 ```
 
 **Description**
 
-Registers a JavaScript object that contains callback methods, which can have return values. This object will be registered into all frames of the current page, including all iframes, and can be accessed by using the name specified in **ArkWeb_ProxyObjectWithResult**. The object takes effect in JavaScript only after the page is loaded or reloaded next time. Its methods are executed in the worker thread of ArkWeb.
+Registers a JavaScript object that contains callback methods with return values. The object is injected into all frames of the current page, including all iframes, and can be accessed by the name specified in ArkWeb_ProxyObjectWithResult. The object takes effect in JavaScript only after the next page load or reload. These methods are executed in the worker thread of ArkWeb. Typical use cases: processing JavaScript calls and returning results in the worker thread, for example, performing time-consuming computations, asynchronous task processing, and complex business logic processing, to avoid blocking the main thread.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -388,7 +403,7 @@ ArkWeb_ErrorCode OH_ArkWebCookieManager_SaveCookieSync()
 
 **Description**
 
-Saves all cookies that can be accessed through the **CookieManager** API to disks. To use this API in a non-UI thread, you need to use **OH_ArkWeb_GetNativeAPI** to initialize the **CookieManager** API.
+Persists all cookies currently accessible through the CookieManager API to the disk. If this API is used in a non-UI thread, you need to initialize the CookieManager API using [OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi) first. Typical use cases: saving cookie states when the app exits or at specific times, for example, saving user login states, app configuration information, and session data, to ensure that the previous state can be restored after the app restarts.
 
 **Since**: 20
 
@@ -396,7 +411,7 @@ Saves all cookies that can be accessed through the **CookieManager** API to disk
 
 | Type| Description|
 | -- | -- |
-| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) | Error codes of **SaveCookieSync**.<br> [ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode): The cookie is successfully saved.<br> [ARKWEB_COOKIE_SAVE_FAILED](capi-arkweb-error-code-h.md#arkweb_errorcode): Failed to save the cookie.<br> [ARKWEB_COOKIE_MANAGER_INITIALIZE_FAILED](capi-arkweb-error-code-h.md#arkweb_errorcode): The **CookieManager** initialization failed.<br> [ARKWEB_COOKIE_MANAGER_NOT_INITIALIZED](capi-arkweb-error-code-h.md#arkweb_errorcode): This API cannot be invoked in a non-UI thread without initializing the **CookieManager** API. You need to use **OH_ArkWeb_GetNativeAPI** to initialize the **CookieManager** API first.|
+| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) | Error codes of OH_ArkWebCookieManager_SaveCookieSync. Check whether the disk space is sufficient, whether write permission is available, and whether the cookie data format is correct.<br> [ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode): the cookie is saved successfully.<br> [ARKWEB_COOKIE_SAVE_FAILED](capi-arkweb-error-code-h.md#arkweb_errorcode): failed to save the cookie.<br> [ARKWEB_COOKIE_MANAGER_INITIALIZE_FAILED](capi-arkweb-error-code-h.md#arkweb_errorcode): failed to initialize CookieManager.<br> [ARKWEB_COOKIE_MANAGER_NOT_INITIALIZED](capi-arkweb-error-code-h.md#arkweb_errorcode): on a non-UI thread, calling this API without initializing the CookieManager API is not allowed. Use [OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi) to initialize the CookieManager API first. |
 
 ### OH_ArkWebCookieManager_SaveCookieAsync()
 
@@ -406,15 +421,16 @@ void OH_ArkWebCookieManager_SaveCookieAsync(OH_ArkWeb_OnCookieSaveCallback callb
 
 **Description**
 
-Saves all cookies that can be accessed through the **CookieManager** API to disks. If the **CookieManager** API is not initialized, this API is automatically executed on the UI thread.
+Persists all cookies currently accessible through the CookieManager API to the disk. If this API is used in a non-UI thread, you need to initialize the CookieManager API using [OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi) first. Without initializing the CookieManager API, this API is automatically executed on the UI thread. Typical use cases: asynchronously saving cookie states, for example, saving cookies asynchronously after page loading is complete or after a user operation, to avoid blocking the main thread.
 
 **Since**: 20
 
 **Parameters**
 
-| Name| Description|
+| Name | Description |
 | -- | -- |
-| [OH_ArkWeb_OnCookieSaveCallback](#oh_arkweb_oncookiesavecallback)* callback | Callback triggered when cookies are saved.|
+| [OH_ArkWeb_OnCookieSaveCallback](#oh_arkweb_oncookiesavecallback) callback | Callback invoked after the cookie is saved successfully or fails. When a callback is passed in, the operation result is received asynchronously using the callback, which is suitable for scenarios requiring asynchronous notification of the save result. When no callback is passed in, the behavior may vary depending on the specific implementation. |
+
 ### OH_NativeArkWeb_GetBlanklessInfoWithKey()
 
 ```c
@@ -459,7 +475,11 @@ ArkWeb_BlanklessErrorCode OH_NativeArkWeb_SetBlanklessLoadingWithKey(const char*
 
 **Description**
 
-Sets whether to enable blankless loading. This API must be used together with the [OH_NativeArkWeb_GetBlanklessInfoWithKey](#oh_nativearkweb_getblanklessinfowithkey) API.
+Sets whether blankless loading is enabled. This API must be used together with OH_NativeArkWeb_GetBlanklessInfoWithKey.
+
+**Use case:**
+
+Used when dynamically deciding whether to enable blankless loading based on the predicted information of the first screen loading of the page, for example, enabling blankless loading optimization when the similarity prediction value is high, and disabling it when the similarity is low to avoid resource waste.
 
 > **NOTE**
 >
@@ -476,14 +496,14 @@ Sets whether to enable blankless loading. This API must be used together with th
 | Name                                                | Description|
 |-----------------------------------------------------| -- |
 | const char* webTag  | Name of the **Web** component.|
-| const char* key | Key value that uniquely identifies the page. The value must be the same as the key value of the [OH_NativeArkWeb_GetBlanklessInfoWithKey](#oh_nativearkweb_getblanklessinfowithkey) API.<br>The value cannot be empty and can contain a maximum of 2048 characters.<br>When an invalid value is set, the error code [ArkWeb_BlanklessErrorCode](./capi-arkweb-error-code-h.md#arkweb_blanklesserrorcode) is returned and the frame insertion does not take effect.|
-| bool isStarted | Whether to enable frame insertion. The value **true** indicates to enable frame insertion, and **false** indicates the opposite.<br>The default value is **false**.|
+| const char* key | Unique key that identifies this page. It must be the same as the key value of the [OH_NativeArkWeb_GetBlanklessInfoWithKey](#oh_nativearkweb_getblanklessinfowithkey) API.<br>Valid value range: non-empty, with a maximum length of 2048 characters.<br>Behavior for invalid values: returns the error code [ArkWeb_BlanklessErrorCode](capi-arkweb-error-code-h.md#arkweb_blanklesserrorcode), and frame insertion does not take effect. |
+| bool isStarted | Whether to enable frame insertion. The value **true** means to enable frame insertion. Select this option when the first screen of the page has high similarity and the blank screen time needs to be reduced to improve the loading experience. The value **false** means to disable frame insertion. Select this option when the page transition is too large, resulting in low similarity, or when the loading experience does not need to be optimized.<br>Default value: **false**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ArkWeb_BlanklessErrorCode](./capi-arkweb-error-code-h.md#arkweb_blanklesserrorcode) | Whether the API is successfully called. For details, see [ArkWeb_BlanklessErrorCode](./capi-arkweb-error-code-h.md#arkweb_blanklesserrorcode).|
+| [`ArkWeb_BlanklessErrorCode`](capi-arkweb-error-code-h.md#arkweb_blanklesserrorcode) | Enumerates the error codes. For details, see [ArkWeb_BlanklessErrorCode](capi-arkweb-error-code-h.md#arkweb_blanklesserrorcode). |
 
 ### OH_NativeArkWeb_ClearBlanklessLoadingCache()
 
@@ -507,9 +527,8 @@ In an applet or web application, when the content changes significantly during p
 
 | Name                                                | Description|
 |-----------------------------------------------------| -- |
-| const char* key[] | Key value list on the pages using the blankless optimization solution. The key value has been specified in [OH_NativeArkWeb_GetBlanklessInfoWithKey](#oh_nativearkweb_getblanklessinfowithkey).<br>Default value: key value list of all pages cached by the blankless optimization solution.<br>The key length cannot exceed 2048 characters, and the number of keys must be less than or equal to 100. The key value is the same as that input to the **Web** component during page loading.<br>If the key length exceeds 2048 characters, the key does not take effect. If the key length exceeds 100 characters, the first 100 characters are used. If the key length is NULL, the default value is used.|
-| uint32_t size | Size of the key array.<br>The default value is **0**.<br>The value ranges from 0 to 100. If the size exceeds 100, the first 100 keys are used.<br>When an invalid value is set, the value **0** is used.|
-
+| const char* key[] | List of key values for clearing Blankless optimization pages. The key values are those specified in [OH_NativeArkWeb_GetBlanklessInfoWithKey](#oh_nativearkweb_getblanklessinfowithkey).<br>Valid value range: the length does not exceed 2048, and the keys array length is less than or equal to 100. The key is the same as the one input to ArkWeb when loading the page.<br>Behavior for invalid values: if the key length exceeds 2048, the key does not take effect; if the length exceeds 100, the first 100 keys are used; if NULL, all caches are cleared. |
+| uint32_t size | Size of the keys array.<br>Valid value range: 0 to 100. If the value exceeds 100, the first 100 keys in the array are used.<br>Behavior for invalid values: if the value is greater than 100, the first 100 keys are used. |
 
 ### OH_NativeArkWeb_SetBlanklessLoadingCacheCapacity()
 
@@ -519,7 +538,11 @@ uint32_t OH_NativeArkWeb_SetBlanklessLoadingCacheCapacity(uint32_t capacity)
 
 **Description**
 
-Sets the persistent cache capacity of the blankless loading solution and returns the value that takes effect. The default cache capacity is 30 MB, and the maximum cache capacity is 100 MB. When this limit is exceeded, transition frames that are not frequently used are eliminated.
+Sets the persistent cache capacity for the blankless loading solution and returns the actual effective value. The default cache capacity is 30 MB, and the maximum value is 100 MB. When the actual cache exceeds the capacity, infrequently used transition frames are evicted for cleanup. Typical use cases: adjusting the cache size based on the app memory usage, optimizing storage space usage, and balancing the blankless effect with system resource consumption.
+
+**Use case:**
+
+Scenarios where the user needs to customize the cache capacity.
 
 **Since**: 20
 
@@ -527,13 +550,13 @@ Sets the persistent cache capacity of the blankless loading solution and returns
 
 | Name                                                | Description|
 |-----------------------------------------------------| -- |
-| uint32_t capacity  | Persistent cache capacity, in MB. The maximum value is 100 MB.<br>The default value is 30 MB.<br>The value ranges from 0 to 100. If this parameter is set to **0**, no cache capacity is available and the functionality is disabled globally.<br>When a value less than 0 is set, the value **0** takes effect. When a value greater than 100 is set, the value **100** takes effect.|
+| uint32_t capacity  | Sets the persistent cache capacity, in MB. The maximum value cannot exceed 100 MB.<br>Default value: 30 MB.<br>Valid range: 0 to 100. When set to 0, there is no cache space and the feature is globally disabled.<br>Invalid value handling: When the value is greater than 100, the effective value is 100. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| uint32_t | The effective value that ranges from 0 MB to 100 MB.<br>When a value less than 0 is set, the value **0** takes effect. When a value greater than 100 is set, the value **100** takes effect.|
+| uint32_t | Effective capacity value, in MB, ranging from 0 to 100.<br>If the value is greater than 100, the effective value is 100. |
 
 ### OH_NativeArkWeb_SetActiveWebEngineVersion()
 
@@ -543,13 +566,13 @@ void OH_NativeArkWeb_SetActiveWebEngineVersion(ArkWebEngineVersion webEngineVers
 
 **Description**
 
-Sets the ArkWeb kernel version. If the system does not support the specified version, the setting is invalid.
+Sets the ArkWeb kernel version. If the system does not support the specified version, the setting is invalid and the system default kernel is used (see [Constraints](../../web/web-component-overview.md#constraints)). Used when a specific kernel version needs to be selected based on app compatibility requirements, for example, when an app depends on features of an older kernel version or needs to maintain compatibility on a newer system version, a specific legacy kernel version can be specified.
 
 This API is a global static method and must be called before **initializeWebEngine** is called. If any **Web** component has been loaded, the setting of this API is invalid.
 
 **Legacy kernel adaptation**
 
-Since OpenHarmony 6.0, some ArkWeb APIs do not take effect when the legacy kernel is used. For details, see [Adaptation Guide for the M114 Kernel on OpenHarmony 6.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/132_trunk/web/ReleaseNote/CompatibleWithLegacyWebEngine.md).
+Since OpenHarmony 6.0, some ArkWeb APIs do not take effect when the legacy kernel is used. For details, see [Adaptation Guide for the M114 Kernel on OpenHarmony 6.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_6.0.md) and [Adaptation Guide for the M132 Kernel on OpenHarmony 7.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_7.0.md).
 
 **Since**: 20
 
@@ -577,7 +600,6 @@ Obtains the current ArkWeb kernel version.
 | -- | -- |
 | ArkWebEngineVersion | The current ArkWeb kernel version defined by [ArkWebEngineVersion](#arkwebengineversion).|
 
-
 ### OH_NativeArkWeb_IsActiveWebEngineEvergreen()
 
 ```c
@@ -594,7 +616,7 @@ Checks whether the ArkWeb kernel used by the application is the evergreen kernel
 
 | Type| Description|
 | -- | -- |
-| bool | Whether the kernel used by the application is the evergreen kernel. The value **true** indicates that the kernel used by the application is the evergreen kernel, and **false** indicates the opposite.|
+| bool | Whether the kernel used by the current app is the Evergreen kernel. The value **true** indicates it is the Evergreen kernel, and **false** indicates it is not. |
 
 ### OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager()
 
@@ -604,12 +626,12 @@ void OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager(bool lazy)
 
 **Description**
 
-Sets whether to delay the initialization of the ArkWeb kernel. If this method is not called, the ArkWeb kernel is not delayed by default.
+Sets whether to defer the initialization of the ArkWeb kernel. If this method is not called, the ArkWeb kernel is not deferred for initialization by default. Typical use cases: the **Web** function is not needed immediately at app startup, and you want to delay kernel initialization to save startup resources; the app only needs to use CookieManager without **Web** component rendering for the time being. This API is a global static method and must be called before using the **Web** component and initializing the ArkWeb kernel; otherwise, the setting is invalid.
 
 > **NOTE**
 >
-> - This API is a global static method and must be called before the **Web** component is used and the ArkWeb kernel is initialized. Otherwise, the setting is invalid.
-> - This API is applicable only to APIs that initialize the CookieManager after being called, for example, the [ArkWeb_CookieManagerAPI](capi-web-arkweb-cookiemanagerapi.md) APIs. When this API is called, the ArkWeb kernel is not initialized during the initialization of CookieManager. You need to initialize the ArkWeb kernel later.
+> - This API is a global static method and must be called before using the **Web** component and initializing the ArkWeb kernel; otherwise, the setting is invalid.
+> - This API applies only to APIs that initialize CookieManager when called, such as those in the [ArkWeb_CookieManagerAPI](capi-web-arkweb-cookiemanagerapi.md) module. After this API is called, calling the applicable APIs skips the initialization of the ArkWeb kernel when initializing CookieManager, and you need to initialize the ArkWeb kernel later.
 
 **Since**: 22
 
@@ -618,3 +640,53 @@ Sets whether to delay the initialization of the ArkWeb kernel. If this method is
 | Name                                                | Description|
 |-----------------------------------------------------| -- |
 | bool lazy  | Whether to delay the initialization of the ArkWeb kernel. The value **true** means to delay the initialization, and **false** means the opposite.|
+
+### OH_ArkWebCookieManager_FetchCookieAsync()
+
+```c
+void OH_ArkWebCookieManager_FetchCookieAsync(const char* url, bool incognito, bool includeHttpOnly, bool includePartitionedCookies, OH_ArkWeb_OnCookieFetchCallback callback)
+```
+
+**Description**
+
+Asynchronously obtains the cookies corresponding to the specified URL. Without initializing the CookieManager API, this API is automatically executed on the UI thread.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| const char* url | URL to which the cookies belong. It is recommended to provide the complete URL. |
+| bool incognito | Whether to obtain the in-memory cookies of the webview in incognito mode. The value **true** indicates obtaining cookies in incognito mode, and **false** indicates obtaining cookies in non-incognito mode. |
+| bool includeHttpOnly | Whether to include cookies marked with the HTTP-Only attribute in cookieValue. The value **true** indicates that they are included, and **false** indicates that they are not. |
+| bool includePartitionedCookies | Whether to include first-party partitioned cookies in cookieValue. The value **true** indicates that they are included, and **false** indicates that they are not. |
+| [OH_ArkWeb_OnCookieFetchCallback](#oh_arkweb_oncookiefetchcallback) callback | Callback invoked after the cookies are obtained. |
+
+### OH_ArkWebCookieManager_FetchCookieSync()
+
+```c
+ArkWeb_ErrorCode OH_ArkWebCookieManager_FetchCookieSync(const char* url, bool incognito, bool includeHttpOnly, bool includePartitionedCookies, char** cookieValue)
+```
+
+**Description**
+
+Obtains the cookies corresponding to the specified URL. If this API is used in a non-UI thread, you need to initialize the CookieManager API using [OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi) first.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| const char* url | URL to which the cookies belong. It is recommended to provide the complete URL. |
+| bool incognito | Whether to obtain the in-memory cookies of the webview in incognito mode. The value **true** indicates obtaining cookies in incognito mode, and **false** indicates obtaining cookies in non-incognito mode. |
+| bool includeHttpOnly | Whether to include cookies marked with the HTTP-Only attribute in cookieValue. The value **true** indicates that they are included, and **false** indicates that they are not. |
+| bool includePartitionedCookies | Whether to include first-party partitioned cookies in cookieValue. The value **true** indicates that they are included, and **false** indicates that they are not. |
+| char** cookieValue | Cookie value corresponding to the URL. The function allocates memory for cookieValue, and the developer must release the string using [OH_ArkWeb_ReleaseString](capi-arkweb-scheme-handler-h.md#oh_arkweb_releasestring). |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) errorCode | Result code.<br> [ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode): The cookie is obtained successfully.<br> [ARKWEB_INVALID_URL](capi-arkweb-error-code-h.md#arkweb_errorcode): Invalid URL.<br> [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode): Invalid parameter.<br> [ARKWEB_COOKIE_MANAGER_NOT_INITIALIZED](capi-arkweb-error-code-h.md#arkweb_errorcode): In a non-UI thread, calling this API without initializing the CookieManager API is not allowed. Initialize the CookieManager API using OH_ArkWeb_GetNativeAPI first.<br> [ARKWEB_LIBRARY_OPEN_FAILURE](capi-arkweb-error-code-h.md#arkweb_errorcode): Failed to open the dynamic link library.<br> [ARKWEB_LIBRARY_SYMBOL_NOT_FOUND](capi-arkweb-error-code-h.md#arkweb_errorcode): The required symbol is not found in the dynamic link library. |

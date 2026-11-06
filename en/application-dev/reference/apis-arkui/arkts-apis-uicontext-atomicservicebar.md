@@ -1,12 +1,12 @@
 # Interface (AtomicServiceBar)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
-<!--Designer: @piggyguy-->
+<!--Owner: @pengzhiwen3-->
+<!--Designer: @dutie123-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Provides attributes for configuring the menu bar of an atomic service.
+The AtomicServiceBar interface provides the ability to set properties of the atomic service menu bar, including the visibility, background color, title content, title font style, and icon color, and also supports obtaining menu bar layout information and listening for layout changes. It is suitable for scenarios where you need to customize the appearance and behavior of the menu bar in atomic services.
 
 > **NOTE**
 >
@@ -14,9 +14,11 @@ Provides attributes for configuring the menu bar of an atomic service.
 >
 > - The initial APIs of this interface are supported since API version 11.
 >
+> - The APIs of this module can be used only in the stage model.
+>
 > - In the following API examples, you must first use [getAtomicServiceBar](arkts-apis-uicontext-uicontext.md#getatomicservicebar11) in **UIContext** to obtain an **AtomicServiceBar** instance, and then call the APIs using the obtained instance.
 >
-> - Since API version 12, the atomic service menu bar style is changed, and the following APIs are obsolete:
+> - Since API version 12, the atomic service menu bar style is changed, and the setting parameters of the **setVisible**, **setBackgroundColor**, **setTitleContent**, **setTitleFontStyle**, and **setIconColor** APIs will be ignored. For details, see the description of each API.
 
 ## setVisible<sup>11+</sup>
 
@@ -26,7 +28,7 @@ Sets whether the atomic service menu bar is visible.
 
 > **NOTE**
 >
-> The atomic service menu bar is hidden by default and replaced with a floating button since API version 12; it cannot be changed to visible using this API.
+> Since API version 12, the atomic service menu bar is hidden by default and replaced with a floating button. **When setVisible() is called in atomic services, the visible parameter is ignored, and menu bar cannot be displayed or hidden.**
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -36,7 +38,7 @@ Sets whether the atomic service menu bar is visible.
 
 | Name| Type| Mandatory| Description|
 | ------- | ------- | ------- | ------- |
-| visible | boolean | Yes| Whether the atomic service menu bar is visible. The value **true** means the atomic service menu bar is visible, and **false** means the opposite.|
+| visible | boolean | Yes| Whether the atomic service menu bar is visible. The value **true** means the atomic service menu bar is visible, and **false** means the opposite. Since API version 12, this parameter will be ignored in atomic services.|
 
 
 **Example**
@@ -51,6 +53,10 @@ export default class EntryAbility extends UIAbility {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', 'Ability onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err, data) => {
+      if (err) {
+        hilog.info(0x0000, 'testTag', 'LoadContent failed.');
+        return;
+      }
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
@@ -72,7 +78,7 @@ Sets the background color of the atomic service menu bar.
 
 > **NOTE**
 >
-> The background of the atomic service menu bar is hidden by default since API version 12; its color cannot be set using this API.
+> Since API version 12, the background of the atomic service menu bar is hidden by default. **When setBackgroundColor() is called in atomic services, the color parameter is ignored, and the background color of the menu bar cannot be set.**
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -82,7 +88,7 @@ Sets the background color of the atomic service menu bar.
 
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ------ | ------ |
-| color | Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| number \| string> | Yes| Background color of the atomic service menu bar. The value **undefined** means to use the default color. A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**.|
+| color | Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| number \| string> | Yes| Color of the atomic service menu bar. The value **undefined** means to use the default color. A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**. Since API version 12, this parameter will be ignored in atomic services.|
 
 **Example**
 
@@ -96,6 +102,10 @@ export default class EntryAbility extends UIAbility {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', 'Ability onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err, data) => {
+      if (err) {
+        hilog.info(0x0000, 'testTag', 'LoadContent failed.');
+        return;
+      }
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
@@ -111,13 +121,13 @@ export default class EntryAbility extends UIAbility {
 
 ## setTitleContent<sup>11+</sup>
 
-setTitleContent(content:string): void
+setTitleContent(content: string): void
 
 Sets the title content of the atomic service menu bar.
 
 > **NOTE**
 >
-> The title of the atomic service menu bar is hidden by default since API version 12; its content cannot be set using this API.
+> Since API version 12, the title of the atomic service menu bar is hidden by default. **When setTitleContent() is called in atomic services, the content parameter is ignored, and the menu bar title cannot be set.**
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -125,9 +135,9 @@ Sets the title content of the atomic service menu bar.
 
 **Parameters**
 
-|Name|Type|Mandatory|Description|
+| Name| Type| Mandatory| Description|
 | ------- | ------- | ------- | ------- |
-| content | string | Yes| Title content of the atomic service menu bar.|
+| content | string | Yes| Title content of the atomic service menu bar. Since API version 12, this parameter will be ignored in atomic services.|
 
 **Example**
 
@@ -141,6 +151,10 @@ export default class EntryAbility extends UIAbility {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', 'Ability onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err, data) => {
+      if (err) {
+        hilog.info(0x0000, 'testTag', 'LoadContent failed.');
+        return;
+      }
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
@@ -156,13 +170,13 @@ export default class EntryAbility extends UIAbility {
 
 ## setTitleFontStyle<sup>11+</sup>
 
-setTitleFontStyle(font:FontStyle):void
+setTitleFontStyle(font: FontStyle): void
 
-Sets the font style of the atomic service menu bar.
+Sets the font style of the atomic service menu bar title.
 
 > **NOTE**
 >
-> The title of the atomic service menu bar is hidden by default since API version 12; its font style cannot be set using this API.
+> Since API version 12, the title of the atomic service menu bar is hidden by default. **When setTitleFontStyle() is called in atomic services, the font parameter is ignored, and the font style of the menu bar title, such as italic, cannot be set.**
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -172,7 +186,7 @@ Sets the font style of the atomic service menu bar.
 
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ------ | ------ |
-| font | [FontStyle](arkui-ts/ts-appendix-enums.md#fontstyle) | Yes| Font style of the atomic service menu bar.|
+| font | [FontStyle](arkui-ts/ts-appendix-enums.md#fontstyle) | Yes| Font style of the atomic service menu bar title. Since API version 12, this parameter will be ignored in atomic services.|
 
 **Example**
 
@@ -186,6 +200,10 @@ export default class EntryAbility extends UIAbility {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', 'Ability onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err, data) => {
+      if (err) {
+        hilog.info(0x0000, 'testTag', 'LoadContent failed.');
+        return;
+      }
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
@@ -203,11 +221,11 @@ export default class EntryAbility extends UIAbility {
 
 setIconColor(color:Nullable<Color | number | string>): void
 
-Sets the color of the atomic service icon.
+Sets the color of the atomic service menu bar icon.
 
 > **NOTE**
 >
-> The atomic service menu bar is hidden by default and replaced with a floating button since API version 12; the icon color cannot be changed using this API.
+> Since API version 12, the atomic service menu bar is hidden by default and replaced with a floating button. **When setIconColor() is called in atomic services, the color parameter is ignored, and the menu bar icon color cannot be set.**
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -217,7 +235,7 @@ Sets the color of the atomic service icon.
 
 | Name| Type| Mandatory| Description|
 | ------- | ------- | ------- | ------- |
-| color | Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| number \| string> | Yes| Color of the atomic service icon. The value **undefined** means to use the default color. A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**.|
+| color | Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| number \| string> | Yes| Color of the atomic service menu bar. The value **undefined** means to use the default color. A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**. Since API version 12, this parameter will be ignored in atomic services.|
 
 
 **Example**
@@ -232,6 +250,10 @@ export default class EntryAbility extends UIAbility {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', 'Ability onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err, data) => {
+      if (err) {
+        hilog.info(0x0000, 'testTag', 'LoadContent failed.');
+        return;
+      }
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
@@ -253,7 +275,7 @@ Obtains the layout information of the atomic service menu bar relative to the wi
 
 > **NOTE**
 >
-> The layout information includes the left and right margins of the atomic service menu bar.
+> The menu bar position reflected in the layout information already takes its left and right margins into account.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -263,24 +285,24 @@ Obtains the layout information of the atomic service menu bar relative to the wi
 
 | Type               | Description           |
 | ----------------- | ------------- |
-| [Frame](./js-apis-arkui-graphics.md#frame) | Size and position of the atomic service menu bar.|
+| [Frame](js-apis-arkui-graphics.md#frame) | Size and position of the atomic service menu bar.|
 
 **Example**
 
 ```ts
-import { AtomicServiceBar } from '@kit.ArkUI';
+import { AtomicServiceBar, UIContext } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
 struct Index {
   build() {
-    Button("getBarRect")
+    Button('getBarRect')
       .onClick(() => {
         let uiContext: UIContext = this.getUIContext();
-        let currentBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
-        if (currentBar != undefined) {
-          let rect = currentBar.getBarRect();
+        let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+        if (atomicServiceBar != undefined) {
+          let rect = atomicServiceBar.getBarRect();
           hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully. x:'
             + rect.x + ' y:' + rect.y + ' width:' + rect.width + ' height:' + rect.height);
         } else {
@@ -295,13 +317,11 @@ struct Index {
 
 onBarRectChange(callback: Callback\<Frame\>): void
 
-Callback triggered when the size or position of the atomic service AtomicServiceMenuBar (menu capsule at the upper right corner) changes. It returns the latest layout information of the AtomicServiceMenuBar, including its size and position.
+Callback triggered when the size or position of the atomic service menu bar (AtomicServiceMenuBar, the menu capsule in the upper-right corner) changes. It returns the latest layout information of the menu bar. The layout information includes the size and position of the menu bar, with the left and right margins taken into account for the position.
 
 **Since**: 26.0.0
 
 **Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -309,7 +329,7 @@ Callback triggered when the size or position of the atomic service AtomicService
 
 | Name| Type| Mandatory| Description|
 | ------- | ------- | ------- | ------- |
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)\<[Frame](./js-apis-arkui-graphics.md#frame)> | Yes| Callback used to return the new layout information when the AtomicServiceBar layout changes.|
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)\<[Frame](js-apis-arkui-graphics.md#frame)> | Yes| Callback used to return the new layout information when the AtomicServiceMenuBar layout changes.|
 
 **Example**
 
@@ -320,7 +340,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 @Entry
 @Component
 struct Index {
-  aboutToAppear() : void {
+  aboutToAppear(): void {
     let uiContext: UIContext = this.getUIContext();
     let currentBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
     if (currentBar != undefined) {

@@ -1,11 +1,11 @@
 # Overview of Cross-Device Application Data Sync
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
 <!--Designer: @widecode; @htt1997; @dboy190-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-
 
 ## When to Use
 
@@ -21,14 +21,11 @@ The data storage modes vary depending on the lifecycle of data to be synced:
 
 - Persistent data has a long lifecycle and needs to be stored in databases. You can use RDB stores or KV stores based on data characteristics and relationships. For example, RDB stores are recommended for storing Gallery attribute information, such as albums, covers, and images, and KV stores are recommended for storing Gallery image thumbnails.
 
-
 ## Basic Concepts
 
 In a distributed scenario, cross-device collaboration demands consistent data between the devices in the same network.
 
-
 The data consistency can be classified into the following types:
-
 
 - Strong consistency: When data is added, deleted, or modified on a device, other devices in the same network can immediately read data and obtain the updated data.
 
@@ -36,10 +33,14 @@ The data consistency can be classified into the following types:
 
 - Eventual consistency: When data is added, deleted, or modified on a device, other devices in the same network may not obtain the updates immediately. However, data on these devices will become consistent after a certain period of time.
 
-
 Strong consistency has high requirements on distributed data management and may be used in distributed server deployment. Because mobile devices are not always online and there is no central node, the cross-device application data sync supports eventual consistency only.
-
 
 ## Access Control Mechanism in Cross-Device Sync
 
 When data is synced across devices, access control is performed based on the device level and data security label. For details, see [Access Control Mechanism in Cross-Device Sync](access-control-by-device-and-data-level.md#access-control-mechanism-in-cross-device-sync).
+
+## Samples
+
+For the development of distributed applications, the following sample is available for reference:
+
+- [DistributedAuthentication (ArkTS) (Full SDK) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/DistributedAppDev/DistributedAuthentication)

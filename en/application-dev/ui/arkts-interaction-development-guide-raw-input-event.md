@@ -1,21 +1,20 @@
 # Input Devices and Events
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T08:26:10.146Z pushedAt=2026-11-03T09:14:58.479Z nl=1 -->
 
 Different input devices generate distinct types of basic events, which are triggered only when users interact with specific hardware or tools. These events can be categorized based on the source device and the tool used to initiate the interaction.
 
-- Input device (source type): hardware that produces low-level input events, such as a touchscreen, mouse, touchpad, keyboard, or joystick.
-- Input tool (source tool): physical tool used to interact with the input device. For example, a finger or stylus can generate touch events on a touchscreen.
- 
-In many cases, the input device and tool may be the same. For example, the mouse and keyboard serve as both the device and the tool.
+- Input device (source type): the type of device from which the event originates, i.e., the device that actually generates the low-level event, such as a touchscreen, mouse, keyboard, or joystick.
+- Input tool (source tool): the specific tool used to generate the event. For example, to generate a touch event on a touchscreen, the tool used can be a finger or a stylus.
 
->  **NOTE**
+>  **NOTE** 
 >
-> For most interaction scenarios, it is recommended that you use the gesture system rather than handling raw input events directly. Gestures abstract away device-specific differences and provide a unified interaction model.
+> It is recommended to use the gesture system directly for handling interactions, so you do not need to concern yourself with the differences between basic events.
 
 
 [Touchscreen input events](./arkts-interaction-development-guide-touch-screen.md): covers touch interactions from touchscreen devices.

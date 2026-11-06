@@ -5,6 +5,7 @@
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=2037e49b6d0437342b88f0c436f8ebe30c73ae8f translatedAt=2026-11-03T12:47:30.238Z pushedAt=2026-11-03T12:47:30.238Z nl=1 -->
 
 The following uses the NDK project template of DevEco Studio to create an NDK project.
 
@@ -20,7 +21,7 @@ The following uses the NDK project template of DevEco Studio to create an NDK pr
 
 2. On the **Choose Your Ability Template** page, select **Native C++** as the template, and click **Next**.
 
-   ![en-us_image_0000001782486161](figures/en-us_image_0000001782486161.png)
+   ![native-c-template](figures/native-c-template.png)
 
 3. On the project configuration page, configure basic project information and click **Finish**. DevEco Studio will automatically generate the sample code and resources that match your project type. Wait until the project is created.
 

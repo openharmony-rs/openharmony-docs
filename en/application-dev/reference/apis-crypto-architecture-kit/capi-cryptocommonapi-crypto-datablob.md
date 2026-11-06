@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4a27fe9fcb9698d710b4ee8875dc73cdcfac03c3 translatedAt=2026-09-14T01:56:25.420Z pushedAt=2026-09-14T11:58:47.877Z -->
 
 ```c
 typedef struct Crypto_DataBlob {...} Crypto_DataBlob
@@ -27,5 +28,7 @@ Defines the data used for encryption and decryption.
 
 | Name| Description|
 | -- | -- |
-| uint8_t* data | Pointer to the data.|
-| size_t len | Length of the data.|
+| uint8_t *data | Data buffer. |
+| size_t len | Data length. |
+
+

@@ -2,10 +2,11 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
-<!--Owner: @hangmengxin; @oh_wangxk; @gmiao522-->
-<!--Designer: @wangyanglan; @liumingxiang-->
-<!--Tester: @nobuggers; @yhl0101-->
+<!--Owner: @hangmengxin; @oh_wangxk-->
+<!--Designer: @wanyanglan; @KejiePeng-->
+<!--Tester: @nobuggers; @yhl0101; @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=ba1b6704bf7552d9b6a8a06ca0cf38b43a773032 translatedAt=2026-11-03T13:36:05.113Z pushedAt=2026-11-04T08:33:43.179Z nl=1 -->
 
 - ArkTS APIs<!--arkgraphics-arkts-->
   - [@ohos.effectKit (Image Effects)](js-apis-effectKit.md)
@@ -31,6 +32,7 @@
     - [Class (PathIterator)](arkts-apis-graphics-drawing-PathIterator.md)
     - [Class (Pen)](arkts-apis-graphics-drawing-Pen.md)
     - [Class (PointUtils)](arkts-apis-graphics-drawing-PointUtils.md)
+    - [Class (RecordCmdUtils)](arkts-apis-graphics-drawing-RecordCmdUtils.md)
     - [Class (RectUtils)](arkts-apis-graphics-drawing-RectUtils.md)
     - [Class (Region)](arkts-apis-graphics-drawing-Region.md)
     - [Class (RoundRect)](arkts-apis-graphics-drawing-RoundRect.md)
@@ -43,6 +45,9 @@
     - [Class (TypefaceArguments)](arkts-apis-graphics-drawing-TypefaceArguments.md)
     - [Interfaces (Others)](arkts-apis-graphics-drawing-i.md)
     - [Enums](arkts-apis-graphics-drawing-e.md)
+  <!--Del-->
+  - [@ohos.graphics.drawing (Drawing Module) (System API)](js-apis-graphics-drawing-sys.md)
+  <!--DelEnd-->
   - [@ohos.graphics.hdrCapability (HDR Capability)](js-apis-hdrCapability.md)
   - [@ohos.graphics.text (Text)](js-apis-graphics-text.md)
   - [@ohos.graphics.uiEffect (Cascading Effect)](js-apis-uiEffect.md)
@@ -217,6 +222,7 @@
     - [OH_Drawing_RecordCmdUtils](capi-drawing-oh-drawing-recordcmdutils.md)
     - [OH_Drawing_RecordCmd](capi-drawing-oh-drawing-recordcmd.md)
     - [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)
+    - [OH_Drawing_TypefaceFallbackInfo](capi-drawing-oh-drawing-typefacefallbackinfo.md)
     - [OH_Filter](capi-effectkit-oh-filter.md)
     - [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)
     - [NativeWindow](capi-nativewindow-nativewindow.md)
@@ -226,3 +232,4 @@
 - Error Codes<!--arkgraphics-arkts-errcode-->
   - [colorSpaceManager Error Codes](errorcode-colorspace-manager.md)
   - [Drawing and Display Error Codes](errorcode-drawing.md)
+

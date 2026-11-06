@@ -1,10 +1,11 @@
 # Differences Between State Management V1 and V2 Update Mechanisms
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @s10021109-->
-<!--Designer: @s10021109-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
 <!--Tester: @zhangwenhan12-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=59c43aed2026bf661a322032daecc86d61224e0f translatedAt=2026-09-21T11:52:28.106Z pushedAt=2026-09-23T09:56:19.943Z -->
 
 ## Background of the Evolution from V1 State Management to V2 State Management
 
@@ -89,7 +90,7 @@ Button('Change state variable')
     // For V1, only top-level changes can be observed. Even if this.obsObjA.obsObjB.propB is decorated by the V1 decorator (@Track), the text in line 4 is not updated.
     // For V2, the text in line 4 can be updated as long as this.obsObjA.obsObjB.propB is decorated by the V2 decorator (@Trace).
     this.obsObjA.obsObjB.propB = 'propB3';
-    // this.arr is decorated by the V1 or V2 decorator. Assigning a value to this variable (whether it is a variable decorated with a V1 decorator or a V2 decorator) will trigger the update of Text in lines 5 and 6.
+    // this.arr is decorated by a V1 or V2 decorator. Assigning a value to this variable, whether it is a V1 decorator variable or a V2 decorator variable, triggers the update of the Text components on lines 5, 6, and 7.
     this.arr[0] = new ObsObjC('propC3');
     // For V1, this.arr is decorated by the V1 decorator. Because V1 can only observe top-level changes and the property assignment of the array item is the modification of the second level, the Text in line 7 is not updated.
     // For V2, this.arr is decorated by the V2 decorator, and propC is decorated by the V2 decorator (@Trace). Assigning a value to this variable will update the Text in line 7.
@@ -124,9 +125,9 @@ In the above code, when assigning a value to **this.obsObjA.propA**, the executi
 Assignment to V2-decorated variables, as well as changes of object properties or array (Map and Set) items, will trigger asynchronous execution of @Monitor. If the state variable is modified multiple times, the @Monitor function is executed only once.
 
 ```typescript
-@Local arr: Array<ObsObjC> = [new ObsObjC('propC1')];
+@Local obsObjA: ObsObjA = new ObsObjA('propANew');
 
-@Monitor('obsObjA.propA') onChange(mon : IMonitor) { // The @Monitor function is executed asynchronously when the monitored V2-decorated variable obsObjA changes.
+@Monitor('obsObjA.propA') onChange(mon : IMonitor) { // The @Monitor function executes asynchronously when the monitored V2 decorated variable obsObjA.propA changes.
   console.info(`${mon.dirty[0]}`); // Execution order 4: The onChange callback is executed only after the onClick-related logic is executed.
 }
 
@@ -137,12 +138,12 @@ Button('Change state variable')
     console.info('2'); // Execution order: 3
   })
 ```
-In the preceding code, the @Monitor function is executed only after the current event logic is executed, for example, after **onClick** is executed. When assigning a value to **this.obsObjA.propA**, the execution sequence is as follows: print log '1', assign a value to the state variable, print log '2', execute **onChange** of @Monitor, and print'obsObjA.propA'.
+In the preceding code, the @Monitor function is executed only after the current event logic is executed, for example, after **onClick** is executed. When assigning a value to **this.obsObjA.propA**, the execution sequence is as follows: print log '1', assign a value to the state variable, print log '2', execute **onChange** of @Monitor, and print 'obsObjA.propA'.
 
 
 ## Differences Between V1 and V2 State Variable Updates
 
-The following figure shows the flowchart of V1 component and V2 state variable update differences. Compared with V1 state management, V2 state management asynchronously marks components dirty when state variables change.
+The following figure shows the flowchart of V1 and V2 component state variable update differences. Compared with V1 state management, V2 state management asynchronously marks components dirty when state variables change.
 
 ![v1v2updatedifference](figures/v1v2update.png)
 
@@ -160,7 +161,7 @@ Step 5: If the state variable changes again, step 4 is performed. The number of 
 
 ### V2 Components Updates
 
-Compared with V1 state management, V2 state management supports asynchronous execution of @Computed, @Monitor, and node dirty marking.
+Compared with V1 state management, V2 state management adds asynchronous execution of @Computed, @Monitor, and node dirty marking steps:
 
 Step 1: The event triggers the modification of the V2 state variable and throws the [Promise](../../arkts-utils/async-concurrency-overview.md#promise) asynchronous task.
 

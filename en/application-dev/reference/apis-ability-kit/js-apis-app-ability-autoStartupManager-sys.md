@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=adac32ca89d9bd332aa4865feec176933267fbd9 translatedAt=2026-09-03T10:02:51.397Z pushedAt=2026-09-05T10:47:30.345Z -->
 
 The autoStartupManager module provides APIs to listen for auto-startup status changes of application components. You can use the APIs to get updates on these changes.
 
@@ -63,10 +64,13 @@ import { autoStartupManager, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // Register a listener for the auto-start status change of an application component.
   autoStartupManager.on('systemAutoStartup', {
+    // Callback invoked when the application auto-start on boot succeeds.
     onAutoStartupOn(data: common.AutoStartupInfo) {
       console.info(`autostartupmanager onAutoStartupOn, data: ${JSON.stringify(data)}.`);
     },
+    // Callback invoked when the application cancels auto-start on boot.
     onAutoStartupOff(data: common.AutoStartupInfo) {
       console.info(`autostartupmanager onAutoStartupOff, data: ${JSON.stringify(data)}.`);
     }
@@ -98,7 +102,7 @@ Unregisters the callback used to listen for auto-startup status changes of an ap
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
 | type | string              | Yes   | Event type. The value is fixed at **systemAutoStartup**, which can be called only by system applications.|
-| callback | [AutoStartupCallback](js-apis-inner-application-autoStartupCallback-sys.md)   | No| Callback used for unregistration.|
+| callback | [AutoStartupCallback](js-apis-inner-application-autoStartupCallback-sys.md) | No | Callback invoked when the auto-start status of an application component changes. If this parameter is not specified, all registered listeners are unregistered. |
 
 **Error codes**
 
@@ -118,6 +122,7 @@ import { autoStartupManager, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // Unregister the listener for application component auto-start status changes.
   autoStartupManager.off('systemAutoStartup', {
     onAutoStartupOn(data: common.AutoStartupInfo) {
       console.info(`autostartupmanager onAutoStartupOn, data: ${JSON.stringify(data)}.`);
@@ -175,6 +180,7 @@ import { autoStartupManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // Set the application component to auto-start on boot.
   autoStartupManager.setApplicationAutoStartup({
     bundleName: 'com.example.autostartupapp',
     abilityName: 'EntryAbility'
@@ -217,7 +223,7 @@ Sets an application component to automatically start upon system boot. This API 
 
 | Type         | Description                                                        |
 | ------------- | ------------------------------------------------------------ |
-| Promise\<void\> | Promise that returns no value.|
+| Promise\<void\> | Promise object. A Promise object with no return value, used to indicate the completion status of the asynchronous operation of setting application component auto-start on boot. |
 
 **Error codes**
 
@@ -239,6 +245,7 @@ import { autoStartupManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // Set the application component to auto-start on boot.
   autoStartupManager.setApplicationAutoStartup({
     bundleName: 'com.example.autostartupapp',
     abilityName: 'EntryAbility'
@@ -296,6 +303,7 @@ import { autoStartupManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // Cancel the auto-start of the application component on boot.
   autoStartupManager.cancelApplicationAutoStartup({
     bundleName: 'com.example.autostartupapp',
     abilityName: 'EntryAbility'
@@ -338,7 +346,7 @@ Cancels the auto-startup setting for an application component. This API uses a p
 
 | Type         | Description                                                        |
 | ------------- | ------------------------------------------------------------ |
-| Promise\<void\> | Promise that returns no value.|
+| Promise\<void\> | Promise object. Promise object that returns no value, used to indicate the completion status of the asynchronous operation of canceling the auto-start of an application component. |
 
 **Error codes**
 
@@ -360,6 +368,7 @@ import { autoStartupManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // Cancel the auto-start of the application component on boot.
   autoStartupManager.cancelApplicationAutoStartup({
     bundleName: 'com.example.autostartupapp',
     abilityName: 'EntryAbility'
@@ -379,7 +388,7 @@ try {
 
 queryAllAutoStartupApplications(callback: AsyncCallback\<Array\<AutoStartupInfo\>\>): void
 
-Obtains information about all auto-startup application components. This API uses an asynchronous callback to return the result.
+Queries the information about all auto-start application components. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_APP_BOOT
 
@@ -394,7 +403,7 @@ Obtains information about all auto-startup application components. This API uses
 
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| callback  | AsyncCallback\<Array\<[AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md)\>\> | Yes   | Callback used to return the result. If the information is obtained, **err** is **undefined** and **data** is **Array\<[AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md)\>**; otherwise, **err** is an error object.     |
+| callback  | AsyncCallback\<Array\<[AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md)\>\> | Yes    | Callback function. When the query of all auto-start application component information succeeds, err is undefined and data is the obtained Array\<[AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md)\>; otherwise it is an error object.      |
 
 **Error codes**
 
@@ -414,6 +423,7 @@ import { autoStartupManager, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // Query the information about all auto-start application components.
   autoStartupManager.queryAllAutoStartupApplications((err: BusinessError, data: common.AutoStartupInfo[]) => {
     if (err) {
       console.error(`queryAllAutoStartupApplications failed, err code: ${err.code}, err msg: ${err.message}.`);
@@ -432,7 +442,7 @@ try {
 
  queryAllAutoStartupApplications(): Promise\<Array\<AutoStartupInfo\>\>
 
-Obtains information about all auto-startup application components. This API uses a promise to return the result.
+Queries the information about all auto-start application components. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_APP_BOOT
 
@@ -447,7 +457,7 @@ Obtains information about all auto-startup application components. This API uses
 
 | Type                           | Description                                                        |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<Array\<[AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md)\>\> | Promise used to return the information obtained.|
+| Promise\<Array\<[AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md)\>\> | Promise object used to return the information about all auto-start application components. |
 
 **Error codes**
 
@@ -467,6 +477,7 @@ import { autoStartupManager, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // Query all auto-start application component information.
   autoStartupManager.queryAllAutoStartupApplications().then((data: common.AutoStartupInfo[]) => {
     console.info(`queryAllAutoStartupApplications success, data: ${JSON.stringify(data)}.`);
   }).catch((err: BusinessError) => {

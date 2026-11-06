@@ -1,7 +1,7 @@
 # js标签配置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -25,7 +25,7 @@ js标签中包含了实例名称、页面路由信息。
 定义每个页面的路由信息，每个页面由页面路径和页面名组成，页面的文件名即为页面名，例如：
 
 
-```json
+```json5
 {
   // ...
   "pages": [
@@ -48,7 +48,7 @@ js标签中包含了实例名称、页面路由信息。
 ## 示例
 
 
-```json
+```json5
 {
   "app": {
     "bundleName": "com.example.player",

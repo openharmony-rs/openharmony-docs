@@ -178,4 +178,4 @@ struct RotationGestureExample {
 }
 ```
 
- ![en-us_image_0000001174264372](figures/en-us_image_0000001174264372.png)
+ ![rotationGesture](figures/rotationGesture.png)

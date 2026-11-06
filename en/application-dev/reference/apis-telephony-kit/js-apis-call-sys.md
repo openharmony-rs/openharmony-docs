@@ -5,6 +5,7 @@
 <!--Designer: @wnazgul-->
 <!--Tester: @jiang_99-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=d24d003a07db9ee1ded2d51b1a31fb4eb823af5f translatedAt=2026-11-03T03:46:08.794Z pushedAt=2026-11-03T08:29:37.993Z nl=1 -->
 
 The **call** module provides call management functions, including making calls, redirecting to the dial screen, obtaining the call status, and formatting phone numbers.
 
@@ -377,6 +378,59 @@ call.answerCall(1).then(() => {
 });
 ```
 
+## call.answerCall<sup>22+</sup>
+
+answerCall(videoState: VideoStateType, callId: number, isRtt:boolean\): Promise\<void\>
+
+Answers an RTT incoming call. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions:** ohos.permission.ANSWER_CALL
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| videoState | [VideoStateType](#videostatetype7) | Yes | Video or voice mode used to answer the call. |
+| callId | number | Yes | ID of the call to be answered. |
+| isRtt | boolean | Yes | Whether the call is a real-time text (RTT) call.<br>**true**: The call is an RTT call.<br>**false**: The call is not an RTT call. |
+
+**Return value**
+
+| Type                | Description                        |
+| ------------------- | --------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Telephony Subsystem Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 8400001  | Invalid parameter value.                     |
+| 8400002  | Operation failed. Cannot connect to service. |
+| 8400003  | System internal error.                       |
+| 8400999  | Unknown error code.                          |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callId: number = 1;
+
+call.answerCall(call.VideoStateType.TYPE_VOICE, callId, true).then(() => {
+    console.info(`answerCall success, RTT call answered.`);
+}).catch((err: BusinessError) => {
+    console.error(`answerCall fail, code:${err.code}, message:${err.message}`);
+});
+```
+
 ## call.hangUpCall<sup>9+</sup>
 
 hangUpCall\(callId: number, callback: AsyncCallback\<void\>\): void
@@ -433,7 +487,7 @@ Ends a call. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.ANSWER_CALL
+**Required permissions:** ohos.permission.ANSWER_CALL or ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CallManager
 
@@ -1669,6 +1723,7 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 801      | Capability not supported.                    |
@@ -1794,6 +1849,8 @@ Stops playing DTMF tones. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
+**Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
 **System capability**: SystemCapability.Telephony.CallManager
 
 **Parameters**
@@ -1814,6 +1871,7 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 801      | Capability not supported.                    |
@@ -2624,6 +2682,7 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
@@ -2655,6 +2714,8 @@ Separates calls from a conference call. This API uses a promise to return the re
 
 **System API**: This is a system API.
 
+**Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
 **System capability**: SystemCapability.Telephony.CallManager
 
 **Parameters**
@@ -2675,6 +2736,7 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
@@ -3023,8 +3085,8 @@ Obtains call transfer information. This API uses an asynchronous callback to ret
 | Name  | Type                                                        | Mandatory| Description                                  |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | slotId   | number                                                       | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2.|
-| type     | [CallTransferType](#calltransfertype8)                       | Yes  | Call transfer type.                        |
-| callback | AsyncCallback&lt;[CallTransferResult](#calltransferresult8)&gt; | Yes  | Callback used to return the result.            |
+| type     | [CallTransferType](js-apis-call.md#calltransfertype)                       | Yes  | Call transfer type.                        |
+| callback | AsyncCallback&lt;[CallTransferResult](js-apis-call.md#calltransferresult)&gt; | Yes  | Callback used to return the result.            |
 
 **Error codes**
 
@@ -3072,13 +3134,13 @@ Obtains call transfer information. This API uses a promise to return the result.
 | Name| Type                                  | Mandatory| Description                                  |
 | ------ | -------------------------------------- | ---- | -------------------------------------- |
 | slotId | number                                 | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2.|
-| type   | [CallTransferType](#calltransfertype8) | Yes  | Call transfer type.                        |
+| type   | [CallTransferType](js-apis-call.md#calltransfertype) | Yes  | Call transfer type.                        |
 
 **Return value**
 
 | Type                                                     | Description                       |
 | --------------------------------------------------------- | --------------------------- |
-| Promise&lt;[CallTransferResult](#calltransferresult8)&gt; | Promise used to return the result.|
+| Promise&lt;[CallTransferResult](js-apis-call.md#calltransferresult)&gt; | Promise used to return the result.|
 
 **Error codes**
 
@@ -4746,6 +4808,59 @@ call.sendCallUiEvent(callId, 'eventName').then(() => {
 });
 ```
 
+## call.sendUssdResponse
+
+sendUssdResponse\(slotId: number, content: string\): void
+
+Sends a response to the Unstructured Supplementary Service Data (USSD) service to the carrier.
+
+**Since**: 26.0.0
+
+**System API**: This is a system API.
+
+**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+
+**System capability**: SystemCapability.Telephony.CallManager
+
+**Parameters**
+
+| Name   | Type  | Mandatory| Description    |
+| --------- | ------ | ---- | -------- |
+| slotId    | number    | Yes  | ID of the card slot that sends the response.|
+| content   | string | Yes  | Response content.|
+
+**Error codes**
+
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { call } from '@kit.TelephonyKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+function testSendUssdResponse() {
+    const slotId: number = 0;
+    const content: string = "OK";
+
+    try {
+        call.sendUssdResponse(slotId, content);
+    } catch (error) {
+        const err = error as BusinessError;
+        hilog.error(0x0000, 'testTag', `Failed to send USSD response. Code: ${err.code}, Message: ${err.message}`);
+    }
+}
+```
+
 ## DialOptions
 
 Provides an option for determining whether a call is a video call.
@@ -4773,6 +4888,7 @@ Provides an option for determining whether a call is a video call.
 | videoState <sup>9+</sup> | [VideoStateType](#videostatetype7) | No  | Video state type.                              |
 | dialScene <sup>9+</sup>  | [DialScene](#dialscene8)           | No  | Dialup scenario.                                  |
 | dialType <sup>9+</sup>   | [DialType](#dialtype8)             | No  | Dialup type.                                  |
+| xCallType                | [xCallType](#xcalltype)            | No  | XCALL type.<br>**Since:** 26.0.0        |
 
 
 ## ImsCallMode<sup>8+</sup>
@@ -4844,9 +4960,10 @@ Defines the audio device information.
 
 |                Name              |                  Type                | Mandatory |        Description     |
 | --------------------------------- | ------------------------------------- | ---- | ---------------- |
-| audioDeviceList   | [Array\<AudioDevice\>](#audiodevice10) | Yes  | Audio device list.   |
+| audioDeviceList   | Array\<[AudioDevice](#audiodevice10)\> | Yes  | Audio device list.   |
 | currentAudioDevice | [AudioDevice](#audiodevice10)          | Yes  | Current audio device.   |
 | isMuted            | boolean                               | Yes  | Whether the audio device is muted.       |
+| isMicDisabled<sup>24+</sup>     |  boolean                                | No   | Whether to disable the microphone.<br>- **true**: yes.<br>- **false**: no.|
 
 
 ## CallRestrictionType<sup>8+</sup>
@@ -4879,27 +4996,13 @@ Defines the call transfer information.
 |          Name           | Type                                                | Mandatory| Description            |
 | ------------------------ | ---------------------------------------------------- | ---- | ---------------- |
 | transferNum              | string                                               | Yes  | Call transfer number.        |
-| type                     | [CallTransferType](#calltransfertype8)               | Yes  | Call transfer type.    |
+| type                     | [CallTransferType](js-apis-call.md#calltransfertype)               | Yes  | Call transfer type.    |
 | settingType              | [CallTransferSettingType](#calltransfersettingtype8) | Yes  | Enumerates call transfer setting types.|
 | startHour<sup>9+</sup>   | number                                               | No  | Hour in the start time.|
 | startMinute<sup>9+</sup> | number                                               | No  | Minute in the start time.|
 | endHour<sup>9+</sup>     | number                                               | No  | Hour in the end time.|
 | endMinute<sup>9+</sup>   | number                                               | No  | Minute in the end time.|
 
-## CallTransferType<sup>8+</sup>
-
-Enumerates call transfer types.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Telephony.CallManager
-
-| Name                       | Value  | Description        |
-| --------------------------- | ---- | ------------ |
-| TRANSFER_TYPE_UNCONDITIONAL | 0    | Call forwarding unconditional.  |
-| TRANSFER_TYPE_BUSY          | 1    | Call forwarding busy.    |
-| TRANSFER_TYPE_NO_REPLY      | 2    | Call forwarding on no reply.  |
-| TRANSFER_TYPE_NOT_REACHABLE | 3    | Call forwarding on no user not reachable.|
 
 ## CallTransferSettingType<sup>8+</sup>
 
@@ -4941,6 +5044,8 @@ Defines the call attribute options.
 | originalCallType<sup>11+</sup> | number                    | Yes  | Original call type of the Video RBT service.|
 | numberLocation<sup>12+</sup> | string | No| Home location area of the number.|
 | numberMarkInfo<sup>12+</sup> | [NumberMarkInfo](#numbermarkinfo12) | No| Number mark.|
+| xCallType | [XCallType](#xcalltype) | No| X-Call type.<br>**Since:** 26.0.0|
+| isCustomAccessibility  | boolean              | No | Whether the app supports custom accessibility capabilities. The default value is **false**.<br>-**true**: supported<br>-**false**: not supported  <br>**Since:** 26.0.0|
 
 ## VoipCallAttribute<sup>11+</sup>
 
@@ -4992,6 +5097,7 @@ Enumerates call types.
 | TYPE_OTT      | 2    | OTT call.     |
 | TYPE_ERR_CALL | 3    | Error call type.|
 | TYPE_VOIP<sup>11+</sup> | 4    | VoIP call.|
+| TYPE_XCALL | 5 | X-Call.<br>**Since:** 26.0.0|
 
 ## VideoStateType<sup>7+</sup>
 
@@ -5022,7 +5128,7 @@ Enumerates detailed call states.
 | CALL_STATUS_ACTIVE        | 0    | Active state.  |
 | CALL_STATUS_HOLDING       | 1    | Hold state.  |
 | CALL_STATUS_DIALING       | 2    | Dialing state.  |
-| CALL_STATUS_ALERTING      | 3    | Alerting state.  |
+| CALL_STATUS_ALERTING      | 3    | Call alerting state.   |
 | CALL_STATUS_INCOMING      | 4    | Incoming state.  |
 | CALL_STATUS_WAITING       | 5    | Enumerates call waiting states.  |
 | CALL_STATUS_DISCONNECTED  | 6    | Disconnected state.|
@@ -5114,6 +5220,7 @@ Enumerates dialup types.
 | DIAL_CARRIER_TYPE    | 0    | Carrier.    |
 | DIAL_VOICE_MAIL_TYPE | 1    | Voice mail.|
 | DIAL_OTT_TYPE        | 2    | OTT.     |
+| DIAL_XCALL_TYPE | 3 | X-Call.<br>**Since:** 26.0.0|
 
 ## RejectMessageOptions<sup>7+</sup>
 
@@ -5137,12 +5244,7 @@ Defines the call transfer result.
 
 |          Name           |                 Type              | Mandatory|       Description      |
 | ------------------------ | ---------------------------------- | ---- | ---------------- |
-| status                   | [TransferStatus](#transferstatus8) |  Yes | Enumerates call transfer states.        |
 | number                   | string                             |  Yes | Call transfer number.            |
-| startHour<sup>9+</sup>   | number                             |  Yes | Hour in the start time.|
-| startMinute<sup>9+</sup> | number                             |  Yes | Minute in the start time.|
-| endHour<sup>9+</sup>     | number                             |  Yes | Hour in the end time.|
-| endMinute<sup>9+</sup>   | number                             |  Yes | Minute in the end time.|
 
 ## CallWaitingStatus<sup>7+</sup>
 
@@ -5169,19 +5271,6 @@ Enumerates call restriction states.
 | ------------------- | ---- | -------- |
 | RESTRICTION_DISABLE | 0    | Call restriction disabled.|
 | RESTRICTION_ENABLE  | 1    | Call restriction enabled.|
-
-## TransferStatus<sup>8+</sup>
-
-Enumerates call transfer states.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Telephony.CallManager
-
-| Name            | Value  | Description    |
-| ---------------- | ---- | -------- |
-| TRANSFER_DISABLE | 0    | Call transfer disabled.|
-| TRANSFER_ENABLE  | 1    | Call transfer enabled.|
 
 ## DisconnectedDetails<sup>9+</sup>
 
@@ -5430,7 +5519,7 @@ Uses the specified camera to make a video call. If **cameraId** is left empty, t
 | Name| Type                        | Mandatory| Description          |
 | ------ | ---------------------------- | ---- | -------------- |
 | callId | number                       | Yes  | Call ID. You can obtain the value by subscribing to **callDetailsChange** events.      |
-| cameraId | string                     | Yes  | Camera ID. For details about how to obtain the camera ID, see [Camera Management](../apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras).|
+| cameraId | string                     | Yes  | Camera ID. For details about how to obtain the camera ID, see the [getSupportedCameras](../apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras) API in camera management.|
 
 **Return value**
 
@@ -5634,7 +5723,7 @@ Subscribes to **imsCallModeChange** events. This API uses an asynchronous callba
 | Name  | Type                                       | Mandatory| Description                      |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
 | type     | string                                     | Yes  | Call mode change. This field has a fixed value of **imsCallModeChange**.|
-| callback | Callback<[ImsCallModeInfo](#imscallmode8)> | Yes  | Callback used to return the result.        |
+| callback | Callback<[ImsCallModeInfo](#imscallmodeinfo11)> | Yes  | Callback used to return the result.        |
 
 **Error codes**
 
@@ -5677,7 +5766,7 @@ Unsubscribes from **imsCallModeChange** events. This API uses an asynchronous ca
 | Name  | Type                                       | Mandatory| Description                              |
 | -------- | ------------------------------------------ | ---- | ---------------------------------- |
 | type     | string                                     | Yes  | Call mode change. This field has a fixed value of **imsCallModeChange**.|
-| callback | Callback<[ImsCallModeInfo](#imscallmode8)> | No  | Callback used to return the result. If this field is not set, no subscription cancellation result will be received.|
+| callback | Callback<[ImsCallModeInfo](#imscallmodeinfo11)> | No  | Callback used to return the result. If this field is not set, no subscription cancellation result will be received.|
 
 **Error codes**
 
@@ -6101,3 +6190,19 @@ Enumerates number mark types.
 | MARK_TYPE_OTHERS | 9 | Other.|
 | MARK_TYPE_YELLOW_PAGE | 10 | Yellow page.|
 | MARK_TYPE_ENTERPRISE<sup>14+</sup> | 11 | Enterprise contact.|
+
+## XCallType
+
+Enumerates X-Call types.
+
+**Since**: 26.0.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Telephony.CallManager
+
+| Name                          | Value    | Description    |
+| ------------------------------ | ------ | --------|
+| XCALL_ECALL_TYPE | 0      | E-Call.|
+| XCALL_BCALL_TYPE | 1      | B-Call.|
+| XCALL_ICALL_TYPE | 2      | I-Call.|

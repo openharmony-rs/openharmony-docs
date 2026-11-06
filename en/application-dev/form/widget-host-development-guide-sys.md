@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=ffb99127b225ec318d7b21a1375d513e4d8a79a1 translatedAt=2026-11-03T07:51:08.458Z pushedAt=2026-11-03T07:51:08.458Z -->
 
 ## Widget Overview
 
@@ -15,11 +16,11 @@ A widget usually appears as a part of the UI of another application (which curre
 - Before you get started, it would be helpful if you have a basic understanding of the following concepts:
 
   - Widget provider: an atomic service that controls the widget content to display, how widget components are laid out, and how they interact with users.
-  
+
   - Widget host: an application that displays the widget content and controls the widget location.
-  
+
   - Widget Manager: a resident agent that provides widget management features such as periodic widget updates.
-  
+
    ![formHostModule](./figures/widget-host-development-guide-1.png)
 
 ## When to Use
@@ -47,13 +48,19 @@ When a widget is added through **FormComponent**, the [onAddForm](../reference/a
 
 ### Temporary and Normal Widgets
 
-The **temporary** field in **FormComponent** specifies whether a widget is a temporary or normal widget. The value **true** indicates a temporary widget, and **false** indicates a normal widget.
+The **temporary** field in **FormComponent** specifies the widget type: `true` indicates a temporary widget, and `false` indicates a normal widget.
 
-- Normal widget: a widget persistently used by the widget host, for example, a widget added to the home screen.
+- **Normal widget**: a widget persistently stored by the Widget Manager. It is retained when the host process exits and restored from the database when the Widget Manager restarts. An example is a widget added to the home screen.
 
-- Temporary widget: a widget temporarily used by the widget host, for example, the widget displayed when you swipe up on a widget application.
-  
-Data of a temporary widget will be deleted on the Widget Manager if the widget framework is killed and restarted. The widget provider, however, is not notified of the deletion and still keeps the data. Therefore, the widget provider needs to clear the data of temporary widgets proactively if the data has been kept for a long period of time. If the widget host has converted a temporary widget into a normal one, the widget provider should change the widget data from temporary storage to persistent storage. Otherwise, the widget data may be deleted by mistake. 
+- **Temporary widget**: a widget that is not persistently stored by the Widget Manager. It is not automatically destroyed while the widget host process is running and must be explicitly deleted by calling [formHost.deleteForm](../reference/apis-form-kit/js-apis-app-form-formHost-sys.md#formhostdeleteform) when no longer needed. The Widget Manager automatically clears it only when the widget host process exits. Otherwise, it remains in memory unless explicitly deleted.
+
+> **NOTE**
+>
+> When the Widget Manager restarts, temporary widgets are deleted, and the widget provider is not notified of the corresponding widget IDs. Therefore:
+> - **Widget host**: To retain a temporary widget as a normal widget, call [formHost.castToNormalForm](../reference/apis-form-kit/js-apis-app-form-formHost-sys.md#formhostcasttonormalform) before the process exits.
+> - **Widget provider**: Proactively clear temporary widgets that have not been deleted for a long time. If the host has converted a temporary widget into a normal one, update the corresponding record to prevent the converted widget information from being deleted by mistake.
+>
+> The system also limits the number of widgets that can be added. For details about the quotas, see [Constraints](formkit-overview.md#constraints).
 
 ## Using formHost APIs
 
@@ -115,7 +122,7 @@ struct formHostSample {
     descriptionId: 0,
     type: formInfo.FormType.eTS,
     jsComponentName: '',
-    // ...
+    colorMode: -1,
     isDefault: false,
     updateEnabled: false,
     formVisibleNotify: true,
@@ -201,7 +208,11 @@ struct formHostSample {
     // Delete all widgets.
     this.formIds.forEach((id) => {
       hilog.info(DOMAIN_NUMBER, TAG, 'delete all form');
-      formHost.deleteForm(id);
+      formHost.deleteForm(id).then(() => {
+        hilog.info(DOMAIN_NUMBER, TAG, `formHost deleteForm success, formid: ${id}`);
+      }).catch((error: BusinessError) => {
+        hilog.error(DOMAIN_NUMBER, TAG, `formHost deleteForm failed, code: formid: ${id}, ${error.code}, message: ${error.message}`);
+      });
     });
     // Unsubscribe from bundle installation events.
     try {
@@ -239,7 +250,7 @@ struct formHostSample {
     let formHapRecordMap: HashMap<string, formInfo.FormInfo[]> = new HashMap();
     this.formInfoRecord = [];
     formHost.getAllFormsInfo().then((formList: Array<formInfo.FormInfo>) => {
-      hilog.info(DOMAIN_NUMBER, TAG, 'getALlFormsInfo size:' + formList.length);
+      hilog.info(DOMAIN_NUMBER, TAG, 'getAllFormsInfo size:' + formList.length);
       for (let formItemInfo of formList) {
         let formBundleName = formItemInfo.bundleName;
         if (formHapRecordMap.hasKey(formBundleName)) {
@@ -285,13 +296,13 @@ struct formHostSample {
             this.getAllBundleFormsInfo();
           })
 
-        // After a user taps the button, a selection page is displayed. After the user taps OK, the selected widget of the default size is added.
+        // Tap the button to open the selection UI, and display the selected card through FormComponent after selection.
         // Replace $r('app.string.selectAddForm') with the actual resource file. In this example, the value of the resource file is "Add widget".
         Button($r('app.string.selectAddForm'))
           .enabled(this.showFormPicker)
           .onClick(() => {
             hilog.info(DOMAIN_NUMBER, TAG, 'TextPickerDialog: show()');
-            TextPickerDialog.show({
+            this.getUIContext().showTextPickerDialog({
               range: this.formInfoRecord,
               selected: this.pickDialogIndex,
               canLoop: false,
@@ -352,7 +363,7 @@ struct formHostSample {
           .borderRadius(10)
           .borderWidth(1)
           .onAcquired((form: FormCallbackInfo) => {
-            hilog.info(DOMAIN_NUMBER, TAG, `onAcquired: ${JSON.stringify(form)}`);
+            hilog.info(DOMAIN_NUMBER, TAG, `onAcquired: ${form.id}`);
             this.selectFormId = form.id.toString();
             this.formIds.add(this.selectFormId);
           })
@@ -360,7 +371,7 @@ struct formHostSample {
             hilog.info(DOMAIN_NUMBER, TAG, `onRouter`);
           })
           .onError((error) => {
-            hilog.error(DOMAIN_NUMBER, TAG, `onError: ${JSON.stringify(error)}`);
+            hilog.error(DOMAIN_NUMBER, TAG, `onError: code: ${error.errcode}, message: ${error.msg}`);
             this.showForm = false;
           })
           .onUninstall((info: FormCallbackInfo) => {
@@ -514,3 +525,8 @@ struct formHostSample {
 
 ![screenshot](./figures/widget-host-development-guide-2.jpeg)
 
+## Samples
+
+For widget host development, the following sample is available:
+
+- [FormHost (Stage) (API12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Form/FormHost)

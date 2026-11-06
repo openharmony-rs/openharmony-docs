@@ -1,19 +1,20 @@
 # Interface (AudioStreamManager)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=24d41a0bca6541c58a989fa09a384d3cf0eeb920 translatedAt=2026-11-03T03:39:46.439Z pushedAt=2026-11-04T03:11:46.927Z nl=1 -->
 
-This interface implements audio stream management.
+AudioStreamManager is the audio stream management module in the audio system. This module provides audio stream lifecycle management capabilities, including information query of audio renderers and capturers, state listening, and Sound Effect Mode management. When developers need to track audio stream state changes in real time to optimize the user experience of audio applications, they can use the APIs of this module to perform related operations.
 
 Before calling any API in AudioStreamManager, you must use [getStreamManager](arkts-apis-audio-AudioManager.md#getstreammanager9) to obtain an AudioStreamManager instance.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The initial APIs of this interface are supported since API version 9.
+> - The initial APIs of this Interface are supported since API version 9.
 
 ## Modules to Import
 
@@ -37,7 +38,7 @@ Obtains the information about this audio renderer. This API uses an asynchronous
 
 | Name    | Type                                | Mandatory    | Description                        |
 | -------- | ----------------------------------- | -------- | --------------------------- |
-| callback | AsyncCallback<[AudioRendererChangeInfoArray](arkts-apis-audio-t.md#audiorendererchangeinfoarray9)> | Yes    | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the audio renderer information obtained; otherwise, **err** is an error object.|
+| callback | AsyncCallback<[AudioRendererChangeInfoArray](arkts-apis-audio-t.md#audiorendererchangeinfoarray9)> | Yes | Callback function. If the operation of getting the current audio renderer information succeeds, err is undefined and data is the current audio renderer information; otherwise, err is an error object. |
 
 **Example**
 
@@ -46,10 +47,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioStreamManager.getCurrentAudioRendererInfoArray((err: BusinessError, audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
   if (err) {
-    console.error(`Failed to get current audio renderer info array. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`Succeeded in getting current audio renderer info array, AudioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}.`);
+    console.error(`Failed to obtain current audio renderer info array. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info(`Succeeded in obtaining current audio renderer info array, audioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}.`);
 });
 ```
 
@@ -77,9 +78,9 @@ Obtains the information about this audio renderer. This API uses a promise to re
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioStreamManager.getCurrentAudioRendererInfoArray().then((audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
-  console.info(`Succeeded in getting current audio renderer info array, AudioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}.`);
+  console.info(`Succeeded in obtaining current audio renderer info array, audioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}.`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get current audio renderer info array. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to obtain current audio renderer info array. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 ## getCurrentAudioRendererInfoArraySync<sup>10+</sup>
@@ -107,10 +108,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray = audioStreamManager.getCurrentAudioRendererInfoArraySync();
-  console.info(`Succeeded in getting current audio renderer info array, AudioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}.`);
+  console.info(`Succeeded in obtaining current audio renderer info array, audioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get current audio renderer info array. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain current audio renderer info array. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -130,7 +131,7 @@ Obtains the information about this audio capturer. This API uses an asynchronous
 
 | Name       | Type                                | Mandatory     | Description                                                     |
 | ---------- | ----------------------------------- | --------- | -------------------------------------------------------- |
-| callback   | AsyncCallback<[AudioCapturerChangeInfoArray](arkts-apis-audio-t.md#audiocapturerchangeinfoarray9)> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the audio capturer information obtained; otherwise, **err** is an error object.|
+| callback   | AsyncCallback<[AudioCapturerChangeInfoArray](arkts-apis-audio-t.md#audiocapturerchangeinfoarray9)> | Yes    | Callback function. When the current audio capturer information is obtained successfully, err is undefined and data is the current audio capturer information; otherwise, it is an error object. |
 
 **Example**
 
@@ -139,10 +140,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioStreamManager.getCurrentAudioCapturerInfoArray((err: BusinessError, audioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) => {
   if (err) {
-    console.error(`Failed to get current audio capturer info array. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`Succeeded in getting current audio capturer info array, AudioCapturerChangeInfoArray: ${JSON.stringify(audioCapturerChangeInfoArray)}.`);
+    console.error(`Failed to obtain current audio capturer info array. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info(`Succeeded in obtaining current audio capturer info array, audioCapturerChangeInfoArray: ${JSON.stringify(audioCapturerChangeInfoArray)}.`);
 });
 ```
 
@@ -170,9 +171,9 @@ Obtains the information about this audio capturer. This API uses a promise to re
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioStreamManager.getCurrentAudioCapturerInfoArray().then((audioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) => {
-  console.info(`Succeeded in getting current audio capturer info array, AudioCapturerChangeInfoArray: ${JSON.stringify(audioCapturerChangeInfoArray)}.`);
+  console.info(`Succeeded in obtaining current audio capturer info array, audioCapturerChangeInfoArray: ${JSON.stringify(audioCapturerChangeInfoArray)}.`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get current audio capturer info array. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to obtain current audio capturer info array. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -201,10 +202,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let audioCapturerChangeInfoArray = audioStreamManager.getCurrentAudioCapturerInfoArraySync();
-  console.info(`Succeeded in getting current audio capturer info array, AudioCapturerChangeInfoArray: ${JSON.stringify(audioCapturerChangeInfoArray)}.`);
+  console.info(`Succeeded in obtaining current audio capturer info array, audioCapturerChangeInfoArray: ${JSON.stringify(audioCapturerChangeInfoArray)}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get current audio capturer info array. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain current audio capturer info array. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -239,8 +240,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-audioStreamManager.on('audioRendererChange',  (audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
-  console.info(`Succeeded in using on function, AudioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}.`);
+audioStreamManager.on('audioRendererChange', (audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
+  console.info(`Audio renderer changed, audioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}.`);
 });
 ```
 
@@ -248,7 +249,7 @@ audioStreamManager.on('audioRendererChange',  (audioRendererChangeInfoArray: aud
 
 off(type: 'audioRendererChange', callback?: Callback&lt;AudioRendererChangeInfoArray&gt;): void
 
-Unsubscribes from the audio renderer change event. This API uses an asynchronous callback to return the result.
+Unsubscribes from the audio renderer change event.
 
 > **NOTE**
 >
@@ -260,8 +261,8 @@ Unsubscribes from the audio renderer change event. This API uses an asynchronous
 
 | Name    | Type    | Mandatory| Description             |
 | -------- | ------- |----| ---------------- |
-| type     | string  | Yes | Event type. The event **'audioRendererChange'** is triggered when the audio playback stream status or device is changed.|
-| callback<sup>18+</sup> | Callback<[AudioRendererChangeInfoArray](arkts-apis-audio-t.md#audiorendererchangeinfoarray9)> | No |  Callback used to return the audio renderer information.|
+| type     | string  | Yes  | Event callback type. The supported event is 'audioRendererChange'. |
+| callback<sup>18+</sup> | Callback<[AudioRendererChangeInfoArray](arkts-apis-audio-t.md#audiorendererchangeinfoarray9)> | No  |  Callback for the 'audioRendererChange' event. If a callback is passed in, only the listener bound to this callback is canceled, and it must be the same callback bound in [on('audioRendererChange')](#onaudiorendererchange9); if no callback is passed in, all listeners subscribed to this event type are canceled. |
 
 **Error codes**
 
@@ -277,7 +278,7 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
 // When there are multiple listeners for this event, you can use audioStreamManager.off('audioRendererChange'); to unregister all of them.
 let audioRendererChangeCallback = (audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
-  console.info(`Succeeded in using on or off function, AudioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}.`);
+  console.info(`Audio renderer changed, audioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}.`);
 };
 
 audioStreamManager.on('audioRendererChange', audioRendererChangeCallback);
@@ -316,8 +317,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-audioStreamManager.on('audioCapturerChange', (audioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) =>  {
-  console.info(`Succeeded in using on function, AudioCapturerChangeInfoArray: ${JSON.stringify(audioCapturerChangeInfoArray)}.`);
+audioStreamManager.on('audioCapturerChange', (audioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) => {
+  console.info(`Audio capturer changed, audioCapturerChangeInfoArray: ${JSON.stringify(audioCapturerChangeInfoArray)}.`);
 });
 ```
 
@@ -325,7 +326,7 @@ audioStreamManager.on('audioCapturerChange', (audioCapturerChangeInfoArray: audi
 
 off(type: 'audioCapturerChange', callback?: Callback&lt;AudioCapturerChangeInfoArray&gt;): void
 
-Unsubscribes from the audio capturer change event. This API uses an asynchronous callback to return the result.
+Unsubscribes from the audio capturer change event.
 
 > **NOTE**
 >
@@ -337,8 +338,8 @@ Unsubscribes from the audio capturer change event. This API uses an asynchronous
 
 | Name      | Type    | Mandatory| Description                                                         |
 | -------- | -------- | --- | ------------------------------------------------------------- |
-| type     | string   |Yes  | Event type. The event **'audioCapturerChange'** is triggered when the audio capturer is changed.|
-| callback<sup>18+</sup> | Callback<[AudioCapturerChangeInfoArray](arkts-apis-audio-t.md#audiocapturerchangeinfoarray9)> | No| Callback used to return the audio capturer information.|
+| type     | string   |Yes   | Event callback type. The supported event is 'audioCapturerChange'. |
+| callback<sup>18+</sup> | Callback<[AudioCapturerChangeInfoArray](arkts-apis-audio-t.md#audiocapturerchangeinfoarray9)> | No | Callback function. When a callback function is passed in, only the listener event corresponding to this callback is unsubscribed, and the same callback function must be bound as in [on('audioCapturerChange')](#onaudiocapturerchange9). When no parameter is passed in, all subscribed listener events of this event type are unsubscribed. |
 
 **Error codes**
 
@@ -353,8 +354,8 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 ```ts
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
 // When there are multiple listeners for this event, you can use audioStreamManager.off('audioCapturerChange'); to unregister all of them.
-let audioCapturerChangeCallback = (audioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) =>  {
-  console.info(`Succeeded in using on or off function, AudioCapturerChangeInfoArray: ${JSON.stringify(audioCapturerChangeInfoArray)}.`);
+let audioCapturerChangeCallback = (audioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) => {
+  console.info(`Audio capturer changed, audioCapturerChangeInfoArray: ${JSON.stringify(audioCapturerChangeInfoArray)}.`);
 };
 
 audioStreamManager.on('audioCapturerChange', audioCapturerChangeCallback);
@@ -369,7 +370,8 @@ isActive(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): v
 Checks whether a stream is active. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
-> This API is supported since API version 9 and deprecated since API version 20. You are advised to use [isStreamActive](arkts-apis-audio-AudioStreamManager.md#isstreamactive20) instead.
+>
+> Supported since API version 9 and deprecated since API version 20. It is recommended to use [isStreamActive](#isstreamactive20) instead. Note that differences exist between the input parameters of the alternative interface and the original interface. For example, [StreamUsage](arkts-apis-audio-e.md#streamusage) provides more granular types such as `STREAM_USAGE_MUSIC`, `STREAM_USAGE_MOVIE`, `STREAM_USAGE_AUDIOBOOK`, and `STREAM_USAGE_GAME`, whereas in [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) these types are unified into the `MEDIA` type. For the specific mapping relationship, see the correspondence between common playback stream types and volume types in [Volume Control](../../media/audio/using-right-streamusage-for-playback.md#volume-control). During migration, select the corresponding StreamUsage value based on the actual business scenario.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
@@ -386,11 +388,11 @@ Checks whether a stream is active. This API uses an asynchronous callback to ret
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioStreamManager.isActive(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: boolean) => {
-if (err) {
-  console.error(`Failed to obtain the active status of the stream. ${err}`);
-  return;
-}
-  console.info(`Callback invoked to indicate that the active status of the stream is obtained ${value}.`);
+  if (err) {
+    console.error(`Failed to check whether the stream is active. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in checking whether the stream is active, isActive: ${value}.`);
 });
 ```
 
@@ -401,7 +403,8 @@ isActive(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 Checks whether a stream is active. This API uses a promise to return the result.
 
 > **NOTE**
-> This API is supported since API version 9 and deprecated since API version 20. You are advised to use [isStreamActive](arkts-apis-audio-AudioStreamManager.md#isstreamactive20) instead.
+>
+> Supported since API version 9 and deprecated since API version 20. It is recommended to use [isStreamActive](#isstreamactive20) instead. Note that differences exist between the input parameters of the alternative interface and the original interface. For example, [StreamUsage](arkts-apis-audio-e.md#streamusage) provides more granular types such as `STREAM_USAGE_MUSIC`, `STREAM_USAGE_MOVIE`, `STREAM_USAGE_AUDIOBOOK`, and `STREAM_USAGE_GAME`, whereas in [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) these types are unified into the `MEDIA` type. For the specific mapping relationship, see the correspondence between common playback stream types and volume types in [Volume Control](../../media/audio/using-right-streamusage-for-playback.md#volume-control). During migration, select the corresponding StreamUsage value based on the actual business scenario.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
@@ -420,8 +423,12 @@ Checks whether a stream is active. This API uses a promise to return the result.
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioStreamManager.isActive(audio.AudioVolumeType.MEDIA).then((value: boolean) => {
-  console.info(`Promise returned to indicate that the active status of the stream is obtained ${value}.`);
+  console.info(`Succeeded in checking whether the stream is active, isActive: ${value}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to check whether the stream is active. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -432,7 +439,8 @@ isActiveSync(volumeType: AudioVolumeType): boolean
 Checks whether a stream is active. This API returns the result synchronously.
 
 > **NOTE**
-> This API is supported since API version 10 and deprecated since API version 20. You are advised to use [isStreamActive](arkts-apis-audio-AudioStreamManager.md#isstreamactive20) instead.
+>
+> Supported since API version 10 and deprecated since API version 20. It is recommended to use [isStreamActive](#isstreamactive20) instead. Note that differences exist between the input parameters of the alternative interface and the original interface. For example, [StreamUsage](arkts-apis-audio-e.md#streamusage) provides more granular types such as `STREAM_USAGE_MUSIC`, `STREAM_USAGE_MOVIE`, `STREAM_USAGE_AUDIOBOOK`, and `STREAM_USAGE_GAME`, whereas in [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) these types are unified into the `MEDIA` type. For the specific mapping relationship, see the correspondence between common playback stream types and volume types in [Volume Control](../../media/audio/using-right-streamusage-for-playback.md#volume-control). During migration, select the corresponding StreamUsage value based on the actual business scenario.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
@@ -464,10 +472,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let value: boolean = audioStreamManager.isActiveSync(audio.AudioVolumeType.MEDIA);
-  console.info(`Indicate that the active status of the stream is obtained ${value}.`);
+  console.info(`Succeeded in checking whether the stream is active, isActive: ${value}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to obtain the active status of the stream ${error}.`);
+  console.error(`Failed to check whether the stream is active. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -483,7 +491,7 @@ Checks whether a stream is active. This API returns the result synchronously.
 
 | Name    | Type                               | Mandatory| Description        |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| streamUsage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | Yes  | Audio stream usage.|
+| streamUsage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | Yes | Audio stream usage. |
 
 **Return value**
 
@@ -506,10 +514,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let isStreamActive = audioStreamManager.isStreamActive(audio.StreamUsage.STREAM_USAGE_MUSIC);
-  console.info(`Succeeded in using isStreamActive function, IsStreamActive: ${isStreamActive}.`);
+  console.info(`Succeeded in checking whether the stream is active, isStreamActive: ${isStreamActive}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to use isStreamActive function. code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to check whether the stream is active. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -525,8 +533,8 @@ Obtains information about the audio effect mode in use. This API uses an asynchr
 
 | Name   | Type                               | Mandatory    | Description                        |
 | -------- | ----------------------------------- | -------- | --------------------------- |
-| usage    | [StreamUsage](arkts-apis-audio-e.md#streamusage)                                    | Yes    |  Audio stream usage.               |
-| callback | AsyncCallback<[AudioEffectInfoArray](arkts-apis-audio-AudioStreamManager.md#getaudioeffectinfoarray10)> | Yes    | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the information about the audio effect mode obtained; otherwise, **err** is an error object.|
+| usage    | [StreamUsage](arkts-apis-audio-e.md#streamusage)                                    | Yes     |  Audio stream type.                |
+| callback | AsyncCallback<[AudioEffectInfoArray](arkts-apis-audio-t.md#audioeffectinfoarray10)> | Yes     | Callback function. When the current sound effect mode information is obtained successfully, err is undefined and data is the current sound effect mode information; otherwise, it is an error object.|
 
 **Error codes**
 
@@ -544,10 +552,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_MUSIC, (err: BusinessError, audioEffectInfoArray: audio.AudioEffectInfoArray) => {
   if (err) {
-    console.error(`Failed to get audio effect info array. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`Succeeded in getting effect info array, AudioEffectInfoArray: ${JSON.stringify(audioEffectInfoArray)}.`);
+    console.error(`Failed to obtain the audio effect info array. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info(`Succeeded in obtaining the audio effect info array, audioEffectInfoArray: ${JSON.stringify(audioEffectInfoArray)}.`);
 });
 ```
 
@@ -563,13 +571,13 @@ Obtains information about the audio effect mode in use. This API uses a promise 
 
 | Name   | Type                               | Mandatory    | Description                        |
 | -------- | ----------------------------------- | -------- | --------------------------- |
-| usage    | [StreamUsage](arkts-apis-audio-e.md#streamusage)         | Yes    |  Audio stream usage.              |
+| usage    | [StreamUsage](arkts-apis-audio-e.md#streamusage)         | Yes     |  Audio stream type.               |
 
 **Return value**
 
 | Type                                                                     | Description                                   |
 | --------------------------------------------------------------------------| --------------------------------------- |
-| Promise<[AudioEffectInfoArray](arkts-apis-audio-AudioStreamManager.md#getaudioeffectinfoarray10)>                  | Promise used to return the information about the audio effect mode obtained.     |
+| Promise<[AudioEffectInfoArray](arkts-apis-audio-t.md#audioeffectinfoarray10)>                  | Promise used to return the result, which contains information about the current audio effect mode.      |
 
 **Error codes**
 
@@ -586,9 +594,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_MUSIC).then((audioEffectInfoArray: audio.AudioEffectInfoArray) => {
-  console.info(`Succeeded in getting effect info array, AudioEffectInfoArray: ${JSON.stringify(audioEffectInfoArray)}.`);
+  console.info(`Succeeded in obtaining the audio effect info array, audioEffectInfoArray: ${JSON.stringify(audioEffectInfoArray)}.`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get audio effect info array. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to obtain the audio effect info array. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -604,13 +612,13 @@ Obtains information about the audio effect mode in use. This API returns the res
 
 | Name   | Type                               | Mandatory    | Description                        |
 | -------- | ----------------------------------- | -------- | --------------------------- |
-| usage    | [StreamUsage](arkts-apis-audio-e.md#streamusage)         | Yes    |  Audio stream usage.              |
+| usage    | [StreamUsage](arkts-apis-audio-e.md#streamusage)         | Yes     |  Audio stream usage.               |
 
 **Return value**
 
 | Type                                                                     | Description                                   |
 | --------------------------------------------------------------------------| --------------------------------------- |
-| [AudioEffectInfoArray](arkts-apis-audio-AudioStreamManager.md#getaudioeffectinfoarray10)                  | Information about the audio effect mode.     |
+| [AudioEffectInfoArray](arkts-apis-audio-t.md#audioeffectinfoarray10)                  | Information about the current audio effect mode.      |
 
 **Error codes**
 
@@ -628,10 +636,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let audioEffectInfoArray = audioStreamManager.getAudioEffectInfoArraySync(audio.StreamUsage.STREAM_USAGE_MUSIC);
-  console.info(`Succeeded in getting effect info array, AudioEffectInfoArray: ${JSON.stringify(audioEffectInfoArray)}.`);
+  console.info(`Succeeded in obtaining the audio effect info array, audioEffectInfoArray: ${JSON.stringify(audioEffectInfoArray)}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get audio effect info array. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain the audio effect info array. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -639,7 +647,7 @@ try {
 
 isAcousticEchoCancelerSupported(sourceType: SourceType): boolean
 
-Checks whether the specified audio source type supports echo cancellation.
+Checks whether the specified source type supports acoustic echo cancellation.
 
 **System capability**: SystemCapability.Multimedia.Audio.Capturer
 
@@ -670,10 +678,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let isAcousticEchoCancelerSupported = audioStreamManager.isAcousticEchoCancelerSupported(audio.SourceType.SOURCE_TYPE_LIVE);
-  console.info(`Succeeded in using isAcousticEchoCancelerSupported function, IsAcousticEchoCancelerSupported: ${isAcousticEchoCancelerSupported}.`);
+  console.info(`Succeeded in checking whether acoustic echo canceler is supported, isAcousticEchoCancelerSupported: ${isAcousticEchoCancelerSupported}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to use isAcousticEchoCancelerSupported function. code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to check whether acoustic echo canceler is supported. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -712,10 +720,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let isAudioLoopbackSupported = audioStreamManager.isAudioLoopbackSupported(audio.AudioLoopbackMode.HARDWARE);
-  console.info(`Succeeded in using isAudioLoopbackSupported function, IsAudioLoopbackSupported: ${isAudioLoopbackSupported}.`);
+  console.info(`Succeeded in checking whether audio loopback is supported, isAudioLoopbackSupported: ${isAudioLoopbackSupported}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to use isAudioLoopbackSupported function. code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to check whether audio loopback is supported. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -771,15 +779,15 @@ let audioCapturerOptions: audio.AudioCapturerOptions = {
 audio.createAudioCapturer(audioCapturerOptions, (err: BusinessError, audioCapturer: audio.AudioCapturer) => {
   if (err) {
     console.error(`Failed to create AudioCapturer. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('Succeeded in creating AudioCapturer.');
-    try {
-      let isRecordingAvailable = audioStreamManager.isRecordingAvailable(audioCapturerInfo);
-      console.info(`Succeeded in using isRecordingAvailable function, IsRecordingAvailable: ${isRecordingAvailable}.`);
-    } catch (err) {
-      let error = err as BusinessError;
-      console.error(`Failed to use isRecordingAvailable function. code: ${error.code}, message: ${error.message}`);
-    }
+    return;
+  }
+  console.info('Succeeded in creating AudioCapturer.');
+  try {
+    let isRecordingAvailable = audioStreamManager.isRecordingAvailable(audioCapturerInfo);
+    console.info(`Succeeded in checking whether recording is available, isRecordingAvailable: ${isRecordingAvailable}.`);
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to check whether recording is available. Code: ${error.code}, message: ${error.message}`);
   }
 });
 ```
@@ -819,9 +827,244 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let isSupport = audioStreamManager.isIntelligentNoiseReductionEnabledForCurrentDevice(audio.SourceType.SOURCE_TYPE_LIVE);
-  console.info(`SourceType: ${audio.SourceType.SOURCE_TYPE_LIVE} intelligent noise reduction enabled is: ${isSupport}`);
+  console.info(`Succeeded in checking whether intelligent noise reduction is enabled for the current device, isIntelligentNoiseReductionEnabled: ${isSupport}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`isIntelligentNoiseReductionEnabledForCurrentDevice ERROR: ${error}`);
+  console.error(`Failed to check whether intelligent noise reduction is enabled for the current device. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## isFastPlaybackSupported
+
+isFastPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean
+
+Checks whether low-latency playback is supported for the specified audio stream information and usage scenario.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+**Parameters**
+
+| Name   | Type                               | Mandatory    | Description                        |
+| -------- | ----------------------------------- | -------- | --------------------------- |
+| streamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | Yes | Audio stream information, which describes the basic audio format. |
+| usage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | Yes | Audio stream usage scenario, which determines the audio device and path type selection. |
+
+**Return value**
+
+| Type         | Description                                   |
+| ------------ | --------------------------------------- |
+|  boolean     | Whether low-latency playback is supported. The value **true** indicates yes and the value **false** indicates no. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let streamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
+  channelLayout: audio.AudioChannelLayout.CH_LAYOUT_STEREO
+};
+
+try {
+  let isSupported = audioStreamManager.isFastPlaybackSupported(streamInfo, audio.StreamUsage.STREAM_USAGE_MUSIC);
+  console.info(`Succeeded in checking whether fast playback is supported, isFastPlaybackSupported: ${isSupported}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to check whether fast playback is supported. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## isOffloadPlaybackSupported
+
+isOffloadPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean
+
+Checks whether offload playback is supported for the specified audio stream information and usage scenario.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+**Parameters**
+
+| Name   | Type                               | Mandatory    | Description                        |
+| -------- | ----------------------------------- | -------- | --------------------------- |
+| streamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | Yes | Audio stream information, which describes the basic audio format. |
+| usage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | Yes | Audio stream usage scenario, which determines the audio device and path type selection. |
+
+**Return value**
+
+| Type         | Description                                   |
+| ------------ | --------------------------------------- |
+|  boolean     | Whether offload playback is supported. The value **true** indicates yes and the value **false** indicates no. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let streamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
+  channelLayout: audio.AudioChannelLayout.CH_LAYOUT_STEREO
+};
+
+try {
+  let isSupported = audioStreamManager.isOffloadPlaybackSupported(streamInfo, audio.StreamUsage.STREAM_USAGE_MUSIC);
+  console.info(`Succeeded in checking whether offload playback is supported, isOffloadPlaybackSupported: ${isSupported}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to check whether offload playback is supported. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## isDirectPlaybackSupported
+
+isDirectPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean
+
+Checks whether direct playback is supported for the specified audio stream information and usage scenario.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+**Parameters**
+
+| Name   | Type                               | Mandatory    | Description                        |
+| -------- | ----------------------------------- | -------- | --------------------------- |
+| streamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | Yes | Audio stream information, which describes the basic audio format. |
+| usage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | Yes | Audio stream usage scenario, which determines the audio device and path type selection. |
+
+**Return value**
+
+| Type         | Description                                   |
+| ------------ | --------------------------------------- |
+|  boolean     | Whether direct playback is supported. The value **true** indicates yes and the value **false** indicates no. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let streamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
+  channelLayout: audio.AudioChannelLayout.CH_LAYOUT_STEREO
+};
+
+try {
+  let isSupported = audioStreamManager.isDirectPlaybackSupported(streamInfo, audio.StreamUsage.STREAM_USAGE_MUSIC);
+  console.info(`Succeeded in checking whether direct playback is supported, isDirectPlaybackSupported: ${isSupported}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to check whether direct playback is supported. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## isFastRecordingSupported
+
+isFastRecordingSupported(streamInfo: AudioStreamInfo, source: SourceType): boolean
+
+Checks whether low-latency recording is supported for the specified audio stream information and source type.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+**Parameters**
+
+| Name   | Type                               | Mandatory    | Description                        |
+| -------- | ----------------------------------- | -------- | --------------------------- |
+| streamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | Yes | Audio stream information, which describes the basic audio format. |
+| source | [SourceType](arkts-apis-audio-e.md#sourcetype8) | Yes | Source type, which determines the audio device and path type selection. |
+
+**Return value**
+
+| Type         | Description                                   |
+| ------------ | --------------------------------------- |
+|  boolean     | Whether low-latency recording is supported. The value **true** indicates yes and the value **false** indicates no. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let streamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
+  channelLayout: audio.AudioChannelLayout.CH_LAYOUT_STEREO
+};
+
+try {
+  let isSupported = audioStreamManager.isFastRecordingSupported(streamInfo, audio.SourceType.SOURCE_TYPE_MIC);
+  console.info(`Succeeded in checking whether fast recording is supported, isFastRecordingSupported: ${isSupported}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to check whether fast recording is supported. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## isMultichannelPlaybackSupported
+
+isMultichannelPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean
+
+Checks whether multichannel playback is supported for the specified audio stream information and usage scenario.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+**Parameters**
+
+| Name   | Type                               | Mandatory    | Description                        |
+| -------- | ----------------------------------- | -------- | --------------------------- |
+| streamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | Yes | Audio stream information, which describes the basic audio format. |
+| usage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | Yes | Audio stream usage scenario, which determines the audio device and path type selection. |
+
+**Return value**
+
+| Type         | Description                                   |
+| ------------ | --------------------------------------- |
+|  boolean     | Whether multichannel playback is supported. The value **true** indicates yes and the value **false** indicates no. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let streamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_3,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
+  channelLayout: audio.AudioChannelLayout.CH_LAYOUT_2POINT1
+};
+
+try {
+  let isSupported = audioStreamManager.isMultichannelPlaybackSupported(streamInfo, audio.StreamUsage.STREAM_USAGE_MUSIC);
+  console.info(`Succeeded in checking whether multichannel playback is supported, isMultichannelPlaybackSupported: ${isSupported}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to check whether multichannel playback is supported. Code: ${error.code}, message: ${error.message}`);
 }
 ```

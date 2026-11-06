@@ -1,4 +1,4 @@
-#  @ohos.multimodalInput.shortKey (系统预置全局快捷键)(系统接口)
+# @ohos.multimodalInput.shortKey (系统预置全局快捷键)(系统接口)
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
@@ -16,13 +16,13 @@
 > - 本模块接口为系统接口。
 
 
-##  导入模块
+## 导入模块
 
 ```js
-import { shortKey } from '@kit.InputKit';
+import { shortKey, FingerprintEvent } from '@kit.InputKit';
 ```
 
-##  shortKey.setKeyDownDuration
+## shortKey.setKeyDownDuration
 
 setKeyDownDuration(businessKey: string, delay: number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -44,7 +44,7 @@ setKeyDownDuration(businessKey: string, delay: number, callback: AsyncCallback&l
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -62,7 +62,7 @@ struct Index {
         .onClick(() => {
           try {
             // 设置延迟拉起时间500ms
-            shortKey.setKeyDownDuration("businessId", 500, (error: BusinessError) => {
+            shortKey.setKeyDownDuration('businessId', 500, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
@@ -72,7 +72,7 @@ struct Index {
           } catch (error) {
             console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
-        })
+        });
     }
   }
 }
@@ -105,7 +105,7 @@ setKeyDownDuration(businessKey: string, delay: number): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -123,10 +123,10 @@ struct Index {
         .onClick(() => {
           try {
             // 设置延迟拉起时间500ms
-            shortKey.setKeyDownDuration("businessId", 500).then(() => {
+            shortKey.setKeyDownDuration('businessId', 500).then(() => {
               console.info(`Succeeded in setting key down duration.`);
             }).catch((error: BusinessError) => {
-              console.error(`Failed to set key down, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
             console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -141,7 +141,7 @@ struct Index {
 
 指纹手势事件类型的枚举。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 | 名称                 | 值          | 说明                |
 | ---------------------| ---------- | --------------------|
@@ -155,7 +155,7 @@ struct Index {
 
 指纹手势事件的类型和相对侧边指纹器件的偏移位置。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 | 名称      | 类型                                       |只读   | 可选  |说明                    |
 | --------  | ------------------------                  |-------|------ |--------               |

@@ -1,12 +1,14 @@
 # @ohos.graphics.scene (ArkGraphics 3D)
+
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=9bb5a62ecd61b6f45356eb97818a280b50c70dac translatedAt=2026-08-20T12:27:04.415Z pushedAt=2026-08-21T06:22:33.975Z -->
 
-The @ohos.graphics.scene module brings together APIs for 3D development, streamlining the process for you to export and use them.
+The @ohos.graphics.scene module organizes the APIs of 3D development-related modules together for developers to use.
 
 > **NOTE**
 >
@@ -20,24 +22,24 @@ The @ohos.graphics.scene module brings together APIs for 3D development, streaml
 
 ## SceneNode
 
-[SceneNode](js-apis-inner-scene-nodes.md): 3D scenes adopt a tree structure. You can change the 3D scene by operating the node properties and the node tree structure. The module provides the types and operation methods of scene nodes in 3D graphics.
+[SceneNode](js-apis-inner-scene-nodes.md): A 3D scene is organized in a tree structure. You can change the 3D scene by operating node properties and the node tree structure. This module provides the types and operation methods of scene resource nodes in ArkGraphics 3D.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 ## SceneType
 
-[SceneType](js-apis-inner-scene-types.md): provides the data types in 3D graphics, including vectors and quaternions.
+[SceneType](js-apis-inner-scene-types.md): This module provides the data types in ArkGraphics 3D, including vectors and quaternions.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 ## SceneResources
 
-[SceneResources](js-apis-inner-scene-resources.md): provides basic resource types, such as materials, images, and shaders, which are commonly used in 3D graphics.
+[SceneResources](js-apis-inner-scene-resources.md): This module provides the common basic resource types in ArkGraphics 3D, including materials, images, and shaders.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 ## ScenePostProcessSettings
 
-[ScenePostProcessSettings](js-apis-inner-scene-post-process-settings.md): provides image post-processing methods (for example, tone mapping) in 3D graphics.
+[ScenePostProcessSettings](js-apis-inner-scene-post-process-settings.md): This module provides image post-processing methods such as tone mapping in ArkGraphics 3D.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D

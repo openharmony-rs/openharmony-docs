@@ -1,9 +1,17 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍通过XComponent Native接口为自绘制内容申请独立绘制帧率并注册每帧回调，适用于自绘制UI框架等Native开发场景。"
+keywords: [XComponent, 自绘制, 每帧回调, 期望回调, 期望帧率]
+doctype: guide
+status: active
+---
+
 # 请求自绘制内容绘制帧率
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @wh_qwe-->
 <!--Designer: @wh_qwe-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
 
 对于基于[XComponent](../ui/napi-xcomponent-guidelines.md)进行Native开发的业务，可以请求独立的绘制帧率进行内容开发，如游戏、自绘制UI框架对接等场景。
@@ -12,9 +20,9 @@
 
 | 函数名称  | 说明     |
 |-----|--------|
-| OH_NativeXComponent_SetExpectedFrameRateRange (OH_NativeXComponent *component, OH_NativeXComponent_ExpectedRateRange *range) | 设置帧期望的帧率范围。 |
-| OH_NativeXComponent_RegisterOnFrameCallback (OH_NativeXComponent *component, OH_NativeXComponent_OnFrameCallback *callback) | 设置每帧回调函数，同时启动每帧回调。 |
-| OH_NativeXComponent_UnregisterOnFrameCallback (OH_NativeXComponent *component) | 取消注册的每帧回调函数，同时停止调用回调函数。 |
+| OH_NativeXComponent_SetExpectedFrameRateRange(OH_NativeXComponent* component, OH_NativeXComponent_ExpectedRateRange* range) | 设置期望的帧率范围。 |
+| OH_NativeXComponent_RegisterOnFrameCallback(OH_NativeXComponent* component, void (\*callback)(OH_NativeXComponent* component, uint64_t timestamp, uint64_t targetTimestamp)) | 设置每帧回调函数，同时启动每帧回调。 |
+| OH_NativeXComponent_UnregisterOnFrameCallback(OH_NativeXComponent* component) | 取消注册的每帧回调函数，同时停止调用回调函数。 |
 
 详细的接口说明请参考[OH_NativeXComponent Native XComponent](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent.md)。
 

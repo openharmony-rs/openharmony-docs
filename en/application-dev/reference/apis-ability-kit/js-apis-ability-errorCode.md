@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @dsz2025-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=39c91f6014aebaf032e76cba1dba0db7318cd7f0 translatedAt=2026-09-03T09:27:20.997Z pushedAt=2026-09-05T10:47:30.169Z -->
 
 The ErrorCode module defines the error codes that may be returned when an ability is started.
 

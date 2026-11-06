@@ -5,7 +5,7 @@
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-
+<!-- md-trans-meta sourceCommit=23afca2c42cd99af8c7c8ac352d24bb68d033a38 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=1 -->
 
 ## When to Use
 
@@ -15,9 +15,9 @@ The Unified Data Management Framework (UDMF) provides unified data channels and 
 
 ## Definition and Implementation of Unified Data Channels
 
-Unified data channels are used to write and read data across applications in various service scenarios. They can temporarily store unified data objects that need to be shared by applications and comply with unified data definitions, and provide the data objects for other applications to access. In addition, they can modify temporarily stored data, delete permissions, and manage lifecycles based on certain policies.
+Unified data channels are used to write and read data across applications in various service scenarios. They can temporarily store unified data objects that need to be shared by applications and comply with unified data definitions, and provide the data objects for other applications to access. In addition, they manage the modification permissions, deletion permissions, and lifecycles of temporarily stored data based on certain policies.
 
-The unified data channel is implemented by the system ability provided by UDMF. When an application (data provider) needs to share data, it calls the **insertData()** method to write the data to the UDMF data channel, and calls **updateData()** or **deleteData()** to update or delete the data saved by the application. The target application (data consumer) can access the data by the APIs provided by UDMF.
+The unified data channel is implemented by the system ability provided by UDMF. When an application (data provider) needs to share data, it calls the **insertData()** method to write the data to the UDMF data channel, and calls **updateData()** or **deleteData()** to update or delete the data saved by the application. The target application (data consumer) can access the data using the APIs provided by UDMF.
 
 Avoid using **unifiedDataChannel** APIs in multi-threaded calls.
 
@@ -37,9 +37,9 @@ The public data channel allows all applications to write data into it. When data
 
 ## Available APIs
 
-For details about the APIs, see [UDMF](../reference/apis-arkdata/capi-udmf-h.md).
+For details about the APIs, see [udmf.h](../reference/apis-arkdata/capi-udmf-h.md).
 
-| API                                                                                   | Description                                         | 
+| API                                                                                   | Description                                         |
 |-----------------------------------------------------------------------------------------|---------------------------------------------|
 | OH_UdsHyperlink* OH_UdsHyperlink_Create()                                           | Creates a pointer to an **OH_UdsHyperlink** instance.|
 | int OH_UdsHyperlink_SetDescription(OH_UdsHyperlink* pThis, const char* description) | Sets the description parameter in an **OH_UdsHyperlink** instance.|
@@ -47,7 +47,7 @@ For details about the APIs, see [UDMF](../reference/apis-arkdata/capi-udmf-h.md)
 | int OH_UdmfRecord_AddHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink) | Adds hyperlink data to an **OH_UdmfRecord** instance.            |
 | OH_UdmfData* OH_UdmfData_Create()                            | Creates a pointer to an **OH_UdmfData** instance.                |
 | int OH_UdmfData_AddRecord(OH_UdmfData* pThis, OH_UdmfRecord* record) | Adds an **OH_UdmfRecord** to an **OH_UdmfData** instance.     |
-| int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData *unifiedData, char *key, unsigned int keyLen)        | Sets an **OH_UdmfData** instance in the UDMF database.                         |
+| int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData* unifiedData, char* key, unsigned int keyLen)        | Writes an **OH_UdmfData** instance in the UDMF database.                          |
 | void OH_UdsHyperlink_Destroy(OH_UdsHyperlink* pThis)         | Destroys the pointer to an **OH_UdsHyperlink** instance.|
 | void OH_UdmfRecord_Destroy(OH_UdmfRecord* pThis)             | Destroys the pointer to an **OH_UdmfRecord** instance.                  |
 | void OH_UdmfData_Destroy(OH_UdmfData* pThis)                 | Destroys the pointer to an **OH_UdmfData** instance.                    |
@@ -107,7 +107,7 @@ To write the **OH_UdsHyperlink** data, perform the following steps:
 ``` C++
 int32_t SetHyperlinkData(OH_UdsHyperlink* hyperlink, OH_UdmfRecord* record, OH_UdmfData* data)
 {
-    // 2. Set the URL and description for the hyperlink.
+    // 2. Set the URL and description in the hyperlink.
     int ret = OH_UdsHyperlink_SetUrl(hyperlink, "www.demo.com");
     if (ret != Udmf_ErrCode::UDMF_E_OK) {
         OH_LOG_ERROR(LOG_APP, "Hyperlink set url error!");
@@ -135,7 +135,7 @@ int32_t SetHyperlinkData(OH_UdsHyperlink* hyperlink, OH_UdmfRecord* record, OH_U
 
 int32_t CreateDataTest()
 {
-    // 1. Create the UDS data struct, OH_UdmfRecord object, and OH_UdmfData object of the hyperlink.
+    // 1. Create the UDS data structure, OH_UdmfRecord object, and OH_UdmfData object for the hyperlink.
     OH_UdsHyperlink* hyperlink = OH_UdsHyperlink_Create();
     OH_UdmfRecord* record = OH_UdmfRecord_Create();
     OH_UdmfData* data = OH_UdmfData_Create();
@@ -147,7 +147,7 @@ int32_t CreateDataTest()
         OH_UdmfData_Destroy(data);
         return ret;
     }
-    // Construct an OH_UdmfOptions.
+    // 5. Construct the data operation options.
     OH_UdmfOptions* options = OH_UdmfOptions_Create();
     ret = OH_UdmfOptions_SetIntention(options, Udmf_Intention::UDMF_INTENTION_DATA_HUB);
     if (ret != Udmf_ErrCode::UDMF_E_OK) {
@@ -201,6 +201,7 @@ int32_t ProcessHyperlinks(OH_UdmfRecord* record, unsigned int recordTypeIdCount,
             int32_t ret = OH_UdmfRecord_GetHyperlink(record, hyperlink);
             if (ret != Udmf_ErrCode::UDMF_E_OK) {
                 OH_LOG_ERROR(LOG_APP, "Fail get hyperlink from record!");
+                OH_UdsHyperlink_Destroy(hyperlink);
                 return ret;
             }
             // Read information in OH_UdsHyperlink.
@@ -276,7 +277,7 @@ int32_t GetDataTest()
     ret = HandleUdmfHyperlinkData(readData, dataSize, dataArray);
     if (ret != Udmf_ErrCode::UDMF_E_OK) {
         OH_LOG_ERROR(LOG_APP, "Get Data error!");
-        OH_UdmfOptions_Destroy(options);
+        OH_Udmf_DestroyDataArray(dataArray, dataSize);
         return ret;
     }
     // 5. Destroy all the pointers created.
@@ -433,7 +434,7 @@ int32_t ProcessDataElement(OH_UdmfData* data)
 
 int32_t ProcessHyperlinkDataFromArray(OH_UdmfData* readData, unsigned int dataSize, OH_UdmfData** dataArray)
 {
-    for (unsigned int i = 0; i < dataSize - 1; i++) {
+    for (unsigned int i = 0; i < dataSize; i++) {
         OH_UdmfData* data = OH_UDMF_GetDataElementAt(dataArray, i);
         // 3. Check whether OH_UdmfData has the required data type.
         if (!OH_UdmfData_HasType(data, UDMF_META_HYPERLINK)) {
@@ -478,6 +479,7 @@ int32_t DeleteDataTest()
     OH_UdmfData** dataArray = &readData;
     ret = ProcessHyperlinkDataFromArray(readData, dataSize, dataArray);
     if (ret != UDMF_E_OK) {
+        OH_Udmf_DestroyDataArray(dataArray, dataSize);
         OH_LOG_ERROR(LOG_APP, "Process hyperlink data error!");
         return ret;
     }
@@ -564,6 +566,7 @@ int32_t ProviderSetDataTest()
     OH_UdmfRecord_Destroy(record);
     OH_UdmfData_Destroy(data);
     OH_UdmfOptions_Destroy(options);
+    OH_UdmfRecordProvider_Destroy(provider);
     return UDMF_E_OK;
 }
 ```

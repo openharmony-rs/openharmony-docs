@@ -6,8 +6,9 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=99672258e158c110c5ee74a166a44dafda8d8dee translatedAt=2026-10-30T03:41:24.838Z pushedAt=2026-10-30T07:22:14.525Z nl=1 -->
 
-From API version 21, you can generate secure random number with hardware entropy sources.
+Starting from API version 21, you can choose to use a hardware entropy source to generate secure random numbers.
 
 Random numbers are used to generate temporary session keys and asymmetric encryption algorithm keys. In encryption and decryption, a secure random number generator must feature randomness, unrepeatability, and unpredictability.
 
@@ -22,13 +23,13 @@ You can call APIs to:
 
 - Enable the hardware entropy source.
 
-- Generate a series of random sequences based on a seed.
+- Specify a random seed to generate a series of random sequences.
 
 It will be helpful if you have basic knowledge of encryption and decryption and understand the following basic concepts:
 
 - **Internal state**
 
-  A value in the random number generator memory. The same internal state produces a random number of the same sequence.
+  A value in the random number generator memory. When the internal state is the same, the random number generator will generate a fixed sequence of random numbers.
 
 - **Random seed**
 
@@ -40,9 +41,14 @@ It will be helpful if you have basic knowledge of encryption and decryption and 
 
 After the hardware entropy source is set, use the **RAND_priv_bytes** API of OpenSSL to generate secure random numbers.
 
-| Algorithm| Length (Byte)|
+| Algorithm | Length (Byte)|
 | -------- | -------- |
 | CTR_DRBG | [1, INT_MAX] |
+
+## Linking Related Dynamic Libraries in the CMake Script
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
 
 ## How to Develop
 
@@ -93,7 +99,7 @@ OH_Crypto_ErrCode doTestHardwareRandomNumber()
 
     // Generate a random number of the given length.
     Crypto_DataBlob out = {0};
-    uint32_t randomLength = 24; // Generate a 24-byte random number.
+    int randomLength = 24; // Generate a 24-byte random number.
     ret = OH_CryptoRand_GenerateRandom(rand, randomLength, &out);
     if (ret != CRYPTO_SUCCESS) {
         OH_CryptoRand_Destroy(rand);

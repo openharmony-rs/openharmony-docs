@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=2bacfee4422d681c1c12b53710941106e9561ff9 translatedAt=2026-11-03T05:35:21.853Z pushedAt=2026-11-03T07:29:05.765Z nl=1 -->
 
 This topic uses X25519, DH, and ECDH as an example to demonstrate how to perform key agreement for HUKS-managed keys. For details about the scenarios and supported algorithm specifications, see [Supported Algorithms](huks-key-agreement-overview.md#supported-algorithms).
 
@@ -52,8 +53,8 @@ Note: The tag value set in key agreement should not conflict with the tag value 
 
 Delete the keys from device A and device B when the keys are not required. For details, see [Deleting a Key](huks-delete-key-ndk.md).
  
- ## Development Cases
- The following uses the X25519, DH, and ECDH keys as examples for key agreement. 
+## Development Cases
+The following uses X25519, DH, and ECDH keys as examples to perform key agreement.  
 
 ### X25519 Asymmetric Key Agreement
 Prepare the X25519 key agreement materials.
@@ -266,7 +267,7 @@ napi_value X25519AgreeKey(napi_env env, napi_callback_info info)
     struct OH_Huks_Blob outData02 = {.size = X25519_COMMON_SIZE, .data = nullptr};
     OH_Huks_Result ohResult;
     do {
-        /* 1. Set the key alias and key parameter set. */
+        /* 1. Determine the key alias and integrate the key parameter set. */
         ohResult = InitializeAgreeParamSets(&genParamSet, &initParamSet01, &finishParamSet01,
                                             &initParamSet02, &finishParamSet02);
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {

@@ -2,11 +2,11 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @lvcong_oh-->
-<!--Designer: @hollokin; @yuchaozhng-->
-<!--Tester: @lj_liujing; @yippo; @logic42-->
+<!--Designer: @lvcong_oh-->
+<!--Tester: @logic42; @hanjiawei-->
 <!--Adviser: @ge-yafang-->
 
-The **commonType** module defines common data types in data management.
+The **commonType** module defines common data types in data management. It provides basic data types such as asset status enum, asset information, and key-value pair storage to support unified data representation and transfer in distributed data management scenarios.
 
 > **NOTE**
 >
@@ -46,7 +46,7 @@ Represents asset (such as a file, image, or video) information. For details, see
 | path       | string                      | No  | No  | Application sandbox path of the asset.          |
 | createTime | string                      | No  | No  | Time when the asset was created.            |
 | modifyTime | string                      | No  | No  | Time when the asset was last modified.        |
-| size       | string                      | No  | No  | Size of the asset. Ensure that the storage format and value logic are consistent across the end-to-end link. It is recommended that all system nodes use the standard processing format (unit: byte; value: a non-negative integer).|
+| size       | string                      | No  | No  | Size of the space occupied by the asset, in bytes. The value is a non-negative integer.|
 | status     | [AssetStatus](#assetstatus) | No  | Yes  | Asset status. The default value is **ASSET_NORMAL**.|
 
 ## Assets
@@ -65,7 +65,7 @@ Represents an array of [Assets](#asset).
 
 type ValueType = null | number | string | boolean | Uint8Array | Asset | Assets
 
-Enumerates the value types, which vary with the parameter function.
+Enumerates the data field types, which are determined by API parameter functions.
 
 **System capability**: SystemCapability.DistributedDataManager.CommonType
 
@@ -83,7 +83,7 @@ Enumerates the value types, which vary with the parameter function.
 
 type ValuesBucket = Record<string, ValueType>
 
-Defines the types of the key and value in a KV pair. This type is not multi-thread safe. If a **ValuesBucket** instance is operated by multiple threads at the same time in an application, use a lock for the instance.
+Defines the types of the key and value in a KV pair. This type is not concurrency-safe. If multiple threads in an application operate instances derived from this class at the same time, use a lock for protection.
 
 **System capability**: SystemCapability.DistributedDataManager.CommonType
 

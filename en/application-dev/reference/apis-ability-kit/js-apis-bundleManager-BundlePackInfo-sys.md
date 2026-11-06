@@ -3,8 +3,9 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=1bd317f06f1afd85920306c4a4cf71333749080f translatedAt=2026-09-03T11:12:26.139Z pushedAt=2026-09-05T10:47:30.561Z -->
 
 The module provides information in the **pack.info** file. The information can be obtained using [freeInstall.getBundlePackInfo](js-apis-freeInstall-sys.md#getbundlepackinfo).
 
@@ -129,8 +130,8 @@ import { freeInstall } from '@kit.AbilityKit';
 | name                | string         | Yes  | No  | Widget name.                                           |
 | type                | string         | Yes  | No  | Widget type.                                           |
 | updateEnabled       | boolean        | Yes  | No  | Whether the widget supports periodic update. **true** if the widget supports periodic update, **false** otherwise.|
-| scheduledUpdateTime | string         | Yes  | No  | Scheduled time to update the widget. The value is in 24-hour format and accurate to the minute.        |
-| updateDuration      | number         | Yes  | No  | Interval to update the widget. The unit is 30 minutes. The value is a multiple of 30. A widget can be updated at a specified interval (**updateDuration**) or at the scheduled time (**scheduledUpdateTime**). If both are configured, **updateDuration** takes precedence.|
+| scheduledUpdateTime | string         | Yes   | No   | Indicates the time for scheduled refresh of the card, in 24-hour format and accurate to the minute. This parameter and the periodic refresh parameter are mutually exclusive. If both are configured, the scheduled refresh takes precedence.         |
+| updateDuration      | number         | Yes   | No   | Indicates the update frequency for periodic refresh of the card, in minutes. The value must be a multiple of 30. The maximum refresh frequency of the card is once every 30 minutes. This parameter and the scheduled refresh parameter are mutually exclusive. If both are configured, the scheduled refresh takes precedence. |
 | supportDimensions   | Array\<string> | Yes  | No  | Dimensions of the widget. The value can be **1\*2**, **2\*2**, **2\*4**, **4\*4**, or a combination of these options. At least one option must be specified when defining the widget.|
 | defaultDimension    | string         | Yes  | No  | Default dimensions of the widget. The value must be available in the **supportDimensions** array of the widget.|
 
@@ -143,7 +144,7 @@ import { freeInstall } from '@kit.AbilityKit';
 | Name       | Type  | Read-Only| Optional| Description                |
 | ----------- | ------ | ---- | ---- | -------------------- |
 | releaseType | string | Yes  | No  | Name of the API version.        |
-| compatible  | number | Yes  | No  | Minimum API version.|
+| compatible  | number | Yes   | No   | Minimum compatible version. |
 | target      | number | Yes  | No  | Target API version.        |
 
 ## Version

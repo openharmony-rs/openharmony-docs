@@ -22,7 +22,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 具体接口说明请参考[Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md)。
 
-在Deveco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\src\main\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下：
+在DevEco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\src\main\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下：
 
 **编码接口使用示例**
 
@@ -191,7 +191,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
        OH_PackingOptions_SetMimeType(option, &image_MimeType);
        // 当设备支持HDR编码，资源本身为HDR图且图片资源的格式为jpeg时，编码产物才能为HDR内容。
        OH_PackingOptions_SetDesiredDynamicRange(option, IMAGE_PACKER_DYNAMIC_RANGE_AUTO);
-       // 设置编码质量，quality默认为0，建议quality的值不低于80
+       // 设置编码质量。quality默认值为0，建议不低于80；本示例统一设置为90，兼顾图片质量和文件体积。
        uint32_t quality = 90;
        OH_PackingOptions_SetQuality(option, quality);
        errCode = OH_ImagePackerNative_PackToFileFromImageSource(testPacker, option, imageSource, fd);
@@ -231,7 +231,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
            OH_ImagePackerNative_Release(testPacker);
            return errCode;
        }
-       // 设置编码质量，quality默认为0，建议quality的值不低于80
+       // 设置编码质量。quality默认值为0，建议不低于80；本示例统一设置为90，兼顾图片质量和文件体积。
        uint32_t quality = 90;
        OH_PackingOptions_SetQuality(option, quality);
        errCode = OH_ImagePackerNative_PackToFileFromPixelmap(testPacker, option, pixelmap, fd);
@@ -289,7 +289,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
        napi_value argv[1] = {0};
        size_t argc = 1;
        if (napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr) != napi_ok) {
-           OH_LOG_ERROR(LOG_APP, "PackToFileFromImageSourceTestJs napi_get_cb_info failed.");
+           OH_LOG_ERROR(LOG_APP, "PackToFileFromPixelmapTestJs napi_get_cb_info failed.");
            return nullptr;
        }
        

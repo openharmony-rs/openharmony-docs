@@ -16,7 +16,7 @@
 
 ### 进程模型
 
-MDM应用进程模型继承于普通应用[进程模型](../application-models/process-model-stage.md#进程模型-1)，在普通应用模型基础上MDM应用会多一个独立的EnterpriseAdmin进程，MDM应用的Admin组件被激活后，EnterpriseAdmin进程会被创建，EnterpriseAdmin进程作为设备管理应用的后台进程，用于接收MDM应用的激活、取消激活等事件的回调。EnterpriseAdmin进程的生命周期不受到主进程的影响，由系统管理其生命周期。Admin组件的激活方式不同，EnterpriseAdmin进程的生命周期的[管理方式](#admin组件激活规格的差异)也不同。
+MDM应用进程模型继承于普通应用[进程模型](../application-models/process-model-overview.md)，在普通应用模型基础上MDM应用会多一个独立的EnterpriseAdmin进程，MDM应用的Admin组件被激活后，EnterpriseAdmin进程会被创建，EnterpriseAdmin进程作为设备管理应用的后台进程，用于接收MDM应用的激活、取消激活等事件的回调。EnterpriseAdmin进程的生命周期不受到主进程的影响，由系统管理其生命周期。Admin组件的激活方式不同，EnterpriseAdmin进程的生命周期的[管理方式](#admin组件激活规格的差异)也不同。
 
 **图1** MDM应用进程模型
 
@@ -62,9 +62,9 @@ Admin组件有不同的激活方式，可以通过不同的接口，例如<!--De
 
 > **说明：**
 >
-> 1.BDA与其他Admin角色不能同时存在。
+> 1. BDA与其他Admin角色不能同时存在。
 >
-> 2.SDA和DA同时存在的数量加起来最多10个。SDA具备管理其他DA应用的能力（激活/去激活），而DA仅能对设备进行管控，无法管理其他DA应用。当MDM应用激活为SDA时，具备管控其他DA的能力，可以通过调用[adminManager.enableDeviceAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerenabledeviceadmin23)接口激活其他DA应用，或调用[adminManager.disableDeviceAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerdisabledeviceadmin23)接口去激活其他DA应用。
+> 2. SDA和DA同时存在的数量加起来最多10个。SDA具备管理其他DA应用的能力（激活/去激活），而DA仅能对设备进行管控，无法管理其他DA应用。当MDM应用激活为SDA时，具备管控其他DA的能力，可以通过调用[adminManager.enableDeviceAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerenabledeviceadmin23)接口激活其他DA应用，或调用[adminManager.disableDeviceAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerdisabledeviceadmin23)接口去激活其他DA应用。
 
 ## 管控接口授权原理
 
@@ -72,7 +72,7 @@ MDM应用的Admin组件需经企业授权方可生效。具体而言，企业需
 
 ### 管控接口权限校验机制
 
-MDM管控接口使用[ACL授权](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)进行访问权限校验，同时会校验Admin组件的激活状态与激活类型。MDM应用调用MDM管控接口时须同时具备上述三个条件，否则调用会报错[9200001](../reference/apis-mdm-kit/errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器)、[201](../reference/errorcode-universal.md#201-权限校验失败)或[9200002](../reference/apis-mdm-kit/errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够)。
+MDM管控接口使用[ACL授权](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)进行访问权限校验，同时会校验Admin组件的激活状态与激活类型。MDM应用调用MDM管控接口时须同时具备上述三个条件，否则调用会报错[9200001](../reference/apis-mdm-kit/errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器)、[201](../reference/errorcode-universal.md#201-api权限校验失败)或[9200002](../reference/apis-mdm-kit/errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够)。
 
 **图6** EDM服务校验逻辑
 

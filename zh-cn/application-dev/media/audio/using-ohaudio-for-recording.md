@@ -8,11 +8,12 @@
 
 OHAudio是系统在API version 10中引入的一套C API，此API在设计上实现归一，同时支持普通音频通路和低时延通路。仅支持PCM格式，适用于依赖Native层实现音频输入功能的场景。
 
+当音频流处于工作状态（非released状态）时，会占用系统的音频流资源。由于系统对音频流数量有限制，所以当客户端暂时不使用音频流时，调用OH_AudioCapturer_Release()回收音频资源，做好资源利用，避免后续创建音频流失败。
+
 OHAudio音频录制状态变化示意图：
 
 ![OHAudioCapturer status change](figures/ohaudiocapturer-status-change.png)
 
-当音频流处于工作状态（非released状态）时，需要占用系统的音频流资源。由于系统对音频流数量有限制，所以当客户端暂时不使用音频流时，调用OH_AudioCapturer_Release()回收音频资源，做好资源利用，避免后续创建音频流失败。
 
 ## 使用入门
 
@@ -217,6 +218,25 @@ OH_AudioStream_Result result = OH_AudioStreamBuilder_SetCapturerLoopbackEffectEn
 ### 设置静音打断模式
 静音打断模式提供将打断策略从停止录音切换为静音录制的功能，可以实现录音全程不被系统基于焦点并发规则打断的效果，并且录音过程中也不影响其他应用启动录音。开发者在创建音频录制构造器时，调用[OH_AudioStreamBuilder_SetCapturerWillMuteWhenInterrupted](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerwillmutewheninterrupted)接口设置是否开启静音打断模式。默认不开启，此时由音频焦点策略管理并发音频流的执行顺序。开启后，被其他应用打断导致停止或暂停录制时会进入静音录制状态，在此状态下录制的音频没有声音。
 
+### 设置录音流静音提示
+
+从API version 24开始，当应用已在业务侧将某条录音流静音时，可以调用[OH_AudioCapturer_SetMuteHint](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_setmutehint)接口将该状态上报给系统音频模块，系统音频模块会基于上报的状态调整策略以降低功耗。注意，此功能当前仅在部分PC/2in1设备上生效。该接口不会实际触发静音，也不会对录音数据做静音处理。它只是告知系统音频模块，应用已将当前录音流进行过静音。应用仍需自行处理录音数据，例如不发送采集数据或发送静音数据。
+
+该接口仅允许在录音流处于运行态时调用，否则会返回`AUDIOSTREAM_ERROR_ILLEGAL_STATE`。如果同一录音流同时设置了流级静音提示和会话级静音提示[OH_AudioSessionManager_SetCaptureMuteHint](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setcapturemutehint)，流级静音提示优先级更高，以流级设置值为准。当前未提供系统查询接口，如需在界面展示静音提示状态，应用需要自行维护最近一次设置成功的状态。
+
+<!-- @[cset_mute_hint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) --> 
+
+``` C++
+bool mute = true;
+OH_AudioStream_Result setResult = OH_AudioCapturer_SetMuteHint(audioCapturer, mute);
+if (setResult != AUDIOSTREAM_SUCCESS) {
+    // 根据返回值处理异常，如AUDIOSTREAM_ERROR_ILLEGAL_STATE。
+}
+
+mute = false;
+OH_AudioStream_Result unsetResult = OH_AudioCapturer_SetMuteHint(audioCapturer, mute);
+```
+
 ### 回声消除功能
 
 回声消除功能可在支持的设备上有效消除录音过程中的回声干扰，提升音频采集质量。开发者可通过指定特定的音频输入源类型[OH_AudioStream_SourceType](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_sourcetype)（AUDIOSTREAM_SOURCE_TYPE_VOICE_COMMUNICATION、AUDIOSTREAM_SOURCE_TYPE_LIVE）来启用该功能，系统将会自动对采集的音频信号进行回声消除处理。
@@ -228,9 +248,13 @@ OH_AudioStream_Result result = OH_AudioStreamBuilder_SetCapturerLoopbackEffectEn
 
 ## 注意事项
 
-从API version 12开始**不再推荐**使用[OH_AudioCapturer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md)的方式设置音频回调函数。若必须使用，需要注意在设置音频回调函数时，通过下面两种方式中的任意一种来设置音频回调函数，避免不可预期的行为。
+从API version 12开始**不再推荐**使用[OH_AudioCapturer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md)的方式设置音频回调函数。若必须使用，请通过下面任意一种方式完成初始化，再配置回调函数。
 
-- 方式1：请确保[OH_AudioCapturer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md)的每一个回调都被**自定义的回调方法**或**空指针**初始化。
+> **注意：**
+>
+> 必须完成`OH_AudioCapturer_Callbacks`结构体的初始化。未初始化的回调字段可能包含随机地址，系统触发回调时可能将其误当作回调函数执行，产生野指针并导致进程崩溃。
+
+- 方式1：请确保[OH_AudioCapturer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md)的每一个回调都被**自定义的回调方法**或**空指针**显式初始化。未使用的回调必须设置为空指针，不能保留未初始化的值。
 
   <!-- @[callback_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
   
@@ -263,7 +287,7 @@ OH_AudioStream_Result result = OH_AudioStreamBuilder_SetCapturerLoopbackEffectEn
       callbacks.OH_AudioCapturer_OnError = nullptr;
   ```
 
-- 方式2：使用前，初始化并清零结构体。
+- 方式2：使用前，必须初始化并清零结构体，确保所有未配置的回调字段为空指针。
 
   <!-- @[callbackNullptr_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
   

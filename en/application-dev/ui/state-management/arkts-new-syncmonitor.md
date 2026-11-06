@@ -1,12 +1,13 @@
-# @SyncMonitor Decorator: Synchronous Listening for Value Changes of the State Variables
+# \@SyncMonitor Decorator: Synchronous Listening for Value Changes of the State Variables
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=f40d976a55afa9474832553b7faba446f7655708 translatedAt=2026-09-21T11:23:08.299Z pushedAt=2026-09-23T09:13:22.776Z -->
 
-To enhance the listening capability of the state management framework for state variable changes, you can use the \@SyncMonitor decorator to listen to state variables.
+To enhance the state management framework's capability of listening for state variable changes, you can use the [\@SyncMonitor](../../reference/apis-arkui/arkui-ts/ts-state-management-syncmonitor.md#syncmonitor) decorator to listen for state variables.
 
 \@SyncMonitor provides the capability of synchronously listening for state variables of V2. Before reading this document, you are advised to read [\@ComponentV2](./arkts-create-custom-components.md#componentv2), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), [\@Local](./arkts-new-local.md), and [\@Monitor](./arkts-new-monitor.md).
 
@@ -18,19 +19,19 @@ To enhance the listening capability of the state management framework for state 
 
 ## Overview
 
-The \@SyncMonitor decorator is used to synchronously listen to the modification of status variables so that the status variables have the deep listening capability.
+The \@SyncMonitor decorator is used to synchronously listen to the modification of state variables so that the state variables have the deep listening capability.
 
-- The \@SyncMonitor decorator can be used in custom components decorated by \@ComponentV2. But it cannot listen for the changes of the state variables that are not decorated by these decorators: [\@Local](arkts-new-local.md), [\@Param](arkts-new-param.md), [\@Provider](arkts-new-provider-and-consumer.md), [\@Consumer](arkts-new-provider-and-consumer.md) and [\@Computed](arkts-new-computed.md).
+- The \@SyncMonitor decorator can be used in custom components decorated by \@ComponentV2. But it cannot listen for the changes in the state variables that are not decorated by these decorators: [\@Local](arkts-new-local.md), [\@Param](arkts-new-param.md), [\@Provider](arkts-new-provider-and-consumer.md), [\@Consumer](arkts-new-provider-and-consumer.md) and [\@Computed](arkts-new-computed.md).
 
 ## Usage Rules
 
-- The \@SyncMonitor decorator can be used in a class together with [\@ObservedV2 and \@Trace](arkts-new-observedV2-and-trace.md) decorators. But it cannot be used in a class that is not decorated by \@ObservedV2. \@SyncMonitor cannot listen for the properties that are not decorated by \@Trace. When the listened property changes, the callback defined by \@SyncMonitor will be called. Strict equality (===) is used to determine whether a property is changed. If **false** is return, the \@SyncMonitor decorated callback is triggered. In the same event, when the observed attribute changes for multiple times, the callback function is called each time the attribute changes.
+- The \@SyncMonitor decorator can be used in a class together with [\@ObservedV2 and \@Trace](arkts-new-observedV2-and-trace.md) decorators. But it cannot be used in a class that is not decorated by \@ObservedV2. \@SyncMonitor cannot listen for the properties that are not decorated by \@Trace. When the listened property changes, the callback defined by \@SyncMonitor will be called. Strict equality (===) is used to determine whether a property is changed. If **false** is returned, the \@SyncMonitor decorated callback is triggered. In the same event, when the observed attribute changes for multiple times, the callback function is called each time the attribute changes.
 
-- A single \@SyncMonitor decorator can listen for the changes of multiple properties at the same time. When these properties change together in an event, the \@SyncMonitor callback method is triggered only once. When \@SyncMonitor observes an entire array, changes to individual array items are not observed. 
+- A single \@SyncMonitor decorator can listen for the changes in multiple properties at the same time. When these properties change together in an event, the \@SyncMonitor callback method is triggered only once. When \@SyncMonitor observes an entire array, changes to individual array items are not observed. 
 
-- In the inheritance scenario, you can define \@SyncMonitor for the same property in the parent and child classes for listening. When the property changes, the \@SyncMonitor callback defined in the parent and child components is called.
+- In the inheritance scenario, you can define \@SyncMonitor for the same property in the parent and child classes for listening. When the property changes, the \@SyncMonitor callbacks defined in the parent and child classes are both called.
 
-- The \@SyncMonitor decorator has lower-level listening capability and can listen for changes of specified items in nested classes, multi-dimensional arrays, and object arrays. The observation requires that \@ObservedV2 decorate the nested class and \@Trace decorate the member properties in an object array.
+- The \@SyncMonitor decorator has deep listening capability and can listen for changes of specified items in nested classes, multi-dimensional arrays, and object arrays. The observation requires that \@ObservedV2 decorate the nested class and \@Trace decorate the member properties in an object array.
 
 - \@SyncMonitor can observe data changes caused by the calling of APIs of the built-in types `Map`, `Set`, `Date`, and `Array`. For details, see [General Listening Capabilities](#general-listening-capability).
 
@@ -42,7 +43,7 @@ Similar to the [\@Watch](arkts-watch.md) decorator, you must define the callback
 
 | Category                  | \@Watch                                 | \@Monitor                                                    |\@SyncMonitor                                                  |
 | ------------------ | --------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Parameters             | Callback method name.                            | Listened status variable name and attribute name                                     | Listened status variable name and attribute name                                     |
+| Parameters             | Callback method name.                            | Listened state variable name and attribute name                                     | Listened state variable name and attribute name                                     |
 | Number of Intercepted Targets       | Single state variable                  | Multiple state variables                                     | Multiple state variables    |
 | Type         | Fuzzy Listening         | Fuzzy interception and precise interception are supported.                        | Fuzzy interception and precise interception are supported.                               |
 | Whether to Obtain the Value Before the Change| No                    | Yes                                           | Yes                                           |
@@ -53,15 +54,15 @@ Similar to the [\@Watch](arkts-watch.md) decorator, you must define the callback
 
 [addMonitor and clearMonitor](./arkts-new-addMonitor-clearMonitor.md) APIs allows you to dynamically add and clear listeners during application execution. When **isSynchronous** is set to **true**, **addMonitor** is similar to \@SyncMonitor. When **isSynchronous** is set to **false**, **addMonitor** is similar to \@Monitor.
 
-\@Monitor and \@SyncMonitor are member function decorators of the \@ComponentV2 and \@ObservedV2 classes, respectively. They are part of V2 status management. \@Watch is a variable decorator used in \[@Component](./arkts-create-custom-components.md#component). It is a part of V1 status management.
+\@Monitor and \@SyncMonitor are member function decorators of the \@ComponentV2 and \@ObservedV2 classes, respectively. They are part of V2 state management. \@Watch is a variable decorator used in [@Component](./arkts-create-custom-components.md#component). It is a part of V1 state management.
 
-Functions decorated by \@Monitor are executed asynchronously after the event handler is executed. After the \@SyncMonitor and \@Watch functions detect the change of the status variable, the callback function is executed immediately.
+Functions decorated by \@Monitor are executed asynchronously after the event handler is executed. After the \@SyncMonitor and \@Watch functions detect the change of the state variable, the callback function is executed immediately.
 
-\@The execution of the Monitor function can be triggered by the value change of one or more specific tracing object attributes. \@The Watch function is executed when any observed object attribute or array item changes. It cannot listen to one or more specific attributes.
+The execution of the \@Monitor function can be triggered by the value change of one or more specific tracing object attributes. The \@Watch function is executed when any observed object attribute or array item changes. It cannot listen to one or more specific attributes.
 
 The behavior of \@SyncMonitor with wildcard characters in the path is the same as that of \@Watch. This makes it easier for applications to migrate from V1 state management to V2 state management. The following is an example:
 
-\@Watch sample code for V1 status management:
+\@Watch sample code for V1:
 
 ```typescript
 @Component 
@@ -73,7 +74,7 @@ struct CompV1 {
 }
 ```
 
-Sample code for migrating to the V2 status management \@SyncMonitor:
+Sample code for migrating to \@SyncMonitor in V2:
 ```typescript
 @ComponentV2 
 struct CompV2 {
@@ -136,8 +137,8 @@ Monitor - sum changed from 0 to 6
 ## Decorator Description
 |\@SyncMonitor Attribute Decorator| Description                                                       |
 | ------------------- | ------------------------------------------------------------ |
-| Parameters        | Object attribute name of the string type. Multiple object attributes can be listened at the same time. Use commas (,) to separate attributes, for example, @SyncMonitor ('prop1','prop2'). In addition, deep attribute changes can be monitored: elements in multi-dimensional arrays, attributes in nested objects, and attributes in object arrays. The wildcard (*) can be added at the end of a path to listen to the changes of any observed attribute. For details, see [Listened Changes](#listened-changes).|
-| Decorated Content          | Member method. This callback is triggered when the observed attribute changes. The callback method takes a variable of the [IMonitor type](../../reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md#imonitor12) as a parameter, from which you can retrieve information before and after the change.|
+| Parameters        | Object attribute name of the string type. Multiple object attributes can be listened at the same time. Use commas (,) to separate attributes, for example, @SyncMonitor ('prop1','prop2'). In addition, deep attribute changes can be monitored: elements in multi-dimensional arrays, attributes in nested objects, and attributes in object arrays. The wildcard (*) can be added at the end of a path to listen to the changes of any observed attribute. For details, see [Listening for Changes](#listening-for-changes).|
+| Decorated Content | Member method. When an observed property changes, this callback is triggered. The callback takes a variable of the [IMonitor](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md#imonitor) type as a parameter, from which developers can obtain information about the changes before and after the modification. |
 
 ## Wildcards in the Listening Path
 
@@ -170,18 +171,18 @@ The following is an example of a valid path:
 
 ## Available APIs
 
-For details about the APIs of the IMonitor and IMonitorValue\<T\> types, see [State Variable Change Listening](../../reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md).
+For the API description of the IMonitor and IMonitorValue\<T\> types, see [\@Monitor: Listening for Value Changes of the State Variables](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md).
 
-## Listened Changes
+## Listening for Changes
 
 ### Using \@SyncMonitor in a Custom Component Decorated by \@ComponentV2
 
-When the status variable monitored by \@SyncMonitor changes, the callback method of \@SyncMonitor is triggered.
+When the state variable monitored by \@SyncMonitor changes, the callback method of \@SyncMonitor is triggered.
 
-- Variables listened by \@SyncMonitor must be decorated by \@Local, \@Param, \@Provider, \@Consumer, and \@Computed. Variables that are not decorated by the state variable decorator cannot be listened when they change. \@SyncMonitor can listen to multiple status variables at the same time. The variable names are separated by commas (,).
+- Variables listened by \@SyncMonitor must be decorated by \@Local, \@Param, \@Provider, \@Consumer, and \@Computed. Variables that are not decorated by the state variable decorator cannot be listened when they change. \@SyncMonitor can listen to multiple state variables at the same time. The variable names are separated by commas (,).
 
    <!-- @[monitor_multiple_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorMultipleVariables.ets) -->
-   
+
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    
@@ -212,10 +213,10 @@ When the status variable monitored by \@SyncMonitor changes, the callback method
    }
    ```
 
-- \@When the status variable monitored by SyncMonitor is a class object, only the changes of the entire object can be monitored. To listen to the changes of class attributes, the class attributes must be decorated by \@Trace. The changes of non-state variables cannot be listened to.
-  
+- When the state variable monitored by \@SyncMonitor is a class object, only the changes of the entire object can be monitored. To listen to the changes of class attributes, the class attributes must be decorated by \@Trace. The changes of non-state variables cannot be listened to.
+
     <!-- @[monitor_object_variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorObjectVariable.ets) -->
-    
+
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
     
@@ -256,9 +257,9 @@ When the status variable monitored by \@SyncMonitor changes, the callback method
 When the attribute monitored by \@SyncMonitor changes, the callback method of \@SyncMonitor is triggered.
 
 - The object attributes listened by \@SyncMonitor must be decorated by \@Trace. The changes of the attributes that are not decorated by \@Trace cannot be listened. \@SyncMonitor can listen to multiple attributes at the same time. The attributes are separated by commas (,).
-  
+
    <!-- @[monitor_variables_in_observedv2_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorVariablesInObservedV2Class.ets) -->
-   
+
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    
@@ -322,9 +323,9 @@ When the attribute monitored by \@SyncMonitor changes, the callback method of \@
    ```
 
 - \@SyncMonitor can listen to changes of deep attributes that need to be decorated by @Trace.
-  
+
   <!-- @[monitor_two_layer_variables_in_observedv2_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorTwoLayerVariablesInObservedV2Class.ets) -->
-  
+
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
@@ -363,7 +364,7 @@ When the attribute monitored by \@SyncMonitor changes, the callback method of \@
 - In the inheritance class scenario, you can listen to the same attribute for multiple times in the inheritance chain. The \@SyncMonitor callback defined in the parent and child classes will be called.
 
   <!-- @[monitor_variable_base_derived_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorVariableInBaseDerivedClass.ets) -->
-  
+
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
@@ -420,7 +421,7 @@ When the attribute monitored by \@SyncMonitor changes, the callback method of \@
 - \@SyncMonitor can observe the changes caused by the invoking of built-in APIs of the Map, Date, and Set types. For example, if **set**, **add**, or **delete** is called to modify a data set, the listening function is executed. When the key in the Map and Set changes, the listening function is not executed, and the framework prints error logs.
 
   <!-- @[monitor_variables_in_multidimensional_arrays](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorVariablesInMultidimensionalArrays.ets) -->
-  
+
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
@@ -526,9 +527,9 @@ When the attribute monitored by \@SyncMonitor changes, the callback method of \@
   The following code represents the behavior in the comment when you execute the instructions in the sequence of Step 1, Step 2 and Step 3.
 
   If you only execute the instruction of Step 2 or Step 3 to change the values of **name** or **age**, the **onNameChange** and **onAgeChange** methods are triggered.
-  
+
   <!-- @[monitor_entire_object_change_but_property_no_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorEntireObjectChangeButPropertyNoChange.ets) -->
-  
+
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
@@ -591,7 +592,9 @@ When the attribute monitored by \@SyncMonitor changes, the callback method of \@
 - If an attribute listened by \@SyncMonitor is changed multiple times in an event, \@SyncMonitor is called each time the attribute is changed.
 
   The behavior of \@SyncMonitor is different from that of \@Monitor. \@Monitor is called only once and the last modification takes effect.
-  
+
+  <!-- @[syncmonitor_behaves_differently_from_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/SyncMonitorBehavesDifferentlyFromMonitor.ets) -->
+
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
@@ -630,9 +633,9 @@ When the attribute monitored by \@SyncMonitor changes, the callback method of \@
     }
   }
   ```
-  
+
   After you click `change count to 1000`, the `onCountChange` method is triggered 1000 times, and the logs are as follows:
-  
+
   ``` text
   count change from 0 to 1
   count change from 1 to 2
@@ -640,9 +643,9 @@ When the attribute monitored by \@SyncMonitor changes, the callback method of \@
   ...
   count change from 999 to 1000
   ```
-  
+
   After only `change count to 0 then to 1000` is clicked, `onCountChange` is triggered 1001 times, and the logs are as follows:
-  
+
   ``` text
   count change from 0 to 999
   count change from 999 to 998
@@ -650,12 +653,14 @@ When the attribute monitored by \@SyncMonitor changes, the callback method of \@
   count change from 1 to 0
   count change from 0 to 1000
   ```
-  
+
   Difference from \@Monitor: In the preceding example, @SyncMonitor('count') is replaced with @Monitor('count'). If you press any button, the listening function decorated by @Monitor is executed only once.
 
 - If multiple attributes observed by \@SyncMonitor change in different value assignment operations, the \@SyncMonitor callback is called immediately after each value assignment operation. This is contrary to the behavior of \@Monitor, which is called only once and uses the last changed value. Calling an API of the **Array** type may change multiple elements in the array at a time, but the callback function decorated with \@SyncMonitor is triggered only once each time.
 
-  ``` typescript
+  <!-- @[syncmonitor_array_multi_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/SyncMonitorArrayMultiPath.ets) -->
+
+  ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   @Entry
   @ComponentV2
@@ -684,7 +689,7 @@ When the attribute monitored by \@SyncMonitor changes, the callback method of \@
             // changes arr from [ 0, 1, 2, 3, 4, 5 ] to [ 0, 100, 101, 102, 5]
             this.arr.splice(1, 4, 100, 101, 102);
             hilog.info(0xFF00, 'testTag', 'shift execute ...');
-            // changes arr from [ 1, 100, 101, 102, 5] to [ 100, 101, 102, 5]
+            // changes arr from [ 0, 100, 101, 102, 5] to [ 100, 101, 102, 5]
             this.arr.shift();
             hilog.info(0xFF00, 'testTag', '.. done');
           })
@@ -697,7 +702,7 @@ When the attribute monitored by \@SyncMonitor changes, the callback method of \@
 
   1. Execute **onClick**;
   2. Print **arr[1] assign ...**.
-  3. Run the onArrChangedSync command and print the log '@SyncMonitor: arr: [0,100,2,3,4,5], m.dirty [arr.1]';
+  3. Run `onArrChangedSync` and print the log '@SyncMonitor: arr: [0,100,2,3,4,5], m.dirty: [arr.1]';
   4. Print **arr[2] assign ...**.
   5. Run the **onArrChangedSync** command and print the log information '@SyncMonitor: arr: [0,100,200,3,4,5], m.dirty: [arr.2]';
   6. After **onClick** is executed, the log **.. done** is recorded.
@@ -982,7 +987,7 @@ Start the application. When the **#6 Class0 toggle number <=> new Class0** butto
 ```
 When the same button **#6 Class0 toggle number <=> new Class0** is pressed for the second time, the framework calls the listening function again and notifies it that the object has been changed from **undefined** to an instance of the **Person** class.
 
-The \@Monitor and \@SyncMonitor processes path unavailability in different ways.
+\@Monitor and \@SyncMonitor differ in how they handle paths that become unavailable.
 
 \@SyncMonitor triggers execution in both cases - when the path becomes unavailable and when the path becomes available again.
 
@@ -990,7 +995,7 @@ The \@Monitor and \@SyncMonitor processes path unavailability in different ways.
 
 If the sample application contains **@Monitor('class0.class1.person')**, \@Monitor cannot listen to the change when the path becomes unavailable. When **this.class0 = 500** is used to change the value, the callback function decorated by \@Monitor is not triggered. When a value is assigned to **Class0** again, that is, **this.class0 = new Class0**, the callback function decorated by \@Monitor is triggered.
 
-### Fuzzy Listening for Changes of Array Items
+### Wildcard Listening for Array Item Changes
 
 When the properties of a nested observed object are changed, the listening function is executed.
 
@@ -1127,9 +1132,9 @@ struct DocSampleArrayOfArrays {
 Pay attention to the following restrictions when using \@SyncMonitor:
 
 - You are not advised to perform \@SyncMonitor listening on the same attribute for multiple times in a class. When a property in a class is listened for multiple times, only the last listening method takes effect.
-  
+
   <!-- @[monitor_the_same_variable_two_times](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorTheSameVariableTwoTimes.ets) -->
-  
+
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
@@ -1164,7 +1169,9 @@ Pay attention to the following restrictions when using \@SyncMonitor:
   }
   ```
 
-- When @SyncMonitor transfers multiple path parameters, the system determines whether to listen repeatedly based on the full combination result of the parameters. Spaces are added between parameters during full combination to distinguish them. For example, the full combination of 'ab' and 'c' is 'ab c', while 'a' and 'bc' becomes 'a bc'. These results are not equal. In the following example, SyncMonitor 1, SyncMonitor 2, and SyncMonitor 3 listen to the change of the name attribute. The input parameters of SyncMonitor 2 and SyncMonitor 3 are the same (both are 'name position'). Therefore, SyncMonitor 2 does not take effect, and only SyncMonitor 3 takes effect. When name changes, both onNameAgeChange and onNamePositionChangeDuplicate are triggered simultaneously. Note that SyncMonitor 2 and SyncMonitor 3 are still used to perform @SyncMonitor listening on the same attribute for multiple times in a class, which is not recommended.
+- When @SyncMonitor receives multiple path parameters, the system determines whether it is a duplicate listener based on the full concatenation result of the parameters. Spaces are added between parameters during concatenation to distinguish them. For example, the full concatenation of 'ab' and 'c' is 'ab c', while 'a' and 'bc' become 'a bc'. These results are not equal. In the following example, `SyncMonitor 1`, `SyncMonitor 2`, and `SyncMonitor 3` all listen for changes to the name attribute. The full concatenation of the input parameters of `SyncMonitor 2` and `SyncMonitor 3` are the same (both are `'name position'`). Therefore, `SyncMonitor 2` does not take effect, and only `SyncMonitor 3` takes effect. When the name attribute changes, both **onNameAgeChange** and **onNamePositionChangeDuplicate** are triggered simultaneously. Note that the pattern of `SyncMonitor 2` and `SyncMonitor 3` is still considered as performing @SyncMonitor listening on the same attribute multiple times in a class, which is not recommended.
+
+  <!-- @[monitor_duplicate_multiple_paths](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorDuplicateMultiplePaths.ets) -->
 
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1292,11 +1299,13 @@ Pay attention to the following restrictions when using \@SyncMonitor:
 
 ## Use Cases
 
-### Listening for Lower-level Property Changes
+### Listening for Deep Property Changes
 
 \@SyncMonitor can listen to the changes of deep attributes and classify the attributes based on the values before and after the changes.
 
-In the following example, the change of property **value** is listened and the display style of the **Text** component is changed based on the change amplitude.
+In the following example, the change of property **value** is listened to and the display style of the **Text** component is changed based on the change amplitude.
+
+<!-- @[monitor_deep_property_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorDeepPropertyChange.ets) -->
 
 ``` TypeScript
 @ObservedV2
@@ -1446,7 +1455,9 @@ The preceding steps indicate that the \@SyncMonitor defined in the **Child** com
 
 ### Effective and Expiration Time of Variable Listening by the \@SyncMonitor in the Class
 
-When \@SyncMonitor is defined in class decorated with \@ObservedV2, it takes effect after the class instance is created and becomes invalid when the class instance is destroyed.
+When \@SyncMonitor is defined in a class decorated with \@ObservedV2, it takes effect after the class instance is created and becomes invalid when the class instance is destroyed.
+
+<!-- @[syncmonitor_class_effective_time](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/SyncMonitorClassEffectiveTime.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1486,14 +1497,16 @@ struct Index {
 }
 ```
 
-In the preceding example, \@SyncMonitor takes effect after the **info** class is created, which is later than the **constructor** of the class and earlier than the **aboutToAppear** of the custom component. After the page is loaded, click **change message** button to modify the message variable. The log outputs the messages as below:
+In the preceding example, \@SyncMonitor takes effect after the **info** class is created, which is later than the **constructor** of the class and earlier than the **aboutToAppear** of the custom component. After the page is loaded, click the **change message** button to modify the message variable. The log outputs the messages as below:
 
 ```ts
 message change from initialized to Index aboutToAppear
 message change from Index aboutToAppear to Index click to change message
 ```
 
-\@SyncMonitor defined in a class becomes invalid when the class is destroyed. However, the garbage collection mechanism determines whether a class is actually destroyed and released. Even if the custom component is destroyed, the class is not destroyed accordingly. As a result, the \@SyncMonitor defined in the class still listens for changes.
+\@SyncMonitor defined in a class becomes invalid when the class is destroyed. However, since the actual destruction and release of the class depends on the garbage collection mechanism, a situation may occur where the class is not destroyed in time even though the custom component that hosts it has already been destroyed. As a result, the \@SyncMonitor defined in the class still listens for changes.
+
+<!-- @[syncmonitor_class_gc_destruction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/SyncMonitorClassGcDestruction.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1581,7 +1594,9 @@ In the preceding example, when you click **change showFlag** to switch the condi
 
 The result is unstable when you use the garbage collection mechanism to cancel the listening of \@SyncMonitor. You can use the following methods to manage the expiration time of the \@SyncMonitor:
 
-Define \@SyncMonitor in the custom component. When a custom component is destroyed, the state management framework cancels the listening of \@SyncMonitor. Therefore, after the custom component calls **aboutToDisappear**, the \@SyncMonitor callback will not be triggered even though the data of the custom component may not be released. Different from @Monitor, when the custom component is about to be destroyed, the \@SyncMonitor listened object is set empty. In this way, the \@SyncMonitor can still listen for the changes of the original object.
+Define \@SyncMonitor in a custom component. When a custom component is destroyed, the state management framework cancels the \@SyncMonitor listening. Therefore, after the custom component calls **aboutToDisappear**, the \@SyncMonitor callback will no longer be triggered, even though the custom component's data may not have been released yet. Unlike @Monitor, when the custom component is about to be destroyed, even if the object listened by \@SyncMonitor is actively set to empty, \@SyncMonitor can still listen for changes of the original target.
+
+<!-- @[syncmonitor_component_destruction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/SyncMonitorComponentDestruction.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1671,6 +1686,8 @@ struct Index {
 
 [Incorrect Usage 1]
 
+<!-- @[monitor_non_state_variable_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorNonStateVariableNegative.ets) -->
+
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -1679,7 +1696,8 @@ class Info {
   public name: string = 'John';
   @Trace public age: number = 24;
 
-  // Run only the listening status variable age and the non-state variable name. A compilation alarm "Cannot observe non-existent variables or non-state variables, except in wildcard-based monitoring scenarios." is displayed.
+  // Only state variable 'age' can be observed. Observing the non-state variable 'name' will cause a compilation warning.
+  // Note: `Cannot observe non-existent variables or non-state variables, except in wildcard-based monitoring scenarios.`
   @SyncMonitor('age', 'name')
   onPropertyChange(monitor: IMonitor) {
     monitor.dirty.forEach((path: string) => {
@@ -1714,6 +1732,8 @@ property path:age change from 24 to 25
 ```
 
 [Correct Usage 1]
+
+<!-- @[monitor_non_state_variable_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorNonStateVariablePositive.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1752,6 +1772,8 @@ struct Index {
 
 [Negative example 2]
 
+<!-- @[monitor_non_computed_getter_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorNonComputedGetterNegative.ets) -->
+
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -1783,7 +1805,7 @@ struct Index {
     Column() {
       Button('change age')
         .onClick(() => {
-          this.info.age = 25; // The state variable "age" is changed.
+          this.info.age = 25; // age changes.
         })
     }
   }
@@ -1837,6 +1859,8 @@ struct Index {
 
 Alternatively, listen to the state variable itself.
 
+<!-- @[monitor_state_variable_directly](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorStateVariableDirectly.ets) -->
+
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -1874,7 +1898,7 @@ Valid listening path rules are as follows:
 
 * The path must end with an asterisk (*).
 
-* ***** cannot appear at the beginning of a path or inside a path.
+* `*` cannot appear at the beginning of a path or inside a path.
 
 Invalid wildcards are used in the following paths: An error is reported during compilation.
 
@@ -1893,7 +1917,8 @@ Invalid wildcards are used in the following paths: An error is reported during c
 * `@SyncMonitor('*')` - Error. No attribute name exists.
 
 ### Observed Variables During Accessibility Changes
-\@Monitor only saves values when variables are accessible. When a state variable becomes inaccessible, value changes aren't recorded. Since API version 20, if you need to observe accessibility changes (from accessible to inaccessible or vice versa), use [addMonitor](./arkts-new-addMonitor-clearMonitor.md#listening-for-variable-accessibility-changes).
+
+\@Monitor only saves the value when the variable is accessible. When the state variable becomes inaccessible, its value changes are not recorded. Starting from API version 20, you can use `addMonitor` to [listen for variables accessibility changes](./arkts-new-addMonitor-clearMonitor.md#listening-for-variable-accessibility-changes).
 
 \@SyncMonitor can listen to the change of a variable from accessible to inaccessible or from inaccessible to accessible. In the following example, the onChange callback is triggered when the three buttons are clicked.
 

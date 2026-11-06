@@ -2,10 +2,11 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @xuxinao-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=bbac2265b5354ed331c839e017d611d73c2d5f39 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 ## Event Specifications
 
@@ -22,7 +23,7 @@ For details about how to use the APIs, see [@ohos.hiviewdfx.hiAppEvent (Applicat
 
 ## How to Develop
 
-To ensure that the event callback can be successfully received in the development phase, you are advised to create a native C++ project, implement subscription in the ArkTs code, and use the C ++ fault injection code to construct a fault to trigger the application killed event.
+To ensure smooth reception of event callbacks during development, you are advised to adopt the following approach: create a new Native C++ project, implement the subscription in ArkTS code, and use fault injection code in C++ to construct faults that trigger `APP_KILLED` events.
 
 1. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, import the dependent modules.
 
@@ -34,7 +35,7 @@ To ensure that the event callback can be successfully received in the developmen
 
    ```ts
    hiAppEvent.addWatcher({
-     // Set the watcher name. The system identifies different watchers based on their names.
+     // You can customize the watcher name, which the system uses to identify different watchers.
      name: "watcher",
      // You can subscribe to system events that you are interested in. Here, the application killed event is subscribed to.
      appEventFilters: [
@@ -43,14 +44,14 @@ To ensure that the event callback can be successfully received in the developmen
          names: [hiAppEvent.event.APP_KILLED]
        }
      ],
-     // Implement a callback for the registered system event so that you can apply custom processing to the event data obtained.
+     // You can implement the subscription real-time callback to process the subscribed event data as needed.
      onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
        hilog.info(0x0000, 'testTag', `HiAppEvent onReceive: domain=${domain}`);
        for (const eventGroup of appEventGroups) {
-         // The event name uniquely identifies a system event.
+         // You can distinguish different system events by the event name in the event group.
          hilog.info(0x0000, 'testTag', `HiAppEvent eventName=${eventGroup.name}`);
          for (const eventInfo of eventGroup.appEventInfos) {
-           // Apply custom processing to the event data obtained, for example, print the event data in the log.
+           // You can process the event data in the event group as needed. Here, the event data is printed in the log.
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.domain=${eventInfo.domain}`);
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.name=${eventInfo.name}`);
            // Obtain the timestamp when the application is killed.
@@ -59,6 +60,13 @@ To ensure that the event callback can be successfully received in the developmen
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.foreground=${eventInfo.params['foreground']}`);
            // Obtain the cause of the application killed event.
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.reason=${eventInfo.params['reason']}`);
+           // Obtain the ID of the process that initiates termination.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.calling_pid=${eventInfo.params['calling_pid']}`);
+           // Obtain the name of the process that initiates termination.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.calling_process_name=${eventInfo.params['calling_process_name']}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.app_running_unique_id=${eventInfo.params['app_running_unique_id']}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_version=${eventInfo.params['bundle_version']}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.last_exit_detail_info=${JSON.stringify(eventInfo.params['last_exit_detail_info'])}`);
          }
        }
      }
@@ -152,7 +160,12 @@ To ensure that the event callback can be successfully received in the developmen
    ```text
    HiAppEvent eventInfo.domain=OS
    HiAppEvent eventInfo.name=APP_KILLED
-   HiAppEvent eventInfo.params.time=1717597063727
+   HiAppEvent eventInfo.params.time=1792739581978
    HiAppEvent eventInfo.params.reason="RssThresholdKiller"
    HiAppEvent eventInfo.params.foreground=true
+   HiAppEvent eventInfo.params.calling_pid="43"
+   HiAppEvent eventInfo.params.calling_process_name="wk:0/0/1/12"
+   HiAppEvent eventInfo.params.app_running_unique_id=8778602711597370439
+   HiAppEvent eventInfo.params.bundle_version=1.0.1
+   HiAppEvent eventInfo.params.last_exit_detail_info={"exit_msg":"","kill_reason":"RssThresholdKiller","pid":"17248","process_name":"com.example.dfx_test","process_state":"2","pss":"227764","rss":"227764","timestamp":"1792739581947","uid":"20020207"}
    ```

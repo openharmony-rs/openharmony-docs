@@ -2,18 +2,23 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=d66ce495242bdf35b08a89dbf23cdf3929953623 translatedAt=2026-08-24T08:13:15.290Z pushedAt=2026-08-29T08:27:25.563Z -->
 
-This module provides tools for processing rectangles.
+Provides tools for processing rectangles, supporting quick construction and basic attribute retrieval, boundary calculation and adjustment, translation and state determination, and boundary normalization of rectangles.
 
 Use scenarios:
 
 1. Quickly create rectangles and get their basic features, like making a new rectangle, copying one, and obtaining its width, height, and center point.
 
-2. Calculate and adjust boundaries, such as obtaining the inclusion relationship, calculating and updating intersections and unions between rectangles, and updating boundary values.
+2. Boundary calculation and adjustment, such as determining the inclusion relationship, calculating and updating intersections and unions between rectangles, and updating boundary values.
+
+3. Rectangle translation and state determination, such as translating a rectangle, moving a rectangle to a specified position, determining whether a rectangle is empty, and determining whether two rectangles are equal.
+
+4. Rectangle boundary normalization, such as swapping and sorting the boundary values of a rectangle that is reversed.
 
 > **NOTE**
 >
@@ -65,10 +70,10 @@ Creates a rectangle with specified top, bottom, left, and right boundaries.
 
 | Name| Type   | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| left   | number | Yes  | X coordinate of the upper left corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point to the right of the coordinate origin, while a negative value places the point to the left.|
-| top    | number | Yes  | Y coordinate of the upper left corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point below the coordinate origin, while a negative value places the point above the coordinate origin.|
-| right  | number | Yes  | X coordinate of the lower right corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point to the right of the coordinate origin, while a negative value places the point to the left.|
-| bottom | number | Yes  | Y coordinate of the lower right corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point below the coordinate origin, while a negative value places the point above the coordinate origin.|
+| left   | number | Yes   | X-axis coordinate of the upper-left corner of the rectangle. This parameter is a floating-point number. 0 represents the coordinate origin, a negative value indicates that it is located to the left of the origin, and a positive value indicates that it is located to the right of the origin. The unit is physical pixel px. |
+| top    | number | Yes   | Y-axis coordinate of the upper-left corner of the rectangle. This parameter is a floating-point number. 0 represents the coordinate origin, a negative value indicates that it is located above the origin, and a positive value indicates that it is located below the origin. The unit is physical pixel px. |
+| right  | number | Yes   | X-axis coordinate of the lower-right corner of the rectangle. This parameter is a floating-point number. 0 represents the coordinate origin, a negative value indicates that it is located to the left of the origin, and a positive value indicates that it is located to the right of the origin. The unit is physical pixel px. |
+| bottom | number | Yes   | Y-axis coordinate of the lower-right corner of the rectangle. This parameter is a floating-point number. 0 represents the coordinate origin, a negative value indicates that it is located above the origin, and a positive value indicates that it is located below the origin. The unit is physical pixel px. |
 
 **Returns**
 
@@ -98,7 +103,6 @@ Copies a rectangle.
 | ------ | ------ | ---- | -------------- |
 | src   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle to be copied.|
 
-
 **Returns**
 
 | Type   | Description                      |
@@ -112,7 +116,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
 let rect2 = drawing.RectUtils.makeCopy(rect);
-console.info('rect2.left:', rect2.left);
+console.info('rect2.left: ', rect2.left);
 console.info('rect2.top: ', rect2.top);
 console.info('rect2.right: ', rect2.right);
 console.info('rect2.bottom: ', rect2.bottom);
@@ -130,14 +134,13 @@ Obtains the width of a rectangle.
 
 | Name| Type   | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object.|
-
+| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes   | Rectangle object whose width is to be obtained. |
 
 **Returns**
 
 | Type   | Description                      |
 | ------- | ------------------------- |
-| number | Width of a rectangle. If the left boundary is greater than the right, the width is negative. If the left boundary is less than the right, the width is positive.|
+| number | Returns the width of the rectangle. If the left boundary of the rectangle is greater than the right boundary, the obtained width is a negative value; if the left boundary is less than the right boundary, it is a positive value. The unit is physical pixels (px). |
 
 **Example**
 
@@ -161,13 +164,13 @@ Obtains the height of a rectangle.
 
 | Name| Type   | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object.|
+| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes   | Rectangle object that needs to get the height. |
 
 **Returns**
 
 | Type   | Description                      |
 | ------- | ------------------------- |
-| number | Height of the rectangle. If the top boundary is greater than the bottom, the height is negative. If the top boundary is less than the bottom, the height is positive.|
+| number | Return the height of the rectangle. If the top boundary of the rectangle is greater than the bottom boundary, the obtained height is a negative value; if the top boundary is less than the bottom boundary, it is a positive value. The unit is physical pixel (px). |
 
 **Example**
 
@@ -182,7 +185,7 @@ let height = drawing.RectUtils.getHeight(rect);
 
 static centerX(rect: common2D.Rect): number
 
-Obtains the X coordinate of the rectangle center.
+Obtains the x-axis coordinate of the center of the rectangle. The x-axis coordinate of the center is half of the sum of the left and right boundaries of the rectangle.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -190,13 +193,13 @@ Obtains the X coordinate of the rectangle center.
 
 | Name| Type   | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object.|
+| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes   | Rectangle object whose center x-axis coordinate needs to be obtained. |
 
 **Returns**
 
 | Type   | Description                      |
 | ------- | ------------------------- |
-| number | X coordinate of the rectangle center.|
+| number | X-axis coordinate of the rectangle center. The unit is physical pixel (px). |
 
 **Example**
 
@@ -211,7 +214,7 @@ let x = drawing.RectUtils.centerX(rect);
 
 static centerY(rect: common2D.Rect): number
 
-Obtains the Y coordinate of the rectangle center.
+Obtains the y-axis coordinate of the center of the rectangle. The y-axis coordinate of the center is half of the sum of the top and bottom boundaries of the rectangle.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -219,13 +222,13 @@ Obtains the Y coordinate of the rectangle center.
 
 | Name| Type   | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object.|
+| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes   | Rectangle object whose center y-axis coordinate needs to be obtained. |
 
 **Returns**
 
 | Type   | Description                      |
 | ------- | ------------------------- |
-| number | Y coordinate of the rectangle center.|
+| number | Returns the y-axis coordinate of the rectangle center. The unit is physical pixel px. |
 
 **Example**
 
@@ -233,7 +236,7 @@ Obtains the Y coordinate of the rectangle center.
 import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeLtrb(20, 30, 30, 40);
-let x = drawing.RectUtils.centerY(rect);
+let y = drawing.RectUtils.centerY(rect);
 ```
 
 ## contains<sup>20+</sup>
@@ -248,14 +251,14 @@ Checks whether a rectangle completely contains another rectangle.
 
 | Name| Type   | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object.|
+| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes   | Rectangle object used to determine whether it contains other rectangles. |
 | other   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Another rectangle object.|
 
 **Returns**
 
 | Type   | Description                      |
 | ------- | ------------------------- |
-| boolean | Whether a rectangle completely contains another rectangle. **true** means yes; **false** otherwise. An empty rectangle does not contain any other rectangle.|
+| boolean | Whether the rectangle fully contains another rectangle. The value true indicates that other is inside rect or the two are equal; the value false indicates that other is not fully inside rect (that is, part of it is outside rect), or either rect or other is an empty rectangle. The left and top boundaries are inside the rectangle, while the right and bottom boundaries are not. |
 
 **Example**
 
@@ -280,17 +283,17 @@ Checks whether a rectangle completely contains another rectangle (which is marke
 
 | Name| Type   | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object.|
-| left   | number | Yes  | X coordinate of the upper left corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point to the right of the coordinate origin, while a negative value places the point to the left.|
-| top    | number | Yes  | Y coordinate of the upper left corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point below the coordinate origin, while a negative value places the point above the coordinate origin.|
-| right  | number | Yes  | X coordinate of the lower right corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point to the right of the coordinate origin, while a negative value places the point to the left.|
-| bottom | number | Yes  | Y coordinate of the lower right corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point below the coordinate origin, while a negative value places the point above the coordinate origin.|
+| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes   | Original rectangle object used to determine whether it contains the rectangle composed of the left, top, right, and bottom coordinates. |
+| left   | number | Yes   | X-axis coordinate of the upper-left corner of the rectangle. This parameter is a floating-point number. 0 represents the coordinate origin, a negative value indicates that it is located to the left of the origin, and a positive value indicates that it is located to the right of the origin. The unit is physical pixel (px). |
+| top    | number | Yes   | Y-axis coordinate of the upper-left corner of the rectangle. This parameter is a floating-point number. 0 represents the coordinate origin, a negative value indicates that it is located above the origin, and a positive value indicates that it is located below the origin. The unit is physical pixel (px). |
+| right  | number | Yes   | X-axis coordinate of the lower-right corner of the rectangle. This parameter is a floating-point number. 0 represents the coordinate origin, a negative value indicates that it is located to the left of the origin, and a positive value indicates that it is located to the right of the origin. The unit is physical pixel (px). |
+| bottom | number | Yes   | Y-axis coordinate of the lower-right corner of the rectangle. This parameter is a floating-point number. 0 represents the coordinate origin, a negative value indicates that it is located above the origin, and a positive value indicates that it is located below the origin. The unit is physical pixel (px). |
 
 **Returns**
 
 | Type   | Description                      |
 | ------- | ------------------------- |
-| boolean | Whether a rectangle completely contains another rectangle defined by the coordinates of its upper left and lower right corners. **true** means yes; **false** otherwise. An empty rectangle does not contain any other rectangle.|
+| boolean | Whether the rectangle fully contains the rectangle composed of the left, top, right, and bottom coordinates. true indicates that the rectangle composed of left, top, right, and bottom is completely inside the rect rectangle, or the two rectangles are completely equal. false indicates that the rectangle is not completely inside rect (that is, part of it is outside rect), or either rect or this rectangle is an empty rectangle. |
 
 **Example**
 
@@ -299,7 +302,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeLtrb(0, 0, 100, 100);
 let isContains = drawing.RectUtils.contains(rect, 10, 20, 30, 40);
-console.info('isContains :', isContains);
+console.info('isContains: ', isContains);
 ```
 
 ## contains<sup>20+</sup>
@@ -314,9 +317,9 @@ Checks whether a rectangle completely contains a specified point.
 
 | Name| Type   | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object.|
-| x   | number | Yes  | X coordinate of a point. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point to the right of the coordinate origin, while a negative value places the point to the left.|
-| y    | number | Yes | Y coordinate of a point. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point below the coordinate origin, while a negative value places the point above the coordinate origin.|
+| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes   | Original rectangle object used to determine whether it contains the specified point. |
+| x   | number | Yes   | X-axis coordinate of the point to be determined. This parameter is a floating-point number. 0 represents the coordinate origin, a negative value indicates that the point is located at the left of the origin, and a positive value indicates that the point is located at the right of the origin. The unit is physical pixel px. |
+| y    | number | Yes  | Y-axis coordinate of the point to be determined. This parameter is a floating-point number. 0 represents the coordinate origin, a negative value indicates that the point is located above the origin, and a positive value indicates that the point is located below the origin. The unit is physical pixel px. |
 
 **Returns**
 
@@ -338,7 +341,7 @@ console.info('isContains: ', isContains);
 
 static inset(rect: common2D.Rect, left: number, top: number, right: number, bottom: number): void
 
-Adds the input left, top, right, and bottom values to the left, top, right, and bottom boundaries of a specified rectangle, respectively.
+Adds the left, top, right, and bottom boundaries of the specified rectangle to the passed-in "Left, Top, Right, Bottom" values respectively.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -346,11 +349,11 @@ Adds the input left, top, right, and bottom values to the left, top, right, and 
 
 | Name| Type   | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object.|
-| left   | number | Yes  | Value to be added to the left boundary of the rectangle (X coordinate of the upper left corner of the rectangle). The value is a floating point number. **0** indicates that no operation is performed. A positive number indicates addition, and a negative number indicates subtraction.|
-| top    | number | Yes  | Value to be added to the top boundary of the rectangle (Y coordinate of the upper left corner of the rectangle). The value is a floating point number. **0** indicates that no operation is performed. A positive number indicates addition, and a negative number indicates subtraction.|
-| right  | number | Yes  | Value to be added to the right boundary of the rectangle (X coordinate of the lower right corner of the rectangle). The value is a floating point number. **0** indicates that no operation is performed. A positive number indicates addition, and a negative number indicates subtraction.|
-| bottom | number | Yes  | Value to be added to the bottom boundary of the rectangle (Y coordinate of the lower right corner of the rectangle). The value is a floating point number. **0** indicates that no operation is performed. A positive number indicates addition, and a negative number indicates subtraction.|
+| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes   | Original rectangle object whose boundary needs to be adjusted. |
+| left   | number | Yes   | Value added to the left boundary of the rectangle (the x-axis coordinate of the upper-left corner of the rectangle). This parameter is a floating-point number. 0 indicates not performing any operation, a positive value indicates performing addition, and a negative value indicates performing subtraction. The unit is physical pixel (px). |
+| top    | number | Yes   | Value added to the top boundary of the rectangle (the y-axis coordinate of the upper-left corner of the rectangle). This parameter is a floating-point number. 0 indicates not performing any operation, a positive value indicates performing addition, and a negative value indicates performing subtraction. The unit is physical pixel (px). |
+| right  | number | Yes   | Value added to the right boundary of the rectangle (the x-axis coordinate of the lower-right corner of the rectangle). This parameter is a floating-point number. 0 indicates not performing any operation, a positive value indicates performing addition, and a negative value indicates performing subtraction. The unit is physical pixel (px). |
+| bottom | number | Yes   | Value added to the bottom boundary of the rectangle (the y-axis coordinate of the lower-right corner of the rectangle). This parameter is a floating-point number. 0 indicates not performing any operation, a positive value indicates performing addition, and a negative value indicates performing subtraction. The unit is physical pixel (px). |
 
 **Example**
 
@@ -359,7 +362,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
 drawing.RectUtils.inset(rect, 10, -20, 30, 60);
-console.info('rect.left:', rect.left);
+console.info('rect.left: ', rect.left);
 console.info('rect.top: ', rect.top);
 console.info('rect.right: ', rect.right);
 console.info('rect.bottom: ', rect.bottom);
@@ -384,7 +387,7 @@ Calculates the intersection of two rectangles and updates the intersection resul
 
 | Type   | Description                      |
 | ------- | ------------------------- |
-| boolean |  Whether two rectangles have an intersection. **true** means yes; **false** otherwise.|
+| boolean | Whether two rectangles intersect. true indicates that the two rectangles intersect, and false indicates that they do not intersect, or that they only overlap at edges or touch at a point. |
 
 **Example**
 
@@ -394,8 +397,8 @@ import { drawing } from '@kit.ArkGraphics2D';
 let rect = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
 let rect2 = drawing.RectUtils.makeLtrb(10, 10, 40, 40);
 let isIntersect = drawing.RectUtils.intersect(rect, rect2);
-console.info('isIntersect :', isIntersect);
-console.info('rect.left:', rect.left);
+console.info('isIntersect: ', isIntersect);
+console.info('rect.left: ', rect.left);
 console.info('rect.top: ', rect.top);
 console.info('rect.right: ', rect.right);
 console.info('rect.bottom: ', rect.bottom);
@@ -413,14 +416,14 @@ Checks whether two rectangles intersect.
 
 | Name| Type   | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Original rectangle used to calculate the intersection.|
-| other   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes | Another rectangle used to calculate the intersection.|
+| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes   | Original rectangle used to determine whether they intersect. |
+| other   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Another rectangle used to determine whether they intersect. |
 
 **Returns**
 
 | Type   | Description                      |
 | ------- | ------------------------- |
-| boolean |  Whether two rectangles have an intersection. **true** means yes; **false** otherwise. If the two rectangles only overlap on the edge or intersect at a point, **false** is returned.|
+| boolean | Whether the two rectangles intersect. true indicates that the two rectangles intersect, and false indicates that they do not. If the two rectangles only overlap at edges or intersect at a point, false is returned. |
 
 **Example**
 
@@ -430,14 +433,14 @@ import { drawing } from '@kit.ArkGraphics2D';
 let rect = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
 let rect2 = drawing.RectUtils.makeLtrb(10, 10, 40, 40);
 let isIntersect = drawing.RectUtils.isIntersect(rect, rect2);
-console.info('isIntersect :', isIntersect);
+console.info('isIntersect:', isIntersect);
 ```
 
 ## union<sup>20+</sup>
 
 static union(rect: common2D.Rect, other: common2D.Rect): void
 
-Calculates the union of two rectangles and updates the union result to the rectangle represented by the first input parameter. If the first input parameter is empty, the union result is updated to the rectangle represented by the second input parameter. If the second input parameter is empty, no operation is performed.
+Calculates the union area of two rectangles and updates the union result to the rectangle area represented by the first input parameter. If the rectangle of the first input parameter is empty, the union result is updated to the rectangle area represented by the second input parameter; if the rectangle of the second input parameter is empty, no operation is performed.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -456,7 +459,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 let rect = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
 let rect2 = drawing.RectUtils.makeLtrb(10, 10, 40, 40);
 drawing.RectUtils.union(rect, rect2);
-console.info('rect.left:', rect.left);
+console.info('rect.left: ', rect.left);
 console.info('rect.top: ', rect.top);
 console.info('rect.right: ', rect.right);
 console.info('rect.bottom: ', rect.bottom);
@@ -474,13 +477,13 @@ Checks whether a rectangle is empty (the left boundary is greater than or equal 
 
 | Name| Type   | Mandatory| Description           |
 | ------ | ------ | ---- | --------------  |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object to be checked.|
+| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes   | Rectangle object used to determine whether it is empty. |
 
 **Returns**
 
 | Type   | Description                      |
 | ------- | ------------------------- |
-| boolean | Whether the rectangle is empty. **true** means yes; **false** otherwise.      |
+| boolean | Whether the rectangle is empty. true indicates that the rectangle is empty, and false indicates the opposite. |
 
 **Example**
 
@@ -489,10 +492,10 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeEmpty();
 let isEmpty = drawing.RectUtils.isEmpty(rect);
-console.info('isEmpty :', isEmpty);
+console.info('isEmpty:', isEmpty);
 let rect2 = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
 isEmpty = drawing.RectUtils.isEmpty(rect2);
-console.info('isEmpty :', isEmpty);
+console.info('isEmpty:', isEmpty);
 ```
 
 ## offset<sup>20+</sup>
@@ -507,9 +510,9 @@ Translates a rectangle.
 
 | Name| Type   | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle to be translated.|
-| dx   | number | Yes   | Horizontal translation distance. The value is a floating point number. **0** indicates no translation. A negative value indicates translation to the left, and a positive value indicates translation to the right.|
-| dy    | number | Yes  | Vertical translation distance. The value is a floating point number. **0** indicates no translation. A negative value indicates translation upwards, and a positive value indicates translation downwards.|
+| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes   | Rectangle area to be translated. |
+| dx   | number | Yes    | Horizontal translation distance. This parameter is a floating-point number. 0 indicates no translation, a negative value indicates translation to the left, and a positive value indicates translation to the right. The unit is physical pixel (px). |
+| dy    | number | Yes   | Vertical translation distance. This parameter is a floating-point number. 0 indicates no translation, a negative value indicates translation upward, and a positive value indicates translation downward. The unit is physical pixel (px). |
 
 **Example**
 
@@ -518,7 +521,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
 drawing.RectUtils.offset(rect, 10, 20);
-console.info('rect.left:', rect.left);
+console.info('rect.left: ', rect.left);
 console.info('rect.top: ', rect.top);
 console.info('rect.right: ', rect.right);
 console.info('rect.bottom: ', rect.bottom);
@@ -536,9 +539,9 @@ Translates a rectangle to a specified position.
 
 | Name| Type   | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle to be translated.|
-| newLeft   | number | Yes  | X coordinate of the position to which the rectangle is translated. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point to the right of the coordinate origin, while a negative value places the point to the left.|
-| newTop    | number | Yes  | Y coordinate of the position to which the rectangle is translated. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point below the coordinate origin, while a negative value places the point above the coordinate origin.|
+| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes   | Rectangle area to be translated. |
+| newLeft   | number | Yes   | X-axis coordinate of the corresponding position to translate to. This parameter is a floating-point number. 0 represents the coordinate origin, a negative value indicates located at the coordinate left of the origin, and a positive value indicates located at the coordinate right of the origin. The unit is physical pixel px. |
+| newTop    | number | Yes   | Y-axis coordinate of the corresponding position to translate to. This parameter is a floating-point number. 0 represents the coordinate origin, a negative value indicates located at the coordinate above the origin, and a positive value indicates located at the coordinate below the origin. The unit is physical pixel px. |
 
 **Example**
 
@@ -547,7 +550,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeLtrb(20, 20, 40, 40);
 drawing.RectUtils.offsetTo(rect, 10, 20);
-console.info('rect.left:', rect.left);
+console.info('rect.left: ', rect.left);
 console.info('rect.top: ', rect.top);
 console.info('rect.right: ', rect.right);
 console.info('rect.bottom: ', rect.bottom);
@@ -565,7 +568,7 @@ Assigns the existing rectangle with another rectangle.
 
 | Name| Type   | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  |  Original rectangle.|
+| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes   | Original rectangle object to be assigned. |
 | other   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Another rectangle.|
 
 **Example**
@@ -576,7 +579,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 let rect = drawing.RectUtils.makeLtrb(10, 20, 30, 40);
 let rect2 = drawing.RectUtils.makeEmpty();
 drawing.RectUtils.setRect(rect2, rect);
-console.info('rect2.left:', rect2.left);
+console.info('rect2.left: ', rect2.left);
 console.info('rect2.top: ', rect2.top);
 console.info('rect2.right: ', rect2.right);
 console.info('rect2.bottom: ', rect2.bottom);
@@ -586,7 +589,7 @@ console.info('rect2.bottom: ', rect2.bottom);
 
 static setLtrb(rect: common2D.Rect, left: number, top: number, right: number, bottom: number): void
 
-Updates the top, bottom, left, and right boundary values of the existing rectangle using the input top, bottom, left, and right values, respectively.
+Updates the left, top, right, and bottom boundary values of the current rectangle using the passed-in "Left, Top, Right, Bottom" values.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -594,11 +597,11 @@ Updates the top, bottom, left, and right boundary values of the existing rectang
 
 | Name| Type   | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object.|
-| left   | number | Yes  | X coordinate of the upper left corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point to the right of the coordinate origin, while a negative value places the point to the left.|
-| top    | number | Yes  | Y coordinate of the upper left corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point below the coordinate origin, while a negative value places the point above the coordinate origin.|
-| right  | number | Yes  | X coordinate of the lower right corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point to the right of the coordinate origin, while a negative value places the point to the left.|
-| bottom | number | Yes  | Y coordinate of the lower right corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point below the coordinate origin, while a negative value places the point above the coordinate origin.|
+| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes   | Original rectangle object whose boundary values need to be updated. |
+| left   | number | Yes   | X-axis coordinate of the upper-left corner of the rectangle. This parameter is a floating-point number. 0 represents the coordinate origin, a negative value indicates that it is located at the coordinate left of the origin, and a positive value indicates that it is located at the coordinate right of the origin. The unit is physical pixel px. |
+| top    | number | Yes   | Y-axis coordinate of the upper-left corner of the rectangle. This parameter is a floating-point number. 0 represents the coordinate origin, a negative value indicates that it is located at the coordinate above the origin, and a positive value indicates that it is located at the coordinate below the origin. The unit is physical pixel px. |
+| right  | number | Yes   | X-axis coordinate of the lower-right corner of the rectangle. This parameter is a floating-point number. 0 represents the coordinate origin, a negative value indicates that it is located at the coordinate left of the origin, and a positive value indicates that it is located at the coordinate right of the origin. The unit is physical pixel px. |
+| bottom | number | Yes   | Y-axis coordinate of the lower-right corner of the rectangle. This parameter is a floating-point number. 0 represents the coordinate origin, a negative value indicates that it is located at the coordinate above the origin, and a positive value indicates that it is located at the coordinate below the origin. The unit is physical pixel px. |
 
 **Example**
 
@@ -607,7 +610,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeEmpty();
 drawing.RectUtils.setLtrb(rect, 10, 20, 30, 60);
-console.info('rect.left:', rect.left);
+console.info('rect.left: ', rect.left);
 console.info('rect.top: ', rect.top);
 console.info('rect.right: ', rect.right);
 console.info('rect.bottom: ', rect.bottom);
@@ -633,8 +636,8 @@ Sets the left, right, top, and bottom boundaries of the rectangle to **0**.
 import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeLtrb(10, 20, 20, 30);
-drawing.RectUtils.setEmpty(rect)
-console.info('rect.left:', rect.left);
+drawing.RectUtils.setEmpty(rect);
+console.info('rect.left: ', rect.left);
 console.info('rect.top: ', rect.top);
 console.info('rect.right: ', rect.right);
 console.info('rect.bottom: ', rect.bottom);
@@ -644,9 +647,9 @@ console.info('rect.bottom: ', rect.bottom);
 
 static sort(rect: common2D.Rect): void
 
-If the rectangle is reversed (that is, the left boundary is greater than the right boundary or the top boundary is greater than the bottom boundary), the top and bottom (left and right) boundary values of the rectangle are exchanged, so that the top boundary is less than the bottom boundary (the left boundary is less than the right boundary).
+If the rectangle is reversed (that is, the left boundary is greater than the right boundary or the top boundary is greater than the bottom boundary), the corresponding reversed boundary values are swapped (if the left boundary is greater than the right boundary, the left and right boundary values are swapped; if the top boundary is greater than the bottom boundary, the top and bottom boundary values are swapped), so that the top boundary is less than the bottom boundary (the left boundary is less than the right boundary).
 
-If the rectangle is not reversed (that is, the left boundary is less than or equal to the right boundary or the top boundary is less than or equal to the bottom boundary), no operation is performed.
+If the rectangle is not inverted (that is, the left boundary is less than or equal to the right boundary and the top boundary is less than or equal to the bottom boundary), no operation is performed.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -654,7 +657,7 @@ If the rectangle is not reversed (that is, the left boundary is less than or equ
 
 | Name| Type   | Mandatory| Description           |
 | ------ | ------ | ---- | --------------  |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object.|
+| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes   | Rectangle object to be sorted by boundary. |
 
 **Example**
 
@@ -663,7 +666,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeLtrb(20, 40, 30, 30);
 drawing.RectUtils.sort(rect);
-console.info('rect.left:', rect.left);
+console.info('rect.left: ', rect.left);
 console.info('rect.top: ', rect.top);
 console.info('rect.right: ', rect.right);
 console.info('rect.bottom: ', rect.bottom);
@@ -681,8 +684,8 @@ Checks whether two rectangles are equal.
 
 | Name| Type   | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes   | Original rectangle.|
-| other  | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Another rectangle.|
+| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes    | Original rectangle to be compared for equality. |
+| other  | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes   | Another rectangle to be compared for equality. |
 
 **Returns**
 
@@ -698,5 +701,5 @@ import { drawing } from '@kit.ArkGraphics2D';
 let rect = drawing.RectUtils.makeLtrb(10, 20, 20, 30);
 let rect2 = drawing.RectUtils.makeEmpty();
 let isEqual = drawing.RectUtils.isEqual(rect, rect2);
-console.info('isEqual :', isEqual);
+console.info('isEqual:', isEqual);
 ```

@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-编辑型标题栏，适用于多选界面或者内容的编辑界面，一般采取左叉右勾的形式。
+编辑型标题栏组件，提供标准的编辑界面标题栏实现，支持自定义左侧按钮类型（返回/取消）、头像显示、右侧菜单项、背景模糊样式等功能。适用于需要进行内容编辑、多选操作的场景，如相册多选编辑、文本编辑器、表单编辑等界面。该组件封装了编辑场景常用的UI交互模式（左叉右勾），开发者无需自行实现标题栏布局和交互逻辑，可快速构建符合设计规范的编辑界面，提升开发效率并保证UI一致性。同时支持无障碍属性配置，满足可访问性要求。
 
 
 > **说明：**
@@ -44,20 +44,20 @@ EditableTitleBar({leftIconStyle: EditableLeftIconType, imageItem?: EditableTitle
 | leftIconStyle | [EditableLeftIconType](#editablelefticontype) | 是 | - | 左侧按钮类型。<br />默认值：EditableLeftIconType.Back，表示返回。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                           |
 | imageItem<sup>12+</sup> | [EditableTitleBarItem](#editabletitlebaritem12) | 否 | - | 用于左侧头像的单个菜单项目。需要在标题栏左侧显示头像时传入此参数，不传入时取默认值，不显示头像。<br />默认值：undefined。<br/>**说明：** 左侧头像不支持配置无障碍属性。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                             |
 | title | [ResourceStr](ts-types.md#resourcestr) | 是 | - | 标题。<br />默认值：''，表示标题内容为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                  |
-| subtitle<sup>12+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | - | 副标题。需要在标题下方显示补充说明信息时传入此参数，不传入时取默认值，不显示副标题。<br />默认值：''，表示副标题内容为空。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                |
+| subtitle<sup>12+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | - | 副标题。需要在标题下方显示补充说明信息时传入此参数，不传入时不显示。<br />默认值：''，表示副标题内容为空。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                |
 | menuItems | Array&lt;[EditableTitleBarMenuItem](#editabletitlebarmenuitem)&gt; | 否 | - | 右侧菜单项目列表。需要在标题栏右侧显示自定义操作按钮时传入此参数，不传入时取默认值，不显示右侧菜单项目列表。<br />默认值：undefined。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                              |
-| isSaveIconRequired<sup>12+</sup> | boolean | 是 | - | 是否需要右侧的保存按钮。<br />默认值：true，表示需要右侧的保存按钮。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                              |
+| isSaveIconRequired<sup>12+</sup> | boolean | 是 | - | 是否需要右侧的保存按钮。true表示需要右侧的保存按钮，false表示不需要右侧的保存按钮。<br/>默认值：true<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。当isSaveIconRequired为false时，不显示保存按钮，onSave回调不会触发。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                              |
 | onSave | ()&nbsp;=&gt;&nbsp;void | 否 | - | 点击保存时的事件。需要自定义保存操作逻辑时传入此参数，缺省时点击按钮无响应。<br />默认值：() => void。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                             |
 | onCancel | ()&nbsp;=&gt;&nbsp;void | 否 | - | 当左侧按钮类型为&nbsp;Cancel，触发取消时的事件。需要自定义返回/取消操作逻辑时传入此参数，缺省时点击左侧按钮无响应。<br />默认值：() => void。<br />从API version 12开始，当左侧按钮类型为&nbsp;Back，触发返回时的事件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                |
 | options<sup>12+</sup> | [EditableTitleBarOptions](#editabletitlebaroptions12) | 是 | - | 标题样式。<br />默认值：<br />{<br />safeAreaTypes: [SafeAreaType.SYSTEM],<br />safeAreaEdges: [SafeAreaEdge.TOP], <br />backgroundColor: '#00000000'<br />}。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | contentMargin<sup>12+</sup> | [LocalizedMargin](ts-types.md#localizedmargin12) | 否 | @Prop | 标题栏外边距，不支持设置负数。<br />默认值：<br /> {start: LengthMetrics.resource(`$r('sys.float.margin_left')`), end: LengthMetrics.resource(`$r('sys.float.margin_right')`)}。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                               |
-| leftIconDefaultFocus<sup>18+</sup> | boolean  | 否 | - | 左侧图标是否为默认焦点。<br />默认值：false，表示不是默认焦点。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                                                     |
-| saveIconDefaultFocus<sup>18+</sup> | boolean  | 否 | - | 保存图标是否为默认焦点。<br />默认值：false，表示不是默认焦点。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                                                               |
+| leftIconDefaultFocus<sup>18+</sup> | boolean  | 否 | - | 左侧图标是否为默认焦点。true表示是默认焦点，false表示不是默认焦点。<br/>默认值：false<br/>**说明：** 若同时有多个可操作区域设置为默认焦点，则设置过默认焦点的可操作区域中显示顺序的第一个为默认焦点。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                                                     |
+| saveIconDefaultFocus<sup>18+</sup> | boolean  | 否 | - | 保存图标是否为默认焦点。true表示是默认焦点，false表示不是默认焦点。<br/>默认值：false<br/>**说明：** 需要右侧保存按钮（isSaveIconRequired为true）时此属性生效。若同时有多个可操作区域设置为默认焦点，则设置过默认焦点的可操作区域中显示顺序的第一个为默认焦点。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                                                               |
 
 > **说明：**
 > 
 > 入参对象不可为undefined，即`EditableTitleBar(undefined)`。
-> 若同时有多个可操作区域设置值默认焦点，则设置过默认焦点的可操作区域中显示顺序的第一个为默认焦点。
+> 若同时有多个可操作区域设置为默认焦点，则设置过默认焦点的可操作区域中显示顺序的第一个为默认焦点。
 
 ## EditableLeftIconType
 
@@ -82,14 +82,14 @@ EditableTitleBar({leftIconStyle: EditableLeftIconType, imageItem?: EditableTitle
 | 名称 | 类型 | 只读 | 可选 | 说明                                                                                                                                                                                                                                                          |
 | -------- | -------- |---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | value | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 图标资源。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                   |
-| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图标资源，优先级大于value。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| label<sup>12+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 图标标签描述。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                 |
-| isEnabled | boolean | 否 | 是 | 是否启用，默认启用。<br> isEnabled为true时，表示为启用。<br> isEnabled为false时，表示为禁用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                       |
-| action | ()&nbsp;=&gt;&nbsp;void | 否 | 是 | 标题栏右侧自定义按钮点击事件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                               |
+| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图标资源，优先级大于value。不设置时使用value参数显示图标。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| label<sup>12+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 图标标签描述。不设置时不显示图标标签。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                 |
+| isEnabled | boolean | 否 | 是 | 是否启用。<br>默认值：true，表示默认启用。<br> isEnabled为true时，表示为启用。<br> isEnabled为false时，表示为禁用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                       |
+| action | ()&nbsp;=&gt;&nbsp;void | 否 | 是 | 标题栏右侧自定义按钮点击事件。不设置时点击按钮无响应。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                               |
 | accessibilityLevel<sup>18+</sup>       | string  | 否 | 是 | 标题栏右侧自定义按钮无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件会转换"yes"。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 标题栏右侧自定义按钮的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值：有label默认值为当前项label属性内容，没有设置label时，默认值为“ ”。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                     |
+| accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 标题栏右侧自定义按钮的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值：未设置label属性时为“ ”；设置label属性后默认值为当前项label属性内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                     |
 | accessibilityDescription<sup>18+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 标题栏右侧自定义按钮的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br/>默认值为“单指双击即可执行”。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。           |
-| defaultFocus<sup>18+<sup>             | boolean | 否 | 是 | 是否设置为默认获焦。<br/>true: 获焦 <br/>false: 不获焦 <br/>默认值：false <br/>使用defaultFocus属性时，需提前将isEnabled属性设置为true，否则defaultFocus值会被识别为false。   <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                                                 |
+| defaultFocus<sup>18+</sup> | boolean | 否 | 是 | 是否设置为默认获焦。<br/>true: 获焦 <br/>false: 不获焦 <br/>默认值：false <br/>使用defaultFocus属性时，需提前将isEnabled属性设置为true，否则defaultFocus设置将不生效。<br/>**说明：** 若同时有多个可操作区域设置为默认焦点，则设置过默认焦点的可操作区域中显示顺序的第一个为默认焦点。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                                                 |
 
 ## EditableTitleBarItem<sup>12+</sup>
 
@@ -115,10 +115,10 @@ type EditableTitleBarItem = EditableTitleBarMenuItem
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- |---|---| -------- |
-| backgroundColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 标题栏背景色。<br />默认值: '#00000000'|
-| backgroundBlurStyle | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 否 | 是 | 标题栏背景模糊样式。<br />默认值: BlurStyle.NONE|
-| safeAreaTypes | Array <[SafeAreaType](ts-universal-attributes-expand-safe-area.md#safeareatype)> | 否 | 是 | 非必填，配置扩展安全区域的类型。<br />默认值: [SafeAreaType.SYSTEM] |
-| safeAreaEdges  | Array <[SafeAreaEdge](ts-universal-attributes-expand-safe-area.md#safeareaedge)> | 否 | 是 | 非必填，配置扩展安全区域的方向。<br />默认值: [SafeAreaEdge.TOP] |
+| backgroundColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 标题栏背景色。<br />默认值：'#00000000'|
+| backgroundBlurStyle | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 否 | 是 | 标题栏背景模糊样式。<br />默认值：BlurStyle.NONE|
+| safeAreaTypes | Array <[SafeAreaType](ts-universal-attributes-expand-safe-area.md#safeareatype)> | 否 | 是 | 配置扩展安全区域的类型。<br />默认值：[SafeAreaType.SYSTEM] |
+| safeAreaEdges  | Array <[SafeAreaEdge](ts-universal-attributes-expand-safe-area.md#safeareaedge)> | 否 | 是 | 配置扩展安全区域的方向。<br />默认值：[SafeAreaEdge.TOP] |
 
 ## 事件
 不支持[通用事件](ts-component-general-events.md)。
@@ -165,7 +165,7 @@ struct Index {
             }
           ],
           onSave: () => {
-            Prompt.showToast({ message: 'on save' })
+            Prompt.showToast({ message: 'on save' });
           }
         })
         Divider().height(2).color(0xCCCCCC)
@@ -175,10 +175,10 @@ struct Index {
 }
 ```
 
-![zh-cn_image_editabletitlebar_example01](figures/zh-cn_image_editabletitlebar_example01.png)
+![image-editabletitlebar-example-01](figures/image-editabletitlebar-example-01.png)
 
 ### 示例2（头像与背景模糊标题栏）
-该示例主要演示EditableTitleBar设置背景模糊、头像；取消右侧保存图标及自定义标题栏外边距的效果。
+该示例主要演示EditableTitleBar设置背景模糊、头像、取消右侧保存图标及自定义标题栏外边距的效果。
 
 ```ts
 import { EditableLeftIconType, EditableTitleBar, LengthMetrics, Prompt } from '@kit.ArkUI';
@@ -203,7 +203,7 @@ struct Index {
             backgroundBlurStyle: BlurStyle.COMPONENT_THICK,
           },
           onSave: () => {
-            Prompt.showToast({ message: "on save" });
+            Prompt.showToast({ message: 'on save' });
           },
         })
         Divider().height(2).color(0xCCCCCC);
@@ -234,7 +234,7 @@ struct Index {
               value: $r('sys.media.ohos_ic_public_remove'),
               isEnabled: true,
               action: () => {
-                Prompt.showToast({ message: "show toast index 1" });
+                Prompt.showToast({ message: 'show toast index 1' });
               }
             }
           ],
@@ -254,7 +254,7 @@ struct Index {
             value: $r('sys.media.ohos_ic_normal_white_grid_image'),
             isEnabled: true,
             action: () => {
-              Prompt.showToast({ message: "show toast index 2" });
+              Prompt.showToast({ message: 'show toast index 2' });
             }
           },
           // 设置标题栏外边距
@@ -265,7 +265,7 @@ struct Index {
               value: $r('sys.media.ohos_ic_public_remove'),
               isEnabled: true,
               action: () => {
-                Prompt.showToast({ message: "show toast index 3" });
+                Prompt.showToast({ message: 'show toast index 3' });
               }
             }
           ],
@@ -279,7 +279,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_editabletitlebar_example02](figures/zh-cn_image_editabletitlebar_example02.png)
+![image-editabletitlebar-example-02](figures/image-editabletitlebar-example-02.png)
 
 ### 示例3（右侧自定义按钮播报）
 从API version 18开始，该示例通过设置标题栏的右侧自定义按钮属性accessibilityText、accessibilityDescription、accessibilityLevel自定义屏幕朗读播报文本。
@@ -315,7 +315,7 @@ struct Index1 {
             value: $r('sys.media.ohos_ic_normal_white_grid_image'),
             isEnabled: true,
             action: () => {
-              Prompt.showToast({ message: "show toast index 1" });
+              Prompt.showToast({ message: 'show toast index 1' });
             }
           },
           menuItems: [
@@ -326,7 +326,7 @@ struct Index1 {
               accessibilityText: '删除',
               accessibilityDescription: '点击即可删除',
               action: () => {
-                Prompt.showToast({ message: "show toast index 2" });
+                Prompt.showToast({ message: 'show toast index 2' });
               }
             }
           ],
@@ -340,7 +340,7 @@ struct Index1 {
   }
 }
 ```
-![zh-cn_image_editabletitlebar_example03](figures/zh-cn_image_editabletitlebar_example03.png)
+![image-editabletitlebar-example-03](figures/image-editabletitlebar-example-03.png)
 
 ### 示例4（左侧图标设置为默认焦点）
 在获焦状态下，该示例通过设置标题栏属性leftIconDefaultFocus使左侧图标默认获焦。
@@ -395,7 +395,7 @@ struct Index {
             value: $r('sys.media.ohos_ic_public_remove'),
             isEnabled: true,
             action: () => {
-              Prompt.showToast({ message: "show toast index 1" });
+              Prompt.showToast({ message: 'show toast index 1' });
             }
           },
           {
@@ -403,7 +403,7 @@ struct Index {
             isEnabled: true,
             defaultFocus: true,
             action: () => {
-              Prompt.showToast({ message: "show toast index 2" });
+              Prompt.showToast({ message: 'show toast index 2' });
             }
           }
         ],
@@ -460,7 +460,7 @@ struct Index {
             value: $r('sys.media.ohos_app_icon'),
             isEnabled: true,
             action: () => {
-              Prompt.showToast({ message: "show toast index 1" });
+              Prompt.showToast({ message: 'show toast index 1' });
             }
           },
           menuItems: [
@@ -486,4 +486,4 @@ struct Index {
 }
 ```
 
-![示例6-EditableTitleBar示例6 设置Symbol类型图标](figures/zh-cn_image_editabletitlebar_demo_06.png)
+![示例6-EditableTitleBar示例6 设置Symbol类型图标](figures/image-editabletitlebar-demo06.png)

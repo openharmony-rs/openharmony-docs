@@ -6,8 +6,14 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=99672258e158c110c5ee74a166a44dafda8d8dee translatedAt=2026-10-30T03:47:54.976Z pushedAt=2026-10-30T07:25:39.136Z nl=1 -->
 
 For details about the corresponding algorithm specifications, see [HKDF](crypto-key-derivation-overview.md#hkdf).
+
+## Linking Related Dynamic Libraries in the CMake Script
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
 
 ## How to Develop
 
@@ -39,7 +45,9 @@ static OH_Crypto_ErrCode setParams(OH_CryptoKdfParams **params)
     };
     OH_Crypto_ErrCode ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_KEY_DATABLOB, &key);
     if (ret != CRYPTO_SUCCESS) {
-        goto end;
+        OH_CryptoKdfParams_Destroy(*params);
+        *params = nullptr;
+        return ret;
     }
 
     // Set the salt value.
@@ -50,7 +58,9 @@ static OH_Crypto_ErrCode setParams(OH_CryptoKdfParams **params)
     };
     ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_SALT_DATABLOB, &salt);
     if (ret != CRYPTO_SUCCESS) {
-        goto end;
+        OH_CryptoKdfParams_Destroy(*params);
+        *params = nullptr;
+        return ret;
     }
 
     // (Optional) Set application-specific information.
@@ -61,12 +71,11 @@ static OH_Crypto_ErrCode setParams(OH_CryptoKdfParams **params)
     };
     ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_INFO_DATABLOB, &info);
     if (ret != CRYPTO_SUCCESS) {
-        goto end;
+        OH_CryptoKdfParams_Destroy(*params);
+        *params = nullptr;
+        return ret;
     }
-end:
-    OH_CryptoKdfParams_Destroy(*params);
-    *params = nullptr;
-    return ret;
+    return CRYPTO_SUCCESS;
 }
 
 OH_Crypto_ErrCode doTestHkdf()

@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -44,11 +44,11 @@
 
    ![sample_stack_1](figures/sample_stack_1.png)
 
-   （2）第1轮未检测到主线程处理超时（主线程处理时长 > 150ms），第2轮检测到主线程处理超时（主线程处理时长 > 150ms），开始执行堆栈采集流程，每隔150ms采集1次，共采集10次堆栈，第12轮收集堆栈并上报事件，结束检测。
+   （2）第1轮未检测到主线程处理超时（主线程处理时长 < 150ms），第2轮检测到主线程处理超时（主线程处理时长 > 150ms），开始执行堆栈采集流程，每隔150ms采集1次，共采集10次堆栈，第12轮收集堆栈并上报事件，结束检测。
 
    ![sample_stack_2](figures/sample_stack_2.png)
 
-   （3）前2轮均未检测到主线程处理超时（主线程处理时长 > 150ms），结束检测。
+   （3）前2轮均未检测到主线程处理超时（主线程处理时长 < 150ms），结束检测。
 
    ![sample_stack_3](figures/sample_stack_3.png)
 
@@ -56,7 +56,7 @@
 
    当主线程处理超时（主线程处理时长 > 450ms），调用开启trace采集接口，启动周期性检测，每隔150ms检测主线程处理时长超过150ms（检测轮数 = 20）。分两种情况：
 
-   （1）20轮均未检测到主线程处理超时（主线程处理时长 > 150ms），无trace文件生成，结束检测。
+   （1）20轮均未检测到主线程处理超时（主线程处理时长 < 150ms），无trace文件生成，结束检测。
 
    ![dump-trace1](figures/dump-trace1.PNG)
 
@@ -66,7 +66,7 @@
 
 ### 日志获取
 
-主线程超时日志保存在应用沙箱目录下，可通过以下方式获取
+主线程超时日志保存在应用沙箱目录下，可通过以下方式获取。
 
 **通过HiAppEvent接口订阅**
 
@@ -76,7 +76,7 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 
 1. 主线程超时检测采集日志老化规格
 
-   一般情况，栈文件的大小为7-10KB，trace大小为1-5MB。应用沙箱内的watchdog目录最大保存10M内容，超出后，会自动触发此目录老化机制，按照文件名顺序最多删除100文件。目录地址：/data/storage/el2/log/watchdog/。
+   一般情况，栈文件的大小为7-10KB，trace大小为1-5MB。应用沙箱内的watchdog目录最大保存10MB内容，超出后，会自动触发此目录老化机制，按照文件名顺序最多删除100文件。目录地址：/data/storage/el2/log/watchdog/。
 
 2. 主线程超时检测采集堆栈规格
 
@@ -138,7 +138,7 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 
 3. 主线程超时检测采集trace规格
 
-   trace文件大小约为1-5M左右。trace文件可以通过[HiSmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host)工具进行可视化分析。工具下载链接：[developtools_smartperf_host官方发行版](https://gitcode.com/openharmony/developtools_smartperf_host/releases)。
+   trace文件大小约为1-5MB左右。trace文件可以通过[HiSmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host)工具进行可视化分析。工具下载链接：[developtools_smartperf_host官方发行版](https://gitcode.com/openharmony/developtools_smartperf_host/releases)。
 
    trace文件说明参考：[web端加载trace说明](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/ide/src/doc/md/quickstart_systemtrace.md)。
 

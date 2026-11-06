@@ -2,12 +2,13 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @yu_haoqiaida-->
-<!--Designer: @kutcherzhou1-->
+<!--Owner: @leiguangyu-->
+<!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=0cdda4f098ed696c323581a77df8c7aa76f74baa translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
-The HiDebug ArkTS APIs are independent. You can call them to obtain debugging information. For details about how to call the APIs, see the examples in [@ohos.hidebug (HiDebug)](../reference/apis-performance-analysis-kit/js-apis-hidebug.md).
+HiDebug ArkTS APIs are self-contained and can be called directly when debugging information is needed. For details about how to call these APIs, refer to the examples in [@ohos.hidebug](../reference/apis-performance-analysis-kit/js-apis-hidebug.md).
 
 ## How to Develop
 
@@ -28,11 +29,11 @@ This topic describes how to call the HiDebug ArkTS API to obtain the system CPU 
    <!-- @[TestHidebugArk_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   function testHiDebugArk () { // Implement the API as required.
+   function testHiDebugArk() {  // Implement the API as required.
      try {
        hilog.info(0x0000, 'testTag', `getSystemCpuUsage: ${hidebug.getSystemCpuUsage()}`);
      } catch (error) {
-       hilog.info(0x0000, 'testTag', `error code: ${(error as BusinessError).code},
+       hilog.error(0x0000, 'testTag', `error code: ${(error as BusinessError).code},
          error msg: ${(error as BusinessError).message}`);
      }
    }

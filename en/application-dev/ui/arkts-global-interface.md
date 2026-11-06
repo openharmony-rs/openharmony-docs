@@ -1,10 +1,11 @@
 # Using the UI Context API for UI Operations (UIContext)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=f37cc5b65f3bd1e176acfd29bde802291ebab3c0 translatedAt=2026-11-03T08:23:03.256Z pushedAt=2026-11-03T09:04:21.729Z nl=1 -->
 
 This document explains concepts related to multiple UI instances, reasons for replacing global APIs with [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) APIs, and corresponding migration solutions.
 
@@ -36,7 +37,7 @@ The following figure illustrates the execution scenario of asynchronous tasks in
 
 An ambiguous UI context occurs when the target UI instance cannot be clearly identified at the call site when invoking ArkUI global APIs.
 
-Currently, the system supports two [application models](../application-models/application-models.md): the FA model and the stage model. In the FA model, each UI instance runs on an independent ArkTS engine. Global APIs can be traced to the corresponding UI instance via the engine, ensuring a clear UI context.
+The system currently supports two [app models](../application-models/stage-model-development-overview.md): the FA model and the stage model. In the FA model, each UI instance has an independent ArkTS engine, and global APIs can trace the corresponding UI instance through the ArkTS engine, so there is no issue of ambiguous UI context.
 
 In the stage model, multiple UI instances can coexist within a single ArkTS engine. Global APIs determine the current UI context by analyzing context information in the call chain. However, asynchronous APIs and non-UI APIs may fail to trace context correctly.
 
@@ -52,18 +53,16 @@ The following figure illustrates the relationship between the ArkTS engine and U
 
 The table below lists common API replacements for multi-instance scenarios. For the full list of supported APIs, see [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md).
 
-In the sample code, [isAvailable](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#isavailable20) is available since API version 20, with other APIs available since version 18.
-
 |               Global API               |               Substitute API               |            Description           |
 | :-----------------------------------: | :-----------------------------------: | :------------------------: |
 |            @ohos.animator             |            createAnimator             |      Custom animation controller.     |
 |     @ohos.arkui.componentSnapshot     |         getComponentSnapshot          |          Component snapshot.         |
 |      @ohos.arkui.componentUtils       |           getComponentUtils           |         Component utility class.        |
 |      @ohos.arkui.dragController       |           getDragController           |         Drag controller.        |
-|         @ohos.arkui.inspector         |            getUIInspector             |        Component layout callback.       |
+|         @ohos.arkui.inspector         |            getUIInspector             |        Component layout inspector.       |
 |         @ohos.arkui.observer          |             getUIObserver             |          Observer.         |
-|              @ohos.font               |                getFont                |         Custom font registration.        |
-|             @ohos.measure             |            getMeasureUtil             |          Text measurement.         |
+|              @ohos.font               |                getFont                |         Custom font.        |
+|             @ohos.measure             |            getMeasureUtils             |          Text calculation.          |
 |           @ohos.mediaquery            |             getMediaQuery             |          Media query.         |
 |          @ohos.promptAction           |            getPromptAction            |            Popup.           |
 |             @ohos.router              |               getRouter               |          Page routing.         |
@@ -75,8 +74,8 @@ In the sample code, [isAvailable](../reference/apis-arkui/arkts-apis-uicontext-u
 |           TextPickerDialog            |         showTextPickerDialog          |     Text picker dialog box.    |
 |              ContextMenu              |       getContextMenuController        |          Menu control.         |
 | vp2px/px2vp/fp2px/px2fp/lpx2px/px2lpx | vp2px/px2vp/fp2px/px2fp/lpx2px/px2lpx |        Pixel unit conversion.       |
-|             focusControl              |            getFocusControl            |          Focus control.         |
-|             cursorControl             |           getCursorControl            |          Cursor control.         |
+|             focusControl              |            getFocusController            |          Focus control          |
+|             cursorControl             |           getCursorController            |          Cursor control          |
 |              getContext               |            getHostContext             | Obtains the context of the current ability.|
 |        LocalStorage.getShared         |         getSharedLocalStorage         |  Obtains the storage passed by the current ability. |
 |               animateTo               |               animateTo               |          Triggers an explicit animation.         |
@@ -84,7 +83,7 @@ In the sample code, [isAvailable](../reference/apis-arkui/arkts-apis-uicontext-u
 
 ## Replacing Global APIs with Common UIContext APIs
 
-The following uses [pixel unit conversion](../reference/apis-arkui/arkui-ts/ts-pixel-units.md) as an example to illustrate how to replace global APIs with common UIContext APIs.
+The following examples of replacing global APIs with UIContext APIs use the [pixel unit](../reference/apis-arkui/arkui-ts/ts-pixel-units.md) API as an example. Among the APIs used in the sample code, [isAvailable](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#isavailable20) takes effect from API version 20, UIContext.resolveUIContext(), UIContext.getCallingScopeUIContext(), UIContext.getLastFocusedUIContext(), UIContext.getLastForegroundUIContext(), UIContext.getAllUIContexts(), and the UIContext() constructor take effect from API version 22, and the remaining APIs take effect from API version 15.
 
 ### Obtaining UIContext Through a Custom Component
 
@@ -127,7 +126,7 @@ struct Index {
 
 Using the UIContext API (recommended):
 
-<!-- @[Main_NewGlobal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/NewGlobal.ets) --> 
+<!-- @[Main_NewGlobal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/NewGlobal.ets) -->  
 
 ``` TypeScript
 // pages/NewGlobal.ets
@@ -205,7 +204,7 @@ export default class EntryAbility extends UIAbility {
 ```
 Using the UIContext API (recommended):
 
-<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -272,14 +271,14 @@ export default class EntryAbility extends UIAbility {
 Starting from API version 22, you can retrieve the UIContext object using the static method [resolveUIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#resolveuicontext22) of the **UIContext** class.
 
 >**NOTE**
-> - It is recommended that you obtain the UIContext through custom components or window objects, as these methods yield predictable results unaffected by the calling scope.
-> - While replacing global APIs with this static method ensures behavior consistency at the same call site, it does not guarantee the UIContext maps to the intended UI instance.
+> - It is recommended that you obtain the **UIContext** through custom components or window objects, as these methods yield predictable results unaffected by the calling scope.
+> - While replacing global APIs with this static method ensures behavior consistency at the same call site, it does not guarantee the **UIContext** maps to the intended UI instance.
 
 The following examples demonstrate replacing global APIs with the static method at different execution stages.
 
 Using the global API:
-<!--deprecated_code_no_check-->
 
+<!--deprecated_code_no_check-->
 ``` TypeScript
 // entryability/EntryAbility.ets
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -347,6 +346,7 @@ Using the static method for replacement:
 
 <!-- @[Common_Entry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
+<!--deprecated_code_no_check-->
 ``` TypeScript
 // entryability/EntryAbility.ets
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -388,8 +388,6 @@ export default class EntryAbility extends UIAbility {
       hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
     });
     // loadContent is asynchronous. The UI instance may not exist here.
-    pxValue = vp2px(20);
-    hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
   }
 
   onWindowStageDestroy(): void {
@@ -441,10 +439,14 @@ struct Index {
 
 The logic of [resolveUIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#resolveuicontext22) mirrors the fallback mechanism in the example below, which uses basic query APIs to determine the appropriate UIContext:
 
-<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/common/Utils.ets) -->
+<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/common/Utils.ets) -->  
 
 ``` TypeScript
-function GetUIContextByAtomicInterface(): UIContext {
+// common/Utils.ets
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext } from '@kit.ArkUI';
+
+export function GetUIContextByAtomicInterface(): UIContext {
   let callingScopeUIContext = UIContext.getCallingScopeUIContext();
   if (callingScopeUIContext) {
     hilog.info(0x00, 'testTag', `Get UIContext of calling scope.`)
@@ -508,11 +510,12 @@ class PixelUtils {
 
 Using the UIContext API (recommended):
 
-<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/Utils.ets) -->
+<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/Utils.ets) -->  
 
 ``` TypeScript
 // common/Utils.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext } from '@kit.ArkUI';
 
 const DOMAIN = 0x0000;
 
@@ -545,7 +548,7 @@ export class PixelUtil {
     return _uiContext.fp2px(fpValue)
   }
 
-  lpx2px(lpxValue: number, uiContext?: UIContext): number | undefined {
+  static lpx2px(lpxValue: number, uiContext?: UIContext): number | undefined {
     let _uiContext = uiContext ?? PixelUtil.uiContext;
     if (!_uiContext || !_uiContext.isAvailable()) {
       hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
@@ -555,7 +558,7 @@ export class PixelUtil {
   }
 }
 ```
-<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -621,7 +624,7 @@ export default class EntryAbility extends UIAbility {
 
 When using the encapsulated substitute API, pass the **UIContext** parameter if it is available.
 
-<!-- @[Main_VpPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/VpPage.ets) -->
+<!-- @[Main_VpPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/VpPage.ets) -->  
 
 ``` TypeScript
 // pages/VpPage.ets
@@ -654,7 +657,7 @@ struct Index {
 
 If **UIContext** is unavailable, call the method directly.
 
-<!-- @[Common_pxValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_pxValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 let pxValue = PixelUtils.vp2px(20);
@@ -672,11 +675,11 @@ If an application has multiple windows and the **UIContext** object cannot be di
 
 Using the UIContext API (recommended):
 
-<!-- @[Common_WindowUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/WindowUtils.ets) -->
+<!-- @[Common_WindowUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/WindowUtils.ets) -->  
 
 ``` TypeScript
 // common/WindowUtils.ets
-import { display, window } from '@kit.ArkUI';
+import { display, window, UIContext } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -721,7 +724,7 @@ export class WindowUIContextUtils {
   }
 }
 ```
-<!-- @[Common_registerWindowCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_registerWindowCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -783,7 +786,7 @@ export default class EntryAbility extends UIAbility {
 }
 
 ```
-<!-- @[Main_WindowTestPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/WindowTestPage.ets) -->
+<!-- @[Main_WindowTestPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/WindowTestPage.ets) -->  
 
 ``` TypeScript
 // pages/WindowTestPage.ets
@@ -852,7 +855,7 @@ If the UIContext object does not provide an alternative API (for example, **Cale
 
 Using the UIContext API (recommended):
 
-<!-- @[Main_CalendarPickerDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/CalendarPickerDialogPage.ets) -->
+<!-- @[Main_CalendarPickerDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/CalendarPickerDialogPage.ets) -->  
 
 ``` TypeScript
 // pages/CalendarPickerDialogPage.ets
@@ -926,12 +929,12 @@ export class PixelUtils {
 
 Using the UIContext API (recommended):
 
-<!-- @[Common_PixelUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/UIContext.ets) -->
+<!-- @[Common_PixelUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/UIContext.ets) -->  
 
 ``` TypeScript
 // Common/UIContext.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { display } from '@kit.ArkUI';
+import { display, UIContext } from '@kit.ArkUI';
 
 const DOMAIN = 0x0000;
 
@@ -961,7 +964,7 @@ export class PixelUtils {
     return _uiContext.fp2px(fpValue)
   }
 
-  lpx2px(lpxValue: number, uiContext?: UIContext): number | undefined {
+  static lpx2px(lpxValue: number, uiContext?: UIContext): number | undefined {
     let _uiContext = uiContext ?? PixelUtils.uiContext;
     if (!_uiContext || !_uiContext.isAvailable()) {
       hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
@@ -982,7 +985,7 @@ The [getContext](../reference/apis-arkui/js-apis-getContext.md) API retrieves th
 | After the main window is created and **loadContent** or **setUIContent** is called, with a custom component object passed| The context of the ability to which the custom component's UI instance belongs is returned.| None                                                          |
 | After **loadContent** or **setUIContent** is called, and in the UI callback function         | The ability context associated with the UI instance identified through UI calling scope tracing.| None                                                          |
 | In a single-ability, single-window application, after **loadContent** or **setUIContent** is called, in a non-UI asynchronous callback, with no custom component object passed| If the specific UI instance cannot be located through UI calling scope tracing, the unique UI instance is determined based on the current singleton scenario, and the context of the ability associated with that UI instance is returned.| None                                                          |
-| In a multi-ability or multi-window application, after **loadContent** or **setUIContent** is called, in an asynchronous callback, with no custom component object passed| The UI context cannot trace the calling scope to find the specific UI instance, and no unique instance exists. The API prioritizes the latest focused, latest foregrounded, or latest created UI instance for calculations. The ability context of the window to which that UI instance belongs is returned.| In multi-instance scenarios, results may mismatch expectations. For example: With two ability instances, the API may return the Context of the second-created ability instead of the first.|
+| In a multi-UI-instance scenario with multiple abilities or multiple windows, where the API is called after loadContent or setUIContent but in another asynchronous callback without passing a custom component object. | The specific UI instance cannot be identified based on the UI-tracked call scope, and a unique instance cannot be determined. The API searches for a matching UI instance in the following priority order: most recently focused, most recently foregrounded, and most recently created, and returns the Context of the ability to which that UI instance belongs. | The result may be inconsistent with expectations in multi-instance scenarios. For example, when two abilities exist, the Context of the second-created ability is returned instead of the expected Context of the first-created ability. |
 | After all windows are destroyed and no UI instance is available                                | If no valid UI instance is available, **undefined** is returned.                           | None                                                        |
 
 In single-ability scenarios, it is recommended that you directly retrieve the context property of the ability itself.
@@ -1022,9 +1025,11 @@ struct GetContextPage {
 }
 ```
 
+
+
 Using the UIContext API (recommended):
 
-<!-- @[Common_ContextUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/ContextUtils.ets) -->
+<!-- @[Common_ContextUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/ContextUtils.ets) -->  
 
 ``` TypeScript
 // Common/ContextUtils.ets
@@ -1047,7 +1052,7 @@ export class ContextUtils {
 
 The default return value of the API is set to the context member property of the ability.
 
-<!-- @[Common_setContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_setContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -1077,9 +1082,9 @@ export default class EntryAbility extends UIAbility {
 
 ```
 
-You are advised to pass the UIContext in the UI layer to ensure the operation behaves as expected, or directly call **getHostContext()**.
+You are advised to pass the **UIContext** in the UI layer to ensure the operation behaves as expected, or directly call **getHostContext()**.
 
-<!-- @[Main_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/ContextPage.ets) -->
+<!-- @[Main_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/ContextPage.ets) -->  
 
 ``` TypeScript
 // pages/ContextPage.ets
@@ -1107,7 +1112,7 @@ struct Index {
 
 In non-UI scenarios, the default return value set during window creation is returned.
 
-<!-- @[Common_getContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_getContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 let context = ContextUtils.getContext();
@@ -1153,7 +1158,7 @@ struct LocalStoragePage {
 
 Using the UIContext API (recommended):
 
-<!-- @[Main_LocalStoragePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/LocalStoragePage.ets) -->
+<!-- @[Main_LocalStoragePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/LocalStoragePage.ets) -->  
 
 ``` TypeScript
 // pages/LocalStoragePage
@@ -1188,7 +1193,7 @@ struct LocalStoragePage {
 
 To use the shared LocalStorage object, you must pass the LocalStorage object when loading content. For details, see [LocalStorage: Storing Page-Level UI State](./state-management/arkts-localstorage.md).
 
-<!-- @[Common_LocalStorage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[Common_LocalStorage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets

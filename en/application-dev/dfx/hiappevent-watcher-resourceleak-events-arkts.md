@@ -5,11 +5,12 @@
 <!--Owner: @xuxinao-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=ac0fe5669df91677159af67fa84464beeb446ebe translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 ## Available APIs
 
-This topic describes how to use the ArkTS APIs provided by HiAppEvent to subscribe to resource leak events. For details about how to use the APIs, see [@ohos.hiviewdfx.hiAppEvent (Application Event Logging)](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
+This document describes how to use the ArkTS APIs provided by HiAppEvent to subscribe to resource leak events. For detailed usage instructions (parameter constraints, value ranges, etc.) of the APIs, see [@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
 
 
 ### APIs for Setting Custom Parameters
@@ -40,7 +41,7 @@ The following example describes how to subscribe to the memory leak event.
 
    ```ts
    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { deviceInfo, BusinessError } from '@kit.BasicServicesKit';
    ```
 
 2. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, add a watcher in **onCreate()** to subscribe to system events. The sample code is as follows:
@@ -62,6 +63,21 @@ The following example describes how to subscribe to the memory leak event.
    }
    // Set custom configurations for the resource leak event.
    hiAppEvent.setEventConfig(hiAppEvent.event.RESOURCE_OVERLIMIT, configParams);
+   if (deviceInfo.sdkApiVersion >= 24) {  // API version 24 and later supports setting page switch logs.
+     // Configure page switch logs.
+     let switchLogPolicy : hiAppEvent.EventPolicy = {
+       "resourceOverlimitPolicy": {
+         "pageSwitchLogEnable": true
+       }
+     };
+     // Set resource leak log configuration parameters.
+     hiAppEvent.configEventPolicy(switchLogPolicy).then(() => {
+       hilog.info(0x0000, 'testTag', `HiAppEvent success to config event policy.`);
+     }).catch((err: BusinessError) => {
+       hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
+     });
+   }
+
    hiAppEvent.addWatcher({
      // Set the watcher name. The system identifies different watchers based on their names.
      name: "watcher",
@@ -81,6 +97,8 @@ The following example describes how to subscribe to the memory leak event.
          for (const eventInfo of eventGroup.appEventInfos) {
            // Obtain the memory information when the resource leak event occurs.
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo=${JSON.stringify(eventInfo)}`);
+           // Obtain page switch logs for resource leak events.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.page_switch_log=${JSON.stringify(eventInfo.params['page_switch_log'])}`);
          }
        }
      }
@@ -103,18 +121,18 @@ The following example describes how to subscribe to the memory leak event.
    
    ``` TypeScript
    Button('pss leak')
-       .type(ButtonType.Capsule)
-       .margin({
-         top: 20
-       })
-       .backgroundColor('#0D9FFB')
-       .width('80%')
-       .height('5%')
-       .onClick(() => {
-         // Set a simple resource leak scenario.
-         hilog.info(0x0000, 'testTag', 'click pss leak button');
-         testNapi.leakMB(3072);
-       })
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
+       // Set up a simple resource leak scenario.
+       hilog.info(0x0000, 'testTag', 'click pss leak button');
+       testNapi.leakMB(3072);
+     })
    Button('js leak')
      .type(ButtonType.Capsule)
      .margin({
@@ -288,7 +306,7 @@ The following example describes how to subscribe to the memory leak event.
        return exports;
    }
    ```
-	
+
    Edit the **Index.d.ts** file.
 
    - Add the following type declaration:
@@ -301,33 +319,41 @@ The following example describes how to subscribe to the memory leak event.
 
 3. Click the **Run** button in DevEco Studio to run the project, click the **pss leak** button, and then a PSS memory leak event will be reported after 15 to 30 minutes.
 
-   For the same application, the resource leak event can be reported at most once within 24 hours. If the memory leak needs to be reported again within a shorter time, restart the device.
+   > **NOTE**
+   >
+   > 1. A [nolog version](performance-analysis-kit-terminology.md#nolog-version) does not capture memory call stack logs by default.
+   >
+   > 2. A resource leak event is reported at most once per application within 24 hours. To report another event sooner, restart the device first. After triggering a memory leak, wait 15 to 30 minutes to receive the memory leak event.
+   >
+   > 3. Enabling **System resource leak log** in **Developer options** enables memory call stack capture. Restart the device after changing the setting. Capturing the call stack typically delays memory leak event reporting by at least another half hour. This setting also affects other resource leak events that involve call stack capture.
 
 4. After a PSS memory leak event is reported, the system calls **onReceive()**. You can view the following event information in the **Log** window.
 
    ```text
    HiAppEvent onReceive: domain=OS
    HiAppEvent eventName=RESOURCE_OVERLIMIT
-   HiAppEvent eventInfo={"domain":"OS","name":"RESOURCE_OVERLIMIT","eventType":1,"params":{"bundle_name":"com.example.myapplication","bundle_version":"1.0.0","memory":{"pss":2100257,"rss":1352644,"sys_avail_mem":250272,"sys_free_mem":60004,"sys_total_mem":1992340,"vss":2462936},"pid":20731,"resource_type":"pss_memory","time":1502348798106,"uid":20010044,"external_log": ["/data/storage/el2/log/resourcelimit/RESOURCE_OVERLIMIT_1725614572401_6808.log", "/data/storage/el2/log/resourcelimit/RESOURCE_OVERLIMIT_1725614572412_6808.log"], "log_over_limit": false}}
+   HiAppEvent eventInfo={"domain":"OS","name":"RESOURCE_OVERLIMIT","eventType":1,"params":{"bundle_name":"com.example.myapplication", "app_running_unique_id":"26457812872126536953", "bundle_version":"1.0.0","memory":{"pss":2100257,"rss":1352644,"sys_avail_mem":250272,"sys_free_mem":60004,"sys_total_mem":1992340,"vss":2462936},"pid":20731,"resource_type":"pss_memory","time":1502348798106,"uid":20010044,"external_log": ["/data/storage/el2/log/resourcelimit/RESOURCE_OVERLIMIT_1725614572401_6808.log", "/data/storage/el2/log/resourcelimit/RESOURCE_OVERLIMIT_1725614572412_6808.log"], "log_over_limit": false}}
+   HiAppEvent eventInfo.params.page_switch_log="[\"/data/storage/el2/log/page_switch/snapshot/page_switch-com.example.myapplication-1-1-20260427162423841.log\"]"
    ```
 
    As shown in the preceding information, **eventInfo** contains the [params](hiappevent-watcher-resourceleak-events.md#params) field of the resource leak event. You can determine the current leak type based on the **resource_type** field in **eventInfo**.
 
-5. Enable **System resource leak log** in **Developer options**. (You need to restart the device to enable or disable this functionality.) Click the **Run** button in DevEco Studio to run the project. Click **js leak** and wait for 3 to 5 seconds. The application will exit unexpectedly. After the application restarts, the system reports a JS memory leak event.
+5. Enable **System resource leak log** in **Developer options**. (You need to restart the device to enable or disable this functionality.) Click the **Run** button in DevEco Studio to run the project. Click **js leak** and wait for 3 to 5 seconds. The app will exit unexpectedly. After the app restarts, the system reports a JS memory leak event.
 
-   For the same application, the JS memory leak event can be reported at most once within 24 hours. If the memory leak needs to be reported again within a shorter time, restart the device.
+   For the same app, the JS memory leak event can be reported at most once within 24 hours. If the memory leak needs to be reported again within a shorter time, restart the device.
 
-6. After the JS memory leak event is reported, the system calls the **onReceive** function of the application. You can view the following event information in the **Log** window.
+6. After the JS memory leak event is reported, the system calls the **onReceive** function of the app. You can view the following event information in the **Log** window.
 
    ```text
    HiAppEvent onReceive: domain=OS
    HiAppEvent eventName=RESOURCE_OVERLIMIT
-   HiAppEvent eventInfo={"domain":"OS","name":"RESOURCE_OVERLIMIT","eventType":1,"params":{"bundle_name":"com.example.myapplication","bundle_version":"1.0.0","external_log":[],"log_over_limit":true,"memory":{"limit_size":0,"live_object_size":0},"pid":14941,"resource_type":"js_heap","test_data":100,"time":1752564700511,"uid":20020181}}
+   HiAppEvent eventInfo={"domain":"OS","name":"RESOURCE_OVERLIMIT","eventType":1,"params":{"bundle_name":"com.example.myapplication", "app_running_unique_id":"45354125624752145258", "bundle_version":"1.0.0","external_log":[],"log_over_limit":true,"memory":{"limit_size":0,"live_object_size":0},"pid":14941,"resource_type":"js_heap","test_data":100,"time":1752564700511,"uid":20020181}}
+   HiAppEvent eventInfo.params.page_switch_log="[\"/data/storage/el2/log/page_switch/snapshot/page_switch-com.example.myapplication-1-1-20260427162423841.log\"]"
    ```
 
    In the preceding information, the **test_data** field in **eventInfo** is the content of the key-value pair set in step 1.
 
-### Step 3: Subscribing to js_heap Snapshots in the nolog Version
+## Subscribing to js_heap Snapshots in the Nolog Version
 
 After receiving the subscribed event, the application should obtain the path of the heap snapshot file from the **external_log** field of the event, move or upload the file to the cloud as soon as possible, and then delete the original heap snapshot file. Otherwise, the next heap snapshot file may fail to be generated due to insufficient storage space (up to 2 GB) of the application sandbox path directory.
 
@@ -337,39 +363,39 @@ Since API version 14, you can change the log file name extension to **.rawheap**
 
 You can select either of the following methods:
 
-   Method 1: Configure the following environment variables in the **AppScope/app.json5** file:
+### Configuring Environment Variables in the AppScope/app.json5 File
 
-   ```text
-   "appEnvironments": [
-     {
-       "name": "DFX_RESOURCE_OVERLIMIT_OPTIONS",
-       "value": "oomdump:enable"
-     }
-   ]
-   ```
+```text
+"appEnvironments": [
+  {
+    "name": "DFX_RESOURCE_OVERLIMIT_OPTIONS",
+    "value": "oomdump:enable"
+  }
+]
+```
 
-   **VM heap snapshot generation specifications of the nolog version**
+**VM Heap Snapshot Generation Specifications of the Nolog Version**
 
-   The heap snapshot file size is about 0.4 GB to 1.2 GB (about 50 MB to 100 MB after being compressed into a .zip package). Due to the large size, the system controls the number of times that heap snapshots are generated. The specifications are as follows:
+The heap snapshot file size is about 0.4 GB to 1.2 GB (about 50 MB to 100 MB after being compressed into a .zip package). Due to the large size, the system controls the number of times that heap snapshots can be generated. The specifications are as follows:
 
-   - Device: The JS heap snapshot file can be generated for five times a week. If this limit is exceeded, all applications cannot generate heap snapshots.
-   - Application: The JS heap snapshot file can be generated only once a week.
-   - If the remaining storage space of the device is less than 30 GB, **oomdump** is not triggered.
+- Device: The JS heap snapshot file can be generated for five times a week. If this limit is exceeded, all apps cannot generate heap snapshots.
+- App: The JS heap snapshot file can be generated only once a week. Within seven days after the app triggers the oomdump function, it cannot be triggered again.
+- If the remaining storage space of the device is less than 30 GB, the oomdump function is not triggered.
 
-      During debugging, you can adjust the system time to seven days later and restart the device to reset the number of times that the application triggers **oomdump**, so that you can quickly complete function adaptation and verification.
+  During debugging, you can adjust the system time to seven days later and restart the device to reset the number of times that the app triggers oomdump, so that you can quickly complete function adaptation and verification.
 
-   > **NOTE**
-   >
-   > The value **field** in the JSON5 configuration file supports the key-value pair set **key1:value1;key2:value2;...**. Currently, the **oomdump** function can be enabled in the nolog version only for applications configured with the preceding key-value pairs.
+> **NOTE**
+>
+> The value field in the JSON5 configuration file supports the key-value pair set "key1:value1;key2:value2;...". Currently, the system only supports apps configured with the preceding key-value pair to enable the oomdump function in the nolog version.
 
-   Method 2: Call **setEventConfig** and pass in the following parameters:
+### Calling setEventConfig and Passing in the Required Parameters
 
-   ```ts
-   let configParams: Record<string, hiAppEvent.ParamType> = {
-     "js_heap_logtype": "event_rawheap",
-   };
+```ts
+let configParams: Record<string, hiAppEvent.ParamType> = {
+  "js_heap_logtype": "event_rawheap",
+};
 
-   hiAppEvent.setEventConfig(hiAppEvent.event.RESOURCE_OVERLIMIT, configParams);
-   ```
+hiAppEvent.setEventConfig(hiAppEvent.event.RESOURCE_OVERLIMIT, configParams);
+```
 
-   The number of heap snapshots generated by method 2 is not restricted by the VM heap snapshot generation specifications of the nolog version.
+The number of heap snapshots generated by the setEventConfig method is **not** subject to the **VM heap snapshot generation specifications of the nolog version**.

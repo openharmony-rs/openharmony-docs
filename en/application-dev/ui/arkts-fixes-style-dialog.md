@@ -5,12 +5,13 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=1df0084f62f831231c783942b6a94e81f3c93a30 translatedAt=2026-11-03T08:30:55.567Z pushedAt=2026-11-03T08:59:35.395Z nl=1 -->
 
 The fixed-style dialog box uses a predefined layout format, allowing you to focus on providing the required text content without worrying about specific display layout details. This simplifies usage and improves convenience.
 
 ## Constraints
 
-- You can use the APIs in this document in non-UI pages or certain asynchronous callbacks by calling **UIContext** or **getUIContext**. This operation is not supported by **CalendarPickerDialog**.
+- You can obtain a **UIContext** instance by calling **getUIContext** to use the APIs in this document in non-UI pages or certain asynchronous callbacks. This operation is not supported by **CalendarPickerDialog**.
 
 - For **showActionMenu** and **showDialog** APIs, you must first call [getPromptAction()](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction) in **UIContext** to obtain the **PromptAction** object, and then use the object to call the corresponding API.
 
@@ -80,6 +81,7 @@ export struct ShowActionMenuExample {
                     console.error('showActionMenu error: ' + err);
                   })
               } catch (error) {
+                console.error('showActionMenu catch error: ' + error);
               }
             })
         }.width('100%')
@@ -144,7 +146,7 @@ export struct ShowDialogExample {
               } catch (error) {
                 let message = (error as BusinessError).message;
                 let code = (error as BusinessError).code;
-                console.error(`showdialog args error code is ${code}, message is ${message}`);
+                console.error(`showDialog args error code is ${code}, message is ${message}`);
               }
             })
         }.width('100%')
@@ -279,7 +281,7 @@ export struct DatePickerDialogExample {
 
 ![image](figures/UIContextShowdatepickerDialog.gif)
 
-In this example, **disappearTextStyle**, **textStyle**, **selectedTextStyle**, **acceptButtonStyle**, and **cancelButtonStyle** are configured to customize the text and button style.
+This example achieves custom text and button styles by configuring `textStyle`, `selectedTextStyle`, `acceptButtonStyle`, and `cancelButtonStyle`.
 
 
 <!-- @[date_picker_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/DatePickerCustomDialog.ets) -->
@@ -413,25 +415,25 @@ export struct TextPickerCNDialogExample {
         { text: 'Qiqihar', children: [{ text: 'Longsha District' }, { text: 'Jianhua District' }, { text: 'Tiefeng District' }] }]
     }
   ];
-  private select: number = 0;
+  private select: number[] = [0, 0, 0];
 
   build() {
-    // ···
+    // ...
       Column() {
         Button('showTextPickerDialog')
-        // ···
+        // ...
           .margin(30)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
               range: this.fruits,
               selected: this.select,
               onAccept: (value: TextPickerResult) => {
-                this.select = value.index as number
+                this.select = value.index as number[]
               }
             });
           })
       }.width('100%').margin({ top: 5 })
-    // ···
+      // ...
   }
 }
 ```
@@ -440,15 +442,15 @@ export struct TextPickerCNDialogExample {
 
 ## Action Sheet (ActionSheet)
 
-The action sheet is ideal for presenting multiple action options, especially when the UI only needs to display a list of actions without additional content.
+The action sheet is suitable for presenting multiple action options, especially when only an action list needs to be displayed in the interface without other content.
 
 You use the [showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet) API in **UIContext** to implement an action sheet.
 
-In **showActionSheet**, the maximum font scale factor for **title** is 2.
+In the action sheet, the maximum font scale factor for **title** is **2**.
 
 This example shows how to configure the style and animation effects of the action sheet by setting APIs like **width**, **height**, and **transition**.
 
-<!-- @[action_sheet_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ActionSheet.ets) -->
+<!-- @[action_sheet_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ActionSheet.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -484,7 +486,7 @@ export struct showActionSheetExample {
                 confirm: {
                   value: 'Confirm button',
                   action: () => {
-                    console.info('Get Alert Dialog handled');
+                    console.info('Get ActionSheet handled');
                   }
                 },
                 alignment: DialogAlignment.Center,
@@ -516,7 +518,7 @@ export struct showActionSheetExample {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
-    // Replace $r('app.string.CustomDialog_ActionSheet') with the actual resource file. In this example, the value in the resource file is "ActionSheet".
+    // Replace $r('app.string.CustomDialog_ActionSheet') with the actual resource file. In this example, the value of this resource file is "list selection popup box"
     .title($r('app.string.CustomDialog_ActionSheet'))
   }
 }
@@ -536,12 +538,11 @@ You use the [showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicon
 
 In **showAlertDialog**, the maximum font scale factor for **title** and **subtitle** is 2.
 
-This example shows how to configure the style and animation effects of an alert dialog with multiple buttons by setting APIs like **width**, **height**, and **transition**.
+This example defines the styles and popup animation effects of multiple button dialogs by configuring interfaces such as `transition`.
 
 <!-- @[alert_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/AlertDialog.ets) -->
 
 ``` TypeScript
-import { PromptAction } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -602,3 +603,5 @@ export struct showAlertDialogExample {
 ```
 
 ![image](figures/UIContextShowAlertDialog.gif)
+
+

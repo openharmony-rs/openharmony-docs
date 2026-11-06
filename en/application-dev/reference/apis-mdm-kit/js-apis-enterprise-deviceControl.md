@@ -1,20 +1,21 @@
 # @ohos.enterprise.deviceControl (Device Control Management)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=55df9c11d6d7c450cc6d9d1ac7b0b998394459f6 translatedAt=2026-11-03T05:05:26.022Z pushedAt=2026-11-03T12:08:25.529Z nl=1 -->
 
-The **deviceControl** module provides APIs for device control.
+This module provides device control capabilities for enterprise device management scenarios. Administrators can remotely control devices through this module, including operations such as device restart, shutdown, screen lock, and factory reset, helping enterprises achieve unified device management and security control.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. New APIs will be marked with a superscript to indicate their earliest API version.
 >
 > The APIs of this module can be used only in the stage model.
 >
-> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module are open only to device management applications, and the device management application must be activated before the APIs are called. For details, see [MDM Kit Development Guide](../../mdm/mdm-kit-guide.md).
 
 ## Modules to Import
 
@@ -26,7 +27,7 @@ import { deviceControl } from '@kit.MDMKit';
 
 operateDevice(admin: Want, operate: string, addition?: string): void
 
-Allows the specified device administrator application to operate devices.
+Allows administrators to perform operations such as restoring factory settings, restarting, powering off, and locking the screen on devices. For example, in enterprise device management scenarios, administrators can remotely control employee devices to restore factory settings, restart, power off, or lock the screen.
 
 **Required permissions**: ohos.permission.ENTERPRISE_OPERATE_DEVICE
 
@@ -40,8 +41,8 @@ Allows the specified device administrator application to operate devices.
 | Name  | Type                                                   | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| operate  | string                                                  | Yes  | Operation to be performed, which can be any of the following:<br>- **resetFactory**: restore device factory settings. After this API is called, the device will be restored to factory settings immediately. Once the restoration is complete, all device data will be erased and cannot be restored. To protect against data loss caused by potential application attacks, enterprises should implement robust security measures for their applications.<br>- **reboot**: restart devices.<br>- **shutDown**: shut down devices.<br>- **lockScreen**: lock device screens. Once this capability is used, the device screen will become inaccessible. It only supports lock screen text customization but does not allow for interactive function customization on the lock screen. To implement custom behaviors on the lock screen, you are advised to use the [setAllowedKioskApps](js-apis-enterprise-applicationManager.md#applicationmanagersetallowedkioskapps20) API to configure apps that support the [Kiosk mode](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode).<!--RP1--><!--RP1End-->|
-| addition | string                                                  | No  | <!--RP2-->Additional parameter for the operation. Currently, this parameter does not need to be passed in.<!--RP2End-->       |
+| operate  | string                                                  | Yes  | Operation to be performed, which can be any of the following: Only the following operations are supported:<br>- **resetFactory**: restore device factory settings. After this API is called, the device will be restored to factory settings immediately. Once the restoration is complete, all device data will be erased and cannot be restored. To protect against data loss caused by potential application attacks, enterprises should implement robust security measures for their applications. If factory reset has been disabled via [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated), enable it first.<br>- **reboot**: restart devices.<br>- **shutDown**: shut down devices.<br>- **lockScreen**: lock the device screen.<!--RP1--><!--RP1End-->|
+| addition | string                                                  | No   | <!--RP2-->Additional parameter for execution. Reserved for future use; no value needs to be passed.<!--RP2End-->       |
 
 **Error codes**
 
@@ -73,3 +74,82 @@ try {
   console.error(`Failed to reset factory. Code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+## deviceControl.operateDevice
+
+operateDevice(admin: Want, operation: Operation, addition?: string): void
+
+Allows the administrator to operate devices, for example, erasing disks.
+
+**Since:** 26.0.0
+
+**Required permissions**: ohos.permission.ENTERPRISE_OPERATE_DEVICE
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+<!--Table: 10%; 10%; 10%; 70%-->
+| Name   | Type                                                    | Mandatory| Description                                                        |
+| --------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+| operation | [Operation](#operation)                                  | Yes  | Operation to be performed, which can be any of the following:                                              |
+| addition  | string                                                   | No  | Additional parameter for the operation. When the operation type is disk erasure, the additional parameter is the sandbox path of the image. If a message needs to be displayed to the user after the disk erasure is successfully completed, this parameter can be set to deliver the information. The image size must be less than 5 KB (a QR code image is recommended). The length limit is 1024 bytes.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200010 | A conflict policy has been configured. |
+| 9200012  | Parameter verification failed.|
+| 9201048  | Failed to operate the device.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { deviceControl } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let filePath: string = '/test.png';
+
+try {
+  // Replace the parameters as required.
+  deviceControl.operateDevice(wantTemp, deviceControl.Operation.DISK_ERASURE, filePath);
+} catch (err) {
+  console.error(`Failed to disk erase. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## Operation
+
+Defines the device operation.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name          | Value | Description                                                         |
+| ------------- | ---- | ------------------------------------------------------------ |
+| DISK_ERASURE  | 0    | Disk erasure. After the API is called, the device immediately performs disk erasure. After disk erasure is complete, all data on the device is erased and cannot be recovered. Enterprises need to ensure secure application design to prevent enterprise data loss caused by application attacks. This operation is supported only on PC/2-in-1 devices. |
+| RESET_FACTORY | 1 | Restores the device to factory settings. After the API is called, the device immediately restores factory settings. After the restoration is complete, all data on the device is erased and cannot be recovered. Enterprises need to ensure secure application design to prevent enterprise data loss caused by application attacks. If factory reset has been disabled through the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy24) API, the restriction must be removed first.<br>**Since:** 26.0.1 |
+| REBOOT | 2 | Restarts the device.<br>**Since:** 26.0.1 |
+| SHUT_DOWN | 3 | Powers off the device.<br>**Since:** 26.0.1 |
+| LOCK_SCREEN | 4 | Locks the device screen.<br>**Since:** 26.0.1 |
+| LOCK_DEVICE | 5 | Locks the device. After this capability is used, the device screen becomes unusable and keys do not respond. Only lock screen text customization is supported, and interactive functions cannot be customized on the lock screen. During development, before delivering a device lock policy, ensure that an escape channel is reserved and that the escape channel works properly. It is recommended to retain the hdc capability and remote communication capability during development so that the device unlock function can be triggered through hdc commands or the remote push capability.<br>To support custom behaviors when the screen is locked, it is recommended to use the [setAllowedKioskApps](js-apis-enterprise-applicationManager.md#applicationmanagersetallowedkioskapps20) API to configure Kiosk mode support, and use the [enterKioskMode](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode) API to enter Kiosk mode.<br>**Since:** 26.0.1 |
+| UNLOCK_DEVICE | 6 | Unlocks the device. After the API is called, the device is unlocked and the user can operate the device normally.<br>**Since:** 26.0.1 |

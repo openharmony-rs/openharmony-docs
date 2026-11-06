@@ -6,6 +6,7 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=b799bd137584a338db2107c2101b1d6091a6feea translatedAt=2026-11-03T05:46:26.005Z pushedAt=2026-11-03T07:44:32.132Z nl=1 -->
 
 Different devices support different authentication capabilities (facial authentication, fingerprint authentication, and password authentication). Before you start coding, obtain the authentication capabilities supported by the target device.
 
@@ -47,4 +48,4 @@ obtainingSupported() {
 
 ## Sample Code
 
-  - [Querying supported authentication capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - You can refer to the [User Authentication Service](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication) sample code.

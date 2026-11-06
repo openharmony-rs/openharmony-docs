@@ -7,8 +7,6 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-## 模块简介
-
 安全控件的保存控件系统接口，适用于应用需要临时获取媒体库访问权限以保存图片或视频的场景，例如图片保存到相册、媒体内容导出等。
 
 应用集成保存控件后，用户首次使用该控件时，保存控件会展示弹窗供用户确认。用户点击允许后，应用获取访问媒体库接口的临时授权，相关接口请参见[Interface (PhotoAccessHelper)](../../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md)；用户拒绝或关闭弹窗时，本次不授权，应用不会获得媒体库接口访问权限。后续使用无需弹窗授权。
@@ -234,6 +232,11 @@ iconSize(size: Dimension | SizeOptions)
 
 设置保存控件的图标尺寸。
 
+> **说明：**
+>
+> 在API版本10时，开发者可通过安全控件通用属性[iconSize](ts-securitycomponent-attributes.md#iconsize)设置图标尺寸，此时size类型仅支持Dimension。<br/>
+> 从API版本20开始，开发者可以通过本接口设置图标尺寸，size类型增加支持SizeOptions。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
@@ -438,7 +441,7 @@ struct Index {
         console.info("errCode: " + error?.code);
         console.info("errMessage: " + error?.message);
       } else {
-        console.error(`errCode: ${error.code}, errMessage: ${error.message}`);
+        console.error(`errCode: ${error?.code}, errMessage: ${error?.message}`);
       }
     };
 

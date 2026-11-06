@@ -3,7 +3,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @rongShao-Z; @guozejun-->
-<!--Designer: @zcdqs-->
+<!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -19,5 +19,5 @@ typedef struct ArkUI_WaterFlowSectionOption ArkUI_WaterFlowSectionOption
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**所在头文件：** [native_type.h](capi-native-type-h.md)
+**所在头文件：** [water_flow.h](capi-water-flow-h.md)
 

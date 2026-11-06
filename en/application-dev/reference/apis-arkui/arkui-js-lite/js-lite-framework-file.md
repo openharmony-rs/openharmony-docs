@@ -12,7 +12,7 @@ The following figure shows the typical directory structure of the JavaScript mod
 
   **Figure 1** Directory structure 
 
-![en-us_image_0000001431388581](figures/en-us_image_0000001431388581.png)
+![tableOfContents](figures/tableOfContents.png)
 
 Functions of the files are as follows:
 
@@ -34,12 +34,12 @@ Functions of the folders are as follows:
 >  - The **i18n** folder is a reserved one and cannot be renamed.
 >
 >
->  - The folders marked as optional in the directory structure can be created as needed after you create the project in DevEco Studio.
+>  - You should create the optional folders (shown in the directory structure) as needed after you create the project in DevEco Studio.
 
 
 ## File Access Rules
 
-Application resources can be accessed via an absolute or relative path. In this development framework, an absolute path starts with a slash (/), and a relative path starts with **./** or **../**. The rules are as follows:
+Application resources can be accessed via an absolute or relative path. In this development framework, an absolute path starts with a slash (/), and a relative path starts with ./ or ../. The rules are as follows:
 
 - To reference a code file, use a relative path, for example, **../common/utils.js**.
 
@@ -55,7 +55,8 @@ Application resources can be accessed via an absolute or relative path. In this 
 >
 >  - If code files A and B are in the same directory, you can use either a relative or absolute path in code file B to reference resource files.
 >
->  - If code files A and B are in different directories, you must use an absolute path in code file B to reference resource files, because the directory of code file B changes during Webpack packaging.
+>  - If code files A and B are in different directories, you must use an absolute path in code file B to reference resource files. The reason is that the directory of code file B changes during Webpack packaging.
+>
 >
 
 
@@ -65,9 +66,9 @@ Application resources can be accessed via an absolute or relative path. In this 
 
 | Format  | Supported Version                    | File Name Extension|
 | ---- | ------------------------ | ------- |
-| BMP  | API version 4+ | .bmp    |
-| JPEG | API version 4+ | .jpg    |
-| PNG  | API version 4+ | .png    |
+| BMP  | API&nbsp;version&nbsp;4+ | .bmp    |
+| JPEG | API&nbsp;version&nbsp;4+ | .jpg    |
+| PNG  | API&nbsp;version&nbsp;4+ | .png    |
 
 ## Storage Directory
 

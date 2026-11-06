@@ -223,7 +223,7 @@ off(type: 'imageRelease', callback?: AsyncCallback\<void>): void
 | 参数名        | 类型                     | 必填 | 说明                                         |
 | ------------- | -------------------------|----|--------------------------------------------|
 | type          | string                   | 是  | 监听事件类型，如'imageRelease'。                    |
-| callback      | AsyncCallback\<void>     | 否  | 回调函数。当移除注册成功时，err返回null，否则为错误对象。 |
+| callback      | AsyncCallback\<void>     | 否  | 回调函数。当移除注册成功时，err为undefined，否则为错误对象。 |
 
 **示例：**
 

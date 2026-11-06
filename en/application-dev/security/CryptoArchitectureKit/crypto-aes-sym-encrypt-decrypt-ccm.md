@@ -6,13 +6,14 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=56bb123f81b3c1c6ce89c67e24c5686a564c7577 translatedAt=2026-07-29T04:49:41.226Z pushedAt=2026-07-29T06:41:08.322Z -->
 
 For details, see [AES](crypto-sym-encrypt-decrypt-spec.md#aes).
 
 **Encryption**
 
 1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a 128-bit AES symmetric key (**SymKey**).
-   
+
    In addition to the example in this topic, [AES](crypto-sym-key-generation-conversion-spec.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md) may help you better understand how to generate an AES symmetric key. Note that the input parameters in the reference documents may be different from those in the example below.
 
 2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'AES128|CCM'** to create a **Cipher** instance for encryption. The key type is AES128, and the block cipher mode is CCM.
@@ -22,17 +23,21 @@ For details, see [AES](crypto-sym-encrypt-decrypt-spec.md#aes).
 4. Call [Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1) to pass in the data to be encrypted (plaintext).
 
    Currently, there is no length limit for a single update. You can call **Cipher.update** based on the data volume.
-  
+
    > **NOTE**<br>
    > The CCM mode does not support segment-based encryption and decryption.
 
 5. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the encrypted data.
+
    - If data has been passed in by **Cipher.update**, pass in **null** in this step.
+
    - The output of **Cipher.doFinal** may be **null**. To avoid exceptions, always check whether the result is **null** before accessing specific data.
 
 6. Obtain [CcmParamsSpec.authTag](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ccmparamsspec) as the authentication information for decryption.
 
-    In CCM mode, the algorithm library supports only 12-byte **authTag**, which is used for initialization authentication during decryption. In the following example, **authTag** is of 12 bytes.
+   > **NOTE**
+   >
+   > In CCM mode, during a single encryption process, concatenating the results of each `update` and the final `doFinal` yields "ciphertext + authTag", where `authTag` is the last 12 bytes. The remaining part is the ciphertext. If the `data` parameter of `doFinal` is `null`, the result of `doFinal` is `authTag`.
 
 **Decryption**
 
@@ -43,8 +48,9 @@ For details, see [AES](crypto-sym-encrypt-decrypt-spec.md#aes).
 3. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the decrypted data.
 
 - Example (using asynchronous APIs):
+
   <!-- @[ccm_encrypt_decrypt_aes_symkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_ccm_encryption_decryption/aes_ccm_encryption_decryption_asynchronous.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -112,10 +118,10 @@ For details, see [AES](crypto-sym-encrypt-decrypt-spec.md#aes).
   }
   ```
 
-
 - Example (using synchronous APIs):
+
   <!-- @[ccm_encrypt_decrypt_aes_symkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_ccm_encryption_decryption/aes_ccm_encryption_decryption_synchronous.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';

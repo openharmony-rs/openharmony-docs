@@ -1,11 +1,12 @@
 # text
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-
+<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:35:43.485Z pushedAt=2026-06-24T01:44:35.345Z -->
 
 >  **NOTE**
 >
@@ -23,11 +24,9 @@ The **\<text>** component is used to display a piece of textual information.
 
 None
 
-
 ## Child Components
 
-The following are supported: [\<tspan>](js-components-svg-tspan.md), [\<textpath>](js-components-svg-textpath.md), [\<animate>](js-components-svg-animate.md), and [\<animateTransform>](js-components-svg-animatetransform.md).
-
+The following are supported: [tspan](js-components-svg-tspan.md), [textPath](js-components-svg-textpath.md), [animate](js-components-svg-animate.md), and [animateTransform](js-components-svg-animatetransform.md).
 
 ## Attributes
 
@@ -46,9 +45,8 @@ The attributes in the following table are supported.
 | fill-opacity   | number                             | 1.0   | No   | Fill opacity of the text.                                 |
 | opacity        | number                             | 1     | No   | Opacity of an element. The value ranges from **0** to **1**. The value **1** means opaque, and **0** means completely transparent. Attribute animations are supported.|
 | stroke         | &lt;color&gt;                      | black | No   | Stroke color.                             |
-| stroke-width   | number                             | 1px   | No   | Stroke width.                                  |
+| stroke-width   | number                             | 1   | No   | Stroke width.                                  |
 | stroke-opacity | number                             | 1.0   | No   | Stroke opacity.                                 |
-
 
 ## Example
 
@@ -110,7 +108,7 @@ Attribute animation example
 </div>
 ```
 
-![text-animate-part1](figures/text-animate-part1.gif)
+![text01](figures/text01.gif)
 
 ```html
 <!-- xxx.hml -->

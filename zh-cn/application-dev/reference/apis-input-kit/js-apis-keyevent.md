@@ -23,9 +23,9 @@ import { Action, Key, KeyEvent } from '@kit.InputKit';
 
 按键事件类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 | 名称   | 值  | 说明     |
 | ------ | ------- | -------- |
@@ -37,9 +37,9 @@ import { Action, Key, KeyEvent } from '@kit.InputKit';
 
 按键。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 | 名称        | 类型 | 只读 | 可选 | 说明           |
 | ----------- | -------- | ---- | ---- | -------------- |
@@ -51,16 +51,16 @@ import { Action, Key, KeyEvent } from '@kit.InputKit';
 
 按键事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 | 名称        | 类型 | 只读 | 可选 | 说明                           |
 | ----------- | -------- | ---- | ---- | ------------------------------ |
 | action      | [Action](#action)   | 否   | 否   | 按键事件类型。                       |
 | key         | [Key](#key)      | 否   | 否   | 按键。             |
 | unicodeChar | number   | 否   | 否   | 按键对应的unicode字符。          |
-| keys        | [Key](#key) []    | 否   | 否   | 当前处于按下状态的按键列表。     |
+| keys        | [Key](#key)[]    | 否   | 否   | 当前处于按下状态的按键列表。     |
 | ctrlKey     | boolean  | 否   | 否   | 当前ctrlKey是否处于按下状态。 <br/>true表示处于按下状态，false表示处于抬起状态。 |
 | altKey      | boolean  | 否   | 否   | 当前altKey是否处于按下状态。 <br/>true表示处于按下状态，false表示处于抬起状态。     |
 | shiftKey    | boolean  | 否   | 否   | 当前shiftKey是否处于按下状态。 <br/>true表示处于按下状态，false表示处于抬起状态。   |

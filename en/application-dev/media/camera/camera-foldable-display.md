@@ -5,21 +5,23 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=ea5a90ae0d82e524b25b262e589fe1efd21b744f translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=2 -->
+
 Foldable devices come in various forms. When developing camera applications, a consistent camera switching solution is necessary to enhance user experience during photo and video capture.
 
 A single foldable device can use different cameras depending on its fold state. The system identifies each camera and associates it with a specific fold state, indicating which cameras are available in those states. Applications can call [CameraManager.on('foldStatusChange')](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#onfoldstatuschange12) or [display.on('foldStatusChange')](../../reference/apis-arkui/js-apis-display.md#displayonfoldstatuschange10) to listen for fold state changes of the device, call [CameraManager.getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras) to obtain the available cameras in the current state, and make adaptations accordingly.
 
 The number of supported cameras can differ among foldable devices in various fold states.
 
-For example, foldable device A has three cameras: B (rear), C (front), and D (front). In the unfolded state, calling [CameraManager.getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras) returns both cameras B (rear) and C (front). However, in the folded state, only camera D (front) is accessible. Therefore, when using the rear camera or switching between cameras, it is crucial to first verify the existence of the rear camera.
+For example, a foldable device has three cameras: rear camera A, front camera B, and front camera C. In the unfolded state, calling [CameraManager.getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras) returns rear camera A and front camera B; in the folded state, it returns rear camera A and front camera C. The cameras available differ between fold states, so you must re-obtain camera information when the fold state changes.
 
-Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API reference.
+For detailed API descriptions, see [@ohos.multimedia.camera (Camera Management)](../../reference/apis-camera-kit/arkts-apis-camera.md).
 
 For details about how to obtain the context, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 ## Creating an XComponent
-Use two [XComponents](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md) to present the folded and unfolded states, respectively. This prevents the previous camera feed from lingering on the screen if the camera is not properly closed during fold state transition.
+   Use two [XComponents](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md) to present the folded and unfolded states, respectively. This prevents the previous camera feed from lingering on the screen if the camera is not properly closed during fold state transition.
 
    ```ts
     @Entry
@@ -138,7 +140,7 @@ function hasCameraAt(cameraManager: camera.CameraManager, cameraPosition: camera
 }
 ```
 ## Camera Switching Logic
-When a fold state change is detected, the **foldStatus** variable, decorated with @StorageLink, is updated. This triggers the **reloadXComponent** API to reload the **XComponent**, thereby implementing the camera switching logic.
+When a fold state change is detected, the `foldStatus` variable decorated by [@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink) is updated, which triggers the `reloadXComponent` method to reload the XComponent, thereby implementing the camera switching logic.
 ## Complete Sample Code
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -535,3 +537,11 @@ struct Index {
   }
 }
 ```
+
+## FAQs
+
+### How to Handle Image Stretching or Distortion When the Fold State Changes
+
+After a camera switch triggered by a fold state change, the image resolution may not match the aspect ratio of the XComponent. You can listen for window changes through [Window.on('windowSizeChange')](../../reference/apis-arkui/arkts-apis-window-Window.md#onwindowsizechange7) and determine the layout aspect ratio based on the relationship between the screen rotation angle ([Display](../../reference/apis-arkui/js-apis-display.md#display).rotation) and the camera orientation angle ([CameraDevice](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameradevice).cameraOrientation), so that the XComponent aspect ratio adjusts in real time with the window.
+
+<!--RP1--><!--RP1End-->

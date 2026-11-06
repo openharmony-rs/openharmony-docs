@@ -6,22 +6,23 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=f125faebecb74e0ac91596bf752ffa6043e4b775 translatedAt=2026-11-03T05:01:00.896Z pushedAt=2026-11-03T05:44:06.896Z nl=1 -->
 
 Since API version 23, the missing intermediate CA certificate can be downloaded during certificate chain validation.
 
-This topic walks you through on how to enable the feature of downloading missing intermediate certificates during the X509 certificate chain validation.
+This topic uses the creation of an X.509 certificate chain as an example to demonstrate how to create a certificate chain object while allowing the download of missing intermediate certificates during validation.
 
 ## How to Develop
 
-1. Import the [cert](../../reference/apis-device-certificate-kit/js-apis-cert.md) module.
+1. Import the [certificate module](../../reference/apis-device-certificate-kit/js-apis-cert.md).
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 
-2. Use [cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert-1) to create an X.509 certificate object.
+2. Based on the existing certificate data, call [cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert-1) to create an X.509 certificate object and return the result.
 
-3. Use [cert.buildX509CertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#certbuildx509certchain12) to create an X.509 certificate chain object and set **allowDownloadIntermediateCa** of **validationParameters** to **true** to enable the feature of downloading missing intermediate CAs from the network during validation.
+3. Call [cert.buildX509CertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#certbuildx509certchain12) to create an X.509 certificate chain object. Set the **allowDownloadIntermediateCa** parameter of **validationParameters** to **true** to enable downloading missing intermediate CA certificates from the network during validation.
 
 > **NOTE**
 >
@@ -138,3 +139,5 @@ async function buildX509CertChain() {
   }
 }
 ```
+
+

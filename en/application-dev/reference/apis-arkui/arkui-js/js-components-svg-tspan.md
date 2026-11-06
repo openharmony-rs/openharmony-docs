@@ -1,33 +1,31 @@
 # tspan
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:35:47.511Z pushedAt=2026-06-24T03:08:11.659Z -->
 
 The **\<tspan>** component is used to add a text style.
-
 
 >  **NOTE**
 >  - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  - This component can have **\<tspan>** child components nested.
+>  - The text content to be displayed must be written within element labels. The **\<tspan>** child element label can be nested to segment the text content.
 >
->  - This component can only be nested by the parent element label **svg**.
+>  - Text segmentation is only supported within the parent element label **\<text>**.
 
 ## Required Permissions
 
 None
 
-
 ## Child Components
 
 The **[\<tspan>](js-components-svg-tspan.md)** child component is supported.
 
-
 The attributes in the following table are supported.
-
 
 | Name            | Type                                | Default Value  | Mandatory  | Description                                      |
 | -------------- | ---------------------------------- | ----- | ---- | ---------------------------------------- |
@@ -78,7 +76,7 @@ The attributes in the following table are supported.
 }
 ```
 
-![tspan-part1](figures/tspan-part1.png)
+![spans](figures/spans.png)
 
 Attribute animation example
 
@@ -133,7 +131,7 @@ Attribute animation example
 </div>
 ```
 
-![tspan-animate-part2](figures/tspan-animate-part2.gif)
+![fill-opacity](figures/fill-opacity.gif)
 
 ```html
 <!-- xxx.hml -->
@@ -149,7 +147,7 @@ Attribute animation example
 </div>
 ```
 
-![tspan-animate-part3](figures/tspan-animate-part3.gif)
+![tspan](figures/tspan.gif)
 
 ```html
 <!-- xxx.hml -->
@@ -172,4 +170,4 @@ Attribute animation example
 </div>
 ```
 
-![tspan-animate-part4](figures/tspan-animate-part4.gif)
+![stroke-width-opacity](figures/stroke-width-opacity.gif)

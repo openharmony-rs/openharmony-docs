@@ -1,10 +1,11 @@
 # Handling Touchscreen Input Events
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T08:24:32.944Z pushedAt=2026-11-03T09:15:33.183Z nl=1 -->
 
 ![touch devices](figures/touch-devices.png)
 
@@ -15,13 +16,13 @@ It should be noted that for touch-like operations from non-touchscreen devices, 
 
 ## Touch Event
 
-Touch events can be captured using the universal event [onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch) on components. The callback response follows hit testing rules.
+Touch events can be received on a component through the universal event [onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch), and the callback response follows the hit test rules.
 
 The reporting frequency of touch events is downsampled by the system to match the screen refresh rate. For details, see [Resampling and Historical Points](#resampling-and-historical-points).
 
 On devices that support multi-touch, simultaneous finger operations generate multiple touch points. All touch points are accessible through the **touches** property of the [TouchEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#touchevent) object, while **changedTouches** indicates which touch points triggered the current event.
 
-Additional event information can be obtained from the base class [BaseEvent](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#baseevent8) of the [TouchEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#touchevent) object.
+For more details about events, see the basic class [BaseEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#baseevent8) of [TouchEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#touchevent).
 
 
 ## Preventing Event Bubbling
@@ -76,7 +77,7 @@ struct PreventBubbling {
 
 ## Resampling and Historical Points
 
-The reporting frequency of raw input events depends on the device type. For example, touchscreens typically report events every 5–7 ms, while high-precision mouse devices may report events every 1 ms. Since the ultimate purpose of processing these input events is to drive UI updates that respond to user actions, the system optimizes this process by resampling the raw input event stream. Between each display frame, the system collects all received input events and processes them through a resampling algorithm. This resampling occurs independently for each active touch point, ensuring that multi-touch interactions remain accurate.
+The reporting frequency of basic events depends on the specific input device type, but it is generally very high. For example, a touchscreen typically reports a point every 5 to 7 ms, while some high-precision mice can report at a frequency of up to once every 1 ms. Since the response to input events is intended to produce UI changes in response to user actions, reporting such high-frequency basic events to the app is redundant in most cases. To address this, the system resamples the basic events received between two frames and reports them to the app only once within a frame. Resampling is performed independently for each touch point, and different touch points are resampled separately.
 
 ![resample](figures/events-resample.png)
 
@@ -84,7 +85,7 @@ The reporting frequency of raw input events depends on the device type. For exam
 - Move events within a single frame are not dispatched immediately; they are resampled and coalesced, then reported when the display frame is rendered.
 - Up events trigger immediate reporting, including any pending move events.
 
-For each touch point within a single frame, multiple move events are merged and processed through an advanced algorithm. This generates optimized coordinates that represent the most accurate position for the current display frame. While these resampled coordinates may show minor deviations from the raw device-reported positions, this intentional processing delivers significant benefits. The resulting points exhibit improved temporal consistency and motion smoothness.
+Resampling merges multiple move events reported by the same touch point within a single frame and calculates an appropriate coordinate to report to the app through an algorithm. As a result, the coordinate information after resampling may differ slightly from the actual points reported by the underlying device. These differences are beneficial, as the resampled points generally exhibit better smoothness.
 
 To maintain full data transparency, the system preserves all original touch points prior to resampling. You can access the complete historical dataset when needed through the **getHistoricalPoints(): Array** API.
 
@@ -186,7 +187,7 @@ Below is the log output of the preceding example during the following operation 
 
 ![finger ids](figures/finger_ids.png)
 
-Press finger 1 -> Press finger 2 -> Press finger 3 -> Lift finger 2 -> Lift finger 3 -> Press finger 2 -> Lift finger 1 -> Lift finger 3
+Press finger 1 -> Press finger 2 -> Press finger 3 -> Lift finger 2 -> Lift finger 3 -> Press finger 3 -> Lift finger 1 -> Lift finger 3
 
 ```text
   fingers start to press down   // Press finger 1.
@@ -208,10 +209,11 @@ Press finger 1 -> Press finger 2 -> Press finger 3 -> Lift finger 2 -> Lift fing
 ```
 
 
-## Stylus Support
+## Stylus
 
-Stylus interactions with the touchscreen generate touch events similar to finger touches, but can be identified using the **sourceTool** property. Active capacitive styluses provide additional precision data, including tilt and orientation angles. For details, see [BaseEvent](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#baseevent8).
+Stylus operations on the touchscreen are similar to finger operations in that both generate touch events, which can be distinguished by sourceTool. For some active capacitive styluses, the reported touch events also include the angle information of the stylus in contact with the screen. For details, see [BaseEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#baseevent8).
 
-- **tiltX**: angle between the projection of the stylus on the device plane and the x-axis.
-- **tiltY**: angle between the projection of the stylus on the device plane and the y-axis.
+- **tiltX**: angle between the projection of the stylus on the device plane and the x-axis of the device plane.
+- **tiltY**: angle between the projection of the stylus on the device plane and the y-axis of the device plane.
 - **rollAngle**: angle between the stylus and the device plane.
+

@@ -89,7 +89,7 @@ LazyForEach懒加载API提供了cachedCount属性，用于配置可缓存列表�
 
 ### 实现示例
 
-在介绍List、Grid等容器组件下使用LazyForEach懒加载的示例代码之前，首先针对前面介绍的第三点使用场景，给出以下反例来进行说明，帮助开发者更好的理解和使用LazyForEach。
+在介绍List、Grid等容器组件下使用LazyForEach懒加载的示例代码之前，首先针对前面介绍的第三点使用场景，给出以下反例来进行说明，帮助开发者更好地理解和使用LazyForEach。
 
 **反例：在使用LazyForEach进行组件复用的key生成器函数里，使用stringify**
 
@@ -222,7 +222,7 @@ struct ReusableKeyGeneratorUseStringify {
 在反例中，在使用LazyForEach进行组件复用的key生成器函数里使用了stringify。在实际复杂的业务场景中，懒加载的item数据较大，item数量较多，使用stringify会对整个item对象进行序列化操作最终把item转换成字符串，需要消耗大量的时间和计算资源，从而导致页面性能降低。因此，为了减少页面渲染耗时，提升页面性能，应避免在LazyForEach组件复用的key生成器函数里使用stringify。建议使用简洁的短字符串，如使用item.id，这里假设每个item都有一个唯一的id属性。
 
 
-以上使用场景的反例介绍是为了帮忙开发者更好的理解和正确使用LazyForEach懒加载。下面将给出正例的基本写法，在List、Grid等容器组件下使用LazyForEach懒加载的示例代码如下：
+以上使用场景的反例介绍是为了帮助开发者更好地理解和正确使用LazyForEach懒加载。下面将给出正例的基本写法，在List、Grid等容器组件下使用LazyForEach懒加载的示例代码如下：
 
 ```ts
 // LazyForEach要遍历的数据源，为实现接口IDataSource的实例   
@@ -243,96 +243,96 @@ build() {
 
 接下来将结合示例代码，详细介绍LazyForEach懒加载的实现过程，包含下图所示的三部分内容：
 
-1、准备数据源类
+1. 准备数据源类。
 
-2、遍历数据源创建列表组件项
+2. 遍历数据源创建列表组件项。
 
-3、为列表项指定唯一的键值编码
+3. 为列表项指定唯一的键值编码。
 
-![](figures/list-perf-realization.png)
+    ![](figures/list-perf-realization.png)
 
-代码实现如下。首先，在使用LazyForEach数据懒加载之前，需要实现懒加载数据源接口类IDataSource。数据源接口类提供了获取数据总量，返回指定索引位置的数据，以及注册、注销数据监听器的接口。编写一个实现数据源接口IDataSource的数据源类BasicDataSource，该类包含数据变更监听器DataChangeListener类型的实例变量listeners，用于维护注册的数据变更监听器，在数据变更时调用相应的回调函数。每一个listener实例对应一个ArkUI框架侧的LazyForEach实例，数据源数据发生变更时，listener实例会通知LazyForEach需要触发界面刷新。详细代码请参考[BasicDataSource.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/IM/Chat/features/chatlist/src/main/ets/viewmodel/BasicDataSource.ets)。
+    代码实现如下。首先，在使用LazyForEach数据懒加载之前，需要实现懒加载数据源接口类IDataSource。数据源接口类提供了获取数据总量，返回指定索引位置的数据，以及注册、注销数据监听器的接口。编写一个实现数据源接口IDataSource的数据源类BasicDataSource，该类包含数据变更监听器DataChangeListener类型的实例变量listeners，用于维护注册的数据变更监听器，在数据变更时调用相应的回调函数。每一个listener实例对应一个ArkUI框架侧的LazyForEach实例，数据源数据发生变更时，listener实例会通知LazyForEach需要触发界面刷新。详细代码请参考[BasicDataSource.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/IM/Chat/features/chatlist/src/main/ets/viewmodel/BasicDataSource.ets)。
 
-BasicDataSource是一个抽象类，不同的具体列表页面的数据源需要根据业务场景分别实现该抽象类。以聊天列表场景为例，数据源具体类ChatListData实现如下。其中，列表项数组变量chatList: Array用于为List子组件提供数据。ChatModel类表示聊天列表中列表项，包含联系人信息、最后一条消息内容、时间戳、未读消息数量等信息；totalCount()和getData(index: number)是实现数据源接口类IDataSource中定义的方法，用于给LazyForEach提供数据，应用框架会调用这些方法；addData()和pushData()方法为数据源类中定义的方法，可用于给数据源增加数据。需要注意的是，在这2个方法中需要调用notifyDataAdd方法，用于调用DataChangeListener中的接口来触发LazyForEach刷新。
+    BasicDataSource是一个抽象类，不同的具体列表页面的数据源需要根据业务场景分别实现该抽象类。以聊天列表场景为例，数据源具体类ChatListData实现如下。其中，列表项数组变量chatList: Array用于为List子组件提供数据。ChatModel类表示聊天列表中列表项，包含联系人信息、最后一条消息内容、时间戳、未读消息数量等信息；totalCount()和getData(index: number)是实现数据源接口类IDataSource中定义的方法，用于给LazyForEach提供数据，应用框架会调用这些方法；addData()和pushData()方法为数据源类中定义的方法，可用于给数据源增加数据。需要注意的是，在这2个方法中需要调用notifyDataAdd方法，用于调用DataChangeListener中的接口来触发LazyForEach刷新。
 
-```ts
-class ChatListData extends BasicDataSource {  
-    /**  
-    * 聊天列表项数组  
-    */  
-    private chatList: Array<ChatModel> = [];
-    /**  
-    * 数据源的数据总量  
-    */  
-    public totalCount(): number {  
-        return this.chatList.length;
-    }  
+    ```ts
+    class ChatListData extends BasicDataSource {  
+        /**
+         * 聊天列表项数组
+         */
+        private chatList: Array<ChatModel> = [];
+        /**
+         * 数据源的数据总量
+         */
+        public totalCount(): number {  
+            return this.chatList.length;
+        }  
 
-    /**  
-    * 返回指定索引位置的数据  
-    */  
-    public getData(index: number): ChatModel {  
-        return this.chatList[index];
-    }  
-    /**  
-    * 指定位置添加一条聊天列表数据  
-    */  
-    public addData(index: number, data: ChatModel): void {  
-        this.chatList.splice(index, 0, data);  
-        this.notifyDataAdd(index);  
-    }  
-    /**  
-    * 添加一条聊天列表数据  
-    */  
-    public pushData(data: ChatModel): void {  
-        this.chatList.push(data);  
-        this.notifyDataAdd(this.chatList.length - 1);  
-    }  
-}
-```
+        /**
+         * 返回指定索引位置的数据
+         */
+        public getData(index: number): ChatModel {  
+            return this.chatList[index];
+        }  
+        /**
+         * 指定位置添加一条聊天列表数据
+         */
+        public addData(index: number, data: ChatModel): void {  
+            this.chatList.splice(index, 0, data);  
+            this.notifyDataAdd(index);  
+        }  
+        /**
+         * 添加一条聊天列表数据
+         */
+        public pushData(data: ChatModel): void {  
+            this.chatList.push(data);  
+            this.notifyDataAdd(this.chatList.length - 1);  
+        }  
+    }
+    ```
 
-接下来，需要创建示例数据。在自定义组件ChatListDisplayView中，创建一个ChatListData类型的局部变量chatListLazy，并在aboutToAppear()方法中创建示例数据，详细代码请参考[文件ChatListPage.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/IM/Chat/features/chatlist/src/main/ets/pages/ChatListPage.ets)。
+    接下来，需要创建示例数据。在自定义组件ChatListDisplayView中，创建一个ChatListData类型的局部变量chatListLazy，并在aboutToAppear()方法中创建示例数据，详细代码请参考[文件ChatListPage.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/IM/Chat/features/chatlist/src/main/ets/pages/ChatListPage.ets)。
 
-```ts
-@Component
-export struct ChatListDisplayView {
-  private chatListLazy = new ChatListData();
-  // ...
-  async aboutToAppear(): Promise<void> {
-    // ...
-    await makeDataLocal(this.chatListLazy, ChatListJsonData.CHAT_LIST_JSON_DATA[i]);
-    // ...
-  }
-}
-```
-
-最后，在List组件容器中，使用LazyForEach接口遍历数据源this.chatListLazy循环生成ListItem列表项。其中，chatViewBuilder()方法用于布局页面列表项；代码行(msg: ChatModel) => msg.user.userId使用用户的编码作为列表项唯一的键值编码，用于区分不同的列表项。至此，使用懒加载代码实现完成，可以访问[Chat聊天示例程序](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/IM/Chat)获取详细代码。
-
-```ts
-build() {
-  Column() {
-    List() {
+    ```ts
+    @Component
+    export struct ChatListDisplayView {
+      private chatListLazy = new ChatListData();
       // ...
-      LazyForEach(this.chatListLazy, (msg: ChatModel) => {
-        ListItem() {
+      async aboutToAppear(): Promise<void> {
+        // ...
+        await makeDataLocal(this.chatListLazy, ChatListJsonData.CHAT_LIST_JSON_DATA[i]);
+        // ...
+      }
+    }
+    ```
+
+    最后，在List组件容器中，使用LazyForEach接口遍历数据源this.chatListLazy循环生成ListItem列表项。其中，chatViewBuilder()方法用于布局页面列表项；代码行(msg: ChatModel) => msg.user.userId使用用户的编码作为列表项唯一的键值编码，用于区分不同的列表项。至此，使用懒加载代码实现完成，可以访问[Chat聊天示例程序](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/IM/Chat)获取详细代码。
+
+    ```ts
+    build() {
+      Column() {
+        List() {
           // ...
-          this.chatViewBuilder(msg);
+          LazyForEach(this.chatListLazy, (msg: ChatModel) => {
+            ListItem() {
+              // ...
+              this.chatViewBuilder(msg);
+              // ...
+            }
+          }, (msg: ChatModel) => msg.user.userId)
           // ...
         }
-      }, (msg: ChatModel) => msg.user.userId)
-      // ...
+      }
     }
-  }
-}
-```
+    ```
 
 ### 效果对比
 
 在聊天示例程序中，通过模拟10000条聊天数据，来对比测试在开启、关闭懒加载时的性能。测试项包含页面启动完成时间和列表滑动时帧率。
 
-使用ForEach一次性加载时，页面启动完成时间为3530ms；开懒加载时，页面启动完成时间为752ms。开启懒加载后，启动完成时间缩短为开启前的21.3%。
+使用ForEach一次性加载时，页面启动完成时间为3530ms；开启懒加载时，页面启动完成时间为752ms。开启懒加载后，启动完成时间缩短为开启前的21.3%。
 
-使用ForEach一次性加载时，丢帧率为26.64%；开懒加载时，丢帧率降低到2.33%。
+使用ForEach一次性加载时，丢帧率为26.64%；开启懒加载时，丢帧率降低到2.33%。
 
 ![](figures/list-perf-comparison.png)
 
@@ -391,7 +391,7 @@ build() {
 
 ![](figures/list-perf-loss-rate.png)
 
-应该如何根据实际场景，设置缓存数量的值呢？ 例如列表项中需要显示网络数据，而网络数据加载较慢，为了提升列表信息的浏览效率和浏览体验，可以适当的多设置一些缓存数量；如果列表中需要加载一些大图或者视频等，这些数据占用的内存较大，为了减少内存占用，需要适当减少缓存数量的设置；因此，在实际场景中，需要不断尝试验证，设置适当的缓存数量，来达到体验和内存的平衡。
+应该如何根据实际场景，设置缓存数量的值呢？ 例如列表项中需要显示网络数据，而网络数据加载较慢，为了提升列表信息的浏览效率和浏览体验，可以适当地多设置一些缓存数量；如果列表中需要加载一些大图或者视频等，这些数据占用的内存较大，为了减少内存占用，需要适当减少缓存数量的设置；因此，在实际场景中，需要不断尝试验证，设置适当的缓存数量，来达到体验和内存的平衡。
 
 ## 组件复用
 
@@ -457,8 +457,8 @@ build() {
 
 ```ts
 /**
-  * 可复用且优化布局的聊天页面组件
-  */
+ * 可复用且优化布局的聊天页面组件
+ */
 @Reusable
 @Component
 struct ReusableOptLayoutChatView {
@@ -634,7 +634,7 @@ build() {
 
 ![](figures/list-perf-flat-layout.png)
 
-系统还提供了更多的扁平化布局方案，例如绝对定位、自定义布局、Grid、GridRow等，适用更多不同的场景，具体的使用方法可以参考[官方文档](../ui/Readme-CN.md)。
+系统还提供了更多的扁平化布局方案，例如绝对定位、自定义布局、Grid、GridRow等，适用更多不同的场景，具体的使用方法可以参考[布局概述](../ui/arkts-layout-development-overview.md)。
 
 ## 总结
 

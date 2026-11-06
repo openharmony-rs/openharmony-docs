@@ -70,27 +70,28 @@ registerTypeDescriptors(typeDescriptors: Array\<TypeDescriptor>): Promise\<void>
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
 | 201          | Permission verification failed. The application does not have the permission required to call the API. |
-| 202          | Permission denied, non-system app called the system api. |
+| 202          | Permission verification failed. A non-system application calls a system API. |
 | 20400002       | The format of one or more typeDescriptors are invalid. |
 | 20400003       | The content of one or more typeDescriptors violate rules. |
 
 **示例：**
 
 ```ts
+import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    const typeDescriptor = new uniformTypeDescriptor.TypeDescriptor();
-    typeDescriptor.typeId = 'com.example.myHap.image';
-    typeDescriptor.belongingToTypes = ['general.image'];
-    typeDescriptor.filenameExtensions = ['.myImage'];
-    typeDescriptor.mimeTypes = ['application/myImage'];
-    typeDescriptor.description = 'myHap defined image type';
-    await uniformTypeDescriptor.registerTypeDescriptors([typeDescriptor]);
-    console.info('Type descriptors registered successfully.');
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`registerTypeDescriptors throws an exception. code is ${error.code}, message is ${error.message} `);
+  const typeDescriptor = new uniformTypeDescriptor.TypeDescriptor();
+  typeDescriptor.typeId = 'com.example.myHap.image';
+  typeDescriptor.belongingToTypes = ['general.image'];
+  typeDescriptor.filenameExtensions = ['.myImage'];
+  typeDescriptor.mimeTypes = ['application/myImage'];
+  typeDescriptor.description = 'myHap defined image type';
+  await uniformTypeDescriptor.registerTypeDescriptors([typeDescriptor]);
+  console.info('Type descriptors registered successfully.');
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`registerTypeDescriptors throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```
 
@@ -131,7 +132,7 @@ unregisterTypeDescriptors(typeIds: Array\<string>): Promise\<void>
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
 | 201          | Permission verification failed. The application does not have the permission required to call the API. |
-| 202          | Permission denied, non-system app called the system api. |
+| 202          | Permission verification failed. A non-system application calls a system API. |
 | 20400004       | One or more typeIds are invalid or do not exist. |
 
 **示例：**
@@ -140,11 +141,11 @@ unregisterTypeDescriptors(typeIds: Array\<string>): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    const typeIds = ['com.example.myHap.image'];
-    await uniformTypeDescriptor.unregisterTypeDescriptors(typeIds);
-    console.info('Type descriptors unregistered successfully.');
+  const typeIds = ['com.example.myHap.image'];
+  await uniformTypeDescriptor.unregisterTypeDescriptors(typeIds);
+  console.info('Type descriptors unregistered successfully.');
 } catch (e) {
-    const error: BusinessError = e as BusinessError;
-    console.error(`unregisterTypeDescriptors throws an exception. code is ${error.code}, message is ${error.message}`);
+  const error: BusinessError = e as BusinessError;
+  console.error(`unregisterTypeDescriptors throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```

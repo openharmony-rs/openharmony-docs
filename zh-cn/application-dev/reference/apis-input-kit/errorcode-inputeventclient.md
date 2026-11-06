@@ -11,15 +11,15 @@
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)。
 
-## 3800001 输入服务异常
+## 3800001 多模输入服务内部错误
 
 **错误信息**
 
-Input service exception.
+Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.
 
 **错误描述**
 
-当调用输入事件注入相关接口时，如果输入服务内部发生异常，会产生此错误码。
+多模输入服务内部错误。
 
 **可能原因**
 
@@ -36,19 +36,19 @@ Input service exception.
 
 **错误信息**
 
-状态错误，根据具体接口和场景有以下不同情况。
+Status error. The specific scenario varies by interface and context.
 
 **错误描述**
 
 该错误码在不同接口中表示不同的状态错误：
 
-- **pressKey 接口**：The key is already pressed and is not the most recently pressed key.
+- **pressKey 接口**：The key is already pressed and is not the most recently pressed key, or the number of pressed keys exceeds 5.
 
-  当调用键盘控制器的pressKey接口时，如果按键已被按下且不是最近按下的按键，会产生此错误码。
+  当调用键盘控制器的pressKey接口时，如果按键已被按下且不是最近按下的按键，或已按下的按键数超过了5个，会产生此错误码。
 
-  **可能原因**：按键已经被按下且不是最近按下的按键。
+  **可能原因**：按键已经被按下且不是最近按下的按键，或已按下的按键数超过了5个。
 
-  **处理步骤**：确保按键在抬起状态下才能被按下；如果按键已被按下，确保它是最近按下的按键。
+  **处理步骤**：确保按键在抬起状态下才能被按下；如果按键已被按下，确保它是最近按下的按键；确保同时按下的按键数量不超过5个。
 
 - **releaseKey 接口**：The key is not pressed.
 
@@ -74,7 +74,7 @@ Input service exception.
 
   **处理步骤**：确保只抬起已经被按下的鼠标按键。
 
-- **beginAxis 接口**：The axis event in progress.
+- **beginAxis 接口**：The axis event is in progress.
 
   当调用鼠标控制器的beginAxis接口时，如果已有轴事件正在进行中，会产生此错误码。
 

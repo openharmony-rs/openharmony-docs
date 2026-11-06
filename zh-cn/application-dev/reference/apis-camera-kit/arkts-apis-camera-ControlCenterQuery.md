@@ -50,6 +50,8 @@ getSupportedEffectTypes(): Array\<ControlCenterEffectType\>
 
 查询相机控制器支持的效果类型。
 
+使用此接口前需先通过[isControlCenterSupported](#iscontrolcentersupported20)查询当前会话是否支持相机控制器。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -65,7 +67,9 @@ getSupportedEffectTypes(): Array\<ControlCenterEffectType\>
 ```ts
 function getSupportedEffectTypes(videoSession: camera.VideoSession): Array<camera.ControlCenterEffectType> {
     let effectTypes: Array<camera.ControlCenterEffectType> = [];
-    effectTypes = videoSession.getSupportedEffectTypes();
+    if (videoSession.isControlCenterSupported()) {
+        effectTypes = videoSession.getSupportedEffectTypes();
+    }
     return effectTypes;
 }
 ```

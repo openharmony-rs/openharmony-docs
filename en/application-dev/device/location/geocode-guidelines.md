@@ -1,18 +1,26 @@
-# Geocoding and Reverse Geocoding (ArkTS)
+# Geocoding and Reverse Geocoding
+
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @xxthadsl-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @gcw_MslijYkf-->
+<!--Adviser: @RayShih-->
+<!-- md-trans-meta sourceCommit=25047873a945112c1847d169e380e527e9af3ea2 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## Scenario
 
-Describing a location using coordinates is accurate, but neither intuitive nor user-friendly. To address this issue, the system provides your application the geocoding and reverse geocoding capabilities:
+Describing a location by latitude and longitude is highly accurate but not intuitive or user-friendly. The system provides the following two conversion capabilities:
 
-- Geocoding: converts geographic descriptions into specific coordinates.
+- Geocoding: Converts a geocode into specific latitude and longitude coordinates.
 
-- Reverse geocoding: converts coordinates into geographic descriptions.
+- Reverse geocoding: Converts specific latitude and longitude coordinates into a geocode.
 
-The geocoding information describes a location using several attributes, including the country, administrative region, street, house number, and address, etc.
+A geocode contains multiple attributes that describe location information, such as country, administrative division, street, house number, and address description, making the information easier for users to understand.
 
 ## Available APIs
 
-The following table lists the APIs used for mutual conversion between coordinates and geographic descriptions. For details, see [Location Kit](../../reference/apis-location-kit/js-apis-geoLocationManager.md).
+The APIs used for conversion between latitude and longitude coordinates and geocodes are described below. For details, see [@ohos.geoLocationManager (Geolocation Manager)](../../reference/apis-location-kit/js-apis-geoLocationManager.md).
 
 | API| Description| 
 | -------- | -------- |
@@ -23,61 +31,70 @@ The following table lists the APIs used for mutual conversion between coordinate
 ## How to Develop
 
 > **NOTE**
-> The geocoding and reverse geocoding services need to access backend services to obtain information. Therefore, before performing the following steps, ensure that your device is connected to the network.
+> The geocoding and reverse geocoding services need to access backend services. Ensure that your device is connected to the network to obtain information.
 
-1. Import the **geoLocationManager** modules. All geocoding and reverse geocoding APIs are provided by this module.
-   
+1. Import the **geoLocationManager** module. All functional APIs related to geocoding and reverse geocoding capabilities are provided by this module.
+
    ```ts
    import { geoLocationManager } from '@kit.LocationKit';
    ```
 
 2. Check whether the geocoding and reverse geocoding services are available.
-   - Call **isGeoServiceAvailable** to check whether the geocoding and reverse geocoding services are available. If yes, go to step 3. If the services are unavailable, the device does not have the geocoding and reverse geocoding capabilities. Do not use related APIs.
-     
+
+   - Call **isGeocoderAvailable** to check whether the geocoding and reverse geocoding services are available. If yes, proceed to step 3. If the services are unavailable, the device does not have the geocoding and reverse geocoding capabilities. Do not use the related APIs.
+
       ```ts
       import { geoLocationManager } from '@kit.LocationKit';
       try {
           let isAvailable = geoLocationManager.isGeocoderAvailable();
+          if (!isAvailable) {
+              console.error("current device do not support geocoder");
+          }
       } catch (err) {
-          console.error("errCode:" + JSON.stringify(err));
+          console.error("errCode:" + err.code + ", message:"  + err.message);
       }
       ```
 
 3. Obtain the geocoding conversion result.
-   - Call **getAddressesFromLocation** to convert coordinates into geographical location information. Your application can obtain the list of [GeoAddress](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geoaddress) objects that match the specified coordinates and then read location information from it.
-     
+
+   - Call **getAddressesFromLocation** to convert coordinates into geographic descriptions (i.e., location information). Your application can obtain the list of [GeoAddress](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geoaddress) objects that match the coordinates and read the corresponding parameter data based on actual usage requirements.
+
       ```ts
       let reverseGeocodeRequest:geoLocationManager.ReverseGeoCodeRequest = {"latitude": 31.12, "longitude": 121.11, "maxItems": 1};
       try {
-          geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest, (err, data) => {
+          if (geoLocationManager.isGeocoderAvailable()) {
+            geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest, (err,data) => {
               if (err) {
-                  console.error('getAddressesFromLocation err: ' + JSON.stringify(err));
+                console.error("getAddressesFromLocation errCode:" + err.code + ", message:"  + err.message);
               } else {
-                  console.info('getAddressesFromLocation data: ' + JSON.stringify(data));
+                console.info('getAddressesFromLocation data: ' + JSON.stringify(data));
               }
-          });
+            });
+          }
       } catch (err) {
-          console.error("errCode:" + JSON.stringify(err));
+          console.error("errCode:" + err.code + ", message:"  + err.message);
       }
       ```
 
-   - Call **getAddressesFromLocationName** to convert the location description into coordinates.
-     
+   - Call **getAddressesFromLocationName** to convert geographic descriptions (i.e., location information) into coordinates.
+
       ```ts
-      let geocodeRequest:geoLocationManager.GeoCodeRequest = {"description": "No. xx, xx Road, Pudong District, Shanghai", "maxItems": 1};
+      let geocodeRequest:geoLocationManager.GeoCodeRequest = {"description": "Zhangjiang Road, Pudong New Area, Shanghai", "maxItems": 1};
       try {
-          geoLocationManager.getAddressesFromLocationName(geocodeRequest, (err, data) => {
+          if (geoLocationManager.isGeocoderAvailable()) {
+            geoLocationManager.getAddressesFromLocationName(geocodeRequest, (err, data) => {
               if (err) {
-                  console.error('getAddressesFromLocationName err: ' + JSON.stringify(err));
+                console.error("getAddressesFromLocationName errCode:" + err.code + ", message:"  + err.message);
               } else {
-                  console.info('getAddressesFromLocationName data: ' + JSON.stringify(data));
+                console.info('getAddressesFromLocationName data: ' + JSON.stringify(data));
               }
-          });
+            });
+          }
       } catch (err) {
-          console.error("errCode:" + JSON.stringify(err));
+          console.error("errCode:" + err.code + ", message:"  + err.message);
       }
       ```
 
-      Your application can obtain the list of [GeoAddress](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geoaddress) objects that match the specified location description and then read coordinates from it.
+      Your application can obtain the list of [GeoAddress](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geoaddress) objects that match the location information, which contains the corresponding coordinate data.
 
-      If the location description contains duplicate location names, you can call [GeoCodeRequest](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geocoderequest) to specify a longitude and latitude range to narrow down the scope.
+      If the location description to be queried may have duplicate names in multiple places, you can set [GeoCodeRequest](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geocoderequest) to specify a longitude and latitude range to efficiently obtain the desired accurate results.

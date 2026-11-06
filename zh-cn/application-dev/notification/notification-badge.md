@@ -2,7 +2,7 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -15,7 +15,7 @@
 
 ## 接口说明
 
-当角标设定个数取值小于或等于0时，表示清除角标。取值大于99时，通知角标将显示99+。
+当角标设定个数取值小于或等于0时，表示清除角标。取值大于99时，[通知角标](notification-glossary.md#notification-badge通知角标)将显示99+。
 
 - 增加角标数，支持如下两种方法：
 
@@ -34,7 +34,7 @@
 
 1. 导入NotificationManager模块。
 
-   <!-- @[manage_notification_badges_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->    
+   <!-- @[manage_notification_badges_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
    
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';

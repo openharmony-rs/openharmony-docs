@@ -2,10 +2,11 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @wind_-->
-<!--Designer: @yylong-->
+<!--Owner: @rongShao-Z; @wind_-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=0672ac3ef29c770af9bf5bb6ea656cdd69abe9dd translatedAt=2026-11-04T01:22:08.976Z pushedAt=2026-11-04T01:45:23.294Z nl=1 -->
 
 This component is supported since API version 18. An arc list is a specialized list designed for circular screens. It can efficiently display information in a structured and scrollable form. For details, see [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md).
 
@@ -33,7 +34,7 @@ ArcList({
 
 >**NOTE**
 >
->The child components of the [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) must be [ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md). [ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md) must be used in conjunction with [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md).
+>[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) supports only [ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md) and [custom components](state-management/arkts-create-custom-components.md) as child components. ArcListItem must be used together with ArcList. When using a custom component, use ArcListItem as the top-level component of the custom component. Do not set attributes and event methods directly on the custom component, because ArcList manages the layout and event handling of child components through ArcListItem. Setting them directly may cause some features to not work properly.
 
 ## Displaying Data in the ArcList Component
 
@@ -185,7 +186,6 @@ class Contact {
 @Entry
 @Component
 export struct ArcListContents {
-  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   @State private contacts: Array<object> = [
     // Replace $r('app.string.xxx') with the actual resource file.
     new Contact($r('app.string.name_xiaohong'), $r('app.media.ic_contact')),
@@ -342,7 +342,7 @@ ArcList({ header: this.arcListHeader }) {
 .scrollBarColor(ColorMetrics.numeric(Color.White))
 ```
 
-  **Figure 6** Built-in scrollbar of the ArcList component
+  **Figure 6** Built-in scrollbar of the ArcList component 
 
 ![arcList_scrollBar](figures/arcList_scrollBar.gif)
 
@@ -350,7 +350,7 @@ ArcList({ header: this.arcListHeader }) {
 
 To add an external scrollbar to an [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md), you can use the [ArcScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-arcscrollbar.md) component. By binding both the **List** and **ScrollBar** components to the same [Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller) object, you can ensure they stay synchronized.
 
-1. Create a **Scroller** object named **arcListScroller**.
+1. Create a [Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller) object named **arcListScroller**.
 
    <!-- @[create_arcListScroller_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListAcrScrollBar.ets) -->
    
@@ -378,7 +378,7 @@ To add an external scrollbar to an [ArcList](../reference/apis-arkui/arkui-ts/ts
    ArcScrollBar({ scroller: this.arcListScroller })
    ```
 
-  **Figure 7** External scrollbar of the ArcList component
+  **Figure 7** External scrollbar of the ArcList component 
 
 ![arcScrollBar](figures/arcScrollBar.gif)
 
@@ -390,11 +390,11 @@ To add an external scrollbar to an [ArcList](../reference/apis-arkui/arkui-ts/ts
 
 Applications often need to monitor changes in the scroll position of a list and respond accordingly, or quickly navigate to specific sections by adjusting the scroll position. For example, in a contacts list, as the list scrolls through different sections (for example, from "A" to "B"), the external index bar should update to reflect the current letter. When a user selects an index item (for example, "C"), the list should jump to the corresponding section. To achieve this functionality, you can use the [ArcAlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-arc-alphabet-indexer.md) component.
 
-As shown in Figure 8, when the list scrolls from contacts starting with "A" to those starting with "B," the external index bar should also update from the selected "A" state to the selected "B" state. This can be achieved by listening for the [onScrollIndex](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#onscrollindex) event of the **ArcList** component. When an index item "C" is clicked, the list should jump to the contacts starting with "C." This can be achieved by listening for the [onSelect](../reference/apis-arkui/arkui-ts/ts-container-arc-alphabet-indexer.md#onselect) event of the [ArcAlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-arc-alphabet-indexer.md) component.
+As shown in Figure 8, when the list scrolls from contacts starting with "A" to those starting with "B," the external index bar should also update from the selected "A" state to the selected "B" state. This can be achieved by listening for the [onScrollIndex](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#onscrollindex) event of the [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) component. When an index item "C" is clicked, the list should jump to the contacts starting with "C." This can be achieved by listening for the [onSelect](../reference/apis-arkui/arkui-ts/ts-container-arc-alphabet-indexer.md#onselect) event of the [ArcAlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-arc-alphabet-indexer.md) component.
 
-When the list scrolls, the **selectedIndex** value of the letter to highlight in the alphabet index bar is recalculated based on the **firstIndex** value of the item to which the list has scrolled. Since the **ArcAlphabetIndexer** component uses the [selected](../reference/apis-arkui/arkui-ts/ts-container-arc-alphabet-indexer.md#selected) attribute to set the selected item index, changes to **selectedIndex** will trigger the **ArcAlphabetIndexer** component to re-render and display the selected letter state.
+During list scrolling, the corresponding letter position **indexerIndex** in the alphabet index bar is recalculated based on the current index position **centerIndex** of the list. Since the [ArcAlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-arc-alphabet-indexer.md) component sets the selected item index through the [selected](../reference/apis-arkui/arkui-ts/ts-container-arc-alphabet-indexer.md#selected) attribute, a change in **indexerIndex** triggers the [ArcAlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-arc-alphabet-indexer.md) component to re-render, thereby displaying the corresponding letter in the selected state.
 
-When an index item is selected, the selected item index (**index**) is used to recalculate the corresponding position in the list. The list is then scrolled to that position using the [scrollToIndex](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrolltoindex) API of the bound scroll controller (**arcListScroller**). The **ArcList** component can be bound to a [Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller) (scroll controller) object using the [scroller](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#arklistoptions) parameter.
+When an index item is selected, the selected item index (**index**) is used to recalculate the corresponding position in the list. The list is then scrolled to that position using the [scrollToIndex](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrolltoindex) API of the bound scroll controller (**arcListScroller**). The [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) component can be bound to a [Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller) (scroll controller) object using the [scroller](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#arklistoptions) parameter.
 
 
 <!-- @[arcAlphabetIndexer_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListArcIndexerBar.ets) -->
@@ -405,7 +405,7 @@ import { common } from '@kit.AbilityKit';
 
 // ...
 const alphabets: string[] = [
-  '#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N',
+  '#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
   'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
 ];
 
@@ -429,8 +429,10 @@ export struct ArcListArcIndexerBar {
             }
             // ...
             .onScrollIndex((firstIndex: number, lastIndex: number, centerIndex: number) => {
-              // Recalculate the corresponding index bar position based on the index of the item to which the list has scrolled.
-              this.indexerIndex = centerIndex + 1;
+              // Recalculate the position of the corresponding index bar this.indexerIndex based on the index value to which the list scrolls.
+              let contact = this.contacts[centerIndex] as Contact;
+              let firstChar = contact.firstChar;
+              this.indexerIndex = alphabets.indexOf(firstChar);
             })
             // ...
             // ArcAlphabetIndexer component
@@ -438,8 +440,19 @@ export struct ArcListArcIndexerBar {
               .selected(this.indexerIndex!!)
               .onSelect((index: number) => {
                 // Scroll the list to the corresponding position when an index item is selected.
-                this.indexerIndex = index
-                this.arcListScroller.scrollToIndex(this.indexerIndex - 1)
+                this.indexerIndex = index;
+                const selectedLetter = alphabets[index];
+                let targetIndex = -1;
+                for (let i = 0; i < this.contacts.length; i++) {
+                  const contact = this.contacts[i] as Contact;
+                  if (contact.firstChar === selectedLetter) {
+                    targetIndex = i;
+                    break;
+                  }
+                }
+                if (targetIndex >= 0) {
+                  this.arcListScroller.scrollToIndex(targetIndex);
+                }
               })
               // ...
           }
@@ -455,9 +468,9 @@ export struct ArcListArcIndexerBar {
 
 ## Responding to Swipe on List Items
 
-To enable swipe gestures on list items in the **ArcList** component, you can use the [swipeAction](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md#swipeaction) attribute of **ArcListItem**. This attribute requires a [SwipeActionOptions](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#swipeactionoptions9) object with **start** and **end** parameters. Here, **start** defines the swipe action item displayed on the start edge of the list item when the item is swiped right, while **end** defines the swipe action item displayed on the end edge of the list item when the item is swiped left.
+To enable swipe gestures on list items in the [ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md) component, you can use the [swipeAction](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md#swipeaction) attribute of **ArcListItem**. This attribute requires a [SwipeActionOptions](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#swipeactionoptions9) object with **start** and **end** parameters. Here, **start** defines the swipe action item displayed on the start edge of the list item when the item is swiped right, while **end** defines the swipe action item displayed on the end edge of the list item when the item is swiped left.
 
-For example, in a contacts list, you can use the **end** parameter to show a delete button when an item is swiped left. During the initialization of the **end** parameter, the index of the list item to be swiped is passed to the delete button. When the user taps the delete button, the data corresponding to that list item is deleted based on the index.
+In the contact list, the **end** parameter specifies the custom component that slides out from the end edge when an [ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md) is swiped left, that is, the delete button. When initializing the **end** method, the index of the swiped list item is passed to the delete button component. When the user taps the delete button, the data corresponding to the list item can be removed based on the data index, thereby implementing the swipe-to-delete feature.
 
 1. Build the component that appears from the end edge when the list item is swiped left.
 
@@ -521,7 +534,7 @@ For example, in a contacts list, you can use the **end** parameter to show a del
 
 While [ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md) is suitable for short lists, using it for long lists with a large number of items can significantly slow down page loading, as it loads all items at once. Therefore, for better list performance, use [LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md) instead to implement on-demand iterative data loading. For details about the implementation, see the example in [LazyForEach: Lazy Data Loading](../ui/rendering-control/arkts-rendering-control-lazyforeach.md).
 
-When the list is rendered in lazy loading mode, to improve the list scrolling experience and minimize white blocks during list scrolling, you can use the [cachedCount](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#cachedcount) attribute of the [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) component. This attribute sets the number of list items preloaded outside of the screen and is valid only in [LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md).
+When the list is rendered in lazy loading mode, to improve the list scrolling experience and minimize white blocks during list scrolling, you can use the [cachedCount](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#cachedcount) attribute of the [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) component. This attribute sets the number of cached list items and is valid only in [LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md).
 
 
 <!-- @[arcLongList_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcLongList.ets) -->
@@ -535,13 +548,17 @@ ArcList() {
 
 >**NOTE**
 >
->- A greater **cachedCount** value may result in higher CPU and memory overhead of the UI. Adjust the value by taking into account both the comprehensive performance and user experience.
+>- A greater **cachedCount** value may result in higher CPU and memory overhead of the UI. Adjust it based on actual scenarios, balancing performance and user experience.
 >
->- When a list uses data lazy loading, all list items except the list items in the display area and the cached list items are destroyed.
+>- When data lazy loading is used in the list, list items other than those in the display area and the cached items before and after will be destroyed.
 
 ## Responding to Digital Crown Rotations
 
 On wearable devices, the **ArcList** component can respond to digital crown rotations when it is in focus. Users can scroll through the list items by rotating the crown. To make the **ArcList** the default focus on the page and enable it to respond to crown rotations, you can use the following [focus control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md) attributes:
+
+> **NOTE**
+>
+> Setting only the default focus-related attributes does not guarantee that ArcList gains focus. ArcList must also contain a focusable leaf node component. For details, see [Setting Whether a Component Can Gain Focus](arkts-common-events-focus-event.md#setting-whether-a-component-is-focusable).
 
 <!-- @[arcListCrown_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListCrown.ets) -->
 

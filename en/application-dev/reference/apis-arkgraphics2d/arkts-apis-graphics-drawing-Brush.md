@@ -2,12 +2,15 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=cfa59f2ade5e74278a5dbd3dbd7bab536925f809 translatedAt=2026-08-24T07:54:00.476Z pushedAt=2026-08-25T01:39:20.241Z -->
 
-Defines a brush, which is used to describe the style and color to fill in a shape.
+Defines a brush object, which is used to set the fill style of a shape, including color, anti-aliasing, blend mode, color filter, mask filter, shader effect, shadow layer effect, and image filter. It also supports obtaining properties such as color, transparency, and anti-aliasing, and resetting the brush to its initial state.
+
+A brush takes effect only after it is bound to the canvas through the [attachBrush](arkts-apis-graphics-drawing-Canvas.md#attachbrush) method of Canvas, and it is unbound through the [detachBrush](arkts-apis-graphics-drawing-Canvas.md#detachbrush) method after drawing is complete. A brush is used for shape filling, while a pen is used for shape stroking. For details, see [Pen](arkts-apis-graphics-drawing-Pen.md).
 
 > **NOTE**
 >
@@ -27,7 +30,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 constructor()
 
-A constructor used to create a **Brush** object.
+Constructs a new brush object. Default configuration: a newly created brush has anti-aliasing disabled and the blend mode set to SRC_OVER by default, and no color filter, mask filter, shader effect, shadow layer effect, or image filter is set.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -76,7 +79,7 @@ const newBrush = new drawing.Brush(brush);
 
 setColor(color: common2D.Color) : void
 
-Sets a color for this brush.
+Sets the color of the brush. The set color is used as the base color for shape filling. When no ShaderEffect is set, rendering and filling are performed with this color.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -84,7 +87,7 @@ Sets a color for this brush.
 
 | Name| Type                                                | Mandatory| Description            |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| color  | [common2D.Color](js-apis-graphics-common2D.md#color) | Yes  | Color in ARGB format. The value of each color channel is an integer ranging from 0 to 255.|
+| color  | [common2D.Color](js-apis-graphics-common2D.md#color) | Yes   | Color in ARGB format. The value range of each color channel is an integer in [0, 255]. Floating-point numbers within the range are rounded down. |
 
 **Error codes**
 
@@ -111,15 +114,15 @@ setColor(alpha: number, red: number, green: number, blue: number): void
 Sets a color for this brush. This API provides better performance than [setColor](#setcolor) and is recommended.
 
 **System capability**: SystemCapability.Graphics.Drawing
- 
+
 **Parameters**
 
 | Name| Type   | Mandatory| Description                                              |
 | ------ | ------ | ---- | -------------------------------------------------- |
-| alpha  | number | Yes  | Alpha channel value of the color in ARGB format. The value is an integer ranging from 0 to 255. Any passed-in floating point number is rounded down.|
-| red    | number | Yes  | Red channel value of the color in ARGB format. The value is an integer ranging from 0 to 255. Any passed-in floating point number is rounded down.  |
-| green  | number | Yes  | Green channel value of the color in ARGB format. The value is an integer ranging from 0 to 255. Any passed-in floating point number is rounded down.  |
-| blue   | number | Yes  | Blue channel value of the color in ARGB format. The value is an integer ranging from 0 to 255. Any passed-in floating point number is rounded down.  |
+| alpha  | number | Yes   | Transparency channel value of the ARGB format color. The value is an integer in the range [0, 255]. Floating-point numbers within the range are rounded down. |
+| red    | number | Yes   | Red channel value of the ARGB format color. The value is an integer in the range [0, 255]. Floating-point numbers within the range are rounded down.   |
+| green  | number | Yes   | Green channel value of the ARGB format color. The value is an integer in the range [0, 255]. Floating-point numbers within the range are rounded down.   |
+| blue   | number | Yes   | Blue channel value of the ARGB format color. The value is an integer in the range [0, 255]. Floating-point numbers within the range are rounded down.   |
 
 **Error codes**
 
@@ -142,7 +145,7 @@ brush.setColor(255, 255, 0, 0);
 
 setColor(color: number) : void
 
-Sets a color for this brush.
+Sets the color of the brush. The difference from [setColor](#setcolor) is that the color can be set directly through a hexadecimal ARGB value.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -150,7 +153,7 @@ Sets a color for this brush.
 
 | Name| Type                                                | Mandatory| Description            |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| color  | number | Yes  | Color in hexadecimal ARGB format.|
+| color  | number | Yes   | Color in hexadecimal ARGB format, represented as a 32-bit unsigned integer in the format 0xAARRGGBB, where AA is the alpha channel, RR is the red channel, GG is the green channel, and BB is the blue channel. Each channel ranges from 0x00 to 0xFF, and the overall value range is [0x00000000, 0xFFFFFFFF]. |
 
 **Error codes**
 
@@ -171,9 +174,9 @@ brush.setColor(0xffff0000);
 
 ## setColor4f<sup>20+</sup>
 
-setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceManager | null): void
+setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceManager \| null): void
 
-Sets the color and standard color gamut for this brush. The difference between this method and [setColor](#setcolor) is that the color gamut can be set separately.
+Sets the color and standard color gamut of the brush. The difference from [setColor](#setcolor) is that the color gamut can be set separately, which applies to scenarios where the color gamut needs to be set independently.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -181,17 +184,17 @@ Sets the color and standard color gamut for this brush. The difference between t
 
 | Name| Type                                                | Mandatory| Description            |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| color4f  | [common2D.Color4f](js-apis-graphics-common2D.md#color4f20) | Yes  | Color in the ARGB format. The value of each color channel is a floating point number ranging from 0.0 to 1.0. Values above 1.0 default to **1.0**, and values below 0.0 default to **0.0**.|
-| colorSpace  | [colorSpaceManager.ColorSpaceManager](js-apis-colorSpaceManager.md#colorspacemanager) \| null | Yes  | Standard color gamut object. **null** indicates SRGB.|
+| color4f  | [common2D.Color4f](js-apis-graphics-common2D.md#color4f20) | Yes   | Color in ARGB format. The value of each color channel is a floating-point number between 0.0 and 1.0. Values greater than 1.0 are set to 1.0, and values less than 0.0 are set to 0.0. The color value is mapped in the color gamut specified by the colorSpace parameter.|
+| colorSpace  | [colorSpaceManager.ColorSpaceManager](js-apis-colorSpaceManager.md#colorspacemanager) \| null | Yes   | Standard color gamut object, which must be created through the [colorSpaceManager.create()](js-apis-colorSpaceManager.md#colorspacemanagercreate) method. It is used together with color4f to determine the color gamut in which the color4f color value is mapped. null indicates that the sRGB color gamut is used.|
 
 **Example**
 
 ```ts
-import { common2D, drawing, colorSpaceManager } from "@kit.ArkGraphics2D";
+import { common2D, drawing, colorSpaceManager } from '@kit.ArkGraphics2D';
 
 const brush = new drawing.Brush();
 let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG);
-let color4f:common2D.Color4f = {alpha:1, red:0.5, green:0.4, blue:0.7};
+let color4f: common2D.Color4f = { alpha: 1, red: 0.5, green: 0.4, blue: 0.7 };
 brush.setColor4f(color4f, colorSpace);
 ```
 
@@ -207,7 +210,7 @@ Obtains the color of this brush.
 
 | Type          | Description           |
 | -------------- | -------------- |
-| common2D.Color | Color of the brush.|
+| common2D.Color | Color of the brush, which is a color object in ARGB format containing four channel values: alpha, red, green, and blue. Each channel value is an integer in the range [0, 255]. |
 
 **Example**
 
@@ -217,7 +220,7 @@ import { common2D, drawing } from '@kit.ArkGraphics2D';
 const color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
 const brush = new drawing.Brush();
 brush.setColor(color);
-let colorGet = brush.getColor();
+let currentColor = brush.getColor();
 ```
 
 ## getColor4f<sup>20+</sup>
@@ -232,16 +235,16 @@ Obtains the brush color. The difference between this method and [getColor](#getc
 
 | Type          | Description           |
 | -------------- | -------------- |
-| [common2D.Color4f](js-apis-graphics-common2D.md#color4f20) | Color of the brush.|
+| [common2D.Color4f](js-apis-graphics-common2D.md#color4f20) | Color of the brush, which is an ARGB color object in floating-point format, with each channel value being a floating-point number in the range [0.0, 1.0]. |
 
 **Example**
 
 ```ts
-import { common2D, drawing, colorSpaceManager } from "@kit.ArkGraphics2D";
+import { common2D, drawing, colorSpaceManager } from '@kit.ArkGraphics2D';
 
 const brush = new drawing.Brush();
 let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG);
-let color4f:common2D.Color4f = {alpha:1, red:0.5, green:0.4, blue:0.7};
+let color4f: common2D.Color4f = { alpha: 1, red: 0.5, green: 0.4, blue: 0.7 };
 brush.setColor4f(color4f, colorSpace);
 let color = brush.getColor4f();
 ```
@@ -250,7 +253,7 @@ let color = brush.getColor4f();
 
 getHexColor(): number
 
-Obtains the color of this brush.
+Obtains the hexadecimal ARGB format value of the brush color. The difference from [getColor](#getcolor12) is that the return value type is a 32-bit unsigned integer in hexadecimal ARGB format.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -268,15 +271,15 @@ import { common2D, drawing } from '@kit.ArkGraphics2D';
 let color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
 let brush = new drawing.Brush();
 brush.setColor(color);
-let hex_color: number = brush.getHexColor();
-console.info('getHexColor: ', hex_color.toString(16));
+let hexColor: number = brush.getHexColor();
+console.info('getHexColor: ', hexColor.toString(16));
 ```
 
 ## setAntiAlias
 
 setAntiAlias(aa: boolean) : void
 
-Enables anti-aliasing for this brush. Anti-aliasing makes the edges of the content smoother. If this API is not called, anti-aliasing is disabled by default.
+Sets whether to enable anti-aliasing for the brush. After anti-aliasing is enabled, the edges of the shape are displayed more smoothly. If this API is not called, anti-aliasing is disabled by default.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -330,7 +333,7 @@ let isAntiAlias = brush.isAntiAlias();
 
 setAlpha(alpha: number) : void
 
-Sets an alpha value for this brush.
+Sets the transparency of the brush. After setAlpha is called, the transparency set by setAlpha takes effect during rendering, overriding the alpha channel value of the Color object in setColor.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -338,7 +341,7 @@ Sets an alpha value for this brush.
 
 | Name| Type  | Mandatory| Description                                    |
 | ------ | ------ | ---- | ---------------------------------------- |
-| alpha  | number | Yes  | Alpha value. The value is an integer in the range [0, 255]. If a floating point number is passed in, the value is rounded down.|
+| alpha  | number | Yes   | Integer in the range [0, 255] used to represent transparency. Floating-point numbers within the range are rounded down. |
 
 **Error codes**
 
@@ -369,7 +372,7 @@ Obtains the alpha value of this brush.
 
 | Type  | Description             |
 | ------ | ---------------- |
-| number | Alpha value of the brush. The return value is an integer ranging from 0 to 255.|
+| number | Return the transparency of the brush, which is an integer in the value range [0, 255]. |
 
 **Example**
 
@@ -392,7 +395,7 @@ Sets a color filter for this brush.
 
 | Name| Type                       | Mandatory| Description        |
 | ------ | --------------------------- | ---- | ------------ |
-| filter | [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) \| null | Yes  | Defines a color filter. If **null** is passed in, the color filter is cleared.|
+| filter | [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) \| null | Yes | Color filter used for color adjustment of the drawing content (such as gamma correction, color matrix transformation, etc.). null indicates clearing the color filter. |
 
 **Error codes**
 
@@ -416,7 +419,7 @@ brush.setColorFilter(colorFilter);
 
 setMaskFilter(filter: MaskFilter | null): void
 
-Adds a mask filter for this brush.
+Sets a mask filter for this brush.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -424,7 +427,7 @@ Adds a mask filter for this brush.
 
 | Name| Type                      | Mandatory| Description     |
 | ------ | ------------------------- | ---- | --------- |
-| filter | [MaskFilter](arkts-apis-graphics-drawing-MaskFilter.md) \| null | Yes  | Mask filter. If **null** is passed in, the mask filter is cleared.|
+| filter | [MaskFilter](arkts-apis-graphics-drawing-MaskFilter.md) \| null | Yes | Mask filter, used for scenarios such as blurring the edges of drawn graphics. null indicates clearing the mask filter. |
 
 **Error codes**
 
@@ -437,12 +440,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
-import { common2D, drawing } from '@kit.ArkGraphics2D';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
-    const canvas = context.canvas;
     const brush = new drawing.Brush();
     let maskFilter = drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10);
     brush.setMaskFilter(maskFilter);
@@ -462,7 +464,7 @@ Sets the shader effect for this brush.
 
 | Name | Type                      | Mandatory| Description        |
 | ------- | ------------------------- | ---- | ------------ |
-| shaderEffect  | [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) \| null | Yes  | **ShaderEffect** object. If **null** is passed in, the shader effect will be cleared.|
+| shaderEffect  | [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) \| null | Yes   | Shader effect object used to implement complex drawing effects such as gradient fill and pattern fill. null indicates clearing the shader effect. |
 
 **Error codes**
 
@@ -486,7 +488,7 @@ brush.setShaderEffect(shaderEffect);
 
 setShadowLayer(shadowLayer: ShadowLayer | null): void
 
-Sets a shadow layer for this brush. The shadow layer effect takes effect only when text is drawn.
+Sets a shadow layer for this brush. The shadow layer effect takes effect only when text is drawn through methods such as [drawTextBlob](arkts-apis-graphics-drawing-Canvas.md#drawtextblob) of Canvas.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -494,7 +496,7 @@ Sets a shadow layer for this brush. The shadow layer effect takes effect only wh
 
 | Name | Type                      | Mandatory| Description     |
 | ------- | ------------------------- | ---- | --------- |
-| shadowLayer  | [ShadowLayer](arkts-apis-graphics-drawing-ShadowLayer.md) \| null | Yes  | Implements a shadow layer. If **null** is passed in, the shadow layer is cleared.|
+| shadowLayer  | [ShadowLayer](arkts-apis-graphics-drawing-ShadowLayer.md) \| null | Yes   | Shadow layer object, used to add a shadow effect to the brush. null indicates clearing the shadow layer effect. This shadow layer effect takes effect only when drawing text. |
 
 **Error codes**
 
@@ -507,7 +509,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
@@ -516,12 +518,12 @@ class DrawingRenderNode extends RenderNode {
     let font = new drawing.Font();
     font.setSize(60);
 
-    let textBlob = drawing.TextBlob.makeFromString("hello", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+    let textBlob = drawing.TextBlob.makeFromString('hello', font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
     let pen = new drawing.Pen();
     pen.setStrokeWidth(2.0);
 
-    let pen_color : common2D.Color = {alpha: 0xFF, red: 0xFF, green: 0x00, blue: 0x00};
-    pen.setColor(pen_color);
+    let penColor : common2D.Color = {alpha: 0xFF, red: 0xFF, green: 0x00, blue: 0x00};
+    pen.setColor(penColor);
     canvas.attachPen(pen);
     canvas.drawTextBlob(textBlob, 100, 100);
     canvas.detachPen();
@@ -534,8 +536,8 @@ class DrawingRenderNode extends RenderNode {
     canvas.detachPen();
 
     let brush = new drawing.Brush();
-    let brush_color : common2D.Color = {alpha: 0xFF, red: 0xFF, green: 0x00, blue: 0x00};
-    brush.setColor(brush_color);
+    let brushColor : common2D.Color = {alpha: 0xFF, red: 0xFF, green: 0x00, blue: 0x00};
+    brush.setColor(brushColor);
     canvas.attachBrush(brush);
     canvas.drawTextBlob(textBlob, 300, 100);
     canvas.detachBrush();
@@ -560,7 +562,7 @@ Sets a blend mode for this brush. If this API is not called, the default blend m
 
 | Name| Type                   | Mandatory| Description            |
 | ------ | ----------------------- | ---- | ---------------- |
-| mode   | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode) | Yes  | Blend mode.|
+| mode   | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode) | Yes   | Blend mode of the color, used to control how the source color is blended with the existing destination color during drawing. If this interface is not called to set the blend mode, the system default blend mode is SRC_OVER. |
 
 **Error codes**
 
@@ -591,7 +593,7 @@ Sets an image filter for this brush.
 
 | Name| Type  | Mandatory| Description                   |
 | ------ | ------ | ---- | ----------------------- |
-| filter    | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| null | Yes  | Image filter. If **null** is passed in, the image filter effect of the brush will be cleared.|
+| filter    | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| null | Yes   | Image filter used to apply image processing such as blurring and sharpening to the drawing content. null indicates clearing the image filter. |
 
 **Error codes**
 
@@ -604,11 +606,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let brush = new drawing.Brush();
-let imgFilter = drawing.ImageFilter.createBlurImageFilter(5, 10, drawing.TileMode.DECAL);
-brush.setImageFilter(imgFilter);
+let imageFilter = drawing.ImageFilter.createBlurImageFilter(5, 10, drawing.TileMode.DECAL);
+brush.setImageFilter(imageFilter);
 brush.setImageFilter(null);
 ```
 
@@ -624,24 +626,24 @@ Obtains the color filter of this brush.
 
 | Type                       | Description              |
 | --------------------------- | ------------------ |
-| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | Color filter.|
+| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | Returns the color filter of the brush, which is used to adjust the color of the drawn content, such as gamma correction and color matrix transformation. |
 
 **Example**
 
 ```ts 
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let brush = new drawing.Brush();
-let setColorFilter = drawing.ColorFilter.createSRGBGammaToLinear();
-brush.setColorFilter(setColorFilter);
-let filter = brush.getColorFilter();   
+let colorFilter = drawing.ColorFilter.createSRGBGammaToLinear();
+brush.setColorFilter(colorFilter);
+let currentFilter = brush.getColorFilter();   
 ```
 
 ## reset<sup>12+</sup>
 
 reset(): void
 
-Resets this brush to the initial state.
+Resets this brush to the initial state, clearing the set color, transparency, anti-aliasing, color filter, mask filter, shader effect, shadow layer effect, blend mode, and image filter. The specific values of the initial state are as follows: anti-aliasing is disabled, the blend mode is SRC_OVER, and no color filter, mask filter, shader effect, shadow layer effect, or image filter is set. To use the preceding attributes, call the corresponding set APIs again.
 
 **System capability**: SystemCapability.Graphics.Drawing
 

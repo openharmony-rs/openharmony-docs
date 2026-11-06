@@ -41,7 +41,9 @@
 | 未指定TAG具体值 | HUKS_STORAGE_KEY_EXPORT_ALLOWED | 密钥返回给调用方管理 |
 | 未指定TAG具体值 | 未指定TAG具体值 | 密钥返回给调用方管理 |
 
-注：协商时指定的TAG值，不可与生成时指定的TAG值冲突。表格中仅列举有效的指定方式。
+> **注意：**
+>
+> 协商时指定的TAG值，不可与生成时指定的TAG值冲突。表格中仅列举有效的指定方式。
 
 **删除密钥**
 
@@ -264,7 +266,7 @@ async function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
 }
 
 async function testAgree() {
-  /* 1.确定密钥别名并集成要参数集。A设备：srcKeyAliasFirst；B设备：srcKeyAliasSecond */
+  /* 1.确定密钥别名，并集成密钥参数集。A设备：srcKeyAliasFirst；B设备：srcKeyAliasSecond */
   /* 2.设备A生成密钥 */
   await generateKeyItem(srcKeyAliasFirst, huksOptions);
   /* 3.设备B生成密钥 */
@@ -292,7 +294,7 @@ async function testAgree() {
 <!-- -->
 
 ### DH密钥协商用例
-<!-- @[key_agreement_dh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/ets/pages/DH.ets) -->
+<!-- @[key_agreement_dh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/ets/pages/DH.ets) -->  
 
 ``` TypeScript
 
@@ -509,13 +511,13 @@ async function huksDhAgreeInHuks(keyAlias: string, peerPubKey: Uint8Array,
     properties: [...dhAgree, ...onlyUsedInHuks],
     inData: peerPubKey
   };
-  await huks.updateSession(handle, dhAgreeUpdatePubKey);
-  const dhAgreeAliceFinnish: huks.HuksOptions = {
+  await updateSession(handle, dhAgreeUpdatePubKey);
+  const dhAgreeAliceFinish: huks.HuksOptions = {
     properties: [...dhAgreeFinishParams, {
       tag: huks.HuksTag.HUKS_TAG_KEY_ALIAS, value: stringToUint8Array(aliasAgreedKey)
     }], inData: new Uint8Array([])
   };
-  await finishSession(handle, dhAgreeAliceFinnish);
+  await finishSession(handle, dhAgreeAliceFinish);
 }
 
 async function huksDhAgreeInHuksTest(
@@ -524,11 +526,11 @@ async function huksDhAgreeInHuksTest(
   aliasAgreedKeyFromA: string, aliasAgreedKeyFromB: string) {
 
   await huksDhAgreeInHuks(aliasA, pubKeyB, aliasAgreedKeyFromA);
-  const aliceAgreedExist = await huks.isKeyItemExist(aliasAgreedKeyFromA, emptyOptions);
+  const aliceAgreedExist = await isKeyItemExist(aliasAgreedKeyFromA, emptyOptions);
   console.info(`ok! aliceAgreedExist in huks is ${aliceAgreedExist}`);
 
   await huksDhAgreeInHuks(aliasB, pubKeyA, aliasAgreedKeyFromB);
-  const bobAgreedExist = await huks.isKeyItemExist(aliasAgreedKeyFromB, emptyOptions);
+  const bobAgreedExist = await isKeyItemExist(aliasAgreedKeyFromB, emptyOptions);
   console.info(`ok! bobAgreedExist in huks is ${bobAgreedExist}`);
 
   await deleteKeyItem(aliasAgreedKeyFromA, emptyOptions);
@@ -800,7 +802,7 @@ async function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
 }
 
 async function testAgree() {
-  /* 1.确定密钥别名并集成要参数集。A设备：srcKeyAliasFirst；B设备：srcKeyAliasSecond */
+  /* 1.确定密钥别名并集成密钥参数集。A设备：srcKeyAliasFirst；B设备：srcKeyAliasSecond */
   /* 2.设备A生成密钥 */
   await generateKeyItem(srcKeyAliasFirst, genHuksOptions);
   /* 3.设备B生成密钥 */

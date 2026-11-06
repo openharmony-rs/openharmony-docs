@@ -4,7 +4,8 @@
 <!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=2041fbedbdac475325c766ada1b1f6cc4b3c8b40 translatedAt=2026-11-03T03:38:14.970Z pushedAt=2026-11-03T07:35:01.629Z nl=1 -->
 
 The **usageStatistics** module provides APIs for collecting statistics on device usage. For example, you can use the APIs to query whether an application is commonly used and an application's priority group, usage duration, system events (hibernation, wakeup, unlocking, and screen locking), application events (foreground, background, and start and end of continuous tasks), and the number of notifications.
 
@@ -43,10 +44,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.         |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -56,8 +57,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
-usageStatistics.isIdleState("com.ohos.camera", (err: BusinessError, res: boolean) => {
+usageStatistics.isIdleState('com.ohos.camera', (err: BusinessError, res: boolean) => {
   if (err) {
     console.error('BUNDLE_ACTIVE isIdleState callback failed. code is: ' + err.code + ',message is: ' + err.message);
   } else {
@@ -94,10 +96,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.         |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -108,14 +110,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
-usageStatistics.isIdleState("com.ohos.camera").then((res: boolean) => {
+usageStatistics.isIdleState('com.ohos.camera').then((res: boolean) => {
   console.info('BUNDLE_ACTIVE isIdleState promise succeeded, result: ' + JSON.stringify(res));
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE isIdleState promise failed. code is: ' + err.code + ',message is: ' + err.message);
 });
 ```
-## usageStatistics.isIdleStateSync<sup>10+<sup>
+## usageStatistics.isIdleStateSync<sup>10+</sup>
 
 isIdleStateSync(bundleName: string): boolean
 
@@ -143,10 +146,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.         |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -155,7 +158,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 ```ts
-let isIdleState: boolean = usageStatistics.isIdleStateSync("com.ohos.camera");
+import { usageStatistics } from '@kit.BackgroundTasksKit';
+
+let isIdleState: boolean = usageStatistics.isIdleStateSync('com.ohos.camera');
 ```
 
 ## usageStatistics.queryAppGroup
@@ -180,9 +185,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -195,6 +200,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryAppGroup().then((res: number) => {
   console.info('BUNDLE_ACTIVE queryAppGroup promise succeeded. result: ' + JSON.stringify(res));
@@ -225,10 +231,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -241,6 +247,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryAppGroup((err: BusinessError, res: number) => {
   if(err) {
@@ -251,7 +258,7 @@ usageStatistics.queryAppGroup((err: BusinessError, res: number) => {
 });
 ```
 
-## usageStatistics.queryAppGroupSync<sup>10+<sup>
+## usageStatistics.queryAppGroupSync<sup>10+</sup>
 
 queryAppGroupSync(): number
 
@@ -273,9 +280,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -287,6 +294,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { usageStatistics } from '@kit.BackgroundTasksKit';
+
 let priorityGroup: number = usageStatistics.queryAppGroupSync();
 ```
 
@@ -318,10 +327,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -335,8 +344,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```javascript
 // Promise mode when bundleName is specified
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
-let bundleName: string = "com.ohos.camera";
+let bundleName: string = 'com.ohos.camera';
 usageStatistics.queryAppGroup(bundleName).then((res: number) => {
   console.info('BUNDLE_ACTIVE queryAppGroup promise succeeded. result: ' + JSON.stringify(res));
 }).catch((err: BusinessError) => {
@@ -367,10 +377,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -383,8 +393,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
-let bundleName: string = "com.ohos.camera";
+let bundleName: string = 'com.ohos.camera';
 usageStatistics.queryAppGroup(bundleName, (err: BusinessError, res: number) => {
   if(err) {
     console.error('BUNDLE_ACTIVE queryAppGroup callback failed. code is: ' + err.code + ',message is: ' + err.message);
@@ -394,7 +405,7 @@ usageStatistics.queryAppGroup(bundleName, (err: BusinessError, res: number) => {
 });
 ```
 
-## usageStatistics.queryAppGroupSync<sup>10+<sup>
+## usageStatistics.queryAppGroupSync<sup>10+</sup>
 
 queryAppGroupSync(bundleName: string): number
 
@@ -422,10 +433,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -437,7 +448,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-let priorityGroup: number = usageStatistics.queryAppGroupSync("com.ohos.camera");
+import { usageStatistics } from '@kit.BackgroundTasksKit';
+
+let priorityGroup: number = usageStatistics.queryAppGroupSync('com.ohos.camera');
 ```
 
 ## usageStatistics.setAppGroup
@@ -469,10 +482,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -484,8 +497,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
-let bundleName: string = "com.example.deviceUsageStatistics";
+let bundleName: string = 'com.example.deviceUsageStatistics';
 let newGroup = usageStatistics.GroupType.DAILY_GROUP;
 
 usageStatistics.setAppGroup(bundleName, newGroup).then( () => {
@@ -499,7 +513,7 @@ usageStatistics.setAppGroup(bundleName, newGroup).then( () => {
 
 setAppGroup(bundleName: string, newGroup: GroupType, callback: AsyncCallback&lt;void&gt;): void
 
-Sets a new group for the application specified by **bundleName**. This API uses an asynchronous callback to return the result. It can be called only by the current application.
+Sets a new group for the app specified by **bundleName**. This API uses an asynchronous callback to return the result. It can be called only by the current app.
 
 **Required permissions**: ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -519,10 +533,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -534,8 +548,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
-let bundleName: string = "com.example.deviceUsageStatistics";
+let bundleName: string = 'com.example.deviceUsageStatistics';
 let newGroup = usageStatistics.GroupType.DAILY_GROUP;
 
 usageStatistics.setAppGroup(bundleName, newGroup, (err: BusinessError) => {
@@ -571,10 +586,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -586,6 +601,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryBundleStatsInfos(0, 20000000000000, (err: BusinessError, res:usageStatistics.BundleStatsMap) => {
   if (err) {
@@ -626,10 +642,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -641,6 +657,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryBundleStatsInfos(0, 20000000000000).then((res:usageStatistics.BundleStatsMap) => {
   console.info('BUNDLE_ACTIVE queryBundleStatsInfos promise success.');
@@ -679,10 +696,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -694,6 +711,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryAppStatsInfos(0, 20000000000000).then((res:usageStatistics.AppStatsMap) => {
   console.info('queryAppStatsInfos promise success.');
@@ -731,10 +749,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -746,9 +764,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 // Replace com.ohos.camera with the actual bundle name.
-usageStatistics.queryLastUseTime({"com.ohos.camera": [0]}).then((res:usageStatistics.AppStatsMap) => {
+usageStatistics.queryLastUseTime({'com.ohos.camera': [0]}).then((res:usageStatistics.AppStatsMap) => {
   console.info('queryLastUseTime promise success.');
   console.info('queryLastUseTime promise result ' + JSON.stringify(res));
 }).catch((err: BusinessError) => {
@@ -781,10 +800,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -796,6 +815,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryBundleStatsInfoByInterval(0, 0, 20000000000000, (err: BusinessError, res: Array<usageStatistics.BundleStatsInfo>) => {
   if (err) {
@@ -818,7 +838,7 @@ Queries the application usage duration statistics in the specified time frame at
 
 **Required permissions**: ohos.permission.BUNDLE_ACTIVE_INFO
 
-**System capability**: SystemCapability.ResourceSchedule.UsageStatistics.App
+**System capability**: SystemCapability.ResourceSchedule.UsageStatistics.App 
 
 **Parameters**
 
@@ -840,10 +860,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -855,6 +875,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryBundleStatsInfoByInterval(0, 0, 20000000000000).then((res: Array<usageStatistics.BundleStatsInfo>) => {
   console.info('BUNDLE_ACTIVE queryBundleStatsInfoByInterval promise success.');
@@ -891,10 +912,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -906,6 +927,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryBundleEvents(0, 20000000000000, (err: BusinessError, res: Array<usageStatistics.BundleEvents>) => {
   if (err) {
@@ -920,6 +942,68 @@ usageStatistics.queryBundleEvents(0, 20000000000000, (err: BusinessError, res: A
 });
 ```
 
+## usageStatistics.queryBundleEvents
+
+queryBundleEvents(begin: number, end: number, maxNum: number): Promise&lt;Array&lt;BundleEvents&gt;&gt;
+
+Queries events of all applications in a specified period based on the specified start time, end time, and maximum number of events to be returned. If the number of events is greater than the value of **maxNum**, the events are sorted in descending order of occurrence time and the first **maxNum** events are returned. Otherwise, all events are returned. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.BUNDLE_ACTIVE_INFO
+
+**System capability**: SystemCapability.ResourceSchedule.UsageStatistics.App
+
+**Parameters**
+
+| Name  | Type    | Mandatory  | Description   |
+| ----- | ------ | ---- | ----- |
+| begin | number | Yes   | Start time.<br>Unit: ms|
+| end   | number | Yes   | End time.<br>Unit: ms|
+| maxNum   | number | Yes   | Number of returned events.<br>The value ranges from 1 to 1000. |
+
+**Return value**
+
+| Type                                      | Description                                    |
+| ---------------------------------------- | -------------------------------------- |
+| Promise&lt;Array&lt;[BundleEvents](#bundleevents)&gt;&gt; | Promise used to return the events obtained.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
+
+| ID | Error Message            |
+| ---- | --------------------- |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 10000001   | Memory operation failed.           |
+| 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
+| 10000003   | Failed to get system ability manager. |
+| 10000004   | Failed to access the device usage service.        |
+| 10000006   | Failed to get the application information.       |
+| 10000007   | Failed to get the system time.  |
+| 10000008   | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
+
+usageStatistics.queryBundleEvents(0, 20000000000000, 100).then((res: Array<usageStatistics.BundleEvents>) => {
+  console.info('BUNDLE_ACTIVE queryBundleEvents promise success.');
+  for (let i = 0; i < res.length; i++) {
+    console.info('BUNDLE_ACTIVE queryBundleEvents promise number : ' + (i + 1));
+    console.info('BUNDLE_ACTIVE queryBundleEvents promise result ' + JSON.stringify(res[i]));
+  }
+}).catch((err: BusinessError) => {
+  console.error('BUNDLE_ACTIVE queryBundleEvents promise failed. code is: ' + err.code + ',message is: ' + err.message);
+});
+```
 ## usageStatistics.queryBundleEvents
 
 queryBundleEvents(begin: number, end: number): Promise&lt;Array&lt;BundleEvents&gt;&gt;
@@ -949,10 +1033,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -964,6 +1048,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryBundleEvents(0, 20000000000000).then((res: Array<usageStatistics.BundleEvents>) => {
   console.info('BUNDLE_ACTIVE queryBundleEvents promise success.');
@@ -998,9 +1083,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1012,6 +1097,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryCurrentBundleEvents(0, 20000000000000, (err: BusinessError, res: Array<usageStatistics.BundleEvents>) => {
   if (err) {
@@ -1028,9 +1114,69 @@ usageStatistics.queryCurrentBundleEvents(0, 20000000000000, (err: BusinessError,
 
 ## usageStatistics.queryCurrentBundleEvents
 
+queryCurrentBundleEvents(begin: number, end: number, maxNum: number): Promise&lt;Array&lt;BundleEvents&gt;&gt;
+
+Queries events of all applications in a specified period based on the specified start time, end time, and maximum number of events to be returned. If the number of events is greater than the value of **maxNum**, the events are sorted in descending order of occurrence time and the first **maxNum** events are returned. Otherwise, all events are returned. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ResourceSchedule.UsageStatistics.App
+
+**Parameters**
+
+| Name  | Type    | Mandatory  | Description   |
+| ----- | ------ | ---- | ----- |
+| begin | number | Yes   | Start time.<br>Unit: ms|
+| end   | number | Yes   | End time.<br>Unit: ms|
+| maxNum   | number | Yes   | Number of returned events.<br>Value range: 1–1000|
+
+**Return value**
+
+| Type                                      | Description                                    |
+| ---------------------------------------- | -------------------------------------- |
+| Promise&lt;Array&lt;[BundleEvents](#bundleevents)&gt;&gt; | Promise used to return the events obtained.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
+
+| ID | Error Message            |
+| ---- | --------------------- |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 10000001   | Memory operation failed.           |
+| 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
+| 10000003   | Failed to get system ability manager. |
+| 10000004   | Failed to access the device usage service.        |
+| 10000006   | Failed to get the application information.      |
+| 10000007   | Failed to get the system time.  |
+| 10000008 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
+
+usageStatistics.queryCurrentBundleEvents(0, 20000000000000, 100).then((res: Array<usageStatistics.BundleEvents>) => {
+  console.info('BUNDLE_ACTIVE queryCurrentBundleEvents promise success.');
+  for (let i = 0; i < res.length; i++) {
+    console.info('BUNDLE_ACTIVE queryCurrentBundleEvents promise number : ' + (i + 1));
+    console.info('BUNDLE_ACTIVE queryCurrentBundleEvents promise result ' + JSON.stringify(res[i]));
+  }
+}).catch((err: BusinessError) => {
+  console.error('BUNDLE_ACTIVE queryCurrentBundleEvents promise failed. code is: ' + err.code + ',message is: ' + err.message);
+});
+```
+
+## usageStatistics.queryCurrentBundleEvents
+
 queryCurrentBundleEvents(begin: number, end: number): Promise&lt;Array&lt;BundleEvents&gt;&gt;
 
-Queries events of this application based on the specified start time and end time. This API uses a promise to return the result.
+Queries events of this app based on the specified start time and end time. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -1053,9 +1199,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1067,6 +1213,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryCurrentBundleEvents(0, 20000000000000).then((res: Array<usageStatistics.BundleEvents>) => {
   console.info('BUNDLE_ACTIVE queryCurrentBundleEvents promise success.');
@@ -1108,10 +1255,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1123,10 +1270,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryDeviceEventStats(0, 20000000000000).then((res: Array<usageStatistics.DeviceEventStats>) => {
-  console.info('BUNDLE_ACTIVE queryDeviceEventStates promise success.');
-  console.info('BUNDLE_ACTIVE queryDeviceEventStates promise result ' + JSON.stringify(res));
+  console.info('BUNDLE_ACTIVE queryDeviceEventStats promise success.');
+  console.info('BUNDLE_ACTIVE queryDeviceEventStats promise result ' + JSON.stringify(res));
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE queryDeviceEventStats promise failed. code is: ' + err.code + ',message is: ' + err.message);
 });
@@ -1156,10 +1304,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1171,6 +1319,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryDeviceEventStats(0, 20000000000000, (err: BusinessError, res: Array<usageStatistics.DeviceEventStats>) => {
   if(err) {
@@ -1211,10 +1360,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1226,6 +1375,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryNotificationEventStats(0, 20000000000000).then((res: Array<usageStatistics.DeviceEventStats>) => {
   console.info('BUNDLE_ACTIVE queryNotificationEventStats promise success.');
@@ -1259,10 +1409,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1274,6 +1424,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryNotificationEventStats(0, 20000000000000, (err: BusinessError, res: Array<usageStatistics.DeviceEventStats>) => {
   if(err) {
@@ -1289,7 +1440,7 @@ usageStatistics.queryNotificationEventStats(0, 20000000000000, (err: BusinessErr
 
 queryModuleUsageRecords(): Promise&lt;Array&lt;HapModuleInfo&gt;&gt;
 
-Queries the usage records of unused HAP files for each application in the FA model. If the HAP file contains FA widgets, the usage records also contain the widget information. This API uses a promise to return the result.
+Queries the usage records of different HAP files for each app in the FA model (no more than 1000 records). If the HAP file contains FA widgets, the usage records also contain the widget information. This API uses a promise to return the result.
 
 This API uses a promise to return a maximum of 1000 FA usage records sorted by time (most recent first).
 
@@ -1301,7 +1452,7 @@ This API uses a promise to return a maximum of 1000 FA usage records sorted by t
 
 | Type                                      | Description                                |
 | ---------------------------------------- | ---------------------------------- |
-| Promise&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Promise used to return the usage records of unused HAP files (no more than 1000 records).|
+| Promise&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Promise object. Returns the usage records of different HAP packages of each application in the FA model (no more than 1000 records). |
 
 **Error codes**
 
@@ -1309,10 +1460,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1325,6 +1476,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 // Invocation when maxNum is not passed
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryModuleUsageRecords().then((res: Array<usageStatistics.HapModuleInfo>) => {
   console.info('BUNDLE_ACTIVE queryModuleUsageRecords promise succeeded');
@@ -1341,7 +1493,7 @@ usageStatistics.queryModuleUsageRecords().then((res: Array<usageStatistics.HapMo
 
 queryModuleUsageRecords(callback: AsyncCallback&lt;Array&lt;HapModuleInfo&gt;&gt;): void
 
-Queries the usage records of unused HAP files for each application in the FA model. If the HAP file contains FA widgets, the usage records also contain the widget information. This API uses an asynchronous callback to return a maximum of 1000 usage records.
+Queries the usage records of different HAP files for each app in the FA model (no more than 1000 records). If the HAP file contains FA widgets, the usage records also contain the widget information. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -1351,18 +1503,18 @@ Queries the usage records of unused HAP files for each application in the FA mod
 
 | Name     | Type                                      | Mandatory  | Description                                 |
 | -------- | ---------------------------------------- | ---- | ----------------------------------- |
-| callback | AsyncCallback&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Yes   | Callback used to return the result. A maximum of 1000 usage records can be returned.|
+| callback | AsyncCallback&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Yes | Callback used to return the usage records of different HAP packages of each app in the FA model (no more than 1000 records). |
 
 **Error codes**
 
-For details about the error codes, see [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
 | ID       | Error Message                      |
 | ---------- | ----------------------------       |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1374,6 +1526,7 @@ For details about the error codes, see [DeviceUsageStatistics Error Codes](error
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryModuleUsageRecords((err: BusinessError, res: Array<usageStatistics.HapModuleInfo>) => {
   if(err) {
@@ -1392,7 +1545,7 @@ usageStatistics.queryModuleUsageRecords((err: BusinessError, res: Array<usageSta
 
 queryModuleUsageRecords(maxNum: number): Promise&lt;Array&lt;HapModuleInfo&gt;&gt;
 
-Queries a given number of usage records of unused HAP files for each application in the FA model. If the HAP file contains FA widgets, the usage records also contain the widget information. This API uses a promise to return the result.
+Queries a given number of usage records of different HAP files for each app in the FA model based on **maxNum**. If the HAP file contains FA widgets, the usage records also contain the widget information. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -1408,7 +1561,7 @@ Queries a given number of usage records of unused HAP files for each application
 
 | Type                                      | Description                                |
 | ---------------------------------------- | ---------------------------------- |
-| Promise&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Promise used to return the result. The usage records returned does not exceed the value of **maxNum**.|
+| Promise&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Promise object used to return the usage records of different HAP packages of each app in the FA model, with no more than **maxNum** records. |
 
 **Error codes**
 
@@ -1416,10 +1569,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1431,6 +1584,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryModuleUsageRecords(1000).then((res: Array<usageStatistics.HapModuleInfo>) => {
   console.info('BUNDLE_ACTIVE queryModuleUsageRecords promise succeeded');
@@ -1447,7 +1601,7 @@ usageStatistics.queryModuleUsageRecords(1000).then((res: Array<usageStatistics.H
 
 queryModuleUsageRecords(maxNum: number, callback: AsyncCallback&lt;Array&lt;HapModuleInfo&gt;&gt;): void
 
-Queries a given number of usage records of unused HAP files for each application in the FA model. If the HAP file contains FA widgets, the usage records also contain the widget information. This API uses an asynchronous callback to return the result.
+Queries a given number of usage records of different HAP files for each app in the FA model based on **maxNum**. If the HAP file contains FA widgets, the usage records also contain the widget information. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -1458,7 +1612,7 @@ Queries a given number of usage records of unused HAP files for each application
 | Name     | Type                                      | Mandatory  | Description                                 |
 | -------- | ---------------------------------------- | ---- | ----------------------------------- |
 | maxNum   | number                                   | Yes   |  Number of usage records, in the range [1, 1000].|
-| callback | AsyncCallback&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Yes   | Callback used to return the result. The usage records returned does not exceed the value of **maxNum**.|
+| callback | AsyncCallback&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Yes | Callback used to return the usage records of different HAP packages of each app in the FA model, with no more than **maxNum** records. |
 
 **Error codes**
 
@@ -1466,10 +1620,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1481,6 +1635,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryModuleUsageRecords(1000, (err: BusinessError, res: Array<usageStatistics.HapModuleInfo>) => {
   if(err) {
@@ -1523,10 +1678,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1538,6 +1693,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 function onBundleGroupChanged(res: usageStatistics.AppGroupCallbackInfo) {
   console.info('BUNDLE_ACTIVE registerAppGroupCallBack RegisterGroupCallBack callback success.');
@@ -1577,10 +1733,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1592,6 +1748,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 function onBundleGroupChanged(res: usageStatistics.AppGroupCallbackInfo) {
   console.info('BUNDLE_ACTIVE onBundleGroupChanged RegisterGroupCallBack callback success.');
@@ -1632,10 +1789,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1646,6 +1803,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.unregisterAppGroupCallBack().then( () => {
   console.info('BUNDLE_ACTIVE unregisterAppGroupCallBack promise succeeded.');
@@ -1658,7 +1816,7 @@ usageStatistics.unregisterAppGroupCallBack().then( () => {
 
 unregisterAppGroupCallBack(callback: AsyncCallback&lt;void&gt;): void;
 
-Unregisters the callback for application group changes. This API uses an asynchronous callback to return the result.
+Unregisters the callback for app group changes. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -1676,10 +1834,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | Not System App. |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801 | Capability not supported.|
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1690,6 +1848,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.unregisterAppGroupCallBack((err: BusinessError) => {
   if(err) {

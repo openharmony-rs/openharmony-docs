@@ -2,14 +2,15 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @lu-tao-->
-<!--Designer: @martin-duan-->
+<!--Owner: @Lutao98-->
+<!--Designer: @martin_duan-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=8bce52e94b0c88bad5ea976173f2ff50f835efd1 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 ## Overview
 
-HiChecker is provided to check issues that may be easily ignored during application development. Such issues include time-consuming thread calling and ability resource leakage in application processes. The issues are recorded in logs or lead to process crashes explicitly so that you can find and rectify them.
+HiChecker can be used as a detection capability during app development to identify issues that are easily overlooked during code execution, such as time-consuming calls on app threads and resource leaks of abilities in app processes. You can identify and fix these issues by reviewing logs or process crashes, thereby improving the user experience.
 
 ## Basic Concepts
 
@@ -19,7 +20,7 @@ HiChecker is provided to check issues that may be easily ignored during applicat
 
 1. The application calls HiChecker APIs to add, remove, query, and modify rules. 
 
-2. When a time-consuming call or ability resource leakage occurs, HiChecker reports an event based on the rule triggered.
+2. When a subsystem makes a time-consuming call or an ability resource leak occurs, HiChecker notifies the occurrence of the corresponding event. When the detection conditions are met, HiChecker performs the corresponding action.
 
 ## Constraints
 
@@ -29,7 +30,7 @@ HiChecker is provided to check issues that may be easily ignored during applicat
 
 ## Available APIs
 
-The check APIs are provided by the HiChecker module. For details about the APIs, see [@ohos.hichecker (HiChecker)](../reference/apis-performance-analysis-kit/js-apis-hichecker.md).
+The detection mode interfaces are provided by the HiChecker module. For details about the APIs, see [@ohos.hichecker](../reference/apis-performance-analysis-kit/js-apis-hichecker.md).
 
 | API| Description|
 | -------- | -------- |
@@ -55,14 +56,14 @@ To detect time-consuming function calls and record them in logs, perform the fol
    
    export default class EntryAbility extends UIAbility {
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        // Add a check rule. For details about the rule, see HiChecker.
+       // Add a detection rule. For the meaning of the rule, see the detection mode API reference.
        hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG|hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
-       let filePath: string = this.context.cacheDir + '/test.JPG';
-       const imageSourceApi: image.ImageSource = image.createImageSource(filePath);
-       const imagePackerApi = image.createImagePacker();
+       let filePath: string = this.context.filesDir + '/test.JPG';
+       const imageSourceObj: image.ImageSource = image.createImageSource(filePath);
+       const imagePackerObj: image.ImagePacker = image.createImagePacker();
        let packOpts: image.PackingOption = { format:"image/jpeg", quality:98 };
-       imagePackerApi.packing(imageSourceApi, packOpts);
-       // The preceding codes trigger the check rule through the image subsystem.
+       imagePackerObj.packToData(imageSourceObj, packOpts);
+       // The preceding five lines trigger the check rule through the image subsystem.
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
      }
    
@@ -84,23 +85,23 @@ To detect time-consuming function calls and record them in logs, perform the fol
      }
    
      onWindowStageDestroy(): void {
-       // Main window is destroyed, and UI related resources are released.
+       // Main window is destroyed, release UI related resources
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
      }
    
      onForeground(): void {
-       // Ability is brought to foreground.
+       // Ability has brought to foreground
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
      }
    
      onBackground(): void {
-       // Ability is back to background.
+       // Ability has back to background
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
      }
    };
    ```
 
-2. Install and run the HAP. Use the Log plug-in of DevEco Studio to filter logs containing the keyword **HICHECKER** or run the **hdc shell "hilog | grep HICHECKER"** command. If the following call stack information is displayed, the check is successful (the call stack is the one that triggers the check rule).
+2. After installing and running the HAP, filter logs with the `HICHECKER` keyword using the DevEco Studio Log plugin, or query logs by running the `hdc shell "hilog | grep HICHECKER"` command. The following call stack information indicates successful detection (the call stack is the one at the time of detection triggering).
 
    ```shell
    08-05 23:11:07.206  1799  1799 I C02d0b/HICHECKER: StackTrace:

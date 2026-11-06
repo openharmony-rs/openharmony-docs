@@ -1,12 +1,13 @@
-# \@Reusable V2 Decorator: Reusing V2 Components
+# \@ReusableV2 Decorator: Reusing V2 Components
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=1c4d60ddf8b2662424b5d2d9f219efe7cea68103 translatedAt=2026-11-03T06:34:00.071Z pushedAt=2026-11-03T07:54:31.181Z nl=1 -->
 
-To reduce the performance overhead caused by repeated creation and destruction of custom components, you can use \@ReusableV2 to decorate [\@ComponentV2](./arkts-create-custom-components.md#componentv2) decorated custom components.
+To reduce the performance overhead caused by repeatedly creating and destroying custom components, you can use [\@ReusableV2](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-reusablev2.md#reusablev2) to decorate custom components decorated by [\@ComponentV2](./arkts-create-custom-components.md#componentv2), thereby achieving component reuse.
 
 Before reading this topic, you are advised to read [\@Reusable Decorator: Reusing V1 Components](./arkts-reusable.md).
 
@@ -651,6 +652,86 @@ Due to the freezing mechanism, the value change in **aboutToRecycle** is not lis
 
 As such, you are advised to reduce the use of constant objects that contain the [\@Trace](./arkts-new-observedV2-and-trace.md) attribute in reuse scenarios to ensure that the reuse meets expectations.
 
+## Proactively Clearing the Reuse Pool
+
+Starting from API version 26.1.0, when developers need to proactively release components in the reuse pool, they can obtain the current component's [CustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#customcomponentcontext) through [UIUtils.getCustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#getcustomcomponentcontext), call the [getDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#getdefaultreusepool) method of CustomComponentContext to obtain the default reuse pool [IDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#idefaultreusepool), and call the [clearCache](../../reference/apis-arkui/js-apis-stateManagement.md#clearcache) method of IDefaultReusePool to implement it.
+
+> **NOTE**
+>
+> 1. When a reuseId is specified, only the reusable custom components corresponding to that reuseId are cleared; when no reuseId is specified, all components in the reuse pool are cleared.
+> 2. Components that have been taken out of the reuse pool and are currently participating in reuse are not affected.
+> 3. When a nonexistent or empty-string `reuseId` is passed in, this call has no effect.
+
+In the following example, clicking the Recycle A button or the Recycle B button recycles the custom components into the default reuse pool, clicking the Clear All button releases all components in the default reuse pool, and clicking the Clear A button releases the components with the reuseId of A in the default reuse pool.
+
+<!-- @[DefaultReusePoolClearCache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/DefaultReusePoolClearCache.ets) -->
+
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct ReusableChild {
+  @Param label: string = '';
+  aboutToAppear() {
+    console.info(`ReusableChild [${this.label}] aboutToAppear`);
+  }
+  aboutToDisappear() {
+    console.info(`ReusableChild [${this.label}] aboutToDisappear`);
+  }
+  aboutToRecycle() {
+    console.info(`ReusableChild [${this.label}] aboutToRecycle`);
+  }
+  aboutToReuse() {
+    console.info(`ReusableChild [${this.label}] aboutToReuse`);
+  }
+
+  build() {
+    Text(`ReusableChild: ${this.label}`)
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local showA: boolean = true;
+  @Local showB: boolean = true;
+
+  build() {
+    Column() {
+      if (this.showA) {
+        ReusableChild({ label: 'A' })
+          .reuse({ reuseId: () => 'A' })
+      }
+      if (this.showB) {
+        ReusableChild({ label: 'B' })
+          .reuse({ reuseId: () => 'B' })
+      }
+      Button('Recycle A')
+        .onClick(() => {
+          // Switch the if branch to trigger child component recycling.
+          this.showA = false;
+        })
+      Button('Recycle B')
+        .onClick(() => {
+          // Switch the if branch to trigger child component recycling.
+          this.showB = false;
+        })
+      Button('Clear All')
+        .onClick(() => {
+          // Clear all components in the default reuse pool.
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache();
+        })
+      Button('Clear A')
+        .onClick(() => {
+          // Clear only the components whose reuseId is 'A'.
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache('A');
+        })
+    }
+  }
+}
+```
+
 ## Use Cases
 
 ### Using in the if Component
@@ -714,7 +795,7 @@ In the lazy loading scenario of the [Repeat](../rendering-control/arkts-new-rend
 
 You can disable the reuse capability of the **Repeat** component by setting the **reusable** attribute of the **[VirtualScrollOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions)** property of this component to **false**. In this case, both scrolling and update scenarios will trigger the recycling and reuse of @ReusableV2.
 
-In the following example, click **Change condition** to add three nodes to the reuse pool. When you slide down the **List** component, you can see the log output **ReusableV2Component aboutToReuse**, indicating that **Repeat** can use the reuse pool of the custom component to fill its cache pool.
+In the following example, click **Change condition** to add three nodes to the reuse pool. When you scroll down the **List** component, you can see the log output **ReusableV2Component aboutToReuse**, indicating that **Repeat** can use the reuse pool of the custom component to fill its cache pool.
 
 <!-- @[RepeatPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/RepeatPage.ets) -->
 
@@ -901,7 +982,7 @@ struct Index {
 
   build() {
     Column() {
-      ForEach(this.simpleList, (num: number, index) => {
+      ForEach(this.simpleList, (num: number, index: number) => {
         Row() {
           Button('Click to change')
             .margin({ right: 10 })
@@ -922,15 +1003,15 @@ struct ReusableV2Component {
   @Require @Param num: number;
 
   aboutToAppear() {
-    hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToAppear', this.num); // Triggered when the component is created.
+    hilog.info(DOMAIN, TAG, `ReusableV2Component aboutToAppear ${this.num}`); // Triggered on creation.
   }
 
   aboutToRecycle() {
-    hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToRecycle', this.num); // Triggered when the component is recycled.
+    hilog.info(DOMAIN, TAG, `ReusableV2Component aboutToRecycle ${this.num}`); // Triggered on recycling.
   }
 
   aboutToReuse() {
-    hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToReuse', this.num); // Triggered when the component is reused.
+    hilog.info(DOMAIN, TAG, `ReusableV2Component aboutToReuse ${this.num}`); // Triggered on reuse.
   }
 
   build() {
@@ -1085,22 +1166,22 @@ struct Index {
 @ReusableV2
 @ComponentV2
 struct ChildComponent {
-  @Param @Require data: string;
+  @Require @Param data: string;
 
   aboutToAppear(): void {
-    hilog.info(DOMAIN, TAG, 'ChildComponent aboutToAppear', this.data);
+    hilog.info(DOMAIN, TAG, `ChildComponent aboutToAppear ${this.data}`);
   }
 
   aboutToDisappear(): void {
-    hilog.info(DOMAIN, TAG, 'ChildComponent aboutToDisappear', this.data);
+    hilog.info(DOMAIN, TAG, `ChildComponent aboutToDisappear ${this.data}`);
   }
 
   aboutToReuse(): void {
-    hilog.info(DOMAIN, TAG, 'ChildComponent aboutToReuse', this.data); // Triggered when the component is reused.
+    hilog.info(DOMAIN, TAG, `ChildComponent aboutToReuse ${this.data}`); // Triggered on reuse.
   }
 
   aboutToRecycle(): void {
-    hilog.info(DOMAIN, TAG, 'ChildComponent aboutToRecycle', this.data); // Triggered when the component is reclaimed.
+    hilog.info(DOMAIN, TAG, `ChildComponent aboutToRecycle ${this.data}`); // Triggered on recycle.
   }
 
   build() {
@@ -1112,3 +1193,5 @@ struct ChildComponent {
 ```
 
 ![lazyforeach](./figures/reusablev2-lazyforeach.gif)
+
+<!--no_check-->

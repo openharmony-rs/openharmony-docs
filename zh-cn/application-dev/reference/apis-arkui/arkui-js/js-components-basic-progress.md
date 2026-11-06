@@ -86,7 +86,7 @@ type=arc
 | background-color | &lt;color&gt;  | -             | 否    | 弧形进度条的背景色。                               |
 | stroke-width     | &lt;length&gt; | 4px           | 否    | 弧形进度条的宽度，始终在半径区域内。<br/>进度条宽度越大，进度条越靠近圆心。 |
 | start-angle      | &lt;deg&gt;    | 240           | 否    | 弧形进度条起始角度，以时钟0点为基线，取值范围为0到360（顺时针）。      |
-| total-angle      | &lt;deg&gt;    | 240           | 否    | 弧形进度条总长度，范围为-360到360，负数标识起点到终点为逆时针。      |
+| total-angle      | &lt;deg&gt;    | 240           | 否    | 弧形进度条总角度，范围为-360到360，负数表示起点到终点为逆时针。      |
 | center-x         | &lt;length&gt; | 弧形进度条宽度的一半    | 否    | 弧形进度条中心位置，坐标原点为组件左上角顶点。该属性需要和center-y和radius一起使用。 |
 | center-y         | &lt;length&gt; | 弧形进度条高度的一半    | 否    | 弧形进度条中心位置，坐标原点为组件左上角顶点。该属性需要和center-x和radius一起使用。 |
 | radius           | &lt;length&gt; | 弧形进度条宽高最小值的一半 | 否    | 弧形进度条半径，该属性需要和center-x和center-y一起使用。     |

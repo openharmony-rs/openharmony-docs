@@ -6,14 +6,15 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=d72018541c8c2dd5dad395009d1fba92751f60f3 translatedAt=2026-10-30T04:01:40.213Z pushedAt=2026-10-30T07:31:30.112Z nl=1 -->
 
-For details about the algorithm specifications, see [SM2](crypto-asym-encrypt-decrypt-spec.md#sm2).
+For the corresponding algorithm specifications, see [Asymmetric Encryption and Decryption Algorithm Specifications: SM2](crypto-encryption-decryption.md#sm2).
 
 **Encryption**
 
 1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) and [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to create an asymmetric key pair (**KeyPair**) with the SM2 key type **SM2_256**. The **KeyPair** object includes a public key (**PubKey**) and a private key (**PriKey**).
 
-   In addition to the example in this topic, [SM2](crypto-asym-key-generation-conversion-spec.md#sm2) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md) may help you better understand how to generate an SM2 asymmetric key pair. Note that the input parameters in the reference documents may be different from those in the example below.
+   For how to generate an SM2 asymmetric key pair, you can refer to the following example and also see [Asymmetric Key Generation and Conversion Specifications: SM2](crypto-key-generation-conversion.md#sm2) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). The referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
 2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'SM2_256|SM3'** to create a **Cipher** instance. The key type is **SM2_256**, and the MD algorithm is **SM3**.
 
@@ -81,13 +82,13 @@ For details about the algorithm specifications, see [SM2](crypto-asym-encrypt-de
     let pubKey = keyPair.pubKey;
     let priKey = keyPair.priKey;
     let message = 'This is a test';
-    // Decode the string into a Uint8Array in UTF-8 format.
+    // Encode the string into a Uint8Array in UTF-8.
     let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
     let encryptText = await encryptMessagePromise(pubKey, plainText);
     let decryptText = await decryptMessagePromise(priKey, encryptText);
     if (plainText.data.toString() === decryptText.data.toString()) {
       console.info('decrypt ok.');
-      // Encode the Uint8Array into a string in UTF-8 format.
+      // Decode the Uint8Array into a string in UTF-8.
       let messageDecrypted = buffer.from(decryptText.data).toString('utf-8');
       console.info('decrypted result string:' + messageDecrypted);
     } else {
@@ -104,6 +105,7 @@ For details about the algorithm specifications, see [SM2](crypto-asym-encrypt-de
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   // Encrypt the message.
   function encryptMessage(publicKey: cryptoFramework.PubKey, plainText: cryptoFramework.DataBlob) {
@@ -141,21 +143,26 @@ For details about the algorithm specifications, see [SM2](crypto-asym-encrypt-de
       new Uint8Array([48, 49, 2, 1, 1, 4, 32, 54, 41, 239, 240, 63, 188, 134, 113, 31, 102, 149, 203, 245, 89, 15, 15, 47,
         202, 170, 60, 38, 154, 28, 169, 189, 100, 251, 76, 112, 223, 156, 159, 160, 10, 6, 8, 42, 129, 28, 207, 85, 1,
         130, 45]);
-    let keyPair = genKeyPairByData(pkData, skData);
-    let pubKey = keyPair.pubKey;
-    let priKey = keyPair.priKey;
-    let message = 'This is a test';
-    // Decode the string into a Uint8Array in UTF-8 format.
-    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-    let encryptText = encryptMessage(pubKey, plainText);
-    let decryptText = decryptMessage(priKey, encryptText);
-    if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok.');
-      // Encode the Uint8Array into a string in UTF-8 format.
-      let messageDecrypted = buffer.from(decryptText.data).toString('utf-8');
-      console.info('decrypted result string:' + messageDecrypted);
-    } else {
-      console.error('decrypt failed.');
+    try {
+      let keyPair = genKeyPairByData(pkData, skData);
+      let pubKey = keyPair.pubKey;
+      let priKey = keyPair.priKey;
+      let message = 'This is a test';
+      // Encode the string into a Uint8Array using UTF-8.
+      let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+      let encryptText = encryptMessage(pubKey, plainText);
+      let decryptText = decryptMessage(priKey, encryptText);
+      if (plainText.data.toString() === decryptText.data.toString()) {
+        console.info('decrypt ok.');
+        // Decode the Uint8Array into a string using UTF-8.
+        let messageDecrypted = buffer.from(decryptText.data).toString('utf-8');
+        console.info('decrypted result string:' + messageDecrypted);
+      } else {
+        console.error('decrypt failed.');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```

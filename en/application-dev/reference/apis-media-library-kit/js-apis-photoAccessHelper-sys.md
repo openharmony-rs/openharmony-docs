@@ -5,6 +5,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=b4b77c30665f0fc58b14ac18995c2037e1a45dbe translatedAt=2026-11-03T07:54:50.538Z pushedAt=2026-11-04T03:11:20.002Z nl=1 -->
 
 The module provides APIs for album management, including creating an album and accessing and modifying media data in an album.
 
@@ -28,6 +29,8 @@ Obtains a PhotoAccessHelper instance for the specified user, letting you access 
 
 **System API**: This is a system API.
 
+**Required Permission:** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Parameters**
@@ -49,8 +52,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 |  Permission denied.         |
-| 202 |  Called by non-system application.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Invalid argument.         |
 
 **Example**
@@ -112,8 +115,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000001      | Invalid display name.         |
@@ -177,8 +180,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000001      | Invalid display name.         |
@@ -237,8 +240,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000001      | Invalid display name.         |
@@ -306,8 +309,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000001      | Invalid display name.         |
@@ -370,8 +373,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900015       |  The file name already exists.         |
 | 13900020     | Invalid argument.         |
@@ -436,8 +439,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900015       |  The file name already exists.         |
 | 13900020     | Invalid argument.         |
@@ -492,8 +495,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -563,8 +566,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -623,9 +626,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      |  Permission verification failed, usually the result returned by VerifyAccessToken.         |
-| 202      |  Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **Example**
@@ -646,7 +649,7 @@ async function getHiddenAlbumsView(phAccessHelper: photoAccessHelper.PhotoAccess
   };
   phAccessHelper.getHiddenAlbums(photoAccessHelper.HiddenPhotosDisplayMode.ALBUMS_MODE, fetchOptions,
     async (err, fetchResult) => {
-      if (err !== undefined) {
+      if (err) {
         console.error(`getHiddenAlbumsViewCallback failed with error: ${err.code}, ${err.message}`);
         return;
       }
@@ -691,9 +694,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      |  Permission verification failed, usually the result returned by VerifyAccessToken.         |
-| 202      |  Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **Example**
@@ -789,9 +792,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      |  Permission verification failed, usually the result returned by VerifyAccessToken.         |
-| 202      |  Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **Example**
@@ -881,8 +884,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000002 |  The uri format is incorrect or does not exist.         |
@@ -910,7 +913,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       return;
     }
     phAccessHelper.deleteAssets([asset.uri], (err) => {
-      if (err === undefined) {
+      if (!err) {
         console.info('deleteAssets successfully');
       } else {
         console.error(`deleteAssets failed with error: ${err.code}, ${err.message}`);
@@ -958,8 +961,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000002 |  The uri format is incorrect or does not exist.         |
@@ -1023,8 +1026,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202     |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -1059,7 +1062,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let photoAsset: photoAccessHelper.PhotoAsset = await photoFetchResult.getObjectByPosition(expectIndex);
 
     phAccessHelper.getPhotoIndex(photoAsset.uri, album.albumUri, fetchOptions, (err, index) => {
-      if (err === undefined) {
+      if (!err) {
         console.info(`getPhotoIndex successfully and index is : ${index}`);
       } else {
         console.error(`getPhotoIndex failed; error: ${err.code}, ${err.message}`);
@@ -1105,8 +1108,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202     |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -1176,9 +1179,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission verification failed, usually the result returned by VerifyAccessToken.         |
-| 202   | Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 
@@ -1207,7 +1210,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 
   phAccessHelper.saveFormInfo(info, async (err: BusinessError) => {
-    if (err == undefined) {
+    if (!err) {
       console.info('saveFormInfo success');
     } else {
       console.error(`saveFormInfo fail with error: ${err.code}, ${err.message}`);
@@ -1246,9 +1249,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission verification failed, usually the result returned by VerifyAccessToken.         |
-| 202   | Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **Example**
@@ -1308,9 +1311,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission verification failed, usually the result returned by VerifyAccessToken.         |
-| 202   | Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **Example**
@@ -1329,7 +1332,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 
   phAccessHelper.removeFormInfo(info, async (err: BusinessError) => {
-    if (err == undefined) {
+    if (!err) {
       console.info('removeFormInfo success');
     } else {
       console.error(`removeFormInfo fail with error: ${err.code}, ${err.message}`);
@@ -1368,9 +1371,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission verification failed, usually the result returned by VerifyAccessToken.         |
-| 202   | Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **Example**
@@ -1421,7 +1424,7 @@ Creates media assets for an application with the specified token ID. The returne
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the URIs of the media asset files in the media library. The target application (identified by **tokenId**) can write the media assets based on the URIs without requesting the write permission. If the URIs fail to be generated, a batch creation error code will be returned.<br>The error code **-3006** means that there are invalid characters; **-2004** means that the image type does not match the file name extension; **-203** means that the file operation is abnormal.|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the list of media library file URIs to the API caller. The URIs have been authorized for the application corresponding to the tokenId, allowing the application to write data. If an exception occurs when generating the URIs, a batch creation error code is returned.<br>Returns -3006 if illegal characters are not allowed; returns -2004 if the image type does not match the extension; returns -203 if a file operation exception occurs. |
 
 **Error codes**
 
@@ -1429,8 +1432,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 |  Permission denied.         |
-| 202 |  Called by non-system application.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Invalid argument. Possible causes: 1. The photoCreationConfigs is empty; 2. Incorrect photoCreationConfigs format. |
 | 14000011       | Internal system error.         |
 
@@ -1439,13 +1442,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  tokenId: number) {
   console.info('createAssetsForAppDemo.');
 
   try {
     let bundleName: string = 'testBundleName';
     let appName: string = 'testAppName';
-    let tokenId: number = 537197950;
     let photoCreationConfigs: Array<photoAccessHelper.PhotoCreationConfig> = [
       {
         title: 'test',
@@ -1487,7 +1497,7 @@ Grants an application the permission to access a URI. This API uses a promise to
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;number&gt; | Promise used to return the result. The value **0** means that the permission is granted to the application. The value **1** means that the application already has the permission. The value **-1** means that the permission fails to be granted.|
+| Promise&lt;number&gt; | Promise used to return the authorization result. 0 indicates authorization success. 1 indicates that permission already exists. -1 indicates authorization failure. |
 
 **Error codes**
 
@@ -1495,8 +1505,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 |  Permission denied.         |
-| 202 |  Called by non-system application.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Invalid argument. Possible causes: 1. Incorrect uri format; 2. The value of photoPermissionType or hideSensitiveType is out of range. |
 | 14000011       | Internal system error.         |
 
@@ -1505,11 +1515,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  tokenId: number) {
   console.info('grantPhotoUriPermissionDemo');
 
   try {
-    let tokenId = 502334412;
     let result = await phAccessHelper.grantPhotoUriPermission(tokenId,
         'file://media/Photo/1/IMG_datetime_0001/displayName.jpg',
         photoAccessHelper.PhotoPermissionType.TEMPORARY_READ_IMAGEVIDEO,
@@ -1517,7 +1534,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
     console.info('grantPhotoUriPermission success, result=' + result);
   } catch (err) {
-    console.error('grantPhotoUriPermission failed, error=' + err);
+    console.error(`grantPhotoUriPermission failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1547,7 +1564,7 @@ Grants an application the permission to access multiple URIs. This API uses a pr
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;number&gt; | Promise used to return the result. The value **0** means that the permission is granted to the application. The value **-1** means that the permission fails to be granted.|
+| Promise&lt;number&gt; | Promise object used to return the authorization result. 0 indicates authorization success, and -1 indicates authorization failure.  |
 
 **Error codes**
 
@@ -1555,8 +1572,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 |  Permission denied.         |
-| 202 |  Called by non-system application.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Invalid argument. Possible causes: 1. Incorrect uri format; 2. The value of photoPermissionType or hideSensitiveType is out of range. |
 | 14000011       | Internal system error.         |
 
@@ -1565,7 +1582,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  tokenId: number) {
   console.info('grantPhotoUrisPermissionDemo');
 
   try {
@@ -1573,14 +1598,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let uris: Array<string> = [
       'file://media/Photo/11/IMG_datetime_0001/displayName1.jpg',
       'file://media/Photo/22/IMG_datetime_0002/displayName2.jpg'];
-    let tokenId = 502334412;
     let result = await phAccessHelper.grantPhotoUrisPermission(tokenId, uris,
         photoAccessHelper.PhotoPermissionType.TEMPORARY_READ_IMAGEVIDEO,
         photoAccessHelper.HideSensitiveType.HIDE_LOCATION_AND_SHOOTING_PARAM);
 
     console.info('grantPhotoUrisPermission success, result=' + result);
   } catch (err) {
-    console.error('grantPhotoUrisPermission failed, error=' + err);
+    console.error(`grantPhotoUrisPermission failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1609,7 +1633,7 @@ Cancels the permission for accessing a URI from an application. This API uses a 
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;number&gt; | Promise used to return the result. The value **0** means the operation is successful, and the value **-1** means the opposite.|
+| Promise&lt;number&gt; | Promise object used to return the cancellation result. 0 indicates successful cancellation, and -1 indicates failed cancellation. |
 
 **Error codes**
 
@@ -1617,8 +1641,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 |  Permission denied.         |
-| 202 |  Called by non-system application.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Invalid argument. Possible causes: 1. Incorrect uri format; 2. The value of photoPermissionType or hideSensitiveType is out of range. |
 | 14000011       | Internal system error.         |
 
@@ -1627,18 +1651,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  tokenId: number) {
   console.info('cancelPhotoUriPermissionDemo');
 
   try {
-    let tokenId = 502334412;
     let result = await phAccessHelper.cancelPhotoUriPermission(tokenId,
         'file://media/Photo/11/IMG_datetime_0001/displayName.jpg',
         photoAccessHelper.PhotoPermissionType.TEMPORARY_READ_IMAGEVIDEO);
 
     console.info('cancelPhotoUriPermission success, result=' + result);
   } catch (err) {
-    console.error('cancelPhotoUriPermission failed, error=' + err);
+    console.error(`cancelPhotoUriPermission failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1659,14 +1690,14 @@ Generates a thumbnail based on the specified rule.
 
 | Name     | Type                                   | Mandatory| Description            |
 | ---------  | --------------------------------------- | ---- | --------------- |
-| predicates | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Rule for generating the thumbnail. |
+| predicate  | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes   | Option for generating thumbnails.  |
 | callback   | AsyncCallback&lt;void&gt;               | Yes  | Callback used to return the result. If the operation is successful, the notification task ends, and **err** is undefined. If the task fails, **err** is an error object.|
 
 **Return value**
 
 | Type                 | Description                 |
 | --------------------- | -------------------- |
-| Promise&lt;number&gt; | Promise used to return the ID of the thumbnail generation task.|
+| number                | ID of the thumbnail generation task. |
 
 **Error codes**
 
@@ -1674,9 +1705,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 |  Permission denied.         |
-| 202 |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | Internal system error.         |
 
 **Example**
@@ -1684,7 +1715,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
+import { dataSharePredicates } from '@kit.ArkData';
 
 function testCallBack() {
 
@@ -1734,8 +1765,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 |  Permission denied.         |
-| 202 |  Called by non-system application.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: The predicates invalid. |
 | 23800301     | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -1744,7 +1775,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
+import { dataSharePredicates } from '@kit.ArkData';
 
 function testCallBack() {
   console.info(`startThumbnailCreationTask: First callback`);
@@ -1793,9 +1824,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 |  Permission denied.         |
-| 202 |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | Internal system error.         |
 
 **Example**
@@ -1806,6 +1837,7 @@ For details about how to create a phAccessHelper instance, see the example provi
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     console.info('stopThumbnailCreationTask test start');
+    // taskId is the return value of the startThumbnailCreationTask API, and this is an example value.
     let taskId: number = 75983;
     phAccessHelper.stopThumbnailCreationTask(taskId);
   } catch (err) {
@@ -1840,8 +1872,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 14000011       | Internal system error.         |
 
 **Example**
@@ -1851,7 +1883,7 @@ For details about how to create a phAccessHelper instance, see the example provi
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
-  class indexProgress {
+  class IndexProgress {
     finishedImageCount: number = 0;
     totalImageCount: number = 0;
     finishedVideoCount: number = 0;
@@ -1863,7 +1895,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let result: string = await phAccessHelper.getIndexConstructProgress();
     console.info('getIndexProgress:' + result);
 
-    let jsonObj: indexProgress = JSON.parse(result);
+    let jsonObj: IndexProgress = JSON.parse(result);
     //...Use the obtained index construction progress data.
   } catch (err) {
     console.error(`getIndexConstructProgress failed, error: ${err.code}, ${err.message}`);
@@ -1901,9 +1933,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | Internal system error.         |
 
 **Example**
@@ -1954,9 +1986,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 |  Permission denied.         |
-| 202 |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | Internal system error.         |
 
 **Example**
@@ -2014,9 +2046,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2071,10 +2103,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Unsupported or invalid types of config.<br>2. The types or uris array size of config exceed max value. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.  Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
 
@@ -2128,10 +2160,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Unsupported or invalid AnalysisType of config.<br>2. The types or uris array size of config exceed max value. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.  Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
 
@@ -2154,11 +2186,136 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### invokeAnalysisTool
+
+invokeAnalysisTool(config: ToolInvokeConfig, callback: Callback&lt;AnalysisToolResult&gt;): Promise&lt;string&gt;
+
+Triggers the execution of the analysis tool. This API uses an asynchronous callback.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Required Permission:** ohos.permission.CONTROL_IMAGEVIDEO_ANALYSIS
+
+**Parameters**
+
+| Name    | Type                | Mandatory | Description                                                         |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| config    | [ToolInvokeConfig](#toolinvokeconfig) | Yes   | Configuration for invoking the analysis tool. |
+| callback  | Callback&lt;[AnalysisToolResult](#analysistoolresult)&gt; | Yes   | Callback invoked to return the analysis tool result. |
+
+**Return value**
+
+| Type                  | Description                        |
+| --------------------- | --------------------------- |
+| Promise&lt;string&gt; | Promise object, which returns the task ID. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID | Error Message |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Unsupported tool type.<br>2. The length of **param** in **ToolInvokeConfig** exceeds 16KB. |
+| 23800301 | Internal system error. Possible causes:<br>1. IPC timeout.<br>2. System exception. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+let callback = (result: photoAccessHelper.AnalysisToolResult) => {
+  console.info('invokeAnalysisTool callback result: ' + JSON.stringify(result));
+};
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('invokeAnalysisToolDemo');
+  let config: photoAccessHelper.ToolInvokeConfig = {
+    type: photoAccessHelper.AnalysisToolType.IMAGE_RETRIEVAL_TOOL_TYPE,
+    param: '{"key":"value"}'
+  };
+
+  try {
+    let taskId = await phAccessHelper.invokeAnalysisTool(config, callback);
+    console.info('do invokeAnalysisTool successfully');
+  } catch (err) {
+    console.error('failed to do invokeAnalysisTool');
+  }
+}
+```
+
+### cancelAnalysisTool
+
+cancelAnalysisTool(config: ToolCancelConfig): Promise&lt;void&gt;
+
+Cancels the execution of the analysis tool.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Required Permission:** ohos.permission.CONTROL_IMAGEVIDEO_ANALYSIS
+
+**Parameters**
+
+| Name    | Type                | Mandatory | Description                                                         |
+| ------- | ------------------- | --------- | ------------------------------------------------------------ |
+| config  | [ToolCancelConfig](#toolcancelconfig) | Yes   | Configuration for canceling the analysis tool. |
+
+**Return value**
+
+| Type                  | Description                        |
+| --------------------- | --------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID | Error Message |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Invalid task id.<br>2. The length of **param** in **ToolCancelConfig** exceeds 16KB. |
+| 23800301 | Internal system error. Possible causes:<br>1. IPC timeout.<br>2. System exception. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('cancelAnalysisToolDemo');
+  let config: photoAccessHelper.ToolCancelConfig = {
+    taskId: '123456',
+    param: '{"key":"value"}'
+  };
+
+  try {
+    await phAccessHelper.cancelAnalysisTool(config);
+    console.info('do cancelAnalysisTool successfully');
+  } catch (err) {
+    console.error('failed to do cancelAnalysisTool');
+  }
+}
+```
+
 ### createAssetsForAppWithMode<sup>12+</sup>
 
 createAssetsForAppWithMode(bundleName: string, appName: string, appId: string, tokenId: number, authorizationMode: AuthorizationMode, photoCreationConfigs:Array\<PhotoCreationConfig>): Promise\<Array\<string>>
 
-Creates assets with a temporary permission. This API uses a promise to return the result.
+Provides the application with short-term authorization, which is valid for 300 seconds. This API uses a promise to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -2175,13 +2332,13 @@ Creates assets with a temporary permission. This API uses a promise to return th
 | appId| string | Yes| ID of the target application.|
 | tokenId| number| Yes| Unique identifier for the temporary authorization.|
 | authorizationMode| [AuthorizationMode](#authorizationmode12)| Yes| Authorization mode. No confirmation dialog box is displayed when the application with the temporary permission saves media assets in the give period of time.|
-| PhotoCreationConfig| Array\<[PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)> | Yes| Configuration for creating (saving) the media assets in the media library.|
+| photoCreationConfigs | Array\<[PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)\> | Yes | Configuration for saving an image or video to the media library. |
 
 **Return value**
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise\<Array\<string>> | Promise used to return the URIs of the media asset files in the media library. The target application (identified by **appid**) can write the media assets based on the URIs without requesting the write permission. If the URIs fail to be generated, a batch creation error code will be returned.<br>The error code **-3006** means that there are invalid characters; **-2004** means that the image type does not match the file name extension; **-203** means that the file operation is abnormal.|
+| Promise\<Array\<string>> | Promise object used to return the list of media library file URIs to the API caller. The URIs are authorized for the application corresponding to appId, allowing the application to write data. If an exception occurs when generating the URIs, a batch creation error code is returned.<br>Returns -3006 if illegal characters are not allowed; returns -2004 if the image type does not match the extension; returns -203 if a file operation exception occurs. |
 
 **Error codes**
 
@@ -2189,9 +2346,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 |  Permission denied.         |
-| 202 |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | Internal system error.         |
 
 **Example**
@@ -2199,7 +2356,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  tokenId: number) {
   console.info('createAssetsForAppWithModeDemo.');
 
   try {
@@ -2214,7 +2379,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let bundleName: string = 'testBundleName';
     let appName: string = 'testAppName';
     let appId: string = 'testAppId';
-    let tokenId: number = 537197950;
     let authorizationMode: photoAccessHelper.AuthorizationMode = photoAccessHelper.AuthorizationMode.SHORT_TIME_AUTHORIZATION;
     let result: Array<string> = await phAccessHelper.createAssetsForAppWithMode(bundleName, appName, appId, tokenId, authorizationMode, photoCreationConfigs);
     console.info(`result: ${JSON.stringify(result)}`);
@@ -2255,9 +2419,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission verification failed, usually the result returned by VerifyAccessToken.         |
-| 202   | Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **Example**
@@ -2330,9 +2494,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission verification failed, usually the result returned by VerifyAccessToken.         |
-| 202   | Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **Example**
@@ -2399,9 +2563,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission verification failed, usually the result returned by VerifyAccessToken.         |
-| 202   | Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **Example**
@@ -2412,7 +2576,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('removeGalleryFormInfoDemo');
   let info: photoAccessHelper.GalleryFormInfo = {
-    // formId is a string consisting of only digits. When removing a widget, leave assertUris empty.
+    // formId is a string consisting of digits only. When removing a card, assetUris is left empty.
     formId: "20230116123"
   }
 
@@ -2455,10 +2619,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 14000011       | Internal system error.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011       | System inner fail.         |
 
 **Example**
 
@@ -2500,7 +2664,7 @@ Creates assets for the current application or other applications in the specifie
 | source  | [PhotoCreationSource](#photocreationsource18)         | Yes  | Application information provided to create assets on behalf of the application.                                    |
 | albumUri  | string             | Yes  | URI of the album.                                    |
 | isAuthorized  |  boolean              | Yes  | Whether to authorize other applications. **true** to authorize, **false** otherwise.                                    |
-| PhotoCreationConfigs| Array\<[PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)> | Yes| Configuration for creating (saving) the media assets in the media library.|
+| photoCreationConfigs | Array\<[PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)\> | Yes | Configuration for saving an image or video to the media library. |
 
 **Return value**
 
@@ -2514,9 +2678,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | Internal system error.         |
 
 **Example**
@@ -2524,7 +2688,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, 
+  tokenId: number) {
   console.info('createAssetsForAppWithAlbumDemo.');
 
   try {
@@ -2532,7 +2704,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       bundleName: 'testBundleName',
       appName: 'testAppName',
       appId: 'testAppId',
-      tokenId: 537197950,
+      tokenId: tokenId,
     }
     let albumUri: string = 'file://media/PhotoAlbum/10';
     let isAuthorized: boolean = true;
@@ -2552,7 +2724,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-### on('hiddenPhotoChange')<sup>20+</sup> 
+### on('hiddenPhotoChange')<sup>20+</sup>
 
 on(type: 'hiddenPhotoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -2577,8 +2749,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'hiddenPhotoChange'; 2. The same callback is registered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -2587,7 +2759,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -2612,7 +2783,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
 }
 ```
 
-### off('hiddenPhotoChange')<sup>20+</sup> 
+### off('hiddenPhotoChange')<sup>20+</sup>
 
 off(type: 'hiddenPhotoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -2637,8 +2808,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'hiddenPhotoChange'; 2. The same callback is unregistered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -2647,7 +2818,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -2675,7 +2845,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
 }
 ```
 
-### on('trashedPhotoChange')<sup>20+</sup> 
+### on('trashedPhotoChange')<sup>20+</sup>
 
 on(type: 'trashedPhotoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -2700,8 +2870,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151  | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'trashedPhotoChange'; 2. The same callback is registered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -2710,14 +2880,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2735,7 +2904,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-### off('trashedPhotoChange')<sup>20+</sup> 
+### off('trashedPhotoChange')<sup>20+</sup>
 
 off(type: 'trashedPhotoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -2760,8 +2929,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'trashedPhotoChange'; 2. The same callback is unregistered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -2770,14 +2939,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2798,11 +2966,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-### onAnalysisPhotoChange<sup>23+</sup> 
+### onAnalysisPhotoChange<sup>23+</sup>
 
 onAnalysisPhotoChange(callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
-Listens for the changes of media assets associated with the smart analysis album. The change carries the smart analysis album change information. The asset change notification is sent only when the asset change involves the smart analysis album information change. The asset change result is returned through the callback. Multiple callbacks can be registered. This API uses an asynchronous callback to return the result.
+Listens for media asset changes related to the smart analysis album. When an asset change involves a change to the smart analysis album information, the asset change result is returned through the callback. Multiple callbacks can be registered. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -2822,9 +2990,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151  | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'trashedPhotoChange'; 2. The same callback is registered repeatedly. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151  | The scenario parameter verification fails.<br>Possible causes: The same callback is registered repeatedly.  |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **Example**
@@ -2832,14 +3000,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2857,7 +3024,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-### offAnalysisPhotoChange<sup>23+</sup> 
+### offAnalysisPhotoChange<sup>23+</sup>
 
 offAnalysisPhotoChange(callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -2881,9 +3048,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'trashedPhotoChange'; 2. The same callback is unregistered repeatedly. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: The same callback is unregistered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **Example**
@@ -2891,14 +3058,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2907,9 +3073,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
   try {
     // Register onCallback1.
-    phAccessHelper.offAnalysisPhotoChange(onCallback1);
+    phAccessHelper.onAnalysisPhotoChange(onCallback1);
     // Register onCallback2.
-    phAccessHelper.offAnalysisPhotoChange(onCallback2);
+    phAccessHelper.onAnalysisPhotoChange(onCallback2);
 
     // Unregister the listening of onCallback1.
     phAccessHelper.offAnalysisPhotoChange(onCallback1);
@@ -2919,7 +3085,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-### on('hiddenAlbumChange')<sup>20+</sup> 
+### on('hiddenAlbumChange')<sup>20+</sup>
 
 on(type: 'hiddenAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -2944,8 +3110,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'hiddenAlbumChange'; 2. The same callback is registered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -2954,7 +3120,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -2979,7 +3144,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
 }
 ```
 
-### off('hiddenAlbumChange')<sup>20+</sup> 
+### off('hiddenAlbumChange')<sup>20+</sup>
 
 off(type: 'hiddenAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -3004,8 +3169,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'hiddenAlbumChange'; 2. The same callback is unregistered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -3014,7 +3179,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -3042,7 +3206,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
 }
 ```
 
-### on('trashedAlbumChange')<sup>20+</sup> 
+### on('trashedAlbumChange')<sup>20+</sup>
 
 on(type: 'trashedAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -3067,8 +3231,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'trashedAlbumChange'; 2. The same callback is registered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -3077,7 +3241,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -3102,7 +3265,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-### off('trashedAlbumChange')<sup>20+</sup> 
+### off('trashedAlbumChange')<sup>20+</sup>
 
 off(type: 'trashedAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -3127,8 +3290,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'trashedAlbumChange'; 2. The same callback is unregistered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -3137,7 +3300,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -3165,7 +3327,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-### onAnalysisAlbumChange<sup>23+</sup> 
+### onAnalysisAlbumChange<sup>23+</sup>
 
 onAnalysisAlbumChange(callback: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -3189,9 +3351,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'hiddenAlbumChange'; 2. The same callback is registered repeatedly. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: The same callback is registered repeatedly.                                                  |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **Example**
@@ -3199,7 +3361,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -3224,7 +3385,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
 }
 ```
 
-### offAnalysisAlbumChange<sup>23+</sup> 
+### offAnalysisAlbumChange<sup>23+</sup>
 
 offAnalysisAlbumChange(callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -3248,9 +3409,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'hiddenAlbumChange'; 2. The same callback is unregistered repeatedly. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: The same callback is unregistered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **Example**
@@ -3258,7 +3419,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -3316,9 +3476,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. The IPC request timed out. 2.system running error.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. The IPC request timed out. 2. system running error.|
 
 **Example**
 
@@ -3336,7 +3496,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-### getPhotoAlbums<sup>20+</sup> 
+### getPhotoAlbums<sup>20+</sup>
 
 getPhotoAlbums(options?: FetchOptions): Promise&lt;FetchResult&lt;Album&gt;&gt;
 
@@ -3368,8 +3528,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 
@@ -3402,7 +3562,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-### getPhotoAlbumOrder<sup>20+</sup> 
+### getPhotoAlbumOrder<sup>20+</sup>
 
 getPhotoAlbumOrder(orderStyle: number, options?: FetchOptions): Promise&lt;FetchResult&lt;AlbumOrder&gt;&gt;
 
@@ -3433,9 +3593,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The input parameter is not within the valid range. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: The input parameter is not within the valid range. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
@@ -3468,7 +3628,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-### setPhotoAlbumOrder<sup>20+</sup> 
+### setPhotoAlbumOrder<sup>20+</sup>
 
 setPhotoAlbumOrder(orderStyle: number, albumOrders: Array&lt;AlbumOrder&gt;): Promise&lt;void&gt;
 
@@ -3491,7 +3651,7 @@ Sets the sorting order for system, user, and source albums. This API uses a prom
 
 | Type                 | Description                       |
 | --------------------- | --------------------------- |
-| Promise&amp;lt;void&amp;gt;| Promise that returns no value.|
+| Promise&lt;void&gt;        | Promise that returns no value. |
 
 **Error codes**
 
@@ -3499,8 +3659,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The input parameter is not within the valid range. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -3569,8 +3729,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: The SQL statement is abnormal. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out.|
 
@@ -3601,7 +3761,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
  
 getClonedAssetUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, string&gt;&gt;
 
-Obtains the current URIs of cloned assets. This API uses a promise to return the result.
+Obtains the current URI list after cloning based on the old URI list before cloning. This API uses a promise to return the result asynchronously.
 
 To control the size of the database table space, the system automatically deletes the previously stored clone data during each clone operation. As a result, this API only keeps the mapping between the user's new and old device URIs from the latest clone operation.
 
@@ -3615,7 +3775,7 @@ To control the size of the database table space, the system automatically delete
 
 | Name| Type| Mandatory| Description|
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| oldUris | Array&lt;string&gt; | Yes| Array of old URIs before cloning.|
+| oldUris | Array&lt;string&gt; | Yes | Array of old URIs before cloning. The array size ranges from 1 to 100. |
 
 **Return value**
 
@@ -3629,8 +3789,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**|
 | ----------------- | --------------------------------------------------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: The size of input parameter exceeds 100 or is 0. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -3660,7 +3820,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
  
 getClonedAlbumUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, string&gt;&gt;
 
-Obtains the current URIs of cloned albums. This API uses a promise to return the result.
+Obtains the current URI after cloning based on the old URI list before cloning. This API uses a promise to return the result asynchronously.
 
 To control the size of the database table space, the system automatically deletes the previously stored clone data during each clone operation. As a result, this API only keeps the mapping between the user's new and old device URIs from the latest clone operation.
 
@@ -3674,7 +3834,7 @@ To control the size of the database table space, the system automatically delete
 
 | Name| Type| Mandatory| Description|
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| oldUris | Array&lt;string&gt; | Yes| Array of old URIs before cloning.|
+| oldUris | Array&lt;string&gt; | Yes | Array of old URIs before cloning. The array size ranges from 1 to 100. |
 
 **Return value**
 
@@ -3682,18 +3842,18 @@ To control the size of the database table space, the system automatically delete
 | --------------------- | --------------------------- |
 | Promise&lt;Map&lt;string, string&gt;&gt; | Promise used to return a map of URIs.|
 
-**Error codes**
+**Error codes** 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | **ID**| **Error Message**|
 | ----------------- | --------------------------------------------------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: The size of input parameter exceeds 100 or is 0. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
-**Example**
+**Example** 
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
@@ -3744,7 +3904,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202     | Called by non-system application.         |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151       | The scenario parameter verification fails. Possible causes: The attribute to be queried does not exist in assets.        |
 | 23800104       | The provided member must be a property name of PhotoKey.        |
 
@@ -3835,8 +3995,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The file corresponding to the URI is not in the app sandbox. 2. ResourceType must be image or video. |
 | 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -3893,8 +4053,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails, unsupported media data type. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -3949,7 +4109,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. Invalid value type in ValuesBucket; 2. Missing required column in ValuesBucket; 3. Array size exceeds 500.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -3976,6 +4136,137 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('getPhotoAssets successfully');
   } catch (err) {
     console.error(`valuesArr failed: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### convertAssetToCompatibleAsset
+
+convertAssetToCompatibleAsset(assets: Array&lt;PhotoAsset&gt;): Promise&lt;Array&lt;PhotoAsset&gt;&gt;
+
+Converts the properties of the passed-in PhotoAsset to the media library compatible file format properties.
+
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name        | Type                                | Mandatory | Description                                                         |
+| ------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
+| assets        | Array&lt;[PhotoAsset](#photoasset)&gt; | Yes   | Array of assets to be converted.                                           |
+
+**Return value**
+
+| Type                                    | Description              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;Array&lt;[PhotoAsset](#photoasset)&gt;&gt; | Promise object that returns the array of converted assets. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID | Error Message |
+| -------- | ---------------------------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. Invalid Array&lt;PhotoAsset&gt;.|
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: [photoAccessHelper.PhotoKeys.URI, photoAccessHelper.PhotoKeys.WIDTH, photoAccessHelper.PhotoKeys.HEIGHT],
+      predicates: predicates
+    };
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let assets: Array<photoAccessHelper.PhotoAsset> = await fetchResult.getAllObjects();
+    let compatibleAssets: Array<photoAccessHelper.PhotoAsset> = await phAccessHelper.convertAssetToCompatibleAsset(assets);
+    console.info(`convertAssetToCompatibleAsset successfully, compatibleAssets count: ${compatibleAssets.length}`);
+  } catch (err) {
+    console.error(`failed to convertAssetToCompatibleAsset with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### getAssetCompatibleUris
+
+getAssetCompatibleUris(bundleName: string, assets: Array&lt;PhotoAsset&gt;, compatibleFlag?: number): Promise&lt;Array&lt;string&gt;&gt;
+
+Obtains the list of URIs to be transcoded based on the bundle name, photo asset list, and compatible flag. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> The **compatibleFlag** parameter is a compatibility configuration mask flag. The bit definitions are as follows:
+> - Bit 0: indicates a high-resolution image.
+> - Bit 1: indicates an image in HEIF format.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name       | Type                               | Mandatory| Description                                                        |
+| ------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
+| bundleName    | string                              | Yes  | Bundle name of the application.                                          |
+| assets        | Array&lt;[PhotoAsset](#photoasset)&gt; | Yes  | Array of assets to be checked.                                          |
+| compatibleFlag | number                              | No  | Compatibility configuration mask flag.<br>Bit 0 indicates a high-resolution image, and bit 1 indicates an image in HEIF format.|
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the URI list of media library files to be transcoded.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The bundleName is invalid; 2. The compatibleFlag is invalid. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let bundleName: string = 'com.example.helloWorld';
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: [photoAccessHelper.PhotoKeys.URI, photoAccessHelper.PhotoKeys.WIDTH, photoAccessHelper.PhotoKeys.HEIGHT],
+      predicates: predicates
+    };
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let assets: Array<photoAccessHelper.PhotoAsset> = await fetchResult.getAllObjects();
+    // compatibleFlag: Bit 0 indicates the full image, and bit 1 indicates the HEIF image.
+    let compatibleFlag: number = 0;
+    let uris: Array<string> = await phAccessHelper.getAssetCompatibleUris(bundleName, assets, compatibleFlag);
+    console.info(`getAssetCompatibleUris success, uri count: ${uris.length}`);
+  } catch (err) {
+    console.error(`getAssetCompatibleUris failed with error: ${err.code}, ${err.message}`);
   }
 }
 ```
@@ -4011,7 +4302,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The bundleName or capability is invalid.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -4066,9 +4357,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Converted an image after filtering into an asset object;<br>2. File to be converted is not exist;<br>3. Only images in the public directory of filemanager can be converted. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Converted an image after filtering into an asset object.<br>2. File to be converted is not exist.<br>3. Only images in the public directory of filemanager can be converted. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
@@ -4115,7 +4406,7 @@ Clones assets to the target album. This API uses a promise to return the result.
 
 | Type| Description|
 | ---- | ---- |
-| Promise&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)[]&gt; | Promise that returns the list of assets that are successfully cloned.|
+| Promise&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)[]&gt; | Promise used to return the list of assets that are successfully cloned.|
 
 **Error codes**
 
@@ -4123,9 +4414,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Asset to be cloned has been deleted or hidden;<br>2. Asset to be cloned is cloud pictures, which can not be cloned;<br>3. The target directory does not exist;<br>4. Insufficient system space;<br>5. Automatic renaming is not supported. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Asset to be cloned has been deleted or hidden.<br>2. Asset to be cloned is cloud pictures, which can not be cloned.<br>3. The target directory does not exist.<br>4. Insufficient system space.<br>5. Automatic renaming is not supported. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
@@ -4185,7 +4476,7 @@ Clones assets to the file management directory. This API uses a promise to retur
 
 | Type| Description|
 | ---- | ---- |
-| Promise\<string[]> | Promise that returns the array of paths to the assets that are successfully cloned.|
+| Promise\<string[]> | Promise used to return the array of paths to the assets that are successfully cloned.|
 
 **Error codes**
 
@@ -4193,9 +4484,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Asset to be cloned has been deleted or hidden;<br>2. Asset to be cloned is cloud pictures, which can not be cloned;<br>3. The target album does not exist;<br>4. Insufficient system space;<br>5. Automatic renaming is not supported. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Asset to be cloned has been deleted or hidden.<br>2. Asset to be cloned is cloud pictures, which can not be cloned.<br>3. The target album does not exist.<br>4. Insufficient system space.<br>5. Automatic renaming is not supported. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
@@ -4244,7 +4535,7 @@ Clones assets in file management to the target album. This API uses a promise to
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| assets | string[] | Yes| Array of paths of the assets to be cloned.|
+| assets | string[] | Yes| Array of paths to the assets to be cloned.|
 | target | [Album](#album) | Yes| Target album.|
 | option | [BatchOperationOptions](#batchoperationoptions) | No| Options for cloning assets in batches. If this parameter is not specified, automatic renaming is supported by default, and no progress information is returned.|
 
@@ -4252,7 +4543,7 @@ Clones assets in file management to the target album. This API uses a promise to
 
 | Type| Description|
 | ---- | ---- |
-| Promise\<string[]> | Promise that returns the array of URIs to the assets that are successfully cloned.|
+| Promise\<string[]> | Promise used to return the URI array of the assets that are successfully cloned.|
 
 **Error codes**
 
@@ -4260,9 +4551,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Asset to be cloned has been deleted or hidden;<br>2. Asset to be cloned is cloud pictures, which can not be cloned;<br>3. The target album does not exist;<br>4. Insufficient system space;<br>5. Automatic renaming is not supported. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Asset to be cloned has been deleted or hidden.<br>2. Asset to be cloned is cloud pictures, which can not be cloned.<br>3. The target album does not exist.<br>4. Insufficient system space.<br>5. Automatic renaming is not supported. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
@@ -4279,6 +4570,141 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info(`cloneAssetsByPath success, count: ${clonedUris.length}`);
   } catch (err) {
     console.error(`cloneAssetsByPath failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### modifyAlbumDefaultCoverOrder
+
+modifyAlbumDefaultCoverOrder(coverOrderInfos: DefaultCoverOrderInfo[], disableModification: boolean, isAsyncRefreshAlbum: boolean): Promise\<void>
+
+Sets the default cover selection rule for an album based on the default cover selection rule information of the batch albums in **coverOrderInfos**. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ------- | ------- | ---- | -------------------------- |
+| coverOrderInfos | [DefaultCoverOrderInfo](#defaultcoverorderinfo)[] | Yes| Default cover selection rule information of the batch albums.<br>The valid combinations of **orderKey** and **orderSubKey** are as follows:<br>- [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).DATE_TAKEN and [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).DISPLAY_NAME.<br>- [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).DATE_ADDED and [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).DISPLAY_NAME.<br>- [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).DISPLAY_NAME and [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).DATE_TAKEN.<br>- [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).SIZE and [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).DISPLAY_NAME.<br>- [PhotoKeys](#photokeys).HIDDEN_TIME and [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).DISPLAY_NAME.|
+| disableModification | boolean | Yes| Whether to disable the default cover modification option. **true**: yes; **false**: no.|
+| isAsyncRefreshAlbum | boolean | Yes| Whether to refresh the default cover image of the album asynchronously. The value **true** indicates asynchronous refreshing, and **false** indicates synchronous refreshing.|
+
+**Return value**
+
+| Type| Description|
+| --------------------------------------- | ----------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Only the system album can be set without lpath. Otherwise, the setting is not supported.<br>2. The orderKey and orderSubKey are not in the specified range.<br>3. The order type must be either descending or ascending. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```javascript
+async function modifyAlbumDefaultCoverOrder(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let coverOrderInfos: Array<photoAccessHelper.DefaultCoverOrderInfo> = [];
+    let coverOrderInfo: photoAccessHelper.DefaultCoverOrderInfo = {
+      albumType: photoAccessHelper.AlbumType.USER,
+      albumSubtype: photoAccessHelper.AlbumSubtype.USER_GENERIC,
+      lpath: "/Pictures/Users/1",
+      orderKey: photoAccessHelper.PhotoKeys.DATE_ADDED,
+      orderSubKey: photoAccessHelper.PhotoKeys.DISPLAY_NAME,
+      orderType: 1,
+    }
+    coverOrderInfos.push(coverOrderInfo);
+    let disableModification: boolean = false;
+    let isAsyncRefreshAlbum: boolean = false;
+    await phAccessHelper.modifyAlbumDefaultCoverOrder(coverOrderInfos, disableModification, isAsyncRefreshAlbum);
+    console.info(`Succeeded in modifying default cover order of user album 1`);
+  } catch (err) {
+    console.error(`modifyAlbumDefaultCoverOrder failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### modifyHiddenAlbumDefaultCoverOrder
+
+modifyHiddenAlbumDefaultCoverOrder(coverOrderInfos: DefaultCoverOrderInfo[], disableModification: boolean, isAsyncRefreshAlbum: boolean): Promise\<void>
+
+Sets the default cover selection rule for hidden albums based on the default cover selection rule information of the batch albums in **coverOrderInfos**. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.WRITE_IMAGEVIDEO and ohos.permission.MANAGE_PRIVATE_PHOTOS
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ------- | ------- | ---- | -------------------------- |
+| coverOrderInfos | [DefaultCoverOrderInfo](#defaultcoverorderinfo)[] | Yes| Default cover selection rule information of the batch albums.<br>The valid combinations of **orderKey** and **orderSubKey** are as follows:<br>- [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).DATE_TAKEN and [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).DISPLAY_NAME.<br>- [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).DATE_ADDED and [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).DISPLAY_NAME.<br>- [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).DISPLAY_NAME and [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).DATE_TAKEN.<br>- [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).SIZE and [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).DISPLAY_NAME.<br>- [PhotoKeys](#photokeys).HIDDEN_TIME and [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).DISPLAY_NAME.|
+| disableModification | boolean | Yes| Whether to disable the default cover modification option. **true**: yes; **false**: no.|
+| isAsyncRefreshAlbum | boolean | Yes| Whether to refresh the default cover image of the hidden album asynchronously. The value **true** indicates asynchronous refreshing, and **false** indicates synchronous refreshing.|
+
+**Return value**
+
+| Type| Description|
+| --------------------------------------- | ----------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Only the system album can be set without lpath. Otherwise, the setting is not supported.<br>2. The orderKey and orderSubKey are not in the specified range.<br>3. The order type must be either descending or ascending. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```javascript
+async function modifyHiddenAlbumDefaultCoverOrder(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let coverOrderInfos: Array<photoAccessHelper.DefaultCoverOrderInfo> = [];
+    let coverOrderInfo: photoAccessHelper.DefaultCoverOrderInfo = {
+      albumType: photoAccessHelper.AlbumType.SYSTEM,
+      albumSubtype: photoAccessHelper.AlbumSubtype.HIDDEN,
+      orderKey: photoAccessHelper.PhotoKeys.DATE_ADDED,
+      orderSubKey: photoAccessHelper.PhotoKeys.DISPLAY_NAME,
+      orderType: 1,
+    }
+    coverOrderInfos.push(coverOrderInfo);
+    let disableModification: boolean = false;
+    let isAsyncRefreshAlbum: boolean = false;
+    await phAccessHelper.modifyHiddenAlbumDefaultCoverOrder(coverOrderInfos, disableModification, isAsyncRefreshAlbum);
+    console.info(`Succeeded in modifying default cover order of hidden album`);
+  } catch (err) {
+    console.error(`modifyHiddenAlbumDefaultCoverOrder failed with error: ${err.code}, ${err.message}`);
   }
 }
 ```
@@ -4313,7 +4739,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The bundleName is invalid, such as null, undefined and empty.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -4365,7 +4791,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The bundleName is invalid, such as null, undefined and empty.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -4374,18 +4800,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a **phAccessHelper** instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 async function setPreferredCompatibleMode(
   phAccessHelper: photoAccessHelper.PhotoAccessHelper,
   bundleName: string,
   preferredCompatibleMode: photoAccessHelper.PreferredCompatibleMode
 ): Promise<void> {
-  try {
-    await phAccessHelper.setPreferredCompatibleMode(bundleName, preferredCompatibleMode);
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`The setPreferredCompatibleMode call failed. error code: ${err.code}`);
-  }
+  console.info('setPreferredCompatibleModeDemo');
+  phAccessHelper.setPreferredCompatibleMode(bundleName, preferredCompatibleMode)
+    .then(() => {
+      console.info('setPreferredCompatibleMode successfully');
+    })
+    .catch((err: BusinessError) => {
+      console.error(`The setPreferredCompatibleMode call failed. error: ${err.code}, ${err.message}`);
+    });
 }
 ```
 
@@ -4421,7 +4850,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The bundleName is invalid, such as null, undefined and empty.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -4430,22 +4859,431 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 async function getPreferredCompatibleMode(
   phAccessHelper: photoAccessHelper.PhotoAccessHelper,
   bundleName: string
 ): Promise<photoAccessHelper.PreferredCompatibleMode> {
+  console.info('getPreferredCompatibleModeDemo');
   let mode: photoAccessHelper.PreferredCompatibleMode = photoAccessHelper.PreferredCompatibleMode.DEFAULT;
-  try {
-    mode = await phAccessHelper.getPreferredCompatibleMode(bundleName);
-  } catch (error) {
-    let err = error as BusinessError;
-    console.error(`The getPreferredCompatibleMode call failed. error code: ${err.code}`);
-  }
+  await phAccessHelper.getPreferredCompatibleMode(bundleName)
+    .then((result: photoAccessHelper.PreferredCompatibleMode) => {
+      mode = result;
+      console.info('getPreferredCompatibleMode successfully');
+    })
+    .catch((err: BusinessError) => {
+      console.error(`The getPreferredCompatibleMode call failed. error: ${err.code}, ${err.message}`);
+    });
   return mode;
 }
 ```
 
-## getAlbumIdByBundleName<sup>22+</sup>
+### moveAssetsToDir
+
+moveAssetsToDir(assets: string[], target: string, option?: BatchOperationOptions): Promise\<string[]>
+
+Moves assets to the file management directory. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| assets | string[] | Yes| Array of URIs of the assets to be moved.|
+| target | string | Yes| Target directory in file management. Example: **/Docs/Download/**|
+| option | [BatchOperationOptions](#batchoperationoptions) | No| Option for moving assets in batches. If this parameter is not specified, automatic renaming is supported by default, and no progress information is returned.|
+
+**Return value**
+
+| Type| Description|
+| ---- | ---- |
+| Promise\<string[]> | Promise used to return the array of paths to the assets that are successfully moved.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Moving to the target directory is not supported.<br>2. Asset to be moved does not exist.<br>3. Automatic renaming is not supported. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let assetFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    let assets: Array<photoAccessHelper.PhotoAsset> = await assetFetchResult.getAllObjects();
+    let assetUris: Array<string> = assets.map((item) => item.uri);
+    let target: string = "/Docs/Download/";
+    let movePaths: Array<string> = await phAccessHelper.moveAssetsToDir(assetUris, target);
+    console.info(`moveAssetsToDir success, count: ${movePaths.length}`);
+  } catch (err) {
+    console.error(`moveAssetsToDir failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### moveAssetsByPath
+
+moveAssetsByPath(assets: string[], target: Album, option?: BatchOperationOptions): Promise\<string[]>
+
+Moves assets in file management to the target album. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| assets | string[] | Yes| Array of paths to the assets to be moved. Example: ["/Docs/Download/test.jpg"]|
+| target | [Album](#album) | Yes| Target album.|
+| option | [BatchOperationOptions](#batchoperationoptions) | No| Options for moving assets in batches. If this parameter is not specified, automatic renaming is supported by default, and no progress information is returned.|
+
+**Return value**
+
+| Type| Description|
+| ---- | ---- |
+| Promise\<string[]> | Promise used to return the array of URIs to the assets that are successfully moved.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Moving to the target Album is not supported.<br>2. Asset to be moved does not exist.<br>3. Automatic renaming is not supported. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let assets: Array<string> = ["/Docs/Download/test.jpg"];
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
+    let target: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    let moveUris: Array<string> = await phAccessHelper.moveAssetsByPath(assets, target);
+    console.info(`moveAssetsByPath success, count: ${moveUris.length}`);
+  } catch (err) {
+    console.error(`moveAssetsByPath failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### createAssetsWithAlbum
+
+createAssetsWithAlbum(creationSettings: CreationSetting[], isRealTimeThumb: boolean, albumUri?: string): Promise\<string[]>
+
+Creates assets in batches. You can also specify whether to specify an album and whether to generate thumbnails in real time. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| creationSettings | [CreationSetting](arkts-apis-photoAccessHelper-i.md#creationsetting23)[] | Yes | List of settings for creating assets. The array size cannot exceed 500. |
+| isRealTimeThumb | boolean | Yes| Whether to generate a thumbnail in real time when an asset is created. The value **true** means to generate a thumbnail in real time when an asset is created, and **false** means the opposite.|
+| albumUri | string | No| URI of the target album specified when an asset is created. If this parameter is not specified, the default value is an empty string.|
+
+**Return value**
+
+| Type| Description|
+| ---- | ---- |
+| Promise\<string[]> | Promise object, returns an array of URIs of successfully created assets, and returns an empty string when creation fails. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 |Scenario-specific parameters are incorrect. Possible causes are as follows:<br>1. The input parameter creationSettings is null or undefined.<br>2. The array length of creationSettings is bigger than 500. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    // Construct creation parameters.
+    let creationSettings: Array<photoAccessHelper.CreationSetting> = [
+      {
+        title: 'test',
+        fileNameExtension: 'jpg',
+        photoType: photoAccessHelper.PhotoType.IMAGE
+      }
+    ];
+    // Do not generate a thumbnail in real time when an asset is created.
+    let isRealTimeThumb: boolean = false;
+    // Specify the album URI.
+    let albumUri: string = 'file://media/PhotoAlbum/10';
+    // Call the API to create an asset.
+    let result: Array<string> = await phAccessHelper.createAssetsWithAlbum(
+      creationSettings,
+      isRealTimeThumb,
+      albumUri
+    );
+    console.info('Succeeded in creating assets with album, uri is ' + result);
+  } catch (err) {
+    console.error(`createAssetsWithAlbum failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### canPerformDeepOptimizeSpace
+
+canPerformDeepOptimizeSpace(): Promise&lt;boolean&gt;
+
+Checks whether the system can perform in-depth optimization on the storage space. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.READ_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that [startDeepOptimizeSpace](#startdeepoptimizespace) can be called, and **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let canPerform: boolean = await phAccessHelper.canPerformDeepOptimizeSpace();
+    console.info(`canPerformDeepOptimizeSpace result: ${canPerform}`);
+  } catch (err) {
+    console.error(`canPerformDeepOptimizeSpace failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### getDeepOptimizeSpace
+
+getDeepOptimizeSpace(): Promise&lt;number&gt;
+
+Obtains the size of storage space available for deep optimization, in bytes. This API uses a promise to return the result.
+
+> - This API is time-consuming (the duration depends on the amount of data to be processed). You are advised to call [canPerformDeepOptimizeSpace](#canperformdeepoptimizespace) first to check whether the current system status allows the operation.
+> - This API can be called only when **true** is returned.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.READ_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise&lt;number&gt; | Promise used to return the size of storage space available for deep optimization.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let canPerform: boolean = await phAccessHelper.canPerformDeepOptimizeSpace();
+    if (canPerform) {
+      let size: number = await phAccessHelper.getDeepOptimizeSpace();
+      console.info(`getDeepOptimizeSpace result: ${size}`);
+    }
+  } catch (err) {
+    console.error(`getDeepOptimizeSpace failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### startDeepOptimizeSpace
+
+startDeepOptimizeSpace(callback?: Callback&lt;DeepOptimizeSpaceProgress&gt;): Promise&lt;void&gt;
+
+Starts in-depth storage optimization. This API uses a promise to return the result.
+
+You are advised to call the [canPerformDeepOptimizeSpace](#canperformdeepoptimizespace) API to check whether the current system status allows the operation. This API can be called only when **true** is returned.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name  | Type                    | Mandatory| Description                     |
+| -------- | ------------------------ | ---- | ------------------------- |
+| callback | Callback&lt;[DeepOptimizeSpaceProgress](#deepoptimizespaceprogress)&gt; | No| Callback used to return the deep optimization progress. The default value is **null**.|
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800201 | Unsupported operation type. Possible causes:<br>1. Repeatedly started.<br>2. System is busy, please try again later. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    await phAccessHelper.startDeepOptimizeSpace((progress: photoAccessHelper.DeepOptimizeSpaceProgress) => {
+      console.info(`startDeepOptimizeSpace progress: state=${progress.state}, progress=${progress.progress}`);
+    });
+    console.info('startDeepOptimizeSpace successfully');
+  } catch (err) {
+    console.error(`startDeepOptimizeSpace failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### stopDeepOptimizeSpace
+
+stopDeepOptimizeSpace(): Promise&lt;void&gt;
+
+Stops deep optimization of storage space. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    await phAccessHelper.stopDeepOptimizeSpace();
+    console.info('stopDeepOptimizeSpace successfully');
+  } catch (err) {
+    console.error(`stopDeepOptimizeSpace failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### getAlbumIdByBundleName<sup>22+</sup>
 
 getAlbumIdByBundleName(bundleName: string): Promise&lt;number&gt;
 
@@ -4478,8 +5316,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201     | Permission denied.   |
-| 202     | Called by non-system application.   |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151     | The bundleName is invalid, such as null, undefined and empty. |
 | 23800301     | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -4540,8 +5378,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202     |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.        |
@@ -4604,8 +5442,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202     |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.        |
@@ -4641,7 +5479,7 @@ Favorites or unfavorites this file asset. This API uses an asynchronous callback
 
 > **NOTE**
 >
-> This API is supported since API version 10 and deprecated since API version 11. Use [MediaAssetChangeRequest.setFavorite](#setfavorite11) instead.
+> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [MediaAssetChangeRequest.setFavorite](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#setfavorite) instead.
 
 **System API**: This is a system API.
 
@@ -4653,7 +5491,7 @@ Favorites or unfavorites this file asset. This API uses an asynchronous callback
 
 | Name       | Type                       | Mandatory  | Description                                |
 | ---------- | ------------------------- | ---- | ---------------------------------- |
-| favoriteState | boolean                   | Yes   | Whether to favorite the file asset. **true** to favorite, **false** otherwise.|
+| favoriteState | boolean                   | Yes    | Whether to set the file as a favorite. The value true means to set the file as a favorite, and false means to cancel the favorite. |
 | callback   | AsyncCallback&lt;void&gt; | Yes   | Callback that returns no value.                             |
 
 **Error codes**
@@ -4664,9 +5502,9 @@ If error code 201 is returned, follow the instructions provided in [Before You S
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201     | Permission denied.         |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -4704,7 +5542,7 @@ Favorites or unfavorites this file asset. This API uses a promise to return the 
 
 > **NOTE**
 >
-> This API is supported since API version 10 and deprecated since API version 11. Use [MediaAssetChangeRequest.setFavorite](#setfavorite11) instead.
+> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [MediaAssetChangeRequest.setFavorite](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#setfavorite) instead.
 
 **System API**: This is a system API.
 
@@ -4716,7 +5554,7 @@ Favorites or unfavorites this file asset. This API uses a promise to return the 
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| favoriteState | boolean | Yes   | Whether to favorite the file asset. **true** to favorite, **false** otherwise.|
+| favoriteState | boolean | Yes | Whether to set the file as a favorite. The value true means to set the file as a favorite, and false means to cancel the favorite. |
 
 **Return value**
 
@@ -4732,9 +5570,9 @@ If error code 201 is returned, follow the instructions provided in [Before You S
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201     | Permission denied.         |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -4800,9 +5638,9 @@ If error code 201 is returned, follow the instructions provided in [Before You S
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201     | Permission denied.         |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -4870,9 +5708,9 @@ If error code 201 is returned, follow the instructions provided in [Before You S
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201     | Permission denied.         |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -4936,8 +5774,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -5002,8 +5840,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -5079,9 +5917,9 @@ If error code 201 is returned, follow the instructions provided in [Before You S
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201     | Permission denied.         |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -5141,9 +5979,9 @@ If error code 201 is returned, follow the instructions provided in [Before You S
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201     | Permission denied.         |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -5209,9 +6047,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail.        |
 
 **Example**
@@ -5271,7 +6109,7 @@ The pending state can be removed only through **setPending(false)**. You can use
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-|Promise&lt;boolean&gt; | Promise that returns no value.|
+|Promise&lt;void&gt;    | Promise that returns no value. |
 
 **Error codes**
 
@@ -5279,9 +6117,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail.        |
 
 **Example**
@@ -5296,7 +6134,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let photoAsset = await phAccessHelper.createAsset(testFileName);
     await photoAsset.setPending(true);
     // add asset resource.
-    photoAsset.setPending(false);
+    await photoAsset.setPending(false);
   } catch (err) {
     console.error(`setPendingPromiseDemo failed with error: ${err.code}, ${err.message}`);
   }
@@ -5327,9 +6165,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail.        |
 
 **Example**
@@ -5391,9 +6229,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail.        |
 
 **Example**
@@ -5451,9 +6289,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail.        |
 
 **Example**
@@ -5513,9 +6351,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.       |
 
 **Example**
@@ -5569,9 +6407,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.       |
 
 **Example**
@@ -5624,9 +6462,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 23800151    | Scene parameters validate failed, possible causes:<br>1. The original file does not exist locally in PhotoAsset;<br>2. The original file format is not within the supported range<br>3. The original file is a temporary file or is being edited.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151    | Scene parameters validate failed, possible causes:<br>1. The original file does not exist locally in PhotoAsset.<br>2. The original file format is not within the supported range<br>3. The original file is a temporary file or is being edited.|
 | 23800301   |Internal system error.It is recommended to retry and check the logs.Possible causes:<br> 1. Database corrupted.2. The file system is abnormal.3. The IPC request timed out.   |
 
 **Example**
@@ -5676,9 +6514,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.       |
 
 **Example**
@@ -5735,9 +6573,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.       |
 
 **Example**
@@ -5767,7 +6605,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### commitEditedAsset<sup>11+</sup>
 
-commitEditedAsset(editData: string, uri: string, callback: AsyncCallback&lt;void&gt;)
+commitEditedAsset(editData: string, uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 Commits the edited image or video asset. This API uses an asynchronous callback to return the result.
 
@@ -5797,9 +6635,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.       |
 
 **Example**
@@ -5875,9 +6713,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.       |
 
 **Example**
@@ -5909,7 +6747,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### revertToOriginal<sup>11+</sup>
 
-revertToOriginal(callback: AsyncCallback&lt;void&gt;)
+revertToOriginal(callback: AsyncCallback&lt;void&gt;): void
 
 Reverts to the state of the file before being edited. This API uses an asynchronous callback to return the result.
 
@@ -5935,9 +6773,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail.        |
 
 **Example**
@@ -5990,7 +6828,7 @@ Reverts to the state of the file before being edited. This API uses a promise to
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-|Promise&lt;string&gt; | Promise that returns no value.|
+|Promise&lt;void&gt;   | Promise that returns no value. |
 
 **Error codes**
 
@@ -5998,9 +6836,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail.        |
 
 **Example**
@@ -6021,10 +6859,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     if (photoAsset === undefined) {
-      console.error('getHiddenAlbumsViewCallback albums is undefined');
+      console.error('revertToOriginal photoAsset is undefined');
       return;
     }
-    photoAsset.revertToOriginal();
+    await photoAsset.revertToOriginal();
     console.info('revertToOriginal is successful');
   } catch (err) {
     console.error(`revertToOriginalPromiseDemo failed with error: ${err.code}, ${err.message}`);
@@ -6064,9 +6902,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission verification failed, usually the result returned by VerifyAccessToken.        |
-| 202   | Permission verification failed, application which is not a system application uses system API.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail.        |
 
 **Example**
@@ -6131,9 +6969,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission verification failed, usually the result returned by VerifyAccessToken.        |
-| 202   | Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail.        |
 
 **Example**
@@ -6197,9 +7035,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission verification failed, usually the result returned by VerifyAccessToken.        |
-| 202   | Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail.        |
 
 **Example**
@@ -6250,7 +7088,7 @@ Obtains analysis data. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.READ\_IMAGEVIDEO
 
-Since API version 22, the **ohos.permission.MEDIA\_LOCATION** permission is required when **analysisType** is set to [ANALYSIS\_DETAIL\_ADDRESS](#analysistype11). If the permission is not granted, the universal error code [201 Permission Denied](../errorcode-universal.md#201-permission-denied) is thrown.
+Since API version 22, the ohos.permission.MEDIA\_LOCATION permission is required when **analysisType** is set to [ANALYSIS\_DETAIL\_ADDRESS](#analysistype11). If the permission is not granted, the universal error code [201 API Permission Verification Failed](../errorcode-universal.md#201-api-permission-verification-failed) is thrown.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -6266,9 +7104,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message                             |
 | :------- | :-------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | System inner fail.                |
 
 **Example**
@@ -6328,9 +7166,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied.  | 
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
@@ -6350,7 +7188,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let asset = await fetchResult.getFirstObject();
   console.info('asset displayName = ', asset.displayName);
   asset.getThumbnailData(photoAccessHelper.ThumbnailType.LCD).then((buffer: ArrayBuffer) => {
-    console.info('getThumbnailData successful, buffer byteLength = ${buffer.byteLength}');
+    console.info(`getThumbnailData successful, buffer byteLength = ${buffer.byteLength}`);
   }).catch((err: BusinessError) => {
     console.error(`getThumbnailData fail with error: ${err.code}, ${err.message}`);
   });
@@ -6388,9 +7226,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.       |
-| 202   | Called by non-system application.       |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | Internal system error. |
 
 **Example**
@@ -6398,7 +7236,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { common }  from '@kit.AbilityKit';
 import { dataSharePredicates } from '@kit.ArkData';
 import { image } from '@kit.ImageKit';
 
@@ -6454,8 +7291,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied.  | 
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Scene parameters validate failed. Possible causes: 1. The original file does not exist locally in PhotoAsset. 2. The original file format is not within the supported range. 3. The original file is a temporary file or is being edited. 4. The title is the same with an image in the same album. 5. PhotoAsset is a photo in the trash or a hidden photo. 6. The title does not meet the parameter specifications. |
 | 23800301    | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -6476,9 +7313,76 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let photoAsset = await fetchResult.getFirstObject();
   try {
     let newPhotoAsset = await photoAsset.convertImageFormat('test', photoAccessHelper.SupportedImageFormat.AVFILE_FORMAT_JPG);
-    console.error(`convertImageFormat success.`);
+    console.info(`convertImageFormat success.`);
   } catch (err) {
     console.error(`convertImageFormat failed. error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+
+### getReadOnlyFdWithCached
+
+getReadOnlyFdWithCached(): Promise&lt;number&gt;
+
+Opens the current file in read-only mode. If the opened file is a video file in the cloud gallery, the video is cached to the gallery sandbox. Other types of resource files are not cached. This API uses a promise to return the result asynchronously.
+
+**Since:** 26.0.1
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.READ_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Return value**
+
+| Type                  | Description            |
+| --------------------- | ------------- |
+| Promise&lt;number&gt; | Promise used to return the file descriptor. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID | Error Message |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151     | Scene parameters validate failed, possible causes: The image and video files corresponding to the photoasset do not exist. Check if the photoasset is valid and the files exist in the gallery.        |
+| 23800302       | Failed to open the file. Possible causes: 1. Unable to access cloud images due to network connectivity issues; 2. File system malfunction. Please check your network connection and try again. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getReadOnlyFdDemo');
+  try {
+    // Ensure that readable image and video files exist on the device.
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let photoAsset: photoAccessHelper.PhotoAsset = await assetResult.getFirstObject();
+    if (photoAsset === undefined) {
+      console.error('photoAsset is undefined');
+      return;
+    }
+    let fd: number = await photoAsset.getReadOnlyFdWithCached();
+    if (fd !== undefined) {
+      console.info('File fd: ' + fd);
+      photoAsset.close(fd);
+    } else {
+      console.error('Failed To Get ReadOnlyFd With Cached fd: ' + fd);
+    }
+  } catch (err) {
+    console.error(`Failed To Get ReadOnly Fd With Cached err: ${err.code}, ${err.message}`);
   }
 }
 ```
@@ -6495,40 +7399,40 @@ Describes the information about a shared media asset.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | --- | ---- | ---- | --- |
-| fileId | number | No| No| ID of the media asset.<br>**System API**: This is a system API.|
-| uri | string | No| No| URI of the media asset.<br>**System API**: This is a system API.|
-| data | string | No| No| Path data of the media asset.<br>**System API**: This is a system API.|
-| mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | No| No| Media type of the media asset.<br>**System API**: This is a system API.|
-| displayName | string | No| No| Display name of the media asset.<br>**System API**: This is a system API.|
-| size | number  | No| No| File size of the media asset.<br>**System API**: This is a system API.|
-| dataAdded | number | No| No| Data added to the media asset.<br>**System API**: This is a system API.|
-| dataModified | number | No| No| Data modified in the media asset.<br>**System API**: This is a system API.|
-| duration | number | No| No| Duration of the media asset if it is a video.<br>**System API**: This is a system API.|
-| width | number | No| No| Pixel width of the media asset.<br>**System API**: This is a system API.|
-| height | number | No| No| Pixel height of the media asset.<br>**System API**: This is a system API.|
-| dataTaken | number | No| No| Timestamp when the media asset was taken and stored locally.<br>**System API**: This is a system API.|
-| orientation | number | No| No| Rotation angle of the media asset.<br>**System API**: This is a system API.|
-| isFavorite | boolean | No| No| Whether the media asset is marked as a favorite. **true** if marked, **false** otherwise.<br>**System API**: This is a system API.|
-| title | string | No| No| Title of the media asset.<br>**System API**: This is a system API.|
-| position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16) | No| No| Location of the media asset.<br>**System API**: This is a system API.|
-| dataTrashed | number | No| No| Whether the media asset is moved to the trash.<br>**System API**: This is a system API.|
-| hidden | boolean | No| No| Whether the media asset is hidden. **true** if hidden, **false** otherwise.<br>**System API**: This is a system API.|
-| userComment | string | No| No| User comments on the media asset.<br>**System API**: This is a system API.|
-| cameraShotKey | string | No| No| Camera shot information of the media asset.<br>**System API**: This is a system API.|
-| dateYear | string | No| No| Year when the media asset was created.<br>**System API**: This is a system API.|
-| dateMonth | string | No| No| Month when the media asset was created.<br>**System API**: This is a system API.|
-| dateDay | string | No| No| Time when the media asset was created.<br>**System API**: This is a system API.|
-| pending | boolean | No| No| Whether the media asset is in a pending state. **true** if pending, **false** otherwise.<br>**System API**: This is a system API.|
-| dateAddedMs | number | No| No| Time elapsed after the media asset was added.<br>**System API**: This is a system API.|
-| dateTrashedMs | number | No| No| Time elapsed since the media asset was trashed.<br>**System API**: This is a system API.|
-| subtype | [PhotoSubtype](#photosubtype) | No| No| Subtype of the media asset.<br>**System API**: This is a system API.|
-| movingPhotoEffectMode | [MovingPhotoEffectMode](#movingphotoeffectmode12) | No| No| Effect of the moving photo.<br>**System API**: This is a system API.|
-| dynamicRangeType | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12) | No| No| Dynamic range type of the media asset.<br>**System API**: This is a system API.|
-| thumbnailReady | boolean | No| No| Whether the thumbnail of the media asset is ready. **true** if ready, **false** otherwise.<br>**System API**: This is a system API.|
-| lcdSize | string | No| No| Width and height of the LCD thumbnail of the media asset.<br>**System API**: This is a system API.|
-| thmSize | string | No| No| Width and height of the thumb thumbnail of the media asset.<br>**System API**: This is a system API.|
-| thumbnailModifiedMs<sup>14+</sup> | number | No| Yes| Time elapsed since the thumbnail status of the media asset changed.<br>**System API**: This is a system API.|
-| thumbnailVisible<sup>14+</sup> | [ThumbnailVisibility](#thumbnailvisibility14) | No| No| Whether the thumbnail of the media asset is visible.<br>**System API**: This is a system API.|
+| fileId | number | No | No | Image asset ID. |
+| uri | string | No | No | URI of the image asset. |
+| data | string | No | No | Path data of the image asset. |
+| mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | No | No | Media type of the image asset. |
+| displayName | string | No | No | Display name of the image asset. |
+| size | number  | No | No | Size of the image asset file, in bytes. |
+| dateAdded | number | No | No | Timestamp when the image asset data was added, in seconds. |
+| dateModified | number | No | No | Timestamp when the image asset data was modified, in seconds. |
+| duration | number | No | No | Duration of the video-type image asset, in milliseconds. |
+| width | number | No | No | Pixel width of the image asset, in pixels. |
+| height | number | No | No | Pixel height of the image asset, in pixels. |
+| dateTaken | number | No | No | Time when the image asset was taken, in seconds.    |
+| orientation | number | No | No | Rotation angle of the image asset, in degrees. |
+| isFavorite | boolean | No | No | Whether the image is marked as a favorite. The value true means it is marked as a favorite, and false means the opposite. |
+| title | string | No | No | Title of the image asset. |
+| position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16) | No | No | Location of the image asset. |
+| dateTrashed | number | No | No | Time when the image asset was moved to the recycle bin, in seconds. |
+| hidden | boolean | No | No | Whether the image asset is hidden. The value true means it is hidden, and false means the opposite. |
+| userComment | string | No | No | User comment of the image asset. |
+| cameraShotKey | string | No | No | Camera shot information of the image asset. |
+| dateYear | string | No | No | Year when the image asset was created. |
+| dateMonth | string | No | No | Month when the image asset was created. |
+| dateDay | string | No | No | Day when the image asset was created. |
+| pending | boolean | No | No | Pending state of the image asset. The value true means pending, and false means the pending state is released. |
+| dateAddedMs | number | No | No | Elapsed time after the image asset data was added, in milliseconds. |
+| dateTrashedMs | number | No | No | Elapsed time after the image asset data was moved to the recycle bin, in milliseconds. |
+| subtype | [PhotoSubtype](#photosubtype) | No | No | Subtype of the image asset. |
+| movingPhotoEffectMode | [MovingPhotoEffectMode](#movingphotoeffectmode12) | No | No | Effect mode of the moving photo. |
+| dynamicRangeType | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12) | No | No | Dynamic range type of the media asset. |
+| thumbnailReady | boolean | No | No | Whether the thumbnail of the image asset is ready. The value true means it is ready, and false means the opposite. |
+| lcdSize | string | No | No | Width and height information of the LCD thumbnail of the image asset. |
+| thmSize | string | No | No | Width and height information of the thumb thumbnail of the image asset. |
+| thumbnailModifiedMs<sup>14+</sup> | number | No | Yes | Time when the thumbnail state of the image asset changed, in milliseconds. |
+| thumbnailVisible<sup>14+</sup> | [ThumbnailVisibility](#thumbnailvisibility14) | No | No | Whether the thumbnail of the image asset is visible. |
 
 ## Album
 
@@ -6540,8 +7444,8 @@ Provides APIs to manage albums.
 
 | Name          | Type   | Read-Only  | Optional | Description  |
 | ------------ | ------ | ---- | ---- | ------- |
-| dateAdded<sup>18+</sup>    | number | Yes   | Yes  | Time when the album was added.<br>**System API**: This is a system API.|
-| dateModified<sup>18+</sup>    | number | Yes   | Yes  | Time when the album was modified.<br>**System API**: This is a system API.|
+| dateAdded<sup>18+</sup>    | number | Yes   | Yes  | Time when the album is added, in seconds.<br>**System API**: This is a system API.|
+| dateModified<sup>18+</sup>    | number | Yes   | Yes  | Time when the album is modified, in seconds.<br>**System API**: This is a system API.|
 | coverUriSource<sup>20+</sup>    | number | Yes   | Yes  | Source URI of the album cover.<br>**System API**: This is a system API.|
 | uploadStatus<sup>22+</sup>    | boolean | Yes   | No  | Whether the album can be synced to cloud storage or family storage. **true** if it can be synced, **false** otherwise.<br>**System API**: This is a system API.|
 | HIDDEN<sup>23+</sup>    | boolean | Yes   | Yes  | Whether the album is hidden. **true** if hidden, **false** otherwise.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
@@ -6577,8 +7481,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -6651,8 +7555,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -6721,8 +7625,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -6797,8 +7701,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -6865,8 +7769,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -6939,8 +7843,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -6999,8 +7903,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | :------- | :----------------------------------------------------------- |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 14000011 | Internal system error                                        |
 
 **Example**
@@ -7074,8 +7978,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | :------- | :----------------------------------------------------------- |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The input parameter is not within the valid range. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -7136,7 +8040,84 @@ async function example1(phAccessHelper: photoAccessHelper.PhotoAccessHelper) : P
   }
 }
 ```
+### getAttribute
 
+getAttribute(attrs: AlbumAttribute[]): Promise<Record<AlbumAttribute, AlbumAttributeInfo>>
+
+Obtains album attributes. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.READ_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| --- | --- | --- | --- |
+| attrs | [AlbumAttribute](#albumattribute)[] | Yes| List of album attributes to be obtained. The array can contain a maximum of 20 elements and cannot be empty.|
+
+**Return value**
+
+| Type| Description|
+| --- | --- |
+| Promise&lt;Record&lt;[AlbumAttribute](#albumattribute), [AlbumAttributeInfo](#albumattributeinfo)&gt;&gt; | Promise used to return the album attributes and their values.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| --- | --- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Unsupported attribute.<br>2. The attrs size exceeds 20.<br>3. Empty or duplicate attribute. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes:<br>1. Database corrupted.<br>2. The file system is abnormal.<br>3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    console.info('getAttributeDemo');
+    // Create query conditions.
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    // Configure query options.
+    let fetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    // Obtain the smart album (portrait album).
+    let albumFetchResult = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SMART, 
+      photoAccessHelper.AlbumSubtype.PORTRAIT, fetchOptions);
+    // Obtain the first album object.
+    let album = await albumFetchResult.getFirstObject();
+    if (album === undefined) {
+      console.error('album is undefined');
+      return;
+    }
+    // Define the list of attributes to be obtained.
+    let attrs: photoAccessHelper.AlbumAttribute[] = [
+      photoAccessHelper.AlbumAttribute.EXTRA_INFO_ATTR
+    ];
+    // Obtain the album attributes.
+    let attrInfo = await album.getAttribute(attrs);
+    console.info(`getAttribute successfully, attrInfo: ${JSON.stringify(attrInfo)}`);
+  } catch (err) {
+    console.error(`getAttribute failed with err: ${err.code}, ${err.message}`);
+  }
+}
+```
 ## MediaAssetEditData<sup>11+</sup>
 
 Represents the edited media asset data.
@@ -7176,8 +8157,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.          |
 
 **Example**
@@ -7213,7 +8194,7 @@ The file name must meet the following requirements:
 | ------- | ------- | ---- | -------------------------- |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Context of the ability instance.|
 | displayName  | string        | Yes  | File name of the image or video to create.             |
-| options  | [PhotoCreateOptions](#photocreateoptions)        | No  | Options for creating an image or video asset.             |
+| options  | [PhotoCreateOptions](#photocreateoptions)        | No   | Creation options for the image or video. If not specified, the default creation options are used. |
 
 **Return value**
 
@@ -7229,8 +8210,8 @@ If error code 14000001 is returned, refer to [PhotoKeys](#photokeys) to learn ab
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000001      | Invalid display name.         |
 | 14000011       | System inner fail.         |
 
@@ -7255,59 +8236,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-### setFavorite<sup>11+</sup>
-
-setFavorite(favoriteState: boolean): void
-
-Favorites or unfavorites this file asset.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Parameters**
-
-| Name       | Type     | Mandatory  | Description                                |
-| ---------- | ------- | ---- | ---------------------------------- |
-| favoriteState | boolean | Yes   | Whether to favorite the file. **true** to favorite, **false** otherwise.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
-
-| ID| Error Message|
-| -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.         |
-
-**Example**
-
-For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
-
-```ts
-import { dataSharePredicates } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
-  console.info('setFavoriteDemo');
-  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-  let fetchOption: photoAccessHelper.FetchOptions = {
-    fetchColumns: [],
-    predicates: predicates
-  };
-  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
-  let asset = await fetchResult.getFirstObject();
-  let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
-  assetChangeRequest.setFavorite(true);
-  phAccessHelper.applyChanges(assetChangeRequest).then(() => {
-    console.info('apply setFavorite successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`apply setFavorite failed with error: ${err.code}, ${err.message}`);
-  });
-}
-```
-
 ### setHidden<sup>11+</sup>
 
 setHidden(hiddenState: boolean): void
@@ -7322,7 +8250,7 @@ Hides this file.
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| hiddenState | boolean  | Yes   | Whether to hide the file. **true** to hide, **false** otherwise.|
+| hiddenState | boolean  | Yes    | Whether to set the file as hidden. true: put the file asset into the hidden album; false: restore it from the hidden album. |
 
 **Error codes**
 
@@ -7330,8 +8258,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **Example**
@@ -7375,7 +8303,7 @@ Sets the user comment information of this media asset.
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| userComment | string | Yes  | Comment information to set, which cannot exceed 420 characters.|
+| userComment | string | Yes | Asset comment to be modified. The comment can contain a maximum of 420 characters. |
 
 **Error codes**
 
@@ -7383,8 +8311,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **Example**
@@ -7429,7 +8357,7 @@ Saves the edited data of an asset.
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| editData | [MediaAssetEditData](#mediaasseteditdata11) | Yes  | Edited data to save.|
+| editData | [MediaAssetEditData](#mediaasseteditdata11) | Yes | Asset edit data to be saved. |
 
 **Error codes**
 
@@ -7437,8 +8365,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **Example**
@@ -7473,6 +8401,69 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+
+### setCameraEditData
+
+setCameraEditData(editData: MediaAssetEditData): void
+
+Saves the camera edit data of an asset.
+
+**Since:** 26.0.1
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name       | Type     | Mandatory  | Description                                |
+| ---------- | ------- | ---- | ---------------------------------- |
+| editData | [MediaAssetEditData](#mediaasseteditdata11) | Yes | Camera editing data of the asset to be saved. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The input parameter is not within the valid range. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('setCameraEditDataDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let asset = await fetchResult.getFirstObject();
+  let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+
+  let assetEditData: photoAccessHelper.MediaAssetEditData = new photoAccessHelper.MediaAssetEditData('system', '1.0');
+  // This is for illustration only. Replace it with the actual application sandbox resource when using it, and ensure that the resource corresponding to fileUri exists.
+  let fileUri = 'file://com.example.temptest/data/storage/el2/base/haps/entry/files/test.jpg';
+  assetChangeRequest.addResource(photoAccessHelper.ResourceType.IMAGE_RESOURCE, fileUri);
+  assetEditData.data = '123456';
+  assetChangeRequest.setCameraEditData(assetEditData);
+  phAccessHelper.applyChanges(assetChangeRequest).then(() => {
+    console.info('apply setCameraEditData successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`apply setCameraEditData failed with error: ${err.code}, ${err.message}`);
+  });
+}
+```
+
 ### addResource<sup>11+</sup>
 
 addResource(type: ResourceType, proxy: PhotoProxy): void
@@ -7500,9 +8491,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message                             |
 |----------|-----------------------------------|
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 | System inner fail.                | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | System inner fail.                |
 | 14000016 | Operation Not Support.            |
 
 **Example**
@@ -7544,8 +8535,8 @@ Sets location information.
 
 | Name | Type         | Mandatory| Description   |
 | ------- |-------------| ---- |-------|
-| longitude | number      | Yes  | Longitude.|
-| latitude | number | Yes  | Latitude.  |
+| longitude | number      | Yes   | Longitude, in the range of [-180, 180]. Unit: degree (°). |
+| latitude | number | Yes   | Latitude, in the range of [-90, 90]. Unit: degree (°). |
 
 **Error codes**
 
@@ -7553,8 +8544,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 |  System inner fail.         |
 
 **Example**
@@ -7606,8 +8597,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **Example**
@@ -7651,8 +8642,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 | 14000016       | Operation Not Support.         |
 
@@ -7701,8 +8692,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | Internal system error.         |
 
 **Example**
@@ -7765,16 +8756,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.       |
-| 202   | Called by non-system application.       |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | Internal system error. |
 
 **Example**
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
   console.info('deleteAssetsPermanentlyDemo');
@@ -7795,7 +8785,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ### setHasAppLink<sup>21+</sup>
 
-setHasAppLink(hasAppLink: int): void
+setHasAppLink(hasAppLink: number): void
 
 Sets the status of the app link association.
 
@@ -7808,7 +8798,7 @@ Sets the status of the app link association.
 
 | Name | Type            | Mandatory  | Description   |
 | ---- | -------------- | ---- | ----- |
-| hasAppLink | int | Yes   | Whether to enable or disable the app link association.|
+| hasAppLink | number | Yes | Sets the status information of the file memory link. 0 indicates undecoded, 1 indicates no link, and 2 indicates a link exists. |
 
 **Error codes**
 
@@ -7816,7 +8806,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202   | Called by non-system application.       |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error.It is recommended to retry and check the logs. |
 | 23800151 | The scenario parameter verification fails.Possible causes: The input parameter is not within the valid range. |
 
@@ -7825,13 +8815,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
-enum linkType {
+enum LinkType {
   NOT_DECODED = 0,
   LINK_NOT_EXIST = 1,
   LINK_EXIST = 2
 }
 
-async function example(asset: photoAccessHelper.PhotoAsset, hasAppLink: linkType, context: Context) {
+async function example(asset: photoAccessHelper.PhotoAsset, hasAppLink: LinkType, context: Context) {
     try {
       let phAccessHelper: photoAccessHelper.PhotoAccessHelper =
         photoAccessHelper.getPhotoAccessHelper(context);
@@ -7870,7 +8860,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202   | Invoked by non-system applications.       |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error.It is recommended to retry and check the logs. |
 | 23800151 | The scenario parameter verification fails.Possible causes: The input parameter is not within the valid range. |
 
@@ -7909,7 +8899,7 @@ Sets the information about the app link association.
 
 | Name | Type            | Mandatory  | Description   |
 | ---- | -------------- | ---- | ----- |
-| appLink | string | Yes   | Information about the app link association.|
+| appLink | string | Yes | Information about the memory link of the file. The length ranges from 1 to 512 bytes. |
 
 **Error codes**
 
@@ -7917,7 +8907,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202   | Called by non-system application.       |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error.It is recommended to retry and check the logs. |
 | 23800151 | The scenario parameter verification fails.Possible causes: The input parameter's length is not within the valid range. |
 
@@ -7971,7 +8961,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202   | Called by non-system application.       |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Scene parameters validate failed. Possible causes: 1. The CompositeDisplayMode is not within the supported range; 2.The original file does not exist locally in PhotoAsset; 3. The PhotoAsset is not composite Asset; 4. The original file format is not within the supported range; 5. The original file has been edited. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -7979,6 +8969,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('setCompositeDisplayModeDemo');
@@ -8026,7 +9017,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The asset is not exist. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -8047,7 +9038,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
     let asset = await fetchResult.getFirstObject();
-    asset.setHiddenAttribute(true);
+    let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+    assetChangeRequest.setHiddenAttribute(true);
+    await phAccessHelper.applyChanges(assetChangeRequest);
     console.info('setHiddenAttribute successfully');
   } catch (err) {
     console.error(`setHiddenAttribute failed with error: ${err.code}, ${err.message}`);
@@ -8081,7 +9074,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The asset is not exist. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -8101,7 +9094,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
     let asset = await fetchResult.getFirstObject();
-    asset.setTitleByFile('new_file_name');
+    let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+    assetChangeRequest.setTitleByFile('new_file_name');
+    await phAccessHelper.applyChanges(assetChangeRequest);
     console.info('setTitleByFile successfully');
   } catch (err) {
     console.error(`setTitleByFile failed with error: ${err.code}, ${err.message}`);
@@ -8144,10 +9139,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.       |
-| 202   | Called by non-system application.       |
-| 13900020 | Invalid argument. | 
-| 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.  |     
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 13900020 | Invalid argument. |
+| 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.  |
 
 **Example**
 
@@ -8216,10 +9211,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.       |
-| 202   | Called by non-system application.       |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Asset uri array size is empty or bigger than 500 . |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.Database corrupted; 2.The file system is abnormal; 3.The IPC request timed out. | 
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.Database corrupted; 2.The file system is abnormal; 3.The IPC request timed out. |
 
 **Example**
 
@@ -8271,10 +9266,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.       |
-| 202   | Called by non-system application.       |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Asset uri array size is empty or bigger than 500 . |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.Database corrupted; 2.The file system is abnormal; 3.The IPC request timed out. | 
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.Database corrupted; 2.The file system is abnormal; 3.The IPC request timed out. |
 
 **Example**
 
@@ -8327,10 +9322,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.       |
-| 202   | Called by nonsystem application.       |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Asset uri array size is empty or bigger than 500 . |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes:1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. | 
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes:1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
 
@@ -8343,6 +9338,61 @@ async function example(context: Context, assetUri: string) {
     } catch (err) {
       console.error(`deleteAssetsPermanentlyWithUri failed with error: ${err.code}, ${err.message}`);
     }
+}
+```
+
+### setMovingPhotoVersion
+
+setMovingPhotoVersion(version: number): void
+
+Saves the version number of a moving photo.
+
+**Since:** 26.0.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name       | Type     | Mandatory  | Description                                |
+| ---------- | ------- | ---- | ---------------------------------- |
+| version | number | Yes | Sets the version information of the dynamic photo. Currently, only the value 9 is supported. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | Parameter error, Only supports 9. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('setMovingPhotoVersionDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let asset = await fetchResult.getFirstObject();
+  let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+
+  let movingPhotoVersion: number = 9;
+  assetChangeRequest.setMovingPhotoVersion(movingPhotoVersion);
+  phAccessHelper.applyChanges(assetChangeRequest).then(() => {
+    console.info('apply setMovingPhotoVersion successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`apply setMovingPhotoVersion failed with error: ${err.code}, ${err.message}`);
+  });
 }
 ```
 
@@ -8361,105 +9411,6 @@ Represents a request for changing multiple assets.
 | Name          | Type   | Read-Only  | Optional | Description  |
 | ------------ | ------ | ---- | ---- | ------- |
 | comment<sup>23+</sup>    | string | Yes   | No  | Used to verify the [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11) type.<br>If a class (such as **MediaAssetsChangeRequest**) object can be accessed, it is an implementation class of **MediaChangeRequest**.|
-
-### constructor<sup>11+</sup>
-
-constructor(assets: Array&lt;PhotoAsset&gt;)
-
-Constructor.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Parameters**
-
-| Name  | Type                     | Mandatory| Description      |
-| -------- | ------------------------- | ---- | ---------- |
-| assets | Array&lt;[PhotoAsset](#photoasset)&gt; | Yes  | Assets to change.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
-
-| ID| Error Message|
-| -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.   |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.          |
-
-**Example**
-
-For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
-
-```ts
-import { dataSharePredicates } from '@kit.ArkData';
-
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
-  console.info('MediaAssetsChangeRequest constructorDemo');
-  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-  let fetchOption: photoAccessHelper.FetchOptions = {
-    fetchColumns: [],
-    predicates: predicates
-  };
-  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
-  let photoAssetList: Array<photoAccessHelper.PhotoAsset> = await fetchResult.getAllObjects();
-  let assetsChangeRequest: photoAccessHelper.MediaAssetsChangeRequest = new photoAccessHelper.MediaAssetsChangeRequest(photoAssetList);
-}
-```
-
-### setFavorite<sup>11+</sup>
-
-setFavorite(favoriteState: boolean): void
-
-Favorites or unfavorites this file asset.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Parameters**
-
-| Name       | Type     | Mandatory  | Description                                |
-| ---------- | ------- | ---- | ---------------------------------- |
-| favoriteState | boolean | Yes   | Whether to favorite the file. **true** to favorite, **false** otherwise.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
-
-| ID| Error Message|
-| -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.         |
-
-**Example**
-
-For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
-
-```ts
-import { dataSharePredicates } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
-  console.info('setFavoriteDemo');
-  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-  let fetchOption: photoAccessHelper.FetchOptions = {
-    fetchColumns: [],
-    predicates: predicates
-  };
-  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
-  let photoAssetList: Array<photoAccessHelper.PhotoAsset> = await fetchResult.getAllObjects();
-  let assetsChangeRequest: photoAccessHelper.MediaAssetsChangeRequest = new photoAccessHelper.MediaAssetsChangeRequest(photoAssetList);
-  assetsChangeRequest.setFavorite(true);
-  phAccessHelper.applyChanges(assetsChangeRequest).then(() => {
-    console.info('apply setFavorite successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`apply setFavorite failed with error: ${err.code}, ${err.message}`);
-  });
-}
-```
 
 ### setHidden<sup>11+</sup>
 
@@ -8483,8 +9434,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **Example**
@@ -8536,8 +9487,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **Example**
@@ -8589,8 +9540,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **Example**
@@ -8661,8 +9612,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail.        |
 
 **Example**
@@ -8714,9 +9665,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied.         |
-| 202   |  Called by non-system application.  |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 |  System inner fail.         |
 
 **Example**
@@ -8775,9 +9726,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied.         |
-| 202      |  Called by non-system application.  |
-| 13900020 |  Invalid argument. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 13900020 |  Invalid argument. |
 | 14000011 |  Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2.The file System is abnormal; 3. The IPC request timed out;  |
 
 **Example**
@@ -8826,8 +9777,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied.         |
-| 202      |  Called by non-system application.  |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Album array size is bigger than 500. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.Database corrupted; 2.The file system is abnormal; 3.The IPC request timed out. |
 
@@ -8868,8 +9819,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **Example**
@@ -8889,7 +9840,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
-    if (albums === undefined) {
+    if (album === undefined) {
       console.error('getHiddenAlbumsViewCallback albums is undefined');
       return;
     }
@@ -8925,7 +9876,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301       | Internal system error.It is recommended to retry and check the logs. Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **Example**
@@ -8983,7 +9934,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The album is not exist. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -9004,7 +9955,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     };
     let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOption);
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
-    album.setHiddenAttribute(true, true);
+    let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
+    albumChangeRequest.setHiddenAttribute(true, true);
+    await phAccessHelper.applyChanges(albumChangeRequest);
     console.info('album setHiddenAttribute successfully');
   } catch (err) {
     console.error(`album setHiddenAttribute failed with error: ${err.code}, ${err.message}`);
@@ -9038,7 +9991,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The album is not exist. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -9058,7 +10011,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     };
     let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOption);
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
-    album.setAlbumNameByFile('new_album_name');
+    let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
+    albumChangeRequest.setAlbumNameByFile('new_album_name');
+    await phAccessHelper.applyChanges(albumChangeRequest);
     console.info('setAlbumNameByFile successfully');
   } catch (err) {
     console.error(`setAlbumNameByFile failed with error: ${err.code}, ${err.message}`);
@@ -9078,7 +10033,9 @@ Sets the album attribute. The setting takes effect only after [applyChanges](ark
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.ACCESS_MEDIALIB_THUMB_DB
+**Required permissions**:
+- API version 26.0.1+: ohos.permission.ACCESS_MEDIALIB_THUMB_DB or ohos.permission.WRITE_IMAGEVIDEO
+- API version 26.0.0: ohos.permission.ACCESS_MEDIALIB_THUMB_DB
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -9094,9 +10051,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. The attr of operation is invalid.<br>2. The type of operation is invalid.<br>3. The values or operation is incorrect. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. The attr of operation is invalid.<br>2. The type of operation is invalid.<br>3. The values of operation is incorrect. |
 | 23800201 | Unsupported operation type. It is recommended to check the logs.<br>Possible causes:<br>1. Unsupported AlbumAttribute for the album.<br>2. Unsupported AlbumOperationType for the AlbumAttribute.<br>3. Other operation limit. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -9140,6 +10097,90 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### absorbAlbum
+
+absorbAlbum(album: Album): void
+
+Absorbs a specified album into the current album. After the absorption, the current album inherits the information and assets of the input album, and the input album is deleted. The absorption operation takes effect only after it is committed through [applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11).
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| album | [Album](#album) | Yes | Album to be absorbed. After the absorption, the current album inherits the information and assets of the input album, and the input album is deleted. The current album must be in the hidden state. The input album must be a source album or a user album, and its type must match that of the current album. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID | Error Message |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: <br>1. The input album is not a source album or a user album;<br>2. The type of the input album does not match that of the current album;<br>3. The current album is not hidden;<br>4. This operation is not supported for this album type. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: <br>1. Database corrupted;<br>2. The file system is abnormal;<br>3. The input album is not allowed to be absorbed. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    console.info('absorbAlbum Example')
+    // Query hidden empty albums.
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    predicates.equalTo(photoAccessHelper.AlbumKeys.HIDDEN, 1);
+    let fetchOptions: photoAccessHelper.FetchOptions = {
+      // Add the HIDDEN field to fetchColumns to obtain the hidden status type of the album.
+      fetchColumns: [photoAccessHelper.AlbumKeys.HIDDEN],
+      predicates: predicates
+    };
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> =
+      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER,
+          photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptions);
+    let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
+    if (album === undefined) {
+      console.error('album is undefined');
+      return;
+    }
+  // Query non-hidden albums (same type as hidden empty albums).
+    let predicatesTarget: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOptionsTarget: photoAccessHelper.FetchOptions = {
+      // Add the HIDDEN field to fetchColumns to obtain the hidden status type of the album.
+      fetchColumns: [photoAccessHelper.AlbumKeys.HIDDEN],
+      predicates: predicatesTarget
+    };
+    let fetchResultTarget: photoAccessHelper.FetchResult<photoAccessHelper.Album> =
+      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER,
+          photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptionsTarget);
+    let target: photoAccessHelper.Album = await fetchResultTarget.getFirstObject();
+    if (target === undefined) {
+      console.error('target is undefined');
+      return;
+    }
+
+    let changeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
+    changeRequest.absorbAlbum(target);
+    await phAccessHelper.applyChanges(changeRequest);
+  } catch (err) {
+    console.error(`absorbAlbum failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ### moveAssets<sup>11+</sup>
 
 moveAssets(assets: Array&lt;PhotoAsset&gt;, targetAlbum: Album): void
@@ -9155,7 +10196,7 @@ Moves assets to another album.
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
 | assets | Array&lt;[PhotoAsset](#photoasset)&gt; | Yes  | Assets to move.|
-| targetAlbum | Album | Yes  | Album to which the assets are to be moved.|
+| targetAlbum | [Album](#album) | Yes | Target album to which the asset is to be moved. |
 
 **Error codes**
 
@@ -9163,8 +10204,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 | 14000016 |  Operation Not Support.     |
 
@@ -9225,8 +10266,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      | Called by non-system application.         |
-| 13900020 | Invalid argument.| 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 13900020 | Invalid argument.|
 | 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.         |
 | 14000016 | Operation Not Support.     |
 
@@ -9291,8 +10332,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 | 14000016 |  Operation Not Support.     |
 
@@ -9348,8 +10389,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      | Called by non-system application.         |
-| 13900020 | Invalid argument.| 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 13900020 | Invalid argument.|
 | 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.         |
 | 14000016 | Operation Not Support.     |
 
@@ -9409,8 +10450,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 | 14000016 |  Operation Not Support.     |
 
@@ -9478,8 +10519,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      | Called by non-system application.         |
-| 13900020 | Invalid argument.| 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 13900020 | Invalid argument.|
 | 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.         |
 | 14000016 | Operation Not Support.     |
 
@@ -9527,7 +10568,7 @@ Sets the display level of the portrait album.
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| displayLevel | number | Yes   | Display level to set. The options are as follows:<br>**0**: unfavorite the portrait album.<br>**1**: set the portrait album as the first to display.<br>**2**: do not display the portrait album as the first one.<br>**3**: favorite the portrait album.|
+| displayLevel | number | Yes | Sets the display level of the portrait album.<br>0 indicates removing the portrait album from favorites, 1 indicates setting the portrait album as the home screen, 2 indicates setting the portrait album as the more screen, and 3 indicates setting the portrait album as the favorites screen. |
 
 **Error codes**
 
@@ -9535,8 +10576,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **Example**
@@ -9582,8 +10623,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **Example**
@@ -9627,7 +10668,7 @@ Removes assets from this portrait album or group photo album.
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| assets | Array&lt;PhotoAsset&gt; | Yes   | Assets to remove.|
+| assets | Array&lt;[PhotoAsset](#photoasset)&gt; | Yes    | List of files to be removed. |
 
 **Error codes**
 
@@ -9635,8 +10676,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 | 14000016       | Operation Not support.         |
 
@@ -9698,8 +10739,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 | 14000016       | Operation Not support.         |
 
@@ -9729,7 +10770,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
     let changeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
     changeRequest.mergeAlbum(target);
-    changeRequest.setAlbumName("testName");
+    changeRequest.setAlbumName('testName');
     await phAccessHelper.applyChanges(changeRequest);
   } catch (err) {
     console.error(`mergeAlbum failed with error: ${err.code}, ${err.message}`);
@@ -9739,7 +10780,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### placeBefore<sup>11+</sup>
 
-placeBefore(album: Album): void;
+placeBefore(album: Album): void
 
 Places this album before an album.
 
@@ -9759,8 +10800,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **Example**
@@ -9804,8 +10845,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message                             |
 | :------- | :-------------------------------- |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: Incorrect parameter types. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | System inner fail.            |
 
 **Example**
@@ -9813,7 +10854,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('dismissDemo');
@@ -9843,7 +10883,7 @@ Provides APIs for managing the **Highlights** album, which is an automatically g
 
 constructor(album: Album)
 
-Constructor.
+Constructor used to create a moment album object.
 
 **System API**: This is a system API.
 
@@ -9861,8 +10901,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.   |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.            |
 
 **Example**
@@ -9916,9 +10956,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message                             |
 | :------- | :-------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.            |
 
 **Example**
@@ -9980,9 +11020,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message                             |
 | :------- | :-------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.           |
 
 **Example**
@@ -10043,9 +11083,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message                             |
 | :------- | :-------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.            |
 
 **Example**
@@ -10065,7 +11105,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     if (album != undefined) {
       let highlightAlbum: photoAccessHelper.HighlightAlbum = new photoAccessHelper.HighlightAlbum(album);
-      highlightAlbum.setHighlightUserActionData(photoAccessHelper.HighlightUserActionType.INSERTED_PIC_COUNT, 1);
+      await highlightAlbum.setHighlightUserActionData(photoAccessHelper.HighlightUserActionType.INSERTED_PIC_COUNT, 1);
     }
     albumFetchResult.close();
   } catch (err) {
@@ -10074,7 +11114,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-### setSubTitle<sup>18+</sup> 
+### setSubTitle<sup>18+</sup>
 
 setSubTitle(title: string): void
 
@@ -10104,9 +11144,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message                             |
 | :------- | :-------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
@@ -10131,7 +11171,7 @@ async function example(context: Context) {
     let highlightAlbum: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     albumFetchResult.close();
     let changeHighlightAlbumRequest: photoAccessHelper.HighlightAlbum = new photoAccessHelper.HighlightAlbum(highlightAlbum);
-    changeHighlightAlbumRequest.setSubTitle("testName");
+    changeHighlightAlbumRequest.setSubTitle('testName');
     console.info('setSubTitle success');
   } catch (err) {
     console.error(`setSubTitle with error: ${err}`);
@@ -10170,9 +11210,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message                             |
 | :------- | :-------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
@@ -10204,17 +11244,17 @@ async function example(context: Context) {
 }
 ```
 
-## MediaAnalysisAlbumChangeRequest<sup>18+</sup> 
+## MediaAnalysisAlbumChangeRequest<sup>18+</sup>
 
 Provides APIs for managing the analysis album change request.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-### constructor<sup>18+</sup> 
+### constructor<sup>18+</sup>
 
 constructor(album: Album)
 
-Constructor.
+Constructor used to create a smart album change request object.
 
 **System API**: This is a system API.
 
@@ -10228,12 +11268,12 @@ Constructor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.   |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -10260,7 +11300,7 @@ async function example(context: Context) {
 }
 ```
 
-### setOrderPosition<sup>18+</sup> 
+### setOrderPosition<sup>18+</sup>
 
 setOrderPosition(assets: Array&lt;PhotoAsset&gt;, position: Array&lt;number&gt;): void
 
@@ -10285,9 +11325,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message                             |
 | :------- | :-------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
@@ -10334,7 +11374,7 @@ async function example(context: Context) {
 }
 ```
 
-### setRelationship<sup>21+</sup> 
+### setRelationship<sup>21+</sup>
 
 setRelationship(relationship: string): Promise&lt;void&gt;
 
@@ -10395,9 +11435,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message                             |
 | :------- | :-------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails. Possible causes: 1. The input parameter is not within the valid range.  | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The input parameter is not within the valid range.  |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
@@ -10405,7 +11445,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 
-async function SetRelationshipExample(context: Context, relationship: string) {
+async function setRelationshipExample(context: Context, relationship: string) {
   try {
     console.info('setRelationship');
     let helper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
@@ -10470,8 +11510,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 23800151 | The scenario parameter verification fails. Possible causes: 1. The input parameter is not within the valid range. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The input parameter is not within the valid range. |
 | 23800301   | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2.The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
@@ -10516,7 +11556,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID  | Error Message|
 | ---------- | ------------------------------------------------------------ |
-| 202        | Called by non-system application.                            |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151   | The scenario parameter verification fails. Possible causes: 1. The input parameter is not within the valid range. |
 | 23800301   | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2.The file system is abnormal; 3. The IPC request timed out. |
 
@@ -10568,17 +11608,17 @@ async function example(context: Context) {
 }
 ```
 
-## MediaHighlightAlbumChangeRequest<sup>21+</sup> 
+## MediaHighlightAlbumChangeRequest<sup>21+</sup>
 
 Provides APIs for managing the media album change request. It inherits from [MediaAnalysisAlbumChangeRequest](#mediaanalysisalbumchangerequest18).
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-### constructor<sup>21+</sup> 
+### constructor<sup>21+</sup>
 
 constructor(album: Album)
 
-Constructor.
+Constructor used to create a moment album change request object.
 
 **System API**: This is a system API.
 
@@ -10596,8 +11636,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.   |
-| 23800151 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -10624,7 +11664,7 @@ async function example(context: Context) {
 }
 ```
 
-### setHighlightAttribute<sup>21+</sup> 
+### setHighlightAttribute<sup>21+</sup>
 
 setHighlightAttribute(attribute: HighlightAlbumChangeAttribute, value: string): void
 
@@ -10649,9 +11689,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message                             |
 | :------- | :-------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 23800151 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
@@ -10677,7 +11717,7 @@ async function example(context: Context) {
     albumFetchResult.close();
     let highlightAlbumChangeAttribute: photoAccessHelper.HighlightAlbumChangeAttribute =
       photoAccessHelper.HighlightAlbumChangeAttribute.IS_VIEWED;
-    let value: string = "1";
+    let value: string = '1';
     let changeRequest: photoAccessHelper.MediaHighlightAlbumChangeRequest =
       new photoAccessHelper.MediaHighlightAlbumChangeRequest(highlightAlbum);
     changeRequest.setHighlightAttribute(highlightAlbumChangeAttribute, value);
@@ -10689,17 +11729,17 @@ async function example(context: Context) {
 }
 ```
 
-## AnalysisAlbum<sup>18+</sup> 
+## AnalysisAlbum<sup>18+</sup>
 
 Implements an **Analysis** album.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-### constructor<sup>18+</sup> 
+### constructor<sup>18+</sup>
 
 constructor(album: Album)
 
-Constructor.
+Constructor used to create a smart album object.
 
 **System API**: This is a system API.
 
@@ -10713,12 +11753,12 @@ Constructor.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.   |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -10744,7 +11784,7 @@ async function example(context: Context) {
 }
 ```
 
-### getOrderPosition<sup>18+</sup> 
+### getOrderPosition<sup>18+</sup>
 
 getOrderPosition(assets: Array&lt;PhotoAsset&gt;): Promise&lt;Array&lt;number&gt;&gt;
 
@@ -10774,9 +11814,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message                             |
 | :------- | :-------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
@@ -10817,7 +11857,7 @@ async function example(context: Context) {
 }
 ```
 
-### getRelationship<sup>21+</sup> 
+### getRelationship<sup>21+</sup>
 
 getRelationship(): Promise&lt;string&gt;
 
@@ -10841,8 +11881,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message                             |
 | :------- | :-------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
@@ -10850,7 +11890,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 
-async function GetRelationshipExample(context: Context) {
+async function getRelationshipExample(context: Context) {
   try {
     console.info('getRelationship');
     let helper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
@@ -10910,8 +11950,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.   |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.            |
 
 **Example**
@@ -10957,7 +11997,7 @@ Submits cloud enhancement tasks. This API uses a promise to return the result.
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
 | photoAssets | Array<[PhotoAsset](#photoasset)> | Yes  | [PhotoAsset](#photoasset) to enhance.|
-| hasCloudWatermark | boolean | Yes  | Whether to add a cloud enhancement watermark to the enhanced images.|
+| hasCloudWatermark | boolean | Yes | Whether to add a cloud enhancement watermark to the enhanced image. true indicates adding a cloud enhancement watermark, and false indicates not adding a cloud enhancement watermark. |
 
 **Return value**
 
@@ -10971,9 +12011,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.            |
 
 **Example**
@@ -11036,9 +12076,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.            |
 
 **Example**
@@ -11100,9 +12140,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.            |
 
 **Example**
@@ -11165,9 +12205,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.            |
 
 **Example**
@@ -11223,14 +12263,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 14000011 | Internal system error.            |
 
 **Example**
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(context: Context) {
   console.info('cancelAllCloudEnhancementTasksDemo');
@@ -11274,9 +12313,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.            |
 
 **Example**
@@ -11325,7 +12364,7 @@ async function example(context: Context) {
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_FAILED) {
       let errCode = cloudEnhancementTaskState.statusCode;
       let message = `task is failed, errCode: ${errCode}`;
-      console.info(message);
+      console.error(message);
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_COMPLETED) {
       console.info("task is completed");
     }
@@ -11359,14 +12398,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 14000011 | Internal system error.            |
 
 **Example**
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(context: Context) {
   console.info('syncCloudEnhancementTaskStatusDemo');
@@ -11410,9 +12448,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.            |
 
 **Example**
@@ -11476,8 +12514,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message                             |
 | :------- | :-------------------------------- |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.            |
 | 14000016 | Operation Not Support.            |
 
@@ -11534,8 +12572,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.   |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.          |
 
 **Example**
@@ -11583,9 +12621,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.           |
 
 **Example**
@@ -11627,8 +12665,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
@@ -11670,8 +12708,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
@@ -11719,9 +12757,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
@@ -11763,8 +12801,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
@@ -11789,7 +12827,7 @@ async function example(context: Context) {
 
 ### startDownloadSpecificCloudMedia<sup>21+</sup>
 
-startDownloadSpecificCloudMedia(assetUris: string[], taskSequence?: number): Promise\<Map\<string, CloudAssetDownloadCode\>\>
+startDownloadSpecificCloudMedia(assetUris: string[]): Promise\<Map\<string, CloudAssetDownloadCode\>\>
 
 Starts a batch download for the specified cloud media assets. This API uses a promise to return the result.
 
@@ -11803,8 +12841,7 @@ Starts a batch download for the specified cloud media assets. This API uses a pr
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[] | Yes  | Array of URIs pointing to the original-quality images and videos to be downloaded.|
-| taskSequence | number | No  | Sequence number set by the application. The value must be greater than or equal to 0. The default value is **0**.<br> **Since**: 26.0.0|
+| assetUris | string[] | Yes | URI list of the original images and videos to be downloaded. The array cannot be empty, and the number of elements in the array cannot exceed 500. |
 
 **Return value**
 
@@ -11818,8 +12855,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The assetUris array is empty; 2. The assetUris array size is bigger than 500.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
@@ -11834,63 +12871,7 @@ async function example(context: Context) {
     let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
       = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
     let taskRespMap : Map<string, photoAccessHelper.CloudAssetDownloadCode> =
-      await cloudMediaAssetManagerInstance.startDownloadSpecificCloudMedia(assetURIs, 2);
-  } catch (err) {
-    console.error(`failed with error: ${err.code}, ${err.message}`);
-  }
-}
-```
-
-### setDownloadSpecificCloudMediaNetworkPolicy
-
-setDownloadSpecificCloudMediaNetworkPolicy(assetUris: string[], networkPolicy: CloudDownloadNetworkPolicy): Promise\<void\>
-
-Sets the network policy for a batch download for cloud media assets. This API uses a promise to return the result.
-
-**Since**: 26.0.0
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Required permissions**: ohos.permission.READ_IMAGEVIDEO and ohos.permission.CLOUDFILE_SYNC_MANAGER
-
-**Parameters**
-
-| Name  | Type                     | Mandatory| Description      |
-| -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[]  | Yes  | List of URIs of the original images and videos to be downloaded for which the policy is to be set.<br>If **null**, **undefined**, or an empty list is passed, all existing batch download tasks use the network policy specified by **networkPolicy**.|
-| networkPolicy | [CloudDownloadNetworkPolicy](#clouddownloadnetworkpolicy) | Yes  | Network policy for batch download.|
-
-
-**Return value**
-
-| Type                                   | Description             |
-| --------------------------------------- | ----------------- |
-| Promise\<void\> | Promise that returns no value.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
-
-| ID| Error Message|
-| -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails. Possible causes: 1. The assetUris array is empty; 2. The assetUris array size is bigger than 500.|
-| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
-
-**Example**
-
-```ts
-async function example(context: Context) {
-  console.info('PauseDownloadSpecificCloudMediaDemo');
-  try {
-    let assetURIs: Array<string> = [
-       'file://media/Photo/12/IMG_1755046662_091/IMG_20250801_175331.jpg'];
-    let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
-      = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
-    await cloudMediaAssetManagerInstance.setDownloadSpecificCloudMediaNetworkPolicy(assetURIs, photoAccessHelper.CloudDownloadNetworkPolicy.CELL);
+      await cloudMediaAssetManagerInstance.startDownloadSpecificCloudMedia(assetURIs);
   } catch (err) {
     console.error(`failed with error: ${err.code}, ${err.message}`);
   }
@@ -11913,7 +12894,7 @@ Pauses a batch download for the specified cloud media assets. This API uses a pr
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[]  \| null | Yes  | Array of URIs pointing to the original-quality images and videos to be paused.<br>If null, undefined, or an empty list is passed, it represents all existing individual download items.|
+| assetUris | string[]  \| null | Yes | List of URIs of the original images and videos whose download needs to be paused.<br>When null, undefined, or an empty list is passed in, it indicates all existing batch download tasks. The number of elements in the array does not exceed 500. |
 
 **Return value**
 
@@ -11927,8 +12908,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: The assetUris array size is bigger than 500.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
@@ -11965,7 +12946,7 @@ Resumes a batch download for the specified cloud media assets. This API uses a p
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[]  \| null | Yes  | Array of URIs pointing to the original-quality images and videos to be resumed.<br>If null, undefined, or an empty list is passed, it represents all existing individual download items.|
+| assetUris | string[]  \| null | Yes | URI list of the original images and videos whose downloads need to be resumed.<br>When null, undefined, or an empty list is passed, it indicates all existing batch download tasks. The number of elements in the array cannot exceed 500. |
 
 **Return value**
 
@@ -11979,8 +12960,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes:  The assetUris array size is bigger than 500.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
@@ -12017,7 +12998,7 @@ Cancels a batch download for the specified cloud media assets. This API uses a p
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[]  \| null | Yes  | Array of URIs pointing to the original-quality images and videos to be canceled.<br>If null, undefined, or an empty list is passed, it represents all existing individual download items.|
+| assetUris | string[]  \| null | Yes | List of URIs of the original images and videos whose downloads are to be canceled.<br>When null, undefined, or an empty list is passed in, it indicates all existing batch download tasks. The number of elements in the array cannot exceed 500. |
 
 **Return value**
 
@@ -12031,8 +13012,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes:  The assetUris array size is bigger than 500.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
@@ -12083,14 +13064,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
+import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(context: Context) {
   console.info('QueryDownloadSpecificCloudMediaDetailsDemo');
@@ -12098,7 +13079,7 @@ async function example(context: Context) {
     let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
       = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-    predicates.orderByAsc("file_id");
+    predicates.orderByAsc('file_id');
     let taskListStatus : photoAccessHelper.CloudAssetDownloadStatus =
        await cloudMediaAssetManagerInstance.queryDownloadSpecificCloudMediaDetails(predicates);
   } catch (err) {
@@ -12137,14 +13118,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
+import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(context: Context) {
   console.info('QueryDownloadSpecificCloudMediaTaskCountDemo');
@@ -12152,69 +13133,9 @@ async function example(context: Context) {
     let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
       = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-    predicates.orderByAsc("file_id");
+    predicates.orderByAsc('file_id');
     let count : number =
        await cloudMediaAssetManagerInstance.queryDownloadSpecificCloudMediaTaskCount(predicates);
-  } catch (err) {
-    console.error(`failed with error: ${err.code}, ${err.message}`);
-  }
-}
-```
-
-### queryDownloadSpecificCloudMediaTaskCountAndSize
-
-queryDownloadSpecificCloudMediaTaskCountAndSize(predicates: dataSharePredicates.DataSharePredicates): Promise\<number[]\>
-
-Queries the total number and size of a batch download for cloud media assets. This API uses a promise to return the result.
-
-**Since**: 26.0.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Required permissions**: ohos.permission.READ_IMAGEVIDEO
-
-**Parameters**
-
-| Name  | Type                     | Mandatory| Description      |
-| -------- | ------------------------- | ---- | ---------- |
-| predicates | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Predicates that specify the fetch criteria.|
-
-**Return value**
-
-| Type                                   | Description             |
-| --------------------------------------- | ----------------- |
-| Promise\<number[]\> | Promise used to return the total number and size of download tasks.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
-
-| ID| Error Message|
-| -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
-| 23800151 | Scenario parameters fail to pass the verification. Possible causes: predicates null or undefined. |
-
-**Example**
-
-```ts
-import { dataSharePredicates } from '@kit.ArkData'
-
-async function example(context: Context) {
-  console.info('QueryDownloadSpecificCloudMediaTaskCountDemo');
-  try {
-    let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
-      = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
-    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-    predicates.orderByAsc("file_id");
-    let countAndSize : number[] =
-       await cloudMediaAssetManagerInstance.queryDownloadSpecificCloudMediaTaskCountAndSize(predicates);
-    console.info('count: ' + countAndSize[0] + ', size: ' + countAndSize[1]);
   } catch (err) {
     console.error(`failed with error: ${err.code}, ${err.message}`);
   }
@@ -12246,15 +13167,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
 ```ts
 let onCallback = (changeData: photoAccessHelper.CloudAssetDownloadProgressInfo) => {
-  console.info('batchdownload downloadProgressChange onCallback success, changData: ' + JSON.stringify(changeData));
+  console.info('batchdownload downloadProgressChange onCallback success, changeData: ' + JSON.stringify(changeData));
 }
 async function example(context: Context) {
   console.info('OnDownloadProgressChangeDemo');
@@ -12295,8 +13216,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
@@ -12342,8 +13263,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      | Permission denied |
-| 202      | Called by non-system application |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
@@ -12395,8 +13316,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 Provides APIs for custom user behavior recording for Gallery.
 
-**System API**: This is a system API.
-
 ### getCustomRecordManagerInstance<sup>20+</sup>
 
 static getCustomRecordManagerInstance(context: Context): PhotoAssetCustomRecordManager
@@ -12425,14 +13344,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | --- | --- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800107 | Context is invalid. |
 
 **Example**
 
 ```ts
-import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function example(context: Context) {
   console.info('getCustomRecordManagerInstance');
@@ -12472,7 +13389,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | --- | --- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The value range of mandatory parameters in photoAssetCustomRecord does not meet the requirements. 2. The transferred record already exists. 3. The number of transferred records exceeds 200. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -12523,7 +13440,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | --- | --- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The filter criteria or fetchColumns that are not supported by options are transferred. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -12546,7 +13463,7 @@ async function example(context: Context) {
     let record = await fetchResult.getFirstObject();
     console.info('record file id is ' + record.fileId);
   }).catch((err: BusinessError) => {
-    console.error('getCustomRecords fail with error: ${err.code}, ${err.message}');
+    console.error(`getCustomRecords fail with error: ${err.code}, ${err.message}`);
   });
 }
 ```
@@ -12579,7 +13496,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | --- | --- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The value range of mandatory parameters in photoAssetCustomRecord does not meet the requirements. 2. The number of transferred records exceeds 200. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -12591,14 +13508,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 async function example(context: Context) {
   console.info('setCustomRecords');
   let crManager = photoAccessHelper.PhotoAssetCustomRecordManager.getCustomRecordManagerInstance(context);
-  let UpdateArray: Array<photoAccessHelper.PhotoAssetCustomRecord> = [
+  let updateArray: Array<photoAccessHelper.PhotoAssetCustomRecord> = [
     {fileId:1,shareCount:2,lcdJumpCount:3},
     {fileId:2,shareCount:2,lcdJumpCount:3}
   ];
-  crManager.setCustomRecords(UpdateArray).then((failIds) => {
+  crManager.setCustomRecords(updateArray).then((failIds) => {
     console.info('setCustomRecords successful');
   }).catch((err: BusinessError) => {
-    console.error('setCustomRecords file with err: ${err.code}, ${err.message}');
+    console.error(`setCustomRecords file with err: ${err.code}, ${err.message}`);
   });
 }
 ```
@@ -12631,7 +13548,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | --- | --- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The filter criteria or fetchColumns that are not supported by options are transferred |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -12686,7 +13603,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | --- | --- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The ids list is empty; 2. The number of ids lists exceeds 500. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -12700,7 +13617,7 @@ async function example(context: Context) {
   crManager.addShareCount(ids).then((failIds) => {
     console.info('addShareCount successful');
   }).catch((err: BusinessError) => {
-    console.error('addShareCount fail with error: ${err.code}, ${err.message}');
+    console.error(`addShareCount fail with error: ${err.code}, ${err.message}`);
   });
 }
 ```
@@ -12733,7 +13650,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | --- | --- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The ids list is empty; 2. The number of ids lists exceeds 500. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -12747,7 +13664,7 @@ async function example(context: Context) {
   crManager.addLcdJumpCount(ids).then((failIds) => {
     console.info('addLcdJumpCount successful');
   }).catch((err: BusinessError) => {
-    console.error('addLcdJumpCount fail with error: ${err.code}, ${err.message}');
+    console.error(`addLcdJumpCount fail with error: ${err.code}, ${err.message}`);
   });
 }
 ```
@@ -12782,8 +13699,10 @@ Enumerates the [PhotoAsset](#photoasset) types.
 | Name |  Value|  Description|
 | ----- |  ---- |  ---- |
 | SCREENSHOT |  1 |  Screenshot and screen recording file.<br>**System API**: This is a system API.|
+| CINEMATIC_VIDEO |  5 |  Cinematic-style video file type.<br>**Since Version:** 26.0.1<br>**System API:** This API is a system API. |
 | SLOW_MOTION_VIDEO<sup>22+</sup> |  6 |  Slow-motion video file.<br>**System API**: This is a system API.|
 | SPATIAL_3DGS<sup>22+</sup> |  7 |  Video file using the 3D Gaussian Splatting (3DGS) rendering format.<br>**System API**: This is a system API.|
+| CINEMATIC_VIDEO_V2 |  8 |  New cinematic-style video file type, which adds more effects such as Hitchcock compared with CINEMATIC_VIDEO.<br>**Since Version:** 26.0.1<br>**System API:** This API is a system API. |
 
 ## NotifyChangeType<sup>20+</sup>
 
@@ -12886,6 +13805,8 @@ Defines the key information about an image or video file.
 | LCD_FILE_SIZE | 'lcd_file_size' | Size of the LCD image.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
 | HIDDEN_TIME | 'hidden_time'  | Time when the file was hidden. The value is the number of milliseconds elapsed since the epoch time (00:00:00 UTC on January 1, 1970).<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
 | FILE_HIDDEN | 'file_hidden' | Whether the file is hidden.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
+| ATTACHMENT_SIZE | 'attachment_size' | Size of the attachment file. The unit is bytes.<br>The default value is **0**, indicating that the attachment file size is not identified or the attachment file size is 0.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
+| MUSIC_MASTER_MODE | 'music_master_mode' | Music master mode.<br>**Since Version:** 26.0.1<br>**Model Constraint:** This API is only available in the Stage model.<br>**System API:** This API is a system API. |
 
 
 ## AlbumKeys
@@ -12911,12 +13832,18 @@ Enumerates the attribute types of albums.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name| Value| Description|
 | --- | --- | --- |
-| NICK_NAME_ATTR | 'nickname' | Nickname of the album.<br>**System API**: This is a system API.|
-| IS_REMOVED_ATTR | 'is_removed' | Whether the album has been removed.<br>- Currently, portrait albums are supported.<br>- **1**: The album has been removed.<br>- **0**: The album has not been removed or has been restored.<br>**System API**: This is a system API.|
+| NICK_NAME_ATTR | 'nickname' | Album nickname. |
+| EXTRA_INFO_ATTR | 'extra_info' | Album extended information operation attribute. |
+| IS_REMOVED_ATTR | 'is_removed' | Whether the album has been removed.<br>- Currently supported for portrait albums.<br>- The value 1 indicates that the album has been removed.<br>- The value 0 indicates that the album has not been removed or has been restored. |
+| FRIEND_ID_ATTR | 'friend_id' | Album friend circle information operation attribute.<br>**Since:** 26.0.1 |
+| CONTACT_INFO_ATTR | 'contact_info' | Album contact information operation attribute.<br>**Since:** 26.0.1 |
+| HIDDEN_ATTR | 'hidden' | Album hidden information operation attribute.<br>**Since:** 26.1.0 |
 
 ## AlbumOperationType
 
@@ -12926,13 +13853,15 @@ Enumerates the operation types for setting album attributes.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name| Value| Description|
 | --- | --- | --- |
-| ADD | 'add' | Adding an album attribute.<br>**System API**: This is a system API.|
-| REMOVE | 'remove' | Removing an album attribute.<br>**System API**: This is a system API.|
-| UPDATE | 'update' | Updating an album attribute.<br>**System API**: This is a system API.|
+| ADD | 'add' | Adds an album attribute. |
+| REMOVE | 'remove' | Removes an album attribute. |
+| UPDATE | 'update' | Updates an album attribute. |
 
 ## AlbumOperation
 
@@ -12942,13 +13871,31 @@ Describes the album operation information.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name| Type| Read-Only| Optional| Description|
 | --- | --- | --- | --- | --- |
-| attr | [AlbumAttribute](#albumattribute) | No| No| Album attribute type.<br>**System API**: This is a system API.|
-| type | [AlbumOperationType](#albumoperationtype) | No| No| Operation type for setting album attributes.<br>**System API**: This is a system API.|
-| values | string[] | No| No| String parameter for setting album attributes. The maximum length of the array is 20. Each string in the array can contain up to 500 characters.<br>**System API**: This is a system API.|
+| attr | [AlbumAttribute](#albumattribute) | No | No | Album attribute type to set. |
+| type | [AlbumOperationType](#albumoperationtype) | No | No | Operation type for setting the album attribute. |
+| values | string[] | No | No | String parameter for setting the album attribute. The maximum length of the array is 20.<br>In API version 26.0.0, the length of each string in the array does not exceed 500 characters.<br>Since API version 26.0.1, the length of each string in the array does not exceed 8192 characters. |
+
+## AlbumAttributeInfo
+
+Defines the album attribute information.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name| Type| Read-Only| Optional| Description|
+| --- | --- | --- | --- | --- |
+| attrValue | string | No | Yes | Photo album attribute value.|
 
 ## HiddenPhotosDisplayMode<sup>11+</sup>
 
@@ -12974,8 +13921,8 @@ Defines the options for creating an image or video asset.
 | Name                  | Type               | Read-Only| Optional| Description                                             |
 | ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
 | subtype           | [PhotoSubtype](#photosubtype) | No| Yes| Subtype of the image or video. |
-| cameraShotKey           | string | No| Yes| Key for the Ultra Snapshot feature, which allows the camera to take photos or record videos with the screen off. (This parameter is available only for the system camera, and the key value is defined by the system camera.)  |
-| userId<sup>19+</sup>           | number | No| Yes| User ID. |
+| cameraShotKey           | string | No | Yes | Marker field for taking a photo or recording a video with the camera on the lock screen (available only to the system camera, and its key value is defined by the system camera). The default value is an empty string.   |
+| userId<sup>19+</sup>           | number | No | Yes | User ID. The default value is the ID of the current user.  |
 
 ## RequestPhotoOptions<sup>11+</sup>
 
@@ -12987,8 +13934,8 @@ Defines the options for obtaining the thumbnail of an image or video.
 
 | Name                  | Type               | Read-Only| Optional| Description                                             |
 | ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
-| size           | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | No| Yes| Size of the thumbnail to obtain. |
-| requestPhotoType    | [RequestPhotoType](#requestphototype11) | No| Yes| Operation to perform. |
+| size           | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | No | Yes | Size of the thumbnail to obtain. The default size is 256×256. Unit: pixel (px). |
+| requestPhotoType    | [RequestPhotoType](#requestphototype11) | No | Yes | Type of the operation to obtain. By default, it is processed as [RequestPhotoType](#requestphototype11).REQUEST_ALL_THUMBNAILS.   |
 
 ## PhotoCreationSource<sup>18+</sup>
 
@@ -13119,9 +14066,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. No task can be canceled. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>No task can be canceled. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
@@ -13157,7 +14104,7 @@ Defines the batch clone operation options.
 | countProgressListener | [ProgressListener](#progresslistener) | No| Yes| Listener for the quantity progress of the clone operation.|
 | taskSignal | [TaskSignal](#tasksignal) | No| Yes| Interruption signal of the clone operation.|
 | resultListener | [ResultListener](#resultlistener) | No| Yes| Listener for the result of the clone operation.|
-| mode | number | No| Yes| Automatic renaming mode for the clone operation.|
+| mode | number | No | Yes | Automatic rename mode of the copy operation.<br>Valid values are 0 and 1. 0 indicates that automatic rename is supported, and 1 indicates that automatic rename is not supported. |
 
 ## PhotoProxy<sup>11+</sup>
 
@@ -13281,6 +14228,36 @@ Enumerates the smart analysis types.
 | ANALYSIS\_MAGIC\_EMOJI<sup>24+</sup>        | 21 | Magic emoji analysis.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.   |
 | ANALYSIS\_AI\_EDIT<sup>24+</sup>        | 22 | AI editing analysis.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.   |
 
+## AnalysisToolType
+
+Enumerates the types of smart analysis tools.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name                           | Value | Description      |
+| :---------------------------- | :- | :------- |
+| ANALYSIS\_BASE\_TOOL\_TYPE   | 0  | Basic analysis tool type, used to trigger all smart analysis algorithms.    |
+| IMAGE\_RETRIEVAL\_TOOL\_TYPE               | 1  | Image retrieval tool type.    |
+| NEGATIVE\_FILTER\_TOOL\_TYPE                 | 2  | Negative filtering type, used to filter out low-quality, duplicate, or inappropriate images.    |
+| FACE\_RECOGNITION\_TOOL\_TYPE                | 3  | Person recognition type.    |
+| BATCH\_SIMILARITY\_SELECTION\_TOOL\_TYPE              | 4  | Similarity deduplication type, which computes the visual or semantic similarity between images to assist deduplication and association analysis.    |
+| BALANCED\_SELECTION\_TOOL\_TYPE      | 5  | Balanced selection type, which selects images in a balanced manner by narrative role based on the story theme and balance.    |
+| COVER\_GRID\_SELECTION\_TOOL\_TYPE        | 6  | Cover optimization and ranking type, which generates a multi-image grid layout in cover style for social media publishing.    |
+| HIGHLIGHT\_TOOL\_TYPE         | 7  | Gallery moment scene type.   |
+| SEARCH\_TOOL\_TYPE            | 8  | Search scene type.   |
+| SELECTION\_TOOL\_TYPE     | 9  | Gallery featured view scene type.    |
+| PORTRAIT\_ALBUM\_TOOL\_TYPE    | 10 | Portrait album scene type.    |
+| CLASSIFY\_ALBUM\_TOOL\_TYPE      | 11 | Classified album scene type.    |
+| SIMILARITY\_CLEANING\_TOOL\_TYPE        | 12 | Gallery similar cleanup scene type.    |
+| EDIT\_RECOMMENDATION\_TOOL\_TYPE        | 13 | Gallery proactive recommendation scene type.    |
+| AI\_SEARCH\_TOOL\_TYPE        | 14 | Gallery smart search scene type.    |
+
 ## AnalysisConfig<sup>24+</sup>
 
 Defines the asset analysis configuration.
@@ -13295,7 +14272,7 @@ Defines the asset analysis configuration.
 | ---- | ------- | ---- |  ---- | ----- |
 | types | [AnalysisType](#analysistype11)[]  | No| No| Array of intelligent analysis types. The maximum size of the array is the number of members defined by the [AnalysisType](#analysistype11) enum.|
 | uris | string[]  | No| No| Asset URI array.<br>Length range: [0, 100].|
-| extraInfos | string  | No| Yes| Extended information in JSON string format.<br>Length range: (0, 500].|
+| extraInfos | string  | No | Yes | Extended information in JSON string format.<br>Length range: (0, 500].<br>The default value is an empty string, indicating that no extended information is carried.|
 
 ## AnalysisResult<sup>24+</sup>
 
@@ -13310,6 +14287,57 @@ Defines the asset analysis result.
 | Name | Type               | Read-Only| Optional| Description                                             |
 | ---- | ------- | ---- |  ---- | ----- |
 | result | number  | No| No| Result code of asset analysis.|
+
+## ToolInvokeConfig
+
+Configuration for invoking the analysis tool.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name  | Type                | Read-Only | Optional | Description                                              |
+| ---- | ------- | ---- |  ---- | ----- |
+| type | [AnalysisToolType](#analysistooltype)  | No | No | Type of the analysis tool to be invoked. |
+| param | string  | No | Yes | Parameter for invoking the analysis tool, expressed as a JSON string with a total length not exceeding 16 KB. The default value is an empty string, indicating that no additional parameter is carried.|
+
+## AnalysisToolResult
+
+Result of the analysis tool execution.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name  | Type                | Read-Only | Optional | Description                                              |
+| ---- | ------- | ---- |  ---- | ----- |
+| errCode | number  | No | No | Error code of the tool execution.<br>Possible error codes:<br>0 - Success.<br>23800203 - The device temperature is too high.<br>23800204 - The device battery is too low.<br>23800205 - Insufficient storage space.<br>23800206 - Power saving mode is enabled.<br>23800207 - The smart analysis service is running.<br>23800208 - The smart analysis switch is disabled.<br>23800209 - The analysis service is abnormal. Check the logs for details.<br>23800301 - Internal system error.|
+| result | string  | No | Yes | Result of the tool execution, in JSON string format. |
+
+## ToolCancelConfig
+
+Configuration for canceling an analysis tool.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name  | Type                | Read-Only | Optional | Description                                              |
+| ---- | ------- | ---- |  ---- | ----- |
+| taskId | string  | No | No | ID of the task to be canceled. It must be a valid ID returned by [invokeAnalysisTool](#invokeanalysistool). |
+| param | string  | No | Yes | Parameter used to cancel the analysis tool, provided in JSON string format. The total length must not exceed 16KB. The default value is an empty string, indicating that no additional parameter is carried.|
 
 ## HighlightAlbumInfoType<sup>12+</sup>
 
@@ -13426,7 +14454,7 @@ Enumerates the types of data masking applied to media resources when accessed by
 
 ## CloudEnhancementTaskStage<sup>13+</sup>
 
-Enumerates the cloud enhancement task states, which are returned by [CloudEnhancementTaskState](#cloudenhancement13).
+Enumerates the cloud enhancement task states, which are returned by [CloudEnhancementTaskState](#cloudenhancementtaskstate13).
 
 **System API**: This is a system API.
 
@@ -13468,9 +14496,9 @@ Represents the cloud enhancement task information, which includes the cloud enha
 | Name   | Type                       | Read-Only| Optional| Description                                                        |
 | ---- | ------- | ---- |  ---- | ----- |
 | taskStage  | [CloudEnhancementTaskStage](#cloudenhancementtaskstage13)  | Yes| No| Cloud enhancement task state. |
-| transferredFileSize  | number  | Yes| Yes| Size of the file transferred. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_UPLOADING** or **CloudEnhancementTaskStage.TASK_STAGE_DOWNLOADING**. |
-| totalFileSize  | number  | Yes| Yes| Total file size. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_UPLOADING** or **CloudEnhancementTaskStage.TASK_STAGE_DOWNLOADING**. |
-| expectedDuration  | number  | Yes| Yes| Queuing time. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_EXECUTING**. |
+| transferredFileSize  | number  | Yes| Yes| Size of the transferred file, in bytes. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_UPLOADING** or **CloudEnhancementTaskStage.TASK_STAGE_DOWNLOADING**. |
+| totalFileSize  | number  | Yes| Yes| Total file size, in bytes. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_UPLOADING** or **CloudEnhancementTaskStage.TASK_STAGE_DOWNLOADING**. |
+| expectedDuration  | number  | Yes| Yes| Queuing duration, in milliseconds. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_EXECUTING**. |
 | statusCode  | number  | Yes| Yes| Status code. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_FAILED**. |
 
 ## VideoEnhancementType<sup>13+</sup>
@@ -13552,6 +14580,7 @@ Enumerates the modes used for deleting cloud media assets.
 | ----- |  ---- |  ---- |
 | RETAIN_FORCE |  0 |  Deletes the local metadata and thumbnail of the original files from the cloud.|
 | HDC_RETAIN_FORCE<sup>22+</sup> |  1 |  Deletes the local metadata and thumbnail of the original files from the home storage device.|
+| SHARE_RETAIN_FORCE |  2 |  Deletes the local metadata, thumbnails, and original images of the shared album.<br>**Since Version:** 26.0.0<br>**Model Constraint:** This API is only available in the Stage model. |
 
 ## CloudMediaAssetTaskStatus<sup>14+</sup>
 
@@ -13616,6 +14645,7 @@ Enumerates the types of recommended images.
 | ARCHITECTURE<sup>23+</sup> |  15 | Architecture images will be recommended.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
 | LANDSCAPE<sup>23+</sup> |  16 | Landscape images will be recommended.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
 | GAUSSIAN_SPLAT_3D<sup>24+</sup> |  17 | Images generated using the 3D Gaussian technology will be recommended.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
+| FEATURED_SINGLE_PET |  18 | FEATURED_SINGLE_PET indicates that featured pet photos will be recommended.<br>**Since Version:** 26.1.0<br>**Model Constraint:** This API is only available in the Stage model.<br>**System API**: This API is a system API.|
 
 ## RecommendationOptions<sup>11+</sup>
 
@@ -13680,7 +14710,6 @@ Describes the information about a media asset.
 | ---- | ------- | ---- |  ---- | ----- |
 | fileId | number  | No| No| ID of the media asset.<br>**System API**: This is a system API. |
 | dateDay | string  | No| No| Date when the media asset was created.<br>**System API**: This is a system API. |
-| isFavorite | boolean  | No| No| Whether the media asset is marked as a favorite. **true** if marked, **false** otherwise.<br>**System API**: This is a system API. |
 | isHidden | boolean  | No| No| Whether the media asset is hidden. **true** if hidden, **false** otherwise.<br>**System API**: This is a system API. |
 | strongAssociation | [StrongAssociationType](#strongassociationtype20)  | No| No| Strong association type of the media asset.<br>**System API**: This is a system API. |
 | thumbnailVisible | [ThumbnailVisibility](#thumbnailvisibility14)  | No| No| Accessibility status of the thumbnail.<br>**System API**: This is a system API. |
@@ -13856,7 +14885,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message |
 | --------- | ---------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Scene parameters validate failed, possible causes: position invalid. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -13897,7 +14926,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message |
 | --------- | ---------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
@@ -13937,7 +14966,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message |
 | --------- | ---------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
@@ -13983,7 +15012,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message |
 | --------- | ---------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Scene parameters validate failed, possible causes: columnIndex invalid. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -14025,7 +15054,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message |
 | --------- | ---------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
@@ -14060,7 +15089,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message |
 | --------- | ---------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
@@ -14169,22 +15198,6 @@ Enumerates the risk types of images.
 | SUSPICIOUS |  2 |  Suspicious images. |
 | REJECTED |  3 |  Rejected images. |
 
-## CloudDownloadNetworkPolicy
-
-Enumerates the network policies for batch download.
-
-**Since**: 26.0.0
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-| Name |  Value|  Description|
-| ----- |  ---- |  ---- |
-| DEFAULT |  0 |  Default value. The user has not confirmed the pop-up window, and the download is performed only on the Wi-Fi network.|
-| CELL |  1 |  The user has confirmed the pop-up window, and the download can be performed on both the cellular network and Wi-Fi network. |
-| WIFI |  2 |  The user has confirmed the pop-up window, and the download can be performed on the Wi-Fi network. |
-
 ## AppLinkState<sup>24+</sup>
 
 Enumerates the states of a file memory link.
@@ -14200,3 +15213,61 @@ Enumerates the states of a file memory link.
 | DEFAULT |  0 |  Whether the file has a memory link cannot be determined.|
 | HAS_NO_LINK |  1 |  The file does not have a memory link. |
 | HAS_LINK |  2 |  The file has a memory link. |
+
+## DefaultCoverOrderInfo
+
+Defines the default cover selection rule information of the album.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name                   | Type               | Read-Only| Optional| Description                         |
+| ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
+| albumType    | [AlbumType](arkts-apis-photoAccessHelper-e.md#albumtype)   | No| No  | Album type.|
+| albumSubtype    | [AlbumSubtype](arkts-apis-photoAccessHelper-e.md#albumsubtype)   | No| No  | Subtype of the album.|
+| lpath    | string   | No| Yes  | Virtual path of the album.|
+| orderKey    | [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)   | No| No  | Main field on which the default cover selection depends.|
+| orderSubKey    | [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)   | No| No  | Auxiliary field on which the default cover selection depends.|
+| orderType    | number   | No| No  | Sorting type of the field on which the default cover selection depends.<br>The value is an integer. The value range is [0, 1]. The value **0** indicates that the default cover is selected in descending order based on the **orderKey** and **orderSubKey** fields, and the value **1** indicates that the default cover is selected in ascending order based on the **orderKey** and **orderSubKey** fields.|
+
+## DeepOptimizeState
+
+Enumerates the status types of the deep optimization of storage space.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name |  Value|  Description|
+| ----- |  ---- |  ---- |
+| RUNNING |  0 |  The deep optimization is in progress.|
+| COMPLETED |  1 |  The deep optimization is successfully completed. |
+| FAILED |  2 |  The deep optimization fails. |
+| STOPPED |  3 |  The deep optimization is stopped. |
+| INTERRUPTED |  4 |  The deep optimization is interrupted. |
+
+## DeepOptimizeSpaceProgress
+
+Defines the progress of deep optimization of storage space.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name | Type               | Read-Only| Optional| Description                                             |
+| ---- | ------- | ---- |  ---- | ----- |
+| state | [DeepOptimizeState](#deepoptimizestate)  | No| No| Current deep optimization status.|
+| progress  | number  |No|No| Progress of deep optimization, in percentage. The value range is [0, 100]. |

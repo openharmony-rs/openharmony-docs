@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=a08d450b4f575e3d4749ddeef9dd32275ec0a19e translatedAt=2026-08-26T04:55:15.804Z pushedAt=2026-08-28T08:49:12.094Z -->
 
 This section describes the processes of a widget from creation to display. For details, see the figure below.
 

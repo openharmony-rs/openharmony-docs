@@ -2,7 +2,7 @@
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -30,7 +30,7 @@
    ```
 
 
-2. 输入法应用订阅编辑框属性变化事件[editorattributechanged](../reference/apis-ime-kit/js-apis-inputmethodengine.md#oneditorattributechanged10)，通过回调参数EditorAttribute中的immersiveMode字段感知前台应用期望的沉浸模式。示例代码如下。
+2. 输入法应用订阅编辑框属性变化事件[editorAttributeChanged](../reference/apis-ime-kit/js-apis-inputmethodengine.md#oneditorattributechanged10)，通过回调参数EditorAttribute中的immersiveMode字段感知前台应用期望的沉浸模式。示例代码如下。
 
    <!-- @[input_case_input_immersiveMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
    
@@ -38,7 +38,7 @@
    // 感知是否设置沉浸模式，如果是沉浸模式选择沉浸模式类型
    inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
      console.info('recv editorAttributeChanged, immersiveMode: ', attr.immersiveMode);
-     if (attr.immersiveMode == 1) {
+     if (attr.immersiveMode == inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE) {
        this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
        console.info('recv editorAttributeChanged, panel:', this.panel?.getImmersiveMode());
      }
@@ -60,7 +60,7 @@
    // 感知是否设置沉浸模式，如果是沉浸模式选择沉浸模式类型
    inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
      console.info('recv editorAttributeChanged, immersiveMode: ', attr.immersiveMode);
-     if (attr.immersiveMode == 1) {
+     if (attr.immersiveMode == inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE) {
        this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
        console.info('recv editorAttributeChanged, panel:', this.panel?.getImmersiveMode());
      }

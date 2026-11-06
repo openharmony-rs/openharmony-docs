@@ -1,8 +1,8 @@
 # NavRouter
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
-<!--Designer: @jiangdayuan-->
+<!--Owner: @huangxiaolinabc-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -22,9 +22,8 @@
 >
 > 子组件个数异常时：
 > 1. 有且仅有1个时，触发路由到NavDestination的能力失效。
-> 2. 有且仅有1个时，且使用NavDestination场景下，不进行路由。
-> 3. 大于2个时，后续的子组件不显示。
-> 4. 第二个子组件不为NavDestination时，触发路由功能失效。
+> 2. 大于2个时，后续的子组件不显示。
+> 3. 第二个子组件不为NavDestination时，触发路由功能失效。
 
 ## 接口
 
@@ -52,6 +51,8 @@ NavRouter(value: RouteInfo)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -76,6 +77,8 @@ mode(mode: NavRouteMode)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -89,6 +92,8 @@ mode(mode: NavRouteMode)
 路由信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,6 +111,8 @@ mode(mode: NavRouteMode)
 > 从API version 10开始支持，从API version 13开始废弃，建议使用[NavPathStack](ts-basic-components-navigation.md#navpathstack10)和[navDestination](ts-basic-components-navigation.md#navdestination10)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

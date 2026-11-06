@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> 从API version 12开始，轻量级智能穿戴设备支持获取随机数相关操作。
+> 从API版本12开始，轻量级智能穿戴设备支持获取随机数相关操作。
 
 随机数主要用于临时会话密钥生成和非对称加密算法密钥生成等场景。在加解密场景中，安全随机数生成器需要具备随机性、不可预测性与不可重现性。当前系统生成的随机数满足密码学安全伪随机性要求。
 
@@ -55,15 +55,21 @@
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   async function doRand() {
+    try {
       let rand = cryptoFramework.createRandom();
       let seed = new Uint8Array([1, 2, 3]);
       rand.setSeed({ data: seed });
       let len = 12;
       let randOutput = await rand.generateRandom(len);
       console.info('rand output: ' + randOutput.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
+  }
   ```
 
 
@@ -77,7 +83,7 @@
   
   function doRandBySync() {
     let rand = cryptoFramework.createRandom();
-    let len = 24; // Generate a 24-byte random number.
+    let len = 24; // 生成一个24字节的随机数。
     try {
       let randData = rand.generateRandomSync(len);
       if (randData.data.length !== 0) {

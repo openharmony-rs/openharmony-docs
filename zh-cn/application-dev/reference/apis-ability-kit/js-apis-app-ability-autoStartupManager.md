@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-autoStartupManager模块提供获取自身应用的开机自启状态。
+autoStartupManager模块提供获取自身应用的开机自启状态以及检查设备是否支持开机自启动的能力。
 
 > **说明：**
 >
@@ -43,7 +43,7 @@ getAutoStartupStatusForSelf(): Promise\<boolean\>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2.System service failed to communicate with dependency module.|
 
 **示例**：
@@ -55,6 +55,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   onForeground() {
     try {
+      // 获取当前应用的开机自启动状态
       autoStartupManager.getAutoStartupStatusForSelf().then((isAutoStartup: boolean) => {
         console.info(`getAutoStartupStatusForSelf success, isAutoStartup: ${JSON.stringify(isAutoStartup)}.`);
       }).catch((err: BusinessError) => {
@@ -87,7 +88,7 @@ isAutoStartupSupported(): boolean
 
 | 类型  | 说明                                  |
 | -------- | -------------------------------------------- |
-| boolean | 当前设备是否支持开机自启动。true：支持，false：不支持。|
+| boolean | 当前设备是否支持开机自启动。true表示支持开机自启动；false表示不支持开机自启动。|
 
 **示例**：
 
@@ -96,6 +97,7 @@ import { autoStartupManager, UIAbility } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
+    // 检查当前设备是否支持开机自启动
     const isSupported: boolean = autoStartupManager.isAutoStartupSupported();
     console.info(`isAutoStartupSupported: ${isSupported}.`);
   }

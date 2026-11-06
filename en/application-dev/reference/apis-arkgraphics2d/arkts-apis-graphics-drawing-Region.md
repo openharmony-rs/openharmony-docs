@@ -2,12 +2,13 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=d66ce495242bdf35b08a89dbf23cdf3929953623 translatedAt=2026-08-24T08:13:23.134Z pushedAt=2026-08-29T09:41:38.395Z -->
 
-Describes a region, which is used to describe the region where the shape can be drawn.
+Region object, used to describe the region information of the drawn graphics. Region supports setting rectangular regions and path regions, and provides operations such as merge operations between regions, intersection determination, translation, and boundary retrieval.
 
 > **NOTE**
 >
@@ -110,10 +111,10 @@ Constructs a rectangular region.
 
 | Name| Type  | Mandatory| Description                   |
 | ------ | ------ | ---- | ----------------------- |
-| left   | number | Yes  | Left position of the rectangle (X coordinate of the upper left corner). The value must be an integer. **0** indicates the coordinate origin. A positive value places the point to the right of the coordinate origin, while a negative value places the point to the left.|
-| top    | number | Yes  | Top position of the rectangle (Y coordinate of the upper left corner). The value must be an integer. **0** indicates the coordinate origin. A positive value places the point below the coordinate origin, while a negative value places the point above the coordinate origin.|
-| right  | number | Yes  | Right position of the rectangle (X coordinate of the lower right corner). The value must be an integer. **0** indicates the coordinate origin. A positive value places the point to the right of the coordinate origin, while a negative value places the point to the left.|
-| bottom | number | Yes  | Bottom position of the rectangle (Y coordinate of the lower right corner). The value must be an integer. **0** indicates the coordinate origin. A positive value places the point below the coordinate origin, while a negative value places the point above the coordinate origin.|
+| left   | number | Yes   | Left side of the rectangular region (X-coordinate of the top-left corner of the rectangle). This parameter must be an integer. 0 indicates the coordinate origin, a negative value indicates located to the left of the coordinate origin, and a positive value indicates located to the right of the coordinate origin. Unit is physical pixels px.|
+| top    | number | Yes   | Top side of the rectangular region (Y-coordinate of the top-left corner of the rectangle). This parameter must be an integer. 0 indicates the coordinate origin, a negative value indicates located above the coordinate origin, and a positive value indicates located below the coordinate origin. Unit is physical pixels px. |
+| right  | number | Yes   | Right side of the rectangular region (X-coordinate of the bottom-right corner of the rectangle). This parameter must be an integer. 0 indicates the coordinate origin, a negative value indicates located to the left of the coordinate origin, and a positive value indicates located to the right of the coordinate origin. Unit is physical pixels px. |
+| bottom | number | Yes   | Bottom side of the rectangular region (Y-coordinate of the bottom-right corner of the rectangle). This parameter must be an integer. 0 indicates the coordinate origin, a negative value indicates located above the coordinate origin, and a positive value indicates located below the coordinate origin. Unit is physical pixels px. |
 
 **Example**
 
@@ -144,7 +145,7 @@ class DrawingRenderNode extends RenderNode {
 
 isEqual(other: Region): boolean
 
-Checks whether another region is equal to this region.
+Determine whether the specified region is equal to the current region.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -152,7 +153,7 @@ Checks whether another region is equal to this region.
 
 | Name| Type  | Mandatory| Description                   |
 | ------ | ------ | ---- | ----------------------- |
-| other      | [Region](arkts-apis-graphics-drawing-Region.md) | Yes  | **Region** object.|
+| other      | [Region](arkts-apis-graphics-drawing-Region.md) | Yes   | Other region object used for comparison with the current region. |
 
 **Returns**
 
@@ -225,14 +226,12 @@ class DrawingRenderNode extends RenderNode {
     pen.setStrokeWidth(10);
     canvas.attachPen(pen);
     let region = new drawing.Region();
-    let other = new drawing.Region();
     region.setRect(100, 100, 200, 200);
     region.op(new drawing.Region(220, 200, 280, 280), drawing.RegionOp.UNION);
     let flag: boolean = false;
     flag = region.isComplex();
     console.info('flag :', flag);
     canvas.drawRegion(region);
-    canvas.drawRegion(other);
     canvas.detachPen();
   }
 }
@@ -250,7 +249,7 @@ Checks whether the existing region is empty.
 
 | Type   | Description                   |
 | ------- | --------------         |
-| boolean | Check result. **true** means yes; **false** otherwise.  |
+| boolean | Returns the result of whether the current region is empty. true indicates the current region is empty, and false indicates the current region is not empty. |
 
 **Example**
 
@@ -330,7 +329,7 @@ let path = region.getBoundaryPath();
 
 ## isPointContained<sup>12+</sup>
 
-isPointContained(x: number, y: number) : boolean
+isPointContained(x: number, y: number): boolean
 
 Checks whether a point is contained in this region.
 
@@ -340,8 +339,8 @@ Checks whether a point is contained in this region.
 
 | Name| Type  | Mandatory| Description                   |
 | ------ | ------ | ---- | ----------------------- |
-| x      | number | Yes  | X coordinate of the point. The value must be an integer. If a decimal is passed in, the decimal part is rounded off.|
-| y      | number | Yes  | Y coordinate of the point. The value must be an integer. If a decimal is passed in, the decimal part is rounded off.|
+| x      | number | Yes   | X-coordinate of the test point. This parameter must be an integer. When the input number has a decimal, the fractional part will be discarded. The unit is physical pixels (px). |
+| y      | number | Yes   | Y-coordinate of the test point. This parameter must be an integer. When the input number has a decimal, the fractional part will be discarded. The unit is physical pixels (px). |
 
 **Returns**
 
@@ -355,7 +354,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -399,8 +398,8 @@ Translates a region.
 
 | Name| Type  | Mandatory| Description                   |
 | ------ | ------ | ---- | ----------------------- |
-| dx      | number | Yes  | X offset. A positive number indicates an offset towards the positive direction of the X axis, and a negative number indicates an offset towards the negative direction of the X axis. The value is an integer.|
-| dy      | number | Yes  | Y offset. A positive number indicates an offset towards the positive direction of the Y axis, and a negative number indicates an offset towards the negative direction of the Y axis. The value is an integer.|
+| dx      | number | Yes   | Translation amount along the x-axis. A positive value indicates translation in the positive direction of the x-axis, and a negative value indicates translation in the negative direction of the x-axis. This parameter must be an integer. When the input number has a decimal, the fractional part will be discarded. The unit is physical pixels (px). |
+| dy      | number | Yes   | Translation amount along the y-axis. A positive value indicates translation in the positive direction of the y-axis, and a negative value indicates translation in the negative direction of the y-axis. This parameter must be an integer. When the input number has a decimal, the fractional part will be discarded. The unit is physical pixels (px). |
 
 **Example**
 
@@ -432,7 +431,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## isRegionContained<sup>12+</sup>
 
-isRegionContained(other: Region) : boolean
+isRegionContained(other: Region): boolean
 
 Checks whether another region is contained in this region.
 
@@ -442,7 +441,7 @@ Checks whether another region is contained in this region.
 
 | Name| Type  | Mandatory| Description                   |
 | ------ | ------ | ---- | ----------------------- |
-| other      | [Region](arkts-apis-graphics-drawing-Region.md) | Yes  | **Region** object.|
+| other      | [Region](arkts-apis-graphics-drawing-Region.md) | Yes   | Other region object used to determine whether it is within the current region. |
 
 **Returns**
 
@@ -456,7 +455,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -492,7 +491,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## op<sup>12+</sup>
 
-op(region: Region, regionOp: RegionOp) : boolean
+op(region: Region, regionOp: RegionOp): boolean
 
 Performs an operation on this region and another region, and stores the resulting region in this **Region** object.
 
@@ -502,14 +501,14 @@ Performs an operation on this region and another region, and stores the resultin
 
 | Name| Type  | Mandatory| Description                   |
 | ------ | ------ | ---- | ----------------------- |
-| region      | [Region](arkts-apis-graphics-drawing-Region.md) | Yes  | **Region** object.|
-| regionOp      | [RegionOp](arkts-apis-graphics-drawing-e.md#regionop12) | Yes  | Operation mode of the region.|
+| region      | [Region](arkts-apis-graphics-drawing-Region.md) | Yes   | Specified region object used to perform an operation with the current region. |
+| regionOp      | [RegionOp](arkts-apis-graphics-drawing-e.md#regionop12) | Yes   | Type of the region operation. |
 
 **Returns**
 
 | Type   | Description          |
 | ------- | -------------- |
-| boolean | Check result. The value **true** means that the resulting region is stored in the current **Region** object, and **false** means the opposite.|
+| boolean | Whether the region operation result successfully replaces the current region result. true indicates that the region operation result successfully replaces the current region, and false indicates that the region operation result fails to replace the current region. |
 
 **Error codes**
 
@@ -517,7 +516,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -554,7 +553,7 @@ class DrawingRenderNode extends RenderNode {
 
 quickReject(left: number, top: number, right: number, bottom: number) : boolean
 
-Checks whether a rectangle do not intersect with this region. Actually, this API determines whether the rectangle does not intersect with the bounding rectangle of the region, and therefore the result may not be accurate.
+Quickly determines whether a rectangle and a region do not intersect. In fact, it compares whether the rectangle and the bounding rectangle of the region do not intersect. Therefore, when the bounding rectangles intersect but the actual regions do not, false is returned (that is, they are misjudged as intersecting).
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -562,16 +561,16 @@ Checks whether a rectangle do not intersect with this region. Actually, this API
 
 | Name| Type  | Mandatory| Description                   |
 | ------ | ------ | ---- | ----------------------- |
-| left   | number | Yes  | Left position of the rectangle. The value must be an integer. If a decimal is passed in, the decimal part is rounded off.|
-| top    | number | Yes  | Top position of the rectangle. The value must be an integer. If a decimal is passed in, the decimal part is rounded off.|
-| right  | number | Yes  | Right position of the rectangle. The value must be an integer. If a decimal is passed in, the decimal part is rounded off.|
-| bottom | number | Yes  | Bottom position of the rectangle. The value must be an integer. If a decimal is passed in, the decimal part is rounded off.|
+| left   | number | Yes   | Left side of the rectangular region (X-coordinate of the top-left corner of the rectangle). This parameter must be an integer. When the number has a fractional part, the fractional part will be discarded. The unit is physical pixels (px). |
+| top    | number | Yes   | Top side of the rectangular region (Y-coordinate of the top-left corner of the rectangle). This parameter must be an integer. When the number has a fractional part, the fractional part will be discarded. The unit is physical pixels (px). |
+| right  | number | Yes   | Right side of the rectangular region (X-coordinate of the bottom-right corner of the rectangle). This parameter must be an integer. When the number has a fractional part, the fractional part will be discarded. The unit is physical pixels (px). |
+| bottom | number | Yes   | Bottom side of the rectangular region (Y-coordinate of the bottom-right corner of the rectangle). This parameter must be an integer. When the number has a fractional part, the fractional part will be discarded. The unit is physical pixels (px). |
 
 **Returns**
 
 | Type   | Description          |
 | ------- | -------------- |
-| boolean | Check result. **true** means that the two do not intersect; **false** otherwise.|
+| boolean | Whether the rectangle does not intersect with the region. true indicates that the rectangle does not intersect with the region, and false indicates that the rectangle intersects with the region. true is also returned when the rectangle intersects with the region only at a point or an edge. |
 
 **Error codes**
 
@@ -579,7 +578,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -614,7 +613,7 @@ class DrawingRenderNode extends RenderNode {
 
 quickRejectRegion(region: Region): boolean
 
-Checks whether the existing region does not intersect with another region. Actually, the outer rectangles of the two regions are compared to determine whether they do not intersect. Therefore, there may be an error.
+Determines whether the current region does not intersect with the specified region. In fact, it compares whether the bounding rectangles of the two regions do not intersect. Therefore, when the bounding rectangles intersect but the actual regions do not, false is returned (that is, they are misjudged as intersecting).
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -622,13 +621,13 @@ Checks whether the existing region does not intersect with another region. Actua
 
 | Name| Type  | Mandatory| Description                   |
 | ------ | ------ | ---- | ----------------------- |
-| region      | [Region](arkts-apis-graphics-drawing-Region.md) | Yes  | **Region** object.|
+| region      | [Region](arkts-apis-graphics-drawing-Region.md) | Yes   | Specified region object used to determine whether it does not intersect with the current region. |
 
 **Returns**
 
 | Type   | Description          |
 | ------- | -------------- |
-| boolean | Check result. **true** if the regions do not intersect; **false** otherwise. The value **true** is returned only if the regions intersect with each other by point or edge.|
+| boolean | Whether the current region does not intersect with another region. The value true indicates that the regions do not intersect, and false indicates that they intersect. The value true is also returned when the two regions intersect only at a point or an edge. |
 
 **Example**
 
@@ -662,7 +661,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## setPath<sup>12+</sup>
 
-setPath(path: Path, clip: Region) : boolean
+setPath(path: Path, clip: Region): boolean
 
 Sets a region that matches the outline of a path within the cropping area.
 
@@ -672,14 +671,14 @@ Sets a region that matches the outline of a path within the cropping area.
 
 | Name| Type  | Mandatory| Description                   |
 | ------ | ------ | ---- | ----------------------- |
-| path      | [Path](arkts-apis-graphics-drawing-Path.md) | Yes  | **Path** object.|
-| clip      | [Region](arkts-apis-graphics-drawing-Region.md) | Yes  | **Region** object.|
+| path      | [Path](arkts-apis-graphics-drawing-Path.md) | Yes   | Path object used to set the region outline. |
+| clip      | [Region](arkts-apis-graphics-drawing-Region.md) | Yes   | Clip region object used to limit the valid range of the path outline. Only the part of the path within the clip region is used to set the region. |
 
 **Returns**
 
 | Type   | Description          |
 | ------- | -------------- |
-| boolean | Result of the setting operation. The value **true** is returned if the corked status is successfully set; otherwise, **false** is returned.|
+| boolean | Returns the result of whether the region setting is successful. true indicates successful setting, and false indicates failed setting. |
 
 **Error codes**
 
@@ -687,7 +686,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -724,7 +723,7 @@ class DrawingRenderNode extends RenderNode {
 
 setRegion(region: Region): void
 
-Sets the existing region to another region.
+Sets the current region to the specified region.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -732,7 +731,7 @@ Sets the existing region to another region.
 
 | Name| Type  | Mandatory| Description                   |
 | ------ | ------ | ---- | ----------------------- |
-| region      | [Region](arkts-apis-graphics-drawing-Region.md) | Yes  | Region to be set.|
+| region      | [Region](arkts-apis-graphics-drawing-Region.md) | Yes   | Source region object used to set the content of the current region. |
 
 **Example**
 
@@ -791,7 +790,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## setRect<sup>12+</sup>
 
-setRect(left: number, top: number, right: number, bottom: number) : boolean
+setRect(left: number, top: number, right: number, bottom: number): boolean
 
 Sets a rectangle.
 
@@ -801,10 +800,10 @@ Sets a rectangle.
 
 | Name| Type  | Mandatory| Description                   |
 | ------ | ------ | ---- | ----------------------- |
-| left   | number | Yes  | Left position of the rectangle. The value must be an integer. If a decimal is passed in, the decimal part is rounded off.|
-| top    | number | Yes  | Top position of the rectangle. The value must be an integer. If a decimal is passed in, the decimal part is rounded off.|
-| right  | number | Yes  | Right position of the rectangle. The value must be an integer. If a decimal is passed in, the decimal part is rounded off.|
-| bottom | number | Yes  | Bottom position of the rectangle. The value must be an integer. If a decimal is passed in, the decimal part is rounded off.|
+| left   | number | Yes   | Left side of the rectangular region (X-coordinate of the top-left corner of the rectangle). This parameter must be an integer. When the number has a fractional part, the fractional part will be discarded. The unit is physical pixels (px). |
+| top    | number | Yes   | Top side of the rectangular region (Y-coordinate of the top-left corner of the rectangle). This parameter must be an integer. When the number has a fractional part, the fractional part will be discarded. The unit is physical pixels (px). |
+| right  | number | Yes   | Right side of the rectangular region (X-coordinate of the bottom-right corner of the rectangle). This parameter must be an integer. When the number has a fractional part, the fractional part will be discarded. The unit is physical pixels (px). |
+| bottom | number | Yes   | Bottom side of the rectangular region (Y-coordinate of the bottom-right corner of the rectangle). This parameter must be an integer. When the number has a fractional part, the fractional part will be discarded. The unit is physical pixels (px). |
 
 **Returns**
 
@@ -818,7 +817,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -913,16 +912,16 @@ Checks whether this region is the same as a single rectangle and contains the sp
 
 | Name| Type  | Mandatory| Description                   |
 | ------ | ------ | ---- | ----------------------- |
-| left   | number | Yes  | Left position of the rectangle. The value must be an integer. If a decimal is passed in, the decimal part is rounded off.|
-| top    | number | Yes  | Top position of the rectangle. The value must be an integer. If a decimal is passed in, the decimal part is rounded off.|
-| right  | number | Yes  | Right position of the rectangle. The value must be an integer. If a decimal is passed in, the decimal part is rounded off.|
-| bottom | number | Yes  | Bottom position of the rectangle. The value must be an integer. If a decimal is passed in, the decimal part is rounded off.|
+| left   | number | Yes   | Left side of the rectangular region. This parameter must be an integer. When the input number has a decimal, the fractional part will be discarded. The unit is physical pixels (px). |
+| top    | number | Yes   | Top side of the rectangular region. This parameter must be an integer. When the input number has a decimal, the fractional part will be discarded. The unit is physical pixels (px). |
+| right  | number | Yes   | Right side of the rectangular region. This parameter must be an integer. When the input number has a decimal, the fractional part will be discarded. The unit is physical pixels (px). |
+| bottom | number | Yes   | Bottom side of the rectangular region. This parameter must be an integer. When the input number has a decimal, the fractional part will be discarded. The unit is physical pixels (px). |
 
 **Returns**
 
 | Type   | Description          |
 | ------- | -------------- |
-| boolean | Check result. **true** if the current region is the same as a single rectangle and contains the specified rectangle; **false** otherwise.|
+| boolean | Returns the judgment result. true indicates that the current region is equivalent to a single rectangle and contains the specified rectangle; false indicates that the current region is not equivalent to a single rectangle or does not contain the specified rectangle. |
 
 **Example**
 

@@ -4,7 +4,7 @@
 <!--Subsystem: Account-->
 <!--Owner: @steven-q-->
 <!--Designer: @JiDong-CS1-->
-<!--Tester: @zhaimengchao-->
+<!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
 
 本模块提供管理系统账号的基础能力，包括系统账号的添加、删除、查询、设置、订阅、启动等功能。
@@ -47,15 +47,15 @@ activateOsAccount(localId: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
-| 12300010 | Service busy. Possible causes: The target account is being operated. |
-| 12300016 | The number of logged in accounts reaches the upper limit. |
+| 12300009 | Account has been activated. <br>适用版本：7-11 |
+| 12300010 | Service busy. Possible causes: The target account is being operated. <br>适用版本：12+ |
+| 12300016 | The number of logged in accounts reaches the upper limit. <br>适用版本：12+ |
 
 **示例：**
 
@@ -102,21 +102,21 @@ activateOsAccount(localId: number): Promise&lt;void&gt;
 
 | 类型                | 说明                                  |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
-| 12300010 | Service busy. Possible causes: The target account is being operated. |
-| 12300016 | The number of logged in accounts reaches the upper limit. |
+| 12300009 | Account has been activated. <br>适用版本：7-11 |
+| 12300010 | Service busy. Possible causes: The target account is being operated. <br>适用版本：12+|
+| 12300016 | The number of logged in accounts reaches the upper limit. <br>适用版本：12+|
 
 **示例：**
 
@@ -172,9 +172,9 @@ activateOsAccount(localId: number, displayId: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
@@ -227,14 +227,14 @@ deactivateOsAccount(localId: number): Promise&lt;void&gt;
 
 | 类型                | 说明                                  |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
@@ -290,8 +290,8 @@ isOsAccountActivated(localId: number): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
@@ -334,7 +334,7 @@ isOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt;bo
 | 参数名     | 类型   | 必填 | 说明                                |
 | ---------- | ------ | ---- | ---------------------------------- |
 | localId    | number | 是   | 系统账号ID。  |
-| constraint | string | 是   | 指定的[约束](js-apis-osAccount.md#系统账号约束列表)名称。 |
+| constraint | string | 是   | 指定的[约束](appendix-osAccount-constraints.md)名称。 |
 
 **返回值：**
 
@@ -346,8 +346,8 @@ isOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt;bo
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
@@ -378,7 +378,7 @@ isOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt;bo
 
 isOsAccountUnlocked(localId: number): Promise&lt;boolean&gt;
 
-检查指定系统账号是否已验证。使用Promise异步回调。
+检查指定系统账号是否已解锁。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -390,20 +390,20 @@ isOsAccountUnlocked(localId: number): Promise&lt;boolean&gt;
 
 | 参数名  | 类型   | 必填 | 说明                                                              |
 | ------- | ------ | ---- | --------------------------------------------------------------- |
-| localId | number | 是   | 系统账号ID。不填则检查当前系统账号是否已验证。 |
+| localId | number | 是   | 系统账号ID。用于指定要检查是否已解锁的系统账号。 |
 
 **返回值：**
 
 | 类型                   | 说明                                                               |
 | ---------------------- | ----------------------------------------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号已解锁；返回false表示当前账号未解锁。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
@@ -450,8 +450,8 @@ removeOsAccount(localId: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
@@ -505,14 +505,14 @@ removeOsAccount(localId: number): Promise&lt;void&gt;
 
 | 类型                | 说明                                  |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
@@ -573,8 +573,8 @@ removeOsAccount(localId: number, options: RemoveOsAccountOptions): Promise&lt;vo
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or options.    |
@@ -625,19 +625,19 @@ setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enabl
 | 参数名      | 类型                      | 必填 | 说明                                             |
 | ----------- | ------------------------- | ---- | ----------------------------------------------- |
 | localId     | number                    | 是   | 系统账号ID。               |
-| constraints | Array&lt;string&gt;       | 是   | 待设置/删除的[约束](js-apis-osAccount.md#系统账号约束列表)列表。        |
-| enable      | boolean                   | 是   | 设置(true)/删除(false) 。                          |
+| constraints | Array&lt;string&gt;       | 是   | 待设置/删除的[约束](appendix-osAccount-constraints.md)列表。        |
+| enable      | boolean                   | 是   | 设置（true）/删除（false）。                          |
 | callback    | AsyncCallback&lt;void&gt; | 是   | 回调函数。如果设置成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
-| 12300002 | Invalid localId or constraints.    |
+| 12300002 | Invalid localId or constraints. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
 
@@ -682,21 +682,21 @@ setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enabl
 | 参数名      | 类型                | 必填 | 说明                                         |
 | ----------- | ------------------- | ---- | -------------------------------------------- |
 | localId     | number              | 是   | 系统账号ID。           |
-| constraints | Array&lt;string&gt; | 是   | 待设置/删除的[约束](js-apis-osAccount.md#系统账号约束列表)列表。    |
-| enable      | boolean             | 是   | 设置(true)/删除(false)。                     |
+| constraints | Array&lt;string&gt; | 是   | 待设置/删除的[约束](appendix-osAccount-constraints.md)列表。    |
+| enable      | boolean             | 是   | 设置（true）/删除（false）。                     |
 
 **返回值：**
 
 | 类型                | 说明                                 |
-| :------------------ | :----------------------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| ------------------ | ----------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or constraints.    |
@@ -739,7 +739,7 @@ setOsAccountName(localId: number, localName: string, callback: AsyncCallback&lt;
 **参数：**
 
 | 参数名    | 类型                      | 必填 | 说明                                             |
-| :-------- | ------------------------- | ---- | ----------------------------------------------- |
+| -------- | ------------------------- | ---- | ----------------------------------------------- |
 | localId   | number                    | 是   | 系统账号ID。               |
 | localName | string                    | 是   | 账号名，最大长度为1024个字符。                          |
 | callback  | AsyncCallback&lt;void&gt; | 是   | 回调函数。如果设置成功，err为null，否则为错误对象。 |
@@ -748,8 +748,8 @@ setOsAccountName(localId: number, localName: string, callback: AsyncCallback&lt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or localName. |
@@ -803,14 +803,14 @@ setOsAccountName(localId: number, localName: string): Promise&lt;void&gt;
 
 | 类型                | 说明                                  |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or localName.    |
@@ -871,8 +871,8 @@ setOsAccountType(localId: number, type: OsAccountType, options?: SetOsAccountTyp
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Not system application.                                      |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 202      | Permission verification failed. A non-system application calls a system API.                                      |
 | 204      | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint. 2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally.                         |
 | 12300002 | Invalid type or options.                                     |
@@ -924,7 +924,7 @@ queryMaxOsAccountNumber(callback: AsyncCallback&lt;number&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 
@@ -968,7 +968,7 @@ queryMaxOsAccountNumber(): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1009,7 +1009,7 @@ queryMaxLoggedInOsAccountNumber(): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1052,14 +1052,14 @@ getEnabledOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&
 
 | 类型                               | 说明                                                       |
 | ---------------------------------- | ---------------------------------------------------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回指定系统账号已使能的全部[约束](js-apis-osAccount.md#系统账号约束列表)。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回指定系统账号已使能的全部[约束](appendix-osAccount-constraints.md)。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
@@ -1107,8 +1107,8 @@ queryAllCreatedOsAccounts(callback: AsyncCallback&lt;Array&lt;OsAccountInfo&gt;&
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 
@@ -1154,8 +1154,8 @@ queryAllCreatedOsAccounts(): Promise&lt;Array&lt;OsAccountInfo&gt;&gt;
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1191,7 +1191,7 @@ createOsAccount(localName: string, type: OsAccountType, callback: AsyncCallback&
 **参数：**
 
 | 参数名    | 类型                                                 | 必填 | 说明                                                                         |
-| :-------- | ---------------------------------------------------- | ---- | --------------------------------------------------------------------------- |
+| -------- | ---------------------------------------------------- | ---- | --------------------------------------------------------------------------- |
 | localName | string                                               | 是   | 创建的系统账号的名称。                                                        |
 | type      | [OsAccountType](js-apis-osAccount.md#osaccounttype)                      | 是   | 创建的系统账号的类型。                                                        |
 | callback  | AsyncCallback&lt;[OsAccountInfo](js-apis-osAccount.md#osaccountinfo)&gt; | 是   | 回调函数。如果创建成功，err为null，data为新创建的系统账号的信息；否则为错误对象。 |
@@ -1200,8 +1200,8 @@ createOsAccount(localName: string, type: OsAccountType, callback: AsyncCallback&
 
 | 错误码ID  | 错误信息                   |
 | -------- | ------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localName or type. |
@@ -1262,8 +1262,8 @@ createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccoun
 
 | 错误码ID  | 错误信息                   |
 | -------- | ------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localName, type or options. |
@@ -1273,6 +1273,7 @@ createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccoun
 | 12300007 | The number of accounts has reached the upper limit. |
 | 12300015 | The short name already exists. |
 | 12300023 | The number of accounts of the specified type has reached the upper limit. |
+| 12300024 | The specified OS account ID already exists. Suggested solutions: Use a different ID, or remove the existing OS account with the same ID and try again.<br>适用版本：26.1.0+ |
 
 **示例：**
 
@@ -1322,10 +1323,10 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, cal
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type or domainInfo. |
 | 12300004 | Account already exists. |
@@ -1387,10 +1388,10 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, opt
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type, domainInfo or options. |
 | 12300004 | Account already exists. |
@@ -1399,6 +1400,7 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, opt
 | 12300007 | The number of accounts has reached the upper limit. |
 | 12300015 | The short name already exists. |
 | 12300023 | The number of accounts of the specified type has reached the upper limit. |
+| 12300024 | The specified OS account ID already exists. Suggested solutions: Use a different ID, or remove the existing OS account with the same ID and try again.<br>适用版本：26.1.0+ |
 
 **示例：**
 
@@ -1446,8 +1448,8 @@ queryOsAccount(): Promise&lt;OsAccountInfo&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1491,8 +1493,8 @@ queryOsAccountById(localId: number, callback: AsyncCallback&lt;OsAccountInfo&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
@@ -1549,8 +1551,8 @@ queryOsAccountById(localId: number): Promise&lt;OsAccountInfo&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId. |
@@ -1600,8 +1602,8 @@ getOsAccountProfilePhoto(localId: number, callback: AsyncCallback&lt;string&gt;)
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
@@ -1658,8 +1660,8 @@ getOsAccountProfilePhoto(localId: number): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
@@ -1710,8 +1712,8 @@ setOsAccountProfilePhoto(localId: number, photo: string, callback: AsyncCallback
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or photo.    |
@@ -1768,14 +1770,14 @@ setOsAccountProfilePhoto(localId: number, photo: string): Promise&lt;void&gt;
 
 | 类型                | 说明                                 |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or photo.    |
@@ -1831,8 +1833,8 @@ on(type: 'activate' | 'activating', name: string, callback: Callback&lt;number&g
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type or name. |
@@ -1880,8 +1882,8 @@ off(type: 'activate' | 'activating', name: string, callback?: Callback&lt;number
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type or name. |
@@ -1930,8 +1932,8 @@ on(type: 'switching', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -1979,8 +1981,8 @@ off(type: 'switching', callback?: Callback&lt;OsAccountSwitchEventData&gt;): voi
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -2023,8 +2025,8 @@ on(type: 'switched', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -2072,8 +2074,8 @@ off(type: 'switched', callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -2104,7 +2106,7 @@ onConstraintChanged(constraints: string[], callback: Callback&lt;ConstraintChang
 
 | 参数名     | 类型                   | 必填 | 说明      |
 | --------  | ---------------------- | ---- | -------- |
-| constraints  | string[] | 是   | 表示待订阅的[约束](js-apis-osAccount.md#系统账号约束列表)列表。 |
+| constraints  | string[] | 是   | 表示待订阅的[约束](appendix-osAccount-constraints.md)列表。 |
 | callback | Callback&lt;[ConstraintChangeInfo](#constraintchangeinfo23)&gt;  | 是   | 表示用于接收约束变更事件的回调函数。 |
 
 
@@ -2114,7 +2116,7 @@ onConstraintChanged(constraints: string[], callback: Callback&lt;ConstraintChang
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | One or more constraints are invalid. |
 
@@ -2158,7 +2160,7 @@ offConstraintChanged(callback?: Callback&lt;ConstraintChangeInfo&gt;): void
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -2208,7 +2210,7 @@ getBundleIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid uid. |
@@ -2219,6 +2221,7 @@ getBundleIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): void
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // uid为进程uid，请通过应用信息获取
   let testUid: number = 1000000;
   try {
     accountManager.getBundleIdForUid(testUid, (err: BusinessError, bundleId: number) => {
@@ -2260,7 +2263,7 @@ getBundleIdForUid(uid: number): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid uid. |
@@ -2310,7 +2313,7 @@ getBundleIdForUidSync(uid: number): number
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300002 | Invalid uid. |
 
@@ -2346,14 +2349,14 @@ isMainOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名   | 类型                          | 必填 | 说明                                                               |
 | -------- | ---------------------------- | ---- | ----------------------------------------------------------------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数，返回true表示当前账号为主账号，返回false表示当前账号非主账号。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回true表示当前账号为主账号，返回false表示当前账号非主账号。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 
@@ -2393,14 +2396,14 @@ isMainOsAccount(): Promise&lt;boolean&gt;
 
 | 类型                   | 说明                                                                  |
 | ---------------------- | --------------------------------------------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象，返回true表示当前账号为主账号，返回false表示当前账号非主账号。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号为主账号，返回false表示当前账号非主账号。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -2451,8 +2454,8 @@ getForegroundOsAccountLocalId(displayId: number): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300017 | The foreground OS account is not found. |
 
@@ -2505,8 +2508,8 @@ getForegroundOsAccountDisplayId(localId: number): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300017 | The foreground OS account is not found. |
 
@@ -2546,15 +2549,15 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string, callback:
 | 参数名   | 类型                       | 必填 | 说明                                                         |
 | -------- | -------------------------- | ---- | ------------------------------------------------------------ |
 | localId     | number | 是   |  要查询的系统账号ID。 |
-| constraint     | string | 是   |  要查询的[约束](js-apis-osAccount.md#系统账号约束列表)名称。 |
-| callback | AsyncCallback&lt;Array&lt;[ConstraintSourceTypeInfo](#constraintsourcetypeinfo9)&gt;&gt;     | 是   | 回调函数。如果成功，err为null，data为指定系统账号的指定[约束](js-apis-osAccount.md#系统账号约束列表)来源信息；否则为错误对象。                      |
+| constraint     | string | 是   |  要查询的[约束](appendix-osAccount-constraints.md)名称。 |
+| callback | AsyncCallback&lt;Array&lt;[ConstraintSourceTypeInfo](#constraintsourcetypeinfo9)&gt;&gt;     | 是   | 回调函数。如果成功，err为null，data为指定系统账号的指定[约束](appendix-osAccount-constraints.md)来源信息；否则为错误对象。                      |
 
 **错误码：**
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid name or constraint. |
@@ -2598,20 +2601,20 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string): Promise&
 | 参数名  | 类型   | 必填 | 说明         |
 | ------- | ------ | ---- | ------------ |
 | localId     | number | 是   |  要查询的系统账号ID。 |
-| constraint     | string | 是   |  要查询的[约束](js-apis-osAccount.md#系统账号约束列表)名称。 |
+| constraint     | string | 是   |  要查询的[约束](appendix-osAccount-constraints.md)名称。 |
 
 **返回值：**
 
 | 类型                  | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ |
-| Promise&lt;Array&lt;[ConstraintSourceTypeInfo](#constraintsourcetypeinfo9)&gt;&gt; | Promise对象，返回指定系统账号的指定[约束](js-apis-osAccount.md#系统账号约束列表)来源信息。 |
+| Promise&lt;Array&lt;[ConstraintSourceTypeInfo](#constraintsourcetypeinfo9)&gt;&gt; | Promise对象，返回指定系统账号的指定[约束](appendix-osAccount-constraints.md)来源信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid name or constraint. |
@@ -2664,8 +2667,8 @@ getOsAccountType(localId: number): Promise&lt;OsAccountType&gt;
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
@@ -2705,7 +2708,7 @@ bindDomainAccount(localId: number, domainAccountInfo: DomainAccountInfo): Promis
 
 | 参数名  | 类型   | 必填 | 说明         |
 | ------- | ------ | ---- | ------------ |
-| localId     | number | 是   |  要查询的系统账号ID。 |
+| localId     | number | 是   |  系统账号ID。 |
 | domainAccountInfo | [DomainAccountInfo](#domainaccountinfo8) | 是   | 域账号信息。          |
 
 **返回值：**
@@ -2716,13 +2719,13 @@ bindDomainAccount(localId: number, domainAccountInfo: DomainAccountInfo): Promis
 
 **错误码：**
 
-以下错误码的详细介绍请参见通用[通用错误码](../errorcode-universal.md)和[账号管理错误码](./errorcode-account.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[账号管理错误码](./errorcode-account.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domain account information. |
 | 12300003 | The OS account not found. |
@@ -2748,7 +2751,7 @@ bindDomainAccount(localId: number, domainAccountInfo: DomainAccountInfo): Promis
     });
   } catch (e) {
     const err = e as BusinessError;
-    console.error(`bindDomainAccount error, errCode=${error.code}, errMsg=${error.message}`);
+    console.error(`bindDomainAccount error, errCode=${err.code}, errMsg=${err.message}`);
   }
   ```
 
@@ -2776,7 +2779,7 @@ getAuthorizationManager(): AuthorizationManager
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 
 **示例：**
 
@@ -2827,8 +2830,8 @@ acquireAuthorization(privilege: string, options?: AcquireAuthorizationOptions): 
 
 | 错误码ID | 错误信息 |
 | -------- | --- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid privilege or options. |
 
@@ -2878,7 +2881,7 @@ hasAuthorization(privilege: string): Promise&lt;boolean&gt;
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象，返回true表示已获得指定特权的授权；返回false表示未获得指定特权的授权。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示已获得指定特权的授权；返回false表示未获得指定特权的授权。 |
 
 **错误码：**
 
@@ -2886,7 +2889,7 @@ hasAuthorization(privilege: string): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | --- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid privilege. |
 
@@ -2941,7 +2944,7 @@ releaseAuthorization(privilege: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | --- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid privilege. |
 
@@ -2979,9 +2982,9 @@ try {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
 | challenge | Uint8Array | 否 | 是 | 随机挑战值，可用于防止重放攻击，长度不得超过32字节，默认为undefined。|
-| isReuseNeeded | boolean | 否 | 是 | 是否需要重复用先前的授权，默认为true。<br/>如果为true且存在有效的授权结果，则将复用该结果；否则，将执行新的授权。 |
-| isInteractionAllowed | boolean | 否 | 是 | 是否允许用户交互，默认为true 。<br/>如果为true，则允许在交互上下文中显示授权对话框；如果为false，则不允许显示授权对话框。<br>**注意**：此选项仅在调用者位于前台时生效。如果调用者在后台，则不允许用户交互。 |
-| interactionContext | Context | 否 | 是 | 用户交互上下文配置，默认为undefined。<br/>- 未指定上下文时，授权对话框以模态系统模式显示。<br/>- 指定[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)或[UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)时，以模态应用模式显示。<br/> - 未提供有效上下文时，授权对话框无法显示。<br>**注意**：仅当isInteractionAllowed为true时生效。 |
+| isReuseNeeded | boolean | 否 | 是 | 是否需要复用先前的授权，默认为true。<br/>如果为true且存在有效的授权结果，则将复用该结果；否则，将执行新的授权。 |
+| isInteractionAllowed | boolean | 否 | 是 | 是否允许用户交互，默认为true。<br/>如果为true，则允许在交互上下文中显示授权对话框；如果为false，则不允许显示授权对话框。<br>**注意：** 此选项仅在调用者位于前台时生效。如果调用者在后台，则不允许用户交互。 |
+| interactionContext | Context | 否 | 是 | 用户交互上下文配置，默认为undefined。<br/>- 未指定上下文时，授权对话框以模态系统模式显示。<br/>- 指定[UIAbilityContext (UIAbility上下文)](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)或[UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)时，以模态应用模式显示。<br/> - 未提供有效上下文时，授权对话框无法显示。<br>**注意：** 仅当isInteractionAllowed为true时生效。 |
 ## AuthorizationResultCode<sup>24+</sup>
 
 表示授权结果码的枚举。
@@ -3044,7 +3047,7 @@ getOsAccountSubProfileManager(): OsAccountSubProfileManager
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 
 **示例：**
 
@@ -3089,7 +3092,7 @@ onOsAccountSubProfileEvent(events: OsAccountSubProfileEvent[], callback: Callbac
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid event. |
 
@@ -3138,7 +3141,7 @@ offOsAccountSubProfileEvent(callback?: Callback&lt;OsAccountSubProfileEventData&
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 
 **示例：**
@@ -3189,8 +3192,8 @@ createOsAccountSubProfile(osAccountLocalId: number): Promise&lt;OsAccountSubProf
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12300001 | System service exception. |
 | 12300003 | The OS account not found. |
 | 12300008 | Restricted OS account. |
@@ -3253,8 +3256,8 @@ deleteOsAccountSubProfile(osAccountLocalId: number, subProfileId: number): Promi
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12300001 | System service exception. |
 | 12300010 | Service busy. Possible causes: The OS account or sub-profile is being operated. |
 | 12300401 | Sub-profile not found. |
@@ -3318,8 +3321,8 @@ switchOsAccountSubProfile(osAccountLocalId: number, subProfileId: number): Promi
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12300001 | System service exception. |
 | 12300010 | Service busy. Possible causes: The OS account or sub-profile is being operated. |
 | 12300401 | Sub-profile not found. |
@@ -3374,7 +3377,7 @@ getOsAccountForegroundSubProfileId(): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12300001 | System service exception. |
 | 12300401 | Sub-profile not found. |
 
@@ -3428,7 +3431,7 @@ getOsAccountForegroundSubProfileId(osAccountLocalId: number): Promise&lt;number&
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12300001 | System service exception. |
 | 12300003 | OS account not found. |
 | 12300401 | The foreground sub-profile not found. |
@@ -3482,8 +3485,8 @@ getOsAccountSubProfileIds(): Promise&lt;number[]&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12300001 | System service exception. |
 
 **示例：**
@@ -3538,8 +3541,8 @@ getOsAccountSubProfileIds(osAccountLocalId: number): Promise&lt;number[]&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12300001 | System service exception. |
 | 12300003 | OS account not found. |
 
@@ -3598,8 +3601,8 @@ getOsAccountSubProfile(subProfileId: number): Promise&lt;OsAccountSubProfile&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12300001 | System service exception. |
 | 12300401 | Sub-profile not found. |
 
@@ -3659,8 +3662,8 @@ getOsAccountSubProfile(osAccountLocalId: number, subProfileId: number): Promise&
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12300001 | System service exception. |
 | 12300401 | Sub-profile not found. |
 
@@ -3718,7 +3721,7 @@ getOsAccountLocalIdForSubProfile(subProfileId: number): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12300001 | System service exception. |
 | 12300401 | Sub-profile not found. |
 
@@ -3763,7 +3766,7 @@ constructor()
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 
 **示例：**
 
@@ -3784,14 +3787,14 @@ getVersion(): number
 **返回值：**
 
 | 类型   | 说明         |
-| :----- | :----------- |
+| ----- | ----------- |
 | number | 返回版本信息。|
 
 **错误码：**
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 
 **示例：**
 
@@ -3830,8 +3833,8 @@ getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel): number
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType or authTrustLevel. |
@@ -3877,8 +3880,8 @@ getProperty(request: GetPropertyRequest, callback: AsyncCallback&lt;ExecutorProp
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
 | 12300003 | Account not found. |
@@ -3934,15 +3937,15 @@ getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;
 **返回值：**
 
 | 类型                                                              | 说明                                                 |
-| :---------------------------------------------------------------- | :-------------------------------------------------- |
+| ---------------------------------------------------------------- | -------------------------------------------------- |
 | Promise&lt;[ExecutorProperty](#executorproperty8)&gt; | Promise对象，返回执行器属性信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
 | 12300003 | Account not found. |
@@ -3997,15 +4000,15 @@ getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyTy
 **返回值：**
 
 | 类型                                                              | 说明                                                 |
-| :---------------------------------------------------------------- | :-------------------------------------------------- |
+| ---------------------------------------------------------------- | -------------------------------------------------- |
 | Promise&lt;[ExecutorProperty](#executorproperty8)&gt; | Promise对象，返回执行器的属性信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid keys. |
 | 12300020 | Device hardware abnormal. |
@@ -4073,8 +4076,8 @@ setProperty(request: SetPropertyRequest, callback: AsyncCallback&lt;void&gt;): v
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
@@ -4125,15 +4128,15 @@ setProperty(request: SetPropertyRequest): Promise&lt;void&gt;
 **返回值：**
 
 | 类型                  | 说明                                                           |
-| :-------------------- | :------------------------------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| -------------------- | ------------------------------------------------------------ |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
@@ -4182,15 +4185,15 @@ prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;
 **返回值：**
 
 | 类型                  | 说明                                                           |
-| :-------------------- | :------------------------------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| -------------------- | ------------------------------------------------------------ |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid remoteNetworkId. |
 | 12300090 | Cross-device capability not supported. |
@@ -4253,8 +4256,8 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 
 | 错误码ID | 错误信息          |
 | -------- | --------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType or authTrustLevel. |
 | 12300013 | Network exception. |
@@ -4330,8 +4333,8 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 
 | 错误码ID | 错误信息          |
 | -------- | --------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType, authTrustLevel or options. |
 | 12300003 | Account not found. |
@@ -4405,14 +4408,14 @@ authUser(userId: number, challenge: Uint8Array, authType: AuthType, authTrustLev
 
 | 类型        | 说明               |
 | ---------- | ------------------ |
-| Uint8Array | 返回取消的上下文ID。 |
+| Uint8Array | 返回认证上下文ID，可用于取消认证操作。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息          |
 | -------- | --------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType or authTrustLevel. |
 | 12300003 | Account not found. |
@@ -4474,14 +4477,14 @@ cancelAuth(contextID: Uint8Array): void
 
 | 参数名    | 类型       | 必填  | 说明                                        |
 | ----------| ---------- | ---- | ------------------------------------------ |
-| contextID | Uint8Array | 是   | 指示身份验证上下文ID，此ID动态生成没有具体值。 |
+| contextID | Uint8Array | 是   | 指示身份验证上下文ID，此ID由认证流程动态生成，用于标识认证操作。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息            |
 | -------- | ------------------ |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid contextId. |
@@ -4528,7 +4531,7 @@ constructor()
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 
 **示例：**
 
@@ -4558,8 +4561,8 @@ registerInputer(inputer: IInputer): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid inputer. |
@@ -4601,8 +4604,8 @@ unregisterInputer(): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 
 **示例：**
 
@@ -4638,8 +4641,8 @@ static registerInputer(authType: AuthType, inputer: IInputer): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType or inputer. |
@@ -4688,8 +4691,8 @@ static unregisterInputer(authType: AuthType): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300002  | Invalid authType. |
 
@@ -5235,10 +5238,9 @@ static registerPlugin(plugin: DomainPlugin): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300201 | The domain plugin has been registered. |
 
 **示例：**
@@ -5289,9 +5291,9 @@ static unregisterPlugin(): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 
 **示例：**
 
@@ -5331,10 +5333,10 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUs
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainAccountInfo or credential. |
 | 12300003 | Domain account does not exist. |
@@ -5398,9 +5400,9 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, options: Doma
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainAccountInfo or credential. |
 | 12300003 | Domain account does not exist. |
@@ -5470,9 +5472,8 @@ API版本10：ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | No domain account is bound. |
 | 12300013 | Network exception. |
@@ -5523,16 +5524,15 @@ API版本10：ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| localId   | number  | 是   | 指示绑定域账号的系统账号的本地标识。|
+| localId   | number  | 是   | 指示绑定域账号的系统账号ID。|
 | callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 指示认证结果回调。|
 
 **错误码：**
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId. |
 | 12300003 | No domain account is bound. |
@@ -5587,10 +5587,10 @@ hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;bool
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainAccountInfo. |
 | 12300013 | Network exception. |
@@ -5643,17 +5643,17 @@ hasAccount(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示指定的域账号已存在；返回false表示指定的域账号不存在。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainAccountInfo. |
 | 12300013 | Network exception. |
@@ -5707,8 +5707,8 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, call
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid token. |
@@ -5761,15 +5761,15 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array): Pro
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| ------------------------ | ----------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid token. |
@@ -5821,10 +5821,10 @@ getAccountInfo(options: GetDomainAccountInfoOptions, callback: AsyncCallback&lt;
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 | 12300013 | Network exception. |
@@ -5878,17 +5878,17 @@ getAccountInfo(options: GetDomainAccountInfoOptions): Promise&lt;DomainAccountIn
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;DomainAccountInfo&gt; | Promise对象，返回指定的域账号信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 | 12300013 | Network exception. |
@@ -5940,9 +5940,9 @@ getAccessToken(businessParams: Record<string, Object>, callback: AsyncCallback&l
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid business parameters. |
 | 12300003 | Domain account not found. |
@@ -5995,16 +5995,16 @@ getAccessToken(businessParams: Record<string, Object>): Promise&lt;Uint8Array&gt
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;Uint8Array&gt; | Promise对象，返回业务访问令牌。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid business parameters. |
 | 12300003 | Domain account not found. |
@@ -6057,17 +6057,17 @@ isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise&lt;boolea
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示指定的域账号已登录超期；返回false表示指定的域账号未登录超期。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Domain account not found. |
 
@@ -6110,7 +6110,7 @@ constructor()
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 
 **示例：**
 
@@ -6140,8 +6140,8 @@ openSession(callback: AsyncCallback&lt;Uint8Array&gt;): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 
@@ -6186,16 +6186,15 @@ openSession(accountId?: number): Promise&lt;Uint8Array&gt;
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;Uint8Array&gt; | Promise对象，返回挑战值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted account. |
@@ -6242,8 +6241,8 @@ addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid credentialInfo, i.e. authType or authSubType. |
 | 12300003 | Account not found. |
@@ -6315,9 +6314,8 @@ updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid credentialInfo, i.e. authType or authSubType. |
 | 12300003 | Account not found. |
@@ -6394,8 +6392,8 @@ closeSession(accountId?: number): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
@@ -6431,8 +6429,8 @@ cancel(challenge: Uint8Array): void
 
 | 错误码ID | 错误信息            |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge. |
@@ -6475,8 +6473,8 @@ delUser(token: Uint8Array, callback: IIdmCallback): void
 
 | 错误码ID | 错误信息        |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300101 | The token is invalid. |
@@ -6525,8 +6523,8 @@ delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): vo
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid credentialId. |
@@ -6576,8 +6574,8 @@ getAuthInfo(callback: AsyncCallback&lt;Array&lt;EnrolledCredInfo&gt;&gt;): void
 
 | 错误码ID | 错误信息               |
 | -------- | --------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300020 | Device hardware abnormal. |
 
@@ -6624,8 +6622,8 @@ getAuthInfo(authType: AuthType, callback: AsyncCallback&lt;Array&lt;EnrolledCred
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
 | 12300020 | Device hardware abnormal. |
@@ -6672,15 +6670,15 @@ getAuthInfo(authType: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;
 **返回值：**
 
 | 类型                                         | 说明                                                                     |
-| :------------------------------------------- | :----------------------------------------------------------------------- |
+| ------------------------------------------- | ----------------------------------------------------------------------- |
 | Promise&lt;Array&lt;[EnrolledCredInfo](#enrolledcredinfo8)&gt;&gt; | Promise对象，返回当前用户指定类型的所有已注册凭据信息。|
 
 **错误码：**
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
 | 12300020 | Device hardware abnormal. |
@@ -6724,15 +6722,15 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise&lt;Array&lt;EnrolledCredInfo&
 **返回值：**
 
 | 类型                                         | 说明                                                                     |
-| :------------------------------------------- | :----------------------------------------------------------------------- |
+| ------------------------------------------- | ----------------------------------------------------------------------- |
 | Promise&lt;Array&lt;[EnrolledCredInfo](#enrolledcredinfo8)&gt;&gt; | Promise对象，返回当前用户指定类型的所有已注册凭据信息。|
 
 **错误码：**
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid options. |
 | 12300003 | Account not found. |
@@ -6782,15 +6780,15 @@ getEnrolledId(authType: AuthType, accountId?: number): Promise&lt;Uint8Array&gt;
 **返回值：**
 
 | 类型                       | 说明                                                                     |
-| :------------------------ | :----------------------------------------------------------------------- |
+| ------------------------ | ----------------------------------------------------------------------- |
 | Promise&lt;Uint8Array&gt; | Promise对象，返回已注册的凭据ID。|
 
 **错误码：**
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
 | 12300003 | Account not found. |
@@ -6843,8 +6841,8 @@ onCredentialChanged(credentialTypes: AuthType[], callback: Callback&lt;Credentia
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | One or more credential types are invalid. |
 | 12300106 | One or more credential types are not supported. |
@@ -6898,8 +6896,8 @@ offCredentialChanged(callback?: Callback&lt;CredentialChangeInfo&gt;): void
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -6963,7 +6961,7 @@ onSetData(authSubType: AuthSubType, data: Uint8Array): void
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300002 | Invalid pinSubType. |
 
@@ -7319,6 +7317,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | RECOVERY_KEY<sup>12+</sup> | 8 | 表示键恢复类型。 |
 | PRIVATE_PIN<sup>14+</sup> | 16 | 表示隐私PIN类型。 |
 | COMPANION_DEVICE<sup>23+</sup> | 64 | 表示伴随设备认证类型。 |
+| CUSTOM | 128 | 自定义认证类型。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | DOMAIN<sup>9+</sup>  | 1024     | 表示域认证类型。|
 
 ## AuthSubType<sup>8+</sup>
@@ -7476,7 +7475,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 | 名称      | 类型   | 只读  | 可选  | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| localId      | number | 否 | 否  | 系统账号ID     |
+| localId      | number | 否 | 否  | 系统账号ID。     |
 | type | [ConstraintSourceType](#constraintsourcetype9) | 否 | 否  | 约束来源类型。 |
 
 ## ConstraintSourceType<sup>9+</sup>
@@ -7585,7 +7584,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 | 名称      | 类型   | 只读 | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| constraint | string | 否 | 否 | 发生变更的[约束](js-apis-osAccount.md#系统账号约束列表)。 |
+| constraint | string | 否 | 否 | 发生变更的[约束](appendix-osAccount-constraints.md)。 |
 | isEnabled | boolean | 否 | 否 | 发生变更的约束的使能状态。默认：false。<br>true表示目标约束已使能；false表示目标约束未使能。 |
 
 ## CreateOsAccountOptions<sup>12+</sup>
@@ -7602,6 +7601,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | disallowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | 否 | 是   | 表示预置应用禁止名单，名单中的应用不可被安装在设备上，默认为空列表。|
 | allowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | 否 | 是   | 表示预置应用允许名单，仅名单中的应用可以被安装在设备上，默认为std::nullopt。|
 | token<sup>24+</sup> | Uint8Array | 否   | 是   | 表示从认证管理接口获取的token，默认为空。 |
+| localId | number | 否   | 是   | 表示要创建的系统账号ID。如果不指定该参数，系统将自动分配一个localId。取值限定为整数。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CreateOsAccountForDomainOptions<sup>12+</sup>
 
@@ -7678,6 +7678,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | accountId          | number | 否 | 是  | 系统账号标识，默认为undefined。 |
 | authIntent         | [AuthIntent](#authintent12) | 否 | 是  | 认证意图，默认为undefined。 |
 | remoteAuthOptions  | [RemoteAuthOptions](#remoteauthoptions12) | 否 | 是  | 远程认证选项，默认为undefined。 |
+| additionalInfo     | string | 否 | 是  | 身份认证的附加信息，默认为undefined。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。  |
 
 ## GetInputDataOptions<sup>12+</sup>
 

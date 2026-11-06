@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "概述ArkGuard字节码混淆工具的能力定位与适用场景，介绍其相对源码混淆的差异，并索引混淆原理、开启指南等子主题，帮助开发者快速进入字节码混淆学习。"
+keywords: [ArkGuard, 混淆, 字节码混淆, 混淆概述, 混淆工具, 防逆向, 包大小, 字节码混淆原理]
+doctype: guide
+status: active
+---
+
 # ArkGuard字节码混淆工具概述
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @oatuwwutao; @Graceunderpressure-->
 <!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 从API version 20开始，ArkGuard提供了基础字节码混淆能力，将代码中的函数名、类名、文件名等名字变成简短无意义的名字，提高通过阅读代码猜测其用途的难度。由于标识符名称缩短，通过混淆可以有效降低包大小。
 

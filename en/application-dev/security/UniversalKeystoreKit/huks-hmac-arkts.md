@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=2bacfee4422d681c1c12b53710941106e9561ff9 translatedAt=2026-11-03T05:33:09.763Z pushedAt=2026-11-03T06:59:56.284Z nl=1 -->
 
 Hash-based Message Authentication Code (HMAC) is a specific type of message authentication code (MAC) involving a cryptographic hash function and a secret cryptographic key. For details about the scenarios and supported algorithm specifications, see [HMAC Overview and Algorithm Specifications](huks-hmac-overview.md).
 
@@ -25,11 +26,11 @@ You can also import a key. For details about the supported algorithms, see [Supp
 
 1. Obtain the key alias.
 
-2. Obtains the data to be calculated.
+2. Obtain the data to be calculated.
 
 3. Use [initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9) to initialize a key session. The session handle is returned after the initialization.
 
-4. Use [finishSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9) to obtain the hashed data.
+4. Use [finishSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9) to finish the session and obtain the hashed data.
 
 <!-- @[hmac_to](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/HMAC/entry/src/main/ets/pages/HMAC.ets) -->
 
@@ -83,13 +84,13 @@ async function generateHMACKey() {
     properties: getHMACProperties()
   };
 
-  await huks.generateKeyItem(hmacKeyAlias, options)
-    .then((data) => {
-      console.info(`promise: generate HMAC Key success`);
-    }).catch((error: Error) => {
-      console.error(`promise: generate HMAC Key failed, ${JSON.stringify(error)}`);
-      throw (error as Error);
-    })
+  try {
+    await huks.generateKeyItem(hmacKeyAlias, options);
+    console.info(`promise: generate HMAC Key success`);
+  } catch (error) {
+    console.error(`promise: generate HMAC Key failed, ${JSON.stringify(error)}`);
+    throw error as Error;
+  }
 }
 /* 2. Perform HMAC calculation. */
 async function hMACData() {
@@ -98,22 +99,22 @@ async function hMACData() {
     inData: stringToUint8Array(plainText)
   }
 
-  await huks.initSession(hmacKeyAlias, options)
-    .then((data) => {
-      handle = data.handle;
-    }).catch((error: Error) => {
-      console.error(`promise: init session failed, ${JSON.stringify(error)}`);
-      throw (error as Error);
-    })
+  try {
+    const data = await huks.initSession(hmacKeyAlias, options);
+    handle = data.handle;
+  } catch (error) {
+    console.error(`promise: init session failed, ${JSON.stringify(error)}`);
+    throw error as Error;
+  }
 
-  await huks.finishSession(handle, options)
-    .then((data) => {
-      console.info(`promise: HMAC data success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
-      hashData = data.outData as Uint8Array;
-    }).catch((error: Error) => {
-      console.error(`promise: HMAC data failed, ${JSON.stringify(error)}`);
-      throw (error as Error);
-    })
+  try {
+    const data = await huks.finishSession(handle, options);
+    console.info(`promise: HMAC data success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
+    hashData = data.outData as Uint8Array;
+  } catch (error) {
+    console.error(`promise: HMAC data failed, ${JSON.stringify(error)}`);
+    throw error as Error;
+  }
 }
 
 async function executeHMAC() {

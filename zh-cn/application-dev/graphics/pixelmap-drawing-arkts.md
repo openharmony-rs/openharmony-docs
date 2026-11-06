@@ -105,7 +105,7 @@
 
    绘制效果如下：
 
-   ![zh-cn_image_0000002158584414](figures/zh-cn_image_0000002158584414.png)
+   ![Draw-the-pixel-map](figures/Draw-the-pixel-map.png)
 
 <!--RP1-->
 ## 相关实例

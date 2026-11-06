@@ -5,6 +5,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=35275ad1fec674addf0ad74b53e102b4f36f1eef translatedAt=2026-11-03T06:40:41.486Z pushedAt=2026-11-03T07:59:24.173Z nl=1 -->
 
 
 Supported since API version 18, the **ArcButton** component represents an arc button. It is recommended for circular screens. It offers various button styles, such as emphasized, normal, and warning, tailored for users. For details, see [ArcButton](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md).
@@ -25,15 +26,15 @@ ArcButton({
   })
 })
 ```
-  [label](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions): sets the text displayed on the button.<br>[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions): sets the type of the button.<br>[styleMode](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions): sets the style mode of the button.
+  [label](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions): sets the text displayed on the button.<br>[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions): sets the position of the button.<br>[styleMode](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions): sets the style of the button.
 
   ![top](figures/ArcButtonTop.png)
 
 ## Setting the Button Type
 
-The **ArcButton** component offers two types: top arc button and bottom arc button. Use the [position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions) attribute to set the type.
+The **ArcButton** component offers two types: top arc button and bottom arc button. Use the [position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions) attribute to set the position.
 
-- Lower arc button (default type)
+- Bottom arc button (default type)
 
   Set [position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions) to **ArcButtonPosition.BOTTOM_EDGE**.
   <!-- @[button_align_bottom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonAlignBottom.ets) -->
@@ -51,7 +52,7 @@ The **ArcButton** component offers two types: top arc button and bottom arc butt
   ```
   ![bottom](figures/ArcButtonBottom.png)
 
-- Upper arc button
+- Top arc button
 
   Set [position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions) to **ArcButtonPosition.TOP_EDGE**.
   <!-- @[button_align_top](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonAlignTop.ets) -->
@@ -155,16 +156,17 @@ The **ArcButton** component offers two types: top arc button and bottom arc butt
 
 This example demonstrates a brightness settings screen where a slider displays the current brightness level at 30%. When the reset button is clicked, the brightness value is reset to the default value of 50%.
 
-You are advised to run this example on a wearable for optimal display effects and it can also run on other devices. To run the example on a wearable, configure **wearable** under the [deviceTypes](../quick-start/module-configuration-file.md#devicetypes) tag in the [module.json5] (../quick-start/module-configuration-file.md) configuration file in the **src/main** directory.
-<!-- @[module_json_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/module.json5) -->
+You are advised to run this example on a wearable for optimal display effects and it can also run on other devices. To run the example on a wearable, configure **wearable** under the [deviceTypes](../quick-start/module-configuration-file.md#devicetypes) tag in the [module.json5](../quick-start/module-configuration-file.md) configuration file in the **src/main** directory.
+<!-- @[module_json_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/module.json5) --> 
 
 ``` JSON5
 "module": {
-  // ···
+  // ...
   "deviceTypes": [
+    "default",
     "wearable"
   ],
-  // ···
+  // ...
 }
 ```
 

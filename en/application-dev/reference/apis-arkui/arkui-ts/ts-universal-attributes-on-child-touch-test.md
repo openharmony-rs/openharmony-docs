@@ -5,14 +5,17 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-09-02T11:56:11.176Z -->
 
 When handling a touch event, ArkUI performs [hit testing](../../../ui/arkts-interaction-basic-principles.md#hit-testing) on the touch point and the component area before the event is triggered – to determine the components targeted by the event – and dispatches the event based on the test result. You can use **onChildTouchTest** on a parent node to specify how to perform the hit test on child nodes and thereby exert an impact on touch event dispatch. For details about the impact, see [TouchTestStrategy](#touchteststrategy11).
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - Supported since API version 10. For newly added APIs in later versions, the initial version is marked separately with a superscript.
 >
-> - With use of **onChildTouchTest**, the **onClick**, rotation, and pinch gesture events may receive no response due to the touch target not being hit.
+> - The APIs of this module can be used only in the stage model.
+>
+> - After custom event dispatch, the onClick event and rotation and pinch gestures may fail to respond because the touch hot zone is not hit.
 
 ## onChildTouchTest<sup>11+</sup>
 
@@ -34,13 +37,13 @@ Allows the current component to customize the hit test and control child compone
 
 | Name| Type                                      | Mandatory| Description                  |
 | ------ | ------------------------------------------ | ---- | ---------------------- |
-| event  | (value: Array<[TouchTestInfo>](#touchtestinfo11)) => TouchResult | Yes  | Touch event information. **value**: array of child node information.|
+| event | (value: Array<[TouchTestInfo](#touchtestinfo11)>) => [TouchResult](#touchresult11) | Yes | Callback invoked for the custom touch test. It receives an array **value** that contains the touch test information of child nodes. The array contains only the information of named nodes whose IDs are set through the **id** attribute. It returns a **TouchResult** to control the event dispatch policy of child nodes. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## TouchTestInfo<sup>11+</sup>
 
@@ -52,14 +55,14 @@ Provides information about the coordinate system, ID, and size of the component 
 
 | Name         | Type | Read-Only   | Optional  |  Description                                      |
 | ------------- | ------ | ------ | ------ | ---------------------------------------- |
-| windowX | number | No| No| X-coordinate of the touch point relative to the upper left corner of the window.<br>Unit: vp.|
-| windowY   | number| No|No|Y-coordinate of the touch point relative to the upper left corner of the window.<br>Unit: vp.|
-| parentX   | number| No |No|X-coordinate of the touch point relative to the upper left corner of the parent component.<br>Unit: vp. |
-| parentY   | number| No|No|Y-coordinate of the touch point relative to the upper left corner of the parent component.<br>Unit: vp. |
-| x   | number| No | No|X-coordinate of the touch point relative to the upper left corner of the child component.<br>Unit: vp.|
-| y   | number| No |No| Y-coordinate of the touch point relative to the upper left corner of the child component.<br>Unit: vp.|
+| windowX | number | No | No | X-axis coordinate of the press point relative to the window's top-left corner.<br>Unit: vp |
+| windowY   | number| No |No|Y-axis coordinate of the press point relative to the window's top-left corner.<br>Unit: vp|
+| parentX   | number| No  |No|X-axis coordinate of the press point relative to the parent component's top-left corner.<br>Unit: vp  |
+| parentY   | number| No |No|Y-axis coordinate of the press point relative to the parent component's top-left corner.<br>Unit: vp  |
+| x   | number| No  | No|X-axis coordinate of the press point relative to the child component's top-left corner.<br>Unit: vp |
+| y   | number| No  |No| Y-axis coordinate of the press point relative to the child component's top-left corner.<br>Unit: vp |
 | rect   | [RectResult](#rectresult)| No |No|Position, width, and height of the child component. |
-| [id](ts-universal-attributes-component-id.md)   | string| No | No|Unique ID of the child component.|
+| [id](ts-universal-attributes-component-id.md#id)   | string| No  | No|Unique identifier of the child component. |
 
 ## RectResult
 
@@ -71,10 +74,10 @@ Describes the position, width, and height of a component.
 
 | Name     | Type  | Read-Only| Optional | Description|
 | ------- | ------ | ----- | -------- | ---------- |
-| x     | number | No| No| X-coordinate.<br>Unit: vp.|
-| y     | number |  No| No| Y-coordinate.<br>Unit: vp.|
-| width | number | No| No| Content width.<br>Unit: vp.|
-| height | number | No| No| Content height.<br>Unit: vp.|
+| x     | number | No | No | Horizontal coordinate.<br>Unit: vp |
+| y     | number |  No | No | Vertical coordinate.<br>Unit: vp |
+| width | number | No | No | Content width.<br>Unit: vp |
+| height | number | No | No | Content height.<br>Unit: vp |
 
 ## TouchResult<sup>11+</sup>
 
@@ -87,7 +90,7 @@ Defines the custom event dispatch result. You can influence event dispatch by re
 | Name     | Type                                    | Read-Only   | Optional  |  Description                               |
 | --------- | --------- | ---- |--------------------------------------- | ---- |
 | strategy  | [TouchTestStrategy](#touchteststrategy11) | No    | No |Event dispatch strategy.                    |
-| id  | string | No   | Yes |Unique ID of the child component.<br>If **strategy** is set to **TouchTestStrategy.DEFAULT**, **id** is optional. If **strategy** is set to **TouchTestStrategy.FORWARD_COMPETITION** or **TouchTestStrategy.FORWARD**, **id** is mandatory. If **id** is not returned, the strategy **TouchTestStrategy.DEFAULT** is used.|
+| id  | string | No    | Yes  |Unique identifier of the child component.<br>When strategy is TouchTestStrategy.DEFAULT, id is optional; when strategy is TouchTestStrategy.FORWARD_COMPETITION or TouchTestStrategy.FORWARD, id is required (if no id is returned, it is processed as TouchTestStrategy.DEFAULT). |
 
 ## TouchTestStrategy<sup>11+</sup>
 
@@ -102,14 +105,14 @@ Event dispatch strategy.
 | Name         | Value   |Description                                      |
 | ------------| ---------| ----------------------------------------- |
 | DEFAULT   | 0  | Custom dispatch has no effect; the system dispatches events based on the hit status of the current node.|
-| FORWARD_COMPETITION  | 1  | The event is dispatched to a specified child node, and the system determines whether to dispatch events to other sibling nodes.|
-| FORWARD |2 | The event is dispatched to a specified child node, and the system will not dispatch events to other sibling nodes.|
+| FORWARD_COMPETITION  | 1  | The application specifies dispatching events to a child node, and the system decides whether to continue dispatching events to other sibling nodes. |
+| FORWARD |2 | The application specifies dispatching events to a child node, and the system no longer dispatches events to other sibling nodes. |
 
 ## Example
 
 ### Example 1: Setting the Event Dispatch Strategy to FORWARD_COMPETITION
 
-In this example, clicking and dragging in the blank area below the **List** component causes the **List** component to scroll. The **Button** component still responds to **onClick** events.
+In this example, click the blank area below the List and drag to make the List scroll. When the Button is pressed, the Button responds to the onClick event.
 
 ```ts
 // xxx.ets
@@ -118,9 +121,9 @@ import { PromptAction } from '@kit.ArkUI';
 @Entry
 @Component
 struct ListExample {
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   promptAction: PromptAction = this.getUIContext().getPromptAction();
-  @State text: string = 'Button'
+  @State text: string = 'Button';
 
   build() {
     Column() {
@@ -141,11 +144,11 @@ struct ListExample {
       .scrollBar(BarState.Off)
       .edgeEffect(EdgeEffect.Spring)
       .onScrollIndex((start: number, end: number) => {
-        console.info(`first ${start}`)
-        console.info(`last ${end}`)
+        console.info(`first ${start}`);
+        console.info(`last ${end}`);
       })
       .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-        console.info(`onScroll scrollState = ScrollState ${scrollState.toString()}, scrollOffset = ${scrollOffset}`)
+        console.info(`onScroll scrollState = ScrollState ${scrollState.toString()}, scrollOffset = ${scrollOffset}`);
       })
       .width('100%')
       .height('65%')
@@ -159,8 +162,8 @@ struct ListExample {
         .fontWeight(FontWeight.Medium)
         .margin({ top: 80 })
         .onClick(() => {
-          this.text = 'click the button'
-          this.promptAction.showToast({ message: 'you click the button.', duration: 3000 })
+          this.text = 'click the button';
+          this.promptAction.showToast({ message: 'you click the button.', duration: 3000 });
         })
     }
     .width('100%')
@@ -170,7 +173,7 @@ struct ListExample {
     .padding({ left: 12, right: 12, bottom: 24 })
     .onChildTouchTest((touchInfo) => {
       for (let info of touchInfo) {
-        if (info.id == 'MyList') {
+        if (info.id === 'MyList') {
           return { id: info.id, strategy: TouchTestStrategy.FORWARD_COMPETITION }
         }
       }
@@ -193,9 +196,9 @@ import { PromptAction } from '@kit.ArkUI';
 @Entry
 @Component
 struct ListExample {
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   promptAction: PromptAction = this.getUIContext().getPromptAction();
-  @State text: string = 'Button'
+  @State text: string = 'Button';
 
   build() {
     Column() {
@@ -216,11 +219,11 @@ struct ListExample {
       .scrollBar(BarState.Off)
       .edgeEffect(EdgeEffect.Spring)
       .onScrollIndex((start: number, end: number) => {
-        console.info(`first ${start}`)
-        console.info(`last ${end}`)
+        console.info(`first ${start}`);
+        console.info(`last ${end}`);
       })
       .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-        console.info(`onScroll scrollState = ScrollState ${scrollState.toString()}, scrollOffset = ${scrollOffset}`)
+        console.info(`onScroll scrollState = ScrollState ${scrollState.toString()}, scrollOffset = ${scrollOffset}`);
       })
       .width('100%')
       .height('65%')
@@ -234,8 +237,8 @@ struct ListExample {
         .fontWeight(FontWeight.Medium)
         .margin({ top: 80 })
         .onClick(() => {
-          this.text = 'click the button'
-          this.promptAction.showToast({ message: 'you click the button.', duration: 3000 })
+          this.text = 'click the button';
+          this.promptAction.showToast({ message: 'you click the button.', duration: 3000 });
         })
     }
     .width('100%')
@@ -245,7 +248,7 @@ struct ListExample {
     .padding({ left: 12, right: 12, bottom: 24 })
     .onChildTouchTest((touchInfo) => {
       for (let info of touchInfo) {
-        if (info.id == 'MyList') {
+        if (info.id === 'MyList') {
           return { id: info.id, strategy: TouchTestStrategy.FORWARD }
         }
       }
@@ -268,9 +271,9 @@ import { PromptAction } from '@kit.ArkUI';
 @Entry
 @Component
 struct ListExample {
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   promptAction: PromptAction = this.getUIContext().getPromptAction();
-  @State text: string = 'Button'
+  @State text: string = 'Button';
 
   build() {
     Column() {
@@ -291,11 +294,11 @@ struct ListExample {
       .scrollBar(BarState.Off)
       .edgeEffect(EdgeEffect.Spring)
       .onScrollIndex((start: number, end: number) => {
-        console.info(`first ${start}`)
-        console.info(`last ${end}`)
+        console.info(`first ${start}`);
+        console.info(`last ${end}`);
       })
       .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-        console.info(`onScroll scrollState = ScrollState ${scrollState.toString()}, scrollOffset = ${scrollOffset}`)
+        console.info(`onScroll scrollState = ScrollState ${scrollState.toString()}, scrollOffset = ${scrollOffset}`);
       })
       .width('100%')
       .height('65%')
@@ -309,8 +312,8 @@ struct ListExample {
         .fontWeight(FontWeight.Medium)
         .margin({ top: 80 })
         .onClick(() => {
-          this.text = 'click the button'
-          this.promptAction.showToast({ message: 'you click the button.', duration: 3000 })
+          this.text = 'click the button';
+          this.promptAction.showToast({ message: 'you click the button.', duration: 3000 });
         })
     }
     .width('100%')
@@ -318,7 +321,7 @@ struct ListExample {
     .backgroundColor(0xF1F3F5)
     .justifyContent(FlexAlign.End)
     .padding({ left: 12, right: 12, bottom: 24 })
-    .onChildTouchTest((touchInfo) => {
+    .onChildTouchTest(() => {
       return { strategy: TouchTestStrategy.DEFAULT }
     })
   }

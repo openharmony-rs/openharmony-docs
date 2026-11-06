@@ -72,11 +72,11 @@ import { relationalStore } from '@kit.ArkData';
 
 commit(): Promise&lt;void&gt;
 
-提交已执行的SQL语句，使用Promise异步回调。如果是使用异步接口执行sql语句，请确保异步接口执行完成之后再调用commit接口，否则可能会丢失SQL操作。调用commit接口之后，该Transaction对象及创建的ResultSet对象都将被关闭。
+提交已执行的SQL语句，使用Promise异步回调。如果是使用异步接口执行SQL语句，请确保异步接口执行完成之后再调用commit接口，否则可能会丢失SQL操作。调用commit接口之后，该Transaction对象及创建的ResultSet对象都将被关闭。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
@@ -127,7 +127,7 @@ rollback(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
@@ -194,7 +194,7 @@ insert(table: string, values: ValuesBucket, conflict?: ConflictResolution): Prom
 | values   | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)               | 是   | 表示要插入到表中的数据行。 |
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| 否   | 指定冲突解决模式。默认值是relationalStore.ConflictResolution.ON_CONFLICT_NONE。         |
 
-**返回值**：
+**返回值：**
 
 | 类型                  | 说明                                              |
 | --------------------- | ------------------------------------------------- |
@@ -275,7 +275,7 @@ insertSync(table: string, values: ValuesBucket | sendableRelationalStore.ValuesB
 | values   | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) \| [sendableRelationalStore.ValuesBucket](./js-apis-data-sendableRelationalStore.md#valuesbucket)   | 是   | 表示要插入到表中的数据行。                                   |
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| 否   | 指定冲突解决模式。默认值是relationalStore.ConflictResolution.ON_CONFLICT_NONE。 |
 
-**返回值**：
+**返回值：**
 
 | 类型   | 说明                                 |
 | ------ | ------------------------------------ |
@@ -364,7 +364,7 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;): Promise&lt;number
 | table  | string                                     | 是   | 指定的目标表名，不能为空字符串。             |
 | values | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | 是   | 表示要插入到表中的一组数据。|
 
-**返回值**：
+**返回值：**
 
 | 类型                  | 说明                                                        |
 | --------------------- | ----------------------------------------------------------- |
@@ -459,7 +459,7 @@ batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;): number
 | table  | string                                     | 是   | 指定的目标表名，不能为空字符串。             |
 | values | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | 是   | 表示要插入到表中的一组数据。 |
 
-**返回值**：
+**返回值：**
 
 | 类型   | 说明                                           |
 | ------ | ---------------------------------------------- |
@@ -559,7 +559,7 @@ batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&g
 | values | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | 是   | 表示要插入到表中的一组数据。|
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| 是   | 指定冲突解决模式。如果是ON_CONFLICT_ROLLBACK模式，当发生冲突时会回滚整个事务。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                  | 说明                                                        |
 | --------------------- | ----------------------------------------------------------- |
@@ -667,7 +667,7 @@ batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBuck
 | values | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | 是   | 表示要插入到表中的一组数据。 |
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| 是   | 指定冲突解决模式。如果是ON_CONFLICT_ROLLBACK模式，当发生冲突时会回滚整个事务。 |
 
-**返回值**：
+**返回值：**
 
 | 类型   | 说明                                           |
 | ------ | ---------------------------------------------- |
@@ -768,7 +768,7 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -849,7 +849,7 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -930,7 +930,7 @@ update(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictResol
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)            | 是   | RdbPredicates的实例对象指定的更新条件。                      |
 | conflict   | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| 否   | 指定冲突解决模式。默认值是relationalStore.ConflictResolution.ON_CONFLICT_NONE。                                          |
 
-**返回值**：
+**返回值：**
 
 | 类型                  | 说明                                      |
 | --------------------- | ----------------------------------------- |
@@ -1013,7 +1013,7 @@ updateSync(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictR
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)             | 是   | RdbPredicates的实例对象指定的更新条件。                      |
 | conflict   | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| 否   | 指定冲突解决模式。默认值是relationalStore.ConflictResolution.ON_CONFLICT_NONE。 |
 
-**返回值**：
+**返回值：**
 
 | 类型   | 说明               |
 | ------ | ------------------ |
@@ -1090,7 +1090,7 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1169,7 +1169,7 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1244,7 +1244,7 @@ delete(predicates: RdbPredicates):Promise&lt;number&gt;
 | ---------- | ------------------------------------ | ---- | ----------------------------------------- |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的删除条件。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                  | 说明                            |
 | --------------------- | ------------------------------- |
@@ -1311,7 +1311,7 @@ deleteSync(predicates: RdbPredicates): number
 | ---------- | ------------------------------- | ---- | --------------------------------------- |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的删除条件。 |
 
-**返回值**：
+**返回值：**
 
 | 类型   | 说明               |
 | ------ | ------------------ |
@@ -1371,7 +1371,7 @@ deleteWithReturning(predicates: RdbPredicates, config: ReturningConfig): Promise
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1435,7 +1435,7 @@ deleteWithReturningSync(predicates: RdbPredicates, config: ReturningConfig): Res
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1506,7 +1506,7 @@ query(predicates: RdbPredicates, columns?: Array&lt;string&gt;): Promise&lt;Resu
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的查询条件。        |
 | columns    | Array&lt;string&gt;                  | 否   | 表示要查询的列。如果值为空，则查询应用于所有列。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                                    | 说明                                               |
 | ------------------------------------------------------- | -------------------------------------------------- |
@@ -1550,7 +1550,7 @@ if (store != undefined) {
         const salary = resultSet.getDouble(resultSet.getColumnIndex('SALARY'));
         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
       resultSet.close();
       await transaction.commit();
     } catch (error) {
@@ -1580,7 +1580,7 @@ querySync(predicates: RdbPredicates, columns?: Array&lt;string&gt;): ResultSet
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的查询条件。                      |
 | columns    | Array&lt;string&gt;             | 否   | 表示要查询的列。如果值为空，则查询应用于所有列。默认值为空。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                    | 说明                                |
 | ----------------------- | ----------------------------------- |
@@ -1624,7 +1624,7 @@ if (store != undefined) {
         const salary = resultSet.getDouble(resultSet.getColumnIndex('SALARY'));
         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
       resultSet.close();
       await transaction.commit();
     } catch (error) {
@@ -1654,7 +1654,7 @@ querySql(sql: string, args?: Array&lt;ValueType&gt;): Promise&lt;ResultSet&gt;
 | sql      | string                               | 是   | 指定要执行的SQL语句，不能为空字符串。                                        |
 | args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                                    | 说明                                               |
 | ------------------------------------------------------- | -------------------------------------------------- |
@@ -1695,7 +1695,7 @@ if (store != undefined) {
         const salary = resultSet.getDouble(resultSet.getColumnIndex('SALARY'));
         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
       resultSet.close();
       await transaction.commit();
     } catch (error) {
@@ -1725,7 +1725,7 @@ querySqlSync(sql: string, args?: Array&lt;ValueType&gt;): ResultSet
 | sql      | string                               | 是   | 指定要执行的SQL语句，不能为空字符串。                                        |
 | args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                    | 说明                                |
 | ----------------------- | ----------------------------------- |
@@ -1766,7 +1766,7 @@ if (store != undefined) {
         const salary = resultSet.getDouble(resultSet.getColumnIndex('SALARY'));
         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
       resultSet.close();
       await transaction.commit();
     } catch (error) {
@@ -1789,7 +1789,7 @@ queryWithoutRowCount(predicates: RdbPredicates, columns?: Array&lt;string&gt;): 
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1798,7 +1798,7 @@ queryWithoutRowCount(predicates: RdbPredicates, columns?: Array&lt;string&gt;): 
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的查询条件。                      |
 | columns    | Array&lt;string&gt;             | 否   | 表示要查询的列。如果值为空，则查询应用于所有列。默认值为空。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                    | 说明                                |
 | ----------------------- | ----------------------------------- |
@@ -1833,13 +1833,13 @@ async function queryWithoutRowCountExample(store : relationalStore.RdbStore) {
             const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
             console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
           }
-          // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+          // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
           resultSet.close();
         }
         await transaction.commit();
       } catch (err) {
         console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-        // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+        // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
         if (resultSet != undefined) {
           resultSet.close();
         }
@@ -1860,7 +1860,7 @@ queryWithoutRowCountSync(predicates: RdbPredicates, columns?: Array&lt;string&gt
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1869,7 +1869,7 @@ queryWithoutRowCountSync(predicates: RdbPredicates, columns?: Array&lt;string&gt
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的查询条件。                      |
 | columns    | Array&lt;string&gt;             | 否   | 表示要查询的列。如果值为空，则查询应用于所有列。默认值为空。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                    | 说明                                |
 | ----------------------- | ----------------------------------- |
@@ -1904,13 +1904,13 @@ async function queryWithoutRowCountSyncExample(store : relationalStore.RdbStore)
             const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
             console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
           }
-          // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+          // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
           resultSet.close();
         }
         await transaction.commit();
       } catch (err) {
         console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-        // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+        // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
         if (resultSet != undefined) {
           resultSet.close();
         }
@@ -1929,7 +1929,7 @@ querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise
 
 根据指定条件查询数据库中的数据，查询时不计算行数。使用Promise异步回调。性能优于[querySql](#querysql14)接口。SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1940,7 +1940,7 @@ querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise
 | sql      | string                               | 是   | 指定要执行的SQL语句，不能为空字符串。                                        |
 | bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                                    | 说明                                               |
 | ------------------------------------------------------- | -------------------------------------------------- |
@@ -1952,7 +1952,7 @@ querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
-| 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800014  | The target instance is already closed. |
 
 **示例：**
@@ -1961,8 +1961,8 @@ querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise
 async function querySqlWithoutRowCountExample(store : relationalStore.RdbStore) {
   if (store != undefined) {
     try {
-    const transaction = await store.createTransaction();
-    let resultSet: relationalStore.LiteResultSet | undefined;
+      const transaction = await store.createTransaction();
+      let resultSet: relationalStore.LiteResultSet | undefined;
       try {
         resultSet = await transaction.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
         if (resultSet != undefined) {
@@ -1974,20 +1974,20 @@ async function querySqlWithoutRowCountExample(store : relationalStore.RdbStore) 
             const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
             console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
           }
-          // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+          // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
           resultSet.close();
         }
         await transaction.commit();
       } catch (err) {
         console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-        // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+        // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
         if (resultSet != undefined) {
           resultSet.close();
         }
         await transaction.rollback();
       }
     } catch (err) {
-    console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
+      console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
     }
   }
 }
@@ -1999,7 +1999,7 @@ querySqlWithoutRowCountSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):Lite
 
 根据指定SQL语句查询数据库中的数据，查询时不计算行数。SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。对querySqlWithoutRowCountSync同步接口获得的LiteResultSet进行操作时，若逻辑复杂且循环次数过多，可能造成freeze问题，建议将此步骤放到[taskpool](../apis-arkts/js-apis-taskpool.md)线程中执行。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2010,7 +2010,7 @@ querySqlWithoutRowCountSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):Lite
 | sql      | string                               | 是   | 指定要执行的SQL语句，不能为空字符串。                                        |
 | bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                    | 说明                                |
 | ----------------------- | ----------------------------------- |
@@ -2022,7 +2022,7 @@ querySqlWithoutRowCountSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):Lite
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
-| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800014     | The target instance is already closed. |
 
 **示例：**
@@ -2031,8 +2031,8 @@ querySqlWithoutRowCountSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):Lite
 async function querySqlWithoutRowCountSyncExample(store : relationalStore.RdbStore) {
   if (store != undefined) {
     try {
-    const transaction = await store.createTransaction();
-    let resultSet: relationalStore.LiteResultSet | undefined;
+      const transaction = await store.createTransaction();
+      let resultSet: relationalStore.LiteResultSet | undefined;
       try {
         resultSet = transaction.querySqlWithoutRowCountSync('select * from EMPLOYEE where name = ?', ["Rose"]);
         if (resultSet != undefined) {
@@ -2044,20 +2044,20 @@ async function querySqlWithoutRowCountSyncExample(store : relationalStore.RdbSto
             const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
             console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
           }
-          // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+          // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
           resultSet.close();
         }
         await transaction.commit();
       } catch (err) {
         console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-        // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+        // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
         if (resultSet != undefined) {
           resultSet.close();
         }
         await transaction.rollback();
       }
     } catch (err) {
-    console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
+      console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
     }
   }
 }
@@ -2086,7 +2086,7 @@ execute(sql: string, args?: Array&lt;ValueType&gt;): Promise&lt;ValueType&gt;
 | sql      | string                               | 是   | 指定要执行的SQL语句，不能为空字符串。                                        |
 | args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
@@ -2099,7 +2099,7 @@ execute(sql: string, args?: Array&lt;ValueType&gt;): Promise&lt;ValueType&gt;
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported.<br>4. The sql(attach,begin,commit,rollback etc.). |
 | 14800000  | Inner error. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800014  | The target instance is already closed. |
@@ -2162,7 +2162,7 @@ executeSync(sql: string, args?: Array&lt;ValueType&gt;): ValueType
 | sql    | string                               | 是   | 指定要执行的SQL语句，不能为空字符串。                                        |
 | args   | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。该参数不填，或者填null或undefined，都认为是sql参数语句完整。默认值为空。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                    | 说明                |
 | ----------------------- | ------------------- |
@@ -2175,7 +2175,7 @@ executeSync(sql: string, args?: Array&lt;ValueType&gt;): ValueType
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported.<br>4. The sql(attach,begin,commit,rollback etc.). |
 | 14800000     | Inner error.                                                 |
 | 14800011     | The current operation failed because the database is corrupted.                                          |
 | 14800014     | The target instance is already closed.                                              |

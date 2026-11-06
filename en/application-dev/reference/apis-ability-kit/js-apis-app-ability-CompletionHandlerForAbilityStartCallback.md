@@ -3,8 +3,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=3710d9e6218f1ff30d75ca1e496a60e0f8529dc7 translatedAt=2026-09-03T10:09:19.335Z pushedAt=2026-09-05T10:47:30.356Z -->
 
 **CompletionHandlerForAbilityStartCallback** is an optional parameter of [AbilityStartCallback](js-apis-inner-application-abilityStartCallback.md). It provides callback results for launching ability components of specific types through the vertical panel.
 
@@ -34,7 +35,7 @@ import { CompletionHandlerForAbilityStartCallback } from '@kit.AbilityKit';
 | onRequestSuccess | [OnRequestSuccessFn](#onrequestsuccessfn) | No   | Yes   | Callback invoked when the specified ability is successfully launched.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 | onRequestFailure     | [OnRequestFailureFn](#onrequestfailurefn) | No   | Yes   | Callback invoked when launching the specified ability fails.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 
-## OnRequestSuccessFn 
+## OnRequestSuccessFn
 
 type OnRequestSuccessFn = (name: string) => void
 
@@ -95,7 +96,7 @@ struct Index {
   };
   abilityStartCallback: common.AbilityStartCallback = {
     onError: (code: number, name: string, message: string) => {
-      console.info(`testTag code:` + code + `name:` + name + `message:` + message);
+      console.error(`testTag code:` + code + `name:` + name + `message:` + message);
     },
     onResult: (abilityResult: common.AbilityResult) => {
       console.info(`testTag resultCode:` + abilityResult.resultCode + `bundleName:` + abilityResult.want?.bundleName);
@@ -118,7 +119,7 @@ struct Index {
           this.context.startAbilityByType("share", wantParam, this.abilityStartCallback).then(() => {
             console.info(`startAbilityByType success`);
           }).catch((err: BusinessError) => {
-            console.error(`startAbilityByType fail, err: ${JSON.stringify(err)}`);
+            console.error(`Failed startAbilityByType. Code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
           });
         })
     }
@@ -127,7 +128,7 @@ struct Index {
 
 ```
 
-## AbilityStartFailureCode 
+## AbilityStartFailureCode
 
 Enumerates the specific error codes for ability launch failures.
 

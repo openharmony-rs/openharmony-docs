@@ -7,7 +7,7 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-从API version 21开始，可以选择使用硬件熵源生成安全随机数。
+从API版本21开始，可以选择使用硬件熵源生成安全随机数。
 
 随机数主要用于临时会话密钥生成和非对称加密算法密钥生成等场景。在加解密场景中，安全随机数生成器需要具备随机性、不可预测性和不可重现性。
 
@@ -62,8 +62,10 @@
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   async function doRand() {
+    try {
       let rand = cryptoFramework.createRandom();
       rand.enableHardwareEntropy();
       let seed = new Uint8Array([1, 2, 3]);
@@ -71,7 +73,11 @@
       let len = 12;
       let randOutput = await rand.generateRandom(len);
       console.info('rand output: ' + randOutput.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
+  }
   ```
 
 
@@ -86,7 +92,7 @@
   function doRandBySync() {
     let rand = cryptoFramework.createRandom();
     rand.enableHardwareEntropy();
-    let len = 24; // Generate a 24-byte random number.
+    let len = 24; // 生成一个24字节的随机数。
     try {
       let randData = rand.generateRandomSync(len);
       if (randData.data.length !== 0) {

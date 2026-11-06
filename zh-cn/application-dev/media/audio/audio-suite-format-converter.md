@@ -6,26 +6,31 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-从API版本26.0.0开始，[AudioConverter](../../reference/apis-audio-kit/capi-audioconverter.md)给开发者提供PCM音频格式转换能力，在纯音频转码等场景下支持开发者使用格式转换接口将PCM（Pulse Code Modulation）音频数据从一种格式转换为另一种格式，包括采样率、声道布局、采样格式（位深）的转换。
+从API版本26.0.0开始，[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)给开发者提供PCM（Pulse Code Modulation）音频格式转换能力，在纯音频转码等场景下支持开发者使用格式转换接口将PCM音频数据从一种格式转换为另一种格式，包括采样率、声道布局、采样格式（位深）的转换。
 
 ## 开发步骤
 
-开发者使用[AudioConverter](../../reference/apis-audio-kit/capi-audioconverter.md)提供的PCM音频格式转换能力，添加对应的头文件。
+开发者使用[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)提供的PCM音频格式转换能力，添加对应的头文件。
 
 ### 在CMake脚本中链接动态库
 
-``` cmake
-target_link_libraries(sample PUBLIC libohaudiosuite.so)
+<!-- @[CMake_lib_suite_libohaudiosuite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
+target_link_libraries(entry PUBLIC libohaudiosuite.so)
 ```
+
 ### 添加头文件
 开发者通过引入头文件<[native_audio_converter.h](../../reference/apis-audio-kit/capi-native-audio-converter-h.md)>，使用音频格式转换相关API。
 
-```cpp
+<!-- @[format_conversion_header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
+
+``` C++
 #include <ohaudiosuite/native_audio_converter.h>
 ```
 音频格式转换相关接口返回值请参考：[OH_AudioConverter_Result](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_result)。
 
-详细的API说明请参考：[AudioConverter](../../reference/apis-audio-kit/capi-audioconverter.md)。
+详细的API说明请参考：[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)。
 
 **功能特性**
 
@@ -116,10 +121,11 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    创建输入数据回调函数`RequestDataCallback`，函数类型为[OH_AudioConverter_RequestDataCallback()](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_requestdatacallback)，调用[OH_AudioConverter_SetInputCallback()](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_setinputcallback)接口设置回调函数。
 
    输入数据回调函数。
+
    <!-- @[input_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
    
    ``` C++
-   // 设置输出数据指针。
+   // 设置输入数据指针。
    // 注意：数据指针的值并不一定要从userData中获取，也可以是存储数据的缓存地址。
    // 例如：从文件中读取数据放入缓存，然后将该缓存地址赋值给输出数据指针。
    // 只要确保数据指针在OH_AudioConverter_Process()返回前保持有效即可。
@@ -147,6 +153,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    ```
 
    设置输入数据回调。
+
    <!-- @[set_input_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
    
    ``` C++
@@ -217,6 +224,8 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    OH_AudioConverter_Destroy(converter);
    ```
    
-## 完整示例
+<!--RP1-->
+## 完整示例代码
 
 - [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
+<!--RP1End-->

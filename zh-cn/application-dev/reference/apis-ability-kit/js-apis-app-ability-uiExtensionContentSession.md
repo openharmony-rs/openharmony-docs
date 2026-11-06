@@ -425,7 +425,7 @@ setWindowPrivacyMode(isPrivacyMode: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
@@ -482,7 +482,7 @@ setWindowPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
@@ -520,7 +520,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 
 startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStartCallback: AbilityStartCallback, callback: AsyncCallback\<void>): void
 
-通过type隐式启动UIExtensionAbility。使用callback异步回调。仅支持处于前台的应用调用。
+通过type隐式启动UIExtensionAbility。使用callback异步回调。仅支持处于前台的应用调用。该接口不支持启动分身应用的UIExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -539,8 +539,13 @@ startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStart
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：11 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 16000001 | The specified ability does not exist. <br>适用版本：11 |
+| 16000002 | Incorrect ability type. <br>适用版本：11 |
+| 16000004 | Cannot start an invisible component. <br>适用版本：11 |
 | 16000050 | Internal error. |
+| 16200001 | The caller has been released. <br>适用版本：11 |
 
 **示例：**
 
@@ -582,7 +587,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 
 startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStartCallback: AbilityStartCallback): Promise\<void>
 
-通过type隐式启动UIExtensionAbility组件。使用Promise异步回调。仅支持处于前台的应用调用。
+通过type隐式启动UIExtensionAbility组件。使用Promise异步回调。仅支持处于前台的应用调用。该接口不支持启动分身应用的UIExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -606,8 +611,13 @@ startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStart
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：11 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 16000001 | The specified ability does not exist. <br>适用版本：11 |
+| 16000002 | Incorrect ability type. <br>适用版本：11 |
+| 16000004 | Cannot start an invisible component. <br>适用版本：11 |
 | 16000050 | Internal error. |
+| 16200001 | The caller has been released. <br>适用版本：11 |
 
 **示例：**
 

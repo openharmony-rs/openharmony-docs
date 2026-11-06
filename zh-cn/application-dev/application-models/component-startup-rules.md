@@ -21,7 +21,7 @@
 
 - 后台应用任意弹框，如各种广告弹窗，影响用户使用。
 
-- 后台应用相互唤醒，不合理的占用系统资源，导致系统功耗增加或系统卡顿。
+- 后台应用相互唤醒，不合理地占用系统资源，导致系统功耗增加或系统卡顿。
 
 - 前台应用任意跳转至其他应用，如随意跳转到其他应用的支付页面，存在安全风险。
 
@@ -55,7 +55,7 @@
 
 - 启动ServiceExtensionAbility、DataShareExtensionAbility。
 
-- 通过[startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口启动UIAbility。
+- 通过[startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口启动UIAbility。
 
 > **说明：**
 > 
@@ -72,7 +72,7 @@
 
 - 启动ServiceExtensionAbility、DataShareExtensionAbility。
 
-- 通过[startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口启动UIAbility。
+- 通过[startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口启动UIAbility。
 
 > **说明：**
 > 

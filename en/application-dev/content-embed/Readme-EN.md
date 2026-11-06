@@ -13,4 +13,3 @@
 - [Client Application Development](content-embed-client-guidelines.md)
 - [Content Embed Kit FAQs](content-embed-faq.md)
 - [Content Embed Kit Terminology](content-embed-kit-terminology.md)
-

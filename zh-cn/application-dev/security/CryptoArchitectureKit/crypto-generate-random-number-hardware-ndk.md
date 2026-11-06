@@ -7,7 +7,7 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-从API version 21开始，可以选择使用硬件熵源生成安全随机数。
+从API版本21开始，可以选择使用硬件熵源生成安全随机数。
 
 随机数主要用于临时会话密钥生成和非对称加密算法密钥生成等场景。在加解密场景中，安全随机数生成器需要具备随机性、不可预测性和不可重现性。
 
@@ -43,6 +43,11 @@
 | 算法 | 长度（Byte） |
 | -------- | -------- |
 | CTR_DRBG | [1, INT_MAX] |
+
+## 在CMake脚本中链接相关动态库
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
 
 ## 开发步骤
 

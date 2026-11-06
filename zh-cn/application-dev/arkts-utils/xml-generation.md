@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用XmlSerializer生成XML的方法：通过写入标签、属性与文本等内容构建规范的XML文档，涵盖开发步骤与注意事项，适用于配置文件、数据交换报文等XML内容生成场景。"
+keywords: [XML生成, XmlSerializer, 标签写入, 属性设置, 文档构建, 数据交换]
+doctype: guide
+status: active
+---
+
 # XML生成
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 
 XML可以作为数据交换格式，被各种系统和应用程序支持。例如Web服务，可以将结构化数据以XML格式进行传递。

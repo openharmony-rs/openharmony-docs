@@ -16,7 +16,7 @@
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 
-2. 基于已有的X509证书数据，调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建证书对象。
+2. 基于已有的X.509证书数据，调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建证书对象。
 
 3. 解析证书的字段信息。
 
@@ -24,7 +24,7 @@
 
 4. 调用[X509Cert.getPublicKey](../../reference/apis-device-certificate-kit/js-apis-cert.md#getpublickey)获取证书中的公钥，并调用[X509Cert.verify](../../reference/apis-device-certificate-kit/js-apis-cert.md#verify)校验签名。示例为自验签场景，因此获取的是本证书中的公钥。应用须结合自身场景获取用于验签的公钥。
 
-5. 调用[X509Cert.checkValidityWithDate](../../reference/apis-device-certificate-kit/js-apis-cert.md#checkvaliditywithdate)校验证书有效期。入参date用于确认此日期是否在X509证书有效期内。
+5. 调用[X509Cert.checkValidityWithDate](../../reference/apis-device-certificate-kit/js-apis-cert.md#checkvaliditywithdate)校验证书有效期。入参date用于确认此日期是否在X.509证书有效期内。
 
 <!-- @[certificate_object_creation_resolution_validation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateParseVerifyCertObject.ets) -->
 
@@ -77,8 +77,8 @@ function certSample(): void {
 
     // 获取证书主体名称。
     let subjectNameBin = x509Cert.getSubjectName(cert.EncodingType.ENCODING_UTF8);
-    let encoder = util.TextDecoder.create();
-    let subjectName = encoder.decodeToString(subjectNameBin.data);
+    let decoder = util.TextDecoder.create();
+    let subjectName = decoder.decodeToString(subjectNameBin.data);
     console.info(`X509 subjectName: ${subjectName}`);
 
     // 获取证书对象的字符串类型数据。
@@ -89,7 +89,7 @@ function certSample(): void {
     try {
       let pubKey = x509Cert.getPublicKey();
       // 验证证书签名。
-      x509Cert.verify(pubKey, (err, data) => {
+      x509Cert.verify(pubKey, (err, _result) => {
         if (err == null) {
           // 签名验证成功。
           console.info('verify result: success.');

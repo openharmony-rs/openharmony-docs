@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "提供使用TaskPool提升ArkUI瀑布流渲染性能的开发指导：将数据库查询等耗时操作放入子线程执行并返回数据，UI线程感知数据更新后渲染WaterFlow瀑布流组件，避免大数据量下主线程长时间等待。"
+keywords: [瀑布流渲染, WaterFlow, TaskPool, 渲染性能优化, 子线程查询, 数据库读取, UI数据更新]
+doctype: guide
+status: active
+---
+
 # ArkUI瀑布流渲染场景
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 此处提供使用任务池[TaskPool](../reference/apis-arkts/js-apis-taskpool.md)提升[WaterFlow瀑布流](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)渲染性能的开发指导。UI线程查询数据库数据，并将数据渲染到瀑布流组件，数据过大时会导致UI线程长时间等待，影响用户体验。因此，我们可以将数据查询操作放到子线程中，并通过TaskPool的接口返回数据给UI线程。
 
@@ -251,10 +259,11 @@
                    Text($r('app.string.Image_loading')) // 加载资源，可根据项目实际资源自定义
                      .width('100%')
                      .layoutWeight(1);
+                 } else {
+                   Text(img[item % 33])
+                     .width('100%')
+                     .layoutWeight(1);
                  }
-                 Text(img[item % 33])
-                   .width('100%')
-                   .layoutWeight(1);
                }
              }
              .onAppear(() => {
@@ -267,8 +276,8 @@
              })
              .width('100%')
              .height(this.itemHeightArray[item % 100])
-             .backgroundColor(this.colors[item % 5])
-           }, (item: string) => item)
+             .backgroundColor(this.colors[item % 6])
+           }, (item: number) => item.toString())
          }
          .columnsTemplate('1fr 1fr')
          .columnsGap(10)

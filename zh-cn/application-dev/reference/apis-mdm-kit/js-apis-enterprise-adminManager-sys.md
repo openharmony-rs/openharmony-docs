@@ -1,4 +1,4 @@
-# @ohos.enterprise.adminManager（admin权限管理）(系统接口)
+# @ohos.enterprise.adminManager (admin权限管理)(系统接口)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
@@ -545,7 +545,7 @@ isAdminEnabled(admin: Want, userId?: number): Promise\<boolean>
 
 | 类型               | 说明                |
 | ----------------- | ------------------- |
-| Promise\<boolean> | Promise对象, 返回true表示指定的设备管理应用被激活，返回false表示指定的设备管理应用未激活。|
+| Promise\<boolean> | Promise对象，返回true表示指定的设备管理应用被激活，返回false表示指定的设备管理应用未激活。|
 
 **错误码**:
 
@@ -645,7 +645,7 @@ isSuperAdmin(bundleName: String): Promise\<boolean>
 
 | 类型           | 说明              |
 | ----------------- | ------------------- |
-| Promise\<boolean> | Promise对象, 返回true表示指定的超级设备管理应用被激活，返回false表示指定的超级设备管理应用未激活。 |
+| Promise\<boolean> | Promise对象，返回true表示指定的超级设备管理应用被激活，返回false表示指定的超级设备管理应用未激活。 |
 
 **错误码**:
 
@@ -936,11 +936,15 @@ adminManager.getEnterpriseInfo(wantTemp).then((result) => {
 });
 ```
 
-## adminManager.subscribeManagedEvent
+## adminManager.subscribeManagedEvent<sup>(deprecated)</sup>
 
 subscribeManagedEvent(admin: Want, managedEvents: Array\<ManagedEvent>, callback: AsyncCallback\<void>): void
 
 订阅系统管理事件。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [subscribeManagedEventSync](./js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SUBSCRIBE_MANAGED_EVENT
 
@@ -992,11 +996,15 @@ adminManager.subscribeManagedEvent(wantTemp, events, (err) => {
 });
 ```
 
-## adminManager.subscribeManagedEvent
+## adminManager.subscribeManagedEvent<sup>(deprecated)</sup>
 
 subscribeManagedEvent(admin: Want, managedEvents: Array\<ManagedEvent>): Promise\<void>
 
 订阅系统管理事件。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [subscribeManagedEventSync](./js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SUBSCRIBE_MANAGED_EVENT
 
@@ -1051,11 +1059,15 @@ adminManager.subscribeManagedEvent(wantTemp, events).then(() => {
 })
 ```
 
-## adminManager.unsubscribeManagedEvent
+## adminManager.unsubscribeManagedEvent<sup>(deprecated)</sup>
 
 unsubscribeManagedEvent(admin: Want, managedEvents: Array\<ManagedEvent>, callback: AsyncCallback\<void>): void
 
 取消订阅系统管理事件。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [unsubscribeManagedEventSync](./js-apis-enterprise-adminManager.md#adminmanagerunsubscribemanagedeventsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SUBSCRIBE_MANAGED_EVENT
 
@@ -1107,11 +1119,15 @@ adminManager.unsubscribeManagedEvent(wantTemp, events, (err) => {
 });
 ```
 
-## adminManager.unsubscribeManagedEvent
+## adminManager.unsubscribeManagedEvent<sup>(deprecated)</sup>
 
 unsubscribeManagedEvent(admin: Want, managedEvents: Array\<ManagedEvent>): Promise\<void>
 
 取消订阅系统管理事件。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [unsubscribeManagedEventSync](./js-apis-enterprise-adminManager.md#adminmanagerunsubscribemanagedeventsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SUBSCRIBE_MANAGED_EVENT
 
@@ -1453,9 +1469,9 @@ setDelegatedPolicies(bundleName: string, accountId: number, policies: Array&lt;s
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| bundleName | String                  | 是    | 将要被委托的管理应用的包名。被委托应用的分发类型需为enterprise_normal和enterprise_mdm，可以通过[bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口查询应用自身的BundleInfo，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。        |
-| accountId         | number                              | 是    | 用户ID，指定具体用户，取值范围：大于等于0。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) |
-| policies |  Array&lt;string&gt;                   | 是   | [委托策略列表](./js-apis-enterprise-adminManager.md#可委托策略列表)。 |
+| bundleName | string                  | 是    | 将要被委托的管理应用的包名。被委托应用的分发类型需为enterprise_normal和enterprise_mdm，可以通过[bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口查询应用自身的BundleInfo，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。        |
+| accountId         | number                              | 是    | 用户ID，指定具体用户，取值范围：大于等于0。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) |
+| policies |  Array&lt;string&gt;                   | 是   | [委托策略列表](../../mdm/mdm-kit-appendix.md#可委托策略列表)。 |
 
 **错误码**：
 
@@ -1465,7 +1481,7 @@ setDelegatedPolicies(bundleName: string, accountId: number, policies: Array&lt;s
 | ------- | ----------------------------------------------------- |
 | 9200009 | Failed to grant the permission to the application. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
@@ -1484,6 +1500,45 @@ try {
 } catch (err) {
   console.error(`Failed to set delegated policies. Code: ${err.code}, message: ${err.message}`);
 }
+```
+
+## adminManager.getEnterpriseManagedTips<sup>23+</sup>
+
+getEnterpriseManagedTips(): Promise&lt;string&gt;
+
+获取锁屏界面设备管理提示语。使用Promise异步回调。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**返回值：**
+
+| 类型   | 说明                                  |
+| ----- | ----------------------------------- |
+| Promise&lt;string&gt; | Promise对象，返回锁屏界面设备管理提示语。当获取锁屏界面设备管理提示语失败时，会抛出错误对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                               |
+| ------- | ----------------------------------------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```ts
+import { adminManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+adminManager.getEnterpriseManagedTips().then((result) => {
+  console.info(`Succeeded in getting enterprise managed tips: ${result}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get enterprise managed tips. Code: ${err.code}, message: ${err.message}`);
+})
 ```
 
 ## EnterpriseInfo

@@ -59,7 +59,6 @@
       if (err) {
         console.error(`createOsAccount code is ${err.code}, message is ${err.message}`);
       } else {
-        this.createLocalId = osAccountInfo.localId;
         console.info('createOsAccount osAccountInfo:' + JSON.stringify(osAccountInfo));
       }
     });
@@ -76,7 +75,7 @@
    ```ts
     accountManager.queryAllCreatedOsAccounts((err: BusinessError, accountArr: osAccount.OsAccountInfo[])=>{
       if (err) {
-        console.info(`queryAllCreatedOsAccounts code is ${err.code}, message is ${err.message}`);
+        console.error(`queryAllCreatedOsAccounts code is ${err.code}, message is ${err.message}`);
       } else {
         console.info('queryAllCreatedOsAccounts accountArr:' + JSON.stringify(accountArr));
       }

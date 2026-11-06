@@ -136,7 +136,7 @@ struct RepeatExampleWithTemplates {
           .key((item: string, index: number): string => JSON.stringify(item)) // Key generator.
           .virtualScroll({ totalCount: this.dataArr.length }) // Enable lazy loading. totalCount indicates the data length to be loaded.
           .templateId((item: string, index: number): string => { // Search for the corresponding template child component for rendering based on the return value.
-            return index <= 4 ? 'A' : (index <= 10 ? 'B' : ''); // The first five nodes use template A, the next five nodes use template B, and the others use the default template.
+            return index <= 4 ? 'A' : (index <= 10 ? 'B' : ''); // The first five nodes use template A, the next six nodes use template B, and the others use the default template.
           })
           .template('A', (ri: RepeatItem<string>) => { // Template A.
             ListItem() {
@@ -181,11 +181,13 @@ When using **.key()**, pay attention to the following:
 
 Key value generation example:
 
-```ts
+<!-- @[repeat_key_generation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatKeyGeneration.ets) -->
+
+``` TypeScript
 @ObservedV2
 class ExampleData {
-  @Trace str: string;
-  num: number;
+  @Trace public str: string;
+  public num: number;
 
   constructor(s: string, n: number) {
     this.str = s;
@@ -195,7 +197,7 @@ class ExampleData {
 
 @Entry
 @ComponentV2
-struct Index {
+struct RepeatKeyGeneration {
   @Local exampleList: Array<ExampleData> = [];
 
   aboutToAppear(): void {
@@ -256,6 +258,8 @@ For scenarios involving short lists or requiring immediate loading of all compon
 By default, node reuse is enabled for **Repeat**. Since API version 18, you can configure the **reusable** field to enable node reuse in lazy loading mode. For better rendering performance, you are advised to keep node reuse enabled. For a code example, see [VirtualScrollOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions).
 
 Since API version 18, **Repeat** supports [freezing custom components in the cache pool](../state-management/arkts-custom-components-freezeV2.md#repeat) in lazy loading mode.
+
+Since API version 18, **Repeat** allows custom components decorated with [@ReusableV2](../state-management/arkts-new-reusableV2.md) to be used in [.each()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#each). The reuse capability of **Repeat** takes precedence over that of @ReusableV2. In lazy loading mode, normal sliding and update scenarios do not trigger the recycling and reuse of @ReusableV2. If you want to use the reuse capability of @ReusableV2, you are advised to disable the reuse capability of Repeat. In full loading mode, deleting or creating a child component will trigger the recycling and reuse of @ReusableV2. For details, see [Using in the Repeat Component](../state-management/arkts-new-reusableV2.md#using-in-the-repeat-component) @ReusableV2.
 
 > **NOTE**
 > 
@@ -383,15 +387,15 @@ When the red text component is clicked, the third data item undergoes a content 
 
 **Node Reuse Inspection**
 
-You can verify node reuse using the DevEco Testing tool. After launching the tool, select the utility menu.
+You can verify node reuse using the [DevEco Testing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/deveco-testing) tool. After launching the tool, select the utility menu.
 
- 
+<!--Del-->   <!--DelEnd-->
 
 Choose **UIViewer** from the utility options. This tool captures device snapshots, component tree structures, and node attributes. In the component tree on the right, select the **Repeat** subnode. The node attributes displayed in the lower right corner include the node ID. You can determine whether a component has been reused or newly created by checking whether the node ID remains the same.
 
 ## Advanced Features
 
-In addition to the capabilities such as iterative rendering, lazy loading, and component reuse, **Repeat** also provides advanced features such as precise lazy loading, drag-and-drop sorting, and content position preservation. Use these features as required.
+In addition to the capabilities such as repeated content rendering, lazy loading, and component reuse, **Repeat** also provides advanced features such as precise lazy loading, drag-and-drop sorting, content position preservation, and proactive cache pool cleanup. Use these features as required.
 
 ### Precise Lazy Loading
 
@@ -702,7 +706,16 @@ The figure below shows the effect.
 
 ### animateTo Animation
 
-Since API version 24, when the parent container component is a [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md), the **Repeat** component can use the [animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) API to set transition animation effects for its child components within the display area.
+When **Repeat** is used together with animations, **Repeat**'s reuse capability conflicts with the animations, resulting in abnormal animation behavior.
+
+Since API version 24, when the parent container component is a [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md), the **Repeat** component can disable the reuse capability during animation so it can use the [animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) API to set transition animation effects for its child components within the display area.
+
+Since API version 26.1.0, when the parent container component is [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md), [Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md) or [WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md), you can use the **allowReuseInAnimation** attribute of [RepeatOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#repeatoptions) to set the child component reuse policy during the animation of **Repeat**. This allows you to control whether **Repeat** supports setting the transition animation effect for its child components in the display area through the [animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) API.
+
+allowReuseInAnimation description:
+- **true**: The reuse capability remains enabled during the animation.
+- **false**: The reuse capability is disabled during the animation to support the animation.
+- Default value: **false** when the parent container component of **Repeat** is **List**; **true** when the parent container component is **Grid** or **WaterFlow**.
 
 The rules for determining the transition animation of a **Repeat** child component are as follows:
 1. When a child component enters the visible area and preload area from outside, it is considered as an inserted component.
@@ -713,7 +726,7 @@ The rules for determining the transition animation of a **Repeat** child compone
 
 > **NOTE**
 >
-> - This attribute can only be used with the **List** component. When used with other container components, the animation effect is undefined.
+> - This attribute can only be used with the **List**, **Grid**, and **WaterFlow** component. When used with other container components, the animation effect is undefined.
 > - Only the animation effect of child components within the display area is supported. The animation effect of child components outside the display area is undefined.
 > - For details about how to set the transition animation and animation effect, see the [animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) API.
 
@@ -808,6 +821,84 @@ class ItemInfo {
 The figure below shows the effect.
 
 ![Repeat-animation](figures/repeat-animation.gif)
+
+### Proactively Clearing the Reuse Pool
+
+**Repeat** has a reuse pool in lazy loading mode. Child components removed from the component tree are stored in the cache pool for reuse. For details, see [Node Update and Reuse Mechanism](#node-update-and-reuse-mechanism).
+
+Since API version 26.1.0, you can use the [RepeatController](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#repeatcontroller) controller to proactively release components in the reuse pool in lazy loading mode.
+
+Usage: Create a **RepeatController** object and bind it through the controller field of [RepeatOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#repeatoptions) when creating a **Repeat** component. To clear the cache, call the [clearCache](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#clearcache) method on the controller.
+
+> **NOTE**
+>
+> 1. The controller is bound only when the Repeat component is created and cannot be dynamically modified.
+> 2. A controller can control only one Repeat component. If the controller is bound to another Repeat component, the previous binding automatically becomes invalid, and the controller controls only the last bound component.
+
+**Example**
+
+In the following example, when you click the Scroll button, the list is scrolled, and the old nodes are added to the cache pool. Click the Clear button to proactively clear the components in the Repeat cache pool.
+
+<!-- @[repeat_clearcache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatClearCache.ets) -->
+
+``` TypeScript
+@ComponentV2
+struct ChildComponent {
+  aboutToAppear() {
+    console.info('ChildComponent aboutToAppear');
+  }
+  aboutToDisappear() {
+    console.info('ChildComponent aboutToDisappear');
+  }
+  build() {
+    Text('ChildComponent')
+  }
+}
+
+@Entry
+@ComponentV2
+struct ClearCacheDemo {
+  @Local data: Array<number> = [];
+  // Create a RepeatController object.
+  private controller: RepeatController = new RepeatController();
+  private scroller: Scroller = new Scroller();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 100; i++) {
+      this.data.push(i);
+    }
+  }
+
+  build() {
+    Column() {
+      List({ scroller: this.scroller }) {
+        // Bind the controller using the controller field in RepeatOptions.
+        Repeat<number>(this.data, { controller: this.controller })
+          .each((repeatItem: RepeatItem<number>) => {
+            ListItem() {
+              ChildComponent()
+            }
+          })
+          .virtualScroll()
+      }
+      .cachedCount(5)
+      .height('80%')
+
+      Button('Scroll')
+        .onClick(() => {
+          // Click the button to trigger the list redirection, and the old component is added to the cache pool.
+          this.scroller.scrollToIndex(30);
+        })
+
+      Button('Clear')
+        .onClick(() => {
+          // Proactively clear idle nodes in the Repeat cache pool.
+          this.controller.clearCache();
+        })
+    }
+  }
+}
+```
 
 ## Use Cases
 
@@ -925,23 +1016,27 @@ struct RepeatVirtualScroll {
           })
           .virtualScroll({ totalCount: this.simpleList.length })
           .templateId((item: Repeat006Clazz, index: number) => {
-            return (index % 2 === 0) ? 'odd' : 'even';
+            return (index % 2 === 0) ? 'even' : 'odd';
           })
           .template('odd', (ri) => {
-            Text(`[odd] index${ri.index}: ${ri.item.message}`)
-              .fontSize(25)
-              .fontColor(Color.Blue)
-              .onClick(() => {
-                this.handleExchange(ri.index);
-              })
+            ListItem() {
+              Text(`[odd] index${ri.index}: ${ri.item.message}`)
+                .fontSize(25)
+                .fontColor(Color.Blue)
+                .onClick(() => {
+                  this.handleExchange(ri.index);
+                })
+            }
           }, { cachedCount: 3 })
           .template('even', (ri) => {
-            Text(`[even] index${ri.index}: ${ri.item.message}`)
-              .fontSize(25)
-              .fontColor(Color.Green)
-              .onClick(() => {
-                this.handleExchange(ri.index);
-              })
+            ListItem() {
+              Text(`[even] index${ri.index}: ${ri.item.message}`)
+                .fontSize(25)
+                .fontColor(Color.Green)
+                .onClick(() => {
+                  this.handleExchange(ri.index);
+                })
+            }
           }, { cachedCount: 1 })
       }
       .cachedCount(2)
@@ -956,7 +1051,7 @@ struct RepeatVirtualScroll {
 }
 ```
 
-This example demonstrates the implementation of 100 items using a custom class **RepeatClazz** with a string property **message**. The [cachedCount](../../reference/apis-arkui/arkui-ts/ts-container-list.md#cachedcount) attribute of the [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md) component is set to **2**, and the sizes of the idle node cache pools for the **'odd'** and **'even'** templates are set to **3** and **1**, respectively. After execution, the UI is displayed as shown below.
+This example demonstrates the implementation of 100 items using a custom class **Repeat006Clazz** with a string property **message**. The [cachedCount](../../reference/apis-arkui/arkui-ts/ts-container-list.md#cachedcount) attribute of the [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md) component is set to **2**, and the sizes of the idle node cache pools for the **'odd'** and **'even'** templates are set to **3** and **1**, respectively. After execution, the UI is displayed as shown below.
 
 ![Repeat-VirtualScroll-2T-Demo](figures/Repeat-VirtualScroll-2T-Demo.gif)
 
@@ -1612,7 +1707,9 @@ When **Repeat** is used together with [@Builder](../state-management/arkts-build
 
 The sample code is as follows:
 
-``` ts
+<!-- @[repeat_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatBuilderPage.ets) -->
+
+``` TypeScript
 import { UIUtils, Binding } from '@kit.ArkUI';
 
 @Entry
@@ -1651,9 +1748,12 @@ struct RepeatBuilderPage {
           .each((ri) => {
             ListItem() {
               Column({ space: 2 }) {
-                this.buildItem1(UIUtils.makeBinding<number>(() => ri.item)) // Use the UIUtils.makeBinding() function to update state variables within the @Builder function.
-                this.buildItem2(ri) // Reference passing: triggers UI refresh on data change.
-                this.buildItem3(ri.item) // Value passing: does not trigger UI refresh.
+                // Use the UIUtils.makeBinding () function to refresh state variables in the @Builder function.
+                this.buildItem1(UIUtils.makeBinding<number>(() => ri.item))
+                // Reference passing: triggers UI refresh on data change.
+                this.buildItem2(ri)
+                // Value passing: does not trigger UI refresh.
+                this.buildItem3(ri.item)
               }
             }.border({ width: 1 })
           }).virtualScroll()
@@ -1673,8 +1773,6 @@ struct RepeatBuilderPage {
   }
 }
 ```
-
-<!-- [repeat_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatBuilderPage.ets) -->
 
 In this example, parameters passed to @Builder include the following: **makeBinding()**, reference passing, and value passing. The figure below illustrates the UI behavior. When the button is clicked to update the data, components using value passing will not reflect the change in the UI.
 

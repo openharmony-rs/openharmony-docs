@@ -1,13 +1,15 @@
 #  使用WebGL绘制图形
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @samhu1989-->
 <!--Designer: @shi-yang-2012-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
+
 ## 场景介绍
 
-WebGL的全称为Web Graphics Library（网页图形库），主要用于交互式渲染2D图形。目前OpenHarmony中使用的WebGL是基于OpenGL裁剪的OpenGL ES，可以在HTML5的Canvas元素对象中使用，无需使用插件，支持跨平台。WebGL程序是由JavaScript代码组成的，其中使用的API可以利用用户设备提供的GPU硬件完成图形渲染和加速。更多信息请参考[WebGL™标准](https://www.khronos.org/registry/webgl/specs/latest/1.0/)。
+WebGL的全称为Web Graphics Library（网页图形库），主要用于交互式渲染2D图形。目前OpenHarmony中使用的WebGL是基于OpenGL裁剪的OpenGL ES，可以在HTML5的Canvas元素对象中使用，无需使用插件，支持跨平台。WebGL程序是由JavaScript代码组成的，其中使用的API可以利用用户设备提供的GPU硬件完成图形渲染和加速。更多信息请参考[WebGL™标准](https://registry.khronos.org/webgl/specs/latest/1.0/)。
 
 > **说明：**
 >
@@ -71,7 +73,7 @@ WebGL的全称为Web Graphics Library（网页图形库），主要用于交互�
 | webgl.createBuffer(): WebGLBuffer \| null                    | 创建与初始化WebGL数据缓冲区。                          |
 | webgl.bindBuffer(target: GLenum, buffer: WebGLBuffer \| null): void | 将WebGL数据缓冲区与目标进行绑定。                      |
 | webgl.bufferData(target: GLenum, srcData: ArrayBufferView, usage: GLenum, srcOffset: GLuint, length?: GLuint): void | 创建并初始化WebGL的数据存储区。                        |
-| webgl.getAttribLocation(program: WebGLProgram, name: string): GLint | 从给定WebGL着色程序中获取着色器中attribute变量的地址。 |
+| webgl.getAttribLocation(program: WebGLProgram, name: string): GLint | 从给定WebGL着色器程序中获取着色器中attribute变量的地址。 |
 | webgl.vertexAttribPointer(index GLuint, size: GLint, type: GLenum, normalized: GLboolean, stride: GLsizei, offset: GLintptr): void | 将缓冲区对象分配给变量。                               |
 | webgl.enableVertexAttribArray(index: GLuint): void           | 连接变量与分配给它的缓冲区对象。                       |
 | webgl.clearColor(red: GLclampf, green: GLclampf, blue: GLclampf, alpha: GLclampf): void | 清空canvas指定的颜色。                         |
@@ -82,7 +84,7 @@ WebGL的全称为Web Graphics Library（网页图形库），主要用于交互�
 
 ## 开发步骤
 
- 如下以实现一个彩色正方形为例，来演示使用WebGL绘制2D图形的过程。
+如下以实现一个彩色正方形为例，来演示使用WebGL绘制2D图形的过程。
  
 1. 使用WebGL进行3D渲染前，首先需要一个Canvas元素。以下示例创建了一个Canvas元素并设置一个onclick事件处理程序来初始化WebGL上下文。
  
@@ -123,6 +125,7 @@ WebGL的全称为Web Graphics Library（网页图形库），主要用于交互�
    在矩阵计算之前需要先引入gl-matrix开源工具库，可以从[gl-matrix官网](https://glmatrix.net/)下载，也可以使用npm命令下载：
    
    `npm install gl-matrix`
+
    ```js
    // 引入mat4
    import { mat4 } from 'gl-matrix'
@@ -218,7 +221,7 @@ WebGL的全称为Web Graphics Library（网页图形库），主要用于交互�
 
    - 首先调用gl的成员函数createBuffer()得到缓冲对象并存储在顶点缓冲器。然后调用 bindBuffer() 函数绑定上下文。
 
-   - 创建一个Javascript数组去记录每一个正方体的每一个顶点。然后将其转化为WebGL浮点型类型的数组，并将其传到gl对象的bufferData()方法来建立对象的顶点。
+   - 创建一个JavaScript数组去记录每一个正方形的每一个顶点。然后将其转化为WebGL浮点型类型的数组，并将其传到gl对象的bufferData()方法来建立对象的顶点。
 
    ```js
    function initBuffers(gl) {
@@ -234,7 +237,7 @@ WebGL的全称为Web Graphics Library（网页图形库），主要用于交互�
      gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
      // 创建一个正方形的位置数组。
      const positions = [1.0, 1.0, -1.0, 1.0, 1.0, -1.0, -1.0, -1.0];
-     //将位置列表传递给WebGL以构建形状。
+     // 将位置列表传递给WebGL以构建形状。
      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
      return positionBuffer;
    }
@@ -254,7 +257,7 @@ WebGL的全称为Web Graphics Library（网页图形库），主要用于交互�
      gl.depthFunc(gl.LEQUAL); 
      // 清除画布。
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-     //创建透视矩阵用于模拟相机中的透视变形。
+     // 创建透视矩阵用于模拟相机中的透视变形。
      const fieldOfView = (45 * Math.PI) / 180; 
      const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
      const zNear = 0.1;

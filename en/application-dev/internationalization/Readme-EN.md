@@ -3,16 +3,17 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=9da32f18d9f596600b1bcf7b3e4ed4f31b219c61 translatedAt=2026-11-03T09:17:02.335Z pushedAt=2026-11-03T09:17:02.335Z nl=1 -->
 
 - [About This Kit](i18n-l10n.md)
 - Application Internationalization<!--i18n-->
     - [UI Design for Internationalization](i18n-ui-design.md)
-    - [Locale and Cultural Habit Division](i18n-locale-culture.md)
+    - [Locale ID and Cultural Habit Division](i18n-locale-culture.md)
     - Language and User Preferences<!--i18n-language-user-preferences-->
-        - [System Language and Locale](i18n-system-language-region.md)
+        - [System Language and Region](i18n-system-language-region.md)
         - [Preferred Language](i18n-preferred-language.md)
         - [User Preferences](i18n-user-preferences.md)
     - [Date and Time Formatting](i18n-time-date.md)
@@ -20,7 +21,7 @@
     - [Phone Number Formatting](i18n-phone-numbers.md)
     - [Calendar Setting](i18n-calendar.md)
     - Time Zone and DST Setting<!--i18n-time-zone-dst-->
-        - [Timezone Setting](i18n-time-zone.md)
+        - [Time Zone Setting](i18n-time-zone.md)
         - [DST Transition](i18n-dst-transition.md)
     - Multilingual Sorting<!--i18n-sorting-->
         - [Overview of Multilingual Sorting](i18n-sorting-overview.md)
@@ -42,3 +43,4 @@
         - [Pseudo-Localization Testing for Translation](pseudo-i18n-testing-translation.md)
         - [Pseudo-Localization Testing for UI Mirroring](pseudo-i18n-testing-mirror.md)
     - [Linguistic Testing](linguistic-testing.md)
+- [Glossary](localization-glossary.md)

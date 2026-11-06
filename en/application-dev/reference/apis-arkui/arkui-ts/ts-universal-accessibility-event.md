@@ -1,23 +1,27 @@
 # Accessibility Control Actions
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
+<!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=e2e8608c64e606248f00eb66f3b2d4805fae44da translatedAt=2026-09-01T12:00:26.963Z -->
 
-When accessibility mode is enabled, you can choose whether to intercept accessibility control actions.
+After accessibility mode is enabled, this module provides the capabilities of intercepting accessibility control operations and listening for the focus acquisition and blur states of accessibility nodes. You can use onAccessibilityFocus to listen for focus acquisition and blur state changes of a component, and use onAccessibilityActionIntercept to intercept and determine accessibility control operations before they are triggered. This is suitable for scenarios where the component interaction logic needs to be customized in accessibility mode.
 
->**NOTE**
+> **NOTE**
 >
->  - The initial APIs of this module are supported since API version 18. Newly added APIs will be marked with a superscript to indicate their earliest API version.
->  - Currently, accessibility events can be triggered only when accessibility mode is enabled.
+> - The initial APIs of this module are supported since API version 18. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
+>
+> - Currently, the APIs can be triggered only by enabling accessibility mode.
 
 ## onAccessibilityFocus
 
 onAccessibilityFocus(callback: AccessibilityFocusCallback): T
 
-Triggered when the accessibility component gains or loses focus. Callback triggered when the component gains or loses focus.
+In accessibility mode, this API sets the callback for the focus acquisition and blur states of an accessibility node. When the accessibility focus moves into or out of the current component, causing the focus acquisition or blur state to change, the callback is triggered.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -29,7 +33,7 @@ Triggered when the accessibility component gains or loses focus. Callback trigge
 
 | Name  | Type   | Mandatory| Description                                                        |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| callback | [AccessibilityFocusCallback](ts-universal-accessibility-event.md#accessibilityfocuscallback) | Yes  | Callback that notifies the registered component of focus and blur events.|
+| callback | [AccessibilityFocusCallback](#accessibilityfocuscallback) | Yes | Callback invoked when the focus acquisition or blurred state of the current component changes in accessibility mode, to notify the registrant of the current state. Setting the input parameter to undefined cancels the callback registration. |
 
 **Return value**
 
@@ -53,13 +57,13 @@ Defines the callback type used in **onAccessibilityFocus**.
 
 | Name | Type   | Mandatory| Description             |
 | ------ | ------ | ---- | ---------------- |
-| isFocus | boolean | Yes| Whether the component has gained or lost focus.<br>**true**: The component has gained focus.<br>**false**: The component has lost focus.|
+| isFocus | boolean | Yes | Whether the component has focus.<br>true: the current component has focus.<br>false: the current component is blurred. |
 
 ## onAccessibilityActionIntercept<sup>20+</sup>
 
 onAccessibilityActionIntercept(callback: AccessibilityActionInterceptCallback): T
 
-Registers a callback to intercept accessibility control actions in accessibility mode. The callback is invoked before an accessibility action is triggered, allowing the component to determine whether to intercept the action. This callback is not supported by components that lack click capability.
+In accessibility mode, this API notifies the registered callback before an accessibility control operation is triggered, and the registrant decides whether to intercept the accessibility control operation. For components that do not support click operations, the callback is not triggered even if it is registered.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 20.
 
@@ -71,7 +75,7 @@ Registers a callback to intercept accessibility control actions in accessibility
 
 | Name  | Type   | Mandatory| Description                                                        |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| callback | [AccessibilityActionInterceptCallback](ts-universal-accessibility-event.md#accessibilityactioninterceptcallback20) | Yes  | Callback to be invoked before an accessibility action is triggered. The application that registers this callback can decide whether to intercept the action.<br> Set to **undefined** to unregister the callback.|
+| callback | [AccessibilityActionInterceptCallback](#accessibilityactioninterceptcallback20) | Yes | Callback invoked when accessibility mode is enabled and the component supports clicking, to notify the registrant of the accessibility control operation before it is triggered, so that the registrant decides whether to intercept the operation. The callback is not triggered when accessibility mode is disabled or the component does not support clicking.<br> When the input parameter is set to undefined, the callback registration is canceled. |
 
 **Return value**
 
@@ -83,7 +87,7 @@ Registers a callback to intercept accessibility control actions in accessibility
 
 type AccessibilityActionInterceptCallback = (action: AccessibilityAction) => AccessibilityActionInterceptResult
 
-Defines the callback type used in **onAccessibilityActionIntercept** to handle accessibility event interception.
+Defines the callback type used in onAccessibilityActionIntercept.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 20.
 
@@ -95,13 +99,13 @@ Defines the callback type used in **onAccessibilityActionIntercept** to handle a
 
 | Name | Type   | Mandatory| Description             |
 | ------ | ------ | ---- | ---------------- |
-| action | [AccessibilityAction](ts-universal-accessibility-event.md#accessibilityaction20) | Yes| Type of accessibility action being triggered.|
+| action | [AccessibilityAction](#accessibilityaction20) | Yes | Type of the accessibility control operation currently triggered. |
 
 **Return value**
 
 | Type   | Description             |
 | ------ | ---------------- |
-| [AccessibilityActionInterceptResult](ts-universal-accessibility-event.md#accessibilityactioninterceptresult20) | Decision on whether to intercept the accessibility action.|
+| [AccessibilityActionInterceptResult](#accessibilityactioninterceptresult20) | Result of intercepting an accessibility control operation, used to determine whether to intercept the accessibility control operation of the current component and the subsequent processing method. |
 
 ## AccessibilityAction<sup>20+</sup>
 
@@ -115,7 +119,7 @@ Enumerates types of accessibility control operations triggered by components.
 
 | Name| Value | Description            |
 | ---- | ---- | ------------------ |
-| UNDEFINED_ACTION | 0 | Undefined accessibility action.|
+| UNDEFINED_ACTION | 0 | Undefined accessibility control operation. |
 | ACCESSIBILITY_CLICK | 1 | Accessibility click action.|
 
 ## AccessibilityActionInterceptResult<sup>20+</sup>
@@ -130,32 +134,33 @@ Enumerates possible results for accessibility action interception.
 
 | Name| Value | Description            |
 | ---- | ---- | ------------------ |
-| ACTION_INTERCEPT | 0 | Intercept the accessibility control action received by the current component. After the callback processing is complete, the component won't respond.|
-| ACTION_CONTINUE | 1 | Allow the accessibility control action received by the current component. After the callback processing is complete, the component processes it normally.|
-| ACTION_RISE | 2 | Intercept accessibility control action received by the current component. After the callback processing is complete, the component responds and executes its own processing logic. The action information is then passed to the parent component. This triggers the **onAccessibilityActionIntercept** callback of the parent (if registered) but not the parent's default processing logic. The parent can continue passing the action upward using **ACTION_RISE**.|
+| ACTION_INTERCEPT | 0 | Intercepts the accessibility control action received by the current component. After the callback processing is complete, the component won't respond.|
+| ACTION_CONTINUE | 1 | Does not intercept the accessibility control operation received by the current component. After the callback handling is complete, the current component is allowed to respond to the accessibility control operation and execute its processing logic. |
+| ACTION_RISE | 2 | Does not intercept the accessibility control operation received by the current component. After the callback handling is complete, the component still needs to respond and execute its processing logic, and the accessibility control operation information is passed to the parent component. When the information is passed to the next component that uses onAccessibilityActionIntercept, the callback registered in that component is triggered, but the processing logic of that component is not triggered. After the processing is complete, ACTION_RISE can continue to be used to pass the accessibility control operation information to the parent component. |
 
 ## Example
 
 ### Example 1: Setting onAccessibilityActionIntercept to Intercept Click Events
 
-The example demonstrates how to use the **onAccessibilityActionIntercept** event to intercept a click event on a **Toggle** component in accessibility mode before the click event is processed.
+This example demonstrates how to use the onAccessibilityActionIntercept event to intercept the click event of a Toggle component before it is triggered in accessibility mode, and the developer decides whether to allow the click event.
 
 ```ts
 // xxx.ets
 @Entry
 @Component
-struct SwitchBootcamp {
+struct OnAccessibilityActionInterceptExample {
   @State private isOn: boolean = false;
 
   build() {
     NavDestination() {
       Column() {
-        Text('onTouchIntercept')
+        Text('onAccessibilityActionIntercept')
         Row() {
           Text('Label message')
           Blank()
           Toggle({ type: ToggleType.Switch, isOn: $$this.isOn })
-            .onAccessibilityActionIntercept((action : AccessibilityAction) => {
+            .onAccessibilityActionIntercept((action: AccessibilityAction) => {
+              // When an accessibility click operation is triggered, display a confirmation dialog box for the user to decide whether to allow it.
               if (action === AccessibilityAction.ACCESSIBILITY_CLICK) {
                 this.getUIContext().showAlertDialog({
                   title: 'Title',
@@ -171,9 +176,11 @@ struct SwitchBootcamp {
                     action: () => {
                     }
                   }
-                })
+                });
+                // Intercept this click and prevent the default click behavior of the component.
                 return AccessibilityActionInterceptResult.ACTION_INTERCEPT;
               } else {
+                // Do not intercept other accessibility operations; allow them directly.
                 return AccessibilityActionInterceptResult.ACTION_CONTINUE;
               }
             })
@@ -188,7 +195,7 @@ struct SwitchBootcamp {
 
 ### Example 2: Setting the onAccessibilityFocus Callback
 
-Since API version 18, this callback is triggered when the focus status changes. This example demonstrates the basic usage of [onAccessibilityFocus](ts-universal-accessibility-event.md#onaccessibilityfocus). When the focus is on **onAccessibilityFocus takes effect**, **[testingTag] isFocus current is true** is logged. When the focus is on any other area, **[testingTag] isFocus current is false** is logged.
+Since API version 18, the callback is triggered when the focus acquisition or blur state changes. This example demonstrates the basic usage of [onAccessibilityFocus](#onaccessibilityfocus). When the focus moves to "onAccessibilityFocus takes effect", "[testingTag] isFocus current is true" is printed. When the focus moves to a position other than "onAccessibilityFocus takes effect", "[testingTag] isFocus current is false" is printed.
 
 ```ts
 // xxx.ets
@@ -200,10 +207,10 @@ struct OnAccessibilityFocusExample {
     NavDestination() {
       Column() {
         Text("onAccessibilityFocus doesn't take effect")
-        Text("onAccessibilityFocus takes effect")
-        .onAccessibilityFocus((isFocus)=>{
-          console.info('[testingTag] isFocus current is ${isFocus}')
-          })
+        Text('onAccessibilityFocus takes effect')
+        .onAccessibilityFocus((isFocus: boolean) => {
+          console.info(`[testingTag] isFocus current is ${isFocus}`);
+        })
       }
       .padding(24)
       .width('100%')

@@ -10,10 +10,11 @@
 
 若涉及网络文档获取，需在module.json5中配置网络访问权限。添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-<!-- @[web_module_preview_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/module.json5) -->
+<!-- @[web_module_preview_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/module.json5) --> 
 
 ``` JSON5
 "requestPermissions":[
+  // ...
   {
     "name" : "ohos.permission.INTERNET"
   }
@@ -91,7 +92,7 @@ PDF预览页面会根据用户操作使用`window.localStorage`记录侧导航�
 
 ## 通过配置PDF文件预览参数，控制打开预览时页面状态
 
-当前支持如下参数: 
+当前支持如下参数：
 
 | 语法 | 描述 |
 | --------- | ---------- |
@@ -103,7 +104,7 @@ PDF预览页面会根据用户操作使用`window.localStorage`记录侧导航�
 | pdfbackgroundcolor=color | 从OpenHarmony 6.0系统版本开始，支持指定PDF文档背景色，color为标准的六位十六进制RGB（取值范围为000000~ffffff，例如白色为：ffffff）。 |
 
 
-URL示例:
+URL示例：
 ```txt
 https://example.com/test.pdf#nameddest=Chapter6  
 https://example.com/test.pdf#page=3  

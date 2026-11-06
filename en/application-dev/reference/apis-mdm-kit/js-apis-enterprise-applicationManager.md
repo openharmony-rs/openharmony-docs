@@ -1,12 +1,13 @@
 # @ohos.enterprise.applicationManager (Application Management)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=c109513d2bba4eb017eb5fbd9d52923a678f64b8 translatedAt=2026-11-03T04:57:28.860Z pushedAt=2026-11-03T12:08:25.532Z nl=1 -->
 
-The **applicationManager** module provides application management capabilities, including adding, removing, and obtaining the applications that are forbidden to run.
+This module provides application management capabilities, including managing the application running blocklist, application running trustlist, auto-startup application list, keep-alive application list, non-stoppable application list, background freeze-exempt application list, notification trustlist, and cross-device application trustlist. It is suitable for enterprise device management scenarios, enabling control over application running permissions, auto-startup management, keep-alive application management, and more, thereby enhancing enterprise device security and compliance.
 
 > **NOTE**
 >
@@ -27,7 +28,13 @@ import { applicationManager } from '@kit.MDMKit';
 
 addDisallowedRunningBundlesSync(admin: Want, appIds: Array\<string>, accountId?: number): void
 
-Adds the applications that are not allowed to run by the current or specified user. From API version 21, if the allowed application list [addallowedRunningBundles](#applicationmanageraddallowedrunningbundles21) is not empty, the prohibited application list cannot be added using this API. Otherwise, the error code 9200010 is reported.
+Adds applications to the application running blocklist. Applications added to the blocklist are not allowed to run under the current or specified user. Since API version 21, if the application running trustlist [addAllowedRunningBundles](#applicationmanageraddallowedrunningbundles21) is not empty, the application running blocklist cannot be added via this API. Otherwise, the error code 9200010 is reported.
+
+> **NOTE**
+>
+> If the specified application is running, the system terminates the application process immediately after the application is added to the denylist.
+>
+> In a multi-MDM scenario, the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule applies.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -35,14 +42,12 @@ Adds the applications that are not allowed to run by the current or specified us
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
-
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.<br>**Note**: From API version 21 onwards, the [appId](../../quick-start/common-problem-of-application.md#what-is-appid) and [appIdentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier) of the app can be passed. **appIdentifier** is recommended. In API version 20 and earlier versions, only **appId** can be passed.|
+| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.<br>**Note**: From API version 21 onwards, the [appId](../../quick-start/common-problem-of-application.md#what-is-appid) and [appIdentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier) of the app can be passed. **appIdentifier** is recommended. In API version 20 and earlier versions, only **appId** can be passed.<br>Value range:<br> The total number of entries in this list for a single user must not exceed 200. For example, if 50 entries have been set for user 100 and none for user 101, user 100 can add 150 more entries, while user 101 can add up to 200 entries.|
 | accountId | number                                                  | No  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.<br> - If **accountId** is passed in, this API applies to the specified user.<br> - If **accountId** is not passed in, this API applies to the current user.|
 
 **Error codes**
@@ -53,7 +58,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200010  | A conflict policy has been configured. |
+| 9200010  | A conflict policy has been configured. <br>Applicable versions: 21+|
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
@@ -83,15 +88,17 @@ try {
 
 removeDisallowedRunningBundlesSync(admin: Want, appIds:  Array\<string>, accountId?: number): void
 
-Removes the applications that are not allowed to run by the current user or specified user.
+Removes applications from the application running blocklist of the current or specified user. After an application is removed, it is allowed to run under the current or specified user.
+
+> **NOTE**
+>
+> In a multi-MDM scenario, the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule applies.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -136,9 +143,11 @@ try {
 
 ## applicationManager.getDisallowedRunningBundlesSync
 
-getDisallowedRunningBundlesSync(admin: Want, accountId?: number): Array&lt;string>
+getDisallowedRunningBundlesSync(admin: Want, accountId?: number): Array&lt;string&gt;
 
-Obtains applications that are not allowed to run by the current user or specified user.
+Obtains the application running blocklist of the current user or specified user.
+
+This API queries the policy set by the corresponding enterprise device management application by passing in Want. To query the policy that actually takes effect, use the [applicationManager.getDisallowedRunningBundlesSync](#applicationmanagergetdisallowedrunningbundlessync-1) API.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -151,14 +160,14 @@ Obtains applications that are not allowed to run by the current user or specifie
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Enterprise device management extension component. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the host application.|
 | accountId | number                                                  | No  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.<br> - If **accountId** is passed in, this API applies to the specified user.<br> - If **accountId** is not passed in, this API applies to the current user.|
 
 **Return value**
 
 | Type               | Description                            |
 | ------------------- | -------------------------------- |
-| Array&lt;string&gt; | Applications that are not allowed to run by the current user or specified user.<br>Note: For API version 20 and earlier versions, the return value is the **appId** list. In API version 21 and later versions, the return value is the **appId** or **appIdentifier** list.|
+| Array&lt;string&gt; | Application running blocklist of the current user or specified user.<br>Note: For API version 20 and earlier versions, the return value is the **appId** list. In API version 21 and later versions, the return value is the **appId** or **appIdentifier** list.|
 
 **Error codes**
 
@@ -191,19 +200,73 @@ try {
 }
 ```
 
+
+## applicationManager.getDisallowedRunningBundlesSync
+
+getDisallowedRunningBundlesSync(admin: Want | null, accountId?: number): Array&lt;string&gt;
+
+Obtains the disallowed running bundles list of the current or specified user.
+
+**Since:** 26.0.0
+
+**Required permissions:** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name      | Type                                                    | Mandatory | Description                                                        |
+| --------- | ------------------------------------------------------- | --------- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes       | Enterprise device management extension. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the host application.<br>When multiple MDM applications exist on the device, passing a Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect. |
+| accountId | number                                                  | No        | User ID, value range: greater than or equal to 0.<br> accountId can be obtained through APIs such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) in @ohos.account.osAccount.<br/> - When calling the API, if accountId is passed, it indicates the specified user.<br/> - When calling the API, if accountId is not passed, it indicates the current user. |
+
+**Return value**
+
+| Type | Description |
+| ------------------- | -------------------------------- |
+| Array&lt;string&gt; | Returns the application running denylist of the current or specified user.<br/>**Note:** The return value is a list of application [appId](../../quick-start/common-problem-of-application.md#what-is-appid) or [appIdentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier). |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Example**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+
+try {
+  // Replace the parameters based on the actual situation.
+  let result: Array<string> = applicationManager.getDisallowedRunningBundlesSync(null);
+  console.info(`Succeeded in getting disallowed running bundles, result : ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get disallowed running bundles. Code is ${err.code}, message is ${err.message}`);
+}
+```
 ## applicationManager.addAllowedRunningBundles<sup>21+</sup>
 
 addAllowedRunningBundles(admin: Want, appIdentifiers: Array\<string>, accountId: number): void
 
-Adds the applications that are allowed to run under specified users.
+Adds applications to the application running trustlist. Only applications in the trustlist are allowed to run under the specified user.
 
-> **NOTE**
+> **NOTE** 
 >
-> 1. Most APIs provided by MDM Kit are available only to MDM applications. When using this API, add the MDM application to the application running trustlist. Otherwise, the MDM application will be prohibited from running, blocking the API call. For details about whether the API is open only to MDM applications, see the module description.
+> 1. Since most APIs in MDM Kit are open only to MDM applications, when using this API, add the MDM application to the application running allowlist as well. Otherwise, the MDM application will not be allowed to run, blocking the API call. For details about whether an API is open only to MDM applications, see the corresponding module description.
 >
-> 2. If the application running blocklist is not empty, this API cannot be used to add applications to the running trustlist. Otherwise, the error code 9200010 is reported. APIs related to the application running blocklist include [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)<!--Del-->, [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles), [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-1), and [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-2)<!--DelEnd-->.
+> 2. If the application running denylist is not empty, this API cannot be used to add applications to the application running allowlist. Otherwise, error code 9200010 (conflict) is reported. The APIs related to the application running denylist include [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)<!--Del-->, [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundlesdeprecated), [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundlesdeprecated-1), and [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundlesdeprecated-2)<!--DelEnd-->.
 >
-> 3. This API only takes effect for third-party applications. System applications are not subject to this list and are allowed to run by default.
+> 3. This API takes effect only on third-party applications. System applications are not subject to this list and can run by default.
+>
+> 4. In the multi-MDM application scenario, the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule is followed.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -211,14 +274,12 @@ Adds the applications that are allowed to run under specified users.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
-
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| appIdentifiers    | Array&lt;string&gt;                             | Yes  | Array of app unique identifiers. You can obtain **bundleInfo.signatureInfo.appIdentifier** through the [bundleManager.getinstalledbundlelist](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20) API.<br>Value range:<br> - The total number of entries in this list for a single user must not exceed 200. For example, if 50 entries have been set for user 100 and none for user 101, user 100 can add 150 more entries, while user 101 can add up to 200 entries.|
+| appIdentifiers    | Array&lt;string&gt;                             | Yes  | Array of application [unique identifiers](../../quick-start/common-problem-of-application.md#what-is-appidentifier). You can obtain **bundleInfo.signatureInfo.appIdentifier** through the [bundleManager.getInstalledBundleList](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20) API.<br>Value range:<br> - The total number of entries in this list for a single user must not exceed 200. For example, if 50 entries have been set for user 100 and none for user 101, user 100 can add 150 more entries, while user 101 can add up to 200 entries.|
 | accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Error codes**
@@ -259,7 +320,11 @@ try {
 
 removeAllowedRunningBundles(admin: Want, appIdentifiers: Array\<string>, accountId: number): void
 
-Removes the applications that are allowed to run by the specified user.
+Removes applications from the application running trustlist of the specified user. After an application is removed, it is not allowed to run under the current or specified user.
+
+> **NOTE**
+>
+> In the multi-MDM application scenario, the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule is followed.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -267,14 +332,12 @@ Removes the applications that are allowed to run by the specified user.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
-
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| appIdentifiers    | Array&lt;string&gt;                             | Yes  | Array of unique identifiers of an app. You can obtain the **bundleInfo.signatureInfo.appIdentifier** by calling the [bundleManager.getinstalledbundlelist](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20) API. Value range: The array length cannot exceed 200.|
+| appIdentifiers    | Array&lt;string&gt;                             | Yes  | Array of unique identifiers of an app. You can obtain **bundleInfo.signatureInfo.appIdentifier** through the [bundleManager.getInstalledBundleList](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20) API. Value range: The array length cannot exceed 200.|
 | accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Error codes**
@@ -312,9 +375,11 @@ try {
 
 ## applicationManager.getAllowedRunningBundles<sup>21+</sup>
 
-getAllowedRunningBundles(admin: Want, accountId: number): Array&lt;string>
+getAllowedRunningBundles(admin: Want, accountId: number): Array&lt;string&gt;
 
-Obtains the list of applications allowed to run by a specified user.
+Obtains the application running trustlist of a specified user.
+
+This API queries the policy set by the corresponding enterprise device management application by passing in a Want. To query the policy that actually takes effect, use the [applicationManager.getAllowedRunningBundles](#applicationmanagergetallowedrunningbundles) API.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -326,7 +391,7 @@ Obtains the list of applications allowed to run by a specified user.
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Enterprise device management extension component. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the host application.|
 | accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Return value**
@@ -365,11 +430,66 @@ try {
 }
 ```
 
+
+## applicationManager.getAllowedRunningBundles
+
+getAllowedRunningBundles(admin: Want | null, accountId: number): Array&lt;string&gt;
+
+Obtains the allowlist of running applications for a specified user.
+
+**Since:** 26.0.0
+
+**Required permissions:** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name      | Type                                                        | Mandatory | Description                                                         |
+| --------- | ----------------------------------------------------------- | --------- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes       | Enterprise device management extension component. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the host application.<br>When multiple MDM applications exist on the device, passing a Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect. |
+| accountId | number                                                      | Yes       | User ID, value range: greater than or equal to 0.<br>accountId can be obtained through APIs such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) in @ohos.account.osAccount. |
+
+**Return value**
+
+| Type                | Description                             |
+| ------------------- | -------------------------------- |
+| Array&lt;string&gt; | Returns the application running allowlist of the specified user. |
+
+**Error codes**
+
+For details about the following error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+
+try {
+  // Replace the parameters based on the actual situation.
+  let result: Array<string> = applicationManager.getAllowedRunningBundles(null, 100);
+  console.info(`Succeeded in getting allowed running bundles, result : ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get allowed running bundles. Code is ${err.code}, message is ${err.message}`);
+}
+```
 ## applicationManager.addAutoStartApps
 
 addAutoStartApps(admin: Want, autoStartApps: Array\<Want>): void
 
 Adds the auto-start applications for the current user. Applications added to the auto-start list via this API cannot be manually disabled for auto-start by users on the device<!--RP4--><!--RP4End-->. However, they can be removed from the auto-start list using the [removeAutoStartApps](#applicationmanagerremoveautostartapps) API.
+
+> **NOTE**
+>
+> In a multi-MDM application scenario, the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule is followed.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -378,8 +498,6 @@ Adds the auto-start applications for the current user. Applications added to the
 **Device behavior differences**: For API version 20 and earlier versions, this API can be properly called on PCs/2-in-1 devices and does not work on other devices. This API can be used on phones, tablets, PCs/2-in-1 devices since API version 21. Since API version 24, this API allows you to configure whether to hide the UI when applications automatically start upon device startup. This capability is available only on PCs/2-in-1 devices and tablets in PC mode.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -426,7 +544,7 @@ let autoStartApps: Array<Want> = [
 try {
   applicationManager.addAutoStartApps(wantTemp, autoStartApps);
   console.info('Succeeded in adding auto start applications.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to add auto start applications. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -435,7 +553,11 @@ try {
 
 removeAutoStartApps(admin: Want, autoStartApps: Array\<Want>): void
 
-Removes the auto-start applications for the current user.
+Removes the auto-start applications for the current user. After the deletion, the applications will no longer automatically start upon system boot.
+
+> **NOTE**
+>
+> In a multi-MDM application scenario, the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule is followed.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -444,8 +566,6 @@ Removes the auto-start applications for the current user.
 **Device behavior differences**: For API version 20 and earlier versions, this API can be properly called on PCs/2-in-1 devices and does not work on other devices. This API can be used on phones, tablets, PCs/2-in-1 devices since API version 21.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -487,7 +607,7 @@ let autoStartApps: Array<Want> = [
 try {
   applicationManager.removeAutoStartApps(wantTemp, autoStartApps);
   console.info('Succeeded in removing auto start applications.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to remove auto start applications. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -497,6 +617,10 @@ removeAutoStartApps(admin: Want, autoStartApps: Array\<Want>, accountId: number)
 
 Removes the specified application from the auto-start application list of a specified user.
 
+> **NOTE**
+>
+> In a multi-MDM application scenario, the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule is followed.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -504,8 +628,6 @@ Removes the specified application from the auto-start application list of a spec
 **Device behavior differences**: For API version 20 and earlier versions, this API can be properly called on PCs/2-in-1 devices and does not work on other devices. This API can be used on phones, tablets, PCs/2-in-1 devices since API version 21.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -548,7 +670,7 @@ let autoStartApps: Array<Want> = [
 try {
   applicationManager.removeAutoStartApps(wantTemp, autoStartApps, 100);
   console.info('Succeeded in removing auto start applications.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to remove auto start applications. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -558,6 +680,8 @@ try {
 getAutoStartApps(admin: Want): Array\<Want>
 
 Checks the auto-start applications for the current user.
+
+This API queries the policy set by the corresponding enterprise device management application by passing in a Want. To query the policy that actually takes effect, use the [applicationManager.getAutoStartApps](#applicationmanagergetautostartapps-1) API.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -571,7 +695,7 @@ Checks the auto-start applications for the current user.
 
 | Name| Type                                                   | Mandatory| Description          |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Enterprise device management extension component. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the host application. |
 
 **Return value**
 
@@ -605,11 +729,11 @@ let wantTemp: Want = {
 try {
   let res: Array<Want> = applicationManager.getAutoStartApps(wantTemp);
   console.info(`Succeeded in adding auto start apps: ${JSON.stringify(res)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to auto start apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
+<!--code_no_check-->
 ```ts
 // Return value example.
 [
@@ -622,14 +746,85 @@ try {
     }
   },
   // ...
-]
+];
 ```
 
+
+## applicationManager.getAutoStartApps
+
+getAutoStartApps(admin: Want | null): Array\<Want>
+
+Queries the list of applications that start automatically on boot for the current user.
+
+**Since:** 26.0.0
+
+**Required permissions:** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type                                                    | Mandatory | Description           |
+| ------ | ------------------------------------------------------- | ---- | -------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise device management extension component. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the host application.<br>When multiple MDM applications exist on the device, passing a Want queries the policy set by the corresponding enterprise device management application, and passing null queries the actually effective policy. |
+
+**Return value**
+
+| Type                                                         | Description                 |
+| ------------------------------------------------------------ | -------------------- |
+| Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | Array of auto-start application lists. Since API version 24, supports returning the configuration of whether to hide the UI. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Example**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+try {
+  // Replace the parameters based on the actual situation.
+  let res: Array<Want> = applicationManager.getAutoStartApps(null);
+  console.info(`Succeeded in adding auto start apps: ${JSON.stringify(res)}`);
+} catch(err) {
+  console.error(`Failed to auto start apps. Code: ${err.code}, message: ${err.message}`);
+}
+```
+<!--code_no_check-->
+```ts
+// Return example
+[
+  {
+    "bundleName": "com.example.edmtest",
+    "abilityName": "EntryAbility",
+    // Supported since API version 24.
+    "parameters": {
+      "isHiddenStart": false
+    }
+  },
+  // ...
+];
+```
 ## applicationManager.addAutoStartApps<sup>20+</sup>
 
 addAutoStartApps(admin: Want, autoStartApps: Array\<Want>, accountId: number, disallowModify: boolean): void
 
 Adds a list of applications that automatically start upon device startup for a specified user, and sets whether to prohibit the user from manually canceling application auto-start<!--RP4--><!--RP4End-->.<br>Applications can be added to the auto-start list via this API and the [addAutoStartApps](#applicationmanageraddautostartapps) API. Settings from both APIs can take effect simultaneously. For a single user, the auto-start list supports a maximum of 10 applications. For example, if there are already 3 applications in the current list, a maximum of 7 more can be added for the user via this API.
+
+> **NOTE**
+>
+> In multi-MDM application scenarios, the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule is followed.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -638,8 +833,6 @@ Adds a list of applications that automatically start upon device startup for a s
 **Device behavior differences**: For API version 20 and earlier versions, this API can be properly called on PCs/2-in-1 devices and does not work on other devices. This API can be used on phones, tablets, PCs/2-in-1 devices since API version 21. Since API version 24, this API allows you to configure whether to hide the UI when applications automatically start upon device startup. This capability is available only on PCs/2-in-1 devices and tablets in PC mode.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -687,8 +880,8 @@ let autoStartApps: Array<Want> = [
 
 try {
   applicationManager.addAutoStartApps(wantTemp, autoStartApps, 100, true);
-  console.info('Succeeded in adding auto start applications and set disllowModify.');
-} catch(err) {
+  console.info('Succeeded in adding auto start applications and set disallowModify.');
+} catch (err) {
   console.error(`Failed to add auto start applications and set disallowModify. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -698,6 +891,8 @@ try {
 getAutoStartApps(admin: Want, accountId: number): Array\<Want>
 
 Checks the auto-start applications for the specified user.
+
+This API queries the policy set by the corresponding enterprise device management application by passing in a Want. To query the policy that actually takes effect, use the [applicationManager.getAutoStartApps](#applicationmanagergetautostartapps-2) API.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -711,7 +906,7 @@ Checks the auto-start applications for the specified user.
 
 | Name| Type                                                   | Mandatory| Description          |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Enterprise device management extension component. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the host application.|
 | accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Return value**
@@ -745,11 +940,11 @@ let wantTemp: Want = {
 try {
   let res: Array<Want> = applicationManager.getAutoStartApps(wantTemp, 100);
   console.info(`Succeeded in getting auto start apps: ${JSON.stringify(res)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get auto start apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
+<!--code_no_check-->
 ```ts
 // Return value example.
 [
@@ -762,9 +957,76 @@ try {
     }
   },
   // ...
-]
+];
 ```
 
+
+## applicationManager.getAutoStartApps
+
+getAutoStartApps(admin: Want | null, accountId: number): Array\<Want>
+
+Queries the startup-on-boot application list of the specified user.
+
+**Since:** 26.0.0
+
+**Required permissions:** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type                                                    | Mandatory| Description           |
+| ------ | ------------------------------------------------------- | ---- | -------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise device management extension. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the host application.<br>When multiple MDM applications exist on the device, passing Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect.|
+| accountId | number                                                  | Yes   | User ID, with a value range greater than or equal to 0.<br> accountId can be obtained through APIs such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) in @ohos.account.osAccount.|
+
+**Return value**
+
+| Type                                                         | Description          |
+| ------------------------------------------------------------ | -------------------- |
+| Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | Array of application auto-start lists. Starting from API version 24, supports returning the configuration of whether to hide the UI. |
+
+**Error codes**:
+
+For details about the following error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                               |
+| ------------- | ------------------------------------------------------------ |
+| 9200001       | The application is not an administrator application of the device. |
+| 9200002       | The administrator application does not have permission to manage the device. |
+| 201           | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**:
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+try {
+  // Replace the parameters based on the actual situation.
+  let res: Array<Want> = applicationManager.getAutoStartApps(null, 100);
+  console.info(`Succeeded in getting auto start apps: ${JSON.stringify(res)}`);
+} catch(err) {
+  console.error(`Failed to get auto start apps. Code: ${err.code}, message: ${err.message}`);
+}
+```
+<!--code_no_check-->
+```ts
+// Return example
+[
+  {
+    "bundleName": "com.example.edmtest",
+    "abilityName": "EntryAbility",
+    // Supported since API version 24.
+    "parameters": {
+      "isHiddenStart": false
+    }
+  },
+  // ...
+];
+```
 ## applicationManager.isModifyAutoStartAppsDisallowed<sup>20+</sup>
 
 isModifyAutoStartAppsDisallowed(admin: Want, autoStartApp: Want, accountId: number): boolean
@@ -791,7 +1053,7 @@ Checks whether a specified user is prohibited from canceling application auto-st
 
 | Type                                                        | Description                |
 | ------------------------------------------------------------ | -------------------- |
-| boolean | Whether the user is prohibited from canceling application auto-startup. The value **true** indicates yes and the value **false** indicates no.<!--PR1--><!--PR1End-->|
+| boolean | Whether the user is prohibited from canceling application auto-startup. The value **true** indicates yes and the value **false** indicates no.<!--RP1--><!--RP1End-->|
 
 **Error codes**
 
@@ -824,7 +1086,7 @@ let autoStartApp: Want = {
 try {
   let res: boolean = applicationManager.isModifyAutoStartAppsDisallowed(wantTemp, autoStartApp, 100);
   console.info(`Succeeded in getting disallow modify auto start app: ${JSON.stringify(res)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get disallow modify auto start app. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -835,6 +1097,15 @@ addKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number): v
 
 Adds applications to the keep-alive list; once added, the application processes will be kept alive automatically. After the device is powered on or the application is killed, the system will proactively restart these application processes.<!--RP7--><!--RP7End--><br>For applications added to the keep-alive list via this API, users cannot manually revoke their keep-alive status on the device <!--RP6--><!--RP6End-->. However, you can call the [removeKeepAliveApps](#applicationmanagerremovekeepaliveapps14) API to remove them from the keep-alive list.<br>If applications are disallowed to run by calling [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync), they cannot be kept alive. Otherwise, error code 9200010 will be reported.<br>To use similar functions on phones or tablets, call [addUserNonStopApps](#applicationmanageraddusernonstopapps22) or [addFreezeExemptedApps](#applicationmanageraddfreezeexemptedapps22). For details, see the relevant documents.
 
+> **NOTE**
+>
+> - If an application needs to support keep-alive, the mainElement in its [module.json5 configuration file](../../quick-start/module-configuration-file.md) must be a UIAbility. Only after the mainElement is started will the system perform the keep-alive operation for the application.
+> - On PCs/2-in-1 devices, a keep-alive application must be added to the status bar within 5 seconds after startup. Otherwise, the system will cancel the keep-alive settings of the application and kill the process restarted by keep-alive.
+> - When the process of a keep-alive application exits, the system attempts to restart the process. After three consecutive failed restarts, the system will no longer restart it.
+> - After a keep-alive application is uninstalled, the application is removed from the keep-alive list.
+> - If an application is not started when it is added to the keep-alive list, and the keep-alive fails upon subsequent startup, the application is removed from the keep-alive list.
+> - In a multi-MDM application scenario, the [merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule applies.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -843,14 +1114,12 @@ Adds applications to the keep-alive list; once added, the application processes 
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
-
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| bundleNames    | Array&lt;string&gt;                                     | Yes  | Array of application bundle names, which specifies the applications to be kept alive. A maximum of 5 applications are supported.<!--RP5--><!--RP5End-->                                    |
+| bundleNames    | Array&lt;string&gt;                                     | Yes   | Array of application bundle names, specifying the applications to add to the keep-alive list. A maximum of 5 applications are supported. Since API version 26.0.1, a maximum of 10 applications are supported. <!--RP5--><!--RP5End-->                                    |
 | accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Error codes**
@@ -893,7 +1162,16 @@ try {
 
 addKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number, disallowModify: boolean): void
 
-Adds applications to the keep-alive list; once added, the application processes will be kept alive automatically. You can also set whether to disable manual keep-alive cancellation. After the device is powered on or the application is killed, the system will proactively restart these application processes.<br>Applications can be added to the keep-alive list via this API and the [addKeepAliveApps](#applicationmanageraddkeepaliveapps14) API. Settings from both APIs can take effect simultaneously. For a single user, the keep-alive list supports a maximum of 5 applications. For example, if there are already 3 applications in the current list, a maximum of 2 more can be added for the user via this API.<br>If applications are disallowed to run by calling [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync), they cannot be kept alive. Otherwise, error code 9200010 will be reported.<br>To use similar functions on phones or tablets, call [addUserNonStopApps](#applicationmanageraddusernonstopapps22) or [addFreezeExemptedApps](#applicationmanageraddfreezeexemptedapps22). For details, see the relevant documents.
+Adds applications to the keep-alive application list and sets whether to prohibit users from manually canceling keep-alive. After the applications are added, their processes are automatically kept alive. The system proactively starts the application processes after the device is powered on or after the applications are killed.<br>The keep-alive application list can be added through this API and [addKeepAliveApps](#applicationmanageraddkeepaliveapps14), and the settings of the two APIs take effect simultaneously. For the same user, the keep-alive application list supports a maximum of 5 applications. For example, if there are already 3 applications in the list, at most 2 more applications can be added for the current user through this API. Starting from API version 26.0.1, for the same user, the keep-alive application list supports a maximum of 10 applications. For example, if there are already 8 applications in the list, at most 2 more applications can be added for the current user through this API.<br>If an application is added to the disallowed running list through [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync), it cannot be added to the keep-alive application list. Otherwise, error code 9200010 is reported.<br>To use similar functions on Phone/Tablet devices, call [addUserNonStopApps](#applicationmanageraddusernonstopapps22) or [addFreezeExemptedApps](#applicationmanageraddfreezeexemptedapps22). For details, see the related documents.
+
+> **NOTE**
+>
+> - If an application needs to support keep-alive, the mainElement in its [module.json5 configuration file](../../quick-start/module-configuration-file.md) must be a UIAbility. Only after the mainElement is started will the system perform the keep-alive operation for the application.
+> - On PC/2-in-1 devices, a keep-alive application must be added to the status bar within 5 seconds after startup. Otherwise, the system will cancel the keep-alive settings of the application and kill the process restarted by keep-alive.
+> - When the process of a keep-alive application exits, the system attempts to restart the process. After three consecutive failed restarts, the system will no longer restart it.
+> - After a keep-alive application is uninstalled, the application is removed from the keep-alive list.
+> - If an application is not started when it is added to the keep-alive list, and the keep-alive fails upon subsequent startup, the application is removed from the keep-alive list.
+> - In a multi-MDM application scenario, the [merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule applies.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -903,14 +1181,12 @@ Adds applications to the keep-alive list; once added, the application processes 
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
-
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| bundleNames    | Array&lt;string&gt;                                     | Yes  | Array of application bundle names, which specifies the applications to be kept alive. A maximum of 5 applications are supported.<br>Applications must be installed under user 1 (a user who supports single-instance running of third-party applications) and have integrated [background services](../../application-models/app-service-extension-ability.md#implementing-a-background-service)<!--RP3--><!--RP3End-->. Otherwise, the error code 9201005 will be reported. |
+| bundleNames    | Array&lt;string&gt;                                     | Yes   | Array of application bundle names, specifying the applications to add to the keep-alive list. A maximum of 5 applications are supported. Since API version 26.0.1, a maximum of 10 applications are supported.<br>The applications must meet the following conditions: they are installed under user 1 (user 1 is the user that supports singleton running of third-party applications), and they have integrated the [background service](../../application-models/app-service-extension-ability.md#implementing-a-background-service)<!--RP3--><!--RP3End-->. Otherwise, error code 9201005 is reported.  |
 | accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 | disallowModify | boolean | Yes  | Whether to restrict users from manually canceling the keep-alive status. The value **true** indicates that users are not allowed to manually cancel the keep-alive status, and the value **false** indicates the opposite.<!--RP2--><!--RP2End--> |
 
@@ -956,6 +1232,10 @@ removeKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number)
 
 Removes a specified application from the keep-alive list.
 
+> **NOTE**
+>
+> In a multi-MDM application scenario, the [merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule applies.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -964,14 +1244,12 @@ Removes a specified application from the keep-alive list.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
-
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| bundleNames    | Array&lt;string&gt;                                     | Yes  | Application bundle name array, which specifies the applications to be kept alive. A maximum of five applications are supported.                                  |
+| bundleNames    | Array&lt;string&gt;                                     | Yes   | Array of application bundle names, specifying the keep-alive applications to be removed. A maximum of 5 is supported. Since API version 26.0.1, a maximum of 10 is supported.                                 |
 | accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Error codes**
@@ -1009,9 +1287,11 @@ try {
 
 ## applicationManager.getKeepAliveApps<sup>14+</sup>
 
-getKeepAliveApps(admin: Want, accountId: number): Array&lt;string>
+getKeepAliveApps(admin: Want, accountId: number): Array&lt;string&gt;
 
 Obtains the bundle name of the keep-alive application.
+
+This API queries the policy set by the corresponding device management application by passing in a Want. To query the policy that actually takes effect, call the [applicationManager.getKeepAliveApps](#applicationmanagergetkeepaliveapps) API.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -1025,7 +1305,7 @@ Obtains the bundle name of the keep-alive application.
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Enterprise device management extension component. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the host application.|
 | accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Return value**
@@ -1059,12 +1339,66 @@ let wantTemp: Want = {
 
 try {
   let result: Array<string> = applicationManager.getKeepAliveApps(wantTemp, 100);
-  console.info('Succeeded in getting keep alive apps.');
+  console.info(`Succeeded in getting keep alive apps. Result is ${result}`);
 } catch (err) {
   console.error(`Failed to get keep alive apps. Code is ${err.code}, message is ${err.message}`);
 }
 ```
 
+
+## applicationManager.getKeepAliveApps
+
+getKeepAliveApps(admin: Want | null, accountId: number): Array&lt;string&gt;
+
+Obtains the bundle names of keep-alive applications.
+
+**Since:** 26.0.0
+
+**Required permissions:** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences:** This API takes effect on PCs/2-in-1 devices, and calling it on other devices has no effect.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name      | Type                                                    | Mandatory | Description                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise device management extension. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the host application.<br>When multiple MDM applications exist on the device, passing Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect.|
+| accountId | number                                                  | Yes   | User ID. Value range: greater than or equal to 0.<br> accountId can be obtained through APIs such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) in @ohos.account.osAccount. |
+
+**Return value**
+
+| Type                | Description                             |
+| ------------------- | -------------------------------- |
+| Array&lt;string&gt; | Bundle names of the keep-alive apps of the specified user. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Example**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+
+try {
+  // Replace the parameters based on the actual situation.
+  let result: Array<string> = applicationManager.getKeepAliveApps(null, 100);
+  console.info('Succeeded in getting keep alive apps.');
+} catch (err) {
+  console.error(`Failed to get keep alive apps. Code is ${err.code}, message is ${err.message}`);
+}
+```
 ## applicationManager.isModifyKeepAliveAppsDisallowed<sup>20+</sup>
 
 isModifyKeepAliveAppsDisallowed(admin: Want, accountId: number, bundleName: string): boolean
@@ -1121,7 +1455,7 @@ let keepAliveApp: string = 'com.example.keepAliveApplication';
 try {
   let res: boolean = applicationManager.isModifyKeepAliveAppsDisallowed(wantTemp, 100, keepAliveApp);
   console.info(`Succeeded in getting disallow modify keep alive app: ${JSON.stringify(res)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get disallow modify keep alive app. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1189,13 +1523,15 @@ Sets applications allowed to run in kiosk mode.
 
 Kiosk mode is a system-level runtime mode that restricts a device to a single application or a set of applications. It controls the lock screen, status bar, gestures, and key features to prevent users from launching other applications or performing other operations on the device.
 
+> **NOTE**
+>
+> In a multi-MDM scenario, the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule is followed.
+
 **Required permissions**: ohos.permission.ENTERPRISE_SET_KIOSK
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -1240,7 +1576,66 @@ try {
 
 getAllowedKioskApps(admin: Want): Array&lt;string&gt;
 
+Obtains the applications allowed to run in Kiosk mode.
+
+This API queries the policy set by the corresponding enterprise device management application by passing in a Want. To query the policy that actually takes effect, use the [applicationManager.getAllowedKioskApps](#applicationmanagergetallowedkioskapps) API.
+
+**Required permissions:** ohos.permission.ENTERPRISE_SET_KIOSK
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory | Description                                                         |
+| ----- | ----------------------------------------------------------- | --------- | ------------------------------------------------------------ |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes       | Enterprise device management extension component. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the host application. |
+
+**Return value**
+
+| Type                | Description                             |
+| ------------------- | -------------------------------- |
+| Array&lt;string&gt; | List of [unique identifiers](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo) of applications allowed to run in Kiosk mode. |
+
+**Error codes**
+
+For details about the following error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| ------------- | ------------------------------------------------------------ |
+| 9200001       | The application is not an administrator application of the device. |
+| 9200002       | The administrator application does not have permission to manage the device. |
+| 201           | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { applicationManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace based on the actual situation.
+  bundleName: 'com.example.edmtest',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let appIdentifiers: Array<string> = applicationManager.getAllowedKioskApps(wantTemp);
+  console.info(`Succeeded in getting allowed kiosk apps, appIdentifiers: ${JSON.stringify(appIdentifiers)}`);
+} catch (err) {
+  console.error(`Failed to get allowed kiosk apps. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+
+## applicationManager.getAllowedKioskApps
+
+getAllowedKioskApps(admin: Want | null): Array&lt;string&gt;
+
 Obtains the applications allowed to run in kiosk mode.
+
+**Since:** 26.0.0
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_KIOSK
 
@@ -1252,7 +1647,7 @@ Obtains the applications allowed to run in kiosk mode.
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise device management extension component. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the host application.<br>When multiple MDM applications exist on the device, passing Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect.|
 
 **Return value**
 
@@ -1273,23 +1668,16 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
-import { Want } from '@kit.AbilityKit';
 import { applicationManager } from '@kit.MDMKit';
 
-let wantTemp: Want = {
-  // Replace it as required.
-  bundleName: 'com.example.edmtest',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
 try {
-  let appIdentifiers: Array<string> = applicationManager.getAllowedKioskApps(wantTemp);
+  // Parameters need to be replaced based on the actual situation.
+  let appIdentifiers: Array<string> = applicationManager.getAllowedKioskApps(null);
   console.info(`Succeeded in getting allowed kiosk apps, appIdentifiers: ${JSON.stringify(appIdentifiers)}`);
 } catch (err) {
   console.error(`Failed to get allowed kiosk apps. Code is ${err.code}, message is ${err.message}`);
 }
 ```
-
 ## applicationManager.isAppKioskAllowed<sup>20+</sup>
 
 isAppKioskAllowed(appIdentifier: string): boolean
@@ -1330,19 +1718,21 @@ try {
 
 setKioskFeatures(admin: Want, features: Array\<KioskFeature>): void
 
-Sets the features of kiosk mode. This API is used to control whether the notification center and control panel can be accessed [in kiosk mode](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode).
+Sets the features of the kiosk mode. You can use this API to control whether the notification center and control panel can be accessed in kiosk mode.
 
 Since API version 24, you can set whether to allow users to swipe up from the bottom to access the recent taskbar and swipe left or right to display the side dock.
 
 In non-kiosk mode, this API can be called normally but does not take effect. The settings will take effect after kiosk mode is enabled.
+
+> **NOTE**
+>
+> In multi-MDM application scenarios, the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule is followed.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_KIOSK
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Device behavior differences**: This API has no effect on PCs/2-in-1 devices, but can be properly called on phones and tablets.
 
@@ -1398,6 +1788,12 @@ On phones and tablets, non-stoppable applications cannot be closed by swiping up
 
 On PCs/2-in-1 devices, after a user taps the application name in **Settings** > **Apps & services** to go to the details page, the forcible stop button is unavailable, and the disable button does not take effect.
 
+Since API version 26.0.0, if you call [setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount) to disable [SUPER_HUB](./js-apis-enterprise-restrictions.md#featureforaccount) and then call this API to add SuperHub to the non-stoppable application list, a policy conflict occurs and error code 9200010 is reported.
+
+> **NOTE**
+>
+> In multi-MDM application scenarios, the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule is followed.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -1405,8 +1801,6 @@ On PCs/2-in-1 devices, after a user taps the application name in **Settings** > 
 **Device behavior differences**: This API can be called on phones and tablets but has no effect on other devices. Since API version 24, this API can be properly called on PCs/2-in-1 devices.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -1423,6 +1817,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
+| 9200010  | A conflict policy has been configured. <br>Applicable version: 26.0.0+|
 | 9200012  | Parameter verification failed. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
@@ -1450,7 +1845,7 @@ let applicationInstances: Array<common.ApplicationInstance> = [
 try {
   applicationManager.addUserNonStopApps(wantTemp, applicationInstances);
   console.info('Succeeded in adding UserNonStop applications.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to add UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1459,17 +1854,19 @@ try {
 
 removeUserNonStopApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
 
-Removes the non-stoppable application list for a specified user. If the parameter list includes uninstalled applications, the removal will still succeed. Installed applications will be removed from the list, while uninstalled ones will not impact the removal process.
+Removes the non-stoppable application list for a specified user. After the removal, the user can stop the applications on the device. If the parameter list includes uninstalled applications, the removal will still succeed. Installed applications will be removed from the list, while uninstalled ones will not impact the removal process.
+
+> **NOTE**
+>
+> In multi-MDM application scenarios, the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule is followed.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Device behavior differences**: This API can be called on phones and tablets but has no effect on other devices.
+**Device behavior differences**: This API can be called on phones and tablets but has no effect on other devices. Since API version 24, this API can be properly called on PCs/2-in-1 devices.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -1513,7 +1910,7 @@ let applicationInstances: Array<common.ApplicationInstance> = [
 try {
   applicationManager.removeUserNonStopApps(wantTemp, applicationInstances);
   console.info('Succeeded in removing UserNonStop applications.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to remove UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1524,11 +1921,13 @@ getUserNonStopApps(admin: Want): Array&lt;common.ApplicationInstance&gt;
 
 Obtains the non-stoppable application list of all users on the current device.
 
+This API queries the policy set by the corresponding enterprise device management application by passing in a Want. To query the policy that actually takes effect, use the [applicationManager.getUserNonStopApps](#applicationmanagergetusernonstopapps) API.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Device behavior differences**: This API can be called on phones and tablets but has no effect on other devices.
+**Device behavior differences**: This API can be called on phones and tablets but has no effect on other devices. Since API version 24, this API can be properly called on PCs/2-in-1 devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1536,7 +1935,7 @@ Obtains the non-stoppable application list of all users on the current device.
 
 | Name       | Type                                                        | Mandatory| Description                                  |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                        |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Enterprise device management extension component. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the host application.|
 
 **Return value**
 
@@ -1569,28 +1968,80 @@ let wantTemp: Want = {
 try {
   let result: Array<common.ApplicationInstance> = applicationManager.getUserNonStopApps(wantTemp);
   console.info(`Succeeded in getting UserNonStop applications, result : ${JSON.stringify(result)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
+
+## applicationManager.getUserNonStopApps
+
+getUserNonStopApps(admin: Want | null): Array&lt;common.ApplicationInstance&gt;
+
+Obtains the list of non-stoppable applications for all users on the current device.
+
+**Since:** 26.0.0
+
+**Required permissions:** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name      | Type                                                         | Mandatory| Description                                                        |
+| --------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes      | Enterprise device management extension component. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the host application.<br>When multiple MDM applications exist on the device, passing a Want queries the policy set by the corresponding enterprise device management application, while passing null queries the policy that actually takes effect.|
+
+**Return value**
+
+| Type                                                        | Description                |
+| ------------------------------------------------------------ | -------------------- |
+| Array&lt;[common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)&gt; | Array of non-stoppable applications. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { applicationManager, common } from '@kit.MDMKit';
+
+try {
+  // Replace the parameters based on the actual situation.
+  let result: Array<common.ApplicationInstance> = applicationManager.getUserNonStopApps(null);
+  console.info(`Succeeded in getting UserNonStop applications, result : ${JSON.stringify(result)}`);
+} catch(err) {
+  console.error(`Failed to get UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
+}
+```
 ## applicationManager.addFreezeExemptedApps<sup>22+</sup>
 
 addFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
 
-Adds applications to the background freeze-exempt application list for a specified user. This policy applies only to installed applications and becomes invalid after the device is restarted. If the parameter list contains uninstalled applications, error code 9200012 will be returned. If an application in the list is uninstalled after the policy is set, the uninstalled application will be removed from the list. Adding an application that already exists in the list will return success, but the application will not be added repeatedly to the policy list.
+Adds applications to the background freeze-exempt application list for a specified user. This policy applies only to installed applications. If the parameter list contains uninstalled applications, error code 9200012 will be returned. If an application in the list is uninstalled after the policy is set, the uninstalled application will be removed from the list. Adding an application that already exists in the list will return success, but the application will not be added repeatedly to the policy list.
 
 Freezing operations include suspending the target application, and managing software resource agents, hardware resource agents, and high-power consumption.
+
+> **NOTE**
+>
+> In a multi-MDM scenario, the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule is followed.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Device behavior differences**: This API can be called on phones and tablets but has no effect on other devices.
+**Device behavior differences**: Before API version 26.0.0, this API is supported on phones and tablets but does not take effect on other devices. Since API version 26.0.0, this API is supported on phones, tablets, PCs/2-in-1 devices.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -1634,7 +2085,7 @@ let applicationInstances: Array<common.ApplicationInstance> = [
 try {
   applicationManager.addFreezeExemptedApps(wantTemp, applicationInstances);
   console.info('Succeeded in adding FreezeExempted applications.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to add FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1643,17 +2094,19 @@ try {
 
 removeFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
 
-Removes the background freeze-exempt application list for a specified user. If the parameter list includes uninstalled applications, the removal will still succeed. Installed applications will be removed from the list, while uninstalled ones will not impact the removal process.
+Removes the background freeze-exempt application list for a specified user. After the removal, the applications can be frozen by the system. If the parameter list includes uninstalled applications, the removal will still succeed. Installed applications will be removed from the list, while uninstalled ones will not impact the removal process.
+
+> **NOTE**
+>
+> In a multi-MDM scenario, the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule is followed.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Device behavior differences**: This API can be called on phones and tablets but has no effect on other devices.
+**Device behavior differences**: Before API version 26.0.0, this API is supported on phones and tablets but does not take effect on other devices. Since API version 26.0.0, this API is supported on phones, tablets, PCs/2-in-1 devices.
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -1697,7 +2150,7 @@ let applicationInstances: Array<common.ApplicationInstance> = [
 try {
   applicationManager.removeFreezeExemptedApps(wantTemp, applicationInstances);
   console.info('Succeeded in removing FreezeExempted applications.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to remove FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1708,11 +2161,13 @@ getFreezeExemptedApps(admin: Want): Array&lt;common.ApplicationInstance&gt;
 
 Obtains the background freeze-exempt application list of all users on the current device.
 
+This API queries the policy set by the corresponding enterprise device management application by passing in a Want. To query the policy that actually takes effect, use the [applicationManager.getFreezeExemptedApps](#applicationmanagergetfreezeexemptedapps) API.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Device behavior differences**: This API can be called on phones and tablets but has no effect on other devices.
+**Device behavior differences**: Before API version 26.0.0, this API is supported on phones and tablets but does not take effect on other devices. Since API version 26.0.0, this API is supported on phones, tablets, PCs/2-in-1 devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1720,7 +2175,7 @@ Obtains the background freeze-exempt application list of all users on the curren
 
 | Name       | Type                                                        | Mandatory| Description                                  |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                        |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Enterprise device management extension. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the host application.|
 
 **Return value**
 
@@ -1753,24 +2208,76 @@ let wantTemp: Want = {
 try {
   let result: Array<common.ApplicationInstance> = applicationManager.getFreezeExemptedApps(wantTemp);
   console.info(`Succeeded in getting FreezeExempted applications, result : ${JSON.stringify(result)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
+
+## applicationManager.getFreezeExemptedApps
+
+getFreezeExemptedApps(admin: Want | null): Array&lt;common.ApplicationInstance&gt;
+
+Obtains the background freeze prevention application list of all users on the current device.
+
+**Since:** 26.0.0
+
+**Required permissions:** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name        | Type                                                         | Mandatory | Description                                   |
+| ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise device management extension. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the host application.<br>When multiple MDM applications exist on the device, passing Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect.|
+
+**Return value**
+
+| Type                                                         | Description                 |
+| ------------------------------------------------------------ | -------------------- |
+| Array&lt;[common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)&gt; | Array of the background freeze prevention application list.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { applicationManager, common } from '@kit.MDMKit';
+
+try {
+  // Replace the parameters based on the actual situation.
+  let result: Array<common.ApplicationInstance> = applicationManager.getFreezeExemptedApps(null);
+  console.info(`Succeeded in getting FreezeExempted applications, result : ${JSON.stringify(result)}`);
+} catch(err) {
+  console.error(`Failed to get FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
+}
+```
 ## applicationManager.setAbilityDisabled<sup>23+</sup>
 
 setAbilityDisabled(admin: Want, bundleName: string, accountId: number, abilityName: string, isDisabled: boolean): void
 
 Sets whether to disable the Ability component of a specified application (system application or third-party application). Currently, only the UIAbility type is supported. After the UIAbility type is disabled, the UI of the Ability component cannot be started.
 
+> **NOTE**
+>
+> In a multi-MDM scenario, the [strict control](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) rule is followed.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -1796,7 +2303,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
-import { applicationManager, common } from '@kit.MDMKit';
+import { applicationManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
@@ -1812,7 +2319,7 @@ try {
   let abilityName: string = "EntryAbility";
   applicationManager.setAbilityDisabled(wantTemp, bundleName, accountId, abilityName, true);
   console.info('Succeeded in setting ability disabled');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set ability disabled. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1821,7 +2328,74 @@ try {
 
 isAbilityDisabled(admin: Want, bundleName: string, accountId: number, abilityName: string): boolean
 
+Obtains whether the Ability component of a specified application (both system applications and third-party applications are supported) is disabled.
+
+This API queries the policy set by the corresponding enterprise device management application by passing in a Want. To query the policy that actually takes effect, use the [applicationManager.isAbilityDisabled](#applicationmanagerisabilitydisabled) API.
+
+**Required permissions:** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name        | Type                                                         | Mandatory | Description                                   |
+| ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Enterprise device management extension component. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the host application. |
+| bundleName  | string     | Yes   | Application bundle name, which specifies the bundle name of the application to be disabled. |
+| accountId  | number      | Yes   | User ID. Value range: an integer greater than or equal to 0.<br> accountId can be obtained through APIs such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) in @ohos.account.osAccount. |
+| abilityName  | string      | Yes   | Name of the Ability component to be disabled or enabled (currently only UIAbility is supported). |
+
+**Return value**
+
+| Type                                                         | Description                 |
+| ------------------------------------------------------------ | -------------------- |
+| boolean | Whether the ability is disabled. true indicates that the Ability component is disabled, and false indicates that the Ability component is not disabled. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace based on the actual situation.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // Replace based on the actual situation.
+  let bundleName: string = "com.example.exampleapplication";
+  let accountId: number = 100;
+  let abilityName: string = "EntryAbility";
+  let isDisabled: boolean = applicationManager.isAbilityDisabled(wantTemp, bundleName, accountId, abilityName);
+  console.info(`Succeeded in querying whether the ability is disabled, isDisabled: ${isDisabled}`);
+} catch (err) {
+  console.error(`Failed to query whether the ability is disabled. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+
+## applicationManager.isAbilityDisabled
+
+isAbilityDisabled(admin: Want | null, bundleName: string, accountId: number, abilityName: string): boolean
+
 Checks whether the Ability component of a specified application (system application or third-party application) is disabled.
+
+**Since:** 26.0.0
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -1833,7 +2407,7 @@ Checks whether the Ability component of a specified application (system applicat
 
 | Name       | Type                                                        | Mandatory| Description                                  |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                        |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise device management extension component. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the host application.<br>When multiple MDM applications exist on the device, passing Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect.|
 | bundleName  | string     | Yes  | App bundle name.|
 | accountId  | number      | Yes  | Account ID. The value is an integer greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 | abilityName  | string      | Yes  | Name of the ability to be disabled or enabled. Currently, only UIAbility is supported.|
@@ -1858,27 +2432,20 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
-import { applicationManager, common } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-
-let wantTemp: Want = {
-  // Replace it as required.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
+import { applicationManager } from '@kit.MDMKit';
 
 try {
   // Replace it as required.
+  // Replace the parameters based on the actual situation.
   let bundleName: string = "com.example.exampleapplication";
   let accountId: number = 100;
   let abilityName: string = "EntryAbility";
-  let isDisabled: boolean = applicationManager.isAbilityDisabled(wantTemp, bundleName, accountId, abilityName);
+  let isDisabled: boolean = applicationManager.isAbilityDisabled(null, bundleName, accountId, abilityName);
   console.info(`Succeeded in querying whether the ability is disabled, isDisabled: ${isDisabled}`);
 } catch(err) {
   console.error(`Failed to query whether the ability is disabled. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
 ## applicationManager.addDockApp<sup>24+</sup>
 
 addDockApp(admin: Want, bundleName: string, abilityName: string, index?: number): void
@@ -1887,19 +2454,21 @@ Adds an application to the bottom shortcut bar of a PC/2-in-1 device based on th
 
 > **NOTE**
 >
-> 1. If location 0 or 1 is already occupied by the application center or task center, adding an application to that location returns error code 9201019. If that location is occupied by another app, the addition succeeds.
+> 1. If "App Center" or "Task Center" already exists at position 0 or 1, attempting to add an application to that position returns error code 9201019. If the position is occupied by another application, the application can be added normally.
 >
-> 2. The following applications cannot be added to the shortcut bar using this API: Application Center, Task Center, Files, and Recycle Bin.
+> 2. The following applications cannot be added to the dock through this API: "App Center", "Task Center", "File Manager", and "Recycle Bin".
 >
-> 3. Only applications with an entry (that is, an icon) can be added.
+> 3. Only applications with an application entry (that is, with an icon) can be added. Applications without an icon are not supported.
 >
-> 4. Only the shortcut bar of the current user can be configured. Each user's shortcut bar can contain a maximum of 100 applications.
+> 4. Only the dock of the current user can be configured. The dock of each user can contain at most 100 applications.
 >
-> 5. When a new application is inserted into an occupied location, the new application will directly take that location, and the original application along with all subsequent applications will shift back by one location.
+> 5. When a new application is inserted at a position already occupied by an application, the new application directly occupies that position, and the original application and the applications after it shift backward by one position in sequence.
 >
-> 6. If the **index** parameter is not passed or the passed value is greater than the number of applications in the shortcut bar, the new application is added to the end of the shortcut bar by default.
+> 6. If the index parameter is not passed, or the passed index value is greater than the current number of applications in the dock, the new application is appended to the end of the dock by default.
 >
-> 7. After an application is added to the shortcut bar using this API, users can manually remove the application or adjust its position.
+> 7. After an application is added to the dock through this API, the user can manually remove it or adjust its position.
+>
+> 8. In a multi-MDM application scenario, the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule is followed.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -1908,8 +2477,6 @@ Adds an application to the bottom shortcut bar of a PC/2-in-1 device based on th
 **Model restriction**: This API can be used only in the stage model.
 
 **Device behavior differences**: This API takes effect only on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
-
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -1956,7 +2523,7 @@ try {
   let abilityName: string = 'EntryAbility';
   applicationManager.addDockApp(wantTemp, bundleName, abilityName, 3);
   console.info('Succeeded in adding dock app.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to add dock app. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -2018,7 +2585,7 @@ try {
   let abilityName: string = 'EntryAbility';
   applicationManager.removeDockApp(wantTemp, bundleName, abilityName);
   console.info('Succeeded in removing dock app.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to remove dock app. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -2075,11 +2642,11 @@ let wantTemp: Want = {
 try {
   let result: Array<applicationManager.DockInfo> = applicationManager.getDockApps(wantTemp);
   console.info(`Succeeded in getting dock apps, result : ${JSON.stringify(result)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get dock apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
+<!--code_no_check-->
 ```ts
 // Return value example.
 [
@@ -2089,7 +2656,549 @@ try {
     "index": 5
   },
   // ...
-]
+];
+```
+
+
+
+## applicationManager.addAllowedNotificationBundles
+
+addAllowedNotificationBundles(admin: Want, bundleNames: Array\<string\>, accountId: number): void
+
+Adds applications to the allowlist for sending notifications. After the notification allowlist is set, applications not in the list cannot send notifications.
+> **NOTE**
+>
+> 1. If Kiosk mode and the notification allowlist policy are set at the same time, both the application that sets Kiosk mode and the applications in the notification allowlist can send notifications.<br>
+> 2. If the device notification capability has been disabled through [setDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated), setting the notification allowlist through this API throws error code 9200010.<br>
+> 3. The notification allowlist does not take effect on system services, which can always send notifications. System applications are subject to the notification allowlist.<br>
+> 4. Cross-user setting is supported, and the setting takes effect immediately across users.<br>
+> 5. In a multi-MDM application scenario, the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule is followed.
+
+**Since:** 26.0.0
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name   | Type                                                   | Mandatory| Description                                                        |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
+| bundleNames    | Array&lt;string&gt;                                     | Yes  | Application bundle name array, which specifies the applications that are allowed to send notifications. A maximum of 200 applications are supported.|
+| accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br>You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200010  | A conflict policy has been configured. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let bundleNames: Array<string> = ['com.example.notificationapp'];
+
+try {
+  applicationManager.addAllowedNotificationBundles(wantTemp, bundleNames, 100);
+  console.info('Succeeded in adding allowed notification bundles.');
+} catch (err) {
+  console.error(`Failed to add allowed notification bundles. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## applicationManager.removeAllowedNotificationBundles
+
+removeAllowedNotificationBundles(admin: Want, bundleNames: Array\<string\>, accountId: number): void
+
+Removes applications from the notification trustlist.
+
+**Since:** 26.0.0
+
+> **NOTE**
+>
+> In a multi-MDM application scenario, the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule is followed.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name   | Type                                                   | Mandatory| Description                                                        |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
+| bundleNames    | Array&lt;string&gt;                                     | Yes  | Application bundle name array, which specifies the applications to be removed.|
+| accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let bundleNames: Array<string> = ['com.example.notificationapp'];
+
+try {
+  applicationManager.removeAllowedNotificationBundles(wantTemp, bundleNames, 100);
+  console.info('Succeeded in removing allowed notification bundles.');
+} catch (err) {
+  console.error(`Failed to remove allowed notification bundles. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## applicationManager.getAllowedNotificationBundles
+
+getAllowedNotificationBundles(admin: Want \| null, accountId: number): Array\<string\>
+
+Obtains the list of applications that are allowed to send notifications.
+
+**Since:** 26.0.0
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name   | Type                                                   | Mandatory| Description                                                        |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+| accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br>You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
+
+**Return value**
+
+| Type               | Description                            |
+| ------------------- | -------------------------------- |
+| Array&lt;string&gt; | Array of bundle names of applications that are allowed to send notifications.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let result: Array<string> = applicationManager.getAllowedNotificationBundles(wantTemp, 100);
+  console.info(`Succeeded in getting allowed notification bundles, result : ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get allowed notification bundles. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## applicationManager.addAllowedDistributeAbilityConnBundles
+
+addAllowedDistributeAbilityConnBundles(admin: Want, appIdentifiers: Array&lt;string&gt;, serviceType: ServiceType, accountId: number): void
+
+Adds the cross-device application trustlist for a specific distributed service for a specified user. Applications in the trustlist can use the specific distributed service to transfer data across devices without being subject to the restrictions imposed by [setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated).
+
+The currently supported distributed service types are: [collaborative services](#servicetype).
+> **NOTE**
+>
+> 1. To set the application list allowed to use a specific distributed service, the capability of one-way data transfer between devices for transferring data to other devices must have been disabled through [setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated) before this API is called. Otherwise, error code 9201043 is thrown.<br>
+> 2. When the capability of one-way data transfer between devices for transferring data to other devices is re-enabled, the application list allowed to use a specific distributed service set through this API is cleared synchronously.<br>
+> 3. In a multi-MDM application scenario, the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule is followed.
+
+**Since:** 26.0.0
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name      | Type                                                   | Mandatory| Description                                                        |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
+| appIdentifiers | Array&lt;string&gt;                                   | Yes  | Array of [unique identifiers](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo) of an application. You can call the [bundleManager.getBundleInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2) API to obtain the **bundleInfo.signatureInfo.appIdentifier**. The total number of applications in the array cannot exceed 200.|
+| serviceType | [ServiceType](#servicetype) | Yes  | Distributed service type.|
+| accountId  | number      | Yes  | Account ID. The value is an integer greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9201043  | Prerequisites for the API call have not been satisfied. For example, distributed outgoing transmission is not disallowed before adding the distributed bidirectional collaboration trustlist. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { applicationManager, restrictions } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+// If you want to disable data transmission to other devices for all applications except specified ones on the device under user 100, perform the following two steps:
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let accountId: number = 100;
+
+// Step 1. Disable one-way data transmission between devices for user 100. (If this capability has been disabled before, you do not need to disable it again.)
+try {
+  restrictions.setDisallowedPolicyForAccount(wantTemp, restrictions.FeatureForAccount.DISTRIBUTED_TRANSMISSION_OUTGOING, true, accountId);
+  console.info('Succeeded in setting distributedTransmissionOutgoing disabled');
+} catch (err) {
+  console.error(`Failed to set distributedTransmissionOutgoing disabled. Code is ${err.code}, message is ${err.message}`);
+}
+
+// Step 2: Set the list of applications that are allowed to use a specific distributed service (for example, the collaboration service) under user 100.
+try {
+  // Replace it as required.
+  let appIdentifiers: Array<string> = ['6917****3569'];
+  applicationManager.addAllowedDistributeAbilityConnBundles(wantTemp, appIdentifiers,
+    applicationManager.ServiceType.COLLABORATION_SERVICE, accountId);
+  console.info('Succeeded in adding allowed distribute ability conn bundles.');
+} catch (err) {
+  console.error(`Failed to add allowed distribute ability conn bundles. Code: ${err.code}, message: ${err.message}`);
+}
+// After the preceding two steps are performed, under user 100, only the application 6917****3569 can transmit data to other devices through the collaboration service. Other applications cannot transmit data to other devices.
+// Note: After disabling one-way data transmission between devices for a specific user, whether to add an application list allowed to use collaboration services depends on actual business requirements.
+```
+
+## applicationManager.removeAllowedDistributeAbilityConnBundles
+
+removeAllowedDistributeAbilityConnBundles(admin: Want, appIdentifiers: Array&lt;string&gt;, serviceType: ServiceType, accountId: number): void
+
+Removes the cross-device application trustlist for a specific distributed service for a specified user. After the trustlist is removed, if there are still remaining applications in the list, only those applications can use the specific distributed service to transmit data across devices without being subject to the restrictions imposed by [setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated). If the list has been removed and there are no remaining applications, no applications under the specified user are allowed to use the specific distributed service for cross-device data transmission.
+
+**Since:** 26.0.0
+
+> **NOTE**
+>
+> In a multi-MDM application scenario, the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule is followed.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name      | Type                                                   | Mandatory| Description                                                        |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
+| appIdentifiers | Array&lt;string&gt;                                   | Yes  | Array of [unique identifiers](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo) of an application. You can call the [bundleManager.getBundleInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2) API to obtain the **bundleInfo.signatureInfo.appIdentifier**. The total number of applications in the array cannot exceed 200.|
+| serviceType | [ServiceType](#servicetype) | Yes  | Distributed service type.|
+| accountId  | number      | Yes  | Account ID. The value is an integer greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // Replace it as required.
+  let appIdentifiers: Array<string> = ['6917****3569'];
+  let accountId: number = 100;
+  applicationManager.removeAllowedDistributeAbilityConnBundles(wantTemp, appIdentifiers,
+    applicationManager.ServiceType.COLLABORATION_SERVICE, accountId);
+  console.info('Succeeded in removing allowed distribute ability conn bundles.');
+  // Note: After removing the application list allowed to use collaboration services for a user, whether to lift the disablement of one-way data transmission between devices for that user should be determined based on actual business requirements.
+} catch (err) {
+  console.error(`Failed to remove allowed distribute ability conn bundles. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.getAllowedDistributeAbilityConnBundles
+
+getAllowedDistributeAbilityConnBundles(admin: Want | null, serviceType: ServiceType, accountId: number): Array&lt;string&gt;
+
+Obtains the cross-device application trustlist for a specific distributed service under a specified user.
+
+**Since:** 26.0.0
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name      | Type                                                   | Mandatory| Description                                                        |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+| serviceType | [ServiceType](#servicetype) | Yes  | Distributed service type.|
+| accountId  | number | Yes| Account ID. The value is an integer greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
+
+**Return value**
+
+| Type                                                        | Description                |
+| ------------------------------------------------------------ | -------------------- |
+| Array&lt;string&gt; | Array of [unique identifiers](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo) for applications allowed to use a specific distributed service under the specified user.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // Replace it as required.
+  let accountId: number = 100;
+  let result: Array<string> = applicationManager.getAllowedDistributeAbilityConnBundles(wantTemp,
+    applicationManager.ServiceType.COLLABORATION_SERVICE, accountId);
+  console.info(`Succeeded in getting allowed distribute ability conn bundles: ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get allowed distribute ability conn bundles. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.queryTrafficStats
+
+queryTrafficStats(admin: Want, bundleName: string, appIndex: number, accountId: number, networkInfo: statistics.NetworkInfo): Promise&lt;statistics.NetStatsInfo&gt;
+
+Queries the data usage of a specified application within a specified period for the current user. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> The input network type (**networkInfo.type**) can only be **connection.NetBearType.BEARER_CELLULAR** or **connection.NetBearType.BEARER_WIFI**. If any other value is passed, the API returns error code 9200012.
+>
+> The input start time (**networkInfo.startTime**) and end time (**networkInfo.endTime**) are second-level timestamps. If the input start time and end time are negative numbers or the start time is later than the end time, the API returns error code 9200012.
+>
+> If the input user ID (**accountId**) is not the ID of the current user, the API returns error code 9200012.
+>
+> It is advised that the query interval (end time – start time) be 1 to 30 days. If the interval is too short, the query result may be inaccurate. If the interval is too long, the query will take a long time.
+
+**Since:** 26.0.0
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name      | Type                                                   | Mandatory| Description                                                        |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
+| bundleName   | string                                                  | Yes  | Bundle name of the application.|
+| appIndex | number                                                    | Yes  | Index of the application clone. The value is an integer greater than or equal to 0.<br> You can call [getAppCloneIdentity](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetappcloneidentity14) of @ohos.bundle.bundleManager to obtain the index.|
+| accountId | number                                                   | Yes  | Account ID. The value is an integer greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
+| networkInfo | [statistics.NetworkInfo](../apis-network-kit/js-apis-net-statistics.md#networkinfo22)                                                    | Yes  | Network information.|
+
+**Return value**
+
+| Type                                                        | Description                                                        |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Promise&lt;[statistics.NetStatsInfo](../apis-network-kit/js-apis-net-statistics.md#netstatsinfo22)&gt; | Promise used to return the historical traffic information object.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { connection, statistics } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+async function queryTrafficStats() {
+  let wantTemp: Want = {
+    // Replace it as required.
+    bundleName: 'com.example.myapplication',
+    abilityName: 'EnterpriseAdminAbility'
+  };
+  // Replace it as required.
+  let bundleName: string = 'com.example.test';
+  let appIndex: number = 0;
+  let accountId: number = 100;
+  // In the sample code, sim.getSimAccountInfo is used to obtain the SIM ID.
+  let slotId: number = 0;
+  let simId: number = 0;
+  await sim.getSimAccountInfo(slotId).then((data: sim.IccAccountInfo) => {
+    simId = data.simId;
+  }).catch((err: BusinessError) => {
+    console.error(`getSimAccountInfo failed, promise: err->${JSON.stringify(err)}`);
+  });
+  let networkInfo: statistics.NetworkInfo = {
+    // Replace it as required.
+    type: connection.NetBearType.BEARER_CELLULAR,
+    // Query data from 2026/4/15 00:00:00.000 to 2026/4/16 00:00:00.000. (The month starts from 0.)
+    startTime: Math.floor(new Date(2026, 4, 15, 0, 0, 0, 0).getTime() / 1000),
+    endTime: Math.floor(new Date(2026, 4, 16, 0, 0, 0, 0).getTime() / 1000),
+    // If the network type is BEARER_CELLULAR, simId needs to be passed. If the network type is BEARER_WIFI, simId does not need to be passed.
+    simId: simId
+  };
+  await applicationManager.queryTrafficStats(wantTemp, bundleName, appIndex, accountId, networkInfo)
+    .then(result => {
+      console.info('Succeeded in querying traffic stats.');
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to query traffic stats. Code is ${error.code}, message is ${error.message}`);
+    });
+}
+```
+
+## applicationManager.getApplicationWindowStates
+
+getApplicationWindowStates(admin: Want, bundleName: string, appIndex: number): Array\<WindowStateInfo\>
+
+Queries the window state information list of the specified application. It can retrieve information such as whether the application is in the bottom dock and whether the application window is currently displayed in the foreground.
+
+**Since:** 26.0.0
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name      | Type                                                   | Mandatory| Description                                                        |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
+| bundleName   | string                                                  | Yes  | Bundle name of the application.|
+| appIndex | number                                                    | Yes  | Index of the application clone. The value is an integer greater than or equal to 0.<br> You can call [getAppCloneIdentity](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetappcloneidentity14) of @ohos.bundle.bundleManager to obtain the index.|
+
+**Return value**
+
+| Type                                                        | Description                |
+| ------------------------------------------------------------ | -------------------- |
+| Array&lt;[WindowStateInfo](#windowstateinfo)&gt; | Array of the application window state information.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// Bundle name of the application to be queried. Replace it as required.
+let bundleName: string = 'com.example.myapplication';
+// Clone index of the queried application. Replace it as required.
+let appIndex: number = 0;
+try {
+  let result: Array<applicationManager.WindowStateInfo> =
+    applicationManager.getApplicationWindowStates(wantTemp, bundleName, appIndex);
+  console.info(`Succeeded in getting application window states, result: ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get application window states. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## KioskFeature<sup>20+</sup>
@@ -2121,3 +3230,625 @@ Describes information about an application in the shortcut bar.
 | bundleName  | string | No   | No  | Bundle name of the application.|
 | abilityName | string | No   | No  | Ability name of the application. |
 | index       | number | No   | No  | Location index of the application in the shortcut bar.|
+
+## BundleStatsInfo
+
+Application bundle statistics.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name                   | Type  | Read-Only | Optional |Description         |
+| ----------------------- | ------ |------ |------| ---------------|
+| bundleName              | string | No   | No  | Bundle name of the application.|
+| appIndex                | number | No   | No  | Index of the application clone. The value is an integer greater than or equal to 0.<br> You can call [getAppCloneIdentity](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetappcloneidentity14) of @ohos.bundle.bundleManager to obtain the index.|
+| abilityInFgTotalTime    | number | No   | No  | Total duration that the ability runs in the foreground, in milliseconds.|
+
+## WindowStateInfo
+
+Defines the application window state information.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name        | Type    | Read-Only| Optional| Description                           |
+| ----------- | --------| ----- | ---- | ------------------------------- |
+| windowId | number | No| No| Application window ID.|
+| state | [WindowState](#windowstate) | No| No| Application window state.|
+| isOnDock | boolean | No| No| Whether the application window is displayed on the bottom dock. For application on the bottom dock on tablets in PC mode and PCs/2-in-1 devices. For other devices, **false** is returned.|
+| name | string | No| No| Application window name.|
+
+## ServiceType
+
+Distributed service type.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name        | Value  | Description |
+| ----------- | ------ |------ |
+| COLLABORATION_SERVICE  | 0 | Collaboration service. Applications that are allowed to use the collaboration service can use the APIs in [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) and [UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md), or the methods in [Cross-Device UIAbility Connection Development Guide](../../distributedservice/abilityconnectmanager-guidelines.md), to launch the pages of other applications across devices and transfer data to them. |
+
+## WindowState
+
+Enumerates application window states.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name| Value| Description|
+| -------- | -------- | -------- |
+| DISCONNECT | 0 | The window has been created but is currently unavailable.|
+| CONNECT | 1 | The window has been created and is available for use.|
+| FOREGROUND | 2 | Foreground state, indicating that the window has entered the foreground display. This is a transitional state.|
+| ACTIVE | 3 | Foreground active state, indicating that the window is currently displayed in the foreground.|
+| INACTIVE | 4 | Foreground inactive state, indicating that the window is about to enter the background. This is a transitional state.|
+| BACKGROUND | 5 | Background state, indicating that the window has been moved to the background and is not visible.|
+
+## applicationManager.queryBundleStatsInfos
+
+queryBundleStatsInfos(admin: Want, startTime: number, endTime: number, accountId: number): Array\<BundleStatsInfo\>
+
+Queries the accumulated foreground runtime statistics of applications under a specified user account within a given time period. The minimum query granularity is one day. The API requires the start time (**startTime**), end time (**endTime**), and target user account ID (**accountId**) to be passed in. **startTime** and **endTime** are millisecond-level timestamps. The caller can pass custom values. The default value of **startTime** is 00:00:00.000 of the current day, and the default of **endTime** is 24:00:00.000 of the current day (that is, 00:00:00 of the following day). The API returns an array of **BundleStatsInfo**, where each element contains the bundle name of an application, its clone index, and the foreground usage duration (in milliseconds) within the specified time period. If **startTime** is set to **0**, the query starts from the device's first boot time. If **startTime** is later than **endTime**, the API returns error code 9200012.
+
+**Since:** 26.0.0
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name   | Type                                                   | Mandatory| Description                                                        |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
+| startTime | number                                                  | Yes  | Query start time, in milliseconds (timestamp).<br>Value range: [0, +∞).|
+| endTime   | number                                                  | Yes  | Query end time, in milliseconds (timestamp).<br>Value range: [0, +∞).|
+| accountId | number                                                  | Yes  | Account ID. The value is an integer greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
+
+**Return value**
+
+| Type                                                        | Description                |
+| ------------------------------------------------------------ | -------------------- |
+| Array&lt;[BundleStatsInfo](#bundlestatsinfo)&gt; | Array of application bundle statistics.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // Query data from 2026/4/15 00:00:00.000 to 2026/4/16 23:59:59.999. (The month starts from 0.)
+  let startTime: number = new Date(2026, 4, 15, 0, 0, 0, 0).getTime();
+  let endTime: number = new Date(2026, 4, 16, 23, 59, 59, 999).getTime();
+  let accountId: number = 100;
+  let result: Array<applicationManager.BundleStatsInfo> =
+    applicationManager.queryBundleStatsInfos(wantTemp, startTime, endTime, accountId);
+  console.info(`Succeeded in querying bundle stats infos, result : ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to query bundle stats infos. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // Query data of the last month.
+  // Obtain the current date.
+  let currentDate: Date = new Date();
+  // Calculate the first day of the last month. (The month starts from 0. Therefore, subtract 1 from the current month.)
+  let lastMonthFirstDay: Date = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1, 0, 0, 0, 0);
+  // Calculate the last day of the last month. (The 0th day of the next month is the last day of the current month.)
+  let lastMonthLastDay: Date = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0, 23, 59, 59, 999);
+  
+  let startTime: number = lastMonthFirstDay.getTime();
+  let endTime: number = lastMonthLastDay.getTime();
+  let accountId: number = 100;
+  let result: Array<applicationManager.BundleStatsInfo> =
+    applicationManager.queryBundleStatsInfos(wantTemp, startTime, endTime, accountId);
+  console.info(`Succeeded in querying bundle stats infos, result : ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to query bundle stats infos. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.addHideLauncherIcon
+
+addHideLauncherIcon(admin: Want, bundleNames: Array\<string\>): void
+
+Adds applications to the home screen icon hide list.
+
+> **NOTE**
+>
+> 1. This API only supports hiding the desktop application icons of the current user, and does not support hiding application cards.
+>
+> 2. If the hidden application has an application clone, the application clone is hidden synchronously.
+>
+> 3. Do not add all desktop applications to the hidden list. Otherwise, all applications are displayed on the desktop.
+>
+> 4. In a multi-MDM application scenario, the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule is followed.
+
+**Since:** 26.0.0
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Device behavior differences**: This API is supported on phones and tablets. On other device types, it returns error code 801.
+
+**Parameters**
+
+| Name   | Type                                                   | Mandatory| Description                                                        |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
+| bundleNames    | Array&lt;string&gt;                                     | Yes  | Application bundle name array, which specifies the applications to be hidden. A maximum of 500 applications are supported.                                |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// Replace it as required.
+let bundleNames: Array<string> = ['com.example.test'];
+try {
+  applicationManager.addHideLauncherIcon(wantTemp, bundleNames);
+  console.info('Succeeded in adding hide launcher icon.');
+} catch (err) {
+  console.error(`Failed to add hide launcher icon. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## applicationManager.removeHideLauncherIcon
+
+removeHideLauncherIcon(admin: Want, bundleNames: Array\<string\>): void
+
+Removes applications from the home screen icon hide list.
+
+> **NOTE**
+>
+> An application whose hiding is canceled is displayed in the first empty position found starting from screen 2 of the desktop. If there is no empty position on screens 2 to 18, an empty position is found on screen 1. If there is no empty position on screen 1, a small folder is created at the position of the first application on screen 2 to hold the application.
+>
+> In a multi-MDM application scenario, the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule is followed.
+
+**Since:** 26.0.0
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Device behavior differences**: This API is supported on phones and tablets. On other device types, it returns error code 801.
+
+**Parameters**
+
+| Name   | Type                                                   | Mandatory| Description                                                        |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
+| bundleNames    | Array&lt;string&gt;                                     | Yes  | Application bundle name array, which specifies the applications to be unhidden. A maximum of 500 applications are supported.                                |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// Replace it as required.
+let bundleNames: Array<string> = ['com.example.test'];
+try {
+  applicationManager.removeHideLauncherIcon(wantTemp, bundleNames);
+  console.info('Succeeded in removing hide launcher icon.');
+} catch (err) {
+  console.error(`Failed to remove hide launcher icon. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## applicationManager.getHideLauncherIcon
+
+getHideLauncherIcon(admin: Want \| null): Array\<string\>
+
+Queries the list of applications whose home screen icons are hidden for the current user.
+
+**Since:** 26.0.0
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Device behavior differences**: This API is supported on phones and tablets. On other device types, it returns error code 801.
+
+**Parameters**
+
+| Name   | Type                                                   | Mandatory| Description                                                        |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.<br>If the device has multiple MDM applications, you can pass **admin** to query the corresponding policies. If **null** is passed, the policies that actually take effect on the device are returned.                                              |
+
+**Return value**
+
+| Type               | Description                            |
+| ------------------- | -------------------------------- |
+| Array&lt;string&gt; | List of applications whose home screen icons are hidden for the current user.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+  let bundleNames: Array<string> = applicationManager.getHideLauncherIcon(wantTemp);
+  console.info('Succeeded in getting hide launcher icon.');
+} catch (err) {
+  console.error(`Failed to get hide launcher icon. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## applicationManager.publishFormToDesktop
+
+publishFormToDesktop(formInfo: FormInfo): string
+
+Adds a specified form to the desktop of the current user.
+
+The maximum number of forms may vary across products. The general limits are as follows:
+- A maximum of 80 forms can be placed on the desktop of any user.
+- The total number of forms of all users on a device cannot exceed 512.
+
+The form placement rules on each device are as follows:
+- Phones and tablets: The system first searches for a position on the current page, starting from the upper-left corner and scanning from left to right and top to bottom for an empty space that can accommodate the form. If no empty space is available on the current page, it searches on the next page. If no empty space is available on the next page either, it creates a new page to the right of the current page to place the form. If the desktop already has 18 pages (the maximum is 18), a new page cannot be created.
+- Standard PCs: The system searches for an empty space that can accommodate the form, starting from the upper-right corner and scanning from top to bottom and right to left.
+- Foldable PCs in the unfolded state: The system searches for an empty space that can accommodate the form, starting from the upper-right corner and scanning from top to bottom and right to left. The form is added only when empty space is available in both landscape and portrait orientations.
+- Foldable PC - half-folded state (full-size keyboard closed): Start from the upper-right corner of the upper half screen, search for an empty slot from top to bottom and from right to left. If no empty slot is found, search on the other half screen.
+- Foldable PC - half-folded state (full-size keyboard opened): Start only from the upper-right corner of the currently displayed page, search for an empty slot from top to bottom and from right to left. Empty slots are not searched on pages that are not displayed.
+
+> **NOTE**
+>
+> 1. If the number of cards exceeds the device limit or there is no empty slot on the home screen, calling this API reports error code 9201047.
+>
+> 2. If bundleName, moduleName, abilityName, or name in formInfo is passed as an empty string, calling this API reports error code 9200012. If an incorrect string is passed for the parameters in formInfo, calling this API reports error code 9201049. If the value of dimension in formInfo exceeds the valid range of the [formInfo.FormDimension](../apis-form-kit/js-apis-app-form-formInfo.md#formdimension) enum, calling this API reports error code 9200012.
+>
+> 3. Adding a 1\*1 size card to the home screen is not supported. If formInfo passes 1\*1 card information, calling this API reports error code 9201050.
+
+**Since Version:** 26.0.1
+
+**Required Permission:** ohos.permission.ENTERPRISE_REQUEST_PUBLISH_FORM
+
+**System Capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name    | Type                                                    | Mandatory | Description                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| formInfo  | [FormInfo](#forminfo) | Yes   | Card information.             |
+
+**Return Value**
+
+| Type                | Description                             |
+| ------------------- | -------------------------------- |
+| string | ID of the added form.|
+
+**Error codes**
+
+For details about the following error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
+| 9201047  | Form count limit reached or insufficient home screen space to add forms. |
+| 9201049  | The form does not exist. |
+| 9201050  | The form type is not supported. |
+| 9201051  | Failed to add the form to the desktop. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { formInfo, formProvider } from '@kit.FormKit';
+
+async function publishFormToDesktop() {
+  // Replace based on the actual situation.
+  let filter: formInfo.FormInfoFilter = {
+    moduleName: 'entry'
+  };
+  // Call the formProvider.getFormsInfo API here to query the application's own form information. This step is not mandatory and can be used as needed.
+  let formsInfos: Array<formInfo.FormInfo> = await formProvider.getFormsInfo(filter);
+  if (formsInfos.length == 0) {
+    return;
+  }
+  // Replace based on the actual situation.
+  let form: applicationManager.FormInfo = {
+    bundleName: formsInfos[0].bundleName,
+    moduleName: formsInfos[0].moduleName,
+    abilityName: formsInfos[0].abilityName,
+    name: formsInfos[0].name,
+    dimension: formsInfos[0].defaultDimension
+  }
+  try {
+    let result: string = applicationManager.publishFormToDesktop(form);
+    console.info(`Succeeded in publishing form to desktop, result : ${JSON.stringify(result)}`);
+  } catch(err) {
+    console.error(`Failed to publish form to desktop. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+## FormInfo
+
+Card information.
+
+**Since:** 26.0.1
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the stage model.
+
+| Name         | Type     | Read-only | Optional |  Description                       |
+| ----------- | --------| ---- | ----| ---------------------------- |
+| bundleName  | string | No   | No | Bundle name of the package to which the card belongs.|
+| moduleName  | string | No   | No | Module name of the module to which the card belongs.|
+| abilityName | string | No   | No | Name of the ability to which the card belongs.|
+| name        | string | No   | No | Card name.|
+| dimension   | [formInfo.FormDimension](../apis-form-kit/js-apis-app-form-formInfo.md#formdimension) | No   | No | Card dimension.|
+
+## applicationManager.requestExemptionResource
+
+requestExemptionResource(resourceType: StandbyResourceType, bundleName: string, duration: number): void
+
+Requests standby resource exemption for a specified application. After the request succeeds, the specified application can continue to use the exempted resources (such as network access) when the device enters standby mode. The exemption is not persisted and becomes invalid after the device restarts. This is applicable to enterprise scenarios where a management application requires continuous resource access to maintain service continuity.
+
+The exemption takes effect for a limited time. When the specified duration expires, the system automatically releases the exemption. If the exemption is requested again before the duration expires, the effective time is determined by the latest end time among multiple exemptions. To release the exemption in advance, call [applicationManager.releaseExemptionResource](#applicationmanagerreleaseexemptionresource).
+
+> **NOTE**
+>
+> This API must be called when the device is in standby state. In standby state, the system enters low-power sleep, and ordinary timers (such as `setTimeout` and `setInterval`) are frozen and cannot trigger the call. Therefore, from the first request to subsequent renewals, this API must be called by creating an exact timer through [systemManager.createExactTimer](./js-apis-enterprise-systemManager.md#systemmanagercreateexacttimer). An exact timer can wake up and execute during device standby sleep. Call this API in its callback to implement the first request and continuous renewal of standby resource exemption.
+
+**Since:** 26.0.1
+
+**Required permissions:** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Device behavior difference:** This API can be called normally on phones and tablets. Calling it on other devices returns error code 801.
+
+**Parameters**
+
+| Name         | Type                                                    | Mandatory | Description                                                         |
+| ------------ | ------------------------------------------------------- | --------- | ------------------------------------------------------------ |
+| resourceType | [StandbyResourceType](#standbyresourcetype)             | Yes       | Standby resource exemption type. Currently only NETWORK (value = 1) is supported. |
+| bundleName   | string                                                  | Yes       | Package name of the specified application for which the resource exemption is requested. The bundle name must be a valid application installed on the device and cannot be an empty string. |
+| duration     | number                                                  | Yes       | Exemption duration, in seconds. The value must be greater than 0. The maximum exemption duration supported by the system is 3600 seconds. If the passed value exceeds 3600, it takes effect as 3600 seconds. The system automatically releases the exemption after it expires. |
+
+**Error codes**
+
+For details about the following error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Possible causes:<br>1. The hardware does not support the capability.<br>2. The chip does not support the capability.<br>3. A dependent service feature is not supported. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.                               |
+| 9200016  | Service timeout.                                             |
+| 9201002  | The application is not installed.                            |
+
+**Example**
+
+```ts
+import { applicationManager, systemManager } from '@kit.MDMKit';
+import { BusinessError, systemDateTime } from '@kit.BasicServicesKit';
+
+// Replace based on the actual situation.
+let bundleName: string = 'com.example.test';
+let duration: number = 3600;
+let timerId: number = 0;
+// Initialize the precise timer configuration.
+let config: systemManager.ExactTimerConfig = {
+  name: 'networkExemptionTimer',
+  repeat: true,
+  interval: 3500000,
+  callback: () => {
+    try {
+      // Call the network resource exemption API in the precise timer callback.
+      applicationManager.requestExemptionResource(applicationManager.StandbyResourceType.NETWORK, bundleName, duration);
+      console.info('Succeeded in requesting exemption resource.');
+    } catch (err) {
+      console.error(`Failed to request exemption resource. Code is ${err.code}, message is ${err.message}`);
+    }
+  }
+};
+// Create a precise timer.
+systemManager.createExactTimer(config).then((id: number) => {
+  timerId = id;
+  console.info(`Succeeded in creating exact timer, timerId: ${timerId}.`);
+  let triggerTime: number = systemDateTime.getUptime(systemDateTime.TimeType.STARTUP) + 5000;
+  // Start the precise timer to trigger the callback and apply for network resource exemption. After success, the network resources can be used as needed.
+  return systemManager.startExactTimer(timerId, triggerTime);
+}).then(() => {
+  console.info('Succeeded in starting exact timer.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create or start exact timer. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## applicationManager.releaseExemptionResource
+
+releaseExemptionResource(resourceType: StandbyResourceType, bundleName: string): void
+
+Releases the standby resource exemption of a specified application. After the release succeeds, the specified application resumes normal standby resource restrictions. This API is used to release the exemption in advance. If the exemption has already expired automatically (the duration has elapsed), calling this API does not return an error, but it has no actual effect.
+
+resourceType and bundleName must be consistent with those used when the exemption was previously applied for.
+
+> **NOTE**
+>
+> If [systemManager.createExactTimer](./js-apis-enterprise-systemManager.md#systemmanagercreateexacttimer) is used to apply for and renew the network exemption for the first time, when releasing the exemption, you should also call [systemManager.stopExactTimer](./js-apis-enterprise-systemManager.md#systemmanagerstopexacttimer) to stop the timer and call [systemManager.destroyExactTimer](./js-apis-enterprise-systemManager.md#systemmanagerdestroyexacttimer) to destroy the timer, so as to avoid timer resource leakage.
+
+**Since:** 26.0.1
+
+**Required permissions:** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Device behavior difference:** This API can be called normally on phones and tablets. Calling this API on other devices returns error code 801.
+
+**Parameters**
+
+| Name         | Type                                                    | Mandatory | Description                                                         |
+| ------------ | ------------------------------------------------------- | --------- | ------------------------------------------------------------ |
+| resourceType | [StandbyResourceType](#standbyresourcetype)             | Yes       | Standby resource exemption type. Currently only NETWORK (value = 1) is supported. |
+| bundleName   | string                                                  | Yes       | Specified application bundle name for which the standby resource exemption is to be released. The bundle name must be a valid application installed on the device and cannot be an empty string. |
+
+**Error Codes**
+
+For details about the following error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Possible causes:<br>1. The hardware does not support the capability.<br>2. The chip does not support the capability.<br>3. A dependent service feature is not supported. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.                               |
+| 9200016  | Service timeout.                                             |
+| 9201002  | The application is not installed.                            |
+
+**Example**
+
+```ts
+import { applicationManager, systemManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Replace based on the actual situation.
+let bundleName: string = 'com.example.test';
+let timerId: number = 1;
+
+// Stop and destroy the precise timer to avoid resource leakage.
+systemManager.stopExactTimer(timerId).then(() => {
+  console.info('Succeeded in stopping exact timer.');
+  return systemManager.destroyExactTimer(timerId);
+}).then(() => {
+  console.info('Succeeded in destroying exact timer.');
+  // Release the network exemption.
+  try {
+    applicationManager.releaseExemptionResource(applicationManager.StandbyResourceType.NETWORK, bundleName);
+    console.info('Succeeded in releasing exemption resource.');
+  } catch (err) {
+    console.error(`Failed to release exemption resource. Code is ${err.code}, message is ${err.message}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to stop or destroy exact timer. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## StandbyResourceType
+
+Enumerates the standby resource exemption types of a device. When a device remains uncharged with the screen off for longer than a certain period, the system restricts resources such as network access, and ordinary timers (such as `setTimeout` and `setInterval`) are frozen and cannot be triggered. By applying for standby resource exemption, a specified application can continue to use these resources while the device is in standby.
+
+**Since:** 26.0.1
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the stage model.
+
+| Name    | Value | Description           |
+| ------- | ----- | --------------------- |
+| NETWORK | 1     | Network access resource. After the exemption is applied for, the specified application can continue to access the network while the device is in standby. This applies to application scenarios that require a persistent network connection, such as enterprise communication tools, push notification services, and real-time data synchronization. |

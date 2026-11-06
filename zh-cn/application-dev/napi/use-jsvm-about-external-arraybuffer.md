@@ -1,16 +1,24 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何使用实验性接口从外部内存创建ArrayBuffer对象，并依据copied输出参数与finalize回调管理外部内存生命周期。"
+keywords: [OH_JSVM_CreateArrayBufferFromExternalMemory, JSVM_FinalizeArrayBuffer, 外部内存, 零拷贝, copied, 8字节对齐, JSVM_EXPERIMENTAL, ArrayBuffer, 内存生命周期]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口从外部内存创建ArrayBuffer
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
-ArrayBuffer是JavaScript中的一种数据类型，用于表示通用的、固定长度的原始二进制数据缓冲区。它提供了一种在JavaScript中有效地表示和操作原始二进制数据的方式。
+ArrayBuffer是JavaScript中的一种数据类型，用于表示通用的、固定长度的原始二进制数据缓冲区。提供了一种在JavaScript中有效地表示和操作原始二进制数据的方式。
 
-在某些场景下，应用已有一块外部内存（如从文件映射、硬件缓冲区、或其他Native模块分配的内存），希望将其包装为JavaScript的ArrayBuffer对象，以便在JS层进行读写操作。从API Version 26.0.0开始，JSVM-API提供了[OH_JSVM_CreateArrayBufferFromExternalMemory](../reference/common/capi-jsvm-h.md#oh_jsvm_createarraybufferfromexternalmemory)接口来满足这类场景。
+在某些场景下，如应用已有一块外部内存（如从文件映射、硬件缓冲区、或其他Native模块分配的内存），希望将其包装为JavaScript的ArrayBuffer对象，以便在JS层进行读写操作。从API版本26.0.0开始，JSVM-API提供了[OH_JSVM_CreateArrayBufferFromExternalMemory](../reference/common/capi-jsvm-h.md#oh_jsvm_createarraybufferfromexternalmemory)接口来满足这类场景。
 
 ## 基本概念
 

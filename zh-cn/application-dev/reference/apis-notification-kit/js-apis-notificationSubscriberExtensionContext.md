@@ -2,15 +2,15 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-NotificationSubscriberExtensionContext模块提供通知订阅者扩展能力。
+NotificationSubscriberExtensionContext模块提供[通知订阅](../../notification/notification-glossary.md#notification-subscription通知订阅)者扩展能力。
 
 > **说明**
 > 
-> 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API版本22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块

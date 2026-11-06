@@ -2,9 +2,10 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=3337784dd8dc69f68bea485aa9f2409cc85d12fe translatedAt=2026-11-03T04:33:05.796Z pushedAt=2026-11-04T03:11:47.061Z nl=1 -->
 
 > **NOTE**
 >
@@ -22,7 +23,7 @@ This error code is reported if the tone type passed to the API does not match th
 
 **Possible Causes**
 
-The input parameter is invalid. For example, an alarm tone path is passed but a notification tone path is required.
+The input parameter is incorrect. For example, the API requires a notification ringtone path, but an alarm ringtone path is passed in.
 
 **Solution**
 
@@ -112,7 +113,7 @@ This error code is reported if the available ROM storage space is insufficient.
 
 **Possible Causes**
 
-The local ROM space of the user is insufficient.
+The user's local ROM space is insufficient.
 
 **Solution**
 

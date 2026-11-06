@@ -147,7 +147,7 @@ AgentExtensionConnectCallback二级模块。
 
 type ToolInfo = _ToolInfo
 
-[ToolInfo](../apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md#toolinfo)用于描述系统命令行工具（CLI）的基本信息。
+[ToolInfo (CLI工具信息)](../apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md#toolinfo)用于描述系统命令行工具（CLI）的基本信息。
 
 **起始版本：** 26.0.0
 
@@ -183,7 +183,7 @@ type ToolSummary = _ToolSummary
 
 type CliToolEvent = _CliToolEvent
 
-[CliToolEvent](../apis-ability-kit/js-apis-inner-application-cliToolEvent-sys.md)用于描述CLI工具进程运行期间产生的会话事件信息。
+[CliToolEvent (CLI工具会话事件)](../apis-ability-kit/js-apis-inner-application-cliToolEvent.md)用于描述CLI工具进程运行期间产生的会话事件信息。
 
 **起始版本：** 26.0.0
 
@@ -195,13 +195,13 @@ type CliToolEvent = _CliToolEvent
 
 | 类型 | 说明 |
 | --- | --- |
-| [_CliToolEvent](../apis-ability-kit/js-apis-inner-application-cliToolEvent-sys.md) | 用于描述CLI工具进程运行期间产生的会话事件信息。 |
+| [_CliToolEvent](../apis-ability-kit/js-apis-inner-application-cliToolEvent.md) | 用于描述CLI工具进程运行期间产生的会话事件信息。 |
 
 ## ToolEventCallback
 
 type ToolEventCallback = _ToolEventCallback
 
-[ToolEventCallback](../apis-ability-kit/js-apis-inner-application-toolEventCallback-sys.md)用于接收CLI工具进程运行期间产生的会话事件。
+[ToolEventCallback (CLI工具事件回调)](../apis-ability-kit/js-apis-inner-application-toolEventCallback.md)用于接收CLI工具进程运行期间产生的会话事件。
 
 **起始版本：** 26.0.0
 
@@ -213,7 +213,25 @@ type ToolEventCallback = _ToolEventCallback
 
 | 类型 | 说明 |
 | --- | --- |
-| [_ToolEventCallback](../apis-ability-kit/js-apis-inner-application-toolEventCallback-sys.md) | 用于接收CLI工具进程运行期间产生的会话事件。 |
+| [_ToolEventCallback](../apis-ability-kit/js-apis-inner-application-toolEventCallback.md) | 用于接收CLI工具进程运行期间产生的会话事件。 |
+
+## FunctionInfo
+
+type FunctionInfo = _FunctionInfo
+
+[FunctionInfo (Function信息)](../apis-ability-kit/js-apis-inner-application-FunctionInfo-sys.md#functioninfo)用于描述[Function](./js-apis-app-function-functionManager-sys.md)的基本信息。
+
+**起始版本：** 26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_FunctionInfo](../apis-ability-kit/js-apis-inner-application-FunctionInfo-sys.md#functioninfo) | 用于描述Function的基本信息，包括Function命名空间、名称、版本、描述、输入输出模式等。 |
 
 **示例：**
 
@@ -242,4 +260,5 @@ let toolInfo: common.ToolInfo;
 let toolSummary: common.ToolSummary;
 let cliToolEvent: common.CliToolEvent;
 let toolEventCallback: common.ToolEventCallback;
+let functionInfo: common.FunctionInfo;
 ```

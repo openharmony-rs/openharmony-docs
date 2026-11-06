@@ -178,7 +178,7 @@ ArkUI API version 10及以上的全量接口。
 
 推荐使用Stage模型。Stage模型是当前系统主推的应用模型，请参考[Stage模型开发概述](../../../application-dev/application-models/stage-model-development-overview.md)和[FA模型开发概述](../../../application-dev/application-models/fa-model-development-overview.md)了解模型差异，进行应用适配。 
 
-## cl.arkui.3 主页NavDestination中使用queryNavDestinationInfo接口的行为变更
+## cl.arkui.3 主页NavDestination中使用queryNavDestinationInfo接口和onResult接口的行为变更
 
 **访问级别**
 
@@ -186,13 +186,18 @@ ArkUI API version 10及以上的全量接口。
 
 **变更原因**
 
-通过queryNavDestinationInfo(isInner: Optional&lt;boolean&gt;)接口无法获取到主页NavDestination的信息，不符合接口设计规格。
+1. 通过queryNavDestinationInfo(isInner: Optional&lt;boolean&gt;)接口无法获取到主页NavDestination的信息，不符合接口设计规格。
+2. 主页NavDestination的onResult接口在如下场景中表现不符合预期，具体场景为：开发者使用了主页NavDestination，且操作前栈为PageA（未设置onResult）、PageB。从PageB返回到PageA时，会触发主页NavDestination的onResult，不符合接口设计规格。
 
 **变更影响**
 
-变更前：通过入参包含HomePathInfo的Navigation接口，指定一个NavDestination作为Navigation主页后，通过[queryNavDestinationInfo](../../../application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavdestinationinfo18)接口无法获取主页NavDestination的信息。
+变更前：
+1. 通过入参包含HomePathInfo的Navigation接口，指定一个NavDestination作为Navigation主页后，通过[queryNavDestinationInfo](../../../application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavdestinationinfo18)接口无法获取主页NavDestination的信息。
+2. 通过入参包含HomePathInfo的Navigation接口，指定一个NavDestination作为Navigation主页后，栈操作的目标页面非主页面，且没有设置[onResult](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)，返回该页面时会触发主页NavDestination的onResult。
 
-变更后：通过[queryNavDestinationInfo](../../../application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavdestinationinfo18)接口能够获取主页NavDestination的信息。
+变更后：
+1. 通过[queryNavDestinationInfo](../../../application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavdestinationinfo18)接口能够获取主页NavDestination的信息。
+2. 栈操作的目标页面非主页面，且没有设置[onResult](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)，返回该页面时不会触发主页NavDestination的onResult。
 
 **起始 API Level**
 
@@ -204,11 +209,16 @@ ArkUI API version 10及以上的全量接口。
 
 **变更的接口/组件**
 
-[queryNavDestinationInfo(isInner: Optional&lt;boolean&gt;)](../../../application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavdestinationinfo18)接口。
+1. [queryNavDestinationInfo(isInner: Optional&lt;boolean&gt;)](../../../application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavdestinationinfo18)接口。
+2. NavDestination的[onResult](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)接口。
 
 **适配指导**
 
-开发者需要根据变更内容审视自身业务代码是否需要进行适配，下面的示例代码展示了主页NavDestination中使用queryNavDestinationInfo接口在变更前后的差异。
+开发者需要根据变更内容审视自身业务代码是否需要进行适配，下面的两段示例代码分别展示了：
+1. 主页NavDestination中使用queryNavDestinationInfo接口在变更前后的差异。
+2. 主页NavDestination的onResult接口在如下场景中的变化：使用了主页NavDestination，栈中当前有PageA（未设置onResult）和PageB两个页面，然后从PageB返回到PageA，变更前会触发主页的NavDestination的onResult，变更后不会触发主页NavDestination的onResult。
+
+示例代码1：
 
 ```ts
 import hilog from '@ohos.hilog';
@@ -301,37 +311,7 @@ struct Index {
 }
 ```
 
-## cl.arkui.4 主页NavDestination的onResult接口行为变更
-
-**访问级别**
-
-公共能力
-
-**变更原因**
-
-主页NavDestination的onResult接口在如下场景中表现不符合预期，具体场景为：开发者使用了主页NavDestination，且操作前栈为PageA（未设置onResult）、PageB。从PageB返回到PageA时，会触发主页NavDestination的onResult，不符合接口设计规格。
-
-**变更影响**
-
-变更前：通过入参包含HomePathInfo的Navigation接口，指定一个NavDestination作为Navigation主页后，栈操作的目标页面非主页面，且没有设置[onResult](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)，返回该页面时会触发主页NavDestination的onResult。
-
-变更后：栈操作的目标页面非主页面，且没有设置[onResult](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)，返回该页面时不会触发主页NavDestination的onResult。
-
-**起始 API Level**
-
-20
-
-**变更发生版本**
-
-从OpenHarmony SDK 7.0.0.22开始。
-
-**变更的接口/组件**
-
-NavDestination的[onResult](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)接口。
-
-**适配指导**
-
-开发者需要根据变更内容审视自身业务代码是否需要进行适配，下面的示例代码展示了主页NavDestination的onResult接口在如下场景中的变化：使用了主页NavDestination，栈中当前有PageA（未设置onResult）和PageB两个页面，然后从PageB返回到PageA，变更前会触发主页的NavDestination的onResult，变更后不会触发主页NavDestination的onResult。
+示例代码2：
 
 ```ts
 import hilog from '@ohos.hilog';
@@ -398,7 +378,7 @@ struct Index {
 }
 ```
 
-## cl.arkui.5 NODE_SWIPER_EVENT_ON_CONTENT_DID_SCROLL事件回调的返回值行为变更
+## cl.arkui.4 NODE_SWIPER_EVENT_ON_CONTENT_DID_SCROLL事件回调的返回值行为变更
 
 **访问级别**
 
@@ -482,7 +462,7 @@ static napi_value CreateSwiperNode(napi_env env, napi_callback_info info) {
 }
 ```
 
-## cl.arkui.6 内置文本的组件文本样式优化
+## cl.arkui.5 内置文本的组件文本样式优化
 
 **访问级别**
 

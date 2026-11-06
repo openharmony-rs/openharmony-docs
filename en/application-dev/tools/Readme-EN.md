@@ -5,8 +5,10 @@
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=3bb0b74f282f4cf3e6771fa62fcea0d1a886f5bc translatedAt=2026-11-02T08:04:21.781Z pushedAt=2026-11-03T02:20:07.418Z nl=1 -->
 
 - [About This Kit](command-line-tools-overview.md)
+- [hdc](../dfx/hdc.md)
 - [Ability Assistant](aa-tool.md)
 - [Bundle Manager](bm-tool.md)
 - Packing and Unpacking Tools<!--packing-unpacking-->
@@ -22,9 +24,22 @@
 <!--DelEnd-->
 - [param](param-tool.md)
 - [power-shell](power-shell.md)
+<!--Del-->
+- [OpenHarmony SDK Upgrade Assistant](openharmony-sdk-upgrade-assistant.md)
+<!--DelEnd-->
 - [Access Token Manager](atm-tool.md)
 - [network-cfg](network-cfg.md)
+- [hilog](../dfx/hilog.md)<!--RP2--><!--RP2End-->
+- hidumper<!--hidumper-tool-->
+  - [hidumper](../dfx/hidumper.md)
+  - [PrivacyManagerService](../dfx/hidumper-PrivacyManagerService.md)
+  - [Faultlogger](../dfx/hidumper-faultlogger.md)
+- [hitrace](../dfx/hitrace.md)
+- [hiperf](../dfx/hiperf.md)
+- [hiprofiler](../dfx/hiprofiler.md)
+- [uinput](../dfx/uinput.md)
 <!--Del-->
+- [hisysevent (for System Applications Only)](../dfx/hisysevent-sys.md)
 - [Account Manager](acm-tool.md)
 <!--DelEnd-->
 - Command Line Utilities<!--command-line-utilities-->
@@ -32,5 +47,7 @@
   - [mediatool](mediatool.md)
   - [devicedebug](devicedebug-tool.md)
   - [rawheap-translator](rawheap-translator.md)
+  - [js-rawheap-translator](js-rawheap-translator.md)
+  - [SourceMap Splitter](sourcemap-splitter-tool.md)
   <!--RP1--><!--RP1End-->
 - [Binary Sign Tool](binary-sign-tool.md)

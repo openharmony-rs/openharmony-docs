@@ -233,6 +233,142 @@ async function CreatePictureTest(context: Context) {
 }
 ```
 
+## HdrDecomposeOptions
+
+HDR PixelMap分解为Picture的配置选项，分解后的Picture包含一张SDR主图和一张增益图（GainMap）。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称               | 类型              | 只读 | 可选 | 说明             |
+| ----------------- | ----------------- | ---- | ---- | ---------------- |
+| isFullSizeGainmap | boolean | 否   | 是   | 是否生成全尺寸增益图。<br>true表示生成全尺寸增益图，增益图尺寸和主图一致；false表示不生成全尺寸增益图，增益图尺寸是主图的一半。默认值为false。|
+| desiredPixelFormat | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 否   | 是   | 分解后SDR PixelMap和增益图的像素格式。支持RGBA_8888、NV12、NV21。默认值为RGBA_8888。 |
+
+## image.decomposeToPicture
+
+decomposeToPicture(hdrPixelMap : PixelMap, options?: HdrDecomposeOptions): Promise\<Picture | undefined>
+
+将HDR PixelMap分解为包含SDR PixelMap和增益图（gainmap）的Picture对象。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名       | 类型                | 必填 | 说明             |
+| ------------ | ------------------- | ---- | ---------------- |
+| hdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | HDR PixelMap，像素格式需为RGBA_F16、RGBA_1010102、YCBCR_P010或YCRCB_P010。 |
+| options | [HdrDecomposeOptions](#hdrdecomposeoptions) | 否   | HDR分解配置选项，包含增益图尺寸和像素格式设置。 |
+
+**返回值：**
+
+| 类型               | 说明              |
+| ------------------ | ----------------- |
+|Promise\<[Picture](arkts-apis-image-Picture.md) \| undefined> | Promise对象。返回包含SDR PixelMap和增益图的Picture对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 202      | Non-system applications are not allowed to use system APIs.  |
+| 7600201  | Unsupported operation. hdrPixelMap's PixelMapFormat is not RGBA_F16\RGBA_1010102\YCBCR_P010\YCRCB_P010. |
+| 7600206  | Invalid parameter. Possible cause: hdrPixelMap is empty.     |
+| 7600208  | HDR image decomposition failed. Possible causes: 1. Decomposition processing is not supported. 2. Processing error occurs. |
+| 7600301  | Alloc memory failed.                                         |
+
+**示例：**
+
+```ts
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function DecomposeToPictureTest(context: Context) {
+  const resourceMgr = context.resourceManager;
+  const rawFile = await resourceMgr.getRawFileContent("test.jpg");
+  let imageSource: image.ImageSource = image.createImageSource(rawFile);
+  let decodingOptions: image.DecodingOptions = {
+    desiredDynamicRange: image.DecodingDynamicRange.HDR,
+  };
+  let hdrPixelMap = await imageSource.createPixelMap(decodingOptions);
+  // 指定gainmap为全尺寸，像素格式为NV12。
+  let options: image.HdrDecomposeOptions = {
+    isFullSizeGainmap: true,
+    desiredPixelFormat: image.PixelMapFormat.NV12,
+  };
+  let picture: image.Picture | undefined = await image.decomposeToPicture(hdrPixelMap, options);
+  if (picture != undefined) {
+    console.info('Decompose to picture with options successfully');
+  } else {
+    console.error('Decompose to picture with options failed');
+  }
+}
+```
+
+## SourceOptions<sup>9+</sup>
+
+ImageSource的初始化选项。
+
+**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称              | 类型                               | 只读 | 可选 | 说明               |
+| ----------------- | ---------------------------------- | ---- | ---- | ------------------ |
+| svgResourceLimitLevel | [SVGResourceLimitLevel](#svgresourcelimitlevel)   | 否   | 是   | SVG（Scalable Vector Graphics）图像解析和绘制时使用的资源限制。该限制对非SVG图像无效，于SVG元数据解析前生效，因此也应用于图像信息获取。<br>默认值为NONE，它使用系统定义的默认资源限制，不会禁用SVG资源保护。<br>**起始版本：** 26.0.1 |
+
+## SVGResourceLimitLevel
+
+表示SVG资源限制等级的枚举。
+
+更高等级允许解析和绘制SVG图像时使用更少的资源，无论指定哪种等级，系统资源限制都会实施。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称                         | 值      | 说明       |
+| ---------------------------- | ------ | ---------- |
+| NONE    | 0     | 使用系统默认的SVG资源限制，该等级不会关闭SVG资源保护。|
+| LOW     | 1     | 使用低等级限制，允许使用更多SVG资源预算，适用于复杂的SVG图片。|
+| MEDIUM  | 2     | 使用中等级限制，允许使用适中的SVG资源预算，该等级平衡SVG兼容性和资源消耗，适用于大多数SVG图像。|
+| HIGH    | 3     | 使用高等级限制，允许使用更少SVG资源预算，该等级适用于简单SVG图像，如图标和基础的UI资源。|
+
+**示例：**
+```ts
+import { fileIo } from '@kit.CoreFileKit';
+
+async function CreateImageSource(context : Context) {
+  let sourceOptions: image.SourceOptions = { sourceDensity: 120, svgResourceLimitLevel: image.SVGResourceLimitLevel.MEDIUM};
+  // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+  const filePath: string = context.filesDir + "/test.jpg";
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  const imageSourceObj: image.ImageSource = image.createImageSource(file.fd, sourceOptions);
+}
+```
+
 ## ImageSource
 
 ImageSource类，用于获取图片相关信息。
@@ -253,7 +389,7 @@ createWideGamutSdrPixelMap(): Promise\<PixelMap>
 >
 >- 对SDR图片源，按图片自带的色彩空间解码，输出SDR图。
 >- 对带有单通道GainMap的HDR图片源，解码其基础图（SDR图），忽略GainMap。
->- 对带有3通道GainMap的HDR图片源，解码其基础图（SDR图），并将输出SDR图的色域扩展为[colorspace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace).DISPLAY_BT2020_SRGB。
+>- 对带有3通道GainMap的HDR图片源，解码其基础图（SDR图），并将输出SDR图的色域扩展为[ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace).DISPLAY_BT2020_SRGB。
 
 **系统接口：** 此接口为系统接口。
 
@@ -334,8 +470,8 @@ isJpegProgressive(): Promise\<boolean>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 7600201      | Bad source.|
-| 7600202      | Unsupported MIME type.|
+| 7700101    | Bad source.|
+| 7700102    | Unsupported MIME type.|
 
 **示例：**
 ```ts
@@ -407,3 +543,13 @@ async function ModifyImageAllProperties(imageSource: image.ImageSource) {
   }
 }
 ```
+
+## PackingOption
+
+表示图片编码选项。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
+| 名称         | 类型 | 只读 | 可选 | 说明                                                         |
+| ------------ | ---- | ---- | ---- | ------------------------------------------------------------ |
+| c2paDataSize | number  | 否   | 是   | 编码时按照C2PA 2.4嵌入规范预留C2PA数据空间。<br>单位为字节（Byte），取值范围为[0, 4194304]，默认值为0，表示不添加预留空间。<br>该参数仅对JPEG和HEIF生效。其中JPEG遵循ISO/IEC 18477-3（JPEG XT）及ISO/IEC 19566-5:2023，使用以`JP`和`c2pa`标识的连续APP11段预留并以0填充；HEIF遵循ISO/IEC 14496-12（ISO BMFF），使用Extended UUID为`D8FEC3D6-1B0E-483C-9297-5828877EC481`的顶层`uuid` box预留并以0填充。<br>当设置非零值但无法完成预留时，编码失败。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。 |

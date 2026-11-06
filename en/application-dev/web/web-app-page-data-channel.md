@@ -2,24 +2,25 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=05725db2300dee54c639a4dd6b5c07a9955cf778 translatedAt=2026-11-03T03:03:03.443Z pushedAt=2026-11-03T03:05:53.649Z nl=1 -->
 
 
 The [createWebMessagePorts()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createwebmessageports) API allows you to create message ports to implement communication between the application and frontend page.
 
 
-In the following example, **createWebMessagePorts** is used to create two message ports on the application and [postMessage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#postmessage) is used to forward one of the message ports to the frontend page so that the application and frontend page can exchange messages with each other over the port. After the port is used or before the WebView object is destroyed, the [close](../reference/apis-arkweb/arkts-apis-webview-WebMessagePort.md#close) API is called to disable the port.
+In the following example, **createWebMessagePorts** is used to create two message ports on the application and [postMessage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#postmessage) is used to forward one of the message ports to the frontend page so that the application and frontend page can exchange messages with each other over the port. After the port is used or before the WebView object is destroyed, the [close](../reference/apis-arkweb/arkts-apis-webview-WebMessagePort.md#close) API is called to close the port.
 
 
 - Application code:
-
-  ```ts
-  // xxx.ets
+  <!-- @[create_a_message_port_to_implement_communication_between_the_two_ends](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry3/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
@@ -27,7 +28,7 @@ In the following example, **createWebMessagePorts** is used to create two messag
     ports: webview.WebMessagePort[] = [];
     @State sendFromEts: string = 'Send this message from ets to HTML';
     @State receivedFromHtml: string = 'Display received message send from HTML';
-
+  
     build() {
       Column() {
         // Display the content received from the HTML side.
@@ -37,7 +38,7 @@ In the following example, **createWebMessagePorts** is used to create two messag
           .onChange((value: string) => {
             this.sendFromEts = value;
           })
-
+  
         // The following can be called in the onPageEnd lifecycle callback.
         Button('postMessage')
           .onClick(() => {
@@ -45,7 +46,7 @@ In the following example, **createWebMessagePorts** is used to create two messag
               // 1. Create two message ports.
               this.ports = this.controller.createWebMessagePorts();
               if (this.ports && this.ports[0] && this.ports[1]) {
-                // 2. Register a callback for the message port (for example, port 1) on the application.
+                // 2. Register a callback on the message port (for example, port 1) on the application.
                 this.ports[1].onMessageEvent((result: webview.WebMessage) => {
                   let msg = 'Got msg from HTML:';
                   if (typeof (result) === 'string') {
@@ -69,10 +70,11 @@ In the following example, **createWebMessagePorts** is used to create two messag
                 console.error(`ports is null, Please initialize first`);
               }
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-
+  
         // 4. Use the message port on the application to send messages to the message port that has been sent to the HTML side.
         Button('SendDataToHTML')
           .onClick(() => {
@@ -83,11 +85,12 @@ In the following example, **createWebMessagePorts** is used to create two messag
                 console.error(`ports is null, Please initialize first`);
               }
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-
-        // 5. Close the port. 
+  
+        // 5. Close the port.  
         Button('closePort')
         .onClick(() => {
           try {
@@ -95,10 +98,11 @@ In the following example, **createWebMessagePorts** is used to create two messag
               this.ports[0].close();
               this.ports = [];
             } else {
-              console.error("ports is null, not need close");
+              console.error(`ports is null, not need close`);
             }
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
         Web({ src: $rawfile('index.html'), controller: this.controller })
@@ -170,7 +174,7 @@ In the following example, **createWebMessagePorts** is used to create two messag
 ## FAQs
 
 ### What should I do if the application cannot receive messages sent by the HTML5 page?
-Check whether the data type is correct. **WebMessage** supports the string and ArrayBuffer types. 
+Check whether the data type is correct. **WebMessage** supports the string and ArrayBuffer types.  
 
 To pass the object type, use the **JSON.stringify** method to convert it to the string type. Example:
 
@@ -186,4 +190,4 @@ To pass the object type, use the **JSON.stringify** method to convert it to the 
 ```
 
 ### Which is executed first, onControllerAttached or javaScriptOnDocumentStart?
-[javaScriptOnDocumentStart](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptondocumentstart11) is executed after [onControllerAttached](../reference/apis-arkweb/arkts-basic-components-web-events.md#oncontrollerattached10).
+[javaScriptOnDocumentStart](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptondocumentstart11) is executed after [onControllerAttached](../reference/apis-arkweb/arkts-basic-components-web-events.md#oncontrollerattached10). 

@@ -5,11 +5,14 @@
 <!--Owner: @liule_123-->
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=22e592a5f31cf5718999a125ac330d3ec01459ed translatedAt=2026-11-03T02:26:13.465Z pushedAt=2026-11-03T02:37:13.988Z nl=1 -->
 
 ## Overview
 
-restool is a resource compilation tool that creates resource indexes and parses resources by compiling resource files. You can call the [resource management APIs](../reference/apis-localization-kit/js-apis-resource-manager.md) to obtain resources. The tool is stored in the **toolchains** subdirectory of the SDK installation directory.
+restool is an application resource compilation tool. It parses application resource files to generate artifacts such as resource index files and resource binary files. The generated artifacts are packed into the application package by the [packing tool](../tools/packing-tool.md). During the application running phase, developers can obtain resources in the application package through the [resource management](../reference/apis-localization-kit/js-apis-resource-manager.md) API.
+
+The restool tool is stored in the toolchains folder under the SDK installation directory.
 
 ## Description
 
@@ -22,8 +25,8 @@ restool is a resource compilation tool that creates resource indexes and parses 
 | -o/--outputPath | No| Yes| Output path of the compiled resource.|
 | -p/--packageName | No| Yes| Bundle name of the compiled resource.|
 | -r/--resHeader | No| Yes| Output path of the header file of the resource. The file contains the mapping between resource names and resource IDs. The file can be in **.txt**, **.js**, **.h**, or **.ts** format.<br>**NOTE**<br>- The **.txt**, **.js**, and **.h** files contain the resource mapping tables in all resource directories specified by **-i**.<br>- Since API version 23, the **.ts** format is supported. The file contains only the resource mapping table in the resource directory of the HAR build product specified by **-i**.|
-| -e/--startId | Yes| Yes| Start ID of the generated resource, for example, **0x01000000**. The value range is [0x01000000, 0x06FFFFFF) and [0x08000000, 0xFFFFFFFF).|
-| -f/--forceWrite | Yes| No| An existing output path will be forcibly deleted and a new one will be generated.|
+| -e/--startId | Optional | With parameters | Specifies the start ID value for generating resources, for example, 0x01000000, in the range [0x01000000, 0x06FFFFFF) or [0x08000000, 0xFFFFFFFF). |
+| -f/--forceWrite | Optional | Without parameters | If the output path already exists, forcibly delete it and regenerate. |
 | -h/--help | Yes| No| Help information.|
 | -m/--modules | Yes| Yes| Module name. During joint module compilation, multiple module names can be specified, separated by commas (,).|
 | -x/--append | Yes| Yes| Resource directory for generating intermediate files or a single resource path. The same command can run multiple times.|
@@ -50,11 +53,11 @@ Format: Use semicolons to separate different parameter configurations. Use squar
 
 **Locale** matching rules:
 
-1. The language must always be used for matching.
+1. The language must be the same.
 
-2. If a script (text) is not included, a match is found as long as the language is the same. If a script is included, a match is found when both the language and script are the same.
+2. If a script (text) is not included, a match is found by default. If a script is included, it must be the same.
 
-3. If a country/region is not included, a match is found as long as the language is the same. If a country/region is included, a match is found when both the language and country/region are the same.
+3. If a country/region is not included, a match is found by default. If a country/region is included, it must be the same.
 
 Example: Locale[zh_CN,en_US];Device[phone]. This configuration uses the languages zh_CN and en_US and the device phone as filter criteria. A match is found only when the resources use zh_CN and en_US as the languages and apply to phones. Other parameters (such as **MccMnc** and **Orientation**) are not configured and any values of them can match.
 
@@ -214,29 +217,29 @@ There are three resource compilation modes: full resource compilation, increment
 
 1. To compile all resources, run the following command:
 
-```sh
-restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out -r out/ResourceTable.txt -f
-```
+   ```sh
+   restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out -r out/ResourceTable.txt -f
+   ```
 
 2. To compile incremental resources, perform the following steps:
 
-Step 1: Generate the resource middleware.
+   Step 1: Generate the resource middleware.
 
-```sh
-restool -x entry/src/main/resource -o out
-```
-Step 2: Compile the resource middleware.
+   ```sh
+   restool -x entry/src/main/resource -o out
+   ```
+   Step 2: Compile the resource middleware.
 
-```sh
-restool -i out1 -i out2 -o out -p com.ohos.demo -r out/ResourceTable.txt -j entry/src/main/module.json -f -z
-```
+   ```sh
+   restool -i out1 -i out2 -o out -p com.ohos.demo -r out/ResourceTable.txt -j entry/src/main/module.json -f -z
+   ```
 
 3. To compile overlay resources, run the following command:
 
-```sh
-# hapResource is the path of the decompressed HAP file.
-restool -i entry/src/main -i hapResource -j entry/src/main/module.json -p com.ohos.demo -o out -r out/ResourceTable.txt -f
-```
+   ```sh
+   # hapResource is the path of the decompressed HAP package
+   restool -i entry/src/main -i hapResource -j entry/src/main/module.json -p com.ohos.demo -o out -r out/ResourceTable.txt -f
+   ```
 
 ### Fixing the Resource ID
 
@@ -442,7 +445,13 @@ The file path is incorrect or you do not have the permission to access the file.
 
 **Solution**
 
-Check whether the file path is correct and whether you have the access permission.
+1. Check whether the file path is accurate.
+2. Check the file permission. If the file permission is read-only, modify the file permission to readable and writable. The specific operation is as follows:
+   - Windows: Select the file, right-click, select Properties, and uncheck the "Read-only" attribute.
+   - Linux/MacOS: Run the chmod command "chmod 644 file path".
+    > **Note:**
+    >
+    > If the reported file path is a path under the build directory of the compilation output, manually delete the reported file first, and then modify the permission of its corresponding source file. For example, if the reported path is "entry\build\default\intermediates\res\default\resources\base\profile\form_config.json", modify the permission of the corresponding source file "entry\src\main\resources\base\profile\form_config.json".
 
 ### 11204003 Failed to Delete the File
 
@@ -460,7 +469,13 @@ The file path is incorrect or you do not have the permission to access the file.
 
 **Solution**
 
-Check whether the file path is correct and whether you have the access permission.
+1. Check whether the file path is accurate.
+2. Check the file permission. If the file permission is read-only, modify the file permission to readable and writable. The specific operation is as follows:
+   - Windows: Select the file, right-click, select Properties, and uncheck the "Read-only" attribute.
+   - Linux/MacOS: Run the chmod command "chmod 644 file path".
+    > **Note:**
+    >
+    > If the reported file path is a path under the build directory of the compilation output, manually delete the reported file first, and then modify the permission of its corresponding source file. For example, if the reported path is "entry\build\default\intermediates\res\default\resources\base\profile\form_config.json", modify the permission of the corresponding source file "entry\src\main\resources\base\profile\form_config.json".
 
 ### 11204004 Failed to Copy the File
 
@@ -478,7 +493,13 @@ The file path is incorrect or you do not have the permission to access the file.
 
 **Solution**
 
-Check whether the file path is correct and whether you have the access permission.
+1. Check whether the file path is accurate.
+2. Check the file permission. If the file permission is read-only, modify the file permission to readable and writable. The specific operation is as follows:
+   - Windows: Select the file, right-click the mouse, select properties, and uncheck the "Read-only" property.
+   - Linux/MacOS: Run the chmod command "chmod 644 file path".
+    > **Note:**
+    >
+    > If the file path reported in the error is a path under the build directory of the compilation output, manually delete the file that caused the error first, and then modify the permission of its corresponding source file. For example, if the error path is "entry\build\default\intermediates\res\default\resources\base\profile\form_config.json", modify the permission of the corresponding source file "entry\src\main\resources\base\profile\form_config.json".
 
 ### 11204005 Failed to Open the File
 
@@ -496,7 +517,13 @@ The file path is incorrect or you do not have the permission to access the file.
 
 **Solution**
 
-Check whether the file path is correct and whether you have the access permission.
+1. Check whether the file path is accurate.
+2. Check the file permission. If the file permission is read-only, modify the file permission to readable and writable. The specific operations are as follows:
+   - Windows: Select the file, click the right mouse button, select Properties, and uncheck the "Read-only" property.
+   - Linux/MacOS: Run the chmod command "chmod 644 file path".
+    > **Note:**
+    >
+    > If the file path in the error is a path under the build output directory, manually delete the file that caused the error first, and then modify the permission of its corresponding source file. For example, if the error path is "entry\build\default\intermediates\res\default\resources\base\profile\form_config.json", modify the permission of the corresponding source file "entry\src\main\resources\base\profile\form_config.json".
 
 ### 11204006 Failed to Read the File
 
@@ -584,7 +611,7 @@ The input path is invalid.
 
 **Possible Causes**
 
--The path specified by **i/--inputPath** is incorrect, or you do not have the access permission.
+The path specified by **-i/--inputPath** is incorrect, or you do not have the access permission.
 
 **Solution**
 
@@ -638,7 +665,7 @@ The output path is invalid.
 
 **Possible Causes**
 
--The output path specified by **-o/--outputPath** does not exist or you do not have the access permission.
+The output path specified by **-o/--outputPath** does not exist or you do not have the access permission.
 
 **Solution**
 
@@ -710,7 +737,7 @@ The module name is duplicate.
 
 **Possible Causes**
 
--The **m/--modules** option specifies a duplicate module name, for example, **-m entry,entry**.
+The **-m/--modules** option specifies a duplicate module name, for example, **-m entry,entry**.
 
 **Solution**
 
@@ -800,7 +827,7 @@ The **target-config** parameter is invalid.
 
 **Possible Causes**
 
---The format of the parameter specified in the **target-config** option is incorrect.
+The format of the parameter specified in the **--target-config** option is incorrect.
 
 **Solution**
 
@@ -832,7 +859,7 @@ Duplicated system id_defined.json path 'xxx'.
 
 **Symptom**
 
---The file path specified by **defined-sysids** is duplicate.
+The file path specified by **--defined-sysids** is duplicate.
 
 **Possible Causes**
 
@@ -948,7 +975,7 @@ The dump command does not specify the path of the HAP.
 
 **Solution**
 
-Check whether the dump command specifies the HAP path, for example, **restool dump xxx/entry.hap**.
+Check whether the dump command specifies the HAP path, for example, `restool dump xxx/entry.hap`.
 
 ### 11210025 Invalid HAP Path Specified by the dump Command
 
@@ -980,7 +1007,7 @@ The number of child threads is invalid.
 
 **Possible Causes**
 
---The number of child threads specified by the **thread** option is either a negative number or a decimal.
+The number of child threads specified by the **--thread** option is either a negative number or a decimal.
 
 **Solution**
 
@@ -998,7 +1025,7 @@ The output path already exists.
 
 **Possible Causes**
 
-The output path specified by **-o/--output** already has files, and they cannot be overwritten.
+The output path specified by -o/--outputPath already has files, and they cannot be overwritten.
 
 **Solution**
 

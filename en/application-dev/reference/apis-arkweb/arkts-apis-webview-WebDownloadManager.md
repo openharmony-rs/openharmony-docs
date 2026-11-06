@@ -1,12 +1,16 @@
 # Class (WebDownloadManager)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:46:17.289Z pushedAt=2026-08-07T08:11:37.302Z -->
 
-Implements a **WebDownloadManager** class. You can use the APIs of this class to resume failed download tasks.
+WebDownloadManager is a static management class for download tasks of the Web component in the ArkWeb framework. It manages all file download processes triggered by the Web component. Developers can use this class to set a download delegate to receive download progress callbacks and resume failed download tasks. All methods of this class are static methods and take effect globally within the entire app.
+
+WebDownloadManager works together with [WebDownloadDelegate](./arkts-apis-webview-WebDownloadDelegate.md) and [WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md): WebDownloadManager is responsible for lifecycle management and delegate setting of download tasks, WebDownloadDelegate reports download progress and status change events to the app layer, and WebDownloadItem represents a single download task entity, supporting operations such as pause, resume, and cancel.
 
 > **NOTE**
 >
@@ -26,11 +30,11 @@ import { webview } from '@kit.ArkWeb';
 
 static setDownloadDelegate(delegate: WebDownloadDelegate): void
 
-Sets the delegate used to receive download progress triggered by **WebDownloadManager**.
+Sets the delegate used to receive download progress triggered by WebDownloadManager.
 
 > **NOTE**
 >
->Before calling this API, you must call the **initializeWebEngine** method to initialize the web kernel. Otherwise, calling this API is invalid.
+> - Before calling this API, if the Web component has not been created and the [initializeWebEngine](./arkts-apis-webview-WebviewController.md#initializewebengine) method has not been executed, you must call this method to initialize the web kernel first. Otherwise, calling this API is invalid.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -61,21 +65,21 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("will start a download.");
+              console.info('will start a download.');
               // Pass in a download path and start the download.
-              webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
+              webDownloadItem.start('/data/storage/el2/base/cache/web/' + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info('download update percent complete: ' + webDownloadItem.getPercentComplete());
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.error("download failed guid: " + webDownloadItem.getGuid());
+              console.error('download failed guid: ' + webDownloadItem.getGuid());
               // Serialize the failed download to a byte array.
               this.failedData = webDownloadItem.serialize();
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download finish guid: " + webDownloadItem.getGuid());
+              console.info('download finish guid: ' + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
             webview.WebDownloadManager.setDownloadDelegate(this.delegate);
@@ -133,11 +137,12 @@ struct WebComponent {
 
 static resumeDownload(webDownloadItem: WebDownloadItem): void
 
-Resumes a failed download task.
+Resumes a failed download task. You need to obtain the deserialized object through the [WebDownloadItem.deserialize](./arkts-apis-webview-WebDownloadItem.md#deserialize11) method. This applies only to previously failed download tasks.
 
 > **NOTE**
 >
->Before calling this API, you must call the **initializeWebEngine** method to initialize the web kernel. Otherwise, calling this API is invalid.
+> - Before calling this API, if the Web component has not been created and the initializeWebEngine method has not been executed to complete web kernel initialization, you must call the initializeWebEngine method for initialization first. Otherwise, calling this API is invalid.
+> - You must call [setDownloadDelegate](#setdownloaddelegate11) to set the download delegate first. Otherwise, error code 17100018 will be thrown.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -145,7 +150,7 @@ Resumes a failed download task.
 
 | Name         | Type   |  Mandatory | Description                                           |
 | ---------------| ------- | ---- | ------------- |
-| webDownloadItem      | [WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)  | Yes  | Download task to resume.|
+| webDownloadItem | [WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md) | Yes | Download task restored from serialized data. |
 
 **Error codes**
 
@@ -176,21 +181,21 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("will start a download.");
+              console.info('will start a download.');
               // Pass in a download path and start the download.
-              webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
+              webDownloadItem.start('/data/storage/el2/base/cache/web/' + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info('download update percent complete: ' + webDownloadItem.getPercentComplete());
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.error("download failed guid: " + webDownloadItem.getGuid());
+              console.error('download failed guid: ' + webDownloadItem.getGuid());
               // Serialize the failed download to a byte array.
               this.failedData = webDownloadItem.serialize();
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download finish guid: " + webDownloadItem.getGuid());
+              console.info('download finish guid: ' + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
             webview.WebDownloadManager.setDownloadDelegate(this.delegate);

@@ -3,8 +3,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=38bdc26003822335554309c3ec47865a9955b9b8 translatedAt=2026-09-03T10:25:12.942Z pushedAt=2026-09-05T10:47:30.412Z -->
 
 The KioskManager module provides APIs to manage kiosk mode, including entering and exiting kiosk mode.
 
@@ -14,7 +15,7 @@ Kiosk mode is a dedicated device lockdown mode that ensures the device UI serves
 >
 > - The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The APIs of this module can be used only in the stage model.
-> - The APIs of this module are available only to applications that have been configured to support Kiosk mode via [setAllowedKioskApps](../apis-mdm-kit/js-apis-enterprise-applicationManager.md#applicationmanagersetallowedkioskapps20).
+> - The APIs of this module apply only to applications that support Kiosk mode and are configured through [applicationManager.setAllowedKioskApps](../apis-mdm-kit/js-apis-enterprise-applicationManager.md#applicationmanagersetallowedkioskapps20).
 
 ## Modules to Import
 
@@ -26,7 +27,7 @@ import { kioskManager } from '@kit.AbilityKit';
 
 enterKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 
-Enters kiosk mode. This API uses a promise to return the result.
+Enters Kiosk mode. This API uses a promise to return the result. If the process of the application that triggers entering Kiosk mode is terminated, the system automatically exits this mode.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -36,13 +37,13 @@ Enters kiosk mode. This API uses a promise to return the result.
 
 | Name| Type| Mandatory| Description|
 |--------|------|------|------|
-| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes| Context of the UIAbility that needs to enter kiosk mode.|
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Required | Context of the UIAbility that needs to enter Kiosk mode, used to specify the Ability instance that enters Kiosk mode. |
 
 **Return value**
 
 | Type| Description|
 |------|------|
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -54,7 +55,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000050 | Failed to connect to the system service. |
 | 16000110 | The current application is not in Kiosk app list and cannot enter Kiosk mode. |
 | 16000111 | The system is already in Kiosk mode and cannot enter Kiosk mode again. |
-| 16000113 | Current ability is not in foreground. |
+| 16000113 | Current ability is not in foreground. <br>Applicable version: 20-26.0.0 |
 
 **Example**
 
@@ -78,7 +79,7 @@ struct Index {
               hilog.info(0x0000, 'testTag', '%{public}s', 'enterKioskMode success');
             })
             .catch((error: BusinessError) => {
-              hilog.error(0x0000, 'testTag', '%{public}s', `enterKioskMode failed:${JSON.stringify(error)}`);
+              hilog.error(0x0000, 'testTag', '%{public}s', `enterKioskMode failed. Code: ${error.code}, message: ${error.message}`);
             });
         })
     }
@@ -104,13 +105,13 @@ This API takes effect only for applications that have entered kiosk mode.
 
 | Name| Type| Mandatory| Description|
 |--------|------|------|------|
-| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes| Context of the UIAbility that needs to exit kiosk mode.|
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes | Context of the UIAbility that needs to exit Kiosk mode, used to specify the Ability instance that exits Kiosk mode. |
 
 **Return value**
 
 | Type| Description|
 |------|------|
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -145,7 +146,7 @@ struct Index {
               hilog.info(0x0000, 'testTag', '%{public}s', 'exitKioskMode success');
             })
             .catch((error: BusinessError) => {
-              hilog.error(0x0000, 'testTag', '%{public}s', `exitKioskMode failed:${JSON.stringify(error)}`);
+              hilog.error(0x0000, 'testTag', '%{public}s', `exitKioskMode failed. Code: ${error.code}, message: ${error.message}`);
             });
         })
     }

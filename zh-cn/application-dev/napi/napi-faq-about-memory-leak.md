@@ -1,10 +1,10 @@
 # 内存泄漏相关问题汇总
 <!--Kit: NDK-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 当前是否有机制来检查是否有泄漏的napi_ref
 
@@ -40,7 +40,7 @@ napi_create_reference这个接口内部实现会new一个C++对象，因此，�
 
 ## napi_threadsafe_function内存泄漏应该如何处理
 
-`napi_threadsafe_function`（下文简称tsfn）在使用时，常常会调用 `napi_acquire_threadsafe_function` 来更改tsfn的引用计数，确保tsfn不会意外被释放。但在使用完成后，应该及时使用 `napi_tsfn_release` 模式调用 `napi_release_threadsafe_function` 方法，以确保在所有调用回调都执行完成后，其引用计数能回归到调用 `napi_acquire_threadsafe_function` 方法之前的水平。当其引用计数归零时，tsfn才能正确的被释放。
+`napi_threadsafe_function`（下文简称tsfn）在使用时，常常会调用 `napi_acquire_threadsafe_function` 来更改tsfn的引用计数，确保tsfn不会意外被释放。但在使用完成后，应该及时使用 `napi_tsfn_release` 模式调用 `napi_release_threadsafe_function` 方法，以确保在所有调用回调都执行完成后，其引用计数能回归到调用 `napi_acquire_threadsafe_function` 方法之前的水平。当其引用计数归零时，tsfn才能正确地被释放。
 
 当env即将退出，但tsfn的引用计数未归零时，应使用 `napi_tsfn_abort` 模式调用 `napi_release_threadsafe_function` 方法，确保env释放后不再持有或使用tsfn。env退出后继续持有tsfn将导致未定义行为，可能引发崩溃。
 
@@ -60,10 +60,10 @@ napi_create_reference这个接口内部实现会new一个C++对象，因此，�
 #define LOG_TAG "MY_TSFN_DEMO"
 
 /*
-  为构建一个 env 生命周期短于 native 生命周期的场景,
-  本示例需要使用worker, taskpool 或 napi_create_ark_runtime 等方法,
-  创建非主线程的ArkTS运行环境，并人为的提前结束掉该线程
-*/
+ * 为构建一个 env 生命周期短于 native 生命周期的场景,
+ * 本示例需要使用worker, taskpool 或 napi_create_ark_runtime 等方法,
+ * 创建非主线程的ArkTS运行环境，并人为的提前结束掉该线程
+ */
 
 
 // 定义一个数据结构，模拟存储tsfn的场景
@@ -76,7 +76,7 @@ MyTsfnContext(napi_env env, napi_value workName) {
     // 创建线程安全函数
     if (napi_create_threadsafe_function(env, nullptr, nullptr, workName, 1, 1, this,
             TsfnFinalize, this, TsfnCallJs, &tsfn_) != napi_ok) {
-        OH_LOG_INFO(LOG_APP, "tsfn is created failed");
+        OH_LOG_ERROR(LOG_APP, "tsfn is created failed");
         return;
     };
 };
@@ -149,7 +149,7 @@ static void TsfnCallJs(napi_env env, napi_value func, void *context, void *data)
 // 该方法需注册到模块Index.d.ts, 注册名为 myTsfnDemo, 接口描述如下
 // export const myTsfnDemo: () => void;
 napi_value MyTsfnDemo(napi_env env, napi_callback_info info) {
-    OH_LOG_ERROR(LOG_APP, "MyTsfnDemo is called");
+    OH_LOG_INFO(LOG_APP, "MyTsfnDemo is called");
     napi_value workName = nullptr;
     napi_create_string_utf8(env, "MyTsfnWork", NAPI_AUTO_LENGTH, &workName);
     MyTsfnContext *myContext = new MyTsfnContext(env, workName);
@@ -160,7 +160,7 @@ napi_value MyTsfnDemo(napi_env env, napi_callback_info info) {
     };
     char *data0 = new char[]{"Im call in ArkTS Thread"};
     if (!myContext->Call(data0)) {
-        OH_LOG_INFO(LOG_APP, "call tsfn failed");
+        OH_LOG_ERROR(LOG_APP, "call tsfn failed");
     };
 
     // 创建一个线程，模拟异步场景

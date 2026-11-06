@@ -6,13 +6,14 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=56bb123f81b3c1c6ce89c67e24c5686a564c7577 translatedAt=2026-07-29T04:49:59.266Z pushedAt=2026-07-29T07:05:16.725Z -->
 
 For details about the algorithm specifications, see [AES](crypto-sym-encrypt-decrypt-spec.md#aes).
 
 **Encryption**
 
 1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a 128-bit AES symmetric key (**SymKey**).
-   
+
    In addition to the example in this topic, [AES](crypto-sym-key-generation-conversion-spec.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md) may help you better understand how to generate an AES symmetric key. Note that the input parameters in the reference documents may be different from those in the example below.
 
 2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **AES128|GCM|PKCS7** to create a **Cipher** instance for encryption. The symmetric key type is **AES128**, block cipher mode is **GCM**, and padding mode is **PKCS7**.
@@ -20,22 +21,26 @@ For details about the algorithm specifications, see [AES](crypto-sym-encrypt-dec
 3. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.ENCRYPT_MODE** (encryption), key to **SymKey** (the key for encryption), and parameter to **GcmParamsSpec** corresponding to the GCM mode.
 
 4. Set the size of the data to be passed in each time to 20 bytes, and call [Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1) multiple times to pass in the data (plaintext) to be encrypted.
-   
+
    - Currently, the amount of data to be passed in by a single **update()** is not limited. You can determine how to pass in data based on the data volume.
+
    - You are advised to check the result of each **update()**. If the result is not **null**, obtain the data and combine the data segments into complete ciphertext. The **Cipher.update** result may vary with the mode.
-      
+
       If a block cipher mode (ECB or CBC) is used, data is encrypted and output based on the block size. When the update operation fills a block, the ciphertext is output. If the block is not filled, the update operation outputs **null**, and the unencrypted data is concatenated with the data input next time, and then the data is output by block. When **Cipher.doFinal** is called, the unencrypted data is padded to the block size based on the specified padding mode, and then encrypted. The **Cipher.update** API works in the same way in decryption.
 
       If a stream encryption mode (CTR and OFB) is used, the ciphertext length is equal to the plaintext length.
 
 5. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the encrypted data.
-   
+
    - If data has been passed in by **Cipher.update**, pass in **null** in this step.
+
    - Before accessing the **Cipher.doFinal** output, check whether the result is **null** to avoid exceptions.
 
 6. Obtain [GcmParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#gcmparamsspec).authTag as the authentication information for decryption.
-   
-   In GCM mode, the algorithm library supports only 16-byte **authTag**, which is used for authentication initialization during decryption. In the following example, **authTag** is of 16 bytes.
+
+   > **NOTE**
+   >
+   > In GCM mode, during a single encryption process, concatenating the results of each `update` call and the final `doFinal` call yields "ciphertext + authTag", where authTag is the last 16 bytes. All other parts are ciphertext. If the `data` parameter of `doFinal` is passed as `null`, the result of `doFinal` is the authTag.
 
 **Decryption**
 
@@ -50,7 +55,7 @@ For details about the algorithm specifications, see [AES](crypto-sym-encrypt-dec
 - Example (using asynchronous APIs):
 
   <!-- @[gcm_seg_encrypt_decrypt_aes_symkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_gcm_seg_encryption_decryption/aes_gcm_seg_encryption_decryption_asynchronous.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -154,11 +159,10 @@ For details about the algorithm specifications, see [AES](crypto-sym-encrypt-dec
   }
   ```
 
-
 - Example (using synchronous APIs):
 
   <!-- @[gcm_seg_encrypt_decrypt_aes_symkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_gcm_seg_encryption_decryption/aes_gcm_seg_encryption_decryption_synchronous.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';

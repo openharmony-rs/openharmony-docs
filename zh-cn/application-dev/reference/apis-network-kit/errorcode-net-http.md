@@ -19,7 +19,7 @@ Unsupported protocol.
 
 **错误描述**
 
-协议版本服务器不支持。
+协议不支持。
 
 **可能原因**
 
@@ -324,6 +324,8 @@ Operation timeout.
 
 4. 服务器负载过高，处理速度缓慢。
 
+5. 调用[connection.addCustomDnsRule](js-apis-net-connection.md#connectionaddcustomdnsrule11)设置了自定义DNS规则，导致域名解析到过期或错误的IP地址，连接无法建立。
+
 **处理步骤**
 
 1. 检查网络连接状态，确认网络稳定。
@@ -332,7 +334,9 @@ Operation timeout.
 
 3. 排查服务器负载情况。
 
-4. 可查看日志关键词"HttpClient CURLcode result 28"定位该错误。
+4. 检查是否通过[connection.addCustomDnsRule](js-apis-net-connection.md#connectionaddcustomdnsrule11)设置了自定义DNS规则，若设置的IP地址已过期或错误，调用[removeCustomDnsRule](js-apis-net-connection.md#connectionremovecustomdnsrule11)或[clearCustomDnsRules](js-apis-net-connection.md#connectionclearcustomdnsrules11)清除规则后重试。
+
+5. 可查看日志关键词"HttpClient CURLcode result 28"定位该错误。
 
 ## 2300047 重定向次数达到最大值
 
@@ -406,6 +410,8 @@ Failed to receive data from the peer.
 
 3. 对端发送数据过程中出现异常。
 
+4. 调用[connection.addCustomDnsRule](js-apis-net-connection.md#connectionaddcustomdnsrule11)设置了自定义DNS规则，但规则中IP地址已失效，导致向错误的地址发送请求后无法接收响应。
+
 **处理步骤**
 
 1. 检查网络连接状态。
@@ -414,7 +420,9 @@ Failed to receive data from the peer.
 
 3. 重新发起请求尝试。
 
-4. 可查看日志关键词"HttpClient CURLcode result 56"定位该错误。
+4. 检查是否通过[connection.addCustomDnsRule](js-apis-net-connection.md#connectionaddcustomdnsrule11)设置了自定义DNS规则，若设置的IP地址已过期或错误，调用[removeCustomDnsRule](js-apis-net-connection.md#connectionremovecustomdnsrule11)或[clearCustomDnsRules](js-apis-net-connection.md#connectionclearcustomdnsrules11)清除规则后重试，确保域名解析到正确的IP地址。
+
+5. 可查看日志关键词"HttpClient CURLcode result 56"定位该错误。
 
 ## 2300058 本地SSL证书错误
 
@@ -434,7 +442,7 @@ SSL证书格式有错误。
 
 检查SSL证书格式。
 
-## 2300059 无法使用指定的密码
+## 2300059 无法使用指定的加密算法
 
 **错误信息**
 
@@ -442,7 +450,7 @@ The specified SSL cipher cannot be used.
 
 **错误描述**
 
-无法使用指定的密码。
+无法使用指定的加密算法。
 
 **可能原因**
 
@@ -609,6 +617,30 @@ Authentication error.
 **处理步骤**
 
 排查传入的校验身份的字段是否与服务器匹配。
+
+## 2300996 请求被全局HTTP拦截器拦截
+ 
+**错误信息**
+ 
+The request was intercepted by the HTTP global interceptor.
+ 
+**错误描述**
+ 
+请求被已注册的全局HTTP拦截器拦截，导致当前请求未继续执行。
+ 
+**可能原因**
+ 
+当前请求被已注册的全局HTTP拦截器拦截，通常是因为拦截器在请求阶段判定当前请求不应继续执行，或拦截器实现存在误判、异常返回或强制中断逻辑。
+ 
+**处理步骤**
+ 
+1. 检查是否配置了全局HTTP请求拦截器，并确认拦截器类型、注册方式和执行顺序是否符合业务预期。
+ 
+2. 查看拦截器回调中是否存在误判条件，例如对某些请求统一拒绝、对异常数据提前中断，或返回了错误的中止状态。
+ 
+3. 结合日志关键词`GlobalRequestInterceptorCheck fail`、`GlobalRequestInterceptorCheck failed`定位拦截器校验失败或中断位置。
+ 
+4. 如业务允许，调整拦截器策略，确保仅在必要场景中拦截请求，并在拦截前验证请求参数与上下文是否正确。
 
 ## 2300997 明文HTTP被拦截
 

@@ -1,7 +1,7 @@
 # 添加事件监听
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -141,7 +141,7 @@ nodeAPI->unregisterNodeEventReceiver();
            nativeModule_ = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
            // 事件触发时需要通过函数获取对应的事件对象，这边通过设置节点自定义数据将封装类指针保持在组件上，方便后续事件分发。
            nativeModule_->setUserData(handle_, this);
-           // 注册节点监听事件接受器。
+           // 注册节点监听事件接收器。
            nativeModule_->addNodeEventReceiver(handle_, ArkUINode::NodeEventReceiver);
        }
    
@@ -331,7 +331,7 @@ nodeAPI->unregisterNodeEventReceiver();
    ```
 
 2. 在ArkUIListNode对象中注册列表事件[NODE_LIST_ON_SCROLL_INDEX](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)。
-   <!-- @[arkui_list_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/ArkUIListNode.h) -->
+   <!-- @[arkui_list_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/ArkUIListNode.h) -->  
    
    ``` C
    // ArkUIListNode.h
@@ -373,7 +373,7 @@ nodeAPI->unregisterNodeEventReceiver();
        }
    
    protected:
-      // 处理List相关事件。
+       // 处理List相关事件。
        void OnNodeEvent(ArkUI_NodeEvent *event) override
        {
            auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
@@ -707,7 +707,7 @@ ArkUI开发框架在NDK接口提供了以组件为注册单位的系统深浅色
 >
 > - 一个回调内可以自行设计多个组件的深浅色变更。
 >
-> - 同一组件仅能注册一个系统深浅变更回调。
+> - 同一组件仅能注册一个系统深浅色变更回调。
 >
 > - 建议将注册操作放置于页面生命周期中不会被销毁的节点上，以避免因节点销毁导致回调失效的问题。
 
@@ -724,10 +724,10 @@ void onColorModeChange(ArkUI_SystemColorMode colorMode, void *userData)
 {
     ColorModeInfo* info = static_cast<ColorModeInfo*>(userData);
     if (colorMode == ARKUI_SYSTEM_COLOR_MODE_LIGHT) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
                      "NdkAddInteractionEvent_Light mode: ", info->lightMsg);
     } else if (colorMode == ARKUI_SYSTEM_COLOR_MODE_DARK) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
                      "NdkAddInteractionEvent_Dark mode: ", info->darkMsg);
     }
 }

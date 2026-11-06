@@ -3,8 +3,9 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=850c7d4f71d6bc50d82f299a21bb9cea3a266f3d translatedAt=2026-09-03T08:28:23.482Z pushedAt=2026-09-05T10:47:30.042Z -->
 
 ## Overview
 
@@ -269,3 +270,5 @@ Obtains the size of a single [OH_NativeBundle_AbilityResourceInfo](capi-native-b
 | Type| Description|
 | -- | -- |
 | int | Size of a single [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md) struct.|
+
+

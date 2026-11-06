@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口注册和取消环境清理钩子，在环境退出时自动执行资源清理任务，确保内存、文件句柄等系统资源正确释放，避免资源泄漏。"
+keywords: [Node-API, 清理钩子, cleanup hook, 资源管理, napi_add_env_cleanup_hook, 环境退出, 资源释放]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口注册和使用环境清理钩子
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -21,7 +29,7 @@ Node-API提供了注册和取消注册清理钩子函数的功能，以下是相
 
 ## 场景和功能介绍
 
-以下Node-API接口用于注册和取消不同类型的清理钩子。他们的使用场景如下：
+以下Node-API接口用于注册和取消不同类型的清理钩子。它们的使用场景如下：
 
 | 接口 | 描述 |
 | -------- | -------- |

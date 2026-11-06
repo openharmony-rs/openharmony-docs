@@ -1,8 +1,8 @@
 # ArkUI_AlignmentRuleOption
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fenglinbailu-->
-<!--Designer: @lanshouren-->
+<!--Owner: @fenglinbailu; @zhangwentao96-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -18,5 +18,5 @@ typedef struct ArkUI_AlignmentRuleOption ArkUI_AlignmentRuleOption
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**所在头文件：** [native_type.h](capi-native-type-h.md)
+**所在头文件：** [layout.h](capi-layout-h.md)
 

@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=795acd95d659ba0391f9197ac7167be20138345b translatedAt=2026-09-03T10:20:23.250Z pushedAt=2026-09-05T10:47:30.398Z -->
 
 The module provides the base class for implementing the execution of intents decorated with [@InsightIntentEntry](js-apis-app-ability-InsightIntentDecorator.md#insightintententry). It must be used together with the @InsightIntentEntry decorator.
 
@@ -42,16 +43,16 @@ import { InsightIntentEntryExecutor } from '@kit.AbilityKit';
 
 onExecute(): Promise\<insightIntent.IntentResult\<T>>
 
- When the AI entry triggers intent execution, the system starts the ability bound to this class and triggers this callback. You can implement the required intent operations in this callback. This API uses a promise to return the result.
+When the AI entry triggers intent execution, the system starts the bound Ability component and invokes the callback, where the developer implements the intent operation. This API uses a Promise to return the result asynchronously.
 
 The following table describes the relationship between the callback and the intent execution mode.
 
 | Intent Execution Mode| API Calling Timing and Sequence|
 | ----------- | -----------------|
-| [UI_ABILITY_FOREGROUND](./js-apis-app-ability-insightIntent.md#executemode)<br>Foreground mode of the UIAbility| - If the UIAbility is cold started, the UIAbility lifecycle callbacks are triggered in the following sequence during intent execution: [onCreate](./js-apis-app-ability-uiAbility.md#oncreate), [onWindowStageCreate](./js-apis-app-ability-uiAbility.md#onwindowstagecreate), onExecute, and [onForeground](./js-apis-app-ability-uiAbility.md#onforeground).<br>- If the UIAbility is hot started in the background, the UIAbility lifecycle callbacks are triggered in the following sequence during intent execution: [onNewWant](./js-apis-app-ability-uiAbility.md#onnewwant), onExecute, and [onForeground](./js-apis-app-ability-uiAbility.md#onforeground).<br>- If the UIAbility is hot started in the foreground, the UIAbility lifecycle callbacks are triggered in the following sequence during intent execution: onExecute.|
+| [UI_ABILITY_FOREGROUND](./js-apis-app-ability-insightIntent.md#executemode)<br/>UIAbility foreground mode | - If the UIAbility (user interface application component) is cold started, the UIAbility lifecycle trigger order during intent execution is as follows: [onCreate](./js-apis-app-ability-uiAbility.md#oncreate), [onWindowStageCreate](./js-apis-app-ability-uiAbility.md#onwindowstagecreate), onExecute, [onForeground](./js-apis-app-ability-uiAbility.md#onforeground).<br/>- If the UIAbility is hot started and is in the background when started, the UIAbility lifecycle trigger order during intent execution is as follows: [onNewWant](./js-apis-app-ability-uiAbility.md#onnewwant), onExecute, [onForeground](./js-apis-app-ability-uiAbility.md#onforeground).<br/>- If the UIAbility is hot started and is in the foreground when started, the UIAbility lifecycle trigger order during intent execution is as follows: onExecute. |
 | [UI_ABILITY_BACKGROUND](./js-apis-app-ability-insightIntent.md#executemode)<br>Background mode of the UIAbility| - If the UIAbility is cold started, the UIAbility lifecycle callbacks are triggered in the following sequence during intent execution: [onCreate](./js-apis-app-ability-uiAbility.md#oncreate), onExecute, and [onBackground](./js-apis-app-ability-uiAbility.md#onbackground).<br>- If the UIAbility is hot started, the UIAbility lifecycle callbacks are triggered in the following sequence during intent execution: onExecute.|
 | [UI_EXTENSION_ABILITY](./js-apis-app-ability-insightIntent.md#executemode)<br>UIExtension mode| The UIExtensionAbility lifecycle callbacks are triggered in the following sequence during intent execution: [onCreate](./js-apis-app-ability-uiExtensionAbility.md#oncreate), [onSessionCreate](./js-apis-app-ability-uiExtensionAbility.md#onsessioncreate), onExecute, and [onForeground](./js-apis-app-ability-uiExtensionAbility.md#onforeground).|
-|<!--DelRow-->[SERVICE_EXTENSION_ABILITY](./js-apis-app-ability-insightIntent-sys.md)<br>ServiceExtension mode| The ServiceExtensionAbility lifecycle callbacks are triggered in the following sequence during intent execution: [onCreate](./js-apis-app-ability-serviceExtensionAbility-sys.md#oncreate), [onRequest](./js-apis-app-ability-serviceExtensionAbility-sys.md#onrequest), and onExecute.|
+|<!--DelRow-->[SERVICE_EXTENSION_ABILITY](./js-apis-app-ability-insightIntent-sys.md#executemode)<br />ServiceExtension mode | The ServiceExtensionAbility lifecycle trigger order during intent execution is as follows: [onCreate](./js-apis-app-ability-serviceExtensionAbility-sys.md#oncreate), [onRequest](./js-apis-app-ability-serviceExtensionAbility-sys.md#onrequest), onExecute. |
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -116,7 +117,7 @@ export default class PlayMusicDemo extends InsightIntentEntryExecutor<string> {
     let result: insightIntent.IntentResult<string> = {
       code: 123,
       result: 'result'
-    }
+    };
     hilog.info(0x0000, LOG_TAG, 'PlayMusicDemo return %{public}s', JSON.stringify(result));
     // Return the intent execution result in Promise mode.
     return Promise.reject(result);

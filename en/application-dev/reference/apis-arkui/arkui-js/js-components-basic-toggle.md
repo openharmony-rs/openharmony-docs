@@ -1,10 +1,12 @@
 # toggle
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=bbe820b15aaf29733c2f40fbe62bda7f1f6a0b03 translatedAt=2026-06-22T07:51:25.963Z pushedAt=2026-06-23T01:39:52.541Z -->
 
 >  **NOTE**
 >
@@ -12,16 +14,13 @@
 
 The **\<toggle>** component allows your user to select from a group of options and may display the selection result in real time. Generally, the option group consists of many toggles.
 
-
 ## Required Permissions
 
 None
 
-
 ## Child Components
 
 Not supported
-
 
 ## Attributes
 
@@ -31,7 +30,6 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | ------- | ------- | ----- | ---- | ---------- |
 | value   | string  | -     | Yes   | Text value of the toggle. |
 | checked | boolean | false | No   | Whether the toggle is selected.|
-
 
 ## Styles
 
@@ -46,20 +44,17 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | font-weight | number \| string | normal     | No   | Font weight of the toggle. For details, see **font-weight** of the [**\<text>**](js-components-basic-text.md#styles) component.|
 | font-family | &lt;string&gt;             | sans-serif | No   | Font family, in which fonts are separated by commas (,). Each font is set using a font name or font family name. The first font in the family or the specified [custom font](js-components-common-customizing-font.md) is used for the text.|
 
-
 ## Events
 
 In addition to the [universal events](js-components-common-events.md), the following events are supported.
 
 | Name    | Parameter                             | Description            |
 | ------ | ------------------------------- | -------------- |
-| change | { checked: isChecked } | Triggered when the toggle is selected or unselected.|
-
+| change | { checked: isChecked } | Triggered when the component's selection state changes. |
 
 ## Methods
 
 The [universal methods](js-components-common-methods.md) are supported.
-
 
 ## Example
 
@@ -136,4 +131,4 @@ export default {
 }
 ```
 
-![screenshot](figures/screenshot.png)
+![toggle](figures/toggle.png)

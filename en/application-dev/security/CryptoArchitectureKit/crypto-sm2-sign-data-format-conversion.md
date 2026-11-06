@@ -1,4 +1,4 @@
-# Converting SM2 Signature Formats (ArkTS)
+# SM2 Signature Data Format Conversion (ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,15 +6,16 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=65945a7a0f4fc96eaefe48f50def3bda3f01bc0a translatedAt=2026-10-30T04:03:19.167Z pushedAt=2026-10-30T07:32:11.759Z nl=1 -->
 
 HarmonyOS supports the conversion between the DER and R|S formats.
 
-You can specify SM2 signature parameters and convert them to DER ciphertext. You can also extract SM2 signature data from DER ciphertext.
+You can specify SM2 signature data and convert it to DER-format signature data. Conversely, you can also extract the specific SM2 signature data from DER-format signature data.
 
-**Converting Ciphertext Parameters to DER Ciphertext**
-1. Create an [EccSignatureSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#eccsignaturespec20) instance to specify SM2 ciphertext parameters.
+**Specifying Signature Parameters and Converting to DER Format**
+1. Create an [EccSignatureSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#eccsignaturespec20) object to specify SM2 signature parameters.
 
-2. Call [genEccSignature](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#geneccsignature20) to pass the **EccSignatureSpec** object to convert it to SM2 ciphertext in DER format.
+2. Call [genEccSignature](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#geneccsignature20) and pass in the EccSignatureSpec object to convert it to SM2 signature data in DER format.
 
 <!-- @[sm2_sign_data_rs_to_der](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/sm2_data_format_convertion/sm2_sign_data_rs_to_der.ets) -->
 
@@ -40,9 +41,9 @@ function testSm2SignDataRsToDer() {
 ```
 
 **Converting DER Ciphertext to the R and S Parameters**
-1. Specifies the SM2 ciphertext parameters in DER format.
+1. Specify the SM2 signature parameters in DER format.
 
-2. Call [genEccSignatureSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#geneccsignaturespec20) to pass data in DER format and convert the data into SM2 ciphertext in R|S format.
+2. Call [genEccSignatureSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#geneccsignaturespec20) and pass in the DER-format data to convert it to SM2 signature data in (r, s) format.
 
 <!-- @[sm2_sign_data_der_to_rs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/sm2_data_format_convertion/sm2_sign_data_der_to_rs.ets) -->
 

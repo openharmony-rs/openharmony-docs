@@ -5,14 +5,14 @@
 <!--Designer: @keerecles-->
 <!--Tester: @khq-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=1c4d60ddf8b2662424b5d2d9f219efe7cea68103 translatedAt=2026-11-03T06:36:27.362Z pushedAt=2026-11-03T07:56:02.488Z nl=1 -->
 
-Custom components decorated with \@Reusable support component reuse. When a custom component is removed from the component tree, it is cached in the cache pool. When new components of the same type are needed, the system reuses cached objects instead of creating new ones. This avoids repeated creation and destruction of components and improves performance.
+Custom components decorated by [\@Reusable](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-reusable.md#reusable) support component reuse. When a custom component is removed from the component tree, it is stored in a cache pool. When a component node of the same type is subsequently created, the component object in the cache pool is preferentially reused, thereby avoiding repeated creation and destruction and improving performance.
 
 > **NOTE**
 >
-> The \@Reusable decorator is supported since API version 10 and can be used in ArkTS.
->
-> For details about the principles, optimization methods, and use scenarios of component reuse, see [Component Reuse](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-component-reuse).
+> @Reusable is supported since API version 10 and can be used in ArkTS.
+<!--RP1--><!--RP1End-->
 
 ## Overview
 
@@ -161,6 +161,7 @@ struct IncorrectReuseComponent {
       IncorrectReuseComponentChild({ num: this.num })
       Button('plus')
         .onClick(() => {
+          // Increase by 10 on each tap.
           this.num += 10;
         })
     }
@@ -303,6 +304,7 @@ struct Index {
           this.showBranchA = !this.showBranchA;
         })
       if (this.showBranchA) {
+        // The component structures differ and need to be distinguished by reuseId.
         ReusableComponent({ flag: true })
       }
       Button('show/hide branch B')
@@ -310,6 +312,7 @@ struct Index {
           this.showBranchB = !this.showBranchB;
         })
       if (this.showBranchB) {
+        // The component structures differ and need to be distinguished by reuseId.
         ReusableComponent({ flag: false })
       }
     }
@@ -525,7 +528,7 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          // ComponentContent is based on BuilderNode, which does not support @Reusable decorated custom components.
+          // ComponentContent is based on BuilderNode, which does not support passing custom components decorated with the @Reusable decorator.
           let contentNode = new ComponentContent(this.uiContext, wrapBuilder(buildCreativeLoadingDialog), () => {
           });
           this.uiContext.getPromptAction().openCustomDialog(contentNode);
@@ -537,10 +540,89 @@ struct Index {
 }
 ```
 
-### Avoid Nesting Usage
+### Avoid Nesting
 
 Nesting \@Reusable decorators is not recommended, as it increases memory usage, reduces reuse efficiency, and complicates maintenance. Nested usage creates additional cache pools with identical tree structures, leading to low reuse efficiency. In addition, it complicates lifecycle management and makes resource and variable sharing difficult.
 
+## Proactively Clearing the Reuse Pool
+
+Starting from API version 26.1.0, when developers need to proactively release components in the reuse pool, they can obtain the [CustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#customcomponentcontext) of the current component through [UIUtils.getCustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#getcustomcomponentcontext), call the [getDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#getdefaultreusepool) method of CustomComponentContext to obtain the default reuse pool [IDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#idefaultreusepool), and then call the [clearCache](../../reference/apis-arkui/js-apis-stateManagement.md#clearcache) method of IDefaultReusePool.
+
+> **NOTE**
+>
+> 1. When a reuseId is specified, only the reusable custom components corresponding to that reuseId are cleared; when no reuseId is specified, all components in the reuse pool are cleared.
+> 2. Components that have been taken out of the reuse pool and are currently being reused are not affected.
+> 3. When a nonexistent or empty-string `reuseId` is passed in, this call has no effect.
+
+In the following example, clicking the Recycle A button or the Recycle B button recycles the custom component into the default reuse pool, clicking the Clear All button releases all components in the default reuse pool, and clicking the Clear A button releases the components with the reuseId of A in the default reuse pool.
+
+<!-- @[defaultreusablepool_clearcache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/DefaultReusePoolClearCache.ets) -->
+
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+@Reusable
+@Component
+struct ReusableChild {
+  @State label: string = '';
+  aboutToAppear() {
+    console.info(`ReusableChild [${this.label}] aboutToAppear`);
+  }
+  aboutToDisappear() {
+    console.info(`ReusableChild [${this.label}] aboutToDisappear`);
+  }
+  aboutToRecycle() {
+    console.info(`ReusableChild [${this.label}] aboutToRecycle`);
+  }
+  aboutToReuse() {
+    console.info(`ReusableChild [${this.label}] aboutToReuse`);
+  }
+
+  build() {
+    Text(`ReusableChild: ${this.label}`)
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State showA: boolean = true;
+  @State showB: boolean = true;
+
+  build() {
+    Column() {
+      if (this.showA) {
+        ReusableChild({ label: 'A' })
+          .reuseId('A')
+      }
+      if (this.showB) {
+        ReusableChild({ label: 'B' })
+          .reuseId('B')
+      }
+      Button('Recycle A')
+        .onClick(() => {
+          // Switch the if branch to trigger child component recycling.
+          this.showA = false;
+        })
+      Button('Recycle B')
+        .onClick(() => {
+          // Switch the if branch to trigger child component recycling.
+          this.showB = false;
+        })
+      Button('Clear All')
+        .onClick(() => {
+          // Clear all components in the default reuse pool.
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache();
+        })
+      Button('Clear A')
+        .onClick(() => {
+          // Clear only the components whose reuseId is 'A'.
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache('A');
+        })
+    }
+  }
+}
+```
 
 ## Use Scenarios
 
@@ -830,7 +912,7 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 
 ### List Scrolling with ForEach
 
-When the **ForEach** rendering control syntax is used to create reusable custom components, the full-expansion behavior of **ForEach** prevents component reuse. In the example: Clicking **update** successfully refreshes data, but **ListItemView** cannot be reused during list scrolling; clicking **clear** and then **update** allows **ListItemView** to be reused, as this triggers re-creation of multiple destroyed custom components within a single frame.
+When **ForEach** is used to create reusable custom components, the full-expansion behavior of the **ForEach** rendering control syntax prevents the reusable components from being reused. In the example: clicking **update** successfully refreshes the data, but when scrolling the list, ListItemView cannot be reused. Clicking **clear** and then clicking **update** again allows ListItemView to be reused successfully, because multiple custom components that have already been destroyed are re-created within a single frame.
 
 <!-- @[list_scrolling_with_for_each](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ListScrollingWithForEach.ets) -->
 
@@ -877,7 +959,7 @@ struct Index {
       this.data.pushData(i.toString());
     }
 
-    for (let i = 30; i <= 80; i++) { // Loop 50 times.
+    for (let i = 30; i < 80; i++) { // Loop 50 times.
       this.data02.pushData(i.toString());
     }
   }
@@ -927,7 +1009,7 @@ struct ListItemView {
   @State item: string = '';
 
   aboutToAppear(): void {
-    // On first update click, scrolling fails to trigger reuse due to the full-expansion behavior of ForEach.
+    // Click update. When entering for the first time, swipe up and down. Reuse is not possible due to the ForEach collapse/expand attribute.
     hilog.info(DOMAIN, TAG, BUNDLE + '=====aboutToAppear=====ListItemView==created==' + this.item);
   }
 
@@ -978,7 +1060,7 @@ In the following example, the @Reusable decorator is used to decorate the custom
 
 The **aboutToReuse** API is triggered when the component is obtained from the reuse cache and added to the component tree during grid scrolling. This allows you to update the component's state variables to display correct content.
 
-Note: There is no need to update state variables that automatically synchronize values (such as variables decorated with [\@Link](arkts-link.md), [\@StorageLink](arkts-appstorage.md#storagelink), [\@ObjectLink](arkts-observed-and-objectlink.md), or [\@Consume](arkts-provide-and-consume.md)) in **aboutToReuse**, as this may trigger unnecessary component re-renders.
+Note: There is no need to update state variables that automatically synchronize values (such as variables decorated with [\@Link](arkts-link.md), [\@StorageLink](arkts-appstorage.md#storagelink), [\@ObjectLink](arkts-observed-and-objectlink.md), or [\@Consume](arkts-provide-and-consume.md)) in **aboutToReuse**, otherwise unnecessary component re-renders may be triggered.
 
 <!-- @[reusable_for_grid_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForGridUsageScenario.ets) -->
 
@@ -1028,7 +1110,7 @@ struct MyComponent {
             // Use the reusable custom component.
             ReusableChildComponent({ item: item });
           }
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .cachedCount(2) // Set the number of cached GridItem components.
       .columnsTemplate('1fr 1fr 1fr')
@@ -1163,7 +1245,6 @@ struct ReusableChildComponent {
   struct Index {
     @State minSize: number = 50; // Minimum value: 50.
     @State maxSize: number = 80; // Maximum value: 80.
-    @State fontSize: number = 24; // Font size: 24.
     @State colors: number[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
     scroller: Scroller = new Scroller();
     dataSource: WaterFlowDataSource = new WaterFlowDataSource();
@@ -1221,7 +1302,7 @@ struct ReusableChildComponent {
 
 - For **Swiper** scrolling scenarios where child components are frequently created and destroyed, you can encapsulate the child components into a custom component and decorate it with \@Reusable to implement component reuse.
 
-  <!-- @[reusable_for_swiper_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForSwiperUsageScenario.ets) -->
+  <!-- @[reusable_for_swiper_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForSwiperUsageScenario.ets) --> 
   
   ``` TypeScript
   @Entry
@@ -1286,7 +1367,6 @@ struct ReusableChildComponent {
           })
           
         Image(this.itemData?.image)
-          .width('100%')
           .borderRadius(12)
           .objectFit(ImageFit.Contain)
           .margin({
@@ -1570,18 +1650,18 @@ There are differences between reusable components, but the number of types is li
 
 ``` TypeScript
 class LimitedMyDataSource implements IDataSource {
-  private dataArray: string[] = [];
+  private dataArray: number[] = [];
   private listener: DataChangeListener | undefined;
 
   public totalCount(): number {
     return this.dataArray.length;
   }
 
-  public getData(index: number): string {
+  public getData(index: number): number {
     return this.dataArray[index];
   }
 
-  public pushData(data: string): void {
+  public pushData(data: number): void {
     this.dataArray.push(data);
   }
 
@@ -1605,7 +1685,7 @@ struct LimitedIndex {
 
   aboutToAppear() {
     for (let i = 0; i < 1000; i++) { // Loop 1000 times.
-      this.data.pushData(i + '');
+      this.data.pushData(i);
     }
   }
 
@@ -1655,7 +1735,7 @@ struct ReusableComponent {
 
 **Composite**
 
-There are multiple differences between reusable components, but they usually share common child components. In the example, after three reusable components are converted into **Builder** functions in a combined manner, the internal shared child components will be uniformly placed under the parent component **MyComponent**. The reuse cache is shared at the parent component level for child component reuse, reducing resource consumption during component creation.
+There are multiple differences between reusable components, but they usually share common child components. In the example, after three reusable components are converted into **Builder** functions in a combined manner, the internal shared child components will be uniformly placed under the parent component **MyComponent**. The cache pool is shared at the parent component level for child component reuse, reducing resource consumption during component creation.
 
 <!-- @[reusable_for_composite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForComposite.ets) -->
 
@@ -1755,7 +1835,7 @@ struct MyComponent {
         .onAppear(() => {
           hilog.info(DOMAIN, TAG, BUNDLE + `ListItem ${index} onAppear`);
         })
-      }, (item: number) => item.toString())
+      }, (item: string) => item)
     }
     .width('100%')
     .height('100%')
@@ -1860,3 +1940,4 @@ struct ChildComponentD {
   }
 }
 ```
+<!--no_check-->

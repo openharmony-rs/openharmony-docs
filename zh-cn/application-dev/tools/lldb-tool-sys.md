@@ -1,11 +1,19 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "LLDB是新一代高性能调试器，支持断点设置、变量查看与修改、内存操作、线程控制、表达式计算、堆栈回溯等调试功能，并提供本地调试和远程调试两种方式，适用于OpenHarmony系统应用的C/C++代码调试场景。"
+keywords: [LLDB, 调试器, 断点设置, 观察点, 变量查看, 堆栈回溯, 远程调试, lldb-server, 汇编处理]
+doctype: guide
+status: active
+---
+
 # LLDB工具（仅对系统应用开放）
 
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @Maxi_241437-->
 <!--Designer: @da_wei_li11-->
 <!--Tester: @chenhliang-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 概述
 LLDB（Low Level Debugger）是新一代高性能调试器。具备断点设置、变量查看与修改、内存操作、线程控制、表达式计算、堆栈回溯等功能，并支持跨平台和插件扩展。
@@ -22,7 +30,7 @@ LLDB调试器具备以下功能特点：
 - **插件扩展性**：支持插件扩展，方便开发者根据需求进行定制。
 
 ## 工具获取路径
-通过OpenHarmony的SDK获取，获取路径：http://ci.openharmony.cn/workbench/cicd/dailybuild
+通过OpenHarmony的SDK获取，获取路径：[每日构建](http://ci.openharmony.cn/workbench/cicd/dailybuild)。
 
 lldb工具在SDK中的路径为`\ohos-sdk\[system]\native\llvm`，其中system可选windows/linux/darwin。
 
@@ -169,7 +177,7 @@ lldb工具在SDK中的路径为`\ohos-sdk\[system]\native\llvm`，其中system�
         ```bash
         hdc file send \ohos-sdk\[system]\native\llvm\lib\clang\[version]\bin\aarch64-linux-ohos\lldb-server /data/local/tmp/debugserver
         ```
-        - PC上准备lldb，如windows系统则使用lldb.exe, 稍后将使用lldb与OH设备上的lldb-server远程连接进行调试。
+        - PC上准备lldb，如Windows系统则使用lldb.exe，稍后将使用lldb与OH设备上的lldb-server远程连接进行调试。
 
 ## 使用指导-本地调试
 

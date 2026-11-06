@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=2bacfee4422d681c1c12b53710941106e9561ff9 translatedAt=2026-11-03T05:36:19.363Z pushedAt=2026-11-03T07:29:08.985Z nl=1 -->
 
 Ensure network connection during the operation.
 
@@ -15,7 +16,7 @@ Ensure network connection during the operation.
 
 2. Initializes a parameter set.
 
-   The **properties** field in [HuksOptions](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksoptions) must contain [HUKS_TAG_ATTESTATION_CHALLENGE](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag). Optional parameters include [HUKS_TAG_ATTESTATION_ID_VERSION_INFO](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) and [HUKS_TAG_ATTESTATION_ID_ALIAS](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag).
+   The parameters in the `properties` field of [HuksOptions](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksoptions) must include the [HUKS_TAG_ATTESTATION_CHALLENGE](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) property. Optional parameters include the [HUKS_TAG_ATTESTATION_ID_VERSION_INFO](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) and [HUKS_TAG_ATTESTATION_ID_ALIAS](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) properties.
 
 3. Generate an asymmetric key. For details, see [Key Generation](huks-key-generation-overview.md).
 
@@ -112,11 +113,11 @@ function stringToUint8Array(str: string) {
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<void>((resolve, reject) => {
     try {
-      huks.generateKeyItem(keyAlias, huksOptions, (error, data) => {
+      huks.generateKeyItem(keyAlias, huksOptions, (error) => {
         if (error) {
           reject(error);
         } else {
-          resolve(data);
+          resolve();
         }
       });
     } catch (error) {
@@ -132,8 +133,8 @@ async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions)
   let throwObject: ThrowObject = { isThrow: false };
   try {
     await generateKeyItem(keyAlias, huksOptions, throwObject)
-      .then((data) => {
-        console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
+      .then(() => {
+        console.info(`promise: generateKeyItem success`);
       })
       .catch((error: Error) => {
         if (throwObject.isThrow) {

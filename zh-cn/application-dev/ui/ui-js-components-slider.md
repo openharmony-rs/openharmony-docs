@@ -36,12 +36,12 @@ slider为滑动条组件，用来快速调节音量、亮度等。具体用法�
 ```
 
 
-![zh-cn_image_0000001176072876](figures/zh-cn_image_0000001176072876.gif)
+![slider-Component](figures/slider-Component.gif)
 
 
 ## 设置样式和属性
 
-slider组件通过color、selected-color、block-color样式分别为滑动条设置背景颜色、已选择颜色和滑块颜色。
+slider组件通过color、scrollbar-color、background-color样式分别为滑动条设置背景颜色、滚动条颜色和背景颜色。
 
 
 ```html
@@ -69,7 +69,7 @@ slider组件通过color、selected-color、block-color样式分别为滑动条�
 }
 ```
 
-![zh-cn_image_0000001227661529](figures/zh-cn_image_0000001227661529.gif)
+![Styles-and-Attributes](figures/Styles-and-Attributes.gif)
 
 通过添加min、max、value、step、mode属性分别为滑动条设置最小值、最大值、初始值、滑动步长和滑动条样式。
 
@@ -94,7 +94,7 @@ slider组件通过color、selected-color、block-color样式分别为滑动条�
 }
 ```
 
-![zh-cn_image_0000001179438692](figures/zh-cn_image_0000001179438692.gif)
+![Styles-and-Attributes-1](figures/Styles-and-Attributes-1.gif)
 
 > **说明：** 
 >
@@ -158,7 +158,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001176551446](figures/zh-cn_image_0000001176551446.gif)
+![Binding-Events-4](figures/Binding-Events-4.gif)
 
 
 ## 场景示例
@@ -170,7 +170,7 @@ export default {
 <!-- xxx.hml -->
 <div class="container">
   <image src="common/landscape3.jpg" style=" width: {{WidthVal}}px;height:{{HeightVal}}px;margin-top: -150px;"></image>
-  <div class="txt">
+  <div class="text">
     <slider min="0" max="100" value="{{value}}" onchange="setValue"></slider>
     <text>The width of this picture is {{WidthVal}}</text>
     <text>The height of this picture is {{HeightVal}}</text>
@@ -212,12 +212,12 @@ export default{
   },
   setValue(e) {
     this.WidthVal = 200 + e.value;
-    this.HeightVal = 200 + e.value
+    this.HeightVal = 200 + e.value;
   }
 }
 ```
 
-![zh-cn_image_0000001263038799](figures/zh-cn_image_0000001263038799.gif)
+![Example-Scenario-15](figures/Example-Scenario-15.gif)
 
 
 ## 相关实例

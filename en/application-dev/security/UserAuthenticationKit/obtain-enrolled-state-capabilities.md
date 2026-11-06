@@ -6,6 +6,7 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=b799bd137584a338db2107c2101b1d6091a6feea translatedAt=2026-11-03T05:45:27.361Z pushedAt=2026-11-03T07:44:29.004Z nl=1 -->
 
 Use **getEnrolledState()** to obtain the change in the credentials (face, fingerprint, and password) enrolled by a user.
 
@@ -44,4 +45,4 @@ obtainingEnrolledCredentialInformation() {
 
 ## Sample Code
 
-  - [Querying the status of a user registration credential](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - You can refer to the [User Authentication Service](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication) sample code.

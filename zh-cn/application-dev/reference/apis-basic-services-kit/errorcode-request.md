@@ -22,7 +22,7 @@ Invalid file or file system error.
 
 **可能原因**
 
-该错误码表示文件操作异常，可能原因是文件权限不足。具体原因可参考[BusinessError](js-apis-base.md#businesserror)中的错误信息message。
+该错误码表示文件操作异常，可能原因是文件权限不足。具体原因可参考[BusinessError](js-apis-base.md#businesserror)中的错误信息message以及[13400001错误的处理方法](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faq-basics-service-kit-20)。
 
 **处理步骤**
 
@@ -76,11 +76,11 @@ Other error.
 
 **可能原因**
 
-该错误码表示服务异常，可能原因是任务创建失败。
+该错误码表示出现上述错误码之外的未定义错误，可能原因是任务执行过程中发生未知异常或其他系统问题。
 
 **处理步骤**
 
-请检查任务配置是否正确。
+请结合调用接口及返回的详细错误信息定位具体原因后重试。
 
 
 ## 21900004 应用任务队列已满

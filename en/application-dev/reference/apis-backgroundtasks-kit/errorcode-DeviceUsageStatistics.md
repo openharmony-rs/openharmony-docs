@@ -4,7 +4,8 @@
 <!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=2041fbedbdac475325c766ada1b1f6cc4b3c8b40 translatedAt=2026-11-03T03:25:20.849Z pushedAt=2026-11-03T05:55:44.128Z nl=1 -->
 
 > **NOTE**
 >
@@ -28,7 +29,7 @@ The system memory is insufficient.
 
 Check whether memory leak occurs.
 
-## 10000002 IPC Parcel Write Failure
+## 10000002 IPC Serialization Failed
 
 **Error Message**
 
@@ -140,6 +141,38 @@ The system is abnormal.
 
 Try again later or restart the device.
 
+## 10000008 Parameter Check Failed
+
+**Error Message**
+
+Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.
+
+**Description**
+
+1. The mandatory parameter is empty.
+
+2. The parameter type is incorrect.
+
+3. Parameter verification failed. Regardless of whether the API is synchronous or asynchronous, this type of error is generally thrown in synchronous mode.
+
+**Possible Causes**
+
+1. A mandatory parameter is not passed.
+
+2. A parameter type is incorrect (Type Error).
+
+3. The number of parameters is incorrect (Argument Count Error).
+
+4. A null parameter is incorrect (Null Argument Error).
+
+5. A parameter format is incorrect (Format Error).
+
+6. A value range is incorrect (Value Range Error).
+
+**Solution**
+
+Ensure that all mandatory parameters are passed and the parameter types are correct. For parameter verification failures, read the parameter specifications and locate the fault based on the possible causes.
+
 ## 10100001 Duplicate Application Group Operation
 
 **Error Message**
@@ -152,7 +185,7 @@ The application group operation fails.
 
 **Possible Causes**
 
-The application group to set already exists, or the callback for application group changes to register or deregister has already been registered or deregistered.
+The application group to set already exists, or the callback for application group changes to register or unregister has already been registered or deregistered.
 
 **Solution**
 
@@ -176,3 +209,4 @@ The client process fails to obtain the application group information.
 **Solution**
 
 Check whether the bundle name is valid and whether the application exists.
+

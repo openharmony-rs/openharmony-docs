@@ -1,13 +1,13 @@
 # Path2D对象
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
-路径对象，支持通过对象的接口进行路径的描述，并通过Canvas的[stroke](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#stroke-1)接口进行绘制。具体请参考[Path2D对象](../reference/apis-arkui/arkui-js/js-components-canvas-path2d.md)。
+路径对象，支持通过对象的接口进行路径的描述，并通过Canvas的[stroke](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#stroke-1)接口进行绘制。具体请参考[Path2D对象](../reference/apis-arkui/arkui-js/js-components-canvas-path2d.md)。
 
 
 ## 画线段
@@ -82,12 +82,12 @@ export default {
 ```
 
 
-![zh-cn_image_0000001177930616](figures/zh-cn_image_0000001177930616.png)
+![Line-Segments](figures/Line-Segments.png)
 
 
 ## 画图形
 
-先使用createPath2D创建出路径对象，只对path1路径进行描边，所以画布上就只会出现path1的路径图形。点击text组件触发addPath方法会把path2路径对象当参数传入path1中，再对path1对象进行描边（stroke）操作后画布出现path1和path2两个图形。点击change文本改变setTransform属性值为setTransform(2, 0.1, 0.1, 2, 0,0)，图形变大并向左倾斜。
+先使用createPath2D创建出路径对象，只对path1路径进行描边，所以画布上就只会出现path1的路径图形。点击text组件触发addPath方法会把path1路径对象当参数传入path2中，再对path2对象进行描边（stroke）操作后画布出现path1和path2两个图形。点击change文本改变setTransform属性值为setTransform(2, 0.1, 0.1, 2, 0,0)，图形变大并向左倾斜。
 
 
 ```html
@@ -205,4 +205,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001177784684](figures/zh-cn_image_0000001177784684.gif)
+![Drawing-Graphs](figures/Drawing-Graphs.gif)

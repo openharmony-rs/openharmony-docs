@@ -6,8 +6,9 @@
 <!--Designer: @chande-->
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=8a54c99d7a6ab1055195fa30ea4d9e4162688d25 translatedAt=2026-10-30T06:45:23.151Z pushedAt=2026-11-03T03:27:12.206Z nl=1 -->
 
-The **certificateManagerDialog** module provides APIs for opening the certificate management pages, on which the certificates are installed, stored, used, and destroyed.
+The **certManagerDialog** module provides APIs for opening the certificate management pages, on which the certificates are installed, uninstalled, and authorized.
 
 > **NOTE**
 >
@@ -47,7 +48,7 @@ Enumerates the types of the certificate to be installed.
 | CA_CERT | 1      | CA certificate.|
 | CREDENTIAL_USER<sup>22+</sup> | 2      | User public credential.|
 | CREDENTIAL_APP<sup>22+</sup> | 3      | Private credential of an application.|
-| CREDENTIAL_UKEY<sup>22+</sup> | 4      | USB credential.|
+| CREDENTIAL_UKEY<sup>22+</sup> | 4      | USB Key certificate credential.|
 | CREDENTIAL_SYSTEM<sup>23+</sup> | 5      | System credential.|
 
 ## CertificateScope<sup>14+</sup>
@@ -61,8 +62,8 @@ Defines the usage scope of the certificate to be installed.
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
 | NOT_SPECIFIED<sup>18+</sup>  | 0      | The usage scope is not specified.|
-| CURRENT_USER | 1      | The installed certificate is accessible only to the current user.|
-| GLOBAL_USER<sup>18+</sup> | 2      | The installed certificate is accessible to all users.|
+| CURRENT_USER | 1      | Current user. The certificate is available only to the current login user.|
+| GLOBAL_USER<sup>18+</sup> | 2      | All users The certificate is available to all users.|
 
 
 ## CertificateDialogErrorCode
@@ -75,13 +76,16 @@ Enumerates the error codes reported when the certificate management dialog box A
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
-| ERROR_GENERIC  | 29700001      | Internal error.|
-| ERROR_OPERATION_CANCELED<sup>14+</sup>  | 29700002      | The user canceled the operation when the API is called.|
-| ERROR_OPERATION_FAILED<sup>14+</sup>  | 29700003      | The certificate installation fails.|
-| ERROR_DEVICE_NOT_SUPPORTED<sup>14+</sup>  | 29700004      | The device does not support the API called.|
-| ERROR_NOT_COMPLY_SECURITY_POLICY<sup>18+</sup>  | 29700005      | The device security policy is not met when the API is called.|
-| ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup>  | 29700006      | The parameter verification fails when the API is called.<br>For example, the parameter format is incorrect or the parameter range is invalid.|
+| ERROR_GENERIC  | 29700001      | An internal error occurs when the API is called,<br>such as IPC failure, memory operation failure, and file operation failure.|
+| ERROR_OPERATION_CANCELED<sup>14+</sup>  | 29700002      | The user cancels the operation in the certificate management dialog box.|
+| ERROR_OPERATION_FAILED<sup>14+</sup>  | 29700003      | The user operation in the certificate management dialog box fails.<br>For example, the certificate fails to be installed.|
+| ERROR_DEVICE_NOT_SUPPORTED<sup>14+</sup>  | 29700004      | This API is not supported on wearables.|
+| ERROR_NOT_COMPLY_SECURITY_POLICY<sup>18+</sup>  | 29700005      | The operation does not comply with the device security policy.<br>For example, the CA certificate of **GLOBAL_USER** is not allowed on the device.|
+| ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup>  | 29700006      | The input parameter validation fails.<br>For example, the parameter format is incorrect or the value range is invalid.|
 | ERROR_NO_AVAILABLE_CERTIFICATE<sup>22+</sup>  | 29700007      | No certificate is available.|
+| ERROR_PASSWORD_IS_INCORRECT  | 29700008      | The password is incorrect.<br>**Since:** 26.1.0 |
+| ERROR_OPERATION_TIMEOUT  | 29700009      | The certificate management dialog box operation times out.<br>**Since:** 26.0.1 |
+| ERROR_NOT_CONCURRENT_SUPPORT  | 29700010      | The API does not support concurrent calls.<br>**Since:** 26.0.1 |
 
 ## CertificateDialogProperty<sup>18+</sup>
 
@@ -110,7 +114,7 @@ Represents the reference information of the credential.
 
 ## UkeyAuthRequest<sup>22+</sup>
 
-Represents the authorization request information of the USB credential.
+Requests the USB Key PIN authentication.
 
 **System capability**: SystemCapability.Security.CertificateManagerDialog
 
@@ -118,11 +122,13 @@ Represents the authorization request information of the USB credential.
 
 | Name             | Type   | Read-Only| Optional| Description                        |
 | ----------------- | ------- | ---- | ---- | ---------------------------- |
-| keyUri | string   | No  | No  | Unique identifier of the USB credential. The value contains up to 256 bytes.|
+| keyUri | string   | No  | No  | Unique identifier of the USB Key certificate credential. The value contains up to 256 bytes. The value can be obtained using [openAuthorizeDialog](#certificatemanagerdialogopenauthorizedialog22). The result contains **CertReference**.|
+| customData | Uint8Array   | No   | Yes   | Custom data passed to the Ukey authentication dialog box, with a maximum length of 2048 bytes. Generally, this field needs to be provided only when calling the [openAuthDialogForUkeyProvider](#certificatemanagerdialogopenauthdialogforukeyprovider) API.<br>**Since:** 26.0.1 |
+| timeoutDuration | number   | No   | Yes   | Operation timeout of the Ukey authentication dialog box, in seconds. The value is an integer in the range [180, 600], and the default value is **300**.<br>**Since:** 26.0.1 |
 
 ## AuthorizeRequest<sup>22+</sup>
 
-Represents the authorization request information of the certificate.
+Represents the authorization request information of the credential.
 
 **System capability**: SystemCapability.Security.CertificateManagerDialog
 
@@ -131,16 +137,62 @@ Represents the authorization request information of the certificate.
 | Name             | Type   | Read-Only| Optional| Description                        |
 | ----------------- | ------- | ---- | ---- | ---------------------------- |
 | certTypes | Array<[CertificateType](#certificatetype14)>   | No  | No  | List of certificate types.|
-| certPurpose | [certificateManager.CertificatePurpose](js-apis-certManager.md#certificatepurpose22)    | No  | Yes  | Certificate usage.<br>If the **certTypes** parameter contains the **CertificateType.CREDENTIAL_UKEY** type, the **certPurpose** parameter takes effect.|
-| keyAlgIDs |  Array\<string>  | No  | Yes  | Public key algorithm type of a certificate, which is used to filter the certificate list in the credential authorization dialog box. Only the matched certificates are displayed. The value can be **RSA**, **EC**, or **ECDSA**.<br>If **keyAlgIDs** contains unsupported algorithms, the filter is invalid.<br>The array can contain a maximum of 20 items.<br>**Since**: 26.0.0|
+| certPurpose | [certificateManager.CertificatePurpose](js-apis-certManager.md#certificatepurpose22)    | No  | Yes  | Certificate usage.<br>If the **certTypes** parameter contains the **CertificateType.CREDENTIAL_UKEY** type, the **certPurpose** parameter takes effect, indicating that the USB Key certificate credential is filtered based on the specified certificate usage.|
+| keyAlgIDs |  Array\<string>  | No  | Yes  | Public key algorithm type of a certificate, which is used to filter the certificate list in the credential authorization dialog box. Only the matched certificates are displayed. The value can be **RSA**, **EC**, or **ECDSA** and is case-sensitive. If this parameter is not passed, certificates are not filtered by algorithm type.<br>If **keyAlgIDs** contains unsupported algorithms, the filter is invalid.<br>The array can contain a maximum of 20 items.<br>**Since**: 26.0.0|
 | issuers |  Array\<Uint8Array>  | No  | Yes  | Certificate issuer in DER format, which is used to filter the certificate list in the credential authorization dialog box. Only the matched certificates are displayed.<br>If the issuers array contains an element whose length is 0, the issuers filter does not take effect.<br>The array can contain a maximum of 20 items.<br>**Since**: 26.0.0|
-| uri | string  | No  | Yes  | Application URI to be verified by the server. This URI is displayed in the credential authorization dialog box.<br>**Since**: 26.0.0|
+| uri | string  | No  | Yes  | URI displayed in the authorization dialog box, which provides more context about the request for authorization to use the certificate credential.<br>**Since**: 26.0.0|
+
+## AbilityType
+
+Enumerates the ability types of the UKey authentication dialog box.
+
+**Since:** 26.0.1
+
+**System capability**: SystemCapability.Security.CertificateManagerDialog
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name       | Value |  Description      |
+| ---------- | ------ | --------- |
+| UKEY_AUTH_EXTENSION_ABILITY | 1      | Ability of the [UkeyAuthExtensionAbility](./js-apis-UkeyAuthExtensionAbility.md) type. |
+
+## UkeyAuthDialogInfo
+
+Indicates the information about the Ukey authentication dialog box to be opened.
+
+**Since:** 26.0.1
+
+**System capability**: SystemCapability.Security.CertificateManagerDialog
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name              | Type    | Read-Only | Optional | Description                         |
+| ----------------- | ------- | ---- | ---- | ---------------------------- |
+| abilityType | [AbilityType](#abilitytype)   | No   | No   | Ability type of the Ukey authentication dialog box. |
+| abilityName | string   | No   | No   | Ability name of the Ukey authentication dialog box. The maximum length is 256 bytes, and it cannot be empty. |
+
+## InstallCertificateRequest
+
+Defines the request parameters of the certificate installation dialog box.
+
+**Since:** 26.1.0
+
+**System capability**: SystemCapability.Security.CertificateManagerDialog
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name | Type | Read-Only | Optional | Description |
+| ----------------- | ------- | ---- | ---- | ---------------------------- |
+| certType | [CertificateType](#certificatetype14) | No | No | Type of certificate to install. Currently supported types are **CA_CERT**, **CREDENTIAL_USER**, and **CREDENTIAL_SYSTEM**. |
+| certScope | [CertificateScope](#certificatescope14) | No | No | Usage scope of the certificate to install. Currently supported scopes are **CURRENT_USER** and **NOT_SPECIFIED**. |
+| cert | Uint8Array | No | No |Certificate data, with a size not exceeding 8 KB.<br>When **certType** is **CA_CERT**, the certificate data must be in PEM or DER encoding format.<br>When **certType** is **CREDENTIAL_USER** or **CREDENTIAL_SYSTEM**, the certificate data must be certificate credential data in P12 encoding format. |
+| keystorePwd | string | No | Yes | Password of the keystore file, with a maximum length of 128.<br>This parameter is valid only when **certType** is set to **CREDENTIAL_USER** or **CREDENTIAL_SYSTEM**. If this parameter is specified, the user does not need to enter the password in the dialog box. |
 
 ## certificateManagerDialog.openCertificateManagerDialog
 
 openCertificateManagerDialog(context: common.Context, pageType: CertificateDialogPageType): Promise\<void>
 
-Opens the certificate management dialog box. This API uses a promise to return the result.
+The **certificateManagerDialog** module provides APIs for opening the certificate management pages, on which the certificates are viewed, installed, and uninstalled. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
@@ -152,7 +204,7 @@ Opens the certificate management dialog box. This API uses a promise to return t
 
 | Name  | Type                                             | Mandatory| Description                      |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md)                   | Yes  | Context of the application.|
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | Yes  | Context of the application.|
 | pageType | [CertificateDialogPageType](#certificatedialogpagetype)                   | Yes  | Type of the page to display.|
 
 **Return value**
@@ -168,7 +220,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.    |
 
 **Example**
@@ -181,13 +233,15 @@ import { UIContext } from '@kit.ArkUI';
 /* context is application context information, which is obtained by the caller. The context here is only an example. */
 let context: common.Context = new UIContext().getHostContext() as common.Context;
 /* pageType specifies the type of the page to display. In this example, pageType is PAGE_MAIN, which indicates the main page of the Certificate Management application. */
-let pageType: certificateManagerDialog.CertificateDialogPageType = certificateManagerDialog.CertificateDialogPageType.PAGE_MAIN;
+let pageType: certificateManagerDialog.CertificateDialogPageType =
+  certificateManagerDialog.CertificateDialogPageType.PAGE_MAIN;
 try {
   certificateManagerDialog.openCertificateManagerDialog(context, pageType).then(() => {
     console.info('Succeeded in opening certificate manager dialog.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to open certificate manager dialog. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to open certificate manager dialog. Code: ${error.code}, message: ${error.message}`);
 }
@@ -196,13 +250,15 @@ try {
 
 openInstallCertificateDialog(context: common.Context, certType: CertificateType, certScope: CertificateScope, cert: Uint8Array): Promise\<string>
 
-Opens a dialog box for installing a certificate. This API uses a promise to return the result. In API version 26.0.0 and later versions, you can use [supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog) to check whether the CA certificate management dialog box can be opened.
+Opens the certificate management installation certificate dialog box. After the certificate is installed successfully, the unique identifier of the certificate is returned, and the application can use this identifier to use the certificate. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
 **System capability**: SystemCapability.Security.CertificateManagerDialog
 
-**Device behavior differences**: This API can be properly called on PCs and 2-in-1 devices. If this API is called on other device types and **certType** is set to **CA_CERT**, error code 29700004 is returned.
+**Device behavior differences**:
+1. When the input parameter **certType** is set to **CA_CERT**, this API can be normally called on PCs and 2-in-1 devices, and error code 29700004 is returned on other devices. Since API version 26.0.0, you can use [supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog) to determine whether the device supports opening the CA certificate installation dialog box.
+2. When the input parameter **certType** is set to **CREDENTIAL_USER** or **CREDENTIAL_SYSTEM**, this API can be called on PCs, 2-in-1 devices, phones, and tablets.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -210,16 +266,16 @@ Opens a dialog box for installing a certificate. This API uses a promise to retu
 
 | Name  | Type                                             | Mandatory| Description                      |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md)                   | Yes  | Context of the application.|
-| certType | [CertificateType](#certificatetype14)                   | Yes  | Type of the certificate to install. **CA_CERT**, **CREDENTIAL_USER**, and **CREDENTIAL_SYSTEM** are currently supported.|
-| certScope | [CertificateScope](#certificatescope14)                   | Yes  | Usage scope of the certificate to install. **CURRENT_USER** and **NOT_SPECIFIED** are currently supported.|
-| cert | Uint8Array                  | Yes  | Data of the certificate to install.|
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | Yes   | Context of the application. |
+| certType | [CertificateType](#certificatetype14)                   | Yes   | Type of the certificate to install. Currently supported: CA_CERT, CREDENTIAL_USER, and CREDENTIAL_SYSTEM. |
+| certScope | [CertificateScope](#certificatescope14)                   | Yes   | Scope of use of the certificate to install. Currently supported: CURRENT_USER and NOT_SPECIFIED. |
+| cert | Uint8Array                  | Yes   | Certificate data, with a maximum size of 8 KB.<br>When **certType** is **CA_CERT**, the certificate data must be in PEM or DER encoding format.<br>When **certType** is **CREDENTIAL_USER** or **CREDENTIAL_SYSTEM**, the certificate data must be certificate credential data in P12 encoding format. |
 
 **Return value**
 
 | Type                                       | Description                |
 | ------------------------------------------- | -------------------- |
-| Promise\<string> | Promise used to return the certificate URI. The value contains up to 256 bytes.|
+| Promise\<string> | Promise used to return the result of the certificate URI. The value contains a maximum of 256 bytes. |
 
 **Error codes**
 
@@ -228,12 +284,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801      | Capability not supported because the certificate management application hap is not preinstalled in the system.<br>Applicable versions: 26.0.0+ |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 | 29700002 | The user cancels the installation operation.     |
 | 29700003 | The user install certificate failed in the certificate manager dialog, such as the certificate is in an invalid format.     |
-| 29700004 | The API is not supported on this device.     |
-| 29700005 | The operation does not comply with the device security policy, such as the device does not allow users to manage the ca certificate of the global user.     |
+| 29700004 | For security purposes, the current device does not support this API. You can use the [supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog) to determine whether the device supports opening the dialog box for installing a CA certificate with certType set to CA. |
+| 29700005 | The operation does not comply with the device security policy, such as the device does not allow users to manage the CA certificate of the global user.<br>Applicable versions: 18+ |
 
 **Example**
 ```ts
@@ -247,17 +304,107 @@ let context: common.Context = new UIContext().getHostContext() as common.Context
 /* certificateType specifies the certificate type. The value CA_CERT here indicates a CA certificate. */
 let certificateType: certificateManagerDialog.CertificateType = certificateManagerDialog.CertificateType.CA_CERT;
 /* certificateScope specifies the usage scope of the certificate. The value CURRENT_USER here means the certificate can be used by the current user. */
-let certificateScope: certificateManagerDialog.CertificateScope = certificateManagerDialog.CertificateScope.CURRENT_USER;
+let certificateScope: certificateManagerDialog.CertificateScope =
+  certificateManagerDialog.CertificateScope.CURRENT_USER;
 /* The CA certificate data must be assigned by the service. In this example, the data is not CA certificate data. */
 let caCert: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
 ]);
 try {
-  certificateManagerDialog.openInstallCertificateDialog(context, certificateType, certificateScope, caCert).then((uri: string) => {
-    console.info('Succeeded in opening install certificate');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to open install certificate dialog. Code: ${err.code}, message: ${err.message}`);
-  })
+  certificateManagerDialog.openInstallCertificateDialog(context, certificateType, certificateScope, caCert)
+    .then((uri: string) => {
+      console.info('Succeeded in opening install certificate');
+    }).catch((error: Error) => {
+      let err = error as BusinessError;
+      console.error(`Failed to open install certificate dialog. Code: ${err.code}, message: ${err.message}`);
+    });
+} catch (error) {
+  console.error(`Failed to open install certificate dialog. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## certificateManagerDialog.openInstallCertificateDialog
+
+openInstallCertificateDialog(context: common.Context, request: InstallCertificateRequest): Promise\<string>
+
+Opens the certificate installation dialog box of certificate management. After the certificate is installed successfully, the unique identifier of the certificate is returned, and the application can use this identifier to use the certificate. This API uses a promise to return the result.
+
+**Since:** 26.1.0
+
+**Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
+
+**System capability**: SystemCapability.Security.CertificateManagerDialog
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Device behavior differences**:
+1. When the input parameter **request.certType** is **CA_CERT**, this API can be normally called on PCs/2-in-1 devices, and error code 29700004 is returned on other devices. You can call [supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog) to check whether the device supports opening the CA certificate installation dialog box.
+2. When the input parameter **request.certType** is **CREDENTIAL_USER** or **CREDENTIAL_SYSTEM**, this API can be normally called on PCs/2-in-1, phones, and tablets.
+
+**Parameters**
+
+| Name   | Type                                              | Mandatory | Description                       |
+| -------- | ------------------------------------------------- | ---- | -------------------------- |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | Yes   | Context of the application. |
+| request | [InstallCertificateRequest](#installcertificaterequest)                   | Yes   | Request parameters of the certificate installation dialog box. |
+
+**Return value**
+
+| Type                                        | Description                 |
+| ------------------------------------------- | -------------------- |
+| Promise\<string> | Promise used to return the certificate URI, with a value of up to 256 bytes. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.     |
+| 801      | Capability not supported because the certificate management application hap is not preinstalled in the system.     |
+| 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
+| 29700002 | The user cancels the installation operation.     |
+| 29700003 | The user install certificate failed in the certificate manager dialog, such as the certificate is in an invalid format.     |
+| 29700004 | For security purposes, the current device does not support this API. You can use the [supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog) to determine whether the device supports opening the dialog box for installing a CA certificate with certType set to CA. |
+| 29700005 | The operation does not comply with the device security policy, such as the device does not allow users to manage the CA certificate of the global user.     |
+| 29700006 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid. |
+| 29700008 | The keystore file password is incorrect.     |
+
+**Example**
+```ts
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+import { UIContext } from '@kit.ArkUI';
+
+/* context is the application context, which is obtained by the caller. This is only an example. */
+let context: common.Context = new UIContext().getHostContext() as common.Context;
+/* certificateType is the certificate type. Here it is set to CREDENTIAL_USER, which means installing a user certificate credential. */
+let certificateType: certificateManagerDialog.CertificateType =
+  certificateManagerDialog.CertificateType.CREDENTIAL_USER;
+/* certificateScope is the certificate usage scope. Here it is set to CURRENT_USER, which means it is available to the current user. */
+let certificateScope: certificateManagerDialog.CertificateScope =
+  certificateManagerDialog.CertificateScope.CURRENT_USER;
+/* The P12 data of the user certificate credential to be installed must be assigned by the service. The data in this example is not P12 data. */
+let credential: Uint8Array = new Uint8Array([
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
+]);
+/* keystorePwd is the password of the keystore file. After this parameter is specified, the user does not need to enter the password in the dialog box. */
+let keystorePwd: string = '123456';
+let request: certificateManagerDialog.InstallCertificateRequest = {
+  certType: certificateType,
+  certScope: certificateScope,
+  cert: credential,
+  keystorePwd: keystorePwd
+};
+try {
+  certificateManagerDialog.openInstallCertificateDialog(context, request)
+    .then((uri: string) => {
+      console.info('Succeeded in opening install certificate');
+    }).catch((error: Error) => {
+      let err = error as BusinessError;
+      console.error(`Failed to open install certificate dialog. Code: ${err.code}, message: ${err.message}`);
+    });
 } catch (error) {
   console.error(`Failed to open install certificate dialog. Code: ${error.code}, message: ${error.message}`);
 }
@@ -267,13 +414,13 @@ try {
 
 openUninstallCertificateDialog(context: common.Context, certType: CertificateType, certUri: string): Promise\<void>
 
-Opens a dialog box for deleting a certificate. This API uses a promise to return the result. In API version 26.0.0 and later versions, you can use [supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog) to check whether the CA certificate management dialog box can be opened.
+Opens a dialog box for uninstalling a certificate. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
 **System capability**: SystemCapability.Security.CertificateManagerDialog
 
-**Device support**: This API is available on PCs/2-in-1 devices. For other devices, error code 29700004 is returned.
+**Device behavior differences:** This API can be normally called on PCs/2-in-1 devices, and error code 29700004 is returned on other devices. Starting from API version 26.0.0, you can call [supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog) to check whether the device supports opening the CA certificate uninstallation dialog box.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -281,9 +428,9 @@ Opens a dialog box for deleting a certificate. This API uses a promise to return
 
 | Name  | Type                                             | Mandatory| Description                      |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md)                   | Yes  | Context of the application.|
-| certType | [CertificateType](#certificatetype14)                   | Yes  | Type of the certificate to delete.|
-| certUri | string                  | Yes  | Unique identifier of the certificate to delete. The value contains up to 256 bytes.|
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | Yes  | Context of the application.|
+| certType | [CertificateType](#certificatetype14)                   | Yes  | Type of the certificate to uninstall. Only **CA_CERT** is currently supported.|
+| certUri | string | Yes | Unique identifier of the certificate to be uninstalled, which can be obtained through the CA certificate installation API or the CA certificate list query API. |
 
 **Return value**
 
@@ -298,12 +445,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 | 29700002 | The user cancels the uninstallation operation.     |
 | 29700003 | The user uninstall certificate failed in the certificate manager dialog, such as the certificate uri is not exist.     |
-| 29700004 | The API is not supported on this device.     |
-| 29700005 | The operation does not comply with the device security policy, such as the device does not allow users to manage the ca certificate of the global user.     |
+| 29700004 | For security purposes, the current device does not support this API. You can use the [supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog) to determine whether the device can open the dialog box for deleting a CA certificate with certType set to CA.     |
+| 29700005 | The operation does not comply with the device security policy, such as the device does not allow users to manage the CA certificate of the global user.     |
 
 **Example**
 ```ts
@@ -314,16 +461,17 @@ import { UIContext } from '@kit.ArkUI';
 
 /* context is application context information, which is obtained by the caller. The context here is only an example. */
 let context: common.Context = new UIContext().getHostContext() as common.Context;
-/* certificateType specifies the certificate type. The value CA_CERT here indicates a CA certificate. */
+/* certificateType specifies the certificate type. The value CA_CERT indicates a CA certificate is deleted. */
 let certificateType: certificateManagerDialog.CertificateType = certificateManagerDialog.CertificateType.CA_CERT;
 /* certUri is the unique identifier of the certificate installed. The value here is only an example. */
-let certUri: string = "test";
+let certUri: string = 'test';
 try {
   certificateManagerDialog.openUninstallCertificateDialog(context, certificateType, certUri).then(() => {
     console.info('Succeeded in opening uninstall certificate');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to open uninstall certificate dialog. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to open uninstall certificate dialog. Code: ${error.code}, message: ${error.message}`);
 }
@@ -333,13 +481,13 @@ try {
 
 openCertificateDetailDialog(context: common.Context, cert: Uint8Array, property: CertificateDialogProperty): Promise\<void>
 
-Opens the certificate management dialog box and displays the certificate details. This API uses a promise to return the result. In API version 26.0.0 and later versions, you can use [supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog) to check whether the CA certificate management dialog box can be opened.
+Opens the certificate management dialog box and displays the certificate details, such as the basic information, validity period, issuer, and user of the certificate. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
 **System capability**: SystemCapability.Security.CertificateManagerDialog
 
-**Device support**: This API is available on PCs/2-in-1 devices. For other devices, error code 29700004 is returned.
+**Device behavior differences:** This API can be normally called on PCs/2-in-1 devices, and error code 29700004 is returned on other devices. Starting from API version 26.0.0, you can call [supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog) to check whether the device supports opening the CA certificate details dialog.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -347,9 +495,9 @@ Opens the certificate management dialog box and displays the certificate details
 
 | Name  | Type                                             | Mandatory| Description                      |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md)                   | Yes  | Context of the application.|
-| cert     | Uint8Array                                                   | Yes  | Data of the certificate to install.            |
-| property | [CertificateDialogProperty](#certificatedialogproperty18) | Yes  | Property of the certificate management dialog box.|
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | Yes  | Context of the application. |
+| cert     | Uint8Array                                                   | Yes   | Certificate data.             |
+| property | [CertificateDialogProperty](#certificatedialogproperty18) | Yes  | Property of the certificate management dialog box. |
 
 **Return value**
 
@@ -364,7 +512,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.                |
 | 29700003 | Show the certificate detail dialog failed, such as the certificate is in an invalid format. |
 | 29700004 | The API is not supported on this device.                     |
@@ -380,7 +528,7 @@ import { UIContext } from '@kit.ArkUI';
 let context: common.Context = new UIContext().getHostContext() as common.Context;
 /* The CA certificate data must be assigned by the service. In this example, the data is not CA certificate data. */
 let caCert: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
 ]);
 let property: certificateManagerDialog.CertificateDialogProperty = {
   showInstallButton: false /* Do not display the button for installing the certificate.*/
@@ -388,9 +536,10 @@ let property: certificateManagerDialog.CertificateDialogProperty = {
 try {
   certificateManagerDialog.openCertificateDetailDialog(context, caCert, property).then(() => {
     console.info('Succeeded opening certificate detail dialog.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to open certificate detail dialog. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to open certificate detail dialog. Code: ${error.code}, message: ${error.message}`);
 }
@@ -400,7 +549,7 @@ try {
 
 openAuthorizeDialog(context: common.Context): Promise\<string>
 
-Opens the authorization page of the certificate management dialog box to grant a certificate to the application. This API uses a promise to return the result.
+Opens the certificate credential authorization page of the certificate management dialog box to grant a certificate credential to the application. After the API is successfully called, the application can perform signing, signature verification, and details query based on the URI of the authorized certificate credential returned by the API. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
@@ -412,7 +561,7 @@ Opens the authorization page of the certificate management dialog box to grant a
 
 | Name    | Type                                                                | Mandatory| Description         |
 |---------|--------------------------------------------------------------------|----|-------------|
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md) | Yes | Context of the application.|
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context) | Yes | Context of the application.|
 
 **Return value**
 
@@ -427,7 +576,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID   | Error Message                                                                                                                                           |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
-| 401      | Invalid parameter. Possible causes: 1. A mandatory parameter is left unspecified. 2. Incorrect parameter type. 3. Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: 1. A mandatory parameter is left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. |
+| 801      | Capability not supported because the certificate management application hap is not preinstalled in the system.<br>Applicable versions: 26.0.0+ |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.        |
 | 29700002 | The user cancels the authorization.                                                                                                             |
 
@@ -441,27 +591,31 @@ import { UIContext } from '@kit.ArkUI';
 /* context is application context information, which is obtained by the caller. The context here is only an example. */
 let context: common.Context = new UIContext().getHostContext() as common.Context;
 try {
-    certificateManagerDialog.openAuthorizeDialog(context).then((uri: string) => {
-        console.info(`Succeeded in authorizing certificate, uri: ${uri}`)
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to authorize certificate. Code: ${err.code}, message: ${err.message}`);
-    });
+  /* Open the certificate credential authorization page of the certificate management dialog. */
+  certificateManagerDialog.openAuthorizeDialog(context).then((uri: string) => {
+    console.info(`Succeeded in authorizing certificate, uri: ${uri}`);
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to authorize certificate. Code: ${err.code}, message: ${err.message}`);
+  });
 } catch (err) {
-    let error = err as BusinessError;
-    console.error(`Failed to authorize certificate. Code: ${error.code}, message: ${error.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to authorize certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 ## certificateManagerDialog.openAuthorizeDialog<sup>22+</sup>
 
 openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest): Promise\<CertReference>
 
-Opens the PIN authentication dialog box of the USB credential. On the displayed page, the user authorizes the certificate for the application. The certificate types that can be authorized include the application private credential, user public credential, and USB credential. This API uses a promise to return the result.
+Opens the certificate credential authorization page of the certificate management dialog box to grant a certificate credential to the application. After the API is successfully called, the application can perform signing, signature verification, and details query based on the URI of the authorized certificate credential returned by the API. The certificate types that can be authorized include the application certificate credential, user certificate credential, and USB Key certificate credential. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
 **System capability**: SystemCapability.Security.CertificateManagerDialog
 
-**Device behavior differences**: This API can be properly called on PCs. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**:
+- Since API version 26.0.0, this API has no behavior difference on any device.
+- In API versions 22 to 24, if the **authorizeRequest.certTypes** array contains only the **CREDENTIAL_UKEY** value, this API can be called on PCs and 2-in-1 devices. On other device types, error code 801 is returned. If the **authorizeRequest.certTypes** array contains the **CREDENTIAL_UKEY** value and other credential types, this API can be called on PCs and 2-in-1 devices. On other device types, the **CREDENTIAL_UKEY** credential is ignored.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -469,7 +623,7 @@ Opens the PIN authentication dialog box of the USB credential. On the displayed 
 
 | Name    | Type                                                                | Mandatory| Description         |
 |---------|--------------------------------------------------------------------|----|-------------|
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md) | Yes | Context of the application.|
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context) | Yes | Context of the application.|
 | authorizeRequest | [AuthorizeRequest](#authorizerequest22) | Yes | Authorization request information.|
 
 **Return value**
@@ -485,11 +639,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID   | Error Message                                                                                                                                           |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
-| 801      | Capability not supported.  |
+| 801      | Capability not supported because the certificate management application hap is not preinstalled in the system.  |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error; 4. Call other service failed. Please try again.                 |
 | 29700002 | The user cancels the authorization.                                                                                                             |
 | 29700006 | Indicates that the input parameters validation failed. for example, the parameter format is incorrect or the value range is invalid.            |
-| 29700007 | No available certificate for authorization            |
+| 29700007 | No available certificate for authorization. Possible causes: 1. No certificate matches the filter criteria; 2. All certificates have been deleted.            |
 
 **Example**
 ```ts
@@ -508,28 +662,32 @@ let certTypes: Array<certificateManagerDialog.CertificateType> = [
 let certPurpose: certificateManager.CertificatePurpose = certificateManager.CertificatePurpose.PURPOSE_DEFAULT;
 let authorizeRequest: certificateManagerDialog.AuthorizeRequest = { certTypes: certTypes, certPurpose: certPurpose };
 try {
-    certificateManagerDialog.openAuthorizeDialog(context, authorizeRequest).then((certReference: certificateManagerDialog.CertReference) => {
-      let reference = certReference;
-      console.info(`Succeeded in opening authorize dialog.`)
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to open authorize dialog. Code: ${err.code}, message: ${err.message}`);
-    });
+  certificateManagerDialog.openAuthorizeDialog(context, authorizeRequest)
+    .then((certReference: certificateManagerDialog.CertReference) => {
+    let reference = certReference;
+    console.info(`Succeeded in opening authorize dialog.`);
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to open authorize dialog. Code: ${err.code}, message: ${err.message}`);
+  });
 } catch (err) {
-    let error = err as BusinessError;
-    console.error(`Failed to open authorize dialog. Code: ${error.code}, message: ${error.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to open authorize dialog. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 ## certificateManagerDialog.openUkeyAuthDialog<sup>22+</sup>
 
 openUkeyAuthDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): Promise\<void>
 
-Opens the PIN authentication dialog box of the USB credential. On the displayed page, the user can enter the PIN to authorize the USB credential. This API uses a promise to return the result.
+Opens the PIN credential authentication page of the USB Key certificate management dialog box. On the displayed page, the user can enter the PIN to authorize the USB Key certificate credential. After the API is successfully called, the USB Key certificate credential is unlocked, and the application can use the credential for operations such as signing and encryption. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
 **System capability**: SystemCapability.Security.CertificateManagerDialog
 
-**Device behavior differences**: This API can be properly called on PCs. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**:
+- Since API version 26.0.0, this API has no behavior difference on any device.
+- In API versions 22 to 24, this API can be properly called on PCs and 2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -537,8 +695,8 @@ Opens the PIN authentication dialog box of the USB credential. On the displayed 
 
 | Name    | Type                                                                | Mandatory| Description         |
 |---------|--------------------------------------------------------------------|----|-------------|
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md) | Yes | Context of the application.|
-| ukeyAuthRequest | [UkeyAuthRequest](#ukeyauthrequest22) | Yes | Authorization request information of the USB credential.|
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context) | Yes | Context of the application.|
+| ukeyAuthRequest | [UkeyAuthRequest](#ukeyauthrequest22) | Yes | Authorization request information of the USB Key certificate credential.|
 
 **Return value**
 
@@ -553,10 +711,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID   | Error Message                                                                                                                                           |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
-| 801      | Capability not supported.  |
+| 801      | Capability not supported because the certificate management application hap is not preinstalled in the system.                                 |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.           |
-| 29700002 | The user cancels the authentication operation.                                                                                                             |
-| 29700003 | The authentication operation failed, such as the USB key certificate does not exist, the USB key status is abnormal.                              |
+| 29700002 | The user cancels the authentication operation or operation timed out.                                                                             |
+| 29700003 | The authentication operation failed, such as: The USB key certificate does not exist. The USB key status is abnormal, Please ask the user to check the status of the Ukey. The Ukey authentication dialog box cannot be opened concurrently. Please try again later. |
 | 29700006 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.            |
 
 **Example**
@@ -569,17 +727,18 @@ import { UIContext } from '@kit.ArkUI';
 /* context is application context information, which is obtained by the caller. The context here is only an example. */
 let context: common.Context = new UIContext().getHostContext() as common.Context;
 /* keyUri is the unique identifier of the credential. The invoker obtains the value by itself. The value here is only an example. */
-let keyUri: string = "test"
-let ukeyAuthRequest: certificateManagerDialog.UkeyAuthRequest = { keyUri: keyUri }
+let keyUri: string = 'test';
+let ukeyAuthRequest: certificateManagerDialog.UkeyAuthRequest = { keyUri: keyUri };
 try {
-    certificateManagerDialog.openUkeyAuthDialog(context, ukeyAuthRequest).then(() => {
-        console.info(`Succeeded in opening ukey authorization dialog`)
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to open ukey authorization dialog. Code: ${err.code}, message: ${err.message}`);
-    });
+  certificateManagerDialog.openUkeyAuthDialog(context, ukeyAuthRequest).then(() => {
+    console.info(`Succeeded in opening ukey authorization dialog`);
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to open ukey authorization dialog. Code: ${err.code}, message: ${err.message}`);
+  });
 } catch (err) {
-    let error = err as BusinessError;
-    console.error(`Failed to open ukey authorization dialog. Code: ${error.code}, message: ${error.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to open ukey authorization dialog. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -587,13 +746,13 @@ try {
 
 supportsCACertDialog(): boolean
 
-Checks whether the CA certificate management dialog box can be opened.
+Checks whether the CA certificate management dialog box can be opened on the device, including the [openInstallCertificateDialog](#certificatemanagerdialogopeninstallcertificatedialog14), [openUninstallCertificateDialog](#certificatemanagerdialogopenuninstallcertificatedialog18), and [openCertificateDetailDialog](#certificatemanagerdialogopencertificatedetaildialog18) APIs.
+
+**Since**: 26.0.0
 
 **System capability**: SystemCapability.Security.CertificateManagerDialog
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Since**: 26.0.0
 
 **Return value**
 
@@ -615,10 +774,94 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  /* Check whether the device supports opening the CA certificate management dialog box. */
   let isSupport: boolean = certificateManagerDialog.supportsCACertDialog();
-  console.info(`Succeeded in checking whether the device supports CA dialog.`)
+  console.info(`Succeeded in checking whether the device supports CA dialog.`);
 } catch (err) {
-    let error = err as BusinessError;
-    console.error(`Failed to check whether the device supports CA dialog. Code: ${error.code}, message: ${error.message}`);
+  let error = err as BusinessError;
+  console.error(
+    `Failed to check whether the device supports CA dialog. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## certificateManagerDialog.openAuthDialogForUkeyProvider
+
+openAuthDialogForUkeyProvider(dialogInfo: UkeyAuthDialogInfo, ukeyAuthRequest: UkeyAuthRequest): Promise\<void>
+
+Opens the UKey authentication dialog box for the USB key certificate credential to implement custom dialog functions in scenarios such as payment and certificate update. This API is only for use by UKey driver applications. The UKey authentication dialog box must be implemented by the UKey driver application through [UkeyAuthExtensionAbility](js-apis-UkeyAuthExtensionAbility.md). This API uses a promise to return the result.
+
+**Since:** 26.0.1
+
+**Required permissions:** ohos.permission.CRYPTO_EXTENSION_REGISTER
+
+**System capability**: SystemCapability.Security.CertificateManagerDialog
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Device behavior differences**: This API is available on PCs/2-in-1 devices. For other devices, error code 29700005 is returned.
+
+**Parameters**
+
+| Name     | Type                                                                 | Mandatory | Description          |
+|---------|--------------------------------------------------------------------|----|-------------|
+| dialogInfo | [UkeyAuthDialogInfo](#ukeyauthdialoginfo) | Yes  | Information about the UKey authentication dialog to open. |
+| ukeyAuthRequest | [UkeyAuthRequest](#ukeyauthrequest22) | Yes  | Authentication request information of the USB Key certificate credential. |
+
+**Return value**
+
+| Type               | Description                                   |
+|------------------|--------------------------------------|
+| Promise\<void> | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
+
+| ID    | Error Message                                                                                                                                            |
+|----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
+| 801      | Capability not supported because the certificate management application hap is not preinstalled in the system.                                 |
+| 29700001 | The certificate manager service processing failed. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
+| 29700002 | The user cancels the authentication operation.                                                                                                   |
+| 29700003 | The authentication operation failed, such as: The USB key certificate does not exist. The USB key status is abnormal, Please ask the user to check the status of the Ukey. |
+| 29700005 | The operation does not comply with the device security policy. Only the PC/2in1 device can open the dialog box of the UkeyAuthExtensionAbility type.  |
+| 29700006 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.            |
+| 29700009 | The operation in the Ukey authentication dialog box timed out.                                                                                  |
+| 29700010 | The Ukey authentication dialog box cannot be opened concurrently. Please try again later.                                                        |
+
+**Example**
+```ts
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+/* abilityType is the Ability type of the UKey authentication dialog box. Here it is set to UKEY_AUTH_EXTENSION_ABILITY. */
+let abilityType: certificateManagerDialog.AbilityType =
+  certificateManagerDialog.AbilityType.UKEY_AUTH_EXTENSION_ABILITY;
+/* abilityName is the name of the UkeyAuthExtensionAbility implemented by the UKey driver application. This is only an example. */
+let abilityName: string = 'com.example.ukeydriver.UkeyAuthExtensionAbility';
+let dialogInfo: certificateManagerDialog.UkeyAuthDialogInfo = {
+  abilityType: abilityType,
+  abilityName: abilityName
+};
+/* keyUri is the unique identifier of the USB Key certificate credential, which is obtained by the caller. This is only an example. */
+let keyUri: string = 'test';
+/* Custom data passed to the UKey authentication dialog box. This is only an example. */
+let customData: Uint8Array = new Uint8Array([0x01, 0x02, 0x03]);
+let ukeyAuthRequest: certificateManagerDialog.UkeyAuthRequest = {
+  keyUri: keyUri,
+  customData: customData,
+  /* Operation timeout of the UKey authentication dialog box, in seconds. The value is an integer in the range [180, 600]. */
+  timeoutDuration: 300
+};
+try {
+  certificateManagerDialog.openAuthDialogForUkeyProvider(dialogInfo, ukeyAuthRequest).then(() => {
+    console.info(`Succeeded in opening ukey auth dialog`);
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to open ukey auth dialog. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to open ukey auth dialog. Code: ${error.code}, message: ${error.message}`);
 }
 ```

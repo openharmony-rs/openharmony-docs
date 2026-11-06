@@ -55,7 +55,7 @@ openssl req -newkey rsa:2048 -nodes -keyout serverKey.pem -x509 -days 365 -out s
 mkdir server_sample                            // 建立示例服务器server_sample目录
 touch server_sample/BUILD.gn                   // 创建BUILD.gn编译文件
 mkdir server_sample/include                    // 建立示例服务器头文件include目录
-touch server_process.h                         // 创建server_process.h头文件
+touch server_sample/include/server_process.h   // 创建server_process.h头文件
 mkdir server_sample/src                        // 建立示例服务器c/c++文件src目录
 touch server_sample/src/server_process.c       // 创建server_process.c文件
 touch server_sample/src/main.cpp               // 创建main.cpp文件

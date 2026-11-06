@@ -1,13 +1,14 @@
 # Combined Gestures
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T08:28:13.279Z pushedAt=2026-11-03T08:29:16.901Z nl=1 -->
 
 
-A combined gesture is a combination of multiple single gestures. Its recognition mode is subject to [GestureMode](../reference/apis-arkui/arkui-ts/ts-combined-gestures.md#gesturemode) passed in [GestureGroup](../reference/apis-arkui/arkui-ts/ts-combined-gestures.md#apis). Three recognition modes are supported: [sequential recognition](#sequential-recognition), [parallel recognition](#parallel-recognition), and [exclusive recognition](#exclusive-recognition).
+A combined gesture is composed of multiple single gestures. Its type is declared by using different [GestureMode](../reference/apis-arkui/arkui-ts/ts-combined-gestures.md#gesturemode) values in [GestureGroup](../reference/apis-arkui/arkui-ts/ts-combined-gestures.md), and three types are supported: [sequential recognition](#sequential-recognition), [parallel recognition](#parallel-recognition), and [exclusive recognition](#exclusive-recognition).
 
 ```ts
 GestureGroup(mode:GestureMode, gesture:GestureType[])
@@ -16,14 +17,14 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
 
 - **mode**: recognition mode of combined gestures. The value belongs to the **GestureMode** enumeration class.
 
-- **gesture**: array of multiple gestures.  
+- **gesture**: array of multiple gestures.
 
 
 ## Sequential Recognition
 
 For sequential recognition, the value of **GestureMode** is **Sequence**. In this gesture recognition mode, gestures are recognized in the order in which they were registered until they are all recognized successfully. If any of the registered gestures fails to be recognized, subsequent gestures will also fail. Only the last gesture recognized responds to the [onActionEnd](../reference/apis-arkui/arkui-ts/ts-gesturehandler.md#onactionend) event.
 
-In the following example, the combined gestures for continuous recognition are the long press gesture and pan gesture.
+In the following example, the combined gestures for sequential recognition are the long press gesture and pan gesture.
 
 The [translate](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#translate) attribute is bound to a **Column** component. You can set the attribute to translate the component. Then, bind [LongPressGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-longpressgesture.md) and [PanGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pangesture.md) to the component in the **Sequence** recognition mode. When a long press gesture is recognized, the displayed number is updated. When the user drags the component after the long press gesture, the component is dragged based on the callback function of the pan gesture.
 
@@ -70,9 +71,7 @@ The [translate](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transfo
                 if (event.repeat) {
                   this.count++;
                 }
-                ;
               }
-              ;
               hilog.info(DOMAIN, TAG, 'LongPress onAction');
             })
             .onActionEnd(() => {
@@ -90,7 +89,6 @@ The [translate](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transfo
                 this.offsetX = (this.positionX + event.offsetX);
                 this.offsetY = this.positionY + event.offsetY;
               }
-              ;
               hilog.info(DOMAIN, TAG, 'pan update');
             })
             .onActionEnd(() => {
@@ -119,7 +117,7 @@ The [translate](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transfo
 
 For parallel recognition, the value of **GestureMode** is **Parallel**. In this gesture recognition mode, gestures registered in the combined gestures will be recognized at the same time until they are all recognized successfully. The gestures are recognized in parallel without affecting each other.
 
-For example, if the tap gesture and the double-tap gesture are bound to the **Column** component in parallel recognition mode, they can be recognized at the same time, and the recognition of these two gestures does not interfere with each other. 
+For example, if the tap gesture and the double-tap gesture are bound to the **Column** component in parallel recognition mode, they can be recognized at the same time, and the recognition of these two gestures does not interfere with each other.
 
   <!-- @[parallel_recognition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Parallel.ets) -->
   
@@ -175,7 +173,7 @@ For example, if the tap gesture and the double-tap gesture are bound to the **Co
 
 For exclusive recognition, the value of **GestureMode** is **Exclusive**. In this gesture recognition mode, all registered gestures are recognized at once. Once any of the gestures is recognized successfully, the gesture recognition ends, and all other gestures fail to be recognized.
 
-For example, when both the tap gesture and double-tap gesture are bound to a **Column** component in exclusive recognition mode, the order in which these gestures are bound matters. If you bind the tap gesture before the double-tap, the double-tap gesture won't be recognized because the tap consumes all touch events. Conversely, if you bind the double-tap gesture first, it will be recognized without being intercepted by the tap gesture.
+For example, consider a Column component bound with both a tap gesture and a double‑tap gesture in an exclusive recognition combination. If the tap gesture is bound before the double‑tap, the double‑tap cannot be triggered because the tap requires only a single tap to fire, whereas the double‑tap requires two; each tap event is consumed by the tap gesture and never accumulates into a double‑tap. Conversely, if the double‑tap is bound first, the double‑tap is recognized and the tap gesture is not triggered.
 
   <!-- @[mutual_exclusion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Exclusive.ets) -->
   
@@ -254,11 +252,9 @@ The following example implements a child component bound to both a long press ge
               if (current.getType() !== GestureControl.GestureType.PAN_GESTURE) {
                 return GestureJudgeResult.CONTINUE;
               }
-              ;
               if (this.isLongPress) {
                 return GestureJudgeResult.CONTINUE;
               }
-              ;
               return GestureJudgeResult.REJECT;
             })
           .gesture(
@@ -271,8 +267,7 @@ The following example implements a child component bound to both a long press ge
                 })
                 .onActionEnd(() => {
                   this.isLongPress = false;
-                })
-              ,
+                }),
               PanGesture()
                 .onActionStart(() => {
                   this.promptAction.showToast({ message: 'child pan start' });

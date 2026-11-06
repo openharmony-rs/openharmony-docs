@@ -6,13 +6,14 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=cc3a7ec87b2f77822119b4ef2a483d974ab96b04 translatedAt=2026-09-23T02:06:26.733Z pushedAt=2026-09-24T06:00:14.197Z -->
 
 The **netFirewall** module implements the firewall query functionality. It allows applications to query firewall interception records.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 14. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> The APIs provided by this module are system APIs.
+> This page contains only the system APIs of this module. For details about other public APIs, see [@ohos.net.netFirewall (Network Firewall)](js-apis-net-netfirewall.md).
 
 ## Modules to Import
 
@@ -24,7 +25,7 @@ import { netFirewall } from '@kit.NetworkKit';
 
 getInterceptedRecords(userId: number, requestParam: RequestParam): Promise\<InterceptedRecordPage\>
 
-Obtains interception records based on the specified user ID. You need to specify the pagination query parameter when calling this API. This API uses a promise to return the result.
+Obtains the interception records by **userId**. You need to specify the pagination query parameters. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -43,11 +44,11 @@ Obtains interception records based on the specified user ID. You need to specify
 
 | Type                                                     | Description                           |
 | --------------------------------------------------------- | ------------------------------- |
-| Promise\<[InterceptedRecordPage](#interceptedrecordpage)> | Promise used to return the result, which is a list of interception records.|
+| Promise\<[InterceptedRecordPage](#interceptedrecordpage)> | Promise object used to return the list of intercepted records. |
 
 **Error codes**
 
-For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Network Connection Management Error Codes](errorcode-net-connection.md), and [Firewall Error Codes](errorcode-net-netfirewall.md).
 | ID| Error Message                                                                       |
 | -------  | --------------------------------------------------------------------------------|
 | 201      | Permission denied.                                                              |
@@ -57,7 +58,7 @@ For details about the error codes, see [Network Connection Management Error Code
 | 2100002  | Operation failed. Cannot connect to service.                                    |
 | 2100003  | System internal error.                                                          |
 | 29400000 | The specified user does not exist.                                              |
-  
+
 **Example**
 
 ```ts

@@ -1,8 +1,8 @@
 # Web组件焦点管理
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -186,7 +186,6 @@ struct WebComponent {
 
 加载的html文件。
 ```html
-// test.html
 <!-- test.html -->
 <!DOCTYPE html>
 <html>

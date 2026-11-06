@@ -12,7 +12,7 @@ typedef struct ArkUI_NativeDialog* ArkUI_NativeDialogHandle
 
 ## 概述
 
-定义ArkUI在Native侧的自定义弹窗控制器对象指针。
+指向ArkUI Native侧自定义弹窗控制器对象的指针类型，用于标识和操作自定义弹窗实例。
 
 **起始版本：** 12
 

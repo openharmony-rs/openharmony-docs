@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何为虚拟机设置OOM、致命错误与未捕获Promise拒绝的定制化处理函数，异常触发时执行清理或日志记录，避免程序直接崩溃。"
+keywords: [OH_JSVM_SetHandlerForOOMError, OH_JSVM_SetHandlerForFatalError, OH_JSVM_SetHandlerForPromiseReject, OOM Error, Fatal Error, Promise Reject, 异常处理回调, 定制化处理]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API进行异常的定制化处理
-<!--Kit: NDK Development-->
+
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -33,6 +42,7 @@ JSVM-API提供了一组用于处理JSVM异常的接口。通过这些接口，�
 JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)，本文仅对接口对应C++相关代码进行展示。
 
 ### OH_JSVM_SetHandlerForOOMError
+
 通过OH_JSVM_SetHandlerForOOMError，用户可以设置处理OOM Error的函数。当多次调用这个API进行函数设置时，仅最后一次设置会生效。当用户传入的设置函数为NULL时，则表示取消之前设置的处理函数。
 
 **cpp部分代码：**
@@ -91,18 +101,25 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"triggerOOMError", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 ```
+
 **样例测试JS**
+
 ```cpp
 const char *srcCallNative = R"JS(triggerOOMError();)JS";
 ```
-**执行结果**
 
-在LOG中输出：　
-```cpp
+**执行结果：**
+
+在LOG中输出：
+
+```txt
 JSVM Trigger OOM Error: success
 ```
+
 ### OH_JSVM_SetHandlerForFatalError
+
 通过OH_JSVM_SetHandlerForFatalError，用户可以设置处理Fatal Error的函数。当多次调用这个API进行函数设置时，仅最后一次设置会生效。当用户传入的设置函数为NULL时，则表示取消之前设置的处理函数。
+
 **cpp部分代码：**
 
 ```cpp
@@ -158,18 +175,25 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"triggerFatalError", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 ```
+
 **样例测试JS**
+
 ```cpp
 const char* srcCallNative = R"JS(triggerFatalError())JS";
 ```
+
 **执行结果：**
 
-在LOG中输出：　
-```cpp
+在LOG中输出：
+
+```txt
 JSVM Trigger Fatal Error: success
 ```
+
 ### OH_JSVM_SetHandlerForPromiseReject
+
 通过OH_JSVM_SetHandlerForPromiseReject，用户可以设置处理Promise Reject的函数。当多次调用这个API进行函数设置时，仅最后一次设置会生效。当用户传入的设置函数为NULL时，则表示取消之前设置的处理函数。
+
 **cpp部分代码：**
 
 ```cpp
@@ -206,7 +230,7 @@ static JSVM_Value TriggerPromiseReject(JSVM_Env env, JSVM_CallbackInfo info)
     // 设置Promise Reject处理函数
     JSVM_CALL(OH_JSVM_SetHandlerForPromiseReject(vm, OnPromiseReject));
     JSVM_Value strVal;
-    char *str = "new Promise((resolve, reject) => { reject(42); })";
+    const char *str = "new Promise((resolve, reject) => { reject(42); })";
     OH_JSVM_CreateStringUtf8(env, str, JSVM_AUTO_LENGTH, &strVal);
     JSVM_Script script;
     OH_JSVM_CompileScript(env, strVal, nullptr, 0, false, nullptr, &script);
@@ -234,13 +258,17 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"triggerPromiseReject", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 ```
+
 **样例测试JS**
+
 ```cpp
 const char* srcCallNative = R"JS(triggerPromiseReject())JS";
 ```
+
 **执行结果：**
 
-在LOG中输出：　
-```cpp
+在LOG中输出：
+
+```txt
 JSVM Trigger Promise Reject: success
 ```

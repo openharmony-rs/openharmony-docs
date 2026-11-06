@@ -2,10 +2,11 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=380302020c3e797188855ad9895a83c0437ababa translatedAt=2026-11-03T13:00:53.698Z pushedAt=2026-11-03T13:00:53.698Z nl=1 -->
 
 ## Overview
 
@@ -27,8 +28,8 @@ Which of the collection processes is triggered depends on the processing duratio
 
 | Collection Process| Triggering Condition| Log Collection Format| Prerequisites and Restrictions|
 | -------- | -------- | -------- | -------- |
-| Stack collection| 150 ms < Main thread processing duration < 450 ms| File name format: **MAIN_THREAD_JANK_Second-level time_PID.txt**.<br>For example, **MAIN_THREAD_JANK_20240613211739_40986.txt**.| - The application is not detected within 10s after being started.<br> - When [Developer options](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-developer-mode#section0736139111917) is disabled, the main thread timeout event stack collection process can be triggered at most once a day within a lifecycle of an application.<br> - When [Developer options](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-developer-mode#section530763213432) is enabled, the main thread timeout event stack collection process can be triggered at most once an hour within a lifecycle of an application.|
-| Trace collection| Main thread processing duration > 450 ms| File name format: **MAIN_THREAD_JANK_unix timestamp_PID.trace**.<br>For example, **MAIN_THREAD_JANK_1762064185461_40986.trace**.| - To trigger trace collection, you can use the [nolog](performance-analysis-kit-terminology.md#nolog-version) version and disable [Developer options](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-developer-mode#section530763213432).<br> - Only one trace collection process can be triggered for the main thread timeout event within a day.|
+| Stack collection| 150 ms < Main thread processing duration < 450 ms| File name format: **MAIN_THREAD_JANK_Second-level time_PID.txt**.<br>For example, **MAIN_THREAD_JANK_20240613211739_40986.txt**.| - No detection is performed within 10 seconds after the application is started. <br> - When [Developer options](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-developer-mode#section0736139111917) is disabled, the main thread timeout event stack collection process can be triggered at most once a day within a lifecycle of an application.<br> - When [Developer options](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-developer-mode#section530763213432) is enabled, the main thread timeout event stack collection process can be triggered at most once an hour within a lifecycle of an application.|
+| Trace collection| Main thread processing duration > 450 ms| File name format: **MAIN_THREAD_JANK_unix timestamp_PID.trace**.<br>For example, **MAIN_THREAD_JANK_1762064185461_40986.trace**.| - To trigger trace collection, you must use the [nolog](performance-analysis-kit-terminology.md#nolog-version) version and disable [Developer options](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-developer-mode#section530763213432).<br> - Only one trace collection process can be triggered for the main thread timeout event within a day.|
 
 > **NOTE**
 >
@@ -44,11 +45,11 @@ Which of the collection processes is triggered depends on the processing duratio
 
    ![sample_stack_1](figures/sample_stack_1.png)
 
-   (2) If a main thread timeout event (main thread processing duration > 150 ms) is detected during the second check, the stack collection starts and is performed every 150 ms for 10 times. The stack data is collected and an event is reported at the next interval. Then the check ends.
+   (2) If no main thread timeout event is detected during the first check (main thread processing duration < 150 ms), but one is detected during the second check (main thread processing duration > 150 ms), stack collection starts. The stack is sampled every 150 ms for a total of 10 samples. During the 12th check, the stack data is collected and an event is reported. Then the check ends.
 
    ![sample_stack_2](figures/sample_stack_2.png)
 
-   (3) If no main thread timeout event (main thread processing duration > 150 ms) is detected during the first two checks, the check ends.
+   (3) If no main thread timeout event is detected during either of the first two checks (main thread processing duration < 150 ms), the check ends.
 
    ![sample_stack_3](figures/sample_stack_3.png)
 
@@ -56,7 +57,7 @@ Which of the collection processes is triggered depends on the processing duratio
 
    When the main thread processing times out (main thread processing duration > 450 ms), the API for enabling trace collection is invoked to check every 150 ms for 20 times whether the duration exceeds 150 ms. The possible cases are as follows:
 
-   (1) If no main thread timeout event (main thread processing duration > 150 ms) is detected during the 20 checks, no trace file is generated, and the check ends.
+   (1) If no main thread timeout event is detected during any of the 20 checks (main thread processing duration < 150 ms), no trace file is generated, and the check ends.
 
    ![dump-trace1](figures/dump-trace1.PNG)
 
@@ -66,9 +67,9 @@ Which of the collection processes is triggered depends on the processing duratio
 
 ### Obtaining Logs
 
-Main thread jank event logs are stored in the application sandbox directory. You can obtain the logs in any of the following ways:
+Main thread timeout logs are saved in the app sandbox directory and can be obtained in the following ways.
 
-**Subscribing to Main Thread Jank Events using HiAppEvent APIs**
+**Subscribing to Task Execution Timeout Events using HiAppEvent APIs**
 
 HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). You can subscribe to the main thread timeout event by referring to [Subscribing to Main Thread Jank Events (ArkTS)](hiappevent-watcher-mainthreadjank-events-arkts.md) or [Subscribing to Main Thread Jank Events (C/C++)](hiappevent-watcher-mainthreadjank-events-ndk.md), and read the fault log file using the [external_log](hiappevent-watcher-mainthreadjank-events.md#event-fields) field in the event.
 
@@ -76,7 +77,7 @@ HiAppEvent provides APIs for subscribing to faults. For details, see [Introducti
 
 1. Log aging specifications of main thread timeout detection
 
-   Generally, the size of a stack file is 7 KB to 10 KB, and the size of a trace file is 1 MB to 5 MB. The **watchdog** directory in the application sandbox can store a maximum of 10 MB data. If the total file size exceeds 10 MB, the directory aging mechanism is automatically triggered to delete a maximum of 100 files based on the file name sequence. The path to **watchdog** is **/data/storage/el2/log/watchdog/**.
+   Generally, the stack file size is 7–10 KB, and the trace file size is 1–5 MB. The watchdog directory in the app sandbox can store a maximum of 10 MB of content. When this limit is exceeded, the directory aging mechanism is automatically triggered, which deletes up to 100 files in filename order. Directory path: `/data/storage/el2/log/watchdog/`.
 
 2. Stack specifications of main thread timeout detection
 
@@ -138,9 +139,42 @@ HiAppEvent provides APIs for subscribing to faults. For details, see [Introducti
 
 3. Trace specifications of main thread timeout detection
 
-   The size of the trace file is 1 MB to 5 MB. You can visually analyze the trace file using [SmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host). You can download the tool from [developtools_smartperf_host Release](https://gitcode.com/openharmony/developtools_smartperf_host/releases).
+   The size of the trace file is 1 MB to 5 MB. You can visually analyze the trace file using [HiSmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host). You can download the tool from [developtools_smartperf_host Release](https://gitcode.com/openharmony/developtools_smartperf_host/releases).
 
    For details about the trace file, see [Loading Trace Files on the Web Client](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/ide/src/doc/md/quickstart_systemtrace.md).
+
+### Collection Limitations
+
+1. Trace collection
+
+   Trace collection limitation: A trace can be triggered at most once per app per day.
+
+   You can view trace collection logs in either of the following ways:
+
+   - In DevEco Studio, switch to the **Log** window at the bottom and filter for the **open trace result** keyword.
+
+   - Use the `hdc shell` command in a command-line window to view logs online:
+
+     ```shell
+     PS D:\xxx\xxx> hdc shell
+     $ hilog | grep "open trace result"
+     ```
+
+   Trace collection result:
+
+   - A result of 0 indicates that the trace was triggered successfully. **After a trace is successfully collected, no further logs will be printed upon subsequent triggers**.
+
+   - A result of 1203 indicates that the trace failed to trigger because the trigger count limit has been exceeded.
+
+2. Stack collection
+
+    Default behavior: An app can trigger the main thread timeout event stack collection process at most once per day within one lifecycle.
+
+    You can configure the collection count through custom parameter APIs:
+
+    - `report_times_per_app` parameter in [Parameters of setEventConfig](hiappevent-watcher-mainthreadjank-events.md#parameters-of-seteventconfig), with a value range of [1, 3]
+
+    - `reportTimesPerApp` parameter in [Parameters of configEventPolicy](hiappevent-watcher-mainthreadjank-events.md#parameters-of-configeventpolicy), with a value range of [1, 3]
 
 ## Task Execution Timeout Detection
 

@@ -1,18 +1,19 @@
 # @ohos.data.storage (Lightweight Data Storage)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @ding_dong_dong-->
-<!--Designer: @ding_dong_dong-->
+<!--Owner: @cuile44-->
+<!--Designer: @cuile44-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=937a80eb167419199390c0c4ac6ab793f1de76dc translatedAt=2026-09-04T03:51:00.582Z pushedAt=2026-09-09T09:11:03.734Z -->
 
-Lightweight storage provides applications with data processing capability and allows applications to perform lightweight data storage and query. Data is stored in key-value (KV) pairs. Keys are of the string type, and values can be of the number, string, or Boolean type.
+Lightweight storage provides applications with key-value pair file data processing capability, supporting lightweight storage and query of application data. Data is stored in key-value pairs, where keys are of the string type and values can be of the number, string, or boolean type.
 
-> **NOTE**<br/>
+> **NOTE**
 >
 > -  The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> -  The APIs of this module are no longer maintained since API version 9. You are advised to use [@ohos.data.preferences](js-apis-data-preferences.md).
+> -  Since API version 9, this API is no longer maintained. You are advised to use the new API [@ohos.data.preferences](js-apis-data-preferences.md).
 
 
 ## Modules to Import
@@ -219,7 +220,7 @@ context.getFilesDir().then((filePath) => {
 
 deleteStorage(path: string): Promise&lt;void&gt;
 
-Deletes the singleton **Storage** instance of a file from the memory, and deletes the specified file, its backup file, and damaged files. After the specified files are deleted, the **Storage** instance cannot be used for data operations. Otherwise, data inconsistency will occur. This API uses a promise to return the result.
+Removes the Storage singleton instance corresponding to the specified file from the memory, and deletes the specified file as well as its backup and corrupted files. When the specified file is deleted, the application is not allowed to use this instance for data operations; otherwise, data consistency issues may occur. This API uses a promise to return the result and is an asynchronous method.
 
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -930,5 +931,5 @@ Enumerates the value types.
 | Type   | Description                |
 | ------- | -------------------- |
 | number  | The value is a number.  |
-| string  | The value is a string.  |
+| string  | The value type is a string.   |
 | boolean | The value is of Boolean type.|

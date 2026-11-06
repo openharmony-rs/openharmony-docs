@@ -32,12 +32,12 @@
 | end | &lt;time&gt; | 0 | 否 | 设置动效多久时间后结束。支持输入ms(毫秒)、s（秒）、m（分），默认为s(秒)，其他格式不支持。 |
 | repeatCount | &lt;number&nbsp;\|&nbsp;indefinite&gt; | indefinite | 否 | 设置动画播放的次数，默认无限次播放(indefinite)，可通过设置为数值1仅播放一次。 |
 | fill | &lt;freeze&nbsp;\|&nbsp;remove&gt; | remove | 否 | 设置动画结束时的状态。 |
-| calcMode | &lt;discrete&nbsp;\|&nbsp;linear&nbsp;\|&nbsp;paced&nbsp;\|&nbsp;spline&gt; | linear | 否 | 设置动画的插值模式。<br/>discrete：阶跃，from值直接跳转到to的值；<br/>linear：线性；<br/>paced：线性，设置此项后keyTimes和keyPoints值无效；<br/>spline：自定义贝塞尔曲线，spline点定义在keyTimes属性中，每个时间间隔控制点由keySplines定义。 |
+| calcMode | &lt;discrete&nbsp;\|&nbsp;linear&nbsp;\|&nbsp;paced&nbsp;\|&nbsp;spline&gt; | linear | 否 | 设置动画的插值模式。<br/>discrete：阶跃，from值直接跳转到to的值；<br/>linear：线性；<br/>paced：匀速，设置此项后keyTimes和keySplines值无效；<br/>spline：自定义贝塞尔曲线，spline点定义在keyTimes属性中，每个时间间隔控制点由keySplines定义。 |
 | keyTimes | string | - | 否 | 设置关键帧动画的开始时间，值为0~1之间的数值用分号隔开，比如0;0.3;0.8;1。keyTimes、keySplines、values组合设置关键帧动画。keyTimes和values的个数保持一致。keySplines个数为keyTimes个数减一。 |
 | keySplines | string | - | 否 | 与keyTimes相关联的一组贝塞尔控制点。定义每个关键帧的贝塞尔曲线，曲线之间用分号隔开。曲线内的两个控制点格式为x1&nbsp;y1&nbsp;x2&nbsp;y2。比如0.5&nbsp;0&nbsp;0.5&nbsp;1;&nbsp;0.5&nbsp;0&nbsp;0.5&nbsp;1;0.5&nbsp;0&nbsp;0.5&nbsp;1 |
 | by | number | - | 否 | 在动画中对某一指定属性，添加相对偏移值，from默认为原属性值。 |
 | from | string | - | 否 | 设置需要进行动画的属性的开始值。<br/>如果已经设置了values属性，则from失效。 |
-| to | string | - | 否 | 设置需要进行动画的属性的结束值。<br/>如果已经设置了values属性，则to都失效。 |
+| to | string | - | 否 | 设置需要进行动画的属性的结束值。<br/>如果已经设置了values属性，则to失效。 |
 | values | string | - | 否 | 设置一组动画的变化值。格式为value1;value2;value3。 |
 
 
@@ -121,4 +121,4 @@
 ```
 
 
-![zh-cn_image_0000001127125126](figures/zh-cn_image_0000001127125126.gif)
+![Repeating-image](figures/Repeating-image.gif)

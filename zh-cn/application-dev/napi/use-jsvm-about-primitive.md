@@ -1,10 +1,18 @@
-# 使用JSVM-API接口进行primitive类相关开发
-<!--Kit: NDK Development-->
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何使用JSVM-API将JavaScript值强制转换为布尔、数值、对象或字符串，以及获取Boolean、null、undefined和全局对象等特殊值。"
+keywords: [OH_JSVM_CoerceToBool, OH_JSVM_CoerceToNumber, OH_JSVM_CoerceToObject, OH_JSVM_CoerceToString, OH_JSVM_GetBoolean, OH_JSVM_GetNull, OH_JSVM_GetUndefined, OH_JSVM_GetGlobal, 强制转换]
+doctype: guide
+status: active
+---
+
+# 使用JSVM-API接口进行primitive类型相关开发
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -40,11 +48,14 @@ JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开�
 
 cpp 部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_coerce_to_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetobool/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_CoerceToBool的样例方法
 static JSVM_Value CoerceToBool(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -72,9 +83,8 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"coerceToBool", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(coerceToBool("123"))JS";
+const char *SRC_CALL_NATIVE = R"JS(coerceToBool("123"))JS";
 ```
-<!-- @[oh_jsvm_coerce_to_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetobool/src/main/cpp/hello.cpp) -->
 
 预期结果：
 ```txt
@@ -87,11 +97,14 @@ JSVM OH_JSVM_CoerceToBool success:1
 
 cpp 部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_coerce_to_number](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetonumber/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
+#include "hilog/log.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+// ...
+
 // OH_JSVM_CoerceToNumber的样例方法
 static JSVM_Value CoerceToNumber(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -119,9 +132,8 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"coerceToNumber", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(coerceToNumber(true))JS";
+const char *SRC_CALL_NATIVE = R"JS(coerceToNumber(true))JS";
 ```
-<!-- @[oh_jsvm_coerce_to_number](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetonumber/src/main/cpp/hello.cpp) -->
 
 预期结果：
 ```txt
@@ -134,11 +146,14 @@ JSVM OH_JSVM_CoerceToNumber success:1
 
 cpp 部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_coerce_to_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetoobject/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_CoerceToObject的样例方法
 static JSVM_Value CoerceToObject(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -165,9 +180,8 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"coerceToObject", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(coerceToObject(123))JS";
+const char *SRC_CALL_NATIVE = R"JS(coerceToObject(123))JS";
 ```
-<!-- @[oh_jsvm_coerce_to_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetoobject/src/main/cpp/hello.cpp) -->
 
 预期结果：
 ```txt
@@ -180,11 +194,14 @@ JSVM OH_JSVM_CoerceToObject success
 
 cpp 部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_coerce_to_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetostring/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_CoerceToString的样例方法
 static JSVM_Value CoerceToString(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -211,9 +228,8 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"coerceToString", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(coerceToString(22222))JS";
+const char *SRC_CALL_NATIVE = R"JS(coerceToString(22222))JS";
 ```
-<!-- @[oh_jsvm_coerce_to_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetostring/src/main/cpp/hello.cpp) -->
 
 预期结果：
 ```txt
@@ -226,11 +242,14 @@ JSVM OH_JSVM_CoerceToString success
 
 cpp 部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_boolean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getboolean/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_GetBoolean的样例方法
 static JSVM_Value GetBoolean(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -269,10 +288,9 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"getBoolean", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(getBoolean(1, 2);
-                                 getBoolean(1, 1))JS";
+const char *SRC_CALL_NATIVE = R"JS(getBoolean(1, 2);
+                                   getBoolean(1, 1);)JS";
 ```
-<!-- @[oh_jsvm_get_boolean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getboolean/src/main/cpp/hello.cpp) -->
 
 预期结果：
 ```txt
@@ -287,11 +305,14 @@ JSVM OH_JSVM_GetBoolean success:1
 
 cpp 部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_value_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getvaluebool/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_GetValueBool的样例方法
 static JSVM_Value GetValueBool(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -300,7 +321,7 @@ static JSVM_Value GetValueBool(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     bool result = false;
     JSVM_Status status = OH_JSVM_GetValueBool(env, args[0], &result);
-    if (status != JSVM_OK) {
+    if (status == JSVM_BOOLEAN_EXPECTED || status != JSVM_OK) {
         // 如果OH_JSVM_GetValueBool成功会返回JSVM_OK，如果传入一个非布尔值则会返回JSVM_BOOLEAN_EXPECTED
         OH_LOG_ERROR(LOG_APP, "JSVM OH_JSVM_GetValueBool fail:%{public}d", status);
         return nullptr;
@@ -321,11 +342,10 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"getValueBool", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(getValueBool("abc");
-                                getValueBool(true);
-                                getValueBool(false);)JS";
+const char *SRC_CALL_NATIVE = R"JS(getValueBool("abc");
+                                   getValueBool(true);
+                                   getValueBool(false);)JS";
 ```
-<!-- @[oh_jsvm_get_value_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getvaluebool/src/main/cpp/hello.cpp) -->
 
 预期结果：
 ```txt
@@ -340,11 +360,14 @@ JSVM OH_JSVM_GetValueBool success:0
 
 cpp 部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getglobal/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_GetGlobal的样例方法
 static JSVM_Value GetGlobal(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -371,9 +394,8 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"getGlobal", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(getGlobal())JS";
+const char *SRC_CALL_NATIVE = R"JS(getGlobal())JS";
 ```
-<!-- @[oh_jsvm_get_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getglobal/src/main/cpp/hello.cpp) -->
 
 预期结果：
 ```txt
@@ -386,13 +408,17 @@ JSVM OH_JSVM_GetGlobal success
 
 cpp 部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_null](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getnull/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_GetNull的样例方法
-static JSVM_Value GetNull(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value GetNull(JSVM_Env env, JSVM_CallbackInfo info)
+{
     JSVM_Value nullValue = nullptr;
     JSVM_Status status = OH_JSVM_GetNull(env, &nullValue);
     if (status != JSVM_OK) {
@@ -412,11 +438,10 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"getNull", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(getNull())JS";
+const char *SRC_CALL_NATIVE = R"JS(getNull())JS";
 ```
-<!-- @[oh_jsvm_get_null](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getnull/src/main/cpp/hello.cpp) -->
 
-预期结果:
+预期结果：
 ```txt
 JSVM OH_JSVM_GetNull success
 ```
@@ -427,11 +452,14 @@ JSVM OH_JSVM_GetNull success
 
 cpp 部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getundefined/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_GetUndefined的样例方法
 static JSVM_Value GetUndefined(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -459,11 +487,10 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"getUndefined", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(getUndefined())JS";
+const char *SRC_CALL_NATIVE = R"JS(getUndefined())JS";
 ```
-<!-- @[oh_jsvm_get_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getundefined/src/main/cpp/hello.cpp) -->
 
-预期结果:
+预期结果：
 ```txt
 JSVM OH_JSVM_GetUndefined success
 ```

@@ -1,10 +1,10 @@
 # libuv
 <!--Kit: NDK Development-->
 <!--Subsystem: Developtools-->
-<!--Owner: @fu-yongyong-->
-<!--Designer: @huangke11-->
+<!--Owner: @fileVerify-->
+<!--Designer: @StringChen-->
 <!--Tester: @liuhaonan2-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 ## 简介
 
 [libuv](http://libuv.org/)是一个跨平台库，基于事件驱动来实现异步I/O，适用于网络编程和文件系统操作。它是Node.js的核心库之一，也被其他语言的开发者广泛使用。
@@ -315,7 +315,7 @@ static napi_value TestClose(napi_env env, napi_callback_info info)
             int value = 10;
             int ret = eventfd_write(fd, value);
             if (ret == -1){
-                OH_LOG_INFO(LOG_APP, "write failed!");
+                OH_LOG_ERROR(LOG_APP, "write failed!");
                 continue;
             }
         }
@@ -443,7 +443,7 @@ static napi_value TestClose(napi_env env, napi_callback_info info)
             int value = 10;
             int ret = eventfd_write(fd, value);
             if (ret == -1){
-                OH_LOG_INFO(LOG_APP, "write failed!");
+                OH_LOG_ERROR(LOG_APP, "write failed!");
                 continue;
             }
         }
@@ -489,7 +489,7 @@ libhilog_ndk.z.so
 
 ## libuv使用指导
 
-**重要：libuv NDK中所有依赖`uv_run`的接口在当前系统的应用主循环中无法及时生效，并且可能会导致卡顿掉帧的现象。因此不建议直接在JS主线程上使用libuv NDK接口，对于异步任务执行及与使用线程安全函数与主线程通信，开发者可以直接调用Node-API接口来实现相关功能。**
+**重要：libuv NDK中所有依赖`uv_run`的接口在当前系统的应用主循环中无法及时生效，并且可能会导致卡顿掉帧的现象。因此不建议直接在JS主线程上使用libuv NDK接口，对于异步任务执行及使用线程安全函数与主线程通信，开发者可以直接调用Node-API接口来实现相关功能。**
 
 ### libuv接口与Node-API接口对应关系
 
@@ -614,21 +614,21 @@ napi_status napi_release_threadsafe_function(napi_threadsafe_function function,
 
 |  接口类型    |  接口汇总    |
 | ---- | ---- |
-|   [loop概念及相关接口](#libuv中的事件循环)   |  uv_loop_init    |
-|   [loop概念及相关接口](#libuv中的事件循环)   |   uv_loop_close   |
-|   [loop概念及相关接口](#libuv中的事件循环)   |  uv_default_loop    |
-|   [loop概念及相关接口](#libuv中的事件循环)   |   uv_run   |
-|   [loop概念及相关接口](#libuv中的事件循环)   |    uv_loop_alive  |
-|   [loop概念及相关接口](#libuv中的事件循环)   |  uv_stop    |
-|   [Handle概念及相关接口](#libuv中的handles和requests)   |  uv_poll\_\* |
-|   [Handle概念及相关接口](#libuv中的handles和requests)   |  uv_timer\_\* |
-|   [Handle概念及相关接口](#libuv中的handles和requests)   |  uv_async\_\* |
-|   [Handle概念及相关接口](#libuv中的handles和requests)   |   uv_signal\_\*   |
-|   [Handle概念及相关接口](#libuv中的handles和requests)   |   uv_fs\_\*  |
-|   [Request概念及相关接口](#libuv中的handles和requests)   |  uv_random    |
-|   [Request概念及相关接口](#libuv中的handles和requests)   |  uv_getaddrinfo    |
-|   [Request概念及相关接口](#libuv中的handles和requests)   |  uv_getnameinfo    |
-|   [Request概念及相关接口](#libuv中的handles和requests)   |  uv_queue_work    |
+|   [libuv中的事件循环概念及相关接口](#libuv中的事件循环)   |  uv_loop_init    |
+|   [libuv中的事件循环概念及相关接口](#libuv中的事件循环)   |   uv_loop_close   |
+|   [libuv中的事件循环概念及相关接口](#libuv中的事件循环)   |  uv_default_loop    |
+|   [libuv中的事件循环概念及相关接口](#libuv中的事件循环)   |   uv_run   |
+|   [libuv中的事件循环概念及相关接口](#libuv中的事件循环)   |    uv_loop_alive  |
+|   [libuv中的事件循环概念及相关接口](#libuv中的事件循环)   |  uv_stop    |
+|   [libuv中的handles和requests概念及相关接口](#libuv中的handles和requests)   |  uv_poll\_\* |
+|   [libuv中的handles和requests概念及相关接口](#libuv中的handles和requests)   |  uv_timer\_\* |
+|   [libuv中的handles和requests概念及相关接口](#libuv中的handles和requests)   |  uv_async\_\* |
+|   [libuv中的handles和requests概念及相关接口](#libuv中的handles和requests)   |   uv_signal\_\*   |
+|   [libuv中的handles和requests概念及相关接口](#libuv中的handles和requests)   |   uv_fs\_\*  |
+|   [libuv中的handles和requests概念及相关接口](#libuv中的handles和requests)   |  uv_random    |
+|   [libuv中的handles和requests概念及相关接口](#libuv中的handles和requests)   |  uv_getaddrinfo    |
+|   [libuv中的handles和requests概念及相关接口](#libuv中的handles和requests)   |  uv_getnameinfo    |
+|   [libuv中的handles和requests概念及相关接口](#libuv中的handles和requests)   |  uv_queue_work    |
 |   [线程间通信原理及相关接口](#线程间通信)   |  uv_async_init    |
 |   [线程间通信原理及相关接口](#线程间通信)   |  uv_async_send    |
 |   [线程池概念及相关接口](#线程池)   |  uv_queue_work    |
@@ -639,7 +639,7 @@ napi_status napi_release_threadsafe_function(napi_threadsafe_function function,
 
 **1. 开发者创建loop**
 
-开发者可以通过调用`uv_loop_new`创建loop或者`uv_loop_init`接口初始化loop，loop的生命周期由开发者自行维护。在这种情况下，如前文所述，需要保证`uv_run`执行在与创建/初始化loop操作相同的线程上，即loop线程上。此外，其余非线程安全操作，如timer相关操作等，均需要在loop线程上进行。 
+开发者可以通过调用`uv_loop_init`接口初始化loop，loop的生命周期由开发者自行维护（如果使用`uv_loop_new`创建loop，失败时会只返回空指针，而`uv_loop_init`接口初始化loop失败时会返回错误码，详见[libuv的错误码](#libuv的错误码)，提示开发者获取错误原因）。在这种情况下，如前文所述，需要保证`uv_run`执行在与创建/初始化loop操作相同的线程上，即loop线程上。此外，其余非线程安全操作，如timer相关操作等，均需要在loop线程上进行。 
 
 如果因为业务需要，必须在其他线程往loop线程抛任务，请使用`uv_async_send`函数：即在async句柄初始化时，注册一个回调函数，并在该回调中实现相应的操作，当调用`uv_async_send`时，在主线程上执行该回调函数。
 
@@ -839,7 +839,7 @@ export const testTimerAsyncSend:() => number;
 
 **提示：所有形如uv_xxx_init的函数，即使它是以线程安全的方式实现的，但使用时要注意，避免多个线程同时调用uv_xxx_init，否则它依旧会引起多线程资源竞争的问题。最好的方式是在事件循环线程中调用该函数。**
 
-**注：`uv_async_send`函数被调用后，回调函数是被异步触发的。如果调用了多次`uv_async_send`，libuv只保证至少有一次回调会被执行。这就可能导致一旦对同一句柄触发了多次`uv_async_send`，libuv对回调的处理可能会违背开发者的预期。多次对同一个async句柄进行send操作，还会导致任意两次相同句柄send操作之间提交的的其他async_cb任务丢失。** 而在Native侧，可以保证回调的执行次数和开发者调用`napi_call_threadsafe_function`的次数保持一致。
+**注：`uv_async_send`函数被调用后，回调函数是被异步触发的。如果调用了多次`uv_async_send`，libuv只保证至少有一次回调会被执行。这就可能导致一旦对同一句柄触发了多次`uv_async_send`，libuv对回调的处理可能会违背开发者的预期。多次对同一个async句柄进行send操作，还会导致任意两次相同句柄send操作之间提交的其他async_cb任务丢失。** 而在Native侧，可以保证回调的执行次数和开发者调用`napi_call_threadsafe_function`的次数保持一致。
 
 非线程安全函数：
 
@@ -1228,7 +1228,8 @@ int uv_async_send(uv_async_t* handle)
   handle：线程间通信句柄。
 
   返回：成功，返回0。失败，返回错误码。
-> 说明
+
+> **说明：**
 >
 > 1. uv_async_t从调用`uv_async_init`开始后就一直处于活跃状态，除非用`uv_close`将其关闭。
 >
@@ -1561,3 +1562,22 @@ int uv_getnameinfo(uv_loop_t* loop,
 - check句柄
 - signal相关函数
 - tcp及udp相关函数
+
+### libuv的错误码
+
+**uv_loop_init的错误码**
+|    返回值    |    数值    |    含义    |
+| ---- | ---- | ---- |
+| 0 | 0 | 成功 |
+| UV_ENOMEM | -4057 | not enough memory(内存分配失败) |
+| UV_EMFILE | -4066 | too many open files(进程fd耗尽) |
+| UV_ENFILE | -4061 | file table overflow(系统fd耗尽) |
+| UV_EINVAL | -4071 | invalid argument(无效参数) |
+| UV_EAGAIN | -4088 | resource temporarily unavailable(资源暂不可用) |
+| UV_EBUSY | -4082 | resource busy or locked(资源被占用)|
+
+
+所有错误码宏的完整定义位于SDK的errno.h头文件中，可在本地SDK目录下查看，路径形如：
+```cpp
+{SDK路径}/native/sysroot/usr/include/uv/errno.h
+```

@@ -1,10 +1,11 @@
 # option
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Armstrong15-->
+<!--Owner: @H-xinwei-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=0e195b413ac684e2f8f44c9b887d66d23c5fa72f translatedAt=2026-06-22T03:29:24.792Z pushedAt=2026-06-22T06:56:44.532Z -->
 
 >  **NOTE**
 >

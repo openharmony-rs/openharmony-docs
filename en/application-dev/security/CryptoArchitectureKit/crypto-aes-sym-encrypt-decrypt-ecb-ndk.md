@@ -6,10 +6,12 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=46f376840bb109627bf28285f322dc923bd64d9c translatedAt=2026-07-29T04:49:32.177Z pushedAt=2026-07-29T06:51:48.780Z -->
 
 For details about the algorithm specifications, see [AES](crypto-sym-encrypt-decrypt-spec.md#aes).
 
 ## Adding the Dynamic Library in the CMake Script
+
 ```txt
 target_link_libraries(entry PUBLIC libohcrypto.so)
 ```
@@ -19,22 +21,22 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 **Creating an Object**
 
 Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_create) and [OH_CryptoSymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_generate) to generate a symmetric key (**OH_CryptoSymKey**) with the key algorithm being AES and the key length being 128 bits.
-   
+
    In addition to the example in this topic, [AES](crypto-sym-key-generation-conversion-spec.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly-ndk.md) may help you better understand how to generate an AES symmetric key. Note that the input parameters in the reference documents may be different from those in the example below.
 
-**Encrypting a Message**
+**Encryption**
 
 1. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create) with the string parameter **'AES128|ECB|PKCS7'** to create a **Cipher** instance for encryption. The symmetric key type is **AES128**, block cipher mode is **ECB**, and the padding mode is **PKCS7**.
 
-2. Call [OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init) to initialize the **Cipher** instance. Specifically, set **mode** to **CRYPTO_ENCRYPT_MODE**, and specify the key for encryption (**OH_CryptoSymKey**).
+2. Call [OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init), set the mode to encryption (CRYPTO_ENCRYPT_MODE), specify the encryption key (OH_CryptoSymKey), and initialize the Cipher instance for encryption. ECB mode requires no additional encryption parameters; create an empty parameter object and pass it in.
 
 3. If the content to be encrypted is short, call [OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final) to obtain the encrypted data, without calling [OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update).
 
-**Decrypting a Message**
+**Decryption**
 
 1. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create) with the string parameter **'AES128|ECB|PKCS7'** to create a **Cipher** instance for decryption. The symmetric key type is **AES128**, block cipher mode is **ECB**, and the padding mode is **PKCS7**.
 
-2. Call [OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init) to initialize the **Cipher** instance. Specifically, set **mode** to **CRYPTO_DECRYPT_MODE**, and specify the key for decryption (**OH_CryptoSymKey**).
+2. Call [OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init), set the mode to decryption (CRYPTO_DECRYPT_MODE), specify the decryption key (OH_CryptoSymKey), and initialize the Cipher instance for decryption. ECB mode requires no additional encryption parameters; create an empty parameter object and pass it in.
 
 3. If the content to be decrypted is short, call [OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final) to obtain the decrypted data, without calling [OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update).
 

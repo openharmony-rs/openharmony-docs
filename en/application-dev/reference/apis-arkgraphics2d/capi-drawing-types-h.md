@@ -1,14 +1,16 @@
 # drawing_types.h
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=e8888f7e3ce1e37673dc5a840869f0dbe280bd6a translatedAt=2026-08-24T09:03:21.930Z pushedAt=2026-08-31T11:31:10.154Z -->
 
 ## Overview
 
-This file declares the data types of the canvas, brush, pen, bitmap, and path used to draw 2D graphics.
+The file defines the data types used for drawing 2D graphics, including canvas, brush, paint, bitmap, and path. These data types provide 2D graphics drawing capabilities and are suitable for scenarios where you need to bind a brush and paint to a canvas to draw various shapes, images, and text. They allow you to flexibly define paths and bitmaps, helping developers efficiently implement custom graphics drawing, image processing, and other functions to meet complex 2D graphics drawing requirements.<br>This module uses a single-thread model. The caller must manage thread safety and context state switching.
 
 **File to include**: <native_drawing/drawing_types.h>
 
@@ -48,7 +50,7 @@ This file declares the data types of the canvas, brush, pen, bitmap, and path us
 | [OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md) | OH_Drawing_RoundRect | Defines a struct for a rounded rectangle.|
 | [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md) | OH_Drawing_Matrix | Defines a struct for a matrix, which is used to describe coordinate transformation.|
 | [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md) | OH_Drawing_ShaderEffect | Defines a struct for a shader effect, which is used to describe the source color of the drawn content.|
-| [OH_Drawing_ShadowLayer](capi-drawing-oh-drawing-shadowlayer.md) | OH_Drawing_ShadowLayer | Defines a struct for a shadow, which is used to describe the shadow layer of the drawn content.|
+| [OH_Drawing_ShadowLayer](capi-drawing-oh-drawing-shadowlayer.md) | OH_Drawing_ShadowLayer | Defines a shadow layer that describes the shadow effect of the drawn content. |
 | [OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md) | OH_Drawing_Filter | Defines a struct for a filter, which consists of a color filter, mask filter, and image filter.|
 | [OH_Drawing_MaskFilter](capi-drawing-oh-drawing-maskfilter.md) | OH_Drawing_MaskFilter | Defines a struct for a mask filter.|
 | [OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md) | OH_Drawing_ColorFilter | Defines a struct for a color filter, which is used to convert a color into a new one.|
@@ -59,16 +61,16 @@ This file declares the data types of the canvas, brush, pen, bitmap, and path us
 | [OH_Drawing_Typeface](capi-drawing-oh-drawing-typeface.md) | OH_Drawing_Typeface | Defines a struct for a typeface.|
 | [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md) | OH_Drawing_TextBlob | Defines a struct for a text blob, an immutable container that holds multiple texts. Each text blob consists of glyphs and position.|
 | [OH_Drawing_Image](capi-drawing-oh-drawing-image.md) | OH_Drawing_Image | Defines a struct for an image that describes a two-dimensional pixel array.|
-| [OH_Drawing_ImageFilter](capi-drawing-oh-drawing-imagefilter.md) | OH_Drawing_ImageFilter | Defines a struct for an image filter, which is used to operate all color bits that make up image pixels.|
+| [OH_Drawing_ImageFilter](capi-drawing-oh-drawing-imagefilter.md) | OH_Drawing_ImageFilter | Defines an image filter that operates on all color bits of the pixels that make up an image. |
 | [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md) | OH_Drawing_SamplingOptions | Defines a struct for sampling options, which describe the sampling methods for images and bitmaps.|
 | [OH_Drawing_TextBlobBuilder](capi-drawing-oh-drawing-textblobbuilder.md) | OH_Drawing_TextBlobBuilder | Defines a struct for a text blob builder, which is used to build a text blob.|
 | [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md) | OH_Drawing_GpuContext | Defines a struct for the GPU context, which is used to describe the GPU backend context.|
 | [OH_Drawing_Surface](capi-drawing-oh-drawing-surface.md) | OH_Drawing_Surface | Defines a struct for a surface, which is used to manage the content drawn on the canvas.|
-| [OH_Drawing_FontMgr](capi-drawing-oh-drawing-fontmgr.md) | OH_Drawing_FontMgr | Defines a struct for the font manager, which is used for font management.|
-| [OH_Drawing_FontStyleSet](capi-drawing-oh-drawing-fontstyleset.md) | OH_Drawing_FontStyleSet | Defines a struct for a font style set, which is used for font style family matching.|
+| [OH_Drawing_FontMgr](capi-drawing-oh-drawing-fontmgr.md) | OH_Drawing_FontMgr | Defines a font manager for font management. |
+| [OH_Drawing_FontStyleSet](capi-drawing-oh-drawing-fontstyleset.md) | OH_Drawing_FontStyleSet | Defines a font style set for matching font style families. |
 | [OH_Drawing_RecordCmdUtils](capi-drawing-oh-drawing-recordcmdutils.md) | OH_Drawing_RecordCmdUtils | Defines the recording command tool, which is used to generate recording commands.|
-| [OH_Drawing_RecordCmd](capi-drawing-oh-drawing-recordcmd.md) | OH_Drawing_RecordCmd | Defines the recording command class, which is used to store the set of recording commands.|
-| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) | OH_Drawing_Array | Defines a struct for an array object, which is used to store multiple objects of the same type.|
+| [OH_Drawing_RecordCmd](capi-drawing-oh-drawing-recordcmd.md) | OH_Drawing_RecordCmd | Defines a recording command class for storing a collection of recording commands. |
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) | OH_Drawing_Array | Defines an array object for storing multiple objects of the same type. |
 
 ### Enumerated value
 
@@ -118,8 +120,8 @@ Defines an enum for the alpha formats of bitmap pixels.
 | -- | -- |
 | ALPHA_FORMAT_UNKNOWN | Unknown format.|
 | ALPHA_FORMAT_OPAQUE | The bitmap does not have the alpha component.|
-| ALPHA_FORMAT_PREMUL | The color component of each pixel is premultiplied by the alpha component.|
-| ALPHA_FORMAT_UNPREMUL | The color component of each pixel is not premultiplied by the alpha component.|
+| ALPHA_FORMAT_PREMUL | The color component of each pixel is premultiplied by the alpha component. |
+| ALPHA_FORMAT_UNPREMUL | The color component of each pixel is not premultiplied by the alpha component. |
 
 ### OH_Drawing_BlendMode
 
@@ -150,20 +152,20 @@ Defines an enum for blend modes. In blend mode, each operation generates a new c
 | BLEND_MODE_PLUS | r = min(s + d, 1).|
 | BLEND_MODE_MODULATE | r = s * d.|
 | BLEND_MODE_SCREEN | Screen mode. r = s + d - s * d.|
-| BLEND_MODE_OVERLAY | Overlay mode.|
+| BLEND_MODE_OVERLAY | Overlay mode. Selectively applies the MULTIPLY or SCREEN mode based on the brightness of the target pixel to enhance contrast. |
 | BLEND_MODE_DARKEN | Darken mode. rc = s + d - max(s * da, d * sa), ra = s + (1 - sa) * d.|
 | BLEND_MODE_LIGHTEN | Lighten mode. rc = rc = s + d - min(s * da, d * sa), ra = s + (1 - sa) * d.|
-| BLEND_MODE_COLOR_DODGE | Color dodge mode.|
-| BLEND_MODE_COLOR_BURN | Color burn mode.|
-| BLEND_MODE_HARD_LIGHT | Hard light mode.|
-| BLEND_MODE_SOFT_LIGHT | Soft light mode.|
+| BLEND_MODE_COLOR_DODGE | Color dodge mode. Brightens the target pixel to reflect the source pixel by reducing contrast. |
+| BLEND_MODE_COLOR_BURN | Color burn mode. Darkens the target pixel to reflect the source pixel by increasing contrast. |
+| BLEND_MODE_HARD_LIGHT | Hard light mode. Selectively applies the MULTIPLY or SCREEN mode based on the brightness of the source pixel. |
+| BLEND_MODE_SOFT_LIGHT | Soft light mode. Softly brightens or darkens the target pixel based on the brightness of the source pixel. |
 | BLEND_MODE_DIFFERENCE | Difference mode. rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d.|
 | BLEND_MODE_EXCLUSION | Exclusion mode. rc = s + d - two(s * d), ra = s + (1 - sa) * d.|
 | BLEND_MODE_MULTIPLY | Multiply mode. r = s * (1 - da) + d * (1 - sa) + s * d.|
-| BLEND_MODE_HUE | Hue mode.|
-| BLEND_MODE_SATURATION | Saturation mode.|
-| BLEND_MODE_COLOR | Color mode.|
-| BLEND_MODE_LUMINOSITY | Luminosity mode.|
+| BLEND_MODE_HUE | Hue mode. Uses the hue of the source pixel and the saturation and brightness of the target pixel. |
+| BLEND_MODE_SATURATION | Saturation mode. Uses the saturation of the source pixel and the hue and brightness of the target pixel. |
+| BLEND_MODE_COLOR | Color mode. Uses the hue and saturation of the source pixel and the brightness of the target pixel. |
+| BLEND_MODE_LUMINOSITY | Luminosity mode. Uses the brightness of the source pixel and the hue and saturation of the target pixel. |
 
 ### OH_Drawing_TextEncoding
 

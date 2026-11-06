@@ -1,10 +1,11 @@
 # @ohos.enterprise.networkManager (Network Management) (System API)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=716304dd0f214493c61a62f4ca83a3f10fd2771c translatedAt=2026-11-03T05:16:03.953Z pushedAt=2026-11-03T12:08:25.539Z nl=1 -->
 
 The **networkManager** module provides APIs for network management of enterprise devices, including obtaining the device IP address and MAC address.
 
@@ -14,7 +15,7 @@ The **networkManager** module provides APIs for network management of enterprise
 >
 > The APIs of this module can be used only in the stage model.
 >
-> The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
+> The APIs of this module are available only to the [MDM application](../../mdm/mdm-kit-term.md#mdm-app), and can be called only after the device administrator application is activated via [enableAdmin](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
 > 
 > This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.networkManager](js-apis-enterprise-networkManager.md).
 
@@ -24,11 +25,15 @@ The **networkManager** module provides APIs for network management of enterprise
 import { networkManager } from '@kit.MDMKit';
 ```
 
-## networkManager.getAllNetworkInterfaces
+## networkManager.getAllNetworkInterfaces<sup>(deprecated)</sup>
 
 getAllNetworkInterfaces(admin: Want, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 Obtains all activated wired network interfaces. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [getAllNetworkInterfacesSync](./js-apis-enterprise-networkManager.md#networkmanagergetallnetworkinterfacessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
@@ -78,11 +83,15 @@ networkManager.getAllNetworkInterfaces(wantTemp, (err, result) => {
 });
 ```
 
-## networkManager.getAllNetworkInterfaces
+## networkManager.getAllNetworkInterfaces<sup>(deprecated)</sup>
 
 getAllNetworkInterfaces(admin: Want): Promise&lt;Array&lt;string&gt;&gt;
 
 Obtains all activated wired network interfaces. This API uses a promise to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [getAllNetworkInterfacesSync](./js-apis-enterprise-networkManager.md#networkmanagergetallnetworkinterfacessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
@@ -136,11 +145,15 @@ networkManager.getAllNetworkInterfaces(wantTemp).then((result) => {
 });
 ```
 
-## networkManager.getIpAddress
+## networkManager.getIpAddress<sup>(deprecated)</sup>
 
 getIpAddress(admin: Want, networkInterface: string, callback: AsyncCallback&lt;string&gt;): void
 
 Obtains the device IP address based on the network interface. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [getIpAddressSync](./js-apis-enterprise-networkManager.md#networkmanagergetipaddresssync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
@@ -192,11 +205,15 @@ networkManager.getIpAddress(wantTemp, 'eth0', (err, result) => {
 });
 ```
 
-## networkManager.getIpAddress
+## networkManager.getIpAddress<sup>(deprecated)</sup>
 
 getIpAddress(admin: Want, networkInterface: string): Promise&lt;string&gt;
 
 Obtains the device IP address based on the network interface. This API uses a promise to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [getIpAddressSync](./js-apis-enterprise-networkManager.md#networkmanagergetipaddresssync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
@@ -252,11 +269,15 @@ networkManager.getIpAddress(wantTemp, 'eth0').then((result) => {
 });
 ```
 
-## networkManager.getMac
+## networkManager.getMac<sup>(deprecated)</sup>
 
 getMac(admin: Want, networkInterface: string, callback: AsyncCallback&lt;string&gt;): void
 
 Obtains the MAC address of a device based on the network interface. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [getMacSync](./js-apis-enterprise-networkManager.md#networkmanagergetmacsync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
@@ -308,11 +329,15 @@ networkManager.getMac(wantTemp, 'eth0', (err, result) => {
 });
 ```
 
-## networkManager.getMac
+## networkManager.getMac<sup>(deprecated)</sup>
 
 getMac(admin: Want, networkInterface: string): Promise\<string>
 
 Obtains the MAC address of a device based on the network interface. This API uses a promise to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [getMacSync](./js-apis-enterprise-networkManager.md#networkmanagergetmacsync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
@@ -368,11 +393,15 @@ networkManager.getMac(wantTemp, 'eth0').then((result) => {
 });
 ```
 
-## networkManager.isNetworkInterfaceDisabled
+## networkManager.isNetworkInterfaceDisabled<sup>(deprecated)</sup>
 
 isNetworkInterfaceDisabled(admin: Want, networkInterface: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 Queries whether a specified network interface is disabled. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [isNetworkInterfaceDisabledSync](./js-apis-enterprise-networkManager.md#networkmanagerisnetworkinterfacedisabledsync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
@@ -424,11 +453,15 @@ networkManager.isNetworkInterfaceDisabled(wantTemp, 'eth0', (err, result) => {
 });
 ```
 
-## networkManager.isNetworkInterfaceDisabled
+## networkManager.isNetworkInterfaceDisabled<sup>(deprecated)</sup>
 
 isNetworkInterfaceDisabled(admin: Want, networkInterface: string): Promise&lt;boolean&gt;
 
 Queries whether a specified network interface is disabled. This API uses a promise to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [isNetworkInterfaceDisabledSync](./js-apis-enterprise-networkManager.md#networkmanagerisnetworkinterfacedisabledsync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
@@ -484,11 +517,15 @@ networkManager.isNetworkInterfaceDisabled(wantTemp, 'eth0').then((result) => {
 });
 ```
 
-## networkManager.setNetworkInterfaceDisabled
+## networkManager.setNetworkInterfaceDisabled<sup>(deprecated)</sup>
 
 setNetworkInterfaceDisabled(admin: Want, networkInterface: string, isDisabled: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 Disables a network interface. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [setNetworkInterfaceDisabledSync](./js-apis-enterprise-networkManager.md#networkmanagersetnetworkinterfacedisabledsync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_NETWORK
 
@@ -541,11 +578,15 @@ networkManager.setNetworkInterfaceDisabled(wantTemp, 'eth0', true, (err) => {
 });
 ```
 
-## networkManager.setNetworkInterfaceDisabled
+## networkManager.setNetworkInterfaceDisabled<sup>(deprecated)</sup>
 
 setNetworkInterfaceDisabled(admin: Want, networkInterface: string, isDisabled: boolean): Promise&lt;void&gt;
 
 Disables a network interface. This API uses a promise to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [setNetworkInterfaceDisabledSync](./js-apis-enterprise-networkManager.md#networkmanagersetnetworkinterfacedisabledsync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_NETWORK
 
@@ -602,11 +643,15 @@ networkManager.setNetworkInterfaceDisabled(wantTemp, 'eth0', true).then(() => {
 });
 ```
 
-## networkManager.setGlobalProxy
+## networkManager.setGlobalProxy<sup>(deprecated)</sup>
 
 setGlobalProxy(admin: Want, httpProxy: connection.HttpProxy, callback: AsyncCallback\<void>): void
 
 Sets the global network proxy. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [setGlobalProxySync](./js-apis-enterprise-networkManager.md#networkmanagersetglobalproxysync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -667,11 +712,15 @@ networkManager.setGlobalProxy(wantTemp, httpProxy, (err) => {
 });
 ```
 
-## networkManager.setGlobalProxy
+## networkManager.setGlobalProxy<sup>(deprecated)</sup>
 
 setGlobalProxy(admin: Want, httpProxy: connection.HttpProxy): Promise\<void>
 
 Sets the global network proxy. This API uses a promise to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [setGlobalProxySync](./js-apis-enterprise-networkManager.md#networkmanagersetglobalproxysync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -736,11 +785,15 @@ networkManager.setGlobalProxy(wantTemp, httpProxy).then(() => {
 });
 ```
 
-## networkManager.getGlobalProxy
+## networkManager.getGlobalProxy<sup>(deprecated)</sup>
 
 getGlobalProxy(admin: Want, callback: AsyncCallback\<connection.HttpProxy>): void
 
 Obtains the global network proxy. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [getGlobalProxySync](./js-apis-enterprise-networkManager.md#networkmanagergetglobalproxysync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -790,11 +843,15 @@ networkManager.getGlobalProxy(wantTemp, (err, result) => {
 });
 ```
 
-## networkManager.getGlobalProxy
+## networkManager.getGlobalProxy<sup>(deprecated)</sup>
 
 getGlobalProxy(admin: Want): Promise\<connection.HttpProxy>
 
 Obtains the global network proxy. This API uses a promise to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [getGlobalProxySync](./js-apis-enterprise-networkManager.md#networkmanagergetglobalproxysync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 

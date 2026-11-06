@@ -5,6 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=87f36412b9792c0776f707878176294c4360c8f0 translatedAt=2026-10-29T08:57:13.585Z pushedAt=2026-10-30T03:02:26.521Z nl=1 -->
 
 
 The **&lt;marquee&gt;** component displays single-line scrolling text. For details, see [marquee](../reference/apis-arkui/arkui-js/js-components-basic-marquee.md).
@@ -35,12 +36,12 @@ Create a **&lt;marquee&gt;** component in the .hml file under **pages/index**.
 }
 ```
 
-![marquee-Component](figures/marquee-Component.png)
+![marquee component](figures/marquee-Component.png)
 
 
 ## Setting Attributes and Styles
 
-Set the **color** and **font-weight** attributes to define the color, font weight, and border style of marquee text.
+The **marquee** uses the **color** and **font-weight** attributes to set the text color and font weight in the marquee, and the **border** attribute to set the border style.
 
 
 ```html
@@ -77,7 +78,7 @@ Set the **color** and **font-weight** attributes to define the color, font weigh
 
 ![Attributes-and-Styles](figures/Attributes-and-Styles.png)
 
-Set the **scrollamount**, **loop**, and **direction** attributes to define the maximum scroll length, number of scrolling times, and text scrolling direction.
+Set the **scrollamount**, **loop**, and **direction** attributes to define the scroll distance, number of scrolling times, and text scrolling direction of the marquee.
 
 
 ```html
@@ -152,7 +153,7 @@ export default {
 }
 ```
 
-> **NOTE**
+> **NOTE** 
 >
 > When the value of **loop** is less than or equal to 0, the marquee scrolls continuously. If **loop** is not set, the default value **-1** is used.
 

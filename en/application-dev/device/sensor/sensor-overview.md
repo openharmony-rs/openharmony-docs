@@ -3,8 +3,9 @@
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
 <!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=cc1ac1a8be74b658ceeb5fd670db6be81ba34f15 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## Sensor Types
 
@@ -63,6 +64,6 @@ The following modules work cooperatively to implement sensors: Sensor API, Senso
     | Acceleration sensor, uncalibrated acceleration sensor, and linear acceleration sensor| ohos.permission.ACCELEROMETER    | system_grant | The permission allows an application to read data from acceleration sensors, uncalibrated acceleration sensors, and linear acceleration sensors.|
     | Gyroscope sensor and uncalibrated gyroscope sensor                  | ohos.permission.GYROSCOPE        | system_grant | The permission allows an application to read data from gyroscope sensors and uncalibrated gyroscope sensors.|
     | Pedometer sensor                                            | ohos.permission.ACTIVITY_MOTION  | user_grant   | The permission allows an application to read an end user's motion status, for example, to determine whether the user is in motion or to record the number of steps that the user has walked. |
-    | Heart rate sensor                                            | ohos.permission.READ_HEALTH_DATA | user_grant   | The permission allows an application to obtain an end user's health data, such as heart rate data.          |
-    
+    | Heart rate sensor                                             | ohos.permission.READ_HEALTH_DATA | user_grant   | The permission allows an app to read the user's health data, such as heart rate data.           |
+
 2. The APIs for subscribing to and unsubscribing from sensor data work in pairs. If you do not need sensor data, call the unsubscription API to stop sensor data reporting.

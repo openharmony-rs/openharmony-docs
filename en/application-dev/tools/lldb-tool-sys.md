@@ -1,11 +1,20 @@
+---
+kits: ["ArkTS Kit"]
+description: "LLDB is a new-generation high-performance debugger that supports breakpoint setting, variable viewing and modification, memory operations, thread control, expression evaluation, stack backtrace, and other debugging features. It provides both local debugging and remote debugging, and is suitable for debugging C/C++ code in OpenHarmony system applications."
+keywords: [LLDB, debugger, breakpoint setting, watchpoint, variable viewing, stack backtrace, remote debugging, lldb-server, assembly handling]
+doctype: guide
+status: active
+---
+
 # LLDB (for System Applications Only)
 
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @Maxi_241437-->
 <!--Designer: @da_wei_li11-->
 <!--Tester: @chenhliang-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=eca66a0319f0c6395a34b0ae7a553ffcaa83c491 translatedAt=2026-11-02T07:56:35.884Z pushedAt=2026-11-03T02:29:41.302Z nl=1 -->
 
 ## Overview
 Low Level Debugger (LLDB) is a next-generation, high-performance debugger. It can be used to set breakpoints, view and modify variables, perform memory operations, control threads, calculate expressions, backtrack stacks, and support cross-platform and plugin extension.
@@ -22,7 +31,7 @@ LLDB has the following features:
 - **Plugin extension**: LLDB supports plugin extension, which allows you to customize plugins as required.
 
 ## How to Obtain
-Obtain the OpenHarmony SDK from the following website: http://ci.openharmony.cn/workbench/cicd/dailybuild
+Obtain the OpenHarmony SDK from the following website: [Daily Build](https://dcp.openharmony.cn/workbench/cicd/dailybuild/dailylist).
 
 Find LLDB in the **\ohos-sdk\[system]\native\llvm** directory of the SDK, where **system** can be **windows**, **linux**, or **darwin**.
 
@@ -326,7 +335,7 @@ Compilation:
 
 ### Remote Debugging
 
-The following walks you through on how to remotely debug an executable file named **a.out** by connecting to an ARM-based OpenHarmony device (for example, RK3568 development board) on Windows.
+The following takes remote debugging on the Windows platform by connecting to an OpenHarmony device with ARM architecture (such as the RK3568 development board) as an example.
 
 > **NOTE**
 >
@@ -425,4 +434,4 @@ Compilation:
 
    **user** can debug only applications, not executable files.
 
-- What should I do if the error message "Permission denied" is displayed when I run lldb-server?<br> This is because the lldb-server cannot be executed. You only need to add the permission.
+- What should I do if the error message "Permission denied" is displayed when I run lldb-server?<br>This is typically caused by the lack of executable permissions on the lldb-server binary. Granting execute permissions will resolve the issue.

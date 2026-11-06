@@ -68,7 +68,7 @@
 ### 搭建环境
 
 1. 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在4.1及以上。
-2. 将public-SDK更新到API 18或以上<!--Del-->，更新SDK的具体操作可参见[更新指南]( ../tools/openharmony_sdk_upgrade_assistant.md)<!--DelEnd-->。
+2. 将public-SDK更新到API 18或以上<!--Del-->，更新SDK的具体操作可参见[更新指南](../tools/openharmony-sdk-upgrade-assistant.md)<!--DelEnd-->。
 3. 用USB线缆将任意一台调试设备（设备A或者设备B）连接到PC。
 4. 打开设备A和设备B的Wi-Fi和蓝牙。如果登录同一个华为账号，则设备间会进行自组网；非同账号环境下，需先通过[设备发现](devicemanager-guidelines.md#设备发现开发指导)和[设备绑定](devicemanager-guidelines.md#设备绑定开发指导)建立可信关系以完成组网。
 
@@ -144,7 +144,7 @@ function initDmClass(): void {
   try {
     dmClass = distributedDeviceManager.createDeviceManager('com.example.remotephotodemo');
   } catch (err) {
-    hilog.info(0x0000, 'testTag', 'createDeviceManager err');
+    hilog.error(0x0000, 'testTag', 'createDeviceManager err');
   }
 }
 
@@ -155,17 +155,17 @@ function getRemoteDeviceId(): string | undefined {
     hilog.info(0x0000, 'testTag', 'getRemoteDeviceId begin');
     let list = dmClass.getAvailableDeviceListSync();
     if (typeof (list) === 'undefined' || typeof (list.length) === 'undefined') {
-      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is null');
+      hilog.error(0x0000, 'testTag', 'getRemoteDeviceId err: list is null');
       return;
     }
     if (list.length === 0) {
-      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is empty');
+      hilog.error(0x0000, 'testTag', 'getRemoteDeviceId err: list is empty');
       return;
     }
     // 弹框选择设备
     return list[0].networkId;
   } else {
-    hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: dmClass is null');
+    hilog.error(0x0000, 'testTag', 'getRemoteDeviceId err: dmClass is null');
     return;
   }
 }
@@ -266,28 +266,28 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 <!-- @[abilityconnectionmanager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
-  registerSessionEvent(sessionId: number) {
-    abilityConnectionManager.on('connect',sessionId,(callbackInfo) => {
-      AppStorage.setOrCreate<boolean>('isConnected', true);
-      AppStorage.setOrCreate<string>('receiveMessage', 'connect success');
-    });
-    abilityConnectionManager.on('disconnect',sessionId,(callbackInfo) => {
-      abilityConnectionManager.destroyAbilityConnectionSession(sessionId)
-      AppStorage.setOrCreate<boolean>('isConnected', false);
-      AppStorage.setOrCreate<string>('receiveMessage', 'session disconnect');
-    })
-    abilityConnectionManager.on('receiveMessage',sessionId,(callbackInfo) => {
-      AppStorage.setOrCreate<string>('receiveMessage', callbackInfo.msg);
-      if (callbackInfo.msg == 'startStream') {
-        hilog.info(0x0000, 'testTag', 'startStream');
-      }
-    })
-    abilityConnectionManager.on('receiveData',sessionId,(callbackInfo) => {
-      let decoder = util.TextDecoder.create('utf-8');
-      let str = decoder.decodeWithStream(new Uint8Array(callbackInfo.data));
-      AppStorage.setOrCreate<string>('receiveMessage', str);
-    })
-  }
+registerSessionEvent(sessionId: number) {
+  abilityConnectionManager.on('connect',sessionId,(callbackInfo) => {
+    AppStorage.setOrCreate<boolean>('isConnected', true);
+    AppStorage.setOrCreate<string>('receiveMessage', 'connect success');
+  });
+  abilityConnectionManager.on('disconnect',sessionId,(callbackInfo) => {
+    abilityConnectionManager.destroyAbilityConnectionSession(sessionId)
+    AppStorage.setOrCreate<boolean>('isConnected', false);
+    AppStorage.setOrCreate<string>('receiveMessage', 'session disconnect');
+  })
+  abilityConnectionManager.on('receiveMessage',sessionId,(callbackInfo) => {
+    AppStorage.setOrCreate<string>('receiveMessage', callbackInfo.msg);
+    if (callbackInfo.msg == 'startStream') {
+      hilog.info(0x0000, 'testTag', 'startStream');
+    }
+  })
+  abilityConnectionManager.on('receiveData',sessionId,(callbackInfo) => {
+    let decoder = util.TextDecoder.create('utf-8');
+    let str = decoder.decodeToString(new Uint8Array(callbackInfo.data));
+    AppStorage.setOrCreate<string>('receiveMessage', str);
+  })
+}
 ```
 
 
@@ -304,12 +304,13 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
-  abilityConnectionManager.sendMessage(this.sessionId, "message send success").then(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage success");
-  }).catch(() => {
-    hilog.error(0x0000, 'testTag', "connect failed");
-  })
+  abilityConnectionManager.sendMessage(this.sessionId, 'message send success').then(() => {
+    hilog.info(0x0000, 'testTag', 'sendMessage success');
+  }).catch((error: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'sendMessage failed');
+  });
   ```
 **2.发送字节流数据**
 
@@ -326,10 +327,10 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
   const arrayBuffer  = textEncoder.encodeInto("data send success");
 
   abilityConnectionManager.sendData(this.sessionId, arrayBuffer.buffer).then(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage success");
+    hilog.info(0x0000, 'testTag', 'sendData success');
   }).catch(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage failed");
-  })
+    hilog.error(0x0000, 'testTag', 'sendData failed');
+  });
   ```
 
 **结束协同**

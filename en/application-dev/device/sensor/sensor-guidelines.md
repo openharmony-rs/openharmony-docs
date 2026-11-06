@@ -3,8 +3,9 @@
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
 <!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=cc1ac1a8be74b658ceeb5fd670db6be81ba34f15 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## When to Use
 
@@ -17,11 +18,11 @@ For details about the APIs, see [@ohos.sensor (Sensor)](../../reference/apis-sen
 
 | Name| Description                             |
 | -------- |---------------------------------|
-| sensor.on(sensorId, callback:AsyncCallback&lt;Response&gt;, options?: Options): void | Enables listening for data changes of the specified type of sensor.                   |
-| sensor.on(type: 'sensorStatusChange', callback: Callback&lt;SensorStatusEvent&gt;): void | Enables listening for sensor status changes.|
-| sensor.once(sensorId, callback:AsyncCallback&lt;Response&gt;): void | Enables one-time listening for sensor data changes.                   |
-| sensor.off(sensorId, callback?:AsyncCallback&lt;void&gt;): void | Disables listening for data changes of the specified type of sensor.                    |
-| sensor.off(sensorId, sensorInfoParam?: SensorInfoParam, callback?:AsyncCallback&lt;void&gt;): void | Disables listening for data changes of the specified type of sensor based on the given sensor parameters.            |
+| sensor.on(sensorId, callback: AsyncCallback&lt;Response&gt;, options?: Options): void | Continuously listens for sensor data changes.                    |
+| sensor.on(type: 'sensorStatusChange', callback: Callback&lt;SensorStatusEvent&gt;): void | Enables listening for sensor status changes. The callback returns sensor status event data.|
+| sensor.once(sensorId, callback: AsyncCallback&lt;Response&gt;): void | Obtains a single sensor data change.                    |
+| sensor.off(sensorId, callback?: AsyncCallback&lt;void&gt;): void | Disables listening for sensor data.                     |
+| sensor.off(sensorId, sensorInfoParam?: SensorInfoParam, callback?:AsyncCallback&lt;void&gt;): void | Disables listening for sensor data. You can pass in setting parameters.            |
 | sensor.off(type: 'sensorStatusChange', callback?: Callback&lt;SensorStatusEvent&gt;): void | Disables listening for sensor status changes.             |
 | sensor.getSensorList(callback: AsyncCallback\<Array\<Sensor>>): void| Obtains information about all sensors on the device.                 |
 
@@ -36,8 +37,8 @@ The acceleration sensor is used as an example.
 
 2. Configure the acceleration sensor permission. For details, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
 
-   <!-- @[sensor_js_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/module.json5) --> 
-   
+   <!-- @[sensor_js_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/module.json5) --> 
+
    ``` JSON5
    "requestPermissions": [
      {
@@ -48,8 +49,8 @@ The acceleration sensor is used as an example.
 
 3. Import the module.
 
-   <!-- @[sensor_js_development_dependency_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-   
+   <!-- @[sensor_js_development_dependency_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+
    ``` TypeScript
    import { sensor } from '@kit.SensorServiceKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -58,23 +59,23 @@ The acceleration sensor is used as an example.
 
 4. Define constants.
 
-   <!-- @[sensor_js_define_variables_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-   
+   <!-- @[sensor_js_define_variables_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+
    ``` TypeScript
    let TAG = 'sensor: ';
    ```
 
 5. Obtain the list of all sensors on the device. If a sensor cannot be found, the sensor does not exist or is unavailable on the device. If you subscribe to events specific to this sensor, an exception will be thrown, and you need to implement the service logic to handle this exception.
 
-   <!-- @[sensor_js_get_sensor_list_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-   
+   <!-- @[sensor_js_get_sensor_list_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
    ``` TypeScript
    try {
      sensor.getSensorList((error: BusinessError, data: Array<sensor.Sensor>) => {
          if (error) {
              console.error(TAG + 'getSensorList failed');
          } else {
-             console.info('getSensorList success');
+             console.info(TAG + 'getSensorList success');
              for (let i = 0; i < data.length; i++) {
                  console.info(TAG + JSON.stringify(data[i]));
                  // ...
@@ -93,37 +94,37 @@ The acceleration sensor is used as an example.
 
    You can query sensors based on the given device ID.
 
-   <!-- @[sensor_js_get_sensor_list_by_device_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-   
+   <!-- @[sensor_js_get_sensor_list_by_device_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
    ``` TypeScript
    try {
      this.deviceId = -1;
      // The deviceId parameter is optional. The default value is the ID of the local device.
      const sensorList: sensor.Sensor[] = sensor.getSensorListByDeviceSync(this.deviceId);
-     console.info(`sensorList length: ${sensorList.length}`);
-     console.info(`sensorList: ${JSON.stringify(sensorList)}`);
-     // ···
+     console.info(`${TAG}sensorList length: ${sensorList.length}`);
+     console.info(`${TAG}sensorList: ${JSON.stringify(sensorList)}`);
+     // ...
    } catch (error) {
      let e: BusinessError = error as BusinessError;
-     console.error(`Failed to get sensorList. Code: ${e.code}, message: ${e.message}`);
+     console.error(`${TAG}Failed to get sensorList. Code: ${e.code}, message: ${e.message}`);
    }
    ```
 
    Query a sensor based on the specified device ID and sensor type.
 
-   <!-- @[sensor_js_get_single_sensor_by_device_sync_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-   
+   <!-- @[sensor_js_get_single_sensor_by_device_sync_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
    ``` TypeScript
    try {
      this.deviceId = -1;
      // The second deviceId is optional.
-     const sensorList: sensor.Sensor[] = sensor.getSingleSensorByDeviceSync(sensor.SensorId.ACCELERO this.   deviceId);
-     console.info(`sensorList length: ${sensorList.length}`);
-     console.info(`sensorList Json: ${JSON.stringify(sensorList)}`);
-     // ···
+     const sensorList: sensor.Sensor[] = sensor.getSingleSensorByDeviceSync(sensor.SensorId.ACCELEROMETER, this.deviceId);
+     console.info(`${TAG}sensorList length: ${sensorList.length}`);
+     console.info(`${TAG}sensorList Json: ${JSON.stringify(sensorList)}`);
+     // ...
    } catch (error) {
      let e: BusinessError = error as BusinessError;
-     console.error(`Failed to get sensorList. Code: ${e.code}, message: ${e.message}`);
+     console.error(`${TAG}Failed to get sensorList. Code: ${e.code}, message: ${e.message}`);
    }
    ```
 
@@ -131,33 +132,33 @@ The acceleration sensor is used as an example.
 
    The **on()** API is used to continuously listen for data changes of the sensor. The sensor reporting interval is set to 100000000 ns.
 
-   <!-- @[sensor_js_on_accelerometer_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-   
+   <!-- @[sensor_js_on_accelerometer_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
    ``` TypeScript
    try { 
      sensor.on(sensor.SensorId.ACCELEROMETER, (data: sensor.AccelerometerResponse) => {
-           console.info("Succeeded in obtaining data. x: " + data.x + " y: " + data.y + " z: " + data.z);
+           console.info(TAG + 'Succeeded in obtaining data. x: ' + data.x + ' y: ' + data.y + ' z: ' + data.z);
            // ...
      }, { interval: 100000000 });
    } catch (error) {
        let e: BusinessError = error as BusinessError;
-       console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+       console.error(`${TAG}Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
    }
    ```
 
    You can also specify SensorInfoParam, which is used to pass deviceId and sensorIndex.
 
-   <!-- @[sensor_js_on_accelerometer_use_sensor_info_param_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-   
+   <!-- @[sensor_js_on_accelerometer_use_sensor_info_param_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
    ``` TypeScript
    try { 
      sensor.on(sensor.SensorId.ACCELEROMETER, (data: sensor.AccelerometerResponse) => {
-           console.info("Succeeded in obtaining data. x: " + data.x + " y: " + data.y + " z: " + data.z);
+           console.info(TAG + 'Succeeded in obtaining data. x: ' + data.x + ' y: ' + data.y + ' z: ' + data.z);
            // ...
      }, { interval: 100000000, sensorInfoParam: { deviceId: -1 } });
    } catch (error) {
        let e: BusinessError = error as BusinessError;
-       console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+       console.error(`${TAG}Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
    }
    ```
 
@@ -165,17 +166,17 @@ The acceleration sensor is used as an example.
 
    The **once()** API is used to perform one-time listening for sensor data changes.
 
-   <!-- @[sensor_js_once_accelerometer_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-   
+   <!-- @[sensor_js_once_accelerometer_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
    ``` TypeScript
    try {
      sensor.once(sensor.SensorId.ACCELEROMETER, (data: sensor.AccelerometerResponse) => {
-         console.info("Succeeded in obtaining data. x: " + data.x + " y: " + data.y + " z: " + data.z);
+         console.info(TAG + 'Succeeded in obtaining data. x: ' + data.x + ' y: ' + data.y + ' z: ' + data.z);
          // ...
      });
    } catch (error) {
      let e: BusinessError = error as BusinessError;
-     console.error(`Failed to invoke once. Code: ${e.code}, message: ${e.message}`);
+     console.error(`${TAG}Failed to invoke once. Code: ${e.code}, message: ${e.message}`);
    }
    ```
 
@@ -185,27 +186,27 @@ The acceleration sensor is used as an example.
 
    Note that disabling listening without a prior subscription is an abnormal behavior and requires exception handling.
 
-   <!-- @[sensor_js_off_accelerometer_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-   
+   <!-- @[sensor_js_off_accelerometer_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
    ``` TypeScript
    try {
      sensor.off(sensor.SensorId.ACCELEROMETER);
    } catch (error) {
      let e: BusinessError = error as BusinessError;
-     console.error(`Failed to invoke off. Code: ${e.code}, message: ${e.message}`);
+     console.error(`${TAG}Failed to invoke off. Code: ${e.code}, message: ${e.message}`);
    }
    ```
 
    Disables listening for sensor status changes based on the given sensor parameters.
 
-   <!-- @[sensor_js_off_accelerometer_use_sensor_info_param_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-   
+   <!-- @[sensor_js_off_accelerometer_use_sensor_info_param_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
    ``` TypeScript
    try {
      sensor.off(sensor.SensorId.ACCELEROMETER, { deviceId: -1 });
    } catch (error) {
      let e: BusinessError = error as BusinessError;
-     console.error(`Failed to invoke off. Code: ${e.code}, message: ${e.message}`);
+     console.error(`${TAG}Failed to invoke off. Code: ${e.code}, message: ${e.message}`);
    }
    ```
 
@@ -213,33 +214,33 @@ The acceleration sensor is used as an example.
 
    In **SensorStatusEvent**, the following information is included: event timestamp, sensor ID, sensor index, online/offline status, device ID, and device name.
 
-   <!-- @[sensor_js_on_sensor_status_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-   
+   <!-- @[sensor_js_on_sensor_status_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
    ``` TypeScript
    try {
      sensor.on('sensorStatusChange', (data: sensor.SensorStatusEvent) => {
-         console.info(`timestamp: ${data.timestamp},
+         console.info(`${TAG}timestamp: ${data.timestamp},
          deviceId: ${data.deviceId} deviceName: ${data.deviceName}
          sensorId: ${data.sensorId} sensorIndex:${data.sensorIndex} isSensorOnline: ${data.isSensorOnline}`);
      });
-     // ···
+     // ...
    } catch (error) {
      let e: BusinessError = error as BusinessError;
-     console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+     console.error(`${TAG}Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
    }
    ```
 
    Disable listening for sensor status changes.
 
-   <!-- @[sensor_js_off_sensor_status_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-   
+   <!-- @[sensor_js_off_sensor_status_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
    ``` TypeScript
    try {
      sensor.off('sensorStatusChange');
-     // ···
+     // ...
    } catch (error) {
      let e: BusinessError = error as BusinessError;
-     console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+     console.error(`${TAG}Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
    }
    ```
 
@@ -247,51 +248,51 @@ The acceleration sensor is used as an example.
 
    This API uses an asynchronous callback to return the result.
 
-   <!-- @[sensor_js_get_geomagnetic_info_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
-   
+   <!-- @[sensor_js_get_geomagnetic_info_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
    ``` TypeScript
    try {
      sensor.getGeomagneticInfo({ latitude: 80, longitude: 0, altitude: 0 }, 1580486400000,
          (err: BusinessError, data: sensor.GeomagneticResponse) => {
        if (err) {
-         console.error(`Failed to get geomagneticInfo. Code: ${err.code}, message: ${err.message}`);
+         console.error(`${TAG}Failed to get geomagneticInfo. Code: ${err.code}, message: ${err.message}`);
          return;
        }
-       console.info("Succeeded in getting geomagneticInfo x" + data.x);
-       console.info("Succeeded in getting geomagneticInfo y" + data.y);
-       console.info("Succeeded in getting geomagneticInfo z" + data.z);
-       console.info("Succeeded in getting geomagneticInfo geomagneticDip" + data.geomagneticDip);
-       console.info("Succeeded in getting geomagneticInfo deflectionAngle" + data.deflectionAngle);
-       console.info("Succeeded in getting geomagneticInfo levelIntensity" + data.levelIntensity);
-       console.info("Succeeded in getting geomagneticInfo totalIntensity" + data.totalIntensity);
+       console.info(TAG + 'Succeeded in getting geomagneticInfo x' + data.x);
+       console.info(TAG + 'Succeeded in getting geomagneticInfo y' + data.y);
+       console.info(TAG + 'Succeeded in getting geomagneticInfo z' + data.z);
+       console.info(TAG + 'Succeeded in getting geomagneticInfo geomagneticDip' + data.geomagneticDip);
+       console.info(TAG + 'Succeeded in getting geomagneticInfo deflectionAngle' + data.deflectionAngle);
+       console.info(TAG + 'Succeeded in getting geomagneticInfo levelIntensity' + data.levelIntensity);
+       console.info(TAG + 'Succeeded in getting geomagneticInfo totalIntensity' + data.totalIntensity);
      });
    } catch (error) {
      let e: BusinessError = error as BusinessError;
-     console.error(`Failed to get geomagneticInfo. Code: ${e.code}, message: ${e.message}`);
+     console.error(`${TAG}Failed to get geomagneticInfo. Code: ${e.code}, message: ${e.message}`);
    }
    ```
 
    This API uses a promise to return the result.
 
-   <!-- @[sensor_js_get_geomagnetic_info_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-   
+   <!-- @[sensor_js_get_geomagnetic_info_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
    ``` TypeScript
    try {
      const promise = sensor.getGeomagneticInfo({ latitude: 80, longitude: 0, altitude: 0 }, 1580486400000);
      promise.then((data: sensor.GeomagneticResponse) => {
-       console.info("Succeeded in getting geomagneticInfo x" + data.x);
-       console.info("Succeeded in getting geomagneticInfo y" + data.y);
-       console.info("Succeeded in getting geomagneticInfo z" + data.z);
-       console.info("Succeeded in getting geomagneticInfo geomagneticDip" + data.geomagneticDip);
-       console.info("Succeeded in getting geomagneticInfo deflectionAngle" + data.deflectionAngle);
-       console.info("Succeeded in getting geomagneticInfo levelIntensity" + data.levelIntensity);
-       console.info("Succeeded in getting geomagneticInfo totalIntensity" + data.totalIntensity);
+       console.info(TAG + 'Succeeded in getting geomagneticInfo x' + data.x);
+       console.info(TAG + 'Succeeded in getting geomagneticInfo y' + data.y);
+       console.info(TAG + 'Succeeded in getting geomagneticInfo z' + data.z);
+       console.info(TAG + 'Succeeded in getting geomagneticInfo geomagneticDip' + data.geomagneticDip);
+       console.info(TAG + 'Succeeded in getting geomagneticInfo deflectionAngle' + data.deflectionAngle);
+       console.info(TAG + 'Succeeded in getting geomagneticInfo levelIntensity' + data.levelIntensity);
+       console.info(TAG + 'Succeeded in getting geomagneticInfo totalIntensity' + data.totalIntensity);
      }, (err: BusinessError) => {
-       console.error(`Failed to get geomagneticInfo. Code: ${err.code}, message: ${err.message}`);
+       console.error(`${TAG}Failed to get geomagneticInfo. Code: ${err.code}, message: ${err.message}`);
      });
    } catch (error) {
      let e: BusinessError = error as BusinessError;
-     console.error(`Failed to get geomagneticInfo. Code: ${e.code}, message: ${e.message}`);
+     console.error(`${TAG}Failed to get geomagneticInfo. Code: ${e.code}, message: ${e.message}`);
    }
    ```
 
@@ -299,42 +300,42 @@ The acceleration sensor is used as an example.
 
     This API uses an asynchronous callback to return the result.
 
-    <!-- @[sensor_js_get_device_altitude_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-    
+    <!-- @[sensor_js_get_device_altitude_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     try {
       let seaPressure = 1013.2;
       let currentPressure = 1500.0;
       sensor.getDeviceAltitude(seaPressure, currentPressure, (err: BusinessError, data: number) => {
         if (err) {
-          console.error(`Failed to get altitude. Code: ${err.code}, message: ${err.message}`);
+          console.error(`${TAG}Failed to get altitude. Code: ${err.code}, message: ${err.message}`);
           return;
         }
-        console.info('Succeeded in getting altitude: ' + data);
+        console.info(TAG + 'Succeeded in getting altitude: ' + data);
       });
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`Failed to get altitude. Code: ${e.code}, message: ${e.message}`);
+      console.error(`${TAG}Failed to get altitude. Code: ${e.code}, message: ${e.message}`);
     }
     ```
 
     This API uses a promise to return the result.
 
-    <!-- @[sensor_js_get_device_altitude_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
-    
+    <!-- @[sensor_js_get_device_altitude_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     try {
       let seaPressure = 1013.2;
       let currentPressure = 1500.0;
       const promise = sensor.getDeviceAltitude(seaPressure, currentPressure);
       promise.then((data: number) => {
-        console.info('Succeeded in getting sensor_getDeviceAltitude_Promise', data);
+        console.info(TAG + 'Succeeded in getting device altitude: ', data);
       }, (err: BusinessError) => {
-        console.error(`Failed to get altitude. Code: ${err.code}, message: ${err.message}`);
+        console.error(`${TAG}Failed to get altitude. Code: ${err.code}, message: ${err.message}`);
       });
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`Failed to get altitude. Code: ${e.code}, message: ${e.message}`);
+      console.error(`${TAG}Failed to get altitude. Code: ${e.code}, message: ${e.message}`);
     }
     ```
 
@@ -342,8 +343,8 @@ The acceleration sensor is used as an example.
 
     This API uses an asynchronous callback to return the result.
 
-    <!-- @[sensor_js_get_inclination_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-    
+    <!-- @[sensor_js_get_inclination_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     try {
       // inclinationMatrix can be 3*3 or 4*4.
@@ -354,21 +355,21 @@ The acceleration sensor is used as an example.
       ]
       sensor.getInclination(inclinationMatrix, (err: BusinessError, data: number) => {
         if (err) {
-          console.error(`Failed to get inclination. Code: ${err.code}, message: ${err.message}`);
+          console.error(`${TAG}Failed to get inclination. Code: ${err.code}, message: ${err.message}`);
           return;
         }
-        console.info('Succeeded in getting inclination: ' + data);
+        console.info(TAG + 'Succeeded in getting inclination: ' + data);
       })
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`Failed to get inclination. Code: ${e.code}, message: ${e.message}`);
+      console.error(`${TAG}Failed to get inclination. Code: ${e.code}, message: ${e.message}`);
     }
     ```
 
     This API uses a promise to return the result.
 
-    <!-- @[sensor_js_get_inclination_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
-    
+    <!-- @[sensor_js_get_inclination_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     try {
       // inclinationMatrix can be 3*3 or 4*4.
@@ -379,13 +380,13 @@ The acceleration sensor is used as an example.
       ]
       const promise = sensor.getInclination(inclinationMatrix);
       promise.then((data: number) => {
-        console.info('Succeeded in getting inclination: ' + data);
+        console.info(TAG + 'Succeeded in getting inclination: ' + data);
       }, (err: BusinessError) => {
-        console.error(`Failed to get inclination. Code: ${err.code}, message: ${err.message}`);
+        console.error(`${TAG}Failed to get inclination. Code: ${err.code}, message: ${err.message}`);
       });
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`Failed to get inclination. Code: ${e.code}, message: ${e.message}`);
+      console.error(`${TAG}Failed to get inclination. Code: ${e.code}, message: ${e.message}`);
     }
     ```
 
@@ -393,8 +394,8 @@ The acceleration sensor is used as an example.
 
     This API uses an asynchronous callback to return the result.
 
-    <!-- @[sensor_js_get_angle_variation_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-    
+    <!-- @[sensor_js_get_angle_variation_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     try {
       // The rotation matrix can be 3*3 or 4*4.
@@ -410,27 +411,27 @@ The acceleration sensor is used as an example.
       ];
       sensor.getAngleVariation(currentRotationMatrix, preRotationMatrix, (err: BusinessError, data: Array<number>) => {
         if (err) {
-          console.error(`Failed to get angle variation. Code: ${err.code}, message: ${err.message}`);
+          console.error(`${TAG}Failed to get angle variation. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         if (data.length < 3) {
-          console.error("Failed to get angle variation, length" + data.length);
+          console.error(TAG + 'Failed to get angle variation, length' + data.length);
           return;
         }
-        console.info("Z: " + data[0]);
-        console.info("X: " + data[1]);
-        console.info("Y: " + data[2]);
+        console.info(TAG + 'Z: ' + data[0]);
+        console.info(TAG + 'X: ' + data[1]);
+        console.info(TAG + 'Y: ' + data[2]);
       })
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`Failed to get angle variation. Code: ${e.code}, message: ${e.message}`);
+      console.error(`${TAG}Failed to get angle variation. Code: ${e.code}, message: ${e.message}`);
     }
     ```
 
     This API uses a promise to return the result.
 
-    <!-- @[sensor_js_get_angle_variation_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
-    
+    <!-- @[sensor_js_get_angle_variation_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     try {
       // The rotation matrix can be 3*3 or 4*4.
@@ -447,18 +448,18 @@ The acceleration sensor is used as an example.
       const promise = sensor.getAngleVariation(currentRotationMatrix, preRotationMatrix);
       promise.then((data: Array<number>) => {
         if (data.length < 3) {
-          console.error("Failed to get angle variation, length" + data.length);
+          console.error(TAG + 'Failed to get angle variation, length' + data.length);
           return;
         }
-        console.info("Z: " + data[0]);
-        console.info("X: " + data[1]);
-        console.info("Y: " + data[2]);
+        console.info(TAG + 'Z: ' + data[0]);
+        console.info(TAG + 'X: ' + data[1]);
+        console.info(TAG + 'Y: ' + data[2]);
       }, (err: BusinessError) => {
-        console.error(`Failed to get angle variation. Code: ${err.code}, message: ${err.message}`);
+        console.error(`${TAG}Failed to get angle variation. Code: ${err.code}, message: ${err.message}`);
       });
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`Failed to get angle variation. Code: ${e.code}, message: ${e.message}`);
+      console.error(`${TAG}Failed to get angle variation. Code: ${e.code}, message: ${e.message}`);
     }
     ```
 
@@ -466,44 +467,44 @@ The acceleration sensor is used as an example.
 
     This API uses an asynchronous callback to return the result.
 
-    <!-- @[sensor_js_get_rotation_matrix_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-    
+    <!-- @[sensor_js_get_rotation_matrix_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     try {
       let rotationVector = [0.20046076, 0.21907, 0.73978853, 0.60376877];
       sensor.getRotationMatrix(rotationVector, (err: BusinessError, data: Array<number>) => {
         if (err) {
-          console.error(`Failed to get rotationMatrix. Code: ${err.code}, message: ${err.message}`);
+          console.error(`${TAG}Failed to get rotationMatrix. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         for (let i = 0; i < data.length; i++) {
-          console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
+          console.info(TAG + 'Succeeded in getting data[' + i + ']: ' + data[i]);
         }
       })
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`Failed to get rotationMatrix. Code: ${e.code}, message: ${e.message}`);
+      console.error(`${TAG}Failed to get rotationMatrix. Code: ${e.code}, message: ${e.message}`);
     }
     ```
 
     This API uses a promise to return the result.
 
-    <!-- @[sensor_js_get_rotation_matrix_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
-    
+    <!-- @[sensor_js_get_rotation_matrix_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     try {
       let rotationVector = [0.20046076, 0.21907, 0.73978853, 0.60376877];
       const promise = sensor.getRotationMatrix(rotationVector);
       promise.then((data: Array<number>) => {
         for (let i = 0; i < data.length; i++) {
-          console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
+          console.info(TAG + 'Succeeded in getting data[' + i + ']: ' + data[i]);
         }
       }, (err: BusinessError) => {
-        console.error(`Failed to get rotationMatrix. Code: ${err.code}, message: ${err.message}`);
+        console.error(`${TAG}Failed to get rotationMatrix. Code: ${err.code}, message: ${err.message}`);
       });
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`Failed to get rotationMatrix. Code: ${e.code}, message: ${e.message}`);
+      console.error(`${TAG}Failed to get rotationMatrix. Code: ${e.code}, message: ${e.message}`);
     }
     ```
 
@@ -511,8 +512,8 @@ The acceleration sensor is used as an example.
 
     This API uses an asynchronous callback to return the result.
 
-    <!-- @[sensor_js_transform_rotation_matrix_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-    
+    <!-- @[sensor_js_transform_rotation_matrix_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     try {
       let rotationMatrix = [
@@ -522,23 +523,23 @@ The acceleration sensor is used as an example.
       ];
       sensor.transformRotationMatrix(rotationMatrix, { x: 1, y: 3 }, (err: BusinessError, data: Array<number>) => {
         if (err) {
-          console.error(`Failed to transform rotationMatrix. Code: ${err.code}, message: ${err.message}`);
+          console.error(`${TAG}Failed to transform rotationMatrix. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         for (let i = 0; i < data.length; i++) {
-          console.info('Succeeded in getting data[' + i + '] = ' + data[i]);
+          console.info(TAG + 'Succeeded in getting data[' + i + '] = ' + data[i]);
         }
       })
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`Failed to transform rotationMatrix. Code: ${e.code}, message: ${e.message}`);
+      console.error(`${TAG}Failed to transform rotationMatrix. Code: ${e.code}, message: ${e.message}`);
     }
     ```
 
     This API uses a promise to return the result.
 
-    <!-- @[sensor_js_transform_rotation_matrix_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
-    
+    <!-- @[sensor_js_transform_rotation_matrix_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     try {
       let rotationMatrix = [
@@ -549,14 +550,14 @@ The acceleration sensor is used as an example.
       const promise = sensor.transformRotationMatrix(rotationMatrix, { x: 1, y: 3 });
       promise.then((data: Array<number>) => {
         for (let i = 0; i < data.length; i++) {
-          console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
+          console.info(TAG + 'Succeeded in getting data[' + i + ']: ' + data[i]);
         }
       }, (err: BusinessError) => {
-        console.error(`Failed to transform rotationMatrix. Code: ${err.code}, message: ${err.message}`);
+        console.error(`${TAG}Failed to transform rotationMatrix. Code: ${err.code}, message: ${err.message}`);
       });
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`Failed to transform rotationMatrix. Code: ${e.code}, message: ${e.message}`);
+      console.error(`${TAG}Failed to transform rotationMatrix. Code: ${e.code}, message: ${e.message}`);
     }
     ```
 
@@ -564,44 +565,44 @@ The acceleration sensor is used as an example.
 
     This API uses an asynchronous callback to return the result.
 
-    <!-- @[sensor_js_get_quaternion_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
-    
+    <!-- @[sensor_js_get_quaternion_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     try {
       let rotationVector = [0.20046076, 0.21907, 0.73978853, 0.60376877];
       sensor.getQuaternion(rotationVector, (err: BusinessError, data: Array<number>) => {
         if (err) {
-          console.error(`Failed to get quaternion. Code: ${err.code}, message: ${err.message}`);
+          console.error(`${TAG}Failed to get quaternion. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         for (let i = 0; i < data.length; i++) {
-          console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
+          console.info(TAG + 'Succeeded in getting data[' + i + ']: ' + data[i]);
         }
       })
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`Failed to get quaternion. Code: ${e.code}, message: ${e.message}`);
+      console.error(`${TAG}Failed to get quaternion. Code: ${e.code}, message: ${e.message}`);
     }
     ```
 
     This API uses a promise to return the result.
 
-    <!-- @[sensor_js_get_quaternion_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
-    
+    <!-- @[sensor_js_get_quaternion_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     try {
         let rotationVector = [0.20046076, 0.21907, 0.73978853, 0.60376877];
         const promise = sensor.getQuaternion(rotationVector);
         promise.then((data: Array<number>) => {
             for (let i = 0; i < data.length; i++) {
-                console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
+                console.info(TAG + 'Succeeded in getting data[' + i + ']: ' + data[i]);
             }
         }, (err: BusinessError) => {
-            console.error(`Failed to get quaternion. Code: ${err.code}, message: ${err.message}`);
+            console.error(`${TAG}Failed to get quaternion. Code: ${err.code}, message: ${err.message}`);
         });
     } catch (error) {
         let e: BusinessError = error as BusinessError;
-        console.error(`Failed to get quaternion. Code: ${e.code}, message: ${e.message}`);
+        console.error(`${TAG}Failed to get quaternion. Code: ${e.code}, message: ${e.message}`);
     }
     ```
 
@@ -609,8 +610,8 @@ The acceleration sensor is used as an example.
 
     This API uses an asynchronous callback to return the result.
 
-    <!-- @[sensor_js_get_orientation_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
-    
+    <!-- @[sensor_js_get_orientation_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     try {
       let preRotationMatrix = [
@@ -620,26 +621,26 @@ The acceleration sensor is used as an example.
       ];
       sensor.getOrientation(preRotationMatrix, (err: BusinessError, data: Array<number>) => {
         if (err) {
-          console.error(`Failed to get orientation. Code: ${err.code}, message: ${err.message}`);
+          console.error(`${TAG}Failed to get orientation. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         if (data.length < 3) {
-          console.error("Failed to get orientation, length" + data.length);
+          console.error(TAG + 'Failed to get orientation, length' + data.length);
         }
-        console.info("Succeeded in getting data. Z: " + data[0]);
-        console.info("Succeeded in getting data. X: " + data[1]);
-        console.info("Succeeded in getting data. Y: " + data[2]);
+        console.info(TAG + 'Succeeded in getting data. Z: ' + data[0]);
+        console.info(TAG + 'Succeeded in getting data. X: ' + data[1]);
+        console.info(TAG + 'Succeeded in getting data. Y: ' + data[2]);
       })
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`Failed to get orientation. Code: ${e.code}, message: ${e.message}`);
+      console.error(`${TAG}Failed to get orientation. Code: ${e.code}, message: ${e.message}`);
     }
     ```
 
     This API uses a promise to return the result.
 
-    <!-- @[sensor_js_get_orientation_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
-    
+    <!-- @[sensor_js_get_orientation_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     try {
       let preRotationMatrix = [
@@ -650,14 +651,14 @@ The acceleration sensor is used as an example.
       const promise = sensor.getOrientation(preRotationMatrix);
       promise.then((data: Array<number>) => {
         for (let i = 0; i < data.length; i++) {
-          console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
+          console.info(TAG + 'Succeeded in getting data[' + i + ']: ' + data[i]);
         }
       }, (err: BusinessError) => {
-        console.error(`Failed to getOrientation. Code: ${err.code}, message: ${err.message}`);
+        console.error(`${TAG}Failed to get orientation. Code: ${err.code}, message: ${err.message}`);
       });
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`Failed to getOrientation Code: ${e.code}, message: ${e.message}`);
+      console.error(`${TAG}Failed to get orientation. Code: ${e.code}, message: ${e.message}`);
     }
     ```
 
@@ -665,42 +666,42 @@ The acceleration sensor is used as an example.
 
     This API uses an asynchronous callback to return the result.
 
-    <!-- @[sensor_js_get_rotation_matrix_two_param_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
-    
+    <!-- @[sensor_js_get_rotation_matrix_two_param_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     try {
       let gravity = [-0.27775216, 0.5351276, 9.788099];
       let geomagnetic = [210.87253, -78.6096, -111.44444];
-      sensor.getRotationMatrix(gravity, geomagnetic, (err: BusinessError, data: sRotationMatrixResponse) =>     {
+      sensor.getRotationMatrix(gravity, geomagnetic, (err: BusinessError, data: sensor.RotationMatrixResponse) => {
         if (err) {
-          console.error(`Failed to get rotationMatrix. Code: ${err.code}, message: ${err.message}`);
+          console.error(`${TAG}Failed to get rotationMatrix. Code: ${err.code}, message: ${err.message}`);
           return;
         }
-        console.info('Succeeded in getting rotationMatrix' + JSON.stringify(data));
+        console.info(TAG + 'Succeeded in getting rotationMatrix' + JSON.stringify(data));
       })
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`Failed to get rotationMatrix. Code: ${e.code}, message: ${e.message}`);
+      console.error(`${TAG}Failed to get rotationMatrix. Code: ${e.code}, message: ${e.message}`);
     }
     ```
 
     This API uses a promise to return the result.
 
-    <!-- @[sensor_js_get_rotation_matrix_two_param_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
-    
+    <!-- @[sensor_js_get_rotation_matrix_two_param_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     try {
       let gravity = [-0.27775216, 0.5351276, 9.788099];
       let geomagnetic = [210.87253, -78.6096, -111.44444];
       const promise = sensor.getRotationMatrix(gravity, geomagnetic);
       promise.then((data: sensor.RotationMatrixResponse) => {
-        console.info('Succeeded in getting rotationMatrix' + JSON.stringify(data));
+        console.info(TAG + 'Succeeded in getting rotationMatrix' + JSON.stringify(data));
       }, (err: BusinessError) => {
-        console.error(`Failed to get rotationMatrix. Code: ${err.code}, message: ${err.message}`);
+        console.error(`${TAG}Failed to get rotationMatrix. Code: ${err.code}, message: ${err.message}`);
       });
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`Failed to get rotationMatrix. Code: ${e.code}, message: ${e.message}`);
+      console.error(`${TAG}Failed to get rotationMatrix. Code: ${e.code}, message: ${e.message}`);
     }
     ```
 
@@ -708,50 +709,50 @@ The acceleration sensor is used as an example.
 
     This API uses an asynchronous callback to return the result.
 
-    <!-- @[sensor_js_get_single_sensor_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
-    
+    <!-- @[sensor_js_get_single_sensor_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     try {
       sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER, (err: BusinessError, data: sensor.Sensor) => {
         if (err) {
-          console.error(`Failed to get singleSensor. Code: ${err.code}, message: ${err.message}`);
+          console.error(`${TAG}Failed to get singleSensor. Code: ${err.code}, message: ${err.message}`);
           return;
         }
-        console.info('Succeeded in getting sensor: ' + JSON.stringify(data));
+        console.info(TAG + 'Succeeded in getting sensor: ' + JSON.stringify(data));
       });
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`Failed to get singleSensor. Code: ${e.code}, message: ${e.message}`);
+      console.error(`${TAG}Failed to get singleSensor. Code: ${e.code}, message: ${e.message}`);
     }
     ```
 
     This API uses a promise to return the result.
 
-    <!-- @[sensor_js_get_single_sensor_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
-    
+    <!-- @[sensor_js_get_single_sensor_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     try {
       sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER).then((data: sensor.Sensor) => {
-        console.info('Succeeded in getting sensor: ' + JSON.stringify(data));
+        console.info(TAG + 'Succeeded in getting sensor: ' + JSON.stringify(data));
       }, (err: BusinessError) => {
-        console.error(`Failed to get singleSensor . Code: ${err.code}, message: ${err.message}`);
+        console.error(`${TAG}Failed to get singleSensor. Code: ${err.code}, message: ${err.message}`);
       });
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`Failed to get singleSensor . Code: ${e.code}, message: ${e.message}`);
+      console.error(`${TAG}Failed to get singleSensor . Code: ${e.code}, message: ${e.message}`);
     }
     ```
 
     This API returns the result synchronously.
 
-    <!-- @[sensor_js_get_single_sensor_sync_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
-    
+    <!-- @[sensor_js_get_single_sensor_sync_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     try {
       let ret = sensor.getSingleSensorSync(sensor.SensorId.ACCELEROMETER);
-      console.info('Succeeded in getting sensor: ' + JSON.stringify(ret));
+      console.info(TAG + 'Succeeded in getting sensor: ' + JSON.stringify(ret));
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`Failed to get singleSensor . Code: ${e.code}, message: ${e.message}`);
+      console.error(`${TAG}Failed to get singleSensor . Code: ${e.code}, message: ${e.message}`);
     }
     ```

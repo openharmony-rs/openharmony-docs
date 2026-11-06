@@ -2,19 +2,20 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=6f42c56892357e26d0eb3dc52b106f90cd45376c translatedAt=2026-11-04T01:25:29.565Z pushedAt=2026-11-04T01:45:23.327Z nl=1 -->
 
 
 ## Overview
 
-During application development, nesting components – same or different – is common in page layout, especially when the target page is complicated. Yet, nesting components too deeply, or nesting too many components, can be especially expensive. Naturally, optimizing the layout hierarchies can effectively lead to better performance and less time overhead. <!--Del-->For details about how the relative container is more performance-efficient than the list, see **Improving Layout Performance**.<!--DelEnd-->
+During app development, complex UIs often require nesting multiple components of the same or different types. Deeply nested layout components or an excessive number of nested components can introduce additional overhead. Optimizing the layout approach can effectively improve performance and reduce time costs.
 
 The relative layout, implemented using the **RelativeContainer** container component, is used to lay out child elements in relative positions. It is applicable to element alignment in complex scenarios. A child element can use either the container itself or another child element as an anchor to determine its relative position. When using anchors, pay attention to the relative positions of child elements to prevent misplacement or overlapping. The following figure illustrates the concept of **RelativeContainer**, where the dotted lines indicate positional dependencies.
 
 
-  **Figure 1** Relative layout 
+  **Figure 1** Relative layout
 
 ![relative-layout](figures/relative-layout.png)
 
@@ -76,7 +77,7 @@ To properly define an anchor, each child element in **RelativeContainer** must h
     'right': { 'anchor': '__container__', 'align': HorizontalAlign.End }
   }
   let marginLeft: Record<string, number> = { 'left': 20 }
-  let bwc: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
+  let borderWidth: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
   
   @Entry
   @Component
@@ -104,12 +105,12 @@ To properly define an anchor, each child element in **RelativeContainer** must h
         .id('row2')
       }.width(300).height(300)
       .margin(marginLeft)
-      .border(bwc)
+      .border(borderWidth)
     }
   }
   ```
 
-  ![en-us_image_0000001562820901](figures/en-us_image_0000001562820901.png)
+  ![relativeContainerParentComponentId](figures/relativeContainerParentComponentId.png)
 
 - Example of using a sibling element as the anchor:
 
@@ -125,7 +126,7 @@ To properly define an anchor, each child element in **RelativeContainer** must h
     'left': { 'anchor': 'row1', 'align': HorizontalAlign.Start }
   }
   let marginLeft001: Record<string, number> = { 'left': 20 }
-  let bwc001: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
+  let borderWidth001: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
   
   @Entry
   @Component
@@ -153,12 +154,12 @@ To properly define an anchor, each child element in **RelativeContainer** must h
         .id('row2')
       }.width(300).height(300)
       .margin(marginLeft001)
-      .border(bwc001)
+      .border(borderWidth001)
     }
   }
   ```
 
-  ![en-us_image_0000001562940613](figures/en-us_image_0000001562940613.png)
+  ![relativeContainerSiblingComponentId](figures/relativeContainerSiblingComponentId.png)
 
 - Make sure the anchors of a child component do not depend on each other.
 
@@ -183,7 +184,7 @@ To properly define an anchor, each child element in **RelativeContainer** must h
             left: { anchor: '__container__', align: HorizontalAlign.Start }
           })
           .id('row1')
-
+  
           Row() {
             Text('row2')
           }
@@ -196,7 +197,7 @@ To properly define an anchor, each child element in **RelativeContainer** must h
             bottom: { anchor: 'row1', align: VerticalAlign.Center },
           })
           .id('row2')
-
+  
           Row() {
             Text('row3')
           }
@@ -209,7 +210,7 @@ To properly define an anchor, each child element in **RelativeContainer** must h
             right: { anchor: 'row2', align: HorizontalAlign.Start }
           })
           .id('row3')
-
+  
           Row() {
             Text('row4')
           }.justifyContent(FlexAlign.Center)
@@ -247,7 +248,7 @@ Vertical alignment modes include top, center, and bottom, implemented using **Ve
 
 ### Setting the Offset
 
-After relative position alignment, the child component may not reach the desired target position. You can set an offset as needed. When using an offset component as the anchor, the alignment position refers to the position before the offset is applied. Since API version 11, the [Bias](../reference/apis-arkui/arkui-ts/ts-types.md#bias) object has been added. For API version 11 and later, it is recommended that you use **bias** to set additional offsets. For details about how to use **bias**, see [Example 4: Applying Vertical Offsets](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md#example-4-applying-vertical-offsets).
+After relative alignment, a child component may not yet reach the target position. You can set an additional offset as needed. When a component whose position is adjusted using offset serves as an anchor, the alignment position is the position before the offset is applied. Starting from API version 11, the [Bias](../reference/apis-arkui/arkui-ts/ts-types.md#bias11) object is introduced. It is recommended to use bias to set additional offsets in API version 11 and later. For an example of using bias, see [Example 4: Applying Vertical Offsets](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md#example-4-applying-vertical-offsets).
 
   <!-- @[RelativeContainerChildComponentOffset_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerChildComponentOffset.ets) -->
   
@@ -371,7 +372,7 @@ After relative position alignment, the child component may not reach the desired
 
 ## Aligning Components in Multiple Layouts
 
-You can set components in multiple layout components, such as **Row**, **Column**, **Flex**, and **Stack**, to be aligned based on the relative layout rules.
+You can set components in multiple layout components, such as [Row](../reference/apis-arkui/arkui-ts/ts-container-row.md), [Column](../reference/apis-arkui/arkui-ts/ts-container-column.md), [Flex](../reference/apis-arkui/arkui-ts/ts-container-flex.md), and [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md), to be aligned based on the **RelativeContainer** rules.
 
   <!-- @[RelativeContainerDifferentComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerDifferentComponentId.ets) -->
   
@@ -381,7 +382,7 @@ You can set components in multiple layout components, such as **Row**, **Column*
   struct RelativeContainerExample {
     build() {
       Row() {
-
+  
         RelativeContainer() {
           Row()
             .width(100)
@@ -392,7 +393,7 @@ You can set components in multiple layout components, such as **Row**, **Column*
               left: { anchor: '__container__', align: HorizontalAlign.Start }
             })
             .id('row1')
-
+  
           Column()
             .width('50%')
             .height(30)
@@ -402,7 +403,7 @@ You can set components in multiple layout components, such as **Row**, **Column*
               left: { anchor: '__container__', align: HorizontalAlign.Center }
             })
             .id('row2')
-
+  
           Flex({ direction: FlexDirection.Row }) {
             Text('1').width('20%').height(50).backgroundColor('#0a59f7')
             Text('2').width('20%').height(50).backgroundColor('#2ca9e0')
@@ -418,7 +419,7 @@ You can set components in multiple layout components, such as **Row**, **Column*
             right: { anchor: 'row2', align: HorizontalAlign.Center }
           })
           .id('row3')
-
+  
           Stack({ alignContent: Alignment.Bottom }) {
             Text('First child, show in bottom')
               .width('90%')
@@ -435,7 +436,7 @@ You can set components in multiple layout components, such as **Row**, **Column*
             right: { anchor: 'row3', align: HorizontalAlign.End }
           })
           .id('row4')
-
+  
         }
         .width(300).height(300)
         .margin({ left: 50 })
@@ -557,9 +558,9 @@ struct RelativeAlignRulesExample {
 
 ## Creating a Component Chain
 
-Chain formation relies on associations between components. Consider a basic horizontal chain comprising components A and B. The dependency relationship is as follows: Anchor 1 <-- Component A <---> Component B --> Anchor 2, where A has a left anchor, B has a right anchor, A's right anchor aligns with B's HorizontalAlign.Start, and B's left anchor aligns with A's HorizontalAlign.End.
+Chain formation relies on associations between components. Consider a basic horizontal chain comprising components A and B. The dependency relationship is as follows: Anchor 1 <-- Component A <---> Component B --> Anchor 2, where A has a left anchor, B has a right anchor, A's right anchor aligns with B's [HorizontalAlign](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#horizontalalign).Start, and B's left anchor aligns with A's [HorizontalAlign](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#horizontalalign).End.
 * The chain direction and format are declared in the [chainMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainmode12) API of the chain header component. The **bias** attribute for all elements within the chain is ignored, with only the chain header element's **bias** attribute taking effect as the bias for the entire chain. The chain header is the first component that satisfies chain formation rules. It starts from the left in horizontal layouts (or from the right in mirrored language layouts), and from the top in vertical layouts.
-* When the combined size of all chain elements exceeds the chain's anchor constraints, the excess space is evenly distributed to both ends of the chain. In [PACKED](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainstyle12) chains, you can use [Bias](../reference/apis-arkui/arkui-ts/ts-types.md#bias) to control how the excess space is distributed.
+* If the total size of all elements in a chain exceeds the anchor constraints of the chain, the excess is evenly distributed to both sides of the chain. In a [PACKED](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainstyle12) chain, you can use [Bias](../reference/apis-arkui/arkui-ts/ts-types.md#bias11) to set the distribution of the excess.
 
 In the following example, nine **Row** components within the container are grouped into three horizontal chains using **alignRules** and **chainMode**. Components **row1**, **row2**, and **row3** are top-aligned and form a SPREAD chain horizontally; components within the chain are evenly distributed between anchors. Components **row4**, **row5**, and **row6** are centered vertically based on the container and form a SPREAD_INSIDE chain horizontally; the first and last components are aligned with anchors, and others are evenly distributed within the chain. Components **row7**, **row8**, and **row9** are bottom-aligned and form a PACKED chain horizontally; components within the chain have no gaps between them.
 

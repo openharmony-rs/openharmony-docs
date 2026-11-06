@@ -1,12 +1,19 @@
 # @ohos.enterprise.deviceInfo (Device Information Management)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=716304dd0f214493c61a62f4ca83a3f10fd2771c translatedAt=2026-11-03T05:12:02.476Z pushedAt=2026-11-03T12:08:25.536Z nl=1 -->
 
-The **deviceInfo** module provides APIs for enterprise device information management, including obtaining device serial numbers and device names.
+This module provides APIs for enterprise device information management, including obtaining device serial numbers, device names, and SIM card information. Enterprise administrators can use this module to query device details, enabling unified management and tracking of device assets.
+
+**Use cases:**
+- Device asset management and tracking
+- Enterprise device compliance check
+- Device information collection and statistics
+- Fault diagnosis and device identification
 
 > **NOTE**
 >
@@ -38,7 +45,7 @@ Obtains device information.
 
 | Name| Type                                                   | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Enterprise device management extension component, which is used to specify the target application that has the device management capability. The **Want** object must contain **abilityName** (extended ability name) and **bundleName** (application bundle name) parameters.                                              |
 | label  | string                                                  | Yes  | Device information label that can be obtained.<br>- **deviceName**: device name.<br>- **deviceSerial**: device serial number.<br>- **simInfo**: SIM card information.<!--RP1--><!--RP1End-->|
 
 **Return value**
@@ -55,6 +62,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
+| 9200007 | The system ability works abnormally. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 

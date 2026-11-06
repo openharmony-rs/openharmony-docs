@@ -1,17 +1,18 @@
 # Animation with the transform Attribute
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=5c418d4bf2581cd8ca625b8865e73773ebc27789 translatedAt=2026-10-29T09:02:08.908Z pushedAt=2026-10-30T02:58:12.084Z nl=1 -->
 
 Set the **transform** attribute for component rotation, scaling, translation, and skewing.
 
 
 ## Designing Static Animation
 
-Create a square and rotate it by 90 degrees to form a rhombus. Cover the lower part of the rhombus with a rectangle to form a roof. Set the **translate** attribute of the rectangle to the coordinate (150px, -150px) to form a door, use the **position** attribute to translate the horizontal and vertical axes to the specified coordinates of the parent component (square), set the **scale** attribute to scale up the parent and child components together to determine the window size, and use the **skewX** attribute to skew the component and set the coordinate **translate(200px,-710px)** to form a chimney.
+Create a square and rotate it by 90° to turn it into a rhombus, then use the rectangle below to cover the lower half of the rhombus to form the roof. Set the rectangle's translate attribute value to (150px,-137px) to determine the coordinate position and form the door. Then use the position attribute to move the horizontal and vertical lines along with the parent component (the square) to the specified coordinate position. Next, set the scale attribute to enlarge the parent and child components together to form the window size. Finally, use the skewX attribute to tilt the component, and then set the coordinates translate(200px,-710px) to obtain the chimney.
 
 ```html
 <!-- xxx.hml -->
@@ -147,7 +148,7 @@ Decrease the y-coordinate over a time frame to make the ball bounce back. Gradua
   25%{
     transform: translate(20px,500px);
   }
-  /* Let the ball fall. */
+  /* Start ball falling. */
   35%{
     transform: translate(30px,900px);
   }
@@ -309,7 +310,7 @@ Set the rotation center around an element in different **transform-origin** posi
 
 ![Designing-Rotation-Animation](figures/Designing-Rotation-Animation.gif)
 
-> **NOTE**
+> **NOTE** 
 >
 > **transform-origin** specifies the origin of an element's transformation. If only one value is set, the other value is **50%**. If both values are set, the first value indicates the position on the x-axis, and the second value indicates the position on the y-axis.
 
@@ -422,14 +423,14 @@ text{
 
 ![Designing-Scaling-Animation](figures/Designing-Scaling-Animation.gif)
 
-> **NOTE**
+> **NOTE** 
 >
 > After the **transform** attributes are set, the child element changes with the parent element. Value changing of other attributes (such as **height** and **width**) of the parent element will not affect the child element.
 
 
 ## Setting matrix
 
-The **matrix** attribute defines a transformation matrix with six input parameters: **scaleX**, **skewY**, **skewX**, **scaleY**, **translateX**, and **translateY**. In the following example, the matrix attribute is set to matrix(1,0,0,1,0,200) to move and tilt the component.
+The **matrix** attribute defines a transformation matrix with six parameters: **scaleX**, **skewY**, **skewX**, **scaleY**, **translateX**, and **translateY**. In the following example, **matrix** is set to **matrix(1,0,0,1,0,200)** to skew and translate the component.
 
 ```html
 <!-- xxx.hml -->
@@ -582,9 +583,19 @@ You can set multiple **transform** attributes at the same time to apply differen
 ![Integrating-transform-Attributes](figures/Integrating-transform-Attributes.gif)
 
 > **NOTE**
->
 > - When multiple **transform** attributes are set, the later one overwrites the previous one. To apply multiple transform styles at the same time, use the shorthand notation; that is, write multiple style values in one **transform**, for example, **transform: scale(1) rotate(0) translate(0,0)**.
 >
 > - When using the shorthand notation, note that the animation effect varies according to the sequence of the style values.
 >
 > - The style values in the **transform** attribute used when the animation starts and ends must be in one-to-one mapping. Only the styles that have value mappings are played.
+
+
+## Samples
+
+The following samples are provided to help you better understand how to develop transform:
+
+- [JSClock: Clock (JS, API version 10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Tools/JsClock)
+
+- [Animation Styles (JS, API version 9)](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/AnimationDemo)
+
+- [Common Image Operations (JS, API version 9)](https://gitcode.com/openharmony/codelabs/tree/master/Media/ImageOperation)

@@ -3,16 +3,17 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=7fe4eacae9c952d492316e40f501d71d3714186d translatedAt=2026-09-03T09:59:45.767Z pushedAt=2026-09-05T10:47:30.241Z -->
 
-The appManager module implements application management. You can use the APIs of this module to query whether the application is undergoing a stability test, whether the application is running on a RAM constrained device, the memory size of the application, and information about the running process.
+The appManager module provides application management capabilities, including querying whether the application is undergoing a stability test, whether the device is RAM-constrained, obtaining the memory size of an application, and obtaining information about running processes.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.ability.appManager (appManager)](js-apis-app-ability-appManager.md).
+> This page contains only the system APIs of this module. For details about other public APIs, see [@ohos.app.ability.appManager (Application Management)](js-apis-app-ability-appManager.md).
 
 ## Modules to Import
 
@@ -40,7 +41,7 @@ Enumerates the types of applications to be kept alive.
 
 **System API**: This is a system API.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+**System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 | Name       | Value | Description|
 | -------- | ---------- | -------- |
@@ -54,7 +55,7 @@ Enumerates the types of parties that set to keep applications alive.
 
 **System API**: This is a system API.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+**System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 | Name       | Value | Description|
 | -------- | ---------- | -------- |
@@ -73,8 +74,8 @@ Describes the keep-alive application information, which can be obtained by calli
 | ------------------------- | ------ | ---- | ---- | --------- |
 | bundleName   | string | No| No | Bundle name.|
 | type       | [KeepAliveAppType](#keepaliveapptype14) | No| No| Type of the application to be kept alive.  |
-| setter       | [KeepAliveSetter](#keepalivesetter14) | No| No| Type of the party that sets to keep the application alive.  |
-| setterUserId<sup>20+</sup>   | number | No| Yes | ID of the user who keeps the application alive.|
+| setter       | [KeepAliveSetter](#keepalivesetter14) | No | No | Type of the application keep-alive setter.   |
+| setterUserId<sup>20+</sup>   | number | No | Yes  | User ID of the application keep-alive setter. |
 | allowUserToCancel<sup>20+</sup>   | boolean | No| Yes | Whether the user can cancel the keep-alive status. **true** if yes, **false** otherwise.|
 
 ## appManager.isSharedBundleRunning<sup>10+</sup>
@@ -100,7 +101,7 @@ Checks whether the shared library is in use. This API uses a promise to return t
 
 | Type| Description|
 | -------- | -------- |
-| Promise\<boolean> | Promise used to return the result. **true** if the shared library is in use, **false** otherwise.|
+| Promise\<boolean> | Promise object. The value true indicates that the shared library is in use, and the value false indicates that the shared library is not in use. |
 
 **Error codes**
 
@@ -119,7 +120,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const bundleName = "this is a bundleName";
+const bundleName = 'com.example.myapplication';
 const versionCode = 1;
 
 appManager.isSharedBundleRunning(bundleName, versionCode).then((data) => {
@@ -147,7 +148,7 @@ Checks whether the shared library is in use. This API uses an asynchronous callb
 | --------- | ---------------------------------------- | ---- | -------------- |
 | bundleName    | string   | Yes   | Bundle name of the shared library.|
 | versionCode   | number   | Yes   | Version number of the shared library.     |
-| callback    | AsyncCallback\<boolean>> | Yes   | Callback used to return the result. **true** if the shared library is in use, **false** otherwise.|
+| callback    | AsyncCallback\<boolean> | Yes    | Callback function. Returns true if the shared library is in use, and false otherwise. |
 
 **Error codes**
 
@@ -165,7 +166,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { appManager } from '@kit.AbilityKit';
 
-const bundleName = "this is a bundleName";
+const bundleName = 'com.example.myapplication';
 const versionCode = 1;
 
 appManager.isSharedBundleRunning(bundleName, versionCode, (err, data) => {
@@ -181,7 +182,7 @@ appManager.isSharedBundleRunning(bundleName, versionCode, (err, data) => {
 
 on(type: 'appForegroundState', observer: AppForegroundStateObserver): void
 
-Registers an observer to listen for application start or exit events. The observer can be used by a system application to observe the start or event events of all applications.
+Registers a listener for application startup, foreground and background, and exit. It can be used by system applications to listen for the startup, foreground and background, and exit of all applications.
 
 **System API**: This is a system API.
 
@@ -194,7 +195,7 @@ Registers an observer to listen for application start or exit events. The observ
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type. It is fixed at **'appForegroundState'**.|
-| observer | [AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md) | Yes| Observer used to listen for application start or exit events.|
+| observer | [AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md) | Yes | Application state observer used to listen for the startup, foreground and background, and exit of an application. |
 
 **Error codes**
 
@@ -245,7 +246,7 @@ Registers an observer to listen for the complete of the first frame rendering of
 | Name    | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type       | string                                                       | Yes  | Event type. It is fixed at **'abilityFirstFrameState'**.        |
-| observer   | [AbilityFirstFrameStateObserver](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md) | Yes  | Observer used to listen for the complete of the first frame rendering of the ability.             |
+| observer   | [AbilityFirstFrameStateObserver](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md#abilityfirstframestateobserver) | Yes   | Observer object for the Ability first frame rendering completion event to be registered.              |
 | bundleName | string                                                       | No  | Bundle name of the ability to be listened for. If this parameter is left blank, the event is listened for all applications.|
 
 **Error codes**
@@ -267,7 +268,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let abilityFirstFrameStateObserverForAll: appManager.AbilityFirstFrameStateObserver = {
   onAbilityFirstFrameDrawn(abilityStateData: appManager.AbilityFirstFrameStateData) {
-    console.info("abilityFirstFrame: ", JSON.stringify(abilityStateData));
+    console.info('abilityFirstFrame: ', JSON.stringify(abilityStateData));
   }
 };
 
@@ -284,7 +285,7 @@ try {
 
 off(type: 'appForegroundState', observer?: AppForegroundStateObserver): void
 
-Unregisters the observer used to listen for application start or exit events.
+Unregisters the listener for application startup, foreground and background, and exit.
 
 **System API**: This is a system API.
 
@@ -297,7 +298,7 @@ Unregisters the observer used to listen for application start or exit events.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type. It is fixed at **'appForegroundState'**.|
-| observer | [AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md) | No| Observer used to listen for application start or exit events.|
+| observer | [AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md) | No | Application startup, foreground and background, and exit observer to unregister. If this parameter is left empty, all observed objects are unregistered. |
 
 **Error codes**
 
@@ -316,7 +317,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let observer_: appManager.AppForegroundStateObserver | undefined;
+let savedObserver: appManager.AppForegroundStateObserver | undefined;
 // 1. Register an observer to listen for application start or exit events.
 let observer: appManager.AppForegroundStateObserver = {
   onAppStateChanged(appStateData: appManager.AppStateData) {
@@ -327,7 +328,7 @@ let observer: appManager.AppForegroundStateObserver = {
 try {
   appManager.on('appForegroundState', observer);
   // Save the observer object.
-  observer_ = observer;
+  savedObserver = observer;
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
   let message = (paramError as BusinessError).message;
@@ -336,7 +337,7 @@ try {
 
 // 2. Deregister the observer.
 try {
-  appManager.off('appForegroundState',  observer_);
+  appManager.off('appForegroundState',  savedObserver);
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
   let message = (paramError as BusinessError).message;
@@ -361,7 +362,7 @@ Deregisters the observer used to listen for the complete of the first frame rend
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. It is fixed at **'abilityFirstFrameState'**.        |
-| observer | [AbilityFirstFrameStateObserver](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md) | No  | Callback used for deregistration. If this parameter is left blank, all subscriptions to the specified event are canceled.|
+| observer | [AbilityFirstFrameStateObserver](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md#abilityfirstframestateobserver) | No | Observer object of the Ability first frame rendering completion event to be unsubscribed. If this parameter is left empty, all observed objects are unsubscribed. |
 
 **Error codes**
 
@@ -382,7 +383,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let abilityFirstFrameStateObserverForAll: appManager.AbilityFirstFrameStateObserver = {
   onAbilityFirstFrameDrawn(abilityStateData: appManager.AbilityFirstFrameStateData) {
-    console.info("abilityFirstFrame: ", JSON.stringify(abilityStateData));
+    console.info('abilityFirstFrame: ', JSON.stringify(abilityStateData));
   }
 };
 
@@ -437,6 +438,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | -------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module.|
 
 **Example**
@@ -588,13 +590,16 @@ appManager.getForegroundApplications().then((data) => {
 
 killProcessWithAccount(bundleName: string, accountId: number): Promise\<void\>
 
-Kills a process by bundle name and account ID. This API uses a promise to return the result.
+Kills the application process under the specified system account. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
 > The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is not required when **accountId** specifies the current user.
 
-**Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, ohos.permission.KILL_APP_PROCESSES, or ohos.permission.CLEAN_BACKGROUND_PROCESSES
+**Required permissions:**
+
+- API versions 9 to 13: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS and ohos.permission.CLEAN_BACKGROUND_PROCESSES
+- API version 14 and later: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS and ohos.permission.KILL_APP_PROCESSES, or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS and ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -650,13 +655,13 @@ try {
 
 killProcessWithAccount(bundleName: string, accountId: number, clearPageStack: boolean, appIndex?: number): Promise\<void\>
 
-Kills a process by bundle name and account ID. This API uses a promise to return the result.
+Kills the application process under the specified system account. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
 > The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is not required when **accountId** specifies the current user.
 
-**Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS and ohos.permission.CLEAN_BACKGROUND_PROCESSES
+**Required permissions:** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS and ohos.permission.KILL_APP_PROCESSES, or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS and ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -669,7 +674,7 @@ Kills a process by bundle name and account ID. This API uses a promise to return
 | bundleName | string | Yes| Bundle name.|
 | accountId | number | Yes| ID of a system account. For details, see [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).|
 | clearPageStack | boolean | Yes| Whether to clear the page stack. **true** to clear, **false** otherwise.|
-| appIndex | number | No| Index of an application clone.|
+| appIndex | number | No | Application clone ID. The value must be an integer greater than or equal to 0, and the default value **0** indicates the main application. Pass this parameter when the process of a specified clone application needs to be terminated. If this parameter is not passed, the main application is processed by default. |
 
 **Return value**
 
@@ -685,7 +690,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | -------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
-| 401 | If the input parameter is not valid parameter. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
 **Example**
@@ -716,13 +721,16 @@ try {
 
 killProcessWithAccount(bundleName: string, accountId: number, callback: AsyncCallback\<void\>): void
 
-Kills a process by bundle name and account ID. This API uses an asynchronous callback to return the result.
+Terminates the application process under a specified system account. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
 > The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is not required when **accountId** specifies the current user.
 
-**Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, ohos.permission.KILL_APP_PROCESSES, or ohos.permission.CLEAN_BACKGROUND_PROCESSES
+**Required Permission:**
+
+- API version 9 to 13: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS and ohos.permission.CLEAN_BACKGROUND_PROCESSES
+- API version 14 or later: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS and ohos.permission.KILL_APP_PROCESSES, or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS and ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -769,11 +777,18 @@ appManager.killProcessWithAccount(bundleName, accountId, killProcessWithAccountC
 
 ## appManager.killProcessesByBundleName
 
-killProcessesByBundleName(bundleName: string, callback: AsyncCallback\<void>)
+killProcessesByBundleName(bundleName: string, callback: AsyncCallback\<void>): void
 
-Kills a process by bundle name. This API uses an asynchronous callback to return the result.
+Terminates the process of the main application by bundle name. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
+> **NOTE**
+>
+> This API does not support terminating the process of an application clone.
+
+**Required Permission:**
+
+- API version 9 to 13: ohos.permission.CLEAN_BACKGROUND_PROCESSES
+- API version 14 or later: ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -826,9 +841,16 @@ try {
 
 killProcessesByBundleName(bundleName: string): Promise\<void>
 
-Kills a process by bundle name. This API uses a promise to return the result.
+Terminates the process of the main application by bundle name. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
+> **NOTE**
+>
+> This API does not support terminating the process of a clone application.
+
+**Required Permission:**
+
+- API version 9 to 13: ohos.permission.CLEAN_BACKGROUND_PROCESSES
+- API version 14 or later: ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -955,7 +977,7 @@ Clears application data by bundle name. This API uses a promise to return the re
 
 | Type| Description|
 | -------- | -------- |
-| Promise\<void> | Promise used to return the API call result. You can perform error handling or custom processing in this callback.|
+| Promise\<void> | Promise object. A Promise object that returns no value. |
 
 **Error codes**
 
@@ -1003,7 +1025,7 @@ Obtains the memory size of a process. This API uses an asynchronous callback to 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| pid | number | Yes| Process ID. For details, see [getRunningProcessInfoByBundleName](#appmanagergetrunningprocessinfobybundlename10).|
+| pid | number | Yes | Process ID. For details, see [getRunningProcessInfoByBundleName](#appmanagergetrunningprocessinfobybundlename10). |
 | callback | AsyncCallback\<number> | Yes| Callback used to return the API call result and the memory size (in KB). You can perform error handling or custom processing in this callback.|
 
 **Error codes**
@@ -1054,7 +1076,7 @@ Obtains the memory size of a process. This API uses a promise to return the resu
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| pid | number | Yes| Process ID. For details, see [getRunningProcessInfoByBundleName](#appmanagergetrunningprocessinfobybundlename10). |
+| pid | number | Yes | Process ID. For details, see [getRunningProcessInfoByBundleName](#appmanagergetrunningprocessinfobybundlename10). |
 
 **Return value**
 
@@ -1097,7 +1119,7 @@ try {
 
 getRunningProcessInfoByBundleName(bundleName: string, callback: AsyncCallback\<Array\<ProcessInformation>>): void
 
-Obtains information about the running processes by bundle name. This API uses an asynchronous callback to return the result.
+Obtains the running process information of the main application and clone applications of the current user by bundle name. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1126,7 +1148,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName = "bundleName";
+let bundleName = 'bundleName';
 function getRunningProcessInfoByBundleNameCallback(err: BusinessError, data: Array<appManager.ProcessInformation>) {
   if (err) {
     console.error(`getRunningProcessInfoByBundleNameCallback fail, err: ${JSON.stringify(err)}`);
@@ -1148,7 +1170,7 @@ try {
 
 getRunningProcessInfoByBundleName(bundleName: string): Promise\<Array\<ProcessInformation>>
 
-Obtains information about the running processes by bundle name. This API uses a promise to return the result.
+Obtains the running process information of the main application and clone applications of the current user by bundle name. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1182,7 +1204,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName = "bundleName";
+let bundleName = 'bundleName';
 
 try {
   appManager.getRunningProcessInfoByBundleName(bundleName).then((data) => {
@@ -1201,7 +1223,7 @@ try {
 
 getRunningProcessInfoByBundleName(bundleName: string, userId: number, callback: AsyncCallback\<Array\<ProcessInformation>>): void
 
-Obtains information about the running processes by bundle name and user ID. This API uses an asynchronous callback to return the result.
+Obtains the running process information of the corresponding main application and clone applications by bundle name and user ID. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1212,7 +1234,7 @@ Obtains information about the running processes by bundle name and user ID. This
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | bundleName | string | Yes| Bundle name.|
-| userId | number | Yes| User ID.|
+| userId | number | Yes | User ID. |
 | callback | AsyncCallback\<Array\<[ProcessInformation](js-apis-inner-application-processInformation.md)>> | Yes| Callback used to return the API call result and the process running information. You can perform error handling or custom processing in this callback.|
 
 **Error codes**
@@ -1231,7 +1253,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName = "bundleName";
+let bundleName = 'bundleName';
 let userId = 0;
 function getRunningProcessInfoByBundleNameCallback(err: BusinessError, data: Array<appManager.ProcessInformation>) {
   if (err) {
@@ -1254,7 +1276,7 @@ try {
 
 getRunningProcessInfoByBundleName(bundleName: string, userId: number): Promise\<Array\<ProcessInformation>>
 
-Obtains information about the running processes by bundle name and user ID. This API uses a promise to return the result.
+Obtains the running process information of the corresponding main application and clone applications by bundle name and user ID. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1265,7 +1287,7 @@ Obtains information about the running processes by bundle name and user ID. This
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | bundleName | string | Yes| Bundle name.|
-| userId | number | Yes| User ID.|
+| userId | number | Yes | User ID. |
 
 **Return value**
 
@@ -1289,7 +1311,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName = "bundleName";
+let bundleName = 'bundleName';
 let userId = 0;
 
 try {
@@ -1309,7 +1331,11 @@ try {
 
 isApplicationRunning(bundleName: string): Promise\<boolean>
 
-Checks whether the application with the specified bundle name is running across all users. This API uses a promise to return the result.
+Checks whether the main application with the specified bundle name is running under all users. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API does not support querying whether an application clone is running.
 
 **System API**: This is a system API.
 
@@ -1346,7 +1372,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName = "com.example.myapplication";
+let bundleName = 'com.example.myapplication';
 
 appManager.isApplicationRunning(bundleName).then((data) => {
   console.info(`The application running is: ${JSON.stringify(data)}`);
@@ -1359,7 +1385,11 @@ appManager.isApplicationRunning(bundleName).then((data) => {
 
 isApplicationRunning(bundleName: string, callback: AsyncCallback\<boolean>): void
 
-Checks whether the application with the specified bundle name is running across all users. This API uses an asynchronous callback to return the result.
+Checks whether the main application with the specified bundle name is running for all users. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API does not support querying whether an application clone is running.
 
 **System API**: This is a system API.
 
@@ -1391,7 +1421,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName = "com.example.myapplication";
+let bundleName = 'com.example.myapplication';
 
 try {
   appManager.isApplicationRunning(bundleName, (err, data) => {
@@ -1429,7 +1459,7 @@ Enumerates the application states. This enum can be used together with [AbilityS
 
 getRunningProcessInformationByBundleType(bundleType: bundleManager.BundleType): Promise\<Array\<ProcessInformation>>
 
-Obtains the information about the running process based on the bundle type. This API uses a promise to return the result.
+Obtains information about the current running processes by bundle type. This information can be used for classified management of running processes or resource monitoring. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1486,6 +1516,10 @@ preloadApplication(bundleName: string, userId: number, mode: PreloadMode, appInd
 
 Preloads an application process. A successful call does not always mean that the preloading is successful. In other words, the target application process may not be created even if the API is successfully called. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> This API does not support preloading an application clone. The **appIndex** parameter can only be set to **0**. Passing any other value returns error code 16000050.
+
 **Required permissions**: ohos.permission.PRELOAD_APPLICATION
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
@@ -1499,9 +1533,9 @@ Preloads an application process. A successful call does not always mean that the
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | bundleName | string | Yes| Bundle name of the application to preload.|
-| userId | number | Yes| User ID.|
+| userId | number | Yes | ID of the user to preload. |
 | mode | [PreloadMode](#appmanagerpreloadmode12) | Yes| Mode used for preloading.|
-| appIndex | number | No| Application index of the twin application to be preloaded.|
+| appIndex | number | No | appIndex of the preloaded application clone. This parameter can only be set to 0. Preloading application clones is not supported currently. |
 
 **Return value**
 
@@ -1517,7 +1551,7 @@ Preloads an application process. A successful call does not always mean that the
 | ------- | -------- |
 | 201 | The application does not have permission to call the interface. |
 | 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 | 16300005 | The target bundle does not exist. |
 
@@ -1529,7 +1563,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let bundleName = "ohos.samples.etsclock";
+  let bundleName = 'ohos.samples.etsclock';
   let userId = 100;
   let mode = appManager.PreloadMode.PRESS_DOWN;
   let appIndex = 0;
@@ -1549,7 +1583,7 @@ try {
 
 getRunningMultiAppInfo(bundleName: string): Promise\<RunningMultiAppInfo>
 
-Obtains the information about running applications in multi-app mode. The multi-app mode means that an application can be simultaneously logged in with different accounts on the same device. This API uses a promise to return the result.
+Obtains information about the running application clones (multiple instances of the same application running on one device) by bundle name. This information can be used for multi-instance management or resource allocation. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.GET_RUNNING_INFO
 
@@ -1579,7 +1613,7 @@ Obtains the information about running applications in multi-app mode. The multi-
 | ------- | -------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000072 | App clone or multi-instance is not supported. |
 | 18500001 | The bundle does not exist or no patch has been applied. |
 
@@ -1591,14 +1625,14 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let bundleName = "ohos.samples.etsclock";
+  let bundleName = 'ohos.samples.etsclock';
   appManager.getRunningMultiAppInfo(bundleName).then((info: appManager.RunningMultiAppInfo) => {
       hilog.info(0x0000, 'testTag', `getRunningMultiAppInfo success`);
     }).catch((err: BusinessError) => {
       hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
     })
 } catch (err) {
-  hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
+  hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${(err as BusinessError).code}, msg:${(err as BusinessError).message}`);
 }
 ```
 
@@ -1670,9 +1704,9 @@ struct Index {
 
 ## appManager.getSupportedProcessCachePids<sup>14+</sup>
 
-getSupportedProcessCachePids(bundleName : string): Promise\<Array\<number>>
+getSupportedProcessCachePids(bundleName: string): Promise\<Array\<number>>
 
-Obtains the PIDs of processes that support quick startup after caching in a specified application. This API uses a promise to return the result.
+Obtains the PIDs of processes that support quick startup after caching in the current application. This information can be used for process management. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -1718,14 +1752,14 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let bundleName = "ohos.samples.processcache";
+  let bundleName = 'ohos.samples.processcache';
   appManager.getSupportedProcessCachePids(bundleName).then((pids: Array<number>) => {
       hilog.info(0x0000, 'testTag', `pids: ${JSON.stringify(pids)}`);
     }).catch((err: BusinessError) => {
       hilog.error(0x0000, 'testTag', `get pids error, code: ${err.code}, msg:${err.message}`);
     })
 } catch (err) {
-  hilog.error(0x0000, 'testTag', `get pids error, code: ${err.code}, msg:${err.message}`);
+  hilog.error(0x0000, 'testTag', `get pids error, code: ${(err as BusinessError).code}, msg:${(err as BusinessError).message}`);
 }
 ```
 
@@ -1746,7 +1780,7 @@ Clears data of a specified application based on the bundle name and application 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | bundleName | string | Yes| Bundle name.|
-| appCloneIndex | number | No| Index of the application clone.|
+| appCloneIndex | number | No | Application clone index. Pass this parameter when you need to clear the data of a specified clone application. If this parameter is not passed, the data of the main application is cleared by default (appCloneIndex is 0). |
 
 **Return value**
 
@@ -1796,15 +1830,16 @@ Sets or cancels the keep-alive status for an application that belongs to a speci
 
 > **NOTE**
 >
->- To support keep-alive, **mainElement** in the [module.json5](../../quick-start/module-configuration-file.md) file of the application must be a UIAbility. The system initiates the keep-alive operation only when this mainElement has been launched.
->- On 2-in-1 devices, the application must appear in the status bar within 5 seconds of launch. Otherwise, the system revokes the application's keep-alive status and terminate the restarted process.
->- When the kept-alive application process exits, the system attempts to restart it. If three consecutive restart attempts fail, the system stops restarting the process.
+>- To support keep-alive, the **mainElement** in the [module.json5 configuration file](../../quick-start/module-configuration-file.md) of the application must be a UIAbility. The system performs the application keep-alive operation only after the mainElement is started.
+>- On PC/2-in-1 devices, a keep-alive application must be added to the status bar within 5 seconds after startup. Otherwise, the system cancels the keep-alive setting of the application and kills the process restarted for keep-alive.
+>- When the process of a keep-alive application exits, the system attempts to restart the process. After three consecutive restart failures, the system stops restarting it.
+>- This API does not support setting or canceling the keep-alive state of an application clone (specified user and bundle name).
 
 **Permission required**: ohos.permission.MANAGE_APP_KEEP_ALIVE
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: Starting from API version 18, this API can be properly called only on 2-in-1 devices and wearables. For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior difference**: Since API version 18, this API takes effect only on PC/2-in-1 and wearable devices. For versions earlier than API version 18, this API takes effect only on PC/2-in-1 devices. In other cases, calling this API returns error code 801.
 
 **System API**: This is a system API.
 
@@ -1845,7 +1880,7 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let bundleName = "ohos.samples.keepaliveapp";
+  let bundleName = 'ohos.samples.keepaliveapp';
   let userId = 100;
   appManager.setKeepAliveForBundle(bundleName, userId, true).then(() => {
     console.info(`setKeepAliveForBundle success`);
@@ -1863,7 +1898,7 @@ try {
 
 getKeepAliveBundles(type: KeepAliveAppType, userId?: number): Promise\<Array\<KeepAliveBundleInfo>>
 
-Obtains information about a specified type of keep-alive application of a user. The application information is defined by [KeepAliveBundleInfo](#keepalivebundleinfo14). This API uses a promise to return the result.
+Obtains the keep-alive application information of the specified type for the specified user. This API can be used for keep-alive application management or resource monitoring. The application information is defined by [KeepAliveBundleInfo](#keepalivebundleinfo14). This API uses a promise to return the result.
 
 **Permission required**: ohos.permission.MANAGE_APP_KEEP_ALIVE
 
@@ -1878,7 +1913,7 @@ Obtains information about a specified type of keep-alive application of a user. 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type    | [KeepAliveAppType](#keepaliveapptype14)   | Yes   | Type of the application.|
-| userId    | number   | No   | User ID.|
+| userId    | number   | No    | User ID of the keep-alive application to query. Pass this parameter when you need to query the keep-alive applications of a specific user. If this parameter is not passed, the keep-alive applications of the current user are queried by default. |
 
 **Return value**
 
@@ -2030,7 +2065,7 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let bundleName = "ohos.samples.keepaliveapp";
+  let bundleName = 'ohos.samples.keepaliveapp';
   appManager.setKeepAliveForAppServiceExtension(bundleName, true).then(() => {
     console.info(`setKeepAliveForAppServiceExtension success`);
   }).catch((err: BusinessError) => {
@@ -2047,8 +2082,7 @@ try {
 
 getKeepAliveAppServiceExtensions(): Promise\<Array\<KeepAliveBundleInfo>>
 
-Obtains information about all AppServiceExtensionAbility components that are kept alive. The information is defined by [KeepAliveBundleInfo](#keepalivebundleinfo14). This API uses a promise to return the result.
-
+Obtains the information about all keep-alive AppServiceExtensionAbility applications. The information is defined by [KeepAliveBundleInfo](#keepalivebundleinfo14) and can be used for service management or resource monitoring. This API uses a promise to return the result.
 
 **Permission required**: ohos.permission.MANAGE_APP_KEEP_ALIVE
 
@@ -2094,21 +2128,109 @@ try {
 }
 ```
 
+## appManager.getProcessRunningInfos<sup>(deprecated)</sup>
+
+getProcessRunningInfos(): Promise\<Array\<ProcessInformation>>
+
+Obtains information about running processes. This API uses a promise to return the result asynchronously.
+
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [appManager.getRunningProcessInformation](js-apis-app-ability-appManager.md#appmanagergetrunningprocessinformation) instead.
+
+**Required Permission**: ohos.permission.GET_RUNNING_INFO (available only to system applications)
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**System API**: This is a system API.
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise\<Array\<[ProcessInformation](js-apis-inner-application-processInformation.md)>> | Promise object used to return the information about running processes. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID | Error Message |
+| ------- | -------- |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
+
+**Example**
+
+  ```ts
+  import appManager from '@ohos.application.appManager';
+  import { BusinessError } from '@ohos.base';
+
+  appManager.getProcessRunningInfos().then((data) => {
+    console.info(`The process running infos is: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`error: ${JSON.stringify(error)}`);
+  });
+  ```
+
+## appManager.getProcessRunningInfos<sup>(deprecated)</sup>
+
+getProcessRunningInfos(callback: AsyncCallback\<Array\<ProcessInformation>>): void
+
+Obtains information about running processes. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [appManager.getRunningProcessInformation](js-apis-app-ability-appManager.md#appmanagergetrunningprocessinformation) instead.
+
+**Required Permission:** ohos.permission.GET_RUNNING_INFO (available only to system applications)
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| callback | AsyncCallback\<Array\<[ProcessInformation](js-apis-inner-application-processInformation.md)>> | Yes | Callback invoked to return the information about running processes. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID | Error Message |
+| ------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
+
+**Example**
+
+  ```ts
+  import appManager from '@ohos.application.appManager';
+
+  appManager.getProcessRunningInfos((error, data) => {
+    if (error && error.code !== 0) {
+      console.error(`getProcessRunningInfos fail, error: ${JSON.stringify(error)}`);
+    } else {
+      console.info(`getProcessRunningInfos success, data: ${JSON.stringify(data)}`);
+    }
+  });
+  ```
+
 ## AppForegroundStateObserver<sup>11+</sup>
 
-type AppForegroundStateObserver = _AppForegroundStateObserver
+type AppForegroundStateObserver = _AppForegroundStateObserver.default
 
-Defines the listener for the state of application launch and exit.
+Observes the application startup, foreground and background, and exit states.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 | Type| Description|
 | --- | --- |
-| [_AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md) | Listener for the state of application launch and exit.|
+| [_AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md).default | Observes the application startup, foreground and background, and exit states. |
 
 ## AbilityFirstFrameStateObserver<sup>12+</sup>
 
-type AbilityFirstFrameStateObserver = _AbilityFirstFrameStateObserver
+type AbilityFirstFrameStateObserver = _AbilityFirstFrameStateObserver.default
 
 Defines the listener for the completion of the first frame rendering of the UIAbility.
 
@@ -2116,11 +2238,11 @@ Defines the listener for the completion of the first frame rendering of the UIAb
 
 | Type| Description|
 | --- | --- |
-| [_AbilityFirstFrameStateObserver](js-apis-inner-application-abilityFirstFrameStateData-sys.md) | Listener for the completion of the first frame rendering of the UIAbility.|
+| [AbilityFirstFrameStateObserver](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md#abilityfirstframestateobserver).default | Observed object for the UIAbility first frame rendering completion event. |
 
 ## AbilityFirstFrameStateData<sup>12+</sup>
 
-type AbilityFirstFrameStateData = _AbilityFirstFrameStateData
+type AbilityFirstFrameStateData = _AbilityFirstFrameStateData.default
 
 Defines the data structure reported when the first frame rendering of the UIAbility is complete.
 
@@ -2128,7 +2250,7 @@ Defines the data structure reported when the first frame rendering of the UIAbil
 
 | Type| Description|
 | --- | --- |
-| [_AbilityFirstFrameStateData](js-apis-inner-application-abilityFirstFrameStateData-sys.md) | Data structure reported when the first frame rendering of the UIAbility is complete.|
+| [_AbilityFirstFrameStateData](js-apis-inner-application-abilityFirstFrameStateData-sys.md).default | Data structure reported by the callback when the first frame rendering of the UIAbility is complete. |
 
 ## RunningMultiAppInfo<sup>12+</sup>
 
@@ -2144,7 +2266,7 @@ Defines the information of an application in multi-app mode in the running state
 
 ## FilterBundleType<sup>21+</sup>
 
-Enumerates the types of applications to filter. It can be used with [AppStateFilter](#appstatefilter21) to filter the application types you want to listen for.
+Represents the application types to observe. This is an enum. It can be used with [AppStateFilter](#appstatefilter21) to filter the application types to observe.
 
 **System API**: This is a system API.
 
@@ -2152,8 +2274,8 @@ Enumerates the types of applications to filter. It can be used with [AppStateFil
 
 | Name       | Value | Description|
 | -------- | ---------- | -------- |
-| APP | 1 | Application.|
-| ATOMIC_SERVICE | 2 | Atomic service.|
+| APP | 1 << 0 | Application. |
+| ATOMIC_SERVICE | 1 << 1 | Atomic service. |
 
 ## FilterAppStateType<sup>21+</sup>
 
@@ -2165,10 +2287,10 @@ Enumerates the types of application states to filter. It can be used with [AppSt
 
 | Name       | Value | Description|
 | -------- | ---------- | -------- |
-| CREATE | 1 | The application is initializing. It corresponds to the state whose value is **0** in [AppStateData](js-apis-inner-application-appStateData.md#properties).|
-| FOREGROUND | 2 | The application is running in the foreground. It corresponds to the state whose value is **2** in [AppStateData](js-apis-inner-application-appStateData.md#properties).|
-| BACKGROUND | 4 | The application is running in the background. It corresponds to the state whose value is **4** in [AppStateData](js-apis-inner-application-appStateData.md#properties).|
-| DESTROY | 8 | The application has exited. It corresponds to the state whose value is **5** in [AppStateData](js-apis-inner-application-appStateData.md#properties).|
+| CREATE | 1 << 0 | The application is being initialized, corresponding to the state where the value of **state** in the [properties](js-apis-inner-application-appStateData.md#properties) of AppStateData is 0. |
+| FOREGROUND | 1 << 1 | The application is in the foreground, corresponding to the state where the value of **state** in the [properties](js-apis-inner-application-appStateData.md#properties) of AppStateData is 2. |
+| BACKGROUND | 1 << 2 | The application is in the background, corresponding to the state where the value of **state** in the [properties](js-apis-inner-application-appStateData.md#properties) of AppStateData is 4. |
+| DESTROY | 1 << 3 | The application has exited, corresponding to the state where the value of **state** in the [properties](js-apis-inner-application-appStateData.md#properties) of AppStateData is 5. |
 
 ## FilterProcessStateType<sup>21+</sup>
 
@@ -2180,10 +2302,10 @@ Enumerates the types of process states to filter. It can be used with [AppStateF
 
 | Name       | Value | Description|
 | -------- | ---------- | -------- |
-| CREATE | 1 | The process has just been created. It corresponds to the state whose value is **0** in [ProcessData](js-apis-inner-application-processData.md#properties).|
-| FOREGROUND | 2 | The process is running in the foreground. It corresponds to the state whose value is **2** in [ProcessData](js-apis-inner-application-processData.md#properties).|
-| BACKGROUND | 4 | The process is running in the background. It corresponds to the state whose value is **4** in [ProcessData](js-apis-inner-application-processData.md#properties).|
-| DESTROY | 8 | The process has terminated. It corresponds to the state whose value is **5** in [ProcessData](js-apis-inner-application-processData.md#properties).|
+| CREATE | 1 << 0 | The process has just been created, corresponding to the state where the value of state in ProcessData [properties](js-apis-inner-application-processData.md#properties) is 0. |
+| FOREGROUND | 1 << 1 | The process is in the foreground, corresponding to the state where the value of state in ProcessData [properties](js-apis-inner-application-processData.md#properties) is 2. |
+| BACKGROUND | 1 << 2 | The process is in the background, corresponding to the state where the value of state in ProcessData [properties](js-apis-inner-application-processData.md#properties) is 4. |
+| DESTROY | 1 << 3 | The process has been terminated, corresponding to the state where the value of state in ProcessData [properties](js-apis-inner-application-processData.md#properties) is 5. |
 
 ## FilterAbilityStateType<sup>21+</sup>
 
@@ -2195,10 +2317,10 @@ Enumerates the types of ability states to filter. It can be used with [AppStateF
 
 | Name       | Value | Description|
 | -------- | ---------- | -------- |
-| CREATE | 1 | The ability is being created. It corresponds to the state **ABILITY_STATE_CREATE** in [Ability States](js-apis-inner-application-abilityStateData.md#ability-states).|
-| FOREGROUND | 2 | The ability is running in the foreground. It corresponds to the state **ABILITY_STATE_FOREGROUND** in [Ability States](js-apis-inner-application-abilityStateData.md#ability-states).|
-| BACKGROUND | 4 | The ability is running in the background. It corresponds to the state **ABILITY_STATE_BACKGROUND** in [Ability States](js-apis-inner-application-abilityStateData.md#ability-states).|
-| DESTROY | 8 | The ability has been destroyed. It corresponds to the state **ABILITY_STATE_TERMINATED** in [Ability States](js-apis-inner-application-abilityStateData.md#ability-states).|
+| CREATE | 1 << 0 | The ability is being created, corresponding to the state with the value **0** in [UIAbility state](js-apis-inner-application-abilityStateData.md#uiability-states), [ExtensionAbility state](js-apis-inner-application-abilityStateData.md#extensionability-states), and [UIExtensionAbility state](js-apis-inner-application-abilityStateData.md#uiextensionability-states). |
+| FOREGROUND | 1 << 1 | The ability is in the foreground, corresponding to the state with the value **2** in [UIAbility state](js-apis-inner-application-abilityStateData.md#uiability-states) and [UIExtensionAbility state](js-apis-inner-application-abilityStateData.md#uiextensionability-states). |
+| BACKGROUND | 1 << 2 | The ability is in the background, corresponding to the state with the value **4** in [UIAbility state](js-apis-inner-application-abilityStateData.md#uiability-states) and [UIExtensionAbility state](js-apis-inner-application-abilityStateData.md#uiextensionability-states). |
+| DESTROY | 1 << 3 | The ability has been destroyed, corresponding to the state with the value **5** in [UIAbility state](js-apis-inner-application-abilityStateData.md#uiability-states), [ExtensionAbility state](js-apis-inner-application-abilityStateData.md#extensionability-states), and [UIExtensionAbility state](js-apis-inner-application-abilityStateData.md#uiextensionability-states), and the state with the value **4** in [ExtensionAbility state](js-apis-inner-application-abilityStateData.md#extensionability-states). |
 
 ## FilterCallback<sup>21+</sup>
 
@@ -2210,13 +2332,13 @@ Enumerates the callbacks to filter. It can be used with [AppStateFilter](#appsta
 
 | Name       | Value | Description|
 | -------- | ---------- | -------- |
-| ON_FOREGROUND_APPLICATION_CHANGED | 1 | Corresponds to the [ApplicationStateObserver.onForegroundApplicationChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronforegroundapplicationchanged) callback, which is executed when the application's foreground/background state changes.|
-| ON_ABILITY_STATE_CHANGED | 2 | Corresponds to the [ApplicationStateObserver.onAbilityStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronabilitystatechanged) callback, which is executed when the ability state changes.|
-| ON_PROCESS_CREATED | 4 | Corresponds to the [ApplicationStateObserver.onProcessCreated](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocesscreated) callback, which is executed when a process is created.|
-| ON_PROCESS_DIED | 8 | Corresponds to the [ApplicationStateObserver.onProcessDied](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessdied) callback, which is executed when a process is destroyed.|
-| ON_PROCESS_STATE_CHANGED | 16 | Corresponds to the [ApplicationStateObserver.onProcessStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessstatechanged) callback, which is executed when the process state is updated.|
-| ON_APP_STARTED | 32 | Corresponds to the [ApplicationStateObserver.onAppStarted](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstarted) callback, which is executed when the application's first process is created.|
-| ON_APP_STOPPED | 64 | Corresponds to the [ApplicationStateObserver.onAppStopped](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstopped) callback, which is executed when the application's last process is destroyed.|
+| ON_FOREGROUND_APPLICATION_CHANGED | 1 << 0 | Callback invoked when the foreground and background state of an application changes, corresponding to [ApplicationStateObserver.onForegroundApplicationChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronforegroundapplicationchanged). |
+| ON_ABILITY_STATE_CHANGED | 1 << 1 | Callback invoked when the ability state changes, corresponding to [ApplicationStateObserver.onAbilityStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronabilitystatechanged). |
+| ON_PROCESS_CREATED | 1 << 2 | Callback invoked when a process is created, corresponding to [ApplicationStateObserver.onProcessCreated](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocesscreated). |
+| ON_PROCESS_DIED | 1 << 3 | Callback invoked when a process is destroyed, corresponding to [ApplicationStateObserver.onProcessDied](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessdied). |
+| ON_PROCESS_STATE_CHANGED | 1 << 4 | Callback invoked when the process state is updated, corresponding to [ApplicationStateObserver.onProcessStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessstatechanged). |
+| ON_APP_STARTED | 1 << 5 | Callback invoked when the first process of an application is created, corresponding to [ApplicationStateObserver.onAppStarted](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstarted). |
+| ON_APP_STOPPED | 1 << 6 | Callback invoked when the last process of an application is destroyed, corresponding to [ApplicationStateObserver.onAppStopped](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstopped). |
 
 ## AppStateFilter<sup>21+</sup>
 
@@ -2228,8 +2350,8 @@ Describes the filter for application lifecycle change events. It can be used as 
 
 | Name| Type| Read-Only| Optional | Description|
 | ------------------------- | ------ | ---- | ---- | --------- |
-| bundleTypes  | [FilterBundleType](#filterbundletype21) | No| Yes | Type of application to filter. The options are as follows:<br> - **0**: Do not listen for any application type.<br> - A bitwise OR combination of the enumerated values of [FilterBundleType](#filterbundletype21), for example, "appManager.FilterBundleType.APP \| appManager.FilterBundleType.ATOMIC_SERVICE" listens for lifecycle change events for both applications and atomic services.<br> - If this parameter is not set, all application types are listened for by default.|
-| appStateTypes | [FilterAppStateType](#filterappstatetype21) | No| Yes| Type of application state to filter. The options are as follows:<br> - **0**: Do not listen for any application state.<br> - A bitwise OR combination of the enumerated values of [FilterAppStateType](#filterappstatetype21), for example, "appManager.FilterAppStateType.CREATE \| appManager.FilterAppStateType.FOREGROUND" listens for both the creating and foreground states of applications.<br> - If this parameter is not set, all application state types are listened for by default.|
-| processStateTypes | [FilterProcessStateType](#filterprocessstatetype21) | No| Yes| Type of process state to filter. The options are as follows:<br> - **0**: Do not listen for any process state.<br> - A bitwise OR combination of the enumerated values of [FilterProcessStateType](#filterprocessstatetype21), for example, "appManager.FilterProcessStateType.CREATE \| appManager.FilterProcessStateType.FOREGROUND" listens for both the creating and foreground states of processes.<br> - If this parameter is not set, all process state types are listened for by default.|
-| abilityStateTypes | [FilterAbilityStateType](#filterabilitystatetype21) | No| Yes | Type of ability state to filter. The options are as follows:<br> - **0**: Do not listen for any ability state.<br> - A bitwise OR combination of the enumerated values of [FilterAbilityStateType](#filterabilitystatetype21), for example, "appManager.FilterAbilityStateType.CREATE \| appManager.FilterAbilityStateType.FOREGROUND" listens for both the creating and foreground states of ability components.<br> - If this parameter is not set, all ability state types are listened for by default.|
-| callbacks | [FilterCallback](#filtercallback21) | No| Yes | Callback to filter. The options are as follows:<br> - **0**: Do not listen for any callback.<br> - A bitwise OR combination of the enumerated values of [FilterCallback](#filtercallback21), for example, "appManager.FilterCallback.ON_ABILITY_STATE_CHANGED \| appManager.FilterCallback.ON_PROCESS_STATE_CHANGED" listens for both [ApplicationStateObserver.onAbilityStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronabilitystatechanged) and [ApplicationStateObserver.onProcessStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessstatechanged).<br> - If this parameter is not set, all callbacks enumerated in [FilterCallback](#filtercallback21) are listened for by default.|
+| bundleTypes  | number | No  | Yes  | Application type to observe. The value range is as follows:<br> - 0: no application type is observed.<br> - A bitwise OR combination of the enums in [FilterBundleType](#filterbundletype21): for example, "appManager.FilterBundleType.APP \| appManager.FilterBundleType.ATOMIC_SERVICE" indicates that the lifecycle change events of both common applications and atomic services are observed.<br> - If this parameter is not set, all application types are observed by default.|
+| appStateTypes | number | No | Yes | Application state to observe. The value range is as follows:<br> - 0: no application state is observed.<br> - A bitwise OR combination of the enums in [FilterAppStateType](#filterappstatetype21): for example, "appManager.FilterAppStateType.CREATE \| appManager.FilterAppStateType.FOREGROUND" indicates that both the created state and the foreground state of applications are observed.<br> - If this parameter is not set, all application states are observed by default.|
+| processStateTypes | number | No | Yes | Process state to observe. The value range is as follows:<br> - 0: no process state is observed.<br> - A bitwise OR combination of the enums in [FilterProcessStateType](#filterprocessstatetype21): for example, "appManager.FilterProcessStateType.CREATE \| appManager.FilterProcessStateType.FOREGROUND" indicates that both the created state and the foreground state of processes are observed.<br> - If this parameter is not set, all process states are observed by default.|
+| abilityStateTypes | number | No | Yes  | Ability state to observe. The value range is as follows:<br> - 0: no Ability state is observed.<br> - A bitwise OR combination of the enums in [FilterAbilityStateType](#filterabilitystatetype21): for example, "appManager.FilterAbilityStateType.CREATE \| appManager.FilterAbilityStateType.FOREGROUND" indicates that both the created state and the foreground state of abilities are observed.<br> - If this parameter is not set, all Ability states are observed by default.|
+| callbacks | number | No | Yes  | Callback function to observe. The value range is as follows:<br> - 0: no callback function is observed.<br> - A bitwise OR combination of the enums in [FilterCallback](#filtercallback21): for example, "appManager.FilterCallback.ON_ABILITY_STATE_CHANGED \| appManager.FilterCallback.ON_PROCESS_STATE_CHANGED" indicates that both [ApplicationStateObserver.onAbilityStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronabilitystatechanged) and [ApplicationStateObserver.onProcessStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessstatechanged) are observed.<br> - If this parameter is not set, all callback functions corresponding to [FilterCallback](#filtercallback21) are observed by default.|

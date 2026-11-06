@@ -1,12 +1,12 @@
 # Interface (AVSession)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
-An AVSession object is created by calling [avSession.createAVSession](arkts-apis-avsession-f.md#avsessioncreateavsession10). The object enables you to obtain the session ID and set the metadata and playback state. 
+After a session is created by calling [avSession.createAVSession](arkts-apis-avsession-f.md#avsessioncreateavsession10), the application can obtain the session instance, and use the instance to obtain the session ID, set metadata, and set the playback state.
 
 > **NOTE**
 >
@@ -22,13 +22,13 @@ import { avSession } from '@kit.AVSessionKit';
 
 ## Properties
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 | Name     | Type  | Read-Only| Optional| Description                         |
 | :-------- | :----- | :--- | :--- | :---------------------------- |
-| sessionId<sup>10+</sup> | string | Yes  | No  | Unique session ID of the AVSession object.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| sessionType<sup>10+</sup> | [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10) | Yes  | No  | AVSession type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| sessionTag<sup>22+</sup> | string | Yes  | No  | Custom tag information of the AVSession.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| sessionId<sup>10+</sup> | string | Yes  | No  | Unique session ID of the AVSession object.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| sessionType<sup>10+</sup> | [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10) | Yes  | No  | AVSession type.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| sessionTag<sup>22+</sup> | string | Yes  | No  | Custom tag information of the AVSession.<br>**Atomic service API:** This API can be used in atomic services since API version 22.|
 
 **Example**
 
@@ -43,15 +43,15 @@ setAVMetadata(data: AVMetadata): Promise\<void>
 
 Sets session metadata. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name| Type                     | Mandatory| Description        |
 | ------ | ------------------------- | ---- | ------------ |
-| data   | [AVMetadata](arkts-apis-avsession-i.md#avmetadata10) | Yes  | Session metadata.|
+| data   | [AVMetadata](arkts-apis-avsession-i.md#avmetadata10) | Yes  | Session metadata, including the ID of the media item, title, artist, and album.|
 
 **Return value**
 
@@ -72,8 +72,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-
-
 let metadata: avSession.AVMetadata = {
   assetId: "121278",
   title: "lose yourself",
@@ -106,13 +104,13 @@ setAVMetadata(data: AVMetadata, callback: AsyncCallback\<void>): void
 
 Sets session metadata. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                     | Mandatory| Description                                 |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| data     | [AVMetadata](arkts-apis-avsession-i.md#avmetadata10) | Yes  | Session metadata.                         |
+| data     | [AVMetadata](arkts-apis-avsession-i.md#avmetadata10) | Yes  | Session metadata, including the ID of the media item, title, artist, and album.                         |
 | callback | AsyncCallback\<void>      | Yes  | Callback used to return the result. If the setting is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -128,7 +126,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let metadata: avSession.AVMetadata = {
   assetId: "121278",
@@ -151,7 +149,11 @@ let metadata: avSession.AVMetadata = {
   previousAssetId: "121277",
   nextAssetId: "121279"
 };
-currentAVSession.setAVMetadata(metadata, () => {
+currentAVSession.setAVMetadata(metadata, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set AVMetadata, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info('Succeeded in setting AVMetadata.');
 });
 ```
@@ -162,13 +164,13 @@ setCallMetadata(data: CallMetadata): Promise\<void>
 
 Sets call metadata. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name| Type                     | Mandatory| Description        |
 | ------ | ------------------------- | ---- | ------------ |
-| data   | [CallMetadata](arkts-apis-avsession-i.md#callmetadata11) | Yes  | Call metadata.|
+| data   | [CallMetadata](arkts-apis-avsession-i.md#callmetadata11) | Yes  | Call metadata, including the contact name and phone number.|
 
 **Return value**
 
@@ -189,10 +191,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// Index.ets
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
-
 import { avSession } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -212,18 +215,19 @@ class CallManager {
   private currentAVSession: avSession.AVSession | null = null;
 
   async setCallMetadata() {
-    try {
-      let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
-      let imageSource = await image.createImageSource(value.buffer);
-      let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
-      let calldata: avSession.CallMetadata = {
-        name: "xiaoming",
-        phoneNumber: "111xxxxxxxx",
-        avatar: imagePixel
-      };
-      await this.currentAVSession?.setCallMetadata(calldata);
+    let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+    let imageSource = await image.createImageSource(value.buffer);
+    let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
+    let calldata: avSession.CallMetadata = {
+      name: "xiaoming",
+      phoneNumber: "111xxxxxxxx",
+      avatar: imagePixel
+    };
+    this.currentAVSession?.setCallMetadata(calldata).then(() => {
       console.info('Succeeded in setting call metadata.');
-    }
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set call metadata, code: ${err.code}, message: ${err.message}`);
+    });
   }
 }
 ```
@@ -234,13 +238,13 @@ setCallMetadata(data: CallMetadata, callback: AsyncCallback\<void>): void
 
 Sets call metadata. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                     | Mandatory| Description                                 |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| data     | [CallMetadata](arkts-apis-avsession-i.md#callmetadata11) | Yes  | Call metadata.                         |
+| data     | [CallMetadata](arkts-apis-avsession-i.md#callmetadata11) | Yes  | Call metadata, including the contact name and phone number.                         |
 | callback | AsyncCallback\<void>      | Yes  | Callback used to return the result. If the setting is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -256,9 +260,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// Index.ets
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
-
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -279,19 +283,21 @@ class CallManager {
   private currentAVSession: avSession.AVSession | null = null;
 
   async setCallMetadata() {
-    try {
-      let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
-      let imageSource = await image.createImageSource(value.buffer);
-      let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
-      let calldata: avSession.CallMetadata = {
-        name: "xiaoming",
-        phoneNumber: "111xxxxxxxx",
-        avatar: imagePixel
-      };
-      this.currentAVSession?.setCallMetadata(calldata, () => {
-        console.info('Succeeded in setting call metadata.');
-      });
-    }
+    let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+    let imageSource = await image.createImageSource(value.buffer);
+    let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
+    let calldata: avSession.CallMetadata = {
+      name: "xiaoming",
+      phoneNumber: "111xxxxxxxx",
+      avatar: imagePixel
+    };
+    this.currentAVSession?.setCallMetadata(calldata, (err: BusinessError) => {
+      if (err) {
+        console.error(`Failed to set call metadata, code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('Succeeded in setting call metadata.');
+    });
   }
 }
 ```
@@ -302,19 +308,19 @@ setAVCallState(state: AVCallState): Promise\<void>
 
 Sets the call state. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name| Type                     | Mandatory| Description        |
 | ------ | ------------------------- | ---- | ------------ |
-| state   | [AVCallState](arkts-apis-avsession-i.md#avcallstate11) | Yes  | Call state.|
+| state   | [AVCallState](arkts-apis-avsession-i.md#avcallstate11) | Yes  | Call state, including the call state value and mute status.|
 
 **Return value**
 
 | Type          | Description                         |
 | -------------- | ----------------------------- |
-| Promise\<void> | Promise used to return the result. If the setting is successful, no value is returned; otherwise, an error object is returned.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
@@ -329,8 +335,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-
-
 let calldata: avSession.AVCallState = {
   state: avSession.CallState.CALL_STATE_ACTIVE,
   muted: false
@@ -346,14 +350,14 @@ setAVCallState(state: AVCallState, callback: AsyncCallback\<void>): void
 
 Sets the call state. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                     | Mandatory| Description                                 |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| state     | [AVCallState](arkts-apis-avsession-i.md#avcallstate11) | Yes  | Call state.                         |
-| callback | AsyncCallback\<void>      | Yes  | Callback used to return the result. If the setting is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| state     | [AVCallState](arkts-apis-avsession-i.md#avcallstate11) | Yes  | Call state, including the call state value and mute status.                         |
+| callback | AsyncCallback\<void>      | Yes  | Callback used to return the result. If the call state is set successfully, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -368,13 +372,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let avcalldata: avSession.AVCallState = {
   state: avSession.CallState.CALL_STATE_ACTIVE,
   muted: false
 };
-currentAVSession.setAVCallState(avcalldata, () => {
+currentAVSession.setAVCallState(avcalldata, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set AVCallState, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info('Succeeded in setting AVCallState.');
 });
 ```
@@ -385,9 +393,9 @@ setAVPlaybackState(state: AVPlaybackState): Promise\<void>
 
 Sets information related to the session playback state. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
@@ -414,8 +422,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-
-
 let playbackState: avSession.AVPlaybackState = {
   state:avSession.PlaybackState.PLAYBACK_STATE_PLAY,
   speed: 1.0,
@@ -435,7 +441,7 @@ setAVPlaybackState(state: AVPlaybackState, callback: AsyncCallback\<void>): void
 
 Sets information related to the session playback state. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
@@ -457,9 +463,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-
-let PlaybackState: avSession.AVPlaybackState = {
+let playbackState: avSession.AVPlaybackState = {
   state:avSession.PlaybackState.PLAYBACK_STATE_PLAY,
   speed: 1.0,
   position:{elapsedTime:10, updateTime:(new Date()).getTime()},
@@ -467,7 +473,11 @@ let PlaybackState: avSession.AVPlaybackState = {
   loopMode:avSession.LoopMode.LOOP_MODE_SINGLE,
   isFavorite:true
 };
-currentAVSession.setAVPlaybackState(PlaybackState, () => {
+currentAVSession.setAVPlaybackState(playbackState, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set AVPlaybackState, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info('Succeeded in setting AVPlaybackState.');
 });
 ```
@@ -478,17 +488,17 @@ setLaunchAbility(ability: WantAgent): Promise\<void>
 
 Sets a launcher ability. This API uses a promise to return the result.
 
-The user can tap the playback control component to go to the corresponding playback screen. By default, the UIAbility screen to which the **context** passed by the [avSession.createAVSession](arkts-apis-avsession-f.md#avsessioncreateavsession10) API belongs is displayed.
+The user can tap the playback control component to go to the corresponding playback screen. If **WantAgent** is not set, the UIAbility screen to which the **context** passed by the [avSession.createAVSession](arkts-apis-avsession-f.md#avsessioncreateavsession10) API belongs is displayed by default.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name | Type                                         | Mandatory| Description    |
 | ------- | --------------| ---- | ----------------------------|
-| ability | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) | Yes  | Application properties, such as the bundle name, ability name, and deviceID.|
+| ability | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) | Yes  | Application properties, such as the bundle name, ability name, and deviceID. After the setting, the user can tap the playback control component to go to the corresponding screen.|
 
 **Return value**
 
@@ -510,7 +520,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { wantAgent } from '@kit.AbilityKit';
-
 
 // WantAgentInfo object.
 let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -553,15 +562,15 @@ setLaunchAbility(ability: WantAgent, callback: AsyncCallback\<void>): void
 
 Sets a launcher ability. This API uses an asynchronous callback to return the result.
 
-The user can tap the playback control component to go to the corresponding playback screen. By default, the UIAbility screen to which the **context** passed by the [avSession.createAVSession](arkts-apis-avsession-f.md#avsessioncreateavsession10) API belongs is displayed.
+The user can tap the playback control component to go to the corresponding playback screen. If **WantAgent** is not set, the UIAbility screen to which the **context** passed by the [avSession.createAVSession](arkts-apis-avsession-f.md#avsessioncreateavsession10) API belongs is displayed by default.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                                         | Mandatory| Description    |
 | -------- | --------------| ---- | --------- |
-| ability  | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) | Yes  | Application properties, such as the bundle name, ability name, and deviceID. |
+| ability  | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) | Yes  | Application properties, such as the bundle name, ability name, and deviceID. After the setting, the user can tap the playback control component to go to the corresponding screen. |
 | callback | AsyncCallback\<void>                          | Yes  | Callback used to return the result. If the setting is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -578,7 +587,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { wantAgent } from '@kit.AbilityKit';
-
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // WantAgentInfo object.
 let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -609,7 +618,11 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 }
 
 wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
-  currentAVSession.setLaunchAbility(agent, () => {
+  currentAVSession.setLaunchAbility(agent, (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to set launch ability, code: ${err.code}, message: ${err.message}`);
+      return;
+    }
     console.info('Succeeded in setting launch ability.');
   });
 });
@@ -621,9 +634,9 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise\<voi
 
 Dispatches a custom event in the session, including the event name and event content in key-value pair format. This API is called by the provider. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
@@ -633,6 +646,7 @@ Dispatches a custom event in the session, including the event name and event con
 | args |{[key: string]: Object}| Yes  | Content of the session event.|
 
 > **NOTE**
+>
 > The **args** parameter supports the following data types: string, number, Boolean, object, array, and file descriptor. For details, see [@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md).
 
 **Return value**
@@ -654,37 +668,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() { 
-    Column() {
-        Text(this.message)
-          .onClick(()=>{
-            let currentAVSession: avSession.AVSession | undefined = undefined;
-            let tag = "createNewSession";
-            let context: Context = this.getUIContext().getHostContext() as Context;
-
-            avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-              currentAVSession = data;
-              let eventName = "dynamic_lyric";
-              if (currentAVSession !== undefined) {
-                (currentAVSession as avSession.AVSession).dispatchSessionEvent(eventName, {lyric : "This is lyric"}).then(() => {
-                  console.info('Succeeded in dispatching session event.');
-                })
-              }
-            });
-          })
-      }
-    .width('100%')
-    .height('100%')
-  }
-}
+let eventName = "dynamic_lyric";
+currentAVSession.dispatchSessionEvent(eventName, {lyric : "This is lyric"}).then(() => {
+  console.info('Succeeded in dispatching session event.');
+});
 ```
 
 ## dispatchSessionEvent<sup>10+</sup>
@@ -693,7 +680,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: Asy
 
 Dispatches a custom event in the session, including the event name and event content in key-value pair format. This API is called by the provider. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
@@ -704,12 +691,12 @@ Dispatches a custom event in the session, including the event name and event con
 | callback | AsyncCallback\<void>                          | Yes  | Callback used to return the result. If the setting is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 > **NOTE**
-
+>
 > The **args** parameter supports the following data types: string, number, Boolean, object, array, and file descriptor. For details, see [@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md).
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Management Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------|
@@ -720,36 +707,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-import { avSession } from '@kit.AVSessionKit';
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() { 
-    Column() {
-        Text(this.message)
-          .onClick(()=>{
-            let currentAVSession: avSession.AVSession | undefined = undefined;
-            let tag = "createNewSession";
-            let context: Context = this.getUIContext().getHostContext() as Context;
-
-            avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-              currentAVSession = data;
-              let eventName: string = "dynamic_lyric";
-              if (currentAVSession !== undefined) {
-                (currentAVSession as avSession.AVSession).dispatchSessionEvent(eventName, {lyric : "This is lyric"}, () => {
-                  console.info('Succeeded in dispatching session event.');
-                })
-              }
-            });
-          })
-      }
-    .width('100%')
-    .height('100%')
+let eventName: string = "dynamic_lyric";
+currentAVSession.dispatchSessionEvent(eventName, {lyric : "This is lyric"}, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to dispatch session event, code: ${err.code}, message: ${err.message}`);
+    return;
   }
-}
+  console.info('Succeeded in dispatching session event.');
+});
 ```
 
 ## setAVQueueItems<sup>10+</sup>
@@ -758,9 +725,9 @@ setAVQueueItems(items: Array\<AVQueueItem>): Promise\<void>
 
 Sets a playlist. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
@@ -787,60 +754,41 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// Index.ets
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
 
-import { avSession } from '@kit.AVSessionKit';
-interface ExtrasType {
-  extras: string;
-}
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-    }
-  }
-}
-
-let currentAVSession: avSession.AVSession;
-
-async function setAVQueueItems() {
-  try {
-    let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
-    let imageSource = await image.createImageSource(value.buffer);
-    let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
-    let queueItemDescription_1: avSession.AVMediaDescription = {
-      assetId: '001',
-      title: 'music_name',
-      subtitle: 'music_sub_name',
-      description: 'music_description',
-      mediaImage : imagePixel,
-      extras: {extras:'any'}
-    };
-    let queueItem_1: avSession.AVQueueItem = {
-      itemId: 1,
-      description: queueItemDescription_1
-    } as avSession.AVQueueItem;
-    let queueItemDescription_2: avSession.AVMediaDescription = {
-      assetId: '002',
-      title: 'music_name',
-      subtitle: 'music_sub_name',
-      description: 'music_description',
-      mediaImage: imagePixel,
-      extras: {extras:'any'}
-    };
-    let queueItem_2: avSession.AVQueueItem = {
-      itemId: 2,
-      description: queueItemDescription_2
-    } as avSession.AVQueueItem;
-    let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
-    currentAVSession.setAVQueueItems(queueItemsArray).then(() => {
-      console.info('Succeeded in setting AVQueueItems.');
-    });
-  }
-}
+let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+let imageSource = await image.createImageSource(value.buffer);
+let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
+let queueItemDescription_1: avSession.AVMediaDescription = {
+  assetId: '001',
+  title: 'music_name',
+  subtitle: 'music_sub_name',
+  description: 'music_description',
+  mediaImage : imagePixel,
+  extras: {extras:'any'}
+};
+let queueItem_1: avSession.AVQueueItem = {
+  itemId: 1,
+  description: queueItemDescription_1
+} as avSession.AVQueueItem;
+let queueItemDescription_2: avSession.AVMediaDescription = {
+  assetId: '002',
+  title: 'music_name',
+  subtitle: 'music_sub_name',
+  description: 'music_description',
+  mediaImage: imagePixel,
+  extras: {extras:'any'}
+};
+let queueItem_2: avSession.AVQueueItem = {
+  itemId: 2,
+  description: queueItemDescription_2
+} as avSession.AVQueueItem;
+let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
+currentAVSession.setAVQueueItems(queueItemsArray).then(() => {
+  console.info('Succeeded in setting AVQueueItems.');
+});
 ```
 
 ## setAVQueueItems<sup>10+</sup>
@@ -849,14 +797,14 @@ setAVQueueItems(items: Array\<AVQueueItem>, callback: AsyncCallback\<void>): voi
 
 Sets a playlist. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory| Description    |
 | -------- | ------------------------------------ | ---- | ----------------------------|
 | items    | Array<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)\> | Yes  | Playlist to set.                         |
-| callback | AsyncCallback\<void>                 | Yes  | Callback used to return the result. If the setting is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback\<void>                 | Yes  | Callback used to return the result. If the playlist is set successfully, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -871,61 +819,46 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// Index.ets
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-import { avSession } from '@kit.AVSessionKit'
-
-interface ExtrasType {
-  extras: string;
-}
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-    }
+let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+let imageSource = await image.createImageSource(value.buffer);
+let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
+let queueItemDescription_1: avSession.AVMediaDescription = {
+  assetId: '001',
+  title: 'music_name',
+  subtitle: 'music_sub_name',
+  description: 'music_description',
+  mediaImage: imagePixel,
+  extras: { extras: 'any' }
+};
+let queueItem_1: avSession.AVQueueItem = {
+  itemId: 1,
+  description: queueItemDescription_1
+};
+let queueItemDescription_2: avSession.AVMediaDescription = {
+  assetId: '002',
+  title: 'music_name',
+  subtitle: 'music_sub_name',
+  description: 'music_description',
+  mediaImage: imagePixel,
+  extras: { extras: 'any' }
+};
+let queueItem_2: avSession.AVQueueItem = {
+  itemId: 2,
+  description: queueItemDescription_2
+};
+let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
+currentAVSession.setAVQueueItems(queueItemsArray, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set AVQueueItems, code: ${err.code}, message: ${err.message}`);
+    return;
   }
-}
-
-let currentAVSession: avSession.AVSession;
-
-async function setAVQueueItems() {
-  try {
-    let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
-    let imageSource = await image.createImageSource(value.buffer);
-    let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
-    let queueItemDescription_1: avSession.AVMediaDescription = {
-      assetId: '001',
-      title: 'music_name',
-      subtitle: 'music_sub_name',
-      description: 'music_description',
-      mediaImage: imagePixel,
-      extras: { extras: 'any' }
-    };
-    let queueItem_1: avSession.AVQueueItem = {
-      itemId: 1,
-      description: queueItemDescription_1
-    };
-    let queueItemDescription_2: avSession.AVMediaDescription = {
-      assetId: '002',
-      title: 'music_name',
-      subtitle: 'music_sub_name',
-      description: 'music_description',
-      mediaImage: imagePixel,
-      extras: { extras: 'any' }
-    };
-    let queueItem_2: avSession.AVQueueItem = {
-      itemId: 2,
-      description: queueItemDescription_2
-    };
-    let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
-    currentAVSession.setAVQueueItems(queueItemsArray, () => {
-      console.info('Succeeded in setting AVQueueItems.');
-    });
-  }
-}
+  console.info('Succeeded in setting AVQueueItems.');
+});
 ```
 
 ## setAVQueueTitle<sup>10+</sup>
@@ -934,9 +867,9 @@ setAVQueueTitle(title: string): Promise\<void>
 
 Sets a name for the playlist. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
@@ -963,8 +896,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-
-
 let queueTitle = 'QUEUE_TITLE';
 currentAVSession.setAVQueueTitle(queueTitle).then(() => {
   console.info('Succeeded in setting AVQueueTitle.');
@@ -977,14 +908,14 @@ setAVQueueTitle(title: string, callback: AsyncCallback\<void>): void
 
 Sets a name for the playlist. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory| Description    |
 | -------- | --------------------- | ---- | ----------------------------|
 | title    | string                | Yes  | Name of the playlist.                         |
-| callback | AsyncCallback\<void>  | Yes  | Callback used to return the result. If the setting is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback\<void>  | Yes  | Callback used to return the result. If the playlist name is set successfully, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -999,10 +930,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let queueTitle = 'QUEUE_TITLE';
-currentAVSession.setAVQueueTitle(queueTitle, () => {
+currentAVSession.setAVQueueTitle(queueTitle, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set AVQueueTitle, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info('Succeeded in setting AVQueueTitle.');
 });
 ```
@@ -1013,15 +948,15 @@ setExtras(extras: {[key: string]: Object}): Promise\<void>
 
 Sets a custom media data packet in the key-value pair format. This API is called by the provider. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name | Type                                         | Mandatory| Description    |
 | ------- | --------------| ---- | ----------------------------|
-| extras | {[key: string]: Object} | Yes  | Key-value pairs of the custom media packet.<br> **Note**: The **extras** parameter supports the following data types: string, number, Boolean, object, array, and file descriptor. For details, see [@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md).|
+| extras | {[key: string]: Object} | Yes  | Key-value pairs of the custom media packet. The **extras** parameter supports the following data types: string, number, Boolean, object, array, and file descriptor. For details, see [@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md).|
 
 **Return value**
 
@@ -1031,7 +966,7 @@ Sets a custom media data packet in the key-value pair format. This API is called
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Management Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------|
@@ -1042,35 +977,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-
-import { avSession } from '@kit.AVSessionKit';
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() { 
-    Column() {
-        Text(this.message)
-          .onClick(() => {
-            let currentAVSession: avSession.AVSession | undefined = undefined;
-            let tag = "createNewSession";
-            let context: Context = this.getUIContext().getHostContext() as Context;
-
-            avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-              currentAVSession = data;
-              if (currentAVSession !== undefined) {
-(currentAVSession as avSession.AVSession).setExtras({extras : "This is custom media packet"}).then(() => {
-                  console.info('Succeeded in setting extras.');
-                })
-              }
-            });
-          })
-      }
-    .width('100%')
-    .height('100%')
-  }
-}
+currentAVSession.setExtras({extras : "This is custom media packet"}).then(() => {
+  console.info('Succeeded in setting extras.');
+});
 ```
 
 ## setExtras<sup>10+</sup>
@@ -1079,18 +988,18 @@ setExtras(extras:{[key: string]: Object}, callback: AsyncCallback\<void>): void
 
 Sets a custom media data packet in the key-value pair format. It is called by the provider. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name | Type                                         | Mandatory| Description    |
 | ------- | --------------| ---- | ----------------------------|
-| extras |{[key: string]: Object} | Yes  | Key-value pairs of the custom media packet.<br> **Note**: The **extras** parameter supports the following data types: string, number, Boolean, object, array, and file descriptor. For details, see [@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md).|
-| callback | AsyncCallback\<void>                          | Yes  | Callback used to return the result. If the setting is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| extras |{[key: string]: Object} | Yes  | Key-value pairs of the custom media packet. The **extras** parameter supports the following data types: string, number, Boolean, object, array, and file descriptor. For details, see [@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md).|
+| callback | AsyncCallback\<void>                          | Yes  | Callback used to return the result. If the playlist name is set successfully, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Management Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------|
@@ -1101,35 +1010,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-import { avSession } from '@kit.AVSessionKit';
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() { 
-    Column() {
-        Text(this.message)
-          .onClick(()=>{
-            let currentAVSession: avSession.AVSession | undefined = undefined;
-            let tag = "createNewSession";
-            let context: Context = this.getUIContext().getHostContext() as Context;
-
-            avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-              currentAVSession = data;
-              if (currentAVSession !== undefined) {
-                (currentAVSession as avSession.AVSession).setExtras({extras : "This is custom media packet"}, () => {
-                  console.info('Succeeded in setting extras.');
-                })
-              }
-            });
-          })
-      }
-    .width('100%')
-    .height('100%')
+currentAVSession.setExtras({extras : "This is custom media packet"}, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set extras, code: ${err.code}, message: ${err.message}`);
+    return;
   }
-}
+  console.info('Succeeded in setting extras.');
+})
 ```
 
 ## sendCustomData<sup>20+</sup>
@@ -1138,9 +1027,9 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 
 Sends custom data to the remote device. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Multimedia.AVSession.AVCast
+**System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 **Parameters**
 
@@ -1161,41 +1050,15 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
-| 6600102 | The session does not exist. |
+| 6600102  | The session does not exist. |
 
 
 **Example**
 
 ```ts
-
-import { avSession } from '@kit.AVSessionKit';
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() { 
-    Column() {
-        Text(this.message)
-          .onClick(()=>{
-            let currentAVSession: avSession.AVSession | undefined = undefined;
-            let tag = "createNewSession";
-            let context: Context = this.getUIContext().getHostContext() as Context;
-
-            avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-            currentAVSession = data;
-            });
-            if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).sendCustomData({customData : "This is custom data"}).then(() => {
-                console.info('Succeeded in sending custom data.');
-            })
-            }
-          })
-      }
-    .width('100%')
-    .height('100%')
-  }
-}
+currentAVSession.sendCustomData({customData : "This is custom data"}).then(() => {
+  console.info('Succeeded in sending custom data.');
+});
 ```
 ## enableDesktopLyric<sup>23+</sup>
 
@@ -1203,7 +1066,9 @@ enableDesktopLyric(enable: boolean): Promise\<void>
 
 Sets whether to enable the desktop lyrics feature for the current session. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+You can use methods such as **setDesktopLyricVisible**, **setDesktopLyricState**, **isDesktopLyricVisible**, and **getDesktopLyricState** to set or query the desktop lyric status only after the desktop lyrics feature is enabled.
+
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -1232,35 +1097,10 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-
-          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).enableDesktopLyric(true).then(() => {
-              console.info('Succeeded in enabling desktop lyric.');
-            })
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
+if (currentAVSession !== undefined) {
+  (currentAVSession as avSession.AVSession).enableDesktopLyric(true).then(() => {
+    console.info('Succeeded in enabling desktop lyric.');
+  })
 }
 ```
 
@@ -1270,7 +1110,9 @@ setDesktopLyricVisible(visible: boolean): Promise\<void>
 
 Sets whether to display desktop lyrics in the current session. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+Before calling this method, you need to enable the desktop lyrics feature by calling [enableDesktopLyric](#enabledesktoplyric23).
+
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -1300,36 +1142,9 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-
-          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).setDesktopLyricVisible(true).then(() => {
-              console.info('Succeeded in setting desktop lyric visible.');
-            })
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+currentAVSession.setDesktopLyricVisible(true).then(() => {
+  console.info('Succeeded in setting desktop lyric visible.');
+});
 ```
 
 ## isDesktopLyricVisible<sup>23+</sup>
@@ -1338,7 +1153,9 @@ isDesktopLyricVisible(): Promise\<boolean>
 
 Checks whether desktop lyrics are displayed in the current session. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+Before calling this method, you need to enable the desktop lyrics feature by calling [enableDesktopLyric](#enabledesktoplyric23).
+
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -1362,33 +1179,10 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 ```ts
 
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).isDesktopLyricVisible().then((visible: boolean) => {
-              console.info(`isDesktopLyricVisible: ${visible}`);
-            })
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
+if (currentAVSession !== undefined) {
+  (currentAVSession as avSession.AVSession).isDesktopLyricVisible().then((visible: boolean) => {
+    console.info(`isDesktopLyricVisible: ${visible}`);
+  })
 }
 ```
 
@@ -1398,7 +1192,7 @@ onDesktopLyricVisibilityChanged(callback: Callback\<boolean>): void
 
 Subscribes to the change events of the desktop lyrics visibility. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -1419,34 +1213,10 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 **Example**
 ```ts
-
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).onDesktopLyricVisibilityChanged((visible: boolean) => {
-              console.info(`desktop lyric visible state: ${visible}`);
-            });
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
+if (currentAVSession !== undefined) {
+  (currentAVSession as avSession.AVSession).onDesktopLyricVisibilityChanged((visible: boolean) => {
+    console.info(`desktop lyric visible state: ${visible}`);
+  });
 }
 ```
 
@@ -1456,7 +1226,7 @@ offDesktopLyricVisibilityChanged(callback?: Callback\<boolean>): void
 
 Unsubscribes from the change events of the desktop lyrics visibility. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -1464,7 +1234,7 @@ Unsubscribes from the change events of the desktop lyrics visibility. This API u
 
 | Name| Type                  | Mandatory| Description                           |
 | ------ | ---------------------- | ---- | -------------------------------- |
-| callback   | Callback\<boolean> | No  | Callback function used to return the result. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>This parameter is optional. If it is not specified, the change events of all sessions' desktop lyrics visibility are unsubscribed.|
+| callback   | Callback\<boolean> | No  | Callback to be canceled, which must be the same as that registered using the **on** API. If this parameter is not specified, all registered callbacks are canceled.|
 
 **Error codes**
 
@@ -1477,32 +1247,8 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 **Example**
 ```ts
-
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).offDesktopLyricVisibilityChanged();
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
+if (currentAVSession !== undefined) {
+  (currentAVSession as avSession.AVSession).offDesktopLyricVisibilityChanged();
 }
 ```
 
@@ -1512,7 +1258,9 @@ setDesktopLyricState(state: DesktopLyricState): Promise\<void>
 
 Sets the desktop lyric state of the current session. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+Before calling this method, you need to enable the desktop lyrics feature by calling [enableDesktopLyric](#enabledesktoplyric23).
+
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -1542,39 +1290,12 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-
-          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            let state: avSession.DesktopLyricState = {
-              isLocked: true,
-            };
-            (currentAVSession as avSession.AVSession).setDesktopLyricState(state).then(() => {
-              console.info('Succeeded in setting desktop lyric state.');
-            })
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+let state: avSession.DesktopLyricState = {
+  isLocked: true,
+};
+currentAVSession.setDesktopLyricState(state).then(() => {
+  console.info('Succeeded in setting desktop lyric state.');
+})
 ```
 
 ## getDesktopLyricState<sup>23+</sup>
@@ -1583,7 +1304,9 @@ getDesktopLyricState(): Promise\<DesktopLyricState>
 
 Obtains the desktop lyric state of the current session. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+Before calling this method, you need to enable the desktop lyrics feature by calling [enableDesktopLyric](#enabledesktoplyric23).
+
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -1591,7 +1314,7 @@ Obtains the desktop lyric state of the current session. This API uses a promise 
 
 | Type          | Description                         |
 | -------------- | ----------------------------- |
-| Promise\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> |  Promise used to return the desktop lyrics state.|
+| Promise\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> |  Promise used to return the desktop lyric state, including whether the lyrics are locked.|
 
 **Error codes**
 
@@ -1607,36 +1330,11 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-
-          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).getDesktopLyricState()
-              .then((state: avSession.DesktopLyricState) => {
-                console.info(`getDesktopLyricState: ${state.isLocked}`);
-              })
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
+if (currentAVSession !== undefined) {
+  (currentAVSession as avSession.AVSession).getDesktopLyricState()
+    .then((state: avSession.DesktopLyricState) => {
+    console.info(`getDesktopLyricState: ${state.isLocked}`);
+  })
 }
 ```
 
@@ -1646,7 +1344,7 @@ onDesktopLyricStateChanged(callback: Callback\<DesktopLyricState>): void
 
 Subscribes to the change events of the desktop lyrics state. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -1667,35 +1365,10 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 **Example**
 ```ts
-
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-
-          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).onDesktopLyricStateChanged((state: avSession.DesktopLyricState) => {
-              console.info(`desktop lyric isLocked : ${state.isLocked}`);
-            })
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
+if (currentAVSession !== undefined) {
+  (currentAVSession as avSession.AVSession).onDesktopLyricStateChanged((state: avSession.DesktopLyricState) => {
+    console.info(`desktop lyric isLocked : ${state.isLocked}`);
+  })
 }
 ```
 
@@ -1705,7 +1378,7 @@ offDesktopLyricStateChanged(callback?: Callback\<DesktopLyricState>): void
 
 Unsubscribes from the change events of the desktop lyrics state. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -1713,7 +1386,7 @@ Unsubscribes from the change events of the desktop lyrics state. This API uses a
 
 | Name| Type                  | Mandatory| Description                           |
 | ------ | ---------------------- | ---- | -------------------------------- |
-| callback   | Callback\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>This parameter is optional. If it is not specified, the change events of all sessions' desktop lyrics state are unsubscribed.|
+| callback   | Callback\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> | No  | Callback to be canceled, which must be the same as that registered using the **on** API. If this parameter is not specified, all registered callbacks are canceled.|
 
 **Error codes**
 
@@ -1726,32 +1399,8 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 **Example**
 ```ts
-
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).offDesktopLyricStateChanged();
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
+if (currentAVSession !== undefined) {
+  (currentAVSession as avSession.AVSession).offDesktopLyricStateChanged();
 }
 ```
 
@@ -1765,7 +1414,7 @@ It is recommended that this API be associated with the switch for enabling or di
 
 **Model restriction:** This API can be used only in the stage model.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
@@ -1790,58 +1439,38 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 **Example**
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-            if (err) {
-              console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
-            } else {
-              currentAVSession = data;
-            }
-          });
-          if (currentAVSession !== undefined) {
-            try {
-              (currentAVSession as avSession.AVSession).setBackgroundPlayMode(avSession.BackgroundPlayMode.ENABLE_BACKGROUND_PLAY);
-            } catch (err) {
-              console.error(`setBackgroundPlayMode BusinessError: code: ${err.code}, message: ${err.message}`);
-            }
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
+try {
+  await currentAVSession.setBackgroundPlayMode(avSession.BackgroundPlayMode.ENABLE_BACKGROUND_PLAY);
+} catch (err) {
+  console.error(`setBackgroundPlayMode BusinessError: code: ${err.code}, message: ${err.message}`);
 }
 ```
 
-## getController<sup>10+</sup>
+## setSupportedPlaySpeeds
 
-getController(): Promise\<AVSessionController>
+setSupportedPlaySpeeds(speeds: Array\<number>): Promise\<void>
 
-Obtains the controller corresponding to this session. This API uses a promise to return the result.
+Sets the playback speeds supported by the application. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Since:** 26.0.0
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Multimedia.AVSession.Core
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description      |
+| ------ | ------ | ---- | ---------- |
+| speeds | Array\<number\> | Yes  | Array of supported playback speeds.|
 
 **Return value**
 
-| Type                                                | Description                         |
-| ---------------------| ----------------------------- |
-| Promise<[AVSessionController](arkts-apis-avsession-AVSessionController.md)> | Promise used to return the session controller.|
+| Type          | Description                         |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
@@ -1855,30 +1484,149 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async ()=>{
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, 'SESSION_NAME', 'audio');
-          let avSessionController: avSession.AVSessionController;
-          currentAVSession.getController().then((avController: avSession.AVSessionController) => {
-            avSessionController = avController;
-            console.info(`Succeeded in getting controller, sessionid: ${avSessionController.sessionId}`);
-          });
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
+try {
+  let speeds: number[] = [0.5, 1, 1.25, 1.5];
+  await currentAVSession.setSupportedPlaySpeeds(speeds);
+  console.info('Succeeded in setting supported play speeds.');
+} catch (err) {
+  console.error(`setSupportedPlaySpeeds BusinessError: code: ${err.code}, message: ${err.message}`);
 }
+```
+
+## setSupportedLoopModes
+
+setSupportedLoopModes(loopModes: Array\<LoopMode>): Promise\<void>
+
+Sets the loop modes supported by the application. This API uses a promise to return the result.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Multimedia.AVSession.Core
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description      |
+| ------ | ------ | ---- | ---------- |
+| loopModes | Array\<[LoopMode](./arkts-apis-avsession-e.md#loopmode10)\> | Yes  | Array of supported loop modes.|
+
+**Return value**
+
+| Type          | Description                         |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+
+| ID| Error Message|
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**Example**
+
+```ts
+try {
+  let loopModes: avSession.LoopMode[] = [
+    avSession.LoopMode.LOOP_MODE_SEQUENCE,
+    avSession.LoopMode.LOOP_MODE_SINGLE,
+    avSession.LoopMode.LOOP_MODE_LIST
+  ];
+  await currentAVSession.setSupportedLoopModes(loopModes);
+  console.info('Succeeded in setting supported loop modes.');
+} catch (err) {
+  console.error(`setSupportedLoopModes BusinessError: code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## setMediaCenterControlType
+
+setMediaCenterControlType(type: Array\<AVMediaCenterControlType>): Promise\<void>
+
+Sets the control types supported by the application. This API uses a promise to return the result.
+
+Set the control types with display priorities in the media center. If priorities are not set for control types, the media center displays the control types based on [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10). For details about the display rules, see [Creating AVSession](../../media/avsession/avsession-access-scene.md#creating-avsession).
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Multimedia.AVSession.Core
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description      |
+| ------ | ------ | ---- | ---------- |
+| type | Array\<[AVMediaCenterControlType](./arkts-apis-avsession-t.md#avmediacentercontroltype)\> | Yes  | Array of control types with display priorities in the media center.|
+
+**Return value**
+
+| Type          | Description                         |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+
+| ID| Error Message|
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**Example**
+
+```ts
+try {
+  let controlTypes: avSession.AVMediaCenterControlType[] = [
+    'playNext',
+    'playPrevious',
+    'setSpeed',
+    'setLoopMode'
+  ];
+  await currentAVSession.setMediaCenterControlType(controlTypes);
+  console.info('Succeeded in setting media center control type.');
+} catch (err) {
+  console.error(`setMediaCenterControlType BusinessError: code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## getController<sup>10+</sup>
+
+getController(): Promise\<AVSessionController>
+
+Obtains the controller corresponding to this session. This API uses a promise to return the result.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+**System capability:** SystemCapability.Multimedia.AVSession.Core
+
+**Return value**
+
+| Type                                                | Description                         |
+| ---------------------| ----------------------------- |
+| Promise<[AVSessionController](arkts-apis-avsession-AVSessionController.md)> | Promise used to return the session controller instance, which is used to control media playback and obtain the playback state.|
+
+**Error codes**
+
+For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+
+| ID| Error Message|
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**Example**
+
+```ts
+currentAVSession.getController().then((avcontroller: avSession.AVSessionController) => {
+  console.info(`Succeeded in getting controller, sessionid: ${avcontroller.sessionId}`);
+});
 ```
 
 ## getController<sup>10+</sup>
@@ -1887,7 +1635,7 @@ getController(callback: AsyncCallback\<AVSessionController>): void
 
 Obtains the controller corresponding to this session. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
@@ -1907,31 +1655,13 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, 'SESSION_NAME', 'audio');
-          let avsessionController: avSession.AVSessionController;
-          currentAVSession.getController((avcontroller: avSession.AVSessionController) => {
-            avsessionController = avcontroller;
-            console.info(`Succeeded in getting controller, sessionid: ${avsessionController.sessionId}`);
-          });
-        })
-    }
-    .width('100%')
-    .height('100%')
+currentAVSession.getController((err: BusinessError, avcontroller: avSession.AVSessionController) => {
+  if (err) {
+    console.error(`Failed to get controller, code: ${err.code}, message: ${err.message}`);
+    return;
   }
-}
+  console.info(`Succeeded in getting controller, sessionid: ${avcontroller.sessionId}`);
+});
 ```
 
 ## getAVCastController<sup>10+</sup>
@@ -1940,15 +1670,15 @@ getAVCastController(): Promise\<AVCastController>
 
 Obtains the cast controller when a casting connection is set up. This API uses a promise to return the result. If the session is not in the cast state, the controller returns **null**.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.AVCast
+**System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 **Return value**
 
 | Type    | Description    |
 | --------- | --------- |
-| Promise<[AVCastController](arkts-apis-avsession-AVCastController.md)\>  | Promise used to return the cast controller.|
+| Promise<[AVCastController](arkts-apis-avsession-AVCastController.md)\>  | Promise used to return the cast controller instance, which is used to control screen casting playback and send media data.|
 
 **Error codes**
 
@@ -1956,14 +1686,12 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | --------------------------------------- |
-| 6600102| The session does not exist.           |
-| 6600109| The remote connection is not established. |
+| 6600102  | The session does not exist. |
+| 6600109  | The remote connection is not established. |
 
 **Example**
 
 ```ts
-
-
 let avCastController: avSession.AVCastController;
 currentAVSession.getAVCastController().then((avcontroller: avSession.AVCastController) => {
   avCastController = avcontroller;
@@ -1977,7 +1705,7 @@ getAVCastController(callback: AsyncCallback\<AVCastController>): void
 
 Obtains the cast controller when a casting connection is set up. This API uses an asynchronous callback to return the result. If the session is not in the cast state, the controller returns **null**.
 
-**System capability**: SystemCapability.Multimedia.AVSession.AVCast
+**System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 **Parameters**
 
@@ -1991,14 +1719,20 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message                                 |
 | -------- |---------------------------------------|
-| 6600102| The session does not exist.           |
-| 6600109| The remote connection is not established. |
+| 6600102  | The session does not exist. |
+| 6600109  | The remote connection is not established. |
 
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let avCastController: avSession.AVCastController;
-currentAVSession.getAVCastController((avcontroller: avSession.AVCastController) => {
+currentAVSession.getAVCastController((err: BusinessError, avcontroller: avSession.AVCastController) => {
+  if (err) {
+    console.error(`Failed to get AV cast controller, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   avCastController = avcontroller;
   console.info('Succeeded in getting AV cast controller.');
 });
@@ -2010,15 +1744,15 @@ getOutputDevice(): Promise\<OutputDeviceInfo>
 
 Obtains information about the output device for this session. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Return value**
 
 | Type                                          | Description                             |
 | ---------------| --------------------------------- |
-| Promise<[OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)> | Promise used to return the output device information.|
+| Promise<[OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)> | Promise used to return the playback device information, including the device name, device type, and connection status.|
 
 **Error codes**
 
@@ -2032,8 +1766,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-
-
 currentAVSession.getOutputDevice().then((outputDeviceInfo: avSession.OutputDeviceInfo) => {
   console.info(`Succeeded in getting output device, devices length: ${outputDeviceInfo.devices.length}`);
 })
@@ -2045,7 +1777,7 @@ getOutputDevice(callback: AsyncCallback\<OutputDeviceInfo>): void
 
 Obtains information about the output device for this session. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
@@ -2065,7 +1797,13 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-currentAVSession.getOutputDevice((outputDeviceInfo: avSession.OutputDeviceInfo) => {
+import { BusinessError } from '@kit.BasicServicesKit';
+
+currentAVSession.getOutputDevice((err: BusinessError, outputDeviceInfo: avSession.OutputDeviceInfo) => {
+  if (err) {
+    console.error(`Failed to get output device, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info(`Succeeded in getting output device, devices length: ${outputDeviceInfo.devices.length}`);
 });
 ```
@@ -2074,11 +1812,11 @@ currentAVSession.getOutputDevice((outputDeviceInfo: avSession.OutputDeviceInfo) 
 
 activate(): Promise\<void>
 
-Activates this session. A session can be used only after being activated. This API uses a promise to return the result.
+Activates a session. After the session is activated, you can set metadata, playback state, and receive control commands. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Return value**
 
@@ -2098,8 +1836,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-
-
 currentAVSession.activate().then(() => {
   console.info('Succeeded in activating.');
 });
@@ -2109,9 +1845,9 @@ currentAVSession.activate().then(() => {
 
 activate(callback: AsyncCallback\<void>): void
 
-Activates this session. A session can be used only after being activated. This API uses an asynchronous callback to return the result.
+Activates a session. After the session is activated, you can set metadata, playback state, and receive control commands. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
@@ -2131,9 +1867,13 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-
-currentAVSession.activate(() => {
+currentAVSession.activate((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to activate, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info('Succeeded in activating.');
 });
 ```
@@ -2144,9 +1884,9 @@ deactivate(): Promise\<void>
 
 Deactivates this session. You can use [activate](#activate10) to activate the session again. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Return value**
 
@@ -2166,8 +1906,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-
-
 currentAVSession.deactivate().then(() => {
   console.info('Succeeded in deactivating.');
 });
@@ -2181,7 +1919,7 @@ Deactivates this session. This API uses an asynchronous callback to return the r
 
 Deactivates this session. You can use [activate](#activate10) to activate the session again.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
@@ -2201,9 +1939,13 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-
-currentAVSession.deactivate(() => {
+currentAVSession.deactivate((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to deactivate, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info('Succeeded in deactivating.');
 });
 ```
@@ -2214,9 +1956,9 @@ destroy(): Promise\<void>
 
 Destroys this session. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Return value**
 
@@ -2236,8 +1978,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-
-
 currentAVSession.destroy().then(() => {
   console.info('Succeeded in destroying.');
 });
@@ -2249,7 +1989,7 @@ destroy(callback: AsyncCallback\<void>): void
 
 Destroys this session. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
@@ -2269,9 +2009,13 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-
-currentAVSession.destroy(() => {
+currentAVSession.destroy((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to destroy, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info('Succeeded in destroying.');
 });
 ```
@@ -2282,11 +2026,11 @@ on(type: 'play', callback: () => void): void
 
 Subscribes to play command events. The subscription means that the application supports the play command.
 
-Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
@@ -2319,15 +2063,17 @@ onPlay(callback: Callback\<CommandInfo>): void
 
 Subscribes to play command events. This API uses an asynchronous callback to return the result.
 
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
+
 The application receives [CommandInfo](arkts-apis-avsession-i.md#commandinfo22) sent by the controller through the callback.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                                                              | Mandatory| Description    |
 | -------- |------------------------------------------------------------------| ---- | --------- |
-| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | Yes  | Callback used for subscription. If the subscription is successful, **err** is **undefined**; otherwise, **err** is an error object.                                       |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | Yes  | Callback invoked when the corresponding playback command is sent to the session.                                       |
 
 **Error codes**
 
@@ -2352,18 +2098,18 @@ on(type: 'pause', callback: () => void): void
 
 Subscribes to pause command events. The subscription means that the application supports the pause command.
 
-Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                | Mandatory| Description    |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | Yes  | Event type. The event **'pause'** is triggered when the command for pausing the playback is sent to the session.|
-| callback | () => void | Yes  | Callback used for subscription. If the subscription is successful, **err** is **undefined**; otherwise, **err** is an error object.    |
+| callback | () => void | Yes  | Callback used to return the result.    |
 
 **Error codes**
 
@@ -2389,18 +2135,18 @@ on(type:'stop', callback: () => void): void
 
 Subscribes to stop command events. The subscription means that the application supports the stop command.
 
-Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                | Mandatory| Description    |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | Yes  | Event type. The event **'stop'** is triggered when the command for stopping the playback is sent to the session.|
-| callback | () => void | Yes  | Callback used for subscription. If the subscription is successful, **err** is **undefined**; otherwise, **err** is an error object.         |
+| callback | () => void | Yes  | Callback used to return the result.         |
 
 **Error codes**
 
@@ -2426,18 +2172,18 @@ on(type:'playNext', callback: () => void): void
 
 Subscribes to playNext command events. The subscription means that the application supports the playNext command.
 
-Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                | Mandatory| Description    |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | Yes  | Event type. The event **'playNext'** is triggered when the command for playing the next item is sent to the session.|
-| callback | () => void | Yes  | Callback used for subscription. If the subscription is successful, **err** is **undefined**; otherwise, **err** is an error object.    |
+| callback | () => void | Yes  | Callback used to return the result.    |
 
 **Error codes**
 
@@ -2463,15 +2209,17 @@ onPlayNext(callback: Callback\<CommandInfo>): void
 
 Subscribes to playNext command events. This API uses an asynchronous callback to return the result.
 
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
+
 The application receives [CommandInfo](arkts-apis-avsession-i.md#commandinfo22) sent by the controller through the callback.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type      | Mandatory| Description    |
 | -------- | ---------- | ---- | --------- |
-| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | Yes  | Callback used for subscription. If the subscription is successful, **err** is **undefined**; otherwise, **err** is an error object.    |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | Yes  | Callback used to return the result. The parameter is the command sent by the controller.    |
 
 **Error codes**
 
@@ -2496,18 +2244,18 @@ on(type:'playPrevious', callback: () => void): void
 
 Subscribes to playPrevious command events. The subscription means that the application supports the playPrevious command.
 
-Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                | Mandatory| Description    |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | Yes  | Event type. The event **'playPrevious'** is triggered when the command for playing the previous item sent to the session.|
-| callback | () => void | Yes  | Callback used for subscription. If the subscription is successful, **err** is **undefined**; otherwise, **err** is an error object.      |
+| callback | () => void | Yes  | Callback used to return the result.      |
 
 **Error codes**
 
@@ -2533,17 +2281,19 @@ onPlayPrevious(callback: Callback\<CommandInfo>): void
 
 Subscribes to playPrevious command events. This API uses an asynchronous callback to return the result.
 
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
+
 The application receives [CommandInfo](arkts-apis-avsession-i.md#commandinfo22) sent by the controller through the callback.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                | Mandatory| Description    |
 | -------- | -------------------- | ---- | --------- |
-| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | Yes  | Callback used for subscription. If the subscription is successful, **err** is **undefined**; otherwise, **err** is an error object.      |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | Yes  | Callback used to return the result. The parameter is the command sent by the controller.      |
 
 **Error codes**
 
@@ -2568,18 +2318,18 @@ on(type: 'fastForward', callback: (time?: number) => void): void
 
 Subscribes to fastForward command events. The subscription means that the application supports the fastForward command.
 
-Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                | Mandatory| Description    |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | Yes  | Event type. The event **'fastForward'** is triggered when the command for fast forwarding is sent to the session.|
-| callback | (time?: number) => void | Yes  | Callback used for subscription. The **time** parameter in the callback indicates the time to seek to, in seconds.   |
+| callback | (time?: number) => void | Yes  | Callback used to return the result. The **time** parameter indicates the fast-forward time, in seconds.   |
 
 **Error codes**
 
@@ -2605,15 +2355,17 @@ onFastForward(callback: TwoParamCallback\<number, CommandInfo>): void
 
 Subscribes to fastForward command events. This API uses an asynchronous callback to return the result.
 
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
+
 The application receives the fast-forward time parameter and [CommandInfo](arkts-apis-avsession-i.md#commandinfo22) sent by the controller through the callback.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                                                                                            | Mandatory| Description                       |
 | -------- |------------------------------------------------------------------------------------------------| ---- |---------------------------|
-| callback | TwoParamCallback\<number, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | Yes  | Callback used to return the result. It is used to process the **fastForward** operation.|
+| callback | TwoParamCallback\<number, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | Yes  | Callback used to return the result. It is used to process the **fastForward** operation. The **number** parameter indicates the fast-forward time, in seconds.|
 
 **Error codes**
 
@@ -2638,18 +2390,18 @@ on(type:'rewind', callback: (time?: number) => void): void
 
 Subscribes to rewind command events.
 
-Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                | Mandatory| Description    |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | Yes  | Event type. The event **'rewind'** is triggered when the command for rewinding is sent to the session.|
-| callback | (time?: number) => void | Yes  | Callback used for subscription. The **time** parameter in the callback indicates the time to seek to, in seconds.     |
+| callback | (time?: number) => void | Yes  | Callback used to return the result. The **time** parameter indicates the rewind time, in seconds.     |
 
 **Error codes**
 
@@ -2675,15 +2427,17 @@ onRewind(callback: TwoParamCallback\<number, CommandInfo>): void
 
 Subscribes to rewind command events. This API uses an asynchronous callback to return the result.
 
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
+
 The application receives the rewind time parameter and [CommandInfo](arkts-apis-avsession-i.md#commandinfo22) sent by the controller through the callback.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                                                                                            | Mandatory| Description                  |
 | -------- |------------------------------------------------------------------------------------------------| ---- |----------------------|
-| callback | TwoParamCallback\<number, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | Yes  | Callback used to return the result. It is used to process the rewind operation.|
+| callback | TwoParamCallback\<number, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | Yes  | Callback used to return the result. It is used to process the rewind operation. The **number** parameter indicates the rewind time, in seconds.|
 
 **Error codes**
 
@@ -2708,18 +2462,18 @@ on(type:'playWithAssetId', callback: Callback\<string>): void
 
 Subscribes to playback events with a given media asset ID.
 
-Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                | Mandatory| Description    |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | Yes  | Event type. The event **'playWithAssetId'** is triggered when the media asset ID is played.|
-| callback | Callback\<string> | Yes  | Callback used for subscription. The **assetId** parameter in the callback indicates the media asset ID.     |
+| callback | Callback\<string> | Yes  | Callback used to return the result. The **assetId** parameter in the callback indicates the media asset ID.     |
 
 **Error codes**
 
@@ -2745,16 +2499,16 @@ off(type: 'playWithAssetId', callback?: Callback\<string>): void
 
 Unsubscribes from playback events with a given media asset ID. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name   | Type                 | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
-| type     | string               | Yes  | Event type, which is **'playWithAssetId'** in this case.|
-| callback | Callback\<string> | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session. The **assetId** parameter in the callback indicates the media asset ID.                           |
+| type     | string               | Yes  | Type of the event to be unsubscribed from. Currently, only the **'playWithAssetId'** event is supported.|
+| callback | Callback\<string> | No  | Callback used to return the result. The **assetId** parameter in the callback indicates the media asset ID. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -2775,20 +2529,20 @@ currentAVSession.off('playWithAssetId');
 
 on(type: 'seek', callback: (time: number) => void): void
 
-Subscribes to seek command events.
+Subscribes to playback position seeking events.
 
-Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                  | Mandatory| Description    |
 | -------- | ---------------------- | ---- | --------- |
 | type     | string                 | Yes  | Event type. The event **'seek'** is triggered when the seek command is sent to the session.|
-| callback | (time: number) => void | Yes  | Callback used for subscription. The **time** parameter in the callback indicates the time to seek to, in milliseconds.                  |
+| callback | (time: number) => void | Yes  | Callback used to return the result. The **time** parameter indicates the target time, in milliseconds.                  |
 
 **Error codes**
 
@@ -2814,18 +2568,18 @@ on(type: 'setSpeed', callback: (speed: number) => void): void
 
 Subscribes to setSpeed command events.
 
-Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                   | Mandatory| Description    |
 | -------- | ----------------------- | ---- | --------- |
 | type     | string                  | Yes  | Event type. The event **'setSpeed'** is triggered when the command for setting the playback speed is sent to the session.|
-| callback | (speed: number) => void | Yes  | Callback used for subscription. The **speed** parameter in the callback indicates the playback speed.                             |
+| callback | (speed: number) => void | Yes  | Callback used to return the result. The **speed** parameter in the callback indicates the playback speed.                             |
 
 **Error codes**
 
@@ -2851,18 +2605,18 @@ on(type: 'setLoopMode', callback: (mode: LoopMode) => void): void
 
 Subscribes to setLoopMode command events.
 
-Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name   | Type                                  | Mandatory| Description |
 | -------- | ------------------------------------- | ---- | ---- |
 | type     | string                                | Yes  | Event type. The event **'setLoopMode'** is triggered when the command for setting the loop mode is sent to the session.|
-| callback | (mode: [LoopMode](arkts-apis-avsession-e.md#loopmode10)) => void | Yes  | Callback used for subscription. The **mode** parameter in the callback indicates the loop mode.                              |
+| callback | (mode: [LoopMode](arkts-apis-avsession-e.md#loopmode10)) => void | Yes  | Callback used to return the result. The **mode** parameter in the callback indicates the loop mode.                              |
 
 **Error codes**
 
@@ -2886,20 +2640,20 @@ currentAVSession.on('setLoopMode', (mode: avSession.LoopMode) => {
 
 on(type: 'setTargetLoopMode', callback: Callback\<LoopMode>): void
 
-Subscribes to setTargetLoopMode command events.
+Subscribes to **setTargetLoopMode** command events. This event is reported when the user sets the expected loop mode.
 
-Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name   | Type                                  | Mandatory| Description |
 | -------- | ------------------------------------- | ---- | ---- |
-| type     | string                                | Yes  | Event type. The event **'setTargetLoopMode'**<br>is triggered when the command for setting the target loop mode is sent to the session.|
-| callback | Callback<[LoopMode](arkts-apis-avsession-e.md#loopmode10)> | Yes  | Callback used for subscription. The **LoopMode** parameter in the callback indicates the target loop mode.                              |
+| type     | string                                | Yes  | Event type.<br>The event **'setTargetLoopMode'** is triggered when the command for setting the target loop mode is sent to the session.|
+| callback | Callback<[LoopMode](arkts-apis-avsession-e.md#loopmode10)> | Yes  | Callback used to return the result. The **LoopMode** parameter in the callback indicates the target loop mode.                              |
 
 **Error codes**
 
@@ -2924,18 +2678,18 @@ on(type: 'toggleFavorite', callback: (assetId: string) => void): void
 
 Subscribes to toggleFavorite command events.
 
-Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                     | Mandatory| Description    |
 | -------- | ------------------------- | ---- | --------- |
 | type     | string                    | Yes  | Event type. The event **'toggleFavorite'** is triggered when the command for favoriting the media asset is sent to the session.|
-| callback | (assetId: string) => void | Yes  | Callback used for subscription. The **assetId** parameter in the callback indicates the media asset ID.                             |
+| callback | (assetId: string) => void | Yes  | Callback used to return the result. The **assetId** parameter indicates the media asset ID, which is the same as that in **AVMetadata**.                             |
 
 **Error codes**
 
@@ -2961,18 +2715,18 @@ on(type: 'skipToQueueItem', callback: (itemId: number) => void): void
 
 Subscribes to the event that indicates an item in the playlist is selected. The session can play the selected item.
 
-Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                     | Mandatory| Description                                  |
 | -------- | ------------------------ | ---- | ------------------------------------- |
 | type     | string                   | Yes  | Event type. The event **'skipToQueueItem'** is triggered when an item in the playlist is selected.|
-| callback | (itemId: number) => void | Yes  | Callback used for subscription. The **itemId** parameter in the callback indicates the ID of the selected item.                                               |
+| callback | (itemId: number) => void | Yes  | Callback used to return the result. The **itemId** parameter in the callback indicates the ID of the selected item, which corresponds to the **itemId** parameter set in **setAVQueueItems**.                                               |
 
 **Error codes**
 
@@ -2998,18 +2752,18 @@ on(type: 'handleKeyEvent', callback: (event: KeyEvent) => void): void
 
 Subscribes to key events of external devices such as Bluetooth and wired devices to listen for the play, pause, previous, next, fast-forward, and rewind commands in the key events.
 
-Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type   | Mandatory| Description    |
 | -------- | --------- | ---- | --------- |
 | type     | string    | Yes  | Event type. The event **'handleKeyEvent'** is triggered when a key event is sent to the session.|
-| callback | (event: [KeyEvent](../apis-input-kit/js-apis-keyevent.md)) => void | Yes  | Callback used for subscription. The **event** parameter in the callback indicates the key event.                             |
+| callback | (event: [KeyEvent](../apis-input-kit/js-apis-keyevent.md)) => void | Yes  | Callback used to return the result. The **event** parameter in the callback indicates the key event.                             |
 
 **Error codes**
 
@@ -3038,18 +2792,18 @@ on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: Output
 
 Subscribes to output device change events. After the application integrates the [multimedia.avCastPicker (AVCastPicker) component](ohos-multimedia-avcastpicker.md), the application receives the device change callback when the user switches the device through the component.
 
-Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type| Mandatory| Description    |
 | -------- | ------------------------| ---- | --------- |
 | type     | string                                                  | Yes  | Event type. The event **'outputDeviceChange'** is triggered when the output device changes.|
-| callback | (state: [ConnectionState](arkts-apis-avsession-e.md#connectionstate10), device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | Yes  | Callback function, where the **device** parameter specifies the output device information.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                        |
+| callback | (state: [ConnectionState](arkts-apis-avsession-e.md#connectionstate10), device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | Yes  | Callback used to return the result. The **state** parameter indicates the connection status, and the **device** parameter indicates the device information.                        |
 
 **Error codes**
 
@@ -3075,11 +2829,11 @@ on(type: 'commonCommand', callback: (command :string, args:{[key: string]: Objec
 
 Subscribes to custom control command change events.
 
-Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
@@ -3090,7 +2844,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Management Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ------------------------------ |
@@ -3101,35 +2855,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-
-import { avSession } from '@kit.AVSessionKit';
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() { 
-    Column() {
-        Text(this.message)
-          .onClick(()=>{
-            let currentAVSession: avSession.AVSession | undefined = undefined;
-            let tag = "createNewSession";
-            let context: Context = this.getUIContext().getHostContext() as Context;
-
-            avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
-              currentAVSession = data;
-              if (currentAVSession !== undefined) {
-                (currentAVSession as avSession.AVSession).on('commonCommand', (commonCommand, args) => {
-                    console.info(`OnCommonCommand, the command is ${commonCommand}, args: ${JSON.stringify(args)}`);
-                });
-              }
-            });
-          })
-      }
-    .width('100%')
-    .height('100%')
-  }
-}
+currentAVSession.on('commonCommand', (commonCommand, args) => {
+  console.info(`OnCommonCommand, the command is ${commonCommand}, args: ${JSON.stringify(args)}`);
+});
 ```
 
 ## off('play')<sup>10+</sup>
@@ -3138,16 +2866,16 @@ off(type: 'play', callback?: () => void): void
 
 Unsubscribes from play command events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name   | Type                 | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
-| type     | string               | Yes  | Event type, which is **'play'** in this case.|
-| callback | () => void | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                           |
+| type     | string               | Yes  | Type of the event to be unsubscribed from. Currently, only the **'play'** event is supported.|
+| callback | () => void | No  | Callback used to return the result, which is the same as that registered using the **on** method. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -3173,13 +2901,13 @@ Unsubscribes from play command events. This API uses an asynchronous callback to
 
 If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name   | Type                 | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
-| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                           |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | No  | Callback used to return the result. The parameter is the command sent by the controller. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -3202,16 +2930,16 @@ off(type: 'pause', callback?: () => void): void
 
 Unsubscribes from pause command events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name   | Type                 | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
-| type     | string               | Yes  | Event type, which is **'pause'** in this case.|
-| callback | () => void | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
+| type     | string               | Yes  | Type of the event to be unsubscribed from. Currently, only the **'pause'** event is supported.|
+| callback | () => void | No  | Callback used to return the result, which is the same as that registered using the **on** method. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -3235,16 +2963,16 @@ off(type: 'stop', callback?: () => void): void
 
 Unsubscribes from stop command events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name   | Type                 | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
-| type     | string               | Yes  | Event type, which is **'stop'** in this case.|
-| callback | () => void | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                           |
+| type     | string               | Yes  | Type of the event to be unsubscribed from. Currently, only the **'stop'** event is supported.|
+| callback | () => void | No  | Callback used to return the result, which is the same as that registered using the **on** method. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -3268,16 +2996,16 @@ off(type: 'playNext', callback?: () => void): void
 
 Unsubscribes from playNext command events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name   | Type                 | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
-| type     | string               | Yes  | Event type, which is **'playNext'** in this case.|
-| callback | () => void | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                           |
+| type     | string               | Yes  | Type of the event to be unsubscribed from. Currently, only the **'playNext'** event is supported.|
+| callback | () => void | No  | Callback used to return the result, which is the same as that registered using the **on** method. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -3303,13 +3031,13 @@ Unsubscribes from playNext command events. This API uses an asynchronous callbac
 
 If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name   | Type       | Mandatory| Description                  |
 | -------- | ---------- | ---- | ---------------------- |
-| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                           |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | No  | Callback used to return the result. The parameter is the command sent by the controller. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -3332,16 +3060,16 @@ off(type: 'playPrevious', callback?: () => void): void
 
 Unsubscribes from playPrevious command events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name   | Type                 | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
-| type     | string               | Yes  | Event type, which is **'playPrevious'** in this case.|
-| callback | () => void | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                           |
+| type     | string               | Yes  | Type of the event to be unsubscribed from. Currently, only the **'playPrevious'** event is supported.|
+| callback | () => void | No  | Callback used to return the result, which is the same as that registered using the **on** method. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -3367,13 +3095,13 @@ Unsubscribes from playPrevious command events. This API uses an asynchronous cal
 
 If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name   | Type    | Mandatory| Description                  |
 | -------- |--------| ---- | ---------------------- |
-| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)>  | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                           |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)>  | No  | Callback used to return the result. The parameter is the command sent by the controller. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -3396,16 +3124,16 @@ off(type: 'fastForward', callback?: () => void): void
 
 Unsubscribes from fastForward command events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name   | Type                 | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
-| type     | string               | Yes  | Event type, which is **'fastForward'** in this case.|
-| callback | () => void | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                           |
+| type     | string               | Yes  | Type of the event to be unsubscribed from. Currently, only the **'fastForward'** event is supported.|
+| callback | () => void | No  | Callback used to return the result, which is the same as that registered using the **on** method. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -3431,13 +3159,13 @@ Unsubscribes from fastForward command events. This API uses an asynchronous call
 
 If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name   | Type                                  | Mandatory| Description                  |
 | -------- |--------------------------------------| ---- | ---------------------- |
-| callback | TwoParamCallback\<number, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                           |
+| callback | TwoParamCallback\<number, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | No  | Callback function used to process the fast-forward operation. The **number** parameter indicates the fast-forward time, in seconds. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -3460,16 +3188,16 @@ off(type: 'rewind', callback?: () => void): void
 
 Unsubscribes from rewind command events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name   | Type                 | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
-| type     | string               | Yes  | Event type, which is **'rewind'** in this case.|
-| callback | () => void | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                           |
+| type     | string               | Yes  | Type of the event to be unsubscribed from. Currently, only the **'rewind'** event is supported.|
+| callback | () => void | No  | Callback used to return the result, which is the same as that registered using the **on** method. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -3495,13 +3223,13 @@ Unsubscribes from rewind command events. This API uses an asynchronous callback 
 
 If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name   | Type                 | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
-| callback | TwoParamCallback\<number, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                           |
+| callback | TwoParamCallback\<number, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | No  | Callback used to return the result. The **number** parameter indicates the rewind time, in seconds. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -3524,16 +3252,16 @@ off(type: 'seek', callback?: (time: number) => void): void
 
 Unsubscribes from seek command events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                  | Mandatory| Description                                         |
 | -------- | ---------------------- | ---- | ----------|
-| type     | string                 | Yes  | Event type, which is **'seek'** in this case.      |
-| callback | (time: number) => void | No  | Callback used for unsubscription. The **time** parameter in the callback indicates the time to seek to, in milliseconds.<br>If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.       |
+| type     | string                 | Yes  | Type of the event to be unsubscribed from. Currently, only the **'seek'** event is supported.      |
+| callback | (time: number) => void | No  | Callback used to return the result. The **time** parameter in the callback indicates the time to seek to, in milliseconds. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -3557,16 +3285,16 @@ off(type: 'setSpeed', callback?: (speed: number) => void): void
 
 Unsubscribes from setSpeed command events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                   | Mandatory| Description                                          |
 | -------- | ----------------------- | ---- | -------------------------------------------|
-| type     | string                  | Yes  | Event type, which is **'setSpeed'** in this case.   |
-| callback | (speed: number) => void | No  | Callback used for unsubscription. The **speed** parameter in the callback indicates the playback speed.<br>If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                |
+| type     | string                  | Yes  | Type of the event to be unsubscribed from. Currently, only the **'setSpeed'** event is supported.   |
+| callback | (speed: number) => void | No  | Callback used to return the result. The **speed** parameter in the callback indicates the playback speed. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -3590,16 +3318,16 @@ off(type: 'setLoopMode', callback?: (mode: LoopMode) => void): void
 
 Unsubscribes from setLoopMode command events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory| Description    |
 | -------- | ------------------------------------- | ---- | ----- |
-| type     | string | Yes  | Event type, which is **'setLoopMode'** in this case.|
-| callback | (mode: [LoopMode](arkts-apis-avsession-e.md#loopmode10)) => void | No  | Callback used for unsubscription. The **mode** parameter in the callback indicates the loop mode.<br>- If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>- The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
+| type     | string | Yes  | Type of the event to be unsubscribed from. Currently, only the **'setLoopMode'** event is supported.|
+| callback | (mode: [LoopMode](arkts-apis-avsession-e.md#loopmode10)) => void | No  | Callback used to return the result. The **mode** parameter in the callback indicates the loop mode. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -3623,16 +3351,16 @@ off(type: 'setTargetLoopMode', callback?: Callback\<LoopMode>): void
 
 Unsubscribes from setTargetLoopMode command events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory| Description    |
 | -------- | ------------------------------------- | ---- | ----- |
-| type     | string | Yes  | Event type, which is **'setTargetLoopMode'** in this case.|
-| callback | Callback<[LoopMode](arkts-apis-avsession-e.md#loopmode10)> | No  | Callback used for unsubscription. The **LoopMode** parameter in the callback indicates the target loop mode.<br>- If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>- The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
+| type     | string | Yes  | Type of the event to be unsubscribed from. Currently, only the **'setTargetLoopMode'** event is supported.|
+| callback | Callback<[LoopMode](arkts-apis-avsession-e.md#loopmode10)> | No  | Callback used to return the result. The **LoopMode** parameter in the callback indicates the target loop mode. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -3655,16 +3383,16 @@ off(type: 'toggleFavorite', callback?: (assetId: string) => void): void
 
 Unsubscribes from toggleFavorite command events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                     | Mandatory| Description    |
 | -------- | ------------------------- | ---- | -------------------------|
-| type     | string                    | Yes  | Event type, which is **'toggleFavorite'** in this case.           |
-| callback | (assetId: string) => void | No  | Callback used for unsubscription. The **assetId** parameter in the callback indicates the media asset ID.<br>If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                              |
+| type     | string                    | Yes  | Type of the event to be unsubscribed from. Currently, only the **'toggleFavorite'** event is supported.           |
+| callback | (assetId: string) => void | No  | Callback used to return the result. The **assetId** parameter in the callback indicates the media asset ID. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -3688,16 +3416,16 @@ off(type: 'skipToQueueItem', callback?: (itemId: number) => void): void
 
 Unsubscribes from the event that indicates an item in the playlist is selected. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type                     | Mandatory| Description   |
 | -------- | ------------------------ | ---- | ----------------------|
-| type     | string                   | Yes  | Event type, which is **'skipToQueueItem'** in this case.   |
-| callback | (itemId: number) => void | No  | Callback used for unsubscription. The **itemId** parameter in the callback indicates the ID of the item.<br>If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
+| type     | string                   | Yes  | Type of the event to be unsubscribed from. Currently, only the **'skipToQueueItem'** event is supported.   |
+| callback | (itemId: number) => void | No  | Callback used to return the result. The **itemId** parameter in the callback indicates the ID of the item. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -3721,16 +3449,16 @@ off(type: 'handleKeyEvent', callback?: (event: KeyEvent) => void): void
 
 Unsubscribes from key events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type |   Mandatory| Description    |
 | -------- | --------- | ---- | --------- |
-| type     | string    | Yes  | Event type, which is **'handleKeyEvent'** in this case.            |
-| callback | (event: [KeyEvent](../apis-input-kit/js-apis-keyevent.md)) => void | No  | Callback used for unsubscription. The **event** parameter in the callback indicates the key event.<br>If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                             |
+| type     | string    | Yes  | Type of the event to be unsubscribed from. Currently, only the **'handleKeyEvent'** event is supported.            |
+| callback | (event: [KeyEvent](../apis-input-kit/js-apis-keyevent.md)) => void | No  | Callback used to return the result. The **event** parameter in the callback indicates the key event. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -3754,16 +3482,16 @@ off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: Outp
 
 Unsubscribes from playback device change events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type| Mandatory| Description  |
 | -------- | ------------------------| ---- | -----------------------|
-| type     | string                                                  | Yes  | Event type, which is **'outputDeviceChange'** in this case.    |
-| callback | (state: [ConnectionState](arkts-apis-avsession-e.md#connectionstate10), device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | No  | Callback function, where the **device** parameter specifies the output device information.<br>If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                       |
+| type     | string                                                  | Yes  | Type of the event to be unsubscribed from. Currently, only the **'outputDeviceChange'** event is supported.    |
+| callback | (state: [ConnectionState](arkts-apis-avsession-e.md#connectionstate10), device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | No  | Callback used to return the result. The **state** parameter indicates the connection status, and the **device** parameter indicates the device information. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -3787,20 +3515,20 @@ off(type: 'commonCommand', callback?: (command: string, args:{[key: string]: Obj
 
 Unsubscribes from custom control command change events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name  | Type |   Mandatory| Description |
 | -------- | --------- | ---- | ----------------------|
-| type     | string    | Yes  | Event type, which is **'commonCommand'** in this case.   |
-| callback |(command: string, args:{[key: string]: Object}) => void | No  | Callback used for unsubscription. The **command** parameter in the callback indicates the name of the changed custom control command, and **args** indicates the parameters carried in the command.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
+| type     | string    | Yes  | Type of the event to be unsubscribed from. Currently, only the **'commonCommand'** event is supported.   |
+| callback |(command: string, args:{[key: string]: Object}) => void | No  | Callback used to return the result. The **command** parameter in the callback indicates the name of the changed custom control command, and **args** indicates the parameters carried in the command.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Management Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------- |
@@ -3820,11 +3548,11 @@ on(type: 'answer', callback: Callback\<void>): void
 
 Subscribes to call answer events.
 
-Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
@@ -3857,16 +3585,16 @@ off(type: 'answer', callback?: Callback\<void>): void
 
 Unsubscribes from call answer events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name   | Type                 | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
-| type     | string               | Yes  | Event type, which is **'answer'** in this case.|
-| callback | Callback\<void>     | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.   |
+| type     | string               | Yes  | Type of the event to be unsubscribed from. Currently, only the **'answer'** event is supported.|
+| callback | Callback\<void>     | No  | Callback used to return the result, which is the same as that registered using the **on** method. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -3890,11 +3618,11 @@ on(type: 'hangUp', callback: Callback\<void>): void
 
 Subscribes to call hangup events.
 
-Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
@@ -3927,16 +3655,16 @@ off(type: 'hangUp', callback?: Callback\<void>): void
 
 Unsubscribes from call answer events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name   | Type                 | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
-| type     | string               | Yes  | Event type, which is **'hangUp'** in this case.|
-| callback | Callback\<void>      | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                           |
+| type     | string               | Yes  | Type of the event to be unsubscribed from. Currently, only the **'hangUp'** event is supported.|
+| callback | Callback\<void>      | No  | Callback used to return the result, which is the same as that registered using the **on** method. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -3960,11 +3688,11 @@ on(type: 'toggleCallMute', callback: Callback\<void>): void
 
 Subscribes to call mute events.
 
-Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
@@ -3997,16 +3725,16 @@ off(type: 'toggleCallMute', callback?: Callback\<void>): void
 
 Unsubscribes from call mute events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name   | Type                 | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
-| type     | string               | Yes  | Event type, which is **'toggleCallMute'** in this case.|
-| callback | Callback\<void>    | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                           |
+| type     | string               | Yes  | Type of the event to be unsubscribed from. Currently, only the **'toggleCallMute'** event is supported.|
+| callback | Callback\<void>    | No  | Callback used to return the result, which is the same as that registered using the **on** method. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -4030,11 +3758,11 @@ on(type: 'castDisplayChange', callback: Callback\<CastDisplayInfo>): void
 
 Subscribes to cast display change events in the case of extended screens.
 
-Multiple callbacks can be registered for this event. To ensure only the latest callback executes, unregister previous listeners first. Otherwise, all registered callbacks will fire on state changes.
+Multiple callbacks can be registered for each command. If the legacy callback is not unregistered before a new one is registered, both callbacks will be triggered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
+**System capability:** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
 
 **Parameters**
 
@@ -4073,16 +3801,16 @@ currentAVSession.on('castDisplayChange', (display: avSession.CastDisplayInfo) =>
 
 Unsubscribes from cast display change events in the case of extended screens. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
+**System capability:** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
 
 **Parameters**
 
 | Name   | Type                 | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
-| type     | string    | Yes  | Event type, which is **'castDisplayChange'** in this case.|
-| callback | Callback\<[CastDisplayInfo](arkts-apis-avsession-i.md#castdisplayinfo12)\>  | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                           |
+| type     | string    | Yes  | Type of the event to be unsubscribed from. Currently, only the **'castDisplayChange'** event is supported.|
+| callback | Callback\<[CastDisplayInfo](arkts-apis-avsession-i.md#castdisplayinfo12)\>  | No  | Callback used to return the information about the cast display. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -4106,7 +3834,7 @@ stopCasting(callback: AsyncCallback\<void>): void
 
 Stops castings. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Multimedia.AVSession.AVCast
+**System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 **Parameters**
 
@@ -4136,9 +3864,9 @@ stopCasting(): Promise\<void>
 
 Stops castings. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.AVCast
+**System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 **Return value**
 
@@ -4157,8 +3885,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-
-
 currentAVSession.stopCasting().then(() => {
   console.info('Succeeded in stopping casting.');
 });
@@ -4170,9 +3896,9 @@ getOutputDeviceSync(): OutputDeviceInfo
 
 Obtains the output device information. This API returns the result synchronously.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Return value**
 
@@ -4192,8 +3918,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-
-
 let currentOutputDevice: avSession.OutputDeviceInfo = currentAVSession.getOutputDeviceSync();
 ```
 
@@ -4203,15 +3927,15 @@ getAllCastDisplays(): Promise<Array\<CastDisplayInfo>>
 
 Obtains all displays that support extended screen projection in the current system. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
+**System capability:** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
 
 **Return value**
 
 | Type                                           | Description                             |
 | ----------------| --------------------------------- |
-| Promise<Array<[CastDisplayInfo](arkts-apis-avsession-i.md#castdisplayinfo12)>>| Promise used to return the information about all the cast displays.|
+| Promise<Array<[CastDisplayInfo](arkts-apis-avsession-i.md#castdisplayinfo12)>>| Promise used to return the information about all the cast displays, including the device ID and display status.|
 
 **Error codes**
 
@@ -4225,8 +3949,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-
-
 let castDisplay: avSession.CastDisplayInfo;
 currentAVSession.getAllCastDisplays().then((data: Array< avSession.CastDisplayInfo >) => {
     if (data.length >= 1) {
@@ -4242,11 +3964,12 @@ on(type:'playFromAssetId', callback: (assetId: number) => void): void
 Subscribes to playback events with a given media asset ID.
 
 > **NOTE**
+>
 > This API is supported since API version 11 and deprecated since API version 20. You are advised to use [on('playWithAssetId')](#onplaywithassetid20) instead.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
@@ -4280,18 +4003,19 @@ off(type: 'playFromAssetId', callback?: (assetId: number) => void): void
 Unsubscribes from playback events with a given media asset ID. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
 > **NOTE**
+>
 > This API is supported since API version 11 and deprecated since API version 20. You are advised to use [off('playWithAssetId')](#offplaywithassetid20) instead.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Multimedia.AVSession.Core
+**System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**
 
 | Name   | Type                 | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
-| type     | string               | Yes  | Event type, which is **'playFromAssetId'** in this case.|
-| callback | (assetId: number) => void | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session. The **assetId** parameter in the callback indicates the media asset ID.                           |
+| type     | string               | Yes  | Type of the event to be unsubscribed from. Currently, only the **'playFromAssetId'** event is supported.|
+| callback | (assetId: number) => void | No  | Callback used to return the result. The **assetId** parameter in the callback indicates the media asset ID. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -4315,9 +4039,9 @@ on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
 
 Subscribes to events indicating that custom data is sent to a remote device.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Multimedia.AVSession.AVCast
+**System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 **Parameters**
 
@@ -4349,16 +4073,16 @@ off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): vo
 
 Unsubscribes from events indicating that custom data is sent to a remote device.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Multimedia.AVSession.AVCast
+**System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 **Parameters**
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                           | Yes  | Event type, which is **'customDataChange'** in this case.        |
-| callback | Callback\<Record\<string, Object>> | No  | Callback used for unsubscription. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
+| type     | string                           | Yes  | Type of the event to be unsubscribed from. Currently, only the **'customDataChange'** event is supported.        |
+| callback | Callback\<Record\<string, Object>> | No  | Callback used to return the result. This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 

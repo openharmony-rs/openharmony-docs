@@ -1,4 +1,4 @@
-# 空间渲染(C/C++)
+# 空间音频渲染(C/C++)
  <!--Kit: Audio Kit-->
  <!--Subsystem: Multimedia-->
  <!--Owner: @xxngwang-->
@@ -44,8 +44,11 @@
 
 ### 在CMake脚本中链接动态库
 
-``` cmake
-target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
+<!-- @[CMake_lib_suite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
+target_link_libraries(entry PUBLIC libohaudio.so)
+target_link_libraries(entry PUBLIC libohaudiosuite.so)
 ```
 
 ### 添加头文件
@@ -284,6 +287,8 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
    OH_AudioSuiteEngine_Destroy(g_audioSuiteEngine);
    ```
 
+<!--RP1-->
 ## 完整示例代码
 
 - [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
+<!--RP1End-->

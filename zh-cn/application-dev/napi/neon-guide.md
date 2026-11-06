@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍在OpenHarmony NDK工程中使用ARM Neon SIMD指令扩展的方法，涵盖arm64-v8a和armeabi-v7a架构下的Neon支持情况、Neon intrinsics库使用、Auto-Vectorization特性及CMake编译参数配置，适用于多媒体编解码和图形处理等计算密集型场景的性能优化。"
+keywords: [Neon, SIMD, ARM, arm_neon.h, intrinsics, Auto-Vectorization, armeabi-v7a, arm64-v8a, -mfpu]
+doctype: guide
+status: active
+---
+
 # 使用Neon指令扩展
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @liyiming13-->
 <!--Designer: @liyiming13-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 
 ARM Neon是ARM架构的SIMD（Single Instruction Multiple Data）扩展实现，提供一条指令处理多个数据的并行处理能力，广泛用于多媒体编解码、2D/3D图形处理等领域，提高执行性能。
@@ -18,7 +26,7 @@ ARMv8a架构CPU默认集成Neon扩展，在AArch64与AArch32两种状态下都�
 
 ## OpenHarmony架构支持情况
 
-在OpenHarmony系统中，arm64-v8a ABI下默认已经开启了对Neon扩展的支持；在armeabi-v7a ABI下，为了能够尽可能的支持ARMv7a架构设备，默认不开启Neon扩展。
+在OpenHarmony系统中，arm64-v8a ABI下默认已经开启了对Neon扩展的支持；在armeabi-v7a ABI下，为了能够尽可能地支持ARMv7a架构设备，默认不开启Neon扩展。
 
 在OpenHarmony SDK的LLVM工具链中，为armeabi-v7a ABI提供了对多种配置的预编译运行时库的支持，供开发者根据不同的配置进行选择。具体目录结构如下，native-root表示NDK所在的native包解压根目录。
 

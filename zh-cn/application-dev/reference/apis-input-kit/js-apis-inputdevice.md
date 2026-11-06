@@ -20,6 +20,7 @@
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## inputDevice.getDeviceList<sup>9+</sup>
@@ -69,7 +70,7 @@ struct Index {
           } catch (error) {
             console.error(`Failed to get device id list, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
-        })
+        });
     }
   }
 }
@@ -263,6 +264,7 @@ getDeviceInfoSync(deviceId: number): InputDeviceData
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -286,9 +288,9 @@ struct Index {
 
 ## inputDevice.on('change')<sup>9+</sup>
 
-on(type: "change", listener: Callback&lt;DeviceListener&gt;): void
+on(type: 'change', listener: Callback&lt;DeviceListener&gt;): void
 
-注册监听输入设备的热插拔事件，使用时需连接鼠标、键盘、触摸屏等外部设备。使用callback异步回调。
+注册监听输入设备的热插拔事件，使用时需连接鼠标、键盘、触摸屏等外部设备。使用callback异步回调。建议在应用主线程执行此操作，且需要在此线程退出前取消监听。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -312,6 +314,7 @@ on(type: "change", listener: Callback&lt;DeviceListener&gt;): void
 ```js
 import { inputDevice } from '@kit.InputKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const DOMAIN = 0x0000;
 
@@ -319,7 +322,7 @@ const DOMAIN = 0x0000;
 @Component
 struct Index {
   @State isPhysicalKeyboardExist: boolean = false;
-  @State message: string = "Click to obtain the device list and monitor device hot-plug events";
+  @State message: string = 'Click to obtain the device list and monitor device hot-plug events';
   keyboards: Map<number, inputDevice.KeyboardType> = new Map();
 
   build() {
@@ -339,14 +342,14 @@ struct Index {
                       this.keyboards.set(data[i], type);
                     }
                   }).catch((error: BusinessError) => {
-                    console.error(`Failed to connect KeyBoard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                    console.error(`Failed to get keyboard type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                   });
                 }
               }).catch((error: BusinessError) => {
                 console.error(`Failed to get Device List, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               });
               // 2.监听设备热插拔
-              inputDevice.on("change", (data) => {
+              inputDevice.on('change', (data) => {
                 // 打印日志
                 hilog.info(DOMAIN, 'InputDevice', `Device event info: %{public}s`, JSON.stringify(data));
                 // 获取键盘类型
@@ -359,7 +362,7 @@ struct Index {
                     this.keyboards.set(data.deviceId, type);
                   }
                 }).catch((error: BusinessError) => {
-                  console.error(`Failed to get DeviceId, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                  console.error(`Failed to get keyboard type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 });
                 if (this.keyboards.get(data.deviceId) === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD &&
                   data.type === 'remove') {
@@ -368,11 +371,11 @@ struct Index {
                   this.keyboards.delete(data.deviceId);
                 }
               });
-              this.message = "Device monitoring enabled successfully"
+              this.message = 'Device monitoring enabled successfully'
             } catch (error) {
               // 打印错误日志
               hilog.error(DOMAIN, 'InputDevice', `Execute failed, error: %{public}s`,
-                JSON.stringify(error, ["code", "message"]));
+                JSON.stringify(error, ['code', 'message']));
               this.message = `Failed to enable device monitoring. Click to retry. Error message:${JSON.stringify(error,
                 ["code", "message"])}`
             }
@@ -385,9 +388,9 @@ struct Index {
 
 ## inputDevice.off('change')<sup>9+</sup>
 
-off(type: "change", listener?: Callback&lt;DeviceListener&gt;): void
+off(type: 'change', listener?: Callback&lt;DeviceListener&gt;): void
 
-取消监听输入设备的热插拔事件。在应用退出前调用，取消监听。使用callback异步回调。
+取消监听输入设备的热插拔事件。使用callback异步回调。取消监听需要与注册监听在同一线程执行。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -410,6 +413,7 @@ off(type: "change", listener?: Callback&lt;DeviceListener&gt;): void
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -424,23 +428,23 @@ struct Index {
 
           try {
             // 监听设备热插拔事件
-            inputDevice.on("change", callback);
+            inputDevice.on('change', callback);
           } catch (error) {
-            console.error(`Failed to listen device event , Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            console.error(`Failed to listen to device event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
 
           // 取消指定的监听。
           try {
             // 取消监听设备热插拔事件
-            inputDevice.off("change", callback);
+            inputDevice.off('change', callback);
           } catch (error) {
-            console.error(`Failed to cancel listening device event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            console.error(`Failed to cancel listening to device event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
 
           // 取消所有监听。
           try {
             // 取消监听设备热插拔事件
-            inputDevice.off("change");
+            inputDevice.off('change');
           } catch (error) {
             console.error(`Failed to cancel all listening device event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -635,9 +639,9 @@ struct Index {
 
 ## inputDevice.supportKeys<sup>9+</sup>
 
-supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;, callback: AsyncCallback &lt;Array&lt;boolean&gt;&gt;): void
+supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;, callback: AsyncCallback&lt;Array&lt;boolean&gt;&gt;): void
 
-查询指定输入设备是否支持指定按键，使用callback异步回调。
+查询指定输入设备是否支持指定按键，使用callback异步回调。调用此接口前，需要先调用[getDeviceList](#inputdevicegetdevicelist9)接口获取输入设备的ID。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -670,15 +674,21 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 查询ID为1的输入设备对于17、22和2055按键的支持情况。
-          try {
-            // 查询按键支持情况
-            inputDevice.supportKeys(1, [17, 22, 2055], (error: BusinessError, supportResult: Array<Boolean>) => {
-              console.info(`Succeeded in querying support keys, supportResult: ${JSON.stringify(supportResult)}.`);
-            });
-          } catch (error) {
-            console.error(`Failed to query support key, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
+          // 先查询当前已连接的输入设备ID列表
+          inputDevice.getDeviceList().then((ids: Array<number>) => {
+            for (let deviceId of ids) {
+              // 查询按键支持情况
+              inputDevice.supportKeys(deviceId, [17, 22, 2055], (error: BusinessError, supportResult: Array<Boolean>) => {
+                if (error) {
+                  console.error(`Failed to query support key, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                  return;
+                }
+                console.info(`Succeeded in querying support keys, supportResult: ${JSON.stringify(supportResult)}.`);
+              });
+            }
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to get device list, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          });
         })
     }
   }
@@ -689,7 +699,7 @@ struct Index {
 
 supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;): Promise&lt;Array&lt;boolean&gt;&gt;
 
-查询指定输入设备是否支持指定按键，使用Promise异步回调。
+查询指定输入设备是否支持指定按键，使用Promise异步回调。调用此接口前，需要先调用[getDeviceList](#inputdevicegetdevicelist9)接口获取输入设备的ID。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -727,17 +737,19 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 查询ID为1的输入设备对于17、22和2055按键的支持情况。
-          try {
-            // 查询按键支持情况
-            inputDevice.supportKeys(1, [17, 22, 2055]).then((supportResult: Array<Boolean>) => {
-              console.info(`Succeeded in querying support keys, result: ${JSON.stringify(supportResult)}.`);
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to query support Keys, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-            });
-          } catch (error) {
-            console.error(`Failed to query support key, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
+          // 先查询当前已连接的输入设备ID列表
+          inputDevice.getDeviceList().then((ids: Array<number>) => {
+            for (let deviceId of ids) {
+              // 查询按键支持情况
+              inputDevice.supportKeys(deviceId, [17, 22, 2055]).then((supportResult: Array<Boolean>) => {
+                console.info(`Succeeded in querying support keys, result: ${JSON.stringify(supportResult)}.`);
+              }).catch((error: BusinessError) => {
+                console.error(`Failed to query support Keys, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              });
+            }
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to get device list, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          });
         })
     }
   }
@@ -748,7 +760,7 @@ struct Index {
 
 supportKeysSync(deviceId: number, keys: Array&lt;KeyCode&gt;): Array&lt;boolean&gt;
 
-查询指定id的输入设备对指定键值的支持情况。
+查询指定id的输入设备对指定键值的支持情况。调用此接口前，需要先调用[getDeviceList](#inputdevicegetdevicelist9)接口获取输入设备的ID。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -777,6 +789,7 @@ supportKeysSync(deviceId: number, keys: Array&lt;KeyCode&gt;): Array&lt;boolean&
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -785,13 +798,20 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 查询ID为1的输入设备对于17、22和2055按键的支持情况。
-          try {
-            let supportResult: Array<Boolean> = inputDevice.supportKeysSync(1, [17, 22, 2055])
-            console.info(`Succeeded in querying support keys, result: ${JSON.stringify(supportResult)}.`)
-          } catch (error) {
-            console.error(`Failed to query support key, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`)
-          }
+          // 先查询当前已连接的输入设备ID列表
+          inputDevice.getDeviceList().then((ids: Array<number>) => {
+            for (let deviceId of ids) {
+              try {
+                // 查询按键支持情况
+                let supportResult: Array<Boolean> = inputDevice.supportKeysSync(deviceId, [17, 22, 2055]);
+                console.info(`Succeeded in querying support keys, result: ${JSON.stringify(supportResult)}.`);
+              } catch (error) {
+                console.error(`Failed to query support key, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              }
+            }
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to get device list, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          });
         })
     }
   }
@@ -802,7 +822,7 @@ struct Index {
 
 getKeyboardType(deviceId: number, callback: AsyncCallback&lt;KeyboardType&gt;): void
 
-获取输入设备的键盘类型，如全键盘、小键盘等。输入设备的键盘类型以接口返回结果为准。使用callback异步回调。
+获取输入设备的键盘类型，如全键盘、小键盘等。输入设备的键盘类型以接口返回结果为准。使用callback异步回调。调用此接口前，需要先调用[getDeviceList](#inputdevicegetdevicelist9)接口获取输入设备的ID。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -834,19 +854,25 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 查询ID为1的输入设备的键盘类型。
-          try {
-            // 获取键盘类型
-            inputDevice.getKeyboardType(1, (error: BusinessError, type: inputDevice.KeyboardType) => {
-              if (error) {
+          // 先查询当前已连接的输入设备ID列表
+          inputDevice.getDeviceList().then((ids: Array<number>) => {
+            for (let deviceId of ids) {
+              try {
+                // 获取键盘类型
+                inputDevice.getKeyboardType(deviceId, (error: BusinessError, type: inputDevice.KeyboardType) => {
+                  if (error) {
+                    console.error(`Failed to get keyboard type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                    return;
+                  }
+                  console.info(`Succeeded in getting keyboard type: ${JSON.stringify(type)}.`);
+                });
+              } catch (error) {
                 console.error(`Failed to get keyboard type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-                return;
               }
-              console.info(`Succeeded in getting keyboard type: ${JSON.stringify(type)}.`);
-            });
-          } catch (error) {
-            console.error(`Failed to get keyboard type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
+            }
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to get device list, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          });
         })
     }
   }
@@ -857,7 +883,7 @@ struct Index {
 
 getKeyboardType(deviceId: number): Promise&lt;KeyboardType&gt;
 
-获取输入设备的键盘类型，使用Promise异步回调。
+获取输入设备的键盘类型，使用Promise异步回调。调用此接口前，需要先调用[getDeviceList](#inputdevicegetdevicelist9)接口获取输入设备的ID。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -894,17 +920,19 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 示例查询设备ID为1的设备键盘类型。
-          try {
-            // 获取键盘类型
-            inputDevice.getKeyboardType(1).then((type: inputDevice.KeyboardType) => {
-              console.info(`Succeeded in getting keyboard type: ${JSON.stringify(type)}.`);
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to get keyboard type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-            })
-          } catch (error) {
-            console.error(`Failed to get keyboard type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
+          // 先查询当前已连接的输入设备ID列表
+          inputDevice.getDeviceList().then((ids: Array<number>) => {
+            for (let deviceId of ids) {
+              // 获取键盘类型
+              inputDevice.getKeyboardType(deviceId).then((type: inputDevice.KeyboardType) => {
+                console.info(`Succeeded in getting keyboard type: ${JSON.stringify(type)}.`);
+              }).catch((error: BusinessError) => {
+                console.error(`Failed to get keyboard type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              })
+            }
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to get device list, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          });
         })
     }
   }
@@ -915,7 +943,7 @@ struct Index {
 
 getKeyboardTypeSync(deviceId: number): KeyboardType
 
-获取输入设备的键盘类型。
+获取输入设备的键盘类型。调用此接口前，需要先调用[getDeviceList](#inputdevicegetdevicelist9)接口获取输入设备的ID。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -943,6 +971,7 @@ getKeyboardTypeSync(deviceId: number): KeyboardType
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -951,13 +980,20 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 示例查询设备ID为1的设备键盘类型。
-          try {
-            let type: inputDevice.KeyboardType = inputDevice.getKeyboardTypeSync(1)
-            console.info(`Succeeded in getting keyboard type: ${JSON.stringify(type)}.`)
-          } catch (error) {
-            console.error(`Failed to get keyboard type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`)
-          }
+          // 先查询当前已连接的输入设备ID列表
+          inputDevice.getDeviceList().then((ids: Array<number>) => {
+            for (let deviceId of ids) {
+              try {
+                // 获取键盘类型
+                let type: inputDevice.KeyboardType = inputDevice.getKeyboardTypeSync(deviceId);
+                console.info(`Succeeded in getting keyboard type: ${JSON.stringify(type)}.`);
+              } catch (error) {
+                console.error(`Failed to get keyboard type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              }
+            }
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to get device list, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          });
         })
     }
   }
@@ -1052,7 +1088,7 @@ setFunctionKeyEnabled(functionKey: FunctionKey, enabled: boolean): Promise&lt;vo
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 3900002      | There is currently no keyboard device connected. |
 | 3900003      | It is prohibited for non-input applications. |
@@ -1159,8 +1195,9 @@ struct Index {
 | version<sup>9+</sup> | number                                 | 否 | 否 | 输入设备的版本信息。                                         |
 | phys<sup>9+</sup>    | string                                 | 否 | 否 | 输入设备的物理地址。                                         |
 | uniq<sup>9+</sup>    | string                                 | 否 | 否 | 输入设备的唯一标识。                                         |
-| isVirtual<sup>23+</sup>    | boolean                                 | 否 | 是 | 输入设备是否为虚拟设备。<br>true表示是虚拟设备，false表示是非虚拟设备。                                      |
-| isLocal<sup>23+</sup>    | boolean                                 | 否 | 是 | 输入设备是否为本地设备。<br>true表示是本地设备，false表示是非本地设备。                                       |
+| isVirtual<sup>23+</sup>    | boolean                                 | 否 | 是 | 输入设备是否为虚拟设备。<br>true表示是虚拟设备，false表示是非虚拟设备。当该字段不存在时，默认值为false。                                      |
+| isLocal<sup>23+</sup>    | boolean                                 | 否 | 是 | 输入设备是否为本地设备。<br>true表示是本地设备，false表示是非本地设备。当该字段不存在时，默认值为false。                                       |
+| displayId  | number                                  | 是 | 是 | 绑定的目标显示器ID。当系统中有绑定关系时存在该字段，未绑定时不存在该字段。<br>**起始版本**：26.0.1<br>**模型约束**：此接口仅可在Stage模型下使用。|
 
 ## AxisType<sup>9+</sup>
 
@@ -1186,7 +1223,7 @@ type AxisType = 'touchmajor' | 'touchminor' | 'orientation' | 'x' | 'y' | 'press
 
 输入设备的轴信息。
 
-**系统能力**： SystemCapability.MultimodalInput.Input.InputDevice
+**系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |

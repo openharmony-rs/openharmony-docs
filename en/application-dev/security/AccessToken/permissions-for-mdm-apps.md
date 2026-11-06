@@ -827,7 +827,7 @@ Allows an enterprise MDM application to activate itself.
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Since**: 26.0.0
+**Since**: 24
 
 ## ohos.permission.ENTERPRISE_MANAGE_LOCAL_ACCOUNTS
 
@@ -858,3 +858,135 @@ Allows the enterprise MDM application to perform operations on multiple users.
 **Supported devices**: phones | tablets
 
 **Since**: 26.0.0
+
+## ohos.permission.ENTERPRISE_VPN
+    
+Allows an MDM application to possess the VPN access permission by default.
+
+With this permission, an application can establish VPN connections by default without requiring user confirmation.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Enable via ACL**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0
+
+## ohos.permission.ENTERPRISE_REQUEST_PUBLISH_FORM
+
+Allows an MDM application to add widgets to the home screen.
+
+<!--RP1--><!--RP1End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.GET_DRIVING_HABIT
+ 
+Allows an application to obtain the driving habits of the driver under the current login account.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+ 
+## ohos.permission.vehicle.MANAGE_DRIVING_HABIT
+ 
+Allows an application to manage the driving habits of the driver under the current login account.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+
+## ohos.permission.ENTERPRISE_ENCRYPT_BLOCK_DEVICE
+
+Allows an MDM application to mount and unmount the encrypted partition and swap partition of encrypted USB drives.
+
+<!--RP1--><!--RP1End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1
+ 
+## ohos.permission.kernel.ACCESS_DISK_USERDATA
+ 
+Allows a device management application to read user disk sectors.
+
+With this permission, the application can read user disk sectors, including the data disk and the userdata partition on the system disk.
+ 
+<!--RP1--><!--RP1End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+ 
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.1.0
+
+## ohos.permission.ENTERPRISE_EXTERNAL_READ
+
+Allows an MDM application to copy large files from USB drives during the OOBE phase.
+
+<!--RP1--><!--RP1End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1
+
+## ohos.permission.ENTERPRISE_ATTEST_KEY
+
+Allows a device management application to use the non-anonymous key attestation capability and use device certificates to issue key attestation certificate chains.
+
+<!--RP1--><!--RP1End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.1.0

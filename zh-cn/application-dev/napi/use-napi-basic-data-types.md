@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口创建和获取基本数值类型，包括双精度浮点数、int32、uint32、int64等数值类型的转换和交互，适用于Node-API模块与ArkTS数值交互场景。"
+keywords: [Node-API, 基本数据类型, 数值类型, double, int32, uint32, int64, 数值转换, napi_create_double]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口创建基本数据类型 
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -39,8 +47,8 @@ ArkTS的Number类型是一个双精度64位二进制格式IEEE 754值。只有�
 | [napi_create_string_utf8](use-napi-about-string.md#napi_create_string_utf8) | 将Node-API模块中的utf8编码的字符串类型转换为ArkTS环境中string类型。 |
 | [napi_create_string_utf16](use-napi-about-string.md#napi_create_string_utf16) | 将Node-API模块中的utf16编码的字符串类型转换为ArkTS环境中string类型。 |
 | [napi_create_string_latin1](use-napi-about-string.md#napi_create_string_latin1) | 将Node-API模块中的ISO-8859-1编码的字符串类型转换为ArkTS环境中string类型。 |
-| [napi_create_external_string_ascii](use-napi-about-string.md#napi_create_external_string_ascii) | 将Node-API模块中的ascii编码的字符串类型无拷贝的转换为ArkTS环境中string类型。 |
-| [napi_create_external_string_utf16](use-napi-about-string.md#napi_create_external_string_utf16) | 将Node-API模块中的utf16编码的字符串类型无拷贝的转换为ArkTS环境中string类型。 |
+| [napi_create_external_string_ascii](use-napi-about-string.md#napi_create_external_string_ascii) | 将Node-API模块中的ascii编码的字符串类型无拷贝地转换为ArkTS环境中string类型。 |
+| [napi_create_external_string_utf16](use-napi-about-string.md#napi_create_external_string_utf16) | 将Node-API模块中的utf16编码的字符串类型无拷贝地转换为ArkTS环境中string类型。 |
 
 ## 使用示例
 
@@ -156,8 +164,8 @@ hilog.info(0x0000, 'Node-API', 'get_value_int32_oversize %{public}d',
 // 大于2的31次-1的数字且不是二进制为111111111111111111111111111111111111这样的在int32中有特殊含义的数字也会溢出，导致数值发生改变，返回值按后32位二进制编码解码
 hilog.info(0x0000, 'Node-API', 'get_value_int32_oversize %{public}d',
   testNapi.getValueInt32(687194767355));
-// 传入NAN（not a number）、+Infinity（正无穷）或-Infinity（负无穷），会返回数字0
-hilog.info(0x0000, 'Node-API', 'get_value_int32_number_NAN %{public}d', testNapi.getValueInt32(NaN));
+// 传入NaN（not a number）、+Infinity（正无穷）或-Infinity（负无穷），会返回数字0
+hilog.info(0x0000, 'Node-API', 'get_value_int32_number_NaN %{public}d', testNapi.getValueInt32(NaN));
 hilog.info(0x0000, 'Node-API', 'get_value_int32_number_+Infinity %{public}d',
   testNapi.getValueInt32(+Infinity));
 hilog.info(0x0000, 'Node-API', 'get_value_int32_number_-Infinity %{public}d',
@@ -216,8 +224,8 @@ hilog.info(0x0000, 'Node-API', 'get_value_int64_not_number %{public}s',
 // 输入超过int64表示范围的数字会溢出，失去精度，导致输入数字与返回数字不相等
 hilog.info(0x0000, 'Node-API', 'get_value_int64_number_oversize %{public}d',
   testNapi.getValueInt64(9223372036854775809));
-// 传入NAN（not a number）、+Infinity（正无穷）或-Infinity（负无穷）接口返回数字0
-hilog.info(0x0000, 'Node-API', 'get_value_int64_number_NAN %{public}d', testNapi.getValueInt64(NaN));
+// 传入NaN（not a number）、+Infinity（正无穷）或-Infinity（负无穷）接口返回数字0
+hilog.info(0x0000, 'Node-API', 'get_value_int64_number_NaN %{public}d', testNapi.getValueInt64(NaN));
 hilog.info(0x0000, 'Node-API', 'get_value_int64_number_+Infinity %{public}d',
   testNapi.getValueInt64(+Infinity));
 hilog.info(0x0000, 'Node-API', 'get_value_int64_number_-Infinity %{public}d',
@@ -375,7 +383,7 @@ static napi_value CreateInt64(napi_env env, napi_callback_info info)
     // 要表示的整数值
     int64_t value = 2147483648;
     // 使用给定数值创建一个ArkTS number，仅能准确表示范围从-2^53 + 1到2^53 - 1（闭区间）的整数
-    // 如果想表示的数值超过了2^53，请使用napi_create_bigint64接口
+    // 如果想表示的数值超过了2^53，请使用napi_create_bigint_int64接口
     napi_value result = nullptr;
     napi_status status = napi_create_int64(env, value, &result);
     if (status != napi_ok) {

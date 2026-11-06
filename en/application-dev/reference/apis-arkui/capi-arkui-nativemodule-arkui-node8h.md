@@ -12,7 +12,7 @@ typedef struct ArkUI_Node* ArkUI_NodeHandle
 
 ## Overview
 
-Defines the pointer to an ArkUI native component object.
+Defines the pointer to an ArkUI native component object, which is used to identify and pass component instances in ArkUI native APIs, for example, creating, mounting, removing, or destroying component nodes.
 
 **Since**: 12
 

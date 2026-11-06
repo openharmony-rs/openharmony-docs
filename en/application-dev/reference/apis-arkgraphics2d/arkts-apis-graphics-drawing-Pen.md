@@ -2,12 +2,13 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=d66ce495242bdf35b08a89dbf23cdf3929953623 translatedAt=2026-08-24T08:09:54.744Z pushedAt=2026-08-29T08:08:46.358Z -->
 
-Defines a pen, which is used to describe the style and color to outline a shape.
+Pen object, which describes the outline information of the drawn shape. It supports setting the color, line width, anti-aliasing, transparency, blend mode, join style, line cap style, as well as drawing effects such as color filter, mask filter, path effect, shader effect, and shadow layer.
 
 > **NOTE**
 >
@@ -59,7 +60,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -77,7 +78,7 @@ const newPen = new drawing.Pen(pen);
 
 setMiterLimit(miter: number): void
 
-Sets the maximum ratio allowed between the sharp corner length of a polyline and its line width. When drawing a polyline with the pen, if [JoinStyle](arkts-apis-graphics-drawing-e.md#joinstyle12) is set to **MITER_JOIN** and this maximum ratio is exceeded, the corner will be displayed as beveled instead of mitered.
+Sets the maximum ratio of the miter length to the line width. When the pen draws a polyline and [JoinStyle](arkts-apis-graphics-drawing-e.md#joinstyle12) is MITER_JOIN, if the ratio of the miter length to the line width is greater than the maximum ratio, the join is drawn with BEVEL_JOIN.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -85,7 +86,7 @@ Sets the maximum ratio allowed between the sharp corner length of a polyline and
 
 | Name| Type   | Mandatory| Description             |
 | ------ | ------ | ---- | ---------------- |
-| miter  | number | Yes  | Maximum ratio of the sharp corner length of the polyline to the line width. A negative number is processed as **4.0** during drawing. Non-negative numbers take effect normally. The value is a floating point number.|
+| miter  | number | Yes   | Maximum ratio of the miter length to the line width. A negative value is treated as 4.0 during drawing, and a non-negative value takes effect as the actual value passed in. This parameter is a floating-point number. |
 
 **Error codes**
 
@@ -108,7 +109,7 @@ pen.setMiterLimit(5);
 
 getMiterLimit(): number
 
-Obtains the maximum ratio allowed between the sharp corner length of a polyline and its line width.
+Obtains the maximum ratio of the miter length to the line width.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -129,7 +130,7 @@ let miter = pen.getMiterLimit();
 
 ## setImageFilter<sup>12+</sup>
 
-setImageFilter(filter: ImageFilter | null): void
+setImageFilter(filter: ImageFilter \| null): void
 
 Sets an image filter for this pen.
 
@@ -152,7 +153,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let colorfilter = drawing.ColorFilter.createSRGBGammaToLinear();
 let imgFilter = drawing.ImageFilter.createFromColorFilter(colorfilter);
@@ -173,16 +174,16 @@ Obtains the color filter of this pen.
 
 | Type                       | Description              |
 | --------------------------- | ------------------ |
-| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | Color filter.|
+| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | Returns the color filter currently set for the pen, which can be used to query the current color filtering effect of the pen. |
 
 **Example**
 
 ```ts 
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let pen = new drawing.Pen();
-let colorfilter = drawing.ColorFilter.createLumaColorFilter();
-pen.setColorFilter(colorfilter);
+let colorFilter = drawing.ColorFilter.createLumaColorFilter();
+pen.setColorFilter(colorFilter);
 let filter = pen.getColorFilter();
 ```
 
@@ -206,7 +207,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -230,10 +231,10 @@ Sets a color for this pen. This API provides better performance than [setColor](
 
 | Name| Type   | Mandatory| Description                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
-| alpha  | number | Yes  | Alpha channel value of the color in ARGB format. The value is an integer ranging from 0 to 255. Any passed-in floating point number is rounded down.|
-| red    | number | Yes  | Red channel value of the color in ARGB format. The value is an integer ranging from 0 to 255. Any passed-in floating point number is rounded down.  |
-| green  | number | Yes  | Green channel value of the color in ARGB format. The value is an integer ranging from 0 to 255. Any passed-in floating point number is rounded down.  |
-| blue   | number | Yes  | Blue channel value of the color in ARGB format. The value is an integer ranging from 0 to 255. Any passed-in floating point number is rounded down.  |
+| alpha  | number | Yes   | Transparency channel value of the color in ARGB format. The value range is [0, 255]. Floating-point numbers within the range are rounded down, and values out of range are truncated to 0 or 255. |
+| red    | number | Yes   | Red channel value of the color in ARGB format. The value range is [0, 255]. Floating-point numbers within the range are rounded down, and values out of range are truncated to 0 or 255.   |
+| green  | number | Yes   | Green channel value of the color in ARGB format. The value range is [0, 255]. Floating-point numbers within the range are rounded down, and values out of range are truncated to 0 or 255.   |
+| blue   | number | Yes   | Blue channel value of the color in ARGB format. The value range is [0, 255]. Floating-point numbers within the range are rounded down, and values out of range are truncated to 0 or 255.   |
 
 **Error codes**
 
@@ -264,7 +265,7 @@ Sets a color for this pen.
 
 | Name| Type                                                | Mandatory| Description            |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| color  | number | Yes  | Color in hexadecimal ARGB format.|
+| color  | number | Yes   | Color in hexadecimal ARGB format, in the format 0xAARRGGBB, where AA indicates the transparency channel, RR indicates the red channel, GG indicates the green channel, and BB indicates the blue channel. The value range of each channel is 00-FF, and the overall value range is [0x00000000, 0xFFFFFFFF]. Values out of the valid range are truncated. |
 
 **Example**
 
@@ -277,9 +278,9 @@ pen.setColor(0xffff0000);
 
 ## setColor4f<sup>20+</sup>
 
-setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceManager | null): void
+setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceManager \| null): void
 
-Sets the color and standard color gamut for this pen. The difference between this method and [setColor](#setcolor) is that the color gamut can be set separately.
+Sets the color and standard color gamut for this pen. The difference from [setColor](#setcolor) is that the color gamut can be set separately.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -287,7 +288,7 @@ Sets the color and standard color gamut for this pen. The difference between thi
 
 | Name| Type                                                | Mandatory| Description            |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| color4f  | [common2D.Color4f](js-apis-graphics-common2D.md#color4f20) | Yes  | Color in the ARGB format. The value of each color channel is a floating point number ranging from 0.0 to 1.0. Values above 1.0 default to **1.0**, and values below 0.0 default to **0.0**.|
+| color4f  | [common2D.Color4f](js-apis-graphics-common2D.md#color4f20) | Yes   | Color in ARGB format, a floating-point number. The value range of each color channel is [0.0, 1.0]. Values out of range are truncated to 0.0 or 1.0. |
 | colorSpace  | [colorSpaceManager.ColorSpaceManager](js-apis-colorSpaceManager.md#colorspacemanager) \| null | Yes  | Standard color gamut object. **null** indicates SRGB.|
 
 **Example**
@@ -297,7 +298,7 @@ import { common2D, drawing, colorSpaceManager } from "@kit.ArkGraphics2D";
 
 const pen = new drawing.Pen();
 let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG);
-let color4f:common2D.Color4f = {alpha:1, red:0.5, green:0.4, blue:0.7};
+let color4f: common2D.Color4f = {alpha: 1, red: 0.5, green: 0.4, blue: 0.7};
 pen.setColor4f(color4f, colorSpace);
 ```
 
@@ -313,7 +314,7 @@ Obtains the color of this pen.
 
 | Type          | Description           |
 | -------------- | -------------- |
-| [common2D.Color](js-apis-graphics-common2D.md#color) | Color of the pen.|
+| [common2D.Color](js-apis-graphics-common2D.md#color) | Color currently set for the pen. |
 
 **Example**
 
@@ -330,7 +331,7 @@ let colorGet = pen.getColor();
 
 getColor4f(): common2D.Color4f
 
-Obtains the pen color. The difference between this method and [getColor](#getcolor12) is that this method returns a floating point number.
+Obtains the color of this pen. The difference from [getColor](#getcolor12) is that the return value type is [common2D.Color4f](js-apis-graphics-common2D.md#color4f20), and the color channel values are floating-point numbers, which is suitable for scenarios that require floating-point types.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -338,7 +339,7 @@ Obtains the pen color. The difference between this method and [getColor](#getcol
 
 | Type          | Description           |
 | -------------- | -------------- |
-|[common2D.Color4f](js-apis-graphics-common2D.md#color4f20) | Color of the pen.|
+|[common2D.Color4f](js-apis-graphics-common2D.md#color4f20) | Returns the color currently set for the pen, represented as a floating-point number in ARGB format. The value range of each color channel is [0.0, 1.0]. |
 
 **Example**
 
@@ -347,7 +348,7 @@ import { common2D, drawing, colorSpaceManager } from "@kit.ArkGraphics2D";
 
 const pen = new drawing.Pen();
 let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG);
-let color4f:common2D.Color4f = {alpha:1, red:0.5, green:0.4, blue:0.7};
+let color4f: common2D.Color4f = {alpha: 1, red: 0.5, green: 0.4, blue: 0.7};
 pen.setColor4f(color4f, colorSpace);
 let color = pen.getColor4f();
 ```
@@ -374,8 +375,8 @@ import { common2D, drawing } from '@kit.ArkGraphics2D';
 let color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
 let pen = new drawing.Pen();
 pen.setColor(color);
-let hex_color: number = pen.getHexColor();
-console.info('getHexColor: ', hex_color.toString(16));
+let hexColor: number = pen.getHexColor();
+console.info('getHexColor: ', hexColor.toString(16));
 ```
 
 ## setStrokeWidth
@@ -390,7 +391,7 @@ Sets the stroke width for this pen. The value **0** is treated as an unusually t
 
 | Name| Type  | Mandatory| Description            |
 | ------ | ------ | ---- | ---------------- |
-| width  | number | Yes  | Stroke width. The value is a floating point number. If a value less than 1 is passed in, the value **1** is used.|
+| width  | number | Yes | Line width. This parameter is a floating-point number, in physical pixel px. |
 
 **Error codes**
 
@@ -436,7 +437,7 @@ let width = pen.getWidth();
 
 setAntiAlias(aa: boolean) : void
 
-Enables anti-aliasing for this pen. Anti-aliasing makes the edges of the content smoother. If this API is not called, anti-aliasing is disabled by default.
+Sets whether to enable anti-aliasing for this pen. When enabled, the edges of the shape are smoother when displayed. If this API is not called, anti-aliasing is disabled by default.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -498,7 +499,7 @@ Sets an alpha value for this pen.
 
 | Name| Type  | Mandatory| Description                                    |
 | ------ | ------ | ---- | ---------------------------------------- |
-| alpha  | number | Yes  | Alpha value. The value is an integer in the range [0, 255]. If a floating point number is passed in, the value is rounded down.|
+| alpha  | number | Yes  | Transparency. Value range: [0, 255]. Rounded down when a floating-point number is passed in. |
 
 **Error codes**
 
@@ -542,7 +543,7 @@ let alpha = pen.getAlpha();
 
 ## setColorFilter
 
-setColorFilter(filter: ColorFilter | null) : void
+setColorFilter(filter: ColorFilter \| null) : void
 
 Sets a color filter for this pen.
 
@@ -574,7 +575,7 @@ pen.setColorFilter(colorFilter);
 
 ## setMaskFilter<sup>12+</sup>
 
-setMaskFilter(filter: MaskFilter | null): void
+setMaskFilter(filter: MaskFilter \| null): void
 
 Adds a mask filter for this pen.
 
@@ -602,7 +603,6 @@ import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
-    const canvas = context.canvas;
     const pen = new drawing.Pen();
     pen.setStrokeWidth(5);
     pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
@@ -614,7 +614,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## setPathEffect<sup>12+</sup>
 
-setPathEffect(effect: PathEffect | null): void
+setPathEffect(effect: PathEffect \| null): void
 
 Sets the path effect for this pen.
 
@@ -624,7 +624,7 @@ Sets the path effect for this pen.
 
 | Name | Type                      | Mandatory| Description        |
 | ------- | ------------------------- | ---- | ------------ |
-| effect  | [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| null | Yes  | Implements a path effect. If **null** is passed in, the path filter is cleared.|
+| effect  | [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| null | Yes   | Path effect object used to set the path drawing style such as dashed lines and joins. null indicates that the path effect is cleared. |
 
 **Error codes**
 
@@ -654,7 +654,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## setShaderEffect<sup>12+</sup>
 
-setShaderEffect(shaderEffect: ShaderEffect | null): void
+setShaderEffect(shaderEffect: ShaderEffect \| null): void
 
 Sets the shader effect for this pen.
 
@@ -664,7 +664,7 @@ Sets the shader effect for this pen.
 
 | Name | Type                      | Mandatory| Description        |
 | ------- | ------------------------- | ---- | ------------ |
-| shaderEffect  | [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) \| null | Yes  | **ShaderEffect** object. If **null** is passed in, the shader effect will be cleared.|
+| shaderEffect  | [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) \| null | Yes   | Shader effect object. null indicates clearing the shader effect. |
 
 **Error codes**
 
@@ -686,7 +686,7 @@ pen.setShaderEffect(shaderEffect);
 
 ## setShadowLayer<sup>12+</sup>
 
-setShadowLayer(shadowLayer: ShadowLayer | null): void
+setShadowLayer(shadowLayer: ShadowLayer \| null): void
 
 Sets a shadow layer for this pen. The shadow layer effect takes effect only when text is drawn.
 
@@ -817,7 +817,7 @@ Obtains the join style of this pen.
 
 | Type         | Description                   |
 | ------------- | ---------------------- |
-| JoinStyle | Join style.        |
+| [JoinStyle](arkts-apis-graphics-drawing-e.md#joinstyle12) | Returns the style of the polyline join.         |
 
 **Example**
 
@@ -832,7 +832,7 @@ class DrawingRenderNode extends RenderNode {
     pen.setStrokeWidth(5);
     pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
     pen.setJoinStyle(drawing.JoinStyle.ROUND_JOIN);
-    let joinStyle = pen.getJoinStyle();
+    pen.getJoinStyle();
   }
 }
 ```
@@ -888,7 +888,7 @@ Obtains the cap style of this pen.
 
 | Type        | Description               |
 | ------------ | ------------------ |
-| CapStyle     | Cap style.|
+| [CapStyle](arkts-apis-graphics-drawing-e.md#capstyle12)     | Returns the line cap style of the pen. |
 
 **Example**
 
@@ -903,7 +903,7 @@ class DrawingRenderNode extends RenderNode {
     pen.setStrokeWidth(5);
     pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
     pen.setCapStyle(drawing.CapStyle.SQUARE_CAP);
-    let capStyle = pen.getCapStyle();
+    pen.getCapStyle();
   }
 }
 ```
@@ -912,7 +912,7 @@ class DrawingRenderNode extends RenderNode {
 
 setDither(dither: boolean) : void
 
-Enables dithering for this pen. Dithering make the drawn color more realistic.
+Sets whether to enable the dithering effect for this pen. Dithering makes colors more realistic.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -951,8 +951,8 @@ Obtains the source path outline drawn using this pen and represents it using a d
 
 | Name  | Type                                        | Mandatory| Description                           |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
-| src | [Path](arkts-apis-graphics-drawing-Path.md) | Yes  | Source path.                |
-| dst     | [Path](arkts-apis-graphics-drawing-Path.md)                | Yes  | Destination path.|
+| src | [Path](arkts-apis-graphics-drawing-Path.md) | Yes | Source path object whose outline is to be extracted. |
+| dst     | [Path](arkts-apis-graphics-drawing-Path.md)                | Yes | Destination path object used to store the outline result calculated from the src path based on the pen properties. |
 
 **Returns**
 

@@ -1,12 +1,13 @@
 # @ohos.enterprise.accountManager (Account Management)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=000f5f097eb37a4ed79e8de6161565e04a28e105 translatedAt=2026-11-03T04:43:16.960Z pushedAt=2026-11-03T12:08:25.504Z nl=1 -->
 
-The **accountManager** module provides APIs for account management of enterprise devices.
+This module provides device account management capabilities, including forbidding the creation of local accounts.
 
 > **NOTE**
 >
@@ -26,7 +27,11 @@ import { accountManager } from '@kit.MDMKit';
 
 disallowOsAccountAddition(admin: Want, disallow: boolean, accountId?: number): void
 
-Users are not allowed to add accounts.
+Users are not allowed to add accounts. After the API is successfully called, the system forbids the specified user or all users from adding new accounts. This API is applicable to enterprise device management scenarios, such as preventing employees from creating local accounts and enhancing device security management.
+
+> **NOTE**
+>
+> In scenarios with multiple MDM applications, the [Security-First](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) rule is followed.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -34,15 +39,13 @@ Users are not allowed to add accounts.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first)
-
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
-| disallow  | boolean                                                 | Yes  | Whether to forbid the creation of local user accounts. The value **true** means the creation of local user accounts is forbidden, and the value **false** means the opposite. |
-| accountId | number                                                  | No  | User ID, which specifies a user. If this parameter is not specified, all users are not allowed to add accounts. If this parameter is specified, specified users are not allowed to add accounts. The value must be greater than or equal to 0.<br>You can call the [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) API to obtain the user ID.|
+| disallow  | boolean                                                 | Yes  | Whether to forbid the creation of accounts. The value **true** indicates yes, and the value **false** indicates no. |
+| accountId | number                                                  | No  | User ID, which specifies a user. If this parameter is not specified, all users are not allowed to add accounts. If this parameter is specified, specified users are not allowed to add accounts. The value must be greater than or equal to 0.<br>**accountId** can be obtained via APIs such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1).|
 
 **Error codes**
 
@@ -80,7 +83,9 @@ try {
 
 isOsAccountAdditionDisallowed(admin: Want, accountId?: number): boolean
 
-Queries whether a user is not allowed to add an account.
+Queries whether a user is not allowed to add an account. This API is applicable to enterprise audit and compliance check scenarios, helping administrators confirm the execution of account policies.
+
+This API queries the policy set by the corresponding enterprise device management application by passing Want. To query the policy that actually takes effect, use the [accountManager.isOsAccountAdditionDisallowed](#accountmanagerisosaccountadditiondisallowed-1) API.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -93,8 +98,8 @@ Queries whether a user is not allowed to add an account.
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
-| accountId | number                                                  | No  | User ID, which specifies a user. If this parameter is not specified, the system queries whether all users are not allowed to add accounts. If this parameter is specified, the system queries whether specified users are not allowed to add accounts. The value must be greater than or equal to 0.<br>You can call the [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) API to obtain the user ID.|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Enterprise Device Management Extension component. The Want must include the abilityName of the Enterprise Device Management Extension capability and the bundleName of the host application.                         |
+| accountId | number                                                  | No  | User ID, which specifies a user. If this parameter is not specified, the system queries whether all users are not allowed to add accounts. If this parameter is specified, the system queries whether specified users are not allowed to add accounts. The value must be greater than or equal to 0.<br>**accountId** can be obtained via APIs such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1).|
 
 **Return value**
 
@@ -134,14 +139,70 @@ try {
 }
 ```
 
+## accountManager.isOsAccountAdditionDisallowed
+
+isOsAccountAdditionDisallowed(admin: Want | null, accountId?: number): boolean
+
+Queries whether to disallow users from adding accounts. This API is applicable to enterprise audit and compliance check scenarios, helping administrators confirm the execution of account policies.
+
+**Since:** 26.0.0
+
+**Required permissions:** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the stage model.
+
+
+**Parameters**
+
+| Name    | Type                                                    | Mandatory | Description                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise device management extension component. The Want must include the abilityName of the enterprise device management extension capability and the bundleName of the host application.<br>When multiple MDM applications exist on the device, passing Want queries the policy set by the corresponding enterprise device management application, and passing null queries the policy that actually takes effect.                          |
+| accountId | number                                                  | No   | User ID, specifying a specific user. When this parameter is not passed, it indicates querying whether all users are disallowed from adding accounts; when this parameter is passed, it indicates querying whether the specified user is disallowed from adding accounts. Value range: greater than or equal to 0.<br/>accountId can be obtained via interfaces such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1). |
+
+**Return value**
+
+| Type    | Description                                                        |
+| ------- | ------------------------------------------------------------------ |
+| boolean | Whether to disallow adding an account. The value **true** indicates disallow adding an account.<br/>The value **false** indicates allow adding an account. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code ID | Error Message                                                 |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Example**
+
+```ts
+import { accountManager } from '@kit.MDMKit';
+
+try {
+  // Replace the parameters based on the actual situation.
+  let isDisallowed: boolean = accountManager.isOsAccountAdditionDisallowed(null, 100);
+  console.info(`Succeeded in querying the os account addition or not: ${isDisallowed}`);
+} catch (err) {
+  console.error(`Failed to query the os account addition or not. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## accountManager.addOsAccountAsync
 
 addOsAccountAsync(admin: Want, name: string, type: osAccount.OsAccountType): Promise&lt;osAccount.OsAccountInfo&gt;
 
-Adds an account in the background. This API uses a promise to return the result.
+Adds an account in the background. This API uses a promise to return the result. This API is applicable to scenarios where enterprises need to create accounts in batches or remotely manage accounts. Accounts can be created without user interaction, improving management efficiency.
+
 > **NOTE**
 > 
-> This API is time-consuming. Subsequent calls to other synchronous APIs in the application main thread must wait for the asynchronous return of this API.
+> Creating an account is time-consuming. After this API is called, if other synchronous APIs are subsequently called on the main thread of the application, you need to wait for this API to return asynchronously.
+>
+> In multiple MDM application scenarios, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -149,14 +210,12 @@ Adds an account in the background. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
-
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
-| name   | string                                                       | Yes  | Account name, which is the name of the account to be added. An account with the same name or an empty name cannot be created.|
+| name   | string                                                       | Yes  | Account name, which is the name of the account to be added. An account with a duplicate name or an empty name cannot be created. An attempt to create a duplicate-name account will result in error code 9201003, and an attempt to create an account with an empty name will result in error code 401.|
 | type   | [osAccount.OsAccountType](../apis-basic-services-kit/js-apis-osAccount.md#osaccounttype) | Yes  | Type of the account to add.<br>The value can be any of the following:<br>· **ADMIN**: administrator account.<br>· **NORMAL**: normal account.<br>· **GUEST**: guest account.|
 
 **Return value**
@@ -203,6 +262,10 @@ setDomainAccountPolicy(admin: Want, domainAccountInfo: osAccount.DomainAccountIn
 
 Sets the domain account policy.
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -211,16 +274,14 @@ Sets the domain account policy.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first)
-
 **Parameters**
 
 <!--Table: 19%; 21%; 8%; 52%-->
 | Name           | Type                                                        | Mandatory| Description                                                        |
 | ----------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | admin             | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
-| domainAccountInfo | [osAccount.DomainAccountInfo](../apis-basic-services-kit/js-apis-osAccount.md#domainaccountinfo8) | Yes  | Domain account information.<br>If the internal attribute of **domainAccountInfo** is empty, a global policy is set for all domain accounts.<br>If the internal attribute of **domainAccountInfo** is not empty, the policy is set for the specified domain account.<br>The priority of the specified domain account policy is higher than that of the global policy. If the specified domain account has a domain account policy, the global policy does not take effect for the domain account.<br>Note: To set a policy for a specified domain account, the **serverConfigId** field in **DomainAccountInfo** is mandatory.|
-| policy            | [DomainAccountPolicy](#domainaccountpolicy19)                | Yes  | Domain account policy.<br>Note: After setting the domain account policy, you must change the domain account password on the device. Otherwise, the **passwordValidityPeriod** and **passwordExpirationNotification** configurations in **DomainAccountPolicy** do not take effect.|
+| domainAccountInfo | [osAccount.DomainAccountInfo](../apis-basic-services-kit/js-apis-osAccount.md#domainaccountinfo8) | Yes  | Domain account information.<br>If the internal attribute of **domainAccountInfo** is empty, a global policy is set for all domain accounts.<br>If the internal attribute of **domainAccountInfo** is not empty, the policy is set for the specified domain account.<br>The priority of the specified domain account policy is higher than that of the global policy. If the specified domain account has a domain account policy, the global policy does not take effect for the domain account.<br>**Note:** To set a policy for a specified domain account, the **serverConfigId** parameter in **DomainAccountInfo** is mandatory.|
+| policy            | [DomainAccountPolicy](#domainaccountpolicy19)                | Yes  | Domain account policy.<br>**Note:** After setting the domain account policy, you must change the domain account password on the device. Otherwise, the **passwordValidityPeriod** and **passwordExpirationNotification** configurations in **DomainAccountPolicy** do not take effect.|
 
 **Error codes**
 
@@ -250,7 +311,8 @@ async function setDomainAccountPolicy() {
     // Replace with actual values.
     authenticationValidityPeriod: 300,
     passwordValidityPeriod: 420,
-    passwordExpirationNotification: 60
+    passwordExpirationNotification: 60,
+    supportUKeyAuthentication: true
   };
   // Set the global domain account policy.
   let accountInfo: osAccount.DomainAccountInfo = {
@@ -277,7 +339,7 @@ async function setDomainAccountPolicy() {
       accountInfo2 = domainAccountInfo;
     }).catch((err: BusinessError) => {
       console.error(`Failed to get account domain info. Code: ${err.code}, message: ${err.message}`);
-    })
+    });
   try {
     accountManager.setDomainAccountPolicy(wantTemp, accountInfo2, policy);
     console.info('Succeeded in setting domain account policy.');
@@ -293,7 +355,7 @@ async function setDomainAccountPolicy() {
 
 getDomainAccountPolicy(admin: Want, domainAccountInfo: osAccount.DomainAccountInfo): DomainAccountPolicy
 
-Obtains the domain account policy.
+Obtains the domain account policy. This API is applicable to enterprise management scenarios, such as querying the current domain account policy configuration and auditing policy compliance.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -308,7 +370,7 @@ Obtains the domain account policy.
 | Name           | Type                                                        | Mandatory| Description                                                        |
 | ----------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | admin             | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
-| domainAccountInfo | [osAccount.DomainAccountInfo](../apis-basic-services-kit/js-apis-osAccount.md#domainaccountinfo8) | Yes  | Domain account information.<br>If all the internal attributes of **domainAccountInfo** are empty, the global domain account policy is queried.<br>If the internal attribute of **domainAccountInfo** is not empty, the specified domain account policy is queried.<br>Note: To query a specified domain account policy, the **serverConfigId** field in **DomainAccountInfo** is mandatory.|
+| domainAccountInfo | [osAccount.DomainAccountInfo](../apis-basic-services-kit/js-apis-osAccount.md#domainaccountinfo8) | Yes  | Domain account information.<br>If all the internal attributes of **domainAccountInfo** are empty, the global domain account policy is queried.<br>If the internal attribute of **domainAccountInfo** is not empty, the specified domain account policy is queried.<br>**Note:** To query a specified domain account policy, the **serverConfigId** parameter in **DomainAccountInfo** is mandatory.|
 
 **Return value**
 
@@ -368,7 +430,7 @@ async function getDomainAccountPolicy() {
     })
     .catch((err: BusinessError) => {
       console.error(`Failed to get account domain info. Code: ${err.code}, message: ${err.message}`);
-    })
+    });
   try {
     domainAccountPolicy = accountManager.getDomainAccountPolicy(wantTemp, accountInfo2);
     console.info('Succeeded in getting domain account policy.');
@@ -384,9 +446,216 @@ Domain account policy.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Table: 28%; 10%; 8%; 8%; 46%-->
 | Name                          | Type  | Read-Only| Optional| Description                                                        |
 | ------------------------------ | ------ | ---- | ---- |------------------------------------------------------------ |
-| authenticationValidityPeriod   | number | No  | Yes  |Validity period of the domain account authentication token, in seconds. The value range is [-1, 2147483647]. The validity period starts from the time when the domain account is authenticated for the last time, for example, login or unlocking after the screen is locked.<br>The default value is **-1**, indicating that the token is permanently valid. The value **0** indicates that the token becomes invalid immediately. After the token expires or becomes invalid, the domain account and password must be authenticated when a user logs in to the system.|
-| passwordValidityPeriod         | number | No  | Yes  |Validity period of the domain account password, in seconds. The value range is [-1,2147483647]. The validity period starts from the time when the password is last changed on the device.<br>The default value is **-1**, indicating that the domain account password is permanently valid.|
-| passwordExpirationNotification | number | No  | Yes  |Notification period before a domain account password expires, in seconds. The value range is [0, 2147483647].<br>The default value is **0**, indicating that the system does not display a message indicating that the domain account password has expired.<br>Note: **passwordExpirationNotification** must be used together with **passwordValidityPeriod**. When the system time is later than or equal to (the time when the domain account password is last changed on the device + the value of **passwordValidityPeriod** – the value of **passwordExpirationNotification**), a message is displayed, indicating that the password is about to expire.|
+| authenticationValidityPeriod   | number | No   | Yes   |Indicates the validity period (in seconds) of the domain account authentication token, which is used to control that users can access system resources without repeated authentication within the token validity period. The value range is [-1, 2147483647]. The validity period starts from the last domain account authentication time, such as login or unlocking after the screen is locked.<br/>The default value is -1, indicating that the token is permanently valid. The value 0 indicates that the token expires immediately. After the token expires or becomes invalid, the user must perform domain account authentication when entering the system to verify the domain account and password. |
+| passwordValidityPeriod         | number | No   | Yes   |Indicates the validity period (in seconds) of the domain account password, which is used for users to change the password periodically to improve account security. The value range is [-1, 2147483647], and the validity period starts from the last time the password was changed on the device side.<br/>The default value is -1, indicating that the domain account password is permanently valid. |
+| passwordExpirationNotification | number | No   | Yes   |Indicates the notification time (in seconds) before the domain account password expires. The value range is [0, 2147483647].<br/>The default value is 0, indicating that no notification is sent when the domain account password expires.<br/>**Note:** passwordExpirationNotification must be used together with passwordValidityPeriod. When the system time is greater than or equal to (the last time the domain account password was changed on the device side + passwordValidityPeriod - passwordExpirationNotification), a page notification is sent to remind that the password is about to expire. |
+| supportUKeyAuthentication | boolean | No   | Yes   |Whether the domain account supports USB Key authentication.<br/>If this parameter is set to true, the domain account supports USB Key authentication. If the domain server supports USB Key authentication, the system automatically adds the USB Key credential as a system credential. In this case, the USB Key option appears in the system credential list on the lock screen, and the USB Key can be used to log in and unlock the device. If this parameter is set to false, the domain account does not support USB Key authentication, and the system does not automatically add the USB Key credential as a system credential. In this case, the USB Key option does not appear in the system credential list on the lock screen, and the USB Key cannot be used to log in and unlock the device.<br/>The default value is false.<br>**Since:** 26.0.1 |
+
+## accountManager.createNormalOsAccount
+
+createNormalOsAccount(admin: Want, name: string): Promise&lt;osAccount.OsAccountInfo&gt;
+
+Creates a normal system account. This API uses an asynchronous callback to return the result. A maximum of two system accounts of the normal type ([osAccount.OsAccountType](../apis-basic-services-kit/js-apis-osAccount.md#osaccounttype)) can be created.
+> **NOTE**
+> 
+> Creating an account is time-consuming. After this API is called, if other synchronous APIs are subsequently called on the main thread of the application, you need to wait for this API to return asynchronously.
+> 
+> Creating a system account has a significant impact on device performance. This API can be used only on phones and tablets with 12 GB or more of RAM.
+
+**Since:** 26.0.0
+
+**Required permissions:** ohos.permission.ENTERPRISE_MANAGE_LOCAL_ACCOUNTS
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type                                                        | Mandatory| Description                                                        |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
+| name   | string                                                       | Yes  | System account name. The system account name must be unique and cannot be empty. Otherwise, error code 9200012 is reported.|
+
+**Return value**
+
+| Type                                                        | Description                |
+| ------------------------------------------------------------ | -------------------- |
+| Promise&lt;[osAccount.OsAccountInfo](../apis-basic-services-kit/js-apis-osAccount.md#osaccountinfo)&gt; | Promise used to return the information about the created system account.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.                                 |
+| 9201003  | Failed to add an OS account.                                 |
+| 9201040  | The number of accounts reaches the upper limit.                           |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 204      | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint; 2. The required privilege for the operation has not been granted. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { accountManager } from '@kit.MDMKit';
+import { BusinessError, osAccount } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+// Create a normal system account. The account name needs to be passed.
+accountManager.createNormalOsAccount(wantTemp, "TestAccountName").then((accountInfo: osAccount.OsAccountInfo) => {
+  console.info('Succeeded in creating normal os account, accountInfo: ' + JSON.stringify(accountInfo));
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create normal os account: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## accountManager.removeOsAccount
+
+removeOsAccount(admin: Want, accountId: number): Promise&lt;void&gt;
+
+Removes a system account. This API uses a promise to return the result. Currently, this API is supported only on phones and tablets, and can remove normal system accounts (of the normal type) created via [createNormalOsAccount](#accountmanagercreatenormalosaccount) and system accounts (of the admin, normal, and guest types) created via [addOsAccountAsync](#accountmanageraddosaccountasync). It cannot remove the default system account (with ID 100).
+
+**Since:** 26.0.0
+
+**Required permissions:** ohos.permission.ENTERPRISE_MANAGE_LOCAL_ACCOUNTS
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type                                                        | Mandatory| Description                                                        |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
+| accountId   | number                                                  | Yes  | ID of the system account to be removed. The default system account (ID: 100) cannot be removed. Otherwise, error code 9201041 is reported.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise that returns no value. If the operation fails., an error object is thrown.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.                                 |
+| 9200016  | Service timeout.                                 |
+| 9201041  | Restricted account.                           |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 204      | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint; 2. The required privilege for the operation has not been granted. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { accountManager } from '@kit.MDMKit';
+import { BusinessError, osAccount } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+// Create a normal system account.
+accountManager.createNormalOsAccount(wantTemp, "TestAccountName").then((accountInfo: osAccount.OsAccountInfo) => {
+  console.info('Succeeded in creating normal os account, accountInfo: ' + JSON.stringify(accountInfo));
+  // Remove the created account based on the system account ID.
+  let accountId: number = accountInfo.localId;
+  return accountManager.removeOsAccount(wantTemp, accountId);
+}).then(() => {
+  console.info('Succeeded in removing os account');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create and remove normal os account: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## accountManager.activateOsAccount
+
+activateOsAccount(admin: Want, accountId: number): Promise&lt;void&gt;
+
+Switches the system account. This API uses a promise to return the result. Currently, this API is supported only on phones and tablets, and can only switch between normal system accounts created via [createNormalOsAccount](#accountmanagercreatenormalosaccount) and the default system account (with ID 100).
+
+**Since:** 26.0.0
+
+**Required permissions:** ohos.permission.ENTERPRISE_INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type                                                        | Mandatory| Description                                                        |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                     |
+| accountId   | number                                                  | Yes  | System account ID. If you switch to a system account that does not exist, error code 9200012 is reported. If you switch to a restricted system account, for example, a system account created via [addOsAccountAsync](#accountmanageraddosaccountasync), error code 9201041 is reported.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise that returns no value. If the operation fails., an error object is thrown.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.                                 |
+| 9200016  | Service timeout.                                 |
+| 9201041  | Restricted account.                            |
+| 9201046  | The number of signed-in accounts reaches the upper limit.                            |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { accountManager } from '@kit.MDMKit';
+import { BusinessError, osAccount } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+// Create a normal system account.
+accountManager.createNormalOsAccount(wantTemp, "TestAccountName").then((accountInfo: osAccount.OsAccountInfo) => {
+  console.info('Succeeded in creating normal os account, accountInfo: ' + JSON.stringify(accountInfo));
+  // Switch the account based on the system account ID.
+  let accountId: number = accountInfo.localId;
+  return accountManager.activateOsAccount(wantTemp, accountId);
+}).then(() => {
+  console.info('Succeeded in activating os account');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create and activate normal os account: code is ${err.code}, message is ${err.message}`);
+});
+```

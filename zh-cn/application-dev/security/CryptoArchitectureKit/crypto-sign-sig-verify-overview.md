@@ -1,4 +1,4 @@
-# 签名验签介绍及算法规格
+# 签名验签
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -13,7 +13,7 @@
 
  > **说明：** 
  > 
- > 当前使用C/C++的方式从API version 12开始支持验签，从API version 20开始支持签名。
+ > 当前使用C/C++的方式从API版本12开始支持验签，从API版本20开始支持签名。
 
 ## RSA
 
@@ -124,11 +124,11 @@
 
 | PSS参数 | 枚举值 | 获取 | 设置 | 
 | -------- | -------- | -------- | -------- |
-| md | PSS_MD_NAME_STR | √ | - | 
-| mgf | PSS_MGF_NAME_STR | √ | - | 
-| mgf1_md | PSS_MGF1_MD_STR | √ | - | 
+| md | PSS_MD_NAME_STR | √ | － | 
+| mgf | PSS_MGF_NAME_STR | √ | － | 
+| mgf1_md | PSS_MGF1_MD_STR | √ | － | 
 | saltLen | PSS_SALT_LEN_NUM | √ | √ | 
-| trailer_field | PSS_TRAILER_FIELD_NUM | √ | - | 
+| trailer_field | PSS_TRAILER_FIELD_NUM | √ | － | 
 
 ### PKCS1模式下的OnlySign/OnlyVerify
 
@@ -202,7 +202,7 @@ PSS模式的OnlySign/OnlyVerify规格与PSS签名验签规格一致，仅在字�
 
 ## ECDSA
 
-ECDSA（Elliptic Curve Digital Signature Algorithm，椭圆曲线数字签名算法）是基于椭圆曲线密码（ECC）的数字签名算法（DSA）。相比DLP（Discrete Logarithm Problem，普通的离散对数问题）和IFP（Integer Factorization Problem，大数分解问题），椭圆曲线密码的单位比特强度要高于其他公钥体制。
+ECDSA（Elliptic Curve Digital Signature Algorithm，椭圆曲线数字签名算法）是基于椭圆曲线密码（ECC）的数字签名算法（DSA）。相比DLP（Discrete Logarithm Problem，离散对数问题）和IFP（Integer Factorization Problem，大数分解问题），椭圆曲线密码的单位比特强度要高于其他公钥体制。
 
 算法库框架提供了多种椭圆曲线及摘要算法组合的ECDSA签名验签能力，同时支持OnlySign和OnlyVerify模式。
 
@@ -296,4 +296,6 @@ Ed25519是基于椭圆曲线的签名验签算法。
 
 | 非对称密钥类型 | 字符串参数 | API版本 |
 | -------- | -------- | -------- |
-| ML-DSA | ML-DSA | 26.0.0+ |
+| ML-DSA-44 | ML-DSA | 26.0.0+ |
+| ML-DSA-65 | ML-DSA | 26.0.0+ |
+| ML-DSA-87 | ML-DSA | 26.0.0+ |

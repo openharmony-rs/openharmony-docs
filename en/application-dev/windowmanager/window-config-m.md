@@ -1,10 +1,11 @@
 # Window Metadata Configuration
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
-<!--Tester: @qinliwen0417-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-03T02:51:31.967Z pushedAt=2026-11-03T02:58:51.586Z nl=1 -->
 
 ## metadata
 
@@ -14,9 +15,9 @@ The **metadata** tag represents custom metadata of a HAP. The tag value is an ar
 
 | Subtag| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
-| name | Name of the data item. The value is a string with a maximum of 255 bytes.| String| Optional, defaults to an empty array|
-| value | Value of the data item. The value is a string with a maximum of 255 bytes.| String| Optional, defaults to an empty array|
-| resource | Custom data, which is a resource index. The value is a string with a maximum of 255 bytes. For example, **$profile:shortcuts_config** indicates that the data points to the **/resources/base/profile/shortcuts_config.json** file.| String| Optional, defaults to an empty array|
+| name | Name of the data item. The value is a string with a maximum of 255 bytes.| String| Optional, defaults to an empty string |
+| value | Value of the data item. The value is a string with a maximum of 255 bytes.| String| Optional, defaults to an empty string |
+| resource | Custom data, which is a resource index. The value is a string with a maximum of 255 bytes. For example, **$profile:shortcuts_config** indicates that the data points to the **/resources/base/profile/shortcuts_config.json** file.| String| Optional, defaults to an empty string |
 
 Below are several use cases and examples for the **metadata** tag. You can customize the settings based on service requirements.
 
@@ -39,17 +40,19 @@ Below are several use cases and examples for the **metadata** tag. You can custo
         2. Set the **supportWindowModes** property in [startOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md) only to **FULL_SCREEN**.
         3. Set the **supportWindowMode** property in [module.json5](../quick-start/module-configuration-file.md#abilities) only to **fullscreen**.
 
-4. Use the **metadata** tag to configure the supported window modes in [free windows](https://developer.huawei.com/consumer/en/doc/design-guides/pad-0000001823654157#section1768267204717) mode. Set **name** to **ohos.ability.window.supportWindowModeInFreeMultiWindow**, and set **value** to **fullscreen** (full-screen mode), **split** (split-screen mode), **floating** (floating window mode), or any of their combinations (separated by commas, with no space), for example, **fullscreen,split**. This configuration takes effect only on a device that supports [freeform windows](window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, or if the device does not support freeform windows, this configuration does not take effect and no error is reported.
+4. Use **metadata** to configure the supported window modes in [free window](window-terminology.md#freeform-window) mode. Set **name** to **ohos.ability.window.supportWindowModeInFreeMultiWindow**, and set **value** to **fullscreen** (full-screen mode), **split** (split-screen mode), or **floating** (free-floating window mode). The **value** is a string and can contain multiple modes separated by commas, without spaces and regardless of order, for example, **fullscreen,split**. This configuration takes effect only on devices that support and are in the [free window](window-terminology.md#freeform-window) state. On devices that support but are not in the [free window](window-terminology.md#freeform-window) state, or devices that do not support the [free window](window-terminology.md#freeform-window) state, the configuration neither takes effect nor reports an error.
 
-   In free windows mode, the supported window modes can be configured using multiple methods. The configuration priorities are as follows: using [SetSupportedWindowModes](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes15) to configure the window modes > using **StartAbility** to configure the **SupportWindowMode** property in [StartOption](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions) > using the **metadata** tag to configure the window modes > configuring the **SupportWindowMode** property in the [abilities tag](../quick-start/module-configuration-file.md#abilities) of the **module.json5** file.
+   In free multi-window mode, the supported window modes can be configured using multiple methods. The configuration priorities are as follows: using [SetSupportedWindowModes](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes15) to configure the window modes > using **StartAbility** to configure the **SupportWindowMode** property in [StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions) > using the **metadata** tag to configure the window modes > configuring the **SupportWindowMode** property in the [abilities tag](../quick-start/module-configuration-file.md#abilities) of the **module.json5** file.
 
-   In non-free windows mode, only the **SupportWindowMode** property in the **abilities** tag of the **module.json5** file can be used to configure the window modes. Other methods do not take effect.
+   In non-free-windows mode, the supported window modes can only be configured through the **SupportWindowMode** property under the **abilities** tag in the **module.json5** file. Other configuration methods do not take effect.
 
-<!--Del-->
-5. Use the **metadata** tag to configure right-angle corners for the main window. Set **name** to **ohos.ability.window.isRightAngle**, and set **value** to **true** for right-angle corners, or to **false** for rounded corners. The default value is **false**. This configuration takes effect only for system applications on PCs/2-in-1 devices.<!--DelEnd-->
+5. For devices running <!--RP1-->OpenHarmony 7.1<!--RP1End--> or later, **metadata** can be used to configure the performance-adaptive [simple startup page](launch-page-config.md#configuring-a-simple-starting-window) icon display switch. Set **name** to **enable.optional.starting.window**, and set **value** to **true** to enable it, or to **false** to disable it. The default value is **false**. When it is set to **true** and the application starts, if the current device has strong performance, the simple startup page icon is not displayed; if the current device has weak performance, the simple startup page icon is displayed to avoid a prolonged white screen. <!--Del-->
+
+6. Use the **metadata** tag to configure right-angle corners for the main window. The configuration item is as follows: set **name** to **ohos.ability.window.isRightAngle**, and set **value** to **true** for right-angle corners, or to **false** to use the system default rounded corners. The default value is **false** when not configured. The right-angle configuration for the main window takes effect only on PC/2-in-1 devices and is supported only for system apps.
+<!--DelEnd-->
 
 
-```json
+```json5
 {
   "module": {
     "abilities": [{
@@ -86,7 +89,11 @@ Below are several use cases and examples for the **metadata** tag. You can custo
       {
         "name": "enable.remove.starting.window",
         "value": "true"
-      }
+      },
+      {
+        "name": "enable.optional.starting.window",
+        "value": "true"
+      },
       {
         "name": "ohos.ability.window.supportWindowModeInFreeMultiWindow",
         "value": "fullscreen,split,floating",

@@ -1,4 +1,11 @@
-# Geofencing (ArkTS)
+# Geofencing Development Based on Device Location
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @xxthadsl-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @gcw_MslijYkf-->
+<!--Adviser: @RayShih-->
+<!-- md-trans-meta sourceCommit=317762fb09ac82b3fb722ad30f4245f8844feb44 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## Scenario
 
@@ -10,7 +17,7 @@ A typical application of geofencing is to create a geofence around an enterprise
 
 ## Available APIs
 
-The following table lists the APIs used in geofencing. For details, see [Location Kit](../../reference/apis-location-kit/js-apis-geoLocationManager.md).
+The following table lists the APIs used in geofencing. For details, see [@ohos.geoLocationManager (Geolocation Manager)](../../reference/apis-location-kit/js-apis-geoLocationManager.md).
 
 | API| Description| 
 | -------- | -------- |
@@ -29,16 +36,24 @@ The following table lists the APIs used in geofencing. For details, see [Locatio
    import { notificationManager } from '@kit.NotificationKit';
    ```
 
-3. Create a geofence.
+3. Check whether geofencing is supported.
 
    ```ts
-   // Set the action type through operationType of WantAgentInfo.
+   let isGnssGeoFeceSupported = geoLocationManager.isGnssFenceServiceSupported();
+   if (!isGnssGeoFeceSupported) {
+       console.error("Current Device Do not Support GnssGeofence");
+   }
+   ```
+
+4. Create a geofence.
+
+   ```ts
    let geofence: geoLocationManager.Geofence = {
        "latitude": 34.12, "longitude": 124.11, "radius": 10000.0, "expiration": 10000.0
    }
    ```
 
-4. Specify the types of geofence transition events to listen for. Geofence entry and exit events are used as an example.
+5. Specify the types of geofence transition events to listen for. Geofence entry and exit events are used as an example.
 
    ```ts
    let transitionStatusList: Array<geoLocationManager.GeofenceTransitionEvent> = [
@@ -47,7 +62,7 @@ The following table lists the APIs used in geofencing. For details, see [Locatio
    ];
    ```
 
-4. Create a notification object for **GEOFENCE_TRANSITION_EVENT_ENTER** and **GEOFENCE_TRANSITION_EVENT_EXIT**.
+6. Create a notification object for **GEOFENCE_TRANSITION_EVENT_ENTER** and **GEOFENCE_TRANSITION_EVENT_EXIT**.
 
    ```ts
    // GEOFENCE_TRANSITION_EVENT_ENTER event
@@ -76,7 +91,7 @@ The following table lists the APIs used in geofencing. For details, see [Locatio
    };
    ```
 
-5. Add a geofence.
+7. Add a geofence.
 
    ```ts
    // Save the created notification objects to Array in the same sequence as in transitionStatusList.
@@ -96,36 +111,40 @@ The following table lists the APIs used in geofencing. For details, see [Locatio
          console.error('geofenceTransitionCallback: err=' + JSON.stringify(err));
        }
        if (transition) {
-         console.info("GeofenceTransition: %{public}s", JSON.stringify(transition));
+         console.info("GeofenceTransition: " + JSON.stringify(transition));
      }
      }
    }
    try {
      // Add a geofence.
-     geoLocationManager.addGnssGeofence(gnssGeofenceRequest).then((id) => {
-       // Obtain the geofence ID after the geofence is successfully added.
-       console.info("addGnssGeofence success, fence id: " + id);
-       let fenceId = id;
-     }).catch((err: BusinessError) => {
-       console.error("addGnssGeofence failed, promise errCode:" + (err as BusinessError).code + 
-         ",errMessage:" + (err as BusinessError).message);
-     });
+     if (geoLocationManager.isGnssFenceServiceSupported()) {
+        geoLocationManager.addGnssGeofence(gnssGeofenceRequest).then((id) => {
+           // Obtain the geofence ID after the geofence is successfully added.
+           console.info("addGnssGeofence success, fence id: " + id);
+           let fenceId = id;
+        }).catch((err: BusinessError) => {
+           console.error("addGnssGeofence failed, promise errCode:" + (err as BusinessError).code +
+             ",errMessage:" + (err as BusinessError).message);
+        });
+     }
    } catch(error) {
        console.error("addGnssGeofence failed, err:" + JSON.stringify(error));
    }
    ```
 
-6. Delete a geofence.
+8. Delete a geofence.
 
    ```ts
    // fenceId is obtained after geoLocationManager.addGnssGeofence is successfully executed.
    let fenceId = 1;
    try {
-     geoLocationManager.removeGnssGeofence(fenceId).then(() => {
-       console.info("removeGnssGeofence success fenceId:" + fenceId);
-     }).catch((error : BusinessError) => {
-       console.error("removeGnssGeofence: error=" + JSON.stringify(error));
-     });
+     if (geoLocationManager.isGnssFenceServiceSupported()) {
+        geoLocationManager.removeGnssGeofence(fenceId).then(() => {
+           console.info("removeGnssGeofence success fenceId:" + fenceId);
+        }).catch((error : BusinessError) => {
+           console.error("removeGnssGeofence: error=" + JSON.stringify(error));
+        });
+     }
    } catch(error) {
      console.error("removeGnssGeofence: error=" + JSON.stringify(error));
    }

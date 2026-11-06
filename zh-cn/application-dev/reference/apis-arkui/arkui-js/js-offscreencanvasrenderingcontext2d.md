@@ -1,8 +1,8 @@
 # OffscreenCanvasRenderingContext2D对象
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -75,7 +75,7 @@ export default {
 }
 ```
 
-![zh-cn_image_js_offsetscreencanvas_rendering](figures/zh-cn_image_js_offsetscreencanvas_rendering.png)
+![image-js-offsetscreencanvas-rendering](figures/image-js-offsetscreencanvas-rendering.png)
 
 ## 方法
 
@@ -154,7 +154,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001224354967](figures/zh-cn_image_0000001224354967.png)
+![isPointInPath](figures/isPointInPath.png)
 
 ### isPointInStroke
 

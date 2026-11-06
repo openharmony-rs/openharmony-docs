@@ -1,8 +1,8 @@
 # 使用Web组件的手势与应用交互
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 在移动端或支持触控的Web应用中，用户通过触摸屏与页面交互，Web组件支持了常见的手势识别，例如长按、滑动、点击等，以支持丰富的用户交互体验。
@@ -101,7 +101,7 @@ Web组件提供了接口[zoomAccess](../reference/apis-arkweb/arkts-basic-compon
 
 **示例代码**
 
-<!-- @[ReturnLastWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/ReturnLastWebPage.ets) --> 
+<!-- @[ReturnLastWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/ReturnLastWebPage.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -126,7 +126,7 @@ struct Index {
         return true;
       }
     } catch (err) {
-      console.error(`copyUrlPicToDir failed with error: ${err.code}, ${err.message}`);
+      console.error(`onBackPress failed with error: ${err.code}, ${err.message}`);
     }
     // 执行系统默认返回逻辑，返回上一个页面
     return false;

@@ -5,8 +5,9 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-09-02T12:12:07.570Z -->
 
-You can set the touch target for components. When handling a touch event, ArkUI performs a [hit test](../../../ui/arkts-interaction-basic-principles.md#hit-testing) on the touch point and the component area before the event is triggered to determine the components targeted by the event. Then ArkUI dispatches the event based on the test result. This affects the dispatch of [click](ts-universal-events-click.md), [touch](ts-universal-events-touch.md), [drag](ts-universal-events-drag-drop.md), [mouse](ts-universal-mouse-key.md), [axis](ts-universal-events-axis.md), [hover](ts-universal-events-hover.md), [accessibility hover](ts-universal-accessibility-hover-event.md), and [gesture](ts-gesture-settings.md) events.
+Sets the touch target of a component. In the ArkUI development framework, when touch events and mouse events are processed, [hit testing](../../../ui/arkts-interaction-basic-principles.md#hit-testing) is performed on the pressed point and the component response region before the event is triggered, to collect the components that need to respond to the event. Based on the test result, the framework distributes the corresponding event. This affects the distribution of [click events](ts-universal-events-click.md), [touch events](ts-universal-events-touch.md), [drag and drop events](ts-universal-events-drag-drop.md), [mouse events](ts-universal-mouse-key.md), [axis events](ts-universal-events-axis.md), [hover events](ts-universal-events-hover.md), [accessibility hover events](ts-universal-accessibility-hover-event.md), and [gesture events](ts-gesture-settings.md).
 
 
 >  **NOTE**
@@ -19,7 +20,7 @@ You can set the touch target for components. When handling a touch event, ArkUI 
 
 responseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
 
-Sets one or more touch targets.
+Sets one or more touch targets. When the [responseRegionList](#responseregionlist22) API is called, this API no longer takes effect. Since API version 26.0.0, when not actively set, the default minimum height of the touch target of the [Button](./ts-basic-components-button.md), [Toggle in Button mode](./ts-basic-components-toggle.md), [Select](./ts-basic-components-select.md), [Chip](./ohos-arkui-advanced-Chip.md), and [ChipGroup](./ohos-arkui-advanced-ChipGroup.md) components changes from 28 vp to 32 vp. This change affects only the touch hit range, not the actual displayed height of the component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -31,21 +32,23 @@ Sets one or more touch targets.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;[Rectangle](#rectangle)&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle)| Yes  | Touch target, including the position and size.<br>The default touch target is the entire component. Default value:<br>{<br>x: 0,<br>y: 0,<br>width: '100%',<br>height: '100%'<br>}<br>|
+| value  | Array&lt;[Rectangle](#rectangle )&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle) | Yes   | Touch target, including its position and size.<br>The default touch target is the entire component. Default value:<br>{<br>x: 0,<br>y: 0,<br>width: '100%',<br>height: '100%'<br>}<br> |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## mouseResponseRegion<sup>10+</sup>
 
 mouseResponseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
 
-Sets one or more mouse response regions.
+Sets one or more mouse touch targets. When the [responseRegionList](#responseregionlist22) API is called, this API no longer takes effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,13 +56,13 @@ Sets one or more mouse response regions.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;[Rectangle](#rectangle)&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle)| Yes  | Mouse response regions, defining the position and size.<br>The default touch target is the entire component. Default value:<br>{<br>x: 0,<br>y: 0,<br>width: '100%',<br>height: '100%'<br>} |
+| value  | Array&lt;[Rectangle](#rectangle)&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle) | Yes   | Mouse touch target, including the position and size.<br>The default touch target is the entire component. Default value:<br>{<br>x: 0,<br>y: 0,<br>width: '100%',<br>height: '100%'<br>} |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## responseRegionList<sup>22+</sup>
 
@@ -69,19 +72,21 @@ Sets the touch target list for the component. When this API is called, the [resp
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| regions  | Array&lt;[ResponseRegion](#responseregion22)&gt;&nbsp; | Yes  | Array of touch targets for the component.<br>Each touch target contains the input tool type, position, and size.<br>Default value:<br>[{<br>tool: ResponseRegionSupportedTool.ALL,<br>x: LengthMetrics.vp(0),<br>y: LengthMetrics.vp(0),<br>width: LengthMetrics.percent(1),<br>height: LengthMetrics.percent(1)<br>}] |
+| regions  | Array&lt;[ResponseRegion](#responseregion22)&gt;&nbsp; | Yes   | Array of touch targets of the component.<br>Each touch target includes the input tool type, position, and size.<br>Default value:<br>[{<br>tool: ResponseRegionSupportedTool.ALL,<br>x: LengthMetrics.vp(0),<br>y: LengthMetrics.vp(0),<br>width: LengthMetrics.percent(1),<br>height: LengthMetrics.percent(1)<br>}] |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## Rectangle
 
@@ -93,22 +98,22 @@ Sets the touch target list for the component. When this API is called, the [resp
 
 | Name       | Type                       | Read-Only   |  Optional  |  Description                            |
 | ------ | ----------------------------- | -----| -----|-------------------------------- |
-| x      | [Length](ts-types.md#length)  | No  | Yes  |X coordinate of the touch point relative to the upper left corner of the component.<br>Default value: **0vp**|
-| y      | [Length](ts-types.md#length)  | No  | Yes  |Y coordinate of the touch point relative to the upper left corner of the component.<br>Default value: **0vp**|
-| width  | [Length](ts-types.md#length)  | No  | Yes  |Width of the touch target.<br>Default value: **'100%'**|
-| height | [Length](ts-types.md#length) | No  | Yes  |Height of the touch target.<br>Default value: **'100%'**|
+| x      | [Length](ts-types.md#length)  | No   | Yes   |X-axis coordinate of the touch point relative to the upper left corner of the component.<br>Default value: 0vp |
+| y      | [Length](ts-types.md#length)  | No   | Yes   |Y-axis coordinate of the touch point relative to the upper left corner of the component.<br>Default value: 0vp |
+| width  | [Length](ts-types.md#length)  | No   | Yes   |Width of the touch target.<br>Default value: '100%' |
+| height | [Length](ts-types.md#length) | No   | Yes   |Height of the touch target.<br>Default value: '100%' |
 
   >  **NOTE**
   >
-  > - **x** and **y** can be set to a positive or negative percentage value. For example, when **x** is set to **'100%'**, the touch target is the offset from the right edge of the component by the component's width. When **x** is set to **'-100%'**, the touch target is the offset from the left edge of the component by the component's width. When **y** is set to **'100%'**, the touch target is the offset from the bottom edge of the component by the component's height. When **y** is set to **'-100%'**, the touch target is the offset from the top edge of the component by the component's height.
+  > - x and y can be set to positive or negative percentages. When x is set to '100%', the touch target is offset to the right by the width of the component itself. When x is set to '-100%', the touch target is offset to the left by the width of the component itself. When y is set to '100%', the touch target is offset downward by the height of the component itself. When y is set to '-100%', the touch target is offset upward by the height of the component itself.
   >
-  > - **width** and **height** can only be set to positive percentage values. When **width** is set to **'100%'**, the width of the touch target is equal to that of the component. For example, if the width of a component is 100 vp, **'100%'** indicates that the width of the touch target is also 100 vp. When **height** is set to **'100%'**, the height of the touch target is equal to that of the component.
+  > - When width and height are set to percentages, only positive percentages can be set. width: '100%' means that the width of the touch target is set to the width of the component itself. For example, if the width of the component itself is 100 vp, '100%' means that the width of the touch target is also 100 vp. height: '100%' means that the height of the touch target is set to the height of the component itself. When set to 0 or a negative percentage, the default value '100%' is used.
   >
-  > - The percentage is measured relative to the component itself.
+  > - Percentages are calculated relative to the width and height of the component itself.
   >
-  > - When the parent component has [clip](ts-universal-attributes-sharp-clipping.md#clip12) set to **true**, child component interaction is affected by the parent component's response region. Children outside the parent component's response region won't respond to gestures or events.
+  > - When the parent component has [clip](ts-universal-attributes-sharp-clipping.md#clip12) set to true, the response of the child component is affected by the touch target of the parent component. Child components outside the touch target of the parent component cannot respond to gestures and events.
   >
-  > - **width** and **height** do not support **calc()** dynamic calculations.
+  > - width and height do not support dynamic calculation with calc().
 
 ## ResponseRegion<sup>22+</sup>
 
@@ -116,27 +121,29 @@ Defines a touch target consisting of an input tool type, touch position, and siz
 
   >  **NOTE**
   >
-  > - When the parent component has [clip](ts-universal-attributes-sharp-clipping.md#clip12) set to **true**, child component interaction is affected by the parent component's response region. Children outside the parent component's response region won't respond to gestures or events.
-  >  
-  > - If the input tool type, touch position, and size are not configured for a touch target, default values are used. 
-  >  
-  > - Positive calculation results for x and y represent shifts to the right and down, respectively. Negative calculation results represent shifts to the left and up, respectively.
+  > - When the parent component has [clip](ts-universal-attributes-sharp-clipping.md#clip12) set to true, the response of the child component is affected by the touch target of the parent component. Child components outside the touch target of the parent component cannot respond to gestures and events.
   >
-  > - If the width and height are of the string type, the string must be in lowercase. Dynamic calculation with **calc()** is supported. The format of the input string for **calc()** is Width/Height scaling ratio ± Width/Height increment, where the scaling ratio is a percentage and the increment unit is px or vp. For example, in **calc(80% + 10vp)**, **80%** is the width/height scaling ratio, and **10vp** is the width/height increment. If the width and height are of the **LengthMetrics** type and the unit is percent, the width and height are calculated relative to the component's own width and height. **percent(1)** indicates 100%. If the calculation result is a negative value, the default value is used.
+  > - If the input tool type, touch position, or size is not configured for the touch target, the default value is used for the corresponding item.
+  >
+  > - When the calculation result of x and y is a positive value, it indicates an offset to the right and downward, respectively. When the calculation result is a negative value, it indicates an offset to the left and upward, respectively.
+  >
+  > - When width and height use the string type, the string must use lowercase characters; otherwise, it does not take effect. Dynamic calculation with calc() is supported. The input parameter string format of calc() is 'width/height scaling ratio ± width/height increment', where the scaling ratio is a percentage and the increment is in px or vp. If the format does not meet the requirements or other units are used, it does not take effect. For example, in 'calc(80% + 10vp)', 80% is the width/height scaling ratio and 10vp is the width/height increment. When width and height use the LengthMetrics type with the unit percent, the calculation is performed relative to the width and height of the component itself, and percent(1) represents 100%. When the calculation result is a negative value, the default value is used.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name       | Type                       | Read-Only   |  Optional  |  Description                            |
 | ------ | ----------------------------- | -----| -----|-------------------------------- |
-| tool   | [ResponseRegionSupportedTool](./ts-appendix-enums.md#responseregionsupportedtool22)  | No  | Yes  |Type of the input tool applicable to the touch target.<br>Default value: **ResponseRegionSupportedTool.ALL**|
-| x      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | No  | Yes  |X coordinate of the touch point relative to the upper left corner of the component.<br>Default value: **LengthMetrics.vp(0)**|
-| y      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | No  | Yes  |Y coordinate of the touch point relative to the upper left corner of the component.<br>Default value: **LengthMetrics.vp(0)**|
-| width  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| string | No  | Yes  |Width of the touch target.<br>Default value: **LengthMetrics.percent(1)**|
-| height | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| string | No  | Yes  |Height of the touch target.<br>Default value: **LengthMetrics.percent(1)**|
+| tool   | [ResponseRegionSupportedTool](./ts-appendix-enums.md#responseregionsupportedtool22)  | No   | Yes   |Input tool type applicable to the touch target.<br>Default value: ResponseRegionSupportedTool.ALL |
+| x      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | No   | Yes   |X-axis coordinate of the touch point relative to the upper left corner of the component.<br>Default value: LengthMetrics.vp(0) |
+| y      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | No   | Yes   |Y-axis coordinate of the touch point relative to the upper left corner of the component.<br>Default value: LengthMetrics.vp(0) |
+| width  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| string | No   | Yes   |Width of the touch target.<br>Default value: LengthMetrics.percent(1) |
+| height | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| string | No   | Yes   |Height of the touch target.<br>Default value: LengthMetrics.percent(1) |
 
-## Example
+## Examples
 
 ### Example 1: Setting a Touch Target via the responseRegion API
 
@@ -147,13 +154,13 @@ This example demonstrates how to set a touch target for a button using **respons
 @Entry
 @Component
 struct TouchTargetExample {
-  @State text: string = "";
+  @State text: string = '';
 
   build() {
     Column({ space: 20 }) {
       Text("{x:0,y:0,width:'50%',height:'100%'}")
       // The width of the touch target is half of that of the button. No response after touching the right part of button1.
-      Button("button1")
+      Button('button1')
         .responseRegion({
           x: 0,
           y: 0,
@@ -161,13 +168,13 @@ struct TouchTargetExample {
           height: '100%'
         })
         .onClick(() => {
-          this.text = 'button1 clicked'
+          this.text = 'button1 clicked';
         })
 
       // Add multiple touch targets for a component.
       Text("[{x:'100%',y:0,width:'50%',height:'100%'}," +
         "\n{ x: 0, y: 0, width: '50%', height: '100%' }]")
-      Button("button2")
+      Button('button2')
         .responseRegion([
           {
             x: '100%',
@@ -180,14 +187,14 @@ struct TouchTargetExample {
             y: 0,
             width: '50%',
             height: '100%'
-          }// The width of the second touch target is half of the button width. The touch event is triggered if the left part of button2 is clicked.
+          } // The second touch target is half the width of the button. Click the left half of button2 to trigger the click event.
         ])
         .onClick(() => {
-          this.text = 'button2 clicked'
+          this.text = 'button2 clicked';
         })
       // The touch target is located downward by one button height, with its size equal to the button size. The touch event is triggered if the area below the button3 is clicked.
       Text("{x:0,y:'100%',width:'100%',height:'100%'}")
-      Button("button3")
+      Button('button3')
         .responseRegion({
           x: 0,
           y: '100%',
@@ -195,7 +202,7 @@ struct TouchTargetExample {
           height: '100%'
         })
         .onClick(() => {
-          this.text = 'button3 clicked'
+          this.text = 'button3 clicked';
         })
 
       Text(this.text).margin({ top: 50 })
@@ -219,13 +226,13 @@ import { LengthMetrics } from '@kit.ArkUI';
 @Entry
 @Component
 struct TouchTargetExample {
-  @State text: string = "";
+  @State text: string = '';
 
   build() {
     Column({ space: 20 }) {
-      Text("left part of button1")
+      Text('left part of button1')
       // The width of the touch target is half of that of the button. No response after touching the right part of button1.
-      Button("button1")
+      Button('button1')
         .responseRegionList([{
           x: LengthMetrics.vp(0),
           y: LengthMetrics.vp(0),
@@ -233,13 +240,13 @@ struct TouchTargetExample {
           height: LengthMetrics.percent(1),
         }])
         .onClick(() => {
-          this.text = 'button1 clicked'
+          this.text = 'button1 clicked';
         })
 
-      // Touch target 1 is located rightward by one button width, with its size equal to the entire button size. The touch event is triggered if the left part of button2 is clicked.
+      // Set the size of touch target one to the entire button and shift it right by one button width. Click the button-sized area to the right of button2 to trigger the click event.
       // Touch target 2 is located downward by one button height, with its size equal to the entire button size. The touch event is triggered if the area below the button2 is clicked.
-      Text("one button size right of button2," + "\n one button size below button2")
-      Button("button2")
+      Text('one button size right of button2,' + '\n one button size below button2')
+      Button('button2')
         .responseRegionList([{
           x: LengthMetrics.percent(1),
           y: LengthMetrics.vp(0),
@@ -253,7 +260,7 @@ struct TouchTargetExample {
           height: 'calc(100% - 0px)',
         }])
         .onClick(() => {
-          this.text = 'button2 clicked'
+          this.text = 'button2 clicked';
         })
 
       Text(this.text).margin({ top: 50 })
@@ -266,7 +273,7 @@ struct TouchTargetExample {
 
 ### Example 3: Setting the Mouse Touch Target to Respond to Click Events
 
-This example demonstrates how to set the mouse touch target using [mouseResponseRegion](ts-universal-attributes-touch-target.md#mouseresponseregion10) to respond to click events.
+This example uses [mouseResponseRegion](#mouseresponseregion10) to set the mouse touch target to respond to click events.
 
 ```ts
 // xxx.ets

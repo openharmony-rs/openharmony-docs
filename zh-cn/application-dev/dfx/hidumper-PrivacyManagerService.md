@@ -33,7 +33,7 @@ Usage:
 ```
 
 ## 获取敏感权限使用记录信息
-支持通过应用进程的tokenid，查看敏感权限使用记录的信息，可以通过下列命令实现。
+支持通过应用进程的tokenId，查看敏感权限使用记录的信息，可以通过下列命令实现。
 
 ```shell
 hidumper -s PrivacyManagerService -a '-t <tokenId>'

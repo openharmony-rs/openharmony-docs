@@ -5,15 +5,19 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=3ecffa13c66bb2511918ef6f532330628c3630c6 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## When to Use
 
-Since API version 12, the multimodal module provides applications with the ability to listen for key and input events (including mouse, touch, and axis events). Currently, event listening is available only for screen recording applications. For example, when a user starts screen recording, your application can listen for key, mouse, touch, and axis events of the device.
+Since API version 12, the multimodal module allows applications to listen for key and input events, including mouse, touch, and axis events. Typical scenarios include:
+
+- Screen recording applications: Listen for key, mouse, touch, and axis events while screen recording is active.
+- Input recording and automated testing applications (supported only on PCs and 2-in-1 devices since API version 26.1.0): After the user grants permission, listen for these events at any time, even when screen recording is not active.
 
 ## Available APIs
 
-The following table lists the APIs for event listening. For details, see [Input](../../reference/apis-input-kit/capi-input.md).
+The following table lists the APIs for adding and removing event listeners. For details, see [oh_input_manager.h](../../reference/apis-input-kit/capi-oh-input-manager-h.md).
 
 | API | Description|
 | ------------------------------------------------------------ | -------------------------- |
@@ -32,7 +36,7 @@ The following table lists the APIs for event listening. For details, see [Input]
 
 ### Linking Dynamic Libraries
 
-Before calling listener-related APIs, you need to link the related dynamic libraries. To link dynamic libraries, add the following configuration to the **CMakeList.txt** file:
+Before calling listener-related APIs, you need to link the related dynamic libraries. To link dynamic libraries, add the following configuration to the **CMakeLists.txt** file:
 
 ```txt
 target_link_libraries(entry PUBLIC libohinput.so)
@@ -40,15 +44,36 @@ target_link_libraries(entry PUBLIC libohinput.so)
 
 ### Applying for Required Permissions
 
-Declare the required permission in the **module.json5** file. For details, see [Declaring Permissions in the Configuration File](../../security/AccessToken/declare-permissions.md).
+Declare the required permission in the **module.json5** file. For details, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md). The two permissions use different authorization methods:
 
-```json
-"requestPermissions": [
-    {
-        "name": "ohos.permission.INPUT_MONITORING"
-    }
-]
-```
+- **ohos.permission.INPUT_MONITORING** (system authorization): For screen recording applications. The application can listen for key, mouse, touch, and axis events while screen recording is active. Request this permission through the ACL. For details, see [Requesting Restricted Permissions](../../security/AccessToken/declare-permissions-in-acl.md).
+
+    ```json
+    "requestPermissions": [
+        {
+            "name": "ohos.permission.INPUT_MONITORING"
+        }
+    ]
+    ```
+
+- **ohos.permission.INPUT_RECORDING** (manual authorization, supported only on PCs and 2-in-1 devices since API version 26.1.0): For input recording and automated testing applications. After the user grants permission, the application can listen for key, mouse, touch, and axis events at any time, regardless of the screen recording state. For details, see [Manual Authorization](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings-manual-authorization).
+
+    The `reason` and `usedScene` fields are mandatory. This permission cannot be requested through a dialog. After the application passes release review, guide the user to grant it manually in **Settings > Privacy > Permission Management**.
+
+    ```json
+    "requestPermissions": [
+        {
+            "name": "ohos.permission.INPUT_RECORDING",
+            "reason": "$string:input_recording_permission_reason",
+            "usedScene": {
+                "abilities": [
+                    "EntryAbility"
+                ],
+                "when": "inuse"
+            }
+        }
+    ]
+    ```
 
 ### Creating an Event Listener
 
@@ -67,7 +92,7 @@ struct KeyEvent {
 void OnKeyEventCallback(const Input_KeyEvent* keyEvent)
 {
     KeyEvent event;
-    // The lifecycle of Input_KeyEvent is limited to the callback function. After the callback function is executed, Input_KeyEvent is automatically destroyed.
+    // The lifecycle of Input_KeyEvent is limited to the callback function. It will be automatically destroyed after the callback function is executed.
     event.action = OH_Input_GetKeyEventAction(keyEvent);
     event.keyCode = OH_Input_GetKeyEventKeyCode(keyEvent);
     event.actionTime = OH_Input_GetKeyEventActionTime(keyEvent);
@@ -86,7 +111,6 @@ static napi_value RemoveKeyEventMonitor(napi_env env, napi_callback_info info)
     // ...
 }
 ```
-
 
 - **Mouse event**
 
@@ -107,7 +131,7 @@ struct MouseEvent {
 void OnMouseEventCallback(const Input_MouseEvent* mouseEvent)
 {
     MouseEvent event;
-    // The lifecycle of Input_MouseEvent is limited to the callback function. After the callback function is executed, Input_MouseEvent is automatically destroyed.
+    // The lifecycle of Input_MouseEvent is limited to the callback function. It will be automatically destroyed after the callback function is executed.
     event.action = OH_Input_GetMouseEventAction(mouseEvent);
     event.displayX = OH_Input_GetMouseEventDisplayX(mouseEvent);
     event.displayY = OH_Input_GetMouseEventDisplayY(mouseEvent);
@@ -131,7 +155,6 @@ static napi_value RemoveMouseEventMonitor(napi_env env, napi_callback_info info)
 }
 ```
 
-
 - **Touch event**
 
 <!-- @[touch_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) -->
@@ -148,7 +171,7 @@ struct TouchEvent {
 void OnTouchEventCallback(const Input_TouchEvent* touchEvent)
 {
     TouchEvent event;
-    // The lifecycle of Input_TouchEvent is limited to the callback function. After the callback function is executed, Input_TouchEvent is automatically destroyed.
+    // The lifecycle of Input_TouchEvent is limited to the callback function. It will be automatically destroyed after the callback function is executed.
     event.action = OH_Input_GetTouchEventAction(touchEvent);
     event.id = OH_Input_GetTouchEventFingerId(touchEvent);
     event.displayX = OH_Input_GetTouchEventDisplayX(touchEvent);
@@ -170,10 +193,9 @@ static napi_value RemoveTouchEventMonitor(napi_env env, napi_callback_info info)
 }
 ```
 
-
 - **Axis event**
 
-<!-- @[axis_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[axis_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 struct AxisEvent {
@@ -189,7 +211,7 @@ struct AxisEvent {
 void OnAllAxisEventCallback(const Input_AxisEvent* axisEvent)
 {
     AxisEvent event;
-    // The lifecycle of Input_AxisEvent is limited to the callback function. After the callback function is executed, Input_AxisEvent is automatically destroyed.
+    // The lifecycle of Input_AxisEvent is limited to the callback function. It will be automatically destroyed after the callback function is executed.
     InputEvent_AxisAction action = static_cast<InputEvent_AxisAction>(0);
     Input_Result ret = OH_Input_GetAxisEventAction(axisEvent, &action);
     event.axisAction = action;
@@ -218,11 +240,11 @@ void OnAllAxisEventCallback(const Input_AxisEvent* axisEvent)
     // ...
 }
 
-// Define the callback function for pinch-type axis events.
+// Define the pinch type axis event callback function.
 void OnPinchAxisEventCallback(const Input_AxisEvent* axisEvent)
 {
     AxisEvent event;
-    // The lifecycle of Input_AxisEvent is limited to the callback function. After the callback function is executed, Input_AxisEvent is automatically destroyed.
+    // The lifecycle of Input_AxisEvent is limited to the callback function. It will be automatically destroyed after the callback function is executed.
     InputEvent_AxisAction action = static_cast<InputEvent_AxisAction>(0);
     Input_Result ret = OH_Input_GetAxisEventAction(axisEvent, &action);
     event.axisAction = action;
@@ -246,7 +268,7 @@ void OnPinchAxisEventCallback(const Input_AxisEvent* axisEvent)
 void OnScrollAxisEventCallback(const Input_AxisEvent* axisEvent)
 {
     AxisEvent event;
-    // The lifecycle of Input_AxisEvent is limited to the callback function. After the callback function is executed, Input_AxisEvent is automatically destroyed.
+    // The lifecycle of Input_AxisEvent is limited to the callback function. It will be automatically destroyed after the callback function is executed.
     InputEvent_AxisAction action = static_cast<InputEvent_AxisAction>(0);
     Input_Result ret = OH_Input_GetAxisEventAction(axisEvent, &action);
     event.axisAction = action;

@@ -1,10 +1,12 @@
 # OffscreenCanvas
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=236b1482bf31e926fd91d5f29276a56a58780a2f translatedAt=2026-06-22T07:52:06.134Z pushedAt=2026-06-23T02:31:03.361Z -->
 
 >  **NOTE**
 >
@@ -19,13 +21,11 @@
 | width  | number | Width of the **OffscreenCanvas** object.|
 | height | number | Height of the **OffscreenCanvas** object.|
 
-
 ## Methods
-
 
 ### getContext
 
-getContext(type: string, options?: CanvasRenderingContext2DSettings): OffscreenCanvasRenderingContext2D
+getContext(contextId: string, options?: CanvasRenderingContext2DSettings): OffscreenCanvasRenderingContext2D
 
 Obtains the **OffscreenCanvas** context. This API returns a 2D drawing object.
 
@@ -71,7 +71,6 @@ Generates a URL containing image display information.
 | ------ | --------- |
 | string | Image URL.|
 
-
 ### transferToImageBitmap
 
 transferToImageBitmap(): ImageBitmap
@@ -83,7 +82,6 @@ Creates an **ImageBitmap** object on the most recently rendered image of the **O
 | Type                                      | Description             |
 | ---------------------------------------- | --------------- |
 | [ImageBitmap](js-components-canvas-imagebitmap.md) | Pixel data rendered on the **OffscreenCanvas**.|
-
 
 ## Example
 

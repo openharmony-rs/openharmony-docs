@@ -12,6 +12,7 @@
 >
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块为系统接口。
+> - 本模块从API版本26.0.0开始废弃，建议使用[@ohos.file.photoAccessHelper (相册管理模块)(系统接口)](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md)替代。
 
 ## 导入模块
 
@@ -1861,11 +1862,11 @@ async function example(mgr: userFileManager.UserFileManager) {
     console.info('fileAsset.displayName : ' + fileAsset.displayName);
   }
   let onCallback1 = (changeData: userFileManager.ChangeData) => {
-      console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+      console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
     // 图像文件已更改，请执行操作。
   }
   let onCallback2 = (changeData: userFileManager.ChangeData) => {
-      console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+      console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
     // 图像文件已更改，请执行操作。
   }
   // 注册onCallback1监听。
@@ -2635,7 +2636,7 @@ favorite(isFavorite: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAssetChangeRequest.setFavorite](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#setfavorite11)替代。
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAssetChangeRequest.setFavorite](../apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#setfavorite)替代。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.WRITE_AUDIO
 
@@ -2682,7 +2683,7 @@ favorite(isFavorite: boolean): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAssetChangeRequest.setFavorite](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#setfavorite11)替代。
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[photoAccessHelper.MediaAssetChangeRequest.setFavorite](../apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#setfavorite)替代。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO 或 ohos.permission.WRITE_AUDIO
 
@@ -2894,8 +2895,8 @@ Exif标签的详细信息请参考[image.PropertyKey](../apis-image-kit/arkts-ap
 | ImageWidth | 图像宽度。 |
 | GPSLatitude | GPS纬度。 |
 | GPSLongitude | GPS经度。 |
-| GPSLatitudeRef | 经度引用，例如W或E。 |
-| GPSLongitudeRef | 纬度引用，例如N或S。 |
+| GPSLatitudeRef | 纬度引用，例如N或S。 |
+| GPSLongitudeRef | 经度引用，例如W或E。 |
 | DateTimeOriginal | 拍摄时间。 |
 | ExposureTime | 曝光时间。 |
 | SceneType | 场景类型。 |
@@ -3000,8 +3001,8 @@ Exif标签的详细信息请参考[image.PropertyKey](../apis-image-kit/arkts-ap
 | ImageWidth | 图像宽度。 |
 | GPSLatitude | GPS纬度。 |
 | GPSLongitude | GPS经度。 |
-| GPSLatitudeRef | 经度引用，例如W或E。 |
-| GPSLongitudeRef | 纬度引用，例如N或S。 |
+| GPSLatitudeRef | 纬度引用，例如N或S。 |
+| GPSLongitudeRef | 经度引用，例如W或E。 |
 | DateTimeOriginal | 拍摄时间。 |
 | ExposureTime | 曝光时间。 |
 | SceneType | 场景类型。 |

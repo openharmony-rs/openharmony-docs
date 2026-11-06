@@ -1,10 +1,11 @@
 # @ohos.enterprise.bundleManager (Bundle Management) (System API)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=716304dd0f214493c61a62f4ca83a3f10fd2771c translatedAt=2026-11-03T04:55:36.382Z pushedAt=2026-11-03T12:08:25.517Z nl=1 -->
 
 The **bundleManager** module provides APIs for bundle management, including adding, obtaining, and removing a list of bundles that are allowed to install.
 
@@ -14,7 +15,7 @@ The **bundleManager** module provides APIs for bundle management, including addi
 >
 > The APIs of this module can be used only in the stage model.
 >
-> The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
+> The APIs of this module are available only to [MDM applications](../../mdm/mdm-kit-term.md#mdm-app), and can be called only after the device administrator application is activated via [enableAdmin](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
 > 
 > This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.bundleManager](js-apis-enterprise-bundleManager.md).
 
@@ -24,11 +25,15 @@ The **bundleManager** module provides APIs for bundle management, including addi
 import { bundleManager } from '@kit.MDMKit';
 ```
 
-## bundleManager.addAllowedInstallBundles
+## bundleManager.addAllowedInstallBundles<sup>(deprecated)</sup>
 
 addAllowedInstallBundles(admin: Want, appIds: Array\<string>, callback: AsyncCallback&lt;void&gt;): void
 
 Adds the applications that can be installed by the current user. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [addAllowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageraddallowedinstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -81,11 +86,15 @@ bundleManager.addAllowedInstallBundles(wantTemp, appIds, (err) => {
 });
 ```
 
-## bundleManager.addAllowedInstallBundles
+## bundleManager.addAllowedInstallBundles<sup>(deprecated)</sup>
 
 addAllowedInstallBundles(admin: Want, appIds: Array\<string>, userId: number, callback: AsyncCallback&lt;void&gt;): void
 
 Adds the applications that can be installed by the user specified by **userId**. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [addAllowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageraddallowedinstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -139,11 +148,15 @@ bundleManager.addAllowedInstallBundles(wantTemp, appIds, 100, (err) => {
 });
 ```
 
-## bundleManager.addAllowedInstallBundles
+## bundleManager.addAllowedInstallBundles<sup>(deprecated)</sup>
 
 addAllowedInstallBundles(admin: Want, appIds: Array\<string>, userId?: number): Promise&lt;void&gt;
 
 Adds the applications that can be installed by the current or specified user. This API uses a promise to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [addAllowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageraddallowedinstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -201,11 +214,15 @@ bundleManager.addAllowedInstallBundles(wantTemp, appIds, 100).then(() => {
 });
 ```
 
-## bundleManager.removeAllowedInstallBundles
+## bundleManager.removeAllowedInstallBundles<sup>(deprecated)</sup>
 
 removeAllowedInstallBundles(admin: Want, appIds: Array\<string>, callback: AsyncCallback&lt;void&gt;): void
 
 Removes the applications that can be installed by the current user. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [removeAllowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagerremoveallowedinstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -258,11 +275,15 @@ bundleManager.removeAllowedInstallBundles(wantTemp, appIds, (err) => {
 });
 ```
 
-## bundleManager.removeAllowedInstallBundles
+## bundleManager.removeAllowedInstallBundles<sup>(deprecated)</sup>
 
 removeAllowedInstallBundles(admin: Want, appIds: Array\<string>, userId: number, callback: AsyncCallback&lt;void&gt;): void
 
 Removes the applications that can be installed by the user specified by **userId**. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [removeAllowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagerremoveallowedinstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -316,11 +337,15 @@ bundleManager.removeAllowedInstallBundles(wantTemp, appIds, 100, (err) => {
 });
 ```
 
-## bundleManager.removeAllowedInstallBundles
+## bundleManager.removeAllowedInstallBundles<sup>(deprecated)</sup>
 
 removeAllowedInstallBundles(admin: Want, appIds: Array\<string>, userId?: number): Promise&lt;void&gt;
 
 Removes the applications that can be installed by the current or specified user. This API uses a promise to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [removeAllowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagerremoveallowedinstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -378,11 +403,15 @@ bundleManager.removeAllowedInstallBundles(wantTemp, appIds, 100).then(() => {
 });
 ```
 
-## bundleManager.getAllowedInstallBundles
+## bundleManager.getAllowedInstallBundles<sup>(deprecated)</sup>
 
 getAllowedInstallBundles(admin: Want, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 Obtains the applications that can be installed by the current user. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [getAllowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagergetallowedinstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -432,11 +461,15 @@ bundleManager.getAllowedInstallBundles(wantTemp, (err, result) => {
 });
 ```
 
-## bundleManager.getAllowedInstallBundles
+## bundleManager.getAllowedInstallBundles<sup>(deprecated)</sup>
 
 getAllowedInstallBundles(admin: Want, userId: number, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 Obtains the applications that can be installed by the user specified by **userId**. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [getAllowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagergetallowedinstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -487,11 +520,15 @@ bundleManager.getAllowedInstallBundles(wantTemp, 100, (err, result) => {
 });
 ```
 
-## bundleManager.getAllowedInstallBundles
+## bundleManager.getAllowedInstallBundles<sup>(deprecated)</sup>
 
 getAllowedInstallBundles(admin: Want, userId?: number): Promise&lt;Array&lt;string&gt;&gt;
 
-Obtains the applications that can be installed by the current or specified user. This API uses a promise to return the result.
+Obtains the list of applications that are allowed to be installed by the current or specified user. This API uses a promise to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [getAllowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagergetallowedinstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -546,11 +583,15 @@ bundleManager.getAllowedInstallBundles(wantTemp, 100).then((result) => {
 });
 ```
 
-## bundleManager.addDisallowedInstallBundles
+## bundleManager.addDisallowedInstallBundles<sup>(deprecated)</sup>
 
 addDisallowedInstallBundles(admin: Want, appIds: Array\<string>, callback: AsyncCallback&lt;void&gt;): void
 
 Adds the applications that cannot be installed by the current user. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [addDisallowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisallowedinstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -603,11 +644,15 @@ bundleManager.addDisallowedInstallBundles(wantTemp, appIds, (err) => {
 });
 ```
 
-## bundleManager.addDisallowedInstallBundles
+## bundleManager.addDisallowedInstallBundles<sup>(deprecated)</sup>
 
 addDisallowedInstallBundles(admin: Want, appIds: Array\<string>, userId: number, callback: AsyncCallback&lt;void&gt;): void
 
 Adds the applications that cannot be installed by the user specified by **userId**. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [addDisallowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisallowedinstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -661,11 +706,15 @@ bundleManager.addDisallowedInstallBundles(wantTemp, appIds, 100, (err) => {
 });
 ```
 
-## bundleManager.addDisallowedInstallBundles
+## bundleManager.addDisallowedInstallBundles<sup>(deprecated)</sup>
 
 addDisallowedInstallBundles(admin: Want, appIds: Array\<string>, userId?: number): Promise&lt;void&gt;
 
 Adds the applications that are not allowed to be installed by the current or specified user. This API uses a promise to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [addDisallowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisallowedinstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -723,11 +772,15 @@ bundleManager.addDisallowedInstallBundles(wantTemp, appIds, 100).then(() => {
 });
 ```
 
-## bundleManager.removeDisallowedInstallBundles
+## bundleManager.removeDisallowedInstallBundles<sup>(deprecated)</sup>
 
 removeDisallowedInstallBundles(admin: Want, appIds: Array\<string>, callback: AsyncCallback&lt;void&gt;): void
 
 Removes the applications that cannot be installed by the current user. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [removeDisallowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagerremovedisallowedinstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -780,11 +833,15 @@ bundleManager.removeDisallowedInstallBundles(wantTemp, appIds, (err) => {
 });
 ```
 
-## bundleManager.removeDisallowedInstallBundles
+## bundleManager.removeDisallowedInstallBundles<sup>(deprecated)</sup>
 
 removeDisallowedInstallBundles(admin: Want, appIds: Array\<string>, userId: number, callback: AsyncCallback&lt;void&gt;): void
 
 Removes the applications that cannot be installed by the user specified by **userId**. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [removeDisallowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagerremovedisallowedinstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -838,11 +895,15 @@ bundleManager.removeDisallowedInstallBundles(wantTemp, appIds, 100, (err) => {
 });
 ```
 
-## bundleManager.removeDisallowedInstallBundles
+## bundleManager.removeDisallowedInstallBundles<sup>(deprecated)</sup>
 
 removeDisallowedInstallBundles(admin: Want, appIds: Array\<string>, userId?: number): Promise&lt;void&gt;
 
 Removes the applications that cannot be installed by the current or specified user. This API uses a promise to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [removeDisallowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagerremovedisallowedinstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -900,11 +961,15 @@ bundleManager.removeDisallowedInstallBundles(wantTemp, appIds, 100).then(() => {
 });
 ```
 
-## bundleManager.getDisallowedInstallBundles
+## bundleManager.getDisallowedInstallBundles<sup>(deprecated)</sup>
 
 getDisallowedInstallBundles(admin: Want, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 Obtains the applications that cannot be installed by the current user. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [getDisallowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagergetdisallowedinstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -954,11 +1019,15 @@ bundleManager.getDisallowedInstallBundles(wantTemp, (err, result) => {
 });
 ```
 
-## bundleManager.getDisallowedInstallBundles
+## bundleManager.getDisallowedInstallBundles<sup>(deprecated)</sup>
 
 getDisallowedInstallBundles(admin: Want, userId: number, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 Obtains the applications that cannot be installed by the user specified by **userId**. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [getDisallowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagergetdisallowedinstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1009,11 +1078,15 @@ bundleManager.getDisallowedInstallBundles(wantTemp, 100, (err, result) => {
 });
 ```
 
-## bundleManager.getDisallowedInstallBundles
+## bundleManager.getDisallowedInstallBundles<sup>(deprecated)</sup>
 
 getDisallowedInstallBundles(admin: Want, userId?: number): Promise&lt;Array&lt;string&gt;&gt;
 
-Obtains the applications that cannot be installed by the current or specified user. This API uses a promise to return the result.
+Obtains the list of applications that are not allowed to be installed by the current or specified user. This API uses a promise to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [getDisallowedInstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagergetdisallowedinstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1068,11 +1141,15 @@ bundleManager.getDisallowedInstallBundles(wantTemp, 100).then((result) => {
 });
 ```
 
-## bundleManager.addDisallowedUninstallBundles
+## bundleManager.addDisallowedUninstallBundles<sup>(deprecated)</sup>
 
 addDisallowedUninstallBundles(admin: Want, appIds: Array\<string>, callback: AsyncCallback&lt;void&gt;): void
 
 Adds the applications that cannot be uninstalled by the current user. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [addDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1125,11 +1202,15 @@ bundleManager.addDisallowedUninstallBundles(wantTemp, appIds, (err) => {
 });
 ```
 
-## bundleManager.addDisallowedUninstallBundles
+## bundleManager.addDisallowedUninstallBundles<sup>(deprecated)</sup>
 
 addDisallowedUninstallBundles(admin: Want, appIds: Array\<string>, userId: number, callback: AsyncCallback&lt;void&gt;): void
 
 Adds the applications that cannot be uninstalled by the user specified by **userId**. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [addDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1183,11 +1264,15 @@ bundleManager.addDisallowedUninstallBundles(wantTemp, appIds, 100, (err) => {
 });
 ```
 
-## bundleManager.addDisallowedUninstallBundles
+## bundleManager.addDisallowedUninstallBundles<sup>(deprecated)</sup>
 
 addDisallowedUninstallBundles(admin: Want, appIds: Array\<string>, userId?: number): Promise&lt;void&gt;
 
 Adds the applications that cannot be uninstalled by the current or specified user. This API uses a promise to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [addDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1245,11 +1330,15 @@ bundleManager.addDisallowedUninstallBundles(wantTemp, appIds, 100).then(() => {
 });
 ```
 
-## bundleManager.removeDisallowedUninstallBundles
+## bundleManager.removeDisallowedUninstallBundles<sup>(deprecated)</sup>
 
 removeDisallowedUninstallBundles(admin: Want, appIds: Array\<string>, callback: AsyncCallback&lt;void&gt;): void
 
 Removes the applications that cannot be uninstalled by the current user. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [removeDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagerremovedisalloweduninstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1302,11 +1391,15 @@ bundleManager.removeDisallowedUninstallBundles(wantTemp, appIds, (err) => {
 });
 ```
 
-## bundleManager.removeDisallowedUninstallBundles
+## bundleManager.removeDisallowedUninstallBundles<sup>(deprecated)</sup>
 
 removeDisallowedUninstallBundles(admin: Want, appIds: Array\<string>, userId: number, callback: AsyncCallback&lt;void&gt;): void
 
 Removes the applications that cannot be uninstalled by the user specified by **userId**. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [removeDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagerremovedisalloweduninstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1360,11 +1453,15 @@ bundleManager.removeDisallowedUninstallBundles(wantTemp, appIds, 100, (err) => {
 });
 ```
 
-## bundleManager.removeDisallowedUninstallBundles
+## bundleManager.removeDisallowedUninstallBundles<sup>(deprecated)</sup>
 
 removeDisallowedUninstallBundles(admin: Want, appIds: Array\<string>, userId?: number): Promise&lt;void&gt;
 
 Removes the applications that cannot be uninstalled by the current or specified user. This API uses a promise to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [removeDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagerremovedisalloweduninstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1422,11 +1519,15 @@ bundleManager.removeDisallowedUninstallBundles(wantTemp, appIds, 100).then(() =>
 });
 ```
 
-## bundleManager.getDisallowedUninstallBundles
+## bundleManager.getDisallowedUninstallBundles<sup>(deprecated)</sup>
 
 getDisallowedUninstallBundles(admin: Want, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 Obtains the applications that cannot be uninstalled by the current user. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [getDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagergetdisalloweduninstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1476,11 +1577,15 @@ bundleManager.getDisallowedUninstallBundles(wantTemp, (err, result) => {
 });
 ```
 
-## bundleManager.getDisallowedUninstallBundles
+## bundleManager.getDisallowedUninstallBundles<sup>(deprecated)</sup>
 
 getDisallowedUninstallBundles(admin: Want, userId: number, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 Obtains the applications that cannot be uninstalled by the user specified by **userId**. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [getDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagergetdisalloweduninstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1531,11 +1636,15 @@ bundleManager.getDisallowedUninstallBundles(wantTemp, 100, (err, result) => {
 });
 ```
 
-## bundleManager.getDisallowedUninstallBundles
+## bundleManager.getDisallowedUninstallBundles<sup>(deprecated)</sup>
 
 getDisallowedUninstallBundles(admin: Want, userId?: number): Promise&lt;Array&lt;string&gt;&gt;
 
-Obtains the applications that cannot be uninstalled by the current or specified user. This API uses a promise to return the result.
+Obtains the list of applications that are not allowed to be uninstalled by the current or specified user. This API uses a promise to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [getDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanagergetdisalloweduninstallbundlessync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1590,11 +1699,15 @@ bundleManager.getDisallowedUninstallBundles(wantTemp, 100).then((result) => {
 });
 ```
 
-## bundleManager.uninstall
+## bundleManager.uninstall<sup>(deprecated)</sup>
 
 uninstall(admin: Want, bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
 Uninstalls an application of the current user without retaining the bundle data. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [uninstall](./js-apis-enterprise-bundleManager.md#bundlemanageruninstall)
 
 > **NOTE**
 >
@@ -1649,11 +1762,15 @@ bundleManager.uninstall(wantTemp, 'bundleName', (err) => {
 });
 ```
 
-## bundleManager.uninstall
+## bundleManager.uninstall<sup>(deprecated)</sup>
 
 uninstall(admin: Want, bundleName: string, userId: number, callback: AsyncCallback&lt;void&gt;): void
 
 Uninstalls an application of the specified user without retaining the bundle data This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [uninstall](./js-apis-enterprise-bundleManager.md#bundlemanageruninstall)
 
 > **NOTE**
 >
@@ -1709,11 +1826,15 @@ bundleManager.uninstall(wantTemp, 'bundleName', 100, (err) => {
 });
 ```
 
-## bundleManager.uninstall
+## bundleManager.uninstall<sup>(deprecated)</sup>
 
 uninstall(admin: Want, bundleName: string, isKeepData: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 Uninstalls an application of the current user. The **isKeepData** parameter specifies whether to retain the bundle data. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [uninstall](./js-apis-enterprise-bundleManager.md#bundlemanageruninstall)
 
 > **NOTE**
 >
@@ -1769,11 +1890,15 @@ bundleManager.uninstall(wantTemp, 'bundleName', true, (err) => {
 });
 ```
 
-## bundleManager.uninstall
+## bundleManager.uninstall<sup>(deprecated)</sup>
 
 uninstall(admin: Want, bundleName: string, userId: number, isKeepData: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 Uninstalls an application of the specified user. The **isKeepData** parameter specifies whether to retain the bundle data. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [uninstall](./js-apis-enterprise-bundleManager.md#bundlemanageruninstall)
 
 > **NOTE**
 >
@@ -1830,11 +1955,15 @@ bundleManager.uninstall(wantTemp, 'bundleName', 100, true, (err) => {
 });
 ```
 
-## bundleManager.install
+## bundleManager.install<sup>(deprecated)</sup>
 
 install(admin: Want, hapFilePaths: Array\<string>, callback: AsyncCallback\<void>): void
 
 Installs specified applications. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [install](./js-apis-enterprise-bundleManager.md#bundlemanagerinstall)
 
 **Required permissions**: ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -1888,11 +2017,15 @@ bundleManager.install(wantTemp, hapFilePaths, (err) => {
 });
 ```
 
-## bundleManager.install
+## bundleManager.install<sup>(deprecated)</sup>
 
 install(admin: Want, hapFilePaths: Array\<string>, installParam: InstallParam, callback: AsyncCallback\<void>): void
 
 Installs applications with specified parameters. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [install](./js-apis-enterprise-bundleManager.md#bundlemanagerinstall)
 
 **Required permissions**: ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 

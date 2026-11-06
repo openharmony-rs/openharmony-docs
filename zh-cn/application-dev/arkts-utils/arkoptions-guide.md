@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍在build-profile.json5中通过arkOptions字段配置ArkTS编译选项，涵盖types全局类型声明引入、maxFlowDepth控制流分析深度和transformLib转换库，帮助开发者按需定制编译行为。"
+keywords: [arkOptions, build-profile.json5, types, 全局类型声明, maxFlowDepth, 控制流分析, transformLib, 编译配置]
+doctype: guide
+status: active
+---
+
 # 在build-profile.json5中配置arkOptions
+
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @jokerxd-liu-->
-<!--Designer: @huyunhui1; @liyancheng-->
+<!--Designer: @huyunhui1; @liyancheng; @zmw1-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 概述
 
@@ -35,14 +44,14 @@ arkOptions中types字段示例：
 }
 ```
 
-types字段支持填写包名、包所在位置的相对路径，以及声明文件所在位置的相对路径。类型的查找范围仅限于当前声明文件所在的模块内，若目录下存在同名文件（后缀不同），默认加载顺序为 .d.ets > .d.ts，即优先加载 .d.ets 后缀的文件。
+types字段支持填写包名、包所在位置的相对路径，以及声明文件所在位置的相对路径。类型的查找范围仅限于当前模块内，若目录下存在同名文件（后缀不同），默认加载顺序为 .d.ets > .d.ts，即优先加载 .d.ets 后缀的文件。
 1. 填写包名方式：通过包名到oh_modules/@types/目录查找包名中定义的声明文件，如"pako"。<br />
 2. 填写包所在相对路径方式：支持在基于build-profile.json5的相对路径中查找定义的声明文件，如"./oh_modules/@types/mime"。<br />
 3. 填写声明文件所在相对路径方式：支持查找相对路径下的声明文件，如"./src/main/ets/pages/global"。
 
 ### 注意事项
 
-如果在types字段中填写包名或者包所在位置的相对路径，需要在工程文件/entry/oh-package.json5中dependencies作如下配置：
+如果在types字段中填写包名或者包所在位置的相对路径，需要在entry模块下oh-package.json5文件的dependencies字段中作如下配置：
 <!-- @[dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/oh-package.json5) -->
 
 ``` JSON5
@@ -101,7 +110,7 @@ arkOptions/tscConfig中maxFlowDepth字段展示。
 ### 注意事项
 
 - 仅可在工程级目录下build-profile.json5文件中配置maxFlowDepth字段。
-- 若开发者未对maxFlowDepth字段进行配置时，则该字段默认为2000；若开发者对maxFlowDepth字段配置的值超过可配置范围，则会出现编译构建相关报错。
+- 若开发者对maxFlowDepth字段配置的值超过可配置范围，则会出现编译构建相关报错。
 
   ```txt
    hvigor ERROR: Schema validate failed.
@@ -115,7 +124,7 @@ arkOptions/tscConfig中maxFlowDepth字段展示。
       }
   ```
 
-- 如果代码中函数或者模块过长导致控制流分析深度大于或者等于该字段所配置/默认的值，则会终止控制流分析并且报错：The containing function or module body is too large for control flow analysis.
+- 如果代码中函数或者模块过长导致控制流分析深度大于该字段所配置/默认的值，则会终止控制流分析并且报错：The containing function or module body is too large for control flow analysis.
 
 ## transformLib
 
@@ -133,7 +142,6 @@ arkOptions中transformLib字段示例：
 
 在模块build-profile.json5配置文件buildOption标签的arkOptions属性中添加transformLib字段。
 ```json
-// 在/entry/build-profile.json5
 {
   "buildOption": {
     "arkOptions": {
@@ -141,7 +149,6 @@ arkOptions中transformLib字段示例：
     }
   }
 }
-
 ```
 修改方舟字节码能力可参考[编译期自定义修改方舟字节码](customize-bytecode-during-compilation.md)。
 

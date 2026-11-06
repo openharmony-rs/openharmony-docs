@@ -1,11 +1,19 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API扩展接口创建对ArkTS对象的强引用，通过napi_create_strong_reference等接口管理引用，相较于napi_ref具有更快的创建效率。"
+keywords: [Node-API, 强引用, napi_create_strong_reference, napi_ref, 引用管理, 对象引用, 引用效率]
+doctype: guide
+status: active
+---
+
 # 使用扩展的Node-API接口创建对ArkTS对象的强引用
 
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 OpenHarmony提供的API优化了强引用的创建效率，保留了Node-API的强引用特性，相较于napi_ref，napi_strong_ref具有更快的创建效率。
 

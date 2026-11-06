@@ -1,10 +1,12 @@
 # native_drm_err.h
+
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @qin_wei_jie-->
+<!-- md-trans-meta sourceCommit=a104d99b5d9b1bcd49ebcdd72b7fdabef7b94d85 translatedAt=2026-11-03T06:47:26.738Z pushedAt=2026-11-04T03:11:19.917Z nl=1 -->
 
 ## Overview
 
@@ -46,17 +48,19 @@ Enumerates the DRM error codes.
 
 | Enum Item| Description|
 | -- | -- |
-| DRM_ERR_OK = 0 | Operation successful.|
-| DRM_CAPI_ERR_BASE = 24700500 | Base error code.|
+| DRM_ERR_OK = 0 | Operation successful. |
+| DRM_CAPI_ERR_BASE = 24700500 | Base value of error codes, used to generate other error codes. |
 | DRM_ERR_NO_MEMORY = DRM_CAPI_ERR_BASE + 1 | Insufficient memory.|
 | DRM_ERR_OPERATION_NOT_PERMITTED = DRM_CAPI_ERR_BASE + 2 | Operation not permitted.|
 | DRM_ERR_INVALID_VAL = DRM_CAPI_ERR_BASE + 3 | Invalid parameter.|
 | DRM_ERR_IO = DRM_CAPI_ERR_BASE + 4 | I/O error.|
 | DRM_ERR_TIMEOUT = DRM_CAPI_ERR_BASE + 5 | Network timeout.|
 | DRM_ERR_UNKNOWN = DRM_CAPI_ERR_BASE + 6 | Unknown error.|
-| DRM_ERR_SERVICE_DIED = DRM_CAPI_ERR_BASE + 7 | DRM service unavailable.|
+| DRM_ERR_SERVICE_DIED = DRM_CAPI_ERR_BASE + 7 | The DRM service died. |
 | DRM_ERR_INVALID_STATE = DRM_CAPI_ERR_BASE + 8 | Invalid operation state.|
 | DRM_ERR_UNSUPPORTED = DRM_CAPI_ERR_BASE + 9 | Unsupported operation.|
 | DRM_ERR_MAX_SYSTEM_NUM_REACHED = DRM_CAPI_ERR_BASE + 10 | Too many MediaKeySystem instances.|
 | DRM_ERR_MAX_SESSION_NUM_REACHED = DRM_CAPI_ERR_BASE + 11 | Too many MediaKeySession instances.|
-| DRM_ERR_EXTEND_START  = DRM_CAPI_ERR_BASE + 100 | Extended error codes start.|
+| DRM_ERR_EXTEND_START  = DRM_CAPI_ERR_BASE + 100 | Extended error.|
+
+

@@ -21,7 +21,7 @@
 
 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
-   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->
+   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->     
    
    ``` C
    #include <cstdint>
@@ -32,7 +32,6 @@
    #include <cstdio>
    #include <fcntl.h>
    #include <map>
-   #include <string>
    #include <vector>
    #include <native_buffer/native_buffer.h>
    #include "iostream"
@@ -87,12 +86,12 @@
 
    通过[OH_CameraManager_CreatePhotoOutputWithoutSurface()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createphotooutputwithoutsurface)方法创建拍照输出流。
 
-   <!-- @[create_photo_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @[create_photo_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->     
    
    ``` C++
    Camera_ErrorCode NDKCamera::CreatePhotoOutputWithoutSurfaceId()
    {
-       OH_LOG_ERROR(LOG_APP, "CreatePhotoOutputWithoutSurfaceId enter.");
+       OH_LOG_INFO(LOG_APP, "CreatePhotoOutputWithoutSurfaceId enter.");
        profile_ = cameraOutputCapability_->photoProfiles[0];
        Camera_Profile* profile = cameraOutputCapability_->photoProfiles[0];
        profile->size.width = NUM_1920;
@@ -127,7 +126,7 @@
    - 将处理完的buffer通过回调传给ArkTS侧，做图片显示或通过安全控件写文件保存图片。
    - 使用完后解注册单段式拍照回调函数。
 
-     <!-- @[photo_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+     <!-- @[photo_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->    
      
      ``` C++
      // 保存NAPI侧注册的buffer处理回调函数。
@@ -135,7 +134,7 @@
      {
          OH_LOG_INFO(LOG_APP, " RegisterBufferCb start");
          if (cb == nullptr) {
-             OH_LOG_INFO(LOG_APP, " RegisterBufferCb invalid error");
+             OH_LOG_ERROR(LOG_APP, " RegisterBufferCb invalid error");
              return CAMERA_INVALID_ARGUMENT;
          }
          g_bufferCb = cb;
@@ -226,6 +225,7 @@
          }
      }
      
+     
      void OnPhotoAvailable(Camera_PhotoOutput *photoOutput, OH_PhotoNative *photo)
      {
          OH_LOG_INFO(LOG_APP, "OnPhotoAvailable start!");
@@ -272,7 +272,7 @@
          OH_LOG_INFO(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback start!");
          Camera_ErrorCode ret = OH_PhotoOutput_RegisterPhotoAvailableCallback(photoOutput_, OnPhotoAvailable);
          if (ret != CAMERA_OK) {
-             OH_LOG_INFO(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback failed.");
+             OH_LOG_ERROR(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback failed.");
          }
          OH_LOG_INFO(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback return with ret code: %{public}d!",
              ret_);
@@ -519,15 +519,15 @@
 
 ### 如何正确设置画质优先策略
 
-为了正确的在单段式拍照中设置画质优先策略，高性能拍照功能提供了如下两个接口： 
+为了正确地在单段式拍照中设置画质优先策略，高性能拍照功能提供了如下两个接口：
 
 - [OH_PhotoOutput_IsPhotoQualityPrioritizationSupported](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_isphotoqualityprioritizationsupported)：查询当前设备是否支持指定的画质优先策略。返回true表示支持，返回false表示不支持。在进行设置画质优先策略之前，必须先查询将要设置的画质优先策略在当前设备上是否可用。 
 - [OH_PhotoOutput_SetPhotoQualityPrioritization](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_setphotoqualityprioritization)：画质优先策略设置接口，通过该接口设置对应的画质优先策略，实现高性能拍照。 
 
 ### 开发步骤
- 	 
+
 高性能拍照相关接口需要在[会话管理(C/C++)](native-camera-session-management.md)流程的使能步骤中进行调用。  
- 	 
+
 具体调用时机如下： 
 
 - 在[会话管理(C/C++)](native-camera-session-management.md)流程中的使能步骤中的[OH_CaptureSession_CommitConfig()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig)结束之后进行调用。 
@@ -578,7 +578,7 @@
   {
     Camera_PhotoQualityPrioritization quality = Camera_PhotoQualityPrioritization::CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY;
     bool isSupported = false;
-    Camera_ErrorCode ret = OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(photoOutput, quality, isSupported);
+    Camera_ErrorCode ret = OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(photoOutput, quality, &isSupported);
     if (isSupported) {
       ret = OH_PhotoOutput_SetPhotoQualityPrioritization(photoOutput, quality);
       if (ret != 0) {
@@ -639,7 +639,7 @@
   {
     Camera_PhotoQualityPrioritization quality = Camera_PhotoQualityPrioritization::CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY;
     bool isSupported = false;
-    Camera_ErrorCode ret = OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(photoOutput, quality, isSupported);
+    Camera_ErrorCode ret = OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(photoOutput, quality, &isSupported);
     if (isSupported) {
       ret = OH_PhotoOutput_SetPhotoQualityPrioritization(photoOutput, quality);
       if (ret != 0) {

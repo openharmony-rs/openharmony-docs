@@ -5,13 +5,15 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-In ArkUI, dialog boxes are directly mounted to the root node in ascending order of their levels. Under the root node, a dialog box on the right is displayed on top of a dialog box on the left. The newly created dialog box is inserted into the corresponding position based on its level. Dialog boxes with the same level are mounted in the order they were created.
+<!-- md-trans-meta sourceCommit=2cc73d7d182d218c670a07a736f004753da3279f translatedAt=2026-11-03T08:29:05.942Z pushedAt=2026-11-03T08:44:47.314Z nl=2 -->
+
+By default, ArkUI dialog box nodes are directly mounted on the root node in ascending order of their levels. Under the root node, dialog box nodes with higher levels are displayed above those with lower levels. A newly created dialog box node is inserted at the position corresponding to its level, and dialog box nodes at the same level are mounted in the order of creation.
 
 Since API version 18, you can set the [levelOrder](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) parameter to manage the display sequence of dialog boxes. This lets you control which dialog box appears on top of others.
 
 ## Constraints
 
-Using **levelOrder** to manage the display sequence of dialog boxes is only supported for dialog boxes created using the following APIs: [openCustomDialog](arkts-uicontext-custom-dialog.md), [CustomDialog](arkts-common-components-custom-dialog.md), [AlertDialog](arkts-fixes-style-dialog.md#alert-dialog-box-alertdialog), [ActionSheet](arkts-fixes-style-dialog.md#action-sheet-actionsheet), and [showDialog](arkts-fixes-style-dialog.md#common-dialog-box-showdialog).
+Currently, [openCustomDialog](arkts-uicontext-custom-dialog.md), [CustomDialog](arkts-common-components-custom-dialog.md), [AlertDialog](arkts-fixes-style-dialog.md#alert-dialog-box-alertdialog), [ActionSheet](arkts-fixes-style-dialog.md#action-sheet-actionsheet), and [showDialog](arkts-fixes-style-dialog.md#common-dialog-box-showdialog) support managing dialog box levels through the `levelOrder` parameter.
 
 > **NOTE**
 > 
@@ -59,7 +61,7 @@ Using **levelOrder** to manage the display sequence of dialog boxes is only supp
                 levelOrder: LevelOrder.clamp(0),
               })
                 .catch((err: BusinessError) => {
-                  hilog.error(DOMAIN, 'dialogBoxLayer', 'openCustomDialog error: ' + err.code + '' + err.message);
+                  hilog.error(DOMAIN, 'dialogBoxLayer', 'openCustomDialog error: ' + err.code + ' ' + err.message);
                 });
               this.dialogIndex++;
             })
@@ -130,7 +132,7 @@ Using **levelOrder** to manage the display sequence of dialog boxes is only supp
                levelOrder: LevelOrder.clamp(0),
              })
                .catch((err: BusinessError) => {
-                 hilog.error(DOMAIN, 'dialogBoxLayer', 'openCustomDialog error: ' + err.code + '' + err.message);
+                 hilog.error(DOMAIN, 'dialogBoxLayer', 'openCustomDialog error: ' + err.code + ' ' + err.message);
                });
              this.dialogIndex++;
            })

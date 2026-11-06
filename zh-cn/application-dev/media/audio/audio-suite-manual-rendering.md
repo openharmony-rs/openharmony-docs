@@ -14,9 +14,12 @@
 
 ### 在CMake脚本中链接动态库
 
-``` cmake
-target_link_libraries(sample PUBLIC libohaudiosuite.so)
+<!-- @[CMake_lib_suite_libohaudiosuite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
+target_link_libraries(entry PUBLIC libohaudiosuite.so)
 ```
+
 ### 添加头文件
 开发者通过引入头文件<[native_audio_suite_base.h](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md)>和<[native_audio_suite_engine.h](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md)>，使用音频编创相关API。
 
@@ -43,7 +46,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 ### 基础离线编辑
 
-使用效果节点（如均衡器效果节点）处理输入的PCM（Pulse Code Modulation）音频数据，输出带有该音效的PCM音频数据。
+使用效果节点（如均衡器效果节点）处理输入的PCM（Pulse Code Modulation）音频数据，输出带有该音效的PCM音频数据。此处以均衡器效果为例演示离线编辑流程，其他效果节点的详细说明请参考[音频效果(C/C++)](audio-suite-effects.md)。
 
 **图1**：基础离线编辑示意图
 
@@ -108,7 +111,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
        return actualDataSize;
    }
    ```
-   <!-- @[audioSuite_CreateBaseNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   <!-- @[audioSuite_CreateBaseNodeOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -128,16 +131,30 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    void *userData = static_cast<void *>(audioInfo);
    OH_AudioSuiteNodeBuilder_SetRequestDataCallback(nodeBuilder, InputNodeWriteDataCallBack, userData);
    // 创建输入节点。
-   OH_AudioSuiteEngine_CreateNode(audioSuiteEngine, nodeBuilder, &nodes.inputNode);
+   OH_AudioSuiteEngine_CreateNode(audioSuitePipeline, nodeBuilder, &nodes.inputNode);
    
-   // 重置构造器配置并设置为均衡器节点类型。
+   // 重置构造器配置，创建效果节点。
    OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
-   OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder, OH_AudioNode_Type::EFFECT_NODE_TYPE_EQUALIZER);
-   // 创建均衡器节点。
-   OH_AudioSuiteEngine_CreateNode(audioSuiteEngine, nodeBuilder, &nodes.eqNode);
-   // 设置均衡器节点效果为默认。
-   OH_AudioSuiteEngine_SetEqualizerFrequencyBandGains(nodes.eqNode, OH_EQUALIZER_PARAM_DEFAULT);
+   // 可根据需要设置不同的效果节点类型。
+   ```
    
+   设置均衡器效果。
+   
+   <!-- @[audioSuite_SetEqualizerType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_effect/audio_effect.h) -->
+   
+   ``` C
+   // 设置为均衡器节点类型。
+   OH_AudioSuiteNodeBuilder_SetNodeType(builder, OH_AudioNode_Type::EFFECT_NODE_TYPE_EQUALIZER);
+   // 创建均衡器节点。
+   OH_AudioSuiteEngine_CreateNode(pipeline, builder, node);
+   // ...
+   // 设置均衡器节点效果。
+   OH_AudioSuiteEngine_SetEqualizerFrequencyBandGains(*node, gains);
+   ```
+   
+   <!-- @[audioSuite_CreateBaseNodeTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   
+   ``` C++
    // 重置构造器配置并设置为输出节点类型。
    OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
    OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder, OH_AudioNode_Type::OUTPUT_NODE_TYPE_DEFAULT);
@@ -150,7 +167,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    audioFormatOutput.encodingType = OH_Audio_EncodingType::AUDIO_ENCODING_TYPE_RAW;
    OH_AudioSuiteNodeBuilder_SetFormat(nodeBuilder, audioFormatOutput);
    // 创建输出节点。
-   OH_AudioSuiteEngine_CreateNode(audioSuiteEngine, nodeBuilder, &nodes.outputNode);
+   OH_AudioSuiteEngine_CreateNode(audioSuitePipeline, nodeBuilder, &nodes.outputNode);
    
    // 销毁节点构造器。
    OH_AudioSuiteNodeBuilder_Destroy(nodeBuilder);
@@ -218,6 +235,8 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 使用音源分离节点分离输入的PCM音频数据为人声和背景声，然后通过输出节点分别输出这两路数据。
 
+创建音源分离节点前需要调用[OH_AudioSuiteEngine_IsNodeTypeSupported()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_isnodetypesupported)检查是否支持该节点类型，避免创建节点失败。
+
 **图2**：音源分离编辑示意图
 
 ![single_in_multi_out](figures/audiosuite-audio-separation-edit.png)
@@ -282,6 +301,21 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
        return actualDataSize;
    }
    ```
+
+   <!-- @[audioSuite_IsSupportedSeparationNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   
+   ``` C++
+   // 判断是否支持音源分离节点。
+   bool isSupported = false;
+   OH_AudioSuiteEngine_IsNodeTypeSupported(OH_AudioNode_Type::EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION,
+                                           &isSupported);
+   if (!isSupported) {
+       OH_LOG_Print(LOG_APP, LOG_ERROR, GLOBAL_RESMGR, TAG, "Audio separation node is not supported on this device.");
+       nodes.isNodeSupported = false;
+       return nodes;
+   }
+   ```
+
    <!-- @[audioSuite_CreateSeparationNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
    
    ``` C++
@@ -508,7 +542,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    // 重置构造器配置并设置为声场节点类型。
    OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
    OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder, OH_AudioNode_Type::EFFECT_NODE_TYPE_SOUND_FIELD);
-   // 创建声场节点并设置声场模式为聆听。
+   // 创建声场节点并设置声场模式为前置。
    OH_AudioSuiteEngine_CreateNode(audioSuitePipeline, nodeBuilder, &nodes.fieldNode);
    OH_AudioSuiteEngine_SetSoundFieldType(nodes.fieldNode, SOUND_FIELD_FRONT_FACING);
    
@@ -598,8 +632,8 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    OH_AudioSuiteEngine_Destroy(audioSuiteEngine);
    ```
 
-## 完整示例代码
-- [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
-
 <!--RP1-->
+## 完整示例代码
+
+- [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
 <!--RP1End-->

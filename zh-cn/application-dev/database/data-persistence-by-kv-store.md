@@ -40,55 +40,43 @@
 
 ## 开发步骤
 
-1. 若要使用键值型数据库，首先要使用createKVManager()方法获取一个KVManager实例，用于管理数据库对象。示例代码如下所示：
+1. 若要使用键值型数据库，首先要使用createKVManager()方法获取一个KVManager实例，用于管理数据库对象。此处context获取以Stage模型为例，FA模型context的获取请见[context](../application-models/application-context-fa.md)，示例代码如下所示：
 
-   ```ts
-   // 导入模块
-   // 在pages目录下新建KvStoreInterface.ets
+   <!-- @[CreateKvManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
    import { distributedKVStore } from '@kit.ArkData';
    import { BusinessError } from '@kit.BasicServicesKit';
+   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    import EntryAbility from '../entryability/EntryAbility';
-   // Logger为hilog封装后实现的打印功能
    import Logger from '../common/Logger';
-
+   
    let kvManager: distributedKVStore.KVManager | undefined = undefined;
    let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
    let appId: string = 'com.example.kvstoresamples';
    let storeId: string = 'storeId';
-   // Stage模型context从EntryAbility.ets中获取
+   // 获取context
    const context = EntryAbility.getContext();
-
-   // FA模型获取context
-   import { featureAbility } from '@kit.AbilityKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-
-   let context = featureAbility.getContext();
-
-   // 下面所有接口的代码都实现在KvInterface中
-   export class KvInterface {
-   }
-   ```
-   <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
-   ``` TypeScript
-   public CreateKvManager = (() => {
-     Logger.info('CreateKvManager start');
-     if (typeof (kvManager) === 'undefined') {
-       const kvManagerConfig: distributedKVStore.KVManagerConfig = {
-         bundleName: appId,
-         context: context
-       };
-       try {
-         // 创建KVManager实例
-         kvManager = distributedKVStore.createKVManager(kvManagerConfig);
-         Logger.info('Succeeded in creating KVManager.');
-       } catch (err) {
-         Logger.error(`Failed to create KVManager. Code:${err.code},message:${err.message}`);
+   // ...
+     public CreateKvManager = (() => {
+       Logger.info('CreateKvManager start');
+       if (typeof (kvManager) === 'undefined') {
+         const kvManagerConfig: distributedKVStore.KVManagerConfig = {
+           bundleName: appId,
+           context: context
+         };
+         try {
+           // 创建KVManager实例
+           kvManager = distributedKVStore.createKVManager(kvManagerConfig);
+           Logger.info('Succeeded in creating KVManager.');
+         } catch (err) {
+           Logger.error(`Failed to create KVManager. Code:${err.code},message:${err.message}`);
+         }
+       } else {
+         Logger.info ('KVManager has created');
        }
-     } else {
-       Logger.info ('KVManager has created');
-     }
-   })
+     })
    ```
 
 2. 使用getKVStore()方法创建并获取键值数据库。示例代码如下所示：

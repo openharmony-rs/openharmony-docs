@@ -1,7 +1,7 @@
 # 使用离线Web组件
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @wang-yanhan-->
+<!--Owner: @lollipopolive-->
 <!--Designer: @qianlf-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
@@ -32,21 +32,30 @@ Web组件能够实现在不同窗口的组件树上进行挂载或移除操作�
 <!-- @[entry_ability_window_stage_created_after_specified_page_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
-onWindowStageCreate(windowStage: window.WindowStage): void {
-  windowStage.loadContent('pages/Index', (err, data) => {
-    // 创建Web动态组件（需传入UIContext），loadContent之后的任意时机均可创建
-    createNWeb('www.example.com', windowStage.getMainWindowSync().getUIContext());
-    if (err.code) {
-      return;
-    }
-  });
-}
+import { createNWeb } from "../pages/Common";
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+// ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err && err.code) {
+        console.error('loadContent failed. errorCode: ' + err.code);
+        return;
+      }
+      let windowClass: window.Window = windowStage.getMainWindowSync(); // Obtain the main window of the application.
+      if (!windowClass) {
+        console.error('windowClass is null');
+        return;
+      }
+      // 创建Web动态组件（需传入UIContext），loadContent之后的任意时机均可创建
+      createNWeb('www.example.com', windowClass.getUIContext());
+    });
+  }
 ```
 <!--  -->
 <!-- @[manage_dynamic_webview_components_in_harmonyos_app](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Common.ets) -->
 
 ``` TypeScript
-// 创建NodeController
 // Common.ets
 import { UIContext, NodeController, BuilderNode, Size, FrameNode } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
@@ -73,10 +82,10 @@ let wrap = wrapBuilder<Data[]>(webBuilder);
 export class MyNodeController extends NodeController {
   private rootNode: BuilderNode<Data[]> | null = null;
 
-  // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContainer中
+  // 必须要重写的方法，用于构建节点树、返回节点挂载在对应NodeContainer中
   // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新
   makeNode(uiContext: UIContext): FrameNode | null {
-    console.info('uicontext is undefined : ' + (uiContext === undefined));
+    console.info('uiContext is undefined : ' + (uiContext === undefined));
     if (this.rootNode !== null) {
       // 返回FrameNode节点
       return this.rootNode.getFrameNode();
@@ -115,7 +124,7 @@ export class MyNodeController extends NodeController {
 
 // 创建Map保存所需要的NodeController
 let nodeMap: Map<ResourceStr, MyNodeController | undefined> = new Map();
-// 创建Map保存所需要的WebViewController
+// 创建Map保存所需要的WebviewController
 let controllerMap: Map<ResourceStr, WebviewController | undefined> = new Map();
 
 // 初始化需要UIContext 需在Ability获取
@@ -182,12 +191,12 @@ import { createNWeb } from '../pages/Common';
   onWindowStageCreate(windowStage: window.WindowStage): void {
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err && err.code) {
-        console.info('loadContent failed. errorCode: ' + err.code);
+        console.error('loadContent failed. errorCode: ' + err.code);
         return;
       }
       let windowClass: window.Window = windowStage.getMainWindowSync(); // Obtain the main window of the application.
       if (!windowClass) {
-        console.info('windowClass is null');
+        console.error('windowClass is null');
         return;
       }
       // 创建空的Web动态组件（需传入UIContext），loadContent之后的任意时机均可创建
@@ -200,7 +209,6 @@ import { createNWeb } from '../pages/Common';
 <!-- @[manage_dynamic_webview_components_in_harmonyos_app](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Common.ets) -->
 
 ``` TypeScript
-// 创建NodeController
 // Common.ets
 import { UIContext, NodeController, BuilderNode, Size, FrameNode } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
@@ -227,10 +235,10 @@ let wrap = wrapBuilder<Data[]>(webBuilder);
 export class MyNodeController extends NodeController {
   private rootNode: BuilderNode<Data[]> | null = null;
 
-  // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContainer中
+  // 必须要重写的方法，用于构建节点树、返回节点挂载在对应NodeContainer中
   // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新
   makeNode(uiContext: UIContext): FrameNode | null {
-    console.info('uicontext is undefined : ' + (uiContext === undefined));
+    console.info('uiContext is undefined : ' + (uiContext === undefined));
     if (this.rootNode !== null) {
       // 返回FrameNode节点
       return this.rootNode.getFrameNode();
@@ -269,7 +277,7 @@ export class MyNodeController extends NodeController {
 
 // 创建Map保存所需要的NodeController
 let nodeMap: Map<ResourceStr, MyNodeController | undefined> = new Map();
-// 创建Map保存所需要的WebViewController
+// 创建Map保存所需要的WebviewController
 let controllerMap: Map<ResourceStr, WebviewController | undefined> = new Map();
 
 // 初始化需要UIContext 需在Ability获取
@@ -356,21 +364,30 @@ struct Index2 {
 <!-- @[entry_ability_window_stage_created_after_specified_page_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
-onWindowStageCreate(windowStage: window.WindowStage): void {
-  windowStage.loadContent('pages/Index', (err, data) => {
-    // 创建Web动态组件（需传入UIContext），loadContent之后的任意时机均可创建
-    createNWeb('www.example.com', windowStage.getMainWindowSync().getUIContext());
-    if (err.code) {
-      return;
-    }
-  });
-}
+import { createNWeb } from "../pages/Common";
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+// ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err && err.code) {
+        console.error('loadContent failed. errorCode: ' + err.code);
+        return;
+      }
+      let windowClass: window.Window = windowStage.getMainWindowSync(); // Obtain the main window of the application.
+      if (!windowClass) {
+        console.error('windowClass is null');
+        return;
+      }
+      // 创建Web动态组件（需传入UIContext），loadContent之后的任意时机均可创建
+      createNWeb('www.example.com', windowClass.getUIContext());
+    });
+  }
 ```
 <!--  -->
 <!-- @[offline_web_component_builder_with_render_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry2/src/main/ets/pages/Common.ets) --> 
 
 ``` TypeScript
-// 创建NodeController
 // Common.ets
 import { UIContext } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
@@ -413,7 +430,7 @@ let wrap = wrapBuilder<Data[]>(webBuilder);
 export class MyNodeController extends NodeController {
   private rootNode: BuilderNode<Data[]> | null = null;
 
-  // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContainer中
+  // 必须要重写的方法，用于构建节点树、返回节点挂载在对应NodeContainer中
   // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新
   makeNode(uiContext: UIContext): FrameNode | null {
     console.info('uiContext is undefined : ' + (uiContext === undefined));
@@ -457,7 +474,7 @@ export class MyNodeController extends NodeController {
 
 // 创建Map保存所需要的NodeController
 let nodeMap: Map<string, MyNodeController | undefined> = new Map();
-// 创建Map保存所需要的WebViewController
+// 创建Map保存所需要的WebviewController
 let controllerMap: Map<string, WebviewController | undefined> = new Map();
 
 // 初始化需要UIContext 需在Ability获取
@@ -467,7 +484,7 @@ export const createNWeb = (url: string, uiContext: UIContext) => {
   let controller = new webview.WebviewController();
   // 初始化自定义Web组件
   baseNode.initWeb(url, uiContext, controller);
-  controllerMap.set(url, controller)
+  controllerMap.set(url, controller);
   nodeMap.set(url, baseNode);
 }
 
@@ -543,7 +560,6 @@ let recycledNWebs: Set<ResourceStr> = new Set()
 
 // 初始化需要UIContext 需在Ability获取
 export const createNWeb = (url: ResourceStr, uiContext: UIContext) => {
-  // 创建NodeController
   console.info('createNWeb, url = ' + url);
   if (!globalUiContext) {
     globalUiContext = uiContext;
@@ -553,6 +569,7 @@ export const createNWeb = (url: ResourceStr, uiContext: UIContext) => {
     return;
   }
 
+  // 创建NodeController
   let baseNode = new MyNodeController();
   // 初始化自定义Web组件
   baseNode.initWeb(url, uiContext);
@@ -666,37 +683,37 @@ onBackground(): void {
 
 ## 常见白屏问题排查
 
-1.排查应用上网权限配置。
+1. 排查应用上网权限配置。
 
-检查是否已在module.json5中添加网络权限，添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
+   检查是否已在module.json5中添加网络权限，添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-<!-- @[add_network_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry2/src/main/module.json5) -->
+   <!-- @[add_network_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry2/src/main/module.json5) -->
+   
+   ``` JSON5
+   "requestPermissions":[
+     {
+       "name" : "ohos.permission.INTERNET"
+     }
+   ],
+   ```
 
-``` JSON5
-"requestPermissions":[
-  {
-    "name" : "ohos.permission.INTERNET"
-  }
-],
-```
 
+2. 排查[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)与节点绑定的逻辑。
 
-2.排查[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)与节点绑定的逻辑。
+   检查节点是否已上组件树，建议在已有的Web组件上方加上Text（请参考以下例子），如果白屏的时候没有出现Text，建议检查[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)与节点绑定的情况。
 
-检查节点是否已上组件树，建议在已有的Web组件上方加上Text（请参考以下例子），如果白屏的时候没有出现Text，建议检查[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)与节点绑定的情况。
+   ```ts
+   @Builder
+   function WebBuilder(data:Data) {
+     Column() {
+       Text('test')
+       Web({ src: data.url, controller: data.controller })
+         .width("100%")
+         .height("100%")
+     }
+   }
+   ```
 
-```ts
-@Builder
-function WebBuilder(data:Data) {
-  Column() {
-    Text('test')
-    Web({ src: data.url, controller: data.controller })
-      .width("100%")
-      .height("100%")
-  }
-}
-```
+3. 排查Web可见性状态。
 
-3.排查Web可见性状态。
-
-如果整个节点已上树，可通过日志[WebPattern::OnVisibleAreaChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange)查看Web组件可见性状态是否正确，不可见的Web组件可能会造成白屏。
+   如果整个节点已上树，可通过日志[WebPattern::OnVisibleAreaChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange)查看Web组件可见性状态是否正确，不可见的Web组件可能会造成白屏。

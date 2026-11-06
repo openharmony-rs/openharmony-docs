@@ -1,12 +1,13 @@
 # Display Management Overview
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
-<!--Tester: @qinliwen0417-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @wulong158-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-03T12:47:30.238Z pushedAt=2026-11-03T12:47:30.238Z -->
 
-Display management is centered around the oversight of a device's displays, which includes physical, virtual, and foldable displays. It involves managing their properties and serving as a broadcaster to relay monitored information to services that have subscribed to display information.
+Display management is responsible for managing various types of displays on a device, including physical, virtual, and foldable displays. It manages their properties and acts as a publisher, broadcasting display-related events and information to subscribed services that require display information.
 
 Display management includes the following capabilities:
 

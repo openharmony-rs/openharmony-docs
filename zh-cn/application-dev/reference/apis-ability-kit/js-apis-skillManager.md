@@ -3,10 +3,10 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
-本模块提供技能（Skill）信息的查询能力，支持查询应用自身的技能信息、指定应用的技能信息以及所有应用的技能信息。AI代理框架在规划任务时，可通过本模块查询设备上所有应用可用的技能，选择合适的技能来完成用户请求。
+本模块提供技能（Skill）信息的查询能力，支持查询应用自身的技能信息、指定应用的技能信息以及所有应用的技能信息。AI代理框架在规划任务时，可通过本模块查询设备上所有应用可用的技能，选择合适的技能来完成用户请求。通过技能信息查询，可以实现智能任务调度、能力匹配优化，提升AI代理的任务执行效率，降低开发者的技能集成复杂度。
 
 **起始版本：** 26.0.0
 
@@ -93,7 +93,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getSkillInfoForSelf failed: error %{public}d  %{public}s', err.code, err.message);
+  hilog.error(0x0000, 'testTag', 'getSkillInfoForSelf failed: error %{public}d  %{public}s', code, message);
 }
 ```
 
@@ -124,6 +124,14 @@ getSkillInfosForSelf(flags: number): Promise\<Array\<[SkillInfo](js-apis-bundleM
 | Promise\<Array\<[SkillInfo](js-apis-bundleManager-SkillInfo.md)\>\> | Promise对象，返回调用方所在应用的所有技能信息数组。|
 
 
+**错误码：**
+
+以下错误码的详细介绍请参见[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                              |
+| -------- | ------------------------------------- |
+| 17700101 | Bundle manager service is exception. Possible causes: 1. Failed to connect to the system service. 2. IPC data transmission failed. 3. Failed to obtain the object constructor. |
+
 **示例：**
 
 ```ts
@@ -141,7 +149,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getSkillInfosForSelf failed: error %{public}d  %{public}s', err.code, err.message);
+  hilog.error(0x0000, 'testTag', 'getSkillInfosForSelf failed: error %{public}d  %{public}s', code, message);
 }
 ```
 
@@ -153,7 +161,7 @@ getSkillInfo(bundleName: string, moduleName: string, skillName: string, flags: n
 
 **起始版本：** 26.0.0
 
-**需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE 或 ohos.permission.MANAGE_SKILL
+**需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE（该权限仅系统应用可申请） 或 ohos.permission.MANAGE_SKILL
 
 > **说明：**
 >
@@ -213,7 +221,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getSkillInfo failed: error %{public}d  %{public}s', err.code, err.message);
+  hilog.error(0x0000, 'testTag', 'getSkillInfo failed: error %{public}d  %{public}s', code, message);
 }
 ```
 
@@ -225,7 +233,7 @@ getSkillInfos(bundleName: string, flags: number, userId?: number): Promise\<Arra
 
 **起始版本：** 26.0.0
 
-**需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE 或 ohos.permission.MANAGE_SKILL
+**需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE（该权限仅系统应用可申请） 或 ohos.permission.MANAGE_SKILL
 
 > **说明：**
 >
@@ -279,7 +287,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getSkillInfos failed: error %{public}d  %{public}s', err.code, err.message);
+  hilog.error(0x0000, 'testTag', 'getSkillInfos failed: error %{public}d  %{public}s', code, message);
 }
 ```
 
@@ -291,7 +299,7 @@ getAllSkillInfos(flags: number, userId?: number): Promise\<Array\<[SkillInfo](js
 
 **起始版本：** 26.0.0
 
-**需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE 或 ohos.permission.MANAGE_SKILL
+**需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE（该权限仅系统应用可申请） 或 ohos.permission.MANAGE_SKILL
 
 > **说明：**
 >
@@ -342,7 +350,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getAllSkillInfos failed: error %{public}d  %{public}s', err.code, err.message);
+  hilog.error(0x0000, 'testTag', 'getAllSkillInfos failed: error %{public}d  %{public}s', code, message);
 }
 ```
 

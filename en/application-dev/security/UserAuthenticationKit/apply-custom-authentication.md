@@ -6,6 +6,7 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=b799bd137584a338db2107c2101b1d6091a6feea translatedAt=2026-11-03T05:43:56.654Z pushedAt=2026-11-03T07:44:11.330Z nl=1 -->
 
 If the biometric authentication fails and the user taps the navigation button for a custom authentication, the unified user authentication framework will terminate the system authentication process and instruct the caller to launch the custom authentication page.
 
@@ -24,15 +25,15 @@ As shown in the following figure, the selected area is the **WidgetParam.navigat
 > **NOTE**
 > The lock screen password authentication and custom authentication are mutually exclusive.
 
-| Authentication Type| Switch to Custom Authentication<br>(√ indicates supported, x indicates not supported)| 
+| Authentication Type| Switch to Custom Authentication<br>(√ indicates supported, x indicates not supported)|
 | -------- | -------- |
-| Lock screen password authentication| × | 
-| Facial authentication| √ | 
-| Fingerprint authentication| √ | 
-| Facial + fingerprint authentication<sup>18+</sup>| √ | 
-| Facial + lock screen password authentication| × | 
-| Fingerprint + lock screen password authentication| × | 
-| Facial + fingerprint + lock screen password authentication| × | 
+| Lock screen password authentication | x |
+| Facial authentication| √ |
+| Fingerprint authentication| √ |
+| Facial + fingerprint authentication<sup>18+</sup>| √ |
+| Face + lock screen password authentication | x |
+| Fingerprint + lock screen password authentication | x |
+| Face + fingerprint + lock screen password authentication | x |
 
 ## Development Example
 
@@ -99,5 +100,4 @@ applyingCustomAuthentication() {
 
 ## Sample Code
 
-  - [Switching to custom authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
-  
+  - You can refer to the [User Authentication Service](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication) sample code.

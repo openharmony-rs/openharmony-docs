@@ -5,14 +5,16 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=46feed4577bffdfe046a46315f0b167380ccfaa2 translatedAt=2026-09-01T13:13:31.845Z pushedAt=2026-09-07T11:50:25.143Z -->
 
-The module provides the functionality to create an **AVCastPicker** component, which offers a unified entry for device discovery and connection.
+The module provides the **AVCastPicker** component, which offers a unified entry for device discovery and connection.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The Preview in DevEco Studio does not support actual casting. To see the real effect, test on a real device.<!--Del-->
 > - This component can only be used from the device selection screen, which needs to be implemented by OEM vendors.<!--DelEnd-->
+> - This module is available to wearables since API version 26.0.0.
 
 ## Modules to Import
 
@@ -50,13 +52,13 @@ This component is a custom component. Some basic knowledge of [@Component](../..
 
 | Name| Type| Mandatory| Decorator| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| normalColor<sup>11+</sup> | Color \| number \| string | No| @Prop | Color of the component in normal state.<br>If this parameter is left unspecified, the color setting in **colorMode** is used.|
-| activeColor<sup>11+</sup> | Color \| number \| string | No| @Prop | Color of the component when audio and video are successfully casted to another device. If this parameter is left unspecified, the system preferentially matches the color based on **normalColor**. If **normalColor** is also left unspecified, the color setting in **colorMode** is used.|
-| pickerStyle<sup>12+</sup> | [AVCastPickerStyle](js-apis-avCastPickerParam.md#avcastpickerstyle12) | No| @Prop | Style of the component.<br>- When **sessionType** is set to **audio** or **video**, the default value is **STYLE_PANEL**.<br>- When **sessionType** is set to **voice_call** or **video_call**, the default value is **STYLE_MENU** and the value cannot be changed to **STYLE_PANEL**.|
+| normalColor<sup>11+</sup> | Color \| number \| string | No | @Prop | Color of the component in normal state.<br>If this parameter is left unspecified, the color setting in **colorMode** is used. |
+| activeColor<sup>11+</sup> | Color \| number \| string | No | @Prop | Color of the component when the device is successfully connected.<br>If **activeColor** is not set but **normalColor** is set, the value of **normalColor** is used. If **normalColor** is not set either, the value of **colorMode** is used. |
+| pickerStyle<sup>12+</sup> | [AVCastPickerStyle](js-apis-avCastPickerParam.md#avcastpickerstyle12) | No | @Prop | Cast picker style.<br>- **STYLE_PANEL**: displays the component in panel style.<br>- **STYLE_MENU**: displays the component in menu style.<br>- When **sessionType** is set to **audio** or **video**, the default value is **STYLE_PANEL**.<br>- When **sessionType** is set to **voice_call** or **video_call**, the default value is **STYLE_MENU** and the value cannot be changed to **STYLE_PANEL**.|
 | colorMode<sup>12+</sup> | [AVCastPickerColorMode](js-apis-avCastPickerParam.md#avcastpickercolormode12) | No|  @Prop | Display mode. The default value is **AUTO**.<br>- When **colorMode** is set to **AUTO**, the default system color in dark/light color mode is used.<br>- When **colorMode** is set to **DARK** or **LIGHT**, the preset system color of the corresponding mode is used.|
-| sessionType<sup>12+</sup> | string | No| @Prop | Session type. For details, see [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10). The default value is **AVSessionType** created by the application.|
-| customPicker<sup>12+</sup> | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | No| @Prop | Custom style. You are advised to customize a component style so that the component can be displayed quickly.|
-| onStateChange<sup>11+</sup> | (state: [AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate)) => void | No| - | Callback invoked when the casting state changes.|
+| sessionType<sup>12+</sup> | string | No| @Prop | Session type. For details, see [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10). The default value is **AVSessionType** created by the application. |
+| customPicker<sup>12+</sup> | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | No | @Prop | Custom style. You are advised to customize a component style so that the component can be displayed quickly. |
+| onStateChange<sup>11+</sup> | (state: [AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate)) => void | No | - | Callback invoked when the casting state changes. This callback is triggered when the casting state changes. The value **STATE_APPEARING** indicates that the component starts to be displayed, and **STATE_DISAPPEARING** indicates that the component stops being displayed. |
 ## Events
 
 The [universal events](../apis-arkui/arkui-ts/ts-component-general-events.md) are supported.

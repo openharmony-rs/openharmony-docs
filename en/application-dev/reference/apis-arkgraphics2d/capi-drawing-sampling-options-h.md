@@ -1,14 +1,16 @@
 # drawing_sampling_options.h
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=22411201b1665b2e425616d443f631db23823b4c translatedAt=2026-08-24T08:56:04.669Z pushedAt=2026-08-31T09:22:21.910Z -->
 
 ## Overview
 
-This file declares the functions related to sampling in the drawing module. It is used for image or texture sampling.
+Defines the sampling-related functions in the file. Used for sampling images such as pictures or textures.<br>This module uses a single-thread model, and the caller must manage thread safety and context state switching.
 
 **File to include**: <native_drawing/drawing_sampling_options.h>
 
@@ -35,7 +37,7 @@ This file declares the functions related to sampling in the drawing module. It i
 | -- | -- |
 | [OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMode filterMode,OH_Drawing_MipmapMode mipmapMode)](#oh_drawing_samplingoptionscreate) | Creates an **OH_Drawing_SamplingOptions** object.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **mipmapMode** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.|
 | [OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCopy(OH_Drawing_SamplingOptions* samplingOptions)](#oh_drawing_samplingoptionscopy) | Creates a copy of an [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md) object.<br> This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br> If **samplingOptions** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
-| [void OH_Drawing_SamplingOptionsDestroy(OH_Drawing_SamplingOptions* samplingOptions)](#oh_drawing_samplingoptionsdestroy) | Destroys an **OH_Drawing_SamplingOptions** object and reclaims the memory occupied by the object.|
+| [void OH_Drawing_SamplingOptionsDestroy(OH_Drawing_SamplingOptions* samplingOptions)](#oh_drawing_samplingoptionsdestroy) | Destroys a sampling options object and reclaims the memory occupied by the object. |
 
 ## Enum Description
 
@@ -74,7 +76,6 @@ Defines an enum for the mipmap modes.
 | MIPMAP_MODE_NEAREST | Nearest sampling from two adjacent mipmap levels.|
 | MIPMAP_MODE_LINEAR | Linear interpolation sampling between two adjacent mipmap levels.|
 
-
 ## Function Description
 
 ### OH_Drawing_SamplingOptionsCreate()
@@ -90,7 +91,6 @@ Creates an **OH_Drawing_SamplingOptions** object.<br>This API may return an erro
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -123,7 +123,6 @@ If **samplingOptions** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is return
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -144,7 +143,7 @@ void OH_Drawing_SamplingOptionsDestroy(OH_Drawing_SamplingOptions* samplingOptio
 
 **Description**
 
-Destroys an **OH_Drawing_SamplingOptions** object and reclaims the memory occupied by the object.
+Destroys a sampling options object and reclaims the memory occupied by the object.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 

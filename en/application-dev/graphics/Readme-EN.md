@@ -2,10 +2,11 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @goumiao; @hangmengxin-->
-<!--Designer: @liumingxiang; @wangyanglan-->
-<!--Tester: @yhl0101; @nobuggers-->
+<!--Owner: @oh_wangxk; @hangmengxin-->
+<!--Designer: @KejiePeng; @wanyanglan-->
+<!--Tester: @LiTongguan2026; @nobuggers; @yhl0101-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=ba1b6704bf7552d9b6a8a06ca0cf38b43a773032 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=1 -->
 
 - [About This Kit](arkgraphics2D-introduction.md)
 - Using Variable Frame Rates<!--displaysync-->
@@ -30,9 +31,11 @@
     - [Basic Drawing Effects (C/C++)](basic-drawing-effect-c.md)
     - [Complex Drawing Effects (C/C++)](complex-drawing-effect-c.md)
   - Primitive Drawing<!--primitive-drawing-->
-    - [Overview of Primitive Drawing](primitive-drawing-overview.md)
+    - [Drawing Primitives](primitive-drawing-overview.md)
     - [Drawing Geometric Shapes (ArkTS)](geometric-shape-drawing-arkts.md)
-    - [Drawing Images](pixelmap-drawing-arkts.md)
+
+    - [Drawing Images (ArkTS)](pixelmap-drawing-arkts.md)
+
     - [Drawing TextBlobs (ArkTS)](textblock-drawing-arkts.md)
     - [Drawing Geometric Shapes (C/C++)](geometric-shape-drawing-c.md)
     - [Drawing Images (C/C++)](pixelmap-drawing-c.md)
@@ -57,9 +60,13 @@
     - [Drawing and Displaying Complex Text (C/C++)](complex-text-c.md)
     - [Drawing and Displaying Custom Text (C/C++)](text-custom-c.md)
   - [Text Development FAQs](text-faqs.md)
-- [NativeBuffer Development (C/C++)](native-buffer-guidelines.md)
-- [NativeImage Development (C/C++)](native-image-guidelines.md)
-- [NativeVsync Development (C/C++)](native-vsync-guidelines.md)
-- [NativeWindow Development (C/C++)](native-window-guidelines.md)
-- [GPU/CPU Memory Access Sync (C/C++)](native-fence-guidelines.md)
-- [Graphic Development Terms](graphic-term.md)
+- Offline Image Processing<!--offline-image-processing-->
+  - [Adding Image Effects (C/C++)](effectkit-filter-c.md)
+- [NativeVSync Development (C/C++)](native-vsync-guidelines.md)
+- Graphics Buffer<!--native-surface-->
+  - [NativeBuffer Development (C/C++)](native-buffer-guidelines.md)
+  - [NativeImage Development (C/C++)](native-image-guidelines.md)
+  - [NativeWindow Development (C/C++)](native-window-guidelines.md)
+  - [GPU/CPU Memory Access Sync (C/C++)](native-fence-guidelines.md)
+  - [Common Stability Issues with Graphics Buffers (C/C++)](native-common-mistakes.md)  
+- [Glossary](graphic-term.md)

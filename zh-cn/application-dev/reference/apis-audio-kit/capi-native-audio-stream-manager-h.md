@@ -112,7 +112,7 @@ OH_AudioCommon_Result OH_AudioStreamManager_IsAcousticEchoCancelerSupported(OH_A
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *streamManager | 音频流管理器句柄。通过 [OH_AudioManager_GetAudioStreamManager](capi-native-audio-stream-manager-h.md#oh_audiomanager_getaudiostreammanager)获取句柄。 |
-| [OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) sourceType | 指向[OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype)，用于设置音频输入流的使用场景。 |
+| [OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) sourceType | 指定音频输入流的使用场景。 |
 | bool *supported | 查询指定的source type是否支持回声消除的结果。true表示支持回声消除，false表示不支持回声消除。 |
 
 **返回：**

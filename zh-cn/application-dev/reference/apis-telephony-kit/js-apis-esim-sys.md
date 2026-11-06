@@ -6,7 +6,7 @@
 <!--Tester: @weitiantian-->
 <!--Adviser: @zhang_yixin13-->
 
-穿戴设备支持eSIM，电话服务提供API给eSIM卡管理和eSIM卡服务使用。
+穿戴设备支持eSIM，电话服务提供API给eSIM卡管理和eSIM卡服务使用，支持获取eUICC硬件的EID、执行操作系统升级、下载与删除配置文件、切换与设置配置文件、获取可下载配置文件列表及其元数据、获取eUICC和配置文件信息、恢复出厂设置等能力，适用于需要在设备上管理eSIM卡配置文件生命周期的场景。
 
 > **说明：**
 >
@@ -23,7 +23,7 @@ import { eSIM } from '@kit.TelephonyKit';
 
 getEid\(slotId: number\): Promise\<string\>
 
-获取指定卡槽标识eUICC硬件的EID(Equipment Identifier，Embedded SIM识别码)。
+获取指定卡槽标识eUICC硬件的EID（Equipment Identifier，Embedded SIM识别码）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -45,7 +45,7 @@ getEid\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID                 | 错误信息                         |
 | --------------------- | ---------------------------------- |
@@ -59,12 +59,13 @@ getEid\(slotId: number\): Promise\<string\>
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
 eSIM.getEid(1).then((eid) => {
     console.info(`the EID is:` + eid);
-}).catch((err:BusinessError<void>) => {
-    console.error(`getEid, promise: err->${JSON.stringify(err)}`)
+}).catch((err: BusinessError<void>) => {
+    console.error(`getOsuStatus, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -122,7 +123,7 @@ eSIM.getOsuStatus(1).then(() => {
 
 startOsu\(slotId: number\): Promise\<OsuStatus\>
 
-如果指定卡槽的操作系统不是最新的，则执行操作系统升级。使用Promise异步回调。
+如果指定卡槽的操作系统不是最新的，则执行操作系统升级。执行升级后，可通过getOsuStatus接口查询升级状态（如正在升级、升级成功、升级失败等）。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -172,7 +173,7 @@ eSIM.startOsu(1).then(() => {
 
 getDownloadableProfileMetadata\(slotId: number, portIndex: number, profile: DownloadableProfile, forceDisableProfile: boolean\): Promise\<GetDownloadableProfileMetadataResult\>
 
-填充可下载配置文件的元数据。使用Promise异步回调。
+根据传入的可下载配置文件信息（含激活码），向SM-DP+服务器请求并获取该配置文件的元数据（如服务提供商名称、配置文件类等）。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -185,9 +186,9 @@ getDownloadableProfileMetadata\(slotId: number, portIndex: number, profile: Down
 | 参数名 | 类型 | 必填 | 说明                                                                                                   |
 | ------ | ------ | ----- |------------------------------------------------------------------------------------------------------|
 | slotId              | number                                        | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。                                                                      |
-| portIndex           | number                                        | 是 | 插槽的端口索引。                                                                                             |
+| portIndex           | number                                        | 是 | 插槽的端口索引。<br/>- 0：端口1。<br/>- 1：端口2。                                                                                             |
 | profile             | [DownloadableProfile](./js-apis-esim.md#downloadableprofile) | 是 | 可下载的配置文件信息。                                                                                          |
-| forceDisableProfile | boolean | 是 | 是否可直接去激活配置文件。true表示切换配置文件时，如果需要去激活当前的配置文件，则可以直接操作。false表示如果需要去激活当前的配置文件，则会返回错误，并得到用户授权后再继续调用该接口，执行切换配置文件操作。 |
+| forceDisableProfile | boolean | 是 | 是否可直接去激活配置文件。true表示切换配置文件时，如果需要去激活当前的配置文件，则可以直接操作。false表示如果需要去激活当前的配置文件，则会返回RESULT_MUST_DISABLE_PROFILE结果码，需要得到用户授权后将forceDisableProfile设置为true再继续调用该接口，执行切换配置文件操作。 |
 
 **返回值：**
 
@@ -215,7 +216,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
 let profile: eSIM.DownloadableProfile = {
-  activationCode:'1',
+  activationCode: '1',
   confirmationCode:'1',
   carrierName:'test',
   accessRules:[{
@@ -249,7 +250,7 @@ getDownloadableProfiles\(slotId: number, portIndex: number, forceDisableProfile:
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ----- | ----- |
 | slotId              | number  | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| portIndex           | number  | 是 | 插槽的端口索引。 |
+| portIndex           | number  | 是 | 插槽的端口索引。<br/>- 0：端口1。<br/>- 1：端口2。 |
 | forceDisableProfile | boolean | 是 | 是否可直接去激活配置文件。true表示切换配置文件时，如果需要去激活当前的配置文件，则可以直接操作。false表示如果需要去激活当前的配置文件，则会返回错误，并得到用户授权后再继续调用该接口，执行切换配置文件操作。|
 
 **返回值：**
@@ -301,7 +302,7 @@ downloadProfile\(slotId: number, portIndex: number, profile: DownloadableProfile
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ----- | ----- |
 | slotId        | number                                            | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| portIndex     | number                                            | 是 | 插槽的端口索引。 |
+| portIndex     | number                                            | 是 | 插槽的端口索引。<br/>- 0：端口1。<br/>- 1：端口2。 |
 | profile       | [DownloadableProfile](./js-apis-esim.md#downloadableprofile)     | 是 | 可下载的配置文件信息。 |
 | configuration | [DownloadConfiguration](#downloadconfiguration) | 是 | 下载的配置信息。 |
 
@@ -331,7 +332,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
 let profile: eSIM.DownloadableProfile = {
-  activationCode:'1',
+  activationCode: '1',
   confirmationCode:'1',
   carrierName:'test',
   accessRules:[{
@@ -426,7 +427,7 @@ getEuiccInfo\(slotId: number\): Promise\<EuiccInfo\>
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[EuiccInfo](#euiccinfo)\> | Promise对象，返回eUicc信息。 |
+| Promise\<[EuiccInfo](#euiccinfo)\> | Promise对象，返回eUICC信息。 |
 
 **错误码：**
 
@@ -471,7 +472,7 @@ deleteProfile\(slotId: number, iccid: string\): Promise\<ResultCode\>
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ----- | ----- |
 | slotId | number | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| iccid  | string | 是 | 配置文件的ID。 |
+| iccid  | string | 是 | 配置文件的ID，ICCID通常为19-20位数字。 |
 
 **返回值：**
 
@@ -509,7 +510,7 @@ eSIM.deleteProfile(1, 'testId').then(() => {
 
 switchToProfile\(slotId: number, portIndex: number, iccid: string, forceDisableProfile: boolean\): Promise\<ResultCode\>
 
-切换到(启用)给定的配置文件。使用Promise异步回调。
+切换到（启用）给定的配置文件。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -522,8 +523,8 @@ switchToProfile\(slotId: number, portIndex: number, iccid: string, forceDisableP
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ----- | ----- |
 | slotId              | number  | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| portIndex           | number  | 是 | 插槽的端口索引。 |
-| iccid               | string  | 是 | 配置文件的ID。   |
+| portIndex           | number  | 是 | 插槽的端口索引。<br/>- 0：端口1。<br/>- 1：端口2。 |
+| iccid               | string  | 是 | 配置文件的ID，ICCID通常为19-20位数字。   |
 | forceDisableProfile | boolean | 是 | 是否可直接去激活配置文件。true表示切换配置文件时，如果需要去激活当前的配置文件，则可以直接操作。false表示如果需要去激活当前的配置文件，则会返回错误，并得到用户授权后再继续调用该接口，执行切换配置文件操作。|
 
 **返回值：**
@@ -575,7 +576,7 @@ setProfileNickname\(slotId: number, iccid: string, nickname: string\): Promise\<
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ----- | ----- |
 | slotId   | number | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| iccid    | string | 是 | 配置文件的ID。 |
+| iccid    | string | 是 | 配置文件的ID，ICCID通常为19-20位数字。 |
 | nickname | string | 是 | 昵称。 |
 
 **返回值：**
@@ -614,7 +615,7 @@ eSIM.setProfileNickname(1, 'testId', 'testName').then(() => {
 
 resetMemory\(slotId: number, options?: ResetOption\): Promise\<ResultCode\>
 
-清除所有特定配置文件并重置eUICC。使用Promise异步回调。
+清除所有特定配置文件并重置eUICC。与reserveProfilesForFactoryRestore不同，本接口会清除配置文件；若需恢复出厂设置并保留已有配置文件，请使用reserveProfilesForFactoryRestore。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -627,7 +628,7 @@ resetMemory\(slotId: number, options?: ResetOption\): Promise\<ResultCode\>
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ----- | ----- |
 | slotId  | number                        | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| options | [ResetOption](#resetoption) | 否 | 重置状态。 |
+| options | [ResetOption](#resetoption) | 否 | 重置状态。不传入该参数时使用缺省配置，传入对应枚举值可指定重置选项，支持按位或组合多个选项。 |
 
 **返回值：**
 
@@ -665,7 +666,7 @@ eSIM.resetMemory(1).then(() => {
 
 reserveProfilesForFactoryRestore\(slotId: number\): Promise\<ResultCode\>
 
-恢复出厂设置，并保留profiles。使用Promise异步回调。
+恢复出厂设置，并保留配置文件。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -728,7 +729,7 @@ setDefaultSmdpAddress\(slotId: number, address: string\): Promise\<ResultCode\>
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ----- | ----- |
 | slotId  | number | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| address | string | 是 | 要设置的默认SM-DP+地址。 |
+| address | string | 是 | 要设置的默认SM-DP+地址，需为合法的URL格式，如https://example.com。 |
 
 **返回值：**
 
@@ -816,7 +817,7 @@ eSIM.getDefaultSmdpAddress(1).then((data: string) => {
 
 cancelSession\(slotId: number, transactionId: string, cancelReason: CancelReason\): Promise\<ResultCode\>
 
-取消会话。使用Promise异步回调。
+取消与SM-DP+服务器之间正在进行的eSIM业务会话（如配置文件下载会话）。通过传入业务ID和取消原因，终止当前进行中的会话操作。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -829,7 +830,7 @@ cancelSession\(slotId: number, transactionId: string, cancelReason: CancelReason
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ----- | ----- |
 | slotId        | number                          | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| transactionId | string                          | 是 | 业务ID。|
+| transactionId | string                          | 是 | 要取消的会话的事务ID，由下载配置文件等操作返回。|
 | cancelReason  | [CancelReason](#cancelreason) | 是 | 取消会话的原因。|
 
 **返回值：**
@@ -868,10 +869,10 @@ eSIM.cancelSession(1, transactionId, eSIM.CancelReason.CANCEL_REASON_END_USER_RE
 ```
 
 ## eSIM.getSupportedPkids<sup>20+</sup>
- 	 
+
 getSupportedPkids\(slotId: number\): Promise\<string\>
 
-获取手机支持的公钥ID信息。
+获取手机支持的公钥ID信息，用于eSIM开通流程中的安全认证。在调用getContractInfo接口进行加密认证前，需先调用本接口获取可用的公钥ID。
 
 **系统接口：** 此接口为系统接口。
 
@@ -889,7 +890,7 @@ getSupportedPkids\(slotId: number\): Promise\<string\>
 
 | 类型                  | 说明                                |
 | --------------------- | ---------------------------------- |
-| Promise\<string\> |Promise对象，返回TLV(Tag-Length-Value)格式的，手机支持的公钥ID信息。 |
+| Promise\<string\> |Promise对象，返回手机支持的公钥ID信息，格式为TLV(Tag-Length-Value)。 |
 
 **错误码：**
 
@@ -899,6 +900,7 @@ getSupportedPkids\(slotId: number\): Promise\<string\>
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 |3120001| Service connection failed. |
 |3120002| System internal error. |
@@ -906,21 +908,21 @@ getSupportedPkids\(slotId: number\): Promise\<string\>
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-try {
-    let supportedPkids: string = await eSIM.getSupportedPkids(1);
-    console.info(`supported pkids is:` + supportedPkids);
-} catch (err) {
+eSIM.getSupportedPkids(1).then((data: string) => {
+    console.info(`supported pkids is:` + data);
+}).catch((err: BusinessError<void>) => {
     console.error(`getSupportedPkids, promise: err->${JSON.stringify(err)}`)
-}
+});
 ```
 
 ## eSIM.getContractInfo<sup>20+</sup>
 
 getContractInfo\(slotId: number, requestData: ContractRequestData\): Promise\<string\>
 
-获取开通eSIM需要的，加密的esim id等信息。
+获取开通eSIM需要的，加密的EID等信息。
 
 **系统接口：** 此接口为系统接口。
 
@@ -933,13 +935,13 @@ getContractInfo\(slotId: number, requestData: ContractRequestData\): Promise\<st
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | -------------------------------------- |
 | slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。   |
-| requestData | [ContractRequestData](./js-apis-esim-sys.md#contractrequestdata20)| 是   | 用来加密的信息。   |
+| requestData | [ContractRequestData](#contractrequestdata20)| 是   | 用来加密的信息。   |
 
 **返回值：**
 
 | 类型                  | 说明                                |
 | --------------------- | ---------------------------------- |
-| Promise\<string\> | Promise对象，返回TLV(Tag-Length-Value)格式的，加密信息。 |
+| Promise\<string\> | Promise对象，返回加密信息，格式为TLV(Tag-Length-Value)。 |
 
 **错误码：**
 
@@ -949,6 +951,7 @@ getContractInfo\(slotId: number, requestData: ContractRequestData\): Promise\<st
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 |3120001| Service connection failed. |
 |3120002| System internal error. |
@@ -956,25 +959,27 @@ getContractInfo\(slotId: number, requestData: ContractRequestData\): Promise\<st
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
-try {
-    let request: eSIM.ContractRequestData = {
-        publicKey: "",
-        nonce: "",
-        pkid: ""
-    }
-    let contractInfo: string = await eSIM.getContractInfo(1, request);
-    console.info(`contract info is:` + contractInfo);
-} catch (err) {
+
+let request: eSIM.ContractRequestData = {
+    publicKey: "",
+    nonce: "",
+    pkid: ""
+};
+
+eSIM.getContractInfo(1, request).then((data: string) => {
+    console.info(`contract info is:` + data);
+}).catch((err: BusinessError<void>) => {
     console.error(`getContractInfo, promise: err->${JSON.stringify(err)}`)
-}
+});
 ```
 
 ## eSIM.getEsimFreeStorage<sup>23+</sup>
 
 getEsimFreeStorage\(): Promise\<number>
 
-通过该接口获取eUICC硬件的剩余存储空间。使用Promise异步回调。
+获取eUICC硬件的剩余存储空间。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -990,12 +995,12 @@ getEsimFreeStorage\(): Promise\<number>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                                    |
 | ------- | --------------------------------------- |
 | 201     | Permission denied.                      |
-| 202     | Nonsystem applications use system APIs. |
+| 202     | Non-system applications use system APIs. |
 | 801     | Capability not supported.               |
 | 3120001 | Service connection failed.              |
 | 3120002 | System internal error.                  |
@@ -1076,7 +1081,7 @@ eSIM.getEsimFreeStorage().then((data) => {
 
 ## OperatorId
 
-获取eUICC芯片/设备的相关信息。
+运营商标识信息。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1105,7 +1110,7 @@ eSIM.getEsimFreeStorage().then((data) => {
 | profileName         | string                                                | 否 | 否 | 配置文件名称。   |
 | state               | [ProfileState](#profilestate)                       | 否 | 否 | 配置文件的状态。 |
 | profileClass        | [ProfileClass](#profileclass)                       | 否 | 否 | 配置文件类。     |
-| operatorId          | [OperatorId](#operatorid)                           | 否 | 否 | 配置文件的操作ID。|
+| operatorId          | [OperatorId](#operatorid)                           | 否 | 否 | 配置文件的运营商ID。|
 | policyRules         | [PolicyRules](#policyrules)                         | 否 | 否 | 配置文件策略。   |
 | accessRules         | Array\<[AccessRule](./js-apis-esim.md#accessrule20)\> | 否 | 否 | 配置文件规则。   |
 
@@ -1132,7 +1137,7 @@ euicc信息。
 | 名称 | 值 | 说明 |
 | ----- | ----- | ----- |
 |DELETE_OPERATIONAL_PROFILES       | 1      | 删除所有操作配置文件。 |
-|DELETE_FIELD_LOADED_TEST_PROFILES | 1 << 1 | 删除所有字段加载的测试配置文件。 |
+|DELETE_FIELD_LOADED_TEST_PROFILES | 1 << 1 | 删除所有现场加载的测试配置文件。 |
 |RESET_DEFAULT_SMDP_ADDRESS        | 1 << 2 | 重置默认SM-DP+地址。 |
 
 ## OsuStatus
@@ -1294,6 +1299,6 @@ euicc信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ----- | ----- |----|----| -----|
-| publicKey | string  | 否  | 否  | 公钥。 |
-| nonce           | string  | 否  | 否  | 随机数。 |
-| pkid            | string  | 否  | 否  | 选择的公钥ID。 |
+| publicKey | string  | 否  | 否  | 公钥，采用Base64编码格式。 |
+| nonce           | string  | 否  | 否  | 随机数，采用十六进制编码格式。 |
+| pkid            | string  | 否  | 否  | 选择的公钥ID，需从getSupportedPkids接口返回的值中选择。 |

@@ -24,7 +24,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 具体接口说明请参考[Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md)。
 
-在Deveco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\src\main\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下：
+在DevEco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\src\main\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下：
 
 **解码接口使用示例**
 
@@ -239,7 +239,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
    - 读取、编辑Exif信息。
 
-     <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->      
+     <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->  
      
      ``` C++
      // 获取指定property的value值。
@@ -252,10 +252,14 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
              OH_LOG_ERROR(LOG_APP, "GetImageProperty napi_get_cb_info failed!");
              return GetJsResult(env, IMAGE_BAD_PARAMETER);
          }
-         // 修改指定属性键的值。
-         char key[MAX_STRING_LENGTH];
-         size_t keySize = MAX_STRING_LENGTH;
-         napi_get_value_string_utf8(env, argValue[0], (char *)key, sizeof(key), &keySize);
+         // 获取指定属性键的值。
+         char key[MAX_STRING_LENGTH] = {0};
+         size_t keySize = 0;
+         if (napi_get_value_string_utf8(env, argValue[0], key, sizeof(key), &keySize) != napi_ok) {
+             OH_LOG_ERROR(LOG_APP, "GetImageProperty napi_get_value_string_utf8 failed!");
+             return GetJsResult(env, IMAGE_BAD_PARAMETER);
+         }
+         key[MAX_STRING_LENGTH - 1] = '\0';
          Image_String getKey;
          getKey.data = key;
          getKey.size = keySize;
@@ -291,18 +295,26 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
          }
      
          // 获取要修改的key值。
-         char key[MAX_STRING_LENGTH];
-         size_t keySize = MAX_STRING_LENGTH;
-         napi_get_value_string_utf8(env, argValue[0], (char *)key, sizeof(key), &keySize);
+         char key[MAX_STRING_LENGTH] = {0};
+         size_t keySize = 0;
+         if (napi_get_value_string_utf8(env, argValue[0], key, sizeof(key), &keySize) != napi_ok) {
+             OH_LOG_ERROR(LOG_APP, "ModifyImageProperty key napi_get_value_string_utf8 failed!");
+             return GetJsResult(env, IMAGE_BAD_PARAMETER);
+         }
+         key[MAX_STRING_LENGTH - 1] = '\0';
          Image_String setKey;
          setKey.data = key;
          setKey.size = keySize;
          OH_LOG_INFO(LOG_APP, "ModifyImageProperty key: %{public}s.", setKey.data);
          
          // 获取要修改的value值。
-         char value[MAX_STRING_LENGTH];
-         size_t valueSize;
-         napi_get_value_string_utf8(env, argValue[1], (char *)value, MAX_STRING_LENGTH, &valueSize);
+         char value[MAX_STRING_LENGTH] = {0};
+         size_t valueSize = 0;
+         if (napi_get_value_string_utf8(env, argValue[1], value, sizeof(value), &valueSize) != napi_ok) {
+             OH_LOG_ERROR(LOG_APP, "ModifyImageProperty value napi_get_value_string_utf8 failed!");
+             return GetJsResult(env, IMAGE_BAD_PARAMETER);
+         }
+         value[MAX_STRING_LENGTH - 1] = '\0';
          Image_String setValue;
          setValue.data = value;
          setValue.size = valueSize;

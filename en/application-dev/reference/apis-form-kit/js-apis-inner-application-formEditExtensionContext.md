@@ -5,8 +5,9 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=0a69da7248a59d4829a14a1af4950f2af884dd3a translatedAt=2026-11-03T06:59:30.723Z pushedAt=2026-11-04T03:11:19.944Z nl=1 -->
 
-**FormEditExtensionContext**, inherited from [UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md), is the context of [FormEditExtensionAbility](./js-apis-app-form-formEditExtensionAbility.md).
+FormEditExtensionContext is the context of [FormEditExtensionAbility](./js-apis-app-form-formEditExtensionAbility.md), and inherits from [UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md). It is used to manage the context environment in widget editing scenarios, supporting the launch of widget provider pages and the owning app's UIAbility. It is applicable to scenarios where interaction with the widget provider is required during the widget editing process.
 
 > **NOTE**
 >
@@ -18,14 +19,20 @@
 ```ts
 import { FormEditExtensionAbility } from '@kit.FormKit';
 ```
+
 ## FormEditExtensionContext
-You can use **FormEditExtensionContext** to access specific **FormEditExtensionAbility** resources.
+
+Provides access to resources specific to FormEditExtensionAbility.
 
 ### startSecondPage
 
-startSecondPage(want: Want): Promise<[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)>
+startSecondPage(want: Want): Promise&lt;AbilityResult&gt;
 
 Starts the widget provider page to be edited. This API uses a promise to return the result.
+
+**Use cases**
+- When a user taps the edit button on the widget editing page, the widget provider's editing page needs to be opened.
+- When a user needs to modify widget configuration or content, the widget provider app needs to be launched for editing.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -33,19 +40,19 @@ Starts the widget provider page to be edited. This API uses a promise to return 
 
 **Parameters**
 
-  | Name| Type   | Mandatory| Description                                  |
-  | ------ | ------ | ---- | ------------------------------------- |
-  | want  |  [Want](../apis-ability-kit/js-apis-app-ability-want.md)  | Yes  | Information about the editing page that needs to be started by the home screen of a third-party application.|
+| Name| Type   | Mandatory| Description                                  |
+| ------ | ------ | ---- | ------------------------------------- |
+| want  |  [Want](../apis-ability-kit/js-apis-app-ability-want.md)  | Yes   | Information about the editing page to start. The bundleName field is mandatory, and parameters must contain secPageAbilityName.|
 
-**Return value**
+ **Return value**
 
-  | Type| Description   |
-  | ------ | ------ |
-  | Promise<[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)>  |  Promise used to return the ability result. |
+| Type| Description   |
+| ------ | ------ |
+| Promise&lt;[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)&gt;  |  Promise used to return the result code and data when the started party exits.  |
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -88,7 +95,7 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
 
 startUIAbility(want: Want): Promise&lt;void&gt;
 
-Starts UIAbility of the application to which a widget belongs. This API uses a promise to return the result.
+Launches the UIAbility of the application to which the widget belongs. This API uses a promise to return the result. Note: This API must be called when the widget editing page is in the foreground. Otherwise, error code 16501014 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -96,19 +103,19 @@ Starts UIAbility of the application to which a widget belongs. This API uses a p
 
 **Parameters**
 
-  | Name| Type   | Mandatory| Description                                  |
-  | ------ | ------ | ---- | ------------------------------------- |
-  | want  |  [Want](../apis-ability-kit/js-apis-app-ability-want.md#want)  | Yes  | Want information of the UIAbility of the application.|
+| Name| Type   | Mandatory| Description                                  |
+| ------ | ------ | ---- | ------------------------------------- |
+| want  |  [Want](../apis-ability-kit/js-apis-app-ability-want.md#want)  | Yes   | Want information used to specify the UIAbility to start. The abilityName field must be included.|
 
 **Return value**
 
-  | Type| Description   |
-  | ------ | ------ |
-  | Promise&lt;void&gt;   |  Promise that returns no value. |
+| Type| Description   |
+| ------ | ------ |
+| Promise&lt;void&gt;   |  Promise that returns no value.  |
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md) and [Ability Error Codes](../apis-ability-kit/errorcode-ability.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -139,6 +146,64 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
     } catch (e) {
       console.error(TAG, `startUIAbility failed, code: ${e.code}, message: ${e.message}`);
       return
+    }
+  }
+}
+```
+
+### setWindowBackgroundColor
+
+setWindowBackgroundColor(color: string): Promise&lt;void&gt;
+
+Sets the background color of the form editing page. This API uses a promise to return the result.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Ability.Form
+
+**Parameters**
+
+| Name | Type    | Mandatory | Description                                   |
+| ------ | ------ | ---- | ------------------------------------- |
+| color  | string | Yes  | Background color to set. The value is a hexadecimal RGB or ARGB color code, case-insensitive, for example, `#00FF00` or `#FF00FF00`. |
+
+**Return value**
+
+| Type | Description    |
+| ------ | ------ |
+| Promise&lt;void&gt;   |  Promise that returns no value.  |
+
+**Error codes**
+
+For details about the error codes, see [Form Error Codes](errorcode-form.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 16500050 | An IPC connection error happened.                            |
+| 16501026 | Invalid color value.                           |
+
+**Example**
+
+```ts
+import { FormEditExtensionAbility } from '@kit.FormKit';
+import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
+
+const TAG: string = '[testTag] ExampleFormEditExtensionAbility'
+
+export default class ExampleFormEditAbility extends FormEditExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    try {
+      this.context.setWindowBackgroundColor("#00FFFFFF")
+        .then(() => {
+          console.info('Background color set successfully');
+        })
+        .catch((e) => {
+          console.error(`Failed to set background color: ${e.code} ${e.message}`);
+        })
+    } catch (e) {
+      console.error(`${TAG} Failed to set background color:, Code: ${e.code}, Message: ${e.message}`);
     }
   }
 }

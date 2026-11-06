@@ -3,10 +3,11 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=3a7b8d1fce741c2abccde7cccac39375139c4568 translatedAt=2026-09-03T11:11:10.553Z pushedAt=2026-09-05T10:47:30.567Z -->
 
-The module provides APIs for obtaining information about an application, including [bundle information](js-apis-bundle-BundleInfo.md), [application information](js-apis-bundle-ApplicationInfo.md), and [ability information](js-apis-bundle-AbilityInfo.md). It also provides APIs to obtain and set the application disabling state.
+This module provides the application information query capability, including the query of [BundleInfo](js-apis-bundle-BundleInfo.md), [ApplicationInfo](js-apis-bundle-ApplicationInfo.md), [AbilityInfo](js-apis-bundle-AbilityInfo.md), and other information, as well as the query and setting of the application disabled state.
 
 > **NOTE**
 >
@@ -31,15 +32,15 @@ For details about the APL, see [Basic Concepts in the Permission Mechanism](../.
 
 ## bundle.getApplicationInfo<sup>deprecated<sup>
 
-> **NOTE**
->
-> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo-2) instead.<!--DelEnd-->
-
 getApplicationInfo(bundleName: string, bundleFlags: number, userId?: number): Promise\<ApplicationInfo>
 
 Obtains the application information based on a given bundle name. This API uses a promise to return the result.
 
 No permission is required for obtaining the caller's own information.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. Its substitute APIs are open only to system applications.<!--Del-->You are advised to use [getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo-2) instead.<!--DelEnd-->
 
 **Required permissions**
 
@@ -54,7 +55,7 @@ SystemCapability.BundleManager.BundleFramework
 | Name     | Type  | Mandatory| Description                                                        |
 | ----------- | ------ | ---- | ------------------------------------------------------------ |
 | bundleName  | string | Yes  | Bundle name.                                    |
-| bundleFlags | number | Yes  | Type of information that will be returned. For details about the available enumerated values, see the application information flags in [BundleFlag](#bundleflagdeprecated).|
+| bundleFlags | number | Yes | Flag used to specify the information contained in the returned application information object. For the value range, see the application information related flags in [BundleFlag](#bundleflagdeprecated). |
 | userId      | number | No  | User ID. The default value is the user ID of the caller. The value must be greater than or equal to 0.       |
 
 **Return value**
@@ -83,15 +84,15 @@ bundle.getApplicationInfo(bundleName, bundleFlags, userId)
 
 ## bundle.getApplicationInfo<sup>deprecated<sup>
 
-> **NOTE**
->
-> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo) instead.<!--DelEnd-->
-
 getApplicationInfo(bundleName: string, bundleFlags: number, userId: number, callback: AsyncCallback\<ApplicationInfo>): void
 
 Obtains the application information of the specified user based on a given bundle name. This API uses an asynchronous callback to return the result.
 
 No permission is required for obtaining the caller's own information.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. Its substitute APIs are open only to system applications.<!--Del-->You are advised to use [getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo) instead.<!--DelEnd-->
 
 **Required permissions**
 
@@ -106,7 +107,7 @@ SystemCapability.BundleManager.BundleFramework
 | Name     | Type                                                        | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | bundleName  | string                                                       | Yes  | Bundle name.                                    |
-| bundleFlags | number                                                       | Yes  | Type of information that will be returned. For details about the available enumerated values, see the application information flags in [BundleFlag](#bundleflagdeprecated).|
+| bundleFlags | number | Yes | Flag used to specify the information contained in the returned application information object. Value range: see the application information related flags in [BundleFlag](#bundleflagdeprecated). |
 | userId      | number                                                       | Yes  | User ID. The value must be greater than or equal to 0.                               |
 | callback    | AsyncCallback\<[ApplicationInfo](js-apis-bundle-ApplicationInfo.md)> | Yes  | Callback used to return the application information.              |
 
@@ -130,16 +131,15 @@ bundle.getApplicationInfo(bundleName, bundleFlags, userId, (err, data) => {
 
 ## bundle.getApplicationInfo<sup>deprecated<sup>
 
-> **NOTE**
->
-> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo-1) instead.<!--DelEnd-->
-
-
 getApplicationInfo(bundleName: string, bundleFlags: number, callback: AsyncCallback\<ApplicationInfo>): void
 
 Obtains the application information based on a given bundle name. This API uses an asynchronous callback to return the result.
 
 No permission is required for obtaining the caller's own information.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. Its substitute APIs are open only to system applications.<!--Del-->You are advised to use [getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo-1) instead.<!--DelEnd-->
 
 **Required permissions**
 
@@ -154,7 +154,7 @@ SystemCapability.BundleManager.BundleFramework
 | Name     | Type                                                        | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | bundleName  | string                                                       | Yes  | Bundle name.                                    |
-| bundleFlags | number                                                       | Yes  | Type of information that will be returned. For details about the available enumerated values, see the application information flags in [BundleFlag](#bundleflagdeprecated).|
+| bundleFlags | number | Yes | Flag used to specify the information contained in the returned application information object. Value range: see the application information related flags in [BundleFlag](#bundleflagdeprecated). |
 | callback    | AsyncCallback\<[ApplicationInfo](js-apis-bundle-ApplicationInfo.md)> | Yes  | Callback used to return the application information.              |
 
 **Example**
@@ -177,13 +177,13 @@ bundle.getApplicationInfo(bundleName, bundleFlags, (err, data) => {
 
 ## bundle.getAllBundleInfo<sup>deprecated<sup>
 
-> **NOTE**
->
-> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo-2) instead.<!--DelEnd-->
-
 getAllBundleInfo(bundleFlag: BundleFlag, userId?: number): Promise\<Array\<BundleInfo\>\>
 
 Obtains the information of all bundles of the specified user. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. Its substitute APIs are open only to system applications.<!--Del-->You are advised to use [getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo-2) instead.<!--DelEnd-->
 
 **Required permissions**
 
@@ -197,7 +197,7 @@ SystemCapability.BundleManager.BundleFramework
 
 | Name    | Type      | Mandatory| Description                                                        |
 | ---------- | ---------- | ---- | ------------------------------------------------------------ |
-| bundleFlag | BundleFlag | Yes  | Type of information that will be returned. For details about the available enumerated values, see the bundle information flags in [BundleFlag](#bundleflagdeprecated).|
+| bundleFlag | BundleFlag | Yes | Flag used to specify the information contained in the returned bundle information object. The value range: see the bundle information related flags in [BundleFlag](#bundleflagdeprecated). |
 | userId     | number     | No  | User ID. The default value is the user ID of the caller. The value must be greater than or equal to 0.       |
 
 **Return value**
@@ -225,14 +225,13 @@ bundle.getAllBundleInfo(bundleFlag, userId)
 
 ## bundle.getAllBundleInfo<sup>deprecated<sup>
 
-> **NOTE**
->
-> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo-1) instead.<!--DelEnd-->
-
-
 getAllBundleInfo(bundleFlag: BundleFlag, callback: AsyncCallback\<Array\<BundleInfo\>\>): void
 
 Obtains the information of all bundles of the current user. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. Its substitute APIs are open only to system applications.<!--Del-->You are advised to use [getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo-1) instead.<!--DelEnd-->
 
 **Required permissions**
 
@@ -246,7 +245,7 @@ SystemCapability.BundleManager.BundleFramework
 
 | Name    | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| bundleFlag | BundleFlag                                                   | Yes  | Type of information that will be returned. For details about the available enumerated values, see the bundle information flags in [BundleFlag](#bundleflagdeprecated).|
+| bundleFlag | BundleFlag | Yes | Flag used to specify the information contained in the returned application information object. Value range: see the bundle information-related flags in [BundleFlag](#bundleflagdeprecated). |
 | callback   | AsyncCallback<Array\<[BundleInfo](js-apis-bundle-BundleInfo.md)>> | Yes  | Callback used to return the information of all bundles.      |
 
 **Example**
@@ -267,14 +266,13 @@ bundle.getAllBundleInfo(bundleFlag, (err, data) => {
 
 ## bundle.getAllBundleInfo<sup>deprecated<sup>
 
-> **NOTE**
->
-> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo) instead.<!--DelEnd-->
-
-
 getAllBundleInfo(bundleFlag: BundleFlag, userId: number, callback: AsyncCallback\<Array\<BundleInfo\>\>): void
 
 Obtains the information of all bundles of the specified user. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. Its substitute APIs are open only to system applications.<!--Del-->You are advised to use [getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo) instead.<!--DelEnd-->
 
 **Required permissions**
 
@@ -288,7 +286,7 @@ SystemCapability.BundleManager.BundleFramework
 
 | Name       | Type                                                               | Mandatory | Description                                                                 |
 |------------|-------------------------------------------------------------------|-----|---------------------------------------------------------------------|
-| bundleFlag | BundleFlag                                                        | Yes  | Type of information that will be returned. For details about the available enumerated values, see the bundle information flags in [BundleFlag](#bundleflagdeprecated).|
+| bundleFlag | BundleFlag | Yes | Flag used to specify the information contained in the returned application information object. Value range: see the bundle information related flags in [BundleFlag](#bundleflagdeprecated). |
 | userId     | number                                                            | Yes  | User ID. The default value is the user ID of the caller. The value must be greater than or equal to 0.                          |
 | callback   | AsyncCallback<Array\<[BundleInfo](js-apis-bundle-BundleInfo.md)>> | Yes  | Callback used to return the information of all bundles.                 |
 
@@ -311,16 +309,15 @@ bundle.getAllBundleInfo(bundleFlag, userId, (err, data) => {
 
 ## bundle.getBundleInfo<sup>deprecated<sup>
 
-> **NOTE**
->
-> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2) instead.
-
-
 getBundleInfo(bundleName: string, bundleFlags: number, options?: BundleOptions): Promise\<BundleInfo>
 
 Obtains the bundle information based on a given bundle name. This API uses a promise to return the result.
 
 No permission is required for obtaining the caller's own information.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2) instead.
 
 **Required permissions**
 
@@ -335,8 +332,8 @@ SystemCapability.BundleManager.BundleFramework
 | Name        | Type           | Mandatory  | Description                                                                 |
 | ----------- | ------------- | ---- |---------------------------------------------------------------------|
 | bundleName  | string        | Yes   | Bundle name.                                                |
-| bundleFlags | number        | Yes   | Type of information that will be returned. For details about the available enumerated values, see the bundle information flags in [BundleFlag](#bundleflagdeprecated).|
-| options     | [BundleOptions](#bundleoptionsdeprecated) | No   | Options that contain the user ID.                                                     |
+| bundleFlags | number        | Yes    | Flag used to specify the information contained in the returned application information object. Value range: see the bundle information flags in [BundleFlag](#bundleflagdeprecated). |
+| options     | [BundleOptions](#bundleoptionsdeprecated) | No    | Query options containing the userId.                                                      |
 
 **Return value**
 
@@ -366,15 +363,15 @@ bundle.getBundleInfo(bundleName, bundleFlags, options)
 
 ## bundle.getBundleInfo<sup>deprecated<sup>
 
-> **NOTE**
->
-> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14-1) instead.
-
 getBundleInfo(bundleName: string, bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
 
 Obtains the bundle information based on a given bundle name. This API uses an asynchronous callback to return the result.
 
 No permission is required for obtaining the caller's own information.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14-1) instead.
 
 **Required permissions**
 
@@ -389,7 +386,7 @@ SystemCapability.BundleManager.BundleFramework
 | Name     | Type                                                      | Mandatory| Description                                                        |
 | ----------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | bundleName  | string                                                     | Yes  | Bundle name.                                  |
-| bundleFlags | number                                                     | Yes  | Type of information that will be returned. For details about the available enumerated values, see the bundle information flags in [BundleFlag](#bundleflagdeprecated).|
+| bundleFlags | number | Yes | Flag used to specify the information contained in the returned application information object. Value range: see the bundle information flags in [BundleFlag](#bundleflagdeprecated). |
 | callback    | AsyncCallback\<[BundleInfo](js-apis-bundle-BundleInfo.md)> | Yes  | Callback used to return the bundle information.                    |
 
 **Example**
@@ -411,15 +408,15 @@ bundle.getBundleInfo(bundleName, bundleFlags, (err, data) => {
 
 ## bundle.getBundleInfo<sup>deprecated<sup>
 
-> **NOTE**
->
-> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14) instead.
-
 getBundleInfo(bundleName: string, bundleFlags: number, options: BundleOptions, callback: AsyncCallback\<BundleInfo>): void
 
 Obtains the bundle information based on a given bundle name and bundle options. This API uses an asynchronous callback to return the result.
 
 No permission is required for obtaining the caller's own information.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14) instead.
 
 **Required permissions**
 
@@ -434,8 +431,8 @@ SystemCapability.BundleManager.BundleFramework
 | Name     | Type                                                      | Mandatory| Description                                                        |
 | ----------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | bundleName  | string                                                     | Yes  | Bundle name.                                    |
-| bundleFlags | number                                                     | Yes  | Type of information that will be returned. For details about the available enumerated values, see the bundle information flags in [BundleFlag](#bundleflagdeprecated).|
-| options     | [BundleOptions](#bundleoptionsdeprecated)                            | Yes  | Includes **userId**.                                                |
+| bundleFlags | number                                                     | Yes  | Flag used to specify the information contained in the returned application information object. Value range: see the bundle information flags in [BundleFlag](#bundleflagdeprecated). |
+| options     | [BundleOptions](#bundleoptionsdeprecated)                            | Yes  | Contains the userId.                                                 |
 | callback    | AsyncCallback\<[BundleInfo](js-apis-bundle-BundleInfo.md)> | Yes  | Callback used to return the bundle information.                    |
 
 **Example**
@@ -460,13 +457,13 @@ bundle.getBundleInfo(bundleName, bundleFlags, options, (err, data) => {
 
 ## bundle.getAllApplicationInfo<sup>deprecated<sup>
 
-> **NOTE**
->
-> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo-2) instead.<!--DelEnd-->
-
 getAllApplicationInfo(bundleFlags: number, userId?: number): Promise\<Array\<ApplicationInfo\>\>
 
-Obtains the information about all applications of the specified user. This API uses a promise to return the result.
+Obtains the information about all installed applications of the specified user. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo-2) instead. <!--DelEnd-->
 
 **Required permissions**
 
@@ -480,7 +477,7 @@ SystemCapability.BundleManager.BundleFramework
 
 | Name     | Type  | Mandatory| Description                                                        |
 | ----------- | ------ | ---- | ------------------------------------------------------------ |
-| bundleFlags | number | Yes  | Type of information that will be returned. For details about the available enumerated values, see the application information flags in [BundleFlag](#bundleflagdeprecated).|
+| bundleFlags | number | Yes | Flag used to specify the information contained in the returned application information object. Value range: see the application information related flags in [BundleFlag](#bundleflagdeprecated). |
 | userId      | number | No  | User ID. The default value is the user ID of the caller. The value must be greater than or equal to 0.       |
 
 **Return value**
@@ -508,13 +505,13 @@ bundle.getAllApplicationInfo(bundleFlags, userId)
 
 ## bundle.getAllApplicationInfo<sup>deprecated<sup>
 
-> **NOTE**
->
-> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo) instead.<!--DelEnd-->
-
 getAllApplicationInfo(bundleFlags: number, userId: number, callback: AsyncCallback\<Array\<ApplicationInfo\>\>): void
 
 Obtains the information about all applications. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo) instead. <!--DelEnd-->
 
 **Required permissions**
 
@@ -528,7 +525,7 @@ SystemCapability.BundleManager.BundleFramework
 
 | Name     | Type                                                        | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| bundleFlags | number                                                       | Yes  | Type of information that will be returned. For details about the available enumerated values, see the application information flags in [BundleFlag](#bundleflagdeprecated).|
+| bundleFlags | number                                                       | Yes   | Flag used to specify the information contained in the returned application information object. The value range is based on the application information related flags in [BundleFlag](#bundleflagdeprecated). |
 | userId      | number                                                       | Yes  | User ID. The default value is the user ID of the caller. The value must be greater than or equal to 0.       |
 | callback    | AsyncCallback<Array\<[ApplicationInfo](js-apis-bundle-ApplicationInfo.md)>> | Yes  | Callback used to return the application information.              |
 
@@ -552,13 +549,13 @@ bundle.getAllApplicationInfo(bundleFlags, userId, (err, data) => {
 
 ## bundle.getAllApplicationInfo<sup>deprecated<sup>
 
-> **NOTE**
->
-> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo-1) instead.<!--DelEnd-->
-
 getAllApplicationInfo(bundleFlags: number, callback: AsyncCallback\<Array\<ApplicationInfo\>\>): void
 
 Obtains the information about all applications of the current user. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo-1) instead. <!--DelEnd-->
 
 **Required permissions**
 
@@ -572,7 +569,7 @@ SystemCapability.BundleManager.BundleFramework
 
 | Name     | Type                                                        | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| bundleFlags | number                                                       | Yes  | Type of information that will be returned. For details about the available enumerated values, see the application information flags in [BundleFlag](#bundleflagdeprecated).|
+| bundleFlags | number | Yes | Flag used to specify the information contained in the returned application information object. Value range: see the application information related flags in [BundleFlag](#bundleflagdeprecated). |
 | callback    | AsyncCallback<Array\<[ApplicationInfo](js-apis-bundle-ApplicationInfo.md)>> | Yes  | Callback used to return the application information.              |
 
 **Example**
@@ -593,13 +590,13 @@ bundle.getAllApplicationInfo(bundleFlags, (err, data) => {
 
 ## bundle.getBundleArchiveInfo<sup>deprecated<sup>
 
-> **NOTE**
->
-> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getBundleArchiveInfo](js-apis-bundleManager-sys.md#bundlemanagergetbundlearchiveinfo-1) instead.<!--DelEnd-->
-
 getBundleArchiveInfo(hapFilePath: string, bundleFlags: number) : Promise\<BundleInfo>
 
 Obtains information about the bundles contained in a HAP file. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getBundleArchiveInfo](js-apis-bundleManager-sys.md#bundlemanagergetbundlearchiveinfo-1) instead. <!--DelEnd-->
 
 **System capability**
 
@@ -610,7 +607,7 @@ SystemCapability.BundleManager.BundleFramework
 | Name       | Type    | Mandatory  | Description          |
 | ---------- | ------ | ---- | ------------ |
 | hapFilePath | string | Yes   | Path where the HAP file is stored. The absolute path of the application and the data directory sandbox path are supported.|
-| bundleFlags | number | Yes   | Flags used to specify information contained in the BundleInfo object that will be returned. For details about the available enumerated values, see the bundle information flags in [BundleFlag](#bundleflagdeprecated).|
+| bundleFlags | number | Yes | Flag used to specify the information contained in the returned BundleInfo object. Value range: see the bundle information flags in [BundleFlag](#bundleflagdeprecated). |
 
 **Return value**
 | Type                                                | Description                                                        |
@@ -636,13 +633,13 @@ bundle.getBundleArchiveInfo(hapFilePath, bundleFlags)
 
 ## bundle.getBundleArchiveInfo<sup>deprecated<sup>
 
-> **NOTE**
->
-> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getBundleArchiveInfo](js-apis-bundleManager-sys.md#bundlemanagergetbundlearchiveinfo) instead.<!--DelEnd-->
-
 getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback: AsyncCallback\<BundleInfo>) : void
 
 Obtains information about the bundles contained in a HAP file. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getBundleArchiveInfo](js-apis-bundleManager-sys.md#bundlemanagergetbundlearchiveinfo) instead. <!--DelEnd-->
 
 **System capability**
 
@@ -653,7 +650,7 @@ SystemCapability.BundleManager.BundleFramework
 | Name       | Type    | Mandatory  | Description          |
 | ---------- | ------ | ---- | ------------ |
 | hapFilePath | string | Yes   | Path where the HAP file is stored. The absolute path of the application and the data directory sandbox path are supported.|
-| bundleFlags | number | Yes   | Flags used to specify information contained in the BundleInfo object that will be returned. For details about the available enumerated values, see the bundle information flags in [BundleFlag](#bundleflagdeprecated).|
+| bundleFlags | number | Yes | Flag used to specify the information contained in the returned BundleInfo object. Value range: see the bundle information flags in [BundleFlag](#bundleflagdeprecated). |
 | callback| AsyncCallback\<[BundleInfo](js-apis-bundle-BundleInfo.md)> | Yes   | Callback used to return the information about the bundles.|
 
 **Example**
@@ -675,15 +672,15 @@ bundle.getBundleArchiveInfo(hapFilePath, bundleFlags, (err, data) => {
 
 ## bundle.getAbilityInfo<sup>deprecated<sup>
 
-> **NOTE**
->
-> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo-2) instead.<!--DelEnd-->
-
 getAbilityInfo(bundleName: string, abilityName: string): Promise\<AbilityInfo>
 
 Obtains the ability information based on a given bundle name and ability name. This API uses a promise to return the result.
 
 No permission is required for obtaining the caller's own information.
+
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo-2) instead. <!--DelEnd-->
 
 **Required permissions**
 
@@ -725,15 +722,15 @@ bundle.getAbilityInfo(bundleName, abilityName)
 
 ## bundle.getAbilityInfo<sup>deprecated<sup>
 
-> **NOTE**
->
-> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo) instead.<!--DelEnd-->
-
 getAbilityInfo(bundleName: string, abilityName: string, callback: AsyncCallback\<AbilityInfo>): void
 
 Obtains the ability information based on a given bundle name and ability name. This API uses an asynchronous callback to return the result.
 
 No permission is required for obtaining the caller's own information.
+
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo) instead. <!--DelEnd-->
 
 **Required permissions**
 
@@ -768,17 +765,17 @@ bundle.getAbilityInfo(bundleName, abilityName, (err, data) => {
 })
 ```
 
-## bundle.getAbilityLabel<sup>8+</sup> <sup>deprecated<sup>
-
-> **NOTE**
->
-> This API has been supported since API version 8 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getAbilityLabel](js-apis-bundleManager-sys.md#bundlemanagergetabilitylabel-1) instead.<!--DelEnd-->
+## bundle.getAbilityLabel<sup>deprecated<sup>
 
 getAbilityLabel(bundleName: string, abilityName: string): Promise\<string>
 
 Obtains the application name based on a given bundle name and ability name. This API uses a promise to return the result.
 
 No permission is required for obtaining the caller's own information.
+
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getAbilityLabel](js-apis-bundleManager-sys.md#bundlemanagergetabilitylabel-1) instead. <!--DelEnd-->
 
 **Required permissions**
 
@@ -818,17 +815,17 @@ bundle.getAbilityLabel(bundleName, abilityName)
   })
 ```
 
-## bundle.getAbilityLabel<sup>8+</sup> <sup>deprecated<sup>
-
-> **NOTE**
->
-> This API has been supported since API version 8 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getAbilityLabel](js-apis-bundleManager-sys.md#bundlemanagergetabilitylabel) instead.<!--DelEnd-->
+## bundle.getAbilityLabel<sup>deprecated<sup>
 
 getAbilityLabel(bundleName: string, abilityName: string, callback : AsyncCallback\<string>): void
 
 Obtains the application name based on a given bundle name and ability name. This API uses an asynchronous callback to return the result.
 
 No permission is required for obtaining the caller's own information.
+
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getAbilityLabel](js-apis-bundleManager-sys.md#bundlemanagergetabilitylabel) instead. <!--DelEnd-->
 
 **Required permissions**
 
@@ -863,15 +860,15 @@ bundle.getAbilityLabel(bundleName, abilityName, (err, data) => {
 })
 ```
 
-## bundle.isAbilityEnabled<sup>8+</sup> <sup>deprecated<sup>
-
-> **NOTE**
->
-> This API has been supported since API version 8 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [isAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagerisabilityenabled-1) instead.<!--DelEnd-->
+## bundle.isAbilityEnabled<sup>deprecated<sup>
 
 isAbilityEnabled(info: AbilityInfo): Promise\<boolean>
 
 Checks whether the ability that matches a given AbilityInfo object is enabled. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [isAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagerisabilityenabled-1) instead.<!--DelEnd-->
 
 **System capability**
 
@@ -907,15 +904,15 @@ bundle.getAbilityInfo(bundleName, abilityName).then((abilityInfo) => {
 })
 ```
 
-## bundle.isAbilityEnabled<sup>8+</sup> <sup>deprecated<sup>
-
-> **NOTE**
->
-> This API has been supported since API version 8 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [isAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagerisabilityenabled) instead.<!--DelEnd-->
+## bundle.isAbilityEnabled<sup>deprecated<sup>
 
 isAbilityEnabled(info : AbilityInfo, callback : AsyncCallback\<boolean>): void
 
 Checks whether the ability that matches a given AbilityInfo object is enabled. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [isAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagerisabilityenabled) instead.<!--DelEnd-->
 
 **System capability**
 
@@ -947,15 +944,15 @@ bundle.getAbilityInfo(bundleName, abilityName).then((abilityInfo) => {
 })
 ```
 
-## bundle.isApplicationEnabled<sup>8+</sup> <sup>deprecated<sup>
-
-> **NOTE**
->
-> This API has been supported since API version 8 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [isApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagerisapplicationenabled-1) instead.<!--DelEnd-->
+## bundle.isApplicationEnabled<sup>deprecated<sup>
 
 isApplicationEnabled(bundleName: string): Promise\<boolean>
 
 Checks whether an application is enabled based on a given bundle name. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [isApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagerisapplicationenabled-1) instead.<!--DelEnd-->
 
 **System capability**
 
@@ -989,15 +986,15 @@ bundle.isApplicationEnabled(bundleName)
   })
 ```
 
-## bundle.isApplicationEnabled<sup>8+</sup> <sup>deprecated<sup>
-
-> **NOTE**
->
-> This API has been supported since API version 8 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [isApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagerisapplicationenabled) instead.<!--DelEnd-->
+## bundle.isApplicationEnabled<sup>deprecated<sup>
 
 isApplicationEnabled(bundleName: string, callback : AsyncCallback\<boolean>): void
 
 Checks whether an application is enabled based on a given bundle name. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [isApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagerisapplicationenabled) instead. <!--DelEnd-->
 
 **System capability**
 
@@ -1028,15 +1025,15 @@ bundle.isApplicationEnabled(bundleName, (err, data) => {
 
 ## bundle.queryAbilityByWant<sup>deprecated<sup>
 
-> **NOTE**
->
-> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo12) instead.<!--DelEnd-->
-
 queryAbilityByWant(want: Want, bundleFlags: number, userId?: number): Promise\<Array\<AbilityInfo\>\>
 
 Obtains the ability information based on given Want. This API uses a promise to return the result.
 
 No permission is required for obtaining the caller's own information.
+
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo12) instead. <!--DelEnd-->
 
 **Required permissions**
 
@@ -1051,7 +1048,7 @@ SystemCapability.BundleManager.BundleFramework
 | Name        | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | ------------------------------------- |
 | want        | [Want](js-apis-application-want.md)   | Yes   | Want containing the bundle name.                 |
-| bundleFlags | number | Yes   | Ability information to be returned. For details about the available enumerated values, see the ability information flags in [BundleFlag](#bundleflagdeprecated).|
+| bundleFlags | number | Yes | Used to specify the AbilityInfo information to return. Value range: see the flags related to Ability information in [BundleFlag](#bundleflagdeprecated). |
 | userId      | number | No   | User ID. The default value is the user ID of the caller. The value must be greater than or equal to 0.          |
 
 **Return value**
@@ -1086,15 +1083,15 @@ bundle.queryAbilityByWant(want, bundleFlags, userId)
 
 ## bundle.queryAbilityByWant<sup>deprecated<sup>
 
-> **NOTE**
->
-> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo12) instead.<!--DelEnd-->
-
 queryAbilityByWant(want: Want, bundleFlags: number, userId: number, callback: AsyncCallback\<Array\<AbilityInfo\>\>): void
 
 Obtains the ability information of the specified user based on given Want. This API uses an asynchronous callback to return the result.
 
 No permission is required for obtaining the caller's own information.
+
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo12) instead. <!--DelEnd-->
 
 **Required permissions**
 
@@ -1109,7 +1106,7 @@ SystemCapability.BundleManager.BundleFramework
 | Name     | Type                                                        | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | want        | [Want](js-apis-application-want.md)                          | Yes  | Want containing the bundle name.                      |
-| bundleFlags | number                                                       | Yes  | Ability information to be returned. For details about the available enumerated values, see the ability information flags in [BundleFlag](#bundleflagdeprecated).|
+| bundleFlags | number | Yes | Used to specify the returned AbilityInfo. The value range is based on the Ability-related flags in [BundleFlag](#bundleflagdeprecated). |
 | userId      | number                                                       | Yes  | User ID. The value must be greater than or equal to 0.                               |
 | callback    | AsyncCallback<Array\<[AbilityInfo](js-apis-bundle-AbilityInfo.md)>> | Yes  | Callback used to return the ability information.               |
 
@@ -1137,15 +1134,15 @@ bundle.queryAbilityByWant(want, bundleFlags, userId, (err, data) => {
 
 ## bundle.queryAbilityByWant<sup>deprecated<sup>
 
-> **NOTE**
->
-> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo12) instead.<!--DelEnd-->
-
 queryAbilityByWant(want: Want, bundleFlags: number, callback: AsyncCallback\<Array\<AbilityInfo\>\>): void
 
 Obtains the ability information based on given Want. This API uses an asynchronous callback to return the result.
 
 No permission is required for obtaining the caller's own information.
+
+> **NOTE**
+>
+> Supported since API version 7 and deprecated since API version 9. The substitute API is open only to system applications.<!--Del-->You are advised to use [queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo12) instead.<!--DelEnd-->
 
 **Required permissions**
 
@@ -1160,7 +1157,7 @@ SystemCapability.BundleManager.BundleFramework
 | Name     | Type                                                        | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | want        | [Want](js-apis-application-want.md)                          | Yes  | Want containing the bundle name.                      |
-| bundleFlags | number                                                       | Yes  | Ability information to be returned. For details about the available enumerated values, see the ability information flags in [BundleFlag](#bundleflagdeprecated).|
+| bundleFlags | number | Yes | Flag used to specify the returned AbilityInfo. The value range is based on the Ability-related flags in [BundleFlag](#bundleflagdeprecated). |
 | callback    | AsyncCallback<Array\<[AbilityInfo](js-apis-bundle-AbilityInfo.md)>> | Yes  | Callback used to return the ability information.               |
 
 **Example**
@@ -1188,13 +1185,13 @@ bundle.queryAbilityByWant(want, bundleFlags, (err, data) => {
 
 ## bundle.getLaunchWantForBundle<sup>deprecated<sup>
 
-> **NOTE**
->
-> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getLaunchWantForBundle](js-apis-bundleManager-sys.md#bundlemanagergetlaunchwantforbundle-2) instead.<!--DelEnd-->
-
 getLaunchWantForBundle(bundleName: string): Promise\<Want>
 
 Obtains the Want object that launches the specified application. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> Supported since API version 7 and deprecated since API version 9. The substitute API is open only to system applications.<!--Del-->You are advised to use [getLaunchWantForBundle](js-apis-bundleManager-sys.md#bundlemanagergetlaunchwantforbundle-2) instead.<!--DelEnd-->
 
 **Required permissions**
 
@@ -1233,13 +1230,13 @@ bundle.getLaunchWantForBundle(bundleName)
 
 ## bundle.getLaunchWantForBundle<sup>deprecated<sup>
 
-> **NOTE**
->
-> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getLaunchWantForBundle](js-apis-bundleManager-sys.md#bundlemanagergetlaunchwantforbundle-1) instead.<!--DelEnd-->
-
 getLaunchWantForBundle(bundleName: string, callback: AsyncCallback\<Want>): void
 
 Obtains the Want object that launches the specified application. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> Supported since API version 7 and deprecated since API version 9. The substitute API is open only to system applications.<!--Del-->You are advised to use [getLaunchWantForBundle](js-apis-bundleManager-sys.md#bundlemanagergetlaunchwantforbundle-1) instead.<!--DelEnd-->
 
 **Required permissions**
 
@@ -1273,15 +1270,15 @@ bundle.getLaunchWantForBundle(bundleName, (err, data) => {
 ```
 
 
-## bundle.getNameForUid<sup>8+</sup> <sup>deprecated<sup>
-
-> **NOTE**
->
-> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getBundleNameByUid](js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14-1) instead.
+## bundle.getNameForUid<sup>deprecated<sup>
 
 getNameForUid(uid: number): Promise\<string>
 
 Obtains the bundle name based on a UID. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> Supported since API version 8 and deprecated since API version 9. You are advised to use [getBundleNameByUid](js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14-1) instead.
 
 **System capability**
 
@@ -1314,15 +1311,15 @@ bundle.getNameForUid(uid)
   })
 ```
 
-## bundle.<sup>8+</sup> <sup>deprecated<sup>
-
-> **NOTE**
->
-> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getBundleNameByUid](js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14) instead.
+## bundle.getNameForUid<sup>deprecated<sup>
 
 getNameForUid(uid: number, callback: AsyncCallback\<string>) : void
 
 Obtains the bundle name based on a UID. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getBundleNameByUid](js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14) instead.
 
 **System capability**
 
@@ -1352,17 +1349,17 @@ bundle.getNameForUid(uid, (err, data) => {
 ```
 
 
-## bundle.getAbilityIcon<sup>8+</sup> <sup>deprecated<sup>
-
-> **NOTE**
->
-> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [resourceManager.getMediaContent](../apis-localization-kit/js-apis-resource-manager.md#getmediacontent9) instead.
+## bundle.getAbilityIcon<sup>deprecated<sup>
 
 getAbilityIcon(bundleName: string, abilityName: string): Promise\<image.PixelMap>
 
 Obtains the [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) of the icon corresponding to a given bundle name and ability name. This API uses a promise to return the result.
 
 No permission is required for obtaining the caller's own information.
+
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [resourceManager.getMediaContent](../apis-localization-kit/js-apis-resource-manager.md#getmediacontent9) instead.
 
 **Required permissions**
 
@@ -1401,17 +1398,17 @@ bundle.getAbilityIcon(bundleName, abilityName)
   })
 ```
 
-## bundle.getAbilityIcon<sup>8+</sup> <sup>deprecated<sup>
-
-> **NOTE**
->
-> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [resourceManager.getMediaContent](../apis-localization-kit/js-apis-resource-manager.md#getmediacontent9) instead.
+## bundle.getAbilityIcon <sup>deprecated<sup>
 
 getAbilityIcon(bundleName: string, abilityName: string, callback: AsyncCallback\<image.PixelMap>): void
 
 Obtains the [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) of the icon corresponding to a given bundle name and ability name. This API uses an asynchronous callback to return the result.
 
 No permission is required for obtaining the caller's own information.
+
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [resourceManager.getMediaContent](../apis-localization-kit/js-apis-resource-manager.md#getmediacontent9) instead.
 
 **Required permissions**
 
@@ -1451,7 +1448,7 @@ bundle.getAbilityIcon(bundleName, abilityName, (err, data) => {
 
 > **NOTE**
 >
-> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [errorcode-bundle](errorcode-bundle.md) instead.
+> Supported since API version 7 and deprecated since API version 9. You are advised to use [Universal Error Codes of the Bundle Management Subsystem](errorcode-bundle.md) instead.
 
  **System capability**: SystemCapability.BundleManager.BundleFramework
 

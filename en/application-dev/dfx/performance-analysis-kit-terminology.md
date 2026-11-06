@@ -5,19 +5,20 @@
 <!--Owner: @mzyan-->
 <!--Designer: @liyueric-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=0253a942a73e47e58445cf9590580798ffb3ed2d translatedAt=2026-08-21T03:21:28.462Z pushedAt=2026-08-21T10:27:13.092Z -->
 
 ## General
 
 ### Log Version
 
-Log version refers to the system version where the logging feature is enabled. It records various system running information, including the running status of applications, system error information, and debugging information. You can use hdc or a third-party application to view and analyze the information for debugging and optimization.
+A log version refers to the system version where the logging feature is enabled. It records various system running information, including the running status of apps, system error information, and debugging information. You can use hdc or a third-party app to view and analyze the information for debugging and optimization.
 
 On the device, you can go to **Settings** > **About phone** > **Software version** to check the version. The log version ends with **log**. For example, **BRA-AL00 5.0.0.36(C00E15R4P92log)** is a log version.
 
 ### Nolog Version
 
-Nolog version refers to the system version where the logging feature is disabled. It does not record system running information, so it is more lightweight and runs faster. However, it is difficult for debugging and optimization due to the lack of logging.
+A nolog version is a system version with logging disabled. It does not record information generated during system operation, making it relatively lightweight and faster. However, without logging, debugging and optimization can be more difficult for developers.
 
 On the device, you can go to **Settings** > **About phone** > **Software version** to check the version. The nolog version does not end with **log**. For example, **BRA-AL00 5.0.0.36 (C00E15R4P92)** is a nolog version.
 
@@ -77,7 +78,6 @@ Undefined Behavior Sanitizer (UBSan) detects undefined behavior in code, enablin
 ### Call Stack
 
 Call stack records the sequence of function calls for the thread, from its start up to the current point (such as the crash or freeze). For details, see [Call stack frame](cppcrash-guidelines.md#common-faults) and [JS hybrid stack frame](cppcrash-guidelines.md#common-faults).
-
 
 ## Performance
 
@@ -148,3 +148,7 @@ File-backed pages are data pages mapped from specific files, such as program tex
 ### NMD
 
 Native Malloc Detail (NMD) indicates the jemalloc snapshot details of a process.
+
+### minidump
+
+A mini dump file generated when a process crashes, containing information such as registers, threads, and stack memory at the time of the crash. The system supports backtracking up to 400 threads.

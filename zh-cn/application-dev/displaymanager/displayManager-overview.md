@@ -1,9 +1,17 @@
+---
+kits: ["ArkUI / 方舟UI框架"]
+description: "屏幕管理提供物理屏、虚拟屏和折叠屏的统一管理，支持查询分辨率、像素密度等属性，监听屏幕旋转、折叠等变化并广播给订阅服务，虚拟屏能力仅对系统应用开放。"
+keywords: [屏幕属性查询, 屏幕状态监听, 屏幕旋转, 虚拟屏, 物理屏]
+doctype: guide
+status: active
+---
+
 # 屏幕管理简介
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
-<!--Tester: @qinliwen0417-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @wulong158-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 
 屏幕管理主要是针对设备的各种屏幕（包括物理屏、虚拟屏、折叠屏）进行管理，管理其各种属性信息，并当作广播者，将监听到的信息广播给各个需要屏幕信息的订阅服务。

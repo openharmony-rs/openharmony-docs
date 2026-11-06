@@ -1,11 +1,19 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API扩展接口加速属性访问，通过调用点缓存机制为每个调用点创建napi_callsite_info句柄，在重复访问相同属性时显著提升性能，适用于热点循环中批量属性读写场景。"
+keywords: [Node-API, 属性访问加速, napi_callsite_info, 调用点缓存, 属性读写, 性能优化, 快速路径]
+doctype: guide
+status: active
+---
+
 # 使用扩展的Node-API接口加速属性访问
 
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @shilei123; @starunvs-->
 <!--Designer: @shilei123; @starunvs-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 从API 24版本开始，OpenHarmony提供了基于调用点缓存的快速属性访问接口。通过为每个调用点创建`napi_callsite_info`句柄，在重复访问相同键名属性时，可以缓存对象的结构信息，从而加速属性访问，显著提升属性访问性能。
 

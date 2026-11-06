@@ -5,7 +5,7 @@
 <!--Designer: @widecode-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-
+<!-- md-trans-meta sourceCommit=90491f8c6b2ab7cc90a111cf7e7859948fae78c4 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=1 -->
 
 ## When to Use
 
@@ -19,7 +19,7 @@ Since API version 18, data in vector stores can be persisted.
 
 ## Constraints
 
-- The default log mode is Write Ahead Log ([WAL](data-terminology.md#write-ahead-log-wal)), and the default flush mode is [FULL](data-terminology.md#full).
+- The system uses the Write Ahead Log ([WAL](data-terminology.md#write-ahead-log-wal)) mode for logging by default, and the [FULL mode](data-terminology.md#full-mode) for data persistence by default.
 
 - A vector store supports a maximum of four read connections and one write connection at a time by default. A thread can perform the read operation when acquiring an idle read connection. If there is no idle read connection, a new read connection will be created.
 
@@ -33,23 +33,9 @@ Since API version 18, data in vector stores can be persisted.
 
 For details, see [Specifications](data-persistence-by-vector-store.md#specifications).
 
-## Available APIs
-
-For details, see [RDB](../reference/apis-arkdata/capi-rdb.md).
-
-| API| Description|
-| -------- | -------- |
-| int OH_Rdb_SetDbType(OH_Rdb_ConfigV2 *config, int dbType) | Sets the database type.|
-| OH_Rdb_Store *OH_Rdb_CreateOrOpen(const OH_Rdb_ConfigV2 *config, int *errCode) | Obtains an **OH_Rdb_Store** instance (**dbType** is set to **RDB_CAYLEY** by using **OH_Rdb_SetDbType**) for vector operations.|
-| int OH_Rdb_ExecuteV2(OH_Rdb_Store *store, const char *sql, const OH_Data_Values *args, OH_Data_Value **result) | Executes SQL statements with a return value to perform write operations. Parameter binding is supported. The number of relational operators (such as =, >, and <) in the SQL statements cannot exceed 1000.|
-| int OH_Rdb_ExecuteByTrxId(OH_Rdb_Store *store, int64_t trxId, const char *sql) | Executes the SQL statement that does not return a value with the specified transaction ID. If the transaction ID is **0**, no transaction is used.|
-| OH_Cursor *OH_Rdb_ExecuteQuery(OH_Rdb_Store *store, const char *sql) | Queries data in a store using the specified SQL statements.|
-| OH_Cursor *OH_Rdb_ExecuteQueryV2(OH_Rdb_Store *store, const char *sql, const OH_Data_Values *args) | Queries data in a store using the specified SQL statements. Parameter binding is supported. The number of relational operators (such as =, >, and <) in the SQL statements cannot exceed 1000.|
-| int OH_Rdb_DeleteStoreV2(const OH_Rdb_ConfigV2 *config) | Deletes a vector store.|
-| int OH_Cursor_GetFloatVectorCount(OH_Cursor *cursor, int32_t columnIndex, size_t *length) | Obtains the length of the floating-point array in the specified column of the current row.|
-| int OH_Cursor_GetFloatVector(OH_Cursor *cursor, int32_t columnIndex, float *val, size_t inLen, size_t *outLen) | Obtains the value in the specified column of the current row as a floating-point array. The value of **inLen** cannot be less than the actual array size.|
-
 ## How to Develop
+
+For details about the APIs, see [RDB](../reference/apis-arkdata/capi-rdb.md).
 
 **Adding dynamic link libraries**
 
@@ -61,29 +47,36 @@ libnative_rdb_ndk.z.so
 
 **Including header files**
 
-<!--@[vector_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
+<!--@[vector_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->   
 
-``` C
+``` C++
 #include <hilog/log.h>
 #include <database/data/oh_data_values.h>
 #include <database/rdb/oh_cursor.h>
 #include <database/rdb/relational_store.h>
+#include <database/rdb/relational_store_error_code.h>
 ```
 
-1. Check whether the system supports vector stores. The sample code is as follows:
+1. Call [OH_Rdb_GetSupportedDbType()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_getsupporteddbtype) to obtain the database types supported by the system. If the returned types include [RDB_SQLITE](../reference/apis-arkdata/capi-relational-store-h.md#rdb_dbtype), SQLite is supported; if they include [RDB_CAYLEY](../reference/apis-arkdata/capi-relational-store-h.md#rdb_dbtype), vector stores are supported. The sample code is as follows:
 
    <!--@[vector_OH_Rdb_GetSupportedDbType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-   
+
    ``` C++
-   int numType = 0;
-   // If numType is 2, the system supports vector stores. If numType 1, the system does not support vector stores.
-   OH_Rdb_GetSupportedDbType(&numType);
+   int typeCount = 0;
+   const int *dbTypes = OH_Rdb_GetSupportedDbType(&typeCount);
+   bool isVectorStoreSupported = false;
+   for (int i = 0; i < typeCount; i++) {
+       if (dbTypes[i] == RDB_CAYLEY) {
+           isVectorStoreSupported = true;
+           break;
+       }
+   }
    ```
 
-2. If the system supports vector stores, obtain an **OH_Rdb_Store** instance. The sample code is as follows:
+2. If the system supports vector stores, call [OH_Rdb_SetDbType()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_setdbtype) to set the database type to a vector store, and then call [OH_Rdb_CreateOrOpen()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_createoropen) to obtain an **OH_Rdb_Store** instance. The sample code is as follows:
 
    <!--@[vector_OH_Rdb_Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-   
+
    ``` C++
    // Create an OH_Rdb_Config instance.
    OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
@@ -97,7 +90,7 @@ libnative_rdb_ndk.z.so
    // Specify whether the database is encrypted.
    OH_Rdb_SetEncrypted(config, false);
    // Set the security level of the database files.
-   OH_Rdb_SetSecurityLevel(config,   OH_Rdb_SecurityLevel::S1);
+   OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
    // Set the encryption level for the directory holding the database files.
    OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
    // Set the storage type.
@@ -108,7 +101,7 @@ libnative_rdb_ndk.z.so
    OH_Rdb_Store *store_ = OH_Rdb_CreateOrOpen(config, &errCode);
    ```
 
-3. Create a table and insert data into the table.
+3. After obtaining the **OH_Rdb_Store** instance, call [OH_Rdb_ExecuteByTrxId()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_executebytrxid) to create a table, and [OH_Rdb_ExecuteV2()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_executev2) to insert data.
 
    > **NOTE**
    >
@@ -117,7 +110,7 @@ libnative_rdb_ndk.z.so
    The sample code is as follows:
 
    <!--@[vector_OH_Rdb_ExecuteV2_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-   
+
    ``` C++
    char createTableSql[] =
        "CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 floatvector(2));";
@@ -137,10 +130,10 @@ libnative_rdb_ndk.z.so
    OH_Values_Destroy(values);
    ```
 
-4. Modify or delete data. The sample code is as follows:
+4. Call [OH_Rdb_ExecuteV2()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_executev2) to modify or delete data. The sample code is as follows:
 
    <!--@[vector_OH_Rdb_ExecuteV2_update_and_delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-   
+
    ``` C++
    // Modify data without parameter binding.
    OH_Rdb_ExecuteV2(store_, "update test set data1 = '[5.1, 6.1]' where id = 0;", nullptr, nullptr);
@@ -164,16 +157,16 @@ libnative_rdb_ndk.z.so
    OH_Values_Destroy(values2);
    ```
 
-5. Query data.
+5. Call [OH_Rdb_ExecuteQueryV2()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_executequeryv2) to query data, and use [OH_Cursor_GetFloatVectorCount()](../reference/apis-arkdata/capi-oh-cursor-h.md#oh_cursor_getfloatvectorcount) and [OH_Cursor_GetFloatVector()](../reference/apis-arkdata/capi-oh-cursor-h.md#oh_cursor_getfloatvector) to read vector data from the result set.
 
    > **NOTE**
    >
-   > Use **destroy()** to destroy the result set (**OH_Cursor**) that is no longer used in a timely manner so that the memory allocated can be released.
+   > Call [destroy()](../reference/apis-arkdata/capi-rdb-oh-cursor.md#destroy) to close the **OH_Cursor** result set when it is no longer needed and release its memory.
 
    The sample code is as follows:
 
    <!--@[vector_OH_Rdb_ExecuteV2_queryWithoutBingArgs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-   
+
    ``` C++
    // Query data without parameter binding.
    OH_Cursor *cursor = OH_Rdb_ExecuteQueryV2(store_, "select * from test where id = 1;", nullptr);
@@ -181,7 +174,7 @@ libnative_rdb_ndk.z.so
        OH_LOG_ERROR(LOG_APP, "Query failed.");
        return;
    }
-   // getRowCount may cause performance redundancy. You are advised to use this function only during debugging or maintenance.
+   // getRowCount traverses the entire table to obtain the row count, which incurs performance overhead. Use it appropriately based on the actual scenario.
    int rowCount = 0;
    cursor->getRowCount(cursor, &rowCount);
    while (cursor->goToNextRow(cursor) == OH_Rdb_ErrCode::RDB_OK) {
@@ -196,7 +189,7 @@ libnative_rdb_ndk.z.so
    ```
 
    <!--@[vector_OH_Rdb_ExecuteV2_queryWithBingArgs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-   
+
    ``` C++
    // Query data with parameter binding.
    char querySql[] = "select * from test where id = ?;";
@@ -220,7 +213,7 @@ libnative_rdb_ndk.z.so
    ```
 
    <!--@[vector_OH_Rdb_ExecuteV2_subquery](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-   
+
    ``` C++
    // Query data in another table, and create the table if it does not exist.
    OH_Rdb_ExecuteV2(store_, "CREATE TABLE IF NOT EXISTS example(id text PRIMARY KEY);", nullptr, nullptr);
@@ -242,7 +235,7 @@ libnative_rdb_ndk.z.so
    ```
 
    <!--@[vector_OH_Rdb_ExecuteV2_aggregateQuery](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-   
+
    ``` C++
    // Perform aggregate query.
    OH_Cursor *cursor = OH_Rdb_ExecuteQueryV2(store_,
@@ -263,7 +256,7 @@ libnative_rdb_ndk.z.so
    ```
 
    <!--@[vector_OH_Rdb_ExecuteV2_multiTableQuery](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-   
+
    ``` C++
    // Perform multi-table query.
    OH_Cursor *cursor = OH_Rdb_ExecuteQueryV2(store_, "select id, data1 <-> '[1.5, 5.6]' as distance from test "
@@ -286,7 +279,7 @@ libnative_rdb_ndk.z.so
 6. Create a view and query data. The sample code is as follows:
 
    <!--@[vector_OH_Rdb_ExecuteV2_create_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-   
+
    ``` C++
    OH_Rdb_ExecuteV2(store_, "CREATE VIEW v1 as select * from test where id > 0;", nullptr, nullptr);
    OH_Cursor *cursor = OH_Rdb_ExecuteQueryV2(store_, "select * from v1;", nullptr);
@@ -300,7 +293,7 @@ libnative_rdb_ndk.z.so
 7. Query data using vector indexes.
 
    The vector store uses vectors as keys to provide efficient and fast search capabilities.
-   
+
    It supports the basic syntax and extended syntax as follows:
 
    - Basic syntax:
@@ -327,7 +320,7 @@ libnative_rdb_ndk.z.so
 
    | Type  | Operator| Description  |
    | ------ | -------- | ---------- |
-   | L2     | <->      | Euclidean distance.|
+   | L2     | <->      | Euclidean distance. |
    | COSINE | <=>      | Cosine distance.|
 
    **Table 3** Extended syntax parameter (parameter)
@@ -348,9 +341,9 @@ libnative_rdb_ndk.z.so
    The sample code is as follows:
 
    <!--@[vector_OH_Rdb_ExecuteV2_create_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->    
-   
+
    ``` C++
-   // Create an index using the basic syntax. The index name is diskann_l2_idx, index column is repr, type is gsdiskann, and the distance metric is L2.
+   // Create an index named diskann_l2_idx, with the index column data1, type gsdiskann, and distance metric type L2.
    OH_Rdb_ExecuteV2(store_, "CREATE INDEX diskann_l2_idx ON test USING GSDISKANN(data1 L2);", nullptr, nullptr);
    
    // Delete the diskann_l2_idx index from the test table.
@@ -362,7 +355,7 @@ libnative_rdb_ndk.z.so
    ```
 
 8. Configure the data aging policy, which allows the application data to be automatically deleted by time or space.
-   
+
    The syntax is as follows:
 
    ```sql
@@ -395,7 +388,7 @@ libnative_rdb_ndk.z.so
    The sample code is as follows:
 
    <!--@[vector_OH_Rdb_ExecuteV2_data_aging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-   
+
    ``` C++
    // The write operation performed every 5 minutes will trigger a data aging task.
    OH_Rdb_ExecuteV2(store_,"CREATE TABLE test2(rec_time integer not null) WITH "
@@ -417,17 +410,17 @@ libnative_rdb_ndk.z.so
    The sample code is as follows:
 
    <!--@[vector_OH_Rdb_ExecuteV2_data_compression](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
-   
+
    ``` C++
    // Data compression and data aging are configured for the content column.
    OH_Rdb_ExecuteV2(store_,"CREATE TABLE IF NOT EXISTS test3 (time integer not null, content text) with "
        "(time_col = 'time', interval = '5 minute', compress_col = 'content');", nullptr, nullptr);
    ```
 
-10. Delete the vector store. The sample code is as follows:
+10. Call [OH_Rdb_CloseStore()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_closestore) to close the database instance, and [OH_Rdb_DeleteStoreV2()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_deletestorev2) to delete the vector store and its files. The sample code is as follows:
 
     <!--@[vector_OH_Rdb_DeleteStoreV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->    
-    
+
     ``` C++
     OH_Rdb_CloseStore(store_);
     OH_Rdb_DeleteStoreV2(config);

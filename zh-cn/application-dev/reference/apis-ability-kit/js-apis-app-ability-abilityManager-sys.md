@@ -61,8 +61,8 @@ updateConfiguration(config: Configuration, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -126,8 +126,8 @@ updateConfiguration(config: Configuration): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -175,7 +175,7 @@ getAbilityRunningInfos(callback: AsyncCallback\<Array\<AbilityRunningInfo>>): vo
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| callback  | AsyncCallback\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>>  | 是    | 回调函数。当获取UIAbility运行相关信息成功，err为undefined，data为获取到的UIAbility运行相关信息；否则为错误对象。可进行错误处理或其他自定义处理。      |
+| callback | AsyncCallback\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>> | 是 | 回调函数。当获取UIAbility运行相关信息成功，err为undefined，data为获取到的UIAbility运行相关信息；否则为错误对象。可进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -187,7 +187,7 @@ getAbilityRunningInfos(callback: AsyncCallback\<Array\<AbilityRunningInfo>>): vo
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -216,7 +216,7 @@ try {
 
 getExtensionRunningInfos(upperLimit: number, callback: AsyncCallback\<Array\<ExtensionRunningInfo>>): void
 
-获取关于运行扩展能力的信息。使用callback异步回调。
+获取运行扩展能力的信息。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -237,7 +237,7 @@ getExtensionRunningInfos(upperLimit: number, callback: AsyncCallback\<Array\<Ext
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -247,6 +247,7 @@ getExtensionRunningInfos(upperLimit: number, callback: AsyncCallback\<Array\<Ext
 import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 设置获取消息数量的最大限制
 let upperLimit = 10;
 
 try {
@@ -294,7 +295,7 @@ getExtensionRunningInfos(upperLimit: number): Promise\<Array\<ExtensionRunningIn
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -323,7 +324,7 @@ try {
 
 getTopAbility(callback: AsyncCallback\<ElementName>): void
 
-获取窗口焦点所在的Ability。使用callback异步回调。
+获取当前拥有窗口焦点的UIAbility信息。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -333,7 +334,7 @@ getTopAbility(callback: AsyncCallback\<ElementName>): void
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| callback  | AsyncCallback\<[ElementName](js-apis-bundleManager-elementName.md)>  | 是    | 回调函数。当获取窗口焦点所在的Ability成功，err为undefined，data为获取到的应用名；否则为错误对象。可进行错误处理或其他自定义处理。      |
+| callback  | AsyncCallback\<[ElementName](js-apis-bundleManager-elementName.md)>  | 是    | 回调函数。当获取窗口焦点所在的Ability成功，err为undefined，data为获取到的ElementName对象；否则为错误对象。可进行错误处理或其他自定义处理。      |
 
 **错误码**：
 
@@ -341,7 +342,7 @@ getTopAbility(callback: AsyncCallback\<ElementName>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -374,7 +375,7 @@ getTopAbility(): Promise\<ElementName>
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise\<[ElementName](js-apis-bundleManager-elementName.md)>| Promise对象，返回接口运行结果及应用名。开发者可在此进行错误处理或其他自定义处理。 |
+| Promise\<[ElementName](js-apis-bundleManager-elementName.md)>| Promise对象，返回接口运行结果及ElementName对象。开发者可在此进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -382,7 +383,7 @@ getTopAbility(): Promise\<ElementName>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. |
 
 **示例**：
@@ -421,7 +422,7 @@ acquireShareData(missionId: number, callback: AsyncCallback\<Record\<string, Obj
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -474,7 +475,7 @@ acquireShareData(missionId: number): Promise\<Record\<string, Object>>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -527,8 +528,8 @@ notifySaveAsResult(parameter: AbilityResult, requestCode: number, callback: Asyn
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -542,6 +543,7 @@ let want: Want = {
   bundleName: 'com.example.myapplication',
   abilityName: 'EntryAbility'
 };
+// 设置操作结果码
 let resultCode = 100;
 // 返回给另存为行为发起方AbilityResult信息
 let abilityResult: common.AbilityResult = {
@@ -599,8 +601,8 @@ notifySaveAsResult(parameter: AbilityResult, requestCode: number): Promise\<void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -659,8 +661,8 @@ on(type: 'abilityForegroundState', observer: AbilityForegroundStateObserver): vo
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -709,8 +711,8 @@ off(type: 'abilityForegroundState', observer?: AbilityForegroundStateObserver): 
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -762,7 +764,7 @@ getForegroundUIAbilities(callback: AsyncCallback\<Array\<AbilityStateData>>): vo
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback\<Array\<[AbilityStateData](js-apis-inner-application-abilityStateData.md)>>  | 是 |以回调方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
+  | callback | AsyncCallback\<Array\<[AbilityStateData](js-apis-inner-application-abilityStateData.md)>> | 是 | 以回调方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -770,8 +772,8 @@ getForegroundUIAbilities(callback: AsyncCallback\<Array\<AbilityStateData>>): vo
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -806,7 +808,7 @@ getForegroundUIAbilities(): Promise\<Array\<AbilityStateData>>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<Array\<[AbilityStateData](js-apis-inner-application-abilityStateData.md)>> | 以Promise方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。|
+| Promise\<Array\<[AbilityStateData](js-apis-inner-application-abilityStateData.md)>> | 以Promise方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -814,8 +816,8 @@ getForegroundUIAbilities(): Promise\<Array\<AbilityStateData>>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -835,7 +837,7 @@ abilityManager.getForegroundUIAbilities().then((data: Array<abilityManager.Abili
 
 notifyDebugAssertResult(sessionId: string, status: UserStatus): Promise\<void>
 
-将断言调试结果通知应用程序。使用Promise异步回调。
+将断言调试结果通知应用程序。使用Promise异步回调。调试工具或应用需要在断言调试场景中处理用户操作结果时使用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -864,8 +866,8 @@ notifyDebugAssertResult(sessionId: string, status: UserStatus): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -881,6 +883,7 @@ export default class UiExtAbility extends UIExtensionAbility {
     if (want.parameters) {
       sessionId = want.parameters[wantConstant.Params.ASSERT_FAULT_SESSION_ID] as string;
     }
+    // 设置用户操作状态为终止
     let status = abilityManager.UserStatus.ASSERT_TERMINATE;
     abilityManager.notifyDebugAssertResult(sessionId, status).then(() => {
       console.info('notifyDebugAssertResult success.');
@@ -933,6 +936,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onForeground() {
+    // 应用的唯一标识
     let appId: string = '6918661953712445909';
     try {
       abilityManager.isEmbeddedOpenAllowed(this.context, appId).then((data) => {
@@ -952,7 +956,11 @@ export default class EntryAbility extends UIAbility {
 
 setResidentProcessEnabled(bundleName: string, enable: boolean): Promise\<void>
 
-常驻进程支持按需启停。
+设置或移除指定包名的主应用进程的常驻保活状态。根据enable参数启用或禁用进程的常驻保活机制。
+
+> **说明：**
+>
+> 该接口不支持设置或移除分身应用（指定包名）的进程保活状态。
 
 **系统接口**：此接口为系统接口。
 
@@ -977,7 +985,7 @@ setResidentProcessEnabled(bundleName: string, enable: boolean): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Not a system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible cause: 1.Non empty package name needs to be provided, 2.The second parameter needs to provide a Boolean type setting value |
 | 16000050 | Internal error. |
 | 16200006 | The caller application can only set the resident status of the configured process. |
@@ -989,6 +997,7 @@ import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 设置常驻进程的包名
   let residentProcessBundleName: string = 'com.xxx.xxxxxx';
   let enable: boolean = false;
   abilityManager.setResidentProcessEnabled(residentProcessBundleName, enable)
@@ -1009,7 +1018,7 @@ try {
 
 preloadUIExtensionAbility(want: Want): Promise\<number>
 
-预加载指定的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)并返回预加载UIExtensionAbility实例的ID。使用Promise异步回调。
+预加载指定的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)并返回预加载UIExtensionAbility实例的ID。使用Promise异步回调。应用需要提前加载UIExtensionAbility以提升启动性能时使用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1037,8 +1046,8 @@ preloadUIExtensionAbility(want: Want): Promise\<number>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
@@ -1106,8 +1115,8 @@ clearPreloadedUIExtensionAbility(preloadId: number): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000003 | The specified ID does not exist. Possible causes: 1.The specified ID is incorrect; 2.The preloaded UIExtensionAbility has been loaded; 3.The preloaded UIExtensionAbility has been destroyed; |
 | 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2. Send restart message to system service failed; 3. System service failed to communicate with dependency module. |
 
@@ -1160,8 +1169,8 @@ clearPreloadedUIExtensionAbilities(): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2. Send restart message to system service failed; 3. System service failed to communicate with dependency module. |
 
 **示例：**
@@ -1211,8 +1220,8 @@ onPreloadedUIExtensionAbilityLoaded(callback: PreloadedUIExtensionAbilityLoadedF
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. Possible causes: Memory operation error. |
 
 **示例：**
@@ -1261,8 +1270,8 @@ offPreloadedUIExtensionAbilityLoaded(callback?: PreloadedUIExtensionAbilityLoade
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. Possible causes: Memory operation error. |
 
 **示例：**
@@ -1311,8 +1320,8 @@ onPreloadedUIExtensionAbilityDestroyed(callback: PreloadedUIExtensionAbilityDest
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. Possible causes: Memory operation error. |
 
 **示例：**
@@ -1361,8 +1370,8 @@ offPreloadedUIExtensionAbilityDestroyed(callback?: PreloadedUIExtensionAbilityDe
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. Possible causes: Memory operation error. |
 
 **示例：**
@@ -1418,7 +1427,7 @@ queryAtomicServiceStartupRule(context: Context, appId: string): Promise\<AtomicS
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | -------- | -------- | -------- |
-| context | [Context](js-apis-inner-application-context.md) | 是 | 嵌入式拉起EmbeddableUIAbility的调用方Context。<br>**说明**：目前仅支持[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)。 |
+| context | [Context](js-apis-inner-application-context.md) | 是 | 嵌入式拉起EmbeddableUIAbility的调用方Context。<br>**说明**：目前仅支持[UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md)。 |
 | appId | string | 是 | 应用的唯一标识，由云端统一分配。 |
 
 **返回值：**
@@ -1434,7 +1443,7 @@ queryAtomicServiceStartupRule(context: Context, appId: string): Promise\<AtomicS
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801 | Capability not support. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 16000050 | Internal error. |
 
 **示例：**
@@ -1445,6 +1454,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onForeground() {
+    // 应用的唯一标识
     let appId: string = '6918661953712445909';
     try {
       abilityManager.queryAtomicServiceStartupRule(this.context, appId).then((data: abilityManager.AtomicServiceStartupRule) => {
@@ -1486,7 +1496,7 @@ AbilityForegroundStateObserver二级模块。
 
 | 类型 | 说明 |
 | --- | --- |
-| [_AbilityForegroundStateObserver.default](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | AbilityForegroundStateObserver二级模块，用于定义应用前后台状态监听。 |
+| [_AbilityForegroundStateObserver](js-apis-inner-application-abilityForegroundStateObserver-sys.md).default | AbilityForegroundStateObserver二级模块，用于定义应用前后台状态监听。 |
 
 ## PreloadedUIExtensionAbilityDestroyedFn<sup>23+</sup>
 
@@ -1498,7 +1508,7 @@ type PreloadedUIExtensionAbilityDestroyedFn = (preloadId: number) => void
 
 **系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 | 参数名    | 类型            | 必填 | 说明 |
 |--------|---------------|---| -------- |
@@ -1514,7 +1524,7 @@ type PreloadedUIExtensionAbilityLoadedFn = (preloadId: number) => void
 
 **系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 | 参数名    | 类型            | 必填 | 说明 |
 |--------|---------------|---| -------- |

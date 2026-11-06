@@ -34,11 +34,11 @@
 
 2. 初始化自定义组件的成员变量：通过本地默认值或者构造方法传递参数来初始化自定义组件的成员变量，初始化顺序为成员变量的定义顺序。
 
-3. 如果开发者定义了aboutToAppear，则执行build方法之前执行该方法。
+3. 如果开发者定义了aboutToAppear，则执行build函数之前执行该方法。
 
-4. 在首次渲染的时候，执行build方法渲染系统组件，如果子组件为自定义组件，则创建自定义组件的实例。在首次渲染的过程中，框架会记录状态变量和组件的映射关系，当状态变量改变时，驱动其相关的组件刷新。
+4. 在首次渲染的时候，执行build函数渲染系统组件，如果子组件为自定义组件，则创建自定义组件的实例。在首次渲染的过程中，框架会记录状态变量和组件的映射关系，当状态变量改变时，驱动其相关的组件刷新。
 
-5. 如果开发者定义了onDidBuild，则执行build方法之后执行该方法。
+5. 如果开发者定义了onDidBuild，则执行build函数之后执行该方法。
 
 ## 自定义组件重新渲染
 
@@ -62,7 +62,7 @@
 
 通过以下示例，来详细说明自定义组件在嵌套使用时，自定义组件生命周期的调用时序：
 
-<!-- @[nested_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycle/entry/src/main/ets/pages/parent/Index.ets) -->
+<!-- @[nested_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycle/entry/src/main/ets/pages/parent/Index.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -73,17 +73,17 @@ struct Parent {
   @State showChild: boolean = true;
   @State btnColor: string = '#FF007DFF';
 
-  // 组件生命周期
+  // Parent即将出现时，回调该方法
   aboutToAppear() {
     hilog.info(0x0000, 'testTag', 'Parent aboutToAppear');
   }
 
-  // 组件生命周期
+  // Parent首次渲染触发的build函数执行完成之后，回调该方法
   onDidBuild() {
     hilog.info(0x0000, 'testTag', 'Parent onDidBuild');
   }
 
-  // 组件生命周期
+  // Parent销毁之前，回调该方法
   aboutToDisappear() {
     hilog.info(0x0000, 'testTag', 'Parent aboutToDisappear');
   }
@@ -95,6 +95,7 @@ struct Parent {
         Child()
       }
       Button(this.showChild ? 'delete Child' : 'add Child')
+        .width(300)
         .margin(20)
         .backgroundColor(this.btnColor)
         .onClick(() => {
@@ -103,6 +104,7 @@ struct Parent {
           this.showChild = !this.showChild;
         })
     }
+    .width('100%')
   }
 }
 
@@ -110,17 +112,17 @@ struct Parent {
 struct Child {
   @State title: string = 'Hello World';
 
-  // 组件生命周期
+  // Child销毁之前，回调该方法
   aboutToDisappear() {
     hilog.info(0x0000, 'testTag', 'Child aboutToDisappear');
   }
 
-  // 组件生命周期
+  // Child首次渲染触发的build函数执行完成之后，回调该方法
   onDidBuild() {
     hilog.info(0x0000, 'testTag', 'Child onDidBuild');
   }
 
-  // 组件生命周期
+  // Child即将出现时，回调该方法
   aboutToAppear() {
     hilog.info(0x0000, 'testTag', 'Child aboutToAppear');
   }
@@ -136,7 +138,9 @@ struct Child {
 }
 ```
 
-以上示例中，Index页面包含两个自定义组件，一个是Parent，一个是Child，Parent及其子组件Child分别声明了各自的自定义组件生命周期函数（aboutToAppear / onDidBuild / aboutToDisappear）。
+![page-custom-components-lifecycle-0](figures/page-custom-components-lifecycle-0.gif)
+
+以上示例中，Parent作为页面入口组件，包含一个子组件Child，Parent及其子组件Child分别声明了各自的自定义组件生命周期函数（aboutToAppear / onDidBuild / aboutToDisappear）。
 
 - 应用冷启动的初始化流程为：Parent aboutToAppear --&gt; Parent build --&gt; Parent onDidBuild --&gt; Child aboutToAppear --&gt; Child build --&gt; Child onDidBuild。此处体现了自定义组件懒展开特性，即Parent执行完onDidBuild之后才会执行Child组件的aboutToAppear。日志输出信息如下：
 

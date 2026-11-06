@@ -1,10 +1,11 @@
 # @ohos.mediaquery (Media Query)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zju_ljz-->
-<!--Designer: @lanshouren-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-09-01T03:20:32.598Z pushedAt=2026-09-02T01:44:19.417Z -->
 
 The **mediaquery** module provides different styles for different media types.
 
@@ -143,7 +144,7 @@ listener.off('change', onPortrait) // Unregister the callback.
 
 ## MediaQueryResult
 
-Provides the media query result.
+Represents the media query result.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 

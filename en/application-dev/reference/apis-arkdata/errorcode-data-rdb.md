@@ -2,40 +2,68 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=03549490c8da5aa8e7aea81503480383b2dce6d7 translatedAt=2026-09-04T03:16:03.953Z pushedAt=2026-09-09T09:11:03.703Z -->
 
 > **NOTE**
 >
-> This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
+> The following describes only the error codes specific to this module. For details about common error codes, see [Universal Error Codes](../errorcode-universal.md).
+>
+> For details about how to obtain hilog system logs, see [Viewing HiLog Logs](../../dfx/hilog.md#viewing-logs).
+>
+> The searchable logs described below may vary with versions.
 
-##  14800000 Internal Error
+## 14800000 Internal Error
 
 **Error Message**
 
 Inner error.
 
-**Description**
+**Error description**
 
 This error code is reported if an internal error is thrown.
 
 **Possible Causes**
 
-View the error log to determine the cause of the error. Possible causes include the following:
-1. The SQL statement fails to be executed.
-2. The internal state is abnormal.
-3. There is API that is incorrectly used.
-4. A system error, such as null pointer, insufficient memory, unexpected restart of data service, I/O error, IPC exception, and JS engine exception, occurs.
+1. Setting a distributed table does not support composite primary keys. Therefore, calling APIs such as [setDistributedTables](arkts-apis-data-relationalStore-RdbStore.md#setdistributedtables) to set a distributed table fails.
+2. When multiple processes operate the database and one of them is frozen, the database lock is held by the frozen process until it is unfrozen. During this period, other processes fail to obtain the lock when calling APIs such as [getRdbStore](arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore) to open the database.
+3. A read connection is used for write operations. A read connection cannot be used to perform write operations on the database; it can only be used to perform read operations.
+4. When a transaction is not committed, APIs such as [execute](arkts-apis-data-relationalStore-RdbStore.md#execute12) or [executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql) are called to sequentially perform DDL operations such as deleting a trigger, deleting a table, and recreating a table. Subsequent similar operations fail.
+5. The same batch of data is queried and deleted concurrently.
+6. The root key fails to be generated. HUKS fails to generate the root key, so the key for the encrypted database cannot be further generated. Therefore, calling APIs such as [getRdbStore](arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore) to open an encrypted database fails.
+7. No data is found during remote query. If the data to be queried does not exist in the peer database, calling the [remoteQuery](arkts-apis-data-relationalStore-RdbStore.md#remotequery) API to perform a remote query and then calling APIs such as [goToFirstRow](arkts-apis-data-relationalStore-ResultSet.md#gotofirstrow) to retrieve data after obtaining the result set will fail.
+8. The data management service fails to start. When the data management service fails to start, a distributed table cannot be set. Therefore, calling APIs such as [setDistributedTables](arkts-apis-data-relationalStore-RdbStore.md#setdistributedtables) to set a distributed table fails.
 
 **Solution**
 
-1. Check whether SQL statements and predicates are correctly used.
-2. Check whether a closed object is reused.
-3. Check whether the APIs are correctly used.
-4. If the problem persists, ask the user to restart or upgrade the application or upgrade the device version.
+1. Check whether the following log is printed near the time when the issue occurs: `Not support create distributed table with composite primary keys`.
+   - Yes: Do not use composite primary keys when setting a distributed table.
+   - No: Proceed to the next step.
+2. Check whether logs related to process freezing, such as `Freeze pid: <process ID> success` or `PID <process ID> has been frozen`, and the log of database opening failure `ConnectionPool.*code:-15`, can be found by regular expression search near the time when the issue occurred.
+   - Yes: Do not operate the database when the process moves to the background, to avoid concurrent database operations by multiple processes. Call [requestSuspendDelay](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerrequestsuspenddelay) to request a transient task, or call [startBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning) to request a continuous task, so that the database operation can finish before the process is frozen.
+   - No: Proceed to the next step.
+3. Check whether the business code uses a read connection to perform write operations.
+   - Yes: When using a read connection, perform only read operations. Use a write connection for write operations.
+   - No: Proceed to the next step.
+4. Check whether the business code performs the following operations: after calling [beginTransaction](arkts-apis-data-relationalStore-RdbStore.md#begintransaction) to start a transaction, before the transaction is committed, it calls [execute](arkts-apis-data-relationalStore-RdbStore.md#execute12) or [executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql) to sequentially delete trigger a, delete table A, recreate table A, and then fails when deleting trigger a again.
+   - Yes: Avoid sequentially performing operations such as deleting trigger a, deleting table A, recreating table A, and deleting trigger a again before the transaction is committed.
+   - No: Proceed to next step.
+5. Troubleshoot whether the business code has the following operation: after obtaining the result set, first call [execute](arkts-apis-data-relationalStore-RdbStore.md#execute12), [executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql), or [delete](arkts-apis-data-relationalStore-RdbStore.md#delete) to delete the data to be queried, and then call [getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong) and other APIs to obtain the data, which fails.
+   - Yes: The business needs to control the timing properly and avoid concurrently querying and deleting the same batch of data.
+   - No: Proceed to next step.
+6. Confirm whether the key log can be found via regular expression search near the time point of the issue: `01650.*Init.*retry.*error`, where error is not 0.
+   - Yes: The root key may have failed to be generated, and the business needs to retry opening the encrypted database.
+   - No: Proceed to next step.
+7. Confirm whether the data to be queried exists in the database of the peer device.
+   - Yes: Proceed to next step.
+   - No: Ensure that the data to be queried exists before performing the remote query.
+8. Confirm whether the key log `Get distributed data manager failed` can be found near the time point when the issue occurred.
+   - Yes: The data management service failed to start. The business needs to retry setting the distributed table.
+   - No: Provide the hilog system log and contact technical support personnel for locating the issue.
 
-##  14800001 Invalid Arguments
+## 14800001 Invalid Parameter
 
 **Error Message**
 
@@ -83,13 +111,35 @@ The operation failed due to a database exception.
 
 **Possible Causes**
 
-The database file is damaged and incomplete, the database FD is incorrectly operated, or the database memory is illegally accessed.
+1. When opening an encrypted database, the custom key does not match, so calling APIs such as [getRdbStore](arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore) to open the database fails.
+2. The database file descriptor (fd) is misused, causing a database file exception. Therefore, calling CRUD operation APIs to operate the database fails.
+3. A memory corruption issue exists in the business process, causing a database file exception. Therefore, calling CRUD operation APIs to operate the database fails.
+4. The file copy or download process is interrupted, making the file content incomplete and causing a database file exception. Therefore, calling CRUD operation APIs to operate the database fails.
+5. The database is directly operated using file APIs during database usage, causing a database file exception. Therefore, calling CRUD operation APIs to operate the database fails.
+6. Database file mismatch: for example, the db file and the wal file do not belong to the same database, causing a database exception. Therefore, calling CRUD operation APIs to operate the database fails.
 
 **Solution**
 
-If data loss is acceptable, delete the RDB store and create a new one. Otherwise, restore the RDB store from the backup file. For details, see [Database Backup and Restore](../../database/data-backup-and-restore.md).
+1. Check whether the custom key parameter is consistent with the key parameter used when the encrypted database was previously created.
+   - Yes: proceed to the next step.
+   - No: ensure that the custom key parameter is consistent each time the encrypted database is opened.
+2. Search for logs near the time when the issue occurred: `fdsan`, or troubleshoot whether the business code contains scenarios that operate on file descriptors (fd).
+   - Yes: Refer to [Using fdsan](../../napi/fdsan.md) to locate the issue, and synchronously process the database file anomaly. If data loss is acceptable, delete the existing database and recreate it; otherwise, complete the database backup first, and then perform the recovery operation. For details, see [Database Backup and Restore (ArkTS)](../../database/data-backup-and-restore.md).
+   - No: Proceed to the next step.
+3. Troubleshoot whether the business code contains memory corruption issues.
+   - Yes: Resolve the memory corruption issue in the business code, and synchronously process the database file anomaly. If data loss is acceptable, delete the existing database and recreate it; otherwise, complete the database backup first, and then perform the recovery operation. For details, see [Database Backup and Restore (ArkTS)](../../database/data-backup-and-restore.md).
+   - No: Proceed to the next step.
+4. Troubleshoot whether the business contains scenarios where copying or downloading the database file is interrupted.
+   - Yes: Avoid interrupting the process of copying or downloading the database file, and synchronously process the database file anomaly. If data loss is acceptable, delete the existing database and recreate it; otherwise, complete the database backup first, and then perform the recovery operation. For details, see [Database Backup and Restore (ArkTS)](../../database/data-backup-and-restore.md).
+   - No: Proceed to the next step.
+5. Troubleshoot whether the business code contains scenarios where file APIs are used to operate the database.
+   - Yes: Do not use file APIs to operate the database, and synchronously process the database file anomaly. If data loss is acceptable, delete the existing database and recreate it; otherwise, complete the database backup first, and then perform the recovery operation. For details, see [Database Backup and Restore (ArkTS)](../../database/data-backup-and-restore.md).
+   - No: Proceed to the next step.
+6. Check whether the db file or wal file is overwritten or replaced in the business code.
+   - Yes: Ensure that the db file and wal file correspond to each other, and synchronously process the database file anomaly. If data loss is acceptable, delete the existing database and recreate it; otherwise, complete the database backup first, and then perform the recovery operation. For details, see [Database Backup and Restore (ArkTS)](../../database/data-backup-and-restore.md).
+   - No: Provide the hilog system log and contact technical support personnel for locating.
 
-## 14800012 Empty Result Set or Invalid Position
+## 14800012 Result Set Is Empty or Pointer Index Is Out of Bounds
 
 **Error Message**
 
@@ -97,17 +147,31 @@ ResultSet is empty or pointer index is out of bounds.
 
 **Description**
 
-This error code is reported if the result set is empty or the specified location is invalid.
+The result set is empty or the pointer index is out of bounds.
 
 **Possible Causes**
 
-The result set is empty, or the specified row number in the result set is out of range [0, m - 1]. **m** is **ResultSet.rowCount**.
+1. SQL spelling errors, failure to find a table or field, duplicate field addition, violation of SQLite system restrictions, database file exceptions, and so on (see the problem scenarios of error code 14800021). In these cases, calling APIs such as [getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong) to obtain data fails.
+2. The size of a single queried data record exceeds 2 MB. In this case, calling APIs such as [getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong) to obtain data fails.
+3. There is no data in the table. In this case, calling APIs such as [getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong) to obtain data fails.
+4. There is no data in the table that meets the query condition. In this case, calling APIs such as [getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong) to obtain data fails.
 
 **Solution**
 
-Check whether the result set is empty or whether the specified row number is out of range.
+1. Check whether the issue can be located by referring to the procedure of error code 14800021.
+   - Yes: Refer to the procedure of error code 14800021.
+   - No: Proceed to the next step.
+2. Check whether the key log `ResetStatement.*over 2MB` can be found through regular expression search near the time when the issue occurred, or check whether the size of a single data record exceeds 2 MB.
+   - Yes: Call the [queryWithoutRowCount](arkts-apis-data-relationalStore-RdbStore.md#querywithoutrowcount23) API to obtain the result set [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md), and then query the data whose single entry exceeds 2 MB.
+   - No: Proceed to the next step.
+3. Check whether data exists in the table.
+   - Yes: Proceed to the next step.
+   - No: Insert data and then query again.
+4. Check whether data matching the query condition exists in the table.
+   - Yes: Provide the HiLog system log and contact technical support personnel for locating the issue.
+   - No: Ensure that the query condition meets expectations so that data can be queried.
 
-## 14800013 Null Column Value or Column Data Type Incompatible With the API Called
+## 14800013 Column Index Out of Range
 
 **Error Message**
 
@@ -115,17 +179,21 @@ Column index is out of bounds.
 
 **Description**
 
-This error code is reported if the column value is null, or the column data type is incompatible with the API called.
+The column index is out of range.
 
 **Possible Causes**
 
-1. The column number is out of the range [0, n - 1]. **n** is **ResultSet.columnCount**.
-2. The API called does not support the type of the column data.
+1. When [getColumnIndex](arkts-apis-data-relationalStore-ResultSet.md#getcolumnindex) is called with a column name that does not exist in the table, and its return value is then used as the input parameter of data retrieval APIs such as [getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong) or [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring), the interface execution fails.
+2. When the column index parameter passed in exceeds the valid range [0, number of table fields - 1], calling APIs such as [getColumnType](arkts-apis-data-relationalStore-ResultSet.md#getcolumntype18), [getColumnTypeSync](arkts-apis-data-relationalStore-ResultSet.md#getcolumntypesync18), [getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong), and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) to retrieve data fails.
 
 **Solution**
 
-1. Check whether the column number of the result set is out of range.
-2. Check whether the column data type is supported.
+1. Confirm whether the key log `GetColumnIndex:Failed, columnName` can be found near the time when the issue occurred, and check whether the input parameter of [getColumnIndex](arkts-apis-data-relationalStore-ResultSet.md#getcolumnindex) is a column name that does not exist in the table.
+   - Yes: Ensure that the input parameter meets expectations and is a column name that exists in the table.
+   - No: Proceed to the next step.
+2. Confirm whether the key log `column index.*out of range` can be found by regular expression search near the time when the issue occurred, and check whether the column index parameters of APIs such as [getColumnType](arkts-apis-data-relationalStore-ResultSet.md#getcolumntype18), [getColumnTypeSync](arkts-apis-data-relationalStore-ResultSet.md#getcolumntypesync18), [getLong](arkts-apis-data-relationalStore-ResultSet.md#getlong), and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) exceed the valid range.
+   - Yes: Ensure that the value of the input parameter is within the valid range.
+   - No: Provide the HiLog system log and contact technical support personnel for locating.
 
 ## 14800014 Target Instance Closed
 
@@ -194,7 +262,7 @@ This error code is reported if the key configuration of the RDB store has been m
 
 **Possible Causes**
 
-Key configuration, such as **area**, **securityLevel**, or the read/write permission of the RDB store is changed.
+Key configurations of the database, such as **area**, **securityLevel**, and database read/write permissions, have changed.
 
 **Solution**
 
@@ -210,7 +278,7 @@ No data meets the condition.
 
 **Description**
 
-This error code is reported if no data matching the search criteria is found.
+No data matching the query conditions is found.
 
 **Possible Causes**
 
@@ -246,7 +314,7 @@ The secret key is corrupted or lost.
 
 **Description**
 
-This error code is reported if obtaining the secret key fails.
+The key is corrupted or lost.
 
 **Possible Causes**
 
@@ -269,14 +337,30 @@ This error code is reported if an SQLite generic error occurs.
 
 **Possible Causes**
 
-An SQL statement is executed to perform any of the following operations:
-1. Insert or update data in a table that is not created.
-2. Insert or update data in a column that does not exist.
-3. Call an undefined function. For details, see SQLITE_ERROR.
+An error occurs during SQL statement execution, for example:
+1. The SQL statement contains spelling errors or syntax issues. Calling APIs such as [executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql), [execute](arkts-apis-data-relationalStore-RdbStore.md#execute12), or [executeSync](arkts-apis-data-relationalStore-RdbStore.md#executesync12) to execute the SQL statement fails.
+2. A table or a field in a table does not exist in the database. Calling APIs such as [executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql), [execute](arkts-apis-data-relationalStore-RdbStore.md#execute12), or [executeSync](arkts-apis-data-relationalStore-RdbStore.md#executesync12) to execute the SQL statement fails.
+3. A field that already exists in a table is added repeatedly. Calling APIs such as [executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql), [execute](arkts-apis-data-relationalStore-RdbStore.md#execute12), or [executeSync](arkts-apis-data-relationalStore-RdbStore.md#executesync12) to execute the SQL statement fails.
+4. SQLite system restrictions are violated (for example, the string or BLOB length exceeds the limit, there are too many columns, too many SQL variables, an overly deep expression tree, too many compound SELECT statements, or too many attached databases). Calling APIs such as [executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql), [execute](arkts-apis-data-relationalStore-RdbStore.md#execute12), or [executeSync](arkts-apis-data-relationalStore-RdbStore.md#executesync12) to execute the SQL statement fails.
+5. The database file is abnormal. Calling APIs such as [executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql), [execute](arkts-apis-data-relationalStore-RdbStore.md#execute12), or [executeSync](arkts-apis-data-relationalStore-RdbStore.md#executesync12) to execute the SQL statement fails.
 
 **Solution**
 
-Analyze the SQL statement and identify the error.
+1. Check whether the following key logs can be found through regular expression search near the time when the issue occurred: `Error.*unrecognized token|Error.*syntax error|Error.*incomplete input`.
+   - Yes: The SQL statement must be complete. Do not use the `RETURN` keyword in a trigger statement. Do not include comments at the beginning of an SQL statement. When an SQL statement contains `in`, the matching values in the parentheses must be `?` placeholders or specific values, not empty values. Do not use special characters such as `{`, `}`, or `$` near table names or field names in SQL.
+   - No: Proceed to the next step.
+2. Check whether the following key log can be found through regular expression search near the time when the issue occurred: `Error.*no such table|Error.*no such column`.
+   - Yes: Create the table or add the field before operating the database. Perform hardening and recreate the lost table or add the field.
+   - No: Proceed to the next step.
+3. Check whether the following key log can be found through regular expression search near the time when the issue occurred: `Error.*duplicate column name`.
+   - Yes: Do not add a field that already exists in the table.
+   - No: Proceed to the next step.
+4. Check whether the following key log can be found through regular expression search near the time when the issue occurred: `too many SQL variables|string or blob too big|too many columns|expression tree too deep|too many terms in compound SELECT|too many attached databases`.
+   - Yes: Ensure that SQL execution does not violate SQLite system restrictions. For details, see the official documentation: [Limits In SQLite](https://sqlite.org/limits.html).
+   - No: proceed to the next step.
+5. Confirm whether the key log can be found via regular expression search near the time point of the issue: `Error.*unsupported file format|Error.*database corruption|Error.*check hmac error`.
+   - Yes: resolve the issue of the business process corrupting memory or mistakenly closing the fd; integrate backup and recovery; delete and recreate the database.
+   - No: provide the HiLog system log and contact technical support personnel for locating the issue.
 
 ## 14800022 SQLite: Asynchronous Callback Request Aborted
 

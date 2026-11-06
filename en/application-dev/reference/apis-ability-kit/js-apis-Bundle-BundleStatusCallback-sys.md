@@ -3,8 +3,9 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=1bd317f06f1afd85920306c4a4cf71333749080f translatedAt=2026-09-03T11:03:28.010Z pushedAt=2026-09-05T10:47:30.518Z -->
 
 The module provides callbacks for bundle status changes. The changes can be obtained through [innerBundleManager.on](js-apis-Bundle-InnerBundleManager-sys.md#innerbundlemanagerondeprecated).
 
@@ -12,9 +13,9 @@ The module provides callbacks for bundle status changes. The changes can be obta
 >
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs of this module have been deprecated since API version 9. No substitute is provided.
-> 
-> The APIs provided by this module are system APIs.
+> This module is no longer maintained since API version 9, and no substitute API is available.
+>
+> This is a system API.
 
 ## BundleStatusCallback<sup>(deprecated)<sup>
 

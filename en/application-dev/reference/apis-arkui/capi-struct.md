@@ -12,7 +12,7 @@ typedef struct OH_PixelmapNative
 
 ## Overview
 
-Describes the pixel image information.
+Defines PixelMap information.
 
 **Since**: 15
 

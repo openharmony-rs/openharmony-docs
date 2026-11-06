@@ -2,10 +2,11 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @qq_437963121-->
-<!--Designer: @kutcherzhou1; @MontSaintMichel-->
+<!--Owner: @yu_haoqiaida-->
+<!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=e66df917b57615b81b9710929e438ae8b2dc0859 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 ## Overview
 
@@ -18,14 +19,14 @@ The **HiTraceMeter** module provides APIs for performance tracing. For details, 
 
 | API| Description|
 | -------- | -------- |
-| void OH_HiTrace_StartTraceEx(HiTrace_Output_Level level, const char\* name, const char\* customArgs) | Starts a synchronous time slice trace with the trace output level specified.<br>**Note**: This API is supported since API version 19.|
-| void OH_HiTrace_FinishTraceEx(HiTrace_Output_Level level) | Stops a synchronous time slice trace with the trace output level specified.<br>The value of **level** must be the same as that of **OH_HiTrace_StartTraceEx()**.<br>**Note**: This API is supported since API version 19.|
-| void OH_HiTrace_StartAsyncTraceEx(HiTrace_Output_Level level, const char\* name, int32_t taskId, const char\* customCategory, const char\* customArgs) | Starts an asynchronous time slice trace with the trace output level specified.<br>If multiple tracing tasks with the same name need to be performed at the same time, different task IDs must be specified through **taskId**. If the tracing tasks with the same name are not performed at the same time, the same task ID can be used.<br>**Note**: This API is supported since API version 19.|
-| void OH_HiTrace_FinishAsyncTraceEx(HiTrace_Output_Level level, const char\* name, int32_t taskId) | Stops an asynchronous time slice trace with the trace output level specified.<br>Stops a tracing task. The values of **name** and **taskId** must be the same as those in **OH_HiTrace_StartAsyncTraceEx()**.<br>**Note**: This API is supported since API version 19.|
-| void OH_HiTrace_CountTraceEx(HiTrace_Output_Level level, const char\* name, int64_t count) | Traces an integer with the trace output level specified.<br>**name** indicates the name of an integer variable to trace, and **count** indicates the integer value.<br>**Note**: This API is supported since API version 19.|
-| bool OH_HiTrace_IsTraceEnabled(void) | Checks whether application trace capture is enabled.<br>When it is enabled, **true** is returned; when it is disabled or stopped, **false** is returned. In this case, calling the HiTraceMeter API does not take effect.<br>**Note**: This API is supported since API version 19.|
-| int32_t OH_HiTrace_RegisterTraceListener(OH_HiTrace_TraceEventListener callback) | Registers a callback to notify whether the application trace capture is enabled. This API uses a synchronous callback to return the result.<br>After the registration is successful, the callback is executed immediately. Subsequent callbacks are executed when the application trace capture status changes.<br>Note: This API is supported since API version 22.|
-| int32_t OH_HiTrace_UnregisterTraceListener(int32_t index); | Deregisters the callback used to notify whether the application trace capture is enabled.<br>Note: This API is supported since API version 22.|
+| void OH_HiTrace_StartTraceEx(HiTrace_Output_Level level, const char\* name, const char\* customArgs) | Starts a synchronous time slice tracking event with hierarchical control of trace output.<br>**Note:** This API is supported since API version 19. |
+| void OH_HiTrace_FinishTraceEx(HiTrace_Output_Level level) | Ends a synchronous time slice tracking event with hierarchical control of trace output.<br>The level must be the same as the corresponding parameter value in OH_HiTrace_StartTraceEx() that started the trace.<br>**Note:** This API is supported since API version 19. |
+| void OH_HiTrace_StartAsyncTraceEx(HiTrace_Output_Level level, const char\* name, int32_t taskId, const char\* customCategory, const char\* customArgs) | Starts an asynchronous time slice tracking event with hierarchical control of trace output.<br>taskId is an ID used to indicate correlation in the trace. If multiple tasks with the same name are executed in parallel, you must pass a different taskId each time you call OH_HiTrace_StartAsyncTraceEx(). If tasks with the same name are executed serially, the taskId can be the same.<br>**Note:** This API is supported since API version 19. |
+| void OH_HiTrace_FinishAsyncTraceEx(HiTrace_Output_Level level, const char\* name, int32_t taskId) | Ends an asynchronous time slice tracking event with hierarchical control of trace output.<br>The level, name, and taskId must be the same as the corresponding parameter values in OH_HiTrace_StartAsyncTraceEx() that started the trace.<br>**Note:** This API is supported since API version 19. |
+| void OH_HiTrace_CountTraceEx(HiTrace_Output_Level level, const char\* name, int64_t count) | Creates an integer tracking event with hierarchical control of trace output.<br>name and count are used to mark the name and integer value of a tracked integer variable, respectively.<br>**Note:** This API is supported since API version 19. |
+| bool OH_HiTrace_IsTraceEnabled(void) | Checks whether app trace capture is currently enabled.<br>Returns **true** when capture is enabled through the hitrace CLI tool or other methods. Returns **false** when capture is not enabled or has been stopped, in which case calling HiTraceMeter performance tracing interfaces has no effect.<br>**Note:** This API is supported since API version 19. |
+| int32_t OH_HiTrace_RegisterTraceListener(OH_HiTrace_TraceEventListener callback) | Registers a callback for app trace capture switch notifications. This API uses an asynchronous callback to return the result.<br>After successful registration, the callback is executed immediately once. Subsequent callbacks are triggered by changes in the app trace capture switch state.<br>**Note:** This API is supported since API version 22. |
+| int32_t OH_HiTrace_UnregisterTraceListener(int32_t index); | Unregisters the callback for app trace capture switch notifications.<br>**Note:** This API is supported since API version 22. |
 
 > **NOTE**
 >
@@ -62,12 +63,12 @@ HiTraceMeter APIs are classified into three types: synchronous timeslice tracing
 
 | Name| Type| Description|
 | -------- | -------- | -------- |
-| level | enum | Trace output level. Trace data whose levels are lower than the system threshold will not be output.<br>The log version threshold is **HITRACE_LEVEL_INFO**, and the nolog version threshold is **HITRACE_LEVEL_COMMERCIAL**.|
+| level | enum | Trace output level. Traces below the system threshold will not be output.<br>The threshold is HITRACE_LEVEL_INFO for the log version and HITRACE_LEVEL_COMMERCIAL for the nolog version. |
 | name | const char\* | Name of the task or integer variable to trace.|
 | taskId | int32_t | Task ID. If multiple tasks with the same **name** are executed at the same time, you must set different **taskId** when calling **OH_HiTrace_StartAsyncTraceEx()**.|
 | count | int64_t | Value of an integer variable.|
-| customCategory | const char\* | Custom category name, which is used to collect asynchronous trace data of the same type.<br>If the category is not required, pass in an empty string.|
-| customArgs | const char\* | Custom key-value pair. If there are multiple key-value pairs, separate them with commas (,), for example, **key1=value1,key2=value2**.<br>If this parameter is not required, pass in an empty string.|
+| customCategory | const char\* | Custom clustering name, used to cluster asynchronous tracing events of the same category.<br>If clustering is not required, pass an empty string. |
+| customArgs | const char\* | Custom key-value pair. If there are multiple key-value pairs, separate them with commas, for example, "key1=value1,key2=value2".<br>If this parameter is not required, pass an empty string. |
 | callback | void (*)(bool) | Registered callback.|
 | index | int32_t | Callback index returned by **OH_HiTrace_RegisterTraceListener()**.|
 
@@ -107,25 +108,26 @@ The following is an example of a native C++ application that uses the HiTraceMet
    │       │   │       └── Index.ets
    ```
 
-2. In the **entry/src/main/cpp/CMakeLists.tx** file, add **libhitrace_ndk.z.so** and **libhilog_ndk.z.so**. The complete file content is as follows:
-
-   ```cmake
-   # the minimum version of CMake.
-   cmake_minimum_required(VERSION 3.5.0)
-   project(HiTraceChainTest03)
-   
-   set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
-   
-   if(DEFINED PACKAGE_FIND_FILE)
-       include(${PACKAGE_FIND_FILE})
-   endif()
-   
-   include_directories(${NATIVERENDER_ROOT_PATH}
-                       ${NATIVERENDER_ROOT_PATH}/include)
-   
-   add_library(entry SHARED napi_init.cpp)
-   target_link_libraries(entry PUBLIC libace_napi.z.so libhitrace_ndk.z.so libhilog_ndk.z.so)
-   ```
+2. In the **entry/src/main/cpp/CMakeLists.txt** file, add **libhitrace_ndk.z.so** and **libhilog_ndk.z.so**. The complete file content is as follows:
+    <!-- @[hitracemeter_ndk_cmake_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_NDK/entry/src/main/cpp/CMakeLists.txt) -->
+    
+    ``` cmake
+    # the minimum version of CMake.
+    cmake_minimum_required(VERSION 3.5.0)
+    project(HiTraceChainTest03)
+    
+    set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+    
+    if(DEFINED PACKAGE_FIND_FILE)
+        include(${PACKAGE_FIND_FILE})
+    endif()
+    
+    include_directories(${NATIVERENDER_ROOT_PATH}
+                        ${NATIVERENDER_ROOT_PATH}/include)
+    
+    add_library(entry SHARED napi_init.cpp)
+    target_link_libraries(entry PUBLIC libace_napi.z.so libhitrace_ndk.z.so libhilog_ndk.z.so)
+    ```
 
 3. In the **entry/src/main/cpp/napi_init.cpp** file, call the HiTraceMeter NDK_C API in the **Add** function to trace performance. The sample code is as follows:
 
@@ -275,7 +277,7 @@ The following is an example of a native C++ application that uses the HiTraceMet
    ```
 
 
-### Step 3: Stoping Trace Capture
+### Step 3: Stopping Trace Capture
 
 1. Run the following command to stop the application trace capture:
 

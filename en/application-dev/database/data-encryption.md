@@ -5,12 +5,14 @@
 <!--Designer: @widecode; @htt1997; @dboy190-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=8172efdc94c065e1de022814d66012668129fd88 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 ## When to Use
 
 OpenHarmony provides the database encryption capability to effectively protect the data stored in a database. Database encryption allows data to be stored and used in ciphertext, ensuring data confidentiality and integrity.
 
-The encrypted database can be accessed only using an API, and the database file cannot be opened in other ways. Whether a database is encrypted is set when the database is created, and the setting cannot be changed.
+The encryption attribute of a KV store is determined upon creation and cannot be changed. Starting from API version 22, an RDB store supports adjusting its encryption attribute through the [rekeyEx](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#rekeyex22) API.
 
 Both KV stores and RDB stores support database encryption. For RDB stores, you can customize the encryption/decryption keys and other parameters.
 
@@ -41,7 +43,7 @@ For details about the APIs, see [Distributed KV Store](../reference/apis-arkdata
    }
    ```
    <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-   
+
    ``` TypeScript
    public CreateKvManager = (() => {
      Logger.info('CreateKvManager start');
@@ -63,7 +65,7 @@ For details about the APIs, see [Distributed KV Store](../reference/apis-arkdata
    })
    ```
    <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-   
+
    ``` TypeScript
    public GetKvStore = (() => {
      Logger.info('GetKvStore start');
@@ -120,7 +122,7 @@ For details about the APIs, see [Distributed KV Store](../reference/apis-arkdata
    })
    ```
 
-## Encrypting an RDB Store 
+## Encrypting an RDB Store
 
 The **encrypt** property in [StoreConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig) specifies whether to encrypt the RDB store. The value **true** means to encrypt the RDB store, and **false** means the opposite.
 
@@ -149,7 +151,10 @@ import { common } from '@kit.AbilityKit';
 let store: relationalStore.RdbStore | undefined = undefined;
 
 /* context indicates the application's context information, which is obtained by the caller. The following is for demonstration purposes only. */
-const context = new UIContext().getHostContext() as common.UIAbilityContext;
+const context = uiContext.getHostContext();
+if (context === undefined) {
+  return;
+}
 try {
   const STORE_CONFIG: relationalStore.StoreConfig = {
     name: 'RdbTest.db',
@@ -196,7 +201,10 @@ const STORE_CONFIG: relationalStore.StoreConfig = {
 }
 
 /* context indicates the application's context information, which is obtained by the caller. The following is for demonstration purposes only. */
-const context = new UIContext().getHostContext() as common.UIAbilityContext;
+const context = uiContext.getHostContext();
+if (context === undefined) {
+  return;
+}
 try {
   store = await relationalStore.getRdbStore(context, STORE_CONFIG);
   if (store == null) {

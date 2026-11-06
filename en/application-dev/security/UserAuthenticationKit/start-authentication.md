@@ -6,6 +6,7 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=b799bd137584a338db2107c2101b1d6091a6feea translatedAt=2026-11-03T05:46:58.538Z pushedAt=2026-11-03T07:44:44.664Z nl=1 -->
 
 A user authentication is required before an application accesses a critical functionality or sensitive data. This topic walks you through the process.
 
@@ -31,7 +32,7 @@ The system provides a unified user authentication widget, which stands out with 
 The following figure shows the style of the user authentication widget, which can be set via the [WidgetParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#widgetparam10) parameter.
 
 <!--RP1-->
-![](figures/user-authentication-widget.png)
+![unified-UI-component-authentication](figures/unified-UI-component-authentication.png)
 <!--RP1End-->
 
 - ①: Title (**WidgetParam.title**) of the user authentication page, which cannot be empty or exceed 500 characters. You are advised to set the title to the authentication purpose, for example, payment and application login.
@@ -47,28 +48,34 @@ The following figure shows the style of the user authentication widget, which ca
 
   Currently, the full screen mode is available only for system applications.
 
-  ![](figures/widget_display_modes.png)
+  ![popup-authentication](figures/popup-authentication.png)
 <!--DelEnd-->
 
 The user authentication widget supports the following types of authentication:
 
-- Lock screen password authentication
+- Lock screen password authentication.
 
-- Facial authentication
+- Facial authentication.
 
-- Fingerprint authentication
+- Fingerprint authentication.
 
-- Facial + lock screen password authentication
+- Facial + lock screen password authentication.
 
-- Fingerprint + lock screen password authentication
+- Fingerprint + lock screen password authentication.
 
-- Facial + fingerprint + lock screen password authentication
+- Facial + fingerprint + lock screen password authentication.
 
-- Facial authentication + custom navigation button
+- Facial authentication + custom navigation button.
 
-- Fingerprint authentication + custom navigation button
+- Fingerprint authentication + custom navigation button.
 
-- Facial authentication + fingerprint authentication + custom navigation button<sup>18+</sup>
+- Starting from API version 18, facial + fingerprint + custom navigation button authentication is supported.
+
+<!--RP3--><!--RP3End-->
+
+> **NOTE**
+>
+> Starting from API version 26.0.1, in the enterprise account scenario, if the user has enabled enterprise account authentication unlock but has not registered a lock screen password, the lock screen password authentication initiated by the application will automatically switch to enterprise account password authentication.
 
 ## How to Develop
 
@@ -300,4 +307,4 @@ initiatingUserAuthentication4() {
 
 ## Sample Code
 
-  - [Initiating authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - You can refer to the [User Authentication Service](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication) sample code.

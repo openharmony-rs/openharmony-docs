@@ -15,10 +15,7 @@
 
 **库：** libhuks_ndk.z.so
 
-**系统能力：** 
-
-- API version 20+：SystemCapability.Security.Huks.Core
-- API version 9-19：SystemCapability.Security.Huks
+**系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
 
@@ -296,7 +293,7 @@ OH_HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING对应的密钥材料格式：
 | -- | -- |
 | OH_HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING = 1 | 密文导入密钥材料格式（Length-Value格式）采用X25519密钥协商同时采用AES-256-GCM加解密。具体材料格式见上方枚举描述。 |
 | OH_HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING = 2 | 密文导入密钥材料格式（Length-Value格式）采用ECDH-p256密钥协商同时采用AES-256-GCM加解密。具体材料格式见上方枚举描述。 |
-| OH_HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING = 5 | 密文导入密钥材料格式（Length-Value格式）使用临时SM4密钥加密导入密钥，使用已导入HUKS的SM2密钥加密SM4密钥。具体材料格式见上方枚举描述。<br>**起始版本：**23 |
+| OH_HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING = 5 | 密文导入密钥材料格式（Length-Value格式）使用临时SM4密钥加密导入密钥，使用已导入HUKS的SM2密钥加密SM4密钥。具体材料格式见上方枚举描述。<br>**起始版本：** 23 |
 ### OH_Huks_KeyGenerateType
 
 ```c
@@ -656,7 +653,7 @@ enum OH_Huks_Tag
 | OH_HUKS_TAG_AGREE_PRIVATE_KEY_ALIAS = OH_HUKS_TAG_TYPE_BYTES \| 21 | 密钥协商时的私钥别名。 |
 | OH_HUKS_TAG_AGREE_PUBLIC_KEY = OH_HUKS_TAG_TYPE_BYTES \| 22 | 用于协商的公钥。 |
 | OH_HUKS_TAG_KEY_ALIAS = OH_HUKS_TAG_TYPE_BYTES \| 23 | 密钥别名。 |
-| OH_HUKS_TAG_DERIVE_KEY_SIZE = OH_HUKS_TAG_TYPE_UINT \| 24 | 派生密钥大小，单位：byte。 |
+| OH_HUKS_TAG_DERIVE_KEY_SIZE = OH_HUKS_TAG_TYPE_UINT \| 24 | 派生密钥大小，单位：Byte。 |
 | OH_HUKS_TAG_IMPORT_KEY_TYPE = OH_HUKS_TAG_TYPE_UINT \| 25 | 导入密钥类型，类型可在枚举[OH_Huks_ImportKeyType](capi-native-huks-type-h.md#oh_huks_importkeytype)中选择。 |
 | OH_HUKS_TAG_UNWRAP_ALGORITHM_SUITE = OH_HUKS_TAG_TYPE_UINT \| 26 | 导入加密密钥的套件，类型可在枚举[OH_Huks_AlgSuite](capi-native-huks-type-h.md#oh_huks_algsuite)中选择。 |
 | OH_HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG = OH_HUKS_TAG_TYPE_UINT \| 29 | 派生密钥/协商密钥的存储类型，类型可在枚举[OH_Huks_KeyStorageType](capi-native-huks-type-h.md#oh_huks_keystoragetype)中选择。 |
@@ -680,8 +677,9 @@ enum OH_Huks_Tag
 | OH_HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO = OH_HUKS_TAG_TYPE_BYTES \| 514 | 密钥认证时的安全凭据。 |
 | OH_HUKS_TAG_ATTESTATION_ID_VERSION_INFO = OH_HUKS_TAG_TYPE_BYTES \| 515 | 密钥认证时的版本号。 |
 | OH_HUKS_TAG_KEY_OVERRIDE = OH_HUKS_TAG_TYPE_BOOL \| 520 | 是否覆写同名密钥。<br>**起始版本：** 20 |
-| OH_HUKS_TAG_AE_TAG_LEN = OH_HUKS_TAG_TYPE_UINT \| 521 | CCM模式下指定的AEAD字节长度。<br>**起始版本：** 22 |
+| OH_HUKS_TAG_AE_TAG_LEN = OH_HUKS_TAG_TYPE_UINT \| 521 | CCM模式下指定的AEAD长度，单位：Byte。<br>**起始版本：** 22 |
 | OH_HUKS_TAG_KEY_CLASS = OH_HUKS_TAG_TYPE_UINT \| 522 | 密钥类别，用于区分设备本地由HUKS管理的密钥或者外部装置中存储的密钥。<br>**起始版本：** 22 |
+| OH_HUKS_TAG_TIMEOUT = OH_HUKS_TAG_TYPE_UINT \| 529 | 表示异步超时时间，单位为秒，可由业务逻辑自定义。<br>**起始版本：** 26.0.1 |
 | OH_HUKS_TAG_KEY_ACCESS_GROUP = OH_HUKS_TAG_TYPE_BYTES \| 523 | 表示群组标识，在同一开发者ID下归属于相同的群组可共享该群组下的密钥。<br>**起始版本：** 23 |
 | OH_HUKS_TAG_IS_KEY_ALIAS = OH_HUKS_TAG_TYPE_BOOL \| 1001 | 是否是密钥别名。 |
 | OH_HUKS_TAG_KEY_STORAGE_FLAG = OH_HUKS_TAG_TYPE_UINT \| 1002 | 密钥存储方式的标签，类型可在枚举 [OH_Huks_KeyStorageType](capi-native-huks-type-h.md#oh_huks_keystoragetype)选择。 |

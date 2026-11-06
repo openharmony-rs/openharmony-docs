@@ -1,5 +1,13 @@
 # ohos.screenLockFileManager Error Codes
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @steven-q-->
+<!--Designer: @JiDong-CS1-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=cf1e5841eb24707d08da34d1f535f8c8dd2606b5 translatedAt=2026-09-03T09:25:46.920Z pushedAt=2026-09-05T10:47:30.165Z -->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -9,6 +17,10 @@
 **Error Message**
 
 Invalid DataType.
+
+**Description**
+
+This error code is returned when the incoming **dataType** fails verification.
 
 **Possible Causes**
 
@@ -23,7 +35,11 @@ Correct invalid parameter values.
 
 **Error Message**
 
-The system ability work abnormally.
+The system ability works abnormally.
+
+**Description**
+
+This error code is returned when the system ability service works abnormally.
 
 **Possible Causes**
 
@@ -40,7 +56,11 @@ System services do not work properly. Try again later or restart the device.
 
 **Error Message**
 
-The application has not enabled the data protection under lock screen.
+The application has not enabled the data protection function under lock screen.
+
+**Description**
+
+This error code is returned when the application has not enabled the data protection function under lock screen.
 
 **Possible Causes**
 
@@ -56,7 +76,11 @@ Configure the ohos.permission.PROTECT_SCREEN_LOCK_DATA permission through [reque
 
 **Error Message**
 
-File access is denied.
+The file access is denied due to security strategy.
+
+**Description**
+
+File access is denied. This error code is returned when the permission to access sensitive data on the lock screen has been released.
 
 **Possible Causes**
 
@@ -64,14 +88,18 @@ The permission to access sensitive data on the lock screen has been revoked.
 
 **Solution**
 
-Sensitive data cannot be accessed on the lock screen. If necessary, ask the user to unlock the screen again. The sensitive data can be used only after the screen is unlocked.
+Sensitive data cannot be accessed under the lock screen. To continue using it, guide the user to unlock the screen again. Normal access is restored after the unlock is complete.
 
 
 ## 29300005 Permission to Access Sensitive Data on the Lock Screen Is Not Requested
 
 **Error Message**
 
-File access was not acquired.
+File access is not acquired.
+
+**Description**
+
+This error code is returned when the permission to access sensitive data on the lock screen is not requested.
 
 **Possible Causes**
 

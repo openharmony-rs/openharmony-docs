@@ -5,6 +5,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=23c78283c2fbf556eb3d88353a7151aeb7aecf0d translatedAt=2026-09-01T13:02:47.684Z pushedAt=2026-09-07T09:54:32.655Z -->
 
 ## Overview
 
@@ -53,7 +54,7 @@ Enumerates the playback control error codes.
 | AV_SESSION_ERR_CODE_SESSION_NOT_EXIST = 6600102 | The session does not exist.|
 | AV_SESSION_ERR_CODE_COMMAND_INVALID = 6600105 | The session command is invalid.|
 | AV_SESSION_ERR_CODE_SESSION_INACTIVE = 6600106 | The session is not activated.|
-| AV_SESSION_ERR_CODE_MESSAGE_OVERLOAD = 6600107 | Too many commands or messages.|
+| AV_SESSION_ERR_CODE_MESSAGE_OVERLOAD = 6600107 | Too many commands and messages. |
 | AV_SESSION_ERR_CODE_REMOTE_CONNECTION_NOT_EXIST = 6600109 |  The remote session does not exist.<br>**Since**: 23|
 | AV_SESSION_ERR_CODE_CAST_CONTROL_UNSPECIFIED = 6611000 |  An unknown error occurs in the casting controller.<br>**Since**: 23|
 | AV_SESSION_ERR_CODE_CAST_CONTROL_REMOTE_ERROR = 6611001 |  An unknown error occurs in the remote device.<br>**Since**: 23|
@@ -90,12 +91,12 @@ Enumerates the playback control error codes.
 | AV_SESSION_ERR_CODE_CAST_CONTROL_PARSING_CONTAINER_MALFORMED = 6613001 |  An error occurs when the media container format stream is parsed.<br>**Since**: 23|
 | AV_SESSION_ERR_CODE_CAST_CONTROL_PARSING_MANIFEST_MALFORMED = 6613002 |  An error occurs when the media list is parsed.<br>**Since**: 23|
 | AV_SESSION_ERR_CODE_CAST_CONTROL_PARSING_CONTAINER_UNSUPPORTED = 6613003 |  Failed to extract the file because the media container format is not supported.<br>**Since**: 23|
-| AV_SESSION_ERR_CODE_CAST_CONTROL_PARSING_MANIFEST_UNSUPPORTED = 6613004 |  The media cannot be read. For example, the media is dusty or scratched.<br>**Since**: 23|
+| AV_SESSION_ERR_CODE_CAST_CONTROL_PARSING_MANIFEST_UNSUPPORTED = 6613004 | This feature is not supported in the media manifest.<br>**Since:** 23 |
 | AV_SESSION_ERR_CODE_CAST_CONTROL_DECODING_UNSPECIFIED = 6614000 |  An unknown decoding error occurs.<br>**Since**: 23|
 | AV_SESSION_ERR_CODE_CAST_CONTROL_DECODING_INIT_FAILED = 6614001 |  Initializing the decoder fails.<br>**Since**: 23|
 | AV_SESSION_ERR_CODE_CAST_CONTROL_DECODING_QUERY_FAILED = 6614002 |  Querying the decoder fails.<br>**Since**: 23|
 | AV_SESSION_ERR_CODE_CAST_CONTROL_DECODING_FAILED = 6614003 |  Decoding the media sample fails.<br>**Since**: 23|
-| AV_SESSION_ERR_CODE_CAST_CONTROL_DECODING_FORMAT_EXCEEDS_CAPABILITIES = 6614004 |  The number of content requests reaches the maximum.<br>**Since**: 23|
+| AV_SESSION_ERR_CODE_CAST_CONTROL_DECODING_FORMAT_EXCEEDS_CAPABILITIES = 6614004 | The decoding capability of the device does not meet the requirements.<br>**Since:** 23 |
 | AV_SESSION_ERR_CODE_CAST_CONTROL_DECODING_FORMAT_UNSUPPORTED = 6614005 |  The content format is not supported for decoding.<br>**Since**: 23|
 | AV_SESSION_ERR_CODE_CAST_CONTROL_AUDIO_RENDERER_UNSPECIFIED = 6615000 |  An unknown error occurs in the audio renderer.<br>**Since**: 23|
 | AV_SESSION_ERR_CODE_CAST_CONTROL_AUDIO_RENDERER_INIT_FAILED = 6615001 |  An exception occurs during audio renderer initialization.<br>**Since**: 23|
@@ -153,3 +154,5 @@ Enumerates the error codes of an item in the queue.
 | AVQUEUEITEM_SUCCESS = 0 |  The API execution is successful.|
 | AVQUEUEITEM_ERROR_INVALID_PARAM = 1 |  The function is executed with invalid input parameters.|
 | AVQUEUEITEM_ERROR_NO_MEMORY = 2 |  Failed to allocate memory.|
+
+

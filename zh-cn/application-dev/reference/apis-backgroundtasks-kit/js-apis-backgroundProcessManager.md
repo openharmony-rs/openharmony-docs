@@ -46,7 +46,7 @@ setProcessPriority(pid: number, priority: ProcessPriority): Promise&lt;void&gt;
 
 | 错误码ID    | 错误信息             |
 |----------|------------------|
-| 401      | Parameter error. Possible causes: priority is out of range. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -118,7 +118,7 @@ setPowerSaveMode(pid: number, powerSaveMode: PowerSaveMode): Promise&lt;void&gt;
 
 | 参数名      | 类型      | 必填      | 说明      |
 |-------------|-----------|-----------|-----------|
-| pid         | number    | 是        | 进程号。  |
+| pid         | number    | 是        | 进程号。<br>取值为正整数。  |
 | powerSaveMode | [PowerSaveMode](#powersavemode20) | 是 | 能效模式。 |
 
 **返回值**：
@@ -133,8 +133,8 @@ setPowerSaveMode(pid: number, powerSaveMode: PowerSaveMode): Promise&lt;void&gt;
 
 | 错误码ID    | 错误信息             |
 |----------|------------------|
-| 201      | Permission denied. |
-| 801      | Capability not supported. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. PowerSaveMode status is out of range. |
 | 31800003      | Setup error, This setting is overridden by settings in Task Manager |
 | 31800004      | The setting failed due to system scheduling reasons. |
@@ -145,11 +145,15 @@ setPowerSaveMode(pid: number, powerSaveMode: PowerSaveMode): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 
-let pid = 33333;
+let pid = 33333;  // 请开发者替换为实际的进程号
 try {
-    backgroundProcessManager.setPowerSaveMode(pid, backgroundProcessManager.PowerSaveMode.EFFICIENCY_MODE); 
+  backgroundProcessManager.setPowerSaveMode(pid, backgroundProcessManager.PowerSaveMode.EFFICIENCY_MODE).then(() => {
+    console.info('setPowerSaveMode promise');
+  }).catch((err: BusinessError) => {
+    console.error(`setPowerSaveMode failed, promise errCode: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
-    console.error(`setPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`setPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -169,7 +173,7 @@ isPowerSaveMode(pid: number): Promise&lt;boolean&gt;
 
 | 参数名      | 类型      | 必填      | 说明      |
 |-------------|-----------|-----------|-----------|
-| pid         | number    | 是        | 进程号。  |
+| pid         | number    | 是        | 进程号。<br>取值为正整数。  |
 
 **返回值**：
 
@@ -183,8 +187,8 @@ isPowerSaveMode(pid: number): Promise&lt;boolean&gt;
 
 | 错误码ID    | 错误信息             |
 |----------|------------------|
-| 201      | Permission denied. |
-| 801      | Capability not supported. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types. |
 
 **示例**：
@@ -193,13 +197,15 @@ isPowerSaveMode(pid: number): Promise&lt;boolean&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 
-let pid = 33333;
+let pid = 33333;  // 请开发者替换为实际的进程号
 try {
-    backgroundProcessManager.isPowerSaveMode(pid).then((result: boolean) => {
-        console.info("isPowerSaveMode: " + result.toString());
-    });
+  backgroundProcessManager.isPowerSaveMode(pid).then((result: boolean) => {
+    console.info(`isPowerSaveMode: ${result}`);
+  }).catch((err: BusinessError) => {
+    console.error(`isPowerSaveMode failed, promise errCode: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
-    console.error(`isPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`isPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -219,7 +225,7 @@ getPowerSaveMode(pid: number): Promise&lt;PowerSaveMode&gt;
 
 | 参数名      | 类型      | 必填      | 说明      |
 |-------------|-----------|-----------|-----------|
-| pid         | number    | 是        | 进程号。<br>取值范围：大于0的整数。  |
+| pid         | number    | 是        | 进程号。<br>取值为正整数。  |
 
 **返回值：**
 
@@ -233,8 +239,8 @@ getPowerSaveMode(pid: number): Promise&lt;PowerSaveMode&gt;
 
 | 错误码ID    | 错误信息             |
 |----------|------------------|
-| 201      | Permission denied. |
-| 801      | Capability not supported. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types. |
 
 **示例：**
@@ -242,14 +248,16 @@ getPowerSaveMode(pid: number): Promise&lt;PowerSaveMode&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
-// 请开发者替换为实际的进程号
-let pid = 33333;
+
+let pid = 33333;  // 请开发者替换为实际的进程号
 try {
-    backgroundProcessManager.getPowerSaveMode(pid).then((result: backgroundProcessManager.PowerSaveMode) => {
-        console.info("getPowerSaveMode: " + result.toString());
-    });
+  backgroundProcessManager.getPowerSaveMode(pid).then((result: backgroundProcessManager.PowerSaveMode) => {
+    console.info(`getPowerSaveMode: ${result}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getPowerSaveMode failed, promise errCode: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
-    console.error(`getPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`getPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 

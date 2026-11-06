@@ -5,14 +5,15 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=616154547bd460b9fc2ce4c0e0aaaea2da3ac21a translatedAt=2026-09-21T10:50:21.042Z pushedAt=2026-09-23T07:40:05.653Z -->
 
 ## Overview
 
 The existing [custom component lifecycle](./arkts-page-custom-components-lifecycle.md) callback function is triggered only by events. In some specific cases, the triggering sequence of the custom component lifecycle callback function does not meet the expectation. For example, [aboutToDisappear will call aboutToAppear by mistake in specific cases, or aboutToReuse will be called by mistake when a component is not expanded and reused](#differences-between-lifecycle-callback-functions). The new custom component lifecycle callbacks are restricted by the state machine, and the timing of calling lifecycle callbacks is as expected.
 
-Lifecycle of a custom component, that is, the lifecycle of a custom component decorated by [@Component](arkts-create-custom-components.md#component) or [@ComponentV2](./arkts-create-custom-components.md#componentv2). Since API version 23, the following lifecycle decorators are provided:
+The custom component lifecycle, that is, the lifecycle of a custom component decorated with [@Component](arkts-create-custom-components.md#component) or [@ComponentV2](./arkts-create-custom-components.md#componentv2), provides the following lifecycle decorators starting from API version 23 (among which \@ComponentActive and \@ComponentInactive are available since API version 26.0.0):
 
-- [\@ComponentInit](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentinit): The function decorated by \@ComponentInit is executed when the custom component is about to be constructed. You can register listening and modify variables in this function.
+- [\@ComponentInit](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentinit): The function decorated by \@ComponentInit is executed when the custom component is about to be constructed. You can register a listener and modify variables in this function.
 
 - [\@ComponentAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentappear): When a component is about to appear, the function decorated by the decorator is called back. The function is executed after a new instance of the custom component is created and before the build function is executed.
 
@@ -20,15 +21,15 @@ Lifecycle of a custom component, that is, the lifecycle of a custom component de
 
 - [\@ComponentDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentdisappear): The function decorated by the decorator is executed before the custom component is destructed. You are not advised to change state variables in the functions decorated by \@ComponentDisappear. Especially, the modification of the @Link variable may cause unstable application behavior.
 
-- [\@ComponentReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentreuse): When a reusable custom component is added from the cache to the node tree, the decorator decorated function is called to receive the construction input parameters of the component. At last, the function decorated by **\@ComponentReuse** recursively traverses all child components, and the **\@ComponentReuse** decorated function in each reused child component will be called.
+- [\@ComponentReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentreuse): When a reusable custom component is added from the reuse pool to the node tree, the function decorated with this decorator is called to receive the construction input parameters of the component. At last, the function decorated with \@ComponentReuse recursively traverses all child components, and the function decorated with \@ComponentReuse is called for each reused component.
 
-- [\@ComponentRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentrecycle): This function is triggered after a component is reclaimed. The necessary reclaim operations defined in the application are performed first, and then the function decorated by this decorator is called. At last, the function decorated by **\@ComponentRecycle** recursively traverses all child components, and the **\@ComponentRecycle** decorated function in each recycled child component will be called.
+- [\@ComponentRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentrecycle): This function is triggered after a component is recycled. The necessary recycle operations defined in the application are performed first, and then the function decorated by this decorator is called. At last, the function decorated by **\@ComponentRecycle** recursively traverses all child components, and the **\@ComponentRecycle** decorated function in each recycled child component will be called.
 
-- [\@ComponentActive](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentactive): When a component changes from the inactive state to the active state, the function decorated with this decorator is called. The concepts of activating and deactivating custom components are the same as those of activating and deactivating components in [component freezing](./arkts-custom-components-freeze.md). For details, see [Active and Inactive Lifecycles of a Custom Component](#active-and-inactive-lifecycles-of-a-custom-component).
+- [\@ComponentActive](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentactive): When a component changes from the inactive state to the active state, the function decorated with this decorator is called. The concepts of active and inactive for custom components are the same as those of component active (**active**) and inactive (**inactive**) in [component freezing](./arkts-custom-components-freeze.md). For details, see [Active and Inactive Lifecycles of a Custom Component](#active-and-inactive-lifecycles-of-a-custom-component).
 
 - [\@ComponentInactive](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentinactive): When a component changes from the active state to the inactive state, the function decorated with this decorator is called.
 
-The lifecycle of a custom component is restricted by the state machine. The following figure shows the process.
+The custom component lifecycle is constrained by a state machine. Except for \@ComponentActive and \@ComponentInactive, each lifecycle callback function is called only during a specific state transition phase. For example, the constraint of \@ComponentReuse is that it is triggered during the transition from CustomComponentLifecycleState.RECYCLED to CustomComponentLifecycleState.BUILT, and \@ComponentAppear is triggered only when the component is in the CustomComponentLifecycleState.INIT state. The process is shown in the following figure.
 
 ![custom-component-lifecycle-demo1](figures/customcomponent-lifecycle-new-state.png)
 
@@ -38,7 +39,7 @@ The lifecycle of a custom component is restricted by the state machine. The foll
 
 2. Initialization of custom component member variables: The member variables are initialized with locally defined defaults or component constructor parameters. The initialization happens in the document order, which is the order in which the member variables are defined.
 
-3. On initial render, the **build** function of the built-in component is executed for rendering. If the child component is a custom component, the rendering creates an instance of the child component. During initial render, the framework records the mapping between state variables and components. When a state variable changes, the framework drives the related components to update.
+3. On initial render, the **build** function is executed for rendering built-in components. If the child component is a custom component, the rendering creates an instance of the child component. During initial render, the framework records the mapping between state variables and components. When a state variable changes, the framework drives the related components to update.
 
 ### Custom Component Deletion
 
@@ -46,34 +47,36 @@ For example, if the branch of the if component changes or the number of arrays i
 
 1. Before a component is deleted, the lifecycle function of the \@ComponentDisappear decorator is called, indicating that the node is to be destroyed. The component deletion mechanism of ArkUI is as follows:<br>(1) The backend component is directly removed from the component tree and destroyed.<br>(2) The reference to the destroyed component is released from the frontend components.<br>(3) The Ark Engine garbage collects the destroyed component.
 
-2. The custom component and its variables will be deleted. If the component has synchronous variables (such as [@Link](arkts-link.md), [@Prop](arkts-prop.md), and [@StorageLink](arkts-appstorage.md#storagelink)), the component is deregistered from the [Data Source](arkts-state-management-glossary.md#data-source)
+2. The custom component and its variables will be deleted. If the component has synchronized variables (such as [@Link](arkts-link.md), [@Prop](arkts-prop.md), [@StorageLink](arkts-appstorage.md#storagelink)), they will be unregistered from the [state data source](arkts-state-management-glossary.md#state-data-source).
 
 ## Active and Inactive Lifecycles of a Custom Component
 
 The @ComponentActive and @ComponentInactive lifecycle decorators are available since API version 26.0.0. They are used to listen to the activation status changes of custom components and are not restricted by the state machine.
 
-When a component changes from inactive to active (for example, when an application is switched from the background to the foreground or a page is displayed again), the function decorated by @ComponentActive is triggered. When a component changes from active to inactive (for example, when an application is switched to the background, a page is hidden, or a component is pre-created), the function decorated by @ComponentInactive is triggered. The activation or deactivation of a component is not equivalent to its visibility.
+When a component changes from inactive to active (for example, when an application is switched from the background to the foreground or a page is displayed again), the function decorated by @ComponentActive is triggered. When a component changes from active to inactive (for example, when an application is switched to the background, a page is hidden, or a component is pre-created), the function decorated by @ComponentInactive is triggered. A component's active/inactive state is not equivalent to its visibility.
 
-In this document, the activation of a custom component refers to the process where the component changes from inactive to active, and the @ComponentActive function is triggered. The deactivation of a custom component refers to the process where the component changes from active to inactive, and the @ComponentInactive function is triggered.
+In this document, the activation of a custom component refers to the process where the component changes from inactive to active, and the `@ComponentActive` function is triggered. The deactivation of a custom component refers to the process where the component changes from active to inactive, and the `@ComponentInactive` function is triggered.
 
-Currently, the activation and deactivation lifecycle supports the following scenarios.
+Currently, the active/inactive lifecycle state supports the following scenarios.
 
-### Listening to the activation status changes in the component recycling and reuse scenario
+### Listening to the Active State Changes in the Component Recycling and Reuse Scenario
 
-A component that enters the reuse pool becomes inactive. A reusable component becomes active when it is added back to the node tree from the reuse pool. This example shows the triggering of the activation and deactivation lifecycle callbacks of a custom component in the component recycling and reuse scenario.
+A component that enters the reuse pool becomes inactive. A reusable component becomes active when it is added back to the node tree from the reuse pool. This example shows the triggering of the active/inactive lifecycle callbacks of a custom component in the component recycling and reuse scenario.
 
-```ts
+<!-- @[ComponentActiveRecycle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentActiveRecycle.ets) -->  
+
+``` TypeScript
 import { ComponentActive, ComponentInactive, ComponentReuse, ComponentRecycle } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
   @State changeChild: boolean = false;
 
   build() {
     Column() {
       Button('change')
+        .margin(10)
         .onClick(() => {
           // Switch the display status of the child component to trigger component recycling or reuse.
           this.changeChild = !this.changeChild;
@@ -130,6 +133,8 @@ struct Child {
 }
 ```
 
+![new-lifecycle-syn-0](./figures/new-lifecycle-syn-0.gif)
+
 You are advised to execute the preceding code in the following steps:
 
 1. Click Change. The child component is created for the first time.
@@ -156,7 +161,9 @@ Lazy creation means that there are multiple components in the container. Only th
 
 Lazy loading scenarios include [Tabs](../../ui/arkts-navigation-tabs.md) and [Navigation](../../ui/arkts-navigation-introduction.md). The following example shows the time when the @ComponentActive and @ComponentInactive lifecycle decorators are triggered in the **Navigation** and **Tabs** scenarios.
 
-```typescript
+<!-- @[ComponentActiveLazyCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentActiveLazyCreate.ets) -->
+
+``` TypeScript
 // Index.ets
 @Entry
 @Component
@@ -168,26 +175,30 @@ struct Index {
     Column() {
       Navigation(this.pageStack) {
         Text(this.message)
+          .margin(10)
         Button(`PageOne`)
+          .margin(10)
           .onClick(() => {
             // Go to the PageOne page.
             this.pageStack.pushPath({ name: 'PageOne' });
           })
-          .width('80%')
+          .width('40%')
         Button(`PageTwo`)
+          .margin(10)
           .onClick(() => {
             // Go to the PageTwo page.
             this.pageStack.pushPath({ name: 'PageTwo' });
           })
-          .width('80%')
+          .width('40%')
       }
     }
   }
 }
 ```
 
-```typescript
-// PageOne.ets
+<!-- @[PageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/PageOne.ets) -->
+
+``` TypeScript
 @Builder
 export function PageOneBuilder() {
   PageOne()
@@ -202,18 +213,21 @@ struct PageOne {
     NavDestination() {
       Column() {
         Text(`PageOne`)
+          .margin(10)
         Button('PageTwo')
+          .margin(10)
           .onClick(() => {
             // Go to the PageTwo page.
             this.pageStack.pushPath({ name: 'PageTwo' });
           })
-          .width('80%')
+          .width('40%')
         Button(`back`)
+          .margin(10)
           .onClick(() => {
             // Return to the previous page.
             this.pageStack.pop();
           })
-          .width('80%')
+          .width('40%')
       }
     }
     .onReady((context: NavDestinationContext) => {
@@ -224,8 +238,9 @@ struct PageOne {
 }
 ```
 
-```typescript
-// PageTwo.ets
+<!-- @[PageTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/PageTwo.ets) -->  
+
+``` TypeScript
 import { ComponentActive, ComponentInactive } from '@kit.ArkUI';
 
 @Builder
@@ -237,39 +252,33 @@ export function PageTwoBuilder() {
 @Component
 struct PageTwo {
   @State pageStack: NavPathStack = new NavPathStack();
-  @State @Watch('onMessageUpdated') message: number = 0;
-
-  onMessageUpdated() {
-    console.info(`TabContent message callback func ${this.message}`);
-  }
 
   build() {
     NavDestination() {
       Column() {
         Text(`PageTwo`)
+          .margin(10)
         Button(`PageOne`)
+          .margin(10)
           .onClick(() => {
             // Redirect to the PageOne page.
             this.pageStack.pushPath({ name: 'PageOne' });
           })
-          .width('80%')
+          .width('40%')
         Button(`back`)
+          .margin(10)
           .onClick(() => {
             // Return to the previous page.
             this.pageStack.pop();
           })
-          .width('80%')
+          .width('40%')
         Row() {
           Column() {
-            Button(`change message`)
-              .onClick(() => {
-                this.message++;
-              })
             TabsComponent();
           }
           .width('100%')
         }
-        .height('100%')
+        .margin(10)
       }
     }
     .onReady((context: NavDestinationContext) => {
@@ -305,7 +314,6 @@ struct FreezeChild {
 @Component
 struct TabsComponent {
   private data: number[] = [0, 1, 2];
-  private controller: TabsController = new TabsController();
   @State @Watch('onMessageUpdated') message: number = 0;
 
   onMessageUpdated() {
@@ -316,8 +324,10 @@ struct TabsComponent {
     Column() {
       Button(`Incr state ${this.message}`)
         .onClick(() => {
+          // Click Button to modify message, triggering the onMessageUpdated callback of the visible TabContent.
           this.message++;
         })
+        .margin(10)
       Tabs() {
         ForEach(this.data, (item: number) => {
           TabContent() {
@@ -330,7 +340,7 @@ struct TabsComponent {
       .scrollable(true)
       .barMode(BarMode.Fixed)
       .barWidth(400)
-      .barHeight(150)
+      .barHeight(50)
       .animationDuration(400)
       .width('100%')
       .height(200)
@@ -369,9 +379,11 @@ Configure the **routerMap** route mapping in the **module.json5** configuration 
 }
 ```
 
+![new-lifecycle-syn-1](./figures/new-lifecycle-syn-1.gif)
+
 **Scenario description and log output:**
 
-This example shows the component activation and deactivation status changes in the navigation page route and TabContent switching scenarios. When the page route is switched, the FreezeChild component of the page that is left triggers @ComponentInactive, and the FreezeChild component of the page that is returned to triggers @ComponentActive.
+This example shows the component active/inactive state changes in the navigation page route and TabContent switching scenarios. When the page route is switched, the FreezeChild component of the page that is left triggers @ComponentInactive, and the FreezeChild component of the page that is returned to triggers @ComponentActive.
 
 You are advised to execute the preceding code in the following steps.
 
@@ -404,9 +416,11 @@ You are advised to execute the preceding code in the following steps.
 
 Take [LazyForEach](../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) as an example. After the components in the preload area of **LazyForEach** are created, they become inactive. When components such as [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md), [Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md), [Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md), and [WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md) use **LazyForEach**, you can use the count property of [cachedCount](../../reference/apis-arkui/arkui-ts/ts-container-list.md#cachedcount14) to set the number of nodes in the preload area.
 
-This example demonstrates the activation and deactivation status changes of components in the List and LazyForEach scenarios.
+This example demonstrates the active/inactive state changes of components in the List and LazyForEach scenarios.
 
-```typescript
+<!-- @[ComponentActivePreRender](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentActivePreRender.ets) -->
+
+``` TypeScript
 import { ComponentActive, ComponentInactive } from '@kit.ArkUI';
 import { MyDataSource } from './BasicDataSource';
 
@@ -414,38 +428,40 @@ import { MyDataSource } from './BasicDataSource';
 @Component
 struct Index {
   @State dataSource: MyDataSource<string> = new MyDataSource();
-  private scrollerForList: Scroller = new Scroller();
-  @State colors: number[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
   @State changeShow: boolean = false;
 
   aboutToAppear(): void {
     for (let index = 1; index <= 50; index++) {
-      this.dataSource.pushData('page-' + index);
+      this.dataSource.pushData('page - ' + index);
     }
   }
 
   build() {
     Column() {
       Button('change')
+        .margin(10)
         .onClick(() => {
           // Control the creation and destruction of the list.
           this.changeShow = !this.changeShow;
         })
       if (this.changeShow) {
         List({ space: 10 }) {
-          LazyForEach(this.dataSource, (item: number, index: number) => {
+          LazyForEach(this.dataSource, (item: string, index: number) => {
             ListItem() {
               Child({ item: item.toString(), index: index.toString() })
             }
-            .backgroundColor(Color.Orange)
+            .backgroundColor(Color.Pink)
             .width('100%')
-          }, (item: number) => item.toString())
+            .height('15%')
+          }, (item: string) => item.toString())
         }
-        .height(360)
+        .width('80%')
+        .height('60%')
         // The number of nodes that can be contained in the preload area is 5.
         .cachedCount(5, false)
       }
     }
+    .width('100%')
   }
 }
 
@@ -471,8 +487,9 @@ struct Child {
 }
 ```
 
-```typescript
-// BasicDataSource.ets
+<!-- @[BasicDataSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/BasicDataSource.ets) -->
+
+``` TypeScript
 abstract class BasicDataSource<T> implements IDataSource {
   private listeners: DataChangeListener[] = [];
   abstract totalCount(): number;
@@ -493,7 +510,7 @@ abstract class BasicDataSource<T> implements IDataSource {
     }
   }
 
-  // Notify the controller of data addition.
+  // Notify the listener of data addition.
   notifyDataAdd(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataAdd(index);
@@ -521,35 +538,40 @@ export class MyDataSource<T> extends BasicDataSource<T> {
   }
 }
 ```
+
+![new-lifecycle-syn-2](./figures/new-lifecycle-syn-2.gif)
+
 Scenario description and log output:
 
 You are advised to execute the preceding code in the following steps.
 
 1. Click the **change** button. The component in the preload area triggers @ComponentInactive.
    ```text
-   Child myInactive, index: 13
-   Child myInactive, index: 14
-   Child myInactive, index: 15
-   Child myInactive, index: 16
-   Child myInactive, index: 17
+   Child myInactive, index: 6
+   Child myInactive, index: 7
+   Child myInactive, index: 8
+   Child myInactive, index: 9
+   Child myInactive, index: 10
    ```
 
-2. When you swipe down the list, the component in the loading area triggers @ComponentActive, the component in the preload area triggers @ComponentInactive, and the component in the preload area triggers @ComponentInactive.
+2. When you swipe down the list, the component entering in the loading area triggers @ComponentActive, the component entering in the preload area triggers @ComponentInactive, and the component leaving the load area triggers @ComponentInactive.
    ```text
-   Child myActive, index: 13
-   Child myInactive, index: 18
+   Child myActive, index: 6
+   Child myInactive, index: 11
    Child myInactive, index: 0
    ```
 
 When the show attribute of cachedCount of the list is set to true, after @ComponentInactive is triggered after the preloading node is created, the component is moved up to the tree and @ComponentActive is triggered.
 
-### Listening to the activation status change in the case of page visibility changes
+### Listening to the Active State Change in Page Visibility Change Scenarios
 
 When the [Router](../../ui/arkts-router-to-navigation.md) page is hidden, onPageHide is triggered, and the components on the page are changed to the inactive state. When the page is displayed, onPageShow is triggered, and the components on the page are changed to the active state. Similarly, when the screen is turned on, onPageShow is triggered, and the components on the page are changed to the active state. When the screen is turned off, onPageHide is triggered, and the components on the page are changed to the inactive state.
 
-This example shows the activation and deactivation status changes of components in the case of page visibility changes.
+This example shows the active/inactive state changes of components in the case of page visibility changes.
 
-```typescript
+<!-- @[ComponentActivePageVisible](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentActivePageVisible.ets) -->
+
+``` TypeScript
 import { ComponentActive, ComponentInactive } from '@kit.ArkUI';
 
 @Entry
@@ -579,6 +601,8 @@ struct MyActiveSample {
 }
 ```
 
+![new-lifecycle-syn-3](./figures/new-lifecycle-syn-3.png)
+
 Scenario description and log output:
 
 You are advised to execute the preceding code in the following steps.
@@ -595,23 +619,23 @@ You are advised to execute the preceding code in the following steps.
 
 ## Constraints
 
-- \@ComponentInit, \@ComponentAppear, \@ComponentBuilt, \@ComponentDisappear, \@ComponentActive, \@ComponentInactive, @ComponentReuse, and @ComponentRecycle can be used only in structs decorated with @Component or @ComponentV2. Otherwise, a compilation error will be reported.
+- \@ComponentInit, \@ComponentAppear, \@ComponentBuilt, \@ComponentDisappear, \@ComponentActive, \@ComponentInactive, @ComponentReuse, and @ComponentRecycle can be used only in structs decorated with \@Component or \@ComponentV2. Otherwise, a compilation error will be reported.
 
-- The functions decorated with @ComponentInactive and @ComponentRecycle cannot have input parameters. Otherwise, a compilation error will be reported.
+- The functions decorated with \@ComponentInit, \@ComponentAppear, \@ComponentBuilt, \@ComponentDisappear, \@ComponentActive, \@ComponentInactive, and \@ComponentRecycle cannot have input parameters. Otherwise, a compilation error will be reported.
 
 - In the struct decorated with @Component, the function decorated with @ComponentReuse can have no or one input parameter. Otherwise, a compilation error will be reported.
 
 - In the struct decorated with @ComponentV2, the function decorated with @ComponentReuse cannot have input parameters. Otherwise, a compilation error will be reported.
 
 - When a lifecycle decorator is added to a method, the method is called back when the corresponding event of the custom component occurs. It is recommended that the lifecycle decorator be used independently and not together with other state variable decorators. For example, when the lifecycle decorator is used together with [@Computed](./arkts-new-computed.md), the lifecycle decorator does not take effect.
-  ```typescript
+  ``` TypeScript
   @Computed
   @ComponentAppear
   get sum() {
     return 1 + 2 + 3; // Incorrect usage. The lifecycle decorator does not take effect for the get method.
   }
   ```
-- If the custom component does not use the lifecycle decorator and does not register a listener, the return value is always [CustomComponentLifecycleState.INIT](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecyclestate) when [getCurrentState](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#getcurrentstate) is used to query the current lifecycle status of the custom component.
+- When the custom component does not use a lifecycle decorator and does not register a listener, the return value is always [CustomComponentLifecycleState.INIT](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecyclestate) when [getCurrentState](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#getcurrentstate) is used to query the current lifecycle state of the custom component. When the custom component does not use a lifecycle decorator, the state machine is enabled only after the custom component successfully registers a listener, and the current lifecycle state is INIT.
 
 - After a custom component is created, it is activated by default. The callback function of @ComponentActive is not triggered.
 
@@ -621,7 +645,9 @@ You are advised to execute the preceding code in the following steps.
 
 The following example describes the invoking time sequence of the lifecycle of a custom component when the custom component is nested:
 
-```typescript
+<!-- @[ComponentNesting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentNesting.ets) -->
+
+``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { ComponentAppear, ComponentBuilt, ComponentDisappear } from '@kit.ArkUI';
 
@@ -634,6 +660,7 @@ struct Index {
     Column() {
       Button('delete Parent And Child')
         .margin(20)
+        .width('60%')
         .backgroundColor(this.btnColor)
         .onClick(() => {
           this.show = !this.show;
@@ -642,23 +669,24 @@ struct Index {
         Parent()
       }
     }
+    .width('100%')
   }
 }
 @Component
 struct Parent {
   @State showChild: boolean = true;
   @State btnColor: string = '#FF007DFF';
-  // ComponentAppear in the component lifecycle. After the parent creates an instance and before the build function is executed, myAppear is called back.
+  // ComponentAppear in the component lifecycle. After Parent creates an instance and before the build function is executed, myAppear is called back.
   @ComponentAppear
   myAppear() {
     hilog.info(0x0000, 'testTag', 'Parent myAppear');
   }
-  // The component life cycle is ComponentBuilt. The myBuilt function is called after the build function (triggered by the initial rendering of the parent) finishes executing.
+  // The component lifecycle is ComponentBuilt. The myBuilt function is called after the build function (triggered by the initial rendering of Parent) finishes executing.
   @ComponentBuilt
   myBuilt() {
     hilog.info(0x0000, 'testTag', 'Parent myBuilt');
   }
-  // The component life cycle is ComponentDisappear. The myDisappear function is called back before the Parent is destructed and destroyed.
+  // The component lifecycle is ComponentDisappear. The myDisappear function is called back before the Parent is destructed and destroyed.
   @ComponentDisappear
   myDisappear() {
     hilog.info(0x0000, 'testTag', 'Parent myDisappear');
@@ -666,15 +694,16 @@ struct Parent {
 
   build() {
     Column() {
-      // When this.showChild is true, create the Child child component and invoke Child myAppear.
+      // When this.showChild is true, create the child component Child and invoke Child myAppear.
       if (this.showChild) {
         Child()
       }
       Button('delete Child')
+        .width('60%')
         .margin(20)
         .backgroundColor(this.btnColor)
         .onClick(() => {
-          // When this.showChild is false, delete the Child child component and invoke Child myDisappear.
+          // When this.showChild is false, delete the child component Child and invoke Child myDisappear.
           // When this.showChild is true, add the Child component and invoke Child myAppear.
           this.showChild = !this.showChild;
         })
@@ -709,7 +738,9 @@ struct Child {
 }
 ```
 
-In the preceding example, the Index page contains two custom components: Parent and Child. The Parent component and its child component Child declare the functions (myAppear/myBuilt/myDisappear) of the custom component lifecycle decorator.
+![new-lifecycle-syn-4](./figures/new-lifecycle-syn-4.gif)
+
+In the preceding example, the Index page contains two custom components: Parent and Child. The **Parent** component and its child component **Child** declare functions (**myAppear**/**myBuilt**/**myDisappear**) decorated with their custom component lifecycle decorator.
 
 - The initialization process of application cold start is as follows: **Parent myAppear** --&gt; **Parent build** --&gt; **Parent myBuilt** --&gt; **Child myAppear** --&gt; **Child build** --&gt; **Child myBuilt**. The lazy expansion feature of the custom component is reflected here. That is, the parent component executes myAppear of the child component only after executing myBuilt. The log information is as follows:
 
@@ -720,9 +751,9 @@ Child myAppear
 Child myBuilt
 ```
 
-- Click the button, change the value of showChild to false, delete the Child component, and execute the Child myDisappear function.
+- Click the button, change the value of **showChild** to **false**, delete the **Child** component, and execute the **Child myDisappear** function.
 
-- If you click the button, change the value of show to **false**, or directly exit the application, the **Parent myDisappear** --&gt; **Child myDisappear** lifecycle is triggered. In this case, the customized components are deleted from the parent component to the child component. The log information is as follows:
+- If you click the button, change the value of show to **false**, or directly exit the application, the **Parent myDisappear** --&gt; **Child myDisappear** lifecycle is triggered. In this case, the custom components are deleted from the parent component to the child component. The log information is as follows:
 
 ```text
 Parent myDisappear
@@ -745,7 +776,7 @@ Parent myBuilt
 Child myAppear
 Child myBuilt
 ```
-When **showchild** is set to the default value true, the lifecycle of this example is as follows:
+When **showChild** is set to the default value **true**, the lifecycle flowchart of this example is as follows:
 
 ![custom-component-lifecycle-demo2](figures/custom-component-lifecycle-nest.png)
 
@@ -753,12 +784,14 @@ When **showchild** is set to the default value true, the lifecycle of this examp
 
 The following example describes the lifecycle invoking sequence of reusing custom components in detail:
 
-```typescript
+<!-- @[ComponentRecycleReuse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentRecycleReuse.ets) -->
+
+``` TypeScript
 import { ComponentInit, ComponentAppear, ComponentBuilt, ComponentDisappear, ComponentReuse, ComponentRecycle } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 export class Message {
-  value: string | undefined;
+  public value: string | undefined;
   constructor(value: string) {
     this.value = value;
   }
@@ -766,26 +799,28 @@ export class Message {
 @Entry
 @Component
 struct Index {
-  @State switch: boolean = true;
+  @State changeChild: boolean = true;
+  @State btnColor: string = '#FF007DFF';
 
   build() {
     Column() {
-      Button('Hello')
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
+      Button(this.changeChild ? 'recycle child' : 'reuse child')
+        .margin(20)
+        .backgroundColor(this.btnColor)
+        .width('50%')
         .onClick(() => {
-          this.switch = !this.switch;
+          this.changeChild = !this.changeChild;
         })
-      // Change the switch to reclaim and reuse the child.
-      // Change the value of this.switch to false, reclaim the Child subcomponent, and execute Child myRecycle.
-      // Change the value of this.switch to true, reuse the Child subcomponent, and execute Child myReuse.
-      if (this.switch) {
+      // Implement recycling and reuse of Child by changing changeChild.
+      // Set this.changeChild to false to recycle the child component Child, triggering Child myRecycle.
+      // Set this.changeChild to true to reuse the child component Child, triggering Child myReuse.
+      if (this.changeChild) {
         // If only one reusable component is used, reuseId is optional.
-        Child({ message: new Message('Child') })
+        Child({ message: new Message('child') })
           .reuseId('Child')
+          .margin(10)
       }
     }
-    .height('100%')
     .width('100%')
   }
 }
@@ -795,7 +830,8 @@ struct Index {
 struct Child {
   @State message: Message = new Message('Child');
   @State label: string = 'HelloWorld';
-  @State switch: boolean = true;
+  @State changeGrandChild: boolean = true;
+  @State btnColor: string = '#FF007DFF';
   @ComponentInit
   myInit() {
     hilog.info(0x0000, 'testTag', 'Child myInit');
@@ -830,19 +866,19 @@ struct Child {
     Column() {
       Text(this.message.value)
         .fontSize(30)
-      Button('Hello')
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
+        .margin(10)
+      Button(this.changeGrandChild ? 'recycle grandchild' : 'reuse grandchild')
+        .width('50%')
+        .margin(20)
+        .backgroundColor(this.btnColor)
         .onClick(() => {
-          this.switch = !this.switch;
+          this.changeGrandChild = !this.changeGrandChild;
         })
-      if (this.switch) {
-        GrandChild({ message: new Message('GrandChild') })
+      if (this.changeGrandChild) {
+        GrandChild({ message: new Message('grandchild') })
           .reuseId('GrandChild')
       }
     }
-    .borderWidth(1)
-    .height(100)
   }
 }
 
@@ -851,7 +887,6 @@ struct Child {
 struct GrandChild {
   @State message: Message = new Message('GrandChild');
   @State label: string = 'HelloWorld';
-  @State switch: boolean = true;
   @ComponentInit
   myInit() {
     hilog.info(0x0000, 'testTag', 'GrandChild myInit');
@@ -886,14 +921,15 @@ struct GrandChild {
     Column() {
       Text(this.message.value)
         .fontSize(30)
+        .margin(10)
     }
-    .borderWidth(1)
-    .height(100)
   }
 }
 ```
 
-In the preceding example, the Index page contains the customized component Child, and the Child component contains the customized component GrandChild. Child and GrandChild declare the functions (myInit, myAppear, myBuilt, myRecycle, myReuse, and myDisappear) decorated by the custom component lifecycle decorator.
+![new-lifecycle-syn-5](./figures/new-lifecycle-syn-5.gif)
+
+In the preceding example, the Index page contains the custom component Child, and the Child component contains the custom component GrandChild. Child and GrandChild declare the functions (myInit, myAppear, myBuilt, myRecycle, myReuse, and myDisappear) decorated by the custom component lifecycle decorator.
 
 - The initialization process of the cold start is as follows: Child myInit --&gt; Child myAppear --&gt; GrandChild myInit --&gt; Child myBuilt --&gt; GrandChild myAppear --&gt; GrandChild myBuilt. The lazy expansion feature of the custom component is reflected here. That is, the myAppear of the GrandChild component is executed only after the Child component executes myBuilt. The log information is as follows:
 
@@ -906,23 +942,25 @@ GrandChild myAppear
 GrandChild myBuilt
 ```
 
-- Click the button to change the value of showChild to false, so that the Child and GrandChild components are recycled, and the myRecycle functions of the Child and GrandChild components are executed.
+- Tap the **Button** button to change **changeChild** to **false**. The **Child** component and **GrandChild** component are recycled, and the **myRecycle** functions of **Child** and **GrandChild** are executed.
 
 ```text
 Child myRecycle
 GrandChild myRecycle
 ```
 
-### Registering a Listener for the Life Cycle of a Custom Component
+### Registering a Listener for the Lifecycle of a Custom Component
 
 [CustomComponentLifecycleObserver](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecycleobserver) is used to listen to the lifecycle of custom components. You can override the callback function in CustomComponentLifecycleObserver as required.
 
-```typescript
+<!-- @[ComponentLifecycleObserver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentLifecycleObserver.ets) -->
+
+``` TypeScript
 import { ComponentInit, ComponentDisappear, UIUtils, CustomComponentLifecycleObserver, CustomComponentLifecycle } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 export class Message {
-  value: string | undefined;
+  public value: string | undefined;
   constructor(value: string) {
     this.value = value;
   }
@@ -931,23 +969,23 @@ export class Message {
 @Entry
 @Component
 struct Index {
-  @State switch: boolean = true;
+  @State changeChild: boolean = true;
 
   build() {
     Column() {
-      Button('Hello')
+      Button(this.changeChild ? 'recycle child' : 'reuse child')
+        .margin(10)
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.switch = !this.switch;
+          this.changeChild = !this.changeChild;
         })
-      if (this.switch) {
+      if (this.changeChild) {
         // If only one reusable component is used, reuseId is optional.
-        Child({ message: new Message('Child') })
+        Child({ message: new Message('child') })
           .reuseId('Child')
       }
     }
-    .height('100%')
     .width('100%')
   }
 }
@@ -956,7 +994,6 @@ struct Index {
 @Component
 struct Child {
   @State message: Message = new Message('AboutToReuse');
-  @State label: string = 'HelloWorld';
   @ComponentInit
   myInit(): void {
     registerObserver(UIUtils.getLifecycle(this));
@@ -983,7 +1020,7 @@ export class MyObserver implements CustomComponentLifecycleObserver {
     hilog.info(0x0000, 'testTag', 'MyObserver onDidBuild');
   }
   aboutToReuse(params?: Record<string, Object | undefined | null>) {
-    // If params exists, it is the multiplexing of V1.
+    // If params exists, it is the reuse of V1.
     hilog.info(0x0000, 'testTag', 'MyObserver aboutToReuse');
   }
   aboutToRecycle() {
@@ -1007,9 +1044,11 @@ export function unRegisterObserver(lifeCycle: CustomComponentLifecycle) {
 }
 ```
 
-The listener is deregistered in the function decorated by @ComponentDisappear. Therefore, the listener cannot listen to aboutToDisappear.
+![new-lifecycle-syn-6](./figures/new-lifecycle-syn-6.gif)
 
-Press the Hello button twice and close the program. The log information is as follows:
+The listener is unregistered in the function decorated by @ComponentDisappear. Therefore, the listener cannot listen to aboutToDisappear.
+
+Press the button twice and then close the program. The log output is as follows:
 
 ```text
 MyObserver aboutToAppear
@@ -1018,9 +1057,9 @@ MyObserver aboutToRecycle
 MyObserver aboutToReuse
 ```
 
-You can register and cancel the listening in the onAppear and onDisAppear of the component. Register the listener in the onAppear. At this time, the component is in the Appeared state. Therefore, the aboutToAppear of the component cannot be listened.
+It is not recommended to register and unregister listeners in the onAppear and onDisAppear callbacks of a component. If a listener is registered in onAppear, the component is already in the BUILT state, so the aboutToAppear and onDidBuild callbacks of the component cannot be listened for.
 
-```typescript
+``` TypeScript
 Column() {
   Text('Hello World')
 }
@@ -1035,7 +1074,7 @@ Column() {
 
 ## Differences Between Lifecycle Callback Functions
 
-### Differences between \@ComponentAppear, \@ComponentDisappear, aboutToAppear, and aboutToDisappear
+### Differences Between \@ComponentAppear, \@ComponentDisappear, aboutToAppear, and aboutToDisappear
 
 When a custom component is in the INIT state and is about to be converted to the APPEARED state, aboutToAppear is called before the function decorated by \@ComponentAppear.
 
@@ -1043,7 +1082,9 @@ When a custom component in the INIT, BUILT, or RECYCLED state is about to change
 
 aboutToAppear is executed before the custom component is built, and aboutToDisappear is executed before the custom component is destroyed. However, sometimes a custom component is destroyed before it is built. To execute a complete lifecycle, the aboutToDisappear component checks whether the component executes aboutToAppear. If the component does not execute aboutToAppear, aboutToAppear is forcibly triggered. Functions decorated by \@ComponentAppear and \@ComponentDisappear are restricted by the state machine. Functions decorated by \@ComponentDisappear do not call functions decorated by \@ComponentAppear by mistake. The following is an example:
 
-```typescript
+<!-- @[LifecycleDifference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/LifecycleDifference.ets) -->
+
+``` TypeScript
 // Index.ets
 import { SwiperExample } from './SwiperPage';
 
@@ -1051,9 +1092,7 @@ import { SwiperExample } from './SwiperPage';
 @Component
 struct Index {
   @State message: string = 'Hello World';
-  controller: TabsController = new TabsController();
   @State show: boolean = false;
-  @State currentTabIndex: number = 0;
 
   build() {
     RelativeContainer() {
@@ -1086,8 +1125,9 @@ struct Index {
 }
 ```
 
-```typescript
-// SwiperPage.ets
+<!-- @[SwiperPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/SwiperPage.ets) -->
+
+``` TypeScript
 import { ComponentAppear, ComponentDisappear } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -1121,7 +1161,7 @@ export struct SwiperPage {
 }
 
 class MyDataSource implements IDataSource {
-  list: number[] = [];
+  public list: number[] = [];
   constructor(list: number[]) {
     this.list = list;
   }
@@ -1186,48 +1226,53 @@ export struct SwiperExample {
   }
 }
 ```
-After the program is started, click the start button. Only the five nodes cached by swipe start to execute aboutToAppear and myAppear. The non-cached nodes do not trigger aboutToAppear and myAppear.
+
+![new-lifecycle-syn-7](./figures/new-lifecycle-syn-7.gif)
+
+After the program is started, press the **start** button. At this point, only the five nodes cached by **Swiper** begin to execute **aboutToAppear** and **myAppear**, while the non-cached nodes do not trigger **aboutToAppear** or **myAppear**.
 
 The log information is as follows:
 
 ```text
-SwiperPage:aboutToAppear 0
-SwiperPage:myAppear 0
-SwiperPage:aboutToAppear 11
-SwiperPage:myAppear 11
-SwiperPage:aboutToAppear 1
-SwiperPage:myAppear 1
-SwiperPage:aboutToAppear 10
-SwiperPage:myAppear 10
-SwiperPage:aboutToAppear 2
-SwiperPage:myAppear 2
+SwiperPage aboutToAppear 0
+SwiperPage myAppear 0
+SwiperPage aboutToAppear 11
+SwiperPage myAppear 11
+SwiperPage aboutToAppear 1
+SwiperPage myAppear 1
+SwiperPage aboutToAppear 10
+SwiperPage myAppear 10
+SwiperPage aboutToAppear 2
+SwiperPage myAppear 2
 ```
 
-When the program is closed, aboutToDisappear is normally triggered on the five cache nodes. However, aboutToAppear is forcibly triggered before aboutToDisappear is triggered on the non-cache nodes. Regardless of whether the node is a cache node, myDisappear does not trigger myAppear by mistake.
+When the program is closed, aboutToDisappear is normally triggered on the five cached nodes. However, aboutToAppear is forcibly triggered before aboutToDisappear is triggered on the non-cached nodes. Regardless of whether the node is a cached node, myDisappear does not trigger myAppear by mistake.
 
 ```text
-SwiperPage:myDisappear 0
-SwiperPage:aboutToDisappear 0
-SwiperPage:myDisappear 1
-SwiperPage:aboutToDisappear 1
-SwiperPage:myDisappear 2
-SwiperPage:aboutToDisappear 2
-SwiperPage:aboutToAppear 3
-SwiperPage:myDisappear 3
-SwiperPage:aboutToDisappear 3
-SwiperPage:aboutToAppear 4
-SwiperPage:myDisappear 4
-SwiperPage:aboutToDisappear 4
+SwiperPage myDisappear 0
+SwiperPage aboutToDisappear 0
+SwiperPage myDisappear 1
+SwiperPage aboutToDisappear 1
+SwiperPage myDisappear 2
+SwiperPage aboutToDisappear 2
+SwiperPage aboutToAppear 3
+SwiperPage myDisappear 3
+SwiperPage aboutToDisappear 3
+SwiperPage aboutToAppear 4
+SwiperPage myDisappear 4
+SwiperPage aboutToDisappear 4
 ...
 ```
 
-### Differences between \@ComponentReuse, \@ComponentRecycle, aboutToReuse, and aboutToRecycle
+### Differences Between \@ComponentReuse, \@ComponentRecycle, aboutToReuse, and aboutToRecycle
 
 When a custom component in the RECYCLED state is about to be converted to the BUILT state, the aboutToReuse function is called before the \@ComponentReuse decorated function.
 
 When a custom component is in the BUILT state and is about to be converted to the RECYCLED state, the aboutToRecycle function is called before the \@ComponentRecycle decorated function.
 
-```typescript
+<!-- @[ComponentReuseDifference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentReuseDifference.ets) -->
+
+``` TypeScript
 import { ComponentAppear, ComponentBuilt, ComponentReuse } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -1239,12 +1284,14 @@ struct ReusableTest {
   build() {
     Column() {
       // Click the button to switch flag1 and trigger the recycling or reuse of ReusableComp1 and ReusableComp2.
-      Button('a')
+      Button('change flag 1')
+        .margin(10)
         .onClick(() => {
           this.flag1 = !this.flag1;
         })
       // Click the button to switch flag2 and trigger the recycling or reuse of ReusableComp1 and ReusableComp3.
-      Button('b')
+      Button('change flag 2')
+        .margin(10)
         .onClick(() => {
           this.flag2 = !this.flag2;
         })
@@ -1255,6 +1302,7 @@ struct ReusableTest {
         ReusableComp1({ flag: false })
       }
     }
+    .width('100%')
   }
 }
 
@@ -1275,7 +1323,8 @@ struct ReusableComp1 {
 @Component
 struct ReusableComp2 {
   build() {
-    Text('A')
+    Text('ReusableComp2')
+      .margin(10)
   }
 }
 
@@ -1302,12 +1351,15 @@ struct ReusableComp3 {
   }
 
   build() {
-    Text('B')
+    Text('ReusableComp3')
+      .margin(10)
   }
 }
 ```
 
-Press the **a** button. ReusableComp2 enters the recycling state. Press the **b** button. ReusableComp3 is created for the first time. The log information is as follows:
+![new-lifecycle-syn-8](./figures/new-lifecycle-syn-8.gif)
+
+Press the **change flag 1** button. **ReusableComp2** enters the recycling state. Press the change flag 2 button. **ReusableComp3** is created for the first time. The log output is as follows:
 
 ```text
 ReusableComp3 aboutToReuse
@@ -1316,5 +1368,4 @@ ReusableComp3 myAppear
 ReusableComp3 myBuilt
 ```
 
-ReusableComp3 has never been created. However, after the b button is pressed, aboutToReuse of ReusableComp3 is called by mistake, and aboutToAppear and myBuilt of ReusableComp3 are called. However, myReuse is not called by mistake because myReuse is restricted by the state machine. When the component is not in the RECYCLED state, myReuse is not executed.
-<!--no_check-->
+**ReusableComp3** has never been created before. However, after the change flag 2 button is pressed, **aboutToReuse** of **ReusableComp3** is mistakenly called, while **aboutToAppear** and **myBuilt** of** ReusableComp3** are also called. In contrast, **myReuse** is not mistakenly called, because **myReuse** is constrained by the state machine: when the component is not in the **RECYCLED** state, **myReuse** is not executed.

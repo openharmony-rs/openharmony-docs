@@ -2,10 +2,11 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=0d5bc9298f401d2d43e377f0c6777e605efaeed7 translatedAt=2026-10-29T12:23:51.479Z pushedAt=2026-10-30T07:35:14.532Z nl=1 -->
 
 The **tag** module provides APIs for operating and managing NFC tags. The following tag read modes are available:
 <br>Background mode: The device reads the tag by using NFC without starting any application, and then searches for applications based on the tag type. If only one application is matched, the card reading page of that application will be started. If multiple applications are matched, an application selector will be started, asking the user to select an application. Background mode does not involve tag-related APIs. For details, see [nfc-tag Read/Write Development](../../connectivity/nfc/nfc-tag-access-guide.md#accessing-an-nfc-tag-without-starting-an-application).
@@ -14,7 +15,7 @@ The **tag** module provides APIs for operating and managing NFC tags. The follow
 > **NOTE**
 >
 >1. The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
->2. When calling the APIs and constants of this module, use **canIUse("SystemCapability.Communication.NFC.Tag")** to check whether the device supports NFC. If the device does not support NFC, the application stability may be affected. For details, see [NFC Tag Read/Write Development](../../connectivity/nfc/nfc-tag-access-guide.md).
+>2. Before API version 26.0.0, use [canIUse("SystemCapability.Communication.NFC.Tag")](../common/syscap-ndk-8h.md#caniuse) and [nfcController.isNfcAvailable](js-apis-nfcController.md#nfccontrollerisnfcsupported) to check whether the device supports the NFC capability. Starting from API version 26.0.0, use [canIUse("SystemCapability.Communication.NFC.Tag")](../common/syscap-ndk-8h.md#caniuse) and [nfcController.isNfcSupported](js-apis-nfcController.md#nfccontrollerisnfcsupported) to check whether the device supports the NFC capability more accurately. Otherwise, application running stability issues may occur. For details, see [NFC Tag Development Guide](../../connectivity/nfc/nfc-tag-access-guide.md).
 >3. If an error is reported while importing the tag module editor, the capabilities of a specific device model may exceed the capability set defined for the default device. To use these capabilities, configure a custom SysCap by following instructions in [SystemCapability](https://developer.huawei.com/consumer/en/doc/harmonyos-references/syscap).
 
 ## **Modules to Import**
@@ -23,7 +24,7 @@ The **tag** module provides APIs for operating and managing NFC tags. The follow
 import { tag } from '@kit.ConnectivityKit';
 ```
 
-## **tag.TagInfo**
+## **Example of tag.TagInfo**
 
 Before a card with tags is read or written, **[TagInfo](#taginfo)** must be obtained to determine the tag technologies supported by the card. In this way, the application can invoke the correct API to communicate with the card.
 ```js
@@ -548,7 +549,7 @@ Registers a listener for the NFC tag read event so that the tag can be preferent
 | Name      | Type    | Mandatory| Description                                                   |
 | ------------ | -------- | ---- | ------------------------------------------------------- |
 | elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | Yes  | Information about the tag reading page of the application. It cannot be empty and must contain at least **bundleName** and **abilityName**.         |
-| discTech         |  number[]   | Yes  | NFC tag technologies supported by the foreground application. It cannot be empty. At least one NFC tag technology must be specified. Each number indicates the constant value of an NFC tag technology. The tag technologies are polled based on the specified value, which contains one or more of [NFC_A](#constants), [NFC_B](#constants), [NFC_F](#constants), and [NFC_V](#constants) only.|
+| discTech         |  number[]   | Yes   | NFC tag technologies supported by the foreground application. It cannot be empty. At least one NFC tag technology must be specified. Each number indicates the constant value of an NFC tag technology. The tag technologies are polled based on the specified value, which contains one or more of [NFC_A](#constants), [NFC_B](#constants), [NFC_F](#constants), and [NFC_V](#constants) only. |
 | callback | AsyncCallback&lt;[TagInfo](#taginfo)&gt; | Yes  | Callback used to return the tag information read. It cannot be empty.|
 
 **Error codes**
@@ -657,11 +658,11 @@ export default class MainAbility extends UIAbility {
 }
 ```
 
-## tag.on<sup>11+</sup>
+## tag.on('readerMode')<sup>11+</sup>
 
 on(type: 'readerMode', elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md), discTech: number[], callback: AsyncCallback&lt;[TagInfo](#taginfo)&gt;): void
 
-Subscribes to the NFC tag read event to implement dispatch of the tag to a foreground application preferentially. The device enters the reader mode and disables card emulation. You can set the supported NFC tag technologies in **discTech**. The [TagInfo](#taginfo) read is returned through a callback. This API must be used with [tag.off](#tagoff11) in pairs. If the NFC reader mode is enabled by [tag.on](#tagon11), **tag.off** must be called when the application page exits the foreground or is destroyed. This API uses an asynchronous callback to return the result.
+Subscribes to the NFC tag read event to implement dispatch of the tag to a foreground application preferentially. The device enters the reader mode and disables card emulation. You can set the supported NFC tag technologies in **discTech**. The [TagInfo](#taginfo) read is returned through a callback. This API must be used with [tag.off](#tagoffreadermode11) in pairs. If the NFC reader mode is enabled by **tag.on**, [tag.off](#tagoffreadermode11) must be called when the application page exits the foreground or is destroyed. This API uses an asynchronous callback to return the result. This API and [tag.on](#tagonreadermodewithinterval23) are mutually exclusive.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -675,7 +676,7 @@ Subscribes to the NFC tag read event to implement dispatch of the tag to a foreg
 | ------------ | -------- | ---- | ------------------------------------------------------- |
 | type    | string  | Yes  | Event type, which has a fixed value of **readerMode**.|
 | elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | Yes  | Information about the tag reading page of the application. It cannot be empty and must contain at least **bundleName** and **abilityName**.         |
-| discTech         |  number[]   | Yes  | NFC tag technologies supported by the foreground application. It cannot be empty. At least one NFC tag technology must be specified. Each number indicates the constant value of an NFC tag technology. The tag technologies are polled based on the specified value, which contains one or more of [NFC_A](#constants), [NFC_B](#constants), [NFC_F](#constants), and [NFC_V](#constants) only.|
+| discTech         |  number[]   | Yes   | NFC tag technologies supported by the foreground application. It cannot be empty. At least one NFC tag technology must be specified. Each number indicates the constant value of an NFC tag technology. The tag technologies are polled based on the specified value, which contains one or more of [NFC_A](#constants), [NFC_B](#constants), [NFC_F](#constants), [NFC_V](#constants), and [SKIP_NDEF](#constants) only. |
 | callback | AsyncCallback&lt;[TagInfo](#taginfo)&gt; | Yes  | Callback used to return the tag information read. It cannot be empty.|
 
 **Error codes**
@@ -692,13 +693,13 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
 **Example**
 
-See the example of [tag.off](#tagoff11).
+See the example of [tag.off](#tagoffreadermode11).
 
-## tag.off<sup>11+</sup>
+## tag.off('readerMode')<sup>11+</sup>
 
 off(type: 'readerMode', elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md), callback?: AsyncCallback&lt;[TagInfo](#taginfo)&gt;): void
 
-Unsubscribes from the NFC tag card read event. The device exits the reader mode and resumes card emulation. If the NFC reader mode is enabled by [tag.on](#tagon11), this API must be used when the application page exits the foreground or is destroyed.
+Unsubscribes from the NFC tag card read event. The device exits the reader mode and resumes card emulation. If the NFC reader mode is enabled by [tag.on](#tagonreadermode11), this API must be used when the application page exits the foreground or is destroyed.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -712,7 +713,7 @@ Unsubscribes from the NFC tag card read event. The device exits the reader mode 
 | ------------ | -------- | ---- | ------------------------------------------------------- |
 | type    | string  | Yes  | Event type, which has a fixed value of **readerMode**.|
 | elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | Yes  | Information about the tag reading page of the application. It cannot be empty and must contain at least **bundleName** and **abilityName**.         |
-| callback | AsyncCallback&lt;[TagInfo](#taginfo)&gt; | No  | Callback to unregister.|
+| callback | AsyncCallback&lt;[TagInfo](#taginfo)&gt; | No  | Callback to unregister. If this parameter is not set, this API unregisters the tag reading callback for the specified **type**.|
 
 **Error codes**
 
@@ -787,14 +788,15 @@ export default class MainAbility extends UIAbility {
 }
 ```
 
-## tag.on<sup>23+</sup>
+## tag.on('readerModeWithInterval')<sup>23+</sup>
 
 on(type: 'readerModeWithInterval', elementName: ElementName, discTech: number[], callback: Callback&lt;TagInfo&gt;, interval: number): void
 
 Subscribes to the NFC tag read event so that the tag can be preferentially dispatched to a foreground application. You can also set the interval for detecting whether a card is present. This API uses an asynchronous callback to return the result.
 - The device enters the reader mode and disables card emulation.
 - You can set the supported NFC tag technologies in **discTech** and set the interval for detecting whether a card is present. The callback returns [TagInfo](#taginfo) read.
-- This API must be used with [tag.off](#tagoff23) in pairs. If the NFC reader mode is enabled by **tag.on**, [tag.off](#tagoff23) must be called when the application page exits the foreground or is destroyed.
+- This API must be used with [tag.off](#tagoffreadermodewithinterval23) in pairs. If the NFC reader mode is enabled by **tag.on**, [tag.off](#tagoffreadermodewithinterval23) must be called when the application page exits the foreground or is destroyed.
+- This API and [tag.on](#tagonreadermode11) are mutually exclusive.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -808,9 +810,9 @@ Subscribes to the NFC tag read event so that the tag can be preferentially dispa
 | ------------ | -------- | ---- | ------------------------------------------------------- |
 | type    | string  | Yes  | Event type, which has a fixed value of **readerModeWithInterval**.|
 | elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | Yes  | Information about the tag reading page of the application. It must contain at least **bundleName** and **abilityName**.         |
-| discTech         |  number[]   | Yes  | NFC tag technologies supported by the foreground application. At least one NFC tag technology must be specified. Each number indicates the constant value of an NFC tag technology. The tag technologies are polled based on the specified value, which contains one or more of [NFC_A](#constants), [NFC_B](#constants), [NFC_F](#constants), and [NFC_V](#constants) only.|
+| discTech         |  number[]   | Yes   | NFC tag technologies supported by the foreground application. At least one NFC tag technology must be specified. Each number indicates the constant value of an NFC tag technology. The tag technologies are polled based on the specified value, which contains one or more of [NFC_A](#constants), [NFC_B](#constants), [NFC_F](#constants), [NFC_V](#constants), and [SKIP_NDEF](#constants) only. |
 | callback | Callback&lt;[TagInfo](#taginfo)&gt; | Yes  | Callback used to listen for the card reader mode, which returns the tag information read.|
-| interval | number | Yes| Interval for checking whether a card is present, in milliseconds.|
+| interval | number | Yes| Interval for checking whether a card is present, in milliseconds. The recommended value range is 100 to 2000. If a negative value is passed, the value does not take effect. The system uses the default interval (150 ms).|
 
 **Error codes**
 
@@ -825,13 +827,13 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
 **Example**
 
-See the example of [tag.off](#tagoff23).
+See the example of [tag.off](#tagoffreadermodewithinterval23).
 
-## tag.off<sup>23+</sup>
+## tag.off('readerModeWithInterval')<sup>23+</sup>
 
 off(type: 'readerModeWithInterval', elementName: ElementName, callback?: Callback&lt;TagInfo&gt;): void
 
-Unsubscribes from the NFC tag card read event. The device exits the reader mode and resumes card emulation. If the NFC reader mode is enabled by [tag.on](#tagon23), this API must be used when the application page exits the foreground or is destroyed. This API uses an asynchronous callback to return the result.
+Unsubscribes from the NFC tag card read event. The device exits the reader mode and resumes card emulation. If the NFC reader mode is enabled by [tag.on](#tagonreadermodewithinterval23), this API must be used when the application page exits the foreground or is destroyed. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -845,7 +847,7 @@ Unsubscribes from the NFC tag card read event. The device exits the reader mode 
 | ------------ | -------- | ---- | ------------------------------------------------------- |
 | type    | string  | Yes  | Event type, which has a fixed value of **readerModeWithInterval**.|
 | elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | Yes  | Information about the tag reading page of the application. It must contain at least **bundleName** and **abilityName**.         |
-| callback | Callback&lt;[TagInfo](#taginfo)&gt; | No  | Callback to unregister.|
+| callback | Callback&lt;[TagInfo](#taginfo)&gt; | No  | Callback to unregister. If this parameter is not set, this API unregisters the tag reading callback for the specified **type**.|
 
 **Error codes**
 
@@ -869,13 +871,12 @@ let discTech : number[] = [tag.NFC_A, tag.NFC_B]; // Specify the technology requ
 let elementName : bundleManager.ElementName;
 let interval : number = 200;
 
-function readerModeCb(err : BusinessError, tagInfo : tag.TagInfo) {
-    if (!err) {
-        console.info("offCallback: tag found tagInfo = ", JSON.stringify(tagInfo));
-    } else {
-        console.error("offCallback err: " + err.message);
-        return;
+function readerModeCb(tagInfo: tag.TagInfo) {
+    if (tagInfo == null) {
+      console.error('readerModeWithInterval tagInfo is invalid');
+      return;
     }
+    console.info("readerModeWithInterval: tag found tagInfo = ", JSON.stringify(tagInfo));
   // Other operations on taginfo
 }
 
@@ -973,7 +974,7 @@ try {
 
 makeTextRecord(text: string, locale: string): NdefRecord
 
-Creates an NDEF record based on the specified text data and encoding type.
+Creates an NDEF record based on the specified text data and language type.
 
 **System capability**: SystemCapability.Communication.NFC.Tag
 
@@ -983,8 +984,8 @@ Creates an NDEF record based on the specified text data and encoding type.
 
 | Name| Type  | Mandatory| Description                                 |
 | ------ | ------ | ---- | ------------------------------------- |
-| text   | string | Yes  | Text to write to the NDEF record.|
-| locale | string | Yes  | Encoding mode of the text.             |
+| text   | string | Yes  | Text to write to the NDEF record. The length must be less than the capacity of the NFC tag to be written.|
+| locale | string | Yes  | Locale of the text in the record. The length must be less than the capacity of the NFC tag to be written.             |
 
 **Return value**
 
@@ -1351,8 +1352,11 @@ Enumerates the tag technology types.
 | MIFARE_CLASSIC               |  number | 8      | MIFARE Classic.<br>**Atomic service API**: This API can be used in atomic services since API version 12.       |
 | MIFARE_ULTRALIGHT            |  number | 9      | MIFARE Ultralight.<br>**Atomic service API**: This API can be used in atomic services since API version 12.     |
 | NFC_BARCODE<sup>18+</sup>    |  number | 10     | BARCODE technology.<br>**Atomic service API**: This API can be used in atomic services since API version 18.              |
+| SKIP_NDEF                    | number |     11  | Method used to skip the NDEF check.<br>**Since:** 26.0.0 <br>**Atomic service API:** This API is supported in atomic services since API version 26.0.0.<br>**Model restriction:** This API can be used only in the stage model.|
 | RTD_TEXT<sup>9+</sup>        | number[] | [0x54] | NDEF record of the text type. For details, see **NFCForum-TS-NDEF_1.0**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | RTD_URI<sup>9+</sup>         | number[] | [0x55] | NDEF record of the URI type. For details, see **NFCForum-TS-NDEF_1.0**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+
+
 
 ## TnfType<sup>9+</sup>
 Enumerates the TNF types. For details, see *NFCForum-TS-NDEF_1.0*.

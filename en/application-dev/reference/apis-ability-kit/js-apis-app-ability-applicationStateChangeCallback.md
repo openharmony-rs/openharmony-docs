@@ -3,12 +3,13 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=83eb20b2da17b66d3089c14abb21986b856a3985 translatedAt=2026-09-03T09:55:40.817Z pushedAt=2026-09-05T10:47:30.223Z -->
 
 The module is used to listen for state changes of the current application process. For ease of description, the term "application process" will be referred to as "process" in the following sections.
 
-You can call [ApplicationContext.on('applicationStateChange')](js-apis-inner-application-applicationContext.md#applicationcontextonapplicationstatechange10) and pass in a custom ApplicationStateChangeCallback to listen for foreground/background state changes of the current process. This allows you to perform certain actions based on the process state changes, for example, tracking the duration of the process in the foreground and background, or clearing memory caches when the process moves to the background.
+Developers can call [ApplicationContext.on('applicationStateChange')](js-apis-inner-application-applicationContext.md#applicationcontextonapplicationstatechange10) and pass in a custom ApplicationStateChangeCallback to listen for foreground/background state changes of the current process and perform corresponding operations. For example, you can count the foreground/background duration of a process, or clear the memory cache when the process moves to the background state.
 
 > **NOTE**
 >
@@ -20,11 +21,11 @@ You can call [ApplicationContext.on('applicationStateChange')](js-apis-inner-app
 
 This module allows you to listen for foreground/background state changes of the current process. If you need to listen for foreground/background state changes of the entire application, use [ApplicationStateObserver.onForegroundApplicationChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronforegroundapplicationchanged).
 
->**NOTE**
+> **NOTE**
 >
-> The foreground/background state of a process is different from that of an application, as follows:
->- Foreground/Background state of a process: If any UIAbility or UIExtensionAbility in the process is in the foreground or has a visible window, the process is considered to be in the foreground; otherwise, it is in the background.
->- Foreground/Background state of an application: If any process under the application is in the foreground, the application is considered to be in the foreground; otherwise, it is in the background.
+> The foreground/background state of a process is different from that of an application. The differences are as follows:
+> - Foreground/background state of a process: If a process contains any [UIAbility](js-apis-app-ability-uiAbility.md)/[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md#uiextensionability) in the foreground state or a visible window, the process is considered to be in the foreground state; otherwise, it is in the background state.
+> - Foreground/background state of an application: If any process under an application is in the foreground state, the application is considered to be in the foreground state; otherwise, it is in the background state.
 
 ## Modules to Import
 

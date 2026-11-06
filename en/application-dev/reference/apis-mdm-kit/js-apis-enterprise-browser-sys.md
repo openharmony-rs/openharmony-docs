@@ -1,10 +1,11 @@
 # @ohos.enterprise.browser (Browser Management) (System API)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=716304dd0f214493c61a62f4ca83a3f10fd2771c translatedAt=2026-11-03T04:55:40.193Z pushedAt=2026-11-03T12:08:25.516Z nl=1 -->
 
 The **browser** module provides browser management, including setting, canceling, and obtaining browser policies.
 
@@ -14,7 +15,7 @@ The **browser** module provides browser management, including setting, canceling
 >
 > The APIs of this module can be used only in the stage model.
 >
-> The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
+> The APIs of this module are available only to the [MDM application](../../mdm/mdm-kit-term.md#mdm-app), and can be called only after the device administrator application is activated via [enableAdmin](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
 > 
 > This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.browser](js-apis-enterprise-browser.md).
 
@@ -24,11 +25,15 @@ The **browser** module provides browser management, including setting, canceling
 import { browser } from '@kit.MDMKit';
 ```
 
-## browser.setPolicies
+## browser.setPolicies<sup>(deprecated)</sup>
 
 setPolicies(admin: Want, appId: string, policies: string, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the browsing policy for a specified browser. This API uses an asynchronous callback to return the result.
+Sets browser policies for the specified browser. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [setPolicySync](./js-apis-enterprise-browser.md#browsersetpolicysync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 
@@ -82,11 +87,15 @@ browser.setPolicies(wantTemp, appId, policies, (err) => {
 });
 ```
 
-## browser.setPolicies
+## browser.setPolicies<sup>(deprecated)</sup>
 
 setPolicies(admin: Want, appId: string, policies: string): Promise&lt;void&gt;
 
-Sets the browsing policy for a specified browser. This API uses a promise to return the result.
+Sets browser policies for the specified browser. This API uses a promise to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [setPolicySync](./js-apis-enterprise-browser.md#browsersetpolicysync)
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 
@@ -144,11 +153,15 @@ browser.setPolicies(wantTemp, appId, policies).then(() => {
 });
 ```
 
-## browser.getPolicies
+## browser.getPolicies<sup>(deprecated)</sup>
 
 getPolicies(admin: Want, appId: string, callback: AsyncCallback&lt;string&gt;): void
 
 Obtains the policy of the specified browser. This API uses an asynchronous callback to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [getPoliciesSync](./js-apis-enterprise-browser.md#browsergetpoliciessync)
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -196,11 +209,15 @@ browser.getPolicies(wantTemp, appId, (err, result) => {
 });
 ```
 
-## browser.getPolicies
+## browser.getPolicies<sup>(deprecated)</sup>
 
 getPolicies(admin: Want, appId: string): Promise&lt;string&gt;
 
 Obtains the policy of the specified browser. This API uses a promise to return the result.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [getPoliciesSync](./js-apis-enterprise-browser.md#browsergetpoliciessync)
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -1,5 +1,6 @@
 # Traffic Management Error Codes
 
+<!-- md-trans-meta sourceCommit=d7e60ee0c5a2a1b0e78840086e29da8843098be7 translatedAt=2026-09-23T01:50:52.136Z pushedAt=2026-09-24T06:00:14.178Z -->
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -47,7 +48,9 @@ The service is abnormal.
 
 **Solution**
 
-Check whether system services are running properly.
+1. Check whether the system service is running properly.
+2. Restart the device and try again.
+<!--RP1--><!--RP1End-->
 
 ## 2100003 System Internal Error
 
@@ -61,15 +64,14 @@ This error code is reported if an internal system error occurs.
 
 **Possible Causes**
 
-1. The memory is abnormal.
-
-2. A null pointer is present.
+1. Memory exception.
+2. Null pointer.
 
 **Solution**
 
 1. Check whether the memory space is sufficient. If not, clear the memory and try again.
-
-2. Check whether the system is normal. If not, try again later or restart the device.
+2. The system is abnormal. Please try again later or restart the device.
+<!--RP1--><!--RP1End-->
 
 ## 2103005 Failed to Read the System Map
 
@@ -119,11 +121,11 @@ This error code is reported if the attempt to obtain the NIC name fails.
 
 **Possible Causes**
 
-The NIC name does not exist on the local host.
+The NIC name does not exist.
 
 **Solution**
 
-Check whether the input NIC name is correct.
+Check whether the input NIC name exists. You can query the NIC of the current device using the `ifconfig` command.
 
 ## 2103017 Failed to Read the Database
 

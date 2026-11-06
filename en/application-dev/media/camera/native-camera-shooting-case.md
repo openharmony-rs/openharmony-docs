@@ -5,10 +5,11 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=9be13cad9c6aa2008b642cf6a7069f09d844fb40 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
-This topic provides sample code that covers the complete photo capture process and the API calling sequence. For details about a single process (such as device input, session management, and photo capture), see the corresponding C/C++ development guide links provided in [Requesting Camera Development Permissions](native-camera-device-management.md).
+This example describes the complete photo capture process and the API call sequence. For individual stages, such as device input, session management, and photo capture, see the corresponding sections in [Camera Device Management (C/C++)](native-camera-device-management.md).
 
 ## Development Process
 
@@ -50,6 +51,7 @@ After obtaining the output stream capabilities supported by the camera, create a
 3. Import the NDK APIs on the C++ side, and perform photo capture based on the surface ID passed in.
     ```c++
     #include "hilog/log.h"
+    #include "ndk_camera.h"
 
     void CaptureSessionOnFocusStateChange(Camera_CaptureSession* session, Camera_FocusState focusState)
     {
@@ -203,7 +205,7 @@ After obtaining the output stream capabilities supported by the camera, create a
         // Create a CameraManager object.
         Camera_ErrorCode ret = OH_Camera_GetCameraManager(&cameraManager);
         if (cameraManager == nullptr || ret != CAMERA_OK) {
-            OH_LOG_ERROR(LOG_APP, "OH_Camera_GetCameraMananger failed.");
+            OH_LOG_ERROR(LOG_APP, "OH_Camera_GetCameraManager failed.");
             return;
         }
         // Listen for camera status changes.
@@ -267,7 +269,7 @@ After obtaining the output stream capabilities supported by the camera, create a
         // Select an appropriate photo resolution from photoProfiles of cameraOutputCapability.
         photoProfile = cameraOutputCapability->photoProfiles[0];
 
-        // Create a preview output stream, with the previewSurfaceId parameter set to the ID of the surface provided by the XComponent.
+        // Create the preview output stream. The previewSurfaceId parameter refers to the XComponent component mentioned above, and the preview stream is the surface provided by the XComponent component.
         ret = OH_CameraManager_CreatePreviewOutput(cameraManager, previewProfile, previewSurfaceId, &previewOutput);
         if (previewProfile == nullptr || previewOutput == nullptr || ret != CAMERA_OK) {
             OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreatePreviewOutput failed.");
@@ -283,10 +285,10 @@ After obtaining the output stream capabilities supported by the camera, create a
         // Create a photo output stream.
         ret = OH_CameraManager_CreatePhotoOutputWithoutSurface(cameraManager, photoProfile, &photoOutput);
 
-        // Listen for the one-time photo capture callback.
+        // Listen for one-shot photo capture callbacks.
         ret = OH_PhotoOutput_RegisterPhotoAvailableCallback(photoOutput, OnPhotoAvailable);
 
-        // Create a session.
+        // Create the session.
         ret = OH_CameraManager_CreateCaptureSession(cameraManager, &captureSession);
         if (captureSession == nullptr || ret != CAMERA_OK) {
             OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreateCaptureSession failed.");
@@ -374,7 +376,7 @@ After obtaining the output stream capabilities supported by the camera, create a
             // Obtain the flash mode in use.
             ret = OH_CaptureSession_GetFlashMode(captureSession, &flashMode);
             if (ret == CAMERA_OK) {
-                OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetFlashMode success. flashMode: %{public}d ", flashMode);
+                OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetFlashMode success. flashMode:%{public}d ", flashMode);
             } else {
                 OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetFlashMode failed. ret : %{public}d ", ret);
             }
@@ -427,7 +429,7 @@ After obtaining the output stream capabilities supported by the camera, create a
         // Obtain the zoom ratio of the camera.
         ret = OH_CaptureSession_GetZoomRatio(captureSession, &maxZoom);
         if (ret == CAMERA_OK) {
-            OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetZoomRatio success. zoom: %{public}f ", maxZoom);
+            OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetZoomRatio success. zoom:%{public}f ", maxZoom);
         } else {
             OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetZoomRatio failed. ret : %{public}d ", ret);
         }

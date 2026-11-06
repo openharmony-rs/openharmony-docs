@@ -9,30 +9,33 @@
 
 ## 功能介绍
 
-从API version 12开始，多模为应用提供了按键、输入事件（鼠标、触屏和轴事件）监听能力，当前仅支持录屏类应用。使用场景例如：用户在录屏应用开启录屏时，监听设备的按键、鼠标、触摸和轴事件。
+从API version 12开始，多模为应用提供了按键、输入事件（鼠标、触屏和轴事件）监听能力。使用场景例如：
+
+- 录屏类应用：应用开启录屏期间，监听设备的按键、鼠标、触摸和轴事件。
+- 输入录制、自动化测试类应用（从API版本26.1.0开始，仅PC/2in1形态支持）：用户完成授权后，应用可在任意时刻监听设备的按键、鼠标、触摸和轴事件，监听不随录屏状态变化而中断。
 
 ## 接口说明
 
-创建和删除事件监听相关接口如下表所示，接口详细介绍请参考[input](../../reference/apis-input-kit/capi-input.md)。
+创建和删除事件监听相关接口如下表所示，接口详细介绍请参考[oh_input_manager.h](../../reference/apis-input-kit/capi-oh-input-manager-h.md)。
 
-| 接口名称  | 描述 |
+| 接口名称 | 描述 |
 | ------------------------------------------------------------ | -------------------------- |
-| Input_Result OH_Input_AddKeyEventMonitor(Input_KeyEventCallback callback) |创建按键事件监听。  |
-| Input_Result OH_Input_AddMouseEventMonitor(Input_MouseEventCallback callback) |创建鼠标事件监听。  |
-| Input_Result OH_Input_AddTouchEventMonitor(Input_TouchEventCallback callback) |创建触摸事件监听。  |
-| Input_Result OH_Input_AddAxisEventMonitorForAll(Input_AxisEventCallback callback) |创建所有类型轴事件监听。  |
-| Input_Result OH_Input_AddAxisEventMonitor(InputEvent_AxisEventType axisEventType, Input_AxisEventCallback callback) |创建指定类型轴事件监听。  |
-| Input_Result OH_Input_RemoveKeyEventMonitor(Input_KeyEventCallback callback) |删除按键事件监听。  |
-| Input_Result OH_Input_RemoveMouseEventMonitor(Input_MouseEventCallback callback) |删除鼠标事件监听。  |
-| Input_Result OH_Input_RemoveTouchEventMonitor(Input_TouchEventCallback callback) |删除触摸事件监听。  |
-| Input_Result OH_Input_RemoveAxisEventMonitorForAll(Input_AxisEventCallback callback) |删除所有类型轴事件监听。  |
-| Input_Result OH_Input_RemoveAxisEventMonitor(InputEvent_AxisEventType axisEventType, Input_AxisEventCallback callback) |删除指定类型轴事件监听。  |
+| Input_Result OH_Input_AddKeyEventMonitor(Input_KeyEventCallback callback) | 创建按键事件监听。 |
+| Input_Result OH_Input_AddMouseEventMonitor(Input_MouseEventCallback callback) | 创建鼠标事件监听。 |
+| Input_Result OH_Input_AddTouchEventMonitor(Input_TouchEventCallback callback) | 创建触摸事件监听。 |
+| Input_Result OH_Input_AddAxisEventMonitorForAll(Input_AxisEventCallback callback) | 创建所有类型轴事件监听。 |
+| Input_Result OH_Input_AddAxisEventMonitor(InputEvent_AxisEventType axisEventType, Input_AxisEventCallback callback) | 创建指定类型轴事件监听。 |
+| Input_Result OH_Input_RemoveKeyEventMonitor(Input_KeyEventCallback callback) | 删除按键事件监听。 |
+| Input_Result OH_Input_RemoveMouseEventMonitor(Input_MouseEventCallback callback) | 删除鼠标事件监听。 |
+| Input_Result OH_Input_RemoveTouchEventMonitor(Input_TouchEventCallback callback) | 删除触摸事件监听。 |
+| Input_Result OH_Input_RemoveAxisEventMonitorForAll(Input_AxisEventCallback callback) | 删除所有类型轴事件监听。 |
+| Input_Result OH_Input_RemoveAxisEventMonitor(InputEvent_AxisEventType axisEventType, Input_AxisEventCallback callback) | 删除指定类型轴事件监听。 |
 
 ## 开发步骤
 
 ### 链接动态库
 
-调用创建和删除事件监听前，需链接相关动态库。链接动态库的方法是，在CMakeList.txt文件中新增如下配置：
+调用创建和删除事件监听前，需链接相关动态库。链接动态库的方法是，在CMakeLists.txt文件中新增如下配置：
 
 ```txt
 target_link_libraries(entry PUBLIC libohinput.so)
@@ -40,15 +43,36 @@ target_link_libraries(entry PUBLIC libohinput.so)
 
 ### 申请所需权限
 
-应用需要在module.json5中添加下面权限的配置，详细的配置方法参考声明[声明权限文档](../../security/AccessToken/declare-permissions.md)。
+应用需要在module.json5中声明所需权限，详细的配置方法参考[声明权限文档](../../security/AccessToken/declare-permissions.md)。两种权限的授权方式不同，申请说明如下。
 
-```json
-"requestPermissions": [
-    {
-        "name": "ohos.permission.INPUT_MONITORING"
-    }
-]
-```
+- **ohos.permission.INPUT_MONITORING**（系统授权）：面向录屏类应用，应用开启录屏期间可监听设备的按键、鼠标、触摸和轴事件。该权限需要通过ACL方式申请，具体请参考[申请受限权限](../../security/AccessToken/declare-permissions-in-acl.md)。
+
+    ```json
+    "requestPermissions": [
+        {
+            "name": "ohos.permission.INPUT_MONITORING"
+        }
+    ]
+    ```
+
+- **ohos.permission.INPUT_RECORDING**（手动设置授权，从API版本26.1.0开始支持，仅支持PC/2in1）：面向输入录制、自动化测试类应用，用户完成授权后，应用可在任意时刻监听设备的按键、鼠标、触摸和轴事件，监听不随录屏状态变化而中断。该权限的授权说明请参考[手动设置授权](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)。
+
+    该权限的reason与usedScene字段必填；无法通过弹窗向用户申请授权，应用上架审核通过后，需引导用户在"设置 > 隐私 > 权限管理"中手动开启授权。
+
+    ```json
+    "requestPermissions": [
+        {
+            "name": "ohos.permission.INPUT_RECORDING",
+            "reason": "$string:input_recording_permission_reason",
+            "usedScene": {
+                "abilities": [
+                    "EntryAbility"
+                ],
+                "when": "inuse"
+            }
+        }
+    ]
+    ```
 
 ### 创建事件监听
 

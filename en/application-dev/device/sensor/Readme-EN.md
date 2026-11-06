@@ -3,8 +3,9 @@
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
 <!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=cc1ac1a8be74b658ceeb5fd670db6be81ba34f15 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 - [About This Kit](sensorservice-kit-intro.md)
 - Sensor<!--sensor-->
@@ -15,3 +16,4 @@
   - [Vibrator Overview](vibrator-overview.md)
   - [Vibrator Development (ArkTS)](vibrator-guidelines.md)
   - [Vibrator Development (C/C++)](vibrator-guidelines-capi.md)
+- [Glossary](sensor-glossary.md)

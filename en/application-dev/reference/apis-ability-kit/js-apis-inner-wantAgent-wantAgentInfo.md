@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=acba00b4edca6db1d20615b479cf478c7de4ec19 translatedAt=2026-09-03T12:22:39.190Z pushedAt=2026-09-05T10:47:30.907Z -->
 
-The module defines the information required for triggering the WantAgent.
+WantAgentInfo defines the information required for triggering a WantAgent. It can be used as an input parameter of [getWantAgent](js-apis-app-ability-wantAgent.md#wantagentgetwantagent) to create a specified WantAgent object. It applies to scenarios where delayed execution of Ability startup, publishing of common events, and the like are required. It supports custom request codes and action execution attributes, helping developers flexibly control the behavior of a WantAgent.
 
 > **NOTE**
 > 
@@ -27,11 +28,11 @@ Defines the information required for triggering a WantAgent object. The informat
 
 | Name          | Type                           | Read-Only| Optional| Description                  |
 | -------------- | ------------------------------ | ---- | ---- |---------------------- |
-| wants          | Array\<[Want](js-apis-app-ability-want.md)\>                   | No| No| Array of all Want objects. Currently, only one Want is supported. The array is reserved for future capability expansion. If multiple values are passed in, only the first member in the array is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.   |
-| operationType<sup>(deprecated)</sup>  | [wantAgent.OperationType](js-apis-wantAgent.md#operationtype)         | No| Yes| Operation type.<br>This attribute is supported since API version 7 and deprecated since API version 11. You are advised to use actionType<sup>11+</sup> instead.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
-| actionType<sup>11+</sup> | [abilityWantAgent.OperationType](js-apis-app-ability-wantAgent.md#operationtype)         | No| Yes| Operation type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.              |
-| requestCode    | number                          | No| No| Custom request code, which is used to identify the operation to execute.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| wantAgentFlags<sup>(deprecated)</sup> | Array<[wantAgent.WantAgentFlags](js-apis-wantAgent.md#wantagentflags)> | No| Yes| Array of flags for using the WantAgent object.<br>This attribute is supported since API version 7 and deprecated since API version 11. You are advised to use actionFlags<sup>11+</sup> instead.<br>**Atomic service API**: This API can be used in atomic services since API version 12.          |
-| actionFlags<sup>11+</sup> | Array<[abilityWantAgent.WantAgentFlags](js-apis-app-ability-wantAgent.md#wantagentflags)> | No| Yes| Array of flags for using the WantAgent object.<br>**Atomic service API**: This API can be used in atomic services since API version 12.          |
-| extraInfo      | { [key: string]: any }            | No| Yes| Extra information.<br>**Atomic service API**: This API can be used in atomic services since API version 12.          |
-| extraInfos<sup>11+</sup> | Record\<string, Object>            | No| Yes| Extra information. You are advised to use this property to replace **extraInfo**. When this property is set, **extraInfo** does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 12.              |
+| wants          | Array\<[Want](js-apis-app-ability-want.md)\>                   | No | No | The wants array is a reserved capability. Currently, only one want is supported. If multiple wants are passed in, only the first member of the wants array is used.<br>**Atomic service API**: Since API version 12, this API is supported in atomic services.    |
+|operationType<sup>(deprecated)</sup>  | [wantAgent.OperationType](js-apis-wantAgent.md#operationtype)         | No | Yes | Operation type. If this parameter is not set, no default operation type is used.<br/>Supported since API version 7 and deprecated since API version 11. You are advised to use actionType<sup>11+</sup> instead.<br>**Atomic service API**: Since API version 12, this API is supported in atomic services.|
+|actionType<sup>11+</sup> | [abilityWantAgent.OperationType](js-apis-app-ability-wantAgent.md#operationtype)         | No | Yes | Action type. If this parameter is not set, no default action type is used.<br>**Atomic service API**: Since API version 12, this API is supported in atomic services.|
+| requestCode    | number                          | No | No | Request code defined by the developer, used to identify the action to be executed. Supported since API version 7.<br>**Atomic service API**: Since API version 12, this API is supported in atomic services. |
+|wantAgentFlags<sup>(deprecated)</sup> | Array<[wantAgent.WantAgentFlags](js-apis-wantAgent.md#wantagentflags)> | No | Yes | Action execution attribute. If this parameter is not set, no execution attribute is used.<br/>Supported since API version 7 and deprecated since API version 11. You are advised to use actionFlags<sup>11+</sup> instead.<br>**Atomic service API**: Since API version 12, this API is supported in atomic services.|
+|actionFlags<sup>11+</sup> | Array<[abilityWantAgent.WantAgentFlags](js-apis-app-ability-wantAgent.md#wantagentflags)> | No | Yes | Action execution attribute. If this parameter is not set, no execution attribute is used.<br>**Atomic service API**: Since API version 12, this API is supported in atomic services.|
+| extraInfo      | { [key: string]: any }            | No | Yes | Extra data used to pass custom extended information. This parameter is a key-value pair object, where key is a string key name and value is a value of any type. You are advised to use the type-safe extraInfos attribute instead. If both extraInfo and extraInfos are set, extraInfos takes effect and extraInfo is ignored.<br>**Atomic service API**: Since API version 12, this API is supported in atomic services.       |
+| extraInfos<sup>11+</sup> | Record\<string, Object>            | No | Yes | Extra data used to pass custom key-value pair information in a type-safe manner. You are advised to use this attribute instead of extraInfo. When both are set, this attribute takes precedence. Pass this parameter when you need to carry additional custom data when triggering the WantAgent. If this parameter is not passed, it defaults to null and no extra data is carried.<br>**Atomic service API**: Since API version 12, this API is supported in atomic services. |

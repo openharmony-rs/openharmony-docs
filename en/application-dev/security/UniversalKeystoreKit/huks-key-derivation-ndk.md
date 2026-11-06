@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=fc50c8d990bffee49b4e7ddbe84b245946468e4c translatedAt=2026-11-03T05:38:46.350Z pushedAt=2026-11-03T07:39:01.509Z nl=1 -->
 
 This topic walks you through on how to derive a key using HKDF and PBKDF2. For details about the scenarios and supported algorithm specifications, see [Supported Algorithms](huks-key-derivation-overview.md#supported-algorithms).
 
@@ -46,7 +47,9 @@ Alternatively, you can [import a key](huks-key-import-overview.md).
     | The tag is not set.| OH_HUKS_STORAGE_KEY_EXPORT_ALLOWED | The key is returned to the caller for management.|
     | The tag is not set.| The tag is not set.| The key is returned to the caller for management.|
 
-    Note: The tag value set in key derivation should not conflict with the tag value set in key generation. The above table lists only valid settings.
+    > **Note:**
+    >
+    > The TAG value specified during derivation must not conflict with the TAG value specified during generation. The table lists only the valid specification methods.
 
 2. Use [OH_Huks_InitSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_initsession) to initialize a key session and obtain the session handle.
 

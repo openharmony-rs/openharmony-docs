@@ -5,13 +5,15 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=b9c1325011d9c59753edc8719ffca6256df6a642 translatedAt=2026-11-03T08:28:57.873Z pushedAt=2026-11-03T08:44:43.667Z nl=2 -->
+
 The dialog controller in ArkUI provides the capability to operate on a bound dialog box. Currently, it supports the close functionality. You can pass the controller into the dialog box content area to perform operations.
 
 Bind the [DialogController](../reference/apis-arkui/js-apis-promptAction.md#dialogcontroller18) using the **controller** parameter, available since API version 18.
 
 ## Constraints
 
-Currently, the [openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18) and [presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)) APIs support binding dialog controllers through the **controller** parameter. The [getDialogController](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getdialogcontroller18) API can obtain the dialog controller for the custom component where the dialog box is located.
+Currently, the [openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18) and [presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18) APIs support binding dialog controllers through the **controller** parameter. The [getDialogController](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getdialogcontroller18) API can obtain the dialog controller for the custom component where the dialog box is located.
 
 > **NOTE**
 > 
@@ -87,7 +89,7 @@ Currently, the [openCustomDialogWithController](../reference/apis-arkui/arkts-ap
       
 4. Initialize a dialog controller and create a dialog box content entity object by setting the **controller** parameter. Finally, obtain a [PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md) object through the [getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction) API of [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md), and call the [openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18) API with the initialized content entity object and **controller** parameter to create the dialog box.
 
-   <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
    
    ``` TypeScript
    let dialogController: promptAction.CommonController = new promptAction.DialogController();
@@ -96,7 +98,7 @@ Currently, the [openCustomDialogWithController](../reference/apis-arkui/arkts-ap
        new Params(this.message, dialogController));
    this.getUIContext().getPromptAction().openCustomDialogWithController(
      contentNode, dialogController, this.baseDialogOptions).catch((err: BusinessError) => {
-     hilog.error(0x0000, 'dialogController',
+     hilog.error(DOMAIN, 'dialogController',
        'openCustomDialogWithController error: ' + err.code + ' ' + err.message);
    });
    ```
@@ -133,14 +135,14 @@ Currently, the [openCustomDialogWithController](../reference/apis-arkui/arkts-ap
       
 2. Initialize a dialog box controller and obtain a [PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md) object through the [getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction) API of [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md), and call the [presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18) API with the initialized content entity object and **controller** parameter to create the dialog box.
 
-   <!-- @[dialog_controller_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   <!-- @[dialog_controller_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
    
    ``` TypeScript
    let dialogController: promptAction.CommonController = new promptAction.DialogController();
    this.getUIContext().getPromptAction().presentCustomDialog(() => {
      this.customDialogComponent(dialogController);
    }, dialogController, this.dialogOptions).catch((err: BusinessError) => {
-     hilog.error(0x0000, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
+     hilog.error(DOMAIN, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
    });
    ```
    
@@ -182,14 +184,14 @@ Currently, the [openCustomDialogWithController](../reference/apis-arkui/arkts-ap
       
 2. Initialize a dialog box controller and obtain a [PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md) object through the [getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction) API of [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md), and call the [presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18) API with the initialized content entity object and **controller** parameter to create the dialog box.
 
-   <!-- @[dialog_controller_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   <!-- @[dialog_controller_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
    
    ``` TypeScript
    let dialogController: promptAction.CommonController = new promptAction.DialogController();
    this.getUIContext().getPromptAction().presentCustomDialog((dialogId: number) => {
      this.customDialogComponentWithId(dialogId, dialogController);
    }, dialogController, this.dialogOptions).catch((err: BusinessError) => {
-     hilog.error(0x0000, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
+     hilog.error(DOMAIN, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
    });
    ```
    
@@ -215,7 +217,7 @@ Currently, the [openCustomDialogWithController](../reference/apis-arkui/arkts-ap
            .fontSize(30)
          Button('Close Dialog(Built-in Controller)')
            .onClick(() => {
-             let dialogController: PromptActionDialogController = this.getDialogController();
+             let dialogController: promptAction.DialogController = this.getDialogController();
              if (dialogController !== undefined) {
                dialogController.close();
              }
@@ -250,7 +252,7 @@ In custom dialog box implementations starting from API version 20, you can invok
 > 
 > For details about the variables, see [Example](#example).
 
-Initialize the custom dialog box content area containing a **Text** component and a button. The button triggers **getState** to obtain the current dialog box state.
+Initialize a custom dialog box content area, which internally contains a `Text` component and two buttons. One button obtains the current dialog box state by calling `getState`, and the other button closes the dialog box through the dialog controller.
 
 <!-- @[dialog_component_get_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
 
@@ -348,7 +350,7 @@ struct CustomDialogExample {
         .fontSize(30)
       Button('Close Dialog(Built-in Controller)')
         .onClick(() => {
-          let dialogController: PromptActionDialogController = this.getDialogController();
+          let dialogController: promptAction.DialogController = this.getDialogController();
           if (dialogController !== undefined) {
             dialogController.close();
           }

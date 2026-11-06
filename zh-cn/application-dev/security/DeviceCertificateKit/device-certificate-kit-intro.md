@@ -23,7 +23,7 @@
 
 ## 整体架构
 
-[ArkWeb](../../web/Readme-CN.md)和[Network Kit](../../network/Readme-CN.md)等网络通信相关的服务基于Device Certificate Kit提供证书链校验、双向HTTPS认证等功能。
+[ArkWeb](../../web/web-component-overview.md)和[Network Kit](../../network/net-mgmt-overview.md)等网络通信相关的服务基于Device Certificate Kit提供证书链校验、双向HTTPS认证等功能。
 
 证书管理服务在对数字证书凭据的安装和使用时，依赖[Universal Keystore Kit](../UniversalKeystoreKit/huks-overview.md)的密钥存储和管理能力。
 

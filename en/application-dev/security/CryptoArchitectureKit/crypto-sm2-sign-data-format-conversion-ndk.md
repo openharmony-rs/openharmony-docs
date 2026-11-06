@@ -1,4 +1,4 @@
-# Converting SM2 Signature Formats (C/C++)
+# SM2 Signature Data Format Conversion (C/C++)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,17 +6,23 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=99672258e158c110c5ee74a166a44dafda8d8dee translatedAt=2026-10-30T04:03:02.338Z pushedAt=2026-10-30T07:32:00.521Z nl=1 -->
 
 HarmonyOS supports the conversion between the DER and R|S formats.
 
-You can specify SM2 ciphertext parameters and convert them to DER ciphertext. You can also extract SM2 ciphertext parameters from DER ciphertext.
+You can specify SM2 signature parameters and convert them into DER-format signature data. Conversely, you can also extract the specific SM2 signature parameters from DER-format signature data.
 
-**Converting Ciphertext Parameters to DER Ciphertext**
-1. Call [OH_CryptoEccSignatureSpec_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_create) to create an [OH_CryptoEccSignatureSpec](../../reference/apis-crypto-architecture-kit/capi-cryptosignatureapi-oh-cryptoeccsignaturespec.md) object for setting SM2 ciphertext parameters.
+## Adding the Dynamic Library in the CMake Script
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
+
+**Specifying Signature Parameters and Converting to DER Format**
+1. Call [OH_CryptoEccSignatureSpec_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_create) to create an [OH_CryptoEccSignatureSpec](../../reference/apis-crypto-architecture-kit/capi-cryptosignatureapi-oh-cryptoeccsignaturespec.md) object for setting SM2 signature parameters.
 
 2. Call [OH_CryptoEccSignatureSpec_SetRAndS](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_setrands) to set the **R** and **S** parameters in the **OH_CryptoEccSignatureSpec** object.
 
-3. Call [OH_CryptoEccSignatureSpec_Encode](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_encode) to obtain the converted DER ciphertext.
+3. Call [OH_CryptoEccSignatureSpec_Encode](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_encode) to obtain the converted DER-format signature data.
 
 4. Call [OH_CryptoEccSignatureSpec_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_destroy) to release the object.
 

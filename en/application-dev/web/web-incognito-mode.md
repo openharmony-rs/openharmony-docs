@@ -2,12 +2,16 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=25b6361d3eb37456c4cbd5bc47e1cfe1a805ace6 translatedAt=2026-11-03T03:08:43.419Z pushedAt=2026-11-03T03:22:59.201Z nl=1 -->
 
+When you browse web pages in incognito mode, data such as cookies and caches is not written to local persistent storage. After the Web component in incognito mode is destroyed, this data is cleared and will not be retained.
 
-When creating a **Web** component, you can enable incognito mode for it by setting the optional parameter [incognitoMode](../reference/apis-arkweb/arkts-basic-components-web-i.md#weboptions) to **true**. When incognito mode is enabled, data such as cookies and cache data during web page browsing is not stored in local persistent files. This means that such data is lost when the **Web** component is destroyed.
+## Enabling Incognito Mode
+
+When creating a Web component, you can enable incognito mode for it by setting the optional parameter [incognitoMode](../reference/apis-arkweb/arkts-basic-components-web-i.md#weboptions) to **true**.
 
 - Create a [Web](../reference/apis-arkweb/arkts-basic-components-web.md) component in incognito mode.
   <!-- @[create_a_web_component_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/IncognitoMode_one.ets) -->
@@ -58,7 +62,7 @@ When creating a **Web** component, you can enable incognito mode for it by setti
   }
   ```
 
-In incognito mode, you can use the following APIs for geolocation information, cookies, and cache data:
+## Operating Geolocation in Incognito Mode
 
 - Use [allowGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#allowgeolocation) to allow the specified origin to use the geolocation information.
   <!-- @[setting_the_web_component_in_privacy_mode_allows_specifying_the_geolocation_of_the_source_used](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/AllowGeolocation.ets) -->
@@ -144,7 +148,7 @@ In incognito mode, you can use the following APIs for geolocation information, c
               // This API uses an asynchronous callback to return the result.
               webview.GeolocationPermissions.getAccessibleGeolocation(this.origin, (error, result) => {
                 if (error) {
-                  console.error(`getAccessibleGeolocationAsync error: + Code: ${error.code}, message: ${error.message}`);
+                  console.error(`getAccessibleGeolocationAsync error: Code: ${error.code}, message: ${error.message}`);
                   return;
                 }
                 console.info('getAccessibleGeolocationAsync result: ' + result);
@@ -159,6 +163,7 @@ In incognito mode, you can use the following APIs for geolocation information, c
     }
   }
   ```
+## Clearing Web Data in Memory in Incognito Mode
 
 - Use [deleteAllData](../reference/apis-arkweb/arkts-apis-webview-WebStorage.md#deletealldata) to delete all data in the Web SQL Database.
   <!-- @[clear_all_storage_currently_used_by_web_sql_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DeleteAllData.ets) -->
@@ -235,6 +240,8 @@ In incognito mode, you can use the following APIs for geolocation information, c
   </html>
   ```
 
+## Managing Cookies in Incognito Mode
+
 - Use [fetchCookieSync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#fetchcookiesync11) to obtain the cookie corresponding to the specified URL.
   <!-- @[obtain_the_value_of_the_cookie_corresponding_to_the_specified_url_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/FetchCookieSync.ets) -->
   
@@ -283,7 +290,7 @@ In incognito mode, you can use the following APIs for geolocation information, c
         Button('configCookieSync')
           .onClick(() => {
             try {
-              // The third parameter of configCookieSync specifies whether to obtain the cookie for the specified URL in incognito mode (true) or non-incognito mode (false).
+              // The third parameter of configCookieSync indicates whether to set the cookies for the corresponding URL in incognito mode (true) or non-incognito mode (false).
               webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b', true);
             } catch (error) {
               console.error(
@@ -321,7 +328,7 @@ In incognito mode, you can use the following APIs for geolocation information, c
   }
   ```
 
-- Use [clearAllCookiesSync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#clearallcookiessync11) to clear all cookies.
+- Use [clearAllCookiesSync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#clearallcookiessync11) to clear all cookies. 
   <!-- @[clear_all_cookies_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ClearAllCookiesSync.ets) -->
   
   ``` TypeScript

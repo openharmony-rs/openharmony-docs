@@ -1,10 +1,11 @@
 # Enums
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=5e99ec0c11f9a0e307fd0291f8ef63d9fe4d1860 translatedAt=2026-11-03T03:42:20.526Z pushedAt=2026-11-04T03:11:46.931Z nl=1 -->
 
 > **NOTE**
 >
@@ -94,15 +95,15 @@ Enumerates the device types.
 | BLUETOOTH_SCO        | 7      | Bluetooth device using Synchronous Connection Oriented (SCO) links.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | BLUETOOTH_A2DP       | 8      | Bluetooth device using Advanced Audio Distribution Profile (A2DP) links.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | MIC                  | 15     | Microphone.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| USB_HEADSET          | 22     | USB Type-C headset.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| USB_HEADSET          | 22     | USB headset.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | DISPLAY_PORT<sup>12+</sup>        | 23     | Display port (DP), which is used to connect to external devices.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | REMOTE_CAST<sup>12+</sup>        | 24     | Remote cast device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | USB_DEVICE<sup>18+</sup>        | 25 | USB device (excluding USB headsets).          |
 | HDMI<sup>19+</sup>        | 27 | HDMI device (such as HDMI, ARC, and eARC).          |
 | LINE_DIGITAL<sup>19+</sup>        | 28 | Wired digital device (such as S/PDIF)          |
 | REMOTE_DAUDIO<sup>18+</sup>        | 29 | Distributed device.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| HEARING_AID<sup>20+</sup>        | 30 | Hearing aid device.|
-| NEARLINK<sup>20+</sup>        | 31 | NearLink device.|
+| HEARING_AID<sup>20+</sup>        | 30 | Hearing aid device.<br>By default, this type is returned as an anonymous type using `BLUETOOTH_SCO`. Since API version 26.0.0, to obtain the actual device type, call [declareDeviceTypesCompatibility](./arkts-apis-audio-AudioRoutingManager.md#declaredevicetypescompatibility) to declare the device type compatibility. |
+| NEARLINK<sup>20+</sup>        | 31 | NearLink device.<br>By default, this type is returned as an anonymous type using `BLUETOOTH_SCO`. Since API version 26.0.0, to obtain the actual device type, call [declareDeviceTypesCompatibility](./arkts-apis-audio-AudioRoutingManager.md#declaredevicetypescompatibility) to declare the device type compatibility. |
 | SYSTEM_PRIVATE<sup>22+</sup> | 200 | System private device. (This device is a private device within the system, and applications can ignore it.)|
 | DEFAULT<sup>9+</sup> | 1000   | Default device type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
@@ -118,6 +119,22 @@ Enumerates the preferred device categories available for recording with Bluetoot
 | PREFERRED_DEFAULT | 1      | Prefers using Bluetooth or NearLink devices for recording; whether to use low-latency or high-quality recording depends on the system.|
 | PREFERRED_LOW_LATENCY  | 2      | Prefers using Bluetooth or NearLink devices in low-latency mode for recording.|
 | PREFERRED_HIGH_QUALITY | 3      | Prefers using Bluetooth or NearLink devices in high-quality mode for recording.|
+
+## NoiseReductionMode
+
+Enumerates the recording noise reduction modes.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.Capturer
+
+| Name| Value| Description|
+| :--- | :--- | :--- |
+| FIDELITY | 0 | Fidelity mode, with no noise reduction applied.|
+| PURE_VOCALS | 1 | Pure vocals mode, with strong noise reduction.|
+| STANDARD | 2 | Standard mode, with weak noise reduction.|
 
 ## CommunicationDeviceType<sup>9+</sup>
 
@@ -173,6 +190,9 @@ Enumerates the error codes available for audio management.
 | ERROR_TIMEOUT        | 6800105 | Processing timeout.        |
 | ERROR_STREAM_LIMIT   | 6800201 | Too many audio streams.|
 | ERROR_SYSTEM         | 6800301 | System error.    |
+| ERROR_SERVICE_DIED   | 6800302 | The system service process is terminated.<br>**Since:** 26.0.1<br>**Model restriction:** This interface is only available in the Stage model. |
+| ERROR_NETWORK_CONDITION_NOT_MET | 6800501 | The network condition is not met.<br>**Since:** 26.0.1<br>**Model restriction:** This interface is only available in the Stage model. |
+| ERROR_STORAGE_NOT_ENOUGH        | 6800502 | Insufficient storage space.<br>**Since:** 26.0.1<br>**Model restriction:** This interface is only available in the Stage model. |
 
 ## AudioChannel<sup>8+</sup>
 
@@ -204,20 +224,21 @@ Enumerates the audio sampling rates. The sampling rates supported vary according
 
 | Name             |  Value   | Description           |
 | ----------------- | ------ | --------------- |
-| SAMPLE_RATE_8000  | 8000   | The sampling rate is 8000. |
-| SAMPLE_RATE_11025 | 11025  | The sampling rate is 11025.|
-| SAMPLE_RATE_12000 | 12000  | The sampling rate is 12000.|
-| SAMPLE_RATE_16000 | 16000  | The sampling rate is 16000.|
-| SAMPLE_RATE_22050 | 22050  | The sampling rate is 22050.|
-| SAMPLE_RATE_24000 | 24000  | The sampling rate is 24000.|
-| SAMPLE_RATE_32000 | 32000  | The sampling rate is 32000.|
-| SAMPLE_RATE_44100 | 44100  | The sampling rate is 44100.|
-| SAMPLE_RATE_48000 | 48000  | The sampling rate is 48000.|
-| SAMPLE_RATE_64000 | 64000  | The sampling rate is 64000.|
-| SAMPLE_RATE_88200<sup>12+</sup> | 88200  | The sampling rate is 88200.|
-| SAMPLE_RATE_96000 | 96000  | The sampling rate is 96000.|
-| SAMPLE_RATE_176400<sup>12+</sup> | 176400  | The sampling rate is 176400.|
-| SAMPLE_RATE_192000<sup>12+</sup> | 192000  | The sampling rate is 192000.|
+| SAMPLE_RATE_8000  | 8000   | The sampling rate is 8000. The unit is Hz. |
+| SAMPLE_RATE_11025 | 11025  | The sampling rate is 11025. The unit is Hz.|
+| SAMPLE_RATE_12000 | 12000  | The sampling rate is 12000. The unit is Hz.|
+| SAMPLE_RATE_16000 | 16000  | The sampling rate is 16000. The unit is Hz.|
+| SAMPLE_RATE_22050 | 22050  | The sampling rate is 22050. The unit is Hz.|
+| SAMPLE_RATE_24000 | 24000  | The sampling rate is 24000. The unit is Hz.|
+| SAMPLE_RATE_32000 | 32000  | The sampling rate is 32000. The unit is Hz.|
+| SAMPLE_RATE_44100 | 44100  | The sampling rate is 44100. The unit is Hz.|
+| SAMPLE_RATE_48000 | 48000  | The sampling rate is 48000. The unit is Hz.|
+| SAMPLE_RATE_64000 | 64000  | The sampling rate is 64000. The unit is Hz.|
+| SAMPLE_RATE_88200<sup>12+</sup> | 88200  | The sampling rate is 88200. The unit is Hz.|
+| SAMPLE_RATE_96000 | 96000  | The sampling rate is 96000. The unit is Hz.|
+| SAMPLE_RATE_176400<sup>12+</sup> | 176400  | The sampling rate is 176400. The unit is Hz.|
+| SAMPLE_RATE_192000<sup>12+</sup> | 192000  | The sampling rate is 192000. The unit is Hz.|
+| SAMPLE_RATE_384000 | 384000  | The sampling rate is 384000. The unit is Hz.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## AudioEncodingType<sup>8+</sup>
 
@@ -385,11 +406,12 @@ Enumerates the audio interruption types.
 
 ## InterruptForceType<sup>9+</sup>
 
-Enumerates the types of force that causes audio interruption.
+Enumerates whether the operation corresponding to an audio interruption hint is forcibly executed by the system.
 
-The force type is obtained when an [InterruptEvent](arkts-apis-audio-i.md#interruptevent9) is received.
+This information is obtained when the user listens to an audio interruption event (that is, receives the [InterruptEvent](arkts-apis-audio-i.md#interruptevent9) event).
 
-This type specifies whether audio interruption is forcibly performed by the system. The operation information (such as audio pause or stop) can be obtained through [InterruptHint](#interrupthint). For details about the audio interruption policy, see [Introduction to Audio Focus](../../media/audio/audio-playback-concurrency.md).
+
+This type indicates whether the operation corresponding to the audio interruption hint [InterruptHint](#interrupthint) has been forcibly executed by the system. The specific operation information (such as audio pause and stop) can be obtained through [InterruptHint](#interrupthint). Among them, the [InterruptForceType](#interruptforcetype9) corresponding to INTERRUPT_HINT_RESUME must be INTERRUPT_SHARE, that is, the resume operation cannot be forcibly executed by the system and must be triggered by the application itself. For details about the audio interruption policy, see [Audio Focus Introduction](../../media/audio/audio-playback-concurrency.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -397,8 +419,8 @@ This type specifies whether audio interruption is forcibly performed by the syst
 
 | Name           |  Value   | Description                                |
 | --------------- | ------ | ------------------------------------ |
-| INTERRUPT_FORCE | 0      | The operation is forcibly performed by the system.  |
-| INTERRUPT_SHARE | 1      | The operation will not be performed by the system. [InterruptHint](#interrupthint) is used to provide recommended operations for the application, and the application can determine the next processing mode.|
+| INTERRUPT_FORCE | 0      | Forced execution type, that is, the operation corresponding to the interruption hint [InterruptHint](#interrupthint) has been forcibly executed by the system.   |
+| INTERRUPT_SHARE | 1      | Non-forced execution type, that is, the system does not execute the corresponding operation but only prompts the application through [InterruptHint](#interrupthint), and the application can decide the next processing method on its own. |
 
 ## InterruptHint
 
@@ -519,11 +541,43 @@ Enumerates the types of audio streams captured.
 | SOURCE_TYPE_MIC                              | 0      | Mic source.<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
 | SOURCE_TYPE_VOICE_RECOGNITION<sup>9+</sup>   | 1      | Voice recognition source.<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
 | SOURCE_TYPE_PLAYBACK_CAPTURE<sup>(deprecated)</sup>   | 2 | Internal audio recording source.<br>**System capability**: SystemCapability.Multimedia.Audio.PlaybackCapture<br> This API is supported since API version 10 and deprecated since API version 12. You are advised to use [AVScreenCapture](../apis-media-kit/capi-avscreencapture.md) instead. |
-| SOURCE_TYPE_VOICE_COMMUNICATION              | 7      | Voice communication source. (The 3A algorithm is not enabled if recording is started independently. It is enabled when the AudioRenderer of the [STREAM_USAGE_VOICE_COMMUNICATION](#streamusage) or [STREAM_USAGE_VIDEO_COMMUNICATION](#streamusage) type is also used to start playback.)<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
+| SOURCE_TYPE_VOICE_COMMUNICATION              | 7      | Audio source for voice call scenarios. When recording is started with this stream type, the 3A algorithms are triggered and enabled.<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
 | SOURCE_TYPE_VOICE_MESSAGE<sup>12+</sup>      | 10     | Voice message source.<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
 | SOURCE_TYPE_CAMCORDER<sup>13+</sup>          | 13     | Video recording source.<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
 | SOURCE_TYPE_UNPROCESSED<sup>14+</sup>     | 14 |  Audio source for raw microphone recording, where the system does not perform any algorithm processing.<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
 | SOURCE_TYPE_LIVE<sup>20+</sup>     | 17 |  Audio source in live streaming scenarios. This source type provides system echo cancellation capabilities on supported devices.<br>**System capability**: SystemCapability.Multimedia.Audio.Core|
+
+## AudioPlaybackCaptureMode
+
+Enumerates the internal recording modes (recording audio from applications on the device). Different modes determine the types of playback streams that can be recorded. The enumeration values support bitwise OR combinations. Currently, the supported modes are `MODE_DEFAULT` (0x0), `MODE_MEDIA` (0x1), and `MODE_EXCLUDING_SELF` (0x8000), as well as the bitwise OR combination of `MODE_MEDIA` and `MODE_EXCLUDING_SELF` (0x8001).
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.PlaybackCapture
+
+| Name| Value| Description|
+| :--- | :--- | :--- |
+| MODE_DEFAULT | 0x0 | Default mode. Most audio streams are recorded, excluding the prompt streams and privacy streams.|
+| MODE_MEDIA | 0x1 | Media mode. Media, voice messages, and audio streams of unknown types are recorded.|
+| MODE_EXCLUDING_SELF | 0x8000 | Self-exclusion mode. All audio streams except for those played by the application itself are recorded.|
+
+## PlaybackCaptureStartState
+
+Enumerates the internal recording start states returned asynchronously after [requestPlaybackCaptureStart](arkts-apis-audio-AudioCapturer.md#requestplaybackcapturestart) is called.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.PlaybackCapture
+
+| Name| Value| Description|
+| :--- | :--- | :--- |
+| STATE_SUCCESS | 0 | Internal audio recording is started successfully.|
+| STATE_FAILED | 1 | Internal audio recording fails to be started. The reason is that the audio interruption request is rejected or an internal system error occurs.|
+| STATE_NOT_AUTHORIZED | 2 | Internal audio recording fails to be started due to lack of user authorization.|
 
 ## AudioScene<sup>8+</sup>
 
@@ -541,6 +595,8 @@ Enumerates the audio scenes.
 ## AudioConcurrencyMode<sup>12+</sup>
 
 Enumerates the audio concurrency modes.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -573,6 +629,7 @@ Enumerates the audio session scenes.
 | AUDIO_SESSION_SCENE_MEDIA | 0 | Media audio session.    |
 | AUDIO_SESSION_SCENE_GAME | 1 | Game audio session.    |
 | AUDIO_SESSION_SCENE_VOICE_COMMUNICATION  | 2 | VoIP voice call audio session.|
+| AUDIO_SESSION_SCENE_VOICE_MESSAGE  | 3 | Voice message audio session scene.<br>**Since:** 26.0.1 <br>**Model restriction:** This interface is only used in the Stage model. |
 
 ## AudioSessionStateChangeHint<sup>20+</sup>
 
@@ -649,7 +706,7 @@ Enumerates the returned event types for audio interruption events.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. No substitute is provided.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [InterruptType](#interrupttype) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
@@ -716,6 +773,6 @@ Enumerates audio session behaviors.
 
 | Name                  | Value| Description     |
 | :--------------------- |:--|:--------|
-| DEFAULT_BEHAVIOR<sup>24+</sup> | 0x00000000 | Default behavior, which is used to clear the audio session behavior settings.|
-| VOIP_PRIVACY_TYPE_PUBLIC | 0x00000001 | Non-privacy VoIP. Concurrent recording of VoIP streams and other application streams are supported.<br>**Note**: VoIP call streams are private streams. Exercise caution when using this API and ensure that it complies with privacy protection requirements.<br>**Since**: 26.0.0|
-| MUTE_WHEN_INTERRUPTED<sup>24+</sup> | 0x00000002 | Mute the audio stream when it is interrupted.<br>You need to call [setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24) to set the behavior and call [setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20) to make the setting take effect.<br>An application will receive an [InterruptHint](#interrupthint).INTERRUPT_HINT_MUTE notification when playback is muted, and an [InterruptHint](#interrupthint).INTERRUPT_HINT_UNMUTE notification when playback is unmuted.|
+| DEFAULT_BEHAVIOR | 0x00000000 | Default behavior, which is used to clear the audio session behavior settings.|
+| MUTE_WHEN_INTERRUPTED | 0x00000002 | When the system needs to stop or pause an audio stream, forced muting is applied as an alternative.<br>When the [setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24) API is called to configure this behavior, the [setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20) API must also be called. Otherwise, the configuration will not take effect.<br>In an audio session scenario, when an audio stream is muted or unmuted, the application will receive the [AudioSessionStateChangeHint](./arkts-apis-audio-e.md#audiosessionstatechangehint20).AUDIO_SESSION_STATE_CHANGE_HINT_MUTE and [AudioSessionStateChangeHint](./arkts-apis-audio-e.md#audiosessionstatechangehint20).AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE notifications, respectively.<br>In AudioRenderer and AudioCapturer scenarios, when an audio stream is muted or unmuted, the application will receive the [InterruptHint](#interrupthint).INTERRUPT_HINT_MUTE and [InterruptHint](#interrupthint).INTERRUPT_HINT_UNMUTE notifications, respectively.<br>**Note:** This flag cannot coexist with PAUSE_WHEN_INTERRUPTED. If both are set, only PAUSE_WHEN_INTERRUPTED takes effect.|
+| PAUSE_WHEN_INTERRUPTED | 0x00000004 | When the system needs to stop the audio stream, pause is used as an alternative.<br>When the [setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24) API is called to configure this behavior, the [setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20) API must also be called. Otherwise, the configuration will not take effect.<br>In an audio session scenario, when an audio stream is paused or resumed, the application will receive the [AudioSessionStateChangeHint](./arkts-apis-audio-e.md#audiosessionstatechangehint20).AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE and [AudioSessionStateChangeHint](./arkts-apis-audio-e.md#audiosessionstatechangehint20).AUDIO_SESSION_STATE_CHANGE_HINT_RESUME notifications, respectively.<br>In AudioRenderer and AudioCapturer scenarios, when an audio stream is paused or resumed, the application will receive the [InterruptHint](#interrupthint).INTERRUPT_HINT_PAUSE and [InterruptHint](#interrupthint).INTERRUPT_HINT_RESUME notifications, respectively.<br>**Note:** This flag cannot coexist with MUTE_WHEN_INTERRUPTED. If both are set, only this flag takes effect.<br>**Since**: 26.0.0|

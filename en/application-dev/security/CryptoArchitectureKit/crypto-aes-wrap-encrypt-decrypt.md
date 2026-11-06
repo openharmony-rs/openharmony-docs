@@ -6,16 +6,17 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=3393a745e64d6ee2b3f80d65fb3f920593e0cfc7 translatedAt=2026-10-30T03:23:54.785Z pushedAt=2026-10-30T06:42:10.541Z nl=1 -->
 
-From API version 22, the crypto algorithm library supports encryption and decryption with AES-WRAP.
+From API version 22, the crypto algorithm library supports encryption and decryption with this algorithm.
 
-For details, see [AES-WRAP encryption and decryption algorithm specifications](crypto-sym-encrypt-decrypt-spec.md#aes-wrap).
+For the corresponding algorithm specifications, see [AES-WRAP encryption and decryption algorithm specifications](crypto-encryption-decryption.md#aes-wrap).
 
 **Encryption**
 
-1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a 128-bit AES symmetric key (**SymKey**).
+1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a symmetric key (SymKey) with the AES algorithm and a key length of 128 bits.
    
-   In addition to the example in this topic, [AES](crypto-sym-key-generation-conversion-spec.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md) may help you better understand how to generate an AES symmetric key. Note that the input parameters in the reference documents may be different from those in the example below.
+   For details about how to generate an AES symmetric key, refer to the following example and also see [Symmetric Key Generation and Conversion Specifications: AES](crypto-key-generation-conversion.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). The referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
 2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) and specify the string parameter **AES128-WRAP** to create a **Cipher** instance of the AES128-WRAP type for encryption.
 

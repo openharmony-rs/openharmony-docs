@@ -5,8 +5,9 @@
 <!--Designer: @ghxbob-->
 <!--Tester: @weitiantian-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=14047a635a9cc5f9823087396220870197d8184c translatedAt=2026-11-03T04:10:35.738Z pushedAt=2026-11-03T10:44:19.517Z nl=1 -->
 
-VCard is a file format standard for electronic business cards. It contains information such as names, addresses, phone numbers, URLs, logos, and photos. The VCard module provides the VCard management functions, including importing VCard files to the contact database and exporting contact data to VCard files.
+VCard is a file format standard for electronic name cards. It can contain information such as name, address, phone number, URL, logo, and photo. The VCard module provides VCard capabilities, including importing VCard files into the contact database and exporting contact data as VCard files.
 
 >**NOTE**
 >
@@ -22,7 +23,7 @@ import { vcard } from '@kit.TelephonyKit';
 
 importVCard\(context: Context, filePath: string, accountId: number, callback: AsyncCallback\<void\>\): void
 
-Imports a VCard file (that is, **.vcf** file) to the contact database. This API uses an asynchronous callback to return the result.
+Imports a VCard file into the contact database. This API is applicable to scenarios such as batch importing contacts after receiving VCard files from other devices or applications, and restoring contact data. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.WRITE_CONTACTS and ohos.permission.READ_CONTACTS
 
@@ -33,7 +34,7 @@ Imports a VCard file (that is, **.vcf** file) to the contact database. This API 
 | **Name**  | Type                       | **Mandatory**| Description                                  |
 | -------- | --------------------------- | ---- | -------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)   | Yes  | Application context.|
-| filePath   | string                      | Yes  | URL of the vcard file (VCF).|
+| filePath   | string                      | Yes   | File address of the VCF (VCard file). |
 | accountId | number | Yes                 | Contact account ID.|
 | callback | AsyncCallback&lt;void&gt; | Yes  |Callback used to return the result.  |
 
@@ -59,7 +60,7 @@ import { vcard } from '@kit.TelephonyKit';
 
 class EntryAbility extends UIAbility {
     onWindowStageCreate(windowStage: window.WindowStage) {
-        let filePath: string = "/data/storage/vcf/contacts.vcf";
+        let filePath: string = '/data/storage/vcf/contacts.vcf';
         let accountId: number = 0;
         vcard.importVCard(this.context, filePath, accountId, (err: BusinessError) => {
             console.error(`callback: err->${JSON.stringify(err)}`);
@@ -73,7 +74,7 @@ class EntryAbility extends UIAbility {
 
 importVCard\(context: Context, filePath: string, accountId?: number\): Promise\<void\>
 
-Imports a VCard file (that is, **.vcf** file) to the contact database. This API uses a promise to return the result.
+Imports a VCard file into the contact database. This API is applicable to scenarios such as batch importing contacts after receiving VCard files from other devices or applications, and restoring contact data. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.WRITE_CONTACTS and ohos.permission.READ_CONTACTS
 
@@ -84,14 +85,14 @@ Imports a VCard file (that is, **.vcf** file) to the contact database. This API 
 | **Name**  | Type                       | **Mandatory**| Description                                  |
 | -------- | --------------------------- | ---- | -------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)      | Yes  | Application context.|
-| filePath   | string                      | Yes  | URL of the vcard file (VCF).|
-| accountId   | number                      | No  | Contact account ID.|
+| filePath   | string                      | Yes   | File address of the VCF (VCard file). |
+| accountId   | number                      | No   | ID of the contact account. The default account is used if this parameter is not passed. |
 
 **Return value**
 
 | Type                 | Description                              |
 | --------------------- | ---------------------------------- |
-| Promise\<void\> | Promise used to return the operation result.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**:
 
@@ -115,7 +116,7 @@ import { vcard } from '@kit.TelephonyKit';
 
 class EntryAbility extends UIAbility {
     onWindowStageCreate(windowStage: window.WindowStage) {
-        let filePath: string = "/data/storage/vcf/contacts.vcf";
+        let filePath: string = '/data/storage/vcf/contacts.vcf';
         let accountId: number = 0;
         vcard.importVCard(this.context, filePath, accountId).then(() => {
             console.info(`importVCard success.`);
@@ -129,7 +130,7 @@ class EntryAbility extends UIAbility {
 ## vcard.importVCard
 importVCard\(context: Context, filePath: string, callback: AsyncCallback\<void\>\): void
 
-Imports a VCard file (that is, **.vcf** file) to the contact database. This API uses an asynchronous callback to return the result.
+Imports a VCard file into the contact database. This API is applicable to scenarios such as batch importing contacts after receiving VCard files from other devices or applications, and restoring contact data. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.WRITE_CONTACTS and ohos.permission.READ_CONTACTS
 
@@ -140,7 +141,7 @@ Imports a VCard file (that is, **.vcf** file) to the contact database. This API 
 | **Name**| Type  | **Mandatory**| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)  | Yes  | Application context.|
-| filePath | string | Yes  |  URL of the vcard file (VCF).|
+| filePath | string | Yes | VCF (VCard file) file address. |
 | callback | AsyncCallback&lt;void&gt; | Yes  |Callback used to return the result.|
 
 **Error codes**:
@@ -178,7 +179,7 @@ class EntryAbility extends UIAbility {
 
 exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicates, options: VCardBuilderOptions, callback: AsyncCallback\<string\>\): void
 
-Exports contacts as a vcard file (VCF). This API uses an asynchronous callback to return the result.
+Exports contacts as a VCF (VCard file) file. This API is applicable to scenarios such as backing up contact data, migrating contacts across devices, and sharing contacts through files. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.WRITE_CONTACTS and ohos.permission.READ_CONTACTS
 
@@ -189,9 +190,9 @@ Exports contacts as a vcard file (VCF). This API uses an asynchronous callback t
 | **Name**  | Type                       | **Mandatory**| Description                                  |
 | -------- | --------------------------- | ---- | -------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                    | Yes  | Application context.|
-| predicates| [dataSharePredicates.DataSharePredicates](../../../application-dev/reference/apis-arkdata/js-apis-data-dataSharePredicates.md)| Yes  | Query statement.|
+| predicates| [dataSharePredicates.DataSharePredicates](../../../application-dev/reference/apis-arkdata/js-apis-data-dataSharePredicates.md)| Yes   | Query statement used to filter the contact data to be exported. |
 |  options  | VCardBuilderOptions | Yes  | VCard version and encoding type.|
-| callback | AsyncCallback&lt;string&gt; | Yes  | Callback used to Address of the generated vcard file (VCF).                            |
+| callback | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the address of the generated VCF (VCard file) file.                             |
 
 **Error codes**:
 
@@ -217,10 +218,10 @@ import { dataSharePredicates } from '@kit.ArkData';
 class EntryAbility extends UIAbility {
     onWindowStageCreate(windowStage: window.WindowStage) {
         let predicates = new dataSharePredicates.DataSharePredicates();
-        predicates.equalTo("NAME", "Rose");
+        predicates.equalTo('NAME', 'Rose');
         let options: vcard.VCardBuilderOptions = {
             cardType: vcard.VCardType.VERSION_21,
-            charset: "UTF-8"
+            charset: 'UTF-8'
         };
         vcard.exportVCard(this.context, predicates, options, (err: BusinessError, data: string) => {
             console.error(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
@@ -234,7 +235,7 @@ class EntryAbility extends UIAbility {
 
 exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicates, options?: VCardBuilderOptions\): Promise\<string\>
 
-Exports contacts as a vcard file (VCF). This API uses a promise to return the result.
+Exports contacts as a VCF (VCard file) file. This API is applicable to scenarios such as backing up contact data, migrating contacts across devices, and sharing contacts through files. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.WRITE_CONTACTS and ohos.permission.READ_CONTACTS
 
@@ -245,14 +246,14 @@ Exports contacts as a vcard file (VCF). This API uses a promise to return the re
 | **Name**  | Type                       | **Mandatory**| Description                                  |
 | -------- | --------------------------- | ---- | -------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)               | Yes  | Application context.|
-| predicates | [dataSharePredicates.DataSharePredicates](../../../application-dev/reference/apis-arkdata/js-apis-data-dataSharePredicates.md) | Yes  | Query statement.|
-| options   | VCardBuilderOptions | No  | VCard version and encoding type.|  
+| predicates | [dataSharePredicates.DataSharePredicates](../../../application-dev/reference/apis-arkdata/js-apis-data-dataSharePredicates.md) | Yes | Query statement used to filter the contact data to be exported. |
+| options   | VCardBuilderOptions | No  | VCard version and encoding type.|
 
 **Return value**
 
 | Type                 | Description                              |
 | --------------------- | ---------------------------------- |
-| Promise\<string\> | Promise used to return the operation result.|
+| Promise\<string\> | Promise used to return the file address of the generated VCF (VCard file). |
 
 **Error codes**:
 
@@ -296,7 +297,7 @@ class EntryAbility extends UIAbility {
 
 exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback\<string\>\): void
 
-Exports contacts as a vcard file (VCF). This API uses an asynchronous callback to return the result.
+Exports contacts as a VCF (VCard file) file. This API is applicable to scenarios such as backing up contact data, migrating contacts across devices, and sharing contacts through files. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.WRITE_CONTACTS and ohos.permission.READ_CONTACTS
 
@@ -307,8 +308,8 @@ Exports contacts as a vcard file (VCF). This API uses an asynchronous callback t
 | **Name**| Type  | **Mandatory**| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
 | context      | [Context](../apis-ability-kit/js-apis-inner-application-context.md)     | Yes  | Application context.|
-| predicates   | [dataSharePredicates.DataSharePredicates](../../../application-dev/reference/apis-arkdata/js-apis-data-dataSharePredicates.md) | Yes  | Query statement.|
-| callback | AsyncCallback&lt;string&gt; | Yes  | Callback used to Address of the generated vcard file (VCF).|
+| predicates   | [dataSharePredicates.DataSharePredicates](../../../application-dev/reference/apis-arkdata/js-apis-data-dataSharePredicates.md) | Yes   | Query statement used to filter the contacts to export.  |
+| callback | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the address of the generated VCF (VCard file) file.|
 
 **Error codes**:
 
@@ -351,7 +352,7 @@ Defines the VCard information.
 
 | Name        | Type  | Read-Only| Optional|    Description   |
 | ------------ | ------ | ----|----| ---------- |
-| cardType     | [VCardType](#vcardtype) |  No| Yes| VCard version. The default value is **VERSION_21**.    |
+| cardType     | [VCardType](#vcardtype) |  No| Yes | VCard version type (the default value is **VERSION_21**).|
 | charset       | string |  No|Yes | VCard encoding type. The default value is **UTF-8**.    |
 
 ## VCardType

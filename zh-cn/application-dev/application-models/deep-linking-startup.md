@@ -23,8 +23,6 @@ Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标�
 > **说明：**
 > 
 > skills标签下默认包含一个skill对象，用于标识应用入口。应用跳转链接不能在该skill对象中配置，需要创建独立的skill对象。如果存在多个跳转场景，需要在skills标签下创建不同的skill对象，否则会导致配置无法生效。
-> 
-> Deep Linking中的scheme可以自定义，但不能以"ohos"开头，也不建议使用"https"、"http"、"file"<!--RP1--><!--RP1End-->等系统已保留的scheme值，否则可能会拉起默认的系统应用而非目标应用。
 
 
 配置示例如下：
@@ -90,11 +88,15 @@ export default class DeepAbility extends UIAbility {
     let uri = want?.uri;
     if (uri) {
       // 从链接中解析query参数，拿到参数后，开发者可根据自己的业务需求进行后续的处理。
-      let urlObject = url.URL.parseURL(want?.uri);
-      let action = urlObject.params.get('action');
-      // 例如，当action为showall时，展示所有的节目。
-      if (action === 'showall') {
-        // ···
+      try {
+        let urlObject = url.URL.parseURL(want?.uri);
+        let action = urlObject.params.get('action');
+        // 例如，当action为showall时，展示所有的节目。
+        if (action === 'showall') {
+          // ···
+        }
+      } catch (error) {
+        hilog.error(DOMAIN, 'testTag', 'Failed to parse URL: %{public}s', JSON.stringify(error));
       }
     }
   }
@@ -108,7 +110,7 @@ export default class DeepAbility extends UIAbility {
 
 ### 使用openLink实现应用跳转
 
-在[openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口的link字段中传入目标应用的URL信息，并将options字段中的[appLinkingOnly](../reference/apis-ability-kit/js-apis-app-ability-openLinkOptions.md#openlinkoptions)配置为`false`。
+在[openLink()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口的link字段中传入目标应用的URL信息，并将options字段中的[appLinkingOnly](../reference/apis-ability-kit/js-apis-app-ability-openLinkOptions.md#openlinkoptions)配置为`false`。
 
 
 示例代码如下：
@@ -155,7 +157,7 @@ struct DeepOpenLinkIndex {
 
 ### 使用startAbility实现应用跳转
 
-[startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口是将应用链接放入Want中，通过调用[隐式Want匹配](explicit-implicit-want-mappings.md#隐式want匹配原理)的方法触发应用跳转。
+[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口是将应用链接放入Want中，通过调用[隐式Want匹配](explicit-implicit-want-mappings.md#隐式want匹配原理)的方法触发应用跳转。
 
 
 示例代码如下：
@@ -200,7 +202,7 @@ struct DeepStartIndex {
 
 ### 使用Web组件实现应用跳转
 
-Web组件可以在[onLoadIntercept](../reference/apis-arkweb/arkts-basic-components-web-events.md#onloadintercept10)的回调函数中实现应用跳转。
+Web组件可以在[onLoadIntercept()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onloadintercept10)的回调函数中实现应用跳转。
 
 示例代码如下：
 

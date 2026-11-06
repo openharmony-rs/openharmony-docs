@@ -2,34 +2,37 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=246cbb87769d7ba2d4f71c6a8b417a57ec2cbfa6 translatedAt=2026-08-24T11:40:37.656Z pushedAt=2026-08-25T09:35:03.476Z -->
 
 ## Introduction
 
-Function Flow Runtime (FFRT) is a concurrent programming framework designed to simplify concurrent programming and task scheduling. You only need to pay attention to tasks and their dependencies in task scheduling without processing underlying threads and computing resources. In addition, FFRT leverages coroutine-based task execution to enhance task parallelism, improve thread utilization, and fully utilizes the computing resources of the multi-core platform to ensure centralized management and optimized scheduling of all system resources.
-
-<!--RP1-->
-<!--RP1End-->
+Function Flow Runtime (FFRT) is a concurrent programming framework designed to simplify concurrent programming and task scheduling. You only need to pay attention to tasks and their dependencies in task scheduling without processing underlying threads and computing resources. In addition, FFRT leverages coroutine-based task execution to enhance task parallelism, improve thread utilization, and fully utilize the computing resources of the multi-core platform to ensure centralized management and optimized scheduling of all system resources.
 
 ## Basic Concepts
 
 The following describes the basic concepts in FFRT development:
 
-- **Task**: a combination of programming clues and runtime execution objects. It usually includes a group of instruction sequences and their operation data context.
+- **Task**: a combination of programming clues and runtime execution objects. It usually includes a set of instruction sequences and the data context they operate on.
+
 - **Task dependency**: dependency among tasks. It determines whether a task can be executed only after other tasks are complete, and allows you to define the execution sequence of complex tasks.
+
 - **Quality of Service (QoS)**: quality of service of a task. It is used to indicate task priority and resource allocation.
+
 - **Primitive**: a basic operation or construction used to implement synchronization and mutual exclusion. For example, a mutex or a condition variable.
+
 - **Worker**: a worker thread that executes a task. Each worker can execute multiple tasks. Generally, the scheduler is responsible for managing and allocating tasks.
+
 - **Scheduling**: a process that determines when and which worker executes a task. The scheduler schedules tasks based on factors such as task dependencies and QoS levels.
 
 ### Programming Models
 
 |   Item      | Thread Programming Model                                                                      | Task Programming Model                                                                                                                |
 | -------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Degree of Parallelism (DOP) mining mode| Programmers create multiple threads and assign tasks to them for parallel execution to achieve the optimal runtime performance.            | Programmers, with the help of compilers or programming language features, decompose the application into tasks and describe their data dependencies during static programming. The scheduler allocates tasks to worker threads for execution.          |
+| Degree of Parallelism (DOP) mining method| Programmers create multiple threads and assign tasks to them for parallel execution to achieve the optimal runtime performance.            | Programmers, with the help of compilers or programming language features, decompose the application into tasks and describe their data dependencies during static programming. The scheduler allocates tasks to worker threads for execution.          |
 | Owner for creating threads| Programmers are responsible for creating threads. The maximum number of threads that can be created is not under control.  | The scheduler is responsible for creating and managing worker threads. Programmers cannot directly create threads.                                                  |
 | Load balancing      | Programmers map tasks to threads during static programming. Improper mapping or uncertain task execution time will cause a load imbalance among threads.| A ready task is automatically scheduled to an idle thread for execution, reducing the load imbalance among threads.                                              |
 | Scheduling overhead      | Thread scheduling is implemented by a kernel-mode scheduler, resulting in high scheduling overhead.                                          | FFRT schedules execution via coroutines in user mode. It is more lightweight than kernel thread scheduling mechanisms and reduces scheduling overhead.|
@@ -46,7 +49,9 @@ The `Task-Based` feature means that you can use tasks to express an application 
 The tasks in the FFRT programming model have the following features:
 
 - Task dependencies can be directly specified, or expressed using data objects.
+
 - Tasks can be nested. That is, when a task is being executed, a new task can be generated and delivered to that task to form a parent-child relationship.
+
 - Multi-task synchronization is supported, such as waiting, locks, and condition variables.
 
 > **NOTE**
@@ -58,7 +63,9 @@ The tasks in the FFRT programming model have the following features:
 The `Queue-Enabled` feature means that you can use task queues to restrict task execution sequence and concurrency at runtime. Task queues include serial queues and concurrent queues, which are used in different scenarios.
 
 - The serial queue ensures that tasks are executed in sequence according to the submission sequence. It is applicable to the task flow that maintains a specific execution sequence.
+
 - The concurrent queue allows multiple tasks to be executed at the same time, improving concurrency performance. It is applicable to parallel computing and efficient use of multi-core processors.
+
 - The concurrent queue can also restrict the overall concurrency of a task unit to ensure that system resources are properly allocated and avoid performance bottlenecks or system instability caused by excessive concurrency.
 
 The `Queue-Enabled` feature provides you with flexible task scheduling modes. You can select a proper task execution policy based on your requirements to optimize the performance of your applications.
@@ -70,6 +77,10 @@ The `Graph-Driven` feature means that you can use dependency graphs to manage ta
 The FFRT programming model supports two methods to build task dependency graphs:
 
 - **Task dependency**: Task dependencies are directly described.
+
 - **Data flow**: Task dependencies are described based on the relationship between data producers and consumers.
 
 You can select an appropriate mode to build task dependency graphs based on service characteristics, thereby simplifying service models and reducing development complexity.
+
+<!--RP1-->
+<!--RP1End-->

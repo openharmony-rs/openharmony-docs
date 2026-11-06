@@ -5,6 +5,7 @@
 <!--Designer: @stupidb-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=4e5be674e287f8213e38343ff22d0403ff7ef1a3 translatedAt=2026-09-01T03:17:21.981Z pushedAt=2026-09-02T01:19:40.213Z -->
 
 The WindowExtensionContext module provides the context environment for the WindowExtensionAbility. It inherits from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md).
 
@@ -44,7 +45,7 @@ Starts an ability. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
->  - This API is supported since API version 9 and deprecated since API version 21. You are advised to use [UIExtensionContext.startability](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#startability-1) instead.
+>  - This API is supported since API version 9 and deprecated since API version 21. You are advised to use [UIExtensionContext.startAbility](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#startability-1) instead.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -62,7 +63,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
@@ -113,7 +114,7 @@ Starts an ability. This API uses a promise to return the result.
 
 > **NOTE**
 >
->  - This API is supported since API version 9 and deprecated since API version 21. You are advised to use [UIExtensionContext.startability](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#startability-2) instead.
+>  - This API is supported since API version 9 and deprecated since API version 21. You are advised to use [UIExtensionContext.startAbility](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#startability-2) instead.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -121,7 +122,7 @@ Starts an ability. This API uses a promise to return the result.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md)  | Yes| Want information about the target ability, such as the ability name and bundle name.|
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md)  | Required | Want parameter, which carries the information about the ability to start, such as the ability name and bundle name. |
 | options | [StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md) | No| Parameters used for starting the ability.|
 
 **Return value**
@@ -136,7 +137,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**

@@ -2,11 +2,17 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @andeszhang-->
-<!--Tester: @liuhaonan2-->
+<!--Designer: @LiuChao-->
+<!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
 
-The **Sensor** module provides APIs for obtaining the sensor list and subscribing to sensor data. It also provides some common sensor algorithms.
+The **@system.sensor** module is a sensor data subscription module for lite wearables. It provides the data subscription and subscription cancellation capabilities for the acceleration, compass, distance, ambient light, pedometer, barometric pressure, heart rate, device wearing status, device orientation, and gyroscope sensors.
+
+This module helps apps obtain sensor data change notifications in real time to implement functions such as fitness monitoring, health tracking, environment sensing, direction identification, and screen adaptation. Each sensor provides subscription and unsubscription APIs. The wearing status sensor additionally provides the **getOnBodyState** API for a single query.
+
+For devices other than lightweight wearables, this module is no longer maintained since API version 8. You are advised to use the [@ohos.sensor](js-apis-sensor.md) module instead. If an app calls the subscription API for the same sensor multiple times, only the last call takes effect.
+
+This module uses the subscription-unsubscription mode. You can call **sensor.on** to subscribe to sensor data, and the system will report the data at the specified interval. When the subscription is no longer needed, you can call **sensor.off** to cancel the subscription. **on** and **off** must be used in pairs. Subscription must be performed before unsubscription. If an app subscribes to the same sensor multiple times, only the last subscription takes effect. Since API version 19, the **sensorInfoParam** parameter has been added to **sensor.off**. This parameter allows you to cancel the sensor callback on a specified device based on **deviceId** and **sensorIndex**. If this parameter is not passed, the callback of the local device is canceled by default. In API version 10, **sensor.off** does not contain this parameter and can only cancel the callback of the local device.
 
 > **NOTE**
 >
@@ -14,20 +20,19 @@ The **Sensor** module provides APIs for obtaining the sensor list and subscribin
 >
 > The APIs provided by this module are system APIs.
 
-
 ## Modules to Import
 
 ```ts
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
-## sensor.on
-
-### COLOR<sup>10+</sup>
+## sensor.on(sensor.SensorId.COLOR)<sup>10+</sup>
 
 on(type: SensorId.COLOR, callback: Callback&lt;ColorResponse&gt;, options?: Options): void
 
-Subscribes to data of the color sensor.
+Subscribes to data changes of the color sensor. This API uses an asynchronous callback to return the result. The color sensor data is reported asynchronously through a callback. The data is reported through a **ColorResponse** object, which contains two number fields: **lightIntensity** and **colorTemperature**.
+
+This API is used when you need to obtain the ambient light intensity and color temperature to implement functions such as automatic screen brightness adjustment, color temperature compensation for photographing, and ambient light line monitoring.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -39,15 +44,15 @@ Subscribes to data of the color sensor.
 | -------- | ------------------------------------------------- | ---- | ----------------------------------------------------------- |
 | type     | [SensorId](#sensorid9).COLOR                      | Yes  | Sensor type. The value is fixed at **SensorId.COLOR**.                     |
 | callback | Callback&lt;[ColorResponse](#colorresponse10)&gt; | Yes  | Callback used to report the sensor data, which is a **ColorResponse** object.        |
-| options  | [Options](js-apis-sensor.md#options)              | No  | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns.|
+| options  | [Options](js-apis-sensor.md#options)              | No  | Optional parameters used to set the reporting frequency of the sensor, in nanoseconds. The default value is **200000000**. If this parameter is not passed, the default frequency is used.|
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. |
+| 202      | Permission check failed. A non-system application uses the system API. <br>Applicable versions: 11+|
 | 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
@@ -71,11 +76,13 @@ try{
 }
 ```
 
-### SAR<sup>10+</sup>
+## sensor.on(sensor.SensorId.SAR)<sup>10+</sup>
 
 on(type: SensorId.SAR, callback: Callback&lt;SarResponse&gt;, options?: Options): void
 
-Subscribes to data of the Sodium Adsorption Ratio (SAR) sensor.
+Subscribes to data changes of the Sodium Adsorption Ratio (SAR) sensor. This API uses an asynchronous callback to return the result. The SAR sensor data is reported asynchronously through a callback. The data is reported through a **SarResponse** object, which contains one number field: **absorptionRatio**.
+
+This API can be used to monitor the SAR of a device to implement functions such as communication security detection and radiation detection.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -87,15 +94,15 @@ Subscribes to data of the Sodium Adsorption Ratio (SAR) sensor.
 | -------- | --------------------------------------------- | ---- | ----------------------------------------------------------- |
 | type     | [SensorId](#sensorid9).SAR                    | Yes  | Sensor type. The value is fixed at **SensorId.SAR**.                       |
 | callback | Callback&lt;[SarResponse](#sarresponse10)&gt; | Yes  | Callback used to report the sensor data, which is a **SarResponse** object.          |
-| options  | [Options](js-apis-sensor.md#options)          | No  | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns.|
+| options  | [Options](js-apis-sensor.md#options)          | No  | Optional parameters used to set the reporting frequency of the sensor, in nanoseconds. The default value is **200000000**. If this parameter is not passed, the default frequency is used.|
 
 **Error codes**
 
-For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. |
+| 202      | Permission check failed. A non-system application uses the system API. <br>Applicable versions: 11+|
 | 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
@@ -118,13 +125,15 @@ try {
 }
 ```
 
-## sensor.off
-
-### COLOR<sup>10+</sup>
+## sensor.off(sensor.SensorId.COLOR)<sup>10+</sup>
 
 off(type: SensorId.COLOR, callback?: Callback&lt;ColorResponse&gt;): void
 
-Unsubscribes from data of the color sensor.
+Unsubscribes from data of the color sensor. After this method is called, the callback for the color sensor will not be triggered.
+
+When the color sensor data is no longer needed (for example, when the page is switched or the app is exited), call this method to cancel the subscription to reduce system resource usage.
+
+After this method is called, the callback registered using **sensor.on(sensor.SensorId.COLOR)** will not be triggered. If the **callback** parameter is passed, only the specified callback is unregistered. If the **callback** parameter is not passed, all callbacks of the **SensorId.COLOR** type are unregistered. You need to call **sensor.on(sensor.SensorId.COLOR)** to register to the callback before calling this method for unregistration.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -135,15 +144,15 @@ Unsubscribes from data of the color sensor.
 | Name  | Type                                                    | Mandatory| Description                                                        |
 | -------- |--------------------------------------------------------| ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).COLOR                           | Yes  | Sensor type. The value is fixed at **SensorId.COLOR**.                      |
-| callback | Callback&lt;[ColorResponse](#colorresponse10)&gt;      | No  | Callback used for unsubscription. If this parameter is not specified, all callbacks of the specified sensor type are unsubscribed from.|
+| callback | Callback&lt;[ColorResponse](#colorresponse10)&gt;      | No  | Callback to be unregistered. If this parameter is not specified, all callbacks of the specified sensor type are unregistered.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. |
+| 202      | Permission check failed. A non-system application uses the system API. <br>Applicable versions: 11+|
 | 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 
 **Example**
@@ -173,11 +182,15 @@ try {
 }
 ```
 
-### COLOR<sup>19+</sup>
+## sensor.off(sensor.SensorId.COLOR)<sup>19+</sup>
 
 off(type: SensorId.COLOR, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;ColorResponse&gt;): void
 
-Unsubscribes from data of the color sensor.
+Unsubscribes from data of the color sensor. Compared with the **off** API in API version 10, the **sensorInfoParam** parameter is added to this API. You can use **deviceId** and **sensorIndex** to specify the callback of a specific sensor on a device. This API is applicable to multi-device scenarios.
+
+Use this API when you need to unsubscribe from the color sensor data of a specific device (for example, in a multi-device connection scenario). If **sensorInfoParam** is not passed, the callback of the local device (whose **deviceId** is -1) is unregistered by default.
+
+After this API is called, the callback function of the color sensor on the specified device will not be triggered. If the **callback** parameter is passed, only the specified callback is unregistered. If the **callback** parameter is not passed, all callbacks of the **SensorId.COLOR** type on the specified device are unregistered.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -188,12 +201,12 @@ Unsubscribes from data of the color sensor.
 | Name  | Type                                                    | Mandatory| Description                                                        |
 | -------- |--------------------------------------------------------| ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).COLOR                           | Yes  | Sensor type. The value is fixed at **SensorId.COLOR**.                      |
-| sensorInfoParam | [SensorInfoParam](#sensorinfoparam19) |  No| Sensor parameters, including **deviceId** and **sensorIndex**.|
-| callback | Callback&lt;[ColorResponse](#colorresponse10)&gt;      | No  | Callback used for unsubscription. If this parameter is not specified, all callbacks of the specified sensor type are unsubscribed from.|
+| sensorInfoParam | [SensorInfoParam](js-apis-sensor.md#sensorinfoparam19) |  No| Sensor parameters, including **deviceId** and **sensorIndex**. The default value of **deviceId** is **-1**, indicating the local device. The default value of **sensorIndex** is **0**, indicating the default sensor. If this parameter is not passed, the callback on the local device is canceled by default.|
+| callback | Callback&lt;[ColorResponse](#colorresponse10)&gt;      | No  | Callback to be unregistered. If this parameter is not specified, all callbacks of the specified sensor type on the specified device are unregistered.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -258,11 +271,15 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### SAR<sup>10+</sup>
+## sensor.off(sensor.SensorId.SAR)<sup>10+</sup>
 
 off(type: SensorId.SAR, callback?: Callback&lt;SarResponse&gt;): void
 
-Unsubscribes from data of the SAR sensor.
+Unsubscribes from data of the SAR sensor. After this method is called, the callback for the SAR sensor will not be triggered.
+
+When the SAR sensor data is no longer needed (for example, when the page is switched or the app is exited), call this method to cancel the subscription to reduce system resource usage.
+
+After this method is called, the callback registered using **sensor.on(sensor.SensorId.SAR)** will not be triggered. If the **callback** parameter is passed, only the specified callback is unregistered. If the **callback** parameter is not passed, all callbacks of the **SensorId.SAR** type are unregistered. You need to call **sensor.on(sensor.SensorId.SAR)** to register to the callback before calling this method for unregistration.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -273,15 +290,15 @@ Unsubscribes from data of the SAR sensor.
 | Name  | Type                                         | Mandatory| Description                                                        |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).SAR                    | Yes  | Sensor type. The value is fixed at **SensorId.SAR**.                        |
-| callback | Callback&lt;[SarResponse](#sarresponse10)&gt; | No  | Callback used for unsubscription. If this parameter is not specified, all callbacks of the specified sensor type are unsubscribed from.|
+| callback | Callback&lt;[SarResponse](#sarresponse10)&gt; | No  | Callback to be unregistered. If this parameter is not specified, all callbacks of the specified sensor type are unregistered.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. |
+| 202      | Permission check failed. A non-system application uses the system API. <br>Applicable versions: 11+|
 | 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 
 **Example**
@@ -311,11 +328,15 @@ try {
 }
 ```
 
-### SAR<sup>19+</sup>
+## sensor.off(sensor.SensorId.SAR)<sup>19+</sup>
 
 off(type: SensorId.SAR, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;SarResponse&gt;): void
 
-Unsubscribes from data of the SAR sensor.
+Unsubscribes from data of the SAR sensor. Compared with the **off** API in API version 10, the **sensorInfoParam** parameter is added to this API. You can use **deviceId** and **sensorIndex** to specify the callback of a specific sensor on a device. This API is applicable to multi-device scenarios.
+
+Use this API when you need to unsubscribe from the SAR sensor data of a specific device (for example, in a multi-device connection scenario). If **sensorInfoParam** is not passed, the callback of the local device (whose **deviceId** is -1) is unregistered by default.
+
+After this API is called, the callback function of the SAR sensor on the specified device will not be triggered. If the **callback** parameter is passed, only the specified callback is unregistered. If the **callback** parameter is not passed, all callbacks of the **SensorId.SAR** type on the specified device are unregistered.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -326,12 +347,12 @@ Unsubscribes from data of the SAR sensor.
 | Name  | Type                                         | Mandatory| Description                                                        |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).SAR                    | Yes  | Sensor type. The value is fixed at **SensorId.SAR**.                        |
-| sensorInfoParam | [SensorInfoParam](#sensorinfoparam19) |  No| Sensor parameters, including **deviceId** and **sensorIndex**.|
-| callback | Callback&lt;[SarResponse](#sarresponse10)&gt; | No  | Callback used for unsubscription. If this parameter is not specified, all callbacks of the specified sensor type are unsubscribed from.|
+| sensorInfoParam | [SensorInfoParam](js-apis-sensor.md#sensorinfoparam19) |  No| Sensor parameters, including **deviceId** and **sensorIndex**. The default value of **deviceId** is **-1**, indicating the local device. The default value of **sensorIndex** is **0**, indicating the default sensor. If this parameter is not passed, the callback on the local device is canceled by default.|
+| callback | Callback&lt;[SarResponse](#sarresponse10)&gt; | No  | Callback to be unregistered. If this parameter is not specified, all callbacks of the specified sensor type on the specified device are unregistered.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md) and [Universal Error Codes](../errorcode-universal.md). Error codes and error information are reported as exceptions. You need to use **try catch** to capture the exceptions that may occur during an API call.
 
 | ID| Error Message                                                                                                                                   |
 | -------- |-----------------------------------------------------------------------------------------------------------------------------------------|
@@ -402,14 +423,16 @@ Enumerates the sensor types.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
+**System API**: This is a system API.
+
 | Name               | Value  | Description                                           |
 | ------------------- | ---- | ----------------------------------------------- |
-| COLOR<sup>10+</sup> | 14   | Color sensor.<br>System API: This is a system API.    |
-| SAR<sup>10+</sup>   | 15   | Sodium Adsorption Ratio (SAR) sensor.<br>System API: This is a system API.|
+| COLOR<sup>10+</sup> | 14   | Color sensor. Subscribes to or unsubscribes from the color sensor data. The reported data is a [ColorResponse](#colorresponse10) object, which contains the light intensity and color temperature information.    |
+| SAR<sup>10+</sup>   | 15   | Sodium Adsorption Ratio (SAR) sensor. Subscribes to or unsubscribes from the SAR sensor data. The reported data is a [SarResponse](#sarresponse10) object, which contains the SAR information.|
 
 ## ColorResponse<sup>10+</sup>
 
-Describes the color sensor data. It extends from [Response](js-apis-sensor.md#response).
+Describes the color sensor data. It extends from [Response](js-apis-sensor.md#response). This method is used to represent the response data reported by the color sensor, including the light intensity and color temperature information.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -418,12 +441,12 @@ Describes the color sensor data. It extends from [Response](js-apis-sensor.md#re
 
 | Name            | Type  | Read-Only| Optional| Description                         |
 | ---------------- | ------ | ---- | ---- | ----------------------------- |
-| lightIntensity   | number | No  | No  | Intensity of light, in lux.|
-| colorTemperature | number | No  | No  | Color temperature, in Kelvin.    |
+| lightIntensity   | number | No  | No  | Light intensity, in lux. Value range: The value is the actually reported physical quantity, which is determined by the hardware sensor. The typical indoor ambient light intensity ranges from 300 lux to 500 lux, and the outdoor sunlight intensity can reach over 10,000 lux.|
+| colorTemperature | number | No  | No  | Color temperature, in K (Kelvin). Value range: The value is the actually reported physical quantity, which is determined by the hardware sensor. In general, the color temperature of warm white light is 2700 to 3000 K, of neutral white light is 4000–5000 K, and of cool white light is above 6500 K.    |
 
-## SarResponse<sup>10+ </sup>
+## SarResponse<sup>10+</sup>
 
-Describes the SAR sensor data. It extends from [Response](js-apis-sensor.md#response).
+Describes the SAR sensor data. It extends from [Response](js-apis-sensor.md#response). This method is used to represent the response data reported by the SAR sensor, including the SAR information.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -432,18 +455,4 @@ Describes the SAR sensor data. It extends from [Response](js-apis-sensor.md#resp
 
 | Name           | Type  | Read-Only| Optional| Description                           |
 | --------------- | ------ | ---- | ---- | ------------------------------- |
-| absorptionRatio | number | No  | No  | Absorption ratio, in W/kg.|
-
-
-## SensorInfoParam<sup>19+</sup>
-
-Defines sensor parameters.
-
-**System capability**: SystemCapability.Sensors.Sensor
-
-**Atomic service API**: This API can be used in atomic services since API version 19.
-
-| Name        | Type    | Read-Only| Optional| Description                     |
-| ----------- | -------- | ---- | ---- | -------------------------- |
-| deviceId    | number   | No  | Yes  | Device ID. The default value is **-1**, indicating the local device. You can use [getSensorList](js-apis-sensor.md#sensorgetsensorlist9) or [sensorStatusChange](js-apis-sensor.md#sensoronsensorstatuschange19) to obtain the device ID.  |
-| sensorIndex   | number | No  | Yes  | Sensor index. The default value is **0**, which indicates the default sensor on the device. You can use [getSensorList](js-apis-sensor.md#sensorgetsensorlist9) or [sensorStatusChange](js-apis-sensor.md#sensoronsensorstatuschange19) to obtain the sensor ID.|
+| absorptionRatio | number | No  | No  | Absorption ratio, in W/kg. Value range: The value is the actually reported physical quantity, which is determined by the hardware sensor.|

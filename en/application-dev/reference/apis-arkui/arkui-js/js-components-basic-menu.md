@@ -1,10 +1,12 @@
 # menu
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Armstrong15-->
+<!--Owner: @H-xinwei-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=0e195b413ac684e2f8f44c9b887d66d23c5fa72f translatedAt=2026-06-22T03:29:18.434Z pushedAt=2026-06-22T06:56:18.169Z -->
 
 >  **NOTE**
 >
@@ -16,11 +18,9 @@ The **\<menu>** component provides menus as temporary pop-up windows to display 
 
 None
 
-
 ## Child Components
 
 Only the **[\<option>](js-components-basic-option.md)** component is supported.
-
 
 ## Attributes
 
@@ -36,7 +36,6 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 >
 >  The **focusable** and **disabled** attributes are not supported.
 
-
 ## Styles
 
 The following styles are supported.
@@ -51,7 +50,6 @@ The following styles are supported.
 | font-weight    | number \| string           | normal     | No   | Font weight of the menu. For details, see **font-weight** of the [**\<text>**](js-components-basic-text.md#styles) component.|
 | font-family    | string                     | sans-serif | No   | Font family, in which fonts are separated by commas (,). Each font is set using a font name or font family name. The first font in the family or the specified [custom font](js-components-common-customizing-font.md) is used for the text.|
 
-
 ## Events
 
 The following events are supported.
@@ -60,7 +58,6 @@ The following events are supported.
 | -------- | ------------------------- | ---------------------------------------- |
 | selected | { value:value } | Triggered when a value in the menu is selected. The return value is the **value** attribute of the **\<option>** component.|
 | cancel   | -                         | Triggered when an operation is canceled by the user.                                   |
-
 
 ## Methods
 
@@ -105,4 +102,4 @@ export default {
 }
 ```
 
-![menu13](figures/menu13.gif)
+![en-us_image_0000001131795738](figures/en-us_image_0000001131795738.png)

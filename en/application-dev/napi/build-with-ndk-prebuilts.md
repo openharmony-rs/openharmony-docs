@@ -5,6 +5,7 @@
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=c326644408696bb87ca33c9577f097bac39e5947 translatedAt=2026-11-03T12:47:30.238Z pushedAt=2026-11-03T12:47:30.238Z nl=1 -->
 
 In an NDK project, you can use the CMake syntax to import and use prebuilt libraries. When prebuilt libraries are referenced, both those in the module's **libs** directory and those declared in the **CMakeLists.txt** build script are packaged.
 
@@ -44,7 +45,7 @@ include_directories(
 
 When prebuilt libraries are used in the HAR, the currently built libraries and prebuilt libraries required for linking are packed to the **libs** directory in the HAR, as shown in the following figure.
 
-![en-us_image_0000001693795070](figures/en-us_image_0000001693795070.png)
+![har-library-packaging](figures/har-library-packaging.png)
 
 ### Resolving the SONAME Issue with Prebuilt Libraries
 

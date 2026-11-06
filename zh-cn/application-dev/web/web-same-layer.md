@@ -1,8 +1,8 @@
 # 同层渲染
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @ding-xin88-->
-<!--Designer: @LongLie-->
+<!--Owner: @zhanghaozhi1-->
+<!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -42,7 +42,7 @@ ArkWeb同层渲染特性主要提供两种能力：同层标签生命周期和�
 
 - 基础组件：[AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md), [Blank](../reference/apis-arkui/arkui-ts/ts-basic-components-blank.md), [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md), [CalendarPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-calendarpicker.md), [Checkbox](../reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md), [CheckboxGroup](../reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md), [ContainerSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-containerspan.md), [DataPanel](../reference/apis-arkui/arkui-ts/ts-basic-components-datapanel.md), [DatePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md), [Divider](../reference/apis-arkui/arkui-ts/ts-basic-components-divider.md), [Gauge](../reference/apis-arkui/arkui-ts/ts-basic-components-gauge.md), [Hyperlink](../reference/apis-arkui/arkui-ts/ts-container-hyperlink.md), [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md), [ImageAnimator](../reference/apis-arkui/arkui-ts/ts-basic-components-imageanimator.md), [ImageSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md), [LoadingProgress](../reference/apis-arkui/arkui-ts/ts-basic-components-loadingprogress.md), [Marquee](../reference/apis-arkui/arkui-ts/ts-basic-components-marquee.md), [PatternLock](../reference/apis-arkui/arkui-ts/ts-basic-components-patternlock.md), [Progress](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md), [QRCode](../reference/apis-arkui/arkui-ts/ts-basic-components-qrcode.md), [Radio](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md), [Rating](../reference/apis-arkui/arkui-ts/ts-basic-components-rating.md), [Refresh](../reference/apis-arkui/arkui-ts/ts-container-refresh.md), [ScrollBar](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md), [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md), [Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md), [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md), [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md), [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md), [TextClock](../reference/apis-arkui/arkui-ts/ts-basic-components-textclock.md), [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md), [TextPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md), [TextTimer](../reference/apis-arkui/arkui-ts/ts-basic-components-texttimer.md), [TimePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md), [Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)
 
-- 容器类组件：[Badge](../reference/apis-arkui/arkui-ts/ts-container-badge.md), [Column](../reference/apis-arkui/arkui-ts/ts-container-column.md), [ColumnSplit](../reference/apis-arkui/arkui-ts/ts-container-columnsplit.md), [Counter](../reference/apis-arkui/arkui-ts/ts-container-counter.md), [Flex](../reference/apis-arkui/arkui-ts/ts-container-flex.md), [GridCol](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md), [GridRow](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md), [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md), [GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md)，[List](../reference/apis-arkui/arkui-ts/ts-container-list.md), [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md), [ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md), [RelativeContainer](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md), [Row](../reference/apis-arkui/arkui-ts/ts-container-row.md), [RowSplit](../reference/apis-arkui/arkui-ts/ts-container-rowsplit.md), [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md), [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md), [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md), [TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md), [NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md), [SideBarContainer](../reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md), [Stepper](../reference/apis-arkui/arkui-ts/ts-basic-components-stepper.md), [StepperItem](../reference/apis-arkui/arkui-ts/ts-basic-components-stepperitem.md), [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md), [FlowItem](../reference/apis-arkui/arkui-ts/ts-container-flowitem.md)
+- 容器类组件：[Badge](../reference/apis-arkui/arkui-ts/ts-container-badge.md), [Column](../reference/apis-arkui/arkui-ts/ts-container-column.md), [ColumnSplit](../reference/apis-arkui/arkui-ts/ts-container-columnsplit.md), [Counter](../reference/apis-arkui/arkui-ts/ts-container-counter.md), [Flex](../reference/apis-arkui/arkui-ts/ts-container-flex.md), [GridCol](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md), [GridRow](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md), [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md), [GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md), [ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md), [RelativeContainer](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md), [Row](../reference/apis-arkui/arkui-ts/ts-container-row.md), [RowSplit](../reference/apis-arkui/arkui-ts/ts-container-rowsplit.md), [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md), [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md), [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md), [TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md), [NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md), [SideBarContainer](../reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md), [Stepper](../reference/apis-arkui/arkui-ts/ts-basic-components-stepper.md), [StepperItem](../reference/apis-arkui/arkui-ts/ts-basic-components-stepperitem.md), [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md), [FlowItem](../reference/apis-arkui/arkui-ts/ts-container-flowitem.md)
 
 - 自绘制类组件：[XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md), [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md), [Video](../reference/apis-arkui/arkui-ts/ts-media-components-video.md), [Web](../reference/apis-arkweb/arkts-basic-components-web.md)
 
@@ -72,9 +72,9 @@ ArkWeb同层渲染特性主要提供两种能力：同层标签生命周期和�
 
 **同层标签支持的css属性：** 
 
-display，position，z-index，visibility，opacity, background-color，background-image，width，height，padding，padding-left，padding-top，padding-right，padding-bottom，margin，margin-left，margin-top，margin-right，margin-bottom，border-width，border-style，border-color，border-left-width，border-left-style，border-left-color，border-top-width，border-top-style，border-top-color，border-right-width，border-right-style，border-right-color，border-bottom-width，border-bottom-style，border-bottom-color，border-left，border-right，border-top，border-bottom，border，border-top-left-radius，border-top-right-radius，border-bottom-left-radius，border-bottom-right-radius，border-radius，transition，transform（仅支持translate/scale，scale对应参数只支持大于等于0的值）
+display，position，z-index，visibility，opacity, background-color，background-image，width，height，padding，padding-left，padding-top，padding-right，padding-bottom，margin，margin-left，margin-top，margin-right，margin-bottom，border-width，border-style，border-color，border-left-width，border-left-style，border-left-color，border-top-width，border-top-style，border-top-color，border-right-width，border-right-style，border-right-color，border-bottom-width，border-bottom-style，border-bottom-color，border-left，border-right，border-top，border-bottom，border，border-top-left-radius，border-top-right-radius，border-bottom-left-radius，border-bottom-right-radius，border-radius，transition，transform（支持translate/scale，scale对应参数只支持大于等于0的值。从API版本26.1.0开始，可通过[nativeEmbedOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#nativeembedoptions16)将[EmbedOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#embedoptions16)中的supportTransformRotateAndSkew设为true，支持transform中的rotate和skew属性）
 
- 除上面支持的css属性范围，其他的css属性均不保证符合预期，比如transform属性中的rotate，skew等。
+ 除上面支持的css属性范围，其他的css属性均不保证符合预期。
 
 **同层标签的生命周期管理：** 
 当同层标签生命周期变化时触发[onNativeEmbedLifecycleChange()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedlifecyclechange11)回调。
@@ -169,7 +169,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
    - 采用&lt;object&gt;标签。
 
      需要使用registerNativeEmbedRule注册object标签。
-     <!-- @[register_object_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+     <!-- @[register_object_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
      
      ``` TypeScript
      Web({src: $rawfile('test2.html'), controller: this.browserTabController})
@@ -217,7 +217,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
    同层渲染功能开启后，展示在对应区域的系统组件。
 
-   <!-- @[text_input_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+   <!-- @[text_input_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
    
    ``` TypeScript
    @Component
@@ -253,7 +253,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
    用于控制和反馈对应NodeContainer上的节点行为。
 
-   <!-- @[create_nodecontainer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
+   <!-- @[create_nodecontainer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
    
    ``` TypeScript
    // 用于控制和反馈对应的NodeContainer上的节点的行为，需要与NodeContainer一起使用。
@@ -276,7 +276,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
        this.type_ = params.type;
      }
    
-     // 必须要重写的方法，用于构建节点数、返回节点数挂载在对应NodeContainer中。
+     // 必须要重写的方法，用于构建节点树、返回节点树挂载在对应NodeContainer中。
      // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新。
      makeNode(uiContext: UIContext): FrameNode | null {
        if (this.isDestroy_) { // rootNode为null。
@@ -327,7 +327,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
    开发者则需要调用[onNativeEmbedLifecycleChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedlifecyclechange11)来监听同层渲染标签的生命周期变化。
 
-   <!-- @[native_embed_lifecycle_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+   <!-- @[native_embed_lifecycle_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
    
    ``` TypeScript
    // 获取embed标签的生命周期变化数据。
@@ -397,7 +397,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
    开发者则需要调用[onNativeEmbedGestureEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedgestureevent11)来监听同层渲染区域的手势事件。
 
-   <!-- @[native_embed_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+   <!-- @[native_embed_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
    
    ``` TypeScript
    // 获取同层渲染组件触摸事件信息。
@@ -431,7 +431,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
    开发者则需要调用[onNativeEmbedMouseEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedmouseevent20)来监听同层渲染区域的鼠标事件。
 
-   <!-- @[native_embed_mouse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+   <!-- @[native_embed_mouse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
    
    ``` TypeScript
    .onNativeEmbedMouseEvent((mouse) => {
@@ -470,12 +470,11 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 ```
 
 应用侧代码。
-  <!-- @[set_web_peer_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
+  <!-- @[set_web_peer_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-  import { UIContext } from '@kit.ArkUI';
-  import { NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
+  import { UIContext, NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
   
   @Observed
   declare class Params{
@@ -515,7 +514,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
       this.type_ = params.type;
     }
   
-    // 必须要重写的方法，用于构建节点数、返回节点数挂载在对应NodeContainer中。
+    // 必须要重写的方法，用于构建节点树、返回节点树挂载在对应NodeContainer中。
     // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新。
     makeNode(uiContext: UIContext): FrameNode | null {
       if (this.isDestroy_) { // rootNode为null。
@@ -605,13 +604,14 @@ display，position，z-index，visibility，opacity, background-color，backgrou
           Stack() {
             ForEach(this.componentIdArr, (componentId: string) => {
               NodeContainer(this.nodeControllerMap.get(componentId))
+                // 同层组件容器应与同层标签的宽高和位置绑定。
                 .position(this.positionMap.get(componentId))
                 .width(this.widthMap.get(componentId))
                 .height(this.heightMap.get(componentId))
             }, (embedId: string) => embedId)
             // Web组件加载本地test2.html页面。
             Web({src: $rawfile('test2.html'), controller: this.browserTabController})
-            // 注册同层标签为'object'，类型为'test'前缀
+              // 注册同层标签为'object'，类型为'test'前缀
               .registerNativeEmbedRule('object', 'test')
               // 配置同层渲染开关开启。
               .enableNativeEmbedMode(true)
@@ -636,7 +636,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
                     top: `${embed.info?.position?.y as number}px`
                   };
                   nodeController.setDestroy(false);
-                  //根据Web传入的embed的id属性作为key，将nodeController存入Map。
+                  // 根据Web传入的embed的id属性作为key，将nodeController存入Map。
                   this.nodeControllerMap.set(componentId, nodeController);
                   this.widthMap.set(componentId, this.uiContext.px2vp(embed.info?.width));
                   this.heightMap.set(componentId, this.uiContext.px2vp(embed.info?.height));
@@ -723,7 +723,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 ## 绘制XComponent+AVPlayer和Button组件
 
 - 应用侧代码组件使用示例。
-  <!-- @[draw_x_component_av_player_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/DrawXCompAVPBtn.ets) --> 
+  <!-- @[draw_x_component_av_player_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/DrawXCompAVPBtn.ets) -->
   
   ``` TypeScript
   // 创建NodeController
@@ -767,7 +767,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
       this.height_ = params.height;
       this.type_ = params.type;
     }
-    // 必须要重写的方法，用于构建节点数、返回节点数挂载在对应NodeContainer中。
+    // 必须要重写的方法，用于构建节点树、返回节点树挂载在对应NodeContainer中。
     // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新。
     makeNode(uiContext: UIContext): FrameNode | null{
       if (this.isDestroy_) { // rootNode为null。
@@ -779,7 +779,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
           this.rootNode.build(
             wrapBuilder(videoBuilder), {textOne: 'myButton', width : this.width_, height : this.height_});
         } else {
-          // other
+          return null;
         }
       }
       // 返回FrameNode节点。
@@ -871,7 +871,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
                 .width(this.widthMap.get(componentId))
                 .height(this.heightMap.get(componentId))
             }, (embedId: string) => embedId)
-            // Web组件加载本地test.html页面。
+            // Web组件加载本地test3.html页面。
             Web({ src: $rawfile('test3.html'), controller: this.browserTabController })
               // 配置同层渲染开关开启。
               .enableNativeEmbedMode(true)
@@ -891,12 +891,12 @@ display，position，z-index，visibility，opacity, background-color，backgrou
                     width : this.uiContext.px2vp(embed.info?.width), height : this.uiContext.px2vp(embed.info?.height)});
                   this.edges = {left: `${embed.info?.position?.x as number}px`, top: `${embed.info?.position?.y as number}px`};
                   nodeController.setDestroy(false);
-                  // 根据Web传入的embed的id属性作为key，将nodeController存入Map。
+                  // 根据Web传入的embed的id属性作为key，将nodeController存入map。
                   this.nodeControllerMap.set(componentId, nodeController);
                   this.widthMap.set(componentId,  this.uiContext.px2vp(embed.info?.width));
                   this.heightMap.set(componentId,  this.uiContext.px2vp(embed.info?.height));
                   this.positionMap.set(componentId, this.edges);
-                  // 将Web传入的embed的id属性存入@State状态数组变量中，用于动态创建nodeContainer节点容器，需要将push动作放在set之后。
+                  // 将Web传入的embed的id属性存入@State状态数组变量中，用于动态创建NodeContainer节点容器，需要将push动作放在set之后。
                   this.componentIdArr.push(componentId);
                 } else if (embed.status === NativeEmbedStatus.UPDATE) {
                   let nodeController = this.nodeControllerMap.get(componentId);
@@ -973,11 +973,11 @@ display，position，z-index，visibility，opacity, background-color，backgrou
   ```
 
 - 应用侧代码示例，视频播放，使用时需替换为正确的视频链接地址。
-  <!-- @[mp4_player_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/PlayerDemo.ets) --> 
+  <!-- @[mp4_player_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/PlayerDemo.ets) -->
   
   ``` TypeScript
   import { media } from '@kit.MediaKit';
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   export class AVPlayerDemo {
     private count: number = 0;
@@ -1036,13 +1036,13 @@ display，position，z-index，visibility，opacity, background-color，backgrou
             break;
           case 'completed': // 播放接口后触发该状态机上报。
             console.info('AVPlayer state completed called.');
-            avPlayer.stop(); // 调用播放接口。
+            avPlayer.stop(); // 调用停止播放接口。
             break;
           case 'stopped': // stop接口后触发该状态机上报。
             console.info('AVPlayer state stopped called.');
             avPlayer.reset(); // 调用reset接口初始化avplayer状态。
             break;
-          case 'released': // 播放接口后触发该状态机上报。
+          case 'released': // 退出后触发该状态机上报。
             console.info('AVPlayer state released called.');
             break;
           default:
@@ -1102,12 +1102,11 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 | overlay-infinity | 设置同层标签层级高于其他Web元素和设置overlay的同层标签。 |
 
 - 应用侧代码：
-<!-- @[native_embed_overlay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/NativeEmbedOverlay.ets) --> 
+<!-- @[native_embed_overlay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/NativeEmbedOverlay.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-import { UIContext } from '@kit.ArkUI';
-import { NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
+import { UIContext, NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
 
 @Observed
 declare class Params{
@@ -1147,7 +1146,7 @@ class MyNodeController extends NodeController {
     this.type_ = params.type;
   }
 
-  // 必须要重写的方法，用于构建节点数、返回节点数挂载在对应NodeContainer中。
+  // 必须要重写的方法，用于构建节点树、返回节点树挂载在对应NodeContainer中。
   // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新。
   makeNode(uiContext: UIContext): FrameNode | null {
     if (this.isDestroy_) { // rootNode为null。
@@ -1407,12 +1406,11 @@ ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同�
 | object-fit:none | 纹理不拉伸，左顶角对齐。|
 
 - 应用侧代码：
-  <!-- @[texture_map_alignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/TextureMapAlignment.ets) -->
+  <!-- @[texture_map_alignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/TextureMapAlignment.ets) --> 
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-  import { UIContext } from '@kit.ArkUI';
-  import { NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
+  import { UIContext, NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
   @Observed
   declare class Params{
     elementId: string
@@ -1447,7 +1445,7 @@ ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同�
       this.height_ = params.height;
       this.type_ = params.type;
     }
-    // 必须要重写的方法，用于构建节点数、返回节点数挂载在对应NodeContainer中。
+    // 必须要重写的方法，用于构建节点树、返回节点树挂载在对应NodeContainer中。
     // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新。
     makeNode(uiContext: UIContext): FrameNode | null {
       if (this.isDestroy_) { // rootNode为null。
@@ -1545,7 +1543,7 @@ ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同�
                     height : this.uiContext.px2vp(embed.info?.height)})
                   this.edges = {left: `${embed.info?.position?.x as number}px`, top: `${embed.info?.position?.y as number}px`}
                   nodeController.setDestroy(false);
-                  //根据Web传入的embed的id属性作为key，将nodeController存入Map。
+                  // 根据Web传入的embed的id属性作为key，将nodeController存入Map。
                   this.nodeControllerMap.set(componentId, nodeController);
                   this.widthMap.set(componentId, this.uiContext.px2vp(embed.info?.width));
                   this.heightMap.set(componentId, this.uiContext.px2vp(embed.info?.height));
@@ -1615,28 +1613,46 @@ ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同�
 ### 同层渲染组件被拉伸该如何解决？
 
 - 组件高度过大
-  
+
   受GPU限制，同层标签存在8000px的高度限制，如果H5中同层标签高度过高，会存在组件被拉伸的情况，这时需要将同层标签的高度设为8000px以下。
+
+- transform rotate/skew变换导致
+
+  同层标签应用CSS transform中的rotate/skew变换后，画面会出现拉伸变形，从API版本26.1.0开始，可通过[nativeEmbedOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#nativeembedoptions16)将[EmbedOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#embedoptions16)中的supportTransformRotateAndSkew设为true解决。
 
 - 自定义组件宽高未指定为同层渲染标签的宽高
 
   自定义的同层渲染组件宽高需要与同层标签的宽高保持一致，示例如下：
-  ```ts
-    @Component
-    struct TextInputComponent {
-      @Prop params: Params
-      @State bkColor: Color = Color.White
-
-      build() {
-        Column() {
-          TextInput({text: '', placeholder: 'please input your word...'})
-            .fontColor(Color.Black)
-        }
-        // 自定义组件中的最外层容器组件宽高应该为同层标签的宽高。
-        .width(this.params.width)
-        .height(this.params.height)
+  <!-- @[text_input_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+  
+  ``` TypeScript
+  @Component
+  struct TextInputComponent {
+    @Prop params: Params;
+    @State bkColor: Color = Color.White;
+  
+    build() {
+      Column() {
+        TextInput({text: '', placeholder: 'please input your word...'})
+          .placeholderColor(Color.Gray)
+          .id(this.params?.elementId)
+          .placeholderFont({size: 13, weight: 400})
+          .caretColor(Color.Gray)
+          .fontSize(14)
+          .fontColor(Color.Black)
       }
+      // 自定义组件中的最外层容器组件宽高应该为同层标签的宽高。
+      .width(this.params.width)
+      .height(this.params.height)
     }
+  }
+  
+  // @Builder中为动态组件的具体组件内容。
+  @Builder
+  function textInputBuilder(params:Params) {
+    TextInputComponent({params: params})
+      .backgroundColor(Color.White)
+  }
   ```
 
 ### 如何将同层渲染组件捕获到的事件透传到Web前端？
@@ -1647,8 +1663,11 @@ ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同�
 - 同层渲染开关[enableNativeEmbedMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enablenativeembedmode11)未开启
 
   使用同层渲染技术需要显式开启同层渲染开关
-  ```ts
-  Web({ src: $rawfile("text.html"), controller: this.controller })
+  <!-- @[enable_native_embedmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+  
+  ``` TypeScript
+  Web({src: $rawfile('test2.html'), controller: this.browserTabController})
+  // ...
     // 配置同层渲染开关开启。
     .enableNativeEmbedMode(true)
   ```
@@ -1659,7 +1678,9 @@ ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同�
 
 ### 涉及界面交互的ArkUI组件（如TextInput等）光标与输入框错位该如何解决？
 首先，需使用Stack包裹同层组件容器和BuilderNode。其次，同层组件容器NodeContainer应与同层标签的位置绑定。示例如下：
-```ts
+<!-- @[same_layer_and_same_tag_bundle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+
+``` TypeScript
 ForEach(this.componentIdArr, (componentId: string) => {
   NodeContainer(this.nodeControllerMap.get(componentId))
     // 同层组件容器应与同层标签的宽高和位置绑定。

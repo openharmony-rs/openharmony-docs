@@ -63,7 +63,7 @@ resources
 
 | 目录类型    | 说明                                     | 资源文件                                     |
 | --------- | ---------------------------------------- | ---------------------------------------- |
-| element | 表示元素资源，以下每一类数据都采用相应的JSON文件来表征（目录下仅支持文件类型）。<br/>-&nbsp;boolean，布尔型<br/>-&nbsp;color，颜色<br/>-&nbsp;float，浮点型，范围是`-2^128到2^128`<br/>-&nbsp;intarray，整型数组<br/>-&nbsp;integer，整型，范围是`-2^31到2^31-1`<br/>-&nbsp;plural，复数形式<br/>-&nbsp;strarray，字符串数组<br/>-&nbsp;string，字符串，格式化字符串请参考[getStringSync](../reference/apis-localization-kit/js-apis-resource-manager.md#getstringsync10)接口<!--Del--><br/>-&nbsp;pattern，样式（仅支持系统应用使用）<!--DelEnd--><!--Del--><br/>-&nbsp;theme，主题（仅支持系统应用使用）<!--DelEnd-->| element目录中的文件名称建议与下面的文件名保持一致。每个文件中只能包含同一类型的数据。<br/>-&nbsp;boolean.json<br/>-&nbsp;color.json<br/>-&nbsp;float.json<br/>-&nbsp;intarray.json<br/>-&nbsp;integer.json<br/>-&nbsp;plural.json<br/>-&nbsp;strarray.json<br/>-&nbsp;string.json<!--Del--><br/>-&nbsp;pattern.json<!--DelEnd--><!--Del--><br/>-&nbsp;theme.json<!--DelEnd--> |
+| element | 表示元素资源，以下每一类数据都采用相应的JSON文件来表征（目录下仅支持文件类型）。<br/>-&nbsp;boolean，布尔型。<br/>-&nbsp;color，颜色。<br/>-&nbsp;float，浮点型，范围是`-2^128到2^128`。<br/>-&nbsp;intarray，整型数组。<br/>-&nbsp;integer，整型，范围是`-2^31到2^31-1`。<br/>-&nbsp;plural，复数形式。<br/>-&nbsp;strarray，字符串数组。<br/>-&nbsp;string，字符串，单个字符串最大长度为65535字节，超长字符串建议转换为文本文件存放在rawfile目录下。若想在字符串中添加占位符并对其进行格式化，请参考[getStringSync](../reference/apis-localization-kit/js-apis-resource-manager.md#getstringsync10)接口。<!--Del--><br/>-&nbsp;pattern，样式（仅支持系统应用使用）。<!--DelEnd--><!--Del--><br/>-&nbsp;theme，主题（仅支持系统应用使用）。<!--DelEnd-->| element目录中的文件名称建议与下面的文件名保持一致。每个文件中只能包含同一类型的数据。<br/>-&nbsp;boolean.json<br/>-&nbsp;color.json<br/>-&nbsp;float.json<br/>-&nbsp;intarray.json<br/>-&nbsp;integer.json<br/>-&nbsp;plural.json<br/>-&nbsp;strarray.json<br/>-&nbsp;string.json<!--Del--><br/>-&nbsp;pattern.json<!--DelEnd--><!--Del--><br/>-&nbsp;theme.json<!--DelEnd--> |
 | media   | 表示媒体资源，包括图片、音频、视频等非文本格式的文件（目录下只支持文件类型）。<br/>图片和音视频的类型说明见表3和表4。              | 文件名可自定义，例如：icon.png。                     |
 | profile  | 表示自定义配置文件，其文件内容可通过包管理接口[bundleManager.getProfileByAbility](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyability)获取（目录下只支持json文件类型）。       | 文件名可自定义，例如：test_profile.json。           |
 
@@ -108,7 +108,7 @@ resources
 | 文字          | 表示设备使用的文字类型，由1个大写字母（首字母）和3个小写字母组成。例如：Hans表示简体中文，Hant表示繁体中文。<br/>详细取值范围，请查阅[**ISO&nbsp;15924**](https://www.iso.org/standard/81905.html)（ISO制定的文字编码标准）。 |
 | 国家或地区       | 表示用户所在的国家或地区，由2~3个大写字母或者3个数字组成。例如：CN表示中国，GB表示英国。<br/>详细取值范围，请查阅[**ISO&nbsp;3166-1**](https://www.iso.org/iso-3166-country-codes.html)（ISO制定的国家和地区编码标准）。 |
 | 横竖屏         | 表示设备的屏幕方向，取值如下：<br/>-&nbsp;vertical：竖屏<br/>-&nbsp;horizontal：横屏 |
-| 设备类型        | <!--RP1-->表示设备的类型，取值如下：<br/>-&nbsp;car：车机<br/>-&nbsp;tablet：平板<br/>-&nbsp;tv：智慧屏<br/>-&nbsp;wearable：智能穿戴<!--RP1End--> |
+| 设备类型        | 表示设备的类型，取值如下：<br/>-&nbsp;phone：手机<br/>-&nbsp;tablet：平板<br/>-&nbsp;car：车机<br/>-&nbsp;tv：智慧屏<br/>-&nbsp;wearable：智能穿戴<br/>-&nbsp;2in1：2in1 |
 | 颜色模式        | 表示设备的颜色模式，取值如下：<br/>-&nbsp;dark：深色模式<br/>-&nbsp;light：浅色模式 |
 | 屏幕密度        | 表示设备的屏幕密度（单位为dpi），取值如下：<br/>-&nbsp;sdpi：表示小规模的屏幕密度（Small-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(0,&nbsp;120]的设备。<br/>-&nbsp;mdpi：表示中规模的屏幕密度（Medium-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(120,&nbsp;160]的设备。<br/>-&nbsp;ldpi：表示大规模的屏幕密度（Large-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(160,&nbsp;240]的设备。<br/>-&nbsp;xldpi：表示特大规模的屏幕密度（Extra&nbsp;Large-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(240,&nbsp;320]的设备。<br/>-&nbsp;xxldpi：表示超大规模的屏幕密度（Extra&nbsp;Extra&nbsp;Large-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(320,&nbsp;480]的设备。<br/>-&nbsp;xxxldpi：表示超特大规模的屏幕密度（Extra&nbsp;Extra&nbsp;Extra&nbsp;Large-scale&nbsp;Dots&nbsp;Per&nbsp;Inch），适用于dpi取值为(480,&nbsp;640]的设备。 |
 
@@ -666,7 +666,7 @@ overlay是一种资源替换机制，针对不同品牌、产品的显示风格�
 
 ### 静态overlay配置方式
 
-该功能默认使能，使能及去使能请参考[@ohos.bundle.overlay (overlay模块)](../reference/apis-ability-kit/js-apis-overlay.md)。
+该功能默认使能，使能及去使能请参考[@ohos.bundle.overlay (overlay特征模块)](../reference/apis-ability-kit/js-apis-overlay.md)。
 
 包内overlay资源包中的配置文件app.json5中支持的字段：
 ```json

@@ -45,7 +45,7 @@ let controller: windowAnimationManager.WindowAnimationController = {
     onStartAppFromLauncher(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
         console.info('onStartAppFromLauncher, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
-      },
+    },
     onStartAppFromRecent(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
         console.info('onStartAppFromRecent, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
@@ -255,6 +255,8 @@ Called when an application is started from the home screen.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name              | Type                                                        | Mandatory| Description              |
@@ -275,6 +277,8 @@ Called when an application is started from the recent task list.
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -297,6 +301,8 @@ Called when an application is started from a place other than the home screen an
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name              | Type                                                        | Mandatory| Description              |
@@ -317,6 +323,8 @@ Called during application transition.
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -340,11 +348,13 @@ Called when a window is minimized.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name              | Type                           | Mandatory| Description            |
 | -------------------- | ------------------------------- | ---- | ---------------- |
-| minimizingWindowTarget | [WindowAnimationTarget](#windowanimationtarget)           | Yes  | Target window to minimize.   |
+| minimizingWindowTarget | [WindowAnimationTarget](#windowanimationtarget)           | Yes  | Target window to display the animation.   |
 | finishCallback       | [WindowAnimationFinishedCallback](#windowanimationfinishedcallback) | Yes  | Callback invoked when the animation is finished.|
 
 **Example**
@@ -360,6 +370,8 @@ Called when a window is closed.
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -382,6 +394,8 @@ Called when the screen is unlocked.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name        | Type                                                        | Mandatory| Description              |
@@ -401,6 +415,8 @@ Called when the window that displays the animation is updated.
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 

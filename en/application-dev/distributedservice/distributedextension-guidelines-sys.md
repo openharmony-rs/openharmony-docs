@@ -1,10 +1,12 @@
 # DistributedExtensionAbility Development (for System Applications Only)
+
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=405ff88200c2ec4181f73862bbec8846cb359b2c translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## Overview
 
@@ -25,19 +27,23 @@ During cross-device collaboration, when device A is running in the background an
 Before you get started, familiarize yourself with the following concepts:
 
 * **Distributed Message Service (DMS)**
-  
+
   A framework that provides distributed component management capabilities.
+
 * **UIAbility**
-  
+
   A component that implements tasks specific to application UIs, such as lifecycle management, user interaction, and UI rendering.
+
 * **ExtensionAbility**
-  
+
   A component that extends application functions or implements cross-device collaboration. It allows applications to run some tasks in the background or migrates some functions to other devices for execution, implementing distributed capabilities.
+
 * **Byte stream**
-  
+
   Data of the [ArrayBuffer](../arkts-utils/arraybuffer-object.md) type, which can be used to store binary data, for example, image or audio data.
+
 * **Transport stream**
-  
+
   Media streams that can be used to transmit images, audios, text information, and bytes.
 
 ## Implementation Principles
@@ -49,6 +55,7 @@ The application on device A integrates **DistributedExtensionAbility**. When DSo
 ## Constraints
 
 * You need to log in with the same HUAWEI ID on different devices.
+
 * Cross-device collaboration is supported only for UIAbility applications with the same bundle name on different devices.
 
 <!--RP1-->
@@ -63,7 +70,9 @@ You have logged in to devices A and B with the same HUAWEI ID and the two device
 ### Setting Up the Environment
 
 1. Install [DevEco Studio](https://developer.huawei.com/consumer/en/download/) 4.1 or later on the PC.
+
 2. Update the public-SDK to API version 20 or later.
+
 3. Enable Bluetooth on devices A and B to implement networking.
 
 ### Verifying the Environment
@@ -88,43 +97,49 @@ For details about how to use the APIs, see [@ohos.application.DistributedExtensi
 | Name                                                              | Description                      |
 | -------------------------------------------------------------------- | -------------------------- |
 | onCreate(want: Want): void;                                          | Creates a distributed collaboration task.      |
-| onDestroy(): void;                                                   | Destroys a distributed collaboration task.         |
-| onCollaborate(wantParam: Record): AbilityConstant.CollaborateResult; | Called when distributed collaboration is requested.|
+| onDestroy(): void;                                                   | Destroys a distributed collaboration task.          |
+| onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult; | Called when distributed collaboration is requested. |
 
 ### Development Procedure
 
 1. Register the `Extension` component in the configuration file.
-   
+
    In the application configuration file `module.json5`, add the `"extensionAbilities"` field, set `"type"` to `"distributed"`, and add an entry whose `"name"` is `"ohos.extension.DistributedExtension"` to ["metadata"](../reference/apis-ability-kit/js-apis-bundleManager-metadata.md).
-   
+
    Example:
-   
-   ```json
-   "extensionAbilities": [
-     {
-       "name": "EntrydistributedAbility",
-       "srcEntry": "./ets/entrybackupability/EntryDistributedAbility.ets",
-       "type": "distributed",
-       "exported": false,
-       "metadata": [
-         {
-           "name": "ohos.extension.DistributedExtension",
-         }
-       ],
-       "srcEntry": "./ets/common/MDSExtension.ts",
+
+   ```json5
+   {
+     "module": {
+       "extensionAbilities": [
+        {
+          "name": "EntrydistributedAbility",
+          "type": "distributed",
+          "exported": false,
+          "metadata": [
+            {
+              "name": "ohos.extension.DistributedExtension"
+            }
+          ],
+          "srcEntry": "./ets/common/MDSExtension.ts"
+        }
+       ]
      }
-   ]
+   }
+
    ```
+
 2. Import the required modules.
-   
+
    ```ts
    import { AbilityConstant, Want } from '@kit.AbilityKit';
    import { abilityConnectionManager, DistributedExtensionAbility } from '@kit.DistributedServiceKit';
    ```
+
 3. Customize the `MDSExtension.ets` file. Specifically, inherit the `DistributedExtensionAbility` class and rewrite the `onCreate`, `onDestroy`, and `onCollaborate` methods to create and destroy `DistributedExtension` and implement connection callback.
-   
+
    The following is an empty `MDSExtension.ets` file. You can observe its lifecycle based on the corresponding `Logger`.
-   
+
    ```ts
    import { AbilityConstant, Want } from '@kit.AbilityKit';
    import { abilityConnectionManager, DistributedExtensionAbility } from '@kit.DistributedServiceKit';   
@@ -138,11 +153,10 @@ For details about how to use the APIs, see [@ohos.application.DistributedExtensi
    
      onCollaborate(wantParam: Record<string, Object>) {
        console.info(`DistributedExtension onCollabRequest Accept to the result of Ability collaborate`);
-       let sessionId = -1;
-       const collaborationValues = wantParam["CollaborationValues"] as abilityConnectionManager.CollaborationValues;
-       if (collaborationValues == undefined) {
-         return sessionId;
-       }
+        const collaborationValues = wantParam["CollaborationValues"] as abilityConnectionManager.CollaborationValues;
+        if (collaborationValues == undefined) {
+          return AbilityConstant.CollaborateResult.REJECT;
+        }
    
        console.info(`onCollab, collaborationValues: ${JSON.stringify(collaborationValues)}`);
        return AbilityConstant.CollaborateResult.ACCEPT;
@@ -166,7 +180,7 @@ Devices are not networking. As a result, the connection between device A and dev
 
 Enable USB debugging on device A and device B, and use a USB cable to connect the devices to the PC. Run the following shell command on the PC:
 
-```
+```shell
 hdc shell
 hidumper -s 4700 -a "buscenter -l remote_device_info"
 ```

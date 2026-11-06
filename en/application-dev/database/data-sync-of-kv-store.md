@@ -5,7 +5,7 @@
 <!--Designer: @ding_dong_dong-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-
+<!-- md-trans-meta sourceCommit=38904fe42b22c25d045cbe6b05536cf427110b07 translatedAt=2026-11-03T04:37:58.362Z pushedAt=2026-11-03T04:37:58.362Z nl=2 -->
 
 ## When to Use
 
@@ -39,7 +39,7 @@ The data management service provides two sync types: manual sync and auto sync. 
 
 ### Manual Sync
 
-The application calls **sync()** with the devices to be synced and the sync mode specified to trigger the sync. The sync mode can be **PULL_ONLY** (pulling remote data to the local end), **PUSH_ONLY** (pushing local data to the remote end), or **PUSH_PULL** (pushing local data to the remote end and pulling remote data to the local end). You can use the [**sync()** with the **query** parameter](../reference/apis-arkdata/js-apis-distributedKVStore.md#sync-1) to sync the data that meets the specified conditions.
+Applications trigger end-to-end synchronization by calling the **sync** API, specifying the target device list and the synchronization mode. The sync mode can be **PULL_ONLY** (pulling remote data to the local end), **PUSH_ONLY** (pushing local data to the remote end), or **PUSH_PULL** (pushing local data to the remote end and pulling remote data to the local end). You can use [sync()](../reference/apis-arkdata/js-apis-distributedKVStore.md#sync-1) with the **query** parameter to sync the data that meets the specified conditions.
 
 ### Auto Sync
 
@@ -72,9 +72,9 @@ When data is added, deleted, or modified, a notification is sent to the subscrib
 
 ## Constraints
 
-- For each record in a device KV store, the key cannot exceed 896 bytes and the value cannot exceed 4 MB.
+- For each record in a device KV store, the key cannot exceed 896 bytes and the value must be less than 4 MB.
 
-- For each record in a single KV store, the key cannot exceed 1 KB and the value cannot exceed 4 MB.
+- For each record in a single KV store, the key cannot exceed 1 KB and the value must be less than 4 MB.
 
 - The KV stores do not support custom conflict resolution policies for applications.
 
@@ -85,12 +85,12 @@ When data is added, deleted, or modified, a notification is sent to the subscrib
 
 ## Available APIs
 
-The following table lists the APIs for cross-device data sync of the single KV store. Most of the APIs are executed asynchronously, using a callback or promise to return the result. The following table uses the callback-based APIs as an example. For more information about the APIs, see [Distributed KV Store](../reference/apis-arkdata/js-apis-distributedKVStore.md).
+The following APIs are provided for end-to-end cross-device data synchronization in the single-version distributed KV store. For more APIs and their usage, see [@ohos.data.distributedKVStore (Distributed KV Store)](../reference/apis-arkdata/js-apis-distributedKVStore.md).
 
-| API| Description|
+| Name | Description|
 | -------- | -------- |
 | createKVManager(config: KVManagerConfig): KVManager | Creates a **KvManager** instance to manage database objects.|
-| getKVStore&lt;T&gt;(storeId: string, options: Options, callback: AsyncCallback&lt;T&gt;): void | Obtains a KV store of the specified type.|
+| getKVStore&lt;T&gt;(storeId: string, options: Options, callback: AsyncCallback&lt;T&gt;): void | Obtains a KV store of the specified **options** and **storeId**.|
 | put(key: string, value: Uint8Array \| string \| number \| boolean, callback: AsyncCallback&lt;void&gt;): void | Inserts and updates data.|
 | on(event: 'dataChange', type: SubscribeType, listener: Callback&lt;ChangeNotification&gt;): void | Subscribes to data changes in the KV store.|
 | get(key: string, callback: AsyncCallback&lt;boolean \| string \| number \| Uint8Array&gt;): void | Queries the value of the specified key.|
@@ -105,36 +105,24 @@ The following uses a single KV store as an example to describe how to implement 
 
 > **NOTE**
 >
-> The security level of the destination device (to which data is synced) cannot be higher than that of the source device. For details, see [Access Control Mechanism in Cross-Device Sync](access-control-by-device-and-data-level.md#access-control-mechanism-in-cross-device-sync).
+> Data can be synced only to devices whose security level is greater than or equal to the data's security label. For details, see [Access Control Mechanism in Cross-Device Sync](access-control-by-device-and-data-level.md#access-control-mechanism-in-cross-device-sync).
 
-1. Import module to obtain the context.
+1. Import the module to obtain the context. This example uses the Stage model. For details about how to obtain the context in the FA model, see [context](../application-models/application-context-fa.md).
 
-   ```ts
-   // Import modules.
-   // Create a KvStoreInterface.ets file in the pages directory.
+   <!-- @[get_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
    import { distributedKVStore } from '@kit.ArkData';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    import EntryAbility from '../entryability/EntryAbility';
-   // Logger implements the print feature after Hilog is encapsulated.
    import Logger from '../common/Logger';
-
+   
    let kvManager: distributedKVStore.KVManager | undefined = undefined;
    let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
    let appId: string = 'com.example.kvstoresamples';
    let storeId: string = 'storeId';
-   // Obtain the context of the stage model from EntryAbility.ets.
    const context = EntryAbility.getContext();
-
-   // Obtain the context of the FA model.
-   import { featureAbility } from '@kit.AbilityKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-
-   let context = featureAbility.getContext();
-
-   // The code of all the following APIs is implemented in KvInterface.
-   export class KvInterface {
-   }
    ```
 
 2. Request permissions.
@@ -363,3 +351,23 @@ The following uses a single KV store as an example to describe how to implement 
      }
    })
    ```
+
+## Samples
+
+The following samples are available for KV store development:
+
+- [Distributed Networking Authentication (ArkTS) (Full SDK) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/DistributedAppDev/DistributedAuthentication)
+
+- [Distributed Data Management (ArkTS) (Full SDK) (API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/Kvstore)
+
+- [Distributed Music Player (JS) (Full SDK) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/JsDistributedMusicPlayer)
+
+- [Distributed Music Player (ArkTS) (Full SDK) (API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/ArkTSDistributedMusicPlayer)
+
+- [Distributed Calculator (JS) (Full SDK) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/DistributeCalc)
+
+- [Distributed Calculator (ArkTS) (Full SDK) (API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/ArkTSDistributedCalc)
+
+- [Distributed Gomoku (ArkTS) (Full SDK) (API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Game/DistributedDataGobang)
+
+- [Distributed Drawing Board (ArkTS) (Full SDK) (API10)](https://gitcode.com/openharmony/codelabs/tree/master/Distributed/DistributeDraw)

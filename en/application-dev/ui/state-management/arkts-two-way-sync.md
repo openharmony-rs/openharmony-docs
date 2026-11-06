@@ -1,12 +1,13 @@
 # $$ Syntax: Implementing Two-Way Synchronization for Built-in Components
 <!--Kit: ArkUI--> 
 <!--Subsystem: ArkUI--> 
-<!--Owner: @Cuecuexiaoyu--> 
-<!--Designer: @lixingchi1--> 
+<!--Owner: @BIYynNe--> 
+<!--Designer: @VictorS67--> 
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=d842580cc8ee05f69976d9458c9fcd43c930e94f translatedAt=2026-11-03T06:39:03.072Z pushedAt=2026-11-03T08:06:55.436Z nl=1 -->
 
-The **$$** operator provides a TypeScript variable by-reference to a built-in component so that the variable's value and the component's internal state are kept in sync.
+The **$$** operator provides a reference to a TS variable for system components, so that the TS variable and the internal state of the system component remain synchronized.
 
 
 The specific meaning of "internal state" varies by component. For example, for the [TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md) component, it refers to the **text** parameter.
@@ -16,7 +17,7 @@ The specific meaning of "internal state" varies by component. For example, for t
 
 - Currently, **$$** supports variables of basic types. When such variables are decorated with state management V1 decorators such as [\@State](arkts-state.md), [\@Link](arkts-link.md), [\@Prop](arkts-prop.md), and [\@Provide](arkts-provide-and-consume.md), or state management V2 decorators such as [\@Local](arkts-new-local.md), changes in variable values will trigger UI updates.
 
-- Components supported by **$$** are listed below.
+- Components and common attributes supported by `$$`:
 
   | Component                                                        | Parameter/Attribute| Initial API Version|
   | ------------------------------------------------------------ | --------------- | ----------- |
@@ -49,11 +50,10 @@ The specific meaning of "internal state" varies by component. For example, for t
 
 ## Example
 
-This example demonstrates two-way data binding using the **$$** operator with the **text** parameter of the [TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md) component.
+Take the **text** parameter of the [TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md) component as an example:
 <!-- @[sync_state_manager_$$](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExample.ets) -->
 
 ``` TypeScript
-// xxx.ets
 @Entry
 @Component
 struct TextInputExample {
@@ -63,6 +63,9 @@ struct TextInputExample {
   build() {
     Column({ space: 20 }) {
       Text(this.text)
+        .fontSize(20)
+        .margin(10)
+      // The $$ operator provides a reference to a TS variable for a system component, keeping the TS variable synchronized with the internal state of the system component.
       TextInput({ text: $$this.text, placeholder: 'input your word...', controller: this.controller })
         .placeholderColor(Color.Grey)
         .placeholderFont({ size: 14, weight: 400 })

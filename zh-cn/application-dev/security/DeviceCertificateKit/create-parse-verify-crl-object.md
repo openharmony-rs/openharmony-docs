@@ -17,7 +17,7 @@
    import { cryptoFramework } from '@kit.CryptoArchitectureKit';
    ```
 
-2. 基于已有的CRL数据，调用[cert.createX509CRL](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509crl11)创建X509证书吊销列表的对象。
+2. 基于已有的CRL数据，调用[cert.createX509CRL](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509crl11)创建X.509证书吊销列表的对象。
 
 3. 解析证书吊销列表信息。
 
@@ -29,9 +29,9 @@
 
 5. 调用[X509CRL.verify](../../reference/apis-device-certificate-kit/js-apis-cert.md#verify11)校验签名合法性。
 
-6. 基于已有的X509证书数据，调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建证书对象。
+6. 基于已有的X.509证书数据，调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建证书对象。
 
-7. 调用[X509CRL.isRevoked](../../reference/apis-device-certificate-kit/js-apis-cert.md#isrevoked11)判断X509证书是否已被吊销。
+7. 调用[X509CRL.isRevoked](../../reference/apis-device-certificate-kit/js-apis-cert.md#isrevoked11)判断X.509证书是否已被吊销。
 
 8. 调用[X509CRL.getRevokedCert](../../reference/apis-device-certificate-kit/js-apis-cert.md#getrevokedcert11)获取被吊销证书对象。
 
@@ -119,9 +119,9 @@ function crlSample(): void {
     let revokedFlag = true;
     let serial: bigint = BigInt('0');
     cert.createX509Cert(certBlob, (err, x509Cert) => {
-      serial = x509Cert.getCertSerialNumber();
       if (err == null) {
         try {
+          serial = x509Cert.getCertSerialNumber();
           // 检查证书是否被吊销。
           revokedFlag = x509Crl.isRevoked(x509Cert);
           console.info(`revokedFlag is: ${revokedFlag}`);

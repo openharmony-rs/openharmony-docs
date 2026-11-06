@@ -2,11 +2,12 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=aa24192e211a0e18784090008cfc2dcba467d4ab translatedAt=2026-11-03T08:24:18.985Z pushedAt=2026-11-03T09:15:39.167Z nl=1 -->
 
-This topic explains how to implement UI internationalization in an application, including resource configuration and layout adaptation. For details about internationalization guidance, see [Localization Kit](../internationalization/i18n-l10n.md).
+This topic explains how to implement UI internationalization in an application, including resource configuration and mirroring. For details about internationalization guidance, see [Localization Kit](../internationalization/i18n-l10n.md).
 
 ## Configuring Internationalization Resources with Resource Qualifiers
 
@@ -14,7 +15,7 @@ To support multiple languages and regions, you can configure localized resources
 
 ## Using the Mirroring Capability
 
-Different text alignment modes and reading sequences may be used for different languages. For example, English is read from left-to-right (LTR), and Arabic and Greek are read from right-to-left (RTL). To accommodate diverse user reading habits, ArkUI provides a mirroring capability that can reverse the display content along the x-axis, switching the layout from left-to-right to right-to-left.
+Different text alignment modes and reading sequences may be used for different languages. For example, English uses a left-to-right (LTR) order, and Arabic and Greek use right-to-left (RTL) order. To accommodate diverse user reading habits, ArkUI provides a mirroring capability that can reverse the display content along the x-axis, switching the layout from left-to-right to right-to-left.
 
 | Before Mirroring         | After Mirroring                                 |
 | ----------- | ----------------------------------- |
@@ -35,6 +36,7 @@ The mirroring capability is activated on a component under either of these condi
 
 ArkUI provides built-in mirroring support for the following capabilities.
 
+<!--Table: 20%; 80%-->
 | Category    | Name                                                        |
 | -------- | ------------------------------------------------------------ |
 | Basic components| [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md), [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md), [TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), [Progress](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md), [CalendarPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-calendarpicker.md), [CalendarPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md), [TextPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md), [TextPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md), [DatePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md), [DatePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md), [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md), [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md), [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [ScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md), [AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md), [Stepper](../reference/apis-arkui/arkui-ts/ts-basic-components-stepper.md), [SideBarContainer](../reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md), [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md), [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md), [Rating](../reference/apis-arkui/arkui-ts/ts-basic-components-rating.md), [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md), [Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md), [Badge](../reference/apis-arkui/arkui-ts/ts-container-badge.md), [Counter](../reference/apis-arkui/arkui-ts/ts-container-counter.md), [Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md), [SegmentButton](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md), [bindMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu), [bindContextMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8), [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md), [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md), [Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md), [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md), [GridRow](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md), [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md), [Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md), [Marquee](../reference/apis-arkui/arkui-ts/ts-basic-components-marquee.md), [Row](../reference/apis-arkui/arkui-ts/ts-container-row.md), [Column](../reference/apis-arkui/arkui-ts/ts-container-column.md), [Flex](../reference/apis-arkui/arkui-ts/ts-container-flex.md), [RelativeContainer](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md), [ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md)|
@@ -46,9 +48,9 @@ However, adaptation is still required in the following three scenarios:
 
 1. For layout and border settings, use the generalized direction terms **start** and **end** as parameter types instead of absolute terms such as **left**, **right**, **x**, and **y**, to accommodate mirroring.
 
-2. The **Canvas** component offers limited support for mirroring in text drawing only.
+2. The [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md) component supports mirroring in text drawing only.
 
-3. The **XComponent** component does not support mirroring capabilities.
+3. The [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md) component does not support component mirroring.
 
 ### Layout and Border Settings
 
@@ -80,8 +82,8 @@ For example, with **position**, change the absolute directional descriptions of 
             .position({
               start: LengthMetrics.px(200),
               top: LengthMetrics.px(200)
-            }) // Use the new LocalizedEdges parameter type added since API version 12 for supporting both LTR and RTL.
-          // It is equivalent to .position({ x: '200px', y: '200px' }) when only LTR is supported.
+            }) // When both LTR and RTL need to be supported, use the LocalizedEdges parameter type introduced in API 12.
+          // When only LTR is supported, equivalent to .position({ x: '200px', y: '200px' }).
   
         }.backgroundColor(Color.Blue)
       }.width('100%').height('100%').border({ color: '#880606' })
@@ -96,7 +98,7 @@ The drawings and coordinates of the **Canvas** component do not support mirrorin
 
 [CanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md) supports mirroring for text rendering, which should be used with the **Canvas** component's **direction** attribute and the **direction** attribute of **CanvasRenderingContext2D**. The following table lists the specifications.
 
-1. Priority: The **direction** attribute of **CanvasRenderingContext2D** takes precedence over the **Canvas** component's **direction** attribute, which in turn follows the system language's horizontal display direction.
+1. Priority: CanvasRenderingContext2D.direction > Canvas.direction > system language's horizontal display direction
 2. The **Canvas** component does not automatically mirror with system language changes; applications must listen for system language changes and redraw the content on their own.
 3. Only symbols follow the direction setting during text drawing with **CanvasRenderingContext2D**; Latin characters and numbers do not.
 
@@ -135,13 +137,13 @@ The drawings and coordinates of the **Canvas** component do not support mirrorin
               this.drawText();
             })
           } else {
-            console.error(`MayTest Need create subscriber`);
+            console.error(`Need create subscriber`);
           }
         })
     }
   
     drawText(): void {
-      console.error('MayTest drawText')
+      console.info('drawText')
       this.context.reset()
       this.context.direction = 'inherit'
       this.context.font = '30px sans-serif'
@@ -157,7 +159,6 @@ The drawings and coordinates of the **Canvas** component do not support mirrorin
           .onReady(() =>{
             this.drawText()
           })
-          .backgroundColor(Color.Pink)
       }
       .height('100%')
     }

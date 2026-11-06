@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @xialiangwei-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=9dc7d46e30a06bb4ba3bf8a4a074cbf67858fce9 translatedAt=2026-09-03T11:33:28.832Z pushedAt=2026-09-05T10:47:30.641Z -->
 
 <!--deprecated_code_no_check-->
 
@@ -103,7 +104,7 @@ context.getOrCreateLocalDir().then((data) => {
 
 verifyPermission(permission: string, options: PermissionOptions, callback: AsyncCallback\<number>): void
 
-Verifies whether a PID and UID have the given permission. This API uses an asynchronous callback to return the result.
+Verifies whether the specified pid and uid running in the system have the specified permission. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -134,7 +135,7 @@ bundle.getBundleInfo('com.context.test', 1, (err: BusinessError, datainfo: bundl
     });
 });
 ```
-For details about **getBundleInfo** in the sample code, see [bundleManager](js-apis-bundleManager.md).
+For details about getBundleInfo in the sample code, see [@ohos.bundle.bundleManager (Application Package Management Module)](js-apis-bundleManager.md).
 
 
 
@@ -222,6 +223,8 @@ Requests certain permissions from the system. This API uses an asynchronous call
 
 **Example**
 
+ArkTS example:
+
 <!--code_no_check_fa-->
 ```ts
 import featureAbility from '@ohos.ability.featureAbility';
@@ -244,6 +247,74 @@ context.requestPermissionsFromUser(
 );
 ```
 
+JS example:
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <div>
+        <input class="perm-btn" type="button" value="Request permission" onclick="requestPermissions" />
+    </div>
+</div>
+```
+
+```css
+/*xxx.css*/
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.perm-btn {
+    width: 200px;
+    height: 60px;
+    background-color: #007dff;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+}
+
+.perm-btn:active {
+    background-color: #0058b3;
+}
+```
+
+```js
+// xxx.js
+import featureAbility from '@ohos.ability.featureAbility';
+
+export default {
+    data: {
+    },
+    onInit() {
+    },
+    requestPermissions() {
+        let context = featureAbility.getContext();
+        context.requestPermissionsFromUser(
+            ['com.example.permission1',
+            'com.example.permission2',
+            'com.example.permission3',
+            'com.example.permission4',
+            'com.example.permission5'],
+            1,
+            (error, data) => {
+                if (error && error.code !== 0) {
+                    console.error(`requestPermissionsFromUser fail, error: ${JSON.stringify(error)}`);
+                } else {
+                    console.info(`requestPermissionsFromUser success, data: ${JSON.stringify(data)}`);
+                }
+            }
+        );
+    }
+}
+```
 
 ## Context.requestPermissionsFromUser<sup>7+</sup>
 
@@ -268,6 +339,8 @@ Requests certain permissions from the system. This API uses a promise to return 
 
 **Example**
 
+ArkTS example:
+
 <!--code_no_check_fa-->
 ```ts
 import featureAbility from '@ohos.ability.featureAbility';
@@ -283,6 +356,70 @@ context.requestPermissionsFromUser(
         console.info(`requestPermissionsFromUser data: ${JSON.stringify(data)}`);
     }
 );
+```
+
+JS example:
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <div>
+        <input class="perm-btn" type="button" value="Request permission" onclick="requestPermissions" />
+    </div>
+</div>
+```
+
+```css
+/*xxx.css*/
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.perm-btn {
+    width: 200px;
+    height: 60px;
+    background-color: #007dff;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+}
+
+.perm-btn:active {
+    background-color: #0058b3;
+}
+```
+
+```js
+// xxx.js
+import featureAbility from '@ohos.ability.featureAbility';
+
+export default {
+    data: {
+    },
+    onInit() {
+    },
+    requestPermissions() {
+        let context = featureAbility.getContext();
+        context.requestPermissionsFromUser(
+            ['com.example.permission1',
+            'com.example.permission2',
+            'com.example.permission3',
+            'com.example.permission4',
+            'com.example.permission5'],
+            1).then((data)=>{
+                console.info(`requestPermissionsFromUser data: ${JSON.stringify(data)}`);
+            }
+        );
+    }
+}
 ```
 
 
@@ -439,7 +576,7 @@ context.getDisplayOrientation((error, data) => {
 
 getDisplayOrientation(): Promise\<bundle.DisplayOrientation>
 
-Obtains the display orientation of this ability. This API uses a promise to return the result.
+Obtains the display orientation of the current ability. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -537,7 +674,7 @@ Sets the display orientation for this ability. This API uses an asynchronous cal
 
 | Name         | Type                                      | Mandatory  | Description          |
 | ----------- | ---------------------------------------- | ---- | ------------ |
-| orientation | [bundle.DisplayOrientation](js-apis-bundleManager.md#displayorientation) | Yes   | Display orientation to set.|
+| orientation | [bundle.DisplayOrientation](js-apis-bundleManager.md#displayorientation) | Yes    | Screen orientation. |
 | callback    | AsyncCallback\<void> | Yes   | Callback used to return the result. If the setting is successful, **err** is **undefined**. Otherwise, **err** is an error object.   |
 
 **Example**
@@ -596,7 +733,9 @@ Sets whether to show this feature at the top of the lock screen so that the feat
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use **window.setShowOnLockScreen**, which is a system API.
+> This API is effective only for system applications.
+>
+> Supported since API version 7, deprecated since API version 9. <!--Del-->Recommended to use [setShowOnLockScreen](../apis-arkui/js-apis-window-sys.md#setshowonlockscreen9) instead.<!--DelEnd--> The substitute API is available only for system applications.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -628,7 +767,9 @@ Sets whether to show this feature at the top of the lock screen so that the feat
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use **window.setShowOnLockScreen**, which is a system API.
+> This API is effective only for system applications.
+>
+> Supported since API version 7, deprecated since API version 9. <!--Del-->Recommended to use [setShowOnLockScreen](../apis-arkui/js-apis-window-sys.md#setshowonlockscreen9) instead.<!--DelEnd--> The substitute API is available only for system applications.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -665,7 +806,9 @@ Sets whether to wake up the screen when this feature is restored. This API uses 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 12. Its substitute, **window.setWakeUpScreen**, is available only to system applications.
+> This API is effective only for system applications.
+>
+> Supported since API version 7, deprecated since API version 12. Recommended to use window.setWakeUpScreen instead. The new API is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -697,7 +840,9 @@ Sets whether to wake up the screen when this feature is restored. This API uses 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 12. Its substitute, **window.setWakeUpScreen**, is available only to system applications.
+> This API is effective only for system applications.
+>
+> Supported since API version 7, deprecated since API version 12. Recommended to use window.setWakeUpScreen instead. The new API is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -765,7 +910,7 @@ context.getProcessInfo((error, data) => {
 
 getProcessInfo(): Promise\<ProcessInfo>
 
-Obtains information about the current process, including the PID and process name. This API uses a promise to return the result.
+Obtains information about the current process, including the process ID and name. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -827,7 +972,7 @@ context.getElementName((error, data) => {
 
 getElementName(): Promise\<ElementName>
 
-Obtains the element name of this ability. This API uses a promise to return the result.
+Obtains the ohos.bundleManager.ElementName object of the current ability. This API uses a promise to return the result.
 
 This API is available only to Page ability components.
 
@@ -973,7 +1118,7 @@ context.getCallingBundle().then((data) => {
 
 getCacheDir(callback: AsyncCallback\<string>): void
 
-Obtains the cache directory of the application in the internal storage. This API uses an asynchronous callback to return the result.
+Obtains the cache directory of the application. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -981,7 +1126,7 @@ Obtains the cache directory of the application in the internal storage. This API
 
 | Name      | Type                    | Mandatory  | Description             |
 | -------- | ---------------------- | ---- | --------------- |
-| callback | AsyncCallback\<string> | Yes   | Callback used to return the cache directory.|
+| callback | AsyncCallback\<string> | Yes | Callback function used to return the cache directory of the application. |
 
 **Example**
 
@@ -1003,7 +1148,7 @@ context.getCacheDir((error, data) => {
 
 getCacheDir(): Promise\<string>
 
-Obtains the cache directory of the application in the internal storage. This API uses a promise to return the result.
+Obtains the cache directory of the application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1011,7 +1156,7 @@ Obtains the cache directory of the application in the internal storage. This API
 
 | Type              | Description             |
 | ---------------- | --------------- |
-| Promise\<string> | Promise used to return the cache directory.|
+| Promise\<string> | Promise object that returns the cache directory of the application. |
 
 **Example**
 

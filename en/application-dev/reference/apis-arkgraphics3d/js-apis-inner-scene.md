@@ -1,10 +1,12 @@
 # Scene
+
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=4d7e02a7df2a06122e229dcfa39cff42326177c0 translatedAt=2026-08-20T12:29:13.068Z pushedAt=2026-08-21T08:29:48.033Z -->
 
 The module is the basic module of ArkGraphics 3D and provides common data types such as **SceneResourceParameters** and **SceneNodeParameters**. It also provides basic methods such as glTF model loading, scene creation, and resource creation.
 
@@ -16,8 +18,8 @@ The module is the basic module of ArkGraphics 3D and provides common data types 
 ## Modules to Import
 
 ```ts
-import { SceneResourceParameters, SceneNodeParameters, RaycastResult, RaycastParameters,RenderResourceFactory,
-  SceneResourceFactory, SceneComponent, RenderContext, RenderConfiguration, RenderParameters, Scene } from '@kit.ArkGraphics3D';
+import { SceneResourceParameters, SceneNodeParameters, RaycastResult, RaycastParameters, RenderResourceFactory, CameraParameters, EffectParameters,
+  SceneResourceFactory, SceneComponent, RenderContext, SoftShadowConfig, PCFConfig, RenderConfiguration, RenderParameters, Scene } from '@kit.ArkGraphics3D';
 ```
 
 ## SceneResourceParameters
@@ -28,7 +30,7 @@ Describes the scene resource parameters (**name** and **uri**), which are used t
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| name | string | No| No| Name of the scene resource. It is customizable.|
+| name | string | No | No | Name of the scene resource. It is customizable. |
 | uri | [ResourceStr](../apis-arkui/arkui-ts/ts-types.md#resourcestr) | No| Yes| Path of the resource file required in the 3D scene. The default value is undefined.|
 
 **Example**
@@ -48,9 +50,9 @@ function createShaderPromise(): Promise<Shader> {
         uri: $rawfile("shaders/custom_shader/custom_material_sample.shader") };
       let shader: Shader = await sceneFactory.createShader(sceneResourceParameter);
       resolve(shader);
-    }).catch((error: Error) => {
-      console.error('Scene load failed:', error);
-      reject(error);
+    }).catch((err: Error) => {
+      console.error(`Failed to load scene. Message: ${err.message}`);
+      reject(err);
     });
   });
 }
@@ -58,14 +60,14 @@ function createShaderPromise(): Promise<Shader> {
 
 ## SceneNodeParameters
 
-Describes the scene node parameters, which are used to provide the name and path in the scene node tree.
+Scene node parameter object, used to provide the name and path in the scene node hierarchy.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | name | string | No| No| Name of the scene node. It is customizable.|
-| path | string | No| Yes| Path in the scene node tree. It specifies the position of the created camera, light, or node in the scene node tree. Each layer is separated by a slash (/). If not provided, it is set as a child node of the root node. The default value is undefined.|
+| path | string | No | Yes | Path in the scene node hierarchy. It is used to specify the placement position of the created camera, light, or node in the scene node hierarchy. Each level is separated by the '/' symbol. If not provided, it is set as a child of the root node. The default value is undefined. |
 
 **Example**
 
@@ -84,9 +86,9 @@ function createNodePromise() : Promise<Node> {
         path:"/rootNode_/empty_node" };
       let node: Node = await sceneFactory.createNode(sceneNodeParameter);
       resolve(node);
-    }).catch((error: Error) => {
-      console.error('Scene load failed:', error);
-      reject(error);
+    }).catch((err: Error) => {
+      console.error(`Failed to load scene. Message: ${err.message}`);
+      reject(err);
     });
   });
 }
@@ -101,7 +103,7 @@ Describes a result object from raycasting, containing details about the 3D objec
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | No| No| 3D scene node hit by the ray. You can use this node to manipulate the target object (for example, moving, rotating, or hiding the object).|
-| centerDistance | number | No| No| Distance from the center of the hit object's bounding box to the camera center, in scene units of the world coordinate system (such as cm, m, km, etc.). The value range is greater than 0.|
+| centerDistance | number | No | No | Distance from the center of the bounding box of the hit object to the center of the camera, measured in scene units of the world coordinate system (such as cm, m, km, etc.). The value must be greater than 0. |
 | hitPosition | [Position3](js-apis-inner-scene-types.md#position3) | No| No| Exact world coordinates of the collision point between the ray and the object ({x: number, y: number, z: number}), in scene units of the world coordinate system (such as cm, m, km, etc.).|
 
 ## RaycastParameters<sup>20+</sup>
@@ -198,6 +200,48 @@ function createImageResource(): Promise<Image> {
 }
 ```
 
+### createImageStream
+
+createImageStream(params: SceneResourceParameters): Promise\<ImageStream>
+
+Creates an image stream based on the scene resource parameters. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ---- | ---- | ---- | ---- |
+| params | [SceneResourceParameters](#sceneresourceparameters) | Yes | Parameters for creating the image stream. |
+
+**Return value**
+
+| Type | Description |
+| ---- | ---- |
+| Promise\<[ImageStream](js-apis-inner-scene-resources.md#imagestream)> | Promise used to return the created image stream. |
+
+**Example**
+
+```ts
+import { ImageStream, SceneResourceParameters, Scene, RenderContext, RenderResourceFactory } from '@kit.ArkGraphics3D';
+
+function createImageStreamResource(): Promise<ImageStream> {
+  const renderContext: RenderContext | null = Scene.getDefaultRenderContext();
+  if (!renderContext) {
+    return Promise.reject(new Error("RenderContext is null"));
+  }
+  const renderResourceFactory: RenderResourceFactory = renderContext.getRenderResourceFactory();
+  let imageStreamParams: SceneResourceParameters = {
+    name: "sampleImageStream"
+  };
+  return renderResourceFactory.createImageStream(imageStreamParams);
+}
+```
+
 ### createMesh<sup>20+</sup>
 
 createMesh(params: SceneResourceParameters, geometry: GeometryDefinition): Promise\<MeshResource>
@@ -243,12 +287,12 @@ function createMeshResource(): Promise<MeshResource> {
     { x: 0, y: 1, z: 1 }
   ];
   geometry.indices = [
-    0, 1, 2, 2, 3, 0,     // front
-    4, 5, 6, 6, 7, 4,     // back
-    0, 4, 5, 5, 1, 0,     // bottom
-    1, 5, 6, 6, 2, 1,     // right
-    3, 2, 6, 6, 7, 3,     // top
-    3, 7, 4, 4, 0, 3      // left
+    0, 1, 2, 2, 3, 0, // front
+    4, 5, 6, 6, 7, 4, // back
+    0, 4, 5, 5, 1, 0, // bottom
+    1, 5, 6, 6, 2, 1, // right
+    3, 2, 6, 6, 7, 3, // top
+    3, 7, 4, 4, 0, 3  // left
   ];
   geometry.topology = PrimitiveTopology.TRIANGLE_LIST;
   geometry.normals = [
@@ -281,7 +325,7 @@ function createMeshResource(): Promise<MeshResource> {
     { r: 1, g: 1, b: 1, a: 1 },
     { r: 0, g: 0, b: 0, a: 1 }
   ];
-  // Load image resources. The path and file name can be customized based on the specific project resources.
+  // Create the mesh resource. The path and file name can be customized based on the actual project resources.
   let sceneResourceParameter: SceneResourceParameters = {
     name: "cubeMesh",
     uri: $rawfile("image/Cube_BaseColor.png")
@@ -321,7 +365,7 @@ function createSamplerResource(): Promise<Sampler> {
     return Promise.reject(new Error("RenderContext is null"));
   }
   const renderResourceFactory: RenderResourceFactory = renderContext.getRenderResourceFactory();
-  // Load image resources. The path and file name can be customized based on the specific project resources.
+  // Create a sampler resource. The path and file name can be customized based on the actual project resources.
   let samplerParams: SceneResourceParameters = {
     name: "sampler1",
     uri: $rawfile("image/Cube_BaseColor.png")
@@ -433,9 +477,9 @@ function createCameraPromise(): Promise<Camera> {
       // Create a camera.
       let camera: Camera = await sceneFactory.createCamera(sceneCameraParameter);
       resolve(camera);
-    }).catch((error: Error) => {
-      console.error('Scene load failed:', error);
-      reject(error);
+    }).catch((err: Error) => {
+      console.error(`Failed to load scene. Message: ${err.message}`);
+      reject(err);
     });
   });
 }
@@ -479,9 +523,9 @@ function createCameraPromise(): Promise<Camera> {
       // Create a camera.
       let camera: Camera = await sceneFactory.createCamera(nodeParameter, camParameter);
       resolve(camera);
-    }).catch((error: Error) => {
-      console.error('Scene load failed:', error);
-      reject(error);
+    }).catch((err: Error) => {
+      console.error(`Failed to load scene. Message: ${err.message}`);
+      reject(err);
     });
   });
 }
@@ -523,9 +567,9 @@ function createLightPromise() : Promise<Light> {
       // Create directional light.
       let light: Light = await sceneFactory.createLight(sceneLightParameter, LightType.DIRECTIONAL);
       resolve(light);
-    }).catch((error: Error) => {
-      console.error('Scene load failed:', error);
-      reject(error);
+    }).catch((err: Error) => {
+      console.error(`Failed to load scene. Message: ${err.message}`);
+      reject(err);
     });
   });
 }
@@ -567,9 +611,9 @@ function createNodePromise(): Promise<Node> {
       // Create a node.
       let node: Node = await sceneFactory.createNode(sceneNodeParameter);
       resolve(node);
-    }).catch((error: Error) => {
-      console.error('Scene load failed:', error);
-      reject(error);
+    }).catch((err: Error) => {
+      console.error(`Failed to load scene. Message: ${err.message}`);
+      reject(err);
     });
   });
 }
@@ -611,9 +655,9 @@ function createMaterialPromise() : Promise<Material> {
       // Create a material.
       let material: Material = await sceneFactory.createMaterial(sceneMaterialParameter, MaterialType.SHADER);
       resolve(material);
-    }).catch((error: Error) => {
-      console.error('Scene load failed:', error);
-      reject(error);
+    }).catch((err: Error) => {
+      console.error(`Failed to load scene. Message: ${err.message}`);
+      reject(err);
     });
   });
 }
@@ -655,9 +699,9 @@ function createEnvironmentPromise(): Promise<Environment> {
       // Create an environment.
       let env: Environment = await sceneFactory.createEnvironment(sceneEnvironmentParameter);
       resolve(env);
-    }).catch((error: Error) => {
-      console.error('Scene load failed:', error);
-      reject(error);
+    }).catch((err: Error) => {
+      console.error(`Failed to load scene. Message: ${err.message}`);
+      reject(err);
     });
   });
 }
@@ -706,9 +750,9 @@ function createGeometryPromise() : Promise<Geometry> {
       // Create a geometry object based on the scene node parameters and mesh resource.
       let geometry: Geometry = await sceneFactory.createGeometry({ name: "GeometryName" }, meshRes);
       resolve(geometry);
-    }).catch((error: Error) => {
-      console.error('Scene load failed:', error);
-      reject(error);
+    }).catch((err: Error) => {
+      console.error(`Failed to load scene. Message: ${err.message}`);
+      reject(err);
     });
   });
 }
@@ -748,12 +792,12 @@ function createEffect() : Promise<Effect> {
       }
       let sceneFactory: SceneResourceFactory = result.getResourceFactory();
       // Effect ID, which is in the format of 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', for example, 'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'.
-      let params: EffectParameters = {effectId: "e68a7f45-2d21-4a0d-9aef-7d9c825d3f12"}
+      let params: EffectParameters = {effectId: "e68a7f45-2d21-4a0d-9aef-7d9c825d3f12"};
       let effect: Effect = await sceneFactory.createEffect(params);
       resolve(effect);
-    }).catch((error: Error) => {
-      console.error('Scene load failed:', error);
-      reject(error);
+    }).catch((err: Error) => {
+      console.error(`Failed to load scene. Message: ${err.message}`);
+      reject(err);
     });
   });
 }
@@ -767,8 +811,8 @@ Represents a basic scene component, which is used to describe the component info
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| name | string | No| No| Name of the scene component, which is customizable.|
-| property | Record<string, string \| number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource-1) \| boolean \| number[] \| string[] \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource-1)[] \| [Vec2](js-apis-inner-scene-types.md#vec2)[] \| [Vec3](js-apis-inner-scene-types.md#vec3)[] \| [Vec4](js-apis-inner-scene-types.md#vec4)[] \| null \| undefined> | Yes| No| A set of component properties stored in key-value pairs. It supports multiple basic and complex types to describe various properties of the scene component. The unit and value range depend on the specific scene component.|
+| name | string | No | No | Name of the scene component, which is customizable. |
+| property | Record<string, string \| number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource) \| boolean \| number[] \| string[] \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource)[] \| [Vec2](js-apis-inner-scene-types.md#vec2)[] \| [Vec3](js-apis-inner-scene-types.md#vec3)[] \| [Vec4](js-apis-inner-scene-types.md#vec4)[] \| null \| undefined> | Yes | No | A set of component properties stored in key-value pairs. It supports various basic and complex types to describe various properties of the scene component. The unit and value range depend on the specific scene component. |
 
 ## RenderContext<sup>20+</sup>
 
@@ -796,7 +840,7 @@ import { Scene, RenderContext, RenderResourceFactory } from '@kit.ArkGraphics3D'
 function getRenderResourceFactory(): void {
   const renderContext: RenderContext | null = Scene.getDefaultRenderContext();
   if (!renderContext) {
-    console.error("RenderContext is null");
+    console.error("Failed to get default render context");
     return;
   }
   const renderResourceFactory: RenderResourceFactory = renderContext.getRenderResourceFactory();
@@ -832,7 +876,7 @@ import { Scene, RenderContext } from '@kit.ArkGraphics3D';
 function loadPlugin(): Promise<boolean> {
   const renderContext: RenderContext | null = Scene.getDefaultRenderContext();
   if (!renderContext) {
-    console.error("RenderContext is null");
+    console.error("Failed to get default render context");
     return Promise.reject(new Error("RenderContext is null"));
   }
   return renderContext.loadPlugin("pluginName");
@@ -871,7 +915,7 @@ function registerResourcePath(): void {
     .then(() => {
       const renderContext: RenderContext | null = Scene.getDefaultRenderContext();
       if (!renderContext) {
-        console.error("RenderContext is null");
+        console.error("Failed to get default render context");
         return false;
       }
       // Register the path retrieval name "myproto" and its corresponding asset path directory "OhosRawFile://shaders/custom_shader/".
@@ -882,13 +926,42 @@ function registerResourcePath(): void {
     })
     .then(result => {
       if (result) {
-        console.info("resource path registration success");
+        console.info("Succeeded in registering resource path");
       } else {
-        console.error("resource path registration failed");
+        console.error("Failed to register resource path");
       }
     });
 }
 ```
+
+## SoftShadowConfig
+
+Abstract base class for soft shadow configuration, which controls the algorithm type and parameter configuration of shadow rendering.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+| Name | Type | Read-Only | Optional | Description |
+| ---- | ---- | ---- | ---- | ---- |
+| shadowAlgorithmType | [ShadowAlgorithmType](js-apis-inner-scene-types.md#shadowalgorithmtype) | Yes | No | Enum value of the shadow algorithm. |
+
+## PCFConfig
+
+Defines the PCF (Percentage Closer Filtering) soft shadow configuration class, which inherits from [SoftShadowConfig](#softshadowconfig).
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+| Name | Type | Read-Only | Optional | Description |
+| ---- | ---- | ---- | ---- | ---- |
+| shadowSampleRadius | number \| undefined | No | Yes | Sampling radius, which determines the blur range of the shadow edge. A larger radius produces a softer shadow edge. An excessively large sampling radius causes the shadow to be overly blurred and lose its shape characteristics.<br>The default value is **5.0**.<br>Value range: >= 0.<br>- If this parameter is set to **0**, PCF sampling is not performed and no shadow effect is produced.<br>- If this parameter is set to **undefined**, the default value **5.0** is restored for rendering. |
+| shadowSampleCount | number \| undefined | No | Yes | Number of samples, which determines how many times the shadow map is sampled per pixel. A larger number produces higher shadow quality but incurs greater performance overhead.<br>The default value is **16**.<br>Value range: 0 to 64.<br>- A value beyond this range is automatically clamped to the nearest valid boundary value (for example, 65 is processed as 64).<br>- If this parameter is set to **0**, PCF sampling is not performed and no shadow effect is produced.<br>- If this parameter is set to **undefined**, the default value **16** is restored for rendering. |
 
 ## RenderConfiguration<sup>23+</sup>
 
@@ -899,6 +972,7 @@ Describes the rendering configuration.
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | shadowResolution| [Vec2](js-apis-inner-scene-types.md#vec2) | No| Yes| Global shadow map resolution, in pixels (px). The default value is **undefined**, indicating that the shadow map resolution is set to 1024 * 1024. The value must be greater than 0 for the parameter to take effect. If the input value is a floating-point number, it will be truncated to an integer; if the input value is less than or equal to 0, the input will be ignored, and the original configuration will be retained.|
+| softShadowConfig | [SoftShadowConfig](#softshadowconfig) | No | Yes | Soft shadow configuration parameters, used to control the algorithm type and specific configuration for shadow rendering.<br>When the value is undefined or this parameter is not set, the default hard shadow algorithm (without shadow softening) is used.<br>When a valid SoftShadowConfig object (such as PCFConfig) is set, the corresponding soft shadow algorithm is enabled.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
 
 ## RenderParameters<sup>15+</sup>
 
@@ -912,7 +986,7 @@ Describes the rendering parameters.
 
 ## Scene
 
-Describes a scene.
+Used to set the scene. The scene organizes scene nodes in a tree-like hierarchical structure, with the root node serving as the entry point of the scene.
 
 ### Properties
 
@@ -929,7 +1003,7 @@ Describes a scene.
 
 static load(uri?: ResourceStr): Promise\<Scene>
 
-Loads a resource by path. This API uses a promise to return the result.
+Loads resources through the passed resource path. This API uses a promise to return the result. After the call, you should call [destroy](#destroy) to release resources when the Scene is no longer used; otherwise, resource leakage may occur.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -948,6 +1022,7 @@ Loads a resource by path. This API uses a promise to return the result.
 **Example**
 
 Example 1: Load resources via rawfile (a relative path).
+
 ```ts
 import { Scene } from '@kit.ArkGraphics3D';
 
@@ -961,6 +1036,7 @@ function loadModel(): void {
 ```
 
 Example 2: Load via an absolute path (from /data/storage/el2/base/files in the application sandbox directory).
+
 ```ts
 import { common } from '@kit.AbilityKit';
 import { fileIo } from '@kit.CoreFileKit';
@@ -985,8 +1061,8 @@ async function loadModelFromAbsolutePath(context: common.UIAbilityContext): Prom
   // Load the model using the absolute path.
   Scene.load(load_uri).then((scene: Scene) => {
     // Handle the loaded scene.
-  }).catch((error: string) => {
-    console.error('Scene load failed: ' + error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -1004,7 +1080,7 @@ Obtains a node by path.
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
 | path | string | Yes| Path in the scene node tree. Each layer is separated by a slash (/).|
-| type | [NodeType](js-apis-inner-scene-nodes.md#nodetype) | No| Expected type of the node to be returned. The default value is null.|
+| type | [NodeType](js-apis-inner-scene-nodes.md#nodetype) | No | Expected node type. Pass this parameter when you need to ensure that a node of a specific type is returned. If this parameter is not passed, the first node found on the path is returned (without type restriction). The default value is empty. |
 
 **Return value**
 
@@ -1164,7 +1240,7 @@ function ImportSceneTest() {
       return;
     }
     // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
-    let content = await result.getResourceFactory().createScene($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.glb"))
+    let content = await result.getResourceFactory().createScene($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.glb"));
     console.info("TEST ImportSceneTest");
     result.importScene("helmet", content, null);
   });
@@ -1240,14 +1316,14 @@ function createComponentTest(): Promise<SceneComponent> {
   return Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.glb"))
     .then(scene => {
       if (!scene) {
-        return Promise.reject(new Error("Scene load failed"));
+        return Promise.reject(new Error("Failed to load scene"));
       }
       // RenderConfigurationComponent is an internal component of the engine. You do not need to install plugins when creating the component.
       return scene.createComponent(scene.root, "RenderConfigurationComponent");
     })
     .then(component => {
       if (!component) {
-        return Promise.reject(new Error("createComponent failed"));
+        return Promise.reject(new Error("Failed to create component"));
       }
       return component;
     });
@@ -1285,15 +1361,15 @@ function getComponentTest() {
   Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.glb"))
     .then(async (result: Scene | undefined) => {
       if (!result) {
-        console.error("Scene load failed");
+        console.error("Failed to load scene");
         return;
       }
       console.info("TEST getComponentTest");
       let component = result.getComponent(result.root, "myComponent");
       if (component) {
-        console.info("getComponent success");
+        console.info("Succeeded in getting component");
       } else {
-        console.warn("Component not found");
+        console.error("Failed to get component");
       }
     });
 }
@@ -1303,7 +1379,7 @@ function getComponentTest() {
 
 static getDefaultRenderContext(): RenderContext | null
 
-Obtains the rendering context associated with the current graphics object.
+Gets the render context associated with the current graphics object.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -1322,9 +1398,9 @@ function getDefaultRenderContextTest() {
   console.info("TEST getDefaultRenderContextTest");
   const renderContext: RenderContext | null = Scene.getDefaultRenderContext();
   if (renderContext) {
-    console.info("getDefaultRenderContext success");
+    console.info("Succeeded in getting default render context");
   } else {
-    console.error("RenderContext is null");
+    console.error("Failed to get default render context");
   }
 }
 ```
@@ -1365,9 +1441,9 @@ function CloneNode() {
       let name = "cloneNode_";
       let clone = result.cloneNode(node, parent, name);
       if (clone) {
-        console.info("cloneNode success");
+        console.info("Succeeded in cloning node");
       } else {
-        console.error("cloneNode failed");
+        console.error("Failed to clone node");
       }
     });
 }

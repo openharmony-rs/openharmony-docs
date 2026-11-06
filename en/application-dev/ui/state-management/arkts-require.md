@@ -2,11 +2,12 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @VictorS67-->
-<!--Designer: @lixingchi1-->
+<!--Designer: @VictorS67-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=843d6fa3247ca83eb1fb22363d3e4b77bc027d58 translatedAt=2026-09-21T11:35:07.262Z pushedAt=2026-09-23T09:18:35.576Z -->
 
-The \@Require decorator is used to declare that specific parameters – either regular variables (not decorated by any other decorator) or variables decorated with \@Prop, \@State, \@Provide, \@BuilderParam, or \@Param – must be passed in to the constructor.
+[\@Require](../../reference/apis-arkui/arkui-ts/ts-universal-require-dynamic.md#require) is a decorator that validates whether \@Prop, \@State, \@Provide, \@BuilderParam, \@Param, and regular variables (variables without stateless decorator modification) require constructor parameter passing.
 
 > **NOTE**
 >
@@ -30,7 +31,7 @@ For details about the usage in DevEco Studio Previewer, see [PreviewChecker Insp
 
 ## Use Cases
 
-When the \@Require decorator is used together with a regular variable or a variable decorated with \@Prop, \@State, \@Provide, \@BuilderParam, or \@Param in a child component, the parent component (for example, **SceneRequire**) must pass in the variable for constructing the child component. Failure to do so will result in a compilation error.
+When the \@Require decorator is used in combination with \@Prop, \@State, \@Provide, \@BuilderParam, and an ordinary variable (a variable without state decorators) in the Child component, the parent component SceneRequire must pass in the parameter when constructing Child. Otherwise, compilation fails.
 
 <!-- @[scene_require_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/SceneRequire.ets) -->
 
@@ -90,7 +91,7 @@ struct Child {
 ```
 
 
-The **ChildPage** component customized using [\@ComponentV2](./arkts-create-custom-components.md#componentv2) is initialized using the **ParentPage** component. Because \@Require is used to decorate \@Param, the parent component must be constructed and assigned a value.
+The **ChildPage** custom component decorated with [\@ComponentV2](./arkts-create-custom-components.md#componentv2) is initialized using the **ParentPage** component. Because \@Require is used to decorate \@Param, the parent component must assign a value to it during construction.
 
 <!-- @[parent_require_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/ParentPage.ets) -->
 
@@ -156,7 +157,7 @@ struct ParentPage {
 ```
 ![](figures/arkts-require-1.gif)
 
-Since API version 18, \@Require can decorate state variables decorated with \@State, \@Prop, or \@Provide) without requiring a local initial value. These variables can be used directly in the component without compilation errors.
+Since API version 18, \@Require can decorate state variables decorated with \@State, \@Prop, or \@Provide without requiring a local initial value. These variables can be used directly in the component without compilation errors.
 
 <!-- @[page_one_require_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/PageOne.ets) -->
 

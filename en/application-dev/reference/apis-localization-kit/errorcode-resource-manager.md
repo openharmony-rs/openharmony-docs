@@ -19,17 +19,17 @@ Invalid resource ID.
 
 **Description**
 
-This error code is reported if the specified resId meets the type requirement but the **resId** does not exist.
+Invalid resource ID.
 
 **Possible Causes**
 
-The specified **resId** does not exist.
+1. The input resource ID is invalid, for example, **-1**.
+2. The input resource ID does not exist in the current HAP/HSP.
 
 **Solution**
 
-1. Check for any of the following cases: [HAR with obfuscation enabled](../../quick-start/har-package.md#building-a-har), intermediate-code HAR, bytecode HAR, and cross-HAP/HSP. In these cases, you are advised to use APIs such as [getStringByName()](js-apis-resource-manager.md#getstringbyname9) to obtain resources by name.
-
-2. Check whether the specified **resId** exists. 
+1. Check for any of the following cases: HAR with [obfuscation](../../quick-start/har-package.md#configuring-obfuscation) enabled, intermediate-code HAR, bytecode HAR, and cross-HAP/HSP. When the resource ID **-1** is obtained through **$r('app.xxx.xxx').id** in the following cases, you are advised to use APIs such as [getStringByName()](js-apis-resource-manager.md#getstringbyname9) to obtain resources by name.
+2. Check whether the input resource ID exists in the HAP/HSP. You can refer to the dump command of the [restool tool](../../tools/restool.md) to output the HAP/HSP resource information, and then search for the input resource ID in the output results.
 
 ## 9001002 Matching Resource Not Found Based on the Specified Resource ID
 
@@ -39,17 +39,19 @@ No matching resource is found based on the resource ID.
 
 **Description**
 
-This error code is reported if the specified **resId** meets the type requirement but no resource is found based on the **resId**.
+No matching resource is found based on the specified resource ID.
 
 **Possible Causes**
 
-1. The specified **resId** is incorrect.
-
-2. An error occurs during resource parsing.
+1. The passed resource ID is incorrect.
+2. The resource type corresponding to the passed resource ID does not match the type of the currently called API. For example, if you want to obtain a string resource, the API called is **getStringSync**, but the passed resource ID is **$r('app.integer.xxx').id**. The two types do not match.
+3. The resource reference fails to parse because the current resource references a resource that does not exist.
 
 **Solution**
 
-Check whether the specified **resId** is correct.
+1. Check whether the passed resource ID is correct.
+2. Check whether the resource type corresponding to the passed resource ID matches the type of the called API.
+3. Check whether the resource corresponding to the passed resource ID references a resource that does not exist.
 
 ## 9001003 Invalid Resource Name
 
@@ -59,15 +61,15 @@ Invalid resource name.
 
 **Description**
 
-This error code is reported if the specified **resName** meets the type requirement but the **resName** does not exist.
+The resource name is invalid.
 
 **Possible Causes**
 
-The specified **resName** does not exist.
+The input resource name does not exist in the current HAP/HSP.
 
 **Solution**
 
-Check whether the specified **resName** is correct.
+Check whether the input resource name exists in the HAP/HSP. You can refer to the dump command of the [restool tool](../../tools/restool.md) to output the HAP/HSP resource information, and then search for the input resource name in the output results.
 
 ## 9001004 Matching Resource Not Found Based on the Specified Resource Name
 
@@ -77,17 +79,19 @@ No matching resource is found based on the resource name.
 
 **Description**
 
-This error code is reported if the specified resId meets the type requirement but no resource is found based on the **resId**.
+No matching resource is found based on the specified resource name.
 
 **Possible Causes**
 
-1. The specified **resName** is incorrect.
-
-2. An error occurs during resource parsing.
+1. The specified resource name is incorrect.
+2. The resource type corresponding to the specified resource name does not match the type of the currently called API. For example, if you want to obtain a string resource, the API called is **getStringByName**, but the specified resource name is the name of an integer resource. The two types do not match.
+3. The resource reference fails to parse because the current resource references a resource that does not exist.
 
 **Solution**
 
-Check whether the specified **resName** is correct.
+1. Check whether the passed resource name is correct.
+2. Check whether the resource type corresponding to the passed resource name matches the type of the called API.
+3. Check whether the resource corresponding to the passed resource name references a resource that does not exist.
 
 ## 9001005 Invalid Relative Path
 
@@ -97,17 +101,17 @@ Invalid relative path.
 
 **Description**
 
-This error code is reported if no resource is found based on the specified relative path.
+The relative path is invalid.
 
 **Possible Causes**
 
-The specified relative path is incorrect.
+The passed relative path of the **rawfile** resource is incorrect and is inconsistent with the actual relative path of the **rawfile** resource.
 
 **Solution**
 
-Check whether the specified relative path is correct.
+Check whether the passed relative path of the **rawfile** resource is correct.
 
-## 9001006 Cyclic Reference
+## 9001006 Resource Referenced Cyclically
 
 **Error Message**
 
@@ -115,17 +119,17 @@ The resource is referenced cyclically.
 
 **Description**
 
-This error code is reported if resources are referenced cyclically.
+The resource is referenced cyclically.
 
 **Possible Causes**
 
-Resources are referenced cyclically.
+The resource is referenced cyclically. As a result, the number of parsing times exceeds 20.
 
 **Solution**
 
-Check the reference of resource $, and remove the cyclic reference, if any.
+Check whether cyclic reference exists when other resources are referenced using methods such as **$string:xxx** and **$integer:xxx**.
 
-## 9001007 Failed to Format the Resource Obtained Based on resId
+## 9001007 Failed to Format the Resource Obtained Based on the Current ID
 
 **Error Message**
 
@@ -133,43 +137,43 @@ Failed to format the resource obtained based on the resource ID.
 
 **Description**
 
-This error code is reported in the case of a failure to format the string resource obtained based on **resId**.
+The resource obtained based on the current ID fails to be formatted.
 
 **Possible Causes**
 
-1. The parameter type is not supported.
-
-2. The numbers of parameters and placeholders are inconsistent.
-
-3. The parameter does not match the placeholder type.
+1. The type of the formatting parameter is not supported.
+2. The number of formatting parameters is inconsistent with the number of placeholders.
+3. The type of the formatting parameter does not match the placeholder type.
 
 **Solution**
 
-Check whether the number and type of **args** parameters are the same as those of placeholders.
+1. Check whether the type of the formatting parameter is supported.
+2. Check whether the number of formatting parameters is consistent with the number of placeholders.
+3. Check whether the type of the formatting parameter is consistent with the type of the placeholder.
 
 ## 9001008 Failed to Format the Resource Obtained Based on resName
 
 **Error Message**
 
-Failed to format the resource obtained based on the resource Name.
+Failed to format the resource obtained based on the resource name.
 
 **Description**
 
-This error code is reported in the case of a failure to format the string resource obtained based on **resName**.
+The resource obtained based on the current name fails to be formatted.
 
 **Possible Causes**
 
-1. The parameter type is not supported.
-
-2. The numbers of parameters and placeholders are inconsistent.
-
-3. The parameter does not match the placeholder type.
+1. The type of the formatting parameter is not supported.
+2. The number of formatting parameters is inconsistent with the number of placeholders.
+3. The type of the formatting parameter does not match the placeholder type.
 
 **Solution**
 
-Check whether the number and type of **args** parameters are the same as those of placeholders.
+1. Check whether the type of the formatting parameter is supported.
+2. Check whether the number of formatting parameters is consistent with the number of placeholders.
+3. Check whether the type of the formatting parameter is consistent with the type of the placeholder.
 
-## 9001009 Failed to Obtain a ResourceManager Object
+## 9001009 Failed to Obtain a Resource Manager Object
 
 **Error Message**
 
@@ -177,7 +181,7 @@ Failed to access the system resource.
 
 **Description**
 
-This error code is reported in the case of a failure to obtain a ResourceManager object.
+A Resource Manager Object fails to be obtained.
 
 **Possible Causes**
 
@@ -185,7 +189,7 @@ System resources are not loaded to the sandbox path of the application process.
 
 **Solution**
 
-Check whether the application process contains the sandbox path of system resources.
+Check whether the [app sandbox directory](../../../application-dev/file-management/app-sandbox-directory.md) of the application process contains system resources.
 
 ## 9001010 Invalid Overlay Path
 
@@ -195,12 +199,14 @@ Invalid overlay path.
 
 **Description**
 
-This error code is reported if the specified overlay path is invalid.
+The overlay path is invalid.
 
 **Possible Causes**
 
-The path does not exist or is not in the installation path of the application.
+1. The input overlay path does not exist.
+2. The current app does not have the access permission on the input overlay path. For example, the path is not in the installation path of the current app or any other accessible path.
 
 **Solution**
 
-Check the location of the specified overlay path.
+1. Check whether the overlay path is correct.
+2. Check whether the [app sandbox directory](../../../application-dev/file-management/app-sandbox-directory.md) of the application process contains the input overlay path.

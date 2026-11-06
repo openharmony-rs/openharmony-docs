@@ -428,7 +428,7 @@ Before change: When **showInSubWindow** is set to **true**, the mask of the **\<
 
 After change: The mask of the **\<CustomDialog>** component covers the entire application window regardless of whether **showInSubWindow** is **true** or **false**.
 
-![en-us_image_alert_showinsubwindow](figures/en-us_image_alert_showinsubwindow.jpg)
+![image-alert-showinsubwindow](figures/image-alert-showinsubwindow.jpg)
 
 **API Level**
 

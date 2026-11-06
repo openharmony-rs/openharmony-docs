@@ -1,10 +1,18 @@
-# 使用JSVM-API接口进行private相关开发
-<!--Kit: NDK Development-->
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何使用JSVM-API创建private key并在JavaScript对象上设置、获取和删除private属性，结合数据引用持久化保存private key。"
+keywords: [OH_JSVM_CreatePrivate, OH_JSVM_SetPrivate, OH_JSVM_GetPrivate, OH_JSVM_DeletePrivate, OH_JSVM_CreateDataReference, OH_JSVM_GetReferenceData, private属性, private key]
+doctype: guide
+status: active
+---
+
+# 使用JSVM-API接口进行 private 属性相关开发
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -19,7 +27,7 @@ JSVM-API提供创建private key的能力，并支持在对象上使用该key进�
 | 接口                                    | 功能说明                       |
 |----------------------------------------|--------------------------------|
 | OH_JSVM_CreateDataReference            | 在JSVM中创建一个带有指定引用计数的数据引用。 |
-| OH_JSVM_GetReferenceData               | 检查指定的引用是否有效, 返回该引用关联的JavaScript数据, 无效result设置为NULL。|
+| OH_JSVM_GetReferenceData               | 检查指定的引用是否有效，返回该引用关联的JavaScript数据，无效result设置为NULL。|
 | OH_JSVM_CreatePrivate                  | 创建一个js private key对象。   |
 | OH_JSVM_SetPrivate                     | 为传入的object设置一个private属性。   |
 | OH_JSVM_GetPrivate                     | 获取传入的object中private key对应的private属性。   |
@@ -31,7 +39,7 @@ JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开�
 
 ### 使用接口创建 private key 并添加对应 private property，随后删除
 
-cpp部分代码
+cpp部分代码：
 
 ```cpp
 static JSVM_Value privateTest(JSVM_Env env, JSVM_CallbackInfo info) {
@@ -86,7 +94,7 @@ static JSVM_CallbackStruct param[] = {
 
 static JSVM_CallbackStruct *method = param;
 
-// wrapperObject方法别名，供JS调用
+// privateTest方法别名，供JS调用
 static JSVM_PropertyDescriptor descriptor[] = {
     {"privateTest", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };

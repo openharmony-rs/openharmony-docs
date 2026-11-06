@@ -5,7 +5,8 @@
 <!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=2041fbedbdac475325c766ada1b1f6cc4b3c8b40 translatedAt=2026-11-03T03:28:03.633Z pushedAt=2026-11-03T06:04:35.301Z nl=1 -->
 
 The **reminderAgent** module provides APIs for publishing scheduled reminders through the reminder agent.
 
@@ -21,7 +22,7 @@ You can use the APIs to create scheduled reminders for countdown timers, calenda
 ## Modules to Import
 
 ```ts
-import reminderAgent from'@ohos.reminderAgent';
+import reminderAgent from '@ohos.reminderAgent';
 ```
 
 
@@ -48,6 +49,7 @@ Publishes a reminder through the reminder agent. This API uses an asynchronous c
 **Example**
 ```ts
 import { BusinessError } from '@ohos.base';
+import reminderAgent from '@ohos.reminderAgent';
 
 let timer:reminderAgent.ReminderRequestTimer = {
   reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -85,6 +87,8 @@ Publishes a reminder through the reminder agent. This API uses a promise to retu
 
 **Example**
 ```ts
+import reminderAgent from '@ohos.reminderAgent';
+
 let timer:reminderAgent.ReminderRequestTimer = {
   reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
   triggerTimeInSeconds: 10
@@ -118,6 +122,7 @@ Cancels the reminder with the specified ID. This API uses an asynchronous callba
 
 ```ts
 import { BusinessError } from '@ohos.base';
+import reminderAgent from '@ohos.reminderAgent';
 
 reminderAgent.cancelReminder(1, (err: BusinessError, data: void) => {
   console.info("cancelReminder callback");
@@ -151,6 +156,8 @@ Cancels the reminder with the specified ID. This API uses a promise to return th
 **Example**
 
 ```ts
+import reminderAgent from '@ohos.reminderAgent';
+
 reminderAgent.cancelReminder(1).then(() => {
     console.info("cancelReminder promise");
 });
@@ -177,6 +184,7 @@ Obtains all valid (not yet expired) reminders set by the current application. Th
 
 ```ts
 import { BusinessError } from '@ohos.base';
+import reminderAgent from '@ohos.reminderAgent';
 
 reminderAgent.getValidReminders((err: BusinessError, reminders: Array<reminderAgent.ReminderRequest>) => {
   console.info("callback, getValidReminders length = " + reminders.length);
@@ -224,6 +232,8 @@ Obtains all valid (not yet expired) reminders set by the current application. Th
 **Example**
 
 ```ts
+import reminderAgent from '@ohos.reminderAgent';
+
 reminderAgent.getValidReminders().then((reminders: Array<reminderAgent.ReminderRequest>) => {
   console.info("promise, getValidReminders length = " + reminders.length);
   for (let i = 0; i < reminders.length; i++) {
@@ -247,7 +257,6 @@ reminderAgent.getValidReminders().then((reminders: Array<reminderAgent.ReminderR
     console.info("getValidReminders, slotType = " + reminders[i].slotType);
   }
 })
-
 ```
 
 
@@ -272,6 +281,7 @@ Cancels all reminders set by the current application. This API uses an asynchron
 
 ```ts
 import { BusinessError } from '@ohos.base';
+import reminderAgent from '@ohos.reminderAgent';
 
 reminderAgent.cancelAllReminders((err: BusinessError, data: void) =>{
   console.info("cancelAllReminders callback")
@@ -299,6 +309,8 @@ Cancels all reminders set by the current application. This API uses a promise to
 **Example**
 
 ```ts
+import reminderAgent from '@ohos.reminderAgent';
+
 reminderAgent.cancelAllReminders().then(() => {
     console.info("cancelAllReminders promise")
 })
@@ -325,10 +337,12 @@ Adds a notification slot. This API uses an asynchronous callback to return the r
 **Example**
 
 ```ts
-import notification from '@ohos.notificationManager'
 import { BusinessError } from '@ohos.base';
+import notification from '@ohos.notification';
+import reminderAgent from '@ohos.reminderAgent';
+import { NotificationSlot } from './notification/notificationSlot';
 
-let mySlot:notification.NotificationSlot = {
+let mySlot:NotificationSlot = {
   type: notification.SlotType.SOCIAL_COMMUNICATION
 }
 reminderAgent.addNotificationSlot(mySlot, (err: BusinessError, data: void) => {
@@ -363,9 +377,11 @@ Adds a notification slot. This API uses a promise to return the result.
 **Example**
 
 ```ts
-import notification from '@ohos.notificationManager'
+import notification from '@ohos.notification';
+import reminderAgent from '@ohos.reminderAgent';
+import { NotificationSlot } from './notification/notificationSlot';
 
-let mySlot:notification.NotificationSlot = {
+let mySlot:NotificationSlot = {
   type: notification.SlotType.SOCIAL_COMMUNICATION
 }
 reminderAgent.addNotificationSlot(mySlot).then(() => {
@@ -395,8 +411,9 @@ Removes a notification slot of a specified type. This API uses an asynchronous c
 **Example**
 
 ```ts
-import notification from '@ohos.notification'
 import { BusinessError } from '@ohos.base';
+import notification from '@ohos.notification';
+import reminderAgent from '@ohos.reminderAgent';
 
 reminderAgent.removeNotificationSlot(notification.SlotType.CONTENT_INFORMATION, (err: BusinessError, data: void) => {
   console.info("removeNotificationSlot callback");
@@ -430,10 +447,11 @@ Removes a notification slot of a specified type. This API uses a promise to retu
 **Example**
 
 ```ts
-import notification from '@ohos.notification'
+import notification from '@ohos.notification';
+import reminderAgent from '@ohos.reminderAgent';
 
 reminderAgent.removeNotificationSlot(notification.SlotType.CONTENT_INFORMATION).then(() => {
-    console.info("removeNotificationSlot promise");
+  console.info("removeNotificationSlot promise");
 });
 ```
 
@@ -529,9 +547,9 @@ Defines the reminder to publish.
 | actionButton | [[ActionButton](#actionbuttondeprecated)?, [ActionButton](#actionbuttondeprecated)?] | No| Yes| Button displayed in the reminder notification. (The parameter is optional. Up to two buttons are supported.)|
 | wantAgent | WantAgent | No| Yes| Information about the ability that is redirected to when the notification is clicked.|
 | maxScreenWantAgent | [MaxScreenWantAgent](#maxscreenwantagentdeprecated) | No| Yes| Information about the ability that is automatically started when the reminder arrives. If the device is in use, a notification will be displayed.|
-| ringDuration | number | No| Yes| Ringing duration, in seconds. The default value is **1**.|
+| ringDuration | number | No| Yes| Ringing duration,<br> in seconds. The default value is **1**.|
 | snoozeTimes | number | No| Yes| Number of reminder snooze times. The default value is **0**.|
-| timeInterval | number | No| Yes| Reminder snooze interval, in seconds. The default value is **0**.|
+| timeInterval | number | No| Yes| Reminder snooze interval,<br> in seconds. The default value is **0**.|
 | title | string | No| Yes| Reminder title.|
 | content | string | No| Yes| Reminder content.|
 | expiredContent | string | No| Yes| Content to be displayed after the reminder expires.|
@@ -571,7 +589,7 @@ Defines a reminder for an alarm.
 | -------- | -------- | -------- | -------- | -------- |
 | hour | number | No| No| Hour portion of the reminder time.|
 | minute | number | No| No| Minute portion of the reminder time.|
-| daysOfWeek | Array\<number> | No| Yes| Days of a week when the reminder repeats. The value ranges from 1 to 7, corresponding to the data from Monday to Sunday.|
+| daysOfWeek | Array\<number> | No | Yes | Days of a week when the reminder repeats. The value ranges from 1 to 7, corresponding to the data from Monday to Sunday. |
 
 
 ## ReminderRequestTimer<sup>(deprecated)</sup>
@@ -585,7 +603,7 @@ Defines a reminder for a scheduled timer.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| triggerTimeInSeconds | number | No| No| Number of seconds in the countdown timer.|
+| triggerTimeInSeconds | number | No| No| Number of seconds in the countdown timer.<br> Unit: s|
 
 
 ## LocalDateTime<sup>(deprecated)</sup>

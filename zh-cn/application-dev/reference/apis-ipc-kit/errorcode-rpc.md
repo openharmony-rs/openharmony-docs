@@ -31,7 +31,7 @@ Failed to call mmap.
 
 **处理步骤**
 
-1. 请检查调用Ashmem::create()时是否指定了超大内存。
+1. 请检查调用Ashmem::create()时是否指定了超过系统限制的内存大小。
 2. 请检查执行映射时系统是否有足够的内存可用。
 
 ## 1900002 系统调用ioctl失败
@@ -71,7 +71,7 @@ Failed to write data to the shared memory.
 
 **处理步骤**
 
-1. 请检查当前从共享内存所读内容是否已经超过了映射的总大小。
+1. 请检查当前向共享内存写入的内容是否已经超过了映射的总大小。
 2. 请检查是否设置了PROT_WRITE保护权限。
 
 ## 1900004 共享内存读数据失败
@@ -91,7 +91,7 @@ Failed to read data from the shared memory.
 
 **处理步骤**
 
-1. 请检查当前向共享内存所写内容是否已经超过了映射的总大小。
+1. 请检查当前从共享内存读取的内容是否已经超过了映射的总大小。
 2. 请检查是否设置了PROT_READ保护权限。
 
 ## 1900005 IPC对象权限错误
@@ -102,7 +102,7 @@ Operation allowed only for the proxy object.
 
 **错误描述**
 
-只有proxy对象允许该操作。
+只有RemoteProxy对象允许该操作。
 
 **可能原因**
 
@@ -120,7 +120,7 @@ Operation allowed only for the remote object.
 
 **错误描述**
 
-只有remote对象允许该操作。
+只有RemoteObject对象允许该操作。
 
 **可能原因**
 
@@ -148,9 +148,9 @@ Communication failed.
 **处理步骤**
 
 1. 请检查远程对象是否已经销毁。
-2. 请检查是否注册了死亡监听，并且远程对象发生析构又重新创建。
+2. 请检查是否注册了死亡监听。如果远程对象被销毁后重新创建，需要重新获取代理对象并更新本地引用。
 
-## 1900008 非法的ipc对象
+## 1900008 非法的IPC对象
 
 **错误信息**
 
@@ -158,7 +158,7 @@ The proxy or remote object is invalid.
 
 **错误描述**
 
-非法的代理对象或者远程对象。
+无效的代理对象或远程对象。
 
 **可能原因**
 
@@ -182,7 +182,7 @@ Failed to write data to the message sequence.
 
 **可能原因**
 
-sequence默认空间已满。
+MessageSequence默认空间已满。
 
 **处理步骤**
 
@@ -196,7 +196,7 @@ Failed to read data from the message sequence.
 
 **错误描述**
 
-读取MessageSequence数据失败。
+读取MessageSequence数据失败。MessageSequence采用顺序读写方式，读取顺序必须与写入顺序严格一致。
 
 **可能原因**
 
@@ -259,5 +259,5 @@ Failed to call dup.
 
 **处理步骤**
 
-1. 请检查入参fd是否依然有效。
+1. 请检查入参fd是否依然有效（如：fd值大于等于0，且未被关闭）。
 2. 请排查进程是否已经耗尽了fd资源。

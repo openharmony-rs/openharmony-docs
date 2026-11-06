@@ -6,78 +6,17 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=22d130687c3a91de2076fddb8a881ccdd738adfc translatedAt=2026-11-02T07:57:47.876Z pushedAt=2026-11-03T01:38:29.970Z nl=1 -->
 
-You can use [mediatool](#mediatool-1) or [hdc commands](#hdc-commands) to operate media library resources. The media library provides and manages data for the gallery. Images and videos in the media library are displayed on the gallery screen.
+mediatool (media library resource access tool) is a lightweight command-line tool collection. It is a built-in system tool that requires no installation and is built into the `/bin` folder. You can use mediatool to operate media library resources.
 
-## mediatool
-
-mediatool is a lightweight command line tool set that built in the **/bin** folder. You can run the **hdc shell** command to invoke it.
-
-### Prerequisites
+## Prerequisites
 
 - The devices are properly connected.
 - **Developer options** is enabled in system settings.
 - The **hdc shell** command is executed to enter the command line execution mode.
 
-### mediatool send
-
-```shell
-mediatool send <path-to-local-media-file> [-ts] [-tas] [-rf] [-urf]
-```
-
-Sends images, audios, and videos in **\<path-to-local-media-file>** of the device to the media library for storage.  The original file names are used. If **\<path-to-local-media-file>** indicates a folder, all files in the folder are sent to the media library. After a file is successfully saved, the URI of the file is displayed.
-
-By default, a thumbnail is generated in synchronous mode when a media file is being saved to the media library, and the source file in **\<path-to-local-media-file>** is deleted once the saving process is complete.
-
-| Parameter              | Description            |
-| ---- |--------------- |
-| -ts | Creates a thumbnail in synchronous mode when an image or a video is being saved. The media file is displayed after the thumbnail is generated. However, the saving takes a longer time. This parameter is used by default.|
-| -tas | Creates a thumbnail in asynchronous mode when an image or a video is being saved. This parameter conflicts with **-ts**. The media file is displayed before the thumbnail is generated, and the saving takes a shorter time.|
-| -rf | Deletes the source file after a media file is saved. This parameter is used by default.|
-| -urf | Retains the source file after a media file is saved. This parameter conflicts with **-rf**.|
-
-**Example**
-
-```shell
-> mediatool send /data/tmp/MyImage.jpg
-file://media/Photo/3/IMG_1721381297_001/MyImage.jpg # The image is saved successfully, and the URI of the image is displayed.
-```
-
-### mediatool list
-
-```shell
-mediatool list <resource-uri>
-```
-
-Displays the information of a resource file specified by **\<resource-uri>** in the media library in CSV format.
-
-For example, if the URI of image A in the media library is **file://media/Photo/3/IMG_1721381297_001/MyImage.jpg**, you can run **mediatool list file://media/Photo/3** or **mediatool list file://media/Photo/3/IMG_1721381297_001/MyImage.jpg** to display the resource information.
-
-The following resource information is contained:
-
-- **uri**: URI of the media resource.
-- **display_name**: name of the media resource.
-- **data**: path of the source file of the media resource on the device.
-
-You can also set **\<resource-uri>** to **all**, which displays the information about all the resource files in the media library.
-
-**Example**
-
-```shell
-# Use a valid URI for query.
-> mediatool list file://media/Photo/3
-Table Name: Photos
-uri, display_name, data
-"file://media/Photo/3/IMG_1721381297_001/MyImage.jpg", "MyImage.jpg", "/storage/cloud/100/files/Photo/2/IMG_1721381297_001.jpg"
-
-# Use an invalid URI for query.
-> mediatool list file://media/Photo/
-[FAIL] uri invalid. uri:file://media/Photo/
-```
-
-<!--DelEnd-->
-
-### mediatool recv
+## mediatool recv
 
 ```shell
 mediatool recv <media-target> <dest-path>
@@ -130,7 +69,7 @@ Table Name: Photos
 Table Name: Audios
 ```
 
-### mediatool delete
+## mediatool delete
 
 ```shell
 mediatool delete <resource-uri>
@@ -151,7 +90,7 @@ If **\<resource-uri>** is set to **all**, all resource files in the media librar
 > mediatool delete all # No information is displayed when the delete all command is executed successfully.
 ```
 
-### mediatool query
+## mediatool query
 
 ```shell
 mediatool query <display-name> [-p] [-u]
@@ -197,7 +136,7 @@ uri
 "file://media/Photo/2/IMG_1721381297_001/MyImage.jpg"
 ```
 
-### mediatool ls -l
+## mediatool ls -l
 
 ```shell
 mediatool ls -l <media-path>
@@ -230,7 +169,7 @@ drwxrwx--x 2 user_data_rw user_data_rw 0 2025-05-29 05:59 8
 drwxrwx--x 2 user_data_rw user_data_rw 0 2025-05-29 06:00 9
 ```
 
-### Exporting a Specific Media Library Asset
+## Exporting a Specific Media Library Asset
 
 The following example shows how to export a JPG image named **MyImage** from Gallery.
 
@@ -275,7 +214,7 @@ Table Name: Photos
 FileTransfer finish, Size:10015455, File count = 1, time:679ms rate:14750.30kB/s
 ```
 
-### Exporting All Media Library Assets
+## Exporting All Media Library Assets
 
 ```shell
 > hdc shell mkdir /data/local/tmp/media
@@ -293,7 +232,7 @@ data/local/tmp/media/MyImage.jpg
 FileTransfer finish, Size:10017280, File count = 1, time:664ms rate:15086.27kB/s
 ```
 
-### Deleting a Specific Media Library Asset
+## Deleting a Specific Media Library Asset
 
 The following example shows how to delete a JPG image named **MyImage** from Gallery.
 
@@ -307,13 +246,13 @@ uri
 [SUCCESS] delete success.
 ```
 
-### Deleting All Media Library Databases
+## Deleting All Media Library Databases
 
 ```shell
 > hdc shell mediatool delete all
 ```
 
-### Media Library URI Introduction and Obtaining Method
+## Media Library URI Introduction and Obtaining Method
 
 The URI uniquely identifies a media library asset. mediatool uses the URI to determine the media asset object to be operated.
 
@@ -321,105 +260,10 @@ To obtain the URI, perform the following steps:
 
 * Add the **-u** option to **mediatool query** to return the URI of the corresponding media asset. You need to enter the display name of the corresponding asset (the name displayed in Gallery contains the extension).
 
-<!--Del-->
-
-* Run the **mediatool list all** command to obtain the URI list and display names of all media library assets.
-
-<!--DelEnd-->
-
 The media library URI can be used in the **mediatool recv** command to export a specific media library asset or in the **mediatool delete** command to delete a specific media library asset.
 
 Example URI: **file://media/Photo/1/IMG_1743078145_000/MyImage.jpg**.
 
-When the preceding URIs are used during mediatool operations, the target asset can be correctly located regardless of whether **file://media/Photo/1/IMG_1743078145_000/MyImage.jpg** or **file://media/Photo/1** is used.
+When the preceding URIs are used during mediatool operations, the target asset can be correctly located regardless of whether `file://media/Photo/1/IMG_1743078145_000/MyImage.jpg` or `file://media/Photo/1` is used.
 
-## hdc Commands
 
-Since API version 21, the hdc command can be used to access media library file paths, including the **/mnt/data/\<uid\>/media_fuse/Photo/** directory and its subdirectories. **\<uid\>** indicates the ID of the current user.
-
-### Querying Media Library Files
-
-Images and videos that are not hidden in a specified path can be queried.
-
-Run the following command:
-
-```shell
-hdc shell ls -l DEST
-```
-
-**Example**
-
-```shell
-$ hdc shell ls -l /mnt/data/100/media_fuse/Photo # Return the album list.
-drwxrwxrwx 2 user_data_rw user_data_rw 3440 1970-01-01 00:00 Others
-drwxrwxrwx 2 user_data_rw user_data_rw 3440 1970-01-01 00:00 Camera
-
-$ hdc shell ls -l /mnt/data/100/media_fuse/Photo/Camera # List all local images and videos that are not hidden in the camera folder.
-total 32813056
--rw-rw-rw- 1 user_data_rw user_data_rw 7085591 1970-01-01 00:00 1.jpg
--rw-rw-rw- 1 user_data_rw user_data_rw 6217442 1970-01-01 00:00 2.jpg
-
-$ hdc shell ls -l /mnt/data/100/media_fuse/Photo/Camera/1.jpg # Return the details about 1.jpg.
--rw-rw-rw- 1 user_data_rw user_data_rw 7085591 1970-01-01 00:00 /mnt/data/100/media_fuse/Photo/Camera/1.jpg
-```
-
-### Exporting Media Library Files
-
-You can export all local files and directories that are not hidden in a specified path.
-
-Run the following command:
-
-```shell
-hdc file recv DEST SOURCE
-```
-
-**Example**
-
-```shell
-$ hdc file recv /mnt/data/100/media_fuse/Photo/Camera/File A # Export file A.
-FileTransfer finish, Size:xxx, File...
-
-$ hdc file recv /mnt/data/100/media_fuse/Photo/Camera # Export the Camera directory and files in the directory.
-FileTransfer finish, Size:xxx, File...
-
-$ hdc file recv /mnt/data/100/media_fuse/Photo/ # Export the Photo directory and its subfiles.
-FileTransfer finish, Size:xxx, File...
-```
-
-### Importing Media Library Files
-
-You can import media files (such as images and videos) and directories, but cannot create directories. If the directory names are the same, the content is combined (all files with different names are retained). If the file names are the same, the target file is overwritten.
-
-```shell
-hdc file send SOURCE DEST
-```
-
-**Example**
-
-```shell
-$ hdc file send D:\dest\Camera/mnt/data/100/media_fuse/Photo/ # Import all files in D:\dest\Camera to /mnt/data/100/media_fuse/Photo/camera/.
-FileTransfer finish, Size:xxx, File...
-
-$ hdc file send D:\dest\New directory/mnt/data/100/media_fuse/Photo/Camera/ # Directory creation is not supported.
-[Fail][E005005] Error create directory: operation not permitted, path:/mnt/data/100/media_fuse/Photo/Camera//New directory
-
-$ hdc file send D:\dest\Camera\File A/mnt/data/100/media_fuse/Photo/Camera/ # Import file A to /mnt/data/100/media_fuse/Photo/Camera/.
-FileTransfer finish, Size:xxx, File...
-```
-
-### Deleting Media Library Files
-
-You can delete specified files in an album, but cannot delete directories.
-
-```shell
-hdc shell rm DEST
-```
-
-**Example**
-
-```shell
-$ hdc shell rm /mnt/data/100/media_fuse/Photo/Camera/ # Return failure.
-rm: /mnt/data/100/media_fuse/Photo/Camera: Is a directory
-
-$ hdc shell rm /mnt/data/100/media_fuse/Photo/Camera/File A # No information is returned, and the deletion is successful.
-```

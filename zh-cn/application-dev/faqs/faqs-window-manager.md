@@ -1,9 +1,9 @@
 # 窗口管理开发常见问题
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
-<!--Tester: @qinliwen0417-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @wulong158-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 ## 如何获取状态栏和导航栏高度(API 9)

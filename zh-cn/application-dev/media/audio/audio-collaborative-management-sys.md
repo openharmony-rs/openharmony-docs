@@ -43,7 +43,7 @@ try {
 
 - [AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)：用于指定音频设备。建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的AudioDeviceDescriptor。
 
-- enabled：布尔值类型，用于控制指定设备的移动全景声开关。入参为true时表示开启移动全景声，入参为false时表示关闭空间移动全景声。
+- enabled：布尔值类型，用于控制指定设备的移动全景声开关。入参为true时表示开启移动全景声，入参为false时表示关闭移动全景声。
 
 在开启移动全景声时，需要先确保系统和指定设备都具有移动全景声的能力。
 
@@ -55,7 +55,7 @@ let deviceDescriptor: audio.AudioDeviceDescriptor = {
   deviceType : audio.DeviceType.BLUETOOTH_A2DP,
   id : 1,
   name : "",
-  address : "123",
+  address : "00:11:22:33:FF:EE",
   sampleRates : [44100],
   channelCounts : [2],
   channelMasks : [0],
@@ -64,9 +64,10 @@ let deviceDescriptor: audio.AudioDeviceDescriptor = {
   volumeGroupId : 1,
   displayName : ""
 };
+// 此处deviceDescriptor仅为示例，实际应通过getDevices等接口获取真实设备描述符。
 let enabled: boolean = true;
 audioCollaborativeManager.setCollaborativePlaybackEnabledForDevice(deviceDescriptor, enabled).then(() => {
-  console.info(`setSpatializationEnabled success`);
+  console.info(`setCollaborativePlaybackEnabledForDevice successfully`);
 }).catch((err: BusinessError) => {
   console.error(`Result ERROR: ${err}`);
 });
@@ -76,7 +77,7 @@ audioCollaborativeManager.setCollaborativePlaybackEnabledForDevice(deviceDescrip
 
 系统应用开发者可以通过[isCollaborativePlaybackEnabledForDevice](../../reference/apis-audio-kit/js-apis-audio-sys.md#iscollaborativeplaybackenabledfordevice20)接口查询指定设备的移动全景声开关状态。使用AudioDeviceDescriptor作为入参来指定设备，建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的AudioDeviceDescriptor。
 
-该接口返回为true表示开启移动全景声，false表示关闭移动全景声。返回值为[setCollaborativePlaybackEnabledForDevice](../../reference/apis-audio-kit/js-apis-audio-sys.md#setcollaborativeplaybackenabledfordevice20)接口中成功设置的指定设备空间音频渲染开关状态，默认为关闭。该状态仅为开关状态，实际是否生效还需依赖系统和指定设备是否支持移动全景声能力。
+该接口返回为true表示开启移动全景声，false表示关闭移动全景声。返回值为[setCollaborativePlaybackEnabledForDevice](../../reference/apis-audio-kit/js-apis-audio-sys.md#setcollaborativeplaybackenabledfordevice20)接口中成功设置的指定设备的移动全景声开关状态，默认为关闭。该状态仅为开关状态，实际是否生效还需依赖系统和指定设备是否支持移动全景声能力。
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -86,7 +87,7 @@ let deviceDescriptor: audio.AudioDeviceDescriptor = {
   deviceType : audio.DeviceType.BLUETOOTH_A2DP,
   id : 1,
   name : "",
-  address : "123",
+  address : "00:11:22:33:FF:EE",
   sampleRates : [44100],
   channelCounts : [2],
   channelMasks : [0],
@@ -95,6 +96,7 @@ let deviceDescriptor: audio.AudioDeviceDescriptor = {
   volumeGroupId : 1,
   displayName : ""
 }
+// 此处deviceDescriptor仅为示例，实际应通过getDevices等接口获取真实设备描述符。
 try {
   let isCollaborativeEnabled: boolean = audioCollaborativeManager.isCollaborativePlaybackEnabledForDevice(deviceDescriptor);
   console.info(`AudioCollaborativeManager isCollaborativeEnabled: ${isCollaborativeEnabled}`);

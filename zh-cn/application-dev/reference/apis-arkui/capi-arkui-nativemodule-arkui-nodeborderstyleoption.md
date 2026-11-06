@@ -1,4 +1,4 @@
-# ArkUI_NodeBorderStyleOption
+# ArkUI_NodeBorderStyle
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
@@ -12,7 +12,7 @@ typedef struct ArkUI_NodeBorderStyle ArkUI_NodeBorderStyleOption
 
 ## 概述
 
-定义边框样式配置项。
+定义边框样式配置项，用于设置节点边框的样式类型，支持实线、虚线、点线等多种样式。
 
 **起始版本：** 20
 

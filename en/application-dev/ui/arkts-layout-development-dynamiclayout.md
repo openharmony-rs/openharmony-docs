@@ -8,7 +8,7 @@
 
 ## Overview
 
-Since API version 24, the [DynamicLayout](../reference/apis-arkui/arkui-ts/ts-container-dynamiclayout.md) component is supported. **DynamicLayout** supports dynamically switching between different layout algorithms at runtime without changing the status of child components. With **DynamicLayout**, you can flexibly implement multiple layout presentations for the same content in different scenarios. The **DynamicLayout** component supports the following layout algorithm classes: [RowLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm), [ColumnLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm), [StackLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm), [GridLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm), [StackLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm), [GridLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm), and custom layout algorithm class [CustomLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#customlayoutalgorithm).
+Since API version 24, the [DynamicLayout](../reference/apis-arkui/arkui-ts/ts-container-dynamiclayout.md) component is supported. **DynamicLayout** supports dynamically switching between different layout algorithms at runtime without changing the status of child components. With **DynamicLayout**, you can flexibly implement multiple layout presentations for the same content in different scenarios. The **DynamicLayout** component supports the following layout algorithm classes: [RowLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm), [ColumnLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm), [StackLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm), [GridLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm), and custom layout algorithm class [CustomLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#customlayoutalgorithm).
 
 ## Constraints
 1. Layout algorithm classes are decorated with [@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md) and do not support the [@State](./state-management/arkts-state.md) decorator.
@@ -17,7 +17,7 @@ Since API version 24, the [DynamicLayout](../reference/apis-arkui/arkui-ts/ts-co
 
 ## Creating a DynamicLayout
 
-Create a [DynamicLayout](../reference/apis-arkui/arkui-ts/ts-container-dynamiclayout.md#interface) component and set the layout algorithm by passing in a parameter of type [LayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1). A variable of type [LayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1) can be assigned a specific layout algorithm class object, including [built-in layout algorithms](#built-in-layout-algorithms) and [custom layout algorithms](#custom-layout-algorithms).
+Create a [DynamicLayout](../reference/apis-arkui/arkui-ts/ts-container-dynamiclayout.md#apis) component and set the layout algorithm by passing in a parameter of type [LayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1). A variable of type [LayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1) can be assigned a specific layout algorithm class object, including [built-in layout algorithms](#built-in-layout-algorithms) and [custom layout algorithms](#custom-layout-algorithms).
 
 <!-- @[CreateDynamicLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/basic/CreateDynamicLayout.ets) -->
 
@@ -1336,20 +1336,20 @@ struct StatePreservationExample {
 
         Row({ space: 10 }) {
           Button('Increase spacing')
-            .fontSize(14)
+            .fontSize(11)
             .onClick(() => {
               // Modify the space attribute to trigger re-layout.
               const currentSpace = this.algorithm.space?.value;
               this.algorithm.space = LengthMetrics.vp(currentSpace as number + 5);
             })
           Button('Center')
-            .fontSize(14)
+            .fontSize(11)
             .onClick(() => {
               // Modify the justifyContent attribute to trigger re-layout.
               this.algorithm.justifyContent = FlexAlign.Center;
             })
           Button('Space between')
-            .fontSize(14)
+            .fontSize(11)
             .onClick(() => {
               this.algorithm.justifyContent = FlexAlign.SpaceBetween;
             })
@@ -1514,4 +1514,3 @@ struct StatePreservationExample {
   ```
 
   ![](figures/dynamiclayout_mediaquery.gif)
-<!--no_check-->

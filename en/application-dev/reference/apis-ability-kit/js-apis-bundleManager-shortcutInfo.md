@@ -3,8 +3,9 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=1bd317f06f1afd85920306c4a4cf71333749080f translatedAt=2026-09-03T11:17:23.881Z pushedAt=2026-09-05T10:47:30.592Z -->
 
 The module describes the shortcut information defined in the [module.json5](../../quick-start/module-configuration-file.md#shortcuts) file of an application. The information can be obtained by running [getAllShortcutInfoForSelf](js-apis-shortcutManager.md#shortcutmanagergetallshortcutinfoforself)<!--Del--> or [getShortcutInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetshortcutinfo)<!--DelEnd-->.
 
@@ -35,6 +36,7 @@ Describes a collection of target [Wants](../../quick-start/module-configuration-
 
 Describes the configuration information for a shortcut.
 
+<!--Table: 20%; 21%; 8%; 8%; 43%-->
 **System capability**: SystemCapability.BundleManager.BundleFramework.Launcher
 
 | Name               | Type                                      | Read-Only| Optional| Description                        |
@@ -42,7 +44,7 @@ Describes the configuration information for a shortcut.
 | id                  | string                                    | No | No | ID of the shortcut.|
 | bundleName          | string                                    | No | No | Bundle name of the application to which the shortcut belongs.|
 | moduleName          | string                                    | No | Yes | Module name of the shortcut.|
-| hostAbility         | string                                    | No | Yes | Name of the ability that hosts the shortcut.|
+| hostAbility         | string                                    | No  | Yes  | Name of the host ability of the shortcut, that is, the name of the ability that carries this shortcut. |
 | icon                | string                                    | No | Yes | Icon of the shortcut. The value is the index of a resource file.|
 | iconId              | number                                    | No | Yes | Resource ID of the shortcut icon.|
 | label               | string                                    | No | Yes | Label of the shortcut. The value can be descriptive text or a resource index.|

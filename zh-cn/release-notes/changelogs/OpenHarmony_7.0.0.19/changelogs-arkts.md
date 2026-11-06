@@ -58,3 +58,38 @@ console.info(result);
 ```
 
 本变更修复该问题，fastConvertToJSObject接口现在能够正确解析并保留与子元素同级的文本节点。
+
+## cl.arkts.2 LRUCache模块afterRemoval回调方法入参类型变更
+
+**访问级别**
+
+公开接口
+
+**变更原因**
+
+变更前继承[LRUCache](../../../application-dev/reference/apis-arkts/js-apis-util.md#lrucache9)类型后重写afterRemoval回调方法，在调用clear、updateCapacity接口触发删除操作时，传入回调的入参类型与接口定义不符，无法正常使用。
+
+**变更影响**
+
+变更后需排查应用中继承LRUCache容器并重写了afterRemoval回调方法的场景，在回调中如果将入参的key value作为MapIterator使用时应更改调整为正常LRUCache容器中元素类型。
+
+变更前：在执行clear()和updateCapacity()方法删除元素时传入afterRemoval回调的入参类型为MapIterator。
+
+变更后：在执行clear()和updateCapacity()方法删除元素时传入afterRemoval回调的入参类型为LRUCache中的正常元素类型。
+
+
+**起始 API Level**
+
+API 12
+
+**变更发生版本**
+
+从OpenHarmony SDK 7.0.0.19 版本开始。
+
+**变更的接口/组件**
+
+afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
+
+**适配指导**
+
+变更后需排查应用中继承LRUCache容器并重写了afterRemoval回调方法的场景，在回调中如果将入参的key value作为MapIterator使用时应更改调整为正常LRUCache容器中元素类型。

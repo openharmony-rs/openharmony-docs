@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=fab51ae1607c595d71580c37f7e5c8c6efddfc33 translatedAt=2026-10-30T08:55:35.869Z pushedAt=2026-10-30T08:57:21.230Z nl=1 -->
 
 ## Usage Guidelines
 
@@ -133,7 +134,7 @@
 - [ohos.permission.SEND_MESSAGES](permissions-for-system-apps-user.md#ohospermissionsend_messages)
 <!--DelEnd-->
 
-## Pasteboard
+## Clipboard
 
 - [ohos.permission.READ_PASTEBOARD](restricted-permissions.md#ohospermissionread_pasteboard)
 
@@ -179,3 +180,4 @@
 - Read files in the file manager.
 
   Use the file Picker to read documents in **Files**. For details, see [Selecting Documents](../../file-management/select-user-file.md#selecting-documents) and [Saving Documents](../../file-management/save-user-file.md#saving-documents).
+

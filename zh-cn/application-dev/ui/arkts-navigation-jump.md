@@ -1,8 +1,8 @@
 # Navigation页面路由
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
-<!--Designer: @jiangdayuan-->
+<!--Owner: @huangxiaolinabc-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -211,25 +211,25 @@ NavPathStack可以通过Push相关的接口（如[pushPath](../reference/apis-ar
 
 3. 带错误码的跳转：跳转结束会触发异步回调，返回错误码信息。
 
-      <!-- @[PushDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+      <!-- @[PushDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) --> 
       
       ``` TypeScript
       const DOMAIN = 0x0000;
       this.pageStack.pushDestination({
         name: 'pageTwo', param: 'PageTwo Param'}).catch((error: BusinessError) => {
-        hilog.info(DOMAIN, 'testTag', '[pushDestination]failed', 'error code = ', error.code,
+        hilog.error(DOMAIN, 'testTag', '[pushDestination]failed', 'error code = ', error.code,
           'error.message = ', error.message);
       }).then(() => {
         hilog.info(DOMAIN, 'testTag', '[pushDestination]success.');
       });
       ```
 
-      <!-- @[PushDestinationByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+      <!-- @[PushDestinationByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) --> 
       
       ``` TypeScript
       const DOMAIN = 0x0000;
       this.pageStack.pushDestinationByName('pageTwo', 'PageTwo Param').catch((error: BusinessError) => {
-        hilog.info(DOMAIN, 'testTag', '[pushDestinationByName]failed', 'error code = ', error.code,
+        hilog.error(DOMAIN, 'testTag', '[pushDestinationByName]failed', 'error code = ', error.code,
           'error.message = ', error.message);
       }).then(() => {
         hilog.info(DOMAIN, 'testTag', '[pushDestinationByName]success.');
@@ -278,14 +278,14 @@ NavPathStack可以通过Replace相关接口（如[replacePath](../reference/apis
    this.pageStack.replacePathByName('pageTwo', 'PageTwo Param');
    ```
 
-   <!-- @[replaceDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-
+   <!-- @[replaceDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) --> 
+   
    ``` TypeScript
    const DOMAIN = 0x0000;
    // 带错误码的替换，跳转结束会触发异步回调，返回错误码信息
    this.pageStack.replaceDestination({ name: 'pageTwo', param: 'PageTwo Param' })
      .catch((error: BusinessError) => {
-       hilog.info(DOMAIN, 'testTag', '[replaceDestination]failed', 'error code = ', error.code,
+       hilog.error(DOMAIN, 'testTag', '[replaceDestination]failed', 'error code = ', error.code,
          'error.message = ', error.message);
      }).then(() => {
      hilog.info(DOMAIN, 'testTag', '[replaceDestination]success.');
@@ -405,9 +405,9 @@ NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arku
    this.pageStack.getAllPathName();
    // 获取索引为1的页面参数
    this.pageStack.getParamByIndex(1);
-   // 获取PageOne页面的参数
-   this.pageStack.getParamByName('PageOne');
-   // 获取PageOne页面的索引集合
+   // 获取pageOne页面的参数
+   this.pageStack.getParamByName('pageOne');
+   // 获取pageOne页面的索引集合
    this.pageStack.getIndexByName('pageOne');
    ```
 
@@ -434,7 +434,7 @@ NavPathStack提供了[setInterception](../reference/apis-arkui/arkui-ts/ts-basic
          hilog.info(DOMAIN, 'testTag', 'target page is navigation home');
          return;
        }
-       // 将跳转到PageTwo的路由重定向到PageOne
+       // 将跳转到PageTwo的路由重定向到pageOne
        let target: NavDestinationContext = to as NavDestinationContext;
        if (target.pathInfo.name === 'pageTwo') {
          target.pathStack.pop();
@@ -535,7 +535,7 @@ struct NavigationDemo {
       }
       .width('100%')
       .mode(NavigationMode.Auto)
-      // $r('app.string.settings')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“设置”
+      // $r('app.string.settings')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“设置”
       .title($r('app.string.settings')) // 设置标题文字
     }
     .size({ width: '100%', height: '100%' })
@@ -571,7 +571,7 @@ export struct PageOne {
   build() {
     NavDestination() {
       Column() {
-        // $r('app.string.settingPage')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“设置页面”
+        // $r('app.string.settingPage')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“设置页面”
         Text(`${this.name}${this.context!.resourceManager.getStringSync($r('app.string.settingPage').id)}`)
           .width('100%')
           .fontSize(20)
@@ -590,7 +590,7 @@ export struct PageOne {
           .fontColor(0x666666)
           .textAlign(TextAlign.Center)
           .padding({ top: 45 })
-        // $r('app.string.return')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“返回”
+        // $r('app.string.return')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“返回”
         Button($r('app.string.return'))
           .width('50%')
           .height(40)
@@ -680,7 +680,7 @@ export struct PageTwo {
             }
             .width('100%')
             .onClick(() => {
-              // $r('app.string.pageSettingParam')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“页面设置参数”
+              // $r('app.string.pageSettingParam')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“页面设置参数”
               this.navPathStack.pushPathByName(`${item}`,
                 this.context!.resourceManager.getStringSync($r('app.string.pageSettingParam').id));
             })

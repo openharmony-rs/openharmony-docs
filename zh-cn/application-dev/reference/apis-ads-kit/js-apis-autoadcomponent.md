@@ -1,8 +1,7 @@
 # @ohos.advertising.AutoAdComponent (轮播广告展示组件)
-
 <!--Kit: Ads Kit-->
 <!--Subsystem: Advertising-->
-<!--Owner: @SukiEvas-->
+<!--Owner: @ctssss-->
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
@@ -37,20 +36,30 @@ AutoAdComponent({
 
 **装饰器类型：**\@Component
 
-**元服务API：** 从API version 12开始，该接口支持在元服务中使用。
+**原子化服务API：**  从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Advertising.Ads
+**系统能力：**  SystemCapability.Advertising.Ads
 
 **参数：**
 
-| **参数名** | **类型** | 必填 | **装饰器类型** | 说明 | 
+| **名称** | **类型** | 必填 | **装饰器类型** | 说明 | 
 | -------- | -------- | -------- | -------- | -------- |
 | adParam | advertising.[AdRequestParams](js-apis-advertising.md#adrequestparams) | 是 | - | 广告请求参数。 | 
 | adOptions | advertising.[AdOptions](js-apis-advertising.md#adoptions) | 是 | - | 广告配置参数。 | 
 | displayOptions | advertising.[AdDisplayOptions](js-apis-advertising.md#addisplayoptions) | 是 | - | 广告展示参数。 | 
 | interactionListener | advertising.[AdInteractionListener](js-apis-advertising.md#adinteractionlistener) | 是 | - | 广告状态变化回调。 | 
 
-**示例：**
+### build
+
+build(): void
+
+用于创建AutoAdComponent对象的构造函数。
+
+**原子化服务API：**  从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**  SystemCapability.Advertising.Ads
+
+ ## 示例
 
 ```typescript
 import { advertising, AutoAdComponent } from '@kit.AdsKit';
@@ -115,18 +124,3 @@ struct Index {
   }
 }
 ```
-
-
-### build
-
-
-build(): void
-
-
-用于创建AutoAdComponent对象的构造函数。
-
-
-**元服务API：** 从API version 12开始，该接口支持在元服务中使用。
-
-
-**系统能力：** SystemCapability.Advertising.Ads

@@ -205,7 +205,7 @@ Describes the options for showing the dialog box.
 | backgroundBlurStyle<sup>12+</sup> | [BlurStyle](arkui-ts/ts-universal-attributes-background.md#blurstyle9) | No  | Yes | Background blur style of the dialog box.<br>Default value: **BlurStyle.NONE** since API version 26.0.0, and **BlurStyle.COMPONENT_ULTRA_THICK** for API versions earlier than 26.0.0.<br>**NOTE**<br>Setting this parameter to **BlurStyle.NONE** disables the background blur. When **backgroundBlurStyle** is set to a value other than **NONE**, do not set **backgroundColor**. If you do, the color display may not produce the expected visual effect.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | backgroundBlurStyleOptions<sup>19+</sup> | [BackgroundBlurStyleOptions](arkui-ts/ts-universal-attributes-background.md#backgroundblurstyleoptions10) | No| Yes| Options for customizing the background blur style. For details about the default value, see **BackgroundBlurStyleOptions**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | backgroundEffect<sup>19+</sup> | [BackgroundEffectOptions](arkui-ts/ts-universal-attributes-background.md#backgroundeffectoptions11) | No| Yes| Options for customizing the background effect. For details about the default value, see **BackgroundEffectOptions**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| shadow<sup>12+</sup>              | [ShadowOptions](arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;[ShadowStyle](arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10)| No  | Yes | Shadow of the dialog box.<br> Default value on 2-in-1 devices: **ShadowStyle.OUTER_FLOATING_MD** when the dialog box is focused and **ShadowStyle.OUTER_FLOATING_SM** otherwise On other devices, the dialog box has no shadow by default.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| shadow<sup>12+</sup>              | [ShadowOptions](arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;[ShadowStyle](arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10)| No  | Yes | Shadow of the dialog box.<br> Default value on 2-in-1 devices: **ShadowStyle.OUTER_FLOATING_MD** when the dialog box is focused and **ShadowStyle.OUTER_FLOATING_SM** otherwise. On other devices, the dialog box has no shadow by default.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | enableHoverMode<sup>14+</sup>     | boolean                                                      | No  | Yes | Whether to respond when the device is in hover mode. The value **true** means to respond when the device is in hover mode.<br>Default value: **false**, meaning not to respond when the device is in hover mode.<br>**NOTE**<br>For a PC or 2-in-1 device, the prompt is displayed on the upper half of the screen by default when **enableHoverMode** is set to **true**. You can set **hoverModeArea** to display the prompt on the lower half of the screen. For other devices, the prompt is displayed on the lower half of the screen by default when **enableHoverMode** is set to **true**. You can set **hoverModeArea** to display the prompt on the upper half of the screen.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 14.           |
 | hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](arkui-ts/ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | No  | Yes | Default display area of the dialog box in hover mode.<br>Default value: **HoverModeAreaType.BOTTOM_SCREEN**<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | onWillAppear<sup>19+</sup> | Callback&lt;void&gt; | No| Yes| Callback invoked before the dialog box appearance animation.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>2. You can set the callback event for changing the dialog box display effect in **onWillAppear**. The settings take effect next time the dialog box appears.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
@@ -413,7 +413,7 @@ Extends [BaseDialogOptions](#basedialogoptions11) to provide enhanced customizat
 | borderStyle | [DialogOptionsBorderStyle](#dialogoptionsborderstyle18) | No| Yes| Border style of the dialog box.<br>Default value: **BorderStyle.Solid**.<br> **borderStyle** must be used with **borderWidth** in pairs.|
 | width | [Dimension](arkui-ts/ts-types.md#dimension10) | No  | Yes | Width of the dialog box.<br>**NOTE**<br>- Default maximum value: 400vp<br>- Percentage-based configuration: The reference width of the dialog box is adjusted based on the width of the window where the dialog box is located.|
 | height | [Dimension](arkui-ts/ts-types.md#dimension10)  | No  | Yes | Height of the dialog box.<br>**NOTE**<br>- Default maximum value: 0.9 x (Window height – Safe area)<br>- When this parameter is set to a percentage, the reference height of the dialog box is the height of the window where the dialog box is located minus the safe area. You can decrease or increase the height as needed.|
-| shadow | [DialogOptionsShadow](#dialogoptionsshadow18) | No| Yes| Shadow of the dialog box.<br>Default value on 2-in-1 devices: **ShadowStyle.OUTER_FLOATING_MD** when the dialog box is focused and **ShadowStyle.OUTER_FLOATING_SM** otherwise On other devices, the dialog box has no shadow by default.|
+| shadow | [DialogOptionsShadow](#dialogoptionsshadow18) | No| Yes| Shadow of the dialog box.<br>Default value on 2-in-1 devices: **ShadowStyle.OUTER_FLOATING_MD** when the dialog box is focused and **ShadowStyle.OUTER_FLOATING_SM** otherwise. On other devices, the dialog box has no shadow by default.|
 | backgroundBlurStyle | [BlurStyle](arkui-ts/ts-universal-attributes-background.md#blurstyle9)                 | No  | Yes | Background blur style of the dialog box.<br>Default value: **BlurStyle.NONE** since API version 26.0.0, and **BlurStyle.COMPONENT_ULTRA_THICK** for API versions earlier than 26.0.0.<br>**NOTE**<br>Setting this parameter to **BlurStyle.NONE** disables the background blur. When **backgroundBlurStyle** is set to a value other than **NONE**, do not set **backgroundColor**. If you do, the color display may not produce the expected visual effect.|
 
 ## DialogOptionsCornerRadius<sup>18+</sup>
@@ -521,7 +521,7 @@ Extends [BaseDialogOptions](#basedialogoptions11) to provide enhanced customizat
 | borderStyle<sup>12+</sup> | [BorderStyle](arkui-ts/ts-appendix-enums.md#borderstyle)&nbsp;\|&nbsp;[EdgeStyles](arkui-ts/ts-types.md#edgestyles9)  | No| Yes| Border style of the dialog box.<br>Default value: **BorderStyle.Solid**.<br> **borderStyle** must be used with **borderWidth** in pairs.|
 | width<sup>12+</sup> | [Dimension](arkui-ts/ts-types.md#dimension10) | No  | Yes | Width of the dialog box.<br>**NOTE**<br>- Default maximum width of the dialog box: 400 vp<br>- Percentage-based configuration: The reference width of the dialog box is adjusted based on the width of the window where the dialog box is located.|
 | height<sup>12+</sup> | [Dimension](arkui-ts/ts-types.md#dimension10)  | No  | Yes | Height of the dialog box.<br>**NOTE**<br>- Default maximum height of the dialog box: 0.9 x (Window height – Safe area)<br>- When this parameter is set to a percentage, the reference height of the dialog box is the height of the window where the dialog box is located minus the safe area. You can decrease or increase the height as needed.|
-| shadow<sup>12+</sup>| [ShadowOptions](arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;[ShadowStyle](arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10)  | No| Yes| Shadow of the dialog box.<br>Default value on 2-in-1 devices: **ShadowStyle.OUTER_FLOATING_MD** when the dialog box is focused and **ShadowStyle.OUTER_FLOATING_SM** otherwise On other devices, the dialog box has no shadow by default.|
+| shadow<sup>12+</sup>| [ShadowOptions](arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;[ShadowStyle](arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10)  | No| Yes| Shadow of the dialog box.<br>Default value on 2-in-1 devices: **ShadowStyle.OUTER_FLOATING_MD** when the dialog box is focused and **ShadowStyle.OUTER_FLOATING_SM** otherwise. On other devices, the dialog box has no shadow by default.|
 | backgroundBlurStyle<sup>12+</sup> | [BlurStyle](arkui-ts/ts-universal-attributes-background.md#blurstyle9)                 | No  | Yes | Background blur style of the dialog box.<br>Default value: **BlurStyle.NONE** since API version 26.0.0, and **BlurStyle.COMPONENT_ULTRA_THICK** for API versions earlier than 26.0.0.<br>**NOTE**<br>Setting this parameter to **BlurStyle.NONE** disables the background blur. When **backgroundBlurStyle** is set to a value other than **NONE**, do not set **backgroundColor**. If you do, the color display may not produce the expected visual effect.|
 
 ## BaseDialogOptions<sup>11+</sup>
@@ -865,7 +865,7 @@ promptAction.showDialog({
   })
 ```
 
-![en-us_image_0002](figures/en-us_image_0002.gif)
+![en-us_image_0002](figures/showDialog-example01.gif)
 
 ## promptAction.showDialog<sup>(deprecated)</sup>
 
@@ -933,11 +933,9 @@ try {
 };
 ```
 
-![en-us_image_0004](figures/en-us_image_0004.gif)
+![en-us_image_0004](figures/showDialog-example02.gif)
 
 When the **showInSubWindow** attribute is set to **true**, the toast can be displayed outside the window.
-
-The **displayModeInSubWindow** attribute is added to [BaseDialogOptions](#basedialogoptions11) since API version 26.0.0.
 
 ```ts
 import { promptAction } from '@kit.ArkUI';
@@ -949,8 +947,6 @@ try {
     message: 'Message Info',
     isModal: true,
     showInSubWindow: true,
-    // The displayModeInSubWindow is added since API version 26.0.0.
-    displayModeInSubWindow: DialogDisplayMode.SCREEN_BASED,
     buttons: [
       {
         text: 'button1',
@@ -975,7 +971,7 @@ try {
 };
 ```
 
-![en-us_image_0002_showinsubwindow](figures/en-us_image_0002_showinsubwindow.jpg)
+![en-us_image_0002_showinsubwindow](figures/showDialog-showinsubwindow.jpg)
 
 This example demonstrates how to use the **onDidAppear**, **onDidDisappear**, **onWillAppear**, and **onWillDisappear** properties of [ShowDialogOptions](#showdialogoptions) to implement the dialog box lifecycle callbacks, supported since API version 19.
 
@@ -1038,7 +1034,7 @@ struct DialogExample {
 }
 ```
 
-![en-us_image_0002_lifecycle](figures/en-us_image_0002_lifecycle.gif)
+![en-us_image_0002_lifecycle](figures/showDialog-lifecycle.gif)
 
 
 
@@ -1107,7 +1103,7 @@ try {
 };
 ```
 
-![en-us_image_0005](figures/en-us_image_0005.gif)
+![en-us_image_0005](figures/showActionMenu-example01.gif)
 
 **Example 2**
 
@@ -1182,7 +1178,7 @@ struct Index {
 }
 ```
 
-![en-us_image_0008](figures/en-us_image_0008.gif)
+![en-us_image_0008](figures/showActionMenu-example03.gif)
 
 ## promptAction.showActionMenu<sup>(deprecated)</sup>
 
@@ -1247,7 +1243,7 @@ promptAction.showActionMenu({
   })
 ```
 
-![en-us_image_0006](figures/en-us_image_0006.gif)
+![en-us_image_0006](figures/showActionMenu-example02.gif)
 
 ## promptAction.openCustomDialog<sup>(deprecated)</sup>
 
@@ -1448,7 +1444,7 @@ struct Index {
 }
 ```
 
-![en-us_image_0007](figures/en-us_image_0007.gif)
+![en-us_image_0007](figures/CustomDialog-example01.gif)
 
 This example shows how to implement a dialog box on a page.
 

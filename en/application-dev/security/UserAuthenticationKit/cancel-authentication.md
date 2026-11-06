@@ -6,6 +6,7 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=b799bd137584a338db2107c2101b1d6091a6feea translatedAt=2026-11-03T05:44:00.885Z pushedAt=2026-11-03T07:44:20.977Z nl=1 -->
 
 The unified user authentication framework provides **cancel()** for terminating the authentication process.
 
@@ -13,7 +14,7 @@ The unified user authentication framework provides **cancel()** for terminating 
 
 For details about the parameters, return values, and error codes, see [cancel](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#cancel10).
 
-This topic describes only the API for canceling authentication. For details about the APIs for initiating authentication, see [Initiating Authentication](start-authentication.md) and [User Authentication](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md).
+This topic describes only the API for canceling authentication. For details about the APIs for initiating authentication, see [Initiating Authentication](start-authentication.md) and related API reference.
 
 | API| Description| 
 | -------- | -------- |
@@ -78,4 +79,4 @@ cancelingUserAuthentication() {
 
 ## Sample Code
 
-  - [Cancel authentication in progress](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - You can refer to the [User Authentication Service](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication) example code.

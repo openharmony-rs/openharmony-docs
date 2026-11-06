@@ -3,9 +3,10 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=9f1fe0bbde2944cf4a26bea4ef46c5e14988f7b7 translatedAt=2026-11-03T04:40:21.047Z pushedAt=2026-11-03T04:40:21.047Z nl=2 -->
 
 
 ## Overview
@@ -59,6 +60,7 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
          brush.setColor({red: 255, blue: 0, green: 0, alpha: 255});
          canvas.attachBrush(brush);
          canvas.drawRect({left: 0, right: 300, top: 0, bottom: 300});
+         canvas.detachBrush();
        }
      }
    }
@@ -93,7 +95,7 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
    }
    ```
 
-4. Override the [draw()](../reference//apis-arkui/js-apis-arkui-renderNode.md#draw) function of the custom **RenderNode** to obtain the canvas for custom drawing operations.
+4. Override the [draw()](../reference/apis-arkui/js-apis-arkui-renderNode.md#draw) function of the custom **RenderNode** to obtain the canvas for custom drawing operations.
    
    <!-- @[arkts_graphics_draw_direct_canvas_api_rewrite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
    
@@ -113,6 +115,7 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
        brush.setColor({red: 255, blue: 0, green: 0, alpha: 255});
        canvas.attachBrush(brush);
        canvas.drawRect({left: 0, right: 300, top: 0, bottom: 300});
+       canvas.detachBrush();
      }
    }
    ```
@@ -173,7 +176,7 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
 
 4. Create a **PixelMap** in the **aboutToAppear()** function of **MyNodeController**.
 
-5. Override the [draw()](../reference//apis-arkui/js-apis-arkui-renderNode.md#draw) function of the custom **RenderNode** to obtain the offscreen canvas for drawing.
+5. Override the [draw()](../reference/apis-arkui/js-apis-arkui-renderNode.md#draw) function of the custom **RenderNode** to obtain the offscreen canvas for drawing.
 
    1. Use the **PixelMap** created in Step 4 to construct the offscreen canvas.
    2. Perform custom drawing operations on the offscreen canvas.
@@ -200,6 +203,7 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
          brush.setColor({ alpha: 255, red: 0, green: 0, blue: 255 });
          canvas_.attachBrush(brush);
          canvas_.drawRect({ left: 150, right: 575, top: 0, bottom: 600 });
+         canvas_.detachBrush();
    
          // Pass the drawing result of the offscreen canvas to the RenderNode.
          canvas.drawImage(this.pixelMap, 0, 0);

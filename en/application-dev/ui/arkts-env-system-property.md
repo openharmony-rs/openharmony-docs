@@ -5,8 +5,9 @@
 <!--Designer: @s10021109-->
 <!--Tester: @zhangwenhan-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=44c18c9398b019e88f72ead5c5d43cc1eb68c4c8 translatedAt=2026-11-03T08:30:29.314Z pushedAt=2026-11-03T08:58:37.637Z nl=1 -->
 
-In multi-device development scenarios, you can use the [\@Env](../reference/apis-arkui/arkui-ts/ts-env-system-property.md) decorator to listen for changes of system environment variables and determine the scenario based on the system environment variables, reducing the adaptation logic and repeated development between different devices.
+In multi-device development scenarios, you can use the [@Env](../reference/apis-arkui/arkui-ts/ts-env-system-property.md) decorator to listen for changes in system environment variables and determine the corresponding scenario based on these variables, thereby reducing adaptation logic and repetitive development across different devices.
 
 >**NOTE**
 >
@@ -16,18 +17,27 @@ In multi-device development scenarios, you can use the [\@Env](../reference/apis
 
 ## Overview
 \@Env is a decorator for environment variables in the reactive system. It provides the following functionalities:
-- Reads the environment variable information based on the input parameter. For details, see [Supported Parameters](#supported-parameters). Currently, the following environment variables are supported:
+
+Reads the corresponding environment variable information based on the input parameter. For details, see [Supported Parameters](#supported-parameters). The following environment variables are currently supported:
   - [SystemProperties.BREAK_POINT](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): obtains the breakpoint value corresponding to different width and height thresholds of a window.
   - [SystemProperties.WINDOW_SIZE<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): obtains the size of a window, in vp.
   - [SystemProperties.WINDOW_SIZE_PX<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): obtains the size of a window, in px.
   - [SystemProperties.WINDOW_AVOID_AREA<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): obtains the avoid area of a window, in vp.
   - [SystemProperties.WINDOW_AVOID_AREA_PX<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): obtains the avoid area of a window, in px.
-- When the system environment variable changes, the \@Env-decorated variable is updated and the component associated with \@Env is refreshed, implementing synchronous update of the UI content.
-- You are not allowed to initialize the variables decorated by \@Env. @Env returns an instance of an observable environment variable class decorated by [\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md), whose attributes are in turn decorated by [\@Trace](./state-management/arkts-new-observedV2-and-trace.md). To listen for the change of an environment variable, use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md). For details, see [Using \@Env in \@ComponentV2](#using-env-in-componentv2).
+  - [ReadonlyEnvKey.WINDOW_DISPLAY_ID](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#attributes-1): used to obtain the ID of the screen where the window is located. This parameter is supported since API version 26.0.0.
+  - [ReadonlyEnvKey.WINDOW_SYSTEM_DENSITY](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#attributes-1): used to obtain the system display size scaling factor of the screen where the window is located. This parameter is supported since API version 26.0.0.
+  - [ReadonlyEnvKey.WINDOW_IS_FOCUSED](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#attributes-1): used to obtain whether the window where the current custom component is located is focused. This parameter is supported since API version 26.0.0.
+  - [ReadonlyEnvKey.WINDOW_IS_HIGHLIGHTED](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#attributes-1): used to obtain whether the window where the current custom component is located is highlighted. This parameter is supported since API version 26.0.0.
+  - [WritableEnvKey.FONT_SCALE](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#writableenvkey): used to provide a local font scale for descendant components. This parameter is supported since API version 26.0.0.
+  - [WritableEnvKey.DIRECTION](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#writableenvkey): used to provide the layout direction for descendant components. This parameter is supported since API version 26.0.0.
+  - When a system environment variable changes, the @Env-decorated variable is notified to update, and the component associated with @Env is triggered to refresh, thereby implementing synchronous update of the UI content. When the @Env parameters are WritableEnvKey.FONT_SCALE and WritableEnvKey.DIRECTION, the parent component can pass values to @Env in child components via the [.env](../reference/apis-arkui/arkui-ts/ts-container-with-env.md#env) method in [WithEnv](../reference/apis-arkui/arkui-ts/ts-container-with-env.md).
+  - Variables decorated by @Env cannot be initialized by developers.
+    - When the type decorated by \@Env is a complex type, \@Env returns an instance of an observable environment variable class (decorated by [\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md), with its properties decorated by [\@Trace](./state-management/arkts-new-observedV2-and-trace.md)). To listen for changes in environment variables, you can use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md). For a specific example, see [Using \@Env in \@ComponentV2](#using-env-in-componentv2).
+    - When the type decorated by @Env is a simple type, you can use [@Watch](state-management/arkts-watch.md) in @Component and @Monitor in @ComponentV2 to listen for changes. For a specific example, see [@Watch and @Monitor Listening to @Env-Decorated Variables](#watch-and-monitor-listening-to-env-decorated-variables).
 
 ## Supported Parameters
 
-For details about the parameters supported by @Env, see [SystemProperties](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties).
+For the parameters supported by @Env, see [SystemProperties Enum Type Description](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties) \| [SystemEnvKey\<T\> Type Description](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemenvkeyt).
 
 ## @Env and Environment Capability Comparison
 @Env and [Environment](./state-management/arkts-environment.md) are related to system environment variables, but their capabilities are different. For details, see the following table.
@@ -35,8 +45,8 @@ For details about the parameters supported by @Env, see [SystemProperties](../re
 | Capability| \@Env |Environment|
 | ------------------ | ------------------ | ------------------ |
 |Supported since|API version 22|API version 7|
-|Supported parameters|Enum values of [SystemProperties](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties).| **languageCode** and so on. For details, see [Environment Built-in Parameters](./state-management/arkts-environment.md#environment-built-in-parameters).|
-|Usage|\@Env is a decorator that can be declared in @Component or @ComponentV2 to obtain the environment variables of the corresponding parameters.|Obtains the environment variables of the current application through APIs such as [envProp](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10) and saves them to [AppStorage](./state-management/arkts-appstorage.md). You can access the values of system environment variables through **AppStorage** APIs. For details, see [Accessing Environment Parameters from the UI](./state-management/arkts-environment.md#accessing-environment-parameters-from-the-ui).|
+|Supported parameters|[Enum values of SystemProperties](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties).<br/>Since API version 26.0.0, [SystemProperties](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)\|[SystemEnvKey\<T\> type description](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemenvkeyt) is supported. | Supports parameters such as `languageCode`. For details, see [Environment Built-in Parameters](./state-management/arkts-environment.md#environment-built-in-parameters).|
+|Usage|\@Env is a decorator that can be declared in \@Component or \@ComponentV2 to obtain the environment variable information of the corresponding parameter.<br/>After API version 26.0.0, you can set the system environment variable of the SystemEnvKey\<T\> type parameter via the env API of WithEnv.|Obtains the environment variable of the current app through APIs such as [envProp](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10) and stores it in [AppStorage](./state-management/arkts-appstorage.md). You can access the value of the system environment variable through the AppStorage API. For a specific example, see [Accessing Environment Parameters from UI](./state-management/arkts-environment.md#accessing-environment-parameters-from-the-ui).|
 |Responsive capability supported|Yes. When the system environment variable changes, the environment variable decorated by \@Env is notified of the change and the component associated with \@Env is notified to refresh.|No. When the system environment variable changes, **Environment** is not notified of the change.|
 
 ## Constraints
@@ -79,7 +89,7 @@ For details about the parameters supported by @Env, see [SystemProperties](../re
   }
   ```
 
-- \@Env supports the enum values of [SystemProperties](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties). If an unsupported parameter is used, a compile-time error is reported.
+- \@Env currently supports the [SystemProperties enum values](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties) and the [SystemEnvKey\<T\> type](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemenvkeyt). If an unsupported parameter is used, a compile-time error will be triggered.
     ```ts
     import { uiObserver } from '@kit.ArkUI';
 
@@ -100,6 +110,13 @@ For details about the parameters supported by @Env, see [SystemProperties](../re
   - When \@Env uses **SystemProperties.WINDOW_SIZE_PX**, the decorated variable type must be **window.Size**.
   - When \@Env uses **SystemProperties.WINDOW_AVOID_AREA**, the decorated variable type must be **window.UIEnvWindowAvoidAreaInfoVP**.
   - When \@Env uses **SystemProperties.WINDOW_AVOID_AREA_PX**, the decorated variable type must be **window.UIEnvWindowAvoidAreaInfoPX**.
+  - When @Env uses `ReadonlyEnvKey.WINDOW_DISPLAY_ID`, the decorated variable type must be `number`.
+  - When @Env uses `ReadonlyEnvKey.WINDOW_SYSTEM_DENSITY`, the decorated variable type must be `number`.
+  - When @Env uses `ReadonlyEnvKey.WINDOW_IS_FOCUSED`, the decorated variable type must be `boolean`.
+  - When @Env uses `ReadonlyEnvKey.WINDOW_IS_HIGHLIGHTED`, the decorated variable type must be `boolean`.
+  - When \@Env uses `WritableEnvKey.FONT_SCALE`, the decorated variable type must be `number`.
+  - When \@Env uses `WritableEnvKey.DIRECTION`, the decorated variable type must be `Direction`.
+
   ```ts
   import { uiObserver } from '@kit.ArkUI';
 
@@ -113,7 +130,7 @@ For details about the parameters supported by @Env, see [SystemProperties](../re
     }
   }
   ```
-- Avoid using \@Env together with other V1 and V2 state variable decorators or @Require. Otherwise, a compile-time error occurs.
+- \@Env can only be used alone and cannot be combined with other V1 or V2 state variable decorators or @Require. Otherwise, a compile-time error is reported. Starting from API version 26.0.0, in \@Component, you can use [\@Watch](state-management/arkts-watch.md) to listen for changes in \@Env-decorated variables. For a specific example, see [\@Watch and \@Monitor Listening to \@Env-Decorated Variables](#watch-and-monitor-listening-to-env-decorated-variables).
   ```ts
   @Env(SystemProperties.BREAK_POINT) breakpoint1: uiObserver.WindowSizeLayoutBreakpointInfo; // Correct usage.
   @State @Env(SystemProperties.BREAK_POINT) breakpoint2: uiObserver.WindowSizeLayoutBreakpointInfo; // Incorrect usage. A compile-time error is reported.
@@ -210,7 +227,9 @@ Based on the preceding process, the following example uses **SystemProperties.BR
    - Search for the current window. There is a **SystemProperties.BREAK_POINT** instance corresponding to \@Env.
    - Reuse the environment variable instance corresponding to **SystemProperties.BREAK_POINT** in the window.
 
-```TypeScript
+<!-- @[EnvInitFlow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvInitFlow.ets) -->
+
+``` TypeScript
 import { uiObserver } from '@kit.ArkUI';
 
 @Entry
@@ -229,6 +248,7 @@ struct Index {
 
 @Component
 struct Child1 {
+  // Read system environment variables via @Env.
   @Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
 
   build() {
@@ -273,7 +293,6 @@ struct GrandChild2 {
     }
   }
 }
-
 ```
 
 ## When to Use
@@ -281,12 +300,12 @@ struct GrandChild2 {
 
 In the following example:
 - Declare \@Env in \@ComponentV2 to obtain the layout breakpoint of the window where the current \@ComponentV2 component is created, and use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md) to listen for the changes of the **this.breakpoint** attribute.
-- Declare \@Env in \@ComponentV2 to obtain the size (in vp) of the window where the current \@ComponentV2 component is created, and use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md) to listen for the changes of the **this.sizeInVP** attribute.
-- Declare \@Env in \@ComponentV2 to obtain the size (in px) of the window where the current \@ComponentV2 component is created, and use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md) to listen for the changes of the **this.sizeInPX** attribute.
 - Pass the \@Env decorated variables to the [\@Param](./state-management/arkts-new-param.md) decorated variables in **CompV2** and the common variables in **Comp**.
 - Click **Button('Landscape')** and **Button('Portrait')** to switch between landscape and portrait modes. The **Index**, **CompV2**, and **Comp** associated components are refreshed, and the listener for **orientationChange** is triggered.
 
-```ts
+<!-- @[EnvInComponentV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvInComponentV2.ets) -->
+
+``` TypeScript
 import { uiObserver, UIUtils, window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
@@ -294,8 +313,6 @@ import { common } from '@kit.AbilityKit';
 @ComponentV2
 struct Index {
   @Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Env(SystemProperties.WINDOW_SIZE) sizeInVP: window.SizeInVP;
-  @Env(SystemProperties.WINDOW_SIZE_PX) sizeInPX: window.Size;
 
   private changeOrientation(isLandscape: boolean) {
     const context = this.getUIContext()?.getHostContext() as common.UIAbilityContext;
@@ -313,18 +330,12 @@ struct Index {
   aboutToAppear(): void {
     // The object returned by @Env is actually an @ObservedV2 decorated object (whose properties are decorated by @Trace). Therefore, the change of its properties can be listened through addMonitor.
     UIUtils.addMonitor(this.breakpoint, ['widthBreakpoint', 'heightBreakpoint'], this.orientationChange);
-    UIUtils.addMonitor(this.sizeInVP, ['width', 'height'], this.orientationChange);
-    UIUtils.addMonitor(this.sizeInPX, ['width', 'height'], this.orientationChange);
   }
 
   build() {
     Column() {
       Text(`Index breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`Index breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`Index sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`Index sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`Index sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`Index sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
 
       Button('Landscape').onClick(() => {
         this.changeOrientation(true);
@@ -334,8 +345,8 @@ struct Index {
         this.changeOrientation(false);
       })
 
-      CompV2({ breakpoint: this.breakpoint, sizeInVP: this.sizeInVP, sizeInPX: this.sizeInPX })
-      Comp({ breakpoint: this.breakpoint, sizeInVP: this.sizeInVP, sizeInPX: this.sizeInPX })
+      CompV2({ breakpoint: this.breakpoint })
+      Comp({ breakpoint: this.breakpoint })
     }
   }
 }
@@ -343,17 +354,11 @@ struct Index {
 @ComponentV2
 struct CompV2 {
   @Require @Param breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Require @Param sizeInVP: window.SizeInVP;
-  @Require @Param sizeInPX: window.Size;
 
   build() {
     Column() {
       Text(`CompV2 breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`CompV2 breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`CompV2 sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`CompV2 sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`CompV2 sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`CompV2 sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
     }
   }
 }
@@ -361,17 +366,11 @@ struct CompV2 {
 @Component
 struct Comp {
   @Require breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Require sizeInVP: window.SizeInVP;
-  @Require sizeInPX: window.Size;
 
   build() {
     Column() {
       Text(`Comp breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`Comp breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`Comp sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`Comp sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`Comp sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`Comp sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
     }
   }
 }
@@ -381,7 +380,9 @@ struct Comp {
 
 The usage of \@Env in \@Component is similar to that in \@ComponentV2. The following is an example:
 
-```ts
+<!-- @[EnvInComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvInComponent.ets) -->
+
+``` TypeScript
 import { uiObserver, UIUtils, window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
@@ -389,8 +390,6 @@ import { common } from '@kit.AbilityKit';
 @Component
 struct Index {
   @Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Env(SystemProperties.WINDOW_SIZE) sizeInVP: window.SizeInVP;
-  @Env(SystemProperties.WINDOW_SIZE_PX) sizeInPX: window.Size;
 
   private changeOrientation(isLandscape: boolean) {
     const context = this.getUIContext()?.getHostContext() as common.UIAbilityContext;
@@ -408,18 +407,12 @@ struct Index {
   aboutToAppear(): void {
     // The object returned by @Env is actually an @ObservedV2 decorated object (whose properties are decorated by @Trace). Therefore, the change of its properties can be listened through addMonitor.
     UIUtils.addMonitor(this.breakpoint, ['widthBreakpoint', 'heightBreakpoint'], this.orientationChange);
-    UIUtils.addMonitor(this.sizeInVP, ['width', 'height'], this.orientationChange);
-    UIUtils.addMonitor(this.sizeInPX, ['width', 'height'], this.orientationChange);
   }
 
   build() {
     Column() {
       Text(`Index breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`Index breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`Index sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`Index sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`Index sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`Index sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
 
       Button('Landscape').onClick(() => {
         this.changeOrientation(true);
@@ -429,8 +422,8 @@ struct Index {
         this.changeOrientation(false);
       })
 
-      CompV2({ breakpoint: this.breakpoint, sizeInVP: this.sizeInVP, sizeInPX: this.sizeInPX })
-      Comp({ breakpoint: this.breakpoint, sizeInVP: this.sizeInVP, sizeInPX: this.sizeInPX })
+      CompV2({ breakpoint: this.breakpoint })
+      Comp({ breakpoint: this.breakpoint })
     }
   }
 }
@@ -438,17 +431,11 @@ struct Index {
 @ComponentV2
 struct CompV2 {
   @Require @Param breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Require @Param sizeInVP: window.SizeInVP;
-  @Require @Param sizeInPX: window.Size;
 
   build() {
     Column() {
       Text(`CompV2 breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`CompV2 breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`CompV2 sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`CompV2 sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`CompV2 sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`CompV2 sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
     }
   }
 }
@@ -456,17 +443,11 @@ struct CompV2 {
 @Component
 struct Comp {
   @Require breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Require sizeInVP: window.SizeInVP;
-  @Require sizeInPX: window.Size;
 
   build() {
     Column() {
       Text(`Comp breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`Comp breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`Comp sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`Comp sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`Comp sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`Comp sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
     }
   }
 }
@@ -474,7 +455,7 @@ struct Comp {
 
 ### Switching Windows Through BuilderNode
 
-\@Env is used to display the environment variable information of the [window](../reference/apis-arkui/arkts-apis-window-Window.md) where \@Component or \@ComponentV2 is located. When you switch the window instance where @Component or @ComponentV2 is located through **BuilderNode**, \@Env obtains the corresponding environment variable information based on the new window and triggers refreshes of the associated UI component. **SystemProperties.BREAK_POINT** is used as an example.
+\@Env is used to display the environment variable information of the [window](../reference/apis-arkui/arkts-apis-window.md) where \@Component or \@ComponentV2 is located. When you switch the window instance of \@Component or \@ComponentV2 via BuilderNode, \@Env re-acquires the corresponding environment variable information based on the new window and triggers the associated UI component to refresh. The following uses `SystemProperties.BREAK_POINT` as an example.
 
 In the following example:
 1. Click **Button('add node to tree')** to create a **BuilderNode** and mount it to **NodeContainer**.
@@ -484,9 +465,9 @@ In the following example:
    - When **ComponentUnderBuilderNode** is mounted to a new window, \@Env is triggered to obtain new environment variables.
    - After \@Env obtains new environment variables, the associated component is refreshed. **@Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo** in **ComponentUnderBuilderNode** notifies **@Param breakpoint** in **CompV2** of the refresh, but does not notify the common variable **breakpoint** in **Comp** of the refresh. Therefore, in the scenario where \@Env re-obtains environment variables after the window is switched, you are advised not to pass @Env to the common variable to avoid the problem that the common variable cannot be notified of UI refresh.
 
-The following example contains the process of creating a subwindow. For details, see [Application Window Development (Stage Model)](../windowmanager/application-window-stage.md).
+The following example includes the process of creating a subwindow. For details, see [Subwindow Development Guide](../windowmanager/subwindow-guide.md).
 
-```Typescript
+``` TypeScript
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -510,16 +491,17 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-```Typescript
-// Index.ets
+<!-- @[EnvBuilderNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvBuilderNode.ets) -->
+
+``` TypeScript
 import { BuilderNode, FrameNode, NodeController, uiObserver, window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
 
-let windowStage_: window.WindowStage | undefined = undefined;
-let sub_windowClass: window.Window | undefined = undefined;
+let windowStage: window.WindowStage | undefined = undefined;
+let subWindowClass: window.Window | undefined = undefined;
 let globalBuilderNode: BuilderNode<[]> | undefined = undefined;
 
 export class MyNodeController extends NodeController {
@@ -569,25 +551,25 @@ struct Index {
   private nodeController: MyNodeController = new MyNodeController();
 
   private createSubWindow() {
-    windowStage_ = AppStorage.get('windowStage');
-    if (windowStage_ == null) {
-      hilog.error(DOMAIN, 'testTag', 'Failed to create the subwindow. Cause: windowStage_ is null');
+    windowStage = AppStorage.get('windowStage');
+    if (windowStage == null) {
+      hilog.error(DOMAIN, 'testTag', 'Failed to create the subwindow. Cause: windowStage is null');
     } else {
       // Create a subwindow.
-      windowStage_.createSubWindow('mySubWindow', (err: BusinessError, data) => {
+      windowStage.createSubWindow('mySubWindow', (err: BusinessError, data) => {
         let errCode: number = err.code;
         if (errCode) {
           hilog.error(DOMAIN, 'testTag', 'Failed to create the subwindow. Cause: ' + JSON.stringify(err));
           return;
         }
-        sub_windowClass = data;
-        if (!sub_windowClass) {
-          hilog.error(DOMAIN, 'testTag', 'sub_windowClass is null');
+        subWindowClass = data;
+        if (!subWindowClass) {
+          hilog.error(DOMAIN, 'testTag', 'subWindowClass is null');
           return;
         }
         hilog.info(DOMAIN, 'testTag', 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
         // Set the position, size, and other properties of the subwindow.
-        sub_windowClass.moveWindowTo(200, 1300, (err: BusinessError) => {
+        subWindowClass.moveWindowTo(200, 1300, (err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
             hilog.error(DOMAIN, 'testTag', 'Failed to move the window. Cause:' + JSON.stringify(err));
@@ -595,7 +577,7 @@ struct Index {
           }
           hilog.info(DOMAIN, 'testTag', 'Succeeded in moving the window.');
         });
-        sub_windowClass.resize(900, 1800, (err: BusinessError) => {
+        subWindowClass.resize(900, 1800, (err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
             hilog.error(DOMAIN, 'testTag', 'Failed to change the window size. Cause:' + JSON.stringify(err));
@@ -603,19 +585,19 @@ struct Index {
           }
           hilog.info(DOMAIN, 'testTag', 'Succeeded in changing the window size.');
         });
-         // Load the target page to the subwindow.
-        sub_windowClass.setUIContent('pages/SubWindow', (err: BusinessError) => {
+        // Load the corresponding target page for the child window.
+        subWindowClass.setUIContent('pages/EnvBuilderNodeSubWindow', (err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
             hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause:' + JSON.stringify(err));
             return;
           }
           hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
-          if (!sub_windowClass) {
-            hilog.error(DOMAIN, 'testTag', 'sub_windowClass is null');
+          if (!subWindowClass) {
+            hilog.error(DOMAIN, 'testTag', 'subWindowClass is null');
             return;
           }
-          sub_windowClass.showWindow((err: BusinessError) => {
+          subWindowClass.showWindow((err: BusinessError) => {
             let errCode: number = err.code;
             if (errCode) {
               hilog.error(DOMAIN, 'testTag', 'Failed to show the window. Cause: ' + JSON.stringify(err));
@@ -629,12 +611,12 @@ struct Index {
   }
 
   private destroySubWindow() {
-    if (!sub_windowClass) {
-      console.error('sub_windowClass is null');
+    if (!subWindowClass) {
+      console.error('subWindowClass is null');
       return;
     }
     // Destroy the subwindow when it is no longer needed (depending on the service logic).
-    sub_windowClass.destroyWindow((err: BusinessError) => {
+    subWindowClass.destroyWindow((err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {
         console.error('Failed to destroy the window. Cause: ' + JSON.stringify(err));
@@ -714,9 +696,10 @@ struct Comp {
 }
 ```
 
-```Typescript
-// SubWindow.ets
-import { MyNodeController } from './Index';
+<!-- @[EnvBuilderNodeSubWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvBuilderNodeSubWindow.ets) -->
+
+``` TypeScript
+import { MyNodeController } from './EnvBuilderNode';
 
 @Entry
 @Component
@@ -751,171 +734,12 @@ The following figure shows the running effect.
 
 You can use the Lambda closure function to pass \@Env in **ComponentUnderBuilderNode** downwards. In this way, \@Env in **ComponentUnderBuilderNode** can collect the internal dependencies of the child component **Comp**, and trigger the refresh of the components in **Comp** when the window instance is switched.
 
-The following is an example:
+You only need to modify how `ComponentUnderBuilderNode` passes parameters to `Comp` and how `Comp` obtains values. The remaining parts (`EntryAbility`, `MyNodeController`, `Index`, `createSubWindow`, `destroySubWindow`, `SubWindow`, `CompV2`) are exactly the same as in the previous example. A specific example is shown below.
 
-```TypeScript
-import { BuilderNode, FrameNode, NodeController, uiObserver, window } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+<!-- @[EnvBuilderNodeLambda](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvBuilderNodeLambda.ets) -->
 
-const DOMAIN = 0x0000;
-
-let windowStage_: window.WindowStage | undefined = undefined;
-let sub_windowClass: window.Window | undefined = undefined;
-let globalBuilderNode: BuilderNode<[]> | undefined = undefined;
-
-export class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-  private uiContext: UIContext | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(uiContext);
-    this.uiContext = uiContext;
-    return this.rootNode;
-  }
-
-  addBuilderNode(): void {
-    if (!globalBuilderNode && this.uiContext) {
-      globalBuilderNode = new BuilderNode(this.uiContext);
-      globalBuilderNode.build(wrapBuilder<[]>(buildComponent), undefined);
-    }
-    if (this.rootNode && globalBuilderNode) {
-      this.rootNode.appendChild(globalBuilderNode.getFrameNode());
-    }
-  }
-
-  removeBuilderNode(): void {
-    if (this.rootNode && globalBuilderNode) {
-      this.rootNode.removeChild(globalBuilderNode.getFrameNode());
-    }
-  }
-
-  disposeNode(): void {
-    if (this.rootNode && globalBuilderNode) {
-      globalBuilderNode.dispose();
-      globalBuilderNode = undefined;
-    }
-  }
-}
-
-@Builder
-function buildComponent() {
-  Column() {
-    ComponentUnderBuilderNode()
-  }
-}
-
-@Entry
-@ComponentV2
-struct Index {
-  private nodeController: MyNodeController = new MyNodeController();
-
-  private createSubWindow() {
-    windowStage_ = AppStorage.get('windowStage');
-    if (windowStage_ == null) {
-      hilog.error(DOMAIN, 'testTag', 'Failed to create the subwindow. Cause: windowStage_ is null');
-    } else {
-      // Create a subwindow.
-      windowStage_.createSubWindow('mySubWindow', (err: BusinessError, data) => {
-        let errCode: number = err.code;
-        if (errCode) {
-          hilog.error(DOMAIN, 'testTag', 'Failed to create the subwindow. Cause: ' + JSON.stringify(err));
-          return;
-        }
-        sub_windowClass = data;
-        if (!sub_windowClass) {
-          hilog.error(DOMAIN, 'testTag', 'sub_windowClass is null');
-          return;
-        }
-        hilog.info(DOMAIN, 'testTag', 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
-        // Set the position, size, and other properties of the subwindow.
-        sub_windowClass.moveWindowTo(200, 1300, (err: BusinessError) => {
-          let errCode: number = err.code;
-          if (errCode) {
-            hilog.error(DOMAIN, 'testTag', 'Failed to move the window. Cause:' + JSON.stringify(err));
-            return;
-          }
-          hilog.info(DOMAIN, 'testTag', 'Succeeded in moving the window.');
-        });
-        sub_windowClass.resize(900, 1800, (err: BusinessError) => {
-          let errCode: number = err.code;
-          if (errCode) {
-            hilog.error(DOMAIN, 'testTag', 'Failed to change the window size. Cause:' + JSON.stringify(err));
-            return;
-          }
-          hilog.info(DOMAIN, 'testTag', 'Succeeded in changing the window size.');
-        });
-         // Load the target page to the subwindow.
-        sub_windowClass.setUIContent('pages/SubWindow', (err: BusinessError) => {
-          let errCode: number = err.code;
-          if (errCode) {
-            hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause:' + JSON.stringify(err));
-            return;
-          }
-          hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
-          if (!sub_windowClass) {
-            hilog.error(DOMAIN, 'testTag', 'sub_windowClass is null');
-            return;
-          }
-          sub_windowClass.showWindow((err: BusinessError) => {
-            let errCode: number = err.code;
-            if (errCode) {
-              hilog.error(DOMAIN, 'testTag', 'Failed to show the window. Cause: ' + JSON.stringify(err));
-              return;
-            }
-            hilog.info(DOMAIN, 'testTag', 'Succeeded in showing the window.');
-          });
-        });
-      })
-    }
-  }
-
-  private destroySubWindow() {
-    if (!sub_windowClass) {
-      console.error('sub_windowClass is null');
-      return;
-    }
-    // Destroy the subwindow when it is no longer needed (depending on the service logic).
-    sub_windowClass.destroyWindow((err: BusinessError) => {
-      let errCode: number = err.code;
-      if (errCode) {
-        console.error('Failed to destroy the window. Cause: ' + JSON.stringify(err));
-        return;
-      }
-      console.info('Succeeded in destroying the window.');
-    });
-  }
-
-  build() {
-    Column({ space: 10 }) {
-      Text(`Index`)
-      // Step 1: Create a globalBuilderNode and mount its nodes to the placeholder node of NodeContainer.
-      Button('add node to tree').width(200).onClick(() => {
-        this.nodeController.addBuilderNode();
-      })
-      // Step 2: Remove the nodes of globalBuilderNode from the placeholder node of NodeContainer.
-      Button('remove node from tree').width(200).onClick(() => {
-        this.nodeController.removeBuilderNode();
-      })
-      // Destroy nodes of globalBuilderNode.
-      Button('dispose node').width(200).onClick(() => {
-        this.nodeController.disposeNode();
-      })
-      // Step 3: Create a subwindow.
-      Button(`create sub window`).width(200).onClick(() => {
-        this.createSubWindow();
-      })
-      // Destroy the subwindow.
-      Button(`destroy sub window`).width(200).onClick(() => {
-        this.destroySubWindow();
-      })
-      NodeContainer(this.nodeController).backgroundColor('#FFEEF0')
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-
+``` TypeScript
+// Modify only ComponentUnderBuilderNode and Comp. The rest is the same as the previous example.
 @Component
 struct ComponentUnderBuilderNode {
   @Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
@@ -928,18 +752,6 @@ struct ComponentUnderBuilderNode {
       CompV2({ breakpoint: this.breakpoint })
       // Use the Lambda closure function to associate @Env with the components in Comp.
       Comp({ getEnv: () => this.breakpoint })
-    }
-  }
-}
-
-@ComponentV2
-struct CompV2 {
-  @Require @Param breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-
-  build() {
-    Column() {
-      Text(`CompV2 breakpoint width: ${this.breakpoint.widthBreakpoint}`)
-      Text(`CompV2 breakpoint height: ${this.breakpoint.heightBreakpoint}`)
     }
   }
 }
@@ -961,3 +773,108 @@ struct Comp {
 The following figure shows the running effect.
 
 ![gif](./figures/env_switch_instance2.gif)
+
+### \@Watch and \@Monitor Listening to \@Env-Decorated Variables
+Starting from API version 26.0.0, in \@Component, you can use [\@Watch](state-management/arkts-watch.md) to listen for changes in \@Env-decorated variables. Note that the \@Watch callback is triggered only when the \@Env-decorated variable is assigned as a whole; changes to its internal properties do not trigger the callback.
+<!-- @[EnvWatch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvWatch.ets) -->
+
+``` TypeScript
+import { WithEnv } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State fontScaleNum: number = 1;
+
+  build() {
+    Column() {
+      Button('update').onClick(() => {
+        this.fontScaleNum++;
+      })
+
+      WithEnv() {
+        ChildV1()
+      }
+      .env(WritableEnvKey.FONT_SCALE, this.fontScaleNum)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Component
+struct ChildV1 {
+  @Env(WritableEnvKey.FONT_SCALE) @Watch('onEnvUpdate') fontScaleVal: number;
+
+  onEnvUpdate(){
+    hilog.info(0x0000, 'testTag',`Env value has changed Watched`);
+  }
+
+  build() {
+    Column() {
+      Text('FontScale val is:'  + this.fontScaleVal)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+The following figure shows the runtime behavior.
+
+![png](./figures/env-f.png)
+
+In @ComponentV2, you can use @Monitor to listen for changes in @Env-decorated variables. Note that the @Monitor callback is triggered only when the @Env-decorated variable is assigned as a whole; changes to its internal properties do not trigger the callback.
+<!-- @[EnvMonitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvMonitor.ets) -->
+
+``` TypeScript
+import { WithEnv } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+
+@Entry
+@ComponentV2
+struct MonitorTest {
+  @Local message: number = 2;
+
+  build() {
+    Row() {
+      Column() {
+        Button('change message').onClick(() => {
+          this.message++;
+        })
+        WithEnv() {
+          Child()
+        }.env(WritableEnvKey.FONT_SCALE, this.message)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+
+@ComponentV2
+struct Child {
+  @Env(WritableEnvKey.FONT_SCALE) message: number;
+
+  @Monitor('message')
+  onStrChange(monitor: IMonitor) {
+    monitor.dirty.forEach((path: string) => {
+      hilog.info(0x0000, 'testTag',
+        `${path} changed from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
+    });
+  }
+
+  build() {
+    Column() {
+      Text('message' + `${this.message}`)
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+    }
+  }
+}
+```
+
+The following figure shows the runtime behavior.
+
+![image](./figures/env-m.png)

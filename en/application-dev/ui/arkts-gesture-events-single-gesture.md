@@ -1,10 +1,11 @@
 # Single Gesture
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T08:20:50.728Z pushedAt=2026-11-03T09:03:50.944Z nl=1 -->
 
 ## Click Event (onClick)
 
@@ -13,7 +14,7 @@ A click is a common gesture that can be easily implemented using the [onClick](.
 **onClick** behaves like other gesture types and also participates in processes such as hit testing and response chain collection. You can [intervene in gesture processing](./arkts-interaction-development-guide-support-gesture.md#intervention-in-gesture-processing) to dynamically control how **onClick** responses are handled.
 
 
-<!-- @[click_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/OnClickGesture.ets) -->
+<!-- @[click_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/OnClickGesture.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -33,12 +34,13 @@ export struct OnClickGesture {
             .width('60%')
             .height('50%')
             .backgroundColor(Color.Grey)
-            .onClick (() => { // 1. A click event is registered on the child component. Normally, clicking the child component triggers its own click handler first.
+            .onClick(() => {
+              // 1. A click event is registered on the child component. Under normal circumstances, tapping on the child component triggers its response first.
               console.info('Clicked on child');
               this.increaseJudgeGuard();
             })
             .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
-              // 3. When the tap count is a multiple of 5, reject the tap gesture on the child component, allowing the parent component's tap gesture to respond instead.
+              // 3. When the number grows to a multiple of 5, the tap gesture on the child component is disabled, allowing the tap on the parent component to receive a response.
               if (this.judgeCount % 5 == 0 && gestureInfo.type == GestureControl.GestureType.CLICK) {
                 return GestureJudgeResult.REJECT;
               } else {
@@ -51,7 +53,8 @@ export struct OnClickGesture {
         .justifyContent(FlexAlign.Center)
         .backgroundColor(Color.Green)
         .gesture(
-          TapGesture() // 2. A tap gesture is registered on the parent component. Normally, tapping inside the child area gives priority to the child's click event.
+          // 2. A tap gesture is registered on the parent component. Under normal circumstances, when tapping on the child component area, the parent component's gesture has a lower priority than the child component's.
+          TapGesture()
             .onAction(() => {
               console.info('Clicked on parent');
               this.increaseJudgeGuard();
@@ -197,7 +200,7 @@ The following example implements a simple volume control slider. The callback of
 Five input modes are supported:
 1. One-finger vertical swipe on the screen.
 2. Mouse drag with the left button pressed.
-3. Scrolling by mouse wheel.
+3. Mouse wheel scrolling.
 4. One-finger vertical swipe on the touchpad.
 5. Two-finger vertical swipe on the touchpad.
 
@@ -338,7 +341,7 @@ export struct Pinch {
             PinchGesture({ fingers: 3 })
               .onActionStart((event: GestureEvent | undefined) => {
                 console.info('Pinch start');
-              })// When the pinch gesture is triggered, obtain the scale factor from the callback and apply it to the component.
+              // When the pinch gesture is triggered, obtain the scale factor from the callback and apply it to the component.
               .onActionUpdate((event: GestureEvent | undefined) => {
                 if (event) {
                   this.scaleValue = this.pinchValue * event.scale;
@@ -365,7 +368,7 @@ export struct Pinch {
 ```
 
 
-![pinch](figures/pinch.png)
+<!--Del-->![pinch] (figures/pinch.gif)<!--DelEnd-->
 
 
 ## Rotation Gesture (RotationGesture)
@@ -379,7 +382,7 @@ The rotation gesture triggers a rotation gesture event. For detailed parameter d
 
 The following exemplifies how to bind a rotation gesture to the **Text** component. You can obtain the rotation angle from the callback of **RotationGesture** and implement rotation on the component.
 
-<!-- @[catch_rotation_gesture_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/RotationGesture.ets) -->
+<!-- @[catch_rotation_gesture_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/RotationGesture.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -405,7 +408,7 @@ export struct Rotation {
                   if(event){
                     this.angle = this.rotateValue + event.angle;
                   }
-                  console.info('RotationGesture is onActionEnd');
+                  console.info('RotationGesture is onActionUpdate');
                 })
                   // When fingers lift, fix the component at the final rotation angle.
                 .onActionEnd(() => {
@@ -435,7 +438,7 @@ export struct Rotation {
 ```
 
 
-
+<!--Del-->![rotation]  (figures/rotation-2.gif)<!--DelEnd-->
 
 
 ## Swipe Gesture (SwipeGesture)
@@ -449,7 +452,7 @@ A swipe gesture triggers a swipe event. The gesture is recognized when the swipe
 
 The following example shows how to bind a swipe gesture to a **Column** component to rotate the component:
 
-<!-- @[catch_swipe_gesture_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/SwipeGesture.ets) -->
+<!-- @[catch_swipe_gesture_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/SwipeGesture.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -470,12 +473,12 @@ export struct Swipe {
           .width(300)
           .height(200)
           .margin(100)
-          // Bind rotation to the Column component and update the rotation angle based on the swipe speed and direction.
+          // Bind rotation to the Column component, and modify the rotation angle based on the swipe speed and angle of the Swipe Gesture.
           .rotate({ angle: this.rotateAngle })
           .gesture(
-            // Bind a swipe gesture that triggers only for vertical swipes.
+            // Bind the Swipe Gesture and restrict it to trigger only when swiping in the vertical direction.
             SwipeGesture({ direction: SwipeDirection.Vertical })
-              // When the swipe gesture is triggered, obtain the swipe speed and angle to modify layout parameters.
+              // When the Swipe Gesture is triggered, obtain the swipe speed and angle to modify the layout parameters of the component.
               .onAction((event: GestureEvent|undefined) => {
                 if(event){
                   this.speed = event.speed;

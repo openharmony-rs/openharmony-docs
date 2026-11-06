@@ -15,8 +15,6 @@
 
 ## 约束限制
 
-- 当前仅支持2in1设备。
-
 - 仅支持entry模块的AbilityStage和UIAbility预加载。无论预加载到哪种阶段，entry模块必须配置入口UIAbility，详见[开发步骤](#开发步骤)中步骤2。
 
 - 应用配置预加载后，实际是否进行预加载以及具体的预加载时机，均由系统根据用户习惯等信息来综合决定。开发者无法对此进行干预。
@@ -33,9 +31,35 @@
 
 - abilityStageCreated：[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)创建完成阶段。开发者配置此阶段后，预加载机制会创建空进程并初始化Application，随后触发entry模块[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)回调。
 
-- windowStageCreated：[WindowStage](../reference/apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。开发者配置此阶段后，预加载机制会创建空进程并初始化Application，随后触发entry模块[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)回调。接着会拉起entry模块的入口UIAbility，并触发其[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)回调和[onWindowStageCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)回调。开发者可以在UIAbility的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)回调中，通过[launchParam.launchReason](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchreason)的枚举值获取启动原因。枚举值为PRELOAD表示当前UIAbility是由预加载机制启动的。
+- windowStageCreated：[WindowStage](../reference/apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。开发者配置此阶段后，预加载机制会创建空进程并初始化Application，随后触发entry模块[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)回调。接着会拉起entry模块的入口UIAbility，并触发其[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)回调和[onWindowStageCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)回调。开发者可以在UIAbility的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)回调中，通过[launchParam.launchReason](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchreason)的枚举值获取启动原因。枚举值为CALL表示当前UIAbility通过[startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口启动，此时结合[application.getAppPreloadType()](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationgetapppreloadtype22)获取的预加载类型，可判断当前UIAbility是否由预加载机制启动。
 
 ![preload-application-procedure](figures/preload-application-procedure.png)
+
+## 应用预加载状态识别与判断
+
+从API version 22开始，应用可以在启动过程中识别并判断当前进程的预加载状态。
+
+当应用被预加载后，开发者可以在[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)生命周期回调中，通过调用[application.getAppPreloadType()](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationgetapppreloadtype22)获取当前进程的预加载类型（返回值为[AppPreloadType](../reference/apis-ability-kit/js-apis-app-ability-application.md#apppreloadtype22)）。从而判断本次启动是否由预加载触发，并明确应用当前正处于哪一个预加载阶段。
+
+> **说明：**
+>
+> - 只有在进程首次执行[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)完成之前调用[application.getAppPreloadType()](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationgetapppreloadtype22)接口，才可以返回真实的预加载类型。
+> - AbilityStage创建完成后，应用的预加载数据将被清除，此时调用[application.getAppPreloadType()](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationgetapppreloadtype22)将返回UNSPECIFIED，无法获取到真实的预加载类型。
+
+```ts
+import { AbilityStage, application } from '@kit.AbilityKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  onCreate() {
+    // 根据appPreloadType的值判断当前进程的预加载类型
+    let appPreloadType = application.getAppPreloadType();
+  }
+}
+```
+
+除了在AbilityStage中判断进程级别的预加载类型外，若应用配置的预加载阶段为windowStageCreated，开发者还可以在UIAbility的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期回调中进行判断。通过校验[launchParam.launchReason](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchreason)是否等于CALL，并结合[application.getAppPreloadType()](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationgetapppreloadtype22)获取的预加载类型，即可识别当前UIAbility实例是否由预加载机制启动。具体实现请参考[开发步骤](#开发步骤)中的步骤3。
+
+<!--RP1--><!--RP1End-->
 
 ## 开发步骤
 
@@ -94,17 +118,20 @@
 
 3. （可选）获取UIAbility启动原因。
 
-    仅当appPreloadPhase配置为windowStageCreated时，开发者可在UIAbility的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期回调中通过[launchParam.launchReason](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchreason)的枚举值获取启动原因。枚举值为PRELOAD表示当前UIAbility是由预加载机制启动的。
+    仅当appPreloadPhase配置为windowStageCreated时，开发者可在UIAbility的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期回调中通过[launchParam.launchReason](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchreason)获取启动原因。当launchReason为CALL时，结合[application.getAppPreloadType()](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationgetapppreloadtype22)返回的预加载类型（非UNSPECIFIED），可判断当前UIAbility实例是否由预加载机制启动。
 
     ```ts
-    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+    import { AbilityConstant, UIAbility, Want, application } from '@kit.AbilityKit';
 
     export default class EntryAbility extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         console.info(`EntryAbility onCreate, LaunchReason:${launchParam.launchReason}`);
-        // 判断是否是预加载启动
-        let isPreloadStart = launchParam.launchReason === AbilityConstant.LaunchReason.PRELOAD;
+        // 判断是否是预加载启动：launchReason为CALL且预加载类型非UNSPECIFIED
+        let isPreloadStart = launchParam.launchReason === AbilityConstant.LaunchReason.CALL &&
+          application.getAppPreloadType() !== application.AppPreloadType.UNSPECIFIED;
         // ...
       }
     }
     ```
+
+<!--RP2--><!--RP2End-->

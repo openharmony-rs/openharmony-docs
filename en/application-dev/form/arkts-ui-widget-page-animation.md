@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=9519803a735e63077120ffab8551cfc205a9518a translatedAt=2026-08-26T04:53:38.386Z pushedAt=2026-08-28T08:48:00.873Z -->
 
 To make your ArkTS widgets more engaging, you can apply animations to it, including [explicit animation](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md), [property animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md), and [component transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md). Pay attention to the following restrictions when using animations in ArkTS widgets.
 
@@ -12,7 +13,7 @@ To make your ArkTS widgets more engaging, you can apply animations to it, includ
 
 | Name| Description| Restriction|
 | -------- | -------- | -------- |
-| duration | Animation playback duration| The maximum value is 1 second. If a larger value is set, the animation is still played for 1 second.|
+| duration | Animation playback duration | The maximum animation playback duration is 2000 milliseconds. If a value greater than 2000 milliseconds is set, the animation duration remains 2000 milliseconds.<br/>**Note:**<br/>Before API version 26.0.0, the maximum animation playback duration is 1000 milliseconds. |
 | tempo | Animation playback speed.| Do not set this parameter in the widget. Use the default value **1**.|
 | delay | Animation delay duration, in ms.| Do not set this parameter in the widget. Use the default value **0**.|
 | iterations | Number of times that the animation is played.| Do not set this parameter in the widget. Use the default value **1**.|

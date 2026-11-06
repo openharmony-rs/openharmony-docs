@@ -1,10 +1,12 @@
 # Functions
+
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @qin_wei_jie-->
+
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -44,16 +46,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.               |
-| 24700101                |  All unknown errors                  |
-| 24700103                |  Meet max MediaKeySystem num limit                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                  |
+| 24700103                |  Meet max MediaKeySystem num limit.                  |
+| 24700201                |  Fatal service error, for example, service died.                  |
 
 **Example**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 // name indicates the DRM solution name. You can obtain the DRM solution name supported by the device through the drm.getMediaKeySystems API, for example, **com.clearplay.drm**.
-let name = "com.clearplay.drm";
+let name = 'com.clearplay.drm';
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem(name);
 console.info(`createMediaKeySystem success, name: ${name}`);
 ```
@@ -72,7 +74,7 @@ Checks whether the device supports the specified DRM solution.
 
 | Name    | Type                                            | Mandatory| Description                          |
 | -------- | ----------------------------------------------- | ---- | ---------------------------- |
-| name  | string     | Yes  | DRM solution name. You can obtain the DRM solution name supported by the device through the [drm.getMediaKeySystems](arkts-apis-drm-f.md#drmgetmediakeysystems12) API, for example, **com.clearplay.drm**.                    |
+| name  | string     | Yes  | DRM solution name, which contains a maximum of 4096 bytes. You can obtain the DRM solution name supported by the device through the [drm.getMediaKeySystems](arkts-apis-drm-f.md#drmgetmediakeysystems12) API, for example, **com.clearplay.drm**.                    |
 
 **Return value**
 
@@ -87,15 +89,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed, the param name's length is zero or too big(exceeds 4096 Bytes).               |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                  | 
+| 24700201                |  Fatal service error, for example, service died.                  |
 
 **Example**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let supported: boolean = drm.isMediaKeySystemSupported("com.clearplay.drm");
+let supported: boolean = drm.isMediaKeySystemSupported('com.clearplay.drm');
 console.info("isMediaKeySystemSupported: ", supported);
 ```
 
@@ -113,7 +115,7 @@ Checks whether the device supports the specified DRM solution and MIME type.
 
 | Name    | Type                                            | Mandatory| Description                                                                                                         |
 | -------- | ----------------------------------------------- | ---- |-------------------------------------------------------------------------------------------------------------|
-| name  | string     | Yes  | DRM solution name. You can obtain the DRM solution name supported by the device through the [drm.getMediaKeySystems](arkts-apis-drm-f.md#drmgetmediakeysystems12) API, for example, **com.clearplay.drm**.|
+| name  | string     | Yes  | DRM solution name. Since API version 12, you can obtain the DRM solution name supported by the device through the [drm.getMediaKeySystems](arkts-apis-drm-f.md#drmgetmediakeysystems12) API, for example, **com.clearplay.drm**.                  |
 | mimeType  | string     | Yes  | MIME type. The supported MIME types depend on the DRM solution. For example, video/avc and video/hevc.                                                              |
 
 **Return value**
@@ -129,15 +131,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.                |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                  |
+| 24700201                |  Fatal service error, for example, service died.                  |
 
 **Example**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let supported: boolean = drm.isMediaKeySystemSupported("com.clearplay.drm", "video/avc");
+let supported: boolean = drm.isMediaKeySystemSupported('com.clearplay.drm', 'video/avc');
 console.info("isMediaKeySystemSupported: ", supported);
 ```
 
@@ -157,7 +159,7 @@ Checks whether the device supports the specified DRM solution, MIME type, and co
 | -------- | ----------------------------------------------- | ---- |-------------------------------------------------------------------------------------------------------------------------------|
 | name  | string     | Yes  | DRM solution name. You can obtain the DRM solution name supported by the device through the [drm.getMediaKeySystems](arkts-apis-drm-f.md#drmgetmediakeysystems12) API, for example, **com.clearplay.drm**.         |
 | mimeType  | string     | Yes  | MIME type. The supported MIME types depend on the DRM solution.|
-| level  | [ContentProtectionLevel](arkts-apis-drm-e.md#contentprotectionlevel)     | Yes  | Content protection level.                                                                                                                      |
+| level  | [ContentProtectionLevel](arkts-apis-drm-e.md#contentprotectionlevel)     | Yes  | Content protection level, which specifies the security protection level of DRM content. Different levels correspond to different decryption capabilities and security requirements.                                                                                                                      |
 
 **Return value**
 
@@ -172,21 +174,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.               |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                  |
+| 24700201                |  Fatal service error, for example, service died.                  |
 
 **Example**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let supported: boolean = drm.isMediaKeySystemSupported("com.clearplay.drm", "video/avc", drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
+let supported: boolean = drm.isMediaKeySystemSupported('com.clearplay.drm', 'video/avc', drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
 console.info("isMediaKeySystemSupported: ", supported);
 ```
 
 ## drm.getMediaKeySystemUuid<sup>12+</sup>
 
-getMediaKeySystemUuid(name: string): string;
+getMediaKeySystemUuid(name: string): string
 
 Obtains the UUID of the DRM content protection system supported by the specified DRM solution.
 
@@ -212,16 +214,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 401                |  The parameter check failed.Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.                |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.                |
+| 24700101                |  All unknown errors.                  |
+| 24700201                |  Fatal service error, for example, service died.                  |
 
 **Example**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let uuid: string = drm.getMediaKeySystemUuid("com.clearplay.drm");
+let uuid: string = drm.getMediaKeySystemUuid('com.clearplay.drm');
 console.info("getMediaKeySystemUuid: ", uuid);
 ```
 
@@ -239,7 +241,7 @@ Obtains the list of plugins supported by the device.
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-| [MediaKeySystemDescription](arkts-apis-drm-i.md#mediakeysystemdescription12)           | Array of supported plugins.                  |
+| [MediaKeySystemDescription](arkts-apis-drm-i.md#mediakeysystemdescription12)[]           | Array of supported plugins.                  |
 
 **Error codes**
 
@@ -247,8 +249,8 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                  |
+| 24700201                |  Fatal service error, for example, service died.                  |
 
 **Example**
 

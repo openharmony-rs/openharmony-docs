@@ -1,10 +1,12 @@
 # Enums
+
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=5b3ab60fe000eb4bad70440a3e7f30019a2671f9 translatedAt=2026-08-20T09:34:14.406Z pushedAt=2026-08-21T02:05:07.698Z -->
 
 > **NOTE**
 >
@@ -152,19 +154,18 @@ Enumerates the flashlight modes.
 
 Enumerates the camera output formats.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
-
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 | Name                    | Value       | Description        |
 | ----------------------- | --------- | ------------ |
-| CAMERA_FORMAT_RGBA_8888 | 3         | RGBA_8888 image.       |
-| CAMERA_FORMAT_YUV_420_SP| 1003      | YUV_420_SP image, which corresponds to the NV21 image.     |
-| CAMERA_FORMAT_JPEG      | 2000      | JPEG image.           |
-| CAMERA_FORMAT_YCBCR_P010<sup>11+</sup> |   2001    | YCBCR_P010 image.     |
-| CAMERA_FORMAT_YCRCB_P010<sup>11+</sup> |   2002    | YCRCB_P010 image.     |
-| CAMERA_FORMAT_HEIC<sup>13+</sup>       |   2003    | HEIF image.           |
+| CAMERA_FORMAT_RGBA_8888 | 3         | RGBA_8888 image.<br>**Atomic service API**: This API can be used in atomic services since API version 19.       |
+| CAMERA_FORMAT_YUV_420_SP| 1003      | YUV_420_SP image, which corresponds to the NV21 image.<br>**Atomic service API**: This API can be used in atomic services since API version 19.     |
+| CAMERA_FORMAT_JPEG      | 2000      | JPEG image.<br>**Atomic service API**: This API can be used in atomic services since API version 19.           |
+| CAMERA_FORMAT_YCBCR_P010<sup>11+</sup> |   2001    | YCBCR_P010 image.<br>**Atomic service API**: This API can be used in atomic services since API version 19.     |
+| CAMERA_FORMAT_YCRCB_P010<sup>11+</sup> |   2002    | YCRCB_P010 image.<br>**Atomic service API**: This API can be used in atomic services since API version 19.     |
+| CAMERA_FORMAT_HEIC<sup>13+</sup>       |   2003    | HEIF image.<br>**Atomic service API**: This API can be used in atomic services since API version 19.           |
 | CAMERA_FORMAT_DNG<sup>24+</sup>        |   4    |  Digital Negative (DNG) image.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| CAMERA_FORMAT_DNG_XDRAW | 5     | Enhanced image in DNG format.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.    |
 
 ## VideoCodecType<sup>13+</sup>
 
@@ -223,7 +224,7 @@ Enumerates the image quality levels.
 
 ## MetadataObjectType
 
-Enumerates the metadata object types.
+Enumerates the types of metadata objects used for camera detection.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -231,6 +232,30 @@ Enumerates the metadata object types.
 | ------------------------- | ---- | ----------------- |
 | FACE_DETECTION            | 0    | Metadata object used for face detection.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | HUMAN_BODY<sup>23+</sup>     | 1    | Metadata object used for body detection.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| CAT_FACE               | 2    | Metadata object used for cat face detection.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| CAT_BODY                   | 3    | Metadata object used for cat body detection.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| DOG_FACE                   | 4    | Metadata object used for dog face detection.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| DOG_BODY                   | 5    | Metadata object used for dog body detection.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| SALIENT_DETECTION          | 6    | Metadata object used for salient detection.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| BAR_CODE_DETECTION         | 7    | Metadata object used for QR code detection.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| BASIC_FACE_DETECTION       | 8    | Metadata object for basic face detection.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+
+## Emotion
+
+Enumerates the types of emotions in the detected human face information.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                      | Value  | Description             |
+| -------------------------- | ---- | ----------------- |
+| NEUTRAL                    | 0    | Neutral.|
+| SADNESS                    | 1    | Sad.|
+| SMILE                      | 2    | Smile.|
+| SURPRISE                   | 3    | Surprise.|
 
 ## FlashMode
 
@@ -259,7 +284,7 @@ Enumerates the exposure modes.
 | EXPOSURE_MODE_LOCKED          | 0    | Exposure locked. The metering point cannot be set.<br>After this mode is used, the exposure will be locked by default for each photo capture.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | EXPOSURE_MODE_AUTO            | 1    | Auto exposure. The metering point can be set by calling [AutoExposure.setMeteringPoint](arkts-apis-camera-AutoExposure.md#setmeteringpoint11).<br>After this mode is used, it takes effect only for the first photo capture.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | EXPOSURE_MODE_CONTINUOUS_AUTO | 2    | Continuous auto exposure. The metering point cannot be set.<br>After this mode is used, the camera system automatically adjusts the exposure based on the environment changes each time.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| EXPOSURE_MODE_MANUAL | 3    | Manual exposure. The exposure duration can be set.<br>In this mode, you can set the exposure duration by calling [ManualExposure.setExposureDuration](arkts-apis-camera-ManualExposure.md#setexposureduration24).<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| EXPOSURE_MODE_MANUAL<sup>24+</sup> | 3    | Manual exposure. The exposure duration can be set.<br>In this mode, you can set the exposure duration by calling [ManualExposure.setExposureDuration](arkts-apis-camera-ManualExposure.md#setexposureduration24).<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 
 ## FocusMode
 
@@ -404,6 +429,7 @@ Enumerates the effect types supported by the camera controller.
 | BEAUTY    | 0 | Beauty effect.<br> **Atomic service API**: This API can be used in atomic services since API version 20.  |
 | PORTRAIT  | 1 | Portrait blur effect.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
 | AUTO_FRAMING<sup>24+</sup> | 2 | Auto focus.<br> **Atomic service API**: This API can be used in atomic services since API version 24.|
+| COLOR_EFFECT | 3 | Color effect<br>**Since**: 26.0.0<br> **Model restriction**: This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## PhotoQualityPrioritization<sup>21+</sup>
 
@@ -493,7 +519,7 @@ Enumerates the OIS axes.
 
 | Name                      | Value  | Description           |
 | ------------------------- | ---- | ------------    |
-| PITCH      | 0    | Pitch axis. It controls the up-down rotation of the camera body, that is, the camera body rotates around the axis horizontal to the lens.  |
+| PITCH      | 0    | Pitch axis. It controls the up-down rotation of the camera body, that is, the camera body rotates around the axis horizontal to the lens.   |
 | YAW   | 1    | Yaw axis. It controls the left-right rotation of the camera body, that is, the camera body rotates around the axis perpendicular to the lens.|
 
 ## ExposureState
@@ -512,3 +538,33 @@ Enumerates the exposure states.
 | ------------------------- | ---- | ------------    |
 | EXPOSURE_STATE_SCAN       | 0    | Focusing.    |
 | EXPOSURE_STATE_CONVERGED  | 1    | Exposure converged.    |
+
+## AutomotiveCameraPosition
+
+Enumerates the camera positions on a car.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                       | Value   | Description            |
+| ------------------------- | ---- | ------------    |
+| AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_OTHER       | 0    | Camera at another position outside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_FRONT  | 1    | Front camera outside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_REAR  | 2    | Rear camera outside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_LEFT  | 3    | Left camera outside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_RIGHT  | 4    | Right camera outside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_OTHER  | 5    | Camera at another position inside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_LEFT  | 6    | Left camera in the first row inside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_CENTER  | 7    | Central camera in the first row inside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_RIGHT  | 8    | Right camera in the first row inside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_LEFT  | 9    | Left camera in the second row inside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_CENTER  | 10    | Central camera in the second row inside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_RIGHT  | 11    | Right camera in the second row inside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_LEFT  | 12    | Left camera in the third row inside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_CENTER  | 13    | Central camera in the third row inside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_RIGHT  | 14    | Right camera in the third row inside the car.     |

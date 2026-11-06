@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @yuhong35-->
 <!--Designer: @xukeke-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=7738447060c2cc1f595c9bdcb430e65d6029dba4 translatedAt=2026-09-03T10:37:44.153Z pushedAt=2026-09-05T10:47:30.453Z -->
 
 The module provides capabilities for vertical panel management. Currently, it only supports launching the vertical panel for application selection.
 
@@ -27,9 +28,8 @@ import { verticalPanelManager } from '@kit.AbilityKit';
 
 startVerticalPanel(context: common.UIAbilityContext, wantParam: Record\<string, Object>, panelConfig: PanelConfig, panelStartCallback: PanelStartCallback): Promise\<void>
 
-Launches a vertical panel for selecting a target application to start. This API must be called when the caller (source application) is running in the foreground. This API uses a promise to return the result.
-
-As shown in the figure below, the source application ([sourceAppInfo](#panelconfig)), which is currently displayed on the screen, calls **startVerticalPanel** via an intermediary application (the launcher application) to launch the vertical panel. After the user manually selects the target application, the source and target applications automatically enter a split-screen layout.
+When an application is running in the foreground, developers can launch the vertical domain application panel through this API to select the target application to start. This API uses a promise to return the result.<br>
+As shown in the figure below, the source application ([sourceAppInfo](#panelconfig)), which is currently displayed on the screen, calls **startVerticalPanel** via an intermediary application (the launcher application) to bring up the application selection dialog box. After the user manually selects the target application, the source application and the target application are automatically displayed in split-screen mode.
 
 ![app-startverticalpanel-procedure](../figures/image-verticalpanelmanager-startverticalpanel.png)
 
@@ -152,7 +152,7 @@ Describes the configuration parameters of the vertical panel.
 | type | [VerticalType](#verticaltype) | No| No| Type of the vertical panel.|
 | sourceAppInfo | Record<string, string> | No| No| Information about the source application, including its bundle name, module name, ability name, window ID, and screen mode. When a target application is selected and started from the vertical panel, it automatically forms a split-screen layout with the source application.|
 
-## VerticalType 
+## VerticalType
 
 Enumerates the types of vertical panels that can be launched.
 

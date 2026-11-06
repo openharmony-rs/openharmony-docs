@@ -4,7 +4,8 @@
 <!--Owner: @hw-xpc-->
 <!--Designer: @xuchuanqi87-->
 <!--Tester: @sl_sunshineGirl-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=1cb536a9bc1863c0764e777858cb687387682e01 translatedAt=2026-09-03T09:18:11.306Z pushedAt=2026-09-05T10:47:30.157Z -->
 
 > **NOTE**
 >

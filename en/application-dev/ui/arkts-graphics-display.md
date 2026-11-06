@@ -5,6 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=a23154eb9299f3b730760d9eb22b88b8e7ab232c translatedAt=2026-11-03T08:20:44.631Z pushedAt=2026-11-03T09:08:29.400Z nl=1 -->
 
 More often than not, you may need to display images in your application, for example, icons in buttons, online images, and local images. In such cases, the **Image** component is used, which supports multiple image formats (including PNG, JPG, and JPEG), excluding APNG and SVGA. For details about the supported formats and usage, see [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md).
 
@@ -36,6 +37,10 @@ Archived data sources can be classified into local resources, network resources,
 
   In the **Image** component, set **src** to the local image path, with the **ets** directory as the root directory. Note that images cannot be loaded across bundles or modules.
 
+  > **NOTE**
+  > 
+  > Starting from DevEco Studio 6.0.0 Beta2, when creating a new project or module, the default module created does not package resources located outside the **resources** directory. To include such resources, you need to set **buildOption** > **resOptions** > **copyCodeResource** > **enable** to **true** in the module's **build-profile.json5** file. For details, refer to the [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348) section in **resOptions**.
+
   <!-- @[local_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
   
   ``` TypeScript
@@ -58,11 +63,11 @@ Archived data sources can be classified into local resources, network resources,
   - They cannot obtain the current cache usage. The **Image** component does not support querying the real-time status of the disk cache, including the total file size and file quantity.
   - The cache policy cannot be customized, and the cache status cannot be observed. You cannot obtain runtime metrics such as the cache hit ratio and eviction count through APIs, so it is difficult to implement dynamic optimization based on the actual cache effect.
 
-  For complex scenarios, you are advised to use [ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife), which provides more flexible and scalable cache policies and comprehensive lifecycle management capabilities.
+  For complex scenarios, you are advised to use [ImageKnife](https://gitcode.com/CPF-ApplicationTPC/ImageKnife), which provides more flexible and scalable cache policies and comprehensive lifecycle management capabilities.
 
   Network images must comply with the RFC 9113 standard. Otherwise, the loading will fail. For images larger than 10 MB or bulk downloads, use the [HTTP](../network/http-request.md) API for pre-downloading to improve loading performance and simplify data management.
 
-  The **Image** component employs a decoupled architecture where download and cache operations are handled by the unified [download and cache module](../reference/apis-basic-services-kit/js-apis-request-cacheDownload.md). For details, see [Example 3: Downloading and Displaying Online GIF Images](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#example-3-downloading-and-displaying-online-gif-images).
+  The **Image** component employs a decoupled architecture where download and cache operations are handled by the unified [@ohos.request.cacheDownload (Download and Cache)](../reference/apis-basic-services-kit/js-apis-request-cacheDownload.md). For details, see [Example 3: Downloading and Displaying Online GIF Images](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#example-3-downloading-and-displaying-online-gif-images).
   
   The download and cache module provides pre-download capabilities, allowing images to be fetched before the **Image** component is created. After the **Image** component is created, it can directly obtain downloaded image data from the cache, accelerating image display, improving the loading experience, and effectively avoiding delays caused by fetching network images repeatedly. All network cache files are stored in the application's **cache** directory.
 
@@ -77,7 +82,7 @@ Archived data sources can be classified into local resources, network resources,
 
   **Resource** objects can be used to import images across bundles and modules. All images in the **resources** folder can be read and converted to the **Resource** objects through **$r**.
 
-  **Figure 1** resources 
+  **Figure 1** resources
 
   ![image-resource](figures/image-resource.jpg)
 
@@ -92,7 +97,7 @@ Archived data sources can be classified into local resources, network resources,
 
   You can also place the images in the **rawfile** folder.
 
-  **Figure 2** rawfile folder 
+  **Figure 2** rawfile folder
 
   ![image-rawfile](figures/image-rawfile.jpg)
 
@@ -105,7 +110,7 @@ Archived data sources can be classified into local resources, network resources,
   Image($rawfile('example1.png'))
   ```
 
-- Media library **file://data/storage**
+- Media library resource (file:// path prefix)
   
   To load images from the [picker](../reference/apis-core-file-kit/js-apis-file-picker.md), use a path string that starts with **file://**.
   1. Call the API to obtain the image URL in the media library.
@@ -117,7 +122,7 @@ Archived data sources can be classified into local resources, network resources,
       import { hilog } from '@kit.PerformanceAnalysisKit';
       const DOMAIN = 0x0001;
       const TAG = 'Sample_imagecomponent';
-      
+    
       @Entry
       @Component
       struct MediaLibraryFile {
@@ -144,7 +149,7 @@ Archived data sources can be classified into local resources, network resources,
             hilog.info(DOMAIN, TAG,`PhotoViewPicker failed with. Code: ${code}, message: ${message}`);
           };
         };
-      
+    
         // Call the preceding function in aboutToAppear to obtain the image URL set and store the URLs in imgDatas.
         async aboutToAppear() {
           this.getAllImg();
@@ -165,10 +170,10 @@ Archived data sources can be classified into local resources, network resources,
       }
       ```
     2. Check the format of the URL obtained from the media library:
-       <!-- @[fileLibrary_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
+       <!-- @[fileLibrary_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->
   
        ``` TypeScript
-       // Replace 'file://media/Photos/5' with the resource file you use. Replace the value in the resource file with the actual path.
+       // Replace 'file://media/Photos/5' with the resource file required by the developer, and replace the value in the resource file with the real path.
        Image('file://media/Photos/5')
          .width(200)
        ```
@@ -186,56 +191,58 @@ Archived data sources can be classified into local resources, network resources,
 PixelMap is a pixel image after image decoding. For details, see [Introduction to Image Kit](../media/image/image-overview.md). In the following example, the data returned by the loaded online image is decoded into a pixel map, which is then displayed on the **Image** component.
 
 
-  <!-- @[multimedia_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/MultimediaPixelArt.ets) -->    
+<!-- @[multimedia_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/MultimediaPixelArt.ets) -->
 
-  ``` TypeScript
-  import { http } from '@kit.NetworkKit';
-  import { image } from '@kit.ImageKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  const DOMAIN = 0x0001;
-  const TAG = 'Sample_imagecomponent';
-  
-  @Entry
-  @Component
-  struct HttpExample {
-    outData: http.HttpResponse | undefined = undefined;
-    code: http.ResponseCode | number | undefined = undefined;
-    @State image: PixelMap | undefined = undefined; // Create a PixelMap state variable.
-  
-    // Use createHttp to decode data returned by the loaded online image into a pixel map for display on the Image component.
-    aboutToAppear(): void {
-      http.createHttp().request('xxx://xxx.xxx.xxx/example.png', // Replace the file with the resource file you use. Replace the value in the resource file with the actual path.
-        (error: BusinessError, data: http.HttpResponse) => {
-          if (error) {
-            hilog.error(DOMAIN, TAG, `hello http request failed. Code: ${error.code}, message: ${error.message}`);
-            return;
+``` TypeScript
+import { http } from '@kit.NetworkKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'Sample_imagecomponent';
+
+@Entry
+@Component
+struct HttpExample {
+  outData: http.HttpResponse | undefined = undefined;
+  code: http.ResponseCode | number | undefined = undefined;
+  @State image: PixelMap | undefined = undefined; // Create a PixelMap state variable.
+
+  // Use createHttp to decode data returned by the loaded online image into a pixel map for display on the Image component.
+  aboutToAppear(): void {
+    http.createHttp().request('xxx://xxx.xxx.xxx/example.png', // Replace the file with the resource file you use. Replace the value in the resource file with the actual path.
+      (error: BusinessError, data: http.HttpResponse) => {
+        if (error) {
+          hilog.error(DOMAIN, TAG, `hello http request failed. Code: ${error.code}, message: ${error.message}`);
+          return;
+        };
+        this.outData = data;
+        // Decode the data successfully retrieved from the network address into PixelMap format.
+        if (http.ResponseCode.OK === this.outData.responseCode) {
+          let imageData: ArrayBuffer = this.outData.result as ArrayBuffer;
+          let imageSource: image.ImageSource = image.createImageSource(imageData);
+          let options: image.DecodingOptions = {
+            'desiredPixelFormat': image.PixelMapFormat.RGBA_8888,
           };
-          this.outData = data;
-          // Convert network response data to PixelMap format.
-          if (http.ResponseCode.OK === this.outData.responseCode) {
-            let imageData: ArrayBuffer = this.outData.result as ArrayBuffer;
-            let imageSource: image.ImageSource = image.createImageSource(imageData);
-            let options: image.DecodingOptions = {
-              'desiredPixelFormat': image.PixelMapFormat.RGBA_8888,
-            };
-            imageSource.createPixelMap(options).then((pixelMap: PixelMap) => {
-              this.image = pixelMap;
-            });
-          };
-        });
-    };
-  
-    build() {
-      Column() {
-        // Display the image.
-        Image(this.image)
-          .height(100)
-          .width(100)
-      }
+          imageSource.createPixelMap(options).then((pixelMap: PixelMap) => {
+            this.image = pixelMap;
+            imageSource.release();
+          });
+        };
+      });
+  };
+
+  build() {
+    Column() {
+      // Display the image.
+      Image(this.image)
+        .height(100)
+        .width(100)
     }
   }
-  ```
+}
+```
+  
 
 ### DrawableDescriptor
 
@@ -244,7 +251,7 @@ DrawableDescriptor is an advanced image abstraction mechanism in ArkUI that enca
 The following example demonstrates image display and animation implementation using DrawableDescriptor:
 
   <!-- @[drawable_descriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DrawableDescriptor.ets) -->    
-
+  
   ``` TypeScript
   import {
     DrawableDescriptor,
@@ -369,13 +376,13 @@ The following example demonstrates image display and animation implementation us
 
 The Image component supports Scalable Vector Graphics (SVG). For SVG element reference, see [SVG Tags](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-svg.md).
 
-To display an SVG image without intrinsic dimensions, you must set the width and height for the **Image** component. SVG images cannot reference local SVG or GIF images through **\<image>** tags.
+To display an SVG image without intrinsic dimensions, you must set the width and height for the **Image** component. SVG images cannot reference local SVG or GIF images through `<image>` tags.
 
 You can use the **fillColor** attribute to change the fill color of an SVG image.
 
 
   <!-- @[svg_fillColor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->    
-
+  
   ``` TypeScript
   // Replace $r('app.media.cloud') with the actual resource file.
   Image($r('app.media.cloud'))
@@ -383,11 +390,11 @@ You can use the **fillColor** attribute to change the fill color of an SVG image
     .fillColor(Color.Blue)
   ```
 
-  **Figure 3** Original image 
+  **Figure 3** Original image
 
 ![screenshot_20230223_141141](figures/screenshot_20230223_141141.png)
 
-  **Figure 4** SVG image after the fill color is set 
+  **Figure 4** SVG image after the fill color is set
 
 ![screenshot_20230223_141404](figures/screenshot_20230223_141404.png)
 
@@ -397,8 +404,12 @@ When using the **Image** component to load an SVG file that references any local
 
 Example for setting the SVG image path in the **Image** component:
 
-  <!-- @[local_svg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->    
+> **NOTE**
+> 
+> Starting from DevEco Studio 6.0.0 Beta2, when creating a new project or module, the default module created does not package resources located outside the **resources** directory. To include such resources, you need to set **buildOption** > **resOptions** > **copyCodeResource** > **enable** to **true** in the module's **build-profile.json5** file. For details, refer to the [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348) section in **resOptions**.
 
+  <!-- @[local_svg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->    
+  
   ``` TypeScript
   // Replace 'images/icon.svg' with the resource file you use.
   Image('/images/icon.svg')
@@ -422,11 +433,11 @@ Setting attributes for the **Image** component can spruce up the image with cust
 
 ### Setting the Image Scale Mode
 
-You can use the [objectFit](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md#objectfit) attribute to scale an image to fit it into a container whose height and width are determined.
+You can use the [objectFit](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#objectfit) attribute to scale an image to fit it into a container whose height and width are determined.
 
 
   <!-- @[image_objectfit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageZoomType.ets) -->   
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -513,7 +524,7 @@ You can use the [objectFit](../reference/apis-arkui/arkui-ts/ts-basic-components
   }
   ```
 
-![en-us_image_0000001622804833](figures/en-us_image_0000001622804833.png)
+![image_0000001622804833](figures/Image-Scale-Mode.png)
 
 
 ### Using Image Interpolation
@@ -522,7 +533,7 @@ An image of low resolution may suffer quality loss with aliasing when scaled up.
 
 
   <!-- @[image_interpolation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/ImageInterpolation.ets) -->    
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -578,7 +589,7 @@ An image of low resolution may suffer quality loss with aliasing when scaled up.
   }
   ```
 
-![en-us_image_0000001643127365](figures/en-us_image_0000001643127365.png)
+![image_0000001643127365](figures/Image-Interpolation.png)
 
 
 ### Setting Image Repeat Pattern
@@ -587,7 +598,7 @@ You can use the **objectRepeat** attribute to set the repeat pattern of an image
 
 
   <!-- @[image_repetitionstyle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRepetitionStyle.ets) -->    
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -634,7 +645,7 @@ You can use the **objectRepeat** attribute to set the repeat pattern of an image
   }
   ```
 
-![en-us_image_0000001593444112](figures/en-us_image_0000001593444112.png)
+![image_0000001593444112](figures/Setting-Image-Repeat.png)
 
 
 ### Setting Image Rendering Mode
@@ -643,7 +654,7 @@ You can use the **renderMode** attribute to set the rendering mode of an image.
 
 
   <!-- @[image_renderingmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRenderingMode.ets) -->    
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -675,7 +686,7 @@ You can use the **renderMode** attribute to set the rendering mode of an image.
   }
   ```
 
-![en-us_image_0000001593293100](figures/en-us_image_0000001593293100.png)
+![image_0000001593293100](figures/Setting-Image-Rendering.png)
 
 
 ### Setting Image Decoding Size
@@ -686,7 +697,7 @@ In this example, the source image size is 1280 x 960, and the decoding sizes are
 
 
   <!-- @[image_decodingsize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageDecodingSize.ets) -->    
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -727,16 +738,16 @@ In this example, the source image size is 1280 x 960, and the decoding sizes are
   }
   ```
 
-![en-us_image_0000001593769844](figures/en-us_image_0000001593769844.png)
+![image_0000001593769844](figures/Image-Decoding-Size.png)
 
 
 ### Adding a Filter to an Image
 
-You can use the **colorFilter** attribute to add a filter to an image.
+Use `colorFilter` to adjust the pixel colors of an image and add a filter to it.<!--RP1--><!--RP1End-->
 
 
   <!-- @[image_filtereffect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/AddFilterEffectsToImages.ets) -->    
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -753,10 +764,10 @@ You can use the **colorFilter** attribute to add a filter to an image.
             .width('40%')
             // Use the colorFilter attribute to add a filter to an image.
             .colorFilter(
-               [1, 1, 0, 0, 0,
-                0, 1, 0, 0, 0,
-                0, 0, 1, 0, 0,
-                0, 0, 0, 1, 0])
+              [1, 1, 0, 0, 0,
+               0, 1, 0, 0, 0,
+               0, 0, 1, 0, 0,
+               0, 0, 0, 1, 0])
             .margin(10)
         }.width('100%')
         .justifyContent(FlexAlign.Center)
@@ -765,7 +776,7 @@ You can use the **colorFilter** attribute to add a filter to an image.
   }
   ```
 
-![en-us_image_0000001643171357](figures/en-us_image_0000001643171357.png)
+![image_0000001643171357](figures/Adding-Filter-Image.png)
 
 
 ### Synchronously Loading Images
@@ -774,22 +785,23 @@ Generally, the image loading process is performed asynchronously to avoid blocki
 
 
   <!-- @[synchronous_imageloading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->    
-
+  
   ``` TypeScript
   // Replace $r('app.media.icon') with the actual resource file.
   Image($r('app.media.icon'))
     .syncLoad(true)
   ```
 
+<!--RP2--><!--RP2End-->
 
-## Adding Events
+## Event Calling
 
-By binding the **onComplete** event to the **Image** component, you can obtain necessary information about the image after the image is successfully loaded. You can also bind the **onError** event to obtain error information when the image fails to be loaded.
+By binding the **onComplete** event to the **Image** component, you can obtain necessary information about the image after it is successfully loaded. If the image fails to load, you can also obtain the result by binding the **onError()** callback.
 
 
-  <!-- @[event_invocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/EventCall.ets) -->    
-
-  ``` TypeScript
+ <!-- @[event_invocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/EventCall.ets) -->    
+  
+``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   const DOMAIN = 0x0001;
   const TAG = 'Sample_imagecomponent';
@@ -835,4 +847,10 @@ By binding the **onComplete** event to the **Image** component, you can obtain n
   }
   ```
 
-![en-us_image_0000001511740460](figures/en-us_image_0000001511740460.png)
+![image_0000001511740460](figures/Adding-Events.png)
+
+## Samples
+
+For image display development, the following related example is available for reference:
+
+- [Displaying Images](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ImageComponent)

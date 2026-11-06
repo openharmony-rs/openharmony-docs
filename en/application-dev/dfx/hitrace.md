@@ -2,12 +2,13 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @qq_437963121-->
-<!--Designer: @kutcherzhou1; @MontSaintMichel-->
+<!--Owner: @yu_haoqiaida-->
+<!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=9b41559870778475344764be8fd1231b5e38dd06 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
-hitrace provides the capability of collecting trace information in text or binary format, including system logging and custom logging set through the [HiTraceMeter APIs](hitracemeter-intro.md), helping you observe program running status and locate faults.
+The hitrace command-line tool provides trace information capture capabilities, supporting the collection of trace points provided by the system and trace points set by developers in apps using the [HiTraceMeter API](hitracemeter-intro.md). This tool supports multiple methods for capturing trace information in text format or binary format, helping you observe program running status and locate faults.
 
 
 ## Environment Requirements
@@ -26,13 +27,14 @@ hitrace provides the capability of collecting trace information in text or binar
 | --trace_begin | Starts capturing trace data.|
 | --trace_finish | Stops capturing trace data.|
 | --trace_finish_nodump | Stops capturing trace data. Unlike **--trace_finish**, this command does not output trace information.|
-| --trace_dump | Dumps trace information.|
+| --trace_dump | Exports trace information. When the **-o/--output** parameter is not specified, text-format trace is output to stdout by default. |
 | --record | Enables the recording mode, which allows long-time trace data collection and persisting. This command must be used together with **--trace_begin** or **--trace_finish**.|
 | --overwrite | Sets the behavior after the kernel buffer is full. If this option is not set, the earliest data is discarded by default. Otherwise, the latest data is discarded.|
 | --file_size | Sets the file size, in KB. This option is valid only for collecting trace data in binary format.|
+| --total_size | Sets the total file size (in KB). Effective only when capturing binary-format trace data in recording mode.<br/>**Note:** This command is supported since API version 24. |
 | -b N/--buffer_size N | Sets the buffer size for storing and reading trace data, in KB. The minimum value is 512, and the maximum value depends on the available memory of the device.|
 | -t N/--time N | Sets the collection duration, in seconds.|
-| -o/--output filename | Specifies the name of the target file. If the exported trace data is in text format, the default value is **stdout**. If you want to save the trace data to a file, you are advised to use the **/data/local/tmp** directory. This option is not supported if the exported trace data is in binary format.|
+| -o/--output filename | Specifies the filename for saving trace data. Must be used together with the **--trace_dump**, **--record**, or **--dump_bgsrv** command. Only supports output to the **/data/local/tmp** directory.<br/>**Note:**<br/>For API version 24 and later, this command is supported when exporting trace in binary format.<br/>For API version 23 and earlier, this command is not supported when exporting trace in binary format.|
 | -z | Compresses the captured trace data.|
 | --text | Exports trace data in text format (text format is used by default).|
 | --raw | Exports trace data in binary format (text format is used by default).|
@@ -42,6 +44,7 @@ hitrace provides the capability of collecting trace information in text or binar
 | --stop_bgsrv | Stops trace collection in the snapshot mode.|
 | --trace_level | Sets the trace level threshold. The value can be **Debug**, **Info**, **Critical**, **Commercial**, or **D**, **I**, **C**, or **M**.<br>**Note**: This command is supported since API version 19.|
 | --get_level | Queries the trace level threshold.<br>Note: This command is supported since API version 20.|
+| <!--DelRow-->--boot_trace | Configures boot trace. During subsequent boot processes, automatically captures and saves a segment of trace data based on preset parameters. For details, see [Configuring Boot Trace](#configuring-boot-trace) below.<br/>Must be executed with root permissions and is subject to constraints such as developer mode and debuggable images.<br/>**Note:** This command is supported since API version 26.0.0. |
 
 > **NOTE**
 >
@@ -49,7 +52,6 @@ hitrace provides the capability of collecting trace information in text or binar
 
 
 ## Examples
-
 
 ### Querying Help Information
 
@@ -95,6 +97,8 @@ options include:
   --dump_bgsrv           Trigger the dump trace task of the trace_service.
   --stop_bgsrv           Disable trace_service in snapshot mode.
   --file_size            Sets the size of the raw trace (KB). The default file size is 102400 KB.
+                         Only effective in raw trace mode
+  --total_size           Sets the total size of all traces (KB). The default total size is 2048 × 1024 KB.
                          Only effective in raw trace mode
   --trace_level level    Set the system parameter "persist.hitrace.level.threshold", which can control
                          the level threshold of tracing. Valid values for "level" include
@@ -261,7 +265,7 @@ $ hitrace -t 10 -b 204800 app -o /data/local/tmp/test.ftrace
 
 ### Capturing Binary Trace Data of a Specified Duration
 
-Specify the **--raw** option to capture binary trace data, which is always saved in **/data/log/hitrace**. After the collection is complete, the absolute path of the generated file is displayed in the CLI.
+When the command carries the **--raw** parameter, it can capture trace in binary format. When capturing trace in binary format, specifying a path is not supported, and the trace is fixedly saved under the path **/data/log/hitrace**. After the capture is complete, the absolute path of the generated file is displayed in the command-line window.
 
 ```shell
 hitrace -t 10 -b 204800 app --raw
@@ -434,7 +438,7 @@ $ hitrace --start_bgsrv
 ```
 
 
-Run the following command to export the trace information in the buffer to a file. Binary trace data cannot be exported to a specified path or displayed in the CLI. The exported file path is displayed in the CLI.
+Use the following command to export the trace information in the current buffer to a file. Binary format trace supports specifying a path (currently only supports setting the path to **/data/local/tmp**) for export or displaying in the command-line window.
 
 
 ```shell
@@ -442,9 +446,9 @@ hitrace --dump_bgsrv
 ```
 
 
-**Example**
+**Example 1**:
 
-
+The standard snapshot mode command without specifying a path is as follows:
 ```shell
 $ hitrace --dump_bgsrv
 2025/06/04 16:50:34 hitrace enter, running_state is SNAPSHOT_DUMP
@@ -452,6 +456,15 @@ $ hitrace --dump_bgsrv
     /data/log/hitrace/trace_20250604164454@613340-339960.sys
 ```
 
+**Example 2**:
+
+Starting from API version 24, snapshot mode supports specifying a path, for example:
+```shell
+$ hitrace --dump_bgsrv -o /data/local/tmp/test.sys
+2025/06/04 16:50:34 hitrace enter, running_state is SNAPSHOT_DUMP
+2025/06/04 16:50:35 DumpSnapshot done, output:
+     /data/local/tmp/test.sys
+```
 
 Run the following command to stop the collection:
 
@@ -473,7 +486,7 @@ $ hitrace --stop_bgsrv
 
 ### Capturing Trace Data in Record Mode
 
-In record mode, the system continuously saves binary trace data generated during running. When the file size exceeds the preset value, a new file is generated. The save path cannot be specified.
+In recording mode, the system continuously saves the binary format trace generated at runtime. When the file size exceeds the set value, a new file is generated. Specifying a save path is supported (currently only supports setting the path to /data/local/tmp).
 
 Run the following command to enable the record mode. Set the buffer size to 204800 KB, the file size to 102400 KB, and the tags to **app** and **graphic**.
 
@@ -481,12 +494,23 @@ Run the following command to enable the record mode. Set the buffer size to 2048
 hitrace --trace_begin --record -b 204800 --file_size 102400 app graphic
 ```
 
-**Example**
+**Example 1**:
 
+The recording mode without specifying a path is as follows:
 ```shell
 $ hitrace --trace_begin --record -b 204800 --file_size 102400 app graphic
 2025/06/04 17:03:37 hitrace enter, running_state is RECORDING_LONG_BEGIN_RECORD
 2025/06/04 17:03:37 args: tags:app,graphic bufferSize:204800 overwrite:1 fileSize:102400
+2025/06/04 17:03:37 trace capturing.
+```
+
+**Example 2**:
+
+Starting from API version 24, recording mode supports specifying a path, for example:
+```shell
+$ hitrace --trace_begin --record sched app -o /data/local/tmp --total_size 1024000
+2025/06/04 17:03:37 hitrace enter, running_state is RECORDING_LONG_BEGIN_RECORD
+2025/06/04 17:03:37 args: tags:sched, app bufferSize:18432 overwrite:1 totalSize:1024000
 2025/06/04 17:03:37 trace capturing.
 ```
 
@@ -533,7 +557,7 @@ $ hitrace -z -b 102400 -t 10 sched freq idle disk -o /data/local/tmp/test.ftrace
 
 The priority of the trace level is as follows: **M** (**Commercial**), **C** (**Critical**), **I** (**Info**) and **D** (**Debug**). The trace level lower than the threshold does not take effect.
 
-You can use the logging APIs with the trace level (for details, see the logging APIs of API version 19 in [js-apis-hitracemeter](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md) and [_hitrace](../reference/apis-performance-analysis-kit/capi-trace-h.md)) to test whether the trace output under different thresholds meets the expectation.
+You can use the trace-level trace APIs (see the API version 19 trace APIs in [@ohos.hiTraceMeter](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md) and [trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md)) to test whether the trace output meets expectations under different thresholds.
 
 ```shell
 // Set the trace level threshold.
@@ -555,9 +579,78 @@ $ hitrace --get_level
 ```
 
 
+<!--Del-->
+### Configuring Boot Trace
+
+Boot trace is used to capture trace data during the early stage of system boot (when manual intervention is difficult). After you run `hitrace --boot_trace` to write the capture configuration, the system automatically starts the capture task through init during subsequent boot processes and saves the binary trace file to the `/data/local/tmp/` directory.
+
+The following prerequisites must be met to use boot trace, which can be queried using the corresponding commands:
+
+| Prerequisite | Query Method | Matching Query Result |
+| -------- | -------- | -------- |
+| Developer mode is enabled. | `param get const.security.developermode.state` | `true` |
+| The system is a debuggable image. | `param get const.debuggable` | `1` |
+| You have root permissions. | `whoami` | `root` |
+| The init trace plugin of the init subsystem is not enabled. | `param get persist.init.trace.enabled` | Not `1` |
+
+> **NOTE**
+>
+> Boot trace occupies the trace pipeline during capture, which may affect other trace capture operations. It is recommended to avoid running other hitrace capture, export, or recording commands at the same time.
+
+The command format is as follows:
+
+```shell
+hitrace --boot_trace [options] tag1 [tag2 ...]
+hitrace --boot_trace off
+```
+
+`tag1 tag2 ...` is the list of tags to be captured. At least one tag must be specified. The tags must be specific tags from the output of the `hitrace -l` command. Tag group names are not supported.
+
+`off` disables the boot trace feature. Existing configuration files are not deleted. When the configuration command is executed again, the same path is overwritten.
+
+Common parameters are as follows:
+
+| Parameter | Description |
+| -------- | -------- |
+| -b N/--buffer_size N | Sets the capture buffer size, in KB. When not specified, the default value is 18432. |
+| -t N/--time N | Sets the duration of a single capture (in seconds), which must be greater than 0. When not specified, the default value is 30. |
+| --repeat N | Sets the number of automatic captures on subsequent boots. The value range is [1, 100]. Each time a scheduled capture is triggered, the system parameter persist.hitrace.boot_trace.count decreases by 1 until it reaches 0, after which automatic capture stops. |
+| --increment | Enables incremental naming. When enabled, the output file name is `{file_prefix}_{n}.sys`, where the sequence number `n` starts from 0 and increments by 1 after each successful capture. This option must be written after `--boot_trace`. |
+| --file_prefix prefix | Sets the output file name prefix. When not specified, the default value is `boot_trace`. When `--increment` is not enabled, the output file name is `{file_prefix}.sys`. |
+
+After successful configuration, the configuration file `/data/local/tmp/boot_trace.cfg` is generated or overwritten. When the system restarts, the init process reads this configuration file and triggers trace capture, generating a `.sys` file. The generated `.sys` file can be analyzed using tools such as [Smartperf_Host](https://gitcode.com/openharmony/developtools_smartperf_host).
+
+**Example 1**: Configure automatic capture for the next three boots, capturing the tags `sched` and `app`, with a duration of 20 seconds per capture:
+
+```shell
+$ hitrace --boot_trace --repeat 3 -t 20 sched app
+```
+
+**Example 2**: Enable incremental naming and specify a file prefix:
+
+```shell
+$ hitrace --boot_trace --repeat 2 --increment --file_prefix boot_sched -t 15 sched
+```
+
+**Example 3**: Disable the boot trace feature after use:
+
+```shell
+$ hitrace --boot_trace off
+```
+
+The recommended operation procedure is as follows:
+
+1. Enter the device shell through `hdc shell` and switch to root permissions.
+2. Run `hitrace --boot_trace [parameters] tag...` to write the boot trace configuration.
+3. Restart the device and check whether the expected trace file is generated in the `/data/local/tmp/` directory. It is recommended to wait for the configured capture duration before checking to ensure that capture and disk writing are complete.
+4. After use, run `hitrace --boot_trace off` to disable the boot trace feature.
+
+<!--DelEnd-->
+
+
 ## Trace File Names
 
-When hitrace is used to collect trace information in binary format, the file path cannot be specified. By default, the trace file is saved in the **/data/log/hitrace** directory. hitrace automatically generates the file name and displays the absolute path in the CLI.
+When using the hitrace command-line tool to capture trace information in binary format, you can specify a file path (currently only supports setting the path to /data/local/tmp). By default, the trace is saved under the /data/log/hitrace path. hitrace automatically generates a file name and displays the absolute path in the command-line window.
 
 In snapshot mode, the trace file name starts with **trace**; in record mode, it starts with **record**. The name ends with the local time and boot time (timestamp starting from the startup time).
 
@@ -627,3 +720,23 @@ $ hitrace --dump_bgsrv
 1. When the trace data in text format is collected, the output file path specified by the **-o** option does not exist or you do not have the permission to use the path. You are advised to save the trace data to the **/data/local/tmp** directory.
 
 2. When the disk space is full, no new trace file is generated. You are advised to release the disk space and ensure that the available space is greater than 500 MB. Then collect the trace data again.
+
+### Error "illegal path" After Executing the hitrace Command
+ 
+ **Symptom Description**
+ 
+ An error occurs after the hitrace command is executed, and "illegal path" is displayed in the command-line window.
+ 
+```shell
+$ hitrace --dump_bgsrv -o /data/local/test
+2026/03/27 17:25:58 hitrace enter, running_state is SNAPSHOT_DUMP
+2026/03/27 17:25:58 error: illegal path
+```
+
+ **Possible Causes and Solution**
+ 
+ "illegal path" indicates that the specified path is invalid. Possible causes include:
+ 
+ 1. When capturing trace in binary format, the output file path specified by the **-o** parameter is not **/data/local/tmp** or its subdirectory. Change it to **/data/local/tmp** or its subdirectory.
+ 
+ 2. In recording mode, the output file path specified by the **-o** parameter is not **/data/local/tmp** or its subdirectory. Change it to **/data/local/tmp** or its subdirectory.

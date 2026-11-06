@@ -4,15 +4,20 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=4fa3e62227da957c0cdabf9afba84e2707cbf060 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 - [About This Kit](distributedservice-kit-intro.md)
 - [Distributed Device Management Development](devicemanager-guidelines.md)
 - Distributed Ability Connection Management<!--abilityconnect-distributed-->
-  - [UIAbility Connection Development](abilityconnectmanager-guidelines.md)
+  - [Cross-Device UIAbility Connection Development](abilityconnectmanager-guidelines.md)
   <!--Del-->
-  - [Distributed Extension Ability Development (for System Applications Only)](distributedextension-guidelines-sys.md)
+  - [Cross-Device UIAbility Connection Development (for System Applications Only)](abilityconnectmanager-guidelines-sys.md)
+  - [DistributedExtensionAbility Development (for System Applications Only)](distributedextension-guidelines-sys.md)
   <!--DelEnd-->
-  - [Enhanced Connection Development](linkEnhance_development-guide.md)
-- Distributed Hardware Connection Management<!--devconnect-distributed-->
-  - [Distributed Camera Development](camera-distributed.md)
+  - [Enhanced Connection Development](linkEnhance-development-guide.md)
+  <!--Del-->
+- Distributed SoftBus<!--distributed-softbus-->
+  - [Cross-Device Agent Wake-Up and Message Transmission (for System Applications Only)](distributedSoftBus-conversation-guidelines-sys.md)
+  - [Device Perception Development Guide (for System Applications Only)](distributed-softbusBase-guide-sys.md)
+  <!--DelEnd-->

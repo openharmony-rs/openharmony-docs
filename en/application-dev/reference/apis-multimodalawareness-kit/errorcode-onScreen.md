@@ -5,10 +5,11 @@
 <!--Designer: @zou_ye-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=d18790e6ef1247c1fd8194f3838e7698bf6e9bf2 translatedAt=2026-06-24T06:29:29.231Z pushedAt=2026-06-25T01:35:11.425Z -->
 
 > **NOTE**
 >
-> This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
+> The following describes only the error codes specific to this module. For general error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 ## 34000001 Service Exception
 

@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=79c965e8e98a1b9ec686c81b298af1075b43b9bc translatedAt=2026-10-30T03:47:27.160Z pushedAt=2026-10-30T07:25:17.604Z nl=1 -->
 
 For details about the algorithm specifications, see [X25519](crypto-key-agreement-overview.md#x25519).
 
@@ -13,9 +14,9 @@ For details about the algorithm specifications, see [X25519](crypto-key-agreemen
 
 1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator), [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1), and [AsyKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-3) to generate an X25519 asymmetric key pair (**KeyPair**).
 
-   In addition to the example in this topic, [X25519](crypto-asym-key-generation-conversion-spec.md#x25519) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md) may help you better understand how to generate an X25519 asymmetric key pair. Note that the input parameters in the reference documents may be different from those in the example below.
+   For guidance on generating an X25519 asymmetric key, refer to the following example, in conjunction with [Asymmetric Key Generation and Conversion Specifications: X25519](crypto-key-generation-conversion.md#x25519) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). Note that the referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
-2. Call [cryptoFramework.createKeyAgreement](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekeyagreement) with the string parameter **'X25519'** to create a key agreement (**KeyAgreement**) that uses the X25519 key algorithm.
+2. Call [cryptoFramework.createKeyAgreement](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekeyagreement) with the string parameter 'X25519' to create a key agreement generator (KeyAgreement) for the X25519 algorithm.
 
 3. Call [KeyAgreement.generateSecret](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesecret-1) to perform key agreement with the specified private key (**KeyPair.priKey**) and public key (**KeyPair.pubKey**), and return the shared secret.
 
@@ -62,7 +63,7 @@ For details about the algorithm specifications, see [X25519](crypto-key-agreemen
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   
-  function x25519Await() {
+  function x25519Sync() {
     // The public and private key pair data is transferred from an external system.
     let pubKeyArray =
       new Uint8Array([48, 42, 48, 5, 6, 3, 43, 101, 110, 3, 33, 0, 36, 98, 216, 106, 74, 99, 179, 203, 81, 145, 147, 101,
@@ -89,3 +90,4 @@ For details about the algorithm specifications, see [X25519](crypto-key-agreemen
     }
   }
   ```
+

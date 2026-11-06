@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Worker常驻线程结合TaskPool进行多任务并发处理的开发方式：在Worker线程中通过TaskPool执行并发任务，兼顾Worker生命周期可控与TaskPool调度便捷，适用于既有常驻业务又有大量并发任务的场景。"
+keywords: [Worker与TaskPool结合, 常驻线程, 多任务并发, 混合并发模式, 任务分发, 消息通信]
+doctype: guide
+status: active
+---
+
 # Worker常驻线程通过TaskPool进行多任务并发处理
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS应用开发过程中，可以选择TaskPool或Worker线程进行多任务并发处理，也可以两种并发能力都选择。
 
@@ -29,7 +37,7 @@ ArkTS应用开发过程中，可以选择TaskPool或Worker线程进行多任务�
      build() {
        RelativeContainer() {
          Button(this.message)
-           .fontSize(25)
+           .fontSize(19)
            .id('HelloWorld')
            .fontWeight(FontWeight.Bold)
            .alignRules({
@@ -77,7 +85,7 @@ ArkTS应用开发过程中，可以选择TaskPool或Worker线程进行多任务�
        // 调用TaskPool执行并发任务
        const task = new taskpool.Task(parallelTask, processedData);
        const result = await taskpool.execute(task);
-       console.info('Worker线程返回结果: ', result);
+       console.info('TaskPool线程返回结果: ', result);
    
        // 将最终结果返回主线程
        workerPort.postMessage({

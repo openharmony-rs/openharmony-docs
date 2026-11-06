@@ -2,12 +2,13 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=d66ce495242bdf35b08a89dbf23cdf3929953623 translatedAt=2026-08-24T08:20:00.042Z pushedAt=2026-08-31T03:05:25.656Z -->
 
-Describes the style of a typeface, such as SimSun or KaiTi.
+The Typeface class is used to represent and manage font objects. Supported font operations include obtaining the font family name, constructing a font from a font file or rawfile resource, constructing a new font by combining font attributes, and checking whether a font is bold or italic.
 
 > **NOTE**
 >
@@ -35,7 +36,7 @@ Obtains the name of the typeface family, which is the name given to a collection
 
 | Type  | Description                |
 | ------ | -------------------- |
-| string | Family name.|
+| string | Font family name, which indicates the font design name corresponding to the current Typeface object. |
 
 **Example**
 
@@ -56,15 +57,16 @@ Constructs a typeface object from the current typeface and its arguments.
 **System capability**: SystemCapability.Graphics.Drawing
 
 **Parameters**
+
 | Name        | Type                                      | Mandatory  | Description                 |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
-| typefaceArguments | [TypefaceArguments](arkts-apis-graphics-drawing-TypefaceArguments.md)           | Yes  | Typeface arguments.|
+| typefaceArguments | [TypefaceArguments](arkts-apis-graphics-drawing-TypefaceArguments.md)           | Yes   | Font attribute parameter. |
 
 **Returns**
 
 | Type  | Description                 |
 | ------ | -------------------- |
-| [Typeface](arkts-apis-graphics-drawing-Typeface.md) | Typeface object. In abnormal cases, a null pointer is returned.|
+| [Typeface](arkts-apis-graphics-drawing-Typeface.md) | Returns a font object constructed by combining the current font with font attributes (a null pointer is returned in exception cases). |
 
 **Example**
 
@@ -107,7 +109,7 @@ Constructs a typeface from a file.
 
 | Type  | Description                |
 | ------ | -------------------- |
-| [Typeface](arkts-apis-graphics-drawing-Typeface.md) | Typeface object.|
+| [Typeface](arkts-apis-graphics-drawing-Typeface.md) | Returns the font object loaded from the specified font file. |
 
 **Error codes**
 
@@ -115,7 +117,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -140,7 +142,7 @@ class TextRenderNode extends RenderNode {
 
 static makeFromRawFile(rawfile: Resource): Typeface
 
-Constructs a typeface from a file, which must be stored in the **resources/rawfile** directory of the application project.
+Constructs a font using the specified font file, which must be stored in the rawfile directory of the application resource folder.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -156,7 +158,7 @@ Constructs a typeface from a file, which must be stored in the **resources/rawfi
 
 | Type  | Description                |
 | ------ | -------------------- |
-| [Typeface](arkts-apis-graphics-drawing-Typeface.md) | Typeface object. In abnormal cases, a null pointer is returned.|
+| [Typeface](arkts-apis-graphics-drawing-Typeface.md) | Returns the font object loaded from a rawfile resource (a null pointer is returned in exception cases). |
 
 **Example**
 
@@ -176,6 +178,7 @@ class TextRenderNode extends RenderNode {
 }
 
 ```
+
 ## makeFromFileWithArguments<sup>20+</sup>
 
 static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceArguments): Typeface
@@ -191,13 +194,13 @@ Constructs a typeface from the typeface file path and arguments.
 | Name        | Type                                      | Mandatory  | Description                 |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | filePath | string           | Yes  | Path of the file. For details, see [Mappings Between Application Sandbox Paths and Physical Paths](../../file-management/app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths).|
-| typefaceArguments | [TypefaceArguments](arkts-apis-graphics-drawing-TypefaceArguments.md) | Yes | Typeface arguments.|
+| typefaceArguments | [TypefaceArguments](arkts-apis-graphics-drawing-TypefaceArguments.md) | Yes | Font attribute parameter. |
 
 **Returns**
 
 | Type  | Description                 |
 | ------ | -------------------- |
-| [Typeface](arkts-apis-graphics-drawing-Typeface.md) | Typeface object. In abnormal cases, a null pointer is returned.|
+| [Typeface](arkts-apis-graphics-drawing-Typeface.md) | Returns the font object loaded from the specified font file and constructed by combining font attributes (a null pointer is returned in exception cases). |
 
 **Example**
 
@@ -223,7 +226,7 @@ class TextRenderNode extends RenderNode {
 
 static makeFromRawFileWithArguments(rawfile: Resource, typefaceArguments: TypefaceArguments): Typeface
 
-Constructs a typeface from a file with typeface arguments, which must be stored in the **resources/rawfile** directory of the application project.
+Constructs a new font using the specified font file and font attributes. The font file must be stored in the rawfile directory of the application resource folder.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -233,14 +236,14 @@ Constructs a typeface from a file with typeface arguments, which must be stored 
 
 | Name        | Type                                      | Mandatory  | Description                 |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
-| rawfile | [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)           | Yes  | Resource object corresponding to the file. Currently, only resource objects referenced in **$rawfile** format are supported. The corresponding format is **$rawfile('filePath')**, where **filePath** is the relative path of the file to the **resources/rawfile** directory in the project.|
-| typefaceArguments | [TypefaceArguments](arkts-apis-graphics-drawing-TypefaceArguments.md) | Yes| Typeface arguments.|
+| rawfile | [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)           | Yes   | Specifies the resource object corresponding to the font file. Currently, only resource objects referenced in the ``$rawfile`` format are supported. A null pointer is returned when a resource object in a non-``$rawfile`` format is passed in. The corresponding format is written as ``$rawfile('filePath')``, where filePath is the relative path of the specified font file to the resources/rawfile directory in the project. |
+| typefaceArguments | [TypefaceArguments](arkts-apis-graphics-drawing-TypefaceArguments.md) | Yes | Font attribute parameters. |
 
 **Returns**
 
 | Type  | Description                |
 | ------ | ------------------- |
-| [Typeface](arkts-apis-graphics-drawing-Typeface.md) | Typeface object. In abnormal cases, a null pointer is returned.|
+| [Typeface](arkts-apis-graphics-drawing-Typeface.md) | Returns the font object loaded from a rawfile resource and constructed with font attributes (a null pointer is returned in exception cases). |
 
 **Example**
 
@@ -297,7 +300,7 @@ Checks whether the font is italic.
 
 | Type  | Description                |
 | ------ | -------------------- |
-| boolean | Check result. **true** if the font is italic; **false** otherwise.|
+| boolean | Whether the current font is italic. The value true indicates that the font is italic, and false indicates the opposite. |
 
 **Example**
 

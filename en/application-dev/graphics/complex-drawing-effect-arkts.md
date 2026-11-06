@@ -3,9 +3,10 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=3c9498a5af1cedc12000d743f1689bf266862723 translatedAt=2026-10-19T01:17:21.564Z pushedAt=2026-10-19T06:17:52.933Z -->
 
 You can use a brush or a pen to implement complex drawing effects in addition to the basic fill color, stroke color, and style settings. For example:
 
@@ -61,7 +62,7 @@ function drawRenderNode(canvas: drawing.Canvas) {
 }
 ```
 
-![image_BlendMode_SrcIn.png](figures/image_BlendMode_SrcIn.png)
+![BlendMode-SrcIn.png](figures/BlendMode-SrcIn.png)
 
 
 ## Path Effect
@@ -164,7 +165,7 @@ canvas.drawRect(rect);
 canvas.detachBrush();
 ```
 
-![image_0000002158744106](figures/image_0000002158744106.png)
+![Gradient-Shader-Effect](figures/Gradient-Shader-Effect.png)
 
 
 ### Radial Gradient Shader Effect

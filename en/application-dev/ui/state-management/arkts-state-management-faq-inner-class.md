@@ -2,18 +2,19 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zany_pink-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @zhangwenhan12-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=59c43aed2026bf661a322032daecc86d61224e0f translatedAt=2026-09-21T11:37:58.988Z pushedAt=2026-09-23T09:23:31.762Z -->
 
-A large number of data objects need to be encapsulated in large-scale applications. The use of internal status variables of data objects greatly affects the development efficiency of developers. This document describes common problems and solutions of data object status management.
+A large number of data objects need to be encapsulated in large-scale applications. The use of internal state variables of data objects greatly affects the development efficiency of developers. This document describes common problems and solutions of data object state management.
 
 In state management, a class is wrapped by a layer of "proxy." When a member variable of a class is modified, the agent intercepts the operation and performs the following tasks:
 
 - Update the data source synchronously to ensure that the original data is correctly modified.
 - Trigger UI refresh: Instruct all components that depend on this variable to re-render.
 
-You can use the [getTarget](./arkts-new-getTarget.md) API to obtain the original object and use the following method to determine whether the object is wrapped by the state manager. If the expression result is **false**, the value is an object wrapped by the status management module. Otherwise, the value is not an object wrapped by the status management module.
+You can use the [getTarget](./arkts-new-getTarget.md) API to obtain the original object and use the following method to determine whether the object is wrapped by the state manager. If the expression result is **false**, the value is an object wrapped by the state management module. Otherwise, the value is not an object wrapped by the state management module.
 
 ``` ts
 UIUtils.getTarget(value) === value
@@ -21,12 +22,12 @@ UIUtils.getTarget(value) === value
 
 ## Capturing this in constructor() Fails to Observe Variable Changes
 
-When the [arrow function](../../quick-start/introduction-to-arkts.md#arrow-function-lambda-function) for modifying **success** is initialized in the constructor(), the **TestModel** instance is not encapsulated, and **this** points to the **TestModel** instance itself. Therefore, when the **query** event is triggered, state management cannot observe the change.
+When the [arrow function](../../quick-start/arkts-language-guide-functions.md#closures-and-arrow-functions) that modifies `isSuccess` is initialized in the constructor, the `TestModel` instance has not yet been wrapped by a proxy, and `this` points to the `TestModel` instance itself. Therefore, when the `query` event is subsequently triggered, state management cannot observe the change.
 
-When you place the arrow function for modifying **success** in the **query** method, the **TestModel** object has been initialized and encapsulated by the proxy. Call **this.viewModel.query()** and **this** in the function points to the **viewModel** object. In this case, the change of **isSuccess** is observable, so that the change of the query event can be observed by the state management.
+When you place the arrow function for modifying `isSuccess` in `query`, the `TestModel` object has already been initialized and wrapped by a proxy. When `query` is called via `this.viewModel.query()`, `this` inside the `query` function points to the `viewModel` proxy object, and changes to the proxy object's member property `isSuccess` can be observed. Therefore, triggering the `query` event is observable to the state management.
 
 **Incorrect Usage**
-<!-- @[state_problem_this_unable_observe_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObserveOpposite.ets) --> 
+<!-- @[state_problem_this_unable_observe_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObserveOpposite.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -56,6 +57,8 @@ export class TestModel {
 
   constructor() {
     this.model = new Model(() => {
+      // At this point, the TestModel instance has not yet been wrapped with the proxy, and this points to the TestModel instance itself.
+      // Modifications to this.isSuccess cannot trigger a UI refresh of the Text component in Index.
       this.isSuccess = true;
       hilog.info(0xFF00, 'testTag', '%{public}s', `this.isSuccess: ${this.isSuccess}`);
     })
@@ -82,7 +85,7 @@ export class Model {
 In the preceding example, the state variable is modified in the constructor. Initially, **"failed"** is displayed. After the text is clicked, the log **"this.isSuccess: true"** is printed, indicating the modification succeeds. However, **"failed"** remains displayed, indicating the UI is not refreshed.
 
 **Correct Usage**
-<!-- @[state_problem_this_unable_observe_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObservePositive.ets) --> 
+<!-- @[state_problem_this_unable_observe_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObservePositive.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -109,6 +112,7 @@ export class TestModel {
   public model: Model = new Model(() => {
   })
 
+  // Place the modification of state variables in a regular method of the class.
   query() {
     this.model.callback = () => {
       this.isSuccess = true;
@@ -134,7 +138,7 @@ In the preceding example, the state variable is changed through a method of the 
 
 ## Failure to Change a State Variable Using an Arrow Function
 
-Changing the state variable in an arrow function does not trigger UI update. This is because the **this** object in the arrow function body is the object to which the scope where the function is defined points, not the object to which the scope where the function is called points. Therefore, in this scenario, **this** of **changeCoverUrl** points to **PlayDetailViewModel** instead of the status variable itself.
+Changing the state variable in an arrow function does not trigger UI update. This is because the **this** object in the arrow function body is the object to which the scope where the function is defined points, not the object to which the scope where the function is called points. Therefore, in this scenario, **this** of **changeCoverUrl** points to **PlayDetailViewModel** instead of the state variable itself.
 
 **Incorrect Usage**
 <!-- @[play_detail_opposite_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPageOpposite/PlayDetailViewModel.ets) --> 
@@ -178,7 +182,7 @@ struct PlayDetailPage {
 }
 ```
 
-Solution: Transfer the proxy object of the status variable to the arrow function and call the proxy attribute to assign a value.
+Solution: Transfer the proxy object of the state variable to the arrow function and call the proxy attribute to assign a value.
 
 **Correct Usage**
 
@@ -232,7 +236,7 @@ It is commonplace in development to set the same attribute for multiple componen
 
 **Incorrect Usage**
 
-<!-- @[TextComponent1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArray.ets) -->  
+<!-- @[TextComponent1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArray.ets) -->   
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -259,6 +263,7 @@ struct Index {
   }
 
   isRenderText(index: number): number {
+    // Log printing, observe the redundant refresh caused by using a simple attribute array.
     hilog.info(DOMAIN_NUMBER, TAG, `index ${index} is rendered`);
     return 1;
   }
@@ -322,11 +327,11 @@ Below you can see how the preceding code snippet works.
 
 In this example, a total of 20 records are displayed on the page through **ForEach**. When you click the **Text** component of **age** in one of the records, the **Text** components of **age** in other 19 records are also re-rendered - reflected by the logs generated for the components of **age**. However, because the **age** values of the other 19 records do not change, the re-rendering of these records is actually redundant.
 
-This redundant re-rendering is due to a characteristic of state management. Assume that there is a [@State](./arkts-state.md) decorated number array **Num[]**. This array contains 20 elements whose values are 0 to 19, respectively. Each of the 20 elements is bound to a **Text** component. When one of the elements is changed, all components bound to the elements are re-rendered, regardless of whether the other elements are changed or not.
+This is due to a characteristic of state management. Assume that there is a number array `number[]` decorated with [@State](./arkts-state.md), which contains 20 elements with values from 0 to 19. These 20 elements are each bound to a **Text** component. When one of the elements changes, for example, the value of element 0 changes from 0 to 1, in addition to the **Text** component bound to element 0, the other 19 **Text** components are also re-rendered, even though the values of elements 1 to 19 have not changed.
 
-This seemly bug, commonly known as "redundant re-render", is widely observed in simple array, and can adversely affect the UI re-rendering performance when the arrays are large. To make your rendering process run smoothly, it is crucial to reduce redundant re-renders and update components only when necessary.
+This characteristic is widely observed in scenarios involving arrays of simple types. When the array contains a large number of elements, it can significantly degrade UI re-rendering performance. This phenomenon, in which components that do not need to be re-rendered are re-rendered, is known as "redundant refresh". When there are too many nodes subject to redundant refresh, UI re-rendering efficiency drops substantially. Therefore, it is necessary to reduce redundant refresh, that is, to **precisely control the update scope of components**.
 
-In the case of an array of simple attributes, you can avoid redundant re-rendering by converting the array into an object array.
+To reduce redundant re‑rendering caused by arrays of simple attribute values, you need to convert such arrays into arrays of objects and use them in conjunction with custom components, so that you can precisely control the update scope.
 
 **Correct Usage**
 
@@ -443,7 +448,7 @@ Below you can see how the preceding code snippet works.
 
 ![properly-use-state-management-to-develop-2](figures/properly-use-state-management-to-develop-2.gif)
 
-After optimization, an object array is used in place of the original attribute arrays. For an array, changes in an object cannot be observed and therefore do not cause re-renders. Specifically, only changes at the top level of array items can be observed, for example, adding, modifying, or deleting an item. For a common array, modifying a data item means to change the item's value. For an object array, it means to assign a new value to the entire object, which means that changes to a property in an object are not observable to the array and consequently do not cause a re-render. In the observation capability of current status management, changes cannot be observed in scenarios where objects are nested in arrays. For details, see [Redundant Updates Caused by Objects with Multiple Attributes](#redundant-updates-caused-by-objects-with-multiple-attributes). When the code is modified, the combination of the customized component and ForEach is used. For details, see [UI Is Not Refreshed Due to the Combination of ForEach and Object Arrays](./arkts-state-management-faq-inner-component.md#ui-is-not-refreshed-due-to-the-combination-of-foreach-and-object-arrays).
+After optimization, an object array is used in place of the original multiple attribute arrays, which avoids redundant UI refreshes of the array. This is because changes within an object are not observable to the array itself—the array can only detect changes at the item level, such as adding, modifying, or deleting an array item. For a plain array, modifying an item means changing its value directly. For an object array, however, modifying an item means reassigning the entire object; changes to a property inside that object are not observable to the array and therefore do not trigger a re‑render. In the current state management observation model, changes cannot be observed not only when objects are nested in arrays, but also when objects are nested within other objects. This will be discussed in [Redundant Updates Caused by Objects with Multiple Attributes](#redundant-updates-caused-by-objects-with-multiple-attributes). Additionally, the modified code combines custom components with ForEach, which will be covered in [UI Is Not Refreshed Due to the Combination of ForEach and Object Arrays](./arkts-state-management-faq-inner-component.md#ui-is-not-refreshed-due-to-the-combination-of-foreach-and-object-arrays).
 
 ### Redundant Updates Caused by Objects with Multiple Attributes
 
@@ -844,7 +849,7 @@ struct PageChild {
           .backgroundColor('#FF007DFF')
           .fontSize(20)
           .width(312)
-          .onClick(() => { // Use this.uiStyle.endRenderXxx.xxx to change the property in the parent component.
+          .onClick(() => { // In the parent component, still use this.uiStyle.needRenderXxx.xxx to change attributes.
             this.uiStyle.needRenderImage.imageWidth = (this.uiStyle.needRenderImage.imageWidth + 30) % 160;
             this.uiStyle.needRenderImage.imageHeight = (this.uiStyle.needRenderImage.imageHeight + 30) % 160;
           })
@@ -896,11 +901,11 @@ After the optimization, the 15 attributes previously in one class are divided in
 
 - Properties that are only used in the same component can be divided into the same new child class, that is, **NeedRenderImage** in the example. This mode of division is applicable to the scenario where components are frequently re-rendered due to changes of unassociated properties. Alternatively, consider whether the view model structure is well-designed for such scenarios.
 - Properties that are frequently used together can be divided into the same new child class, that is, **NeedRenderScale**, **NeedRenderTranslate**, **NeedRenderPos**, and **NeedRenderSize** in the example. This mode of division is applicable to the scenario where properties often appear in pairs or are applied to the same style, for example, **.translate**, **.position**, and **.scale** (which usually receive an object as a parameter).
-- Properties that may be used in different components should be divided into a new child class, that is, **NeedRenderAlpha**, **NeedRenderBorderRadius**, and **NeedRenderFontSize** in the example. This mode of division is applicable to the scenario where a property works on multiple components or works on their own, for example, **.opacity** and **.borderRadius** (which usually work independently).
+- Properties that may be used in multiple components or are relatively independent should be extracted into a separate class, such as **NeedRenderAlpha**, **NeedRenderBorderRadius**, and **NeedRenderFontSize** in the example. This mode of division is applicable to the scenario where a property works on multiple components or works on their own, for example, **.opacity** and **.borderRadius** (which usually work independently).
 
-As in combination of properties, the principle behind division of properties is that changes to properties of objects nested more than two levels deep cannot be observed. However, you can use [@Observed](./arkts-observed-and-objectlink.md) and [@ObjectLink](./arkts-observed-and-objectlink.md) to pass level-2 objects between parent and child nodes. This allows you to observe property changes at level 2 and precisely control the render scope. <!--Del-->For details about the division of properties, see [Precisely Controlling Render Scope](../../performance/precisely-control-render-scope.md).<!--DelEnd-->
+The principle of property splitting is similar to that of property merging. In nested scenarios, state management cannot observe property changes at the second level or deeper, so changes to second-level data do not cause other properties associated with the first level to be re-rendered. At the same time, [@Observed](./arkts-observed-and-objectlink.md) and [@ObjectLink](./arkts-observed-and-objectlink.md) are used to pass second-level objects between parent and child nodes, so that second-level data changes can be observed normally in child components, achieving precise re-rendering. <!--Del-->For details about property splitting, see [Precisely Controlling the Update Scope of Components](../../performance/precisely-control-render-scope.md).<!--DelEnd-->
 
-The [@Track](./arkts-track.md) decorator can also precisely control the render scope, and it does not involve division of properties.
+[\@Track](./arkts-track.md) is a class property decorator. When a class object is used as a state variable, changes to a property decorated with @Track trigger UI updates only for that specific property. Therefore, using @Track eliminates the need for property splitting, while still achieving the same effect of precisely controlling the component update scope.
 
 <!-- @[StateArrayTrack_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayTrack.ets) -->  
 
@@ -1113,6 +1118,7 @@ class Ancestor {
   }
 
   public loadData() {
+    // The array tempList of the Child[] type created here is not observable.
     let tempList = [new Child(1), new Child(2), new Child(3), new Child(4), new Child(5)];
     this.childList = tempList;
   }
@@ -1202,6 +1208,7 @@ struct CompAncestor {
     Column() {
       CompList({ childList: this.ancestor.childList })
       Row() {
+        // Tap the button to clear the data of ancestor.
         Button('Clear')
           .onClick(() => {
             this.ancestor.clearData();
@@ -1240,7 +1247,7 @@ Below you can see how the preceding code snippet works.
 
 In the code there is a data source of the ChildList type. If you click **X** to delete some data and then click **Recover** to restore **ChildList**, the UI is not re-rendered after you click **X** again, and no "CompList ChildList change" log is printed.
 
-An examination of the code finds out that when a value is re-assigned to the data source **ChildList** through the **loadData** method of the **Ancestor** object.
+In the code, the data source **childList** is re‑assigned via the **loadData** method of the **Ancestor** object.
 
 <!-- @[StateArrayLoadDate_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLoadDate.ets) --> 
 
@@ -1252,7 +1259,7 @@ public loadData() {
 ```
 
 
-In the **loadData** method, **tempList**, a temporary array of the Child type, is created, to which the member variable **ChildList** of the **Ancestor** object is pointed. However, value changes of the **tempList** array cannot be observed. In other words, its value changes do not cause UI re-renders. After the array is assigned to **childList**, the **ForEach** view is updated and the UI is re-rendered. When you click **X** again, however, the UI is not re-rendered to reflect the decrease in **childList**, because **childList** points to a new, unobservable **tempList**.
+In the `loadData` method, a temporary array `tempList` of the `Child` type is created, and the `childList` member variable of the `Ancestor` object is pointed to `tempList`. However, the `Child[]` array `tempList` created here does not actually have the ability to be observed (that is, its changes cannot actively trigger UI re-rendering). After it is assigned to `childList`, it triggers the re-rendering of **ForEach**, causing the UI to be rebuilt. However, when the delete operation is clicked again, because `childList` now points to the new array represented by `tempList`, and this array does not have the ability to be observed and is a static value, its changes cannot be observed and therefore do not trigger UI re-rendering. In fact, the data in `childList` has already been reduced at this point; only the UI has not been re-rendered.
 
 You may notice that **childList** is initialized in the same way when it is defined in **Page**.
 
@@ -1264,9 +1271,9 @@ You may notice that **childList** is initialized in the same way when it is defi
 ```
 
 
-Yet, **childList** there is observable, being decorated by @State. As such, while it is assigned an array of the Child[] type not decorated by @Observed, its value changes can cause UI re-renders. If the @State decorator is removed from **childList**, the data source is not reset and UI re-renders cannot be triggered by clicking the **X** button.
+However, because `childList` here is actually decorated with @State, according to the observation capability of state management, even though the value assigned on the right is data of the `Child[]` type that is not decorated with @Observed, `childList` still has the ability to be observed, so it can trigger UI re-rendering normally. If the @State decorator of `childList` is removed, the data source is not reset, and re-rendering cannot be triggered by clicking the "X" button.
 
-In summary, for the UI to be re-rendered properly upon value changes of class objects, these class objects must be observable.
+Therefore, it is necessary to bind class objects that have the ability to be observed to components, to ensure that the UI re-renders normally when the content of these class objects changes.
 
 **Correct Usage**
 
@@ -1300,6 +1307,7 @@ class Ancestor {
   }
 
   public loadData() {
+    // Change the temporary array tempList to the ChildList class with observation capability
     let tempList = new ChildList();
     for (let i = 1; i < 6; i++) {
       tempList.push(new Child(i));
@@ -1443,4 +1451,6 @@ public loadData() {
 ```
 
 
-In the preceding code, the ChildList type is decorated by @Observed when defined, allowing the **tempList** object created using **new** to be observed. As such, when you click **X** to delete an item, this change to **childList** is observed, the **ForEach** view updated, and the UI re-rendered.
+In the preceding code, the **ChildList** type is decorated with @Observed when defined, allowing the **tempList** object created using **new** to be observed. As such, when you click **X** to delete an item, this change to the **childList** variable is observed and the **ForEach** view is updated, leading to UI re-rendering.
+
+<!--no_check-->

@@ -541,7 +541,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_SetAreaMode(
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。<br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参areaMode为空。<br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。<br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参context为空。<br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 **示例代码：**
 

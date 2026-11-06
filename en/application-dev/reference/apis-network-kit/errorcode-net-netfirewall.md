@@ -1,5 +1,6 @@
 # Firewall Error Codes
 
+<!-- md-trans-meta sourceCommit=7b8b9d8ce742c4a1126ab4e1f2ad4f9170b54175 translatedAt=2026-09-23T01:47:52.684Z pushedAt=2026-09-24T06:00:14.174Z -->
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -28,7 +29,7 @@ The entered user ID does not exist.
 
 **Solution**
 
-Check whether the user ID exists in the system.
+Check whether the system has created the user with the specified **userid**.
 
 ## 29400001 Number of Firewall Rules Exceeds the Maximum
 
@@ -42,7 +43,7 @@ The number of firewall rules exceeds the maximum.
 
 **Possible Causes**
 
-1. The number of firewall rules of a single **userid** exceeds 1000.
+1. The number of firewall rules of a single **userid** exceeds 1000;
 
 2. The number of firewall rules of all **userid**s exceeds 2000.
 
@@ -104,7 +105,7 @@ The number of domain name rules in the firewall rule of the **domain** type exce
 
 **Solution**
 
-Check whether the number of **NetFirewallDomainParams** in the added domain rule is greater than 100.
+Check whether the number of **NetFirewallDomainParams** in the added domain rule is greater than 100, and check whether the total number of **NetFirewallDomainParams** in all domain rules of the current user is greater than 1000.
 
 ## 29400005 Number of Fuzzy Domain Name Rules Exceeds the Maximum
 
@@ -159,3 +160,25 @@ The DNS rule to be added or updated is duplicate.
 **Solution**
 
 Check whether the DNS rule to be added or updated already exists.
+
+## 2100001 Invalid Parameter Value
+
+**Error Message**
+
+Invalid parameter value.
+
+**Description**
+
+Invalid parameter value.
+
+**Possible Causes**
+
+1. Invalid parameter: one or more of the following are invalid — user ID, rule ID, IP address, port, protocol, domain name, or application UID..
+
+2. Invalid pagination query parameter: invalid parameter for querying the rule list.
+
+**Solution**
+
+1. Check whether the value range of the input parameter is correct.
+
+2. Check whether the type of the input parameter is standard, for example, whether the IP address, port, and domain name are standard.

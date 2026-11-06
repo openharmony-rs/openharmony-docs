@@ -2,18 +2,19 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=ac775a54069be1728a015bce61b1790fc26fe1c8 translatedAt=2026-11-04T01:24:22.523Z pushedAt=2026-11-04T01:45:23.322Z nl=1 -->
 
 
 ## Overview
 
 Linear layout is the most frequently used layout in development, implemented using the [Row](../reference/apis-arkui/arkui-ts/ts-container-row.md) or [Column](../reference/apis-arkui/arkui-ts/ts-container-column.md) linear containers. As the foundation for other layouts, linear layout arranges child elements sequentially along either the horizontal axis (in a **Row** container) or vertical axis (in a **Column** container). You can choose between **Row** and **Column** containers based on your desired arrangement direction.
 
->  **NOTE**
+> **NOTE**
 >
->  Excessive component nesting (either too deep a hierarchy or too many nested components) incurs significant performance overhead. For performance purposes, you are advised to remove redundant nodes to simplify the component tree, use layout boundaries to reduce redundant layout calculations, properly apply rendering control syntax and layout component methods to minimize unnecessary re-renders and computations. For details about the best practices, see [Layout Optimization](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-improve-layout-performance).
+> When nesting multiple components in a complex UI, excessive nesting depth or too many nested components in layout containers will incur additional overhead. It is recommended to optimize performance by removing redundant nodes, using layout boundaries to reduce layout calculations, and properly applying rendering control syntax and layout component methods.
 
 
   **Figure 1** Child element arrangement in a Column container
@@ -24,7 +25,6 @@ Linear layout is the most frequently used layout in development, implemented usi
   **Figure 2** Child element arrangement in a Row container
 
 ![arrangement-child-elements-row](figures/arrangement-child-elements-row.png)
-
 
 ## Basic Concepts
 
@@ -41,7 +41,7 @@ Linear layout is the most frequently used layout in development, implemented usi
 
 ## Spacing Child Elements Along the Arrangement Direction
 
-In the layout container, use the **space** attribute to equally distribute child elements along the arrangement direction.
+Inside a layout container, you can use the [space](../reference/apis-arkui/arkui-ts/ts-container-row.md#rowoptions18) attribute of the [Row](../reference/apis-arkui/arkui-ts/ts-container-row.md) component or the [space](../reference/apis-arkui/arkui-ts/ts-container-column.md#columnoptions18) attribute of the [Column](../reference/apis-arkui/arkui-ts/ts-container-column.md) component to set the spacing between child elements along the main axis, creating an evenly spaced effect.
 
 
 ### In the Column Container
@@ -83,7 +83,7 @@ Row({ space: 35 }) {
 }.width('90%')
 ```
 
-![en-us_image_0000001562700509](figures/en-us_image_0000001562700509.png)
+![rowLayoutExample](figures/rowLayoutExample.png)
 
 ## Arranging Child Elements Along the Main Axis
 
@@ -113,7 +113,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.Start)
   ```
 
-  ![en-us_image_0000001562700501](figures/en-us_image_0000001562700501.png)
+  ![columnLayoutJustifyContentStart](figures/columnLayoutJustifyContentStart.png)
 
 - **justifyContent(FlexAlign.Center)**: The elements are vertically aligned with each other toward the center of the container. The space between the first component and the start edge is the same as that between the last component and the end edge.
 
@@ -132,9 +132,9 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.Center)
   ```
 
-  ![en-us_image_0000001562700517](figures/en-us_image_0000001562700517.png)
+  ![columnLayoutJustifyContentCenter](figures/columnLayoutJustifyContentCenter.png)
 
-- **justifyContent(FlexAlign.End)**: The elements are vertically aligned with each other toward the end edge of the container.
+- **justifyContent(FlexAlign.End)**: Aligns elements to the end in the vertical direction. The last element is aligned with the end of the line, and the other elements are aligned with the one after them.
 
   <!-- @[ColumnLayoutJustifyContentEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ColumnLayoutJustifyContentEnd.ets) -->
   
@@ -151,7 +151,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.End)
   ```
 
-  ![en-us_image_0000001562940585](figures/en-us_image_0000001562940585.png)
+  ![columnLayoutJustifyContentEnd](figures/columnLayoutJustifyContentEnd.png)
 
 - **justifyContent(FlexAlign.SpaceBetween)**: The elements are evenly distributed vertically. The space between any two adjacent elements is the same. The first element is aligned with the start edge, the last element is aligned with the end edge, and the remaining elements are distributed so that the space between any two adjacent elements is the same.
 
@@ -170,7 +170,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceBetween)
   ```
 
-  ![en-us_image_0000001511900532](figures/en-us_image_0000001511900532.png)
+  ![columnLayoutJustifyContentSpaceBetween](figures/columnLayoutJustifyContentSpaceBetween.png)
 
 - **justifyContent(FlexAlign.SpaceAround)**: The elements are evenly distributed vertically. The space between any two adjacent elements is the same. The space between the first element and start edge, and that between the last element and end edge are both half the size of the space between two adjacent elements.
 
@@ -189,7 +189,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceAround)
   ```
 
-  ![en-us_image_0000001562700525](figures/en-us_image_0000001562700525.png)
+  ![columnLayoutJustifyContentSpaceAround](figures/columnLayoutJustifyContentSpaceAround.png)
 
 - **justifyContent(FlexAlign.SpaceEvenly)**: The elements are evenly distributed vertically. The space between the first element and start edge, the space between the last element and end edge, and the space between any two adjacent elements are the same.
 
@@ -208,16 +208,16 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceEvenly)
   ```
 
-  ![en-us_image_0000001563060785](figures/en-us_image_0000001563060785.png)
+  ![columnLayoutJustifyContentSpaceEvenly](figures/columnLayoutJustifyContentSpaceEvenly.png)
 
 
 ### Horizontal Alignment of Child Elements in the Row Container
 
-  **Figure 6** Horizontal alignment of child elements in the Row container 
+  **Figure 6** Horizontal alignment of child elements in the Row container
 
-![vertical-arrangement-child-row](figures/vertical-arrangement-child-row.png)
+![horizontal-arrangement-child-row](figures/horizontal-arrangement-child-row.png)
 
-- **justifyContent(FlexAlign.Start)** (default value): The elements are horizontally aligned with each other toward the start edge of the container.
+- **justifyContent(FlexAlign.Start)** (default value): Aligns elements to the start in the horizontal direction. The first element is aligned with the beginning of the line, and the subsequent elements are aligned with the one before them.
 
   <!-- @[RowLayoutJustifyContentStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutJustifyContentStart.ets) -->
   
@@ -234,7 +234,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.Start)
   ```
 
-  ![en-us_image_0000001511421356](figures/en-us_image_0000001511421356.png)
+  ![rowLayoutJustifyContentStart](figures/rowLayoutJustifyContentStart.png)
 
 - **justifyContent(FlexAlign.Center)**: The elements are horizontally aligned with each other toward the center of the container. The space between the first component and the start edge is the same as that between the last component and the end edge.
 
@@ -253,7 +253,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.Center)
   ```
 
-  ![en-us_image_0000001511900516](figures/en-us_image_0000001511900516.png)
+  ![rowLayoutJustifyContentCenter](figures/rowLayoutJustifyContentCenter.png)
 
 - **justifyContent(FlexAlign.End)**: The elements are horizontally aligned with each other toward the end edge of the container.
 
@@ -272,7 +272,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.End)
   ```
 
-  ![en-us_image_0000001562940601](figures/en-us_image_0000001562940601.png)
+  ![rowLayoutJustifyContentEnd](figures/rowLayoutJustifyContentEnd.png)
 
 - **justifyContent(FlexAlign.SpaceBetween)**: The elements are evenly distributed horizontally. The space between any two adjacent elements is the same. The first element is aligned with the start edge, the last element is aligned with the end edge, and the remaining elements are distributed so that the space between any two adjacent elements is the same.
 
@@ -291,7 +291,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceBetween)
   ```
 
-  ![en-us_image_0000001562700521](figures/en-us_image_0000001562700521.png)
+  ![rowLayoutJustifyContentSpaceBetween](figures/rowLayoutJustifyContentSpaceBetween.png)
 
 - **justifyContent(FlexAlign.SpaceAround)**: The elements are evenly distributed horizontally. The space between any two adjacent elements is the same. The space between the first element and start edge, and that between the last element and end edge are both half the size of the space between two adjacent elements.
 
@@ -310,7 +310,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceAround)
   ```
 
-  ![en-us_image_0000001562820893](figures/en-us_image_0000001562820893.png)
+  ![rowLayoutJustifyContentSpaceAround](figures/rowLayoutJustifyContentSpaceAround.png)
 
 - **justifyContent(FlexAlign.SpaceEvenly)**: The elements are evenly distributed horizontally. The space between the first element and start edge, the space between the last element and end edge, and the space between any two adjacent elements are the same.
 
@@ -329,7 +329,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceEvenly)
   ```
 
-  ![en-us_image_0000001511421352](figures/en-us_image_0000001511421352.png)
+  ![rowLayoutJustifyContentSpaceEvenly](figures/rowLayoutJustifyContentSpaceEvenly.png)
 
 ## Aligning Child Elements Along the Cross Axis
 
@@ -340,7 +340,7 @@ The layout container also provides the [alignSelf](../reference/apis-arkui/arkui
 
 ### Horizontal Alignment of Child Elements in the Column Container
 
-  **Figure 7** Horizontal alignment of child elements in the Column container 
+  **Figure 7** Horizontal alignment of child elements in the Column container
 
 ![horizontal-arrangement-child-column](figures/horizontal-arrangement-child-column.png)
 
@@ -361,7 +361,7 @@ The layout container also provides the [alignSelf](../reference/apis-arkui/arkui
   }.width('100%').alignItems(HorizontalAlign.Start).backgroundColor('rgb(242,242,242)')
   ```
 
-  ![en-us_image_0000001511580964](figures/en-us_image_0000001511580964.png)
+  ![rowLayoutHorizontalAlignStart](figures/rowLayoutHorizontalAlignStart.png)
 
 - **HorizontalAlign.Center** (default value): Child elements are center-aligned horizontally.
 
@@ -380,7 +380,7 @@ The layout container also provides the [alignSelf](../reference/apis-arkui/arkui
   }.width('100%').alignItems(HorizontalAlign.Center).backgroundColor('rgb(242,242,242)')
   ```
 
-  ![en-us_image_0000001562820897](figures/en-us_image_0000001562820897.png)
+  ![rowLayoutHorizontalAlignCenter](figures/rowLayoutHorizontalAlignCenter.png)
 
 - **HorizontalAlign.End**: Child elements are right-aligned horizontally.
 
@@ -399,14 +399,14 @@ The layout container also provides the [alignSelf](../reference/apis-arkui/arkui
   }.width('100%').alignItems(HorizontalAlign.End).backgroundColor('rgb(242,242,242)')
   ```
 
-  ![en-us_image_0000001511421348](figures/en-us_image_0000001511421348.png)
+  ![rowLayoutHorizontalAlignEnd](figures/rowLayoutHorizontalAlignEnd.png)
 
 
 ### Vertical Alignment of Child Elements in the Row Container
 
-  **Figure 8** Vertical alignment of child elements in Row container 
+  **Figure 8** Vertical alignment of child elements in Row container
 
-![horizontal-arrangement-child-row](figures/horizontal-arrangement-child-row.png)
+![vertical-arrangement-child-row](figures/vertical-arrangement-child-row.png)
 
 - **VerticalAlign.Top**: Child elements are top-aligned vertically.
 
@@ -425,7 +425,7 @@ The layout container also provides the [alignSelf](../reference/apis-arkui/arkui
   }.width('100%').height(200).alignItems(VerticalAlign.Top).backgroundColor('rgb(242,242,242)')
   ```
 
-  ![en-us_image_0000001563060765](figures/en-us_image_0000001563060765.png)
+  ![rowLayoutVerticalAlignTop](figures/rowLayoutVerticalAlignTop.png)
 
 - **VerticalAlign.Center** (default value): Child elements are center-aligned vertically.
 
@@ -444,7 +444,7 @@ The layout container also provides the [alignSelf](../reference/apis-arkui/arkui
   }.width('100%').height(200).alignItems(VerticalAlign.Center).backgroundColor('rgb(242,242,242)')
   ```
 
-  ![en-us_image_0000001562700505](figures/en-us_image_0000001562700505.png)
+  ![rowLayoutVerticalAlignCenter](figures/rowLayoutVerticalAlignCenter.png)
 
 - **VerticalAlign.Bottom**: Child elements are bottom-aligned vertically.
 
@@ -463,7 +463,7 @@ The layout container also provides the [alignSelf](../reference/apis-arkui/arkui
   }.width('100%').height(200).alignItems(VerticalAlign.Bottom).backgroundColor('rgb(242,242,242)')
   ```
 
-  ![en-us_image_0000001563060781](figures/en-us_image_0000001563060781.png)
+  ![rowLayoutVerticalAlignBottom](figures/rowLayoutVerticalAlignBottom.png)
 
 ## Implementing Adaptive Stretching
 
@@ -490,11 +490,11 @@ struct BlankExample {
 
   **Figure 9** Portrait mode (adapts to the screen's narrow edge)
 
-![en-us_image_0000001562820881](figures/en-us_image_0000001562820881.png)
+![blankExample](figures/blankExample.png)
 
   **Figure 10** Landscape mode (adapts to the screen's wide edge)
 
-![en-us_image_0000001511421332](figures/en-us_image_0000001511421332.png)
+![landscapeMode](figures/landscapeMode.png)
 
 
 ## Implementing Adaptive Scaling
@@ -553,15 +553,15 @@ Adaptive scaling means that the size of a child element is automatically adjuste
   }
   ```
 
-    **Figure 11** Landscape mode 
+    **Figure 11** Landscape mode
 
-  ![en-us_image_0000001511421336](figures/en-us_image_0000001511421336.png)
+  ![landscapeMode2](figures/landscapeMode2.png)
 
-    **Figure 12** Portrait mode 
+    **Figure 12** Portrait mode
 
-  ![en-us_image_0000001511580968](figures/en-us_image_0000001511580968.png)
+  ![portraitMode12](figures/portraitMode12.png)
 
-- When the container size is determined, set the width of a child element in percentage. The container space is then allocated among the element and sibling elements based on the set percentage.
+- When the parent container size is fixed, use percentages to set the widths of child elements and sibling elements, so that they maintain a fixed adaptive ratio on devices of any size.
 
   <!-- @[WidthExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/WidthExample.ets) -->
   
@@ -592,13 +592,13 @@ Adaptive scaling means that the size of a child element is automatically adjuste
   }
   ```
 
-    **Figure 13** Landscape mode 
+    **Figure 13** Landscape mode
 
-  ![en-us_image_0000001563060777](figures/en-us_image_0000001563060777.png)
+  ![widthExample](figures/widthExample.png)
 
-    **Figure 14** Portrait mode 
+    **Figure 14** Portrait mode
 
-  ![en-us_image_0000001511740564](figures/en-us_image_0000001511740564.png)
+  ![portraitMode](figures/portraitMode.png)
 
 
 ## Implementing Adaptive Extension
@@ -647,7 +647,7 @@ Adaptive extension allows users to drag the scrollbar to access content beyond t
   }
   ```
 
-  ![en-us_image_0000001511900524](figures/en-us_image_0000001511900524.gif)
+  ![scrollVerticalExample](figures/scrollVerticalExample.gif)
 
   Example of using a **Scroll** component in the horizontal layout:
 
@@ -688,4 +688,4 @@ Adaptive extension allows users to drag the scrollbar to access content beyond t
   }
   ```
 
-  ![en-us_image_0000001562940609](figures/en-us_image_0000001562940609.gif)
+  ![scrollHorizontalExample](figures/scrollHorizontalExample.gif)

@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=c92bac3c952107588bdd3231954dabcb5241f18e translatedAt=2026-11-03T05:41:57.420Z pushedAt=2026-11-03T07:43:22.071Z nl=1 -->
 
 - [About This Kit](huks-overview.md)
 - Local Key Management<!--huks-local-key-management-->
@@ -19,10 +20,10 @@
       - [Key Import Overview and Algorithm Specifications](huks-key-import-overview.md)
       - [Importing a Key in Plaintext (ArkTS)](huks-import-key-in-plaintext-arkts.md)
       - [Importing a Key in Plaintext (C/C++)](huks-import-key-in-plaintext-ndk.md)
-      - [Importing Keys in Secure Mode (ArkTS)](huks-import-wrapped-key-arkts.md)
+      - [Importing a Key in Secure Mode (ArkTS)](huks-import-wrapped-key-arkts.md)
       - [Importing a Key in Secure Mode (C/C++)](huks-import-wrapped-key-ndk.md)
-      - [Key Import Using Digital Envelope (ArkTS)](huks-import-envelop-key-arkts.md)
-      - [Key Import Using Digital Envelope (C/C++)](huks-import-envelop-key-ndk.md)
+      - [Importing a Key Using a Digital Envelope (ArkTS)](huks-import-envelop-key-arkts.md)
+      - [Importing a Key Using a Digital Envelope (C/C++)](huks-import-envelop-key-ndk.md)
   - Key Use<!--huks-key-use-->
     - [General Process of Using a Key](huks-key-use-overview.md)
     - Encryption and Decryption<!--huks-encryption-decryption-->
@@ -37,6 +38,9 @@
       - [Key Agreement Overview and Algorithm Specifications](huks-key-agreement-overview.md)
       - [Key Agreement (ArkTS)](huks-key-agreement-arkts.md)
       - [Key Agreement (C/C++)](huks-key-agreement-ndk.md)
+    - Key Encapsulation<!--huks-kem-->
+      - [Key Encapsulation Mechanism Overview and Algorithm Specifications](huks-kem-overview.md)
+      - [Key Encapsulation (ArkTS)](huks-kem-arkts.md)
     - Key Derivation<!--huks-key-derivation-->
       - [Key Derivation Overview and Algorithm Specifications](huks-key-derivation-overview.md)
       - [Key Derivation (ArkTS)](huks-key-derivation-arkts.md)
@@ -47,8 +51,8 @@
       - [Refined Access Control Development](huks-refined-user-identity-authentication.md)
     - HMAC<!--huks-hmac-->
       - [HMAC Overview and Algorithm Specifications](huks-hmac-overview.md)
-      - [HMAC(ArkTS)](huks-hmac-arkts.md)
-      - [HMAC(C/C++)](huks-hmac-ndk.md)<!--RP1--><!--RP1End-->
+      - [HMAC (ArkTS)](huks-hmac-arkts.md)
+      - [HMAC (C/C++)](huks-hmac-ndk.md)<!--RP1--><!--RP1End-->
   - Key Deletion <!--huks-delete-key-->
     - [Deleting a Key (ArkTS)](huks-delete-key-arkts.md)
     - [Deleting a Key (C/C++)](huks-delete-key-ndk.md)
@@ -81,31 +85,18 @@
     <!--Del-->
     - [Specifying the User for Key Operations (for System Applications Only)](huks-as-user-sys.md)
     <!--DelEnd-->
-- External Key Management Extension<!--huks-external-key-management-->
-  - [External Key Management Extension Overview](huks-external-hardware-key-management-overview.md)
-  - Provider Management<!--huks-provider-management-->
-    - [Provider Management Overview and Specifications](huks-provider-management-overview.md)
-    - [Registering and Unregistering a Provider (ArkTS)](huks-extension-registration-and-unregistration-arkts.md)
-    - [Registering and Unregistering a Provider (C/C++)](huks-extension-registration-and-unregistration-ndk.md)
-  - Resource Management<!--huks-resource-management-->
-    - [Resource Management Overview and Specifications](huks-resource-management-overview.md)
-    - [Opening and Closing Resources (C/C++)](huks-open-close-resource-ndk.md)
-  - Ukey PIN Authentication Management<!--huks-ukey-pin-authentication-management-->
-    - [UkeyPIN Authentication Overview and Specifications](huks-ukey-pin-authentication-management-overview.md)
-    <!--Del-->
-    - [Ukey PIN Authentication (ArkTS) (for System Applications Only)](huks-ukey-pin-authentication-arkts-sys.md)
-    <!--DelEnd-->
-    - [Authentication Status Query (ArkTS)](huks-query-authentication-status-arkts.md)
-    - [Authentication Status Query (C/C++)](huks-query-authentication-status-ndk.md)
-  - Signing and Signature Verification<!--huks-ukey-signing-signature-verification-->
-    - [Signing and Signature Verification Overview and Algorithm Specifications](huks-ukey-signing-signature-verification-overview.md)
-    - [Signing and Signature Verification (ArkTS)](huks-ukey-signing-signature-verification-arkts.md)
-    - [Signing and Signature Verification (C/C++)](huks-ukey-signing-signature-verification-ndk.md)
-  - General Operations<!--huks-ukey-general-operation-->
-    - [General Query Overview and Specifications](huks-ukey-general-query-overview.md)
-    - [General Query (ArkTS)](huks-ukey-general-query-arkts.md)
-    - [General Query (C/C++)](huks-ukey-general-query-ndk.md)
-  - [Ukey Process Example](huks-ukey-best-dev.md)
-  - Driver HAP ExtensionAbility Adaptation Guide<!--huks-extension-ability-support-->
+- Key Management Extension<!--huks-key-management-extension-->
+  - [Key Management Extension Overview](huks-external-hardware-key-management-overview.md)
+  - CryptoExtensionAbility Adaptation<!--huks-cryptoextensionability-adaptation-->
     - [CryptoExtensionAbility Extension Capability Overview](huks-extension-ability-support-overview.md)
-    - [CryptoExtensionAbility Adaptation Development Guide](huks-extension-ability-support-dev.md)<!--RP4--><!--RP4End-->
+    - [CryptoExtensionAbility Adaptation Development](huks-extension-ability-support-dev.md)
+    - [CryptoExtensionAbility Registration and Unregistration](huks-extension-registration-and-unregistration-arkts-ndk.md)
+  - Key Management Extension Usage<!--huks-key-management-extension-usage-->
+    - [Key Generation, Import, and Export](huks-extension-key-generation-import-export.md)
+    - [Signing and Signature Verification](huks-extension-ability-signing-signature-verification.md)
+    - [PIN Access Control](huks-extension-ability-pin-authentication-management.md)
+    - [General Operations](huks-extension-ability-general-operation.md)
+- Use Case<!--huks-application-scenarios-->
+  - [Browser Two-Way SSL Login](huks-extension-ability-best-dev.md)
+<!--RP4--><!--RP4End-->
+- [Glossary](universal-keystore-glossary.md)

@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-媒体资产进度处理器，应用于onProgress方法中获取媒体资产进度。
+媒体资产进度处理器，用于接收媒体资产处理进度的回调。
 
 > **说明：**
 >
@@ -23,7 +23,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 onProgress(progress: number): void
 
-当所请求的视频资源返回进度时系统会回调此方法。
+当所请求的媒体资产返回进度时系统会回调此方法。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -31,4 +31,69 @@ onProgress(progress: number): void
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| progress | number | 是   | 返回的进度百分比，范围为[0, 100]。 |
+| progress | number | 是   | 传入的进度百分比，范围为[0, 100]。 |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+import { dataSharePredicates } from '@kit.ArkData';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function requestVideoWithProgress(
+  phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  context: common.Context
+) {
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | null = null;
+  try {
+    // 查询一个视频资源。
+    const predicates = new dataSharePredicates.DataSharePredicates();
+    predicates.equalTo(photoAccessHelper.PhotoKeys.PHOTO_TYPE, photoAccessHelper.PhotoType.VIDEO);
+    predicates.limit(1, 0);
+
+    const fetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: ['title', 'size', 'subtype'],
+      predicates: predicates,
+    };
+
+    fetchResult = await phAccessHelper.getAssets(fetchOptions);
+    const asset = await fetchResult.getFirstObject();
+
+    // 进度处理器，仅在API版本15及以后有效。
+    const progressHandler: photoAccessHelper.MediaAssetProgressHandler = {
+      onProgress: (progress: number) => {
+        console.info(`视频请求进度: ${progress}%`);
+      },
+    };
+
+    const requestOptions: photoAccessHelper.RequestOptions = {
+      deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+      compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+      mediaAssetProgressHandler: progressHandler,
+    };
+
+    const destUri = `${context.cacheDir}/output.mp4`;
+
+    const dataHandler: photoAccessHelper.MediaAssetDataHandler<boolean> = {
+      onDataPrepared: (data: boolean | undefined) => {
+        console.info(`视频数据准备完成: ${data}`);
+      },
+    };
+
+    const taskId = await photoAccessHelper.MediaAssetManager.requestVideoFile(
+      context, asset, requestOptions, destUri, dataHandler
+    );
+    console.info(`requestVideoFile taskId: ${taskId}`);
+  } catch (err) {
+    const error = err as BusinessError;
+    console.error(`requestVideoFile failed: ${error.code}, ${error.message}`);
+  } finally {
+    if (fetchResult !== null) {
+      fetchResult.close();
+    }
+  }
+}
+```
