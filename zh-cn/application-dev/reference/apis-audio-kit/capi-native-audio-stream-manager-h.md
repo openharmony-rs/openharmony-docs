@@ -261,7 +261,7 @@ bool OH_AudioStreamManager_IsOffloadPlaybackSupported(OH_AudioStreamManager *str
 
 查询当前设备在特定音频流信息和使用场景下是否支持低功耗播放。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -276,5 +276,34 @@ bool OH_AudioStreamManager_IsOffloadPlaybackSupported(OH_AudioStreamManager *str
 | 类型 | 说明 |
 | -- | -- |
 | bool | 返回true时表示支持低功耗播放，返回false时表示不支持。 |
+
+| [OH_AudioCommon_Result OH_AudioStreamManager_IsUltraFastPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage, bool *supported)](#oh_audiostreammanager_isultrafastplaybacksupported) | 查询当前设备在指定音频流信息和使用场景下是否支持超低时延播放。 |
+
+### OH_AudioStreamManager_IsUltraFastPlaybackSupported()
+
+```c
+bool OH_AudioStreamManager_IsUltraFastPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage, bool *supported)
+```
+
+**描述**
+
+查询当前设备在指定音频流信息和使用场景下是否支持超低时延播放。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *streamManager | 音频流管理器句柄。通过[OH_AudioManager_GetAudioStreamManager](capi-native-audio-stream-manager-h.md#oh_audiomanager_getaudiostreammanager)获取句柄。 |
+| [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamInfo | 音频流信息指针，用于描述基础音频格式。 |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | 音频流使用场景，用于决定音频设备和通路类型的选择结果。 |
+| bool *supported | 查询当前设备在指定音频流信息和使用场景下是否支持超低时延播放。true表示支持超低时延播放，false表示不支持超低时延播放。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOCOMMON_RESULT_SUCCESS = 0 ：函数执行成功。<br>          AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM = 6800101 ：<br>                                                    1.参数streamManager为nullptr；<br>                                                    2.参数streamInfo无效；<br>                                                    3.参数supported为nullptr。 |
 
 

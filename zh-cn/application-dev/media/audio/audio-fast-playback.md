@@ -12,7 +12,6 @@
 
 低时延音频播放是一种通过软硬芯协同设计实现的音频渲染方案。其核心机制是通过减少buffer大小、优化读写数据架构，使该模式下音频播放具有更低的时延。
 
-
 ## 使用前提
 
 ### 低时延模式使用前提
@@ -51,11 +50,11 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 ```
 
 设置超低时延模式开发示例：
-<!-- @[OH_AudioStreamBuilder_SetLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+<!-- @[Render_SetUltrFastLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
 ``` C++
 OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST;
-OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
+OH_AudioStreamBuilder_SetLatencyMode(ultraFastBuilder, latencyMode);
 ```
 
 针对OHAudio开发音频播放，有以下相关实例可供参考：
@@ -87,7 +86,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 
 > **注意：**
 >
-> 低时延模式下，不支持调整播放速度。<br>
+> 低时延模式下，不支持调整播放速度。
 > 超低时延模式下，不支持调整播放速度，也不支持设置响度增益。
 
 
