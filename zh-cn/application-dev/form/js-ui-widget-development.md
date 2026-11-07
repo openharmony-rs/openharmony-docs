@@ -715,6 +715,29 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 
    ArkTS-Dyn示例：
     <!-- @[JSForm_JsCardFormAbility_onFormEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
+    
+    ``` TypeScript
+    // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
+    const TAG: string = 'JsCardFormAbility';
+    // ...
+    const DOMAIN_NUMBER: number = 0xFF00;
+    // ...
+    
+    export default class JsCardFormAbility extends FormExtensionAbility {
+      // ...
+      onFormEvent(formId: string, message: string): void {
+        // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
+        hilog.info(DOMAIN_NUMBER, TAG, 'onFormEvent');
+        // 获取message事件中传递的detail参数
+        let msg: Record<string, string> = JSON.parse(message);
+        if (msg.detail === 'message detail') {
+          // 执行业务逻辑，由用户自行实现
+          hilog.info(DOMAIN_NUMBER, TAG, 'message info:' + msg.detail);
+        }
+      }
+    
+    }
+    ```
 
    ArkTS-Sta示例：
     <!-- @[JSForm_JsCardFormAbility_onFormEventSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/JSFormSta/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
