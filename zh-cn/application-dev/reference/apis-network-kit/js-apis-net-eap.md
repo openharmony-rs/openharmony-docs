@@ -29,6 +29,8 @@ regCustomEapHandler(netType: number, eapCode: number, eapType: number, callback:
 
 系统会将符合条件的EAP报文送入callback函数中供企业应用获取。
 
+**ArkTS-Dyn起始版本：** 20
+
 **需要权限**：ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
 **系统能力**：SystemCapability.Communication.NetManager.Eap
@@ -75,6 +77,8 @@ console.info('regCustomEapHandler success');
 unregCustomEapHandler(netType:number, eapCode: number, eapType: number, callback: Callback\<EapData\>): void
 
 用于指定需要取消定制化处理的EAP报文类型和对应的处理callback。使用callback异步回调。
+
+**ArkTS-Dyn起始版本：** 20
 
 **需要权限**：ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
@@ -128,6 +132,8 @@ replyCustomEapData(result: CustomResult, data: EapData): void
  >- 若用于处理收EAP数据包(rx)时的callback，传给系统的EAP数据需要剥离服务器添加的定制部分。
  >- 若用于处理发EAP数据包(tx)时的callback，传给系统的EAP数据为经过添加定制部分后的EAP数据。
 
+**ArkTS-Dyn起始版本：** 20
+
 **需要权限**：ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
 **系统能力**：SystemCapability.Communication.NetManager.Eap
@@ -173,6 +179,8 @@ try {
 startEthEap(netId: number, profile: EthEapProfile): void
 
 该接口用于指定一个以太网卡发起EAP认证。
+
+**ArkTS-Dyn起始版本：** 20
 
 **需要权限**：ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
@@ -234,6 +242,8 @@ try {
 logOffEthEap(netId: number): void
 
 该接口用于指定一个以太网卡从EAP已认证状态退出。
+
+**ArkTS-Dyn起始版本：** 20
 
 **需要权限**：ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
@@ -652,6 +662,8 @@ try {
 
 EAP信息。
 
+**ArkTS-Dyn起始版本：** 20
+
 ​**系统能力​**：SystemCapability.Communication.NetManager.Eap
 
 | **名称** | **类型** | **只读** | **可选** | **说明** |
@@ -664,6 +676,8 @@ EAP信息。
 
 表示EAP认证处理结果的枚举。
 
+**ArkTS-Dyn起始版本：** 20
+
 ​**系统能力​**：SystemCapability.Communication.NetManager.Eap
 
 | **名称** | **值** | **说明** |
@@ -675,6 +689,8 @@ EAP信息。
 ## EapMethod
 
 表示EAP认证方式的枚举。
+
+**ArkTS-Dyn起始版本：** 20
 
 **系统能力**：SystemCapability.Communication.NetManager.Eap
 
@@ -694,6 +710,8 @@ EAP信息。
 
 表示第二阶段认证方式的枚举。
 
+**ArkTS-Dyn起始版本：** 20
+
 **系统能力**：SystemCapability.Communication.NetManager.Eap
 
 | 名称 | 值 | 说明 |
@@ -710,6 +728,8 @@ EAP信息。
 ## EthEapProfile
 
 可扩展身份验证协议配置信息。
+
+**ArkTS-Dyn起始版本：** 20
 
 **系统能力：** SystemCapability.Communication.NetManager.Eap
 
