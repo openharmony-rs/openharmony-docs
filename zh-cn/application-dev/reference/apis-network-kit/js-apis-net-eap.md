@@ -31,6 +31,8 @@ regCustomEapHandler(netType: number, eapCode: number, eapType: number, callback:
 
 **ArkTS-Dyn起始版本：** 20
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
 **系统能力**：SystemCapability.Communication.NetManager.Eap
@@ -79,6 +81,8 @@ unregCustomEapHandler(netType:number, eapCode: number, eapType: number, callback
 用于指定需要取消定制化处理的EAP报文类型和对应的处理callback。使用callback异步回调。
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
@@ -134,6 +138,8 @@ replyCustomEapData(result: CustomResult, data: EapData): void
 
 **ArkTS-Dyn起始版本：** 20
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
 **系统能力**：SystemCapability.Communication.NetManager.Eap
@@ -181,6 +187,8 @@ startEthEap(netId: number, profile: EthEapProfile): void
 该接口用于指定一个以太网卡发起EAP认证。
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
@@ -244,6 +252,8 @@ logOffEthEap(netId: number): void
 该接口用于指定一个以太网卡从EAP已认证状态退出。
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
@@ -664,6 +674,8 @@ EAP信息。
 
 **ArkTS-Dyn起始版本：** 20
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 ​**系统能力​**：SystemCapability.Communication.NetManager.Eap
 
 | **名称** | **类型** | **只读** | **可选** | **说明** |
@@ -678,6 +690,8 @@ EAP信息。
 
 **ArkTS-Dyn起始版本：** 20
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 ​**系统能力​**：SystemCapability.Communication.NetManager.Eap
 
 | **名称** | **值** | **说明** |
@@ -691,6 +705,8 @@ EAP信息。
 表示EAP认证方式的枚举。
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Communication.NetManager.Eap
 
@@ -712,6 +728,8 @@ EAP信息。
 
 **ArkTS-Dyn起始版本：** 20
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Communication.NetManager.Eap
 
 | 名称 | 值 | 说明 |
@@ -730,6 +748,8 @@ EAP信息。
 可扩展身份验证协议配置信息。
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Communication.NetManager.Eap
 
