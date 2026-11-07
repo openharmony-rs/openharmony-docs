@@ -15,7 +15,7 @@ status: active
 
 从API version 10开始支持低时延音频播放。
 
-从API version 26开始支持超低时延音频播放。
+从API version 26.1.0开始支持超低时延音频播放。
 
 低时延音频播放是一种通过软硬芯协同设计实现的音频渲染方案。其核心机制是通过减少buffer大小、优化读写数据架构，使该模式下音频播放具有更低的时延。
 
@@ -39,11 +39,11 @@ status: active
 
 ### 简介
 
-为使用低时延模式，开发者需要参考[推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)进行音频开发。
+为使用低时延或超低时延模式，开发者需要参考[推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)进行音频开发。
 
 当前OHAudio支持三种模式：普通模式（AUDIOSTREAM_LATENCY_MODE_NORMAL）、低时延模式（AUDIOSTREAM_LATENCY_MODE_FAST）和超低时延模式（AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST）。
 
-### 设置低时延模式
+### 设置低时延模式和超低时延模式
 
 开发者通过调用[OH_AudioStreamBuilder_SetLatencyMode()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setlatencymode)，设置[OH_AudioStream_LatencyMode](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode)来决定音频流使用的模式。
 
@@ -57,7 +57,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 ```
 
 设置超低时延模式开发示例：
-<!-- @[Render_SetUltrFastLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+<!-- @[Render_SetUltraFastLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
 ``` C++
 OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST;
@@ -71,6 +71,7 @@ OH_AudioStreamBuilder_SetLatencyMode(ultraFastBuilder, latencyMode);
 ## 注意事项
 
 ### 低时延模式限制
+
 在以下场景中，即使设置了低时延模式，系统仍会使用普通模式。
 - 当前设备不支持低时延模式。
 - 当前流格式不支持低时延模式。
@@ -78,7 +79,8 @@ OH_AudioStreamBuilder_SetLatencyMode(ultraFastBuilder, latencyMode);
 - 当前系统中存在更高优先级流（如：蜂窝通话）。
 
 ### 超低时延模式限制
-创建播放实例时，若应用未申请`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`权限，或当前系统不支持超低时延能力，接口会直接返回错误码，不会创建播放实例。
+
+创建播放实例时，若应用未申请`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`权限，或当前系统不支持超低时延能力，接口会直接返回错误码201（AUDIOSTREAM_ERROR_PERMISSION_DENIED_ULTRA_FAST）；若当前系统不支持超低时延能力，返回错误码6800107（AUDIOSTREAM_ERROR_UNSUPPORTED_ULTRA_FAST），均不会创建播放实例。
 
 创建成功后，在以下场景中，即使设置了超低时延模式，系统仍会使用低时延模式或普通模式。
 - 非系统应用且当前输出设备不是USB ARM耳机，降级为低时延模式。
@@ -87,13 +89,14 @@ OH_AudioStreamBuilder_SetLatencyMode(ultraFastBuilder, latencyMode);
 - 系统中低时延类流（含超低时延流）数量已达到上限（6条），新增的流降级为普通模式。
 - 当前系统中存在更高优先级流（如：蜂窝通话），新增的流降级为普通模式。
 
+### 时延状态查询
 从API version 20开始，支持时延状态查询接口。
-- 可通过[OH_AudioRenderer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getfaststatus)来获取音频播放流是否正在低时延状态下工作。
+- 可通过[OH_AudioRenderer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getfaststatus)来获取音频播放流是否正在低时延状态下工作。从API version 26.1.0起，OH_AudioRenderer_GetFastStatus() 可返回 AUDIOSTREAM_FASTSTATUS_ULTRA_FAST。
 - 在部分特殊场景（如：存在更高优先级流、当前连接设备不支持等）下，开发者可以通过调用[OH_AudioRenderer_OnFastStatusChange()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_onfaststatuschange)来获取低时延状态改变事件。
 
 > **注意：**
 >
-> 低时延模式下，不支持调整播放速度。
+> 低时延模式下，不支持调整播放速度。<br>
 > 超低时延模式下，不支持调整播放速度，也不支持设置响度增益。
 
 
