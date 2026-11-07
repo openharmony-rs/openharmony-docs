@@ -37,8 +37,9 @@ let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
 subscriber = commonEventManager.createSubscriberSync(subscribeInfo);
 ```
 
-> **约束与失效行为说明：**
+> **说明：**
 >
+> **约束与失效行为：**
 > - 本类的数据处理与流程控制方法（getCode、getData、getAbortCommonEvent、setCode、setData、setCodeAndData、abortCommonEvent、clearAbortCommonEvent、finishCommonEvent及其对应的Sync方法）仅在当前订阅收到[有序公共事件](../../basic-services/common-event/common-event-glossary.md#ordered-common-event有序公共事件)的接收回调（onReceiveEvent）执行期间调用才有效。
 > - 在无序公共事件的接收回调内、退订（unsubscribe）之后或其他上下文调用时，接口不会抛出错误，但调用不生效：
 >   - 获取类方法（getCode、getData、getAbortCommonEvent及其对应的Sync方法）返回默认值（依次为0、空字符串、false），与真实数据不可区分；
