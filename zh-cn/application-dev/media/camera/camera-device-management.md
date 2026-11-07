@@ -118,31 +118,39 @@
 
 <!-- @[on_camera_status](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
-```ts
-function onCameraStatusChange(cameraManager: camera.CameraManager): void {
-  cameraManager.on('cameraStatus', (err: BusinessError, cameraStatusInfo: camera.CameraStatusInfo) => {
-    if (err !== undefined && err.code !== 0) {
-      console.error(`Callback Error, errorCode: ${err.code}`);
-      return;
-    }
-    // 如果当通过USB连接相机设备时，回调函数会返回新的相机出现状态。
-    if (cameraStatusInfo.status == camera.CameraStatus.CAMERA_STATUS_APPEAR) {
-      console.info(`New Camera device appear.`);
-    }
-    // 如果当断开相机设备USB连接时，回调函数会返回相机被移除状态。
-    if (cameraStatusInfo.status == camera.CameraStatus.CAMERA_STATUS_DISAPPEAR) {
-      console.info(`Camera device has been removed.`);
-    }
-    // 相机被关闭时，回调函数会返回相机可用状态。
-    if (cameraStatusInfo.status == camera.CameraStatus.CAMERA_STATUS_AVAILABLE) {
-      console.info(`Current Camera is available.`);
-    }
-    // 相机被打开/占用时，回调函数会返回相机不可用状态。
-    if (cameraStatusInfo.status == camera.CameraStatus.CAMERA_STATUS_UNAVAILABLE) {
-      console.info(`Current Camera has been occupied.`);
-    }
-    console.info(`camera: ${cameraStatusInfo.camera.cameraId}`);
-    console.info(`status: ${cameraStatusInfo.status}`);
-  });
+``` TypeScript
+registerCameraStatusChange(err: BusinessError, cameraStatusInfo: camera.CameraStatusInfo): void {
+  // 如果当通过USB连接相机设备时，回调函数会返回新的相机出现状态。
+  if (cameraStatusInfo.status == camera.CameraStatus.CAMERA_STATUS_APPEAR) {
+    console.info(`New Camera device appear.`);
+  }
+  // 如果当断开相机设备USB连接时，回调函数会返回相机被移除状态。
+  if (cameraStatusInfo.status == camera.CameraStatus.CAMERA_STATUS_DISAPPEAR) {
+    console.info(`Camera device has been removed.`);
+  }
+  // 相机被关闭时，回调函数会返回相机可用状态。
+  if (cameraStatusInfo.status == camera.CameraStatus.CAMERA_STATUS_AVAILABLE) {
+    console.info(`Current Camera is available.`);
+  }
+  // 相机被打开/占用时，回调函数会返回相机不可用状态。
+  if (cameraStatusInfo.status == camera.CameraStatus.CAMERA_STATUS_UNAVAILABLE) {
+    console.info(`Current Camera has been occupied.`);
+  }
+  console.info(`camera: ${cameraStatusInfo.camera.cameraId}`);
+  console.info(`status: ${cameraStatusInfo.status}`);
+}
+
+/**
+ * 监听相机状态变化
+ * @param cameraManager - 相机管理器对象
+ * @returns 无返回值
+ */
+onCameraStatusChange(cameraManager: camera.CameraManager): void {
+  Logger.info(TAG, 'onCameraStatusChange is called');
+  try {
+    cameraManager.on('cameraStatus', this.registerCameraStatusChange);
+  } catch (error) {
+    Logger.error(TAG, 'onCameraStatusChange error');
+  }
 }
 ```
