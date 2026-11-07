@@ -52,6 +52,8 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
 
 2. 编辑“CMakeLists.txt”文件，添加所需的源文件和动态库。
 
+   <!-- @[eventsub_cmake_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/CMakeLists.txt) -->
+   
    ```cmake
    set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
    set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
@@ -123,6 +125,8 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
 
 2. 编辑“napi_init.cpp”文件，通过RegisterExternalLogMgr()方法，将注册external_log日志管理者为ArkTS接口：
 
+    <!-- @[ExternalLog_C++_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+
     ``` C++
     static napi_value Init(napi_env env, napi_value exports)
     {
@@ -138,12 +142,16 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
 
 3. 编辑“index.d.ts”文件，定义ArkTS接口：   
 
+    <!-- @[ExternalLog_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
     ``` ts
     export const registerExternalLogMgr: () => void;
     ```
 
 4. 编辑“EntryAbility.ets”文件，在onCreate()函数中添加接口调用：   
-   
+
+    <!-- @[EventSub_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
    ``` ts
    import testNapi from 'libentry.so';
    ``` 
