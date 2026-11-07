@@ -681,6 +681,89 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 
    ArkTS-Dyn示例：
    <!-- @[FormEditUIAbility_PreferencesUtil](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/common/PreferencesUtil.ets) -->
+   
+   ``` TypeScript
+   // entry/src/main/ets/common/PreferencesUtil.ets
+   import { preferences } from '@kit.ArkData';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   const TAG: string = 'PreferencesUtil -->';
+   const MY_STORE: string = 'myStore';
+   const key: string = 'formID';
+   
+   export class PreferencesUtil {
+     private static preferencesUtil: PreferencesUtil;
+   
+     public static getInstance(): PreferencesUtil {
+       if (!PreferencesUtil.preferencesUtil) {
+         PreferencesUtil.preferencesUtil = new PreferencesUtil();
+       }
+       return PreferencesUtil.preferencesUtil;
+     }
+   
+     getPreferences(context: Context): preferences.Preferences | undefined {
+       try {
+         preferences.removePreferencesFromCacheSync(context, MY_STORE);
+         return preferences.getPreferencesSync(context, { name: MY_STORE });
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(TAG, `getPreferences failed, error code=${err.code}, message=${err.message}`);
+         return undefined;
+       }
+     }
+   
+     preferencesFlush(preferences: preferences.Preferences) {
+       preferences.flushSync();
+     }
+   
+     preferencesPut(preferences: preferences.Preferences, formID: string): void {
+       try {
+         preferences.putSync(key, formID);
+         preferences.flushSync();
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(TAG, `preferencesPut failed, error code=${err.code}, message=${err.message}`);
+       }
+     }
+   
+     removePreferencesFromCache(context: Context): void {
+       preferences.removePreferencesFromCache(context, MY_STORE).catch((err: BusinessError) => {
+         console.error(TAG, `removePreferencesFromCache failed, error code=${err.code}, message=${err.message}`);
+       });
+     }
+   
+     getValue(preferences: preferences.Preferences): string | undefined {
+       if (preferences === null) {
+         console.error(TAG, `preferences is null`);
+         return undefined;
+       }
+       try {
+         return preferences.getSync(key, '') as string
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(TAG, `getSync failed, error code=${err.code}, message=${err.message}`);
+         return undefined;
+       }
+     }
+   
+     removeFormId(context: Context) {
+       try {
+         let preferences = this.getPreferences(context);
+         if (!preferences) {
+           console.error(TAG, `preferences is null`);
+           return;
+         }
+         if (preferences.hasSync(key)) {
+           preferences.deleteSync(key);
+           preferences.flushSync();
+           console.info(TAG, `deleteSync done.`)
+         }
+       } catch (error) {
+         console.error(TAG, `Failed to get preferences. Code:${error.code}, message:${error.message}`);
+       }
+     }
+   }
+   ```
 
    ArkTS-Sta示例：
    <!-- @[FormEditUIAbilitySta_PreferencesUtil](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/FormEditUlAbilitySta/entry/src/main/ets/common/PreferencesUtil.ets) -->
