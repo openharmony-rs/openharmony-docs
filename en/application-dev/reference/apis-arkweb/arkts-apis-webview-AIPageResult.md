@@ -1,12 +1,11 @@
 # AIPageResult
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=0116e0570fe1e5738ff1727374a691dca24b792e translatedAt=2026-08-13T13:23:12.931Z pushedAt=2026-08-17T08:46:26.551Z -->
+<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-11-04T10:47:26.121Z pushedAt=2026-11-04T10:51:08.465Z nl=1 -->
 
 `AIPageResult` defines the general format and result code values of the result returned by [executeAIPageCommand](./arkts-apis-webview-WebviewController.md), which are shared by the commands in [AIPageCommand](./arkts-apis-webview-AIPageCommand.md) and [AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md).
 
@@ -87,4 +86,3 @@ Commands such as scroll, select, uploadFile, and setZoomLevel in [AIPageInteract
 >
 > - Distinction between a missing and an empty element locating field: if the locating field is not provided, or its value is an empty string, the corresponding `*_NODEID_MISSING` of the command is returned (for example, 421/441); if `xpath` is provided but its value is empty, `*_XPATH_EMPTY` is returned (for example, 443).
 > - The `key` field of send_keys: if the `key` field is not provided, 461 is returned; if `key` is an empty string, 462 is returned; if the `key` value cannot be recognized, 463 is returned.
-<!--no_check-->

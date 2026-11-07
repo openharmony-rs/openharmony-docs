@@ -1,12 +1,12 @@
 # Using an EL5 Database (ArkTS)
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
 <!--Designer: @htt1997; @ding_dong_dong-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=1f3f0101f8abac0dc433be1f46fe46e4a51e68e7 translatedAt=2026-07-27T08:16:01.100Z pushedAt=2026-07-27T09:43:31.873Z -->
+<!-- md-trans-meta sourceCommit=e3583162b5476e2a500f78633023c912695c0f14 translatedAt=2026-10-31T01:24:52.926Z pushedAt=2026-10-31T03:37:15.248Z nl=1 -->
+
 
 ## When to Use
 
@@ -49,7 +49,7 @@ This section describes how to use an EL5 encrypted KV store, provides the specif
 
 Use **Mover** to move data from an EL2 database to an EL5 database after the screen is unlocked.
 
-<!-- @[Mover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/Mover.ts) --> 
+<!-- @[Mover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/Mover.ts) -->
 
 ``` TypeScript
 import { distributedKVStore } from '@kit.ArkData';
@@ -63,7 +63,7 @@ export class Mover {
         await eStore.putBatch(entries);
         Logger.info(`ECDB_Encry move success`);
       } catch (e) {
-        Logger.info(`ECDB_Encry move failed,code is ${e.code},message is ${e.message}`);
+        Logger.error(`ECDB_Encry move failed,code is ${e.code},message is ${e.message}`);
       }
     }
   }
@@ -341,7 +341,7 @@ export class ECStoreManager {
 
 Register a listener for the **COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED** event when the simulated application starts, and configure the database information and key status information.
 
-<!-- @[EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+<!-- @[EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
 import { AbilityConstant, application, contextConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -352,8 +352,7 @@ import { ECStoreManager } from './ECStoreManager';
 import { StoreInfo } from './Store';
 import { Mover } from './Mover';
 import { SecretKeyObserver } from './SecretKeyObserver';
-import { commonEventManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import Logger from '../common/Logger';
 
 export let storeManager = new ECStoreManager();
@@ -687,6 +686,7 @@ export class Store {
 }
 ```
 
+
 ### SecretKeyObserver
 
 Use the APIs provided by the **SecretKeyObserver** class to obtain the key status. After the key is destroyed, the EL5 database will be closed.
@@ -733,6 +733,7 @@ export class SecretKeyObserver {
 
 export let lockObserve = new SecretKeyObserver();
 ```
+
 
 ### ECStoreManager
 
@@ -827,8 +828,7 @@ import { ECStoreManager } from '../encryptedEStoreGuidelines/ECStoreManager';
 import { StoreInfo } from '../encryptedEStoreGuidelines/Store';
 import { Mover } from '../encryptedEStoreGuidelines/Mover';
 import { SecretKeyObserver } from '../encryptedEStoreGuidelines/SecretKeyObserver';
-import { commonEventManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 
 export let storeManager = new ECStoreManager();
 export let e_secretKeyObserver = new SecretKeyObserver();

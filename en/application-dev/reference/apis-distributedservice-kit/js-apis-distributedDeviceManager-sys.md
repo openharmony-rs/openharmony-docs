@@ -5,8 +5,9 @@
 <!--Designer: @hwzhangchuang-->
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=90c70cf06c9952154d1cb4fd34561983f513eab3 translatedAt=2026-11-04T05:27:12.818Z pushedAt=2026-11-04T10:12:33.564Z nl=1 -->
 
-The **distributedDeviceManager** module provides APIs for distributed device management.
+The **deviceManager** module provides APIs for distributed device management.
 
 Applications can call the APIs to:
 
@@ -14,7 +15,7 @@ Applications can call the APIs to:
 - Discover devices nearby.
 - Authenticate or deauthenticate a device.
 - Query the trusted device list.
-- Query local device information, including the device name, type, and ID.
+- Queries local device information, including the device name, type, and ID.
 
 > **NOTE**
 >
@@ -32,12 +33,14 @@ Defines the heartbeat broadcast policy.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
 **System API**: This is a system API.
 
-| Name        | Value | Description             |
+| Name         | Value  | Description              |
 | ----------- | ---- | --------------- |
-| TEMP_STOP_HEARTBEAT      | 100    | Stops the heartbeat broadcast temporarily, and resumes it upon timeout expiration.            |
-| START_HEARTBEAT          | 101    | Starts heartbeat broadcast.                              |
+| TEMP_STOP_HEARTBEAT      | 100    | Temporarily stops the heartbeat broadcast and automatically resumes it after a timeout.             |
+| START_HEARTBEAT          | 101    | Starts the heartbeat broadcast.                               |
 
 ## DeviceProfileInfoFilterOptions<sup>15+</sup>
 
@@ -45,12 +48,14 @@ Defines device profile information filter options.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
 **System API**: This is a system API.
 
-| Name        | Type | Read-Only| Optional            |  Description   |
+| Name         | Type  | Read-Only | Optional             |  Description    |
 | ----------- | ---- | -- | --- |--------------- | 
-| isCloud      | boolean    |  No| No          | Whether to obtain the device list from the cloud in real time.<br>- **false**: Obtain the device list from the device.<br>- **true**: Obtain the device list from the cloud.      |
-| deviceIdList  | Array&lt;string&gt;  | No| Yes   | Device ID. The device ID is usually the UDID of the device. If the device does not have a UDID, the MAC address or SN of the device is used as the device ID. This parameter is left unspecified by default.      |
+| isCloud      | boolean    |  No | No           | Whether to obtain the device list from the cloud in real time.<br />- false: obtains the list from the device.<br />- true: obtains the list from the cloud.       |
+| deviceIdList  | Array&lt;string&gt;  | No | Yes    | Device information of the specified deviceId. The deviceId is generally the UDID of the device. If the device has no UDID, its MAC or SN is used as the deviceId. Default value is empty.       |
 
 
 ## ServiceProfileInfo<sup>15+</sup>
@@ -59,69 +64,75 @@ Defines the service profile information. It is populated based on the data retur
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
 **System API**: This is a system API.
 
-| Name          | Type | Read-Only| Optional             |  Description   |
+| Name           | Type  | Read-Only| Optional              |  Description    |
 | -------------- | ---- | --------| ------- | --------|
-| deviceId       | string  | No| No  |  Device ID.         |
-| serviceId       | string  | No|No  | Service ID.          |
-| serviceType     | string   | No| No  | Service type.          |
-| data       | string  | No| Yes  |  Service data. The value is a string of up to 1000 characters. This parameter is left unspecified by default.         |
+| deviceId       | string  | No | No   |  ID of the peripheral device.          |
+| serviceId       | string  | No |No   | Service ID.           |
+| serviceType     | string   | No | No   | Service type.           |
+| data       | string  | No | Yes   |  Service data. The character length cannot exceed 1000 characters. Default value is empty.          |
 
 ## DeviceProfileInfo<sup>15+</sup>
 
-Defines the device profile information.
+Defines device information.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
 **System API**: This is a system API.
 
-| Name          | Type | Read-Only  |Optional             |  Description   |
+| Name           | Type  | Read-Only   |Optional              |  Description    |
 | -------------- | ---- | ---| --------------- | --------|
-|  deviceId      | string  |  No   | No  |  Device ID.         |
-|  deviceSn      | string  |  No   | No  |  Device SN.     |
-|  mac           | string  |  No   | No  |  MAC address.        |
-|  model         | string  |  No   | No  |  Device model.        |
-|  deviceType    | string  |  No   | No  |  Device type.        |
-|  manufacturer  | string  |  No   | No  |  Manufacturer.          |
-|  deviceName    | string  |  No   | No  |  Device name.        |
-|  productId     | string  |  No   | No  |  Product ID.   |
-|  subProductId  | string  |  No   | Yes  |  Sub-product ID. This parameter is left unspecified by default.        |
-|  sdkVersion    | string  |  No   | No  |  SDK version.         |
-|  bleMac        | string  |  No   | No  |  Bluetooth BLE MAC address. |
-|  brMac         | string  |  No   | No  |  Bluetooth BR MAC address. |
-|  sleMac        | string  |  No   | No  |  Starflash MAC address.|
-|  firmwareVersion | string |  No  | No |  Firmware version.         |
-|  hardwareVersion | string |  No  | No |  Hardware version.         |
-|  softwareVersion | string |  No | No |  Software version.         |
-|  protocolType    | number |  No  | No |  Protocol type.         |
-|  setupType       | number |  No  | No |  Device type.         |
-|  wiseDeviceId    | string |  No  | No |  Registered device ID.       |
-|  wiseUserId      | string |  No  | No |  Registered user ID.       |
-|  registerTime    | string |  No  | No |  Registration time.         |
-|  modifyTime      | string |  No  | No |  Modification time.         |
-|  shareTime       | string |  No  | No |  Share time.         |
-|  isLocalDevice   | boolean | No  | No|  Whether the device is a local device.<br>- **false**: non-local device.<br>- **true**: local device.    |
-|  services        | Array&lt;[ServiceProfileInfo](#serviceprofileinfo15)&gt; | No | Yes | Service list. This parameter is left unspecified by default.|
-|  productName<sup>18+</sup>     | string  | No  | Yes|  Product name. This parameter is left unspecified by default.   |
-|  internalModel<sup>18+</sup>   | string  | No  | Yes|  Internal product model. This parameter is left unspecified by default.|
+|  deviceId      | string  |  No    | No   |  ID of the peripheral device.          |
+|  deviceSn      | string  |  No    | No   |  Device serial number.      |
+|  mac           | string  |  No    | No   |  MAC address.         |
+|  model         | string  |  No    | No   |  Device model.         |
+|  deviceType    | string  |  No    | No   |  Device type.         |
+|  manufacturer  | string  |  No    | No   |  Manufacturer.           |
+|  deviceName    | string  |  No    | No   |  Device name.         |
+|  productId     | string  |  No    | No   |  Product ID of the device.    |
+|  subProductId  | string  |  No    | Yes   |  Sub-product ID of the device. Default value is empty.         |
+|  sdkVersion    | string  |  No    | No   |  SDK version.          |
+|  bleMac        | string  |  No    | No   |  MAC address of Bluetooth BLE.  |
+|  brMac         | string  |  No    | No   |  MAC address of Bluetooth BR.  |
+|  sleMac        | string  |  No    | No   |  MAC address of Starflash. |
+|  firmwareVersion | string |  No   | No  |  Firmware version.          |
+|  hardwareVersion | string |  No   | No  |  Hardware version.          |
+|  softwareVersion | string |  No  | No  |  Software version.          |
+|  protocolType    | number |  No   | No  |  Protocol type.          |
+|  setupType       | number |  No   | No  |  Device type.          |
+|  wiseDeviceId    | string |  No   | No  |  Registered device identifier.        |
+|  wiseUserId      | string |  No   | No  |  Registered user identifier.        |
+|  registerTime    | string |  No   | No  |  Registration time.          |
+|  modifyTime      | string |  No   | No  |  Modification time.          |
+|  shareTime       | string |  No   | No  |  Sharing time.          |
+|  isLocalDevice   | boolean | No   | No |  Whether the device is a local device.<br />- false: indicates a non-local device, that is, another queried device.<br />- true: indicates a local device, that is, the device currently using this API.     |
+|  services        | Array&lt;[ServiceProfileInfo](#serviceprofileinfo15)&gt; | No  | Yes  | List of service profile information. Default value is empty. |
+|  productName<sup>18+</sup>     | string  | No   | Yes |  Product name of the device. Default value is empty.    |
+|  internalModel<sup>18+</sup>   | string  | No   | Yes |  Internal model of the product to which the device belongs. Default value is empty. |
 
 
-## DeviceIconInfoFilterOptions<sup>18+</sup> 
+## DeviceIconInfoFilterOptions<sup>18+</sup>
 
 Defines the device icon information filter options.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
 **System API**: This is a system API.
 
-| Name          | Type | Read-Only| Optional             |  Description   |
+| Name           | Type  | Read-Only | Optional              |  Description    |
 | -------------- | ---- | -------| -------- | --------|
-|  productId      | string  | No| No  |  Product ID.         |
-|  subProductId   | string  | No| Yes  |  Sub-product ID. This parameter is left unspecified by default.     |
-|  imageType      | string  | No| No  |  Image type. This parameter has a fixed value of **ID**, indicating the product's physical image.|
-|  specName       | string  | No| No  |  Image specification name. Value:<br>- **lg**: large image (size: 1016064 px)<br>- **sm**: small image (size: 65536 px)        |
-|  internalModel  | string  | No| Yes  |  Internal product model. This parameter is left unspecified by default.       |
+|  productId      | string  | No | No   |  Product ID of the device.          |
+|  subProductId   | string  | No | Yes   |  Sub-product ID of the device. Default value is empty.      |
+|  imageType      | string  | No | No   |  Image type. The fixed value is "ID", indicating the physical image of the product. |
+|  specName       | string  | No | No   |  Image specification name. Value range:<br />- lg: large image, with a size of 1016064px.<br />- sm: small image, with a size of 65536px.         |
+|  internalModel  | string  | No | Yes   |  Internal model of the product to which the device belongs. Default value is empty.        |
 
 ## DeviceIconInfo<sup>18+</sup>
 
@@ -129,17 +140,19 @@ Defines the device icon information.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
 **System API**: This is a system API.
 
-| Name          | Type | Read-Only |Optional             |  Description   |
+| Name           | Type  | Read-Only  |Optional              |  Description    |
 | -------------- | ---- | ------| --------- | --------|
-|  productId      | string  | No| No  |  Product ID.         |
-|  subProductId   | string  | No| Yes  |  Sub-product ID. This parameter is left unspecified by default.    |
-|  imageType      | string  | No| No  |  Image type. This parameter has a fixed value of **ID**, indicating the product's physical image.       |
-|  specName       | string  | No| No  |  Image specification name. Value:<br>- **lg**: large image (size: 1016064 px)<br>- **sm**: small image (size: 65536 px)        |
-|  url            | string  | No| No  |  URL.         |
-|  icon           | ArrayBuffer | No| No| Icon.        |
-|  internalModel  | string  | No| Yes  |  Internal product model. This parameter is left unspecified by default.        |
+|  productId      | string  | No | No   |  Product ID of the device.          |
+|  subProductId   | string  | No | Yes   |  Sub-product ID of the device. Default value is empty.     |
+|  imageType      | string  | No | No   |  Image type. The fixed value is "ID", indicating the physical image of the product.        |
+|  specName       | string  | No | No   |  Image specification name. Value range:<br />- lg: large image, with a size of 1016064 px.<br />- sm: small image, with a size of 65536 px.         |
+|  url            | string  | No | No   |  URL.          |
+|  icon           | ArrayBuffer | No| No | Icon.         |
+|  internalModel  | string  | No | Yes   |  Internal model of the product to which the device belongs. Default value is empty.         |
 
 ## NetworkIdQueryFilter<sup>18+</sup>
 
@@ -147,12 +160,14 @@ Defines the network ID filter options.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
 **System API**: This is a system API.
 
-| Name          | Type | Read-Only| Optional             |  Description   |
+| Name           | Type  | Read-Only | Optional              |  Description    |
 | -------------- | ---- | ------ | --------- | --------|
-|  wiseDeviceId       | string  | No| No  |  Registered device ID.         |
-|  onlineStatus    | number  | No| No  |  Device online status.<br>- **0**: The device is offline.<br>- **1**: The device is online.     |
+|  wiseDeviceId       | string  | No | No   |  Registered device identifier.          |
+|  onlineStatus    | number  | No | No   |  Device online status, including<br />- 0: the device is offline.<br />- 1: the device is online.      |
 
 ## DeviceIdentification<sup>24+</sup>
 
@@ -160,14 +175,16 @@ Defines a struct to identify a distributed device.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**Model restriction**: This API can be used only in the stage model.
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
-| Name      | Type | Read-Only| Optional             | Description         |
-|----------| ---- | ------ | --------- |-------------|
-| deviceId | string  | No| No  | Anonymous device ID obtained.|
-| udid     | string  | No| No  | Unique device ID.    |
+| Name     | Type  | Read-Only | Optional | Description |
+|----------| ---- | --------- | -------- |-------------|
+| deviceId | string  | No | No   | Anonymous device ID obtained by the application. |
+| udid     | string  | No | No   | Unique device identifier. **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC, ohos.permission.ACCESS_SERVICE_DM, and ohos.permission.sec.ACCESS_UDID.     |
 
 ## DeviceManager
 
@@ -183,20 +200,22 @@ Replies to the user's UI operation. This API can be used only by the PIN HAP of 
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
 **System API**: This is a system API.
 
 **Parameters**
 
-  | Name      | Type           | Mandatory | Description               |
+  | Name | Type | Mandatory | Description |
   | ------------- | --------------- | ---- | ------------------- |
-  | action        | number          | Yes   | User operation.<br>- **0**: Grant the permission.<br>- **1**. Remove the permission.<br>- **2**: Time out the user operation in the permission request dialog.<br>- **3**: Cancel the display of the PIN box.<br>- **4**: Cancel the display of the PIN input box.<br>- **5**: Confirm the input in the PIN input box.    |
-  | actionResult        | string          | Yes   | User operation result. The value is a string of 1 to 255 characters.|
+  | action | number | Yes | User operation.<br>- **0**: Grant the permission.<br>- **1**: Remove the permission.<br>- **2**: Time out the user operation in the permission request dialog.<br>- **3**: Cancel the display of the PIN box.<br>- **4**: Cancel the display of the PIN input box.<br>- **5**: Confirm the input in the PIN input box. |
+  | actionResult | string | Yes | User operation result. The value ranges from 1 to 255 characters. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| ID | Error Message                                                        |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -212,7 +231,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   try {
     /**
      * action = 0 - Grant the permission.
-     * action = 1 - Revoke the permission.
+     * action = 1 - Remove the permission.
      * action = 2 - Time out the user operation in the permission request dialog.
      * action = 3 - Cancel the display of the PIN box.
      * action = 4 - Cancel the display of the PIN input box.
@@ -237,20 +256,22 @@ Subscribes to the reply to the UI operation result. This API returns the result 
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
 **System API**: This is a system API.
 
 **Parameters**
 
-  | Name     | Type                            | Mandatory| Description                           |
+  | Name      | Type                             | Mandatory | Description                            |
   | -------- | ------------------------------------ | ---- | ------------------------------ |
-  | type     | string                                | Yes | Event type, which has a fixed value of **replyResult**.|
-  | callback | Callback&lt;{&nbsp;param:&nbsp;string;}&gt; | Yes | Callback invoked to return the UI status change.       |
+  | type     | string                                | Yes  | Device manager UI status callback to be registered, which notifies the application when the status changes. The value is fixed at replyResult. |
+  | callback | Callback&lt;{&nbsp;param:&nbsp;string;}&gt; | Yes  | Callback used to return the UI status.        |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| ID | Error Message                                                        |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.    |
 | 202 | Permission verification failed. A non-system application calls a system API.                            |
@@ -295,20 +316,22 @@ Unsubscribes from the reply to the UI operation result. This API returns the res
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
 **System API**: This is a system API.
 
 **Parameters**
 
-  | Name     | Type                             | Mandatory| Description                           |
+  | Name      | Type                              | Mandatory | Description                            |
   | -------- | ------------------------------------- | ---- | ------------------------------ |
-  | type     | string                                | Yes  | Event type, which has a fixed value of **replyResult**.|
-  | callback | Callback&lt;{&nbsp;param:&nbsp;string;}&gt; | No  | Callback to unregister.|
+  | type     | string                                | Yes   | Device manager UI status callback to unregister. The value is fixed to **replyResult**. |
+  | callback | Callback&lt;{&nbsp;param:&nbsp;string;}&gt; | No   | Callback for the device manager UI status event. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| ID | Error Message                                                        |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.    |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -340,20 +363,22 @@ Sets the heartbeat broadcast policy.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
 **System API**: This is a system API.
 
 **Parameters**
 
-  | Name      | Type           | Mandatory | Description               |
+  | Name       | Type            | Mandatory  | Description                |
   | ------------- | --------------- | ---- | ------------------- |
-  | policy        |  &nbsp;[StrategyForHeartbeat](#strategyforheartbeat15)&nbsp;         | Yes   | Heartbeat broadcast policy.      |
-  | delayTime     | number          | Yes   | Duration for temporarily disabling heartbeat broadcast. The value ranges from 1000 to 15000, in milliseconds.           |
+  | policy        |  &nbsp;[StrategyForHeartbeat](#strategyforheartbeat15)&nbsp;         | Yes    | Heartbeat broadcast strategy.       |
+  | delayTime     | number          | Yes    | Duration for temporarily disabling the heartbeat broadcast, in ms. The value range is 1000 ms to 15000 ms.            |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| ID | Error Message                                                        |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -388,25 +413,27 @@ Obtains the list of devices under the same account. This API uses a promise to r
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
 **System API**: This is a system API.
 
 **Parameters**
 
-  | Name      | Type           | Mandatory | Description               |
+  | Name       | Type            | Mandatory  | Description                |
   | ------------- | --------------- | ---- | ------------------- |
-  | filterOptions        |  &nbsp;[DeviceProfileInfoFilterOptions](#deviceprofileinfofilteroptions15)&nbsp;         | Yes   | Filter options.    |
+  | filterOptions        |  &nbsp;[DeviceProfileInfoFilterOptions](#deviceprofileinfofilteroptions15)&nbsp;         | Yes    | Filter condition used during the query.     |
 
-**Returns**
+**Return value**
 
-  | Type                                                      | Description                              |
+  | Type                                                       | Description                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | Promise&lt;Array&lt;[DeviceProfileInfo](#deviceprofileinfo15)&gt;&gt; | Promise used to return the device list.|
+  | Promise&lt;Array&lt;[DeviceProfileInfo](#deviceprofileinfo15)&gt;&gt; | Promise instance used to return the device list. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| ID | Error Message                                                        |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -444,25 +471,27 @@ Updates the device list. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
 **System API**: This is a system API.
 
 **Parameters**
 
-  | Name      | Type           | Mandatory | Description               |
+  | Name       | Type            | Mandatory  | Description                |
   | ------------- | --------------- | ---- | ------------------- |
-  |  deviceProfileInfoList       |  Array&lt;[DeviceProfileInfo](#deviceprofileinfo15)&gt;        |  Yes  |  Device list.   |
+  |  deviceProfileInfoList       |  Array&lt;[DeviceProfileInfo](#deviceprofileinfo15)&gt;        |  Yes   |  List of devices to be updated.    |
 
-**Returns**
+**Return value**
 
-  | Type                                                      | Description                              |
+  | Type                                                       | Description                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | number | Operation result. The value **0** indicates that the operation is successful. |
+  | Promise&lt;number&gt; | Operation result. The value 0 indicates that the call is successful.  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| ID | Error Message                                                        |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -499,25 +528,27 @@ Obtains the device icon. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
 **System API**: This is a system API.
 
 **Parameters**
 
-  | Name      | Type           | Mandatory | Description               |
+  | Name       | Type            | Mandatory  | Description                |
   | ------------- | --------------- | ---- | ------------------- |
-  |  filterOptions       | [DeviceIconInfoFilterOptions](#deviceiconinfofilteroptions18)         | Yes   |  Filter options.   |
+  |  filterOptions       | [DeviceIconInfoFilterOptions](#deviceiconinfofilteroptions18)         | Yes    |  Filter condition used during the query.    |
 
-**Returns**
+**Return value**
 
-  | Type                                                      | Description                              |
+  | Type                                                       | Description                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  |  Promise&lt;[DeviceIconInfo](#deviceiconinfo18)&gt; | Promise used to return the device icon information.                                   |
+  |  Promise&lt;[DeviceIconInfo](#deviceiconinfo18)&gt; | Promise instance used to return the device icon information.                                    |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| ID | Error Message                                                        |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -565,25 +596,27 @@ Obtains the local device's display name with the specified length. This API uses
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
 **System API**: This is a system API.
 
 **Parameters**
 
-  | Name      | Type           | Mandatory | Description               |
+  | Name       | Type            | Mandatory  | Description                |
   | ------------- | --------------- | ---- | ------------------- |
-  |  maxNameLength       |  number        |  Yes | Length of the local device's display name, in bytes. The value range is [18, 100]. If the value is **0**, the length is not limited.    |
+  |  maxNameLength       |  number        |  Yes  | Length (in bytes) of the displayable device name. The value range is [18, 100]. The value 0 indicates no limit.     |
 
-**Returns**
+**Return value**
 
-  | Type                                                      | Description                              |
+  | Type                                                       | Description                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | string | Maximum number of bytes in the local device's display name.|
+  | Promise&lt;string&gt; | Display name of the local device with the specified maximum name length in bytes. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| ID | Error Message                                                        |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -620,25 +653,27 @@ Sets the local device name. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
 **System API**: This is a system API.
 
 **Parameters**
 
-  | Name      | Type           | Mandatory | Description               |
+  | Name       | Type            | Mandatory  | Description                |
   | ------------- | --------------- | ---- | ------------------- |
-  |  deviceName       | string         |  Yes  | Device name to set. The value is a string of 1 to 255 characters.    |
+  |  deviceName       | string         |  Yes   | Custom device name. The string length ranges from 1 to 255.     |
 
-**Returns**
+**Return value**
 
-  | Type                                                      | Description                              |
+  | Type                                                       | Description                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | number | Operation result. The value **0** indicates that the operation is successful.|
+  | Promise&lt;number&gt; | Operation result. The value 0 indicates that the call is successful. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| ID | Error Message                                                        |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -678,26 +713,28 @@ Sets the remote device name. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
 **System API**: This is a system API.
 
 **Parameters**
 
-  | Name      | Type           | Mandatory | Description               |
+  | Name       | Type            | Mandatory  | Description                |
   | ------------- | --------------- | ---- | ------------------- |
-  |  deviceId       | string         | Yes   | UDID of the remote device. If the device does not have a UDID, the MAC address or SN of the device is used as the device ID. The SN is used preferentially.    |
-  |  deviceName       | string         | Yes   | Device name to set. The value is a string of 1 to 255 characters.   |
+  |  deviceId       | string         | Yes    | UDID of the accessory device. For a device without a UDID, the MAC or SN is used, with the SN preferred.     |
+  |  deviceName       | string         | Yes    | Custom device name. The string length ranges from 1 to 255.    |
 
-**Returns**
+**Return value**
 
-  | Type                                                      | Description                              |
+  | Type                                                       | Description                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | number | Operation result. The value **0** indicates that the operation is successful.|
+  | Promise&lt;number&gt; | Operation result. 0 indicates that the call is successful. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| ID | Error Message                                                        |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -738,25 +775,27 @@ Obtains the list of network devices according to the specified filter options. T
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
 **System API**: This is a system API.
 
 **Parameters**
 
-  | Name      | Type           | Mandatory | Description               |
+  | Name       | Type            | Mandatory  | Description                |
   | ------------- | --------------- | ---- | ------------------- |
-  |   filterOptions      | [NetworkIdQueryFilter](#networkidqueryfilter18)         |  Yes  |   Filter options.  |
+  |   filterOptions      | [NetworkIdQueryFilter](#networkidqueryfilter18)         |  Yes   |   Filter condition used during the query.   |
 
-**Returns**
+**Return value**
 
-  | Type                                                      | Description                              |
+  | Type                                                       | Description                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | Promise&lt;Array&lt;string&gt;&gt; |  Promise used to return the device list.|
+  | Promise&lt;Array&lt;string&gt;&gt; |  Promise instance used to return the list of device network IDs.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| ID | Error Message                                                        |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -796,27 +835,29 @@ Queries the device identification based on the device ID.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**Model restriction**: This API can be used only in the stage model.
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
 **Parameters**
 
-  | Name      | Type                 | Mandatory | Description              |
+  | Name       | Type                  | Mandatory  | Description               |
   | ------------- |---------------------| ---- |------------------|
-  |   deviceIds      | Array&lt;string&gt; |  Yes  | List of device IDs that can be obtained by the application.|
+  |   deviceIds      | Array&lt;string&gt; |  Yes   | List of device IDs that the application can obtain. |
 
-**Returns**
+**Return value**
 
-  | Type                                                          | Description           |
+  | Type                                                           | Description            |
   |--------------------------------------------------------------| --------------- |
-  | Array&lt;[DeviceIdentification](#deviceidentification24)&gt; |  Device identification list.|
+  | Array&lt;[DeviceIdentification](#deviceidentification24)&gt; |  List of DeviceIdentification objects.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID   | Error Message                                                                                                             |
+| ID    | Error Message                                                                                                              |
 |----------|-------------------------------------------------------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.            |
 | 202      | Permission verification failed. A non-system application calls a system API.                                    |
@@ -826,27 +867,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit'
-  private idsLists: undefined|Array<distributedDeviceManager.DeviceIdentification> = [];
-  getDeviceUdids(deviceIds: Array<string>): void {
-    let deviceManager: distributedDeviceManager.DeviceManager | null = null;
-    try {
-      deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication');
-      this.idsLists = deviceManager?.getIdentificationByDeviceIds(deviceIds);
-      console.info("Successfully retrieved UDID list");
-    } catch (error) {
-      console.error('Get device UDID failed:', error);
-      this.idsLists = [];
-    } finally {
-      if (deviceManager) {
-        try {
-          distributedDeviceManager.releaseDeviceManager(deviceManager);
-          console.info("deviceManager released successfully");
-        } catch (releaseError) {
-          console.error('Release device manager failed:', releaseError);
-        }
-      }
-    }
+
+  let idsLists: undefined|Array<distributedDeviceManager.DeviceIdentification> = [];
+  let deviceIds: Array<string> = [];
+  try {
+    let deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication');
+    idsLists = deviceManager?.getIdentificationByDeviceIds(deviceIds);
+    console.info("Successfully retrieved UDID list");
+  } catch (error) {
+    console.error('Get device UDID failed:', error);
+    idsLists = [];
   }
   ```
 
@@ -860,13 +890,17 @@ Restores the local device name by resetting the network settings.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
+**Model restriction:** This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| ID | Error Message                                                        |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -901,13 +935,15 @@ Restores the local device name by resetting the network settings.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
 **System API**: This is a system API.
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| ID | Error Message                                                        |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -925,5 +961,63 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('restoreLocalDeivceName errCode:' + e.code + ',errMessage:' + e.message);
+  }
+  ```
+
+### getOsTypeByNetworkId
+
+getOsTypeByNetworkId(networkId: string): number
+
+Queries the OS type of a device based on the device network ID.
+
+**Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC and ohos.permission.ACCESS_SERVICE_DM
+
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
+
+**Device behavior difference**: Calling this API on a Wearable device that does not support distributed services returns error code 801.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Since:** 26.0.1
+
+**Parameters**
+
+  | Name       | Type            | Mandatory  | Description                |
+  | ------------- | --------------- | ---- | ------------------- |
+  |  networkId       | string         | Yes    | Device network ID.     |
+
+**Return value**
+
+  | Type                                                       | Description                               |
+  | ---------------------------------------------------------- | ---------------------------------- |
+  | number | OS type of the device.<br>- 10: OpenHarmony-based OS.<br>- 11: non-OpenHarmony-based OS.<br>- -1: unknown. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
+
+| ID | Error Message                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 11600102 | Failed to obtain service.                                 |
+| 11600110 | Invalid network ID.                                 |
+
+**Example**
+
+  ```ts
+  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    let networkId: string = 'test_network_id';
+    let osType: number = dmInstance.getOsTypeByNetworkId(networkId);
+    console.info('getOsTypeByNetworkId result: ' + osType);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error('getOsTypeByNetworkId errCode:' + e.code + ',errMessage:' + e.message);
   }
   ```

@@ -5,7 +5,7 @@
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=ad7911190ca18721b642c0b2a354bbd6b85aac56 translatedAt=2026-09-28T02:30:37.378Z pushedAt=2026-09-29T06:19:38.357Z -->
+<!-- md-trans-meta sourceCommit=eba46a583601faaae2404a4630e28d85cc91087a translatedAt=2026-11-05T00:49:58.892Z pushedAt=2026-11-05T00:49:58.892Z nl=1 -->
 
 ## Introduction
 
@@ -68,7 +68,7 @@ Prepare devices A and B that can sign in to a HUAWEI ID. The devices must be suc
 ### Setting Up the Environment
 
 1. Install [DevEco Studio](https://developer.huawei.com/consumer/en/download/deveco-studio) on the PC. DevEco Studio 4.1 or later is required.
-2. Update the public-SDK to API 18 or later.
+2. Update the public-SDK to API 18 or later<!--Del-->. For details, see [OpenHarmony SDK Upgrade Assistant](../tools/openharmony-sdk-upgrade-assistant.md)<!--DelEnd-->.
 3. Connect either debugging device, device A or device B, to the PC using a USB cable.
 4. Enable Wi-Fi and Bluetooth on devices A and B. If the devices are signed in with the same HUAWEI ID, they automatically form a network. If they are not signed in with the same HUAWEI ID, first use [Discovering Devices](devicemanager-guidelines.md#discovering-devices) and [Binding a Device](devicemanager-guidelines.md#binding-a-device) to establish a trusted relationship and complete networking.
 
@@ -144,7 +144,7 @@ function initDmClass(): void {
   try {
     dmClass = distributedDeviceManager.createDeviceManager('com.example.remotephotodemo');
   } catch (err) {
-    hilog.info(0x0000, 'testTag', 'createDeviceManager err');
+    hilog.error(0x0000, 'testTag', 'createDeviceManager err');
   }
 }
 
@@ -155,17 +155,17 @@ function getRemoteDeviceId(): string | undefined {
     hilog.info(0x0000, 'testTag', 'getRemoteDeviceId begin');
     let list = dmClass.getAvailableDeviceListSync();
     if (typeof (list) === 'undefined' || typeof (list.length) === 'undefined') {
-      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is null');
+      hilog.error(0x0000, 'testTag', 'getRemoteDeviceId err: list is null');
       return;
     }
     if (list.length === 0) {
-      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is empty');
+      hilog.error(0x0000, 'testTag', 'getRemoteDeviceId err: list is empty');
       return;
     }
     // Use a dialog box to select the device.
     return list[0].networkId;
   } else {
-    hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: dmClass is null');
+    hilog.error(0x0000, 'testTag', 'getRemoteDeviceId err: dmClass is null');
     return;
   }
 }

@@ -26,11 +26,11 @@ FileUri提供了关于文件URI的基本操作，将URI转换成对应的沙箱�
 
 | 接口名称 | 描述 |
 | -------- |-------|
-| FileManagement_ErrCode OH_FileUri_GetUriFromPath(const char *path, unsigned int length, char **result)| 通过传入的path生成应用自己的URI。将path转URI时，path中的中文及非数字字母的特殊字符会被编码为对应的ASCII码，并拼接在URI中。|
-| FileManagement_ErrCode OH_FileUri_GetPathFromUri(const char *uri, unsigned int length, char **result) | 将uri转换成对应的沙箱路径。 <br>1. uri转路径过程中会将uri中存在的ASCII码进行解码后拼接在原处，非系统接口生成的uri中可能存在ASCII码解析范围之外的字符，导致字符串无法正常拼接。<br>2. 转换处理遵循系统约定的字符串替换规则（规则可能随系统演进而变化），转换过程中不进行路径校验操作，无法保证转换结果的可访问性。 |
+| FileManagement_ErrCode OH_FileUri_GetUriFromPath(const char *path, unsigned int length, char **result)| 通过传入的path生成应用自己的URI。将path转URI时，path中的中文及非数字字母的特殊字符将会被百分号编码，并拼接在URI中。|
+| FileManagement_ErrCode OH_FileUri_GetPathFromUri(const char *uri, unsigned int length, char **result) | 将uri转换成对应的沙箱路径。 <br>1. uri转路径过程中会将uri中存在的百分号编码字符进行解码后拼接在原处，非系统接口生成的uri中可能存在不符合编码规范的字符，导致字符串无法正常拼接。<br>2. 转换处理遵循系统约定的字符串替换规则（规则可能随系统演进而变化），转换过程中不进行路径校验操作，无法保证转换结果的可访问性。 |
 | FileManagement_ErrCode OH_FileUri_GetFullDirectoryUri(const char *uri, unsigned int length, char **result) | 获取所在路径uri。<br>1. uri指向文件则返回所在路径的uri。<br>2. uri指向目录则不处理直接返回原串。<br>3. uri指向的文件不存在或属性获取失败则返回空串。|
 | bool OH_FileUri_IsValidUri(const char *uri, unsigned int length) | 判断传入的uri的格式是否正确。仅校验uri是否满足系统定义的格式规范，不校验uri的有效性。|
-| FileManagement_ErrCode OH_FileUri_GetFileName(const char *uri, unsigned int length, char **result) | 通过传入的uri获取到对应的文件名称（如果文件名中存在ASCII码将会被解码处理后拼接在原处）。|
+| FileManagement_ErrCode OH_FileUri_GetFileName(const char *uri, unsigned int length, char **result) | 通过传入的uri获取到对应的文件名称（如果文件名中存在百分号编码字符，将会被解码处理后拼接在原处）。|
 
 ## 开发步骤
 
@@ -94,7 +94,7 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
    
        unsigned int length = strlen(uri);
        // 输出传入uri字符串
-       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
+       OH_LOG_INFO(LogType::LOG_APP, "OH_FileUri_GetPathFromUri input URI: %{public}s", uri);
        char *pathResult = nullptr;
        FileManagement_ErrCode ret = OH_FileUri_GetPathFromUri(uri, length, &pathResult);
        delete[] uri;
@@ -126,7 +126,7 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
    
        unsigned int length = strlen(uri);
        // 输出传入uri字符串
-       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
+       OH_LOG_INFO(LogType::LOG_APP, "OH_FileUri_GetFullDirectoryUri input URI: %{public}s", uri);
        char *uriResult = nullptr;
        FileManagement_ErrCode ret = OH_FileUri_GetFullDirectoryUri(uri, length, &uriResult);
        delete[] uri;
@@ -160,7 +160,7 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
        napi_get_value_string_utf8(env, args[0], uri, strLength + 1, &strLength);
        unsigned int length = strlen(uri);
        // 输出传入uri字符串
-       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
+       OH_LOG_INFO(LogType::LOG_APP, "OH_FileUri_IsValidUri input URI: %{public}s", uri);
        bool flags = OH_FileUri_IsValidUri(uri, length);
        delete[] uri;
        // ...
@@ -182,7 +182,7 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
    
        unsigned int length = strlen(uri);
        // 输出传入uri字符串
-       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
+       OH_LOG_INFO(LogType::LOG_APP, "OH_FileUri_GetFileName input URI: %{public}s", uri);
        char *uriResult = nullptr;
        FileManagement_ErrCode ret = OH_FileUri_GetFileName(uri, length, &uriResult);
        delete[] uri;

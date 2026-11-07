@@ -56,7 +56,7 @@ USB串口服务主要包括两个阶段：
 
 - 开发工具及配置：
 
-  DevEco Studio作为开发工具，是进行USB串口通信服务开发必备条件之一，开发者可以使用该工具进行开发、调试、打包等操作。请[下载安装](https://developer.huawei.com/consumer/cn/download/)该工具，并参考[DevEco Studio使用指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V14/ide-tools-overview-V14)中的[创建工程及运行](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V14/ide-create-new-project-V14)进行基本的操作验证，保证DevEco Studio可正常运行。
+  DevEco Studio作为开发工具，是进行USB串口通信服务开发必备条件之一，开发者可以使用该工具进行开发、调试、打包等操作。请[下载安装](https://developer.huawei.com/consumer/cn/download/)该工具，并参考[DevEco Studio使用指南](https://developer.huawei.com/consumer/cn/doc/doccenter-deveco-studio/ide-tools-overview)中的[创建工程及运行](https://developer.huawei.com/consumer/cn/doc/doccenter-deveco-studio/ide-create-new-project)进行基本的操作验证，保证DevEco Studio可正常运行。
 
 - SDK版本配置：
 

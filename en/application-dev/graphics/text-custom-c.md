@@ -6,7 +6,7 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=0876b7ba2fa1777332890da7f5059310feded633 translatedAt=2026-08-22T01:36:27.762Z pushedAt=2026-08-22T03:31:56.680Z -->
+<!-- md-trans-meta sourceCommit=21d5d5f3f928e5fc857cd41aae0935ab534c5ac6 translatedAt=2026-11-05T01:00:48.367Z pushedAt=2026-08-22T03:31:56.680Z nl=2 -->
 
 In complex text layout scenarios, when the standard text components provided by the system cannot meet specific visual or interaction requirements, you can use the underlying text drawing capability provided by ArkGraphics 2D to directly control the canvas and text style to implement refined control over the text appearance and layout. This capability applies to scenarios that require highly customized text rendering effects, such as artistic fonts, complex rich text orchestration, or special dynamic text effects.
 
@@ -126,9 +126,8 @@ Starting from API version 20, the newly added **OH_Drawing_GetRunGlyphAdvances()
        OH_Drawing_Array *advances = OH_Drawing_GetRunGlyphAdvances(run, 0, 0);
    
        OH_Drawing_TextBlobBuilder *builder = OH_Drawing_TextBlobBuilderCreate();
-       // Create a 20 x 20 rectangle.
-       OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 20, 20);
-       const OH_Drawing_RunBuffer *buffer = OH_Drawing_TextBlobBuilderAllocRunPos(builder, font, glyphsLength, rect);
+       const OH_Drawing_RunBuffer *buffer = OH_Drawing_TextBlobBuilderAllocRunPos(
+           builder, font, glyphsLength, nullptr);
    
        // Create a glyph buffer and draw glyphs independently using the drawing API.
        int x = 0;
@@ -157,7 +156,6 @@ Starting from API version 20, the newly added **OH_Drawing_GetRunGlyphAdvances()
        OH_Drawing_DestroyRunGlyphAdvances(advances);
        OH_Drawing_DestroyRunGlyphs(glyphs);
        OH_Drawing_TextBlobBuilderDestroy(builder);
-       OH_Drawing_RectDestroy(rect);
    }
    ```
 

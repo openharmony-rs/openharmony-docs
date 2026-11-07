@@ -6,6 +6,7 @@
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=ce4baf6da4b35abd45eea7bfed084b618215eb5e translatedAt=2026-11-05T00:56:15.859Z nl=1 -->
 
 ## When to Use
 
@@ -26,7 +27,7 @@ The APIs ended with **64** are new APIs. These APIs can be used to open rawfiles
 | int OH_ResourceManager_ReadRawFile(const RawFile *rawFile, void *buf, size_t length) | Reads a raw file.                   |
 | void OH_ResourceManager_CloseRawFile(RawFile *rawFile)       | Closes a raw file to release resources.               |
 | void OH_ResourceManager_CloseRawDir(RawDir *rawDir)          | Closes a raw file directory to release resources.               |
-| bool OH_ResourceManager_GetRawFileDescriptor(const RawFile *rawFile, RawFileDescriptor &descriptor) | Obtains the file descriptor (FD) of a raw file.                       |
+| bool OH_ResourceManager_GetRawFileDescriptorData(const RawFile *rawFile, RawFileDescriptor *descriptor) | Obtains the file descriptor (FD) of a raw file.                       |
 | void OH_ResourceManager_ReleaseNativeResourceManager(NativeResourceManager *resMgr) | Releases the native resource manager.   |
 | bool OH_ResourceManager_IsRawDir(const NativeResourceManager *mgr, const char *path) | Checks whether a path is a subdirectory in the **rawfile** directory.   |
 
@@ -315,7 +316,7 @@ After the project is created, the **cpp** directory is created in the project di
         }
         // Obtain the FD of the rawfile, that is, RawFileDescriptor {fd, offset, length}.
         RawFileDescriptor descriptor;
-        OH_ResourceManager_GetRawFileDescriptor(rawFile, descriptor);
+        OH_ResourceManager_GetRawFileDescriptorData(rawFile, &descriptor);
         // Close the rawDir pointer object.
         OH_ResourceManager_CloseRawFile(rawFile);
         OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
@@ -377,7 +378,7 @@ After the project is created, the **cpp** directory is created in the project di
 
    Example: Obtain a **resourceManager** object for intra-package resources within the application.
 
-	<!-- @[native_rawfile_guide_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[native_rawfile_guide_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     import { util } from '@kit.ArkTS';

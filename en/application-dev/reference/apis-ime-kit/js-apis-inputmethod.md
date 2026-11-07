@@ -314,7 +314,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. [since 9 - 10].        |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. [since 9 - 10].        |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -340,7 +340,7 @@ inputMethod.switchInputMethod(currentIme, (err: BusinessError, result: boolean) 
 
 > **NOTE**
 >
-> In API version 11, the error code `201 permissions check fails.` has been removed.
+> In API version 11, the error code `201 Permission verification failed. The application does not have the permission required to call the API.` has been removed.
 
 ## inputMethod.switchInputMethod<sup>9+</sup>
 switchInputMethod(target: InputMethodProperty): Promise&lt;boolean&gt;
@@ -381,7 +381,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. [since 9 - 10]       |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. [since 9 - 10]       |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -405,7 +405,7 @@ inputMethod.switchInputMethod(currentIme).then((result: boolean) => {
 
 > **NOTE:**
 >
-> In API 11, the error code `201 permissions check fails.` is removed.
+> In API 11, the error code `201 Permission verification failed. The application does not have the permission required to call the API.` is removed.
 
 ## inputMethod.getCurrentInputMethod<sup>9+</sup>
 
@@ -462,7 +462,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. [since 9 - 10]       |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. [since 9 - 10]       |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -499,7 +499,7 @@ inputMethod.switchCurrentInputMethodSubtype({
 
 > **NOTE**
 >
-> In API 11, the error code `201 permissions check fails.` is removed.
+> In API 11, the error code `201 Permission verification failed. The application does not have the permission required to call the API.` is removed.
 
 ## inputMethod.switchCurrentInputMethodSubtype<sup>9+</sup>
 
@@ -535,7 +535,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. [since 9 - 10]       |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. [since 9 - 10]       |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -570,7 +570,7 @@ inputMethod.switchCurrentInputMethodSubtype({
 
 > **NOTE**
 >
-> In API 11, the error code `201 permissions check fails.` is removed.
+> In API 11, the error code `201 Permission verification failed. The application does not have the permission required to call the API.` is removed.
 
 ## inputMethod.getCurrentInputMethodSubtype<sup>9+</sup>
 
@@ -624,7 +624,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. [since 9 - 10].        |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. [since 9 - 10].        |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -652,7 +652,7 @@ inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType, (err: Busi
 
 > **NOTE:**
 >
-> In API 11, the error code `201 permissions check fails.` is removed.
+> In API 11, the error code `201 Permission verification failed. The application does not have the permission required to call the API.` is removed.
 
 ## inputMethod.switchCurrentInputMethodAndSubtype<sup>9+</sup>
 
@@ -689,7 +689,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. [since 9 - 10].        |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. [since 9 - 10].        |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -715,7 +715,7 @@ inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType).then((resu
 
 > **NOTE**
 >
-> In API 11, the error code `201 permissions check fails.` is removed.
+> In API 11, the error code `201 Permission verification failed. The application does not have the permission required to call the API.` is removed.
 
 ## inputMethod.getInputMethodController<sup>(deprecated)</sup>
 
@@ -2305,7 +2305,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -2349,7 +2349,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -2404,7 +2404,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -2448,7 +2448,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 

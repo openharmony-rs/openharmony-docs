@@ -1,10 +1,11 @@
 # Class (CursorController)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-10-29T09:02:28.542Z pushedAt=2026-10-29T12:21:41.829Z nl=1 -->
 
 This class provides the capability to set mouse cursor styles, including restoring the default mouse cursor style, setting system mouse cursor styles, and setting custom mouse cursor styles. This is suitable for scenarios where the mouse cursor display needs to be dynamically adjusted based on interface interaction states, helping to improve the clarity of interactive feedback.
 

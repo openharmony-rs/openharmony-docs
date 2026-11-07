@@ -11,4 +11,5 @@
 - [获取用户动作开发指导](motion-guidelines.md)
 - [设备状态感知开发指导](deviceStatus-guidelines.md)
 - [元数据绑定开发指导](metadataBinding-guidelines.md)
+- [车辆感知开发指导](carAwareness-guidelines.md)
 - [Multimodal Awareness Kit术语](stationary-glossary.md)

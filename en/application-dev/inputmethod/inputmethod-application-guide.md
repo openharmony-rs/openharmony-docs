@@ -5,7 +5,7 @@
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c4600a44573a6aee547e47f52cb983f9fbf70114 translatedAt=2026-08-26T02:54:15.609Z pushedAt=2026-08-26T03:22:34.585Z -->
+<!-- md-trans-meta sourceCommit=67bc4e3e2bc142d2643228ae5b0bd90588c66be8 translatedAt=2026-11-05T01:00:48.373Z pushedAt=2026-08-26T03:22:34.585Z nl=2 -->
 
 [InputMethodExtensionAbility](../reference/apis-ime-kit/js-apis-inputmethod-extension-ability.md) provides the **onCreate()** and **onDestroy()** callbacks, as described below. Override them as required. InputMethodExtensionAbility lifecycle:
 
@@ -160,7 +160,7 @@ To implement an input method application, manually create an InputMethodExtensio
          keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG;
        }
        let keyHeight = dHeight * keyHeightRate;
-       this.inputHandle.addLog(`initWindow-dWidth = ${dWidth};dHeight = ${dHeight};keyboard height = ${keyHeight};;navibar height = navigationBar_height`);
+       this.inputHandle.addLog(`initWindow-dWidth = ${dWidth};dHeight = ${dHeight};keyboard height = ${keyHeight};navibar height = navigationBar_height`);
        this.inputHandle.addLog(`initWindow-deviceType = ${deviceInfo.deviceType}`);
        let panelInfo: inputMethodEngine.PanelInfo = {
          type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
@@ -173,12 +173,14 @@ To implement an input method application, manually create an InputMethodExtensio
          panel.resize(dWidth, keyHeight).then(() => {
            panel.setUiContent('InputMethodExtensionAbility/pages/Index').then(() => {
              this.inputHandle.addLog('loadContent finished');
-           })
+           }).catch((err: BusinessError) => {
+             Log.showError(TAG, `Failed to setUiContent: ${err.code} ${err.message}`);
+           });
          }).catch((err: BusinessError) => {
-           Log.showError(TAG, `Failed to setUiContent: ${err.code} ${err.message}`);
+           Log.showError(TAG, `Failed to resize: ${err.code} ${err.message}`);
          });
        }).catch((err: BusinessError) => {
-         Log.showError(TAG, `Failed to resize: ${err.code} ${err.message}`);
+         Log.showError(TAG, `Failed to createPanel: ${err.code} ${err.message}`);
        });
      }
    
@@ -350,7 +352,7 @@ To implement an input method application, manually create an InputMethodExtensio
        if (idx === -1) {
          this.keyCodes.push(keyCode);
        } else {
-         this.inputHandle.addLog(`keyCode down is intercepted: ${keyCode}}`);
+         this.inputHandle.addLog(`keyCode down is intercepted: ${keyCode}`);
        }
        if (this.isShiftKeyHold() && this.keyCodes.length === 2 && !this.isKeyCodeAZ(keyCode)) {
          this.isSpecialKeyPress = true;

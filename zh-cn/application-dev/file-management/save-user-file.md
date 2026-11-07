@@ -42,8 +42,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 1. 模块导入。
 
    ```ts
-   import { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
@@ -111,8 +110,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 1. 模块导入。
 
    ```ts
-   import { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
@@ -184,8 +182,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 1. 模块导入。
 
    ```ts
-   import { fileUri, picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { fileUri, picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```

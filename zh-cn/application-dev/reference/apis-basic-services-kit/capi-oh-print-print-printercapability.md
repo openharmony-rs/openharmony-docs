@@ -1,7 +1,7 @@
 # Print_PrinterCapability
  <!--Kit: Basic Services Kit-->
  <!--Subsystem: Print-->
- <!--Owner: @guoshengbang-->
+ <!--Owner: @Zouhaifeng1-->
  <!--Designer: @baozewei-->
  <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
@@ -26,21 +26,21 @@ typedef struct {...} Print_PrinterCapability
 
 | 名称 | 描述 |
 | -- | -- |
-| [Print_ColorMode](capi-ohprint-h.md#print_colormode) *supportedColorModes | 支持的色彩模式数组，数组长度由 supportedColorModesCount 决定。 |
-| uint32_t supportedColorModesCount | 支持的色彩模式数量，与 supportedColorModes 数组实际元素数一致。 |
-| [Print_DuplexMode](capi-ohprint-h.md#print_duplexmode) *supportedDuplexModes | 支持的双面打印模式数组，数组长度由 supportedDuplexModesCount 决定。 |
-| uint32_t supportedDuplexModesCount | 支持的双面打印模式数量，与 supportedDuplexModes 数组实际元素数一致。 |
-| [Print_PageSize](capi-oh-print-print-pagesize.md) *supportedPageSizes | 支持的打印纸张尺寸数组，数组长度由 supportedPageSizesCount 决定。 |
-| uint32_t supportedPageSizesCount | 支持的打印纸张尺寸数量，与 supportedPageSizes 数组实际元素数一致。 |
-| char *supportedMediaTypes | 支持的打印介质类型，以 JSON 数组格式字符串表示，具体取值由打印机决定。 |
-| [Print_Quality](capi-ohprint-h.md#print_quality) *supportedQualities | 支持的打印质量数组，数组长度由 supportedQualitiesCount 决定。 |
-| uint32_t supportedQualitiesCount | 支持的打印质量数量，与 supportedQualities 数组实际元素数一致。 |
-| char *supportedPaperSources | 支持的纸张来源，以 JSON 数组格式字符串表示，具体取值由打印机决定。 |
+| [Print_ColorMode](capi-ohprint-h.md#print_colormode) *supportedColorModes | 支持的色彩模式数组，数组长度由supportedColorModesCount决定。 |
+| uint32_t supportedColorModesCount | 支持的色彩模式数量，与supportedColorModes数组实际元素数一致。 |
+| [Print_DuplexMode](capi-ohprint-h.md#print_duplexmode) *supportedDuplexModes | 支持的双面打印模式数组，数组长度由supportedDuplexModesCount决定。 |
+| uint32_t supportedDuplexModesCount | 支持的双面打印模式数量，与supportedDuplexModes数组实际元素数一致。 |
+| [Print_PageSize](capi-oh-print-print-pagesize.md) *supportedPageSizes | 支持的打印纸张尺寸数组，数组长度由supportedPageSizesCount决定。 |
+| uint32_t supportedPageSizesCount | 支持的打印纸张尺寸数量，与supportedPageSizes数组实际元素数一致。 |
+| char *supportedMediaTypes | 支持的打印介质类型，以JSON数组格式字符串表示，具体取值由打印机决定。 |
+| [Print_Quality](capi-ohprint-h.md#print_quality) *supportedQualities | 支持的打印质量数组，数组长度由supportedQualitiesCount决定。 |
+| uint32_t supportedQualitiesCount | 支持的打印质量数量，与supportedQualities数组实际元素数一致。 |
+| char *supportedPaperSources | 支持的纸张来源，以JSON数组格式字符串表示，具体取值由打印机决定。 |
 | uint32_t supportedCopies | 支持的份数，取值由打印机能力决定。 |
-| [Print_Resolution](capi-oh-print-print-resolution.md) *supportedResolutions | 支持的打印机分辨率数组，数组长度由 supportedResolutionsCount 决定。 |
-| uint32_t supportedResolutionsCount | 支持的打印机分辨率数量，与 supportedResolutions 数组实际元素数一致。 |
-| [Print_OrientationMode](capi-ohprint-h.md#print_orientationmode) *supportedOrientations | 支持的打印方向模式数组，数组长度由 supportedOrientationsCount 决定。 |
-| uint32_t supportedOrientationsCount | 支持的打印方向模式数量，与 supportedOrientations 数组实际元素数一致。 |
-| char *advancedCapability | 高级能力，以 JSON 对象格式字符串表示，用于描述不属于上述标准能力字段的打印机特性，JSON 对象的具体字段名和取值由打印机决定，开发者需根据实际返回的 JSON 内容进行解析。 |
+| [Print_Resolution](capi-oh-print-print-resolution.md) *supportedResolutions | 支持的打印机分辨率数组，数组长度由supportedResolutionsCount决定。 |
+| uint32_t supportedResolutionsCount | 支持的打印机分辨率数量，与supportedResolutions数组实际元素数一致。 |
+| [Print_OrientationMode](capi-ohprint-h.md#print_orientationmode) *supportedOrientations | 支持的打印方向模式数组，数组长度由supportedOrientationsCount决定。 |
+| uint32_t supportedOrientationsCount | 支持的打印方向模式数量，与supportedOrientations数组实际元素数一致。 |
+| char *advancedCapability | 高级能力，以JSON对象格式字符串表示，用于描述不属于上述标准能力字段的打印机特性，JSON对象的具体字段名和取值由打印机决定，开发者需根据实际返回的JSON内容进行解析。 |
 
 

@@ -5,6 +5,7 @@
 <!--Designer: @zhaopeng_gitee-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=890206e015e5429a353f02b3abe88fd25a8da027 translatedAt=2026-11-04T03:50:12.380Z pushedAt=2026-11-04T10:13:14.882Z nl=1 -->
 
 The **RPC** module implements communication between processes, including inter-process communication (IPC) on a single device and remote procedure call (RPC) between processes on difference devices. IPC is implemented based on the Binder driver, and RPC is based on the DSoftBus driver.
 
@@ -64,7 +65,7 @@ Since API version 12, [writeArrayBuffer](#writearraybuffer12) and [readArrayBuff
 
 ## MessageSequence<sup>9+</sup>
 
-Provides APIs for reading and writing data in specific format. During RPC or IPC, the sender can use the **write()** method provided by **MessageSequence** to write data in specific format to a **MessageSequence** object. The receiver can use the **read()** method provided by **MessageSequence** to read data in specific format from a **MessageSequence** object. The data formats include basic data types and arrays, IPC objects, interface tokens, and custom sequenceable objects.
+During an RPC or IPC process, the sender can use the write methods provided by **MessageSequence** to write the data to be sent into this object in a specific format. The receiver can use the read methods provided by **MessageSequence** to read data in a specific format from the object. The data formats include basic types and arrays, IPC objects, interface descriptors, and custom serializable objects. The read order must be consistent with the write order; otherwise it will cause data parsing errors.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -74,13 +75,9 @@ static create(): MessageSequence
 
 Creates a **MessageSequence** object. This API is a static method. After this method is called, the system allocates a contiguous buffer in memory for storing the serialized data to be transmitted. This object is used to encapsulate request and response data in IPC/RPC communication.
 
-**Constraints**
-
 - The created **MessageSequence** object must be released by calling **reclaim()** after use; otherwise, memory leaks may occur.
 - An **MessageSequence** object cannot be used across threads.
 - You are advised to create the object on demand when IPC/RPC communication is required, and to avoid frequent creation and release.
-
-**Paired calling**: For the **MessageSequence** object created via **create()**, you must call **reclaim()** to release its resources after use. Otherwise, memory resource leaks occur.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -98,7 +95,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  // Create a MessageSequence object.
+  // Create a MessageSequence object to encapsulate request and response data in IPC/RPC communication.
   let data = rpc.MessageSequence.create();
   hilog.info(0x0000, 'testTag', 'data is ' + data);
 
@@ -117,13 +114,7 @@ reclaim(): void
 
 Reclaims the **MessageSequence** object that is no longer used.
 
-**Pairing requirements**
-
-This method and the **create ()** method must be used in pairs. For the **MessageSequence** object created via **create()**, you must call **reclaim()** to release its resources after use. If **reclaim()** is not called in a timely manner, memory resources leaks occur.
-
-**Constraints**
-
-- This method must be called after the **MessageSequence** object is used.
+- Must be used in pairs with the create() method. After the **MessageSequence** object is created by calling create(), you must call reclaim() to release resources after use. Failure to call reclaim() in time will cause memory resource leakage.
 - After this method is called, the object cannot be used anymore.
 - It is advised to call this method in a finally block or at the end of a task to ensure resource release.
 - Do not release the object across threads in asynchronous operations.
@@ -153,12 +144,9 @@ writeRemoteObject(obj: IRemoteObject): void
 
 Serializes the remote object and writes it to the [MessageSequence](#messagesequence9) object. After this method is called, the **IRemoteObject** object is serialized into a specific format and stored in the buffer of **MessageSequence**. The internal write pointer position is updated accordingly. The serialized object can be deserialized and read on the receiving side via the **readRemoteObject** method.
 
-**Constraints**
-
 - Only a valid **IRemoteObject** object can be written. Passing an invalid object will cause an exception to be thrown.
 - The serialized object occupies a fixed amount of buffer space.
 - This method and the **readRemoteObject** method must be used in pairs.
-- You are advised to call **getWritableBytes** to check the remaining space before the write operation.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -198,7 +186,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 
 try {
   let data = rpc.MessageSequence.create();
-  let testRemoteObject = new TestRemoteObject("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
   // Write the remote object to the MessageSequence object.
   data.writeRemoteObject(testRemoteObject);
 } catch (error) {
@@ -214,10 +202,7 @@ readRemoteObject(): IRemoteObject
 
 Reads the remote object from **MessageSequence**. You can use this API to deserialize the **MessageSequence** object to generate an **IRemoteObject**. The remote object is read in the order in which it is written to this **MessageSequence** object. After this method is called, the serialized remote object data is read from the **MessageSequence** buffer and deserialized into an **IRemoteObject** instance. The read operation updates the internal read pointer position.
 
-**Constraints**
-
-- The read sequence must be the same as the write sequence. Otherwise, data parsing errors occurs.
-- Before reading, ensure that there is readable data available in the buffer. You can call **getReadableBytes** to check.
+- Before reading, ensure that there is readable data available in the buffer.
 - If a **RemoteObject** was written, the read result will be a **RemoteProxy**.
 - If the read operation fails, an exception will be thrown. It is advised to use a try-catch block to catch it.
 
@@ -227,7 +212,7 @@ Reads the remote object from **MessageSequence**. You can use this API to deseri
 
   | Type                           | Description              |
   | ------------------------------- | ------------------ |
-  | [IRemoteObject](#iremoteobject) | Remote object obtained.|
+  | [IRemoteObject](#iremoteobject) | Remote object read, used for IPC/RPC communication. |
 
 **Error codes**
 
@@ -258,7 +243,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 
 try {
   let data = rpc.MessageSequence.create();
-  let testRemoteObject = new TestRemoteObject("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
   data.writeRemoteObject(testRemoteObject);
   let proxy = data.readRemoteObject();
   hilog.info(0x0000, 'testTag', 'readRemoteObject is ' + proxy);
@@ -273,19 +258,9 @@ try {
 
 writeInterfaceToken(token: string): void
 
-Writes an interface token to this **MessageSequence** object. The remote object can use this interface token to verify the communication. This method is applicable to scenarios where the consistency of communication interfaces between both parties needs to be verified, such as cross-process service calls and secure communication verification. It is advised to use a unique and meaningful string as the interface token, such as **com.example.service**, and avoid including sensitive information. The length of the token should be less than 40960. After this method is called, the interface token string is serialized and stored in the **MessageSequence** buffer. Upon receiving a communication request, the remote side can read the interface token to verify the legitimacy of the request source.
+Writes the interface descriptor into the **MessageSequence** object. The remote object can use this information to verify this communication. It is applicable to scenarios that require verifying the consistency of the interfaces of both communicating parties, such as cross-process service invocation, secure communication verification, and identifying the interface type provided by the server. It is recommended to use a unique and meaningful descriptor string (such as "com.example.service"), avoid using sensitive information, and its length should be less than 40960. After this method is called, the interface descriptor string is serialized and stored in the **MessageSequence** buffer. After receiving the communication request, the remote end can read this descriptor to verify the legitimacy of the request source.
 
-Functions of the interface token:
-
-- Identifies the interface type provided by the server.
-- Used by the remote side to determine whether the client calls the matching interface.
-- Enables interface identity verification between the communicating parties.
-
-**Constraints**
-
-- The interface token length must be less than 40960.
-- It is advised that a meaningful name as the interface token.
-- This method and the **readInterfaceToken** method must be used in pairs.
+- Must be used in pairs with [readInterfaceToken](#readinterfacetoken9).
 - If the length limit is exceeded, a parameter error exception will be thrown.
 
 **System capability**: SystemCapability.Communication.IPC.Core
@@ -315,7 +290,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let data = rpc.MessageSequence.create();
   // Write the interface token to this MessageSequence object.
-  data.writeInterfaceToken("aaa");
+  data.writeInterfaceToken('aaa');
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
@@ -329,10 +304,7 @@ readInterfaceToken(): string
 
 Reads the interface token from this **MessageSequence** object. The interface token is read in the sequence in which it is written to the **MessageSequence** object. The local object can use it to verify the communication.
 
-**Pairing requirements**
-
-- This method and the **writeInterfaceToken** method must be used in pairs.
-- The read sequence must be consistent with the write sequence.
+- Must be used in pairs with [writeInterfaceToken](#writeinterfacetoken9).
 - Before reading, ensure that there is readable data available in the buffer.
 - It is advised to read and verify the interface token immediately after receiving an IPC request.
 
@@ -361,7 +333,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let data = rpc.MessageSequence.create();
-  data.writeInterfaceToken("aaa");
+  data.writeInterfaceToken('aaa');
   let interfaceToken = data.readInterfaceToken();
   hilog.info(0x0000, 'testTag', 'RpcServer: interfaceToken is ' + interfaceToken);
 } catch (error) {
@@ -377,8 +349,6 @@ getSize(): number
 
 Obtains the data size of this **MessageSequence** object.
 
-**Use cases**
-
 - Check the total size of written data.
 - Check the buffer usage.
 - Check the data size before data transmission.
@@ -389,7 +359,7 @@ Obtains the data size of this **MessageSequence** object.
 
   | Type  | Description                                           |
   | ------ | ----------------------------------------------- |
-  | number | Size of the **MessageSequence** instance obtained, in bytes.|
+  | number | Data size of the obtained MessageSequence instance, in bytes. Used to adjust the data read range. It is recommended to set it to the size of the actually written data. |
 
 **Example**
 
@@ -494,7 +464,7 @@ Sets the storage capacity of this **MessageSequence** object.
 
   | Name| Type  | Mandatory| Description                                         |
   | ------ | ------ | ---- | --------------------------------------------- |
-  | size   | number | Yes  | Storage capacity of the **MessageSequence** object to set, in bytes.|
+  | size   | number | Yes   | Storage capacity of a MessageSequence instance, in bytes. It is used to limit the maximum number of writable bytes. It is recommended to set it appropriately based on the actual data volume. |
 
 **Error codes**
 
@@ -579,7 +549,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let data = rpc.MessageSequence.create();
-  data.writeString("hello world");
+  data.writeString('hello world');
   let result = data.getReadableBytes();
   hilog.info(0x0000, 'testTag', 'RpcServer: getReadableBytes is ' + result);
 } catch (error) {
@@ -612,7 +582,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let data = rpc.MessageSequence.create();
-  data.writeString("hello world");
+  data.writeString('hello world');
   let readPos = data.getReadPosition();
   hilog.info(0x0000, 'testTag', 'readPos is ' + readPos);
 } catch (error) {
@@ -667,7 +637,7 @@ Moves the read pointer to the specified position.
 
   | Name| Type  | Mandatory| Description   |
   | ------ | ------ | ---- | ------- |
-  | pos    | number | Yes  | Position from which data is to read.|
+  | pos    | number | Yes   | Target position from which data reading starts, in bytes. Used to reposition the read pointer of MessageSequence. The value must be within [0, [getSize](#getsize9)]. |
 
 **Error codes**
 
@@ -688,7 +658,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let data = rpc.MessageSequence.create();
   data.writeInt(12);
-  data.writeString("sequence");
+  data.writeString('sequence');
   let number = data.readInt();
   hilog.info(0x0000, 'testTag', 'number is ' + number);
   data.rewindRead(0);
@@ -713,7 +683,7 @@ Moves the write pointer to the specified position.
 
   | Name| Type  | Mandatory| Description |
   | ------ | ------ | ---- | ----- |
-  | pos    | number | Yes  | Position from which data is to write.|
+  | pos    | number | Yes   | Target position to start writing data, in bytes. Used to re-offset the write pointer of MessageSequence. The value should be within [0, [getSize](#getsize9)]. |
 
 **Error codes**
 
@@ -751,16 +721,11 @@ writeByte(val: number): void
 
 Writes a byte value to this **MessageSequence** object. After this method is called, the byte value is stored as an 8-bit unsigned integer at the current write pointer position in the buffer, and the write pointer is automatically updated. This method is suitable for transmitting small-range integers or flag data.
 
-Byte storage format:
-- 1 byte (8 bits) of storage space is occupied.
-- Storage range: 0 to 255 (unsigned) or -128 to 127 (signed).
+- Storage range: [0, 255] (unsigned) or [-128, 127] (signed).
 - Data alignment is byte-aligned.
-
-**Constraints**
 - The value must be within the byte range. Values outside this range may cause data truncation.
-- Before the write operation, you are advised to use **getWritableBytes** to ensure that there is sufficient space.
-- This method and the **readByte** method must be used in pairs.
-- This method is not suitable for transmitting large-range values. For large-range values, it is advised to use **writeInt** or **writeLong**.
+- When reading, the [readByte](#readbyte9) method must be used in pairs.
+- Not suitable for transmitting large-range values. For large-range values, it is recommended to use [writeInt](#writeint9)/[writeLong](#writelong9) and the like.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -802,10 +767,7 @@ readByte(): number
 
 Reads the byte value from this **MessageSequence** object.
 
-**Pairing requirements**
-
-- This method and the **writeByte** method must be used in pairs.
-- The read sequence must be consistent with the write sequence.
+- Must be used in pairs with [writeByte](#writebyte9).
 - One write corresponds to one read.
 
 **System capability**: SystemCapability.Communication.IPC.Core
@@ -835,7 +797,7 @@ try {
   let data = rpc.MessageSequence.create();
   data.writeByte(2);
   let ret = data.readByte();
-  hilog.info(0x0000, 'testTag', 'readByte is: ' +  ret);
+  hilog.info(0x0000, 'testTag', 'readByte is ' +  ret);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
@@ -849,11 +811,9 @@ writeShort(val: number): void
 
 Writes a short integer to this **MessageSequence** object.
 
-**Constraints**
-
 - Values out of range will be truncated.
-- You are advised to call **getWritableBytes** to ensure that there is at least 2-byte space.
-- This method and the **readShort** method must be used in pairs.
+- Must be used in pairs with [readShort](#readshort9).
+- One write operation corresponds to one read operation.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -895,6 +855,9 @@ readShort(): number
 
 Reads the short integer from this **MessageSequence** object.
 
+- Must be used in pairs with [writeShort](#writeshort9).
+- Note the value range [-2^15, 2^15-1] for writing. Values out of this range will be truncated.
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Return value**
@@ -934,24 +897,15 @@ try {
 
 writeInt(val: number): void
 
-Writes an integer to this **MessageSequence** object. After this method is called, the integer is stored as an 32-bit signed integer at the current write pointer position in the buffer, and the write pointer is automatically updated. This method is suitable for transmitting standard integer data.
+Writes an integer value to this **MessageSequence** instance. After this method is called, the integer value is stored in the buffer at the current write pointer position in 32-bit signed integer format, and the write pointer is automatically updated. This method is suitable for transmitting standard integer data. For small-range values, it is recommended to use [writeByte](#writebyte9)/[writeShort](#writeshort9) to improve efficiency; for large-range values, it is recommended to use [writeLong](#writelong9).
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
-
-Integer storage format:
-
+- Must be used in pairs with [readInt](#readint9).
+- One write operation corresponds to one read operation.
 - 4 bytes (32 bits) of storage space are occupied.
-- Storage range: –2^31 to 2^31 – 1.
 - The data is stored in the system default byte order.
-- Data is 4-byte aligned.
-
-**Constraints**
-
-- The value range is [-2^31, 2^31-1].
 - Values outside this range will cause data truncation or write failure.
-- Before the write operation, you are advised to use **getWritableBytes** to ensure that there is at least 4-byte space.
-- For small-range values, it is advised to use **writeByte** or **writeShort** to improve efficiency.
-- You are advised to use **writeLong** for large-range values.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -993,6 +947,9 @@ try {
 readInt(): number
 
 Reads the integer from this **MessageSequence** object.
+
+- The integer value occupies 4 bytes of storage space.
+- Storage range: [-2^31, 2^31-1].
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
@@ -1038,6 +995,9 @@ writeLong(val: number): void
 
 Writes a long integer to this **MessageSequence** object.
 
+- Must be used in pairs with [readLong](#readlong9).
+- One write corresponds to one read.
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Parameters**
@@ -1078,6 +1038,9 @@ readLong(): number
 
 Reads the long integer from this **MessageSequence** object.
 
+- Value range: [-2^63, 2^63-1].
+- A long integer occupies 8 bytes of storage space.
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Return value**
@@ -1117,7 +1080,7 @@ try {
 
 writeFloat(val: number): void
 
-Writes a double value to this **MessageSequence** object.
+Writes a double-precision floating-point value to the MessageSequence instance. Since the system internally processes float data as double, the data actually written is stored in double-precision format.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -1125,7 +1088,7 @@ Writes a double value to this **MessageSequence** object.
 
   | Name| Type  | Mandatory| Description |
   | ------ | ------ | ---- | ----- |
-  | val    | number | Yes  | Double value to write.|
+  | val    | number | Yes   | Double-precision floating-point value to write. Used to transmit floating-point data (such as coordinates, scales, and measured values). Must be used in pairs with [readFloat](#readfloat9). |
 
 **Error codes**
 
@@ -1199,6 +1162,9 @@ try {
 writeDouble(val: number): void
 
 Writes a double value to this **MessageSequence** object.
+
+- Must be used in pairs with [readDouble](#readdouble9).
+- One write corresponds to one read.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -1281,6 +1247,9 @@ writeBoolean(val: boolean): void
 
 Writes a Boolean value to this **MessageSequence** object.
 
+- Must be used in pairs with [readBoolean](#readboolean9).
+- One write corresponds to one read.
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Parameters**
@@ -1362,6 +1331,9 @@ writeChar(val: number): void
 
 Writes a character to this **MessageSequence** object.
 
+- Must be used in pairs with [readChar](#readchar9).
+- One write corresponds to one read.
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Parameters**
@@ -1441,24 +1413,13 @@ try {
 
 writeString(val: string): void
 
-Writes a string to this **MessageSequence** object. After this method is called, the string is converted into UTF-8 encoding and serialized into the buffer. During the write operation, the string length is stored first, followed by the UTF-8 byte data.
+Writes a string value to this **MessageSequence** instance.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
-
-String storage format:
-
-- The string is stored in UTF-8 encoding.
-- The length (4 bytes) is written first, followed by the content.
+- This method must be used in pairs with [readString](#readstring9).
 - Multilingual character sets are supported.
-- The length information helps **readString** determine the reading boundary.
-
-**Constraints**
-
-- The length of the UTF-8 encoded string must be less than 40,960.
-- Note the difference between the number of characters and the number of bytes. Chinese characters occupy more bytes.
-- Long strings consume more buffer space.
-- You are advised to use **getWritableBytes** before writing data.
 - An empty string can also be written normally.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -1545,26 +1506,15 @@ writeParcelable(val: Parcelable): void
 
 Writes a **Parcelable** object to this **MessageSequence** object. After this method is called, the **marshalling** method of the **Parcelable** object is called to serialize the member variables of the object one by one and write them to **MessageSequence**. This method supports the transmission of custom data structure objects. It is applicable to scenarios such as transmitting complex data structures, service objects, and configuration information.
 
-Working principle of **Parcelable**:
-
 - The **Parcelable** API defines standard methods for serialization and deserialization.
 - The **marshalling** method is responsible for writing the object state to **MessageSequence**.
 - The **unmarshalling** method is responsible for restoring the object state from **MessageSequence**.
 - The service must implement the specific serialization logic itself.
-
-**Constraints**
-
 - Only objects that implement the **Parcelable** API can be passed.
 - The **marshalling** method must correctly implement the writing of all member variables.
 - The serialization order must be consistent with the deserialization order.
 - It is advised to handle exceptions within the **marshalling** method.
 - Complex objects may occupy a significant amount of buffer space.
-
-Suggestions for implementing the Parcelable APIs:
-
-1. All necessary fields are written in a fixed order in the **marshalling** method.
-2. The same order must be followed when reading the fields in the **unmarshalling** method.
-3. Ensure that the marshalling and unmarshalling logic is symmetric to avoid missing or redundant data during transmission.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -1593,7 +1543,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 class MyParcelable implements rpc.Parcelable {
   num: number = 0;
   str: string = '';
-  constructor( num: number, str: string) {
+  constructor(num: number, str: string) {
     this.num = num;
     this.str = str;
   }
@@ -1610,7 +1560,7 @@ class MyParcelable implements rpc.Parcelable {
 }
 
 try {
-  let parcelable = new MyParcelable(1, "aaa");
+  let parcelable = new MyParcelable(1, 'aaa');
   let data = rpc.MessageSequence.create();
   data.writeParcelable(parcelable);
 } catch (error) {
@@ -1625,8 +1575,6 @@ try {
 readParcelable(dataIn: Parcelable): void
 
 Reads the **Parcelable** object from this **MessageSequence** object to the specified object (**dataIn**).
-
-**Constraints**
 
 - The **dataIn** parameter must be an instantiated **Parcelable** object.
 - The **unmarshalling** method must read data in the same sequence as the **marshalling** method.
@@ -1678,10 +1626,10 @@ class MyParcelable implements rpc.Parcelable {
 }
 
 try {
-  let parcelable = new MyParcelable(1, "aaa");
+  let parcelable = new MyParcelable(1, 'aaa');
   let data = rpc.MessageSequence.create();
   data.writeParcelable(parcelable);
-  let ret = new MyParcelable(0, "");
+  let ret = new MyParcelable(0, '');
   data.readParcelable(ret);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
@@ -1696,13 +1644,16 @@ writeByteArray(byteArray: number[]): void
 
 Writes a byte array to this **MessageSequence** object.
 
+- It must be used in pairs with [readByteArray](#readbytearray9).
+- The length of the array to read must be the same as that of the array to write.
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Parameters**
 
   | Name   | Type    | Mandatory| Description              |
   | --------- | -------- | ---- | ------------------ |
-  | byteArray | number[] | Yes  | Byte array to write.|
+  | byteArray | number[] | Yes   | Byte array to write, used to transfer byte sequence data in batches. The array cannot be empty, and each element ranges from 0 to 255. Values out of range may cause data truncation. |
 
 **Error codes**
 
@@ -1722,9 +1673,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let data = rpc.MessageSequence.create();
-  let ByteArrayVar = [1, 2, 3, 4, 5];
+  let byteArrayVar = [1, 2, 3, 4, 5];
   // Write the byte array to the MessageSequence Object
-  data.writeByteArray(ByteArrayVar);
+  data.writeByteArray(byteArrayVar);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
@@ -1764,12 +1715,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let data = rpc.MessageSequence.create();
-  let ByteArrayVar = [1, 2, 3, 4, 5];
+  let byteArrayVar = [1, 2, 3, 4, 5];
   // Write the byte array to the MessageSequence Object
-  data.writeByteArray(ByteArrayVar);
+  data.writeByteArray(byteArrayVar);
   let array: Array<number> = new Array(5);
   data.readByteArray(array);
-  hilog.info(0x0000, 'testTag', 'readByteArray is  ' + array);
+  hilog.info(0x0000, 'testTag', 'readByteArray is ' + array);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
@@ -1808,11 +1759,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let data = rpc.MessageSequence.create();
-  let ByteArrayVar = [1, 2, 3, 4, 5];
+  let byteArrayVar = [1, 2, 3, 4, 5];
   // Write the byte array to the MessageSequence Object
-  data.writeByteArray(ByteArrayVar);
+  data.writeByteArray(byteArrayVar);
   let array = data.readByteArray();
-  hilog.info(0x0000, 'testTag', 'readByteArray is  ' + array);
+  hilog.info(0x0000, 'testTag', 'readByteArray is ' + array);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
@@ -1826,13 +1777,16 @@ writeShortArray(shortArray: number[]): void
 
 Writes a short array to this **MessageSequence** object.
 
+- It must be used in pairs with [readShortArray](#readshortarray9).
+- The length of the array to read must be the same as that of the array to write.
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Parameters**
 
   | Name    | Type    | Mandatory| Description                |
   | ---------- | -------- | ---- | -------------------- |
-  | shortArray | number[] | Yes  | Short array to write.|
+  | shortArray | number[] | Yes   | Short integer array to write. The value range of each element is [-2^15, 2^15-1]. |
 
 **Error codes**
 
@@ -1895,7 +1849,7 @@ try {
   data.writeShortArray([11, 12, 13]);
   let array: Array<number> = new Array(3);
   data.readShortArray(array);
-  hilog.info(0x0000, 'testTag', 'readShortArray is  ' + array);
+  hilog.info(0x0000, 'testTag', 'readShortArray is ' + array);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
@@ -1950,6 +1904,9 @@ writeIntArray(intArray: number[]): void
 
 Writes an integer array to this **MessageSequence** object.
 
+- It must be used in pairs with [readIntArray](#readintarray9).
+- The length of the array to read must be the same as that of the array to write.
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Parameters**
@@ -1990,6 +1947,9 @@ readIntArray(dataIn: number[]): void
 
 Reads the integer array from this **MessageSequence** object and writes it to the created empty array.
 
+- An empty array must be created in advance, and its length must be the same as that of the array to write.
+- The value range of array elements is [-2^31, 2^31-1].
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Parameters**
@@ -2019,7 +1979,7 @@ try {
   data.writeIntArray([100, 111, 112]);
   let array: Array<number> = new Array(3);
   data.readIntArray(array);
-  hilog.info(0x0000, 'testTag', 'readIntArray is  ' + array);
+  hilog.info(0x0000, 'testTag', 'readIntArray is ' + array);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
@@ -2073,6 +2033,9 @@ try {
 writeLongArray(longArray: number[]): void
 
 Writes a long array to this **MessageSequence** object.
+
+- Must be used in pairs with [readLongArray](#readlongarray9).
+- The length of the array to read must be the same as that of the array to write.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -2198,6 +2161,9 @@ writeFloatArray(floatArray: number[]): void
 
 Writes a double array to this **MessageSequence** object.
 
+- Must be used in pairs with [readFloatArray](#readfloatarray9).
+- The length of the array to read must be the same as that of the array to write.
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Parameters**
@@ -2244,7 +2210,7 @@ Reads the double array from this **MessageSequence** object and writes it to the
 
   | Name| Type    | Mandatory| Description                                                                                                                   |
   | ------ | -------- | ---- | ----------------------------------------------------------------------------------------------------------------------- |
-  | dataIn | number[] | Yes  | Double array to read. The system processes float data as that of the double type. Therefore, the total number of bytes occupied by a float array must be calculated as the double type.|
+  | dataIn | number[] | Yes   | Used to store the double-precision floating-point array read from MessageSequence. An empty array must be created in advance, and its length should be consistent with the array length at the time of writing. Since the system internally processes float data as double, the total number of bytes occupied by the array should be calculated as double when used. |
 
 **Error codes**
 
@@ -2321,6 +2287,9 @@ try {
 writeDoubleArray(doubleArray: number[]): void
 
 Writes a double array to this **MessageSequence** object.
+
+- Must be used in pairs with [readDoubleArray](#readdoublearray9).
+- The length of the array to read must be the same as that of the array to write.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -2446,6 +2415,9 @@ writeBooleanArray(booleanArray: boolean[]): void
 
 Writes a Boolean array to this **MessageSequence** object.
 
+- Must be used in pairs with [readBooleanArray](#readbooleanarray9).
+- The length of the array to read must be the same as that of the array to write.
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Parameters**
@@ -2529,6 +2501,9 @@ readBooleanArray(): boolean[]
 
 Reads a boolean array from this MessageSequence instance.
 
+- Returns the newly created array, which does not need to be created in advance.
+- The array elements are Boolean values.
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Return value**
@@ -2569,6 +2544,9 @@ try {
 writeCharArray(charArray: number[]): void
 
 Writes a character array to this **MessageSequence** object.
+
+- Must be used in pairs with [readCharArray](#readchararray9).
+- The length of the array to read must be the same as that of the array written.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -2653,6 +2631,9 @@ readCharArray(): number[]
 
 Reads the character array from this **MessageSequence** object.
 
+- Returns a newly created array, which does not need to be created in advance.
+- The array elements are character encodings, with a value range of [0, 65535].
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Return value**
@@ -2694,6 +2675,10 @@ writeStringArray(stringArray: string[]): void
 
 Writes a string array to this **MessageSequence** object.
 
+- Must be used in pairs with [readStringArray](#readstringarray9).
+- The length of the array to read must be the same as that of the array written.
+- The length of each element in the array ranges from [0, 40960).
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Parameters**
@@ -2720,7 +2705,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let data = rpc.MessageSequence.create();
-  data.writeStringArray(["abc", "def"]);
+  data.writeStringArray(['abc', 'def']);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
@@ -2733,6 +2718,9 @@ try {
 readStringArray(dataIn: string[]): void
 
 Reads the string array from this **MessageSequence** object and writes it to the created empty array.
+
+- An empty array must be created in advance, and its length must be the same as that of the array written.
+- After reading, the dataIn array is filled with the read string data.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -2760,7 +2748,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let data = rpc.MessageSequence.create();
-  data.writeStringArray(["abc", "def"]);
+  data.writeStringArray(['abc', 'def']);
   let array: Array<string> = new Array(2);
   data.readStringArray(array);
   hilog.info(0x0000, 'testTag', 'readStringArray is ' + array);
@@ -2776,6 +2764,8 @@ try {
 readStringArray(): string[]
 
 Reads the string array from this **MessageSequence** object.
+
+- Returns a newly created array, which does not need to be created in advance.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -2802,7 +2792,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let data = rpc.MessageSequence.create();
-  data.writeStringArray(["abc", "def"]);
+  data.writeStringArray(['abc', 'def']);
   let array = data.readStringArray();
   hilog.info(0x0000, 'testTag', 'readStringArray is ' + array);
 } catch (error) {
@@ -2816,19 +2806,12 @@ try {
 
 writeNoException(): void
 
-Writes information to this **MessageSequence** object indicating that no exception occurred.
-
-**Pairing requirements**
+Writes the information indicating that no exception occurs to the **MessageSequence** object. This method is usually called in the server implementation of IPC/RPC communication and in the **onRemoteMessageRequest** callback.
 
 - This method must be used in pairs with the [readException](#readexception9) method.
 - After processing a request, the server should call **writeNoException()** to write information indicating that no exception occurred.
 - After receiving the response, the client should call [readException](#readexception9) to retrieve exception information.
 - If the server does not call **writeNoException()**, the client's call to [readException](#readexception9) will fail.
-
-**Use cases**
-
-- This method is used on the server side in IPC/RPC communication.
-- This method is usually called in the **onRemoteMessageRequest** callback.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -2877,21 +2860,12 @@ readException(): void
 
 Reads the exception information from this **MessageSequence** object. This method is applicable to scenarios where the exception status needs to be checked after a response from the remote service is received.
 
-1. It is advised to call this method first after each IPC/RPC call.
-2. If an exception occurs, handle it immediately and stop reading subsequent data.
-3. After handling the exception, you are advised to call the **reclaim()** method to release the **MessageSequence** object.
-
-**Pairing requirements**
-
-- This method and the [writeNoException()](#writenoexception9) method must be used in pairs.
-- This method can be called only after the [writeNoException()](#writenoexception9) method is called on the server.
-- Calling sequence: the server processes a request → call [writeNoException()](#writenoexception9) → the client receives the response → call [readException](#readexception9). If the server does not call [writeNoException()](#writenoexception9), calling this method will fail.
-
-**Use cases**
-
-- This method is used on the client side in IPC/RPC communication.
-- This method is called after the response to a **sendMessageRequest** API call is received.
-- This method is used to checks whether an exception occurs on the server.
+- Used on the client side of IPC/RPC communication.
+- Called after a response is received from **sendMessageRequest**.
+- Called with priority after each IPC/RPC call.
+- If an exception occurs, handle it immediately and stop reading subsequent data. After the exception is handled, it is recommended to call **reclaim()** to release the **MessageSequence** object.
+- This method must be used in pairs with the [writeNoException](#writenoexception9) method.
+- Calling sequence: the server processes the request → [writeNoException](#writenoexception9) → the client receives the response → [readException](#readexception9). If the server does not call [writeNoException](#writenoexception9), calling this method will fail.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -2920,20 +2894,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
   // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -2951,7 +2925,7 @@ The proxy object in the **onConnect** callback can be assigned a value only afte
 import { rpc } from '@kit.IPCKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-  
+
 try {
   let option = new rpc.MessageOption();
   let data = rpc.MessageSequence.create();
@@ -2971,7 +2945,7 @@ try {
         }
       }).catch((e: Error) => {
         hilog.error(0x0000, 'testTag', 'sendMessageRequest got exception: ' + JSON.stringify(e));
-      }).finally (() => {
+      }).finally(() => {
         hilog.info(0x0000, 'testTag', 'sendMessageRequest ends, reclaim parcel');
         data.reclaim();
         reply.reclaim();
@@ -2988,7 +2962,10 @@ try {
 
 writeParcelableArray(parcelableArray: Parcelable[]): void
 
-Writes the **Parcelable** array to this **MessageSequence** object.
+Writes an array of serializable objects to the **MessageSequence** instance. This method is applicable to scenarios where multiple custom data structure objects are transferred in batches, such as transferring multiple service records, batch configuration information, and multiple entity objects.
+
+- Must be used in pairs with [readParcelableArray](#readparcelablearray9).
+- The length of the array to read must be the same as the length of the array written.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -3034,9 +3011,9 @@ class MyParcelable implements rpc.Parcelable {
 }
 
 try {
-  let parcelable = new MyParcelable(1, "aaa");
-  let parcelable2 = new MyParcelable(2, "bbb");
-  let parcelable3 = new MyParcelable(3, "ccc");
+  let parcelable = new MyParcelable(1, 'aaa');
+  let parcelable2 = new MyParcelable(2, 'bbb');
+  let parcelable3 = new MyParcelable(3, 'ccc');
   let a = [parcelable, parcelable2, parcelable3];
   let data = rpc.MessageSequence.create();
   data.writeParcelableArray(a);
@@ -3051,7 +3028,7 @@ try {
 
 readParcelableArray(parcelableArray: Parcelable[]): void
 
-Reads the **Parcelable** array from this **MessageSequence** object.
+Reads an array of serializable objects from a MessageSequence instance. This is applicable to scenarios where multiple custom data structure objects are received in batches, such as reading multiple business records, batch configuration information, and multiple entity objects.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -3098,13 +3075,13 @@ class MyParcelable implements rpc.Parcelable {
 }
 
 try {
-  let parcelable = new MyParcelable(1, "aaa");
-  let parcelable2 = new MyParcelable(2, "bbb");
-  let parcelable3 = new MyParcelable(3, "ccc");
+  let parcelable = new MyParcelable(1, 'aaa');
+  let parcelable2 = new MyParcelable(2, 'bbb');
+  let parcelable3 = new MyParcelable(3, 'ccc');
   let a = [parcelable, parcelable2, parcelable3];
   let data = rpc.MessageSequence.create();
   data.writeParcelableArray(a);
-  let b = [new MyParcelable(0, ""), new MyParcelable(0, ""), new MyParcelable(0, "")];
+  let b = [new MyParcelable(0, ''), new MyParcelable(0, ''), new MyParcelable(0, '')];
   data.readParcelableArray(b);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
@@ -3117,7 +3094,10 @@ try {
 
 writeRemoteObjectArray(objectArray: IRemoteObject[]): void
 
-Writes an **IRemoteObject** array to this **MessageSequence** object.
+Writes an array of IRemoteObject objects to MessageSequence. This is applicable to scenarios where multiple remote objects need to be passed, such as batch registration of multiple service proxies, passing multiple callback interfaces, and multi-service endpoint management.
+
+- Must be used in pairs with [readRemoteObjectArray](#readremoteobjectarray9).
+- The length of the read array must be consistent with the length of the written array.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -3155,7 +3135,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 
 try {
-  let a = [new TestRemoteObject("testObject1"), new TestRemoteObject("testObject2"), new TestRemoteObject("testObject3")];
+  let a = [new TestRemoteObject('testObject1'), new TestRemoteObject('testObject2'), new TestRemoteObject('testObject3')];
   let data = rpc.MessageSequence.create();
   data.writeRemoteObjectArray(a);
 } catch (error) {
@@ -3169,7 +3149,10 @@ try {
 
 readRemoteObjectArray(objects: IRemoteObject[]): void
 
-Reads the **IRemoteObject** array from this **MessageSequence** object and writes it to the created empty array.
+Reads an array of IRemoteObject objects from MessageSequence and writes them into the created empty array. This is applicable to scenarios where multiple remote objects are received in batches, such as batch acquisition of service proxies, receiving multiple callback interfaces, and multi-service endpoint management.
+
+- An empty array must be created in advance, and its length should be consistent with the length of the array at the time of writing.
+- An exception is thrown when reading fails. It is recommended to use try-catch to catch it.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -3177,7 +3160,7 @@ Reads the **IRemoteObject** array from this **MessageSequence** object and write
 
 | Name | Type           | Mandatory| Description                                          |
 | ------- | --------------- | ---- | ---------------------------------------------- |
-| objects | [IRemoteObject](#iremoteobject)[] | Yes  | **IRemoteObject** array to read.|
+| objects | [IRemoteObject](#iremoteobject)[] | Yes | Array of IRemoteObject objects read from MessageSequence, used for IPC/RPC communication to store multiple remote objects. |
 
 **Error codes**
 
@@ -3207,7 +3190,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 
 try {
-  let a = [new TestRemoteObject("testObject1"), new TestRemoteObject("testObject2"), new TestRemoteObject("testObject3")];
+  let a = [new TestRemoteObject('testObject1'), new TestRemoteObject('testObject2'), new TestRemoteObject('testObject3')];
   let data = rpc.MessageSequence.create();
   data.writeRemoteObjectArray(a);
   let b: Array<rpc.IRemoteObject> = new Array(3);
@@ -3232,7 +3215,7 @@ Reads the **IRemoteObject** array from this **MessageSequence** object.
 
 | Type           | Description                       |
 | --------------- | --------------------------- |
-| [IRemoteObject](#iremoteobject)[] | The **IRemoteObject** array is returned. If an empty array is written, **null** is returned.|
+| [IRemoteObject](#iremoteobject)[] | Returns an array of IRemoteObject objects; returns nullptr when an empty array is written. |
 
 **Error codes**
 
@@ -3261,7 +3244,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 
 try {
-  let a = [new TestRemoteObject("testObject1"), new TestRemoteObject("testObject2"), new TestRemoteObject("testObject3")];
+  let a = [new TestRemoteObject('testObject1'), new TestRemoteObject('testObject2'), new TestRemoteObject('testObject3')];
   let data = rpc.MessageSequence.create();
   let b = data.readRemoteObjectArray();
   hilog.info(0x0000, 'testTag', 'readRemoteObjectArray is ' + b);
@@ -3278,14 +3261,7 @@ static closeFileDescriptor(fd: number): void
 
 Closes a file descriptor. This API is a static method.
 
-**Use cases**
-
-- Close the file descriptor in a timely manner after file use.
-- Close the file descriptor after the file transfer is complete.
-- Avoid resource leakage.
-
-**Constraints**
-
+- Close the file promptly after use to avoid resource leakage.
 - Ensure that the file operations are complete before closing the file descriptor.
 - Do not close a file descriptor that has already been closed.
 - After the file descriptor is closed, the file cannot be read or written.
@@ -3315,7 +3291,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let filePath = "path/to/file"; 
+  let filePath = 'path/to/file';
   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   rpc.MessageSequence.closeFileDescriptor(file.fd);
 } catch (error) {
@@ -3331,14 +3307,9 @@ static dupFileDescriptor(fd: number): number
 
 Duplicates a file descriptor. This API is a static method.
 
-**Use cases**
-
 - The file descriptor should be duplicated before IPC transmission to prevent the original descriptor from being closed.
 - Multiple processes can share the same file.
 - The file offset needs to be managed independently.
-
-**Constraints**
-
 - After duplication, both the original and the duplicated descriptors must be closed separately.
 - An invalid file descriptor should not be duplicated.
 - The lifecycle of each descriptor must be managed independently after duplication.
@@ -3375,7 +3346,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let filePath = "path/to/file"; 
+  let filePath = 'path/to/file';
   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   rpc.MessageSequence.dupFileDescriptor(file.fd);
 } catch (error) {
@@ -3389,7 +3360,7 @@ try {
 
 containFileDescriptors(): boolean
 
-Checks whether this **MessageSequence** object contains file descriptors.
+Checks whether this MessageSequence object contains file descriptors. This is applicable to scenarios where it is necessary to determine whether file descriptors need to be processed during file transfer, or where the data type is checked before receiving data to decide the processing method.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -3409,7 +3380,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let sequence = rpc.MessageSequence.create();
-  let filePath = "path/to/file";
+  let filePath = 'path/to/file';
   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   let containFD = sequence.containFileDescriptors();
   hilog.info(0x0000, 'testTag', 'sequence after write fd containFd result is ' + containFD);
@@ -3426,15 +3397,10 @@ writeFileDescriptor(fd: number): void
 
 Writes a file descriptor to this **MessageSequence** object. After this method is called, the file descriptor is encapsulated and transmitted across processes through the Binder mechanism. The receiving side can obtain the file descriptor via **readFileDescriptor** and perform file operations accordingly.
 
-File descriptor transfer mechanism:
-
 - The file descriptor is transmitted across processes through Binder's FD passing mechanism.
 - The receiving side obtains a new mapped file descriptor.
 - Both descriptors actually point to the same file resource.
 - Various descriptor types, such as regular files, pipes, and sockets, are supported.
-
-**Constraints**
-
 - The file descriptor must be valid and already opened.
 - After the write operation, the original descriptor remains valid and must be managed by the service itself.
 - It is advised to duplicate the file descriptor using **dupFileDescriptor** before transmission.
@@ -3468,7 +3434,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let sequence = rpc.MessageSequence.create();
-  let filePath = "path/to/file";
+  let filePath = 'path/to/file';
   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   sequence.writeFileDescriptor(file.fd);
 } catch (error) {
@@ -3484,14 +3450,8 @@ readFileDescriptor(): number
 
 Reads the file descriptor from this **MessageSequence** object. The receiver reads the mapped new file descriptor ID, which is different from the descriptor ID written by the sender but points to the same file resource. After reading, it is advised to use and close the descriptor in a timely manner to prevent resource leaks. If the descriptor needs to be used for a long time, you can call **dupFileDescriptor** to duplicate the descriptor.
 
-**Pairing requirements**
-
-- This method and the **writeFileDescriptor** method must be used in pairs.
-- After the read operation, the descriptor needs to be used or closed promptly.
+- Must be used in pairs with [writeFileDescriptor](#writefiledescriptor9).
 - Do not rely on the fd ID of the source end.
-
-**Constraints**
-
 - After the read operation, the lifecycle of the file descriptor needs to be managed.
 - You are advised to use the descriptor promptly to avoid resource waste.
 - Close the file descriptor in a timely manner after use.
@@ -3522,7 +3482,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let sequence = rpc.MessageSequence.create();
-  let filePath = "path/to/file";
+  let filePath = 'path/to/file';
   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   sequence.writeFileDescriptor(file.fd);
   let readFD = sequence.readFileDescriptor();
@@ -3540,25 +3500,14 @@ writeAshmem(ashmem: Ashmem): void
 
 Writes an anonymous shared object to this **MessageSequence** object.
 
-**Pairing requirements**
-
-- This method must be used in pairs with the **readAshmem()** method.
-- Call sequence: writeAshmem() → Transmit **MessageSequence** → readAshmem() → mapReadWriteAshmem() → readDataFromAshmem().
-- Before using this method, create an **Ashmem** object and write data to it.
-
-**Process**
-
-1. Create an **Ashmem** object: Ashmem.create()
-2. Perform memory mapping and write data: mapReadWriteAshmem() + writeDataToAshmem()
-3. Write **Ashmem** to **MessageSequence**: writeAshmem()
-4. Read **Ashmem** by the receiving side: readAshmem()
-5. Perform memory mapping and read data by the receiving side: mapReadWriteAshmem() + readDataFromAshmem()
-
-**Related methods**
-
-- **readAshmem()**: reads an anonymous shared object.
-- **Ashmem.create()**: creates an anonymous shared object.
-- **mapReadWriteAshmem()**: maps memory for read-write access.
+- Create an Ashmem object: Ashmem.create().
+- Map the memory and write data: [mapReadWriteAshmem](#mapreadwriteashmem9) + [writeDataToAshmem](#writedatatoashmem11).
+- Write the Ashmem object to MessageSequence: writeAshmem().
+- The receiver reads the Ashmem object: [readAshmem](#readashmem9).
+- The receiver maps the memory and reads data: mapReadWriteAshmem() + readDataFromAshmem().
+- This method is used in pairs with readAshmem().
+- Call sequence: writeAshmem() → transfer MessageSequence → [readAshmem](#readashmem9) → [mapReadWriteAshmem](#mapreadwriteashmem9) → [readDataFromAshmem](#readdatafromashmem11).
+- Before use, create an Ashmem object and write data to it.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -3586,7 +3535,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let sequence = rpc.MessageSequence.create();
-  let ashmem = rpc.Ashmem.create("ashmem", 1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024);
   // Write data to ashmem.
   let buffer = new ArrayBuffer(1024);
   let int32View = new Int32Array(buffer);
@@ -3611,18 +3560,13 @@ try {
 
 readAshmem(): Ashmem
 
-Reads the anonymous shared object from this **MessageSequence** object. Before using this method, call the **mapReadWriteAshmem** method to perform memory mapping.
+Reads an anonymous shared object from MessageSequence. Before use, call [mapReadWriteAshmem](#mapreadwriteashmem9) to map the memory.
 
-**Process**
-
-1. readAshmem(): obtains an object.
-2. mapReadWriteAshmem(): performs memory mapping.
-3. readDataFromAshmem(): reads data.
-4. unmapAshmem(): cancels mapping.
-5. closeAshmem(): closes an object.
-
-**Constraints**
-
+- readAshmem() obtains the object.
+- [mapReadWriteAshmem](#mapreadwriteashmem9) maps memory.
+- [readDataFromAshmem](#readdatafromashmem11) reads data.
+- unmapAshmem() unmaps memory.
+- closeAshmem() closes the object.
 - Data can be read only after memory mapping.
 - Mapping needs to be canceled after data is read.
 - The object needs to be closed in a timely manner to avoid memory leaks.
@@ -3633,7 +3577,7 @@ Reads the anonymous shared object from this **MessageSequence** object. Before u
 
 | Type  | Description              |
 | ------ | ------------------ |
-| [Ashmem](#ashmem8) | Anonymous share object obtained. Before reading data, call the **mapReadWriteAshmem** method to perform memory mapping.|
+| [Ashmem](#ashmem8) | Returns an anonymous shared object used to share memory data across processes. Before reading data, call the [mapReadWriteAshmem](#mapreadwriteashmem9) method to map the memory. |
 
 **Error codes**
 
@@ -3652,7 +3596,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let sequence = rpc.MessageSequence.create();
-  let ashmem = rpc.Ashmem.create("ashmem", 1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024);
   // Write data to ashmem.
   let buffer = new ArrayBuffer(1024);
   let int32View = new Int32Array(buffer);
@@ -3687,7 +3631,7 @@ try {
 
 getRawDataCapacity(): number
 
-Obtains the maximum amount of raw data that can be held by this **MessageSequence** object.
+Obtains the maximum amount of raw data that a MessageSequence can hold. It is suitable for checking whether the capacity meets requirements before large data transmission, or for pre-determining the data size when processing large batches of data.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -3879,6 +3823,11 @@ readRawDataBuffer(size: number): ArrayBuffer
 
 Reads raw data from this **MessageSequence** object.
 
+- The data size must match that at the time of writing.
+- This API is a one-time API and cannot be called multiple times in a single parcel communication.
+- Pay attention to system resource usage when transmitting large amounts of data.
+- It must be used in pairs with [writeRawDataBuffer](#writerawdatabuffer11).
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Parameters**
@@ -3934,22 +3883,13 @@ writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void
 
 Writes data of the ArrayBuffer type to this **MessageSequence** object.
 
-**Pairing requirements**
 
-- This method and the **readArrayBuffer()** method must be used in pairs.
+- This method is used in pairs with the [readArrayBuffer](#readarraybuffer12) method.
 - **typeCode** written must be consistent with **typeCode** read. Otherwise, data exceptions may occur.
-- Calling sequence: call **writeArrayBuffer()** to write the data → call **readArrayBuffer()** to read the data
-
-**Constraint**
-
+- Call sequence: first call writeArrayBuffer() to write data → then call [readArrayBuffer](#readarraybuffer12) to read data.
 - The **typeCode** parameter determines the data write and read methods.
 - A mismatch between the write and read **typeCode** values will cause data parsing errors.
-- You must select the correct TypeCode enumeration value based on the actual data type.
-
-**Related methods**
-
-- readArrayBuffer(): reads ArrayBuffer data.
-- TypeCode: enumeration of the TypedArray type.
+- The correct [TypeCode](#typecode12) enum value must be selected based on the actual data type.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -3998,17 +3938,9 @@ readArrayBuffer(typeCode: TypeCode): ArrayBuffer
 
 Reads data of the ArrayBuffer type from this **MessageSequence**.
 
-**Pairing requirements**
-
-- This method and the **writeArrayBuffer** method must be used in pairs.
-- The read typeCode must be the same as the written typeCode.
-- The sequence must match.
-
-**Constraints**
-
-- The typeCode must be correctly matched.
-- If they do not match, data exceptions or errors may occur.
-- You are advised to select a proper TypeCode based on the service type.
+- Must be used in pairs with [writeArrayBuffer](#writearraybuffer12).
+- The **typeCode** read must be consistent with the **typeCode** written, and the sequence must match.
+- The **typeCode** must match correctly. A mismatch will cause data exceptions or errors. It is recommended to select an appropriate [TypeCode](#typecode12) based on the service type.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -4022,7 +3954,7 @@ Reads data of the ArrayBuffer type from this **MessageSequence**.
 
   | Type    | Description                                        |
   | -------- | -------------------------------------------- |
-  | ArrayBuffer | Data of the ArrayBuffer type read, in bytes.|
+  | ArrayBuffer | ArrayBuffer data used to store the binary data read from MessageSequence, which can be accessed and manipulated through TypedArray. |
 
 **Error codes**
 
@@ -4085,7 +4017,7 @@ Creates a **MessageParcel** object. This method is a static method.
 
   | Type         | Description                         |
   | ------------- | ----------------------------- |
-  | [MessageParcel](#messageparceldeprecated) | **MessageParcel** object created.|
+  | [MessageParcel](#messageparceldeprecated) | Returns the created MessageParcel object, which is used to encapsulate request and response data during IPC. |
 
 **Example**
 
@@ -4175,7 +4107,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 
 try {
   let data = rpc.MessageParcel.create();
-  let testRemoteObject = new TestRemoteObject("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
   data.writeRemoteObject(testRemoteObject);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
@@ -4198,7 +4130,7 @@ Reads the remote object from this **MessageParcel** object. You can use this met
 
   | Type                           | Description              |
   | ------------------------------- | ------------------ |
-  | [IRemoteObject](#iremoteobject) | Remote object obtained.|
+  | [IRemoteObject](#iremoteobject) | Remote object read, used for IPC/RPC communication. |
 
 **Example**
 
@@ -4220,7 +4152,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 
 try {
   let data = rpc.MessageParcel.create();
-  let testRemoteObject = new TestRemoteObject("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
   data.writeRemoteObject(testRemoteObject);
   let proxy = data.readRemoteObject();
   hilog.info(0x0000, 'testTag', 'readRemoteObject is ' + proxy);
@@ -4262,7 +4194,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let data = rpc.MessageParcel.create();
-  let result = data.writeInterfaceToken("aaa");
+  let result = data.writeInterfaceToken('aaa');
   hilog.info(0x0000, 'testTag', 'RpcServer: writeInterfaceToken is ' + result);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
@@ -4296,7 +4228,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let data = rpc.MessageParcel.create();
-  let result = data.writeInterfaceToken("aaa");
+  let result = data.writeInterfaceToken('aaa');
   let interfaceToken = data.readInterfaceToken();
   hilog.info(0x0000, 'testTag', 'RpcServer: interfaceToken is ' + interfaceToken);
 } catch (error) {
@@ -4626,7 +4558,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let data = rpc.MessageParcel.create();
   data.writeInt(12);
-  data.writeString("parcel");
+  data.writeString('parcel');
   let number = data.readInt();
   hilog.info(0x0000, 'testTag', 'number is ' + number);
   data.rewindRead(0);
@@ -5415,7 +5347,7 @@ class MySequenceable implements rpc.Sequenceable {
 }
 
 try {
-  let sequenceable = new MySequenceable(1, "aaa");
+  let sequenceable = new MySequenceable(1, 'aaa');
   let data = rpc.MessageParcel.create();
   let result = data.writeSequenceable(sequenceable);
   hilog.info(0x0000, 'testTag', 'writeSequenceable is ' + result);
@@ -5475,11 +5407,11 @@ class MySequenceable implements rpc.Sequenceable {
 }
 
 try {
-  let sequenceable = new MySequenceable(1, "aaa");
+  let sequenceable = new MySequenceable(1, 'aaa');
   let data = rpc.MessageParcel.create();
   let result = data.writeSequenceable(sequenceable);
   hilog.info(0x0000, 'testTag', 'writeSequenceable is ' + result);
-  let ret = new MySequenceable(0, "");
+  let ret = new MySequenceable(0, '');
   let result2 = data.readSequenceable(ret);
   hilog.info(0x0000, 'testTag', 'readSequenceable is ' + result2);
 } catch (error) {
@@ -5520,8 +5452,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let data = rpc.MessageParcel.create();
-  let ByteArrayVar = [1, 2, 3, 4, 5];
-  let result = data.writeByteArray(ByteArrayVar);
+  let byteArrayVar = [1, 2, 3, 4, 5];
+  let result = data.writeByteArray(byteArrayVar);
   hilog.info(0x0000, 'testTag', 'writeByteArray is ' + result);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
@@ -5555,8 +5487,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let data = rpc.MessageParcel.create();
-  let ByteArrayVar = [1, 2, 3, 4, 5];
-  let result = data.writeByteArray(ByteArrayVar);
+  let byteArrayVar = [1, 2, 3, 4, 5];
+  let result = data.writeByteArray(byteArrayVar);
   let array: Array<number> = new Array(5);
   data.readByteArray(array);
   hilog.info(0x0000, 'testTag', 'readByteArray is ' + array);
@@ -5592,8 +5524,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let data = rpc.MessageParcel.create();
-  let ByteArrayVar = [1, 2, 3, 4, 5];
-  let result = data.writeByteArray(ByteArrayVar);
+  let byteArrayVar = [1, 2, 3, 4, 5];
+  let result = data.writeByteArray(byteArrayVar);
   hilog.info(0x0000, 'testTag', 'writeByteArray is ' + result);
   let array = data.readByteArray();
   hilog.info(0x0000, 'testTag', 'readByteArray is ' + array);
@@ -6351,7 +6283,7 @@ try {
   hilog.info(0x0000, 'testTag', 'writeCharArray is ' + result);
   let array: Array<number> = new Array(3);
   data.readCharArray(array);
-  hilog.info(0x0000, 'testTag', 'writeCharArray is ' + result);
+  hilog.info(0x0000, 'testTag', 'readCharArray is ' + array);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
@@ -6426,7 +6358,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let data = rpc.MessageParcel.create();
-  let result = data.writeStringArray(["abc", "def"]);
+  let result = data.writeStringArray(['abc', 'def']);
   hilog.info(0x0000, 'testTag', 'writeStringArray is ' + result);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
@@ -6460,7 +6392,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let data = rpc.MessageParcel.create();
-  let result = data.writeStringArray(["abc", "def"]);
+  let result = data.writeStringArray(['abc', 'def']);
   hilog.info(0x0000, 'testTag', 'writeStringArray is ' + result);
   let array: Array<string> = new Array(2);
   data.readStringArray(array);
@@ -6497,7 +6429,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let data = rpc.MessageParcel.create();
-  let result = data.writeStringArray(["abc", "def"]);
+  let result = data.writeStringArray(['abc', 'def']);
   hilog.info(0x0000, 'testTag', 'writeStringArray is ' + result);
   let array = data.readStringArray();
   hilog.info(0x0000, 'testTag', 'readStringArray is ' + array);
@@ -6535,7 +6467,7 @@ class TestRemoteObject extends rpc.RemoteObject {
     super(descriptor);
   }
 
-onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
+  onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
     if (code === 1) {
       hilog.info(0x0000, 'testTag', 'RpcServer: onRemoteRequest called');
       reply.writeNoException();
@@ -6577,20 +6509,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
   // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -6608,7 +6540,7 @@ let connectionId = context.connectServiceExtensionAbility(want, connect);
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-try { 
+try {
   let option = new rpc.MessageOption();
   let data = rpc.MessageParcel.create();
   let reply = rpc.MessageParcel.create();
@@ -6634,7 +6566,7 @@ try {
       reply.reclaim();
     });
   }
-} catch (error) { 
+} catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
@@ -6690,9 +6622,9 @@ class MySequenceable implements rpc.Sequenceable {
 }
 
 try {
-  let sequenceable = new MySequenceable(1, "aaa");
-  let sequenceable2 = new MySequenceable(2, "bbb");
-  let sequenceable3 = new MySequenceable(3, "ccc");
+  let sequenceable = new MySequenceable(1, 'aaa');
+  let sequenceable2 = new MySequenceable(2, 'bbb');
+  let sequenceable3 = new MySequenceable(3, 'ccc');
   let a = [sequenceable, sequenceable2, sequenceable3];
   let data = rpc.MessageParcel.create();
   let result = data.writeSequenceableArray(a);
@@ -6747,14 +6679,14 @@ class MySequenceable implements rpc.Sequenceable {
 }
 
 try {
-  let sequenceable = new MySequenceable(1, "aaa");
-  let sequenceable2 = new MySequenceable(2, "bbb");
-  let sequenceable3 = new MySequenceable(3, "ccc");
+  let sequenceable = new MySequenceable(1, 'aaa');
+  let sequenceable2 = new MySequenceable(2, 'bbb');
+  let sequenceable3 = new MySequenceable(3, 'ccc');
   let a = [sequenceable, sequenceable2, sequenceable3];
   let data = rpc.MessageParcel.create();
   let result = data.writeSequenceableArray(a);
   hilog.info(0x0000, 'testTag', 'writeSequenceableArray is ' + result);
-  let b = [new MySequenceable(0, ""), new MySequenceable(0, ""), new MySequenceable(0, "")];
+  let b = [new MySequenceable(0, ''), new MySequenceable(0, ''), new MySequenceable(0, '')];
   data.readSequenceableArray(b);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
@@ -6804,7 +6736,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 
 try {
-  let a = [new TestRemoteObject("testObject1"), new TestRemoteObject("testObject2"), new TestRemoteObject("testObject3")];
+  let a = [new TestRemoteObject('testObject1'), new TestRemoteObject('testObject2'), new TestRemoteObject('testObject3')];
   let data = rpc.MessageParcel.create();
   let result = data.writeRemoteObjectArray(a);
   hilog.info(0x0000, 'testTag', 'writeRemoteObjectArray is ' + result);
@@ -6850,8 +6782,8 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 
 try {
-  let a = [new TestRemoteObject("testObject1"), new TestRemoteObject("testObject2"),
-    new TestRemoteObject("testObject3")];
+  let a = [new TestRemoteObject('testObject1'), new TestRemoteObject('testObject2'),
+    new TestRemoteObject('testObject3')];
   let data = rpc.MessageParcel.create();
   data.writeRemoteObjectArray(a);
   let b: Array<rpc.IRemoteObject> = new Array(3);
@@ -6899,8 +6831,8 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 
 try {
-  let a = [new TestRemoteObject("testObject1"), new TestRemoteObject("testObject2"),
-    new TestRemoteObject("testObject3")];
+  let a = [new TestRemoteObject('testObject1'), new TestRemoteObject('testObject2'),
+    new TestRemoteObject('testObject3')];
   let data = rpc.MessageParcel.create();
   let result = data.writeRemoteObjectArray(a);
   hilog.info(0x0000, 'testTag', 'readRemoteObjectArray is ' + result);
@@ -6938,7 +6870,7 @@ import { fileIo } from '@kit.CoreFileKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let filePath = "path/to/file";
+  let filePath = 'path/to/file';
   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   rpc.MessageParcel.closeFileDescriptor(file.fd);
 } catch (error) {
@@ -6979,7 +6911,7 @@ import { fileIo } from '@kit.CoreFileKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let filePath = "path/to/file";
+  let filePath = 'path/to/file';
   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   rpc.MessageParcel.dupFileDescriptor(file.fd);
 } catch (error) {
@@ -7015,7 +6947,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let parcel = new rpc.MessageParcel();
-  let filePath = "path/to/file";
+  let filePath = 'path/to/file';
   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   let writeResult = parcel.writeFileDescriptor(file.fd);
   hilog.info(0x0000, 'testTag', 'parcel writeFd result is ' + writeResult);
@@ -7060,7 +6992,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let parcel = new rpc.MessageParcel();
-  let filePath = "path/to/file";
+  let filePath = 'path/to/file';
   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   let writeResult = parcel.writeFileDescriptor(file.fd);
   hilog.info(0x0000, 'testTag', 'parcel writeFd result is ' + writeResult);
@@ -7097,7 +7029,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let parcel = new rpc.MessageParcel();
-  let filePath = "path/to/file";
+  let filePath = 'path/to/file';
   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   parcel.writeFileDescriptor(file.fd);
   let readFD = parcel.readFileDescriptor();
@@ -7140,7 +7072,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let parcel = new rpc.MessageParcel();
-  let ashmem = rpc.Ashmem.createAshmem("ashmem", 1024);
+  let ashmem = rpc.Ashmem.createAshmem('ashmem', 1024);
   let isWriteSuccess = parcel.writeAshmem(ashmem);
   hilog.info(0x0000, 'testTag', 'write ashmem to result is ' + isWriteSuccess);
 } catch (error) {
@@ -7175,7 +7107,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let parcel = new rpc.MessageParcel();
-  let ashmem = rpc.Ashmem.createAshmem("ashmem", 1024);
+  let ashmem = rpc.Ashmem.createAshmem('ashmem', 1024);
   let isWriteSuccess = parcel.writeAshmem(ashmem);
   hilog.info(0x0000, 'testTag', 'write ashmem to result is ' + isWriteSuccess);
   let readAshmem = parcel.readAshmem();
@@ -7357,10 +7289,10 @@ class MyParcelable implements rpc.Parcelable {
 }
 
 try {
-  let parcelable = new MyParcelable(1, "aaa");
+  let parcelable = new MyParcelable(1, 'aaa');
   let data = rpc.MessageSequence.create();
   data.writeParcelable(parcelable);
-  let ret = new MyParcelable(0, "");
+  let ret = new MyParcelable(0, '');
   data.readParcelable(ret);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
@@ -7414,10 +7346,10 @@ class MyParcelable implements rpc.Parcelable {
 }
 
 try {
-  let parcelable = new MyParcelable(1, "aaa");
+  let parcelable = new MyParcelable(1, 'aaa');
   let data = rpc.MessageSequence.create();
   data.writeParcelable(parcelable);
-  let ret = new MyParcelable(0, "");
+  let ret = new MyParcelable(0, '');
   data.readParcelable(ret);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
@@ -7485,11 +7417,11 @@ class MySequenceable implements rpc.Sequenceable {
 }
 
 try {
-  let sequenceable = new MySequenceable(1, "aaa");
+  let sequenceable = new MySequenceable(1, 'aaa');
   let data = rpc.MessageParcel.create();
   let result = data.writeSequenceable(sequenceable);
   hilog.info(0x0000, 'testTag', 'writeSequenceable is ' + result);
-  let ret = new MySequenceable(0, "");
+  let ret = new MySequenceable(0, '');
   let result2 = data.readSequenceable(ret);
   hilog.info(0x0000, 'testTag', 'readSequenceable is ' + result2);
 } catch (error) {
@@ -7548,11 +7480,11 @@ class MySequenceable implements rpc.Sequenceable {
 }
 
 try {
-  let sequenceable = new MySequenceable(1, "aaa");
+  let sequenceable = new MySequenceable(1, 'aaa');
   let data = rpc.MessageParcel.create();
   let result = data.writeSequenceable(sequenceable);
   hilog.info(0x0000, 'testTag', 'writeSequenceable is ' + result);
-  let ret = new MySequenceable(0, "");
+  let ret = new MySequenceable(0, '');
   let result2 = data.readSequenceable(ret);
   hilog.info(0x0000, 'testTag', 'readSequenceable is ' + result2);
 } catch (error) {
@@ -7590,7 +7522,7 @@ class TestAbility extends rpc.RemoteObject {
     return this;
   }
 }
-let remoteObject = new TestAbility("testObject").asObject();
+let remoteObject = new TestAbility('testObject').asObject();
 ```
 
 **Example**
@@ -7610,20 +7542,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want  = {
   // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -7656,7 +7588,7 @@ if (proxy != undefined) {
 
 ## DeathRecipient
 
-Subscribes to death notifications of a remote object. When the remote object is dead, the local end will receive a notification and **[onRemoteDied](#onremotedied)** will be called. A remote object is dead when the process holding the object is terminated or the device of the remote object is shut down or restarted. If the local and remote objects belong to different devices, the remote object is dead when the device holding the remote object is detached from the network. 
+Subscribes to death notifications of a remote object. When the remote object is dead, the local end will receive a notification and **[onRemoteDied](#onremotedied)** will be called. A remote object is dead when the process holding the object is terminated or the device of the remote object is shut down or restarted. If the local and remote objects belong to different devices, the remote object is dead when the device holding the remote object is detached from the network.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -7824,8 +7756,8 @@ Sends a **MessageSequence** message to the remote process in synchronous or asyn
   | Name | Type                                | Mandatory| Description                                                                                  |
   | ------- | ------------------------------------ | ---- | -------------------------------------------------------------------------------------- |
   | code    | number                               | Yes  | Message code [1-16777215] called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
-  | data    | [MessageSequence](#messagesequence9) | Yes  | **MessageSequence** object holding the data to send.                                           |
-  | reply   | [MessageSequence](#messagesequence9) | Yes  | **MessageSequence** object that receives the response.                                                   |
+  | data    | [MessageSequence](#messagesequence9) | Yes   | MessageSequence object that stores the data to be sent. It must be created and written with data through the create() method before use. |
+  | reply   | [MessageSequence](#messagesequence9) | Yes   | MessageSequence object that receives the reply data. In asynchronous mode, the reply message contains no content, and the specific reply must be obtained in the service-side callback. In synchronous mode, the reply content is in the reply message. |
   | options | [MessageOption](#messageoption)      | Yes  | Request sending mode, which can be synchronous (default) or asynchronous.                                                  |
 
 **Return value**
@@ -7873,7 +7805,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 
 sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption, callback: AsyncCallback&lt;RequestResult&gt;): void
 
-Sends a **MessageSequence** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a callback will be called immediately, and the reply message is empty. The specific response needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a callback will be invoked when the response to **sendRequest** is returned, and the reply message contains the returned information.
+Sends a **MessageSequence** message to the peer process in synchronous or asynchronous mode. If the asynchronous mode is set for the option, the callback is received immediately, and the reply message contains no content. The specific reply must be obtained in the callback on the service side. If the synchronous mode is set for the option, the callback is received when sendMessageRequest returns, and the reply content is in the reply message.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -8133,20 +8065,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
   // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -8170,7 +8102,7 @@ try {
   let data = rpc.MessageParcel.create();
   let reply = rpc.MessageParcel.create();
   data.writeInt(1);
-  data.writeString("hello");
+  data.writeString('hello');
   if (proxy != undefined) {
     let ret: boolean = proxy.sendRequest(1, data, reply, option);
     if (ret) {
@@ -8237,20 +8169,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
   // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -8273,7 +8205,7 @@ try {
   let data = rpc.MessageSequence.create();
   let reply = rpc.MessageSequence.create();
   data.writeInt(1);
-  data.writeString("hello");
+  data.writeString('hello');
   if (proxy != undefined) {
     proxy.sendMessageRequest(1, data, reply, option)
     .then((result: rpc.RequestResult) => {
@@ -8343,20 +8275,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
   // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -8380,7 +8312,7 @@ try {
   let data = rpc.MessageParcel.create();
   let reply = rpc.MessageParcel.create();
   data.writeInt(1);
-  data.writeString("hello");
+  data.writeString('hello');
   if (proxy != undefined) {
     let a = proxy.sendRequest(1, data, reply, option) as Object;
     let b = a as Promise<rpc.SendRequestResult>;
@@ -8411,7 +8343,7 @@ try {
 
 sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption, callback: AsyncCallback&lt;RequestResult&gt;): void
 
-Sends a **MessageSequence** message to the remote process in synchronous or asynchronous mode. This API uses an asynchronous callback to return the result. If asynchronous mode is set in **options**, a callback will be called immediately, and the reply message is empty. The specific response needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a callback will be invoked at certain time after the response to **RequestResult** is returned, and the reply contains the returned information.
+Sends a **MessageSequence** message to the peer process in synchronous or asynchronous mode. This API uses an asynchronous callback. If the asynchronous mode is set for the option, the callback is received immediately, and the reply message contains no content. The specific reply must be obtained in the callback on the service side. If the synchronous mode is set for the option, the callback is executed after [sendMessageRequest](#sendmessagerequest9) returns and the server finishes processing the request. In the callback, [RequestResult](#requestresult9) can be read to obtain the data returned by the server.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -8501,20 +8433,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
   // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -8536,7 +8468,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 if (proxy != undefined) {
   try {
-    let broker: rpc.IRemoteBroker = proxy.getLocalInterface("testObject");
+    let broker: rpc.IRemoteBroker = proxy.getLocalInterface('testObject');
     hilog.info(0x0000, 'testTag', 'getLocalInterface is ' + broker);
   } catch (error) {
     let e: BusinessError = error as BusinessError;
@@ -8587,20 +8519,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
   // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -8620,7 +8552,7 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 if (proxy != undefined) {
-  let broker: rpc.IRemoteBroker = proxy.queryLocalInterface("testObject");
+  let broker: rpc.IRemoteBroker = proxy.queryLocalInterface('testObject');
   hilog.info(0x0000, 'testTag', 'queryLocalInterface is ' + broker);
 }
 ```
@@ -8666,20 +8598,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
   // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -8757,20 +8689,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
   // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -8841,20 +8773,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
   // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -8933,20 +8865,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
   // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -9017,20 +8949,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
   // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -9096,20 +9028,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
   // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -9165,20 +9097,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
   // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -9302,7 +9234,7 @@ try {
   let option = new rpc.MessageOption();
   let result = option.isAsync();
 } catch (error) {
-  hilog.info(0x0000, 'testTag', 'error ' + error);
+  hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
 
@@ -9332,7 +9264,7 @@ try {
   let option = new rpc.MessageOption();
   option.setAsync(true);
 } catch (error) {
-  hilog.info(0x0000, 'testTag', 'error ' + error);
+  hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
 
@@ -9749,7 +9681,7 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 }
 try {
-  let remoteObject = new TestRemoteObject("aaa");
+  let remoteObject = new TestRemoteObject('aaa');
   rpc.IPCSkeleton.flushCmdBuffer(remoteObject);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
@@ -9800,13 +9732,11 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 }
 try {
-  let remoteObject = new TestRemoteObject("aaa");
+  let remoteObject = new TestRemoteObject('aaa');
   let ret = rpc.IPCSkeleton.flushCommands(remoteObject);
   hilog.info(0x0000, 'testTag', 'RpcServer: flushCommands result: ' + ret);
 } catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'proxy flushCmdBuffer fail, errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'proxy flushCmdBuffer fail, errorMessage ' + e.message);
+  hilog.error(0x0000, 'testTag', 'proxy flushCmdBuffer fail, error ' + error);
 }
 ```
 
@@ -10000,7 +9930,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-class testRemoteObject extends rpc.RemoteObject {
+class TestRemoteObject extends rpc.RemoteObject {
   onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel,
     option: rpc.MessageOption): boolean {
     // Process services based on the actual service logic.
@@ -10008,12 +9938,12 @@ class testRemoteObject extends rpc.RemoteObject {
   }
 }
 try {
-  let testRemoteObject = new TestRemoteObject("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
   let option = new rpc.MessageOption();
   let data = rpc.MessageParcel.create();
   let reply = rpc.MessageParcel.create();
   data.writeInt(1);
-  data.writeString("hello");
+  data.writeString('hello');
   let ret: boolean = testRemoteObject.sendRequest(1, data, reply, option);
   if (ret) {
     hilog.info(0x0000, 'testTag', 'sendRequest got result');
@@ -10078,12 +10008,12 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 }
 try {
-  let testRemoteObject = new TestRemoteObject("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
   let option = new rpc.MessageOption();
   let data = rpc.MessageSequence.create();
   let reply = rpc.MessageSequence.create();
   data.writeInt(1);
-  data.writeString("hello");
+  data.writeString('hello');
   testRemoteObject.sendMessageRequest(1, data, reply, option)
     .then((result: rpc.RequestResult) => {
       if (result.errCode === 0) {
@@ -10151,12 +10081,12 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 }
 try {
-  let testRemoteObject = new TestRemoteObject("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
   let option = new rpc.MessageOption();
   let data = rpc.MessageParcel.create();
   let reply = rpc.MessageParcel.create();
   data.writeInt(1);
-  data.writeString("hello");
+  data.writeString('hello');
   let a = testRemoteObject.sendRequest(1, data, reply, option) as Object;
   let b = a as Promise<rpc.SendRequestResult>;
   b.then((result: rpc.SendRequestResult) => {
@@ -10207,7 +10137,7 @@ For details about the error codes, see [RPC Error Codes](errorcode-rpc.md).
   | -------- | -------- |
   | 401      | Parameter error. Possible causes: <br> 1.The number of parameters is incorrect; <br> 2.The parameter type does not match; <br> 3.Failed to obtain the passed object instance. |
 
-### sendRequest<sup>(deprecated)</sup> 
+### sendRequest<sup>(deprecated)</sup>
 
 sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: MessageOption, callback: AsyncCallback&lt;SendRequestResult&gt;): void
 
@@ -10445,13 +10375,13 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 
   onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
-     if (code === 1) {
-        hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
-        return true;
-     } else {
-        hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
-        return false;
-     }
+    if (code === 1) {
+      hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
+      return true;
+    } else {
+      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
+      return false;
+    }
   }
     // Only onRemoteMessageRequest is executed.
   onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
@@ -10547,7 +10477,7 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 }
 try {
-  let testRemoteObject = new TestRemoteObject("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
   hilog.info(0x0000, 'testTag', 'RpcServer: getCallingUid: ' + testRemoteObject.getCallingUid());
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error: ' + error);
@@ -10585,7 +10515,7 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 }
 try {
-  let testRemoteObject = new TestRemoteObject("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
   hilog.info(0x0000, 'testTag', 'RpcServer: getCallingPid: ' + testRemoteObject.getCallingPid());
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error: ' + error);
@@ -10638,8 +10568,8 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 }
 try {
-  let testRemoteObject = new TestRemoteObject("testObject");
-  testRemoteObject.getLocalInterface("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
+  testRemoteObject.getLocalInterface('testObject');
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
@@ -10689,8 +10619,8 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 }
 try {
-  let testRemoteObject = new TestRemoteObject("testObject");
-  testRemoteObject.queryLocalInterface("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
+  testRemoteObject.queryLocalInterface('testObject');
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error: ' + error);
 }
@@ -10736,7 +10666,7 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 }
 try {
-  let testObject = new TestRemoteObject("ipcTest");
+  let testObject = new TestRemoteObject('ipcTest');
   let descriptor = testObject.getDescriptor();
   hilog.info(0x0000, 'testTag', 'RpcServer: descriptor is ' + descriptor);
 } catch (error) {
@@ -10783,7 +10713,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 
 try {
-  let testRemoteObject = new TestRemoteObject("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
   let descriptor = testRemoteObject.getInterfaceDescriptor();
   hilog.info(0x0000, 'testTag', 'RpcServer: descriptor is: ' + descriptor);
 } catch (error) {
@@ -10844,7 +10774,7 @@ class TestRemoteObject extends rpc.RemoteObject {
     // Implement the method logic based on service requirements.
   }
 }
-let testRemoteObject = new TestRemoteObject("testObject");
+let testRemoteObject = new TestRemoteObject('testObject');
 ```
 
 ### attachLocalInterface<sup>(deprecated)</sup>
@@ -10892,27 +10822,19 @@ class TestRemoteObject extends rpc.RemoteObject {
     return true;
   }
 }
-let testRemoteObject = new TestRemoteObject("testObject");
+let testRemoteObject = new TestRemoteObject('testObject');
 ```
 
 ## Ashmem<sup>8+</sup>
 
 Provides methods related to anonymous shared memory objects, including creating, closing, mapping, and unmapping an **Ashmem** object, reading data from and writing data to an **Ashmem** object, obtaining the **Ashmem** size, and setting **Ashmem** protection.
 
-The shared memory applies only to cross-process communication within the local device.
-
-**Use cases**
+Shared memory is applicable only to cross-process communication within the same device.
 
 - Large data transmission: When transmitting large amounts of data (such as images or files), shared memory can be used to improve efficiency.
 - Cross-process data sharing: Multiple processes need to share access to the same block of memory data.
-
-**Resolved issues**
-
 - Transmission efficiency: Transmitting large data via shared memory avoids serialization overhead and improves transmission efficiency.
 - Memory reuse: Multiple processes can share access to the same memory, avoiding data duplication.
-
-**Benefits**
-
 - Improved transmission performance: The shared memory mechanism significantly improves the efficiency of large data transmission.
 - Reduced memory usage: Avoiding multiple data copies helps save memory resources.
 
@@ -10966,7 +10888,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   hilog.info(0x0000, 'testTag', 'create ashmem: ' + ashmem);
   let size = ashmem.getAshmemSize();
   hilog.info(0x0000, 'testTag',  'size is ' + size);
@@ -11010,7 +10932,7 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let ashmem = rpc.Ashmem.createAshmem("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.createAshmem('ashmem', 1024*1024);
   hilog.info(0x0000, 'testTag', 'create ashmem: ' + ashmem);
   let size = ashmem.getAshmemSize();
   hilog.info(0x0000, 'testTag',  'size is ' + size);
@@ -11055,7 +10977,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   let ashmem2 = rpc.Ashmem.create(ashmem);
   let size = ashmem2.getAshmemSize();
   hilog.info(0x0000, 'testTag', 'size is ' + size);
@@ -11098,7 +11020,7 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   let ashmem2 = rpc.Ashmem.createAshmemFromExisting(ashmem);
   let size = ashmem2.getAshmemSize();
   hilog.info(0x0000, 'testTag', 'size is ' + size);
@@ -11126,7 +11048,7 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   ashmem.closeAshmem();
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error is ' + error);
@@ -11148,7 +11070,7 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   ashmem.unmapAshmem();
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error is ' + error);
@@ -11176,7 +11098,7 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   let size = ashmem.getAshmemSize();
   hilog.info(0x0000, 'testTag', ' size is ' + size);
 } catch (error) {
@@ -11215,7 +11137,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   ashmem.mapTypedAshmem(rpc.Ashmem.PROT_READ | rpc.Ashmem.PROT_WRITE);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
@@ -11256,7 +11178,7 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   let mapReadAndWrite = ashmem.mapAshmem(rpc.Ashmem.PROT_READ | rpc.Ashmem.PROT_WRITE);
   hilog.info(0x0000, 'testTag', 'map ashmem result is ' + mapReadAndWrite);
 } catch (error) {
@@ -11288,7 +11210,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   ashmem.mapReadWriteAshmem();
 } catch (error) {
   let e: BusinessError = error as BusinessError;
@@ -11323,7 +11245,7 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   let mapResult = ashmem.mapReadAndWriteAshmem();
   hilog.info(0x0000, 'testTag', 'map ashmem result is ' + mapResult);
 } catch (error) {
@@ -11355,7 +11277,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   ashmem.mapReadonlyAshmem();
 } catch (error) {
   let e: BusinessError = error as BusinessError;
@@ -11390,7 +11312,7 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   let mapResult = ashmem.mapReadOnlyAshmem();
   hilog.info(0x0000, 'testTag', 'Ashmem mapReadOnlyAshmem result is ' + mapResult);
 } catch (error) {
@@ -11429,7 +11351,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   ashmem.setProtectionType(rpc.Ashmem.PROT_READ);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
@@ -11470,11 +11392,10 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   let result = ashmem.setProtection(rpc.Ashmem.PROT_READ);
   hilog.info(0x0000, 'testTag', 'Ashmem setProtection result is ' + result);
 } catch (error) {
-  let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
@@ -11522,7 +11443,7 @@ try {
     int32View[i] = i * 2 + 1;
   }
   let size = buffer.byteLength;
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   ashmem.mapReadWriteAshmem();
   ashmem.writeDataToAshmem(buffer, size, 0);
 } catch (error) {
@@ -11572,10 +11493,10 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   ashmem.mapReadWriteAshmem();
-  let ByteArrayVar = [1, 2, 3, 4, 5];
-  ashmem.writeAshmem(ByteArrayVar, 5, 0);
+  let byteArrayVar = [1, 2, 3, 4, 5];
+  ashmem.writeAshmem(byteArrayVar, 5, 0);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'Rpc write to ashmem fail, errorCode ' + e.code);
@@ -11619,11 +11540,11 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   let mapResult = ashmem.mapReadAndWriteAshmem();
   hilog.info(0x0000, 'testTag', 'RpcTest map ashmem result is ' + mapResult);
-  let ByteArrayVar = [1, 2, 3, 4, 5];
-  let writeResult = ashmem.writeToAshmem(ByteArrayVar, 5, 0);
+  let byteArrayVar = [1, 2, 3, 4, 5];
+  let writeResult = ashmem.writeToAshmem(byteArrayVar, 5, 0);
   hilog.info(0x0000, 'testTag', 'write to Ashmem result is ' + writeResult);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error is ' + error);
@@ -11678,7 +11599,7 @@ try {
     int32View[i] = i * 2 + 1;
   }
   let size = buffer.byteLength;
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   ashmem.mapReadWriteAshmem();
   ashmem.writeDataToAshmem(buffer, size, 0);
   let readResult = ashmem.readDataFromAshmem(size, 0);
@@ -11736,10 +11657,10 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   ashmem.mapReadWriteAshmem();
-  let ByteArrayVar = [1, 2, 3, 4, 5];
-  ashmem.writeAshmem(ByteArrayVar, 5, 0);
+  let byteArrayVar = [1, 2, 3, 4, 5];
+  ashmem.writeAshmem(byteArrayVar, 5, 0);
   let readResult = ashmem.readAshmem(5, 0);
   hilog.info(0x0000, 'testTag', 'read from Ashmem result is ' + readResult);
 } catch (error) {
@@ -11784,11 +11705,11 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   let mapResult = ashmem.mapReadAndWriteAshmem();
   hilog.info(0x0000, 'testTag', 'RpcTest map ashmem result is ' + mapResult);
-  let ByteArrayVar = [1, 2, 3, 4, 5];
-  let writeResult = ashmem.writeToAshmem(ByteArrayVar, 5, 0);
+  let byteArrayVar = [1, 2, 3, 4, 5];
+  let writeResult = ashmem.writeToAshmem(byteArrayVar, 5, 0);
   hilog.info(0x0000, 'testTag', 'write to Ashmem result is ' + writeResult);
   let readResult = ashmem.readFromAshmem(5, 0);
   hilog.info(0x0000, 'testTag', 'read to Ashmem result is ' + readResult);

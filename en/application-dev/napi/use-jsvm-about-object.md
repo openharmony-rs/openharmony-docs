@@ -5,7 +5,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-08-26T02:56:48.911Z pushedAt=2026-08-26T03:35:29.919Z -->
+<!-- md-trans-meta sourceCommit=0b50ff1c6d77ec00cd47e1216c043c17663c7283 translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 ## Overview
 
@@ -233,7 +233,7 @@ static JSVM_Value ObjectSeal(JSVM_Env env, JSVM_CallbackInfo info)
     bool result = false;
     OH_JSVM_DeleteProperty(env, argv[0], deleteProperty, &result);
     if (result) {
-        OH_LOG_INFO(LOG_APP, "Test JSVM OH_JSVM_ObjectSeal failed");
+        OH_LOG_ERROR(LOG_APP, "Test JSVM OH_JSVM_ObjectSeal failed");
     }
     // Add to the sealed object
     JSVM_Value addValue = nullptr;
@@ -653,7 +653,7 @@ static JSVM_Value CreateSymbol(JSVM_Env env, JSVM_CallbackInfo info)
     if (valuetypeSymbol == JSVM_SYMBOL) {
         OH_LOG_INFO(LOG_APP, "JSVM CreateSymbol Success");
     } else {
-        OH_LOG_INFO(LOG_APP, "JSVM CreateSymbol fail");
+        OH_LOG_ERROR(LOG_APP, "JSVM CreateSymbol fail");
     }
     return returnSymbol;
 }

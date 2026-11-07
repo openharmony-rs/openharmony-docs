@@ -5,7 +5,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=2ef4fc705e90909eae85f03b810d01076231d3b3 translatedAt=2026-09-16T03:00:38.033Z pushedAt=2026-09-16T08:13:11.914Z -->
+<!-- md-trans-meta sourceCommit=7d9ce201efa894024f69109a8bec89b278e1456d translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 ## Data Types
 
@@ -38,7 +38,7 @@ Each time a JSVM-API function is called, a value of **JSVM_Status** is returned 
         JSVM_DATE_EXPECTED,                   /* A date is expected. */
         JSVM_ARRAYBUFFER_EXPECTED,            /* An ArrayBuffer is expected. */
         JSVM_DETACHABLE_ARRAYBUFFER_EXPECTED, /* A detachable ArrayBuffer is expected. */
-        JSVM_WOULD_DEADLOCK,                  /* About to deadlock. */
+        JSVM_WOULD_DEADLOCK,                  /* The operation would cause a deadlock. */
         JSVM_NO_EXTERNAL_BUFFERS_ALLOWED,     /* External buffers are not allowed. */
         JSVM_CANNOT_RUN_JS,                   /* JS cannot be executed. */
         JSVM_INVALID_TYPE,                    /* Invalid type. */
@@ -712,7 +712,7 @@ static void RunScript(JSVM_Env env, string& src,
     } else {
         OH_JSVM_CompileScript(env, jsSrc, data, length, true, &cacheRejected, &script);
     }
-    printf("Code cache is %s\n", cacheRejected ? "rejected" : "used");
+    OH_LOG_INFO(LOG_APP, "Code cache is %{public}s", cacheRejected ? "rejected" : "used");
 
     JSVM_Value result;
     // Run the JS code.
@@ -910,11 +910,11 @@ if (status != JSVM_OK) // An exception occurs when the execution fails.
 
             char stackstr[256];
             OH_JSVM_GetValueStringUtf8(env, stack, stackstr, 256, nullptr);
-            OH_LOG_INFO(LOG_APP, "JSVM error stack: %{public}s", stackstr);
+            OH_LOG_ERROR(LOG_APP, "JSVM error stack: %{public}s", stackstr);
 
             char messagestr[256];
             OH_JSVM_GetValueStringUtf8(env, message, messagestr, 256, nullptr);
-            OH_LOG_INFO(LOG_APP, "JSVM error message: %{public}s", messagestr);
+            OH_LOG_ERROR(LOG_APP, "JSVM error message: %{public}s", messagestr);
         }
     }
 }
@@ -922,7 +922,7 @@ if (status != JSVM_OK) // An exception occurs when the execution fails.
 
 ### Object Lifetime Management
 
-When JSVM-API calls are made, handles to objects in the heap for the underlying VM may be returned as **JSVM_Value**s. These handles must hold the objects live until they are no longer required by the native code. Otherwise, the objects will be collected.
+When JSVM-API calls are made, handles to objects in the heap for the underlying VM may be returned as **JSVM_Value**s. These handles must keep their associated objects live until the native method ends or the handles are explicitly released, preventing the engine from reclaiming the objects.
 
 When an object handle is returned, it is associated with a scope. The lifecycle of the default scope is tied to the lifecycle of the native method call. By default, a handle remains valid and the object associated with it will be held live for the lifecycle of the native method call.
 
@@ -969,7 +969,7 @@ JSVM_CALL(OH_JSVM_CloseEscapableHandleScope(env, scope));
 return escapee;
 ```
 
-Create and release object references through **CreateReference**.
+Create object references through **OH_JSVM_CreateReference** and release them after use.
 
 ```c++
 JSVM_Value obj = nullptr;
@@ -1300,7 +1300,7 @@ bool isArray = true;
 OH_JSVM_StrictEquals(env, value, value, &isArray);
 ```
 
-Check whether two **JSVM_Value** objects are loosely equal: check whether the operand types are the same. If they are different but can be converted to the same type, convert them and then perform a strict equality comparison on the values. Otherwise, return false.
+Check whether two **JSVM_Value** objects are loosely equal: if the operands have the same type, compare their values directly. If their types differ but can be converted to the same type, convert them and then perform a strict equality comparison on the values. Otherwise, return false.
 
 ```c++
 JSVM_HandleScope handleScope;
@@ -1479,7 +1479,7 @@ Create a JS function.
 ```c++
 JSVM_Value SayHello(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    printf("Hello\n");
+    OH_LOG_INFO(LOG_APP, "Hello");
     JSVM_Value ret;
     OH_JSVM_CreateInt32(env, 2, &ret);
     return ret;
@@ -1579,7 +1579,7 @@ static JSVM_Value AssertEqual(JSVM_Env env, JSVM_CallbackInfo info)
 
 static napi_value TestWrap(napi_env env1, napi_callback_info info)
 {
-    OH_LOG_ERROR(LOG_APP, "testWrap start");
+    OH_LOG_INFO(LOG_APP, "TestWrap start");
     JSVM_InitOptions init_options;
     memset(&init_options, 0, sizeof(init_options));
     if (aa == 0) {
@@ -1631,7 +1631,7 @@ static napi_value TestWrap(napi_env env1, napi_callback_info info)
     OH_JSVM_DestroyEnv(env);
     OH_JSVM_CloseVMScope(vm, vm_scope);
     OH_JSVM_DestroyVM(vm);
-    OH_LOG_ERROR(LOG_APP, "testWrap pass");
+    OH_LOG_INFO(LOG_APP, "TestWrap pass");
     return nullptr;
 }
 ```
@@ -1824,7 +1824,7 @@ static JSVM_Value IndexedPropertyDeleter(JSVM_Env env, JSVM_Value index, JSVM_Va
     uint64_t wordsOut[2] = {0ULL, 0ULL};
     JSVM_Status status = OH_JSVM_GetValueBigintWords(env, data, &signBit, &wordCount, wordsOut);
     if (status == JSVM_OK) {
-        OH_LOG_INFO(LOG_APP, "IndexedPropertyDeleter wordCount is %{public}zu", wordCount);
+        OH_LOG_INFO(LOG_APP, "IndexedPropertyEnumerator wordCount is %{public}zu", wordCount);
         auto test = reinterpret_cast<Test *>(wordsOut);
         typedef void (*callTest1)();
         callTest1 callTe = reinterpret_cast<callTest1>(test->ptr1);
@@ -1858,7 +1858,7 @@ static JSVM_Value IndexedPropertyEnumerator(JSVM_Env env, JSVM_Value thisArg, JS
 }
 
 static napi_value TestDefineClassWithProperty(napi_env env1, napi_callback_info info) {
-    OH_LOG_ERROR(LOG_APP, "TestDefineClassWithProperty start");
+    OH_LOG_INFO(LOG_APP, "TestDefineClassWithProperty start");
     JSVM_InitOptions init_options;
     memset(&init_options, 0, sizeof(init_options));
     init_options.externalReferences = externals;
@@ -1898,7 +1898,7 @@ static napi_value TestDefineClassWithProperty(napi_env env1, napi_callback_info 
     Test *test = new Test();
     test->ptr1 = (void *)test1;
     test->ptr2 = (void *)test1;
-    OH_LOG_INFO(LOG_APP, "OH_JSVM_CreateBigintWords 111 word count %{public}d",
+    OH_LOG_INFO(LOG_APP, "OH_JSVM_CreateBigintWords word count %{public}zu",
                 sizeof(*test) / sizeof(uint64_t));
     JSVM_Status status = OH_JSVM_CreateBigintWords(env, 1, 2, reinterpret_cast<const uint64_t *>(test), &res);
 
@@ -2036,7 +2036,7 @@ static napi_value TestDefineClassWithProperty(napi_env env1, napi_callback_info 
     OH_JSVM_DestroyEnv(env);
     OH_JSVM_CloseVMScope(vm, vm_scope);
     OH_JSVM_DestroyVM(vm);
-    OH_LOG_ERROR(LOG_APP, "TestDefineClassWithProperty pass");
+    OH_LOG_INFO(LOG_APP, "TestDefineClassWithProperty pass");
     return nullptr;
 }
 ```
@@ -2517,7 +2517,7 @@ static napi_value GetInstanceData(napi_env env1, napi_callback_info info)
 {
     InstanceData *instanceData = reinterpret_cast<InstanceData *>(malloc(sizeof(InstanceData)));
     if (instanceData == nullptr) {
-        printf("Memory allocation failed!\n");
+        OH_LOG_ERROR(LOG_APP, "Memory allocation failed!");
         return nullptr;
     }
     size_t argc = 1;

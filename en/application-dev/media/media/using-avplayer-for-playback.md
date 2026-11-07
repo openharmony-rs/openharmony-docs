@@ -3,10 +3,10 @@
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=29aa363c8c07cd0d943043ae209ad0a85fcdc3c5 translatedAt=2026-08-11T01:52:47.727Z pushedAt=2026-08-11T12:51:21.301Z -->
+<!-- md-trans-meta sourceCommit=8271a110bebcf2bb1afba336b05927aaf3c6256b translatedAt=2026-11-05T06:16:33.957Z pushedAt=2026-08-11T12:51:21.301Z nl=1 -->
 
 [AVPlayer](media-kit-intro.md#avplayer) is used for end-to-end playback of raw media assets. This topic demonstrates how to use AVPlayer to play a complete audio track. To play PCM audio data, call [AudioRenderer](../audio/using-audiorenderer-for-playback.md).
 
@@ -60,39 +60,158 @@ For details about the APIs, see [AVPlayer](../../reference/apis-media-kit/arkts-
    | bufferingUpdate | Used to listen for network playback buffer information. This event reports the buffer percentage and playback progress.|
    | audioInterrupt | Used to listen for audio interruption. This event is used together with the **audioInterruptMode** property.<br>This event is reported when the current audio playback is interrupted by another (for example, when a call is coming), so the application can process the event in time.|
 
-    ```ts
-    // This is only an example. You can set the events to listen for as required.
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { audio } from '@kit.AudioKit';
-
-    avPlayer.on('stateChange', async (state: string, reason: media.StateChangeReason) => {
-        // Add your service logic as required.
-    });
-    avPlayer.on('error', (error: BusinessError) => {
-        // Add your service logic as required.
-    });
-    avPlayer.on('durationUpdate', (duration: number) => {
-        // Add your service logic as required.
-    });
-    avPlayer.on('timeUpdate', (time: number) => {
-        // Add your service logic as required.
-    });
-    avPlayer.on('seekDone', (seekDoneTime: number) => {
-        // Add your service logic as required.
-    });
-    avPlayer.on('speedDone', (speed: number) => {
-        // Add your service logic as required.
-    });
-    avPlayer.on('volumeChange', (vol: number) => {
-        // Add your service logic as required.
-    });
-    avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: number) => {
-        // Add your service logic as required.
-    });
-    avPlayer.on('audioInterrupt', (info: audio.InterruptEvent) => {
-        // Add your service logic as required.
-    });
-    ```
+   <!-- @[setAVPlayerCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   if (this.avPlayer == null) {
+     console.error(`${this.tag}: avPlayer has not init!`);
+     return;
+   }
+   this.avPlayer.on('seekDone', (seekDoneTime) => {
+     console.info(`${this.tag}: setAVPlayerCallback AVPlayer seek succeeded, seek time is ${seekDoneTime}`);
+   });
+   this.avPlayer.on('speedDone', (speed) => {
+     console.info(`${this.tag}: setAVPlayerCallback AVPlayer speedDone, speed is ${speed}`);
+   });
+   this.avPlayer.on('durationUpdate', (duration: number) => {
+     console.info(`${this.tag}: setAVPlayerCallback AVPlayer durationUpdate, duration is ${duration}`);
+   });
+   this.avPlayer.on('volumeChange', (vol: number) => {
+     console.info(`${this.tag}: setAVPlayerCallback AVPlayer volumeChange, vol is ${vol}`);
+   });
+   this.avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: number) => {
+     console.info(`${this.tag}: setAVPlayerCallback AVPlayer bufferingUpdate, vol is ${infoType}, value is ${value}`);
+   });
+   this.avPlayer.on('audioInterrupt', (info: audio.InterruptEvent) => {
+     console.info(`${this.tag}: setAVPlayerCallback AVPlayer audioInterrupt, info is ${info}`);
+   });
+   // Error callback: call reset to reset avPlayer if an error occurs during an operation.
+   this.avPlayer.on('error', (err) => {
+     console.error(`${this.tag}: setAVPlayerCallback Invoke avPlayer failed ${JSON.stringify(err)}`);
+     if (this.avPlayer == null) {
+       console.error(`${this.tag}: avPlayer has not init on error`);
+       return;
+     }
+     this.avPlayer.reset();
+   });
+   // State change callback.
+   this.avPlayer.on('stateChange', async (state, reason) => {
+     if (this.avPlayer == null) {
+       console.info(`${this.tag}: avPlayer has not init on state change`);
+       return;
+     }
+     switch (state) {
+       case 'idle': // Reported after reset is successfully called.
+         console.info(`${this.tag}: setAVPlayerCallback AVPlayer state idle called.`);
+         break;
+       case 'initialized': // Reported after the playback source is set for avPlayer.
+         console.info(`${this.tag}: setAVPlayerCallback AVPlayer state initialized called.`);
+         if (this.surfaceId) {
+           this.avPlayer.surfaceId = this.surfaceId; // Set the display surface. This is not required for audio-only resources.
+           console.info(`${this.tag}: setAVPlayerCallback this.avPlayer.surfaceId = ${this.avPlayer.surfaceId}`);
+           this.avPlayer.prepare();
+         }
+         break;
+       case 'prepared': // Reported after prepare is successfully called.
+         console.info(`${this.tag}: setAVPlayerCallback AVPlayer state prepared called.`);
+         this.avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: number) => {
+           console.info(`${this.tag}: bufferingUpdate called, infoType value: ${infoType}, value:${value}}`);
+         })
+         this.durationTime = this.avPlayer.duration;
+         this.currentTime = this.avPlayer.currentTime;
+         this.avPlayer.play(); // Call play to start playback.
+         console.info(`${this.tag}:
+           setAVPlayerCallback speedSelect: ${this.speedSelect}, duration: ${this.durationTime}`);
+         if (this.speedSelect != -1) {
+           switch (this.speedSelect) {
+             case SPEED_ZERO:
+               this.avSetSpeed(media.PlaybackSpeed.SPEED_FORWARD_1_00_X);
+               break;
+             case SPEED_ONE:
+               this.avSetSpeed(media.PlaybackSpeed.SPEED_FORWARD_1_25_X);
+               break;
+             case SPEED_TWO:
+               this.avSetSpeed(media.PlaybackSpeed.SPEED_FORWARD_1_75_X);
+               break;
+             case SPEED_THREE:
+               this.avSetSpeed(media.PlaybackSpeed.SPEED_FORWARD_2_00_X);
+               break;
+           }
+         }
+         callback(this.avPlayer);
+         break;
+       case 'playing': // Reported after play is successfully called.
+         console.info(`${this.tag}: setAVPlayerCallback AVPlayer state playing called.`);
+         if (this.count !== 0) {
+           if (this.intervalID != -1) {
+             clearInterval(this.intervalID)
+           }
+           this.intervalID = setInterval(() => { // Update the current time.
+             AppStorage.setOrCreate('durationTime', this.durationTime);
+             AppStorage.setOrCreate('currentTime', this.currentTime);
+           }, 100);
+           let eventDataTrue: emitter.EventData = {
+             data: {
+               'flag': true
+             }
+           };
+           let innerEventTrue: emitter.InnerEvent = {
+             eventId: 2,
+             priority: emitter.EventPriority.HIGH
+           };
+           emitter.emit(innerEventTrue, eventDataTrue);
+         } else {
+           setTimeout(() => {
+             console.info('AVPlayer playing wait to pause');
+             this.avPlayer?.pause(); // Call pause after 3 seconds of playback.
+           }, 3000);
+         }
+         this.count++;
+         break;
+       case 'completed': // Reported after playback is complete.
+         console.info(`${this.tag}: setAVPlayerCallback AVPlayer state completed called.`);
+         let eventDataFalse: emitter.EventData = {
+           data: {
+             'flag': false
+           }
+         };
+         let innerEvent: emitter.InnerEvent = {
+           eventId: 1,
+           priority: emitter.EventPriority.HIGH
+         };
+         emitter.emit(innerEvent, eventDataFalse);
+         if (this.intervalID != -1) {
+           clearInterval(this.intervalID)
+         }
+         this.avPlayer.off('bufferingUpdate')
+         AppStorage.setOrCreate('currentTime', this.durationTime);
+         break;
+       case 'released':
+         console.info(`${this.tag}: setAVPlayerCallback released called.`);
+         break
+       case 'stopped':
+         console.info(`${this.tag}: setAVPlayerCallback AVPlayer state stopped called.`);
+         break
+       case 'error':
+         console.error(`${this.tag}: setAVPlayerCallback AVPlayer state error called.`);
+         break
+       case 'paused':
+         console.info(`${this.tag}: setAVPlayerCallback AVPlayer state paused called.`);
+         setTimeout(() => {
+           console.info('AVPlayer paused wait to play again');
+           this.avPlayer?.play(); // Call play again after pausing for 3 seconds.
+         }, 3000);
+         break
+       default:
+         console.info(`${this.tag}: setAVPlayerCallback AVPlayer state unknown called.`);
+         break;
+     }
+   });
+   // Playback time update callback.
+   this.avPlayer.on('timeUpdate', (time: number) => {
+     this.currentTime = time;
+   });
+   ```
 
 3. Set the media asset URL. The AVPlayer enters the **initialized** state.
 
@@ -110,51 +229,62 @@ For details about the APIs, see [AVPlayer](../../reference/apis-media-kit/arkts-
 
    **Example 1: playing a network media asset**
 
-   ```ts
-   let url = 'https://abc.bcd.example.mp3'; // Example only. Replace with the actual resource URL.
-   if (avPlayer == null) {
-       return;
+   <!-- @[setUrl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let url = ''; // This URL is for illustration only. Replace it with the actual resource URL.
+   if (this.avPlayer == null) {
+     return;
    }
-   avPlayer.url = url;
+   this.avPlayer.url = url;
    ```
 
    **Example 2: playing a file in the application sandbox**
 
-   ```ts
-   let fdPath = 'fd://'; // Example only. Replace with the actual resource URL.
-   let path : string = `${this.context.filesDir}/${this.fileName}`; // This is only for illustration. Replace it with the actual app sandbox file path.
+   <!-- @[setFdPath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let fdPath = 'fd://'; // This URL is for illustration only. Replace it with the actual resource URL.
+   let path : string = `${this.context?.filesDir}/${this.fileName}`; // This path is for illustration only. Replace it with the actual application sandbox file path.
    let file = await fs.open(path);
-   fdPath = fdPath + file.fd;
-   this.avPlayer = await media.createAVPlayer();
-   this.avPlayer.url = fdPath;
+   try {
+     fdPath = fdPath + file.fd;
+     this.avPlayer = await media.createAVPlayer();
+     this.avPlayer.url = fdPath;
+   } finally {
+     fs.closeSync(file);
+   }
    ```
 
 4. (Optional) Set the audio renderer information. The information must be set when the AVPlayer is in the initialized state, that is, before **prepare()** is called for the first time. If the media source contains videos, the default value of **usage** is **STREAM_USAGE_MOVIE**. Otherwise, the default value of **usage** is **STREAM_USAGE_MUSIC**. The default value of **rendererFlags** is 0.
 
     To ensure that audio behavior meets usage expectations, you are advised to proactively configure [audio.AudioRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8) based on specific business scenarios and actual requirements, and [select an appropriate playback stream type](../../media/audio/using-right-streamusage-for-playback.md) for the audio.
 
-    ```ts
-    import { audio } from '@kit.AudioKit';
-
-    avPlayer.audioRendererInfo = {
-        usage: audio.StreamUsage.STREAM_USAGE_MOVIE,
-        rendererFlags: 0
-    }
-    ```
+   <!-- @[audioRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   if (this.avPlayer) {
+     this.avPlayer.audioRendererInfo = {
+       usage: audio.StreamUsage.STREAM_USAGE_MOVIE,
+       rendererFlags: 0
+     }
+   }
+   ```
 
 5. Prepare for playback. Specifically, call **prepare()** to switch the AVPlayer to the prepared state. In this state, you can obtain the video duration and adjust the volume.
 
-    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    avPlayer.prepare((err: BusinessError) => {
-        if (err) {
-            console.error('Failed to prepare,error message is :' + err.message);
-        } else {
-            console.info('Succeeded in preparing');
-        }
-    });
-    ```
+   <!-- @[avPrepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   if (this.avPlayer) {
+     try {
+       this.avPlayer.prepare();
+       console.info(`${this.tag}: avPrepare==`);
+     } catch (e) {
+       console.error(`${this.tag}: avPrepare== ${JSON.stringify(e)}`);
+     }
+   }
+   ```
 
 6. Perform audio playback control. Specifically, call **play()**, **pause()**, **seek()**, and **stop()** as required.
 
@@ -162,70 +292,96 @@ For details about the APIs, see [AVPlayer](../../reference/apis-media-kit/arkts-
    >
    > Starting from API version 23, silent frames are skipped during audio playback.
 
-    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
+   <!-- @[avPlay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   if (this.avPlayer) {
+     try {
+       this.avPlayer.play();
+     } catch (e) {
+       console.error(`${this.tag}: avPlay = ${JSON.stringify(e)}`);
+     }
+   }
+   ```
 
-    // Playback operation.
-    avPlayer.play().then(() => {
-        console.info('Succeeded in playing');
-    }, (err: BusinessError) => {
-        console.error('Failed to play,error message is :' + err.message);
-    });
-    // Pause operation.
-    avPlayer.pause((err: BusinessError) => {
-        if (err) {
-            console.error('Failed to pause,error message is :' + err.message);
-        } else {
-            console.info('Succeeded in pausing');
-        }
-    });
-    // Seek operation.
-    let seekTime: number = 1000;
-    avPlayer.seek(seekTime, media.SeekMode.SEEK_PREV_SYNC);
-    // Stop operation.
-    avPlayer.stop((err: BusinessError) => {
-        if (err) {
-            console.error('Failed to stop,error message is :' + err.message);
-        } else {
-            console.info('Succeeded in stopping');
-        }
-    });
-    ```
+   <!-- @[avPause](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   if (this.avPlayer) {
+     try {
+       this.avPlayer.pause();
+       console.info(`${this.tag}: avPause==`);
+     } catch (e) {
+       console.error(`${this.tag}: avPause== ${JSON.stringify(e)}`);
+     }
+   }
+   ```
+
+   <!-- @[avSeek](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   if (this.avPlayer) {
+     try {
+       console.info(`${this.tag}: videoSeek  seekTime== ${seekTime}`);
+       this.avPlayer.seek(seekTime, 2);
+       this.currentTime = seekTime;
+     } catch (e) {
+       console.error(`${this.tag}: videoSeek== ${JSON.stringify(e)}`);
+     }
+   }
+   ```
+
+   <!-- @[avStop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   if (this.avPlayer) {
+     try {
+       this.avPlayer.stop();
+       console.info(`${this.tag}: avStop==`);
+     } catch (e) {
+       console.error(`${this.tag}: avStop== ${JSON.stringify(e)}`);
+     }
+   }
+   ```
 
 7. (Optional) Replace resources. Specifically, call **reset()** to reset the AVPlayer. The AVPlayer enters the **idle** state again and you can change the media asset URL.
 
-    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
+   <!-- @[avReset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   if (this.avPlayer) {
+     try {
+       this.avPlayer.reset();
+     } catch (e) {
+       console.error(`${this.tag}: reset== ${JSON.stringify(e)}`);
+     }
+   }
+   ```
 
-    avPlayer.reset((err: BusinessError) => {
-        avPlayer.url = url;
-        if (err) {
-            console.error('Failed to reset, error message is :' + err.message);
-        } else {
-            console.info('Succeeded in resetting');
-        }
-    });
-    // Replace the URL.
-    let url = 'https://example.com/audio.mp3'; // This is only an example. Replace it with the actual resource file URL.
-    if (avPlayer == null) {
-        return;
-    }
-    avPlayer.url = url;
-    ```
+   <!-- @[changeUrl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // Change the URL.
+   let url = '';
+   if (this.avPlayer == null) {
+     return;
+   }
+   this.avPlayer.url = url;
+   ```
 
 8. Call **release()** to switch the AVPlayer to the **released** state. Now your application exits the playback.
 
-    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    avPlayer.release((err: BusinessError) => {
-        if (err) {
-            console.error('Failed to release,error message is :' + err.message);
-        } else {
-            console.info('Succeeded in releasing');
-        }
-    });
-    ```
+   <!-- @[release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   this.avPlayer.release((err) => {
+     if (err == null) {
+       console.info(`${this.tag}: videoRelease release success`);
+     } else {
+       console.error(`${this.tag}: videoRelease release failed, error message is = ${JSON.stringify(err.message)}`);
+     }
+   });
+   ```
 
 ## Running the Sample Project
 

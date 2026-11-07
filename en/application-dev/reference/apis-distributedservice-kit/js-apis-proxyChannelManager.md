@@ -5,6 +5,7 @@
 <!--Designer: @zhaopeng_gitee-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=221fa4e4d74587aabfde4c63e66c8deccf1ee82f translatedAt=2026-11-04T05:30:34.238Z pushedAt=2026-11-04T10:12:33.569Z nl=1 -->
 
 DSoftBus provides stable and reliable underlying channels for cross-device communication. This module is developed based on DSoftBus. It supports data exchange between phones and wearables, providing users with a seamless device interconnection experience. It also simplifies cross-device communication for developers, eliminating the need to handle underlying communication protocols and process wakeup logic. Use scenarios: During collaboration between the phone app and wearable app, if the phone app is not running in the foreground, its downlink messages are forwarded to the notification server and then sent to the wearable through the proxy module. When the wearable sends data to the phone, the proxy module can dynamically wake up the corresponding app process on the phone to receive and process the data. The core functions of this module include proxy channel management, data route management, application state awareness and wakeup, and link state monitoring.
 
@@ -214,7 +215,7 @@ Sends data to the peer end. This API uses a promise to return the result. This m
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| &nbsp;Promise&lt;void&gt; | Promise that returns no value. If the data is sent successfully, **resolve** returns a value. If the data fails to be sent, **reject** returns an error message.|
+| &nbsp;Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 

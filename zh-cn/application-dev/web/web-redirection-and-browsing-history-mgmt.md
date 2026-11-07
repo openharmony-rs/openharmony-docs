@@ -153,7 +153,7 @@ Web组件可以实现点击前端页面超链接跳转到其他应用。
                   if (!err) {
                     console.info('make call succeeded.');
                   } else {
-                    console.info('make call fail, err is:' + JSON.stringify(err));
+                    console.error('make call fail, err is:' + JSON.stringify(err));
                   }
                 });
                 return true;

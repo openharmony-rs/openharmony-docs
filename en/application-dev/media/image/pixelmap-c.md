@@ -6,7 +6,7 @@
 <!--Designer: @yaozhupeng-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=ba3f6c99832577d149cf0c227912c266e5256745 translatedAt=2026-08-11T01:49:23.955Z pushedAt=2026-08-11T10:12:31.919Z -->
+<!-- md-trans-meta sourceCommit=8237b3ce2f52b25ad481c3dd8ddab13d041379ad translatedAt=2026-11-05T06:16:33.956Z pushedAt=2026-08-11T10:12:31.919Z nl=1 -->
 
 You can use the **Pixelmap** class to create, operate, and release a PixelMap, and obtain its width, height, pixel format, alpha type, and row stride.
 
@@ -129,7 +129,7 @@ static Image_ErrorCode PixelmapTest()
         return errCode;
     }
 
-    // Set the opacity ratio to achieve the corresponding transparency effect on the PixelMap.
+    // Set the opacity to achieve the corresponding transparency effect on the PixelMap.
     errCode = OH_PixelmapNative_Opacity(pixelmap, OPACITY_VALUE);
     if (errCode != IMAGE_SUCCESS) {
         OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_Opacity failed, errCode: %{public}d.", errCode);
@@ -181,7 +181,7 @@ static Image_ErrorCode PixelmapTest()
     return IMAGE_SUCCESS;
 }
 
-// Example of PixelMap premultiplied/non-premultiplied format conversion.
+// Example of PixelMap premultiplied/non-premultiplied mode conversion.
 static Image_ErrorCode PixelmapConvertAlphaTypeTest()
 {
     uint8_t data[DATA_SIZE];
@@ -198,14 +198,14 @@ static Image_ErrorCode PixelmapConvertAlphaTypeTest()
     OH_PixelmapInitializationOptions_SetPixelFormat(createOpts, PIXEL_FORMAT_RGBA_8888);
     OH_PixelmapInitializationOptions_SetAlphaType(createOpts, PIXELMAP_ALPHA_TYPE_UNPREMULTIPLIED);
 
-    // Create a pixel map instance in non-premultiplied format.
+    // Create a pixel map instance in non-premultiplied mode.
     OH_PixelmapNative *srcPixelmap = nullptr;
     Image_ErrorCode errCode = OH_PixelmapNative_CreatePixelmap(data, DATA_SIZE, createOpts, &srcPixelmap);
     if (errCode != IMAGE_SUCCESS) {
         OH_LOG_ERROR(LOG_APP, "Create srcPixelMap failed, errCode: %{public}d.", errCode);
     }
 
-    // Create a pixel map instance in premultiplied format. This dstPixelmap instance will be used to store the data after converting the AlphaType of srcPixelmap.
+    // Create a pixel map instance in premultiplied mode. This dstPixelmap instance will be used to store the data after converting the AlphaType of srcPixelmap.
     OH_PixelmapNative *dstPixelmap = nullptr;
     OH_PixelmapInitializationOptions_SetAlphaType(createOpts, PIXELMAP_ALPHA_TYPE_PREMULTIPLIED);
     errCode = OH_PixelmapNative_CreatePixelmap(data, DATA_SIZE, createOpts, &dstPixelmap);
@@ -213,7 +213,7 @@ static Image_ErrorCode PixelmapConvertAlphaTypeTest()
         OH_LOG_ERROR(LOG_APP, "Create dstPixelMap failed, errCode: %{public}d.", errCode);
     }
 
-    // Convert the AlphaType. The data of srcPixelmap will be converted to premultiplied format and saved to dstPixelmap.
+    // Convert the AlphaType. The data of srcPixelmap will be converted to premultiplied mode and saved to dstPixelmap.
     errCode = OH_PixelmapNative_ConvertAlphaFormat(srcPixelmap, dstPixelmap, true);
     if (errCode != IMAGE_SUCCESS) {
         OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_ConvertAlphaFormat failed, errCode: %{public}d.", errCode);

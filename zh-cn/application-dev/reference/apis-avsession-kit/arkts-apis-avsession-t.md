@@ -67,13 +67,13 @@ type AVCastControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPr
 
 type ExtraInfo = {[key: string]: Object;} 
 
-媒体提供方设置的自定义媒体数据包对象。
+媒体提供方设置的自定义媒体数据包对象。从API版本26.0.1开始，在座舱冷启动场景下，用于传递冷启动扩展信息。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 | 类型                                | 说明                          |
 | ----------------------------------- | ----------------------------- |
-|{[key: string]: Object;} | key为远端分布式事件类型。当前支持的事件类型包括：<br>AUDIO_GET_VOLUME：获取远端设备音量。<br>AUDIO_GET_AVAILABLE_DEVICES：获取远端所有可用设备。<br>AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO：获取远端实际发声设备。<br>媒体提供方根据不同的远端分布式事件类型，返回对应的媒体数据包对象。 |
+|{[key: string]: Object;} | key为远端分布式事件类型。当前支持的事件类型包括：<br>AUDIO_GET_VOLUME：获取远端设备音量。<br>AUDIO_GET_AVAILABLE_DEVICES：获取远端所有可用设备。<br>AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO：获取远端实际发声设备。<br>媒体提供方根据不同的远端分布式事件类型，返回对应的媒体数据包对象。<br>从API版本26.0.1开始，在座舱冷启动场景下，ExtraInfo支持以下字段：<br>controlCommand：控制命令，包括：'play'：播放。'playNext'：下一首。'playPrevious'：上一首。<br>isPlayList：是否使用PlayMusicList意图实现播放，1：是，其他值：否。 |
 
 ## KeyRequestCallback<sup>12+</sup>
 
@@ -175,3 +175,20 @@ type TwoParamCallback\<T, G\> = (data1: T, data2: G) => void
 |-------|----| ---- |------|
 | data1 | T  | 是   | 回调函数接收的第一个数据参数，具体类型和含义由调用方定义。 |
 | data2 | G  | 是   | 回调函数接收的第二个数据参数，具体类型和含义由调用方定义。 |
+
+## EventProcess
+
+type EventProcess = (event: string, args: Record\<string, Object>) => void
+
+定义处理事件和参数的通用函数类型。
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名   | 类型 | 必填 | 说明   |
+|-------|----| ---- |------|
+| event | string  | 是   | 请求事件。 |
+| args | Record\<string, Object>  | 是   | 与事件关联的参数。 |

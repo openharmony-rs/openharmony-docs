@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=b359cf9c5bc0da61c21bcdbb8a09eb4ca4b31ef4 translatedAt=2026-10-31T02:48:35.699Z pushedAt=2026-10-31T02:59:40.643Z nl=1 -->
 
 All the permissions in this topic are available to all applications and granted by the system.
 
@@ -751,6 +752,34 @@ With this permission, the application can improve handwriting performance, ensur
 
 **Since**: 26.0.0
 
+## ohos.permission.QUERY_PUBLIC_CLI_TOOL
+
+Allows an application to query available CLI tools.
+
+With this permission, third-party agent applications can access the Claw function.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1
+
+## ohos.permission.EXEC_PUBLIC_CLI_TOOL
+
+Allows an application to execute available CLI tools.
+
+With this permission, third-party agent applications can access the Claw function.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1
+
 ## ohos.permission.GET_ENTERPRISE_CONFIG
 
 Allows an application to obtain custom enterprise device management (EDM) configuration files.
@@ -792,3 +821,115 @@ With this permission, the application can access device-side model runtime manag
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.0
+
+## ohos.permission.REQUEST_LOCAL_ACCOUNT_AUTHORIZATION
+
+Allows an application to obtain authorization from the local account.
+
+With this permission, an application can call APIs to request local account authorization. A system authorization dialog will then prompt the user to complete local identity authentication. Upon successful authentication, the specified privileges will be granted, enabling the application to perform corresponding sensitive operations (such as network packet capture).
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars | TVs | wearables
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.ACCESS_CAR_SECURITY_PRIVACY
+
+Allows an application to access vehicle security and privacy service APIs.
+
+With this permission, the application can query vehicle privacy agreements or policies, driver-seat privacy mode, and trace removal status.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.HIMA_DATA_READ
+ 
+Allows an application to read data from the HIMA cloud.
+ 
+With this permission, the application can read vehicle-related data from the HIMA cloud.
+ 
+**Permission level**: normal
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+ 
+## ohos.permission.vehicle.HIMA_DATA_WRITE
+ 
+Allows an application to write data to the HIMA cloud.
+ 
+With this permission, the application can write vehicle-related data to the HIMA cloud.
+ 
+**Permission level**: normal
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+
+## ohos.permission.kernel.USB_CAPTURE
+
+Allows an application to capture USB data packets.
+
+With this permission, the application can capture USB packets only after being authenticated by the user.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1
+
+## ohos.permission.ACCESS_USER_PASSIVE_RECOGNITION
+
+Allows an application to identify whether the current user is the device owner.
+
+With this permission, the application can use the user passive recognition capability to identify whether the current user is the device owner and obtain information such as the user ID and authentication trust level.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
+
+**Since**: 26.0.1
+
+## ohos.permission.UPDATE_SCOPE_FONT
+
+Allows applications to manage application-level and session-level fonts.
+
+After obtaining this permission, applications can use the font management APIs to install, uninstall, and query application-level and session-level fonts, and register a font service status listener.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.0.1
+
+## ohos.permission.GET_STORAGE_VOLUME_INFO
+ 
+Allows an application to query basic storage device properties.
+ 
+With this permission, an application can query physical disk information (such as disk ID, device type, vendor ID, and product ID) and volume information (such as volume ID, mount status, capacity, mount path, and file system type) of external storage devices. It also allows querying hardware information (such as physical path, model, brand, media type, operational status, and capacity) of local system and data disks.
+ 
+**Permission level**: normal
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars | TVs
+ 
+**Valid since**: 26.0.1

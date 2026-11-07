@@ -10,6 +10,8 @@
   - [@ohos.security.cert (证书模块)](js-apis-cert.md)
   - [@ohos.security.certManager (证书管理模块)](js-apis-certManager.md)
   - [@ohos.security.certManagerDialog (证书管理对话框模块)](js-apis-certManagerDialog.md)
+  - [@ohos.security.UkeyAuthExtensionAbility (UKey认证扩展能力)](js-apis-UkeyAuthExtensionAbility.md)
+  - [@ohos.security.UkeyAuthExtensionContext (UKey认证扩展能力上下文)](js-apis-UkeyAuthExtensionContext.md)
   <!--Del-->
   - [@ohos.security.certManager (证书管理模块)(系统接口)](js-apis-certManager-sys.md)
   <!--DelEnd-->

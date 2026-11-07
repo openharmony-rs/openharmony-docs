@@ -6,10 +6,11 @@
 <!--Designer: @hwymlgitcode-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=265662c3f1bebcccc82375e5952ee48da32366a3 translatedAt=2026-10-28T12:15:57.048Z pushedAt=2026-10-28T12:31:27.187Z nl=1 -->
 
-## Overview
+## When to Use
 
-The serial port communication module (`@ohos.busManager.serial`) provides object-oriented serial port management capabilities. It supports functions such as obtaining the list of available serial ports, enabling or disabling serial ports, reading and writing data, controlling hardware signals, and configuring flow control. This module is applicable to scenarios where data needs to be exchanged through serial ports, such as industrial automation, Internet of Things (IoT) device interconnection, embedded device debugging, and GPS module communication.
+The serial communication module (`@ohos.busManager.serial`) provides object-oriented serial port management capabilities, including getting the list of available serial ports on a device, opening/closing serial ports, reading and writing data, hardware signal control (RTS/CTS, DTR/DSR), disconnect event listening, and flow control configuration. This module is suitable for scenarios that require data exchange through serial ports, such as industrial automation, IoT device interconnection, embedded device debugging, and GPS module communication.
 
 ## Basic Concepts
 
@@ -46,10 +47,11 @@ The core process of the serial port communication service is as follows:
 1. **Obtaining the serial port list**: The system enumerates the currently available serial port devices and returns the serial port object list.
 2. **Opening a serial port**: Select the target serial port, configure communication parameters such as the baud rate, data bit, parity bit, and stop bit, and open the serial port. When the serial port is opened for the first time, the system displays a dialog box to request user authorization. The serial port device can be accessed only after the user approves the authorization. If the user rejects the authorization, error code 35700007 is thrown.
 3. **Data transmission and reception**: Data is sent through the write interface, and data is received through the registered data callback listener.
-4. **Hardware signal control**: Hardware flow control and status detection are performed through signal lines such as RTS/CTS.
-5. **Disabling the serial port**: The serial port is disabled after the communication is complete to release resources.
+4. **Hardware signal control**: Perform hardware flow control and status detection through signal lines such as RTS/CTS and DTR/DSR.
+5. **Disconnect event listening**: Listen to disconnect events such as the unplugging of a USB virtual serial port by registering a disconnect event callback.
+6. **Close serial port**: Close the serial port after communication ends to release resources.
 
-**Figure 1** Data flow of serial port communication
+Serial communication data flow
 
 ``` txt
 Data written by the application layer → Sent by the serial port driver → Physical serial cable → Peer serial port device
@@ -80,7 +82,7 @@ Data read by the application layer ← Buffered by the serial port driver ← Ph
 ### Setting Up the Environment
 
 - Install [DevEco Studio](https://developer.huawei.com/consumer/en/download/deveco-studio) 6.1 or later on the PC.
-- Update public-SDK to API 26.0.0 or later <!--Del-->. For details about how to update the SDK, see [Update Guide](../../../tools/openharmony_sdk_upgrade_assistant.md)<!--DelEnd-->.
+- Update public-SDK to API 26.0.0 or later<!--Del-->. For details about how to update the SDK, see [Update Guide](../../../tools/openharmony-sdk-upgrade-assistant.md)<!--DelEnd-->.
 - Prepare a serial cable and connect the serial port of the OpenHarmony device to the serial port of the target device.
 
 ## Development Guide
@@ -102,6 +104,10 @@ The following table describes the main APIs for serial port communication.
 | [SerialPort.setRts](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#setrts)(enable: boolean): Promise&lt;void&gt; | Sets the status of the request to send (RTS) signal. This API uses a promise to return the result.|
 | [SerialPort.getCts](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#getcts)(): Promise&lt;boolean&gt; |  Obtains the status of the clear to send (CTS) signal. This API uses a promise to return the result.|
 | [SerialPort.sendBrk](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#sendbrk)(): Promise&lt;void&gt; | Sends a BRK signal. This API uses a promise to return the result.|
+| [SerialPort.setDtr](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#setdtr)(enable: boolean): Promise&lt;void&gt; | Sets the DTR (Data Terminal Ready) signal status. Uses a Promise for the asynchronous callback. |
+| [SerialPort.getDsr](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#getdsr)(): Promise&lt;boolean&gt; | Gets the DSR (Data Set Ready) signal status. Uses a Promise for the asynchronous callback. |
+| [SerialPort.onDisconnect](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#ondisconnect)(callback: Callback&lt;void&gt;): void | Listens to serial port disconnect events. Uses a callback for the asynchronous callback. |
+| [SerialPort.offDisconnect](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#offdisconnect)(callback?: Callback&lt;void&gt;): void | Stops listening to serial port disconnect events. |
 
 [SerialConfigs](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#serialconfigs) parameter description:
 
@@ -234,7 +240,7 @@ The following table describes the main APIs for serial port communication.
 
 7. Hardware signal control.
 
-   * Set the RTS signal to high level.
+   * Set the RTS signal to a high level.
 
      <!-- @[setRts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
@@ -252,7 +258,7 @@ The following table describes the main APIs for serial port communication.
      }
      ```
 
-   * Obtain the CTS signal status.
+   * Get the CTS signal status.
 
      <!-- @[getCts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
@@ -270,7 +276,7 @@ The following table describes the main APIs for serial port communication.
      }
      ```
 
-   * Send the break signal.
+   * Send a break signal.
 
      <!-- @[sendBrk](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
@@ -288,7 +294,64 @@ The following table describes the main APIs for serial port communication.
      }
      ```
 
-8. Deregister the callback for receiving data and close the serial port device.
+   * Set the DTR signal to a high level.
+
+     <!-- @[setDtr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+     
+     ``` TypeScript
+     try {
+       if (!this.port) {
+         console.error(`${TAG} No serial port found, please call getSerialPortList first`);
+         return;
+       }
+       await this.port.setDtr(true);
+       console.info(`${TAG} setDtr(true) success`);
+     } catch (err) {
+       const e = err as BusinessError;
+       console.error(`${TAG} setDtr failed, code: ${e.code}, message: ${e.message}`);
+     }
+     ```
+
+   * Get the DSR signal status.
+
+     <!-- @[getDsr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+     
+     ``` TypeScript
+     try {
+       if (!this.port) {
+         console.error(`${TAG} No serial port found, please call getSerialPortList first`);
+         return;
+       }
+       const dsrStatus = await this.port.getDsr();
+       console.info(`${TAG} getDsr success, DSR: ${dsrStatus}`);
+     } catch (err) {
+       const e = err as BusinessError;
+       console.error(`${TAG} getDsr failed, code: ${e.code}, message: ${e.message}`);
+     }
+     ```
+
+8. Listen to the serial port disconnect event.
+
+   <!-- @[onDisconnect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   try {
+     if (!this.port) {
+       console.error(`${TAG} No serial port found, please call getSerialPortList first`);
+       return;
+     }
+     this.disconnectedCallback = () => {
+       console.info(`${TAG} onDisconnect: serial port disconnected`);
+     };
+     this.port.onDisconnect(this.disconnectedCallback);
+     console.info(`${TAG} onDisconnect registered`);
+   } catch (err) {
+     const e = err as BusinessError;
+     console.error(`${TAG} onDisconnect failed, code: ${e.code}, message: ${e.message}`);
+   }
+   ```
+
+9. Unregister the data receive callback and close the serial port device.
 
    <!-- @[close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
@@ -313,4 +376,3 @@ The following table describes the main APIs for serial port communication.
 2. Run the preceding sample code on the OpenHarmony device.
 3. If the `success` log is returned, the related API is successfully called and the serial port communication capability of the device is normal. If the `failed` or `error` log is returned, the API fails to be called. In this case, check the hardware connection and parameter settings.
 4. You can perform a loopback test (short-circuit the TX and RX of the serial port) to check whether the self-sending and self-receiving function of the data is normal.
-<!--no_check-->

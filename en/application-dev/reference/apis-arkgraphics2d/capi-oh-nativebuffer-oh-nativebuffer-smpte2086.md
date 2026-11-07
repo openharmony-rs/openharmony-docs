@@ -1,17 +1,18 @@
 # OH_NativeBuffer_Smpte2086
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=1f370dd3425411b659f906071e53860b94f0e2f1 translatedAt=2026-11-04T10:34:43.196Z pushedAt=2026-11-04T10:36:03.380Z nl=1 -->
 
-```
-typedef struct {...} OH_NativeBuffer_Smpte2086
+```c
+typedef struct OH_NativeBuffer_Smpte2086 {...} OH_NativeBuffer_Smpte2086
 ```
 ## Overview
 
-This struct describes the SMPTE ST 2086 static metadata.
+Represents the SMPTE 2086 static metadata.
 
 **Since**: 12
 
@@ -31,3 +32,4 @@ This struct describes the SMPTE ST 2086 static metadata.
 | [OH_NativeBuffer_ColorXY](capi-oh-nativebuffer-oh-nativebuffer-colorxy.md) whitePoint | White point.        |
 | float maxLuminance                                           | Maximum luminance.|
 | float minLuminance                                           | Minimum luminance.|
+

@@ -5,7 +5,7 @@
 <!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=6e63a0e266900a11bfa74fe24b3b676187cc5558 translatedAt=2026-09-14T09:52:31.708Z pushedAt=2026-09-15T13:38:18.140Z -->
+<!-- md-trans-meta sourceCommit=909527a23ab82dfa7ed9b8b3ecf78e6361edbb8a translatedAt=2026-11-05T00:59:45.679Z pushedAt=2026-09-15T13:38:18.140Z nl=2 -->
 
 Starting from API version 23, apps can use AVSession Kit to obtain playback information of AVSessions and control playback actions such as play and pause, enabling unified playback control over audio and video apps in the system. This document describes the API capabilities and basic development process of the AVSession controller, including obtaining metadata and playback state information from AVSession providers, as well as sending commands and events to AVSession providers to control their playback, pause, and other actions.
 
@@ -38,7 +38,7 @@ The basic steps for an app to connect as an AVSession controller are as follows:
 
 2. Listen for AVSession creation, destruction, and changes to the currently active AVSession, and create the AVSessionController corresponding to the AVSession, so as to perform unified playback control over audio and video apps in the system.
 
-   <!-- @[getAVSessionDescriptorsInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) -->
+   <!-- @[getAVSessionDescriptorsInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) --> 
 
    ``` TypeScript
    import { avSession } from '@kit.AVSessionKit';
@@ -85,7 +85,7 @@ The basic steps for an app to connect as an AVSession controller are as follows:
          });
        } catch (error) {
          if (error) {
-           console.error(`avSession Error: Code: ${error.code}, message: ${error.message}`);
+           Log.error(TAG, `avSession Error: Code: ${error.code}, message: ${error.message}`);
          }
        }
      }
@@ -93,14 +93,14 @@ The basic steps for an app to connect as an AVSession controller are as follows:
 
 3. Obtain the current track and playback state delivered by the AVSession provider.
 
-   <!-- @[getControllerInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) -->
+   <!-- @[getControllerInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) --> 
 
    ``` TypeScript
    async getControllerInfo(): Promise<void> {
      // Obtain the session metadata.
      this.currentController?.getAVMetadata((error: BusinessError, metadata: avSession.AVMetadata) => {
        if (error) {
-         Log.info(TAG, 'Failed to get AV metadata, code: ' + error.code + ', message: ' + error.message);
+         Log.error(TAG, 'Failed to get AV metadata, code: ' + error.code + ', message: ' + error.message);
          return;
        }
        Log.info(TAG, 'Succeeded in getting AV metadata, assetId: ' + metadata.assetId);
@@ -112,7 +112,7 @@ The basic steps for an app to connect as an AVSession controller are as follows:
      // Obtain the playback state.
      this.currentController?.getAVPlaybackState((error: BusinessError, state: avSession.AVPlaybackState) => {
        if (error) {
-         Log.info(TAG, 'Failed to get AV playback state, code: ' + error.code + ', message: ' + error.message);
+         Log.error(TAG, 'Failed to get AV playback state, code: ' + error.code + ', message: ' + error.message);
          return;
        }
        Log.info(TAG, 'Succeeded in getting AV playback state.');
@@ -125,7 +125,7 @@ The basic steps for an app to connect as an AVSession controller are as follows:
 
 4. Listen for media information changes and other session events from the AVSession provider, so that the app can refresh the current track and playback state in a timely manner based on the callbacks.
 
-   <!-- @[listenControllerInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) -->
+   <!-- @[listenControllerInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) --> 
 
    ``` TypeScript
    async listenControllerInfo(): Promise<void> {
@@ -147,7 +147,7 @@ The basic steps for an app to connect as an AVSession controller are as follows:
        // ...
      } catch (error) {
        if (error) {
-         console.error(`listenControllerInfo Error: Code: ${error.code}, message: ${error.message}`);
+         Log.error(TAG, `listenControllerInfo Error: Code: ${error.code}, message: ${error.message}`);
        }
      }
    }
@@ -155,7 +155,7 @@ The basic steps for an app to connect as an AVSession controller are as follows:
 
 5. Obtain the valid commands supported by the session, so that the app can perceive the commands supported by the AVSession provider.
 
-   <!-- @[getAVSessionValidCommands](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) -->
+   <!-- @[getAVSessionValidCommands](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) --> 
 
    ``` TypeScript
    async getAVSessionValidCommands(): Promise<void> {
@@ -164,7 +164,7 @@ The basic steps for an app to connect as an AVSession controller are as follows:
        this.currentController?.getValidCommands((error: BusinessError,
          validCommands: avSession.AVControlCommandType[]) => {
          if (error) {
-           Log.info(TAG, 'Failed to get valid commands, code: ' + error.code + ', message: ' + error.message);
+           Log.error(TAG, 'Failed to get valid commands, code: ' + error.code + ', message: ' + error.message);
            return;
          }
          Log.info(TAG, 'Succeeded in getting valid commands, size: ' + validCommands.length);
@@ -178,7 +178,7 @@ The basic steps for an app to connect as an AVSession controller are as follows:
        });
      } catch (error) {
        if (error) {
-         console.error(`validCommand Error: Code: ${error.code}, message: ${error.message}`);
+         Log.error(TAG, `validCommand Error: Code: ${error.code}, message: ${error.message}`);
        }
      }
    }
@@ -249,7 +249,7 @@ The basic steps for an app to connect as an AVSession controller are as follows:
 
 7. When the AVSession exits, the AVSession controller must promptly cancel listening and release resources.
 
-   <!-- @[listenAVSessionDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) -->
+   <!-- @[listenAVSessionDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) --> 
 
    ``` TypeScript
    async listenAVSessionDestroy(): Promise<void> {
@@ -263,7 +263,7 @@ The basic steps for an app to connect as an AVSession controller are as follows:
        });
      } catch (error) {
        if (error) {
-         console.error(`destroy Error: Code: ${error.code}, message: ${error.message}`);
+         Log.error(TAG, `destroy Error: Code: ${error.code}, message: ${error.message}`);
        }
      }
    }

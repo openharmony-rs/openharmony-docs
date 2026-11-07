@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:22:46.248Z pushedAt=2026-06-12T07:40:52.569Z -->
+<!-- md-trans-meta sourceCommit=1a59b01eb09cbde916aad8893b634e85d3707880 translatedAt=2026-11-04T04:39:45.098Z pushedAt=2026-11-04T08:04:44.690Z nl=1 -->
 
 The **inputEvent** module provides the basic events reported by the device.
 

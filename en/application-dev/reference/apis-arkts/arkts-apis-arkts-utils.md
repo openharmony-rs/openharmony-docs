@@ -1,16 +1,17 @@
 # Module Description
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=31ba07988632b6f2ed98a078bdae886436926502 translatedAt=2026-11-04T10:37:34.515Z pushedAt=2026-11-04T10:39:32.421Z nl=1 -->
 
 This module provides the following ArkTS utilities:
 
 - [ArkTSUtils.locks](arkts-apis-arkts-utils-locks.md): asynchronous lock.
 - [ArkTSUtils.ASON](arkts-apis-arkts-utils-ASON.md): ASON.
-- [SendableLruCache](arkts-apis-arkts-utils-SendableLruCache.md): SendableLruCache buffer.
+- [ArkTSUtils.SendableLruCache](arkts-apis-arkts-utils-SendableLruCache.md): SendableLruCache cache. 
 
 
 >
@@ -23,5 +24,5 @@ This module provides the following ArkTS utilities:
 ## Modules to Import
 
 ```ts
-import { ArkTSUtils } from '@kit.ArkTS'
+import { ArkTSUtils } from '@kit.ArkTS';
 ```

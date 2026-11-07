@@ -1,8 +1,8 @@
 # @ohos.file.cloudSyncManager (端云同步管理能力)(系统接口)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @Hermits; @reminder2352-->
-<!--Designer: @oh_create_jiawei-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @reminder2352-->
 <!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
@@ -510,8 +510,6 @@ cloudSyncManager.disableCloud(accountId, (err: BusinessError) => {
 清理本地云相关数据时的Action，为枚举类型。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
-
-**系统能力**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
 | 名称 |  值|  说明 |
 | ----- |  ---- |  ---- |

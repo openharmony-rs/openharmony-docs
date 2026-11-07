@@ -1,10 +1,11 @@
 # Multithreaded Operations with Custom Native Sendable Objects
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @huanghello-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=57b7b329f3b5c5d9978489bcd766a9d7a36f312c translatedAt=2026-11-04T09:26:28.477Z pushedAt=2026-11-04T09:36:55.484Z nl=1 -->
 
 ArkTS supports custom native Sendable objects, which provide efficient inter-thread communication through pass-by-reference. This is particularly valuable for scenarios requiring inter-thread communication of large custom objects, such as when a child thread retrieves database data and returns it to the host thread.
 
@@ -12,7 +13,7 @@ The following demonstrates how to implement shared data access across concurrent
 
 1. Customize a Sendable class in the interface declaration.
 
-   <!-- @[export_myObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/cpp/types/libentry/Index.d.ets) -->  
+   <!-- @[export_myObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/cpp/types/libentry/Index.d.ets) -->
    
    ``` TypeScript
    // Index.d.ets
@@ -50,16 +51,29 @@ The following demonstrates how to implement shared data access across concurrent
     target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
     ```
 
+   Modify the configuration file oh-package.json5 in the same directory as Index.d.ets as follows:
+
+   <!-- @[define_libentry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/cpp/types/libentry/oh-package.json5) -->    
+   
+   ``` JSON5
+   {
+     "name": "libentry.so",
+     "types": "./Index.d.ets",
+     "version": "1.0.0",
+     "description": "Please describe the basic information."
+   }
+   ```
+
 3. Implement the features in native code, such as obtaining values, setting values, and incrementing values.
 
-   <!-- @[init_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/cpp/napi_init.cpp) -->  
+   <!-- @[init_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    // napi_init.cpp
    #include "napi/native_api.h"
    #include "hilog/log.h"
    
-   // A native class. Its instance is wrapped in an ArkTS Sendable object.
+   // A native class whose instances will be wrapped in an ArkTS Sendable object below.
    class MyObject {
    public:
        static napi_value Init(napi_env env, napi_value exports);
@@ -87,7 +101,10 @@ The following demonstrates how to implement shared data access across concurrent
    void MyObject::Destructor(napi_env env, void *nativeObject, [[maybe_unused]] void *finalizeHint)
    {
        OH_LOG_INFO(LOG_APP, "MyObject::Destructor called");
-       reinterpret_cast<MyObject *>(nativeObject)->~MyObject();
+       MyObject *obj = reinterpret_cast<MyObject *>(nativeObject);
+       if (obj != nullptr) {
+           delete obj;
+       }
    }
    
    // Bind the ArkTS Sendable object to a C++ object within a constructor.
@@ -98,7 +115,7 @@ The following demonstrates how to implement shared data access across concurrent
        napi_value newTarget;
        napi_get_new_target(env, info, &newTarget);
        if (newTarget != nullptr) {
-           // Use the call mode new MyObject(...).
+           // Use the `new MyObject(...)` call style.
            size_t argc = 1;
            napi_value args[1];
            napi_value jsThis;
@@ -114,12 +131,12 @@ The following demonstrates how to implement shared data access across concurrent
            MyObject *obj = new MyObject(value);
    
            obj->env_ = env;
-           // Use napi_wrap_sendable to bind the ArkTS Sendable object jsThis to the C++ object obj.
+           // Bind the ArkTS Sendable object jsThis to the C++ object obj through napi_wrap_sendable.
            napi_wrap_sendable(env, jsThis, reinterpret_cast<void *>(obj), MyObject::Destructor, nullptr);
    
            return jsThis;
        } else {
-           // Use the call mode MyObject(...).
+           // Use the `MyObject(...)` call style.
            size_t argc = 1;
            napi_value args[1];
            napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -169,7 +186,7 @@ The following demonstrates how to implement shared data access across concurrent
        return nullptr;
    }
    
-   // Increase the value of the native object by 1.
+   // Add 1 to the value of the native object.
    napi_value MyObject::PlusOne(napi_env env, napi_callback_info info)
    {
        OH_LOG_INFO(LOG_APP, "MyObject::PlusOne called");
@@ -200,7 +217,7 @@ The following demonstrates how to implement shared data access across concurrent
        // Define a Sendable class MyObject.
        napi_define_sendable_class(env, "MyObject", NAPI_AUTO_LENGTH, New, nullptr,
                                   sizeof(properties) / sizeof(properties[0]), properties, nullptr, &cons);
-   
+       // &g_ref shares the same lifecycle as the module.
        napi_create_reference(env, cons, 1, &g_ref);
        // Mount the MyObject class to the exports object.
        napi_set_named_property(env, exports, "MyObject", cons);
@@ -208,7 +225,7 @@ The following demonstrates how to implement shared data access across concurrent
    }
    
    EXTERN_C_START
-   // Initialize the module.
+   // Module initialization.
    static napi_value Init(napi_env env, napi_value exports)
    {
        MyObject::Init(env, exports);
@@ -216,7 +233,7 @@ The following demonstrates how to implement shared data access across concurrent
    }
    EXTERN_C_END
    
-   // Information about the module. Record information such as the Init() function and module name.
+   // Prepare the module loading information and record the Init function above together with the module name and other information.
    static napi_module nativeModule = {
        .nm_version = 1,
        .nm_flags = 0,
@@ -227,13 +244,13 @@ The following demonstrates how to implement shared data access across concurrent
        .reserved = {0},
    };
    
-   // This function is automatically called when the.so file is loaded to register the nativeModule module with the system.
+   // When the .so is loaded, this function is automatically called to register the nativeModule above with the system.
    extern "C" __attribute__((constructor)) void RegisterObjectWrapModule() { napi_module_register(&nativeModule); }
    ```
 
 4. On the ArkTS side, define a Sendable instance in the UI main thread and pass it to the TaskPool child thread. The child thread processes the data and returns the data to the UI main thread, which can continue to access the Sendable instance.
 
-   <!-- @[load_nativeSendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/ets/pages/Index.ets) -->    
+   <!-- @[load_nativeSendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // Index.ets
@@ -244,7 +261,7 @@ The following demonstrates how to implement shared data access across concurrent
    async function sum(object: MyObject) {
      object.value = 2000;
      let num = object.plusOne();
-     console.info('taskpool thread num is ' + num); // Log output: taskpool thread num is 2001.
+     console.info('taskpool thread num is ' + num); // Log output: taskpool thread num is 2001
      return num;
    }
    
@@ -259,15 +276,15 @@ The following demonstrates how to implement shared data access across concurrent
            Button(this.message)
              .fontSize($r('app.float.page_text_font_size'))
              .fontWeight(FontWeight.Bold)
-             .onClick( async () => {
-               let object : MyObject = new MyObject(0);
+             .onClick(async () => {
+               let object: MyObject = new MyObject(0);
                object.value = 1023;
                let num = object.plusOne();
-               console.info('host thread num1 is ' + num); // Log output: host thread num1 is 1024.
+               console.info('host thread num1 is ' + num); // Log output: host thread num1 is 1024
                let task = new taskpool.Task(sum, object);
                let result = await taskpool.execute(task);
-               console.info('host thread result is ' + result); // Log output: host thread result is 2001.
-               console.info('host thread num2 is ' + object.value); // Log output: host thread num2 is 2001.
+               console.info('host thread result is ' + result); // Log output: host thread result is 2001
+               console.info('host thread num2 is ' + object.value); // Log output: host thread num2 is 2001
                this.message = 'host thread num2 is ' + object.value;
              })
          }
@@ -275,18 +292,5 @@ The following demonstrates how to implement shared data access across concurrent
        }
        .height('100%')
      }
-   }
-   ```
-
-5. Modify the **oh-package.json5** file in the same directory as the **Index.d.ets** file. The configuration is as follows:
-
-   <!-- @[define_libentry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/cpp/types/libentry/oh-package.json5) -->    
-   
-   ``` JSON5
-   {
-     "name": "libentry.so",
-     "types": "./Index.d.ets",
-     "version": "1.0.0",
-     "description": "Please describe the basic information."
    }
    ```

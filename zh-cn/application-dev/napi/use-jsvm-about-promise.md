@@ -89,7 +89,7 @@ JSVM OH_JSVM_IsPromise success:0
 
 ### OH_JSVM_CreatePromise
 
-OH_JSVM_CreatePromise用于创建一个Promise对象。
+OH_JSVM_CreatePromise用于创建一个Promise对象。代码示例见[下一节](#oh_jsvm_resolvedeferred--oh_jsvm_rejectdeferred)。
 
 ### OH_JSVM_ResolveDeferred & OH_JSVM_RejectDeferred
 

@@ -23,3 +23,8 @@
 | [native_avmetadata.h](capi-native-avmetadata-h.md) | 提供媒体元数据的定义。 |
 | [native_avsession.h](capi-native-avsession-h.md) | 提供媒体会话定义，用于设置元数据和播放状态信息。 |
 | [native_avsession_errors.h](capi-native-avsession-errors-h.md) | 提供媒体会话错误码的定义。 |
+| [native_avcastcontroller.h](capi-native-avcastcontroller-h.md) | 提供播控控制器的定义。 |
+| [native_avplaybackstate.h](capi-native-avplaybackstate-h.md) | 提供播放状态的定义。 |
+| [native_avqueueitem.h](capi-native-avqueueitem-h.md) | 提供音视频队列元素的定义。 |
+| [native_avsession_base.h](capi-native-avsession-base-h.md) | 声明AVSession基本信息。|
+| [native_deviceinfo.h](capi-native-deviceinfo-h.md) | 提供播控设备信息的定义。 |

@@ -60,7 +60,7 @@ FileManagement_ErrCode OH_Environment_GetUserDownloadDir(char **result)
 
 | 类型 | 说明 |
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。 |
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。<br>ERR_INVALID_PARAMETER 401 - Invalid input parameter, pointer is null. <br>ERR_DEVICE_NOT_SUPPORTED 801 - Device not supported. <br>ERR_ENOMEM 13900011 - Failed to apply for memory. |
 
 ### OH_Environment_GetUserDesktopDir()
 
@@ -85,7 +85,7 @@ FileManagement_ErrCode OH_Environment_GetUserDesktopDir(char **result)
 
 | 类型 | 说明 |
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。 |
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。 <br>ERR_INVALID_PARAMETER 401 - Invalid input parameter, pointer is null. <br>ERR_DEVICE_NOT_SUPPORTED 801 - Device not supported. <br>ERR_ENOMEM 13900011 - Failed to apply for memory. |
 
 ### OH_Environment_GetUserDocumentDir()
 
@@ -110,6 +110,6 @@ FileManagement_ErrCode OH_Environment_GetUserDocumentDir(char **result)
 
 | 类型 | 说明 |
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。 |
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。 <br>ERR_INVALID_PARAMETER 401 - Invalid input parameter, pointer is null. <br>ERR_DEVICE_NOT_SUPPORTED 801 - Device not supported. <br>ERR_ENOMEM 13900011 - Failed to apply for memory. |
 
 

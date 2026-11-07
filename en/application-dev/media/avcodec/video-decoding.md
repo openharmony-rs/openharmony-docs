@@ -6,7 +6,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b9c98a219f801ec4122d94457486779ae7ed9ac3 translatedAt=2026-08-22T07:43:56.018Z pushedAt=2026-08-22T07:49:14.376Z -->
+<!-- md-trans-meta sourceCommit=0640a98c9000e8f3a4c820149c95a6ae567dd89e translatedAt=2026-11-05T00:59:45.677Z pushedAt=2026-08-22T07:49:14.376Z nl=2 -->
 
 Video decoding is a core process in multimedia processing. It decodes compressed video bitstreams into raw pixel data. Video decoding supports synchronous mode and asynchronous mode. The main difference between the two modes lies in whether buffers are obtained synchronously or asynchronously. You can choose the API calling mode that best suits your service requirements.
 
@@ -184,7 +184,7 @@ The sample code provided in this section adheres to the C++17 standard and is fo
     // Video frame height.
     int32_t height = 240;
     // Video pixel format.
-     OH_AVPixelFormat pixelFormat = AV_PIXEL_FORMAT_NV12;
+    OH_AVPixelFormat pixelFormat = AV_PIXEL_FORMAT_NV12;
     // Video width stride.
     int32_t widthStride = 0;
     // Video height stride.
@@ -415,7 +415,7 @@ The following walks you through how to implement the entire video decoding proce
     target_link_libraries(sample PUBLIC libnative_window.so)
     ```
 
-    6.1.1 On ArkTS, call **getXComponentSurfaceId** of the xComponentController to obtain the surface ID of the XComponent. For details about the operation, see [Custom Rendering (XComponent)](../../ui/napi-xcomponent-guidelines.md).
+    6.1.1 On ArkTS, call **getXComponentSurfaceId()** of the xComponentController to obtain the surface ID of the XComponent. For details about the operation, see [Custom Rendering (XComponent)](../../ui/napi-xcomponent-guidelines.md).
 
     6.1.2 On the native side, call **OH_NativeWindow_CreateNativeWindowFromSurfaceId** to create a NativeWindow instance.
 

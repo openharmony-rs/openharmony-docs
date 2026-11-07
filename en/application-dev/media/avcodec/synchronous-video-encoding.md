@@ -6,7 +6,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=2eab51f6f5a0a91e0b8056a648ea2a5096fd1f21 translatedAt=2026-09-28T02:37:42.498Z pushedAt=2026-09-29T10:26:23.781Z -->
+<!-- md-trans-meta sourceCommit=0640a98c9000e8f3a4c820149c95a6ae567dd89e translatedAt=2026-11-05T00:59:45.676Z pushedAt=2026-09-29T10:26:23.781Z nl=2 -->
 
 Starting from API version 20, video encoding in synchronous mode is supported.
 
@@ -211,7 +211,7 @@ The following walks you through how to implement the entire video encoding proce
                    return false;
                }
                if (info.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-                   outputDone = 1;
+                   outputDone = true;
                }
 
                // Write the encoded frame data (specified by buffer) to the output file.
@@ -518,7 +518,7 @@ The following walks you through how to implement the entire video encoding proce
                     return false;
                 }
                 if (inputFile->eof()) {
-                    inputDone = 1;
+                    inputDone = true;
                 }
                 break;
             }
@@ -574,7 +574,7 @@ The following walks you through how to implement the entire video encoding proce
                     outputFile->write(reinterpret_cast<char *>(addr), info.size);
                 }
                 if (info.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-                    outputDone = 1;
+                    outputDone = true;
                 }
                 // Free the output buffer. index is the index of the buffer.
                 OH_AVErrCode freeOutputRet = OH_VideoEncoder_FreeOutputBuffer(videoEnc, index);

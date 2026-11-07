@@ -85,7 +85,7 @@ taihec -G modobj-ipc -O example/generated example/Easy.ohidl
 | 注解                             | 作用范围   |说明                                    | 示例                               |                   
 | :---                             | :---       | :---                                  | :---                               |                     
 | `@main_service(version="x.y.z")` | interface     | 有且仅能声明一个主服务接口，生成的Stub作为[OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFunc](../reference/apis-ability-kit/capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_onconnectfunc)的返回值。  | @main_service(version="1.0.0")    |
-| `@callback` | 方法 | 用于声明一个回调接口。服务端可持有此接口的实例来调用客户端，相关逻辑会在客户端的线程中执行。典型使用场景：客户端向服务端注册监听器、服务端主动通知客户端事件。完整开发流程参见[示例文件说明](#示例文件说明)中的ITestEventCallback示例。 | @callback interface ICallback {} |
+| `@callback` | interface | 用于声明一个回调接口。服务端可持有此接口的实例来调用客户端，相关逻辑会在客户端的线程中执行。典型使用场景：客户端向服务端注册监听器、服务端主动通知客户端事件。完整开发流程参见[示例文件说明](#示例文件说明)中的ITestEventCallback示例。 | @callback interface ICallback {} |
 | `@oneway`                        | 方法       | 异步单向IPC调用，仅支持void类型返回值。       | @oneway Notify(...): void;        |
 | `@!namespace("A","B")`           | ohidl文件   | 设置生成代码所在的命名空间，以及IPC接口描述符字符串前缀。 | @!namespace("OHOS","NativeApp")   |
 | `@size(N)`                       | 参数       | 定长数组的大小，仅供Array类型参数使用。  | @size(4) Array\<i32\>; |

@@ -6,7 +6,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=2eab51f6f5a0a91e0b8056a648ea2a5096fd1f21 translatedAt=2026-09-28T02:37:43.565Z pushedAt=2026-09-29T07:27:17.497Z -->
+<!-- md-trans-meta sourceCommit=0640a98c9000e8f3a4c820149c95a6ae567dd89e translatedAt=2026-11-05T00:59:45.671Z pushedAt=2026-09-29T07:27:17.497Z nl=2 -->
 
 You can call native APIs to demultiplex media data. The demultiplexing involves extracting media samples such as audio, video, and subtitles from bit stream data, and obtaining information related to Digital Rights Management (DRM).
 
@@ -96,7 +96,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
    // (Optional) Create a source resource instance for the custom data source. Before the operation, you must implement AVSourceReadAt.
    // Add g_filePath when OH_AVSource_CreateWithDataSource is used.
-   // g_filePath = filePath ;
+   // g_filePath = filePath;
    // OH_AVDataSource dataSource = {fileSize, AVSourceReadAt};
    // OH_AVSource *source = OH_AVSource_CreateWithDataSource(&dataSource);
    ```

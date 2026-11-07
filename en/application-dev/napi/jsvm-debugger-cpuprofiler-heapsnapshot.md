@@ -6,7 +6,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=f34ddda28f1bcebae0ddfbd293a9ffe8cb2789f9 translatedAt=2026-08-12T06:25:30.419Z pushedAt=2026-08-12T08:44:57.333Z -->
+<!-- md-trans-meta sourceCommit=7d9ce201efa894024f69109a8bec89b278e1456d translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 JavaScript virtual machine (JSVM) is a standard JavaScript (JS) code execution engine that strictly complies with the ECMAScript specification. For details, see [JSVM](../reference/common/capi-jsvm.md).
 
@@ -200,7 +200,7 @@ It is recommended to use the **chrome://inspect/#devices** page of the Chrome br
 
 1. On Google Chrome, enter **chrome://inspect/#devices** in the address box and press **Enter**. On the page displayed, select the following options:
 
-   <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_1.png"/></div>
+   ![Chrome inspect devices page](figures/jsvm-debugger-cpuprofiler-heapsnapshot_1.png)
 
 2. Run **hdc fport** [*Port number on the developer's PC*] [*Port number on a device*] to forward a port. 
 
@@ -208,15 +208,15 @@ It is recommended to use the **chrome://inspect/#devices** page of the Chrome br
 
 3. Click **Port forwarding**, enter the port number on the PC in the left text box and the port number on the device in the right text box, and click **Done**, as shown in the figure below.
 
-   <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_2.png"/></div>
+   ![Port forwarding settings](figures/jsvm-debugger-cpuprofiler-heapsnapshot_2.png)
 
 4. Click **Configure**, enter the port number on the PC, for example, **localhost:9227**, and click **Done**, as shown in the figure below.
 
-   <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_3.png"/></div>
+   ![Configure settings](figures/jsvm-debugger-cpuprofiler-heapsnapshot_3.png)
 
 5. Wait until the debugging content is displayed under **Target**, and click **inspect** to start debugging, as shown in the figure below.
 
-   <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_4.png"/></div>
+   ![inspect debugging entry](figures/jsvm-debugger-cpuprofiler-heapsnapshot_4.png)
 
 ### Using WebSocket Port
 
@@ -362,10 +362,10 @@ const char *srcCallNative = R"JS(runScriptWithStatistics();)JS";
 
 Expected result:
 
-```ts
+```txt
 Generate the following three files on the HarmonyOS device for subsequent performance tuning:
 heap-snapshot-begin.heapsnapshot
-heap-snapshot-end.heapsnapshot,
+heap-snapshot-end.heapsnapshot
 cpu-profile.cpuprofile
 For file features, see API usage.
 ```

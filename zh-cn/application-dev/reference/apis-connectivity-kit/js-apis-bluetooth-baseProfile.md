@@ -135,7 +135,9 @@ getConnectionState(deviceId: string): ProfileConnectionState
 
 获取和对端设备间Profile的连接状态。例如，在蓝牙应用中判断设备是否已连接，以决定是否可以发起数据传输或更新设备连接状态显示。
 
-- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取Profile连接状态。
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取A2DP Profile连接状态。
+- 从API版本26.0.0开始，此接口支持使用对端设备的实际MAC地址获取HFP、PAN Profile的连接状态。
+- 不同Profile对实际MAC地址的支持起始版本不同，请按需使用。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 

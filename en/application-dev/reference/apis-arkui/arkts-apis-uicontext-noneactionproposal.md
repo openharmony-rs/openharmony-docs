@@ -1,12 +1,11 @@
 # Class (NoneActionProposal)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1679aa2b39603a323ce91f1907155d8cbd2b330b translatedAt=2026-08-11T01:52:51.111Z pushedAt=2026-08-11T06:04:55.083Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-10-29T09:10:16.071Z pushedAt=2026-10-30T03:20:50.722Z nl=1 -->
 
 Smart gesture no-action handling. When dynamically customizing smart gesture behavior through the [registerMonitor](./arkts-apis-uicontext-smartgesturecontroller.md#registermonitor) API, setting **selectedProposal** of the return value [Class (GestureHandlingResolution)](./arkts-apis-uicontext-gesturehandlingresolution.md) to an object of this type will not trigger any action.
 
@@ -28,7 +27,7 @@ Constructor of smart gesture no-action handling.
 
 **Example**
 
-This example implements customizing the smart gesture action handling to smart gesture no-action handling in the smart gesture listening callback. For the complete example, see [Example 1 (Enabling Smart Gestures and Customizing Action Handling)](./arkts-apis-uicontext-smartgesturecontroller.md#example-1-enabling-smart-gestures-and-customizing-action-handling).
+This example implements customizing the smart gesture action handling to smart gesture no-action handling in the smart gesture listening callback. For the complete example, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](./arkts-apis-uicontext-smartgesturecontroller.md#example-1-enabling-smart-gestures-and-customizing-action-handling).
 
 ```ts
 import {

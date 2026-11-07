@@ -1,7 +1,7 @@
 # Print_Resolution
  <!--Kit: Basic Services Kit-->
  <!--Subsystem: Print-->
- <!--Owner: @guoshengbang-->
+ <!--Owner: @Zouhaifeng1-->
  <!--Designer: @baozewei-->
  <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
@@ -12,7 +12,7 @@ typedef struct {...} Print_Resolution
 
 ## 概述
 
-Print_Resolution用于表示以 dpi 为单位的打印分辨率，可控制打印输出的精细度与质量。
+Print_Resolution用于表示以dpi为单位的打印分辨率，可控制打印输出的精细度与质量。
 
 **起始版本：** 12
 
@@ -26,5 +26,5 @@ Print_Resolution用于表示以 dpi 为单位的打印分辨率，可控制打�
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t horizontalDpi | 水平方向的打印分辨率，单位为 dpi。 |
-| uint32_t verticalDpi | 垂直方向的打印分辨率，单位为 dpi。 |
+| uint32_t horizontalDpi | 水平方向的打印分辨率，单位为dpi。 |
+| uint32_t verticalDpi | 垂直方向的打印分辨率，单位为dpi。 |

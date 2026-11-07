@@ -6,7 +6,7 @@
 <!--Designer: @yaozhupeng-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=ba3f6c99832577d149cf0c227912c266e5256745 translatedAt=2026-08-11T01:46:05.276Z pushedAt=2026-08-11T07:48:24.066Z -->
+<!-- md-trans-meta sourceCommit=8237b3ce2f52b25ad481c3dd8ddab13d041379ad translatedAt=2026-11-05T06:16:33.954Z pushedAt=2026-08-11T07:48:24.066Z nl=1 -->
 
 > **NOTE**
 >
@@ -65,7 +65,7 @@ Obtain the JS resource object from the **hello.cpp** file and convert it to a na
     ```c++
     napi_value CreatePixelMapTest(napi_env env, napi_callback_info info) {
         const int32_t PIXEL_FORMAT_BGRA_8888 = 4;
- 	    const uint32_t ALPHA_TYPE_UNKNOWN = 0;
+        const uint32_t ALPHA_TYPE_UNKNOWN = 0;
 
         napi_value udfVar = nullptr;
         napi_value pixelMap = nullptr;
@@ -180,8 +180,8 @@ Obtain the JS resource object from the **hello.cpp** file and convert it to a na
         OH_PixelMap_Scale(native, scaleX, scaleY);
 
         // Translate the image.
-        // translateX: Offset downward by 50 pixels.
-        // translateY: Offset rightward by 50 pixels.
+        // translateX: Translate rightward by 50 pixels.
+        // translateY: Translate downward by 50 pixels.
         float translateX = 50;
         float translateY = 50;
         OH_PixelMap_Translate(native, translateX, translateY);

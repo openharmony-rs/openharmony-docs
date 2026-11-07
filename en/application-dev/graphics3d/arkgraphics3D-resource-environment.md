@@ -5,7 +5,7 @@
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=c13d9575d4aa298d3ecd2c86e7d6822ce4e7d811 translatedAt=2026-09-20T06:44:53.592Z pushedAt=2026-09-20T08:14:40.508Z -->
+<!-- md-trans-meta sourceCommit=e5521e4e68d4358f2c99dbebfb237c12bb0173c0 translatedAt=2026-11-05T01:00:48.370Z pushedAt=2026-09-20T08:14:40.508Z nl=2 -->
 
 Environment: used to define the background of a 3D scene and can be created based on images. It maps an environment map onto a cube or sphere surface (such as equirectangular projection) to simulate a real-world environment background. It also provides Image-Based Lighting (IBL), which affects the ambient lighting of objects through indirect diffuse reflection and other methods, making objects blend into the scene more naturally and improving rendering realism.
 

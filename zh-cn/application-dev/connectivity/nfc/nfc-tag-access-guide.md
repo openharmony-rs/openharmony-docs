@@ -186,7 +186,7 @@ async function readerModeCb(error: BusinessError, tagInfo: tag.TagInfo) {
       return;
     }
   } else {
-    hilog.info(0x0000, 'testTag', 'readerModeCb readerModeCb error %{public}s', JSON.stringify(error));
+    hilog.error(0x0000, 'testTag', 'readerModeCb readerModeCb error %{public}s', JSON.stringify(error));
   }
 }
 
@@ -243,7 +243,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ### 后台读取标签
-1. 在module.json5文件中声明NFC标签读取的权限，声明NFC标签特定的action，以及声明本应用程序的能够处理的NFC标签技术类型。
+1. 在module.json5文件中声明NFC标签读取的权限，声明NFC标签特定的action，以及声明本应用程序能够处理的NFC标签技术类型。
 2. import需要的tag模块和其他相关的模块。
 3. 获取特定技术类型的NFC标签对象。
 4. 执行读写接口完成标签数据的读取或写入数据到标签。

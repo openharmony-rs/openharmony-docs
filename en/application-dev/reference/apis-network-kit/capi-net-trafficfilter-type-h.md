@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=f5856b06cdc9b56d1c56ad7c6b2cf512309f3b8e translatedAt=2026-08-14T10:24:12.231Z pushedAt=2026-08-17T08:57:35.004Z -->
+<!-- md-trans-meta sourceCommit=a95ecad3c50b68f98285a59d286e46aa2c99b901 translatedAt=2026-11-04T06:29:01.825Z pushedAt=2026-11-04T08:04:44.840Z nl=1 -->
 
 ## Overview
 
@@ -41,6 +41,13 @@ Declares the common types and error codes required for network traffic filtering
 | [OH_TrafficFilter_ProcessInfo](capi-trafficfilter-oh-trafficfilter-processinfo.md) | OH_TrafficFilter_ProcessInfo | Process information struct. Stores the process information returned by [OH_TrafficFilter_QueryProcess](capi-net-trafficfilter-h.md#oh_trafficfilter_queryprocess). Initialization rule: before calling [OH_TrafficFilter_QueryProcess](capi-net-trafficfilter-h.md#oh_trafficfilter_queryprocess), the caller must zero the struct (for example, using **memset**), and then set [size](capi-trafficfilter-oh-trafficfilter-processinfo.md#member-variables) to the actual size of the caller-allocated struct, usually **sizeof(OH_TrafficFilter_ProcessInfo)**. Binary compatibility rule (ABI, that is, application binary interface, to ensure code compiled with old and new versions can recognize each other's struct layout): the system uses [size](capi-trafficfilter-oh-trafficfilter-processinfo.md#member-variables) to determine which output fields can be safely written. Only fields fully covered by [size](capi-trafficfilter-oh-trafficfilter-processinfo.md#member-variables) will be written by the system. If [size](capi-trafficfilter-oh-trafficfilter-processinfo.md#member-variables) is smaller than the minimum size required to read the [size](capi-trafficfilter-oh-trafficfilter-processinfo.md#member-variables) field itself, the interface returns [OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode). If [size](capi-trafficfilter-oh-trafficfilter-processinfo.md#member-variables) is larger than the size known to the system, extra fields will be ignored. Output validity rule: when [OH_TrafficFilter_QueryProcess](capi-net-trafficfilter-h.md#oh_trafficfilter_queryprocess) returns [OH_TRAFFICFILTER_OK](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode), the fields covered by [size](capi-trafficfilter-oh-trafficfilter-processinfo.md#member-variables) contain valid output values. When the interface returns an error, the caller should not rely on the values of output fields other than [size](capi-trafficfilter-oh-trafficfilter-processinfo.md#member-variables). |
 | [OH_TrafficFilter_RedirectRule](capi-trafficfilter-oh-trafficfilter-redirectrule.md) | OH_TrafficFilter_RedirectRule | Traffic redirection rule. Defines a TCP traffic redirection rule that redirects matching traffic to a specified proxy server. Initialization rule: before calling [OH_TrafficFilter_AddRedirectRule](capi-net-trafficfilter-h.md#oh_trafficfilter_addredirectrule), the caller must zero the struct (for example, using memset), and then set [size](capi-trafficfilter-oh-trafficfilter-redirectrule.md#member-variables) to the actual size of the caller-allocated struct, usually **sizeof(OH_TrafficFilter_RedirectRule)**. Binary compatibility rule (ABI, that is, application binary interface, to ensure code compiled with old and new versions can recognize each other's struct layout): the system uses [size](capi-trafficfilter-oh-trafficfilter-redirectrule.md#member-variables) to determine which fields can be safely read. If [size](capi-trafficfilter-oh-trafficfilter-redirectrule.md#member-variables) is smaller than the minimum size required by the current interface, the interface returns [OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode). If [size](capi-trafficfilter-oh-trafficfilter-redirectrule.md#member-variables) is larger than the size known to the system, extra fields will be ignored. Failure rule: if [OH_TrafficFilter_AddRedirectRule](capi-net-trafficfilter-h.md#oh_trafficfilter_addredirectrule) returns an error, it is not guaranteed that the rule has been added or taken effect. The caller should check the return value before assuming the rule is in effect. |
 | [OH_TrafficFilter_Redirector](capi-trafficfilter-oh-trafficfilter-redirector.md) | OH_TrafficFilter_Redirector | Traffic redirector. |
+| [OH_TrafficFilter_MACMatch](capi-trafficfilter-oh-trafficfilter-macmatch.md) | OH_TrafficFilter_MACMatch | Defines the MAC address matching condition. |
+| [OH_TrafficFilter_TCPFlagsMatch](capi-trafficfilter-oh-trafficfilter-tcpflagsmatch.md) | OH_TrafficFilter_TCPFlagsMatch | Defines the TCP flags matching condition. |
+| [OH_TrafficFilter_ConntrackMatch](capi-trafficfilter-oh-trafficfilter-conntrackmatch.md) | OH_TrafficFilter_ConntrackMatch | Defines the connection tracking (conntrack) matching condition. |
+| [OH_TrafficFilter_Config](capi-trafficfilter-oh-trafficfilter-config.md) | OH_TrafficFilter_Config | Defines the NFQueue configuration structure. |
+| [OH_TrafficFilter_FilterRule](capi-trafficfilter-oh-trafficfilter-filterrule.md) | OH_TrafficFilter_FilterRule | Defines the packet filtering rule. |
+| [OH_TrafficFilter_PacketController](capi-trafficfilter-oh-trafficfilter-packetcontroller.md) | OH_TrafficFilter_PacketController | Defines the packet controller. |
+| [OH_TrafficFilter_PacketDesc](capi-trafficfilter-oh-trafficfilter-packetdesc.md) | OH_TrafficFilter_PacketDesc | Defines the packet descriptor. |
 
 ### Enums
 
@@ -69,11 +76,18 @@ Declares the common types and error codes required for network traffic filtering
 | OH_TRAFFICFILTER_MIN_GROUP_ID        1 | Minimum group ID value.<br>**Since:** 26.0.0 |
 | OH_TRAFFICFILTER_MAX_GROUP_ID        65535 | Maximum group ID value.<br>**Since:** 26.0.0 |
 | OH_TRAFFICFILTER_IFNAMSIZ            32 | Maximum length of the network interface name.<br>**Since:** 26.0.0 |
+| OH_TRAFFICFILTER_MAC_ADDRSTRLEN        18 | Maximum length of a MAC address string.<br>**Since:** 26.0.1 |
 | OH_TRAFFICFILTER_PROTO_ANY           0 | Protocol type constant: any protocol.<br>**Since:** 26.0.0 |
 | OH_TRAFFICFILTER_PROTO_TCP           6 | Protocol type constant: TCP.<br>**Since:** 26.0.0 |
 | OH_TRAFFICFILTER_PROTO_UDP           17 | Protocol type constant: UDP.<br>**Since:** 26.0.0 |
 | OH_TRAFFICFILTER_PROTO_ICMP          1 | Protocol type constant: ICMP.<br>**Since:** 26.0.0 |
 | OH_TRAFFICFILTER_PROTO_ICMPV6        58 | Protocol type constant: ICMPv6.<br>**Since:** 26.0.0 |
+
+### Functions
+
+| Name | typedef Keyword | Description |
+| -- | -- | -- |
+| [typedef OH_TrafficFilter_PacketDecision (*OH_TrafficFilter_PacketCallback)(const OH_TrafficFilter_PacketDesc* packet, void* userData)](capi-trafficfilter-oh-trafficfilter-packetcallback.md) | OH_TrafficFilter_PacketCallback | Defines a pointer to the packet filtering callback. |
 
 ## Enum Description
 
@@ -176,3 +190,39 @@ Enumerates the hook point types, which specify where a rule takes effect in the 
 | OH_TRAFFICFILTER_HOOK_FORWARD = 2 | FORWARD chain, which processes packets forwarded by the local host.<br>**Since:** 26.0.0 |
 | OH_TRAFFICFILTER_HOOK_PREROUTING = 3 | PREROUTING chain, which processes packets that have just arrived at the NIC and have not been routed yet.<br>**Since:** 26.0.0 |
 | OH_TRAFFICFILTER_HOOK_POSTROUTING = 4 | POSTROUTING chain, which processes packets about to be sent from the NIC.<br>**Since:** 26.0.0 |
+
+### OH_TrafficFilter_PacketCopyMode
+
+```c
+enum OH_TrafficFilter_PacketCopyMode
+```
+
+**Description**
+
+Enumerates the packet copy modes.
+
+**Since:** 26.0.1
+
+| Value | Description |
+| -- | -- |
+| OH_TRAFFICFILTER_COPY_MODE_META = 0 | Copies only the metadata (without copying the packet data). |
+| OH_TRAFFICFILTER_COPY_MODE_HEADER = 1 | Copies only the packet header (specified by packetCopyLen). |
+| OH_TRAFFICFILTER_COPY_MODE_FULL = 2 | Copies the entire packet. |
+| OH_TRAFFICFILTER_COPY_MODE_MAXLEN = 3 | Copies the packet of the specified maximum length. |
+
+### OH_TrafficFilter_PacketDecision
+
+```c
+enum OH_TrafficFilter_PacketDecision
+```
+
+**Description**
+
+Enumerates the packet processing decisions.
+
+**Since:** 26.0.1
+
+| Value | Description |
+| -- | -- |
+| OH_TRAFFICFILTER_DECISION_ACCEPT = 0 | Accepts the packet. |
+| OH_TRAFFICFILTER_DECISION_DROP | Drops the packet. |

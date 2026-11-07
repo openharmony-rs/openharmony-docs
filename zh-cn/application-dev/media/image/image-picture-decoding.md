@@ -164,7 +164,7 @@ Picture和PixelMap是两种不同的图片解码对象，适用于不同的场�
    <!-- @[create_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
    
    ``` TypeScript
-   async createPicture(imageSource : image.ImageSource | undefined, isReturnAux: Boolean)
+   async createPicture(imageSource : image.ImageSource | undefined, isReturnAux: boolean)
      : Promise<image.PixelMap | undefined | image.Picture> {
      // 配置解码选项参数。
      let options: image.DecodingOptionsForPicture = {
@@ -175,9 +175,9 @@ Picture和PixelMap是两种不同的图片解码对象，适用于不同的场�
      try {
        let picture = await imageSource?.createPicture(options);
        if (picture) {
-         // 返回解码后获取到的辅助图
+         // 返回解码后获取到的辅助图。
          if (isReturnAux) {
-           // type为解码参数中包含的辅助图类型
+           // type为解码参数中包含的辅助图类型。
            let type: image.AuxiliaryPictureType = image.AuxiliaryPictureType.GAINMAP;
            let auxPicture: image.AuxiliaryPicture | null = picture.getAuxiliaryPicture(type);
            // 获取辅助图信息。
@@ -205,7 +205,7 @@ Picture和PixelMap是两种不同的图片解码对象，适用于不同的场�
            }
            return returnPixelMap;
          } else {
-           return picture; // 返回解码后获取到的picture
+           return picture; // 返回解码后获取到的picture。
          }
        }
        return returnPixelMap;

@@ -399,14 +399,14 @@ OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoSt
 OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyleWithVar);
 // Add the text to handler.
 OH_Drawing_TypographyHandlerAddText(handler, text);
-// Display the created TextStyle object.
+// Pop the created TextStyle object.
 OH_Drawing_TypographyHandlerPopTextStyle(handler);
 
 // Add a text style without font variation.
 OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyleNoVar);
 // Add the text to handler.
 OH_Drawing_TypographyHandlerAddText(handler, text);
-// Display the created TextStyle object.
+// Pop the created TextStyle object.
 OH_Drawing_TypographyHandlerPopTextStyle(handler);
 
 OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);

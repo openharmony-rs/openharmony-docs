@@ -3,8 +3,9 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=e614db0ed9ef9e65ff9f340640f4a0fd5317e78d translatedAt=2026-11-04T09:48:52.346Z pushedAt=2026-11-04T09:52:41.312Z nl=1 -->
 
 ```c
 typedef struct OH_NativeBundle_Metadata {...} OH_NativeBundle_Metadata

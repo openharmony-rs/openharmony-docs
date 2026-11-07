@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:06:55.606Z pushedAt=2026-07-23T11:21:33.828Z -->
+<!-- md-trans-meta sourceCommit=5c247b82ce85865eb0a403efc1424399c7afe7c1 translatedAt=2026-11-04T05:28:56.288Z pushedAt=2026-11-04T07:19:35.271Z nl=1 -->
 
 To enable a variable to be initialized only once from an external source without accepting subsequent synchronization changes, you can use the [\@Once](../../reference/apis-arkui/arkui-ts/ts-state-management-once.md#once) decorator together with the \@Param decorator.
 
@@ -43,7 +43,7 @@ As an auxiliary decorator, the \@Once decorator does not have requirements on th
 - \@Once can only be used together with \@Param inside custom components decorated with [\@ComponentV2](./arkts-create-custom-components.md#componentv2).
 
   <!-- @[once_param_componentV2_pair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewOnce/entry/src/main/ets/pages/MyComponent.ets) --> 
-
+  
   ``` TypeScript
   @ComponentV2
   struct MyComponent {
@@ -55,7 +55,7 @@ As an auxiliary decorator, the \@Once decorator does not have requirements on th
 - The order of \@Once and \@Param does not matter. Both \@Param \@Once and \@Once \@Param are correct.
 
   <!-- @[once_param_order_irrelevant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewOnce/entry/src/main/ets/pages/MyComponent.ets) -->
-
+  
   ``` TypeScript
   @ComponentV2
   struct MyComponent {
@@ -197,5 +197,3 @@ struct Index {
 ```
 
 ![once-sync-1](figures/once-sync-1.gif)
-
-<!--no_check-->

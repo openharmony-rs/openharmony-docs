@@ -238,7 +238,7 @@ struct AutoFillPage {
 
       Button('onFailure')
         .onClick(() => {
-          hilog.info(0x0000, 'testTag', 'autofill failure');
+          hilog.error(0x0000, 'testTag', 'autofill failure');
           try {
             this.fillCallback?.onFailure();
           } catch (error) {
@@ -425,7 +425,7 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
       } catch (err) {
         let code = (err as BusinessError).code;
         let msg = (err as BusinessError).message;
-        hilog.info(0x0000, 'testTag', `autoFillPopupConfig failed, error code: ${code}, error msg: ${msg}.`);
+        hilog.error(0x0000, 'testTag', `autoFillPopupConfig failed, error code: ${code}, error msg: ${msg}.`);
       }
     }
   }

@@ -6,7 +6,7 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=0876b7ba2fa1777332890da7f5059310feded633 translatedAt=2026-08-22T01:33:14.859Z pushedAt=2026-08-22T03:29:42.082Z -->
+<!-- md-trans-meta sourceCommit=db9bb40cd997538de5167ab70d61ff951d4a3516 translatedAt=2026-11-05T01:00:48.366Z pushedAt=2026-08-22T03:29:42.082Z nl=2 -->
 
 ## When to Use
 
@@ -41,7 +41,17 @@ The following table lists the commonly used APIs for custom font registration an
    import { text } from '@kit.ArkGraphics2D'
    ```
 
-2. Register the custom font. There are two methods:
+2. Obtain the global font collection instance.
+
+   <!-- @[arkts_custom_font_font_collection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   // Obtain the global font collection instance.
+   let fontCollection = text.FontCollection.getGlobalInstance()
+   const familyName = "myFamilyName"
+   ```
+
+3. Register the custom font. There are two methods:
 
    <!-- @[arkts_custom_font_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
 
@@ -53,7 +63,7 @@ The following table lists the commonly used APIs for custom font registration an
    // fontCollection.loadFontSync(familyName, $rawfile('myFontFile.ttf'))
    ```
 
-3. Use the custom font.
+4. Use the custom font.
 
    <!-- @[arkts_custom_font_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
 
@@ -74,7 +84,7 @@ The following table lists the commonly used APIs for custom font registration an
    };
    ```
 
-4. Create a paragraph style, and use the font manager instance to construct a ParagraphBuilder instance.
+5. Create a paragraph style, and use the font manager instance to construct a ParagraphBuilder instance.
 
    <!-- @[arkts_custom_font_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
 
@@ -82,14 +92,14 @@ The following table lists the commonly used APIs for custom font registration an
    // Create a paragraph style object to set the typographic style.
    let myParagraphStyle: text.ParagraphStyle = {
      textStyle: myTextStyle,
-     align: 3,
+     align: text.TextAlign.JUSTIFY,
      wordBreak: text.WordBreak.NORMAL
    };
    // Create a paragraph builder.
    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection)
    ```
 
-5. Generate the paragraph.
+6. Generate the paragraph.
 
    <!-- @[arkts_custom_font_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
 
@@ -102,7 +112,7 @@ The following table lists the commonly used APIs for custom font registration an
    let paragraph = paragraphBuilder.build();
    ```
 
-6. To unregister a custom font, call the `unloadFontSync` API.
+7. To unregister a custom font, call the `unloadFontSync` API.
 
    <!-- @[arkts_custom_font_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
 

@@ -723,7 +723,7 @@ export default class DemoAgentForConnect extends AgentExtensionAbility {
           console.info(`${TAG} onDisconnect ${JSON.stringify(elementName)}`);
         },
         onFailed(code: number) {
-          console.info(`${TAG} onFailed... ${code}`);
+          console.error(`${TAG} onFailed... ${code}`);
         }
       };
       console.info(`${TAG} start connect`);

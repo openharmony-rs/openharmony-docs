@@ -1,10 +1,12 @@
 # NativeFence
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Flix-fangyang; @BruceXu; @ding-panyun-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=c9742d4d4a757fbb6f0510281af0e732af135c64 translatedAt=2026-11-04T10:32:30.008Z pushedAt=2026-11-04T10:34:52.695Z nl=2 -->
+
 ## Overview
 
 Provides the **NativeFence** function. You can use the provided APIs to block a **fenceFd** for a specified period of time, block it permanently, close it, and check whether the **fenceFd** is valid.

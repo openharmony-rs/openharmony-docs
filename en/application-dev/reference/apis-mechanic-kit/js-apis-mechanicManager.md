@@ -1,12 +1,11 @@
 # @ohos.distributedHardware.mechanicManager (Mechanic Manager)
-
 <!--Kit: Mechanic Kit-->
 <!--Subsystem: Mechanic-->
 <!--Owner: @qxqxqxqxqx-->
 <!--Designer: @peter__1024-->
 <!--Tester: @Aullar-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=bc68323f1c1e5ede3ca50670c5ffb68762f3f748 translatedAt=2026-08-05T01:26:51.110Z pushedAt=2026-08-05T01:55:24.450Z -->
+<!-- md-trans-meta sourceCommit=69f50a882f881d9a6c0ab94cb378455fcf562e11 translatedAt=2026-11-04T06:09:23.815Z pushedAt=2026-11-04T08:04:44.810Z nl=1 -->
 
 The **mechanicManager** module provides the mechanic device interaction capabilities, such as listening for the device connection status, tracking control, and listening for the tracking status.
 
@@ -46,6 +45,12 @@ For details about the error codes, see [Mechanic Manager Error Codes](errorcode-
 **Example**
 
 ```ts
+// Check whether the current device supports mechanic device control for a specific device type (isControlSupported() API since: 26.0.0).
+let isSupported: boolean = mechanicManager.isControlSupported();
+if (!isSupported) {
+  console.info('The control function is not supported.');
+  return;
+}
 // Define the callback for device connection state changes. The result parameter carries the device connection state change information.
 let callback = (result: mechanicManager.AttachStateChangeInfo) => {
   console.info(`'callback result:' ${result}`);
@@ -85,6 +90,12 @@ For details about the error codes, see [Mechanic Manager Error Codes](errorcode-
 **Example**
 
 ```ts
+// Check whether the current device supports mechanic device control for a specific device type (isControlSupported() API since: 26.0.0).
+let isSupported: boolean = mechanicManager.isControlSupported();
+if (!isSupported) {
+  console.info('The control function is not supported.');
+  return;
+}
 // Define the callback function for device connection state changes.
 let callback = (result: mechanicManager.AttachStateChangeInfo) => {
   console.info(`'callback result:' ${result}`);
@@ -121,6 +132,12 @@ For details about the error codes, see [Mechanic Manager Error Codes](errorcode-
 **Example**
 
 ```ts
+// Determine whether the current device supports mechanic device control for a specific device type (isControlSupported() API since: 26.0.0).
+let isSupported: boolean = mechanicManager.isControlSupported();
+if (!isSupported) {
+  console.info('The control function is not supported.');
+  return;
+}
 console.info('Query device list');
 // Call getAttachedMechDevices to obtain the list of attached mechanic devices.
 let mechanicInfos = mechanicManager.getAttachedMechDevices();
@@ -154,6 +171,12 @@ For details about the error codes, see [Mechanic Manager Error Codes](errorcode-
 **Example**
 
 ```ts
+// Check whether the current device supports mechanic device control for a specific device type (isControlSupported() API since: 26.0.0).
+let isSupported: boolean = mechanicManager.isControlSupported();
+if (!isSupported) {
+  console.info('The control function is not supported.');
+  return;
+}
 console.info('Enable tracing');
 // Call the setCameraTrackingEnabled method. The value true indicates enabling camera tracking.
 mechanicManager.setCameraTrackingEnabled(true);
@@ -186,6 +209,12 @@ For details about the error codes, see [Mechanic Manager Error Codes](errorcode-
 **Example**
 
 ```ts
+// Check whether the current device supports mechanic device control for a specific device type (isControlSupported() API since: 26.0.0).
+let isSupported: boolean = mechanicManager.isControlSupported();
+if (!isSupported) {
+  console.info('The control function is not supported.');
+  return;
+}
 console.info('Get tracking status');
 // Call getCameraTrackingEnabled to obtain whether camera tracking is currently enabled.
 let enabled = mechanicManager.getCameraTrackingEnabled();
@@ -218,6 +247,12 @@ For details about the error codes, see [Mechanic Manager Error Codes](errorcode-
 **Example**
 
 ```ts
+// Check whether the current device supports mechanic device control for a specific device type (isControlSupported() API since: 26.0.0).
+let isSupported: boolean = mechanicManager.isControlSupported();
+if (!isSupported) {
+  console.info('The control function is not supported.');
+  return;
+}
 // Define the callback for tracking state changes. The result is the tracking event information.
 let callback = (result: mechanicManager.TrackingEventInfo) => {
   console.info(`'callback result:' ${result}`);
@@ -255,6 +290,12 @@ For details about the error codes, see [Mechanic Manager Error Codes](errorcode-
 **Example**
 
 ```ts
+// Check whether the current device supports mechanic device control for a specific device type (isControlSupported() API since: 26.0.0).
+let isSupported: boolean = mechanicManager.isControlSupported();
+if (!isSupported) {
+  console.info('The control function is not supported.');
+  return;
+}
 // Define the callback function for tracking state changes.
 let callback = (result: mechanicManager.TrackingEventInfo) => {
   console.info(`'callback result:' ${result}`);
@@ -292,6 +333,12 @@ For details about the error codes, see [Mechanic Manager Error Codes](errorcode-
 **Example**
 
 ```ts
+// Check whether the current device supports mechanic device control for a specific device type (isControlSupported() API since: 26.0.0).
+let isSupported: boolean = mechanicManager.isControlSupported();
+if (!isSupported) {
+  console.info('The control function is not supported.');
+  return;
+}
 console.info('Query layout');
 // Call getCameraTrackingLayout to obtain the current camera tracking layout.
 let layout = mechanicManager.getCameraTrackingLayout();

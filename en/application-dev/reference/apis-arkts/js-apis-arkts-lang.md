@@ -1,12 +1,11 @@
 # @arkts.lang (ArkTS Base Capability)
-
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=d6200ee580e2d2b406a92c0e4a15bf6480d0d39a translatedAt=2026-08-18T15:27:38.893Z pushedAt=2026-08-19T01:46:21.115Z -->
+<!-- md-trans-meta sourceCommit=cc99e5187aa152bc96569f8b87fca412b6552a60 translatedAt=2026-11-04T10:39:56.150Z pushedAt=2026-11-04T10:42:48.488Z nl=1 -->
 
 This module provides the basic type definitions of the ArkTS language, supporting cross-thread transfer of data structures, annotation retention policy control, and other features. Currently, it provides the ISendable type, the RetentionPolicy enum type, and the Retention annotation.
 
@@ -22,8 +21,9 @@ This module provides the basic type definitions of the ArkTS language, supportin
 import { lang, Retention, RetentionPolicy } from '@kit.ArkTS';
 ```
 
-## lang.ISendable
+## lang
 
+### ISendable
 Is the parent type of all [Sendable](../../arkts-utils/arkts-sendable.md#basic-concepts) object types (except `null` and `undefined`). After this interface is implemented, instances of a custom class support cross-thread transfer. It does not define any methods or properties.
 
 In ArkTS, an object of the ISendable type is an instance of the Object type. It follows the basic characteristics of the Object type and supports cross-thread transfer.
@@ -51,8 +51,7 @@ class CustomData implements lang.ISendable {
 ```
 
 ## RetentionPolicy<sup>24+</sup>
-
-Enumerates the retention policies of annotation types. Its enum values are used together with [Retention](#retention24) to specify the lifecycle of an annotation.
+Describes the enum type for the retention policy of [annotations](../../quick-start/introduction-to-arkts.md#annotation). Its enum values are used together with [Retention](#retention24) to specify the lifecycle of an annotation.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -64,7 +63,6 @@ Enumerates the retention policies of annotation types. Its enum values are used 
 | BYTECODE | "bytecode" | The annotation is retained in the compilation output. |
 
 ## Retention<sup>24+</sup>
-
 An API annotation capability provided by the system, which can be used to specify the lifecycle of a custom annotation. This annotation can only be applied to other annotation declarations. After the Retention annotation is applied to a custom annotation, the compiler executes different retention policies for the custom annotation based on the value of policy.
 
 **Model restriction**: This API can be used only in the stage model.

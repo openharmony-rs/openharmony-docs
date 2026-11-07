@@ -233,7 +233,7 @@
    >
    > 由于图形提供的[image.createPixelMapFromSurface](../../reference/apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11)接口是通过截取surface内容获取[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)，其内容和[XComponent](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件绘制逻辑不同，需要根据**前后置**镜头做不同的**图片内容旋转补偿**和**组件旋转补偿**。
 
-   <!-- @[show_blur_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[show_blur_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->    
    
    ``` TypeScript
    private async showBlurAnim() {
@@ -241,7 +241,7 @@
      // 获取已完成的surface截图。
      let shotPixel = BlurAnimateUtil.getSurfaceShot();
      // 后置。
-     if (this.curPosition === 0) {
+     if (this.curPosition === 1) {
        Logger.info(TAG, 'showBlurAnim BACK');
        // 直板机后置截图旋转补偿90°。
        await shotPixel.rotate(BlurAnimateUtil.IMG_ROTATE_ANGLE_90);
@@ -311,7 +311,7 @@
 
    为保证预览流在翻转时不露出，需要构建一个闪黑组件用于遮挡XComponent组件，构建方式参考[闪黑动效](#闪黑动效)-步骤2。
 
-   <!-- @[rotate_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->   
+   <!-- @[rotate_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->     
    
    ``` TypeScript
    /**

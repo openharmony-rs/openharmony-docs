@@ -5,6 +5,8 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=d967d058a31b7ae3d73302fcf54de6e88cb5c5dc translatedAt=2026-11-04T06:25:14.916Z pushedAt=2026-11-04T08:04:44.837Z nl=2 -->
+
 ## Overview
 
 Defines the data structures for the C APIs of the HTTP request module.
@@ -123,6 +125,7 @@ Enumerates the error codes of an HTTP request.
 | OH_HTTP_SSL_CA_NOT_EXIST = (OH_HTTP_NETSTACK_E_BASE + 77) | SSL CA certificate inexistent or inaccessible.|
 | OH_HTTP_REMOTE_FILE_NOT_FOUND = (OH_HTTP_NETSTACK_E_BASE + 78) | Remote file not found.|
 | OH_HTTP_AUTHENTICATION_ERROR = (OH_HTTP_NETSTACK_E_BASE + 94) | Identity authentication error.|
+| OH_HTTP_REQUEST_INTERCEPTED = (OH_HTTP_NETSTACK_E_BASE + 996) | The request is intercepted by the HTTP global interceptor. |
 | OH_HTTP_ACCESS_DOMAIN_NOT_ALLOWED = (OH_HTTP_NETSTACK_E_BASE + 998) | Access to the domain denied.|
 | OH_HTTP_UNKNOWN_ERROR = (OH_HTTP_NETSTACK_E_BASE + 999) | Unknown error.|
 
@@ -271,7 +274,7 @@ Callback invoked when an HTTP response is received.
 | Name| Description|
 | -- | -- |
 | [struct Http_Response](capi-netstack-http-response.md) *response | Pointer to the HTTP response. For details, see [Http_Response](capi-netstack-http-response.md).|
-|  uint32_t errCode | Response code.|
+|  uint32_t errCode | HTTP request error code. For details, see [Http_ErrCode](#http_errcode). |
 
 ### Http_OnDataReceiveCallback()
 
@@ -291,7 +294,7 @@ Callback invoked when data is received.
 | Name| Description|
 | -- | -- |
 | const char *data | Response body.|
-| size_t length | Length of the response body.|
+| size_t length | Length of the response body. Unit: Byte. |
 
 ### Http_OnProgressCallback()
 
@@ -310,8 +313,8 @@ Callback invoked during request/response data transmission.
 
 | Name| Description|
 | -- | -- |
-| uint64_t totalSize | Total data size.|
-| uint64_t transferredSize | Size of transferred data.|
+| uint64_t totalSize | Total data size. Unit: Byte. |
+| uint64_t transferredSize | Size of the transferred data. Unit: Byte. |
 
 ### Http_OnHeaderReceiveCallback()
 
@@ -343,3 +346,5 @@ typedef void (*Http_OnVoidCallback)(void)
 Callback invoked when a DataEnd or Cancel event is received.
 
 **Since**: 20
+
+

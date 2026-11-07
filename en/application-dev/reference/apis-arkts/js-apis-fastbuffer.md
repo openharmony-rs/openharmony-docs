@@ -1,12 +1,11 @@
 # @ohos.fastbuffer (FastBuffer)
-
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=58e0aac1ecb6b253638163c0254ed24f4d229ae6 translatedAt=2026-08-25T13:24:58.757Z pushedAt=2026-08-26T09:11:01.882Z -->
+<!-- md-trans-meta sourceCommit=31ba07988632b6f2ed98a078bdae886436926502 translatedAt=2026-11-04T10:40:26.586Z pushedAt=2026-11-04T10:45:06.946Z nl=1 -->
 
 A **FastBuffer** object is a more efficient buffer container for representing a byte sequence of a fixed length. It is used to store binary data.
 
@@ -19,6 +18,7 @@ FastBuffer is recommended if high-performance processing of large binary data (s
 > The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > Container classes, implemented in static languages, have restrictions on storage locations and properties, and do not support custom properties or methods.
+
 
 ## Modules to Import
 
@@ -82,7 +82,7 @@ import { fastbuffer } from '@kit.ArkTS';
 // Create a FastBuffer object with a length of 5, filled with 0 by default.
 let buf1 = fastbuffer.alloc(5);
 console.info(buf1.toString());
-// Output result: 00000
+// The output result is empty.
 // Create a FastBuffer object with a length of 5, filled with the character 'a'.
 let buf2 = fastbuffer.alloc(5, 'a');
 // Create a FastBuffer object with a length of 11, filled using base64 encoding.
@@ -452,6 +452,7 @@ console.info(buf1.toString());
 console.info(buf2.toString());
 // Output: this is a tést
 ```
+
 
 ## fastbuffer.isBuffer
 
@@ -837,6 +838,7 @@ console.info(filledBuffer.toString());
 // Output: hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 ```
 
+
 ### includes
 
 includes(value: string | number | FastBuffer | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): boolean
@@ -1030,6 +1032,7 @@ console.info(buf.lastIndexOf('this').toString());
 console.info(buf.lastIndexOf('buffer').toString());
 // Output: 17
 ```
+
 
 ### readBigInt64BE
 
@@ -1574,6 +1577,7 @@ Reads the specified number of bytes from this **FastBuffer** object at the speci
 | offset | number | Yes| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - byteLength|
 | byteLength | number | Yes| Number of bytes to read. Value range: 1 <= byteLength <= 6|
 
+
 **Return value**
 
 | Type| Description|
@@ -1599,6 +1603,7 @@ console.info(num.toString());
 // Output: 97
 ```
 
+
 ### readIntLE
 
 readIntLE(offset: number, byteLength: number): number
@@ -1615,6 +1620,7 @@ Reads the specified number of bytes from this **FastBuffer** object at the speci
 | -------- | -------- | -------- | -------- |
 | offset | number | Yes| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - byteLength|
 | byteLength | number | Yes| Number of bytes to read. Value range: 1 <= byteLength <= 6|
+
 
 **Return value**
 
@@ -1655,6 +1661,7 @@ Reads an 8-bit unsigned integer from the specified `offset`.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - 1|
+
 
 **Return value**
 
@@ -1698,6 +1705,7 @@ Reads a 16-bit, big-endian, unsigned integer from this **FastBuffer** object at 
 | -------- | -------- | -------- | -------- |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - 2|
 
+
 **Return value**
 
 | Type| Description|
@@ -1739,6 +1747,7 @@ Reads an unsigned little-endian 16-bit integer from the specified `offset`.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - 2|
+
 
 **Return value**
 
@@ -1782,6 +1791,7 @@ Reads an unsigned big-endian 32-bit integer from the specified `offset`.
 | -------- | -------- | -------- | -------- |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - 4|
 
+
 **Return value**
 
 | Type| Description|
@@ -1821,6 +1831,7 @@ Reads an unsigned, little-endian 32-bit integer from the specified `offset`.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - 4|
+
 
 **Return value**
 
@@ -1863,6 +1874,7 @@ Reads `byteLength` bytes from the specified `offset` and interprets the result a
 | offset | number | Yes | Offset. Value range: 0 <= offset <= this.length - byteLength. |
 | byteLength | number | Yes | Number of bytes to read. Value range: 1 <= byteLength <= 6. |
 
+
 **Return value**
 
 | Type| Description|
@@ -1903,6 +1915,7 @@ Reads `byteLength` bytes from the specified `offset` and interprets the result a
 | -------- | -------- | -------- | -------- |
 | offset | number | Yes | Offset. Value range: 0 <= offset <= this.length - byteLength. |
 | byteLength | number | Yes| Number of bytes to read. Value range: 1 <= byteLength <= 6|
+
 
 **Return value**
 
@@ -1976,6 +1989,7 @@ Swaps the byte order of the current object in units of 16-bit unsigned integers.
 
 **System capability**: SystemCapability.Utils.Lang
 
+
 **Return value**
 
 | Type| Description|
@@ -2012,6 +2026,7 @@ Converts this **FastBuffer** object into an array of unsigned 32-bit integers an
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.Utils.Lang
+
 
 **Return value**
 
@@ -2050,6 +2065,7 @@ Converts this **FastBuffer** object into an array of unsigned 64-bit integers an
 
 **System capability**: SystemCapability.Utils.Lang
 
+
 **Return value**
 
 | Type| Description|
@@ -2086,6 +2102,7 @@ Converts the FastBuffer to JSON and returns it.
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.Utils.Lang
+
 
 **Return value**
 
@@ -2168,6 +2185,7 @@ Writes a string in the specified encoding at the `offset` of the FastBuffer obje
 | length | number | No| Maximum number of bytes to write. The default value is **this.length - offset**.|
 | encoding | string | No | Character encoding format. For the supported format range, see [BufferEncoding](#bufferencoding). Default value: 'utf8'. |
 
+
 **Return value**
 
 | Type| Description|
@@ -2216,6 +2234,7 @@ Writes a 64-bit, big-endian, signed big integer to this **FastBuffer** object at
 | value | bigint | Yes | Data to write to FastBuffer. Value range: -INT64_MAX <= value <= INT64_MAX. |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - 8|
 
+
 **Return value**
 
 | Type| Description|
@@ -2257,6 +2276,7 @@ Writes a 64-bit, little-endian, signed big integer to this **FastBuffer** object
 | -------- | -------- | -------- | -------- |
 | value | bigint | Yes | Data to write to the FastBuffer. Value range: -INT64_MAX <= value <= INT64_MAX. |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - 8|
+
 
 **Return value**
 
@@ -2300,6 +2320,7 @@ Writes unsigned, big-endian 64-bit BigUInt data at the `offset` of the FastBuffe
 | value | bigint | Yes | Data to write to the FastBuffer. Value range: 0 <= value <= UINT64_MAX. |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - 8|
 
+
 **Return value**
 
 | Type| Description|
@@ -2341,6 +2362,7 @@ Writes a 64-bit, little-endian, unsigned big integer to this **FastBuffer** obje
 | -------- | -------- | -------- | -------- |
 | value | bigint | Yes | Data to write to the FastBuffer. Value range: 0 <= value <= UINT64_MAX. |
 | offset | number | No | Offset. Default value: 0. Value range: 0 <= offset <= this.length - 8. |
+
 
 **Return value**
 
@@ -2384,6 +2406,7 @@ Writes a 64-bit, big-endian, double-precision floating-point number to this **Fa
 | value | number | Yes | Data to write to the FastBuffer. Value range: -DOUBLE_MAX <= value <= DOUBLE_MAX. |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - 8|
 
+
 **Return value**
 
 | Type| Description|
@@ -2425,6 +2448,7 @@ Writes a 64-bit, little-endian, double-precision floating-point number to this *
 | -------- | -------- | -------- | -------- |
 | value | number | Yes | Data to write to the FastBuffer. Value range: -DOUBLE_MAX <= value <= DOUBLE_MAX. |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - 8|
+
 
 **Return value**
 
@@ -2468,6 +2492,7 @@ Writes a 32-bit, big-endian, single-precision floating-point number to this **Fa
 | value | number | Yes | Data to write to the FastBuffer. Value range: -FLOAT_MAX <= value <= FLOAT_MAX. |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - 4|
 
+
 **Return value**
 
 | Type| Description|
@@ -2493,6 +2518,7 @@ console.info('result = ' + result);
 // Output: result = 4
 ```
 
+
 ### writeFloatLE
 
 writeFloatLE(value: number, offset?: number): number
@@ -2509,6 +2535,7 @@ Writes a 32-bit, little-endian, single-precision floating-point number to this *
 | -------- | -------- | -------- | -------- |
 | value | number | Yes | Data to write to the FastBuffer. Value range: -FLOAT_MAX <= value <= FLOAT_MAX. |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - 4|
+
 
 **Return value**
 
@@ -2552,6 +2579,7 @@ Writes an 8-bit signed integer to this **FastBuffer** object at the specified of
 | value | number | Yes | Data to write to the FastBuffer. Value range: -INT8_MAX <= value <= INT8_MAX. |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - 1|
 
+
 **Return value**
 
 | Type| Description|
@@ -2580,6 +2608,7 @@ console.info('result1 = ' + result1);
 // Output: result1 = 2
 ```
 
+
 ### writeInt16BE
 
 writeInt16BE(value: number, offset?: number): number
@@ -2596,6 +2625,7 @@ Writes a 16-bit, big-endian, signed integer to this **FastBuffer** object at the
 | -------- | -------- | -------- | -------- |
 | value | number | Yes | Data to write to the FastBuffer. Value range: -INT16_MAX <= value <= INT16_MAX. |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - 2|
+
 
 **Return value**
 
@@ -2622,6 +2652,7 @@ console.info('result = ' + result);
 // Output: result = 2
 ```
 
+
 ### writeInt16LE
 
 writeInt16LE(value: number, offset?: number): number
@@ -2638,6 +2669,7 @@ Writes a 16-bit, little-endian, signed integer to this **FastBuffer** object at 
 | -------- | -------- | -------- | -------- |
 | value | number | Yes | Data to write to the FastBuffer. Value range: -INT16_MAX <= value <= INT16_MAX. |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - 2|
+
 
 **Return value**
 
@@ -2681,6 +2713,7 @@ Writes a 32-bit, big-endian, signed integer to this **FastBuffer** object at the
 | value | number | Yes | Data to write to the FastBuffer. Value range: -INT32_MAX <= value <= INT32_MAX. |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - 4|
 
+
 **Return value**
 
 | Type| Description|
@@ -2706,6 +2739,7 @@ console.info('result = ' + result);
 // Output: result = 4
 ```
 
+
 ### writeInt32LE
 
 writeInt32LE(value: number, offset?: number): number
@@ -2722,6 +2756,7 @@ Writes a 32-bit, little-endian, signed integer to this **FastBuffer** object at 
 | -------- | -------- | -------- | -------- |
 | value | number | Yes | Data to write to the FastBuffer. Value range: -INT32_MAX <= value <= INT32_MAX. |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - 4|
+
 
 **Return value**
 
@@ -2766,6 +2801,7 @@ Writes a big-endian signed value of the specified length to this **FastBuffer** 
 | offset | number | Yes | Offset. Default value: 0. Value range: 0 <= offset <= this.length - byteLength. When null or undefined is passed in, the offset is 0. |
 | byteLength | number | Yes | Number of bytes to write. Value range: 1 <= byteLength <= 6. |
 
+
 **Return value**
 
 | Type| Description|
@@ -2791,6 +2827,7 @@ console.info('result = ' + result);
 // Output: result = 6
 ```
 
+
 ### writeIntLE
 
 writeIntLE(value: number, offset: number, byteLength: number): number
@@ -2808,6 +2845,7 @@ Writes a little-endian signed value of the specified length to this **FastBuffer
 | value | number | Yes | Data to write to the FastBuffer. Value range: -2^(8×byteLength-1) ≤ value ≤ 2^(8×byteLength-1)-1. |
 | offset | number | Yes | Offset. Default value: 0. Value range: 0 <= offset <= this.length - byteLength. When null or undefined is passed in, the offset is 0. |
 | byteLength | number | Yes | Number of bytes to write. Value range: 1 <= byteLength <= 6. |
+
 
 **Return value**
 
@@ -2850,6 +2888,7 @@ Writes an 8-bit unsigned integer to this **FastBuffer** object at the specified 
 | -------- | -------- | -------- | -------- |
 | value | number | Yes | Data to write to the FastBuffer. Value range: 0 <= value <= UINT8_MAX. |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - 1|
+
 
 **Return value**
 
@@ -2902,6 +2941,7 @@ Writes a 16-bit, big-endian, unsigned integer to this **FastBuffer** object at t
 | value | number | Yes | Data to write to the FastBuffer. Value range: 0 <= value <= UINT16_MAX. |
 | offset | number | No | Offset. Default value: 0. Value range: 0 <= offset <= this.length - 2. |
 
+
 **Return value**
 
 | Type| Description|
@@ -2946,6 +2986,7 @@ Writes a 16-bit, little-endian, unsigned integer to this **FastBuffer** object a
 | -------- | -------- | -------- | -------- |
 | value | number | Yes | Data to write to the FastBuffer. Value range: 0 <= value <= UINT16_MAX. |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - 2|
+
 
 **Return value**
 
@@ -2992,6 +3033,7 @@ Writes a 32-bit, big-endian, unsigned integer to this **FastBuffer** object at t
 | value | number | Yes | Data to write to the FastBuffer. Value range: 0 <= value <= UINT32_MAX. |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - 4|
 
+
 **Return value**
 
 | Type| Description|
@@ -3033,6 +3075,7 @@ Writes a 32-bit, little-endian, unsigned integer to this **FastBuffer** object a
 | -------- | -------- | -------- | -------- |
 | value | number | Yes | Data to write to the FastBuffer. Value range: 0 <= value <= UINT32_MAX. |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - 4|
+
 
 **Return value**
 
@@ -3077,6 +3120,7 @@ Writes an unsigned big-endian value of the specified length to this **FastBuffer
 | offset | number | Yes | Offset. Default value: 0. Value range: 0 <= offset <= this.length - byteLength. When null or undefined is passed in, the offset is 0. |
 | byteLength | number | Yes | Number of bytes to write. Value range: 1 <= byteLength <= 6. |
 
+
 **Return value**
 
 | Type| Description|
@@ -3119,6 +3163,7 @@ Writes an unsigned little-endian value of the specified length to this **FastBuf
 | value | number | Yes | Data to write to the FastBuffer. Value range: 0 ≤ value ≤ 2^(8×byteLength)-1. |
 | offset | number | Yes | Offset. Default value: 0. Value range: 0 <= offset <= this.length - byteLength. When null or undefined is passed in, the offset is 0. |
 | byteLength | number | Yes | Number of bytes to write. Value range: 1 <= byteLength <= 6. |
+
 
 **Return value**
 

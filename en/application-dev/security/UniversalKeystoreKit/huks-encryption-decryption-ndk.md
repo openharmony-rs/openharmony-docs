@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=4a0d60c413ad51190440217475c8f9ea1644f828 translatedAt=2026-10-13T01:51:33.645Z pushedAt=2026-10-13T02:01:21.910Z -->
+<!-- md-trans-meta sourceCommit=0ef6b2e715d0a4700aedd77cf2d338efa6171255 translatedAt=2026-10-31T02:53:05.501Z pushedAt=2026-10-31T06:05:02.268Z nl=1 -->
 
 This topic uses AES-256, RSA-1024, SM2, and DES64 as examples to describe the encryption and decryption workflows. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-encryption-decryption-overview.md#supported-algorithms).
 
@@ -856,7 +856,7 @@ napi_value TestRsaEcbPkcs(napi_env env, napi_callback_info info)
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        char tmpInData[] = "RSA_ECB_PKCS1_IN";
+        char tmpInData[] = "RSA_ECB_PKCS1_V1_5_IN";
         struct OH_Huks_Blob inData = {(uint32_t)strlen(tmpInData), (uint8_t *)tmpInData};
         uint8_t cipher[RSA_COMMON_SIZE] = {0};
         struct OH_Huks_Blob cipherText = {RSA_COMMON_SIZE, cipher};

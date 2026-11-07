@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=4672a80de73f4c73d2f9912987e31312f5fa3743 translatedAt=2026-09-20T06:19:14.559Z pushedAt=2026-09-20T07:45:41.309Z -->
+<!-- md-trans-meta sourceCommit=fd7fece7093a0eac08995ea19b58b4b7cdb1226a translatedAt=2026-11-05T00:54:18.354Z pushedAt=2026-09-20T07:45:41.309Z nl=2 -->
 
 ## Failed to Find the Header File During Compilation or Running
 
@@ -48,7 +48,7 @@ The message "code:9568347 error: install parse native so failed" is displayed du
 
 ### Solution
 
-According to the solution provided in [What should I do if "code:9568347 error: install parse native so failed" is displayed during HAP installation or error message "TypeError: Cannot read property xxx of undefined" is displayed during HAP running?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs-V5/faqs-app-debugging-14-V5) in application debugging, manually set **abiFilters** in **buildOption/externalNativeOptions** in the **build-profile.json5** file.
+The ABI types supported by the device do not match those configured in the C++ project. Follow the solution provided for [bm tool error code 9568347](https://developer.huawei.com/consumer/en/doc/doccenter-capabilities/bm-tool#section9568347-failed-to-parse-native-so-files). Run `param get const.product.cpu.abilist` through `hdc shell` to query the ABIs supported by the device, and configure a supported ABI in the `abiFilters` parameter of the module-level `build-profile.json5` file.
 
 ## HAP Installation Fails with Error 9568289 After the ohos.permission.ACCESS_DDK_DRIVERS Permission Is Granted
 

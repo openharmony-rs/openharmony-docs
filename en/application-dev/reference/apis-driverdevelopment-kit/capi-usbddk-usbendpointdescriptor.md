@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:49:58.285Z pushedAt=2026-06-22T11:21:11.444Z -->
+<!-- md-trans-meta sourceCommit=b5aa01b6af5d19922ff7e85249d00c2a9af91e2a translatedAt=2026-11-04T04:05:54.195Z pushedAt=2026-11-04T10:12:50.049Z nl=1 -->
 
 ```c
 typedef struct UsbEndpointDescriptor {...} __attribute__((packed)) UsbEndpointDescriptor
@@ -27,11 +27,13 @@ Defines standard endpoint descriptors, which correspond to **Standard Endpoint D
 
 | Name| Description|
 | -- | -- |
-| uint8_t bLength | Size of the descriptor, in bytes.|
+| uint8_t bLength | Size of this descriptor, in bytes. |
 | uint8_t bDescriptorType | Descriptor type.|
 | uint8_t bEndpointAddress | Endpoint address, including the endpoint number and endpoint direction.|
-| uint8_t bmAttributes | Endpoint attributes, including the transfer type, synchronization type, and usage type.|
-| uint16_t wMaxPacketSize | Maximum packet size supported by an endpoint.|
-| uint8_t bInterval | Interval for polling endpoints for data transfer.|
+| uint8_t bmAttributes | Endpoint attributes, including the transfer type, synchronization type, and usage type. |
+| uint16_t wMaxPacketSize | Maximum packet size supported by an endpoint, in bytes. |
+| uint8_t bInterval | Interval for polling endpoints for data transfer. |
 | uint8_t bRefresh | Refresh rate for audio devices.|
 | uint8_t bSynchAddress | Endpoint synchronization address for audio devices.|
+
+

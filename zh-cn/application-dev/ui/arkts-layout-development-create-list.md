@@ -593,9 +593,11 @@ export class ContactsGroupDataSource implements IDataSource {
     return this.list[index];
   }
 
+  // 注册数据变化监听器，用于在数据源变化时通知LazyForEach刷新。本示例数据源为静态数据，数据不会发生变化，无需注册监听器，故此处为空实现。
   registerDataChangeListener(listener: DataChangeListener): void {
   }
 
+  // 注销数据变化监听器。本示例数据源为静态数据，未注册数据变化监听器，无需注销，故此处为空实现。
   unregisterDataChangeListener(listener: DataChangeListener): void {
   }
 }
@@ -675,7 +677,7 @@ export struct StickyHeaderList {
 
 ![list18](figures/list18.gif)
 
-List组件初始化时，可以通过scroller参数绑定一个[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)对象，进行列表的滚动控制。例如，用户在新闻应用中，点击新闻页面底部的返回顶部按钮时，就可以通过Scroller对象的scrollToIndex方法使列表滚动到指定的列表项索引位置。
+List组件初始化时，可以通过scroller参数绑定一个[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)对象，进行列表的滚动控制。例如，用户在新闻应用中，点击新闻页面底部的返回顶部按钮时，就可以通过Scroller对象的scrollToIndex()方法使列表滚动到指定的列表项索引位置。
 
 首先，需要创建一个Scroller的对象listScroller。
 
@@ -1143,8 +1145,8 @@ ListItem() {
          if (isSelected) {
            this.selectedItems.push(new ToDo(this.toDoItem.name)); // this.selectedItems为勾选时，记录选中的列表项，可根据实际场景构造
          } else {
-            let index = this.selectedItems.findIndex(selectedItem => selectedItem.name === this.toDoItem.name);
-            if (index !== -1) {
+           let index = this.selectedItems.findIndex(selectedItem => selectedItem.name === this.toDoItem.name);
+           if (index !== -1) {
              this.selectedItems.splice(index, 1); // 取消勾选时，则将此项从selectedItems中删除
            }
          }
@@ -1686,7 +1688,7 @@ List({ space: 10 }) {
 
 ### 记录列表项选择结果
 
-在ListItem上配置[selectable](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#selectable8)、[selected](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#selected10)和[onSelect](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#onselect8)。selectable用于设置列表项是否允许被选择，selected用于设置列表项当前是否被选中。滑动多选过程中，组件会触发onSelect回调，应用可以在回调中记录每个列表项的最新选择结果。
+在ListItem上配置[selectable](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#selectable8)、[selected](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#selected10)和[onSelect](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#onselect8)。selectable用于设置列表项是否允许被选择，selected用于设置列表项当前是否被选中。滑动多选过程中，组件会触发onSelect()回调，应用可以在回调中记录每个列表项的最新选择结果。
 <!-- @[Add_list_item_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListSwipeSelect.ets) -->
 
 ``` TypeScript
@@ -1705,6 +1707,78 @@ ListItem() {
 >- 建议使用列表项数据中不会随位置变化的唯一标识（例如消息ID）记录选择结果，不建议仅使用当前下标，避免动态增删数据后选中项错位。
 >- 当业务需要在退出编辑模式后保留选择结果时，可在[onEditModeChange](../reference/apis-arkui/arkui-ts/ts-container-list.md#oneditmodechange)回调中保存选择结果。
 >- 使用[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)时，数据源发生变化后应通过[DataChangeListener](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#datachangelistener)通知组件刷新，确保滑动多选过程中列表项状态与数据源一致。
+
+
+## List手指从上往下滑时页面抖动
+
+**问题现象**
+
+在[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)组件中，当用户手指从上往下滑动列表时，如果此时在列表底部动态新增数据或追加内容，页面会出现抖动现象——列表内容短暂地向上跳动一下再恢复，视觉上表现为不稳定的闪烁/抖动。
+
+![List手指从上往下滑时页面抖动](figures/list-scroll-jitter.gif)
+
+**可能原因**
+
+抖动的根源在于List反向布局时，底部新增内容引起的偏移量变化方向与用户手指滑动方向存在冲突。其中，偏移量是通过[currentOffset](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#currentoffset)接口获取的滚动总偏移量，表示List内容相对于视口顶部的位移。
+
+List组件有两套布局路径：
+
+- 正向布局：从列表第一项开始，依次向下排列。当用户手指从下往上滑动时走此路径。由于布局锚定在顶部，在底部新增内容不会改变已有item的位置，偏移量保持不变，因此不会与手指滑动方向产生冲突。
+
+- 反向布局：从列表最后一项开始，依次向上排列。当用户手指从上往下滑动时走此路径。此时List的布局计算方向与正向相反——它从底部item开始，向上依次确定每个item的位置。
+
+此时在底部新增内容，反向布局认为应该将视口内的内容向上推，即偏移量应该增大（向底部滚动）；而用户手指从上往下滑动，期望内容跟随手指向下移动，即偏移量应该减小（向顶部滚动）。这两个方向正好相反，两个相反方向的偏移在同一帧内冲突，内容先被推向一个方向，又被拉回，导致视觉抖动。
+
+**解决措施**
+
+改用[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)+[LazyVGridLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md)替代List，Scroll组件的滚动模型是纯粹的位移偏移，不存在正向/反向布局的分叉路径，内容尺寸变化时不会产生方向冲突。
+
+<!-- @[ScrollLazyDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/scroll/ScrollLazyDemo/Index.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct ScrollLazyDemo {
+  @State items: string[] = ScrollLazyDemo.initItems()
+  private timer: number = -1
+
+  aboutToAppear() {
+    this.timer = setInterval(() => {
+      this.items[this.items.length - 1] += '0123456789\n'
+    }, 400)
+  }
+
+  aboutToDisappear() {
+    clearInterval(this.timer)
+  }
+
+  private static initItems(): string[] {
+    const arr: string[] = []
+    for (let i = 0; i < 50; i++) {
+      arr.push(`Item ${i + 1} \n`)
+    }
+    return arr
+  }
+
+  build() {
+    Scroll() {
+      LazyVGridLayout() {
+        ForEach(this.items, (item: string) => {
+          Text(item)
+            .width('100%')
+            .padding(12)
+            .backgroundColor('#fff4f4f4')
+            .borderRadius(8)
+            .margin({ top: 4, bottom: 4 })
+        })
+      }
+    }
+    .initialOffset({ yOffset: Infinity })
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 <!--RP2-->
 ## 相关实例

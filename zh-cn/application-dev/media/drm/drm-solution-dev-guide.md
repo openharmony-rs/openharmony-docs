@@ -7,7 +7,7 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @qin_wei_jie-->
 
-DRM 解决方案插件实现DRM HDI接口（链接），DRM Kit的DRM框架将通过HDI接口加载DRM解决方案插件。
+DRM解决方案插件实现DRM HDI接口，DRM Kit的DRM框架将通过HDI接口加载DRM解决方案插件。
 
 插件由DRM解决方案集成方开发，放置在设备的/vendor分区中。
 
@@ -454,7 +454,7 @@ clearplay :: host {
     }
 }
 ```
-设备上`/etc/drm/drm_plugin_lazyloading.cfg`为 DRM 框架服务懒加载列表配置文件，键值对形式，DRM 解决方案插件解决方案名为键，DRM解决方案服务名为值：
+设备上`/etc/drm/drm_plugin_lazyloading.cfg`为DRM框架服务懒加载列表配置文件，键值对形式，DRM解决方案名为键，DRM解决方案服务名为值：
 ```json
 {
     "plugin_services": {

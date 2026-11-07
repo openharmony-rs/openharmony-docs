@@ -6,7 +6,7 @@
 <!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @zzs911-->
-<!-- md-trans-meta sourceCommit=8ab3e46f731e35060d4b1ff830f568a2c4b344ac translatedAt=2026-09-28T02:49:13.410Z pushedAt=2026-09-29T08:42:46.305Z -->
+<!-- md-trans-meta sourceCommit=cc34e54bd6bf185fd0f5cb134d2e5e724a8a6a43 translatedAt=2026-11-05T06:16:33.956Z pushedAt=2026-09-29T08:42:46.305Z nl=1 -->
 
 Screen capture enables you to collect screen data for scenarios like screen recording, meeting sharing, and live streaming. By calling the C APIs of the [AVScreenCapture](media-kit-intro.md#avscreencapture) module, you can collect audio and video data from both internal and external sources. The AVScreenCapture module works with the Window and Graphics modules to complete video capture.
 
@@ -35,6 +35,8 @@ The captured screen content can be output in the following forms:
 - When using AVScreenCapture, you must be aware of its state transitions. APIs should only be called in the appropriate states, as calling them in an incorrect state will cause errors. You should check the state before attempting transitions to avoid exceptions.
 
 - When screen capture starts, a privacy protection pop-up is displayed, containing the **Hide private content** option. If this option is selected, private information (such as banner notifications, the control panel, or call screen) will be masked. The specific private information may vary by product. The actual capture result shall apply.
+
+- The system does not output new video frames when the displayed content does not change.
 
   Privacy protection pop-up:
 
@@ -532,6 +534,34 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds2
 // Execute "g_missionIds2.clear()" after the configuration parameters are complete.
 ```
 
+### Capturing a Virtual Extended Screen
+
+Starting from API version 26.0.1, [OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode).OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN is supported, allowing you to create a virtual extended screen and capture its content.
+
+In this mode, the system creates a virtual extended screen whose content can be captured by the application. For the concepts of virtual screens and extended screens, see [Glossary](../../displaymanager/display-terminology.md).
+
+<!-- @[screenCapture_virtualExtendedScreen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+// Configure the width and height of the virtual extended screen to capture in config.
+int32_t width = 1920;
+int32_t height = 1080;
+config.videoInfo.videoCapInfo.videoFrameWidth = width;
+config.videoInfo.videoCapInfo.videoFrameHeight = height;
+
+// Set the capture mode to virtual extended screen capture.
+config.captureMode = OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN;
+// Bind the created virtual extended screen to the screen whose displayId is 0.
+config.videoInfo.videoCapInfo.displayId = 0;
+```
+
+> **NOTE**
+>
+> - The Picker is not displayed in this mode, regardless of the value set by [OH_AVScreenCapture_StrategyForPickerPopUp()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup).
+> - When capturing a virtual extended screen, the display mode of the extended screen is subject to system restrictions. Devices with a built-in screen can have only one extended screen at a time; devices without a built-in screen can have at most two.
+
+
+
 ## Popup Mode Description
 
 Starting from API version 23, PCs/2-in-1 devices, phones, and tablet devices support controlling whether the shared content selection popup is uniformly displayed through [OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup).
@@ -591,6 +621,10 @@ For PCs/2-in-1 devices, phones, and tablet devices, the screen capture popup beh
   - **Capturing a Specified Window (OH_CAPTURE_SPECIFIED_WINDOW)**: When a single window ID is passed, the shared content selection popup is displayed and the specified window is selected by default. When multiple window IDs are passed, the shared content selection popup is not displayed, and only the privacy protection popup is displayed.
 
 - On phones and tablet devices, the picker is not displayed in any capture mode. Only the privacy protection popup is displayed.
+
+> **NOTE**
+>
+> Starting from API version 26.0.1, when the capture mode is [OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode).OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN, the Picker is not displayed, regardless of the value set by OH_AVScreenCapture_StrategyForPickerPopUp.
 
 ## Additional Resources
 

@@ -128,8 +128,9 @@ API version 9-18，使用该接口无需权限；从API version 19开始，需�
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.<br>适用版本：19+ |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
+| 801     | Capability not supported. This API cannot work in car devices.<br>适用版本：26.0.1+ |
 
 **示例：**
 
@@ -169,9 +170,11 @@ API version 9-18，使用该接口无需权限；从API version 19开始，需�
 | 错误码ID   | 错误信息    |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.<br>适用版本：19+ |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 | 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
+| 4900701 | Failed to suspend the device. Possible causes: 1. Not allowed to turn off the screen during the exam.<br>适用版本：26.0.1+ |
+| 801     | Capability not supported. This API cannot work in car devices.<br>适用版本：26.0.1+ |
 
 **示例：**
 
@@ -208,7 +211,7 @@ setPowerMode(mode: DevicePowerMode, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID   | 错误信息    |
 |---------|---------|
-| 4900301 | Setting the power mode failed. |
+| 4900301 | Setting the power mode failed. <br>适用版本：23+|
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
@@ -255,7 +258,7 @@ setPowerMode(mode: DevicePowerMode): Promise&lt;void&gt;
 
 | 错误码ID   | 错误信息    |
 |---------|---------|
-| 4900301 | Setting the power mode failed. |
+| 4900301 | Setting the power mode failed.<br>适用版本：23+ |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
@@ -286,6 +289,8 @@ API version 12-18，使用该接口无需权限；从API version 19开始，需�
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
+**设备行为差异：** 该接口在Car设备调用返回801错误码，在其他设备中正常调用。
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明    |
@@ -300,8 +305,9 @@ API version 12-18，使用该接口无需权限；从API version 19开始，需�
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.<br>适用版本：19+ |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
+| 801     | Capability not supported. This API cannot work in car devices.<br>适用版本：26.0.1+ |
 
 **示例：**
 
@@ -340,7 +346,7 @@ API version 12-18，使用该接口无需权限；从API version 19开始，需�
 | 错误码ID   | 错误信息    |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：19+|
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 | 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
 
@@ -368,6 +374,8 @@ refreshActivity(reason: string): void
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
+**设备行为差异：** 该接口在Car设备调用返回801错误码，在其他设备中正常调用。
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明    |
@@ -384,6 +392,7 @@ refreshActivity(reason: string): void
 | 4900201 |The device activity is being refreshed too frequently; the minimum time interval is 100 ms. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
+| 801     | Capability not supported. This API cannot work in car devices. <br>适用版本：26.0.1+|
 
 **示例：**
 

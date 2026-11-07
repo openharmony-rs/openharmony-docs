@@ -6,6 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=c7eb0f7a0e5ece46961597d0139b9fc3f22f29e0 translatedAt=2026-11-04T04:42:22.868Z pushedAt=2026-11-04T08:04:44.695Z nl=1 -->
 
 The input event injection module provides the capability to simulate keyboard, mouse, and touch input events.
 
@@ -25,11 +26,11 @@ Creates a keyboard controller for simulating key operations. This API uses a pro
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Required permissions**: ohos.permission.CONTROL_DEVICE
+**Required permissions:** ohos.permission.CONTROL_DEVICE
 
 **Device behavior differences**: This API is supported on PCs/2-in-1 devices. On other device types, it returns error code 801.
 
@@ -46,7 +47,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 801  | Capability not supported.  |
+| 801  | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 3800001  | Input service exception.  |
 
 **Example:**
@@ -83,11 +84,11 @@ Creates a mouse controller for simulating mouse operations. This API uses a prom
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Required permissions**: ohos.permission.CONTROL_DEVICE
+**Required permissions:** ohos.permission.CONTROL_DEVICE
 
 **Device behavior differences**: This API is supported on PCs/2-in-1 devices. On other device types, it returns error code 801.
 
@@ -104,7 +105,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 801  | Capability not supported.  |
+| 801  | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 3800001  | Input service exception.  |
 
 **Example:**
@@ -141,11 +142,11 @@ Creates a touch controller for simulating touch operations. This API uses a prom
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Required permissions**: ohos.permission.CONTROL_DEVICE
+**Required permissions:** ohos.permission.CONTROL_DEVICE
 
 **Device behavior differences**: This API is supported on PCs/2-in-1 devices. On other device types, it returns error code 801.
 
@@ -162,7 +163,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 801  | Capability not supported.  |
+| 801  | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 3800001  | Input service exception.  |
 
 **Example:**
@@ -207,11 +208,11 @@ Presses a key. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Required permissions**: ohos.permission.CONTROL_DEVICE
+**Required permissions:** ohos.permission.CONTROL_DEVICE
 
 **Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other device types, it does not take effect.
 
@@ -278,11 +279,11 @@ Releases a key. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Required permissions**: ohos.permission.CONTROL_DEVICE
+**Required permissions:** ohos.permission.CONTROL_DEVICE
 
 **Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other device types, it does not take effect.
 
@@ -329,11 +330,11 @@ Moves the mouse cursor to the specified display coordinates. This API uses a pro
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Required permissions**: ohos.permission.CONTROL_DEVICE
+**Required permissions:** ohos.permission.CONTROL_DEVICE
 
 **Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other device types, it does not take effect.
 
@@ -398,11 +399,11 @@ Presses a mouse button. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Required permissions**: ohos.permission.CONTROL_DEVICE
+**Required permissions:** ohos.permission.CONTROL_DEVICE
 
 **Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other device types, it does not take effect.
 
@@ -469,11 +470,11 @@ Release a mouse button. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Required permissions**: ohos.permission.CONTROL_DEVICE
+**Required permissions:** ohos.permission.CONTROL_DEVICE
 
 **Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other device types, it does not take effect.
 
@@ -511,11 +512,11 @@ Starts an axis event. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Required permissions**: ohos.permission.CONTROL_DEVICE
+**Required permissions:** ohos.permission.CONTROL_DEVICE
 
 **Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other device types, it does not take effect.
 
@@ -587,11 +588,11 @@ Updates an axis event. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Required permissions**: ohos.permission.CONTROL_DEVICE
+**Required permissions:** ohos.permission.CONTROL_DEVICE
 
 **Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other device types, it does not take effect.
 
@@ -630,11 +631,11 @@ Ends an axis event. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Required permissions**: ohos.permission.CONTROL_DEVICE
+**Required permissions:** ohos.permission.CONTROL_DEVICE
 
 **Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other device types, it does not take effect.
 
@@ -670,9 +671,9 @@ Represents information about a single touch point on the display.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
@@ -696,11 +697,11 @@ Presses down a touch point. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Required permissions**: ohos.permission.CONTROL_DEVICE
+**Required permissions:** ohos.permission.CONTROL_DEVICE
 
 **Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other device types, it does not take effect.
 
@@ -788,11 +789,11 @@ Moves a touch point. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Required permissions**: ohos.permission.CONTROL_DEVICE
+**Required permissions:** ohos.permission.CONTROL_DEVICE
 
 **Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other device types, it does not take effect.
 
@@ -830,11 +831,11 @@ Releases a touch point. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Required permissions**: ohos.permission.CONTROL_DEVICE
+**Required permissions:** ohos.permission.CONTROL_DEVICE
 
 **Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other device types, it does not take effect.
 

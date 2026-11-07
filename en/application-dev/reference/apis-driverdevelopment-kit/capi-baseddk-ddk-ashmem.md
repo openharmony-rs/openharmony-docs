@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:47:36.924Z pushedAt=2026-06-22T11:21:11.369Z -->
+<!-- md-trans-meta sourceCommit=b5aa01b6af5d19922ff7e85249d00c2a9af91e2a translatedAt=2026-11-04T03:38:37.329Z pushedAt=2026-11-04T10:12:49.966Z nl=1 -->
 
 ```c
 typedef struct DDK_Ashmem {...} DDK_Ashmem
@@ -13,7 +13,7 @@ typedef struct DDK_Ashmem {...} DDK_Ashmem
 
 ## Overview
 
-Device memory map created by calling **OH_DDK_CreateAshmem**. A buffer using the device memory map can provide better performance.
+Defines the shared memory created by calling [OH_DDK_CreateAshmem](capi-ddk-api-h.md#oh_ddk_createashmem). The buffer of the shared memory provides better performance and is applicable to scenarios that require high-performance data sharing, such as efficient sharing of a large amount of data between multiple modules and fast data exchange between drivers and apps.
 
 **Since**: 12
 
@@ -30,6 +30,8 @@ Device memory map created by calling **OH_DDK_CreateAshmem**. A buffer using the
 | int32_t ashmemFd | File descriptor of the **Ashmem** object.|
 | const uint8_t* address | Buffer address.|
 | const uint32_t size | Buffer size.|
-| uint32_t offset | Offset of the used buffer. The default value is **0**, indicating that there is no offset and the buffer starts from the specified address.|
-| uint32_t bufferLength | Length of the buffer. By default, the value is equal to that of **size**, indicating that the entire buffer is used.|
-| uint32_t transferredLength | Length of the transferred data.|
+| uint32_t offset | Offset of the used buffer. The default value is **0**, indicating that there is no offset and the buffer starts from the address specified by **address**. The sum of **offset** and **bufferLength** cannot exceed **size**. Otherwise, out-of-bounds access occurs. |
+| uint32_t bufferLength | Length of the used buffer. By default, the value is equal to **size** (indicating that the entire buffer is used). The sum of **offset** and **bufferLength** cannot be greater than **size**. Otherwise, out-of-bounds access occurs. |
+| uint32_t transferredLength | Length of the transferred data, in bytes. This value is updated by the API after data transfer is complete. |
+
+

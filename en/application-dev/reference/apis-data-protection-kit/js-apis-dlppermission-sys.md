@@ -5,7 +5,7 @@
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=f8d9f8695aa51ebdb26a65f3f55f5a9af2ec47f2 translatedAt=2026-08-31T01:14:56.554Z pushedAt=2026-08-31T12:30:16.094Z -->
+<!-- md-trans-meta sourceCommit=59c3d4cb2a1fa94afc606906902fd7f0bcad78c2 translatedAt=2026-11-04T04:50:56.940Z pushedAt=2026-11-04T10:12:33.509Z nl=1 -->
 
 ## Model Overview
 Data loss prevention (DLP) is a system solution provided to prevent data disclosure. This module provides APIs for cross-device file access management, encrypted storage, and access authorization. DLP protects sensitive files through encryption and generates encrypted files in .dlp format (DLP files). When opening a DLP file, the system automatically creates an isolated DLP sandbox environment to ensure that the file content is not leaked to unauthorized environments.
@@ -85,10 +85,11 @@ This API is used to obtain the DLP sandbox gathering policy of the current syste
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -128,11 +129,12 @@ This API is used to obtain the DLP sandbox gathering policy of the current syste
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -185,11 +187,12 @@ Before a DLP file management application opens a protected file, the system need
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -237,11 +240,12 @@ Before a DLP file management application opens a protected file, the system need
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -294,11 +298,12 @@ This API can be called only after a DLP sandbox is installed by calling [install
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -346,11 +351,12 @@ This API can be called only after a DLP sandbox is installed by calling [install
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -401,11 +407,12 @@ The DLP management application needs to track the creation and destruction statu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -445,11 +452,12 @@ When the DLP management application exits or no longer needs to track sandbox st
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -509,11 +517,12 @@ When a DLP application needs to access a DLP file using a standard file API, it 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -577,11 +586,12 @@ This API is called when a DLP application needs to access a DLP file using a sta
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -647,10 +657,11 @@ Before deleting a link file, stop the read and write to ensure secure file opera
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -713,11 +724,12 @@ Before deleting a link file, stop the read and write.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -762,7 +774,7 @@ ExampleFunction();
 
 resumeFuseLink(): Promise&lt;void&gt;
 
-Resumes the read and write on the FUSE. This API uses a promise to return the result. After the API is successfully called, the read and write on the link file are resumed.
+Resumes the read and write on the FUSE. This API uses a promise to return the result. After the API is successfully called, the read and write on the link file are resumed. 
 
 This API can be called to resume read and write only after [stopFuseLink](#stopfuselink) is called to stop the read and write operations.
 
@@ -784,10 +796,11 @@ After the link file is replaced, the read and write need to be resumed for norma
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -852,11 +865,12 @@ After the link file is replaced, the read and write need to be resumed.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -928,11 +942,12 @@ When you need to access a different DLP file, you can replace the link file to c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -997,11 +1012,12 @@ When you need to access a different DLP file, you can replace the link file. Bef
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -1076,11 +1092,12 @@ This API is used to clear the link file mapping after DLP file access is complet
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -1145,11 +1162,12 @@ This API is used to clear the link file mapping after DLP file access is complet
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -1220,11 +1238,12 @@ This API is used when the file owner decides to disable the DLP protection for a
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1296,11 +1315,12 @@ This API is used when the file owner decides to disable the DLP protection for a
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1379,10 +1399,11 @@ This API is used when the file owner decides to close a DLP file.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -1448,11 +1469,12 @@ This API is used when the file owner decides to close a DLP file.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -1523,11 +1545,12 @@ After calling **generateDLPFile** to return a **DLPFile** object, the system mus
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1601,11 +1624,12 @@ After calling **generateDLPFile()** to return a **DLPFile** object, the system m
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1680,11 +1704,12 @@ When a DLP management application or an authorized application needs to access a
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1752,11 +1777,12 @@ Opens a DLP file. This API uses an asynchronous callback to return the result. A
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |

@@ -6,6 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=48e270d4a499c8a84c717e49c8cc5b7806005efd translatedAt=2026-11-04T04:55:27.248Z pushedAt=2026-11-04T08:04:44.716Z nl=1 -->
 
 - ArkTS APIs<!--input-arkts-->
   - [@ohos.multimodalInput.inputDevice (Input Device)](js-apis-inputdevice.md)
@@ -14,17 +15,17 @@
   - [@ohos.multimodalInput.keyCode (Key Code)](js-apis-keycode.md)
   - [@ohos.multimodalInput.keyEvent (Key Event)](js-apis-keyevent.md)
   - [@ohos.multimodalInput.mouseEvent (Mouse Event)](js-apis-mouseevent.md)
-  - [@ohos.multimodalInput.gestureEvent (Gesture Input Event)](js-apis-multimodalinput-gestureevent.md)
-  - [@ohos.multimodalInput.pointer (Mouse Pointer)](js-apis-pointer.md)
+  - [@ohos.multimodalInput.gestureEvent (Gesture Event)](js-apis-multimodalinput-gestureevent.md)
+  - [@ohos.multimodalInput.pointer (Mouse Cursor and Cursor-Type Peripherals)](js-apis-pointer.md)
   - [@ohos.multimodalInput.touchEvent (Touch Event)](js-apis-touchevent.md)
   - [@ohos.multimodalInput.infraredEmitter (IR Management)](js-apis-infraredemitter.md)
   - [@ohos.multimodalInput.inputConsumer (Global Shortcut Keys)](js-apis-inputconsumer.md)
   - [@ohos.multimodalInput.inputEventClient (Input Event Injection)](js-apis-inputeventclient.md)
   <!--Del-->
-  - [@ohos.multimodalInput.pointer (Mouse Pointer) (System API)](js-apis-pointer-sys.md)
+  - [@ohos.multimodalInput.pointer (Mouse Cursor and Cursor-Type Peripherals) (System API)](js-apis-pointer-sys.md)
   - [@ohos.multimodalInput.shortKey (Preset Global Shortcut Keys) (System API)](js-apis-shortKey-sys.md)
   - [@ohos.multimodalInput.inputConsumer (Global Shortcut Keys) (System API)](js-apis-inputconsumer-sys.md)
-  - [@ohos.multimodalInput.inputDevice (Input device) (system API)](js-apis-inputdevice-sys.md)
+  - [@ohos.multimodalInput.inputDevice (Input Device) (System API)](js-apis-inputdevice-sys.md)
   - [@ohos.multimodalInput.inputEventClient (Input Event Injection) (System API)](js-apis-inputeventclient-sys.md)
   - [@ohos.multimodalInput.inputMonitor (Input Monitor) (System API)](js-apis-inputmonitor-sys.md)
   - [@ohos.multimodalInput.gestureEvent (Gesture Event) (System API)](js-apis-multimodalinput-gestureevent-sys.md)
@@ -57,7 +58,7 @@
     - [Input_CursorInfo](capi-input-input-cursorinfo.md)
 - Error Codes<!--input-arkts-errcode-->
   <!--Del-->
-  - [Screen Hopping Error Codes](errorcode-cooperator.md)
+  - [Screen Hopping Error Codes (To Be Deprecated)](errorcode-cooperator.md)
   - [Input Key Monitor Error Codes](errorcode-inputmonitor.md)
   <!--DelEnd-->
   - [Shortcut Key Error Codes](errorcode-inputconsumer.md)

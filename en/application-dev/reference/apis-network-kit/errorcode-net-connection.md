@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=c8d611da517c0df9bbfb2e4952764bf8397e713e translatedAt=2026-11-04T06:35:53.728Z pushedAt=2026-11-04T08:04:44.865Z nl=1 -->
 
 > **NOTE**
 >
@@ -59,15 +60,15 @@ This error code is reported if a system internal error occurs.
 
 **Cause**
 
-1. The memory is abnormal.
+1. Memory exception.
 
-2. A null pointer is present.
+2. Null pointer.
 
 **Procedure**
 
-1. Check whether the memory space is sufficient. If not, clear the memory and try again.
+1. Check whether the memory space is sufficient, and clear the memory and try again.
 
-2. Check whether the system is normal. If not, try again later or restart the device.
+2. The system is abnormal. Try again later or restart the device.
 
 ## 2101007 Callback Not Exist
 
@@ -103,9 +104,9 @@ The **callback** object has been registered for activating a network or listenin
 
 **Procedure**
 
-1. Check whether the **callback** object has been registered.
+1. Ensure that the callback object to be registered has not been registered before.
 
-2. If the **callback** object has been registered, use the registered **callback** object.
+2. If the callback object has already been registered, perform the existing registration.
 
 
 ## 2101022 Number of Requests Exceeding the Maximum
@@ -120,15 +121,15 @@ This error code is reported if the number of network requests exceeds the maximu
 
 **Cause**
 
-- The number of requests for activating a network or listening to network status changes has reached the maximum value.
+1. The number of network requests with specified properties that are activated and listened for exceeds the maximum.
 
-- The maximum number of 2.NetConnection.register interfaces has been reached.
+2. The NetConnection.register API exceeds the maximum number of registrations.
 
 **Procedure**
 
-1. Locate the fault based on the "Over the max request number" log record.
+1. Locate the problem based on the log message "Over the max request number".
 
-2. After using **NetConnection.register**, call **NetConnection.unregister** to cancel the registered listener in a timely manner.
+2. After using the NetConnection.register API, call the unregister API in a timely manner to cancel the registration.
 
 ## 2100301 Failed to Authenticate the Caller (Non-VPN Application)
 

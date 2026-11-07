@@ -20,6 +20,7 @@ CMakeLists.txt中添加以下lib。
 
 ```txt
 libohinputmethod.so
+libhilog_ndk.z.so
 ```
 
 ## 引用头文件
@@ -154,7 +155,7 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
 
 示例代码总入口为InputMethodNdkDemo函数。
 
-> 说明：
+> **说明：**
 >
 > 需要在CMakeLists.txt中添加libohinputmethod.so libhilog_ndk.z.so依赖。
 

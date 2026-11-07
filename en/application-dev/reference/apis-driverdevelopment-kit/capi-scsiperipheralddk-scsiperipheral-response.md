@@ -1,12 +1,11 @@
 # ScsiPeripheral_Response
-
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
 <!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:48:49.107Z pushedAt=2026-06-22T11:21:11.409Z -->
+<!-- md-trans-meta sourceCommit=b5aa01b6af5d19922ff7e85249d00c2a9af91e2a translatedAt=2026-11-04T03:55:02.763Z pushedAt=2026-11-04T10:12:50.015Z nl=1 -->
 
 ```c
 typedef struct ScsiPeripheral_Response {...} ScsiPeripheral_Response
@@ -14,7 +13,7 @@ typedef struct ScsiPeripheral_Response {...} ScsiPeripheral_Response
 
 ## Overview
 
-Defines the response structure.
+Defines the SCSI response parameter struct, which contains the status, error diagnostic data, and transfer result, and is used to receive SCSI device response data and determine whether a command succeeds.
 
 **Since**: 18
 
@@ -28,12 +27,14 @@ Defines the response structure.
 
 | Name| Description|
 | -- | -- |
-| uint8_t senseData[[SCSIPERIPHERAL_MAX_SENSE_DATA_LEN](capi-scsi-peripheral-types-h.md#scsiperipheral_max_sense_data_len)] | Sense data, that is, information returned by the SCSI device to the host to report the device status, error information, and diagnosis information. |
-| [ScsiPeripheral_Status](capi-scsi-peripheral-types-h.md#scsiperipheral_status) status | Status when the call is complete, for example, **Good** or **Busy**.|
-| uint8_t maskedStatus | Masked status, which is used in SCSI Generic (SG) interfaces of Linux to store the processed SCSI status for easy access by applications.|
-| uint8_t msgStatus | Message status.|
-| uint8_t sbLenWr | Number of bytes that are actually written to the sense buffer.|
-| uint16_t hostStatus | Host adapter status, for example, success (0x00), connection failure (0x01), busy bus (0x02), or timeout (0x03).|
-| uint16_t driverStatus | Driver status, for example, success (0x00) or busy device or resource (0x01).|
+| uint8_t senseData[[SCSIPERIPHERAL_MAX_SENSE_DATA_LEN](capi-scsi-peripheral-types-h.md#macros)] | Sense Data, which contains the status, error, and diagnostic information returned by the SCSI device to the host. |
+| [ScsiPeripheral_Status](capi-scsi-peripheral-types-h.md#scsiperipheral_status) status | Status when the call is complete. Possible values include SCSIPERIPHERAL_STATUS_GOOD (normal status) and SCSIPERIPHERAL_STATUS_BUSY (busy). |
+| uint8_t maskedStatus | In the SCSI generic driver, this field stores the SCSI status after mask processing. |
+| uint8_t msgStatus | Message status, which indicates the message result after the SCSI command is executed. |
+| uint8_t sbLenWr | Number of valid bytes actually written to the Sense Buffer, used to determine the length of valid data in the senseData array. A value of 0 indicates that there is no Sense Data. |
+| uint16_t hostStatus | Host adapter status. For example: success (0x00), unable to connect (0x01), bus busy (0x02), and timeout (0x03). |
+| uint16_t driverStatus | Driver status. For example: success (0x00) and device or resource busy (0x01). |
 | int32_t resId | Length deviation of the actually transmitted data, that is, the number of bytes that are not transmitted.|
-| uint32_t duration | Command execution duration, in ms.|
+| uint32_t duration | Time consumed to execute the SCSI command (in ms). |
+
+

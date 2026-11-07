@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:05:17.136Z pushedAt=2026-09-16T08:19:04.744Z -->
+<!-- md-trans-meta sourceCommit=8d95ce71a533e95ed95b7973acfeabe378d2316f translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 ## Is there any mechanism to check whether napi_ref leaks
 
@@ -77,7 +77,7 @@ MyTsfnContext(napi_env env, napi_value workName) {
     // Create a thread-safe function.
     if (napi_create_threadsafe_function(env, nullptr, nullptr, workName, 1, 1, this,
             TsfnFinalize, this, TsfnCallJs, &tsfn_) != napi_ok) {
-        OH_LOG_INFO(LOG_APP, "tsfn is created failed");
+        OH_LOG_ERROR(LOG_APP, "tsfn is created failed");
         return;
     };
 };
@@ -150,7 +150,7 @@ static void TsfnCallJs(napi_env env, napi_value func, void *context, void *data)
 // Register the myTsfnDemo method with the module Index.d.ts. The myTsfnDemo method is defined as follows:
 // export const myTsfnDemo: () => void;
 napi_value MyTsfnDemo(napi_env env, napi_callback_info info) {
-    OH_LOG_ERROR(LOG_APP, "MyTsfnDemo is called");
+    OH_LOG_INFO(LOG_APP, "MyTsfnDemo is called");
     napi_value workName = nullptr;
     napi_create_string_utf8(env, "MyTsfnWork", NAPI_AUTO_LENGTH, &workName);
     MyTsfnContext *myContext = new MyTsfnContext(env, workName);
@@ -161,7 +161,7 @@ napi_value MyTsfnDemo(napi_env env, napi_callback_info info) {
     };
     char *data0 = new char[]{"Im call in ArkTS Thread"};
     if (!myContext->Call(data0)) {
-        OH_LOG_INFO(LOG_APP, "call tsfn failed");
+        OH_LOG_ERROR(LOG_APP, "call tsfn failed");
     };
 
     // Create a thread to simulate an asynchronous operation.

@@ -1,12 +1,14 @@
 # OHExtDataHandle
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-```
-typedef struct {...} OHExtDataHandle
+<!-- md-trans-meta sourceCommit=c9742d4d4a757fbb6f0510281af0e732af135c64 translatedAt=2026-11-04T10:33:21.495Z pushedAt=2026-11-04T10:35:23.937Z nl=2 -->
+
+```c
+typedef struct OHExtDataHandle {...} OHExtDataHandle
 ```
 
 ## **Overview**
@@ -30,3 +32,4 @@ Describes the extended data handle.
 | int32_t fd           | File descriptor handle. The value **-1** indicates that the handle is not supported.|
 | uint32_t reserveInts | Number of reserved arrays.    |
 | int32_t reserve[0]   | Reserved array.          |
+

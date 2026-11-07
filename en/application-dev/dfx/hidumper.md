@@ -6,19 +6,23 @@
 <!--Designer: @milkbread123-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=bdbc00fc6ec9fe9fee59a762012ca6578bd6f053 translatedAt=2026-08-22T01:24:25.109Z pushedAt=2026-08-22T02:27:51.156Z -->
+<!-- md-trans-meta sourceCommit=51ad2143e77136e0bd14849a334c933bdac9908f translatedAt=2026-11-05T06:16:33.941Z pushedAt=2026-08-22T02:27:51.156Z nl=1 -->
 
 hidumper is a command line tool used to export system information. It can analyze the usage of system resources such as CPU, memory, and storage, query the running status of system services, and locate resource usage exceptions and communication problems.
 
+
 Based on the application scenarios supported by hidumper, this topic describes the following basic capabilities: querying memory, CPU usage, system capabilities, process, storage, and system information, obtaining system fault logs, exporting inter-process communication (IPC) records, and compressing and dumping exported information.
 
+
 For FAQs about hidumper, see [FAQs](#faqs).
+
 
 ## Environment Setup
 
 - The [environment setup](hdc.md#environment-setup) is complete.
 
 - The devices are properly connected and **hdc shell** is executed.
+
 
 ## Command Description
 
@@ -43,7 +47,7 @@ For FAQs about hidumper, see [FAQs](#faqs).
 | [--cpuusage [pid]](#querying-process-cpu-usage)| Obtains the CPU usage by process and category. If a PID is specified, the CPU usage of the specified PID is displayed. The value range is (0, Number of CPU cores].|
 | [--cpufreq](#querying-cpu-frequency)| Obtains the actual CPU frequency of each core, in kHz.|
 | [--mem [--prune]](#querying-device-memory)| Obtains the total memory usage. If **--prune** is specified, only simplified memory usage is exported.<br>Note: The **--prune** parameter is supported since API version 20.|
-| <!--RP11-->[--mem pid [--show-ashmem] [--show-dmabuf]](#querying-process-memory) | Obtains the memory usage of the specified process.<br />When --show-ashmem is specified, additionally prints detailed ashmem usage information for the process.<br />When --show-dmabuf is specified, additionally prints detailed DMA memory usage information.<br />**Note:**<br />Since API version 20, supports --show-ashmem and --show-dmabuf for application processes.<br/>Since API version 23, supports --show-dmabuf for system service processes.<!--RP11End--> |
+| <!--RP11-->[--mem pid [--show-ashmem] [--show-dmabuf] [--show-arktsheap]](#querying-process-memory) | Obtains the memory usage of the specified process.<br />**--show-ashmem** also prints detailed ashmem usage.<br />**--show-dmabuf** also prints DMA memory usage details.<br />**--show-arktsheap** also prints ArkTS heap usage for the process's main thread.<br />**Note:**<br />Starting from API version 20, **--show-ashmem** and **--show-dmabuf** for application processes are supported.<br/>Starting from API version 23, **--show-dmabuf** for system service processes is supported.<br/>Starting from API version 26.0.1, **--show-arktsheap** for system service processes is supported.<!--RP11End--> |
 | [--zip](#compressing-exported-information)| Saves the command output to a compressed file in ZIP format in **/data/log/hidumper**.|
 | [--ipc [pid]/-a --start-stat/stat/--stop-stat](#obtaining-ipc-information)| Collects IPC information of a process in a specified period. If **-a** is used, IPC information of all processes is collected. **--start-stat** starts the IPC information collection. **--stat** obtains the IPC information. **--stop-stat** stops the IPC information collection.|
 | [--mem-smaps pid [-v]](#querying-process-memory)| Obtains the memory usage of a specified process from **/proc/pid/smaps**. **-v** is used to specify more details about the process. (This command is available only for [applications of the debug version](performance-analysis-kit-terminology.md#applications-of-the-debug-version).)<br>Note: This parameter is supported since API version 20.|
@@ -146,6 +150,7 @@ PID        Total Pss(xxx in SwapPss)           GL     AdjLabel     Name
 ```
 
 AdjLabel indicates the memory reclaim priority of the process. The value ranges from -1000 to 1000. A larger value indicates that the process is less important, and the memory is reclaimed first.
+
 
 ### Querying Process Memory
 
@@ -291,7 +296,6 @@ m.xxx.xxx             7612        87        40960             2750      1424    
 Ashmem:
 Total Ashmem:144 kB
 ```
-
 Field description:
 
 | Field| Description|
@@ -311,12 +315,63 @@ Field description:
 <!--RP12-->
 <!--RP12End-->
 
+Run **hidumper --mem pid --show-arktsheap** to obtain the ArkTS heap usage of the main thread in the specified process.
+
+Example:
+
+```shell
+$ hidumper --mem 1436 --show-arktsheap
+
+-------------------------------[memory]-------------------------------
+
+                             Pss         Shared         Shared        Private        Private           Swap        SwapPss           Heap           Heap           Heap
+                           Total          Clean          Dirty          Clean          Dirty          Total          Total           Size          Alloc           Free
+                          ( kB )         ( kB )         ( kB )         ( kB )         ( kB )         ( kB )         ( kB )         ( kB )         ( kB )         ( kB )
+                 ------------------------------------------------------------------------------------------------------------------------------------------------------
+               GL              0              0              0              0              0              0              0              0              0              0
+            Graph          11300              0              0              0          11300              0              0              0              0              0
+      ark ts heap          14978              0           7460              0          13916              0              0              0              0              0
+            guard              0              0              0              0              0              0              0              0              0              0
+      native heap          28362              0          23380              0          25168              0              0              0              0              0
+   AnonPage other           1242              4           3852              0            808              0              0              0              0              0
+            stack            880              0              0              0            880              0              0              0              0              0
+              .so          20661          94220          13996           1480           1368              0              0              0              0              0
+              dev           5988              0            252             32           5956              0              0              0              0              0
+             .ttf            188            468              0             24              0              0              0              0              0              0
+   FilePage other           2533           1776              4           2020              4              0              0              0              0              0
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            Total          86163          96468          49172           3556          59400              0              0              0              0              0
+
+native heap:
+           heap:           686              0            184              0            660              0              0              0              0              0
+       brk heap:         25533              0          20980              0          22676              0              0              0              0              0
+      mmap heap:          2143              0           2216              0           1832              0              0              0              0              0
+
+Purgeable:
+        PurgSum:0 kB
+        PurgPin:0 kB
+
+DMA:
+            Dma:11300 kB
+
+arkts heap:
+tid               thread name                   arkts_heap(KB)
+1436              m.ohos.systemui               14848
+```
+Field description:
+
+| Field| Description|
+| -------- | -------- |
+| tid | ID of the main thread in the specified process. |
+| thread name | Name of the main thread in the specified process. |
+| arkts_heap(KB) | ArkTS heap size of the main thread in the specified process. |
+
 Run the **hidumper --mem-smaps pid** command to obtain the detailed memory usage of a specified process. This command aggregates values for identical memory segments.
 
 Example:
 
-```txt
-$ hidumper --mem-smaps 3456  # 3456 indicates the process ID of the target debuggable application.
+```shell
+$ hidumper --mem-smaps 3456  -> 3456 indicates the process ID of the target debuggable application.
 
 -------------------------------[memory]-------------------------------
 
@@ -341,8 +396,8 @@ Run the **hidumper --mem-smaps pid -v** command to obtain the detailed memory us
 
 Example:
 
-```txt
-$ hidumper --mem-smaps 3456 -v   # 3456 indicates the process ID of the target debuggable application.
+```shell
+$ hidumper --mem-smaps 3456 -v  -> 3456 indicates the process ID of the target debuggable application.
 
 -------------------------------[memory]-------------------------------
                                     Shared      Shared      Private     Private
@@ -372,12 +427,11 @@ If the application is a debug application, the following information is displaye
 
 To build a debug application, you need to use a debug certificate for signature. For details about how to request and use the debug certificate, see [Requesting a Debug Certificate](https://developer.huawei.com/consumer/en/doc/app/agc-help-add-debugcert-0000001914263178).
 
+
 ### Querying VM Heap Memory
 
 <!--RP2-->
-
 Run the **hidumper --mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw] [--clean] [--single]** command to view the ArkTS app VM heap memory. Run the **hidumper --mem-cjheap pid [--gc]** command to view the Cangjie app VM heap memory. Run the **hidumper --mem-heap pid ARG [--leakobj]** command to view the specified VM heap memory, where ARG specifies the snapshot type. The generated heap memory files are stored in the /data/log/faultlog/temp directory.
-
 <!--RP2End-->
 
 > **NOTE**
@@ -391,14 +445,12 @@ Run the **hidumper --mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw] [--clean
   Example:
 
   <!--RP3-->
-
   ```shell
   $ hidumper --mem-jsheap 64949  -> 64949 indicates the process ID of the target application.
   $ ls | grep jsheap   -> Go to the heap memory file directory and run the command.
   jsheap-64949-64949-1751075546050
   jsheap-64949-64989-1751075546050
   ```
-
   <!--RP3End-->
 
 - Run the **hidumper --mem-jsheap pid -T tid** command to obtain the VM heap memory of a specified JS thread in a specified process. The file is named in the format of <!--RP1-->**jsheap-Process ID-JS thread ID-Timestamp**<!--RP1End-->.
@@ -406,13 +458,11 @@ Run the **hidumper --mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw] [--clean
   Example:
 
   <!--RP4-->
-
   ```shell
   $ hidumper --mem-jsheap 64949 -T 64949  -> 64949 indicates the process ID of the target application.
   $ ls | grep jsheap   -> Go to the heap memory file directory and run the command.
   jsheap-64949-64949-1751075567710
   ```
-
   <!--RP4End-->
 
 - Run the **hidumper --mem-jsheap pid \[-T tid] --raw** command to obtain the VM heap memory of a specified process or JS thread. The generated heap memory file is in .rawheap format and is named in the format of <!--RP1-->**jsheap-Process ID-JS thread ID-Timestamp**<!--RP1End-->**.rawheap**. For details about how to parse and convert the .rawheap file, see [rawheap-translator](../tools/rawheap-translator.md).
@@ -420,7 +470,6 @@ Run the **hidumper --mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw] [--clean
   Example:
 
   <!--RP5-->
-
   ```shell
   $ hidumper --mem-jsheap 64949 --raw  -> 64949 indicates the process ID of the target application.
   $ ls | grep jsheap   -> Go to the heap memory file directory and run the command.
@@ -430,7 +479,6 @@ Run the **hidumper --mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw] [--clean
   $ ls | grep jsheap
   jsheap-64949-64949-1751075546055.rawheap
   ```
-
   <!--RP5End-->
 
 - Run the **hidumper --mem-jsheap pid --gc** command to trigger GC for a specified application process. If this command is executed successfully, no file is generated.
@@ -448,21 +496,17 @@ Run the **hidumper --mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw] [--clean
     The procedure is as follows:
 
     1. The application calls the [jsLeakWatcher.enable](../reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md#jsleakwatcherenable) API.
-
     2. The application calls the [jsLeakWatcher.watch](../reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md#jsleakwatcherwatch) API.
-
     3. Run the **hidumper --mem-jsheap [pid] --leakobj** command to export the VM heap memory and leaked object information.
 
   Example:
 
   <!--RP7-->
-
   ```shell
   $ hidumper --mem-jsheap 64949 --leakobj
   $ ls | grep leaklist
   leaklist-64949-1730873210483
   ```
-
   <!--RP7End-->
 
 - Run the **hidumper --mem-jsheap pid --clean** command to obtain the VM heap memory of a specified process and trigger cleanup of nodeId node information. This command does not generate any files, and no output is displayed upon successful execution.
@@ -521,7 +565,7 @@ Run the **hidumper --mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw] [--clean
   This indicates that 8 bytes are directly leaked starting from 0x59d4809b40. When the number of leaked bytes is less than 64, all bytes are printed.
 
   "referencing" indicates that this address references another address. The printed content points to the referenced address. Reading from back to front, the pointed address is 0x59d4809b48. Therefore, the pointed-to 0x59d4809b48 and the next pointed-to 0x59d4809b40 are indirect leaks.
-
+    
   The print order follows these rules:
 
   1. Direct leaks come first: "directly" entries appear before "indirectly" entries.
@@ -537,13 +581,11 @@ Run the **hidumper --mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw] [--clean
   Example:
 
   <!--RP10-->
-
   ```shell
   $ hidumper --mem-heap 65097 --native  -> 65097 is the target app process ID.
   $ ls | grep nativeheap -> Navigate to the heap memory file directory and run the command.
   nativeheap-65097-1775640819058
   ```
-
   <!--RP10End-->
 
   Parsing description:
@@ -559,7 +601,6 @@ Run the **hidumper --mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw] [--clean
   60 80 E0 8F 5A 00 00 00 30 00 00 00 00 00 00 00
   ...
   ```
-
   The first 8 bytes of the first line, 4E 53 4E 41 50 31 2E 30, represent "NSNAP1.0" when converted to characters, indicating the version number of this file. This field is fixed.
 
   The last 8 bytes of the first line, 64 00 00 00 00 00 00 00, represent the number of leak points, which is 0x0000000000000064, or 100 in decimal. This indicates that 100 leak points were detected in this run. This value changes based on the number of reported nodes.
@@ -579,17 +620,14 @@ Run the **hidumper --mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw] [--clean
   Example:
 
   <!--RP17-->
-
   ```shell
   $ hidumper --mem-heap 65097 --kotlin  -> 65097 is the target app process ID.
   $ ls | grep kotlinheap -> Run this command in the heap memory file directory.
   kotlinheap-65097-1775640819058
   ```
-
   <!--RP17End-->
 
 <!--Del-->
-
 - Run the **hidumper --mem-cjheap pid** command to obtain the VM heap memory of a specified Cangjie process. The file name format is **cjheap-Process ID-Timestamp**.
 
   Example:
@@ -607,14 +645,14 @@ Run the **hidumper --mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw] [--clean
   ```shell
   $ hidumper --mem-cjheap 65012 --gc  -> 65012 indicates the process ID of the target application.
   ```
-
 <!--DelEnd-->
-
 You can run the hdc [file transfer](hdc.md#transferring-files) command to obtain the generated file from the device.
+
 
 ## Querying CPU Usage
 
 You can use the hidumper to query the CPU information, which includes the system CPU load.
+
 
 ### Querying Device CPU Usage
 
@@ -637,6 +675,7 @@ Details of Processes:
 ...
 ```
 
+
 ### Querying Process CPU Usage
 
 Run the **hidumper --cpuusage pid** command to obtain the CPU usage of a specified process.
@@ -655,6 +694,7 @@ Details of Processes:
     PID   Total Usage      User Space    Kernel Space    Page Fault Minor    Page Fault Major    Name
     1          0.00%           0.00%          0.00%           38368                1394            init
 ```
+
 
 ### Querying CPU Frequency
 
@@ -678,7 +718,9 @@ cmd is: cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq
 ...
 ```
 
+
 ## Querying System Services
+
 
 ### Querying System Service List
 
@@ -700,6 +742,7 @@ WifiP2p                          WifiScan                         1125
 NetPolicyManager                 NetStatsManager                  NetTetheringManager
 ...
 ```
+
 
 ### Obtaining System Service Details
 
@@ -726,9 +769,12 @@ h                             |help text for the tool
 ...
 ```
 
+
 - Run the **hidumper -s [SA0] [SA1]** command to obtain detailed information about one or more specified system services. You can run the **hidumper -ls** command to query the system capability names **[SA0] [SA1]**.
 
+
 The output is as follows:
+
 
 ```shell
 $ hidumper -s WindowManagerService
@@ -769,11 +815,15 @@ composer fps                   |dump the fps info of composer
 ...
 ```
 
+
 ### Obtaining Capabilities of a Specified System Service
+
 
 Run the **hidumper -s [SA] -a ["option"]** command to obtain the capabilities provided by a specified system service.
 
+
 The following example obtains the help information about RenderService:
+
 
 ```shell
 $ hidumper -s RenderService -a "h"
@@ -809,6 +859,7 @@ flushJankStatsRs              |flush rs jank stats hisysevent
 screen                        |dump all screen information in the system
 ```
 
+
 Run the following command to obtain the capability of obtaining GPU information:
 
 ```shell
@@ -826,9 +877,11 @@ GL_VERSION: OpenGL ES 3.2 B283
 GL_SHADING_LANGUAGE_VERSION: OpenGL ES GLSL ES 3.20
 ```
 
+
 ## Querying Process Information
 
 Run the **hidumper -p [pid]** command to obtain information about a specified process, including the mount, thread, thread runtime, and wait channel information.
+
 
 > **NOTE**
 >
@@ -836,7 +889,9 @@ Run the **hidumper -p [pid]** command to obtain information about a specified pr
 >
 > For details about how to check whether the application specified by the command is debuggable, see the description of the **hidumper --mem-smaps [pid] [-v]** command.
 
+
 The output is as follows:
+
 
 ```shell
 $ hidumper -p 64949
@@ -867,6 +922,7 @@ root             2     4     0  127 10:46:59 ?     00:00:00 [call_ebr]
 ## Querying FD and Thread Information
 
 Starting from API version 26.0.0, you can use the **-p pid --fd/--thread [-v]** command to obtain summary information about the file descriptors or threads of a specified process. The **-v** option provides detailed information about the file descriptors or threads of the specified process.
+
 
 > **NOTE**
 >
@@ -970,7 +1026,6 @@ tid     thread_name     start_time
 3053    OS_FFRT_5_0     24099
 ...
 ```
-
 The **--fd** and **--thread** options cannot be used together:
 
 ```shell
@@ -998,9 +1053,12 @@ cmd is: netstat -nW  -> Run the netstat -nW command to query network information
 ...
 ```
 
+
 Run the **hidumper --net [pid]** command to obtain the network traffic information of a specified process.
 
+
 The output is as follows:
+
 
 ```shell
 $ hidumper --net 1
@@ -1010,6 +1068,7 @@ $ hidumper --net 1
 Received Bytes:0
 Sent Bytes:51885
 ```
+
 
 ## Querying Storage Information
 
@@ -1027,9 +1086,12 @@ cmd is: storaged -u -p
 ...
 ```
 
+
 - Run the **hidumper --storage [pid]** command to obtain the I/O information of a specified process.
 
+
 The output is as follows:
+
 
 ```shell
 $ hidumper --storage 1
@@ -1048,7 +1110,9 @@ write_bytes: 10907648
 cancelled_write_bytes: 734003
 ```
 
+
 The fields in the I/O information are described as follows:
+
 
 - **rchar**: total number of characters read by the process from the cache or directly since it starts, in bytes.
 
@@ -1063,6 +1127,7 @@ The fields in the I/O information are described as follows:
 - **write_bytes**: number of bytes written by the process to the file system and network since it starts, in bytes.
 
 - **cancelled_write_bytes**: number of bytes that are not written due to write cancellation since the process starts, in bytes. Generally, the value of this field is 0 unless an error occurs when data is written to the disk or the write operation is interrupted.  
+
 
 ## Querying System Information
 
@@ -1202,6 +1267,7 @@ PID        Total Pss(xxx in SwapPss)    Total Vss    Total Rss    Total Uss     
 
 - Run the **hidumper -c** command to obtain all information clusters, including the **base** and **system** clusters.
 
+
 ## Obtaining System Fault Logs
 
 Run the **hidumper -e** command to obtain the system fault log and print its file name and details.
@@ -1217,6 +1283,7 @@ $ hidumper -e
 Generated by HiviewDFX@OpenHarmony  -> Fault log details
 ...
 ```
+
 
 ## Obtaining Abnormal Exit Record List
 
@@ -1272,38 +1339,15 @@ time                  foreground               reason              record_id    
 $ hidumper -e --list --since '2025-09-26 12:42:05' --until '2025-09-26 12:42:05'
 no records found.
 ```
-
 Field description:
 
 | Field| Description|
 | -------- | -------- |
 | time | Time when an abnormal exit occurs.|
 | foreground | Whether the process is in the foreground when an abnormal exit occurs. The value **True** indicates that the process is in the foreground, and **False** indicates the opposite.|
-| reason | Reason for the abnormal exit. For details, see [reason](#reason).|
+| reason | Reason for the abnormal exit. For values, scenarios, and troubleshooting steps, see [Analysis Method and Procedure](appkilled-guidelines.md#analysis-method-and-procedure). |
 | record_id | ID of an abnormal exit record.|
 | process_name | Name of the process where an abnormal exit occurs.|
-
-### reason
-
-For the following reasons, refer to [Analysis Method and Procedure](appkilled-guidelines.md#analysis-method-and-procedure) to rectify the fault.
-
-| Type  | Description                      |
-| ------- | ------------------------- |
-| IllegalAudioRendererBySuspend | No proper background task is applied for the application, but a large amount of audio is played in the background.|
-| LowMemoryKill | Low device memory.|
-| OomKiller | The device memory is used up and cannot be allocated.|
-| PowerSaveClean | The device is switched to the power saving mode or emergency mode.|
-| ResourceLeak(AshmemLeak) | The Ashmem memory usage of the application exceeds the threshold.|
-| ResourceLeak(GpuLeak) | The GPU memory usage of the application exceeds the threshold.|
-| ResourceLeak(GpuRsLeak) | The GPU memory usage of the application in the Render Service process exceeds the threshold.|
-| ResourceLeak(IonLeak) | The ION memory usage of the application exceeds the threshold.|
-| RssThresholdKiller | The Resident Size Set (RSS) usage of the application exceeds the threshold.|
-| SwapFull | The swap space of the system is used up.|
-| ThreadBlock6S | The main application process is blocked. You can view fault log details based on **record_id**.|
-| AppInputBlock | The input event does not respond. You can view fault log details based on **record_id**.|
-| LifecycleTimeout | The lifecycle times out. You can view fault log details based on **record_id**.|
-| JsError | A JS crash occurs. You can view fault log details based on **record_id**.|
-| CppCrash | A native crash occurs. You can view fault log details based on **record_id**.|
 
 ## Obtaining Abnormal Exit Logs
 
@@ -1420,6 +1464,7 @@ $ hidumper -e --print 23123453489239875544
 this type of record does not have faultlog.  -> Reason for failure.
 ```
 
+
 ## Obtaining IPC Information
 
 Run the **hidumper --ipc -a --start-stat/stop-stat/stat** command to obtain the IPC information within the collection period.
@@ -1476,6 +1521,7 @@ $ hidumper --ipc 1473 --stop-stat
 StopIpcStatistics pid:1473 success
 ```
 
+
 ## Compressing Exported Information
 
 hidumper provides the **--zip** command to export any type of exported information into a ZIP file in **/data/log/hidumper**. This command can be combined with other commands, and the file is named with the current timestamp, as shown in the following example.
@@ -1502,19 +1548,14 @@ $ hidumper -e --zip
 ```
 
 ## Common ArkUI Basic Information Display Capabilities
-
 ArkUI provides the capability of obtaining information such as the component tree based on the enhanced hidumper.
-
 ### Obtaining Application Window Information
-
 Run the following command to print the full window information. You can find the **WinId** of the corresponding window in the full information and pass it as a parameter to other commands to obtain related information.
 
 ```shell
 hdc shell hidumper -s WindowManagerService -a '-a'
 ```
-
  **Example**
-
 ```text
 -------------------------------[ability]-------------------------------
 
@@ -1538,7 +1579,6 @@ total window num: 10
 ```
 
 The following table lists the mapping between common **windowName** and built-in application windows.
-
 |windowName|Built-in Application Window|
 |---|---|
 | EntryView|Home screen.|
@@ -1548,13 +1588,11 @@ The following table lists the mapping between common **windowName** and built-in
 | ScreenLockWindow|Lock screen.|
 
 ### Obtaining an Application Component Tree
-
 Run the following command to view information about all components in an application:
 
 ```shell
 hdc shell "hidumper -s WindowManagerService -a '-w %windowId% -element'"
 ```
-
 **windowId** is the window ID of the target application.
 
 **Example**
@@ -1601,17 +1639,14 @@ TouchHotAreas: [ 0, 1208, 720, 72 ]
 ```
 
 ### Obtaining Component Information of a Specified Application Node
-
 Run the following command to view component information of a node:
 
 ```shell
 hdc shell "hidumper -s WindowManagerService -a '-w %windowId% -element -lastpage %nodeID%'"
 ```
-
 **windowId** indicates the window ID of the application, and **nodeID** indicates the ID of the specified node. You can obtain the **nodeID** by obtaining the target application component tree.
 
 **Example**
-
 ```text
 hdc shell "hidumper -s WindowManagerService -a '-w 5 -element -lastpage 3'"
 
@@ -1639,23 +1674,18 @@ TouchHotAreas: [ 0, 1208, 720, 72 ]
 ```
 
 ### Obtaining the Inspector Tree of an Application
-
 The **element/render** tree in the preceding example mainly contains multiple internal implementations, which cannot be mapped to components in the application code. You can print the Inspector tree to obtain the tree structure and basic information corresponding to the application components. The Inspector tree matches DevEco Testing and ArkUI Inspector in DevEco Studio.
 
 You need to enable ArkUI debug before using this functionality.
-
 ```shell
 hdc shell param set persist.ace.testmode.enabled 1
 ```
-
 **set**: command for setting; **persist.ace.testmode.enabled**: ArkUI debug switch name; **1**: the switch is set to **true** to enable the debug functionality.
 
 The command is as follows:
-
 ```shell
 hdc shell "hidumper -s WindowManagerService -a '-w %windowId% -inspector'"
 ```
-
 **Example**
 
 ```text
@@ -1665,49 +1695,129 @@ hdc shell "hidumper -s WindowManagerService -a '-w 5 -inspector'"
 | ID: 2100001
 | compid:
 | text:
+| accessibilityText:
+| accessibilityGroup: 0
+| accessibilityLevel: auto
+| accessibilityCustomRole:
 | top: 72.000000
 | left: 0.000000
 | width: 0.000000
 | height: 0.000000
 | visible: 1
+| debugLine:
 | clickable: 0
+| longclickable: 0
 | checkable: 0
+| scrollable: 0
+| checked: 0
+| hint:
+| childTree: -1
+| accessibilitySelected: 0
+| accessibilityRole:
 |-> Column childSize:1
 | ID: 128
 | compid:
 | text:
+| accessibilityText:
+| accessibilityGroup: 0
+| accessibilityLevel: auto
+| accessibilityCustomRole:
 | top: 72.000000
 | left: 0.000000
 | width: 720.000000
 | height: 1136.000000
 | visible: 1
+| debugLine:
 | clickable: 0
+| longclickable: 0
 | checkable: 0
+| scrollable: 0
+| checked: 0
+| hint:
+| childTree: -1
+| accessibilitySelected: 0
+| accessibilityRole:
 |-> GridContainer childSize:1
 | ID: 129
 | compid:
 | text:
+| accessibilityText:
+| accessibilityGroup: 0
+| accessibilityLevel: auto
+| accessibilityCustomRole:
 | top: 72.000000
 | left: 0.000000
 | width: 720.000000
 | height: 1136.000000
 | visible: 1
+| debugLine:
 | clickable: 0
+| longclickable: 0
 | checkable: 0
+| scrollable: 0
+| checked: 0
+| hint:
+| childTree: -1
+| accessibilitySelected: 0
+| accessibilityRole:
 |-> Column childSize:2
 | ID: 130
 | compid:
 | text:
+| accessibilityText:
+| accessibilityGroup: 1
+|     accessibilityOptions:
+|         accessibilityTextPreferred: 0
+|         stateControllerByType:
+|         stateControllerByInspector:
+|         actionControllerByType:
+|         actionControllerByInspector:
+| accessibilityLevel: yes
+| accessibilityCustomRole:
 | top: 72.000000
 | left: 0.000000
 | width: 720.000000
 | height: 180.000000
 | visible: 1
+| debugLine:
 | clickable: 0
+| longclickable: 0
 | checkable: 0
+| scrollable: 0
+| checked: 0
+| hint:
+| childTree: -1
+| accessibilitySelected: 0
+| accessibilityRole:
 
 ......
 ```
+
+The fields in the preceding example are described as follows:
+
+| Field| Description|
+| -------- | -------- |
+| ID | Accessibility ID of the node, assigned automatically by the system. |
+| compid | Unique component identifier, set through [id](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id). Empty if not set. |
+| text | Component text as a string. If accessibility grouping is enabled, text is merged according to [accessibilityGroup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitygroup), with multiple entries separated by ", ". |
+| accessibilityText | Accessibility text, corresponding to [accessibilityText](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitytext). Empty if not set. |
+| accessibilityGroup | Whether accessibility grouping is enabled, corresponding to [accessibilityGroup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitygroup). **0** means disabled (default); **1** means enabled. |
+| accessibilityOptions | Accessibility grouping options, output only when **accessibilityGroup** is **1**, corresponding to [AccessibilityOptions](../reference/apis-arkui/arkui-ts/ts-types.md#accessibilityoptions14). **accessibilityTextPreferred** corresponds to **accessibilityPreferred** and is **0** when **accessibilityPreferred** is **false**, or **1** otherwise. **stateControllerByType** and **actionControllerByType** are role strings (such as **button**), corresponding to **stateControllerRoleType** and **actionControllerRoleType**, respectively. **stateControllerByInspector** and **actionControllerByInspector** are component ID strings, corresponding to **stateControllerId** and **actionControllerId**, respectively. Unset values are empty.<br>**Note:** Output starting from API version 26.0.1. |
+| accessibilityLevel | Accessibility importance, corresponding to [accessibilityLevel](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel). Values are **auto** (default), **yes**, **no**, and **no-hide-descendants**. |
+| accessibilityCustomRole | Accessibility component type, such as **button**, set through [accessibilityRole](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityrole18). Empty if not set.<br>**Note:** Output starting from API version 18. |
+| top/left | Coordinates of the component's upper-left corner, in vp, calculated by adding the window's screen offset to the component's position relative to the window. |
+| width/height | Component width and height, in vp. |
+| visible | Whether the component is visible. **1** means visible; **0** means invisible. |
+| debugLine | Code line where the component is created, equivalent to **$debugLine** in [getInspectorInfo](../reference/apis-arkui/js-apis-arkui-frameNode.md#getinspectorinfo12). Has a value only in debug builds; otherwise empty.<br>**Note:** Output starting from API version 26.0.0. |
+| clickable | Whether the component is clickable. **1** means a click event is bound; **0** means none is bound. |
+| longclickable | Whether the component can be long-pressed. **1** means a long-press event is bound; **0** means none is bound. |
+| checkable | Whether the component supports selection. **1** means supported (for example, radio buttons, checkboxes, and toggles); **0** means unsupported. |
+| scrollable | Whether the component is scrollable. **1** means supported (for example, Scroll and List containers); **0** means unsupported. |
+| checked | Whether the component is checked. **1** means checked; **0** means unchecked. See [accessibilityChecked](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitychecked13). |
+| hint | Component hint text, such as an input field's placeholder. Empty if none is set. |
+| childTree | Child accessibility tree ID. Components with independent internal accessibility trees, such as Web, XComponent, and widgets, output their tree IDs. **-1** means no child tree. |
+| accessibilitySelected | Whether the component is selected as a single-selection item. **1** means selected; **0** means unselected. Corresponds to [accessibilitySelected](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityselected13).<br>**Note:** Output starting from API version 26.0.1. |
+| accessibilityRole | Component accessibility role, set through the C API attribute [NODE_ACCESSIBILITY_ROLE](../reference/apis-arkui/capi-native-node-h-nodeattributetype-accessibility.md#node_accessibility_role). Empty if not set.<br>**Note:** Output starting from API version 26.0.1. |
 
 ### Obtaining Application Route Stack Information
 
@@ -1722,9 +1832,7 @@ The command is as follows:
 ```shell
 hidumper -s WindowManagerService -a '-w %windowId% -navigation -c'
 ```
-
 **Example**
-
 ```text
 hidumper -s WindowManagerService -a '-w 15 -navigation -c'
 
@@ -1767,12 +1875,12 @@ Navigation number: 4
       | [1]{ ID: 5, Name: "pageSix", Mode: "STANDARD", IsOnShow: "FALSE" }
   | [2]{ ID: 6, Name: "pageThree", Mode: "STANDARD", IsOnShow: "TRUE" }
 ```
-
 > **NOTE**
 >
 > For the same-level nodes, the node displayed at the bottom is the stack top node.
 
 ## FAQs
+
 
 ### What is the difference between the memory usage queried by hidumper and that by the HiDebug APIs?
 
@@ -1794,6 +1902,7 @@ The following table compares the memory information obtained by the **hidumper -
 | [hidebug.getAppNativeMemInfo](../reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebuggetappnativememinfo12) | Obtain the memory usage of an application.| System node: **/proc/pid/smaps_rollup**| No|
 
 To obtain the graphics memory using HiDebug, see [HiDebug Overview](hidebug-guidelines.md).
+
 
 ### hidumper Fails to Obtain Process VM Memory and Leaked Object Information
 

@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=f319e3e62d6356bf78f31e2e8f7ba3927caddf1e translatedAt=2026-07-29T10:49:35.034Z pushedAt=2026-07-29T12:38:13.057Z -->
+<!-- md-trans-meta sourceCommit=b3e6988e0ab25cc1b7ee9318b620b0d585c1093c translatedAt=2026-11-05T00:50:31.274Z pushedAt=2026-07-29T12:38:13.057Z nl=2 -->
 
 ## Overview
 
@@ -36,7 +36,7 @@ The following table describes the properties of the **params** field in an app f
 | -------- | -------- | -------- |
 | time | number | Event trigger time, in ms. |
 | foreground | boolean | Whether the app is in the foreground. **true** indicates that the app is in the foreground; **false** indicates that the app is in the background. |
-| bundle_version | string | App version. |
+| bundle_version | string | App version string. |
 | bundle_version_code | number | App version code. |
 | bundle_name | string | App name. |
 | process_name | string | Process name of the app. |

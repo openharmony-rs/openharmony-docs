@@ -5,7 +5,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=2ef4fc705e90909eae85f03b810d01076231d3b3 translatedAt=2026-09-16T03:20:39.904Z pushedAt=2026-09-16T08:20:30.654Z -->
+<!-- md-trans-meta sourceCommit=0b50ff1c6d77ec00cd47e1216c043c17663c7283 translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 ## Introduction
 
@@ -90,7 +90,7 @@ JSVM OH_JSVM_IsPromise success:0
 
 ### OH_JSVM_CreatePromise
 
-Call **OH_JSVM_CreatePromise** to create a **Promise** object.
+Call **OH_JSVM_CreatePromise** to create a **Promise** object. For sample code, see the [next section](#oh_jsvm_resolvedeferred-and-oh_jsvm_rejectdeferred).
 
 ### OH_JSVM_ResolveDeferred and OH_JSVM_RejectDeferred
 
@@ -269,7 +269,7 @@ static int PromiseRegisterHandler(JSVM_VM vm, JSVM_Env env) {
 
 static void RunDemo(JSVM_VM vm, JSVM_Env env) {
     if (PromiseRegisterHandler(vm, env) != 0) {
-        OH_LOG_INFO(LOG_APP, "Run PromiseRegisterHandler failed");
+        OH_LOG_ERROR(LOG_APP, "Run PromiseRegisterHandler failed");
     }
 }
 ```

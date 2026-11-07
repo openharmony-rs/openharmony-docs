@@ -735,6 +735,8 @@ fontVariations(fontVariations: Array&lt;FontVariation&gt;)
 
 **起始版本：** 26.0.0
 
+**卡片能力：** 从API版本26.0.1开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1287,8 +1289,6 @@ orphanCharOptimization(enabled: Optional\<boolean>)
 孤字优化通过更高效地处理孤立字符（即段落最后一行的首个字符）来改善文本布局。开启后，它会调整换行点以尽可能避免孤立字符。孤字优化特性需在[wordBreak](#wordbreak11)为非BREAK_ALL并且待排版文本首个[TextStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#textstyle)的[locale](../../apis-arkgraphics2d/js-apis-graphics-text.md#textstyle)为“zh-Hans”或“zh-Hant”时生效。
 
 **起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 

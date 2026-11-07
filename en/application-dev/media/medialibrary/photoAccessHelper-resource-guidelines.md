@@ -6,7 +6,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=00d7cb908705b920a9ee7ee48de288635f9580c9 translatedAt=2026-08-11T01:57:47.769Z pushedAt=2026-08-12T03:43:47.460Z -->
+<!-- md-trans-meta sourceCommit=291fa0e7fb80be854c936db6914c1a2a15b75626 translatedAt=2026-11-05T06:16:33.959Z pushedAt=2026-08-12T03:43:47.460Z nl=1 -->
 
 Applications can call photoAccessHelper APIs to manage media assets (images and videos).
 
@@ -203,11 +203,11 @@ Use [FetchResult](../../reference/apis-media-library-kit/arkts-apis-photoAccessH
 
 - The application has the **ohos.permission.WRITE_IMAGEVIDEO** and **ohos.permission.READ_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
-The following example describes how to rename an image named **oldTestPhoto**.
+The following example describes how to rename an image named **test**.
 
 **How to Develop**
 
-1. Set the fetch options.
+1. Set the fetch options to obtain the image whose title is **test**.
 
 2. Call [PhotoAccessHelper.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets-1) to obtain image assets.
 

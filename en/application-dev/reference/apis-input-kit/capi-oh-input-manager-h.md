@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=17eab454ec855b8146a1660d50c133e974ccb611 translatedAt=2026-09-09T01:26:33.387Z pushedAt=2026-09-09T03:29:38.323Z -->
+<!-- md-trans-meta sourceCommit=baf373edc834f96f672deca73765e92903d4597f translatedAt=2026-11-04T04:32:38.163Z pushedAt=2026-11-04T08:04:44.675Z nl=1 -->
 
 ## Overview
 
@@ -3149,7 +3149,7 @@ Sets the modifier keys.
 | -- | -- |
 | [Input_Hotkey](capi-input-input-hotkey.md) *hotkey | Hotkey object.|
 | int32_t *preKeys | List of modifier keys.|
-| int32_t size | Number of modifier keys. The value ranges from 1 to 4. |
+| int32_t size | Number of modifier keys, ranging from 1 to 4. |
 
 ### OH_Input_GetPreKeys()
 
@@ -3423,7 +3423,7 @@ Unsubscribes from hotkey events.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Result code of the OH_Input_RemoveHotkeyMonitor function.<br> Returns [INPUT_SUCCESS](#input_result) if the combination key is unsubscribed successfully, and returns [INPUT_PARAMETER_ERROR](#input_result) if the parameter check fails. |
+| [Input_Result](#input_result) | Result code.<br> [INPUT_SUCCESS](#input_result): the shortcut key subscription is canceled successfully.<br> [INPUT_PARAMETER_ERROR](#input_result): parameter check fails. |
 
 ### OH_Input_RegisterDeviceListener()
 
@@ -3547,14 +3547,14 @@ Obtains information about the input device.
 
 | Parameter| Description|
 | -- | -- |
-| int32_t deviceId | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
+| int32_t deviceId | Unique identifier of the input device. The device ID may change when the same physical device is repeatedly hot-plugged or restarted. You can call [OH_Input_GetDeviceIds()](#oh_input_getdeviceids) to query the device IDs supported by the system. |
 | [Input_DeviceInfo](capi-input-input-deviceinfo.md) **deviceInfo | Pointer to the [Input_DeviceInfo](capi-input-input-deviceinfo.md) object.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that deviceInfo is a null pointer or deviceId is invalid.<br> You can call [OH_Input_GetDeviceIds](#oh_input_getdeviceids) to query the device IDs supported by the system. |
+| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that deviceInfo is a null pointer or deviceId is invalid. |
 
 ### OH_Input_CreateDeviceInfo()
 

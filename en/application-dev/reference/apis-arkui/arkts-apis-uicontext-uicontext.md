@@ -5,6 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=8a87e80bde1813ae427ef9168f35f718a39ede16 translatedAt=2026-10-29T09:13:50.778Z pushedAt=2026-10-30T07:42:44.379Z nl=1 -->
 
 The UIContext instance provides contextual capabilities associated with the current UI instance. It supports obtaining UI-related controllers, managing dialogs and animations, querying node and window information, and converting pixel units. This is suitable for scenarios where you need to manage pages, components, and interactions within a specified UI instance.
 
@@ -495,7 +496,7 @@ Obtains the **ComponentUtils** object.
 | --------------------------------- | --------------------- |
 | [ComponentUtils](arkts-apis-uicontext-componentutils.md) | **ComponentUtils** object.|
 
-**Example**
+**Example** 
 
 For the complete example, see [Example 1: Obtaining the ComponentUtils Object](js-apis-arkui-componentUtils.md#example-1-obtaining-the-componentutils-object).
 
@@ -632,7 +633,7 @@ Obtains a **MediaQuery** object.
 | ------------------------- | ----------------- |
 | [MediaQuery](arkts-apis-uicontext-mediaquery.md) | **MediaQuery** object.|
 
-**Example**
+**Example** 
 
 See the [mediaquery Example](js-apis-mediaquery.md#example).
 
@@ -712,7 +713,7 @@ Sets the parameters for [OverlayManager](arkts-apis-uicontext-overlaymanager.md)
 | ----- | ---------------------------------------- | ---- | ------------------------------------- |
 | options | [OverlayManagerOptions](arkts-apis-uicontext-i.md#overlaymanageroptions15) | Yes| Parameters for **OverlayManager**.|
 
-**Return value**
+**Return value** 
 
 | Type   | Description          |
 | ------- | -------------- |
@@ -756,7 +757,7 @@ Specifies a clear animation host instance context via the UIContext object and t
 
 | Name  | Type                                      | Mandatory  | Description                                   |
 | ----- | ---------------------------------------- | ---- | ------------------------------------- |
-| param | [AnimateParam](arkui-ts/ts-explicit-animation.md#animateparam)| Yes   | Animation settings.                          |
+| param | [AnimateParam](arkui-ts/ts-explicit-animation.md#animateparam) | Yes   | Animation settings.                          |
 | processor | Callback&lt;void&gt;                              | Yes   | Callback function. It specifies the closure function that displays the animation. The system automatically inserts the transition animation if the state changes in the closure function.|
 
 **Example**
@@ -1005,7 +1006,7 @@ Obtains the context of the ability where the current component is located.
 
 | Type| Description                            |
 | ------ | ------------------------------- |
-| [Context](arkts-apis-uicontext-t.md#context)&nbsp;\|&nbsp;undefined | Context of the ability. The context type depends on the ability type. For example, if this API is called in a page within a UIAbility window, the returned context type is [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1). If this API is called in a page within an ExtensionAbility window, the returned context type is [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md). If the ability context does not exist, **undefined** is returned.|
+| [Context](arkts-apis-uicontext-t.md#context)&nbsp;\|&nbsp;undefined | Context of the ability where the current component is located. The specific type of the context depends on the context object associated with the current ability. For example, when this API is called on a page within a UIAbility window, the return type is [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1). When this API is called on a page within an ExtensionAbility window, the return type is [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md). If the ability context does not exist, **undefined** is returned. |
 
 **Example**
 
@@ -1338,7 +1339,7 @@ Shows an action sheet in the given settings.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                |
 | ------ | ------------------------------------------------------------ | ---- | -------------------- |
@@ -1415,7 +1416,7 @@ Shows a date picker dialog box in the given settings.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                        | Mandatory| Description                          |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------ |
@@ -1491,7 +1492,7 @@ Shows a time picker dialog box in the given settings.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                        | Mandatory| Description                          |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------ |
@@ -1558,7 +1559,7 @@ Shows a text picker dialog box in the given settings.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                        | Mandatory| Description                          |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------ |
@@ -1636,7 +1637,7 @@ Shows a text picker dialog box in the given settings. Compared to API version 11
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                        | Mandatory| Description                          |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------ |
@@ -1950,7 +1951,7 @@ See the example for [DragController](./arkts-apis-uicontext-dragcontroller.md).
 
 keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array&lt;KeyframeState&gt;): void
 
-Generates a key frame animation. For details about how to use this API, see [keyframeAnimateTo](arkui-ts/ts-keyframeAnimateTo.md).
+Generates a keyframe animation. For details about how to use this API, see [keyframeAnimateTo](arkui-ts/ts-keyframeAnimateTo.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2060,7 +2061,7 @@ Obtains the component tree and component attributes. This API has a long process
 | ------- | --------------- | ---- | ------------------------------------------------------------ |
 | filters | Array\<string\> | No  | List of component attributes used for filtering. Currently, only the following filter fields are supported:<br>**"id"**: unique ID of the component.<br>**"src"**: source of the resource.<br>**"content"**: information or data contained in the element, component, or object.<br>**"editable"**: whether the component is editable.<br>**"scrollable"**: whether the component is scrollable.<br>**"selectable"**: whether the component is selectable.<br>**"focusable"**: whether the component is focusable.<br>**"focused"**: whether the component is currently focused.<br>If **filters** includes one or more fields, unspecified fields will be filtered out from the results. If **filters** is not provided or is an empty array, none of the aforementioned fields will be filtered out.<br>The following filter field is supported since API version 20:<br>**"isLayoutInspector"**: whether the component tree contains [custom components](../../ui/state-management/arkts-create-custom-components.md). If **filters** is omitted or does not contain **"isLayoutInspector"**, the returned component tree will not include custom component details.<br>Other filter fields are used only in testing scenarios.|
 
-**Return value**
+**Return value** 
 
 | Type  | Description                              |
 | ------ | ---------------------------------- |
@@ -2162,7 +2163,7 @@ Obtains the attributes of the specified component and its child components. This
 | depth   | number          | Yes  | Number of layers of child components. If the value is **0**, the attributes of the specified component and all its child components are obtained. If the value is **1**, only the attributes of the specified component are obtained. If the value is **2**, the attributes of the specified component and its level-1 child components are obtained. The rest can be deduced by analogy.|
 | filters | Array\<string\> | No  | List of component attributes used for filtering. Currently, only the following filter fields are supported:<br>**"id"**: unique ID of the component.<br>**"src"**: source of the resource.<br>**"content"**: information or data contained in the element, component, or object.<br>**"editable"**: whether the component is editable.<br>**"scrollable"**: whether the component is scrollable.<br>**"selectable"**: whether the component is selectable.<br>**"focusable"**: whether the component is focusable.<br>**"focused"**: whether the component is currently focused.<br>If **filters** includes one or more fields, unspecified fields will be filtered out from the results. If **filters** is not provided or is an empty array, none of the aforementioned fields will be filtered out.<br>Other filter fields are used only in testing scenarios.|
 
-**Return value**
+**Return value** 
 
 | Type  | Description                                        |
 | ------ | -------------------------------------------- |
@@ -2294,7 +2295,7 @@ Obtains a **MeasureUtils** object for text calculation.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Return value**
+**Return value** 
 
 | Type  | Description                                        |
 | ------ | -------------------------------------------- |
@@ -2676,7 +2677,7 @@ Obtains the name of the window where this instance is located.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Return value**
+**Return value** 
 
 | Type  | Description                                        |
 | ------ | -------------------------------------------- |
@@ -2730,7 +2731,7 @@ Obtains the ID of the window to which the current application instance belongs.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Return value**
+**Return value** 
 
 | Type  | Description                                        |
 | ------ | -------------------------------------------- |
@@ -2775,7 +2776,7 @@ Obtains the width breakpoint value of the window where this instance is located.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Return value**
+**Return value** 
 
 | Type  | Description                                        |
 | ------ | -------------------------------------------- |
@@ -2824,7 +2825,7 @@ Obtains the height breakpoint value of the window where this instance is located
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Return value**
+**Return value** 
 
 | Type  | Description                                        |
 | ------ | -------------------------------------------- |
@@ -2927,7 +2928,7 @@ Registers a callback to be executed on the next frame after a delay.
 | Name| Type  | Mandatory| Description                                   |
 | ------ | ------ | ---- | --------------------------------------- |
 | frameCallback | [FrameCallback](arkts-apis-uicontext-framecallback.md) | Yes  | Callback to be executed for the next frame.|
-| delayTime | number | Yes  | Delay time, in milliseconds. If a **null**, **undefined**, or value less than 0 is passed in, it will be treated as **0**.|
+| delayTime | number | Yes | Delay time, in milliseconds. If a **null**, **undefined**, or value less than 0 is passed in, it will be treated as **0**. |
 
 **Example**
 
@@ -2977,7 +2978,7 @@ Requests the dynamic sync scene of a component for customizing related frame rat
 | ------ | ------ | ---- | --------------------------------------- |
 | id | string | Yes   | [Component ID](arkui-ts/ts-universal-attributes-component-id.md) of the target node.|
 
-**Return value**
+**Return value** 
 
 | Type  | Description                                        |
 | ------ | -------------------------------------------- |
@@ -3037,7 +3038,7 @@ struct Frame {
 
 openBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheetOptions?: SheetOptions, targetId?: number): Promise&lt;void&gt;
 
-Creates a sheet whose content is as defined in **bindSheetContent** and displays the sheet. This API uses a promise to return the result.  
+Creates a sheet whose content is as defined in **bindSheetContent** and displays the sheet. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -3210,7 +3211,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { FrameNode, ComponentContent } from "@kit.ArkUI";
+import { FrameNode, ComponentContent } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class Params {
@@ -3823,7 +3824,7 @@ Dispatches a key event to the specified component. To ensure predictable behavio
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                         | Mandatory| Description              |
 | ------ | ----------------------------- | ---- | ------------------ |
@@ -3967,7 +3968,7 @@ Sets the maximum number of cached HSP resource management objects.
 
 **Error codes**
 
-For details about the error codes, see UI Context Error Codes.
+For details about the error codes, see [UI Context Error Codes](errorcode-uicontext.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -4116,9 +4117,9 @@ setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void
 
 Sets whether the custom keyboard remains persistent during input field switches.
 
-When enabled, the customer keyboard will remain displayed without being dismissed and re-launched during input field switches.
+When enabled, the custom keyboard will remain displayed without being dismissed and re-launched during input field switches.
 
-When disabled, the customer keyboard will dismiss and re-launch during input field switches.
+When disabled, the custom keyboard will dismiss and re-launch during input field switches.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -4206,7 +4207,7 @@ struct Index {
   build() {
     Scroll() {
       Column() {
-        Button ('Persist Input:' this.str).onClick(() => {
+        Button ('Persist Input:' + this.str).onClick(() => {
           if (this.isValue == CustomKeyboardContinueFeature.ENABLED) {
             this.isValue = CustomKeyboardContinueFeature.DISABLED
             this.str = 'No'

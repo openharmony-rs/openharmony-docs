@@ -494,3 +494,294 @@ Enumerates the phone book share types.
 | SHARE_NAME_AND_PHONE_NUMBER | 0    | Share the name and number.<br>This is a system API.|
 | SHARE_ALL | 1    | Share all information.<br>This is a system API. |
 | SHARE_NOTHING  | 2    | Share nothing.<br>This is a system API.  |
+
+
+## PbapClientProfile
+
+Manages the PBAP client profile.
+
+**Since:** 26.0.1
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+
+### connect
+
+connect(deviceId: string): void
+
+Connects the PBAP client to a remote device.
+
+**Since:** 26.0.1
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name   | Type    | Mandatory  | Description     |
+| ------ | ------ | ---- | ------- |
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API. |
+|202 | Permission verification failed. A non-system application calls a system API. |
+|801 | Capability not supported. |
+|2900003 | Bluetooth disabled. |
+|2900004 | Profile not supported. |
+|2900099 | Internal system error. For example, IPC error. Detailed error messages can be used to assist in locating the problem. |
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let pbapClientProfile = pbap.createPbapClientProfile();
+    pbapClientProfile.connect('XX:XX:XX:XX:XX:XX');
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+### disconnect
+
+disconnect(deviceId: string): void
+
+Disconnects the PBAP client from a remote device.
+
+**Since:** 26.0.1
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name   | Type    | Mandatory  | Description     |
+| ------ | ------ | ---- | ------- |
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API. |
+|202 | Permission verification failed. A non-system application calls a system API. |
+|801 | Capability not supported. |
+|2900003 | Bluetooth disabled. |
+|2900004 | Profile not supported. |
+|2900099 | Internal system error. For example, IPC error. Detailed error messages can be used to assist in locating the problem. |
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let pbapClientProfile = pbap.createPbapClientProfile();
+    pbapClientProfile.disconnect('XX:XX:XX:XX:XX:XX');
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+### getSyncState
+
+getSyncState(deviceId: string): SyncStateType
+
+Obtains the PBAP phone book synchronization state. Only the synchronization sub-state is reported.
+
+**Since:** 26.0.1
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name   | Type    | Mandatory  | Description     |
+| ------ | ------ | ---- | ------- |
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+
+**Return value**
+
+| Type                           | Description        |
+| ----------------------------- | ---------- |
+| [SyncStateType](#syncstatetype) | Phone book synchronization state. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API. |
+|202 | Permission verification failed. A non-system application calls a system API. |
+|801 | Capability not supported. |
+|2900003 | Bluetooth disabled. |
+|2900004 | Profile not supported. |
+|2900099 | Internal system error. For example, IPC error. Detailed error messages can be used to assist in locating the problem. |
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let pbapClientProfile = pbap.createPbapClientProfile();
+    let state = pbapClientProfile.getSyncState('XX:XX:XX:XX:XX:XX');
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+### onSyncStateChange
+
+onSyncStateChange(callback: Callback&lt;SyncStateChangeParam&gt;): void
+
+Subscribes to phone book synchronization state change events. Only the synchronization sub-state is reported.
+
+**Since:** 26.0.1
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name   | Type    | Mandatory  | Description     |
+| ------ | ------ | ---- | ------- |
+| callback | Callback&lt;[SyncStateChangeParam](#syncstatechangeparam)&gt; | Yes   | Callback used to return the phone book synchronization state change information. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API. |
+|202 | Permission verification failed. A non-system application calls a system API. |
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let pbapClientProfile = pbap.createPbapClientProfile();
+    pbapClientProfile.onSyncStateChange((data: pbap.SyncStateChangeParam) => {
+        console.info('deviceId: ' + data.deviceId + ', state: ' + data.state);
+    });
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+### offSyncStateChange
+
+offSyncStateChange(callback?: Callback&lt;SyncStateChangeParam&gt;): void
+
+Unsubscribes from phone book synchronization state change events.
+
+**Since:** 26.0.1
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name   | Type    | Mandatory  | Description     |
+| ------ | ------ | ---- | ------- |
+| callback | Callback&lt;[SyncStateChangeParam](#syncstatechangeparam)&gt; | No   | Callback for the phone book synchronization state change event.<br>If this parameter is passed, it must be the same as the callback in [onSyncStateChange](#onsyncstatechange). If this parameter is not passed, all callbacks registered for this event are unsubscribed. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API. |
+|202 | Permission verification failed. A non-system application calls a system API. |
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let pbapClientProfile = pbap.createPbapClientProfile();
+    pbapClientProfile.offSyncStateChange((data: pbap.SyncStateChangeParam) => {
+        console.info('deviceId: ' + data.deviceId + ', state: ' + data.state);
+    });
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+## SyncStateChangeParam
+
+Represents the phone book synchronization state change information.
+
+**Since:** 26.0.1
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+| Name     | Type    | Read-Only  | Optional  | Description                                 |
+| -------- | ------ | ---- | ---- | ----------------------------------- |
+| deviceId | string | No   | No   | Address of the remote device. |
+| state | [SyncStateType](#syncstatetype) | No   | No   | Phone book synchronization state. |
+
+
+## SyncStateType
+
+Enumerates the phone book synchronization state types.
+
+**Since:** 26.0.1
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+| Name               | Value   | Description     |
+| ----------------- | ------ | ------- |
+| PHONEBOOK_STATE_IDLE | 0 | The phone book synchronization is idle (not started, for example, connected but not downloaded). |
+| PHONEBOOK_STATE_DOWNLOADING | 1 | The phone book is being downloaded. |
+| PHONEBOOK_STATE_DOWNLOADED | 2 | The phone book download is complete. |
+| PHONEBOOK_STATE_DOWNLOAD_ERROR | 3 | The phone book download failed. |

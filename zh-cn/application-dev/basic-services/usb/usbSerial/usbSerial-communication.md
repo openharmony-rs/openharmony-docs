@@ -46,10 +46,8 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
    
    ``` TypeScript
    // 导入serialManager模块
-   import { serialManager } from '@kit.BasicServicesKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { buffer } from '@kit.ArkTS';
-   import { JSON } from '@kit.ArkTS';
+   import { serialManager, BusinessError } from '@kit.BasicServicesKit';
+   import { buffer, JSON } from '@kit.ArkTS';
    ```
 
 
@@ -88,8 +86,8 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
        console.info('serial device request right result: ' + result);
        this.logInfo_ += '\n[INFO] serial device request right result: ' + JSON.stringify(result);
      }).catch((error: BusinessError) => {
-       console.error(`usb device request right failed : ${error}`);
-       this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
+       console.error(`usb device request right failed : code=${error.code}, message=${error.message}`);
+       this.logInfo_ += '\n[ERROR] usb device request right failed: code=' + error.code + ', message=' + error.message;
      });
    } else {
      console.info('serial device already request right');
@@ -110,8 +108,9 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
      console.info(`open usbSerial success, portId: ${portId}`);
      this.logInfo_ += '\n[INFO] open usbSerial success, portId: ' + JSON.stringify(portId);
    } catch (error) {
-     console.error(`open usbSerial error： ${error}`);
-     this.logInfo_ += '\n[ERROR] open usbSerial error: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`open usbSerial error： code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] open usbSerial error: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
 
@@ -132,9 +131,9 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
        console.warn('readAsync usbSerial failed, size is 0');
        this.logInfo_ += '\n[WARN] readAsync usbSerial failed, size is 0';
      }
-   }).catch((error: Error) => {
-     console.error(`readAsync usbSerial error: ${error}`);
-     this.logInfo_ += '\n[ERROR] readAsync usbSerial error: ' + JSON.stringify(error);
+   }).catch((error: BusinessError) => {
+     console.error(`readAsync usbSerial error: code=${error.code}, message=${error.message}`);
+     this.logInfo_ += '\n[ERROR] readAsync usbSerial error: code=' + error.code + ', message=' + error.message;
    })
    
    // 同步读取
@@ -144,8 +143,9 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
      console.info(`readSync usbSerial success, readSyncBuffer: ${readSyncBuffer}`);
      this.logInfo_ += '\n[INFO] readSync usbSerial success, readSyncBuffer: ' + JSON.stringify(readSyncBuffer);
    } catch (error) {
-     console.error(`readSync usbSerial error: ${error}`);
-     this.logInfo_ += '\n[ERROR] readSync usbSerial error: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`readSync usbSerial error: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] readSync usbSerial error: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
 
@@ -166,9 +166,9 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
        console.warn(`writeAsync usbSerial incomplete, expected ${writeBuffer.length}, actual ${size}`);
        this.logInfo_ += '\n[WARN] writeAsync usbSerial incomplete, expected ' + writeBuffer.length + ', actual ' + size;
      }
-   }).catch((error: Error) => {
-     console.error(`writeAsync usbSerial error: ${error}`);
-     this.logInfo_ += '\n[ERROR] writeAsync usbSerial error: ' + JSON.stringify(error);
+   }).catch((error: BusinessError) => {
+     console.error(`writeAsync usbSerial error: code=${error.code}, message=${error.message}`);
+     this.logInfo_ += '\n[ERROR] writeAsync usbSerial error: code=' + error.code + ', message=' + error.message;
    })
    
    // 同步写入
@@ -178,11 +178,11 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
      console.info(`writeSync usbSerial success, writeSyncBuffer: ${writeSyncBuffer}`);
      this.logInfo_ += '\n[INFO] writeSync usbSerial success, writeSyncBuffer: ' + JSON.stringify(writeSyncBuffer);
    } catch (error) {
-     console.error(`writeSync usbSerial error: ${error}`);
-     this.logInfo_ += '\n[ERROR] writeSync usbSerial error: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`writeSync usbSerial error: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] writeSync usbSerial error: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
-
    
 7. 关闭串口设备。
 
@@ -195,8 +195,9 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
      console.info(`close usbSerial success, portId: ${portId}`);
      this.logInfo_ += '\n[INFO] close usbSerial success, portId: ' + JSON.stringify(portId);
    } catch (error) {
-     console.error(`close usbSerial error: ${error}`);
-     this.logInfo_ += '\n[ERROR] close usbSerial error: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`close usbSerial error: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] close usbSerial error: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
 

@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=8b512243901c55915aa61df5cc70cfb3620f6e97 translatedAt=2026-09-28T02:43:37.198Z pushedAt=2026-09-29T10:30:41.731Z -->
+<!-- md-trans-meta sourceCommit=416db6eb13a016384f62df8f06e9a44f2b2b3fc1 translatedAt=2026-11-05T06:16:33.951Z pushedAt=2026-09-29T10:30:41.731Z nl=1 -->
 
 Starting from API version 23, the camera framework provides YUV image capture capability. Compared with standard photo capture, YUV capture obtains unencoded image data that fully retains the raw luminance and chrominance information captured by the sensor, making it suitable for video encoding or professional processing. However, the capture process incurs higher power consumption, and saving the data requires more storage space.
 
@@ -63,7 +63,7 @@ For detailed camera API descriptions, see [Camera Module Description](../../refe
        photoOutput = cameraManager.createPhotoOutput(photoProfile);
      } catch (error) {
        let err = error as BusinessError;
-       console.error("Failed to createPhotoOutput. error: ${err}");
+       console.error(`Failed to createPhotoOutput. error: ${err}`);
      }
      return photoOutput;
    }
@@ -86,7 +86,7 @@ For detailed camera API descriptions, see [Camera Module Description](../../refe
      - Return the processed pixelMap through the callback for image display or write it to a file through a security component to save the image.
      - After use, unregister the one-shot photo capture callback function.
 
-     <!-- @[set_photo_cb_single](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
+     <!-- @[set_photo_cb_single](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->    
      
      ``` TypeScript
      setPhotoOutputCbSingle(photoOutput: camera.PhotoOutput, context: Context) {
@@ -104,13 +104,13 @@ For detailed camera API descriptions, see [Camera Module Description](../../refe
      
      async mediaLibSavePhotoSingle(context: Context, imageObj: image.Image | image.Picture) {
        let picture: image.Picture = imageObj as image.Picture;
-       Logger.info(TAG_LOG, 'picture GetMainPixelmap E');
-       await this.GetMainPixelmap(context, picture);
-       Logger.info(TAG_LOG, 'picture GetMainPixelmap X');
+       Logger.info(TAG_LOG, 'picture getMainPixelmap E');
+       await this.getMainPixelmap(context, picture);
+       Logger.info(TAG_LOG, 'picture getMainPixelmap X');
      
-       Logger.info(TAG_LOG, 'picture Release E');
-       await this.Release(picture);
-       Logger.info(TAG_LOG, 'picture Release X');
+       Logger.info(TAG_LOG, 'picture releasePicture E');
+       await this.releasePicture(picture);
+       Logger.info(TAG_LOG, 'picture releasePicture X');
      }
      
      async packToFileFromPixelMap(context : Context, pixelMap : image.PixelMap) {
@@ -156,7 +156,7 @@ For detailed camera API descriptions, see [Camera Module Description](../../refe
      }
      
      // Obtain the pixelMap of the main photo captured.
-     async GetMainPixelmap(context: Context, pictureObj : image.Picture) {
+     async getMainPixelmap(context: Context, pictureObj : image.Picture) {
        let funcName = 'getMainPixelmap';
        if (pictureObj != null) {
          let mainPixelmap: image.PixelMap = pictureObj.getMainPixelmap();
@@ -170,7 +170,7 @@ For detailed camera API descriptions, see [Camera Module Description](../../refe
            this.callback(mainPixelmap, '');
            mainPixelmap.getImageInfo().then((imageInfo: image.ImageInfo) => {
              if (imageInfo != null) {
-               Logger.info(TAG_LOG, 'GetMainPixelmap information height:' + imageInfo.size.height + ' width:' + imageInfo.size.width +
+               Logger.info(TAG_LOG, 'getMainPixelmap information height:' + imageInfo.size.height + ' width:' + imageInfo.size.width +
                  ' pixelFormat:' + imageInfo.pixelFormat + ' isHdr:' + imageInfo.isHdr);
              }
            }).catch((error: BusinessError) => {
@@ -185,8 +185,8 @@ For detailed camera API descriptions, see [Camera Module Description](../../refe
      }
      
      // Release resources.
-     async Release(pictureObj : image.Picture) {
-       let funcName = 'Release';
+     async releasePicture(pictureObj : image.Picture) {
+       let funcName = 'releasePicture';
        if (pictureObj != null) {
          pictureObj.release();
          if (pictureObj.getMainPixelmap() == null) {

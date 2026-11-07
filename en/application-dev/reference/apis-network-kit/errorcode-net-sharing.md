@@ -1,6 +1,6 @@
 # Network Sharing Error Codes
 
-<!-- md-trans-meta sourceCommit=742fd8e7f742ee980eb300ddfd075065ca362dff translatedAt=2026-09-28T01:21:33.560Z pushedAt=2026-10-09T02:33:15.527Z -->
+<!-- md-trans-meta sourceCommit=c8d611da517c0df9bbfb2e4952764bf8397e713e translatedAt=2026-11-04T06:38:33.413Z pushedAt=2026-11-04T08:04:44.875Z nl=1 -->
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -61,15 +61,15 @@ This error code is reported if a system internal error occurs.
 
 **Cause**
 
-1. The memory is abnormal.
+1. Memory exception.
 
-2. A null pointer is present.
+2. Null pointer.
 
 **Procedure**
 
-1. Check whether the memory space is sufficient. If not, clear the memory and try again.
+1. Check whether the memory space is sufficient, and clear the memory and try again.
 
-2. Check whether the system is normal. If not, try again later or restart the device.
+2. The system is abnormal. Try again later or restart the device.
 
 ## 2202004 Shared Iface Unavailable
 
@@ -87,9 +87,9 @@ The specified Iface does not exist or the Iface name is incorrect.
 
 **Procedure**
 
-1. Run **ifconfig -a** to check whether the shared Iface is available.
+1. Run the command `ifconfig -a` to check whether the shared NIC has been created.
 
-2. Check whether the Iface name is correct.
+2. Check whether the NIC name is misspelled.
 
 ## 2202005 Wi-Fi Sharing Failure
 

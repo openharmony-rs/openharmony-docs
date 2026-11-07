@@ -148,7 +148,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
 
@@ -188,7 +188,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
 
@@ -228,7 +228,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
 
@@ -268,7 +268,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
 
@@ -318,7 +318,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message|
 | -------- | -------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800026 | input method system panel error. Possible causes: 1. system panel not connected. 2. ipc failed due to large amount of data transferred or other reasons. 3. the caller is not system panel. |
 
 **Example**
@@ -374,8 +374,8 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | permissions check fails. |
-| 202 | not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible causes: a system error, such as null pointer, IPC exception. |
 | 12800026  | input method system panel error. Possible causes: 1. the system panel not connected.2. ipc failed due to the large amount of data transferred or other reasons. 3. the caller is not system panel.|
 

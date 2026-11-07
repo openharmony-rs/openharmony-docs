@@ -6,6 +6,7 @@
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu; @ge-yafang-->
+<!-- md-trans-meta sourceCommit=352950c6ac508fc2b67617d3f8ca2909b5194835 translatedAt=2026-11-04T04:22:54.683Z pushedAt=2026-11-04T08:04:44.649Z nl=1 -->
 
 - [libc](musl.md)
 - [libc++](cpp.md)
@@ -47,5 +48,5 @@
   - [EGL Symbols Exported from Native APIs](egl-symbol.md)
   - [ICU4C Symbols Exported from Native APIs](icu4c-symbol.md)
   - [OpenGL ES 3.2 Symbols Exported from Native APIs](openglesv3-symbol.md)
-  - [OpenGL Symbols Exported from Native APIs](opengl-symbol.md)
+  - [OpenGL Symbols](opengl-symbol.md)
   - [Seccomp-Provided System Call List](seccomp-symbol.md)

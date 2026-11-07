@@ -43,7 +43,7 @@ transmitInfrared(infraredFrequency: number, pattern: Array&lt;number&gt;): void
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -104,7 +104,7 @@ getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**：
 
@@ -164,7 +164,7 @@ hasIrEmitter(): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 3800001 | Input service exception. |
 
 **示例**：

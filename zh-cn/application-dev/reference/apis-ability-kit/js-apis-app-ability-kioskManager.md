@@ -54,7 +54,7 @@ enterKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 | 16000050 | Failed to connect to the system service. |
 | 16000110 | The current application is not in Kiosk app list and cannot enter Kiosk mode. |
 | 16000111 | The system is already in Kiosk mode and cannot enter Kiosk mode again. |
-| 16000113 | Current ability is not in foreground. |
+| 16000113 | Current ability is not in foreground. <br>适用版本：20-26.0.0 |
 
 **示例**：
 

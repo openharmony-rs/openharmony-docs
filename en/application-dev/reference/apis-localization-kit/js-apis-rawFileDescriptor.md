@@ -6,8 +6,9 @@
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=a8446c9be4dbeea364560754c05cf5bc58bb15cf translatedAt=2026-11-04T04:19:03.517Z pushedAt=2026-11-04T10:13:14.934Z nl=1 -->
 
-Provides the descriptor of the HAP where the rawfile is located.
+This module provides the file descriptor information of the HAP package where the rawfile is located, including the file descriptor, the start offset of the rawfile, and the file length.
 
 > **NOTE**
 >
@@ -28,5 +29,5 @@ import { resourceManager } from '@kit.LocalizationKit'
 | Name    | Type   | Read-Only  | Optional | Description          |
 | ------ | ------  | ---- | ---- | ------------------ |
 | fd     | number  | No   | No| Pointer to the file descriptor.|
-| offset | number  | No   | No| Start offset.     |
-| length | number  | No   | No| File length.      |
+| offset | number  | No    | No | Start offset, which indicates the start position of the rawfile in the HAP package. The unit is Byte.  |
+| length | number  | No    | No | File length, which indicates the size of the rawfile. The unit is Byte.       |

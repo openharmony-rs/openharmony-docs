@@ -6,6 +6,7 @@
 <!--Designer: @chande-->
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=fa944cf5e04ebbc5104589f3638c90a4cd41568f translatedAt=2026-11-04T04:58:54.370Z pushedAt=2026-11-04T10:12:33.521Z nl=1 -->
 
 ## Overview
 
@@ -30,8 +31,8 @@ Declares the APIs used to obtain details of specific certificates.
 | [int32_t OH_CertManager_GetUkeyCertificate(const OH_CM_Blob *keyUri, const OH_CM_UkeyInfo *ukeyInfo, OH_CM_CredentialDetailList *certificateList)](#oh_certmanager_getukeycertificate) | Obtains the detail list of USB certificate credentials.|
 | [int32_t OH_CertManager_GetPrivateCertificate(const OH_CM_Blob *keyUri, OH_CM_Credential *certificate)](#oh_certmanager_getprivatecertificate) | Obtains the details of a private certificate credential of a specific application.|
 | [int32_t OH_CertManager_GetPublicCertificate(const OH_CM_Blob *keyUri, OH_CM_Credential *certificate)](#oh_certmanager_getpubliccertificate) | Obtains the details of a public certificate credential of a specific user.|
-| [void OH_CertManager_FreeUkeyCertificate(OH_CM_CredentialDetailList *certificateList)](#oh_certmanager_freeukeycertificate) | Destroys the certificate detail list.|
-| [void OH_CertManager_FreeCredential(OH_CM_Credential *certificate)](#oh_certmanager_freecredential) | Destroys the certificate details.|
+| [void OH_CertManager_FreeUkeyCertificate(OH_CM_CredentialDetailList *certificateList)](#oh_certmanager_freeukeycertificate) | Destroys the certificate detail list. |
+| [void OH_CertManager_FreeCredential(OH_CM_Credential *certificate)](#oh_certmanager_freecredential) | Destroys the certificate details. |
 
 ## Function Description
 
@@ -125,7 +126,7 @@ void OH_CertManager_FreeUkeyCertificate(OH_CM_CredentialDetailList *certificateL
 
 **Description**
 
-Destroys the certificate credential detail list.
+Destroys the certificate detail list.
 
 **Since**: 22
 
@@ -152,3 +153,5 @@ Describes details about destroying a certificate credential.
 | Parameter| Description|
 | -- | -- |
 | [OH_CM_Credential](capi-certmanagertype-oh-cm-credential.md) *certificate | Pointer to the certificate credential details to be destroyed.|
+
+

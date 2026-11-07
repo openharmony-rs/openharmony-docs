@@ -767,7 +767,7 @@ bundleManager.uninstall(wantTemp, 'bundleName', 100, true).then(() => {
 
 install(admin: Want, hapFilePaths: Array\<string>, installParam?: InstallParam): Promise\<void>
 
-安装指定路径下的应用包。使用Promise异步回调。<br/>此接口只能安装分发类型为enterprise_mdm（MDM应用）和enterprise_normal（普通企业应用）类型的应用，可以通过[getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口查询应用自身的[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。自API版本26.0.0起，建议使用[installForResult](#bundlemanagerinstallforresult)，以获取更详细的错误码返回值。
+安装指定路径下的应用包。<!--RP2--><!--RP2End-->使用Promise异步回调。<br/>此接口只能安装分发类型为enterprise_mdm（MDM应用）和enterprise_normal（普通企业应用）类型的应用，可以通过[getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口查询应用自身的[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。自API版本26.0.0起，建议使用[installForResult](#bundlemanagerinstallforresult)，以获取更详细的错误码返回值。
 > **说明：**
 > 
 > 该接口比较耗时，当调用此接口后，后续如果在应用主线程调用其他同步接口时需要等待该接口异步返回。
@@ -860,7 +860,7 @@ bundleManager.install(wantTemp, hapFilePaths, installParam).then(() => {
 
 installForResult(admin: Want, hapFilePaths: Array\<string>, installParam?: InstallParam): Promise\<void\>
 
-安装指定路径下的应用包，并返回安装结果。使用Promise异步回调。<br/>此接口只能安装分发类型为enterprise_mdm（MDM应用）和enterprise_normal（普通企业应用）类型的应用，可以通过[getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口查询应用自身的[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。
+安装指定路径下的应用包，并返回安装结果。<!--RP2--><!--RP2End-->使用Promise异步回调。<br/>此接口只能安装分发类型为enterprise_mdm（MDM应用）和enterprise_normal（普通企业应用）类型的应用，可以通过[getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口查询应用自身的[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。
 
 > **说明：**
 > 
@@ -1369,13 +1369,13 @@ getInstalledBundleStorageStats(admin: Want, bundleNames: Array\<string>, account
 
 > **说明：**
 > 
-> 1.仅能获取已安装应用的存储占用信息。
+> 1. 仅能获取已安装应用的存储占用信息。
 >
-> 2.bundleNames参数为empty或全部传入未安装的应用包名，会抛出9200012错误码。
+> 2. bundleNames参数为empty或全部传入未安装的应用包名，会抛出9200012错误码。
 >
-> 3.bundleNames参数传递的包名部分应用已安装，部分应用未安装时，接口返回正常，已安装的应用返回实际的存储占用信息，未安装的应用存储占用信息为0。
+> 3. bundleNames参数传递的包名部分应用已安装，部分应用未安装时，接口返回正常，已安装的应用返回实际的存储占用信息，未安装的应用存储占用信息为0。
 >
-> 4.该接口支持跨用户查询，比如可以在100用户下，查询101用户下的某些应用的存储占用信息。
+> 4. 该接口支持跨用户查询，比如可以在100用户下，查询101用户下的某些应用的存储占用信息。
 
 **起始版本：** 26.0.0
 

@@ -5,7 +5,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:38:18.596Z pushedAt=2026-09-02T03:48:02.640Z -->
+<!-- md-trans-meta sourceCommit=32189e2ba3b294a1d89fd2708b346803b0768cdd translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 JSVM memory usage includes native memory usage (C/C++ memory usage) and heap memory usage of the underlying JavaScript engine. The JavaScript engine maintains a heap to manage the JavaScript objects it generates, and the lifecycle of these objects is maintained by the JavaScript engine. Other memory is called native memory. When using JSVM, you may encounter these two types of abnormal memory growth.
 
@@ -69,4 +69,37 @@ Currently, JSVM provides `OH_JSVM_OpenInspector` to enable the inspector. For de
 
 Use DevTools to take a snapshot of the heap memory in the target scenario (click the garbage collection button above before taking a snapshot). Compare the snapshots to find the unreleased JavaScript objects and their locations in the source code to further locate the cause of the unreleased heap memory.
 
-<div align=left><img src="figures/jsvm_locate_memory_leak_devtool.png"/></div> 
+<div align=left><img src="figures/jsvm_locate_memory_leak_devtool.png"/></div>
+
+### Automatically Exporting Heap Dumps on OOM with --heap-dump-on-oom
+
+In addition to manually capturing heap snapshots with DevTools for comparison, JSVM can automatically export the current heap to a heap dump file when the JS heap runs out of memory (OOM). You can use this file to locate heap memory leaks after the event.
+
+To enable this capability, pass `--heap-dump-on-oom` through `argc`/`argv` in `JSVM_InitOptions` when initializing JSVM. `OH_JSVM_Init` passes the engine arguments in `argv` to the underlying JS engine.
+
+```c++
+// Enable OOM heap dumps when initializing JSVM.
+static int32_t TestJSVM()
+{
+  JSVM_InitOptions initOptions = {0};
+  int argc = 2;
+  const char* argv[2] = {
+    "",
+    "--heap-dump-on-oom",
+  };
+  initOptions.argc = &argc;
+  initOptions.argv = const_cast<char**>(argv);
+  // Initialize the JavaScript engine instance.
+  JSVM_CALL(OH_JSVM_Init(&initOptions));
+  // ... Create the VM/Env and execute application logic.
+  return 0;
+}
+```
+
+> **NOTE**
+>
+> - `--heap-dump-on-oom` is a development and debugging option that adds performance overhead. Enable it temporarily only when locating JS heap memory leaks. Including this option in a production release is not recommended.
+> - When enabled, the engine writes the current heap snapshot to a heap dump file before the process exits if the JS heap reaches its limit and triggers OOM.
+> - The default output path is `/data/app/el2/100/base/<package-name>/`. For example, for the package `com.example.Test`, files are written to `/data/app/el2/100/base/com.example.Test/`. File names take the form `xxx.rawheap`. You can retrieve the files from the device using hdc for analysis.
+> - Before visual analysis, convert the `xxx.rawheap` heap dump to a `.heapsnapshot` file using `js_rawheap_translator`. For details, see [js-rawheap-translator](../tools/js-rawheap-translator.md).
+> - Import the converted `.heapsnapshot` file into DevTools or DevEco Studio to locate unreleased JS objects and their reference chains.

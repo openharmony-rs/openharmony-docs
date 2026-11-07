@@ -3,10 +3,10 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
-<!-- md-trans-meta sourceCommit=635c96c73146bacf985d294d6e608687bbdae586 translatedAt=2026-07-30T09:56:05.953Z pushedAt=2026-07-31T01:22:38.930Z -->
+<!-- md-trans-meta sourceCommit=6ef69c6f8977e40b3380893b59be90b5228e0172 translatedAt=2026-11-04T04:14:54.086Z pushedAt=2026-11-04T10:13:14.929Z nl=1 -->
 
  This module provides system-related or enhanced i18n capabilities, such as locale management, phone number processing, and calendar, through supplementary i18n APIs that are not defined in ECMA 402. [Internationalization](js-apis-intl.md) provides basic i18n APIs defined in ECMA 402. It works with this module to provide a complete suite of i18n capabilities.
 
@@ -16,6 +16,7 @@
 >  - Since API version 11, some APIs of this module are supported in ArkTS widgets.
 >
 >  - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.i18n (Internationalization)](js-apis-i18n.md).
+
 
 ## Modules to Import
 
@@ -59,11 +60,11 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 | ID | Error Message                  |
 | ------ | ---------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 26.0.0+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 890001 | Invalid parameter. Possible causes: Parameter verification failed. |
 
 **Example**
-
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { i18n } from '@kit.LocalizationKit';
@@ -108,11 +109,11 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 | ID | Error Message                  |
 | ------ | ---------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 26.0.0+|
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 890001 | Invalid parameter. Possible causes: Parameter verification failed. |
 
 **Example**
-
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { i18n } from '@kit.LocalizationKit';
@@ -124,6 +125,8 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
     console.error(`call System.setSystemRegion failed, error code: ${err.code}, message: ${err.message}.`);
   }
   ```
+
+
 
 ### setSystemLocale<sup>(deprecated)</sup>
 
@@ -158,7 +161,6 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 | 890001 | Invalid parameter. Possible causes: Parameter verification failed. |
 
 **Example**
-
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { i18n } from '@kit.LocalizationKit';
@@ -170,6 +172,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
     console.error(`call System.setSystemLocale failed, error code: ${err.code}, message: ${err.message}.`);
   }
   ```
+
 
 ### set24HourClock<sup>9+</sup>
 
@@ -196,11 +199,11 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 | ID | Error Message                  |
 | ------ | ---------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 26.0.0+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 890001 | Invalid parameter. Possible causes: Parameter verification failed. |
+| 890001 | Invalid parameter. Possible causes: Parameter verification failed.<br>Applicable versions: 9-24 |
 
 **Example**
-
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { i18n } from '@kit.LocalizationKit';
@@ -240,11 +243,11 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 | ID | Error Message                  |
 | ------ | ---------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 26.0.0+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 890001 | Invalid parameter. Possible causes: Parameter verification failed. |
 
 **Example**
-
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { i18n } from '@kit.LocalizationKit';
@@ -285,11 +288,11 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 | ID | Error Message                  |
 | ------ | ---------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 26.0.0+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 890001 | Invalid parameter. Possible causes: Parameter verification failed. |
+| 890001 | Invalid parameter. Possible causes: Parameter verification failed.<br>Applicable versions: 9-24 |
 
 **Example**
-
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { i18n } from '@kit.LocalizationKit';
@@ -329,11 +332,11 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 | ID | Error Message                  |
 | ------ | ---------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 26.0.0+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 890001 | Invalid parameter. Possible causes: Parameter verification failed. |
+| 890001 | Invalid parameter. Possible causes: Parameter verification failed.<br>Applicable versions: 9-24 |
 
 **Example**
-
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { i18n } from '@kit.LocalizationKit';
@@ -345,6 +348,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
     console.error(`call System.setUsingLocalDigit failed, error code: ${err.code}, message: ${err.message}.`);
   }
   ```
+
 
 ### setTemperatureType<sup>18+</sup>
 
@@ -379,7 +383,6 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 > The error description of 890001 is subject to the actual error.
 
 **Example**
-
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { i18n } from '@kit.LocalizationKit';
@@ -408,7 +411,7 @@ Sets the first day of a week.
 
 | Name | Type     | Mandatory  | Description                             |
 | ---- | ------- | ---- | ------------------------------- |
-| type | [WeekDay](./js-apis-i18n.md#weekday18) | Yes| Start day of a week.|
+| type | [WeekDay](./js-apis-i18n.md#weekday18) | Yes | Start day of a week. |
 
 **Error codes**
 
@@ -425,7 +428,6 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 > The error message of 890001 is subject to the actual error.
 
 **Example**
-
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { i18n } from '@kit.LocalizationKit';
@@ -463,7 +465,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { i18n } from '@kit.LocalizationKit';
@@ -501,7 +502,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { i18n } from '@kit.LocalizationKit';
@@ -543,7 +543,6 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 | 8900001 | Invalid parameter. Possible causes: Parameter verification failed. |
 
 **Example**
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { i18n } from '@kit.LocalizationKit';
@@ -581,7 +580,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { i18n } from '@kit.LocalizationKit';
@@ -591,6 +589,43 @@ try {
 } catch(error) {
   let err: BusinessError = error as BusinessError;
   console.error(`call System.getSystemNumberingSystems failed, error code: ${err.code}, message: ${err.message}.`);
+}
+```
+
+### getUsingNumberingSystem<sup>20+</sup>
+
+static getUsingNumberingSystem(): string
+
+Obtains the number system currently used by the system.
+
+**System API**: This is a system API.
+
+**System capability:** SystemCapability.Global.I18n
+
+**Return value**
+
+| Type                     | Description    |
+| ---------------------- | ----- |
+| string | Number system currently used by the system. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID  | Error Message                   |
+| ------ | ---------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**Example**
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
+
+try {
+  let usingNumberingSystem: string = i18n.System.getUsingNumberingSystem();
+} catch(error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`call System.getUsingNumberingSystem failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
 
@@ -623,7 +658,6 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 | 8900001 | Invalid parameter. Possible causes: Parameter verification failed. |
 
 **Example**
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { i18n } from '@kit.LocalizationKit';
@@ -661,7 +695,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { i18n } from '@kit.LocalizationKit';
@@ -699,7 +732,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { i18n } from '@kit.LocalizationKit';
@@ -741,7 +773,6 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 | 8900001 | Invalid parameter. Possible causes: Parameter verification failed. |
 
 **Example**
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { i18n } from '@kit.LocalizationKit';
@@ -779,7 +810,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { i18n } from '@kit.LocalizationKit';
@@ -817,7 +847,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { i18n } from '@kit.LocalizationKit';
@@ -859,7 +888,6 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 | 8900001 | Invalid parameter. Possible causes: Parameter verification failed. |
 
 **Example**
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { i18n } from '@kit.LocalizationKit';
@@ -897,7 +925,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { i18n } from '@kit.LocalizationKit';
@@ -935,7 +962,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { i18n } from '@kit.LocalizationKit';
@@ -977,7 +1003,6 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 | 8900001 | Invalid parameter. Possible causes: Parameter verification failed. |
 
 **Example**
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { i18n } from '@kit.LocalizationKit';
@@ -1004,13 +1029,21 @@ Creates a **SystemLocaleManager** object.
 
 **System capability**: SystemCapability.Global.I18n
 
-**Example**
+**Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID  | Error Message                   |
+| ------ | ---------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 26.0.0+ |
+
+**Example**
   ```ts
   import { i18n } from '@kit.LocalizationKit';
 
   let systemLocaleManager: i18n.SystemLocaleManager = new i18n.SystemLocaleManager();
   ```
+
 
 ### getLanguageInfoArray<sup>10+</sup>
 
@@ -1041,12 +1074,11 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 
 | ID | Error Message                  |
 | ------ | ---------------------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 890001 | Invalid parameter. Possible causes: Parameter verification failed. |
 
 **Example**
-
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { i18n } from '@kit.LocalizationKit';
@@ -1063,6 +1095,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
       console.error(`call systemLocaleManager.getLanguageInfoArray failed, error code: ${err.code}, message: ${err.message}.`);
   }
   ```
+
 
 ### getRegionInfoArray<sup>10+</sup>
 
@@ -1093,12 +1126,11 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 
 | ID | Error Message                  |
 | ------ | ---------------------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 890001 | Invalid parameter. Possible causes: Parameter verification failed. |
 
 **Example**
-
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { i18n } from '@kit.LocalizationKit';
@@ -1134,24 +1166,23 @@ Obtains list of time zone city items after sorting.
 
 **Error codes**
 
-For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID | Error Message                  |
 | ------ | ---------------------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+ |
 
 **Example**
-
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { i18n } from '@kit.LocalizationKit';
 
   try {
     let timeZoneCityItemArray: Array<i18n.TimeZoneCityItem> = i18n.SystemLocaleManager.getTimeZoneCityItemArray();
-    for (let i = 0; i < timeZoneCityItemArray.length; i++) {
-        console.info(timeZoneCityItemArray[i].zoneId + ", " + timeZoneCityItemArray[i].cityId + ", " + timeZoneCityItemArray[i].cityDisplayName +
-            ", " + timeZoneCityItemArray[i].offset + "\r\n");
-    }
+    timeZoneCityItemArray.forEach((item: i18n.TimeZoneCityItem) => {
+      console.info(item.zoneId + ", " + item.cityId + ", " + item.cityDisplayName +
+          ", " + item.offset + "\r\n");
+    });
   } catch(error) {
     let err: BusinessError = error as BusinessError;
     console.error(`call SystemLocaleManager.getTimeZoneCityItemArray failed, error code: ${err.code}, message: ${err.message}.`);
@@ -1190,6 +1221,7 @@ Represents a time zone and city combination item.
 | zoneDisplayName | string          |   No   |   No   | Time zone display name in the system locale.         |
 | rawOffset       | number             |   No    |   Yes    | Fixed offset of the time zone ID, in milliseconds.                       |
 
+
 ## SuggestionType<sup>10+</sup>
 
 Represents the language or country/region suggestion type.
@@ -1203,6 +1235,7 @@ Represents the language or country/region suggestion type.
 | SUGGESTION_TYPE_NONE   | 0x00 | Not a recommended language or country/region.|
 | SUGGESTION_TYPE_RELATED| 0x01 | Country/region recommended by the system language or language recommended by the system country/region.|
 | SUGGESTION_TYPE_SIM    | 0x02 | Language recommended by the country/region of the SIM card. |
+
 
 ## SortOptions<sup>10+</sup>
 

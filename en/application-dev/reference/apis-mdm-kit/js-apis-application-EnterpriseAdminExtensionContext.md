@@ -1,12 +1,13 @@
-# EnterpriseAdminExtensionContext
-
+# EnterpriseAdminExtensionContext (Enterprise Device Management Extension Context)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=2d9be1fcb1ab0f8ba01422df9fdd5412cd8884b7 translatedAt=2026-07-23T07:09:36.994Z pushedAt=2026-07-23T07:43:18.505Z -->
+<!-- md-trans-meta sourceCommit=331fa2f45b5f4cc5aff245549373d7c8ec029044 translatedAt=2026-11-04T05:02:22.748Z pushedAt=2026-11-04T08:04:44.738Z nl=1 -->
+
+EnterpriseAdminExtensionContext is exported as a type in the @ohos.enterprise.common module. For details about the interface definition, see this document.
 
 **EnterpriseAdminExtensionContext** is the context of [EnterpriseAdminExtensionAbility](js-apis-EnterpriseAdminExtensionAbility.md) and inherits from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md).
 
@@ -34,7 +35,7 @@ Context of the [EnterpriseAdminExtensionAbility](js-apis-EnterpriseAdminExtensio
 
 startAbilityByAdmin(admin: Want, want: Want): Promise\<void>
 
-Starts another component directly in the [EnterpriseAdminExtensionAbility](js-apis-EnterpriseAdminExtensionAbility.md) component (without a dialog box reminder on the page). Currently, [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md) and [AppServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md) are supported. After the API is called successfully, the target component is started and enters the running state. This API uses a promise to return the result.
+Starts another component silently in the [EnterpriseAdminExtensionAbility](js-apis-EnterpriseAdminExtensionAbility.md) component (without requiring user confirmation). It supports [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md) and [AppServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md). After the call is successful, the target component is started and enters the running state. This API uses a promise to return the result asynchronously.
 
 > **NOTE**
 >
@@ -46,7 +47,7 @@ Starts another component directly in the [EnterpriseAdminExtensionAbility](js-ap
 > 
 > - If the **UIAbility** to start has permission protection, you need to apply for the corresponding permission.
 
-**Required permissions**: ohos.permission.ENTERPRISE_START_ABILITIES
+**Required permissions:** ohos.permission.ENTERPRISE_START_ABILITIES
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -56,7 +57,7 @@ Starts another component directly in the [EnterpriseAdminExtensionAbility](js-ap
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Mandatory | Enterprise device management extension component. `Want` must contain `abilityName` of the enterprise device management extension ability and `bundleName` of the application where it resides. After being set, the system uses this parameter to verify the device administrator identity and permissions of the caller. |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes | Enterprise Device Management Extension component. The admin parameter must pass in the Enterprise Device Management Extension component information of the current application. The Want must contain the abilityName of the current application's Enterprise Device Management Extension capability and the bundleName of the application to which it belongs. After this parameter is set, the system uses it to verify the device administrator identity and permissions of the caller. |
 | want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Mandatory | Required information for starting a component. `Want` must contain `abilityName` of the enterprise device management extension ability and `bundleName` of the application where it resides. After being set, the system locates the target application based on `bundleName`, and locates and starts the target component based on `abilityName`. |
 
 **Return values**
@@ -78,7 +79,8 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **Example**
-The information about the component to start must be configured in the `module.json5` file. The `permissions` parameter is optional. Set it based on the actual situation or leave it empty.
+
+The information about the component to start must be configured in the `module.json5` file. The `permissions` field is optional. Replace it or leave it empty based on the actual situation.
 
 ```json5
 "abilities": [
@@ -91,9 +93,10 @@ The information about the component to start must be configured in the `module.j
     "startWindowIcon": "$media:icon",
     "startWindowBackground": "$color:white",
     "exported": true,
-    "permissions": [
-      "ohos.permission.START_UI_ABILITY"
-    ]
+    // Identify the permission information of the current Ability component. When other applications access this Ability, they need to apply for the corresponding permission.
+    // "permissions": [
+    //   "ohos.permission.EXAMPLE_PERMISSION"
+    // ]
   }
 ]
 ```
@@ -102,9 +105,10 @@ The caller app must request the corresponding permissions in the `module.json5` 
 
 ```json5
 "requestPermissions": [
-  {
-    "name": "ohos.permission.START_UI_ABILITY"
-  },
+  // When starting a component of another application, apply for the permission identified by the component.
+  // {
+  //   "name": "ohos.permission.EXAMPLE_PERMISSION"
+  // },
   {
     "name": "ohos.permission.ENTERPRISE_START_ABILITIES"
   }
@@ -125,7 +129,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
     // Replace with the actual value.
     let admin: Want = {
       bundleName: 'com.example.myapplication',
-      abilityName: 'EnterpriseAdminAbility',
+      abilityName: 'EnterpriseAdminAbility'
     };
     // Replace with the actual value.
     let want: Want = {
@@ -143,7 +147,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
     // Obtain the preferences data through context.
     let options: preferences.Options = {
       // Replace with the actual value.
-      name: "key",
+      name: "key"
     };
     try {
       let preference = preferences.getPreferencesSync(this.context, options);

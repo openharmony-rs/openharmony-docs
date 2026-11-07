@@ -133,16 +133,16 @@ Cannot find module ${moduleName} or its corresponding type declarations.
 
 若HAR包中的js文件需要提供对外导出功能，开发者需要：
 
-1.在js文件同级目录中手动编写对应的.d.ts声明文件，并随HAR包一起编译发布，示例如下：
-```typescript
-// har1's src/main/ets/FileJs.d.ts
-export declare let fileJs: number;
-```
-2.在har1包顶层的Index.ets文件中增加export导出语句，示例如下：
-```typescript
-export { fileJs } from './src/main/ets/FileJs';
-```
-3.在har2包中引用har1包中该接口，示例如下：
-```typescript
-import { fileJs } from 'har1/src/main/ets/FileJs';
-```
+1. 在js文件同级目录中手动编写对应的.d.ts声明文件，并随HAR包一起编译发布，示例如下：
+    ```typescript
+    // har1's src/main/ets/FileJs.d.ts
+    export declare let fileJs: number;
+    ```
+2. 在har1包顶层的Index.ets文件中增加export导出语句，示例如下：
+    ```typescript
+    export { fileJs } from './src/main/ets/FileJs';
+    ```
+3. 在har2包中引用har1包中该接口，示例如下：
+    ```typescript
+    import { fileJs } from 'har1/src/main/ets/FileJs';
+    ```

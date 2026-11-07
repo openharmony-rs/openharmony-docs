@@ -209,7 +209,7 @@ export class SendableData  {
 }
 ```
 
-<!-- @[function_threadGetData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page3.ets) -->   
+<!-- @[function_threadGetData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page3.ets) --> 
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -247,7 +247,7 @@ struct Page3 {
         .width(300)
         .margin(10)
         .onClick(() => {
-          // ok 可以观察到属性的改变
+          // 可以观察到属性的改变
           this.send.name += '0';
         })
 

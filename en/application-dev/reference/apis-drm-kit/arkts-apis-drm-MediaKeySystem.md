@@ -2,11 +2,11 @@
 
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=29f3919446ee01733553b9b39493ee11224dad86 translatedAt=2026-07-31T02:11:52.470Z pushedAt=2026-07-31T03:50:40.117Z -->
+<!--Adviser: @qin_wei_jie-->
+<!-- md-trans-meta sourceCommit=a9776cf91359a852d7804f0b36513c7852570375 translatedAt=2026-11-04T04:16:15.715Z pushedAt=2026-11-04T10:12:50.073Z nl=1 -->
 
 MediaKeySystem manages MediaKeySystem instances, handles device certificate (DRM certificate) requests and processing, creates sessions, manages offline media keys, obtains DRM metrics, and obtains device configurations. Before calling any API in MediaKeySystem, you must use [createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem) to create a MediaKeySystem instance.
 
@@ -26,7 +26,7 @@ setConfigurationString(configName: string, value: string): void
 
 Sets a configuration item in the form of a string.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -43,9 +43,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 401 | The parameter check failed. Possibly because: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
@@ -62,7 +62,7 @@ getConfigurationString(configName: string): string
 
 Obtains the value of a configuration item in the form of a string.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -84,9 +84,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed, the param's length is zero or too big(exceeds 4096 Bytes).                              |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 401 | The parameter check failed. Possibly because: 1. Mandatory parameters are left unspecified. 2. Parameter verification failed, the param's length is zero or too big (exceeds 4096 Bytes). |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
@@ -103,7 +103,7 @@ setConfigurationByteArray(configName: string, value: Uint8Array): void
 
 Sets a configuration item in the form of a byte array.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -142,7 +142,7 @@ getConfigurationByteArray(configName: string): Uint8Array
 
 Obtains the value of a configuration item in the form of a byte array.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -165,8 +165,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.        |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
@@ -183,7 +183,7 @@ getStatistics(): StatisticKeyValue[]
 
 Obtains the DRM metrics, including the number of active sessions, plugin version details, the maximum decryption time for each session (over three attempts), the total count of decryption operations, and the number of decryption failures.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -199,8 +199,8 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
@@ -217,7 +217,7 @@ getMaxContentProtectionLevel(): ContentProtectionLevel
 
 Obtains the maximum content protection level supported by the current DRM solution.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -233,8 +233,8 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
@@ -253,7 +253,7 @@ Generates a request to obtain a device certificate for the MediaKeySystem. This 
 
 If a device certificate already exists on the device, the API will return a failure.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -269,8 +269,8 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
@@ -293,7 +293,7 @@ Processes the response to a previously generated device certificate request. Thi
 
 If a device certificate already exists on the device, the API will return a failure.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -316,8 +316,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.         |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
@@ -338,7 +338,7 @@ getCertificateStatus(): CertificateStatus
 
 Obtains the status of the device certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -354,8 +354,8 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
@@ -372,7 +372,7 @@ on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 
 Subscribes to events indicating that the application requests a device certificate. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -390,7 +390,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.               |
-| 24700101                |  All unknown errors                  |
+| 24700101                |  All unknown errors.                 |
 
 **Example**
 
@@ -409,7 +409,7 @@ off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 
 Unsubscribes from events indicating that the application requests a device certificate. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -427,12 +427,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.               |
-| 24700101                |  All unknown errors                  |
+| 24700101                |  All unknown errors.                 |
 
 **Example**
 
 ```ts
 import { drm } from '@kit.DrmKit';
+
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 mediaKeySystem.off('keySystemRequired');
 ```
@@ -443,7 +444,7 @@ createMediaKeySession(level: ContentProtectionLevel): MediaKeySession
 
 Creates a MediaKeySession instance with the specified content protection level.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -465,10 +466,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.The param level exceeds reasonable range, please use value in ContentProtectionLevel.          |
-| 24700101                 |  All unknown errors                  |
-| 24700104                 |  Meet max MediaKeySession num limit                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 401 | The parameter check failed. Possibly because: 1. Mandatory parameters are left unspecified. 2. The param level exceeds reasonable range, please use value in ContentProtectionLevel. |
+| 24700101                 |  All unknown errors.                 |
+| 24700104                 |  Meet max MediaKeySession num limit.                  |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
@@ -485,7 +486,7 @@ createMediaKeySession(): MediaKeySession
 
 Creates a MediaKeySession instance with the default content protection level.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -501,9 +502,9 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700104                 |  Meet max MediaKeySession num limit                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700104                 |  Meet max MediaKeySession num limit.                  |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
@@ -520,7 +521,7 @@ getOfflineMediaKeyIds(): Uint8Array[]
 
 Obtains the IDs of offline media keys.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -536,8 +537,8 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
@@ -554,7 +555,7 @@ getOfflineMediaKeyStatus(mediaKeyId: Uint8Array): OfflineMediaKeyStatus
 
 Obtains the status of offline media keys with the specified IDs.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -577,8 +578,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.            |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
@@ -597,7 +598,7 @@ clearOfflineMediaKeys(mediaKeyId: Uint8Array): void
 
 Clears offline media keys with the specified IDs.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -613,9 +614,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.           |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 401                |  The parameter check failed. Possibly because: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.           |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
@@ -634,7 +635,7 @@ destroy(): void
 
 Destroys this MediaKeySystem instance.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -644,8 +645,8 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
