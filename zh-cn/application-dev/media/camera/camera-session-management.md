@@ -22,7 +22,7 @@
 
 ## 开发步骤
 1. 导入相关接口，导入方法如下。
-     
+
    ```ts
    import { camera } from '@kit.CameraKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -33,17 +33,17 @@
    <!-- @[camera_createSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
    ```ts
-   // 此处以videoSession为例。
-   function getSession(cameraManager: camera.CameraManager): camera.VideoSession | undefined {
-     let videoSession: camera.VideoSession | undefined = undefined;
-     try {
-       videoSession = cameraManager.createSession(camera.SceneMode.NORMAL_VIDEO) as camera.VideoSession;
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`Failed to create the session instance. error: ${err.code}`);
+     // 此处以videoSession为例。
+     createSessionFn(cameraManager: camera.CameraManager): camera.VideoSession | undefined {
+       let videoSession: camera.VideoSession | undefined = undefined;
+       try {
+         videoSession = cameraManager.createSession(camera.SceneMode.NORMAL_VIDEO) as camera.VideoSession;
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to create session instance. err code: ${err.code}`);
+       }
+       return videoSession;
      }
-     return videoSession;
-   }
    ```
 
 3. 调用[VideoSession](../../reference/apis-camera-kit/arkts-apis-camera-VideoSession.md)中的[beginConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#beginconfig11)方法配置会话。
@@ -51,14 +51,15 @@
    <!-- @[camera_beginConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
    ```ts
-   function beginConfig(videoSession: camera.VideoSession): void {
-     try {
-       videoSession.beginConfig();
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`Failed to beginConfig. error: ${err.code}`);
+     // 此处以videoSession为例。
+     beginConfigFn(videoSession: camera.VideoSession): void {
+       try {
+         videoSession.beginConfig();
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to beginConfig. err code: ${err.code}`);
+       }
      }
-   }
    ```
 
 4. 使能。向会话中添加相机的输入流和输出流，调用[addInput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addinput11)添加相机的输入流；调用[addOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11)添加相机的输出流。以下示例代码以添加预览流previewOutput和拍照流photoOutput为例，即当前模式支持拍照和预览。
@@ -73,62 +74,64 @@
    <!-- @[camera_commit_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
    ```ts
-   async function startSession(videoSession: camera.VideoSession, cameraInput: camera.CameraInput, previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {
-     try {
-       videoSession.addInput(cameraInput);
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`Failed to addInput. error: ${err.code}`);
+     // 此处以videoSession为例。
+     async startSession(videoSession: camera.VideoSession, cameraInput: camera.CameraInput,
+       previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {
+       try {
+         videoSession.addInput(cameraInput);
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to addInput. error: ${err.code}`);
+       }
+       let canAddPreviewOutput : boolean = false;
+       try {
+         canAddPreviewOutput = videoSession.canAddOutput(previewOutput);
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to add previewOutput. error: ${err.code}`);
+       }
+       if (!canAddPreviewOutput) {
+         console.error(`Failed to add preview output.`);
+         return;
+       }
+       try {
+         videoSession.addOutput(previewOutput);
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to add previewOutput. error: ${err.code}`);
+       }
+       let canAddPhotoOutput : boolean = false
+       try {
+         canAddPhotoOutput = videoSession.canAddOutput(photoOutput);
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to add photoOutput error: ${err.code}`);
+       }
+       if (!canAddPhotoOutput) {
+         console.error(`Failed to add photo output.`);
+         return;
+       }
+       try {
+         videoSession.addOutput(photoOutput);
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to add photoOutput. error: ${err.code}`);
+       }
+       try {
+         await videoSession.commitConfig();
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to commitConfig. error: ${err.code}`);
+         return;
+       }
+
+       try {
+         await videoSession.start();
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to start. error: ${err.code}`);
+       }
      }
-     let canAddPreviewOutput : boolean = false;
-     try {
-       canAddPreviewOutput = videoSession.canAddOutput(previewOutput);
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`Failed to add previewOutput. error: ${err.code}`);
-     } 
-     if (!canAddPreviewOutput) {
-       console.error(`Failed to add preview output.`);
-       return;
-     }
-     try {
-       videoSession.addOutput(previewOutput);
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`Failed to add previewOutput. error: ${err.code}`);
-     }
-     let canAddPhotoOutput : boolean = false;
-     try {
-       canAddPhotoOutput = videoSession.canAddOutput(photoOutput);
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`Failed to add photoOutput error: ${err.code}`);
-     }
-     if (!canAddPhotoOutput) {
-       console.error(`Failed to add photo output.`);
-       return;
-     }
-     try {
-       videoSession.addOutput(photoOutput);
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`Failed to add photoOutput. error: ${err.code}`);
-     }
-     try {
-       await videoSession.commitConfig();
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`Failed to commitConfig. error: ${err.code}`);
-      return;
-     }
-   
-     try {
-       await videoSession.start();
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`Failed to start. error: ${err.code}`);
-     }
-   }
    ```
 
 5. 会话控制。调用VideoSession中的[stop](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#stop11)方法可以停止当前会话。调用[removeOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#removeoutput11)和[addOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11)方法可以完成会话切换控制。以下示例代码以移除拍照流photoOutput，添加视频流videoOutput为例，完成了拍照到录像的切换。
@@ -136,52 +139,57 @@
    <!-- @[camera_switch_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
    ```ts
-   async function switchOutput(videoSession: camera.VideoSession, videoOutput: camera.VideoOutput, photoOutput: camera.PhotoOutput): Promise<void> {
-     try {
-       await videoSession.stop();
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`Failed to stop. error: ${err.code}`);
+     async switchOutput(videoSession: camera.VideoSession,
+       videoOutput: camera.VideoOutput, photoOutput: camera.PhotoOutput): Promise<void> {
+       try {
+         await videoSession.stop();
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to stop. error: ${err.code}`);
+       }
+
+       try {
+         videoSession.beginConfig();
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to beginConfig. error: ${err.code}`);
+       }
+       // 从会话中移除拍照输出流。
+       try {
+         videoSession.removeOutput(photoOutput);
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to remove photoOutput. error: ${err.code}`);
+       }
+       let canAddVideoOutput: boolean = false;
+       try {
+         canAddVideoOutput = videoSession.canAddOutput(videoOutput);
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to add videoOutput error: ${err.code}`);
+       }
+       // 向会话中添加视频输出流。
+       try {
+         if (!canAddVideoOutput) {
+           return;
+         }
+         videoSession.addOutput(videoOutput);
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to add videoOutput. error: ${err.code}`);
+       }
+       try {
+         await videoSession.commitConfig();
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to commitConfig. error: ${err.code}`);
+       }
+
+       try {
+         await videoSession.start();
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to start. error: ${err.code}`);
+       }
      }
-   
-     try {
-       videoSession.beginConfig();
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`Failed to beginConfig. error: ${err.code}`);
-     }
-     // 从会话中移除拍照输出流。
-     try {
-       videoSession.removeOutput(photoOutput);
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`Failed to remove photoOutput. error: ${err.code}`);
-     }
-     try {
-       videoSession.canAddOutput(videoOutput);
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`Failed to add videoOutput error: ${err.code}`);
-     }
-     // 向会话中添加视频输出流。
-     try {
-       videoSession.addOutput(videoOutput);
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`Failed to add videoOutput. error: ${err.code}`);
-     }
-     try {
-       await videoSession.commitConfig();
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`Failed to commitConfig. error: ${err.code}`);
-     }
-   
-     try {
-       await videoSession.start();
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`Failed to start. error: ${err.code}`);
-     }
-   }
    ```

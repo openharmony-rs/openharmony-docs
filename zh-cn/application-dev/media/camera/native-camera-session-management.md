@@ -50,7 +50,7 @@
    <!-- @[create_capture_session_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
 
    ```c++
-   Camera_CaptureSession* CreateCaptureSession(Camera_Manager* cameraManager)
+   Camera_CaptureSession* NDKCamera::CreateCaptureSession(Camera_Manager* cameraManager)
    {
        Camera_CaptureSession* captureSession = nullptr;
        if (cameraManager == nullptr) {
@@ -70,7 +70,7 @@
    <!-- @[set_session_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
 
    ```c++
-   Camera_ErrorCode SetSessionMode(Camera_CaptureSession* captureSession)
+   Camera_ErrorCode NDKCamera::SetSessionMode(Camera_CaptureSession* captureSession)
    {
        Camera_ErrorCode ret = OH_CaptureSession_SetSessionMode(captureSession, NORMAL_VIDEO);
        if (ret != CAMERA_OK) {
@@ -85,7 +85,7 @@
    <!-- @[begin_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
 
    ```c++
-   Camera_ErrorCode BeginConfig(Camera_CaptureSession* captureSession)
+   Camera_ErrorCode NDKCamera::BeginConfig(Camera_CaptureSession* captureSession)
    {
        Camera_ErrorCode ret = OH_CaptureSession_BeginConfig(captureSession);
        if (ret != CAMERA_OK) {
@@ -102,7 +102,7 @@
    <!-- @[start_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
 
    ```c++
-   Camera_ErrorCode StartSession(Camera_CaptureSession* captureSession, Camera_Input* cameraInput,
+   Camera_ErrorCode NDKCamera::StartSession(Camera_CaptureSession* captureSession, Camera_Input* cameraInput,
        Camera_PreviewOutput* previewOutput, Camera_PhotoOutput* photoOutput)
    {
        // 向会话中添加相机输入流。
@@ -147,7 +147,7 @@
    <!-- @[reload_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
 
    ```c++
-   Camera_ErrorCode ReloadSession(Camera_CaptureSession* captureSession, Camera_PhotoOutput* photoOutput,
+   Camera_ErrorCode NDKCamera::ReloadSession(Camera_CaptureSession* captureSession, Camera_PhotoOutput* photoOutput,
        Camera_VideoOutput* videoOutput)
    {
        Camera_ErrorCode ret = OH_CaptureSession_Stop(captureSession);
