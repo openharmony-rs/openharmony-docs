@@ -273,9 +273,7 @@ try{
 
 ## eap.setEthEapConfig
 
-ArkTS-Dyn: setEthEapConfig(config: EthEapConfig): void
-
-ArkTS-Sta: setEthEapConfig(config: EthEapConfig): void
+setEthEapConfig(config: EthEapConfig): void
 
 设置以太网802.1X认证配置，配置将加密并持久化保存。
 
@@ -347,9 +345,7 @@ try {
 
 ## eap.getEthEapConfig
 
-ArkTS-Dyn: getEthEapConfig(): Promise\<EthEapConfig\>
-
-ArkTS-Sta: getEthEapConfig(): Promise\<EthEapConfig\>
+getEthEapConfig(): Promise\<EthEapConfig\>
 
 获取已保存的以太网802.1X认证配置。使用Promise异步回调。
 
@@ -399,9 +395,7 @@ try {
 
 ## eap.deleteEthEapConfig
 
-ArkTS-Dyn: deleteEthEapConfig(): Promise\<void\>
-
-ArkTS-Sta: deleteEthEapConfig(): Promise\<void\>
+deleteEthEapConfig(): Promise\<void\>
 
 删除已持久化保存的以太网802.1X EAP配置。若当前存在正在进行的自动认证，则会停止本次认证流程。使用Promise异步回调。
 
@@ -449,9 +443,7 @@ try {
 
 ## eap.getEthEapStateInfo
 
-ArkTS-Dyn: getEthEapStateInfo(): EthEapStateInfo
-
-ArkTS-Sta: getEthEapStateInfo(): EthEapStateInfo
+getEthEapStateInfo(): EthEapStateInfo
 
 同步获取当前以太网802.1X认证状态信息，包括认证状态、重试次数和补充信息。
 
@@ -496,9 +488,7 @@ try {
 
 ## eap.onStateChange
 
-ArkTS-Dyn: onStateChange(callback: Callback\<EthEapStateInfo\>): void
-
-ArkTS-Sta: onStateChange(callback: Callback\<EthEapStateInfo\>): void
+onStateChange(callback: Callback\<EthEapStateInfo\>): void
 
 订阅以太网802.1X认证状态变化。使用callback异步回调。
 
@@ -547,9 +537,7 @@ try {
 
 ## eap.offStateChange
 
-ArkTS-Dyn: offStateChange(callback?: Callback\<EthEapStateInfo\>): void
-
-ArkTS-Sta: offStateChange(callback?: Callback\<EthEapStateInfo\>): void
+offStateChange(callback?: Callback\<EthEapStateInfo\>): void
 
 取消订阅以太网802.1X认证状态变化。
 
@@ -602,9 +590,7 @@ try {
 
 ## eap.connect
 
-ArkTS-Dyn: connect(action: EthEapConnectAction): Promise\<void\>
-
-ArkTS-Sta: connect(action: EthEapConnectAction): Promise\<void\>
+connect(action: EthEapConnectAction): Promise\<void\>
 
 手动触发或断开以太网802.1X认证。使用Promise异步回调。
 
