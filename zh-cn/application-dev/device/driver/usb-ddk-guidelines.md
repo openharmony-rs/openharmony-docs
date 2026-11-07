@@ -227,12 +227,8 @@ libusb_ndk.z.so
     <!-- @[driver_usb_step8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->  
     
     ``` C++
-    // 创建设备内存缓冲区，bufferSize为设备端点的最大包大小
+    // 使用OH_Usb_CreateDeviceMemBuffer创建设备内存缓冲区
     UsbDdkErrCode ret = OH_Usb_CreateDeviceMemBuffer(g_devHandle, bufferSize, &g_devMemBuffer);
-    if (ret != USB_DDK_SUCCESS || g_devMemBuffer == nullptr) {
-        OH_LOG_ERROR(LOG_APP, "OH_Usb_CreateDeviceMemBuffer failed, ret=%{public}d", ret);
-        return;
-    }
     ```
 
 7. 向USB设备的OUT端点写入数据（可选）。
@@ -242,14 +238,13 @@ libusb_ndk.z.so
     <!-- @[driver_usb_step9](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->  
     
     ``` C++
-    // 配置管道参数
+    // 使用OH_Usb_WritePipe向OUT端点写入数据
     struct UsbRequestPipe pipe;
     pipe.interfaceHandle = g_interfaceHandle;
     pipe.endpoint = g_dataEpOut;
-    pipe.timeout = 5000; // 超时时间，单位为毫秒
+    pipe.timeout = PIPE_TIMEOUT_MS;
     uint32_t transferredLength = 0;
-    // 向OUT端点写入数据，buffer为设备内存缓冲区，offset为0，writeLength为待写入的数据长度
-    OH_Usb_WritePipe(&pipe, writeBuffer, bufferSize, 0, sizeof(writeData), &transferredLength);
+    errCode = OH_Usb_WritePipe(&pipe, writeBuffer, bufferSize, 0, sizeof(writeData), &transferredLength);
     ```
 
 8. 从USB设备读取数据（可选）。
@@ -259,14 +254,13 @@ libusb_ndk.z.so
     <!-- @[driver_usb_step10](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->  
     
     ``` C++
-    // 配置管道参数
     struct UsbRequestPipe pipe;
     pipe.interfaceHandle = g_interfaceHandle;
     pipe.endpoint = g_dataEp;
-    pipe.timeout = 4; // 中断传输超时时间，保持和设备bInterval一致
+    pipe.timeout = 4; // 中断传输超时时间，保持和手写板bInterval保持一致
+    // 使用OH_Usb_ReadPipe读取手写板数据
     uint32_t transferredLength = 0;
-    // 从端点读取数据到设备内存缓冲区，offset为0，readLength为bufferSize
-    OH_Usb_ReadPipe(&pipe, g_devMemBuffer, bufferSize, 0, bufferSize, &transferredLength);
+    ret = OH_Usb_ReadPipe(&pipe, g_devMemBuffer, bufferSize, 0, bufferSize, &transferredLength);
     ```
 
 9. 销毁设备内存缓冲区。
@@ -281,6 +275,13 @@ libusb_ndk.z.so
     if (ret != USB_DDK_SUCCESS) {
         OH_LOG_ERROR(LOG_APP, "OH_Usb_DestroyDeviceMemBuffer failed, ret=%{public}d", ret);
     }
+    // 释放接口
+    int32_t releaseRet = OH_Usb_ReleaseInterface(g_interfaceHandle);
+    if (releaseRet != 0) {
+        OH_LOG_ERROR(LOG_APP, "ReleaseInterface failed %{public}d", releaseRet);
+    }
+    // 释放USB DDK
+    OH_Usb_Release();
     ```
 
 10. 释放资源。
