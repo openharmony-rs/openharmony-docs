@@ -5029,25 +5029,27 @@ IP多媒体系统调用模式。
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
-|      名称       | 类型                                     | 只读 | 可选 | 说明           |
+|      名称       | 类型                                     | 只读 | 可选| 说明           |
 | --------------- | ---------------------------------------- | ---- | ---- | -------------- |
-| accountNumber   | string                                   | 是   | 否 | 账号号码。       |
-| speakerphoneOn  | boolean                                  | 是   | 否 | 判断是否是扬声器接通电话，默认false。<br/>-true：是<br/>-false：否 |
-| accountId       | number                                   | 是   | 否 | 帐户Id。         |
-| videoState      | [VideoStateType](#videostatetype7)       | 是   | 否 | 视频状态类型。   |
-| startTime       | number                                   | 是   | 否 | 开始时间。       |
-| isEcc           | boolean                                  | 是   | 否 | 判断是否是Ecc，默认false。<br/>-true：是<br/>-false：否      |
-| callType        | [CallType](#calltype7)                   | 是   | 否 | 通话类型。       |
-| callId          | number                                   | 是   | 否 | 呼叫Id。         |
-| callState       | [DetailedCallState](#detailedcallstate7) | 是   | 否 | 详细呼叫状态。   |
-| conferenceState | [ConferenceState](#conferencestate7)     | 是   | 否 | 会议状态。       |
-| voipCallAttribute<sup>11+</sup> | [VoipCallAttribute](#voipcallattribute11)     | 是   | 是   | VoIP通话信息。       |
-| crsType<sup>11+</sup> | number                             | 是   | 否 | 视频彩振类型。|
-| originalCallType<sup>11+</sup> | number                    | 是   | 否 | 视频彩振原始呼叫类型。|
-| numberLocation<sup>12+</sup> | string | 是   | 是   | 号码归属地信息 |
-| numberMarkInfo<sup>12+</sup> | [NumberMarkInfo](#numbermarkinfo12) | 是   | 是   | 号码标记信息。 |
-| xCallType | [xCallType](#xcalltype) | 是   | 是   | XCALL类型。 <br>**起始版本:** 26.0.0|
-| isCustomAccessibility  | boolean              | 是   | 是   | 应用是否支持自定义无障碍能力，默认为false。<br>-true:支持<br>-false:不支持  <br>**起始版本:** 26.0.0|
+| accountNumber   | string                                   | 是   | 否   | 账号号码。       |
+| speakerphoneOn  | boolean                                  | 是   | 否   | 判断是否是扬声器接通电话，默认false。<br/>-true：是<br/>-false：否 |
+| accountId       | number                                   | 是   | 否   | 账户Id。         |
+| videoState      | [VideoStateType](#videostatetype7)       | 是   | 否   | 视频状态类型。   |
+| startTime       | number                                   | 是   | 否   | 开始时间。       |
+| isEcc           | boolean                                  | 是   | 否   | 判断是否是Ecc，默认false。<br/>-true：是<br/>-false：否      |
+| callType        | [CallType](#calltype7)                   | 是   | 否   | 通话类型。       |
+| callId          | number                                   | 是   | 否   | 呼叫Id。         |
+| callState       | [DetailedCallState](#detailedcallstate7) | 是   | 否   | 详细呼叫状态。   |
+| conferenceState | [ConferenceState](#conferencestate7)     | 是   | 否   | 会议状态。       |
+| voipCallAttribute<sup>11+</sup> | [VoipCallAttribute](#voipcallattribute11)     | 是   | 否   | VoIP通话信息。       |
+| crsType<sup>11+</sup> | number                             | 是   | 否   | 视频彩振类型。|
+| originalCallType<sup>11+</sup> | number                    | 是   | 否   | 视频彩振原始呼叫类型。|
+| numberLocation<sup>12+</sup> | string | 是   | 否 | 号码归属地信息 |
+| numberMarkInfo<sup>12+</sup> | [NumberMarkInfo](#numbermarkinfo12) | 是   | 否 | 号码标记信息。 |
+| extraParams <sup>14+</sup>   | Record\<string, Object\>       | 是   | 否   | 表示额外的呼叫参数。                          |
+| rttState <sup>22+</sup>   | [RttState](#rttstate22)      | 是   | 否   | rtt通话状态。                          |
+| xCallType | [xCallType](#xcalltype) | 是   | 否 | XCALL类型。 <br>**起始版本:** 26.0.0|
+| isCustomAccessibility  | boolean              | 是   | 否 | 应用是否支持自定义无障碍能力，默认为false。<br>-true:支持<br>-false:不支持  <br>**起始版本:** 26.0.0|
 
 ## VoipCallAttribute<sup>11+</sup>
 
@@ -6234,6 +6236,21 @@ rtt通话消息。
 | MARK_TYPE_OTHERS | 9 | 其他。 |
 | MARK_TYPE_YELLOW_PAGE | 10 | 黄页。 |
 | MARK_TYPE_ENTERPRISE<sup>14+</sup> | 11 | 企业联系人。 |
+
+## RttState<sup>22+</sup>
+ 
+rtt通话状态。
+ 
+**系统接口：** 此接口为系统接口。
+ 
+**系统能力**：SystemCapability.Telephony.CallManager
+ 
+| 名称                           | 值     | 说明     |
+| ------------------------------ | ------ | --------|
+| RTT_STATE_NO | 0      | rtt关闭。 |
+| RTT_STATE_YES | 1      | rtt打开。 |
+| RTT_STATE_REMOTE_TTY | 2      | tty模式。 |
+| RTT_STATE_REMOTE_NOT_SUPPORT | 3      | 对端不支持rtt。 |
 
 ## XCallType
 
