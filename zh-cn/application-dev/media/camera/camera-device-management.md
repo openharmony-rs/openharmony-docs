@@ -51,34 +51,34 @@
     > 逻辑相机是系统定义的虚拟相机，由多个物理镜头组合而成。系统在内部完成物理镜头间的切换等处理，应用无需感知镜头变化，只需通过[getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)获取相机列表时，根据[CameraPosition](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraposition)区分前置镜头与后置镜头即可。
 
    <!-- @[camera_getSupportedCameras](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-   
-   ``` TypeScript
-   getSupportedCamerasFn(cameraManager: camera.CameraManager): camera.CameraDevice[] {
-     let supportedCameras: camera.CameraDevice[] = [];
-     try {
-       supportedCameras = cameraManager.getSupportedCameras();
-     } catch (error) {
-       let err = error as BusinessError;
-       Logger.error(TAG, `getSupportedCameras failed: ${err.code}`);
-     }
-     if (supportedCameras != undefined && supportedCameras.length > 0) {
-       for (let index = 0; index < supportedCameras.length; index++) {
-         console.info(`cameraId : ${supportedCameras[index].cameraId}`);  // 获取相机ID。
-         console.info(`cameraPosition : ${supportedCameras[index].cameraPosition}`);  // 获取相机位置。
-         console.info(`cameraType : ${supportedCameras[index].cameraType}`);  // 获取相机类型。
-         console.info(`connectionType : ${supportedCameras[index].connectionType}`);  // 获取相机连接类型。
+
+   ```ts
+   function getCameraDevices(cameraManager: camera.CameraManager): Array<camera.CameraDevice> {
+     let cameraArray: Array<camera.CameraDevice> = cameraManager.getSupportedCameras();
+     if (cameraArray != undefined && cameraArray.length > 0) {
+       for (let index = 0; index < cameraArray.length; index++) {
+         console.info('cameraId : ' + cameraArray[index].cameraId);  // 获取相机ID。
+         console.info('cameraPosition : ' + cameraArray[index].cameraPosition);  // 获取相机位置。
+         console.info('cameraType : ' + cameraArray[index].cameraType);  // 获取相机类型。
+         console.info('connectionType : ' + cameraArray[index].connectionType);  // 获取相机连接类型。
        }
-       return supportedCameras;
+       return cameraArray;
      } else {
-       console.error(`cameraManager.getSupportedCameras error`);
+       console.error("cameraManager.getSupportedCameras error");
        return [];
      }
+   }
+   ```
+
+   方法二：获取物理相机，通过[CameraManager](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md)的[getCameraDevices](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameradevices23)方法，获取获取当前设备支持的相机列表，筛选相机属性[CameraDevice](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameradevice).isLogicalCamera为false的相机。
+   物理镜头根据[CameraType](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameratype)区分各自镜头属性，开发者可根据使用场景使用符合采集诉求的相机镜头。
+
    <!-- @[camera_getCameraDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-   
-   ``` TypeScript
-   getCameraDevicesFn(cameraManager: camera.CameraManager,
-     position: camera.CameraPosition, cameraTypes: camera.CameraType[]): camera.CameraDevice[] {
-     let cameraArray: camera.CameraDevice[] = []
+
+   ```ts
+   function getPhysicalCameraDevicesFn(cameraManager: camera.CameraManager,
+   position: camera.CameraPosition, cameraTypes: Array<camera.CameraType>):  Array<camera.CameraDevice> {
+     let cameraArray: Array<camera.CameraDevice> = []
      try {
        cameraArray =
          cameraManager.getCameraDevices(position, cameraTypes, camera.ConnectionType.CAMERA_CONNECTION_BUILT_IN);
@@ -92,16 +92,12 @@
          console.info(`cameraPosition : ${cameraArray[index].cameraPosition}`);  // 获取相机位置。
          console.info(`cameraType : ${cameraArray[index].cameraType}`);  // 获取相机类型。
          console.info(`isLogicalCamera : ${cameraArray[index].isLogicalCamera}`);  // 获取相机连接类型。
+         if (cameraArray[index].isLogicalCamera) {
+           cameraArray.splice(index, 1); // 删除逻辑相机。
+           console.info(`delete logicalCamera: ${cameraArray[index].cameraId}`);
+         }
        }
-       // 过滤掉逻辑相机，只保留物理相机。
-       cameraArray = cameraArray.filter((item: camera.CameraDevice) => !item.isLogicalCamera);
        return cameraArray;
-     } else {
-       console.error(`cameraManager.getSupportedCameras error`);
-       return [];
-     }
-   }
-   ```
      } else {
        console.error("cameraManager.getSupportedCameras error");
        return [];
@@ -118,39 +114,31 @@
 
 <!-- @[on_camera_status](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
-``` TypeScript
-registerCameraStatusChange(err: BusinessError, cameraStatusInfo: camera.CameraStatusInfo): void {
-  // 如果当通过USB连接相机设备时，回调函数会返回新的相机出现状态。
-  if (cameraStatusInfo.status == camera.CameraStatus.CAMERA_STATUS_APPEAR) {
-    console.info(`New Camera device appear.`);
-  }
-  // 如果当断开相机设备USB连接时，回调函数会返回相机被移除状态。
-  if (cameraStatusInfo.status == camera.CameraStatus.CAMERA_STATUS_DISAPPEAR) {
-    console.info(`Camera device has been removed.`);
-  }
-  // 相机被关闭时，回调函数会返回相机可用状态。
-  if (cameraStatusInfo.status == camera.CameraStatus.CAMERA_STATUS_AVAILABLE) {
-    console.info(`Current Camera is available.`);
-  }
-  // 相机被打开/占用时，回调函数会返回相机不可用状态。
-  if (cameraStatusInfo.status == camera.CameraStatus.CAMERA_STATUS_UNAVAILABLE) {
-    console.info(`Current Camera has been occupied.`);
-  }
-  console.info(`camera: ${cameraStatusInfo.camera.cameraId}`);
-  console.info(`status: ${cameraStatusInfo.status}`);
-}
-
-/**
- * 监听相机状态变化
- * @param cameraManager - 相机管理器对象
- * @returns 无返回值
- */
-onCameraStatusChange(cameraManager: camera.CameraManager): void {
-  Logger.info(TAG, 'onCameraStatusChange is called');
-  try {
-    cameraManager.on('cameraStatus', this.registerCameraStatusChange);
-  } catch (error) {
-    Logger.error(TAG, 'onCameraStatusChange error');
-  }
+```ts
+function onCameraStatusChange(cameraManager: camera.CameraManager): void {
+  cameraManager.on('cameraStatus', (err: BusinessError, cameraStatusInfo: camera.CameraStatusInfo) => {
+    if (err !== undefined && err.code !== 0) {
+      console.error(`Callback Error, errorCode: ${err.code}`);
+      return;
+    }
+    // 如果当通过USB连接相机设备时，回调函数会返回新的相机出现状态。
+    if (cameraStatusInfo.status == camera.CameraStatus.CAMERA_STATUS_APPEAR) {
+      console.info(`New Camera device appear.`);
+    }
+    // 如果当断开相机设备USB连接时，回调函数会返回相机被移除状态。
+    if (cameraStatusInfo.status == camera.CameraStatus.CAMERA_STATUS_DISAPPEAR) {
+      console.info(`Camera device has been removed.`);
+    }
+    // 相机被关闭时，回调函数会返回相机可用状态。
+    if (cameraStatusInfo.status == camera.CameraStatus.CAMERA_STATUS_AVAILABLE) {
+      console.info(`Current Camera is available.`);
+    }
+    // 相机被打开/占用时，回调函数会返回相机不可用状态。
+    if (cameraStatusInfo.status == camera.CameraStatus.CAMERA_STATUS_UNAVAILABLE) {
+      console.info(`Current Camera has been occupied.`);
+    }
+    console.info(`camera: ${cameraStatusInfo.camera.cameraId}`);
+    console.info(`status: ${cameraStatusInfo.status}`);
+  });
 }
 ```
