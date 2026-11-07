@@ -41,6 +41,7 @@
 | [bool OH_AudioStreamManager_IsMultichannelPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)](#oh_audiostreammanager_ismultichannelplaybacksupported) | 查询当前设备在特定音频流信息和使用场景下是否支持多声道播放。 |
 | [bool OH_AudioStreamManager_IsDirectPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)](#oh_audiostreammanager_isdirectplaybacksupported) | 查询当前设备在特定音频流信息和使用场景下是否支持直通播放。 |
 | [bool OH_AudioStreamManager_IsOffloadPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)](#oh_audiostreammanager_isoffloadplaybacksupported) | 查询当前设备在特定音频流信息和使用场景下是否支持低功耗播放。 |
+| [OH_AudioCommon_Result OH_AudioStreamManager_IsUltraFastPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage, bool *supported)](#oh_audiostreammanager_isultrafastplaybacksupported) | 查询当前设备在指定音频流信息和使用场景下是否支持超低时延播放。 |
 
 ## 函数说明
 
