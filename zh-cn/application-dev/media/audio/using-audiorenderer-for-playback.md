@@ -89,7 +89,7 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
      ``` TypeScript
      import { audio } from '@kit.AudioKit';
      import { BusinessError } from '@kit.BasicServicesKit';
-     import { fileIo as fs } from '@kit.CoreFileKit';
+     import { fileIo } from '@kit.CoreFileKit';
      import { common } from '@kit.AbilityKit';
      // ...
      class Options {
@@ -108,7 +108,7 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
            return audio.AudioDataCallbackResult.INVALID;
          }
          try {
-           let bufferLength = fs.readSync(file.fd, buffer, options);
+           let bufferLength = fileIo.readSync(file.fd, buffer, options);
            bufferSize += buffer.byteLength;
            // 系统会判定buffer有效，正常播放。
            // ...
