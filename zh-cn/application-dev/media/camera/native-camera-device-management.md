@@ -62,7 +62,7 @@
 
     > **说明：**
     >
-    > 逻辑相机是系统定义的虚拟相机，由多个物理镜头组合而成。系统在内部完成物理镜头间的切换等处理，应用无需感知镜头变化，只需通过[OH_CameraManager_GetSupportedCameras()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameras)获取相机镜头列表时，根据[CameraPosition](../../reference/apis-camera-kit/capi-camera-h.md#camera_position)区分前置镜头与后置镜头即可。
+    > 逻辑相机是系统定义的虚拟相机，由多个物理镜头组合而成。系统在内部完成物理镜头间的切换等处理，应用无需感知镜头变化，只需通过[OH_CameraManager_GetSupportedCameras()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameras)获取相机镜头列表时，根据[Camera_Position](../../reference/apis-camera-kit/capi-camera-h.md#camera_position)区分前置镜头与后置镜头即可。
 
    <!-- @[get_supported_cameras](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) --> 
 
