@@ -40,13 +40,13 @@
 
    <!-- @[get_camera_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) --> 
 
-   ```c++
-   Camera_ErrorCode CreateCameraManager(Camera_Manager** cameraManager)
+   ``` C++
+   Camera_ErrorCode NDKCamera::CreateCameraManager(Camera_Manager** cameraManager)
    {
        // 创建CameraManager对象。
        Camera_ErrorCode ret = OH_Camera_GetCameraManager(cameraManager);
        if (*cameraManager == nullptr || ret != CAMERA_OK) {
-          OH_LOG_ERROR(LOG_APP, "OH_Camera_GetCameraManager failed.");
+           OH_LOG_ERROR(LOG_APP, "OH_Camera_GetCameraManager failed.");
        }
        return ret;
    }
@@ -56,29 +56,78 @@
    >
    > 如果获取对象失败，说明相机可能被占用或无法使用。如果被占用，须等到相机被释放后才能重新获取。
 
-4. 通过[OH_CameraManager_GetSupportedCameras()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameras)方法，获取当前设备支持的相机列表，列表中存储了设备支持的所有相机ID。若列表不为空，则说明列表中的每个ID都支持独立创建相机对象；否则，说明当前设备无可用相机，无法进行后续操作。
+4. 获取相机列表。
+
+    方法一：获取逻辑相机，通过[OH_CameraManager_GetSupportedCameras()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameras)方法，获取当前设备支持的相机列表，列表中存储了设备支持的所有相机ID。若列表不为空，则说明列表中的每个ID都支持独立创建相机对象；否则，说明当前设备无可用相机，无法进行后续操作。
+
+    > **说明：**
+    >
+    > 逻辑相机是系统定义的虚拟相机，由多个物理镜头组合而成。系统在内部完成物理镜头间的切换等处理，应用无需感知镜头变化，只需通过[OH_CameraManager_GetSupportedCameras()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameras)获取相机镜头列表时，根据[CameraPosition](../../reference/apis-camera-kit/capi-camera-h.md#camera_position)区分前置镜头与后置镜头即可。
 
    <!-- @[get_supported_cameras](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) --> 
 
-   ```c++
-   Camera_ErrorCode GetSupportedCameras(Camera_Manager* cameraManager, Camera_Device** cameras, uint32_t &size)
+   ``` C++
+   Camera_ErrorCode NDKCamera::GetSupportedCameras(Camera_Manager* cameraManager, Camera_Device** cameras, uint32_t &size)
    {
        // 获取相机列表。
        Camera_ErrorCode ret = OH_CameraManager_GetSupportedCameras(cameraManager, cameras, &size);
-       if (cameras == nullptr || size == 0 || ret != CAMERA_OK) {
-          OH_LOG_ERROR(LOG_APP, "OH_CameraManager_GetSupportedCameras failed.");
+       if (*cameras == nullptr || size == 0 || ret != CAMERA_OK) {
+           OH_LOG_ERROR(LOG_APP, "OH_CameraManager_GetSupportedCameras failed.");
+           return ret;
        }
        // 在不使用cameras时，需要调用OH_CameraManager_DeleteSupportedCameras()方法释放相机列表并置空指针防止内存泄漏。
        for (uint32_t index = 0; index < size; index++) {
-          OH_LOG_INFO(LOG_APP, "cameraId  =  %{public}s ", (*cameras)[index].cameraId);              // 获取相机ID。
-          OH_LOG_INFO(LOG_APP, "cameraPosition  =  %{public}d ", (*cameras)[index].cameraPosition);  // 获取相机位置。
-          OH_LOG_INFO(LOG_APP, "cameraType  =  %{public}d ", (*cameras)[index].cameraType);          // 获取相机类型。
-          OH_LOG_INFO(LOG_APP, "connectionType  =  %{public}d ", (*cameras)[index].connectionType);  // 获取相机连接类型。
+           OH_LOG_INFO(LOG_APP, "cameraId  =  %{public}s ", (*cameras)[index].cameraId);              // 获取相机ID。
+           OH_LOG_INFO(LOG_APP, "cameraPosition  =  %{public}d ", (*cameras)[index].cameraPosition);  // 获取相机位置。
+           OH_LOG_INFO(LOG_APP, "cameraType  =  %{public}d ", (*cameras)[index].cameraType);          // 获取相机类型。
+           OH_LOG_INFO(LOG_APP, "connectionType  =  %{public}d ", (*cameras)[index].connectionType);  // 获取相机连接类型。
        }
        return ret;
    }
    ```
 
+   方法二：获取物理相机，通过[OH_CameraManager_GetCameraDevices](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getcameradevices)方法，获取当前设备支持的相机列表，通过[OH_CameraDevice_IsLogicalCamera](../../reference/apis-camera-kit/capi-camera-device-h.md#oh_cameradevice_islogicalcamera)方法获取物理镜头。
+   物理镜头根据[Camera_Type](../../reference/apis-camera-kit/capi-camera-h.md#camera_type)区分各自镜头属性，开发者可根据使用场景使用符合采集诉求的相机镜头。
+
+   <!-- @[get_camera_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+
+   ``` C++
+   Camera_ErrorCode NDKCamera::GetCameraDevices(Camera_Manager* cameraManager, Camera_Device** cameras, uint32_t &size)
+   {
+       // 获取相机列表。
+       Camera_Type type[5] = {
+           Camera_Type::CAMERA_TYPE_DEFAULT,
+           Camera_Type::CAMERA_TYPE_TELEPHOTO,
+           Camera_Type::CAMERA_TYPE_TRUE_DEPTH,
+           Camera_Type::CAMERA_TYPE_ULTRA_WIDE,
+           Camera_Type::CAMERA_TYPE_WIDE_ANGLE};
+       Camera_DeviceQueryInfo deviceInfo = {};
+       deviceInfo.cameraType = type;
+       deviceInfo.cameraTypeSize = sizeof(type) / sizeof(type[0]);
+       deviceInfo.cameraPosition = Camera_Position::CAMERA_POSITION_BACK;
+       deviceInfo.connectionType = Camera_Connection::CAMERA_CONNECTION_BUILT_IN;
+       Camera_ErrorCode ret = OH_CameraManager_GetCameraDevices(cameraManager, &deviceInfo, &size, cameras);
+       if (*cameras == nullptr || size == 0 || ret != CAMERA_OK) {
+           OH_LOG_ERROR(LOG_APP, "OH_CameraManager_GetCameraDevices failed.");
+           return ret;
+       }
+       // 在不使用cameras时，需要调用OH_CameraManager_DeleteSupportedCameras()方法释放相机列表并置空指针防止内存泄漏。
+       for (uint32_t index = 0; index < size; index++) {
+           OH_LOG_INFO(LOG_APP, "cameraId = %{public}s ", (*cameras)[index].cameraId);              // 获取相机ID。
+           OH_LOG_INFO(LOG_APP, "cameraPosition = %{public}d ", (*cameras)[index].cameraPosition);  // 获取相机位置。
+           OH_LOG_INFO(LOG_APP, "cameraType = %{public}d ", (*cameras)[index].cameraType);          // 获取相机类型。
+           OH_LOG_INFO(LOG_APP, "connectionType = %{public}d ", (*cameras)[index].connectionType);  // 获取相机连接类型。
+           bool isLogical = false;
+           ret = OH_CameraDevice_IsLogicalCamera(cameras[index], &isLogical);
+           if (ret != CAMERA_OK) {
+               OH_LOG_ERROR(LOG_APP, "OH_CameraDevice_IsLogicalCamera failed.");
+               continue;
+           }
+           OH_LOG_INFO(LOG_APP, "cameraId: %{public}s is logical: %{public}d.", (*cameras)[index].cameraId, isLogical);
+       }
+       return CAMERA_OK;
+   }
+   ```
 
 ## 状态监听
 
@@ -88,25 +137,22 @@
 
   <!-- @[register_camera_status_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) --> 
 
-  ```c++
+  ``` C++
   void CameraStatusCallback(Camera_Manager* cameraManager, Camera_StatusInfo* status)
   {
-     OH_LOG_INFO(LOG_APP, "CameraStatusCallback is called");
+      OH_LOG_INFO(LOG_APP, "CameraStatusCallback is called");
   }
   CameraManager_Callbacks* GetCameraManagerListener()
   {
-     static CameraManager_Callbacks cameraManagerListener = {
-        .onCameraStatus = CameraStatusCallback
-     };
-     return &cameraManagerListener;
+      static CameraManager_Callbacks cameraManagerListener = {.onCameraStatus = CameraStatusCallback};
+      return &cameraManagerListener;
   }
-  ```
-  ```c++
-  Camera_ErrorCode RegisterCameraStatusCallback(Camera_Manager &cameraManager)
+  
+  Camera_ErrorCode NDKCamera::RegisterCameraStatusCallback(Camera_Manager &cameraManager)
   {
       Camera_ErrorCode ret = OH_CameraManager_RegisterCallback(&cameraManager, GetCameraManagerListener());
       if (ret != CAMERA_OK) {
-         OH_LOG_ERROR(LOG_APP, "OH_CameraManager_RegisterCallback failed.");
+          OH_LOG_ERROR(LOG_APP, "OH_CameraManager_RegisterCallback failed.");
       }
       return ret;
   }
