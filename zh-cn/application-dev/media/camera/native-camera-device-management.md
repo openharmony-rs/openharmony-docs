@@ -39,14 +39,14 @@
 3. 通过[OH_Camera_GetCameraManager()](../../reference/apis-camera-kit/capi-camera-h.md#oh_camera_getcameramanager)方法，获取cameraManager对象。
 
    <!-- @[get_camera_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) --> 
-
-   ```c++
-   Camera_ErrorCode CreateCameraManager(Camera_Manager** cameraManager)
+   
+   ``` C++
+   Camera_ErrorCode NDKCamera::CreateCameraManager(Camera_Manager** cameraManager)
    {
        // 创建CameraManager对象。
        Camera_ErrorCode ret = OH_Camera_GetCameraManager(cameraManager);
        if (*cameraManager == nullptr || ret != CAMERA_OK) {
-          OH_LOG_ERROR(LOG_APP, "OH_Camera_GetCameraManager failed.");
+           OH_LOG_ERROR(LOG_APP, "OH_Camera_GetCameraManager failed.");
        }
        return ret;
    }
