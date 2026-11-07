@@ -65,6 +65,10 @@ UsbDdk（USB Driver Development Kit）是为开发者提供的USB驱动程序开
 | OH_Usb_CreateDeviceMemMap(uint64_t deviceId, size_t size, UsbDeviceMemMap **devMmap) | 创建缓冲区。请在缓冲区使用完后，调用OH_Usb_DestroyDeviceMemMap()销毁缓冲区，否则会造成资源泄漏。 |
 | OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap) | 销毁缓冲区。请在缓冲区使用完后及时销毁缓冲区，否则会造成资源泄漏。 |
 | OH_Usb_GetDevices(struct Usb_DeviceArray *devices) | 获取USB设备ID列表。请保证传入的指针参数是有效的，申请的设备ID数组的大小建议不超过128，以避免过度占用内存。在使用完结构之后，释放成员内存，否则造成资源泄漏。获取到的USB设备ID，已通过驱动配置信息中的vid进行筛选过滤。 |
+| OH_Usb_CreateDeviceMemBuffer(uint64_t deviceId, uint32_t size, uint8_t \*\*buffer) | 创建设备内存缓冲区。为避免资源泄漏，请在缓冲区使用完成后调用OH_Usb_DestroyDeviceMemBuffer()销毁缓冲区。 |
+| OH_Usb_DestroyDeviceMemBuffer(uint8_t \*\*buffer) | 销毁设备内存缓冲区。为防止资源泄漏，请在使用完成后及时销毁缓冲区。 |
+| OH_Usb_WritePipe(const struct UsbRequestPipe \*pipe, uint8_t \*buffer, uint32_t bufferSize, uint32_t offset, uint32_t writeLength, uint32_t \*transferredLength) | 发送管道写请求。该接口以同步方式工作，适用于中断传输和批量传输。 |
+| OH_Usb_ReadPipe(const struct UsbRequestPipe \*pipe, uint8_t \*buffer, uint32_t bufferSize, uint32_t offset, uint32_t readLength, uint32_t \*transferredLength) | 发送管道读请求。该接口以同步方式工作，适用于中断传输和批量传输。 |
 
 详细的接口说明请参考[UsbDdk](../../reference/apis-driverdevelopment-kit/capi-usbddk.md)。
 
@@ -214,9 +218,74 @@ libusb_ndk.z.so
     ret = OH_Usb_SendPipeRequest(&pipe, devMmap);
     ```
 
-6. 释放资源。
+6. 创建设备内存缓冲区及通过偏移量发送管道请求（可选）。
 
-    在所有请求处理完毕，程序退出前，使用 **usb_ddk_api.h** 的 **OH_Usb_DestroyDeviceMemMap** 接口销毁缓冲区。使用**OH_Usb_ReleaseInterface**释放接口。使用**OH_Usb_Release**释放UsbDdk。
+    除了使用**OH_Usb_SendPipeRequest**进行管道传输外，开发者还可以通过**OH_Usb_CreateDeviceMemBuffer**创建设备内存缓冲区，再使用**OH_Usb_WritePipe**和**OH_Usb_ReadPipe**进行管道数据传输。该方式在读写时通过offset参数指定数据在缓冲区中的起始位置，适用于需要高效批量数据传输的场景，例如手写板等设备。
+
+    使用**usb_ddk_api.h**的**OH_Usb_CreateDeviceMemBuffer**接口创建设备内存缓冲区。该接口根据设备ID和指定大小分配一块缓冲区。后续调用**OH_Usb_WritePipe**和**OH_Usb_ReadPipe**时，可将该缓冲区作为数据传输的载体，并通过offset参数指定数据在缓冲区中的起始位置。
+
+    <!-- @[driver_usb_step8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->  
+    
+    ``` C++
+    // 创建设备内存缓冲区，bufferSize为设备端点的最大包大小
+    UsbDdkErrCode ret = OH_Usb_CreateDeviceMemBuffer(g_devHandle, bufferSize, &g_devMemBuffer);
+    if (ret != USB_DDK_SUCCESS || g_devMemBuffer == nullptr) {
+        OH_LOG_ERROR(LOG_APP, "OH_Usb_CreateDeviceMemBuffer failed, ret=%{public}d", ret);
+        return;
+    }
+    ```
+
+7. 向USB设备的OUT端点写入数据（可选）。
+
+    使用**usb_ddk_api.h**的**OH_Usb_WritePipe**向设备的指定端点写入数据。该接口以同步方式工作，适用于中断传输和批量传输。调用时需通过**UsbRequestPipe**结构体指定接口句柄、端点地址和超时时间。buffer参数为通过**OH_Usb_CreateDeviceMemBuffer**创建的缓冲区，offset参数指定数据在缓冲区中的起始位置，writeLength参数指定待写入的数据长度。
+
+    <!-- @[driver_usb_step9](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->  
+    
+    ``` C++
+    // 配置管道参数
+    struct UsbRequestPipe pipe;
+    pipe.interfaceHandle = g_interfaceHandle;
+    pipe.endpoint = g_dataEpOut;
+    pipe.timeout = 5000; // 超时时间，单位为毫秒
+    uint32_t transferredLength = 0;
+    // 向OUT端点写入数据，buffer为设备内存缓冲区，offset为0，writeLength为待写入的数据长度
+    OH_Usb_WritePipe(&pipe, writeBuffer, bufferSize, 0, sizeof(writeData), &transferredLength);
+    ```
+
+8. 从USB设备读取数据（可选）。
+
+    使用**usb_ddk_api.h**的**OH_Usb_ReadPipe**从设备的指定端点读取数据。该接口以同步方式工作，适用于中断传输和批量传输。与**OH_Usb_WritePipe**类似，需通过**UsbRequestPipe**结构体指定管道参数。buffer参数为设备内存缓冲区，offset参数指定数据写入缓冲区的起始位置，readLength参数指定期望读取的数据长度。读取完成后，通过transferredLength输出参数获取实际传输的数据长度。
+
+    <!-- @[driver_usb_step10](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->  
+    
+    ``` C++
+    // 配置管道参数
+    struct UsbRequestPipe pipe;
+    pipe.interfaceHandle = g_interfaceHandle;
+    pipe.endpoint = g_dataEp;
+    pipe.timeout = 4; // 中断传输超时时间，保持和设备bInterval一致
+    uint32_t transferredLength = 0;
+    // 从端点读取数据到设备内存缓冲区，offset为0，readLength为bufferSize
+    OH_Usb_ReadPipe(&pipe, g_devMemBuffer, bufferSize, 0, bufferSize, &transferredLength);
+    ```
+
+9. 销毁设备内存缓冲区。
+
+    在设备内存缓冲区使用完成后，使用**usb_ddk_api.h**的**OH_Usb_DestroyDeviceMemBuffer**接口及时销毁缓冲区，防止资源泄漏。
+
+    <!-- @[driver_usb_step11](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->  
+    
+    ``` C++
+    // 销毁设备内存缓冲区
+    UsbDdkErrCode ret = OH_Usb_DestroyDeviceMemBuffer(&g_devMemBuffer);
+    if (ret != USB_DDK_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_Usb_DestroyDeviceMemBuffer failed, ret=%{public}d", ret);
+    }
+    ```
+
+10. 释放资源。
+
+    在所有请求处理完毕，程序退出前，使用**usb_ddk_api.h**的**OH_Usb_DestroyDeviceMemMap**接口销毁缓冲区。使用**OH_Usb_ReleaseInterface**释放接口。使用**OH_Usb_Release**释放UsbDdk。
 
     <!-- @[driver_usb_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->  
     
@@ -232,7 +301,7 @@ libusb_ndk.z.so
     OH_Usb_Release();
     ```
 
-7. 获取可识别的USB设备列表（独立步骤，可选）。
+11. 获取可识别的USB设备列表（独立步骤，可选）。
 
     驱动拉起后调用**OH_Usb_GetDevices**接口获取驱动配置信息中匹配vid（vid是设备厂商的vendor id，在驱动应用里面配置，表示驱动适配哪些设备，查询到的设备ID都需要通过vid进行过滤）的设备ID，以供后续应用开发使用。
 
