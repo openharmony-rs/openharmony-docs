@@ -36889,6 +36889,26 @@
 						"end_line":231,
 						"name":"driver_usb_step7",
 						"start_line":220
+					},
+					{
+						"end_line":492,
+						"name":"driver_usb_step8",
+						"start_line":489
+					},
+					{
+						"end_line":612,
+						"name":"driver_usb_step9",
+						"start_line":604
+					},
+					{
+						"end_line":514,
+						"name":"driver_usb_step10",
+						"start_line":506
+					},
+					{
+						"end_line":642,
+						"name":"driver_usb_step11",
+						"start_line":629
 					}
 				]
 			}
