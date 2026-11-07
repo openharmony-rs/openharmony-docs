@@ -46,7 +46,7 @@
      }
      return cameraInput;
    }
- 
+
    /**
     * 打开相机
     */
@@ -72,7 +72,7 @@
    getSupportedSceneMode(cameraDevice: camera.CameraDevice,
      cameraManager: camera.CameraManager): camera.SceneMode[] {
      // 获取相机设备支持的模式列表。
-     let sceneModeArray: camera.SceneMode[] = cameraManager. getSupportedSceneModes(cameraDevice);
+     let sceneModeArray: camera.SceneMode[] = cameraManager.getSupportedSceneModes(cameraDevice);
      if (sceneModeArray != undefined && sceneModeArray.length > 0) {
        for (let index = 0; index < sceneModeArray.length; index++) {
          console.info(`Camera SceneMode : ${sceneModeArray[index]}`);
@@ -90,32 +90,32 @@
    <!-- @[camera_getSupportedOutputCapability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
    ``` TypeScript
-   async getSupportedOutputCapabilityFn(cameraDevice: camera.CameraDevice,  cameraManager: camera.CameraManager,
-     sceneMode: camera.SceneMode): Promise<camera.CameraOutputCapability |  undefined> {
+   async getSupportedOutputCapabilityFn(cameraDevice: camera.CameraDevice, cameraManager: camera.CameraManager,
+     sceneMode: camera.SceneMode): Promise<camera.CameraOutputCapability | undefined> {
      let cameraOutputCapability: camera.CameraOutputCapability;
      try {
        // 获取相机设备支持的输出流能力。
-       cameraOutputCapability = cameraManager.getSupportedOutputCapability (cameraDevice, sceneMode);
+       cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, sceneMode);
        if (!cameraOutputCapability) {
          console.error(`cameraManager.getSupportedOutputCapability error`);
          return undefined;
        }
-       console.info(`outputCapability: ${JSON.stringify(cameraOutputCapability)} `);
+       console.info(`outputCapability: ${JSON.stringify(cameraOutputCapability)}`);
        // 以NORMAL_PHOTO模式为例，需要添加预览流、拍照流。
        // previewProfiles属性为获取当前设备支持的预览输出流。
-       let previewProfilesArray: camera.Profile[] = cameraOutputCapability. previewProfiles;
+       let previewProfilesArray: camera.Profile[] = cameraOutputCapability.previewProfiles;
        if (!previewProfilesArray) {
-         console.error(`createOutput previewProfilesArray == null ||  undefined`);
+         console.error(`createOutput previewProfilesArray == null || undefined`);
        }
        // photoProfiles属性为获取当前设备支持的拍照输出流。
-       let photoProfilesArray: camera.Profile[] = cameraOutputCapability. photoProfiles;
+       let photoProfilesArray: camera.Profile[] = cameraOutputCapability.photoProfiles;
        if (!photoProfilesArray) {
          console.error(`createOutput photoProfilesArray == null || undefined`);
        }
        return cameraOutputCapability;
      } catch (error) {
        let err = error as BusinessError;
-       console.error(`getSupportedOutputCapability failed, err code: ${err.code} `);
+       console.error(`getSupportedOutputCapability failed, err code: ${err.code}`);
        return undefined;
      }
    }

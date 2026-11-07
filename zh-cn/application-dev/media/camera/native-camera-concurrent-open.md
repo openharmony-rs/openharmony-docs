@@ -69,17 +69,17 @@
    {
        Camera_Device *cameras = nullptr;
        uint32_t size = 0;
-       Camera_ErrorCode ret = OH_CameraManager_GetSupportedCameras   (cameraManager, &cameras, &size);
+       Camera_ErrorCode ret = OH_CameraManager_GetSupportedCameras(cameraManager, &cameras, &size);
        int32_t concurrentDeviceSize = 2;
-       if (ret != CAMERA_OK || cameras == nullptr || size < concurrentDeviceSize)    {
+       if (ret != CAMERA_OK || cameras == nullptr || size < concurrentDeviceSize) {
            OH_LOG_ERROR(LOG_APP, "OH_CameraManager_GetSupportedCameras failed.");
            return;
        }
        // 获取后置相机。
-       ret = OH_CameraManager_GetCameraDevice(cameraManager,    Camera_Position::CAMERA_POSITION_BACK,
+       ret = OH_CameraManager_GetCameraDevice(cameraManager, Camera_Position::CAMERA_POSITION_BACK,
            Camera_Type::CAMERA_TYPE_DEFAULT, &cameras[0]);
        // 获取前置相机。
-       ret = OH_CameraManager_GetCameraDevice(cameraManager,    Camera_Position::CAMERA_POSITION_FRONT,
+       ret = OH_CameraManager_GetCameraDevice(cameraManager, Camera_Position::CAMERA_POSITION_FRONT,
            Camera_Type::CAMERA_TYPE_DEFAULT, &cameras[1]);
        // 使用完毕后释放相机列表并置空指针，防止内存泄漏。
        OH_CameraManager_DeleteSupportedCameras(cameraManager, cameras, size);
@@ -92,19 +92,19 @@
    <!-- @[get_supported_capability_for_concurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) --> 
 
    ``` C++
-   void NDKCamera::GetSupportedOutputCapabilityForConcurrent(Camera_Manager    *cameraManager, Camera_Device *cameras)
+   void NDKCamera::GetSupportedOutputCapabilityForConcurrent(Camera_Manager *cameraManager, Camera_Device *cameras)
    {
        Camera_ConcurrentInfo* cameraConcurrentInfo = nullptr;
        uint32_t infoSize = 0;
-       Camera_ErrorCode ret = OH_CameraManager_GetCameraConcurrentInfos   (cameraManager, cameras, 2,
+       Camera_ErrorCode ret = OH_CameraManager_GetCameraConcurrentInfos(cameraManager, cameras, 2,
            &cameraConcurrentInfo, &infoSize);
        if (ret != CAMERA_OK || cameraConcurrentInfo == nullptr) {
-           OH_LOG_ERROR(LOG_APP, "OH_CameraManager_GetCameraConcurrentInfos    failed.");
+           OH_LOG_ERROR(LOG_APP, "OH_CameraManager_GetCameraConcurrentInfos failed.");
            return;
        }
        if (cameraConcurrentInfo->outputCapabilities == nullptr
-           || cameraConcurrentInfo->outputCapabilities->previewProfiles ==    nullptr) {
-           OH_LOG_ERROR(LOG_APP, "outputCapabilities or previewProfiles is    nullptr.");
+           || cameraConcurrentInfo->outputCapabilities->previewProfiles == nullptr) {
+           OH_LOG_ERROR(LOG_APP, "outputCapabilities or previewProfiles is nullptr.");
        }
    }
    ```
@@ -114,21 +114,21 @@
    <!-- @[create_previewOutput_for_concurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) --> 
 
    ``` C++
-   Camera_ErrorCode NDKCamera::CreatePreviewOutputForConcurrent(Camera_Manager    *cameraManager,
-       Camera_ConcurrentInfo* cameraConcurrentInfo, Camera_PreviewOutput**    previewOutput, char* previewSurfaceId)
+   Camera_ErrorCode NDKCamera::CreatePreviewOutputForConcurrent(Camera_Manager *cameraManager,
+       Camera_ConcurrentInfo* cameraConcurrentInfo, Camera_PreviewOutput** previewOutput, char* previewSurfaceId)
    {
-       if (cameraManager == nullptr || cameraConcurrentInfo == nullptr ||    previewOutput == nullptr ||
+       if (cameraManager == nullptr || cameraConcurrentInfo == nullptr || previewOutput == nullptr ||
            cameraConcurrentInfo->outputCapabilities == nullptr ||
            cameraConcurrentInfo->outputCapabilities->previewProfiles == nullptr) {
            OH_LOG_ERROR(LOG_APP, "invalid parameter.");
            return CAMERA_INVALID_ARGUMENT;
        }
-       Camera_Profile *profile =    cameraConcurrentInfo->outputCapabilities->previewProfiles[0];
+       Camera_Profile *profile = cameraConcurrentInfo->outputCapabilities->previewProfiles[0];
        if (profile == nullptr) {
            OH_LOG_ERROR(LOG_APP, "previewProfiles[0] is nullptr.");
            return CAMERA_INVALID_ARGUMENT;
        }
-       Camera_ErrorCode ret = OH_CameraManager_CreatePreviewOutput(cameraManager,    profile,
+       Camera_ErrorCode ret = OH_CameraManager_CreatePreviewOutput(cameraManager, profile,
            previewSurfaceId, previewOutput);
        if (*previewOutput == nullptr || ret != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreatePreviewOutput failed.");
@@ -143,10 +143,10 @@
    <!-- @[open_camera_for_concurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) --> 
 
    ``` C++
-   void NDKCamera::CameraInputOpenForConcurrent(Camera_Manager *cameraManager,    Camera_Device *cameras)
+   void NDKCamera::CameraInputOpenForConcurrent(Camera_Manager *cameraManager, Camera_Device *cameras)
    {
        Camera_Input *cameraInput = nullptr;
-       Camera_ErrorCode ret = OH_CameraManager_CreateCameraInput(cameraManager, &   cameras[0], &cameraInput);
+       Camera_ErrorCode ret = OH_CameraManager_CreateCameraInput(cameraManager, &cameras[0], &cameraInput);
        if (cameraInput == nullptr || ret != CAMERA_OK) {
            return;
        }
@@ -164,7 +164,7 @@
    <!-- @[session_flow_for_concurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
 
    ``` C++
-   void NDKCamera::SessionFlowForConcurrentFn(Camera_CaptureSession    *captureSession,
+   void NDKCamera::SessionFlowForConcurrentFn(Camera_CaptureSession *captureSession,
        Camera_Input *cameraInput, Camera_PreviewOutput *previewOutput)
    {
        // 开始配置会话。
@@ -204,13 +204,12 @@
    <!-- @[settings_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
 
    ``` C++
-   // 闪光灯能力。
    Camera_ErrorCode NDKCamera::HasFlashFn(uint32_t mode)
    {
        Camera_FlashMode flashMode = static_cast<Camera_FlashMode>(mode);
        // 检查闪光灯。
        bool hasFlash = false;
-       Camera_ErrorCode ret = OH_CaptureSession_HasFlash(captureSession_, &   hasFlash);
+       Camera_ErrorCode ret = OH_CaptureSession_HasFlash(captureSession_, &hasFlash);
        if (captureSession_ == nullptr || ret != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_HasFlash failed.");
        }
@@ -219,54 +218,54 @@
        } else {
            OH_LOG_ERROR(LOG_APP, "hasFlash fail-----");
        }
-   
+
        // 查询闪光灯模式是否支持。
        bool isSupported = false;
-       ret = OH_CaptureSession_IsFlashModeSupported(captureSession_, flashMode, &   isSupported);
+       ret = OH_CaptureSession_IsFlashModeSupported(captureSession_, flashMode, &isSupported);
        if (ret != CAMERA_OK) {
-           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_IsFlashModeSupported failed.   ");
+           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_IsFlashModeSupported failed.");
        }
        if (isSupported) {
            OH_LOG_INFO(LOG_APP, "isFlashModeSupported success-----");
        } else {
            OH_LOG_ERROR(LOG_APP, "isFlashModeSupported fail-----");
        }
-   
+
        // 设置闪光灯模式。
        ret = OH_CaptureSession_SetFlashMode(captureSession_, flashMode);
        if (ret == CAMERA_OK) {
            OH_LOG_INFO(LOG_APP, "OH_CaptureSession_SetFlashMode success.");
        } else {
-           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetFlashMode failed. %{public}   d ", ret);
+           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetFlashMode failed. %{public}d ", ret);
        }
-   
+
        // 获取当前设备的闪光灯模式。
        ret = OH_CaptureSession_GetFlashMode(captureSession_, &flashMode);
        if (ret == CAMERA_OK) {
-           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetFlashMode success.    flashMode：%{public}d ", flashMode);
+           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetFlashMode success. flashMode：%{public}d ", flashMode);
        } else {
-           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetFlashMode failed. %d ",    ret);
+           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetFlashMode failed. %d ", ret);
        }
        return ret;
    }
-   
+
    // 对焦模式。
    Camera_ErrorCode NDKCamera::IsFocusModeSupported(uint32_t mode)
    {
        Camera_FocusMode focusMode = static_cast<Camera_FocusMode>(mode);
-       ret_ = OH_CaptureSession_IsFocusModeSupported(captureSession_, focusMode, &   isFocusModeSupported_);
+       ret_ = OH_CaptureSession_IsFocusModeSupported(captureSession_, focusMode, &isFocusModeSupported_);
        if (&isFocusModeSupported_ == nullptr || ret_ != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "IsFocusModeSupported failed.");
            return CAMERA_INVALID_ARGUMENT;
        }
        return ret_;
    }
-   
+
    Camera_ErrorCode NDKCamera::IsFocusMode(uint32_t mode)
    {
        OH_LOG_INFO(LOG_APP, "IsFocusMode start.");
        Camera_FocusMode focusMode = static_cast<Camera_FocusMode>(mode);
-       ret_ = OH_CaptureSession_IsFocusModeSupported(captureSession_, focusMode, &   isFocusModeSupported_);
+       ret_ = OH_CaptureSession_IsFocusModeSupported(captureSession_, focusMode, &isFocusModeSupported_);
        if (&isFocusModeSupported_ == nullptr || ret_ != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "IsFocusModeSupported failed.");
            return CAMERA_INVALID_ARGUMENT;
@@ -284,35 +283,35 @@
        OH_LOG_INFO(LOG_APP, "IsFocusMode end.");
        return ret_;
    }
-   
+
    Camera_ErrorCode NDKCamera::setZoomRatioFn(uint32_t zoomRatio)
    {
        float zoom = float(zoomRatio);
        // 获取支持的缩放范围。
        float minZoom;
        float maxZoom;
-       Camera_ErrorCode ret = OH_CaptureSession_GetZoomRatioRange   (captureSession_, &minZoom, &maxZoom);
+       Camera_ErrorCode ret = OH_CaptureSession_GetZoomRatioRange(captureSession_, &minZoom, &maxZoom);
        if (captureSession_ == nullptr || ret != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetZoomRatioRange failed.");
        } else {
-           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetZoomRatioRange success.    minZoom: %{public}f, maxZoom:%{public}f",
+           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetZoomRatioRange success. minZoom: %{public}f, maxZoom:%{public}f",
                minZoom, maxZoom);
        }
-   
+
        // 设置缩放比例。
        ret = OH_CaptureSession_SetZoomRatio(captureSession_, zoom);
        if (ret == CAMERA_OK) {
            OH_LOG_INFO(LOG_APP, "OH_CaptureSession_SetZoomRatio success.");
        } else {
-           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetZoomRatio failed. %{public}   d ", ret);
+           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetZoomRatio failed. %{public}d ", ret);
        }
-   
+
        // 获取当前设备的缩放比例。
        ret = OH_CaptureSession_GetZoomRatio(captureSession_, &zoom);
        if (ret == CAMERA_OK) {
-           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetZoomRatio success. zoom：%   {public}f ", zoom);
+           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetZoomRatio success. zoom：%{public}f ", zoom);
        } else {
-           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetZoomRatio failed. %{public}   d ", ret);
+           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetZoomRatio failed. %{public}d ", ret);
        }
        return ret;
    }

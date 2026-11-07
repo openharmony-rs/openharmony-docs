@@ -34,13 +34,13 @@
 
    ``` TypeScript
    // 此处以videoSession为例。
-   createSessionFn(cameraManager: camera.CameraManager): camera.VideoSession |  undefined {
+   createSessionFn(cameraManager: camera.CameraManager): camera.VideoSession | undefined {
      let videoSession: camera.VideoSession | undefined = undefined;
      try {
-       videoSession = cameraManager.createSession(camera.SceneMode. NORMAL_VIDEO) as camera.VideoSession;
+       videoSession = cameraManager.createSession(camera.SceneMode.NORMAL_VIDEO) as camera.VideoSession;
      } catch (error) {
        let err = error as BusinessError;
-       console.error(`Failed to create session instance. err code: ${err.code} `);
+       console.error(`Failed to create session instance. err code: ${err.code}`);
      }
      return videoSession;
    }
@@ -75,8 +75,8 @@
 
    ``` TypeScript
    // 此处以videoSession为例。
-   async startSession(videoSession: camera.VideoSession, cameraInput: camera. CameraInput,
-     previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput):  Promise<void> {
+   async startSession(videoSession: camera.VideoSession, cameraInput: camera.CameraInput,
+     previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {
      try {
        videoSession.addInput(cameraInput);
      } catch (error) {
@@ -124,7 +124,7 @@
        console.error(`Failed to commitConfig. error: ${err.code}`);
        return;
      }
- 
+
      try {
        await videoSession.start();
      } catch (error) {
@@ -140,14 +140,14 @@
 
    ``` TypeScript
    async switchOutput(videoSession: camera.VideoSession,
-     videoOutput: camera.VideoOutput, photoOutput: camera.PhotoOutput):  Promise<void> {
+     videoOutput: camera.VideoOutput, photoOutput: camera.PhotoOutput): Promise<void> {
      try {
        await videoSession.stop();
      } catch (error) {
        let err = error as BusinessError;
        console.error(`Failed to stop. error: ${err.code}`);
      }
- 
+
      try {
        videoSession.beginConfig();
      } catch (error) {
@@ -184,7 +184,7 @@
        let err = error as BusinessError;
        console.error(`Failed to commitConfig. error: ${err.code}`);
      }
- 
+
      try {
        await videoSession.start();
      } catch (error) {

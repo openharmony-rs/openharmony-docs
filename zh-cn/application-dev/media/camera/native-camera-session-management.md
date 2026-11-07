@@ -50,14 +50,14 @@
    <!-- @[create_capture_session_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
 
    ``` C++
-   Camera_CaptureSession* NDKCamera::CreateCaptureSession(Camera_Manager*    cameraManager)
+   Camera_CaptureSession* NDKCamera::CreateCaptureSession(Camera_Manager* cameraManager)
    {
        Camera_CaptureSession* captureSession = nullptr;
        if (cameraManager == nullptr) {
            OH_LOG_ERROR(LOG_APP, "cameraManager is nullptr.");
            return captureSession;
        }
-       Camera_ErrorCode ret = OH_CameraManager_CreateCaptureSession   (cameraManager, &captureSession);
+       Camera_ErrorCode ret = OH_CameraManager_CreateCaptureSession(cameraManager, &captureSession);
        if (captureSession == nullptr || ret != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreateCaptureSession failed.");
        }
@@ -70,9 +70,9 @@
    <!-- @[set_session_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
 
    ``` C++
-   Camera_ErrorCode NDKCamera::SetSessionMode(Camera_CaptureSession*    captureSession)
+   Camera_ErrorCode NDKCamera::SetSessionMode(Camera_CaptureSession* captureSession)
    {
-       Camera_ErrorCode ret = OH_CaptureSession_SetSessionMode(captureSession,    NORMAL_VIDEO);
+       Camera_ErrorCode ret = OH_CaptureSession_SetSessionMode(captureSession, NORMAL_VIDEO);
        if (ret != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetSessionMode failed.");
        }
@@ -102,37 +102,37 @@
    <!-- @[start_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
 
    ``` C++
-   Camera_ErrorCode NDKCamera::StartSession(Camera_CaptureSession*    captureSession, Camera_Input* cameraInput,
+   Camera_ErrorCode NDKCamera::StartSession(Camera_CaptureSession* captureSession, Camera_Input* cameraInput,
        Camera_PreviewOutput* previewOutput, Camera_PhotoOutput* photoOutput)
    {
        // 向会话中添加相机输入流。
-       Camera_ErrorCode ret = OH_CaptureSession_AddInput(captureSession,    cameraInput);
+       Camera_ErrorCode ret = OH_CaptureSession_AddInput(captureSession, cameraInput);
        if (ret != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddInput failed.");
            return ret;
        }
-   
+
        // 向会话中添加预览输出流。
        ret = OH_CaptureSession_AddPreviewOutput(captureSession, previewOutput);
        if (ret != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddPreviewOutput failed.");
            return ret;
        }
-   
+
        // 向会话中添加拍照输出流。
        ret = OH_CaptureSession_AddPhotoOutput(captureSession, photoOutput);
        if (ret != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddPhotoOutput failed.");
            return ret;
        }
-   
+
        // 提交会话配置。
        ret = OH_CaptureSession_CommitConfig(captureSession);
        if (ret != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_CommitConfig failed.");
            return ret;
        }
-   
+
        // 启动会话。
        ret = OH_CaptureSession_Start(captureSession);
        if (ret != CAMERA_OK) {
@@ -147,7 +147,7 @@
    <!-- @[reload_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
 
    ``` C++
-   Camera_ErrorCode NDKCamera::ReloadSession(Camera_CaptureSession*    captureSession, Camera_PhotoOutput* photoOutput,
+   Camera_ErrorCode NDKCamera::ReloadSession(Camera_CaptureSession* captureSession, Camera_PhotoOutput* photoOutput,
        Camera_VideoOutput* videoOutput)
    {
        Camera_ErrorCode ret = OH_CaptureSession_Stop(captureSession);
@@ -166,7 +166,7 @@
        if (ret == CAMERA_OK) {
            OH_LOG_INFO(LOG_APP, "OH_CaptureSession_RemovePhotoOutput success ");
        } else {
-           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_RemovePhotoOutput failed. %d    ", ret);
+           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_RemovePhotoOutput failed. %d ", ret);
        }
        // 释放photoOutput。
        ret = OH_PhotoOutput_Release(photoOutput);
@@ -180,7 +180,7 @@
        if (ret == CAMERA_OK) {
            OH_LOG_INFO(LOG_APP, "OH_CaptureSession_AddVideoOutput success ");
        } else {
-           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddVideoOutput failed. %d ",    ret);
+           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddVideoOutput failed. %d ", ret);
            return ret;
        }
        // 提交会话配置。
@@ -189,7 +189,7 @@
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_CommitConfig failed.");
            return ret;
        }
-   
+
        // 启动会话。
        ret = OH_CaptureSession_Start(captureSession);
        if (ret != CAMERA_OK) {

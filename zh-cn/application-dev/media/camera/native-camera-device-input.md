@@ -44,11 +44,11 @@
 
    ``` C++
    // 监听cameraInput错误信息。
-   void OnCameraInputError(const Camera_Input *cameraInput, Camera_ErrorCode    errorCode)
+   void OnCameraInputError(const Camera_Input *cameraInput, Camera_ErrorCode errorCode)
    {
        OH_LOG_INFO(LOG_APP, "OnCameraInput errorCode = %{public}d", errorCode);
    }
-   
+
    CameraInput_Callbacks *NDKCamera::GetCameraInputListener(void)
    {
        static CameraInput_Callbacks cameraInputCallbacks = {
@@ -56,13 +56,13 @@
        };
        return &cameraInputCallbacks;
    }
-   
+
    // 监听cameraStatus信息。
-   void CameraManagerStatusCallback(Camera_Manager *cameraManager,    Camera_StatusInfo *status)
+   void CameraManagerStatusCallback(Camera_Manager *cameraManager, Camera_StatusInfo *status)
    {
        OH_LOG_INFO(LOG_APP, "CameraManagerStatusCallback");
    }
-   
+
    CameraManager_Callbacks* NDKCamera::GetCameraManagerListener(void)
    {
        static CameraManager_Callbacks cameraManagerListener = {
@@ -70,7 +70,7 @@
        };
        return &cameraManagerListener;
    }
-   
+
    void NDKCamera::CreateAndOpenCamera()
    {
        Camera_Manager* cameraManager = nullptr;
@@ -85,7 +85,7 @@
            return;
        }
        // 监听相机状态变化。
-       ret = OH_CameraManager_RegisterCallback(cameraManager,    GetCameraManagerListener());
+       ret = OH_CameraManager_RegisterCallback(cameraManager, GetCameraManagerListener());
        if (ret != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "OH_CameraManager_RegisterCallback failed.");
        }
@@ -96,12 +96,12 @@
            return;
        }
        // 创建相机输入流。
-       ret = OH_CameraManager_CreateCameraInput(cameraManager, &cameras   [cameraDeviceIndex], &cameraInput);
+       ret = OH_CameraManager_CreateCameraInput(cameraManager, &cameras[cameraDeviceIndex], &cameraInput);
        if (cameraInput == nullptr || ret != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreateCameraInput failed.");
            return;
        }
-       ret = OH_CameraInput_RegisterCallback(cameraInput, GetCameraInputListener   ());
+       ret = OH_CameraInput_RegisterCallback(cameraInput, GetCameraInputListener());
        if (ret != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "OH_CameraInput_RegisterCallback failed.");
        }
@@ -123,18 +123,18 @@
    <!-- @[get_supported_scene_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
 
    ``` C++
-   bool NDKCamera::IsSupportedSceneMode(Camera_Manager* cameraManager,    Camera_Device camera, Camera_SceneMode sceneMode)
+   bool NDKCamera::IsSupportedSceneMode(Camera_Manager* cameraManager, Camera_Device camera, Camera_SceneMode sceneMode)
    {
        Camera_SceneMode* sceneModes = nullptr;
        uint32_t sceneModeSize = 0;
-       Camera_ErrorCode ret = OH_CameraManager_GetSupportedSceneModes(&camera, &   sceneModes, &sceneModeSize);
+       Camera_ErrorCode ret = OH_CameraManager_GetSupportedSceneModes(&camera, &sceneModes, &sceneModeSize);
        if (ret != CAMERA_OK || sceneModes == nullptr) {
-           OH_LOG_ERROR(LOG_APP, "OH_CameraManager_GetSupportedSceneModes failed.   ");
+           OH_LOG_ERROR(LOG_APP, "OH_CameraManager_GetSupportedSceneModes failed.");
            return false;
        }
        bool isSupported = false;
        for (uint32_t index = 0; index < sceneModeSize; index++) {
-           OH_LOG_INFO(LOG_APP, "scene mode = %{public}u ", sceneModes   [index]);    // 获取相机指定模式。
+           OH_LOG_INFO(LOG_APP, "scene mode = %{public}u ", sceneModes[index]);    // 获取相机指定模式。
            if (sceneModes[index] == sceneMode) {
                isSupported = true;
                break;
@@ -151,12 +151,12 @@
    <!-- @[get_supported_camera_output_capability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
 
    ``` C++
-   Camera_OutputCapability* NDKCamera::GetSupportedCameraOutputCapability   (Camera_Manager* cameraManager,
+   Camera_OutputCapability* NDKCamera::GetSupportedCameraOutputCapability(Camera_Manager* cameraManager,
        Camera_Device &camera)
    {
        Camera_OutputCapability* cameraOutputCapability = nullptr;
        // 示例代码以NORMAL_PHOTO模式为例，查询NORMAL_PHOTO在camera中是否支持。
-       bool isSupported = IsSupportedSceneMode(cameraManager, camera,    Camera_SceneMode::NORMAL_PHOTO);
+       bool isSupported = IsSupportedSceneMode(cameraManager, camera, Camera_SceneMode::NORMAL_PHOTO);
        if (!isSupported) {
            OH_LOG_ERROR(LOG_APP, "NORMAL_PHOTO is not supported.");
            return cameraOutputCapability;
@@ -164,17 +164,17 @@
        // 获取相机设备支持的输出流能力。
        const Camera_Profile* previewProfile = nullptr;
        const Camera_Profile* photoProfile = nullptr;
-       Camera_ErrorCode ret =    OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMode   (cameraManager, &camera,
+       Camera_ErrorCode ret = OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMode(cameraManager, &camera,
            Camera_SceneMode::NORMAL_PHOTO, &cameraOutputCapability);
        if (cameraOutputCapability == nullptr || ret != CAMERA_OK) {
-           OH_LOG_ERROR(LOG_APP,    "OH_CameraManager_GetSupportedCameraOutputCapability failed.");
+           OH_LOG_ERROR(LOG_APP, "OH_CameraManager_GetSupportedCameraOutputCapability failed.");
            return cameraOutputCapability;
        }
        // 以NORMAL_PHOTO模式为例，需要添加预览流、拍照流。
        if (cameraOutputCapability->previewProfiles == nullptr) {
            OH_LOG_ERROR(LOG_APP, "previewProfiles == null");
        } else {
-           // 根据所需从cameraOutputCapability->previewProfiles中选择合适的预览分辨   率。
+           // 根据所需从cameraOutputCapability->previewProfiles中选择合适的预览分辨率。
            previewProfile = cameraOutputCapability->previewProfiles[0];
        }
        if (cameraOutputCapability->photoProfiles == nullptr) {
