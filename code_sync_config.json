@@ -35178,6 +35178,21 @@
 						"end_line":89,
 						"name":"device_status_unsubscribe",
 						"start_line":60
+					},
+					{
+						"end_line":107,
+						"name":"drop_detect_subscribe",
+						"start_line":93
+					},
+					{
+						"end_line":123,
+						"name":"drop_detect_unsubscribe_all",
+						"start_line":111
+					},
+					{
+						"end_line":156,
+						"name":"drop_detect_unsubscribe",
+						"start_line":127
 					}
 				]
 			}
