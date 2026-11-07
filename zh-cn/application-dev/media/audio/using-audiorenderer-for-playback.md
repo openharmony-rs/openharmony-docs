@@ -126,7 +126,7 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
 
      ArkTS-Dyn示例：
 
-     <!-- @[init_oncallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+     <!-- @[init_oncallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->  
      
      ``` TypeScript
      import { audio } from '@kit.AudioKit';
