@@ -262,7 +262,7 @@ bool OH_AudioStreamManager_IsOffloadPlaybackSupported(OH_AudioStreamManager *str
 
 查询当前设备在特定音频流信息和使用场景下是否支持低功耗播放。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.0
 
 **参数：**
 
