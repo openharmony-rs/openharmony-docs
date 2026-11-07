@@ -277,8 +277,6 @@ bool OH_AudioStreamManager_IsOffloadPlaybackSupported(OH_AudioStreamManager *str
 | -- | -- |
 | bool | 返回true时表示支持低功耗播放，返回false时表示不支持。 |
 
-| [OH_AudioCommon_Result OH_AudioStreamManager_IsUltraFastPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage, bool *supported)](#oh_audiostreammanager_isultrafastplaybacksupported) | 查询当前设备在指定音频流信息和使用场景下是否支持超低时延播放。 |
-
 ### OH_AudioStreamManager_IsUltraFastPlaybackSupported()
 
 ```c
@@ -289,7 +287,7 @@ bool OH_AudioStreamManager_IsUltraFastPlaybackSupported(OH_AudioStreamManager *s
 
 查询当前设备在指定音频流信息和使用场景下是否支持超低时延播放。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **参数：**
 
