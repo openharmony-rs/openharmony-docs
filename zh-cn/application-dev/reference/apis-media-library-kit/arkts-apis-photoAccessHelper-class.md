@@ -34,7 +34,7 @@
 | maxSelectNumber      | number | 否   | 是 | 选择媒体文件数量的最大值（最大可设置的值为500，若不设置则默认为50）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 | isPhotoTakingSupported<sup>11+</sup> | boolean  | 否   | 是 | 是否支持拍照，true表示支持，false表示不支持，默认为true。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | isSearchSupported<sup>11+</sup> | boolean  | 否   | 是 | 是否支持搜索，true表示支持，false表示不支持，默认为true。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**设备行为差异：** 从API版本26.0.1开始，select方法支持Car设备，但isSearchSupported属性不支持Car设备，所以在Car设备上配置本属性不会生效。  |
-| recommendationOptions<sup>11+</sup>       | [RecommendationOptions](#recommendationoptions11)   | 否   | 是 | 图片推荐相关配置参数。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**设备行为差异：** 从API版本26.0.1开始，select方法支持Car设备，但recommendationOptions属性不支持Car设备，所以在Car设备上配置本属性不会生效。   |
+| recommendationOptions<sup>11+</sup>       | [RecommendationOptions](#recommendationoptions11)   | 否   | 是 | 图片推荐相关配置参数。若需要根据图片数据分析结果推荐相应图片，则配置此参数；若不配置，则不会显示推荐图片。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**设备行为差异：** 从API版本26.0.1开始，select方法支持Car设备，但recommendationOptions属性不支持Car设备，所以在Car设备上配置本属性不会生效。   |
 | preselectedUris<sup>11+</sup> | Array&lt;string&gt;  | 否   | 是 | 预选择图片的uri数据。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | isPreviewForSingleSelectionSupported<sup>12+</sup> | boolean  | 否   | 是 | 单选模式下是否需要进入大图预览，true表示需要，false表示不需要，默认为true。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | singleSelectionMode<sup>18+</sup> | [SingleSelectionMode](arkts-apis-photoAccessHelper-e.md#singleselectionmode18) | 否   | 是 | 单选模式类型。默认为大图预览模式（SingleSelectionMode.BROWSER_MODE）。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
