@@ -19667,7 +19667,9 @@ enableAutoReload(enable: boolean): void
 > **说明：**
 >
 > - 只有网络错误才会触发自动重新加载。不包括以下内容：证书错误、SSL（安全套接字层）协议错误、身份验证错误、POST请求、非HTTP(S)协议和客户端拦截的错误。
+>
 > - 自动重新加载不会影响[onOverrideErrorPage](./arkts-basic-components-web-events.md#onoverrideerrorpage20)回调。
+>
 > - 当触发自动重新加载时，每次重试时[onErrorReceive](./arkts-basic-components-web-events.md#onerrorreceive)回调都会被重新调用。
 
 **ArkTS-Dyn起始版本：** 26.1.0
