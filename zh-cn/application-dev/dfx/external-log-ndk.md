@@ -143,16 +143,16 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
 3. 编辑“index.d.ts”文件，定义ArkTS接口：   
 
     <!-- @[ExternalLog_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-
-    ``` ts
+    
+    ``` TypeScript
     export const registerExternalLogMgr: () => void;
     ```
 
 4. 编辑“EntryAbility.ets”文件，在onCreate()函数中添加接口调用：   
 
     <!-- @[EventSub_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
-   ``` ts
+    
+    ``` TypeScript
    import testNapi from 'libentry.so';
    ``` 
 
