@@ -19660,9 +19660,9 @@ getSubframeErrorPageEnabled(): boolean
 
 enableAutoReload(enable: boolean): void
 
-设置是否启用错误页面的自动重载。
+设置是否启用错误页面的自动重新加载。
 
-启用后，Web组件会在出现网络错误时自动重试加载，每次重试的时间间隔依次为：1s → 5s → 30s → 1min → 5min → 10min → 30min。最多重试7次后停止。
+启用后，Web组件会在出现网络错误时自动重新加载，每次重试的时间间隔依次为：1s → 5s → 30s → 1min → 5min → 10min → 30min。最多重试7次后停止。
 
 > **说明：**
 >
@@ -19684,7 +19684,7 @@ enableAutoReload(enable: boolean): void
 
 | 参数名   | 类型    | 必填 | 说明                      |
 | -------- | ------- | ---- | -------------------------------------- |
-| enable | boolean | 是 | 是否启用自动重载。true表示启用，false表示不启用。|
+| enable | boolean | 是 | 是否启用自动重新加载。true表示启用，false表示不启用。|
 
 **错误码：**
 
@@ -19710,11 +19710,11 @@ struct WebComponent {
     Column() {
       Web({ src: 'www.example.com', controller: this.controller })
         .onControllerAttached(() => {
-          // 启用错误页面的自动重载
+          // 启用错误页面的自动重新加载
           this.controller.enableAutoReload(true);
           // 查询是否已启用
           let isEnabled: boolean = this.controller.isAutoReloadEnabled();
-          console.info("已启用自动重载: " + isEnabled);
+          console.info("已启用自动重新加载: " + isEnabled);
         })
     }
   }
@@ -19737,11 +19737,11 @@ struct WebComponent {
     Column() {
       Web({ src: 'www.example.com', controller: this.controller })
         .onControllerAttached(() => {
-          // 启用错误页面的自动重载
+          // 启用错误页面的自动重新加载
           this.controller.enableAutoReload(true);
           // 查询是否已启用
           let isEnabled: boolean = this.controller.isAutoReloadEnabled();
-          console.info("已启用自动重载: " + isEnabled);
+          console.info("已启用自动重新加载: " + isEnabled);
         })
     }
   }
@@ -19752,7 +19752,7 @@ struct WebComponent {
 
 isAutoReloadEnabled(): boolean
 
-获取是否启用错误页面的自动重载。
+获取是否启用错误页面的自动重新加载。
 
 **ArkTS-Dyn起始版本：** 26.1.0
 
@@ -19766,7 +19766,7 @@ isAutoReloadEnabled(): boolean
 
 | 类型                 | 说明                      |
 | -------------------- | ------------------------- |
-| boolean | 是否启用自动重载。如果启用，则返回true，否则返回false。|
+| boolean | 是否启用自动重新加载。如果启用，则返回true，否则返回false。|
 
 **错误码：**
 
