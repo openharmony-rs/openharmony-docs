@@ -5,7 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=fea09459a0476f095195448c2ce1ed787d76ab6a translatedAt=2026-10-08T12:15:27.477Z pushedAt=2026-10-12T10:50:59.188Z -->
+<!-- md-trans-meta sourceCommit=a26c0fadb345e394f1bacb5ffe8622bbf5052072 translatedAt=2026-11-09T10:22:14.859Z pushedAt=2026-11-09T11:22:02.661Z nl=1 -->
 
 ## Overview
 
@@ -58,6 +58,9 @@ Enumerates the audio operation results.
 | AUDIOCOMMON_RESULT_ERROR_FRAME_LENGTH_MISMATCH = 6800106 | The input audio data does not match the required frame length.<br>**Since:** 26.0.0 |
 | AUDIOCOMMON_RESULT_ERROR_STREAM_LIMIT = 6800201 | Reached the maximum number of audio streams allowed.|
 | AUDIOCOMMON_RESULT_ERROR_SYSTEM = 6800301 | System error.|
+| AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED = 6800302 | The system service process is terminated.<br>**Since Version:** 26.0.1 |
+| AUDIOCOMMON_RESULT_ERROR_NETWORK_CONDITION_NOT_MET = 6800501 | The network condition is not met.<br>**Since Version:** 26.0.1 |
+| AUDIOCOMMON_RESULT_ERROR_STORAGE_NOT_ENOUGH = 6800502 | Insufficient storage space.<br>**Since Version:** 26.0.1 |
 
 ### OH_AudioScene
 

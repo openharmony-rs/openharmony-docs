@@ -5,7 +5,7 @@
 <!--Designer: @chenjinxiang3-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=152a0a6a430e1aefd948abd87650640eb6675a1a translatedAt=2026-10-09T11:30:57.742Z pushedAt=2026-10-10T03:33:20.043Z -->
+<!-- md-trans-meta sourceCommit=29171f96db4827c02216720fa184d1d7de636fc9 translatedAt=2026-11-09T10:21:52.607Z pushedAt=2026-11-09T10:45:21.322Z nl=1 -->
 
 ## Overview
 
@@ -25,37 +25,37 @@ Declares the APIs for querying device information. This module provides the capa
 
 ### Functions
 
-| Name| Description|
+| Name | Description |
 | -- | -- |
-| [const char *OH_GetDeviceType(void)](#oh_getdevicetype) | Obtains the device type.|
-| [const char *OH_GetManufacture(void)](#oh_getmanufacture) | Obtains the device manufacturer.|
-| [const char *OH_GetBrand(void)](#oh_getbrand) | Obtains the device brand.|
+| [const char *OH_GetDeviceType(void)](#oh_getdevicetype) | Obtains the device type. |
+| [const char *OH_GetManufacture(void)](#oh_getmanufacture) | Obtains the device manufacturer. |
+| [const char *OH_GetBrand(void)](#oh_getbrand) | Obtains the device brand. |
 | [const char *OH_GetMarketName(void)](#oh_getmarketname) | Obtains the external product series, that is, the market name. |
-| [const char *OH_GetProductSeries(void)](#oh_getproductseries) | Obtains the product series.|
-| [const char *OH_GetProductModel(void)](#oh_getproductmodel) | Obtains the product model.|
-| [const char *OH_GetSoftwareModel(void)](#oh_getsoftwaremodel) | Obtains the software model.|
-| [const char *OH_GetHardwareModel(void)](#oh_gethardwaremodel) | Obtains the hardware model.|
-| [const char *OH_GetBootloaderVersion(void)](#oh_getbootloaderversion) | Obtains the Bootloader version.|
-| [const char *OH_GetAbiList(void)](#oh_getabilist) | Obtains the application binary interface (ABI) list.|
-| [const char *OH_GetSecurityPatchTag(void)](#oh_getsecuritypatchtag) | Obtains the security patch tag.|
-| [const char *OH_GetDisplayVersion(void)](#oh_getdisplayversion) | Obtains the display version.|
-| [const char *OH_GetIncrementalVersion(void)](#oh_getincrementalversion) | Obtains the incremental version.|
-| [const char *OH_GetOsReleaseType(void)](#oh_getosreleasetype) | Obtains the OS release type.|
-| [const char *OH_GetOSFullName(void)](#oh_getosfullname) | Obtains the OS full name.|
-| [int OH_GetSdkApiVersion(void)](#oh_getsdkapiversion) | Obtains the SDK API version.|
-| [int OH_GetSdkMinorApiVersion(void)](#oh_getsdkminorapiversion) | Obtains the SDK minor API version. Starting from API version 26.0.0, the minor version is introduced as part of semantic versioning. It is the middle field in the semantic version and is an integer. The complete API version is represented by sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion.  |
-| [int OH_GetSdkPatchApiVersion(void)](#oh_getsdkpatchapiversion) | Obtains the SDK patch API version. Starting from API version 26.0.0, the patch version is introduced as part of semantic versioning. It is the third field in the semantic version and is an integer. The complete API version is represented by sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion. |
-| [int OH_GetFirstApiVersion(void)](#oh_getfirstapiversion) | Obtains the first API version.|
-| [const char *OH_GetVersionId(void)](#oh_getversionid) | Obtains the version ID.|
-| [const char *OH_GetBuildType(void)](#oh_getbuildtype) | Obtains the build type.|
-| [const char *OH_GetBuildUser(void)](#oh_getbuilduser) | Obtains the build user.|
-| [const char *OH_GetBuildHost(void)](#oh_getbuildhost) | Obtains the build host.|
-| [const char *OH_GetBuildTime(void)](#oh_getbuildtime) | Obtains the build time.|
-| [const char *OH_GetBuildRootHash(void)](#oh_getbuildroothash) | Obtains the build root hash.|
+| [const char *OH_GetProductSeries(void)](#oh_getproductseries) | Obtains the product series. |
+| [const char *OH_GetProductModel(void)](#oh_getproductmodel) | Obtains the product model. |
+| [const char *OH_GetSoftwareModel(void)](#oh_getsoftwaremodel) | Obtains the software model. |
+| [const char *OH_GetHardwareModel(void)](#oh_gethardwaremodel) | Obtains the hardware model. |
+| [const char *OH_GetBootloaderVersion(void)](#oh_getbootloaderversion) | Obtains the Bootloader version. |
+| [const char *OH_GetAbiList(void)](#oh_getabilist) | Obtains the application binary interface (ABI) list. |
+| [const char *OH_GetSecurityPatchTag(void)](#oh_getsecuritypatchtag) | Obtains the security patch tag. |
+| [const char *OH_GetDisplayVersion(void)](#oh_getdisplayversion) | Obtains the display version. |
+| [const char *OH_GetIncrementalVersion(void)](#oh_getincrementalversion) | Obtains the incremental version. |
+| [const char *OH_GetOsReleaseType(void)](#oh_getosreleasetype) | Obtains the OS release type. |
+| [const char *OH_GetOSFullName(void)](#oh_getosfullname) | Obtains the OS full name. |
+| [int OH_GetSdkApiVersion(void)](#oh_getsdkapiversion) | Obtains the SDK API version. |
+| [int OH_GetSdkMinorApiVersion(void)](#oh_getsdkminorapiversion) | Obtains the system minor version number. Starting from API version 26.0.0, to align with semantic versioning, the definition of the minor version number is added, that is, the value of the middle field, which is an integer. The complete version number consists of sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion. |
+| [int OH_GetSdkPatchApiVersion(void)](#oh_getsdkpatchapiversion) | Obtains the system patch version number. Starting from API version 26.0.0, to align with semantic versioning, the definition of the patch version number is added, that is, the value of the third field, which is an integer. The complete version number consists of sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion. |
+| [int OH_GetFirstApiVersion(void)](#oh_getfirstapiversion) | Obtains the first API version. |
+| [const char *OH_GetVersionId(void)](#oh_getversionid) | Obtains the version ID. |
+| [const char *OH_GetBuildType(void)](#oh_getbuildtype) | Obtains the build type. |
+| [const char *OH_GetBuildUser(void)](#oh_getbuilduser) | Obtains the build user. |
+| [const char *OH_GetBuildHost(void)](#oh_getbuildhost) | Obtains the build host. |
+| [const char *OH_GetBuildTime(void)](#oh_getbuildtime) | Obtains the build time. |
+| [const char *OH_GetBuildRootHash(void)](#oh_getbuildroothash) | Obtains the build root hash. |
 | [const char *OH_GetDistributionOSName(void)](#oh_getdistributionosname) | Obtains the ISV distribution OS name. ISVs can use their own OS names. |
-| [const char *OH_GetDistributionOSVersion(void)](#oh_getdistributionosversion) | Obtains the ISV distribution OS version.|
+| [const char *OH_GetDistributionOSVersion(void)](#oh_getdistributionosversion) | Obtains the ISV distribution OS version. |
 | [int OH_GetDistributionOSApiVersion(void)](#oh_getdistributionosapiversion) | Obtains the ISV distribution OS version. |
-| [const char *OH_GetDistributionOSReleaseType(void)](#oh_getdistributionosreleasetype) | Obtains the ISV distribution OS release type.|
+| [const char *OH_GetDistributionOSReleaseType(void)](#oh_getdistributionosreleasetype) | Obtains the ISV distribution OS release type. |
 
 ## Function Description
 
@@ -71,9 +71,9 @@ Obtains the device type. This API returns a predefined device type in the form o
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
 | const char* | Device type as a string. The options are as follows:<br>• **phone**<br>• **default**: default value returned when the device type cannot be identified<br>• **wearable**<br>• **liteWearable**<br>• **tablet**<br>• **tv**<br>• **car**<br>• **smartVision** |
 
@@ -89,11 +89,11 @@ Obtains the device manufacturer.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
-| const char* | Returns a device manufacturer. The value is of the string type.|
+| const char* | Returns a device manufacturer. The value is of the string type. |
 
 ### OH_GetBrand()
 
@@ -107,11 +107,11 @@ Obtains the device brand.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
-| const char* | Returns a device brand. The value is of the string type.|
+| const char* | Returns a device brand. The value is of the string type. |
 
 ### OH_GetMarketName()
 
@@ -125,11 +125,11 @@ Obtains the external product series, that is, the market name.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
-| const char* | Returns a market name. The value is of the string type.|
+| const char* | Returns a market name. The value is of the string type. |
 
 ### OH_GetProductSeries()
 
@@ -143,11 +143,11 @@ Obtains the product series.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
-| const char* | Returns the product series. The value is of the string type.|
+| const char* | Returns the product series. The value is of the string type. |
 
 ### OH_GetProductModel()
 
@@ -161,11 +161,11 @@ Obtains the product model.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
-| const char* | Returns a product model. The value is of the string type.|
+| const char* | Returns a product model. The value is of the string type. |
 
 ### OH_GetSoftwareModel()
 
@@ -179,11 +179,11 @@ Obtains the software model. When the same software version is used on different 
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
-| const char* | Returns a software model. The value is of the string type.|
+| const char* | Returns a software model. The value is of the string type. |
 
 ### OH_GetHardwareModel()
 
@@ -197,9 +197,9 @@ Obtains the hardware model.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
 | const char* | Hardware model. The value is of the string type. Common values include **TASA00CVN1**. |
 
@@ -215,9 +215,9 @@ Obtains the Bootloader version.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
 | const char* | Bootloader version. The value is of the string type. Common values include **bootloader**. |
 
@@ -229,13 +229,13 @@ const char *OH_GetAbiList(void)
 
 **Description**
 
-Obtains the ABI list.
+Obtains the application binary interface (ABI) list.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
 | const char* | ABI list supported. The value is of the string type. Multiple values are separated by commas (,). Common values include **arm64-v8a**. |
 
@@ -251,9 +251,9 @@ Obtains the security patch tag.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
 | const char* | Security patch tag. The value is of the string type. The format is **YYYY/MM/DD**, for example, **2023/10/05**, indicating the release date of the security patch. |
 
@@ -269,9 +269,9 @@ Obtains the display version.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
 | const char* | Product version of the device. The value is of the string type. |
 
@@ -287,9 +287,9 @@ Obtains the incremental version.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
 | const char* | Incremental version. The value is of the string type. Common values include **6.1.1.120**. |
 
@@ -305,9 +305,9 @@ Obtains the OS release type. This API returns a predefined OS release type in th
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description                                                                                     |
+| Type | Description                                                                                      |
 | -- |-----------------------------------------------------------------------------------------|
 | const char* | OS release type. The options include **Release**, **Beta**, and **Canary**<br> A specific release type can be **release** or **Beta1**.<br>-&nbsp;**Canary**: Preliminary release open only to specific developers. This release does not promise API stability and may require tolerance of instability.<br>-&nbsp;**Beta**: Release open to all developers. This release does not promise API stability and may require tolerance of instability.<br>-&nbsp;**Release**: Official release open to all developers. This release promises that all APIs are stable. |
 
@@ -323,9 +323,9 @@ Obtains the OS full name.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
 | const char* | Full OS name. The value is of the string type. The version format is **OpenHarmony-x.x.x.x**. |
 
@@ -341,9 +341,9 @@ Obtains the SDK API version.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
 | int | SDK API version. The value is an integer. Common values include **12**. |
 
@@ -355,15 +355,15 @@ int OH_GetSdkMinorApiVersion(void)
 
 **Description**
 
-Obtains the SDK minor API version. Starting from API version 26.0.0, the minor version is introduced as part of semantic versioning. It is the middle field in the semantic version and is an integer. The complete API version is represented by sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion.
+Obtains the system minor version number. Since API version 26.0.0, the minor version number is defined as the middle field to support semantic versioning, whose value is an integer. The complete version number consists of **sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion**.
 
-**Since**: 26.0.1
+**Since:** 26.0.1
 
-**Returns**
+**Return**
 
 | Type | Description |
 | -- | -- |
-| int | 0 ~ 99 - the sdk minor api version, the value is an integer.<br>-1 - not found the sdk minor api version number, or failed to invoke the internal interface.|
+| int | System minor version number, which is an integer within the range from 0 to 99.<br>The value **-1** indicates that the system minor version number is not found, or the internal API fails to be called.|
 
 ### OH_GetSdkPatchApiVersion()
 
@@ -373,15 +373,15 @@ int OH_GetSdkPatchApiVersion(void)
 
 **Description**
 
-Obtains the SDK patch API version. Starting from API version 26.0.0, the patch version is introduced as part of semantic versioning. It is the third field in the semantic version and is an integer. The complete API version is represented by sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion.
+Obtains the system patch version number. Starting from API version 26.0.0, the definition of the patch version number is added to support semantic versioning, that is, the value of the third field, which is an integer. The complete version number consists of **sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion**.
 
-**Since**: 26.0.1
+**Since:** 26.0.1
 
-**Returns**
+**Return**
 
 | Type | Description |
 | -- | -- |
-| int | 0 ~ 99 - the sdk patch api version, the value is an integer.<br>-1 - not found the sdk patch api version number, or failed to invoke the internal interface.|
+| int | System patch version number, which is an integer within the range from 0 to 99.<br>The value **-1** indicates that the system patch version number is not found, or the internal API fails to be called.|
 
 ### OH_GetFirstApiVersion()
 
@@ -395,11 +395,11 @@ Obtains the first API version, which is the API version supported by the device 
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
-| int | First API version, which is the API version supported by the device when it was first released. The value is an integer. Common values include **3**.|
+| int | First API version, which is the API version supported by the device when it was first released. The value is an integer. Common values include **3**. |
 
 ### OH_GetVersionId()
 
@@ -413,11 +413,11 @@ Obtains the version ID.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
-| const char* | Returns a version ID. The value is of the string type.|
+| const char* | Returns a version ID. The value is of the string type. |
 
 ### OH_GetBuildType()
 
@@ -431,9 +431,9 @@ Obtains the build type.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
 | const char* | Build type. The value is of the string type. The default value is **default**. |
 
@@ -449,9 +449,9 @@ Obtains the build user.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
 | const char* | Build type. The value is of the string type. The default value is **default**. |
 
@@ -467,9 +467,9 @@ Obtains the build host.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
 | const char* | Build host. The value is of the string type. The default value is **default**. |
 
@@ -485,9 +485,9 @@ Obtains the build time.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
 | const char* | Build time, indicating the timestamp when the OS version is built. The value is of the string type. Common values include **1783430505910**. |
 
@@ -503,9 +503,9 @@ Obtains the build root hash.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
 | const char* | Build root hash. The value is of the string type. The default value is **default**. |
 
@@ -521,9 +521,9 @@ Obtains the ISV distribution OS name. ISVs can use their own OS names.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
 | const char* | ISV distribution OS name. If no ISV is specified, an empty string is returned. |
 
@@ -539,11 +539,11 @@ Obtains the ISV distribution OS version.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description                                                                        |
+| Type | Description                                                                         |
 | -- |----------------------------------------------------------------------------|
-| const char* | Returns an ISV distribution OS version.<br> If no ISV is specified, the value of [OH_GetOSFullName](#oh_getosfullname) is returned.|
+| const char* | Returns an ISV distribution OS version.<br> If no ISV is specified, the value of [OH_GetOSFullName](#oh_getosfullname) is returned. |
 
 ### OH_GetDistributionOSApiVersion()
 
@@ -557,9 +557,9 @@ Obtains the ISV distribution OS version.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
 | int | ISV distribution OS API version. If no ISV is specified, the value of [OH_GetSdkApiVersion](#oh_getsdkapiversion) is returned. |
 
@@ -575,9 +575,9 @@ Obtains the ISV distribution OS release type.
 
 **Since**: 10
 
-**Returns**
+**Return**
 
-| Type| Description                                                                             |
+| Type | Description                                                                              |
 | -- |---------------------------------------------------------------------------------|
 | const char* | ISV distribution OS release type. If no ISV is specified, the value of [OH_GetOsReleaseType](#oh_getosreleasetype) is returned. |
 

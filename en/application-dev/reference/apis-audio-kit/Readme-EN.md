@@ -5,6 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=a26c0fadb345e394f1bacb5ffe8622bbf5052072 translatedAt=2026-11-09T10:30:47.089Z pushedAt=2026-11-09T11:40:24.684Z nl=1 -->
 
 - ArkTS APIs<!--audio-arkts-->
   - @ohos.multimedia.audio (Audio Management)<!--js-apis-audio-->
@@ -118,6 +119,7 @@
     - [OH_AudioSuite_DownloadStatusInfo (System API)](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md)
     - [OH_AudioSuite_DownloadStatusInfoArray (System API)](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfoarray-sys.md)
     - [OH_AudioSuite_DownloadManagerStruct (System API)](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md)
+    - [OH_AudioSuite_FeatureVersionInfo (System API)](capi-ohaudiosuite-oh-audiosuite-featureversioninfo-sys.md)
     <!--DelEnd-->
     - [OH_AudioSuite_SpaceRenderPositionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderpositionparams.md)
     - [OH_AudioSuite_PureVoiceChangeOption](capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md)
