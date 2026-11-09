@@ -723,9 +723,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":25,
+						"end_line":31,
 						"name":"EventSub_Index_Capi_Header",
-						"start_line":23
+						"start_line":28
 					},
 					{
 						"end_line":66,
@@ -743,7 +743,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":38,
 						"name":"EventSub_napi_Header",
 						"start_line":24
 					},
@@ -763,19 +763,19 @@
 						"start_line":989
 					},
 					{
-						"end_line":1700,
+						"end_line":1724,
 						"name":"AppEvent_C++_Init",
-						"start_line":1609
+						"start_line":1626
 					},
 					{
-						"end_line":1048,
+						"end_line":1116,
 						"name":"AppEvent_C++_RemoveWatcher",
-						"start_line":1000
+						"start_line":1063
 					},
 					{
-						"end_line":1120,
+						"end_line":1195,
 						"name":"AppEvent_C++_DestroyWatcher",
-						"start_line":1062
+						"start_line":1131
 					}
 				]
 			},
@@ -793,9 +793,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":41,
+						"end_line":58,
 						"name":"EventSub_Capi_Header",
-						"start_line":38
+						"start_line":54
 					},
 					{
 						"end_line":438,
@@ -808,7 +808,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/CMakeLists.txt",
 				"functions":[
 					{
-						"end_line":29,
+						"end_line":36,
 						"name":"eventsub_cmake_code",
 						"start_line":14
 					}
@@ -3299,7 +3299,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":38,
 						"name":"EventSub_napi_Header",
 						"start_line":24
 					},
@@ -3344,14 +3344,14 @@
 						"start_line":1134
 					},
 					{
-						"end_line":1047,
+						"end_line":1115,
 						"name":"APP_Hicollie_RemoveWatcher",
-						"start_line":1001
+						"start_line":1064
 					},
 					{
-						"end_line":1119,
+						"end_line":1194,
 						"name":"APP_Hicollie_DestroyWatcher",
-						"start_line":1063
+						"start_line":1132
 					},
 					{
 						"end_line":59,
@@ -3384,9 +3384,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":41,
+						"end_line":58,
 						"name":"EventSub_Capi_Header",
-						"start_line":38
+						"start_line":54
 					},
 					{
 						"end_line":409,
@@ -3404,9 +3404,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":25,
+						"end_line":31,
 						"name":"EventSub_Index_Capi_Header",
-						"start_line":23
+						"start_line":28
 					},
 					{
 						"end_line":269,
@@ -3439,7 +3439,7 @@
 						"start_line":1126
 					},
 					{
-						"end_line":37,
+						"end_line":39,
 						"name":"EventSub_napi_nohiappevent_Header",
 						"start_line":23
 					}
@@ -3459,9 +3459,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":25,
+						"end_line":31,
 						"name":"EventSub_Index_Capi_Header",
-						"start_line":23
+						"start_line":28
 					},
 					{
 						"end_line":269,
@@ -12080,17 +12080,17 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":235,
+						"end_line":257,
 						"name":"Crash_ArkTS_Add_Event",
-						"start_line":193
+						"start_line":212
 					},
 					{
-						"end_line":223,
+						"end_line":329,
 						"name":"CrashEvent_ArkTS_Add_Watcher",
-						"start_line":160
+						"start_line":265
 					},
 					{
-						"end_line":33,
+						"end_line":45,
 						"name":"Crash_Click_ArkTS_Header",
 						"start_line":20
 					}
@@ -12105,9 +12105,9 @@
 						"start_line":438
 					},
 					{
-						"end_line":1702,
+						"end_line":1726,
 						"name":"Sys_Native_Nullptr_Event_C++_Init",
-						"start_line":1607
+						"start_line":1624
 					}
 				]
 			},
@@ -12145,7 +12145,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":38,
 						"name":"EventSub_napi_Header",
 						"start_line":24
 					},
@@ -12160,9 +12160,9 @@
 						"start_line":563
 					},
 					{
-						"end_line":1701,
+						"end_line":1725,
 						"name":"Sys_Crash_Event_C++_Init",
-						"start_line":1606
+						"start_line":1623
 					},
 					{
 						"end_line":916,
@@ -12220,7 +12220,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/CMakeLists.txt",
 				"functions":[
 					{
-						"end_line":29,
+						"end_line":36,
 						"name":"eventsub_cmake_code",
 						"start_line":14
 					}
@@ -36986,9 +36986,9 @@
 						"start_line":1220
 					},
 					{
-						"end_line":1703,
+						"end_line":1727,
 						"name":"Pss_Leak_Init",
-						"start_line":1608
+						"start_line":1625
 					}
 				]
 			},
@@ -37031,9 +37031,9 @@
 						"start_line":1220
 					},
 					{
-						"end_line":1703,
+						"end_line":1727,
 						"name":"Pss_Leak_Init",
-						"start_line":1608
+						"start_line":1625
 					}
 				]
 			},
@@ -37111,9 +37111,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":65,
 						"name":"ArkWeb_Fling_Jank_ArkTS_Add_Watcher_Header",
-						"start_line":33
+						"start_line":61
 					},
 					{
 						"end_line":503,
@@ -69569,7 +69569,7 @@
 						"start_line":59
 					},
 					{
-						"end_line":37,
+						"end_line":49,
 						"name":"External_Log_ArkTS_Header",
 						"start_line":24
 					}
@@ -69584,7 +69584,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":38,
 						"name":"EventSub_napi_Header",
 						"start_line":24
 					},
@@ -70438,7 +70438,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":26,
+						"end_line":29,
 						"name":"AppHicollie_ArkTS_Header",
 						"start_line":22
 					},
@@ -70463,7 +70463,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":38,
 						"name":"EventSub_napi_Header",
 						"start_line":24
 					},
@@ -70478,9 +70478,9 @@
 						"start_line":1520
 					},
 					{
-						"end_line":1609,
+						"end_line":1696,
 						"name":"test_hicollie_set_timer",
-						"start_line":1606
+						"start_line":1692
 					}
 				]
 			},
@@ -70498,7 +70498,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":30,
+						"end_line":31,
 						"name":"EventSub_Index_Capi_Header",
 						"start_line":28
 					},
@@ -70518,7 +70518,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":38,
+						"end_line":50,
 						"name":"MainThreadJank_ArkTS_Header",
 						"start_line":23
 					},
@@ -70568,7 +70568,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":38,
 						"name":"EventSub_napi_Header",
 						"start_line":24
 					},
@@ -70583,14 +70583,14 @@
 						"start_line":1611
 					},
 					{
-						"end_line":1043,
+						"end_line":1111,
 						"name":"MainThreadJankEvent_RemoveWatcher",
-						"start_line":1005
+						"start_line":1068
 					},
 					{
-						"end_line":1115,
+						"end_line":1190,
 						"name":"MainThreadJankEvent_DestroyWatcher",
-						"start_line":1067
+						"start_line":1136
 					}
 				]
 			},
@@ -70608,9 +70608,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":42,
+						"end_line":59,
 						"name":"MainThreadJank_Header",
-						"start_line":39
+						"start_line":55
 					},
 					{
 						"end_line":742,
