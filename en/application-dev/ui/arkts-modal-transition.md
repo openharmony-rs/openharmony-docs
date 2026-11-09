@@ -5,7 +5,8 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=64db332a97c9e5fae1808d5b350a09f58b532f1a translatedAt=2026-10-12T09:33:29.507Z pushedAt=2026-10-13T06:39:37.252Z -->
+<!-- md-trans-meta sourceCommit=54d266b96ef0d7643f1fc8135870169c2d49d342 translatedAt=2026-11-05T11:19:28.310Z pushedAt=2026-11-09T08:24:26.876Z nl=1 -->
+
 
 Modal transition is a type of transition achieved by a modal – a view that appears on top of the current view while the current view remains.
 
@@ -33,7 +34,7 @@ You can bind a full-screen modal to a component through the [bindContentCover](.
    // Use @Builder to build a modal view.
    @Builder MyBuilder() {
      Column() {
-      Text('my modal view')
+       Text('my modal view')
      }
      // Use the transition API to implement the transition animation for component appearance and disappearance. The transition API must be added to the first component of the builder. 
      .transition(TransitionEffect.translate({ y: 1000 }).animation({ curve: curves.springMotion(0.6, 0.8) }))

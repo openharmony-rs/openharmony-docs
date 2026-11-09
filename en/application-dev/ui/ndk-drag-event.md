@@ -1,12 +1,11 @@
 # Binding Drag Events
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=4431c59b895d1d02940f60be4527223815858a92 translatedAt=2026-07-09T11:49:44.446Z pushedAt=2026-07-14T02:30:30.758Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-05T11:43:17.630Z pushedAt=2026-11-09T08:24:26.966Z nl=1 -->
 
 The ArkUI framework provides a set of drag event APIs to help you implement drag-and-drop functions. These events include [NODE_ON_PRE_DRAG](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype), [NODE_ON_DRAG_START](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype), [NODE_ON_DROP](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype), [NODE_ON_DRAG_ENTER](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype), [NODE_ON_DRAG_MOVE](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype), [NODE_ON_DRAG_LEAVE](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype), and [NODE_ON_DRAG_END](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype). These events are triggered at different stages of the drag operation, allowing you to perform specific actions and manage the drag interaction as needed.
 
@@ -19,7 +18,7 @@ ArkUI provides the capability to develop drag function using C and C++, allowing
    Initialize **nodeAPI** using the [OH_ArkUI_GetModuleInterface](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface) API. Node operations, such as creating a node, must be performed through **nodeAPI**.
 
    <!-- @[get_nodeAPI](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/manager.cpp) -->
-
+   
    ``` C++
    ArkUI_NativeNodeAPI_1 *nativeNodeAPI = nullptr;
    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nativeNodeAPI);
@@ -29,7 +28,7 @@ ArkUI provides the capability to develop drag function using C and C++, allowing
    Create an **Image** node, use [OH_ArkUI_SetNodeDraggable](../reference/apis-arkui/capi-drag-and-drop-h.md#oh_arkui_setnodedraggable) to set the node to be draggable, and set other related attributes.
 
    <!-- @[create_imageNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/thirdmodule.h) -->
-
+   
    ``` C
    dragImage2 = nodeAPI->createNode(ARKUI_NODE_IMAGE);
    SetId(dragImage2, "dragImage");
@@ -39,9 +38,8 @@ ArkUI provides the capability to develop drag function using C and C++, allowing
    OH_ArkUI_SetNodeDraggable(dragImage2, true);
    nodeAPI->registerNodeEvent(dragImage2, NODE_ON_DRAG_START, 1, nullptr);
    ```
-
    <!-- @[set_common](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/common.h) -->
-
+   
    ``` C
    #define DEFAULT_WIDTH 200.0
    // Set the node brightness.
@@ -147,9 +145,8 @@ ArkUI provides the capability to develop drag function using C and C++, allowing
        SetBorderColor(node);
    }
    ```
-
    <!-- @[set_imageSrc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/common.h) -->
-
+   
    ``` C
    void SetImageSrc(ArkUI_NodeHandle &node, const char *src)
    {
@@ -166,7 +163,7 @@ ArkUI provides the capability to develop drag function using C and C++, allowing
    Create a [PixelMap](../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap) object and set its width, height, and other properties. Set [ArkUI_DragPreviewOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-dragpreviewoption.md) for the **Image** node to customize the rounded corners and badges of the drag preview.
 
    <!-- @[create_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/firstmodule.h) -->
-
+   
    ``` C
    // Create a PixelMap object.
    uint8_t data[960000];
@@ -205,7 +202,7 @@ ArkUI provides the capability to develop drag function using C and C++, allowing
    Use a unified callback to handle events. Distinguish between different events using [eventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype).
 
    <!-- @[event_Type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/firstmodule.h) -->
-
+   
    ``` C
    nodeAPI->addNodeEventReceiver(dragNode, [](ArkUI_NodeEvent *event) {
        OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "RegisterNodeEventFirstReceiver called");
@@ -255,7 +252,7 @@ ArkUI provides the capability to develop drag function using C and C++, allowing
    In the **NODE_ON_DRAG_START** event, perform operations required to initiate the drag operation, typically involving data processing. For example, create an [OH_UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md), add the data **imageValue** required for dragging an image to **OH_UdmfRecord** as the [OH_UdsFileUri](../reference/apis-arkdata/capi-udmf-oh-udsfileuri.md) type, then set **OH_UdmfRecord** into [OH_UdmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md), and finally set **OH_UdmfData** into [DragEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-dragevent.md).
 
    <!-- @[drag_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/thirdmodule.h) -->
-
+   
    ``` C
    void SetImageData(ArkUI_DragEvent* dragEvent)
    {
@@ -282,7 +279,7 @@ ArkUI provides the capability to develop drag function using C and C++, allowing
    In the **NODE_ON_DROP** event, perform operations related to the drop phase, typically involving retrieving the data passed during the drag process. For example, import the [udmf_meta.h](../reference/apis-arkdata/capi-udmf-meta-h.md) file, obtain [OH_UdmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md), check whether the required data type exists, extract the corresponding data from [OH_UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md), and destroy the pointer.
 
    <!-- @[on_drop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/firstmodule.h) --> 
-
+   
    ``` C
    void GetDragData(ArkUI_DragEvent* dragEvent)
    {
@@ -358,7 +355,7 @@ In addition to basic drag, ArkUI also provides the capability to actively initia
    Create a **Button** node, set its attributes, and register the [NODE_ON_TOUCH_INTERCEPT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype) event.
 
    <!-- @[touch_intercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/forthmodule.h) -->
-
+   
    ``` C
    // Use buttonTouch as targetId to distinguish events from different targets.
    enum {
@@ -371,9 +368,8 @@ In addition to basic drag, ArkUI also provides the capability to actively initia
    SetButtonLabel(dragButton, "Drag");
    nodeAPI->registerNodeEvent(dragButton, NODE_ON_TOUCH_INTERCEPT, BUTTON_TOUCH, nullptr);
    ```
-
    <!-- @[set_common](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/common.h) -->
-
+   
    ``` C
    #define DEFAULT_WIDTH 200.0
    // Set the node brightness.
@@ -485,7 +481,7 @@ In addition to basic drag, ArkUI also provides the capability to actively initia
    In the **NODE_ON_TOUCH_INTERCEPT** event, you need to set up **DragAction** to initiate the drag operation. Use [targetId](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeevent_gettargetid) to distinguish events triggered by different buttons.
 
    <!-- @[on_touchIntercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/forthmodule.h) -->
-
+   
    ``` C
    nodeAPI->addNodeEventReceiver(dragButton, [](ArkUI_NodeEvent *event) {
        OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "RegisterNodeEventForthReceiver called");
@@ -508,13 +504,12 @@ In addition to basic drag, ArkUI also provides the capability to actively initia
        }
    });
    ```
-
 3. Set the drag initiation phase.
 
    In the **NODE_ON_TOUCH_INTERCEPT** event, set **DragAction** to initiate the drag operation. Create a [PixelMap](../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap), set [ArkUI_DragPreviewOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-dragpreviewoption.md) and the touch point, and set the text data to **DragAction**.
 
    <!-- @[set_dragAction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/forthmodule.h) -->
-
+   
    ``` C
                case NODE_ON_TOUCH_INTERCEPT: {
                    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_TOUCH_INTERCEPT EventReceiver");
@@ -573,9 +568,8 @@ In addition to basic drag, ArkUI also provides the capability to actively initia
        OH_ArkUI_DragAction_RegisterStatusListener(action, data, &DragStatusListener);
    }
    ```
-
    <!-- @[prepare_dragAction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/common.h) -->
-
+   
    ``` C
    void SetPixelMap(std::vector<OH_PixelmapNative *> &pixelVector)
    {
@@ -641,13 +635,12 @@ In addition to basic drag, ArkUI also provides the capability to actively initia
            "OH_ArkUI_DragAction_SetTouchPointY returnValue = %{public}d", returnValue);
    }
    ```
-
 4. Handle the **NODE_ON_DROP** event.
 
    In the **NODE_ON_DROP** event, perform actions related to the drop phase. Typically, this involves obtaining the data passed during the drag operation. The drag data from **DragAction** is also obtained through **DragEvent**
 
    <!-- @[get_dragAction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/forthmodule.h) -->
-
+   
    ``` C
                case NODE_ON_DROP: {
                    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_DROP EventReceiver");

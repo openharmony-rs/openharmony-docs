@@ -5,6 +5,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=e0822bb1a420112ebfdf2cb0da30b0d98cb5c7bc translatedAt=2026-11-05T11:41:21.712Z pushedAt=2026-11-09T08:24:26.970Z nl=1 -->
 
 ## Overview
 
@@ -79,7 +80,7 @@ For scenarios where development is performed using encapsulated APIs on the ArkT
 
 For complex interaction logic that requires cross-language development, for scenarios pursuing extreme rendering performance, or for business needs that require independent control over Surface creation and destruction, [OH_ArkUI_SurfaceHolder](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) is recommended on the native side to manage the Surface lifecycle. The lifecycle trigger conditions are as follows:
 
-- OnSurfaceCreated   
+- OnSurfaceCreated() callback
 
   Triggered when the **XComponent** component is created, the surface is bound to a lifecycle callback, and any of the following conditions is met:
   1. The component is attached to the component tree with **autoInitialize = true**.
@@ -88,15 +89,15 @@ For complex interaction logic that requires cross-language development, for scen
   Native-side sequence
 
   ![OnSurfaceCreated](./figures/onSurfaceCreated2.png)
-- OnSurfaceChanged
+- OnSurfaceChanged() callback
   
-  Triggered when surface size changes trigger re-layout, after the **OnSurfaceCreated** callback is successfully triggered.
+  Triggered when surface size changes trigger re-layout, after the **OnSurfaceCreated()** callback is successfully triggered.
 
   Native-side sequence
 
   ![OnSurfaceChanged](./figures/onSurfaceChanged2.png)
 
-- OnSurfaceDestroyed
+- OnSurfaceDestroyed() callback
 
   Triggered when the component is removed from the tree and **autoInitialize** is set to **true**, or after [OH_ArkUI_XComponent_Finalize](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_xcomponent_finalize) is called.
 
@@ -230,9 +231,9 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
       callbackMap_[holder] = callback;
       auto render = new EGLRender();
       OH_ArkUI_SurfaceHolder_SetUserData(holder, render);                                // Save render to holder.
-      OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(callback, OnSurfaceCreatedNative); // Register the OnSurfaceCreated callback.
-      OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // Register the OnSurfaceChanged callback.
-      OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // Register the OnSurfaceDestroyed callback.
+      OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(callback, OnSurfaceCreatedNative); // Register the OnSurfaceCreated() callback.
+      OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // Register the OnSurfaceChanged() callback.
+      OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // Register the OnSurfaceDestroyed() callback.
       OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback);                // Register the SurfaceCallback callback.
       // ...
       return nullptr;
@@ -361,9 +362,9 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
       callbackMap_[holder] = callback;
       auto render = new EGLRender();
       OH_ArkUI_SurfaceHolder_SetUserData(holder, render);                                // Save render to holder.
-      OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(callback, OnSurfaceCreatedNative); // Register the OnSurfaceCreated callback.
-      OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // Register the OnSurfaceChanged callback.
-      OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // Register the OnSurfaceDestroyed callback.
+      OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(callback, OnSurfaceCreatedNative); // Register the OnSurfaceCreated() callback.
+      OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // Register the OnSurfaceChanged() callback.
+      OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // Register the OnSurfaceDestroyed() callback.
       OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback);                // Register the SurfaceCallback callback.
       // ...
       return nullptr;
@@ -462,9 +463,9 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
       PluginManager::callbackMap_[holder] = callback;
       auto render = new EGLRender();
       OH_ArkUI_SurfaceHolder_SetUserData(holder, render);                                // Save render to holder.
-      OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(callback, OnSurfaceCreatedNative); // Register the OnSurfaceCreated callback.
-      OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // Register the OnSurfaceChanged callback.
-      OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // Register the OnSurfaceDestroyed callback.
+      OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(callback, OnSurfaceCreatedNative); // Register the OnSurfaceCreated() callback.
+      OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // Register the OnSurfaceChanged() callback.
+      OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // Register the OnSurfaceDestroyed() callback.
       OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback); // Add the SurfaceCallback callback.
       if (nodeAPI->addNodeEventReceiver(xc, onEvent)) {            // Add an event listener. If 0 is returned, the operation is successful. If a non-zero value is returned, the operation fails.
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "addNodeEventReceiver error");
@@ -617,9 +618,9 @@ The main difference in binding surface lifecycle callbacks lies in the APIs used
       callbackMap_[holder] = callback;
       auto render = new EGLRender();
       OH_ArkUI_SurfaceHolder_SetUserData(holder, render);                                // Save render to holder.
-      OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(callback, OnSurfaceCreatedNative); // Register the OnSurfaceCreated callback.
-      OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // Register the OnSurfaceChanged callback.
-      OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // Register the OnSurfaceDestroyed callback.
+      OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(callback, OnSurfaceCreatedNative); // Register the OnSurfaceCreated() callback.
+      OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // Register the OnSurfaceChanged() callback.
+      OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // Register the OnSurfaceDestroyed() callback.
       OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback);                // Register the SurfaceCallback callback.
       // ...
       return nullptr;
@@ -720,28 +721,28 @@ The following is a complete example of using **NativeWindow** and **EGL** APIs f
 
 | API                                                      | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| OH_ArkUI_QueryModuleInterfaceByName(ArkUI_NativeAPIVariantKind type, const char* structName) | Obtains the native API set of a specified type.                                        |
-| OH_ArkUI_XComponent_GetNativeWindow(OH_ArkUI_SurfaceHolder* surfaceHolder) | Obtains the **NativeWindow** instance associated with an **OH_ArkUI_SurfaceHolder** instance.                                        |
-| OH_ArkUI_SurfaceHolder_RemoveSurfaceCallback(OH_ArkUI_SurfaceHolder* surfaceHolder, OH_ArkUI_SurfaceCallback* callback) | Removes the previously added surface lifecycle callback from an **OH_ArkUI_SurfaceHolder** instance.                                        |
-| OH_ArkUI_SurfaceCallback_Dispose(OH_ArkUI_SurfaceCallback* callback) | Disposes of an **OH_ArkUI_SurfaceCallback** object.                                        |
-| OH_ArkUI_SurfaceHolder_Dispose(OH_ArkUI_SurfaceHolder* surfaceHolder) | Disposes of an **OH_ArkUI_SurfaceHolder** object.                                        |
-| OH_ArkUI_NodeEvent_GetEventType(ArkUI_NodeEvent* event) | Obtains the event type from a component event.                                        |
-| OH_ArkUI_NodeEvent_GetNodeHandle(ArkUI_NodeEvent* event) | Obtains the component object that triggers a component event.                                        |
-| OH_ArkUI_GetNodeHandleFromNapiValue(napi_env env, napi_value frameNode, ArkUI_NodeHandle* handle) | Obtains an **ArkUI_NodeHandle** object on the native side mapped from the **FrameNode** object created on the ArkTS side.                                        |
-| OH_ArkUI_SurfaceHolder_Create(ArkUI_NodeHandle node) | Creates an **OH_ArkUI_SurfaceHolder** object from the **XComponent** node.                                      |
-| OH_ArkUI_SurfaceCallback_Create() | Creates an **OH_ArkUI_SurfaceCallback** object.                                        |
-| OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(OH_ArkUI_SurfaceCallback* callback, void (\*onSurfaceCreated)(OH_ArkUI_SurfaceHolder* surfaceHolder)) | Registers the **onSurfaceCreated** callback with an **OH_ArkUI_SurfaceCallback** object.                                        |
-| OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(OH_ArkUI_SurfaceCallback* callback, void (\*onSurfaceChanged)(OH_ArkUI_SurfaceHolder* surfaceHolder, uint64_t width, uint64_t height)) | Registers the **onSurfaceChanged** callback with an **OH_ArkUI_SurfaceCallback** object.                                        |
-| OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(OH_ArkUI_SurfaceCallback* callback, void (\*onSurfaceDestroyed)(OH_ArkUI_SurfaceHolder* surfaceHolder)) | Registers the **onSurfaceDestroyed** callback with an **OH_ArkUI_SurfaceCallback** object.                                        |
-| OH_ArkUI_SurfaceCallback_SetSurfaceShowEvent(OH_ArkUI_SurfaceCallback* callback, void (\*onSurfaceShow)(OH_ArkUI_SurfaceHolder* surfaceHolder)) | Registers the **onSurfaceShow** callback with an **OH_ArkUI_SurfaceCallback** object.                                        |
-| OH_ArkUI_SurfaceCallback_SetSurfaceHideEvent(OH_ArkUI_SurfaceCallback* callback, void (\*onSurfaceHide)(OH_ArkUI_SurfaceHolder* surfaceHolder)) | Registers the **onSurfaceHide** callback with an **OH_ArkUI_SurfaceCallback** object.                                        |
-| OH_ArkUI_XComponent_RegisterOnFrameCallback(ArkUI_NodeHandle node, void (*callback)(ArkUI_NodeHandle node, uint64_t timestamp, uint64_t targetTimestamp)) | Registers the **onFrame** callback for the **XComponent** node.                                        |
-| OH_ArkUI_SurfaceHolder_AddSurfaceCallback(OH_ArkUI_SurfaceHolder* surfaceHolder, OH_ArkUI_SurfaceCallback* callback) | Registers the **OH_ArkUI_SurfaceCallback** object with an **OH_ArkUI_SurfaceHolder** instance.                                        |
-| OH_ArkUI_AccessibilityProvider_Create(ArkUI_NodeHandle node) | Creates an **ArkUI_AccessibilityProvider** object from the **XComponent** node.                                        |
-| OH_ArkUI_XComponent_UnregisterOnFrameCallback(ArkUI_NodeHandle node) | Unregisters the **onFrame callback** of the **XComponent** node.                                        |
-| OH_ArkUI_AccessibilityProvider_Dispose(ArkUI_AccessibilityProvider* provider) | Disposes of an **ArkUI_AccessibilityProvider** object.                                       |
-| OH_ArkUI_XComponent_SetExpectedFrameRateRange(ArkUI_NodeHandle node, OH_NativeXComponent_ExpectedRateRange range) | Sets the expected frame rate range for the **XComponent** node.                                        |
-| OH_ArkUI_XComponent_SetNeedSoftKeyboard(ArkUI_NodeHandle node, bool needSoftKeyboard) | Sets whether the **XComponent** node needs to display the soft keyboard when it gains focus.                                        |
+| [OH_ArkUI_QueryModuleInterfaceByName](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_querymoduleinterfacebyname)(ArkUI_NativeAPIVariantKind type, const char* structName) | Obtains the native API set of a specified type.                                         |
+| [OH_ArkUI_XComponent_GetNativeWindow](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_xcomponent_getnativewindow)(OH_ArkUI_SurfaceHolder* surfaceHolder) | Obtains the **NativeWindow** instance associated with an **OH_ArkUI_SurfaceHolder** instance.                                         |
+| [OH_ArkUI_SurfaceHolder_RemoveSurfaceCallback](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_surfaceholder_removesurfacecallback)(OH_ArkUI_SurfaceHolder* surfaceHolder, OH_ArkUI_SurfaceCallback* callback) | Removes the previously added surface lifecycle callback from an **OH_ArkUI_SurfaceHolder** instance.                                         |
+| [OH_ArkUI_SurfaceCallback_Dispose](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_surfacecallback_dispose)(OH_ArkUI_SurfaceCallback* callback) | Disposes of an **OH_ArkUI_SurfaceCallback** object.                                         |
+| [OH_ArkUI_SurfaceHolder_Dispose](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_surfaceholder_dispose)(OH_ArkUI_SurfaceHolder* surfaceHolder) | Disposes of an **OH_ArkUI_SurfaceHolder** object.                                         |
+| [OH_ArkUI_NodeEvent_GetEventType](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeevent_geteventtype)(ArkUI_NodeEvent* event) | Obtains the event type from a component event.                                         |
+| [OH_ArkUI_NodeEvent_GetNodeHandle](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeevent_getnodehandle)(ArkUI_NodeEvent* event) | Obtains the component object that triggers a component event.                                         |
+| [OH_ArkUI_GetNodeHandleFromNapiValue](../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnodehandlefromnapivalue)(napi_env env, napi_value frameNode, ArkUI_NodeHandle* handle) | Obtains an **ArkUI_NodeHandle** object on the native side mapped from the **FrameNode** object created on the ArkTS side.                                         |
+| [OH_ArkUI_SurfaceHolder_Create](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_surfaceholder_create)(ArkUI_NodeHandle node) | Creates an **OH_ArkUI_SurfaceHolder** object from the **XComponent** node.                                       |
+| [OH_ArkUI_SurfaceCallback_Create](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_surfacecallback_create)() | Creates an **OH_ArkUI_SurfaceCallback** object.                                         |
+| [OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_surfacecallback_setsurfacecreatedevent)(OH_ArkUI_SurfaceCallback* callback, void (\*onSurfaceCreated)(OH_ArkUI_SurfaceHolder* surfaceHolder)) | Registers the **onSurfaceCreated** callback with an **OH_ArkUI_SurfaceCallback** object.                                         |
+| [OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_surfacecallback_setsurfacechangedevent)(OH_ArkUI_SurfaceCallback* callback, void (\*onSurfaceChanged)(OH_ArkUI_SurfaceHolder* surfaceHolder, uint64_t width, uint64_t height)) | Registers the **onSurfaceChanged** callback with an **OH_ArkUI_SurfaceCallback** object.                                         |
+| [OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_surfacecallback_setsurfacedestroyedevent)(OH_ArkUI_SurfaceCallback* callback, void (\*onSurfaceDestroyed)(OH_ArkUI_SurfaceHolder* surfaceHolder)) | Registers the **onSurfaceDestroyed** callback with an **OH_ArkUI_SurfaceCallback** object.                                         |
+| [OH_ArkUI_SurfaceCallback_SetSurfaceShowEvent](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_surfacecallback_setsurfaceshowevent)(OH_ArkUI_SurfaceCallback* callback, void (\*onSurfaceShow)(OH_ArkUI_SurfaceHolder* surfaceHolder)) | Registers the **onSurfaceShow** callback with an **OH_ArkUI_SurfaceCallback** object.                                         |
+| [OH_ArkUI_SurfaceCallback_SetSurfaceHideEvent](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_surfacecallback_setsurfacehideevent)(OH_ArkUI_SurfaceCallback* callback, void (\*onSurfaceHide)(OH_ArkUI_SurfaceHolder* surfaceHolder)) | Registers the **onSurfaceHide** callback with an **OH_ArkUI_SurfaceCallback** object.                                         |
+| [OH_ArkUI_XComponent_RegisterOnFrameCallback](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_xcomponent_registeronframecallback)(ArkUI_NodeHandle node, void (*callback)(ArkUI_NodeHandle node, uint64_t timestamp, uint64_t targetTimestamp)) | Registers the **onFrame** callback for the **XComponent** node.                                         |
+| [OH_ArkUI_SurfaceHolder_AddSurfaceCallback](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_surfaceholder_addsurfacecallback)(OH_ArkUI_SurfaceHolder* surfaceHolder, OH_ArkUI_SurfaceCallback* callback) | Registers the **OH_ArkUI_SurfaceCallback** object with an **OH_ArkUI_SurfaceHolder** instance.                                         |
+| [OH_ArkUI_AccessibilityProvider_Create](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_accessibilityprovider_create)(ArkUI_NodeHandle node) | Creates an **ArkUI_AccessibilityProvider** object from the **XComponent** node.                                         |
+| [OH_ArkUI_XComponent_UnregisterOnFrameCallback](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_xcomponent_unregisteronframecallback)(ArkUI_NodeHandle node) | Unregisters the **onFrame callback** of the **XComponent** node.                                         |
+| [OH_ArkUI_AccessibilityProvider_Dispose](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_accessibilityprovider_dispose)(ArkUI_AccessibilityProvider* provider) | Disposes of an **ArkUI_AccessibilityProvider** object.                                        |
+| [OH_ArkUI_XComponent_SetExpectedFrameRateRange](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_xcomponent_setexpectedframeraterange)(ArkUI_NodeHandle node, OH_NativeXComponent_ExpectedRateRange range) | Sets the expected frame rate range for the **XComponent** node.                                         |
+| [OH_ArkUI_XComponent_SetNeedSoftKeyboard](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_xcomponent_setneedsoftkeyboard)(ArkUI_NodeHandle node, bool needSoftKeyboard) | Sets whether the **XComponent** node needs to display the soft keyboard when it gains focus.                                         |
 
 **How to Develop**
 
@@ -998,12 +999,12 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
         callbackMap_[holder] = callback;
         auto render = new EGLRender();
         OH_ArkUI_SurfaceHolder_SetUserData(holder, render); // Store the render object in holder.
-        OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(callback, OnSurfaceCreatedNative);     // Register the OnSurfaceCreated callback.
-        OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // Register the OnSurfaceChanged callback.
-        OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // Register the OnSurfaceDestroyed callback.
-        OH_ArkUI_SurfaceCallback_SetSurfaceShowEvent(callback, OnSurfaceShowNative);           // Register the OnSurfaceShow callback.
-        OH_ArkUI_SurfaceCallback_SetSurfaceHideEvent(callback, OnSurfaceHideNative);           // Register the OnSurfaceHide callback.
-        OH_ArkUI_XComponent_RegisterOnFrameCallback(handle, OnFrameCallbackNative);            // Register the OnFrameCallback callback.
+        OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(callback, OnSurfaceCreatedNative);     // Register the OnSurfaceCreated() callback.
+        OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative);     // Register the OnSurfaceChanged() callback.
+        OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // Register the OnSurfaceDestroyed() callback.
+        OH_ArkUI_SurfaceCallback_SetSurfaceShowEvent(callback, OnSurfaceShowNative);           // Register the OnSurfaceShow() callback.
+        OH_ArkUI_SurfaceCallback_SetSurfaceHideEvent(callback, OnSurfaceHideNative);           // Register the OnSurfaceHide() callback.
+        OH_ArkUI_XComponent_RegisterOnFrameCallback(handle, OnFrameCallbackNative);            // Register the OnFrame() callback.
         OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback);                     // Register the SurfaceCallback callback.
         if (nodeAPI->addNodeEventReceiver(handle, onEvent)) { // Add an event listener. If 0 is returned, the operation is successful. If a non-zero value is returned, the operation fails.
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "addNodeEventReceiver error");
@@ -1356,7 +1357,7 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
             return PROGRAM_ERROR;
         }
     
-        // The gl function has no return value.
+        // This gl function has no return value.
         glShaderSource(shader, 1, &shaderSrc, nullptr);
         glCompileShader(shader);
     
@@ -1625,7 +1626,7 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
     <!-- @[cmake_lists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/CMakeLists.txt) -->
 
     ```CMake
-    # the minimum version of CMake.
+    # CMake minimum version requirement.
     cmake_minimum_required(VERSION 3.4.1)
     project(XComponent)
     

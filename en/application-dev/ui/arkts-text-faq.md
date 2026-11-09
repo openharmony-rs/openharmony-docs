@@ -5,6 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=bf76fce28aeb3204bb6f3347753ae4a1bf29e8ba translatedAt=2026-11-05T11:24:52.393Z pushedAt=2026-11-09T08:24:26.895Z nl=1 -->
 
 This topic addresses common issues related to text components.
 
@@ -29,13 +30,13 @@ Without an explicit width setting, the **Text** component expands to the maximum
 Set the [wordBreak](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#wordbreak11) attribute to **WordBreak.BREAK_ALL** to maximize text utilization within the component area.
 
 The sample code is as follows:
-  <!-- @[Word_Break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/WordBreakd.ets) -->
+  <!-- @[Word_Break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/WordBreakExample.ets) -->
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   @Entry
   @Component
-  struct WordBreakd {
+  struct WordBreakExample {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -64,7 +65,7 @@ The sample code is as follows:
   }
   ```
 
-<!--Del--> <!--DelEnd-->
+<!--Del--><!--DelEnd-->
 
 ### How Do I Implement Text Expansion at the End of the Line?
 
@@ -140,25 +141,25 @@ If tags and the main text need to display on the same line, consider using [Span
 
 Implementation steps:
 
-1. Place tags and main text in a horizontally aligned **Row** container.
+1. Place the label and the long text in the same `Row` container laid out horizontally.
 
-2. Set the main text's **textOverflow** to **TextOverflow.Ellipsis** for truncation with ellipsis.
+2. Set the `textOverflow` attribute of the long text in the middle to `TextOverflow.Ellipsis` so that the text is truncated and an ellipsis is displayed when space is insufficient.
 
 For an implementation example, see [Implementing Hot Search Rankings](./arkts-common-components-text-display.md#implementing-hot-search-rankings) for a practical example where "1" and "Top Hit" serve as tags for "I am entry 1". This approach is suitable for single-line text with tags.
 
 **Solution 2**
 
-If tags need to be added before and after multi-line text (with the text not truncated), the previous solution may cause misalignment among the three Text components. This occurs because multi-line text wraps within the **Row** container's width. To resolve this, place the tags and multi-line text in a [Stack](./arkts-layout-development-stack-layout.md) container, and configure the following for the main multi-line text: Set the first-line indentation using [textIndent](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textindent10); adjust the position of the suffix tag using [offset](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset). This implementation ensures horizontal alignment between the prefix tag, multi-line text, and suffix tag.  
+If tags need to be added before and after multi-line text (with the text not truncated), the previous solution may cause misalignment among the three Text components. This occurs because multi-line text wraps within the **Row** container's width. To resolve this, place the tags and multi-line text in a [Stack](./arkts-layout-development-stack-layout.md) container, and configure the following for the main multi-line text: Set the first-line indentation using [textIndent](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textindent10); adjust the position of the suffix tag using [offset](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset). This implementation ensures horizontal alignment between the prefix tag, multi-line text, and suffix tag.
 
 Implementation steps:
 
-1. Place tags and multi-line text in a **Stack** container.
+1. Place the label and the long text in a `Stack`.
 
-2. In the [aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) callback, use [measureTextSize](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#measuretextsize12) to calculate the prefix tag's width, which serves as the first-line indentation for the main text.
+2. In the [aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) callback that runs before the component is displayed, use [measureTextSize](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#measuretextsize12) to calculate the width of the leading label, and use it as the first-line indent of the multiline text in the middle.
 
-3. In the **aboutToAppear** callback, use [getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20) to calculate the last line width and non-last line height of the main text for suffix tag offset.
+3. In the `aboutToAppear` callback that runs before the component is displayed, use [getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20) to calculate the width of the last line and the height excluding the last line of the multiline text in the middle, and use them as the offset of the trailing label.
 
-4. Set the offset of the suffix tag relative to the upper left corner of the **Stack** container.
+4. Set the offset of the trailing label relative to the top-left corner of the `Stack`.
 
 Example:
 
@@ -424,14 +425,14 @@ This example limits the **Text** component to three lines:
 
 Solution 1 truncates content. To display all text, place the **Text** component inside a [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md) container. This way, users can swipe to view the full content.
 
-  <!-- @[Text_Long_Tow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLongTow.ets) -->
+  <!-- @[Text_Long_Two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLongTwo.ets) -->
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   
   @Entry
   @Component
-  struct TextLongTow {
+  struct TextLongTwo {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -540,26 +541,31 @@ When [CopyOptions](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#copyopt
 
 Attach a custom long press gesture with a duration shorter than the system's 500 ms threshold.
 
-```ts
-// xxx.ets
+<!-- @[How_To_Disable_Text_Long_Press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/faq/HowToDisableTextLongPress.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct TextExample8 {
+export struct HowToDisableTextLongPressExample {
   build() {
-    Column() {
-      Text("TextTextTextText")
-        .copyOption(CopyOptions.InApp)
-        .gesture(LongPressGesture({ repeat: false, duration: 400 })
-          .onAction(() => {
-          }))
-        .margin({
-          top: 100,
-          bottom: 100,
-          left: 100,
-          right: 100
-        })
+    NavDestination() {
+      Column() {
+        Text('TextTextTextText')
+          .copyOption(CopyOptions.InApp)
+          .gesture(LongPressGesture({ repeat: false, duration: 400 })
+            .onAction(() => {
+            }))
+          .margin({
+            top: 100,
+            bottom: 100,
+            left: 100,
+            right: 100
+          })
+      }
+      .height('100%')
     }
-    .height('100%')
+    .backgroundColor('#f1f2f3')
+    .title($r('app.string.How_To_Disable_Text_Long_Press'))
   }
 }
 ```
@@ -570,7 +576,7 @@ struct TextExample8 {
 
 This section describes FAQs about text input using the [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md), [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md), and [Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md) components.
 
-### Why Does the Operation Handle Not Disappear When the TextInput Component Is Covered
+### TextInput Handle Does Not Disappear When Obscured
 
 **Symptom**
 

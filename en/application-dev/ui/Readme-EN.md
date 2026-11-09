@@ -5,7 +5,9 @@
 <!--Designer: @tsj_20201-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-- [About This Kit](arkui-overview.md)
+<!-- md-trans-meta sourceCommit=a306693f0f46e5633c549769b8338f6bd7c191f4 translatedAt=2026-11-05T11:51:07.232Z pushedAt=2026-11-09T08:24:27.002Z nl=2 -->
+
+- [Introduction to ArkUI](arkui-overview.md)
 - UI Development (ArkTS-based Declarative Development Paradigm)<!--arkts-ui-development-->
   - [UI Development (ArkTS-based Declarative Development Paradigm) Overview](arkts-ui-development-overview.md)
   - Basic Syntax of UI Paradigms<!--arkts-ui-paradigm-basic-syntax-->
@@ -19,30 +21,30 @@
       - [Custom Component Layout](state-management/arkts-page-custom-components-layout.md)
       - [Constraints on Access Modifiers of Custom Component Member Variables](state-management/arkts-custom-components-access-restrictions.md)
       - Custom Component Reuse<!--arkts-component-reusable-->
-        - [\@Reusable Decorator: Reusing V1 Components](state-management/arkts-reusable.md)  
-        - [\@ReusableV2 Decorator: Reusing V2 Components](state-management/arkts-new-reusableV2.md)
+        - [\@Reusable Decorator: Reusing V1 Components](state-management/arkts-reusable.md)   
+        - [\@ReusableV2 Decorator: Reusing V2 Components](state-management/arkts-new-reusableV2.md) 
         - [Global Reuse: Centralized Component Recycling and Reuse](state-management/arkts-global-reuse-pool.md)<!--RP7--><!--RP7End-->
       - Custom Component Freezing<!--arkts-component-freeze-->
-        - [Freezing a Custom Component (V1)](state-management/arkts-custom-components-freeze.md)
-        - [Freezing a Custom Component (V2)](state-management/arkts-custom-components-freezeV2.md)<!--RP8--><!--RP8End-->
+        - [V1 Custom Component Freezing](state-management/arkts-custom-components-freeze.md)
+        - [Custom Component Freezing V2](state-management/arkts-custom-components-freezeV2.md)<!--RP8--><!--RP8End-->
     - Component Extension<!--arkts-extend-components-->
       - [Component Extension Overview](state-management/arkts-extend-components-overview.md)
       - [\@Builder Decorator: Custom Builder Function](state-management/arkts-builder.md)
       - [\@LocalBuilder Decorator: Maintaining Component Relationships](state-management/arkts-localBuilder.md)
       - [\@BuilderParam Decorator: Referencing the \@Builder Function](state-management/arkts-builderparam.md)
       - [wrapBuilder: Encapsulating Global @Builder](state-management/arkts-wrapBuilder.md)
-      - [mutableBuilder: Implementing Dynamic Update of Global @Builder](state-management/arkts-mutableBuilder.md)
+      - [mutableBuilder: Implementing Dynamic Update of Global @Builder](state-management/arkts-mutableBuilder.md) 
       - [\@Styles Decorator: Defining Reusable Styles](state-management/arkts-style.md)
       - [\@Extend Decorator: Defining Extended Component Styles](state-management/arkts-extend.md)
       - [stateStyles: Applying Polymorphic Styles](state-management/arkts-statestyles.md)
       - [\@AnimatableExtend Decorator: Defining Animatable Properties](state-management/arkts-animatable-extend.md)
-    - [\@Require Decorator: Validating Constructor Input Parameters](state-management/arkts-require.md)
+    - [\@Require Decorator: Validating Constructor Parameters](state-management/arkts-require.md)
   - UI Paradigm State Management<!--arkts-state-management-->
     - [State Management Overview](state-management/arkts-state-management-overview.md)
     - [State Management Principles](state-management/arkts-state-management-introduce.md)
     - [Differences Between State Management V1 and V2 Update Mechanisms](state-management/arkts-v1-v2-update-difference.md)
-    - [MVVM (V1)](state-management/arkts-mvvm.md)
-    - [MVVM (V2)](state-management/arkts-mvvm-v2.md)
+    - [MVVM V1](state-management/arkts-mvvm.md)
+    - [MVVM V2](state-management/arkts-mvvm-v2.md)
     - State Management V1<!--arkts-state-management-v1-->
       - Component State Management<!--arkts-v1-component-state-management-->
         - [\@State Decorator: State Owned by Component](state-management/arkts-state.md)
@@ -65,13 +67,13 @@
         - [\@Param Decorator: Inputting External Parameters to Components](state-management/arkts-new-param.md)
         - [\@Once: Implementing Initialization Once](state-management/arkts-new-once.md)
         - [\@Event Decorator: Standardizing Component Output](state-management/arkts-new-event.md)
-        - [\@Provider and \@Consumer Decorators: Synchronizing Across Component Levels in a Two-Way Manner](state-management/arkts-new-provider-and-consumer.md)
+        - [\@Provider Decorator and \@Consumer Decorator: Two-Way Syncing Across Component Levels](state-management/arkts-new-provider-and-consumer.md)
       - Data Object State Management<!--arkts-v2-manage-data-object-state-->
         - [\@ObservedV2 and \@Trace Decorators: Observing Class Property Changes](state-management/arkts-new-observedV2-and-trace.md)
         - [\@Monitor Decorator: Listening for Value Changes of the State Variables](state-management/arkts-new-monitor.md)
         - [\@SyncMonitor Decorator: Synchronous Listening for Value Changes of the State Variables](state-management/arkts-new-syncmonitor.md)
         - [\@Computed Decorator: Declaring Computed Properties](state-management/arkts-new-computed.md)
-        - [\@Type Decorator: Marking the Types of the Class Property](state-management/arkts-new-type.md)
+        - [\@Type Decorator: Marking the Type of Class Properties](state-management/arkts-new-type.md)
       - Application State Management<!--arkts-v2-manage-application-state-->
         - [AppStorageV2: Storing Application-wide UI State](state-management/arkts-new-appstoragev2.md)
         - [PersistenceV2: Persisting Application State](state-management/arkts-new-persistencev2.md)
@@ -93,7 +95,7 @@
         - [Migration for Component Reuse](state-management/arkts-v1-v2-migration-reusable.md)
         - [Migration for Repeated Content Rendering](state-management/arkts-v1-v2-migration-rendering-control-repeat.md)
         - [Migration for Built-in Objects](state-management/arkts-v1-v2-migration-inner-object.md)
-        - [Widget State Variable Migration](state-management/arkts-v1-v2-migration-card.md)
+        - [Widget State Variable Migration](state-management/arkts-v1-v2-migration-application.md)
         - [Migration for AnimateTo Usage](state-management/arkts-v1-v2-migration-animateTo.md)
       - Mixed Use of State Management V1 and V2<!--v1v2-mixing-->
         - [Mixed Use of State Management V1 and V2 (Before API Version 19)](state-management/arkts-v1-v2-mixusage-before-api-version.md)
@@ -122,7 +124,7 @@
       - [Page Routing](./arkts-navigation-jump.md)
       - [Transition Animation](./arkts-navigation-animation.md)
       - [Cross-Package Routing](./arkts-navigation-cross-package.md)
-      - [Split-View Layout](./arkts-navigation-split-mode.md)
+      - [Split-Column Layout](./arkts-navigation-split-mode.md)
     - [Page Routing (@ohos.router) (Not Recommended)](arkts-routing.md)
     - [Transition from Router to Navigation](arkts-router-to-navigation.md)
   - Component Layouts<!--arkts-layout-development-->
@@ -139,10 +141,10 @@
   - Lists and Grids<!--arkts-list-and-grid-->
     - [List and Grid Overview](arkts-list-grid-development-overview.md)
     - [Creating a List (List)](arkts-layout-development-create-list.md)
-    - [Creating an Arc List (ArcList) (Recommended for Circular Screens)](arkts-layout-development-create-arclist.md)
+    - [Arc List (ArcList) (Recommended for Round Screens)](arkts-layout-development-create-arclist.md)
     - [Creating a Grid (Grid/GridItem)](arkts-layout-development-create-grid.md)<!--RP11--><!--RP11End-->
     - [Creating a Waterfall Flow (WaterFlow)](arkts-layout-development-create-waterflow.md)<!--RP12--><!--RP12End-->
-    - [Creating Lazy Layouts (LazyColumnLayout/LazyVGridLayout/LazyVWaterFlowLayout)](arkts-layout-development-create-lazy-layout.md)
+    - [Creating a Lazy Layout (LazyColumnLayout/LazyVGridLayout/LazyVWaterFlowLayout)](arkts-layout-development-create-lazy-layout.md)
     - [Creating a Lazy Custom Layout (LazyDynamicLayout)](arkts-layout-development-create-lazy-custom-layout.md)<!--RP4--><!--RP4End-->
   - Using Text<!--arkts-use-text-->
     - [Introduction to Text](arkts-text-introduction.md)
@@ -157,11 +159,11 @@
     - [Image Display (Image)](arkts-graphics-display.md)
     - [Video Playback (Video)](arkts-common-components-video-player.md)
     - [Creating a Swiper (Swiper)](arkts-layout-development-create-looping.md)
-    - [Creating an Arc Carousel Component (ArcSwiper)](arkts-layout-development-arcswiper.md) (Recommended for Circular Screens)<!--RP14--><!--RP14End-->
+    - [Creating an Arc Carousel (ArcSwiper) (Recommended for Round Screens)](arkts-layout-development-arcswiper.md)<!--RP14--><!--RP14End-->
   - Buttons and Selections<!--arkts-form-selection-->
     - [Button and Selection Component Overview](arkts-forms-overview.md)
     - [Button](arkts-common-components-button.md)
-    - [Arc Button (ArcButton) (Recommended for Circular Screens)](arkts-advanced-components-arcbutton.md)
+    - [Arc Button (ArcButton) (Recommended for Round Screens)](arkts-advanced-components-arcbutton.md)
     - [Radio Button (Radio)](arkts-common-components-radio-button.md)
     - [Toggle](arkts-common-components-switch.md)
   - Adding a Component<!--arkts-add-component-->
@@ -181,24 +183,31 @@
        - [Dialog Mask Control](arkts-dialog-mask.md)
      - Using Menus<!--arkts-use-menu-->
        - [Menu Overview](arkts-menu-overview.md)
-       - [Menu Control (Menu)](arkts-popup-and-menu-components-menu.md)
+       - [Menu control (Menu)](arkts-popup-and-menu-components-menu.md)
        - [Global Menu Independent of UI Components (openMenu)](arkts-popup-and-menu-components-uicontext-menu.md)
      - Using Popups<!--arkts-use-popup-->
        - [Popup Overview](arkts-popup-overview.md)
-       - [Popup](arkts-popup-and-menu-components-popup.md)
+       - [Bubble prompt (Popup)](arkts-popup-and-menu-components-popup.md)
        - [Global Popup Independent of UI Components (openPopup)](arkts-popup-and-menu-components-uicontext-popup.md)
      - Binding Modal Pages<!--arkts-bind-modal-->
         - [Modal Page Overview](arkts-modal-overview.md)
-        - [Binding a Semi-Modal Sheet (bindSheet)](arkts-sheet-page.md)
-        - [Binding a Full-Modal Page (bindContentCover)](arkts-contentcover-page.md)
-     - [Using Toasts (Toast)](arkts-create-toast.md)
-     - [Managing Overlays (OverlayManager)](arkts-create-overlaymanager.md)<!--RP9--><!--RP9End-->
+        - [Bind a half-modal page (bindSheet)](arkts-sheet-page.md)
+        - [Bind a full-modal page (bindContentCover)](arkts-contentcover-page.md)
+     - [Toast](arkts-create-toast.md)
+     - [Overlay (OverlayManager)](arkts-create-overlaymanager.md)<!--RP9--><!--RP9End-->
   - Immersive Light Sense<!--arkts-immersive-light-sense-->
     - [Immersive Light Sense Overview](arkts-immersive-light-sense-overview.md)
+    - Immersive Light Sense Development Guide<!--arkts-immersive-light-sense-development-->
+      - [Enable Immersive Light Sense](arkts-immersive-light-sense-enable.md)
+      - [Component Adaptation to Immersive Light Sense](arkts-immersive-light-sense-component-adaptation.md)
+      - [Immersive System Material Visual Effect](arkts-immersive-light-sense-common-capability.md)
+    - [Immersive Light Effect Power Optimization](arkts-immersive-light-sense-constraints.md)
+    - [Immersive Light Effect FAQs](arkts-immersive-light-sense-faq.md)
+    - [Immersive Light Effect Typical Scenarios](arkts-immersive-light-sample.md)
   - Geometric Shapes<!--arkts-draw-graphics-->
     - [Geometric Shape Drawing Overview](arkts-shape-overview.md)
     - [Drawing Geometric Shapes (Shape)](arkts-geometric-shape-drawing.md)
-    - [Clipping Shapes (clipShape)](arkts-clip-shape.md)
+    - [Shape Clipping (clipShape)](arkts-clip-shape.md)
   - [Implementing Interaction Responses](arkts-interaction-development-guide-overview.md)
     - [Interaction Response Overview](arkts-interaction-capability-overview.md)
     - [Interaction Mechanism Overview](arkts-interaction-basic-principles.md)
@@ -242,7 +251,7 @@
       - [Shadow Effect](arkts-shadow-effect.md)
       - [Color Effect](arkts-color-effect.md)
       - Blur<!--arkts-blur-->
-        - [Motion Blur](arkts-blur-effect.md)<!--RP13--><!--RP13End-->
+        - [Dynamic Blur](arkts-blur-effect.md)<!--RP13--><!--RP13End-->
     - [Frame Animation (ohos.animator)](arkts-animator.md)<!--RP10--><!--RP10End-->
   - Using Customization Capabilities<!--arkts-user-defined-capabilities-->
     - [Customization Capability Overview](arkts-user-defined.md)
@@ -251,7 +260,7 @@
       - [Custom Node Overview](arkts-user-defined-node.md)
       - [Custom Placeholder Nodes](arkts-user-defined-place-holder.md)
       - [Custom Component Node (FrameNode)](arkts-user-defined-arktsNode-frameNode.md)
-      - [Custom Render Node (RenderNode)](arkts-user-defined-arktsNode-renderNode.md)
+      - [Custom RenderNode (RenderNode)](arkts-user-defined-arktsNode-renderNode.md)
       - [Custom Declarative Node (BuilderNode)](arkts-user-defined-arktsNode-builderNode.md)
       - [Setting Custom Node Cross-Language Attributes](arkts-user-defined-arktsNode-crossLanguage.md)<!--RP3--><!--RP3End-->
     - Custom Drawing<!--arkts-draw-->
@@ -268,7 +277,7 @@
     - [Supporting Aging-Friendly Design](arkui-support-for-aging-adaptation.md)
   - Setting the Theme<!--arkts-theme-->
     - [Implementing Dark and Light Mode Adaptation](ui-dark-light-color-adaptation.md)
-    - [Configuring In-Application Theme Skinning](theme_skinning.md)
+    - [Setting In-App Theme Skinning](theme-skinning.md)
   - UI Scene-based Capabilities<!--arkts-ui-system-scenarization-capability-->
     - [Using the UI Context API for UI Operations (UIContext)](arkts-global-interface.md)
     - [Using Component Snapshot (ComponentSnapshot)](arkts-uicontext-component-snapshot.md)<!--RP15--><!--RP15End-->
@@ -276,7 +285,7 @@
     - [Inspecting Page Layouts](arkts-inspector-overview.md)
     - [Media Query (@ohos.mediaquery)](arkts-layout-development-media-query.md)
     - Using Embedded Components<!--arkts-ui-cross-process-->
-      - [Full-Screen Launch of Atomic Services (FullScreenLaunchComponent)](arkts-FullScreenComponent.md)
+      - [Atomic Service Full Screen Launch Component (FullScreenLaunchComponent)](arkts-FullScreenComponent.md)
       - [In-Application Embedded Component (EmbeddedComponent)](arkts-embedded-components.md)
     <!--Del-->
     - [Cross-Process Application Capability Extension (UIExtension, for System Applications Only)](arkts-ui-extension-components-sys.md)
@@ -298,14 +307,14 @@
   - Using Text<!--arkts-build-text-ndk-->
     - [Using the Text Component](ndk-use-text-component.md)
     - [Using Styled Strings](ndk-styled-string.md)
-    - [Adding a Text Event Listener for a Text Box](ndk-textarea-event.md)
+    - [Adding Input Box Text Event Listener](ndk-textarea-event.md)
   - Media Display<!--arkts-build-media-ndk-->
     - [Image Display (Image)](ndk-image-component.md)
-    - [Using the Swiper Container](ndk-swiper.md)  
+    - [Using the Swiper Component](ndk-swiper.md)
   - [Building Form Components](ndk-build-form-components.md)
-  - [Building a Dialog Box](ndk-build-pop-up-window.md)
+  - [Building Dialog Boxes](ndk-build-pop-up-window.md)
   - Using Animation<!--arkts-use-animation-ndk-->
-    - [Animation Overview](ndk-use-animation.md)
+    - [Using Animations](ndk-use-animation.md)
     - [Animation Development](ndk-use-animation-scene.md)
   - Using Selection Components<!--arkts-build-picker-ndk-->
       - [Using the Sliding Selector Picker](ndk-picker.md)
@@ -316,8 +325,8 @@
     - [Binding Drag Events](ndk-drag-event.md)
   - Using Customization Capabilities<!--arkts-build-custom-ndk-->
     - [Building Custom Components](ndk-build-custom-components.md)
-    - [Custom Drawing](arkts-user-defined-draw.md)
-  - [Integrating Accessibility Through Custom Drawing](ndk-accessibility-xcomponent.md)
+    - [Implementing Custom Drawing](arkts-user-defined-draw.md)
+  - [Integrating Accessibility Through XComponent](ndk-accessibility-xcomponent.md)
   - [Launching EmbeddedUIExtensionAbility with EmbeddedComponent](ndk-embedded-component.md)
   - [Querying and Operating Custom Nodes](ndk-node-query-operate.md)
   - [Ensuring Multi-Instance Functionality in the NDK](ndk-scope-task.md)
@@ -407,7 +416,7 @@
   - [UI Profiling](ui-inspector-profiler.md)
   - [High-Performance UI Development](ui-performance-overview.md)
   - UI Development FAQs<!--ui-development-faq-->
-    - [FAQs About Navigation Animation](arkts-navigation-animation-faq.md)
+    - [Navigation FAQs](arkts-navigation-faq.md)
     - [FAQs About Custom Nodes](arkts-user-defined-node-faq.md)
     - [FAQs About Buttons and Selection Components](arkts-select-component-faq.md)
     - [Popup Component FAQs](arkts-popup-component-faq.md)
@@ -415,9 +424,7 @@
     - [FAQs About Dynamic Attribute Setting](arkts-attribute-modifier-faq.md)
     - [FAQs About Imperative Nodes](arkts-arkui-frameNode-faq.md)
     - [FAQs About UI Parallelization](multi-thread-ui-build-faq.md)<!--RP6--><!--RP6End-->
-    - [FAQs About Immersive Light Sense](arkts-immersive-light-sense-faq.md)
     
 - [Window Manager](../windowmanager/Readme-EN.md)<!--window-manager-->
 - [Display Management](../displaymanager/Readme-EN.md)<!--display-manager-->
 - [ArkUI Glossary](arkui-glossary.md)
-

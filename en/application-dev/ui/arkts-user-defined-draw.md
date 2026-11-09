@@ -1,12 +1,11 @@
 # Custom Drawing
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1f32bcbdd4ae62e5f571fb73a9473dd94b7e4c93 translatedAt=2026-08-05T01:24:14.212Z pushedAt=2026-08-05T08:13:11.650Z -->
+<!-- md-trans-meta sourceCommit=a01012ccd8c79ddbbc2ab67035fed55cbb823eb8 translatedAt=2026-11-05T11:37:26.523Z pushedAt=2026-11-09T08:24:26.941Z nl=1 -->
 
 ## Overview
 
@@ -32,6 +31,7 @@ You can implement custom drawing at different layers by registering the correspo
 | ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW | Custom foreground layer drawing.|
 | ARKUI_NODE_CUSTOM_EVENT_ON_OVERLAY_DRAW | Custom overlay layer drawing.|
 
+
 ### Example of Custom Drawing at the Content Layer
 
 In this example, the content layer drawing event **ARKUI_NODE_CUSTOM_EVENT_ON_DRAW** is registered to draw a diagonal line from the upper left area to the lower right area at the node content layer. The following figure shows the effect.
@@ -43,7 +43,7 @@ The following scenario is based on the [Accessing ArkTS Pages](ndk-access-the-ar
 1. Call the [createNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode) API of [ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md), passing the **ARKUI_NODE_CUSTOM** enum value from [ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype) to create a custom node.
 
    <!-- @[create_customNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeDrawPageSample/entry/src/main/cpp/Drawing.h) -->
-
+   
    ``` C
    auto customNode = nodeAPI->createNode(ARKUI_NODE_CUSTOM);
    ```
@@ -117,7 +117,7 @@ In the figure, the dark blue rectangle represents the **drawFront** layer, the l
 
 2. Create an encapsulated object for the custom drawing component.
 
-   <!-- @[arkUICustomNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUICustomNode.h) --> 
+   <!-- @[arkUICustomNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUICustomNode.h) -->  
    
    ``` C
    #ifndef MYAPPLICATION_ARKUICUSTOMNODE_H
@@ -267,7 +267,7 @@ In the figure, the dark blue rectangle represents the **drawFront** layer, the l
 
 3. Use the custom drawing component and custom container to create a sample UI.
 
-    <!-- @[arkUICustomNodeCpp_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/NativeEntry.cpp) --> 
+    <!-- @[arkUICustomNodeCpp_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/NativeEntry.cpp) -->  
     
     ``` C++
     #include <arkui/native_node_napi.h>
@@ -412,7 +412,7 @@ Effect with message overlay and star decoration on the foreground layer:
 
 2. Create the wrapper objects of the message overlay component.
 
-   <!-- @[messageMaskNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUIMessageMaskNode.h) --> 
+   <!-- @[messageMaskNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUIMessageMaskNode.h) -->  
    
    ``` C
    #ifndef MYAPPLICATION_ARKUIMESSAGEMASKNODE_H
@@ -438,14 +438,14 @@ Effect with message overlay and star decoration on the foreground layer:
    namespace NativeModule {
    class ArkUIMessageMaskNode : public ArkUINode {
    public:
-       // Create the component using the custom component type ARKUI_NODE_CUSTOM.
+       // Create a component using the custom component type ARKUI_NODE_CUSTOM.
        ArkUIMessageMaskNode()
            : ArkUINode(
                  (NativeModuleInstance::GetInstance()->GetNativeNodeAPI())->createNode(ARKUI_NODE_CUSTOM))
        {
-           // Register the custom event listener.
+           // Register a custom event listener.
            nativeModule_->addNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
-           // Declare the custom event and pass itself as custom data.
+           // Declare a custom event and pass itself as the custom data.
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT, 0, this);
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW, 0, this);
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND, 0, this);
@@ -455,7 +455,7 @@ Effect with message overlay and star decoration on the foreground layer:
        {
            // Unregister the custom event listener.
            nativeModule_->removeNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
-           // Remove the declaration of the custom event.
+           // Cancel the custom event declaration.
            nativeModule_->unregisterNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT);
            nativeModule_->unregisterNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW);
            nativeModule_->unregisterNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND);
@@ -504,7 +504,7 @@ Effect with message overlay and star decoration on the foreground layer:
            }
        }
    
-       // Custom content layer background: draw the chat interface background.
+       // Customize the content background layer: draw the chat interface background.
        void OnDrawBehind(ArkUI_NodeCustomEvent* event)
        {
            auto drawContext = OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(event);
@@ -522,7 +522,7 @@ Effect with message overlay and star decoration on the foreground layer:
            OH_Drawing_RectDestroy(bgRect);
        }
    
-       // Custom the content layer.
+       // Customize the content layer.
        void OnDraw(ArkUI_NodeCustomEvent* event)
        {
            auto drawContext = OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(event);
@@ -537,7 +537,7 @@ Effect with message overlay and star decoration on the foreground layer:
            float textY = padding + 20.0f;
            float textMaxWidth = bubbleWidth - 30.0f;
    
-           // Draw the popup shadow.
+           // Draw the bubble shadow.
            auto shadowRect = OH_Drawing_RectCreate(
                padding + 2, padding + 2, padding + bubbleWidth + 2, padding + bubbleHeight + 2);
            auto* shadowRoundRect = OH_Drawing_RoundRectCreate(shadowRect, cornerRadius, cornerRadius);
@@ -550,7 +550,7 @@ Effect with message overlay and star decoration on the foreground layer:
            OH_Drawing_RoundRectDestroy(shadowRoundRect);
            OH_Drawing_RectDestroy(shadowRect);
    
-           // Draw the green popup background.
+           // Draw the green bubble background.
            auto bubbleRect = OH_Drawing_RectCreate(padding, padding, padding + bubbleWidth, padding + bubbleHeight);
            auto* bubbleRoundRect = OH_Drawing_RoundRectCreate(bubbleRect, cornerRadius, cornerRadius);
            auto bubbleBrush = OH_Drawing_BrushCreate();
@@ -560,7 +560,7 @@ Effect with message overlay and star decoration on the foreground layer:
            OH_Drawing_CanvasDetachBrush(canvas);
            OH_Drawing_BrushDestroy(bubbleBrush);
    
-           // Draw the popup border.
+           // Draw the bubble border.
            auto pen = OH_Drawing_PenCreate();
            OH_Drawing_PenSetWidth(pen, 1.0f);
            OH_Drawing_PenSetColor(pen, 0xFF7FD65A);
@@ -575,7 +575,7 @@ Effect with message overlay and star decoration on the foreground layer:
            DrawMessageText(canvas, textX, textY, textMaxWidth);
        }
    
-       // Custom the content foreground layer: Draw a decorative overlay.
+       // Customize the content foreground layer: draw a decorative overlay.
        void OnDrawFront(ArkUI_NodeCustomEvent* event)
        {
            if (!maskVisible_) {
@@ -638,45 +638,76 @@ Effect with message overlay and star decoration on the foreground layer:
        // Draw the message text.
        void DrawMessageText(OH_Drawing_Canvas* canvas, float x, float y, float maxWidth)
        {
-           // Create a font set.
-           auto* fontCollection = OH_Drawing_CreateFontCollection();
+           // When the local resource object leaves its scope, the destructor automatically releases the resources that have been created successfully.
+           struct DrawingTextResources {
+               OH_Drawing_FontCollection* fontCollection = nullptr;
+               OH_Drawing_TypographyStyle* typographyStyle = nullptr;
+               OH_Drawing_TypographyCreate* typographyHandler = nullptr;
+               OH_Drawing_TextStyle* textStyle = nullptr;
+               OH_Drawing_Brush* textBrush = nullptr;
+               OH_Drawing_Typography* typography = nullptr;
+   
+               ~DrawingTextResources()
+               {
+                   OH_Drawing_DestroyTypography(typography);
+                   OH_Drawing_DestroyTextStyle(textStyle);
+                   OH_Drawing_BrushDestroy(textBrush);
+                   OH_Drawing_DestroyTypographyHandler(typographyHandler);
+                   OH_Drawing_DestroyTypographyStyle(typographyStyle);
+                   OH_Drawing_DestroyFontCollection(fontCollection);
+               }
+           } resources;
+   
+           // Create a font collection.
+           resources.fontCollection = OH_Drawing_CreateFontCollection();
+           if (resources.fontCollection == nullptr) {
+               return;
+           }
    
            // Create a typography style.
-           auto* typographyStyle = OH_Drawing_CreateTypographyStyle();
-           OH_Drawing_SetTypographyTextAlign(typographyStyle, TEXT_ALIGN_LEFT);
+           resources.typographyStyle = OH_Drawing_CreateTypographyStyle();
+           if (resources.typographyStyle == nullptr) {
+               return;
+           }
+           OH_Drawing_SetTypographyTextAlign(resources.typographyStyle, TEXT_ALIGN_LEFT);
    
-           // Create a typography processor.
-           auto* typographyHandler = OH_Drawing_CreateTypographyHandler(typographyStyle, fontCollection);
+           // Create a typography handler.
+           resources.typographyHandler =
+               OH_Drawing_CreateTypographyHandler(resources.typographyStyle, resources.fontCollection);
+           if (resources.typographyHandler == nullptr) {
+               return;
+           }
    
            // Create a text style.
-           auto* textStyle = OH_Drawing_CreateTextStyle();
-           OH_Drawing_SetTextStyleColor(textStyle, 0xFF000000); // Pure black
-           OH_Drawing_SetTextStyleFontSize(textStyle, messageTextFontSize);
-           OH_Drawing_SetTextStyleFontWeight(textStyle, FONT_WEIGHT_400);
-           auto textBrush = OH_Drawing_BrushCreate();
-           OH_Drawing_BrushSetColor(textBrush, 0xFF000000);
-           OH_Drawing_SetTextStyleForegroundBrush(textStyle, textBrush);
+           resources.textStyle = OH_Drawing_CreateTextStyle();
+           if (resources.textStyle == nullptr) {
+               return;
+           }
+           OH_Drawing_SetTextStyleColor(resources.textStyle, 0xFF000000); // Pure black.
+           OH_Drawing_SetTextStyleFontSize(resources.textStyle, messageTextFontSize);
+           OH_Drawing_SetTextStyleFontWeight(resources.textStyle, FONT_WEIGHT_400);
+           resources.textBrush = OH_Drawing_BrushCreate();
+           if (resources.textBrush == nullptr) {
+               return;
+           }
+           OH_Drawing_BrushSetColor(resources.textBrush, 0xFF000000);
+           OH_Drawing_SetTextStyleForegroundBrush(resources.textStyle, resources.textBrush);
    
            // Add text.
-           OH_Drawing_TypographyHandlerPushTextStyle(typographyHandler, textStyle);
-           OH_Drawing_TypographyHandlerAddText(typographyHandler, message_.c_str());
-           OH_Drawing_TypographyHandlerPopTextStyle(typographyHandler);
+           OH_Drawing_TypographyHandlerPushTextStyle(resources.typographyHandler, resources.textStyle);
+           OH_Drawing_TypographyHandlerAddText(resources.typographyHandler, message_.c_str());
+           OH_Drawing_TypographyHandlerPopTextStyle(resources.typographyHandler);
    
-           // Create a typography object and draw the text.
-           auto* typography = OH_Drawing_CreateTypography(typographyHandler);
-           OH_Drawing_TypographyLayout(typography, maxWidth);
-           OH_Drawing_TypographyPaint(typography, canvas, x, y);
-   
-           // Release resources.
-           OH_Drawing_DestroyTextStyle(textStyle);
-           OH_Drawing_DestroyTypography(typography);
-           OH_Drawing_DestroyTypographyHandler(typographyHandler);
-           OH_Drawing_DestroyTypographyStyle(typographyStyle);
-           OH_Drawing_DestroyFontCollection(fontCollection);
-           OH_Drawing_BrushDestroy(textBrush);
+           // Create a typography object and draw it.
+           resources.typography = OH_Drawing_CreateTypography(resources.typographyHandler);
+           if (resources.typography == nullptr) {
+               return;
+           }
+           OH_Drawing_TypographyLayout(resources.typography, maxWidth);
+           OH_Drawing_TypographyPaint(resources.typography, canvas, x, y);
        }
    
-       std::string message_ = "This is a message notification.";
+       std::string message_ = "This is a message prompt";
        bool maskVisible_ = false;
    };
    } // namespace NativeModule
@@ -786,5 +817,3 @@ Effect with message overlay and star decoration on the foreground layer:
     }
     } // namespace NativeModule
     ```
-
-    <!--no_check-->

@@ -1,10 +1,11 @@
 # Customization Capability Overview
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=525f7739c01a1b3574383b117ed8c6a58afcb683 translatedAt=2026-11-05T11:34:34.944Z pushedAt=2026-11-09T08:24:26.928Z nl=1 -->
 
 ## Customization Capability Levels
   Customization capabilities in the ArkUI development framework allow for flexible UI development and personalization. These capabilities span various control levels, each suited for different use cases. Lower levels of customization provide closer access to foundational capabilities, offering greater flexibility but also higher development complexity and demands on developer skills.
@@ -18,6 +19,7 @@
 ## A Quick Glance of Customization Capabilities
   Different levels of customization capabilities serve various use cases. The table below gives a brief explanation of each capability, its use cases, and best practices for implementation.
 
+  <!--Table: 20%; 20%; 60%-->
   |Customization Level|Customization Capability|Description and Use Case|
   |--|--|--|
   |Custom composition|Custom encapsulation| Use [@Component](../ui/state-management/arkts-create-custom-components.md#component) for basic component encapsulation by combining existing components into new custom ones.<br> Use [@Builder](../ui/state-management/arkts-builder.md) for lightweight UI encapsulation and reuse, abstracting repetitive UI structures into a **Builder** method called within the component's build method.|

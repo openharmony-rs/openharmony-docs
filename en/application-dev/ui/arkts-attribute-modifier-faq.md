@@ -1,11 +1,11 @@
 # FAQs About Dynamic Attribute Setting
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangjunman1-->
+<!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=f6e0b6dfdda4b6ae4e514cc55234a5c48637359e translatedAt=2026-10-10T06:05:09.160Z pushedAt=2026-10-12T07:27:40.267Z -->
+<!-- md-trans-meta sourceCommit=52f430399ef2a9ac5b905f0a630fea46f7dde834 translatedAt=2026-11-05T11:01:37.904Z pushedAt=2026-11-09T08:24:26.767Z nl=1 -->
 
 This topic addresses common issues related to dynamic attribute setting.
 
@@ -40,7 +40,7 @@ class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
 
 @Entry
 @Component
-struct attributeDemo {
+struct AttributeDemo {
   @State modifier: MyButtonModifier = new MyButtonModifier();
 
   build() {

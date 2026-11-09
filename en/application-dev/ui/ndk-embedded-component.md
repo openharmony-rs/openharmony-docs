@@ -1,16 +1,17 @@
 # Launching EmbeddedUIExtensionAbility with EmbeddedComponent
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=96ada1f41884d80c6802e41679bbfa4affacd656 translatedAt=2026-08-05T01:28:54.410Z pushedAt=2026-08-05T07:04:02.624Z -->
+<!-- md-trans-meta sourceCommit=5bcbfb5895bf4585e68c7a2abb00523dfb4ebc5e translatedAt=2026-11-05T11:45:09.350Z pushedAt=2026-11-09T08:24:26.980Z nl=1 -->
 
 ArkUI offers a subset of ArkTS capabilities on the native side, excluding features such as declarative UI syntax, custom struct components, and the preset UI component library.
 
+
 Since API version 20, the ArkUI framework provides the capability to embed **EmbeddedComponent** components on the native side. This capability relies on the [EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md) mechanism. **EmbeddedComponent** is used to embed UI content provided by another [EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md) component (within the same application) into the current page. EmbeddedUIExtensionAbility runs in an independent process, handling page layout and rendering. This functionality is primarily designed for modular development scenarios that require process isolation.
+
 
 > **NOTE**
 >
@@ -36,7 +37,7 @@ void onError(int32_t code, const char *name, const char *message) {}
 void onTerminated(int32_t code, AbilityBase_Want *want) {}
 const unsigned int LOG_PRINT_DOMAIN = 0xFF00;
 #define SIZE_300 300 // Width/height of the node, in vp (used to set NODE_WIDTH/NODE_HEIGHT).
-#define PARAMETER_ERROR_CODE 401 // Parameter error code (returned by OH_ArkUI_NodeContent_AddNode to indicate invalid input).
+#define PARAMETER_ERROR_CODE 401 // Parameter error code (the return value of OH_ArkUI_NodeContent_AddNode indicates invalid input parameters).
 // ...
     // Create a node.
     ArkUI_NodeHandle embeddedNode = nodeAPI->createNode(ARKUI_NODE_EMBEDDED_COMPONENT);

@@ -1,12 +1,11 @@
 # Supporting Accessibility
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhanghangkai10241-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=34803c6eb49ea8341f05c17ad6715ccbe035c98e translatedAt=2026-08-04T06:42:23.487Z pushedAt=2026-08-04T08:41:24.319Z -->
+<!-- md-trans-meta sourceCommit=de2cbbad2e242bbdc0d24308a806d704a23e2435 translatedAt=2026-11-05T11:31:44.644Z pushedAt=2026-11-09T08:24:26.917Z nl=1 -->
 
 ## Overview
 
@@ -25,13 +24,9 @@ When the [accessibility attributes](../reference/apis-arkui/arkui-ts/ts-universa
 ## Highlights
 
   1. Broaden user coverage: Apps adapted to assistive tools can precisely reach millions of visually impaired users who rely on assistive technologies, breaking down digital barriers and making your product accessible to a more comprehensive audience.
-
   2. Compliance with regulations and design standards: Adapting to assistive tools is a core measure to comply with global accessibility design standards. It not only meets the digital inclusion regulations of various countries/regions, but also aligns with the modern product design concept of "accessible to all."
-
   3. Social responsibilities fulfillment and brand value enhancement: Adapting to assistive tools is a concrete action to promote digital equity, demonstrate the brand's responsibility to respect all users and help build an accessibility environment, and improve brand awareness.
-
   4. Optimize the experience for all users: Core optimizations during the adaptation process (such as clear element descriptions, logical focus order, and compliant contrast ratios) not only serve users with disabilities but also enable general users to have a smoother experience in complex scenarios (such as bright light environments or one-handed operation).
-
   5. Lightweight adaptation without affecting core experience: Adapting to assistive tools does not require any changes to the core logic or UI design of the application. Only lightweight features are added to the ArkUI accessibility service, ensuring that the innovative characteristics and visual style of the product are fully retained while providing accessibility support.
 
 ## Assistive tools
@@ -41,10 +36,8 @@ Assistive tools allow users with visual impairments to operate devices without l
 Accessibility information can be correctly set for all interactive UI components, which is the prerequisite for an assistive tool to have the accessibility capability. The following three conditions must be met:
 
   1. The component can be recognized by the accessibility service, meaning that you can set whether a component is recognizable by the accessibility service via [accessibilityLevel](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel).
-
   2. The component feature and operation information are provided (implemented by using the [accessibilityText](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitytext) and [accessibilityDescription](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitydescription) attributes).
-
-  3. The actual status and behavior of the component can be transferred (implemented by using the [accessibilityChecked](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitychecked13), and [accessibilityRole](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityrole18) attributes).
+  3. The actual status and role of the component can be transferred (implemented by using the [accessibilityChecked](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitychecked13) and [accessibilityRole](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityrole18) attributes).
 
 <!--RP1--><!--RP1End-->
 
@@ -158,6 +151,7 @@ export struct AccessibilityDescriptionCase02 {
   }
 }
 ```
+
 
 ## Setting Accessibility Groups
 

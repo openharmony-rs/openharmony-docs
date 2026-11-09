@@ -6,6 +6,7 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=1a9bd1f6c03cf61f128d4c68fe6838312339b442 translatedAt=2026-11-05T11:20:11.792Z pushedAt=2026-11-09T08:24:26.881Z nl=1 -->
 
 ## Overview
 
@@ -25,7 +26,7 @@ As shown in the following figure, in a vertical list, **ListItemGroup** or **Lis
 
 **ListItemGroup** is used to display list data by group. Its child component is also **ListItem**. **ListItem** represents a list item, which can contain a single child component.
 
-  **Figure 1** Relationships between List, ListItemGroup, and ListItem 
+  **Figure 1** Relationships between List, ListItemGroup, and ListItem
 
 ![list1](figures/list1.png)
 
@@ -40,13 +41,13 @@ In addition to providing vertical and horizontal layout support with adaptive sc
 
 When used in vertical layout, the list can contain one or more scrollable columns, as shown below.
 
-  **Figure 2** Vertical scrolling list (left: one column; right: multiple columns) 
+  **Figure 2** Vertical scrolling list (left: one column; right: multiple columns)
 
 ![list2](figures/list2.png)
 
 When used in horizontal layout, the list can contain one or more scrollable rows, as shown below.
 
-  **Figure 3** Horizontal scrolling list (left: one column; right: multiple columns) 
+  **Figure 3** Horizontal scrolling list (left: one column; right: multiple columns)
 
 ![list3](figures/list3.png)
 
@@ -59,7 +60,7 @@ The main axis direction of a list refers to the direction in which the child com
 
 As shown below, the main axis of a vertical list is in the vertical direction, and the cross axis is in the horizontal direction. The main axis of a horizontal list is in the horizontal direction, and the cross axis is in the vertical direction.
 
-  **Figure 4** Main axis and cross axis of the list 
+  **Figure 4** Main axis and cross axis of the list
 
 ![list4](figures/list4.png)
 
@@ -69,7 +70,7 @@ If no size is set for the main axis of the **List** component, the size of the *
 
 In the example shown below, no height is set for vertical list B, and the height of its parent component A is 200 vp. If the total height of all child components C is 150 vp, the height of list B is 150 vp.
 
-  **Figure 5** Main axis height constraint example 1 (A: parent component of List; B: List component; C: all child components of List) 
+  **Figure 5** Main axis height constraint example 1 (A: parent component of List; B: List component; C: all child components of List)
 
 ![list5](figures/list5.png)
 
@@ -77,7 +78,7 @@ If the total size of the child components in the main axis direction is greater 
 
 In the example shown below, still no height is set for vertical list B, and the height of its parent component A is 200 vp. If the total height of all child components C is 300 vp, the height of list B is 200 vp.
 
-  **Figure 6** Main axis height constraint example 2 (A: parent component of List; B: List component; C: all child components of List) 
+  **Figure 6** Main axis height constraint example 2 (A: parent component of List; B: List component; C: all child components of List)
 
 ![list6](figures/list6.png)
 
@@ -180,7 +181,7 @@ During scrolling, the **ListItem** components entering the preload and visible a
 ### Creating ListItem Components with LazyForEach
 When a **List** component is created:<br>Visible area: **ListItem** components are created and laid out immediately. Preload area: **ListItem** components are created and laid out during idle time but not mounted to the component tree. Outside the preload area: No **ListItem** components are created.
 
-During scrolling, the **ListItem** components entering the preload and visible areas are created and laid out. If they contain @Reusable decorated custom components, these components are reused from the cache pool when possible. **ListItem** components leaving the preload and visible areas are destroyed. If they contain @Reusable decorated custom components, these components are recycled into the cache pool.
+When a **List** component is scrolled, **ListItem** components that enter the preload area and the visible area are created and laid out. During the creation of a **ListItem**, if the **ListItem** contains a [custom component](state-management/arkts-create-custom-components.md) marked with `@Reusable`, it is preferentially reused from the cache pool. **ListItem** components that scroll out of the preload area and the visible area are destroyed. If they contain custom components marked with `@Reusable`, those components are recycled and added to the cache pool.
 
 **Figure 8** Lifecycle of ListItem components created using LazyForEach
 ![](./figures/list_lazyforeach.png)
@@ -209,7 +210,7 @@ During scrolling, the **ListItem** components in the preload and visible areas a
 
 The list displays a collection of items horizontally or vertically and can scroll to reveal content off the screen. In the simplest case, a **List** component is statically made up of **ListItem** components.
 
-  **Figure 11** Example of a city list 
+  **Figure 11** Example of a city list
 
 ![list11](figures/list11.png)
 
@@ -249,7 +250,7 @@ export struct DataInList {
 
 Each **ListItem** component can contain only one root child component. Therefore, it does not allow for child components in tile mode. If tile mode is required, encapsulate the child components into a container or create a custom component.
 
-  **Figure 12** Example of a contacts list 
+  **Figure 12** Example of a contacts list
 
 ![contactsList](figures/contactsList.png)
 
@@ -368,9 +369,9 @@ List({ space: 10 }) {
 
 ### Adding Dividers
 
-A divider separates UI items to make them easier to identify. In the following figure that shows the settings screen, a divider is added between the setting items, appearing below the text.
+Dividers are used to separate UI elements so that individual elements are easier to identify. Take the system settings scenario as an example (as shown in the following figure): the left side of each list item is an icon (such as the Bluetooth icon), the right side is a text description, and the divider is below the text.
 
-  **Figure 13** Using dividers between the setting items 
+  **Figure 13** Using dividers between the setting items
 
 ![list13](figures/list13.png)
 
@@ -416,15 +417,15 @@ export struct CustomListStyle {
 }
 ```
 
-This example draws a divider with a stroke thickness of 1 vp from a position 60 vp away from the start edge of the list to a position 10 vp away from the end edge of the list. The effect is shown in Figure 9.
+This example draws a divider with a thickness of 1 vp from 60 vp away from the start edge of the list to 10 vp away from the end edge, which achieves the divider style of the settings list shown in Figure 13.
 
 >**NOTE**
 >
->1. The stroke width of the divider causes some space between list items. If the content spacing set for the list is smaller than the stroke width of the divider, the latter is used instead.
+>1. The divider width creates a certain gap between **ListItem** components. When the content spacing set for **List** is smaller than the divider width, the gap between **ListItem** components uses the divider width.
 >
->2. When a list contains multiple columns, the **startMargin** and **endMargin** attributes of the divider apply to each column.
+>2. When **List** has multiple columns, the `startMargin` and `endMargin` of the divider apply to each column.
 >
->3. The divider is drawn between list items. No divider is drawn above the first list item and below the last list item.
+>3. The divider of the **List** component is drawn between two **ListItem** components. No divider is drawn above the first **ListItem** or below the last **ListItem**.
 
 
 ### Adding a Scrollbar
@@ -482,7 +483,7 @@ To add an external scrollbar to a [List](../reference/apis-arkui/arkui-ts/ts-con
    ScrollBar({ scroller: this.listScroller})
    ```
 
-  **Figure 15** External scrollbar of the List component
+  **Figure 15** External scrollbar of the List component 
 
 ![ScrollBar](figures/list_scrollbar.gif)
 
@@ -547,7 +548,7 @@ The sticky header is a common pattern for keeping the header in the same place o
 
 Sticky headers not only signify the representation and usage of data in the respective groups, but also help users navigate through a large amount of information, thereby avoiding unnecessary scrolling between the top of the area where the header is located and the area of interest.
 
-  **Figure 17** Sticky header 
+  **Figure 17** Sticky header
 
 ![list17](figures/list17.gif)
 
@@ -593,9 +594,11 @@ export class ContactsGroupDataSource implements IDataSource {
     return this.list[index];
   }
 
+  // Register the data change listener to notify LazyForEach to refresh when the data source changes. In this example, the data source is static and does not change, so no listener needs to be registered and this is an empty implementation.
   registerDataChangeListener(listener: DataChangeListener): void {
   }
 
+  // Unregister the data change listener. In this example, the data source is static and no data change listener is registered, so there is nothing to unregister and this is an empty implementation.
   unregisterDataChangeListener(listener: DataChangeListener): void {
   }
 }
@@ -671,7 +674,7 @@ export struct StickyHeaderList {
 
 In some cases you may want to control the scroll position of a list. For example, when there are a huge number of items in the news page list, you may want to allow users to quickly jump to the top or bottom of the list after they have scrolled to a certain point. Below is an example.
 
-  **Figure 18** Returning to the top of the list 
+  **Figure 18** Returning to the top of the list
 
 ![list18](figures/list18.gif)
 
@@ -715,7 +718,7 @@ Many applications need to listen for and respond to changes in list scroll posit
 
 Another common example is a scrolling list working with a multi-level index bar, as in the case of a product category page in a shopping application.
 
-**Figure 19** Alphabetical index bar's response to contacts list scrolling 
+**Figure 19** Alphabetical index bar's response to contacts list scrolling
 
 ![list19](figures/list19.gif)
 
@@ -773,7 +776,7 @@ export struct ResponsiveScrollPositionList {
 
 Swipe menus are common in many applications. For example, a messaging application generally provides a swipe-to-delete feature for its message list. This feature allows users to delete a message by swiping left on it and touching the delete button, as shown in the following figure. For details about how to add a badge to the profile picture of a list item, see [Adding a Badge to a List Item](#adding-a-badge-to-a-list-item).
 
-**Figure 20** Swipe-to-delete feature 
+**Figure 20** Swipe-to-delete feature
 
 ![list20](figures/list20.gif)
 
@@ -825,7 +828,7 @@ In a message list, the **end** parameter specifies the custom component (that is
 
 A badge is an intuitive, unobtrusive visual indicator to draw attention and convey a specific message. For example, a badge can be displayed in the upper right corner of the message list to indicate that there are new messages, as shown in the following figure.
 
-  **Figure 21** Adding a badge to a list item 
+  **Figure 21** Adding a badge to a list item
 
 ![list21](figures/list21.png)
 
@@ -864,14 +867,14 @@ The following describes the implementation of the pull-and-refresh feature:
 
 3. Listen for the finger lift event. If the movement reaches the maximum value, trigger data loading and display the refresh view. After the loading is complete, hide the view.
 
-> **NOTE**
+> **NOTE** 
 >
 > To implement the pull-down-to-refresh feature, you are advised to use the [Refresh](../reference/apis-arkui/arkui-ts/ts-container-refresh.md) component.
 
 <!--RP1--><!--RP1End-->
 
 <!--Del-->
- You can also use the third-party component [PullToRefresh](https://gitcode.com/CPF-ApplicationTPC/ohos_pull_to_refresh) to implement this feature.<!--DelEnd-->
+You can also use the third-party component [PullToRefresh](https://gitcode.com/CPF-ApplicationTPC/ohos_pull_to_refresh) to implement this feature.<!--DelEnd-->
 
 
 ## Editing a List
@@ -885,7 +888,7 @@ The following uses to-do list management as an example to describe how to quickl
 
 As shown below, when a user touches **Add**, a page is displayed for the user to set options for the new list item. After the user touches **OK**, the corresponding item is added to the list.
 
-  **Figure 22** Adding a to-do task 
+  **Figure 22** Adding a to-do task
 
 ![list22](figures/list22.gif)
 
@@ -1065,7 +1068,7 @@ The process of implementing the addition feature is as follows:
 
 As shown below, when the user long presses a list item to enter the deletion mode, a page is displayed for the user to delete the list item. After the user selects the list item and touches the delete button, the list item is deleted.
 
-  **Figure 23** Deleting a to-do task 
+  **Figure 23** Deleting a to-do task
 
 ![list23](figures/list23.gif)
 
@@ -1143,7 +1146,7 @@ The process of implementing the deletion feature is as follows:
          if (isSelected) {
            this.selectedItems.push(new ToDo(this.toDoItem.name)); // When an item is selected, it is added to the selectedItems array. Make adjustment based on actual scenarios.
          } else {
-           let index = this.selectedItems.indexOf(new ToDo(this.toDoItem.name));
+           let index = this.selectedItems.findIndex(selectedItem => selectedItem.name === this.toDoItem.name);
            if (index !== -1) {
              this.selectedItems.splice(index, 1); // When an item is deselected, it is deleted from the selectedItems array.
            }
@@ -1686,7 +1689,7 @@ If the default multi‑select style does not meet your visual requirements, you 
 
 ### Recording List Item Selection Results
 
-Configure [selectable](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#selectable8), [selected](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#selected10), and [onSelect](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#onselect8) on **ListItem**. The **selectable** attribute is used to set whether a list item is selectable, and the **selected** attribute is used to set whether a list item is currently selected. During swipe multi‑selection, the component triggers the **onSelect** callback. Your application can record the latest selection state for each list item inside this callback.
+Configure [selectable](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#selectable8), [selected](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#selected10), and [onSelect](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#onselect8) on **ListItem**. The **selectable** attribute is used to set whether a list item is selectable, and the **selected** attribute is used to set whether a list item is currently selected. During swipe multi-selection, the component triggers the **onSelect** callback. Your application can record the latest selection state for each list item inside this callback.
 <!-- @[Add_list_item_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListSwipeSelect.ets) -->
 
 ``` TypeScript
@@ -1706,6 +1709,78 @@ ListItem() {
 >- If your service logic requires preserving selection results after exiting edit mode, you can save them in the [onEditModeChange](../reference/apis-arkui/arkui-ts/ts-container-list.md#oneditmodechange) callback.
 >- When using [LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md), after the data source changes, you must notify the component to refresh via [DataChangeListener](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#datachangelistener) to ensure that list item states remain consistent with the data source during swipe multi‑selection.
 
+
+## Page Jitter When Sliding Down the List
+
+**Symptom**
+
+In the [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) component, when you slide your finger from top to bottom on the list, if data is dynamically added or content is appended at the bottom of the list at this moment, the page jitters: the list content briefly jumps upward and then recovers, visually appearing as unstable flickering or jitter.
+
+![Page jitter when sliding down the list](figures/list-scroll-jitter.gif)
+
+**Possible Causes**
+
+The root cause of the jitter is that, in the reverse layout of List, the direction of the offset change caused by newly added content at the bottom conflicts with the direction of your finger's sliding. Here, the offset is the total scroll offset obtained through the [currentOffset](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#currentoffset) API, which represents the displacement of the List content relative to the top of the viewport.
+
+The List component has two layout paths:
+
+- Forward layout: starting from the first item of the list, items are arranged downward in sequence. This path is used when you slide your finger from bottom to top. Because the layout is anchored at the top, adding content at the bottom does not change the positions of existing items, and the offset remains unchanged. Therefore, no conflict with the finger's sliding direction occurs.
+
+- Reverse layout: starting from the last item of the list, items are arranged upward in sequence. This path is used when you slide your finger from top to bottom. In this case, the layout calculation direction of List is opposite to the forward direction: it starts from the bottom item and determines the position of each item upward in sequence.
+
+When content is added at the bottom at this moment, the reverse layout considers that the content in the viewport should be pushed upward, meaning the offset should increase (scrolling toward the bottom). However, when you slide your finger from top to bottom, you expect the content to move downward with your finger, meaning the offset should decrease (scrolling toward the top). These two directions are exactly opposite. The offsets in the two opposite directions conflict within the same frame: the content is first pushed in one direction and then pulled back, causing visual jitter.
+
+**Solution**
+
+Use [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md) + [LazyVGridLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md) instead of List. The scroll model of the Scroll component is a pure displacement offset, without the branching paths of forward/reverse layout. Therefore, no directional conflict occurs when the content size changes.
+
+<!-- @[ScrollLazyDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/scroll/ScrollLazyDemo/Index.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct ScrollLazyDemo {
+  @State items: string[] = ScrollLazyDemo.initItems()
+  private timer: number = -1
+
+  aboutToAppear() {
+    this.timer = setInterval(() => {
+      this.items[this.items.length - 1] += '0123456789\n'
+    }, 400)
+  }
+
+  aboutToDisappear() {
+    clearInterval(this.timer)
+  }
+
+  private static initItems(): string[] {
+    const arr: string[] = []
+    for (let i = 0; i < 50; i++) {
+      arr.push(`Item ${i + 1} \n`)
+    }
+    return arr
+  }
+
+  build() {
+    Scroll() {
+      LazyVGridLayout() {
+        ForEach(this.items, (item: string) => {
+          Text(item)
+            .width('100%')
+            .padding(12)
+            .backgroundColor('#fff4f4f4')
+            .borderRadius(8)
+            .margin({ top: 4, bottom: 4 })
+        })
+      }
+    }
+    .initialOffset({ yOffset: Infinity })
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 <!--RP2-->
 ## Samples
 
@@ -1724,5 +1799,3 @@ For details about how to create and use lists in ArkUI, see the following sample
 - [PullToRefresh](https://gitcode.com/CPF-ApplicationTPC/ohos_pull_to_refresh)
 
 <!--RP2End-->
-
-<!--no_check-->

@@ -5,7 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=0cac84d6c80b64a4f9d6b0bbd0525523825d33a0 translatedAt=2026-10-10T06:15:23.293Z pushedAt=2026-10-12T08:44:33.391Z -->
+<!-- md-trans-meta sourceCommit=8bc239f19ffa4358592cb970bebf3939ed3cc630 translatedAt=2026-11-05T11:20:20.630Z pushedAt=2026-11-09T08:24:26.884Z nl=1 -->
 
 ## Dialog-Type NavDestination Mask Animation Is Not Smooth
 
@@ -222,7 +222,7 @@ Each independent `if` statement produces an `IfElseNode`. The second and third `
    └── IfElseNode3               ← IfElseNode3 is false, no child nodes
   ```
 
-  The Navigation component traverses from IfElseNode1 along the first child node and finds NavDestination(PageA), so the page displays normally.
+  The Navigation component starts from IfElseNode1, traverses along its first child node, and finds NavDestination(PageA), so the page displays normally.
 
 - When name === 'PageB', IfElseNode2 is true, and IfElseNode1 and IfElseNode3 are false, the resulting component tree is:
 
@@ -233,7 +233,7 @@ Each independent `if` statement produces an `IfElseNode`. The second and third `
    └── IfElseNode3               ← IfElseNode3 is false, no child nodes
   ```
 
-  The Navigation component traverses from IfElseNode1 along the first child node: IfElseNode1 → IfElseNode2 → NavDestination(PageB), so the page displays normally.
+  The Navigation component starts from IfElseNode1, traverses along its first child node: IfElseNode1 → IfElseNode2 → NavDestination(PageB), so the page displays normally.
 
 - When name === 'PageC', IfElseNode3 is true, and IfElseNode1 and IfElseNode2 are false, the resulting component tree is:
 
@@ -244,7 +244,7 @@ Each independent `if` statement produces an `IfElseNode`. The second and third `
         └── NavDestination(PageC)
   ```
 
-  The `Navigation` component traverses `IfElseNode1` along the first child node: `IfElseNode1` → `IfElseNode2` (no child nodes, traversal terminates), so it cannot find `NavDestination(PageC)`, and the page is blank.
+  The Navigation component starts from IfElseNode1, traverses along its first child node: IfElseNode1 → IfElseNode2 (no child nodes, traversal terminates), so it cannot find NavDestination(PageC), and the page is blank.
 
 **Solution**
 

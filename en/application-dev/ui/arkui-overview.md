@@ -1,14 +1,14 @@
 # About This Kit
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
-<!--Designer: @piggyguy-->
+<!--Owner: @tsj_20201-->
+<!--Designer: @tsj_20201-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=08bd9d20998adb9611ceecab63ba1fe9b4f01711 translatedAt=2026-08-05T01:25:50.304Z pushedAt=2026-08-05T02:47:43.413Z -->
+<!-- md-trans-meta sourceCommit=4f585ba680bbef7a1a4120561bb2d2f77035b6e6 translatedAt=2026-11-05T11:35:36.304Z pushedAt=2026-11-09T08:24:26.930Z nl=1 -->
 
 ArkUI provides a comprehensive infrastructure for application UI development, including simple UI syntax, a diverse array of UI features (components, layouts, animations, and interaction events), and powerful preview tools.
+
 
 ## Basic Concepts
 
@@ -16,13 +16,14 @@ ArkUI provides a comprehensive infrastructure for application UI development, in
 
 - **Component**: the smallest unit for UI building and display, for example, a list, grid, button, radio button, progress indicator, and text. You build a UI that meets your needs through flexible combinations of components.
 
+
 ## Two Development Paradigms
 
 ArkUI comes with two development paradigms: [ArkTS-based declarative development paradigm](arkts-ui-development-overview.md) (declarative development paradigm for short) and [JavaScript-compatible web-like development paradigm](ui-js-overview.md) (web-like development paradigm for short). You can choose whichever development paradigm that aligns with your practice.
 
 - **Declarative development paradigm**: uses the [ArkTS language](../quick-start/arkts-get-started.md), which extends TypeScript with declarative UI syntax, to provide UI drawing capabilities from three dimensions: components, animations, and state management.
 
-- **Web-like development paradigm**: uses the classical three-stage programming model, in which <!--RP1-->HML<!--RP1End--> is used for building layouts, CSS for defining styles, and JavaScript for adding processing logic. This development paradigm has a low learning curve for frontend web developers, allowing them to quickly transform existing web applications into ArkUI applications.
+- **Web-like development paradigm**: uses the classical three-stage programming model, in which HML is used for building layouts, CSS for defining styles, and JavaScript for adding processing logic. This development paradigm has a low learning curve for frontend web developers, allowing them to quickly transform existing web applications into ArkUI applications.
 
 The declarative development paradigm is a better choice for building new application UIs for the following reasons:
 
@@ -32,9 +33,10 @@ The declarative development paradigm is a better choice for building new applica
 
 - **Future proof**: The declarative development paradigm will continue to develop as the preferred development paradigm, providing increasingly diverse and powerful capabilities.
 
-  **Figure 1** ArkUI framework 
+  **Figure 1** ArkUI framework
 
   ![arkui-framework](figures/arkui-framework.png)
+
 
 ## Development Paradigm Support by Application Type
 
@@ -62,3 +64,6 @@ Depending on the selected [application model](../application-models/stage-model-
 - **NDK development**: The ArkUI framework offers NDK APIs for building UIs with C/C++, including component creation, UI tree control, attribute configuration, and event handling. For details, see [NDK API Overview](ndk-build-ui-overview.md).
 
   **Recommended for**: performance-critical applications, fine-grained UI control, and integration with existing C/C++ libraries.
+
+<!--RP1-->
+<!--RP1End-->

@@ -1,16 +1,17 @@
 # Custom Property Animation
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=5c418d4bf2581cd8ca625b8865e73773ebc27789 translatedAt=2026-07-30T11:31:03.965Z pushedAt=2026-07-30T13:21:34.365Z -->
+<!-- md-trans-meta sourceCommit=151d8ffe7a2a76b5ef03532bc58b4ee3ccbda9cb translatedAt=2026-11-05T11:06:01.826Z pushedAt=2026-11-09T08:24:26.808Z nl=1 -->
+
 
 [Property animation](arkts-attribute-animation-overview.md) refers to the continuous visual effect produced on the UI when the parameter value of an animatable property changes. When the parameter value changes continuously and is set on an attribute API that can cause UI changes, a property animation is achieved. In addition to the attributes that components natively support for animation, ArkUI also provides the [@AnimatableExtend decorator](../ui/state-management/arkts-animatable-extend.md) for defining custom animatable properties.
 
 Because the data type of the parameter must have a certain degree of continuity, meaning that interpolation can be used to fill the gaps between data points to achieve a visually continuous effect, the parameter type of a custom animatable property API supports only the number type and custom types that implement the [AnimatableArithmetic\<T> interface](../ui/state-management/arkts-animatable-extend.md#available-apis). Through a custom animatable property API and an animatable data type, you can use a frame-by-frame callback to modify the value of a non-animatable property API, thereby enabling animation effects on non-animatable property APIs. For an example, see [Changing Graphic Shapes Using Custom Data Types](#changing-graphic-shapes-using-custom-data-types). You can also use a frame-by-frame callback to modify the value of an animatable property on each frame to achieve a frame-by-frame layout effect. For an example, see [Using the Number Data Type to Change Text Component Width for a Frame-by-Frame Layout Effect](#using-the-number-data-type-to-change-text-component-width-for-a-frame-by-frame-layout-effect). For details about animatable property APIs and non-animatable property APIs, see the attribute API classification in [Property Animation Overview](arkts-attribute-animation-overview.md).
+
 
 ## Using the Number Data Type to Change Text Component Width for a Frame-by-Frame Layout Effect
 
@@ -46,7 +47,9 @@ struct AnimatablePropertyExample {
 }
 ```
 
+
 ![animation-frame](figures/animation-frame.gif)
+
 
 ## Changing Graphic Shapes Using Custom Data Types
 
@@ -98,7 +101,7 @@ class PointVector extends Array<PointClass> implements AnimatableArithmetic<Arra
     }
   }
 
-  // implement the IAnimatableArithmetic interface
+  // Implement the AnimatableArithmetic&lt;T&gt; interface.
   plus(rhs: PointVector): PointVector {
     let result = new PointVector([]);
     const len = Math.min(this.length, rhs.length);
@@ -191,6 +194,7 @@ struct AnimatedShape {
   }
 }
 ```
+
 
 ![animation-shape](figures/animation-shape.gif)
 

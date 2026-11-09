@@ -1,14 +1,14 @@
 # HML
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sunfei2021-->
 <!--Designer: @sunfei2021-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=4431c59b895d1d02940f60be4527223815858a92 translatedAt=2026-07-09T11:48:07.350Z pushedAt=2026-07-09T12:17:24.781Z -->
+<!-- md-trans-meta sourceCommit=3cc6d474631612ed7c48b07a7e89064aad6898e1 translatedAt=2026-11-05T11:36:45.943Z pushedAt=2026-11-09T08:24:26.938Z nl=1 -->
 
 HML is an HTML-like language that allows you to build pages based on components and events. Pages built using HML have advanced capabilities such as data binding, event binding, loop rendering, conditional rendering, and logic control.
+
 
 ## HML Page Structure
 
@@ -22,6 +22,7 @@ HML is an HTML-like language that allows you to build pages based on components 
 </div>
 ```
 
+
 ## Data Binding
 
 ```html
@@ -30,14 +31,12 @@ HML is an HTML-like language that allows you to build pages based on components 
   <text> {{content[1]}} </text>
 </div>
 ```
-
 ```css
 /*xxx.css*/
 .container{
     margin: 200px;
 }
 ```
-
 ```js
 // xxx.js
 export default {
@@ -68,7 +67,6 @@ Events can be written in the following formats:
 - **funcName(a,b)**: function parameters, such as **a** and **b**, which can be constants, or variables defined in **data** in the **.js** file. Do not add the prefix **this.** to variables.
 
 - Example
-
   ```html
   <!-- xxx.hml -->
   <div class="container">
@@ -144,15 +142,12 @@ Binding for event bubbling covers the following:
 - Bind an event callback for event bubbling: **on:{event}.bubble**. **on:{event}** is equivalent to **on:{event}.bubble**.
 
 - Bind an event callback, but stop the event from bubbling upwards: **grab:{event}.bubble**. **grab:{event}** is equivalent to **grab:{event}.bubble**.
-
   > **NOTE**
   >
   > Event bubbling occurs when the target element and its ancestors have registered a listener for the same event. When the event happens on the element, it first runs the event handler on it, then on its parent, and then all the way up on other ancestors. If an element triggers this event, it first triggers the callback on the element, then on its parent, and then all the way up on other ancestors.
   >
   > For details about event bubbling, see [Universal Events](../reference/apis-arkui/arkui-js/js-components-common-events.md).
-
 - Example
-
   ```html
   <!-- xxx.hml -->
   <div>
@@ -197,11 +192,10 @@ Binding for event capturing covers the following:
 - Bind and prevent event from propagating downward: **grab:{event}.capture**.
 
 - Example
-
   ```html
   <!-- xxx.hml -->
   <div>
-      <!-- Bind the event callback for event capturing.5+ -->   
+      <!-- Bind the event callback for event capturing.5+ -->    
       <div on:touchstart.capture="touchstartfunc"></div>
       <!-- Bind the event callback and prevent downward propagation.5+ -->
       <div grab:touchstart.capture="touchstartfunc"></div>
@@ -216,6 +210,7 @@ Binding for event capturing covers the following:
       },
   }
   ```
+
 
 ## Loop Rendering
 

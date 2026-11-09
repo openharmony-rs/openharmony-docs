@@ -1,12 +1,11 @@
 # Binding Basic Input Events
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e2e68a0f64c4bfd46ed17299bdcf92e994092ae8 translatedAt=2026-08-05T01:27:46.469Z pushedAt=2026-08-05T06:42:30.464Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-05T11:40:17.804Z pushedAt=2026-11-09T08:24:26.959Z nl=1 -->
 
 NDK APIs provide the capability of listening to and processing basic input events. You can bind click events ([NODE_ON_CLICK_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)), touch events ([NODE_TOUCH_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)), mouse events ([NODE_ON_MOUSE](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)), hover events ([NODE_ON_HOVER_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)), axis events ([NODE_ON_AXIS](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)), and key events ([NODE_ON_KEY_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)), and then obtain event details through the callback in the event receiver.
 
@@ -252,7 +251,7 @@ nativeModule_->registerNodeEvent(handle_, NODE_ON_KEY_EVENT, 0, this);
 1. Define the data structure of a basic input event.
 
    <!-- @[Cpp_InputEventTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBindInputEvent/entry/src/main/cpp/InputEventTypes.h) -->
-
+   
    ``` C
    // InputEventTypes.h
    // Type definitions and helper functions related to input events.
@@ -296,7 +295,7 @@ nativeModule_->registerNodeEvent(handle_, NODE_ON_KEY_EVENT, 0, this);
 2. Register various basic input events and implement listeners for the corresponding events.
 
    <!-- @[Cpp_InputEventListExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBindInputEvent/entry/src/main/cpp/NormalTextListExample.h) -->
-
+   
    ``` C
    // NormalTextListExample.h
    // Input event example, demonstrating the binding and handling of basic input events.

@@ -1,11 +1,11 @@
 # Handling Touchpad Input Events
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1dc78e227c8188fad4eeb3a62581cceb60077c26 translatedAt=2026-10-12T09:24:29.738Z pushedAt=2026-10-13T08:03:39.495Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-05T11:16:34.529Z pushedAt=2026-11-09T08:24:26.867Z nl=1 -->
 
 ![touchpad](figures/touchpad-ops.png)
 

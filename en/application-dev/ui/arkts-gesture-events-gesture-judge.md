@@ -1,19 +1,15 @@
 # Gesture Conflict Handling
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9b7116624d5eed08082261dee12697d1cac202a2 translatedAt=2026-08-01T00:27:12.584Z pushedAt=2026-08-01T02:46:25.328Z -->
+<!-- md-trans-meta sourceCommit=9ad981694fdb55be53cbb4ae7f9a935e6498fd10 translatedAt=2026-11-05T11:07:31.493Z pushedAt=2026-11-09T08:24:26.822Z nl=1 -->
 
 Gesture conflicts occur when multiple gesture recognizers compete for recognition on the same component or overlapping areas, resulting in unexpected behavior. Common conflict scenarios include:
-
 - Multiple gestures on the same component (for example, both tap and long-press gestures on a button)
-
 - Gesture recognizers of the same type on parent and child components
-
 - Conflicts between system default gestures and custom gestures (for example, conflict between the [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md) gesture and the click gesture of a child component)
 
 Gesture intervention can effectively resolve conflicts. In addition to controlling component response hot zones and hit testing modes, the following four methods are primarily used: [custom gesture judgment](#custom-gesture-judgment), [parallel gesture dynamic control](#parallel-gesture-dynamic-control), [gesture recognition prevention](#gesture-recognition-prevention), and [custom intervention in event and gesture collection results](#custom-intervention-in-event-and-gesture-collection-results).
@@ -42,7 +38,7 @@ In the following example, the **Image** and **Stack** components are located in 
 1. Configure drag settings for the **Image** component.
 
    <!-- @[component_dragging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestures.ets) -->
-
+   
    ``` TypeScript
    // Replace $r('sys.media.ohos_app_icon') with the resource file you use.
    Image($r('sys.media.ohos_app_icon'))
@@ -58,7 +54,7 @@ In the following example, the **Image** and **Stack** components are located in 
 2. Set up gestures for the **Stack** component.
 
       <!-- @[set_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestures.ets) --> 
-
+      
       ``` TypeScript
       Stack() {}
       .width('200vp')
@@ -81,7 +77,7 @@ In the following example, the **Image** and **Stack** components are located in 
 3. Set up gesture judgment for the **Stack** component.
 
    <!-- @[set_interception](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestures.ets) -->
-
+   
    ``` TypeScript
    .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
      // If it is a long press gesture, determine whether the touch position is in the upper half area.
@@ -99,7 +95,7 @@ In the following example, the **Image** and **Stack** components are located in 
 4. Below is the complete code example.
 
    <!-- @[custom_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestureDetermination.ets) -->
-
+   
    ``` TypeScript
    import { PromptAction } from '@kit.ArkUI';
    
@@ -176,7 +172,7 @@ In the following example, the **Image** and **Stack** components are located in 
    }
    ```
 
-![stack-gesture](figures/StackGesure20251119001.png)
+   ![stack-gesture](figures/stack-gesture.png)
 
 ## Parallel Gesture Dynamic Control
 
@@ -211,7 +207,7 @@ The following example demonstrates a nested scrolling scenario with two [Scroll]
 1. Use the **shouldBuiltInRecognizerParallelWith** API to set the **PanGesture** of the outer **Scroll** component to be parallel with the **PanGesture** of the inner **Scroll** component.
 
    <!-- @[gesture_simultaneously](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/GestureAndMotionControl/GestureControl.ets) -->
-
+   
    ``` TypeScript
    .shouldBuiltInRecognizerParallelWith((current: GestureRecognizer, others: Array<GestureRecognizer>) => {
      for (let i = 0; i < others.length; i++) {
@@ -229,7 +225,7 @@ The following example demonstrates a nested scrolling scenario with two [Scroll]
 2. Use the **onGestureRecognizerJudgeBegin** API to obtain the pan gesture recognizer of the **Scroll** component and to set the enabled state of the inner and outer gesture recognizers based on the boundary conditions of the **Scroll** components.
 
    <!-- @[gesture_openingclosing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/GestureAndMotionControl/GestureControl.ets) -->
-
+   
    ``` TypeScript
    .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
      others: Array<GestureRecognizer>) => { // When the implementation is about to succeed, set the recognizer enabling state based on the current component state.
@@ -262,7 +258,7 @@ The following example demonstrates a nested scrolling scenario with two [Scroll]
 3. Set up a gesture listener to listen for the state changes of the **Scroll** component, dynamically adjust the enabled state of the gesture recognizers, and control whether gesture callbacks are triggered, allowing you to manage scrolling.
 
    <!-- @[listening_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/GestureAndMotionControl/GestureControl.ets) -->
-
+   
    ``` TypeScript
    .parallelGesture ( // Bind a PanGesture as a dynamic controller.
      PanGesture()
@@ -304,7 +300,7 @@ The following example demonstrates a nested scrolling scenario with two [Scroll]
 4. Below is the complete code example.
 
    <!-- @[gesture_motioncontrol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/GestureAndMotionControl/GestureAndMotionControl.ets) -->
-
+   
    ``` TypeScript
    // xxx.ets
    @Entry
@@ -460,7 +456,7 @@ The following example demonstrates a nested scrolling scenario, using gesture co
 1. Use the **shouldRecognizerParallelWith** API to set the non-built-in **PanGesture** of the outer **Column** component to be parallel with the built-in **PanGesture** of the inner **Scroll** component.
 
    <!-- @[gesture_simultaneously](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestureAndMotionControl/GestureControl.ets) -->
-
+   
    ``` TypeScript
    .shouldRecognizerParallelWith((current: GestureRecognizer, others: Array<GestureRecognizer>) => {
      for (let i = 0; i < others.length; i++) {
@@ -481,7 +477,7 @@ The following example demonstrates a nested scrolling scenario, using gesture co
 2. Use the **onGestureRecognizerJudgeBegin** API to obtain the **PanGesture** gesture recognizers of the **Column** and **Scroll** components, and set the enabled/disabled state of the inner and outer gestures based on the boundary conditions of the inner and outer components.
 
    <!-- @[gesture_openingclosing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestureAndMotionControl/GestureControl.ets) -->
-
+   
    ``` TypeScript
    .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
      others: Array<GestureRecognizer>) => { // When the recognizer is about to succeed, set the recognizer enable state based on the current component state.
@@ -522,7 +518,7 @@ The following example demonstrates a nested scrolling scenario, using gesture co
 3. Complete code example.
 
    <!-- @[gesture_motioncontrol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestureAndMotionControl/GestureControl.ets) -->
-
+   
    ``` TypeScript
    @Entry
    @Component
@@ -653,7 +649,7 @@ Since API version 20, you can use the [onTouchTestDone](../reference/apis-arkui/
 Disabling by gesture type:
 
    <!-- @[disable_gesturetype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventIdentification.ets) -->
-
+   
    ``` TypeScript
    .onTouchTestDone((event, recognizers) => {
      for (let i = 0; i < recognizers.length; i++) {
@@ -671,7 +667,7 @@ Disabling by associated component:
 Components must be pre-configured with a component ID through the universal attribute [id](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id).
 
    <!-- @[component_disabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventIdentification.ets) -->
-
+   
    ``` TypeScript
    .onTouchTestDone((event, recognizers) => {
      for (let i = 0; i < recognizers.length; i++) {
@@ -687,7 +683,7 @@ Components must be pre-configured with a component ID through the universal attr
 Disabling system built-in gestures:
 
    <!-- @[builtIn_gestureDisable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventIdentification.ets) -->
-
+   
    ``` TypeScript
    .onTouchTestDone((event, recognizers) => {
      for (let i = 0; i < recognizers.length; i++) {
@@ -704,22 +700,17 @@ Combine the preceding conditions based on specific scenarios.
 
 > **NOTE**
 >
-> The system executes **onTouchTestDone** callbacks on nodes from innermost to outermost.
+> The system executes **onTouchTestDone** callbacks on nodes from innermost to outermost. 
 
-In the NDK, the corresponding APIs for **onTouchTestDone** and **preventBegin** are **OH_ArkUI_SetTouchTestDoneCallback** and **OH_ArkUI_PreventGestureRecognizerBegin**, respectively. Their usage and functionality are consistent with the ArkTS APIs.
+In the NDK, the corresponding APIs for **onTouchTestDone** and **preventBegin** are [OH_ArkUI_SetTouchTestDoneCallback](../reference/apis-arkui/capi-native-gesture-h.md#oh_arkui_settouchtestdonecallback) and [OH_ArkUI_PreventGestureRecognizerBegin](../reference/apis-arkui/capi-native-gesture-h.md#oh_arkui_preventgesturerecognizerbegin), respectively. Their usage and functionality are consistent with the ArkTS APIs.
 
 The following example illustrates a simplified video player UI interaction.
 
 The parent container (**video_layer**) has multiple bound gestures:
-
 - Tap: controls the playback (pause/play).
-
 - Double-tap: switches between full-screen and non-full-screen modes.
-
 - Long press: fast-forwards.
-
 - Vertical swipe: adjusts brightness.
-
 - Horizontal swipe: seeks playback.
 
 The inner **Slider** component (**progress_layer**) does not have a long-press gesture bound to it. This causes the parent container's fast-forward gesture to be triggered when the user long-presses the **Slider** component, which is unexpected behavior.
@@ -1009,7 +1000,7 @@ struct Index {
 }
 ```
 
-![prevent-gesture-recognition](figures/Gesure20251119002.gif)
+![prevent-gesture-recognition](figures/prevent-gesture-recognition.gif)
 
 ## Custom Intervention in Event and Gesture Collection Results
 
@@ -1025,26 +1016,14 @@ Gesture collection intervention involves the following APIs.
 
 The following example demonstrates how to implement custom intervention in event and gesture collection results. The example builds the following component tree.
 
-```mermaid
-graph TD
-    A((outerColumn))
-    B((innerColumn))
-    C((Row))
-    D((Button1))
-    E((Button2))
-
-    A --> B
-    A --> C
-    C --> D
-    C --> E
-```
+![custom-intervention-in-event-and-gesture-collection-results](figures/custom-intervention-in-event-and-gesture-collection-results.png)
 
 **Button1** has no tap event bound, while **Button2** has a tap event bound. When the user taps **Button2**, the `onGestureCollectIntercept` callback on **innerColumn** intervenes in the touch recognizer, preventing the touch event from being further propagated to **outerColumn**. When **Button1** is tapped, normal propagation is allowed.
 
 1. Bind the `onGestureCollectIntercept` callback to the **innerColumn** component, and obtain the list of touch recognizers in the callback.
 
     <!-- @[gesture_collection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/InterceptGestureCollection/InterceptGestureCollection.ets) -->
-
+    
     ``` TypeScript
     .onGestureCollectIntercept((recognizers: Array<GestureRecognizer>,
       touchRecognizers?: Array<TouchRecognizer> | undefined) => {
@@ -1072,7 +1051,7 @@ graph TD
 2. Complete code example.
 
     <!-- @[gesture_intercepting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/InterceptGestureCollection/InterceptGestureCollection.ets) -->
-
+    
     ``` TypeScript
     @Entry
     @Component
@@ -1155,5 +1134,3 @@ graph TD
     ```
 
 After the preceding processing, when **Button2** is tapped, `onGestureCollectIntercept` returns `DISCARD_LOWER`, and the touch event is not propagated to **outerColumn**. When **Button1** is tapped, `CONTINUE` is returned, the touch event is propagated normally, and **outerColumn** responds by changing color.
-
-<!--no_check-->

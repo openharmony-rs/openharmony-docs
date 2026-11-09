@@ -1,24 +1,23 @@
 # Binding a Semi-Modal Sheet (bindSheet)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=a4d5a8ccb79356bfd8ded423934a4e2d4051ed2c translatedAt=2026-08-04T06:38:28.117Z pushedAt=2026-08-04T08:28:42.834Z -->
+<!-- md-trans-meta sourceCommit=151d8ffe7a2a76b5ef03532bc58b4ee3ccbda9cb translatedAt=2026-11-05T11:23:21.555Z pushedAt=2026-11-09T08:24:26.890Z nl=1 -->
 
 A semi-modal sheet, implemented using [bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet), is a modal, non-full-screen popup interaction page by default, allowing parts of the underlying parent view to be visible. This helps users retain the context of their parent view while interacting with the sheet.
 
 Semi-modal sheets are suitable for displaying simple tasks or information panels, such as personal information, text introductions, sharing panels, creating schedules, and adding content. If a sheet needs to be displayed in a way that could potentially affect the parent view, it can be configured to use a non-modal interaction form.
 
-Semi-modal sheets have different form capabilities on devices of different widths. For details about the form requirements on devices with different widths, see the [preferType](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions) property. You can use **bindSheet** to build semi-modal sheet transition effects. For details, see [Modal Transition](arkts-modal-transition.md#creating-sheet-transition-with-bindsheet). For complex or lengthy user processes, consider other transition methods instead of semi-modal sheets, such as [full-modal transition](arkts-contentcover-page.md) and [navigation transition](./arkts-navigation-animation.md).
+Modal sheets have different form capabilities on devices of different widths. For details about the form requirements on devices with different widths, see the [preferType](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions) property. You can use **bindSheet** to build modal sheet transition effects. For details, see [Modal Transition](arkts-modal-transition.md#creating-sheet-transition-with-bindsheet). For complex or lengthy user processes, consider other transition methods instead of modal sheets, such as [full-modal transition](arkts-contentcover-page.md) and [navigation transition](./arkts-navigation-animation.md).
 
 ## Constraints
 
  - When a [UIExtension](../reference/apis-arkui/js-apis-arkui-uiExtension.md) is embedded in a semi-modal sheet, launching another semi-modal sheet or popup window within the UIExtension is not allowed.
 
- - In scenarios without secondary confirmation or custom close behavior, it is not recommended to use the [shouldDismiss](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)/[onWillDismiss](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions) APIs.
+ - If there is no need for secondary confirmation or custom closing behavior, it is not recommended to use [shouldDismiss](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)/[onWillDismiss](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions).
 
 ## Lifecycle
 
@@ -40,7 +39,6 @@ The priority of operations during scrolling in the content area of a semi-modal 
    Swiping up: The semi-modal sheet will attempt to expand upwards. If no expansion is possible, the content will scroll.
 
    Swiping down: The semi-modal sheet will attempt to contract downwards. If no contraction is possible, the panel will close.
-
 2. Content in the middle (scrollable both up and down)
 
    Swiping up or down: The content will scroll until it reaches the top or bottom of the panel.
@@ -65,7 +63,6 @@ If you want to define a scrollable container, such as **List** or **Scroll**, in
 ```
 
 The sample code is as follows:
-
 <!-- @[Nested_scrolling_Sheet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template10/SheetDemo.ets) -->
 
 ``` TypeScript
@@ -125,17 +122,17 @@ struct SheetDemo {
 }
 ```
 
+
 ![sheetTwo](figures/sheetTwo.PNG)
 
 ## Secondary Confirmation Capability
 
-To implement the secondary confirmation capability, you are advised to use the **onWillDismiss** API, with which you can handle secondary confirmation or custom close behavior in the callback.
+You are advised to use onWillDismiss, which supports handling secondary confirmation in the callback or customizing the closing behavior.
 
-> **NOTE**
+> **NOTE** 
 >
-> After the **onWillDismiss** API is declared, all dismiss operations of the semi-modal sheet, including side swiping, touching the close button, touching the mask, and pulling down, must be implemented by calling the **dismiss** API. If this logic is not implemented, the semi-modal sheet will not respond to the above dismiss operations.
-
-<!-- @[onWillDismiss_Dismiss](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template11/OnWillDismiss_Dismiss.ets) -->  
+> After `onWillDismiss` is declared, all close operations of the semi-modal page, including swiping, tapping the close button, tapping the mask, and pulling down to close, must be implemented by calling the `dismiss` method. If this logic is not implemented, the semi-modal page will not respond to these close operations.
+<!-- @[onWillDismiss_Dismiss](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template11/OnWillDismiss_Dismiss.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -209,11 +206,12 @@ struct OnWillDismiss_Dismiss {
 }
 ```
 
+
 ![onWillDismiss](figures/onWillDismiss.png)
 
 ## Blocking Specific Dismiss Behavior
 
-After the **onWillDismiss** API is declared, it takes control over all dismiss behaviors of the semi-modal sheet. This means that the semi-modal sheet can be dismissed only when you explicitly call the **dismiss** API. You can customize the dismissal logic using **if** statements or other logic.
+Since onWillDismiss is declared, the closing behavior of the sheet needs to be handled by dismiss. You can customize the closing logic through conditional statements such as if.
 
 For example, you might want the semi-modal sheet to be dismissed only when the user swipes down. Here's how you can implement this:
 
@@ -225,7 +223,7 @@ onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
 }),
 ```
 
-To enhance the user experience during the swiping down action, you can use the **onWillSpringBackWhenDismiss** API.
+Similarly, you can combine it with `onWillSpringBackWhenDismiss` to achieve a better slide-down experience.
 
 Just like with **onWillDismiss**, after **onWillSpringBackWhenDismiss** is declared, the rebound operation during a swipe-down of the half-modal requires handling with **SpringBackAction.springBack()**; without this logic, no rebound will occur.
 
@@ -248,11 +246,9 @@ onWillSpringBackWhenDismiss: ((SpringBackAction: SpringBackAction) => {
 Center axis avoidance is supported for semi-modal sheets since API version 14. This capability is enabled by default on 2-in-1 devices (avoidance behavior is triggered only when the window is in waterfall mode), with the default avoidance area set to the upper half of the screen. You can actively configure whether to enable center axis avoidance using the **enableHoverMode** property in [SheetOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions), and specify the display area after avoidance using the **hoverModeArea** property.
 
 - Center axis avoidance for semi-modal sheets does not support the subwindow capability. This restriction applies to scenarios where **showInSubWindow** in [SheetOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions) is set to **true**.
-
 - On 2-in-1 devices, center axis avoidance occurs only when the window is in waterfall mode.
 
 The sample code is as follows:
-
 <!-- @[SheetTransitionExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template12/SheetTransitionExample.ets) -->
 
 ``` TypeScript
@@ -318,5 +314,6 @@ struct SheetTransitionExample {
   }
 }
 ```
+
 
 ![sheetOne](figures/sheetOne.PNG)
