@@ -460,7 +460,7 @@ ToolBarV2SymbolGlyphOptions定义Symbol图标的属性。
 
 定义高级工具栏子项，继承自[ToolBarV2Item](#toolbarv2item)，在其基础上扩展了高级布局能力，支持自定义构造器、放置位置、显示优先级、激活背景色、子项尺寸、分割线、文本可见性、标题配置、溢出菜单按钮、子项分组等。
 
-具有相同非空[groupID](#advancedtoolbarv2item)的子项构成一个分组。分组级别的配置（放置位置）从数组中携带该groupID的第一个子项读取。
+具有相同非空[groupID](#advancedtoolbarv2itemoptions)的子项构成一个分组。分组级别的配置（放置位置）从数组中携带该groupID的第一个子项读取。
 
 **起始版本：** 26.1.0
 
