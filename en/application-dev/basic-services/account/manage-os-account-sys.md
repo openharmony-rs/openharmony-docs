@@ -71,7 +71,7 @@ The account management page may need to display information about all the system
 
 **Procedure**
 
-Use [queryAllCreatedOsAccounts](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#queryallcreatedosaccounts) to obtain informatory about all system accounts.  
+Use [queryAllCreatedOsAccounts](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#queryallcreatedosaccounts) to obtain information about all system accounts.
 
    ```ts
     accountManager.queryAllCreatedOsAccounts((err: BusinessError, accountArr: osAccount.OsAccountInfo[])=>{
