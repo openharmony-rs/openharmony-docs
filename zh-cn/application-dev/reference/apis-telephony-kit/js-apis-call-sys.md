@@ -8,7 +8,7 @@
 
 该模块提供呼叫管理功能，包括拨打电话、跳转到拨号界面、获取通话状态、格式化电话号码等。
 
-如需订阅通话状态请使用[`observer.on('callStateChange')`](js-apis-observer.md#observeroncallstatechange)。
+如需订阅通话状态请使用[observer.on('callStateChange')](js-apis-observer.md#observeroncallstatechange)。
 
 > **说明：**
 >
@@ -146,7 +146,7 @@ dialCall\(phoneNumber: string, options?: DialCallOptions\): Promise\<void\>
 | 参数名      |                 类型                | 必填 |                说明                    |
 | ----------- | ----------------------------------- | ---- | -------------------------------------- |
 | phoneNumber | string                              | 是   | 电话号码。                             |
-| options     | [DialCallOptions](#dialcalloptions9)| 否   | 通话参数，携带呼叫的其他配置信息。<br/>不填该参数则默认使用如下配置，参考[DialCallOptions](#dialcalloptions9)。<br/>- 帐户Id：卡槽1。 <br/>- 音视频类型：语音通话。 <br/>- 拨号场景：普通呼叫。 <br/>- 拨号类型：运营商通话。  |
+| options     | [DialCallOptions](#dialcalloptions9)| 否   | 通话参数，携带呼叫的其他配置信息。<br/>不填该参数则默认使用如下配置，参考[DialCallOptions](#dialcalloptions9)。<br/>- 账户Id：卡槽1。 <br/>- 音视频类型：语音通话。 <br/>- 拨号场景：普通呼叫。 <br/>- 拨号类型：运营商通话。  |
 
 **返回值：**
 
@@ -4871,10 +4871,10 @@ function testSendUssdResponse() {
 
 |        名称              | 类型                               | 只读 | 可选|  说明            |
 | ------------------------ | ---------------------------------- | ---- | ---- | --------------------- |
-| accountId <sup>8+</sup>  | number                             | 是   | 是   | 帐户Id。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br/>。此接口为系统接口。              |
-| videoState <sup>8+</sup> | [VideoStateType](#videostatetype7) | 是   | 是   | 视频状态类型。此接口为系统接口。                                                |
-| dialScene <sup>8+</sup>  | [DialScene](#dialscene8)           | 是   | 是   | 拨号场景。此接口为系统接口。                                                    |
-| dialType <sup>8+</sup>   | [DialType](#dialtype8)             | 是   | 是   | 拨号类型。此接口为系统接口。                                                    |
+| accountId <sup>8+</sup>  | number                             | 否   | 是   | 账户Id。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br/>。此接口为系统接口。              |
+| videoState <sup>8+</sup> | [VideoStateType](#videostatetype7) | 否   | 是   | 视频状态类型。此接口为系统接口。                                                |
+| dialScene <sup>8+</sup>  | [DialScene](#dialscene8)           | 否   | 是   | 拨号场景。此接口为系统接口。                                                    |
+| dialType <sup>8+</sup>   | [DialType](#dialtype8)             | 否   | 是   | 拨号类型。此接口为系统接口。                                                    |
 
 ## DialCallOptions<sup>9+</sup>
 
@@ -4886,11 +4886,11 @@ function testSendUssdResponse() {
 
 |        名称              | 类型                               | 只读 | 可选 | 说明                                         |
 | ------------------------ | ---------------------------------- | ---- | ---- | ------------------------------------------- |
-| accountId <sup>9+</sup>  | number                             | 是   | 是   | 帐户Id。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
-| videoState <sup>9+</sup> | [VideoStateType](#videostatetype7) | 是   | 是   | 视频状态类型。                               |
-| dialScene <sup>9+</sup>  | [DialScene](#dialscene8)           | 是   | 是   | 拨号场景。                                   |
-| dialType <sup>9+</sup>   | [DialType](#dialtype8)             | 是   | 是   | 拨号类型。                                   |
-| xCallType                | [xCallType](#xcalltype)            | 是   | 是   | XCALL类型。 <br>**起始版本:** 26.0.0         |
+| accountId <sup>9+</sup>  | number                             | 否   | 是   | 账户Id。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
+| videoState <sup>9+</sup> | [VideoStateType](#videostatetype7) | 否   | 是   | 视频状态类型。                               |
+| dialScene <sup>9+</sup>  | [DialScene](#dialscene8)           | 否   | 是   | 拨号场景。                                   |
+| dialType <sup>9+</sup>   | [DialType](#dialtype8)             | 否   | 是   | 拨号类型。                                   |
+| xCallType                | [xCallType](#xcalltype)            | 否   | 是   | XCALL类型。 <br>**起始版本:** 26.0.0         |
 
 
 ## ImsCallMode<sup>8+</sup>
@@ -4932,9 +4932,9 @@ IP多媒体系统调用模式。
 
 |                名称               |                  类型                 | 只读  | 可选  |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
-| deviceType         | [AudioDeviceType](#audiodevicetype10) | 是   | 否   | 音频设备类型。    |
-| address            | string                                | 是   | 是   | 音频设备地址。    |
-| deviceName <sup>11+</sup>         | string                 | 是   | 是   | 音频设备名称。    |
+| deviceType         | [AudioDeviceType](#audiodevicetype10) | 否   | 否   | 音频设备类型。    |
+| address            | string                                | 否   | 是   | 音频设备地址。    |
+| deviceName <sup>11+</sup>         | string                 | 否   | 是   | 音频设备名称。    |
 
 ## AudioDeviceType<sup>10+</sup>
 
@@ -4962,10 +4962,10 @@ IP多媒体系统调用模式。
 
 |                名称               |                  类型                 | 只读  | 可选  |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
-| audioDeviceList   | Array\<[AudioDevice](#audiodevice10)\> | 是   | 否   | 音频设备列表。    |
-| currentAudioDevice | [AudioDevice](#audiodevice10)         | 是   | 否   | 当前音频设备。    |
-| isMuted            | boolean                               | 是   | 否   | 是否静音。        |
-| isMicDisabled<sup>24+</sup>     |  boolean                 | 是   | 是   | 是否禁用麦克风。<br/>- true：禁用麦克风 <br/>- false：启用麦克风 |
+| audioDeviceList   | Array\<[AudioDevice](#audiodevice10)\> | 否   | 否   | 音频设备列表。    |
+| currentAudioDevice | [AudioDevice](#audiodevice10)         | 否   | 否   | 当前音频设备。    |
+| isMuted            | boolean                               | 否   | 否   | 是否静音。        |
+| isMicDisabled<sup>24+</sup>     |  boolean                 | 否   | 是   | 是否禁用麦克风。<br/>- true：禁用麦克风 <br/>- false：启用麦克风 |
 
 
 ## CallRestrictionType<sup>8+</sup>
@@ -4997,13 +4997,13 @@ IP多媒体系统调用模式。
 
 |          名称            | 类型                                                 | 只读 | 可选 | 说明             |
 | ------------------------ | ---------------------------------------------------- | ---- | ---- | ---------------- |
-| transferNum              | string                                               | 是   | 否   | 转移编号。         |
-| type                     | [CallTransferType](js-apis-call.md#calltransfertype) | 是   | 否   | 呼叫转移类型。     |
-| settingType              | [CallTransferSettingType](#calltransfersettingtype8) | 是   | 否   | 设置呼叫转移类型。 |
-| startHour<sup>9+</sup>   | number                                               | 是   | 否   | 开始时间的小时数。 |
-| startMinute<sup>9+</sup> | number                                               | 是   | 否   | 开始时间的分钟数。 |
-| endHour<sup>9+</sup>     | number                                               | 是   | 否   | 结束时间的小时数。 |
-| endMinute<sup>9+</sup>   | number                                               | 是   | 是   | 结束时间的分钟数。 |
+| transferNum              | string                                               | 否   | 否   | 转移编号。         |
+| type                     | [CallTransferType](js-apis-call.md#calltransfertype) | 否   | 否   | 呼叫转移类型。     |
+| settingType              | [CallTransferSettingType](#calltransfersettingtype8) | 否   | 否   | 设置呼叫转移类型。 |
+| startHour<sup>9+</sup>   | number                                               | 否   | 否   | 开始时间的小时数。 |
+| startMinute<sup>9+</sup> | number                                               | 否   | 否   | 开始时间的分钟数。 |
+| endHour<sup>9+</sup>     | number                                               | 否   | 否   | 结束时间的小时数。 |
+| endMinute<sup>9+</sup>   | number                                               | 否   | 是   | 结束时间的分钟数。 |
 
 
 ## CallTransferSettingType<sup>8+</sup>
@@ -5031,25 +5031,25 @@ IP多媒体系统调用模式。
 
 |      名称       | 类型                                     | 只读 | 可选| 说明           |
 | --------------- | ---------------------------------------- | ---- | ---- | -------------- |
-| accountNumber   | string                                   | 是   | 否   | 账号号码。       |
-| speakerphoneOn  | boolean                                  | 是   | 否   | 判断是否是扬声器接通电话，默认false。<br/>-true：是<br/>-false：否 |
-| accountId       | number                                   | 是   | 否   | 账户Id。         |
-| videoState      | [VideoStateType](#videostatetype7)       | 是   | 否   | 视频状态类型。   |
-| startTime       | number                                   | 是   | 否   | 开始时间。       |
-| isEcc           | boolean                                  | 是   | 否   | 判断是否是Ecc，默认false。<br/>-true：是<br/>-false：否      |
-| callType        | [CallType](#calltype7)                   | 是   | 否   | 通话类型。       |
-| callId          | number                                   | 是   | 否   | 呼叫Id。         |
-| callState       | [DetailedCallState](#detailedcallstate7) | 是   | 否   | 详细呼叫状态。   |
-| conferenceState | [ConferenceState](#conferencestate7)     | 是   | 否   | 会议状态。       |
-| voipCallAttribute<sup>11+</sup> | [VoipCallAttribute](#voipcallattribute11)     | 是   | 否   | VoIP通话信息。       |
-| crsType<sup>11+</sup> | number                             | 是   | 否   | 视频彩振类型。|
-| originalCallType<sup>11+</sup> | number                    | 是   | 否   | 视频彩振原始呼叫类型。|
-| numberLocation<sup>12+</sup> | string | 是   | 否 | 号码归属地信息 |
-| numberMarkInfo<sup>12+</sup> | [NumberMarkInfo](#numbermarkinfo12) | 是   | 否 | 号码标记信息。 |
-| extraParams <sup>14+</sup>   | Record\<string, Object\>       | 是   | 否   | 表示额外的呼叫参数。                          |
-| rttState <sup>22+</sup>   | [RttState](#rttstate22)      | 是   | 否   | rtt通话状态。                          |
-| xCallType | [xCallType](#xcalltype) | 是   | 否 | XCALL类型。 <br>**起始版本:** 26.0.0|
-| isCustomAccessibility  | boolean              | 是   | 否 | 应用是否支持自定义无障碍能力，默认为false。<br>-true:支持<br>-false:不支持  <br>**起始版本:** 26.0.0|
+| accountNumber   | string                                   | 否   | 否   | 账号号码。       |
+| speakerphoneOn  | boolean                                  | 否   | 否   | 判断是否是扬声器接通电话，默认false。<br/>-true：是<br/>-false：否 |
+| accountId       | number                                   | 否   | 否   | 账户Id。         |
+| videoState      | [VideoStateType](#videostatetype7)       | 否   | 否   | 视频状态类型。   |
+| startTime       | number                                   | 否   | 否   | 开始时间。       |
+| isEcc           | boolean                                  | 否   | 否   | 判断是否是Ecc，默认false。<br/>-true：是<br/>-false：否      |
+| callType        | [CallType](#calltype7)                   | 否   | 否   | 通话类型。       |
+| callId          | number                                   | 否   | 否   | 呼叫Id。         |
+| callState       | [DetailedCallState](#detailedcallstate7) | 否   | 否   | 详细呼叫状态。   |
+| conferenceState | [ConferenceState](#conferencestate7)     | 否   | 否   | 会议状态。       |
+| voipCallAttribute<sup>11+</sup> | [VoipCallAttribute](#voipcallattribute11)     | 否   | 否   | VoIP通话信息。       |
+| crsType<sup>11+</sup> | number                             | 否   | 否   | 视频彩振类型。|
+| originalCallType<sup>11+</sup> | number                    | 否   | 否   | 视频彩振原始呼叫类型。|
+| numberLocation<sup>12+</sup> | string | 否   | 否 | 号码归属地信息 |
+| numberMarkInfo<sup>12+</sup> | [NumberMarkInfo](#numbermarkinfo12) | 否   | 否 | 号码标记信息。 |
+| extraParams <sup>14+</sup>   | Record\<string, Object\>       | 否   | 否   | 表示额外的呼叫参数。                          |
+| rttState <sup>22+</sup>   | [RttState](#rttstate22)      | 否   | 否   | rtt通话状态。                          |
+| xCallType | [xCallType](#xcalltype) | 否   | 否 | XCALL类型。 <br>**起始版本:** 26.0.0|
+| isCustomAccessibility  | boolean              | 否   | 否 | 应用是否支持自定义无障碍能力，默认为false。<br>-true:支持<br>-false:不支持  <br>**起始版本:** 26.0.0|
 
 ## VoipCallAttribute<sup>11+</sup>
 
@@ -5061,15 +5061,15 @@ VoIP通话信息。
 
 |      名称       | 类型               | 只读 | 可选 | 说明           |
 | --------------- | ------------------- | ---- | ---- | -------------- |
-| voipCallId   | string    | 是   | 否   | VoIP通话唯一Id。       |
-| userName  | string    | 是   | 否   | 用户昵称。 |
-| userProfile       | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)    | 是   | 否   | 用户头像图片。  |
-| extensionId      | string     | 是   | 否   |  三方应用进程Id。  |
-| abilityName      | string     | 是   | 否   |  需加载的三方应用的界面ability。  |
-| voipBundleName    | string     | 是   | 否   |  三方应用包名。  |
-| showBannerForIncomingCall<sup>12+</sup>    | boolean     | 是   | 是   |  上报来电时是否显示来电横幅。  |
-| isConferenceCall<sup>12+</sup>    | boolean     | 是   | 是   |  上报是否是电话会议。  |
-| isVoiceAnswerSupported<sup>12+</sup>    | boolean     | 是   | 是   |  上报来电时是否支持语音接听。  |
+| voipCallId   | string    | 否   | 否   | VoIP通话唯一Id。       |
+| userName  | string    | 否   | 否   | 用户昵称。 |
+| userProfile       | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)    | 否   | 否   | 用户头像图片。  |
+| extensionId      | string     | 否   | 否   |  三方应用进程Id。  |
+| abilityName      | string     | 否   | 否   |  需加载的三方应用的界面ability。  |
+| voipBundleName    | string     | 否   | 否   |  三方应用包名。  |
+| showBannerForIncomingCall<sup>12+</sup>    | boolean     | 否   | 是   |  上报来电时是否显示来电横幅，默认为true。<br>-true:上报来电时显示来电横幅<br>-false:上报来电时不显示来电横幅  |
+| isConferenceCall<sup>12+</sup>    | boolean     | 否   | 是   |  上报来电是否是电话会议，默认为false。<br>-true:是<br>-false:否  |
+| isVoiceAnswerSupported<sup>12+</sup>    | boolean     | 否   | 是   |  上报来电时是否支持语音接听，默认false。<br>-true:支持<br>-false:不支持  |
 
 ## ConferenceState<sup>7+</sup>
 
@@ -5114,7 +5114,7 @@ VoIP通话信息。
 | 名称                                   | 值   | 说明     |
 | ------------------------------------- | ---- | --------|
 | TYPE_VOICE                            | 0    | 语音状态。 |
-| TYPE_VIDEO                            | 1    | 视频状态。<br>**说明：**从API version 7开始支持，从API version 11开始废弃。 |
+| TYPE_VIDEO                            | 1    | 视频状态。<br>**说明：**从API version 7开始支持，从API version 11开始废弃。建议使用TYPE_VIDEO_BIDIRECTIONAL替代。 |
 | TYPE_VIDEO_SEND_ONLY<sup>11+</sup>    | 1    | 视频通话只发送数据状态。 |
 | TYPE_VIDEO_RECEIVE_ONLY<sup>11+</sup> | 2    | 视频通话只接收数据状态。 |
 | TYPE_VIDEO_BIDIRECTIONAL<sup>11+</sup>| 3    | 视频通话接收发送数据状态。|
@@ -5148,10 +5148,10 @@ VoIP通话信息。
 **系统能力**：SystemCapability.Telephony.CallManager
 
 |   名称   | 类型                                         | 只读 | 可选 | 说明         |
-| -------- | -------------------------------------------- | ---- | ------------ |
-| type     | [CallRestrictionType](#callrestrictiontype8) | 是   | 否   | 呼叫限制类型。 |
-| password | string                                       | 是   | 否   | 密码。         |
-| mode     | [CallRestrictionMode](#callrestrictionmode8) | 是   | 否   | 呼叫限制模式。 |
+| -------- | -------------------------------------------- | ---- | ---- | ------------ |
+| type     | [CallRestrictionType](#callrestrictiontype8) | 否   | 否   | 呼叫限制类型。 |
+| password | string                                       | 否   | 否   | 密码。         |
+| mode     | [CallRestrictionMode](#callrestrictionmode8) | 否   | 否   | 呼叫限制模式。 |
 
 ## CallRestrictionMode<sup>8+</sup>
 
@@ -5176,7 +5176,7 @@ VoIP通话信息。
 
 |   名称  | 类型                                       | 只读 | 可选 | 说明           |
 | ------- | ------------------------------------------ | ---- | ---- | -------------- |
-| eventId | [CallAbilityEventId](#callabilityeventid8) | 是   | 否  | 呼叫能力事件Id。 |
+| eventId | [CallAbilityEventId](#callabilityeventid8) | 否   | 否  | 呼叫能力事件Id。 |
 
 ## CallAbilityEventId<sup>8+</sup>
 
@@ -5236,7 +5236,7 @@ VoIP通话信息。
 
 |     名称       | 类型   | 只读 | 可选 | 说明     |
 | -------------- | ------ | ---- | ---- | -------- |
-| messageContent | string | 是   | 否   | 消息内容。 |
+| messageContent | string | 否   | 否   | 消息内容。 |
 
 ## CallTransferResult<sup>8+</sup>
 
@@ -5286,8 +5286,8 @@ VoIP通话信息。
 
 | 名称    |                    类型                    | 只读 | 可选 | 说明            |
 | ------- | ------------------------------------------ | ---- | ---- | --------------- |
-| reason  | [DisconnectedReason](#disconnectedreason8) | 是   | 否 | 通话结束原因。    |
-| message | string                                     | 是   | 否 | 通话结束提示信息。|
+| reason  | [DisconnectedReason](#disconnectedreason8) | 否   | 否 | 通话结束原因。    |
+| message | string                                     | 否   | 否 | 通话结束提示信息。|
 
 ## DisconnectedReason<sup>8+</sup>
 
@@ -5388,9 +5388,9 @@ MMI码结果。
 **系统能力**：SystemCapability.Telephony.CallManager
 
 | 名称    | 类型                             | 只读 | 可选 | 说明            |
-| ------- | -------------------------------- | ---- | --------------- |
-| result  | [MmiCodeResult](#mmicoderesult9) | 是   | 否   | MMI码结果。 |
-| message | string                           | 是   | 否   | MMI码消息。 |
+| ------- | -------------------------------- | ---- | ---- | --------------- |
+| result  | [MmiCodeResult](#mmicoderesult9) | 否   | 否   | MMI码结果。 |
+| message | string                           | 否   | 否   | MMI码消息。 |
 
 ## MmiCodeResult<sup>9+</sup>
 
@@ -6109,10 +6109,10 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 
 | 名称    |                    类型                             | 只读 | 可选 | 说明           |
 | ------- | -------------------------------------------------- | ---- | ---- | ------------- |
-| callId  | number                                             | 是   | 否 | 呼叫Id。         |
-| isRequestInfo| boolean                                       | 是   | 否 | 该信息是否为请求信息。|
-| imsCallMode  | [ImsCallMode](#imscallmode8)                  | 是   | 否 | 视频通话模式。    |
-| result  | [VideoRequestResultType](#videorequestresulttype11)| 是   | 否 | 通话结束提示信息。|
+| callId  | number                                             | 否   | 否 | 呼叫Id。         |
+| isRequestInfo| boolean                                       | 否   | 否 | 该信息是否为请求信息。|
+| imsCallMode  | [ImsCallMode](#imscallmode8)                  | 否   | 否 | 视频通话模式。    |
+| result  | [VideoRequestResultType](#videorequestresulttype11)| 否   | 否 | 通话结束提示信息。|
 
 ## CallSessionEvent<sup>11+</sup>
 
@@ -6124,8 +6124,8 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 
 | 名称    |                    类型                             | 只读 | 可选 | 说明           |
 | ------- | -------------------------------------------------- | ---- | ---- | ------------- |
-| callId  | number                                             | 是   | 否 | 呼叫Id。         |
-| eventId  | [CallSessionEventId](#callsessioneventid11)       | 是   | 否 | 视频通话事件。    |
+| callId  | number                                             | 否   | 否 | 呼叫Id。         |
+| eventId  | [CallSessionEventId](#callsessioneventid11)       | 否   | 否 | 视频通话事件。    |
 
 ## PeerDimensionsDetail<sup>11+</sup>
 
@@ -6137,9 +6137,9 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 
 | 名称    |     类型      | 只读 | 可选 | 说明           |
 | ------- | ------------ | ---- | ---- | ------------- |
-| callId  | number       | 是   | 否 | 呼叫Id。         |
-| width   | number       | 是   | 否 | 对端画面图像尺寸宽(像素)。  |
-| height  | number       | 是   | 否 | 对端画面图像尺寸高(像素)。  |
+| callId  | number       | 否   | 否 | 呼叫Id。         |
+| width   | number       | 否   | 否 | 对端画面图像尺寸宽(像素)。  |
+| height  | number       | 否   | 否 | 对端画面图像尺寸高(像素)。  |
 
 ## CameraCapabilities<sup>11+</sup>
 
@@ -6151,9 +6151,9 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 
 | 名称    |     类型      | 只读 | 可选 | 说明           |
 | ------- | ------------ | ---- | ---- | ------------- |
-| callId  | number       | 是   | 否 | 呼叫Id。         |
-| width   | number       | 是   | 否 | 本端画面图像尺寸宽(像素)。  |
-| height  | number       | 是   | 否 | 本端画面图像尺寸高(像素)。  |
+| callId  | number       | 否   | 否 | 呼叫Id。         |
+| width   | number       | 否   | 否 | 本端画面图像尺寸宽(像素)。  |
+| height  | number       | 否   | 否 | 本端画面图像尺寸高(像素)。  |
 
 ## NumberMarkInfo<sup>12+</sup>
 
@@ -6165,12 +6165,12 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 
 | 名称    |     类型      | 只读 | 可选 | 说明           |
 | ------- | ------------ | ---- | ---- | ------------- |
-| markType | [MarkType](#marktype12) | 是   | 否 | 号码的标记类型。 |
-| markContent | string | 是  | 是 | 号码的标记内容，markType为MARK_TYPE_ENTERPRISE时，该字段返回信息为“姓名 工号”。 |
-| markCount | number       | 是  | 是 | 号码的标记次数。 |
-| markSource | string | 是 | 是 | 号码的标记来源供应商。 |
-| isCloud | boolean | 是 | 是 | 号码的标记是否来自云端，默认为false。<br/>-true：是<br/>-false：否|
-| markDetails<sup>14+</sup> | string | 是 | 是 | 号码标记的详细信息，markType为MARK_TYPE_ENTERPRISE时，该字段返回信息为“部门 职位”。 |
+| markType | [MarkType](#marktype12) | 否   | 否 | 号码的标记类型。 |
+| markContent | string | 否  | 是 | 号码的标记内容，markType为MARK_TYPE_ENTERPRISE时，该字段返回信息为“姓名 工号”。 |
+| markCount | number       | 否  | 是 | 号码的标记次数。 |
+| markSource | string | 否 | 是 | 号码的标记来源供应商。 |
+| isCloud | boolean | 否 | 是 | 号码的标记是否来自云端，默认为false。<br/>-true：是<br/>-false：否|
+| markDetails<sup>14+</sup> | string | 否 | 是 | 号码标记的详细信息，markType为MARK_TYPE_ENTERPRISE时，该字段返回信息为“部门 职位”。 |
 
 ## RttErrorInfo<sup>22+</sup>
 
@@ -6182,10 +6182,10 @@ rtt通话错误报告。
 
 | 名称    |     类型      | 只读 | 可选 | 说明           |
 | ------- | ------------ | ---- | ---- | ------------- |
-| callId  | number       | 是   | 否 | rtt通话id。         |
-| operationType   | number       | 是   | 否 | rtt操作类型。  |
-| causeCode  | number       | 是   | 否 | rtt失败原因值。  |
-| reasonText  | string       | 是   | 否 | rtt失败原因。  |
+| callId  | number       | 否   | 否 | rtt通话id。         |
+| operationType   | number       | 否   | 否 | rtt操作类型。  |
+| causeCode  | number       | 否   | 否 | rtt失败原因值。  |
+| reasonText  | string       | 否   | 否 | rtt失败原因。  |
 
 ## RttEventInfo<sup>22+</sup>
 
@@ -6197,9 +6197,9 @@ rtt通话事件。
 
 | 名称    |     类型      | 只读 | 可选 | 说明           |
 | ------- | ------------ | ---- | ---- | ------------- |
-| callId  | number       | 是   | 否 | rtt通话id。         |
-| eventType   | number       | 是   | 否 | rtt通话事件类型。  |
-| reason  | number       | 是   | 否 | rtt事件原因。  |
+| callId  | number       | 否   | 否 | rtt通话id。         |
+| eventType   | number       | 否   | 否 | rtt通话事件类型。  |
+| reason  | number       | 否   | 否 | rtt事件原因。  |
 
 ## RttMessageInfo<sup>22+</sup>
 
@@ -6211,8 +6211,8 @@ rtt通话消息。
 
 | 名称    |     类型      | 只读 | 可选 | 说明           |
 | ------- | ------------ | ---- | ---- | ------------- |
-| callId  | number       | 是   | 否 | rtt通话id。         |
-| rttMessage   | number       | 是   | 否 | rtt消息。  |
+| callId  | number       | 否   | 否 | rtt通话id。         |
+| rttMessage   | number       | 否   | 否 | rtt消息。  |
 
 ## MarkType<sup>12+</sup>
 

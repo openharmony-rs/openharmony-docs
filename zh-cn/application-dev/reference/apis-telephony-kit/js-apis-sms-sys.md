@@ -587,7 +587,7 @@ setSmscAddr\(slotId: number, smscAddr: string, callback: AsyncCallback\<void\>\)
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE，该权限为系统权限
+**需要权限**：ohos.permission.SET_TELEPHONY_STATE（该权限为系统权限）
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
@@ -635,7 +635,7 @@ setSmscAddr\(slotId: number, smscAddr: string\): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE，该权限为系统权限
+**需要权限**：ohos.permission.SET_TELEPHONY_STATE（该权限为系统权限）
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
@@ -690,7 +690,7 @@ getSmscAddr\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE，该权限为系统权限
+**需要权限**：ohos.permission.GET_TELEPHONY_STATE（该权限为系统权限）
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
@@ -736,7 +736,7 @@ getSmscAddr\(slotId: number\): Promise\<string\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE，该权限为系统权限
+**需要权限**：ohos.permission.GET_TELEPHONY_STATE（该权限为系统权限）
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
@@ -888,7 +888,7 @@ addSimMessage\(options: SimMessageOptions, callback: AsyncCallback\<void\>\): vo
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.RECEIVE_SMS,ohos.permission.SEND_MESSAGES
+**需要权限**：ohos.permission.RECEIVE_SMS 和 ohos.permission.SEND_MESSAGES
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
@@ -939,7 +939,7 @@ addSimMessage\(options: SimMessageOptions\): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.RECEIVE_SMS,ohos.permission.SEND_MESSAGES
+**需要权限**：ohos.permission.RECEIVE_SMS 和 ohos.permission.SEND_MESSAGES
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
@@ -996,7 +996,7 @@ delSimMessage\(slotId: number, msgIndex: number, callback: AsyncCallback\<void\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.RECEIVE_SMS,ohos.permission.SEND_MESSAGES
+**需要权限**：ohos.permission.RECEIVE_SMS 和 ohos.permission.SEND_MESSAGES
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
@@ -1044,7 +1044,7 @@ delSimMessage\(slotId: number, msgIndex: number\): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.RECEIVE_SMS,ohos.permission.SEND_MESSAGES
+**需要权限**：ohos.permission.RECEIVE_SMS 和 ohos.permission.SEND_MESSAGES
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
@@ -1099,7 +1099,7 @@ updateSimMessage\(options: UpdateSimMessageOptions, callback: AsyncCallback\<voi
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.RECEIVE_SMS,ohos.permission.SEND_MESSAGES
+**需要权限**：ohos.permission.RECEIVE_SMS 和 ohos.permission.SEND_MESSAGES
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
@@ -1151,7 +1151,7 @@ updateSimMessage\(options: UpdateSimMessageOptions\): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.RECEIVE_SMS,ohos.permission.SEND_MESSAGES
+**需要权限**：ohos.permission.RECEIVE_SMS 和 ohos.permission.SEND_MESSAGES
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
@@ -2014,10 +2014,10 @@ sms.getSmsShortCodeType(slotId, destAddr)
 **系统能力**：SystemCapability.Telephony.SmsMms
 
 |       名称       | 类型          | 只读 | 可选 | 说明                                                         |
-| ---------------- | ------------ | ---- | ------------------------------------------------------------ |
-| slotId<sup>11+</sup>  | number  | 是   | 否 | 用于发送短信的SIM卡槽ID：<br/>- 0：卡槽1<br/>- 1：卡槽2      |
-| mmsc<sup>11+</sup>  | string    | 是   | 否 | 彩信中心地址。                                             |
-| data<sup>11+</sup>    | string    | 是   | 否 | 彩信PDU地址。 |
+| ---------------- | ------------ | ---- | ---- | ------------------------------------------------------------ |
+| slotId<sup>11+</sup>  | number  | 否   | 否 | 用于发送短信的SIM卡槽ID：<br/>- 0：卡槽1<br/>- 1：卡槽2      |
+| mmsc<sup>11+</sup>  | string    | 否   | 否 | 彩信中心地址。                                             |
+| data<sup>11+</sup>    | string    | 否   | 否 | 彩信PDU地址。 |
 | mmsConfig<sup>11+</sup> | MmsConfig  | 否   | 否 | 彩信配置文件，参考[MmsConfig](#mmsconfig11)。                |
 
 ## MmsConfig<sup>11+</sup>
@@ -2030,8 +2030,8 @@ sms.getSmsShortCodeType(slotId, destAddr)
 
 |       名称       | 类型                         | 只读 | 可选 | 说明 |
 | ---------------- | --------------------------- | ---- | ---- | ------ |
-| userAgent<sup>11+</sup>  | string              | 是   | 否 | 用户代理。 |
-| userAgentProfile<sup>11+</sup>    | string     | 是   | 否 | 用户代理配置。|
+| userAgent<sup>11+</sup>  | string              | 否   | 否 | 用户代理。 |
+| userAgentProfile<sup>11+</sup>    | string     | 否   | 否 | 用户代理配置。|
 
 
 
@@ -2045,9 +2045,9 @@ sms.getSmsShortCodeType(slotId, destAddr)
 
 |     名称    | 类型                                                         | 只读 | 可选 |    说明    |
 | ----------- | ------------------------------------------------------------ | ---- | ---- | ---------- |
-| messageType | [MessageType](#messagetype8)                                 | 是   | 否 | 消息类型。 |
-| mmsType     | [MmsSendReq](#mmssendreq8) \|[MmsSendConf](#mmssendconf8) \|[MmsNotificationInd](#mmsnotificationind8) \|[MmsRespInd](#mmsrespind8) \|[MmsRetrieveConf](#mmsretrieveconf8)\|[MmsAcknowledgeInd](#mmsacknowledgeind8)\|[MmsDeliveryInd](#mmsdeliveryind8)\|[MmsReadOrigInd](#mmsreadorigind8)\|[MmsReadRecInd](#mmsreadrecind8) | 是   | 否 | PDU头类型 |
-| attachment  | Array<[MmsAttachment](#mmsattachment8)\>                     | 是   | 是 | 附件      |
+| messageType | [MessageType](#messagetype8)                                 | 否   | 否 | 消息类型。 |
+| mmsType     | [MmsSendReq](#mmssendreq8) \|[MmsSendConf](#mmssendconf8) \|[MmsNotificationInd](#mmsnotificationind8) \|[MmsRespInd](#mmsrespind8) \|[MmsRetrieveConf](#mmsretrieveconf8)\|[MmsAcknowledgeInd](#mmsacknowledgeind8)\|[MmsDeliveryInd](#mmsdeliveryind8)\|[MmsReadOrigInd](#mmsreadorigind8)\|[MmsReadRecInd](#mmsreadrecind8) | 否   | 否 | PDU头类型 |
+| attachment  | Array<[MmsAttachment](#mmsattachment8)\>                     | 否   | 是 | 附件      |
 
 ## MmsSendReq<sup>8+</sup>
 
@@ -2059,21 +2059,21 @@ sms.getSmsShortCodeType(slotId, destAddr)
 
 |       名称       | 类型                                 | 只读 | 可选 | 说明         |
 | ---------------- | ------------------------------------ | ---- | ---- | ------------ |
-| from             | [MmsAddress](#mmsaddress8)           | 是   | 否   | 彩信来源     |
-| transactionId    | string                               | 是   | 否   | 事务ID       |
-| contentType      | string                               | 是   | 否   | 内容类型     |
-| version          | [MmsVersionType](#mmsversiontype8)   | 是   | 否   | 版本         |
-| to               | Array<[MmsAddress](#mmsaddress8)\>   | 是   | 是   | 发送至       |
-| date             | number                               | 是   | 是   | 日期         |
-| cc               | Array<[MmsAddress](#mmsaddress8)\>   | 是   | 是   | 抄送         |
-| bcc              | Array<[MmsAddress](#mmsaddress8)\>   | 是   | 是   | 暗抄送       |
-| subject          | string                               | 是   | 是   | 主题         |
-| messageClass     | number                               | 是   | 是   | 消息类       |
-| expiry           | number                               | 是   | 是   | 到期         |
-| priority         | [MmsPriorityType](#mmsprioritytype8) | 是   | 是   | 优先         |
-| senderVisibility | number                               | 是   | 是   | 发件人可见性 |
-| deliveryReport   | number                               | 是   | 是   | 交付报告     |
-| readReport       | number                               | 是   | 是   | 阅读报告     |
+| from             | [MmsAddress](#mmsaddress8)           | 否   | 否   | 彩信来源     |
+| transactionId    | string                               | 否   | 否   | 事务ID       |
+| contentType      | string                               | 否   | 否   | 内容类型     |
+| version          | [MmsVersionType](#mmsversiontype8)   | 否   | 否   | 版本         |
+| to               | Array<[MmsAddress](#mmsaddress8)\>   | 否   | 是   | 发送至       |
+| date             | number                               | 否   | 是   | 日期         |
+| cc               | Array<[MmsAddress](#mmsaddress8)\>   | 否   | 是   | 抄送         |
+| bcc              | Array<[MmsAddress](#mmsaddress8)\>   | 否   | 是   | 暗抄送       |
+| subject          | string                               | 否   | 是   | 主题         |
+| messageClass     | number                               | 否   | 是   | 消息类       |
+| expiry           | number                               | 否   | 是   | 到期         |
+| priority         | [MmsPriorityType](#mmsprioritytype8) | 否   | 是   | 优先         |
+| senderVisibility | number                               | 否   | 是   | 发件人可见性 |
+| deliveryReport   | number                               | 否   | 是   | 交付报告     |
+| readReport       | number                               | 否   | 是   | 阅读报告     |
 
 ## MmsSendConf<sup>8+</sup>
 
@@ -2085,10 +2085,10 @@ sms.getSmsShortCodeType(slotId, destAddr)
 
 |     名称      | 类型                               | 只读 | 可选 | 说明     |
 | ------------- | ---------------------------------- | ---- | ---- | -------- |
-| responseState | number                             | 是   | 否 | 响应状态 |
-| transactionId | string                             | 是   | 否 | 事务ID   |
-| version       | [MmsVersionType](#mmsversiontype8) | 是   | 否 | 版本     |
-| messageId     | string                             | 是   | 否 | 消息ID   |
+| responseState | number                             | 否   | 否 | 响应状态 |
+| transactionId | string                             | 否   | 否 | 事务ID   |
+| version       | [MmsVersionType](#mmsversiontype8) | 否   | 否 | 版本     |
+| messageId     | string                             | 否   | 否 | 消息ID   |
 
 ## MmsNotificationInd<sup>8+</sup>
 
@@ -2100,16 +2100,16 @@ sms.getSmsShortCodeType(slotId, destAddr)
 
 |      名称       | 类型                               | 只读 | 可选 | 说明     |
 | --------------- | ---------------------------------- | ---- | --- | -------- |
-| transactionId   | string                             | 是   | 否 | 事务ID   |
-| messageClass    | number                             | 是   | 否 | 消息类   |
-| messageSize     | number                             | 是   | 否 | 消息大小 |
-| expiry          | number                             | 是   | 否 | 到期     |
-| contentLocation | string                             | 是   | 否 | 内容位置 |
-| version         | [MmsVersionType](#mmsversiontype8) | 是   | 否 | 版本     |
-| from            | [MmsAddress](#mmsaddress8)         | 是   | 是 | 来源     |
-| subject         | string                             | 是   | 是 | 主题     |
-| deliveryReport  | number                             | 是   | 是 | 状态报告 |
-| contentClass    | number                             | 是   | 是 | 内容类   |
+| transactionId   | string                             | 否   | 否 | 事务ID   |
+| messageClass    | number                             | 否   | 否 | 消息类   |
+| messageSize     | number                             | 否   | 否 | 消息大小 |
+| expiry          | number                             | 否   | 否 | 到期     |
+| contentLocation | string                             | 否   | 否 | 内容位置 |
+| version         | [MmsVersionType](#mmsversiontype8) | 否   | 否 | 版本     |
+| from            | [MmsAddress](#mmsaddress8)         | 否   | 是 | 来源     |
+| subject         | string                             | 否   | 是 | 主题     |
+| deliveryReport  | number                             | 否   | 是 | 状态报告 |
+| contentClass    | number                             | 否   | 是 | 内容类   |
 
 ## MmsAcknowledgeInd<sup>8+</sup>
 
@@ -2121,9 +2121,9 @@ sms.getSmsShortCodeType(slotId, destAddr)
 
 |      名称     | 类型                               | 只读 | 可选 | 说明     |
 | ------------- | ---------------------------------- | ---- | ---- | -------- |
-| transactionId | string                             | 是   | 否 | 事务ID   |
-| version       | [MmsVersionType](#mmsversiontype8) | 是   | 否 | 版本     |
-| reportAllowed | [ReportType](#reporttype8)         | 是   | 是 | 允许报告 |
+| transactionId | string                             | 否   | 否 | 事务ID   |
+| version       | [MmsVersionType](#mmsversiontype8) | 否   | 否 | 版本     |
+| reportAllowed | [ReportType](#reporttype8)         | 否   | 是 | 允许报告 |
 
 ## MmsRetrieveConf<sup>8+</sup>
 
@@ -2135,20 +2135,20 @@ sms.getSmsShortCodeType(slotId, destAddr)
 
 |      名称      | 类型                                 | 只读 | 可选 | 说明     |
 | -------------- | ------------------------------------ | ---- | ---- | -------- |
-| transactionId  | string                               | 是   | 否 | 事务ID   |
-| messageId      | string                               | 是   | 否 | 消息ID   |
-| date           | number                               | 是   | 否 | 日期     |
-| contentType    | string                               | 是   | 否 | 内容类型 |
-| to             | Array<[MmsAddress](#mmsaddress8)\>   | 是   | 否 | 发送至   |
-| version        | [MmsVersionType](#mmsversiontype8)   | 是   | 否 | 版本     |
-| from           | [MmsAddress](#mmsaddress8)           | 是   | 是 | 来源     |
-| cc             | Array<[MmsAddress](#mmsaddress8)\>   | 是   | 是 | 抄送     |
-| subject        | string                               | 是   | 是 | 主题     |
-| priority       | [MmsPriorityType](#mmsprioritytype8) | 是   | 是 | 优先级   |
-| deliveryReport | number                               | 是   | 是 | 状态报告 |
-| readReport     | number                               | 是   | 是 | 阅读报告 |
-| retrieveStatus | number                               | 是   | 是 | 检索状态 |
-| retrieveText   | string                               | 是   | 是 | 检索文本 |
+| transactionId  | string                               | 否   | 否 | 事务ID   |
+| messageId      | string                               | 否   | 否 | 消息ID   |
+| date           | number                               | 否   | 否 | 日期     |
+| contentType    | string                               | 否   | 否 | 内容类型 |
+| to             | Array<[MmsAddress](#mmsaddress8)\>   | 否   | 否 | 发送至   |
+| version        | [MmsVersionType](#mmsversiontype8)   | 否   | 否 | 版本     |
+| from           | [MmsAddress](#mmsaddress8)           | 否   | 是 | 来源     |
+| cc             | Array<[MmsAddress](#mmsaddress8)\>   | 否   | 是 | 抄送     |
+| subject        | string                               | 否   | 是 | 主题     |
+| priority       | [MmsPriorityType](#mmsprioritytype8) | 否   | 是 | 优先级   |
+| deliveryReport | number                               | 否   | 是 | 状态报告 |
+| readReport     | number                               | 否   | 是 | 阅读报告 |
+| retrieveStatus | number                               | 否   | 是 | 检索状态 |
+| retrieveText   | string                               | 否   | 是 | 检索文本 |
 
 ## MmsReadOrigInd<sup>8+</sup>
 
@@ -2160,12 +2160,12 @@ sms.getSmsShortCodeType(slotId, destAddr)
 
 |    名称    | 类型                               | 只读 | 可选 | 说明     |
 | ---------- | ---------------------------------- | ---- | ---- | -------- |
-| version    | [MmsVersionType](#mmsversiontype8) | 是   | 否 | 版本     |
-| messageId  | string                             | 是   | 否 | 消息ID   |
-| to         | Array<[MmsAddress](#mmsaddress8)\> | 是   | 否 | 发送至   |
-| from       | [MmsAddress](#mmsaddress8)         | 是   | 否 | 来源     |
-| date       | number                             | 是   | 否 | 日期     |
-| readStatus | number                             | 是   | 否 | 阅读状态 |
+| version    | [MmsVersionType](#mmsversiontype8) | 否   | 否 | 版本     |
+| messageId  | string                             | 否   | 否 | 消息ID   |
+| to         | Array<[MmsAddress](#mmsaddress8)\> | 否   | 否 | 发送至   |
+| from       | [MmsAddress](#mmsaddress8)         | 否   | 否 | 来源     |
+| date       | number                             | 否   | 否 | 日期     |
+| readStatus | number                             | 否   | 否 | 阅读状态 |
 
 ## MmsReadRecInd<sup>8+</sup>
 
@@ -2177,12 +2177,12 @@ sms.getSmsShortCodeType(slotId, destAddr)
 
 |    名称    | 类型                               | 只读 | 可选 | 说明     |
 | ---------- | ---------------------------------- | ---- | --- | -------- |
-| version    | [MmsVersionType](#mmsversiontype8) | 是   | 否 | 版本     |
-| messageId  | string                             | 是   | 否 | 消息ID   |
-| to         | Array<[MmsAddress](#mmsaddress8)\> | 是   | 否 | 发送至   |
-| from       | [MmsAddress](#mmsaddress8)         | 是   | 否 | 来源     |
-| readStatus | number                             | 是   | 否 | 阅读状态 |
-| date       | number                             | 是   | 是 | 日期     |
+| version    | [MmsVersionType](#mmsversiontype8) | 否   | 否 | 版本     |
+| messageId  | string                             | 否   | 否 | 消息ID   |
+| to         | Array<[MmsAddress](#mmsaddress8)\> | 否   | 否 | 发送至   |
+| from       | [MmsAddress](#mmsaddress8)         | 否   | 否 | 来源     |
+| readStatus | number                             | 否   | 否 | 阅读状态 |
+| date       | number                             | 否   | 是 | 日期     |
 
 ## MmsAttachment<sup>8+</sup>
 
@@ -2194,16 +2194,16 @@ sms.getSmsShortCodeType(slotId, destAddr)
 
 |          名称           | 类型                                 | 只读 | 可选 | 说明               |
 | ----------------------- | ------------------------------------ | ---- | ---- | ------------------ |
-| contentId               | string                               | 是   | 否 | 内容ID             |
-| contentLocation         | string                               | 是   | 否 | 内容位置           |
-| contentDisposition      | [DispositionType](#dispositiontype8) | 是   | 否 | 内容处理           |
-| contentTransferEncoding | string                               | 是   | 否 | 内容传输编码       |
-| contentType             | string                               | 是   | 否 | 内容类型           |
-| isSmil                  | boolean                              | 是   | 否 | 同步多媒体集成语言 |
-| path                    | string                               | 是   | 是 | 路径               |
-| inBuff                  | Array<number\>                       | 是   | 是 | 缓冲区中           |
-| fileName                | string                               | 是   | 是 | 文件名             |
-| charset                 | [MmsCharSets](#mmscharsets8)         | 是   | 是 | 字符集             |
+| contentId               | string                               | 否   | 否 | 内容ID             |
+| contentLocation         | string                               | 否   | 否 | 内容位置           |
+| contentDisposition      | [DispositionType](#dispositiontype8) | 否   | 否 | 内容处理           |
+| contentTransferEncoding | string                               | 否   | 否 | 内容传输编码       |
+| contentType             | string                               | 否   | 否 | 内容类型           |
+| isSmil                  | boolean                              | 否   | 否 | 同步多媒体集成语言 |
+| path                    | string                               | 否   | 是 | 路径               |
+| inBuff                  | Array<number\>                       | 否   | 是 | 缓冲区中           |
+| fileName                | string                               | 否   | 是 | 文件名             |
+| charset                 | [MmsCharSets](#mmscharsets8)         | 否   | 是 | 字符集             |
 
 ## MmsAddress<sup>8+</sup>
 
@@ -2215,8 +2215,8 @@ sms.getSmsShortCodeType(slotId, destAddr)
 
 |   名称  | 类型                         | 只读 | 可选 | 说明   |
 | ------- | ---------------------------- | ---- | ---- | ------ |
-| address | string                       | 是   | 否 | 地址   |
-| charset | [MmsCharSets](#mmscharsets8) | 是   | 否 | 字符集 |
+| address | string                       | 否   | 否 | 地址   |
+| charset | [MmsCharSets](#mmscharsets8) | 否   | 否 | 字符集 |
 
 ## MessageType<sup>8+</sup>
 
@@ -2329,11 +2329,11 @@ sms.getSmsShortCodeType(slotId, destAddr)
 
 |      名称      | 类型                 | 只读 | 可选 | 说明         |
 | -------------- | -------------------- | ---- | ---- | ------------ |
-| slotId         | number               | 是   | 否 | 卡槽ID       |
-| enable         | boolean              | 是   | 否 | 可行         |
-| startMessageId | number               | 是   | 否 | 消息起始ID   |
-| endMessageId   | number               | 是   | 否 | 消息结束ID   |
-| ranType        | [RanType](#rantype7) | 是   | 否 | 设备网络制式 |
+| slotId         | number               | 否   | 否 | 卡槽ID       |
+| enable         | boolean              | 否   | 否 | 可行         |
+| startMessageId | number               | 否   | 否 | 消息起始ID   |
+| endMessageId   | number               | 否   | 否 | 消息结束ID   |
+| ranType        | [RanType](#rantype7) | 否   | 否 | 设备网络制式 |
 
 ## SimMessageStatus<sup>7+</sup>
 
@@ -2403,10 +2403,10 @@ SIM卡消息选项。
 
 |  名称  | 类型                                   | 只读 | 可选 | 说明           |
 | ------ | -------------------------------------- | ---- | --- | -------------- |
-| slotId | number                                 | 是   | 否 | 卡槽ID         |
-| smsc   | string                                 | 是   | 否 | 短消息业务中心 |
-| pdu    | string                                 | 是   | 否 | 协议数据单元   |
-| status | [SimMessageStatus](#simmessagestatus7) | 是   | 否 | 状态           |
+| slotId | number                                 | 否   | 否 | 卡槽ID         |
+| smsc   | string                                 | 否   | 否 | 短消息业务中心 |
+| pdu    | string                                 | 否   | 否 | 协议数据单元   |
+| status | [SimMessageStatus](#simmessagestatus7) | 否   | 否 | 状态           |
 
 ## UpdateSimMessageOptions<sup>7+</sup>
 
@@ -2418,11 +2418,11 @@ SIM卡消息选项。
 
 |   名称    | 类型                                   | 只读 | 可选 | 说明           |
 | --------- | -------------------------------------- | ---- | ---- | -------------- |
-| slotId    | number                                 | 是   | 否 | 卡槽ID         |
-| msgIndex  | number                                 | 是   | 否 | 消息索引       |
-| newStatus | [SimMessageStatus](#simmessagestatus7) | 是   | 否 | 新状态         |
-| pdu       | string                                 | 是   | 否 | 协议数据单元   |
-| smsc      | string                                 | 是   | 否 | 短消息业务中心 |
+| slotId    | number                                 | 否   | 否 | 卡槽ID         |
+| msgIndex  | number                                 | 否   | 否 | 消息索引       |
+| newStatus | [SimMessageStatus](#simmessagestatus7) | 否   | 否 | 新状态         |
+| pdu       | string                                 | 否   | 否 | 协议数据单元   |
+| smsc      | string                                 | 否   | 否 | 短消息业务中心 |
 
 ## SimShortMessage<sup>7+</sup>
 
@@ -2434,9 +2434,9 @@ SIM卡短消息。
 
 |       名称       | 类型                                   | 只读 | 可选 | 说明          |
 | ---------------- | -------------------------------------- | ---- | ---- | ------------- |
-| shortMessage     | [ShortMessage](js-apis-sms.md#shortmessage)          | 是   | 否 | 短消息        |
-| simMessageStatus | [SimMessageStatus](#simmessagestatus7) | 是   | 否 | SIM卡消息状态 |
-| indexOnSim       | number                                 | 是   | 否 | SIM卡索引     |
+| shortMessage     | [ShortMessage](js-apis-sms.md#shortmessage)          | 否   | 否 | 短消息        |
+| simMessageStatus | [SimMessageStatus](#simmessagestatus7) | 否   | 否 | SIM卡消息状态 |
+| indexOnSim       | number                                 | 否   | 否 | SIM卡索引     |
 
 ## MmsDeliveryInd<sup>8+</sup>
 
@@ -2448,11 +2448,11 @@ SIM卡短消息。
 
 |    名称   | 类型                               | 只读 | 可选 | 说明   |
 | --------- | ---------------------------------- | ---- | --- | ------ |
-| messageId | string                             | 是   | 否 | 消息ID |
-| date      | number                             | 是   | 否 | 日期   |
-| to        | Array<[MmsAddress](#mmsaddress8)\> | 是   | 否 | 发送至 |
-| status    | number                             | 是   | 否 | 状态   |
-| version   | [MmsVersionType](#mmsversiontype8) | 是   | 否 | 版本   |
+| messageId | string                             | 否   | 否 | 消息ID |
+| date      | number                             | 否   | 否 | 日期   |
+| to        | Array<[MmsAddress](#mmsaddress8)\> | 否   | 否 | 发送至 |
+| status    | number                             | 否   | 否 | 状态   |
+| version   | [MmsVersionType](#mmsversiontype8) | 否   | 否 | 版本   |
 
 ## MmsRespInd<sup>8+</sup>
 
@@ -2464,10 +2464,10 @@ SIM卡短消息。
 
 |     名称      | 类型                               | 只读 | 可选 | 说明     |
 | ------------- | ---------------------------------- | ---- | --- | -------- |
-| transactionId | string                             | 是   | 否 | 事件ID   |
-| status        | number                             | 是   | 否 | 状态     |
-| version       | [MmsVersionType](#mmsversiontype8) | 是   | 否 | 版本     |
-| reportAllowed | [ReportType](#reporttype8)         | 是   | 否 | 允许报告 |
+| transactionId | string                             | 否   | 否 | 事件ID   |
+| status        | number                             | 否   | 否 | 状态     |
+| version       | [MmsVersionType](#mmsversiontype8) | 否   | 否 | 版本     |
+| reportAllowed | [ReportType](#reporttype8)         | 否   | 否 | 允许报告 |
 
 ## SmsSegmentsInfo<sup>8+</sup>
 
@@ -2479,10 +2479,10 @@ SIM卡短消息。
 
 |        名称          | 类型                                     | 只读 | 可选 | 说明         |
 | -------------------- | ---------------------------------------- | ---- | ---- | ------------ |
-| splitCount           | number                                   | 是   | 否 | 拆分计数     |
-| encodeCount          | number                                   | 是   | 否 | 编码计数     |
-| encodeCountRemaining | number                                   | 是   | 否 | 剩余编码计数 |
-| scheme               | [SmsEncodingScheme](#smsencodingscheme8) | 是   | 否 | 短信编码方案 |
+| splitCount           | number                                   | 否   | 否 | 拆分计数     |
+| encodeCount          | number                                   | 否   | 否 | 编码计数     |
+| encodeCountRemaining | number                                   | 否   | 否 | 剩余编码计数 |
+| scheme               | [SmsEncodingScheme](#smsencodingscheme8) | 否   | 否 | 短信编码方案 |
 
 ## SmsShortCodeType<sup>23+</sup>
 
