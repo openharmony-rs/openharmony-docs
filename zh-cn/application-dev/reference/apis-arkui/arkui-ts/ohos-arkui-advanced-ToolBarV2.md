@@ -449,8 +449,8 @@ ToolBarV2SymbolGlyphOptions定义Symbol图标的属性。
 | 名称      | 值 | 说明                                                   |
 | --------- | - | ------------------------------------------------------ |
 | MAIN      | 0 | 中间区域（默认）。适用于主内容区域显示的主要工具栏操作。水平布局时对应中间区域，垂直布局时对应中间区域。 |
-| LEADING   | 1 | 前导半区。适用于在主内容之前放置的主要操作。水平布局时对应左侧，垂直布局时对应顶部。           |
-| TRAILING  | 2 | 尾随半区。适用于在主内容之后放置的次要或溢出操作。水平布局时对应右侧，垂直布局时对应底部。      |
+| LEADING   | 1 | 前导半区。适用于在主内容之前放置的主要操作。水平布局时对应左侧区域，垂直布局时对应顶部区域。           |
+| TRAILING  | 2 | 尾随半区。适用于在主内容之后放置的次要或溢出操作。水平布局时对应右侧区域，垂直布局时对应底部区域。      |
 
 **示例：**
 
@@ -496,7 +496,7 @@ ToolBarV2SymbolGlyphOptions定义Symbol图标的属性。
 | id                       | string                                            | 否   | 是   | 工具栏子项的唯一标识。<br />默认值：undefined。<br />值为undefined时，不设置唯一标识。<br />装饰器类型：@Trace                                                                                                                                                                        |
 | itemSize                 | [Size](../js-apis-arkui-graphics.md#size)          | 否   | 是   | 工具栏子项的尺寸（宽×高）。<br />水平方向：56vp（宽）× 48vp（高）；垂直方向：48vp（宽）× 56vp（高）。<br />默认值：主轴56vp × 交叉轴48vp。<br />装饰器类型：@Trace                                                              |
 | isShowSeparator          | boolean                                           | 否   | 是   | 是否在该子项后显示分割线。true表示在该子项后显示分割线（工具栏最后一个子项后不显示）；false表示在该子项后不显示分割线。<br />默认值：false。<br />装饰器类型：@Trace                                                                                          |
-| isShowText               | boolean                                           | 否   | 是   | 是否显示子项的文本内容。true表示显示子项的文本内容；false表示不显示content指定的文本，但content仍用于无障碍和溢出菜单识别。<br />默认值：true。<br />装饰器类型：@Trace                                   |
+| isShowText               | boolean                                           | 否   | 是   | 是否显示子项的文本内容。true表示显示子项的文本内容；false表示不显示content指定的文本，但content仍用于无障碍和溢出菜单识别。在纯图标显示的场景使用。<br />默认值：true。<br />装饰器类型：@Trace                                   |
 | titleConfigs             | [ToolbarV2TitleConfigs](#toolbarv2titleconfigs) | 否   | 是   | 高级工具栏标题配置。设置后，该子项作为工具栏标题渲染，不再显示为普通子项，仅在水平布局时生效。<br />多个子项同时设置时，标题内容与样式以数组中第一个配置为准，建议仅在一个子项上设置。<br />默认值：undefined。<br />值为undefined时，该子项不渲染为标题。<br />装饰器类型：@Trace |
 | isShowOverflowMenu       | boolean                                           | 否   | 是   | 是否将该子项作为工具栏的溢出菜单按钮。true表示该子项作为溢出菜单按钮，当存在被折叠的子项时显示，点击后弹出溢出菜单；false表示不作为溢出菜单按钮。<br />该子项的icon为[ToolBarV2SymbolGlyph](#toolbarv2symbolglyph)时作为按钮图标，否则显示默认的更多图标。作为溢出菜单按钮时，该子项的action不生效。<br />建议仅在一个[ToolbarV2ItemPlacement](#toolbarv2itemplacement)为TRAILING的子项上设置。<br />默认值：false。<br />装饰器类型：@Trace |
 | groupID                  | string                                            | 否   | 是   | 分组标识。具有相同非空groupID的子项将作为一个可视分组渲染。分组级别的配置从数组中携带该groupID的第一个子项读取。<br />默认值：undefined。<br />值为undefined时，该子项不参与分组。<br />装饰器类型：@Trace                                                              |
