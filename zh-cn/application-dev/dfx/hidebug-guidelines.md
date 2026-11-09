@@ -183,7 +183,7 @@ HiDebug可用于获取VM内存数据、GC统计数据及VM堆转储。
 | hidebug.dumpJsHeapData | 使用同步方式导出虚拟机堆，辅助[JS内存泄漏分析](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-js-memleak-detection)。<br/>**说明**：从API version 24开始，该接口支持清除nodeId缓存。 |
 | hidebug.getAppMemoryLimit | 获取应用程序进程内存限制，其中vmHeapLimit为当前线程对应的虚拟机堆大小限制，vmTotalHeapSize为当前进程所有虚拟机堆总和大小的限制。 |
 | hidebug.getAppVMObjectUsedSize | 获取当前虚拟机中ArkTS对象所占用的内存大小。<br/>**说明**：从API version 21开始，支持该接口。 |
-| hidebug.getAppSharedHeapObjectUsedSize | 获取当前虚拟机中ArkTS共享堆对象的内存占用。<br/>**说明**：从API version 26.1.0开始，支持该接口。|
+| hidebug.getAppSharedHeapObjectUsedSize | 获取当前虚拟机中ArkTS共享堆对象的内存占用。<br/>**说明**：从API版本26.1.0开始，支持该接口。|
 
 ## 获取应用Trace记录信息
 
