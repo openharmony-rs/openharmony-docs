@@ -1843,9 +1843,7 @@ With this permission, the application can mark specified components as restricte
 
 Allows an application to intercept input events.
 
-<!--RP122-->
-This permission can be applied when an AI agent needs to intercept user input.
-<!--RP122End-->
+<!--RP122--><!--RP122End-->
 
 **Permission level**: system_basic
 
