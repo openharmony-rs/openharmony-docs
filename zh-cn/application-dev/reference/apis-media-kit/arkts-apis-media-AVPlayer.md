@@ -828,13 +828,15 @@ checkSupportPlaybackCommand(command: PlaybackCommand): Promise\<boolean>
 
 使用场景：播放前查询当前片源是否支持seek或调整播放速率等播控操作，以便应用决定是否展示或启用对应的播控入口。
 
-**起始版本：** 26.1.0
-
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
@@ -846,7 +848,7 @@ checkSupportPlaybackCommand(command: PlaybackCommand): Promise\<boolean>
 
 | 类型           | 说明                                       |
 | -------------- | ------------------------------------------ |
-| Promise\<boolean> | Promise对象，返回查询结果。**true**表示可以执行该命令；**false**表示不允许执行该命令。 |
+| Promise\<boolean> | Promise对象。返回true表示可以执行该命令；返回false表示不可以执行该命令。 |
 
 **错误码：**
 
@@ -854,7 +856,7 @@ checkSupportPlaybackCommand(command: PlaybackCommand): Promise\<boolean>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. |
+| 5400102  | Operation not allowed. If this function is invoked before Prepare(), it is returned. |
 
 **示例：**
 
