@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=f319e3e62d6356bf78f31e2e8f7ba3927caddf1e translatedAt=2026-07-29T10:50:43.764Z pushedAt=2026-07-29T12:40:37.025Z -->
+<!-- md-trans-meta sourceCommit=b3002ba9e170e60c2ca2ddd623c2ab4f4030ff0d translatedAt=2026-11-05T00:54:37.956Z pushedAt=2026-07-29T12:40:37.025Z nl=2 -->
 
 ## Overview
 
@@ -93,14 +93,14 @@ The source code corresponding to the jsoncpp library file in this sample project
 
 Edit the **napi_init.cpp** file under **entry > src > main > cpp** in the project to define the functions related to the watcher of the **onReceive** type:
 
-   <!-- @[App_Hicollie_Watcher_R_ptr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[App_Hicollie_Watcher_R_ptr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) --> 
 
    ``` C++
    // Define a variable to cache the pointer to the created watcher.
    static HiAppEvent_Watcher *appHicollieWatcherR;
    ```
 
-   <!-- @[App_Hicollie_OnReceive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) --> 
+   <!-- @[App_Hicollie_OnReceive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->  
 
    ``` C++
    static void OnReceiveAppHicollie(const struct HiAppEvent_AppEventGroup *appEventGroups, int i, int j)
@@ -172,7 +172,10 @@ Edit the **napi_init.cpp** file under **entry > src > main > cpp** in the projec
        // Set the implemented callback. After receiving the event, the watcher immediately triggers the OnReceive callback.
        OH_HiAppEvent_SetWatcherOnReceive(appHicollieWatcherR, AppHicollieOnReceive);
        // Add a watcher to listen for the specified event.
-       OH_HiAppEvent_AddWatcher(appHicollieWatcherR);
+       int ret = OH_HiAppEvent_AddWatcher(appHicollieWatcherR);
+       if (ret != 0) {
+           OH_LOG_ERROR(LogType::LOG_APP, "HiAppEvent AddWatcher failed, ret=%{public}d", ret);
+       }
        return {};
    }
    ```
@@ -181,14 +184,14 @@ Edit the **napi_init.cpp** file under **entry > src > main > cpp** in the projec
 
 Edit the **napi_init.cpp** file under **entry > src > main > cpp** in the project to define the functions related to the watcher of the **onTrigger** type:
 
-   <!-- @[App_Hicollie_Watcher_T_ptr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[App_Hicollie_Watcher_T_ptr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) --> 
 
    ``` C++
    // Define a variable to cache the pointer to the created watcher.
    static HiAppEvent_Watcher *appHicollieWatcherT;
    ```
 
-   <!-- @[App_Hicollie_Trigger](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) --> 
+   <!-- @[App_Hicollie_Trigger](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->  
 
    ``` C++
    // Implement the callback function used to return the listened events. The content pointed to by the events pointer is valid only in this function.
@@ -263,7 +266,10 @@ Edit the **napi_init.cpp** file under **entry > src > main > cpp** in the projec
        // Set the conditions for triggering the subscription callback. For example, trigger this onTrigger callback when the number of new event logs is 1.
        OH_HiAppEvent_SetTriggerCondition(appHicollieWatcherT, 1, 0, 0);
        // Add a watcher to listen for the specified event.
-       OH_HiAppEvent_AddWatcher(appHicollieWatcherT);
+       int ret = OH_HiAppEvent_AddWatcher(appHicollieWatcherT);
+       if (ret != 0) {
+           OH_LOG_ERROR(LogType::LOG_APP, "HiAppEvent AddWatcher failed, ret=%{public}d", ret);
+       }
        return {};
    }
    ```
@@ -279,7 +285,7 @@ Edit the **napi_init.cpp** file under **entry > src > main > cpp** in the projec
    #include "hicollie/hicollie.h"
    ```
 
-   <!-- @[Hicollie_Set_Timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[Hicollie_Set_Timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) --> 
 
    ``` C++
    // Define the callback function.
@@ -298,6 +304,8 @@ Edit the **napi_init.cpp** file under **entry > src > main > cpp** in the projec
            OH_LOG_INFO(LogType::LOG_APP, "HiCollieTimer taskId: %{public}d", id); // Print the task ID.
            sleep (2); // Simulate a time-consuming function to block the thread for 2s.
            OH_HiCollie_CancelTimer (id); // Cancel the registered timer based on the ID.
+       } else {
+           OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_SetTimer failed, errorCode is %{public}d", errorCode);
        }
        return nullptr;
    }

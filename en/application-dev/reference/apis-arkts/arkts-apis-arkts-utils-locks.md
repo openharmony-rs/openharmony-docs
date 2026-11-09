@@ -1,16 +1,17 @@
-# ArkTSUtils.locks
+# namespace (locks)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @dwhuawei-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=a6bec7c43678aba70b34d22e9678c1212be66af2 translatedAt=2026-11-04T10:37:39.193Z pushedAt=2026-11-04T10:41:06.756Z nl=1 -->
 
 To avoid data races between concurrent instances, the ArkTS common library introduces **AsyncLock**. Passing **AsyncLock** objects by reference across concurrent instances is supported.
 
 ArkTS supports asynchronous operations, and blocking locks are prone to deadlocks. Therefore, only asynchronous locks (non-blocking locks) are used in ArkTS.
 
-The method that uses an asynchronous lock must be marked as **async**, and the caller must use **await** in the call to ensure the correct call sequence. As a result, all outer functions are marked as **async**.
+Methods that use asynchronous locks must be marked as async, and the caller must use await to wait for the call result to ensure correct timing. As a result, all outer calling functions must be marked as async.
 
 > **NOTE**
 >
@@ -21,7 +22,7 @@ The method that uses an asynchronous lock must be marked as **async**, and the c
 ## Modules to Import
 
 ```ts
-import { ArkTSUtils } from '@kit.ArkTS'
+import { ArkTSUtils } from '@kit.ArkTS';
 ```
 
 ## AsyncLockCallback
@@ -59,13 +60,13 @@ class A {
     let lock: ArkTSUtils.locks.AsyncLock = ArkTSUtils.locks.AsyncLock.request("lock_1");
     return lock.lockAsync(() => {
       return this.count_;
-    })
+    });
   }
   async setCount(count: number) {
     let lock: ArkTSUtils.locks.AsyncLock = ArkTSUtils.locks.AsyncLock.request("lock_1");
     await lock.lockAsync(() => {
       this.count_ = count;
-    })
+    });
   }
 }
 
@@ -77,18 +78,18 @@ class A {
   async getCount(): Promise<number> {
     return this.lock_.lockAsync(() => {
       return this.count_;
-    })
+    });
   }
   async setCount(count: number) {
     await this.lock_.lockAsync(() => {
       this.count_ = count;
-    })
+    });
   }
 }
 
 @Concurrent
 async function foo(a: A) {
-  await a.setCount(10)
+  await a.setCount(10);
 }
 ```
 
@@ -161,24 +162,31 @@ Queries information about an asynchronous lock.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401      | The input parameters are invalid. |
 | 10200030 | The lock does not exist. |
 
 **Example**
 
 ```ts
-// You have created a lock somewhere else.
-// let lock = ArkTSUtils.locks.AsyncLock.request("queryTestLock");
+// Query the information of an existing lock.
+let lock = ArkTSUtils.locks.AsyncLock.request("queryTestLock");
 let state = ArkTSUtils.locks.AsyncLock.query('queryTestLock');
-if (!state) {
-    throw new Error('Test failed: A valid state is expected, but the obtained state is '+ state);
-}
 let pending: ArkTSUtils.locks.AsyncLockInfo[] = state.pending;
 let held: ArkTSUtils.locks.AsyncLockInfo[] = state.held;
+// Output the number of locks currently in the pending state.
+console.info(`Number of pending locks: ${pending.length}`);
+// Output the number of locks currently in the held state.
+console.info(`Number of held locks: ${held.length}`);
+
+// Query the information of a nonexistent lock, which throws the error message: The lock does not exist.
+try {
+  let state1 = ArkTSUtils.locks.AsyncLock.query('queryTestLock1');
+} catch (e) {
+  console.error(`Error is: ${e}`);
+}
 ```
 
 ### queryAll
@@ -200,17 +208,19 @@ Queries information about all existing asynchronous locks.
 **Example**
 
 ```ts
+// Query the existing lock information.
+let lock1 = ArkTSUtils.locks.AsyncLock.request("queryTestLock1");
+let lock2 = ArkTSUtils.locks.AsyncLock.request("queryTestLock2");
 let states: ArkTSUtils.locks.AsyncLockState[] = ArkTSUtils.locks.AsyncLock.queryAll();
-if (states.length === 0) {
-    throw new Error('Test failed: At least one state is expected, but what got is ' + states.length);
-}
+// Output the current number of locks.
+console.info("The states size is " + states.length);
 ```
 
 ### lockAsync
 
 lockAsync\<T>(callback: AsyncLockCallback\<T>): Promise\<T>
 
-Performs an operation under a lock. This API acquires the lock, executes the callback, and releases the lock. The callback is executed asynchronously in the same thread where [lockAsync](#lockasync) was called.
+Executes an operation under the acquired lock. This method first acquires the lock, then calls the callback, and finally releases the lock. If the lock is already held by another task, the current request enters the waiting queue and acquires the lock in order after the lock is released. The callback is executed asynchronously on the same thread that calls [lockAsync](#lockasync).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -230,11 +240,10 @@ Performs an operation under a lock. This API acquires the lock, executes the cal
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401      | The input parameters are invalid. |
 | 10200030 | The lock does not exist. |
 
 **Example**
@@ -250,7 +259,7 @@ let p1 = lock.lockAsync<void>(() => {
 
 lockAsync\<T>(callback: AsyncLockCallback\<T>, mode: AsyncLockMode): Promise\<T>
 
-Performs an operation under a lock. This API acquires the lock, executes the callback, and releases the lock. The callback is executed asynchronously in the same thread where [lockAsync](#lockasync) was called.
+Executes an operation under the acquired lock. This method first acquires the lock, then calls the callback, and finally releases the lock. If the lock is already held by another task, the current request enters the waiting queue and acquires the lock in order after the lock is released. The callback is executed asynchronously on the same thread that calls [lockAsync](#lockasync).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -271,11 +280,10 @@ Performs an operation under a lock. This API acquires the lock, executes the cal
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401      | The input parameters are invalid. |
 | 10200030 | The lock does not exist. |
 
 **Example**
@@ -313,11 +321,10 @@ Performs an operation under a lock. This API acquires the lock, executes the cal
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 401      | The input parameters are invalid. |
 | 10200030 | The lock does not exist.     |
 | 10200031 | Timeout exceeded. |
 
@@ -454,7 +461,7 @@ Describes the information about a lock.
 | --------- | ------------------------------- | ---- | ---- | --------------------------------------------------------- |
 | name      | string                          | No  | No  | Name of the lock.                                               |
 | mode      | [AsyncLockMode](#asynclockmode) | No  | No  | Mode of the lock.                                               |
-| contextId | number                          | No  | No  | Context identifier of the caller of [AsyncLockMode](#asynclockmode).|
+| contextId | number                          | No   | No   | Execution context identifier of the caller of [AsyncLock](#asynclock). |
 
 ## AbortSignal
 
@@ -544,15 +551,15 @@ Asynchronously waits until notified. This API uses a promise to return the resul
 ```ts
 const conditionVariable: ArkTSUtils.locks.ConditionVariable = new ArkTSUtils.locks.ConditionVariable();
 conditionVariable.wait().then(() => {
-  console.info(`Thread being awakened, then continue...`); // Output logs upon awakening.
+  console.info(`Thread being awakened, then continue...`); // Output the log after being awakened.
 });
 ```
 
 ### waitFor<sup>18+</sup>
 
-waitFor(timeout : number) : Promise\<void>
+waitFor(timeout: number): Promise\<void>
 
-Asynchronously waits for a specified duration or until notified. This API uses a promise to return the result.
+Asynchronously enters the waiting state and continues execution after being woken up or after the waiting time elapses. Uses a Promise for asynchronous callback.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -562,7 +569,7 @@ Asynchronously waits for a specified duration or until notified. This API uses a
 
 | Name| Type  | Mandatory| Description      |
 | -------- | -------- | ---- | ---------- |
-| timeout | number | Yes  | Duration to wait, in ms. The value is a positive integer.|
+| timeout | number | Mandatory | Waiting time, in milliseconds, a positive integer. |
 
 **Return value**
 
@@ -575,13 +582,13 @@ Asynchronously waits for a specified duration or until notified. This API uses a
 ```ts
 const conditionVariable: ArkTSUtils.locks.ConditionVariable = new ArkTSUtils.locks.ConditionVariable();
 conditionVariable.waitFor(3000).then(() => {
-  console.info(`Thread being awakened, then continue...`); // Output logs upon awakening.
+  console.info(`Thread being awakened, then continue...`); // Output a log after being awakened.
 });
 ```
 
 ### notifyAll<sup>18+</sup>
 
-notifyAll() : void
+notifyAll(): void
 
 Notifies all waiting threads.
 
@@ -594,7 +601,7 @@ Notifies all waiting threads.
 ```ts
 const conditionVariable: ArkTSUtils.locks.ConditionVariable = new ArkTSUtils.locks.ConditionVariable();
 conditionVariable.waitFor(3000).then(() => {
-  console.info(`Thread being awakened, then continue...`); // Output logs upon awakening.
+  console.info(`Thread being awakened, then continue...`); // Output a log after being awakened.
 });
 // Notify all waiting threads.
 conditionVariable.notifyAll();
@@ -602,7 +609,7 @@ conditionVariable.notifyAll();
 
 ### notifyOne<sup>18+</sup>
 
-notifyOne() : void
+notifyOne(): void
 
 Notifies the first waiting thread.
 
@@ -615,7 +622,7 @@ Notifies the first waiting thread.
 ```ts
 const conditionVariable: ArkTSUtils.locks.ConditionVariable = new ArkTSUtils.locks.ConditionVariable();
 conditionVariable.waitFor(3000).then(() => {
-  console.info(`Thread a being awakened, then continue...`); // Output logs upon awakening.
+  console.info(`Thread a being awakened, then continue...`); // Output a log after being awakened.
 });
 // Notify the first waiting thread.
 conditionVariable.notifyOne();

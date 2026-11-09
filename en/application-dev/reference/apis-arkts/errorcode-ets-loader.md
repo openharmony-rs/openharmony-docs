@@ -1,14 +1,16 @@
 # Compilation Toolchain Error Codes
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @aftott-->
-<!--Designer: @hufeng20-->
+<!--Owner: @luchenxu; @calyx1111-->
+<!--Designer: @luchenxu; @calyx1111-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=25644a1e2449a1798b2b4e0c64932a5d012faf9d translatedAt=2026-11-04T10:38:24.230Z pushedAt=2026-11-04T10:44:46.332Z nl=1 -->
 
 > **NOTE**
 >
-> This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
+> Compiler toolchain error codes are used to identify various errors during the ArkTS compilation process, covering scenarios such as file import restrictions, module resolution, Kit configuration and import, compilation execution, and lazy import, helping developers quickly locate and resolve compilation-related issues.<br>
+> The following describes only the error codes specific to this module. For general error codes, see [General Error Code Description](../errorcode-universal.md).
 
 ## 10311001 Failed to Import ArkTS Files
 
@@ -22,7 +24,7 @@ It is forbidden to import ArkTS files to JS or TS files.
 
 **Possible Causes**
 
-ArkTS files have been imported in JS and TS files.
+In mixed-language project development, a JS or TS file references a module or interface in an ArkTS file through an import statement.
 
 **Solution**
 
@@ -59,7 +61,7 @@ The ${moduleRequest} kit does not have the corresponding configuration file in t
 
 **Possible Causes**
 
-1. The APIs of the kit are inconsistent with those in the SDK.
+1. The API version of the kit does not match the SDK version, or the interfaces provided by the kit do not exist in the SDK.
 2. The APIs of the kit are modified locally.
 
 **Solution**
@@ -71,11 +73,11 @@ The ${moduleRequest} kit does not have the corresponding configuration file in t
 
 **Error Message**
 
-Identifier `${this.importName}` comes from `${this.symbol.source}` which can not be imported in .ts file.
+Identifier `${importName}` comes from `${source}` which can not be imported in .ts file.
 
 **Description**
 
-The identifier ${this.importName} comes from ${this.symbol.source}. This identifier cannot be imported to a .ts file.
+The identifier `${importName}` comes from `${source}`, and this identifier cannot be imported in a .ts file.
 
 **Possible Causes**
 
@@ -83,17 +85,17 @@ An ArkTS file of the kit is imported to the TS file.
 
 **Solution**
 
-Remove the import statement or change the file name extension to .ets.
+Remove the import statement, or change the file extension to .ets. For example, rename the file `example.ts` to `example.ets`.
 
 ## 10311006 Failed to Export Imported Names from the Kit
 
 **Error Message**
 
-`${importName}` is not exported from Kit `${KitInfo.getCurrentKitName()}`.
+`${importName}` is not exported from Kit `${KitName}`.
 
 **Description**
 
-Kit ${importName} is not exported from ${KitInfo.getCurrentKitName()}.
+`${importName}` is not exported from Kit `${KitName}`.
 
 **Possible Causes**
 
@@ -102,8 +104,9 @@ Kit ${importName} is not exported from ${KitInfo.getCurrentKitName()}.
 
 **Solution**
 
-1. Make sure the kit API you are importing is consistent with the SDK version you are using, and the kit APIs are not modified locally.
-2. For details about the kit APIs, see <!--RP1-->[API Reference Document Description](../development-intro-api.md).<!--RP1End-->
+1. Make sure the kit APIs are consistent with the SDK.
+2. Make sure the kit APIs are not modified locally.
+3. For more details about the kit APIs, see <!--RP1-->[Development Guide](../development-intro-api.md).<!--RP1End-->
 
 ## 10311007 Failed to Import or Export Kit Namespaces
 
@@ -127,11 +130,11 @@ Replace the namespace import or export of the kit with a named import or export.
 
 **Error Message**
 
-Can not use empty import(side-effect import) statement with Kit `${(kitNode.moduleSpecifier as ts.StringLiteral).text.replace(/'|"/g, '')}`.
+Can not use empty import(side-effect import) statement with Kit `${KitName}`.
 
 **Description**
 
-Empty import (side-effect import) statements cannot be used in Kit ${(kitNode.moduleSpecifier as ts.StringLiteral).text.replace(/'|"/g, '')}.
+The empty import (side-effect import) statement cannot be used in the Kit `${KitName}`.
 
 **Possible Causes**
 
@@ -157,7 +160,7 @@ An error occurred during the execution of es2abc.
 
 **Solution**
 
-For details, see [es2abc Compiler Error Codes](errorcode-es2abc.md).
+Refer to [es2abc Compiler Error Codes](errorcode-es2abc.md) for handling.
 
 ## 10311010 Lazy Import Re-export Error
 
@@ -171,9 +174,10 @@ The lazy import of ${elementText} is re-exported.
 
 **Possible Causes**
 
-The lazy-imported ${elementText} lazy-imported is exported again.
+1. The lazily imported `${elementText}` is re-exported.
+2. The autoLazyImport switch is enabled, and the re-exported static import may be automatically converted to a lazy import.
 
 **Solution**
 
 1. Make sure lazily loaded named bindings are not re-exported.
-2. Check whether **autoLazyImport** is enabled.
+2. Check whether the autoLazyImport switch is enabled. After the autoLazyImport switch is enabled, some static imports may be automatically converted to lazy imports. If the named bindings of such an import are re-exported, this error is triggered. To disable this switch, set autoLazyImport to false in the project configuration file.

@@ -6,7 +6,7 @@
 <!--Designer: @pennyatmosphere-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-12T06:37:04.231Z pushedAt=2026-08-12T11:04:52.356Z -->
+<!-- md-trans-meta sourceCommit=b012a51a6084f7c49d451afbd0dd054409ee7026 translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 ## Overview
 
@@ -134,13 +134,13 @@ This section provides sample code for the three functions: OH_JSVM_TakeRawHeapSn
      JSVM_Status addRepeatStatus = OH_JSVM_SetHeapThresholdCallback(
          vm, threshold, OnHeapThresholdReached, testData);
      if (addRepeatStatus == JSVM_INVALID_ARG) {
-         OH_LOG_INFO(LOG_APP, "Set repeated callback failed (expected)");
+         OH_LOG_ERROR(LOG_APP, "Set repeated callback failed (expected)");
      }
  
      JSVM_Status addInvalidStatus = OH_JSVM_SetHeapThresholdCallback(
          vm, 0, OnHeapThresholdReached, testData);
      if (addInvalidStatus == JSVM_INVALID_ARG) {
-         OH_LOG_INFO(LOG_APP, "Set callback with 0 threshold failed (expected)");
+         OH_LOG_ERROR(LOG_APP, "Set callback with 0 threshold failed (expected)");
      }
  }
  
@@ -155,13 +155,13 @@ This section provides sample code for the three functions: OH_JSVM_TakeRawHeapSn
      JSVM_Status removeRepeatStatus = OH_JSVM_ClearHeapThresholdCallback(
          vm, threshold, OnHeapThresholdReached, testData);
      if (removeRepeatStatus == JSVM_INVALID_ARG) {
-         OH_LOG_INFO(LOG_APP, "Clear repeated callback failed (expected)");
+         OH_LOG_ERROR(LOG_APP, "Clear repeated callback failed (expected)");
      }
  
      JSVM_Status removeMismatchStatus = OH_JSVM_ClearHeapThresholdCallback(
          vm, 999999, OnHeapThresholdReached, testData);
      if (removeMismatchStatus == JSVM_INVALID_ARG) {
-         OH_LOG_INFO(LOG_APP, "Clear mismatch threshold callback failed (expected)");
+         OH_LOG_ERROR(LOG_APP, "Clear mismatch threshold callback failed (expected)");
      }
  }
  

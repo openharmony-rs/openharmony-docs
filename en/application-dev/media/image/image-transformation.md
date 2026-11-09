@@ -6,7 +6,7 @@
 <!--Designer: @yaozhupeng-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=ba3f6c99832577d149cf0c227912c266e5256745 translatedAt=2026-08-11T01:49:05.322Z pushedAt=2026-08-11T09:55:01.133Z -->
+<!-- md-trans-meta sourceCommit=8237b3ce2f52b25ad481c3dd8ddab13d041379ad translatedAt=2026-11-05T06:16:33.956Z pushedAt=2026-08-11T09:55:01.133Z nl=1 -->
 
 Image processing refers to a series of operations performed on the PixelMap, such as obtaining image information, cropping, scaling, translating, rotating, flipping, setting opacity, and reading and writing pixel data. These operations can be classified into image transformation and [PixelMap operation](image-pixelmap-operation.md). This topic describes the image transformation operations that you can perform.
 
@@ -75,8 +75,7 @@ For details about the APIs related to image transformation, see [Interface (Pixe
      <!-- @[pixelmap_translate_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
 
      ``` TypeScript
-     // Translate downward by 100.
-     // Translate rightward by 100.
+     // Translate rightward by 100 pixels and downward by 100 pixels.
      this.pixelMap.translate(100, 100).then(() => {
        // ...
      });

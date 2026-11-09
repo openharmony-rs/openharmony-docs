@@ -6,7 +6,7 @@
 <!--Designer: @Maplestroy91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=44da34c75e0877dd26e067a23f1dc0303066fdbb translatedAt=2026-07-31T01:32:14.076Z pushedAt=2026-07-31T07:39:23.302Z -->
+<!-- md-trans-meta sourceCommit=d4b5cb947deab3b2e503d34b9c14965b395b0c1f translatedAt=2026-11-05T00:50:31.276Z pushedAt=2026-07-31T07:39:23.302Z nl=2 -->
 
 hiperf is a command line tool that integrates multiple performance analysis capabilities, enabling you to identify system bottlenecks, locate software hotspots, optimize code efficiency, and collect and analyze runtime performance data.
 
@@ -325,7 +325,7 @@ Monitors the specified application and periodically prints the values of perform
 | --verbose | Outputs detailed information.| 
 | --dumpoptions | Displays details about all options in the list.| 
 | --control [command] | Controls the collection operation. The commands include **prepare**, **start**, and **stop**. This parameter cannot be used together with **-d**.<br>Note: This parameter is supported since API version 20.| 
-| -o | Sets the output file path. You can customize the file name.<br>For the default path, run the **hiperf stat -h/--help** command to view the description of the **-o** parameter.<br>This parameter must be used with **--control prepare**, and cannot be used with **--control**.<br>Note: This parameter is supported since API version 20.| 
+| -o | Sets the output file path. You can customize the file name.<br>For the default path, run the **hiperf stat -h/--help** command to view the description of the **-o** parameter.<br>This parameter must be used with **--control prepare**.<br>Note: This parameter is supported since API version 20.| 
 | -a | Collects the device performance data.|
 
 <!--RP2End-->

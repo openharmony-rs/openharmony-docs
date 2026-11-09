@@ -5,7 +5,7 @@
 <!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=3cba3d1071f73693662a910e0841fe04876df38d translatedAt=2026-09-28T02:37:01.903Z pushedAt=2026-09-29T07:23:12.551Z -->
+<!-- md-trans-meta sourceCommit=96f4a6288457dc7323c09f4157fef4291d5dc537 translatedAt=2026-11-05T00:59:45.665Z pushedAt=2026-09-29T07:23:12.551Z nl=2 -->
 
 The AudioCapturer is used to record Pulse Code Modulation (PCM) audio data. It is suitable if you have extensive audio development experience and want to implement more flexible recording features.
 
@@ -26,6 +26,8 @@ When an audio stream is in the working state (not in the released state), it occ
 ### How to Develop
 
 The following examples are code snippets. You can obtain the [complete sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS) via the link at the bottom right of the sample code.
+
+The complete sample demonstrates how to record audio using AudioCapturer and play the recorded audio after recording is complete.
 
 1. Set audio capture parameters and create an AudioCapturer instance. For details about the parameters, see [AudioCapturerOptions](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocaptureroptions8).
 
@@ -301,7 +303,7 @@ async function startRender(updateCallback?: (msg: string, isError: boolean) => v
   if (audioRenderer !== undefined) {
     let stateGroup = [audio.AudioState.STATE_PREPARED, audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
     if (stateGroup.indexOf(audioRenderer.state.valueOf()) === -1) { // Rendering can be started only when the state is one of prepared, paused, or stopped.
-      console.info(TAG + 'start failed');
+      console.error(TAG + 'start failed');
       return;
     }
     // Start rendering.
@@ -321,7 +323,7 @@ async function stopRender(updateCallback?: (msg: string, isError: boolean) => vo
     // Rendering can be stopped only when the renderer state is running or paused.
     if (audioRenderer.state.valueOf() !== audio.AudioState.STATE_RUNNING &&
       audioRenderer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
-      console.info('Renderer is not running or paused.');
+      console.error('Renderer is not running or paused.');
       return;
     }
     // Stop rendering.
@@ -340,7 +342,7 @@ async function releaseRender(updateCallback?: (msg: string, isError: boolean) =>
   if (audioRenderer !== undefined) {
     // Release can be performed only when the renderer state is not released.
     if (audioRenderer.state.valueOf() === audio.AudioState.STATE_RELEASED) {
-      console.info('Renderer already released');
+      console.error('Renderer already released');
       return;
     }
     // Release resources.
@@ -381,7 +383,7 @@ async function start(updateCallback?: (msg: string, isError: boolean) => void): 
       , audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
     // Recording can be started only when the AudioCapturer is in the STATE_PREPARED, STATE_PAUSED, or STATE_STOPPED state.
     if (stateGroup.indexOf(audioCapturer.state.valueOf()) === -1) {
-      console.info(`${TAG}: start failed`);
+      console.error(`${TAG}: start failed`);
       // ...
       return;
     }
@@ -444,7 +446,7 @@ async function stop(updateCallback?: (msg: string, isError: boolean) => void): P
     // The AudioCapturer can be stopped only when it is in the STATE_RUNNING or STATE_PAUSED state.
     if (audioCapturer.state.valueOf() !== audio.AudioState.STATE_RUNNING &&
       audioCapturer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
-      console.info(`${TAG}: Capturer is not running or paused`);
+      console.error(`${TAG}: Capturer is not running or paused`);
       // ...
       return;
     }
@@ -468,7 +470,7 @@ async function release(updateCallback?: (msg: string, isError: boolean) => void)
     // The AudioCapturer can be released only when it is not in the STATE_RELEASED or STATE_NEW state.
     if (audioCapturer.state.valueOf() === audio.AudioState.STATE_RELEASED ||
       audioCapturer.state.valueOf() === audio.AudioState.STATE_NEW) {
-      console.info(`${TAG}: Capturer already released`);
+      console.error(`${TAG}: Capturer already released`);
       // ...
       return;
     }

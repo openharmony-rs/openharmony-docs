@@ -8338,6 +8338,20 @@ With this permission, the application can connect to or disconnect from network 
 
 **Valid since**: 26.0.0
 
+## ohos.permission.CONTROL_IMAGEVIDEO_ANALYSIS
+
+Allows an application to trigger smart analysis for assets.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars | lite wearables
+
+**Valid since**: 26.0.1
+
 ## ohos.permission.CREATE_SIGN_CONTENT_TRUST
 
 Allows an application to create a content trust signature.
@@ -8814,6 +8828,34 @@ Allows a system application to control the on/off state of the instrument cluste
 
 **Valid since**: 26.0.1
 
+## ohos.permission.vehicle.HIMA_COOPERATE
+ 
+Allows an application to call the device-cloud synergy API to query and download resources and configuration files.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+ 
+## ohos.permission.vehicle.HIMA_DEVICE_AUTH
+ 
+Allows an application to call the genuine device authentication API to perform device authenticity verification.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+
 ## ohos.permission.vehicle.SHUTDOWN
 
 Allows a system application to turn off the vehicle cabin power.
@@ -8831,6 +8873,272 @@ Allows a system application to turn off the vehicle cabin power.
 ## ohos.permission.vehicle.KEEP_STANDBY
 
 Allows a system application to request keeping the vehicle cabin awake.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.CONNECTIVITY_USE_RESTRICTED_NETWORKS
+ 
+Allows an application to use restricted networks, such as internal networks and specific vehicle networks.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.INNER_NETWORK
+ 
+Allows an application to access the vehicle's internal networks.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.LOGIN_TSP
+
+Allows an application to call the login and logout APIs of the automotive cloud mobile service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.GET_TSP_ACCOUNT_INFO
+
+Allows an application to obtain Telematics Service Provider account information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.GET_TSP_SERVICE_TOKEN
+
+Allows an application to obtain the account service token issued by the Telematics Service Provider.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.GET_TSP_VEHICLE_APP_TOKEN
+
+Allows an application to obtain the vehicle application token issued by the Telematics Service Provider.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.GET_TSP_ACCOUNT_ROLE
+
+Allows an application to obtain the Telematics Service Provider account role.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.PUBLISH_ACMSCORE_EVENT
+
+Allows an application to publish automotive cloud mobile service events.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.SUBSCRIBE_ACMSCORE_EVENT
+
+Allows an application to subscribe to automotive cloud mobile service events.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.READ_HARDWARE_CONFIG
+
+Allows an application to read vehicle hardware information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.FACTORYRESET_WRITE_CONFIG
+
+Allows an application to restore the vehicle system to factory settings.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.DEVICE_INFO_WRITE
+
+Allows an application to configure parameters for devices attached to the vehicle.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.DEVICE_INFO_READ
+
+Allows an application to get parameters of devices attached to the vehicle.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.LICENSE_WRITE
+
+Allows an application to apply for a temporary vehicle license.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.LICENSE_READ
+
+Allows an application to get license-related information about the vehicle.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CURTAIN_WRITE
+
+Allows an application to set curtain mode and motion commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CURTAIN_READ
+
+Allows an application to get curtain mode and motion status.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CLUSTER_INFO_WRITE
+
+Allows an application to set the personalization parameters for the instrument cluster.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CLUSTER_INFO_READ
+
+Allows an application to get information related to instrument cluster personalization settings.
 
 **Permission level**: system_basic
 

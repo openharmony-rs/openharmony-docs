@@ -5,7 +5,7 @@
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=9337b894cc276e9d41c374e020c39c9ad5e59a9d translatedAt=2026-09-20T06:51:30.989Z pushedAt=2026-09-20T08:27:17.778Z -->
+<!-- md-trans-meta sourceCommit=6ea55b569873c1e56b6be083cc1e723f695ae222 translatedAt=2026-11-05T01:00:48.372Z pushedAt=2026-09-20T08:27:17.778Z nl=2 -->
 
 In ArkGraphics 3D, .shader files are based on the JSON format and must adhere to JSON syntax. These files consist of the following sections:
 

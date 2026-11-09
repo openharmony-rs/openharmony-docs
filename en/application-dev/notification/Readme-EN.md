@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-08T03:50:12.768Z pushedAt=2026-10-08T06:51:06.472Z -->
+<!-- md-trans-meta sourceCommit=8d44adacda1faf846bcca68aa4c8236e94941c79 translatedAt=2026-11-05T01:00:48.377Z pushedAt=2026-10-08T06:51:06.472Z nl=2 -->
 
 - [About This Kit](notification-overview.md)
 - [Requesting Notification Authorization](notification-enable.md)
@@ -36,3 +36,4 @@
 - [Glossary](notification-glossary.md)
 <!--RP1--><!--RP1End-->
 <!--RP2--><!--RP2End-->
+<!--RP3--><!--RP3End-->

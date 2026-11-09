@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=132342cdd19e09e8d1c7a964e48a57b6cf30fc8d translatedAt=2026-09-28T02:45:45.126Z pushedAt=2026-09-29T08:30:06.578Z -->
+<!-- md-trans-meta sourceCommit=416db6eb13a016384f62df8f06e9a44f2b2b3fc1 translatedAt=2026-11-05T06:16:33.952Z pushedAt=2026-09-29T08:30:06.578Z nl=1 -->
 
 ## Overview
 
@@ -127,7 +127,7 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
    - Pass the processed buffer to the ArkTS side through the callback for image display or storage (using a security component).
    - Unregister the callback when it is no longer required.
 
-     <!-- @[photo_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+     <!-- @[photo_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->    
      
      ``` C++
      // Save the buffer processing callback registered on the NAPI side.
@@ -135,7 +135,7 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
      {
          OH_LOG_INFO(LOG_APP, " RegisterBufferCb start");
          if (cb == nullptr) {
-             OH_LOG_INFO(LOG_APP, " RegisterBufferCb invalid error");
+             OH_LOG_ERROR(LOG_APP, " RegisterBufferCb invalid error");
              return CAMERA_INVALID_ARGUMENT;
          }
          g_bufferCb = cb;
@@ -226,6 +226,7 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
          }
      }
      
+     
      void OnPhotoAvailable(Camera_PhotoOutput *photoOutput, OH_PhotoNative *photo)
      {
          OH_LOG_INFO(LOG_APP, "OnPhotoAvailable start!");
@@ -272,7 +273,7 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
          OH_LOG_INFO(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback start!");
          Camera_ErrorCode ret = OH_PhotoOutput_RegisterPhotoAvailableCallback(photoOutput_, OnPhotoAvailable);
          if (ret != CAMERA_OK) {
-             OH_LOG_INFO(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback failed.");
+             OH_LOG_ERROR(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback failed.");
          }
          OH_LOG_INFO(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback return with ret code: %{public}d!",
              ret_);

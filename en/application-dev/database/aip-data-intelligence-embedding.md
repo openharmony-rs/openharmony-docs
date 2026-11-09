@@ -5,7 +5,7 @@
 <!--Designer: @fysun17; @AnruiWang; @xd_94-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=f10278f41af4fdd7115ef6b8827e0eaff1932642 translatedAt=2026-09-20T06:15:00.705Z pushedAt=2026-09-20T07:33:19.861Z -->
+<!-- md-trans-meta sourceCommit=68d43ca5b02177c1c3fdf58e6f700e3a3dd9570e translatedAt=2026-11-04T08:33:43.018Z pushedAt=2026-11-04T08:38:18.142Z nl=1 -->
 
 ## When to Use
 
@@ -71,7 +71,7 @@ The following table lists the APIs related to application data vectorization. Fo
 1. Import the required modules.
 
    <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    import { intelligence } from '@kit.ArkData';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -82,7 +82,7 @@ The following table lists the APIs related to application data vectorization. Fo
    - For PCs/2-in-1 devices: use the on-device embedding model. Configure the model version, whether to use NPU acceleration, and the model cache path. The sample code is as follows:
 
      <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
-
+     
      ``` TypeScript
      let textConfig: intelligence.ModelConfig = {
        version: intelligence.ModelVersion.BASIC_MODEL,
@@ -90,7 +90,7 @@ The following table lists the APIs related to application data vectorization. Fo
        cachePath: "/data"
      }
      let textEmbedding: intelligence.TextEmbedding;
-     let modelInfo:  intelligence.CloudModelInfo;
+     let modelInfo: intelligence.CloudModelInfo;
      ```
 
      <!-- @[aip_getTextEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
@@ -111,7 +111,7 @@ The following table lists the APIs related to application data vectorization. Fo
    - For phones and tablets: use the cloud-side embedding model. Call the getSupportedCloudModel method to obtain the cloud-side model information and configure the network policy for downloading the model. The sample code is as follows:
 
      <!-- @[aip_getSupportedCloudModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
-
+     
      ``` TypeScript
      intelligence.getSupportedCloudModel()
        .then((info: Array<intelligence.CloudModelInfo>) => {
@@ -119,6 +119,10 @@ The following table lists the APIs related to application data vectorization. Fo
          if (info.length > 0) {
            modelInfo = info[0];
          }
+       })
+       .catch((err: BusinessError) => {
+         console.error('Failed to get supported model and code is ' + err.code);
+         // ...
        })
      ```
 
@@ -146,7 +150,7 @@ The following table lists the APIs related to application data vectorization. Fo
    Use the **loadModel** method to load the text embedding model. The sample code is as follows:
 
    <!-- @[aip_loadTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    textEmbedding.loadModel()
      .then(() => {
@@ -164,7 +168,7 @@ The following table lists the APIs related to application data vectorization. Fo
    The sample code is as follows:
 
    <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    let splitConfig:intelligence.SplitConfig = {
      size: 10,
@@ -188,7 +192,7 @@ The following table lists the APIs related to application data vectorization. Fo
    The sample code is as follows:
 
    <!-- @[aip_getTextEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    let text = 'text';
    textEmbedding.getEmbedding(text)
@@ -218,7 +222,7 @@ The following table lists the APIs related to application data vectorization. Fo
    Use the **releaseModel** method to release the text embedding model. The sample code is as follows:
 
    <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    textEmbedding.releaseModel()
      .then(() => {
@@ -236,7 +240,7 @@ The following table lists the APIs related to application data vectorization. Fo
 1. Import the required module.
 
    <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    import { intelligence } from '@kit.ArkData';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -247,7 +251,7 @@ The following table lists the APIs related to application data vectorization. Fo
    Use the **getImageEmbeddingModel** method to obtain an image embedding model. The sample code is as follows:
 
    <!-- @[aip_getImageEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    let imageConfig: intelligence.ModelConfig = {
      version: intelligence.ModelVersion.BASIC_MODEL,
@@ -258,7 +262,7 @@ The following table lists the APIs related to application data vectorization. Fo
    ```
 
    <!-- @[aip_getImageEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    intelligence.getImageEmbeddingModel(imageConfig)
      .then((data: intelligence.ImageEmbedding) => {
@@ -277,7 +281,7 @@ The following table lists the APIs related to application data vectorization. Fo
    Use the **loadModel** method to load the image embedding model. The sample code is as follows:
 
     <!-- @[aip_loadImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
-
+    
     ``` TypeScript
     imageEmbedding.loadModel()
       .then(() => {
@@ -295,7 +299,7 @@ The following table lists the APIs related to application data vectorization. Fo
    Use the **getEmbedding** method to obtain the embedding vector of the given image. The sample code is as follows:
 
     <!-- @[aip_getImageEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
-
+    
     ``` TypeScript
     let image = 'file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg';
     imageEmbedding.getEmbedding(image)
@@ -314,7 +318,7 @@ The following table lists the APIs related to application data vectorization. Fo
    Use the **releaseModel** method to release the image embedding model. The sample code is as follows:
 
    <!-- @[aip_releaseImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    imageEmbedding.releaseModel()
      .then(() => {

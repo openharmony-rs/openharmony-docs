@@ -1,10 +1,11 @@
 # OH_Drawing_LineMetrics
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=3b75f30d038321e59d140485862ef0f48205e17e translatedAt=2026-11-04T10:31:01.910Z pushedAt=2026-11-04T10:32:16.948Z nl=1 -->
 
 ```c
 typedef struct OH_Drawing_LineMetrics {...} OH_Drawing_LineMetrics
@@ -37,3 +38,4 @@ This struct describes the measurement information about a line of text.
 | size_t startIndex                                            | Index of the first character in the line.                                        |
 | size_t endIndex                                              | Index of the last character in the line.                                        |
 | [OH_Drawing_Font_Metrics](capi-drawing-oh-drawing-font-metrics.md) firstCharMetrics | Measurement information of the first character.                                        |
+

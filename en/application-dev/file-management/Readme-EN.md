@@ -6,7 +6,7 @@
 <!--Designer: @Hun_Dun-->
 <!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=0c20469e58610438940464085fdd62df82c5b560 translatedAt=2026-09-14T09:19:17.125Z pushedAt=2026-09-15T13:11:57.482Z -->
+<!-- md-trans-meta sourceCommit=5c324d8cebcd101e27f10fa7be68a44f484a4863 translatedAt=2026-11-05T00:54:18.359Z pushedAt=2026-09-15T13:11:57.482Z nl=2 -->
 
 - [About This Kit](core-file-kit-intro.md)
 - Application Files<!--app-file-->
@@ -47,6 +47,9 @@
   - [Setting the Security Level of a Distributed File](set-security-label.md)
   - [Sharing and Accessing Files Across Devices](file-access-across-devices.md)
   - [Copying Files Across Devices](file-copy-across-devices.md)<!--RP1--><!--RP1End-->
+- Cloud Disk Foundation<!--clouddisk-foundation-->
+  - [Cloud Disk Foundation Overview](clouddisk-overview.md)
+  - [Cloud Disk Foundation Adaptation](clouddisk-guidelines.md)
 - File Compression and Decompression<!--compression-->
   - [Compression and Decompression Overview](archive-overview.md)
   - [Archive File Compression and Decompression (C/C++)](archive-file-compression-guidelines.md)

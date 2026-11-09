@@ -2,9 +2,10 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-11-04T11:54:02.509Z pushedAt=2026-11-04T11:55:27.709Z nl=1 -->
 
 ```c
 typedef struct {...} ArkWeb_ProxyObject
@@ -12,7 +13,7 @@ typedef struct {...} ArkWeb_ProxyObject
 
 ## Overview
 
-Defines a proxy object to be injected.
+ArkWeb_ProxyObject is a JavaScript proxy object struct injected into a web page. It organizes a group of related ArkWeb_ProxyMethod methods into an object and exposes them to the web frontend as a whole. This struct specifies the object name in JavaScript (objName), the method array (methodList), and the method count (size), enabling a Native app to expose a structured API set to the web page. The proxy object associates ArkWeb_ProxyMethod on the native side with method calls on the JavaScript side through a method mapping mechanism, supporting automatic conversion of method parameters and return values.
 
 **Since**: 12
 
@@ -26,6 +27,8 @@ Defines a proxy object to be injected.
 
 | Name                                      | Description|
 |------------------------------------------| -- |
-| const char* objName                      | Pointer to the object name to be injected.|
+| const char* objName                      | Name of the injected object. The name must follow JavaScript identifier rules and must not contain special characters. |
 | const [ArkWeb_ProxyMethod](capi-web-arkweb-proxymethod.md)* methodList | Pointer to the method struct array of an object to be injected.|
-| size_t size                              | Length of the method struct array.|
+| size_t size                              | Length of the method struct array, which must be consistent with the actual number of elements in the methodList array. |
+
+

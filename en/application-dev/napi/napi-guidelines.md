@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:07:29.425Z pushedAt=2026-09-16T08:19:10.226Z -->
+<!-- md-trans-meta sourceCommit=d7fa09432e1e80aed3d199cb6f51a7f67e1717ba translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 ## Obtaining Arguments Passed by JS
 
@@ -520,7 +520,7 @@ If the semantics are violated in strict mode (default), an error will be thrown.
 
 ## Reference
 
-[Communication Between Native Child Threads and the UI Main Thread](https://developer.huawei.com/consumer/en/doc/best-practices-V5/bpta-native-sub-main-comm-V5)
+[Communication Between Native Child Threads and the UI Main Thread](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/native_subthread-to-uimain)
 
 [How do I directly call ArkTS APIs in a C++ subthread on the native side without triggering callbacks on the ArkTS side?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs-V5/faqs-ndk-8-V5)
 

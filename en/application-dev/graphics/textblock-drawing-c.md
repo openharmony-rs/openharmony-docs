@@ -6,13 +6,13 @@
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=39a9e003216daede3f45c712299412a7891e82ae translatedAt=2026-09-01T02:31:26.858Z pushedAt=2026-09-02T01:59:20.283Z -->
+<!-- md-trans-meta sourceCommit=24c8295b341559f93154a8b98db4410e65f15465 translatedAt=2026-11-05T01:00:48.368Z pushedAt=2026-09-02T01:59:20.283Z nl=2 -->
 
 ## Overview
 
 A TextBlob is a collection of text. You can draw both a single character and a large block of text by using TextBlobs.
 
-In addition to the basic TextBlob drawing, you can add various drawing effects to texts. Common TextBlob drawing scenarios include [text stroke](#text-stroke) and [text gradient](#text-gradient). For more effects, see [Overview of Drawing Effects](drawing-effect-overview.md).
+In addition to the basic TextBlob drawing, you can add various drawing effects to texts. Common TextBlob drawing scenarios include [text stroke](#text-stroke), [text gradient](#text-gradient), and [font fallback](#font-fallback). For more effects, see [Overview of Drawing Effects](drawing-effect-overview.md).
 
 This topic does not involve text measurement and typography. For details about how to handle text drawing requirements, see [Introduction to Text Development](text-overview.md).
 
@@ -306,6 +306,343 @@ OH_Drawing_FontDestroy(font);
 > **NOTE**
 >
 > If `OH_Drawing_CanvasDrawSingleCharacterWithFeatures` and `OH_Drawing_FontMeasureSingleCharacter` are used together, or `OH_Drawing_CanvasDrawSingleCharacter` and `OH_Drawing_FontMeasureSingleCharacterWithFeatures` are used together, font drawing may overlap.
+
+## Font Fallback
+
+The specified font may not cover all characters in the text. For example, a font containing only Latin characters cannot display Chinese or Arabic characters. If you draw text directly with this font, unsupported characters cannot be displayed correctly. Font fallback automatically finds system fonts that support these characters, maintaining a consistent font style while displaying the complete text. You do not need to determine character coverage or specify separate fonts for different languages. If no system font supports a character, that character still cannot be displayed correctly.
+
+Use the APIs in this section when character coverage matters or when text contains multiple languages. [Single-Character Drawing](#single-character-drawing) also supports font fallback for character-by-character rendering. This section covers font fallback for TextBlob creation, glyph conversion, and text width measurement. For API details, see [drawing_text_blob.h](../reference/apis-arkgraphics2d/capi-drawing-text-blob-h.md) and [drawing_font.h](../reference/apis-arkgraphics2d/capi-drawing-font-h.md).
+
+> **NOTE**
+>
+> Font fallback is supported since API version 26.0.1.
+
+### Font Fallback for TextBlob Drawing
+
+If the specified font does not cover all characters in the text, use [OH_Drawing_TextBlobCreateFromTextWithFallback()](../reference/apis-arkgraphics2d/capi-drawing-text-blob-h.md#oh_drawing_textblobcreatefromtextwithfallback), [OH_Drawing_TextBlobCreateFromPosTextWithFallback()](../reference/apis-arkgraphics2d/capi-drawing-text-blob-h.md#oh_drawing_textblobcreatefrompostextwithfallback) or [OH_Drawing_TextBlobCreateFromStringWithFallback()](../reference/apis-arkgraphics2d/capi-drawing-text-blob-h.md#oh_drawing_textblobcreatefromstringwithfallback) to create TextBlobs with font fallback. These APIs automatically find fallback system fonts for unsupported characters and group the text by font to create an array of TextBlobs. Draw all TextBlobs at the same coordinate origin to display the complete text.
+
+The main steps are as follows: create a typeface and a font and set the typeface; call a fallback API to obtain a TextBlob array; draw every TextBlob at the same coordinate origin; and release the TextBlob array resources.
+
+The following example uses [OH_Drawing_TextBlobCreateFromStringWithFallback()](../reference/apis-arkgraphics2d/capi-drawing-text-blob-h.md#oh_drawing_textblobcreatefromstringwithfallback) to create a TextBlob array with font fallback from a string and draw it:
+
+<!-- @[ndk_graphics_draw_textblob_string_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
+// Create a typeface from a file.
+OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFile(
+    "/system/fonts/NotoSansArmenian[wdth,wght].ttf", 0);
+// Create a font object.
+OH_Drawing_Font *font = OH_Drawing_FontCreate();
+// Set the typeface for the font.
+OH_Drawing_FontSetTypeface(font, typeface);
+// Set the font size.
+OH_Drawing_FontSetTextSize(font, value100_);
+// Text to draw.
+const char *str = "Hello世界";
+// Declare output parameters.
+OH_Drawing_TextBlob **textBlobs = nullptr;
+uint32_t textBlobsCount = 0;
+// Create a TextBlob array with font fallback.
+OH_Drawing_TextBlobCreateFromStringWithFallback(str, font, TEXT_ENCODING_UTF8,
+    &textBlobs, &textBlobsCount);
+// Draw each TextBlob in the array at the same origin.
+for (uint32_t i = 0; i < textBlobsCount; i++) {
+    OH_Drawing_CanvasDrawTextBlob(canvas, textBlobs[i], value200_, value800_);
+}
+// Destroy the TextBlob array.
+OH_Drawing_TextBlobsArrayDestroy(textBlobs, textBlobsCount);
+// Release the font object.
+OH_Drawing_FontDestroy(font);
+// Release the typeface object.
+OH_Drawing_TypefaceDestroy(typeface);
+```
+
+| Without fallback: OH_Drawing_TextBlobCreateFromString() | With fallback: OH_Drawing_TextBlobCreateFromStringWithFallback() |
+| -------- | -------- |
+| ![Without font fallback](figures/OH_Drawing_TextBlobCreateFromString.png) | ![With font fallback](figures/OH_Drawing_TextBlobCreateFromStringWithFallback.png) |
+
+The following example uses [OH_Drawing_TextBlobCreateFromTextWithFallback()](../reference/apis-arkgraphics2d/capi-drawing-text-blob-h.md#oh_drawing_textblobcreatefromtextwithfallback) to create a TextBlob array with font fallback from text and draw it:
+
+<!-- @[ndk_graphics_draw_textblob_text_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
+// Create a typeface from a file.
+OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFile(
+    "/system/fonts/NotoSansArmenian[wdth,wght].ttf", 0);
+// Create a font object.
+OH_Drawing_Font *font = OH_Drawing_FontCreate();
+// Set the typeface for the font.
+OH_Drawing_FontSetTypeface(font, typeface);
+// Set the font size.
+OH_Drawing_FontSetTextSize(font, value100_);
+// Text to draw.
+const char *text = "Hello世界";
+uint32_t byteLength = strlen(text);
+// Declare output parameters.
+OH_Drawing_TextBlob **textBlobs = nullptr;
+uint32_t textBlobsCount = 0;
+// Create a TextBlob array with font fallback.
+OH_Drawing_TextBlobCreateFromTextWithFallback(text, byteLength, font, TEXT_ENCODING_UTF8,
+    &textBlobs, &textBlobsCount);
+// Draw each TextBlob in the array.
+for (uint32_t i = 0; i < textBlobsCount; i++) {
+    OH_Drawing_CanvasDrawTextBlob(canvas, textBlobs[i], value200_, value800_);
+}
+// Destroy the TextBlob array.
+OH_Drawing_TextBlobsArrayDestroy(textBlobs, textBlobsCount);
+// Release the font object.
+OH_Drawing_FontDestroy(font);
+// Release the typeface object.
+OH_Drawing_TypefaceDestroy(typeface);
+```
+
+| Without fallback: OH_Drawing_TextBlobCreateFromText() | With fallback: OH_Drawing_TextBlobCreateFromTextWithFallback() |
+| -------- | -------- |
+| ![Without font fallback](figures/OH_Drawing_TextBlobCreateFromText.png) | ![With font fallback](figures/OH_Drawing_TextBlobCreateFromTextWithFallback.png) |
+
+The following example uses [OH_Drawing_TextBlobCreateFromPosTextWithFallback()](../reference/apis-arkgraphics2d/capi-drawing-text-blob-h.md#oh_drawing_textblobcreatefrompostextwithfallback) to create a TextBlob array with font fallback from text and an array of coordinates and draw it:
+
+<!-- @[ndk_graphics_draw_textblob_postext_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
+// Create a typeface from a file.
+OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFile(
+    "/system/fonts/NotoSansArmenian[wdth,wght].ttf", 0);
+// Create a font object.
+OH_Drawing_Font *font = OH_Drawing_FontCreate();
+// Set the typeface for the font.
+OH_Drawing_FontSetTypeface(font, typeface);
+// Set the font size.
+OH_Drawing_FontSetTextSize(font, value100_);
+// Text to draw.
+const char *text = "Hello世界";
+uint32_t byteLength = strlen(text);
+// Obtain the glyph count.
+int glyphCount = OH_Drawing_FontCountText(font, text, byteLength, TEXT_ENCODING_UTF8);
+// Check the glyph count to avoid allocating an invalid amount of memory.
+if (glyphCount <= 0) {
+    SAMPLE_LOGE("DrawTextBlobPosTextFallback: glyphCount is invalid");
+    OH_Drawing_FontDestroy(font);
+    OH_Drawing_TypefaceDestroy(typeface);
+    return;
+}
+// Specify the coordinates of each character.
+OH_Drawing_Point2D *points = new OH_Drawing_Point2D[glyphCount];
+float xOffset = 0;
+for (int i = 0; i < glyphCount; i++) {
+    points[i].x = value200_ + xOffset;
+    points[i].y = value800_;
+    xOffset += value100_;
+}
+// Declare output parameters.
+OH_Drawing_TextBlob **textBlobs = nullptr;
+uint32_t textBlobsCount = 0;
+// Create a TextBlob array with font fallback.
+OH_Drawing_TextBlobCreateFromPosTextWithFallback(text, byteLength, points, font,
+    TEXT_ENCODING_UTF8, &textBlobs, &textBlobsCount);
+// Draw each TextBlob in the array.
+for (uint32_t i = 0; i < textBlobsCount; i++) {
+    OH_Drawing_CanvasDrawTextBlob(canvas, textBlobs[i], 0, 0);
+}
+// Destroy the TextBlob array.
+OH_Drawing_TextBlobsArrayDestroy(textBlobs, textBlobsCount);
+// Release the coordinate array.
+delete[] points;
+// Release the font object.
+OH_Drawing_FontDestroy(font);
+// Release the typeface object.
+OH_Drawing_TypefaceDestroy(typeface);
+```
+
+| Without fallback: OH_Drawing_TextBlobCreateFromPosText() | With fallback: OH_Drawing_TextBlobCreateFromPosTextWithFallback() |
+| -------- | -------- |
+| ![Without font fallback](figures/OH_Drawing_TextBlobCreateFromPosText.png) | ![With font fallback](figures/OH_Drawing_TextBlobCreateFromPosTextWithFallback.png) |
+
+> **NOTE**
+>
+> Release TextBlob arrays and other resources promptly by calling the corresponding destruction APIs to avoid memory leaks. For details, see [drawing_text_blob.h](../reference/apis-arkgraphics2d/capi-drawing-text-blob-h.md).
+
+### Font Fallback for Glyph Conversion and Text Width Measurement
+
+To convert text to glyphs for drawing or measure its actual width after font fallback, use the font fallback glyph conversion API [OH_Drawing_FontTextToGlyphsWithFallback()](../reference/apis-arkgraphics2d/capi-drawing-font-h.md#oh_drawing_fonttexttoglyphswithfallback) and text width measurement APIs [OH_Drawing_FontMeasureTextWithFallback()](../reference/apis-arkgraphics2d/capi-drawing-font-h.md#oh_drawing_fontmeasuretextwithfallback) and [OH_Drawing_FontMeasureTextWithBrushOrPenWithFallback()](../reference/apis-arkgraphics2d/capi-drawing-font-h.md#oh_drawing_fontmeasuretextwithbrushorpenwithfallback).
+
+Use [OH_Drawing_FontTextToGlyphsWithFallback()](../reference/apis-arkgraphics2d/capi-drawing-font-h.md#oh_drawing_fonttexttoglyphswithfallback) to convert text to glyph information, automatically grouped by fallback font. Set the corresponding font for each group, calculate positions based on glyph widths, and draw the glyphs with [OH_Drawing_CanvasDrawGlyphs()](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md#oh_drawing_canvasdrawglyphs). The following is an example:
+
+<!-- @[ndk_graphics_draw_font_text_to_glyphs_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
+// Create a font object.
+OH_Drawing_Font *font = OH_Drawing_FontCreate();
+// Set the font size.
+OH_Drawing_FontSetTextSize(font, value100_);
+// Text to convert.
+const char *text = "Hello世界";
+uint32_t byteLength = strlen(text);
+// Declare output parameters.
+OH_Drawing_TypefaceFallbackInfo *fallbackInfos = nullptr;
+uint32_t infosCount = 0;
+// Convert text to glyph indices with font fallback.
+OH_Drawing_FontTextToGlyphsWithFallback(font, text, byteLength, TEXT_ENCODING_UTF8,
+    &fallbackInfos, &infosCount);
+// Iterate over the fallback information. Each element contains glyph IDs for the same typeface.
+float xOffset = 0;
+for (uint32_t i = 0; i < infosCount; i++) {
+    uint32_t glyphCount = fallbackInfos[i].glyphCount;
+    // Set the typeface for this fallback group.
+    OH_Drawing_FontSetTypeface(font, fallbackInfos[i].typeface);
+    // Convert the uint16_t glyphIds to an int array.
+    int *intGlyphIds = new int[glyphCount];
+    for (uint32_t j = 0; j < glyphCount; j++) {
+        intGlyphIds[j] = fallbackInfos[i].glyphIds[j];
+    }
+    // Specify the coordinates of each glyph.
+    OH_Drawing_Point2D *positions = new OH_Drawing_Point2D[glyphCount];
+    for (uint32_t j = 0; j < glyphCount; j++) {
+        positions[j].x = value200_ + xOffset;
+        positions[j].y = value800_;
+        xOffset += value100_;
+    }
+    // Draw the glyph array.
+    OH_Drawing_CanvasDrawGlyphs(canvas, intGlyphIds, glyphCount, 0,
+        positions, glyphCount, 0, glyphCount, font);
+    delete[] intGlyphIds;
+    delete[] positions;
+}
+// Release the fallback information array.
+OH_Drawing_FontTypefaceFallbackInfoDestroy(fallbackInfos, infosCount);
+// Release the typeface object.
+OH_Drawing_FontDestroy(font);
+```
+
+| Without fallback: OH_Drawing_FontTextToGlyphs() | With fallback: OH_Drawing_FontTextToGlyphsWithFallback() |
+| -------- | -------- |
+| ![Without font fallback](figures/OH_Drawing_FontTextToGlyphs.png) | ![With font fallback](figures/OH_Drawing_FontTextToGlyphsWithFallback.png) |
+
+The following example uses [OH_Drawing_FontMeasureTextWithFallback()](../reference/apis-arkgraphics2d/capi-drawing-font-h.md#oh_drawing_fontmeasuretextwithfallback) to measure the actual text width and bounding box after font fallback and draw the text and bounding box:
+
+<!-- @[ndk_graphics_draw_font_measure_text_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
+// Create a font object.
+OH_Drawing_Font *font = OH_Drawing_FontCreate();
+// Set the font size.
+OH_Drawing_FontSetTextSize(font, value100_);
+// Text to measure.
+const char *text = "Hello世界";
+uint32_t byteLength = strlen(text);
+// Create a rectangle to receive the bounding box.
+OH_Drawing_Rect *bounds = OH_Drawing_RectCreate(0, 0, 0, 0);
+float textWidth = 0;
+// Measure the text width with font fallback.
+OH_Drawing_FontMeasureTextWithFallback(font, text, byteLength, TEXT_ENCODING_UTF8,
+    bounds, &textWidth);
+SAMPLE_LOGI("DrawFontMeasureTextFallback: textWidth = %{public}f, bounds left = %{public}f, "
+    "top = %{public}f, right = %{public}f, bottom = %{public}f",
+    textWidth, OH_Drawing_RectGetLeft(bounds), OH_Drawing_RectGetTop(bounds),
+    OH_Drawing_RectGetRight(bounds), OH_Drawing_RectGetBottom(bounds));
+// Starting position for text drawing.
+float startX = value200_;
+float startY = value800_;
+// Create a TextBlob array with font fallback and draw the text.
+OH_Drawing_TextBlob **textBlobs = nullptr;
+uint32_t textBlobsCount = 0;
+OH_Drawing_TextBlobCreateFromStringWithFallback(text, font, TEXT_ENCODING_UTF8,
+    &textBlobs, &textBlobsCount);
+SAMPLE_LOGI("DrawFontMeasureTextFallback: textBlobsCount = %{public}u", textBlobsCount);
+for (uint32_t i = 0; i < textBlobsCount; i++) {
+    OH_Drawing_CanvasDrawTextBlob(canvas, textBlobs[i], startX, startY);
+}
+OH_Drawing_TextBlobsArrayDestroy(textBlobs, textBlobsCount);
+// Obtain bounding box coordinates and translate them to the text drawing origin.
+float left = OH_Drawing_RectGetLeft(bounds) + startX;
+float top = OH_Drawing_RectGetTop(bounds) + startY;
+float right = OH_Drawing_RectGetRight(bounds) + startX;
+float bottom = OH_Drawing_RectGetBottom(bounds) + startY;
+// Create a pen to draw the bounding box.
+OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
+OH_Drawing_PenSetAntiAlias(pen, true);
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+OH_Drawing_CanvasAttachPen(canvas, pen);
+// Draw the bounding box rectangle.
+OH_Drawing_Rect *measureBounds = OH_Drawing_RectCreate(left, top, right, bottom);
+OH_Drawing_CanvasDrawRect(canvas, measureBounds);
+OH_Drawing_CanvasDetachPen(canvas);
+// Destroy the objects.
+OH_Drawing_RectDestroy(measureBounds);
+OH_Drawing_PenDestroy(pen);
+// Release the rectangle.
+OH_Drawing_RectDestroy(bounds);
+// Release the typeface object.
+OH_Drawing_FontDestroy(font);
+```
+
+The following example uses [OH_Drawing_FontMeasureTextWithBrushOrPenWithFallback()](../reference/apis-arkgraphics2d/capi-drawing-font-h.md#oh_drawing_fontmeasuretextwithbrushorpenwithfallback) with a brush or pen to measure the actual text width and bounding box after font fallback and draw the text and bounding box:
+
+<!-- @[ndk_graphics_draw_font_measure_text_with_brush_or_pen_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
+// Create a font object.
+OH_Drawing_Font *font = OH_Drawing_FontCreate();
+// Set the font size.
+OH_Drawing_FontSetTextSize(font, value100_);
+// Text to measure.
+const char *text = "Hello世界";
+uint32_t byteLength = strlen(text);
+// Create a brush.
+OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+OH_Drawing_BrushSetAntiAlias(brush, true);
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+// Create a pen.
+OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
+OH_Drawing_PenSetAntiAlias(pen, true);
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, 0x00, 0x00));
+// Starting position for text drawing.
+float startX = value200_;
+float startY = value800_;
+// Set the brush fill effect and draw the text.
+OH_Drawing_CanvasAttachBrush(canvas, brush);
+OH_Drawing_TextBlob **textBlobs = nullptr;
+uint32_t textBlobsCount = 0;
+OH_Drawing_TextBlobCreateFromStringWithFallback(text, font, TEXT_ENCODING_UTF8,
+    &textBlobs, &textBlobsCount);
+SAMPLE_LOGI("DrawFontMeasureTextWithBrushOrPenFallback: textBlobsCount = %{public}u",
+    textBlobsCount);
+for (uint32_t i = 0; i < textBlobsCount; i++) {
+    OH_Drawing_CanvasDrawTextBlob(canvas, textBlobs[i], startX, startY);
+}
+OH_Drawing_TextBlobsArrayDestroy(textBlobs, textBlobsCount);
+OH_Drawing_CanvasDetachBrush(canvas);
+// Create a rectangle to receive the bounding box.
+OH_Drawing_Rect *bounds = OH_Drawing_RectCreate(0, 0, 0, 0);
+float textWidth = 0;
+// Measure the text width with a brush and font fallback (brush and pen cannot both be passed).
+OH_Drawing_FontMeasureTextWithBrushOrPenWithFallback(font, text, byteLength,
+    TEXT_ENCODING_UTF8, brush, nullptr, bounds, &textWidth);
+SAMPLE_LOGI("DrawFontMeasureTextWithBrushOrPenFallback: textWidth = %{public}f, bounds left = "
+    "%{public}f, top = %{public}f, right = %{public}f, bottom = %{public}f",
+    textWidth, OH_Drawing_RectGetLeft(bounds), OH_Drawing_RectGetTop(bounds),
+    OH_Drawing_RectGetRight(bounds), OH_Drawing_RectGetBottom(bounds));
+// Obtain bounding box coordinates and translate them to the text drawing origin.
+float left = OH_Drawing_RectGetLeft(bounds) + startX;
+float top = OH_Drawing_RectGetTop(bounds) + startY;
+float right = OH_Drawing_RectGetRight(bounds) + startX;
+float bottom = OH_Drawing_RectGetBottom(bounds) + startY;
+// Set the pen stroke effect and draw the bounding box rectangle.
+OH_Drawing_CanvasAttachPen(canvas, pen);
+OH_Drawing_Rect *measureBounds = OH_Drawing_RectCreate(left, top, right, bottom);
+OH_Drawing_CanvasDrawRect(canvas, measureBounds);
+OH_Drawing_CanvasDetachPen(canvas);
+// Destroy the objects.
+OH_Drawing_RectDestroy(measureBounds);
+OH_Drawing_PenDestroy(pen);
+// Release the rectangle.
+OH_Drawing_RectDestroy(bounds);
+// Release the brush.
+OH_Drawing_BrushDestroy(brush);
+// Release the typeface object.
+OH_Drawing_FontDestroy(font);
+```
+
 
 <!--RP1-->
 ## Samples

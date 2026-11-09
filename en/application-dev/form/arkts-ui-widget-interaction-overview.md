@@ -6,7 +6,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=a08d450b4f575e3d4749ddeef9dd32275ec0a19e translatedAt=2026-08-03T02:25:45.777Z pushedAt=2026-08-03T06:55:17.880Z -->
+<!-- md-trans-meta sourceCommit=a09aabfaf5a6fc50afffd8c8ce0b055893ba508c translatedAt=2026-11-05T00:54:18.361Z pushedAt=2026-08-03T06:55:17.880Z nl=2 -->
 
 Both the widget host (for example, the home screen) and the widget provider can trigger updates to the widget page. Moreover, the widget framework notifies the widget provider of updates according to the scheduled information. Therefore, widget updates include active updates initiated by the widget provider, active updates initiated by the widget host, and interval-based or time-specific updates. In all these update modes, the widget provider is responsible for pushing the widget data to be updated.
 
@@ -62,4 +62,4 @@ Based on the scheduled update information configured by the widget provider, the
 
 2. The widget host is only allowed to update the widgets added to it.
 
-3. Starting from API version 20, if the widget refresh data is updated through shared memory, the total refresh data size must not exceed 10 MB, and the number of refreshed images must not exceed 20. For API version 19 and earlier, the maximum number of image files is 5, with each image limited to 2 MB of memory. Images exceeding the limit may display abnormally.
+3. If widget refresh data is updated through shared memory, the total refresh data size must not exceed 10 MB. When using [createFormBindingData](../reference/apis-form-kit/js-apis-app-form-formBindingData.md#formbindingdatacreateformbindingdata), the number of refreshed images must not exceed 20 (for API version 19 and earlier, the limit is 5 images, each limited to 2 MB). When using [createFormBindingDataEx](../reference/apis-form-kit/js-apis-app-form-formBindingData.md#formbindingdatacreateformbindingdataex), the number of refreshed images must not exceed 30. Images exceeding the limits may display abnormally.

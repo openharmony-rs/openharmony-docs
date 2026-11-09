@@ -5,6 +5,7 @@
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=bed3030f36da6f2dce7d11f3dc23830114644c93 translatedAt=2026-11-05T00:56:15.859Z nl=1 -->
 
 
 The NDK uses CMake and Ninja to build C/C++ code of applications. The figure below shows the build process.
@@ -55,18 +56,20 @@ The source code, header files, and third-party libraries required for compilatio
 
 The **externalNativeOptions** parameter in the module-level **build-profile.json5** file is the entry for configuring C/C++ file compilation of the NDK project. You can use **path** to specify the path to the CMake script, **arguments** to set CMake parameters, **cppFlags** to set C++ compiler parameters, and **abiFilters** to set the compilation architecture.
 ```json
-"apiType": "stageMode",
-"buildOption": {
-  "arkOptions": {
-   },
-  "externalNativeOptions": {
-    "path": "./src/main/cpp/CMakeLists.txt",
-    "arguments": "",
-    "cppFlags": "",
-    "abiFilters": [
-       "arm64-v8a",
-       "x86_64"
-    ],
+{
+  "apiType": "stageMode",
+  "buildOption": {
+    "arkOptions": {
+    },
+    "externalNativeOptions": {
+      "path": "./src/main/cpp/CMakeLists.txt",
+      "arguments": "",
+      "cppFlags": "",
+      "abiFilters": [
+         "arm64-v8a",
+         "x86_64"
+      ]
+    }
   }
 }
 ```

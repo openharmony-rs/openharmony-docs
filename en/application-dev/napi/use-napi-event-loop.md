@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:42:08.784Z pushedAt=2026-09-16T08:26:16.356Z -->
+<!-- md-trans-meta sourceCommit=8d95ce71a533e95ed95b7973acfeabe378d2316f translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 ## **Scenario**
 When calling asynchronous ArkTS APIs in the ArkTS running environment, you can use **napi_run_event_loop** to run an event loop and use **napi_stop_event_loop** to stop an event loop.
@@ -92,7 +92,7 @@ If **napi_event_mode_default** is used, the system blocks the current asynchrono
       ret = napi_load_module_with_info(env, "entry/src/main/ets/pages/ObjectUtils", "com.example.myapplication/entry",
                                        &objectUtils);
       if (ret != napi_ok) {
-          OH_LOG_INFO(LOG_APP, "Failed to load module");
+          OH_LOG_ERROR(LOG_APP, "Failed to load module");
           napi_close_handle_scope(env, scope);
           napi_destroy_ark_runtime(&env);
           return nullptr;
@@ -127,7 +127,7 @@ If **napi_event_mode_default** is used, the system blocks the current asynchrono
       if (env != nullptr) {
           napi_status destroy_ret = napi_destroy_ark_runtime(&env);
           if (destroy_ret != napi_ok) {
-              OH_LOG_INFO(LOG_APP, "Failed to destroy ark runtime");
+              OH_LOG_ERROR(LOG_APP, "Failed to destroy ark runtime");
           }
           env = nullptr;
       }

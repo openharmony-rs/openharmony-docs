@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=742fd8e7f742ee980eb300ddfd075065ca362dff translatedAt=2026-08-13T03:08:21.096Z pushedAt=2026-08-13T06:35:57.538Z -->
+<!-- md-trans-meta sourceCommit=ede2473bcfdd173278c84f213a25b67a0910ea5b translatedAt=2026-11-05T00:50:31.269Z pushedAt=2026-08-13T06:35:57.538Z nl=2 -->
 
 ## Overview
 

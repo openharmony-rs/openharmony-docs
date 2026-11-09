@@ -6,7 +6,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=7eb91d6df8b4aeed3953bbb4aaef8a6f065801e4 translatedAt=2026-08-15T01:50:43.919Z pushedAt=2026-08-15T10:30:32.135Z -->
+<!-- md-trans-meta sourceCommit=14c25dcfa79d2f07b35a4a6bbbdc3d13f8f727f0 translatedAt=2026-11-05T01:00:46.179Z pushedAt=2026-08-15T10:30:32.135Z nl=2 -->
 
 ArkTS widgets provide widget page editing capabilities, allowing users to customize widget content, for example, editing a contact widget, modifying the contacts displayed in a widget, and editing a weather widget.
 
@@ -135,7 +135,7 @@ The following example describes how to use semi-modal widget editing.
    import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
    import { ExtensionEvent } from '../model/ExtensionEvent';
    
-   const TAG = 'FormEditExtensionAbility';
+   const TAG: string = 'FormEditSecPageAbility';
    
    export default class FormEditSecPageAbility extends FormEditExtensionAbility {
      public storage: LocalStorage = new LocalStorage();
@@ -163,9 +163,9 @@ The following example describes how to use semi-modal widget editing.
    
        try {
          session.loadContent('pages/FormEditSecPage', this.storage);
-         console.info(TAG, `loadContent first edit page success`);
+         console.info(TAG, 'loadContent second edit page success');
        } catch (e) {
-         console.error(TAG, `EntryFormEditAbility loadContent err, want: ${e?.message}`);
+         console.error(TAG, `FormEditSecPageAbility loadContent err, want: ${e?.message}`);
        }
      }
    

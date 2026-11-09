@@ -1,12 +1,11 @@
 # Obtaining Application and File System Space Statistics
-
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @Dyylll-->
 <!--Designer: @hwzhangchuang; @yangwei_814916-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=23fd3050bf417376fb6020b82cd43307338e4432 translatedAt=2026-08-01T07:22:58.997Z pushedAt=2026-08-01T08:22:29.987Z -->
+<!-- md-trans-meta sourceCommit=2f92eb18f93a1300c309ec4c70975e5c136947d1 translatedAt=2026-11-04T08:38:56.744Z pushedAt=2026-11-04T09:32:11.631Z nl=1 -->
 
 In the system, there may be insufficient system space or directories such as **cacheDir** may be subject to system quota restrictions. Application developers need to pay attention to the remaining system space and control the space occupied by their applications.
 
@@ -23,8 +22,8 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
 | \@ohos.file.storageStatistics | getFreeSizeSync | Obtains the available space of the built-in storage, in bytes. This API returns the result synchronously.<br>**Note**: This API is supported since API version 15.|
 | \@ohos.file.storageStatistics | getTotalSize | Obtains the total space of the built-in storage, in bytes. This API returns the result asynchronously.<br>**Note**: This API is supported since API version 15.|
 | \@ohos.file.storageStatistics | getTotalSizeSync | Obtains the total space of the built-in storage, in bytes. This API returns the result synchronously.<br>**Note**: This API is supported since API version 15.|
-| \@ohos.file.statvfs | getFreeSize | Obtains the free space of a file system, in bytes.<br>**Note**: This API is supported since API version 20.|
-| \@ohos.file.statvfs | getTotalSize | Obtains the total space of a file system, in bytes.<br>**Note**: This API is supported since API version 20.|
+| \@ohos.file.statvfs | getFreeSize | Obtains the available space of the specified file system (in bytes).<br>**Note:** This API is supported since API version 9.|
+| \@ohos.file.statvfs | getTotalSize | Obtains the total space of the specified file system (in bytes).<br>**Note:** This API is supported since API version 9.|
 
 **Table 2** Attributes for application space statistics
 
@@ -44,14 +43,13 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
 ## How to Develop
 
 - Obtain the free space of **/data** of the file system.
-
+  
   ```ts
   import { statfs } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
   
   ```
-
   <!--@[storageStatistics_statfs_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
 
    ``` TypeScript
@@ -66,15 +64,15 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
    });
    ```
 
-- Obtain the space occupied by the current application.
 
+- Obtain the space occupied by the current application.
+  
   ```ts
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
-
   <!--@[storageStatistics_getCurrentBundleStats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
-
+  
   ``` TypeScript
   storageStatistics.getCurrentBundleStats((err: BusinessError, bundleStats: storageStatistics.BundleStats) => {
     if (err) {
@@ -85,15 +83,15 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
   });
   ```
 
+
 - Obtain the total space of the built-in storage asynchronously.
 
   ```ts
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
-
   <!--@[storageStatistics_getTotalSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
-
+  
   ``` TypeScript
   storageStatistics.getTotalSize().then((number: number) => {
     console.info(`getTotalSize successfully, number is ${number}`);
@@ -102,15 +100,15 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
   });
   ```
 
+
 - Obtain the total space of the built-in storage synchronously.
 
   ```ts
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
-
   <!--@[storageStatistics_getTotalSizeSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
-
+  
   ``` TypeScript
   try {
     let number = storageStatistics.getTotalSizeSync();
@@ -121,15 +119,15 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
   }
   ```
 
+
 - Obtain the available space of the built-in storage asynchronously.
 
   ```ts
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
-
   <!--@[storageStatistics_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
-
+  
   ``` TypeScript
   storageStatistics.getFreeSize().then((number: number) => {
     console.info(`getFreeSize successfully, number is ${number}`);
@@ -138,15 +136,15 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
   });
   ```
 
+
 - Obtain the available space of the built-in storage synchronously.
 
   ```ts
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
-
   <!--@[storageStatistics_getFreeSizeSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
-
+  
   ``` TypeScript
   try {
     let number = storageStatistics.getFreeSizeSync();
@@ -156,3 +154,4 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
     console.error(`getFreeSizeSync failed with error, code is ${error.code}, message is ${error.message}`);
   }
   ```
+

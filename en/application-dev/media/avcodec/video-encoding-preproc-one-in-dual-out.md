@@ -6,7 +6,7 @@
 <!--Designer: @dpy2650-->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b9c98a219f801ec4122d94457486779ae7ed9ac3 translatedAt=2026-08-22T02:00:14.087Z pushedAt=2026-08-22T03:37:05.236Z -->
+<!-- md-trans-meta sourceCommit=0640a98c9000e8f3a4c820149c95a6ae567dd89e translatedAt=2026-11-05T00:59:45.678Z pushedAt=2026-08-22T03:37:05.236Z nl=2 -->
 
 Starting from API version 26.0.0, video encoding supports one input and dual outputs. This capability allows the same video input data to simultaneously drive **two independent encoders** to generate two encoded streams with different configurations.
 
@@ -82,7 +82,7 @@ Apps can choose the appropriate mode based on their own scenarios. The following
 | Surface sharing | The primary and secondary encoders share the same Consumer Surface. You only need to obtain it once from `GetSurface` and bind it to the data source (Camera/XComponent). |
 | Window lifecycle | The window instance obtained through `OH_VideoEncoder_GetSurface` must be released. After all encoders are destroyed, call `OH_NativeWindow_DestroyNativeWindow(window)` to destroy the window. |
 | Preprocessing independence | Each encoder can independently configure different downsampling, cropping, and frame dropping strategies. However, within a single encoder, downsampling and cropping remain mutually exclusive. |
-| Callback independence | The `onNewOutputBuffer` callbacks for the two streams are triggered in different threads. You must call `FreeOutputBuffer` separately for each encoder. |
+| Callback independence | The onNewOutputBuffer() callbacks for the two streams are triggered in different threads. You must call `FreeOutputBuffer` separately for each encoder. |
 
 ## How to Develop
 

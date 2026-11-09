@@ -6,7 +6,7 @@
 <!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9d1897fa3dab6fc356e7d2cd6662301d7b025cb1 translatedAt=2026-08-15T01:55:56.092Z pushedAt=2026-08-15T08:58:39.185Z -->
+<!-- md-trans-meta sourceCommit=9e9f8577213e9a063fea6717a1a45e50dc27e8d3 translatedAt=2026-11-05T00:59:45.662Z pushedAt=2026-08-15T08:58:39.185Z nl=2 -->
 
 Starting from API version 26.0.0, [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md) provides PCM (Pulse Code Modulation) audio format conversion capabilities. In scenarios such as pure audio transcoding, you can use the format conversion APIs to convert PCM audio data from one format to another, including conversion of sample rate, channel layout, and sample format (bit depth).
 
@@ -16,8 +16,10 @@ To use the PCM audio format conversion capability provided by [OHAudioSuite](../
 
 ### Linking the Dynamic Library in the CMake Script
 
-``` cmake
-target_link_libraries(sample PUBLIC libohaudiosuite.so)
+<!-- @[CMake_lib_suite_libohaudiosuite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
+target_link_libraries(entry PUBLIC libohaudiosuite.so)
 ```
 
 ### Including Header Files
@@ -150,7 +152,7 @@ The format conversion APIs support the following PCM audio formats:
    <!-- @[input_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
 
    ``` C++
-   // Set the output data pointer.
+   // Set the input data pointer.
    // Note: The value of the data pointer does not necessarily have to come from userData; it can also be the address of a buffer that stores data.
    // For example, read data from a file into a buffer, and then assign the buffer address to the output data pointer.
    // Just ensure that the data pointer remains valid until OH_AudioConverter_Process() returns.

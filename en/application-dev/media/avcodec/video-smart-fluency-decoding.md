@@ -6,7 +6,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=1ac1aa9f0919ac958e276337b28f315b33979ec5 translatedAt=2026-08-06T13:51:25.394Z pushedAt=2026-08-07T10:25:32.450Z -->
+<!-- md-trans-meta sourceCommit=5da1dce211003731dcb46fd6aaa0a7cc4e8ff3d7 translatedAt=2026-11-05T00:59:45.678Z pushedAt=2026-08-07T10:25:32.450Z nl=2 -->
 
 ## Overview
 
@@ -40,7 +40,7 @@ This capability takes effect only after you actively deliver the configuration. 
 
    - Value Range: See [OH_FrameRetentionMode](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_frameretentionmode).
 
-   - Description: Master switch and mode selection for the capability. It is recommended to configure this parameter during the initialization stage.
+   - Description: Master switch and mode selection for the capability. Configure it during initialization with [OH_VideoDecoder_Configure()](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure), or switch modes at runtime with [OH_VideoDecoder_SetParameter()](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setparameter). For playback starting at normal speed, Full Pass-Through mode is recommended at initialization.
 
 2. **OH_MD_KEY_VIDEO_DECODER_SPEED (decoding speed)**
 
@@ -48,7 +48,7 @@ This capability takes effect only after you actively deliver the configuration. 
 
    - Value range: strictly greater than 0.0.
 
-   - Description: **This parameter must be configured synchronously in `ADAPTIVE` mode**, serving as the basis for dynamic system calculation.
+   - Description: When configuring or switching to Perceptual Adaptive mode, you are advised to explicitly set the current playback speed as well for optimal algorithm accuracy and update it when the speed changes. This parameter is not required when initializing to Full Pass-Through mode.
 
 3. **OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_RATIO**
 
@@ -56,17 +56,19 @@ This capability takes effect only after you actively deliver the configuration. 
 
    - Value Range: `[0.01, 1.0]` (for example, 0.5 indicates retaining 50% of decoded frames).
 
-   - Description: This parameter takes effect only in `UNIFORM` mode. When the configured value is out of range or invalid, the system defaults to a target frame rate of 30 fps as a fallback.
+   - Description: This parameter takes effect only in Smooth Uniform mode. When the configured value is out of range or invalid, the system defaults to a target frame rate of 30 fps as a fallback.
 
 ## Constraints
 
 - **Format Support**: This capability takes effect only in the video decoding pipeline and currently supports only H.264, H.265, and H.266 bitstream formats.
 
-- **Parameter exception fallback**: In `UNIFORM` mode, if the specified retention ratio is invalid or not explicitly provided, the system defaults to decoding and rendering at a target output frame rate of 30 fps.
+- **Parameter exception fallback**: In Smooth Uniform mode, if the specified retention ratio is invalid or not explicitly provided, the system defaults to decoding and rendering at a target output frame rate of 30 fps.
 
-- **Hardware capability degradation**: The `ADAPTIVE` mode relies on the hardware decoder's ability to output motion vector (MV) information. On hardware platforms that cannot provide MV data, the system automatically triggers a basic fallback strategy at the underlying level (while still reporting the `ADAPTIVE` mode status externally). In this case, the system can still maintain basic smooth playback, but the optimal benefits of content-aware processing are not achieved.
+- **Hardware capability degradation**: Perceptual Adaptive mode relies on the hardware decoder's ability to output motion vector (MV) information. On hardware platforms that cannot provide MV data, the system automatically triggers a basic fallback strategy at the underlying level (while still reporting the Perceptual Adaptive mode status externally). In this case, the system can still maintain basic smooth playback, but the optimal benefits of content-aware processing are not achieved.
 
-- **MV information output**: The frame-dropping decision module in adaptive mode depends on MV information from the decoding process. MV information output during decoding must be enabled by configuring the `ADAPTIVE` mode at the initialization stage; enabling it mid-stream during a mode switch is not supported. If the `ADAPTIVE` mode is not configured at the initialization stage, the frame-dropping decision module cannot obtain MV information and falls back to dropping frames at fixed intervals (when the decoding frame rate is ≥ 45 fps, the target output frame rate is 45 fps; otherwise, no frames are dropped), reducing the benefits of perceptual adaptive processing. It is recommended that services requiring the `ADAPTIVE` mode complete the configuration at the initialization stage.
+- **MV information output**: Perceptual Adaptive mode relies on MV information output during decoding. The configuration requirements vary by system version.
+  - On devices running <!--RP1-->OpenHarmony 7.0.0.109 or later<!--RP1End-->, MV information can be obtained after switching to Perceptual Adaptive mode at runtime, regardless of the frame retention mode configured at initialization. MV availability still depends on hardware decoder support.
+  - On system versions that support this capability <!--RP2-->before OpenHarmony 7.0.0.109<!--RP2End-->, Perceptual Adaptive mode must be configured during initialization to obtain MV information. If another mode is configured at initialization, switching to Perceptual Adaptive mode at runtime does not provide MV information. Frame dropping falls back to fixed intervals (a target output frame rate of 45 fps when the decoding frame rate is at least 45 fps; otherwise, no frames are dropped), reducing the benefits of Perceptual Adaptive mode.
 
 - **Audio-video synchronization (AV sync) safety**: The smart fluency frame-dropping mechanism only determines whether a frame is retained or discarded. It does not modify the original PTS (presentation timestamp) and DTS (decoding timestamp) information of retained frames, and therefore does not affect audio-video synchronization.
 
@@ -74,51 +76,33 @@ This capability takes effect only after you actively deliver the configuration. 
 
 For conventional video playback services, a strategy that combines initialization-stage configuration with dynamic switching is recommended.
 
-- **Initialization Configuration**: It is recommended to directly configure the Perceptual Adaptive (`ADAPTIVE`) mode during the initialization stage before video playback starts. Only when the `ADAPTIVE` mode is configured during the initialization stage does the decoder output MV information for frame dropping decisions. MV information output is not supported after switching modes midway. If the `ADAPTIVE` mode is not configured during the initialization stage and is switched to midway, the frame dropping decision module cannot obtain MV information and degrades to dropping frames at fixed intervals, reducing the benefits of Perceptual Adaptive.
+- **Initialization Configuration**: For playback starting at normal speed, configure Full Pass-Through mode before playback starts. No decoding speed parameter is required.
 
-- **Dynamic Switching**: During playback, when the speed changes, the mode and speed parameters can still be dynamically switched through `OH_VideoDecoder_SetParameter`. When the speed returns to 1.0x or lower, full-frame decoding output is restored.
+- **Dynamic Switching**: During playback, when the target speed exceeds 1.0x, call OH_VideoDecoder_SetParameter() with Perceptual Adaptive mode and the current speed in the same OH_AVFormat. When the speed returns to 1.0x or lower, switch back to Full Pass-Through mode to restore full-frame decoding output.
 
 ### Initialization Stage Configuration
 
-During the initialization stage before video playback starts, only the `ADAPTIVE` mode needs to be configured. The speed parameters can be dynamically delivered as the playback speed changes during playback.
+The following example starts playback at normal speed with Full Pass-Through mode. After configuring synchronous mode, SetOptionalFormatFeatures calls ConfigureSmartFluency(format) and checks its return value when sampleInfo.codec.isSmartFluencySupported is true. Then `VideoDecoder::Configure` calls OH_VideoDecoder_Configure() to complete configuration. This helper only sets parameters for this capability; it does not create or destroy OH_AVFormat.
 
-<!-- @[configure_full_baseline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/video_decoder.cpp) -->
+If playback starts directly at high speed, you can also configure Perceptual Adaptive mode during initialization. You are advised to explicitly set OH_MD_KEY_VIDEO_DECODER_SPEED to the actual starting speed as well.
+
+<!-- @[configure_full_baseline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp) -->
 
 ``` C++
-int32_t VideoDecoder::Configure(const SampleInfo &sampleInfo)
+bool ConfigureSmartFluency(OH_AVFormat *format)
 {
-    OH_AVFormat *format = OH_AVFormat_Create();
-    CHECK_AND_RETURN_RET_LOG(format != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "AVFormat create failed");
-
-    OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, sampleInfo.videoWidth);
-    OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, sampleInfo.videoHeight);
-    OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, sampleInfo.frameRate);
-    OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, sampleInfo.pixelFormat);
-    OH_AVFormat_SetIntValue(format, OH_MD_KEY_ROTATION, sampleInfo.rotation);
-    if (sampleInfo.codecSyncMode) {
-        OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, sampleInfo.codecSyncMode);
-    }
-    if (sampleInfo.isSmartFluencySupported) {
-        // Configure the ADAPTIVE mode during the initialization stage to ensure that MV information is output to the frame dropping decision module during decoding.
-        // MV information output requires the ADAPTIVE mode to be enabled during the initialization stage and does not support midway enabling.
-        // If the ADAPTIVE mode is dynamically switched to midway, the frame dropping decision module cannot obtain MV information and falls back to dropping frames at fixed intervals.
-        OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE,
-                                OH_FRAME_RETENTION_MODE_ADAPTIVE);
-    }
-
-    int ret = OH_VideoDecoder_Configure(decoder_, format);
-    OH_AVFormat_Destroy(format);
-    format = nullptr;
-    CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Config failed, ret: %{public}d", ret);
-    return AVCODEC_SAMPLE_ERR_OK;
+    bool ret = OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE,
+        OH_FRAME_RETENTION_MODE_FULL);
+    CHECK_AND_RETURN_RET_LOG(ret, false, "Set smart fluency initial mode failed");
+    return true;
 }
 ```
 
 ### On-Demand Switching at Runtime
 
-The system supports dynamic switching of the frame retention mode at runtime. You can call `OH_VideoDecoder_SetParameter` to apply the configuration in real time. The timing at which the parameter takes effect follows the standard behavior of this API.
+The system supports dynamic switching of the frame retention mode at runtime. You can call OH_VideoDecoder_SetParameter() to apply the configuration in real time. The timing at which the parameter takes effect follows the standard behavior of this API.
 
-<!-- @[onUserSpeedChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/video_decoder.cpp) -->
+<!-- @[onUserSpeedChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp) -->
 
 ``` C++
 int32_t VideoDecoder::OnUserSpeedChanged(double targetSpeed)
@@ -129,7 +113,8 @@ int32_t VideoDecoder::OnUserSpeedChanged(double targetSpeed)
     // Introduce epsilon to handle precision comparison for the double type.
     const double EPSILON = 1e-6;
 
-    if (targetSpeed > 1.0 + EPSILON) {
+    const bool enableAdaptive = targetSpeed > 1.0 + EPSILON;
+    if (enableAdaptive) {
         // Scenario: high-speed playback (e.g., 1.5x, 2.0x, 3.0x).
         // Strategy: enable the Perceptual Adaptive mode.
         OH_AVFormat_SetIntValue(param, OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE,
@@ -147,6 +132,11 @@ int32_t VideoDecoder::OnUserSpeedChanged(double targetSpeed)
     OH_AVFormat_Destroy(param);
     CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
                              "SetParameter failed, ret: %{public}d", ret);
+    if (enableAdaptive) {
+        AVCODEC_SAMPLE_LOGI("Smart fluency mode changed to ADAPTIVE, speed: %{public}.2f", targetSpeed);
+    } else {
+        AVCODEC_SAMPLE_LOGI("Smart fluency mode changed to FULL");
+    }
     return AVCODEC_SAMPLE_ERR_OK;
 }
 ```
@@ -155,13 +145,13 @@ int32_t VideoDecoder::OnUserSpeedChanged(double targetSpeed)
 
 In addition to the recommended use of this capability in speed playback scenarios, the following scenarios can also benefit from improved performance and user experience.
 
-- **Load reduction and cooling in high-temperature scenarios**: When a device heats up and triggers a thermal alarm, controlling power consumption takes priority over maintaining a high frame rate. The developer can switch to `UNIFORM` mode and configure a lower frame retention ratio (for example, 0.3), reducing system load by lowering the decoding and display frame rates, thereby effectively assisting device cooling.
+- **Load reduction and cooling in high-temperature scenarios**: When a device heats up and triggers a thermal alarm, controlling power consumption takes priority over maintaining a high frame rate. The developer can switch to Smooth Uniform mode and configure a lower frame retention ratio (for example, 0.3), reducing system load by lowering the decoding and display frame rates, thereby effectively assisting device cooling.
 
-- **Improved drag smoothness in editing preview scenarios**: In scenarios such as video editing that require frequent progress bar dragging, decoding all intermediate frames can significantly slow down the screen refresh response. The developer can temporarily switch to `UNIFORM` mode in this state and configure a lower frame retention ratio, trading a moderate reduction in decoded intermediate frames for faster screen refresh speeds, thereby notably improving the responsiveness and smoothness of interactions.
+- **Improved drag smoothness in editing preview scenarios**: In scenarios such as video editing that require frequent progress bar dragging, decoding all intermediate frames can significantly slow down the screen refresh response. The developer can temporarily switch to Smooth Uniform mode in this state and configure a lower frame retention ratio, trading a moderate reduction in decoded intermediate frames for faster screen refresh speeds, thereby notably improving the responsiveness and smoothness of interactions.
 
 **Example (responding to a thermal alarm):**
 
-<!-- @[onThermalWarningReceived](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/video_decoder.cpp) -->
+<!-- @[onThermalWarningReceived](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp) -->
 
 ``` C++
 int32_t VideoDecoder::OnThermalWarningReceived(double ratio)

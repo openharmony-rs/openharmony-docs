@@ -2,17 +2,18 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-11-04T11:13:00.678Z pushedAt=2026-11-04T11:22:07.985Z nl=1 -->
 
-Implements the **DataResubmissionHandler** object for resubmitting or canceling the web form data.
+DataResubmissionHandler is a handler class in the Web component for processing web page form data resubmission. When a web page needs to resubmit previously sent form data, the Web component provides a DataResubmissionHandler instance to the application through the `onDataResubmitted` event callback, allowing the application to decide whether to resubmit the form data or cancel the navigation.
 
 > **NOTE**
 >
-> - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - The initial APIs of this class are supported since API version 9.
+> - This class is supported since API version 9.
 >
 > - The sample effect is subject to the actual device.
 

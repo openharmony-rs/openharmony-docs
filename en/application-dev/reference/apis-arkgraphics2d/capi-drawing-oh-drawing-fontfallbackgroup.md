@@ -5,6 +5,8 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=0876b7ba2fa1777332890da7f5059310feded633 translatedAt=2026-11-04T10:27:35.858Z pushedAt=2026-11-04T10:31:14.658Z nl=2 -->
+
 ```
 typedef struct {...} OH_Drawing_FontFallbackGroup
 ```
@@ -25,6 +27,7 @@ This struct describes the information about a font fallback group.
 
 | Name                                        | Description                                                        |
 | -------------------------------------------- | ------------------------------------------------------------ |
-| char* groupName                              | Pointer to the name of the group corresponding to the font fallback group. If null is passed in, all fonts in the font fallback group can be used.|
+| char* groupName                              | Name of the font group corresponding to the fallback font group. If the value is empty, all fonts in the fallback font group list can be used. |
 | size_t fallbackInfoSize                      | Number of font fallbacks.                                            |
-| [OH_Drawing_FontFallbackInfo](capi-drawing-oh-drawing-fontfallbackinfo.md)* fallbackInfoSet | Pointer to the set of font fallbacks.                                        |
+| [OH_Drawing_FontFallbackInfo](capi-drawing-oh-drawing-fontfallbackinfo.md)* fallbackInfoSet | List of fallback font groups.                                         |
+

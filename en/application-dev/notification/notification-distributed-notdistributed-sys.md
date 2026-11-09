@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-08T03:48:29.738Z pushedAt=2026-10-08T06:47:10.678Z -->
+<!-- md-trans-meta sourceCommit=d13608155981ddb4a909ac86f719d96a9e2b7178 translatedAt=2026-11-05T01:00:48.377Z pushedAt=2026-10-08T06:47:10.678Z nl=2 -->
 
 By default, notification messages are subject to [cross-device collaboration](notification-glossary.md#cross-device-collaboration). If an application has implemented cross-device collaboration through the distributed communication capability (for example, SMS notification messages are synchronized by the SMS application itself to devices such as wearables, tablets, and PCs/2-in-1 devices), the collaborative devices of [distributed notification](notification-glossary.md#distributed-notification) must be managed to prevent notification messages from being repeatedly sent on different devices.
 

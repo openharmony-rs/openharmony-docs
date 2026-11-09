@@ -6,7 +6,7 @@
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
-BackupExtensionContext是BackupExtensionAbility的上下文环境，继承自ExtensionContext，用于在备份恢复过程中获取临时目录。
+BackupExtensionContext是BackupExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)，用于在备份恢复过程中获取临时目录。
 
 BackupExtensionContext模块提供访问特定BackupExtensionAbility资源的能力。应用实现备份恢复扩展能力时，可通过该上下文获取el1（设备级加密区）或el2（用户级加密区）对应的临时目录，用于临时保存待备份数据或读取待恢复数据，从而简化备份恢复扩展能力开发，并按数据安全等级隔离临时数据。对于扩展的BackupExtensionAbility，可直接将BackupExtensionContext作为上下文环境，或者定义一个继承自BackupExtensionContext的类型作为上下文环境。
 

@@ -8368,6 +8368,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.CONTROL_IMAGEVIDEO_ANALYSIS
+
+允许应用触发资产的智慧分析。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car | LiteWearable
+
+**起始版本**：26.0.1
+
 ## ohos.permission.vehicle.CREATE_SIGN_CONTENT_TRUST
 
 允许应用创建内容证真签名。
@@ -8844,6 +8858,34 @@
 
 **起始版本**：26.0.1
 
+## ohos.permission.vehicle.HIMA_COOPERATE
+ 
+允许应用调用端云协同API，查询、下载资源和配置文件。
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**是否支持证书授权**：true
+ 
+**支持设备**：Car
+ 
+**起始版本**：26.0.1
+ 
+## ohos.permission.vehicle.HIMA_DEVICE_AUTH
+ 
+允许应用调用正品认证API，进行设备正品认证。
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**是否支持证书授权**：true
+ 
+**支持设备**：Car
+ 
+**起始版本**：26.0.1
+
 ## ohos.permission.vehicle.SHUTDOWN
 
 允许系统应用关闭座舱电源。
@@ -8861,6 +8903,272 @@
 ## ohos.permission.vehicle.KEEP_STANDBY
 
 允许系统应用申请座舱保电。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.CONNECTIVITY_USE_RESTRICTED_NETWORKS
+ 
+允许应用使用受限网络，如内部网络、特定的车载网络等。
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**是否支持证书授权**：true
+ 
+**支持设备**：Car
+ 
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.INNER_NETWORK
+ 
+允许应用访问车机内部网络。
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**是否支持证书授权**：true
+ 
+**支持设备**：Car
+ 
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.LOGIN_TSP
+
+允许应用调用“车云移动服务”应用的登录、登出接口。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+ 
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.GET_TSP_ACCOUNT_INFO
+
+允许应用获取车云账号信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.GET_TSP_SERVICE_TOKEN
+
+允许应用获取车云账号业务Token。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.GET_TSP_VEHICLE_APP_TOKEN
+
+允许应用获取车云车辆应用Token。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.GET_TSP_ACCOUNT_ROLE
+
+允许应用获取车云账号角色。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+ 
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.PUBLISH_ACMSCORE_EVENT
+
+允许应用发布“车云移动服务”应用事件。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.SUBSCRIBE_ACMSCORE_EVENT
+
+允许应用订阅“车云移动服务”应用事件。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.READ_HARDWARE_CONFIG
+
+允许应用读取车辆硬件信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.FACTORYRESET_WRITE_CONFIG
+
+允许应用将车辆恢复出厂设置。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.DEVICE_INFO_WRITE
+
+允许应用设置车辆下挂设备的参数。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.DEVICE_INFO_READ
+
+允许应用获取车辆下挂设备的参数。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.LICENSE_WRITE
+
+允许应用申请车辆临时License。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.LICENSE_READ
+
+允许应用获取车辆License相关信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.CURTAIN_WRITE
+
+允许应用设置幕布模式与运动指令。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.CURTAIN_READ
+
+允许应用获取幕布模式与运动状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.CLUSTER_INFO_WRITE
+
+允许应用设置仪表个性化参数。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.CLUSTER_INFO_READ
+
+允许应用获取仪表个性化设置相关信息。
 
 **权限级别**：system_basic
 

@@ -6,7 +6,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:39:43.649Z pushedAt=2026-09-16T08:26:04.254Z -->
+<!-- md-trans-meta sourceCommit=6904d9490d08f6e95590f9076e80fa522cfa75ba translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 OpenHarmony APIs provide the capability of sharing strong references across ArkTS threads in the same process. Unlike **napi_ref**, **napi_sendable_ref** supports operations across ArkTS threads, but also has some restrictions.
 
@@ -307,6 +307,8 @@ You can use the [napi_create_strong_sendable_reference](../reference/native-lib/
    * @param event message data
    */
    workerPort.onmessageerror = (event: MessageEvents) => {
+      // Reserved API.
+      console.error('onmessageerror:' + event.data);
    };
 
    /**
@@ -316,6 +318,8 @@ You can use the [napi_create_strong_sendable_reference](../reference/native-lib/
    * @param event error message
    */
    workerPort.onerror = (event: ErrorEvent) => {
+      // Reserved API.
+      console.error('onerror:' + event.message);
    };
    ```
 
