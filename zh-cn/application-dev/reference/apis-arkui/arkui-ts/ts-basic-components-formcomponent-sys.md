@@ -36,7 +36,7 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 FormComponent(value: FormInfo)
 
-加载卡片内容和布局。创建卡片组件，用于显示提供的卡片。
+创建卡片组件，并加载卡片内容和布局用于显示。
 
 **系统接口：** 此接口为系统接口。
 
