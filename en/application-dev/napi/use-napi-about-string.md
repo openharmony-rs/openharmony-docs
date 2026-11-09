@@ -108,7 +108,7 @@ ArkTS code:
 ``` TypeScript
 // Pass in a string and a number respectively. If the input is a string, the string will be returned. If the input is not a string, 'undefined' will be returned.
 hilog.info(0x0000, 'testTag', 'Test Node-API get_value_string_utf8_string %{public}s',
-  testNapi.getValueStringUtf8('aaBC+-$%^你好123'));
+  testNapi.getValueStringUtf8('aaBC+-$%^Hello123'));
 hilog.info(0x0000, 'testTag', 'Test Node-API get_value_string_utf8_not_string %{public}s',
   testNapi.getValueStringUtf8(50));
 ```
@@ -124,7 +124,7 @@ CPP code:
 ``` C++
 static napi_value CreateStringUtf8(napi_env env, napi_callback_info info)
 {
-    const char *str = u8"你好, World!, successes to create UTF-8 string! 111";
+    const char *str = u8"Hello, World!, successes to create UTF-8 string! 111";
     size_t length = strlen(str);
     napi_value result = nullptr;
     napi_status status = napi_create_string_utf8(env, str, length, &result);
@@ -211,7 +211,7 @@ CPP code:
 ``` C++
 static napi_value CreateStringUtf16(napi_env env, napi_callback_info info)
 {
-    const char16_t *str = u"你好, World!, successes to create UTF-16 string! 111";
+    const char16_t *str = u"Hello, World!, successes to create UTF-16 string! 111";
     size_t length = NAPI_AUTO_LENGTH;
     napi_value result = nullptr;
     napi_status status = napi_create_string_utf16(env, str, length, &result);
@@ -285,7 +285,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API get_value_string_latin1_not_string 
   testNapi.getValueStringLatin1(10));
 // The ISO-8859-1 encoding does not support Chinese characters. If Chinese characters are passed in, garbled characters will be displayed.
 hilog.info(0x0000, 'testTag', 'Test Node-API get_value_string_latin1_string_chinese %{public}s',
-  testNapi.getValueStringLatin1('中文'));
+  testNapi.getValueStringLatin1('Chinese'));
 // Passing in characters of other languages will not cause garbled characters.
 hilog.info(0x0000, 'testTag', 'Test Node-API get_value_string_latin1_string %{public}s',
   testNapi.getValueStringLatin1('abo ABP=-&*/'));
@@ -353,7 +353,7 @@ static void StringFinalizerUTF16(void* data, void* hint)
 
 static napi_value CreateExternalStringUtf16(napi_env env, napi_callback_info info)
 {
-    const char16_t source[] = u"你好, World!, successes to create UTF-16 string! 111";
+    const char16_t source[] = u"Hello, World!, successes to create UTF-16 string! 111";
     napi_value result = nullptr;
     int char16tLength = sizeof(source) / sizeof(char16_t);
     // Allocate memory dynamically on the heap and copy the string content.

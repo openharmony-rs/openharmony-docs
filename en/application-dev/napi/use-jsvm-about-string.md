@@ -214,14 +214,14 @@ static JSVM_PropertyDescriptor descriptor[] = {
 
 // Call the C++ code from JS.
 const char *SRC_CALL_NATIVE = R"JS(
-    let data = "ahello。";
+    let data = "ahello.";
     let script = getValueStringUtf16(data);
 )JS";
 ```
 
 Expected result:
 ``` C++
-JSVM GetValueStringUtf16 success: ahello。
+JSVM GetValueStringUtf16 success: ahello.
 ```
 **Note**: The **arg** parameter of **getValueStringUtf16(arg)** must be a string. Otherwise, the API call fails.
 
