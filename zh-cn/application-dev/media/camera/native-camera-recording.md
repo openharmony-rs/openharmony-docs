@@ -10,7 +10,7 @@
 
 在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
 
-当前只提供录像流程及其接口介绍。对于单个流程（如[设备输入](native-camera-device-input.md)、[会话管理](native-camera-session-management.md)的介绍请参考具体章节。
+当前只提供录像流程及其接口介绍。对于单个流程（如[设备输入](native-camera-device-input.md)、[会话管理](native-camera-session-management.md)）的介绍请参考具体章节。
 
 ## 开发流程
 
