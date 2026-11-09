@@ -6,6 +6,7 @@
 <!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=4411ebca9ae11d221073cfa470199e385cdf6bec translatedAt=2026-11-02T12:55:31.202Z pushedAt=2026-11-09T02:06:05.602Z nl=1 -->
 
 The UIObserver class provides non-intrusive monitoring capabilities for UI component behavior changes. Non-intrusive monitoring means that after registering a callback, you do not need to manually poll or actively query component states; when the target component state changes, the system automatically triggers the callback and returns the updated information. UIObserver supports monitoring various UI behaviors, including Navigation page state changes (NavDestination), scroll events, route page states, screen pixel density changes, draw and layout completion, click events, gesture trigger information, text changes, and component content switching. This class is suitable for scenarios such as page lifecycle monitoring, scroll event handling, and rendering performance optimization.
 
@@ -27,7 +28,7 @@ on(type: 'navDestinationUpdate', callback: Callback\<observer.NavDestinationInfo
 
 Listens for [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state changes. The listener is implemented by registering a callback function. When the state of the NavDestination component changes (for example, shown, hidden, destroyed, and more), the registered callback is automatically called with the state change information.
 
-> **NOTE**
+> **NOTE** 
 >
 > - This method and [off('navDestinationUpdate')](#offnavdestinationupdate11) must be used in pairs.
 >
@@ -130,7 +131,7 @@ on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callbac
 
 Listens for [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state changes via the [Navigation](arkui-ts/ts-basic-components-navigation.md) component ID.
 
-> **NOTE**
+> **NOTE** 
 >
 > - This method and [off('navDestinationUpdate')](#offnavdestinationupdate11-1) must be used in pairs.
 >
@@ -236,7 +237,7 @@ on(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback:
 
 Listens for [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state changes using the [Navigation](arkui-ts/ts-basic-components-navigation.md) component's uniqueId. Obtain the uniqueId via [queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12).
 
-> **NOTE**
+> **NOTE** 
 >
 > - This method and [off('navDestinationUpdateByUniqueId')](#offnavdestinationupdatebyuniqueid20) must be used in pairs.
 >
@@ -511,7 +512,7 @@ on(type: 'routerPageUpdate', callback: Callback\<observer.RouterPageInfo\>): voi
 
 Listens for page state changes in the [Router](arkts-apis-uicontext-router.md). Typical use cases include page routing lifecycle management, page navigation event tracking, and page switch state monitoring.
 
-> **NOTE**
+> **NOTE** 
 >
 > - This method and [off('routerPageUpdate')](#offrouterpageupdate11) must be used in pairs.
 >
@@ -609,7 +610,7 @@ on(type: 'densityUpdate', callback: Callback\<observer.DensityInfo\>): void
 
 Listens for screen pixel density changes.
 
-> **NOTE**
+> **NOTE** 
 >
 > - This method and [off('densityUpdate')](#offdensityupdate12) must be used in pairs.
 >
@@ -843,7 +844,7 @@ on(type: 'navDestinationSwitch', callback: Callback\<observer.NavDestinationSwit
 
 Listens for [Navigation](arkui-ts/ts-basic-components-navigation.md) page switch events.
 
-> **NOTE**
+> **NOTE** 
 >
 > - This method and [off('navDestinationSwitch')](#offnavdestinationswitch12) must be used in pairs.
 >
@@ -952,7 +953,7 @@ on(type: 'navDestinationSwitch', observerOptions: observer.NavDestinationSwitchO
 
 Listens for [Navigation](arkui-ts/ts-basic-components-navigation.md) page switch events with configurable observer options.
 
-> **NOTE**
+> **NOTE** 
 >
 > - This method and [off('navDestinationSwitch')](#offnavdestinationswitch12-1) must be used in pairs.
 >
@@ -1073,7 +1074,7 @@ Listens for click event instruction dispatch. The registered callback function i
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value **'willClick'** indicates the dispatch of click event instructions. The registered callback is triggered when the click event is about to occur.|
-| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12) | Yes  | Callback used to return the result. It provides [GestureEvent](arkui-ts/ts-gesture-common.md#gestureevent) and the target component's [FrameNode](js-apis-arkui-frameNode.md) information. |
+| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12) | Yes | Callback used to return the result. It provides [GestureEvent](arkui-ts/ts-gesture-common.md#gestureevent) and the target component's [FrameNode](js-apis-arkui-frameNode.md) information. |
 
 **Example**
 
@@ -1178,7 +1179,7 @@ Unregisters the click event command dispatch listener previously registered usin
 | Name  | Type                                                        | Mandatory| Description                                                 |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
 | type     | string                                                       | Yes  | Event type. The value **'willClick'** indicates click event instruction dispatch.|
-| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12) | No  | Target listener to unregister. If no parameter is provided, all click event instruction dispatch listeners are unregistered.                               |
+| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12) | No   | Listener to unregistered. If no parameter is provided, all click event instruction dispatch listeners are unregistered.                                |
 
 **Example**
 
@@ -1199,7 +1200,7 @@ Listens for click event instruction dispatch. The registered callback function i
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value **'didClick'** indicates click event instruction dispatch. The registered callback is triggered after the click event occurs.|
-| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12) | Yes  | Callback used to return the result. It provides [GestureEvent](arkui-ts/ts-gesture-common.md#gestureevent) and the target component's [FrameNode](js-apis-arkui-frameNode.md) information. |
+| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12) | Yes | Callback used to return the result. It provides [GestureEvent](arkui-ts/ts-gesture-common.md#gestureevent) and the target component's [FrameNode](js-apis-arkui-frameNode.md) information. |
 
 **Example**
 
@@ -1220,7 +1221,7 @@ Unregisters the click event command dispatch listener previously registered usin
 | Name  | Type                                                        | Mandatory| Description                                                |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
 | type     | string                                                       | Yes  | Event type. The value **'didClick'** indicates click event instruction dispatch.|
-| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12) | No  | Target listener to unregister. If no parameter is provided, all click event instruction dispatch listeners are unregistered.                              |
+| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12) | No   | Target listener to unregister. If no parameter is provided, all click event instruction dispatch listeners are unregistered.                              |
 
 **Example**
 
@@ -1241,7 +1242,7 @@ Listens for click event instruction dispatch. The registered callback function i
 | Name  | Type                                                       | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                      | Yes  | Event type. The value **'willClick'** indicates the dispatch of click event instructions. The registered callback is triggered when the click event is about to occur.|
-| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12) | Yes  | Callback used to return the result. It provides [ClickEvent](arkui-ts/ts-universal-events-click.md#clickevent) and the target component's [FrameNode](js-apis-arkui-frameNode.md) information.   |
+| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12) | Yes | Callback used to return the result. It provides [ClickEvent](arkui-ts/ts-universal-events-click.md#clickevent) and the target component's [FrameNode](js-apis-arkui-frameNode.md) information. |
 
 **Example**
 
@@ -1262,7 +1263,7 @@ Unregisters the click event command dispatch listener previously registered usin
 | Name  | Type                                                       | Mandatory| Description                                                 |
 | -------- | ----------------------------------------------------------- | ---- | ----------------------------------------------------- |
 | type     | string                                                      | Yes  | Event type. The value **'willClick'** indicates click event instruction dispatch.|
-| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12) | No  | Target listener to unregister. If no parameter is provided, all click event instruction dispatch listeners are unregistered.                               |
+| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12) | No   | Target listener to unregister. If no parameter is provided, all click event instruction dispatch listeners are unregistered.                                |
 
 **Example**
 
@@ -1283,7 +1284,7 @@ Listens for click event instruction dispatch. The registered callback function i
 | Name  | Type                                                       | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                      | Yes  | Event type. The value **'didClick'** indicates click event instruction dispatch. The registered callback is triggered after the click event occurs.|
-| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12) | Yes  | Callback used to return the result. It provides [ClickEvent](arkui-ts/ts-universal-events-click.md#clickevent) and the target component's [FrameNode](js-apis-arkui-frameNode.md) information.   |
+| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12) | Yes | Callback used to return the result. It provides [ClickEvent](arkui-ts/ts-universal-events-click.md#clickevent) and the target component's [FrameNode](js-apis-arkui-frameNode.md) information. |
 
 **Example**
 
@@ -1304,7 +1305,7 @@ Unregisters the click event command dispatch listener previously registered usin
 | Name  | Type                                                       | Mandatory| Description                                                |
 | -------- | ----------------------------------------------------------- | ---- | ---------------------------------------------------- |
 | type     | string                                                      | Yes  | Event type. The value **'didClick'** indicates click event instruction dispatch.|
-| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12) | No  | Target listener to unregister. If no parameter is provided, all click event instruction dispatch listeners are unregistered.                              |
+| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12) | No | Target listener to unregister. If no parameter is provided, all click event instruction dispatch listeners are unregistered. |
 
 **Example**
 
@@ -1510,7 +1511,7 @@ on(type: 'tabChange', callback: Callback\<observer.TabContentInfo\>): void
 
 Listens for tab switching events of the [Tabs](arkui-ts/ts-container-tabs.md) component. Multiple **Tabs** components are supported. Unlike [on('tabContentUpdate')](#ontabcontentupdate12), this API supports listening for the initial tab display event when the **Tabs** component is initialized.
 
-> **NOTE**
+> **NOTE** 
 >
 > - This method and [off('tabChange')](#offtabchange22) must be used in pairs.
 >
@@ -1638,7 +1639,7 @@ on(type: 'tabChange', config: observer.ObserverOptions, callback: Callback\<obse
 
 Listens for tab switching events of the specified [Tabs](arkui-ts/ts-container-tabs.md) component. Unlike [on('tabContentUpdate')](#ontabcontentupdate12-1), this API supports listening for the initial tab display event when the **Tabs** component is initialized.
 
-> **NOTE**
+> **NOTE** 
 >
 > - This method and [off('tabChange')](#offtabchange22-1) must be used in pairs.
 >
@@ -1931,7 +1932,7 @@ For details, see [on('textChange')](#ontextchange22).
 
 on(type: 'beforePanStart', callback: PanListenerCallback): void
 
-Listens for pan gesture [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) pre-execution events, executing the callback before the actual [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) event. It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch mode.
+Listens for pan gesture [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) pre-execution events, executing the callback before the actual [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) event. It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch exploration mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -2059,7 +2060,7 @@ struct PanExample {
 
 off(type: 'beforePanStart', callback?: PanListenerCallback): void
 
-Unregisters the listener for pan gesture [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) pre-execution events, canceling callbacks registered via [on('beforePanStart')](#onbeforepanstart19). It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch mode.
+Unregisters the listener for pan gesture [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) pre-execution events, canceling callbacks registered via [on('beforePanStart')](#onbeforepanstart19). It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch exploration mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -2080,7 +2081,7 @@ See the example for [on('beforePanStart')](#onbeforepanstart19).
 
 on(type: 'afterPanStart', callback: PanListenerCallback): void
 
-Listens for pan gesture [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) post-execution events, executing the callback after the actual [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) event. It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch mode.
+Listens for pan gesture [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) post-execution events, executing the callback after the actual [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) event. It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch exploration mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -2101,7 +2102,7 @@ See the example for [on('beforePanStart')](#onbeforepanstart19).
 
 off(type: 'afterPanStart', callback?: PanListenerCallback): void
 
-Unregisters the listener for pan gesture [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) post-execution events, canceling callbacks registered via [on('afterPanStart')](#onafterpanstart19). It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch mode.
+Unregisters the listener for pan gesture [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) post-execution events, canceling callbacks registered via [on('afterPanStart')](#onafterpanstart19). It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch exploration mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -2122,7 +2123,7 @@ See the example for [on('beforePanStart')](#onbeforepanstart19).
 
 on(type: 'beforePanEnd', callback: PanListenerCallback): void
 
-Listens for pan gesture [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) pre-execution events, executing the callback before the actual [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) event. It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch mode.
+Listens for pan gesture [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) pre-execution events, executing the callback before the actual [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) event. It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch exploration mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -2143,7 +2144,7 @@ See the example for [on('beforePanStart')](#onbeforepanstart19).
 
 off(type: 'beforePanEnd', callback?: PanListenerCallback): void
 
-Unregisters the listener for pan gesture [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) pre-execution events, canceling callbacks registered via [on('beforePanEnd')](#onbeforepanend19). It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch mode.
+Unregisters the listener for pan gesture [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) pre-execution events, canceling callbacks registered via [on('beforePanEnd')](#onbeforepanend19). It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch exploration mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -2164,7 +2165,7 @@ See the example for [on('beforePanStart')](#onbeforepanstart19).
 
 on(type: 'afterPanEnd', callback: PanListenerCallback): void
 
-Listens for pan gesture [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) post-execution events, executing the callback after the actual [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) event. It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch mode.
+Listens for pan gesture [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) post-execution events, executing the callback after the actual [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) event. It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch exploration mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -2185,7 +2186,7 @@ See the example for [on('beforePanStart')](#onbeforepanstart19).
 
 off(type: 'afterPanEnd', callback?: PanListenerCallback): void
 
-Unregisters the listener for pan gesture [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) post-execution events, canceling callbacks registered via [on('afterPanEnd')](#onafterpanend19). It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch mode.
+Unregisters the listener for pan gesture [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) post-execution events, canceling callbacks registered via [on('afterPanEnd')](#onafterpanend19). It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch exploration mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
