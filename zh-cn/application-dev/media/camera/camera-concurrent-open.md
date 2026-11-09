@@ -485,7 +485,6 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 
 11. 在多摄同开状态下，前/后置相机可配置的能力示例如下（当前版本仅支持本文开头部分所示的七项基础功能）。
 
-    1.闪光灯。
     <!-- @[camera_flash](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
     ``` TypeScript
@@ -507,8 +506,6 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
     }
     ```
 
-    2.曝光。
-
     <!-- @[camera_setExposureMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
     ``` TypeScript
@@ -528,8 +525,6 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
       }
     }
     ```
-
-    3.变焦。
 
     <!-- @[camera_setZoomRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
@@ -555,8 +550,6 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
     }
     ```
 
-    4.曝光补偿。
-
     <!-- @[camera_setExposureBias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    
     ``` TypeScript
@@ -581,8 +574,6 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
      }
     ```
 
-    5.对焦。
-
     <!-- @[camera_setFocusMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
     ``` TypeScript
@@ -604,8 +595,6 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
     }
     ```
 
-    6.防抖。
-
     <!-- @[camera_setStabilization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
  
     ``` TypeScript
@@ -619,8 +608,6 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
       }
     }
     ```
-
-    7.色彩空间。
 
     <!-- @[camera_setColorSpace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
  
