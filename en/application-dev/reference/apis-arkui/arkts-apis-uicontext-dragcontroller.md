@@ -1,10 +1,11 @@
 # Class (DragController)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-02T12:41:45.178Z pushedAt=2026-11-05T07:40:21.229Z nl=1 -->
 
 Provides drag-and-drag control capabilities, supporting the proactive initiation of dragging with attached drag information when the application receives events such as touch or long press. It also supports creating drag actions, obtaining the drag preview, controlling drag event reporting and drag start requests, canceling drag data loading, and displaying the drop-disallowed badge when dropping onto a target area is not allowed.
 
@@ -51,11 +52,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { dragController } from '@kit.ArkUI';
 import { unifiedDataChannel } from '@kit.ArkData';
 
-class DragInfo {
-  event: DragEvent | undefined = undefined;
-  extraParams: string = '';
-}
-
 @Entry
 @Component
 struct DragControllerPage {
@@ -86,7 +82,7 @@ struct DragControllerPage {
               this.getUIContext().getDragController().executeDrag(() => {
                 this.DraggingBuilder()
               }, dragInfo, (err, dragEventParam) => {
-                if (dragEventParam.event) {
+                if (!err && dragEventParam?.event) {
                   if (dragEventParam.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                     // ...
                   } else if (dragEventParam.event.getResult() == DragResult.DRAG_FAILED) {
@@ -144,11 +140,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { dragController } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { unifiedDataChannel } from '@kit.ArkData';
-
-class DragInfo {
-  event: DragEvent | undefined = undefined;
-  extraParams: string = '';
-}
 
 @Entry
 @Component
@@ -212,6 +203,7 @@ struct DragControllerPage {
                     }
                   })
                   .catch((err: Error) => {
+                    console.error(`Failed to execute drag. Cause: ${err.message}`);
                   })
               });
             }
@@ -325,7 +317,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
    }
    ```
 
-2. Call **this.getUIContext().getSharedLocalStorage()** to obtain the context, and then obtain the DragController object to perform subsequent drag operations.
+2. Call **this.getUIContext().getSharedLocalStorage()** to obtain the shared LocalStorage, and then obtain the **DragController** object to perform subsequent drag operations.
    ```ts
    import { dragController, UIContext } from '@kit.ArkUI';
    import { image } from '@kit.ImageKit';
@@ -371,7 +363,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
                  extraParams: ''
                };
                try {
-                 this.dragAction = this.getUIContext().getDragController().createDragAction(this.customBuilders, dragInfo);
+                 let uiContext: UIContext = this.storages?.get<UIContext>('uiContext') as UIContext;
+                 this.dragAction = uiContext.getDragController().createDragAction(this.customBuilders, dragInfo);
                  if (!this.dragAction) {
                    console.info('listener dragAction is null');
                    return;
@@ -423,7 +416,7 @@ Obtains the **DragPreview** object, which represents the preview displayed durin
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [dragController.DragPreview](js-apis-arkui-dragController.md#dragpreview11) | **DragPreview** object. It provides the API for setting the preview style. Setting the drop preview style using this object in the **onDrop** or **onDragEnd** callback does not take effect.|
+| [dragController.DragPreview](js-apis-arkui-dragController.md#dragpreview11) | **DragPreview** object. It provides the API for setting the preview style. Setting the drag preview style using this object in the **onDrop** or **onDragEnd** callback does not take effect.|
 
 **Error codes**: For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
@@ -541,6 +534,7 @@ struct NormalEts {
         this.previewData = {
           pixelMap: this.pixmap
         };
+        this.getUIContext().getDragController().notifyDragStartRequest(dragController.DragStartRequestStatus.READY);
       });
 
       let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
@@ -548,8 +542,6 @@ struct NormalEts {
       let unifiedData = new unifiedDataChannel.UnifiedData(data);
       this.unifiedData1 = unifiedData;
       this.finished = true;
-
-      this.getUIContext().getDragController().notifyDragStartRequest(dragController.DragStartRequestStatus.READY);
     }, 4000);
     this.timeout1 = timeout;
   }
@@ -595,7 +587,7 @@ struct NormalEts {
 
 enableDropDisallowedBadge(enabled: boolean): void
 
-Enables the display of the drop-disallowed badge when the dragged data type does not intersect with the data types allowed by the component's [allowDrop](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop) configuration. When a component can accept or process dragged data or returns **DragBehavior.COPY** to indicate copy mode processing, the drag preview shows a plus icon with data count badge. When the component returns **DragBehavior.MOVE** to indicate cut mode processing, only the data count badge appears. When this feature is enabled, the system automatically displays a disallowed badge during drag operations if the dragged data types are incompatible with the target component's allowed drop types. This API currently does not support [UIExtension](../apis-arkui/js-apis-arkui-uiExtension.md).
+Enables the display of the drop-disallowed badge when the dragged data type does not intersect with the data types allowed by the component's [allowDrop](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop) configuration. Typically, when a component can accept or process dragged data or returns **DragBehavior.COPY** to declare to the system that the data is processed in copy mode, the drag preview shows a plus icon with data count badge. When the component returns **DragBehavior.MOVE** to declare to the system that the data is processed in cut mode, only the data count badge appears. When the drag object passes over the target area, if the system determines or the component explicitly declares that the drag data cannot be processed, this API can be used to set whether to display the drop-disallowed badge. This API currently does not support [UIExtension](../apis-arkui/js-apis-arkui-uiExtension.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -605,7 +597,7 @@ Enables the display of the drop-disallowed badge when the dragged data type does
 
 | Name| Type| Mandatory| Description|
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enabled | boolean | Yes  | When the dragged data type does not intersect with the data types allowed by the component's [allowDrop](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop) configuration, a drag-disallowed badge can be displayed. During a drag operation on a target component, the **enableDropDisallowedBadge** method can be used to check whether the drag-disallowed badge should be displayed. The value **true** means to enable the display of a disallowed badge, and **false** means the opposite. The default value is **false**.|
+| enabled | boolean | Yes  | When the dragged data type does not intersect with the data types allowed by the component's [allowDrop](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop) configuration, a drop-disallowed badge can be displayed. During a drag operation on a target component, the **enableDropDisallowedBadge** method can be used to set whether the drop-disallowed badge should be displayed. The value **true** means to enable the display of a drop-disallowed badge, and **false** means the opposite. If this API is not called, the drop-disallowed badge is not displayed. |
 
 **Example**
 
@@ -661,3 +653,4 @@ This example demonstrates the function of displaying a drag-disallowed badge whe
    ```
 
 ![UIContext](figures/UIContext.png)
+

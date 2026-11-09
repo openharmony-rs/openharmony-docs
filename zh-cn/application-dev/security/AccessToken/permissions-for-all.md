@@ -823,6 +823,34 @@
 
 **起始版本**：26.0.1
 
+## ohos.permission.vehicle.HIMA_DATA_READ
+
+允许应用读取HIMA云数据。
+ 
+通过此权限，应用程序可以从HIMA云读取车辆相关数据。
+ 
+**权限级别**：normal
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**支持设备**：Car
+ 
+**起始版本**：26.0.1
+ 
+## ohos.permission.vehicle.HIMA_DATA_WRITE
+
+允许应用将数据写入HIMA云。
+ 
+通过此权限，应用程序可以向HIMA云写入车辆相关数据。
+ 
+**权限级别**：normal
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**支持设备**：Car
+ 
+**起始版本**：26.0.1
+
 ## ohos.permission.DCAS_RUN_MODEL
 
 允许应用和服务接入端侧模型运行态管理。
