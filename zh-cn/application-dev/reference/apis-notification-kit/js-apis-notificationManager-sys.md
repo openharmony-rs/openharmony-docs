@@ -5620,7 +5620,7 @@ getNotificationSwitchLimitedBundles(userId: number): Promise\<Map\<string, boole
 
 | 类型 | 说明 |
 |-----------------|-------------------------|
-| Promise\<Map\<string, boolean\>\> | Promise对象，返回应用通知开关状态的键值对集合。<br>**true**: 表示开启。<br>**false**: 表示关闭。 |
+| Promise\<Map\<string, boolean\>\> | Promise对象，返回应用通知开关状态的键值对集合。<br>true: 表示开启。<br>false: 表示关闭。 |
 
 **错误码：**
 
