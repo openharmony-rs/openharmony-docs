@@ -1460,7 +1460,9 @@ requestSystemInputCapability(type: InputCapabilityType): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+ 
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
