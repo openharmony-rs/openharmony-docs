@@ -3145,3 +3145,5 @@ Removes the listener callback registered using the **onNavDestinationSizeChangeB
 **Example**
 
 See the example for the [onNavDestinationSizeChangeByUniqueId](#onnavdestinationsizechangebyuniqueid23) API.
+
+<!--no_check-->

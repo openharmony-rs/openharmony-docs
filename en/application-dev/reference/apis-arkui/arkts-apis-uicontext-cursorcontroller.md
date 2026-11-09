@@ -244,3 +244,5 @@ struct CustomCursorExample {
 ```
 
 ![cursor-setCustomCursor](figures/cursor-setCustomCursor.gif)
+
+<!--no_check-->
