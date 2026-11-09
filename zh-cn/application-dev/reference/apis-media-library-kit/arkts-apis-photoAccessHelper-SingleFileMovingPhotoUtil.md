@@ -8,7 +8,7 @@
 
 合一动态照片是指将图片和视频封装在同一个文件中的动态照片，文件由图片数据和视频数据依次拼接而成，视频数据位于图片数据之后。相比图片和视频分别保存的双文件形式，合一动态照片更便于传输、备份和分享。
 
-本类提供合一动态照片的判断、解包、打包以及获取视频偏移能力。相关开发指导请参考[使用合一动态照片](../../media/medialibrary/photoAccessHelper-singlefile-movingphoto.md)。
+本类提供合一动态照片的判断、拆分、合并以及获取视频偏移能力。相关开发指导请参考[使用合一动态照片](../../media/medialibrary/photoAccessHelper-singlefile-movingphoto.md)。
 
 **起始版本：** 26.1.0
 
@@ -96,7 +96,7 @@ static unpackingSingleFileMovingPhoto(singleFileMovingPhotoUri: string, outImage
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. SingleFileMovingPhotoUri, outImageParentFolder, outVideoParentFolder are empty or can not open.<br>2. When saving generated files, a naming conflict occurs after more than 10 attempts. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. SingleFileMovingPhotoUri, outImageParentFolder, outVideoParentFolder are empty or can not open.<br>2. When saving generated files, a naming conflict occurs after more than 10 attempts.|
 | 23800109 | Incorrect file format. |
 
 **示例：**
@@ -147,7 +147,7 @@ static packingSingleFileMovingPhoto(imageUri: string, videoUri: string, outParen
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. ImageUri、 videoUri and outParentFolder are empty or can not open.<br>2. The image and video formats do not satisfy jpeg/jpg/heic/heif+mp4.<br>3. When saving generated files, a naming conflict occurs after more than 10 attempts. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. ImageUri, videoUri and outParentFolder are empty or can not open.<br>2. The image and video formats do not satisfy jpeg/jpg/heic/heif+mp4.<br>3. When saving generated files, a naming conflict occurs after more than 10 attempts. |
 
 **示例：**
 
