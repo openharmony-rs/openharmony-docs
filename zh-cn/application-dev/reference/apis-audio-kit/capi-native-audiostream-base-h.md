@@ -194,7 +194,7 @@ enum OH_AudioStream_LatencyMode
 | -- | -- |
 | AUDIOSTREAM_LATENCY_MODE_NORMAL = 0 | 该模式代表一个普通时延的音频流。 |
 | AUDIOSTREAM_LATENCY_MODE_FAST = 1 | 该模式代表一个低时延的音频流。 |
-| AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST = 2 | 该模式代表一个超低时延的音频流。 |
+| AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST = 2 | 该模式代表一个超低时延的音频流。<br>**起始版本：** 26.1.0 |
 
 ### OH_AudioStream_DirectPlaybackMode
 
