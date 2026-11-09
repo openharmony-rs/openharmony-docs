@@ -1811,7 +1811,7 @@ getAppSharedHeapObjectUsedSize(): bigint
 
 **错误码**：
 
-以下错误码的详细介绍请参见[HiDebug SharedHeapObjectUsedSize](errorcode-hiviewdfx-hidebug-sharedheapobjectusedsize.md)。
+以下错误码的详细介绍请参见[HiDebug SharedHeapObjectUsedSize错误码](errorcode-hiviewdfx-hidebug-sharedheapobjectusedsize.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |

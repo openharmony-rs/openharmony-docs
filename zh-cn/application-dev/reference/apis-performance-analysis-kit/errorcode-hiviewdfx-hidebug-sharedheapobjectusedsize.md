@@ -1,4 +1,4 @@
-# HiDebug CpuUsage错误码
+# HiDebug SharedHeapObjectUsedSize错误码
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
