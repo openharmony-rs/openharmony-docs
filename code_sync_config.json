@@ -763,9 +763,9 @@
 						"start_line":989
 					},
 					{
-						"end_line":1614,
+						"end_line":1693,
 						"name":"AppEvent_C++_Init",
-						"start_line":1532
+						"start_line":1609
 					},
 					{
 						"end_line":1048,
@@ -12105,9 +12105,9 @@
 						"start_line":438
 					},
 					{
-						"end_line":1616,
+						"end_line":1695,
 						"name":"Sys_Native_Nullptr_Event_C++_Init",
-						"start_line":1530
+						"start_line":1607
 					}
 				]
 			},
@@ -12160,9 +12160,9 @@
 						"start_line":563
 					},
 					{
-						"end_line":1615,
+						"end_line":1694,
 						"name":"Sys_Crash_Event_C++_Init",
-						"start_line":1529
+						"start_line":1606
 					},
 					{
 						"end_line":916,
@@ -36986,9 +36986,9 @@
 						"start_line":1220
 					},
 					{
-						"end_line":1617,
+						"end_line":1696,
 						"name":"Pss_Leak_Init",
-						"start_line":1531
+						"start_line":1608
 					}
 				]
 			},
@@ -37031,9 +37031,9 @@
 						"start_line":1220
 					},
 					{
-						"end_line":1617,
+						"end_line":1696,
 						"name":"Pss_Leak_Init",
-						"start_line":1531
+						"start_line":1608
 					}
 				]
 			},
