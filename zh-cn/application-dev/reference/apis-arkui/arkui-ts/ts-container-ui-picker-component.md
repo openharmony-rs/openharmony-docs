@@ -186,6 +186,26 @@ displayedItemCount(count: Optional\<number>)
 | ------ | ---- | ---- | ---- |
 | count | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是 | 可见选项数量。<br>取值范围：[2, 9]内的整数。<br>设置小数时，使用向下取整后的整数。<br>设置偶数时，自动转为大于该值的奇数（例如2变为3、8变为9）。<br>设置不在取值范围内时，使用默认值7行。<br>当count的值为undefined时，使用默认值7行。 |
 
+### selectedTextStyle
+
+selectedTextStyle(style: Optional\<PickerComponentTextStyle>)
+
+设置选中项的文本样式。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerComponentTextStyle](ts-picker-common.md#pickercomponenttextstyle对象说明)> | 是   | 选中项的文本样式。<br>默认值：<br>{<br>color: $r('sys.color.font_primary'),<br>font: {<br>size: '20fp',<br>weight: FontWeight.Normal<br>},<br>overflow: TextOverflow.Clip<br>}<br>当style的值为undefined时，使用默认值。 |
+
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
@@ -1624,3 +1644,53 @@ struct UIPickerComponentDisplayedCountExample {
 ```
 
 ![containerPicker](./figures/ContainerPickerDemo10.jpg)
+
+### 示例11（设置选中项文本样式）
+
+该示例通过[selectedTextStyle](#selectedtextstyle)设置UIPickerComponent容器选中项的文本样式为红色加粗。
+
+从API版本26.1.0开始，新增[selectedTextStyle](#selectedtextstyle)属性。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct UIPickerComponentTextStyleExample {
+  private dataArray: string[] = [];
+  @State selectedIndex: number = 0;
+
+  aboutToAppear(): void {
+    for (let i = 1; i <= 12; i++) {
+      this.dataArray.push('第' + i + '项')
+    }
+  }
+
+  build() {
+    Column({ space: 12 }) {
+      UIPickerComponent({
+        selectedIndex: this.selectedIndex
+      }) {
+        ForEach(this.dataArray, (item: string) => {
+          Text(item)
+        })
+      }
+      .onChange((selectedIndex: number) => {
+        this.selectedIndex = selectedIndex
+      })
+      .width('70%')
+      .selectedTextStyle({
+        color: '#FFFF0000',
+        font: {
+          size: '24fp',
+          weight: FontWeight.Bold
+        },
+        overflow: TextOverflow.Clip
+      })
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
+![textStyle](./figures/ui-picker-component-text-style.jpg)
