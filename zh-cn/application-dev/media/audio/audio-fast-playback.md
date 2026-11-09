@@ -24,7 +24,7 @@ status: active
 - 支持低时延模式的音频输出设备。
 - 可通过[OH_AudioRenderer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getfaststatus)验证当前设备是否支持低时延模式。
 - 使用超低时延模式还需满足：
-  - 申请权限`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`，申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
+  - 申请权限`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`。该权限为受限开放权限（system_basic），需在module.json5中声明后，再通过ACL方式跨级别申请，具体请参考[申请受限权限](../../security/AccessToken/declare-permissions-in-acl.md)。
   - 支持超低时延模式的音频输出设备。当前支持扬声器、听筒、USB耳机和USB ARM耳机，具体以设备实际配置为准。
   - 非系统应用仅在USB ARM耳机上可使用超低时延模式。
   - 可通过[OH_AudioStreamManager_IsUltraFastPlaybackSupported()](../../reference/apis-audio-kit/capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastplaybacksupported)查询当前流类型对应的输出设备是否支持超低时延模式。
