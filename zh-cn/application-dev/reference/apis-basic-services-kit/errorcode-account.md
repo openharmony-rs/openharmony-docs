@@ -793,6 +793,24 @@ The credentials are no longer valid.
 
 伴随设备认证场景，删除伴随设备后，重新绑定伴随设备。
 
+## 12300121 凭据近期已被使用
+
+**错误信息**
+
+The credential has been used recently and cannot be reused.
+
+**错误描述**
+
+该凭据近期已被使用，无法再次使用。
+
+**可能原因**
+
+该凭据近期已被使用。
+
+**处理步骤**
+
+使用近期未使用过的凭据，重新更新凭据。
+
 ## 12300201 域插件已注册
 
 **错误信息**
