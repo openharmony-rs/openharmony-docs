@@ -7271,13 +7271,8 @@ struct ShaderColorStyle {
     };
   controller: RichEditorController = new RichEditorController();
   options: RichEditorOptions = { controller: this.controller };
-<<<<<<< HEAD
-  controller1: RichEditorController = new RichEditorController();
-  options1: RichEditorOptions = { controller: this.controller1 };
-=======
   secondaryController: RichEditorController = new RichEditorController();
   secondaryOptions: RichEditorOptions = { controller: this.secondaryController };
->>>>>>> eef4c2c5c78066b79ee3da0f42694b1f9b809bb2
   controller2: RichEditorController = new RichEditorController();
   options2: RichEditorOptions = { controller: this.controller2 };
   controller3: RichEditorController = new RichEditorController();
@@ -7291,18 +7286,6 @@ struct ShaderColorStyle {
         .width('80%')
         .margin({ top: 10 })
         .onReady(() => {
-<<<<<<< HEAD
-          this.controller.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.linearGradientOptions1 } })
-        }).borderWidth(1)
-      Text('direction为LeftTop的线性渐变').fontSize(18).width('90%')
-        .margin({ top: 40, left: 40 })
-      RichEditor(this.options1)
-        .width('80%')
-        .margin({ top: 10 })
-        .onReady(() => {
-          this.controller1.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.linearGradientOptions2 } })
-        }).borderWidth(1)
-=======
           this.controller.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.linearGradientOptions1 } });
           let spans: Array<RichEditorImageSpanResult | RichEditorTextSpanResult> =
             this.controller.getSpans();
@@ -7331,44 +7314,28 @@ struct ShaderColorStyle {
           this.secondaryController.addTextSpan(this.message,
             { paragraphStyle: { shaderStyle: this.linearGradientOptions2 } });
         })
->>>>>>> eef4c2c5c78066b79ee3da0f42694b1f9b809bb2
       Text('径向渐变').fontSize(18).width('90%')
         .margin({ top: 40, left: 40 })
       RichEditor(this.options2)
         .width('80%')
         .margin({ top: 10 })
-<<<<<<< HEAD
-        .onReady(() => {
-          this.controller2.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.radialGradientOptions } })
-        }).borderWidth(1)
-=======
         .borderWidth(1)
         .onReady(() => {
           this.controller2.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.radialGradientOptions } });
         })
->>>>>>> eef4c2c5c78066b79ee3da0f42694b1f9b809bb2
       Text('纯色').fontSize(18).width('90%')
         .margin({ top: 40, left: 40 })
       RichEditor(this.options3)
         .width('80%')
         .margin({ top: 10 })
-<<<<<<< HEAD
-        .onReady(() => {
-          this.controller3.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.colorShaderStyle } })
-        }).borderWidth(1)
-=======
         .borderWidth(1)
         .onReady(() => {
           this.controller3.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.colorShaderStyle } });
         })
->>>>>>> eef4c2c5c78066b79ee3da0f42694b1f9b809bb2
     }
   }
 }
 ```
-<<<<<<< HEAD
-![RichEditorShaderStyle](figures/richEditorShaderStyle.png)
-=======
 ![RichEditorShaderStyle](figures/richEditorShaderStyle.png)
 
 ### 示例43（将指定范围的文字滚动到可视区内）
@@ -7698,4 +7665,3 @@ struct RichEditorImageTagDemo {
 ```
 
 ![RichEditorImageTagDemo](figures/richeditor-imagetag.gif)
->>>>>>> eef4c2c5c78066b79ee3da0f42694b1f9b809bb2
