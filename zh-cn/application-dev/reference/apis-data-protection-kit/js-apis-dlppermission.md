@@ -1384,6 +1384,23 @@ DLP文件授权类型的枚举。
 | READ_ONLY | 1 | 表示文件的只读权限。 |
 | CONTENT_EDIT | 2 | 表示文件的编辑权限。 |
 | FULL_CONTROL | 3 | 表示文件的完全控制权限。 |
+| ATOMIC_CONTROL | 4 | 表示文件的原子控制权限。 |
+
+## DlpAtomicPermissionType
+
+DLP文件原子权限的枚举。
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| ATOMIC_READ | 0x01 | 表示读取文件的原子权限。 |
+| ATOMIC_EDIT | 0x02 | 表示文件编辑原子权限。 |
+| ATOMIC_COPY | 0x04 | 表示复制文件内容的原子权限。 |
+| ATOMIC_SCREENSHOT | 0x08 | 表示截图文件的原子权限。|
+| ATOMIC_PRINT | 0x10 | 表示打印文件的原子权限。 |
+| ATOMIC_APP_PERMISSION | 0x20 | 表示沙箱在继承的权限内访问系统服务。 |
+
 
 ## DLPPermissionInfo
 
@@ -1743,6 +1760,7 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 | authAccountType | [AccountType](#accounttype21) | 否 | 否 | 表示被授权用户账号类型。 |
 | dlpFileAccess | [DLPFileAccess](#dlpfileaccess) | 否 | 否 | 表示被授予的权限。 |
 | permExpiryTime | number | 否 | 否 | 表示授权到期时间戳。取值范围大于等于0，超出此范围将被强转为无符号整数。单位：s。 |
+| atomicDlpFileAccess | number | 否 | 是 | DLP文件的原子权限控制位掩码。值是由DlpAtomicPermissionType标志的按位或运算符（|）形成的掩码，来控制读取、编辑、复制、截图、打印和应用级权限。|
 
 ## DlpConnPlugin<sup>21+</sup>
 
