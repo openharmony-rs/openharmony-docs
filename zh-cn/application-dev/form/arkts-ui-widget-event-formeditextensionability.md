@@ -1020,6 +1020,17 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    }
    ```
 
+   - 加载全屏编辑页布局文件。
+   ```json5
+   // entry/src/main/resources/base/profile/main_pages.json
+   {
+     "src": [
+       "pages/Index",
+       "pages/FormEditIndex"
+     ]
+   }
+   ```
+
    - 卡片布局文件如下。
 
       ArkTS-Dyn示例：
