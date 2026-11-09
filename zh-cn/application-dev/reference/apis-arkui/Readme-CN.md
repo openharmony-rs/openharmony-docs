@@ -597,6 +597,9 @@
     - [advanced.Counter](arkui-ts/ohos-arkui-advanced-Counter.md)
     - [CounterV2](arkui-ts/ohos-arkui-advanced-CounterV2.md)
     - [DatePickerComponent](arkui-ts/ohos-arkui-advanced-DatePickerComponent.md)
+    <!--Del-->
+    - [ToolBarV2（系统接口）](arkui-ts/ohos-arkui-advanced-ToolBarV2-sys.md)
+    <!--DelEnd-->
   - 状态管理与渲染控制<!--state-management-and-rendering-control-->
     - [应用级变量的状态管理](arkui-ts/ts-state-management.md)
     - [内置环境变量说明](arkui-ts/ts-state-management-environment-variables.md)
