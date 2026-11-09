@@ -260,3 +260,251 @@ struct AccountPage {
 }
 
 ```
+
+### connectServiceExtensionAbility
+
+connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
+
+将当前AutoFillExtensionAbility连接到指定的ServiceExtensionAbility。连接成功后，可通过options的onConnect回调获取remote对象，并与其进行IPC通信；具体可调用的服务由目标ServiceExtensionAbility的remote接口定义，返回的连接ID用于断开连接。
+
+ServiceExtensionAbility是一类由系统提供的特殊[ExtensionAbility](../../application-models/extensionability-overview.md)组件（不支持开发者自定义），主要用于提供特定场景的后台服务。其他组件可与之建立连接，由其在后台根据调用者的请求信息处理相关事务。
+
+> **说明：**
+>
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+> - 该接口不支持连接分身应用的ServiceExtensionAbility。
+> - 连接建立后，若AutoFillExtensionAbility被销毁，系统会自动断开该AutoFillExtensionAbility建立的所有连接。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 连接ServiceExtensionAbility的Want信息，包括Ability名称、Bundle名称等。 |
+| options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | ConnectOptions类型的回调函数，返回服务连接成功、连接失败、断开的信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| number | 返回连接ID，客户端可以通过[disconnectServiceExtensionAbility](#disconnectserviceextensionability)传入该连接ID来断开连接。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. |
+| 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. |
+| 16000006 | Cross-user operations are not allowed. |
+| 16000008 | The crowdtesting application expires. |
+| 16000011 | The context does not exist. |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
+| 16000050 | Internal error. |
+| 16000053 | The ability is not on the top of the UI. |
+| 16000055 | Installation-free timed out. |
+| 16000070 | The extension cannot start the service. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { AutoFillExtensionAbility, Want, common } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class AutoFillAbility extends AutoFillExtensionAbility {
+  onForeground() {
+    let want: Want = {
+      deviceId: '',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'ServiceExtensionAbility'
+    };
+    let commRemote: rpc.IRemoteObject | null;
+    let options: common.ConnectOptions = {
+      onConnect(elementName, remote) {
+        commRemote = remote;
+        console.info('onConnect...');
+      },
+      onDisconnect(elementName) {
+        commRemote = null;
+        console.info('onDisconnect...');
+      },
+      onFailed(code) {
+        console.error(`onFailed, err code: ${code}.`);
+      }
+    };
+    let connection: number;
+    try {
+      connection = this.context.connectServiceExtensionAbility(want, options);
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`connectServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { AutoFillExtensionAbility, Want, common } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class AutoFillAbility extends AutoFillExtensionAbility {
+  onForeground() {
+    let want: Want = {
+      deviceId: '',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'ServiceExtensionAbility'
+    };
+    let commRemote: rpc.IRemoteObject | null;
+    let options: common.ConnectOptions = {
+      onConnect(elementName, remote) {
+        commRemote = remote;
+        console.info('onConnect...');
+      },
+      onDisconnect(elementName) {
+        commRemote = null;
+        console.info('onDisconnect...');
+      },
+      onFailed(code) {
+        console.error(`onFailed, err code: ${code}.`);
+      }
+    };
+    let connection: number;
+    try {
+      connection = this.context.connectServiceExtensionAbility(want, options);
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`connectServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+### disconnectServiceExtensionAbility
+
+disconnectServiceExtensionAbility(connection: number): Promise\<void>
+
+断开与指定ServiceExtensionAbility的连接。使用Promise异步回调。
+
+断开连接后，开发者需将连接成功时获取的remote对象置空，以释放相关资源。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| connection | number | 是 | 连接的ServiceExtensionAbility的标识ID，即[connectServiceExtensionAbility](#connectserviceextensionability)返回的连接ID。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 16000011 | The context does not exist. |
+| 16000050 | Internal error. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { AutoFillExtensionAbility } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class AutoFillAbility extends AutoFillExtensionAbility {
+  onForeground() {
+    // connection需要通过connectServiceExtensionAbility接口返回获取，详见connectServiceExtensionAbility示例
+    let connection = 1; // 示例值，实际开发中应使用连接时返回的连接ID
+    let commRemote: rpc.IRemoteObject | null;
+
+    try {
+      this.context.disconnectServiceExtensionAbility(connection).then(() => {
+        commRemote = null;
+        // 执行正常业务
+        console.info('disconnectServiceExtensionAbility succeed');
+      }).catch((err: BusinessError) => {
+        // 处理业务逻辑错误
+        console.error(`disconnectServiceExtensionAbility failed, code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
+      commRemote = null;
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`disconnectServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { AutoFillExtensionAbility } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class AutoFillAbility extends AutoFillExtensionAbility {
+  onForeground() {
+    // connection需要通过connectServiceExtensionAbility接口返回获取，详见connectServiceExtensionAbility示例
+    let connection = 1; // 示例值，实际开发中应使用连接时返回的连接ID
+    let commRemote: rpc.IRemoteObject | null;
+
+    try {
+      this.context.disconnectServiceExtensionAbility(connection).then(() => {
+        commRemote = null;
+        // 执行正常业务
+        console.info('disconnectServiceExtensionAbility succeed');
+      }).catch((err: BusinessError) => {
+        // 处理业务逻辑错误
+        console.error(`disconnectServiceExtensionAbility failed, code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
+      commRemote = null;
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`disconnectServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
