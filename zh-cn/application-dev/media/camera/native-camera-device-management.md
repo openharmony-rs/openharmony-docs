@@ -58,11 +58,11 @@
 
 4. 获取相机列表。
 
-    方法一：获取逻辑相机，通过[OH_CameraManager_GetSupportedCameras()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameras)方法，获取当前设备支持的相机列表，列表中存储了设备支持的所有相机ID。若列表不为空，则说明列表中的每个ID都支持独立创建相机对象；否则，说明当前设备无可用相机，无法进行后续操作。
+   方法一：获取逻辑相机，通过[OH_CameraManager_GetSupportedCameras()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameras)方法，获取当前设备支持的相机列表，列表中存储了设备支持的所有相机ID。若列表不为空，则说明列表中的每个ID都支持独立创建相机对象；否则，说明当前设备无可用相机，无法进行后续操作。
 
-    > **说明：**
-    >
-    > 逻辑相机是系统定义的虚拟相机，由多个物理镜头组合而成。系统在内部完成物理镜头间的切换等处理，应用无需感知镜头变化，只需通过[OH_CameraManager_GetSupportedCameras()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameras)获取相机镜头列表时，根据[Camera_Position](../../reference/apis-camera-kit/capi-camera-h.md#camera_position)区分前置镜头与后置镜头即可。
+   > **说明：**
+   >
+   > 逻辑相机是系统定义的虚拟相机，由多个物理镜头组合而成。系统在内部完成物理镜头间的切换等处理，应用无需感知镜头变化，只需通过[OH_CameraManager_GetSupportedCameras()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameras)获取相机镜头列表时，根据[Camera_Position](../../reference/apis-camera-kit/capi-camera-h.md#camera_position)区分前置镜头与后置镜头即可。
 
    <!-- @[get_supported_cameras](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) --> 
 
@@ -119,7 +119,7 @@
            OH_LOG_INFO(LOG_APP, "cameraType = %{public}d ", (*cameras)[index].cameraType);          // 获取相机类型。
            OH_LOG_INFO(LOG_APP, "connectionType = %{public}d ", (*cameras)[index].connectionType);  // 获取相机连接类型。
            bool isLogical = false;
-           ret = OH_CameraDevice_IsLogicalCamera(cameras[index], &isLogical);
+           ret = OH_CameraDevice_IsLogicalCamera(&(*cameras)[index], &isLogical);
            if (ret != CAMERA_OK) {
                OH_LOG_ERROR(LOG_APP, "OH_CameraDevice_IsLogicalCamera failed.");
                continue;

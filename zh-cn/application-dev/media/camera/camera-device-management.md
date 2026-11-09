@@ -147,9 +147,9 @@ registerCameraStatusChange(err: BusinessError, cameraStatusInfo: camera.CameraSt
 }
 
 /**
- * 监听相机状态变化
- * @param cameraManager - 相机管理器对象
- * @returns 无返回值
+ * 监听相机状态变化。
+ * @param cameraManager - 相机管理器对象。
+ * @returns 无返回值。
  */
 onCameraStatusChange(cameraManager: camera.CameraManager): void {
   Logger.info(TAG, 'onCameraStatusChange is called');
