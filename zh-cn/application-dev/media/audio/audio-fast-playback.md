@@ -1,7 +1,7 @@
 ---
 kits: ["Audio Kit / 音频服务"]
 description: "指导C/C++开发者通过OHAudio设置低时延模式实现快速音频播放，适用于游戏、K歌、直播等对时延要求较高的场景。"
-keywords: [低时延播放, 低时延模式, 低时延状态]
+keywords: [低时延播放, 低时延模式, 低时延状态, 低时延场景, 低时延限制]
 doctype: guide
 status: active
 ---
