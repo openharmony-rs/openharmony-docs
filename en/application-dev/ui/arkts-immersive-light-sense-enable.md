@@ -1,11 +1,11 @@
-# Enabling Immersive Light Sensing
+# Enabling Immersive Lighting
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @H-xinwei-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=802faee6767d3906904b095ec39441e1110d44fd translatedAt=2026-11-05T11:10:57.355Z pushedAt=2026-11-09T08:24:26.846Z nl=1 -->
+<!-- md-trans-meta sourceCommit=802faee6767d3906904b095ec39441e1110d44fd translatedAt=2026-11-05T11:10:57.355Z pushedAt=2026-11-09T10:02:18.721Z nl=1 -->
 
 Immersive lighting can be enabled at application or component level, which you can select as needed. After immersive lighting is enabled, it consumes a large amount of GPU resources. For specific adaptation guidance, see [Power Consumption Optimization for Immersive Lighting](arkts-immersive-light-sense-constraints.md). For other common issues after enablement, see [FAQs About Immersive Lighting](arkts-immersive-light-sense-faq.md).
 

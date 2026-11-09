@@ -6,7 +6,7 @@
 <!--Designer: @camlostshi-->
 <!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=552c1262aec1ab0bdd93afb8bf5eb04087158391 translatedAt=2026-11-05T11:43:22.011Z pushedAt=2026-11-09T08:24:26.968Z nl=1 -->
+<!-- md-trans-meta sourceCommit=552c1262aec1ab0bdd93afb8bf5eb04087158391 translatedAt=2026-11-05T11:43:22.011Z pushedAt=2026-11-09T10:02:18.911Z nl=1 -->
 
 Since API version 12, ArkUI provides a set of common layout attributes in the NDK to control the layout of components, such as dimensions, position, and borders.
 

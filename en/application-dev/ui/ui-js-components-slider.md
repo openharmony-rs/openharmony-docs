@@ -5,7 +5,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9895f5cb14cc8e06de013c306a32d770061ce9ce translatedAt=2026-11-05T11:56:55.003Z pushedAt=2026-11-09T08:24:27.030Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9895f5cb14cc8e06de013c306a32d770061ce9ce translatedAt=2026-11-05T11:56:55.003Z pushedAt=2026-11-09T10:02:19.018Z nl=1 -->
 
 
 The **&lt;slider&gt;** component is used to quickly adjust settings, such as the volume and brightness. For details, see [slider](../reference/apis-arkui/arkui-js/js-components-basic-slider.md).

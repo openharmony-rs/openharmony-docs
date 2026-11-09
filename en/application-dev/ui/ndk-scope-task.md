@@ -5,7 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=bbe2a5a1904867294232227bd28ba5a89468d90c translatedAt=2026-11-05T11:47:51.181Z pushedAt=2026-11-09T08:24:26.988Z nl=1 -->
+<!-- md-trans-meta sourceCommit=bbe2a5a1904867294232227bd28ba5a89468d90c translatedAt=2026-11-05T11:47:51.181Z pushedAt=2026-11-09T10:02:18.956Z nl=1 -->
 
 Since API version 20, the ArkUI development framework provides the [OH_ArkUI_RunTaskInScope](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_runtaskinscope) API to address component operation challenges in multi-instance scenarios on the native side. This feature dynamically switches execution contexts to ensure the validity of component attribute settings across instances, preventing API call exceptions caused by instance context mismatches.
 

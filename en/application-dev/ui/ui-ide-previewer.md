@@ -6,7 +6,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=60dbcf21a7bd45e2804e5d19a8be0baa60fcdbd2 translatedAt=2026-11-05T11:51:39.103Z pushedAt=2026-11-09T08:24:27.000Z nl=1 -->
+<!-- md-trans-meta sourceCommit=60dbcf21a7bd45e2804e5d19a8be0baa60fcdbd2 translatedAt=2026-11-05T11:51:39.103Z pushedAt=2026-11-09T10:02:18.985Z nl=1 -->
 
 DevEco Studio provides the UI preview function, which allows you to view the UI effect and adjust the page layout at any time. You can preview both pages and components. The icon ![ide_previewer_002](figures/ide_previewer_002.png) on the left in Figure 1 indicates page preview, while the icon ![ide_previewer_003](figures/ide_previewer_003.png) on the right indicates component preview.
 

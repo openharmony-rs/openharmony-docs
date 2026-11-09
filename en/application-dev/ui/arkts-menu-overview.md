@@ -5,7 +5,7 @@
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8d75ae784f56fc7e62ba636f357115f8f4b9c3ff translatedAt=2026-11-05T11:18:52.841Z pushedAt=2026-11-09T08:24:26.874Z nl=1 -->
+<!-- md-trans-meta sourceCommit=8d75ae784f56fc7e62ba636f357115f8f4b9c3ff translatedAt=2026-11-05T11:18:52.841Z pushedAt=2026-11-09T10:02:18.748Z nl=1 -->
 
 A menu is a pop-up window that allows users to perform specific actions. It typically appears when users right-click, long-press, or touch an item.
 

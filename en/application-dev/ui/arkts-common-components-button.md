@@ -5,7 +5,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7e8235b0dc708a3dc818264b2e0246d5ba0758b6 translatedAt=2026-11-05T11:01:40.987Z pushedAt=2026-11-09T08:24:26.769Z nl=1 -->
+<!-- md-trans-meta sourceCommit=7e8235b0dc708a3dc818264b2e0246d5ba0758b6 translatedAt=2026-11-05T11:01:40.987Z pushedAt=2026-11-09T10:02:18.623Z nl=1 -->
 
 
 The **Button** component is usually activated by user clicks to perform a specific action. It comes in four types: capsule, circle, normal, and rounded rectangle. When used as a container, the **Button** component accepts child components such as text and images. For details, see [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md).

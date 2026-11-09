@@ -6,7 +6,7 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=11a1dfa85450ea7b4e2ba6c6b3a5464b774af8b5 translatedAt=2026-11-05T11:48:00.742Z pushedAt=2026-11-09T08:24:26.991Z nl=1 -->
+<!-- md-trans-meta sourceCommit=11a1dfa85450ea7b4e2ba6c6b3a5464b774af8b5 translatedAt=2026-11-05T11:48:00.742Z pushedAt=2026-11-09T10:02:18.977Z nl=1 -->
 
 The ArkUI development framework provides list components through NDK APIs, enabling efficient display of structured, scrollable content. List components allow you to control the scroll position, group display content, and use [NodeAdapter](#nodeadapter-overview) for lazy loading to improve list creation performance.
 

@@ -5,7 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=bcc10e53814ae990919907519b35f76173365a16 translatedAt=2026-11-05T11:33:36.506Z pushedAt=2026-11-09T08:24:26.926Z nl=1 -->
+<!-- md-trans-meta sourceCommit=bcc10e53814ae990919907519b35f76173365a16 translatedAt=2026-11-05T11:33:36.506Z pushedAt=2026-11-09T10:02:18.791Z nl=1 -->
 
 ## Overview
 The introduction of the [@Styles](../ui/state-management/arkts-style.md) and [@Extend](../ui/state-management/arkts-extend.md) decorators in declarative syntax helps with reuse of custom styles, but they encounter limitations in certain scenarios:

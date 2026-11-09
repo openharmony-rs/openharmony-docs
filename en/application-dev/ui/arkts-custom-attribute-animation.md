@@ -5,7 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=151d8ffe7a2a76b5ef03532bc58b4ee3ccbda9cb translatedAt=2026-11-05T11:06:01.826Z pushedAt=2026-11-09T08:24:26.808Z nl=1 -->
+<!-- md-trans-meta sourceCommit=151d8ffe7a2a76b5ef03532bc58b4ee3ccbda9cb translatedAt=2026-11-05T11:06:01.826Z pushedAt=2026-11-09T10:02:18.694Z nl=1 -->
 
 
 [Property animation](arkts-attribute-animation-overview.md) refers to the continuous visual effect produced on the UI when the parameter value of an animatable property changes. When the parameter value changes continuously and is set on an attribute API that can cause UI changes, a property animation is achieved. In addition to the attributes that components natively support for animation, ArkUI also provides the [@AnimatableExtend decorator](../ui/state-management/arkts-animatable-extend.md) for defining custom animatable properties.

@@ -5,7 +5,7 @@
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=88ff9d287275cc4297b1fd5028152a28cd9402bc translatedAt=2026-11-05T11:09:12.885Z pushedAt=2026-11-09T08:24:26.865Z nl=1 -->
+<!-- md-trans-meta sourceCommit=88ff9d287275cc4297b1fd5028152a28cd9402bc translatedAt=2026-11-05T11:09:12.885Z pushedAt=2026-11-09T10:02:18.739Z nl=1 -->
 
 This document categorizes components into four major scenarios: navigation components, popup components, button and selection components, and other components. It systematically describes how each component enables immersive lighting through the app-level switch and component-level configuration, covering the visual effects, setting methods, and adaptation points of immersive lighting, to help developers quickly complete component adaptation for immersive lighting.
 

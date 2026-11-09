@@ -5,7 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=151d8ffe7a2a76b5ef03532bc58b4ee3ccbda9cb translatedAt=2026-11-05T11:48:49.537Z pushedAt=2026-11-09T08:24:26.997Z nl=1 -->
+<!-- md-trans-meta sourceCommit=151d8ffe7a2a76b5ef03532bc58b4ee3ccbda9cb translatedAt=2026-11-05T11:48:49.537Z pushedAt=2026-11-09T10:02:18.983Z nl=1 -->
 
 All examples in this document only provide the calling methods of core APIs. For the complete sample project, refer to <!--RP1-->[AnimationNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AnimationNDK)<!--RP1End-->.
 

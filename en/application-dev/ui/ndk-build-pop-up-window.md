@@ -5,7 +5,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=dfc4b4cbbfd636b15b323266c14e73471edab887 translatedAt=2026-11-05T11:42:10.506Z pushedAt=2026-11-09T08:24:26.961Z nl=1 -->
+<!-- md-trans-meta sourceCommit=dfc4b4cbbfd636b15b323266c14e73471edab887 translatedAt=2026-11-05T11:42:10.506Z pushedAt=2026-11-09T10:02:18.822Z nl=1 -->
 
 
 You can display a custom dialog box by creating a dialog controller or by creating a custom dialog content object, and then setting its styles and content.

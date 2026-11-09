@@ -5,7 +5,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9895f5cb14cc8e06de013c306a32d770061ce9ce translatedAt=2026-11-05T11:57:15.059Z pushedAt=2026-11-09T08:24:27.032Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9895f5cb14cc8e06de013c306a32d770061ce9ce translatedAt=2026-11-05T11:57:15.059Z pushedAt=2026-11-09T10:02:19.019Z nl=1 -->
 
 
 The **\<rating>** component provides a rating bar, commonly used for reviews and ratings. For details, see [rating](../reference/apis-arkui/arkui-js/js-components-basic-rating.md)

@@ -5,7 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=54d266b96ef0d7643f1fc8135870169c2d49d342 translatedAt=2026-11-05T11:19:28.310Z pushedAt=2026-11-09T08:24:26.876Z nl=1 -->
+<!-- md-trans-meta sourceCommit=54d266b96ef0d7643f1fc8135870169c2d49d342 translatedAt=2026-11-05T11:19:28.310Z pushedAt=2026-11-09T10:02:18.750Z nl=1 -->
 
 
 Modal transition is a type of transition achieved by a modal – a view that appears on top of the current view while the current view remains.

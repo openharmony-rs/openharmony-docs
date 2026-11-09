@@ -5,7 +5,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=262475bbb057ca89aeb8d5a7c7e8c2fa6943ef8d translatedAt=2026-11-05T11:16:48.572Z pushedAt=2026-11-09T08:24:26.871Z nl=1 -->
+<!-- md-trans-meta sourceCommit=262475bbb057ca89aeb8d5a7c7e8c2fa6943ef8d translatedAt=2026-11-05T11:16:48.572Z pushedAt=2026-11-09T10:02:18.744Z nl=1 -->
 
 This topic outlines effective methods for identifying and resolving UI display exceptions, illustrated with practical case studies.
 

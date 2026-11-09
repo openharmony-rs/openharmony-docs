@@ -5,7 +5,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=de2cbbad2e242bbdc0d24308a806d704a23e2435 translatedAt=2026-11-05T11:39:32.160Z pushedAt=2026-11-09T08:24:26.956Z nl=1 -->
+<!-- md-trans-meta sourceCommit=de2cbbad2e242bbdc0d24308a806d704a23e2435 translatedAt=2026-11-05T11:39:32.160Z pushedAt=2026-11-09T10:02:18.816Z nl=1 -->
 
 For third-party framework platforms that integrate through [custom drawing](./arkts-user-defined-draw.md), the NDK provides interface functions for connecting to the accessibility service, enabling third-party framework components to support the basic accessibility features in ArkUI, including focus acquisition, accessibility node retrieval, and operation response.
 

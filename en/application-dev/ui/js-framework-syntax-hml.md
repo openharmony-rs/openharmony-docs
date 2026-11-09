@@ -5,7 +5,7 @@
 <!--Designer: @sunfei2021-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=3cc6d474631612ed7c48b07a7e89064aad6898e1 translatedAt=2026-11-05T11:36:45.943Z pushedAt=2026-11-09T08:24:26.938Z nl=1 -->
+<!-- md-trans-meta sourceCommit=3cc6d474631612ed7c48b07a7e89064aad6898e1 translatedAt=2026-11-05T11:36:45.943Z pushedAt=2026-11-09T10:02:18.803Z nl=1 -->
 
 HML is an HTML-like language that allows you to build pages based on components and events. Pages built using HML have advanced capabilities such as data binding, event binding, loop rendering, conditional rendering, and logic control.
 

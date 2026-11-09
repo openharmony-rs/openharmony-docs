@@ -5,7 +5,7 @@
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9c684ab66db79a649e2ff99fd2ce21485b8c1d5f translatedAt=2026-11-05T11:08:35.077Z pushedAt=2026-11-09T08:24:26.836Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9c684ab66db79a649e2ff99fd2ce21485b8c1d5f translatedAt=2026-11-05T11:08:35.077Z pushedAt=2026-11-09T10:02:18.712Z nl=1 -->
 
 This document provides development guidance for two typical scenarios of immersive light sensing, including the search box title bar effect and enabling immersive light sensing for the content area title bar.
 

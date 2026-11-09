@@ -5,9 +5,9 @@
 <!--Designer: @tsj_20201-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=a306693f0f46e5633c549769b8338f6bd7c191f4 translatedAt=2026-11-05T11:51:07.232Z pushedAt=2026-11-09T08:24:27.002Z nl=2 -->
+<!-- md-trans-meta sourceCommit=a306693f0f46e5633c549769b8338f6bd7c191f4 translatedAt=2026-11-05T11:51:07.232Z pushedAt=2026-11-09T10:02:18.987Z nl=2 -->
 
-- [Introduction to ArkUI](arkui-overview.md)
+- [About This Kit](arkui-overview.md)
 - UI Development (ArkTS-based Declarative Development Paradigm)<!--arkts-ui-development-->
   - [UI Development (ArkTS-based Declarative Development Paradigm) Overview](arkts-ui-development-overview.md)
   - Basic Syntax of UI Paradigms<!--arkts-ui-paradigm-basic-syntax-->
@@ -191,19 +191,19 @@
        - [Global Popup Independent of UI Components (openPopup)](arkts-popup-and-menu-components-uicontext-popup.md)
      - Binding Modal Pages<!--arkts-bind-modal-->
         - [Modal Page Overview](arkts-modal-overview.md)
-        - [Bind a half-modal page (bindSheet)](arkts-sheet-page.md)
-        - [Bind a full-modal page (bindContentCover)](arkts-contentcover-page.md)
+        - [Binding a Semi-Modal Sheet (bindSheet)](arkts-sheet-page.md)
+        - [Binding a Full-Modal Page (bindContentCover)](arkts-contentcover-page.md)
      - [Toast](arkts-create-toast.md)
      - [Overlay (OverlayManager)](arkts-create-overlaymanager.md)<!--RP9--><!--RP9End-->
   - Immersive Light Sense<!--arkts-immersive-light-sense-->
     - [Immersive Light Sense Overview](arkts-immersive-light-sense-overview.md)
     - Immersive Light Sense Development Guide<!--arkts-immersive-light-sense-development-->
-      - [Enable Immersive Light Sense](arkts-immersive-light-sense-enable.md)
+      - [Enabling Immersive Lighting](arkts-immersive-light-sense-enable.md)
       - [Component Adaptation to Immersive Light Sense](arkts-immersive-light-sense-component-adaptation.md)
-      - [Immersive System Material Visual Effect](arkts-immersive-light-sense-common-capability.md)
+      - [Immersive System Material Visual Effects](arkts-immersive-light-sense-common-capability.md)
     - [Immersive Light Effect Power Optimization](arkts-immersive-light-sense-constraints.md)
-    - [Immersive Light Effect FAQs](arkts-immersive-light-sense-faq.md)
-    - [Immersive Light Effect Typical Scenarios](arkts-immersive-light-sample.md)
+    - [FAQs About Immersive Lighting](arkts-immersive-light-sense-faq.md)
+    - [Typical Scenarios of Immersive Light Sensing](arkts-immersive-light-sample.md)
   - Geometric Shapes<!--arkts-draw-graphics-->
     - [Geometric Shape Drawing Overview](arkts-shape-overview.md)
     - [Drawing Geometric Shapes (Shape)](arkts-geometric-shape-drawing.md)
@@ -251,7 +251,7 @@
       - [Shadow Effect](arkts-shadow-effect.md)
       - [Color Effect](arkts-color-effect.md)
       - Blur<!--arkts-blur-->
-        - [Dynamic Blur](arkts-blur-effect.md)<!--RP13--><!--RP13End-->
+        - [Motion Blur](arkts-blur-effect.md)<!--RP13--><!--RP13End-->
     - [Frame Animation (ohos.animator)](arkts-animator.md)<!--RP10--><!--RP10End-->
   - Using Customization Capabilities<!--arkts-user-defined-capabilities-->
     - [Customization Capability Overview](arkts-user-defined.md)
@@ -307,12 +307,12 @@
   - Using Text<!--arkts-build-text-ndk-->
     - [Using the Text Component](ndk-use-text-component.md)
     - [Using Styled Strings](ndk-styled-string.md)
-    - [Adding Input Box Text Event Listener](ndk-textarea-event.md)
+    - [Adding a Text Event Listener for a Text Box](ndk-textarea-event.md)
   - Media Display<!--arkts-build-media-ndk-->
     - [Image Display (Image)](ndk-image-component.md)
     - [Using the Swiper Component](ndk-swiper.md)
   - [Building Form Components](ndk-build-form-components.md)
-  - [Building Dialog Boxes](ndk-build-pop-up-window.md)
+  - [Building a Dialog Box](ndk-build-pop-up-window.md)
   - Using Animation<!--arkts-use-animation-ndk-->
     - [Using Animations](ndk-use-animation.md)
     - [Animation Development](ndk-use-animation-scene.md)
@@ -325,12 +325,12 @@
     - [Binding Drag Events](ndk-drag-event.md)
   - Using Customization Capabilities<!--arkts-build-custom-ndk-->
     - [Building Custom Components](ndk-build-custom-components.md)
-    - [Implementing Custom Drawing](arkts-user-defined-draw.md)
-  - [Integrating Accessibility Through XComponent](ndk-accessibility-xcomponent.md)
+    - [Custom Drawing](arkts-user-defined-draw.md)
+  - [Accessing Accessibility Through Self-Drawing](ndk-accessibility-xcomponent.md)
   - [Launching EmbeddedUIExtensionAbility with EmbeddedComponent](ndk-embedded-component.md)
-  - [Querying and Operating Custom Nodes](ndk-node-query-operate.md)
-  - [Ensuring Multi-Instance Functionality in the NDK](ndk-scope-task.md)
-  - [Parallelizing UI Page Building Using Multi-threaded NDK APIs](ndk-build-on-multi-thread.md)
+  - [Querying and Operating NDK Nodes](ndk-node-query-operate.md)
+  - [NDK Multi-Instance Scenario Development](ndk-scope-task.md)
+  - [NDK Multi-thread Component Creation](ndk-build-on-multi-thread.md)
   - [Building a Rendering Node](ndk-embed-render-components.md)
 - UI Development (JavaScript-compatible Web-like Development Paradigm)<!--ui-js-dev-->
   - [UI Development (JavaScript-compatible Web-like Development Paradigm) Overview](ui-js-overview.md)

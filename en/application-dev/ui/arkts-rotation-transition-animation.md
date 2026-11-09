@@ -5,7 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=4383f98ec81f42258fabd52047d88567e29a9467 translatedAt=2026-11-05T11:20:42.194Z pushedAt=2026-11-09T08:24:26.886Z nl=1 -->
+<!-- md-trans-meta sourceCommit=4383f98ec81f42258fabd52047d88567e29a9467 translatedAt=2026-11-05T11:20:42.194Z pushedAt=2026-11-09T10:02:18.759Z nl=1 -->
 
 Rotation transition animations are designed to create seamless visual transitions when the screen display orientation changes. There are two approaches to choose from:<br> [Rotation transition animation with layout switching](#rotation-transition-animation-with-layout-switching): This animation is your go-to solution for an out-of-the-box implementation experience. It can be achieved by simply configuring automatic rotation (or setting the window display orientation) in the **module.json5** file.<br> [Rotation transition animation with opacity changing](#rotation-transition-animation-with-opacity-changing): This animation adds a touch of sophistication with fade-in and fade-out effects for components during screen rotations. It requires additional setup beyond the **module.json5** configuration, including the preparation of two sets of visuals.
 

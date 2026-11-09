@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=bf76fce28aeb3204bb6f3347753ae4a1bf29e8ba translatedAt=2026-11-05T11:24:52.393Z pushedAt=2026-11-09T08:24:26.895Z nl=1 -->
+<!-- md-trans-meta sourceCommit=bf76fce28aeb3204bb6f3347753ae4a1bf29e8ba translatedAt=2026-11-05T11:24:52.393Z pushedAt=2026-11-09T10:02:18.769Z nl=1 -->
 
 This topic addresses common issues related to text components.
 

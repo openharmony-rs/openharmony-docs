@@ -5,7 +5,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=2a058c2b0cfcdeaf9ab5cf0b4796fa46db1e1dff translatedAt=2026-11-05T11:04:27.168Z pushedAt=2026-11-09T08:24:26.799Z nl=1 -->
+<!-- md-trans-meta sourceCommit=2a058c2b0cfcdeaf9ab5cf0b4796fa46db1e1dff translatedAt=2026-11-05T11:04:27.168Z pushedAt=2026-11-09T10:02:18.682Z nl=1 -->
 
 Unified drag and drop refers to a data transfer interaction triggered by a mouse device or gesture. Users can drag data from one component (the drag source) and drop it into another (the drop target) to initiate a response. In this interaction, the drag source provides the data, while the drop target receives and processes it, thereby enabling users to easily move, copy, or delete data.
 

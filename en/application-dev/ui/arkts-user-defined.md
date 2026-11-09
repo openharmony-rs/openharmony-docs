@@ -5,7 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=525f7739c01a1b3574383b117ed8c6a58afcb683 translatedAt=2026-11-05T11:34:34.944Z pushedAt=2026-11-09T08:24:26.928Z nl=1 -->
+<!-- md-trans-meta sourceCommit=525f7739c01a1b3574383b117ed8c6a58afcb683 translatedAt=2026-11-05T11:34:34.944Z pushedAt=2026-11-09T10:02:18.794Z nl=1 -->
 
 ## Customization Capability Levels
   Customization capabilities in the ArkUI development framework allow for flexible UI development and personalization. These capabilities span various control levels, each suited for different use cases. Lower levels of customization provide closer access to foundational capabilities, offering greater flexibility but also higher development complexity and demands on developer skills.

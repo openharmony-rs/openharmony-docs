@@ -5,7 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8bc239f19ffa4358592cb970bebf3939ed3cc630 translatedAt=2026-11-05T11:20:20.630Z pushedAt=2026-11-09T08:24:26.884Z nl=1 -->
+<!-- md-trans-meta sourceCommit=8bc239f19ffa4358592cb970bebf3939ed3cc630 translatedAt=2026-11-05T11:20:20.630Z pushedAt=2026-11-09T10:02:18.757Z nl=1 -->
 
 ## Dialog-Type NavDestination Mask Animation Is Not Smooth
 

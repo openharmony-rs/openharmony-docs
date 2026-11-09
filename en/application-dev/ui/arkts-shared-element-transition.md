@@ -5,7 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @ge-yafang; @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=aaaa3c4e370052176765bce0b19a8ea31aee1d62 translatedAt=2026-11-05T11:25:25.012Z pushedAt=2026-11-09T08:24:26.897Z nl=1 -->
+<!-- md-trans-meta sourceCommit=aaaa3c4e370052176765bce0b19a8ea31aee1d62 translatedAt=2026-11-05T11:25:25.012Z pushedAt=2026-11-09T10:02:18.771Z nl=1 -->
 
 Shared element transition is a type of transition achieved by animating the size and position between styles of the same or similar elements during page switching.
 

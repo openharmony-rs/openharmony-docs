@@ -5,7 +5,7 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7e8235b0dc708a3dc818264b2e0246d5ba0758b6 translatedAt=2026-11-05T11:02:13.547Z pushedAt=2026-11-09T08:24:26.773Z nl=2 -->
+<!-- md-trans-meta sourceCommit=7e8235b0dc708a3dc818264b2e0246d5ba0758b6 translatedAt=2026-11-05T11:02:13.547Z pushedAt=2026-11-09T10:02:18.627Z nl=2 -->
 
 CustomDialog is a custom dialog used for user interaction scenarios such as advertisements, prize notifications, warnings, and software updates. You can display a custom dialog through the **CustomDialogController** class. For details, see [Custom Dialog](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md).
 

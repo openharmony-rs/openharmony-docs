@@ -5,7 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=a01012ccd8c79ddbbc2ab67035fed55cbb823eb8 translatedAt=2026-11-05T11:44:54.159Z pushedAt=2026-11-09T08:24:26.978Z nl=1 -->
+<!-- md-trans-meta sourceCommit=a01012ccd8c79ddbbc2ab67035fed55cbb823eb8 translatedAt=2026-11-05T11:44:54.159Z pushedAt=2026-11-09T10:02:18.945Z nl=1 -->
 
 ArkUI on the native side offers a subset of ArkTS features, which excludes certain capabilities such as declarative UI syntax, custom struct components, and some advanced UI components.
 

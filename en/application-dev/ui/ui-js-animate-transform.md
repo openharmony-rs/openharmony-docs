@@ -5,7 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=3bf1b670812740424cf569b75ea5e8660822838d translatedAt=2026-11-05T11:52:27.018Z pushedAt=2026-11-09T08:24:27.004Z nl=1 -->
+<!-- md-trans-meta sourceCommit=3bf1b670812740424cf569b75ea5e8660822838d translatedAt=2026-11-05T11:52:27.018Z pushedAt=2026-11-09T10:02:18.989Z nl=1 -->
 
 Set the **transform** attribute for component rotation, scaling, translation, and skewing.
 

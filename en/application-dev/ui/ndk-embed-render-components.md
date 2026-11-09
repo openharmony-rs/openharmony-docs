@@ -5,7 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=2ca19f6dfc5532ebaaac6e2aca35dfd9efce007b translatedAt=2026-11-05T11:51:53.791Z pushedAt=2026-11-09T08:24:27.012Z nl=1 -->
+<!-- md-trans-meta sourceCommit=2ca19f6dfc5532ebaaac6e2aca35dfd9efce007b translatedAt=2026-11-05T11:51:53.791Z pushedAt=2026-11-09T10:02:18.999Z nl=1 -->
 
 
 Since API version 20, the ArkUI development framework provides NDK APIs for directly building render nodes. These capabilities include render node tree operations, attribute configuration, and custom drawing with animations. By leveraging render node capabilities, you can bypass the measurement and layout processes associated with [registerNodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomevent), directly draw nodes, and adjust their sizes and positions.
@@ -671,4 +671,5 @@ Currently, Dvsync is used only in the fling scenario of render nodes. If you ena
 | Window Focus | After the window with Dvsync enabled loses focus, Dvsync is automatically disabled. |
 
 <!--RP2--><!--RP2End-->
+
 <!--no_check-->

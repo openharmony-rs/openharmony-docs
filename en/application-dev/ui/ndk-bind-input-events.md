@@ -5,7 +5,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-05T11:40:17.804Z pushedAt=2026-11-09T08:24:26.959Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-05T11:40:17.804Z pushedAt=2026-11-09T10:02:18.820Z nl=1 -->
 
 NDK APIs provide the capability of listening to and processing basic input events. You can bind click events ([NODE_ON_CLICK_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)), touch events ([NODE_TOUCH_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)), mouse events ([NODE_ON_MOUSE](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)), hover events ([NODE_ON_HOVER_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)), axis events ([NODE_ON_AXIS](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)), and key events ([NODE_ON_KEY_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)), and then obtain event details through the callback in the event receiver.
 

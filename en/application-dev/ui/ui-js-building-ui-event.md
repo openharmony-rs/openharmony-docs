@@ -5,7 +5,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-05T11:53:29.102Z pushedAt=2026-11-09T08:24:27.006Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-05T11:53:29.102Z pushedAt=2026-11-09T10:02:18.991Z nl=1 -->
 
 A gesture represents a semantic action (for example, touch, click, or long press) recognized from one or more input events. A gesture lifecycle may consist of multiple sequential events from its initiation to completion. Supported events are as follows:
 

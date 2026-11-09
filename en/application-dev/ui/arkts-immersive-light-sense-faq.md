@@ -1,11 +1,11 @@
-# FAQs About Immersive Light Sense
+# FAQs About Immersive Lighting
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @H-xinwei-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e84ead30b494aca73bebfd2e4feede3629f019a1 translatedAt=2026-11-05T11:10:23.141Z pushedAt=2026-11-09T08:24:26.841Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e84ead30b494aca73bebfd2e4feede3629f019a1 translatedAt=2026-11-05T11:10:23.141Z pushedAt=2026-11-09T10:02:18.716Z nl=1 -->
 
 This document provides common issues and solutions encountered during the development of immersive light sense. For a complete introduction and development guide to immersive light sense, see [Immersive Light Sense Overview](arkts-immersive-light-sense-overview.md).
 

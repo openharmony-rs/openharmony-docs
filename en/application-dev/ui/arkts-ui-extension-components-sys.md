@@ -5,7 +5,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=aa29dec93e410da65f7fdab5b2413e7cee011b39 translatedAt=2026-11-05T11:27:42.853Z pushedAt=2026-11-09T08:24:26.915Z nl=1 -->
+<!-- md-trans-meta sourceCommit=aa29dec93e410da65f7fdab5b2413e7cee011b39 translatedAt=2026-11-05T11:27:42.853Z pushedAt=2026-11-09T10:02:18.783Z nl=1 -->
 
 [UIExtension](../reference/apis-arkui/js-apis-arkui-uiExtension.md) allows you to create UI extensions that can be embedded into other app windows, enabling apps to deliver richer and more flexible user experiences.
 

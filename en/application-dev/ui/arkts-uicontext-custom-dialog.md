@@ -5,7 +5,7 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7e8235b0dc708a3dc818264b2e0246d5ba0758b6 translatedAt=2026-11-05T11:28:08.376Z pushedAt=2026-11-09T08:24:26.911Z nl=1 -->
+<!-- md-trans-meta sourceCommit=7e8235b0dc708a3dc818264b2e0246d5ba0758b6 translatedAt=2026-11-05T11:28:08.376Z pushedAt=2026-11-09T10:02:18.781Z nl=1 -->
 
 In scenarios such as advertising, prize notifications, warnings, and software updates that require interactive user responses, you can use the [openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12) interface provided by the **PromptAction** object obtained from **UIContext** to create a custom dialog box. Compared with [CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller), this approach offers the advantages of page decoupling and support for dynamic refresh via [update](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#update).
 

@@ -5,7 +5,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8ae2afec8bc4ef553bd5b51266ec840edba9edf8 translatedAt=2026-11-05T11:55:29.581Z pushedAt=2026-11-09T08:24:27.021Z nl=1 -->
+<!-- md-trans-meta sourceCommit=8ae2afec8bc4ef553bd5b51266ec840edba9edf8 translatedAt=2026-11-05T11:55:29.581Z pushedAt=2026-11-09T10:02:19.009Z nl=1 -->
 
 
 Use **CanvasRenderingContext2D** to draw objects such as graphics, texts, line segments, and images on the **\<canvas>** component. For details, see [CanvasRenderingContext2D](../reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md).

@@ -5,7 +5,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=262475bbb057ca89aeb8d5a7c7e8c2fa6943ef8d translatedAt=2026-11-05T11:23:56.650Z pushedAt=2026-11-09T08:24:26.891Z nl=1 -->
+<!-- md-trans-meta sourceCommit=262475bbb057ca89aeb8d5a7c7e8c2fa6943ef8d translatedAt=2026-11-05T11:23:56.650Z pushedAt=2026-11-09T10:02:18.764Z nl=1 -->
 
 This document summarizes common ArkUI API misuse scenarios that may cause application crashes, and provides guidance to help you understand the related issues and avoid similar mistakes during development.
 

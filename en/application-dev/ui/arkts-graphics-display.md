@@ -5,7 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=be3f767d9af1f0e99c8675696107ddad43c4a7e6 translatedAt=2026-11-05T11:08:02.278Z pushedAt=2026-11-09T08:24:26.834Z nl=1 -->
+<!-- md-trans-meta sourceCommit=be3f767d9af1f0e99c8675696107ddad43c4a7e6 translatedAt=2026-11-05T11:08:02.278Z pushedAt=2026-11-09T10:02:18.711Z nl=1 -->
 
 More often than not, you may need to display images in your application, for example, icons in buttons, online images, and local images. In such cases, the **Image** component is used, which supports multiple image formats (including PNG, JPG, and JPEG), excluding APNG and SVGA. For details about the supported formats and usage, see [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md).
 

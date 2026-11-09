@@ -5,7 +5,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=3d54f94ebb63dcb7e64765ea43f8b0eac7cb3ef0 translatedAt=2026-11-05T11:04:31.247Z pushedAt=2026-11-09T08:24:26.803Z nl=1 -->
+<!-- md-trans-meta sourceCommit=3d54f94ebb63dcb7e64765ea43f8b0eac7cb3ef0 translatedAt=2026-11-05T11:04:31.247Z pushedAt=2026-11-09T10:02:18.687Z nl=1 -->
 
 ## Basic Concepts and Specifications
 

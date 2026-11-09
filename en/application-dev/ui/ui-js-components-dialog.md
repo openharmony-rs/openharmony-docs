@@ -5,7 +5,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=d584afcfc5f2402facb5a82c615125757e98166f translatedAt=2026-11-05T11:55:41.796Z pushedAt=2026-11-09T08:24:27.020Z nl=1 -->
+<!-- md-trans-meta sourceCommit=d584afcfc5f2402facb5a82c615125757e98166f translatedAt=2026-11-05T11:55:41.796Z pushedAt=2026-11-09T10:02:19.007Z nl=1 -->
 
 The **\<dialog>** component is custom pop-up container for showing critical information or calling for an action. For details, see [dialog](../reference/apis-arkui/arkui-js/js-components-container-dialog.md).
 

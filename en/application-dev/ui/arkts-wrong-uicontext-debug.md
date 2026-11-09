@@ -5,7 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=fea9145a485a564a4b5491fe0442142d2cac5a85 translatedAt=2026-11-05T11:35:42.175Z pushedAt=2026-11-09T08:24:26.936Z nl=1 -->
+<!-- md-trans-meta sourceCommit=fea9145a485a564a4b5491fe0442142d2cac5a85 translatedAt=2026-11-05T11:35:42.175Z pushedAt=2026-11-09T10:02:18.801Z nl=1 -->
 
 This section describes how to resolve text display abnormalities caused by invalid [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md). Using an invalid UIContext object (typically resulting from destruction of the corresponding UI instance) may cause subsequent UI operations to fail. This issue is common in multi-window scenarios. Starting from API version 12, it can also occur when the process cache is enabled via [setSupportedProcessCache](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetsupportedprocesscache12) and the process is then rapidly restarted.
 

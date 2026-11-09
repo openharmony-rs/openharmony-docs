@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b955ecedcc5f339f038655fcc59fbdfb7c977af9 translatedAt=2026-11-05T11:49:19.617Z pushedAt=2026-11-09T08:24:26.993Z nl=1 -->
+<!-- md-trans-meta sourceCommit=b955ecedcc5f339f038655fcc59fbdfb7c977af9 translatedAt=2026-11-05T11:49:19.617Z pushedAt=2026-11-09T10:02:18.979Z nl=1 -->
 
 The [ArkUI](arkui-overview.md) development framework provides the **Text** component in the [NDK](../napi/ndk-development-overview.md) APIs to display the text content. The **Text** component supports various style settings, including the font, color, alignment mode, and text effect. It also supports multiple child components, such as [Span](#adding-span), [ImageSpan](#adding-imagespan), and [StyledString](./ndk-styled-string.md), to implement complex text display effects.
 

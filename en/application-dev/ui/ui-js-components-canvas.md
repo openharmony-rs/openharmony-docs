@@ -5,7 +5,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=276d60289816e1dd5baf9329b4a307375826cd4b translatedAt=2026-11-05T11:55:28.427Z pushedAt=2026-11-09T08:24:27.018Z nl=1 -->
+<!-- md-trans-meta sourceCommit=276d60289816e1dd5baf9329b4a307375826cd4b translatedAt=2026-11-05T11:55:28.427Z pushedAt=2026-11-09T10:02:19.005Z nl=1 -->
 
 
 The **\<canvas>** component provides a canvas for drawing customized graphics. For details, see [CanvasRenderingContext2D](../reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md).

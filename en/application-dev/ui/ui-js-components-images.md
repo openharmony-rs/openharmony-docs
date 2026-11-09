@@ -5,7 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=ef178f16f660427ccb002c86238fcc793129557d translatedAt=2026-11-05T11:55:50.149Z pushedAt=2026-11-09T08:24:27.026Z nl=1 -->
+<!-- md-trans-meta sourceCommit=ef178f16f660427ccb002c86238fcc793129557d translatedAt=2026-11-05T11:55:50.149Z pushedAt=2026-11-09T10:02:19.014Z nl=1 -->
 
 The **\<image>** component is used to render and display images. For details, see [image](../reference/apis-arkui/arkui-js/js-components-basic-image.md).
 

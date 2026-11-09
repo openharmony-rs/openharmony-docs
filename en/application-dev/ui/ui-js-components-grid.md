@@ -5,7 +5,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=45ec2d938cfede23d9ca90fe41c0d1f3e7b2b01d translatedAt=2026-11-05T11:55:49.038Z pushedAt=2026-11-09T08:24:27.023Z nl=1 -->
+<!-- md-trans-meta sourceCommit=45ec2d938cfede23d9ca90fe41c0d1f3e7b2b01d translatedAt=2026-11-05T11:55:49.038Z pushedAt=2026-11-09T10:02:19.010Z nl=1 -->
 
 The **\<grid-container>** component is the root container of the grid layout. Within the root container, you can use **\<grid-row>** and **\<grid-col>** for the grid layout. For details, see [grid-container](../reference/apis-arkui/arkui-js/js-components-grid-container.md).
 

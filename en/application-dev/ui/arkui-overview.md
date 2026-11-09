@@ -5,7 +5,7 @@
 <!--Designer: @tsj_20201-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=4f585ba680bbef7a1a4120561bb2d2f77035b6e6 translatedAt=2026-11-05T11:35:36.304Z pushedAt=2026-11-09T08:24:26.930Z nl=1 -->
+<!-- md-trans-meta sourceCommit=4f585ba680bbef7a1a4120561bb2d2f77035b6e6 translatedAt=2026-11-05T11:35:36.304Z pushedAt=2026-11-09T10:02:18.796Z nl=1 -->
 
 ArkUI provides a comprehensive infrastructure for application UI development, including simple UI syntax, a diverse array of UI features (components, layouts, animations, and interaction events), and powerful preview tools.
 

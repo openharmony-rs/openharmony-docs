@@ -5,7 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=bbe2a5a1904867294232227bd28ba5a89468d90c translatedAt=2026-11-05T11:47:18.773Z pushedAt=2026-11-09T08:24:26.986Z nl=1 -->
+<!-- md-trans-meta sourceCommit=bbe2a5a1904867294232227bd28ba5a89468d90c translatedAt=2026-11-05T11:47:18.773Z pushedAt=2026-11-09T10:02:18.954Z nl=1 -->
 
 The NDK provides comprehensive capabilities for node query, traversal, and operations. You can use the following APIs to efficiently access and manipulate nodes.
 

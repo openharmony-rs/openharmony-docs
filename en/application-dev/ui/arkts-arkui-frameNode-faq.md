@@ -5,7 +5,7 @@
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=52f430399ef2a9ac5b905f0a630fea46f7dde834 translatedAt=2026-11-05T11:01:39.077Z pushedAt=2026-11-09T08:24:26.766Z nl=1 -->
+<!-- md-trans-meta sourceCommit=52f430399ef2a9ac5b905f0a630fea46f7dde834 translatedAt=2026-11-05T11:01:39.077Z pushedAt=2026-11-09T10:02:18.619Z nl=1 -->
 
 This topic addresses common issues related to imperative nodes.
 

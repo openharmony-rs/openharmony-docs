@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=bf76fce28aeb3204bb6f3347753ae4a1bf29e8ba translatedAt=2026-11-05T11:48:12.261Z pushedAt=2026-11-09T08:24:26.990Z nl=1 -->
+<!-- md-trans-meta sourceCommit=bf76fce28aeb3204bb6f3347753ae4a1bf29e8ba translatedAt=2026-11-05T11:48:12.261Z pushedAt=2026-11-09T10:02:18.957Z nl=1 -->
 
 Text boxes support various interactive behaviors, allowing you to register event listeners and obtain status information. The following uses a multi-line text box as an example; the steps for adding text event listeners to a single-line text box are similar.
 

@@ -5,7 +5,7 @@
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=802faee6767d3906904b095ec39441e1110d44fd translatedAt=2026-11-05T11:08:58.869Z pushedAt=2026-11-09T08:24:26.839Z nl=1 -->
+<!-- md-trans-meta sourceCommit=802faee6767d3906904b095ec39441e1110d44fd translatedAt=2026-11-05T11:08:58.869Z pushedAt=2026-11-09T10:02:18.714Z nl=1 -->
 
 This topic describes how to customize the visual effects of the immersive system material by scenario, including setting immersive system material color inversion, applying color tinting to the immersive system material, setting immersive system material interactive effects, and setting immersive system material shadow effects.
 

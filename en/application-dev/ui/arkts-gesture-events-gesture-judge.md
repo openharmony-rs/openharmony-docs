@@ -5,7 +5,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9ad981694fdb55be53cbb4ae7f9a935e6498fd10 translatedAt=2026-11-05T11:07:31.493Z pushedAt=2026-11-09T08:24:26.822Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9ad981694fdb55be53cbb4ae7f9a935e6498fd10 translatedAt=2026-11-05T11:07:31.493Z pushedAt=2026-11-09T10:02:18.702Z nl=1 -->
 
 Gesture conflicts occur when multiple gesture recognizers compete for recognition on the same component or overlapping areas, resulting in unexpected behavior. Common conflict scenarios include:
 - Multiple gestures on the same component (for example, both tap and long-press gestures on a button)
