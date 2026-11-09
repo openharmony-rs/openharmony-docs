@@ -83,7 +83,7 @@
        let err = error as BusinessError;
        console.error(`Failed to addInput. error: ${err.code}`);
      }
-     let canAddPreviewOutput : boolean = false;
+     let canAddPreviewOutput: boolean = false;
      try {
        canAddPreviewOutput = videoSession.canAddOutput(previewOutput);
      } catch (error) {
@@ -100,7 +100,7 @@
        let err = error as BusinessError;
        console.error(`Failed to add previewOutput. error: ${err.code}`);
      }
-     let canAddPhotoOutput : boolean = false
+     let canAddPhotoOutput: boolean = false;
      try {
        canAddPhotoOutput = videoSession.canAddOutput(photoOutput);
      } catch (error) {

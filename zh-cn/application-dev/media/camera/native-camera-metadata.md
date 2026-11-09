@@ -41,6 +41,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
    #include "ohcamera/video_output.h"
    #include "napi/native_api.h"
    #include "ohcamera/camera_manager.h"
+   #include "ohcamera/camera_device.h"
    #include <window_manager/oh_display_info.h>
    #include <window_manager/oh_display_manager.h>
    
@@ -112,13 +113,13 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
    ``` C++
    // 开始配置会话。
    Camera_ErrorCode ret = OH_CaptureSession_BeginConfig(captureSession_);
-   
+
    // 将相机输入流加入会话。
    ret = OH_CaptureSession_AddInput(captureSession_, cameraInput_);
-   
+
    // 将相机预览流加入会话。
    ret = OH_CaptureSession_AddPreviewOutput(captureSession_, previewOutput_);
-   
+
    if (isVideo_) {
        // 将相机录像流加入会话。
        AddVideoOutput();
@@ -135,11 +136,10 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
        OH_NativeBuffer_ColorSpace colorSpace = OH_NativeBuffer_ColorSpace::OH_COLORSPACE_P3_FULL;
        SetColorSpace(colorSpace);
    }
-   
+
    // 提交会话配置信息。
    ret = OH_CaptureSession_CommitConfig(captureSession_);
-   // ...
-   
+
    InitPreviewRotation();
    // 开始会话。
    OH_LOG_INFO(LOG_APP, "session start");

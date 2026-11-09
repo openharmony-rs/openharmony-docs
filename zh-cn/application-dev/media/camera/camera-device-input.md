@@ -31,7 +31,7 @@
 
    ``` TypeScript
    /**
-    * 创建cameraInput输出对象
+    * 创建cameraInput对象。
     */
    createCameraInputFn(cameraManager: camera.CameraManager,
      cameraDevice: camera.CameraDevice): camera.CameraInput | undefined {
@@ -48,7 +48,7 @@
    }
 
    /**
-    * 打开相机
+    * 打开相机。
     */
    async cameraInputOpenFn(cameraInput: camera.CameraInput): Promise<boolean> {
      let isOpenSuccess = false;

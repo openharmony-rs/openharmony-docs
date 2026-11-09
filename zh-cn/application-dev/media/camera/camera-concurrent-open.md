@@ -128,7 +128,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
        return undefined;
      }
 
-     // 创建previewOutput输出对象。
+     // 创建previewOutput对象。
      let previewOutput = cameraManager.createPreviewOutput(previewProfileObj, surfaceId);
      if (previewOutput === undefined) {
        return undefined;
@@ -231,7 +231,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
    async getVideoOutputFn(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability,
      concurrentInfo: camera.CameraConcurrentInfo[], curCameraDeviceFront: camera.CameraDevice,
      context: common.Context): Promise<camera.VideoOutput | undefined> {
-     // 此处创建录像输出流以format：1003，size：1920*1080的录像配置项为例，
+     // 此处创建录像输出流以format：1003，size：1920*1080的录像配置项为例。
      // 对应的录像配置项必须在getCameraConcurrentInfos获取到的并发能力信息数组范围内。
      let videoProfileObj: camera.VideoProfile = {
        format: 1003,
@@ -490,13 +490,13 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
     ``` TypeScript
     hasFlashFn(flashMode: camera.FlashMode): void {
       try {
-        // 检测是否有闪关灯
+        // 检测是否有闪光灯。
         let hasFlash = this.session?.hasFlash();
         Logger.debug(TAG, `hasFlash success, hasFlash: ${hasFlash}`);
-        // 检测闪光灯模式是否支持
+        // 检测闪光灯模式是否支持。
         let isFlashModeSupported = this.session?.isFlashModeSupported(flashMode);
         Logger.debug(TAG, `isFlashModeSupported success, isFlashModeSupported: ${isFlashModeSupported}`);
-        // 设置闪光灯模式
+        // 设置闪光灯模式。
         if (isFlashModeSupported) {
           this.session?.setFlashMode(flashMode);
         }
@@ -531,7 +531,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
     ``` TypeScript
     setZoomRatioFn(zoomRatio: number): void {
       Logger.info(TAG, `setZoomRatioFn value ${zoomRatio}`);
-      // 获取支持的变焦范围
+      // 获取支持的变焦范围。
       try {
         let zoomRatioRange = this.getZoomRatioRange();
         Logger.info(TAG, `getZoomRatioRange success: ${JSON.stringify(zoomRatioRange)}`);
