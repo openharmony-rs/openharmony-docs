@@ -1,10 +1,11 @@
 # VideoProcessing_ColorSpaceInfo
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @liziliang-->
+<!--Designer: @dev_ZUT-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=562a7078212c9b28d8dc43b038a6724f5b49ce15 translatedAt=2026-11-09T06:31:43.162Z pushedAt=2026-11-09T08:46:43.169Z nl=1 -->
 
 ```c
 typedef struct VideoProcessing_ColorSpaceInfo {...} VideoProcessing_ColorSpaceInfo
@@ -31,4 +32,5 @@ The struct describes the color space information of video processing.
 | int32_t metadataType | Video metadata type. For details, see [OH_NativeBuffer_MetadataType](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_metadatatype).|
 | int32_t colorSpace | Video color space type. For details, see [OH_NativeBuffer_ColorSpace](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_colorspace).|
 | int32_t pixelFormat | Video pixel format. For details, see [OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format).|
-<!--no_check-->
+
+
