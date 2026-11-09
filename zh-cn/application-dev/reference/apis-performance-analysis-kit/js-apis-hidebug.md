@@ -1795,7 +1795,7 @@ console.info(`appRunningId: ${appRunningId}`);
 
 getAppSharedHeapObjectUsedSize(): bigint;
 
-获取虚拟机中 ArkTS 共享堆对象的内存占用。
+获取虚拟机中ArkTS共享堆对象的内存占用。
 
 **起始版本**：26.1.0
 
@@ -1807,7 +1807,7 @@ getAppSharedHeapObjectUsedSize(): bigint;
 
 | 类型  | 说明                      |
 | ------ | -------------------------- |
-| bigint | 返回虚拟机中 ArkTS 共享堆对象的内存使用量，单位KB。 |
+| bigint | 返回虚拟机中ArkTS共享堆对象的内存使用量，单位KB。 |
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
