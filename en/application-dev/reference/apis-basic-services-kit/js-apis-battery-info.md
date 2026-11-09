@@ -1,13 +1,13 @@
 # @ohos.batteryInfo (Battery Information)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: PowerManager-->
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=04eb3bd4a43391f1a8bcc5505d9f9d455bde37ff translatedAt=2026-11-06T01:37:39.625Z pushedAt=2026-11-09T01:46:41.235Z nl=1 -->
 
-The **batteryInfo** module provides APIs for querying the charger type, battery health status, and battery charging status.
+This module provides APIs for querying the battery status and charging/discharging status, including the remaining battery capacity, charging status, health status, charger type, voltage, current, and temperature. It is applicable to scenarios where app behavior needs to be adjusted based on the battery status, such as reducing power consumption when the battery is low and starting high-power tasks during charging. This module can help you perceive the device battery status in real time, optimize app power consumption strategies, and improve user experience.
 
 > **NOTE**
 >
@@ -17,7 +17,7 @@ The **batteryInfo** module provides APIs for querying the charger type, battery 
 ## Modules to Import
 
 ```js
-import {batteryInfo} from '@kit.BasicServicesKit';
+import { batteryInfo } from '@kit.BasicServicesKit';
 ```
 
 ## Constants
@@ -28,51 +28,51 @@ Describes battery information.
 
 | Name     | Type       | Read-Only|  Description    |
 | --------------- | ------------------- | ---- | ---------------------|
-| batterySOC                                | number                                         | Yes  | Battery state of charge (SoC) of the device, in unit of percentage. The value range is [0, 100].<br>**Atomic service API**: This API can be used in atomic services since API version 12.                          |
-| chargingStatus                            | [BatteryChargeState](#batterychargestate)      | Yes  | Battery charging state of the current device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                              |
+| batterySOC                                | number                                         | Yes  | Battery SOC. The value range is [0, 100].<br>**Atomic service API**: This API can be used in atomic services since API version 12.                           |
+| chargingStatus                            | [BatteryChargeState](#batterychargestate)      | Yes  | Charging status of the current device battery.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                               |
 | healthStatus                              | [BatteryHealthState](#batteryhealthstate)      | Yes  | Battery health status of the device.                              |
 | pluggedType                               | [BatteryPluggedType](#batterypluggedtype)      | Yes  | Charger type of the device.                            |
 | voltage                                   | number                                         | Yes  | Battery voltage of the device, in unit of microvolt.                        |
 | technology                                | string                                         | Yes  | Battery technology of the device.                              |
 | batteryTemperature                        | number                                         | Yes  | Battery temperature of the device, in unit of 0.1°C.                   |
-| isBatteryPresent<sup>7+</sup>             | boolean                                        | Yes  | Whether the battery is supported or present. The value **true** means that the battery is supported or present; **false** means the opposite.<br>Default value: **false**.|
+| isBatteryPresent<sup>7+</sup>             | boolean                                        | Yes  | Whether the current device supports a battery and whether the battery is present. The value **true** indicates that the device supports a battery and the battery is present, and **false** indicates the opposite. The default value is **false**.|
 | batteryCapacityLevel<sup>9+</sup>         | [BatteryCapacityLevel](#batterycapacitylevel9) | Yes  | Battery level of the device.                             |
 | nowCurrent<sup>12+</sup>                  | number                                         | Yes  | Battery current of the device, in unit of mA.                       |
 
 **Example**
 
   ```ts
-  import {batteryInfo} from '@kit.BasicServicesKit';
+  import { batteryInfo } from '@kit.BasicServicesKit';
 
   let batterySOCInfo: number = batteryInfo.batterySOC;
-  console.info("The batterySOCInfo is: " + batterySOCInfo);
+  console.info('The batterySOCInfo is: ' + batterySOCInfo);
 
   let chargingStatusInfo = batteryInfo.chargingStatus;
-  console.info("The chargingStatusInfo is: " + chargingStatusInfo);
+  console.info('The chargingStatusInfo is: ' + chargingStatusInfo);
 
   let healthStatusInfo = batteryInfo.healthStatus;
-  console.info("The healthStatusInfo is: " + healthStatusInfo);
+  console.info('The healthStatusInfo is: ' + healthStatusInfo);
 
   let pluggedTypeInfo = batteryInfo.pluggedType;
-  console.info("The pluggedTypeInfo is: " + pluggedTypeInfo);
+  console.info('The pluggedTypeInfo is: ' + pluggedTypeInfo);
 
   let voltageInfo: number = batteryInfo.voltage;
-  console.info("The voltageInfo is: " + voltageInfo);
+  console.info('The voltageInfo is: ' + voltageInfo);
 
   let technologyInfo: string = batteryInfo.technology;
-  console.info("The technologyInfo is: " + technologyInfo);
+  console.info('The technologyInfo is: ' + technologyInfo);
 
   let batteryTemperatureInfo: number = batteryInfo.batteryTemperature;
-  console.info("The batteryTemperatureInfo is: " + batteryTemperatureInfo);
+  console.info('The batteryTemperatureInfo is: ' + batteryTemperatureInfo);
 
   let isBatteryPresentInfo: boolean = batteryInfo.isBatteryPresent;
-  console.info("The isBatteryPresentInfo is: " + isBatteryPresentInfo);
+  console.info('The isBatteryPresentInfo is: ' + isBatteryPresentInfo);
 
   let batteryCapacityLevelInfo = batteryInfo.batteryCapacityLevel;
-  console.info("The batteryCapacityLevelInfo is: " + batteryCapacityLevelInfo);
+  console.info('The batteryCapacityLevelInfo is: ' + batteryCapacityLevelInfo);
 
   let nowCurrentInfo: number = batteryInfo.nowCurrent;
-  console.info("The nowCurrentInfo is: " + nowCurrentInfo);
+  console.info('The nowCurrentInfo is: ' + nowCurrentInfo);
   ```
 
 ## BatteryPluggedType
@@ -83,7 +83,7 @@ Enumerates charger types.
 
 | Name      | Value | Description             |
 | -------- | ---- | ----------------- |
-| NONE     | 0    | Unknown charger type.     |
+| NONE     | 0    | No charger is connected.      |
 | AC       | 1    | AC charger.|
 | USB      | 2    | USB charger.  |
 | WIRELESS | 3    | Wireless charger.|
@@ -99,8 +99,8 @@ Enumerates charging states.
 | Name     | Value | Description           |
 | ------- | ---- | --------------- |
 | NONE    | 0    | The battery is not being charged.    |
-| ENABLE  | 1    | The battery is being charged. |
-| DISABLE | 2    | The battery charging is stopped. |
+| ENABLE  | 1    | Charging enabled.  |
+| DISABLE | 2    | Charging disabled.  |
 | FULL    | 3    | The battery is fully charged.|
 
 ## BatteryHealthState
@@ -116,17 +116,17 @@ Enumerates battery health states.
 | OVERHEAT    | 2    | The battery is overheated.  |
 | OVERVOLTAGE | 3    | The battery voltage is over high.  |
 | COLD        | 4    | The battery temperature is low.  |
-| DEAD        | 5    | The battery is dead.|
+| DEAD        | 5    | The battery health status is dead, meaning the battery can no longer be used normally. |
 
 ## BatteryCapacityLevel<sup>9+</sup>
 
-Enumerates battery levels.
+Enumerates the battery levels. Differentiated strategies can be used based on the battery level, for example, restricting background tasks and high-power functions at a low battery level (**LEVEL_LOW**) or a critically low battery level (**LEVEL_CRITICAL**), and lifting the restrictions at when the battery level is full (**LEVEL_FULL**).
 
 **System capability**: SystemCapability.PowerManager.BatteryManager.Core
 
 | Name          | Value| Description                      |
 | -------------- | ------ | ---------------------------- |
-| LEVEL_NONE<sup>23+</sup> | 0      | Unknown battery level.|
+| LEVEL_NONE<sup>23+</sup> | 0      | The battery level is unknown. The system cannot obtain the current battery level. |
 | LEVEL_FULL     | 1      | Full battery level.  |
 | LEVEL_HIGH     | 2      | High battery level.  |
 | LEVEL_NORMAL   | 3      | Normal battery level.|
@@ -137,7 +137,7 @@ Enumerates battery levels.
 
 ## CommonEventBatteryChangedKey<sup>9+</sup>
 
-Enumerates keys for querying the additional information about the **COMMON_EVENT_BATTERY_CHANGED** event.
+Enumerates the query keys for the additional information of **COMMON_EVENT_BATTERY_CHANGED**. You need to first subscribe to [COMMON_EVENT_BATTERY_CHANGED](./common_event/commonEventManager-definitions.md#common_event_battery_changed), and then use these query keys in the event callback to extract the corresponding battery status information from the additional event data. For details about how to use it, see [@ohos.commonEventManager (Common Event)](js-apis-commonEventManager.md).
 
 **System capability**: SystemCapability.PowerManager.BatteryManager.Core
 
