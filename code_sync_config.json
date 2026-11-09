@@ -69564,14 +69564,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":27,
-						"name":"AppEvent_Crash_Click_ArkTS_Header",
-						"start_line":21
-					},
-					{
 						"end_line":129,
 						"name":"RegisterExternalLogManager",
 						"start_line":59
+					},
+					{
+						"end_line":37,
+						"name":"External_Log_ArkTS_Header",
+						"start_line":24
 					}
 				]
 			}
