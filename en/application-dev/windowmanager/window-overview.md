@@ -1,12 +1,11 @@
 # Window Overview
-
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @Pakoo007-->
 <!--Designer: @ki_ja-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=60de8413603f482ca3f2f3e5e2f5d285ba767ebe translatedAt=2026-08-11T10:12:47.846Z pushedAt=2026-08-12T02:23:51.805Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-05T10:54:14.004Z pushedAt=2026-11-06T01:45:22.933Z nl=1 -->
 
 ## Introduction
 
@@ -17,6 +16,7 @@ The Window module provides a mechanism for displaying multiple application UIs a
 - For end users, the Window module provides a way to control application UIs.
 
 - For the entire operating system, the Window module provides logic for application UI management.
+
 
 ## Features
 
@@ -31,6 +31,7 @@ The Window module has the following features:
 - **Provides window animations.** When a window is displayed, hidden, or switched, the window module usually adds animation effects to smooth the interaction process. In OpenHarmony, window animations for apps are the default behavior, and no setup or modification is required.
 
 - **Provides guidance for input event distribution.** Events are distributed based on the current window status or focus. Touch and mouse events are distributed based on the window position and size, while keyboard events are distributed to the focused window. You can use the APIs provided by the window module to set whether a window is touchable and whether it can receive focus.
+
 
 ## Working Principles
 

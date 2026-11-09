@@ -4,9 +4,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @hanxuebing1-->
 <!--Designer: @chengyiyi-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=58ff40ad92758153f7b55166a9e6e0a0e9be5d28 translatedAt=2026-07-10T07:15:53.409Z pushedAt=2026-07-13T08:00:54.185Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-05T10:45:56.485Z pushedAt=2026-11-06T00:56:01.780Z nl=1 -->
 
 ## When to Use
 
@@ -309,9 +309,9 @@ On different devices or under different device states, the adjustable range of t
   ```
 
 > **NOTE**
->
+> 
 > - If you wish to configure different minimum values for different device types, this can be achieved via [multi-HAP projects](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-modular-design#section1260019161216).
->
+> 
 > - The final effective result of window size restrictions is obtained by taking the intersection of the default system restrictions, app configuration, and runtime settings. The priority from high to low is as follows:
 >
 >   1. The app sets the freeform window size restriction via [setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11).
@@ -321,7 +321,7 @@ On different devices or under different device states, the adjustable range of t
 >   3. The [abilities](../quick-start/module-configuration-file.md#abilities) in the [module.json5 configuration file](../quick-start/module-configuration-file.md#tags-in-the-configuration-file) is used to restrict the maximum and minimum size of the freeform window.
 >
 >   4. Default system restrictions (for different products and window types, the default system restrictions of **windowLimits** may vary).
->
+> 
 > - In freeform window state, the main window can set the aspect ratio of the window content layout via [setAspectRatio(ratio: number)](../reference/apis-arkui/arkts-apis-window-Window.md#setaspectratio10). If [WindowLimits](../reference/apis-arkui/arkts-apis-window-i.md#windowlimits11) is set first and the subsequently set ratio conflicts with it, error code 401 will be returned. If the ratio is set first and the subsequently set [WindowLimits](../reference/apis-arkui/arkts-apis-window-i.md#windowlimits11) conflicts with it, the window's aspect ratio may not follow the set aspect ratio (ratio).
 
 ## Adjusting the Layout to Avoid the Title Bar and Window Control Buttons
@@ -341,7 +341,6 @@ Typical scenarios and corresponding solutions are as follows:
 If the bottom of the app page has function buttons with a fixed height, when calculating the position of the bottom function buttons, if only the window height minus the bottom function button height is used, the bottom function buttons will be offset downward by the height of the title bar, resulting in incomplete display.
 
 There are three ways to solve the above problem:
-
 - When the app performs layout based on the window size, the Y-axis coordinate of page elements must additionally subtract the title bar height. The title bar height can be obtained via the [getWindowDecorHeight()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowdecorheight11) API, and the unit is vp.
 
 - Perform layout by obtaining the drawable area size within the window via the [getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9) API.
@@ -480,7 +479,6 @@ If an app draws a custom toolbar or tab bar at the top of the page alongside the
       }
     }
    ```
-
 The effect diagram of the sample code is as follows:
 
 The following figure shows that when the title bar is not hidden, the topmost layout area (pink area) of the app can only be below the title bar.
@@ -501,7 +499,7 @@ Typical scenarios and corresponding solutions are as follows:
 
   You can add a video full-screen button on the app UI, and call the [maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12) API in the button's [onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick12) event to enter full-screen display.
 
-- When playing a PPT file, the page needs to hide the Dock bar and title bar and disable the hover effect on them to avoid affecting the PPT presentation effect.
+- When playing a PPT file, the page needs to hide the Dock bar and title bar and disable the hover effect on them to avoid affecting the PPT presentation effect.  
 
   You can add a PPT playback button on the app UI, and call the [maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12) API in the button's [onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick12) event, passing the parameter [ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER](../reference/apis-arkui/arkts-apis-window-e.md#maximizepresentation12) to enter full-screen display and disable hover on the Dock bar and title bar.
 

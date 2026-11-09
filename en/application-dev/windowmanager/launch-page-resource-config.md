@@ -3,8 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @xiaochaobu-->
 <!--Designer: @tenMiles-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-05T10:48:44.327Z pushedAt=2026-11-06T01:01:14.446Z nl=1 -->
 
 The configuration of starting window resources is similar to other resource configurations. You can classify the resources and configure them for different scenarios. Normally, this approach is used when you configure the starting window content for dark mode or different device types.
 

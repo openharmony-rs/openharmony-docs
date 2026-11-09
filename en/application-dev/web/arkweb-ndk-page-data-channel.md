@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-09-01T02:50:08.953Z pushedAt=2026-09-02T07:22:57.341Z -->
+<!-- md-trans-meta sourceCommit=fa50beec0bdde9987a26860c8712dd96954b9a92 translatedAt=2026-11-05T10:35:24.832Z pushedAt=2026-11-05T11:11:37.985Z nl=1 -->
 
 The native **PostWebMessage** is provided to implement communication between the frontend page and the application, which reduces unnecessary switching to the ArkTS environment and allows messages and callbacks to be reported in non-UI threads to avoid UI blocking. Currently, only the string and buffer can be sent.
 
@@ -15,7 +15,7 @@ If an application is developed using ArkTS and C++ language, or if its architect
 
   ![arkweb_jsbridge_arch](figures/arkweb_jsbridge_arch.png)
 
-  The preceding figure shows a general architecture of applets with universal applicability. In this architecture, the logical layer depends on a JavaScript runtime built in an application, and the runtime runs in an existing C++ environment. The logic layer can communicate with the view layer (in which ArkWeb serves as the renderer) in the C++ environment through the native API, instead of using the ArkTS **PostWebMessage** API in the ArkTS environment.
+  The preceding figure shows a general architecture of applets with universal applicability. In this architecture, the logical layer depends on a JavaScript runtime built in an application, and the runtime runs in an existing C++ environment. The logical layer can communicate with the view layer (in which ArkWeb serves as the renderer) in the C++ environment through the native API, instead of using the ArkTS **PostWebMessage** API in the ArkTS environment.
 
   The figure on the left shows that the application needs to invoke the ArkTS environment and then the C++ environment to build an applet using the ArkTS **PostWebMessage** API. Using the native **PostWebMessage** API is more efficient because the switch between the ArkTS and C++ environments is not required, as shown in the figure on the right.
 
@@ -64,7 +64,7 @@ To invoke the native APIs, obtain the API structs on the ArkWeb native side firs
 Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums) to check whether the function struct has the corresponding pointer before calling an API to avoid crashes caused by mismatch between the SDK and the device ROM. [createWebMessagePorts](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#createwebmessageports), [postWebMessage](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#postwebmessage) and [close](../reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md#close) must run in the UI thread.
 
 * Frontend page code:
-
+  
   ```html
   <!-- entry/src/main/resources/rawfile/index.html -->
   <!-- index.html -->
@@ -118,7 +118,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
       }
   })
   window.onerror = function(message, url, line, column, error) {
-    console.info("JavaScript Error: " + message + " on line " + line + " in " + url);
+    console.error("JavaScript Error: " + message + " on line " + line + " in " + url);
     document.getElementById("h1").innerHTML = "Failed to execute the function."
   };
 
@@ -195,8 +195,8 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
 
 * ArkTS code:
 
-  <!-- @[webview_and_native_modules_are_used_to_implement_complex_message_interaction_between_applications_and_h5_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/ets/pages/Index.ets) -->
-
+  <!-- @[webview_and_native_modules_are_used_to_implement_complex_message_interaction_between_applications_and_h5_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/ets/pages/Index.ets) -->  
+  
   ``` TypeScript
   import testNapi from 'libentry.so';
   import { webview } from '@kit.ArkWeb';
@@ -216,7 +216,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
     }
   
     aboutToDisappear() {
-      console.error('aboutToDisappear');
+      console.info('aboutToDisappear');
     }
   
     build() {
@@ -460,7 +460,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
 * ArkTS APIs exposed on the Node-API side
 
   <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-
+  
   ``` TypeScript
   // entry/src/main/cpp/types/libentry/index.d.ts
   export const nativeWebInit: (webName: string) => void;
@@ -477,24 +477,25 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
   ```
 
 * Compilation configuration on Node-API
-
-  ```c++
+  <!-- @[cmake_lists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/cpp/CMakeLists.txt) -->
+  
+  ``` Text
   # entry/src/main/cpp/CMakeLists.txt
   # the minimum version of CMake.
-  cmake_minimum_required(VERSION 3.4.1)
+  cmake_minimum_required(VERSION 3.5.0)
   project(NDKPostMessage)
-
+  
   set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
-
+  
   if(DEFINED PACKAGE_FIND_FILE)
       include(${PACKAGE_FIND_FILE})
   endif()
-
+  
   include_directories(${NATIVERENDER_ROOT_PATH}
                       ${NATIVERENDER_ROOT_PATH}/include)
-
+  
   add_library(entry SHARED hello.cpp)
-
+  
   find_library(
       # Sets the name of the path variable.
       hilog-lib
@@ -502,14 +503,14 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
       # you want CMake to locate.
       hilog_ndk.z
   )
-
+  
   target_link_libraries(entry PUBLIC libace_napi.z.so ${hilog-lib} libohweb.so)
   ```
 
 * Node-API layer code
 
   <!-- @[the_node_api_layer_code_for_the_data_channel_between_the_application_side_and_the_frontend_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/cpp/hello.cpp) -->
-
+  
   ``` C++
   #include "hilog/log.h"
   #include "napi/native_api.h"
@@ -731,7 +732,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
       // Register a callback.
       OH_LOG_Print(
           LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-          "Native Development Kit SetMessageEventHandler begin");
+          "Native Development Kit setMessageEventHandlerThread begin");
       if (g_web_message_port_arr == nullptr) {
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "webMessagePort is nullptr");
           return nullptr;
@@ -741,7 +742,8 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
       webMessagePort->setMessageEventHandler(g_web_message_port_arr[1], webTagValue, WebMessagePortCallback, NULL);
       OH_LOG_Print(
           LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-          "Native Development Kit SetMessageEventHandler end, web message port size:%{public}d", g_webMessagePortSize);
+          "Native Development Kit setMessageEventHandlerThread end, web message port size:%{public}d",
+          g_webMessagePortSize);
       delete[] webTagValue;
       return nullptr;
   }
@@ -863,15 +865,15 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
           LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
           "Native Development Kit Refresh webTag:%{public}s", webTagValue);
   
-      // Disable the port by calling close() and then destroyWebMessagePorts().
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit SetMessageEventHandler begin");
+      // Close the port by calling close() and then destroyWebMessagePorts().
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit closeMessagePort begin");
       if (g_web_message_port_arr == nullptr) {
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "webMessagePort is nullptr");
           return nullptr;
       }
       webMessagePort->close(g_web_message_port_arr[0], webTagValue);
       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-          "Native Development Kit SetMessageEventHandler end, web message port size:%{public}d", g_webMessagePortSize);
+          "Native Development Kit closeMessagePort end, web message port size:%{public}d", g_webMessagePortSize);
       controller->refresh(webTagValue);
       delete[] webTagValue;
       return nullptr;
@@ -894,7 +896,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
           "Native Development Kit Refresh webTag:%{public}s", webTagValue);
   
       // Release the memory by calling close() and then destroyWebMessagePorts().
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit SetMessageEventHandler begin");
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit destroyMessagePort begin");
       if (g_web_message_port_arr == nullptr) {
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "webMessagePort is nullptr");
           return nullptr;
@@ -902,7 +904,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
       controller->destroyWebMessagePorts(&g_web_message_port_arr, g_webMessagePortSize);
       OH_LOG_Print(
           LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-          "Native Development Kit SetMessageEventHandler end, web message port size:%{public}d", g_webMessagePortSize);
+          "Native Development Kit destroyMessagePort end, web message port size:%{public}d", g_webMessagePortSize);
       delete[] webTagValue;
       return nullptr;
   }
@@ -924,13 +926,13 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
           "Native Development Kit Refresh webTag:%{public}s", webTagValue);
   
       // Release the memory by calling close() and then destroyWebMessagePorts().
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit SetMessageEventHandler begin");
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit destroyNullMessagePort begin");
   
       controller->destroyWebMessagePorts(&g_web_message_port_arr, g_webMessagePortSize);
   
       OH_LOG_Print(
           LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-          "Native Development Kit SetMessageEventHandler end, web message port size:%{public}d", g_webMessagePortSize);
+          "Native Development Kit destroyNullMessagePort end, web message port size:%{public}d", g_webMessagePortSize);
       delete[] webTagValue;
       return nullptr;
   }

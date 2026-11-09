@@ -3,10 +3,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
-<!--Designer: @gcw_sPCsris4; @qinliwen0417-->
-<!--Tester: @qinliwen0417-->
+<!--Designer: @gcw_sPCsris4; @jingbotao-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=ec7630a78aacf2433fa2a5ddf9c98995fe35f1df translatedAt=2026-10-08T09:06:59.931Z pushedAt=2026-10-09T00:53:19.349Z -->
+<!-- md-trans-meta sourceCommit=710e9748de0b0abf2ab8443301cb1cb80616c651 translatedAt=2026-11-05T10:55:32.594Z pushedAt=2026-11-06T01:56:43.373Z nl=1 -->
 
 Windows are divided into two types: system windows and app windows.
 
@@ -33,6 +33,10 @@ Auxiliary windows include:
   In the stage model, created using the [createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9-1) or [createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindowwithoptions11) API. For details, see [Subwindow Development Guide](subwindow-guide.md).
 
   When the [createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindowwithoptions11) API is used with the **zLevelAboveParentLoosened** attribute set to **true**, the created subwindow is called an independent subwindow.
+
+  > **NOTE**
+  > 
+  > The independent characteristics of an independent sub-window take effect only in the [freeform window](freeform-window-overview.md#freeform-window) state. In the non-freeform window state, an independent sub-window behaves the same as a common sub-window. In the freeform window state, an independent sub-window does not follow the foreground/background switching of the main window; it is destroyed only together with the main window. The z-order of an independent sub-window and the main window can be adjusted by tapping.
 
 - Global floating window (that is, **WindowType.TYPE_FLOAT**). For details, see [Global Floating Window Development](global-floating-window-guide.md).
 

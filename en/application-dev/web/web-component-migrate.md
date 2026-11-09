@@ -5,7 +5,7 @@
 <!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:07:08.283Z pushedAt=2026-09-15T13:41:12.640Z -->
+<!-- md-trans-meta sourceCommit=dce664aab570b4be4959eebd3082d0edd7d3d5eb translatedAt=2026-11-05T10:36:12.667Z pushedAt=2026-11-05T11:18:53.823Z nl=1 -->
 
 The **Web** component can be attached to and detached from the component trees in different windows, which enables the same **Web** component to be migrated between different windows. For example, you can drag a tab page to an independent window or drag it to another window.
 
@@ -44,7 +44,7 @@ import { createNWeb, defaultUrl } from '../pages/common';
 // ...
 ```
 
-<!-- @[dynamic_web_module_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/pages/common.ets) -->
+<!-- @[dynamic_web_module_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/pages/common.ets) -->  
 
 ``` TypeScript
 // Provide the capability for attaching Web components dynamically.
@@ -55,7 +55,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 export const defaultUrl : string = 'https://www.example.com';
 
-// Data is an input parameter of encapsulation class.
+// Data is an encapsulation class for input parameters.
 class Data{
   public url: string = '';    
   public webController: webview.WebviewController | null = null;
@@ -66,7 +66,7 @@ class Data{
   }
 }
 
-// @Builder contains the specific information of the dynamic component.
+// @Builder contains the specific component content of the dynamic component.
 @Builder
 function webBuilder(data:Data) {
   Web({ src: data.url, controller: data.webController })
@@ -102,8 +102,8 @@ export class MyNodeController extends NodeController {
     if (this.builderNode) {
       let frameNode : FrameNode | null = this.builderNode.getFrameNode();
       if (frameNode?.getParent() != null) {
-        // Check whether the custom node is attached before.
-        hilog.error(0x0000, 'testTag', '%{public}s', 'The frameNode is already attached');
+        // Check whether the custom node has already been attached before mounting it.
+        hilog.warn(0x0000, 'testTag', '%{public}s', 'The frameNode is already attached');
         return;
       }
       this.rootNode = this.builderNode.getFrameNode();
@@ -120,9 +120,9 @@ export class MyNodeController extends NodeController {
   }
 }
 
-// Create a BuilderNode required for saving Map.
+// Create a Map to save the required BuilderNode.
 let builderNodeMap : Map<string, BuilderNode<[Data]> | undefined> = new Map();
-// Create a webview.WebviewController required for saving Map.
+// Create a Map to save the required webview.WebviewController.
 let webControllerMap : Map<string, webview.WebviewController | undefined> = new Map();
 
 // Use getUIContext() of the window or custom component to obtain the UIContext object required for initialization.
@@ -140,11 +140,11 @@ export const createNWeb = (url: string, uiContext: UIContext) => {
   webControllerMap.set(url, webController);
 }
 
-// Customize the API for obtaining BuilderNode.
+// Custom API for obtaining BuilderNode.
 export const getBuilderNode = (url: string) : BuilderNode<[Data]> | undefined => {
   return builderNodeMap.get(url);
 }
-// Customize the API for obtaining WebviewController.
+// Custom API for obtaining WebviewController.
 export const getWebviewController = (url : string) : webview.WebviewController | undefined => {
   return webControllerMap.get(url);
 }

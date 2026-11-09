@@ -3,8 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @xiaochaobu-->
 <!--Designer: @tenMiles-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-05T10:48:43.564Z pushedAt=2026-11-06T01:01:12.327Z nl=1 -->
 
 The starting window is the first page displayed when an application is launched from a cold start. It remains visible until the application process starts or the application content is fully loaded. This window plays a crucial role in presenting the brand identity of the application. You can customize resources to display a unique logo, thereby strengthening user recognition of the product.
 
