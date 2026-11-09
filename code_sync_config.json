@@ -69144,9 +69144,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp",
 				"functions":[
 					{
-						"end_line":815,
+						"end_line":851,
 						"name":"Recorder::AudioEncInputSyncThread",
-						"start_line":780
+						"start_line":816
 					},
 					{
 						"end_line":846,
