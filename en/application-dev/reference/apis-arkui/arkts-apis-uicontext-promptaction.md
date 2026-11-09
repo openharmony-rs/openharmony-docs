@@ -5,6 +5,7 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=e4d286174e939daeb23eeb0e650aade57c2fa085 translatedAt=2026-11-02T12:49:24.665Z pushedAt=2026-11-06T10:48:30.150Z nl=1 -->
 
 Provides APIs to create and display toasts, dialog boxes, action menus, and custom popups.
 
@@ -20,23 +21,23 @@ Provides APIs to create and display toasts, dialog boxes, action menus, and cust
 
 getTopOrder(): LevelOrder
 
-Obtains the order of the topmost dialog box.
-
-This API returns the order of the dialog box currently at the top layer. This information can be used to specify the desired order for subsequent dialog boxes.
+Obtains the order of the topmost dialog box, which can be used for the level configuration of the next dialog box.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 | Type               | Description                                   |
 | ------------------- | --------------------------------------- |
-| [LevelOrder](js-apis-promptAction.md#levelorder18) | Order of the topmost dialog box.|
+| [LevelOrder](js-apis-promptAction.md#levelorder18) | Level object of the dialog box displayed at the topmost layer. |
 
 **Example**
 
-This example shows how to use **getTopOrder** to obtain the order of the dialog box currently at the top layer.
+This example shows how to obtain the level value of the dialog box displayed at the topmost layer.
 
 ```ts
 import { ComponentContent, PromptAction, LevelOrder, promptAction, UIContext } from '@kit.ArkUI';
@@ -80,14 +81,14 @@ struct Index {
           .fontSize(20)
           .onClick(() => {
             this.promptAction.openCustomDialog(this.contentNode, this.baseDialogOptions)
-              .catch((err: BusinessError) => {
-                console.error("openCustomDialog error: " + err.code + " " + err.message);
-              })
               .then(() => {
                 let topOrder: LevelOrder = this.promptAction.getTopOrder();
                 if (topOrder !== undefined) {
-                  console.error('topOrder: ' + topOrder.getOrder());
+                  console.info('topOrder: ' + topOrder.getOrder());
                 }
+              })
+              .catch((err: BusinessError) => {
+                console.error(`openCustomDialog error code is ${err.code}, message is ${err.message}`);
               })
           })
       }.width('100%')
@@ -100,21 +101,23 @@ struct Index {
 
 getBottomOrder(): LevelOrder
 
-This API returns the order of the dialog box currently at the bottom layer. This information can be used to specify the desired order for subsequent dialog boxes.
+Obtains the order of the dialog box currently at the bottom layer, which can be used for the level configuration of the next dialog box.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 | Type               | Description                                   |
 | ------------------- | --------------------------------------- |
-| [LevelOrder](js-apis-promptAction.md#levelorder18) | Order of the topmost dialog box.|
+| [LevelOrder](js-apis-promptAction.md#levelorder18) | Level object of the dialog box displayed at the bottommost layer. |
 
 **Example**
 
-This example shows how to use **getBottomOrder** to obtain the order of the dialog box currently at the bottom layer.
+This example shows how to obtain the level value of the dialog box displayed at the bottommost layer.
 
 ```ts
 import { ComponentContent, PromptAction, LevelOrder, promptAction, UIContext } from '@kit.ArkUI';
@@ -158,14 +161,14 @@ struct Index {
           .fontSize(20)
           .onClick(() => {
             this.promptAction.openCustomDialog(this.contentNode, this.baseDialogOptions)
-              .catch((err: BusinessError) => {
-                console.error("openCustomDialog error: " + err.code + " " + err.message);
-              })
               .then(() => {
                 let bottomOrder: LevelOrder = this.promptAction.getBottomOrder();
                 if (bottomOrder !== undefined) {
-                  console.error('bottomOrder: ' + bottomOrder.getOrder());
+                  console.info('bottomOrder: ' + bottomOrder.getOrder());
                 }
+              })
+              .catch((err: BusinessError) => {
+                console.error(`openCustomDialog error code is ${err.code}, message is ${err.message}`);
               })
           })
       }.width('100%')
@@ -178,23 +181,25 @@ struct Index {
 
 openToast(options: promptAction.ShowToastOptions): Promise&lt;number&gt;
 
-Displays a toast. This API uses a promise to return the toast ID for use with **closeToast**.
+Displays a toast. This API uses a promise to return the unique ID of the toast, which can be used by **closeToast**. This API is different from **showToast** as follows: **openToast** is an asynchronous API, and the returned **toastId** can be used to close the toast later through **closeToast**. **showToast** is a synchronous API and does not support programmatic closing. If you need to control the closing time of the toast in code, use **openToast**; if you only need simple display, use **showToast**.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name | Type                                                        | Mandatory| Description          |
 | ------- | ------------------------------------------------------------ | ---- | -------------- |
-| options | [promptAction.ShowToastOptions](js-apis-promptAction.md#showtoastoptions) | Yes  | Toast configuration options.|
+| options | [promptAction.ShowToastOptions](js-apis-promptAction.md#showtoastoptions) | Yes | Toast options, which are used for configuration of the toast display content and style, including attributes such as **message** and **duration**. |
 
 **Return value**
 
 | Type            | Description                                |
 | ---------------- | ------------------------------------ |
-| Promise&lt;number&gt; | Promise that returns the toast ID for use with **closeToast**.|
+| Promise&lt;number&gt; | Promise that returns the toast ID for use with **closeToast**. |
 
 **Error codes**
 
@@ -210,7 +215,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 This example demonstrates how to display and close a toast by calling **openToast** and **closeToast**.
 
 ```ts
-import { PromptAction } from '@kit.ArkUI';
+import { PromptAction, promptAction } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -227,6 +232,7 @@ struct Index {
           this.promptAction.openToast({
             message: 'Toast Message',
             duration: 10000,
+            showMode:promptAction.ToastShowMode.DEFAULT,
           }).then((toastId: number) => {
             this.toastId = toastId;
           })
@@ -261,11 +267,13 @@ Closes the specified toast.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name | Type  | Mandatory| Description                         |
 | ------- | ------ | ---- | ----------------------------- |
-| toastId | number | Yes  | Toast ID returned from **openToast**.|
+| toastId | number | Yes | Toast ID returned from **openToast**, used to identify a specific toast so that it can be closed later by **closeToast**. |
 
 **Error codes**
 
@@ -279,7 +287,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-See the example for [openToast18](#opentoast18).
+For details, see the example of [openToast<sup>18+</sup>](#opentoast18).
 
 ## showToast
 
@@ -291,11 +299,13 @@ Creates and displays a toast.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name    | Type                                      | Mandatory  | Description     |
 | ------- | ---------------------------------------- | ---- | ------- |
-| options | [promptAction.ShowToastOptions](js-apis-promptAction.md#showtoastoptions) | Yes   | Toast configuration options.|
+| options | [promptAction.ShowToastOptions](js-apis-promptAction.md#showtoastoptions) | Yes    | Toast options, used to configure the display content and style of the toast, including attributes such as **message**, **duration**, and **systemMaterial**. |
 
 **Error codes**
 
@@ -308,10 +318,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-This example demonstrates how to display a toast by calling **showToast**.
+This example demonstrates how to use the **systemMaterial** attribute in the **options** parameter to set the system material of the component, implementing the immersive light effect of the toast.
+
+The illustration in this example shows the strong effect on a high-computing-power device. The immersive light effect of the component is adaptively adjusted based on the device computing power and the immersive light effect set by the user in the system, and you do not need to perform additional adaptation.
+
+Since API version 26.0.0, the **systemMaterial** attribute is added to the [promptAction.ShowToastOptions](js-apis-promptAction.md#showtoastoptions) type of the **options** parameter.
 
 ```ts
-import { PromptAction } from '@kit.ArkUI';
+import { PromptAction, promptAction, uiMaterial } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -322,11 +336,17 @@ struct Index {
   build() {
     Column() {
       Button('showToast')
+        .position({x: 125, y:300})
         .onClick(() => {
           try {
             this.promptAction.showToast({
               message: 'Message Info',
-              duration: 2000
+              duration: 2000,
+              showMode:promptAction.ToastShowMode.DEFAULT,
+              // Set the system material API.
+              systemMaterial: new uiMaterial.ImmersiveMaterial({
+                style: uiMaterial.ImmersiveStyle.THIN
+              })
             });
           } catch (error) {
             let message = (error as BusinessError).message;
@@ -334,10 +354,23 @@ struct Index {
             console.error(`showToast args error code is ${code}, message is ${message}`);
           };
         })
-    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+    }
+    .width('100%')
+    .height('100%')
+    // Replace it with the actual resource file.
+    .backgroundImage($r("app.media.img"))
+    .backgroundImageSize({width: '100%', height: '100%'})
   }
 }
 ```
+
+System material not set
+
+![Toast without system material](figures/toastwithoutmaterial.gif)
+
+System material set
+
+![Toast with system material](figures/toastwithmaterial.gif)
 
 ## showDialog
 
@@ -349,12 +382,14 @@ Creates and displays a dialog box. This API uses an asynchronous callback to ret
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description          |
 | -------- | ---------------------------------------- | ---- | ------------ |
-| options  | [promptAction.ShowDialogOptions](js-apis-promptAction.md#showdialogoptions) | Yes   | Dialog box configuration options.|
-| callback | AsyncCallback&lt;[promptAction.ShowDialogSuccessResponse](js-apis-promptAction.md#showdialogsuccessresponse)&gt; | Yes   | Callback used to return the result. On success, **err** is **undefined** and **data** contains the dialog box response. On failure, **err** provides error details.|
+| options  | [promptAction.ShowDialogOptions](js-apis-promptAction.md#showdialogoptions) | Yes    | Dialog box options, used to configure the display content and style of the dialog box, including attributes such as **title**, **message**, and **buttons**. |
+| callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;[promptAction.ShowDialogSuccessResponse](js-apis-promptAction.md#showdialogsuccessresponse)&gt; | Yes    | Callback that returns the result. If the dialog box is displayed successfully, **err** is **undefined** and **data** is the obtained dialog box response result. If the display fails, **err** is an error object and **data** is **undefined**. |
 
 **Error codes**
 
@@ -367,7 +402,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-This example demonstrates how to display a dialog box and return the dialog box response result using the **showDialog** API.
+This example demonstrates how to use the **showDialog** API to display a dialog box and return the dialog box response result.
 
 ```ts
 import { PromptAction } from '@kit.ArkUI';
@@ -398,7 +433,7 @@ struct Index {
               ]
             }, (err, data) => {
               if (err) {
-                console.error('showDialog err: ' + err);
+                console.error(`showDialog err: ${err}`);
                 return;
               }
               console.info('showDialog success callback, click button: ' + data.index);
@@ -424,17 +459,19 @@ Creates and displays a dialog box. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name    | Type                                      | Mandatory  | Description    |
 | ------- | ---------------------------------------- | ---- | ------ |
-| options | [promptAction.ShowDialogOptions](js-apis-promptAction.md#showdialogoptions) | Yes   | Dialog box configuration options.|
+| options | [promptAction.ShowDialogOptions](js-apis-promptAction.md#showdialogoptions) | Yes | Dialog box options, used to configure the display content and style of the dialog box, including attributes such as **title**, **message**, and **buttons**. |
 
 **Return value**
 
 | Type                                      | Description      |
 | ---------------------------------------- | -------- |
-| Promise&lt;[promptAction.ShowDialogSuccessResponse](js-apis-promptAction.md#showdialogsuccessresponse)&gt; | Promise that returns the dialog box response.|
+| Promise&lt;[promptAction.ShowDialogSuccessResponse](js-apis-promptAction.md#showdialogsuccessresponse)&gt; | Promise that returns the response result of the dialog box, including the index of the button selected by the user. |
 
 **Error codes**
 
@@ -447,10 +484,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-This example demonstrates how to display a dialog box and return the dialog box response result through a promise using the **showDialog** API.
+This example demonstrates how to use the **showDialog** API to display a dialog box and return the dialog box response result through a promise.
 
 ```ts
 import { PromptAction } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -478,8 +516,8 @@ struct Index {
             .then(data => {
               console.info('showDialog success, click button: ' + data.index);
             })
-            .catch((err: Error) => {
-              console.error('showDialog error: ' + err);
+            .catch((err: BusinessError) => {
+              console.error('showDialog error: ' + err.code + ' ' + err.message);
             })
         })
     }.height('100%').width('100%').justifyContent(FlexAlign.Center)
@@ -497,12 +535,14 @@ Creates and displays an action menu. This API uses an asynchronous callback to r
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description              |
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
-| options  | [promptAction.ActionMenuOptions](js-apis-promptAction.md#actionmenuoptions) | Yes  | Action menu options.    |
-| callback | AsyncCallback&lt;[promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse)&gt; | Yes  | Callback used to return the result. On success, **err** is **undefined** and **data** contains the action menu response. On failure, **err** provides error details.|
+| options  | [promptAction.ActionMenuOptions](js-apis-promptAction.md#actionmenuoptions) | Yes   | Action menu options, used to configure the display content and style of the action menu, including attributes such as **title** and **buttons**.     |
+| callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;[promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse)&gt; | Yes   | Callback that returns the result. If the action menu is displayed successfully, **err** is **undefined** and **data** is the obtained action menu response result. If the operation fails, **err** is an error object and **data** is **undefined**. |
 
 **Error codes**
 
@@ -569,17 +609,19 @@ Creates and displays an action menu. This API uses a promise to return the resul
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name    | Type                                      | Mandatory  | Description     |
 | ------- | ---------------------------------------- | ---- | ------- |
-| options | [promptAction.ActionMenuOptions](js-apis-promptAction.md#actionmenuoptions) | Yes   | Action menu options.|
+| options | [promptAction.ActionMenuOptions](js-apis-promptAction.md#actionmenuoptions) | Yes | Action menu options, used to configure the display content and style of the action menu, including attributes such as **title** and **buttons**. |
 
 **Return value**
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| Promise&lt;[promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse)&gt; | Promise that returns the action menu response.|
+| Promise&lt;[promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse)&gt; | Promise that returns the response result of the menu, including the index of the menu item selected by the user. |
 
 **Error codes**
 
@@ -592,10 +634,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-This example demonstrates how to display an action menu and return the action menu response result through a promise using the **showActionMenu** API.
+This example demonstrates how to use the **showActionMenu** API to display an action menu and return the response result through a promise.
 
 ```ts
 import { PromptAction } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -621,8 +665,8 @@ struct Index {
             .then(data => {
               console.info('showActionMenu success, click button: ' + data.index);
             })
-            .catch((err: Error) => {
-              console.error('showActionMenu error: ' + err);
+            .catch((err: BusinessError) => {
+              console.error(`showActionMenu error code is ${err.code}, message is ${err.message}`);
             })
         })
     }.height('100%').width('100%').justifyContent(FlexAlign.Center)
@@ -634,18 +678,20 @@ struct Index {
 
 openCustomDialog\<T extends Object>(dialogContent: ComponentContent\<T>, options?: promptAction.BaseDialogOptions): Promise&lt;void&gt;
 
-Opens a custom dialog box corresponding to **dialogContent**. This API uses a promise to return the result. The dialog box displayed through this API has its content fully following style settings of **dialogContent**. It is displayed in the same way where **customStyle** is set to **true**.
+Creates and opens a custom dialog box corresponding to **dialogContent**. This API uses a promise to return the result. The dialog box displayed through this API has its content fully following style settings of **dialogContent**. It is displayed in the same way where [customStyle](arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) is set to **true**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
 | Name    | Type                                      | Mandatory  | Description     |
 | ------- | ---------------------------------------- | ---- | ------- |
 | dialogContent | [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) | Yes| Content of the custom dialog box.|
-| options | [promptAction.BaseDialogOptions](js-apis-promptAction.md#basedialogoptions11) | No   |   Dialog box style.<br>Note: If both [isModal](js-apis-promptAction.md#basedialogoptions11) and [showInSubWindow](js-apis-promptAction.md#basedialogoptions11) in **BaseDialogOptions** are set to **true**, only **showInSubWindow** takes effect. In this case, the non-modal dialog box is displayed without mask in the subwindow.|
+| options | [promptAction.BaseDialogOptions](js-apis-promptAction.md#basedialogoptions11) | No    |   Dialog box style. Pass this parameter when customizing the alignment mode, offset, auto cancel, mask color, and other attributes of the dialog box. When not passed, the system default style is used.<br>**Note:** If both [isModal](js-apis-promptAction.md#basedialogoptions11) and [showInSubWindow](js-apis-promptAction.md#basedialogoptions11) in **BaseDialogOptions** are set to **true**, only **showInSubWindow** takes effect. In this case, the dialog box is displayed without a mask in the subwindow.|
 
 **Return value**
 
@@ -665,7 +711,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-This example demonstrates how to listen for changes in [system environment information](../apis-ability-kit/js-apis-app-ability-configuration.md) (such as system language and color mode) and update a custom dialog box using the [update](../apis-arkui/js-apis-arkui-builderNode.md#update) and [updateConfiguration](../apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12) APIs of [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md).
+This example demonstrates how to listen for changes in [@ohos.app.ability.Configuration (Environment Variables)](../apis-ability-kit/js-apis-app-ability-configuration.md) (such as the system language and color mode) as well as update the data of the custom dialog box and fully refresh the nodes using the [update](../apis-arkui/js-apis-arkui-builderNode.md#update) and [updateConfiguration](../apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12) of [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md).
 ```ts
 import { ComponentContent } from '@kit.ArkUI';
 import { AbilityConstant, Configuration, EnvironmentCallback, ConfigurationConstant } from '@kit.AbilityKit';
@@ -745,6 +791,7 @@ struct Index {
               return
             }
             promptAction.closeCustomDialog(this.contentNode)
+            // Close the existing dialog box first, then reopen it.
             promptAction.openCustomDialog(this.contentNode).then(() => {
               console.info("succeeded")
             }).catch((error: BusinessError) => {
@@ -770,11 +817,13 @@ Creates and displays a custom dialog box. This API uses a promise to return the 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name | Type                                                        | Mandatory| Description              |
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
-| options | [promptAction.CustomDialogOptions](js-apis-promptAction.md#customdialogoptions11) | Yes  | Content of the custom dialog box.<br>Note: If both [isModal](js-apis-promptAction.md#basedialogoptions11) and [showInSubWindow](js-apis-promptAction.md#basedialogoptions11) in **BaseDialogOptions** are set to **true**, only **showInSubWindow** takes effect. In this case, the non-modal dialog box is displayed without mask in the subwindow.|
+| options | [promptAction.CustomDialogOptions](js-apis-promptAction.md#customdialogoptions11) | Yes | Custom dialog box options, used to configure the content, style, position, and other attributes of the custom dialog box.<br>**Note:** If both [isModal](js-apis-promptAction.md#basedialogoptions11) and [showInSubWindow](js-apis-promptAction.md#basedialogoptions11) in **BaseDialogOptions** are set to **true**, only **showInSubWindow** takes effect. In this case, the dialog box is displayed without a mask in the subwindow. |
 
 **Return value**
 
@@ -791,7 +840,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | Internal error.                                              |
 
-**Example**
+**Example** 
  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -872,19 +921,21 @@ openCustomDialogWithController\<T extends Object>(dialogContent: ComponentConten
 
 Opens a custom dialog box corresponding to **dialogContent**. This API uses a promise to return the result. A dialog box controller can be bound to the custom dialog box, allowing for subsequent control of the dialog box through the controller.
 
-The dialog box displayed through this API has its content fully following style settings of **dialogContent**. It is displayed in the same way where **customStyle** is set to **true**.
+The dialog box displayed through this API has its content fully following style settings of **dialogContent**. It is displayed in the same way where [customStyle](arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) is set to **true**.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
 | Name    | Type                                      | Mandatory  | Description     |
 | ------- | ---------------------------------------- | ---- | ------- |
 | dialogContent | [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) | Yes| Content of the custom dialog box.|
-| controller | [promptAction.DialogController](js-apis-promptAction.md#dialogcontroller18) | Yes| Controller of the custom dialog box.|
-| options | [promptAction.BaseDialogOptions](js-apis-promptAction.md#basedialogoptions11) | No   | Style of the custom dialog box.<br>Note: If both [isModal](js-apis-promptAction.md#basedialogoptions11) and [showInSubWindow](js-apis-promptAction.md#basedialogoptions11) in **BaseDialogOptions** are set to **true**, only **showInSubWindow** takes effect. In this case, the non-modal dialog box is displayed without mask in the subwindow.|
+| controller | [promptAction.DialogController](js-apis-promptAction.md#dialogcontroller18) | Yes | Controller of the custom dialog box, used to control its closure and other operations outside the dialog box. |
+| options | [promptAction.BaseDialogOptions](js-apis-promptAction.md#basedialogoptions11) | No    | Style of the custom dialog box. Pass this parameter when attributes such as the alignment mode, offset, auto cancel, and mask color of the custom dialog box need to be customized. When not passed, the system default style is used. <br>**Note:** If both [isModal](js-apis-promptAction.md#basedialogoptions11) and [showInSubWindow](js-apis-promptAction.md#basedialogoptions11) in **BaseDialogOptions** are set to **true**, only **showInSubWindow** takes effect. In this case, the dialog box is displayed without a mask in the subwindow. |
 
 **Return value**
 
@@ -904,7 +955,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-This example demonstrates how to create a custom dialog box with an external controller binding using **openCustomDialog**.
+This example demonstrates how to pass a dialog box controller through **openCustomDialogWithController** and bind it to the custom dialog box.
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -978,12 +1029,14 @@ Updates a custom dialog box corresponding to **dialogContent**. This API uses a 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name    | Type                                      | Mandatory  | Description     |
 | ------- | ---------------------------------------- | ---- | ------- |
 | dialogContent | [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) | Yes| Content of the custom dialog box.|
-| options | [promptAction.BaseDialogOptions](js-apis-promptAction.md#basedialogoptions11) | Yes   |   Dialog box style. Currently, only **alignment**, **offset**, **autoCancel**, and **maskColor** can be updated.|
+| options | [promptAction.BaseDialogOptions](js-apis-promptAction.md#basedialogoptions11) | Yes    |   Dialog box style. Currently, only **alignment**, **offset**, **autoCancel**, and **maskColor** can be updated. When passed, the specified attributes are updated to the new values, while other attributes retain their current values. |
 
 **Return value**
 
@@ -1045,7 +1098,7 @@ struct Index {
                 console.info('succeeded');
               })
               .catch((error: BusinessError) => {
-                console.error(`updateCustomDialog args error code is ${error.code}, message is ${error.message}`);
+                console.error(`openCustomDialog args error code is ${error.code}, message is ${error.message}`);
               })
 
             setTimeout(() => {
@@ -1076,6 +1129,8 @@ Closes a custom dialog box corresponding to **dialogContent**. This API uses a p
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -1151,7 +1206,7 @@ struct Index {
                   console.info('succeeded');
                 })
                 .catch((error: BusinessError) => {
-                  console.error(`OpenCustomDialog args error code is ${error.code}, message is ${error.message}`);
+                  console.error(`CloseCustomDialog args error code is ${error.code}, message is ${error.message}`);
                 })
             }, 2000); // Automatically close the dialog box after 2 seconds.
           })
@@ -1170,17 +1225,19 @@ struct Index {
 
 closeCustomDialog(dialogId: number): void
 
-Closes the specified custom dialog box.
+Closes a custom dialog box. This API is used to close the custom dialog box corresponding to the specified ID returned by **openCustomDialog**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type  | Mandatory| Description                            |
 | -------- | ------ | ---- | -------------------------------- |
-| dialogId | number | Yes  | ID of the custom dialog box to close. It is returned from **openCustomDialog**.|
+| dialogId | number | Yes | ID of the dialog box returned by **openCustomDialog**, used to identify a specific custom dialog box so that it can be closed later. |
 
 **Error codes**
 
@@ -1191,7 +1248,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | Internal error.                                              |
 
-**Example**
+**Example** 
 
 ```ts
 import { PromptAction } from '@kit.ArkUI';
@@ -1261,13 +1318,15 @@ The dialog box ID can be included in the dialog box content for related operatio
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name | Type                                                        | Mandatory| Description              |
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
 | builder | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [CustomBuilderWithId](arkts-apis-uicontext-t.md#custombuilderwithid18) | Yes  | Content of the custom dialog box.|
-| controller | [promptAction.DialogController](js-apis-promptAction.md#dialogcontroller18) | No| Controller of the custom dialog box.|
-| options | [promptAction.DialogOptions](js-apis-promptAction.md#dialogoptions18) | No| Style of the custom dialog box.<br>Note: If both [isModal](js-apis-promptAction.md#basedialogoptions11) and [showInSubWindow](js-apis-promptAction.md#basedialogoptions11) in **BaseDialogOptions** are set to **true**, only **showInSubWindow** takes effect. In this case, the non-modal dialog box is displayed without mask in the subwindow.|
+| controller | [promptAction.DialogController](js-apis-promptAction.md#dialogcontroller18) | No | Controller of the custom dialog box, used to control the closing and other operations outside the dialog box. Pass this parameter when the dialog box needs to be closed or other operations need to be performed through code outside the dialog box. When not passed, no controller is used. |
+| options | [promptAction.DialogOptions](js-apis-promptAction.md#dialogoptions18) | No | Style of the custom dialog box. Pass this parameter when attributes such as the alignment mode, offset, auto cancel, and mask color of the custom dialog box need to be customized. When not passed, the system default style is used.<br>**Note:** If both [isModal](js-apis-promptAction.md#basedialogoptions11) and [showInSubWindow](js-apis-promptAction.md#basedialogoptions11) in **BaseDialogOptions** are set to **true**, only **showInSubWindow** takes effect. In this case, the dialog box is displayed without a mask in the subwindow.|
 
 **Return value**
 
@@ -1380,13 +1439,15 @@ Creates and displays a popup with the specified content. This API uses a promise
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name    | Type                                      | Mandatory  | Description     |
 | ------- | ---------------------------------------- | ---- | ------- |
 | content | [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) | Yes| Content displayed in the popup.|
 | target | [TargetInfo](arkts-apis-uicontext-i.md#targetinfo18) | Yes| Information about the target component to bind.|
-| options | [PopupCommonOptions](arkui-ts/ts-universal-attributes-popup.md#popupcommonoptions18) | No| Style of the popup.|
+| options | [PopupCommonOptions](arkui-ts/ts-universal-attributes-popup.md#popupcommonoptions18) | No | Style of the popup, used to customize the appearance and behavior of the popup (such as rounded corners, mask, and arrow). When not passed, the system default style is used. |
 
 **Return value**
 
@@ -1506,6 +1567,8 @@ Updates the style of the popup corresponding to the provided **content**. This A
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name    | Type                                      | Mandatory  | Description     |
@@ -1543,6 +1606,8 @@ Closes the popup corresponding to the provided **content**. This API uses a prom
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -1590,13 +1655,15 @@ Opens a menu with the specified content. This API uses a promise to return the r
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name    | Type                                      | Mandatory  | Description     |
 | ------- | ---------------------------------------- | ---- | ------- |
 | content | [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) | Yes| Content displayed in the menu.|
 | target | [TargetInfo](arkts-apis-uicontext-i.md#targetinfo18) | Yes| Information about the target component to bind.|
-| options | [MenuOptions](./arkui-ts/ts-universal-attributes-menu.md#menuoptions10) | No| Style of the menu.<br>**NOTE**<br>The **title** property is not effective.<br>The **preview** parameter supports only the **MenuPreviewMode** type.|
+| options | [MenuOptions](./arkui-ts/ts-universal-attributes-menu.md#menuoptions10) | No | Style of the menu, used to customize the appearance and behavior of the menu. When not passed, the system default style is used.<br/>**Note:**<br/>The **title** attribute does not take effect.<br/>The **preview** parameter supports only the **MenuPreviewMode** type. |
 
 **Return value**
 
@@ -1685,13 +1752,15 @@ Updates the style of the menu corresponding to the provided **content**. This AP
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name    | Type                                      | Mandatory  | Description     |
 | ------- | ---------------------------------------- | ---- | ------- |
 | content | [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) | Yes| Content displayed in the menu.|
-| options | [MenuOptions](./arkui-ts/ts-universal-attributes-menu.md#menuoptions10) | Yes| Style of the menu.<br>**NOTE**<br>1. Updating for the following is not supported: **showInSubWindow**, **preview**, **previewAnimationOptions**, **transition**, **onAppear**, **aboutToAppear**, **onDisappear**, **aboutToDisappear**, **onWillAppear**, **onDidAppear**, **onWillDisappear**, and **onDidDisappear**.<br>2. The mask style can be updated by configuring [MenuMaskType](./arkui-ts/ts-universal-attributes-menu.md#menumasktype20). However, this API does not support mask presence toggling (that is, switching the mask from non-existent to existent or vice versa) by setting a boolean value.|
-| partialUpdate | boolean | No| Whether to update the menu in incremental mode. Default value: **false**.<br>**NOTE**<br>1. **true**: incremental update, where the specified properties in **options** are updated, and other properties stay at their current value.<br>2. **false**: full update, where all properties except those specified in **options** are restored to default values.|
+| options | [MenuOptions](./arkui-ts/ts-universal-attributes-menu.md#menuoptions10) | Yes | Style of the menu.<br/>**NOTE**<br/>1. Updating for the following is not supported: **showInSubWindow**, **preview**, **previewAnimationOptions**, **transition**, **onAppear**, **aboutToAppear**, **onDisappear**, **aboutToDisappear**, **onWillAppear**, **onDidAppear**, **onWillDisappear**, and **onDidDisappear**.<br/>2. The mask style can be updated by configuring [MenuMaskType](./arkui-ts/ts-universal-attributes-menu.md#menumasktype20). However, this API does not support mask presence toggling (that is, switching the mask from non-existent to existent or vice versa) by setting a boolean value.<br/>3. Except for the attributes that cannot be updated as described above, all other attributes support updating. |
+| partialUpdate | boolean | No | Whether to update the menu in incremental mode. Default value: **false**.<br/>**NOTE**<br/>1. **true**: incremental update, where the specified attributes in **options** are updated, and other attributes stay at their current value.<br/>2. **false**: full update, where the specified attributes in **options** are updated, and other attributes are restored to default values. |
 
 **Return value**
 
@@ -1776,6 +1845,8 @@ Closes the menu corresponding to the provided content. This API uses a promise t
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -1862,18 +1933,20 @@ showActionMenu(options: promptAction.ActionMenuOptions, callback: [promptAction.
 
 Creates and displays an action menu. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [showActionMenu](#showactionmenu11) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description              |
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
-| options  | [promptAction.ActionMenuOptions](js-apis-promptAction.md#actionmenuoptions) | Yes  | Action menu options.    |
-| callback | [promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse) | Yes  | Callback used to return the menu response.|
+| options  | [promptAction.ActionMenuOptions](js-apis-promptAction.md#actionmenuoptions) | Yes   | Action menu options, used to configure the display content and style of the action menu, including attributes such as **title** and **buttons**.     |
+| callback | [promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse) | Yes   | Callback that returns the action menu response result. |
 
 **Error codes**
 
@@ -1920,7 +1993,6 @@ struct Index {
             let code = (error as BusinessError).code;
             console.error(`showActionMenu args error code is ${code}, message is ${message}`);
           }
-          ;
         })
     }.height('100%').width('100%').justifyContent(FlexAlign.Center)
   }
