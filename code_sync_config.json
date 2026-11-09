@@ -181,6 +181,31 @@
 						"start_line":83
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":63,
+						"name":"AVImageGenerator_CreateAVImageGenerator",
+						"start_line":60
+					},
+					{
+						"end_line":70,
+						"name":"AVImageGenerator_SetFdSrc",
+						"start_line":65
+					},
+					{
+						"end_line":84,
+						"name":"AVImageGenerator_fetchFrameByTime",
+						"start_line":72
+					},
+					{
+						"end_line":89,
+						"name":"AVImageGenerator_release",
+						"start_line":86
+					}
+				]
 			}
 		]
 	},
@@ -209,6 +234,86 @@
 						"end_line":158,
 						"name":"fetch_frames",
 						"start_line":137
+					},
+					{
+						"end_line":292,
+						"name":"set_openSync",
+						"start_line":285
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":136,
+						"name":"AVMetadataExtractor_CreateAVMetadataExtractor",
+						"start_line":133
+					},
+					{
+						"end_line":90,
+						"name":"AVMetadataExtractor_SetFdSrc",
+						"start_line":82
+					},
+					{
+						"end_line":271,
+						"name":"AVMetadataExtractor_SetDataSrc",
+						"start_line":210
+					},
+					{
+						"end_line":286,
+						"name":"AVMetadataExtractor_SetUrlSource",
+						"start_line":277
+					},
+					{
+						"end_line":172,
+						"name":"AVMetadataExtractor_SetOpenSync",
+						"start_line":163
+					},
+					{
+						"end_line":100,
+						"name":"AVMetadataExtractor_FetchMetadata",
+						"start_line":92
+					},
+					{
+						"end_line":177,
+						"name":"AVMetadataExtractor_FetchMetadataPromise",
+						"start_line":174
+					},
+					{
+						"end_line":310,
+						"name":"AVMetadataExtractor_Width_Height",
+						"start_line":305
+					},
+					{
+						"end_line":121,
+						"name":"AVMetadataExtractor_fetchAlbumCover",
+						"start_line":102
+					},
+					{
+						"end_line":183,
+						"name":"AVMetadataExtractor_fetchAlbumCoverPromise",
+						"start_line":180
+					},
+					{
+						"end_line":336,
+						"name":"AVMetadataExtractor_FetchFrameByTime",
+						"start_line":326
+					},
+					{
+						"end_line":368,
+						"name":"AVMetadataExtractor_FetchFramesByTimes",
+						"start_line":345
+					},
+					{
+						"end_line":379,
+						"name":"AVMetadataExtractor_Release",
+						"start_line":370
+					},
+					{
+						"end_line":188,
+						"name":"AVMetadataExtractor_ReleasePromise",
+						"start_line":185
 					}
 				]
 			}
@@ -51890,6 +51995,81 @@
 						"end_line":99,
 						"name":"window_density_set_density_strategy",
 						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/media/using-ndk-avimagegenerator-for-video.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorNDK/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":142,
+						"name":"OH_AVImageGenerator_Create",
+						"start_line":139
+					},
+					{
+						"end_line":157,
+						"name":"OH_AVImageGenerator_SetFDSource",
+						"start_line":148
+					},
+					{
+						"end_line":254,
+						"name":"OH_AVImageGenerator_GetDuration",
+						"start_line":208
+					},
+					{
+						"end_line":184,
+						"name":"OH_AVImageGenerator_FetchFrameByTime",
+						"start_line":85
+					},
+					{
+						"end_line":176,
+						"name":"OH_AVImageGenerator_Release",
+						"start_line":173
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/media/using-ndk-avmetadataextractor-for-media.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorNDK/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":184,
+						"name":"OH_AVMetadataExtractor_Create",
+						"start_line":181
+					},
+					{
+						"end_line":370,
+						"name":"OH_AVMetadataExtractor_SetFDSource",
+						"start_line":344
+					},
+					{
+						"end_line":382,
+						"name":"OH_AVMetadataExtractor_FetchMetadata",
+						"start_line":379
+					},
+					{
+						"end_line":293,
+						"name":"OH_AVMetadataExtractor_AVFormat",
+						"start_line":287
+					},
+					{
+						"end_line":202,
+						"name":"OH_AVMetadataExtractor_FetchAlbumCover",
+						"start_line":198
+					},
+					{
+						"end_line":409,
+						"name":"OH_AVMetadataExtractor_Release",
+						"start_line":406
 					}
 				]
 			}
