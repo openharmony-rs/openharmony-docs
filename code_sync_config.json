@@ -728,14 +728,14 @@
 						"start_line":28
 					},
 					{
-						"end_line":66,
+						"end_line":208,
 						"name":"AppEvent_Crash_Button",
-						"start_line":53
+						"start_line":195
 					},
 					{
-						"end_line":226,
+						"end_line":479,
 						"name":"AppEvent_CPP_Button",
-						"start_line":214
+						"start_line":467
 					}
 				]
 			},
@@ -743,9 +743,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":38,
+						"end_line":46,
 						"name":"EventSub_napi_Header",
-						"start_line":24
+						"start_line":26
 					},
 					{
 						"end_line":396,
@@ -763,9 +763,9 @@
 						"start_line":989
 					},
 					{
-						"end_line":1724,
+						"end_line":2232,
 						"name":"AppEvent_C++_Init",
-						"start_line":1626
+						"start_line":2109
 					},
 					{
 						"end_line":1116,
@@ -3299,9 +3299,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":38,
+						"end_line":46,
 						"name":"EventSub_napi_Header",
-						"start_line":24
+						"start_line":26
 					},
 					{
 						"end_line":55,
@@ -3439,9 +3439,9 @@
 						"start_line":1126
 					},
 					{
-						"end_line":39,
+						"end_line":47,
 						"name":"EventSub_napi_nohiappevent_Header",
-						"start_line":23
+						"start_line":25
 					}
 				]
 			},
@@ -12090,9 +12090,9 @@
 						"start_line":265
 					},
 					{
-						"end_line":45,
+						"end_line":50,
 						"name":"Crash_Click_ArkTS_Header",
-						"start_line":20
+						"start_line":21
 					}
 				]
 			},
@@ -12105,9 +12105,9 @@
 						"start_line":438
 					},
 					{
-						"end_line":1726,
+						"end_line":2234,
 						"name":"Sys_Native_Nullptr_Event_C++_Init",
-						"start_line":1624
+						"start_line":2107
 					}
 				]
 			},
@@ -12125,14 +12125,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":124,
+						"end_line":266,
 						"name":"Native_CrashEvent_Button",
-						"start_line":111
+						"start_line":253
 					},
 					{
-						"end_line":110,
+						"end_line":252,
 						"name":"JsError_CrashEvent_Button",
-						"start_line":97
+						"start_line":239
 					}
 				]
 			}
@@ -12145,9 +12145,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":38,
+						"end_line":46,
 						"name":"EventSub_napi_Header",
-						"start_line":24
+						"start_line":26
 					},
 					{
 						"end_line":570,
@@ -12160,9 +12160,9 @@
 						"start_line":563
 					},
 					{
-						"end_line":1725,
+						"end_line":2233,
 						"name":"Sys_Crash_Event_C++_Init",
-						"start_line":1623
+						"start_line":2106
 					},
 					{
 						"end_line":916,
@@ -12200,9 +12200,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":110,
+						"end_line":252,
 						"name":"JsError_CrashEvent_Button",
-						"start_line":97
+						"start_line":239
 					},
 					{
 						"end_line":18,
@@ -12210,9 +12210,9 @@
 						"start_line":16
 					},
 					{
-						"end_line":147,
+						"end_line":289,
 						"name":"Native_CrashEvent_Log",
-						"start_line":125
+						"start_line":267
 					}
 				]
 			},
@@ -31271,19 +31271,19 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":26,
+						"end_line":28,
 						"name":"EventSub_Header",
 						"start_line":20
 					},
 					{
-						"end_line":66,
+						"end_line":208,
 						"name":"AppEvent_Crash_Button",
-						"start_line":53
+						"start_line":195
 					},
 					{
-						"end_line":96,
+						"end_line":238,
 						"name":"AppEvent_Click_ArkTS_Button",
-						"start_line":67
+						"start_line":209
 					}
 				]
 			}
@@ -36966,9 +36966,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":177,
+						"end_line":354,
 						"name":"PssLeakEventTS_Button",
-						"start_line":148
+						"start_line":325
 					}
 				]
 			},
@@ -36976,7 +36976,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":21,
+						"end_line":23,
 						"name":"Pss_Leak_Header",
 						"start_line":16
 					},
@@ -36986,9 +36986,9 @@
 						"start_line":1220
 					},
 					{
-						"end_line":1727,
+						"end_line":2235,
 						"name":"Pss_Leak_Init",
-						"start_line":1625
+						"start_line":2108
 					}
 				]
 			},
@@ -37011,9 +37011,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":163,
+						"end_line":340,
 						"name":"PssLeakEvent_Button",
-						"start_line":149
+						"start_line":326
 					}
 				]
 			},
@@ -37021,7 +37021,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":21,
+						"end_line":23,
 						"name":"Pss_Leak_Header",
 						"start_line":16
 					},
@@ -37031,9 +37031,9 @@
 						"start_line":1220
 					},
 					{
-						"end_line":1727,
+						"end_line":2235,
 						"name":"Pss_Leak_Init",
-						"start_line":1625
+						"start_line":2108
 					}
 				]
 			},
@@ -37136,9 +37136,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":283,
+						"end_line":538,
 						"name":"ArkWeb_Fling_Jank_ArkTs_Button",
-						"start_line":270
+						"start_line":525
 					},
 					{
 						"end_line":47,
@@ -69569,9 +69569,9 @@
 						"start_line":59
 					},
 					{
-						"end_line":49,
+						"end_line":55,
 						"name":"External_Log_ArkTS_Header",
-						"start_line":24
+						"start_line":25
 					}
 				]
 			}
@@ -69584,9 +69584,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":38,
+						"end_line":46,
 						"name":"EventSub_napi_Header",
-						"start_line":24
+						"start_line":26
 					},
 					{
 						"end_line":1518,
@@ -69742,7 +69742,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":27,
+						"end_line":29,
 						"name":"CrashConfig_Policy_Header",
 						"start_line":19
 					},
@@ -70373,7 +70373,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/AppRecovery/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":32,
+						"end_line":28,
 						"name":"import_appRecovery_h",
 						"start_line":17
 					},
@@ -70438,9 +70438,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":29,
+						"end_line":34,
 						"name":"AppHicollie_ArkTS_Header",
-						"start_line":22
+						"start_line":23
 					},
 					{
 						"end_line":50,
@@ -70463,9 +70463,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":38,
+						"end_line":46,
 						"name":"EventSub_napi_Header",
-						"start_line":24
+						"start_line":26
 					},
 					{
 						"end_line":42,
@@ -70503,9 +70503,9 @@
 						"start_line":28
 					},
 					{
-						"end_line":332,
+						"end_line":552,
 						"name":"hicollie_set_timer_Button",
-						"start_line":319
+						"start_line":539
 					}
 				]
 			}
@@ -70518,9 +70518,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":50,
+						"end_line":56,
 						"name":"MainThreadJank_ArkTS_Header",
-						"start_line":23
+						"start_line":24
 					},
 					{
 						"end_line":694,
@@ -70533,9 +70533,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":347,
+						"end_line":401,
 						"name":"MainThreadJank_Button",
-						"start_line":333
+						"start_line":387
 					},
 					{
 						"end_line":25,
@@ -70543,19 +70543,19 @@
 						"start_line":23
 					},
 					{
-						"end_line":375,
+						"end_line":431,
 						"name":"MainThreadJank_Set_Event_Config",
-						"start_line":348
+						"start_line":402
 					},
 					{
-						"end_line":390,
+						"end_line":446,
 						"name":"MainThreadJank_Timeout_150_Button",
-						"start_line":376
+						"start_line":432
 					},
 					{
-						"end_line":405,
+						"end_line":461,
 						"name":"MainThreadJank_Timeout_500_Button",
-						"start_line":391
+						"start_line":447
 					}
 				]
 			}
@@ -70568,9 +70568,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":38,
+						"end_line":46,
 						"name":"EventSub_napi_Header",
-						"start_line":24
+						"start_line":26
 					},
 					{
 						"end_line":938,
@@ -70613,9 +70613,9 @@
 						"start_line":55
 					},
 					{
-						"end_line":742,
+						"end_line":870,
 						"name":"MainThreadJank_Event_Call_Capi_Function",
-						"start_line":738
+						"start_line":866
 					}
 				]
 			},
@@ -70623,9 +70623,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":347,
+						"end_line":401,
 						"name":"MainThreadJank_Button",
-						"start_line":333
+						"start_line":387
 					}
 				]
 			}
