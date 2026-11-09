@@ -2116,7 +2116,7 @@ struct PageTwoStack {
     NavDestination() {
       Column() {
         NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
-        // 请将$r('app.string.text1')替换为实际资源文件，在本示例中该资源文件的value值为"BuilderNode处于冻结"。
+        // Replace $r('app.string.text1') with the actual resource file. In this example, the value of this resource file is "BuilderNode is frozen".
         Text($r('app.string.text1'))
           .fontWeight(FontWeight.Bold)
           .margin({ top: 48, bottom: 48 })
