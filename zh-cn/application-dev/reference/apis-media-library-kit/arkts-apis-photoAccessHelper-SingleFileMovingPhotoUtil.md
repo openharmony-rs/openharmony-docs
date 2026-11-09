@@ -96,7 +96,7 @@ static unpackingSingleFileMovingPhoto(singleFileMovingPhotoUri: string, outImage
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. SingleFileMovingPhotoUri、 outImageParentFolder、 outVideoParentFolder are empty or can not open.<br>2. When saving generated files, a naming conflict occurs after more than 10 attempts. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. SingleFileMovingPhotoUri, outImageParentFolder, outVideoParentFolder are empty or can not open.<br>2. When saving generated files, a naming conflict occurs after more than 10 attempts. |
 | 23800109 | Incorrect file format. |
 
 **示例：**
