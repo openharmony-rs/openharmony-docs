@@ -743,9 +743,9 @@ struct MyComponent {
 <!-- @[life_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/lifeCycle/Page.ets) -->   
 
 ``` TypeScript
- import { hilog } from '@kit.PerformanceAnalysisKit';
- const DOMAIN = 0xF811;
- const TAG = '[Sample_ArkTSRouter]';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
 // Page.ets
 @Entry
 @Component
@@ -1358,4 +1358,4 @@ struct Index {
 
 针对页面路由开发，有以下相关实例可供参考：
 
-- [页面布局和连接（ArkTS）（API9）]( https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/ArkTsComponentCollection/DefiningPageLayoutAndConnection?_fb=blob)
+- [页面布局和连接（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/ArkTsComponentCollection/DefiningPageLayoutAndConnection?_fb=blob)
