@@ -19,6 +19,8 @@
 > - 如果ToolBarV2设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ToolBarV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ToolBarV2设置通用属性和通用事件。
 >
 > - 当系统切换深浅色模式时，工具栏背景色不会自动跟随切换。
+>
+> - 当前页面仅包含本模块的公开接口，系统接口参见[ToolBarV2（系统接口）](ohos-arkui-advanced-ToolBarV2-sys.md)。
 
 ## 导入模块
 
@@ -1124,7 +1126,6 @@ ToolbarV2ItemGroupStyle的构造函数。
 | backgroundVisibility  | [BarBackgroundVisibility](#barbackgroundvisibility)             | 否   | 是   | 工具栏背景是否可见。<br />默认值：BarBackgroundVisibility.VISIBLE。                                                                                                                                                    |
 | backgroundColor       | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)     | 否   | 是   | 工具栏背景色。<br />默认值：$r('sys.color.comp_background_primary')。                                                                                                                                                  |
 | backgroundBlurStyle   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)   | 否   | 是   | 工具栏背景模糊样式。                                                                                                                                                                                                  |
-| systemBackgroundMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)  | 否   | 是   | 工具栏背景材质。设置系统样式材质效果，会影响工具栏的backgroundColor、border、shadow等视觉属性。<br />默认值：undefined。<br />值为undefined时，不设置系统材质效果。<br />**系统接口：** 此接口为系统接口。                                                          |
 | groupSpace            | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组之间的间距。<br />默认值：12vp，取值范围[8vp, 20vp]，超出范围时钳制到边界值。                                                                                                                                       |
 | itemSize              | [Size](../js-apis-arkui-graphics.md#size)                       | 否   | 是   | 工具栏子项的尺寸。<br />水平方向：56vp（宽）× 48vp（高）；垂直方向：48vp（宽）× 56vp（高）。<br />默认值：主轴56vp × 交叉轴48vp。                                                                                       |
 | fontSize              | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 工具栏子项文本的字体大小。<br />默认值：$r('sys.float.ohos_id_text_size_caption')。                                                                                                                                    |
@@ -1167,7 +1168,6 @@ ToolbarV2ItemGroupStyle的构造函数。
 | backgroundVisibility  | [BarBackgroundVisibility](#barbackgroundvisibility)             | 否   | 是   | 工具栏背景是否可见。<br />默认值：BarBackgroundVisibility.VISIBLE。<br />装饰器类型：@Trace                                                                                                                            |
 | backgroundColor       | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)     | 否   | 是   | 工具栏背景色。<br />默认值：$r('sys.color.comp_background_primary')。<br />装饰器类型：@Trace                                                                                                                          |
 | backgroundBlurStyle   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)   | 否   | 是   | 工具栏背景模糊样式。<br />默认值：undefined。<br />值为undefined时，不设置背景模糊样式。<br />装饰器类型：@Trace                                                                                                                                                  |
-| systemBackgroundMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)  | 否   | 是   | 工具栏背景材质。设置系统样式材质效果，会影响工具栏的backgroundColor、border、shadow等视觉属性。<br />默认值：undefined。<br />值为undefined时，不设置系统材质效果。<br />**系统接口：** 此接口为系统接口。<br />装饰器类型：@Trace                                       |
 | groupSpace            | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组之间的间距。<br />默认值：12vp，取值范围[8vp, 20vp]，超出范围时钳制到边界值。<br />装饰器类型：@Trace                                                                                                               |
 | itemSize              | [Size](../js-apis-arkui-graphics.md#size)                       | 否   | 是   | 工具栏子项的尺寸。<br />水平方向：56vp（宽）× 48vp（高）；垂直方向：48vp（宽）× 56vp（高）。<br />默认值：主轴56vp × 交叉轴48vp。<br />装饰器类型：@Trace                                                                 |
 | fontSize              | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 工具栏子项文本的字体大小。<br />默认值：$r('sys.float.ohos_id_text_size_caption')。<br />装饰器类型：@Trace                                                                                                            |
