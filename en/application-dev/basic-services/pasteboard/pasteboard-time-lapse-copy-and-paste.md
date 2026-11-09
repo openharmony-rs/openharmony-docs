@@ -2,13 +2,14 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @yangxiaodong41-->
-<!--Designer: @guo867-->
+<!--Designer: @zhusiyuan2-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=37c70d5e1d0d923d9c2b220c8a5f461d4991ad0d translatedAt=2026-11-06T12:03:53.463Z pushedAt=2026-11-09T12:27:06.499Z nl=1 -->
 
 ## When to Use
 
-The [pasteboard service](../../reference/apis-basic-services-kit/js-apis-pasteboard.md) provides the capability of managing the pasteboard of the system to support the copy and paste functions of the system.
+[@ohos.pasteboard](../../reference/apis-basic-services-kit/js-apis-pasteboard.md) mainly provides the capability of managing the system pasteboard, supporting system copy and paste functions.
 
 When copy is performed repeatedly, redundant data is stored in the pasteboard cache, which increases the memory usage. To optimize the memory and support the paste of specified data types, the pasteboard provides the delayed copy and paste function.
 
@@ -16,13 +17,13 @@ When a user copies data in an application that uses the delayed copy and paste f
 
 ## Constraints
 
-- The pasteboard content, including system service metadata and application settings, has a maximum size of 128 MB by default. For PCs/2-in-1 devices, the maximum size can be changed through system settings, with a valid range from 128 MB to 2 GB.
+- The pasteboard content includes the pasteboard system service metadata and the data set by applications. The total size is 128MB by default. On PC/2-in-1 devices, the upper limit can be modified through system configuration, with a valid range of 1MB to 2GB.
 
 - NDK APIs support only record-based delayed copy and paste.
 
 - If the amount of data to be copied is small and the time required for preparing data does not affect user experience, avoid using the delayed copy feature. Instead, you are advised to write data directly to the pasteboard.
 
-## Using Record-based Delayed Copy and Paste
+## Using Record-level Delayed Copy and Paste
 
 This solution allows you to query the data type before pasting. Applications can determine whether to request data from the pasteboard based on the query result.
 
@@ -50,13 +51,15 @@ For details about the APIs, see [Pasteboard](../../reference/apis-basic-services
 
 ### How to Develop
 
-The following uses plain text and HTML data as an example to describe how to set delayed data copy to the pasteboard service.
+ The following uses plain text and HTML data as an example to describe how to set delayed data copy to the pasteboard service.
 
-For better code readability, the operation result verification of each step is omitted in the following code. In actual development, you need to check whether each call is successful.
+ For better code readability, the operation result verification of each step is omitted in the following code. In actual development, you need to check whether each call is successful.
 
 1. Include header files.
    
-   ```c
+   <!-- @[pasteboard_timelapse_Record1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
    #include <cstring>
    #include <hilog/log.h>
    #include <database/pasteboard/oh_pasteboard.h>
@@ -66,9 +69,12 @@ For better code readability, the operation result verification of each step is o
    #include <accesstoken/ability_access_control.h>
    ```
 
+
 2. Define a data providing function for **OH_UdmfRecordProvider** and a callback function for destroying this instance.
+
+   <!-- @[pasteboard_timelapse_Record2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
    
-   ```c
+   ``` C++
    // 1. Define a callback to be invoked to return the pasteboard data obtained.
    void* GetDataCallback(void* context, const char* type)
    {
@@ -95,9 +101,12 @@ For better code readability, the operation result verification of each step is o
    }
    ```
 
+
 3. Define the **OH_Pasteboard_SyncDelayedDataAsync** callback.
 
-   ```c
+   <!-- @[pasteboard_timelapse_Record3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
    // 3. Define the callback triggered when the application exits and calls the delayed data sync API.
    void SyncCallback(int errorCode)
    {
@@ -105,9 +114,12 @@ For better code readability, the operation result verification of each step is o
    }
    ```
 
+
 4. Prepare the data for delayed copy in the pasteboard. The plain text and HTML data is not written to the pasteboard until the **GetDataCallback** function is triggered when the data consumer obtains **OH_UdsPlainText** or **OH_UdsHtml** from **OH_UdmfRecord**.
    
-   ```c
+   <!-- @[pasteboard_timelapse_Record4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
    OH_Pasteboard* CreateAndSetPasteboardData()
    {
        // 4. Create an OH_UdmfRecord object.
@@ -136,9 +148,12 @@ For better code readability, the operation result verification of each step is o
    }
    ```
 
+
 5. Obtain the data for delayed copy from the pasteboard.
    
-   ```c
+   <!-- @[pasteboard_timelapse_Record5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
    void ProcessRecordType(OH_UdmfRecord* record, const char* recordType)
    {
        OH_UdsPlainText* udsText = nullptr;
@@ -151,15 +166,15 @@ For better code readability, the operation result verification of each step is o
                OH_UdmfRecord_GetPlainText(record, udsText);
                // Obtain the content from the Uds object.
                const char* content = OH_UdsPlainText_GetContent(udsText);
-           } else if (strcmp(recordType, UDMF_META_HTML) == 0) {
-               // Create a Uds object of the HTML type.
-               udsHtml = OH_UdsHtml_Create();
-               if (udsHtml != nullptr) {
-                   // Obtain the Uds object of the HTML type from record.
-                   OH_UdmfRecord_GetHtml(record, udsHtml);
-                   // Obtain the content from the Uds object.
-                   const char* content = OH_UdsHtml_GetContent(udsHtml);
-               }
+           }
+       } else if (strcmp(recordType, UDMF_META_HTML) == 0) {
+           // Create a Uds object of the HTML type
+           udsHtml = OH_UdsHtml_Create();
+           if (udsHtml != nullptr) {
+               // Obtain the Uds object of the HTML type from the record
+               OH_UdmfRecord_GetHtml(record, udsHtml);
+               // Obtain the content from the Uds object
+               const char* content = OH_UdsHtml_GetContent(udsHtml);
            }
        }
    }
@@ -180,7 +195,6 @@ For better code readability, the operation result verification of each step is o
        OH_Pasteboard* pasteboard = CreateAndSetPasteboardData();
        // 9. Record the number of changes to pasteboard data.
        uint32_t changeCount = OH_Pasteboard_GetChangeCount(pasteboard);
-   
        // 10. Obtain OH_UdmfData from the pasteboard.
        int status = -1;
        bool hasPermission = OH_AT_CheckSelfPermission("ohos.permission.READ_PASTEBOARD");
@@ -192,13 +206,11 @@ For better code readability, the operation result verification of each step is o
            // Handle the error case and clear resources.
            OH_LOG_ERROR(LOG_APP, "Failed to get data from pasteboard, status: %d\n", status);
        }
-   
        // 11. Obtain all OH_UdmfRecord objects from OH_UdmfData.
        unsigned int recordCount = 0;
        OH_UdmfRecord** getRecords = OH_UdmfData_GetRecords(getData, &recordCount);
        OH_UdsPlainText* udsText = nullptr;
        OH_UdsHtml* udsHtml = nullptr;
-   
        // 12. Traverse OH_UdmfRecord.
        for (unsigned int recordIndex = 0; recordIndex < recordCount; ++recordIndex) {
            OH_UdmfRecord* record = getRecords[recordIndex];
@@ -206,9 +218,12 @@ For better code readability, the operation result verification of each step is o
        }
    ```
 
+
 6. If the data in the pasteboard does not change, the application notifies the pasteboard to obtain all data before exiting and exits only after the callback is complete. Otherwise, other applications may fail to obtain data.
 
-   ```c
+   <!-- @[pasteboard_timelapse_Record6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
    // 15. Check whether the data in the pasteboard changes.
    uint32_t newChangeCount = OH_Pasteboard_GetChangeCount(pasteboard);
    if (newChangeCount == changeCount) {
@@ -223,7 +238,9 @@ For better code readability, the operation result verification of each step is o
 
 7. Release the memory after the objects are used.
    
-   ```c
+   <!-- @[pasteboard_timelapse_Record7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
        OH_UdsPlainText_Destroy(udsText);
        OH_UdsHtml_Destroy(udsHtml);
        OH_UdmfData_Destroy(getData);

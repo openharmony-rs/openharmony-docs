@@ -1,10 +1,11 @@
-# Using the Pasteboard to Copy and Paste (C/C++)
+# Using the Pasteboard for Copy and Paste (C/C++)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @yangxiaodong41-->
-<!--Designer: @guo867-->
+<!--Designer: @zhusiyuan2-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=11aacbab055b6787010ae1c1d532b8f6460691e9 translatedAt=2026-11-06T12:03:58.425Z pushedAt=2026-11-09T09:12:26.015Z nl=1 -->
 
 ## When to Use
 
@@ -18,7 +19,7 @@ The pasteboard allows you to copy and paste data of the plain text, hypertext, a
 
 ## Constraints
 
-- The pasteboard content, including system service metadata and application settings, has a maximum size of 128 MB by default. For PCs/2-in-1 devices, the maximum size can be changed through system settings, with a valid range from 128 MB to 2 GB.
+- The pasteboard content includes the pasteboard system service metadata and the data set by applications. The default total size limit is 128 MB. On PC/2-in-1 devices, the limit can be modified through system configuration, with a valid range of 1 MB to 2 GB.
 - To ensure the accuracy of the pasteboard data, only one copy can be performed at a time.
 - Currently, supported data types include **OH_UdsPlainText** (plain text), **OH_UdsHtml** (hypertext markup language), **OH_UdsFileUri** (file URI). **OH_UdsPixelMap** (pixel map), **OH_UdsHyperlink** (hyperlink), **OH_UdsAppItem** (application icon), and custom type. The data types supported by ArkTS APIs are different from those supported by NDK APIs. You need to match the data types with the corresponding APIs during usage. For details, see [Using the Pasteboard to Copy and Paste](../pasteboard/use-pasteboard-to-copy-and-paste.md#mapping-between-arkts-and-ndk-data-types).
 - When you copy and paste data of a custom type, the specified type name cannot be the same as an existing one.
@@ -60,16 +61,16 @@ For details about more APIs and their usage, see [Pasteboard](../../reference/ap
 
 2. Include header files.
 
-   <!-- @[pasteboard_native2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
-   
-   ``` C++
-   #include <cstdio>
-   #include <cstring>
-   #include <hilog/log.h>
-   #include <database/pasteboard/oh_pasteboard.h>
-   #include <database/udmf/udmf.h>
-   #include <database/udmf/uds.h>
-   ```
+    <!-- @[pasteboard_native2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    #include <cstdio>
+    #include <cstring>
+    #include <hilog/log.h>
+    #include <database/pasteboard/oh_pasteboard.h>
+    #include <database/udmf/udmf.h>
+    #include <database/udmf/uds.h>
+    ```
 
 
 3. Define the callback for listening for pasteboard data changes.
@@ -92,111 +93,146 @@ For details about more APIs and their usage, see [Pasteboard](../../reference/ap
 
 4. Subscribe to the pasteboard observer.
 
-   <!-- @[pasteboard_native4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[pasteboard_native4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
    
-   ``` C++
-   static void PasteboardTestObserver()
-   {
-       // 1. Create a pasteboard instance.
-       OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
-       // 2. Create a pasteboard observer instance.
-       OH_PasteboardObserver* observer = OH_PasteboardObserver_Create();
-       // 3. Set two callbacks to the pasteboard observer instance.
-       OH_PasteboardObserver_SetData(observer, (void*)pasteboard, PasteboardNotifyImpl2, PasteboardFinalizeImpl2);
-       // 4. Subscribe to local data changes on the pasteboard.
-       OH_Pasteboard_Subscribe(pasteboard, NOTIFY_LOCAL_DATA_CHANGE, observer);
-   }
-   ```
+    ``` C++
+    static void PasteboardTestObserver()
+    {
+        // 1. Create a pasteboard instance.
+        OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
+        // 2. Create a pasteboard data change observer instance.
+        OH_PasteboardObserver* observer = OH_PasteboardObserver_Create();
+        // 3. Set the two callback functions to the observer instance.
+        OH_PasteboardObserver_SetData(observer, (void*)pasteboard, PasteboardNotifyImpl2, PasteboardFinalizeImpl2);
+        // 4. Set the subscription to local pasteboard data changes.
+        OH_Pasteboard_Subscribe(pasteboard, NOTIFY_LOCAL_DATA_CHANGE, observer);
+    }
+    ```
 
 
 5. Write data to the pasteboard.
 
-   <!-- @[pasteboard_native5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
-   
-   ``` C++
-   static napi_value NAPI_Pasteboard_set(napi_env env, napi_callback_info info)
-   {
-       napi_value args[1];
-       size_t argc = 1;
-       napi_status status = napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-       char text[256];
-       size_t value0Size;
-       status = napi_get_value_string_utf8(env, args[0], text, sizeof(text), &value0Size);
-   
-       // 1. Create a pasteboard instance.
-       OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
-       if (pasteboard == nullptr) {
-           OH_LOG_INFO(LOG_APP, "Failed to create pasteboard instance.");
-       };
-       // 2. Create an OH_UdmfRecord object and add text data to it.
-       OH_UdsPlainText* udsPlainText = OH_UdsPlainText_Create();
-       OH_UdsPlainText_SetContent(udsPlainText, text);
-       OH_UdsHtml* udsHtml = OH_UdsHtml_Create();
-       OH_UdsHtml_SetContent(udsHtml, "hello world");
-       OH_UdmfRecord* record = OH_UdmfRecord_Create();
-       OH_UdmfRecord_AddPlainText(record, udsPlainText);
-       OH_UdmfRecord_AddHtml(record, udsHtml);
-       // 3. Create an OH_UdmfData object and add OH_UdmfRecord to it.
-       OH_UdmfData* data = OH_UdmfData_Create();
-       OH_UdmfData_AddRecord(data, record);
-       // 4. Write data to the pasteboard.
-       OH_Pasteboard_SetData(pasteboard, data);
-       // 5. Destroy the pointer when the object is no longer required.
-       OH_UdsPlainText_Destroy(udsPlainText);
-       OH_UdsHtml_Destroy(udsHtml);
-       OH_UdmfRecord_Destroy(record);
-       OH_UdmfData_Destroy(data);
-       OH_Pasteboard_Destroy(pasteboard);
-       // ...
-   }
-   ```
+    <!-- @[pasteboard_native5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    static napi_value NAPI_Pasteboard_set(napi_env env, napi_callback_info info)
+    {
+        napi_value args[1];
+        size_t argc = 1;
+        napi_status status = napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+        char text[256];
+        size_t value0Size;
+        status = napi_get_value_string_utf8(env, args[0], text, sizeof(text), &value0Size);
+    
+        // 1. Create a pasteboard instance.
+        OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
+        if (pasteboard == nullptr) {
+            OH_LOG_ERROR(LOG_APP, "Failed to create pasteboard instance.");
+            napi_value result;
+            napi_get_undefined(env, &result);
+            return result;
+        };
+        // 2. Create an OH_UdmfRecord object and add text type data to it.
+        OH_UdsPlainText* udsPlainText = OH_UdsPlainText_Create();
+        OH_UdsPlainText_SetContent(udsPlainText, text);
+        OH_UdsHtml* udsHtml = OH_UdsHtml_Create();
+        OH_UdsHtml_SetContent(udsHtml, "hello world");
+        OH_UdmfRecord* record = OH_UdmfRecord_Create();
+        OH_UdmfRecord_AddPlainText(record, udsPlainText);
+        OH_UdmfRecord_AddHtml(record, udsHtml);
+        // 3. Create an OH_UdmfData object and add the OH_UdmfRecord to it.
+        OH_UdmfData* data = OH_UdmfData_Create();
+        OH_UdmfData_AddRecord(data, record);
+        // 4. Write the data to the pasteboard.
+        OH_Pasteboard_SetData(pasteboard, data);
+        // 5. Destroy the pointer after use.
+        OH_UdsPlainText_Destroy(udsPlainText);
+        OH_UdsHtml_Destroy(udsHtml);
+        OH_UdmfRecord_Destroy(record);
+        OH_UdmfData_Destroy(data);
+        OH_Pasteboard_Destroy(pasteboard);
+        // ...
+    }
+    ```
 
 
 6. Read data from the pasteboard.
 
    <!-- @[pasteboard_native6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
    
-   ``` C++
-   static napi_value NAPI_Pasteboard_get(napi_env env, napi_callback_info info)
-   {
-       // 1. Create a pasteboard instance.
-       OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
-       if (pasteboard == nullptr) {
-           OH_LOG_INFO(LOG_APP, "Failed to create pasteboard instance.");
-       };
-       // 2. Check whether the pasteboard contains text data.
-       bool hasPlainTextData = OH_Pasteboard_HasType(pasteboard, "text/plain");
-       if (hasPlainTextData) {
-           // 3. Obtain the unified data OH_UdmfData from the pasteboard.
-           int ret = 0;
-           OH_UdmfData* udmfData = OH_Pasteboard_GetData(pasteboard, &ret);
-           if (udmfData == nullptr) {
-               OH_LOG_INFO(LOG_APP, "Failed to get data from pasteboard.");
-           };
-           // 4. Obtain the first data record from OH_UdmfData.
-           OH_UdmfRecord* record = OH_UdmfData_GetRecord(udmfData, 0);
-           if (record == nullptr) {
-               OH_LOG_INFO(LOG_APP, "Failed to get record from udmfData.");
-           };
-           // 5. Obtain the text data from the data record.
-           OH_UdsPlainText* plainText = OH_UdsPlainText_Create();
-           if (plainText == nullptr) {
-               OH_LOG_INFO(LOG_APP, "Failed to create plain text object.");
-           };
-           OH_UdmfRecord_GetPlainText(record, plainText);
-           const char* content = OH_UdsPlainText_GetContent(plainText);
-           if (content == nullptr) {
-               OH_LOG_INFO(LOG_APP, "Failed to get content from plain text.");
-           }
-           napi_value result;
-           napi_create_string_utf8(env, content, strlen(content), &result);
-           // 6. Destroy the pointer when the object is no longer required.
-           OH_UdsPlainText_Destroy(plainText);
-           OH_UdmfRecord_Destroy(record);
-           return result;
-       } else {
-           OH_LOG_INFO(LOG_APP, "No plain text data in pasteboard.");
-       }
-       OH_Pasteboard_Destroy(pasteboard);
-   }
-   ```
+    ``` C++
+    static napi_value GetPlainTextFromPasteboard(napi_env env, OH_Pasteboard* pasteboard)
+    {
+        // 3. Obtain the unified type data OH_UdmfData from the pasteboard.
+        int ret = 0;
+        OH_UdmfData* udmfData = OH_Pasteboard_GetData(pasteboard, &ret);
+        if (udmfData == nullptr) {
+            OH_LOG_ERROR(LOG_APP, "Failed to get data from pasteboard.");
+            OH_Pasteboard_Destroy(pasteboard);
+            napi_value result;
+            napi_get_undefined(env, &result);
+            return result;
+        }
+        // 4. Obtain the first data record from OH_UdmfData.
+        OH_UdmfRecord* record = OH_UdmfData_GetRecord(udmfData, 0);
+        if (record == nullptr) {
+            OH_LOG_ERROR(LOG_APP, "Failed to get record from udmfData.");
+            OH_UdmfData_Destroy(udmfData);
+            OH_Pasteboard_Destroy(pasteboard);
+            napi_value result;
+            napi_get_undefined(env, &result);
+            return result;
+        }
+        // 5. Obtain the text data content from the data record.
+        OH_UdsPlainText* plainText = OH_UdsPlainText_Create();
+        if (plainText == nullptr) {
+            OH_LOG_ERROR(LOG_APP, "Failed to create plain text object.");
+            OH_UdmfData_Destroy(udmfData);
+            OH_Pasteboard_Destroy(pasteboard);
+            napi_value result;
+            napi_get_undefined(env, &result);
+            return result;
+        }
+        OH_UdmfRecord_GetPlainText(record, plainText);
+        const char* content = OH_UdsPlainText_GetContent(plainText);
+        if (content == nullptr) {
+            OH_LOG_ERROR(LOG_APP, "Failed to get content from plain text.");
+            OH_UdsPlainText_Destroy(plainText);
+            OH_UdmfData_Destroy(udmfData);
+            OH_Pasteboard_Destroy(pasteboard);
+            napi_value result;
+            napi_get_undefined(env, &result);
+            return result;
+        }
+        napi_value result;
+        napi_create_string_utf8(env, content, strlen(content), &result);
+        // 6. Destroy the pointer after use.
+        OH_UdsPlainText_Destroy(plainText);
+        OH_UdmfData_Destroy(udmfData);
+        OH_Pasteboard_Destroy(pasteboard);
+        return result;
+    }
+
+    static napi_value NAPI_Pasteboard_get(napi_env env, napi_callback_info info)
+    {
+        // 1. Create a pasteboard instance.
+        OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
+        if (pasteboard == nullptr) {
+            OH_LOG_ERROR(LOG_APP, "Failed to create pasteboard instance.");
+            napi_value result;
+            napi_get_undefined(env, &result);
+            return result;
+        }
+        // 2. Check whether the pasteboard contains text type data.
+        bool hasPlainTextData = OH_Pasteboard_HasType(pasteboard, "text/plain");
+        if (hasPlainTextData) {
+            return GetPlainTextFromPasteboard(env, pasteboard);
+        }
+        OH_LOG_INFO(LOG_APP, "No plain text data in pasteboard.");
+        OH_Pasteboard_Destroy(pasteboard);
+        napi_value result;
+        napi_get_undefined(env, &result);
+        return result;
+    }
+    ```
+

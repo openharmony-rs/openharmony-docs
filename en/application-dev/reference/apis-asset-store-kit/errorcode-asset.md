@@ -2,10 +2,11 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=a3c414ea47890c89132777c3dbfba11b0179a0e2 translatedAt=2026-11-06T11:56:01.286Z pushedAt=2026-11-09T12:02:10.907Z nl=1 -->
 
 > **NOTE**
 >
@@ -16,6 +17,10 @@
 **Error Message**
 
 The ASSET service is unavailable.
+
+**Description**
+
+The critical asset service is unavailable.
 
 **Possible Cause**
 
@@ -30,6 +35,10 @@ Re-initiate a request for processing the asset.
 **Error Message**
 
 The asset is not found.
+
+**Description**
+
+Critical asset not found.
 
 **Possible Cause**
 
@@ -47,6 +56,10 @@ The asset is not found.
 
 The asset already exists.
 
+**Description**
+
+The critical asset already exists.
+
 **Possible Cause**
 
 An asset with the same alias (**asset.Tag.ALIAS**) already exists.
@@ -63,6 +76,10 @@ Check whether the alias of the asset to add is correct. If the alias is incorrec
 **Error Message**
 
 Access denied.
+
+**Description**
+
+Access to the critical asset is denied.
 
 **Possible Cause**
 
@@ -82,6 +99,10 @@ Access denied.
 
 The screen lock status does not match.
 
+**Description**
+
+The device screen lock status does not match the access control requirement of the critical asset.
+
 **Possible Cause**
 
 1. The lock screen password required for accessing the asset is not set.
@@ -98,6 +119,10 @@ Set a lock screen password or unlock the screen before accessing the asset.
 
 Insufficient memory.
 
+**Description**
+
+Insufficient system memory.
+
 **Possible Cause**
 
 The system memory is insufficient.
@@ -111,6 +136,10 @@ Close unnecessary applications to release memory and initiate a processing reque
 **Error Message**
 
 The asset is corrupted.
+
+**Description**
+
+Critical asset is corrupted.
 
 **Possible Cause**
 
@@ -126,6 +155,10 @@ Restore factory settings.
 
 The database operation failed.
 
+**Description**
+
+Failed to operate the critical asset database.
+
 **Possible Cause**
 
 1. The asset store, from which data is being queried, has not been created yet.
@@ -136,11 +169,15 @@ The database operation failed.
 1. Use **add()** to create an asset store first.
 2. Locate the cause of the database access failure based on error information.
 
-## 24000009 Cryptographic Operation Failed 
+## 24000009 Cryptographic Operation Failed
 
 **Error Message**
 
 The cryptography operation failed.
+
+**Description**
+
+The cryptographic algorithm operation failed.
 
 **Possible Cause**
 
@@ -156,6 +193,10 @@ Locate the cause of the operation failure based on error information.
 
 IPC failed.
 
+**Description**
+
+IPC communication fails.
+
 **Possible Cause**
 
 The IPC failed.
@@ -169,6 +210,10 @@ Locate the cause of the IPC failure based on error information.
 **Error Message**
 
 Calling the Bundle Manager service failed.
+
+**Description**
+
+Failed to call the bundle management service.
 
 **Possible Cause**
 
@@ -184,6 +229,10 @@ Locate the cause of the exception based on error information.
 
 Calling the OS Account service failed.
 
+**Description**
+
+Failed to call the account system service.
+
 **Possible Cause**
 
 The account service is abnormal.
@@ -198,6 +247,10 @@ Locate the cause of the exception based on error information.
 
 Calling the Access Token service failed.
 
+**Description**
+
+Failed to call the access control service.
+
 **Possible Cause**
 
 The Access Token service is abnormal.
@@ -211,6 +264,10 @@ Locate the cause of the exception based on error information.
 **Error Message**
 
 The file operation failed.
+
+**Description**
+
+File operation failed.
 
 **Possible Cause**
 
@@ -227,6 +284,10 @@ Restart the device. If the problem persists, restore factory settings of the dev
 
 Getting the system time failed.
 
+**Description**
+
+Failed to obtain the system time.
+
 **Possible Cause**
 
 The system time is tampered with.
@@ -240,6 +301,10 @@ Correct the system time.
 **Error Message**
 
 The cache exceeds the limit.
+
+**Description**
+
+The number of critical asset pre-query caches exceeds the limit.
 
 **Possible Cause**
 
@@ -255,6 +320,10 @@ Call [asset.postQuery](js-apis-asset.md#assetpostquery) to release resources aft
 
 The capability is not supported.
 
+**Description**
+
+The subfeature is not supported.
+
 **Possible Cause**
 
 The API is supported, but certain sub-features of the API, for example, querying plaintext of assets in batches, are not supported.
@@ -269,6 +338,10 @@ Adjust API parameters and use alternative APIs, for example, invoking the altern
 
 Parameter verify failed.
 
+**Description**
+
+Parameter verification failed.
+
 **Possible Cause**
 
 The input argument is invalid.
@@ -282,6 +355,10 @@ Adjust the API arguments based on the error information and call the API again.
 **Error Message**
 
 Each value of [Tag.GROUP_ID](js-apis-asset.md#tag) and [Tag.REQUIRE_ATTR_ENCRYPTED](js-apis-asset.md#tag) in the array is not consistent.
+
+**Description**
+
+During a batch operation, the GROUP_ID and REQUIRE_ATTR_ENCRYPTED attribute values of the critical assets in the array are not consistent.
 
 **Possible Cause**
 
