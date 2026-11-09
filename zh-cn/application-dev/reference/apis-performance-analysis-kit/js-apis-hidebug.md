@@ -1809,6 +1809,10 @@ getAppSharedHeapObjectUsedSize(): bigint
 | ------ | -------------------------- |
 | bigint | 虚拟机中共享堆对象所占用的内存大小, 单位为KB。 |
 
+**错误码**：
+
+以下错误码的详细介绍请参见[HiDebug SharedHeapObjectUsedSize](errorcode-hiviewdfx-hidebug-sharedheapobjectusedsize.md)。
+
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
 | 11400104 | VM instance exception.                                           |
