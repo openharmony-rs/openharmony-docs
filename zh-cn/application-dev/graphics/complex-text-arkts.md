@@ -540,7 +540,7 @@ let myParagraphStyle: text.ParagraphStyle = {
    ```
 
    ArkTS-Sta示例：
-   <!-- @[arkts_complex_style_example1_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample1.ets) -->
+   <!-- @[arkts_complex_style_example1_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample1.ets) --> 
    
    ``` TypeScript
    import { Entry, Text, Column, Component, Button, Row, Resource, $r, NodeContainer, Image } from '@ohos.arkui.component'
@@ -608,7 +608,7 @@ let myParagraphStyle: text.ParagraphStyle = {
    
    // 创建一个MyRenderNode对象
    const textNode = new MyRenderNode();
-   // 定义newNode的像素格式
+   // 定义textNode的像素格式
    textNode.frame = {
      x: 0,
      y: 0,
@@ -688,6 +688,7 @@ let myParagraphStyle: text.ParagraphStyle = {
      }
    }
    ```
+   
 
 
 具体示意效果如下所示：
@@ -864,7 +865,7 @@ let myParagraphStyle: text.ParagraphStyle = {
    ```
 
    ArkTS-Sta示例：
-   <!-- @[arkts_complex_style_example2_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample2.ets) -->
+   <!-- @[arkts_complex_style_example2_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample2.ets) --> 
    
    ``` TypeScript
    import { Entry, Text, Column, Component, Button, Row, Resource, $r, NodeContainer, Image } from '@ohos.arkui.component'
@@ -947,7 +948,7 @@ let myParagraphStyle: text.ParagraphStyle = {
    
    // 创建一个MyRenderNode对象
    const textNode = new MyRenderNode();
-   // 定义newNode的像素格式
+   // 定义textNode的像素格式
    textNode.frame = {
      x: 0,
      y: 0,
@@ -1027,6 +1028,7 @@ let myParagraphStyle: text.ParagraphStyle = {
      }
    }
    ```
+   
 
 具体示意效果如下所示：
 
@@ -1170,7 +1172,7 @@ let myParagraphStyle: text.ParagraphStyle = {
    ```
 
    ArkTS-Sta示例：
-   <!-- @[arkts_complex_style_example3_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample3.ets) -->
+   <!-- @[arkts_complex_style_example3_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample3.ets) --> 
    
    ``` TypeScript
    import { Entry, Text, Column, Component, Button, Row, Resource, $r, NodeContainer } from '@ohos.arkui.component'
@@ -1222,7 +1224,7 @@ let myParagraphStyle: text.ParagraphStyle = {
    
    // 创建一个MyRenderNode对象
    const textNode = new MyRenderNode();
-   // 定义newNode的像素格式
+   // 定义textNode的像素格式
    textNode.frame = {
      x: 0,
      y: 0,
@@ -1301,6 +1303,7 @@ let myParagraphStyle: text.ParagraphStyle = {
      }
    }
    ```
+   
 
 具体示意效果如下所示：
 | 样式设置（垂直对齐） | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） | 
@@ -1455,7 +1458,7 @@ let myParagraphStyle: text.ParagraphStyle = {
    ```
 
    ArkTS-Sta示例：
-   <!-- @[arkts_complex_style_example4_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample4.ets) -->
+   <!-- @[arkts_complex_style_example4_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample4.ets) --> 
    
    ``` TypeScript
    import { Entry, Text, Column, Component, Button, Row, Resource, $r, NodeContainer } from '@ohos.arkui.component'
@@ -1517,7 +1520,7 @@ let myParagraphStyle: text.ParagraphStyle = {
    
    // 创建一个MyRenderNode对象
    const textNode = new MyRenderNode();
-   // 定义newNode的像素格式
+   // 定义textNode的像素格式
    textNode.frame = {
      x: 0,
      y: 0,
@@ -1596,6 +1599,7 @@ let myParagraphStyle: text.ParagraphStyle = {
      }
    }
    ```
+   
 
 具体示意效果如下所示：
 | 样式设置（上下标） | 示意效果 | 
@@ -1734,7 +1738,7 @@ let myParagraphStyle: text.ParagraphStyle = {
    ```
 
    ArkTS-Sta示例：
-   <!-- @[arkts_complex_style_example5_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample5.ets) -->
+   <!-- @[arkts_complex_style_example5_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample5.ets) --> 
    
    ``` TypeScript
    import { Entry, Text, Column, Component, Button, Row, Resource, $r, NodeContainer } from '@ohos.arkui.component'
@@ -1783,7 +1787,7 @@ let myParagraphStyle: text.ParagraphStyle = {
    
    // 创建一个MyRenderNode对象
    const textNode = new MyRenderNode();
-   // 定义newNode的像素格式
+   // 定义textNode的像素格式
    textNode.frame = {
      x: 0,
      y: 0,
@@ -1861,6 +1865,7 @@ let myParagraphStyle: text.ParagraphStyle = {
      }
    }
    ```
+   
 
 具体示意效果如下所示：
 
@@ -2002,7 +2007,7 @@ let myParagraphStyle: text.ParagraphStyle = {
    ```
   
    ArkTS-Sta示例：
-   <!-- @[arkts_complex_style_example6_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample6.ets) -->
+   <!-- @[arkts_complex_style_example6_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample6.ets) --> 
    
    ``` TypeScript
    import { Entry, Text, Column, Component, Button, Row, Resource, $r, NodeContainer } from '@ohos.arkui.component'
@@ -2052,7 +2057,7 @@ let myParagraphStyle: text.ParagraphStyle = {
    
    // 创建一个MyRenderNode对象
    const textNode = new MyRenderNode()
-   // 定义newNode的像素格式
+   // 定义textNode的像素格式
    textNode.frame = {
      x: 0,
      y: 0,
@@ -2131,6 +2136,7 @@ let myParagraphStyle: text.ParagraphStyle = {
      }
    }
    ```
+   
 
 具体效果如下所示：
 
@@ -2274,7 +2280,7 @@ let myParagraphStyle: text.ParagraphStyle = {
    ```
 
    ArkTS-Sta示例：
-   <!-- @[arkts_complex_style_example7_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample7.ets) -->
+   <!-- @[arkts_complex_style_example7_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample7.ets) --> 
    
    ``` TypeScript
    import { Entry, Text, Column, Component, Button, Row, Resource, $r, NodeContainer } from '@ohos.arkui.component'
@@ -2326,7 +2332,7 @@ let myParagraphStyle: text.ParagraphStyle = {
    
    // 创建一个MyRenderNode对象
    const textNode = new MyRenderNode();
-   // 定义newNode的像素格式
+   // 定义textNode的像素格式
    textNode.frame = {
      x: 0,
      y: 0,
@@ -2405,6 +2411,7 @@ let myParagraphStyle: text.ParagraphStyle = {
      }
    }
    ```
+   
 
 具体效果如下所示：
 
@@ -2546,7 +2553,7 @@ let myParagraphStyle: text.ParagraphStyle = {
    ```
 
    ArkTS-Sta示例：
-   <!-- @[arkts_complex_style_example8_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample8.ets) -->
+   <!-- @[arkts_complex_style_example8_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample8.ets) --> 
    
    ``` TypeScript
    import { Entry, Text, Column, Component, Button, Row, Resource, $r, NodeContainer } from '@ohos.arkui.component'
@@ -2596,7 +2603,7 @@ let myParagraphStyle: text.ParagraphStyle = {
    
    // 创建一个MyRenderNode对象
    const textNode = new MyRenderNode();
-   // 定义newNode的像素格式
+   // 定义textNode的像素格式
    textNode.frame = {
      x: 0,
      y: 0,
@@ -2675,6 +2682,7 @@ let myParagraphStyle: text.ParagraphStyle = {
      }
    }
    ```
+   
 
 具体效果如下所示：
 

@@ -1005,9 +1005,9 @@ import { KeyboardAvoidMode } from '@kit.ArkUI';
 <!-- @[cursor_avoid_part2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
-// Used in UIAbility
+// 在UIAbility中使用
 onWindowStageCreate(windowStage: window.WindowStage): void {
-  // Main window is created, set main page for this ability
+  // 已创建主窗口，为该Ability设置主页面
   hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
   windowStage.loadContent('pages/Index', (err, data) => {

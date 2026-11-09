@@ -359,6 +359,80 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 }
 ```
 
+
+### getShareAlbums
+
+getShareAlbums(options?: photoAccessHelper.FetchOptions): Promise&lt;FetchResult&lt;Album&gt;&gt;
+
+查询共享相册。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_SHARE_PHOTO
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| options | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | 否 | 检索选项。默认值为空，查询所有共享相册。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;FetchResult&lt;[Album](#album)&gt;&gt; | Promise对象，返回相册的fetch结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151     | The scenario parameter verification fails. Possible causes: 1. The column field does not support querying. 2. Filter conditions do not match expectations. |
+| 23800301     | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[@ohos.file.sendablePhotoAccessHelper (基于Sendable对象的相册管理模块)](js-apis-sendablePhotoAccessHelper.md)的示例使用。
+
+```ts
+import { photoAccessHelper, sendablePhotoAccessHelper} from '@kit.MediaLibraryKit'
+import { dataSharePredicates } from '@kit.ArkData' 
+
+async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
+  console.info('getShareAlbums demo');
+  // 配置检索选项。
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  predicates.equalTo("album_name", "newAlbumName");
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    // 查询共享相册。
+    let fetchResult = await phAccessHelper.getShareAlbums(fetchOption)
+    if (fetchResult == undefined) {
+      console.error(`getShareAlbums fetchResult is undefined`);
+      return;
+    }
+    let album = await fetchResult.getFirstObject();
+    console.info(`getShareAlbums successfully, albumName: ${album.albumName}`);
+    // 关闭FetchResult。
+    fetchResult.close();
+  } catch (err) {
+    console.error(`getShareAlbums failed: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## PhotoAsset
 
 提供封装文件属性的方法。
@@ -537,7 +611,22 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 ## Album
 
-实体相册
+实体相册。
+
+### 属性
+
+**起始版本：** 26.0.1
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称         | 类型                          | 只读                         | 可选 | 说明             |
+| ------------ | ----------------------------- | ---------------------------- | ---- | ---------------- |
+| shareRiskType   | string                                        | 是  | 是   | 共享相册的风控类型。<br>**模型约束：** 此接口仅可在Stage模型下使用。   |
+| shareRiskStatus | [ShareAlbumRiskStatus](#sharealbumriskstatus) | 是  | 是   | 共享相册的风控状态。<br>**模型约束：** 此接口仅可在Stage模型下使用。   |
+| cloudId         | string                                        | 是  | 是   | 相册CloudId。<br>**模型约束：** 此接口仅可在Stage模型下使用。         |
+| shareAlbumOwner | string                                        | 是  | 是   | 共享相册的所有者。<br>**模型约束：** 此接口仅可在Stage模型下使用。     |
 
 ### getFaceId<sup>13+</sup>
 
@@ -607,6 +696,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 | 名称  | 值   | 说明                                           |
 | ----- | ---- | ---------------------------------------------- |
 | SMART | 4096 | 智慧分析相册。**系统接口**：此接口为系统接口。 |
+| SHARE | 8192 | 共享相册。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 
 ## AlbumSubtype
 
@@ -629,3 +719,20 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 | GROUP_PHOTO           | 4103 | 合影相册。**系统接口**：此接口为系统接口。                 |
 | HIGHLIGHT             | 4104 | 时刻相册。**系统接口**：此接口为系统接口。                 |
 | HIGHLIGHT_SUGGESTIONS | 4105 | 时刻建议相册。**系统接口**：此接口为系统接口。             |
+| SHARE                 | 8193 | 共享相册。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。                 |
+
+## ShareAlbumRiskStatus
+
+表示共享相册的风险状态的枚举。
+
+**起始版本：** 26.0.1
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                  | 值   | 说明                                                       |
+| --------------------- | ---- | ---------------------------------------------------------- |
+| UNDER_REVIEW          | 0 | 表示共享相册正在审查中。  |
+| LOW_REVIEW_RISK       | 1 | 表示共享相册审核风险低。  |
+| HIGH_REVIEW_RISK      | 2 | 表示共享相册审核风险高。  |
