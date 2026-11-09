@@ -16,6 +16,11 @@
 ## 约束与限制
 资源使用约束：对于运行的进程，系统会给予一定的资源配额约束，包括进程在连续一段时间内内存的使用、<!--RP3-->CPU使用占比<!--RP3End-->，以及24小时磁盘写的IO量，均有对应的配额上限。超过配额上限时，如果进程处于前台，系统会有对应的warning日志，如果进程处于后台，系统会终止该进程。
 
+### 支持的设备
+Phone、PC/2in1、Tablet、TV、Car、Wearable、Lite Wearable
+
+### 支持的国家/地区
+请参见版本说明中[各设备支持的国家/地区](https://developer.huawei.com/consumer/cn/doc/harmonyos-release/sdk-supported-regions)。
 
 ## 后台任务类型
 
