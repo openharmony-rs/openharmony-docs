@@ -91,7 +91,7 @@ status: active
      } catch (e) {
        console.error(TAG + `FetchMetadataFromDataSrc, code is ${e.code}, message is ${e.message}`);
      } finally {
-       // 确保文件流关闭
+       // 确保文件流关闭。
        if (fd >= 0) {
          try {
            // 在执行完后续获取元数据或者抽帧操作后，需要关闭fd。
