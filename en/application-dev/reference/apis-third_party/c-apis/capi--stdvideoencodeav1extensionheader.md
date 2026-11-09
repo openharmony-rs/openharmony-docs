@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoEncodeAV1ExtensionHeader {...}--><!--Device-struct StdVideoEncodeAV1ExtensionHeader {...}-End-->
+
 ## Summary
 
 ### Member variables

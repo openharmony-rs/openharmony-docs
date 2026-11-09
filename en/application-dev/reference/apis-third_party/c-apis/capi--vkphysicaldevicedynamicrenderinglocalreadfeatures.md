@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceDynamicRenderingLocalReadFeatures {...}--><!--Device-struct VkPhysicalDeviceDynamicRenderingLocalReadFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

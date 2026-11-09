@@ -34,6 +34,8 @@ enum Drm_ErrCode
 
 DRM错误码。
 
+<!--Device-Drm_ErrCode--><!--Device-Drm_ErrCode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **起始版本：** 11

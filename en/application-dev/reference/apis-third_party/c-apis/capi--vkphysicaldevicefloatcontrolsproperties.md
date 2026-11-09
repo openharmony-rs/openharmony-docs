@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceFloatControlsProperties {...}--><!--Device-struct VkPhysicalDeviceFloatControlsProperties {...}-End-->
+
 ## Summary
 
 ### Member variables

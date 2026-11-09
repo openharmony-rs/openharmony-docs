@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoH265PredictorPaletteEntries {...}--><!--Device-struct StdVideoH265PredictorPaletteEntries {...}-End-->
+
 ## Summary
 
 ### Member variables

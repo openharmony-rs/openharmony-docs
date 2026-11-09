@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkAntiLagDataAMD {...}--><!--Device-struct VkAntiLagDataAMD {...}-End-->
+
 ## Summary
 
 ### Member variables

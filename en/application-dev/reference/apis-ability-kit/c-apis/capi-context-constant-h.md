@@ -35,6 +35,8 @@ enum AbilityRuntime_AreaMode
 
 Enumerates the data encryption levels.
 
+<!--Device-AbilityRuntime_AreaMode--><!--Device-AbilityRuntime_AreaMode-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 13
@@ -57,6 +59,8 @@ enum AbilityRuntime_StartVisibility
 
 Enumerates the visibility modes of the window and dock bar icons when the ability is started.
 
+<!--Device-AbilityRuntime_StartVisibility--><!--Device-AbilityRuntime_StartVisibility-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 17
@@ -76,6 +80,8 @@ enum AbilityRuntime_WindowMode
 
 Enumerates the window modes.
 
+<!--Device-AbilityRuntime_WindowMode--><!--Device-AbilityRuntime_WindowMode-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 17
@@ -94,6 +100,8 @@ enum AbilityRuntime_SupportedWindowMode
 **Description**
 
 Supported window modes
+
+<!--Device-AbilityRuntime_SupportedWindowMode--><!--Device-AbilityRuntime_SupportedWindowMode-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

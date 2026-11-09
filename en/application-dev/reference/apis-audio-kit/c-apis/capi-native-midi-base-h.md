@@ -57,6 +57,8 @@ enum OH_MIDIStatusCode
 
 MIDI status code enumeration.
 
+<!--Device-OH_MIDIStatusCode--><!--Device-OH_MIDIStatusCode-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
@@ -90,6 +92,8 @@ enum OH_MIDIPortDirection
 
 Port direction enumeration.
 
+<!--Device-OH_MIDIPortDirection--><!--Device-OH_MIDIPortDirection-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
@@ -113,6 +117,8 @@ MIDI transport protocol semantics.
 >
 > CRITICAL**: The SDK always uses UMP (Universal MIDI Packet) format for data transfer, regardless of the selected protocol. This enum defines the "Behavior" and "Semantics" of the connection, not the data structure.
 
+<!--Device-OH_MIDIProtocol--><!--Device-OH_MIDIProtocol-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
@@ -132,6 +138,8 @@ enum OH_MIDIDeviceType
 
 MIDI Device type.
 
+<!--Device-OH_MIDIDeviceType--><!--Device-OH_MIDIDeviceType-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
@@ -150,6 +158,8 @@ enum OH_MIDIDeviceChangeAction
 **Description**
 
 Device connection state change action.
+
+<!--Device-OH_MIDIDeviceChangeAction--><!--Device-OH_MIDIDeviceChangeAction-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.MIDI
 
@@ -173,6 +183,8 @@ typedef void (*OH_MIDICallback_OnDeviceChange)(void *userData, OH_MIDIDeviceChan
 
 Callback for monitoring device connection/disconnection.
 
+<!--Device-typedef void (*OH_MIDICallback_OnDeviceChange)(void *userData, OH_MIDIDeviceChangeAction action, OH_MIDIDeviceInformation deviceInfo)--><!--Device-typedef void (*OH_MIDICallback_OnDeviceChange)(void *userData, OH_MIDIDeviceChangeAction action, OH_MIDIDeviceInformation deviceInfo)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
@@ -194,6 +206,8 @@ typedef void (*OH_MIDICallback_OnError)(void *userData, OH_MIDIStatusCode code)
 **Description**
 
 Callback for handling client-level errors. Invoked when a critical error occurs in the MIDI service (e.g., service crash). Applications may need to recreate the client when this occurs.
+
+<!--Device-typedef void (*OH_MIDICallback_OnError)(void *userData, OH_MIDIStatusCode code)--><!--Device-typedef void (*OH_MIDICallback_OnError)(void *userData, OH_MIDIStatusCode code)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.MIDI
 
@@ -220,6 +234,8 @@ Callback for receiving MIDI data (Batch Processing).
 >
 > This callback is invoked on a high-priority system thread. Do **not** perform blocking operations, heavy computation, or I/O.
 
+<!--Device-typedef void (*OH_MIDIDevice_OnReceived)(void *userData, const OH_MIDIEvent *events, size_t eventCount)--><!--Device-typedef void (*OH_MIDIDevice_OnReceived)(void *userData, const OH_MIDIEvent *events, size_t eventCount)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
@@ -241,6 +257,8 @@ typedef void (*OH_MIDIClient_OnDeviceOpened)(void *userData, bool opened, OH_MID
 **Description**
 
 Callback for the result of asynchronously opening a BLE device.<br> This callback is invoked when the BLE device open attempt finishes, either successfully or with a failure.
+
+<!--Device-typedef void (*OH_MIDIClient_OnDeviceOpened)(void *userData, bool opened, OH_MIDIDevice *device, OH_MIDIDeviceInformation info)--><!--Device-typedef void (*OH_MIDIClient_OnDeviceOpened)(void *userData, bool opened, OH_MIDIDevice *device, OH_MIDIDeviceInformation info)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.MIDI
 

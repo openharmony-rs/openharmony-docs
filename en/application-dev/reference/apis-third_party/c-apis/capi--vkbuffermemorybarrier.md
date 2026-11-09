@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkBufferMemoryBarrier {...}--><!--Device-struct VkBufferMemoryBarrier {...}-End-->
+
 ## Summary
 
 ### Member variables

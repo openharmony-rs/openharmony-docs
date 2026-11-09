@@ -8,11 +8,13 @@ typedef struct ArkUI_FloatAnimatableProperty* ArkUI_FloatAnimatablePropertyHandl
 
 定义可动画的浮点数属性指针。
 
+<!--Device-typedef struct ArkUI_FloatAnimatableProperty* ArkUI_FloatAnimatablePropertyHandle--><!--Device-typedef struct ArkUI_FloatAnimatableProperty* ArkUI_FloatAnimatablePropertyHandle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
-**相关模块：** [ArkUI_RenderNodeUtils](capi-others-arkui-rendernodeutils.md)
+**相关模块：** [ArkUI_RenderNodeUtils](capi-arkui-arkui-rendernodeutils.md)
 
 **所在头文件：** [native_render.h](capi-native-render-h.md)
 

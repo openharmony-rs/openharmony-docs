@@ -8,11 +8,13 @@ typedef struct OH_Drawing_Typography OH_Drawing_Typography
 
 用于管理排版的布局和显示等。
 
+<!--Device-typedef struct OH_Drawing_Typography OH_Drawing_Typography--><!--Device-typedef struct OH_Drawing_Typography OH_Drawing_Typography-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
 
-**相关模块：** [Drawing](capi-others-drawing.md)
+**相关模块：** [Drawing](capi-arkgraphics2d-drawing.md)
 
 **所在头文件：** [drawing_text_declaration.h](capi-drawing-text-declaration-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceClusterAccelerationStructurePropertiesNV {...}--><!--Device-struct VkPhysicalDeviceClusterAccelerationStructurePropertiesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

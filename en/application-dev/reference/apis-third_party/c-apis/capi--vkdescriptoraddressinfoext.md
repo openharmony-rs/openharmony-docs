@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDescriptorAddressInfoEXT {...}--><!--Device-struct VkDescriptorAddressInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

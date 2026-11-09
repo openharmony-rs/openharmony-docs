@@ -78,6 +78,8 @@ enum OH_ArkUI_NativeModule_UIInfoCollection_InteractionEventType
 
 Enumerates the observable UI interaction event types.<br> The values are bit flags. They are used to build the eventMask passed to [OH_ArkUI_NativeModule_UIInfoCollectionRegisterInteractionObserver](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiinfocollectionregisterinteractionobserver).
 
+<!--Device-OH_ArkUI_NativeModule_UIInfoCollection_InteractionEventType--><!--Device-OH_ArkUI_NativeModule_UIInfoCollection_InteractionEventType-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -105,6 +107,8 @@ enum OH_ArkUI_NativeModule_UIAgentTreeType
 
 Enumeration of the collection type of the UI tree.
 
+<!--Device-OH_ArkUI_NativeModule_UIAgentTreeType--><!--Device-OH_ArkUI_NativeModule_UIAgentTreeType-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -123,6 +127,8 @@ enum OH_ArkUI_NativeModule_UIContentChangeEventCategory
 **Description**
 
 UI Content Change Event Type Enumeration
+
+<!--Device-OH_ArkUI_NativeModule_UIContentChangeEventCategory--><!--Device-OH_ArkUI_NativeModule_UIContentChangeEventCategory-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -145,6 +151,8 @@ enum OH_ArkUI_NativeModule_UIContentChangeIgnoreType
 
 UI Content Change Event Ignore Enumeration
 
+<!--Device-OH_ArkUI_NativeModule_UIContentChangeIgnoreType--><!--Device-OH_ArkUI_NativeModule_UIContentChangeIgnoreType-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -164,6 +172,8 @@ enum OH_ArkUI_NativeModule_UIContentChangeEventType
 **Description**
 
 Enumerates ArkUI state change event types.
+
+<!--Device-OH_ArkUI_NativeModule_UIContentChangeEventType--><!--Device-OH_ArkUI_NativeModule_UIContentChangeEventType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -205,6 +215,8 @@ Callback type for receiving a sensed interaction event.<br> The callback carries
 - Drag: action ("start" \| "end"); "start" carries id, point, hostName, actualDuration; "end" carries point, dropResult ("success" \| "fail"), id (target, present only on success), hostName.
 - Touch: action ("down" \| "up"), fingerId, point; "down" also carries id (hit node ID).
 
+<!--Device-typedef void (*OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback)(const OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData)--><!--Device-typedef void (*OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback)(const OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -225,6 +237,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionRegisterInteractionObserve
 **Description**
 
 Registers an observer for UI interaction events.<br> The observer receives callbacks only for the event types included in eventMask. Multiple observers can be registered for the same UI instance. Registering the same callback and userData pair again creates an additional independent observer with a new registration ID.<br> Remember to unregister the callback by [OH_ArkUI_NativeModule_UIInfoCollectionUnregisterInteractionObserver](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiinfocollectionunregisterinteractionobserver) when it's not used anymore.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionRegisterInteractionObserver(ArkUI_ContextHandle uiContext, uint32_t eventMask, uint32_t *registerID, OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback callback, void *userData)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionRegisterInteractionObserver(ArkUI_ContextHandle uiContext, uint32_t eventMask, uint32_t *registerID, OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback callback, void *userData)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -256,6 +270,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionUnregisterInteractionObser
 
 Unregisters an interaction observer.<br> After this call completes, the associated callback is no longer invoked.<br> This function is not thread-safe and can not be called in non-main threads.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionUnregisterInteractionObserver(uint32_t registerID)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionUnregisterInteractionObserver(uint32_t registerID)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -282,6 +298,8 @@ typedef void (*OH_ArkUI_NativeModule_UIAgentJsonCallback)(ArkUI_ContextHandle co
 
 Defines the callback invoked after an asynchronous JSON tree request completes.<br> The callback is invoked exactly once on the UI thread for each accepted request. The callback receives ownership of a non-NULL JSON object only when errorCode is ARKUI_ERROR_CODE_NO_ERROR. The caller must release the object by calling OH_ArkUI_NativeModule_UIJsonWrapperDestroy.
 
+<!--Device-typedef void (*OH_ArkUI_NativeModule_UIAgentJsonCallback)(ArkUI_ContextHandle context, uint64_t requestId, ArkUI_ErrorCode errorCode, OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData)--><!--Device-typedef void (*OH_ArkUI_NativeModule_UIAgentJsonCallback)(ArkUI_ContextHandle context, uint64_t requestId, ArkUI_ErrorCode errorCode, OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -307,6 +325,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestCreate(OH_ArkUI_NativeMo
 **Description**
 
 Create a UI tree collection request.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestCreate(OH_ArkUI_NativeModule_UIAgentTreeType treeType, OH_ArkUI_NativeModule_UIAgentTreeRequest **request)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestCreate(OH_ArkUI_NativeModule_UIAgentTreeType treeType, OH_ArkUI_NativeModule_UIAgentTreeRequest **request)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -337,6 +357,8 @@ void OH_ArkUI_NativeModule_UIAgentTreeRequestDestroy(OH_ArkUI_NativeModule_UIAge
 
 Destroys the UI tree collection request object.<br> Passing NULL has no effect.
 
+<!--Device-void OH_ArkUI_NativeModule_UIAgentTreeRequestDestroy(OH_ArkUI_NativeModule_UIAgentTreeRequest *request)--><!--Device-void OH_ArkUI_NativeModule_UIAgentTreeRequestDestroy(OH_ArkUI_NativeModule_UIAgentTreeRequest *request)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -356,6 +378,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetFilterPureLayoutNodes
 **Description**
 
 Sets whether pure layout nodes are filtered from the returned tree.<br> Filtering is disabled by default. When enabled, retained descendants of a filtered node are attached to the nearest retained ancestor while preserving their relative order.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetFilterPureLayoutNodes(OH_ArkUI_NativeModule_UIAgentTreeRequest *request, bool enabled)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetFilterPureLayoutNodes(OH_ArkUI_NativeModule_UIAgentTreeRequest *request, bool enabled)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -384,6 +408,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetFilterOccludedNodes(O
 
 Sets whether fully occluded nodes are filtered from the returned tree.<br> Filtering is disabled by default and can be enabled only for visible-tree requests. Enabling occlusion filtering may add substantial computational overhead to collection. Use this option judiciously based on the complexity of the UI. Disabling this option does not disable visibility, clipping, off-screen, or fully transparent node filtering.<br> The occluder opacity threshold is configured separately by [OH_ArkUI_NativeModule_UIAgentTreeRequestSetOcclusionOpacityThreshold](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagenttreerequestsetocclusionopacitythreshold). Changing this option does not change that threshold.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetFilterOccludedNodes(OH_ArkUI_NativeModule_UIAgentTreeRequest *request, bool enabled)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetFilterOccludedNodes(OH_ArkUI_NativeModule_UIAgentTreeRequest *request, bool enabled)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -410,6 +436,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetOcclusionOpacityThres
 **Description**
 
 Sets the minimum final opacity for a node to participate as an occluder.<br> The default value is 1.0. The option is supported only for visible-tree requests. A target node is removed only when the union of qualifying occluder regions fully covers its effective visible region.<br> This threshold will not work if the filter option is not enabled by [OH_ArkUI_NativeModule_UIAgentTreeRequestSetFilterOccludedNodes](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagenttreerequestsetfilteroccludednodes).
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetOcclusionOpacityThreshold(OH_ArkUI_NativeModule_UIAgentTreeRequest *request, float threshold)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetOcclusionOpacityThreshold(OH_ArkUI_NativeModule_UIAgentTreeRequest *request, float threshold)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -438,6 +466,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetInteractionInfo(OH_Ar
 
 Sets whether additional interaction information is collected.<br> Collection is disabled by default. When enabled, the result includes supported interaction information, such as whether a node is clickable, focusable, or editable. This option does not register event observers or change the interaction behavior of any node.<br> Disabling this option does not remove fields included in the default simplified result. Advanced property collection does not implicitly enable this option or collect fields reserved for this option.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetInteractionInfo(OH_ArkUI_NativeModule_UIAgentTreeRequest *request, bool enabled)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetInteractionInfo(OH_ArkUI_NativeModule_UIAgentTreeRequest *request, bool enabled)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -464,6 +494,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetAccessibilityInfo(OH_
 **Description**
 
 Sets whether additional accessibility information is collected.<br> Collection is disabled by default. When enabled, the result includes supported accessibility information, such as accessibility content. This option does not enable accessibility services or change node behavior.<br> Disabling this option does not remove fields included in the default simplified result. Advanced property collection does not implicitly enable this option or collect fields reserved for this option.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetAccessibilityInfo(OH_ArkUI_NativeModule_UIAgentTreeRequest *request, bool enabled)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetAccessibilityInfo(OH_ArkUI_NativeModule_UIAgentTreeRequest *request, bool enabled)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -492,6 +524,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetCollectVisualProperti
 
 Sets whether advanced visual properties are collected.<br> Collection is disabled by default. When enabled, the result additionally includes supported properties describing directly perceivable appearance, such as visual styles and displayed states.<br> Properties already included in the default simplified result are not duplicated. Fields reserved for interaction or accessibility collection are excluded from this property group, regardless of those options. Internal diagnostic properties are never included.<br> This option is independent of advanced functional property collection and does not change which nodes are retained in the tree.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetCollectVisualProperties(OH_ArkUI_NativeModule_UIAgentTreeRequest *request, bool enabled)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetCollectVisualProperties(OH_ArkUI_NativeModule_UIAgentTreeRequest *request, bool enabled)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -519,6 +553,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetCollectFunctionalProp
 
 Sets whether advanced functional properties are collected.<br> Collection is disabled by default. When enabled, the result additionally includes supported properties describing developer-configured component behavior and functional capabilities.<br> Properties already included in the default simplified result are not duplicated. Fields reserved for interaction or accessibility collection are excluded from this property group, regardless of those options. Internal diagnostic properties are never included.<br> This option is independent of advanced visual property collection and does not change which nodes are retained in the tree.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetCollectFunctionalProperties(OH_ArkUI_NativeModule_UIAgentTreeRequest *request, bool enabled)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetCollectFunctionalProperties(OH_ArkUI_NativeModule_UIAgentTreeRequest *request, bool enabled)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -545,6 +581,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentGetTreeJson(ArkUI_ContextHandle con
 **Description**
 
 Collects a UI tree synchronously and returns it as JSON.<br> This function must be called on the UI thread. The result contains at most 5000 nodes and must not exceed 5 MiB. The size limit is measured using canonical compact JSON. If pretty output itself exceeds 5 MiB, the request also fails. No partial JSON is returned.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentGetTreeJson(ArkUI_ContextHandle context, const OH_ArkUI_NativeModule_UIAgentTreeRequest *request, OH_ArkUI_NativeModule_UIJsonFormat format, OH_ArkUI_NativeModule_UIJsonWrapper **json)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentGetTreeJson(ArkUI_ContextHandle context, const OH_ArkUI_NativeModule_UIAgentTreeRequest *request, OH_ArkUI_NativeModule_UIJsonFormat format, OH_ArkUI_NativeModule_UIJsonWrapper **json)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -577,6 +615,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentGetTreeJsonAsync(ArkUI_ContextHandl
 
 Initiate an asynchronous UI tree collection request. Receive the collection through asynchronous callback. This function must be called on the UI thread. function copies the request and format before returning, so The caller can destroy or reuse the request immediately after the call. Each accepted request is completed only once On the UI thread.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentGetTreeJsonAsync(ArkUI_ContextHandle context, const OH_ArkUI_NativeModule_UIAgentTreeRequest *request, OH_ArkUI_NativeModule_UIJsonFormat format, OH_ArkUI_NativeModule_UIAgentJsonCallback callback, void *userData, uint64_t *requestId)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentGetTreeJsonAsync(ArkUI_ContextHandle context, const OH_ArkUI_NativeModule_UIAgentTreeRequest *request, OH_ArkUI_NativeModule_UIJsonFormat format, OH_ArkUI_NativeModule_UIAgentJsonCallback callback, void *userData, uint64_t *requestId)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -608,6 +648,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentGetPageText(ArkUI_ContextHandle uiC
 
 Synchronously collects the text on the current ArkUI page and outputs the text in JSON format. Each JSON item contains an integer "id". Recognize the control, the rectangular "rect" relative to the target window, and the text content The string "content". After using the result, use OH_ArkUI_NativeModule_UIJsonWrapperDestroy to free up the result memory. The function must be called on the UI thread. The output format is as follows:
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentGetPageText(ArkUI_ContextHandle uiContext, OH_ArkUI_NativeModule_UIJsonWrapper** pageText)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentGetPageText(ArkUI_ContextHandle uiContext, OH_ArkUI_NativeModule_UIJsonWrapper** pageText)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -637,6 +679,8 @@ typedef void (*OH_ArkUI_NativeModule_UIContentChangeEventCallback)(const OH_ArkU
 
 Defines the callback invoked for a registered ArkUI state change event.<br> The callback runs on the user interface thread associated with the registered context. The event snapshot is immutable and valid only until this callback returns. ArkUI borrows but does not access or release userData.
 
+<!--Device-typedef void (*OH_ArkUI_NativeModule_UIContentChangeEventCallback)(const OH_ArkUI_NativeModule_UIContentChangeEvent* event, void* userData)--><!--Device-typedef void (*OH_ArkUI_NativeModule_UIContentChangeEventCallback)(const OH_ArkUI_NativeModule_UIContentChangeEvent* event, void* userData)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -657,6 +701,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_RegisterUIContentChangeEvent(ArkUI_Context
 **Description**
 
 Registers to the selected ArkUI state change event categories for a user interface context.<br> Each successful call creates an independent subscription. The returned ID is nonzero and unique within the context. The callback is invoked synchronously on the context's user interface thread. ArkUI borrows uiContext and userData and does not release either value. If the operation fails, subscriptionId is not modified. This function must be called on the UI thread; calling it from a non-UI thread will abort the process.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_RegisterUIContentChangeEvent(ArkUI_ContextHandle uiContext, bool withStart, uint32_t eventMask, uint32_t ignoreMask, void* userData, OH_ArkUI_NativeModule_UIContentChangeEventCallback callback, uint64_t* subscriptionId)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_RegisterUIContentChangeEvent(ArkUI_ContextHandle uiContext, bool withStart, uint32_t eventMask, uint32_t ignoreMask, void* userData, OH_ArkUI_NativeModule_UIContentChangeEventCallback callback, uint64_t* subscriptionId)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -690,6 +736,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UnRegisterUIContentChangeEvent(ArkUI_Conte
 
 Unregisters an active ArkUI state change event subscription from a user interface context.<br> After this function returns successfully, no later event invokes the removed subscription. The caller can then release its userData. Unsubscribing from a callback does not change the callback batch currently being dispatched. This function must be called on the UI thread; calling it from a non-UI thread will abort the process.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UnRegisterUIContentChangeEvent(ArkUI_ContextHandle uiContext, uint64_t subscriptionId)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UnRegisterUIContentChangeEvent(ArkUI_ContextHandle uiContext, uint64_t subscriptionId)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -716,6 +764,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetType(const OH_ArkUI
 **Description**
 
 Obtains the event type from an ArkUI state change event snapshot.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetType(const OH_ArkUI_NativeModule_UIContentChangeEvent* event, OH_ArkUI_NativeModule_UIContentChangeEventType* type)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetType(const OH_ArkUI_NativeModule_UIContentChangeEvent* event, OH_ArkUI_NativeModule_UIContentChangeEventType* type)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -744,6 +794,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetTimestamp(const OH_
 
 Obtains the monotonic timestamp of an ArkUI state change event snapshot.<br> The timestamp is captured at the event completion point, is expressed in nanoseconds, and is not wall-clock time.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetTimestamp(const OH_ArkUI_NativeModule_UIContentChangeEvent* event, uint64_t* nanoTimestamp)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetTimestamp(const OH_ArkUI_NativeModule_UIContentChangeEvent* event, uint64_t* nanoTimestamp)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -770,6 +822,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetContext(const OH_Ar
 **Description**
 
 Obtains the user interface context associated with an ArkUI state change event snapshot.<br> The returned handle is borrowed, and the caller must not release it or use it after the callback returns.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetContext(const OH_ArkUI_NativeModule_UIContentChangeEvent* event, ArkUI_ContextHandle* uiContext)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetContext(const OH_ArkUI_NativeModule_UIContentChangeEvent* event, ArkUI_ContextHandle* uiContext)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -798,6 +852,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetContentChangeEventJ
 
 Obtains the content change event details as a JSON wrapper from an ArkUI state change event snapshot.<br> The JSON output includes a top-level schemaVersion field, the content change type, trigger node, target node, overlay type, and an optional sub-tree dump depending on the event category:<br> Page events identify the target page. Scroll events identify the scrolling node. Overlay events identify overlay node and provide the overlay type (such as "dialog"). The trigger node is the node that initiated the content change; it is available for overlay events and general start/end scenarios, and is NULL for page and scroll events when no trigger node can be exposed. The operation succeeds when no target node can be exposed; the returned JSON still contains schemaVersion. The handles referenced in the JSON wrapper are borrowed and must not be released or used after the callback returns.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetContentChangeEventJson(const OH_ArkUI_NativeModule_UIContentChangeEvent* event, const OH_ArkUI_NativeModule_UIJsonWrapper** json)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetContentChangeEventJson(const OH_ArkUI_NativeModule_UIContentChangeEvent* event, const OH_ArkUI_NativeModule_UIJsonWrapper** json)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -825,6 +881,8 @@ typedef void (*OH_ArkUI_NativeModule_ImageCollectionCallback)(ArkUI_ErrorCode er
 
 Defines the callback used to return the result of collecting images of ArkUI nodes.<br> The framework invokes this callback exactly once on the UI thread for each accepted request. Every non-<b>NULL</b> <b>collection</b> is transferred to the caller. A collection is also returned for partial item failure. The caller must release each non-<b>NULL</b> collection by calling <b>OH_ArkUI_NativeModule_ImageCollectionDestroy</b>.<br> The framework returns <b>userData</b> unchanged without dereferencing, copying, or releasing the object it points to. The caller must keep that object valid until the callback has finished using it.
 
+<!--Device-typedef void (*OH_ArkUI_NativeModule_ImageCollectionCallback)(ArkUI_ErrorCode errorCode, OH_ArkUI_NativeModule_ImageCollection* collection, void* userData)--><!--Device-typedef void (*OH_ArkUI_NativeModule_ImageCollectionCallback)(ArkUI_ErrorCode errorCode, OH_ArkUI_NativeModule_ImageCollection* collection, void* userData)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -848,6 +906,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_GetImagesByNodeIdAsync(ArkUI_ContextHandle
 **Description**
 
 Asynchronously collects images for specified ArkUI node IDs.<br> The framework accepts from <b>1</b> to <b>20</b> unique node IDs in one request and copies the <b>nodeIds</b> array before this function returns. If <b>count</b> is less than or equal to <b>0</b> or greater than <b>20</b>, this function returns ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE.<br> Each accepted node ID has one result in the collection, including a result for a node ID that cannot be found or whose image cannot be captured. An <b>Image</b> node returns its complete source <b>PixelMap</b> when available and otherwise falls back to capturing the rendered content within the node bounds. A non-<b>Image</b> node uses the same node-bounds capture behavior. A node does not need to be visible.<br> If the ArkUI node corresponding to a requested node ID cannot be found, the corresponding collection item reports <b>ARKUI_ERROR_CODE_NODE_NOT_FOUND</b>; the caller should check the node ID. A capture timeout reports <b>ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT</b>; the caller can retry the request. An item's error is available when consuming its collection entry. If any item fails, the callback reports ARKUI_ERROR_CODE_COLLECTION_PARTIAL_FAILED and still returns the collection.<br> The caller can call this function from any thread. For each accepted request, the framework invokes <b>callback</b> exactly once on the UI thread associated with <b>context</b>. If the previous request has not finished, this function returns ARKUI_ERROR_CODE_COMMAND_UNFINISHED. The caller must wait for that request to complete before submitting another request.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_GetImagesByNodeIdAsync(ArkUI_ContextHandle context, const int32_t* nodeIds, uint32_t count, OH_ArkUI_NativeModule_ImageCollectionCallback callback, void* userData)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_GetImagesByNodeIdAsync(ArkUI_ContextHandle context, const int32_t* nodeIds, uint32_t count, OH_ArkUI_NativeModule_ImageCollectionCallback callback, void* userData)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -879,6 +939,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImageCollectionTakeItemByNodeId(OH_ArkUI_N
 
 Consumes the result for a specified node ID.<br> For a successful image result, this function transfers ownership of the <b>PixelMap</b> to the caller. The caller must release it by calling <b>OH_PixelmapNative_Destroy</b>. This function also consumes a failed image result. In that case, it sets <b>*outPixelmap</b> to <b>NULL</b> and writes the item error to <b>*outItemError</b>. Each node ID in a collection can be consumed only once.<br> Destroying the collection releases only <b>PixelMap</b> instances that the caller has not taken and does not invalidate a transferred <b>PixelMap</b>.<br> The caller must not call this function concurrently with another collection API for the same collection.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImageCollectionTakeItemByNodeId(OH_ArkUI_NativeModule_ImageCollection* collection, int32_t nodeId, OH_PixelmapNative** outPixelmap, ArkUI_ErrorCode* outItemError)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImageCollectionTakeItemByNodeId(OH_ArkUI_NativeModule_ImageCollection* collection, int32_t nodeId, OH_PixelmapNative** outPixelmap, ArkUI_ErrorCode* outItemError)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -909,6 +971,8 @@ void OH_ArkUI_NativeModule_ImageCollectionDestroy(OH_ArkUI_NativeModule_ImageCol
 **Description**
 
 Destroys an image collection and releases <b>PixelMap</b> instances that have not been consumed.<br> The caller must destroy every non-<b>NULL</b> collection returned through the callback, even after all its items have been consumed. This function does not release or invalidate <b>PixelMap</b> instances that the caller obtained through <b>OH_ArkUI_NativeModule_ImageCollectionTakeItemByNodeId</b>.<br> The caller must not call this function concurrently with another collection API for the same collection.
+
+<!--Device-void OH_ArkUI_NativeModule_ImageCollectionDestroy(OH_ArkUI_NativeModule_ImageCollection* collection)--><!--Device-void OH_ArkUI_NativeModule_ImageCollectionDestroy(OH_ArkUI_NativeModule_ImageCollection* collection)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

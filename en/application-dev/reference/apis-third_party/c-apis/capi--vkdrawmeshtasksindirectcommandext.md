@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDrawMeshTasksIndirectCommandEXT {...}--><!--Device-struct VkDrawMeshTasksIndirectCommandEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

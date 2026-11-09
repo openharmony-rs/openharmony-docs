@@ -34,6 +34,8 @@ enum Input_KeyCode
 
 键值。
 
+<!--Device-Input_KeyCode--><!--Device-Input_KeyCode-End-->
+
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
 **起始版本：** 12

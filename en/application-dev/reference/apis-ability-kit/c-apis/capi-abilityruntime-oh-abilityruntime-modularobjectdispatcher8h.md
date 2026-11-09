@@ -8,11 +8,13 @@ typedef struct OH_AbilityRuntime_ModularObjectDispatcher* OH_AbilityRuntime_ModO
 
 Handle to a ModularObject dispatcher. This handle points to a ModularObject dispatcher instance. It can be created by [OH_AbilityRuntime_ModObjDispatcher_CreateMainServiceInstance](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_createmainserviceinstance) or [OH_AbilityRuntime_ModObjDispatcher_CreateSubInstance](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_createsubinstance), and must be released by [OH_AbilityRuntime_ModObjDispatcher_Release](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_release) after use.
 
+<!--Device-typedef struct OH_AbilityRuntime_ModularObjectDispatcher* OH_AbilityRuntime_ModObjDispatcherHandle--><!--Device-typedef struct OH_AbilityRuntime_ModularObjectDispatcher* OH_AbilityRuntime_ModObjDispatcherHandle-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
-**Related module**: [AbilityRuntime](capi-others-abilityruntime.md)
+**Related module**: [AbilityRuntime](capi-ability-kit-abilityruntime.md)
 
 **Header file**: [modular_object_dispatcher.h](capi-modular-object-dispatcher-h.md)
 

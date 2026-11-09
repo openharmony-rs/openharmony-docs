@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceImageViewMinLodFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceImageViewMinLodFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

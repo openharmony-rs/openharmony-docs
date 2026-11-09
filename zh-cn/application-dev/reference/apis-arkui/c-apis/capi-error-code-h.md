@@ -4,6 +4,8 @@
 
 定义ArkUI Native API的错误码枚举值，用于表示接口调用结果或失败原因。
 
+**引用文件：** <arkui/error_code.h>
+
 **库：** libace_ndk.z.so
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -31,6 +33,8 @@ enum ArkUI_ErrorCode
 **描述：**
 
 定义错误码枚举值。
+
+<!--Device-ArkUI_ErrorCode--><!--Device-ArkUI_ErrorCode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

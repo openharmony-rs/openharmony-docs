@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDevicePipelineBinaryInternalCacheControlKHR {...}--><!--Device-struct VkDevicePipelineBinaryInternalCacheControlKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

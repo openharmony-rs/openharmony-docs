@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV {...}--><!--Device-struct VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

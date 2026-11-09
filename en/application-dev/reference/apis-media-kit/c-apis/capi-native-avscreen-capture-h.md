@@ -87,6 +87,8 @@ struct OH_AVScreenCapture *OH_AVScreenCapture_Create(void)
 
 Creates an OH_AVScreenCapture instance. You can release the instance by calling [OH_AVScreenCapture_Release](capi-native-avscreen-capture-h.md#oh_avscreencapture_release).
 
+<!--Device-struct OH_AVScreenCapture *OH_AVScreenCapture_Create(void)--><!--Device-struct OH_AVScreenCapture *OH_AVScreenCapture_Create(void)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 10
@@ -106,6 +108,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_Init(struct OH_AVScreenCapture *c
 **Description**
 
 Initializes parameters related to an [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) instance, including audio sampling parameters for external capture using microphones (optional), audio sampling parameters for internal capture, and video resolution parameters. In the scenario where screen recording files are stored, the application must ensure that the video encoding parameters, video sampling parameters, audio encoding parameters, audio sampling parameters for internal capture, and audio sampling parameters for external capture using microphones (optional) are valid. In the scenario where screen capture streams are generated, the application must ensure that either audio sampling parameters for internal capture or video sampling parameters are valid, or both are valid, and audio sampling parameters for external capture using microphones are valid (optional). The members of the struct variables are not initialized during initialization. Therefore, the application must correctly set the parameters based on the use scenario. You are advised to set all memory bytes of the OH_AVScreenCaptureConfig struct variables to **0**, and then set valid parameters based on the screen capture scenario. If both **audioSampleRate** and **audioChannels** in the [OH_AudioCaptureInfo](capi-avscreencapture-oh-audiocaptureinfo.md) struct are **0**, the OH_AVScreenCapture instance ignores the corresponding audio parameters and does not collect the audio data. If both **videoFrameWidth** and **videoFrameHeight** in the [OH_VideoCaptureInfo](capi-avscreencapture-oh-videocaptureinfo.md) struct are **0**, the OH_AVScreenCapture instance ignores the corresponding video parameters and does not collect the screen data.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_Init(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureConfig config)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_Init(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureConfig config)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -134,6 +138,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StartScreenCapture(struct OH_AVSc
 
 Starts screen capture and collects original streams. After this function is called, the callback [OH_AVScreenCapture_OnBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onbufferavailable) can be used to check whether streams are generated, and the callback [OH_AVScreenCapture_OnStateChange](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onstatechange) can be used to check the startup status. The application can obtain the original streams of screen capture by calling [OH_AVScreenCapture_AcquireAudioBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_acquireaudiobuffer) and [OH_AVScreenCapture_AcquireVideoBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_acquirevideobuffer).
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StartScreenCapture(struct OH_AVScreenCapture *capture)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StartScreenCapture(struct OH_AVScreenCapture *capture)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 10
@@ -159,6 +165,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StopScreenCapture(struct OH_AVScr
 **Description**
 
 Stops screen capture. This function is used in pair with [OH_AVScreenCapture_StartScreenCapture](capi-native-avscreen-capture-h.md#oh_avscreencapture_startscreencapture). After calling this function, the application stops screen capture or screen share and releases the microphone.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StopScreenCapture(struct OH_AVScreenCapture *capture)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StopScreenCapture(struct OH_AVScreenCapture *capture)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -186,6 +194,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StartScreenRecording(struct OH_AV
 
 Starts screen recording, with recordings saved in files.
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StartScreenRecording(struct OH_AVScreenCapture *capture)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StartScreenRecording(struct OH_AVScreenCapture *capture)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 10
@@ -212,6 +222,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StopScreenRecording(struct OH_AVS
 
 Stops screen recording. This function is used in pair with [OH_AVScreenCapture_StartScreenRecording](capi-native-avscreen-capture-h.md#oh_avscreencapture_startscreenrecording).
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StopScreenRecording(struct OH_AVScreenCapture *capture)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StopScreenRecording(struct OH_AVScreenCapture *capture)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 10
@@ -237,6 +249,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_AcquireAudioBuffer(struct OH_AVSc
 **Description**
 
 Obtains an audio buffer. When calling this function, the application must allocate the memory of the corresponding struct size to the audio buffer. Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onbufferavailable) instead.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_AcquireAudioBuffer(struct OH_AVScreenCapture *capture, OH_AudioBuffer **audiobuffer, OH_AudioCaptureSourceType type)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_AcquireAudioBuffer(struct OH_AVScreenCapture *capture, OH_AudioBuffer **audiobuffer, OH_AudioCaptureSourceType type)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -266,6 +280,8 @@ OH_NativeBuffer* OH_AVScreenCapture_AcquireVideoBuffer(struct OH_AVScreenCapture
 
 Obtains a video buffer. The application can call this function to obtain information such as the video buffer and timestamp. When a video buffer is no longer needed, call **OH_AVScreenCapture_ReleaseVideoBuffer** to release it. Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onbufferavailable) instead.
 
+<!--Device-OH_NativeBuffer* OH_AVScreenCapture_AcquireVideoBuffer(struct OH_AVScreenCapture *capture, int32_t *fence, int64_t *timestamp, struct OH_Rect *region)--><!--Device-OH_NativeBuffer* OH_AVScreenCapture_AcquireVideoBuffer(struct OH_AVScreenCapture *capture, int32_t *fence, int64_t *timestamp, struct OH_Rect *region)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 10
@@ -283,7 +299,7 @@ Obtains a video buffer. The application can call this function to obtain informa
 
 | Type | Description |
 | -- | -- |
-| [OH_NativeBuffer*](capi-avscreencapture-oh-nativebuffer.md) | OH_NativeBuffer object if the operation is successful. The application can call the APIs provided by the OH_NativeBuffer object to obtain information such as the video buffer and resolution. |
+| [OH_NativeBuffer*](../../apis-arkgraphics2d/c-apis/capi-nativewindow-oh-nativebuffer.md) | OH_NativeBuffer object if the operation is successful. The application can call the APIs provided by the OH_NativeBuffer object to obtain information such as the video buffer and resolution. |
 
 ### OH_AVScreenCapture_ReleaseAudioBuffer()
 
@@ -294,6 +310,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ReleaseAudioBuffer(struct OH_AVSc
 **Description**
 
 Releases an audio buffer. When an audio buffer is no longer needed, call this function to release it. Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onbufferavailable) instead.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ReleaseAudioBuffer(struct OH_AVScreenCapture *capture, OH_AudioCaptureSourceType type)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ReleaseAudioBuffer(struct OH_AVScreenCapture *capture, OH_AudioCaptureSourceType type)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -322,6 +340,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ReleaseVideoBuffer(struct OH_AVSc
 
 Releases a video buffer. When a video buffer is no longer needed, call this function to release it. Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onbufferavailable) instead.
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ReleaseVideoBuffer(struct OH_AVScreenCapture *capture)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ReleaseVideoBuffer(struct OH_AVScreenCapture *capture)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 10
@@ -347,6 +367,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCallback(struct OH_AVScreenCap
 **Description**
 
 Sets a callback to listen for available video buffers and audio buffers and errors that occur during the function calling. Starting from API version 12, you are advised to use [OH_AVScreenCapture_SetErrorCallback](capi-native-avscreen-capture-h.md#oh_avscreencapture_seterrorcallback) and [OH_AVScreenCapture_SetDataCallback](capi-native-avscreen-capture-h.md#oh_avscreencapture_setdatacallback) instead.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCallback(struct OH_AVScreenCapture *capture, struct OH_AVScreenCaptureCallback callback)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCallback(struct OH_AVScreenCapture *capture, struct OH_AVScreenCaptureCallback callback)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -375,6 +397,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_Release(struct OH_AVScreenCapture
 
 Releases an OH_AVScreenCapture instance. This function is used in pair with [OH_AVScreenCapture_Create](capi-native-avscreen-capture-h.md#oh_avscreencapture_create).
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_Release(struct OH_AVScreenCapture *capture)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_Release(struct OH_AVScreenCapture *capture)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 10
@@ -400,6 +424,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetMicrophoneEnabled(struct OH_AV
 **Description**
 
 Enables or disables the microphone. When **isMicrophone** is set to **true**, the microphone is enabled, and the original PCM data of the microphone can be obtained by calling [OH_AVScreenCapture_StartScreenCapture](capi-native-avscreen-capture-h.md#oh_avscreencapture_startscreencapture) and [OH_AVScreenCapture_AcquireAudioBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_acquireaudiobuffer). When **isMicrophone** is set to **false**, the obtained audio data is silent data. By default, the microphone is enabled.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetMicrophoneEnabled(struct OH_AVScreenCapture *capture, bool isMicrophone)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetMicrophoneEnabled(struct OH_AVScreenCapture *capture, bool isMicrophone)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -429,6 +455,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetStateCallback(struct OH_AVScre
 Sets a state change callback. This function must be called before screen capture starts. The callback is triggered when the state changes during the running of an OH_AVScreenCapture instance. A privacy dialog box is displayed to ask for user consent before screen capture starts. After a successful call to this function, the following scenarios are possible:
 1. If the user agrees, the screen capture startup process starts. If screen capture starts successfully, the state change callback is triggered to report the [OH_AVScreenCaptureStateCode](capi-native-avscreen-capture-base-h.md#oh_avscreencapturestatecode).OH_SCREEN_CAPTURE_STATE_STARTED status to notify the application of the startup success, with a screen capture notification displayed. If screen capture fails to start, the state change callback is triggered to report the failure information (for example, [OH_AVScreenCaptureStateCode](capi-native-avscreen-capture-base-h.md#oh_avscreencapturestatecode). OH_SCREEN_CAPTURE_STATE_MIC_UNAVAILABLE if the microphone is unavailable), or the error processing callback [OH_AVScreenCapture_OnError](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onerror) is triggered to report the error information.
 2. If the user disagrees, the screen capture startup process stops. The state change callback is triggered to report the [OH_AVScreenCaptureStateCode](capi-native-avscreen-capture-base-h.md#oh_avscreencapturestatecode).OH_SCREEN_CAPTURE_STATE_CANCELED status to notify the application of the startup failure due to user rejection.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetStateCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnStateChange callback, void *userData)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetStateCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnStateChange callback, void *userData)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -460,6 +488,8 @@ Sets a data processing callback. This function must be called before screen capt
 1. The callbacks [OH_AVScreenCaptureOnAudioBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonaudiobufferavailable) and [OH_AVScreenCaptureOnVideoBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonvideobufferavailable) set by calling [OH_AVScreenCapture_SetCallback](capi-native-avscreen-capture-h.md#oh_avscreencapture_setcallback) will no longer be triggered, even when an audio buffer or a video buffer becomes available.
 2. A failure message is returned for a call to any of the following functions: [OH_AVScreenCapture_AcquireAudioBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_acquireaudiobuffer), [OH_AVScreenCapture_ReleaseAudioBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_releaseaudiobuffer), [OH_AVScreenCapture_AcquireVideoBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_acquirevideobuffer), and [OH_AVScreenCapture_ReleaseVideoBuffer](capi-native-avscreen-capture-h.md#oh_avscreencapture_releasevideobuffer).
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetDataCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnBufferAvailable callback, void *userData)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetDataCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnBufferAvailable callback, void *userData)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 12
@@ -487,6 +517,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetErrorCallback(struct OH_AVScre
 **Description**
 
 Sets an error processing callback. This function must be called before screen capture starts. The callback is triggered when an error occurs during the running of an OH_AVScreenCapture instance. After a successful call to this function, the callback [OH_AVScreenCaptureOnError](capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonerror) set by calling [OH_AVScreenCapture_SetCallback](capi-native-avscreen-capture-h.md#oh_avscreencapture_setcallback) will no longer be triggered, even when an error occurs in the OH_AVScreenCapture instance.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetErrorCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnError callback, void *userData)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetErrorCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnError callback, void *userData)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -516,6 +548,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureContentChangedCallback(
 
 Sets the callback for screen capture content changes. This function must be called before screen capture starts.
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureContentChangedCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnCaptureContentChanged callback, void *userData)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureContentChangedCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnCaptureContentChanged callback, void *userData)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 20
@@ -544,6 +578,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StartScreenCaptureWithSurface(str
 
 Starts screen capture in surface mode.
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StartScreenCaptureWithSurface(struct OH_AVScreenCapture *capture, OHNativeWindow *window)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StartScreenCaptureWithSurface(struct OH_AVScreenCapture *capture, OHNativeWindow *window)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 12
@@ -570,6 +606,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCanvasRotation(struct OH_AVScr
 **Description**
 
 Sets whether the captured screen data should rotate. When **canvasRotation** is set to **true**, rotation is enabled and the captured screen data remains upright. The default value is **false**.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCanvasRotation(struct OH_AVScreenCapture *capture, bool canvasRotation)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCanvasRotation(struct OH_AVScreenCapture *capture, bool canvasRotation)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -598,6 +636,8 @@ struct OH_AVScreenCapture_ContentFilter *OH_AVScreenCapture_CreateContentFilter(
 
 Creates a content filter.
 
+<!--Device-struct OH_AVScreenCapture_ContentFilter *OH_AVScreenCapture_CreateContentFilter(void)--><!--Device-struct OH_AVScreenCapture_ContentFilter *OH_AVScreenCapture_CreateContentFilter(void)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 12
@@ -617,6 +657,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ReleaseContentFilter(struct OH_AV
 **Description**
 
 Releases a content filter.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ReleaseContentFilter(struct OH_AVScreenCapture_ContentFilter *filter)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ReleaseContentFilter(struct OH_AVScreenCapture_ContentFilter *filter)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -643,6 +685,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ContentFilter_AddAudioContent(str
 **Description**
 
 Adds audio content to a content filter.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ContentFilter_AddAudioContent(struct OH_AVScreenCapture_ContentFilter *filter, OH_AVScreenCaptureFilterableAudioContent content)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ContentFilter_AddAudioContent(struct OH_AVScreenCapture_ContentFilter *filter, OH_AVScreenCaptureFilterableAudioContent content)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -671,6 +715,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ExcludeContent(struct OH_AVScreen
 
 Sets a content filter for an OH_AVScreenCapture instance.
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ExcludeContent(struct OH_AVScreenCapture *capture, struct OH_AVScreenCapture_ContentFilter *filter)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ExcludeContent(struct OH_AVScreenCapture *capture, struct OH_AVScreenCapture_ContentFilter *filter)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 12
@@ -697,6 +743,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ContentFilter_AddWindowContent(st
 **Description**
 
 Adds a list of window IDs to a ContentFilter instance.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ContentFilter_AddWindowContent(struct OH_AVScreenCapture_ContentFilter *filter, int32_t *windowIDs, int32_t windowCount)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ContentFilter_AddWindowContent(struct OH_AVScreenCapture_ContentFilter *filter, int32_t *windowIDs, int32_t windowCount)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -726,6 +774,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResizeCanvas(struct OH_AVScreenCa
 
 Adjusts the screen resolution. This function is used to set the resolution of screen capture data. **width** indicates the screen width and **<br>height** indicates the screen height. Currently, this function supports only the scenario of capturing streams, but not the scenario of storing captured files. In addition, the caller of this function and the video data consumer must ensure that they support resolution changes of the received video data.
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResizeCanvas(struct OH_AVScreenCapture *capture, int32_t width, int32_t height)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResizeCanvas(struct OH_AVScreenCapture *capture, int32_t width, int32_t height)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 12
@@ -753,6 +803,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SkipPrivacyMode(struct OH_AVScree
 **Description**
 
 Exempts privacy windows during screen capture. Currently, all the IDs of the subwindows and main windows to skip must be passed in.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SkipPrivacyMode(struct OH_AVScreenCapture *capture, int32_t *windowIDs, int32_t windowCount)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SkipPrivacyMode(struct OH_AVScreenCapture *capture, int32_t *windowIDs, int32_t windowCount)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -782,6 +834,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetMaxVideoFrameRate(struct OH_AV
 
 Sets the maximum frame rate for screen capture. This function must be called after screen capture starts. The maximum frame rate that can be configured is subject to the device's limitations and is ultimately governed by the capabilities of the underlying system. Although there is no limit on the maximum value of the input parameter, the maximum frame rate supported is 60 FPS. If the input parameter value exceeds 60 FPS, 60 FPS is used. If the value does not exceed the upper limit, the passed value is used.
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetMaxVideoFrameRate(struct OH_AVScreenCapture *capture, int32_t frameRate)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetMaxVideoFrameRate(struct OH_AVScreenCapture *capture, int32_t frameRate)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 14
@@ -809,6 +863,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ShowCursor(struct OH_AVScreenCapt
 
 Sets whether to show the cursor.
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ShowCursor(struct OH_AVScreenCapture *capture, bool showCursor)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ShowCursor(struct OH_AVScreenCapture *capture, bool showCursor)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 15
@@ -835,6 +891,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureArea(struct OH_AVScreen
 **Description**
 
 Sets or updates the capture area. This function can be called before or after screen capture starts. The coordinates and dimensions provided must be non-negative, and the capture area must not span multiple screens. If setting the area fails, the previously set area is used for capturing.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureArea(struct OH_AVScreenCapture *capture, uint64_t displayId, OH_Rect* area)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureArea(struct OH_AVScreenCapture *capture, uint64_t displayId, OH_Rect* area)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -864,6 +922,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureAreaHighlight(struct OH
 
 Sets the highlight style for the screen capture area.
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureAreaHighlight(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureHighlightConfig config)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureAreaHighlight(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureHighlightConfig config)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 22
@@ -890,6 +950,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetSelectionCallback(struct OH_AV
 **Description**
 
 Registers a callback to handle user selection results on the manual confirmation UI. This callback must be invoked before screen capture starts.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetSelectionCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnUserSelected callback, void *userData)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetSelectionCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnUserSelected callback, void *userData)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -919,6 +981,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetCaptureTypeSelected(OH_AVScree
 
 Obtains the screen capture object type selected by the user on the confirmation UI. This function is used in the [OH_AVScreenCapture_OnUserSelected](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onuserselected) callback. The **selection** pointer is destroyed after the callback is complete.
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetCaptureTypeSelected(OH_AVScreenCapture_UserSelectionInfo *selection, int32_t* type)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetCaptureTypeSelected(OH_AVScreenCapture_UserSelectionInfo *selection, int32_t* type)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 20
@@ -945,6 +1009,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetDisplayIdSelected(OH_AVScreenC
 **Description**
 
 Obtains the display ID of the screen selected by the user for capture. This function is used in the [OH_AVScreenCapture_OnUserSelected](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onuserselected) callback. The **selection** pointer is destroyed after the callback is complete.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetDisplayIdSelected(OH_AVScreenCapture_UserSelectionInfo *selection, uint64_t* displayId)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetDisplayIdSelected(OH_AVScreenCapture_UserSelectionInfo *selection, uint64_t* displayId)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -973,6 +1039,8 @@ OH_AVScreenCapture_CaptureStrategy* OH_AVScreenCapture_CreateCaptureStrategy(voi
 
 Creates a screen capture strategy.
 
+<!--Device-OH_AVScreenCapture_CaptureStrategy* OH_AVScreenCapture_CreateCaptureStrategy(void)--><!--Device-OH_AVScreenCapture_CaptureStrategy* OH_AVScreenCapture_CreateCaptureStrategy(void)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 20
@@ -992,6 +1060,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ReleaseCaptureStrategy(OH_AVScree
 **Description**
 
 Releases a screen capture strategy.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ReleaseCaptureStrategy(OH_AVScreenCapture_CaptureStrategy* strategy)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ReleaseCaptureStrategy(OH_AVScreenCapture_CaptureStrategy* strategy)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -1020,6 +1090,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureStrategy(
 
 Sets a screen capture strategy for an OH_AVScreenCapture instance. This function must be called before screen capture starts.
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureStrategy(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_CaptureStrategy *strategy)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureStrategy(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_CaptureStrategy *strategy)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 20
@@ -1046,6 +1118,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForKeepCaptureDuringCall(
 **Description**
 
 Sets whether to keep screen capture during a cellular call. When **value** is set to **true** and screen capture is active during a cellular call, for privacy reasons, the voices of both parties (local microphone and remote speaker) are not captured. Other system sounds are captured normally. After the call ends, the screen capture framework resumes microphone recording. If the screen capture application is running in the background when the call ends, microphone recording fails to start because the audio module does not allow background applications to activate microphone recording.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForKeepCaptureDuringCall(OH_AVScreenCapture_CaptureStrategy *strategy, bool value)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForKeepCaptureDuringCall(OH_AVScreenCapture_CaptureStrategy *strategy, bool value)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -1074,6 +1148,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForPrivacyMaskMode( OH_AV
 
 Set the fill mode for screen capture when a privacy window exists
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForPrivacyMaskMode(OH_AVScreenCapture_CaptureStrategy *strategy, int32_t value)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForPrivacyMaskMode(OH_AVScreenCapture_CaptureStrategy *strategy, int32_t value)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 20
@@ -1100,6 +1176,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForBFramesEncoding( OH_AV
 **Description**
 
 Sets whether to enable B-frame encoding for a CaptureStrategy instance to reduce the size of the recorded file. For details about the restrictions on B-frame video encoding, see Constraints in B-Frame Video Encoding. If the current environment does not meet the restrictions, B-frames will be skipped during screen capture, and no error will be returned.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForBFramesEncoding(OH_AVScreenCapture_CaptureStrategy *strategy, bool value)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForBFramesEncoding(OH_AVScreenCapture_CaptureStrategy *strategy, bool value)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -1128,6 +1206,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForCanvasFollowRotation( 
 
 Sets the automatic rotation following configuration for screen capture. If the value is set to **true**, the screen capture follows the rotation, and the virtual screen size is automatically adjusted after a rotation to ensure the output image matches the new orientation. After this setting, there is no need to manually call [OH_AVScreenCapture_ResizeCanvas](capi-native-avscreen-capture-h.md#oh_avscreencapture_resizecanvas) after rotation notifications.
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForCanvasFollowRotation(OH_AVScreenCapture_CaptureStrategy *strategy, bool value)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForCanvasFollowRotation(OH_AVScreenCapture_CaptureStrategy *strategy, bool value)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 20
@@ -1154,6 +1234,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForPickerPopUp( OH_AVScre
 **Description**
 
 Sets whether to display the screen capture picker.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForPickerPopUp(OH_AVScreenCapture_CaptureStrategy *strategy, bool value)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForPickerPopUp(OH_AVScreenCapture_CaptureStrategy *strategy, bool value)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -1182,6 +1264,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForFillMode( OH_AVScreenC
 
 Sets the fill mode of the captured image in the target region.
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForFillMode(OH_AVScreenCapture_CaptureStrategy *strategy, OH_AVScreenCapture_FillMode mode)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForFillMode(OH_AVScreenCapture_CaptureStrategy *strategy, OH_AVScreenCapture_FillMode mode)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 20
@@ -1208,6 +1292,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetDisplayCallback(struct OH_AVSc
 **Description**
 
 Sets a callback function for obtaining the display ID.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetDisplayCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnDisplaySelected callback, void *userData)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetDisplayCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnDisplaySelected callback, void *userData)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -1237,6 +1323,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ExcludePickerWindows(struct OH_AV
 
 Hides the specified window in the picker. This function is called before the picker is displayed. It is to filter and hide a window.
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ExcludePickerWindows(struct OH_AVScreenCapture *capture, const int32_t *excludedWindowIDs, uint32_t windowCount)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ExcludePickerWindows(struct OH_AVScreenCapture *capture, const int32_t *excludedWindowIDs, uint32_t windowCount)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 22
@@ -1265,6 +1353,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetPickerMode(struct OH_AVScreenC
 
 Sets the display mode of the picker. You can define the content type displayed in the picker. The mode change takes effect when [OH_AVScreenCapture_PresentPicker](capi-native-avscreen-capture-h.md#oh_avscreencapture_presentpicker) is called next time.
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetPickerMode(struct OH_AVScreenCapture *capture, OH_CapturePickerMode pickerMode)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetPickerMode(struct OH_AVScreenCapture *capture, OH_CapturePickerMode pickerMode)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 22
@@ -1292,6 +1382,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_PresentPicker(struct OH_AVScreenC
 
 Displays the picker once more after the screen capture starts, allowing for dynamic updates to the recording source, such as changing the window or screen being captured. The ongoing capture process remains uninterrupted while updating the recording source. Following the dynamic update of the recording source through the picker, the capture can proceed with the newly selected source.
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_PresentPicker(struct OH_AVScreenCapture *capture)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_PresentPicker(struct OH_AVScreenCapture *capture)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 22
@@ -1317,6 +1409,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetMultiDisplayCaptureCapability(
 **Description**
 
 Obtains the multi-screen recording capability information and determines whether the selected screens support joint recording.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetMultiDisplayCaptureCapability(struct OH_AVScreenCapture *capture, uint64_t *displayIds, size_t count, OH_MultiDisplayCapability *capability)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetMultiDisplayCaptureCapability(struct OH_AVScreenCapture *capture, uint64_t *displayIds, size_t count, OH_MultiDisplayCapability *capability)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -1347,6 +1441,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetMultiDisplayIdsSelected(OH_AVS
 
 Obtains the list of display IDs selected by the user for recording on the picker page. This function is used in the [OH_AVScreenCapture_OnUserSelected](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onuserselected) callback. The **selection** pointer is destroyed after the callback is complete.
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetMultiDisplayIdsSelected(OH_AVScreenCapture_UserSelectionInfo *selection, uint64_t **displayIds, size_t *count)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetMultiDisplayIdsSelected(OH_AVScreenCapture_UserSelectionInfo *selection, uint64_t **displayIds, size_t *count)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 24
@@ -1374,6 +1470,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetPrivacyProtectCallback(struct 
 **Description**
 
 Sets a privacy protection callback so that the application can respond to privacy protection events generated during screen capture. This API must be called before screen capture starts.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetPrivacyProtectCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnPrivacyProtect callback, void *userData)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetPrivacyProtectCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnPrivacyProtect callback, void *userData)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -1403,6 +1501,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForPause(OH_AVScreenCaptu
 
 Allow to pause screen capture
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForPause(OH_AVScreenCapture_CaptureStrategy *strategy, bool value)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForPause(OH_AVScreenCapture_CaptureStrategy *strategy, bool value)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 26.0.0
@@ -1430,6 +1530,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_PauseScreenCapture(struct OH_AVSc
 
 Pause screen capture
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_PauseScreenCapture(struct OH_AVScreenCapture *capture)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_PauseScreenCapture(struct OH_AVScreenCapture *capture)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 26.0.0
@@ -1456,6 +1558,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResumeScreenCapture(struct OH_AVS
 
 Resume screen capture
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResumeScreenCapture(struct OH_AVScreenCapture *capture)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResumeScreenCapture(struct OH_AVScreenCapture *capture)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 26.0.0
@@ -1481,6 +1585,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForMicAEC(OH_AVScreenCapt
 **Description**
 
 Specifies whether to enable the echo cancellation function when the microphone is enabled.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForMicAEC(OH_AVScreenCapture_CaptureStrategy *strategy, bool enable)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForMicAEC(OH_AVScreenCapture_CaptureStrategy *strategy, bool enable)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -1509,6 +1615,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForHDRCapture(OH_AVScreen
 
 Specifies whether to output images in HDR vivid format.
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForHDRCapture(OH_AVScreenCapture_CaptureStrategy *strategy, bool enable)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForHDRCapture(OH_AVScreenCapture_CaptureStrategy *strategy, bool enable)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 26.1.0
@@ -1535,6 +1643,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForContentAutoPauseScenes
 **Description**
 
 Sets the set of scenarios in which the screen content capture is automatically paused. If the specified scenario is met, the system automatically pauses the screen content capture. You can call the OH_AVScreenCapture_ResumeScreenCapture() function to resume the screen content capture.
+
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForContentAutoPauseScenes(OH_AVScreenCapture_CaptureStrategy *strategy, OH_AVScreenCapture_AutoPauseSceneSet scenes)--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForContentAutoPauseScenes(OH_AVScreenCapture_CaptureStrategy *strategy, OH_AVScreenCapture_AutoPauseSceneSet scenes)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 

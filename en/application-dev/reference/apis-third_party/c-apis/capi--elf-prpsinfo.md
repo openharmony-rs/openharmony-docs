@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct elf_prpsinfo {...}--><!--Device-struct elf_prpsinfo {...}-End-->
+
 ## Summary
 
 ### Member variables

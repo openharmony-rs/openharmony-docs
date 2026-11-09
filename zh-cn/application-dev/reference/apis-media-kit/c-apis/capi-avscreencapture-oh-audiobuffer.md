@@ -8,11 +8,13 @@ struct OH_AudioBuffer {...}
 
 定义了音频缓冲区数据及其大小、类型、时间戳等属性信息。<br> 在屏幕录制过程中，该结构体由系统通过音频数据回调填充，开发者可从中读取录制的音频帧数据及其时间戳，用于后续音频处理或编码。 适用于需要获取屏幕录制音频帧数据的场景。
 
+<!--Device-struct OH_AudioBuffer {...}--><!--Device-struct OH_AudioBuffer {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **起始版本：** 10
 
-**相关模块：** [AVScreenCapture](capi-others-avscreencapture.md)
+**相关模块：** [AVScreenCapture](capi-media-kit-avscreencapture.md)
 
 **所在头文件：** [native_avscreen_capture_base.h](capi-native-avscreen-capture-base-h.md)
 

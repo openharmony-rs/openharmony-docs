@@ -35,6 +35,8 @@ enum AVSession_ErrCode
 
 播控错误码。
 
+<!--Device-AVSession_ErrCode--><!--Device-AVSession_ErrCode-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
@@ -105,6 +107,8 @@ enum AVSessionCallback_Result
 
 定义音视频会话回调结果枚举。
 
+<!--Device-AVSessionCallback_Result--><!--Device-AVSessionCallback_Result-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
@@ -123,6 +127,8 @@ enum AVMetadata_Result
 **描述：**
 
 播控元数据错误码。
+
+<!--Device-AVMetadata_Result--><!--Device-AVMetadata_Result-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -143,6 +149,8 @@ enum AVQueueItem_Result
 **描述：**
 
 播放列表中单项的错误码。
+
+<!--Device-AVQueueItem_Result--><!--Device-AVQueueItem_Result-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 

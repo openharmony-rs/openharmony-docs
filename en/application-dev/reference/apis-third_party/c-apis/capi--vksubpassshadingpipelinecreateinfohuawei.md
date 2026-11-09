@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSubpassShadingPipelineCreateInfoHUAWEI {...}--><!--Device-struct VkSubpassShadingPipelineCreateInfoHUAWEI {...}-End-->
+
 ## Summary
 
 ### Member variables

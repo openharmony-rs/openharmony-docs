@@ -32,6 +32,8 @@ enum ArkWeb_NetError
 
 Enumerates the error codes of the ArkWeb network protocol stack.
 
+<!--Device-ArkWeb_NetError--><!--Device-ArkWeb_NetError-End-->
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12

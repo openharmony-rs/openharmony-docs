@@ -8,11 +8,13 @@ struct Hid_Device {...}
 
 设备基本信息，用于表示HID设备的名称、厂商ID、产品ID等基本属性，在创建和操作HID设备时作为设备标识使用。
 
+<!--Device-struct Hid_Device {...}--><!--Device-struct Hid_Device {...}-End-->
+
 **系统能力：** SystemCapability.Driver.HID.Extension
 
 **起始版本：** 11
 
-**相关模块：** [HidDdk](capi-others-hidddk.md)
+**相关模块：** [HidDdk](capi-driver-development-kit-hidddk.md)
 
 **所在头文件：** [hid_ddk_types.h](capi-hid-ddk-types-h.md)
 

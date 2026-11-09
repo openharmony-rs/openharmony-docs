@@ -8,11 +8,13 @@ struct DRM_Statistics {...}
 
 The struct describes the metrics for a media key system.
 
+<!--Device-struct DRM_Statistics {...}--><!--Device-struct DRM_Statistics {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 
-**Related module**: [Drm](capi-others-drm.md)
+**Related module**: [Drm](capi-drm-kit-drm.md)
 
 **Header file**: [native_drm_common.h](capi-native-drm-common-h.md)
 

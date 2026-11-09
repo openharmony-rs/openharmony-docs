@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceExternalFenceInfo {...}--><!--Device-struct VkPhysicalDeviceExternalFenceInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

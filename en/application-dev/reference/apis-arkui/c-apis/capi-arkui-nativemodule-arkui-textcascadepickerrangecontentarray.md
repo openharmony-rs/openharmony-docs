@@ -8,11 +8,13 @@ typedef struct ArkUI_TextCascadePickerRangeContentArray ArkUI_TextCascadePickerR
 
 Defines an option array of a multi-column text cascade picker. This struct is used to configure the hierarchical data of a multi-column text cascade picker, that is, configure the text and child-level data of each column's options through indexes. It is applicable to scenarios that require multi-column data cascade, such as province-city-district cascade and product category selection.
 
+<!--Device-typedef struct ArkUI_TextCascadePickerRangeContentArray ArkUI_TextCascadePickerRangeContentArray--><!--Device-typedef struct ArkUI_TextCascadePickerRangeContentArray ArkUI_TextCascadePickerRangeContentArray-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [picker.h](capi-picker-h.md)
 

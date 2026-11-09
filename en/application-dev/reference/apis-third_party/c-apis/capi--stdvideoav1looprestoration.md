@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoAV1LoopRestoration {...}--><!--Device-struct StdVideoAV1LoopRestoration {...}-End-->
+
 ## Summary
 
 ### Member variables

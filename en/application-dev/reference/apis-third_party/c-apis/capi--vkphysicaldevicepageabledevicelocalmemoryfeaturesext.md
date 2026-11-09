@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT {...}--><!--Device-struct VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

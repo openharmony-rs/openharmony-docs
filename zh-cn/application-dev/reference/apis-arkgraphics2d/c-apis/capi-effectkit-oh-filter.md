@@ -8,11 +8,13 @@ typedef struct OH_Filter OH_Filter
 
 滤镜结构体，用于配合effectKit模块相关接口实现滤镜效果处理。
 
+<!--Device-typedef struct OH_Filter OH_Filter--><!--Device-typedef struct OH_Filter OH_Filter-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 12
 
-**相关模块：** [effectKit](capi-others-effectkit.md)
+**相关模块：** [effectKit](capi-arkgraphics2d-effectkit.md)
 
 **所在头文件：** [effect_types.h](capi-effect-types-h.md)
 

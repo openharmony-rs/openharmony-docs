@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct Elf32_Nhdr {...}--><!--Device-struct Elf32_Nhdr {...}-End-->
+
 ## Summary
 
 ### Member variables

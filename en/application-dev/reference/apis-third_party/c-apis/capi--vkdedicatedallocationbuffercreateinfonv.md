@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDedicatedAllocationBufferCreateInfoNV {...}--><!--Device-struct VkDedicatedAllocationBufferCreateInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

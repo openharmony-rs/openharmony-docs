@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct Elf64_Ehdr {...}--><!--Device-struct Elf64_Ehdr {...}-End-->
+
 ## Summary
 
 ### Member variables

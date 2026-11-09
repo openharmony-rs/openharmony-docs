@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkRenderPassCreateInfo2 {...}--><!--Device-struct VkRenderPassCreateInfo2 {...}-End-->
+
 ## Summary
 
 ### Member variables

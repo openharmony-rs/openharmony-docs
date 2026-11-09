@@ -93,6 +93,8 @@ enum OH_TrafficFilter_ErrCode
 
 Defines the error codes for traffic filtering and redirection.
 
+<!--Device-OH_TrafficFilter_ErrCode--><!--Device-OH_TrafficFilter_ErrCode-End-->
+
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Since**: 26.0.0
@@ -118,6 +120,8 @@ enum OH_TrafficFilter_IPMatchType
 
 Defines an IP match type.
 
+<!--Device-OH_TrafficFilter_IPMatchType--><!--Device-OH_TrafficFilter_IPMatchType-End-->
+
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Since**: 26.0.0
@@ -140,6 +144,8 @@ enum OH_TrafficFilter_IPFamily
 
 Defines an IP address family.
 
+<!--Device-OH_TrafficFilter_IPFamily--><!--Device-OH_TrafficFilter_IPFamily-End-->
+
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Since**: 26.0.0
@@ -159,6 +165,8 @@ enum OH_TrafficFilter_PortMatchType
 **Description**
 
 Defines a port match type.
+
+<!--Device-OH_TrafficFilter_PortMatchType--><!--Device-OH_TrafficFilter_PortMatchType-End-->
 
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
@@ -180,6 +188,8 @@ enum OH_TrafficFilter_HookPoint
 **Description**
 
 Enumerates the hook points, specifying where the rule takes effect in the network protocol stack. As packets pass through the kernel network protocol stack, hook points are triggered at different stages, and the rule intercepts packets at the corresponding hook points. For example, the INPUT chain processes packets entering the local device, and the OUTPUT chain processes packets sent from the local device.
+
+<!--Device-OH_TrafficFilter_HookPoint--><!--Device-OH_TrafficFilter_HookPoint-End-->
 
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
@@ -203,6 +213,8 @@ enum OH_TrafficFilter_PacketDecision
 
 Packet decision type
 
+<!--Device-OH_TrafficFilter_PacketDecision--><!--Device-OH_TrafficFilter_PacketDecision-End-->
+
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Since**: 26.0.1
@@ -221,6 +233,8 @@ enum OH_TrafficFilter_PacketCopyMode
 **Description**
 
 Packet copy mode enumeration
+
+<!--Device-OH_TrafficFilter_PacketCopyMode--><!--Device-OH_TrafficFilter_PacketCopyMode-End-->
 
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
@@ -245,6 +259,8 @@ typedef OH_TrafficFilter_PacketDecision (*OH_TrafficFilter_PacketCallback)(const
 **Description**
 
 Packet callback function type
+
+<!--Device-typedef OH_TrafficFilter_PacketDecision (*OH_TrafficFilter_PacketCallback)(const OH_TrafficFilter_PacketDesc* packet, void* userData)--><!--Device-typedef OH_TrafficFilter_PacketDecision (*OH_TrafficFilter_PacketCallback)(const OH_TrafficFilter_PacketDesc* packet, void* userData)-End-->
 
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 

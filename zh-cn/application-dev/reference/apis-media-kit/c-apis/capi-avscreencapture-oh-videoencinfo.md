@@ -8,11 +8,13 @@ struct OH_VideoEncInfo {...}
 
 视频编码参数。<br> 用于配置屏幕录制的视频编码参数，支持设置编码格式、比特率和帧率。videoCodec指定编码格式（如H.264、H.265等）， videoBitrate影响视频清晰度和文件大小，videoFrameRate影响视频流畅度。通常在调用屏幕录制接口前设置这些参数。
 
+<!--Device-struct OH_VideoEncInfo {...}--><!--Device-struct OH_VideoEncInfo {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **起始版本：** 10
 
-**相关模块：** [AVScreenCapture](capi-others-avscreencapture.md)
+**相关模块：** [AVScreenCapture](capi-media-kit-avscreencapture.md)
 
 **所在头文件：** [native_avscreen_capture_base.h](capi-native-avscreen-capture-base-h.md)
 

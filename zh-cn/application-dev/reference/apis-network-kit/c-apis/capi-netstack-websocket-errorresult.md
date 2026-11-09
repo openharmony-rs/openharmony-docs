@@ -8,11 +8,13 @@ struct WebSocket_ErrorResult {...}
 
 websocket客户端来自服务端连接错误的参数。
 
+<!--Device-struct WebSocket_ErrorResult {...}--><!--Device-struct WebSocket_ErrorResult {...}-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 11
 
-**相关模块：** [netstack](capi-others-netstack.md)
+**相关模块：** [netstack](capi-network-kit-netstack.md)
 
 **所在头文件：** [net_websocket_type.h](capi-net-websocket-type-h.md)
 

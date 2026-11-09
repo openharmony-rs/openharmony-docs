@@ -4,6 +4,8 @@
 
 A serialized form of a Unicode set. Limited manipulations arepossible directly on a serialized set. See below.
 
+<!--Device-struct USerializedSet {...}--><!--Device-struct USerializedSet {...}-End-->
+
 ## Summary
 
 ### Member variables

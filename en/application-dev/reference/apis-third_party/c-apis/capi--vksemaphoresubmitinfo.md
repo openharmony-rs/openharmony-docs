@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSemaphoreSubmitInfo {...}--><!--Device-struct VkSemaphoreSubmitInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

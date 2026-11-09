@@ -61,6 +61,8 @@ enum Data_AssetStatus
 
 Describes the status of asset.
 
+<!--Device-Data_AssetStatus--><!--Device-Data_AssetStatus-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 11
@@ -87,6 +89,8 @@ int OH_Data_Asset_SetName(Data_Asset *asset, const char *name)
 **Description**
 
 Set the name of the Data_Asset.
+
+<!--Device-int OH_Data_Asset_SetName(Data_Asset *asset, const char *name)--><!--Device-int OH_Data_Asset_SetName(Data_Asset *asset, const char *name)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -120,6 +124,8 @@ int OH_Data_Asset_SetUri(Data_Asset *asset, const char *uri)
 
 Set the uri of the Data_Asset.
 
+<!--Device-int OH_Data_Asset_SetUri(Data_Asset *asset, const char *uri)--><!--Device-int OH_Data_Asset_SetUri(Data_Asset *asset, const char *uri)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 11
@@ -151,6 +157,8 @@ int OH_Data_Asset_SetPath(Data_Asset *asset, const char *path)
 **Description**
 
 Set the path of the Data_Asset.
+
+<!--Device-int OH_Data_Asset_SetPath(Data_Asset *asset, const char *path)--><!--Device-int OH_Data_Asset_SetPath(Data_Asset *asset, const char *path)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -184,6 +192,8 @@ int OH_Data_Asset_SetCreateTime(Data_Asset *asset, int64_t createTime)
 
 Set the create time of the Data_Asset.
 
+<!--Device-int OH_Data_Asset_SetCreateTime(Data_Asset *asset, int64_t createTime)--><!--Device-int OH_Data_Asset_SetCreateTime(Data_Asset *asset, int64_t createTime)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 11
@@ -215,6 +225,8 @@ int OH_Data_Asset_SetModifyTime(Data_Asset *asset, int64_t modifyTime)
 **Description**
 
 Set the modify time of the Data_Asset.
+
+<!--Device-int OH_Data_Asset_SetModifyTime(Data_Asset *asset, int64_t modifyTime)--><!--Device-int OH_Data_Asset_SetModifyTime(Data_Asset *asset, int64_t modifyTime)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -248,6 +260,8 @@ int OH_Data_Asset_SetSize(Data_Asset *asset, size_t size)
 
 Set the size of the Data_Asset.
 
+<!--Device-int OH_Data_Asset_SetSize(Data_Asset *asset, size_t size)--><!--Device-int OH_Data_Asset_SetSize(Data_Asset *asset, size_t size)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 11
@@ -280,6 +294,8 @@ int OH_Data_Asset_SetStatus(Data_Asset *asset, Data_AssetStatus status)
 
 Set the status of the Data_Asset.
 
+<!--Device-int OH_Data_Asset_SetStatus(Data_Asset *asset, Data_AssetStatus status)--><!--Device-int OH_Data_Asset_SetStatus(Data_Asset *asset, Data_AssetStatus status)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 11
@@ -311,6 +327,8 @@ int OH_Data_Asset_GetName(Data_Asset *asset, char *name, size_t *length)
 **Description**
 
 Obtains the name of the asset.
+
+<!--Device-int OH_Data_Asset_GetName(Data_Asset *asset, char *name, size_t *length)--><!--Device-int OH_Data_Asset_GetName(Data_Asset *asset, char *name, size_t *length)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -345,6 +363,8 @@ int OH_Data_Asset_GetUri(Data_Asset *asset, char *uri, size_t *length)
 
 Obtains the uri of the asset.
 
+<!--Device-int OH_Data_Asset_GetUri(Data_Asset *asset, char *uri, size_t *length)--><!--Device-int OH_Data_Asset_GetUri(Data_Asset *asset, char *uri, size_t *length)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 11
@@ -377,6 +397,8 @@ int OH_Data_Asset_GetPath(Data_Asset *asset, char *path, size_t *length)
 **Description**
 
 Obtains the path of the asset.
+
+<!--Device-int OH_Data_Asset_GetPath(Data_Asset *asset, char *path, size_t *length)--><!--Device-int OH_Data_Asset_GetPath(Data_Asset *asset, char *path, size_t *length)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -411,6 +433,8 @@ int OH_Data_Asset_GetCreateTime(Data_Asset *asset, int64_t *createTime)
 
 Obtains the create time of the asset.
 
+<!--Device-int OH_Data_Asset_GetCreateTime(Data_Asset *asset, int64_t *createTime)--><!--Device-int OH_Data_Asset_GetCreateTime(Data_Asset *asset, int64_t *createTime)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 11
@@ -442,6 +466,8 @@ int OH_Data_Asset_GetModifyTime(Data_Asset *asset, int64_t *modifyTime)
 **Description**
 
 Obtains the modify time of the asset.
+
+<!--Device-int OH_Data_Asset_GetModifyTime(Data_Asset *asset, int64_t *modifyTime)--><!--Device-int OH_Data_Asset_GetModifyTime(Data_Asset *asset, int64_t *modifyTime)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -475,6 +501,8 @@ int OH_Data_Asset_GetSize(Data_Asset *asset, size_t *size)
 
 Obtains the size of the asset.
 
+<!--Device-int OH_Data_Asset_GetSize(Data_Asset *asset, size_t *size)--><!--Device-int OH_Data_Asset_GetSize(Data_Asset *asset, size_t *size)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 11
@@ -506,6 +534,8 @@ int OH_Data_Asset_GetStatus(Data_Asset *asset, Data_AssetStatus *status)
 **Description**
 
 Obtains the status of the asset.
+
+<!--Device-int OH_Data_Asset_GetStatus(Data_Asset *asset, Data_AssetStatus *status)--><!--Device-int OH_Data_Asset_GetStatus(Data_Asset *asset, Data_AssetStatus *status)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -539,6 +569,8 @@ Data_Asset *OH_Data_Asset_CreateOne(void)
 
 Creates an [Data_Asset](capi-rdb-data-asset.md) instance.
 
+<!--Device-Data_Asset *OH_Data_Asset_CreateOne(void)--><!--Device-Data_Asset *OH_Data_Asset_CreateOne(void)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 11
@@ -563,6 +595,8 @@ int OH_Data_Asset_DestroyOne(Data_Asset *asset)
 **Description**
 
 Destroy the [Data_Asset](capi-rdb-data-asset.md) object and reclaim the memory occupied by the object.
+
+<!--Device-int OH_Data_Asset_DestroyOne(Data_Asset *asset)--><!--Device-int OH_Data_Asset_DestroyOne(Data_Asset *asset)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -595,6 +629,8 @@ Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count)
 
 Creates [Data_Asset](capi-rdb-data-asset.md) instances of given number.
 
+<!--Device-Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count)--><!--Device-Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 11
@@ -625,6 +661,8 @@ int OH_Data_Asset_DestroyMultiple(Data_Asset **assets, uint32_t count)
 **Description**
 
 Destroy the [Data_Asset](capi-rdb-data-asset.md) objects and reclaim the memory occupied by the objects.
+
+<!--Device-int OH_Data_Asset_DestroyMultiple(Data_Asset **assets, uint32_t count)--><!--Device-int OH_Data_Asset_DestroyMultiple(Data_Asset **assets, uint32_t count)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 

@@ -75,6 +75,8 @@ enum ArkUI_ImmersiveStyle
 
 沉浸式材质样式枚举。不同样式对应不同的材质参数，影响材质的薄厚程度。
 
+<!--Device-ArkUI_ImmersiveStyle--><!--Device-ArkUI_ImmersiveStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
@@ -96,6 +98,8 @@ enum ArkUI_MaterialLevel
 **描述：**
 
 材质等级枚举，与设备的算力等级相关。 <br>使用[OH_ArkUI_NativeModule_GetGlobalMaterialLevel](capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel)可获取当前设备的材质等级。
+
+<!--Device-ArkUI_MaterialLevel--><!--Device-ArkUI_MaterialLevel-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,6 +124,8 @@ bool OH_ArkUI_NativeModule_GetSystemMaterialSupported()
 
 检查当前设备是否支持系统材质（即设备系统内置的材质渲染能力）。 <br>如果返回true，则可以使用[NODE_SYSTEM_MATERIAL](capi-native-node-h.md#arkui_nodeattributetype)属性，否则设置该属性将无效。该配置项由设备定义，不可修改。
 
+<!--Device-bool OH_ArkUI_NativeModule_GetSystemMaterialSupported()--><!--Device-bool OH_ArkUI_NativeModule_GetSystemMaterialSupported()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
@@ -140,6 +146,8 @@ ArkUI_MaterialLevel OH_ArkUI_NativeModule_GetGlobalMaterialLevel()
 
 获取全局材质等级，与设备的算力相关。该配置项由设备定义，不可修改。
 
+<!--Device-ArkUI_MaterialLevel OH_ArkUI_NativeModule_GetGlobalMaterialLevel()--><!--Device-ArkUI_MaterialLevel OH_ArkUI_NativeModule_GetGlobalMaterialLevel()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
@@ -159,6 +167,8 @@ ArkUI_ImmersiveMaterialHandle OH_ArkUI_NativeModule_ImmersiveMaterial_Create(Ark
 **描述：**
 
 创建具有指定样式的沉浸式材质对象。创建的材质等级跟随全局材质等级，可通过[OH_ArkUI_NativeModule_GetGlobalMaterialLevel](capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel)获取。
+
+<!--Device-ArkUI_ImmersiveMaterialHandle OH_ArkUI_NativeModule_ImmersiveMaterial_Create(ArkUI_ImmersiveStyle style)--><!--Device-ArkUI_ImmersiveMaterialHandle OH_ArkUI_NativeModule_ImmersiveMaterial_Create(ArkUI_ImmersiveStyle style)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,6 +198,8 @@ void OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy(ArkUI_ImmersiveMaterialHand
 
 销毁沉浸式材质对象。
 
+<!--Device-void OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy(ArkUI_ImmersiveMaterialHandle material)--><!--Device-void OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy(ArkUI_ImmersiveMaterialHandle material)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
@@ -207,6 +219,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetStyle(ArkUI_Immersive
 **描述：**
 
 设置沉浸式材质对象的样式。该参数仅对高算力和中算力设备的显示效果有效，对低算力设备不生效但不会报错。可通过[OH_ArkUI_NativeModule_GetGlobalMaterialLevel](capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel) 获取当前设备的材质等级以判断该参数是否生效。
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetStyle(ArkUI_ImmersiveMaterialHandle material, ArkUI_ImmersiveStyle style)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetStyle(ArkUI_ImmersiveMaterialHandle material, ArkUI_ImmersiveStyle style)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -235,6 +249,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetStyle(ArkUI_Immersive
 
 获取沉浸式材质对象的样式。
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetStyle(ArkUI_ImmersiveMaterialHandle material, ArkUI_ImmersiveStyle* style)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetStyle(ArkUI_ImmersiveMaterialHandle material, ArkUI_ImmersiveStyle* style)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
@@ -261,6 +277,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetMaterialColor(ArkUI_I
 **描述：**
 
 设置沉浸式材质对象的材质颜色。该参数对所有算力设备的显示效果有效。可通过[OH_ArkUI_NativeModule_GetGlobalMaterialLevel](capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel)获取当前设备的材质等级以判断该参数是否生效。 如果不设置，默认值为0，表示透明色。
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetMaterialColor(ArkUI_ImmersiveMaterialHandle material, uint32_t color)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetMaterialColor(ArkUI_ImmersiveMaterialHandle material, uint32_t color)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -289,6 +307,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetMaterialColor(ArkUI_I
 
 获取沉浸式材质对象的材质颜色。
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetMaterialColor(ArkUI_ImmersiveMaterialHandle material, uint32_t* color)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetMaterialColor(ArkUI_ImmersiveMaterialHandle material, uint32_t* color)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
@@ -315,6 +335,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetApplyShadow(ArkUI_Imm
 **描述：**
 
 设置沉浸式材质对象是否应用阴影。该参数对所有等级材质都生效。 <br>当该参数为true时，材质中的阴影效果生效，优先于阴影通用属性。当该参数为false时，阴影通用属性生效，材质无阴影效果。如果不设置，默认值为true。
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetApplyShadow(ArkUI_ImmersiveMaterialHandle material, bool applyShadow)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetApplyShadow(ArkUI_ImmersiveMaterialHandle material, bool applyShadow)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -343,6 +365,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetApplyShadow(ArkUI_Imm
 
 获取沉浸式材质对象是否应用阴影。
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetApplyShadow(ArkUI_ImmersiveMaterialHandle material, bool* applyShadow)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetApplyShadow(ArkUI_ImmersiveMaterialHandle material, bool* applyShadow)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
@@ -369,6 +393,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetInteractive(ArkUI_Imm
 **描述：**
 
 设置沉浸式材质对象是否可交互形变。即材质在用户交互（如触摸、按压）时是否产生视觉形变响应。该参数对所有等级材质都生效。 <br>当该参数为true时，材质可交互形变。当该参数为false时，材质不可交互形变。如果不设置，遵循组件的行为。
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetInteractive(ArkUI_ImmersiveMaterialHandle material, bool interactive)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetInteractive(ArkUI_ImmersiveMaterialHandle material, bool interactive)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -397,6 +423,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetInteractive(ArkUI_Imm
 
 获取沉浸式材质对象的可交互形变属性。建议先通过[OH_ArkUI_NativeModule_ImmersiveMaterial_SetInteractive](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_setinteractive)设置该属性后再调用本接口获取， 如果从未设置过该属性，函数将返回[ARKUI_ERROR_CODE_PARAM_ERROR](capi-error-code-h.md#arkui_errorcode)。
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetInteractive(ArkUI_ImmersiveMaterialHandle material, bool* interactive)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetInteractive(ArkUI_ImmersiveMaterialHandle material, bool* interactive)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
@@ -424,6 +452,8 @@ ArkUI_LightEffectOptionsHandle OH_ArkUI_NativeModule_LightEffectOptions_Create()
 
 创建光感交互效果配置对象，用于配置沉浸式材质的触摸高亮反馈效果。默认颜色为白色（0xffffffff）。创建完成后，需通过 [OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_setlighteffect)将配置对象设置到沉浸式材质对象上才能生效。
 
+<!--Device-ArkUI_LightEffectOptionsHandle OH_ArkUI_NativeModule_LightEffectOptions_Create()--><!--Device-ArkUI_LightEffectOptionsHandle OH_ArkUI_NativeModule_LightEffectOptions_Create()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
@@ -446,6 +476,8 @@ void OH_ArkUI_NativeModule_LightEffectOptions_Destroy(ArkUI_LightEffectOptionsHa
 
 销毁光感交互效果配置对象。
 
+<!--Device-void OH_ArkUI_NativeModule_LightEffectOptions_Destroy(ArkUI_LightEffectOptionsHandle options)--><!--Device-void OH_ArkUI_NativeModule_LightEffectOptions_Destroy(ArkUI_LightEffectOptionsHandle options)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
@@ -465,6 +497,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LightEffectOptions_SetColor(ArkUI_LightEff
 **描述：**
 
 设置光感交互效果的颜色。如果不设置，默认颜色为白色（0xffffffff）。
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_LightEffectOptions_SetColor(ArkUI_LightEffectOptionsHandle options, uint32_t color)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_LightEffectOptions_SetColor(ArkUI_LightEffectOptionsHandle options, uint32_t color)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -493,6 +527,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect(ArkUI_Imm
 
 设置沉浸式材质对象的光感交互效果，即在材质表面呈现随用户交互动态变化的光效反射。该参数对所有等级材质都生效。 <br>传入NULL的光感交互效果配置指针表示禁用光感交互效果，适用于纯展示性材质表面场景；传入非NULL的光感交互效果配置指针表示使用该配置参数进行光感交互，适用于需要增强触摸视觉反馈的交互式组件场景。如果不调用该接口设置， 光感交互效果遵循组件的行为。
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect(ArkUI_ImmersiveMaterialHandle material, const ArkUI_LightEffectOptionsHandle options)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect(ArkUI_ImmersiveMaterialHandle material, const ArkUI_LightEffectOptionsHandle options)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
@@ -519,6 +555,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetLightEffectColor(ArkU
 **描述：**
 
 获取沉浸式材质对象的光感交互效果颜色。 <br>只有在调用[OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_setlighteffect)成功设置非NULL的光感交互效果配置指针后，此接口才能成功获取颜色值。 如果从未设置过光感交互效果或已禁用（传入NULL的光感交互效果配置指针），函数将返回[ARKUI_ERROR_CODE_PARAM_ERROR](capi-error-code-h.md#arkui_errorcode)。
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetLightEffectColor(ArkUI_ImmersiveMaterialHandle material, uint32_t* color)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetLightEffectColor(ArkUI_ImmersiveMaterialHandle material, uint32_t* color)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV {...}--><!--Device-struct VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

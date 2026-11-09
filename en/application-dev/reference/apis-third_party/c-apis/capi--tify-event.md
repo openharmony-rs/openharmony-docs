@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct tify_event {...}--><!--Device-struct tify_event {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -8,11 +8,13 @@ typedef struct RawFileDescriptor64 {...} RawFileDescriptor64
 
 Provides the rawfile file descriptor information, including the file descriptor, start position within the HAP, and file length. Large files larger than 2 GB are supported.<br>This information is obtained through [OH_ResourceManager_GetRawFileDescriptor64](capi-raw-file-h.md#oh_resourcemanager_getrawfiledescriptor64), and must be released through [OH_ResourceManager_ReleaseRawFileDescriptor64](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptor64) after use.
 
+<!--Device-typedef struct RawFileDescriptor64 {...} RawFileDescriptor64--><!--Device-typedef struct RawFileDescriptor64 {...} RawFileDescriptor64-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 11
 
-**Related module**: [rawfile](capi-others-rawfile.md)
+**Related module**: [rawfile](capi-localization-kit-rawfile.md)
 
 **Header file**: [raw_file.h](capi-raw-file-h.md)
 

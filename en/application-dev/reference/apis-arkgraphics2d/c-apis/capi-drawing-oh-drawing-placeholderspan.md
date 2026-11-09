@@ -8,11 +8,13 @@ typedef struct OH_Drawing_PlaceholderSpan {...} OH_Drawing_PlaceholderSpan
 
 This struct describes the placeholder that acts as a span.
 
+<!--Device-typedef struct OH_Drawing_PlaceholderSpan {...} OH_Drawing_PlaceholderSpan--><!--Device-typedef struct OH_Drawing_PlaceholderSpan {...} OH_Drawing_PlaceholderSpan-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
-**Related module**: [Drawing](capi-others-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 **Header file**: [drawing_text_typography.h](capi-drawing-text-typography-h.md)
 

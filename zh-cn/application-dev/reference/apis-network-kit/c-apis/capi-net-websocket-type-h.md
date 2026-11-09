@@ -62,6 +62,8 @@ enum WebSocket_ErrCode
 
 Defines the WebSocket client structure.
 
+<!--Device-WebSocket_ErrCode--><!--Device-WebSocket_ErrCode-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 11
@@ -101,6 +103,8 @@ typedef void (*WebSocket_OnOpenCallback)(struct WebSocket *client, WebSocket_Ope
 
 websocket客户端接收open消息的回调函数定义。
 
+<!--Device-typedef void (*WebSocket_OnOpenCallback)(struct WebSocket *client, WebSocket_OpenResult openResult)--><!--Device-typedef void (*WebSocket_OnOpenCallback)(struct WebSocket *client, WebSocket_OpenResult openResult)-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 11
@@ -121,6 +125,8 @@ typedef void (*WebSocket_OnMessageCallback)(struct WebSocket *client, char *data
 **描述：**
 
 websocket客户端接收数据的回调函数定义。
+
+<!--Device-typedef void (*WebSocket_OnMessageCallback)(struct WebSocket *client, char *data, uint32_t length)--><!--Device-typedef void (*WebSocket_OnMessageCallback)(struct WebSocket *client, char *data, uint32_t length)-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -144,6 +150,8 @@ typedef void (*WebSocket_OnErrorCallback)(struct WebSocket *client, WebSocket_Er
 
 websocket客户端接收error错误消息的回调函数定义。
 
+<!--Device-typedef void (*WebSocket_OnErrorCallback)(struct WebSocket *client, WebSocket_ErrorResult errorResult)--><!--Device-typedef void (*WebSocket_OnErrorCallback)(struct WebSocket *client, WebSocket_ErrorResult errorResult)-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 11
@@ -164,6 +172,8 @@ typedef void (*WebSocket_OnCloseCallback)(struct WebSocket *client, WebSocket_Cl
 **描述：**
 
 webSocket客户端接收close消息的回调函数定义。
+
+<!--Device-typedef void (*WebSocket_OnCloseCallback)(struct WebSocket *client, WebSocket_CloseResult closeResult)--><!--Device-typedef void (*WebSocket_OnCloseCallback)(struct WebSocket *client, WebSocket_CloseResult closeResult)-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 

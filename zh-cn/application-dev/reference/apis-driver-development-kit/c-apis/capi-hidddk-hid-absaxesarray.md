@@ -8,11 +8,13 @@ struct Hid_AbsAxesArray {...}
 
 绝对坐标属性数组，用于存储HID设备的多个绝对坐标轴的属性信息，支持描述如触摸屏、游戏摇杆等输入设备的坐标特征，适用于需要精确读取和处理多维输入数据的驱动开发场景，例如在手柄、触摸板等输入设备中记录轴位数据。
 
+<!--Device-struct Hid_AbsAxesArray {...}--><!--Device-struct Hid_AbsAxesArray {...}-End-->
+
 **系统能力：** SystemCapability.Driver.HID.Extension
 
 **起始版本：** 11
 
-**相关模块：** [HidDdk](capi-others-hidddk.md)
+**相关模块：** [HidDdk](capi-driver-development-kit-hidddk.md)
 
 **所在头文件：** [hid_ddk_types.h](capi-hid-ddk-types-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkRenderPassSampleLocationsBeginInfoEXT {...}--><!--Device-struct VkRenderPassSampleLocationsBeginInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -8,11 +8,13 @@ typedef struct ArkWeb_HttpBodyStream_ ArkWeb_HttpBodyStream
 
 Defines the uploaded data of the request. You can use the **OH_ArkWebHttpBodyStream_** API to read the uploaded data.
 
+<!--Device-typedef struct ArkWeb_HttpBodyStream_ ArkWeb_HttpBodyStream--><!--Device-typedef struct ArkWeb_HttpBodyStream_ ArkWeb_HttpBodyStream-End-->
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
-**Related module**: [Web](capi-others-web.md)
+**Related module**: [Web](capi-arkweb-web.md)
 
 **Header file**: [arkweb_scheme_handler.h](capi-arkweb-scheme-handler-h.md)
 

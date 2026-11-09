@@ -8,11 +8,13 @@ typedef struct Print_Resolution {...} Print_Resolution
 
 Print_Resolution用于表示以dpi为单位的打印分辨率，可控制打印输出的精细度与质量。
 
+<!--Device-typedef struct Print_Resolution {...} Print_Resolution--><!--Device-typedef struct Print_Resolution {...} Print_Resolution-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **起始版本：** 12
 
-**相关模块：** [Print](capi-others-print.md)
+**相关模块：** [Print](capi-basic-services-kit-print.md)
 
 **所在头文件：** [ohprint.h](capi-ohprint-h.md)
 

@@ -60,6 +60,8 @@ enum LogType
 
 Enumerates the log types. You can use this function to specify the type of output logs. Currently, only **<br>LOG_APP** is available.
 
+<!--Device-LogType--><!--Device-LogType-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
 **Since**: 8
@@ -77,6 +79,8 @@ enum LogLevel
 **Description**
 
 Enumerates the log levels. You are advised to select log levels based on their respective use cases. Log levels: <br>**DEBUG**: provides more detailed process information than INFO logs to help developers analyze service processes and locate faults. DEBUG logs are not recorded in official versions by default. They are available in debug versions or in official versions with the debug function enabled. <br>**INFO**: indicates the key service process nodes and exceptions (for example, no network signal or login failure) that occur during service running. These logs should be recorded by the dominant module in the service to avoid repeated logging conducted by multiple invoked modules or low-level functions. <br>**WARN**: indicates a severe, unexpected fault that has little impact on users and can be rectified by the programs themselves or through simple operations. <br>**ERROR**: indicates a program or functional error that affects the normal running or use of the functionality and can be fixed at a high cost, for example, by resetting data. <br>**FATAL**: indicates that a program or functionality is about to crash and the fault cannot be rectified.
+
+<!--Device-LogLevel--><!--Device-LogLevel-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
@@ -100,6 +104,8 @@ enum PreferStrategy
 
 Enumerates the preference strategies. This enum is used in [OH_LOG_SetLogLevel](capi-log-h.md#oh_log_setloglevel). The minimum log level that takes effect varies according to the strategy.
 
+<!--Device-PreferStrategy--><!--Device-PreferStrategy-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
 **Since**: 21
@@ -122,6 +128,8 @@ int OH_LOG_Print(LogType type, LogLevel level, unsigned int domain, const char *
 **Description**
 
 Outputs logs of the specified **type**, **level**, **domain**, **tag**, and variables determined by the format specifier and privacy identifier in the printf format.
+
+<!--Device-int OH_LOG_Print(LogType type, LogLevel level, unsigned int domain, const char *tag, const char *fmt, ...)--><!--Device-int OH_LOG_Print(LogType type, LogLevel level, unsigned int domain, const char *tag, const char *fmt, ...)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
@@ -154,6 +162,8 @@ int OH_LOG_PrintMsg(LogType type, LogLevel level, unsigned int domain, const cha
 
 Outputs constant log strings of the specified **type**, **level**, **domain**, and **tag**.
 
+<!--Device-int OH_LOG_PrintMsg(LogType type, LogLevel level, unsigned int domain, const char *tag, const char *message)--><!--Device-int OH_LOG_PrintMsg(LogType type, LogLevel level, unsigned int domain, const char *tag, const char *message)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
 **Since**: 18
@@ -183,6 +193,8 @@ int OH_LOG_PrintMsgByLen(LogType type, LogLevel level, unsigned int domain, cons
 **Description**
 
 Outputs log constant strings of the specified **domain**, **tag**, and **level**. The tag and string length must be specified. Unlike **OH_LOG_PrintMsg**, this API allows strings without terminators.
+
+<!--Device-int OH_LOG_PrintMsgByLen(LogType type, LogLevel level, unsigned int domain, const char *tag, size_t tagLen, const char *message, size_t messageLen)--><!--Device-int OH_LOG_PrintMsgByLen(LogType type, LogLevel level, unsigned int domain, const char *tag, size_t tagLen, const char *message, size_t messageLen)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
@@ -216,6 +228,8 @@ int OH_LOG_VPrint(LogType type, LogLevel level, unsigned int domain, const char 
 
 Outputs logs of the specified **type**, **level**, **domain**, **tag**, and variables determined by the format specifier and privacy identifier in the printf format. The variables are of the **va_list** type.
 
+<!--Device-int OH_LOG_VPrint(LogType type, LogLevel level, unsigned int domain, const char *tag, const char *fmt, va_list ap)--><!--Device-int OH_LOG_VPrint(LogType type, LogLevel level, unsigned int domain, const char *tag, const char *fmt, va_list ap)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
 **Since**: 18
@@ -247,6 +261,8 @@ bool OH_LOG_IsLoggable(unsigned int domain, const char *tag, LogLevel level)
 
 Checks whether logs of the specified service domain, tag, and level can be printed.
 
+<!--Device-bool OH_LOG_IsLoggable(unsigned int domain, const char *tag, LogLevel level)--><!--Device-bool OH_LOG_IsLoggable(unsigned int domain, const char *tag, LogLevel level)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
 **Since**: 8
@@ -275,6 +291,8 @@ typedef void (*LogCallback)(const LogType type, const LogLevel level, const unsi
 
 Customizes the processing of HiLog logs in the callback.
 
+<!--Device-typedef void (*LogCallback)(const LogType type, const LogLevel level, const unsigned int domain, const char *tag, const char *msg)--><!--Device-typedef void (*LogCallback)(const LogType type, const LogLevel level, const unsigned int domain, const char *tag, const char *msg)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
 **Since**: 11
@@ -299,6 +317,8 @@ void OH_LOG_SetCallback(LogCallback callback)
 
 Registers a callback function. After this function is called, the custom callback can receive all HiLog logs of the current process. <br>Note that whether this API is called or not, it does not change the default log processing of the current process.
 
+<!--Device-void OH_LOG_SetCallback(LogCallback callback)--><!--Device-void OH_LOG_SetCallback(LogCallback callback)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
 **Since**: 11
@@ -319,6 +339,8 @@ void OH_LOG_SetMinLogLevel(LogLevel level)
 
 Sets the minimum log level. <br>NOTE: <br>1. If the set log level is lower than the global log level, the setting does not take effect. <br>2. This function does not take effect for debug applications.
 
+<!--Device-void OH_LOG_SetMinLogLevel(LogLevel level)--><!--Device-void OH_LOG_SetMinLogLevel(LogLevel level)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
 **Since**: 15
@@ -338,6 +360,8 @@ void OH_LOG_SetLogLevel(LogLevel level, PreferStrategy prefer)
 **Description**
 
 Sets the minimum log level of the current application process. <br>You can configure different preference strategies using the **prefer** parameter. The **PREFER_CLOSE_LOG**<br>strategy has the same effect as the **OH_LOG_SetMinLogLevel()** function. <br>Note: This function does not take effect for debug applications.
+
+<!--Device-void OH_LOG_SetLogLevel(LogLevel level, PreferStrategy prefer)--><!--Device-void OH_LOG_SetLogLevel(LogLevel level, PreferStrategy prefer)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiLog
 

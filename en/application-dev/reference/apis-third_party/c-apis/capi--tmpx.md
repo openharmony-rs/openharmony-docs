@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct tmpx {...}--><!--Device-struct tmpx {...}-End-->
+
 ## Summary
 
 ### Member variables

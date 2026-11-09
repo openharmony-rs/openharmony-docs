@@ -39,6 +39,8 @@ enum ContentEmbed_ErrorCode
 
 Defines the error codes of the Content Embed Kit.
 
+<!--Device-ContentEmbed_ErrorCode--><!--Device-ContentEmbed_ErrorCode-End-->
+
 **System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
@@ -75,6 +77,8 @@ enum ContentEmbed_CapabilityCode
 **Description**
 
 Enumerates the functions supported by embedded document objects. Multiple capability values can be combined using bit masks.
+
+<!--Device-ContentEmbed_CapabilityCode--><!--Device-ContentEmbed_CapabilityCode-End-->
 
 **System capability**: SystemCapability.ContentEmbed.ObjectEditor
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineSampleLocationsStateCreateInfoEXT {...}--><!--Device-struct VkPipelineSampleLocationsStateCreateInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

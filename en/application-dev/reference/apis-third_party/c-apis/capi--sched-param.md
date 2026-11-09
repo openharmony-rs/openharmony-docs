@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct sched_param {...}--><!--Device-struct sched_param {...}-End-->
+
 ## Summary
 
 ### Member variables

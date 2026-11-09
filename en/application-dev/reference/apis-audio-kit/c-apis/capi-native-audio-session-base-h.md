@@ -39,6 +39,8 @@ enum OH_AudioSession_BehaviorFlags
 
 Enumerates the audio session behavior flags.
 
+<!--Device-OH_AudioSession_BehaviorFlags--><!--Device-OH_AudioSession_BehaviorFlags-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 24
@@ -58,6 +60,8 @@ enum OH_AudioSession_ConcurrencyMode
 **Description**
 
 Declares the audio concurrency modes.
+
+<!--Device-OH_AudioSession_ConcurrencyMode--><!--Device-OH_AudioSession_ConcurrencyMode-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 

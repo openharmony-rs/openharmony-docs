@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceExclusiveScissorFeaturesNV {...}--><!--Device-struct VkPhysicalDeviceExclusiveScissorFeaturesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

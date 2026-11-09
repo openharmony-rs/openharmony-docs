@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct passwd {...}--><!--Device-struct passwd {...}-End-->
+
 ## Summary
 
 ### Member variables

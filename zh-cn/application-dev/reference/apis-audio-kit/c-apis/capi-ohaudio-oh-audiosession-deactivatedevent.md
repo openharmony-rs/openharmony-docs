@@ -8,11 +8,13 @@ struct OH_AudioSession_DeactivatedEvent {...}
 
 定义音频会话已停用事件结构体， 该结构体用于在[OH_AudioSession_DeactivatedCallback](capi-native-audio-session-manager-h.md#oh_audiosession_deactivatedcallback) 回调函数内传递会话停用事件的详细信息。
 
+<!--Device-struct OH_AudioSession_DeactivatedEvent {...}--><!--Device-struct OH_AudioSession_DeactivatedEvent {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
 
-**相关模块：** [OHAudio](capi-others-ohaudio.md)
+**相关模块：** [OHAudio](capi-audio-kit-ohaudio.md)
 
 **所在头文件：** [native_audio_session_manager.h](capi-native-audio-session-manager-h.md)
 

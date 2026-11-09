@@ -8,13 +8,15 @@ typedef struct OH_DecomposeOptions OH_DecomposeOptions
 
 **OH_DecomposeOptions** is the HDR decomposition option struct encapsulated at the native layer. It is used to specify parameters used for HDR decomposition, such as the target pixel format.
 
+<!--Device-typedef struct OH_DecomposeOptions OH_DecomposeOptions--><!--Device-typedef struct OH_DecomposeOptions OH_DecomposeOptions-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
 
 **System API:** This is a system API.
 
-**Related module**: [Image_NativeModule](capi-others-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 **Header file**: [picture_native.h(System API)](capi-picture-native-h-sys.md)
 

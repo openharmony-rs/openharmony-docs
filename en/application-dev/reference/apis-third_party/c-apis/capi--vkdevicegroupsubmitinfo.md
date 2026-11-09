@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDeviceGroupSubmitInfo {...}--><!--Device-struct VkDeviceGroupSubmitInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

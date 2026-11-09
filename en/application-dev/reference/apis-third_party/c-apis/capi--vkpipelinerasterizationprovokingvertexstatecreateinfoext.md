@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineRasterizationProvokingVertexStateCreateInfoEXT {...}--><!--Device-struct VkPipelineRasterizationProvokingVertexStateCreateInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL {...}--><!--Device-struct VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL {...}-End-->
+
 ## Summary
 
 ### Member variables

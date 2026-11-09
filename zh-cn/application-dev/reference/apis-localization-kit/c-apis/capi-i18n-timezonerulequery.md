@@ -8,11 +8,13 @@ struct TimeZoneRuleQuery {...}
 
 用于传入查询的信息，并接收查询的结果。
 
+<!--Device-struct TimeZoneRuleQuery {...}--><!--Device-struct TimeZoneRuleQuery {...}-End-->
+
 **系统能力：** SystemCapability.Global.I18n
 
 **起始版本：** 22
 
-**相关模块：** [i18n](capi-others-i18n.md)
+**相关模块：** [i18n](capi-localization-kit-i18n.md)
 
 **所在头文件：** [timezone.h](capi-timezone-h.md)
 

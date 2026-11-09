@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct EGLClientPixmapHI {...}--><!--Device-struct EGLClientPixmapHI {...}-End-->
+
 ## Summary
 
 ### Member variables

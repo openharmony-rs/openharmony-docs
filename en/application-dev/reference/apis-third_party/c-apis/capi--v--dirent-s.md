@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct v__dirent_s {...}--><!--Device-struct v__dirent_s {...}-End-->
+
 ## Summary
 
 ### Member variables

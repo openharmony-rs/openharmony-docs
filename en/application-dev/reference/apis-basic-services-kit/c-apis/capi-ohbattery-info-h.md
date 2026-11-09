@@ -47,6 +47,8 @@ enum BatteryInfo_BatteryPluggedType
 
 Enumerates the battery plugged types.
 
+<!--Device-BatteryInfo_BatteryPluggedType--><!--Device-BatteryInfo_BatteryPluggedType-End-->
+
 **System capability**: SystemCapability.PowerManager.BatteryManager.Core
 
 **Since**: 13
@@ -72,6 +74,8 @@ int32_t OH_BatteryInfo_GetCapacity()
 
 Obtains the current battery capacity in percent.
 
+<!--Device-int32_t OH_BatteryInfo_GetCapacity()--><!--Device-int32_t OH_BatteryInfo_GetCapacity()-End-->
+
 **System capability**: SystemCapability.PowerManager.BatteryManager.Core
 
 **Since**: 13
@@ -91,6 +95,8 @@ BatteryInfo_BatteryPluggedType OH_BatteryInfo_GetPluggedType()
 **Description**
 
 Obtains the battery plugged type.
+
+<!--Device-BatteryInfo_BatteryPluggedType OH_BatteryInfo_GetPluggedType()--><!--Device-BatteryInfo_BatteryPluggedType OH_BatteryInfo_GetPluggedType()-End-->
 
 **System capability**: SystemCapability.PowerManager.BatteryManager.Core
 

@@ -108,6 +108,8 @@ enum HiDebug_ErrorCode
 
 错误码定义。用于HiDebug模块各功能接口的返回状态标识，包括成功、参数错误、权限问题、系统内部错误、设备不支持等多种情况。开发者可根据错误码定位问题原因并采取相应的错误处理措施。
 
+<!--Device-HiDebug_ErrorCode--><!--Device-HiDebug_ErrorCode-End-->
+
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 12
@@ -158,6 +160,8 @@ enum HiDebug_TraceFlag
 
 采集trace线程的类型。
 
+<!--Device-HiDebug_TraceFlag--><!--Device-HiDebug_TraceFlag-End-->
+
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 12
@@ -177,6 +181,8 @@ enum HiDebug_StackFrameType
 
 栈帧类型的枚举值定义。
 
+<!--Device-HiDebug_StackFrameType--><!--Device-HiDebug_StackFrameType-End-->
+
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 20
@@ -195,6 +201,8 @@ enum HiDebug_CrashObjType
 **描述：**
 
 维测信息数据类型的枚举。
+
+<!--Device-HiDebug_CrashObjType--><!--Device-HiDebug_CrashObjType-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -218,6 +226,8 @@ enum OH_HiDebug_ResourceType
 **描述：**
 
 定义资源采集类型的枚举。
+
+<!--Device-OH_HiDebug_ResourceType--><!--Device-OH_HiDebug_ResourceType-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -244,6 +254,8 @@ enum OH_HiDebug_MemListenerType
 
 内存监听回调的类型枚举。开发者根据回调类型处理相关逻辑。
 
+<!--Device-OH_HiDebug_MemListenerType--><!--Device-OH_HiDebug_MemListenerType-End-->
+
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 26.0.0
@@ -263,6 +275,8 @@ enum OH_HiDebug_ProfilerStackTraceMode
 **描述：**
 
 定义调用栈追踪模式枚举。
+
+<!--Device-OH_HiDebug_ProfilerStackTraceMode--><!--Device-OH_HiDebug_ProfilerStackTraceMode-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -286,6 +300,8 @@ typedef void (*OH_HiDebug_RequestTraceCallback)(HiDebug_ErrorCode errorCode, con
 
 请求trace采集的回调类型定义。
 
+<!--Device-typedef void (*OH_HiDebug_RequestTraceCallback)(HiDebug_ErrorCode errorCode, const char* filePath)--><!--Device-typedef void (*OH_HiDebug_RequestTraceCallback)(HiDebug_ErrorCode errorCode, const char* filePath)-End-->
+
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 24
@@ -306,6 +322,8 @@ typedef void (*OH_HiDebug_ProfilingCallback)(OH_HiDebug_ProfilingResult* result)
 **描述：**
 
 定义资源采集回调函数。
+
+<!--Device-typedef void (*OH_HiDebug_ProfilingCallback)(OH_HiDebug_ProfilingResult* result)--><!--Device-typedef void (*OH_HiDebug_ProfilingCallback)(OH_HiDebug_ProfilingResult* result)-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 

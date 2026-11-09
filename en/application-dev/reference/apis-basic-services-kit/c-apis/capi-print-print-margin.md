@@ -8,11 +8,13 @@ typedef struct Print_Margin {...} Print_Margin
 
 Represents the margin information of a printed page. You can set the margins in the left, top, right, and bottom directions to control the print content area. This API can be used to precisely control the distance between the content and the paper edge during printing. Proper margin settings can prevent content overflow or clipping.
 
+<!--Device-typedef struct Print_Margin {...} Print_Margin--><!--Device-typedef struct Print_Margin {...} Print_Margin-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
-**Related module**: [Print](capi-others-print.md)
+**Related module**: [Print](capi-basic-services-kit-print.md)
 
 **Header file**: [ohprint.h](capi-ohprint-h.md)
 

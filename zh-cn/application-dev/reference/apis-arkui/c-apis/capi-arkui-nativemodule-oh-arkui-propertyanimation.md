@@ -8,11 +8,13 @@ typedef struct OH_ArkUI_PropertyAnimation *OH_ArkUI_PropertyAnimationHandle
 
 定义属性动画的句柄。
 
+<!--Device-typedef struct OH_ArkUI_PropertyAnimation *OH_ArkUI_PropertyAnimationHandle--><!--Device-typedef struct OH_ArkUI_PropertyAnimation *OH_ArkUI_PropertyAnimationHandle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.1
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [native_animate.h](capi-native-animate-h.md)
 

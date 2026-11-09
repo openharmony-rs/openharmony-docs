@@ -11,11 +11,13 @@ ArkWeb_WebMessage is a web message struct used for cross-context message communi
 - The web page sends user operation results or requested data to the native side.
 - Asynchronous message passing and data synchronization across contexts.
 
+<!--Device-typedef struct ArkWeb_WebMessage* ArkWeb_WebMessagePtr--><!--Device-typedef struct ArkWeb_WebMessage* ArkWeb_WebMessagePtr-End-->
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
-**Related module**: [Web](capi-others-web.md)
+**Related module**: [Web](capi-arkweb-web.md)
 
 **Header file**: [arkweb_type.h](capi-arkweb-type-h.md)
 

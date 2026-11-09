@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct v_barrier_t {...}--><!--Device-struct v_barrier_t {...}-End-->
+
 ## Summary
 
 ### Member variables

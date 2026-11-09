@@ -8,11 +8,13 @@ struct NetStack_CertBlob {...}
 
 Defines the certificate data structure.
 
+<!--Device-struct NetStack_CertBlob {...}--><!--Device-struct NetStack_CertBlob {...}-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 11
 
-**相关模块：** [netstack](capi-others-netstack.md)
+**相关模块：** [netstack](capi-network-kit-netstack.md)
 
 **所在头文件：** [net_ssl_c_type.h](capi-net-ssl-c-type-h.md)
 

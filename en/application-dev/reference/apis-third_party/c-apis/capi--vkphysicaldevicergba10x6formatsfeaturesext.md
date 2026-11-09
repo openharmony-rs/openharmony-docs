@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

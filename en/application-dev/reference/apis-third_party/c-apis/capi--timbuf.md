@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct timbuf {...}--><!--Device-struct timbuf {...}-End-->
+
 ## Summary
 
 ### Member variables

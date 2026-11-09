@@ -49,6 +49,8 @@ OH_Drawing_Bitmap* OH_Drawing_BitmapCreate(void)
 
 Creates an **OH_Drawing_Bitmap** object.
 
+<!--Device-OH_Drawing_Bitmap* OH_Drawing_BitmapCreate(void)--><!--Device-OH_Drawing_Bitmap* OH_Drawing_BitmapCreate(void)-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
@@ -69,6 +71,8 @@ void OH_Drawing_BitmapDestroy(OH_Drawing_Bitmap* bitmap)
 
 Destroys an **OH_Drawing_Bitmap** object and reclaims the memory occupied by the object.
 
+<!--Device-void OH_Drawing_BitmapDestroy(OH_Drawing_Bitmap* bitmap)--><!--Device-void OH_Drawing_BitmapDestroy(OH_Drawing_Bitmap* bitmap)-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
@@ -88,6 +92,8 @@ OH_Drawing_Bitmap* OH_Drawing_BitmapCreateFromPixels(OH_Drawing_Image_Info* imag
 **Description**
 
 Creates an **OH_Drawing_Bitmap** object, with the address of the memory for storing the bitmap pixels set to the memory address that you applied for. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **imageInfo** or **pixels** is NULL or **rowBytes** is **0**, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+<!--Device-OH_Drawing_Bitmap* OH_Drawing_BitmapCreateFromPixels(OH_Drawing_Image_Info* imageInfo, void* pixels, uint32_t rowBytes)--><!--Device-OH_Drawing_Bitmap* OH_Drawing_BitmapCreateFromPixels(OH_Drawing_Image_Info* imageInfo, void* pixels, uint32_t rowBytes)-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -117,6 +123,8 @@ void OH_Drawing_BitmapBuild(OH_Drawing_Bitmap* bitmap, const uint32_t width, con
 
 Initializes the width and height of a bitmap and sets the pixel format for the bitmap. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **bitmap** or **bitmapFormat** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+<!--Device-void OH_Drawing_BitmapBuild(OH_Drawing_Bitmap* bitmap, const uint32_t width, const uint32_t height, const OH_Drawing_BitmapFormat* bitmapFormat)--><!--Device-void OH_Drawing_BitmapBuild(OH_Drawing_Bitmap* bitmap, const uint32_t width, const uint32_t height, const OH_Drawing_BitmapFormat* bitmapFormat)-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
@@ -139,6 +147,8 @@ uint32_t OH_Drawing_BitmapGetWidth(OH_Drawing_Bitmap* bitmap)
 **Description**
 
 Obtains the width of a bitmap. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **bitmap** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+<!--Device-uint32_t OH_Drawing_BitmapGetWidth(OH_Drawing_Bitmap* bitmap)--><!--Device-uint32_t OH_Drawing_BitmapGetWidth(OH_Drawing_Bitmap* bitmap)-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -166,6 +176,8 @@ uint32_t OH_Drawing_BitmapGetHeight(OH_Drawing_Bitmap* bitmap)
 
 Obtains the height of a bitmap. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **bitmap** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+<!--Device-uint32_t OH_Drawing_BitmapGetHeight(OH_Drawing_Bitmap* bitmap)--><!--Device-uint32_t OH_Drawing_BitmapGetHeight(OH_Drawing_Bitmap* bitmap)-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
@@ -191,6 +203,8 @@ OH_Drawing_ColorFormat OH_Drawing_BitmapGetColorFormat(OH_Drawing_Bitmap* bitmap
 **Description**
 
 Obtains the pixel format of a bitmap. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **bitmap** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+<!--Device-OH_Drawing_ColorFormat OH_Drawing_BitmapGetColorFormat(OH_Drawing_Bitmap* bitmap)--><!--Device-OH_Drawing_ColorFormat OH_Drawing_BitmapGetColorFormat(OH_Drawing_Bitmap* bitmap)-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -218,6 +232,8 @@ OH_Drawing_AlphaFormat OH_Drawing_BitmapGetAlphaFormat(OH_Drawing_Bitmap* bitmap
 
 Obtains the alpha component of a bitmap. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **bitmap** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+<!--Device-OH_Drawing_AlphaFormat OH_Drawing_BitmapGetAlphaFormat(OH_Drawing_Bitmap* bitmap)--><!--Device-OH_Drawing_AlphaFormat OH_Drawing_BitmapGetAlphaFormat(OH_Drawing_Bitmap* bitmap)-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
@@ -243,6 +259,8 @@ void* OH_Drawing_BitmapGetPixels(OH_Drawing_Bitmap* bitmap)
 **Description**
 
 Obtains the pixel address of a bitmap. You can use this address to obtain the pixel data of the bitmap. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **bitmap** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+<!--Device-void* OH_Drawing_BitmapGetPixels(OH_Drawing_Bitmap* bitmap)--><!--Device-void* OH_Drawing_BitmapGetPixels(OH_Drawing_Bitmap* bitmap)-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -270,6 +288,8 @@ void OH_Drawing_BitmapGetImageInfo(OH_Drawing_Bitmap* bitmap, OH_Drawing_Image_I
 
 Obtains the image information of a bitmap. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **bitmap** or **imageInfo** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+<!--Device-void OH_Drawing_BitmapGetImageInfo(OH_Drawing_Bitmap* bitmap, OH_Drawing_Image_Info* imageInfo)--><!--Device-void OH_Drawing_BitmapGetImageInfo(OH_Drawing_Bitmap* bitmap, OH_Drawing_Image_Info* imageInfo)-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
@@ -290,6 +310,8 @@ bool OH_Drawing_BitmapReadPixels(OH_Drawing_Bitmap* bitmap, const OH_Drawing_Ima
 **Description**
 
 Reads pixels of a rectangle in a bitmap to the specified buffer. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If any of **bitmap**, **dstInfo**, and **dstPixels** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+<!--Device-bool OH_Drawing_BitmapReadPixels(OH_Drawing_Bitmap* bitmap, const OH_Drawing_Image_Info* dstInfo, void* dstPixels, size_t dstRowBytes, int32_t srcX, int32_t srcY)--><!--Device-bool OH_Drawing_BitmapReadPixels(OH_Drawing_Bitmap* bitmap, const OH_Drawing_Image_Info* dstInfo, void* dstPixels, size_t dstRowBytes, int32_t srcX, int32_t srcY)-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -321,6 +343,8 @@ OH_Drawing_ErrorCode OH_Drawing_BitmapGetRowBytes(OH_Drawing_Bitmap* bitmap, uin
 **Description**
 
 Gets the row bytes of the bitmap.
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_BitmapGetRowBytes(OH_Drawing_Bitmap* bitmap, uint32_t* bytes)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_BitmapGetRowBytes(OH_Drawing_Bitmap* bitmap, uint32_t* bytes)-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 

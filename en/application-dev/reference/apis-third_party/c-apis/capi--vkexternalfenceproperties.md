@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkExternalFenceProperties {...}--><!--Device-struct VkExternalFenceProperties {...}-End-->
+
 ## Summary
 
 ### Member variables

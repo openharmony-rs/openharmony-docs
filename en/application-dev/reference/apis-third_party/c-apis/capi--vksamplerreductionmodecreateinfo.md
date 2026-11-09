@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSamplerReductionModeCreateInfo {...}--><!--Device-struct VkSamplerReductionModeCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

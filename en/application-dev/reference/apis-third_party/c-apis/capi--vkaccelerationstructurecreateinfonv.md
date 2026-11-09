@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkAccelerationStructureCreateInfoNV {...}--><!--Device-struct VkAccelerationStructureCreateInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

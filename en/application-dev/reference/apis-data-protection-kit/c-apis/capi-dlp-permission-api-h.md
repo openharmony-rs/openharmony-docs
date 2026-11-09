@@ -44,6 +44,8 @@ enum DLP_ErrCode
 
 Enumerates the DLP error codes.
 
+<!--Device-DLP_ErrCode--><!--Device-DLP_ErrCode-End-->
+
 **System capability**: SystemCapability.Security.DataLossPrevention
 
 **Since**: 14
@@ -69,6 +71,8 @@ enum DLP_FileAccess
 
 Enumerates the permissions on a DLP file.
 
+<!--Device-DLP_FileAccess--><!--Device-DLP_FileAccess-End-->
+
 **System capability**: SystemCapability.Security.DataLossPrevention
 
 **Since**: 14
@@ -92,6 +96,8 @@ DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess *dlpFileAccess, uint32_t 
 **Description**
 
 Obtains the permission information of this DLP sandbox.
+
+<!--Device-DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess *dlpFileAccess, uint32_t *flags)--><!--Device-DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess *dlpFileAccess, uint32_t *flags)-End-->
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
@@ -120,6 +126,8 @@ DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char **originalFile
 
 Obtains the original file name of a DLP file.
 
+<!--Device-DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char **originalFileName)--><!--Device-DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char **originalFileName)-End-->
+
 **System capability**: SystemCapability.Security.DataLossPrevention
 
 **Since**: 14
@@ -147,6 +155,8 @@ DLP_ErrCode OH_DLP_IsInSandbox(bool *isInSandbox)
 
 Checks whether this application is running in a DLP sandbox environment.
 
+<!--Device-DLP_ErrCode OH_DLP_IsInSandbox(bool *isInSandbox)--><!--Device-DLP_ErrCode OH_DLP_IsInSandbox(bool *isInSandbox)-End-->
+
 **System capability**: SystemCapability.Security.DataLossPrevention
 
 **Since**: 14
@@ -172,6 +182,8 @@ DLP_ErrCode OH_DLP_SetSandboxAppConfig(const char *configInfo)
 **Description**
 
 Sets sandbox application configuration.
+
+<!--Device-DLP_ErrCode OH_DLP_SetSandboxAppConfig(const char *configInfo)--><!--Device-DLP_ErrCode OH_DLP_SetSandboxAppConfig(const char *configInfo)-End-->
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
@@ -199,6 +211,8 @@ DLP_ErrCode OH_DLP_GetSandboxAppConfig(char **configInfo)
 
 Obtains the sandbox application configuration.
 
+<!--Device-DLP_ErrCode OH_DLP_GetSandboxAppConfig(char **configInfo)--><!--Device-DLP_ErrCode OH_DLP_GetSandboxAppConfig(char **configInfo)-End-->
+
 **System capability**: SystemCapability.Security.DataLossPrevention
 
 **Since**: 14
@@ -224,6 +238,8 @@ DLP_ErrCode OH_DLP_CleanSandboxAppConfig()
 **Description**
 
 Cleans the sandbox application configuration.
+
+<!--Device-DLP_ErrCode OH_DLP_CleanSandboxAppConfig()--><!--Device-DLP_ErrCode OH_DLP_CleanSandboxAppConfig()-End-->
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 

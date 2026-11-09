@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoH265SubLayerHrdParameters {...}--><!--Device-struct StdVideoH265SubLayerHrdParameters {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkImageViewUsageCreateInfo {...}--><!--Device-struct VkImageViewUsageCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

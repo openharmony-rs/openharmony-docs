@@ -8,11 +8,13 @@ struct OH_CloudDisk_FetchDataRequest {...}
 
 获取数据请求信息。
 
+<!--Device-struct OH_CloudDisk_FetchDataRequest {...}--><!--Device-struct OH_CloudDisk_FetchDataRequest {...}-End-->
+
 **系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **起始版本：** 26.0.1
 
-**相关模块：** [CloudDisk](capi-others-clouddisk.md)
+**相关模块：** [CloudDisk](capi-core-file-kit-clouddisk.md)
 
 **所在头文件：** [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
 

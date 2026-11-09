@@ -8,11 +8,13 @@ typedef struct NativeDisplayManager_CutoutInfo {...} NativeDisplayManager_Cutout
 
 The struct describes the unusable area of a display, including punch hole, notch, and curved area of a waterfall display.
 
+<!--Device-typedef struct NativeDisplayManager_CutoutInfo {...} NativeDisplayManager_CutoutInfo--><!--Device-typedef struct NativeDisplayManager_CutoutInfo {...} NativeDisplayManager_CutoutInfo-End-->
+
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
-**Related module**: [OH_DisplayManager](capi-others-oh-displaymanager.md)
+**Related module**: [OH_DisplayManager](capi-arkui-oh-displaymanager.md)
 
 **Header file**: [oh_display_info.h](capi-oh-display-info-h.md)
 

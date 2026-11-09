@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDeviceImageMemoryRequirements {...}--><!--Device-struct VkDeviceImageMemoryRequirements {...}-End-->
+
 ## Summary
 
 ### Member variables

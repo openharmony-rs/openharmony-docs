@@ -8,13 +8,15 @@ struct OH_SwapfsConfig {...}
 
 用于配置swapfs管理器的初始化参数，包括数据存储路径、空间限制和IO方式等。
 
+<!--Device-struct OH_SwapfsConfig {...}--><!--Device-struct OH_SwapfsConfig {...}-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.Swapfs
 
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
-**相关模块：** [Swapfs](capi-others-swapfs.md)
+**相关模块：** [Swapfs](capi-core-file-kit-swapfs.md)
 
 **所在头文件：** [oh_swapfs.h（系统接口）](capi-oh-swapfs-h-sys.md)
 

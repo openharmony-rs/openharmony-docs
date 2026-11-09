@@ -49,6 +49,8 @@ enum OH_Huks_ExternalCryptoTag
 
 Enumerates the tag values used in a parameter set.
 
+<!--Device-OH_Huks_ExternalCryptoTag--><!--Device-OH_Huks_ExternalCryptoTag-End-->
+
 **System capability**: SystemCapability.Security.Huks.CryptoExtension
 
 **Since**: 22
@@ -71,6 +73,8 @@ enum OH_Huks_ExternalPinAuthState
 **Description**
 
 Enumerates the UKey PIN authentication states.
+
+<!--Device-OH_Huks_ExternalPinAuthState--><!--Device-OH_Huks_ExternalPinAuthState-End-->
 
 **System capability**: SystemCapability.Security.Huks.CryptoExtension
 

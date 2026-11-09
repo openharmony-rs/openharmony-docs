@@ -207,6 +207,8 @@ ArkUI_RenderBlurStyleOption* OH_ArkUI_RenderNodeUtils_CreateBlurStyleOption()
 
 创建一个模糊样式对象。
 
+<!--Device-ArkUI_RenderBlurStyleOption* OH_ArkUI_RenderNodeUtils_CreateBlurStyleOption()--><!--Device-ArkUI_RenderBlurStyleOption* OH_ArkUI_RenderNodeUtils_CreateBlurStyleOption()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
@@ -227,6 +229,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeBlurStyleOption(ArkUI_RenderBlurStyleOption
 
 销毁一个模糊样式对象。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeBlurStyleOption(ArkUI_RenderBlurStyleOption* option)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeBlurStyleOption(ArkUI_RenderBlurStyleOption* option)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
@@ -246,6 +250,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBlurStyleOptionRadius(ArkUI_RenderBlurStyleO
 **描述：**
 
 为目标模糊样式设置模糊半径。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBlurStyleOptionRadius(ArkUI_RenderBlurStyleOption* option, float radius)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBlurStyleOptionRadius(ArkUI_RenderBlurStyleOption* option, float radius)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -274,6 +280,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundBlurOption(ArkUI_RenderNodeHandle 
 
 为渲染节点设置背景模糊样式。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
@@ -301,6 +309,8 @@ int32_t OH_ArkUI_RenderNodeUtils_ResetBackgroundBlurOption(ArkUI_RenderNodeHandl
 
 为渲染节点重置背景模糊样式。重置后无背景模糊样式。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_ResetBackgroundBlurOption(ArkUI_RenderNodeHandle node)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_ResetBackgroundBlurOption(ArkUI_RenderNodeHandle node)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
@@ -326,6 +336,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetForegroundBlurOption(ArkUI_RenderNodeHandle 
 **描述：**
 
 为渲染节点设置前景模糊样式。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetForegroundBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetForegroundBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -354,6 +366,8 @@ int32_t OH_ArkUI_RenderNodeUtils_ResetForegroundBlurOption(ArkUI_RenderNodeHandl
 
 为渲染节点重置前景模糊样式。重置后无前景模糊样式。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_ResetForegroundBlurOption(ArkUI_RenderNodeHandle node)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_ResetForegroundBlurOption(ArkUI_RenderNodeHandle node)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
@@ -379,6 +393,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetContentBlurOption(ArkUI_RenderNodeHandle nod
 **描述：**
 
 为渲染节点设置内容模糊样式。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetContentBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetContentBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -407,6 +423,8 @@ int32_t OH_ArkUI_RenderNodeUtils_ResetContentBlurOption(ArkUI_RenderNodeHandle n
 
 为渲染节点重置内容模糊样式。重置后无内容模糊样式。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_ResetContentBlurOption(ArkUI_RenderNodeHandle node)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_ResetContentBlurOption(ArkUI_RenderNodeHandle node)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
@@ -432,6 +450,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AddRenderNode(ArkUI_NodeHandle node, ArkUI_Rend
 **描述：**
 
 向父自定义节点添加子渲染节点。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_AddRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_AddRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -460,6 +480,8 @@ int32_t OH_ArkUI_RenderNodeUtils_RemoveRenderNode(ArkUI_NodeHandle node, ArkUI_R
 
 从父节点移除指定的子渲染节点。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_RemoveRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_RemoveRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -487,6 +509,8 @@ int32_t OH_ArkUI_RenderNodeUtils_ClearRenderNodeChildren(ArkUI_NodeHandle node)
 
 清除父节点内的子渲染节点。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_ClearRenderNodeChildren(ArkUI_NodeHandle node)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_ClearRenderNodeChildren(ArkUI_NodeHandle node)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -512,6 +536,8 @@ int32_t OH_ArkUI_RenderNodeUtils_Invalidate(ArkUI_NodeHandle node)
 **描述：**
 
 标记目标节点，触发其生命周期和子节点的重新渲染。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_Invalidate(ArkUI_NodeHandle node)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_Invalidate(ArkUI_NodeHandle node)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -539,6 +565,8 @@ ArkUI_RenderNodeHandle OH_ArkUI_RenderNodeUtils_CreateNode()
 
 创建渲染节点。
 
+<!--Device-ArkUI_RenderNodeHandle OH_ArkUI_RenderNodeUtils_CreateNode()--><!--Device-ArkUI_RenderNodeHandle OH_ArkUI_RenderNodeUtils_CreateNode()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -558,6 +586,8 @@ int32_t OH_ArkUI_RenderNodeUtils_DisposeNode(ArkUI_RenderNodeHandle node)
 **描述：**
 
 销毁渲染节点。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_DisposeNode(ArkUI_RenderNodeHandle node)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_DisposeNode(ArkUI_RenderNodeHandle node)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -585,6 +615,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AddChild(ArkUI_RenderNodeHandle node, ArkUI_Ren
 
 向目标父渲染节点上添加子节点。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_AddChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_AddChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -611,6 +643,8 @@ int32_t OH_ArkUI_RenderNodeUtils_InsertChildAfter(ArkUI_RenderNodeHandle node, A
 **描述：**
 
 向父节点的目标子节点后添加子节点。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_InsertChildAfter(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, ArkUI_RenderNodeHandle sibling)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_InsertChildAfter(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, ArkUI_RenderNodeHandle sibling)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -640,6 +674,8 @@ int32_t OH_ArkUI_RenderNodeUtils_RemoveChild(ArkUI_RenderNodeHandle node, ArkUI_
 
 从指定渲染节点中移除子节点。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_RemoveChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_RemoveChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -667,6 +703,8 @@ int32_t OH_ArkUI_RenderNodeUtils_ClearChildren(ArkUI_RenderNodeHandle node)
 
 清空指定渲染节点的所有子节点。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_ClearChildren(ArkUI_RenderNodeHandle node)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_ClearChildren(ArkUI_RenderNodeHandle node)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -692,6 +730,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetChild(ArkUI_RenderNodeHandle node, int32_t i
 **描述：**
 
 获取指定索引位置的子节点。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetChild(ArkUI_RenderNodeHandle node, int32_t index, ArkUI_RenderNodeHandle* child)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetChild(ArkUI_RenderNodeHandle node, int32_t index, ArkUI_RenderNodeHandle* child)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -721,6 +761,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetFirstChild(ArkUI_RenderNodeHandle node, ArkU
 
 获取指定渲染节点的第一个子节点。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetFirstChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle* child)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetFirstChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle* child)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -747,6 +789,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetNextSibling(ArkUI_RenderNodeHandle node, Ark
 **描述：**
 
 获取指定节点的下一个兄弟节点。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetNextSibling(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle* sibling)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetNextSibling(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle* sibling)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -775,6 +819,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetPreviousSibling(ArkUI_RenderNodeHandle node,
 
 获取指定节点的上一个兄弟节点。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetPreviousSibling(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle* sibling)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetPreviousSibling(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle* sibling)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -801,6 +847,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetChildren(ArkUI_RenderNodeHandle node, ArkUI_
 **描述：**
 
 获取父渲染节点的所有子渲染节点，调用者负责释放返回的子节点数组。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetChildren(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle** children, int32_t* count)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetChildren(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle** children, int32_t* count)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -830,6 +878,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetChildrenCount(ArkUI_RenderNodeHandle node, i
 
 获取指定渲染节点的子渲染节点数量。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetChildrenCount(ArkUI_RenderNodeHandle node, int32_t* count)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetChildrenCount(ArkUI_RenderNodeHandle node, int32_t* count)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -856,6 +906,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundColor(ArkUI_RenderNodeHandle node,
 **描述：**
 
 为渲染节点设置背景颜色。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundColor(ArkUI_RenderNodeHandle node, uint32_t color)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundColor(ArkUI_RenderNodeHandle node, uint32_t color)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -884,6 +936,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBackgroundColor(ArkUI_RenderNodeHandle node,
 
 获取渲染节点的背景颜色。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBackgroundColor(ArkUI_RenderNodeHandle node, uint32_t* color)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBackgroundColor(ArkUI_RenderNodeHandle node, uint32_t* color)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -910,6 +964,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetClipToFrame(ArkUI_RenderNodeHandle node, int
 **描述：**
 
 设置是否对当前渲染节点裁剪。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetClipToFrame(ArkUI_RenderNodeHandle node, int32_t clipToFrame)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetClipToFrame(ArkUI_RenderNodeHandle node, int32_t clipToFrame)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -938,6 +994,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetClipToFrame(ArkUI_RenderNodeHandle node, int
 
 获取是否对当前渲染节点裁剪。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetClipToFrame(ArkUI_RenderNodeHandle node, int32_t* clipToFrame)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetClipToFrame(ArkUI_RenderNodeHandle node, int32_t* clipToFrame)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -964,6 +1022,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetClipToBounds(ArkUI_RenderNodeHandle node, in
 **描述：**
 
 设置是否对当前渲染节点边界裁剪。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetClipToBounds(ArkUI_RenderNodeHandle node, int32_t clipToBounds)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetClipToBounds(ArkUI_RenderNodeHandle node, int32_t clipToBounds)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -992,6 +1052,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetClipToBounds(ArkUI_RenderNodeHandle node, in
 
 获取是否对当前渲染节点边界裁剪。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetClipToBounds(ArkUI_RenderNodeHandle node, int32_t* clipToBounds)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetClipToBounds(ArkUI_RenderNodeHandle node, int32_t* clipToBounds)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -1018,6 +1080,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetOpacity(ArkUI_RenderNodeHandle node, float o
 **描述：**
 
 为渲染节点设置不透明度值。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetOpacity(ArkUI_RenderNodeHandle node, float opacity)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetOpacity(ArkUI_RenderNodeHandle node, float opacity)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1046,6 +1110,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetOpacity(ArkUI_RenderNodeHandle node, float* 
 
 获取渲染节点的不透明度值。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetOpacity(ArkUI_RenderNodeHandle node, float* opacity)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetOpacity(ArkUI_RenderNodeHandle node, float* opacity)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -1072,6 +1138,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetSize(ArkUI_RenderNodeHandle node, int32_t wi
 **描述：**
 
 为渲染节点设置尺寸。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetSize(ArkUI_RenderNodeHandle node, int32_t width, int32_t height)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetSize(ArkUI_RenderNodeHandle node, int32_t width, int32_t height)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1101,6 +1169,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetSize(ArkUI_RenderNodeHandle node, int32_t* w
 
 获取渲染节点的尺寸。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetSize(ArkUI_RenderNodeHandle node, int32_t* width, int32_t* height)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetSize(ArkUI_RenderNodeHandle node, int32_t* width, int32_t* height)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -1128,6 +1198,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetPosition(ArkUI_RenderNodeHandle node, int32_
 **描述：**
 
 为渲染节点设置位置坐标。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetPosition(ArkUI_RenderNodeHandle node, int32_t x, int32_t y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetPosition(ArkUI_RenderNodeHandle node, int32_t x, int32_t y)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1157,6 +1229,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetPosition(ArkUI_RenderNodeHandle node, int32_
 
 获取渲染节点的位置坐标。该坐标是渲染节点布局后相对父节点的位置偏移，单位为px。该坐标是父节点对该节点进行布局之后的结果，因此布局之后生效的offset属性和不参与布局的position属性不影响该坐标。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetPosition(ArkUI_RenderNodeHandle node, int32_t* x, int32_t* y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetPosition(ArkUI_RenderNodeHandle node, int32_t* x, int32_t* y)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -1184,6 +1258,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetPivot(ArkUI_RenderNodeHandle node, float x, 
 **描述：**
 
 为渲染节点的变换设置中心点。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetPivot(ArkUI_RenderNodeHandle node, float x, float y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetPivot(ArkUI_RenderNodeHandle node, float x, float y)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1213,6 +1289,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetPivot(ArkUI_RenderNodeHandle node, float* x,
 
 获取渲染节点的中心点坐标。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetPivot(ArkUI_RenderNodeHandle node, float* x, float* y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetPivot(ArkUI_RenderNodeHandle node, float* x, float* y)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -1240,6 +1318,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetScale(ArkUI_RenderNodeHandle node, float x, 
 **描述：**
 
 为渲染节点设置缩放因子。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetScale(ArkUI_RenderNodeHandle node, float x, float y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetScale(ArkUI_RenderNodeHandle node, float x, float y)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1269,6 +1349,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetScale(ArkUI_RenderNodeHandle node, float* x,
 
 获取渲染节点的缩放因子。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetScale(ArkUI_RenderNodeHandle node, float* x, float* y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetScale(ArkUI_RenderNodeHandle node, float* x, float* y)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -1296,6 +1378,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetTranslation(ArkUI_RenderNodeHandle node, flo
 **描述：**
 
 为渲染节点设置平移偏移量。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetTranslation(ArkUI_RenderNodeHandle node, float x, float y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetTranslation(ArkUI_RenderNodeHandle node, float x, float y)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1325,6 +1409,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetTranslation(ArkUI_RenderNodeHandle node, flo
 
 获取渲染节点的平移偏移量。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetTranslation(ArkUI_RenderNodeHandle node, float* x, float* y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetTranslation(ArkUI_RenderNodeHandle node, float* x, float* y)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -1352,6 +1438,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetRotation(ArkUI_RenderNodeHandle node, float 
 **描述：**
 
 为渲染节点设置旋转角度。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetRotation(ArkUI_RenderNodeHandle node, float x, float y, float z)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetRotation(ArkUI_RenderNodeHandle node, float x, float y, float z)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1382,6 +1470,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetRotation(ArkUI_RenderNodeHandle node, float*
 
 获取渲染节点的旋转角度。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetRotation(ArkUI_RenderNodeHandle node, float* x, float* y, float* z)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetRotation(ArkUI_RenderNodeHandle node, float* x, float* y, float* z)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -1411,6 +1501,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetTransform(ArkUI_RenderNodeHandle node, float
 
 为渲染节点设置变换矩阵。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetTransform(ArkUI_RenderNodeHandle node, float* matrix)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetTransform(ArkUI_RenderNodeHandle node, float* matrix)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -1437,6 +1529,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowColor(ArkUI_RenderNodeHandle node, uin
 **描述：**
 
 为渲染节点设置阴影颜色。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetShadowColor(ArkUI_RenderNodeHandle node, uint32_t color)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetShadowColor(ArkUI_RenderNodeHandle node, uint32_t color)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1465,6 +1559,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowColor(ArkUI_RenderNodeHandle node, uin
 
 获取渲染节点的阴影颜色。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetShadowColor(ArkUI_RenderNodeHandle node, uint32_t* color)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetShadowColor(ArkUI_RenderNodeHandle node, uint32_t* color)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -1491,6 +1587,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowOffset(ArkUI_RenderNodeHandle node, in
 **描述：**
 
 为渲染节点设置阴影偏移量。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetShadowOffset(ArkUI_RenderNodeHandle node, int32_t x, int32_t y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetShadowOffset(ArkUI_RenderNodeHandle node, int32_t x, int32_t y)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1520,6 +1618,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowOffset(ArkUI_RenderNodeHandle node, in
 
 获取渲染节点的阴影偏移量。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetShadowOffset(ArkUI_RenderNodeHandle node, int32_t* x, int32_t* y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetShadowOffset(ArkUI_RenderNodeHandle node, int32_t* x, int32_t* y)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -1548,6 +1648,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowAlpha(ArkUI_RenderNodeHandle node, flo
 
 为渲染节点设置阴影透明度。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetShadowAlpha(ArkUI_RenderNodeHandle node, float alpha)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetShadowAlpha(ArkUI_RenderNodeHandle node, float alpha)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -1574,6 +1676,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowAlpha(ArkUI_RenderNodeHandle node, flo
 **描述：**
 
 获取渲染节点的阴影透明度。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetShadowAlpha(ArkUI_RenderNodeHandle node, float* alpha)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetShadowAlpha(ArkUI_RenderNodeHandle node, float* alpha)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1602,6 +1706,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowElevation(ArkUI_RenderNodeHandle node,
 
 为渲染节点设置阴影高度。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetShadowElevation(ArkUI_RenderNodeHandle node, float elevation)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetShadowElevation(ArkUI_RenderNodeHandle node, float elevation)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -1628,6 +1734,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowElevation(ArkUI_RenderNodeHandle node,
 **描述：**
 
 获取渲染节点的阴影高度。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetShadowElevation(ArkUI_RenderNodeHandle node, float* elevation)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetShadowElevation(ArkUI_RenderNodeHandle node, float* elevation)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1656,6 +1764,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowRadius(ArkUI_RenderNodeHandle node, fl
 
 为渲染节点设置阴影半径。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetShadowRadius(ArkUI_RenderNodeHandle node, float radius)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetShadowRadius(ArkUI_RenderNodeHandle node, float radius)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -1682,6 +1792,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowRadius(ArkUI_RenderNodeHandle node, fl
 **描述：**
 
 获取渲染节点的阴影半径。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetShadowRadius(ArkUI_RenderNodeHandle node, float* radius)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetShadowRadius(ArkUI_RenderNodeHandle node, float* radius)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1710,6 +1822,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBorderStyle(ArkUI_RenderNodeHandle node, Ark
 
 为渲染节点设置边框样式。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBorderStyle(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderStyleOption* borderStyle)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBorderStyle(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderStyleOption* borderStyle)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -1736,6 +1850,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBorderStyle(ArkUI_RenderNodeHandle node, Ark
 **描述：**
 
 获取渲染节点的边框样式。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBorderStyle(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderStyleOption** borderStyle)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBorderStyle(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderStyleOption** borderStyle)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1764,6 +1880,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBorderWidth(ArkUI_RenderNodeHandle node, Ark
 
 为渲染节点设置边框宽度，边框宽度需小于节点尺寸。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBorderWidth(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderWidthOption* borderWidth)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBorderWidth(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderWidthOption* borderWidth)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -1790,6 +1908,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBorderWidth(ArkUI_RenderNodeHandle node, Ark
 **描述：**
 
 获取渲染节点的边框宽度。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBorderWidth(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderWidthOption** borderWidth)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBorderWidth(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderWidthOption** borderWidth)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1818,6 +1938,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBorderColor(ArkUI_RenderNodeHandle node, Ark
 
 为渲染节点设置边框颜色。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBorderColor(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderColorOption* borderColor)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBorderColor(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderColorOption* borderColor)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -1844,6 +1966,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBorderColor(ArkUI_RenderNodeHandle node, Ark
 **描述：**
 
 获取渲染节点的边框颜色。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBorderColor(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderColorOption** borderColor)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBorderColor(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderColorOption** borderColor)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1872,6 +1996,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBorderRadius(ArkUI_RenderNodeHandle node, Ar
 
 为渲染节点设置边框角半径。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBorderRadius(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderRadiusOption* borderRadius)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBorderRadius(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderRadiusOption* borderRadius)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -1898,6 +2024,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBorderRadius(ArkUI_RenderNodeHandle node, Ar
 **描述：**
 
 获取渲染节点的边框角半径。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBorderRadius(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderRadiusOption** borderRadius)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBorderRadius(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderRadiusOption** borderRadius)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1929,6 +2057,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetMask(ArkUI_RenderNodeHandle node, ArkUI_Rend
 2. 在该滤镜下绘制遮罩图形。
 3. 将原节点图像作为源颜色，遮罩图形为目标颜色，通过BlendMode.SRC_IN方式混合成Mask图像。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetMask(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeMaskOption* mask)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetMask(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeMaskOption* mask)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -1955,6 +2085,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetClip(ArkUI_RenderNodeHandle node, ArkUI_Rend
 **描述：**
 
 使用裁剪配置为渲染节点应用裁剪。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetClip(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeClipOption* clip)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetClip(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeClipOption* clip)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1983,6 +2115,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetMarkNodeGroup(ArkUI_RenderNodeHandle node, b
 
 标记是否优先绘制该节点及其子节点。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetMarkNodeGroup(ArkUI_RenderNodeHandle node, bool markNodeGroup)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetMarkNodeGroup(ArkUI_RenderNodeHandle node, bool markNodeGroup)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -2009,6 +2143,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBounds(ArkUI_RenderNodeHandle node, int32_t 
 **描述：**
 
 为渲染节点设置边界。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBounds(ArkUI_RenderNodeHandle node, int32_t x, int32_t y, int32_t width, int32_t height)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBounds(ArkUI_RenderNodeHandle node, int32_t x, int32_t y, int32_t width, int32_t height)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2040,6 +2176,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBounds(ArkUI_RenderNodeHandle node, int32_t*
 
 获取渲染节点的边界。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBounds(ArkUI_RenderNodeHandle node, int32_t* x, int32_t* y, int32_t* width, int32_t* height)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBounds(ArkUI_RenderNodeHandle node, int32_t* x, int32_t* y, int32_t* width, int32_t* height)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -2069,6 +2207,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetDrawRegion(ArkUI_RenderNodeHandle node, floa
 **描述：**
 
 为渲染节点设置绘制区域，该绘制区域主要用于超出边界导致的绘制问题，建议根据实际绘制范围设置大小。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetDrawRegion(ArkUI_RenderNodeHandle node, float x, float y, float w, float h)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetDrawRegion(ArkUI_RenderNodeHandle node, float x, float y, float w, float h)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2100,6 +2240,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachContentModifier(ArkUI_RenderNodeHandle no
 
 为渲染节点添加内容修改器。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachContentModifier(ArkUI_RenderNodeHandle node, ArkUI_RenderContentModifierHandle modifier)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachContentModifier(ArkUI_RenderNodeHandle node, ArkUI_RenderContentModifierHandle modifier)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -2127,6 +2269,8 @@ ArkUI_RenderContentModifierHandle OH_ArkUI_RenderNodeUtils_CreateContentModifier
 
 创建内容修改器。
 
+<!--Device-ArkUI_RenderContentModifierHandle OH_ArkUI_RenderNodeUtils_CreateContentModifier()--><!--Device-ArkUI_RenderContentModifierHandle OH_ArkUI_RenderNodeUtils_CreateContentModifier()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -2147,6 +2291,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeContentModifier(ArkUI_RenderContentModifier
 
 释放内容修改器。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeContentModifier(ArkUI_RenderContentModifierHandle modifier)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeContentModifier(ArkUI_RenderContentModifierHandle modifier)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -2166,6 +2312,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachFloatProperty(ArkUI_RenderContentModifier
 **描述：**
 
 为目标内容修改器附加浮点属性。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachFloatProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_FloatPropertyHandle property)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachFloatProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_FloatPropertyHandle property)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2194,6 +2342,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachVector2Property(ArkUI_RenderContentModifi
 
 为目标内容修改器附加二维向量属性。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachVector2Property(ArkUI_RenderContentModifierHandle modifier, ArkUI_Vector2PropertyHandle property)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachVector2Property(ArkUI_RenderContentModifierHandle modifier, ArkUI_Vector2PropertyHandle property)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -2220,6 +2370,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachColorProperty(ArkUI_RenderContentModifier
 **描述：**
 
 为目标内容修改器附加颜色属性。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachColorProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_ColorPropertyHandle property)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachColorProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_ColorPropertyHandle property)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2248,6 +2400,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachFloatAnimatableProperty(ArkUI_RenderConte
 
 为目标内容修改器附加可动画的浮点属性。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachFloatAnimatableProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_FloatAnimatablePropertyHandle property)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachFloatAnimatableProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_FloatAnimatablePropertyHandle property)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -2274,6 +2428,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachVector2AnimatableProperty(ArkUI_RenderCon
 **描述：**
 
 为目标内容修改器附加可动画的二维向量属性。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachVector2AnimatableProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_Vector2AnimatablePropertyHandle property)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachVector2AnimatableProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_Vector2AnimatablePropertyHandle property)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2302,6 +2458,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachColorAnimatableProperty(ArkUI_RenderConte
 
 为目标内容修改器附加可动画的颜色属性。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachColorAnimatableProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_ColorAnimatablePropertyHandle property)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachColorAnimatableProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_ColorAnimatablePropertyHandle property)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -2329,6 +2487,8 @@ ArkUI_FloatPropertyHandle OH_ArkUI_RenderNodeUtils_CreateFloatProperty(float val
 
 创建浮点属性。
 
+<!--Device-ArkUI_FloatPropertyHandle OH_ArkUI_RenderNodeUtils_CreateFloatProperty(float value)--><!--Device-ArkUI_FloatPropertyHandle OH_ArkUI_RenderNodeUtils_CreateFloatProperty(float value)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -2354,6 +2514,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetFloatPropertyValue(ArkUI_FloatPropertyHandle
 **描述：**
 
 设置浮点属性的值。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetFloatPropertyValue(ArkUI_FloatPropertyHandle property, float value)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetFloatPropertyValue(ArkUI_FloatPropertyHandle property, float value)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2382,6 +2544,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetFloatPropertyValue(ArkUI_FloatPropertyHandle
 
 获取浮点属性的值。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetFloatPropertyValue(ArkUI_FloatPropertyHandle property, float* value)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetFloatPropertyValue(ArkUI_FloatPropertyHandle property, float* value)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -2409,6 +2573,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeFloatProperty(ArkUI_FloatPropertyHandle pro
 
 释放浮点属性。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeFloatProperty(ArkUI_FloatPropertyHandle property)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeFloatProperty(ArkUI_FloatPropertyHandle property)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -2428,6 +2594,8 @@ ArkUI_Vector2PropertyHandle OH_ArkUI_RenderNodeUtils_CreateVector2Property(float
 **描述：**
 
 创建二维向量属性。
+
+<!--Device-ArkUI_Vector2PropertyHandle OH_ArkUI_RenderNodeUtils_CreateVector2Property(float x, float y)--><!--Device-ArkUI_Vector2PropertyHandle OH_ArkUI_RenderNodeUtils_CreateVector2Property(float x, float y)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2455,6 +2623,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetVector2PropertyValue(ArkUI_Vector2PropertyHa
 **描述：**
 
 设置二维向量属性的值。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetVector2PropertyValue(ArkUI_Vector2PropertyHandle property, float x, float y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetVector2PropertyValue(ArkUI_Vector2PropertyHandle property, float x, float y)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2484,6 +2654,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetVector2PropertyValue(ArkUI_Vector2PropertyHa
 
 获取二维向量属性的值。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetVector2PropertyValue(ArkUI_Vector2PropertyHandle property, float* x, float* y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetVector2PropertyValue(ArkUI_Vector2PropertyHandle property, float* x, float* y)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -2512,6 +2684,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeVector2Property(ArkUI_Vector2PropertyHandle
 
 释放二维向量属性。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeVector2Property(ArkUI_Vector2PropertyHandle property)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeVector2Property(ArkUI_Vector2PropertyHandle property)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -2531,6 +2705,8 @@ ArkUI_ColorPropertyHandle OH_ArkUI_RenderNodeUtils_CreateColorProperty(uint32_t 
 **描述：**
 
 创建颜色属性。
+
+<!--Device-ArkUI_ColorPropertyHandle OH_ArkUI_RenderNodeUtils_CreateColorProperty(uint32_t value)--><!--Device-ArkUI_ColorPropertyHandle OH_ArkUI_RenderNodeUtils_CreateColorProperty(uint32_t value)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2557,6 +2733,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetColorPropertyValue(ArkUI_ColorPropertyHandle
 **描述：**
 
 设置颜色属性的值。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetColorPropertyValue(ArkUI_ColorPropertyHandle property, uint32_t value)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetColorPropertyValue(ArkUI_ColorPropertyHandle property, uint32_t value)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2585,6 +2763,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetColorPropertyValue(ArkUI_ColorPropertyHandle
 
 获取颜色属性的值。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetColorPropertyValue(ArkUI_ColorPropertyHandle property, uint32_t* value)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetColorPropertyValue(ArkUI_ColorPropertyHandle property, uint32_t* value)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -2612,6 +2792,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeColorProperty(ArkUI_ColorPropertyHandle pro
 
 释放颜色属性。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeColorProperty(ArkUI_ColorPropertyHandle property)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeColorProperty(ArkUI_ColorPropertyHandle property)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -2631,6 +2813,8 @@ ArkUI_FloatAnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateFloatAnimatab
 **描述：**
 
 创建可动画的浮点属性。
+
+<!--Device-ArkUI_FloatAnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateFloatAnimatableProperty(float value)--><!--Device-ArkUI_FloatAnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateFloatAnimatableProperty(float value)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2657,6 +2841,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetFloatAnimatablePropertyValue(ArkUI_FloatAnim
 **描述：**
 
 设置可动画的浮点属性的值。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetFloatAnimatablePropertyValue(ArkUI_FloatAnimatablePropertyHandle property, float value)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetFloatAnimatablePropertyValue(ArkUI_FloatAnimatablePropertyHandle property, float value)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2685,6 +2871,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetFloatAnimatablePropertyValue(ArkUI_FloatAnim
 
 获取可动画的浮点属性的值。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetFloatAnimatablePropertyValue(ArkUI_FloatAnimatablePropertyHandle property, float* value)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetFloatAnimatablePropertyValue(ArkUI_FloatAnimatablePropertyHandle property, float* value)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -2712,6 +2900,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeFloatAnimatableProperty(ArkUI_FloatAnimatab
 
 释放可动画的浮点属性。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeFloatAnimatableProperty(ArkUI_FloatAnimatablePropertyHandle property)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeFloatAnimatableProperty(ArkUI_FloatAnimatablePropertyHandle property)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -2731,6 +2921,8 @@ ArkUI_Vector2AnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateVector2Anim
 **描述：**
 
 创建可动画的二维向量属性。
+
+<!--Device-ArkUI_Vector2AnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateVector2AnimatableProperty(float x, float y)--><!--Device-ArkUI_Vector2AnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateVector2AnimatableProperty(float x, float y)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2758,6 +2950,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetVector2AnimatablePropertyValue(ArkUI_Vector2
 **描述：**
 
 设置可动画的二维向量属性的值。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetVector2AnimatablePropertyValue(ArkUI_Vector2AnimatablePropertyHandle property, float x, float y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetVector2AnimatablePropertyValue(ArkUI_Vector2AnimatablePropertyHandle property, float x, float y)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2787,6 +2981,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetVector2AnimatablePropertyValue(ArkUI_Vector2
 
 获取可动画的二维向量属性的值。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetVector2AnimatablePropertyValue(ArkUI_Vector2AnimatablePropertyHandle property, float* x, float* y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetVector2AnimatablePropertyValue(ArkUI_Vector2AnimatablePropertyHandle property, float* x, float* y)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -2815,6 +3011,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeVector2AnimatableProperty(ArkUI_Vector2Anim
 
 释放可动画的二维向量属性。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeVector2AnimatableProperty(ArkUI_Vector2AnimatablePropertyHandle property)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeVector2AnimatableProperty(ArkUI_Vector2AnimatablePropertyHandle property)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -2834,6 +3032,8 @@ ArkUI_ColorAnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateColorAnimatab
 **描述：**
 
 创建可动画的颜色属性。
+
+<!--Device-ArkUI_ColorAnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateColorAnimatableProperty(uint32_t value)--><!--Device-ArkUI_ColorAnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateColorAnimatableProperty(uint32_t value)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2860,6 +3060,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetColorAnimatablePropertyValue(ArkUI_ColorAnim
 **描述：**
 
 设置可动画的颜色属性的值。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetColorAnimatablePropertyValue(ArkUI_ColorAnimatablePropertyHandle property, uint32_t value)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetColorAnimatablePropertyValue(ArkUI_ColorAnimatablePropertyHandle property, uint32_t value)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2888,6 +3090,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetColorAnimatablePropertyValue(ArkUI_ColorAnim
 
 获取可动画的颜色属性的值。
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetColorAnimatablePropertyValue(ArkUI_ColorAnimatablePropertyHandle property, uint32_t* value)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetColorAnimatablePropertyValue(ArkUI_ColorAnimatablePropertyHandle property, uint32_t* value)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -2915,6 +3119,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeColorAnimatableProperty(ArkUI_ColorAnimatab
 
 释放可动画的颜色属性。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeColorAnimatableProperty(ArkUI_ColorAnimatablePropertyHandle property)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeColorAnimatableProperty(ArkUI_ColorAnimatablePropertyHandle property)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -2934,6 +3140,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentMod
 **描述：**
 
 设置内容修改器的onDraw函数。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentModifierHandle modifier, void* userData, void (*callback)(ArkUI_DrawContext* context, void* userData))--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentModifierHandle modifier, void* userData, void (*callback)(ArkUI_DrawContext* context, void* userData))-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2963,6 +3171,8 @@ ArkUI_RectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRectShapeOption()
 
 创建矩形形状。
 
+<!--Device-ArkUI_RectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRectShapeOption()--><!--Device-ArkUI_RectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRectShapeOption()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -2983,6 +3193,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeRectShapeOption(ArkUI_RectShapeOption* opti
 
 释放矩形形状。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeRectShapeOption(ArkUI_RectShapeOption* option)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeRectShapeOption(ArkUI_RectShapeOption* option)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3002,6 +3214,8 @@ void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionEdgeValue(ArkUI_RectShapeOption*
 **描述：**
 
 设置矩形形状的边缘值。当设置左边界和上边界为负数时，因显示涉及到图层叠加效果，会导致部分超出节点内容部分无法绘制。
+
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionEdgeValue(ArkUI_RectShapeOption* option, float edgeValue, ArkUI_EdgeDirection direction)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionEdgeValue(ArkUI_RectShapeOption* option, float edgeValue, ArkUI_EdgeDirection direction)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3025,6 +3239,8 @@ ArkUI_NodeBorderStyleOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderStyleOptio
 
 创建节点边框样式。
 
+<!--Device-ArkUI_NodeBorderStyleOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderStyleOption()--><!--Device-ArkUI_NodeBorderStyleOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderStyleOption()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3045,6 +3261,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderStyleOption(ArkUI_NodeBorderStyle
 
 释放节点边框样式。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderStyleOption(ArkUI_NodeBorderStyleOption* option)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderStyleOption(ArkUI_NodeBorderStyleOption* option)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3064,6 +3282,8 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderStyleOptionEdgeStyle(ArkUI_NodeBorder
 **描述：**
 
 设置节点边框样式的边缘值。
+
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetNodeBorderStyleOptionEdgeStyle(ArkUI_NodeBorderStyleOption* option, ArkUI_BorderStyle edgeStyle, ArkUI_EdgeDirection direction)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetNodeBorderStyleOptionEdgeStyle(ArkUI_NodeBorderStyleOption* option, ArkUI_BorderStyle edgeStyle, ArkUI_EdgeDirection direction)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3087,6 +3307,8 @@ ArkUI_NodeBorderWidthOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderWidthOptio
 
 创建节点边框宽度。
 
+<!--Device-ArkUI_NodeBorderWidthOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderWidthOption()--><!--Device-ArkUI_NodeBorderWidthOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderWidthOption()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3107,6 +3329,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderWidthOption(ArkUI_NodeBorderWidth
 
 释放节点边框宽度。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderWidthOption(ArkUI_NodeBorderWidthOption* option)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderWidthOption(ArkUI_NodeBorderWidthOption* option)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3126,6 +3350,8 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderWidthOptionEdgeWidth(ArkUI_NodeBorder
 **描述：**
 
 设置节点边框宽度的边缘值。
+
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetNodeBorderWidthOptionEdgeWidth(ArkUI_NodeBorderWidthOption* option, float edgeWidth, ArkUI_EdgeDirection direction)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetNodeBorderWidthOptionEdgeWidth(ArkUI_NodeBorderWidthOption* option, float edgeWidth, ArkUI_EdgeDirection direction)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3149,6 +3375,8 @@ ArkUI_NodeBorderColorOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderColorOptio
 
 创建节点边框颜色。
 
+<!--Device-ArkUI_NodeBorderColorOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderColorOption()--><!--Device-ArkUI_NodeBorderColorOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderColorOption()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3169,6 +3397,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderColorOption(ArkUI_NodeBorderColor
 
 释放节点边框颜色。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderColorOption(ArkUI_NodeBorderColorOption* option)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderColorOption(ArkUI_NodeBorderColorOption* option)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3188,6 +3418,8 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderColorOptionEdgeColor(ArkUI_NodeBorder
 **描述：**
 
 设置节点边框颜色的边缘值。
+
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetNodeBorderColorOptionEdgeColor(ArkUI_NodeBorderColorOption* option, uint32_t edgeColor, ArkUI_EdgeDirection direction)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetNodeBorderColorOptionEdgeColor(ArkUI_NodeBorderColorOption* option, uint32_t edgeColor, ArkUI_EdgeDirection direction)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3211,6 +3443,8 @@ ArkUI_NodeBorderRadiusOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderRadiusOpt
 
 创建节点边框半径。
 
+<!--Device-ArkUI_NodeBorderRadiusOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderRadiusOption()--><!--Device-ArkUI_NodeBorderRadiusOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderRadiusOption()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3231,6 +3465,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderRadiusOption(ArkUI_NodeBorderRadi
 
 释放节点边框半径。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderRadiusOption(ArkUI_NodeBorderRadiusOption* option)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderRadiusOption(ArkUI_NodeBorderRadiusOption* option)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3250,6 +3486,8 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderRadiusOptionCornerRadius(ArkUI_NodeBo
 **描述：**
 
 设置节点边框半径的边缘值。请注意，入参cornerRadius为uint32_t，仅支持传入正整数。
+
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetNodeBorderRadiusOptionCornerRadius(ArkUI_NodeBorderRadiusOption* option, uint32_t cornerRadius, ArkUI_CornerDirection direction)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetNodeBorderRadiusOptionCornerRadius(ArkUI_NodeBorderRadiusOption* option, uint32_t cornerRadius, ArkUI_CornerDirection direction)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3273,6 +3511,8 @@ ArkUI_CircleShapeOption* OH_ArkUI_RenderNodeUtils_CreateCircleShapeOption()
 
 创建圆形形状。
 
+<!--Device-ArkUI_CircleShapeOption* OH_ArkUI_RenderNodeUtils_CreateCircleShapeOption()--><!--Device-ArkUI_CircleShapeOption* OH_ArkUI_RenderNodeUtils_CreateCircleShapeOption()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3293,6 +3533,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeCircleShapeOption(ArkUI_CircleShapeOption* 
 
 释放圆形形状。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeCircleShapeOption(ArkUI_CircleShapeOption* option)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeCircleShapeOption(ArkUI_CircleShapeOption* option)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3312,6 +3554,8 @@ void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterX(ArkUI_CircleShapeOptio
 **描述：**
 
 设置圆形形状的圆心x轴坐标值。
+
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterX(ArkUI_CircleShapeOption* option, float centerX)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterX(ArkUI_CircleShapeOption* option, float centerX)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3334,6 +3578,8 @@ void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterY(ArkUI_CircleShapeOptio
 
 设置圆形形状的圆心y轴坐标值。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterY(ArkUI_CircleShapeOption* option, float centerY)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterY(ArkUI_CircleShapeOption* option, float centerY)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3354,6 +3600,8 @@ void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionRadius(ArkUI_CircleShapeOption
 **描述：**
 
 设置圆形形状的半径值。
+
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionRadius(ArkUI_CircleShapeOption* option, float radius)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionRadius(ArkUI_CircleShapeOption* option, float radius)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3376,6 +3624,8 @@ ArkUI_RoundRectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRoundRectShapeOption(
 
 创建圆角矩形形状。
 
+<!--Device-ArkUI_RoundRectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRoundRectShapeOption()--><!--Device-ArkUI_RoundRectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRoundRectShapeOption()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3396,6 +3646,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeRoundRectShapeOption(ArkUI_RoundRectShapeOp
 
 释放圆角矩形形状。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeRoundRectShapeOption(ArkUI_RoundRectShapeOption* option)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeRoundRectShapeOption(ArkUI_RoundRectShapeOption* option)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3415,6 +3667,8 @@ void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionEdgeValue(ArkUI_RoundRectSh
 **描述：**
 
 设置圆角矩形形状的边缘值。
+
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionEdgeValue(ArkUI_RoundRectShapeOption* option, float edgeValue, ArkUI_EdgeDirection direction)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionEdgeValue(ArkUI_RoundRectShapeOption* option, float edgeValue, ArkUI_EdgeDirection direction)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3437,6 +3691,8 @@ void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionCornerXY(ArkUI_RoundRectSha
 **描述：**
 
 设置目标角的坐标值。
+
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionCornerXY(ArkUI_RoundRectShapeOption* option, float x, float y, ArkUI_CornerDirection direction)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionCornerXY(ArkUI_RoundRectShapeOption* option, float x, float y, ArkUI_CornerDirection direction)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3461,6 +3717,8 @@ ArkUI_CommandPathOption* OH_ArkUI_RenderNodeUtils_CreateCommandPathOption()
 
 创建自定义绘制路径。
 
+<!--Device-ArkUI_CommandPathOption* OH_ArkUI_RenderNodeUtils_CreateCommandPathOption()--><!--Device-ArkUI_CommandPathOption* OH_ArkUI_RenderNodeUtils_CreateCommandPathOption()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3480,6 +3738,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeCommandPathOption(ArkUI_CommandPathOption* 
 **描述：**
 
 释放自定义绘制路径。
+
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeCommandPathOption(ArkUI_CommandPathOption* option)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeCommandPathOption(ArkUI_CommandPathOption* option)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3501,6 +3761,8 @@ void OH_ArkUI_RenderNodeUtils_SetCommandPathOptionCommands(ArkUI_CommandPathOpti
 
 设置自定义绘制路径的命令值。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetCommandPathOptionCommands(ArkUI_CommandPathOption* option, char* commands)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetCommandPathOptionCommands(ArkUI_CommandPathOption* option, char* commands)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3521,6 +3783,8 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **描述：**
 
 从矩形形状创建遮罩。
+
+<!--Device-ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromRectShape(ArkUI_RectShapeOption* shape)--><!--Device-ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromRectShape(ArkUI_RectShapeOption* shape)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3548,6 +3812,8 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 
 从圆角矩形形状创建遮罩。
 
+<!--Device-ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromRoundRectShape(ArkUI_RoundRectShapeOption* shape)--><!--Device-ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromRoundRectShape(ArkUI_RoundRectShapeOption* shape)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3573,6 +3839,8 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **描述：**
 
 从圆形形状创建遮罩。
+
+<!--Device-ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromCircleShape(ArkUI_CircleShapeOption* shape)--><!--Device-ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromCircleShape(ArkUI_CircleShapeOption* shape)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3600,6 +3868,8 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 
 从椭圆形形状创建遮罩。
 
+<!--Device-ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromOvalShape(ArkUI_RectShapeOption* shape)--><!--Device-ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromOvalShape(ArkUI_RectShapeOption* shape)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3625,6 +3895,8 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **描述：**
 
 从自定义绘制路径创建遮罩。
+
+<!--Device-ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromCommandPath(ArkUI_CommandPathOption* path)--><!--Device-ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromCommandPath(ArkUI_CommandPathOption* path)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3652,6 +3924,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption(ArkUI_RenderNodeMaskOp
 
 释放渲染节点遮罩。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption(ArkUI_RenderNodeMaskOption* option)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption(ArkUI_RenderNodeMaskOption* option)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3671,6 +3945,8 @@ void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionFillColor(ArkUI_RenderNodeM
 **描述：**
 
 设置渲染节点遮罩的填充颜色。
+
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionFillColor(ArkUI_RenderNodeMaskOption* mask, uint32_t fillColor)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionFillColor(ArkUI_RenderNodeMaskOption* mask, uint32_t fillColor)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3693,6 +3969,8 @@ void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeColor(ArkUI_RenderNod
 
 设置渲染节点遮罩的描边颜色。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeColor(ArkUI_RenderNodeMaskOption* mask, uint32_t strokeColor)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeColor(ArkUI_RenderNodeMaskOption* mask, uint32_t strokeColor)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3714,6 +3992,8 @@ void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeWidth(ArkUI_RenderNod
 
 设置渲染节点遮罩的描边宽度。以边框路径为中心进行相应宽度的绘制。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeWidth(ArkUI_RenderNodeMaskOption* mask, float strokeWidth)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeWidth(ArkUI_RenderNodeMaskOption* mask, float strokeWidth)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3734,6 +4014,8 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 **描述：**
 
 从矩形形状创建裁剪。
+
+<!--Device-ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromRectShape(ArkUI_RectShapeOption* shape)--><!--Device-ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromRectShape(ArkUI_RectShapeOption* shape)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3761,6 +4043,8 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 
 从圆角矩形形状创建裁剪。
 
+<!--Device-ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromRoundRectShape(ArkUI_RoundRectShapeOption* shape)--><!--Device-ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromRoundRectShape(ArkUI_RoundRectShapeOption* shape)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3786,6 +4070,8 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 **描述：**
 
 从圆形形状创建裁剪。
+
+<!--Device-ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromCircleShape(ArkUI_CircleShapeOption* shape)--><!--Device-ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromCircleShape(ArkUI_CircleShapeOption* shape)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3813,6 +4099,8 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 
 从椭圆形形状创建裁剪。
 
+<!--Device-ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromOvalShape(ArkUI_RectShapeOption* shape)--><!--Device-ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromOvalShape(ArkUI_RectShapeOption* shape)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3838,6 +4126,8 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 **描述：**
 
 从自定义绘制路径创建裁剪。
+
+<!--Device-ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromCommandPath(ArkUI_CommandPathOption* path)--><!--Device-ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromCommandPath(ArkUI_CommandPathOption* path)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3865,6 +4155,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption(ArkUI_RenderNodeClipOp
 
 释放渲染节点裁剪。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption(ArkUI_RenderNodeClipOption* option)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption(ArkUI_RenderNodeClipOption* option)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -3884,6 +4176,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetRenderNode(ArkUI_NodeHandle node, ArkUI_Rend
 **描述：**
 
 获取已被接纳为附属节点的目标节点的RenderNode。如果一个RenderNode是通过该接口获取的，调用[ArkUI_NativeNodeAPI_1](capi-arkui-nativemodule-arkui-nativenodeapi-1.md)的[disposeNode](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode) 接口主动销毁FrameNode时，需要额外调用[OH_ArkUI_RenderNodeUtils_DisposeNode](capi-native-render-h.md#oh_arkui_rendernodeutils_disposenode)释放该RenderNode。
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle* renderNode)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle* renderNode)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3912,6 +4206,8 @@ void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionValue(ArkUI_RoundRectShapeO
 
 为圆角矩形形状选项设置边框矩形范围。该函数通过指定位置和尺寸来定义圆角矩形的几何框架。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionValue(ArkUI_RoundRectShapeOption* option, float x, float y, float width, float height)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionValue(ArkUI_RoundRectShapeOption* option, float x, float y, float width, float height)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
@@ -3936,6 +4232,8 @@ void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionValue(ArkUI_RectShapeOption* opt
 
 为矩形形状选项设置边框矩形范围。该函数通过指定位置和尺寸来定义矩形的几何框架。
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionValue(ArkUI_RectShapeOption* option, float x, float y, float width, float height)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionValue(ArkUI_RectShapeOption* option, float x, float y, float width, float height)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
@@ -3959,6 +4257,8 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertRenderNodeAt(ArkUI_NodeHandle nod
 **描述：**
 
 在父节点下的指定位置插入子渲染节点。
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertRenderNodeAt(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child, int32_t position)--><!--Device-ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertRenderNodeAt(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child, int32_t position)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3988,6 +4288,8 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount(ArkUI_NodeHa
 
 获取指定父节点的子渲染节点数量。
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount(ArkUI_NodeHandle node, int32_t* count)--><!--Device-ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount(ArkUI_NodeHandle node, int32_t* count)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
@@ -4014,6 +4316,8 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeAt(ArkUI_NodeHandle node, 
 **描述：**
 
 获取父节点下指定位置的子渲染节点。
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeAt(ArkUI_NodeHandle node, int32_t position, ArkUI_RenderNodeHandle* child)--><!--Device-ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeAt(ArkUI_NodeHandle node, int32_t position, ArkUI_RenderNodeHandle* child)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct __ns_msg {...}--><!--Device-struct __ns_msg {...}-End-->
+
 ## Summary
 
 ### Member variables

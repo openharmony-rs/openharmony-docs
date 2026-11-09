@@ -34,6 +34,8 @@ enum ArkUI_ImageSpanAlignment
 
 定义图片基于文本的对齐方式。
 
+<!--Device-ArkUI_ImageSpanAlignment--><!--Device-ArkUI_ImageSpanAlignment-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12

@@ -8,11 +8,13 @@ struct Region {...}
 
 indicates a dirty region where content is updated.
 
+<!--Device-struct Region {...}--><!--Device-struct Region {...}-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **Since**: 8
 
-**Related module**: [NativeWindow](capi-others-nativewindow.md)
+**Related module**: [NativeWindow](capi-arkgraphics2d-nativewindow.md)
 
 **Header file**: [external_window.h](capi-external-window-h.md)
 

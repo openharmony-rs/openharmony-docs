@@ -8,11 +8,13 @@ struct DRM_MediaKeySystemDescription {...}
 
 DRM解决方案名称及其UUID的列表。
 
+<!--Device-struct DRM_MediaKeySystemDescription {...}--><!--Device-struct DRM_MediaKeySystemDescription {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **起始版本：** 12
 
-**相关模块：** [Drm](capi-others-drm.md)
+**相关模块：** [Drm](capi-drm-kit-drm.md)
 
 **所在头文件：** [native_drm_common.h](capi-native-drm-common-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct arphdr {...}--><!--Device-struct arphdr {...}-End-->
+
 ## Summary
 
 ### Member variables

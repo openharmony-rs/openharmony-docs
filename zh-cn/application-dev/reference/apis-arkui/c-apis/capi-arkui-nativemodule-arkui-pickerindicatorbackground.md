@@ -8,11 +8,13 @@ typedef struct ArkUI_PickerIndicatorBackground {...} ArkUI_PickerIndicatorBackgr
 
 选择器指示器背景的样式参数。用于设置选择器指示器背景样式的参数结构体；指示器背景样式以背景色和圆角高亮显示选择器的选中项，包括选中项背景颜色和圆角半径。<br>使用场景：
 
+<!--Device-typedef struct ArkUI_PickerIndicatorBackground {...} ArkUI_PickerIndicatorBackground--><!--Device-typedef struct ArkUI_PickerIndicatorBackground {...} ArkUI_PickerIndicatorBackground-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [picker.h](capi-picker-h.md)
 

@@ -39,6 +39,8 @@ enum Bluetooth_SwitchState
 
 Enumeration state of bluetooth switch.
 
+<!--Device-Bluetooth_SwitchState--><!--Device-Bluetooth_SwitchState-End-->
+
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
 **Since**: 13
@@ -63,6 +65,8 @@ enum Bluetooth_ResultCode
 
 Enumeration the bluetooth result codes.
 
+<!--Device-Bluetooth_ResultCode--><!--Device-Bluetooth_ResultCode-End-->
+
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
 **Since**: 13
@@ -84,6 +88,8 @@ Bluetooth_ResultCode OH_Bluetooth_GetBluetoothSwitchState(Bluetooth_SwitchState 
 **Description**
 
 Get the bluetooth switch state.
+
+<!--Device-Bluetooth_ResultCode OH_Bluetooth_GetBluetoothSwitchState(Bluetooth_SwitchState *state)--><!--Device-Bluetooth_ResultCode OH_Bluetooth_GetBluetoothSwitchState(Bluetooth_SwitchState *state)-End-->
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 

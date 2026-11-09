@@ -8,11 +8,13 @@ typedef struct OH_AVFormat OH_AVFormat
 
 Forward declaration of OH_AVFormat.
 
+<!--Device-typedef struct OH_AVFormat OH_AVFormat--><!--Device-typedef struct OH_AVFormat OH_AVFormat-End-->
+
 **System capability**: SystemCapability.Multimedia.VideoProcessingEngine
 
 **Since**: 13
 
-**Related module**: [ImageProcessing](capi-others-imageprocessing.md)
+**Related module**: [ImageProcessing](capi-image-kit-imageprocessing.md)
 
 **Header file**: [image_processing_types.h](capi-image-processing-types-h.md)
 

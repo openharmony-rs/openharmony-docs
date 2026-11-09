@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoH265VideoParameterSet {...}--><!--Device-struct StdVideoH265VideoParameterSet {...}-End-->
+
 ## Summary
 
 ### Member variables

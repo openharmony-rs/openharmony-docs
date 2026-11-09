@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-union VkClusterAccelerationStructureOpInputNV {...}--><!--Device-union VkClusterAccelerationStructureOpInputNV {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineColorBlendAttachmentState {...}--><!--Device-struct VkPipelineColorBlendAttachmentState {...}-End-->
+
 ## Summary
 
 ### Member variables

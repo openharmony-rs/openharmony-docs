@@ -11,11 +11,13 @@ ArkWeb_WebMessage是用于跨上下文消息通信的Web消息结构体，定义
 - Web页面向Native端发送用户操作结果或请求数据。
 - 跨上下文的异步消息传递和数据同步。
 
+<!--Device-typedef struct ArkWeb_WebMessage* ArkWeb_WebMessagePtr--><!--Device-typedef struct ArkWeb_WebMessage* ArkWeb_WebMessagePtr-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 12
 
-**相关模块：** [Web](capi-others-web.md)
+**相关模块：** [Web](capi-arkweb-web.md)
 
 **所在头文件：** [arkweb_type.h](capi-arkweb-type-h.md)
 

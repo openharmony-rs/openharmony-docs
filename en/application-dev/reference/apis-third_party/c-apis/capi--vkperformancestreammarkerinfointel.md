@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPerformanceStreamMarkerInfoINTEL {...}--><!--Device-struct VkPerformanceStreamMarkerInfoINTEL {...}-End-->
+
 ## Summary
 
 ### Member variables

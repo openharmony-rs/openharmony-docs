@@ -43,6 +43,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetChildProcessInfoByIndex(OH_Ability
 
 Retrieves a specific child process info handle from the collection by its index.
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_GetChildProcessInfoByIndex(OH_AbilityRuntime_ChildProcessInfosHandle infos, uint32_t index, OH_AbilityRuntime_ChildProcessInfoHandle *info)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_GetChildProcessInfoByIndex(OH_AbilityRuntime_ChildProcessInfosHandle infos, uint32_t index, OH_AbilityRuntime_ChildProcessInfoHandle *info)-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.1
@@ -71,6 +73,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetPid(OH_AbilityRun
 
 Gets PID of child process info.
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetPid(OH_AbilityRuntime_ChildProcessInfoHandle info, int32_t *pid)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetPid(OH_AbilityRuntime_ChildProcessInfoHandle info, int32_t *pid)-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.1
@@ -98,6 +102,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetParentPid(OH_Abil
 
 Gets parent PID of child process info.
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetParentPid(OH_AbilityRuntime_ChildProcessInfoHandle info, int32_t *parentPid)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetParentPid(OH_AbilityRuntime_ChildProcessInfoHandle info, int32_t *parentPid)-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.1
@@ -124,6 +130,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetProcessName(OH_Ab
 **Description**
 
 Gets process name of child process info.
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetProcessName(OH_AbilityRuntime_ChildProcessInfoHandle info, char *processName, uint32_t processNameSize, uint32_t *requiredSize)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetProcessName(OH_AbilityRuntime_ChildProcessInfoHandle info, char *processName, uint32_t processNameSize, uint32_t *requiredSize)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -153,6 +161,8 @@ void OH_AbilityRuntime_ReleaseChildProcessInfos(OH_AbilityRuntime_ChildProcessIn
 **Description**
 
 Releases child process info collection.
+
+<!--Device-void OH_AbilityRuntime_ReleaseChildProcessInfos(OH_AbilityRuntime_ChildProcessInfosHandle *infos)--><!--Device-void OH_AbilityRuntime_ReleaseChildProcessInfos(OH_AbilityRuntime_ChildProcessInfosHandle *infos)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

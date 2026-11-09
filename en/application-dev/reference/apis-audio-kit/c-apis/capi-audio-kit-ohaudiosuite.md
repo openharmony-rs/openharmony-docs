@@ -19,3 +19,4 @@ Provide the definition of the C interface for the audio module.
 | [native_audio_suite_download_manager.h](capi-native-audio-suite-download-manager-h.md) | Declare audio download manager related interfaces. |
 | [native_audio_suite_download_manager.h(System API)](capi-native-audio-suite-download-manager-h-sys.md) | Declare audio download manager related interfaces.<br>**System API:** This is a system API. |
 | [native_audio_converter.h](capi-native-audio-converter-h.md) | Declare underlying data structure. |
+| [native_audio_converter.h(System API)](capi-native-audio-converter-h-sys.md) | Declare underlying data structure.<br>**System API:** This is a system API. |

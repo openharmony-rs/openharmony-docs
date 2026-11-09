@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSubresourceHostMemcpySize {...}--><!--Device-struct VkSubresourceHostMemcpySize {...}-End-->
+
 ## Summary
 
 ### Member variables

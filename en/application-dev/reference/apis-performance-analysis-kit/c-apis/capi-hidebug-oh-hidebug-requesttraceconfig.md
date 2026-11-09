@@ -8,11 +8,13 @@ struct OH_HiDebug_RequestTraceConfig {...}
 
 Defines a struct for the trace collection configuration.
 
+<!--Device-struct OH_HiDebug_RequestTraceConfig {...}--><!--Device-struct OH_HiDebug_RequestTraceConfig {...}-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 24
 
-**Related module**: [HiDebug](capi-others-hidebug.md)
+**Related module**: [HiDebug](capi-performance-analysis-kit-hidebug.md)
 
 **Header file**: [hidebug_type.h](capi-hidebug-type-h.md)
 

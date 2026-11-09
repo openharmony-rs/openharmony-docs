@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkQueueFamilyGlobalPriorityProperties {...}--><!--Device-struct VkQueueFamilyGlobalPriorityProperties {...}-End-->
+
 ## Summary
 
 ### Member variables

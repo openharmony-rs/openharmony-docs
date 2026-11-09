@@ -8,11 +8,13 @@ typedef struct OH_ArkUI_NativeModule_UIAgentTreeRequest OH_ArkUI_NativeModule_UI
 
 Declare a UI tree collection request structure.
 
+<!--Device-typedef struct OH_ArkUI_NativeModule_UIAgentTreeRequest OH_ArkUI_NativeModule_UIAgentTreeRequest--><!--Device-typedef struct OH_ArkUI_NativeModule_UIAgentTreeRequest OH_ArkUI_NativeModule_UIAgentTreeRequest-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [ui_info_collection.h](capi-ui-info-collection-h.md)
 

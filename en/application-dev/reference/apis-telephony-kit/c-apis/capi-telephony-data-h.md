@@ -32,6 +32,8 @@ int32_t OH_Telephony_GetDefaultCellularDataSlotId(void)
 
 Obtains the default SIM card used for mobile data.
 
+<!--Device-int32_t OH_Telephony_GetDefaultCellularDataSlotId(void)--><!--Device-int32_t OH_Telephony_GetDefaultCellularDataSlotId(void)-End-->
+
 **System capability**: SystemCapability.Telephony.CellularData
 
 **Since**: 13

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct glob_t {...}--><!--Device-struct glob_t {...}-End-->
+
 ## Summary
 
 ### Member variables

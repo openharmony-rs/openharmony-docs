@@ -8,11 +8,13 @@ typedef struct OH_Drawing_TextBlobBuilder OH_Drawing_TextBlobBuilder
 
 Defines a struct for a text blob builder, which is used to build a text blob.
 
+<!--Device-typedef struct OH_Drawing_TextBlobBuilder OH_Drawing_TextBlobBuilder--><!--Device-typedef struct OH_Drawing_TextBlobBuilder OH_Drawing_TextBlobBuilder-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
-**Related module**: [Drawing](capi-others-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 **Header file**: [drawing_types.h](capi-drawing-types-h.md)
 

@@ -8,11 +8,13 @@ struct PhotoOutput_Callbacks {...}
 
 The struct describes the callbacks related to photo output.
 
+<!--Device-struct PhotoOutput_Callbacks {...}--><!--Device-struct PhotoOutput_Callbacks {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
-**Related module**: [OH_Camera](capi-others-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **Header file**: [photo_output.h](capi-photo-output-h.md)
 

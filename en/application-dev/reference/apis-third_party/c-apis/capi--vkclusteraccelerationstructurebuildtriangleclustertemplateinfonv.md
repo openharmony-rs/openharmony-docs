@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV {...}--><!--Device-struct VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

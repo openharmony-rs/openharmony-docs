@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceShadingRateImagePropertiesNV {...}--><!--Device-struct VkPhysicalDeviceShadingRateImagePropertiesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

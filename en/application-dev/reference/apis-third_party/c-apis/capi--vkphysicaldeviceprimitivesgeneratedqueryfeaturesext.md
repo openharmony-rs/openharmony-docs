@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT {...}--><!--Device-struct VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

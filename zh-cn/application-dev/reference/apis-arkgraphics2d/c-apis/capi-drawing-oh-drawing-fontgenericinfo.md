@@ -8,11 +8,13 @@ struct OH_Drawing_FontGenericInfo {...}
 
 系统所支持的通用字体集信息结构体。
 
+<!--Device-struct OH_Drawing_FontGenericInfo {...}--><!--Device-struct OH_Drawing_FontGenericInfo {...}-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
-**相关模块：** [Drawing](capi-others-drawing.md)
+**相关模块：** [Drawing](capi-arkgraphics2d-drawing.md)
 
 **所在头文件：** [drawing_text_typography.h](capi-drawing-text-typography-h.md)
 

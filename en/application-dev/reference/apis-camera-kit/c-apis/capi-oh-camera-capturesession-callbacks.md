@@ -8,11 +8,13 @@ struct CaptureSession_Callbacks {...}
 
 The struct describes the callbacks related to a capture session.
 
+<!--Device-struct CaptureSession_Callbacks {...}--><!--Device-struct CaptureSession_Callbacks {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
-**Related module**: [OH_Camera](capi-others-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **Header file**: [capture_session.h](capi-capture-session-h.md)
 

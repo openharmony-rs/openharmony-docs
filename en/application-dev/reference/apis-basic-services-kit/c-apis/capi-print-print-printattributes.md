@@ -8,11 +8,13 @@ typedef struct Print_PrintAttributes {...} Print_PrintAttributes
 
 Represents the print attributes to be configured in a print task, including the print range, paper size, margin, number of copies, duplex mode, color mode, print orientation, and print options. This API can be used to perform refined control over the print output.
 
+<!--Device-typedef struct Print_PrintAttributes {...} Print_PrintAttributes--><!--Device-typedef struct Print_PrintAttributes {...} Print_PrintAttributes-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 13
 
-**Related module**: [Print](capi-others-print.md)
+**Related module**: [Print](capi-basic-services-kit-print.md)
 
 **Header file**: [ohprint.h](capi-ohprint-h.md)
 

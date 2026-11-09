@@ -8,11 +8,13 @@ struct OH_AVScreenCaptureCallback {...}
 
 OH_AVScreenCaptureCallback是OH_AVScreenCapture中所有异步回调函数指针的集合。 应用将该结构体的实例注册到OH_AVScreenCapture实例中，以便处理回调上报的信息，从而保证OH_AVScreenCapture的正常运行。 该回调集合用于监控录屏过程中的错误、音频数据和视频数据的产生，适用于需要实时获取和处理录屏数据的场景，具有异步处理的特点， 能有效提升录屏数据处理的效率。<br> 从API version 12开始，推荐使用接口[OH_AVScreenCapture_OnError](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onerror)、[OH_AVScreenCapture_OnBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onbufferavailable)替代。
 
+<!--Device-struct OH_AVScreenCaptureCallback {...}--><!--Device-struct OH_AVScreenCaptureCallback {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **起始版本：** 10
 
-**相关模块：** [AVScreenCapture](capi-others-avscreencapture.md)
+**相关模块：** [AVScreenCapture](capi-media-kit-avscreencapture.md)
 
 **所在头文件：** [native_avscreen_capture_base.h](capi-native-avscreen-capture-base-h.md)
 

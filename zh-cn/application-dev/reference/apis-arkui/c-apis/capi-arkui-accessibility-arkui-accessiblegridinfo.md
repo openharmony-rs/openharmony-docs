@@ -8,11 +8,13 @@ typedef struct ArkUI_AccessibleGridInfo {...} ArkUI_AccessibleGridInfo
 
 用于描述网格组件的整体布局属性。 该结构体用于向无障碍服务提供网格组件的行数、列数和选择模式等信息，支持无障碍服务获取网格的整体布局信息。
 
+<!--Device-typedef struct ArkUI_AccessibleGridInfo {...} ArkUI_AccessibleGridInfo--><!--Device-typedef struct ArkUI_AccessibleGridInfo {...} ArkUI_AccessibleGridInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
 
-**相关模块：** [ArkUI_Accessibility](capi-others-arkui-accessibility.md)
+**相关模块：** [ArkUI_Accessibility](capi-arkui-arkui-accessibility.md)
 
 **所在头文件：** [native_interface_accessibility.h](capi-native-interface-accessibility-h.md)
 

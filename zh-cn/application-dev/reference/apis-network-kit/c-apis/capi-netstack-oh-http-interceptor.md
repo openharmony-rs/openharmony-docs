@@ -8,11 +8,13 @@ struct OH_Http_Interceptor {...}
 
 定义HTTP全局拦截器的配置信息。
 
+<!--Device-struct OH_Http_Interceptor {...}--><!--Device-struct OH_Http_Interceptor {...}-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 24
 
-**相关模块：** [netstack](capi-others-netstack.md)
+**相关模块：** [netstack](capi-network-kit-netstack.md)
 
 **所在头文件：** [http_interceptor_type.h](capi-http-interceptor-type-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceLayeredApiVulkanPropertiesKHR {...}--><!--Device-struct VkPhysicalDeviceLayeredApiVulkanPropertiesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

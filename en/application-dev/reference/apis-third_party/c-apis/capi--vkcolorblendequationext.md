@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkColorBlendEquationEXT {...}--><!--Device-struct VkColorBlendEquationEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

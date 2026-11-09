@@ -52,6 +52,8 @@ enum ArkUI_GridItemAlignment
 
 Enumerates the alignment modes of the GridItem component.
 
+<!--Device-ArkUI_GridItemAlignment--><!--Device-ArkUI_GridItemAlignment-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -70,6 +72,8 @@ enum ArkUI_GridItemStyle
 **Description**
 
 Enumerates styles of grid items.
+
+<!--Device-ArkUI_GridItemStyle--><!--Device-ArkUI_GridItemStyle-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -93,6 +97,8 @@ ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()
 
 Creates **Grid** layout options. Call **OH_ArkUI_GridLayoutOptions_Dispose** to dispose of it after use.
 
+<!--Device-ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()--><!--Device-ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -113,6 +119,8 @@ void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)
 
 Disposes of the **Grid** layout options to release resources.
 
+<!--Device-void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)--><!--Device-void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -132,6 +140,8 @@ int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* 
 **Description**
 
 Sets the irregular grid item index array for the grid layout.
+
+<!--Device-int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t size)--><!--Device-int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t size)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -161,6 +171,8 @@ int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* 
 
 Obtains the irregular grid item index array for the grid layout. When **<br>OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback** is not set, the grid item specified in this parameter occupies an entire row of the grid that scrolls vertically or an entire column of the grid that scrolls horizontally.
 
+<!--Device-int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t* size)--><!--Device-int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t* size)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -189,6 +201,8 @@ void OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback(ArkUI_Gr
 
 Registers a callback to obtain the row and column span for the grid item at the specified index.
 
+<!--Device-void OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemSize (*callback)(int32_t itemIndex, void* userData))--><!--Device-void OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemSize (*callback)(int32_t itemIndex, void* userData))-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -210,6 +224,8 @@ void OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback(ArkUI_GridLayoutO
 **Description**
 
 Registers a callback to obtain the starting row, starting column, row span, and column span for the grid item at the specified index.
+
+<!--Device-void OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemRect (*callback)(int32_t itemIndex, void* userData))--><!--Device-void OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemRect (*callback)(int32_t itemIndex, void* userData))-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

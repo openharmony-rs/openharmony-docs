@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineTessellationDomainOriginStateCreateInfo {...}--><!--Device-struct VkPipelineTessellationDomainOriginStateCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

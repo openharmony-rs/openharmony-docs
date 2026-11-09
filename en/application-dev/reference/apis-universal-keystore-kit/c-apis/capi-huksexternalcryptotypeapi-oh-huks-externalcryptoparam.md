@@ -8,11 +8,13 @@ struct OH_Huks_ExternalCryptoParam {...}
 
 Defines a single parameter in a parameter set.
 
+<!--Device-struct OH_Huks_ExternalCryptoParam {...}--><!--Device-struct OH_Huks_ExternalCryptoParam {...}-End-->
+
 **System capability**: SystemCapability.Security.Huks.CryptoExtension
 
 **Since**: 22
 
-**Related module**: [HuksExternalCryptoTypeApi](capi-others-huksexternalcryptotypeapi.md)
+**Related module**: [HuksExternalCryptoTypeApi](capi-universal-keystore-kit-huksexternalcryptotypeapi.md)
 
 **Header file**: [native_huks_external_crypto_type.h](capi-native-huks-external-crypto-type-h.md)
 

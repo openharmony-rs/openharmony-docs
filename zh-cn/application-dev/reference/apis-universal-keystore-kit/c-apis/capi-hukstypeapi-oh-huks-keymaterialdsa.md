@@ -8,11 +8,13 @@ struct OH_Huks_KeyMaterialDsa {...}
 
 定义DSA密钥的结构体类型。
 
+<!--Device-struct OH_Huks_KeyMaterialDsa {...}--><!--Device-struct OH_Huks_KeyMaterialDsa {...}-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
 
-**相关模块：** [HuksTypeApi](capi-others-hukstypeapi.md)
+**相关模块：** [HuksTypeApi](capi-universal-keystore-kit-hukstypeapi.md)
 
 **所在头文件：** [native_huks_type.h](capi-native-huks-type-h.md)
 

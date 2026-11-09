@@ -8,11 +8,13 @@ struct OH_UsbManager_UsbInterface {...}
 
 Defines a USB interface. One [OH_UsbManager_UsbConfig](capi-usbmanager-oh-usbmanager-usbconfig.md) can contain <br>multiple OH_UsbManager_UsbInterface instances, each providing a specific function.
 
+<!--Device-struct OH_UsbManager_UsbInterface {...}--><!--Device-struct OH_UsbManager_UsbInterface {...}-End-->
+
 **System capability**: SystemCapability.USB.USBManager
 
 **Since**: 26.0.1
 
-**Related module**: [UsbManager](capi-others-usbmanager.md)
+**Related module**: [UsbManager](capi-basic-services-kit-usbmanager.md)
 
 **Header file**: [ohusb_manager.h](capi-ohusb-manager-h.md)
 

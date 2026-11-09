@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV {...}--><!--Device-struct VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV {...}-End-->
+
 ## Summary
 
 ### Member variables

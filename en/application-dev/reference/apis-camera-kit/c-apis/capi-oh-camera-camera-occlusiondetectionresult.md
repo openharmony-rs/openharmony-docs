@@ -8,11 +8,13 @@ struct Camera_OcclusionDetectionResult {...}
 
 Provides the check result for whether a camera lens is blocked or dirty.
 
+<!--Device-struct Camera_OcclusionDetectionResult {...}--><!--Device-struct Camera_OcclusionDetectionResult {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 23
 
-**Related module**: [OH_Camera](capi-others-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **Header file**: [camera.h](capi-camera-h.md)
 

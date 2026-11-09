@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDescriptorPoolSize {...}--><!--Device-struct VkDescriptorPoolSize {...}-End-->
+
 ## Summary
 
 ### Member variables

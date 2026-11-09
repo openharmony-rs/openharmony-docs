@@ -8,11 +8,13 @@ typedef struct JSVM_Env__* JSVM_Env
 
 表示虚拟机特定状态的上下文环境，需要在调用native函数时作为参数传递， 并且传递给后续任何的JSVM-API嵌套调用。
 
+<!--Device-typedef struct JSVM_Env__* JSVM_Env--><!--Device-typedef struct JSVM_Env__* JSVM_Env-End-->
+
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 11
 
-**相关模块：** [JSVM](capi-others-jsvm.md)
+**相关模块：** [JSVM](capi-arkts-jsvm.md)
 
 **所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
 

@@ -40,6 +40,8 @@ uint32_t OH_NetStack_CertVerification(const struct NetStack_CertBlob *cert, cons
 
 对外暴露的证书链校验接口。
 
+<!--Device-uint32_t OH_NetStack_CertVerification(const struct NetStack_CertBlob *cert, const struct NetStack_CertBlob *caCert)--><!--Device-uint32_t OH_NetStack_CertVerification(const struct NetStack_CertBlob *cert, const struct NetStack_CertBlob *caCert)-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 11
@@ -66,6 +68,8 @@ int32_t OH_NetStack_GetPinSetForHostName(const char *hostname, NetStack_Certific
 **描述：**
 
 获取证书锁定信息。
+
+<!--Device-int32_t OH_NetStack_GetPinSetForHostName(const char *hostname, NetStack_CertificatePinning *pin)--><!--Device-int32_t OH_NetStack_GetPinSetForHostName(const char *hostname, NetStack_CertificatePinning *pin)-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -94,6 +98,8 @@ int32_t OH_NetStack_GetCertificatesForHostName(const char *hostname, NetStack_Ce
 
 获取证书信息。
 
+<!--Device-int32_t OH_NetStack_GetCertificatesForHostName(const char *hostname, NetStack_Certificates *certs)--><!--Device-int32_t OH_NetStack_GetCertificatesForHostName(const char *hostname, NetStack_Certificates *certs)-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 12
@@ -121,6 +127,8 @@ void OH_Netstack_DestroyCertificatesContent(NetStack_Certificates *certs)
 
 释放证书内容。
 
+<!--Device-void OH_Netstack_DestroyCertificatesContent(NetStack_Certificates *certs)--><!--Device-void OH_Netstack_DestroyCertificatesContent(NetStack_Certificates *certs)-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 12
@@ -140,6 +148,8 @@ int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)
 **描述：**
 
 整体明文HTTP是否允许。
+
+<!--Device-int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)--><!--Device-int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -169,6 +179,8 @@ int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *i
 
 按域名明文HTTP是否允许。
 
+<!--Device-int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *isCleartextPermitted)--><!--Device-int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *isCleartextPermitted)-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **需要权限：** ohos.permission.INTERNET
@@ -197,6 +209,8 @@ int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *compo
 **描述：**
 
 检查组件是否已配置开启明文HTTP拦截功能。
+
+<!--Device-int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *componentCfg)--><!--Device-int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *componentCfg)-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -229,6 +243,8 @@ uint32_t OH_NetStack_CreateAndVerifySortedCertChain(const struct NetStack_CertBl
 >
 > After use, you must call [OH_NetStack_FreeCertChain](capi-net-ssl-c-h.md#oh_netstack_freecertchain) to release the allocated memory pointed by outSortedChain. Failure to do so will cause memory leaks.
 
+<!--Device-uint32_t OH_NetStack_CreateAndVerifySortedCertChain(const struct NetStack_CertBlob *cert, size_t certCount, const struct NetStack_CertBlob *caCert, const char *hostname, struct NetStack_CertBlob **outSortedChain, size_t *outSortedCount)--><!--Device-uint32_t OH_NetStack_CreateAndVerifySortedCertChain(const struct NetStack_CertBlob *cert, size_t certCount, const struct NetStack_CertBlob *caCert, const char *hostname, struct NetStack_CertBlob **outSortedChain, size_t *outSortedCount)-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 26.0.0
@@ -259,6 +275,8 @@ void OH_NetStack_FreeCertChain(struct NetStack_CertBlob *certChain, size_t certC
 **描述：**
 
 释放由OH_NetStack_CreateAndVerifySortedCertChain分配的证书链。
+
+<!--Device-void OH_NetStack_FreeCertChain(struct NetStack_CertBlob *certChain, size_t certCount)--><!--Device-void OH_NetStack_FreeCertChain(struct NetStack_CertBlob *certChain, size_t certCount)-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 

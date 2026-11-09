@@ -8,11 +8,13 @@ struct OH_AudioDeviceDescriptorArray {...}
 
 Declaring the audio device descriptor array.
 
+<!--Device-struct OH_AudioDeviceDescriptorArray {...}--><!--Device-struct OH_AudioDeviceDescriptorArray {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
 
-**Related module**: [OHAudio](capi-others-ohaudio.md)
+**Related module**: [OHAudio](capi-audio-kit-ohaudio.md)
 
 **Header file**: [native_audio_device_base.h](capi-native-audio-device-base-h.md)
 

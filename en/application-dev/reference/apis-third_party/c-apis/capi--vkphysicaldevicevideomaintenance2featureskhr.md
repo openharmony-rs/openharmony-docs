@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceVideoMaintenance2FeaturesKHR {...}--><!--Device-struct VkPhysicalDeviceVideoMaintenance2FeaturesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

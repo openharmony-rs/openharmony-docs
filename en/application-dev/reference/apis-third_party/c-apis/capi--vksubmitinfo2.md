@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSubmitInfo2 {...}--><!--Device-struct VkSubmitInfo2 {...}-End-->
+
 ## Summary
 
 ### Member variables

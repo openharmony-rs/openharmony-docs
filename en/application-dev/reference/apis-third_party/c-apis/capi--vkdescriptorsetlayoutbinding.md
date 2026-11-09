@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDescriptorSetLayoutBinding {...}--><!--Device-struct VkDescriptorSetLayoutBinding {...}-End-->
+
 ## Summary
 
 ### Member variables

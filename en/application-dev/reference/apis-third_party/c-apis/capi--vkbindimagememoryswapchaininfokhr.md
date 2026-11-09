@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkBindImageMemorySwapchainInfoKHR {...}--><!--Device-struct VkBindImageMemorySwapchainInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

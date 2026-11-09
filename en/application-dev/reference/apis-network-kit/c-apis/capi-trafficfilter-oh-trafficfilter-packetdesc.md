@@ -8,11 +8,13 @@ struct OH_TrafficFilter_PacketDesc {...}
 
 Packet descriptor<br> Contains five-tuple information and packet data
 
+<!--Device-struct OH_TrafficFilter_PacketDesc {...}--><!--Device-struct OH_TrafficFilter_PacketDesc {...}-End-->
+
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Since**: 26.0.1
 
-**Related module**: [TrafficFilter](capi-others-trafficfilter.md)
+**Related module**: [TrafficFilter](capi-network-kit-trafficfilter.md)
 
 **Header file**: [net_trafficfilter_type.h](capi-net-trafficfilter-type-h.md)
 

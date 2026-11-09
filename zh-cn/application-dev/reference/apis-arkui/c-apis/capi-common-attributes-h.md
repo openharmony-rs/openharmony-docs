@@ -64,6 +64,8 @@ enum ArkUI_HitTestMode
 
 触摸测试控制枚举值。
 
+<!--Device-ArkUI_HitTestMode--><!--Device-ArkUI_HitTestMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
@@ -87,6 +89,8 @@ enum ArkUI_Visibility
 
 控制组件的显隐枚举值。
 
+<!--Device-ArkUI_Visibility--><!--Device-ArkUI_Visibility-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
@@ -106,6 +110,8 @@ enum ArkUI_HoverEffect
 **描述：**
 
 组件被悬停时的效果。
+
+<!--Device-ArkUI_HoverEffect--><!--Device-ArkUI_HoverEffect-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,6 +134,8 @@ enum ArkUI_FocusPriority
 
 应用程序内焦点管理的优先级级别。确定UI组件在交互期间接收焦点的顺序。
 
+<!--Device-ArkUI_FocusPriority--><!--Device-ArkUI_FocusPriority-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
@@ -147,6 +155,8 @@ enum ArkUI_UIState
 **描述：**
 
 组件的UI状态枚举，用于处理状态样式。
+
+<!--Device-ArkUI_UIState--><!--Device-ArkUI_UIState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -171,6 +181,8 @@ enum ArkUI_FocusMove
 
 定义焦点移动方向的枚举值。
 
+<!--Device-ArkUI_FocusMove--><!--Device-ArkUI_FocusMove-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 18
@@ -194,6 +206,8 @@ enum ArkUI_ResponseRegionSupportedTool
 
 定义支持响应区域设置的事件工具类型。
 
+<!--Device-ArkUI_ResponseRegionSupportedTool--><!--Device-ArkUI_ResponseRegionSupportedTool-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
@@ -214,6 +228,8 @@ enum ArkUI_RawInputEventType
 **描述：**
 
 原始输入事件类型枚举。
+
+<!--Device-ArkUI_RawInputEventType--><!--Device-ArkUI_RawInputEventType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -237,6 +253,8 @@ ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()
 
 创建一个截图选项，当返回值不再使用时必须通过[OH_ArkUI_DestroySnapshotOptions()](capi-common-attributes-h.md#oh_arkui_destroysnapshotoptions())释放。
 
+<!--Device-ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()--><!--Device-ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
@@ -257,6 +275,8 @@ void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)
 
 销毁截图选项指针。
 
+<!--Device-void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)--><!--Device-void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
@@ -276,6 +296,8 @@ int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions
 **描述：**
 
 配置截图选项中的缩放属性。
+
+<!--Device-int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions, float scale)--><!--Device-int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions, float scale)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -303,6 +325,8 @@ int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOpt
 **描述：**
 
 设置截图选项中的色彩空间。
+
+<!--Device-int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t colorSpace, bool isAuto)--><!--Device-int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t colorSpace, bool isAuto)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -332,6 +356,8 @@ int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snap
 
 设置截图选项中的动态范围模式。
 
+<!--Device-int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t dynamicRangeMode, bool isAuto)--><!--Device-int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t dynamicRangeMode, bool isAuto)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
@@ -360,6 +386,8 @@ ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()
 
 创建可见区域变化监听的参数。
 
+<!--Device-ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()--><!--Device-ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 17
@@ -380,6 +408,8 @@ void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* opt
 
 销毁可见区域变化监听的参数。
 
+<!--Device-void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* option)--><!--Device-void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* option)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 17
@@ -399,6 +429,8 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions
 **描述：**
 
 设置阈值数组。
+
+<!--Device-int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t size)--><!--Device-int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t size)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -428,6 +460,8 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_Visible
 
 设置预期更新间隔，单位为ms。定义了开发者期望的更新间隔。
 
+<!--Device-int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions *option, int32_t value)--><!--Device-int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions *option, int32_t value)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 17
@@ -455,6 +489,8 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAre
 
 设置可见区域计算模式。
 
+<!--Device-int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option, bool measureFromViewport)--><!--Device-int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option, bool measureFromViewport)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
@@ -481,6 +517,8 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions
 **描述：**
 
 获取阈值数组。
+
+<!--Device-int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t* size)--><!--Device-int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t* size)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -510,6 +548,8 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_Visible
 
 获取预期更新间隔。
 
+<!--Device-int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions* option)--><!--Device-int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions* option)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 17
@@ -535,6 +575,8 @@ bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEv
 **描述：**
 
 获取可见区域计算模式。
+
+<!--Device-bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option)--><!--Device-bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

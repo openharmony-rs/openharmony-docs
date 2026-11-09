@@ -79,6 +79,8 @@ enum NetConn_NetCap
 
 网络能力集。
 
+<!--Device-NetConn_NetCap--><!--Device-NetConn_NetCap-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **起始版本：** 11
@@ -103,6 +105,8 @@ enum NetConn_NetBearerType
 
 网络载体类型。
 
+<!--Device-NetConn_NetBearerType--><!--Device-NetConn_NetBearerType-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **起始版本：** 11
@@ -124,6 +128,8 @@ enum NetConn_ErrorCode
 **描述：**
 
 网络连接返回值错误码。
+
+<!--Device-NetConn_ErrorCode--><!--Device-NetConn_ErrorCode-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -147,6 +153,8 @@ enum NetConn_PacketsType
 
 枚举跟踪路由的数据包类型。
 
+<!--Device-NetConn_PacketsType--><!--Device-NetConn_PacketsType-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **起始版本：** 20
@@ -168,6 +176,8 @@ typedef int (*OH_NetConn_CustomDnsResolver)(const char *host, const char *serv, 
 **描述：**
 
 指向自定义DNS解析器的指针。
+
+<!--Device-typedef int (*OH_NetConn_CustomDnsResolver)(const char *host, const char *serv, const struct addrinfo *hint, struct addrinfo **res)--><!--Device-typedef int (*OH_NetConn_CustomDnsResolver)(const char *host, const char *serv, const struct addrinfo *hint, struct addrinfo **res)-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -192,6 +202,8 @@ typedef void (*OH_NetConn_AppHttpProxyChange)(NetConn_HttpProxy *proxy)
 
 应用的http代理信息变化回调。
 
+<!--Device-typedef void (*OH_NetConn_AppHttpProxyChange)(NetConn_HttpProxy *proxy)--><!--Device-typedef void (*OH_NetConn_AppHttpProxyChange)(NetConn_HttpProxy *proxy)-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **起始版本：** 12
@@ -211,6 +223,8 @@ typedef void (*OH_NetConn_GlobalHttpProxyRefreshCallback)(int32_t result, const 
 **描述：**
 
 全局HTTP代理重新认证结果的回调。
+
+<!--Device-typedef void (*OH_NetConn_GlobalHttpProxyRefreshCallback)(int32_t result, const NetConn_HttpProxy *proxy, void *userContext)--><!--Device-typedef void (*OH_NetConn_GlobalHttpProxyRefreshCallback)(int32_t result, const NetConn_HttpProxy *proxy, void *userContext)-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -234,6 +248,8 @@ typedef void (*OH_NetConn_NetworkAvailable)(NetConn_NetHandle *netHandle)
 
 网络可用回调。
 
+<!--Device-typedef void (*OH_NetConn_NetworkAvailable)(NetConn_NetHandle *netHandle)--><!--Device-typedef void (*OH_NetConn_NetworkAvailable)(NetConn_NetHandle *netHandle)-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **起始版本：** 12
@@ -253,6 +269,8 @@ typedef void (*OH_NetConn_NetCapabilitiesChange)(NetConn_NetHandle *netHandle, N
 **描述：**
 
 网络能力集变更回调。
+
+<!--Device-typedef void (*OH_NetConn_NetCapabilitiesChange)(NetConn_NetHandle *netHandle, NetConn_NetCapabilities *netCapabilities)--><!--Device-typedef void (*OH_NetConn_NetCapabilitiesChange)(NetConn_NetHandle *netHandle, NetConn_NetCapabilities *netCapabilities)-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -275,6 +293,8 @@ typedef void (*OH_NetConn_NetConnectionPropertiesChange)(NetConn_NetHandle *netH
 
 网络连接属性变更回调。
 
+<!--Device-typedef void (*OH_NetConn_NetConnectionPropertiesChange)(NetConn_NetHandle *netHandle, NetConn_ConnectionProperties *connConnetionProperties)--><!--Device-typedef void (*OH_NetConn_NetConnectionPropertiesChange)(NetConn_NetHandle *netHandle, NetConn_ConnectionProperties *connConnetionProperties)-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **起始版本：** 12
@@ -296,6 +316,8 @@ typedef void (*OH_NetConn_NetLost)(NetConn_NetHandle *netHandle)
 
 网络断开回调。
 
+<!--Device-typedef void (*OH_NetConn_NetLost)(NetConn_NetHandle *netHandle)--><!--Device-typedef void (*OH_NetConn_NetLost)(NetConn_NetHandle *netHandle)-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **起始版本：** 12
@@ -316,6 +338,8 @@ typedef void (*OH_NetConn_NetUnavailable)(void)
 
 网络不可用回调，在指定的超时时间内网络未激活时触发该回调，如果未设置超时时间则不会触发该回调。
 
+<!--Device-typedef void (*OH_NetConn_NetUnavailable)(void)--><!--Device-typedef void (*OH_NetConn_NetUnavailable)(void)-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **起始版本：** 12
@@ -329,6 +353,8 @@ typedef void (*OH_NetConn_NetBlockStatusChange)(NetConn_NetHandle *netHandle, bo
 **描述：**
 
 网络阻塞状态变更回调。
+
+<!--Device-typedef void (*OH_NetConn_NetBlockStatusChange)(NetConn_NetHandle *netHandle, bool blocked)--><!--Device-typedef void (*OH_NetConn_NetBlockStatusChange)(NetConn_NetHandle *netHandle, bool blocked)-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 

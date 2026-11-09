@@ -8,11 +8,13 @@ struct OH_Rect {...}
 
 The struct describes the width, height, and image information of the rectangle used for screen capture.
 
+<!--Device-struct OH_Rect {...}--><!--Device-struct OH_Rect {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 10
 
-**Related module**: [AVScreenCapture](capi-others-avscreencapture.md)
+**Related module**: [AVScreenCapture](capi-media-kit-avscreencapture.md)
 
 **Header file**: [native_avscreen_capture_base.h](capi-native-avscreen-capture-base-h.md)
 

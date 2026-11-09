@@ -8,11 +8,13 @@ struct Input_InterceptorEventCallback {...}
 
 Defines the interceptor callback event structure, which is used to define the callback types required for input event interception. Mouse interception events, touch input events, and axis events are supported.
 
+<!--Device-struct Input_InterceptorEventCallback {...}--><!--Device-struct Input_InterceptorEventCallback {...}-End-->
+
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
 
-**Related module**: [input](capi-others-input.md)
+**Related module**: [input](capi-input-kit-input.md)
 
 **Header file**: [oh_input_manager.h](capi-oh-input-manager-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDevicePipelineRobustnessFeatures {...}--><!--Device-struct VkPhysicalDevicePipelineRobustnessFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSetStateFlagsIndirectCommandNV {...}--><!--Device-struct VkSetStateFlagsIndirectCommandNV {...}-End-->
+
 ## Summary
 
 ### Member variables

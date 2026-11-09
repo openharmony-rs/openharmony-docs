@@ -32,6 +32,8 @@ enum AbilityBase_ErrorCode
 
 Enumerates the error codes of AbilityBase.
 
+<!--Device-AbilityBase_ErrorCode--><!--Device-AbilityBase_ErrorCode-End-->
+
 **System capability**: SystemCapability.Ability.AbilityBase
 
 **Since**: 15

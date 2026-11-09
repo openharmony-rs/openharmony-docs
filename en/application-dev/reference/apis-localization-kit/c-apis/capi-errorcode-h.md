@@ -32,6 +32,8 @@ enum I18n_ErrorCode
 
 error codes of i18n
 
+<!--Device-I18n_ErrorCode--><!--Device-I18n_ErrorCode-End-->
+
 **System capability**: SystemCapability.Global.I18n
 
 **Since**: 22

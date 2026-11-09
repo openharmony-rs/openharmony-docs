@@ -8,11 +8,13 @@ struct DateTimeRule {...}
 
 时间日期规则。
 
+<!--Device-struct DateTimeRule {...}--><!--Device-struct DateTimeRule {...}-End-->
+
 **系统能力：** SystemCapability.Global.I18n
 
 **起始版本：** 22
 
-**相关模块：** [i18n](capi-others-i18n.md)
+**相关模块：** [i18n](capi-localization-kit-i18n.md)
 
 **所在头文件：** [timezone.h](capi-timezone-h.md)
 

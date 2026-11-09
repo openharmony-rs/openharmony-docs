@@ -72,6 +72,8 @@ enum ArkUI_KeyCode
 
 Enumerates the key codes for key events.
 
+<!--Device-ArkUI_KeyCode--><!--Device-ArkUI_KeyCode-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
@@ -235,6 +237,8 @@ enum ArkUI_KeyEventType
 
 Enumerates the types of key events.
 
+<!--Device-ArkUI_KeyEventType--><!--Device-ArkUI_KeyEventType-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
@@ -257,6 +261,8 @@ enum ArkUI_KeySourceType
 
 Enumerates the types of input devices that trigger key events.
 
+<!--Device-ArkUI_KeySourceType--><!--Device-ArkUI_KeySourceType-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
@@ -277,6 +283,8 @@ enum ArkUI_KeyIntension
 **Description**
 
 Enumerates the intentions corresponding to key events.
+
+<!--Device-ArkUI_KeyIntension--><!--Device-ArkUI_KeyIntension-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -323,6 +331,8 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_Create(ArkUI_UIInputEvent** event)
 
 Creates a key event that can be dispatched by [OH_ArkUI_KeyEvent_Dispatch](capi-native-key-event-h.md#oh_arkui_keyevent_dispatch).
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_Create(ArkUI_UIInputEvent** event)--><!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_Create(ArkUI_UIInputEvent** event)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -351,6 +361,8 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_Destroy(ArkUI_UIInputEvent** event)
 
 Destroys a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) and sets the event pointer to null.<br> If **event** is not null and the pointer referenced by **event** is null, this function returns successfully.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_Destroy(ArkUI_UIInputEvent** event)--><!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_Destroy(ArkUI_UIInputEvent** event)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -376,6 +388,8 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetType(ArkUI_UIInputEvent* event, ArkUI_KeyEv
 **Description**
 
 Sets the type of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create).
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetType(ArkUI_UIInputEvent* event, ArkUI_KeyEventType type)--><!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetType(ArkUI_UIInputEvent* event, ArkUI_KeyEventType type)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -404,6 +418,8 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyCode(ArkUI_UIInputEvent* event, int32_t 
 
 Sets the key code of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create).
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyCode(ArkUI_UIInputEvent* event, int32_t keyCode)--><!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyCode(ArkUI_UIInputEvent* event, int32_t keyCode)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -430,6 +446,8 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyText(ArkUI_UIInputEvent* event, const ch
 **Description**
 
 Sets the key text of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create).<br> This function copies **keyText**. The caller can release or reuse the original string after this function returns.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyText(ArkUI_UIInputEvent* event, const char* keyText)--><!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyText(ArkUI_UIInputEvent* event, const char* keyText)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -458,6 +476,8 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeySource(ArkUI_UIInputEvent* event, ArkUI_
 
 Sets the input device type of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create).
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeySource(ArkUI_UIInputEvent* event, ArkUI_KeySourceType keySource)--><!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeySource(ArkUI_UIInputEvent* event, ArkUI_KeySourceType keySource)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -484,6 +504,8 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetDeviceId(ArkUI_UIInputEvent* event, int32_t
 **Description**
 
 Sets the device ID of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create).
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetDeviceId(ArkUI_UIInputEvent* event, int32_t deviceId)--><!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetDeviceId(ArkUI_UIInputEvent* event, int32_t deviceId)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -512,6 +534,8 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetUnicode(ArkUI_UIInputEvent* event, uint32_t
 
 Sets the Unicode value of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create).
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetUnicode(ArkUI_UIInputEvent* event, uint32_t unicode)--><!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetUnicode(ArkUI_UIInputEvent* event, uint32_t unicode)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -539,6 +563,8 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetEventTime(ArkUI_UIInputEvent* event, int64_
 
 Sets the occurrence time of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create).
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetEventTime(ArkUI_UIInputEvent* event, int64_t timestamp)--><!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetEventTime(ArkUI_UIInputEvent* event, int64_t timestamp)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -565,6 +591,8 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetPressedKeys(ArkUI_UIInputEvent* event, cons
 **Description**
 
 Sets all pressed keys of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create).<br> This function copies **pressedKeyCodes**. The caller can release or reuse the original array after this function returns. Pass null for **pressedKeyCodes** and **0** for **length** to clear the pressed keys.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetPressedKeys(ArkUI_UIInputEvent* event, const int32_t* pressedKeyCodes, int32_t length)--><!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetPressedKeys(ArkUI_UIInputEvent* event, const int32_t* pressedKeyCodes, int32_t length)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -594,6 +622,8 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyIntentionCode(ArkUI_UIInputEvent* event,
 
 Sets the intention code of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create).
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyIntentionCode(ArkUI_UIInputEvent* event, OH_ArkUI_KeyIntention intentionCode)--><!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyIntentionCode(ArkUI_UIInputEvent* event, OH_ArkUI_KeyIntention intentionCode)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -620,6 +650,8 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetNumLockOn(ArkUI_UIInputEvent* event, bool i
 **Description**
 
 Sets the NumLock state of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create).
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetNumLockOn(ArkUI_UIInputEvent* event, bool isNumLockOn)--><!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetNumLockOn(ArkUI_UIInputEvent* event, bool isNumLockOn)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -648,6 +680,8 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetCapsLockOn(ArkUI_UIInputEvent* event, bool 
 
 Sets the CapsLock state of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create).
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetCapsLockOn(ArkUI_UIInputEvent* event, bool isCapsLockOn)--><!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetCapsLockOn(ArkUI_UIInputEvent* event, bool isCapsLockOn)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -674,6 +708,8 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetScrollLockOn(ArkUI_UIInputEvent* event, boo
 **Description**
 
 Sets the ScrollLock state of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create).
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetScrollLockOn(ArkUI_UIInputEvent* event, bool isScrollLockOn)--><!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetScrollLockOn(ArkUI_UIInputEvent* event, bool isScrollLockOn)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -702,6 +738,8 @@ ArkUI_KeyEventType OH_ArkUI_KeyEvent_GetType(const ArkUI_UIInputEvent* event)
 
 Obtains the type of the specified key event.
 
+<!--Device-ArkUI_KeyEventType OH_ArkUI_KeyEvent_GetType(const ArkUI_UIInputEvent* event)--><!--Device-ArkUI_KeyEventType OH_ArkUI_KeyEvent_GetType(const ArkUI_UIInputEvent* event)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
@@ -727,6 +765,8 @@ int32_t OH_ArkUI_KeyEvent_GetKeyCode(const ArkUI_UIInputEvent* event)
 **Description**
 
 Obtains the key code from the specified key event.
+
+<!--Device-int32_t OH_ArkUI_KeyEvent_GetKeyCode(const ArkUI_UIInputEvent* event)--><!--Device-int32_t OH_ArkUI_KeyEvent_GetKeyCode(const ArkUI_UIInputEvent* event)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -754,6 +794,8 @@ const char *OH_ArkUI_KeyEvent_GetKeyText(const ArkUI_UIInputEvent* event)
 
 Obtains the key value from the specified key event.
 
+<!--Device-const char *OH_ArkUI_KeyEvent_GetKeyText(const ArkUI_UIInputEvent* event)--><!--Device-const char *OH_ArkUI_KeyEvent_GetKeyText(const ArkUI_UIInputEvent* event)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
@@ -779,6 +821,8 @@ ArkUI_KeySourceType OH_ArkUI_KeyEvent_GetKeySource(const ArkUI_UIInputEvent* eve
 **Description**
 
 Obtains the type of input device that triggers the specified key event.
+
+<!--Device-ArkUI_KeySourceType OH_ArkUI_KeyEvent_GetKeySource(const ArkUI_UIInputEvent* event)--><!--Device-ArkUI_KeySourceType OH_ArkUI_KeyEvent_GetKeySource(const ArkUI_UIInputEvent* event)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -806,6 +850,8 @@ void OH_ArkUI_KeyEvent_StopPropagation(const ArkUI_UIInputEvent* event, bool sto
 
 Stops event bubbling in the key event callback. This API applies to scenarios where a child component has already handled a key event in a nested component structure and does not want the parent component to respond to the same key again, for example, stopping the event from bubbling upward when handling custom shortcuts. Unlike **OH_ArkUI_KeyEvent_SetConsumed**, this API controls the bubbling of the event, whereas **OH_ArkUI_KeyEvent_SetConsumed** sets whether the event is consumed by the callback. The two APIs can be used together without affecting each other. You are advised to select the appropriate API based on whether you need to stop bubbling or mark consumption.
 
+<!--Device-void OH_ArkUI_KeyEvent_StopPropagation(const ArkUI_UIInputEvent* event, bool stopPropagation)--><!--Device-void OH_ArkUI_KeyEvent_StopPropagation(const ArkUI_UIInputEvent* event, bool stopPropagation)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
@@ -826,6 +872,8 @@ ArkUI_KeyIntension OH_ArkUI_KeyEvent_GetKeyIntensionCode(const ArkUI_UIInputEven
 **Description**
 
 Obtains the intention code associated with the specified key event.
+
+<!--Device-ArkUI_KeyIntension OH_ArkUI_KeyEvent_GetKeyIntensionCode(const ArkUI_UIInputEvent* event)--><!--Device-ArkUI_KeyIntension OH_ArkUI_KeyEvent_GetKeyIntensionCode(const ArkUI_UIInputEvent* event)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -853,6 +901,8 @@ uint32_t OH_ArkUI_KeyEvent_GetUnicode(const ArkUI_UIInputEvent* event)
 
 Obtains the Unicode value of the key. Non-space basic Latin characters in the 0x0021-0x007E range are supported. Characters with a value of 0 are not supported. In the case of key combination, this API returns the Unicode value of the key corresponding to the key event.
 
+<!--Device-uint32_t OH_ArkUI_KeyEvent_GetUnicode(const ArkUI_UIInputEvent* event)--><!--Device-uint32_t OH_ArkUI_KeyEvent_GetUnicode(const ArkUI_UIInputEvent* event)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
@@ -879,6 +929,8 @@ void OH_ArkUI_KeyEvent_SetConsumed(const ArkUI_UIInputEvent* event, bool isConsu
 
 Sets whether the event is consumed by the callback in the key event callback. This API applies to scenarios such as shortcut key handling and custom key response of a component, where the event needs to be marked as handled to avoid repeated processing. Unlike **OH_ArkUI_KeyEvent_StopPropagation**, this API marks whether the event is consumed by the current callback rather than controlling event bubbling. To stop the event from bubbling upward, use **OH_ArkUI_KeyEvent_StopPropagation**.<br> For the process and specific timing of key event triggering, see [Key Event Data Flow](../../ui/arkts-interaction-development-guide-keyboard.md#key-event-data-flow).
 
+<!--Device-void OH_ArkUI_KeyEvent_SetConsumed(const ArkUI_UIInputEvent* event, bool isConsumed)--><!--Device-void OH_ArkUI_KeyEvent_SetConsumed(const ArkUI_UIInputEvent* event, bool isConsumed)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
@@ -900,6 +952,8 @@ void OH_ArkUI_KeyEvent_Dispatch(ArkUI_NodeHandle node, const ArkUI_UIInputEvent*
 
 Dispatches the key event to the specified component node. After this API is called, the key event triggers the key event callback registered on the target node. This API can be used in the key event callback to forward the current key event to the specified component node for secondary processing. Unlike **StopPropagation** and **SetConsumed**, **Dispatch** does not affect the processing state of the current event.
 
+<!--Device-void OH_ArkUI_KeyEvent_Dispatch(ArkUI_NodeHandle node, const ArkUI_UIInputEvent* event)--><!--Device-void OH_ArkUI_KeyEvent_Dispatch(ArkUI_NodeHandle node, const ArkUI_UIInputEvent* event)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
@@ -920,6 +974,8 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsNumLockOn(const ArkUI_UIInputEvent* event, b
 **Description**
 
 Obtains the state of the NumLock key when the specified key event occurs.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsNumLockOn(const ArkUI_UIInputEvent* event, bool* state)--><!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsNumLockOn(const ArkUI_UIInputEvent* event, bool* state)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -948,6 +1004,8 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsCapsLockOn(const ArkUI_UIInputEvent* event, 
 
 Obtains the state of the CapsLock key when the specified key event occurs.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsCapsLockOn(const ArkUI_UIInputEvent* event, bool* state)--><!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsCapsLockOn(const ArkUI_UIInputEvent* event, bool* state)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
@@ -974,6 +1032,8 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsScrollLockOn(const ArkUI_UIInputEvent* event
 **Description**
 
 Obtains the state of the ScrollLock key when the specified key event occurs.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsScrollLockOn(const ArkUI_UIInputEvent* event, bool* state)--><!--Device-ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsScrollLockOn(const ArkUI_UIInputEvent* event, bool* state)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

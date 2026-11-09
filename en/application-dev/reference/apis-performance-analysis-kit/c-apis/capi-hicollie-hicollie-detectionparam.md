@@ -8,11 +8,13 @@ struct HiCollie_DetectionParam {...}
 
 Defines the parameters of the jank event detection. Note that this struct is supported since API 12.
 
+<!--Device-struct HiCollie_DetectionParam {...}--><!--Device-struct HiCollie_DetectionParam {...}-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiCollie
 
 **Since**: 12
 
-**Related module**: [HiCollie](capi-others-hicollie.md)
+**Related module**: [HiCollie](capi-performance-analysis-kit-hicollie.md)
 
 **Header file**: [hicollie.h](capi-hicollie-h.md)
 

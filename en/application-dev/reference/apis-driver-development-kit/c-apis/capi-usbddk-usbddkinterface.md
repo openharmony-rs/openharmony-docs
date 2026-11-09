@@ -8,11 +8,13 @@ struct UsbDdkInterface {...}
 
 Defines a USB DDK API, which is a collection of alternate settings for a particular USB interface.
 
+<!--Device-struct UsbDdkInterface {...}--><!--Device-struct UsbDdkInterface {...}-End-->
+
 **System capability**: SystemCapability.Driver.USB.Extension
 
 **Since**: 10
 
-**Related module**: [UsbDdk](capi-others-usbddk.md)
+**Related module**: [UsbDdk](capi-driver-development-kit-usbddk.md)
 
 **Header file**: [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 

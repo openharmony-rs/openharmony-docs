@@ -8,11 +8,13 @@ typedef struct ArkUI_NativeDialogAPI_3 {...} ArkUI_NativeDialogAPI_3
 
 Provides the custom dialog box APIs for the native side.
 
+<!--Device-typedef struct ArkUI_NativeDialogAPI_3 {...} ArkUI_NativeDialogAPI_3--><!--Device-typedef struct ArkUI_NativeDialogAPI_3 {...} ArkUI_NativeDialogAPI_3-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_dialog.h](capi-native-dialog-h.md)
 
@@ -66,6 +68,8 @@ Sets the display order for a custom dialog box.
 >
 > This method must be called before the <b>show</b> method.
 
+<!--Device-int32_t (*setLevelOrder)(ArkUI_NativeDialogHandle handle, double levelOrder)--><!--Device-int32_t (*setLevelOrder)(ArkUI_NativeDialogHandle handle, double levelOrder)-End-->
+
 **Since**: 19
 
 **Parameters**:
@@ -90,6 +94,8 @@ int32_t (*registerOnWillAppear)(ArkUI_NativeDialogHandle handle, void* userData,
 **Description**
 
 Registers a listener callback before the dialog openAnimation starts.
+
+<!--Device-int32_t (*registerOnWillAppear)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(void* userData))--><!--Device-int32_t (*registerOnWillAppear)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(void* userData))-End-->
 
 **Since**: 19
 
@@ -117,6 +123,8 @@ int32_t (*registerOnDidAppear)(ArkUI_NativeDialogHandle handle, void* userData, 
 
 Registers a listener callback when the dialog appears.
 
+<!--Device-int32_t (*registerOnDidAppear)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(void* userData))--><!--Device-int32_t (*registerOnDidAppear)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(void* userData))-End-->
+
 **Since**: 19
 
 **Parameters**:
@@ -143,6 +151,8 @@ int32_t (*registerOnWillDisappear)(ArkUI_NativeDialogHandle handle, void* userDa
 
 Registers a listener callback before the dialog closeAnimation starts.
 
+<!--Device-int32_t (*registerOnWillDisappear)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(void* userData))--><!--Device-int32_t (*registerOnWillDisappear)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(void* userData))-End-->
+
 **Since**: 19
 
 **Parameters**:
@@ -168,6 +178,8 @@ int32_t (*registerOnDidDisappear)(ArkUI_NativeDialogHandle handle, void* userDat
 **Description**
 
 Registers a listener callback when the dialog disappears.
+
+<!--Device-int32_t (*registerOnDidDisappear)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(void* userData))--><!--Device-int32_t (*registerOnDidDisappear)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(void* userData))-End-->
 
 **Since**: 19
 
@@ -198,6 +210,8 @@ Sets the border width of the dialog box.
 > **Note**:
 >
 > This method must be called before the <b>show</b> method.
+
+<!--Device-int32_t (*setBorderWidth)(ArkUI_NativeDialogHandle handle, float top, float right, float bottom, float left, ArkUI_LengthMetricUnit unit)--><!--Device-int32_t (*setBorderWidth)(ArkUI_NativeDialogHandle handle, float top, float right, float bottom, float left, ArkUI_LengthMetricUnit unit)-End-->
 
 **Since**: 19
 
@@ -232,6 +246,8 @@ Sets the border color of the dialog box.
 >
 > This method must be called before the <b>show</b> method.
 
+<!--Device-int32_t (*setBorderColor)(ArkUI_NativeDialogHandle handle, uint32_t top, uint32_t right, uint32_t bottom, uint32_t left)--><!--Device-int32_t (*setBorderColor)(ArkUI_NativeDialogHandle handle, uint32_t top, uint32_t right, uint32_t bottom, uint32_t left)-End-->
+
 **Since**: 19
 
 **Parameters**:
@@ -263,6 +279,8 @@ Sets the border style of the dialog box.
 > **Note**:
 >
 > This method must be called before the <b>show</b> method.
+
+<!--Device-int32_t (*setBorderStyle)(ArkUI_NativeDialogHandle handle, int32_t top, int32_t right, int32_t bottom, int32_t left)--><!--Device-int32_t (*setBorderStyle)(ArkUI_NativeDialogHandle handle, int32_t top, int32_t right, int32_t bottom, int32_t left)-End-->
 
 **Since**: 19
 
@@ -296,6 +314,8 @@ Sets the width of the dialog box background.
 >
 > This method must be called before the <b>show</b> method.
 
+<!--Device-int32_t (*setWidth)(ArkUI_NativeDialogHandle handle, float width, ArkUI_LengthMetricUnit unit)--><!--Device-int32_t (*setWidth)(ArkUI_NativeDialogHandle handle, float width, ArkUI_LengthMetricUnit unit)-End-->
+
 **Since**: 19
 
 **Parameters**:
@@ -325,6 +345,8 @@ Sets the height of the dialog box background.
 > **Note**:
 >
 > This method must be called before the <b>show</b> method.
+
+<!--Device-int32_t (*setHeight)(ArkUI_NativeDialogHandle handle, float height, ArkUI_LengthMetricUnit unit)--><!--Device-int32_t (*setHeight)(ArkUI_NativeDialogHandle handle, float height, ArkUI_LengthMetricUnit unit)-End-->
 
 **Since**: 19
 
@@ -356,6 +378,8 @@ Sets the shadow of the dialog box background.
 >
 > This method must be called before the <b>show</b> method.
 
+<!--Device-int32_t (*setShadow)(ArkUI_NativeDialogHandle handle, ArkUI_ShadowStyle shadow)--><!--Device-int32_t (*setShadow)(ArkUI_NativeDialogHandle handle, ArkUI_ShadowStyle shadow)-End-->
+
 **Since**: 19
 
 **Parameters**:
@@ -384,6 +408,8 @@ Sets the custom shadow of the dialog box background.
 > **Note**:
 >
 > This method must be called before the <b>show</b> method.
+
+<!--Device-int32_t (*setCustomShadow)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* customShadow)--><!--Device-int32_t (*setCustomShadow)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* customShadow)-End-->
 
 **Since**: 19
 
@@ -414,6 +440,8 @@ Sets the background blur style of the dialog box.
 >
 > This method must be called before the <b>show</b> method.
 
+<!--Device-int32_t (*setBackgroundBlurStyle)(ArkUI_NativeDialogHandle handle, ArkUI_BlurStyle blurStyle)--><!--Device-int32_t (*setBackgroundBlurStyle)(ArkUI_NativeDialogHandle handle, ArkUI_BlurStyle blurStyle)-End-->
+
 **Since**: 19
 
 **Parameters**:
@@ -442,6 +470,8 @@ Sets the keyboard avoidance mode of the dialog box.
 > **Note**:
 >
 > This method must be called before the <b>show</b> method.
+
+<!--Device-int32_t (*setKeyboardAvoidMode)(ArkUI_NativeDialogHandle handle, ArkUI_KeyboardAvoidMode keyboardAvoidMode)--><!--Device-int32_t (*setKeyboardAvoidMode)(ArkUI_NativeDialogHandle handle, ArkUI_KeyboardAvoidMode keyboardAvoidMode)-End-->
 
 **Since**: 19
 
@@ -472,6 +502,8 @@ Sets whether to enable the hover mode for the dialog box.
 >
 > This method must be called before the <b>show</b> method.
 
+<!--Device-int32_t (*enableHoverMode)(ArkUI_NativeDialogHandle handle, bool enableHoverMode)--><!--Device-int32_t (*enableHoverMode)(ArkUI_NativeDialogHandle handle, bool enableHoverMode)-End-->
+
 **Since**: 19
 
 **Parameters**:
@@ -501,6 +533,8 @@ Set the default display area of the dialog box in hover mode.
 >
 > This method must be called before the <b>show</b> method.
 
+<!--Device-int32_t (*setHoverModeArea)(ArkUI_NativeDialogHandle handle, ArkUI_HoverModeAreaType hoverModeAreaType)--><!--Device-int32_t (*setHoverModeArea)(ArkUI_NativeDialogHandle handle, ArkUI_HoverModeAreaType hoverModeAreaType)-End-->
+
 **Since**: 19
 
 **Parameters**:
@@ -525,6 +559,8 @@ int32_t (*setFocusable)(ArkUI_NativeDialogHandle handle, bool focusable)
 **Description**
 
 Sets whether to get focus when the custom dialog is displayed.
+
+<!--Device-int32_t (*setFocusable)(ArkUI_NativeDialogHandle handle, bool focusable)--><!--Device-int32_t (*setFocusable)(ArkUI_NativeDialogHandle handle, bool focusable)-End-->
 
 **Since**: 19
 
@@ -555,6 +591,8 @@ Sets the background blur effect for a custom dialog box.
 >
 > This method must be called before the <b>show</b> method.
 
+<!--Device-int32_t (*setBackgroundBlurStyleOptions)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* backgroundBlurStyleOptions)--><!--Device-int32_t (*setBackgroundBlurStyleOptions)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* backgroundBlurStyleOptions)-End-->
+
 **Since**: 19
 
 **Parameters**:
@@ -583,6 +621,8 @@ Sets the background effect parameters for a custom dialog box.
 > **Note**:
 >
 > This method must be called before the <b>show</b> method.
+
+<!--Device-int32_t (*setBackgroundEffect)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* backgroundEffect)--><!--Device-int32_t (*setBackgroundEffect)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* backgroundEffect)-End-->
 
 **Since**: 19
 

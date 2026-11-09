@@ -8,11 +8,13 @@ struct Ethernet_NetAddrInfo {...}
 
 Defines the network address of the Ethernet NIC, including the Ethernet NIC name and the network address information.
 
+<!--Device-struct Ethernet_NetAddrInfo {...}--><!--Device-struct Ethernet_NetAddrInfo {...}-End-->
+
 **System capability**: SystemCapability.Communication.NetManager.Ethernet
 
 **Since**: 26.0.0
 
-**Related module**: [NetEthernet](capi-others-netethernet.md)
+**Related module**: [NetEthernet](capi-network-kit-netethernet.md)
 
 **Header file**: [net_ethernet_type.h](capi-net-ethernet-type-h.md)
 

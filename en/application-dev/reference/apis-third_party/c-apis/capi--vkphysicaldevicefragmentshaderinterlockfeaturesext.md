@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

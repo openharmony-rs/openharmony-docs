@@ -8,11 +8,13 @@ typedef struct ArkUI_StyledString ArkUI_StyledString
 
 Defines a styled string object supported by the text component, which is used for setting multiple style attributes for text content. It is suitable for scenarios where rich text needs to be built and managed on the native side.
 
+<!--Device-typedef struct ArkUI_StyledString ArkUI_StyledString--><!--Device-typedef struct ArkUI_StyledString ArkUI_StyledString-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [styled_string.h](capi-styled-string-h.md)
 

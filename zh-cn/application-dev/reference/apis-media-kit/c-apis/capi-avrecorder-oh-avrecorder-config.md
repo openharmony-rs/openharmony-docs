@@ -8,11 +8,13 @@ struct OH_AVRecorder_Config {...}
 
 提供媒体AVRecorder的配置定义，用于设置音视频录制时的音频源类型、视频源类型、编码配置、输出文件URL、文件生成模式、元数据及最大录制时长参数，适用于需要自定义录制配置的场景。
 
+<!--Device-struct OH_AVRecorder_Config {...}--><!--Device-struct OH_AVRecorder_Config {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
 **起始版本：** 18
 
-**相关模块：** [AVRecorder](capi-others-avrecorder.md)
+**相关模块：** [AVRecorder](capi-media-kit-avrecorder.md)
 
 **所在头文件：** [avrecorder_base.h](capi-avrecorder-base-h.md)
 

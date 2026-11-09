@@ -32,6 +32,8 @@ enum BundleManager_ErrorCode
 
 枚举错误码，详细介绍请参见通用错误码。
 
+<!--Device-BundleManager_ErrorCode--><!--Device-BundleManager_ErrorCode-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 21

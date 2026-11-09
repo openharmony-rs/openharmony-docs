@@ -8,11 +8,13 @@ struct peration_ae_init {...}
 
 Defines the AE initialization data.
 
+<!--Device-struct peration_ae_init {...}--><!--Device-struct peration_ae_init {...}-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
-**Related module**: [TeeTrusted](capi-others-teetrusted.md)
+**Related module**: [TeeTrusted](capi-tee-kit-teetrusted.md)
 
 **Header file**: [tee_crypto_api.h](capi-tee-crypto-api-h.md)
 

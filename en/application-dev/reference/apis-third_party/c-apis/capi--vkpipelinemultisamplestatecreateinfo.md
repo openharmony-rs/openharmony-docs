@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineMultisampleStateCreateInfo {...}--><!--Device-struct VkPipelineMultisampleStateCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

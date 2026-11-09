@@ -32,6 +32,8 @@ enum ArkUI_ButtonType
 
 Enumerates the button types.
 
+<!--Device-ArkUI_ButtonType--><!--Device-ArkUI_ButtonType-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12

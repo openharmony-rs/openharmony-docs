@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct lastlog {...}--><!--Device-struct lastlog {...}-End-->
+
 ## Summary
 
 ### Member variables

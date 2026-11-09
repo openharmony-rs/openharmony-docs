@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSamplerCreateInfo {...}--><!--Device-struct VkSamplerCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

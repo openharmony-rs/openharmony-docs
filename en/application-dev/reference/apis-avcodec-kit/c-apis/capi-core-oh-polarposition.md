@@ -8,11 +8,13 @@ struct OH_PolarPosition {...}
 
 Represents a position in polar (spherical) coordinates.<br> Polar coordinates use azimuth, elevation, and distance to define a position in three-dimensional space.
 
+<!--Device-struct OH_PolarPosition {...}--><!--Device-struct OH_PolarPosition {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 26.0.0
 
-**Related module**: [Core](capi-others-core.md)
+**Related module**: [Core](capi-avcodec-kit-core.md)
 
 **Header file**: [native_audio_vivid.h](capi-native-audio-vivid-h.md)
 

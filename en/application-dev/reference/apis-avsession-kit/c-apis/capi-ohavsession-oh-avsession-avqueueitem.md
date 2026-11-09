@@ -8,11 +8,13 @@ struct OH_AVSession_AVQueueItem {...}
 
 Declaring the avqueue item. The instance of AVQueueItem.
 
+<!--Device-struct OH_AVSession_AVQueueItem {...}--><!--Device-struct OH_AVSession_AVQueueItem {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
-**Related module**: [OHAVSession](capi-others-ohavsession.md)
+**Related module**: [OHAVSession](capi-avsession-kit-ohavsession.md)
 
 **Header file**: [native_avqueueitem.h](capi-native-avqueueitem-h.md)
 

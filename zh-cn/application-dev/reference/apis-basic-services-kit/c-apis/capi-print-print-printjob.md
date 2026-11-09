@@ -8,11 +8,13 @@ typedef struct Print_PrintJob {...} Print_PrintJob
 
 表示打印任务结构体，用于配置打印任务的各项属性参数（如打印份数、纸张来源、色彩模式、双面模式、分辨率、边距、方向模式、打印质量、文档格式及高级选项等）。开发者通过填充该结构体并向打印模块接口提交以发起打印任务。
 
+<!--Device-typedef struct Print_PrintJob {...} Print_PrintJob--><!--Device-typedef struct Print_PrintJob {...} Print_PrintJob-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **起始版本：** 12
 
-**相关模块：** [Print](capi-others-print.md)
+**相关模块：** [Print](capi-basic-services-kit-print.md)
 
 **所在头文件：** [ohprint.h](capi-ohprint-h.md)
 

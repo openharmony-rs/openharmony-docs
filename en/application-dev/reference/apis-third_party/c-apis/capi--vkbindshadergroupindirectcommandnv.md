@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkBindShaderGroupIndirectCommandNV {...}--><!--Device-struct VkBindShaderGroupIndirectCommandNV {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkQueryPoolVideoEncodeFeedbackCreateInfoKHR {...}--><!--Device-struct VkQueryPoolVideoEncodeFeedbackCreateInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR {...}--><!--Device-struct VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

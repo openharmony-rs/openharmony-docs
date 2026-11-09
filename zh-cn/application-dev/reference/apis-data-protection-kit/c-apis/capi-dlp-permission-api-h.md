@@ -44,6 +44,8 @@ enum DLP_ErrCode
 
 DLP错误码的枚举。
 
+<!--Device-DLP_ErrCode--><!--Device-DLP_ErrCode-End-->
+
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 **起始版本：** 14
@@ -69,6 +71,8 @@ enum DLP_FileAccess
 
 DLP文件授权类型的枚举。
 
+<!--Device-DLP_FileAccess--><!--Device-DLP_FileAccess-End-->
+
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 **起始版本：** 14
@@ -92,6 +96,8 @@ DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess *dlpFileAccess, uint32_t 
 **描述：**
 
 获取当前DLP沙箱的权限信息。
+
+<!--Device-DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess *dlpFileAccess, uint32_t *flags)--><!--Device-DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess *dlpFileAccess, uint32_t *flags)-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -120,6 +126,8 @@ DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char **originalFile
 
 获取指定DLP文件名的原始文件名。
 
+<!--Device-DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char **originalFileName)--><!--Device-DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char **originalFileName)-End-->
+
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 **起始版本：** 14
@@ -147,6 +155,8 @@ DLP_ErrCode OH_DLP_IsInSandbox(bool *isInSandbox)
 
 查询当前应用是否运行在DLP沙箱环境。
 
+<!--Device-DLP_ErrCode OH_DLP_IsInSandbox(bool *isInSandbox)--><!--Device-DLP_ErrCode OH_DLP_IsInSandbox(bool *isInSandbox)-End-->
+
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 **起始版本：** 14
@@ -172,6 +182,8 @@ DLP_ErrCode OH_DLP_SetSandboxAppConfig(const char *configInfo)
 **描述：**
 
 设置沙箱应用配置信息。
+
+<!--Device-DLP_ErrCode OH_DLP_SetSandboxAppConfig(const char *configInfo)--><!--Device-DLP_ErrCode OH_DLP_SetSandboxAppConfig(const char *configInfo)-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -199,6 +211,8 @@ DLP_ErrCode OH_DLP_GetSandboxAppConfig(char **configInfo)
 
 获取沙箱应用配置信息。
 
+<!--Device-DLP_ErrCode OH_DLP_GetSandboxAppConfig(char **configInfo)--><!--Device-DLP_ErrCode OH_DLP_GetSandboxAppConfig(char **configInfo)-End-->
+
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 **起始版本：** 14
@@ -224,6 +238,8 @@ DLP_ErrCode OH_DLP_CleanSandboxAppConfig()
 **描述：**
 
 清理沙箱应用配置信息。
+
+<!--Device-DLP_ErrCode OH_DLP_CleanSandboxAppConfig()--><!--Device-DLP_ErrCode OH_DLP_CleanSandboxAppConfig()-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 

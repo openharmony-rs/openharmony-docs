@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceLineRasterizationFeatures {...}--><!--Device-struct VkPhysicalDeviceLineRasterizationFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

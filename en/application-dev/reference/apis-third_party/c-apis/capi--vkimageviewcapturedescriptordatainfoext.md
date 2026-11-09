@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkImageViewCaptureDescriptorDataInfoEXT {...}--><!--Device-struct VkImageViewCaptureDescriptorDataInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

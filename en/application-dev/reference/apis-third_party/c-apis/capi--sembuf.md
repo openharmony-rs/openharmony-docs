@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct sembuf {...}--><!--Device-struct sembuf {...}-End-->
+
 ## Summary
 
 ### Member variables

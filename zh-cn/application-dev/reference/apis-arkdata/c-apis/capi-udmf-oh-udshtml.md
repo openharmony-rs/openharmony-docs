@@ -8,11 +8,13 @@ typedef struct OH_UdsHtml OH_UdsHtml
 
 描述超文本标记语言类型的统一数据结构。
 
+<!--Device-typedef struct OH_UdsHtml OH_UdsHtml--><!--Device-typedef struct OH_UdsHtml OH_UdsHtml-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
 
-**相关模块：** [UDMF](capi-others-udmf.md)
+**相关模块：** [UDMF](capi-arkdata-udmf.md)
 
 **所在头文件：** [uds.h](capi-uds-h.md)
 

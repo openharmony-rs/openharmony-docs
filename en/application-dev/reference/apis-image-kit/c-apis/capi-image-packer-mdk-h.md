@@ -43,6 +43,8 @@ int32_t OH_ImagePacker_Create(napi_env env, napi_value *res)
 
 Creates an <b>ImagePacker</b> object at the JavaScript native layer.
 
+<!--Device-int32_t OH_ImagePacker_Create(napi_env env, napi_value *res)--><!--Device-int32_t OH_ImagePacker_Create(napi_env env, napi_value *res)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 11
@@ -69,6 +71,8 @@ ImagePacker_Native* OH_ImagePacker_InitNative(napi_env env, napi_value packer)
 **Description**
 
 Parses an [ImagePacker_Native](capi-image-imagepacker-native-.md) object at the native layer from a JavaScript native API <b>ImagePacker</b> object.
+
+<!--Device-ImagePacker_Native* OH_ImagePacker_InitNative(napi_env env, napi_value packer)--><!--Device-ImagePacker_Native* OH_ImagePacker_InitNative(napi_env env, napi_value packer)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
@@ -101,6 +105,8 @@ int32_t OH_ImagePacker_PackToData(ImagePacker_Native* native, napi_value source,
 **Description**
 
 Encoding an <b>ImageSource</b> or a <b>PixelMap</b> into the data with required format
+
+<!--Device-int32_t OH_ImagePacker_PackToData(ImagePacker_Native* native, napi_value source, ImagePacker_Opts* opts, uint8_t* outData, size_t* size)--><!--Device-int32_t OH_ImagePacker_PackToData(ImagePacker_Native* native, napi_value source, ImagePacker_Opts* opts, uint8_t* outData, size_t* size)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
@@ -137,6 +143,8 @@ int32_t OH_ImagePacker_PackToFile(ImagePacker_Native* native, napi_value source,
 
 Encoding an <b>ImageSource</b> or a <b>PixelMap</b> into the a file with fd with required format
 
+<!--Device-int32_t OH_ImagePacker_PackToFile(ImagePacker_Native* native, napi_value source, ImagePacker_Opts* opts, int fd)--><!--Device-int32_t OH_ImagePacker_PackToFile(ImagePacker_Native* native, napi_value source, ImagePacker_Opts* opts, int fd)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 11
@@ -170,6 +178,8 @@ int32_t OH_ImagePacker_Release(ImagePacker_Native* native)
 **Description**
 
 Releases an [ImagePacker_Native](capi-image-imagepacker-native-.md) object at the native layer. Note: This API is not used to release a JavaScript native API <b>ImagePacker</b> object. It is used to release the object [ImagePacker_Native](capi-image-imagepacker-native-.md) at the native layer parsed by calling [OH_ImagePacker_InitNative](capi-image-packer-mdk-h.md#oh_imagepacker_initnative).
+
+<!--Device-int32_t OH_ImagePacker_Release(ImagePacker_Native* native)--><!--Device-int32_t OH_ImagePacker_Release(ImagePacker_Native* native)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.ImagePacker
 

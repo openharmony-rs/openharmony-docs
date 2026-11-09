@@ -70,6 +70,8 @@ enum DrawableDescriptor_AnimationStatus
 
 Enumerates the playback states of DrawableDescriptor animations.
 
+<!--Device-DrawableDescriptor_AnimationStatus--><!--Device-DrawableDescriptor_AnimationStatus-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -90,6 +92,8 @@ enum DrawableDescriptor_AnimationStopMode
 **Description**
 
 Enumerates the stop modes of [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) animations.
+
+<!--Device-DrawableDescriptor_AnimationStopMode--><!--Device-DrawableDescriptor_AnimationStopMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,6 +116,8 @@ ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromPixelMap(OH_Pixe
 **Description**
 
 Creates a **DrawableDescriptor** object from a **PixelMap** object.
+
+<!--Device-ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromPixelMap(OH_PixelmapNativeHandle pixelMap)--><!--Device-ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromPixelMap(OH_PixelmapNativeHandle pixelMap)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,6 +144,8 @@ ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromAnimatedPixelMap
 **Description**
 
 Creates a **DrawableDescriptor** object from an array of **PixelMap** objects.
+
+<!--Device-ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromAnimatedPixelMap(OH_PixelmapNativeHandle* array, int32_t size)--><!--Device-ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromAnimatedPixelMap(OH_PixelmapNativeHandle* array, int32_t size)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -166,6 +174,8 @@ void OH_ArkUI_DrawableDescriptor_Dispose(ArkUI_DrawableDescriptor* drawableDescr
 
 Disposes of the pointer to a **DrawableDescriptor** object.
 
+<!--Device-void OH_ArkUI_DrawableDescriptor_Dispose(ArkUI_DrawableDescriptor* drawableDescriptor)--><!--Device-void OH_ArkUI_DrawableDescriptor_Dispose(ArkUI_DrawableDescriptor* drawableDescriptor)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -185,6 +195,8 @@ OH_PixelmapNativeHandle OH_ArkUI_DrawableDescriptor_GetStaticPixelMap(ArkUI_Draw
 **Description**
 
 Obtains the pointer to a **PixelMap** object.
+
+<!--Device-OH_PixelmapNativeHandle OH_ArkUI_DrawableDescriptor_GetStaticPixelMap(ArkUI_DrawableDescriptor* drawableDescriptor)--><!--Device-OH_PixelmapNativeHandle OH_ArkUI_DrawableDescriptor_GetStaticPixelMap(ArkUI_DrawableDescriptor* drawableDescriptor)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -212,6 +224,8 @@ OH_PixelmapNativeHandle* OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArray(Ar
 
 Obtains an array of **PixelMap** objects for playing an animation.
 
+<!--Device-OH_PixelmapNativeHandle* OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArray(ArkUI_DrawableDescriptor* drawableDescriptor)--><!--Device-OH_PixelmapNativeHandle* OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArray(ArkUI_DrawableDescriptor* drawableDescriptor)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -237,6 +251,8 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArraySize(ArkUI_DrawableD
 **Description**
 
 Obtains the size of the **PixelMap** object array for playing an animation.
+
+<!--Device-int32_t OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArraySize(ArkUI_DrawableDescriptor* drawableDescriptor)--><!--Device-int32_t OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArraySize(ArkUI_DrawableDescriptor* drawableDescriptor)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -264,6 +280,8 @@ void OH_ArkUI_DrawableDescriptor_SetAnimationDuration(ArkUI_DrawableDescriptor* 
 
 Sets the total playback duration for an array of **PixelMap** objects.
 
+<!--Device-void OH_ArkUI_DrawableDescriptor_SetAnimationDuration(ArkUI_DrawableDescriptor* drawableDescriptor, int32_t duration)--><!--Device-void OH_ArkUI_DrawableDescriptor_SetAnimationDuration(ArkUI_DrawableDescriptor* drawableDescriptor, int32_t duration)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -284,6 +302,8 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationDuration(ArkUI_DrawableDescripto
 **Description**
 
 Obtains the total playback duration for an array of **PixelMap** objects.
+
+<!--Device-int32_t OH_ArkUI_DrawableDescriptor_GetAnimationDuration(ArkUI_DrawableDescriptor* drawableDescriptor)--><!--Device-int32_t OH_ArkUI_DrawableDescriptor_GetAnimationDuration(ArkUI_DrawableDescriptor* drawableDescriptor)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -311,6 +331,8 @@ void OH_ArkUI_DrawableDescriptor_SetAnimationIteration(ArkUI_DrawableDescriptor*
 
 Sets the number of times that an array of **PixelMap** objects is played.
 
+<!--Device-void OH_ArkUI_DrawableDescriptor_SetAnimationIteration(ArkUI_DrawableDescriptor* drawableDescriptor, int32_t iteration)--><!--Device-void OH_ArkUI_DrawableDescriptor_SetAnimationIteration(ArkUI_DrawableDescriptor* drawableDescriptor, int32_t iteration)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -331,6 +353,8 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationIteration(ArkUI_DrawableDescript
 **Description**
 
 Obtains the number of times that an array of **PixelMap** objects is played.
+
+<!--Device-int32_t OH_ArkUI_DrawableDescriptor_GetAnimationIteration(ArkUI_DrawableDescriptor* drawableDescriptor)--><!--Device-int32_t OH_ArkUI_DrawableDescriptor_GetAnimationIteration(ArkUI_DrawableDescriptor* drawableDescriptor)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -357,6 +381,8 @@ int32_t OH_ArkUI_DrawableDescriptor_SetAnimationFrameDurations(ArkUI_DrawableDes
 **Description**
 
 Sets the duration for each frame in a DrawableDescriptor animation.
+
+<!--Device-int32_t OH_ArkUI_DrawableDescriptor_SetAnimationFrameDurations(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t* durations, size_t size)--><!--Device-int32_t OH_ArkUI_DrawableDescriptor_SetAnimationFrameDurations(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t* durations, size_t size)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -386,6 +412,8 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationFrameDurations(ArkUI_DrawableDes
 
 Obtains the duration of each frame in a DrawableDescriptor animation.
 
+<!--Device-int32_t OH_ArkUI_DrawableDescriptor_GetAnimationFrameDurations(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t* durations, size_t* size)--><!--Device-int32_t OH_ArkUI_DrawableDescriptor_GetAnimationFrameDurations(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t* durations, size_t* size)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -414,6 +442,8 @@ int32_t OH_ArkUI_DrawableDescriptor_SetAnimationAutoPlay(ArkUI_DrawableDescripto
 
 Specifies whether to enable autoplay for a DrawableDescriptor animation.
 
+<!--Device-int32_t OH_ArkUI_DrawableDescriptor_SetAnimationAutoPlay(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t autoPlay)--><!--Device-int32_t OH_ArkUI_DrawableDescriptor_SetAnimationAutoPlay(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t autoPlay)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -440,6 +470,8 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationAutoPlay(ArkUI_DrawableDescripto
 **Description**
 
 Checks whether autoplay is enabled for a DrawableDescriptor animation.
+
+<!--Device-int32_t OH_ArkUI_DrawableDescriptor_GetAnimationAutoPlay(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t* autoPlay)--><!--Device-int32_t OH_ArkUI_DrawableDescriptor_GetAnimationAutoPlay(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t* autoPlay)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -468,6 +500,8 @@ int32_t OH_ArkUI_DrawableDescriptor_SetAnimationStopMode(ArkUI_DrawableDescripto
 
 Sets the stop mode for an animation.
 
+<!--Device-int32_t OH_ArkUI_DrawableDescriptor_SetAnimationStopMode(ArkUI_DrawableDescriptor* drawableDescriptor, DrawableDescriptor_AnimationStopMode mode)--><!--Device-int32_t OH_ArkUI_DrawableDescriptor_SetAnimationStopMode(ArkUI_DrawableDescriptor* drawableDescriptor, DrawableDescriptor_AnimationStopMode mode)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -495,6 +529,8 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStopMode(const ArkUI_DrawableDes
 
 Obtains the stop mode of an animation.
 
+<!--Device-int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStopMode(const ArkUI_DrawableDescriptor* drawableDescriptor, DrawableDescriptor_AnimationStopMode* mode)--><!--Device-int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStopMode(const ArkUI_DrawableDescriptor* drawableDescriptor, DrawableDescriptor_AnimationStopMode* mode)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -521,6 +557,8 @@ int32_t OH_ArkUI_DrawableDescriptor_CreateAnimationController(ArkUI_DrawableDesc
 **Description**
 
 Creates an animation controller. When you need to manually control the playback of an animation (for example, frame-by-frame playback, pausing, seeking to a specified frame, or setting the duration of a single frame) instead of using automatic playback, call this API to obtain the controller, and then call control APIs such as **<br>StartAnimation** and **Pause**.
+
+<!--Device-int32_t OH_ArkUI_DrawableDescriptor_CreateAnimationController(ArkUI_DrawableDescriptor *drawableDescriptor, ArkUI_NodeHandle node, ArkUI_DrawableDescriptor_AnimationController** controller)--><!--Device-int32_t OH_ArkUI_DrawableDescriptor_CreateAnimationController(ArkUI_DrawableDescriptor *drawableDescriptor, ArkUI_NodeHandle node, ArkUI_DrawableDescriptor_AnimationController** controller)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -550,6 +588,8 @@ void OH_ArkUI_DrawableDescriptor_DisposeAnimationController(ArkUI_DrawableDescri
 
 Disposes of the DrawableDescriptor animation controller.
 
+<!--Device-void OH_ArkUI_DrawableDescriptor_DisposeAnimationController(ArkUI_DrawableDescriptor_AnimationController* controller)--><!--Device-void OH_ArkUI_DrawableDescriptor_DisposeAnimationController(ArkUI_DrawableDescriptor_AnimationController* controller)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -569,6 +609,8 @@ int32_t OH_ArkUI_DrawableDescriptor_StartAnimation(ArkUI_DrawableDescriptor_Anim
 **Description**
 
 Starts playback from the first frame.
+
+<!--Device-int32_t OH_ArkUI_DrawableDescriptor_StartAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)--><!--Device-int32_t OH_ArkUI_DrawableDescriptor_StartAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -596,6 +638,8 @@ int32_t OH_ArkUI_DrawableDescriptor_StopAnimation(ArkUI_DrawableDescriptor_Anima
 
 Stops the playback of an animation. The position after the playback is stopped is determined by the stop mode set by [OH_ArkUI_DrawableDescriptor_SetAnimationStopMode](capi-drawable-descriptor-h.md#oh_arkui_drawabledescriptor_setanimationstopmode). If the stop mode is set to **<br>DRAWABLE_DESCRIPTOR_ANIMATION_FIRST_FRAME**, the playback returns to the first frame. If the stop mode is set to **<br>DRAWABLE_DESCRIPTOR_ANIMATION_LAST_FRAME**, the playback stays at the last frame.
 
+<!--Device-int32_t OH_ArkUI_DrawableDescriptor_StopAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)--><!--Device-int32_t OH_ArkUI_DrawableDescriptor_StopAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -621,6 +665,8 @@ int32_t OH_ArkUI_DrawableDescriptor_ResumeAnimation(ArkUI_DrawableDescriptor_Ani
 **Description**
 
 Resumes the DrawableDescriptor animation from the current frame.
+
+<!--Device-int32_t OH_ArkUI_DrawableDescriptor_ResumeAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)--><!--Device-int32_t OH_ArkUI_DrawableDescriptor_ResumeAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -648,6 +694,8 @@ int32_t OH_ArkUI_DrawableDescriptor_PauseAnimation(ArkUI_DrawableDescriptor_Anim
 
 Pauses playback on the current frame.
 
+<!--Device-int32_t OH_ArkUI_DrawableDescriptor_PauseAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)--><!--Device-int32_t OH_ArkUI_DrawableDescriptor_PauseAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -673,6 +721,8 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStatus(ArkUI_DrawableDescriptor_
 **Description**
 
 Obtains the playback status of the DrawableDescriptor animation.
+
+<!--Device-int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStatus(ArkUI_DrawableDescriptor_AnimationController* controller, DrawableDescriptor_AnimationStatus* status)--><!--Device-int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStatus(ArkUI_DrawableDescriptor_AnimationController* controller, DrawableDescriptor_AnimationStatus* status)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

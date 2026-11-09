@@ -8,9 +8,11 @@ struct OH_AVRecorder_Config {...}
 
 Describes the AVRecorder configuration, which is used to set the audio source type, video source type, encoding configuration, output file URL, file generation mode, metadata, and maximum recording duration during audio and video recording. This struct is applicable to scenarios where custom recording configurations are required.
 
+<!--Device-struct OH_AVRecorder_Config {...}--><!--Device-struct OH_AVRecorder_Config {...}-End-->
+
 **Since**: 18
 
-**Related module**: [AVRecorder](capi-others-avrecorder.md)
+**Related module**: [AVRecorder](capi-media-kit-avrecorder.md)
 
 **Header file**: [avrecorder_base.h](capi-avrecorder-base-h.md)
 

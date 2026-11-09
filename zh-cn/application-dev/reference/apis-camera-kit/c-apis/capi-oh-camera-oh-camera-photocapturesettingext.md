@@ -8,11 +8,13 @@ typedef struct OH_Camera_PhotoCaptureSettingExt OH_Camera_PhotoCaptureSettingExt
 
 扩展拍照设置对象（提供镜像、旋转等基础拍照配置，支持连续调节图片压缩质量）。
 
+<!--Device-typedef struct OH_Camera_PhotoCaptureSettingExt OH_Camera_PhotoCaptureSettingExt--><!--Device-typedef struct OH_Camera_PhotoCaptureSettingExt OH_Camera_PhotoCaptureSettingExt-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
 
-**相关模块：** [OH_Camera](capi-others-oh-camera.md)
+**相关模块：** [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **所在头文件：** [photo_output.h](capi-photo-output-h.md)
 

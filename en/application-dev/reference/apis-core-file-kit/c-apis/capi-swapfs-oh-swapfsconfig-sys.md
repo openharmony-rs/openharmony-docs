@@ -8,13 +8,15 @@ struct OH_SwapfsConfig {...}
 
 Configuration for creating a swapfs manager.
 
+<!--Device-struct OH_SwapfsConfig {...}--><!--Device-struct OH_SwapfsConfig {...}-End-->
+
 **System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0
 
 **System API:** This is a system API.
 
-**Related module**: [Swapfs](capi-others-swapfs.md)
+**Related module**: [Swapfs](capi-core-file-kit-swapfs.md)
 
 **Header file**: [oh_swapfs.h(System API)](capi-oh-swapfs-h-sys.md)
 

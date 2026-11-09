@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceShaderFloat16Int8Features {...}--><!--Device-struct VkPhysicalDeviceShaderFloat16Int8Features {...}-End-->
+
 ## Summary
 
 ### Member variables

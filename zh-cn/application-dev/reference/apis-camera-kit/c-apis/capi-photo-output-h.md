@@ -90,6 +90,8 @@ typedef void (*OH_PhotoOutput_OnFrameStart)(Camera_PhotoOutput* photoOutput)
 
 在[PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md)中被调用的拍照输出帧启动回调。
 
+<!--Device-typedef void (*OH_PhotoOutput_OnFrameStart)(Camera_PhotoOutput* photoOutput)--><!--Device-typedef void (*OH_PhotoOutput_OnFrameStart)(Camera_PhotoOutput* photoOutput)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
@@ -109,6 +111,8 @@ typedef void (*OH_PhotoOutput_OnFrameShutter)(Camera_PhotoOutput* photoOutput, C
 **描述：**
 
 在[PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md)中被调用的拍照输出帧快门回调。
+
+<!--Device-typedef void (*OH_PhotoOutput_OnFrameShutter)(Camera_PhotoOutput* photoOutput, Camera_FrameShutterInfo* info)--><!--Device-typedef void (*OH_PhotoOutput_OnFrameShutter)(Camera_PhotoOutput* photoOutput, Camera_FrameShutterInfo* info)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -131,6 +135,8 @@ typedef void (*OH_PhotoOutput_OnFrameEnd)(Camera_PhotoOutput* photoOutput, int32
 
 在[PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md)中被调用的拍照输出帧结束回调。
 
+<!--Device-typedef void (*OH_PhotoOutput_OnFrameEnd)(Camera_PhotoOutput* photoOutput, int32_t frameCount)--><!--Device-typedef void (*OH_PhotoOutput_OnFrameEnd)(Camera_PhotoOutput* photoOutput, int32_t frameCount)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
@@ -151,6 +157,8 @@ typedef void (*OH_PhotoOutput_OnError)(Camera_PhotoOutput* photoOutput, Camera_E
 **描述：**
 
 在[PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md)中被调用的拍照输出错误回调。
+
+<!--Device-typedef void (*OH_PhotoOutput_OnError)(Camera_PhotoOutput* photoOutput, Camera_ErrorCode errorCode)--><!--Device-typedef void (*OH_PhotoOutput_OnError)(Camera_PhotoOutput* photoOutput, Camera_ErrorCode errorCode)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -178,6 +186,8 @@ typedef void (*OH_PhotoOutput_CaptureEnd)(Camera_PhotoOutput* photoOutput, int32
 
 拍照结束回调。
 
+<!--Device-typedef void (*OH_PhotoOutput_CaptureEnd)(Camera_PhotoOutput* photoOutput, int32_t frameCount)--><!--Device-typedef void (*OH_PhotoOutput_CaptureEnd)(Camera_PhotoOutput* photoOutput, int32_t frameCount)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
@@ -198,6 +208,8 @@ typedef void (*OH_PhotoOutput_CaptureStartWithInfo)(Camera_PhotoOutput* photoOut
 **描述：**
 
 拍照开始回调。
+
+<!--Device-typedef void (*OH_PhotoOutput_CaptureStartWithInfo)(Camera_PhotoOutput* photoOutput, Camera_CaptureStartInfo* Info)--><!--Device-typedef void (*OH_PhotoOutput_CaptureStartWithInfo)(Camera_PhotoOutput* photoOutput, Camera_CaptureStartInfo* Info)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -220,6 +232,8 @@ typedef void (*OH_PhotoOutput_OnFrameShutterEnd)(Camera_PhotoOutput* photoOutput
 
 拍照曝光结束回调。
 
+<!--Device-typedef void (*OH_PhotoOutput_OnFrameShutterEnd)(Camera_PhotoOutput* photoOutput, Camera_FrameShutterInfo* Info)--><!--Device-typedef void (*OH_PhotoOutput_OnFrameShutterEnd)(Camera_PhotoOutput* photoOutput, Camera_FrameShutterInfo* Info)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
@@ -241,6 +255,8 @@ typedef void (*OH_PhotoOutput_CaptureReady)(Camera_PhotoOutput* photoOutput)
 
 拍照准备就绪回调。收到回调后，可以继续进行下一次拍照。
 
+<!--Device-typedef void (*OH_PhotoOutput_CaptureReady)(Camera_PhotoOutput* photoOutput)--><!--Device-typedef void (*OH_PhotoOutput_CaptureReady)(Camera_PhotoOutput* photoOutput)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
@@ -260,6 +276,8 @@ typedef void (*OH_PhotoOutput_EstimatedCaptureDuration)(Camera_PhotoOutput* phot
 **描述：**
 
 预计拍照时间回调。
+
+<!--Device-typedef void (*OH_PhotoOutput_EstimatedCaptureDuration)(Camera_PhotoOutput* photoOutput, int64_t duration)--><!--Device-typedef void (*OH_PhotoOutput_EstimatedCaptureDuration)(Camera_PhotoOutput* photoOutput, int64_t duration)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -282,6 +300,8 @@ typedef void (*OH_PhotoOutput_PhotoAvailable)(Camera_PhotoOutput* photoOutput, O
 
 照片输出可用高分辨率图像回调。
 
+<!--Device-typedef void (*OH_PhotoOutput_PhotoAvailable)(Camera_PhotoOutput* photoOutput, OH_PhotoNative* photo)--><!--Device-typedef void (*OH_PhotoOutput_PhotoAvailable)(Camera_PhotoOutput* photoOutput, OH_PhotoNative* photo)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
@@ -303,6 +323,8 @@ typedef void (*OH_PhotoOutput_PhotoAssetAvailable)(Camera_PhotoOutput* photoOutp
 
 输出照片资源可用回调。
 
+<!--Device-typedef void (*OH_PhotoOutput_PhotoAssetAvailable)(Camera_PhotoOutput* photoOutput, OH_MediaAsset* photoAsset)--><!--Device-typedef void (*OH_PhotoOutput_PhotoAssetAvailable)(Camera_PhotoOutput* photoOutput, OH_MediaAsset* photoAsset)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
@@ -323,6 +345,8 @@ Camera_ErrorCode OH_PhotoOutput_RegisterCallback(Camera_PhotoOutput* photoOutput
 **描述：**
 
 注册拍照输出更改事件回调。
+
+<!--Device-Camera_ErrorCode OH_PhotoOutput_RegisterCallback(Camera_PhotoOutput* photoOutput, PhotoOutput_Callbacks* callback)--><!--Device-Camera_ErrorCode OH_PhotoOutput_RegisterCallback(Camera_PhotoOutput* photoOutput, PhotoOutput_Callbacks* callback)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -351,6 +375,8 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterCallback(Camera_PhotoOutput* photoOutp
 
 注销拍照输出更改事件回调。
 
+<!--Device-Camera_ErrorCode OH_PhotoOutput_UnregisterCallback(Camera_PhotoOutput* photoOutput, PhotoOutput_Callbacks* callback)--><!--Device-Camera_ErrorCode OH_PhotoOutput_UnregisterCallback(Camera_PhotoOutput* photoOutput, PhotoOutput_Callbacks* callback)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
@@ -378,6 +404,8 @@ Camera_ErrorCode OH_PhotoOutput_RegisterCaptureStartWithInfoCallback(Camera_Phot
 
 注册拍照开始事件回调。
 
+<!--Device-Camera_ErrorCode OH_PhotoOutput_RegisterCaptureStartWithInfoCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureStartWithInfo callback)--><!--Device-Camera_ErrorCode OH_PhotoOutput_RegisterCaptureStartWithInfoCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureStartWithInfo callback)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
@@ -404,6 +432,8 @@ Camera_ErrorCode OH_PhotoOutput_GetPhotoRotation(Camera_PhotoOutput* photoOutput
 **描述：**
 
 获取照片旋转角度。
+
+<!--Device-Camera_ErrorCode OH_PhotoOutput_GetPhotoRotation(Camera_PhotoOutput* photoOutput, int deviceDegree, Camera_ImageRotation* imageRotation)--><!--Device-Camera_ErrorCode OH_PhotoOutput_GetPhotoRotation(Camera_PhotoOutput* photoOutput, int deviceDegree, Camera_ImageRotation* imageRotation)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -433,6 +463,8 @@ Camera_ErrorCode OH_PhotoOutput_GetPhotoRotationWithoutDeviceDegree(Camera_Photo
 
 获取照片旋转角度。
 
+<!--Device-Camera_ErrorCode OH_PhotoOutput_GetPhotoRotationWithoutDeviceDegree(Camera_PhotoOutput* photoOutput, Camera_ImageRotation* imageRotation)--><!--Device-Camera_ErrorCode OH_PhotoOutput_GetPhotoRotationWithoutDeviceDegree(Camera_PhotoOutput* photoOutput, Camera_ImageRotation* imageRotation)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 23
@@ -459,6 +491,8 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureStartWithInfoCallback(Camera_Ph
 **描述：**
 
 注销拍照开始事件回调。
+
+<!--Device-Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureStartWithInfoCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureStartWithInfo callback)--><!--Device-Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureStartWithInfoCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureStartWithInfo callback)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -487,6 +521,8 @@ Camera_ErrorCode OH_PhotoOutput_RegisterCaptureEndCallback(Camera_PhotoOutput* p
 
 注册拍照结束事件回调。
 
+<!--Device-Camera_ErrorCode OH_PhotoOutput_RegisterCaptureEndCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureEnd callback)--><!--Device-Camera_ErrorCode OH_PhotoOutput_RegisterCaptureEndCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureEnd callback)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
@@ -513,6 +549,8 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureEndCallback(Camera_PhotoOutput*
 **描述：**
 
 注销拍照结束事件回调。
+
+<!--Device-Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureEndCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureEnd callback)--><!--Device-Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureEndCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureEnd callback)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -541,6 +579,8 @@ Camera_ErrorCode OH_PhotoOutput_RegisterFrameShutterEndCallback(Camera_PhotoOutp
 
 注册拍照曝光结束事件回调。
 
+<!--Device-Camera_ErrorCode OH_PhotoOutput_RegisterFrameShutterEndCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_OnFrameShutterEnd callback)--><!--Device-Camera_ErrorCode OH_PhotoOutput_RegisterFrameShutterEndCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_OnFrameShutterEnd callback)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
@@ -567,6 +607,8 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterFrameShutterEndCallback(Camera_PhotoOu
 **描述：**
 
 注销拍照曝光结束事件回调。
+
+<!--Device-Camera_ErrorCode OH_PhotoOutput_UnregisterFrameShutterEndCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_OnFrameShutterEnd callback)--><!--Device-Camera_ErrorCode OH_PhotoOutput_UnregisterFrameShutterEndCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_OnFrameShutterEnd callback)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -595,6 +637,8 @@ Camera_ErrorCode OH_PhotoOutput_RegisterCaptureReadyCallback(Camera_PhotoOutput*
 
 注册拍照就绪事件回调。收到回调后，可以继续进行下一次拍照。
 
+<!--Device-Camera_ErrorCode OH_PhotoOutput_RegisterCaptureReadyCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureReady callback)--><!--Device-Camera_ErrorCode OH_PhotoOutput_RegisterCaptureReadyCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureReady callback)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
@@ -621,6 +665,8 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureReadyCallback(Camera_PhotoOutpu
 **描述：**
 
 注销拍照就绪事件回调。
+
+<!--Device-Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureReadyCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureReady callback)--><!--Device-Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureReadyCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureReady callback)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -649,6 +695,8 @@ Camera_ErrorCode OH_PhotoOutput_RegisterEstimatedCaptureDurationCallback(Camera_
 
 注册预计拍照时间事件回调。
 
+<!--Device-Camera_ErrorCode OH_PhotoOutput_RegisterEstimatedCaptureDurationCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_EstimatedCaptureDuration callback)--><!--Device-Camera_ErrorCode OH_PhotoOutput_RegisterEstimatedCaptureDurationCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_EstimatedCaptureDuration callback)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
@@ -675,6 +723,8 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterEstimatedCaptureDurationCallback(Camer
 **描述：**
 
 注销预计拍照时间事件回调。
+
+<!--Device-Camera_ErrorCode OH_PhotoOutput_UnregisterEstimatedCaptureDurationCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_EstimatedCaptureDuration callback)--><!--Device-Camera_ErrorCode OH_PhotoOutput_UnregisterEstimatedCaptureDurationCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_EstimatedCaptureDuration callback)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -703,6 +753,8 @@ Camera_ErrorCode OH_PhotoOutput_RegisterPhotoAvailableCallback(Camera_PhotoOutpu
 
 注册输出照片可用回调。
 
+<!--Device-Camera_ErrorCode OH_PhotoOutput_RegisterPhotoAvailableCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_PhotoAvailable callback)--><!--Device-Camera_ErrorCode OH_PhotoOutput_RegisterPhotoAvailableCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_PhotoAvailable callback)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
@@ -729,6 +781,8 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterPhotoAvailableCallback(Camera_PhotoOut
 **描述：**
 
 注销输出照片可用回调。
+
+<!--Device-Camera_ErrorCode OH_PhotoOutput_UnregisterPhotoAvailableCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_PhotoAvailable callback)--><!--Device-Camera_ErrorCode OH_PhotoOutput_UnregisterPhotoAvailableCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_PhotoAvailable callback)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -757,6 +811,8 @@ Camera_ErrorCode OH_PhotoOutput_RegisterPhotoAssetAvailableCallback(Camera_Photo
 
 注册输出照片资源可用回调。
 
+<!--Device-Camera_ErrorCode OH_PhotoOutput_RegisterPhotoAssetAvailableCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_PhotoAssetAvailable callback)--><!--Device-Camera_ErrorCode OH_PhotoOutput_RegisterPhotoAssetAvailableCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_PhotoAssetAvailable callback)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
@@ -783,6 +839,8 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterPhotoAssetAvailableCallback(Camera_Pho
 **描述：**
 
 注销输出照片资源可用回调。
+
+<!--Device-Camera_ErrorCode OH_PhotoOutput_UnregisterPhotoAssetAvailableCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_PhotoAssetAvailable callback)--><!--Device-Camera_ErrorCode OH_PhotoOutput_UnregisterPhotoAssetAvailableCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_PhotoAssetAvailable callback)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -811,6 +869,8 @@ Camera_ErrorCode OH_PhotoOutput_Capture(Camera_PhotoOutput* photoOutput)
 
 拍摄照片。 <br>必须在[OH_PreviewOutput_Release](capi-preview-output-h.md#oh_previewoutput_release)之前调用，否则会导致无法拍照。
 
+<!--Device-Camera_ErrorCode OH_PhotoOutput_Capture(Camera_PhotoOutput* photoOutput)--><!--Device-Camera_ErrorCode OH_PhotoOutput_Capture(Camera_PhotoOutput* photoOutput)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
@@ -836,6 +896,8 @@ Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSetting(Camera_PhotoOutput* p
 **描述：**
 
 使用捕获设置捕获拍照。
+
+<!--Device-Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSetting(Camera_PhotoOutput* photoOutput, Camera_PhotoCaptureSetting setting)--><!--Device-Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSetting(Camera_PhotoOutput* photoOutput, Camera_PhotoCaptureSetting setting)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -864,6 +926,8 @@ Camera_ErrorCode OH_PhotoOutput_Release(Camera_PhotoOutput* photoOutput)
 
 释放拍照输出。
 
+<!--Device-Camera_ErrorCode OH_PhotoOutput_Release(Camera_PhotoOutput* photoOutput)--><!--Device-Camera_ErrorCode OH_PhotoOutput_Release(Camera_PhotoOutput* photoOutput)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
@@ -889,6 +953,8 @@ Camera_ErrorCode OH_PhotoOutput_IsMirrorSupported(Camera_PhotoOutput* photoOutpu
 **描述：**
 
 检查是否支持镜像拍照。
+
+<!--Device-Camera_ErrorCode OH_PhotoOutput_IsMirrorSupported(Camera_PhotoOutput* photoOutput, bool* isSupported)--><!--Device-Camera_ErrorCode OH_PhotoOutput_IsMirrorSupported(Camera_PhotoOutput* photoOutput, bool* isSupported)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -917,6 +983,8 @@ Camera_ErrorCode OH_PhotoOutput_EnableMirror(Camera_PhotoOutput* photoOutput, bo
 
 是否启用动态照片镜像拍照。
 
+<!--Device-Camera_ErrorCode OH_PhotoOutput_EnableMirror(Camera_PhotoOutput* photoOutput, bool enabled)--><!--Device-Camera_ErrorCode OH_PhotoOutput_EnableMirror(Camera_PhotoOutput* photoOutput, bool enabled)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 13
@@ -943,6 +1011,8 @@ Camera_ErrorCode OH_PhotoOutput_GetActiveProfile(Camera_PhotoOutput* photoOutput
 **描述：**
 
 获取当前照片输出配置文件。
+
+<!--Device-Camera_ErrorCode OH_PhotoOutput_GetActiveProfile(Camera_PhotoOutput* photoOutput, Camera_Profile** profile)--><!--Device-Camera_ErrorCode OH_PhotoOutput_GetActiveProfile(Camera_PhotoOutput* photoOutput, Camera_Profile** profile)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -971,6 +1041,8 @@ Camera_ErrorCode OH_PhotoOutput_DeleteProfile(Camera_Profile* profile)
 
 删除照片配置文件实例。
 
+<!--Device-Camera_ErrorCode OH_PhotoOutput_DeleteProfile(Camera_Profile* profile)--><!--Device-Camera_ErrorCode OH_PhotoOutput_DeleteProfile(Camera_Profile* profile)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
@@ -996,6 +1068,8 @@ Camera_ErrorCode OH_PhotoOutput_IsMovingPhotoSupported(Camera_PhotoOutput* photo
 **描述：**
 
 检查是否支持动态照片。
+
+<!--Device-Camera_ErrorCode OH_PhotoOutput_IsMovingPhotoSupported(Camera_PhotoOutput* photoOutput, bool* isSupported)--><!--Device-Camera_ErrorCode OH_PhotoOutput_IsMovingPhotoSupported(Camera_PhotoOutput* photoOutput, bool* isSupported)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1024,6 +1098,8 @@ Camera_ErrorCode OH_PhotoOutput_EnableMovingPhoto(Camera_PhotoOutput* photoOutpu
 
 是否启用动态照片。
 
+<!--Device-Camera_ErrorCode OH_PhotoOutput_EnableMovingPhoto(Camera_PhotoOutput* photoOutput, bool enabled)--><!--Device-Camera_ErrorCode OH_PhotoOutput_EnableMovingPhoto(Camera_PhotoOutput* photoOutput, bool enabled)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
@@ -1050,6 +1126,8 @@ Camera_ErrorCode OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(Camera_Pho
 **描述：**
 
 检查是否支持指定的拍照画质优先策略。
+
+<!--Device-Camera_ErrorCode OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(Camera_PhotoOutput* photoOutput, Camera_PhotoQualityPrioritization qualityPrioritization, bool* isSupported)--><!--Device-Camera_ErrorCode OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(Camera_PhotoOutput* photoOutput, Camera_PhotoQualityPrioritization qualityPrioritization, bool* isSupported)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1079,6 +1157,8 @@ Camera_ErrorCode OH_PhotoOutput_SetPhotoQualityPrioritization(Camera_PhotoOutput
 
 设置拍照画质优先策略。
 
+<!--Device-Camera_ErrorCode OH_PhotoOutput_SetPhotoQualityPrioritization(Camera_PhotoOutput* photoOutput, Camera_PhotoQualityPrioritization qualityPrioritization)--><!--Device-Camera_ErrorCode OH_PhotoOutput_SetPhotoQualityPrioritization(Camera_PhotoOutput* photoOutput, Camera_PhotoQualityPrioritization qualityPrioritization)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
@@ -1105,6 +1185,8 @@ Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSettingExt(Camera_PhotoOutput
 **描述：**
 
 使用扩展拍照设置执行拍照操作。
+
+<!--Device-Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSettingExt(Camera_PhotoOutput* photoOutput, OH_Camera_PhotoCaptureSettingExt* setting)--><!--Device-Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSettingExt(Camera_PhotoOutput* photoOutput, OH_Camera_PhotoCaptureSettingExt* setting)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1133,6 +1215,8 @@ Camera_ErrorCode OH_PhotoOutput_CreatePhotoCaptureSettingExt(Camera_PhotoOutput*
 
 创建拍照扩展设置实例。
 
+<!--Device-Camera_ErrorCode OH_PhotoOutput_CreatePhotoCaptureSettingExt(Camera_PhotoOutput* photoOutput, OH_Camera_PhotoCaptureSettingExt** setting)--><!--Device-Camera_ErrorCode OH_PhotoOutput_CreatePhotoCaptureSettingExt(Camera_PhotoOutput* photoOutput, OH_Camera_PhotoCaptureSettingExt** setting)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
@@ -1159,6 +1243,8 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetCompressionQuality(OH_Camera_Photo
 **描述：**
 
 拍照扩展设置中的图片压缩质量。
+
+<!--Device-Camera_ErrorCode OH_PhotoCaptureSettingExt_SetCompressionQuality(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, uint8_t compressionQuality)--><!--Device-Camera_ErrorCode OH_PhotoCaptureSettingExt_SetCompressionQuality(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, uint8_t compressionQuality)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1187,6 +1273,8 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetImageRotation(OH_Camera_PhotoCaptu
 
 拍照扩展设置中的图像旋转角度。
 
+<!--Device-Camera_ErrorCode OH_PhotoCaptureSettingExt_SetImageRotation(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, Camera_ImageRotation rotation)--><!--Device-Camera_ErrorCode OH_PhotoCaptureSettingExt_SetImageRotation(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, Camera_ImageRotation rotation)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
@@ -1213,6 +1301,8 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetMirror(OH_Camera_PhotoCaptureSetti
 **描述：**
 
 拍照扩展设置中的镜像效果。
+
+<!--Device-Camera_ErrorCode OH_PhotoCaptureSettingExt_SetMirror(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, bool mirror)--><!--Device-Camera_ErrorCode OH_PhotoCaptureSettingExt_SetMirror(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, bool mirror)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1241,6 +1331,8 @@ Camera_ErrorCode OH_PhotoOutput_DestroyPhotoCaptureSettingExt(OH_Camera_PhotoCap
 
 销毁拍照扩展设置对象的实例。
 
+<!--Device-Camera_ErrorCode OH_PhotoOutput_DestroyPhotoCaptureSettingExt(OH_Camera_PhotoCaptureSettingExt* setting)--><!--Device-Camera_ErrorCode OH_PhotoOutput_DestroyPhotoCaptureSettingExt(OH_Camera_PhotoCaptureSettingExt* setting)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
@@ -1266,6 +1358,8 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetLocation(OH_Camera_PhotoCaptureSet
 **描述：**
 
 拍照扩展设置中的图片位置信息。
+
+<!--Device-Camera_ErrorCode OH_PhotoCaptureSettingExt_SetLocation(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, Camera_Location location)--><!--Device-Camera_ErrorCode OH_PhotoCaptureSettingExt_SetLocation(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, Camera_Location location)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1294,6 +1388,8 @@ Camera_ErrorCode OH_PhotoOutput_EnableAutoExtendedGainmapDelivery(Camera_PhotoOu
 
 是否启用自动扩展增益图（Gainmap）的输出。
 
+<!--Device-Camera_ErrorCode OH_PhotoOutput_EnableAutoExtendedGainmapDelivery(Camera_PhotoOutput* photoOutput, bool enabled)--><!--Device-Camera_ErrorCode OH_PhotoOutput_EnableAutoExtendedGainmapDelivery(Camera_PhotoOutput* photoOutput, bool enabled)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
@@ -1321,6 +1417,8 @@ bool OH_PhotoOutput_IsAutoExtendedGainmapDeliverySupported(const Camera_PhotoOut
 
 检查是否支持自动扩展增益图（Gainmap）的输出。
 
+<!--Device-bool OH_PhotoOutput_IsAutoExtendedGainmapDeliverySupported(const Camera_PhotoOutput* photoOutput)--><!--Device-bool OH_PhotoOutput_IsAutoExtendedGainmapDeliverySupported(const Camera_PhotoOutput* photoOutput)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
@@ -1346,6 +1444,8 @@ Camera_ErrorCode OH_PhotoOutput_IsAutoAuxiliaryPhotoDeliverySupported(const Came
 **描述：**
 
 检查设备是否支持拍照自动输出辅助图。
+
+<!--Device-Camera_ErrorCode OH_PhotoOutput_IsAutoAuxiliaryPhotoDeliverySupported(const Camera_PhotoOutput* photoOutput, OH_Camera_AuxiliaryPhotoType auxPhotoType, bool* isSupported)--><!--Device-Camera_ErrorCode OH_PhotoOutput_IsAutoAuxiliaryPhotoDeliverySupported(const Camera_PhotoOutput* photoOutput, OH_Camera_AuxiliaryPhotoType auxPhotoType, bool* isSupported)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1374,6 +1474,8 @@ Camera_ErrorCode OH_PhotoOutput_SetAutoAuxiliaryPhotosDeliveryEnabled(Camera_Pho
 **描述：**
 
 启用或禁用拍照自动回传指定类型的辅助图。
+
+<!--Device-Camera_ErrorCode OH_PhotoOutput_SetAutoAuxiliaryPhotosDeliveryEnabled(Camera_PhotoOutput* photoOutput, const OH_Camera_AuxiliaryPhotoType* auxPhotoTypes, uint32_t size, bool enable)--><!--Device-Camera_ErrorCode OH_PhotoOutput_SetAutoAuxiliaryPhotosDeliveryEnabled(Camera_PhotoOutput* photoOutput, const OH_Camera_AuxiliaryPhotoType* auxPhotoTypes, uint32_t size, bool enable)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

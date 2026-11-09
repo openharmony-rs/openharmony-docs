@@ -8,11 +8,13 @@ struct Rdb_Statistic {...}
 
 Describes the statistic of the cloud sync process.
 
+<!--Device-struct Rdb_Statistic {...}--><!--Device-struct Rdb_Statistic {...}-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 11
 
-**Related module**: [RDB](capi-others-rdb.md)
+**Related module**: [RDB](capi-arkdata-rdb.md)
 
 **Header file**: [relational_store.h](capi-relational-store-h.md)
 

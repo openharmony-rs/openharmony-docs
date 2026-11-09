@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceSchedulingControlsFeaturesARM {...}--><!--Device-struct VkPhysicalDeviceSchedulingControlsFeaturesARM {...}-End-->
+
 ## Summary
 
 ### Member variables

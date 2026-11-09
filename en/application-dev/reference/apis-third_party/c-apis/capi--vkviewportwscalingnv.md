@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkViewportWScalingNV {...}--><!--Device-struct VkViewportWScalingNV {...}-End-->
+
 ## Summary
 
 ### Member variables

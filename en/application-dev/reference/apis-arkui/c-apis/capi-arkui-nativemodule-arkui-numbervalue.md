@@ -8,11 +8,13 @@ typedef union ArkUI_NumberValue {...} ArkUI_NumberValue
 
 Defines a numeric type used by ArkUI on the native side, including floating-point, signed integer, and unsigned integer types.
 
+<!--Device-typedef union ArkUI_NumberValue {...} ArkUI_NumberValue--><!--Device-typedef union ArkUI_NumberValue {...} ArkUI_NumberValue-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [common_type.h](capi-common-type-h.md)
 

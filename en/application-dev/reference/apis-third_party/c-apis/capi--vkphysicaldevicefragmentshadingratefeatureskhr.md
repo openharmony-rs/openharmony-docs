@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceFragmentShadingRateFeaturesKHR {...}--><!--Device-struct VkPhysicalDeviceFragmentShadingRateFeaturesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkInputAttachmentAspectReference {...}--><!--Device-struct VkInputAttachmentAspectReference {...}-End-->
+
 ## Summary
 
 ### Member variables

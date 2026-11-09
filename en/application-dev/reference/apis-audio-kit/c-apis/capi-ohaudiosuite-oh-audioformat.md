@@ -8,11 +8,13 @@ struct OH_AudioFormat {...}
 
 Define the audio format info structure, used to describe basic audio format.
 
+<!--Device-struct OH_AudioFormat {...}--><!--Device-struct OH_AudioFormat {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
 
-**Related module**: [OHAudioSuite](capi-others-ohaudiosuite.md)
+**Related module**: [OHAudioSuite](capi-audio-kit-ohaudiosuite.md)
 
 **Header file**: [native_audio_suite_base.h](capi-native-audio-suite-base-h.md)
 

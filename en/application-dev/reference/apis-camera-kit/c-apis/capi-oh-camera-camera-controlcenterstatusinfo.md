@@ -8,11 +8,13 @@ struct Camera_ControlCenterStatusInfo {...}
 
 The struct describes the effect status information of a camera controller.
 
+<!--Device-struct Camera_ControlCenterStatusInfo {...}--><!--Device-struct Camera_ControlCenterStatusInfo {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 20
 
-**Related module**: [OH_Camera](capi-others-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **Header file**: [camera.h](capi-camera-h.md)
 

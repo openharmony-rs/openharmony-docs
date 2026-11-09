@@ -56,6 +56,8 @@ enum GameDevice_StatusChangedType
 
 此枚举定义设备的状态变化类型。
 
+<!--Device-GameDevice_StatusChangedType--><!--Device-GameDevice_StatusChangedType-End-->
+
 **系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
@@ -74,6 +76,8 @@ enum GameDevice_DeviceType
 **描述：**
 
 此枚举定义设备类型。
+
+<!--Device-GameDevice_DeviceType--><!--Device-GameDevice_DeviceType-End-->
 
 **系统能力：** SystemCapability.Game.GameController
 
@@ -97,6 +101,8 @@ typedef void(* GameDevice_DeviceMonitorCallback)(const struct GameDevice_DeviceE
 
 定义[OH_GameDevice_RegisterDeviceMonitor](capi-game-device-h.md#oh_gamedevice_registerdevicemonitor)中使用的回调函数。当设备上线或下线时，该回调函数将被调用。
 
+<!--Device-typedef void(* GameDevice_DeviceMonitorCallback)(const struct GameDevice_DeviceEvent* deviceEvent)--><!--Device-typedef void(* GameDevice_DeviceMonitorCallback)(const struct GameDevice_DeviceEvent* deviceEvent)-End-->
+
 **系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
@@ -116,6 +122,8 @@ GameController_ErrorCode OH_GameDevice_DeviceEvent_GetChangedType(const struct G
 **描述：**
 
 从设备状态变化事件中获取状态变化类型。
+
+<!--Device-GameController_ErrorCode OH_GameDevice_DeviceEvent_GetChangedType(const struct GameDevice_DeviceEvent* deviceEvent, GameDevice_StatusChangedType* statusChangedType)--><!--Device-GameController_ErrorCode OH_GameDevice_DeviceEvent_GetChangedType(const struct GameDevice_DeviceEvent* deviceEvent, GameDevice_StatusChangedType* statusChangedType)-End-->
 
 **系统能力：** SystemCapability.Game.GameController
 
@@ -143,6 +151,8 @@ GameController_ErrorCode OH_GameDevice_DeviceEvent_GetDeviceInfo(const struct Ga
 **描述：**
 
 从设备状态变化事件中获取设备信息。
+
+<!--Device-GameController_ErrorCode OH_GameDevice_DeviceEvent_GetDeviceInfo(const struct GameDevice_DeviceEvent* deviceEvent, GameDevice_DeviceInfo** deviceInfo)--><!--Device-GameController_ErrorCode OH_GameDevice_DeviceEvent_GetDeviceInfo(const struct GameDevice_DeviceEvent* deviceEvent, GameDevice_DeviceInfo** deviceInfo)-End-->
 
 **系统能力：** SystemCapability.Game.GameController
 
@@ -176,6 +186,8 @@ GameController_ErrorCode OH_GameDevice_DestroyDeviceInfo(GameDevice_DeviceInfo**
 
 销毁设备信息实例。
 
+<!--Device-GameController_ErrorCode OH_GameDevice_DestroyDeviceInfo(GameDevice_DeviceInfo** deviceInfo)--><!--Device-GameController_ErrorCode OH_GameDevice_DestroyDeviceInfo(GameDevice_DeviceInfo** deviceInfo)-End-->
+
 **系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
@@ -201,6 +213,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceId(const struct GameD
 **描述：**
 
 从设备信息中获取设备ID。
+
+<!--Device-GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceId(const struct GameDevice_DeviceInfo* deviceInfo, char** deviceId)--><!--Device-GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceId(const struct GameDevice_DeviceInfo* deviceInfo, char** deviceId)-End-->
 
 **系统能力：** SystemCapability.Game.GameController
 
@@ -229,6 +243,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetName(const struct GameDevic
 
 从设备信息中获取设备名称。
 
+<!--Device-GameController_ErrorCode OH_GameDevice_DeviceInfo_GetName(const struct GameDevice_DeviceInfo* deviceInfo, char** name)--><!--Device-GameController_ErrorCode OH_GameDevice_DeviceInfo_GetName(const struct GameDevice_DeviceInfo* deviceInfo, char** name)-End-->
+
 **系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
@@ -255,6 +271,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetProduct(const struct GameDe
 **描述：**
 
 从设备信息中获取产品信息。
+
+<!--Device-GameController_ErrorCode OH_GameDevice_DeviceInfo_GetProduct(const struct GameDevice_DeviceInfo* deviceInfo, int32_t* product)--><!--Device-GameController_ErrorCode OH_GameDevice_DeviceInfo_GetProduct(const struct GameDevice_DeviceInfo* deviceInfo, int32_t* product)-End-->
 
 **系统能力：** SystemCapability.Game.GameController
 
@@ -283,6 +301,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetVendor(const struct GameDev
 
 从设备信息中获取厂商信息。
 
+<!--Device-GameController_ErrorCode OH_GameDevice_DeviceInfo_GetVendor(const struct GameDevice_DeviceInfo* deviceInfo, int32_t* vendor)--><!--Device-GameController_ErrorCode OH_GameDevice_DeviceInfo_GetVendor(const struct GameDevice_DeviceInfo* deviceInfo, int32_t* vendor)-End-->
+
 **系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 26.0.1
@@ -309,6 +329,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetVersion(const struct GameDe
 **描述：**
 
 从设备信息中获取版本信息。
+
+<!--Device-GameController_ErrorCode OH_GameDevice_DeviceInfo_GetVersion(const struct GameDevice_DeviceInfo* deviceInfo, int32_t* version)--><!--Device-GameController_ErrorCode OH_GameDevice_DeviceInfo_GetVersion(const struct GameDevice_DeviceInfo* deviceInfo, int32_t* version)-End-->
 
 **系统能力：** SystemCapability.Game.GameController
 
@@ -337,6 +359,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetPhysicalAddress(const struc
 
 从设备信息中获取物理地址。
 
+<!--Device-GameController_ErrorCode OH_GameDevice_DeviceInfo_GetPhysicalAddress(const struct GameDevice_DeviceInfo* deviceInfo, char** physicalAddress)--><!--Device-GameController_ErrorCode OH_GameDevice_DeviceInfo_GetPhysicalAddress(const struct GameDevice_DeviceInfo* deviceInfo, char** physicalAddress)-End-->
+
 **系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
@@ -363,6 +387,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceType(const struct Gam
 **描述：**
 
 从设备信息中获取设备类型。
+
+<!--Device-GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceType(const struct GameDevice_DeviceInfo* deviceInfo, GameDevice_DeviceType* deviceType)--><!--Device-GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceType(const struct GameDevice_DeviceInfo* deviceInfo, GameDevice_DeviceType* deviceType)-End-->
 
 **系统能力：** SystemCapability.Game.GameController
 

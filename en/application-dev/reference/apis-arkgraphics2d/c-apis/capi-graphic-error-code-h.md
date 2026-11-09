@@ -32,6 +32,8 @@ enum OHNativeErrorCode
 
 native error code.
 
+<!--Device-OHNativeErrorCode--><!--Device-OHNativeErrorCode-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **Since**: 12

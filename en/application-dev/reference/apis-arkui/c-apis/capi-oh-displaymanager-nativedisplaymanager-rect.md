@@ -8,11 +8,13 @@ typedef struct NativeDisplayManager_Rect {...} NativeDisplayManager_Rect
 
 The struct describes a rectangle.
 
+<!--Device-typedef struct NativeDisplayManager_Rect {...} NativeDisplayManager_Rect--><!--Device-typedef struct NativeDisplayManager_Rect {...} NativeDisplayManager_Rect-End-->
+
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
-**Related module**: [OH_DisplayManager](capi-others-oh-displaymanager.md)
+**Related module**: [OH_DisplayManager](capi-arkui-oh-displaymanager.md)
 
 **Header file**: [oh_display_info.h](capi-oh-display-info-h.md)
 

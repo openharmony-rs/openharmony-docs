@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDeviceAddressBindingCallbackDataEXT {...}--><!--Device-struct VkDeviceAddressBindingCallbackDataEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

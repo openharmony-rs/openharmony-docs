@@ -8,11 +8,13 @@ typedef struct ArkUI_StyledString_Descriptor ArkUI_StyledString_Descriptor
 
 Defines the styled string descriptor object supported by the text component, which is used for style setting and management of text content. It applies to scenarios such as rich text display and style customization.
 
+<!--Device-typedef struct ArkUI_StyledString_Descriptor ArkUI_StyledString_Descriptor--><!--Device-typedef struct ArkUI_StyledString_Descriptor ArkUI_StyledString_Descriptor-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [text_common.h](capi-text-common-h.md)
 

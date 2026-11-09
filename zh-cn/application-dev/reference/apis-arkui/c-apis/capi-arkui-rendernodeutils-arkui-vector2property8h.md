@@ -8,11 +8,13 @@ typedef struct ArkUI_Vector2Property* ArkUI_Vector2PropertyHandle
 
 定义二维向量属性指针，用于在ArkUI原生渲染属性接口中创建、附加、设置、获取和释放二维向量属性。
 
+<!--Device-typedef struct ArkUI_Vector2Property* ArkUI_Vector2PropertyHandle--><!--Device-typedef struct ArkUI_Vector2Property* ArkUI_Vector2PropertyHandle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
-**相关模块：** [ArkUI_RenderNodeUtils](capi-others-arkui-rendernodeutils.md)
+**相关模块：** [ArkUI_RenderNodeUtils](capi-arkui-arkui-rendernodeutils.md)
 
 **所在头文件：** [native_render.h](capi-native-render-h.md)
 

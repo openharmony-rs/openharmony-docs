@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct p6_hdr {...}--><!--Device-struct p6_hdr {...}-End-->
+
 ## Summary
 
 ### Member variables

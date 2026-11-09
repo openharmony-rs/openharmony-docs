@@ -8,11 +8,13 @@ typedef struct OH_NativeXComponent_KeyEvent OH_NativeXComponent_KeyEvent
 
 OH_NativeXComponent_KeyEvent用于封装XComponent按键事件的信息，提供按键的键值、动作类型、事件时间戳等关键数据。 适用于Native侧接收和处理ArkUI XComponent按键事件的场景。
 
+<!--Device-typedef struct OH_NativeXComponent_KeyEvent OH_NativeXComponent_KeyEvent--><!--Device-typedef struct OH_NativeXComponent_KeyEvent OH_NativeXComponent_KeyEvent-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 10
 
-**相关模块：** [OH_NativeXComponent Native XComponent](capi-others-oh-nativexcomponent-native-xcomponent.md)
+**相关模块：** [OH_NativeXComponent Native XComponent](capi-arkui-oh-nativexcomponent-native-xcomponent.md)
 
 **所在头文件：** [native_interface_xcomponent.h](capi-native-interface-xcomponent-h.md)
 

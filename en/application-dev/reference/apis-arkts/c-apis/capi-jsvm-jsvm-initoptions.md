@@ -8,11 +8,13 @@ typedef struct JSVM_InitOptions {...} JSVM_InitOptions
 
 Init the JavaScript VM with init option.
 
+<!--Device-typedef struct JSVM_InitOptions {...} JSVM_InitOptions--><!--Device-typedef struct JSVM_InitOptions {...} JSVM_InitOptions-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
 
-**Related module**: [JSVM](capi-others-jsvm.md)
+**Related module**: [JSVM](capi-arkts-jsvm.md)
 
 **Header file**: [jsvm_types.h](capi-jsvm-types-h.md)
 

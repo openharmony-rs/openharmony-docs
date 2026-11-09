@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSparseImageFormatProperties {...}--><!--Device-struct VkSparseImageFormatProperties {...}-End-->
+
 ## Summary
 
 ### Member variables

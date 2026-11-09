@@ -8,11 +8,13 @@ struct Http_HeaderValue {...}
 
 请求或者响应的标头映射的值类型。
 
+<!--Device-struct Http_HeaderValue {...}--><!--Device-struct Http_HeaderValue {...}-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 20
 
-**相关模块：** [netstack](capi-others-netstack.md)
+**相关模块：** [netstack](capi-network-kit-netstack.md)
 
 **所在头文件：** [net_http_type.h](capi-net-http-type-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkVideoProfileListInfoKHR {...}--><!--Device-struct VkVideoProfileListInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

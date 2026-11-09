@@ -8,11 +8,13 @@ struct Camera_ConcurrentInfo {...}
 
 相机并发能力信息。
 
+<!--Device-struct Camera_ConcurrentInfo {...}--><!--Device-struct Camera_ConcurrentInfo {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 18
 
-**相关模块：** [OH_Camera](capi-others-oh-camera.md)
+**相关模块：** [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **所在头文件：** [camera.h](capi-camera-h.md)
 

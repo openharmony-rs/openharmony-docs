@@ -51,6 +51,8 @@ enum OH_CM_ErrorCode
 
 Enumerates error codes.
 
+<!--Device-OH_CM_ErrorCode--><!--Device-OH_CM_ErrorCode-End-->
+
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **起始版本：** 22
@@ -79,6 +81,8 @@ enum OH_CM_CertificatePurpose
 **描述：**
 
 证书凭据用途类型。
+
+<!--Device-OH_CM_CertificatePurpose--><!--Device-OH_CM_CertificatePurpose-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 

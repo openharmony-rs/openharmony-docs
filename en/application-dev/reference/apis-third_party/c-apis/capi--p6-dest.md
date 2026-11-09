@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct p6_dest {...}--><!--Device-struct p6_dest {...}-End-->
+
 ## Summary
 
 ### Member variables

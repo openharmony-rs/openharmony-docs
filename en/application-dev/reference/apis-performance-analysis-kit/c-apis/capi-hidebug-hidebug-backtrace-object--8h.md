@@ -8,11 +8,13 @@ typedef struct HiDebug_Backtrace_Object__* HiDebug_Backtrace_Object
 
 Defines an object used for stack backtracing and stack parsing.
 
+<!--Device-typedef struct HiDebug_Backtrace_Object__* HiDebug_Backtrace_Object--><!--Device-typedef struct HiDebug_Backtrace_Object__* HiDebug_Backtrace_Object-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 20
 
-**Related module**: [HiDebug](capi-others-hidebug.md)
+**Related module**: [HiDebug](capi-performance-analysis-kit-hidebug.md)
 
 **Header file**: [hidebug_type.h](capi-hidebug-type-h.md)
 

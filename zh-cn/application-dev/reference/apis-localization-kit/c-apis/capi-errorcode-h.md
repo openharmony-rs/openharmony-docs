@@ -32,6 +32,8 @@ enum I18n_ErrorCode
 
 i18n错误码
 
+<!--Device-I18n_ErrorCode--><!--Device-I18n_ErrorCode-End-->
+
 **系统能力：** SystemCapability.Global.I18n
 
 **起始版本：** 22

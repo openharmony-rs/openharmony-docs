@@ -8,11 +8,13 @@ struct OH_CloudDisk_FetchData {...}
 
 A struct that encapsulates fetched cloud file data.
 
+<!--Device-struct OH_CloudDisk_FetchData {...}--><!--Device-struct OH_CloudDisk_FetchData {...}-End-->
+
 **System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 26.0.1
 
-**Related module**: [CloudDisk](capi-others-clouddisk.md)
+**Related module**: [CloudDisk](capi-core-file-kit-clouddisk.md)
 
 **Header file**: [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
 

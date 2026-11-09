@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkVideoEncodeSessionParametersFeedbackInfoKHR {...}--><!--Device-struct VkVideoEncodeSessionParametersFeedbackInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

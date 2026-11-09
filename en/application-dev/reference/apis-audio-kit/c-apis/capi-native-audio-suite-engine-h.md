@@ -76,6 +76,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_Create(OH_AudioSuiteEngine** audioSuite
 
 Request to create the audio engine.
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_Create(OH_AudioSuiteEngine** audioSuiteEngine)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_Create(OH_AudioSuiteEngine** audioSuiteEngine)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
@@ -102,6 +104,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_Destroy(OH_AudioSuiteEngine* audioSuite
 
 Request to destroy the engine.
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_Destroy(OH_AudioSuiteEngine* audioSuiteEngine)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_Destroy(OH_AudioSuiteEngine* audioSuiteEngine)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
@@ -127,6 +131,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_CreatePipeline(OH_AudioSuiteEngine* aud
 **Description**
 
 Request to create the pipeline.<br> The pipeline is the unit within the engine responsible for executing audio editing, the engine can create multiple pipelines, and one pipeline must include at least one input node and one output node. When the pipeline operates in [AUDIOSUITE_PIPELINE_EDIT_MODE](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode), it supports all effect nodes. When the pipeline operates in [AUDIOSUITE_PIPELINE_REALTIME_MODE](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode), before API version 23, it only supports the [EFFECT_NODE_TYPE_EQUALIZER](capi-native-audio-suite-base-h.md#oh_audionode_type) effect node, in API version 23 and later, it supports all effect nodes.
+
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_CreatePipeline(OH_AudioSuiteEngine* audioSuiteEngine, OH_AudioSuitePipeline** audioSuitePipeline, OH_AudioSuite_PipelineWorkMode workMode)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_CreatePipeline(OH_AudioSuiteEngine* audioSuiteEngine, OH_AudioSuitePipeline** audioSuitePipeline, OH_AudioSuite_PipelineWorkMode workMode)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -156,6 +162,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_DestroyPipeline(OH_AudioSuitePipeline* 
 
 Request to destroy the pipeline.
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_DestroyPipeline(OH_AudioSuitePipeline* audioSuitePipeline)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_DestroyPipeline(OH_AudioSuitePipeline* audioSuitePipeline)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
@@ -181,6 +189,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_StartPipeline(OH_AudioSuitePipeline* au
 **Description**
 
 Request to start the pipeline.
+
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_StartPipeline(OH_AudioSuitePipeline* audioSuitePipeline)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_StartPipeline(OH_AudioSuitePipeline* audioSuitePipeline)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -208,6 +218,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_StopPipeline(OH_AudioSuitePipeline* aud
 
 Stop the pipeline and clear the node cache.<br> This function will not alter the connection relationships between nodes in the pipeline. Once the pipeline is stopped, [OH_AudioSuiteEngine_RenderFrame](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_renderframe) should not be used for executing audio processing.
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_StopPipeline(OH_AudioSuitePipeline* audioSuitePipeline)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_StopPipeline(OH_AudioSuitePipeline* audioSuitePipeline)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
@@ -233,6 +245,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetPipelineState(OH_AudioSuitePipeline*
 **Description**
 
 Request to get one pipeline state
+
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetPipelineState(OH_AudioSuitePipeline* audioSuitePipeline, OH_AudioSuite_PipelineState* pipelineState)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetPipelineState(OH_AudioSuitePipeline* audioSuitePipeline, OH_AudioSuite_PipelineState* pipelineState)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -261,6 +275,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_RenderFrame(OH_AudioSuitePipeline* audi
 
 The application uses this interface for audio data processing.<br> The application needs to call this interface to retrieve the data processed with effects frame by frame. After the application calls this interface, the pipeline will sequentially fetch data from the output node forward, process the effects, and ultimately fill the processed data into the audioData pointer passed by the application. The pipeline will attempt to fill the data according to the requestFrameSize as much as possible, and the actual size of the data processed by the pipeline will be returned to the application via responseSize. The pipeline supports multiple input nodes, each of which will obtain raw audio data from the application through the data acquisition interface registered by the application. When the application has handed over all the data prepared for each input node to the pipeline, the application should pass a finish flag during the last callback. Once all inputs in the pipeline have passed the finish flag, the pipeline will inform the application through the finishedFlag in the OH_AudioSuiteEngine_RenderFrame interface after processing is complete. When finishedFlag is true, the application should no longer call this interface.
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_RenderFrame(OH_AudioSuitePipeline* audioSuitePipeline, void* audioData, int32_t requestFrameSize, int32_t* responseSize, bool* finishedFlag)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_RenderFrame(OH_AudioSuitePipeline* audioSuitePipeline, void* audioData, int32_t requestFrameSize, int32_t* responseSize, bool* finishedFlag)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
@@ -273,7 +289,7 @@ The application uses this interface for audio data processing.<br> The applicati
 | void* audioData | Audio data pointer, where user should read, unit is byte. |
 | int32_t requestFrameSize | Size of audio data user specified, unit is byte. |
 | int32_t* responseSize | Size of audio data the system really writes. |
-| bool* finishedFlag | This flag is used to indicate to the user whether all data processing has been completed. |
+| bool* finishedFlag | This flag is used to indicate to the user whether all data processing has been completed. True means all data processing has been completed and the application should no longer call this interface. False means data processing is not yet completed. |
 
 **Returns**:
 
@@ -291,6 +307,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_MultiRenderFrame(OH_AudioSuitePipeline*
 
 The application uses this interface for audio data processing.<br> For most nodes, a piece of data is obtained from the preceding node, processed, and then passed on to the subsequent node. For nodes with multiple outputs, such as the [EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION](capi-native-audio-suite-base-h.md#oh_audionode_type), a piece of data is obtained from the preceding node, processed by an algorithm, and then multiple pieces of data are passed on to the subsequent nodes. If such nodes exist in the pipeline, this interface must be used to obtain the processed data. The size of the audioDataArray should correspond one-to-one with the number of data outputs from the node. For the audio source separation node, audioDataArray should have two elements: the first element carries the vocal sound, and the second element carries the background sound.
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_MultiRenderFrame(OH_AudioSuitePipeline* audioSuitePipeline, OH_AudioDataArray* audioDataArray, int32_t* responseSize, bool* finishedFlag)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_MultiRenderFrame(OH_AudioSuitePipeline* audioSuitePipeline, OH_AudioDataArray* audioDataArray, int32_t* responseSize, bool* finishedFlag)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
@@ -302,7 +320,7 @@ The application uses this interface for audio data processing.<br> For most node
 | [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | Reference created by OH_AudioSuiteEngine_CreatePipeline. |
 | [OH_AudioDataArray](capi-ohaudiosuite-oh-audiodataarray.md)* audioDataArray | Audio data array pointer, where user should read, The size of each one-dimensional array should be consistent. |
 | int32_t* responseSize | Size of audio data the system really writes, The system ensures that the data size filled for each one-dimensional array is consistent, unit is byte. |
-| bool* finishedFlag | This flag is used to indicate to the user whether all data processing has been completed. |
+| bool* finishedFlag | This flag is used to indicate to the user whether all data processing has been completed. True means all data processing has been completed and the application should no longer call this interface. False means data processing is not yet completed. |
 
 **Returns**:
 
@@ -319,6 +337,8 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Create(OH_AudioNodeBuilder** build
 **Description**
 
 Create an audio node builder which can be used to create an audio node<br> The builder is a tool used to create nodes, and it can be utilized to set the properties of the nodes to be created. After creating a node, the builder can be reused. However, it must be noted that if the attributes of the new node are inconsistent with the previous node, the application must use OH_AudioSuiteNodeBuilder_Reset to reset the builder.
+
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Create(OH_AudioNodeBuilder** builder)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Create(OH_AudioNodeBuilder** builder)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -346,6 +366,8 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Destroy(OH_AudioNodeBuilder* build
 
 Destroy audio node builder.<br> This function must be called when you are done using the builder.
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Destroy(OH_AudioNodeBuilder* builder)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Destroy(OH_AudioNodeBuilder* builder)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
@@ -372,6 +394,8 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Reset(OH_AudioNodeBuilder* builder
 
 Reset audio node builder.<br> If the application intends to reuse the builder to add new nodes and the properties of the new nodes differ from those of the previously created nodes, the application must call this interface to clear all properties, such as audio node type, e.t.c.
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Reset(OH_AudioNodeBuilder* builder)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Reset(OH_AudioNodeBuilder* builder)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
@@ -397,6 +421,8 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetNodeType(OH_AudioNodeBuilder* b
 **Description**
 
 Set the audio node type to be created by the builder.<br> When creating a node, other parameters are validated based on the node type, so this method needs to be executed for all types of nodes.
+
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetNodeType(OH_AudioNodeBuilder* builder, OH_AudioNode_Type type)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetNodeType(OH_AudioNodeBuilder* builder, OH_AudioNode_Type type)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -425,6 +451,8 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetFormat(OH_AudioNodeBuilder* bui
 
 Set the audio format supported by the node.<br> For [INPUT_NODE_TYPE_DEFAULT](capi-native-audio-suite-base-h.md#oh_audionode_type), the set audioFormat is used to specify the format in which the application writes data. For [OUTPUT_NODE_TYPE_DEFAULT](capi-native-audio-suite-base-h.md#oh_audionode_type), the set audioFormat is used to specify the format in which the application ultimately wants to retrieve the data. Other types of nodes do not support this setting.
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetFormat(OH_AudioNodeBuilder* builder, OH_AudioFormat audioFormat)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetFormat(OH_AudioNodeBuilder* builder, OH_AudioFormat audioFormat)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
@@ -452,6 +480,8 @@ typedef int32_t (*OH_InputNode_RequestDataCallback)(OH_AudioNode* audioNode, voi
 
 Callback function of request data, Only [INPUT_NODE_TYPE_DEFAULT](capi-native-audio-suite-base-h.md#oh_audionode_type) support this setting.<br> This function allows the application to write partial data which ranges from 0 to the audioDataSize. The application should fill the data according to the size of audioDataSize. When all the data from the application has been passed to the pipeline through the callback, the application should set finished to true in the last callback. When finished is set to true, the pipeline will no longer call this interface to obtain data from the application. This callback is triggered when the pipeline needs audio data from the input node during rendering process. The callback is triggered repeatedly during [OH_AudioSuiteEngine_RenderFrame](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_renderframe) execution until finished is set to true.
 
+<!--Device-typedef int32_t (*OH_InputNode_RequestDataCallback)(OH_AudioNode* audioNode, void* userData, void* audioData, int32_t audioDataSize, bool* finished)--><!--Device-typedef int32_t (*OH_InputNode_RequestDataCallback)(OH_AudioNode* audioNode, void* userData, void* audioData, int32_t audioDataSize, bool* finished)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
@@ -464,7 +494,7 @@ Callback function of request data, Only [INPUT_NODE_TYPE_DEFAULT](capi-native-au
 | void* userData | User data which is passed by user. |
 | void* audioData | Audio data pointer, where user should fill in audio data. |
 | int32_t audioDataSize | Size of audio data that user should fill in, unit is byte. |
-| bool* finished | This boolean value indicates that all data of the application has been consumed since last execute [OH_AudioSuiteEngine_StartPipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_startpipeline). |
+| bool* finished | This boolean value indicates that all data of the application has been consumed since last execute [OH_AudioSuiteEngine_StartPipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_startpipeline). True means all data of the application has been consumed and the pipeline will no longer call this interface. False means the application still has data to be passed to the pipeline. |
 
 **Returns**:
 
@@ -481,6 +511,8 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetRequestDataCallback(OH_AudioNod
 **Description**
 
 Set input node request data callback, Only [INPUT_NODE_TYPE_DEFAULT](capi-native-audio-suite-base-h.md#oh_audionode_type) support this setting.
+
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetRequestDataCallback(OH_AudioNodeBuilder* builder, OH_InputNode_RequestDataCallback callback, void* userData)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetRequestDataCallback(OH_AudioNodeBuilder* builder, OH_InputNode_RequestDataCallback callback, void* userData)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -510,6 +542,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_CreateNode(OH_AudioSuitePipeline* audio
 
 Request to create audio node with audio node builder.<br> When executing this function, the system will validate the parameters based on the audio node type in the builder. The application can determine the cause of the error through the return value.
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_CreateNode(OH_AudioSuitePipeline* audioSuitePipeline, OH_AudioNodeBuilder* builder, OH_AudioNode** audioNode)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_CreateNode(OH_AudioSuitePipeline* audioSuitePipeline, OH_AudioNodeBuilder* builder, OH_AudioNode** audioNode)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
@@ -538,6 +572,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_DestroyNode(OH_AudioNode* audioNode)
 
 Destroy an audio node.<br> Whether the node can be deleted depends on the state of the pipeline it belongs to. If the pipeline is not in the stopped state and the node is in an active processing path, the operation will return that deletion is not supported.
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_DestroyNode(OH_AudioNode* audioNode)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_DestroyNode(OH_AudioNode* audioNode)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
@@ -563,6 +599,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetNodeBypassStatus(OH_AudioNode* audio
 **Description**
 
 Request to get audio node bypass status.<br> Only effect node support bypass, When application call this interface with an input node or output node, it will return [AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result)
+
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetNodeBypassStatus(OH_AudioNode* audioNode, bool* bypassStatus)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetNodeBypassStatus(OH_AudioNode* audioNode, bool* bypassStatus)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -591,6 +629,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_BypassEffectNode(OH_AudioNode* audioNod
 
 Request to set the effect node bypass.<br> This command can only be set on an effect node. when bypass is set true, the effect node only passes data to the next node without performing any effect processing.
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_BypassEffectNode(OH_AudioNode* audioNode, bool bypass)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_BypassEffectNode(OH_AudioNode* audioNode, bool bypass)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
@@ -600,7 +640,7 @@ Request to set the effect node bypass.<br> This command can only be set on an ef
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Reference created by OH_AudioSuiteEngine_CreateNode. |
-| bool bypass | This parameter determines whether the node merely forwards data transparently. |
+| bool bypass | This parameter determines whether the node merely forwards data transparently. True means the effect node only passes data to the next node without performing any effect processing. False means the effect node performs normal effect processing on the data. |
 
 **Returns**:
 
@@ -617,6 +657,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetAudioFormat(OH_AudioNode* audioNode,
 **Description**
 
 Set the audio format for input and output nodes, specify the audio format of the audio source for the input node, or specify the target audio format for the output node.
+
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_SetAudioFormat(OH_AudioNode* audioNode, OH_AudioFormat* audioFormat)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_SetAudioFormat(OH_AudioNode* audioNode, OH_AudioFormat* audioFormat)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -645,6 +687,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_ConnectNodes(OH_AudioNode* sourceAudioN
 
 Executing the connect command will link two nodes in sequence.<br> Connect two nodes will alter the topology of the pipeline. This may result in partial data loss, so it is recommended to perform this command when the engine is in stopped state. Node connections follow a specific order: the input node is the starting point of the pipeline, multiple effect nodes can be connected in between, and the output node is the endpoint of the pipeline.
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_ConnectNodes(OH_AudioNode* sourceAudioNode, OH_AudioNode* destAudioNode)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_ConnectNodes(OH_AudioNode* sourceAudioNode, OH_AudioNode* destAudioNode)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
@@ -671,6 +715,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_DisconnectNodes(OH_AudioNode* sourceAud
 **Description**
 
 Executing the disconnect command will sever the connection between two nodes. This command alters the pipeline's topology and may result in partial data loss. It is recommended to perform this operation when the engine is in a stopped state.
+
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_DisconnectNodes(OH_AudioNode* sourceAudioNode, OH_AudioNode* destAudioNode)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_DisconnectNodes(OH_AudioNode* sourceAudioNode, OH_AudioNode* destAudioNode)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -699,6 +745,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_IsNodeTypeSupported(OH_AudioNode_Type n
 
 Request to check whether the current system supports a specific node type.
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_IsNodeTypeSupported(OH_AudioNode_Type nodeType, bool* isSupported)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_IsNodeTypeSupported(OH_AudioNode_Type nodeType, bool* isSupported)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
@@ -725,6 +773,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetEqualizerFrequencyBandGains(OH_Audio
 **Description**
 
 Set equalizer frequency band gains of audio node.
+
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_SetEqualizerFrequencyBandGains(OH_AudioNode* audioNode, OH_EqualizerFrequencyBandGains frequencyBandGains)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_SetEqualizerFrequencyBandGains(OH_AudioNode* audioNode, OH_EqualizerFrequencyBandGains frequencyBandGains)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -753,6 +803,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetEqualizerFrequencyBandGains(OH_Audio
 
 Get equalizer frequency band gains of audio node.
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetEqualizerFrequencyBandGains(OH_AudioNode* audioNode, OH_EqualizerFrequencyBandGains* frequencyBandGains)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetEqualizerFrequencyBandGains(OH_AudioNode* audioNode, OH_EqualizerFrequencyBandGains* frequencyBandGains)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
@@ -779,6 +831,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetSoundFieldType(OH_AudioNode* audioNo
 **Description**
 
 Set sound field type of audio node.
+
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_SetSoundFieldType(OH_AudioNode* audioNode, OH_SoundFieldType soundFieldType)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_SetSoundFieldType(OH_AudioNode* audioNode, OH_SoundFieldType soundFieldType)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -807,6 +861,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetSoundFieldType(OH_AudioNode* audioNo
 
 Get sound field type of audio node.
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetSoundFieldType(OH_AudioNode* audioNode, OH_SoundFieldType* soundFieldType)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetSoundFieldType(OH_AudioNode* audioNode, OH_SoundFieldType* soundFieldType)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
@@ -833,6 +889,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetEnvironmentType(OH_AudioNode* audioN
 **Description**
 
 Set environment type of audio node.
+
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_SetEnvironmentType(OH_AudioNode* audioNode, OH_EnvironmentType environmentType)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_SetEnvironmentType(OH_AudioNode* audioNode, OH_EnvironmentType environmentType)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -861,6 +919,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetEnvironmentType(OH_AudioNode* audioN
 
 Get environment type of audio node.
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetEnvironmentType(OH_AudioNode* audioNode, OH_EnvironmentType* environmentType)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetEnvironmentType(OH_AudioNode* audioNode, OH_EnvironmentType* environmentType)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
@@ -887,6 +947,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetVoiceBeautifierType(OH_AudioNode* au
 **Description**
 
 Set voice beautifier type of audio node.
+
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_SetVoiceBeautifierType(OH_AudioNode* audioNode, OH_VoiceBeautifierType voiceBeautifierType)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_SetVoiceBeautifierType(OH_AudioNode* audioNode, OH_VoiceBeautifierType voiceBeautifierType)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -915,6 +977,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetVoiceBeautifierType(OH_AudioNode* au
 
 Get voice beautifier type of audio node.
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetVoiceBeautifierType(OH_AudioNode* audioNode, OH_VoiceBeautifierType* voiceBeautifierType)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetVoiceBeautifierType(OH_AudioNode* audioNode, OH_VoiceBeautifierType* voiceBeautifierType)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
@@ -941,6 +1005,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetSpaceRenderPositionParams(OH_AudioNo
 **Description**
 
 Set position parameters for space rendering
+
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_SetSpaceRenderPositionParams(OH_AudioNode* audioNode, OH_AudioSuite_SpaceRenderPositionParams position)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_SetSpaceRenderPositionParams(OH_AudioNode* audioNode, OH_AudioSuite_SpaceRenderPositionParams position)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -969,6 +1035,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetSpaceRenderPositionParams(OH_AudioNo
 
 Get position parameters for space rendering
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetSpaceRenderPositionParams(OH_AudioNode* audioNode, OH_AudioSuite_SpaceRenderPositionParams* position)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetSpaceRenderPositionParams(OH_AudioNode* audioNode, OH_AudioSuite_SpaceRenderPositionParams* position)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 23
@@ -995,6 +1063,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetSpaceRenderRotationParams(OH_AudioNo
 **Description**
 
 Set rotation parameters for space rendering
+
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_SetSpaceRenderRotationParams(OH_AudioNode* audioNode, OH_AudioSuite_SpaceRenderRotationParams rotation)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_SetSpaceRenderRotationParams(OH_AudioNode* audioNode, OH_AudioSuite_SpaceRenderRotationParams rotation)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -1023,6 +1093,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetSpaceRenderRotationParams(OH_AudioNo
 
 Get rotation parameters for space rendering
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetSpaceRenderRotationParams(OH_AudioNode* audioNode, OH_AudioSuite_SpaceRenderRotationParams* rotation)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetSpaceRenderRotationParams(OH_AudioNode* audioNode, OH_AudioSuite_SpaceRenderRotationParams* rotation)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 23
@@ -1049,6 +1121,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetSpaceRenderExtensionParams(OH_AudioN
 **Description**
 
 Set extension parameters for space rendering
+
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_SetSpaceRenderExtensionParams(OH_AudioNode* audioNode, OH_AudioSuite_SpaceRenderExtensionParams extension)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_SetSpaceRenderExtensionParams(OH_AudioNode* audioNode, OH_AudioSuite_SpaceRenderExtensionParams extension)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -1077,6 +1151,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetSpaceRenderExtensionParams(OH_AudioN
 
 Get extension parameters for space rendering
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetSpaceRenderExtensionParams(OH_AudioNode* audioNode, OH_AudioSuite_SpaceRenderExtensionParams* extension)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetSpaceRenderExtensionParams(OH_AudioNode* audioNode, OH_AudioSuite_SpaceRenderExtensionParams* extension)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 23
@@ -1103,6 +1179,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetTempoAndPitch(OH_AudioNode* audioNod
 **Description**
 
 Set the tempo and pitch adjustment parameters.
+
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_SetTempoAndPitch(OH_AudioNode* audioNode, float speed, float pitch)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_SetTempoAndPitch(OH_AudioNode* audioNode, float speed, float pitch)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -1132,6 +1210,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetTempoAndPitch(OH_AudioNode* audioNod
 
 Get the tempo and pitch adjustment parameters.
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetTempoAndPitch(OH_AudioNode* audioNode, float* speed, float* pitch)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetTempoAndPitch(OH_AudioNode* audioNode, float* speed, float* pitch)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 23
@@ -1160,6 +1240,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetPureVoiceChangeOption(OH_AudioNode* 
 
 Set pure change voice option of audio node.
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_SetPureVoiceChangeOption(OH_AudioNode* audioNode, OH_AudioSuite_PureVoiceChangeOption option)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_SetPureVoiceChangeOption(OH_AudioNode* audioNode, OH_AudioSuite_PureVoiceChangeOption option)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 23
@@ -1186,6 +1268,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetPureVoiceChangeOption(OH_AudioNode* 
 **Description**
 
 Get pure voice change option of audio node.
+
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetPureVoiceChangeOption(OH_AudioNode* audioNode, OH_AudioSuite_PureVoiceChangeOption* option)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetPureVoiceChangeOption(OH_AudioNode* audioNode, OH_AudioSuite_PureVoiceChangeOption* option)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -1214,6 +1298,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetGeneralVoiceChangeType(OH_AudioNode*
 
 Set general voice change type of audio node.
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_SetGeneralVoiceChangeType(OH_AudioNode* audioNode, OH_AudioSuite_GeneralVoiceChangeType type)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_SetGeneralVoiceChangeType(OH_AudioNode* audioNode, OH_AudioSuite_GeneralVoiceChangeType type)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 23
@@ -1241,6 +1327,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetGeneralVoiceChangeType(OH_AudioNode*
 
 Get general voice change type of audio node.
 
+<!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetGeneralVoiceChangeType(OH_AudioNode* audioNode, OH_AudioSuite_GeneralVoiceChangeType* type)--><!--Device-OH_AudioSuite_Result OH_AudioSuiteEngine_GetGeneralVoiceChangeType(OH_AudioNode* audioNode, OH_AudioSuite_GeneralVoiceChangeType* type)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 23
@@ -1267,6 +1355,8 @@ OH_AudioSuite_Result OH_AudioSuite_PrintInfo(OH_AudioSuiteEngine* audioSuiteEngi
 **Description**
 
 Print AudioSuite runtime snapshot.
+
+<!--Device-OH_AudioSuite_Result OH_AudioSuite_PrintInfo(OH_AudioSuiteEngine* audioSuiteEngine, OH_AudioSuitePipeline* audioSuitePipeline, int fd)--><!--Device-OH_AudioSuite_Result OH_AudioSuite_PrintInfo(OH_AudioSuiteEngine* audioSuiteEngine, OH_AudioSuitePipeline* audioSuitePipeline, int fd)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 

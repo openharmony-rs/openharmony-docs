@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkLatencySurfaceCapabilitiesNV {...}--><!--Device-struct VkLatencySurfaceCapabilitiesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

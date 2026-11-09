@@ -8,11 +8,13 @@ struct ScsiPeripheral_RequestSenseRequest {...}
 
 SCSI命令（REQUEST SENSE）的请求结构体，该命令通常用于获取设备的错误信息。
 
+<!--Device-struct ScsiPeripheral_RequestSenseRequest {...}--><!--Device-struct ScsiPeripheral_RequestSenseRequest {...}-End-->
+
 **系统能力：** SystemCapability.Driver.SCSI.Extension
 
 **起始版本：** 18
 
-**相关模块：** [ScsiPeripheralDDK](capi-others-scsiperipheralddk.md)
+**相关模块：** [ScsiPeripheralDDK](capi-driver-development-kit-scsiperipheralddk.md)
 
 **所在头文件：** [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md)
 

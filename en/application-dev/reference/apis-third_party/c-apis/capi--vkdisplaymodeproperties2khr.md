@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDisplayModeProperties2KHR {...}--><!--Device-struct VkDisplayModeProperties2KHR {...}-End-->
+
 ## Summary
 
 ### Member variables

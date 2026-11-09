@@ -8,11 +8,13 @@ typedef struct OH_LowPowerVideoSinkCallback OH_LowPowerVideoSinkCallback
 
 包含了LowPowerVideoSink回调函数指针的集合。<br> 应用需注册此实例结构体到[OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)实例中，并对回调上报的信息进行处理， 保证OH_LowPowerVideoSink的正常运行。
 
+<!--Device-typedef struct OH_LowPowerVideoSinkCallback OH_LowPowerVideoSinkCallback--><!--Device-typedef struct OH_LowPowerVideoSinkCallback OH_LowPowerVideoSinkCallback-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
 
 **起始版本：** 20
 
-**相关模块：** [LowPowerVideoSink](capi-others-lowpowervideosink.md)
+**相关模块：** [LowPowerVideoSink](capi-media-kit-lowpowervideosink.md)
 
 **所在头文件：** [lowpower_video_sink_base.h](capi-lowpower-video-sink-base-h.md)
 

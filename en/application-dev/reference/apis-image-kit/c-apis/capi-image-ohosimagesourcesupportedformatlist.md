@@ -8,11 +8,13 @@ struct OhosImageSourceSupportedFormatList {...}
 
 Defines the format string list supported by the image source. It is obtained by calling [OH_ImageSource_GetSupportedFormats](capi-image-source-mdk-h.md#oh_imagesource_getsupportedformats).
 
+<!--Device-struct OhosImageSourceSupportedFormatList {...}--><!--Device-struct OhosImageSourceSupportedFormatList {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 10
 
-**Related module**: [Image](capi-others-image.md)
+**Related module**: [Image](capi-image-kit-image.md)
 
 **Header file**: [image_source_mdk.h](capi-image-source-mdk-h.md)
 

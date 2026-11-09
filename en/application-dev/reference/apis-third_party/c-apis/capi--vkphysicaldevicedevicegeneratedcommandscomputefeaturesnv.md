@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV {...}--><!--Device-struct VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

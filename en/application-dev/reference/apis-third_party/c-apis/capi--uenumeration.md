@@ -2,5 +2,5 @@
 
 ## Overview
 
-An enumeration object.For usage in C programs.
+<!--Device-typedef struct UEnumeration UEnumeration--><!--Device-typedef struct UEnumeration UEnumeration-End-->
 

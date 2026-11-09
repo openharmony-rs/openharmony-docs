@@ -42,6 +42,8 @@ enum OH_AVCodecBufferFlags
 
 枚举OH_AVCodec缓冲区标记的类别。
 
+<!--Device-OH_AVCodecBufferFlags--><!--Device-OH_AVCodecBufferFlags-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9

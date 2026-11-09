@@ -45,6 +45,8 @@ OH_AVSource *OH_AVSource_CreateWithDataSource(OH_AVDataSource *dataSource)
 
 Creates an OH_AVSource instance with a user-defined data source. You can release the instance by calling [OH_AVSource_Destroy](capi-native-avsource-h.md#oh_avsource_destroy).<br> The lifecycle of **dataSource** must be the same as that of the returned OH_AVSource * pointer.
 
+<!--Device-OH_AVSource *OH_AVSource_CreateWithDataSource(OH_AVDataSource *dataSource)--><!--Device-OH_AVSource *OH_AVSource_CreateWithDataSource(OH_AVDataSource *dataSource)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 12
@@ -70,6 +72,8 @@ OH_AVSource *OH_AVSource_CreateWithDataSourceExt(OH_AVDataSourceExt *dataSource,
 **Description**
 
 Creates an OH_AVSource instance with a user-defined data source. You can release the instance by calling [OH_AVSource_Destroy](capi-native-avsource-h.md#oh_avsource_destroy).<br> User-defined data can be passed to its callback functions through the **userData** parameter.<br> The lifecycle of **dataSource** must be the same as that of the returned OH_AVSource * pointer.
+
+<!--Device-OH_AVSource *OH_AVSource_CreateWithDataSourceExt(OH_AVDataSourceExt *dataSource, void *userData)--><!--Device-OH_AVSource *OH_AVSource_CreateWithDataSourceExt(OH_AVDataSourceExt *dataSource, void *userData)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
@@ -98,6 +102,8 @@ OH_AVSource *OH_AVSource_CreateWithURI(char *uri)
 
 Creates an OH_AVSource instance based on a URI. You can release the instance by calling [OH_AVSource_Destroy](capi-native-avsource-h.md#oh_avsource_destroy). This function supports only HTTP progressive streaming media, but not HLS/DASH streaming media. For HLS/DASH streaming media playback, use the AVPlayer for development.
 
+<!--Device-OH_AVSource *OH_AVSource_CreateWithURI(char *uri)--><!--Device-OH_AVSource *OH_AVSource_CreateWithURI(char *uri)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 10
@@ -123,6 +129,8 @@ OH_AVSource *OH_AVSource_CreateWithFD(int32_t fd, int64_t offset, int64_t size)
 **Description**
 
 Creates an OH_AVSource instance based on an FD. You can release the instance by calling [OH_AVSource_Destroy](capi-native-avsource-h.md#oh_avsource_destroy).<br> If **offset** is not the start position of the file or **size** is not the file size, undefined errors such as creation failure and demultiplexing failure may occur due to incomplete data obtained.
+
+<!--Device-OH_AVSource *OH_AVSource_CreateWithFD(int32_t fd, int64_t offset, int64_t size)--><!--Device-OH_AVSource *OH_AVSource_CreateWithFD(int32_t fd, int64_t offset, int64_t size)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
@@ -152,6 +160,8 @@ OH_AVErrCode OH_AVSource_Destroy(OH_AVSource *source)
 
 Destroys an OH_AVSource instance and clears internal resources.<br> An instance can be destroyed only once. The destroyed instance cannot be used until it is re-created. You are advised to set the pointer to NULL after the instance is destroyed.
 
+<!--Device-OH_AVErrCode OH_AVSource_Destroy(OH_AVSource *source)--><!--Device-OH_AVErrCode OH_AVSource_Destroy(OH_AVSource *source)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 10
@@ -177,6 +187,8 @@ OH_AVFormat *OH_AVSource_GetSourceFormat(OH_AVSource *source)
 **Description**
 
 Obtains the basic information about a media resource file.<br> You must call [OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy) to release the OH_AVFormat instance when its lifecycle ends.
+
+<!--Device-OH_AVFormat *OH_AVSource_GetSourceFormat(OH_AVSource *source)--><!--Device-OH_AVFormat *OH_AVSource_GetSourceFormat(OH_AVSource *source)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
@@ -204,6 +216,8 @@ OH_AVFormat *OH_AVSource_GetTrackFormat(OH_AVSource *source, uint32_t trackIndex
 
 Obtains the basic information about a track.<br> You must call [OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy) to release the OH_AVFormat instance when its lifecycle ends.
 
+<!--Device-OH_AVFormat *OH_AVSource_GetTrackFormat(OH_AVSource *source, uint32_t trackIndex)--><!--Device-OH_AVFormat *OH_AVSource_GetTrackFormat(OH_AVSource *source, uint32_t trackIndex)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 10
@@ -230,6 +244,8 @@ OH_AVFormat *OH_AVSource_GetCustomMetadataFormat(OH_AVSource *source)
 **Description**
 
 Obtains the basic information about custom metadata.<br> You must call [OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy) to release the OH_AVFormat instance when its lifecycle ends.
+
+<!--Device-OH_AVFormat *OH_AVSource_GetCustomMetadataFormat(OH_AVSource *source)--><!--Device-OH_AVFormat *OH_AVSource_GetCustomMetadataFormat(OH_AVSource *source)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 

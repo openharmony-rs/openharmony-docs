@@ -8,9 +8,11 @@ struct OH_AVRecorder_Metadata {...}
 
 Defines the metadata structure for recording, which is used to describe the genre, video rotation angle, geographical location, and custom parameters of media resources. This struct is applicable to scenarios where media metadata needs to be carried or read during recording.
 
+<!--Device-struct OH_AVRecorder_Metadata {...}--><!--Device-struct OH_AVRecorder_Metadata {...}-End-->
+
 **Since**: 18
 
-**Related module**: [AVRecorder](capi-others-avrecorder.md)
+**Related module**: [AVRecorder](capi-media-kit-avrecorder.md)
 
 **Header file**: [avrecorder_base.h](capi-avrecorder-base-h.md)
 

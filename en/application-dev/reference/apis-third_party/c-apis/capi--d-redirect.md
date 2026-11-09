@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct d_redirect {...}--><!--Device-struct d_redirect {...}-End-->
+
 ## Summary
 
 ### Member variables

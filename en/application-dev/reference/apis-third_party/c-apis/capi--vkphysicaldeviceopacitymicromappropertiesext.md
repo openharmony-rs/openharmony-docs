@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceOpacityMicromapPropertiesEXT {...}--><!--Device-struct VkPhysicalDeviceOpacityMicromapPropertiesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

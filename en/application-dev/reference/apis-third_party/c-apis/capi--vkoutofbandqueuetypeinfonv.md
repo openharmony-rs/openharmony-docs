@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkOutOfBandQueueTypeInfoNV {...}--><!--Device-struct VkOutOfBandQueueTypeInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

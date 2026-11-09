@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct dqinfo {...}--><!--Device-struct dqinfo {...}-End-->
+
 ## Summary
 
 ### Member variables

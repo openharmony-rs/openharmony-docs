@@ -8,13 +8,15 @@ struct OH_SwapfsStats {...}
 
 Statistics of the current swapfs manager.
 
+<!--Device-struct OH_SwapfsStats {...}--><!--Device-struct OH_SwapfsStats {...}-End-->
+
 **System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0
 
 **System API:** This is a system API.
 
-**Related module**: [Swapfs](capi-others-swapfs.md)
+**Related module**: [Swapfs](capi-core-file-kit-swapfs.md)
 
 **Header file**: [oh_swapfs.h(System API)](capi-oh-swapfs-h-sys.md)
 

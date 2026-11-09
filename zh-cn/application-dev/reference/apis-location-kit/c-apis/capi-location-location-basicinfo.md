@@ -8,11 +8,13 @@ struct Location_BasicInfo {...}
 
 定义位置基本信息的结构体。
 
+<!--Device-struct Location_BasicInfo {...}--><!--Device-struct Location_BasicInfo {...}-End-->
+
 **系统能力：** SystemCapability.Location.Location.Core
 
 **起始版本：** 13
 
-**相关模块：** [Location](capi-others-location.md)
+**相关模块：** [Location](capi-location-kit-location.md)
 
 **所在头文件：** [oh_location_type.h](capi-oh-location-type-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkVideoEncodeH265RateControlLayerInfoKHR {...}--><!--Device-struct VkVideoEncodeH265RateControlLayerInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

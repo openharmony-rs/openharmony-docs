@@ -37,6 +37,8 @@ Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options
 
 获取OH_PackingOptions结构体中的needsPackDfxData参数。
 
+<!--Device-Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options, bool *needsPackDfxData)--><!--Device-Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options, bool *needsPackDfxData)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 26.0.0
@@ -65,6 +67,8 @@ Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options
 **描述：**
 
 设置OH_PackingOptions结构体中的needsPackDfxData参数。
+
+<!--Device-Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options, bool needsPackDfxData)--><!--Device-Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options, bool needsPackDfxData)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -95,6 +99,8 @@ Image_ErrorCode OH_PackingOptions_SetC2paDataSize(OH_PackingOptions *options, ui
 
 设置OH_PackingOptions结构体中的C2PA数据大小，默认值为0，表示不预留空间。
 
+<!--Device-Image_ErrorCode OH_PackingOptions_SetC2paDataSize(OH_PackingOptions *options, uint32_t c2paDataSize)--><!--Device-Image_ErrorCode OH_PackingOptions_SetC2paDataSize(OH_PackingOptions *options, uint32_t c2paDataSize)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 26.0.1
@@ -123,6 +129,8 @@ Image_ErrorCode OH_PackingOptions_GetC2paDataSize(const OH_PackingOptions *optio
 **描述：**
 
 获取OH_PackingOptions结构体中的C2PA数据大小。
+
+<!--Device-Image_ErrorCode OH_PackingOptions_GetC2paDataSize(const OH_PackingOptions *options, uint32_t *c2paDataSize)--><!--Device-Image_ErrorCode OH_PackingOptions_GetC2paDataSize(const OH_PackingOptions *options, uint32_t *c2paDataSize)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 

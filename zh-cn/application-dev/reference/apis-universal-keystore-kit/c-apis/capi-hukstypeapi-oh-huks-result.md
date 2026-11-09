@@ -8,11 +8,13 @@ struct OH_Huks_Result {...}
 
 表示状态返回数据，包括返回码和消息。
 
+<!--Device-struct OH_Huks_Result {...}--><!--Device-struct OH_Huks_Result {...}-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
 
-**相关模块：** [HuksTypeApi](capi-others-hukstypeapi.md)
+**相关模块：** [HuksTypeApi](capi-universal-keystore-kit-hukstypeapi.md)
 
 **所在头文件：** [native_huks_type.h](capi-native-huks-type-h.md)
 

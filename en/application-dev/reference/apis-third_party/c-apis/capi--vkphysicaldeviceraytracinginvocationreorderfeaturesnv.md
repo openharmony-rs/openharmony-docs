@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV {...}--><!--Device-struct VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -8,11 +8,13 @@ struct UsbControlRequestSetup {...}
 
 Setup data for control transfer. It corresponds to <b>Setup Data</b> in the USB protocol.
 
+<!--Device-struct UsbControlRequestSetup {...}--><!--Device-struct UsbControlRequestSetup {...}-End-->
+
 **System capability**: SystemCapability.Driver.USB.Extension
 
 **Since**: 10
 
-**Related module**: [UsbDdk](capi-others-usbddk.md)
+**Related module**: [UsbDdk](capi-driver-development-kit-usbddk.md)
 
 **Header file**: [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 

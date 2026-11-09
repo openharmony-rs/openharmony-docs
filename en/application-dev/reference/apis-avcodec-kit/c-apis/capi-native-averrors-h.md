@@ -32,6 +32,8 @@ enum OH_AVErrCode
 
 Enumerates the error codes used by the media framework.
 
+<!--Device-OH_AVErrCode--><!--Device-OH_AVErrCode-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 9

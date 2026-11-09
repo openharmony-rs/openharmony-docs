@@ -8,11 +8,13 @@ typedef struct OH_Cursor {...} OH_Cursor
 
 表示结果集。提供通过查询数据库生成的数据库结果集的访问方法。
 
+<!--Device-typedef struct OH_Cursor {...} OH_Cursor--><!--Device-typedef struct OH_Cursor {...} OH_Cursor-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 10
 
-**相关模块：** [RDB](capi-others-rdb.md)
+**相关模块：** [RDB](capi-arkdata-rdb.md)
 
 **所在头文件：** [oh_cursor.h](capi-oh-cursor-h.md)
 
@@ -57,6 +59,8 @@ int (*getColumnCount)(OH_Cursor *cursor, int *count)
 
 函数指针，获取结果集中的列数。
 
+<!--Device-int (*getColumnCount)(OH_Cursor *cursor, int *count)--><!--Device-int (*getColumnCount)(OH_Cursor *cursor, int *count)-End-->
+
 **起始版本：** 10
 
 **参数：**
@@ -86,6 +90,8 @@ int (*getColumnType)(OH_Cursor *cursor, int32_t columnIndex, OH_ColumnType *colu
 **描述：**
 
 函数指针，根据指定的列索引获取列类型。
+
+<!--Device-int (*getColumnType)(OH_Cursor *cursor, int32_t columnIndex, OH_ColumnType *columnType)--><!--Device-int (*getColumnType)(OH_Cursor *cursor, int32_t columnIndex, OH_ColumnType *columnType)-End-->
 
 **起始版本：** 10
 
@@ -118,6 +124,8 @@ int (*getColumnIndex)(OH_Cursor *cursor, const char *name, int *columnIndex)
 
 函数指针，根据指定的列名获取列索引。
 
+<!--Device-int (*getColumnIndex)(OH_Cursor *cursor, const char *name, int *columnIndex)--><!--Device-int (*getColumnIndex)(OH_Cursor *cursor, const char *name, int *columnIndex)-End-->
+
 **起始版本：** 10
 
 **参数：**
@@ -148,6 +156,8 @@ int (*getColumnName)(OH_Cursor *cursor, int32_t columnIndex, char *name, int len
 **描述：**
 
 函数指针，根据指定的列索引获取列名。
+
+<!--Device-int (*getColumnName)(OH_Cursor *cursor, int32_t columnIndex, char *name, int length)--><!--Device-int (*getColumnName)(OH_Cursor *cursor, int32_t columnIndex, char *name, int length)-End-->
 
 **起始版本：** 10
 
@@ -181,6 +191,8 @@ int (*getRowCount)(OH_Cursor *cursor, int *count)
 
 函数指针，获取结果集中的行数。
 
+<!--Device-int (*getRowCount)(OH_Cursor *cursor, int *count)--><!--Device-int (*getRowCount)(OH_Cursor *cursor, int *count)-End-->
+
 **起始版本：** 10
 
 **参数：**
@@ -211,6 +223,8 @@ int (*goToNextRow)(OH_Cursor *cursor)
 
 函数指针，转到结果集的下一行。
 
+<!--Device-int (*goToNextRow)(OH_Cursor *cursor)--><!--Device-int (*goToNextRow)(OH_Cursor *cursor)-End-->
+
 **起始版本：** 10
 
 **参数：**
@@ -239,6 +253,8 @@ int (*getSize)(OH_Cursor *cursor, int32_t columnIndex, size_t *size)
 **描述：**
 
 函数指针，当结果集中列的数据类型是BLOB或者TEXT时，获取其值所需的内存。
+
+<!--Device-int (*getSize)(OH_Cursor *cursor, int32_t columnIndex, size_t *size)--><!--Device-int (*getSize)(OH_Cursor *cursor, int32_t columnIndex, size_t *size)-End-->
 
 **起始版本：** 10
 
@@ -270,6 +286,8 @@ int (*getText)(OH_Cursor *cursor, int32_t columnIndex, char *value, int length)
 **描述：**
 
 函数指针，以字符串形式获取当前行中指定列的值。
+
+<!--Device-int (*getText)(OH_Cursor *cursor, int32_t columnIndex, char *value, int length)--><!--Device-int (*getText)(OH_Cursor *cursor, int32_t columnIndex, char *value, int length)-End-->
 
 **起始版本：** 10
 
@@ -303,6 +321,8 @@ int (*getInt64)(OH_Cursor *cursor, int32_t columnIndex, int64_t *value)
 
 函数指针，以int64_t形式获取当前行中指定列的值。
 
+<!--Device-int (*getInt64)(OH_Cursor *cursor, int32_t columnIndex, int64_t *value)--><!--Device-int (*getInt64)(OH_Cursor *cursor, int32_t columnIndex, int64_t *value)-End-->
+
 **起始版本：** 10
 
 **参数：**
@@ -334,6 +354,8 @@ int (*getReal)(OH_Cursor *cursor, int32_t columnIndex, double *value)
 
 函数指针，以double形式获取当前行中指定列的值。
 
+<!--Device-int (*getReal)(OH_Cursor *cursor, int32_t columnIndex, double *value)--><!--Device-int (*getReal)(OH_Cursor *cursor, int32_t columnIndex, double *value)-End-->
+
 **起始版本：** 10
 
 **参数：**
@@ -364,6 +386,8 @@ int (*getBlob)(OH_Cursor *cursor, int32_t columnIndex, unsigned char *value, int
 **描述：**
 
 函数指针，以字节数组的形式获取当前行中指定列的值。
+
+<!--Device-int (*getBlob)(OH_Cursor *cursor, int32_t columnIndex, unsigned char *value, int length)--><!--Device-int (*getBlob)(OH_Cursor *cursor, int32_t columnIndex, unsigned char *value, int length)-End-->
 
 **起始版本：** 10
 
@@ -397,6 +421,8 @@ int (*isNull)(OH_Cursor *cursor, int32_t columnIndex, bool *isNull)
 
 函数指针，检查当前行中指定列的值是否为null。
 
+<!--Device-int (*isNull)(OH_Cursor *cursor, int32_t columnIndex, bool *isNull)--><!--Device-int (*isNull)(OH_Cursor *cursor, int32_t columnIndex, bool *isNull)-End-->
+
 **起始版本：** 10
 
 **参数：**
@@ -428,6 +454,8 @@ int (*destroy)(OH_Cursor *cursor)
 
 函数指针，关闭结果集。
 
+<!--Device-int (*destroy)(OH_Cursor *cursor)--><!--Device-int (*destroy)(OH_Cursor *cursor)-End-->
+
 **起始版本：** 10
 
 **参数：**
@@ -456,6 +484,8 @@ int (*getAsset)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset *value)
 **描述：**
 
 函数指针，以资产的形式获取当前行中指定列的值。
+
+<!--Device-int (*getAsset)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset *value)--><!--Device-int (*getAsset)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset *value)-End-->
 
 **起始版本：** 11
 
@@ -487,6 +517,8 @@ int (*getAssets)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset **value, uin
 **描述：**
 
 函数指针，以资产数组的形式获取当前行中指定列的值。
+
+<!--Device-int (*getAssets)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset **value, uint32_t *length)--><!--Device-int (*getAssets)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset **value, uint32_t *length)-End-->
 
 **起始版本：** 11
 

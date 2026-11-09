@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct ethhdr {...}--><!--Device-struct ethhdr {...}-End-->
+
 ## Summary
 
 ### Member variables

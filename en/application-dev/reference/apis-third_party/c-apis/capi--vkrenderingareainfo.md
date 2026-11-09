@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkRenderingAreaInfo {...}--><!--Device-struct VkRenderingAreaInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

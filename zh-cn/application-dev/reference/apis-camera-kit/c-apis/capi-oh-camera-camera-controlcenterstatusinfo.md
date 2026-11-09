@@ -8,11 +8,13 @@ struct Camera_ControlCenterStatusInfo {...}
 
 控制器效果激活状态信息。
 
+<!--Device-struct Camera_ControlCenterStatusInfo {...}--><!--Device-struct Camera_ControlCenterStatusInfo {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 20
 
-**相关模块：** [OH_Camera](capi-others-oh-camera.md)
+**相关模块：** [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **所在头文件：** [camera.h](capi-camera-h.md)
 

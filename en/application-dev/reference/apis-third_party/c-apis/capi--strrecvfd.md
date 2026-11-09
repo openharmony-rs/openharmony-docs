@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct strrecvfd {...}--><!--Device-struct strrecvfd {...}-End-->
+
 ## Summary
 
 ### Member variables

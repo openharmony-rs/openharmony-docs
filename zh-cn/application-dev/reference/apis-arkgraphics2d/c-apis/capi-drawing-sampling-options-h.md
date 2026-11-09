@@ -41,6 +41,8 @@ enum OH_Drawing_FilterMode
 
 过滤模式枚举。
 
+<!--Device-OH_Drawing_FilterMode--><!--Device-OH_Drawing_FilterMode-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -59,6 +61,8 @@ enum OH_Drawing_MipmapMode
 **描述：**
 
 多级渐远纹理模式枚举。
+
+<!--Device-OH_Drawing_MipmapMode--><!--Device-OH_Drawing_MipmapMode-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -82,6 +86,8 @@ OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMo
 **描述：**
 
 创建一个采样选项对象。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>mipmapMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 <br>使用完毕后，必须调用[OH_Drawing_SamplingOptionsDestroy](capi-drawing-sampling-options-h.md#oh_drawing_samplingoptionsdestroy)销毁采样选项对象并释放内存，避免内存泄漏。
+
+<!--Device-OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMode filterMode, OH_Drawing_MipmapMode mipmapMode)--><!--Device-OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMode filterMode, OH_Drawing_MipmapMode mipmapMode)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -110,6 +116,8 @@ OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCopy(OH_Drawing_SamplingOp
 
 创建一个采样选项对象副本[OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md)，用于拷贝一个已有采样选项对象。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>samplingOptions为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 <br>拷贝对象为独立的新对象，使用完毕后，必须调用[OH_Drawing_SamplingOptionsDestroy](capi-drawing-sampling-options-h.md#oh_drawing_samplingoptionsdestroy)销毁副本对象并释放内存， 避免内存泄漏。
 
+<!--Device-OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCopy(OH_Drawing_SamplingOptions* samplingOptions)--><!--Device-OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCopy(OH_Drawing_SamplingOptions* samplingOptions)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 20
@@ -135,6 +143,8 @@ void OH_Drawing_SamplingOptionsDestroy(OH_Drawing_SamplingOptions* samplingOptio
 **描述：**
 
 销毁采样选项对象，并回收该对象占用的内存。
+
+<!--Device-void OH_Drawing_SamplingOptionsDestroy(OH_Drawing_SamplingOptions* samplingOptions)--><!--Device-void OH_Drawing_SamplingOptionsDestroy(OH_Drawing_SamplingOptions* samplingOptions)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkBindMemoryStatus {...}--><!--Device-struct VkBindMemoryStatus {...}-End-->
+
 ## Summary
 
 ### Member variables

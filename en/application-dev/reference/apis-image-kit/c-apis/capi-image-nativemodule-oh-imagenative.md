@@ -8,11 +8,13 @@ typedef struct OH_ImageNative OH_ImageNative
 
 The struct describes the alias for an image object at the native layer.
 
+<!--Device-typedef struct OH_ImageNative OH_ImageNative--><!--Device-typedef struct OH_ImageNative OH_ImageNative-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
-**Related module**: [Image_NativeModule](capi-others-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 **Header file**: [image_native.h](capi-image-native-h.md)
 

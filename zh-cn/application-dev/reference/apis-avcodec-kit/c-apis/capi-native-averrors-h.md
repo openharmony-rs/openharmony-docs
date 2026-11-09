@@ -34,6 +34,8 @@ enum OH_AVErrCode
 
 媒体框架错误码。
 
+<!--Device-OH_AVErrCode--><!--Device-OH_AVErrCode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9

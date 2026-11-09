@@ -51,6 +51,8 @@ enum Rdb_ConflictResolution
 
 表示冲突解决策略的枚举。
 
+<!--Device-Rdb_ConflictResolution--><!--Device-Rdb_ConflictResolution-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
@@ -77,6 +79,8 @@ OH_RDB_ReturningContext *OH_RDB_CreateReturningContext(void)
 
 创建[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)的实例对象。
 
+<!--Device-OH_RDB_ReturningContext *OH_RDB_CreateReturningContext(void)--><!--Device-OH_RDB_ReturningContext *OH_RDB_CreateReturningContext(void)-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 23
@@ -102,6 +106,8 @@ void OH_RDB_DestroyReturningContext(OH_RDB_ReturningContext *context)
 
 销毁[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例对象。
 
+<!--Device-void OH_RDB_DestroyReturningContext(OH_RDB_ReturningContext *context)--><!--Device-void OH_RDB_DestroyReturningContext(OH_RDB_ReturningContext *context)-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 23
@@ -121,6 +127,8 @@ int OH_RDB_SetReturningFields(OH_RDB_ReturningContext *context, const char *cons
 **描述：**
 
 设置结果集中返回的字段。
+
+<!--Device-int OH_RDB_SetReturningFields(OH_RDB_ReturningContext *context, const char *const fields[], int32_t len)--><!--Device-int OH_RDB_SetReturningFields(OH_RDB_ReturningContext *context, const char *const fields[], int32_t len)-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -150,6 +158,8 @@ int OH_RDB_SetMaxReturningCount(OH_RDB_ReturningContext *context, int32_t count)
 
 设置返回结果集的最大行数量。
 
+<!--Device-int OH_RDB_SetMaxReturningCount(OH_RDB_ReturningContext *context, int32_t count)--><!--Device-int OH_RDB_SetMaxReturningCount(OH_RDB_ReturningContext *context, int32_t count)-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 23
@@ -177,6 +187,8 @@ OH_Cursor *OH_RDB_GetReturningValues(OH_RDB_ReturningContext *context)
 
 获取数据变化的游标，默认包含1024行。
 
+<!--Device-OH_Cursor *OH_RDB_GetReturningValues(OH_RDB_ReturningContext *context)--><!--Device-OH_Cursor *OH_RDB_GetReturningValues(OH_RDB_ReturningContext *context)-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 23
@@ -202,6 +214,8 @@ int64_t OH_RDB_GetChangedCount(OH_RDB_ReturningContext *context)
 **描述：**
 
 获取受此操作影响的数据行的数量。
+
+<!--Device-int64_t OH_RDB_GetChangedCount(OH_RDB_ReturningContext *context)--><!--Device-int64_t OH_RDB_GetChangedCount(OH_RDB_ReturningContext *context)-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

@@ -35,6 +35,8 @@ enum AbilityRuntime_AreaMode
 
 文件数据加密等级。
 
+<!--Device-AbilityRuntime_AreaMode--><!--Device-AbilityRuntime_AreaMode-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 13
@@ -57,6 +59,8 @@ enum AbilityRuntime_StartVisibility
 
 启动Ability时的窗口和dock栏图标的显示模式。例如：需要在后台静默启动服务而不显示UI时使用隐藏模式；需要正常显示UI并与用户交互时使用显示模式。
 
+<!--Device-AbilityRuntime_StartVisibility--><!--Device-AbilityRuntime_StartVisibility-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 17
@@ -76,6 +80,8 @@ enum AbilityRuntime_WindowMode
 
 窗口模式。
 
+<!--Device-AbilityRuntime_WindowMode--><!--Device-AbilityRuntime_WindowMode-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 17
@@ -94,6 +100,8 @@ enum AbilityRuntime_SupportedWindowMode
 **描述：**
 
 在应用内启动UIAbility时，指定窗口支持的显示模式。如果未配置该字段，则默认采用该UIAbility对应的module.json5配置文件中abilities标签的supportWindowMode字段取值。
+
+<!--Device-AbilityRuntime_SupportedWindowMode--><!--Device-AbilityRuntime_SupportedWindowMode-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

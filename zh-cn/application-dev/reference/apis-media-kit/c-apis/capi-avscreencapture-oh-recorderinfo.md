@@ -8,11 +8,13 @@ struct OH_RecorderInfo {...}
 
 录制文件信息。 OH_RecorderInfo用于存储屏幕录制文件的输出信息，包括录制文件的URL地址、URL长度及文件格式， 适用于需要配置屏幕录制输出目标及格式的场景，帮助开发者灵活指定录制文件的存储路径和封装格式。
 
+<!--Device-struct OH_RecorderInfo {...}--><!--Device-struct OH_RecorderInfo {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **起始版本：** 10
 
-**相关模块：** [AVScreenCapture](capi-others-avscreencapture.md)
+**相关模块：** [AVScreenCapture](capi-media-kit-avscreencapture.md)
 
 **所在头文件：** [native_avscreen_capture_base.h](capi-native-avscreen-capture-base-h.md)
 

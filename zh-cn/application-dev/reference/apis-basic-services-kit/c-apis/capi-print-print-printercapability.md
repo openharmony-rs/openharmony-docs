@@ -8,11 +8,13 @@ typedef struct Print_PrinterCapability {...} Print_PrinterCapability
 
 表示打印机能力，包含支持的色彩模式、双面打印模式、纸张尺寸、介质类型、打印质量、纸张来源、份数、分辨率、打印方向模式及高级能力等属性，适用于需要查询或匹配打印机能力的场景，帮助开发者根据打印机能力进行打印任务配置和适配。
 
+<!--Device-typedef struct Print_PrinterCapability {...} Print_PrinterCapability--><!--Device-typedef struct Print_PrinterCapability {...} Print_PrinterCapability-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **起始版本：** 12
 
-**相关模块：** [Print](capi-others-print.md)
+**相关模块：** [Print](capi-basic-services-kit-print.md)
 
 **所在头文件：** [ohprint.h](capi-ohprint-h.md)
 

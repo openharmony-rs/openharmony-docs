@@ -47,6 +47,8 @@ TEEC_Result TEEC_InitializeContext(const char *name, TEEC_Context *context)
 
 Initializes a TEE.<br> The TEE must be initialized before a session is open or commands are sent. After the initialization, a connection is set up between the CA and the TEE.
 
+<!--Device-TEEC_Result TEEC_InitializeContext(const char *name, TEEC_Context *context)--><!--Device-TEEC_Result TEEC_InitializeContext(const char *name, TEEC_Context *context)-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -74,6 +76,8 @@ void TEEC_FinalizeContext(TEEC_Context *context)
 
 Closes the TEE.<br> After the TEE is closed, the CA is disconnected from the TEE.
 
+<!--Device-void TEEC_FinalizeContext(TEEC_Context *context)--><!--Device-void TEEC_FinalizeContext(TEEC_Context *context)-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -93,6 +97,8 @@ TEEC_Result TEEC_OpenSession(TEEC_Context *context, TEEC_Session *session, const
 **Description**
 
 Opens a session.<br> This function is used to set up a connection between the CA and the TA of the specified UUID in the specified TEE context. The data to be transferred is contained in <b>operation</b>. If a session is opened successfully, <b>session</b> is returned providing a description of the connection. If the session fails to open, <b>returnOrigin</b> is returned indicating the cause of the failure.
+
+<!--Device-TEEC_Result TEEC_OpenSession(TEEC_Context *context, TEEC_Session *session, const TEEC_UUID *destination, uint32_t connectionMethod, const void *connectionData, TEEC_Operation *operation, uint32_t *returnOrigin)--><!--Device-TEEC_Result TEEC_OpenSession(TEEC_Context *context, TEEC_Session *session, const TEEC_UUID *destination, uint32_t connectionMethod, const void *connectionData, TEEC_Operation *operation, uint32_t *returnOrigin)-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -126,6 +132,8 @@ void TEEC_CloseSession(TEEC_Session *session)
 
 Closes a session.<br> After the session is closed, the CA is disconnected from the TA.
 
+<!--Device-void TEEC_CloseSession(TEEC_Session *session)--><!--Device-void TEEC_CloseSession(TEEC_Session *session)-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -145,6 +153,8 @@ TEEC_Result TEEC_InvokeCommand(TEEC_Session *session, uint32_t commandID, TEEC_O
 **Description**
 
 Sends a command to a TA.<br> The CA sends the command ID to the TA through the specified session.
+
+<!--Device-TEEC_Result TEEC_InvokeCommand(TEEC_Session *session, uint32_t commandID, TEEC_Operation *operation, uint32_t *returnOrigin)--><!--Device-TEEC_Result TEEC_InvokeCommand(TEEC_Session *session, uint32_t commandID, TEEC_Operation *operation, uint32_t *returnOrigin)-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -175,6 +185,8 @@ TEEC_Result TEEC_RegisterSharedMemory(TEEC_Context *context, TEEC_SharedMemory *
 
 Registers shared memory in the specified TEE context.<br> The registered shared memory can implement zero-copy. The zero-copy function, however, also requires support by the operating system. At present, zero-copy cannot be implemented in this manner.
 
+<!--Device-TEEC_Result TEEC_RegisterSharedMemory(TEEC_Context *context, TEEC_SharedMemory *sharedMem)--><!--Device-TEEC_Result TEEC_RegisterSharedMemory(TEEC_Context *context, TEEC_SharedMemory *sharedMem)-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -201,6 +213,8 @@ TEEC_Result TEEC_AllocateSharedMemory(TEEC_Context *context, TEEC_SharedMemory *
 **Description**
 
 Requests shared memory in the specified TEE context.<br> The shared memory can be used to implement zero-copy during data transmission between the REE and TEE. The zero-copy function, however, also requires support by the operating system. At present, zero-copy cannot be implemented in this manner.
+
+<!--Device-TEEC_Result TEEC_AllocateSharedMemory(TEEC_Context *context, TEEC_SharedMemory *sharedMem)--><!--Device-TEEC_Result TEEC_AllocateSharedMemory(TEEC_Context *context, TEEC_SharedMemory *sharedMem)-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -229,6 +243,8 @@ void TEEC_ReleaseSharedMemory(TEEC_SharedMemory *sharedMem)
 
 Releases the shared memory registered or acquired.
 
+<!--Device-void TEEC_ReleaseSharedMemory(TEEC_SharedMemory *sharedMem)--><!--Device-void TEEC_ReleaseSharedMemory(TEEC_SharedMemory *sharedMem)-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -248,6 +264,8 @@ void TEEC_RequestCancellation(TEEC_Operation *operation)
 **Description**
 
 Cancels an operation.
+
+<!--Device-void TEEC_RequestCancellation(TEEC_Operation *operation)--><!--Device-void TEEC_RequestCancellation(TEEC_Operation *operation)-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 

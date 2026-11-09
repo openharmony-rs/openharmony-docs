@@ -51,6 +51,8 @@ enum ColorSpaceName
 
 色彩空间枚举。
 
+<!--Device-ColorSpaceName--><!--Device-ColorSpaceName-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 13
@@ -104,6 +106,8 @@ OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromName(ColorSpace
 
 通过colorSpaceName创建OH_NativeColorSpaceManager实例。 <br>每次调用此函数时，都会创建一个新的OH_NativeColorSpaceManager实例。
 
+<!--Device-OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromName(ColorSpaceName colorSpaceName)--><!--Device-OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromName(ColorSpaceName colorSpaceName)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 13
@@ -129,6 +133,8 @@ OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGam
 **描述：**
 
 通过原色和伽马值创建OH_NativeColorSpaceManager实例。 <br>每次调用此函数时，都会创建一个新的OH_NativeColorSpaceManager实例。
+
+<!--Device-OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGamma(ColorSpacePrimaries primaries, float gamma)--><!--Device-OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGamma(ColorSpacePrimaries primaries, float gamma)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -157,6 +163,8 @@ void OH_NativeColorSpaceManager_Destroy(OH_NativeColorSpaceManager* nativeColorS
 
 销毁OH_NativeColorSpaceManager实例。当不再需要OH_NativeColorSpaceManager实例时，需要调用此函数进行销毁以释放内存。
 
+<!--Device-void OH_NativeColorSpaceManager_Destroy(OH_NativeColorSpaceManager* nativeColorSpaceManager)--><!--Device-void OH_NativeColorSpaceManager_Destroy(OH_NativeColorSpaceManager* nativeColorSpaceManager)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 13
@@ -176,6 +184,8 @@ int OH_NativeColorSpaceManager_GetColorSpaceName(OH_NativeColorSpaceManager* nat
 **描述：**
 
 获取色彩空间名称。
+
+<!--Device-int OH_NativeColorSpaceManager_GetColorSpaceName(OH_NativeColorSpaceManager* nativeColorSpaceManager)--><!--Device-int OH_NativeColorSpaceManager_GetColorSpaceName(OH_NativeColorSpaceManager* nativeColorSpaceManager)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -203,6 +213,8 @@ WhitePointArray OH_NativeColorSpaceManager_GetWhitePoint(OH_NativeColorSpaceMana
 
 获取白点。
 
+<!--Device-WhitePointArray OH_NativeColorSpaceManager_GetWhitePoint(OH_NativeColorSpaceManager* nativeColorSpaceManager)--><!--Device-WhitePointArray OH_NativeColorSpaceManager_GetWhitePoint(OH_NativeColorSpaceManager* nativeColorSpaceManager)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 13
@@ -228,6 +240,8 @@ float OH_NativeColorSpaceManager_GetGamma(OH_NativeColorSpaceManager* nativeColo
 **描述：**
 
 获取伽马值。
+
+<!--Device-float OH_NativeColorSpaceManager_GetGamma(OH_NativeColorSpaceManager* nativeColorSpaceManager)--><!--Device-float OH_NativeColorSpaceManager_GetGamma(OH_NativeColorSpaceManager* nativeColorSpaceManager)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 

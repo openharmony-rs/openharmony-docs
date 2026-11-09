@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct Dl_namespace {...}--><!--Device-struct Dl_namespace {...}-End-->
+
 ## Summary
 
 ### Member variables

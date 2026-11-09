@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceLinearColorAttachmentFeaturesNV {...}--><!--Device-struct VkPhysicalDeviceLinearColorAttachmentFeaturesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

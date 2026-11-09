@@ -8,11 +8,13 @@ struct HiDebug_JsStackFrame {...}
 
 Defines a struct for the JS stack frame content.
 
+<!--Device-struct HiDebug_JsStackFrame {...}--><!--Device-struct HiDebug_JsStackFrame {...}-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 20
 
-**Related module**: [HiDebug](capi-others-hidebug.md)
+**Related module**: [HiDebug](capi-performance-analysis-kit-hidebug.md)
 
 **Header file**: [hidebug_type.h](capi-hidebug-type-h.md)
 

@@ -8,11 +8,13 @@ struct OH_AudioStreamInfo {...}
 
 Define the audio stream info structure, used to describe basic audio format.
 
+<!--Device-struct OH_AudioStreamInfo {...}--><!--Device-struct OH_AudioStreamInfo {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 19
 
-**Related module**: [OHAudio](capi-others-ohaudio.md)
+**Related module**: [OHAudio](capi-audio-kit-ohaudio.md)
 
 **Header file**: [native_audiostream_base.h](capi-native-audiostream-base-h.md)
 

@@ -8,11 +8,13 @@ typedef struct JSVM_HeapStatistics {...} JSVM_HeapStatistics
 
 Heap statisics.
 
+<!--Device-typedef struct JSVM_HeapStatistics {...} JSVM_HeapStatistics--><!--Device-typedef struct JSVM_HeapStatistics {...} JSVM_HeapStatistics-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
 
-**Related module**: [JSVM](capi-others-jsvm.md)
+**Related module**: [JSVM](capi-arkts-jsvm.md)
 
 **Header file**: [jsvm_types.h](capi-jsvm-types-h.md)
 

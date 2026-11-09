@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct p6_opt_tunnel {...}--><!--Device-struct p6_opt_tunnel {...}-End-->
+
 ## Summary
 
 ### Member variables

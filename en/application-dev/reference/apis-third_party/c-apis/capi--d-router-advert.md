@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct d_router_advert {...}--><!--Device-struct d_router_advert {...}-End-->
+
 ## Summary
 
 ### Member variables

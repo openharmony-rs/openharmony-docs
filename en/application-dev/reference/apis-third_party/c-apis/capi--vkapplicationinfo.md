@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkApplicationInfo {...}--><!--Device-struct VkApplicationInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

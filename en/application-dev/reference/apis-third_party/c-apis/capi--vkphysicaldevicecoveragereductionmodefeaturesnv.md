@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceCoverageReductionModeFeaturesNV {...}--><!--Device-struct VkPhysicalDeviceCoverageReductionModeFeaturesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

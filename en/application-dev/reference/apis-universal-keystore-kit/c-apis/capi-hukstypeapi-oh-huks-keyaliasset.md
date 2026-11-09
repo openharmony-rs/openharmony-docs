@@ -8,11 +8,13 @@ struct OH_Huks_KeyAliasSet {...}
 
 Defines the struct of a key alias set.
 
+<!--Device-struct OH_Huks_KeyAliasSet {...}--><!--Device-struct OH_Huks_KeyAliasSet {...}-End-->
+
 **System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 20
 
-**Related module**: [HuksTypeApi](capi-others-hukstypeapi.md)
+**Related module**: [HuksTypeApi](capi-universal-keystore-kit-hukstypeapi.md)
 
 **Header file**: [native_huks_type.h](capi-native-huks-type-h.md)
 

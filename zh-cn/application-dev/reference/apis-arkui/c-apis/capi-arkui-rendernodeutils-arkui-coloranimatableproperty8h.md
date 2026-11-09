@@ -8,11 +8,13 @@ typedef struct ArkUI_ColorAnimatableProperty* ArkUI_ColorAnimatablePropertyHandl
 
 定义可动画的颜色属性指针。
 
+<!--Device-typedef struct ArkUI_ColorAnimatableProperty* ArkUI_ColorAnimatablePropertyHandle--><!--Device-typedef struct ArkUI_ColorAnimatableProperty* ArkUI_ColorAnimatablePropertyHandle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
-**相关模块：** [ArkUI_RenderNodeUtils](capi-others-arkui-rendernodeutils.md)
+**相关模块：** [ArkUI_RenderNodeUtils](capi-arkui-arkui-rendernodeutils.md)
 
 **所在头文件：** [native_render.h](capi-native-render-h.md)
 

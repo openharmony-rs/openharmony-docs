@@ -8,11 +8,13 @@ typedef struct OH_Udmf_ProgressInfo OH_Udmf_ProgressInfo
 
 定义进度信息的数据结构。
 
+<!--Device-typedef struct OH_Udmf_ProgressInfo OH_Udmf_ProgressInfo--><!--Device-typedef struct OH_Udmf_ProgressInfo OH_Udmf_ProgressInfo-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 15
 
-**相关模块：** [UDMF](capi-others-udmf.md)
+**相关模块：** [UDMF](capi-arkdata-udmf.md)
 
 **所在头文件：** [udmf.h](capi-udmf-h.md)
 

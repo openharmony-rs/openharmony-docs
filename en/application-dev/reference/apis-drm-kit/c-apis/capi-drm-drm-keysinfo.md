@@ -8,11 +8,13 @@ struct DRM_KeysInfo {...}
 
 The struct describes the information about media keys.
 
+<!--Device-struct DRM_KeysInfo {...}--><!--Device-struct DRM_KeysInfo {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 
-**Related module**: [Drm](capi-others-drm.md)
+**Related module**: [Drm](capi-drm-kit-drm.md)
 
 **Header file**: [native_drm_common.h](capi-native-drm-common-h.md)
 

@@ -8,11 +8,13 @@ struct ScsiPeripheral_IORequest {...}
 
 Defines the read/write operation request. This struct defines the request parameters required for the SCSI peripheral to perform read/write operations, including the start address of the logical block, transfer length, and control information.
 
+<!--Device-struct ScsiPeripheral_IORequest {...}--><!--Device-struct ScsiPeripheral_IORequest {...}-End-->
+
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Since**: 18
 
-**Related module**: [ScsiPeripheralDDK](capi-others-scsiperipheralddk.md)
+**Related module**: [ScsiPeripheralDDK](capi-driver-development-kit-scsiperipheralddk.md)
 
 **Header file**: [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md)
 

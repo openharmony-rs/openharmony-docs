@@ -8,11 +8,13 @@ typedef struct OH_PhotoNative OH_PhotoNative
 
 The struct describes the photo object, which is a full-quality image object.
 
+<!--Device-typedef struct OH_PhotoNative OH_PhotoNative--><!--Device-typedef struct OH_PhotoNative OH_PhotoNative-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
-**Related module**: [OH_Camera](capi-others-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **Header file**: [photo_native.h](capi-photo-native-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDevice4444FormatsFeaturesEXT {...}--><!--Device-struct VkPhysicalDevice4444FormatsFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

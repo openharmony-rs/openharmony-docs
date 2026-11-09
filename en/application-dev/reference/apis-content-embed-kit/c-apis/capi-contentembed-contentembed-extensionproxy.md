@@ -8,11 +8,13 @@ typedef struct ContentEmbed_ExtensionProxy ContentEmbed_ExtensionProxy
 
 Declares the ContentEmbed_ExtensionProxy structure. Points to the program object (client-side OE object for short) for embedding and editing the client-side encapsulated and encapsulation documents of the OE.
 
+<!--Device-typedef struct ContentEmbed_ExtensionProxy ContentEmbed_ExtensionProxy--><!--Device-typedef struct ContentEmbed_ExtensionProxy ContentEmbed_ExtensionProxy-End-->
+
 **System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
-**Related module**: [ContentEmbed](capi-others-contentembed.md)
+**Related module**: [ContentEmbed](capi-content-embed-kit-contentembed.md)
 
 **Header file**: [content_embed_proxy.h](capi-content-embed-proxy-h.md)
 

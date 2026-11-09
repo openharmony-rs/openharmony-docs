@@ -8,11 +8,13 @@ struct Camera_ConcurrentInfo {...}
 
 Concurrency capability infos.
 
+<!--Device-struct Camera_ConcurrentInfo {...}--><!--Device-struct Camera_ConcurrentInfo {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 18
 
-**Related module**: [OH_Camera](capi-others-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **Header file**: [camera.h](capi-camera-h.md)
 

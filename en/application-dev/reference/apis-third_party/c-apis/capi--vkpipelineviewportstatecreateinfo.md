@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineViewportStateCreateInfo {...}--><!--Device-struct VkPipelineViewportStateCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

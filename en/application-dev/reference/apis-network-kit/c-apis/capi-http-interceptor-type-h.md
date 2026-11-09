@@ -49,6 +49,8 @@ enum OH_Interceptor_Stage
 
 Defines an enum for the interceptor stages.
 
+<!--Device-OH_Interceptor_Stage--><!--Device-OH_Interceptor_Stage-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 24
@@ -68,6 +70,8 @@ enum OH_Interceptor_Type
 
 Defines an enum for the interceptor types.
 
+<!--Device-OH_Interceptor_Type--><!--Device-OH_Interceptor_Type-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 24
@@ -86,6 +90,8 @@ enum OH_Interceptor_Result
 **Description**
 
 Defines an enum for the interceptor results.
+
+<!--Device-OH_Interceptor_Result--><!--Device-OH_Interceptor_Result-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -108,6 +114,8 @@ typedef OH_Interceptor_Result (*OH_Http_InterceptorHandler)(OH_Http_Interceptor_
 **Description**
 
 Defines the HTTP interceptor handler function.
+
+<!--Device-typedef OH_Interceptor_Result (*OH_Http_InterceptorHandler)(OH_Http_Interceptor_Request *request, OH_Http_Interceptor_Response *response, int32_t *isModified)--><!--Device-typedef OH_Interceptor_Result (*OH_Http_InterceptorHandler)(OH_Http_Interceptor_Request *request, OH_Http_Interceptor_Response *response, int32_t *isModified)-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 

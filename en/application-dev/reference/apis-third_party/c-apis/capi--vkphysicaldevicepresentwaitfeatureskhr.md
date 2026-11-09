@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDevicePresentWaitFeaturesKHR {...}--><!--Device-struct VkPhysicalDevicePresentWaitFeaturesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

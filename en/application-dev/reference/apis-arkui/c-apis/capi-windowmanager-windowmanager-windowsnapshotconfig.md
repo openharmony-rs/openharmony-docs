@@ -8,11 +8,13 @@ typedef struct WindowManager_WindowSnapshotConfig {...} WindowManager_WindowSnap
 
 Describes the configuration of the main window screenshot.
 
+<!--Device-typedef struct WindowManager_WindowSnapshotConfig {...} WindowManager_WindowSnapshotConfig--><!--Device-typedef struct WindowManager_WindowSnapshotConfig {...} WindowManager_WindowSnapshotConfig-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 21
 
-**Related module**: [WindowManager](capi-others-windowmanager.md)
+**Related module**: [WindowManager](capi-arkui-windowmanager.md)
 
 **Header file**: [oh_window_comm.h](capi-oh-window-comm-h.md)
 

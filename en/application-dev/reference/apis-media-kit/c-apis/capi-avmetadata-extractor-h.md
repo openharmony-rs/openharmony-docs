@@ -50,6 +50,8 @@ OH_AVFormat *OH_AVMetadataExtractor_GetTrackDescription(OH_AVMetadataExtractor *
 
 Obtains the track description of a specified index from the media source. This function must be used after resources are set.
 
+<!--Device-OH_AVFormat *OH_AVMetadataExtractor_GetTrackDescription(OH_AVMetadataExtractor *extractor, uint32_t index)--><!--Device-OH_AVFormat *OH_AVMetadataExtractor_GetTrackDescription(OH_AVMetadataExtractor *extractor, uint32_t index)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -63,7 +65,7 @@ Obtains the track description of a specified index from the media source. This f
 
 | Type | Description |
 | -- | -- |
-| [OH_AVFormat *](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md) | Returns a pointer to an OH_AVFormat instance containing track description for success, nullptr for failure. Possible failure causes: extractor is nullptr, no source set, or format is unsupported. Note: User need release OH_AVFormat by [OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy) after use. |
+| [OH_AVFormat *](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md) | Returns a pointer to an OH_AVFormat instance containing track description for success, nullptr for failure. Possible failure causes: extractor is nullptr, no source set, or format is unsupported. Note: User need release OH_AVFormat by [OH_AVFormat_Destroy](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_destroy) after use. |
 
 ### OH_AVMetadataExtractor_GetCustomInfo()
 
@@ -74,6 +76,8 @@ OH_AVFormat *OH_AVMetadataExtractor_GetCustomInfo(OH_AVMetadataExtractor *extrac
 **Description**
 
 Obtains custom metadata from the media source. This function must be used after resources are set.
+
+<!--Device-OH_AVFormat *OH_AVMetadataExtractor_GetCustomInfo(OH_AVMetadataExtractor *extractor)--><!--Device-OH_AVFormat *OH_AVMetadataExtractor_GetCustomInfo(OH_AVMetadataExtractor *extractor)-End-->
 
 **Since**: 23
 
@@ -87,7 +91,7 @@ Obtains custom metadata from the media source. This function must be used after 
 
 | Type | Description |
 | -- | -- |
-| [OH_AVFormat *](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md) | Returns a pointer to an OH_AVFormat instance containing custom metadata for success, nullptr for failure. Possible failure causes: extractor is nullptr, no source set, or custom info not found. Note: User need release OH_AVFormat by [OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy) after use. |
+| [OH_AVFormat *](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md) | Returns a pointer to an OH_AVFormat instance containing custom metadata for success, nullptr for failure. Possible failure causes: extractor is nullptr, no source set, or custom info not found. Note: User need release OH_AVFormat by [OH_AVFormat_Destroy](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_destroy) after use. |
 
 ### OH_AVMetadataExtractor_SetMediaSource()
 
@@ -98,6 +102,8 @@ OH_AVErrCode OH_AVMetadataExtractor_SetMediaSource(OH_AVMetadataExtractor *extra
 **Description**
 
 Sets the media source for the extractor.
+
+<!--Device-OH_AVErrCode OH_AVMetadataExtractor_SetMediaSource(OH_AVMetadataExtractor *extractor, OH_AVMediaSource *source)--><!--Device-OH_AVErrCode OH_AVMetadataExtractor_SetMediaSource(OH_AVMetadataExtractor *extractor, OH_AVMediaSource *source)-End-->
 
 **Since**: 23
 
@@ -112,7 +118,7 @@ Sets the media source for the extractor.
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | Function result code. [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): the execution is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): input extractor is nullptr or input source is invalid. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | Function result code. [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): the execution is successful. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): input extractor is nullptr or input source is invalid. |
 
 ### OH_AVMetadataExtractor_Create()
 
@@ -123,6 +129,8 @@ OH_AVMetadataExtractor* OH_AVMetadataExtractor_Create(void)
 **Description**
 
 Creates an **OH_AVMetadataExtractor** instance.
+
+<!--Device-OH_AVMetadataExtractor* OH_AVMetadataExtractor_Create(void)--><!--Device-OH_AVMetadataExtractor* OH_AVMetadataExtractor_Create(void)-End-->
 
 **Since**: 18
 
@@ -142,6 +150,8 @@ OH_AVErrCode OH_AVMetadataExtractor_SetFDSource(OH_AVMetadataExtractor* extracto
 
 Sets a data source based on the media file descriptor.
 
+<!--Device-OH_AVErrCode OH_AVMetadataExtractor_SetFDSource(OH_AVMetadataExtractor* extractor, int32_t fd, int64_t offset, int64_t size)--><!--Device-OH_AVErrCode OH_AVMetadataExtractor_SetFDSource(OH_AVMetadataExtractor* extractor, int32_t fd, int64_t offset, int64_t size)-End-->
+
 **Since**: 18
 
 **Parameters**:
@@ -157,7 +167,7 @@ Sets a data source based on the media file descriptor.
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | Function result code. [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): the execution is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): input extractor is nullptr or input param is invalid. [AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): operation not allowed. [AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode): internal memory allocation failed. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | Function result code. [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): the execution is successful. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): input extractor is nullptr or input param is invalid. [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): operation not allowed. [AV_ERR_NO_MEMORY](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): internal memory allocation failed. |
 
 ### OH_AVMetadataExtractor_FetchMetadata()
 
@@ -168,6 +178,8 @@ OH_AVErrCode OH_AVMetadataExtractor_FetchMetadata(OH_AVMetadataExtractor* extrac
 **Description**
 
 Obtains metadata from a media asset. This function must be called after [OH_AVMetadataExtractor_SetFDSource](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_setfdsource).
+
+<!--Device-OH_AVErrCode OH_AVMetadataExtractor_FetchMetadata(OH_AVMetadataExtractor* extractor, OH_AVFormat* avMetadata)--><!--Device-OH_AVErrCode OH_AVMetadataExtractor_FetchMetadata(OH_AVMetadataExtractor* extractor, OH_AVFormat* avMetadata)-End-->
 
 **Since**: 18
 
@@ -182,7 +194,7 @@ Obtains metadata from a media asset. This function must be called after [OH_AVMe
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | Function result code. [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): the execution is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): input extractor is nullptr or input param is invalid. [AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): operation not allowed. [AV_ERR_UNSUPPORTED_FORMAT](capi-native-averrors-h.md#oh_averrcode): format is unsupported. [AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode): internal memory allocation failed. [AV_ERR_IO_CLEARTEXT_NOT_PERMITTED](capi-native-averrors-h.md#oh_averrcode): http cleartext traffic is not permitted. Add since api 23. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | Function result code. [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): the execution is successful. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): input extractor is nullptr or input param is invalid. [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): operation not allowed. [AV_ERR_UNSUPPORTED_FORMAT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): format is unsupported. [AV_ERR_NO_MEMORY](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): internal memory allocation failed. [AV_ERR_IO_CLEARTEXT_NOT_PERMITTED](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): http cleartext traffic is not permitted. Add since api 23. |
 
 ### OH_AVMetadataExtractor_FetchAlbumCover()
 
@@ -193,6 +205,8 @@ OH_AVErrCode OH_AVMetadataExtractor_FetchAlbumCover(OH_AVMetadataExtractor* extr
 **Description**
 
 Obtains the cover of an audio album. This function must be called after [OH_AVMetadataExtractor_SetFDSource](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_setfdsource).
+
+<!--Device-OH_AVErrCode OH_AVMetadataExtractor_FetchAlbumCover(OH_AVMetadataExtractor* extractor, OH_PixelmapNative** pixelMap)--><!--Device-OH_AVErrCode OH_AVMetadataExtractor_FetchAlbumCover(OH_AVMetadataExtractor* extractor, OH_PixelmapNative** pixelMap)-End-->
 
 **Since**: 18
 
@@ -207,7 +221,7 @@ Obtains the cover of an audio album. This function must be called after [OH_AVMe
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | Function result code. [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): the execution is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): input extractor is nullptr or input param is invalid. [AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): operation not allowed. [AV_ERR_UNSUPPORTED_FORMAT](capi-native-averrors-h.md#oh_averrcode): format is unsupported. [AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode): internal memory allocation failed. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | Function result code. [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): the execution is successful. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): input extractor is nullptr or input param is invalid. [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): operation not allowed. [AV_ERR_UNSUPPORTED_FORMAT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): format is unsupported. [AV_ERR_NO_MEMORY](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): internal memory allocation failed. |
 
 ### OH_AVMetadataExtractor_FetchFrameByTime()
 
@@ -218,6 +232,8 @@ OH_AVErrCode OH_AVMetadataExtractor_FetchFrameByTime(OH_AVMetadataExtractor *ext
 **Description**
 
 Extracts an image at a specified time point from the video source. This function must be used after resources are set.
+
+<!--Device-OH_AVErrCode OH_AVMetadataExtractor_FetchFrameByTime(OH_AVMetadataExtractor *extractor, int64_t timeUs, OH_AVMedia_SeekMode seekMode, const OH_AVMetadataExtractor_OutputParam* outputParam, OH_PixelmapNative** pixelMap)--><!--Device-OH_AVErrCode OH_AVMetadataExtractor_FetchFrameByTime(OH_AVMetadataExtractor *extractor, int64_t timeUs, OH_AVMedia_SeekMode seekMode, const OH_AVMetadataExtractor_OutputParam* outputParam, OH_PixelmapNative** pixelMap)-End-->
 
 **Since**: 23
 
@@ -235,7 +251,7 @@ Extracts an image at a specified time point from the video source. This function
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | Function result code. [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): the execution is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): the input param is invalid. [AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): operation not allowed. [AV_ERR_UNSUPPORTED_FORMAT](capi-native-averrors-h.md#oh_averrcode): format is unsupported. [AV_ERR_SERVICE_DIED](capi-native-averrors-h.md#oh_averrcode): the service died. [AV_ERR_IO_CLEARTEXT_NOT_PERMITTED](capi-native-averrors-h.md#oh_averrcode): http cleartext traffic is not permitted. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | Function result code. [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): the execution is successful. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): the input param is invalid. [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): operation not allowed. [AV_ERR_UNSUPPORTED_FORMAT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): format is unsupported. [AV_ERR_SERVICE_DIED](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): the service died. [AV_ERR_IO_CLEARTEXT_NOT_PERMITTED](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): http cleartext traffic is not permitted. |
 
 ### OH_AVMetadataExtractor_OnFrameFetched()
 
@@ -246,6 +262,8 @@ typedef void (*OH_AVMetadataExtractor_OnFrameFetched)(OH_AVMetadataExtractor *ex
 **Description**
 
 Defines a callback used to obtain the frames captured by **AVMetadataExtractor**. Note: **frameInfo** is automatically released after the callback. However, you need to use [OH_PixelmapNative_Destroy](../../apis-image-kit/c-apis/capi-pixelmap-native-h.md#oh_pixelmapnative_destroy) to release **<br>frameInfo.image** to avoid memory leaks.
+
+<!--Device-typedef void (*OH_AVMetadataExtractor_OnFrameFetched)(OH_AVMetadataExtractor *extractor, const OH_AVMetadataExtractor_FrameInfo* frameInfo, OH_AVErrCode code, void *userData)--><!--Device-typedef void (*OH_AVMetadataExtractor_OnFrameFetched)(OH_AVMetadataExtractor *extractor, const OH_AVMetadataExtractor_FrameInfo* frameInfo, OH_AVErrCode code, void *userData)-End-->
 
 **Since**: 23
 
@@ -258,6 +276,8 @@ OH_AVErrCode OH_AVMetadataExtractor_FetchFramesByTimes(OH_AVMetadataExtractor *e
 **Description**
 
 Extracts images at multiple specified time points from the video source asynchronously. This function must be used after resources are set.
+
+<!--Device-OH_AVErrCode OH_AVMetadataExtractor_FetchFramesByTimes(OH_AVMetadataExtractor *extractor, int64_t timesUs[], uint16_t timesUsSize, OH_AVMedia_SeekMode seekMode, const OH_AVMetadataExtractor_OutputParam* outputParam, OH_AVMetadataExtractor_OnFrameFetched onFrameInfoCallback, void* userData)--><!--Device-OH_AVErrCode OH_AVMetadataExtractor_FetchFramesByTimes(OH_AVMetadataExtractor *extractor, int64_t timesUs[], uint16_t timesUsSize, OH_AVMedia_SeekMode seekMode, const OH_AVMetadataExtractor_OutputParam* outputParam, OH_AVMetadataExtractor_OnFrameFetched onFrameInfoCallback, void* userData)-End-->
 
 **Since**: 23
 
@@ -277,7 +297,7 @@ Extracts images at multiple specified time points from the video source asynchro
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | Function result code. [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode) if the execution is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): the input param is invalid. [AV_ERR_SERVICE_DIED](capi-native-averrors-h.md#oh_averrcode): the service died. [AV_ERR_IO_CLEARTEXT_NOT_PERMITTED](capi-native-averrors-h.md#oh_averrcode): http cleartext traffic is not permitted. [AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): operation not allowed. Returned by onFrameInfoCallback. [AV_ERR_UNSUPPORTED_FORMAT](capi-native-averrors-h.md#oh_averrcode): format is unsupported. Returned by onFrameInfoCallback. [AV_ERR_TIMEOUT](capi-native-averrors-h.md#oh_averrcode): the execution is times out. Returned by onFrameInfoCallback. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | Function result code. [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) if the execution is successful. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): the input param is invalid. [AV_ERR_SERVICE_DIED](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): the service died. [AV_ERR_IO_CLEARTEXT_NOT_PERMITTED](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): http cleartext traffic is not permitted. [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): operation not allowed. Returned by onFrameInfoCallback. [AV_ERR_UNSUPPORTED_FORMAT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): format is unsupported. Returned by onFrameInfoCallback. [AV_ERR_TIMEOUT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): the execution is times out. Returned by onFrameInfoCallback. |
 
 ### OH_AVMetadataExtractor_CancelAllFetchFrames()
 
@@ -288,6 +308,8 @@ void OH_AVMetadataExtractor_CancelAllFetchFrames(OH_AVMetadataExtractor *extract
 **Description**
 
 Cancels all batch image obtaining operations initiated by [OH_AVMetadataExtractor_FetchFramesByTimes](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_fetchframesbytimes). If this function is called, the pending fetch operation is canceled and the result is marked as canceled in the [OH_AVMetadataExtractor_OnFrameFetched](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_onframefetched) callback.
+
+<!--Device-void OH_AVMetadataExtractor_CancelAllFetchFrames(OH_AVMetadataExtractor *extractor)--><!--Device-void OH_AVMetadataExtractor_CancelAllFetchFrames(OH_AVMetadataExtractor *extractor)-End-->
 
 **Since**: 23
 
@@ -307,6 +329,8 @@ OH_AVErrCode OH_AVMetadataExtractor_Release(OH_AVMetadataExtractor* extractor)
 
 Releases the resources used by the **OH_AVMetadataExtractor** instance and destroys the instance.
 
+<!--Device-OH_AVErrCode OH_AVMetadataExtractor_Release(OH_AVMetadataExtractor* extractor)--><!--Device-OH_AVErrCode OH_AVMetadataExtractor_Release(OH_AVMetadataExtractor* extractor)-End-->
+
 **Since**: 18
 
 **Parameters**:
@@ -319,7 +343,7 @@ Releases the resources used by the **OH_AVMetadataExtractor** instance and destr
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | Function result code. [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): the execution is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): input extractor is nullptr or input param is invalid. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | Function result code. [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): the execution is successful. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): input extractor is nullptr or input param is invalid. |
 
 ### OH_AVMetadataExtractor_OutputParam_Create()
 
@@ -330,6 +354,8 @@ OH_AVMetadataExtractor_OutputParam* OH_AVMetadataExtractor_OutputParam_Create()
 **Description**
 
 Creates an **OH_AVMetadataExtractor_OutputParam** instance.
+
+<!--Device-OH_AVMetadataExtractor_OutputParam* OH_AVMetadataExtractor_OutputParam_Create()--><!--Device-OH_AVMetadataExtractor_OutputParam* OH_AVMetadataExtractor_OutputParam_Create()-End-->
 
 **Since**: 23
 
@@ -349,6 +375,8 @@ void OH_AVMetadataExtractor_OutputParam_Destroy(OH_AVMetadataExtractor_OutputPar
 
 Releases the **OH_AVMetadataExtractor_OutputParam** instance.
 
+<!--Device-void OH_AVMetadataExtractor_OutputParam_Destroy(OH_AVMetadataExtractor_OutputParam* outputParam)--><!--Device-void OH_AVMetadataExtractor_OutputParam_Destroy(OH_AVMetadataExtractor_OutputParam* outputParam)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -366,6 +394,8 @@ bool OH_AVMetadataExtractor_OutputParam_SetSize(OH_AVMetadataExtractor_OutputPar
 **Description**
 
 Sets the expected output size of the **OH_AVMetadataExtractor_OutputParam** instance. If **width** or **<br>height** is less than 0, the original width or height is used. If **width** or **height** is 0, the aspect ratio is maintained and the image is scaled proportionally. If both **width** and **height** are greater than 0, they are used to scale the image.
+
+<!--Device-bool OH_AVMetadataExtractor_OutputParam_SetSize(OH_AVMetadataExtractor_OutputParam* outputParam, int32_t width, int32_t height)--><!--Device-bool OH_AVMetadataExtractor_OutputParam_SetSize(OH_AVMetadataExtractor_OutputParam* outputParam, int32_t width, int32_t height)-End-->
 
 **Since**: 23
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct tcp_info {...}--><!--Device-struct tcp_info {...}-End-->
+
 ## Summary
 
 ### Member variables

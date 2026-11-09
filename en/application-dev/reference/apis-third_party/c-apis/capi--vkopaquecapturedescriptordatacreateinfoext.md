@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkOpaqueCaptureDescriptorDataCreateInfoEXT {...}--><!--Device-struct VkOpaqueCaptureDescriptorDataCreateInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkImageCreateInfo {...}--><!--Device-struct VkImageCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

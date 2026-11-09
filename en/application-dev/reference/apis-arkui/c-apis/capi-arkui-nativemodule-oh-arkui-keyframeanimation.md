@@ -8,11 +8,13 @@ typedef struct OH_ArkUI_KeyframeAnimation *OH_ArkUI_KeyframeAnimationHandle
 
 Defines the handle to a keyframe animation.
 
+<!--Device-typedef struct OH_ArkUI_KeyframeAnimation *OH_ArkUI_KeyframeAnimationHandle--><!--Device-typedef struct OH_ArkUI_KeyframeAnimation *OH_ArkUI_KeyframeAnimationHandle-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_animate.h](capi-native-animate-h.md)
 

@@ -8,11 +8,13 @@ typedef struct ArkUI_AccessibleRect {...} ArkUI_AccessibleRect
 
 Defines a struct for the accessible rectangle.
 
+<!--Device-typedef struct ArkUI_AccessibleRect {...} ArkUI_AccessibleRect--><!--Device-typedef struct ArkUI_AccessibleRect {...} ArkUI_AccessibleRect-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
-**Related module**: [ArkUI_Accessibility](capi-others-arkui-accessibility.md)
+**Related module**: [ArkUI_Accessibility](capi-arkui-arkui-accessibility.md)
 
 **Header file**: [native_interface_accessibility.h](capi-native-interface-accessibility-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSwapchainCreateInfoKHR {...}--><!--Device-struct VkSwapchainCreateInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

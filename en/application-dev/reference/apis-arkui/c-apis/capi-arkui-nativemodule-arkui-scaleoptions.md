@@ -8,11 +8,13 @@ typedef struct ArkUI_ScaleOptions {...} ArkUI_ScaleOptions
 
 Defines the scale options for component transition.
 
+<!--Device-typedef struct ArkUI_ScaleOptions {...} ArkUI_ScaleOptions--><!--Device-typedef struct ArkUI_ScaleOptions {...} ArkUI_ScaleOptions-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_type_visual.h](capi-native-type-visual-h.md)
 

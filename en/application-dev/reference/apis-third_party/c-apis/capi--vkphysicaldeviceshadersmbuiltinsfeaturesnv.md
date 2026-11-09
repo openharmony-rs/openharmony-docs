@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceShaderSMBuiltinsFeaturesNV {...}--><!--Device-struct VkPhysicalDeviceShaderSMBuiltinsFeaturesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

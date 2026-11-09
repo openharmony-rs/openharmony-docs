@@ -43,6 +43,8 @@ GameController_ErrorCode OH_GameDevice_GetAllDeviceInfos(GameDevice_AllDeviceInf
 
 获取所有在线设备的信息。
 
+<!--Device-GameController_ErrorCode OH_GameDevice_GetAllDeviceInfos(GameDevice_AllDeviceInfos** allDeviceInfos)--><!--Device-GameController_ErrorCode OH_GameDevice_GetAllDeviceInfos(GameDevice_AllDeviceInfos** allDeviceInfos)-End-->
+
 **系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
@@ -73,6 +75,8 @@ GameController_ErrorCode OH_GameDevice_RegisterDeviceMonitor(GameDevice_DeviceMo
 **描述：**
 
 注册设备状态变化事件的监听回调。
+
+<!--Device-GameController_ErrorCode OH_GameDevice_RegisterDeviceMonitor(GameDevice_DeviceMonitorCallback deviceMonitorCallback)--><!--Device-GameController_ErrorCode OH_GameDevice_RegisterDeviceMonitor(GameDevice_DeviceMonitorCallback deviceMonitorCallback)-End-->
 
 **系统能力：** SystemCapability.Game.GameController
 
@@ -105,6 +109,8 @@ GameController_ErrorCode OH_GameDevice_UnregisterDeviceMonitor(void)
 
 取消注册设备状态变化事件的监听回调。
 
+<!--Device-GameController_ErrorCode OH_GameDevice_UnregisterDeviceMonitor(void)--><!--Device-GameController_ErrorCode OH_GameDevice_UnregisterDeviceMonitor(void)-End-->
+
 **系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
@@ -124,6 +130,8 @@ GameController_ErrorCode OH_GameDevice_DestroyAllDeviceInfos(GameDevice_AllDevic
 **描述：**
 
 销毁所有设备信息实例。
+
+<!--Device-GameController_ErrorCode OH_GameDevice_DestroyAllDeviceInfos(GameDevice_AllDeviceInfos** allDeviceInfos)--><!--Device-GameController_ErrorCode OH_GameDevice_DestroyAllDeviceInfos(GameDevice_AllDeviceInfos** allDeviceInfos)-End-->
 
 **系统能力：** SystemCapability.Game.GameController
 
@@ -151,6 +159,8 @@ GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetCount(const struct Game
 
 获取设备数量。
 
+<!--Device-GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetCount(const struct GameDevice_AllDeviceInfos* allDeviceInfos, int32_t* count)--><!--Device-GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetCount(const struct GameDevice_AllDeviceInfos* allDeviceInfos, int32_t* count)-End-->
+
 **系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
@@ -177,6 +187,8 @@ GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetDeviceInfo(const struct
 **描述：**
 
 获取指定索引的设备信息。
+
+<!--Device-GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetDeviceInfo(const struct GameDevice_AllDeviceInfos* allDeviceInfos, const int32_t index, GameDevice_DeviceInfo** deviceInfo)--><!--Device-GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetDeviceInfo(const struct GameDevice_AllDeviceInfos* allDeviceInfos, const int32_t index, GameDevice_DeviceInfo** deviceInfo)-End-->
 
 **系统能力：** SystemCapability.Game.GameController
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkImageResolve2 {...}--><!--Device-struct VkImageResolve2 {...}-End-->
+
 ## Summary
 
 ### Member variables

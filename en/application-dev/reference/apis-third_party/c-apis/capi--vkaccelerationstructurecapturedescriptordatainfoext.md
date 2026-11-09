@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkAccelerationStructureCaptureDescriptorDataInfoEXT {...}--><!--Device-struct VkAccelerationStructureCaptureDescriptorDataInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

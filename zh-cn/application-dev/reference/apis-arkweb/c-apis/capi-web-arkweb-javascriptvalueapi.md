@@ -8,11 +8,13 @@ typedef struct ArkWeb_JavaScriptValueAPI {...} ArkWeb_JavaScriptValueAPI
 
 ArkWeb_JavaScriptValueAPI是JavaScript相关Native API结构体。该结构体提供了创建JavaScript值的函数， 支持将Native数据转换为JavaScript可识别的格式并返回给HTML。该转换机制根据指定的JavaScript值类型对Native数据缓冲区进行解析和封装，生成对应的JavaScript值对象。 适用于需要从Native层向Web层传递数据的应用场景，能够实现Native与Web之间的双向数据交互，提升应用开发灵活性。<br>在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取JavaScript相关接口。 调用前建议通过[ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义)校验函数指针的可用性，避免SDK与设备ROM不匹配导致崩溃。
 
+<!--Device-typedef struct ArkWeb_JavaScriptValueAPI {...} ArkWeb_JavaScriptValueAPI--><!--Device-typedef struct ArkWeb_JavaScriptValueAPI {...} ArkWeb_JavaScriptValueAPI-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 18
 
-**相关模块：** [Web](capi-others-web.md)
+**相关模块：** [Web](capi-arkweb-web.md)
 
 **所在头文件：** [arkweb_type.h](capi-arkweb-type-h.md)
 
@@ -42,6 +44,8 @@ ArkWeb_JavaScriptValuePtr (*createJavaScriptValue)(ArkWeb_JavaScriptValueType ty
 **描述：**
 
 创建一个JavaScript值，用于返回给HTML。该函数根据指定的type参数对data缓冲区中的数据进行类型转换和封装，生成对应的JavaScript值对象，转换失败时返回NULL。 使用前需通过OH_ArkWeb_GetNativeAPI获取JavaScript接口，并建议校验函数指针可用性。
+
+<!--Device-ArkWeb_JavaScriptValuePtr (*createJavaScriptValue)(ArkWeb_JavaScriptValueType type, void* data, size_t dataLength)--><!--Device-ArkWeb_JavaScriptValuePtr (*createJavaScriptValue)(ArkWeb_JavaScriptValueType type, void* data, size_t dataLength)-End-->
 
 **参数：**
 

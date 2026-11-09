@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceRobustness2FeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceRobustness2FeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

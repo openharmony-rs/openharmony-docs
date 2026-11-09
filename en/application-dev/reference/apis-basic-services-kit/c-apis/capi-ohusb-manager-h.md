@@ -58,6 +58,8 @@ enum OH_UsbManager_ErrorCode
 
 Enumerates the USB Manager error codes.
 
+<!--Device-OH_UsbManager_ErrorCode--><!--Device-OH_UsbManager_ErrorCode-End-->
+
 **System capability**: SystemCapability.USB.USBManager
 
 **Since**: 26.0.1
@@ -82,6 +84,8 @@ enum OH_UsbManager_RequestDirection
 
 Enumerates USB request directions.
 
+<!--Device-OH_UsbManager_RequestDirection--><!--Device-OH_UsbManager_RequestDirection-End-->
+
 **System capability**: SystemCapability.USB.USBManager
 
 **Since**: 26.0.1
@@ -103,6 +107,8 @@ OH_UsbManager_ErrorCode OH_UsbManager_GetUsbDeviceList(OH_UsbManager_UsbDevice *
 **Description**
 
 Obtains the list of all connected USB devices. The caller must release the <br>returned array by calling [OH_UsbManager_FreeUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_freeusbdevicelist).
+
+<!--Device-OH_UsbManager_ErrorCode OH_UsbManager_GetUsbDeviceList(OH_UsbManager_UsbDevice **devices, uint32_t *deviceCount)--><!--Device-OH_UsbManager_ErrorCode OH_UsbManager_GetUsbDeviceList(OH_UsbManager_UsbDevice **devices, uint32_t *deviceCount)-End-->
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -133,6 +139,8 @@ void OH_UsbManager_FreeUsbDeviceList(OH_UsbManager_UsbDevice *devices, uint32_t 
 
 Frees a device array previously returned by [OH_UsbManager_GetUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_getusbdevicelist).<br> <br>After this call, the pointer is invalid and must not be used. Passing null or a <br>count of 0 is a safe no-op.
 
+<!--Device-void OH_UsbManager_FreeUsbDeviceList(OH_UsbManager_UsbDevice *devices, uint32_t deviceCount)--><!--Device-void OH_UsbManager_FreeUsbDeviceList(OH_UsbManager_UsbDevice *devices, uint32_t deviceCount)-End-->
+
 **System capability**: SystemCapability.USB.USBManager
 
 **Since**: 26.0.1
@@ -153,6 +161,8 @@ OH_UsbManager_ErrorCode OH_UsbManager_ConnectDevice(const OH_UsbManager_UsbDevic
 **Description**
 
 Connects to a USB device and opens a pipe for communication. The returned pipe must be closed by calling <br>[OH_UsbManager_ClosePipe](capi-ohusb-manager-h.md#oh_usbmanager_closepipe) to avoid resource leaks.<br> <br>Only the **busNum** and **devAddress** fields in the device structure are required. Other fields are ignored.
+
+<!--Device-OH_UsbManager_ErrorCode OH_UsbManager_ConnectDevice(const OH_UsbManager_UsbDevice *device, OH_UsbManager_UsbPipe *pipe)--><!--Device-OH_UsbManager_ErrorCode OH_UsbManager_ConnectDevice(const OH_UsbManager_UsbDevice *device, OH_UsbManager_UsbPipe *pipe)-End-->
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -181,6 +191,8 @@ OH_UsbManager_ErrorCode OH_UsbManager_HasPermission(const char *deviceName, bool
 
 Checks whether the application has permission to access the specified device.
 
+<!--Device-OH_UsbManager_ErrorCode OH_UsbManager_HasPermission(const char *deviceName, bool *result)--><!--Device-OH_UsbManager_ErrorCode OH_UsbManager_HasPermission(const char *deviceName, bool *result)-End-->
+
 **System capability**: SystemCapability.USB.USBManager
 
 **Since**: 26.0.1
@@ -208,6 +220,8 @@ typedef void (*OH_UsbManager_PermissionCallback)(OH_UsbManager_ErrorCode errorCo
 
 Defines the callback type used to return the result of <br>[OH_UsbManager_RequestPermission](capi-ohusb-manager-h.md#oh_usbmanager_requestpermission).
 
+<!--Device-typedef void (*OH_UsbManager_PermissionCallback)(OH_UsbManager_ErrorCode errorCode, bool result, void *userContext)--><!--Device-typedef void (*OH_UsbManager_PermissionCallback)(OH_UsbManager_ErrorCode errorCode, bool result, void *userContext)-End-->
+
 **System capability**: SystemCapability.USB.USBManager
 
 **Since**: 26.0.1
@@ -229,6 +243,8 @@ OH_UsbManager_ErrorCode OH_UsbManager_RequestPermission(const char *deviceName, 
 **Description**
 
 Requests permission to access the specified USB device asynchronously. <br>This may trigger a system dialog asking the user for permission. The function <br>returns immediately and the result is delivered via the callback.
+
+<!--Device-OH_UsbManager_ErrorCode OH_UsbManager_RequestPermission(const char *deviceName, OH_UsbManager_PermissionCallback callback, void *userContext)--><!--Device-OH_UsbManager_ErrorCode OH_UsbManager_RequestPermission(const char *deviceName, OH_UsbManager_PermissionCallback callback, void *userContext)-End-->
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -258,6 +274,8 @@ OH_UsbManager_ErrorCode OH_UsbManager_GetFileDescriptor(const OH_UsbManager_UsbP
 
 Obtains the file descriptor for the opened USB device pipe. The fd can be <br>used for low-level ioctl-based USB transfers.
 
+<!--Device-OH_UsbManager_ErrorCode OH_UsbManager_GetFileDescriptor(const OH_UsbManager_UsbPipe *pipe, int32_t *fd)--><!--Device-OH_UsbManager_ErrorCode OH_UsbManager_GetFileDescriptor(const OH_UsbManager_UsbPipe *pipe, int32_t *fd)-End-->
+
 **System capability**: SystemCapability.USB.USBManager
 
 **Since**: 26.0.1
@@ -284,6 +302,8 @@ OH_UsbManager_ErrorCode OH_UsbManager_ClosePipe(const OH_UsbManager_UsbPipe *pip
 **Description**
 
 Closes the USB device pipe and releases the underlying resources. <br>The pipe must be obtained from [OH_UsbManager_ConnectDevice](capi-ohusb-manager-h.md#oh_usbmanager_connectdevice).
+
+<!--Device-OH_UsbManager_ErrorCode OH_UsbManager_ClosePipe(const OH_UsbManager_UsbPipe *pipe)--><!--Device-OH_UsbManager_ErrorCode OH_UsbManager_ClosePipe(const OH_UsbManager_UsbPipe *pipe)-End-->
 
 **System capability**: SystemCapability.USB.USBManager
 

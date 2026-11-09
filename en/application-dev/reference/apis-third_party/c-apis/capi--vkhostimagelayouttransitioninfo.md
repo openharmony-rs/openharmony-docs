@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkHostImageLayoutTransitionInfo {...}--><!--Device-struct VkHostImageLayoutTransitionInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

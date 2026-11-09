@@ -8,11 +8,13 @@ struct CloudDisk_ResultList {...}
 
 表示一个文件同步操作的结果。该结构体包含文件的绝对路径、同步结果，以及同步状态或失败原因。
 
+<!--Device-struct CloudDisk_ResultList {...}--><!--Device-struct CloudDisk_ResultList {...}-End-->
+
 **系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **起始版本：** 21
 
-**相关模块：** [CloudDisk](capi-others-clouddisk.md)
+**相关模块：** [CloudDisk](capi-core-file-kit-clouddisk.md)
 
 **所在头文件：** [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
 

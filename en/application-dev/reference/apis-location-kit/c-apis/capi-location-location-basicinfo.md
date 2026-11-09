@@ -8,11 +8,13 @@ struct Location_BasicInfo {...}
 
 Defines the location information.
 
+<!--Device-struct Location_BasicInfo {...}--><!--Device-struct Location_BasicInfo {...}-End-->
+
 **System capability**: SystemCapability.Location.Location.Core
 
 **Since**: 13
 
-**Related module**: [Location](capi-others-location.md)
+**Related module**: [Location](capi-location-kit-location.md)
 
 **Header file**: [oh_location_type.h](capi-oh-location-type-h.md)
 

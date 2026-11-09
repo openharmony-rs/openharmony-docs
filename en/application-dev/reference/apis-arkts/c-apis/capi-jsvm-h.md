@@ -266,6 +266,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_Init(const JSVM_InitOptions* options)
 
 Init a JavaScript vm.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_Init(const JSVM_InitOptions* options)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_Init(const JSVM_InitOptions* options)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -291,6 +293,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateVM(const JSVM_CreateVMOptions* options, JS
 **Description**
 
 This API create a new VM instance.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateVM(const JSVM_CreateVMOptions* options, JSVM_VM* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateVM(const JSVM_CreateVMOptions* options, JSVM_VM* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -319,6 +323,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetMicrotaskPolicy(JSVM_VM vm, JSVM_MicrotaskPol
 
 This function controls how Microtasks are invoked of the vm. If the method is not called, the default microtask policy of vm is JSVM_MicrotaskPolicy::JSVM_MICROTASK_AUTO.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SetMicrotaskPolicy(JSVM_VM vm, JSVM_MicrotaskPolicy policy)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SetMicrotaskPolicy(JSVM_VM vm, JSVM_MicrotaskPolicy policy)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -346,6 +352,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DestroyVM(JSVM_VM vm)
 
 Destroys VM instance.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_DestroyVM(JSVM_VM vm)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_DestroyVM(JSVM_VM vm)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -371,6 +379,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateProxy(JSVM_Env env, JSVM_Value target, JSV
 **Description**
 
 This API allocates a default JavaScript Proxy. It is the equivalent of doing new Proxy(target, handler) in JavaScript.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateProxy(JSVM_Env env, JSVM_Value target, JSVM_Value handler, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateProxy(JSVM_Env env, JSVM_Value target, JSVM_Value handler, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -401,6 +411,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsProxy(JSVM_Env env, JSVM_Value value, bool* is
 
 This API checks if the value passed in is a Proxy.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsProxy(JSVM_Env env, JSVM_Value value, bool* isProxy)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsProxy(JSVM_Env env, JSVM_Value value, bool* isProxy)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -428,6 +440,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ProxyGetTarget(JSVM_Env env, JSVM_Value value, J
 **Description**
 
 This API gets target from proxy.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ProxyGetTarget(JSVM_Env env, JSVM_Value value, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ProxyGetTarget(JSVM_Env env, JSVM_Value value, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -457,6 +471,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_OpenVMScope(JSVM_VM vm, JSVM_VMScope* result)
 
 This API open a new VM scope for the VM instance.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_OpenVMScope(JSVM_VM vm, JSVM_VMScope* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_OpenVMScope(JSVM_VM vm, JSVM_VMScope* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -484,6 +500,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CloseVMScope(JSVM_VM vm, JSVM_VMScope scope)
 
 This function close the VM scope for the VM instance.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CloseVMScope(JSVM_VM vm, JSVM_VMScope scope)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CloseVMScope(JSVM_VM vm, JSVM_VMScope scope)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -510,6 +528,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateEnv(JSVM_VM vm, size_t propertyCount, cons
 **Description**
 
 This function create a new environment with optional properties for the context of the new environment.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateEnv(JSVM_VM vm, size_t propertyCount, const JSVM_PropertyDescriptor* properties, JSVM_Env* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateEnv(JSVM_VM vm, size_t propertyCount, const JSVM_PropertyDescriptor* properties, JSVM_Env* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -540,6 +560,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateEnvFromSnapshot(JSVM_VM vm, size_t index, 
 
 This function create a new environment from the start snapshot of the vm.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateEnvFromSnapshot(JSVM_VM vm, size_t index, JSVM_Env* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateEnvFromSnapshot(JSVM_VM vm, size_t index, JSVM_Env* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -568,6 +590,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DestroyEnv(JSVM_Env env)
 
 This function destroys the environment.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_DestroyEnv(JSVM_Env env)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_DestroyEnv(JSVM_Env env)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -593,6 +617,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_OpenEnvScope(JSVM_Env env, JSVM_EnvScope* result
 **Description**
 
 This function open a new environment scope.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_OpenEnvScope(JSVM_Env env, JSVM_EnvScope* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_OpenEnvScope(JSVM_Env env, JSVM_EnvScope* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -621,6 +647,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CloseEnvScope(JSVM_Env env, JSVM_EnvScope scope)
 
 This function closes the environment scope of the environment.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CloseEnvScope(JSVM_Env env, JSVM_EnvScope scope)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CloseEnvScope(JSVM_Env env, JSVM_EnvScope scope)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -648,6 +676,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetVM(JSVM_Env env, JSVM_VM* result)
 
 This function retrieves the VM instance of the given environment.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetVM(JSVM_Env env, JSVM_VM* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetVM(JSVM_Env env, JSVM_VM* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -674,6 +704,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileScript(JSVM_Env env, JSVM_Value script, c
 **Description**
 
 This function compiles a string of JavaScript code and returns the compiled script.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CompileScript(JSVM_Env env, JSVM_Value script, const uint8_t* cachedData, size_t cacheDataLength, bool eagerCompile, bool* cacheRejected, JSVM_Script* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CompileScript(JSVM_Env env, JSVM_Value script, const uint8_t* cachedData, size_t cacheDataLength, bool eagerCompile, bool* cacheRejected, JSVM_Script* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -706,6 +738,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOrigin(JSVM_Env env, JSVM_Value
 **Description**
 
 This function compiles a string of JavaScript code with the source code information and returns the compiled script.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOrigin(JSVM_Env env, JSVM_Value script, const uint8_t* cachedData, size_t cacheDataLength, bool eagerCompile, bool* cacheRejected, JSVM_ScriptOrigin* origin, JSVM_Script* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOrigin(JSVM_Env env, JSVM_Value script, const uint8_t* cachedData, size_t cacheDataLength, bool eagerCompile, bool* cacheRejected, JSVM_ScriptOrigin* origin, JSVM_Script* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -740,6 +774,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateCodeCache(JSVM_Env env, JSVM_Script script
 
 This function creates code cache for the compiled script.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateCodeCache(JSVM_Env env, JSVM_Script script, const uint8_t** data, size_t* length)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateCodeCache(JSVM_Env env, JSVM_Script script, const uint8_t** data, size_t* length)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -769,6 +805,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_RunScript(JSVM_Env env, JSVM_Script script, JSVM
 
 This function executes a string of JavaScript code and returns its result with the following caveats: Unlike eval, this function does not allow the script to access the current lexical scope, and therefore also does not allow to access the module scope, meaning that pseudo-globals such as require will not be available. The script can access the global scope. Function and var declarations in the script will be added to the global object. Variable declarations made using let and const will be visible globally, but will not be added to the global object.The value of this is global within the script.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_RunScript(JSVM_Env env, JSVM_Script script, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_RunScript(JSVM_Env env, JSVM_Script script, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -790,6 +828,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetInstanceData(JSVM_Env env, void* data, JSVM_F
 **Description**
 
 This API associates data with the currently running JSVM environment. data can later be retrieved using OH_JSVM_GetInstanceData().
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SetInstanceData(JSVM_Env env, void* data, JSVM_Finalize finalizeCb, void* finalizeHint)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SetInstanceData(JSVM_Env env, void* data, JSVM_Finalize finalizeCb, void* finalizeHint)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -820,6 +860,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetInstanceData(JSVM_Env env, void** data)
 
 This API retrieves data that was previously associated with the currently running JSVM environment via OH_JSVM_SetInstanceData(). If no data is set, the call will succeed and data will be set to NULL.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetInstanceData(JSVM_Env env, void** data)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetInstanceData(JSVM_Env env, void** data)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -846,6 +888,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetLastErrorInfo(JSVM_Env env, const JSVM_Extend
 **Description**
 
 This API retrieves a JSVM_ExtendedErrorInfo structure with information about the last error that occurred.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetLastErrorInfo(JSVM_Env env, const JSVM_ExtendedErrorInfo** result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetLastErrorInfo(JSVM_Env env, const JSVM_ExtendedErrorInfo** result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -874,6 +918,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_Throw(JSVM_Env env, JSVM_Value error)
 
 This API throws the JavaScript value provided.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_Throw(JSVM_Env env, JSVM_Value error)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_Throw(JSVM_Env env, JSVM_Value error)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -900,6 +946,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ThrowError(JSVM_Env env, const char* code, const
 **Description**
 
 This API throws a JavaScript Error with the text provided.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ThrowError(JSVM_Env env, const char* code, const char* msg)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ThrowError(JSVM_Env env, const char* code, const char* msg)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -929,6 +977,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ThrowTypeError(JSVM_Env env, const char* code, c
 
 This API throws a JavaScript TypeError with the text provided.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ThrowTypeError(JSVM_Env env, const char* code, const char* msg)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ThrowTypeError(JSVM_Env env, const char* code, const char* msg)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -956,6 +1006,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ThrowRangeError(JSVM_Env env, const char* code, 
 **Description**
 
 This API throws a JavaScript RangeError with the text provided.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ThrowRangeError(JSVM_Env env, const char* code, const char* msg)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ThrowRangeError(JSVM_Env env, const char* code, const char* msg)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -985,6 +1037,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ThrowSyntaxError(JSVM_Env env, const char* code,
 
 This API throws a JavaScript SyntaxError with the text provided.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ThrowSyntaxError(JSVM_Env env, const char* code, const char* msg)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ThrowSyntaxError(JSVM_Env env, const char* code, const char* msg)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -1013,6 +1067,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsError(JSVM_Env env, JSVM_Value value, bool* re
 
 This API queries a JSVM_Value to check if it represents an error object.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsError(JSVM_Env env, JSVM_Value value, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsError(JSVM_Env env, JSVM_Value value, bool* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -1040,6 +1096,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateError(JSVM_Env env, JSVM_Value code, JSVM_
 **Description**
 
 This API returns a JavaScript Error with the text provided.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateError(JSVM_Env env, JSVM_Value code, JSVM_Value msg, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateError(JSVM_Env env, JSVM_Value code, JSVM_Value msg, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -1070,6 +1128,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateTypeError(JSVM_Env env, JSVM_Value code, J
 
 This API returns a JavaScript TypeError with the text provided.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateTypeError(JSVM_Env env, JSVM_Value code, JSVM_Value msg, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateTypeError(JSVM_Env env, JSVM_Value code, JSVM_Value msg, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -1098,6 +1158,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateRangeError(JSVM_Env env, JSVM_Value code, 
 **Description**
 
 This API returns a JavaScript RangeError with the text provided.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateRangeError(JSVM_Env env, JSVM_Value code, JSVM_Value msg, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateRangeError(JSVM_Env env, JSVM_Value code, JSVM_Value msg, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -1128,6 +1190,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateSyntaxError(JSVM_Env env, JSVM_Value code,
 
 This API returns a JavaScript SyntaxError with the text provided.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateSyntaxError(JSVM_Env env, JSVM_Value code, JSVM_Value msg, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateSyntaxError(JSVM_Env env, JSVM_Value code, JSVM_Value msg, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -1157,6 +1221,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetAndClearLastException(JSVM_Env env, JSVM_Valu
 
 This API returns a JavaScript exception if one is pending, NULL otherwise.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetAndClearLastException(JSVM_Env env, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetAndClearLastException(JSVM_Env env, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -1183,6 +1249,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsExceptionPending(JSVM_Env env, bool* result)
 **Description**
 
 This API returns true if an exception is pending, false otherwise.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsExceptionPending(JSVM_Env env, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsExceptionPending(JSVM_Env env, bool* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -1211,6 +1279,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_OpenHandleScope(JSVM_Env env, JSVM_HandleScope* 
 
 This API opens a new scope.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_OpenHandleScope(JSVM_Env env, JSVM_HandleScope* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_OpenHandleScope(JSVM_Env env, JSVM_HandleScope* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -1237,6 +1307,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CloseHandleScope(JSVM_Env env, JSVM_HandleScope 
 **Description**
 
 This API closes the scope passed in. Scopes must be closed in the reverse order from which they were created.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CloseHandleScope(JSVM_Env env, JSVM_HandleScope scope)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CloseHandleScope(JSVM_Env env, JSVM_HandleScope scope)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -1265,6 +1337,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_OpenEscapableHandleScope(JSVM_Env env, JSVM_Esca
 
 This API opens a new scope from which one object can be promoted to the outer scope.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_OpenEscapableHandleScope(JSVM_Env env, JSVM_EscapableHandleScope* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_OpenEscapableHandleScope(JSVM_Env env, JSVM_EscapableHandleScope* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -1292,6 +1366,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CloseEscapableHandleScope(JSVM_Env env, JSVM_Esc
 
 This API closes the scope passed in. Scopes must be closed in the reverse order from which they were created.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CloseEscapableHandleScope(JSVM_Env env, JSVM_EscapableHandleScope scope)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CloseEscapableHandleScope(JSVM_Env env, JSVM_EscapableHandleScope scope)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -1318,6 +1394,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_EscapeHandle(JSVM_Env env, JSVM_EscapableHandleS
 **Description**
 
 This API promotes the handle to the JavaScript object so that it is valid for the lifetime of the outer scope. It can only be called once per scope. If it is called more than once an error will be returned.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_EscapeHandle(JSVM_Env env, JSVM_EscapableHandleScope scope, JSVM_Value escapee, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_EscapeHandle(JSVM_Env env, JSVM_EscapableHandleScope scope, JSVM_Value escapee, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -1348,6 +1426,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateReference(JSVM_Env env, JSVM_Value value, 
 
 This API creates a new reference with the specified reference count to the value passed in.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateReference(JSVM_Env env, JSVM_Value value, uint32_t initialRefcount, JSVM_Ref* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateReference(JSVM_Env env, JSVM_Value value, uint32_t initialRefcount, JSVM_Ref* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -1377,6 +1457,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DeleteReference(JSVM_Env env, JSVM_Ref ref)
 
 his API deletes the reference passed in.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_DeleteReference(JSVM_Env env, JSVM_Ref ref)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_DeleteReference(JSVM_Env env, JSVM_Ref ref)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -1403,6 +1485,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ReferenceRef(JSVM_Env env, JSVM_Ref ref, uint32_
 **Description**
 
 his API increments the reference count for the reference passed in and returns the resulting reference count.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ReferenceRef(JSVM_Env env, JSVM_Ref ref, uint32_t* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ReferenceRef(JSVM_Env env, JSVM_Ref ref, uint32_t* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -1432,6 +1516,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ReferenceUnref(JSVM_Env env, JSVM_Ref ref, uint3
 
 This API decrements the reference count for the reference passed in and returns the resulting reference count.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ReferenceUnref(JSVM_Env env, JSVM_Ref ref, uint32_t* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ReferenceUnref(JSVM_Env env, JSVM_Ref ref, uint32_t* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -1459,6 +1545,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceValue(JSVM_Env env, JSVM_Ref ref, JS
 **Description**
 
 If still valid, this API returns the JSVM_Value representing the JavaScript value associated with the JSVM_Ref. Otherwise, result will be NULL.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceValue(JSVM_Env env, JSVM_Ref ref, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceValue(JSVM_Env env, JSVM_Ref ref, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -1488,6 +1576,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateArray(JSVM_Env env, JSVM_Value* result)
 
 This API returns a JSVM-API value corresponding to a JavaScript Array type.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateArray(JSVM_Env env, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateArray(JSVM_Env env, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -1514,6 +1604,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayWithLength(JSVM_Env env, size_t lengt
 **Description**
 
 This API returns a JSVM-API value corresponding to a JavaScript Array type. The Array's length property is set to the passed-in length parameter. However, the underlying buffer is not guaranteed to be pre-allocated by the VM when the array is created. That behavior is left to the underlying VM implementation.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayWithLength(JSVM_Env env, size_t length, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayWithLength(JSVM_Env env, size_t length, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -1542,6 +1634,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateArraybuffer(JSVM_Env env, size_t byteLengt
 **Description**
 
 This API returns a JSVM-API value corresponding to a JavaScript ArrayBuffer. ArrayBuffers are used to represent fixed-length binary data buffers. They are normally used as a backing-buffer for TypedArray objects. The ArrayBuffer allocated will have an underlying byte buffer whose size is determined by the length parameter that's passed in. The underlying buffer is optionally returned back to the caller in case the caller wants to directly manipulate the buffer. This buffer can only be written to directly from native code. To write to this buffer from JavaScript, a typed array or DataView object would need to be created.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateArraybuffer(JSVM_Env env, size_t byteLength, void** data, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateArraybuffer(JSVM_Env env, size_t byteLength, void** data, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -1572,6 +1666,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_AllocateArrayBufferBackingStoreData(size_t byteL
 
 This API allocate the memory of array buffer backing store.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_AllocateArrayBufferBackingStoreData(size_t byteLength, JSVM_InitializedFlag initialized, void **data)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_AllocateArrayBufferBackingStoreData(size_t byteLength, JSVM_InitializedFlag initialized, void **data)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -1600,6 +1696,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_FreeArrayBufferBackingStoreData(void* data)
 
 This API release the memory of an array buffer backing store.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_FreeArrayBufferBackingStoreData(void* data)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_FreeArrayBufferBackingStoreData(void* data)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -1625,6 +1723,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromBackingStoreData(JSVM_Env e
 **Description**
 
 This API create an array buffer using the backing store data.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromBackingStoreData(JSVM_Env env, void* data, size_t backingStoreSize, size_t offset, size_t arrayBufferSize, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromBackingStoreData(JSVM_Env env, void* data, size_t backingStoreSize, size_t offset, size_t arrayBufferSize, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -1657,6 +1757,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateDate(JSVM_Env env, double time, JSVM_Value
 
 This API does not observe leap seconds; they are ignored, as ECMAScript aligns with POSIX time specification. This API allocates a JavaScript Date object.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateDate(JSVM_Env env, double time, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateDate(JSVM_Env env, double time, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -1684,6 +1786,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternal(JSVM_Env env, void* data, JSVM_Fi
 **Description**
 
 This API allocates a JavaScript value with external data attached to it. This is used to pass external data through JavaScript code, so it can be retrieved later by native code using OH_JSVM_GetValueExternal. The API adds a JSVM_Finalize callback which will be called when the JavaScript object just created has been garbage collected.The created value is not an object, and therefore does not support additional properties. It is considered a distinct value type calling OH_JSVM_Typeof() with an external value yields JSVM_EXTERNAL.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternal(JSVM_Env env, void* data, JSVM_Finalize finalizeCb, void* finalizeHint, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternal(JSVM_Env env, void* data, JSVM_Finalize finalizeCb, void* finalizeHint, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -1715,6 +1819,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateObject(JSVM_Env env, JSVM_Value* result)
 
 This API allocates a default JavaScript Object. It is the equivalent of doing new Object() in JavaScript.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateObject(JSVM_Env env, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateObject(JSVM_Env env, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -1741,6 +1847,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateSymbol(JSVM_Env env, JSVM_Value descriptio
 **Description**
 
 This API creates a JavaScript symbol value from a UTF8-encoded C string.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateSymbol(JSVM_Env env, JSVM_Value description, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateSymbol(JSVM_Env env, JSVM_Value description, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -1770,6 +1878,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SymbolFor(JSVM_Env env, const char* utf8descript
 
 This API searches in the global registry for an existing symbol with the given description. If the symbol already exists it will be returned, otherwise a new symbol will be created in the registry.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SymbolFor(JSVM_Env env, const char* utf8description, size_t length, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SymbolFor(JSVM_Env env, const char* utf8description, size_t length, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -1798,6 +1908,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateTypedarray(JSVM_Env env, JSVM_TypedarrayTy
 **Description**
 
 This API creates a JavaScript TypedArray object over an existing ArrayBuffer. TypedArray objects provide an array-like view over an underlying data buffer where each element has the same underlying binary scalar datatype.It's required that (length * size_of_element) + byte_offset should be <= the size in bytes of the array passed in. If not, a RangeError exception is raised.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateTypedarray(JSVM_Env env, JSVM_TypedarrayType type, size_t length, JSVM_Value arraybuffer, size_t byteOffset, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateTypedarray(JSVM_Env env, JSVM_TypedarrayType type, size_t length, JSVM_Value arraybuffer, size_t byteOffset, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -1830,6 +1942,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataview(JSVM_Env env, size_t length, JSVM
 
 This API creates a JavaScript DataView object over an existing ArrayBuffer. DataView objects provide an array-like view over an underlying data buffer, but one which allows items of different size and type in the ArrayBuffer.It is required that byte_length + byte_offset is less than or equal to the size in bytes of the array passed in. If not, a RangeError exception is raised.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataview(JSVM_Env env, size_t length, JSVM_Value arraybuffer, size_t byteOffset, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataview(JSVM_Env env, size_t length, JSVM_Value arraybuffer, size_t byteOffset, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -1860,6 +1974,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateInt32(JSVM_Env env, int32_t value, JSVM_Va
 
 This API is used to convert from the C int32_t type to the JavaScript number type.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateInt32(JSVM_Env env, int32_t value, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateInt32(JSVM_Env env, int32_t value, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -1887,6 +2003,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateUint32(JSVM_Env env, uint32_t value, JSVM_
 **Description**
 
 This API is used to convert from the C uint32_t type to the JavaScript number type.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateUint32(JSVM_Env env, uint32_t value, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateUint32(JSVM_Env env, uint32_t value, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -1916,6 +2034,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateInt64(JSVM_Env env, int64_t value, JSVM_Va
 
 This API is used to convert from the C int64_t type to the JavaScript number type.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateInt64(JSVM_Env env, int64_t value, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateInt64(JSVM_Env env, int64_t value, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -1943,6 +2063,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateDouble(JSVM_Env env, double value, JSVM_Va
 **Description**
 
 This API is used to convert from the C double type to the JavaScript number type.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateDouble(JSVM_Env env, double value, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateDouble(JSVM_Env env, double value, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -1972,6 +2094,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintInt64(JSVM_Env env, int64_t value, J
 
 This API converts the C int64_t type to the JavaScript BigInt type.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintInt64(JSVM_Env env, int64_t value, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintInt64(JSVM_Env env, int64_t value, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -2000,6 +2124,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintUint64(JSVM_Env env, uint64_t value,
 
 This API converts the C uint64_t type to the JavaScript BigInt type.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintUint64(JSVM_Env env, uint64_t value, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintUint64(JSVM_Env env, uint64_t value, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -2027,6 +2153,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintWords(JSVM_Env env, int signBit, siz
 **Description**
 
 This API converts an array of unsigned 64-bit words into a single BigInt value. The resulting BigInt is calculated as (–1)sign_bit (words[0] × (264)0 + words[1] × (264)1 + …)
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintWords(JSVM_Env env, int signBit, size_t wordCount, const uint64_t* words, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintWords(JSVM_Env env, int signBit, size_t wordCount, const uint64_t* words, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -2058,6 +2186,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringLatin1(JSVM_Env env, const char* str
 
 This API creates a JavaScript string value from an ISO-8859-1-encoded C string. The native string is copied.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringLatin1(JSVM_Env env, const char* str, size_t length, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringLatin1(JSVM_Env env, const char* str, size_t length, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -2086,6 +2216,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringUtf16(JSVM_Env env, const char16_t* 
 **Description**
 
 This API creates a JavaScript string value from a UTF16-LE-encoded C string. The native string is copied.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringUtf16(JSVM_Env env, const char16_t* str, size_t length, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringUtf16(JSVM_Env env, const char16_t* str, size_t length, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -2116,6 +2248,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringUtf8(JSVM_Env env, const char* str, 
 
 This API creates a JavaScript string value from a UTF8-encoded C string. The native string is copied.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringUtf8(JSVM_Env env, const char* str, size_t length, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringUtf8(JSVM_Env env, const char* str, size_t length, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -2145,6 +2279,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetArrayLength(JSVM_Env env, JSVM_Value value, u
 
 This API returns the length of an array.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetArrayLength(JSVM_Env env, JSVM_Value value, uint32_t* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetArrayLength(JSVM_Env env, JSVM_Value value, uint32_t* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -2172,6 +2308,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetArraybufferInfo(JSVM_Env env, JSVM_Value arra
 **Description**
 
 This API is used to retrieve the underlying data buffer of an ArrayBuffer and its length.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetArraybufferInfo(JSVM_Env env, JSVM_Value arraybuffer, void** data, size_t* byteLength)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetArraybufferInfo(JSVM_Env env, JSVM_Value arraybuffer, void** data, size_t* byteLength)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -2202,6 +2340,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetPrototype(JSVM_Env env, JSVM_Value object, JS
 
 This API returns the length of an array.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetPrototype(JSVM_Env env, JSVM_Value object, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetPrototype(JSVM_Env env, JSVM_Value object, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -2229,6 +2369,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetTypedarrayInfo(JSVM_Env env, JSVM_Value typed
 **Description**
 
 This API returns various properties of a typed array.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetTypedarrayInfo(JSVM_Env env, JSVM_Value typedarray, JSVM_TypedarrayType* type, size_t* length, void** data, JSVM_Value* arraybuffer, size_t* byteOffset)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetTypedarrayInfo(JSVM_Env env, JSVM_Value typedarray, JSVM_TypedarrayType* type, size_t* length, void** data, JSVM_Value* arraybuffer, size_t* byteOffset)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -2262,6 +2404,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetDataviewInfo(JSVM_Env env, JSVM_Value datavie
 
 Any of the out parameters may be NULL if that property is unneeded. This API returns various properties of a DataView.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetDataviewInfo(JSVM_Env env, JSVM_Value dataview, size_t* bytelength, void** data, JSVM_Value* arraybuffer, size_t* byteOffset)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetDataviewInfo(JSVM_Env env, JSVM_Value dataview, size_t* bytelength, void** data, JSVM_Value* arraybuffer, size_t* byteOffset)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -2293,6 +2437,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetDateValue(JSVM_Env env, JSVM_Value value, dou
 
 Returns JSVM_OK if the function executed successfully. If a non-date JSVM_Value is passed in it returns JSVM_date_expected.This API returns the C double primitive of time value for the given JavaScript Date.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetDateValue(JSVM_Env env, JSVM_Value value, double* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetDateValue(JSVM_Env env, JSVM_Value value, double* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -2320,6 +2466,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBool(JSVM_Env env, JSVM_Value value, boo
 **Description**
 
 This API returns the C boolean primitive equivalent of the given JavaScript Boolean.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBool(JSVM_Env env, JSVM_Value value, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBool(JSVM_Env env, JSVM_Value value, bool* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -2349,6 +2497,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueDouble(JSVM_Env env, JSVM_Value value, d
 
 This API returns the C double primitive equivalent of the given JavaScript number.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueDouble(JSVM_Env env, JSVM_Value value, double* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueDouble(JSVM_Env env, JSVM_Value value, double* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -2376,6 +2526,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintInt64(JSVM_Env env, JSVM_Value val
 **Description**
 
 This API returns the C int64_t primitive equivalent of the given JavaScript BigInt. If needed it will truncate the value, setting lossless to false.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintInt64(JSVM_Env env, JSVM_Value value, int64_t* result, bool* lossless)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintInt64(JSVM_Env env, JSVM_Value value, int64_t* result, bool* lossless)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -2406,6 +2558,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintUint64(JSVM_Env env, JSVM_Value va
 
 This API returns the C uint64_t primitive equivalent of the given JavaScript BigInt. If needed it will truncate the value, setting lossless to false.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintUint64(JSVM_Env env, JSVM_Value value, uint64_t* result, bool* lossless)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintUint64(JSVM_Env env, JSVM_Value value, uint64_t* result, bool* lossless)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -2434,6 +2588,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintWords(JSVM_Env env, JSVM_Value val
 **Description**
 
 This API converts a single BigInt value into a sign bit, 64-bit little-endian array, and the number of elements in the array. signBit and words may be both set to NULL, in order to get only wordCount.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintWords(JSVM_Env env, JSVM_Value value, int* signBit, size_t* wordCount, uint64_t* words)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintWords(JSVM_Env env, JSVM_Value value, int* signBit, size_t* wordCount, uint64_t* words)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -2465,6 +2621,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueExternal(JSVM_Env env, JSVM_Value value,
 
 This API retrieves the external data pointer that was previously passed to OH_JSVM_CreateExternal().
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueExternal(JSVM_Env env, JSVM_Value value, void** result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueExternal(JSVM_Env env, JSVM_Value value, void** result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -2492,6 +2650,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueInt32(JSVM_Env env, JSVM_Value value, in
 **Description**
 
 This API returns the C int32 primitive equivalent of the given JavaScript number.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueInt32(JSVM_Env env, JSVM_Value value, int32_t* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueInt32(JSVM_Env env, JSVM_Value value, int32_t* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -2521,6 +2681,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueInt64(JSVM_Env env, JSVM_Value value, in
 
 This API returns the C int64 primitive equivalent of the given JavaScript number.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueInt64(JSVM_Env env, JSVM_Value value, int64_t* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueInt64(JSVM_Env env, JSVM_Value value, int64_t* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -2548,6 +2710,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringLatin1(JSVM_Env env, JSVM_Value va
 **Description**
 
 This API returns the ISO-8859-1-encoded string corresponding the value passed in.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringLatin1(JSVM_Env env, JSVM_Value value, char* buf, size_t bufsize, size_t* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringLatin1(JSVM_Env env, JSVM_Value value, char* buf, size_t bufsize, size_t* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -2579,6 +2743,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringUtf8(JSVM_Env env, JSVM_Value valu
 
 This API returns the UTF8-encoded string corresponding the value passed in.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringUtf8(JSVM_Env env, JSVM_Value value, char* buf, size_t bufsize, size_t* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringUtf8(JSVM_Env env, JSVM_Value value, char* buf, size_t bufsize, size_t* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -2608,6 +2774,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringUtf16(JSVM_Env env, JSVM_Value val
 **Description**
 
 This API returns the UTF16-encoded string corresponding the value passed in.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringUtf16(JSVM_Env env, JSVM_Value value, char16_t* buf, size_t bufsize, size_t* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringUtf16(JSVM_Env env, JSVM_Value value, char16_t* buf, size_t bufsize, size_t* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -2639,6 +2807,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueUint32(JSVM_Env env, JSVM_Value value, u
 
 This API returns the C primitive equivalent of the given JSVM_Value as a uint32_t.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueUint32(JSVM_Env env, JSVM_Value value, uint32_t* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetValueUint32(JSVM_Env env, JSVM_Value value, uint32_t* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -2666,6 +2836,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetBoolean(JSVM_Env env, bool value, JSVM_Value*
 **Description**
 
 This API is used to return the JavaScript singleton object that is used to represent the given boolean value.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetBoolean(JSVM_Env env, bool value, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetBoolean(JSVM_Env env, bool value, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -2695,6 +2867,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetGlobal(JSVM_Env env, JSVM_Value* result)
 
 This API returns the global object.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetGlobal(JSVM_Env env, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetGlobal(JSVM_Env env, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -2721,6 +2895,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetNull(JSVM_Env env, JSVM_Value* result)
 **Description**
 
 This API returns the null object.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetNull(JSVM_Env env, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetNull(JSVM_Env env, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -2749,6 +2925,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetUndefined(JSVM_Env env, JSVM_Value* result)
 
 This API returns the Undefined object.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetUndefined(JSVM_Env env, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetUndefined(JSVM_Env env, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -2775,6 +2953,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToBool(JSVM_Env env, JSVM_Value value, JSV
 **Description**
 
 This API implements the abstract operation ToBoolean()
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToBool(JSVM_Env env, JSVM_Value value, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToBool(JSVM_Env env, JSVM_Value value, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -2804,6 +2984,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToNumber(JSVM_Env env, JSVM_Value value, J
 
 This API implements the abstract operation ToNumber() as defined. This function potentially runs JS code if the passed-in value is an object.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToNumber(JSVM_Env env, JSVM_Value value, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToNumber(JSVM_Env env, JSVM_Value value, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -2831,6 +3013,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToObject(JSVM_Env env, JSVM_Value value, J
 **Description**
 
 This API implements the abstract operation ToObject().
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToObject(JSVM_Env env, JSVM_Value value, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToObject(JSVM_Env env, JSVM_Value value, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -2860,6 +3044,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToString(JSVM_Env env, JSVM_Value value, J
 
 This API implements the abstract operation ToString().This function potentially runs JS code if the passed-in value is an object.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToString(JSVM_Env env, JSVM_Value value, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToString(JSVM_Env env, JSVM_Value value, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -2888,6 +3074,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_Typeof(JSVM_Env env, JSVM_Value value, JSVM_Valu
 
 This API represents behavior similar to invoking the typeof Operator on the object as defined. However, there are some differences:It has support for detecting an External value.It detects null as a separate type, while ECMAScript typeof would detect object.If value has a type that is invalid, an error is returned.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_Typeof(JSVM_Env env, JSVM_Value value, JSVM_ValueType* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_Typeof(JSVM_Env env, JSVM_Value value, JSVM_ValueType* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -2915,6 +3103,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_Instanceof(JSVM_Env env, JSVM_Value object, JSVM
 **Description**
 
 This API represents invoking the instanceof Operator on the object.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_Instanceof(JSVM_Env env, JSVM_Value object, JSVM_Value constructor, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_Instanceof(JSVM_Env env, JSVM_Value object, JSVM_Value constructor, bool* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -2945,6 +3135,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsArray(JSVM_Env env, JSVM_Value value, bool* re
 
 This API represents invoking the IsArray operation on the object
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsArray(JSVM_Env env, JSVM_Value value, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsArray(JSVM_Env env, JSVM_Value value, bool* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -2972,6 +3164,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsArraybuffer(JSVM_Env env, JSVM_Value value, bo
 **Description**
 
 This API checks if the Object passed in is an array buffer.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsArraybuffer(JSVM_Env env, JSVM_Value value, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsArraybuffer(JSVM_Env env, JSVM_Value value, bool* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -3001,6 +3195,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsDate(JSVM_Env env, JSVM_Value value, bool* isD
 
 This API checks if the Object passed in is a date.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsDate(JSVM_Env env, JSVM_Value value, bool* isDate)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsDate(JSVM_Env env, JSVM_Value value, bool* isDate)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -3028,6 +3224,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsTypedarray(JSVM_Env env, JSVM_Value value, boo
 **Description**
 
 This API checks if the Object passed in is a typed array.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsTypedarray(JSVM_Env env, JSVM_Value value, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsTypedarray(JSVM_Env env, JSVM_Value value, bool* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -3057,6 +3255,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsDataview(JSVM_Env env, JSVM_Value value, bool*
 
 This API checks if the Object passed in is a DataView.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsDataview(JSVM_Env env, JSVM_Value value, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsDataview(JSVM_Env env, JSVM_Value value, bool* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -3084,6 +3284,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_StrictEquals(JSVM_Env env, JSVM_Value lhs, JSVM_
 **Description**
 
 This API represents the invocation of the Strict Equality algorithm.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_StrictEquals(JSVM_Env env, JSVM_Value lhs, JSVM_Value rhs, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_StrictEquals(JSVM_Env env, JSVM_Value lhs, JSVM_Value rhs, bool* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -3114,6 +3316,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_Equals(JSVM_Env env, JSVM_Value lhs, JSVM_Value 
 
 This API represents the invocation of the Relaxed Equality algorithm. Returns true as long as the values are equal, regardless of type.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_Equals(JSVM_Env env, JSVM_Value lhs, JSVM_Value rhs, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_Equals(JSVM_Env env, JSVM_Value lhs, JSVM_Value rhs, bool* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -3143,6 +3347,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DetachArraybuffer(JSVM_Env env, JSVM_Value array
 
 This API represents the invocation of the ArrayBuffer detach operation.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_DetachArraybuffer(JSVM_Env env, JSVM_Value arraybuffer)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_DetachArraybuffer(JSVM_Env env, JSVM_Value arraybuffer)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -3169,6 +3375,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsDetachedArraybuffer(JSVM_Env env, JSVM_Value v
 **Description**
 
 This API represents the invocation of the ArrayBuffer IsDetachedBuffer operation.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsDetachedArraybuffer(JSVM_Env env, JSVM_Value value, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsDetachedArraybuffer(JSVM_Env env, JSVM_Value value, bool* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -3198,6 +3406,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetPropertyNames(JSVM_Env env, JSVM_Value object
 
 This API returns the names of the enumerable properties of object as an array of strings. The properties of object whose key is a symbol will not be included.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetPropertyNames(JSVM_Env env, JSVM_Value object, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetPropertyNames(JSVM_Env env, JSVM_Value object, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -3225,6 +3435,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetAllPropertyNames(JSVM_Env env, JSVM_Value obj
 **Description**
 
 This API returns an array containing the names of the available properties of this object.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetAllPropertyNames(JSVM_Env env, JSVM_Value object, JSVM_KeyCollectionMode keyMode, JSVM_KeyFilter keyFilter, JSVM_KeyConversion keyConversion, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetAllPropertyNames(JSVM_Env env, JSVM_Value object, JSVM_KeyCollectionMode keyMode, JSVM_KeyFilter keyFilter, JSVM_KeyConversion keyConversion, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -3257,6 +3469,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetProperty(JSVM_Env env, JSVM_Value object, JSV
 
 This API set a property on the Object passed in.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SetProperty(JSVM_Env env, JSVM_Value object, JSVM_Value key, JSVM_Value value)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SetProperty(JSVM_Env env, JSVM_Value object, JSVM_Value key, JSVM_Value value)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -3285,6 +3499,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetProperty(JSVM_Env env, JSVM_Value object, JSV
 **Description**
 
 This API gets the requested property from the Object passed in.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetProperty(JSVM_Env env, JSVM_Value object, JSVM_Value key, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetProperty(JSVM_Env env, JSVM_Value object, JSVM_Value key, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -3315,6 +3531,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_HasProperty(JSVM_Env env, JSVM_Value object, JSV
 
 This API checks if the Object passed in has the named property.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_HasProperty(JSVM_Env env, JSVM_Value object, JSVM_Value key, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_HasProperty(JSVM_Env env, JSVM_Value object, JSVM_Value key, bool* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -3343,6 +3561,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DeleteProperty(JSVM_Env env, JSVM_Value object, 
 **Description**
 
 This API attempts to delete the key own property from object.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_DeleteProperty(JSVM_Env env, JSVM_Value object, JSVM_Value key, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_DeleteProperty(JSVM_Env env, JSVM_Value object, JSVM_Value key, bool* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -3373,6 +3593,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_HasOwnProperty(JSVM_Env env, JSVM_Value object, 
 
 This API checks if the Object passed in has the named own property. key must be a string or a symbol, or an error will be thrown. JSVM-API will not perform any conversion between data types.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_HasOwnProperty(JSVM_Env env, JSVM_Value object, JSVM_Value key, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_HasOwnProperty(JSVM_Env env, JSVM_Value object, JSVM_Value key, bool* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -3401,6 +3623,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetNamedProperty(JSVM_Env env, JSVM_Value object
 **Description**
 
 This method is equivalent to calling OH_JSVM_SetProperty with a JSVM_Value created from the string passed in as utf8name.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SetNamedProperty(JSVM_Env env, JSVM_Value object, const char* utf8name, JSVM_Value value)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SetNamedProperty(JSVM_Env env, JSVM_Value object, const char* utf8name, JSVM_Value value)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -3431,6 +3655,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetNamedProperty(JSVM_Env env, JSVM_Value object
 
 This method is equivalent to calling OH_JSVM_SetProperty with a JSVM_Value created from the string passed in as utf8name.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetNamedProperty(JSVM_Env env, JSVM_Value object, const char* utf8name, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetNamedProperty(JSVM_Env env, JSVM_Value object, const char* utf8name, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -3459,6 +3685,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_HasNamedProperty(JSVM_Env env, JSVM_Value object
 **Description**
 
 This method is equivalent to calling OH_JSVM_SetProperty with a JSVM_Value created from the string passed in as utf8name.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_HasNamedProperty(JSVM_Env env, JSVM_Value object, const char* utf8name, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_HasNamedProperty(JSVM_Env env, JSVM_Value object, const char* utf8name, bool* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -3489,6 +3717,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetElement(JSVM_Env env, JSVM_Value object, uint
 
 This API sets an element on the Object passed in.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SetElement(JSVM_Env env, JSVM_Value object, uint32_t index, JSVM_Value value)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SetElement(JSVM_Env env, JSVM_Value object, uint32_t index, JSVM_Value value)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -3517,6 +3747,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetElement(JSVM_Env env, JSVM_Value object, uint
 **Description**
 
 This API gets the element at the requested index.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetElement(JSVM_Env env, JSVM_Value object, uint32_t index, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetElement(JSVM_Env env, JSVM_Value object, uint32_t index, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -3547,6 +3779,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_HasElement(JSVM_Env env, JSVM_Value object, uint
 
 This API returns if the Object passed in has an element at the requested index.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_HasElement(JSVM_Env env, JSVM_Value object, uint32_t index, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_HasElement(JSVM_Env env, JSVM_Value object, uint32_t index, bool* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -3575,6 +3809,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DeleteElement(JSVM_Env env, JSVM_Value object, u
 **Description**
 
 This API attempts to delete the specified index from object.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_DeleteElement(JSVM_Env env, JSVM_Value object, uint32_t index, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_DeleteElement(JSVM_Env env, JSVM_Value object, uint32_t index, bool* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -3605,6 +3841,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DefineProperties(JSVM_Env env, JSVM_Value object
 
 This method allows the efficient definition of multiple properties on a given object. The properties are defined using property descriptors. Given an array of such property descriptors, this API will set the properties on the object one at a time, as defined by DefineOwnProperty().
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_DefineProperties(JSVM_Env env, JSVM_Value object, size_t propertyCount, const JSVM_PropertyDescriptor* properties)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_DefineProperties(JSVM_Env env, JSVM_Value object, size_t propertyCount, const JSVM_PropertyDescriptor* properties)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -3634,6 +3872,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ObjectFreeze(JSVM_Env env, JSVM_Value object)
 
 This method freezes a given object. This prevents new properties from being added to it, existing properties from being removed, prevents changing the enumerability, configurability, or writability of existing properties, and prevents the values of existing properties from being changed. It also prevents the object's prototype from being changed.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ObjectFreeze(JSVM_Env env, JSVM_Value object)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ObjectFreeze(JSVM_Env env, JSVM_Value object)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -3661,6 +3901,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ObjectSeal(JSVM_Env env, JSVM_Value object)
 
 This method seals a given object. This prevents new properties from being added to it, as well as marking all existing properties as non-configurable.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ObjectSeal(JSVM_Env env, JSVM_Value object)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ObjectSeal(JSVM_Env env, JSVM_Value object)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -3687,6 +3929,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CallFunction(JSVM_Env env, JSVM_Value recv, JSVM
 **Description**
 
 This method allows a JavaScript function object to be called from a native add-on. This is the primary mechanism of calling back from the add-on's native code into JavaScript.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CallFunction(JSVM_Env env, JSVM_Value recv, JSVM_Value func, size_t argc, const JSVM_Value* argv, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CallFunction(JSVM_Env env, JSVM_Value recv, JSVM_Value func, size_t argc, const JSVM_Value* argv, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -3719,6 +3963,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateFunction(JSVM_Env env, const char* utf8nam
 
 This API allows an add-on author to create a function object in native code. This is the primary mechanism to allow calling into the add-on's native code from JavaScript.The newly created function is not automatically visible from script after this call. Instead, a property must be explicitly set on any object that is visible to JavaScript, in order for the function to be accessible from script.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateFunction(JSVM_Env env, const char* utf8name, size_t length, JSVM_Callback cb, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateFunction(JSVM_Env env, const char* utf8name, size_t length, JSVM_Callback cb, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -3748,6 +3994,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetCbInfo(JSVM_Env env, JSVM_CallbackInfo cbinfo
 **Description**
 
 This method is used within a callback function to retrieve details about the call like the arguments and the this pointer from a given callback info.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetCbInfo(JSVM_Env env, JSVM_CallbackInfo cbinfo, size_t* argc, JSVM_Value* argv, JSVM_Value* thisArg, void** data)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetCbInfo(JSVM_Env env, JSVM_CallbackInfo cbinfo, size_t* argc, JSVM_Value* argv, JSVM_Value* thisArg, void** data)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -3780,6 +4028,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetNewTarget(JSVM_Env env, JSVM_CallbackInfo cbi
 
 This API returns the new.target of the constructor call. If the current callback is not a constructor call, the result is NULL.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetNewTarget(JSVM_Env env, JSVM_CallbackInfo cbinfo, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetNewTarget(JSVM_Env env, JSVM_CallbackInfo cbinfo, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -3807,6 +4057,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_NewInstance(JSVM_Env env, JSVM_Value constructor
 **Description**
 
 his method is used to instantiate a new JavaScript value using a given JSVM_Value that represents the constructor for the object.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_NewInstance(JSVM_Env env, JSVM_Value constructor, size_t argc, const JSVM_Value* argv, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_NewInstance(JSVM_Env env, JSVM_Value constructor, size_t argc, const JSVM_Value* argv, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -3837,6 +4089,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DefineClass(JSVM_Env env, const char* utf8name, 
 **Description**
 
 When wrapping a C++ class, the C++ constructor callback passed via constructor should be a static method on the class that calls the actual class constructor, then wraps the new C++ instance in a JavaScript object, and returns the wrapper object.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_DefineClass(JSVM_Env env, const char* utf8name, size_t length, JSVM_Callback constructor, size_t propertyCount, const JSVM_PropertyDescriptor* properties, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_DefineClass(JSVM_Env env, const char* utf8name, size_t length, JSVM_Callback constructor, size_t propertyCount, const JSVM_PropertyDescriptor* properties, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -3870,6 +4124,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_Wrap(JSVM_Env env, JSVM_Value jsObject, void* na
 
 Wraps a native instance in a JavaScript object. The native instance can be retrieved later using OH_JSVM_Unwrap().
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_Wrap(JSVM_Env env, JSVM_Value jsObject, void* nativeObject, JSVM_Finalize finalizeCb, void* finalizeHint, JSVM_Ref* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_Wrap(JSVM_Env env, JSVM_Value jsObject, void* nativeObject, JSVM_Finalize finalizeCb, void* finalizeHint, JSVM_Ref* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -3901,6 +4157,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_Unwrap(JSVM_Env env, JSVM_Value jsObject, void**
 
 When JavaScript code invokes a method or property accessor on the class, the corresponding JSVM_Callback is invoked. If the callback is for an instance method or accessor, then the this argument to the callback is the wrapper object; the wrapped C++ instance that is the target of the call can be obtained then by calling OH_JSVM_Unwrap() on the wrapper object.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_Unwrap(JSVM_Env env, JSVM_Value jsObject, void** result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_Unwrap(JSVM_Env env, JSVM_Value jsObject, void** result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -3928,6 +4186,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_RemoveWrap(JSVM_Env env, JSVM_Value jsObject, vo
 **Description**
 
 Retrieves a native instance that was previously wrapped in the JavaScript object jsObject using OH_JSVM_Wrap() and removes the wrapping. If a finalize callback was associated with the wrapping, it will no longer be called when the JavaScript object becomes garbage-collected.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_RemoveWrap(JSVM_Env env, JSVM_Value jsObject, void** result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_RemoveWrap(JSVM_Env env, JSVM_Value jsObject, void** result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -3957,6 +4217,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_TypeTagObject(JSVM_Env env, JSVM_Value value, co
 
 Associates the value of the typeTag pointer with the JavaScript object or external. OH_JSVM_CheckObjectTypeTag() can then be used to compare the tag that was attached to the object with one owned by the addon to ensure that the object has the right type. If the object already has an associated type tag, this API will return JSVM_INVALID_ARG.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_TypeTagObject(JSVM_Env env, JSVM_Value value, const JSVM_TypeTag* typeTag)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_TypeTagObject(JSVM_Env env, JSVM_Value value, const JSVM_TypeTag* typeTag)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -3984,6 +4246,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CheckObjectTypeTag(JSVM_Env env, JSVM_Value valu
 **Description**
 
 Compares the pointer given as typeTag with any that can be found on js object. If no tag is found on js object or, if a tag is found but it does not match typeTag, then result is set to false. If a tag is found and it matches typeTag, then result is set to true.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CheckObjectTypeTag(JSVM_Env env, JSVM_Value value, const JSVM_TypeTag* typeTag, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CheckObjectTypeTag(JSVM_Env env, JSVM_Value value, const JSVM_TypeTag* typeTag, bool* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -4013,6 +4277,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_AddFinalizer(JSVM_Env env, JSVM_Value jsObject, 
 **Description**
 
 This API can be called multiple times on a single JavaScript object.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_AddFinalizer(JSVM_Env env, JSVM_Value jsObject, void* finalizeData, JSVM_Finalize finalizeCb, void* finalizeHint, JSVM_Ref* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_AddFinalizer(JSVM_Env env, JSVM_Value jsObject, void* finalizeData, JSVM_Finalize finalizeCb, void* finalizeHint, JSVM_Ref* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -4045,6 +4311,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetVersion(JSVM_Env env, uint32_t* result)
 
 This API returns the highest JSVM-API version supported by the JSVM runtime.<br> JSVM-API is planned to be additive such that newer releases of JSVM may support additional API functions. In order to allow an addon to use a newer function when running with versions of JSVM that support it, while providing fallback behavior when running with JSVM versions that don't support it.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetVersion(JSVM_Env env, uint32_t* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetVersion(JSVM_Env env, uint32_t* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -4072,6 +4340,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetVMInfo(JSVM_VMInfo* result)
 
 Return information of the VM.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetVMInfo(JSVM_VMInfo* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetVMInfo(JSVM_VMInfo* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -4097,6 +4367,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_AdjustExternalMemory(JSVM_Env env, int64_t chang
 **Description**
 
 This function gives V8 an indication of the amount of externally allocated memory that is kept alive by JavaScript objects (i.e. a JavaScript object that points to its own memory allocated by a native addon). Registering externally allocated memory will trigger global garbage collections more often than it would otherwise.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_AdjustExternalMemory(JSVM_Env env, int64_t changeInBytes, int64_t* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_AdjustExternalMemory(JSVM_Env env, int64_t changeInBytes, int64_t* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -4126,6 +4398,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_MemoryPressureNotification(JSVM_Env env, JSVM_Me
 
 This function notifies the VM that the system is running low on memory and optionally triggers a garbage collection.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_MemoryPressureNotification(JSVM_Env env, JSVM_MemoryPressureLevel level)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_MemoryPressureNotification(JSVM_Env env, JSVM_MemoryPressureLevel level)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -4152,6 +4426,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreatePromise(JSVM_Env env, JSVM_Deferred* defer
 **Description**
 
 This API creates a deferred object and a JavaScript promise.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreatePromise(JSVM_Env env, JSVM_Deferred* deferred, JSVM_Value* promise)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreatePromise(JSVM_Env env, JSVM_Deferred* deferred, JSVM_Value* promise)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -4181,6 +4457,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ResolveDeferred(JSVM_Env env, JSVM_Deferred defe
 
 This API resolves a JavaScript promise by way of the deferred object with which it is associated. Thus, it can only be used to resolve JavaScript promises for which the corresponding deferred object is available. This effectively means that the promise must have been created using OH_JSVM_CreatePromise() and the deferred object returned from that call must have been retained in order to be passed to this API.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ResolveDeferred(JSVM_Env env, JSVM_Deferred deferred, JSVM_Value resolution)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ResolveDeferred(JSVM_Env env, JSVM_Deferred deferred, JSVM_Value resolution)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -4208,6 +4486,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_RejectDeferred(JSVM_Env env, JSVM_Deferred defer
 **Description**
 
 This API rejects a JavaScript promise by way of the deferred object with which it is associated. Thus, it can only be used to reject JavaScript promises for which the corresponding deferred object is available. This effectively means that the promise must have been created using OH_JSVM_CreatePromise() and the deferred object returned from that call must have been retained in order to be passed to this API.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_RejectDeferred(JSVM_Env env, JSVM_Deferred deferred, JSVM_Value rejection)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_RejectDeferred(JSVM_Env env, JSVM_Deferred deferred, JSVM_Value rejection)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -4237,6 +4517,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsPromise(JSVM_Env env, JSVM_Value value, bool* 
 
 This API return indicating whether promise is a native promise object.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsPromise(JSVM_Env env, JSVM_Value value, bool* isPromise)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsPromise(JSVM_Env env, JSVM_Value value, bool* isPromise)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -4264,6 +4546,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_PromiseRegisterHandler(JSVM_Env env, JSVM_Value 
 **Description**
 
 This API register a resolution/rejection handler with a promise.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_PromiseRegisterHandler(JSVM_Env env, JSVM_Value promise, JSVM_Value onFulfilled, JSVM_Value onRejected, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_PromiseRegisterHandler(JSVM_Env env, JSVM_Value promise, JSVM_Value onFulfilled, JSVM_Value onRejected, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -4295,6 +4579,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_JsonParse(JSVM_Env env, JSVM_Value jsonString, J
 
 This API parses a JSON string and returns it as value if successful.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_JsonParse(JSVM_Env env, JSVM_Value jsonString, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_JsonParse(JSVM_Env env, JSVM_Value jsonString, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -4323,6 +4609,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_JsonStringify(JSVM_Env env, JSVM_Value jsonObjec
 
 This API stringifies the object and returns it as string if successful.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_JsonStringify(JSVM_Env env, JSVM_Value jsonObject, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_JsonStringify(JSVM_Env env, JSVM_Value jsonObject, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -4350,6 +4638,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateSnapshot(JSVM_VM vm, size_t contextCount, 
 **Description**
 
 This API create the startup snapshot of the VM.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateSnapshot(JSVM_VM vm, size_t contextCount, const JSVM_Env* contexts, const char** blobData, size_t* blobSize)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateSnapshot(JSVM_VM vm, size_t contextCount, const JSVM_Env* contexts, const char** blobData, size_t* blobSize)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -4381,6 +4671,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetHeapStatistics(JSVM_VM vm, JSVM_HeapStatistic
 
 This function returns a set of statistics data of the heap of the VM.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetHeapStatistics(JSVM_VM vm, JSVM_HeapStatistics* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetHeapStatistics(JSVM_VM vm, JSVM_HeapStatistics* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -4408,6 +4700,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_StartCpuProfiler(JSVM_VM vm, JSVM_CpuProfiler* r
 
 This function creates and starts a CPU profiler.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_StartCpuProfiler(JSVM_VM vm, JSVM_CpuProfiler* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_StartCpuProfiler(JSVM_VM vm, JSVM_CpuProfiler* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -4434,6 +4728,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_StopCpuProfiler(JSVM_VM vm, JSVM_CpuProfiler pro
 **Description**
 
 This function stops the CPU profiler and output to the stream.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_StopCpuProfiler(JSVM_VM vm, JSVM_CpuProfiler profiler, JSVM_OutputStream stream, void* streamData)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_StopCpuProfiler(JSVM_VM vm, JSVM_CpuProfiler profiler, JSVM_OutputStream stream, void* streamData)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -4464,6 +4760,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_TakeHeapSnapshot(JSVM_VM vm, JSVM_OutputStream s
 
 This function takes the current heap snapshot and output to the stream.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_TakeHeapSnapshot(JSVM_VM vm, JSVM_OutputStream stream, void* streamData)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_TakeHeapSnapshot(JSVM_VM vm, JSVM_OutputStream stream, void* streamData)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -4492,6 +4790,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_TakeRawHeapSnapshot(JSVM_VM vm, JSVM_OutputStrea
 
 This function takes the current heap snapshot and outputs it to the stream in raw heap format (binary format). The raw heap format is VM-specific and its layout is not guaranteed to be stable across different versions. This operation may pause the application temporarily, and frequent invocation may generate large snapshot files and increase disk usage, so callers should manage generated files appropriately if files are written to disk. The stream callback is invoked synchronously on the thread where the VM is running. The callback should avoid long blocking operations. If the callback returns false, the output stream is aborted, snapshot generation stops.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_TakeRawHeapSnapshot(JSVM_VM vm, JSVM_OutputStream stream, void *streamData)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_TakeRawHeapSnapshot(JSVM_VM vm, JSVM_OutputStream stream, void *streamData)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 26.0.0
@@ -4519,6 +4819,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetHeapThresholdCallback(JSVM_VM vm, uint64_t th
 **Description**
 
 Set a heap threshold callback for vm and the vm can only have one heap threshold callback. The registered callback should be cleared by OH_JSVM_ClearHeapThresholdCallback when it is no longer needed. This API is not thread-safe and must be called on the thread where the vm is running. The threshold is checked around GC, and the callback is invoked when the observed heap usage is greater than or equal to threshold. The callback will be called synchronously on the same thread, and threshold checks are skipped while the callback is running. After the callback returns, if the heap usage is still greater than or equal to threshold, the callback will be invoked again around the next GC. The callback does not need to be registered again after it returns. The registered callback is identified (threshold, callback, data).
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SetHeapThresholdCallback(JSVM_VM vm, uint64_t threshold, JSVM_HandlerForHeapThreshold callback, void *data)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SetHeapThresholdCallback(JSVM_VM vm, uint64_t threshold, JSVM_HandlerForHeapThreshold callback, void *data)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -4549,6 +4851,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ClearHeapThresholdCallback(JSVM_VM vm, uint64_t 
 
 Clear the heap threshold callback previously registered for vm. This API is not thread-safe and must be called on the thread where the vm is running. The registered callback is identified (threshold, callback, data).
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ClearHeapThresholdCallback(JSVM_VM vm, uint64_t threshold, JSVM_HandlerForHeapThreshold callback, void *data)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ClearHeapThresholdCallback(JSVM_VM vm, uint64_t threshold, JSVM_HandlerForHeapThreshold callback, void *data)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 26.0.0
@@ -4578,6 +4882,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_OpenInspector(JSVM_Env env, const char* host, ui
 
 This functiong activates insepctor on host and port.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_OpenInspector(JSVM_Env env, const char* host, uint16_t port)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_OpenInspector(JSVM_Env env, const char* host, uint16_t port)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -4606,6 +4912,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CloseInspector(JSVM_Env env)
 
 This function attempts to close all remaining inspector connections.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CloseInspector(JSVM_Env env)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CloseInspector(JSVM_Env env)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -4631,6 +4939,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_WaitForDebugger(JSVM_Env env, bool breakNextLine
 **Description**
 
 This function will block until a client (existing or connected later) has sent Runtime.runIfWaitingForDebugger command.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_WaitForDebugger(JSVM_Env env, bool breakNextLine)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_WaitForDebugger(JSVM_Env env, bool breakNextLine)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -4658,6 +4968,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithPropertyHandler(JSVM_Env env, con
 **Description**
 
 Define a JavaScript class with given class name, constructor, properties, callback handlers for property operations including get, set, delete, enum etc., and call as function callback.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithPropertyHandler(JSVM_Env env, const char* utf8name, size_t length, JSVM_Callback constructor, size_t propertyCount, const JSVM_PropertyDescriptor* properties, JSVM_PropertyHandlerCfg propertyHandlerCfg, JSVM_Callback callAsFunctionCallback, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithPropertyHandler(JSVM_Env env, const char* utf8name, size_t length, JSVM_Callback constructor, size_t propertyCount, const JSVM_PropertyDescriptor* properties, JSVM_PropertyHandlerCfg propertyHandlerCfg, JSVM_Callback callAsFunctionCallback, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -4693,6 +5005,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsLocked(JSVM_Env env, bool* isLocked)
 
 Determines whether the current thread holds the lock for the specified environment. Only threads that hold locks can use the environment.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsLocked(JSVM_Env env, bool* isLocked)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsLocked(JSVM_Env env, bool* isLocked)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -4720,6 +5034,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_AcquireLock(JSVM_Env env)
 
 Acquire the lock for the specified environment. Only threads that hold locks can use the environment.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_AcquireLock(JSVM_Env env)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_AcquireLock(JSVM_Env env)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -4746,6 +5062,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseLock(JSVM_Env env)
 
 Release the lock for the specified environment. Only threads that hold locks can use the environment.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseLock(JSVM_Env env)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseLock(JSVM_Env env)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -4771,6 +5089,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_PumpMessageLoop(JSVM_VM vm, bool* result)
 **Description**
 
 Starts the running of the task queue inside the VM. This task queue can be executed by an external event loop.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_PumpMessageLoop(JSVM_VM vm, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_PumpMessageLoop(JSVM_VM vm, bool* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -4799,6 +5119,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_PerformMicrotaskCheckpoint(JSVM_VM vm)
 
 Check to see if there are any microtasks waiting in the queue, and if there are, execute them.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_PerformMicrotaskCheckpoint(JSVM_VM vm)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_PerformMicrotaskCheckpoint(JSVM_VM vm)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -4824,6 +5146,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsCallable(JSVM_Env env, JSVM_Value value, bool*
 **Description**
 
 This API checks if the value passed in is callable.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsCallable(JSVM_Env env, JSVM_Value value, bool* isCallable)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsCallable(JSVM_Env env, JSVM_Value value, bool* isCallable)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -4853,6 +5177,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsUndefined(JSVM_Env env, JSVM_Value value, bool
 
 This API checks if the value passed in is undefined. This equals to `value === undefined` in JS.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsUndefined(JSVM_Env env, JSVM_Value value, bool* isUndefined)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsUndefined(JSVM_Env env, JSVM_Value value, bool* isUndefined)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -4880,6 +5206,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsNull(JSVM_Env env, JSVM_Value value, bool* isN
 **Description**
 
 This API checks if the value passed in is a null object. This equals to `value === null` in JS.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsNull(JSVM_Env env, JSVM_Value value, bool* isNull)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsNull(JSVM_Env env, JSVM_Value value, bool* isNull)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -4909,6 +5237,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsNullOrUndefined(JSVM_Env env, JSVM_Value value
 
 This API checks if the value passed in is either a null or an undefined object. This is equivalent to `value == null` in JS.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsNullOrUndefined(JSVM_Env env, JSVM_Value value, bool* isNullOrUndefined)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsNullOrUndefined(JSVM_Env env, JSVM_Value value, bool* isNullOrUndefined)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -4936,6 +5266,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsBoolean(JSVM_Env env, JSVM_Value value, bool* 
 **Description**
 
 This API checks if the value passed in is a boolean. This equals to `typeof value === 'boolean'` in JS.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsBoolean(JSVM_Env env, JSVM_Value value, bool* isBoolean)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsBoolean(JSVM_Env env, JSVM_Value value, bool* isBoolean)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -4965,6 +5297,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsNumber(JSVM_Env env, JSVM_Value value, bool* i
 
 This API checks if the value passed in is a number. This equals to `typeof value === 'number'` in JS.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsNumber(JSVM_Env env, JSVM_Value value, bool* isNumber)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsNumber(JSVM_Env env, JSVM_Value value, bool* isNumber)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -4992,6 +5326,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsString(JSVM_Env env, JSVM_Value value, bool* i
 **Description**
 
 This API checks if the value passed in is a string. This equals to `typeof value === 'string'` in JS.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsString(JSVM_Env env, JSVM_Value value, bool* isString)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsString(JSVM_Env env, JSVM_Value value, bool* isString)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -5021,6 +5357,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsSymbol(JSVM_Env env, JSVM_Value value, bool* i
 
 This API checks if the value passed in is a symbol. This equals to `typeof value === 'symbol'` in JS.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsSymbol(JSVM_Env env, JSVM_Value value, bool* isSymbol)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsSymbol(JSVM_Env env, JSVM_Value value, bool* isSymbol)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -5048,6 +5386,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsFunction(JSVM_Env env, JSVM_Value value, bool*
 **Description**
 
 This API checks if the value passed in is a function. This equals to `typeof value === 'function'` in JS.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsFunction(JSVM_Env env, JSVM_Value value, bool* isFunction)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsFunction(JSVM_Env env, JSVM_Value value, bool* isFunction)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -5077,6 +5417,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsObject(JSVM_Env env, JSVM_Value value, bool* i
 
 This API checks if the value passed in is an object.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsObject(JSVM_Env env, JSVM_Value value, bool* isObject)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsObject(JSVM_Env env, JSVM_Value value, bool* isObject)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -5104,6 +5446,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsBigInt(JSVM_Env env, JSVM_Value value, bool* i
 **Description**
 
 This API checks if the value passed in is a bigInt. This equals to `typeof value === 'bigint'` in JS.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsBigInt(JSVM_Env env, JSVM_Value value, bool* isBigInt)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsBigInt(JSVM_Env env, JSVM_Value value, bool* isBigInt)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -5133,6 +5477,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateMap(JSVM_Env env, JSVM_Value* result)
 
 This API returns a JSVM-API value corresponding to a JavaScript Map type.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateMap(JSVM_Env env, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateMap(JSVM_Env env, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -5159,6 +5505,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsMap(JSVM_Env env, JSVM_Value value, bool* isMa
 **Description**
 
 This API checks if the value passed in is a Map.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsMap(JSVM_Env env, JSVM_Value value, bool* isMap)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsMap(JSVM_Env env, JSVM_Value value, bool* isMap)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -5188,6 +5536,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateSet(JSVM_Env env, JSVM_Value* result)
 
 This API returns a JSVM-API value corresponding to a JavaScript Set type.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateSet(JSVM_Env env, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateSet(JSVM_Env env, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -5214,6 +5564,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsSet(JSVM_Env env, JSVM_Value value, bool* isSe
 **Description**
 
 This API checks if the value passed in is a Set.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsSet(JSVM_Env env, JSVM_Value value, bool* isSet)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsSet(JSVM_Env env, JSVM_Value value, bool* isSet)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -5242,6 +5594,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOptions(JSVM_Env env, JSVM_Valu
 **Description**
 
 This function compiles a string of JavaScript code with the compile options and returns the compiled script.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOptions(JSVM_Env env, JSVM_Value script, size_t optionCount, JSVM_CompileOptions options[], JSVM_Script* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOptions(JSVM_Env env, JSVM_Value script, size_t optionCount, JSVM_CompileOptions options[], JSVM_Script* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -5273,6 +5627,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToBigInt(JSVM_Env env, JSVM_Value value, J
 
 This API implements the abstract operation ToBigInt().
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToBigInt(JSVM_Env env, JSVM_Value value, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToBigInt(JSVM_Env env, JSVM_Value value, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -5300,6 +5656,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsRegExp(JSVM_Env env, JSVM_Value value, bool* r
 **Description**
 
 This API checks if the value passed in is a regExp. This equals to `value instanceof RegExp` in JS.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsRegExp(JSVM_Env env, JSVM_Value value, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsRegExp(JSVM_Env env, JSVM_Value value, bool* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -5329,6 +5687,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsConstructor(JSVM_Env env, JSVM_Value value, bo
 
 This API checks if the value passed in is a constructor.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsConstructor(JSVM_Env env, JSVM_Value value, bool* isConstructor)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsConstructor(JSVM_Env env, JSVM_Value value, bool* isConstructor)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -5356,6 +5716,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateRegExp(JSVM_Env env, JSVM_Value value, JSV
 **Description**
 
 This API returns the JavaScript value of the regular expression corresponding to the input. The interface may throw an exception.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateRegExp(JSVM_Env env, JSVM_Value value, JSVM_RegExpFlags flags, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateRegExp(JSVM_Env env, JSVM_Value value, JSVM_RegExpFlags flags, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -5386,6 +5748,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ObjectGetPrototypeOf(JSVM_Env env, JSVM_Value ob
 
 This API returns the Object prototype.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ObjectGetPrototypeOf(JSVM_Env env, JSVM_Value object, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ObjectGetPrototypeOf(JSVM_Env env, JSVM_Value object, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -5414,6 +5778,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ObjectSetPrototypeOf(JSVM_Env env, JSVM_Value ob
 
 This API set the prototype on the Object passed in.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ObjectSetPrototypeOf(JSVM_Env env, JSVM_Value object, JSVM_Value prototype)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ObjectSetPrototypeOf(JSVM_Env env, JSVM_Value object, JSVM_Value prototype)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -5441,6 +5807,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateFunctionWithScript(JSVM_Env env, const cha
 **Description**
 
 Creates a function with a given script as its body.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateFunctionWithScript(JSVM_Env env, const char* funcName, size_t length, size_t argc, const JSVM_Value* argv, JSVM_Value script, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateFunctionWithScript(JSVM_Env env, const char* funcName, size_t length, size_t argc, const JSVM_Value* argv, JSVM_Value script, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -5474,6 +5842,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_RetainScript(JSVM_Env env, JSVM_Script script)
 
 This function keep persistently save a JSVM_Script and extend its lifecycle beyond the current scope.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_RetainScript(JSVM_Env env, JSVM_Script script)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_RetainScript(JSVM_Env env, JSVM_Script script)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -5500,6 +5870,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseScript(JSVM_Env env, JSVM_Script script)
 **Description**
 
 This function release the script retained by OH_JSVM_RetainScript
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseScript(JSVM_Env env, JSVM_Script script)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseScript(JSVM_Env env, JSVM_Script script)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -5528,6 +5900,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_OpenInspectorWithName(JSVM_Env env, int pid, con
 
 This function activates insepctor with pid and alias it.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_OpenInspectorWithName(JSVM_Env env, int pid, const char* name)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_OpenInspectorWithName(JSVM_Env env, int pid, const char* name)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -5555,6 +5929,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileWasmModule(JSVM_Env env, const uint8_t *w
 **Description**
 
 Compile WebAssembly bytecode into a WebAssembly module. If WebAssembly cache provided, deserialization will be performed.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CompileWasmModule(JSVM_Env env, const uint8_t *wasmBytecode, size_t wasmBytecodeLength, const uint8_t *cacheData, size_t cacheDataLength, bool *cacheRejected, JSVM_Value *wasmModule)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CompileWasmModule(JSVM_Env env, const uint8_t *wasmBytecode, size_t wasmBytecodeLength, const uint8_t *cacheData, size_t cacheDataLength, bool *cacheRejected, JSVM_Value *wasmModule)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -5588,6 +5964,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileWasmFunction(JSVM_Env env, JSVM_Value was
 
 Compile the function with the specified index in the WebAssembly module into the specified optimization level.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CompileWasmFunction(JSVM_Env env, JSVM_Value wasmModule, uint32_t functionIndex, JSVM_WasmOptLevel optLevel)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CompileWasmFunction(JSVM_Env env, JSVM_Value wasmModule, uint32_t functionIndex, JSVM_WasmOptLevel optLevel)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -5617,6 +5995,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsWasmModuleObject(JSVM_Env env, JSVM_Value valu
 
 Check whether the given JSVM_Value is a WebAssembly module.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsWasmModuleObject(JSVM_Env env, JSVM_Value value, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsWasmModuleObject(JSVM_Env env, JSVM_Value value, bool* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -5644,6 +6024,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateWasmCache(JSVM_Env env, JSVM_Value wasmMod
 **Description**
 
 Create cache for compiled WebAssembly module.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateWasmCache(JSVM_Env env, JSVM_Value wasmModule, const uint8_t** data, size_t* length)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateWasmCache(JSVM_Env env, JSVM_Value wasmModule, const uint8_t** data, size_t* length)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -5674,6 +6056,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseCache(JSVM_Env env, const uint8_t* cacheD
 
 Release cache data with specified cache type.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseCache(JSVM_Env env, const uint8_t* cacheData, JSVM_CacheType cacheType)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseCache(JSVM_Env env, const uint8_t* cacheData, JSVM_CacheType cacheType)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -5701,6 +6085,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringLatin1(JSVM_Env env, char* s
 **Description**
 
 This API creates an external JavaScript string value from an ISO-8859-1-encoded C string. The native string is copied when failed to create external string.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringLatin1(JSVM_Env env, char* str, size_t length, JSVM_Finalize finalizeCallback, void* finalizeHint, JSVM_Value* result, bool* copied)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringLatin1(JSVM_Env env, char* str, size_t length, JSVM_Finalize finalizeCallback, void* finalizeHint, JSVM_Value* result, bool* copied)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -5734,6 +6120,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringUtf16(JSVM_Env env, char16_t
 
 This API creates an external JavaScript string value from an UTF16-LE-encoded C string. The native string is copied when failed to create external string.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringUtf16(JSVM_Env env, char16_t* str, size_t length, JSVM_Finalize finalizeCallback, void* finalizeHint, JSVM_Value* result, bool* copied)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringUtf16(JSVM_Env env, char16_t* str, size_t length, JSVM_Finalize finalizeCallback, void* finalizeHint, JSVM_Value* result, bool* copied)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -5766,6 +6154,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreatePrivate(JSVM_Env env, JSVM_Value descripti
 
 This API creates a JavaScript private key.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreatePrivate(JSVM_Env env, JSVM_Value description, JSVM_Data* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreatePrivate(JSVM_Env env, JSVM_Value description, JSVM_Data* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -5793,6 +6183,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetPrivate(JSVM_Env env, JSVM_Value object, JSVM
 **Description**
 
 This API set a private property on the Object passed in.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SetPrivate(JSVM_Env env, JSVM_Value object, JSVM_Data key, JSVM_Value value)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SetPrivate(JSVM_Env env, JSVM_Value object, JSVM_Data key, JSVM_Value value)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -5823,6 +6215,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetPrivate(JSVM_Env env, JSVM_Value object, JSVM
 
 This API gets the requested private property from the Object passed in.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetPrivate(JSVM_Env env, JSVM_Value object, JSVM_Data key, JSVM_Value *result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetPrivate(JSVM_Env env, JSVM_Value object, JSVM_Data key, JSVM_Value *result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -5852,6 +6246,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DeletePrivate(JSVM_Env env, JSVM_Value object, J
 
 This API attempts to delete the property of the private key from object.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_DeletePrivate(JSVM_Env env, JSVM_Value object, JSVM_Data key)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_DeletePrivate(JSVM_Env env, JSVM_Value object, JSVM_Data key)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -5879,6 +6275,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataReference(JSVM_Env env, JSVM_Data data
 **Description**
 
 This API creates a new reference with the specified reference count to the data passed in.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataReference(JSVM_Env env, JSVM_Data data, uint32_t initialRefcount, JSVM_Ref* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataReference(JSVM_Env env, JSVM_Data data, uint32_t initialRefcount, JSVM_Ref* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -5909,6 +6307,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceData(JSVM_Env env, JSVM_Ref ref, JSV
 
 If still valid, this API returns the JSVM_Data representing the JavaScript data associated with the JSVM_Ref. Otherwise, result will be NULL.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceData(JSVM_Env env, JSVM_Ref ref, JSVM_Data* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceData(JSVM_Env env, JSVM_Ref ref, JSVM_Data* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -5936,6 +6336,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsBigIntObject(JSVM_Env env, JSVM_Value value, b
 **Description**
 
 Check whether the given JSVM_Value is a BigInt Object.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsBigIntObject(JSVM_Env env, JSVM_Value value, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsBigIntObject(JSVM_Env env, JSVM_Value value, bool* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -5965,6 +6367,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsBooleanObject(JSVM_Env env, JSVM_Value value, 
 
 Check whether the given JSVM_Value is a Boolean Object.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsBooleanObject(JSVM_Env env, JSVM_Value value, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsBooleanObject(JSVM_Env env, JSVM_Value value, bool* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -5992,6 +6396,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsStringObject(JSVM_Env env, JSVM_Value value, b
 **Description**
 
 Check whether the given JSVM_Value is a String Object.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsStringObject(JSVM_Env env, JSVM_Value value, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsStringObject(JSVM_Env env, JSVM_Value value, bool* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -6021,6 +6427,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsNumberObject(JSVM_Env env, JSVM_Value value, b
 
 Check whether the given JSVM_Value is a Number Object.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsNumberObject(JSVM_Env env, JSVM_Value value, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsNumberObject(JSVM_Env env, JSVM_Value value, bool* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -6048,6 +6456,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsSymbolObject(JSVM_Env env, JSVM_Value value, b
 **Description**
 
 Check whether the given JSVM_Value is a Symbol Object.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsSymbolObject(JSVM_Env env, JSVM_Value value, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsSymbolObject(JSVM_Env env, JSVM_Value value, bool* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -6077,6 +6487,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolAsyncIterator(JSVM_Env env, JSVM_Value*
 
 This API returns the Symbol.asyncIterator of Well-Known Symbols.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolAsyncIterator(JSVM_Env env, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolAsyncIterator(JSVM_Env env, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -6103,6 +6515,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolHasInstance(JSVM_Env env, JSVM_Value* r
 **Description**
 
 This API returns the Symbol.hasInstance of Well-Known Symbols.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolHasInstance(JSVM_Env env, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolHasInstance(JSVM_Env env, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -6131,6 +6545,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolIsConcatSpreadable(JSVM_Env env, JSVM_V
 
 This API returns the Symbol.isConcatSpreadable of Well-Known Symbols
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolIsConcatSpreadable(JSVM_Env env, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolIsConcatSpreadable(JSVM_Env env, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -6157,6 +6573,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolMatch(JSVM_Env env, JSVM_Value* result)
 **Description**
 
 This API returns the Symbol.match of Well-Known Symbols
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolMatch(JSVM_Env env, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolMatch(JSVM_Env env, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -6185,6 +6603,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolReplace(JSVM_Env env, JSVM_Value* resul
 
 This API returns the Symbol.replace of Well-Known Symbols
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolReplace(JSVM_Env env, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolReplace(JSVM_Env env, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -6211,6 +6631,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolSearch(JSVM_Env env, JSVM_Value* result
 **Description**
 
 This API returns the Symbol.search of Well-Known Symbols
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolSearch(JSVM_Env env, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolSearch(JSVM_Env env, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -6239,6 +6661,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolSplit(JSVM_Env env, JSVM_Value* result)
 
 This API returns the Symbol.split of Well-Known Symbols
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolSplit(JSVM_Env env, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolSplit(JSVM_Env env, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -6265,6 +6689,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolToPrimitive(JSVM_Env env, JSVM_Value* r
 **Description**
 
 This API returns the Symbol.toPrimitive of Well-Known Symbols
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolToPrimitive(JSVM_Env env, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolToPrimitive(JSVM_Env env, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -6293,6 +6719,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolUnscopables(JSVM_Env env, JSVM_Value* r
 
 This API returns the Symbol.unscopables of Well-Known Symbols
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolUnscopables(JSVM_Env env, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolUnscopables(JSVM_Env env, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -6319,6 +6747,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolToStringTag(JSVM_Env env, JSVM_Value* r
 **Description**
 
 This API returns the Symbol.toStringTag of Well-Known Symbols
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolToStringTag(JSVM_Env env, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolToStringTag(JSVM_Env env, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -6347,6 +6777,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolIterator(JSVM_Env env, JSVM_Value* resu
 
 This API returns the Symbol.iterator of Well-Known Symbols
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolIterator(JSVM_Env env, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolIterator(JSVM_Env env, JSVM_Value* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -6373,6 +6805,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_TraceStart(size_t count, const JSVM_TraceCategor
 **Description**
 
 Trace start with specified categories for all JSVM VM.(Non-thread-safe)
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_TraceStart(size_t count, const JSVM_TraceCategory* categories, const char* tag, size_t eventsCount)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_TraceStart(size_t count, const JSVM_TraceCategory* categories, const char* tag, size_t eventsCount)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -6403,6 +6837,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_TraceStop(JSVM_OutputStream stream, void* stream
 
 Trace stop for specified categories for all JSVM VM.(Non-thread-safe)
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_TraceStop(JSVM_OutputStream stream, void* streamData)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_TraceStop(JSVM_OutputStream stream, void* streamData)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -6430,6 +6866,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForOOMError(JSVM_VM vm, JSVM_HandlerFo
 
 Set Handler For OOM Error. If this function is invoked repeatedly, only the last time takes effect. When handler is null, the previous setting is canceled.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForOOMError(JSVM_VM vm, JSVM_HandlerForOOMError handler)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForOOMError(JSVM_VM vm, JSVM_HandlerForOOMError handler)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -6456,6 +6894,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetDebugOption(JSVM_Env env, JSVM_DebugOption de
 **Description**
 
 This API is used to enable/disable the given debug option for a certain JSVM_Env.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SetDebugOption(JSVM_Env env, JSVM_DebugOption debugOption, bool isEnabled)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SetDebugOption(JSVM_Env env, JSVM_DebugOption debugOption, bool isEnabled)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -6485,6 +6925,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForFatalError(JSVM_VM vm, JSVM_Handler
 
 Set Handler For Fatal Error. If this function is invoked repeatedly, only the last time takes effect. When handler is null, the previous setting is canceled.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForFatalError(JSVM_VM vm, JSVM_HandlerForFatalError handler)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForFatalError(JSVM_VM vm, JSVM_HandlerForFatalError handler)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -6512,6 +6954,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForPromiseReject(JSVM_VM vm, JSVM_Hand
 
 Set Handler For Promise Reject. If this function is invoked repeatedly, only the last time takes effect. When handler is null, the previous setting is canceled.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForPromiseReject(JSVM_VM vm, JSVM_HandlerForPromiseReject handler)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForPromiseReject(JSVM_VM vm, JSVM_HandlerForPromiseReject handler)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -6538,6 +6982,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithOptions(JSVM_Env env, const char*
 **Description**
 
 When wrapping a C++ class, the C++ constructor callback passed via constructor should be a static method on the class that calls the actual class constructor, then wraps the new C++ instance in a JavaScript object according to the different Options passed in, and returns the wrapper object.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithOptions(JSVM_Env env, const char* utf8name, size_t length, JSVM_Callback constructor, size_t propertyCount, const JSVM_PropertyDescriptor* properties, JSVM_Value parentClass, size_t option_count, JSVM_DefineClassOptions options[], JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithOptions(JSVM_Env env, const char* utf8name, size_t length, JSVM_Callback constructor, size_t propertyCount, const JSVM_PropertyDescriptor* properties, JSVM_Value parentClass, size_t option_count, JSVM_DefineClassOptions options[], JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -6574,6 +7020,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_AddHandlerForGC(JSVM_VM vm, JSVM_CBTriggerTimeFo
 
 Add VM GC Callback.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_AddHandlerForGC(JSVM_VM vm, JSVM_CBTriggerTimeForGC triggerTime, JSVM_HandlerForGC handler, JSVM_GCType gcType, void* userData)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_AddHandlerForGC(JSVM_VM vm, JSVM_CBTriggerTimeForGC triggerTime, JSVM_HandlerForGC handler, JSVM_GCType gcType, void* userData)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -6604,6 +7052,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_RemoveHandlerForGC(JSVM_VM vm, JSVM_CBTriggerTim
 
 Remove VM GC Callback.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_RemoveHandlerForGC(JSVM_VM vm, JSVM_CBTriggerTimeForGC triggerTime, JSVM_HandlerForGC handler, void* userData)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_RemoveHandlerForGC(JSVM_VM vm, JSVM_CBTriggerTimeForGC triggerTime, JSVM_HandlerForGC handler, void* userData)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -6633,6 +7083,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_BackgroundDeserialize(JSVM_VM vm, JSVM_CodeCache
 
 Deserialize JavaScript code cache in thread pool, and release JSVM_DeserializeResult with OH_JSVM_ReleaseDeserializeResult.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_BackgroundDeserialize(JSVM_VM vm, JSVM_CodeCache cacheData, JSVM_DeserializeResult* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_BackgroundDeserialize(JSVM_VM vm, JSVM_CodeCache cacheData, JSVM_DeserializeResult* result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 24
@@ -6661,6 +7113,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseDeserializeResult(JSVM_DeserializeResult 
 
 Release deserialize result.
 
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseDeserializeResult(JSVM_DeserializeResult result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseDeserializeResult(JSVM_DeserializeResult result)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 24
@@ -6688,6 +7142,8 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromExternalMemory(JSVM_Env env
 **Description**
 
 Creates a JavaScript ArrayBuffer whose content is initialized from user-provided external memory. The implementation may either directly reference the external memory (zero-copy) or copy the data into an internally managed buffer, depending on engine implementation.<br> When zero-copy is used, the ArrayBuffer directly references the external memory. The caller must NOT free it before the finalize callback is invoked.<br> When a copy occurs, the data is copied into engine-managed memory. The copied output parameter is set to true so the caller knows their memory is no longer referenced. The resulting ArrayBuffer's data pointer (from OH_JSVM_GetArraybufferInfo) will differ from externalData.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromExternalMemory(JSVM_Env env, void* externalData, size_t byteLength, JSVM_FinalizeArrayBuffer finalizeCb, void* finalizeHint, bool* copied, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromExternalMemory(JSVM_Env env, void* externalData, size_t byteLength, JSVM_FinalizeArrayBuffer finalizeCb, void* finalizeHint, bool* copied, JSVM_Value* result)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 

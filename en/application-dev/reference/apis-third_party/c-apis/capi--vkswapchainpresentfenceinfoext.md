@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSwapchainPresentFenceInfoEXT {...}--><!--Device-struct VkSwapchainPresentFenceInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

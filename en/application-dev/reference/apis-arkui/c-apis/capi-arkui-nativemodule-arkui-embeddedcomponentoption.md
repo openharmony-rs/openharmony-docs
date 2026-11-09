@@ -8,11 +8,13 @@ typedef struct ArkUI_EmbeddedComponentOption ArkUI_EmbeddedComponentOption
 
 Define the EmbeddedComponentOption for the EmbeddedComponent.
 
+<!--Device-typedef struct ArkUI_EmbeddedComponentOption ArkUI_EmbeddedComponentOption--><!--Device-typedef struct ArkUI_EmbeddedComponentOption ArkUI_EmbeddedComponentOption-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [embedded_component.h](capi-embedded-component-h.md)
 

@@ -8,11 +8,13 @@ typedef struct OH_Drawing_PixelMap OH_Drawing_PixelMap
 
 定义像素图，用于包装图像框架支持的真实像素图。
 
+<!--Device-typedef struct OH_Drawing_PixelMap OH_Drawing_PixelMap--><!--Device-typedef struct OH_Drawing_PixelMap OH_Drawing_PixelMap-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
-**相关模块：** [Drawing](capi-others-drawing.md)
+**相关模块：** [Drawing](capi-arkgraphics2d-drawing.md)
 
 **所在头文件：** [drawing_types.h](capi-drawing-types-h.md)
 

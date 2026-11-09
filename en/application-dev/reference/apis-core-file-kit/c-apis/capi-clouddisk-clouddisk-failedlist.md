@@ -8,11 +8,13 @@ struct CloudDisk_FailedList {...}
 
 A struct that encapsulates the list of files that failed to synchronize. It includes the file path information and the specific failure cause.
 
+<!--Device-struct CloudDisk_FailedList {...}--><!--Device-struct CloudDisk_FailedList {...}-End-->
+
 **System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 21
 
-**Related module**: [CloudDisk](capi-others-clouddisk.md)
+**Related module**: [CloudDisk](capi-core-file-kit-clouddisk.md)
 
 **Header file**: [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
 

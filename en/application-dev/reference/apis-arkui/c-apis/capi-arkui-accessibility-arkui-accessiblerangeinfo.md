@@ -8,11 +8,13 @@ typedef struct ArkUI_AccessibleRangeInfo {...} ArkUI_AccessibleRangeInfo
 
 Define a struct for the accessible range information.
 
+<!--Device-typedef struct ArkUI_AccessibleRangeInfo {...} ArkUI_AccessibleRangeInfo--><!--Device-typedef struct ArkUI_AccessibleRangeInfo {...} ArkUI_AccessibleRangeInfo-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
-**Related module**: [ArkUI_Accessibility](capi-others-arkui-accessibility.md)
+**Related module**: [ArkUI_Accessibility](capi-arkui-arkui-accessibility.md)
 
 **Header file**: [native_interface_accessibility.h](capi-native-interface-accessibility-h.md)
 

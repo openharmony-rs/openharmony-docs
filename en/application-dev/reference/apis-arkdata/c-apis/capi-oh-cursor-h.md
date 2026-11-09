@@ -39,6 +39,8 @@ int OH_Cursor_GetFloatVectorCount(OH_Cursor *cursor, int32_t columnIndex, size_t
 
 Get float array data size of the requested column from OH_Cursor object.
 
+<!--Device-int OH_Cursor_GetFloatVectorCount(OH_Cursor *cursor, int32_t columnIndex, size_t *length)--><!--Device-int OH_Cursor_GetFloatVectorCount(OH_Cursor *cursor, int32_t columnIndex, size_t *length)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
@@ -66,6 +68,8 @@ int OH_Cursor_GetFloatVector(OH_Cursor *cursor, int32_t columnIndex, float *val,
 **Description**
 
 Obtains the value of the requested column as a float array.
+
+<!--Device-int OH_Cursor_GetFloatVector(OH_Cursor *cursor, int32_t columnIndex, float *val, size_t inLen, size_t *outLen)--><!--Device-int OH_Cursor_GetFloatVector(OH_Cursor *cursor, int32_t columnIndex, float *val, size_t inLen, size_t *outLen)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 

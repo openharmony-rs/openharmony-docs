@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkBlitImageInfo2 {...}--><!--Device-struct VkBlitImageInfo2 {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -61,6 +61,8 @@ enum OH_ArkUI_HapticFeedbackMode
 
 Enumerates haptic feedback modes, which are used to control the haptic feedback behavior of the text editor during user interactions (such as long press, drag, and other operations).
 
+<!--Device-OH_ArkUI_HapticFeedbackMode--><!--Device-OH_ArkUI_HapticFeedbackMode-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -80,6 +82,8 @@ enum OH_ArkUI_TextEditorSpanType
 **Description**
 
 Enumerates the span types of a custom text selection menu, which are used to identify the span type of the text selection menu in the text editor. Different span types correspond to different content structures, affecting the display and interaction behavior of the custom menu. For example, the <b>OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_TEXT</b> type is used when the user selects only text content, the <b>OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_MIXED</b> type is used when the selection contains mixed content such as text and images, and the <b>OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_BUILDER</b> type is used when a custom menu item layout is required.
+
+<!--Device-OH_ArkUI_TextEditorSpanType--><!--Device-OH_ArkUI_TextEditorSpanType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -103,6 +107,8 @@ enum OH_ArkUI_TextEditorResponseType
 
 Enumerates the response types of a custom text selection menu, which are used to identify the interaction method that triggers the menu pop-up. Different response types correspond to different user operations (such as right-click, long press, and mouse-based selection), allowing different menu content to be customized based on the response type.
 
+<!--Device-OH_ArkUI_TextEditorResponseType--><!--Device-OH_ArkUI_TextEditorResponseType-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -124,6 +130,8 @@ enum OH_ArkUI_TextMenuType
 
 Enumerates text menu types, which are used to distinguish different types of pop-up menus in the text editor, including the text selection menu and the preview menu. Different menu types correspond to different interaction scenarios and menu display modes. For example, the text selection menu pops up when the user selects text and is used for text operations such as copy and delete; the preview menu pops up when the user long-presses an image and is used to trigger image content drag preview as well as copy and deletion operations.
 
+<!--Device-OH_ArkUI_TextMenuType--><!--Device-OH_ArkUI_TextMenuType-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -142,6 +150,8 @@ enum OH_ArkUI_TextEditorType
 **Description**
 
 Enumerates the text editor input types.
+
+<!--Device-OH_ArkUI_TextEditorType--><!--Device-OH_ArkUI_TextEditorType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -174,6 +184,8 @@ OH_ArkUI_TextEditorPlaceholderOptions* OH_ArkUI_TextEditorPlaceholderOptions_Cre
 
 Creates an option object for the placeholder text used when there is no input. When the object is no longer used, call [OH_ArkUI_TextEditorPlaceholderOptions_Destroy](capi-rich-editor-h.md#oh_arkui_texteditorplaceholderoptions_destroy) to destroy it.
 
+<!--Device-OH_ArkUI_TextEditorPlaceholderOptions* OH_ArkUI_TextEditorPlaceholderOptions_Create()--><!--Device-OH_ArkUI_TextEditorPlaceholderOptions* OH_ArkUI_TextEditorPlaceholderOptions_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -193,6 +205,8 @@ void OH_ArkUI_TextEditorPlaceholderOptions_Destroy(OH_ArkUI_TextEditorPlaceholde
 **Description**
 
 Destroys the option object for the placeholder text used when there is no input.
+
+<!--Device-void OH_ArkUI_TextEditorPlaceholderOptions_Destroy(OH_ArkUI_TextEditorPlaceholderOptions* options)--><!--Device-void OH_ArkUI_TextEditorPlaceholderOptions_Destroy(OH_ArkUI_TextEditorPlaceholderOptions* options)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -214,6 +228,8 @@ OH_ArkUI_TextEditorStyledStringController* OH_ArkUI_TextEditorStyledStringContro
 
 Creates a styled string controller object, which is used to control the styled string of the text editor when rich text content needs to be managed through styled strings (such as mixed layout of text and images, dynamic setting of paragraph or character styles, and other scenarios). When the object is no longer used, call [OH_ArkUI_TextEditorStyledStringController_Destroy](capi-rich-editor-h.md#oh_arkui_texteditorstyledstringcontroller_destroy) to destroy it.
 
+<!--Device-OH_ArkUI_TextEditorStyledStringController* OH_ArkUI_TextEditorStyledStringController_Create()--><!--Device-OH_ArkUI_TextEditorStyledStringController* OH_ArkUI_TextEditorStyledStringController_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -233,6 +249,8 @@ void OH_ArkUI_TextEditorStyledStringController_Destroy(OH_ArkUI_TextEditorStyled
 **Description**
 
 Destroys the styled string controller object.
+
+<!--Device-void OH_ArkUI_TextEditorStyledStringController_Destroy(OH_ArkUI_TextEditorStyledStringController* controller)--><!--Device-void OH_ArkUI_TextEditorStyledStringController_Destroy(OH_ArkUI_TextEditorStyledStringController* controller)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -254,6 +272,8 @@ OH_ArkUI_TextEditorParagraphStyle* OH_ArkUI_TextEditorParagraphStyle_Create()
 
 Creates a paragraph style object for the text editor. When the object is no longer used, call [OH_ArkUI_TextEditorParagraphStyle_Destroy](capi-rich-editor-h.md#oh_arkui_texteditorparagraphstyle_destroy) to destroy it.
 
+<!--Device-OH_ArkUI_TextEditorParagraphStyle* OH_ArkUI_TextEditorParagraphStyle_Create()--><!--Device-OH_ArkUI_TextEditorParagraphStyle* OH_ArkUI_TextEditorParagraphStyle_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -273,6 +293,8 @@ void OH_ArkUI_TextEditorParagraphStyle_Destroy(OH_ArkUI_TextEditorParagraphStyle
 **Description**
 
 Destroys the paragraph style object.
+
+<!--Device-void OH_ArkUI_TextEditorParagraphStyle_Destroy(OH_ArkUI_TextEditorParagraphStyle* style)--><!--Device-void OH_ArkUI_TextEditorParagraphStyle_Destroy(OH_ArkUI_TextEditorParagraphStyle* style)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -294,6 +316,8 @@ OH_ArkUI_TextEditorTextStyle* OH_ArkUI_TextEditorTextStyle_Create()
 
 Creates a text style object. When the object is no longer used, call [OH_ArkUI_TextEditorTextStyle_Destroy](capi-rich-editor-h.md#oh_arkui_texteditortextstyle_destroy) to destroy it.
 
+<!--Device-OH_ArkUI_TextEditorTextStyle* OH_ArkUI_TextEditorTextStyle_Create()--><!--Device-OH_ArkUI_TextEditorTextStyle* OH_ArkUI_TextEditorTextStyle_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -313,6 +337,8 @@ void OH_ArkUI_TextEditorTextStyle_Destroy(OH_ArkUI_TextEditorTextStyle* style)
 **Description**
 
 Destroys the text style object.
+
+<!--Device-void OH_ArkUI_TextEditorTextStyle_Destroy(OH_ArkUI_TextEditorTextStyle* style)--><!--Device-void OH_ArkUI_TextEditorTextStyle_Destroy(OH_ArkUI_TextEditorTextStyle* style)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -334,6 +360,8 @@ OH_ArkUI_TextEditorSelectionMenuOptions* OH_ArkUI_TextEditorSelectionMenuOptions
 
 Creates a text selection menu option object of the text editor. When the object is no longer used, call [OH_ArkUI_TextEditorSelectionMenuOptions_Destroy](capi-rich-editor-h.md#oh_arkui_texteditorselectionmenuoptions_destroy) to destroy it.
 
+<!--Device-OH_ArkUI_TextEditorSelectionMenuOptions* OH_ArkUI_TextEditorSelectionMenuOptions_Create()--><!--Device-OH_ArkUI_TextEditorSelectionMenuOptions* OH_ArkUI_TextEditorSelectionMenuOptions_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -353,6 +381,8 @@ void OH_ArkUI_TextEditorSelectionMenuOptions_Destroy(OH_ArkUI_TextEditorSelectio
 **Description**
 
 Destroys the text selection menu option object of the text editor.
+
+<!--Device-void OH_ArkUI_TextEditorSelectionMenuOptions_Destroy(OH_ArkUI_TextEditorSelectionMenuOptions* options)--><!--Device-void OH_ArkUI_TextEditorSelectionMenuOptions_Destroy(OH_ArkUI_TextEditorSelectionMenuOptions* options)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

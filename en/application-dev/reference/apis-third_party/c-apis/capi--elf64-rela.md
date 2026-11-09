@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct Elf64_Rela {...}--><!--Device-struct Elf64_Rela {...}-End-->
+
 ## Summary
 
 ### Member variables

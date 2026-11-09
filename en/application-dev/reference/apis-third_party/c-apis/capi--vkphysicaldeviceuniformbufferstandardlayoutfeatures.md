@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceUniformBufferStandardLayoutFeatures {...}--><!--Device-struct VkPhysicalDeviceUniformBufferStandardLayoutFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

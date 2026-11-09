@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineVertexInputDivisorStateCreateInfo {...}--><!--Device-struct VkPipelineVertexInputDivisorStateCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

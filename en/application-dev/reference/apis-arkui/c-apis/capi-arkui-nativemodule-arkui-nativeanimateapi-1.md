@@ -8,11 +8,13 @@ typedef struct ArkUI_NativeAnimateAPI_1 {...} ArkUI_NativeAnimateAPI_1
 
 Declares a set of animation APIs of ArkUI on the native side.
 
+<!--Device-typedef struct ArkUI_NativeAnimateAPI_1 {...} ArkUI_NativeAnimateAPI_1--><!--Device-typedef struct ArkUI_NativeAnimateAPI_1 {...} ArkUI_NativeAnimateAPI_1-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_animate.h](capi-native-animate-h.md)
 
@@ -43,6 +45,8 @@ Performs an explicit animation transition effect.
 >
 > Make sure the component attributes to be set in the event closure have been set before.
 
+<!--Device-int32_t (*animateTo)(ArkUI_ContextHandle context, ArkUI_AnimateOption* option, ArkUI_ContextCallback* update, ArkUI_AnimateCompleteCallback* complete)--><!--Device-int32_t (*animateTo)(ArkUI_ContextHandle context, ArkUI_AnimateOption* option, ArkUI_ContextCallback* update, ArkUI_AnimateCompleteCallback* complete)-End-->
+
 **Parameters**:
 
 | Parameter | Description |
@@ -68,6 +72,8 @@ int32_t (*keyframeAnimateTo)(ArkUI_ContextHandle context, ArkUI_KeyframeAnimateO
 
 Defines a keyframe animation. By specifying keyframes to define the values of attributes at different time points, the system automatically calculates the attribute values of intermediate frames based on the interpolation algorithm to achieve smooth transitions. For details about the keyframe parameter configuration, see [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md). Unlike the explicit transition animation of **animateTo**, **keyframeAnimateTo** is suitable for scenarios where different animation states need to be defined at multiple time points. You can use **animateTo** when only a transition animation from the start state to the end state is required, and use **keyframeAnimateTo** when fine-grained control of the animation process through multiple keyframes is required.
 
+<!--Device-int32_t (*keyframeAnimateTo)(ArkUI_ContextHandle context, ArkUI_KeyframeAnimateOption* option)--><!--Device-int32_t (*keyframeAnimateTo)(ArkUI_ContextHandle context, ArkUI_KeyframeAnimateOption* option)-End-->
+
 **Parameters**:
 
 | Parameter | Description |
@@ -91,6 +97,8 @@ ArkUI_AnimatorHandle (*createAnimator)(ArkUI_ContextHandle context, ArkUI_Animat
 
 Creates an animator animation object and returns its pointer. Unlike the trigger-based animation of **animateTo** and **keyframeAnimateTo**, **createAnimator** creates a persistently controllable animation object, which is suitable for scenarios requiring fine-grained control such as repeated starting, stopping, and state listening. You can use **animateTo** or **keyframeAnimateTo** for one-time transition animations, and use **createAnimator** when persistent control of the animation lifecycle is required.
 
+<!--Device-ArkUI_AnimatorHandle (*createAnimator)(ArkUI_ContextHandle context, ArkUI_AnimatorOption* option)--><!--Device-ArkUI_AnimatorHandle (*createAnimator)(ArkUI_ContextHandle context, ArkUI_AnimatorOption* option)-End-->
+
 **Parameters**:
 
 | Parameter | Description |
@@ -113,6 +121,8 @@ void (*disposeAnimator)(ArkUI_AnimatorHandle animatorHandle)
 **Description**
 
 Disposes of the animator animation object and releases its memory. After the disposal, the handle must not be used again. When **NULL** or a handle that has been destroyed is passed, the API does not perform the disposal operation.
+
+<!--Device-void (*disposeAnimator)(ArkUI_AnimatorHandle animatorHandle)--><!--Device-void (*disposeAnimator)(ArkUI_AnimatorHandle animatorHandle)-End-->
 
 **Parameters**:
 

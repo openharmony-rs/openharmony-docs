@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct timex {...}--><!--Device-struct timex {...}-End-->
+
 ## Summary
 
 ### Member variables

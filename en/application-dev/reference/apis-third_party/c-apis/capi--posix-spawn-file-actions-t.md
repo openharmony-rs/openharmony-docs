@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct posix_spawn_file_actions_t {...}--><!--Device-struct posix_spawn_file_actions_t {...}-End-->
+
 ## Summary
 
 ### Member variables

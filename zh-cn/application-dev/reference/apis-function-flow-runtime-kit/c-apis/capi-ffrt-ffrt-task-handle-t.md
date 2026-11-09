@@ -8,11 +8,13 @@ typedef void* ffrt_task_handle_t
 
 任务句柄，用于标识不同的任务。
 
+<!--Device-typedef void* ffrt_task_handle_t--><!--Device-typedef void* ffrt_task_handle_t-End-->
+
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 10
 
-**相关模块：** [FFRT](capi-others-ffrt.md)
+**相关模块：** [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 
 **所在头文件：** [type_def.h](capi-type-def-h.md)
 

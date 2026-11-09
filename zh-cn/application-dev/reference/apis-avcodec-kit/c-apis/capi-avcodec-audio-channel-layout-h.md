@@ -35,6 +35,8 @@ enum AudioChannelSet
 
 音频声道数集合，将每一个声道数映射为uint64_t的变量。
 
+<!--Device-AudioChannelSet--><!--Device-AudioChannelSet-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 10
@@ -79,6 +81,8 @@ enum AudioChannelLayout
 **描述：**
 
 音频声道数类型，将用户申请的解码器输出格式表示为编解码器的声道类型。
+
+<!--Device-AudioChannelLayout--><!--Device-AudioChannelLayout-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 

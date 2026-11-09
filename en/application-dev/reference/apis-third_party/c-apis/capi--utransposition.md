@@ -4,6 +4,8 @@
 
 Position structure for utrans_transIncremental() incrementaltransliteration. This structure defines two substrings of the textbeing transliterated. The first region, [contextStart,contextLimit), defines what characters the transliterator will readas context. The second region, [start, limit), defines whatcharacters will actually be transliterated. The second regionshould be a subset of the first.<p>After a transliteration operation, some of the indices in thisstructure will be modified. See the field descriptions fordetails.<p>contextStart <= start <= limit <= contextLimit<p>Note: All index values in this structure must be at code pointboundaries. That is, none of them may occur between two code unitsof a surrogate pair. If any index does split a surrogate pair,results are unspecified.
 
+<!--Device-struct UTransPosition {...}--><!--Device-struct UTransPosition {...}-End-->
+
 ## Summary
 
 ### Member variables

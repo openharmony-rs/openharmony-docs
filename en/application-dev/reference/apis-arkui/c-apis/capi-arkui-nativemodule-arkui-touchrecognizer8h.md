@@ -8,9 +8,11 @@ typedef ArkUI_TouchRecognizer* ArkUI_TouchRecognizerHandle
 
 Defines a touch recognizer handle, which is used to represent a touch recognizer object and pass the object in APIs such as gesture interruption and gesture collection interception. For details about the APIs, see native_gesture.h.
 
+<!--Device-typedef ArkUI_TouchRecognizer* ArkUI_TouchRecognizerHandle--><!--Device-typedef ArkUI_TouchRecognizer* ArkUI_TouchRecognizerHandle-End-->
+
 **Since**: 15
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_gesture.h](capi-native-gesture-h.md)
 

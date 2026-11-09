@@ -51,6 +51,8 @@ enum OH_CM_ErrorCode
 
 Enumerates error codes.
 
+<!--Device-OH_CM_ErrorCode--><!--Device-OH_CM_ErrorCode-End-->
+
 **System capability**: SystemCapability.Security.CertificateManager
 
 **Since**: 22
@@ -79,6 +81,8 @@ enum OH_CM_CertificatePurpose
 **Description**
 
 Enumerates the certificate credential purposes.
+
+<!--Device-OH_CM_CertificatePurpose--><!--Device-OH_CM_CertificatePurpose-End-->
 
 **System capability**: SystemCapability.Security.CertificateManager
 

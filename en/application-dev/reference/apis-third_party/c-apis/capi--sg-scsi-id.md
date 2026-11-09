@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct sg_scsi_id {...}--><!--Device-struct sg_scsi_id {...}-End-->
+
 ## Summary
 
 ### Member variables

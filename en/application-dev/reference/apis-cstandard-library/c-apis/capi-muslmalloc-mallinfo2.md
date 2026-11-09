@@ -6,7 +6,9 @@ struct mallinfo2 {...}
 
 ## Overview
 
-**Related module**: [MuslMalloc](capi-others-muslmalloc.md)
+<!--Device-struct mallinfo2 {...}--><!--Device-struct mallinfo2 {...}-End-->
+
+**Related module**: [MuslMalloc](capi-cstandard-library-muslmalloc.md)
 
 **Header file**: [malloc.h](capi-malloc-h.md)
 

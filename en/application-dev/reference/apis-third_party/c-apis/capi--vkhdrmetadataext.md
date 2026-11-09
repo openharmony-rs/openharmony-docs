@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkHdrMetadataEXT {...}--><!--Device-struct VkHdrMetadataEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

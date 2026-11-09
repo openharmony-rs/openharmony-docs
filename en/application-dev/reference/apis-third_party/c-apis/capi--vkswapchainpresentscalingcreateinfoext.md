@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSwapchainPresentScalingCreateInfoEXT {...}--><!--Device-struct VkSwapchainPresentScalingCreateInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

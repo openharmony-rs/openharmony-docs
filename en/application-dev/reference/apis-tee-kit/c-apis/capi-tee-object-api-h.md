@@ -64,6 +64,8 @@ enum Usage_Constants
 
 Enumerates the usages of the key of the <b>TEE_ObjectHandle</b>.
 
+<!--Device-Usage_Constants--><!--Device-Usage_Constants-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -89,6 +91,8 @@ enum Handle_Flag_Constants
 
 Defines information about the object pointed to by the flag of the <b>TEE_ObjectHandle</b>, for example, whether the object is a persistent object or is initialized.
 
+<!--Device-Handle_Flag_Constants--><!--Device-Handle_Flag_Constants-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -112,6 +116,8 @@ TEE_Result TEE_GetObjectBufferAttribute(TEE_ObjectHandle object, uint32_t attrib
 **Description**
 
 Obtains a buffer attribute from the <b>TEE_Attribute</b> struct of the object pointed to by <b>TEE_ObjectHandle</b>.<br> The members in the <b>TEE_Attribute</b> struct must be <b>ref</b>. If the <b>TEE_Attribute</b> is private, the <b>Usage_Constants</b> of the object must include <b>TEE_USAGE_EXTRACTABLE</b>.
+
+<!--Device-TEE_Result TEE_GetObjectBufferAttribute(TEE_ObjectHandle object, uint32_t attributeID, void *buffer, size_t *size)--><!--Device-TEE_Result TEE_GetObjectBufferAttribute(TEE_ObjectHandle object, uint32_t attributeID, void *buffer, size_t *size)-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -142,6 +148,8 @@ TEE_Result TEE_GetObjectValueAttribute(TEE_ObjectHandle object, uint32_t attribu
 
 Obtains a value attribute from the <b>TEE_Attribute</b> of an object.<br> The members of the <b>TEE_Attribute</b> struct must be values. If the <b>TEE_Attribute</b> is private, the <b>Usage_Constants</b> of the object must include <b>TEE_USAGE_EXTRACTABLE</b>.
 
+<!--Device-TEE_Result TEE_GetObjectValueAttribute(TEE_ObjectHandle object, uint32_t attributeID, uint32_t *a, uint32_t *b)--><!--Device-TEE_Result TEE_GetObjectValueAttribute(TEE_ObjectHandle object, uint32_t attributeID, uint32_t *a, uint32_t *b)-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -171,6 +179,8 @@ void TEE_CloseObject(TEE_ObjectHandle object)
 
 Closes a <b>TEE_ObjectHandle</b> object.<br> The object can be persistent or transient.
 
+<!--Device-void TEE_CloseObject(TEE_ObjectHandle object)--><!--Device-void TEE_CloseObject(TEE_ObjectHandle object)-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -190,6 +200,8 @@ TEE_Result TEE_AllocateTransientObject(uint32_t objectType, uint32_t maxObjectSi
 **Description**
 
 Allocates an uninitialized object to store keys.<br> <b>objectType</b> and <b>maxObjectSize</b> must be specified.
+
+<!--Device-TEE_Result TEE_AllocateTransientObject(uint32_t objectType, uint32_t maxObjectSize, TEE_ObjectHandle *object)--><!--Device-TEE_Result TEE_AllocateTransientObject(uint32_t objectType, uint32_t maxObjectSize, TEE_ObjectHandle *object)-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -219,6 +231,8 @@ void TEE_FreeTransientObject(TEE_ObjectHandle object)
 
 Releases a transient object that is previously allocated with <b>TEE_AllocateTransientObject</b>.<br> After the function is called, the handle becomes invalid and all allocated resources are released. <b>TEE_FreeTransientObject</b> and <b>TEE_AllocateTransientObject</b> are used in pairs.
 
+<!--Device-void TEE_FreeTransientObject(TEE_ObjectHandle object)--><!--Device-void TEE_FreeTransientObject(TEE_ObjectHandle object)-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -239,6 +253,8 @@ void TEE_ResetTransientObject(TEE_ObjectHandle object)
 
 Resets a transient object to its initial state after allocation.<br> You can use an allocated object, which has not been initialized or used to store a key, to store a key.
 
+<!--Device-void TEE_ResetTransientObject(TEE_ObjectHandle object)--><!--Device-void TEE_ResetTransientObject(TEE_ObjectHandle object)-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -258,6 +274,8 @@ TEE_Result TEE_PopulateTransientObject(TEE_ObjectHandle object, TEE_Attribute *a
 **Description**
 
 Populates an uninitialized object with object attributes passed by the TA in the <b>attrs</b> parameter.<br> The object must be uninitialized. The <b>attrs</b> parameter is passed by a TA.
+
+<!--Device-TEE_Result TEE_PopulateTransientObject(TEE_ObjectHandle object, TEE_Attribute *attrs, uint32_t attrCount)--><!--Device-TEE_Result TEE_PopulateTransientObject(TEE_ObjectHandle object, TEE_Attribute *attrs, uint32_t attrCount)-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -287,6 +305,8 @@ void TEE_InitRefAttribute(TEE_Attribute *attr, uint32_t attributeID, void *buffe
 
 Initializes the <b>TEE_Attribute</b> of the buffer type.<br> The members in the <b>TEE_Attribute</b> struct must be <b>ref</b>.
 
+<!--Device-void TEE_InitRefAttribute(TEE_Attribute *attr, uint32_t attributeID, void *buffer, size_t length)--><!--Device-void TEE_InitRefAttribute(TEE_Attribute *attr, uint32_t attributeID, void *buffer, size_t length)-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -310,6 +330,8 @@ void TEE_InitValueAttribute(TEE_Attribute *attr, uint32_t attributeID, uint32_t 
 
 Initializes a <b>TEE_Attribute</b>.
 
+<!--Device-void TEE_InitValueAttribute(TEE_Attribute *attr, uint32_t attributeID, uint32_t a, uint32_t b)--><!--Device-void TEE_InitValueAttribute(TEE_Attribute *attr, uint32_t attributeID, uint32_t a, uint32_t b)-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -332,6 +354,8 @@ TEE_Result TEE_GenerateKey(TEE_ObjectHandle object, uint32_t keySize, TEE_Attrib
 **Description**
 
 Generates a random key or a key pair and populates a transient key object with the generated key.
+
+<!--Device-TEE_Result TEE_GenerateKey(TEE_ObjectHandle object, uint32_t keySize, TEE_Attribute *params, uint32_t paramCount)--><!--Device-TEE_Result TEE_GenerateKey(TEE_ObjectHandle object, uint32_t keySize, TEE_Attribute *params, uint32_t paramCount)-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -362,6 +386,8 @@ TEE_Result TEE_InfoObjectData(TEE_ObjectHandle object, uint32_t *pos, uint32_t *
 
 Get the information of the object data part, the total length of the data part and the current position of the data stream.
 
+<!--Device-TEE_Result TEE_InfoObjectData(TEE_ObjectHandle object, uint32_t *pos, uint32_t *len)--><!--Device-TEE_Result TEE_InfoObjectData(TEE_ObjectHandle object, uint32_t *pos, uint32_t *len)-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -390,6 +416,8 @@ TEE_Result TEE_GetObjectInfo1(TEE_ObjectHandle object, TEE_ObjectInfo *objectInf
 
 Obtains <b>TEE_ObjectInfo</b>.<br> This function obtains <b>TEE_ObjectInfo</b> and copies the obtained information to the pre-allocated space pointed to by <b>objectInfo</b>.
 
+<!--Device-TEE_Result TEE_GetObjectInfo1(TEE_ObjectHandle object, TEE_ObjectInfo *objectInfo)--><!--Device-TEE_Result TEE_GetObjectInfo1(TEE_ObjectHandle object, TEE_ObjectInfo *objectInfo)-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -417,6 +445,8 @@ TEE_Result TEE_CopyObjectAttributes1(TEE_ObjectHandle destObject, TEE_ObjectHand
 
 Assigns the <b>TEE_Attribute</b> of an initialized object to an uninitialized object.<br> This function populates an uninitialized object with <b>TEE_Attribute</b>. That is, it copies <b>TEE_Attribute</b> of <b>srcobject</b> to <b>destobject</b>. The <b>TEE_Attribute</b> types and IDs of the two objects must match.
 
+<!--Device-TEE_Result TEE_CopyObjectAttributes1(TEE_ObjectHandle destObject, TEE_ObjectHandle srcObject)--><!--Device-TEE_Result TEE_CopyObjectAttributes1(TEE_ObjectHandle destObject, TEE_ObjectHandle srcObject)-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -443,6 +473,8 @@ TEE_Result TEE_RestrictObjectUsage1(TEE_ObjectHandle object, uint32_t objectUsag
 **Description**
 
 Restricts the <b>objectUse</b> bit of an object.<br> This bit determines the usage of the key in the object. The value range is <b>Usage_Constant</b>. The bit in the <b>objectUse</b> parameter can be set as follows: If it is set to <b>1</b>, the corresponding usage flag in the object is left unchanged. If it is set to <b>0</b>, the corresponding usage flag in the object is cleared. The newly created object contains all <b>Usage_Constant</b>, and the usage flag can be cleared only.
+
+<!--Device-TEE_Result TEE_RestrictObjectUsage1(TEE_ObjectHandle object, uint32_t objectUsage)--><!--Device-TEE_Result TEE_RestrictObjectUsage1(TEE_ObjectHandle object, uint32_t objectUsage)-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 

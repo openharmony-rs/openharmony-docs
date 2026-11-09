@@ -8,11 +8,13 @@ struct OH_AVCodecBufferAttr {...}
 
 定义OH_AVCodec的缓冲区描述信息。
 
+<!--Device-struct OH_AVCodecBufferAttr {...}--><!--Device-struct OH_AVCodecBufferAttr {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
 
-**相关模块：** [Core](capi-others-core.md)
+**相关模块：** [Core](capi-avcodec-kit-core.md)
 
 **所在头文件：** [native_avbuffer_info.h](capi-native-avbuffer-info-h.md)
 

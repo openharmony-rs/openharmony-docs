@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkImageViewHandleInfoNVX {...}--><!--Device-struct VkImageViewHandleInfoNVX {...}-End-->
+
 ## Summary
 
 ### Member variables

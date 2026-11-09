@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkTraceRaysIndirectCommandKHR {...}--><!--Device-struct VkTraceRaysIndirectCommandKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

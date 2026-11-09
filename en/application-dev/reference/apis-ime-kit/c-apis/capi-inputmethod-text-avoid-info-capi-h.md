@@ -45,6 +45,8 @@ InputMethod_TextAvoidInfo *OH_TextAvoidInfo_Create(double positionY, double heig
 
 Creates an [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) instance.
 
+<!--Device-InputMethod_TextAvoidInfo *OH_TextAvoidInfo_Create(double positionY, double height)--><!--Device-InputMethod_TextAvoidInfo *OH_TextAvoidInfo_Create(double positionY, double height)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -72,6 +74,8 @@ void OH_TextAvoidInfo_Destroy(InputMethod_TextAvoidInfo *info)
 
 Destroys an [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) instance.
 
+<!--Device-void OH_TextAvoidInfo_Destroy(InputMethod_TextAvoidInfo *info)--><!--Device-void OH_TextAvoidInfo_Destroy(InputMethod_TextAvoidInfo *info)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -91,6 +95,8 @@ InputMethod_ErrorCode OH_TextAvoidInfo_SetPositionY(InputMethod_TextAvoidInfo *i
 **Description**
 
 Sets the Y coordinate in [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md).
+
+<!--Device-InputMethod_ErrorCode OH_TextAvoidInfo_SetPositionY(InputMethod_TextAvoidInfo *info, double positionY)--><!--Device-InputMethod_ErrorCode OH_TextAvoidInfo_SetPositionY(InputMethod_TextAvoidInfo *info, double positionY)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -119,6 +125,8 @@ InputMethod_ErrorCode OH_TextAvoidInfo_SetHeight(InputMethod_TextAvoidInfo *info
 
 Sets the height in [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md).
 
+<!--Device-InputMethod_ErrorCode OH_TextAvoidInfo_SetHeight(InputMethod_TextAvoidInfo *info, double height)--><!--Device-InputMethod_ErrorCode OH_TextAvoidInfo_SetHeight(InputMethod_TextAvoidInfo *info, double height)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -146,6 +154,8 @@ InputMethod_ErrorCode OH_TextAvoidInfo_GetPositionY(InputMethod_TextAvoidInfo *i
 
 Obtains the Y coordinate from [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md).
 
+<!--Device-InputMethod_ErrorCode OH_TextAvoidInfo_GetPositionY(InputMethod_TextAvoidInfo *info, double *positionY)--><!--Device-InputMethod_ErrorCode OH_TextAvoidInfo_GetPositionY(InputMethod_TextAvoidInfo *info, double *positionY)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -172,6 +182,8 @@ InputMethod_ErrorCode OH_TextAvoidInfo_GetHeight(InputMethod_TextAvoidInfo *info
 **Description**
 
 Obtains the height from [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md).
+
+<!--Device-InputMethod_ErrorCode OH_TextAvoidInfo_GetHeight(InputMethod_TextAvoidInfo *info, double *height)--><!--Device-InputMethod_ErrorCode OH_TextAvoidInfo_GetHeight(InputMethod_TextAvoidInfo *info, double *height)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 

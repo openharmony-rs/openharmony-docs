@@ -33,6 +33,8 @@ enum ArkWeb_ErrorCode
 
 定义ArkWeb NDK接口异常错误码。
 
+<!--Device-ArkWeb_ErrorCode--><!--Device-ArkWeb_ErrorCode-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 12
@@ -61,6 +63,8 @@ enum ArkWeb_BlanklessErrorCode
 **描述：**
 
 定义无白屏加载的异常错误码。
+
+<!--Device-ArkWeb_BlanklessErrorCode--><!--Device-ArkWeb_BlanklessErrorCode-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

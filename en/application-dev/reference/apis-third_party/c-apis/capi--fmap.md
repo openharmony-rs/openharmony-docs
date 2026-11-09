@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct fmap {...}--><!--Device-struct fmap {...}-End-->
+
 ## Summary
 
 ### Member variables

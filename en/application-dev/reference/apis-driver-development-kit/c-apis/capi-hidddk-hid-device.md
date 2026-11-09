@@ -8,11 +8,13 @@ struct Hid_Device {...}
 
 Describes basic device information, including the name, vendor ID, and product ID of an HID device. This information is used as the device identifier when creating and operating an HID device.
 
+<!--Device-struct Hid_Device {...}--><!--Device-struct Hid_Device {...}-End-->
+
 **System capability**: SystemCapability.Driver.HID.Extension
 
 **Since**: 11
 
-**Related module**: [HidDdk](capi-others-hidddk.md)
+**Related module**: [HidDdk](capi-driver-development-kit-hidddk.md)
 
 **Header file**: [hid_ddk_types.h](capi-hid-ddk-types-h.md)
 

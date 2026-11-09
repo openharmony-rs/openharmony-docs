@@ -79,6 +79,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateContentEmbedInfo(ContentEmbed_Info 
 
 创建[ContentEmbed_Info](capi-contentembed-contentembed-info.md)实例。 <br>开发者可通过[OH_ContentEmbed_DestroyContentEmbedInfo](capi-content-embed-proxy-h.md#oh_contentembed_destroycontentembedinfo)销毁实例，以避免内存泄漏。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_CreateContentEmbedInfo(ContentEmbed_Info **info)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_CreateContentEmbedInfo(ContentEmbed_Info **info)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -107,6 +109,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_DestroyContentEmbedInfo(ContentEmbed_Info
 
 销毁[ContentEmbed_Info](capi-contentembed-contentembed-info.md)实例。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_DestroyContentEmbedInfo(ContentEmbed_Info *info)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_DestroyContentEmbedInfo(ContentEmbed_Info *info)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -132,6 +136,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetContentEmbedInfo(const char *locale, C
 **描述：**
 
 根据区域设置获取[ContentEmbed_Info](capi-contentembed-contentembed-info.md)实例。当应用需要查询当前设备上已注册的OE Extension格式列表时调用。 <br>调用前需先通过[OH_ContentEmbed_CreateContentEmbedInfo](capi-content-embed-proxy-h.md#oh_contentembed_createcontentembedinfo)创建实例，调用后可通过[OH_ContentEmbed_GetFormatCountFromInfo](capi-content-embed-proxy-h.md#oh_contentembed_getformatcountfrominfo)和 [OH_ContentEmbed_GetFormatFromInfo](capi-content-embed-proxy-h.md#oh_contentembed_getformatfrominfo)遍历格式信息。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_GetContentEmbedInfo(const char *locale, ContentEmbed_Info *info)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_GetContentEmbedInfo(const char *locale, ContentEmbed_Info *info)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -162,6 +168,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetFormatCountFromInfo(const ContentEmbed
 
 获取[ContentEmbed_Info](capi-contentembed-contentembed-info.md)实例中的[ContentEmbed_Format](capi-contentembed-contentembed-format.md)实例的数量。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_GetFormatCountFromInfo(const ContentEmbed_Info *info, uint32_t *count)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_GetFormatCountFromInfo(const ContentEmbed_Info *info, uint32_t *count)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -188,6 +196,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetFormatFromInfo(const ContentEmbed_Info
 **描述：**
 
 从[ContentEmbed_Info](capi-contentembed-contentembed-info.md)实例中获取指定索引位置的[ContentEmbed_Format](capi-contentembed-contentembed-format.md)实例。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_GetFormatFromInfo(const ContentEmbed_Info *info, uint32_t index, ContentEmbed_Format **format)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_GetFormatFromInfo(const ContentEmbed_Info *info, uint32_t index, ContentEmbed_Format **format)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -217,6 +227,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateContentEmbedFormat(ContentEmbed_For
 
 创建[ContentEmbed_Format](capi-contentembed-contentembed-format.md)实例。 <br>开发者可通过[OH_ContentEmbed_DestroyContentEmbedFormat](capi-content-embed-proxy-h.md#oh_contentembed_destroycontentembedformat)销毁实例，以避免内存泄漏。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_CreateContentEmbedFormat(ContentEmbed_Format **format)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_CreateContentEmbedFormat(ContentEmbed_Format **format)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -245,6 +257,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_DestroyContentEmbedFormat(ContentEmbed_Fo
 
 销毁[ContentEmbed_Format](capi-contentembed-contentembed-format.md)实例。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_DestroyContentEmbedFormat(ContentEmbed_Format *format)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_DestroyContentEmbedFormat(ContentEmbed_Format *format)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -270,6 +284,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetContentEmbedFormatByOEidAndLocale(cons
 **描述：**
 
 根据OEID和区域设置获取[ContentEmbed_Format](capi-contentembed-contentembed-format.md)实例。当应用已知特定OE Extension的OEID，需要获取其本地化格式信息时调用。调用前需先通过 [OH_ContentEmbed_CreateContentEmbedFormat](capi-content-embed-proxy-h.md#oh_contentembed_createcontentembedformat)创建实例。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_GetContentEmbedFormatByOEidAndLocale(const char *oeid, const char *locale, ContentEmbed_Format *format)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_GetContentEmbedFormatByOEidAndLocale(const char *oeid, const char *locale, ContentEmbed_Format *format)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -301,6 +317,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetOEidFromFormat(const ContentEmbed_Form
 
 获取[ContentEmbed_Format](capi-contentembed-contentembed-format.md)实例的OEID。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_GetOEidFromFormat(const ContentEmbed_Format *format, char *oeid)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_GetOEidFromFormat(const ContentEmbed_Format *format, char *oeid)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -327,6 +345,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetNameAndDescriptionFromFormat(const Con
 **描述：**
 
 从[ContentEmbed_Format](capi-contentembed-contentembed-format.md)实例中获取其本地化的显示名称和描述信息。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_GetNameAndDescriptionFromFormat(const ContentEmbed_Format *format, char *name, char *description)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_GetNameAndDescriptionFromFormat(const ContentEmbed_Format *format, char *name, char *description)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -356,6 +376,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetIconFromFormat(const ContentEmbed_Form
 
 获取[ContentEmbed_Format](capi-contentembed-contentembed-format.md)实例的图标。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_GetIconFromFormat(const ContentEmbed_Format *format, OH_PixelmapNative **icon)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_GetIconFromFormat(const ContentEmbed_Format *format, OH_PixelmapNative **icon)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -383,6 +405,8 @@ char** OH_ContentEmbed_GetFileNameExtensionsFromFormat(const ContentEmbed_Format
 
 获取[ContentEmbed_Format](capi-contentembed-contentembed-format.md)实例的文件扩展名列表。
 
+<!--Device-char** OH_ContentEmbed_GetFileNameExtensionsFromFormat(const ContentEmbed_Format *format, unsigned int *count)--><!--Device-char** OH_ContentEmbed_GetFileNameExtensionsFromFormat(const ContentEmbed_Format *format, unsigned int *count)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -409,6 +433,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateExtensionProxy(ContentEmbed_Documen
 **描述：**
 
 创建[ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md)实例。 <br>开发者可通过[OH_ContentEmbed_DestroyExtensionProxy](capi-content-embed-proxy-h.md#oh_contentembed_destroyextensionproxy)销毁实例，以避免内存泄漏。创建成功后该文档对象的生命周期由 [ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md)对象管理，应通过[OH_ContentEmbed_DestroyExtensionProxy](capi-content-embed-proxy-h.md#oh_contentembed_destroyextensionproxy)统一销毁，请勿单独调用 [OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁，否则会导致重复释放。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_CreateExtensionProxy(ContentEmbed_Document *document, ContentEmbed_ExtensionProxy **proxy, void *contextPtr)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_CreateExtensionProxy(ContentEmbed_Document *document, ContentEmbed_ExtensionProxy **proxy, void *contextPtr)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -440,6 +466,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_DestroyExtensionProxy(ContentEmbed_Extens
 
 销毁[ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md)实例。该接口会同时销毁创建代理时关联的[ContentEmbed_Document](capi-contentembed-contentembed-document.md)实例，销毁后通过 [OH_ContentEmbed_Proxy_GetDocument](capi-content-embed-proxy-h.md#oh_contentembed_proxy_getdocument)获取的文档指针将失效。当代理正在派发回调时无法销毁。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_DestroyExtensionProxy(ContentEmbed_ExtensionProxy *proxy)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_DestroyExtensionProxy(ContentEmbed_ExtensionProxy *proxy)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -466,6 +494,8 @@ typedef void (*OH_ContentEmbed_ClientCallbackOnUpdateFunc)(ContentEmbed_Extensio
 
 OE文档更新时通知客户端的回调函数类型。 <br>开发者需要实现此函数并通过[OH_ContentEmbed_Proxy_RegisterOnUpdateFunc](capi-content-embed-proxy-h.md#oh_contentembed_proxy_registeronupdatefunc)将此函数注册到客户端OE对象。
 
+<!--Device-typedef void (*OH_ContentEmbed_ClientCallbackOnUpdateFunc)(ContentEmbed_ExtensionProxy *proxy)--><!--Device-typedef void (*OH_ContentEmbed_ClientCallbackOnUpdateFunc)(ContentEmbed_ExtensionProxy *proxy)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -485,6 +515,8 @@ typedef void (*OH_ContentEmbed_ClientCallbackOnErrorFunc)(ContentEmbed_Extension
 **描述：**
 
 OE文档错误时通知客户端的回调函数类型。 <br>开发者需要实现此函数并通过[OH_ContentEmbed_Proxy_RegisterOnErrorFunc](capi-content-embed-proxy-h.md#oh_contentembed_proxy_registeronerrorfunc)将此函数注册到客户端OE对象。
+
+<!--Device-typedef void (*OH_ContentEmbed_ClientCallbackOnErrorFunc)(ContentEmbed_ExtensionProxy *proxy, ContentEmbed_ErrorCode error)--><!--Device-typedef void (*OH_ContentEmbed_ClientCallbackOnErrorFunc)(ContentEmbed_ExtensionProxy *proxy, ContentEmbed_ErrorCode error)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -507,6 +539,8 @@ typedef void (*OH_ContentEmbed_ClientCallbackOnEditingFinishedFunc)(ContentEmbed
 
 OE文档编辑完成时通知客户端的回调函数类型。 <br>开发者需要实现此函数并通过[OH_ContentEmbed_Proxy_RegisterOnEditingFinishedFunc](capi-content-embed-proxy-h.md#oh_contentembed_proxy_registeroneditingfinishedfunc)将此函数注册到客户端OE对象。
 
+<!--Device-typedef void (*OH_ContentEmbed_ClientCallbackOnEditingFinishedFunc)(ContentEmbed_ExtensionProxy *proxy, bool dataModified)--><!--Device-typedef void (*OH_ContentEmbed_ClientCallbackOnEditingFinishedFunc)(ContentEmbed_ExtensionProxy *proxy, bool dataModified)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -528,6 +562,8 @@ typedef void (*OH_ContentEmbed_ClientCallbackOnExtensionStoppedFunc)(ContentEmbe
 
 OE Extension停止时通知客户端的回调函数类型。 <br>开发者需要实现此函数并通过[OH_ContentEmbed_Proxy_RegisterOnExtensionStoppedFunc](capi-content-embed-proxy-h.md#oh_contentembed_proxy_registeronextensionstoppedfunc)将此函数注册到客户端OE对象。
 
+<!--Device-typedef void (*OH_ContentEmbed_ClientCallbackOnExtensionStoppedFunc)(ContentEmbed_ExtensionProxy *proxy)--><!--Device-typedef void (*OH_ContentEmbed_ClientCallbackOnExtensionStoppedFunc)(ContentEmbed_ExtensionProxy *proxy)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -547,6 +583,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_RegisterOnUpdateFunc(ContentEmbed_E
 **描述：**
 
 向客户端OE对象注册OE文档更新时的回调函数。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_RegisterOnUpdateFunc(ContentEmbed_ExtensionProxy *proxy, OH_ContentEmbed_ClientCallbackOnUpdateFunc onUpdateFunc)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_RegisterOnUpdateFunc(ContentEmbed_ExtensionProxy *proxy, OH_ContentEmbed_ClientCallbackOnUpdateFunc onUpdateFunc)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -575,6 +613,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_RegisterOnErrorFunc(ContentEmbed_Ex
 
 向客户端OE对象注册OE文档触发错误时的回调函数。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_RegisterOnErrorFunc(ContentEmbed_ExtensionProxy *proxy, OH_ContentEmbed_ClientCallbackOnErrorFunc onErrorFunc)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_RegisterOnErrorFunc(ContentEmbed_ExtensionProxy *proxy, OH_ContentEmbed_ClientCallbackOnErrorFunc onErrorFunc)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -601,6 +641,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_RegisterOnEditingFinishedFunc(Conte
 **描述：**
 
 向客户端OE对象注册OE文档编辑完成时的回调函数。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_RegisterOnEditingFinishedFunc(ContentEmbed_ExtensionProxy *proxy, OH_ContentEmbed_ClientCallbackOnEditingFinishedFunc onEditingFinishedFunc)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_RegisterOnEditingFinishedFunc(ContentEmbed_ExtensionProxy *proxy, OH_ContentEmbed_ClientCallbackOnEditingFinishedFunc onEditingFinishedFunc)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -629,6 +671,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_RegisterOnExtensionStoppedFunc(Cont
 
 向客户端OE对象注册OE Extension停止时的回调函数。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_RegisterOnExtensionStoppedFunc(ContentEmbed_ExtensionProxy *proxy, OH_ContentEmbed_ClientCallbackOnExtensionStoppedFunc onExtensionStoppedFunc)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_RegisterOnExtensionStoppedFunc(ContentEmbed_ExtensionProxy *proxy, OH_ContentEmbed_ClientCallbackOnExtensionStoppedFunc onExtensionStoppedFunc)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -655,6 +699,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_StartWork(ContentEmbed_ExtensionPro
 **描述：**
 
 连接服务端OE Extension，建立与OE Extension的通信通道。调用前需先通过[OH_ContentEmbed_Proxy_RegisterOnUpdateFunc](capi-content-embed-proxy-h.md#oh_contentembed_proxy_registeronupdatefunc)、 [OH_ContentEmbed_Proxy_RegisterOnErrorFunc](capi-content-embed-proxy-h.md#oh_contentembed_proxy_registeronerrorfunc)、[OH_ContentEmbed_Proxy_RegisterOnEditingFinishedFunc](capi-content-embed-proxy-h.md#oh_contentembed_proxy_registeroneditingfinishedfunc)和 [OH_ContentEmbed_Proxy_RegisterOnExtensionStoppedFunc](capi-content-embed-proxy-h.md#oh_contentembed_proxy_registeronextensionstoppedfunc)接口注册必要的客户端回调函数。本方法用于建立通信通道，无需通信时请调用 [OH_ContentEmbed_Proxy_StopWork](capi-content-embed-proxy-h.md#oh_contentembed_proxy_stopwork)断开通道。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_StartWork(ContentEmbed_ExtensionProxy *proxy)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_StartWork(ContentEmbed_ExtensionProxy *proxy)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -684,6 +730,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_StopWork(ContentEmbed_ExtensionProx
 
 断开与OE Extension的通信通道。须在[OH_ContentEmbed_Proxy_StartWork](capi-content-embed-proxy-h.md#oh_contentembed_proxy_startwork)建立通信通道之后调用，用于断开已建立的连接。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_StopWork(ContentEmbed_ExtensionProxy *proxy)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_StopWork(ContentEmbed_ExtensionProxy *proxy)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **需要权限：** ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
@@ -711,6 +759,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetSnapshot(ContentEmbed_ExtensionP
 **描述：**
 
 从客户端OE对象获取当前OE文档的快照图像，用于预览或缩略图显示。须先调用[OH_ContentEmbed_Proxy_StartWork](capi-content-embed-proxy-h.md#oh_contentembed_proxy_startwork)建立与OE Extension的通信通道后才能获取快照， 建议在调用前通过[OH_ContentEmbed_Proxy_GetCapability](capi-content-embed-proxy-h.md#oh_contentembed_proxy_getcapability)获取服务端OE Extension实例是否支持快照能力。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetSnapshot(ContentEmbed_ExtensionProxy *proxy, OH_PixelmapNative **snapshot)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetSnapshot(ContentEmbed_ExtensionProxy *proxy, OH_PixelmapNative **snapshot)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -741,6 +791,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_DoEdit(ContentEmbed_ExtensionProxy 
 
 客户端OE对象请求OE Extension实例进入编辑模式。须先调用[OH_ContentEmbed_Proxy_StartWork](capi-content-embed-proxy-h.md#oh_contentembed_proxy_startwork)建立与OE Extension的通信通道，否则无法请求进入编辑模式。 建议在调用前通过[OH_ContentEmbed_Proxy_GetCapability](capi-content-embed-proxy-h.md#oh_contentembed_proxy_getcapability)获取服务端OE Extension实例是否支持编辑能力。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_DoEdit(ContentEmbed_ExtensionProxy *proxy)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_DoEdit(ContentEmbed_ExtensionProxy *proxy)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -766,6 +818,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetEditStatus(ContentEmbed_Extensio
 **描述：**
 
 查询服务端OE Extension实例对OE文档的当前编辑状态和修改状态。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetEditStatus(ContentEmbed_ExtensionProxy *proxy, bool *isEditing, bool *isModified)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetEditStatus(ContentEmbed_ExtensionProxy *proxy, bool *isEditing, bool *isModified)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -795,6 +849,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetCapability(ContentEmbed_Extensio
 
 获取服务端OE Extension实例拥有的能力，以位掩码形式返回，各位的含义参见[ContentEmbed_CapabilityCode](capi-content-embed-common-h.md#contentembed_capabilitycode)。用于在调用 [OH_ContentEmbed_Proxy_GetSnapshot](capi-content-embed-proxy-h.md#oh_contentembed_proxy_getsnapshot)、[OH_ContentEmbed_Proxy_DoEdit](capi-content-embed-proxy-h.md#oh_contentembed_proxy_doedit)接口前确认服务端是否支持相应能力。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetCapability(ContentEmbed_ExtensionProxy *proxy, uint32_t *bitmask)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetCapability(ContentEmbed_ExtensionProxy *proxy, uint32_t *bitmask)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -821,6 +877,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetDocument(ContentEmbed_ExtensionP
 **描述：**
 
 从客户端OE对象获取其关联的OE文档对象。 <br>该OE文档对象通过[OH_ContentEmbed_CreateDocumentByOEid](capi-content-embed-document-h.md#oh_contentembed_createdocumentbyoeid)、[OH_ContentEmbed_CreateDocumentByFile](capi-content-embed-document-h.md#oh_contentembed_createdocumentbyfile)或 [OH_ContentEmbed_LoadDocumentFromFile](capi-content-embed-document-h.md#oh_contentembed_loaddocumentfromfile)方式创建。 <br>该文档对象的生命周期由[ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md)对象管理，应通过[OH_ContentEmbed_DestroyExtensionProxy](capi-content-embed-proxy-h.md#oh_contentembed_destroyextensionproxy)统一销毁，请勿单独调用 [OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁，否则会导致重复释放。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetDocument(ContentEmbed_ExtensionProxy *proxy, ContentEmbed_Document **ceDocument)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetDocument(ContentEmbed_ExtensionProxy *proxy, ContentEmbed_Document **ceDocument)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 

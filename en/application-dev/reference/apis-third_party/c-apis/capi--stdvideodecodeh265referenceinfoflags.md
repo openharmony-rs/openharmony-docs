@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoDecodeH265ReferenceInfoFlags {...}--><!--Device-struct StdVideoDecodeH265ReferenceInfoFlags {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

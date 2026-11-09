@@ -8,11 +8,13 @@ typedef struct OH_AVSession_AVMediaDescriptionBuilder OH_AVSession_AVMediaDescri
 
 音视频媒体描述构建器的声明。 构建器的实例用于创建媒体描述信息。
 
+<!--Device-typedef struct OH_AVSession_AVMediaDescriptionBuilder OH_AVSession_AVMediaDescriptionBuilder--><!--Device-typedef struct OH_AVSession_AVMediaDescriptionBuilder OH_AVSession_AVMediaDescriptionBuilder-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
-**相关模块：** [OHAVSession](capi-others-ohavsession.md)
+**相关模块：** [OHAVSession](capi-avsession-kit-ohavsession.md)
 
 **所在头文件：** [native_avqueueitem.h](capi-native-avqueueitem-h.md)
 

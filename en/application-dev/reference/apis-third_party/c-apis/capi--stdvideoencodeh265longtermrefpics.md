@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoEncodeH265LongTermRefPics {...}--><!--Device-struct StdVideoEncodeH265LongTermRefPics {...}-End-->
+
 ## Summary
 
 ### Member variables

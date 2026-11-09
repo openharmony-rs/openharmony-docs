@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkLayerProperties {...}--><!--Device-struct VkLayerProperties {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineDynamicStateCreateInfo {...}--><!--Device-struct VkPipelineDynamicStateCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoH265SpsVuiFlags {...}--><!--Device-struct StdVideoH265SpsVuiFlags {...}-End-->
+
 ## Summary
 
 ### Member variables

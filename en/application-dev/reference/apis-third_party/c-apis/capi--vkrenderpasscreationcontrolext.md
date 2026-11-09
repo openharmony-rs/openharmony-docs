@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkRenderPassCreationControlEXT {...}--><!--Device-struct VkRenderPassCreationControlEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

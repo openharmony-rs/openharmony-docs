@@ -8,11 +8,13 @@ typedef struct OH_AVMediaSourceLoader OH_AVMediaSourceLoader
 
 声明媒体数据加载器类型，该类型由应用程序实现。
 
+<!--Device-typedef struct OH_AVMediaSourceLoader OH_AVMediaSourceLoader--><!--Device-typedef struct OH_AVMediaSourceLoader OH_AVMediaSourceLoader-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 23
 
-**相关模块：** [AVMediaSource](capi-others-avmediasource.md)
+**相关模块：** [AVMediaSource](capi-media-kit-avmediasource.md)
 
 **所在头文件：** [avmedia_source.h](capi-avmedia-source-h.md)
 

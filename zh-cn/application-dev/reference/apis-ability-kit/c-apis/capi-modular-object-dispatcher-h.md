@@ -127,6 +127,8 @@ enum OH_AbilityRuntime_ModObjDispatcher_ValueType
 
 定义变体类型枚举，用于标识变体值的数据类型。 <br>变体（Variant）是一种能够存储多种不同类型值的通用数据容器，类似于C语言的联合体（union）。每个变体在同一时刻只持有一种类型的值，通过本枚举值标识其实际存储的数据类型。 <br>在本模块中，变体用于方法调用的参数传递和返回值接收，使得同一套接口能够处理布尔、整数、浮点数、字符串、数组、向量、集合、映射、结构体、远端通信对象等多种数据类型。
 
+<!--Device-OH_AbilityRuntime_ModObjDispatcher_ValueType--><!--Device-OH_AbilityRuntime_ModObjDispatcher_ValueType-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -177,6 +179,8 @@ void OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear(OH_AbilityRuntime_ModObjDi
 - 简单类型（布尔、整数、浮点数、空值等）不持有堆资源，无需调用此接口释放。
 - 禁止对TypeInfo的浅拷贝调用此接口。如果执行了 TypeInfo t2 = t1，只能清理其中一个。
 
+<!--Device-void OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear(OH_AbilityRuntime_ModObjDispatcher_TypeInfo* pTypeInfo)--><!--Device-void OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear(OH_AbilityRuntime_ModObjDispatcher_TypeInfo* pTypeInfo)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -201,6 +205,8 @@ void OH_AbilityRuntime_ModObjDispatcher_VariantClear(OH_AbilityRuntime_ModObjDis
 - 简单类型（布尔、整数、浮点数等）不持有堆资源，无需调用此接口释放。
 - 禁止对变体的浅拷贝调用此接口。如果执行了 Variant v2 = v1，只能清理其中一个。
 
+<!--Device-void OH_AbilityRuntime_ModObjDispatcher_VariantClear(OH_AbilityRuntime_ModObjDispatcher_Variant* pVariant)--><!--Device-void OH_AbilityRuntime_ModObjDispatcher_VariantClear(OH_AbilityRuntime_ModObjDispatcher_Variant* pVariant)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -220,6 +226,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_CreateMainServiceIns
 **描述：**
 
 从远端Proxy对象为主服务接口创建ModularObject分发器实例。 <br>类型库元数据将在首次需要时从远端服务延迟加载（如调用[OH_AbilityRuntime_ModObjDispatcher_GetTypeDescriptor](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_gettypedescriptor)、 [OH_AbilityRuntime_ModObjDispatcher_HasTypeDescriptor](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_hastypedescriptor)、 [OH_AbilityRuntime_ModObjDispatcher_QueryMainServiceInterfaceMemIDsOfNames](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_querymainserviceinterfacememidsofnames)或 [OH_AbilityRuntime_ModObjDispatcher_CallMethod](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_callmethod)时触发）。 <br>调用方需在不再使用时调用[OH_AbilityRuntime_ModObjDispatcher_Release](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_release)释放分发器实例，避免内存泄漏。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_CreateMainServiceInstance(OHIPCRemoteProxy* remoteProxy, OH_AbilityRuntime_ModObjDispatcherHandle* ppModObjDispatcher)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_CreateMainServiceInstance(OHIPCRemoteProxy* remoteProxy, OH_AbilityRuntime_ModObjDispatcherHandle* ppModObjDispatcher)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -247,6 +255,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_CreateSubInstance(OH
 **描述：**
 
 创建绑定到主服务分发器的子实例分发器。 <br>子实例共享主服务分发器的类型库元数据，但使用独立的IPC代理发送请求。适用于需要调用同一类型库中非主服务接口的场景。 <br>当在子实例上调用[OH_AbilityRuntime_ModObjDispatcher_CallMethod](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_callmethod)时，方法签名从主服务分发器的类型库元数据中解析，IPC请求通过subProxy发送到远端服务。 <br>调用方需在不再使用时调用[OH_AbilityRuntime_ModObjDispatcher_Release](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_release)释放子实例，避免内存泄漏。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_CreateSubInstance(OH_AbilityRuntime_ModObjDispatcherHandle mainServiceDispatcher, OHIPCRemoteProxy* subProxy, OH_AbilityRuntime_ModObjDispatcherHandle* ppModObjDispatcher)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_CreateSubInstance(OH_AbilityRuntime_ModObjDispatcherHandle mainServiceDispatcher, OHIPCRemoteProxy* subProxy, OH_AbilityRuntime_ModObjDispatcherHandle* ppModObjDispatcher)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -276,6 +286,8 @@ void OH_AbilityRuntime_ModObjDispatcher_Release(OH_AbilityRuntime_ModObjDispatch
 
 释放ModularObject分发器实例。释放后指针将被置为NULL。如果ppModObjDispatcher或*ppModObjDispatcher为NULL，则不执行任何操作。
 
+<!--Device-void OH_AbilityRuntime_ModObjDispatcher_Release(OH_AbilityRuntime_ModObjDispatcherHandle* ppModObjDispatcher)--><!--Device-void OH_AbilityRuntime_ModObjDispatcher_Release(OH_AbilityRuntime_ModObjDispatcherHandle* ppModObjDispatcher)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -295,6 +307,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_HasTypeDescriptor(OH
 **描述：**
 
 检查远端服务是否支持类型库元数据。调用此接口将触发类型库元数据的延迟加载。如果元数据加载成功，*pctinfo 为 1；否则为 0。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_HasTypeDescriptor(OH_AbilityRuntime_ModObjDispatcherHandle pModObjDispatcher, uint32_t* pctinfo)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_HasTypeDescriptor(OH_AbilityRuntime_ModObjDispatcherHandle pModObjDispatcher, uint32_t* pctinfo)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -323,6 +337,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_GetTypeDescriptor(OH
 
 获取类型描述符句柄，用于查询接口元数据信息。 <br>类型描述符提供对远端服务类型库元数据的访问能力，包括接口、方法、枚举和结构体的定义信息。调用此接口将触发类型库元数据的延迟加载。 <br>使用完毕后需调用[OH_AbilityRuntime_TypeDescriptor_Release](capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_release)释放句柄。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_GetTypeDescriptor(OH_AbilityRuntime_ModObjDispatcherHandle pModObjDispatcher, OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle* ppTypeDescriptor)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_GetTypeDescriptor(OH_AbilityRuntime_ModObjDispatcherHandle pModObjDispatcher, OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle* ppTypeDescriptor)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -349,6 +365,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_QueryMainServiceInte
 **描述：**
 
 根据方法名称查询主服务接口中对应的方法成员ID（MemberID）。返回的成员ID可作为[OH_AbilityRuntime_ModObjDispatcher_CallMethod](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_callmethod)的memID参数使用。 调用此接口将触发类型库元数据的延迟加载。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_QueryMainServiceInterfaceMemIDsOfNames(OH_AbilityRuntime_ModObjDispatcherHandle pModObjDispatcher, const char** rgszNames, uint32_t cNames, uint32_t* pMemID)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_QueryMainServiceInterfaceMemIDsOfNames(OH_AbilityRuntime_ModObjDispatcherHandle pModObjDispatcher, const char** rgszNames, uint32_t cNames, uint32_t* pMemID)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -380,6 +398,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_CallMethod(OH_Abilit
 **描述：**
 
 通过成员ID（MemberID）调用远端方法。 <br>调用流程：通过memID从元数据管理器获取方法元数据（方法名、参数类型、返回类型、IPC码等），将参数序列化到MessageParcel，通过IPC发送请求到远端服务，最后反序列化返回结果。 <br>本接口采用双层错误处理机制：
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_CallMethod(OH_AbilityRuntime_ModObjDispatcherHandle pModObjDispatcher, uint32_t memID, OH_AbilityRuntime_ModObjDispatcher_InputParams* pInputParams, OH_AbilityRuntime_ModObjDispatcher_Variant* pResult, int32_t* pMethodErrCode) // ========== TypeDescriptor Interfaces ==========--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_CallMethod(OH_AbilityRuntime_ModObjDispatcherHandle pModObjDispatcher, uint32_t memID, OH_AbilityRuntime_ModObjDispatcher_InputParams* pInputParams, OH_AbilityRuntime_ModObjDispatcher_Variant* pResult, int32_t* pMethodErrCode) // ========== TypeDescriptor Interfaces ==========-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -413,6 +433,8 @@ void OH_AbilityRuntime_TypeDescriptor_Release(OH_AbilityRuntime_ModObjDispatcher
 
 释放类型描述符实例。释放后句柄将被置为NULL。如果pTypeDescriptor或*pTypeDescriptor为NULL，则不执行任何操作。
 
+<!--Device-void OH_AbilityRuntime_TypeDescriptor_Release(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle *pTypeDescriptor)--><!--Device-void OH_AbilityRuntime_TypeDescriptor_Release(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle *pTypeDescriptor)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -432,6 +454,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetVersion(OH_AbilityR
 **描述：**
 
 获取类型库版本号。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetVersion(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, char* pbstrVersion, uint32_t cMaxVersion)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetVersion(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, char* pbstrVersion, uint32_t cMaxVersion)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -461,6 +485,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetInterfaceCount(OH_A
 
 获取类型库中定义的接口总数。返回的数量可用于确定遍历接口时的索引上限。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetInterfaceCount(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, uint32_t* pcInterfaces)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetInterfaceCount(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, uint32_t* pcInterfaces)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -487,6 +513,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetInterfaceName(OH_Ab
 **描述：**
 
 根据索引获取接口名称。接口索引的有效范围为[0, interfaceCount - 1]，其中interfaceCount可通过 [OH_AbilityRuntime_TypeDescriptor_GetInterfaceCount](capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getinterfacecount)获取。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetInterfaceName(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, uint32_t index, char* pbstrName, uint32_t cMaxName)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetInterfaceName(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, uint32_t index, char* pbstrName, uint32_t cMaxName)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -517,6 +545,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetInterfaceIsCallback
 
 检查指定接口是否为回调类型。回调接口表示该接口需要客户端实现并提供给服务端调用。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetInterfaceIsCallback(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrName, bool* pIsCallback)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetInterfaceIsCallback(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrName, bool* pIsCallback)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -544,6 +574,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMainServiceInterfac
 **描述：**
 
 获取主服务接口名称。 <br>主服务接口是远端ModularObjectExtensionAbility对外暴露的默认接口，即通过 [OH_AbilityRuntime_ModObjDispatcher_CreateMainServiceInstance](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_createmainserviceinstance)创建分发器时所绑定Proxy对象对应的接口。 <br>该接口由远端服务在类型库元数据中声明，可通过本接口获取其名称。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMainServiceInterfaceName(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, char* pbstrName, uint32_t cMaxName)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMainServiceInterfaceName(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, char* pbstrName, uint32_t cMaxName)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -573,6 +605,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodCount(OH_Abil
 
 获取指定接口中定义的方法总数。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodCount(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrInterfaceName, uint32_t* pcMethods)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodCount(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrInterfaceName, uint32_t* pcMethods)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -600,6 +634,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodName(OH_Abili
 **描述：**
 
 根据索引获取接口中的方法名称。方法索引的有效范围为[0, methodCount - 1]，其中methodCount可通过 [OH_AbilityRuntime_TypeDescriptor_GetMethodCount](capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodcount)获取。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodName(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrInterfaceName, uint32_t index, char* pbstrName, uint32_t cMaxName)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodName(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrInterfaceName, uint32_t index, char* pbstrName, uint32_t cMaxName)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -631,6 +667,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId(OH_A
 
 根据方法名称获取方法的成员ID（MemberID）。返回的成员ID可作为[OH_AbilityRuntime_ModObjDispatcher_CallMethod](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_callmethod)的memID参数使用。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrInterfaceName, const char* pbstrMethodName, uint32_t* pMemID)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrInterfaceName, const char* pbstrMethodName, uint32_t* pMemID)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -659,6 +697,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodReturnType(OH
 **描述：**
 
 获取方法的返回类型。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodReturnType(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrInterfaceName, const char* pbstrMethodName, OH_AbilityRuntime_ModObjDispatcher_TypeInfo* pReturnType)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodReturnType(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrInterfaceName, const char* pbstrMethodName, OH_AbilityRuntime_ModObjDispatcher_TypeInfo* pReturnType)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -689,6 +729,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodParamCount(OH
 
 获取方法的参数数量。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodParamCount(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrInterfaceName, const char* pbstrMethodName, uint32_t* pcParams)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodParamCount(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrInterfaceName, const char* pbstrMethodName, uint32_t* pcParams)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -717,6 +759,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodParamType(OH_
 **描述：**
 
 根据索引获取方法参数的类型。参数索引的有效范围为[0, paramCount - 1]，其中paramCount可通过 [OH_AbilityRuntime_TypeDescriptor_GetMethodParamCount](capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodparamcount)获取。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodParamType(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrInterfaceName, const char* pbstrMethodName, uint32_t iParamIndex, OH_AbilityRuntime_ModObjDispatcher_TypeInfo* pParamType)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodParamType(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrInterfaceName, const char* pbstrMethodName, uint32_t iParamIndex, OH_AbilityRuntime_ModObjDispatcher_TypeInfo* pParamType)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -749,6 +793,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodParamName(OH_
 **描述：**
 
 根据索引获取方法参数的名称。参数索引的有效范围为[0, paramCount - 1]，其中paramCount可通过 [OH_AbilityRuntime_TypeDescriptor_GetMethodParamCount](capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodparamcount)获取。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodParamName(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrInterfaceName, const char* pbstrMethodName, uint32_t iParamIndex, char* pbstrName, uint32_t cMaxName) // ========== Enum Queries ==========--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodParamName(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrInterfaceName, const char* pbstrMethodName, uint32_t iParamIndex, char* pbstrName, uint32_t cMaxName) // ========== Enum Queries ==========-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -783,6 +829,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetEnumCount(OH_Abilit
 
 获取类型库中定义的枚举总数。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetEnumCount(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, uint32_t* pcEnums)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetEnumCount(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, uint32_t* pcEnums)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -809,6 +857,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetEnumName(OH_Ability
 **描述：**
 
 根据索引获取枚举名称。枚举索引的有效范围为[0, enumCount - 1]，其中enumCount可通过[OH_AbilityRuntime_TypeDescriptor_GetEnumCount](capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getenumcount)获取。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetEnumName(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, uint32_t index, char* pbstrName, uint32_t cMaxName)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetEnumName(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, uint32_t index, char* pbstrName, uint32_t cMaxName)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -839,6 +889,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetEnumValueCount(OH_A
 
 获取指定枚举中定义的枚举值数量。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetEnumValueCount(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrEnumName, uint32_t* pcValues)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetEnumValueCount(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrEnumName, uint32_t* pcValues)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -866,6 +918,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetEnumValueName(OH_Ab
 **描述：**
 
 根据索引获取枚举值的名称。枚举值索引的有效范围为[0, valueCount - 1]，其中valueCount可通过 [OH_AbilityRuntime_TypeDescriptor_GetEnumValueCount](capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getenumvaluecount)获取。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetEnumValueName(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrEnumName, uint32_t iValueIndex, char* pbstrValueName, uint32_t cMaxName)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetEnumValueName(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrEnumName, uint32_t iValueIndex, char* pbstrValueName, uint32_t cMaxName)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -897,6 +951,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetEnumValue(OH_Abilit
 
 根据枚举值名称获取枚举值。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetEnumValue(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrEnumName, const char* pbstrValueName, int32_t* pValue)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetEnumValue(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrEnumName, const char* pbstrValueName, int32_t* pValue)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -926,6 +982,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetStructCount(OH_Abil
 
 获取类型库中定义的结构体总数。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetStructCount(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, uint32_t* pcStructs)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetStructCount(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, uint32_t* pcStructs)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -952,6 +1010,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetStructName(OH_Abili
 **描述：**
 
 根据索引获取结构体名称。结构体索引的有效范围为[0, structCount - 1]，其中structCount可通过 [OH_AbilityRuntime_TypeDescriptor_GetStructCount](capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getstructcount)获取。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetStructName(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, uint32_t index, char* pbstrName, uint32_t cMaxName)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetStructName(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, uint32_t index, char* pbstrName, uint32_t cMaxName)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -982,6 +1042,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetStructFieldCount(OH
 
 获取指定结构体中定义的字段数量。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetStructFieldCount(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrStructName, uint32_t* pcFields)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetStructFieldCount(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrStructName, uint32_t* pcFields)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1009,6 +1071,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetStructFieldName(OH_
 **描述：**
 
 根据索引获取结构体字段的名称。结构体字段索引的有效范围为[0, fieldCount - 1]，其中fieldCount可通过 [OH_AbilityRuntime_TypeDescriptor_GetStructFieldCount](capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getstructfieldcount)获取。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetStructFieldName(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrStructName, uint32_t iFieldIndex, char* pbstrFieldName, uint32_t cMaxName)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetStructFieldName(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrStructName, uint32_t iFieldIndex, char* pbstrFieldName, uint32_t cMaxName)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1040,6 +1104,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetStructFieldType(OH_
 
 根据字段名称获取结构体字段的类型。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetStructFieldType(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrStructName, const char* pbstrFieldName, OH_AbilityRuntime_ModObjDispatcher_TypeInfo* pFieldType)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetStructFieldType(OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle pTypeDescriptor, const char* pbstrStructName, const char* pbstrFieldName, OH_AbilityRuntime_ModObjDispatcher_TypeInfo* pFieldType)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1069,6 +1135,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_ArrayCreate(OH_Abili
 
 创建指定元素类型和大小的数组实例。数组为固定大小，创建后不可改变长度。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_ArrayCreate(OH_AbilityRuntime_ModObjDispatcher_TypeInfo *elementType, uint32_t size, OH_AbilityRuntime_ModObjDispatcher_ArrayHandle* ppArray)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_ArrayCreate(OH_AbilityRuntime_ModObjDispatcher_TypeInfo *elementType, uint32_t size, OH_AbilityRuntime_ModObjDispatcher_ArrayHandle* ppArray)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1097,6 +1165,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_ArrayGetElementType(
 
 获取数组的元素类型。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_ArrayGetElementType(OH_AbilityRuntime_ModObjDispatcher_ArrayHandle pArray, OH_AbilityRuntime_ModObjDispatcher_TypeInfo* pElementType)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_ArrayGetElementType(OH_AbilityRuntime_ModObjDispatcher_ArrayHandle pArray, OH_AbilityRuntime_ModObjDispatcher_TypeInfo* pElementType)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1123,6 +1193,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_ArraySet(OH_AbilityR
 **描述：**
 
 设置数组中指定索引位置的元素值。函数会执行深拷贝，调用方保留原始变体的所有权。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_ArraySet(OH_AbilityRuntime_ModObjDispatcher_ArrayHandle pArray, uint32_t index, const OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_ArraySet(OH_AbilityRuntime_ModObjDispatcher_ArrayHandle pArray, uint32_t index, const OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1152,6 +1224,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_ArrayGet(OH_AbilityR
 
 获取数组中指定索引位置的元素值。返回的变体是深拷贝，调用方拥有返回变体的所有权，需调用[OH_AbilityRuntime_ModObjDispatcher_VariantClear](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_variantclear)释放。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_ArrayGet(OH_AbilityRuntime_ModObjDispatcher_ArrayHandle pArray, uint32_t index, OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_ArrayGet(OH_AbilityRuntime_ModObjDispatcher_ArrayHandle pArray, uint32_t index, OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1180,6 +1254,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_ArrayGetSize(OH_Abil
 
 获取数组的大小。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_ArrayGetSize(OH_AbilityRuntime_ModObjDispatcher_ArrayHandle pArray, uint32_t* pSize)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_ArrayGetSize(OH_AbilityRuntime_ModObjDispatcher_ArrayHandle pArray, uint32_t* pSize)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1207,6 +1283,8 @@ void OH_AbilityRuntime_ModObjDispatcher_ArrayRelease(OH_AbilityRuntime_ModObjDis
 
 释放数组实例。释放后句柄将被置为NULL。如果ppArray或*ppArray为NULL，则不执行任何操作。
 
+<!--Device-void OH_AbilityRuntime_ModObjDispatcher_ArrayRelease(OH_AbilityRuntime_ModObjDispatcher_ArrayHandle* ppArray)--><!--Device-void OH_AbilityRuntime_ModObjDispatcher_ArrayRelease(OH_AbilityRuntime_ModObjDispatcher_ArrayHandle* ppArray)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1226,6 +1304,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorCreate(OH_Abil
 **描述：**
 
 创建指定元素类型的向量实例。向量为动态大小的有序集合，所有元素类型相同，支持添加元素、按索引获取元素、查询大小和清空。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorCreate(OH_AbilityRuntime_ModObjDispatcher_TypeInfo *elementType, OH_AbilityRuntime_ModObjDispatcher_VectorHandle* ppVector)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorCreate(OH_AbilityRuntime_ModObjDispatcher_TypeInfo *elementType, OH_AbilityRuntime_ModObjDispatcher_VectorHandle* ppVector)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1254,6 +1334,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorGetElementType
 
 获取向量的元素类型。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorGetElementType(OH_AbilityRuntime_ModObjDispatcher_VectorHandle pVector, OH_AbilityRuntime_ModObjDispatcher_TypeInfo* pElementType)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorGetElementType(OH_AbilityRuntime_ModObjDispatcher_VectorHandle pVector, OH_AbilityRuntime_ModObjDispatcher_TypeInfo* pElementType)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1281,6 +1363,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorAdd(OH_Ability
 
 向向量末尾添加一个元素。函数会执行深拷贝，调用方保留原始变体的所有权。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorAdd(OH_AbilityRuntime_ModObjDispatcher_VectorHandle pVector, const OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorAdd(OH_AbilityRuntime_ModObjDispatcher_VectorHandle pVector, const OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1307,6 +1391,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorGet(OH_Ability
 **描述：**
 
 获取向量中指定索引位置的元素值。返回的变体是深拷贝，调用方拥有返回变体的所有权，需调用[OH_AbilityRuntime_ModObjDispatcher_VariantClear](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_variantclear)释放。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorGet(OH_AbilityRuntime_ModObjDispatcher_VectorHandle pVector, uint32_t index, OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorGet(OH_AbilityRuntime_ModObjDispatcher_VectorHandle pVector, uint32_t index, OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1336,6 +1422,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorGetSize(OH_Abi
 
 获取向量中的元素数量。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorGetSize(OH_AbilityRuntime_ModObjDispatcher_VectorHandle pVector, uint32_t* pSize)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorGetSize(OH_AbilityRuntime_ModObjDispatcher_VectorHandle pVector, uint32_t* pSize)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1363,6 +1451,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorClear(OH_Abili
 
 清空向量中的所有元素。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorClear(OH_AbilityRuntime_ModObjDispatcher_VectorHandle pVector)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorClear(OH_AbilityRuntime_ModObjDispatcher_VectorHandle pVector)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1389,6 +1479,8 @@ void OH_AbilityRuntime_ModObjDispatcher_VectorRelease(OH_AbilityRuntime_ModObjDi
 
 释放向量实例。释放后句柄将被置为NULL。如果ppVector或*ppVector为NULL，则不执行任何操作。
 
+<!--Device-void OH_AbilityRuntime_ModObjDispatcher_VectorRelease(OH_AbilityRuntime_ModObjDispatcher_VectorHandle* ppVector)--><!--Device-void OH_AbilityRuntime_ModObjDispatcher_VectorRelease(OH_AbilityRuntime_ModObjDispatcher_VectorHandle* ppVector)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1408,6 +1500,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetCreate(OH_Ability
 **描述：**
 
 创建指定元素类型的集合实例。集合为不重复元素的无序集合，所有元素类型相同，支持添加、删除、查询指定元素是否存在、按索引获取元素和清空。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetCreate(OH_AbilityRuntime_ModObjDispatcher_TypeInfo *elementType, OH_AbilityRuntime_ModObjDispatcher_SetHandle* ppSet)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetCreate(OH_AbilityRuntime_ModObjDispatcher_TypeInfo *elementType, OH_AbilityRuntime_ModObjDispatcher_SetHandle* ppSet)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1436,6 +1530,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetGetElementType(OH
 
 获取集合的元素类型。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetGetElementType(OH_AbilityRuntime_ModObjDispatcher_SetHandle pSet, OH_AbilityRuntime_ModObjDispatcher_TypeInfo* pElementType)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetGetElementType(OH_AbilityRuntime_ModObjDispatcher_SetHandle pSet, OH_AbilityRuntime_ModObjDispatcher_TypeInfo* pElementType)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1462,6 +1558,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetAdd(OH_AbilityRun
 **描述：**
 
 向集合中添加一个元素。如果元素已存在，则不会重复添加。函数会执行深拷贝，调用方保留原始变体的所有权。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetAdd(OH_AbilityRuntime_ModObjDispatcher_SetHandle pSet, const OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetAdd(OH_AbilityRuntime_ModObjDispatcher_SetHandle pSet, const OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1490,6 +1588,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetRemove(OH_Ability
 
 从集合中移除指定元素。如果元素不存在，则不执行任何操作。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetRemove(OH_AbilityRuntime_ModObjDispatcher_SetHandle pSet, const OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetRemove(OH_AbilityRuntime_ModObjDispatcher_SetHandle pSet, const OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1516,6 +1616,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetContains(OH_Abili
 **描述：**
 
 检查集合中是否存在指定元素。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetContains(OH_AbilityRuntime_ModObjDispatcher_SetHandle pSet, const OH_AbilityRuntime_ModObjDispatcher_Variant* pValue, bool* pExists)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetContains(OH_AbilityRuntime_ModObjDispatcher_SetHandle pSet, const OH_AbilityRuntime_ModObjDispatcher_Variant* pValue, bool* pExists)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1545,6 +1647,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetGetSize(OH_Abilit
 
 获取集合中的元素数量。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetGetSize(OH_AbilityRuntime_ModObjDispatcher_SetHandle pSet, uint32_t* pSize)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetGetSize(OH_AbilityRuntime_ModObjDispatcher_SetHandle pSet, uint32_t* pSize)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1571,6 +1675,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetGetAt(OH_AbilityR
 **描述：**
 
 根据索引获取集合中的元素值。返回的变体是深拷贝，调用方拥有返回变体的所有权，需调用[OH_AbilityRuntime_ModObjDispatcher_VariantClear](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_variantclear)释放。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetGetAt(OH_AbilityRuntime_ModObjDispatcher_SetHandle pSet, uint32_t index, OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetGetAt(OH_AbilityRuntime_ModObjDispatcher_SetHandle pSet, uint32_t index, OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1600,6 +1706,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetClear(OH_AbilityR
 
 清空集合中的所有元素。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetClear(OH_AbilityRuntime_ModObjDispatcher_SetHandle pSet)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetClear(OH_AbilityRuntime_ModObjDispatcher_SetHandle pSet)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1626,6 +1734,8 @@ void OH_AbilityRuntime_ModObjDispatcher_SetRelease(OH_AbilityRuntime_ModObjDispa
 
 释放集合实例。释放后句柄将被置为NULL。如果ppSet或*ppSet为NULL，则不执行任何操作。
 
+<!--Device-void OH_AbilityRuntime_ModObjDispatcher_SetRelease(OH_AbilityRuntime_ModObjDispatcher_SetHandle* ppSet)--><!--Device-void OH_AbilityRuntime_ModObjDispatcher_SetRelease(OH_AbilityRuntime_ModObjDispatcher_SetHandle* ppSet)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1645,6 +1755,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapCreate(OH_Ability
 **描述：**
 
 创建指定键类型和值类型的映射实例。键仅支持基本类型（BOOL、有符号整数、无符号整数、浮点数、STRING、ENUM），不支持容器类型（ARRAY、VECTOR、SET、MAP）和复杂类型（STRUCT、 IPC_REMOTE_PROXY、IPC_REMOTE_STUB）。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapCreate(OH_AbilityRuntime_ModObjDispatcher_ValueType keyType, OH_AbilityRuntime_ModObjDispatcher_TypeInfo *valueType, OH_AbilityRuntime_ModObjDispatcher_MapHandle* ppMap)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapCreate(OH_AbilityRuntime_ModObjDispatcher_ValueType keyType, OH_AbilityRuntime_ModObjDispatcher_TypeInfo *valueType, OH_AbilityRuntime_ModObjDispatcher_MapHandle* ppMap)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1674,6 +1786,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGetKeyType(OH_Abi
 
 获取映射的键类型。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGetKeyType(OH_AbilityRuntime_ModObjDispatcher_MapHandle pMap, OH_AbilityRuntime_ModObjDispatcher_ValueType* pKeyType)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGetKeyType(OH_AbilityRuntime_ModObjDispatcher_MapHandle pMap, OH_AbilityRuntime_ModObjDispatcher_ValueType* pKeyType)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1701,6 +1815,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGetValueType(OH_A
 
 获取映射的值类型。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGetValueType(OH_AbilityRuntime_ModObjDispatcher_MapHandle pMap, OH_AbilityRuntime_ModObjDispatcher_TypeInfo* pValueType)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGetValueType(OH_AbilityRuntime_ModObjDispatcher_MapHandle pMap, OH_AbilityRuntime_ModObjDispatcher_TypeInfo* pValueType)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1727,6 +1843,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapPut(OH_AbilityRun
 **描述：**
 
 向映射中添加或更新键值对。如果键已存在，则更新对应的值。函数会执行深拷贝，调用方保留原始变体的所有权。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapPut(OH_AbilityRuntime_ModObjDispatcher_MapHandle pMap, const OH_AbilityRuntime_ModObjDispatcher_Variant* pKey, const OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapPut(OH_AbilityRuntime_ModObjDispatcher_MapHandle pMap, const OH_AbilityRuntime_ModObjDispatcher_Variant* pKey, const OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1756,6 +1874,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGet(OH_AbilityRun
 
 根据键获取映射中对应的值。返回的变体是深拷贝，调用方拥有返回变体的所有权，需调用[OH_AbilityRuntime_ModObjDispatcher_VariantClear](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_variantclear)释放。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGet(OH_AbilityRuntime_ModObjDispatcher_MapHandle pMap, const OH_AbilityRuntime_ModObjDispatcher_Variant* pKey, OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGet(OH_AbilityRuntime_ModObjDispatcher_MapHandle pMap, const OH_AbilityRuntime_ModObjDispatcher_Variant* pKey, OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1784,6 +1904,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapRemove(OH_Ability
 
 根据键从映射中移除键值对。如果键不存在，则不执行任何操作。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapRemove(OH_AbilityRuntime_ModObjDispatcher_MapHandle pMap, const OH_AbilityRuntime_ModObjDispatcher_Variant* pKey)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapRemove(OH_AbilityRuntime_ModObjDispatcher_MapHandle pMap, const OH_AbilityRuntime_ModObjDispatcher_Variant* pKey)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1810,6 +1932,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapContainsKey(OH_Ab
 **描述：**
 
 检查映射中是否存在指定的键。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapContainsKey(OH_AbilityRuntime_ModObjDispatcher_MapHandle pMap, const OH_AbilityRuntime_ModObjDispatcher_Variant* pKey, bool* pExists)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapContainsKey(OH_AbilityRuntime_ModObjDispatcher_MapHandle pMap, const OH_AbilityRuntime_ModObjDispatcher_Variant* pKey, bool* pExists)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1839,6 +1963,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGetSize(OH_Abilit
 
 获取映射中的键值对数量。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGetSize(OH_AbilityRuntime_ModObjDispatcher_MapHandle pMap, uint32_t* pSize)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGetSize(OH_AbilityRuntime_ModObjDispatcher_MapHandle pMap, uint32_t* pSize)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1865,6 +1991,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGetKeyAt(OH_Abili
 **描述：**
 
 根据索引获取映射中的键。返回的变体是深拷贝，调用方拥有返回变体的所有权，需调用[OH_AbilityRuntime_ModObjDispatcher_VariantClear](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_variantclear)释放。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGetKeyAt(OH_AbilityRuntime_ModObjDispatcher_MapHandle pMap, uint32_t index, OH_AbilityRuntime_ModObjDispatcher_Variant* pKey)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGetKeyAt(OH_AbilityRuntime_ModObjDispatcher_MapHandle pMap, uint32_t index, OH_AbilityRuntime_ModObjDispatcher_Variant* pKey)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1894,6 +2022,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGetValueAt(OH_Abi
 
 根据索引获取映射中的值。返回的变体是深拷贝，调用方拥有返回变体的所有权，需调用[OH_AbilityRuntime_ModObjDispatcher_VariantClear](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_variantclear)释放。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGetValueAt(OH_AbilityRuntime_ModObjDispatcher_MapHandle pMap, uint32_t index, OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGetValueAt(OH_AbilityRuntime_ModObjDispatcher_MapHandle pMap, uint32_t index, OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1922,6 +2052,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapClear(OH_AbilityR
 
 清空映射中的所有键值对。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapClear(OH_AbilityRuntime_ModObjDispatcher_MapHandle pMap)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapClear(OH_AbilityRuntime_ModObjDispatcher_MapHandle pMap)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1948,6 +2080,8 @@ void OH_AbilityRuntime_ModObjDispatcher_MapRelease(OH_AbilityRuntime_ModObjDispa
 
 释放映射实例。释放后句柄将被置为NULL。如果ppMap或*ppMap为NULL，则不执行任何操作。
 
+<!--Device-void OH_AbilityRuntime_ModObjDispatcher_MapRelease(OH_AbilityRuntime_ModObjDispatcher_MapHandle* ppMap)--><!--Device-void OH_AbilityRuntime_ModObjDispatcher_MapRelease(OH_AbilityRuntime_ModObjDispatcher_MapHandle* ppMap)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -1967,6 +2101,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_StructCreate(const c
 **描述：**
 
 根据类型库元数据中的结构体名称创建结构体实例。structName必须与类型库中定义的结构体名称一致，可通过[OH_AbilityRuntime_TypeDescriptor_GetStructName](capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getstructname) 获取可用结构体名称。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_StructCreate(const char* structName, OH_AbilityRuntime_ModObjDispatcher_StructHandle* ppStruct)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_StructCreate(const char* structName, OH_AbilityRuntime_ModObjDispatcher_StructHandle* ppStruct)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1994,6 +2130,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_StructGetName(OH_Abi
 **描述：**
 
 获取结构体的类型名称。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_StructGetName(OH_AbilityRuntime_ModObjDispatcher_StructHandle pStruct, char* pbstrName, uint32_t cMaxName)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_StructGetName(OH_AbilityRuntime_ModObjDispatcher_StructHandle pStruct, char* pbstrName, uint32_t cMaxName)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2023,6 +2161,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_StructSetField(OH_Ab
 
 设置结构体中指定字段的值。函数会执行深拷贝，调用方保留原始变体的所有权。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_StructSetField(OH_AbilityRuntime_ModObjDispatcher_StructHandle pStruct, const char* szName, const OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_StructSetField(OH_AbilityRuntime_ModObjDispatcher_StructHandle pStruct, const char* szName, const OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -2051,6 +2191,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_StructGetField(OH_Ab
 
 获取结构体中指定字段的值。返回的变体是深拷贝，调用方拥有返回变体的所有权，需调用[OH_AbilityRuntime_ModObjDispatcher_VariantClear](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_variantclear)释放。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_StructGetField(OH_AbilityRuntime_ModObjDispatcher_StructHandle pStruct, const char* szName, OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_StructGetField(OH_AbilityRuntime_ModObjDispatcher_StructHandle pStruct, const char* szName, OH_AbilityRuntime_ModObjDispatcher_Variant* pValue)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -2078,6 +2220,8 @@ void OH_AbilityRuntime_ModObjDispatcher_StructRelease(OH_AbilityRuntime_ModObjDi
 **描述：**
 
 释放结构体实例。释放后句柄将被置为NULL。如果ppStruct或*ppStruct为NULL，则不执行任何操作。
+
+<!--Device-void OH_AbilityRuntime_ModObjDispatcher_StructRelease(OH_AbilityRuntime_ModObjDispatcher_StructHandle* ppStruct)--><!--Device-void OH_AbilityRuntime_ModObjDispatcher_StructRelease(OH_AbilityRuntime_ModObjDispatcher_StructHandle* ppStruct)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

@@ -87,6 +87,8 @@ enum DRM_EventType
 
 Enumerates the types of events that can be subscribed to.
 
+<!--Device-DRM_EventType--><!--Device-DRM_EventType-End-->
+
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
@@ -110,6 +112,8 @@ enum DRM_ContentProtectionLevel
 
 Enumerates the content protection levels.
 
+<!--Device-DRM_ContentProtectionLevel--><!--Device-DRM_ContentProtectionLevel-End-->
+
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
@@ -132,6 +136,8 @@ enum DRM_MediaKeyType
 
 Enumerates the types of media keys.
 
+<!--Device-DRM_MediaKeyType--><!--Device-DRM_MediaKeyType-End-->
+
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
@@ -150,6 +156,8 @@ enum DRM_MediaKeyRequestType
 **Description**
 
 Enumerates the types of media key requests.
+
+<!--Device-DRM_MediaKeyRequestType--><!--Device-DRM_MediaKeyRequestType-End-->
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -174,6 +182,8 @@ enum DRM_OfflineMediaKeyStatus
 
 Enumerates the statuses of offline media keys.
 
+<!--Device-DRM_OfflineMediaKeyStatus--><!--Device-DRM_OfflineMediaKeyStatus-End-->
+
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
@@ -193,6 +203,8 @@ enum DRM_CertificateStatus
 **Description**
 
 Enumerates the device certificate statuses.
+
+<!--Device-DRM_CertificateStatus--><!--Device-DRM_CertificateStatus-End-->
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -218,6 +230,8 @@ typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeyS
 **Description**
 
 Defines the callback used to obtain DRM information from a media source.
+
+<!--Device-typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)--><!--Device-typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)-End-->
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 

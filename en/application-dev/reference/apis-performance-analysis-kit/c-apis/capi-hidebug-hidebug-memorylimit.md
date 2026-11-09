@@ -8,11 +8,13 @@ struct HiDebug_MemoryLimit {...}
 
 Defines the struct for the memory limit of the application process.
 
+<!--Device-struct HiDebug_MemoryLimit {...}--><!--Device-struct HiDebug_MemoryLimit {...}-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 12
 
-**Related module**: [HiDebug](capi-others-hidebug.md)
+**Related module**: [HiDebug](capi-performance-analysis-kit-hidebug.md)
 
 **Header file**: [hidebug_type.h](capi-hidebug-type-h.md)
 

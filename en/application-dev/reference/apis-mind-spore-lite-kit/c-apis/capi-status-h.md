@@ -37,6 +37,8 @@ enum OH_AI_CompCode
 
 Defines the component code enumeration for MindSpore Lite.<br> Used to identify the component module to which a status code belongs. Each status code contains a component code part. Component codes are used to distinguish error codes from different modules.
 
+<!--Device-OH_AI_CompCode--><!--Device-OH_AI_CompCode-End-->
+
 **Since**: 9
 
 | Enum item | Description |
@@ -56,6 +58,8 @@ enum OH_AI_Status
 **Description**
 
 Defines the status code enumeration for MindSpore Lite.<br> Used to indicate the return status of MindSpore Lite API calls, including success and various error conditions. Status codes are divided into different ranges, each corresponding to a specific type of error or status. Common error code ranges: (-100,-1] for general errors, (-200,-100] for executor errors, (-300,-200] for graph errors, (-400,-300] for operator errors, (-500,-400] for tensor errors, (-600,-500] for shape inference errors, (-700,-600] for user input parameter errors, (-800,-700] for AIPP module errors.
+
+<!--Device-OH_AI_Status--><!--Device-OH_AI_Status-End-->
 
 **Since**: 9
 

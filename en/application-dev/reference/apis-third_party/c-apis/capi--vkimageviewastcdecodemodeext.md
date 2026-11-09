@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkImageViewASTCDecodeModeEXT {...}--><!--Device-struct VkImageViewASTCDecodeModeEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

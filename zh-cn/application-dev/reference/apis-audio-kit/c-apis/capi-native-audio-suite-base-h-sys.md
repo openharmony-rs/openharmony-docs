@@ -41,6 +41,8 @@ enum OH_AudioSuite_SystemNodeType
 
 定义音频系统节点类型。
 
+<!--Device-OH_AudioSuite_SystemNodeType--><!--Device-OH_AudioSuite_SystemNodeType-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 26.0.0

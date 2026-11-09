@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {...}--><!--Device-struct VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

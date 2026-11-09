@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoEncodeH265WeightTable {...}--><!--Device-struct StdVideoEncodeH265WeightTable {...}-End-->
+
 ## Summary
 
 ### Member variables

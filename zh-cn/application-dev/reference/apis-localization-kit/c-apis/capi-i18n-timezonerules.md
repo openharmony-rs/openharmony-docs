@@ -8,11 +8,13 @@ struct TimeZoneRules {...}
 
 完整的时区规则，包括起始时区规则、起始时间戳数组定义的时区规则和每年生效的时区规则，能够全面描述时区的历史和未来规则。
 
+<!--Device-struct TimeZoneRules {...}--><!--Device-struct TimeZoneRules {...}-End-->
+
 **系统能力：** SystemCapability.Global.I18n
 
 **起始版本：** 22
 
-**相关模块：** [i18n](capi-others-i18n.md)
+**相关模块：** [i18n](capi-localization-kit-i18n.md)
 
 **所在头文件：** [timezone.h](capi-timezone-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceTimelineSemaphoreFeatures {...}--><!--Device-struct VkPhysicalDeviceTimelineSemaphoreFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

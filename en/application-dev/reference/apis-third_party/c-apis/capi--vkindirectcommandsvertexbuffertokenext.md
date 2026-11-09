@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkIndirectCommandsVertexBufferTokenEXT {...}--><!--Device-struct VkIndirectCommandsVertexBufferTokenEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

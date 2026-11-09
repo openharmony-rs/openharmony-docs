@@ -8,11 +8,13 @@ typedef struct OH_Drawing_TypographyCreate OH_Drawing_TypographyCreate
 
 用于创建[OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md)。
 
+<!--Device-typedef struct OH_Drawing_TypographyCreate OH_Drawing_TypographyCreate--><!--Device-typedef struct OH_Drawing_TypographyCreate OH_Drawing_TypographyCreate-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
 
-**相关模块：** [Drawing](capi-others-drawing.md)
+**相关模块：** [Drawing](capi-arkgraphics2d-drawing.md)
 
 **所在头文件：** [drawing_text_declaration.h](capi-drawing-text-declaration-h.md)
 

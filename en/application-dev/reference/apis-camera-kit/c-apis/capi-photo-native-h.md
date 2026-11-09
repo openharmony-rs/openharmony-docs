@@ -44,6 +44,8 @@ Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNati
 
 Obtains a full-quality image.
 
+<!--Device-Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNative** mainImage)--><!--Device-Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNative** mainImage)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
@@ -71,6 +73,8 @@ Camera_ErrorCode OH_PhotoNative_GetUncompressedImage(OH_PhotoNative* photo, OH_P
 
 Obtains an uncompressed image.
 
+<!--Device-Camera_ErrorCode OH_PhotoNative_GetUncompressedImage(OH_PhotoNative* photo, OH_PictureNative** picture)--><!--Device-Camera_ErrorCode OH_PhotoNative_GetUncompressedImage(OH_PhotoNative* photo, OH_PictureNative** picture)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 23
@@ -97,6 +101,8 @@ Camera_ErrorCode OH_PhotoNative_GetAuxiliaryImage(const OH_PhotoNative* photo, O
 **Description**
 
 Obtains an auxiliary image.
+
+<!--Device-Camera_ErrorCode OH_PhotoNative_GetAuxiliaryImage(const OH_PhotoNative* photo, OH_Camera_AuxiliaryPhotoType type, OH_ImageNative** outImage)--><!--Device-Camera_ErrorCode OH_PhotoNative_GetAuxiliaryImage(const OH_PhotoNative* photo, OH_Camera_AuxiliaryPhotoType type, OH_ImageNative** outImage)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -128,6 +134,8 @@ Camera_ErrorCode OH_PhotoNative_GetUncompressedAuxiliaryImage(const OH_PhotoNati
 
 Obtains an uncompressed auxiliary image.
 
+<!--Device-Camera_ErrorCode OH_PhotoNative_GetUncompressedAuxiliaryImage(const OH_PhotoNative* photo, OH_Camera_AuxiliaryPhotoType type, OH_PictureNative** outImage)--><!--Device-Camera_ErrorCode OH_PhotoNative_GetUncompressedAuxiliaryImage(const OH_PhotoNative* photo, OH_Camera_AuxiliaryPhotoType type, OH_PictureNative** outImage)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.1
@@ -158,6 +166,8 @@ Camera_ErrorCode OH_PhotoNative_Release(OH_PhotoNative* photo)
 
 Releases a full-quality image.
 
+<!--Device-Camera_ErrorCode OH_PhotoNative_Release(OH_PhotoNative* photo)--><!--Device-Camera_ErrorCode OH_PhotoNative_Release(OH_PhotoNative* photo)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
@@ -184,6 +194,8 @@ Camera_ErrorCode OH_PhotoNative_ReleasePicture(OH_PictureNative* picture)
 
 Releases an allocated native picture instance.
 
+<!--Device-Camera_ErrorCode OH_PhotoNative_ReleasePicture(OH_PictureNative* picture)--><!--Device-Camera_ErrorCode OH_PhotoNative_ReleasePicture(OH_PictureNative* picture)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.1
@@ -209,6 +221,8 @@ Camera_ErrorCode OH_PhotoNative_ReleaseImage(OH_ImageNative* image)
 **Description**
 
 Releases an allocated native image instance.
+
+<!--Device-Camera_ErrorCode OH_PhotoNative_ReleaseImage(OH_ImageNative* image)--><!--Device-Camera_ErrorCode OH_PhotoNative_ReleaseImage(OH_ImageNative* image)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 

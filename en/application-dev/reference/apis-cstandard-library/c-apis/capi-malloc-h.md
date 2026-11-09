@@ -43,6 +43,8 @@ struct mallinfo {int arenaint ordblksint smblksint hblksint hblkhdint usmblksint
 
 This function determines whether a given memory block was allocated using Standard C library Memory Allocator. This function is MT-Safe(multi-thread safe) but not signal-safe.
 
+<!--Device-int malloc_check_from_ptr(void *ptr) struct mallinfo {int arenaint ordblksint smblksint hblksint hblkhdint usmblksint fsmblksint uordblksint fordblksint keepcost--><!--Device-int malloc_check_from_ptr(void *ptr) struct mallinfo {int arenaint ordblksint smblksint hblksint hblkhdint usmblksint fsmblksint uordblksint fordblksint keepcost-End-->
+
 **Since**: 19
 
 **Parameters**:
@@ -67,6 +69,8 @@ struct mallinfo mallinfo(void)
 
 Obtains the memory information allocated by malloc-related operations.
 
+<!--Device-struct mallinfo mallinfo(void)--><!--Device-struct mallinfo mallinfo(void)-End-->
+
 **Since**: 20
 
 **Returns**:
@@ -84,6 +88,8 @@ struct mallinfo2 mallinfo2(void)
 **Description**
 
 Obtains the memory information allocated by malloc-related operations.
+
+<!--Device-struct mallinfo2 mallinfo2(void)--><!--Device-struct mallinfo2 mallinfo2(void)-End-->
 
 **Since**: 20
 

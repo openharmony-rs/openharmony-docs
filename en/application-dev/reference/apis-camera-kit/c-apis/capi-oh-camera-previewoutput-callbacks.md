@@ -8,11 +8,13 @@ struct PreviewOutput_Callbacks {...}
 
 The struct describes the callbacks related to preview output.
 
+<!--Device-struct PreviewOutput_Callbacks {...}--><!--Device-struct PreviewOutput_Callbacks {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
-**Related module**: [OH_Camera](capi-others-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **Header file**: [preview_output.h](capi-preview-output-h.md)
 

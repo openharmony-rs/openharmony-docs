@@ -8,11 +8,13 @@ typedef struct OH_HiDebug_ProfilerOptions OH_HiDebug_ProfilerOptions
 
 Forward declaration for resource profiler options.
 
+<!--Device-typedef struct OH_HiDebug_ProfilerOptions OH_HiDebug_ProfilerOptions--><!--Device-typedef struct OH_HiDebug_ProfilerOptions OH_HiDebug_ProfilerOptions-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 26.0.1
 
-**Related module**: [HiDebug](capi-others-hidebug.md)
+**Related module**: [HiDebug](capi-performance-analysis-kit-hidebug.md)
 
 **Header file**: [hidebug.h](capi-hidebug-h.md)
 

@@ -45,6 +45,8 @@ typedef void (*OH_AbilityRuntime_ConnectOptions_OnConnectCallback)(OH_AbilityRun
 
 回调接口已成功连接。
 
+<!--Device-typedef void (*OH_AbilityRuntime_ConnectOptions_OnConnectCallback)(OH_AbilityRuntime_ConnectOptions *connectOptions, AbilityBase_Element *element, OHIPCRemoteProxy *proxy)--><!--Device-typedef void (*OH_AbilityRuntime_ConnectOptions_OnConnectCallback)(OH_AbilityRuntime_ConnectOptions *connectOptions, AbilityBase_Element *element, OHIPCRemoteProxy *proxy)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -67,6 +69,8 @@ typedef void (*OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback)(OH_Ability
 
 回调接口已成功断开连接。
 
+<!--Device-typedef void (*OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback)(OH_AbilityRuntime_ConnectOptions *connectOptions, AbilityBase_Element *element)--><!--Device-typedef void (*OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback)(OH_AbilityRuntime_ConnectOptions *connectOptions, AbilityBase_Element *element)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -87,6 +91,8 @@ typedef void (*OH_AbilityRuntime_ConnectOptions_OnFailedCallback)(OH_AbilityRunt
 **描述：**
 
 连接失败时调用回调接口。
+
+<!--Device-typedef void (*OH_AbilityRuntime_ConnectOptions_OnFailedCallback)(OH_AbilityRuntime_ConnectOptions *connectOptions, AbilityRuntime_ErrorCode code)--><!--Device-typedef void (*OH_AbilityRuntime_ConnectOptions_OnFailedCallback)(OH_AbilityRuntime_ConnectOptions *connectOptions, AbilityRuntime_ErrorCode code)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -109,6 +115,8 @@ OH_AbilityRuntime_ConnectOptions* OH_AbilityRuntime_CreateConnectOptions()
 
 创建一个ConnectOptions对象。
 
+<!--Device-OH_AbilityRuntime_ConnectOptions* OH_AbilityRuntime_CreateConnectOptions()--><!--Device-OH_AbilityRuntime_ConnectOptions* OH_AbilityRuntime_CreateConnectOptions()-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -128,6 +136,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_DestroyConnectOptions(OH_AbilityRunti
 **描述：**
 
 销毁指定的ConnectOptions对象。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_DestroyConnectOptions(OH_AbilityRuntime_ConnectOptions *connectOptions)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_DestroyConnectOptions(OH_AbilityRuntime_ConnectOptions *connectOptions)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -154,6 +164,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectOptions_SetOnConnectCallback(O
 **描述：**
 
 将回调[OH_AbilityRuntime_ConnectOptions_OnConnectCallback](capi-connect-options-h.md#oh_abilityruntime_connectoptions_onconnectcallback)设置为 [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md)。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectOptions_SetOnConnectCallback(OH_AbilityRuntime_ConnectOptions *connectOptions, OH_AbilityRuntime_ConnectOptions_OnConnectCallback onConnectCallback)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectOptions_SetOnConnectCallback(OH_AbilityRuntime_ConnectOptions *connectOptions, OH_AbilityRuntime_ConnectOptions_OnConnectCallback onConnectCallback)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -182,6 +194,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectOptions_SetOnDisconnectCallbac
 
 将回调[OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback](capi-connect-options-h.md#oh_abilityruntime_connectoptions_ondisconnectcallback)设置为 [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md)。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectOptions_SetOnDisconnectCallback(OH_AbilityRuntime_ConnectOptions *connectOptions, OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback onDisconnectCallback)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectOptions_SetOnDisconnectCallback(OH_AbilityRuntime_ConnectOptions *connectOptions, OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback onDisconnectCallback)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -208,6 +222,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectOptions_SetOnFailedCallback(OH
 **描述：**
 
 将回调[OH_AbilityRuntime_ConnectOptions_OnFailedCallback](capi-connect-options-h.md#oh_abilityruntime_connectoptions_onfailedcallback)设置为 [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md)。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectOptions_SetOnFailedCallback(OH_AbilityRuntime_ConnectOptions *connectOptions, OH_AbilityRuntime_ConnectOptions_OnFailedCallback onFailedCallback)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectOptions_SetOnFailedCallback(OH_AbilityRuntime_ConnectOptions *connectOptions, OH_AbilityRuntime_ConnectOptions_OnFailedCallback onFailedCallback)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

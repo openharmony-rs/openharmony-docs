@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct timestamp {...}--><!--Device-struct timestamp {...}-End-->
+
 ## Summary
 
 ### Member variables

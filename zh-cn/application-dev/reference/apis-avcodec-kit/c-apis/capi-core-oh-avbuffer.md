@@ -8,11 +8,13 @@ typedef struct OH_AVBuffer OH_AVBuffer
 
 为媒体内存接口定义native层对象。
 
+<!--Device-typedef struct OH_AVBuffer OH_AVBuffer--><!--Device-typedef struct OH_AVBuffer OH_AVBuffer-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 11
 
-**相关模块：** [Core](capi-others-core.md)
+**相关模块：** [Core](capi-avcodec-kit-core.md)
 
 **所在头文件：** [native_avbuffer.h](capi-native-avbuffer-h.md)
 

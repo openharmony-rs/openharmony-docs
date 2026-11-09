@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoAV1QuantizationFlags {...}--><!--Device-struct StdVideoAV1QuantizationFlags {...}-End-->
+
 ## Summary
 
 ### Member variables

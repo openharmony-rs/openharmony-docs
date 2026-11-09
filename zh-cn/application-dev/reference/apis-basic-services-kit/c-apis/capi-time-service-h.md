@@ -38,6 +38,8 @@ enum TimeService_ErrCode
 
 枚举错误码。
 
+<!--Device-TimeService_ErrCode--><!--Device-TimeService_ErrCode-End-->
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **起始版本：** 12
@@ -60,6 +62,8 @@ TimeService_ErrCode OH_TimeService_GetTimeZone(char *timeZone, uint32_t len)
 **描述：**
 
 获取当前系统时区。
+
+<!--Device-TimeService_ErrCode OH_TimeService_GetTimeZone(char *timeZone, uint32_t len)--><!--Device-TimeService_ErrCode OH_TimeService_GetTimeZone(char *timeZone, uint32_t len)-End-->
 
 **系统能力：** SystemCapability.MiscServices.Time
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceExternalSemaphoreInfo {...}--><!--Device-struct VkPhysicalDeviceExternalSemaphoreInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

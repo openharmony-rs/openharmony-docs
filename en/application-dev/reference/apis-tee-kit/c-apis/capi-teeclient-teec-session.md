@@ -8,11 +8,13 @@ typedef struct TEEC_Session {...} TEEC_Session
 
 Defines the session between a CA and a TA.
 
+<!--Device-typedef struct TEEC_Session {...} TEEC_Session--><!--Device-typedef struct TEEC_Session {...} TEEC_Session-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
-**Related module**: [TeeClient](capi-others-teeclient.md)
+**Related module**: [TeeClient](capi-tee-kit-teeclient.md)
 
 **Header file**: [tee_client_type.h](capi-tee-client-type-h.md)
 

@@ -55,6 +55,8 @@ typedef void (*OH_AudioSuite_DownloadCallback)(OH_AudioSuite_DownloadStatusInfoA
 
 Callback function for download status update.
 
+<!--Device-typedef void (*OH_AudioSuite_DownloadCallback)(OH_AudioSuite_DownloadStatusInfoArray *downloadStatusInfoArray)--><!--Device-typedef void (*OH_AudioSuite_DownloadCallback)(OH_AudioSuite_DownloadStatusInfoArray *downloadStatusInfoArray)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.0
@@ -76,6 +78,8 @@ int32_t OH_AudioSuite_GetDownloadManager(OH_AudioSuite_DownloadManager **downloa
 **Description**
 
 Get the audio download manager handle.
+
+<!--Device-int32_t OH_AudioSuite_GetDownloadManager(OH_AudioSuite_DownloadManager **downloadManager)--><!--Device-int32_t OH_AudioSuite_GetDownloadManager(OH_AudioSuite_DownloadManager **downloadManager)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -104,6 +108,8 @@ int32_t OH_AudioSuite_RegisterDownloadCallback(OH_AudioSuite_DownloadManager *do
 **Description**
 
 Register download status callback.
+
+<!--Device-int32_t OH_AudioSuite_RegisterDownloadCallback(OH_AudioSuite_DownloadManager *downloadManager, const OH_AudioSuite_DownloadCallback *callback)--><!--Device-int32_t OH_AudioSuite_RegisterDownloadCallback(OH_AudioSuite_DownloadManager *downloadManager, const OH_AudioSuite_DownloadCallback *callback)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -134,6 +140,8 @@ int32_t OH_AudioSuite_UnregisterDownloadCallback(OH_AudioSuite_DownloadManager *
 
 Unregister download status callback.
 
+<!--Device-int32_t OH_AudioSuite_UnregisterDownloadCallback(OH_AudioSuite_DownloadManager *downloadManager, const OH_AudioSuite_DownloadCallback *callback)--><!--Device-int32_t OH_AudioSuite_UnregisterDownloadCallback(OH_AudioSuite_DownloadManager *downloadManager, const OH_AudioSuite_DownloadCallback *callback)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.0
@@ -162,6 +170,8 @@ int32_t OH_AudioSuite_StartDownload(OH_AudioSuite_DownloadManager *downloadManag
 **Description**
 
 Start downloading a feature.
+
+<!--Device-int32_t OH_AudioSuite_StartDownload(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)--><!--Device-int32_t OH_AudioSuite_StartDownload(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -192,6 +202,8 @@ int32_t OH_AudioSuite_PauseDownload(OH_AudioSuite_DownloadManager *downloadManag
 
 Pause downloading a feature.
 
+<!--Device-int32_t OH_AudioSuite_PauseDownload(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)--><!--Device-int32_t OH_AudioSuite_PauseDownload(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.0
@@ -220,6 +232,8 @@ int32_t OH_AudioSuite_CancelDownload(OH_AudioSuite_DownloadManager *downloadMana
 **Description**
 
 Cancel downloading a feature.
+
+<!--Device-int32_t OH_AudioSuite_CancelDownload(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)--><!--Device-int32_t OH_AudioSuite_CancelDownload(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -250,6 +264,8 @@ int32_t OH_AudioSuite_StartBackgroundDownload(OH_AudioSuite_DownloadManager *dow
 
 Start background downloading a feature.
 
+<!--Device-int32_t OH_AudioSuite_StartBackgroundDownload(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)--><!--Device-int32_t OH_AudioSuite_StartBackgroundDownload(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.0
@@ -278,6 +294,8 @@ int32_t OH_AudioSuite_GetDownloadStatus(OH_AudioSuite_DownloadManager *downloadM
 **Description**
 
 Get download status of a feature.
+
+<!--Device-int32_t OH_AudioSuite_GetDownloadStatus(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName, OH_AudioSuite_DownloadStatusInfo *status)--><!--Device-int32_t OH_AudioSuite_GetDownloadStatus(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName, OH_AudioSuite_DownloadStatusInfo *status)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -309,6 +327,8 @@ int32_t OH_AudioSuite_UninstallCloudRom(OH_AudioSuite_DownloadManager *downloadM
 
 Uninstall a downloaded feature.
 
+<!--Device-int32_t OH_AudioSuite_UninstallCloudRom(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)--><!--Device-int32_t OH_AudioSuite_UninstallCloudRom(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.0
@@ -337,6 +357,8 @@ int32_t OH_AudioSuite_IsFeatureInstalled(OH_AudioSuite_DownloadManager *download
 **Description**
 
 Get install status of features in batch.
+
+<!--Device-int32_t OH_AudioSuite_IsFeatureInstalled(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, bool *installStatus, uint32_t installStatusSize)--><!--Device-int32_t OH_AudioSuite_IsFeatureInstalled(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, bool *installStatus, uint32_t installStatusSize)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -370,6 +392,8 @@ int32_t OH_AudioSuite_GetFeatureStatus(OH_AudioSuite_DownloadManager *downloadMa
 
 Get download status of features in batch.
 
+<!--Device-int32_t OH_AudioSuite_GetFeatureStatus(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, OH_AudioSuite_DownloadStatusInfo *statusInfos, uint32_t statusInfosSize)--><!--Device-int32_t OH_AudioSuite_GetFeatureStatus(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, OH_AudioSuite_DownloadStatusInfo *statusInfos, uint32_t statusInfosSize)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.1
@@ -401,6 +425,8 @@ int32_t OH_AudioSuite_GetNewVersionInfo(OH_AudioSuite_DownloadManager *downloadM
 **Description**
 
 Get new version information of features in batch.
+
+<!--Device-int32_t OH_AudioSuite_GetNewVersionInfo(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, OH_AudioSuite_FeatureVersionInfo *versionInfos, uint32_t versionInfosSize)--><!--Device-int32_t OH_AudioSuite_GetNewVersionInfo(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, OH_AudioSuite_FeatureVersionInfo *versionInfos, uint32_t versionInfosSize)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 

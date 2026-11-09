@@ -8,9 +8,11 @@ struct OH_AVRecorder_Range {...}
 
 Defines the value range of AVRecorder parameters (such as the bit rate and frame rate) to limit the configurable range of recording parameters. You can use the [OH_AVRecorder_GetAvailableEncoder][OH_AVRecorder_GetAvailableEncoder](capi-avrecorder-h.md#oh_avrecorder_getavailableencoder) API to obtain the value range of encoder parameters and set the parameter values within the range from **min** to **max** to ensure that the configuration is valid.
 
+<!--Device-struct OH_AVRecorder_Range {...}--><!--Device-struct OH_AVRecorder_Range {...}-End-->
+
 **Since**: 18
 
-**Related module**: [AVRecorder](capi-others-avrecorder.md)
+**Related module**: [AVRecorder](capi-media-kit-avrecorder.md)
 
 **Header file**: [avrecorder_base.h](capi-avrecorder-base-h.md)
 

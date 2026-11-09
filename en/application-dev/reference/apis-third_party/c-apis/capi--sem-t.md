@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct sem_t {...}--><!--Device-struct sem_t {...}-End-->
+
 ## Summary
 
 ### Member variables

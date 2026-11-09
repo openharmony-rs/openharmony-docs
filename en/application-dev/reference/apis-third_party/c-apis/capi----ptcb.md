@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct __ptcb {...}--><!--Device-struct __ptcb {...}-End-->
+
 ## Summary
 
 ### Member variables
@@ -27,5 +29,7 @@ void (*__f)(void *)
 ```
 
 **Description**
+
+<!--Device-void (*__f)(void *)--><!--Device-void (*__f)(void *)-End-->
 
 

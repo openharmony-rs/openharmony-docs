@@ -8,11 +8,13 @@ struct OH_AudioInfo {...}
 
 音频信息。<br> OH_AudioInfo作为OH_AVScreenCaptureConfig的音频配置成员，包含麦克风采集信息、内录采集信息和音频编码信息三个部分，开发者需根据 采集场景选择配置麦克风采集信息或内录采集信息，并在需要编码输出时配置音频编码信息。适用于需要在屏幕录制中采集音频数据的场景。<br> 同时采集音频麦克风和音频内录数据时，两路音频的audioSampleRate和audioChannels采集参数需要相同，因为两路音频数据将合并为 同一音频流输出，采集参数不一致会导致音频同步异常或采集失败。
 
+<!--Device-struct OH_AudioInfo {...}--><!--Device-struct OH_AudioInfo {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **起始版本：** 10
 
-**相关模块：** [AVScreenCapture](capi-others-avscreencapture.md)
+**相关模块：** [AVScreenCapture](capi-media-kit-avscreencapture.md)
 
 **所在头文件：** [native_avscreen_capture_base.h](capi-native-avscreen-capture-base-h.md)
 

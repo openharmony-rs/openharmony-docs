@@ -8,11 +8,13 @@ struct OH_Drawing_FontFallbackGroup {...}
 
 This struct describes the information about a font fallback group.
 
+<!--Device-struct OH_Drawing_FontFallbackGroup {...}--><!--Device-struct OH_Drawing_FontFallbackGroup {...}-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
-**Related module**: [Drawing](capi-others-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 **Header file**: [drawing_text_typography.h](capi-drawing-text-typography-h.md)
 

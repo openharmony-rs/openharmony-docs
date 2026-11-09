@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDevicePresentBarrierFeaturesNV {...}--><!--Device-struct VkPhysicalDevicePresentBarrierFeaturesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

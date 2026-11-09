@@ -8,11 +8,13 @@ typedef struct NativeDisplayManager_WaterfallDisplayAreaRects {...} NativeDispla
 
 瀑布屏曲面部分显示区域。
 
+<!--Device-typedef struct NativeDisplayManager_WaterfallDisplayAreaRects {...} NativeDisplayManager_WaterfallDisplayAreaRects--><!--Device-typedef struct NativeDisplayManager_WaterfallDisplayAreaRects {...} NativeDisplayManager_WaterfallDisplayAreaRects-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 12
 
-**相关模块：** [OH_DisplayManager](capi-others-oh-displaymanager.md)
+**相关模块：** [OH_DisplayManager](capi-arkui-oh-displaymanager.md)
 
 **所在头文件：** [oh_display_info.h](capi-oh-display-info-h.md)
 

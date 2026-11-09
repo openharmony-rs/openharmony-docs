@@ -8,11 +8,13 @@ struct OH_EqualizerFrequencyBandGains {...}
 
 Specify equalizer frequency band gains.
 
+<!--Device-struct OH_EqualizerFrequencyBandGains {...}--><!--Device-struct OH_EqualizerFrequencyBandGains {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 22
 
-**Related module**: [OHAudioSuite](capi-others-ohaudiosuite.md)
+**Related module**: [OHAudioSuite](capi-audio-kit-ohaudiosuite.md)
 
 **Header file**: [native_audio_suite_base.h](capi-native-audio-suite-base-h.md)
 

@@ -8,11 +8,13 @@ struct ScsiPeripheral_CapacityInfo {...}
 
 Defines the SCSI **READ CAPACITY** struct. It is used to obtain the storage capacity of a device during SCSI driver development. It supports operations such as partition management, available space check, and store resource allocation.
 
+<!--Device-struct ScsiPeripheral_CapacityInfo {...}--><!--Device-struct ScsiPeripheral_CapacityInfo {...}-End-->
+
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Since**: 18
 
-**Related module**: [ScsiPeripheralDDK](capi-others-scsiperipheralddk.md)
+**Related module**: [ScsiPeripheralDDK](capi-driver-development-kit-scsiperipheralddk.md)
 
 **Header file**: [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md)
 

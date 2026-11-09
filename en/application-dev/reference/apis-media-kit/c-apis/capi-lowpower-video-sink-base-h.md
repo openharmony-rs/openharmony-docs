@@ -45,6 +45,8 @@ typedef void (*OH_LowPowerVideoSink_OnDataNeeded)(OH_LowPowerVideoSink* sink, OH
 
 Called when the LowPowerVideoSink needs more data. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).
 
+<!--Device-typedef void (*OH_LowPowerVideoSink_OnDataNeeded)(OH_LowPowerVideoSink* sink, OH_AVSamplesBuffer* buffer, void *userData)--><!--Device-typedef void (*OH_LowPowerVideoSink_OnDataNeeded)(OH_LowPowerVideoSink* sink, OH_AVSamplesBuffer* buffer, void *userData)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink
 
 **Since**: 20
@@ -66,6 +68,8 @@ typedef void (*OH_LowPowerVideoSink_OnError)(OH_LowPowerVideoSink* sink, OH_AVEr
 **Description**
 
 Called when an error occurs in the LowPowerVideoSink.
+
+<!--Device-typedef void (*OH_LowPowerVideoSink_OnError)(OH_LowPowerVideoSink* sink, OH_AVErrCode errCode, const char* errMsg, void* userData)--><!--Device-typedef void (*OH_LowPowerVideoSink_OnError)(OH_LowPowerVideoSink* sink, OH_AVErrCode errCode, const char* errMsg, void* userData)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink
 
@@ -90,6 +94,8 @@ typedef void (*OH_LowPowerVideoSink_OnTargetArrived)(OH_LowPowerVideoSink* sink,
 
 Called when the LowPowerVideoSink reaches the target point. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).
 
+<!--Device-typedef void (*OH_LowPowerVideoSink_OnTargetArrived)(OH_LowPowerVideoSink* sink, const int64_t targetPts, const bool isTimeout, void* userData)--><!--Device-typedef void (*OH_LowPowerVideoSink_OnTargetArrived)(OH_LowPowerVideoSink* sink, const int64_t targetPts, const bool isTimeout, void* userData)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink
 
 **Since**: 20
@@ -113,6 +119,8 @@ typedef void (*OH_LowPowerVideoSink_OnRenderStarted)(OH_LowPowerVideoSink* sink,
 
 Called when the LowPowerVideoSink starts rendering. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).
 
+<!--Device-typedef void (*OH_LowPowerVideoSink_OnRenderStarted)(OH_LowPowerVideoSink* sink, void* userData)--><!--Device-typedef void (*OH_LowPowerVideoSink_OnRenderStarted)(OH_LowPowerVideoSink* sink, void* userData)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink
 
 **Since**: 20
@@ -133,6 +141,8 @@ typedef void (*OH_LowPowerVideoSink_OnStreamChanged)(OH_LowPowerVideoSink* sink,
 **Description**
 
 Called when the stream changes in the LowPowerVideoSink. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).
+
+<!--Device-typedef void (*OH_LowPowerVideoSink_OnStreamChanged)(OH_LowPowerVideoSink* sink, OH_AVFormat* format, void* userData)--><!--Device-typedef void (*OH_LowPowerVideoSink_OnStreamChanged)(OH_LowPowerVideoSink* sink, OH_AVFormat* format, void* userData)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink
 
@@ -156,6 +166,8 @@ typedef void (*OH_LowPowerVideoSink_OnFirstFrameDecoded)(OH_LowPowerVideoSink* s
 
 Called when the first frame is successfully decoded in the LowPowerVideoSink. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).
 
+<!--Device-typedef void (*OH_LowPowerVideoSink_OnFirstFrameDecoded)(OH_LowPowerVideoSink* sink, void* userData)--><!--Device-typedef void (*OH_LowPowerVideoSink_OnFirstFrameDecoded)(OH_LowPowerVideoSink* sink, void* userData)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink
 
 **Since**: 20
@@ -176,6 +188,8 @@ typedef void (*OH_LowPowerVideoSink_OnEos)(OH_LowPowerVideoSink* sink, void* use
 **Description**
 
 Called when the playback is completed in the LowPowerVideoSink. This callback is included in [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md).
+
+<!--Device-typedef void (*OH_LowPowerVideoSink_OnEos)(OH_LowPowerVideoSink* sink, void* userData)--><!--Device-typedef void (*OH_LowPowerVideoSink_OnEos)(OH_LowPowerVideoSink* sink, void* userData)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink
 

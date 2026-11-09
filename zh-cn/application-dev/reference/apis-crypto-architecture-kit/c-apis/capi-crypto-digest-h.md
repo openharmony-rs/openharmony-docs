@@ -45,6 +45,8 @@ OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest *
 
 根据给定的算法名称创建摘要上下文。
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest **ctx)--><!--Device-OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest **ctx)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
@@ -79,6 +81,8 @@ OH_Crypto_ErrCode OH_CryptoDigest_Update(OH_CryptoDigest *ctx, Crypto_DataBlob *
 
 更新摘要数据。
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoDigest_Update(OH_CryptoDigest *ctx, Crypto_DataBlob *in)--><!--Device-OH_Crypto_ErrCode OH_CryptoDigest_Update(OH_CryptoDigest *ctx, Crypto_DataBlob *in)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
@@ -111,6 +115,8 @@ OH_Crypto_ErrCode OH_CryptoDigest_Final(OH_CryptoDigest *ctx, Crypto_DataBlob *o
 
 完成摘要操作，输出摘要结果。
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoDigest_Final(OH_CryptoDigest *ctx, Crypto_DataBlob *out)--><!--Device-OH_Crypto_ErrCode OH_CryptoDigest_Final(OH_CryptoDigest *ctx, Crypto_DataBlob *out)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
@@ -140,6 +146,8 @@ uint32_t OH_CryptoDigest_GetLength(OH_CryptoDigest *ctx)
 
 获取摘要结果的长度。
 
+<!--Device-uint32_t OH_CryptoDigest_GetLength(OH_CryptoDigest *ctx)--><!--Device-uint32_t OH_CryptoDigest_GetLength(OH_CryptoDigest *ctx)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
@@ -166,6 +174,8 @@ const char *OH_CryptoDigest_GetAlgoName(OH_CryptoDigest *ctx)
 
 获取摘要上下文的算法名称。
 
+<!--Device-const char *OH_CryptoDigest_GetAlgoName(OH_CryptoDigest *ctx)--><!--Device-const char *OH_CryptoDigest_GetAlgoName(OH_CryptoDigest *ctx)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
@@ -191,6 +201,8 @@ void OH_DigestCrypto_Destroy(OH_CryptoDigest *ctx)
 **描述：**
 
 销毁摘要上下文。
+
+<!--Device-void OH_DigestCrypto_Destroy(OH_CryptoDigest *ctx)--><!--Device-void OH_DigestCrypto_Destroy(OH_CryptoDigest *ctx)-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 

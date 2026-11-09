@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceCustomBorderColorPropertiesEXT {...}--><!--Device-struct VkPhysicalDeviceCustomBorderColorPropertiesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

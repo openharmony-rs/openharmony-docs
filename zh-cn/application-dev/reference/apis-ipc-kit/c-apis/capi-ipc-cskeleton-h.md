@@ -48,6 +48,8 @@ void OH_IPCSkeleton_JoinWorkThread(void)
 - 调用后线程将阻塞等待处理IPC请求。
 - 建议配合[OH_IPCSkeleton_StopWorkThread()](capi-ipc-cskeleton-h.md#oh_ipcskeleton_stopworkthread())使用以正确退出线程池。
 
+<!--Device-void OH_IPCSkeleton_JoinWorkThread(void)--><!--Device-void OH_IPCSkeleton_JoinWorkThread(void)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -65,6 +67,8 @@ void OH_IPCSkeleton_StopWorkThread(void)
 - 调用前需确保当前线程已通过[OH_IPCSkeleton_JoinWorkThread()](capi-ipc-cskeleton-h.md#oh_ipcskeleton_joinworkthread())加入线程池。
 - 线程退出时应确保所有IPC事务处理完成。
 
+<!--Device-void OH_IPCSkeleton_StopWorkThread(void)--><!--Device-void OH_IPCSkeleton_StopWorkThread(void)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -78,6 +82,8 @@ uint64_t OH_IPCSkeleton_GetCallingTokenId(void)
 **描述：**
 
 获取调用方TokenId。适用于在IPC服务端进行权限校验、身份识别等场景，通过TokenId可以实现基于身份的访问控制。该接口需 要在IPC上下文中调用，否则返回自身TokenId。
+
+<!--Device-uint64_t OH_IPCSkeleton_GetCallingTokenId(void)--><!--Device-uint64_t OH_IPCSkeleton_GetCallingTokenId(void)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -101,6 +107,8 @@ uint64_t OH_IPCSkeleton_GetFirstTokenId(void)
 - 仅在多级IPC调用场景中有意义。
 - 在单级调用场景中，与[OH_IPCSkeleton_GetCallingTokenId()](capi-ipc-cskeleton-h.md#oh_ipcskeleton_getcallingtokenid())返回值相同。
 
+<!--Device-uint64_t OH_IPCSkeleton_GetFirstTokenId(void)--><!--Device-uint64_t OH_IPCSkeleton_GetFirstTokenId(void)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -122,6 +130,8 @@ uint64_t OH_IPCSkeleton_GetSelfTokenId(void)
 获取当前进程自身的TokenId标识。适用于进程自我身份验证和权限状态确认场景，例如：在服务启动时校验自身权限状态、在权 限检查中确认自身是否具备访问特定资源的权限、在安全审计中标识当前进程身份。返回当前进程的TokenId，无论是否在IPC上下文中调 用。
 - 可在任意上下文中调用，不依赖IPC上下文。
 
+<!--Device-uint64_t OH_IPCSkeleton_GetSelfTokenId(void)--><!--Device-uint64_t OH_IPCSkeleton_GetSelfTokenId(void)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -142,6 +152,8 @@ uint64_t OH_IPCSkeleton_GetCallingPid(void)
 
 获取调用方进程ID。适用于进程级权限控制和安全审计场景，例如：在白名单验证中检查调用方进程是否在允许列表中、在审计 日志中记录调用方进程信息用于安全追溯、在跨进程访问控制中基于进程ID进行权限判断。该接口需要在IPC上下文中调用，否则返回当 前进程ID。
 
+<!--Device-uint64_t OH_IPCSkeleton_GetCallingPid(void)--><!--Device-uint64_t OH_IPCSkeleton_GetCallingPid(void)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -161,6 +173,8 @@ uint64_t OH_IPCSkeleton_GetCallingUid(void)
 **描述：**
 
 获取调用方用户ID。适用于用户级权限控制和多用户环境下的身份识别场景，例如：在权限管理中根据用户ID判断访问权限、在 多用户系统中隔离不同用户的数据访问、在安全审计中记录用户身份用于行为追溯。该接口需要在IPC上下文中调用，否则返回当前用 户ID。
+
+<!--Device-uint64_t OH_IPCSkeleton_GetCallingUid(void)--><!--Device-uint64_t OH_IPCSkeleton_GetCallingUid(void)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -183,6 +197,8 @@ int OH_IPCSkeleton_IsLocalCalling(void)
 判断当前IPC调用是否为本地调用。
 - 需在IPC上下文中调用。
 - 常用于根据调用类型采取不同处理策略。
+
+<!--Device-int OH_IPCSkeleton_IsLocalCalling(void)--><!--Device-int OH_IPCSkeleton_IsLocalCalling(void)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -209,6 +225,8 @@ int OH_IPCSkeleton_SetMaxWorkThreadNum(const int maxThreadNum)
 - 若无特殊诉求，不建议用户更改最大线程数。
 - 线程数过多会增加系统资源消耗，过少可能影响IPC并发处理性能。
 - 需根据实际业务场景和设备能力合理设置。
+
+<!--Device-int OH_IPCSkeleton_SetMaxWorkThreadNum(const int maxThreadNum)--><!--Device-int OH_IPCSkeleton_SetMaxWorkThreadNum(const int maxThreadNum)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -239,6 +257,8 @@ int OH_IPCSkeleton_ResetCallingIdentity(char **identity, int32_t *len, OH_IPC_Me
 - 返回的凭证信息需要由调用方妥善管理，使用后需释放。
 - 必须与[OH_IPCSkeleton_SetCallingIdentity()](capi-ipc-cskeleton-h.md#oh_ipcskeleton_setcallingidentity())配对使用，在操作完成后恢复原始凭证。
 - 避免长时间保持重置状态，可能影响权限校验。
+
+<!--Device-int OH_IPCSkeleton_ResetCallingIdentity(char **identity, int32_t *len, OH_IPC_MemAllocator allocator)--><!--Device-int OH_IPCSkeleton_ResetCallingIdentity(char **identity, int32_t *len, OH_IPC_MemAllocator allocator)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -271,6 +291,8 @@ int OH_IPCSkeleton_SetCallingIdentity(const char *identity)
 - 应在完成需要服务端身份的操作后立即调用。
 - 身份凭证应正确管理，避免凭证泄露。
 
+<!--Device-int OH_IPCSkeleton_SetCallingIdentity(const char *identity)--><!--Device-int OH_IPCSkeleton_SetCallingIdentity(const char *identity)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -296,6 +318,8 @@ int OH_IPCSkeleton_IsHandlingTransaction(void)
 **描述：**
 
 是否正在处理IPC请求。适用于需要根据当前IPC处理状态进行条件判断的场景，如避免重入、状态检查等。
+
+<!--Device-int OH_IPCSkeleton_IsHandlingTransaction(void)--><!--Device-int OH_IPCSkeleton_IsHandlingTransaction(void)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 

@@ -48,6 +48,8 @@ enum Telephony_RadioResult
 
 错误码类型枚举。
 
+<!--Device-Telephony_RadioResult--><!--Device-Telephony_RadioResult-End-->
+
 **系统能力：** SystemCapability.Telephony.CoreService
 
 **起始版本：** 13
@@ -71,6 +73,8 @@ enum Telephony_RegState
 
 设备的网络注册状态类型。
 
+<!--Device-Telephony_RegState--><!--Device-Telephony_RegState-End-->
+
 **系统能力：** SystemCapability.Telephony.CoreService
 
 **起始版本：** 13
@@ -91,6 +95,8 @@ enum Telephony_RadioTechnology
 **描述：**
 
 设备的无线接入技术类型。
+
+<!--Device-Telephony_RadioTechnology--><!--Device-Telephony_RadioTechnology-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -121,6 +127,8 @@ enum Telephony_NsaState
 **描述：**
 
 设备的NSA网络注册状态类型。
+
+<!--Device-Telephony_NsaState--><!--Device-Telephony_NsaState-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
 

@@ -8,11 +8,13 @@ typedef struct ArkUI_NativeDialogAPI_2 {...} ArkUI_NativeDialogAPI_2
 
 Provides the custom dialog box APIs for the native side.
 
+<!--Device-typedef struct ArkUI_NativeDialogAPI_2 {...} ArkUI_NativeDialogAPI_2--><!--Device-typedef struct ArkUI_NativeDialogAPI_2 {...} ArkUI_NativeDialogAPI_2-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_dialog.h](capi-native-dialog-h.md)
 
@@ -50,6 +52,8 @@ Defines the distance between the customDialog and system keyboard.<br>
 >
 > This method must be called before the <b>show</b> method.
 
+<!--Device-int32_t (*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float distance, ArkUI_LengthMetricUnit unit)--><!--Device-int32_t (*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float distance, ArkUI_LengthMetricUnit unit)-End-->
+
 **Since**: 15
 
 **Parameters**:
@@ -80,6 +84,8 @@ Sets the level mode for a custom dialog box.
 >
 > This method must be called before the <b>show</b> method.
 
+<!--Device-int32_t (*setLevelMode)(ArkUI_NativeDialogHandle handle, ArkUI_LevelMode levelMode)--><!--Device-int32_t (*setLevelMode)(ArkUI_NativeDialogHandle handle, ArkUI_LevelMode levelMode)-End-->
+
 **Since**: 15
 
 **Parameters**:
@@ -109,6 +115,8 @@ Sets the level uniqueId for a custom dialog box.
 >
 > This method must be called before the <b>setLevelMode</b> method.
 
+<!--Device-int32_t (*setLevelUniqueId)(ArkUI_NativeDialogHandle handle, int32_t uniqueId)--><!--Device-int32_t (*setLevelUniqueId)(ArkUI_NativeDialogHandle handle, int32_t uniqueId)-End-->
+
 **Since**: 15
 
 **Parameters**:
@@ -137,6 +145,8 @@ Sets the immersive mode for a custom dialog box.
 > **Note**:
 >
 > This method must be called before the <b>show</b> method.
+
+<!--Device-int32_t (*setImmersiveMode)(ArkUI_NativeDialogHandle handle, ArkUI_ImmersiveMode immersiveMode)--><!--Device-int32_t (*setImmersiveMode)(ArkUI_NativeDialogHandle handle, ArkUI_ImmersiveMode immersiveMode)-End-->
 
 **Since**: 15
 

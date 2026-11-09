@@ -8,11 +8,13 @@ struct NativeChildProcess_Fd {...}
 
 The struct describes the information about the file descriptor passed to the child process.
 
+<!--Device-struct NativeChildProcess_Fd {...}--><!--Device-struct NativeChildProcess_Fd {...}-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 13
 
-**Related module**: [ChildProcess](capi-others-childprocess.md)
+**Related module**: [ChildProcess](capi-ability-kit-childprocess.md)
 
 **Header file**: [native_child_process.h](capi-native-child-process-h.md)
 

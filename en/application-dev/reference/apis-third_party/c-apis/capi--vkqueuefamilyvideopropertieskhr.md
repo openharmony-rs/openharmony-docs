@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkQueueFamilyVideoPropertiesKHR {...}--><!--Device-struct VkQueueFamilyVideoPropertiesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineCacheHeaderVersionOne {...}--><!--Device-struct VkPipelineCacheHeaderVersionOne {...}-End-->
+
 ## Summary
 
 ### Member variables

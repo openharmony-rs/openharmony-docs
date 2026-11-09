@@ -8,11 +8,13 @@ struct OH_Huks_ParamSet {...}
 
 Defines the struct of a parameter set.
 
+<!--Device-struct OH_Huks_ParamSet {...}--><!--Device-struct OH_Huks_ParamSet {...}-End-->
+
 **System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
 
-**Related module**: [HuksTypeApi](capi-others-hukstypeapi.md)
+**Related module**: [HuksTypeApi](capi-universal-keystore-kit-hukstypeapi.md)
 
 **Header file**: [native_huks_type.h](capi-native-huks-type-h.md)
 

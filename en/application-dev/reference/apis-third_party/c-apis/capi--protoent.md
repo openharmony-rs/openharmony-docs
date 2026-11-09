@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct protoent {...}--><!--Device-struct protoent {...}-End-->
+
 ## Summary
 
 ### Member variables

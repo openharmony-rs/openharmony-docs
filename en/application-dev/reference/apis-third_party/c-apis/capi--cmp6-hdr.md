@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct cmp6_hdr {...}--><!--Device-struct cmp6_hdr {...}-End-->
+
 ## Summary
 
 ### Member variables

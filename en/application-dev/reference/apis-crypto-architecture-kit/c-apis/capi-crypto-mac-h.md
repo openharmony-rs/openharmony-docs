@@ -52,6 +52,8 @@ enum CryptoMac_ParamType
 
 Defines MAC algorithm parameter types.
 
+<!--Device-CryptoMac_ParamType--><!--Device-CryptoMac_ParamType-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -73,6 +75,8 @@ OH_Crypto_ErrCode OH_CryptoMac_Create(const char *algoName, OH_CryptoMac **ctx)
 **Description**
 
 Creates a MAC context based on the given algorithm name.
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoMac_Create(const char *algoName, OH_CryptoMac **ctx)--><!--Device-OH_Crypto_ErrCode OH_CryptoMac_Create(const char *algoName, OH_CryptoMac **ctx)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -108,6 +112,8 @@ OH_Crypto_ErrCode OH_CryptoMac_SetParam(OH_CryptoMac *ctx, CryptoMac_ParamType t
 
 Sets the specified parameter of the MAC context.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoMac_SetParam(OH_CryptoMac *ctx, CryptoMac_ParamType type, const Crypto_DataBlob *value)--><!--Device-OH_Crypto_ErrCode OH_CryptoMac_SetParam(OH_CryptoMac *ctx, CryptoMac_ParamType type, const Crypto_DataBlob *value)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -141,6 +147,8 @@ OH_Crypto_ErrCode OH_CryptoMac_Init(OH_CryptoMac *ctx, const OH_CryptoSymKey *ke
 
 Initializes the MAC context with a symmetric key.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoMac_Init(OH_CryptoMac *ctx, const OH_CryptoSymKey *key)--><!--Device-OH_Crypto_ErrCode OH_CryptoMac_Init(OH_CryptoMac *ctx, const OH_CryptoSymKey *key)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -172,6 +180,8 @@ OH_Crypto_ErrCode OH_CryptoMac_Update(OH_CryptoMac *ctx, const Crypto_DataBlob *
 **Description**
 
 Updates MAC data.
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoMac_Update(OH_CryptoMac *ctx, const Crypto_DataBlob *in)--><!--Device-OH_Crypto_ErrCode OH_CryptoMac_Update(OH_CryptoMac *ctx, const Crypto_DataBlob *in)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -205,6 +215,8 @@ OH_Crypto_ErrCode OH_CryptoMac_Final(OH_CryptoMac *ctx, Crypto_DataBlob *out)
 
 Finishes the MAC operation.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoMac_Final(OH_CryptoMac *ctx, Crypto_DataBlob *out)--><!--Device-OH_Crypto_ErrCode OH_CryptoMac_Final(OH_CryptoMac *ctx, Crypto_DataBlob *out)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -234,6 +246,8 @@ OH_Crypto_ErrCode OH_CryptoMac_GetLength(OH_CryptoMac *ctx, uint32_t *length)
 
 Obtains the MAC result length.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoMac_GetLength(OH_CryptoMac *ctx, uint32_t *length)--><!--Device-OH_Crypto_ErrCode OH_CryptoMac_GetLength(OH_CryptoMac *ctx, uint32_t *length)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -260,6 +274,8 @@ void OH_CryptoMac_Destroy(OH_CryptoMac *ctx)
 **Description**
 
 Destroys the MAC context.
+
+<!--Device-void OH_CryptoMac_Destroy(OH_CryptoMac *ctx)--><!--Device-void OH_CryptoMac_Destroy(OH_CryptoMac *ctx)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 

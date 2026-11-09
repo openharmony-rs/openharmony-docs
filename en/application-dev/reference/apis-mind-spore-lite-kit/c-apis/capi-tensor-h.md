@@ -61,6 +61,8 @@ OH_AI_API OH_AI_TensorHandle OH_AI_TensorCreate(const char *name, OH_AI_DataType
 
 Create a tensor object.
 
+<!--Device-OH_AI_API OH_AI_TensorHandle OH_AI_TensorCreate(const char *name, OH_AI_DataType type, const int64_t *shape, size_t shape_num, const void *data, size_t data_len)--><!--Device-OH_AI_API OH_AI_TensorHandle OH_AI_TensorCreate(const char *name, OH_AI_DataType type, const int64_t *shape, size_t shape_num, const void *data, size_t data_len)-End-->
+
 **Since**: 9
 
 **Parameters**:
@@ -90,6 +92,8 @@ OH_AI_API void OH_AI_TensorDestroy(OH_AI_TensorHandle *tensor)
 
 Destroy the tensor object.
 
+<!--Device-OH_AI_API void OH_AI_TensorDestroy(OH_AI_TensorHandle *tensor)--><!--Device-OH_AI_API void OH_AI_TensorDestroy(OH_AI_TensorHandle *tensor)-End-->
+
 **Since**: 9
 
 **Parameters**:
@@ -107,6 +111,8 @@ OH_AI_API OH_AI_TensorHandle OH_AI_TensorClone(OH_AI_TensorHandle tensor)
 **Description**
 
 Obtain a deep copy of the tensor.
+
+<!--Device-OH_AI_API OH_AI_TensorHandle OH_AI_TensorClone(OH_AI_TensorHandle tensor)--><!--Device-OH_AI_API OH_AI_TensorHandle OH_AI_TensorClone(OH_AI_TensorHandle tensor)-End-->
 
 **Since**: 9
 
@@ -132,6 +138,8 @@ OH_AI_API void OH_AI_TensorSetName(OH_AI_TensorHandle tensor, const char *name)
 
 Set the name for the tensor.
 
+<!--Device-OH_AI_API void OH_AI_TensorSetName(OH_AI_TensorHandle tensor, const char *name)--><!--Device-OH_AI_API void OH_AI_TensorSetName(OH_AI_TensorHandle tensor, const char *name)-End-->
+
 **Since**: 9
 
 **Parameters**:
@@ -150,6 +158,8 @@ OH_AI_API const char *OH_AI_TensorGetName(const OH_AI_TensorHandle tensor)
 **Description**
 
 Obtain the name of the tensor.
+
+<!--Device-OH_AI_API const char *OH_AI_TensorGetName(const OH_AI_TensorHandle tensor)--><!--Device-OH_AI_API const char *OH_AI_TensorGetName(const OH_AI_TensorHandle tensor)-End-->
 
 **Since**: 9
 
@@ -175,6 +185,8 @@ OH_AI_API void OH_AI_TensorSetDataType(OH_AI_TensorHandle tensor, OH_AI_DataType
 
 Set the data type for the tensor.
 
+<!--Device-OH_AI_API void OH_AI_TensorSetDataType(OH_AI_TensorHandle tensor, OH_AI_DataType type)--><!--Device-OH_AI_API void OH_AI_TensorSetDataType(OH_AI_TensorHandle tensor, OH_AI_DataType type)-End-->
+
 **Since**: 9
 
 **Parameters**:
@@ -193,6 +205,8 @@ OH_AI_API OH_AI_DataType OH_AI_TensorGetDataType(const OH_AI_TensorHandle tensor
 **Description**
 
 Obtain the data type of the tensor.
+
+<!--Device-OH_AI_API OH_AI_DataType OH_AI_TensorGetDataType(const OH_AI_TensorHandle tensor)--><!--Device-OH_AI_API OH_AI_DataType OH_AI_TensorGetDataType(const OH_AI_TensorHandle tensor)-End-->
 
 **Since**: 9
 
@@ -218,6 +232,8 @@ OH_AI_API void OH_AI_TensorSetShape(OH_AI_TensorHandle tensor, const int64_t *sh
 
 Set the shape for the tensor.
 
+<!--Device-OH_AI_API void OH_AI_TensorSetShape(OH_AI_TensorHandle tensor, const int64_t *shape, size_t shape_num)--><!--Device-OH_AI_API void OH_AI_TensorSetShape(OH_AI_TensorHandle tensor, const int64_t *shape, size_t shape_num)-End-->
+
 **Since**: 9
 
 **Parameters**:
@@ -237,6 +253,8 @@ OH_AI_API const int64_t *OH_AI_TensorGetShape(const OH_AI_TensorHandle tensor, s
 **Description**
 
 Obtain the shape of the tensor.
+
+<!--Device-OH_AI_API const int64_t *OH_AI_TensorGetShape(const OH_AI_TensorHandle tensor, size_t *shape_num)--><!--Device-OH_AI_API const int64_t *OH_AI_TensorGetShape(const OH_AI_TensorHandle tensor, size_t *shape_num)-End-->
 
 **Since**: 9
 
@@ -263,6 +281,8 @@ OH_AI_API void OH_AI_TensorSetFormat(OH_AI_TensorHandle tensor, OH_AI_Format for
 
 Set the format for the tensor.
 
+<!--Device-OH_AI_API void OH_AI_TensorSetFormat(OH_AI_TensorHandle tensor, OH_AI_Format format)--><!--Device-OH_AI_API void OH_AI_TensorSetFormat(OH_AI_TensorHandle tensor, OH_AI_Format format)-End-->
+
 **Since**: 9
 
 **Parameters**:
@@ -281,6 +301,8 @@ OH_AI_API OH_AI_Format OH_AI_TensorGetFormat(const OH_AI_TensorHandle tensor)
 **Description**
 
 Obtain the format of the tensor.
+
+<!--Device-OH_AI_API OH_AI_Format OH_AI_TensorGetFormat(const OH_AI_TensorHandle tensor)--><!--Device-OH_AI_API OH_AI_Format OH_AI_TensorGetFormat(const OH_AI_TensorHandle tensor)-End-->
 
 **Since**: 9
 
@@ -306,6 +328,8 @@ OH_AI_API void OH_AI_TensorSetData(OH_AI_TensorHandle tensor, void *data)
 
 Obtain the data for the tensor.
 
+<!--Device-OH_AI_API void OH_AI_TensorSetData(OH_AI_TensorHandle tensor, void *data)--><!--Device-OH_AI_API void OH_AI_TensorSetData(OH_AI_TensorHandle tensor, void *data)-End-->
+
 **Since**: 9
 
 **Parameters**:
@@ -324,6 +348,8 @@ OH_AI_API const void *OH_AI_TensorGetData(const OH_AI_TensorHandle tensor)
 **Description**
 
 Obtain the data pointer of the tensor.
+
+<!--Device-OH_AI_API const void *OH_AI_TensorGetData(const OH_AI_TensorHandle tensor)--><!--Device-OH_AI_API const void *OH_AI_TensorGetData(const OH_AI_TensorHandle tensor)-End-->
 
 **Since**: 9
 
@@ -349,6 +375,8 @@ OH_AI_API void *OH_AI_TensorGetMutableData(const OH_AI_TensorHandle tensor)
 
 Obtain the mutable data pointer of the tensor. If the internal data is empty, it will allocate memory.
 
+<!--Device-OH_AI_API void *OH_AI_TensorGetMutableData(const OH_AI_TensorHandle tensor)--><!--Device-OH_AI_API void *OH_AI_TensorGetMutableData(const OH_AI_TensorHandle tensor)-End-->
+
 **Since**: 9
 
 **Parameters**:
@@ -372,6 +400,8 @@ OH_AI_API int64_t OH_AI_TensorGetElementNum(const OH_AI_TensorHandle tensor)
 **Description**
 
 Obtain the element number of the tensor.
+
+<!--Device-OH_AI_API int64_t OH_AI_TensorGetElementNum(const OH_AI_TensorHandle tensor)--><!--Device-OH_AI_API int64_t OH_AI_TensorGetElementNum(const OH_AI_TensorHandle tensor)-End-->
 
 **Since**: 9
 
@@ -397,6 +427,8 @@ OH_AI_API size_t OH_AI_TensorGetDataSize(const OH_AI_TensorHandle tensor)
 
 Obtain the data size fo the tensor.
 
+<!--Device-OH_AI_API size_t OH_AI_TensorGetDataSize(const OH_AI_TensorHandle tensor)--><!--Device-OH_AI_API size_t OH_AI_TensorGetDataSize(const OH_AI_TensorHandle tensor)-End-->
+
 **Since**: 9
 
 **Parameters**:
@@ -420,6 +452,8 @@ OH_AI_API OH_AI_Status OH_AI_TensorSetUserData(OH_AI_TensorHandle tensor, void *
 **Description**
 
 Set the data for the tensor with user-allocated data buffer.<br> The main purpose of this interface is providing a way of using memory already allocated by user as the Model's input, but not which allocated inside the Model object. It can reduce one copy. Note: The tensor won't free the data provided by invoker. Invoker has the responsibility to free it. And this free action should not be preformed before destruction of the tensor.
+
+<!--Device-OH_AI_API OH_AI_Status OH_AI_TensorSetUserData(OH_AI_TensorHandle tensor, void *data, size_t data_size)--><!--Device-OH_AI_API OH_AI_Status OH_AI_TensorSetUserData(OH_AI_TensorHandle tensor, void *data, size_t data_size)-End-->
 
 **Since**: 10
 
@@ -447,6 +481,8 @@ OH_AI_API OH_AI_AllocatorHandle OH_AI_TensorGetAllocator(OH_AI_TensorHandle tens
 
 Get allocator for the tensor.<br> The main purpose of this interface is providing a way of getting memory allocator of the tensor.
 
+<!--Device-OH_AI_API OH_AI_AllocatorHandle OH_AI_TensorGetAllocator(OH_AI_TensorHandle tensor)--><!--Device-OH_AI_API OH_AI_AllocatorHandle OH_AI_TensorGetAllocator(OH_AI_TensorHandle tensor)-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -470,6 +506,8 @@ OH_AI_API OH_AI_Status OH_AI_TensorSetAllocator(OH_AI_TensorHandle tensor, OH_AI
 **Description**
 
 Set allocator to the tensor.<br> The main purpose of this interface is providing a way of setting memory allocator, so tensor's memory will be allocated by this allocator.
+
+<!--Device-OH_AI_API OH_AI_Status OH_AI_TensorSetAllocator(OH_AI_TensorHandle tensor, OH_AI_AllocatorHandle allocator)--><!--Device-OH_AI_API OH_AI_Status OH_AI_TensorSetAllocator(OH_AI_TensorHandle tensor, OH_AI_AllocatorHandle allocator)-End-->
 
 **Since**: 12
 

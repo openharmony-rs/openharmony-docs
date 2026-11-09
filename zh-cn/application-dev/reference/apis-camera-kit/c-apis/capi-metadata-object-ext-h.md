@@ -48,6 +48,8 @@ Camera_ErrorCode OH_MetadataObjectExt_GetMetadataObjectType(const OH_Camera_Meta
 
 获取元数据对象类型。
 
+<!--Device-Camera_ErrorCode OH_MetadataObjectExt_GetMetadataObjectType(const OH_Camera_MetadataObjectExt* metadataObjectExt, Camera_MetadataObjectType* type)--><!--Device-Camera_ErrorCode OH_MetadataObjectExt_GetMetadataObjectType(const OH_Camera_MetadataObjectExt* metadataObjectExt, Camera_MetadataObjectType* type)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
@@ -74,6 +76,8 @@ Camera_ErrorCode OH_MetadataObjectExt_GetTimestamp(const OH_Camera_MetadataObjec
 **描述：**
 
 获取元数据对象的时间戳。
+
+<!--Device-Camera_ErrorCode OH_MetadataObjectExt_GetTimestamp(const OH_Camera_MetadataObjectExt* metadataObjectExt, int64_t* timestamp)--><!--Device-Camera_ErrorCode OH_MetadataObjectExt_GetTimestamp(const OH_Camera_MetadataObjectExt* metadataObjectExt, int64_t* timestamp)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -102,6 +106,8 @@ Camera_ErrorCode OH_MetadataObjectExt_GetBoundingBox(const OH_Camera_MetadataObj
 
 获取元数据对象的边界框。
 
+<!--Device-Camera_ErrorCode OH_MetadataObjectExt_GetBoundingBox(const OH_Camera_MetadataObjectExt* metadataObjectExt, OH_Camera_Rect_Ext* boundingBox)--><!--Device-Camera_ErrorCode OH_MetadataObjectExt_GetBoundingBox(const OH_Camera_MetadataObjectExt* metadataObjectExt, OH_Camera_Rect_Ext* boundingBox)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
@@ -128,6 +134,8 @@ Camera_ErrorCode OH_MetadataObjectExt_GetPitchAngle(const OH_Camera_MetadataObje
 **描述：**
 
 获取元数据对象（如人脸）的俯仰角度。取值范围为[-90, 90]，以向下为正方向。
+
+<!--Device-Camera_ErrorCode OH_MetadataObjectExt_GetPitchAngle(const OH_Camera_MetadataObjectExt* metadataObjectExt, float* pitchAngle)--><!--Device-Camera_ErrorCode OH_MetadataObjectExt_GetPitchAngle(const OH_Camera_MetadataObjectExt* metadataObjectExt, float* pitchAngle)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -156,6 +164,8 @@ Camera_ErrorCode OH_MetadataObjectExt_GetYawAngle(const OH_Camera_MetadataObject
 
 获取元数据对象（如人脸）的左右旋转角度。取值范围为[-90, 90]，以向右为正方向。
 
+<!--Device-Camera_ErrorCode OH_MetadataObjectExt_GetYawAngle(const OH_Camera_MetadataObjectExt* metadataObjectExt, float* yawAngle)--><!--Device-Camera_ErrorCode OH_MetadataObjectExt_GetYawAngle(const OH_Camera_MetadataObjectExt* metadataObjectExt, float* yawAngle)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
@@ -182,6 +192,8 @@ Camera_ErrorCode OH_MetadataObjectExt_GetRollAngle(const OH_Camera_MetadataObjec
 **描述：**
 
 获取元数据对象（如人脸）的平面内旋转角度。取值范围为[-180, 180]，以顺时针方向为正方向。
+
+<!--Device-Camera_ErrorCode OH_MetadataObjectExt_GetRollAngle(const OH_Camera_MetadataObjectExt* metadataObjectExt, float* rollAngle)--><!--Device-Camera_ErrorCode OH_MetadataObjectExt_GetRollAngle(const OH_Camera_MetadataObjectExt* metadataObjectExt, float* rollAngle)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -210,6 +222,8 @@ Camera_ErrorCode OH_MetadataObjectExt_GetLeftEyeBoundingBox(const OH_Camera_Meta
 
 获取元数据对象（如人脸）的左眼边界框。
 
+<!--Device-Camera_ErrorCode OH_MetadataObjectExt_GetLeftEyeBoundingBox(const OH_Camera_MetadataObjectExt* metadataObjectExt, OH_Camera_Rect_Ext* boundingBox)--><!--Device-Camera_ErrorCode OH_MetadataObjectExt_GetLeftEyeBoundingBox(const OH_Camera_MetadataObjectExt* metadataObjectExt, OH_Camera_Rect_Ext* boundingBox)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
@@ -236,6 +250,8 @@ Camera_ErrorCode OH_MetadataObjectExt_GetRightEyeBoundingBox(const OH_Camera_Met
 **描述：**
 
 获取元数据对象（如人脸）的右眼边界框。
+
+<!--Device-Camera_ErrorCode OH_MetadataObjectExt_GetRightEyeBoundingBox(const OH_Camera_MetadataObjectExt* metadataObjectExt, OH_Camera_Rect_Ext* boundingBox)--><!--Device-Camera_ErrorCode OH_MetadataObjectExt_GetRightEyeBoundingBox(const OH_Camera_MetadataObjectExt* metadataObjectExt, OH_Camera_Rect_Ext* boundingBox)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -264,6 +280,8 @@ Camera_ErrorCode OH_MetadataObjectExt_GetEmotion(const OH_Camera_MetadataObjectE
 
 获取元数据对象（如人脸）的情绪类型。
 
+<!--Device-Camera_ErrorCode OH_MetadataObjectExt_GetEmotion(const OH_Camera_MetadataObjectExt* metadataObjectExt, OH_Camera_MetadataObjectEmotion* emotion)--><!--Device-Camera_ErrorCode OH_MetadataObjectExt_GetEmotion(const OH_Camera_MetadataObjectExt* metadataObjectExt, OH_Camera_MetadataObjectEmotion* emotion)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
@@ -291,6 +309,8 @@ void OH_MetadataObjectExt_Destroy(OH_Camera_MetadataObjectExt** metadataObjectEx
 
 销毁OH_Camera_MetadataObjectExt实例数组。
 
+<!--Device-void OH_MetadataObjectExt_Destroy(OH_Camera_MetadataObjectExt** metadataObjectExt, uint32_t objectCount)--><!--Device-void OH_MetadataObjectExt_Destroy(OH_Camera_MetadataObjectExt** metadataObjectExt, uint32_t objectCount)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
@@ -311,6 +331,8 @@ bool OH_MetadataObjectExt_IsLockFocusTracked(const OH_Camera_MetadataObjectExt* 
 **描述：**
 
 查询焦点是否已锁定跟踪。
+
+<!--Device-bool OH_MetadataObjectExt_IsLockFocusTracked(const OH_Camera_MetadataObjectExt* metadataObjectExt)--><!--Device-bool OH_MetadataObjectExt_IsLockFocusTracked(const OH_Camera_MetadataObjectExt* metadataObjectExt)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

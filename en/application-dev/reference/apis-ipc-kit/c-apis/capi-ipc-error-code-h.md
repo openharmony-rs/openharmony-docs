@@ -34,6 +34,8 @@ enum OH_IPC_ErrorCode
 
 Enumerates the IPC error codes.
 
+<!--Device-OH_IPC_ErrorCode--><!--Device-OH_IPC_ErrorCode-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12

@@ -8,11 +8,13 @@ typedef struct JSVM_PropertyHandlerConfigurationStruct {...} JSVM_PropertyHandle
 
 当执行对象的getter、setter、deleter和enumerator操作时，该结构体中对应的函数回调将会触发。
 
+<!--Device-typedef struct JSVM_PropertyHandlerConfigurationStruct {...} JSVM_PropertyHandlerConfigurationStruct--><!--Device-typedef struct JSVM_PropertyHandlerConfigurationStruct {...} JSVM_PropertyHandlerConfigurationStruct-End-->
+
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 12
 
-**相关模块：** [JSVM](capi-others-jsvm.md)
+**相关模块：** [JSVM](capi-arkts-jsvm.md)
 
 **所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
 
@@ -83,6 +85,8 @@ JSVM_Value (JSVM_CDECL* genericNamedPropertyGetterCallback)(JSVM_Env env,JSVM_Va
 
 通过获取实例对象的命名属性而触发的回调函数。
 
+<!--Device-JSVM_Value (JSVM_CDECL* genericNamedPropertyGetterCallback)(JSVM_Env env, JSVM_Value name, JSVM_Value thisArg, JSVM_Value namedPropertyData)--><!--Device-JSVM_Value (JSVM_CDECL* genericNamedPropertyGetterCallback)(JSVM_Env env, JSVM_Value name, JSVM_Value thisArg, JSVM_Value namedPropertyData)-End-->
+
 ### genericNamedPropertySetterCallback()
 
 ```c
@@ -92,6 +96,8 @@ JSVM_Value (JSVM_CDECL* genericNamedPropertySetterCallback)(JSVM_Env env,JSVM_Va
 **描述：**
 
 通过设置实例对象的命名属性而触发的回调函数。
+
+<!--Device-JSVM_Value (JSVM_CDECL* genericNamedPropertySetterCallback)(JSVM_Env env, JSVM_Value name, JSVM_Value property, JSVM_Value thisArg, JSVM_Value namedPropertyData)--><!--Device-JSVM_Value (JSVM_CDECL* genericNamedPropertySetterCallback)(JSVM_Env env, JSVM_Value name, JSVM_Value property, JSVM_Value thisArg, JSVM_Value namedPropertyData)-End-->
 
 ### genericNamedPropertyDeleterCallback()
 
@@ -103,6 +109,8 @@ JSVM_Value (JSVM_CDECL* genericNamedPropertyDeleterCallback)(JSVM_Env env,JSVM_V
 
 通过删除实例对象的命名属性而触发的回调函数。
 
+<!--Device-JSVM_Value (JSVM_CDECL* genericNamedPropertyDeleterCallback)(JSVM_Env env, JSVM_Value name, JSVM_Value thisArg, JSVM_Value namedPropertyData)--><!--Device-JSVM_Value (JSVM_CDECL* genericNamedPropertyDeleterCallback)(JSVM_Env env, JSVM_Value name, JSVM_Value thisArg, JSVM_Value namedPropertyData)-End-->
+
 ### genericNamedPropertyEnumeratorCallback()
 
 ```c
@@ -112,6 +120,8 @@ JSVM_Value (JSVM_CDECL* genericNamedPropertyEnumeratorCallback)(JSVM_Env env,JSV
 **描述：**
 
 通过获取对象上的所有命名属性而触发的回调函数。
+
+<!--Device-JSVM_Value (JSVM_CDECL* genericNamedPropertyEnumeratorCallback)(JSVM_Env env, JSVM_Value thisArg, JSVM_Value namedPropertyData)--><!--Device-JSVM_Value (JSVM_CDECL* genericNamedPropertyEnumeratorCallback)(JSVM_Env env, JSVM_Value thisArg, JSVM_Value namedPropertyData)-End-->
 
 ### genericIndexedPropertyGetterCallback()
 
@@ -123,6 +133,8 @@ JSVM_Value (JSVM_CDECL* genericIndexedPropertyGetterCallback)(JSVM_Env env,JSVM_
 
 通过获取实例对象的索引属性而触发的回调函数。
 
+<!--Device-JSVM_Value (JSVM_CDECL* genericIndexedPropertyGetterCallback)(JSVM_Env env, JSVM_Value index, JSVM_Value thisArg, JSVM_Value indexedPropertyData)--><!--Device-JSVM_Value (JSVM_CDECL* genericIndexedPropertyGetterCallback)(JSVM_Env env, JSVM_Value index, JSVM_Value thisArg, JSVM_Value indexedPropertyData)-End-->
+
 ### genericIndexedPropertySetterCallback()
 
 ```c
@@ -132,6 +144,8 @@ JSVM_Value (JSVM_CDECL* genericIndexedPropertySetterCallback)(JSVM_Env env,JSVM_
 **描述：**
 
 通过设置实例对象的索引属性而触发的回调函数。
+
+<!--Device-JSVM_Value (JSVM_CDECL* genericIndexedPropertySetterCallback)(JSVM_Env env, JSVM_Value index, JSVM_Value property, JSVM_Value thisArg, JSVM_Value indexedPropertyData)--><!--Device-JSVM_Value (JSVM_CDECL* genericIndexedPropertySetterCallback)(JSVM_Env env, JSVM_Value index, JSVM_Value property, JSVM_Value thisArg, JSVM_Value indexedPropertyData)-End-->
 
 ### genericIndexedPropertyDeleterCallback()
 
@@ -143,6 +157,8 @@ JSVM_Value (JSVM_CDECL* genericIndexedPropertyDeleterCallback)(JSVM_Env env,JSVM
 
 通过删除实例对象的索引属性而触发的回调函数。
 
+<!--Device-JSVM_Value (JSVM_CDECL* genericIndexedPropertyDeleterCallback)(JSVM_Env env, JSVM_Value index, JSVM_Value thisArg, JSVM_Value indexedPropertyData)--><!--Device-JSVM_Value (JSVM_CDECL* genericIndexedPropertyDeleterCallback)(JSVM_Env env, JSVM_Value index, JSVM_Value thisArg, JSVM_Value indexedPropertyData)-End-->
+
 ### genericIndexedPropertyEnumeratorCallback()
 
 ```c
@@ -152,5 +168,7 @@ JSVM_Value (JSVM_CDECL* genericIndexedPropertyEnumeratorCallback)(JSVM_Env env,J
 **描述：**
 
 通过获取对象上的所有索引属性而触发的回调函数。
+
+<!--Device-JSVM_Value (JSVM_CDECL* genericIndexedPropertyEnumeratorCallback)(JSVM_Env env, JSVM_Value thisArg, JSVM_Value indexedPropertyData)--><!--Device-JSVM_Value (JSVM_CDECL* genericIndexedPropertyEnumeratorCallback)(JSVM_Env env, JSVM_Value thisArg, JSVM_Value indexedPropertyData)-End-->
 
 

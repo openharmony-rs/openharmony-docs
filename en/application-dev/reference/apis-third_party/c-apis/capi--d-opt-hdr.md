@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct d_opt_hdr {...}--><!--Device-struct d_opt_hdr {...}-End-->
+
 ## Summary
 
 ### Member variables

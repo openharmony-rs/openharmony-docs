@@ -8,11 +8,13 @@ struct ScsiPeripheral_ReadCapacityRequest {...}
 
 Defines the SCSI command (**READ CAPACITY**) request struct, which is used to send a command for reading the storage capacity. It helps obtain the logical block size and total number of blocks of a device.
 
+<!--Device-struct ScsiPeripheral_ReadCapacityRequest {...}--><!--Device-struct ScsiPeripheral_ReadCapacityRequest {...}-End-->
+
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Since**: 18
 
-**Related module**: [ScsiPeripheralDDK](capi-others-scsiperipheralddk.md)
+**Related module**: [ScsiPeripheralDDK](capi-driver-development-kit-scsiperipheralddk.md)
 
 **Header file**: [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md)
 

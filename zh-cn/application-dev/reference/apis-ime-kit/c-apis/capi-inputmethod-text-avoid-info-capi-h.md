@@ -32,18 +32,18 @@
 \| [OH_TextConfig_GetTextAvoidInfo](capi-inputmethod-text-config-capi-h. md#oh_textconfig_gettextavoidinfo) \| 从TextConfig中获取TextAvoidInfo \| <br> <br>相关结构体：<br>
 \| 结构体 \| 说明 \|
 \| --- \| --- \|
-\| [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) \| 文本输入框配置结构体，TextAvoidInfo作 为其子属性被包含 \| |
+\| [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) \| 文本输入框配置结构体，TextAvoidInfo作 为其子属性被包含 \| <br> <br>句柄与所有权：仅可使用本API创建的有效句柄或框架提供的借用句柄；仅可销毁独立创建的对象。 回调提供的对象和TextConfig的子对象视图均为借用对象。访问接口对未注册或已失效的句柄返回IME_ERR_PARAMCHECK， NULL参数仍按原有规则返回错误。 <br>保护边界：生命周期检查不保证对象成员的线程安全，也不能在地址复用后识别所有失效地址。 对象销毁后应将指针置空；不得在回调结束后保留回调对象。 |
 
 ### 函数
 
 | 名称 | 描述 |
 | -- | -- |
 | [InputMethod_TextAvoidInfo *OH_TextAvoidInfo_Create(double positionY, double height)](#oh_textavoidinfo_create) | 创建一个新的[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)实例。该函数根据指定的Y坐标和高度创建一个避让信息对象，用于描述编辑框在 物理屏幕上的位置和尺寸。 <br> <br>使用场景：当编辑框需要向输入法框架传递避让参数时，首先调用此函数创建TextAvoidInfo实例，设置编辑框的Y坐标和高度，然后通 过InputMethod_TextConfig将该信息传递给输入法框架。输入法框架根据避让信息计算键盘弹起后的编辑框调整区域。 <br> <br>使用后效果：成功调用后返回一个新创建的InputMethod_TextAvoidInfo实例指针，该实例包含指定的positionY和height值。调用 方需负责该实例的生命周期管理，在使用完毕后必须调用OH_TextAvoidInfo_Destroy销毁实例以释放内存。 |
-| [void OH_TextAvoidInfo_Destroy(InputMethod_TextAvoidInfo *info)](#oh_textavoidinfo_destroy) | 销毁一个[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)实例，释放其占用的内存资源。 <br> <br>使用场景：当TextAvoidInfo实例不再使用时，调用此函数销毁实例。必须在Create函数成功返回后、且实例不再被任何其他对象引用 时调用。 <br> <br>生命周期管理：OH_TextAvoidInfo_Create和OH_TextAvoidInfo_Destroy必须配对使用，每个Create创建的实例必须有对应的 Destroy调用，否则会导致内存泄漏。调用Destroy后，原指针变为无效指针，不应再被使用。 <br> <br>前置条件：info参数应为OH_TextAvoidInfo_Create成功返回的非NULL指针。 <br> <br>使用后效果：info指向的内存被释放，info指针变为无效指针。对已销毁指针的任何后续访问均为未定义行为。 |
-| [InputMethod_ErrorCode OH_TextAvoidInfo_SetPositionY(InputMethod_TextAvoidInfo *info, double positionY)](#oh_textavoidinfo_setpositiony) | 设置[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)中的Y坐标值。Y坐标值表示输入框顶点与物理屏幕上侧距离的绝对值。 <br> <br>使用场景：当编辑框位置发生变化时（如窗口移动、布局调整），需要更新避让信息中的Y坐标值，使输入法框架能够根据最新位置重新 计算避让区域。 <br> <br>前置条件：info参数必须为OH_TextAvoidInfo_Create成功返回的非NULL指针。 |
-| [InputMethod_ErrorCode OH_TextAvoidInfo_SetHeight(InputMethod_TextAvoidInfo *info, double height)](#oh_textavoidinfo_setheight) | 设置[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)中的高度值。高度值表示编辑框在屏幕上占据的垂直像素尺寸。 <br> <br>使用场景：当编辑框高度发生变化时（如布局调整、窗口缩放），需要更新避让信息中的高度值，使输入法框架能够根据最新高度重新 计算避让区域。避让区域计算依赖于positionY和height的组合，确保编辑框在键盘弹起时不被遮挡。 <br> <br>前置条件：info参数必须为OH_TextAvoidInfo_Create成功返回的非NULL指针。 |
-| [InputMethod_ErrorCode OH_TextAvoidInfo_GetPositionY(InputMethod_TextAvoidInfo *info, double *positionY)](#oh_textavoidinfo_getpositiony) | 从[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)获取Y坐标值。Y坐标值即输入框顶点与物理屏幕上侧距离的绝对值。 <br> <br>使用场景：输入法应用在处理避让逻辑时，需要获取编辑框的Y坐标值，以确定编辑框在屏幕上的垂直位置，从而判断是否需要调整编辑 框位置或布局。 <br> <br>前置条件：info参数必须为OH_TextAvoidInfo_Create成功返回的非NULL指针；positionY输出参数必须为非NULL的double类型指 针，且由调用方分配内存。 |
-| [InputMethod_ErrorCode OH_TextAvoidInfo_GetHeight(InputMethod_TextAvoidInfo *info, double *height)](#oh_textavoidinfo_getheight) | 从[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)获取高度值。高度值表示编辑框在屏幕上占据的垂直像素尺寸。 <br> <br>使用场景：输入法应用在处理避让逻辑时，需要获取编辑框的高度值，结合Y坐标值确定编辑框在屏幕上的完整垂直范围（positionY到 positionY+height），从而判断编辑框是否会被键盘遮挡。 <br> <br>前置条件：info参数必须为OH_TextAvoidInfo_Create成功返回的非NULL指针；height输出参数必须为非NULL的double类型指针，且 由调用方分配内存。 |
+| [void OH_TextAvoidInfo_Destroy(InputMethod_TextAvoidInfo *info)](#oh_textavoidinfo_destroy) | 销毁一个[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)实例，释放其占用的内存资源。 <br> <br>使用场景：当TextAvoidInfo实例不再使用时，调用此函数销毁实例。必须在Create函数成功返回后、且实例不再被任何其他对象引用 时调用。 <br> <br>生命周期管理：OH_TextAvoidInfo_Create和OH_TextAvoidInfo_Destroy必须配对使用，每个Create创建的实例必须有对应的 Destroy调用，否则会导致内存泄漏。调用Destroy后，原指针变为无效指针，不应再被使用。 <br> <br>前置条件：info参数应为OH_TextAvoidInfo_Create成功返回的非NULL指针。 <br>仅独立创建的对象归调用者所有。TextConfig获取接口返回的是借用视图，不可将其传入本接口。 对借用视图的销毁请求会被拒绝，且不会释放其所属的TextConfig。销毁后不可继续使用原指针。 <br> <br>使用后效果：info指向的内存被释放，info指针变为无效指针。对已销毁指针的任何后续访问均为未定义行为。 |
+| [InputMethod_ErrorCode OH_TextAvoidInfo_SetPositionY(InputMethod_TextAvoidInfo *info, double positionY)](#oh_textavoidinfo_setpositiony) | 设置[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)中的Y坐标值。Y坐标值表示输入框顶点与物理屏幕上侧距离的绝对值。 <br> <br>使用场景：当编辑框位置发生变化时（如窗口移动、布局调整），需要更新避让信息中的Y坐标值，使输入法框架能够根据最新位置重新 计算避让区域。 <br> <br>前置条件：info参数必须为OH_TextAvoidInfo_Create成功返回的非NULL指针， 或TextConfig返回且仍有效的借用视图。 |
+| [InputMethod_ErrorCode OH_TextAvoidInfo_SetHeight(InputMethod_TextAvoidInfo *info, double height)](#oh_textavoidinfo_setheight) | 设置[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)中的高度值。高度值表示编辑框在屏幕上占据的垂直像素尺寸。 <br> <br>使用场景：当编辑框高度发生变化时（如布局调整、窗口缩放），需要更新避让信息中的高度值，使输入法框架能够根据最新高度重新 计算避让区域。避让区域计算依赖于positionY和height的组合，确保编辑框在键盘弹起时不被遮挡。 <br> <br>前置条件：info参数必须为OH_TextAvoidInfo_Create成功返回的非NULL指针， 或TextConfig返回且仍有效的借用视图。 |
+| [InputMethod_ErrorCode OH_TextAvoidInfo_GetPositionY(InputMethod_TextAvoidInfo *info, double *positionY)](#oh_textavoidinfo_getpositiony) | 从[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)获取Y坐标值。Y坐标值即输入框顶点与物理屏幕上侧距离的绝对值。 <br> <br>使用场景：输入法应用在处理避让逻辑时，需要获取编辑框的Y坐标值，以确定编辑框在屏幕上的垂直位置，从而判断是否需要调整编辑 框位置或布局。 <br> <br>前置条件：info参数必须为OH_TextAvoidInfo_Create成功返回的非NULL指针， 或TextConfig返回且仍有效的借用视图；positionY输出参数必须为非NULL的double类型指 针，且由调用方分配内存。 |
+| [InputMethod_ErrorCode OH_TextAvoidInfo_GetHeight(InputMethod_TextAvoidInfo *info, double *height)](#oh_textavoidinfo_getheight) | 从[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)获取高度值。高度值表示编辑框在屏幕上占据的垂直像素尺寸。 <br> <br>使用场景：输入法应用在处理避让逻辑时，需要获取编辑框的高度值，结合Y坐标值确定编辑框在屏幕上的完整垂直范围（positionY到 positionY+height），从而判断编辑框是否会被键盘遮挡。 <br> <br>前置条件：info参数必须为OH_TextAvoidInfo_Create成功返回的非NULL指针， 或TextConfig返回且仍有效的借用视图；height输出参数必须为非NULL的double类型指针，且 由调用方分配内存。 |
 
 ## 函数说明
 
@@ -56,6 +56,8 @@ InputMethod_TextAvoidInfo *OH_TextAvoidInfo_Create(double positionY, double heig
 **描述：**
 
 创建一个新的[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)实例。该函数根据指定的Y坐标和高度创建一个避让信息对象，用于描述编辑框在 物理屏幕上的位置和尺寸。 <br> <br>使用场景：当编辑框需要向输入法框架传递避让参数时，首先调用此函数创建TextAvoidInfo实例，设置编辑框的Y坐标和高度，然后通 过InputMethod_TextConfig将该信息传递给输入法框架。输入法框架根据避让信息计算键盘弹起后的编辑框调整区域。 <br> <br>使用后效果：成功调用后返回一个新创建的InputMethod_TextAvoidInfo实例指针，该实例包含指定的positionY和height值。调用 方需负责该实例的生命周期管理，在使用完毕后必须调用OH_TextAvoidInfo_Destroy销毁实例以释放内存。
+
+<!--Device-InputMethod_TextAvoidInfo *OH_TextAvoidInfo_Create(double positionY, double height)--><!--Device-InputMethod_TextAvoidInfo *OH_TextAvoidInfo_Create(double positionY, double height)-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -82,7 +84,9 @@ void OH_TextAvoidInfo_Destroy(InputMethod_TextAvoidInfo *info)
 
 **描述：**
 
-销毁一个[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)实例，释放其占用的内存资源。 <br> <br>使用场景：当TextAvoidInfo实例不再使用时，调用此函数销毁实例。必须在Create函数成功返回后、且实例不再被任何其他对象引用 时调用。 <br> <br>生命周期管理：OH_TextAvoidInfo_Create和OH_TextAvoidInfo_Destroy必须配对使用，每个Create创建的实例必须有对应的 Destroy调用，否则会导致内存泄漏。调用Destroy后，原指针变为无效指针，不应再被使用。 <br> <br>前置条件：info参数应为OH_TextAvoidInfo_Create成功返回的非NULL指针。 <br> <br>使用后效果：info指向的内存被释放，info指针变为无效指针。对已销毁指针的任何后续访问均为未定义行为。
+销毁一个[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)实例，释放其占用的内存资源。 <br> <br>使用场景：当TextAvoidInfo实例不再使用时，调用此函数销毁实例。必须在Create函数成功返回后、且实例不再被任何其他对象引用 时调用。 <br> <br>生命周期管理：OH_TextAvoidInfo_Create和OH_TextAvoidInfo_Destroy必须配对使用，每个Create创建的实例必须有对应的 Destroy调用，否则会导致内存泄漏。调用Destroy后，原指针变为无效指针，不应再被使用。 <br> <br>前置条件：info参数应为OH_TextAvoidInfo_Create成功返回的非NULL指针。 <br>仅独立创建的对象归调用者所有。TextConfig获取接口返回的是借用视图，不可将其传入本接口。 对借用视图的销毁请求会被拒绝，且不会释放其所属的TextConfig。销毁后不可继续使用原指针。 <br> <br>使用后效果：info指向的内存被释放，info指针变为无效指针。对已销毁指针的任何后续访问均为未定义行为。
+
+<!--Device-void OH_TextAvoidInfo_Destroy(InputMethod_TextAvoidInfo *info)--><!--Device-void OH_TextAvoidInfo_Destroy(InputMethod_TextAvoidInfo *info)-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -102,7 +106,9 @@ InputMethod_ErrorCode OH_TextAvoidInfo_SetPositionY(InputMethod_TextAvoidInfo *i
 
 **描述：**
 
-设置[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)中的Y坐标值。Y坐标值表示输入框顶点与物理屏幕上侧距离的绝对值。 <br> <br>使用场景：当编辑框位置发生变化时（如窗口移动、布局调整），需要更新避让信息中的Y坐标值，使输入法框架能够根据最新位置重新 计算避让区域。 <br> <br>前置条件：info参数必须为OH_TextAvoidInfo_Create成功返回的非NULL指针。
+设置[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)中的Y坐标值。Y坐标值表示输入框顶点与物理屏幕上侧距离的绝对值。 <br> <br>使用场景：当编辑框位置发生变化时（如窗口移动、布局调整），需要更新避让信息中的Y坐标值，使输入法框架能够根据最新位置重新 计算避让区域。 <br> <br>前置条件：info参数必须为OH_TextAvoidInfo_Create成功返回的非NULL指针， 或TextConfig返回且仍有效的借用视图。
+
+<!--Device-InputMethod_ErrorCode OH_TextAvoidInfo_SetPositionY(InputMethod_TextAvoidInfo *info, double positionY)--><!--Device-InputMethod_ErrorCode OH_TextAvoidInfo_SetPositionY(InputMethod_TextAvoidInfo *info, double positionY)-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -119,7 +125,7 @@ InputMethod_ErrorCode OH_TextAvoidInfo_SetPositionY(InputMethod_TextAvoidInfo *i
 
 | 类型 | 说明 |
 | -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针，info参数为NULL。<br>具体错误码可以参考 [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功。<br>[IME_ERR_PARAMCHECK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 对象句柄未注册或已失效。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针，info参数为NULL。<br>具体错误码可以参考 [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
 
 ### OH_TextAvoidInfo_SetHeight()
 
@@ -129,7 +135,9 @@ InputMethod_ErrorCode OH_TextAvoidInfo_SetHeight(InputMethod_TextAvoidInfo *info
 
 **描述：**
 
-设置[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)中的高度值。高度值表示编辑框在屏幕上占据的垂直像素尺寸。 <br> <br>使用场景：当编辑框高度发生变化时（如布局调整、窗口缩放），需要更新避让信息中的高度值，使输入法框架能够根据最新高度重新 计算避让区域。避让区域计算依赖于positionY和height的组合，确保编辑框在键盘弹起时不被遮挡。 <br> <br>前置条件：info参数必须为OH_TextAvoidInfo_Create成功返回的非NULL指针。
+设置[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)中的高度值。高度值表示编辑框在屏幕上占据的垂直像素尺寸。 <br> <br>使用场景：当编辑框高度发生变化时（如布局调整、窗口缩放），需要更新避让信息中的高度值，使输入法框架能够根据最新高度重新 计算避让区域。避让区域计算依赖于positionY和height的组合，确保编辑框在键盘弹起时不被遮挡。 <br> <br>前置条件：info参数必须为OH_TextAvoidInfo_Create成功返回的非NULL指针， 或TextConfig返回且仍有效的借用视图。
+
+<!--Device-InputMethod_ErrorCode OH_TextAvoidInfo_SetHeight(InputMethod_TextAvoidInfo *info, double height)--><!--Device-InputMethod_ErrorCode OH_TextAvoidInfo_SetHeight(InputMethod_TextAvoidInfo *info, double height)-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -146,7 +154,7 @@ InputMethod_ErrorCode OH_TextAvoidInfo_SetHeight(InputMethod_TextAvoidInfo *info
 
 | 类型 | 说明 |
 | -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针，info参数为NULL。<br>具体错误码可以参考 [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功。<br>[IME_ERR_PARAMCHECK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 对象句柄未注册或已失效。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针，info参数为NULL。<br>具体错误码可以参考 [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
 
 ### OH_TextAvoidInfo_GetPositionY()
 
@@ -156,7 +164,9 @@ InputMethod_ErrorCode OH_TextAvoidInfo_GetPositionY(InputMethod_TextAvoidInfo *i
 
 **描述：**
 
-从[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)获取Y坐标值。Y坐标值即输入框顶点与物理屏幕上侧距离的绝对值。 <br> <br>使用场景：输入法应用在处理避让逻辑时，需要获取编辑框的Y坐标值，以确定编辑框在屏幕上的垂直位置，从而判断是否需要调整编辑 框位置或布局。 <br> <br>前置条件：info参数必须为OH_TextAvoidInfo_Create成功返回的非NULL指针；positionY输出参数必须为非NULL的double类型指 针，且由调用方分配内存。
+从[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)获取Y坐标值。Y坐标值即输入框顶点与物理屏幕上侧距离的绝对值。 <br> <br>使用场景：输入法应用在处理避让逻辑时，需要获取编辑框的Y坐标值，以确定编辑框在屏幕上的垂直位置，从而判断是否需要调整编辑 框位置或布局。 <br> <br>前置条件：info参数必须为OH_TextAvoidInfo_Create成功返回的非NULL指针， 或TextConfig返回且仍有效的借用视图；positionY输出参数必须为非NULL的double类型指 针，且由调用方分配内存。
+
+<!--Device-InputMethod_ErrorCode OH_TextAvoidInfo_GetPositionY(InputMethod_TextAvoidInfo *info, double *positionY)--><!--Device-InputMethod_ErrorCode OH_TextAvoidInfo_GetPositionY(InputMethod_TextAvoidInfo *info, double *positionY)-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -173,7 +183,7 @@ InputMethod_ErrorCode OH_TextAvoidInfo_GetPositionY(InputMethod_TextAvoidInfo *i
 
 | 类型 | 说明 |
 | -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功，positionY指针指向的内存已被写入Y坐标值。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针，info或positionY参数为NULL。<br>具体错误码可以参考 [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功，positionY指针指向的内存已被写入Y坐标值。<br>[IME_ERR_PARAMCHECK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 对象句柄未注册或已失效。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针，info或positionY参数为NULL。<br>具体错误码可以参考 [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
 
 ### OH_TextAvoidInfo_GetHeight()
 
@@ -183,7 +193,9 @@ InputMethod_ErrorCode OH_TextAvoidInfo_GetHeight(InputMethod_TextAvoidInfo *info
 
 **描述：**
 
-从[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)获取高度值。高度值表示编辑框在屏幕上占据的垂直像素尺寸。 <br> <br>使用场景：输入法应用在处理避让逻辑时，需要获取编辑框的高度值，结合Y坐标值确定编辑框在屏幕上的完整垂直范围（positionY到 positionY+height），从而判断编辑框是否会被键盘遮挡。 <br> <br>前置条件：info参数必须为OH_TextAvoidInfo_Create成功返回的非NULL指针；height输出参数必须为非NULL的double类型指针，且 由调用方分配内存。
+从[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)获取高度值。高度值表示编辑框在屏幕上占据的垂直像素尺寸。 <br> <br>使用场景：输入法应用在处理避让逻辑时，需要获取编辑框的高度值，结合Y坐标值确定编辑框在屏幕上的完整垂直范围（positionY到 positionY+height），从而判断编辑框是否会被键盘遮挡。 <br> <br>前置条件：info参数必须为OH_TextAvoidInfo_Create成功返回的非NULL指针， 或TextConfig返回且仍有效的借用视图；height输出参数必须为非NULL的double类型指针，且 由调用方分配内存。
+
+<!--Device-InputMethod_ErrorCode OH_TextAvoidInfo_GetHeight(InputMethod_TextAvoidInfo *info, double *height)--><!--Device-InputMethod_ErrorCode OH_TextAvoidInfo_GetHeight(InputMethod_TextAvoidInfo *info, double *height)-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -200,6 +212,6 @@ InputMethod_ErrorCode OH_TextAvoidInfo_GetHeight(InputMethod_TextAvoidInfo *info
 
 | 类型 | 说明 |
 | -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功，height指针指向的内存已被写入高度值。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针，info或height参数为NULL。<br>具体错误码可以参考 [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功，height指针指向的内存已被写入高度值。<br>[IME_ERR_PARAMCHECK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 对象句柄未注册或已失效。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针，info或height参数为NULL。<br>具体错误码可以参考 [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
 
 

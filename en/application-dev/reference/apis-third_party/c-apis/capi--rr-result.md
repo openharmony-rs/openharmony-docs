@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct rr_result {...}--><!--Device-struct rr_result {...}-End-->
+
 ## Summary
 
 ### Member variables

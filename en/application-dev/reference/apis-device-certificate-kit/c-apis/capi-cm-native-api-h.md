@@ -36,6 +36,8 @@ int32_t OH_CertManager_GetUkeyCertificate(const OH_CM_Blob *keyUri, const OH_CM_
 
 Obtains the detail list of USB certificate credentials. After the call is complete, call OH_CertManager_FreeUkeyCertificate to release the certificateList memory.
 
+<!--Device-int32_t OH_CertManager_GetUkeyCertificate(const OH_CM_Blob *keyUri, const OH_CM_UkeyInfo *ukeyInfo, OH_CM_CredentialDetailList *certificateList)--><!--Device-int32_t OH_CertManager_GetUkeyCertificate(const OH_CM_Blob *keyUri, const OH_CM_UkeyInfo *ukeyInfo, OH_CM_CredentialDetailList *certificateList)-End-->
+
 **System capability**: SystemCapability.Security.CertificateManager
 
 **Required permission**: ohos.permission.ACCESS_CERT_MANAGER
@@ -66,6 +68,8 @@ int32_t OH_CertManager_GetPrivateCertificate(const OH_CM_Blob *keyUri, OH_CM_Cre
 
 Obtains the details of a private certificate credential of a specific application. After the call is complete, call OH_CertManager_FreeCredential to release the certificate memory.
 
+<!--Device-int32_t OH_CertManager_GetPrivateCertificate(const OH_CM_Blob *keyUri, OH_CM_Credential *certificate)--><!--Device-int32_t OH_CertManager_GetPrivateCertificate(const OH_CM_Blob *keyUri, OH_CM_Credential *certificate)-End-->
+
 **System capability**: SystemCapability.Security.CertificateManager
 
 **Required permission**: ohos.permission.ACCESS_CERT_MANAGER
@@ -94,6 +98,8 @@ int32_t OH_CertManager_GetPublicCertificate(const OH_CM_Blob *keyUri, OH_CM_Cred
 **Description**
 
 Obtains the details of a public certificate credential of a specific user. After the call is complete, call OH_CertManager_FreeCredential to release the certificate memory.
+
+<!--Device-int32_t OH_CertManager_GetPublicCertificate(const OH_CM_Blob *keyUri, OH_CM_Credential *certificate)--><!--Device-int32_t OH_CertManager_GetPublicCertificate(const OH_CM_Blob *keyUri, OH_CM_Credential *certificate)-End-->
 
 **System capability**: SystemCapability.Security.CertificateManager
 
@@ -124,6 +130,8 @@ void OH_CertManager_FreeUkeyCertificate(OH_CM_CredentialDetailList *certificateL
 
 Destroys the certificate detail list.
 
+<!--Device-void OH_CertManager_FreeUkeyCertificate(OH_CM_CredentialDetailList *certificateList)--><!--Device-void OH_CertManager_FreeUkeyCertificate(OH_CM_CredentialDetailList *certificateList)-End-->
+
 **System capability**: SystemCapability.Security.CertificateManager
 
 **Since**: 22
@@ -143,6 +151,8 @@ void OH_CertManager_FreeCredential(OH_CM_Credential *certificate)
 **Description**
 
 Destroys the certificate details.
+
+<!--Device-void OH_CertManager_FreeCredential(OH_CM_Credential *certificate)--><!--Device-void OH_CertManager_FreeCredential(OH_CM_Credential *certificate)-End-->
 
 **System capability**: SystemCapability.Security.CertificateManager
 

@@ -8,11 +8,13 @@ struct ScsiPeripheral_BasicSenseInfo {...}
 
 SCSI Sense Data的基本信息结构体，用于封装SCSI命令执行后返回的sense数据。该结构体包含响应码、状态标志位以及各类信息字段，用于驱动程序获取和分析SCSI设备的错误状态和命令执行结果。
 
+<!--Device-struct ScsiPeripheral_BasicSenseInfo {...}--><!--Device-struct ScsiPeripheral_BasicSenseInfo {...}-End-->
+
 **系统能力：** SystemCapability.Driver.SCSI.Extension
 
 **起始版本：** 18
 
-**相关模块：** [ScsiPeripheralDDK](capi-others-scsiperipheralddk.md)
+**相关模块：** [ScsiPeripheralDDK](capi-driver-development-kit-scsiperipheralddk.md)
 
 **所在头文件：** [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md)
 

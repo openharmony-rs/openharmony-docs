@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDirectDriverLoadingInfoLUNARG {...}--><!--Device-struct VkDirectDriverLoadingInfoLUNARG {...}-End-->
+
 ## Summary
 
 ### Member variables

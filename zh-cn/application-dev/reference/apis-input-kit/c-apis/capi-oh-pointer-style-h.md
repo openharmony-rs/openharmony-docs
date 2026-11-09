@@ -34,6 +34,8 @@ enum Input_PointerStyle
 
 鼠标光标样式。
 
+<!--Device-Input_PointerStyle--><!--Device-Input_PointerStyle-End-->
+
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
 **起始版本：** 22

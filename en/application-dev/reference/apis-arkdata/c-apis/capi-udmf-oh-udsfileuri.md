@@ -8,11 +8,13 @@ typedef struct OH_UdsFileUri OH_UdsFileUri
 
 Describes the unified data struct of file uri.
 
+<!--Device-typedef struct OH_UdsFileUri OH_UdsFileUri--><!--Device-typedef struct OH_UdsFileUri OH_UdsFileUri-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 13
 
-**Related module**: [UDMF](capi-others-udmf.md)
+**Related module**: [UDMF](capi-arkdata-udmf.md)
 
 **Header file**: [uds.h](capi-uds-h.md)
 

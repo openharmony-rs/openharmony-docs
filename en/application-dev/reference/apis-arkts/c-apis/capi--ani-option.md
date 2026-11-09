@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct ani_option {...}--><!--Device-struct ani_option {...}-End-->
+
 **System capability**: SystemCapability.ArkCompiler.ANI
 
 ## Summary

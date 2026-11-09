@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkCopyMemoryToImageIndirectCommandNV {...}--><!--Device-struct VkCopyMemoryToImageIndirectCommandNV {...}-End-->
+
 ## Summary
 
 ### Member variables

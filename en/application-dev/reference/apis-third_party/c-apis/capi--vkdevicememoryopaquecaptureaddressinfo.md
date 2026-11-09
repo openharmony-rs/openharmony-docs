@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDeviceMemoryOpaqueCaptureAddressInfo {...}--><!--Device-struct VkDeviceMemoryOpaqueCaptureAddressInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

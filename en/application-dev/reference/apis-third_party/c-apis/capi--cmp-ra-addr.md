@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct cmp_ra_addr {...}--><!--Device-struct cmp_ra_addr {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct api_module {...}--><!--Device-struct api_module {...}-End-->
+
 ## Summary
 
 ### Member variables

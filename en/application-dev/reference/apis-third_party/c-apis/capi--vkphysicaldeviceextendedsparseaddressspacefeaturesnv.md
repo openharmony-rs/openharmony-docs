@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV {...}--><!--Device-struct VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -48,6 +48,8 @@ enum Telephony_RadioResult
 
 Result codes.
 
+<!--Device-Telephony_RadioResult--><!--Device-Telephony_RadioResult-End-->
+
 **System capability**: SystemCapability.Telephony.CoreService
 
 **Since**: 13
@@ -71,6 +73,8 @@ enum Telephony_RegState
 
 Network registration status of the device.
 
+<!--Device-Telephony_RegState--><!--Device-Telephony_RegState-End-->
+
 **System capability**: SystemCapability.Telephony.CoreService
 
 **Since**: 13
@@ -91,6 +95,8 @@ enum Telephony_RadioTechnology
 **Description**
 
 RAT type of the device.
+
+<!--Device-Telephony_RadioTechnology--><!--Device-Telephony_RadioTechnology-End-->
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -121,6 +127,8 @@ enum Telephony_NsaState
 **Description**
 
 NSA network registration status of the device.
+
+<!--Device-Telephony_NsaState--><!--Device-Telephony_NsaState-End-->
 
 **System capability**: SystemCapability.Telephony.CoreService
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkMicromapTriangleEXT {...}--><!--Device-struct VkMicromapTriangleEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkIndirectCommandsLayoutTokenEXT {...}--><!--Device-struct VkIndirectCommandsLayoutTokenEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

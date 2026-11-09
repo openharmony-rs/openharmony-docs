@@ -8,9 +8,11 @@ struct OH_AVRecorder_Profile {...}
 
 Describes the parameters used for audio and video recording. By configuring parameters such as the audio/video encoding format, bitrate, sampling rate, frame rate, resolution, container format, HDR recording, and whether to enable temporally scalable video encoding, you can flexibly control the recording quality and file size. This is applicable to scenarios where you need to customize the recording quality, select the recording content type (audio-only, video-only, or both), and enable HDR recording or temporally scalable video encoding.<br>You can choose to record only audio, only video, or both by setting the parameters.<br>1. When **audioBitrate** or **audioChannels**<br>is set to **0**, audio recording is disabled.<br>2. When **videoFrameWidth** or **videoFrameHeight** is set to **0**, video recording is disabled.<br>For details about the value range of each parameter, see [AVRecorderProfile](arkts-apis-media-i.md#avrecorderprofile9).
 
+<!--Device-struct OH_AVRecorder_Profile {...}--><!--Device-struct OH_AVRecorder_Profile {...}-End-->
+
 **Since**: 18
 
-**Related module**: [AVRecorder](capi-others-avrecorder.md)
+**Related module**: [AVRecorder](capi-media-kit-avrecorder.md)
 
 **Header file**: [avrecorder_base.h](capi-avrecorder-base-h.md)
 

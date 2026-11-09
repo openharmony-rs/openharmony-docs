@@ -8,11 +8,13 @@ struct Camera_CaptureStartInfo {...}
 
 The struct describes the capture start information.
 
+<!--Device-struct Camera_CaptureStartInfo {...}--><!--Device-struct Camera_CaptureStartInfo {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
-**Related module**: [OH_Camera](capi-others-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **Header file**: [camera.h](capi-camera-h.md)
 

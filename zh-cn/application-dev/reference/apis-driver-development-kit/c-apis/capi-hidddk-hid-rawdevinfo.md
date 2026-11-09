@@ -8,11 +8,13 @@ struct Hid_RawDevInfo {...}
 
 HID原始设备信息，包含总线类型、供应商ID、产品ID等关键标识信息。开发者可以通过此结构体识别和区分不同的HID设备，通常用于设备识别、设备匹配、设备过滤等场景。
 
+<!--Device-struct Hid_RawDevInfo {...}--><!--Device-struct Hid_RawDevInfo {...}-End-->
+
 **系统能力：** SystemCapability.Driver.HID.Extension
 
 **起始版本：** 18
 
-**相关模块：** [HidDdk](capi-others-hidddk.md)
+**相关模块：** [HidDdk](capi-driver-development-kit-hidddk.md)
 
 **所在头文件：** [hid_ddk_types.h](capi-hid-ddk-types-h.md)
 

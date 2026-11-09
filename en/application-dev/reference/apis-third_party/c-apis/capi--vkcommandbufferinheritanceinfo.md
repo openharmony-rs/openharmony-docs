@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkCommandBufferInheritanceInfo {...}--><!--Device-struct VkCommandBufferInheritanceInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

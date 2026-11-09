@@ -8,11 +8,13 @@ struct FileShare_PolicyErrorResult {...}
 
 Define the FileShare_PolicyErrorResult structure type.<br> Failed policy result on URI.
 
+<!--Device-struct FileShare_PolicyErrorResult {...}--><!--Device-struct FileShare_PolicyErrorResult {...}-End-->
+
 **System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 **Since**: 12
 
-**Related module**: [fileShare](capi-others-fileshare.md)
+**Related module**: [fileShare](capi-core-file-kit-fileshare.md)
 
 **Header file**: [oh_file_share.h](capi-oh-file-share-h.md)
 

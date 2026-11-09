@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkVideoDecodeH264InlineSessionParametersInfoKHR {...}--><!--Device-struct VkVideoDecodeH264InlineSessionParametersInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

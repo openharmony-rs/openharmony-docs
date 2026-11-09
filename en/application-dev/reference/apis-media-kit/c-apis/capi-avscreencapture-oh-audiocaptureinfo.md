@@ -8,11 +8,13 @@ struct OH_AudioCaptureInfo {...}
 
 The struct describes the audio capture information.
 
+<!--Device-struct OH_AudioCaptureInfo {...}--><!--Device-struct OH_AudioCaptureInfo {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 10
 
-**Related module**: [AVScreenCapture](capi-others-avscreencapture.md)
+**Related module**: [AVScreenCapture](capi-media-kit-avscreencapture.md)
 
 **Header file**: [native_avscreen_capture_base.h](capi-native-avscreen-capture-base-h.md)
 

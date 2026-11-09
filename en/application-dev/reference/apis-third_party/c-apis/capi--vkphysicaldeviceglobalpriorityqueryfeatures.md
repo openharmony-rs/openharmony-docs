@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceGlobalPriorityQueryFeatures {...}--><!--Device-struct VkPhysicalDeviceGlobalPriorityQueryFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

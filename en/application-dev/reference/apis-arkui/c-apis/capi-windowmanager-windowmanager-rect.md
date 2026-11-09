@@ -8,11 +8,13 @@ typedef struct WindowManager_Rect {...} WindowManager_Rect
 
 The struct describes the window rectangle, including the window position, width, and height.
 
+<!--Device-typedef struct WindowManager_Rect {...} WindowManager_Rect--><!--Device-typedef struct WindowManager_Rect {...} WindowManager_Rect-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
 
-**Related module**: [WindowManager](capi-others-windowmanager.md)
+**Related module**: [WindowManager](capi-arkui-windowmanager.md)
 
 **Header file**: [oh_window_comm.h](capi-oh-window-comm-h.md)
 

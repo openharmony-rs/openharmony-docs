@@ -32,6 +32,8 @@ enum FileManagement_ErrCode
 
 error codes of file management
 
+<!--Device-FileManagement_ErrCode--><!--Device-FileManagement_ErrCode-End-->
+
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
 **Since**: 12

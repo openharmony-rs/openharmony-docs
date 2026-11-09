@@ -20,9 +20,9 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) | - | IPC序列化对象，用于在跨进程通信中序列化和反序列化数据。该对象需要通过相关函数创建和销毁，开发者需要遵循对象的生命 周期管理规范，正确管理内存资源。 |
-| [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md) | - | IPC（进程间通信）远端代理对象，用于在客户端代理远端服务的能力，实现跨进程通信。该对象封装了远端服务的引用，支持向 远端服务发送请求和接收响应。适用于需要跨进程调用服务能力的场景，例如跨进程服务调用、系统服务访问、跨应用数据共享等典型应 用。使用该对象可以简化跨进程通信的实现，提高开发效率。 |
-| [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md) | - | IPC远端服务对象。该结构体用于在服务端表示一个远端服务，作为IPC通信中服务端的服务代理，用于处理客户端的请求并实现 跨进程通信。OHIPCRemoteStub是IPC Kit提供的核心结构体，使用OHIPCRemoteStub可以简化IPC服务开发流程，提供统一的请求处理机 制，帮助开发者快速实现跨进程通信能力。 |
+| [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) | OHIPCParcel | IPC序列化对象，用于在跨进程通信中序列化和反序列化数据。该对象需要通过相关函数创建和销毁，开发者需要遵循对象的生命 周期管理规范，正确管理内存资源。 |
+| [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md) | OHIPCRemoteProxy | IPC（进程间通信）远端代理对象，用于在客户端代理远端服务的能力，实现跨进程通信。该对象封装了远端服务的引用，支持向 远端服务发送请求和接收响应。适用于需要跨进程调用服务能力的场景，例如跨进程服务调用、系统服务访问、跨应用数据共享等典型应 用。使用该对象可以简化跨进程通信的实现，提高开发效率。 |
+| [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md) | OHIPCRemoteStub | IPC远端服务对象。该结构体用于在服务端表示一个远端服务，作为IPC通信中服务端的服务代理，用于处理客户端的请求并实现 跨进程通信。OHIPCRemoteStub是IPC Kit提供的核心结构体，使用OHIPCRemoteStub可以简化IPC服务开发流程，提供统一的请求处理机 制，帮助开发者快速实现跨进程通信能力。 |
 
 ### 函数
 
@@ -84,6 +84,8 @@ typedef void* (*OH_IPC_MemAllocator)(int32_t len)
 
 内存分配函数类型，用于IPC通信中自定义内存分配策略。常用于需要特殊内存管理的场景，例如：共享内存传输、内存池管理、 限制内存使用上限等。
 
+<!--Device-typedef void* (*OH_IPC_MemAllocator)(int32_t len)--><!--Device-typedef void* (*OH_IPC_MemAllocator)(int32_t len)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -114,6 +116,8 @@ OHIPCParcel* OH_IPCParcel_Create(void)
 - 返回对象指针用于后续的数据读写操作。
 - 不支持多线程并发访问同一对象。
 - 典型使用流程：OH_IPCParcel_Create() → 数据读写操作 → [OH_IPCParcel_Destroy()](capi-ipc-cparcel-h.md#oh_ipcparcel_destroy())。
+
+<!--Device-OHIPCParcel* OH_IPCParcel_Create(void)--><!--Device-OHIPCParcel* OH_IPCParcel_Create(void)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -147,6 +151,8 @@ void OH_IPCParcel_Destroy(OHIPCParcel *parcel)
 - 只能销毁由[OH_IPCParcel_Create()](capi-ipc-cparcel-h.md#oh_ipcparcel_create())创建的对象。
 - 销毁后不能再访问该对象。
 
+<!--Device-void OH_IPCParcel_Destroy(OHIPCParcel *parcel)--><!--Device-void OH_IPCParcel_Destroy(OHIPCParcel *parcel)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -169,6 +175,8 @@ int OH_IPCParcel_GetDataSize(const OHIPCParcel *parcel)
 - 计算Parcel对象中已写入数据的总字节数。
 - 返回已写入数据的总大小值。
 - 保持读写位置和数据内容不变。
+
+<!--Device-int OH_IPCParcel_GetDataSize(const OHIPCParcel *parcel)--><!--Device-int OH_IPCParcel_GetDataSize(const OHIPCParcel *parcel)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -199,6 +207,8 @@ int OH_IPCParcel_GetWritableBytes(const OHIPCParcel *parcel)
 - 返回可写字节数值。
 - 不改变Parcel对象的读写位置或数据内容。
 
+<!--Device-int OH_IPCParcel_GetWritableBytes(const OHIPCParcel *parcel)--><!--Device-int OH_IPCParcel_GetWritableBytes(const OHIPCParcel *parcel)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -228,6 +238,8 @@ int OH_IPCParcel_GetReadableBytes(const OHIPCParcel *parcel)
 - 返回可读字节数值。
 - 不改变Parcel对象的读写位置或数据内容。
 
+<!--Device-int OH_IPCParcel_GetReadableBytes(const OHIPCParcel *parcel)--><!--Device-int OH_IPCParcel_GetReadableBytes(const OHIPCParcel *parcel)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -255,6 +267,8 @@ int OH_IPCParcel_GetReadPosition(const OHIPCParcel *parcel)
 获取[OHIPCParcel](capi-ohipcparcel-ohipcparcel.md)对象当前读取位置。常用于记录读取位置以便后续恢复、配合 [OH_IPCParcel_RewindReadPosition()](capi-ipc-cparcel-h.md#oh_ipcparcel_rewindreadposition())实现重复读取、调试数据读取进度等场景。 调用此函数：
 - 返回Parcel对象当前的读取位置值。
 - 不改变读取位置或数据内容。
+
+<!--Device-int OH_IPCParcel_GetReadPosition(const OHIPCParcel *parcel)--><!--Device-int OH_IPCParcel_GetReadPosition(const OHIPCParcel *parcel)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -284,6 +298,8 @@ int OH_IPCParcel_GetWritePosition(const OHIPCParcel *parcel)
 - 返回Parcel对象当前的写入位置值。
 - 不改变写入位置或数据内容。
 
+<!--Device-int OH_IPCParcel_GetWritePosition(const OHIPCParcel *parcel)--><!--Device-int OH_IPCParcel_GetWritePosition(const OHIPCParcel *parcel)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -312,6 +328,8 @@ int OH_IPCParcel_RewindReadPosition(OHIPCParcel *parcel, uint32_t newReadPos)
 - 读取位置指针移动到newReadPos指定的位置，必须在[0, 当前数据大小]范围内。
 - 已写入的数据保持不变。
 - 后续读取操作从新位置开始。
+
+<!--Device-int OH_IPCParcel_RewindReadPosition(OHIPCParcel *parcel, uint32_t newReadPos)--><!--Device-int OH_IPCParcel_RewindReadPosition(OHIPCParcel *parcel, uint32_t newReadPos)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -344,6 +362,8 @@ int OH_IPCParcel_RewindWritePosition(OHIPCParcel *parcel, uint32_t newWritePos)
 - 后续写入操作从新位置开始。
 - 重置写入位置不影响读取位置。
 
+<!--Device-int OH_IPCParcel_RewindWritePosition(OHIPCParcel *parcel, uint32_t newWritePos)--><!--Device-int OH_IPCParcel_RewindWritePosition(OHIPCParcel *parcel, uint32_t newWritePos)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -374,6 +394,8 @@ int OH_IPCParcel_WriteInt8(OHIPCParcel *parcel, int8_t value)
 - 调用顺序：先调用OH_IPCParcel_WriteInt8()写入数据，接收端再调用[OH_IPCParcel_ReadInt8()](capi-ipc-cparcel-h.md#oh_ipcparcel_readint8())读取数据。
 - 未正确配对：如果未按顺序调用或读取类型不匹配，会导致读取失败或数据错误。
 
+<!--Device-int OH_IPCParcel_WriteInt8(OHIPCParcel *parcel, int8_t value)--><!--Device-int OH_IPCParcel_WriteInt8(OHIPCParcel *parcel, int8_t value)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -400,6 +422,8 @@ int OH_IPCParcel_ReadInt8(const OHIPCParcel *parcel, int8_t *value)
 **描述：**
 
 从[OHIPCParcel](capi-ohipcparcel-ohipcparcel.md)对象读取int8_t值。不支持多线程并发访问同一对象。
+
+<!--Device-int OH_IPCParcel_ReadInt8(const OHIPCParcel *parcel, int8_t *value)--><!--Device-int OH_IPCParcel_ReadInt8(const OHIPCParcel *parcel, int8_t *value)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -431,6 +455,8 @@ int OH_IPCParcel_WriteInt16(OHIPCParcel *parcel, int16_t value)
 - 调用顺序：先调用OH_IPCParcel_WriteInt16()写入数据，接收端再调用[OH_IPCParcel_ReadInt16()](capi-ipc-cparcel-h.md#oh_ipcparcel_readint16())读取数据。
 - 未正确配对：如果未按顺序调用或读取类型不匹配，会导致读取失败或数据错误。
 
+<!--Device-int OH_IPCParcel_WriteInt16(OHIPCParcel *parcel, int16_t value)--><!--Device-int OH_IPCParcel_WriteInt16(OHIPCParcel *parcel, int16_t value)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -457,6 +483,8 @@ int OH_IPCParcel_ReadInt16(const OHIPCParcel *parcel, int16_t *value)
 **描述：**
 
 从[OHIPCParcel](capi-ohipcparcel-ohipcparcel.md)对象读取int16_t值。
+
+<!--Device-int OH_IPCParcel_ReadInt16(const OHIPCParcel *parcel, int16_t *value)--><!--Device-int OH_IPCParcel_ReadInt16(const OHIPCParcel *parcel, int16_t *value)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -488,6 +516,8 @@ int OH_IPCParcel_WriteInt32(OHIPCParcel *parcel, int32_t value)
 - 调用顺序：先调用OH_IPCParcel_WriteInt32()写入数据，接收端再调用[OH_IPCParcel_ReadInt32()](capi-ipc-cparcel-h.md#oh_ipcparcel_readint32())读取数据。
 - 未正确配对：如果未按顺序调用或读取类型不匹配，会导致读取失败或数据错误。
 
+<!--Device-int OH_IPCParcel_WriteInt32(OHIPCParcel *parcel, int32_t value)--><!--Device-int OH_IPCParcel_WriteInt32(OHIPCParcel *parcel, int32_t value)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -514,6 +544,8 @@ int OH_IPCParcel_ReadInt32(const OHIPCParcel *parcel, int32_t *value)
 **描述：**
 
 从[OHIPCParcel](capi-ohipcparcel-ohipcparcel.md)对象读取int32_t值。
+
+<!--Device-int OH_IPCParcel_ReadInt32(const OHIPCParcel *parcel, int32_t *value)--><!--Device-int OH_IPCParcel_ReadInt32(const OHIPCParcel *parcel, int32_t *value)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -545,6 +577,8 @@ int OH_IPCParcel_WriteInt64(OHIPCParcel *parcel, int64_t value)
 - 调用顺序：先调用OH_IPCParcel_WriteInt64()写入数据，接收端再调用[OH_IPCParcel_ReadInt64()](capi-ipc-cparcel-h.md#oh_ipcparcel_readint64())读取数据。
 - 未正确配对：如果未按顺序调用或读取类型不匹配，会导致读取失败或数据错误。
 
+<!--Device-int OH_IPCParcel_WriteInt64(OHIPCParcel *parcel, int64_t value)--><!--Device-int OH_IPCParcel_WriteInt64(OHIPCParcel *parcel, int64_t value)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -571,6 +605,8 @@ int OH_IPCParcel_ReadInt64(const OHIPCParcel *parcel, int64_t *value)
 **描述：**
 
 从[OHIPCParcel](capi-ohipcparcel-ohipcparcel.md)对象读取int64_t值。
+
+<!--Device-int OH_IPCParcel_ReadInt64(const OHIPCParcel *parcel, int64_t *value)--><!--Device-int OH_IPCParcel_ReadInt64(const OHIPCParcel *parcel, int64_t *value)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -602,6 +638,8 @@ int OH_IPCParcel_WriteUint8(OHIPCParcel *parcel, uint8_t value)
 - 调用顺序：先调用OH_IPCParcel_WriteUint8()写入数据，接收端再调用[OH_IPCParcel_ReadUint8()](capi-ipc-cparcel-h.md#oh_ipcparcel_readuint8())读取数据。
 - 未正确配对：如果未按顺序调用或读取类型不匹配，会导致读取失败或数据错误。
 
+<!--Device-int OH_IPCParcel_WriteUint8(OHIPCParcel *parcel, uint8_t value)--><!--Device-int OH_IPCParcel_WriteUint8(OHIPCParcel *parcel, uint8_t value)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 26.0.0
@@ -628,6 +666,8 @@ int OH_IPCParcel_ReadUint8(const OHIPCParcel *parcel, uint8_t *value)
 **描述：**
 
 从[OHIPCParcel](capi-ohipcparcel-ohipcparcel.md)对象读取uint8_t值。
+
+<!--Device-int OH_IPCParcel_ReadUint8(const OHIPCParcel *parcel, uint8_t *value)--><!--Device-int OH_IPCParcel_ReadUint8(const OHIPCParcel *parcel, uint8_t *value)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -659,6 +699,8 @@ int OH_IPCParcel_WriteUint16(OHIPCParcel *parcel, uint16_t value)
 - 调用顺序：先调用OH_IPCParcel_WriteUint16()写入数据，接收端再调用[OH_IPCParcel_ReadUint16()](capi-ipc-cparcel-h.md#oh_ipcparcel_readuint16())读取数据。
 - 未正确配对：如果未按顺序调用或读取类型不匹配，会导致读取失败或数据错误。
 
+<!--Device-int OH_IPCParcel_WriteUint16(OHIPCParcel *parcel, uint16_t value)--><!--Device-int OH_IPCParcel_WriteUint16(OHIPCParcel *parcel, uint16_t value)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 26.0.0
@@ -685,6 +727,8 @@ int OH_IPCParcel_ReadUint16(const OHIPCParcel *parcel, uint16_t *value)
 **描述：**
 
 从[OHIPCParcel](capi-ohipcparcel-ohipcparcel.md)对象读取uint16_t值。
+
+<!--Device-int OH_IPCParcel_ReadUint16(const OHIPCParcel *parcel, uint16_t *value)--><!--Device-int OH_IPCParcel_ReadUint16(const OHIPCParcel *parcel, uint16_t *value)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -716,6 +760,8 @@ int OH_IPCParcel_WriteUint32(OHIPCParcel *parcel, uint32_t value)
 - 调用顺序：先调用OH_IPCParcel_WriteUint32()写入数据，接收端再调用[OH_IPCParcel_ReadUint32()](capi-ipc-cparcel-h.md#oh_ipcparcel_readuint32())读取数据。
 - 未正确配对：如果未按顺序调用或读取类型不匹配，会导致读取失败或数据错误。
 
+<!--Device-int OH_IPCParcel_WriteUint32(OHIPCParcel *parcel, uint32_t value)--><!--Device-int OH_IPCParcel_WriteUint32(OHIPCParcel *parcel, uint32_t value)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 26.0.0
@@ -742,6 +788,8 @@ int OH_IPCParcel_ReadUint32(const OHIPCParcel *parcel, uint32_t *value)
 **描述：**
 
 从[OHIPCParcel](capi-ohipcparcel-ohipcparcel.md)对象读取uint32_t值。
+
+<!--Device-int OH_IPCParcel_ReadUint32(const OHIPCParcel *parcel, uint32_t *value)--><!--Device-int OH_IPCParcel_ReadUint32(const OHIPCParcel *parcel, uint32_t *value)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -773,6 +821,8 @@ int OH_IPCParcel_WriteUint64(OHIPCParcel *parcel, uint64_t value)
 - 调用顺序：先调用OH_IPCParcel_WriteUint64()写入数据，接收端再调用[OH_IPCParcel_ReadUint64()](capi-ipc-cparcel-h.md#oh_ipcparcel_readuint64())读取数据。
 - 未正确配对：如果未按顺序调用或读取类型不匹配，会导致读取失败或数据错误。
 
+<!--Device-int OH_IPCParcel_WriteUint64(OHIPCParcel *parcel, uint64_t value)--><!--Device-int OH_IPCParcel_WriteUint64(OHIPCParcel *parcel, uint64_t value)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 26.0.0
@@ -799,6 +849,8 @@ int OH_IPCParcel_ReadUint64(const OHIPCParcel *parcel, uint64_t *value)
 **描述：**
 
 从[OHIPCParcel](capi-ohipcparcel-ohipcparcel.md)对象读取uint64_t值。
+
+<!--Device-int OH_IPCParcel_ReadUint64(const OHIPCParcel *parcel, uint64_t *value)--><!--Device-int OH_IPCParcel_ReadUint64(const OHIPCParcel *parcel, uint64_t *value)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -830,6 +882,8 @@ int OH_IPCParcel_WriteFloat(OHIPCParcel *parcel, float value)
 - 调用顺序：先调用OH_IPCParcel_WriteFloat()写入数据，接收端再调用[OH_IPCParcel_ReadFloat()](capi-ipc-cparcel-h.md#oh_ipcparcel_readfloat())读取数据。
 - 未正确配对：如果未按顺序调用或读取类型不匹配，会导致读取失败或数据错误。
 
+<!--Device-int OH_IPCParcel_WriteFloat(OHIPCParcel *parcel, float value)--><!--Device-int OH_IPCParcel_WriteFloat(OHIPCParcel *parcel, float value)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -856,6 +910,8 @@ int OH_IPCParcel_ReadFloat(const OHIPCParcel *parcel, float *value)
 **描述：**
 
 从[OHIPCParcel](capi-ohipcparcel-ohipcparcel.md)对象读取float值。
+
+<!--Device-int OH_IPCParcel_ReadFloat(const OHIPCParcel *parcel, float *value)--><!--Device-int OH_IPCParcel_ReadFloat(const OHIPCParcel *parcel, float *value)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -887,6 +943,8 @@ int OH_IPCParcel_WriteDouble(OHIPCParcel *parcel, double value)
 - 调用顺序：先调用OH_IPCParcel_WriteDouble()写入数据，接收端再调用[OH_IPCParcel_ReadDouble()](capi-ipc-cparcel-h.md#oh_ipcparcel_readdouble())读取数据。
 - 未正确配对：如果未按顺序调用或读取类型不匹配，会导致读取失败或数据错误。
 
+<!--Device-int OH_IPCParcel_WriteDouble(OHIPCParcel *parcel, double value)--><!--Device-int OH_IPCParcel_WriteDouble(OHIPCParcel *parcel, double value)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -913,6 +971,8 @@ int OH_IPCParcel_ReadDouble(const OHIPCParcel *parcel, double *value)
 **描述：**
 
 从[OHIPCParcel](capi-ohipcparcel-ohipcparcel.md)对象读取double值。
+
+<!--Device-int OH_IPCParcel_ReadDouble(const OHIPCParcel *parcel, double *value)--><!--Device-int OH_IPCParcel_ReadDouble(const OHIPCParcel *parcel, double *value)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -947,6 +1007,8 @@ int OH_IPCParcel_WriteString(OHIPCParcel *parcel, const char *str)
 - str参数不能为空，否则会返回参数错误。
 - 编码说明：字符串应为有效的UTF-8或ASCII编码
 
+<!--Device-int OH_IPCParcel_WriteString(OHIPCParcel *parcel, const char *str)--><!--Device-int OH_IPCParcel_WriteString(OHIPCParcel *parcel, const char *str)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -973,6 +1035,8 @@ const char* OH_IPCParcel_ReadString(const OHIPCParcel *parcel)
 **描述：**
 
 从[OHIPCParcel](capi-ohipcparcel-ohipcparcel.md)对象读取字符串，用户可通过strlen获取字符串长度。 调用此函数： 1.从当前读取位置读取字符串内容。 2.返回字符串的内存地址指针。 3.读取位置自动后移到字符串结束符之后。 4.返回的字符串内存由Parcel对象管理，无需调用者释放。 5.字符串有效性与Parcel对象绑定，销毁Parcel后字符串失效。 6.参数不合法或读取失败时返回NULL，需检查返回值。 7.可通过strlen获取长度，直接使用返回的指针访问字符串内容。
+
+<!--Device-const char* OH_IPCParcel_ReadString(const OHIPCParcel *parcel)--><!--Device-const char* OH_IPCParcel_ReadString(const OHIPCParcel *parcel)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -1008,6 +1072,8 @@ int OH_IPCParcel_WriteBuffer(OHIPCParcel *parcel, const uint8_t *buffer, int32_t
 - 写入的数据应在调用期间保持有效，写入完成后无限制。
 - 写入完成后，buffer内存由调用者自行管理，Parcel内部存储副本。
 
+<!--Device-int OH_IPCParcel_WriteBuffer(OHIPCParcel *parcel, const uint8_t *buffer, int32_t len)--><!--Device-int OH_IPCParcel_WriteBuffer(OHIPCParcel *parcel, const uint8_t *buffer, int32_t len)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -1041,6 +1107,8 @@ const uint8_t* OH_IPCParcel_ReadBuffer(const OHIPCParcel *parcel, int32_t len)
 - 返回的内存由Parcel对象管理，无需调用者释放。
 - 生命周期：数据有效性与Parcel对象绑定，销毁Parcel后数据失效。
 
+<!--Device-const uint8_t* OH_IPCParcel_ReadBuffer(const OHIPCParcel *parcel, int32_t len)--><!--Device-const uint8_t* OH_IPCParcel_ReadBuffer(const OHIPCParcel *parcel, int32_t len)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -1073,6 +1141,8 @@ int OH_IPCParcel_WriteRemoteStub(OHIPCParcel *parcel, const OHIPCRemoteStub *stu
 - 未正确配对：如果未按顺序调用或未配对使用，会导致接收端无法正确获取Stub对象引用，影响IPC通信建立。
 - 对象有效性：stub不能为空，必须为有效的[OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md)对象指针，否则会返回参数错误。
 - 引用管理：写入后Stub对象的引用计数增加，需确保Stub对象生命周期足够。
+
+<!--Device-int OH_IPCParcel_WriteRemoteStub(OHIPCParcel *parcel, const OHIPCRemoteStub *stub)--><!--Device-int OH_IPCParcel_WriteRemoteStub(OHIPCParcel *parcel, const OHIPCRemoteStub *stub)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -1108,6 +1178,8 @@ OHIPCRemoteStub* OH_IPCParcel_ReadRemoteStub(const OHIPCParcel *parcel)
 - 读取失败时返回NULL，需检查返回值。
 - 通常用于接收服务端传递的Stub对象，用于建立IPC通信。
 
+<!--Device-OHIPCRemoteStub* OH_IPCParcel_ReadRemoteStub(const OHIPCParcel *parcel)--><!--Device-OHIPCRemoteStub* OH_IPCParcel_ReadRemoteStub(const OHIPCParcel *parcel)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -1141,6 +1213,8 @@ int OH_IPCParcel_WriteRemoteProxy(OHIPCParcel *parcel, const OHIPCRemoteProxy *p
 - 对象有效性：proxy不能为空，必须为有效的[OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md)对象指针，否则会返回参数错误。
 - 引用管理：写入后Proxy对象的引用计数增加，需确保Proxy对象生命周期足够。
 
+<!--Device-int OH_IPCParcel_WriteRemoteProxy(OHIPCParcel *parcel, const OHIPCRemoteProxy *proxy)--><!--Device-int OH_IPCParcel_WriteRemoteProxy(OHIPCParcel *parcel, const OHIPCRemoteProxy *proxy)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -1173,6 +1247,8 @@ OHIPCRemoteProxy* OH_IPCParcel_ReadRemoteProxy(const OHIPCParcel *parcel)
 - 必须与[OH_IPCParcel_WriteRemoteProxy()](capi-ipc-cparcel-h.md#oh_ipcparcel_writeremoteproxy())方法配对使用。
 - 返回的Proxy对象指针由系统管理，需按IPC规范使用。
 - 读取失败时返回NULL，需检查返回值。
+
+<!--Device-OHIPCRemoteProxy* OH_IPCParcel_ReadRemoteProxy(const OHIPCParcel *parcel)--><!--Device-OHIPCRemoteProxy* OH_IPCParcel_ReadRemoteProxy(const OHIPCParcel *parcel)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -1209,6 +1285,8 @@ int OH_IPCParcel_WriteFileDescriptor(OHIPCParcel *parcel, int32_t fd)
 - 权限传递：接收端获得的文件描述符具有相同的访问权限。
 - 系统限制：文件描述符传递受系统限制，某些特殊文件描述符可能无法传递。
 
+<!--Device-int OH_IPCParcel_WriteFileDescriptor(OHIPCParcel *parcel, int32_t fd)--><!--Device-int OH_IPCParcel_WriteFileDescriptor(OHIPCParcel *parcel, int32_t fd)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -1244,6 +1322,8 @@ int OH_IPCParcel_ReadFileDescriptor(const OHIPCParcel *parcel, int32_t *fd)
 - 返回的文件描述符应检查是否有效（非负值）。
 - 文件描述符的生命周期独立于Parcel对象。
 
+<!--Device-int OH_IPCParcel_ReadFileDescriptor(const OHIPCParcel *parcel, int32_t *fd)--><!--Device-int OH_IPCParcel_ReadFileDescriptor(const OHIPCParcel *parcel, int32_t *fd)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -1277,6 +1357,8 @@ int OH_IPCParcel_Append(OHIPCParcel *parcel, const OHIPCParcel *data)
 - 拼接后的数据总大小不能超过IPC序列化限制（参见[OH_IPCParcel_Create()](capi-ipc-cparcel-h.md#oh_ipcparcel_create())）。
 - parcel和data参数均不能为空，否则会返回参数错误。
 - 两个参数必须为由[OH_IPCParcel_Create()](capi-ipc-cparcel-h.md#oh_ipcparcel_create())创建的有效对象。
+
+<!--Device-int OH_IPCParcel_Append(OHIPCParcel *parcel, const OHIPCParcel *data)--><!--Device-int OH_IPCParcel_Append(OHIPCParcel *parcel, const OHIPCParcel *data)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -1314,6 +1396,8 @@ int OH_IPCParcel_WriteInterfaceToken(OHIPCParcel *parcel, const char *token)
 - 建议在写入其他请求数据前先写入接口描述符。
 - 接口描述符应为接口的全限定名或唯一标识字符串。
 
+<!--Device-int OH_IPCParcel_WriteInterfaceToken(OHIPCParcel *parcel, const char *token)--><!--Device-int OH_IPCParcel_WriteInterfaceToken(OHIPCParcel *parcel, const char *token)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -1349,6 +1433,8 @@ int OH_IPCParcel_ReadInterfaceToken(const OHIPCParcel *parcel, char **token, int
 - 即使函数返回失败，也需要检查token是否为空并释放。
 - 未正确释放token会导致内存泄漏。
 - 建议在处理请求前先校验接口描述符。
+
+<!--Device-int OH_IPCParcel_ReadInterfaceToken(const OHIPCParcel *parcel, char **token, int32_t *len, OH_IPC_MemAllocator allocator)--><!--Device-int OH_IPCParcel_ReadInterfaceToken(const OHIPCParcel *parcel, char **token, int32_t *len, OH_IPC_MemAllocator allocator)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 

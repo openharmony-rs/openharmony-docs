@@ -8,11 +8,13 @@ typedef struct ffrt_cond_t {...} ffrt_cond_t
 
 Defines the condition variable structure used to store internal data of the condition variable.
 
+<!--Device-typedef struct ffrt_cond_t {...} ffrt_cond_t--><!--Device-typedef struct ffrt_cond_t {...} ffrt_cond_t-End-->
+
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
 
-**Related module**: [FFRT](capi-others-ffrt.md)
+**Related module**: [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 
 **Header file**: [type_def.h](capi-type-def-h.md)
 

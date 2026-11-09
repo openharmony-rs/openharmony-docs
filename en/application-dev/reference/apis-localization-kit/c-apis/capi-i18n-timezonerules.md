@@ -8,11 +8,13 @@ struct TimeZoneRules {...}
 
 A complete time zone rule includes the start time zone rule, time zone rule defined by the start timestamp array, and time zone rule that takes effect every year. It can comprehensively describe both the historical and future rules of a time zone.
 
+<!--Device-struct TimeZoneRules {...}--><!--Device-struct TimeZoneRules {...}-End-->
+
 **System capability**: SystemCapability.Global.I18n
 
 **Since**: 22
 
-**Related module**: [i18n](capi-others-i18n.md)
+**Related module**: [i18n](capi-localization-kit-i18n.md)
 
 **Header file**: [timezone.h](capi-timezone-h.md)
 

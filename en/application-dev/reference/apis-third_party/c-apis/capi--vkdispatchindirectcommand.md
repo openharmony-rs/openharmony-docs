@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDispatchIndirectCommand {...}--><!--Device-struct VkDispatchIndirectCommand {...}-End-->
+
 ## Summary
 
 ### Member variables

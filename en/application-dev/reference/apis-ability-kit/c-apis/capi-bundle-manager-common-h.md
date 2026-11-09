@@ -32,6 +32,8 @@ enum BundleManager_ErrorCode
 
 Enumerates the error codes. For details, see Universal Error Codes.
 
+<!--Device-BundleManager_ErrorCode--><!--Device-BundleManager_ErrorCode-End-->
+
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **Since**: 21

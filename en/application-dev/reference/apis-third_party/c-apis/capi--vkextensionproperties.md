@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkExtensionProperties {...}--><!--Device-struct VkExtensionProperties {...}-End-->
+
 ## Summary
 
 ### Member variables

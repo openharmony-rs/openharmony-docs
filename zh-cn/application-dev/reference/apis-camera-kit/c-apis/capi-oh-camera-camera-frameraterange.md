@@ -8,11 +8,13 @@ struct Camera_FrameRateRange {...}
 
 帧速率范围。
 
+<!--Device-struct Camera_FrameRateRange {...}--><!--Device-struct Camera_FrameRateRange {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
-**相关模块：** [OH_Camera](capi-others-oh-camera.md)
+**相关模块：** [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **所在头文件：** [camera.h](capi-camera-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct f_nameindex {...}--><!--Device-struct f_nameindex {...}-End-->
+
 ## Summary
 
 ### Member variables

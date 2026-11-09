@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceShaderClockFeaturesKHR {...}--><!--Device-struct VkPhysicalDeviceShaderClockFeaturesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

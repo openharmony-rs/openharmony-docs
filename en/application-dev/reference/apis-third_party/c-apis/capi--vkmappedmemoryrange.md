@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkMappedMemoryRange {...}--><!--Device-struct VkMappedMemoryRange {...}-End-->
+
 ## Summary
 
 ### Member variables

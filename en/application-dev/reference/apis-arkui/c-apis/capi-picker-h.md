@@ -64,6 +64,8 @@ enum ArkUI_DatePickerMode
 
 Enumerates the column display modes of the date picker.
 
+<!--Device-ArkUI_DatePickerMode--><!--Device-ArkUI_DatePickerMode-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 18
@@ -83,6 +85,8 @@ enum ArkUI_TextPickerRangeType
 **Description**
 
 Enumerates the types of the text picker.
+
+<!--Device-ArkUI_TextPickerRangeType--><!--Device-ArkUI_TextPickerRangeType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -105,6 +109,8 @@ enum ArkUI_CalendarAlignment
 
 Enumerates the alignment modes between the calendar picker and the entry component.
 
+<!--Device-ArkUI_CalendarAlignment--><!--Device-ArkUI_CalendarAlignment-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -124,6 +130,8 @@ enum ArkUI_PickerIndicatorType
 **Description**
 
 Enumerates the indicator types of the selected item.
+
+<!--Device-ArkUI_PickerIndicatorType--><!--Device-ArkUI_PickerIndicatorType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -146,6 +154,8 @@ ArkUI_TextPickerRangeContentArray* OH_ArkUI_TextPickerRangeContentArray_Create(i
 **Description**
 
 Creates an **ArkUI_TextPickerRangeContentArray** array object, which is used to construct the data list of a single-column sliding data picker, commonly seen in scenarios such as date selection, time selection, and list selection. After creation, you must call **OH_ArkUI_TextPickerRangeContentArray_Destroy** to release resources after use; otherwise, a memory leak occurs.
+
+<!--Device-ArkUI_TextPickerRangeContentArray* OH_ArkUI_TextPickerRangeContentArray_Create(int32_t length)--><!--Device-ArkUI_TextPickerRangeContentArray* OH_ArkUI_TextPickerRangeContentArray_Create(int32_t length)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -175,6 +185,8 @@ void OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex(ArkUI_TextPickerRangeCo
 
 Sets the icon data at the specified position of the **ArkUI_TextPickerRangeContentArray** array, which is used to set options with icons in a single-column text picker, commonly seen in scenarios such as mixed text-and- image lists and option lists with icon hints.
 
+<!--Device-void OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* icon, int32_t index)--><!--Device-void OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* icon, int32_t index)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
@@ -196,6 +208,8 @@ void OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex(ArkUI_TextPickerRangeCo
 **Description**
 
 Sets the text data at the specified position of the **ArkUI_TextPickerRangeContentArray** array, which is used to set the text content in a data picker. This is an essential step for constructing picker options. This API is commonly used in scenarios such as setting date text in a date picker, setting city names in a city picker, and setting category names in a product category picker.
+
+<!--Device-void OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* text, int32_t index)--><!--Device-void OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* text, int32_t index)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -219,6 +233,8 @@ void OH_ArkUI_TextPickerRangeContentArray_Destroy(ArkUI_TextPickerRangeContentAr
 
 Destroys the **ArkUI_TextPickerRangeContentArray** array object. This API must be used in pair with **<br>OH_ArkUI_TextPickerRangeContentArray_Create** to release the created array object resources.
 
+<!--Device-void OH_ArkUI_TextPickerRangeContentArray_Destroy(ArkUI_TextPickerRangeContentArray* handle)--><!--Device-void OH_ArkUI_TextPickerRangeContentArray_Destroy(ArkUI_TextPickerRangeContentArray* handle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
@@ -238,6 +254,8 @@ ArkUI_TextCascadePickerRangeContentArray* OH_ArkUI_TextCascadePickerRangeContent
 **Description**
 
 Creates an **ArkUI_TextCascadePickerRangeContentArray** array object, which is used to construct a multi-column cascade data picker, commonly seen in scenarios such as year-month-day linkage selection and province-city-district three-level linkage selection. After creation, you must call **OH_ArkUI_TextCascadePickerRangeContentArray_Destroy** to release resources after use; otherwise, a memory leak occurs.
+
+<!--Device-ArkUI_TextCascadePickerRangeContentArray* OH_ArkUI_TextCascadePickerRangeContentArray_Create(int32_t length)--><!--Device-ArkUI_TextCascadePickerRangeContentArray* OH_ArkUI_TextCascadePickerRangeContentArray_Create(int32_t length)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -267,6 +285,8 @@ void OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex(ArkUI_TextCascad
 
 Sets the text data at the specified position of the **ArkUI_TextCascadePickerRangeContentArray** array, which is used to set the text content of a multi-column cascade picker. This API is commonly used in scenarios such as setting province names in a province-city-district three-level cascade picker, setting years in a year-month-day cascade picker, and setting brand names in a brand-vehicle model cascade picker.
 
+<!--Device-void OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex(ArkUI_TextCascadePickerRangeContentArray* handle, char* text, int32_t index)--><!--Device-void OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex(ArkUI_TextCascadePickerRangeContentArray* handle, char* text, int32_t index)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
@@ -288,6 +308,8 @@ void OH_ArkUI_TextCascadePickerRangeContentArray_SetChildAtIndex(ArkUI_TextCasca
 **Description**
 
 Sets the child data at the specified position of the **ArkUI_TextCascadePickerRangeContentArray** array, which is used to set the child-level data of a multi-column cascade picker to implement the linkage effect. This API is commonly used in scenarios such as setting the city-level data corresponding to a province in a province-city- district three-level cascade picker, setting the date data corresponding to a month in a year-month-day cascade picker, and setting the model list corresponding to a brand in a brand-vehicle model cascade picker.
+
+<!--Device-void OH_ArkUI_TextCascadePickerRangeContentArray_SetChildAtIndex(ArkUI_TextCascadePickerRangeContentArray* handle, ArkUI_TextCascadePickerRangeContentArray* child, int32_t index)--><!--Device-void OH_ArkUI_TextCascadePickerRangeContentArray_SetChildAtIndex(ArkUI_TextCascadePickerRangeContentArray* handle, ArkUI_TextCascadePickerRangeContentArray* child, int32_t index)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -311,6 +333,8 @@ void OH_ArkUI_TextCascadePickerRangeContentArray_Destroy(ArkUI_TextCascadePicker
 
 Destroys the **ArkUI_TextCascadePickerRangeContentArray** array object. This API must be used in pair with **<br>OH_ArkUI_TextCascadePickerRangeContentArray_Create** to release the created array object resources.
 
+<!--Device-void OH_ArkUI_TextCascadePickerRangeContentArray_Destroy(ArkUI_TextCascadePickerRangeContentArray* handle)--><!--Device-void OH_ArkUI_TextCascadePickerRangeContentArray_Destroy(ArkUI_TextCascadePickerRangeContentArray* handle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
@@ -330,6 +354,8 @@ ArkUI_PickerIndicatorStyle* OH_ArkUI_PickerIndicatorStyle_Create(ArkUI_PickerInd
 **Description**
 
 Creates a style instance of the selected item indicator, which is used to highlight the option currently selected by the user and improve the user interaction experience. After creation, you must call **<br>OH_ArkUI_PickerIndicatorStyle_Dispose** to release resources after use; otherwise, a memory leak occurs.
+
+<!--Device-ArkUI_PickerIndicatorStyle* OH_ArkUI_PickerIndicatorStyle_Create(ArkUI_PickerIndicatorType type)--><!--Device-ArkUI_PickerIndicatorStyle* OH_ArkUI_PickerIndicatorStyle_Create(ArkUI_PickerIndicatorType type)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -356,6 +382,8 @@ void OH_ArkUI_PickerIndicatorStyle_Dispose(ArkUI_PickerIndicatorStyle* style)
 **Description**
 
 Disposes of the style instance of the selected item indicator. This API must be used in pair with **<br>OH_ArkUI_PickerIndicatorStyle_Create** to release the created style instance resources.
+
+<!--Device-void OH_ArkUI_PickerIndicatorStyle_Dispose(ArkUI_PickerIndicatorStyle* style)--><!--Device-void OH_ArkUI_PickerIndicatorStyle_Dispose(ArkUI_PickerIndicatorStyle* style)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

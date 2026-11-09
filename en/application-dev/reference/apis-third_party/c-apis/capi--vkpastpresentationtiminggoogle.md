@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPastPresentationTimingGOOGLE {...}--><!--Device-struct VkPastPresentationTimingGOOGLE {...}-End-->
+
 ## Summary
 
 ### Member variables

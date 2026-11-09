@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSamplerBlockMatchWindowCreateInfoQCOM {...}--><!--Device-struct VkSamplerBlockMatchWindowCreateInfoQCOM {...}-End-->
+
 ## Summary
 
 ### Member variables

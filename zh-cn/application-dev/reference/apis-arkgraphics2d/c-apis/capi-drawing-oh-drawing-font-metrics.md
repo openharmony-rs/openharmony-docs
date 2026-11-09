@@ -8,11 +8,13 @@ struct OH_Drawing_Font_Metrics {...}
 
 定义字体度量信息的结构体。
 
+<!--Device-struct OH_Drawing_Font_Metrics {...}--><!--Device-struct OH_Drawing_Font_Metrics {...}-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
-**相关模块：** [Drawing](capi-others-drawing.md)
+**相关模块：** [Drawing](capi-arkgraphics2d-drawing.md)
 
 **所在头文件：** [drawing_font.h](capi-drawing-font-h.md)
 

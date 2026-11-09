@@ -8,11 +8,13 @@ typedef struct ImagePacker_Opts_ {...} ImagePacker_Opts
 
 定义图像编码选项信息。
 
+<!--Device-typedef struct ImagePacker_Opts_ {...} ImagePacker_Opts--><!--Device-typedef struct ImagePacker_Opts_ {...} ImagePacker_Opts-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 11
 
-**相关模块：** [Image](capi-others-image.md)
+**相关模块：** [Image](capi-image-kit-image.md)
 
 **所在头文件：** [image_packer_mdk.h](capi-image-packer-mdk-h.md)
 

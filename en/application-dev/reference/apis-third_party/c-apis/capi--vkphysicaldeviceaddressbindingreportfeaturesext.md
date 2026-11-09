@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceAddressBindingReportFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceAddressBindingReportFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

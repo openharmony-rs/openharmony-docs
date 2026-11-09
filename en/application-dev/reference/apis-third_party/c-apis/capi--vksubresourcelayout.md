@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSubresourceLayout {...}--><!--Device-struct VkSubresourceLayout {...}-End-->
+
 ## Summary
 
 ### Member variables

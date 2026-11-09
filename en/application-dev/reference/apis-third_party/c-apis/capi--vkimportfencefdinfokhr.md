@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkImportFenceFdInfoKHR {...}--><!--Device-struct VkImportFenceFdInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -8,11 +8,13 @@ struct NetConn_Route {...}
 
 路由配置信息。
 
+<!--Device-struct NetConn_Route {...}--><!--Device-struct NetConn_Route {...}-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **起始版本：** 11
 
-**相关模块：** [NetConnection](capi-others-netconnection.md)
+**相关模块：** [NetConnection](capi-network-kit-netconnection.md)
 
 **所在头文件：** [net_connection_type.h](capi-net-connection-type-h.md)
 

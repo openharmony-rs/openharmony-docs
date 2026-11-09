@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

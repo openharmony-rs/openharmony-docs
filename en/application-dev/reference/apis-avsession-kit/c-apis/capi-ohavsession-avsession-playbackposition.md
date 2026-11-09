@@ -8,11 +8,13 @@ struct AVSession_PlaybackPosition {...}
 
 Defines the playback position.
 
+<!--Device-struct AVSession_PlaybackPosition {...}--><!--Device-struct AVSession_PlaybackPosition {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
-**Related module**: [OHAVSession](capi-others-ohavsession.md)
+**Related module**: [OHAVSession](capi-avsession-kit-ohavsession.md)
 
 **Header file**: [native_avplaybackstate.h](capi-native-avplaybackstate-h.md)
 

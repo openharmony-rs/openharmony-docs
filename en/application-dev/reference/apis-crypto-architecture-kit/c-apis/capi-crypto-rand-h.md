@@ -45,6 +45,8 @@ OH_Crypto_ErrCode OH_CryptoRand_Create(OH_CryptoRand **ctx)
 
 Creates a random number generator context.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoRand_Create(OH_CryptoRand **ctx)--><!--Device-OH_Crypto_ErrCode OH_CryptoRand_Create(OH_CryptoRand **ctx)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -72,6 +74,8 @@ OH_Crypto_ErrCode OH_CryptoRand_GenerateRandom(OH_CryptoRand *ctx, int len, Cryp
 **Description**
 
 Generates random numbers.
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoRand_GenerateRandom(OH_CryptoRand *ctx, int len, Crypto_DataBlob *out)--><!--Device-OH_Crypto_ErrCode OH_CryptoRand_GenerateRandom(OH_CryptoRand *ctx, int len, Crypto_DataBlob *out)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -103,6 +107,8 @@ const char *OH_CryptoRand_GetAlgoName(OH_CryptoRand *ctx)
 
 Obtains the algorithm name of the random number generator.
 
+<!--Device-const char *OH_CryptoRand_GetAlgoName(OH_CryptoRand *ctx)--><!--Device-const char *OH_CryptoRand_GetAlgoName(OH_CryptoRand *ctx)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -128,6 +134,8 @@ OH_Crypto_ErrCode OH_CryptoRand_SetSeed(OH_CryptoRand *ctx, Crypto_DataBlob *see
 **Description**
 
 Sets the seed for the random number generator.
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoRand_SetSeed(OH_CryptoRand *ctx, Crypto_DataBlob *seed)--><!--Device-OH_Crypto_ErrCode OH_CryptoRand_SetSeed(OH_CryptoRand *ctx, Crypto_DataBlob *seed)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -156,6 +164,8 @@ OH_Crypto_ErrCode OH_CryptoRand_EnableHardwareEntropy(OH_CryptoRand *ctx)
 
 Enables hardware entropy source.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoRand_EnableHardwareEntropy(OH_CryptoRand *ctx)--><!--Device-OH_Crypto_ErrCode OH_CryptoRand_EnableHardwareEntropy(OH_CryptoRand *ctx)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 21
@@ -181,6 +191,8 @@ void OH_CryptoRand_Destroy(OH_CryptoRand *ctx)
 **Description**
 
 Destroys the random number generator context.
+
+<!--Device-void OH_CryptoRand_Destroy(OH_CryptoRand *ctx)--><!--Device-void OH_CryptoRand_Destroy(OH_CryptoRand *ctx)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 

@@ -8,11 +8,13 @@ typedef struct ArkUI_PixelRoundPolicy ArkUI_PixelRoundPolicy
 
 Defines the PixelRound policy of a component's four edges.
 
+<!--Device-typedef struct ArkUI_PixelRoundPolicy ArkUI_PixelRoundPolicy--><!--Device-typedef struct ArkUI_PixelRoundPolicy ArkUI_PixelRoundPolicy-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 21
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [layout.h](capi-layout-h.md)
 

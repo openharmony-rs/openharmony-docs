@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceSubpassShadingFeaturesHUAWEI {...}--><!--Device-struct VkPhysicalDeviceSubpassShadingFeaturesHUAWEI {...}-End-->
+
 ## Summary
 
 ### Member variables

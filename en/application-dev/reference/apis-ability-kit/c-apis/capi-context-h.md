@@ -51,6 +51,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCacheDir(AbilityRuntime_Co
 
 Obtain the cache directory of the context.
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCacheDir(AbilityRuntime_ContextHandle context, char* buffer, int32_t bufferSize, int32_t* writeLength)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCacheDir(AbilityRuntime_ContextHandle context, char* buffer, int32_t bufferSize, int32_t* writeLength)-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 24
@@ -79,6 +81,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetTempDir(AbilityRuntime_Con
 **Description**
 
 Obtain the temp directory of the context.
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetTempDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetTempDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -109,6 +113,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetFilesDir(AbilityRuntime_Co
 
 Obtain the files directory of the context.
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetFilesDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetFilesDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 24
@@ -137,6 +143,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDatabaseDir(AbilityRuntime
 **Description**
 
 Obtain the database directory of the context.
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDatabaseDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDatabaseDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -167,6 +175,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetPreferencesDir(AbilityRunt
 
 Obtain the preferences directory of the context.
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetPreferencesDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetPreferencesDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 24
@@ -195,6 +205,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetBundleCodeDir(AbilityRunti
 **Description**
 
 Obtain the bundle code directory of the context.
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetBundleCodeDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetBundleCodeDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -225,6 +237,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDistributedFilesDir(Abilit
 
 Obtain the distributed files directory of the context.
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDistributedFilesDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDistributedFilesDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 24
@@ -253,6 +267,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetResourceDir(AbilityRuntime
 **Description**
 
 Obtain the resource directory of the context.
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetResourceDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetResourceDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -283,6 +299,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCloudFileDir(AbilityRuntim
 
 Obtain the cloud file directory of the context.
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCloudFileDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCloudFileDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 24
@@ -312,6 +330,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetAreaMode(AbilityRuntime_Co
 
 Gets the data encryption level of the context.
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetAreaMode(AbilityRuntime_ContextHandle context, AbilityRuntime_AreaMode* areaMode)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetAreaMode(AbilityRuntime_ContextHandle context, AbilityRuntime_AreaMode* areaMode)-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 24
@@ -339,6 +359,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_SetAreaMode(AbilityRuntime_Co
 
 Sets the data encryption level of the context.
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_SetAreaMode(AbilityRuntime_ContextHandle context, AbilityRuntime_AreaMode areaMode)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_SetAreaMode(AbilityRuntime_ContextHandle context, AbilityRuntime_AreaMode areaMode)-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 24
@@ -365,6 +387,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetLogFileDir(AbilityRuntime_
 **Description**
 
 Obtain the log file directory of the context.
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetLogFileDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetLogFileDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -394,6 +418,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetProcessName(AbilityRuntime
 **Description**
 
 Obtain the process name.
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetProcessName(AbilityRuntime_ContextHandle context, char* buffer, int32_t bufferSize, int32_t* writeLength)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetProcessName(AbilityRuntime_ContextHandle context, char* buffer, int32_t bufferSize, int32_t* writeLength)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

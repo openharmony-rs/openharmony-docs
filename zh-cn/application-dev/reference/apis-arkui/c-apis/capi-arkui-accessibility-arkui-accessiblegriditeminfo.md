@@ -8,11 +8,13 @@ typedef struct ArkUI_AccessibleGridItemInfo {...} ArkUI_AccessibleGridItemInfo
 
 用于描述网格组件内某个网格项的无障碍属性。 该结构体用于向无障碍服务提供网格项的位置、跨度、选中状态等信息，支持无障碍服务获取网格项的布局信息。
 
+<!--Device-typedef struct ArkUI_AccessibleGridItemInfo {...} ArkUI_AccessibleGridItemInfo--><!--Device-typedef struct ArkUI_AccessibleGridItemInfo {...} ArkUI_AccessibleGridItemInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
 
-**相关模块：** [ArkUI_Accessibility](capi-others-arkui-accessibility.md)
+**相关模块：** [ArkUI_Accessibility](capi-arkui-arkui-accessibility.md)
 
 **所在头文件：** [native_interface_accessibility.h](capi-native-interface-accessibility-h.md)
 

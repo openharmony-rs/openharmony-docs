@@ -42,6 +42,8 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioDebuggingManager(OH_AudioDebugging
 
 获取音频调试管理器实例，该实例为单例，用于调用其他音频调试功能接口。
 
+<!--Device-OH_AudioCommon_Result OH_AudioManager_GetAudioDebuggingManager(OH_AudioDebuggingManager **manager)--><!--Device-OH_AudioCommon_Result OH_AudioManager_GetAudioDebuggingManager(OH_AudioDebuggingManager **manager)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 26.0.0
@@ -67,6 +69,8 @@ OH_AudioCommon_Result OH_AudioDebuggingManager_PrintAppInfo(OH_AudioDebuggingMan
 **描述：**
 
 打印当前进程中所有音频模块的快照信息。 <br>应用快照包含当前应用进程中所有播放快照、录音快照、耳返快照和会话快照信息，是不同场景快照的汇总， 适用于需要一次性获取整体音频运行状态的场景。
+
+<!--Device-OH_AudioCommon_Result OH_AudioDebuggingManager_PrintAppInfo(OH_AudioDebuggingManager *manager, int32_t fd)--><!--Device-OH_AudioCommon_Result OH_AudioDebuggingManager_PrintAppInfo(OH_AudioDebuggingManager *manager, int32_t fd)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -94,6 +98,8 @@ OH_AudioCommon_Result OH_AudioDebuggingManager_PrintRendererInfo(OH_AudioDebuggi
 **描述：**
 
 打印指定音频播放实例的快照信息。 <br>音频播放快照记录播放流参数、通路信息、音量、设备信息、焦点状态、历史错误记录等信息， 适用于排查播放无声、音量异常、焦点被抢占等问题。
+
+<!--Device-OH_AudioCommon_Result OH_AudioDebuggingManager_PrintRendererInfo(OH_AudioDebuggingManager *manager, OH_AudioRenderer *renderer, int32_t fd)--><!--Device-OH_AudioCommon_Result OH_AudioDebuggingManager_PrintRendererInfo(OH_AudioDebuggingManager *manager, OH_AudioRenderer *renderer, int32_t fd)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -123,6 +129,8 @@ OH_AudioCommon_Result OH_AudioDebuggingManager_PrintCapturerInfo(OH_AudioDebuggi
 
 打印指定录音实例的快照信息。 <br>录音快照记录录音流参数、通路信息、录音时间戳、设备信息、溢出计数、历史错误记录等信息， 适用于排查录音无数据、录音卡顿等问题。
 
+<!--Device-OH_AudioCommon_Result OH_AudioDebuggingManager_PrintCapturerInfo(OH_AudioDebuggingManager *manager, OH_AudioCapturer *capturer, int32_t fd)--><!--Device-OH_AudioCommon_Result OH_AudioDebuggingManager_PrintCapturerInfo(OH_AudioDebuggingManager *manager, OH_AudioCapturer *capturer, int32_t fd)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 26.0.0
@@ -150,6 +158,8 @@ OH_AudioCommon_Result OH_AudioDebuggingManager_PrintSessionInfo(OH_AudioDebuggin
 **描述：**
 
 打印指定音频会话的快照信息。 <br>音频会话快照记录会话状态、并发策略、场景类型、设备信息、关联音频流等信息， 适用于排查会话激活异常、并发策略不生效等问题。
+
+<!--Device-OH_AudioCommon_Result OH_AudioDebuggingManager_PrintSessionInfo(OH_AudioDebuggingManager *manager, OH_AudioSessionManager *session, int32_t fd)--><!--Device-OH_AudioCommon_Result OH_AudioDebuggingManager_PrintSessionInfo(OH_AudioDebuggingManager *manager, OH_AudioSessionManager *session, int32_t fd)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 

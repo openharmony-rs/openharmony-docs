@@ -8,11 +8,13 @@ typedef struct Print_Property {...} Print_Property
 
 Print_Property表示打印机属性，以键值对形式描述打印机的各类属性信息，开发者可通过该结构体获取或设置打印机的属性参数。
 
+<!--Device-typedef struct Print_Property {...} Print_Property--><!--Device-typedef struct Print_Property {...} Print_Property-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **起始版本：** 12
 
-**相关模块：** [Print](capi-others-print.md)
+**相关模块：** [Print](capi-basic-services-kit-print.md)
 
 **所在头文件：** [ohprint.h](capi-ohprint-h.md)
 

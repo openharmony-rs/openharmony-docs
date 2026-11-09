@@ -8,11 +8,13 @@ typedef struct ArkUI_NodeBorderStyle ArkUI_NodeBorderStyleOption
 
 定义边框样式配置项，用于为渲染节点的各边设置边框样式。
 
+<!--Device-typedef struct ArkUI_NodeBorderStyle ArkUI_NodeBorderStyleOption--><!--Device-typedef struct ArkUI_NodeBorderStyle ArkUI_NodeBorderStyleOption-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
-**相关模块：** [ArkUI_RenderNodeUtils](capi-others-arkui-rendernodeutils.md)
+**相关模块：** [ArkUI_RenderNodeUtils](capi-arkui-arkui-rendernodeutils.md)
 
 **所在头文件：** [native_render.h](capi-native-render-h.md)
 

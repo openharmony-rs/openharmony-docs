@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkConditionalRenderingBeginInfoEXT {...}--><!--Device-struct VkConditionalRenderingBeginInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

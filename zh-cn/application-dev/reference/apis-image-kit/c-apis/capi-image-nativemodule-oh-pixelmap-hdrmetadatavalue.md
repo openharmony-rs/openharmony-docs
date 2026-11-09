@@ -8,11 +8,13 @@ struct OH_Pixelmap_HdrMetadataValue {...}
 
 Pixelmap使用的HDR元数据值，和OH_Pixelmap_HdrMetadataKey相对应。当传入相应的[OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)中的关键字作为入参时， 可通过本结构体设置或获取对应类型的元数据值。该结构体用于[OH_PixelmapNative_SetMetadata](capi-pixelmap-native-h.md#oh_pixelmapnative_setmetadata)及[OH_PixelmapNative_GetMetadata](capi-pixelmap-native-h.md#oh_pixelmapnative_getmetadata)接口， 适用于需要对HDR图像进行元数据管理与渲染处理的场景，帮助应用正确设置和获取HDR元数据以实现HDR图像的高动态范围显示效果。
 
+<!--Device-struct OH_Pixelmap_HdrMetadataValue {...}--><!--Device-struct OH_Pixelmap_HdrMetadataValue {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 12
 
-**相关模块：** [Image_NativeModule](capi-others-image-nativemodule.md)
+**相关模块：** [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 **所在头文件：** [pixelmap_native.h](capi-pixelmap-native-h.md)
 

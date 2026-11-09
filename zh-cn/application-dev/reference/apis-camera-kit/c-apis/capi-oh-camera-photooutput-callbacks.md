@@ -8,11 +8,13 @@ struct PhotoOutput_Callbacks {...}
 
 拍照输出的回调。
 
+<!--Device-struct PhotoOutput_Callbacks {...}--><!--Device-struct PhotoOutput_Callbacks {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
-**相关模块：** [OH_Camera](capi-others-oh-camera.md)
+**相关模块：** [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **所在头文件：** [photo_output.h](capi-photo-output-h.md)
 

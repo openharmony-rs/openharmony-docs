@@ -8,11 +8,13 @@ struct OH_NativeBuffer_Smpte2086 {...}
 
 Indicates the smpte2086 metadata.
 
+<!--Device-struct OH_NativeBuffer_Smpte2086 {...}--><!--Device-struct OH_NativeBuffer_Smpte2086 {...}-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 12
 
-**Related module**: [OH_NativeBuffer](capi-others-oh-nativebuffer.md)
+**Related module**: [OH_NativeBuffer](capi-arkgraphics2d-oh-nativebuffer.md)
 
 **Header file**: [buffer_common.h](capi-buffer-common-h.md)
 

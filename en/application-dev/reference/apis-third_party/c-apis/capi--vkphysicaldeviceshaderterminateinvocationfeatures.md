@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceShaderTerminateInvocationFeatures {...}--><!--Device-struct VkPhysicalDeviceShaderTerminateInvocationFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

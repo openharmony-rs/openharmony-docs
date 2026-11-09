@@ -8,11 +8,13 @@ typedef struct ArkUI_ExpectedFrameRateRange {...} ArkUI_ExpectedFrameRateRange
 
 设置动画的期望帧率。该结构体通过min、max和expected三个字段定义帧率范围，系统尽可能满足期望帧率。
 
+<!--Device-typedef struct ArkUI_ExpectedFrameRateRange {...} ArkUI_ExpectedFrameRateRange--><!--Device-typedef struct ArkUI_ExpectedFrameRateRange {...} ArkUI_ExpectedFrameRateRange-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [native_animate.h](capi-native-animate-h.md)
 

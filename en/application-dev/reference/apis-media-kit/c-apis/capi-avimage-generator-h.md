@@ -39,6 +39,8 @@ OH_AVImageGenerator* OH_AVImageGenerator_Create(void)
 
 Creates an OH_AVImageGenerator instance, which is used to generate video frames at given time points.
 
+<!--Device-OH_AVImageGenerator* OH_AVImageGenerator_Create(void)--><!--Device-OH_AVImageGenerator* OH_AVImageGenerator_Create(void)-End-->
+
 **Since**: 18
 
 **Returns**:
@@ -56,6 +58,8 @@ OH_AVErrCode OH_AVImageGenerator_SetFDSource(OH_AVImageGenerator* generator, int
 **Description**
 
 Sets a data source based on the media file descriptor.
+
+<!--Device-OH_AVErrCode OH_AVImageGenerator_SetFDSource(OH_AVImageGenerator* generator, int32_t fd, int64_t offset, int64_t size)--><!--Device-OH_AVErrCode OH_AVImageGenerator_SetFDSource(OH_AVImageGenerator* generator, int32_t fd, int64_t offset, int64_t size)-End-->
 
 **Since**: 18
 
@@ -84,6 +88,8 @@ OH_AVErrCode OH_AVImageGenerator_FetchFrameByTime(OH_AVImageGenerator* generator
 
 Extracts a video frame at a given time from a video.
 
+<!--Device-OH_AVErrCode OH_AVImageGenerator_FetchFrameByTime(OH_AVImageGenerator* generator, int64_t timeUs, OH_AVImageGenerator_QueryOptions options, OH_PixelmapNative** pixelMap)--><!--Device-OH_AVErrCode OH_AVImageGenerator_FetchFrameByTime(OH_AVImageGenerator* generator, int64_t timeUs, OH_AVImageGenerator_QueryOptions options, OH_PixelmapNative** pixelMap)-End-->
+
 **Since**: 18
 
 **Parameters**:
@@ -110,6 +116,8 @@ OH_AVErrCode OH_AVImageGenerator_Release(OH_AVImageGenerator* generator)
 **Description**
 
 Releases the resources used by the OH_AVImageGenerator instance and destroys the instance.
+
+<!--Device-OH_AVErrCode OH_AVImageGenerator_Release(OH_AVImageGenerator* generator)--><!--Device-OH_AVErrCode OH_AVImageGenerator_Release(OH_AVImageGenerator* generator)-End-->
 
 **Since**: 18
 

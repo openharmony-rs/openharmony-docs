@@ -8,11 +8,13 @@ struct VkSurfaceCreateInfoOHOS {...}
 
 Defines the parameters required for creating a Vulkan surface.
 
+<!--Device-struct VkSurfaceCreateInfoOHOS {...}--><!--Device-struct VkSurfaceCreateInfoOHOS {...}-End-->
+
 **System capability**: SystemCapability.Graphic.Vulkan
 
 **Since**: 10
 
-**Related module**: [Vulkan](capi-others-vulkan.md)
+**Related module**: [Vulkan](capi-arkgraphics2d-vulkan.md)
 
 **Header file**: [vulkan_ohos.h](capi-vulkan-ohos-h.md)
 

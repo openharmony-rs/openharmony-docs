@@ -8,11 +8,13 @@ struct OH_HiAppEvent_ExternalLog {...}
 
 The OH_HiAppEvent_ExternalLog structure is used to describe external log information, including the file path, the generation timestamp, file size, and type of system event.
 
+<!--Device-struct OH_HiAppEvent_ExternalLog {...}--><!--Device-struct OH_HiAppEvent_ExternalLog {...}-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 26.0.1
 
-**Related module**: [HiAppEvent](capi-others-hiappevent.md)
+**Related module**: [HiAppEvent](capi-performance-analysis-kit-hiappevent.md)
 
 **Header file**: [hiappevent.h](capi-hiappevent-h.md)
 

@@ -8,11 +8,13 @@ struct DDK_Ashmem {...}
 
 Defines the shared memory created by calling [OH_DDK_CreateAshmem](capi-ddk-api-h.md#oh_ddk_createashmem). The buffer of the shared memory provides better performance and is applicable to scenarios that require high-performance data sharing, such as efficient sharing of a large amount of data between multiple modules and fast data exchange between drivers and apps.
 
+<!--Device-struct DDK_Ashmem {...}--><!--Device-struct DDK_Ashmem {...}-End-->
+
 **System capability**: SystemCapability.Driver.DDK.Extension
 
 **Since**: 12
 
-**Related module**: [Ddk](capi-others-ddk.md)
+**Related module**: [Ddk](capi-driver-development-kit-ddk.md)
 
 **Header file**: [ddk_types.h](capi-ddk-types-h.md)
 

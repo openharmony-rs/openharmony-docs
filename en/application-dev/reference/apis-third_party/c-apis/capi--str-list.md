@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct str_list {...}--><!--Device-struct str_list {...}-End-->
+
 ## Summary
 
 ### Member variables

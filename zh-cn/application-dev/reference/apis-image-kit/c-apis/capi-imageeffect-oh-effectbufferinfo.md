@@ -8,11 +8,13 @@ typedef struct OH_EffectBufferInfo OH_EffectBufferInfo
 
 定义图像信息。
 
+<!--Device-typedef struct OH_EffectBufferInfo OH_EffectBufferInfo--><!--Device-typedef struct OH_EffectBufferInfo OH_EffectBufferInfo-End-->
+
 **系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
-**相关模块：** [ImageEffect](capi-others-imageeffect.md)
+**相关模块：** [ImageEffect](capi-image-kit-imageeffect.md)
 
 **所在头文件：** [image_effect_filter.h](capi-image-effect-filter-h.md)
 

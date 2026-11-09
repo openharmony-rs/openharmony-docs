@@ -45,6 +45,8 @@ typedef void AbilityRuntime_Extension_CreateFunc(AbilityRuntime_ExtensionInstanc
 
 Defines the callback function type for ExtensionAbility creation. Callback function that must be implemented in the ExtensionAbility, which is used to instantiate the ExtensionAbility.
 
+<!--Device-typedef void AbilityRuntime_Extension_CreateFunc(AbilityRuntime_ExtensionInstanceHandle handle, const char *abilityName)--><!--Device-typedef void AbilityRuntime_Extension_CreateFunc(AbilityRuntime_ExtensionInstanceHandle handle, const char *abilityName)-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 24

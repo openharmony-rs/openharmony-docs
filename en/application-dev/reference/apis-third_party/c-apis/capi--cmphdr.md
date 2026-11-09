@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct cmphdr {...}--><!--Device-struct cmphdr {...}-End-->
+
 ## Summary
 
 ### Member variables

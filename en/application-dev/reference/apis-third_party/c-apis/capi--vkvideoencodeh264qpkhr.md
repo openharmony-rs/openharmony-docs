@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkVideoEncodeH264QpKHR {...}--><!--Device-struct VkVideoEncodeH264QpKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

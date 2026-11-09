@@ -72,6 +72,8 @@ enum Preference_ValueType
 
 定义PreferencesValue的数据类型。
 
+<!--Device-Preference_ValueType--><!--Device-Preference_ValueType-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 13
@@ -105,6 +107,8 @@ const char *OH_PreferencesPair_GetKey(const OH_PreferencesPair *pairs, uint32_t 
 
 获取键值对数据中索引对应数据的键。
 
+<!--Device-const char *OH_PreferencesPair_GetKey(const OH_PreferencesPair *pairs, uint32_t index)--><!--Device-const char *OH_PreferencesPair_GetKey(const OH_PreferencesPair *pairs, uint32_t index)-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 13
@@ -136,6 +140,8 @@ const OH_PreferencesValue *OH_PreferencesPair_GetPreferencesValue(const OH_Prefe
 **描述：**
 
 获取键值对数据数组中索引对应的值。
+
+<!--Device-const OH_PreferencesValue *OH_PreferencesPair_GetPreferencesValue(const OH_PreferencesPair *pairs, uint32_t index)--><!--Device-const OH_PreferencesValue *OH_PreferencesPair_GetPreferencesValue(const OH_PreferencesPair *pairs, uint32_t index)-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -169,6 +175,8 @@ void OH_PreferencesPair_Destroy(OH_PreferencesPair *pairs, uint32_t count)
 
 销毁一个[OH_PreferencesPair](capi-preferences-oh-preferencespair.md)实例。
 
+<!--Device-void OH_PreferencesPair_Destroy(OH_PreferencesPair *pairs, uint32_t count)--><!--Device-void OH_PreferencesPair_Destroy(OH_PreferencesPair *pairs, uint32_t count)-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 23
@@ -194,6 +202,8 @@ Preference_ValueType OH_PreferencesValue_GetValueType(const OH_PreferencesValue 
 **描述：**
 
 获取PreferencesValue对象的数据类型。
+
+<!--Device-Preference_ValueType OH_PreferencesValue_GetValueType(const OH_PreferencesValue *object)--><!--Device-Preference_ValueType OH_PreferencesValue_GetValueType(const OH_PreferencesValue *object)-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -225,6 +235,8 @@ int OH_PreferencesValue_GetInt(const OH_PreferencesValue *object, int *value)
 **描述：**
 
 从PreferencesValue对象[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)中获取一个整型值。
+
+<!--Device-int OH_PreferencesValue_GetInt(const OH_PreferencesValue *object, int *value)--><!--Device-int OH_PreferencesValue_GetInt(const OH_PreferencesValue *object, int *value)-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -258,6 +270,8 @@ int OH_PreferencesValue_GetBool(const OH_PreferencesValue *object, bool *value)
 
 从PreferencesValue对象[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)中获取一个布尔值。
 
+<!--Device-int OH_PreferencesValue_GetBool(const OH_PreferencesValue *object, bool *value)--><!--Device-int OH_PreferencesValue_GetBool(const OH_PreferencesValue *object, bool *value)-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 13
@@ -289,6 +303,8 @@ int OH_PreferencesValue_GetString(const OH_PreferencesValue *object, char **valu
 **描述：**
 
 从PreferencesValue对象[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)中获取字符串。
+
+<!--Device-int OH_PreferencesValue_GetString(const OH_PreferencesValue *object, char **value, uint32_t *valueLen)--><!--Device-int OH_PreferencesValue_GetString(const OH_PreferencesValue *object, char **value, uint32_t *valueLen)-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -323,6 +339,8 @@ OH_PreferencesValue* OH_PreferencesValue_Create(void)
 
 创建一个[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例。
 
+<!--Device-OH_PreferencesValue* OH_PreferencesValue_Create(void)--><!--Device-OH_PreferencesValue* OH_PreferencesValue_Create(void)-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 23
@@ -348,6 +366,8 @@ void OH_PreferencesValue_Destroy(OH_PreferencesValue *value)
 
 销毁一个[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例。
 
+<!--Device-void OH_PreferencesValue_Destroy(OH_PreferencesValue *value)--><!--Device-void OH_PreferencesValue_Destroy(OH_PreferencesValue *value)-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 23
@@ -372,6 +392,8 @@ int OH_PreferencesValue_SetInt(const OH_PreferencesValue *object, int value)
 **描述：**
 
 为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置整型值。
+
+<!--Device-int OH_PreferencesValue_SetInt(const OH_PreferencesValue *object, int value)--><!--Device-int OH_PreferencesValue_SetInt(const OH_PreferencesValue *object, int value)-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -405,6 +427,8 @@ int OH_PreferencesValue_SetBool(const OH_PreferencesValue *object, bool value)
 
 为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置布尔值。
 
+<!--Device-int OH_PreferencesValue_SetBool(const OH_PreferencesValue *object, bool value)--><!--Device-int OH_PreferencesValue_SetBool(const OH_PreferencesValue *object, bool value)-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 23
@@ -436,6 +460,8 @@ int OH_PreferencesValue_SetString(const OH_PreferencesValue *object, const char 
 **描述：**
 
 为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置字符串值。
+
+<!--Device-int OH_PreferencesValue_SetString(const OH_PreferencesValue *object, const char *value)--><!--Device-int OH_PreferencesValue_SetString(const OH_PreferencesValue *object, const char *value)-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -469,6 +495,8 @@ int OH_PreferencesValue_SetInt64(const OH_PreferencesValue *object, int64_t valu
 
 为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置int64值。
 
+<!--Device-int OH_PreferencesValue_SetInt64(const OH_PreferencesValue *object, int64_t value)--><!--Device-int OH_PreferencesValue_SetInt64(const OH_PreferencesValue *object, int64_t value)-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 23
@@ -500,6 +528,8 @@ int OH_PreferencesValue_GetInt64(const OH_PreferencesValue *object, int64_t *val
 **描述：**
 
 获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的int64值。
+
+<!--Device-int OH_PreferencesValue_GetInt64(const OH_PreferencesValue *object, int64_t *value)--><!--Device-int OH_PreferencesValue_GetInt64(const OH_PreferencesValue *object, int64_t *value)-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -533,6 +563,8 @@ int OH_PreferencesValue_SetDouble(const OH_PreferencesValue *object, double valu
 
 为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置double值。
 
+<!--Device-int OH_PreferencesValue_SetDouble(const OH_PreferencesValue *object, double value)--><!--Device-int OH_PreferencesValue_SetDouble(const OH_PreferencesValue *object, double value)-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 23
@@ -565,6 +597,8 @@ int OH_PreferencesValue_GetDouble(const OH_PreferencesValue *object, double *val
 
 获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的double值。
 
+<!--Device-int OH_PreferencesValue_GetDouble(const OH_PreferencesValue *object, double *value)--><!--Device-int OH_PreferencesValue_GetDouble(const OH_PreferencesValue *object, double *value)-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 23
@@ -596,6 +630,8 @@ int OH_PreferencesValue_SetIntArray(const OH_PreferencesValue *object, const int
 **描述：**
 
 为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置整型数组值。
+
+<!--Device-int OH_PreferencesValue_SetIntArray(const OH_PreferencesValue *object, const int *value, uint32_t count)--><!--Device-int OH_PreferencesValue_SetIntArray(const OH_PreferencesValue *object, const int *value, uint32_t count)-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -630,6 +666,8 @@ int OH_PreferencesValue_GetIntArray(const OH_PreferencesValue *object, int **val
 
 获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的整型数组值。
 
+<!--Device-int OH_PreferencesValue_GetIntArray(const OH_PreferencesValue *object, int **value, uint32_t *count)--><!--Device-int OH_PreferencesValue_GetIntArray(const OH_PreferencesValue *object, int **value, uint32_t *count)-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 23
@@ -662,6 +700,8 @@ int OH_PreferencesValue_SetBoolArray(const OH_PreferencesValue *object, const bo
 **描述：**
 
 为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置布尔数组值。
+
+<!--Device-int OH_PreferencesValue_SetBoolArray(const OH_PreferencesValue *object, const bool *value, uint32_t count)--><!--Device-int OH_PreferencesValue_SetBoolArray(const OH_PreferencesValue *object, const bool *value, uint32_t count)-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -696,6 +736,8 @@ int OH_PreferencesValue_GetBoolArray(const OH_PreferencesValue *object, bool **v
 
 获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的布尔数组值。
 
+<!--Device-int OH_PreferencesValue_GetBoolArray(const OH_PreferencesValue *object, bool **value, uint32_t *count)--><!--Device-int OH_PreferencesValue_GetBoolArray(const OH_PreferencesValue *object, bool **value, uint32_t *count)-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 23
@@ -728,6 +770,8 @@ int OH_PreferencesValue_SetStringArray(const OH_PreferencesValue *object, const 
 **描述：**
 
 为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置字符串数组值。
+
+<!--Device-int OH_PreferencesValue_SetStringArray(const OH_PreferencesValue *object, const char **value, uint32_t count)--><!--Device-int OH_PreferencesValue_SetStringArray(const OH_PreferencesValue *object, const char **value, uint32_t count)-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -762,6 +806,8 @@ int OH_PreferencesValue_GetStringArray(const OH_PreferencesValue *object, char *
 
 获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的字符串数组值。
 
+<!--Device-int OH_PreferencesValue_GetStringArray(const OH_PreferencesValue *object, char ***value, uint32_t *count)--><!--Device-int OH_PreferencesValue_GetStringArray(const OH_PreferencesValue *object, char ***value, uint32_t *count)-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 23
@@ -794,6 +840,8 @@ int OH_PreferencesValue_SetInt64Array(const OH_PreferencesValue *object, const i
 **描述：**
 
 为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置int64数组值。
+
+<!--Device-int OH_PreferencesValue_SetInt64Array(const OH_PreferencesValue *object, const int64_t *value, uint32_t count)--><!--Device-int OH_PreferencesValue_SetInt64Array(const OH_PreferencesValue *object, const int64_t *value, uint32_t count)-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -828,6 +876,8 @@ int OH_PreferencesValue_GetInt64Array(const OH_PreferencesValue *object, int64_t
 
 获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的int64数组值。
 
+<!--Device-int OH_PreferencesValue_GetInt64Array(const OH_PreferencesValue *object, int64_t **value, uint32_t *count)--><!--Device-int OH_PreferencesValue_GetInt64Array(const OH_PreferencesValue *object, int64_t **value, uint32_t *count)-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 23
@@ -860,6 +910,8 @@ int OH_PreferencesValue_SetDoubleArray(const OH_PreferencesValue *object, const 
 **描述：**
 
 为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置double数组值。
+
+<!--Device-int OH_PreferencesValue_SetDoubleArray(const OH_PreferencesValue *object, const double *value, uint32_t count)--><!--Device-int OH_PreferencesValue_SetDoubleArray(const OH_PreferencesValue *object, const double *value, uint32_t count)-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -894,6 +946,8 @@ int OH_PreferencesValue_GetDoubleArray(const OH_PreferencesValue *object, double
 
 获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的double数组值。
 
+<!--Device-int OH_PreferencesValue_GetDoubleArray(const OH_PreferencesValue *object, double **value, uint32_t *count)--><!--Device-int OH_PreferencesValue_GetDoubleArray(const OH_PreferencesValue *object, double **value, uint32_t *count)-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 23
@@ -927,6 +981,8 @@ int OH_PreferencesValue_SetBlob(const OH_PreferencesValue *object, const uint8_t
 
 为[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例设置二进制值。
 
+<!--Device-int OH_PreferencesValue_SetBlob(const OH_PreferencesValue *object, const uint8_t *value, uint32_t count)--><!--Device-int OH_PreferencesValue_SetBlob(const OH_PreferencesValue *object, const uint8_t *value, uint32_t count)-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 23
@@ -959,6 +1015,8 @@ int OH_PreferencesValue_GetBlob(const OH_PreferencesValue *object, uint8_t **val
 **描述：**
 
 获取[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的二进制值。
+
+<!--Device-int OH_PreferencesValue_GetBlob(const OH_PreferencesValue *object, uint8_t **value, uint32_t *count)--><!--Device-int OH_PreferencesValue_GetBlob(const OH_PreferencesValue *object, uint8_t **value, uint32_t *count)-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 

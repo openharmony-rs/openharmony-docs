@@ -8,11 +8,13 @@ typedef struct OH_AVMemory OH_AVMemory
 
 Describes a native object for the audio and video memory interface.
 
+<!--Device-typedef struct OH_AVMemory OH_AVMemory--><!--Device-typedef struct OH_AVMemory OH_AVMemory-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 9
 
-**Related module**: [Core](capi-others-core.md)
+**Related module**: [Core](capi-avcodec-kit-core.md)
 
 **Header file**: [native_avmemory.h](capi-native-avmemory-h.md)
 

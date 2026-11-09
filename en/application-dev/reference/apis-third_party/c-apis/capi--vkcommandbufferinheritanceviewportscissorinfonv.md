@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkCommandBufferInheritanceViewportScissorInfoNV {...}--><!--Device-struct VkCommandBufferInheritanceViewportScissorInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

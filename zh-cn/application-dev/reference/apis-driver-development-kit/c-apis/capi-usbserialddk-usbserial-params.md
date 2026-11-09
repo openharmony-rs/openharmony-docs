@@ -8,11 +8,13 @@ struct UsbSerial_Params {...}
 
 定义USB Serial DDK使用的USB串口参数，用于USB转串口设备的通信参数配置，需与目标通信设备的配置保持一致，否则可能无法正常通信。常见于工业控制设备、调试工具、 传感器数据采集等需要通过USB串口与设备通信的场景。
 
+<!--Device-struct UsbSerial_Params {...}--><!--Device-struct UsbSerial_Params {...}-End-->
+
 **系统能力：** SystemCapability.Driver.UsbSerial.Extension
 
 **起始版本：** 18
 
-**相关模块：** [USBSerialDDK](capi-others-usbserialddk.md)
+**相关模块：** [USBSerialDDK](capi-driver-development-kit-usbserialddk.md)
 
 **所在头文件：** [usb_serial_types.h](capi-usb-serial-types-h.md)
 

@@ -8,11 +8,13 @@ typedef struct OH_NativeBundle_ElementName {...} OH_NativeBundle_ElementName
 
 elementName信息。
 
+<!--Device-typedef struct OH_NativeBundle_ElementName {...} OH_NativeBundle_ElementName--><!--Device-typedef struct OH_NativeBundle_ElementName {...} OH_NativeBundle_ElementName-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 13
 
-**相关模块：** [Native_Bundle](capi-others-native-bundle.md)
+**相关模块：** [Native_Bundle](capi-ability-kit-native-bundle.md)
 
 **所在头文件：** [native_interface_bundle.h](capi-native-interface-bundle-h.md)
 

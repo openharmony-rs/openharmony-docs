@@ -8,11 +8,13 @@ struct OH_NativeBundle_ModuleMetadata {...}
 
 The struct describes the metadata of a module.
 
+<!--Device-struct OH_NativeBundle_ModuleMetadata {...}--><!--Device-struct OH_NativeBundle_ModuleMetadata {...}-End-->
+
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **Since**: 20
 
-**Related module**: [Native_Bundle](capi-others-native-bundle.md)
+**Related module**: [Native_Bundle](capi-ability-kit-native-bundle.md)
 
 **Header file**: [native_interface_bundle.h](capi-native-interface-bundle-h.md)
 

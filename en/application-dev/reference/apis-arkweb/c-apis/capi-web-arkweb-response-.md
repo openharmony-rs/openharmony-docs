@@ -8,11 +8,13 @@ typedef struct ArkWeb_Response_ ArkWeb_Response
 
 Defines an **ArkWeb_Response** for the intercepted request.
 
+<!--Device-typedef struct ArkWeb_Response_ ArkWeb_Response--><!--Device-typedef struct ArkWeb_Response_ ArkWeb_Response-End-->
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
-**Related module**: [Web](capi-others-web.md)
+**Related module**: [Web](capi-arkweb-web.md)
 
 **Header file**: [arkweb_scheme_handler.h](capi-arkweb-scheme-handler-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDisplayPowerInfoEXT {...}--><!--Device-struct VkDisplayPowerInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

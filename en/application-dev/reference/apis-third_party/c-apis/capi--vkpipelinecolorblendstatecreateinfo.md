@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineColorBlendStateCreateInfo {...}--><!--Device-struct VkPipelineColorBlendStateCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -33,6 +33,8 @@ enum ArkWeb_ErrorCode
 
 Enumerates the error codes of ArkWeb NDK APIs.
 
+<!--Device-ArkWeb_ErrorCode--><!--Device-ArkWeb_ErrorCode-End-->
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
@@ -61,6 +63,8 @@ enum ArkWeb_BlanklessErrorCode
 **Description**
 
 Enumerates the error codes for the blankless loading.
+
+<!--Device-ArkWeb_BlanklessErrorCode--><!--Device-ArkWeb_BlanklessErrorCode-End-->
 
 **System capability**: SystemCapability.Web.Webview.Core
 

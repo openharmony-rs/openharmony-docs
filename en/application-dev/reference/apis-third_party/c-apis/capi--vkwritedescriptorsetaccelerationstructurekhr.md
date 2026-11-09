@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkWriteDescriptorSetAccelerationStructureKHR {...}--><!--Device-struct VkWriteDescriptorSetAccelerationStructureKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

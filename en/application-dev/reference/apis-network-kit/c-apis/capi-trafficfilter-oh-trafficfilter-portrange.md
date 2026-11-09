@@ -8,11 +8,13 @@ struct OH_TrafficFilter_PortRange {...}
 
 Port match value for range match
 
+<!--Device-struct OH_TrafficFilter_PortRange {...}--><!--Device-struct OH_TrafficFilter_PortRange {...}-End-->
+
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Since**: 26.0.0
 
-**Related module**: [TrafficFilter](capi-others-trafficfilter.md)
+**Related module**: [TrafficFilter](capi-network-kit-trafficfilter.md)
 
 **Header file**: [net_trafficfilter_type.h](capi-net-trafficfilter-type-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkCoarseSampleOrderCustomNV {...}--><!--Device-struct VkCoarseSampleOrderCustomNV {...}-End-->
+
 ## Summary
 
 ### Member variables

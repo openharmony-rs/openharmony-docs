@@ -42,6 +42,8 @@ int32_t OH_AudioSuiteEngine_MetaRenderFrame(OH_AudioSuitePipeline* audioSuitePip
 
 应用程序使用此接口进行音频数据和元数据处理。 应用需在metaFrame结构体中指定audioData和metaData指针及其对应的大小（AudioDataSize和metaDataSize）。 <br>处理完成后，实际输出的数据大小将通过responseAudioSize和responseMetaSize返回。
 
+<!--Device-int32_t OH_AudioSuiteEngine_MetaRenderFrame(OH_AudioSuitePipeline* audioSuitePipeline, OH_AudioSuite_MetaFrame* metaFrame, int32_t* responseAudioSize, int32_t* responseMetaSize, bool* finishedFlag)--><!--Device-int32_t OH_AudioSuiteEngine_MetaRenderFrame(OH_AudioSuitePipeline* audioSuitePipeline, OH_AudioSuite_MetaFrame* metaFrame, int32_t* responseAudioSize, int32_t* responseMetaSize, bool* finishedFlag)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 26.0.0
@@ -56,7 +58,7 @@ int32_t OH_AudioSuiteEngine_MetaRenderFrame(OH_AudioSuitePipeline* audioSuitePip
 | [OH_AudioSuite_MetaFrame](capi-ohaudiosuite-oh-audiosuite-metaframe-sys.md)* metaFrame | 音频元数据帧结构体指针。 |
 | int32_t* responseAudioSize | 接口实际写入的音频数据的大小，单位是字节(Byte)。 |
 | int32_t* responseMetaSize | 接口实际写入的元数据的大小，单位是字节(Byte)。 |
-| bool* finishedFlag | 该标志用于向用户指示是否已完成所有数据处理。 |
+| bool* finishedFlag | 该标志用于向用户指示是否已完成所有数据处理。 true表示所有数据处理已完成，应用不应再调用此接口；false表示数据处理尚未完成。 |
 
 **返回值：**
 
@@ -73,6 +75,8 @@ int32_t OH_AudioSuiteNodeBuilderSystem_SetNodeType(OH_AudioNodeBuilder* builder,
 **描述：**
 
 设置要由构建器创建的音频节点类型。
+
+<!--Device-int32_t OH_AudioSuiteNodeBuilderSystem_SetNodeType(OH_AudioNodeBuilder* builder, OH_AudioSuite_SystemNodeType type)--><!--Device-int32_t OH_AudioSuiteNodeBuilderSystem_SetNodeType(OH_AudioNodeBuilder* builder, OH_AudioSuite_SystemNodeType type)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -103,6 +107,8 @@ int32_t OH_AudioSuiteNodeBuilderSystem_SetFormat(OH_AudioNodeBuilder* builder, O
 
 设置节点支持的音频格式。
 
+<!--Device-int32_t OH_AudioSuiteNodeBuilderSystem_SetFormat(OH_AudioNodeBuilder* builder, OH_AudioSuite_SystemNodeFormat audioFormat)--><!--Device-int32_t OH_AudioSuiteNodeBuilderSystem_SetFormat(OH_AudioNodeBuilder* builder, OH_AudioSuite_SystemNodeFormat audioFormat)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 26.0.0
@@ -132,6 +138,8 @@ typedef int32_t (*OH_InputNode_RequestMetaDataCallback)(OH_AudioNode* audioNode,
 
 请求元数据的回调函数，仅[INPUT_NODE_TYPE_DEFAULT](capi-native-audio-suite-base-h.md#oh_audionode_type)支持此设置。 每当应用程序或用户调用[OH_AudioSuiteEngine_MetaRenderFrame](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_metarenderframe)时， 则会触发一次回调。
 
+<!--Device-typedef int32_t (*OH_InputNode_RequestMetaDataCallback)(OH_AudioNode* audioNode, void* userData, OH_AudioSuite_MetaFrame* metaFrame, int32_t* responseMetaDataSize, bool* finished)--><!--Device-typedef int32_t (*OH_InputNode_RequestMetaDataCallback)(OH_AudioNode* audioNode, void* userData, OH_AudioSuite_MetaFrame* metaFrame, int32_t* responseMetaDataSize, bool* finished)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 26.0.0
@@ -146,7 +154,7 @@ typedef int32_t (*OH_InputNode_RequestMetaDataCallback)(OH_AudioNode* audioNode,
 | void* userData | 由用户传递的用户数据指针。 |
 | [OH_AudioSuite_MetaFrame](capi-ohaudiosuite-oh-audiosuite-metaframe-sys.md)* metaFrame | 音频元数据帧结构体指针。 |
 | int32_t* responseMetaDataSize | 应用程序实际写入的元数据的大小，单位是字节(Byte)。 |
-| bool* finished | 此布尔值表示是否已成功写入所有音频数据。 |
+| bool* finished | 此布尔值表示是否已成功写入所有音频数据。 true表示所有音频数据已成功写入；false表示仍有音频数据待写入。 |
 
 **返回值：**
 
@@ -163,6 +171,8 @@ int32_t OH_AudioSuiteNodeBuilder_SetRequestMetaDataCallback(OH_AudioNodeBuilder*
 **描述：**
 
 配置当前输入节点构造器的写入音频数据和元数据回调函数。只有[INPUT_NODE_TYPE_DEFAULT](capi-native-audio-suite-base-h.md#oh_audionode_type)支持该设置。
+
+<!--Device-int32_t OH_AudioSuiteNodeBuilder_SetRequestMetaDataCallback(OH_AudioNodeBuilder* builder, OH_InputNode_RequestMetaDataCallback callback, void* userData)--><!--Device-int32_t OH_AudioSuiteNodeBuilder_SetRequestMetaDataCallback(OH_AudioNodeBuilder* builder, OH_InputNode_RequestMetaDataCallback callback, void* userData)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -194,6 +204,8 @@ int32_t OH_AudioSuiteEngineSystem_SetAudioFormat(OH_AudioNode* audioNode, OH_Aud
 
 设置输入输出节点的音频格式，指定音频源的音频格式输入节点，或为输出节点指定目标音频格式。
 
+<!--Device-int32_t OH_AudioSuiteEngineSystem_SetAudioFormat(OH_AudioNode* audioNode, OH_AudioSuite_SystemNodeFormat* audioFormat)--><!--Device-int32_t OH_AudioSuiteEngineSystem_SetAudioFormat(OH_AudioNode* audioNode, OH_AudioSuite_SystemNodeFormat* audioFormat)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 26.0.0
@@ -222,6 +234,8 @@ int32_t OH_AudioSuiteEngineSystem_SetNodeParam(OH_AudioNode* audioNode, uint8_t*
 **描述：**
 
 设置系统节点的参数。
+
+<!--Device-int32_t OH_AudioSuiteEngineSystem_SetNodeParam(OH_AudioNode* audioNode, uint8_t* param, uint32_t paramSize)--><!--Device-int32_t OH_AudioSuiteEngineSystem_SetNodeParam(OH_AudioNode* audioNode, uint8_t* param, uint32_t paramSize)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -253,6 +267,8 @@ int32_t OH_AudioSuiteEngineSystem_GetNodeParam(OH_AudioNode* audioNode, uint8_t*
 
 获取系统节点的参数。
 
+<!--Device-int32_t OH_AudioSuiteEngineSystem_GetNodeParam(OH_AudioNode* audioNode, uint8_t* param, uint32_t paramSize)--><!--Device-int32_t OH_AudioSuiteEngineSystem_GetNodeParam(OH_AudioNode* audioNode, uint8_t* param, uint32_t paramSize)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 26.0.0
@@ -282,6 +298,8 @@ int32_t OH_AudioSuiteEngineSystem_GetNodeInOutSize(OH_AudioNode* audioNode, uint
 **描述：**
 
 获取系统节点的输入和输出帧大小。
+
+<!--Device-int32_t OH_AudioSuiteEngineSystem_GetNodeInOutSize(OH_AudioNode* audioNode, uint32_t* inSize, uint32_t* outSize)--><!--Device-int32_t OH_AudioSuiteEngineSystem_GetNodeInOutSize(OH_AudioNode* audioNode, uint32_t* inSize, uint32_t* outSize)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 

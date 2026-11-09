@@ -8,11 +8,13 @@ struct OH_Filter_ColorMatrix {...}
 
 定义用于创建滤镜效果的矩阵，矩阵维度为4x5，元素类型为浮点数。
 
+<!--Device-struct OH_Filter_ColorMatrix {...}--><!--Device-struct OH_Filter_ColorMatrix {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 12
 
-**相关模块：** [effectKit](capi-others-effectkit.md)
+**相关模块：** [effectKit](capi-arkgraphics2d-effectkit.md)
 
 **所在头文件：** [effect_types.h](capi-effect-types-h.md)
 

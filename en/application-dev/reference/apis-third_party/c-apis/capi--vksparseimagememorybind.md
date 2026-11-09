@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSparseImageMemoryBind {...}--><!--Device-struct VkSparseImageMemoryBind {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -18,7 +18,7 @@ NODE_CHECKBOX_SELECT = MAX_NODE_SCOPE_NUM * ARKUI_NODE_CHECKBOX
 
 **描述：**
 
-CheckBox多选框是否选中，支持属性设置，属性重置和属性获取。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].i32: 1表示选中，0表示不选中。 </li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].i32: 1表示选中，0表示不选中。</li> </ul>
+CheckBox多选框是否选中，支持属性设置，属性重置和属性获取。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].i32: 1表示选中，0表示不选中。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].i32: 1表示选中，0表示不选中。</li> </ul>
 
 **起始版本：** 12
 
@@ -54,7 +54,7 @@ NODE_CHECKBOX_MARK
 
 **描述：**
 
-CheckBox多选框内部图标样式，支持属性设置，属性重置和属性获取。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].u32: 边框颜色，类型为0xARGB，如0xFF1122FF。</li><br> <li>.value[1]?.f32: 可选，内部图标大小，单位vp。</li> <li>.value[2]?.f32: 可选，内部图标粗细，单位vp，默认值2。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].u32: 边框颜色，类型为0xARGB，如0xFF1122FF。</li><br> <li>.value[1].f32: 内部图标大小，单位vp。</li> <br> <li>.value[2].f32: 内部图标粗细，单位vp，默认值2。</li> </ul>
+CheckBox多选框内部图标样式，支持属性设置，属性重置和属性获取。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].u32: 边框颜色，类型为0xARGB，如0xFF1122FF。</li> <li>.value[1]?.f32: 可选，内部图标大小，单位vp。</li> <li>.value[2]?.f32: 可选，内部图标粗细，单位vp，默认值2。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：** <ul> <li>.value[0].u32: 边框颜色，类型为0xARGB，如0xFF1122FF。</li> <li>.value[1].f32: 内部图标大小，单位vp。</li> <li>.value[2].f32: 内部图标粗细，单位vp，默认值2。</li> </ul>
 
 **起始版本：** 12
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkOpticalFlowImageFormatPropertiesNV {...}--><!--Device-struct VkOpticalFlowImageFormatPropertiesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

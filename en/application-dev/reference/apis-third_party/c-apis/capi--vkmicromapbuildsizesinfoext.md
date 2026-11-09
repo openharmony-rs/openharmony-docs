@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkMicromapBuildSizesInfoEXT {...}--><!--Device-struct VkMicromapBuildSizesInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct packet_mreq {...}--><!--Device-struct packet_mreq {...}-End-->
+
 ## Summary
 
 ### Member variables

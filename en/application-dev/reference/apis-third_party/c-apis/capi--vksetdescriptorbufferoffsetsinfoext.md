@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSetDescriptorBufferOffsetsInfoEXT {...}--><!--Device-struct VkSetDescriptorBufferOffsetsInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

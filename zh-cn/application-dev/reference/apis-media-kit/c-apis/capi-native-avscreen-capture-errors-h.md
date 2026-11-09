@@ -34,6 +34,8 @@ enum OH_AVSCREEN_CAPTURE_ErrCode
 
 屏幕录制过程中产生的不同结果码。
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **起始版本：** 10

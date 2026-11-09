@@ -8,11 +8,13 @@ struct OH_AudioStreamInfo {...}
 
 声明音频流信息结构体，该结构体用于表示音频基础格式，包括采样率、声道布局、编码格式和采样格式信息。
 
+<!--Device-struct OH_AudioStreamInfo {...}--><!--Device-struct OH_AudioStreamInfo {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 19
 
-**相关模块：** [OHAudio](capi-others-ohaudio.md)
+**相关模块：** [OHAudio](capi-audio-kit-ohaudio.md)
 
 **所在头文件：** [native_audiostream_base.h](capi-native-audiostream-base-h.md)
 

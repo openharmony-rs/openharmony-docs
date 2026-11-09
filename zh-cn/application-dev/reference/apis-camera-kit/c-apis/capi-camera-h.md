@@ -108,6 +108,8 @@ enum Camera_ErrorCode
 
 相机错误代码的枚举。
 
+<!--Device-Camera_ErrorCode--><!--Device-Camera_ErrorCode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
@@ -141,6 +143,8 @@ enum Camera_Status
 
 相机状态的枚举。
 
+<!--Device-Camera_Status--><!--Device-Camera_Status-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
@@ -162,6 +166,8 @@ enum Camera_SceneMode
 
 相机模式的枚举。
 
+<!--Device-Camera_SceneMode--><!--Device-Camera_SceneMode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
@@ -182,6 +188,8 @@ enum Camera_Position
 
 相机位置的枚举。
 
+<!--Device-Camera_Position--><!--Device-Camera_Position-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
@@ -201,6 +209,8 @@ enum OH_Camera_AutomotiveCameraPosition
 **描述：**
 
 Car设备摄像头位置的枚举。
+
+<!--Device-OH_Camera_AutomotiveCameraPosition--><!--Device-OH_Camera_AutomotiveCameraPosition-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -234,6 +244,8 @@ enum Camera_Type
 
 相机类型的枚举。
 
+<!--Device-Camera_Type--><!--Device-Camera_Type-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
@@ -256,6 +268,8 @@ enum Camera_Connection
 
 相机连接类型的枚举。
 
+<!--Device-Camera_Connection--><!--Device-Camera_Connection-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
@@ -275,6 +289,8 @@ enum OH_Camera_SensorColorFilterArrangement
 **描述：**
 
 传感器滤色阵列排列方式。
+
+<!--Device-OH_Camera_SensorColorFilterArrangement--><!--Device-OH_Camera_SensorColorFilterArrangement-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -296,6 +312,8 @@ enum Camera_Format
 **描述：**
 
 相机格式类型的枚举。
+
+<!--Device-Camera_Format--><!--Device-Camera_Format-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -322,6 +340,8 @@ enum Camera_FlashMode
 
 闪光模式的枚举。
 
+<!--Device-Camera_FlashMode--><!--Device-Camera_FlashMode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
@@ -343,6 +363,8 @@ enum OH_Camera_FlashState
 
 闪光灯状态枚举。
 
+<!--Device-OH_Camera_FlashState--><!--Device-OH_Camera_FlashState-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 24
@@ -362,6 +384,8 @@ enum Camera_ExposureMode
 **描述：**
 
 曝光模式的枚举。
+
+<!--Device-Camera_ExposureMode--><!--Device-Camera_ExposureMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -385,6 +409,8 @@ enum OH_Camera_ExposureMeteringMode
 
 曝光测光模式枚举。
 
+<!--Device-OH_Camera_ExposureMeteringMode--><!--Device-OH_Camera_ExposureMeteringMode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 24
@@ -405,6 +431,8 @@ enum OH_Camera_ExposureState
 
 枚举相机曝光状态。
 
+<!--Device-OH_Camera_ExposureState--><!--Device-OH_Camera_ExposureState-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
@@ -423,6 +451,8 @@ enum Camera_WhiteBalanceMode
 **描述：**
 
 白平衡模式枚举。
+
+<!--Device-Camera_WhiteBalanceMode--><!--Device-Camera_WhiteBalanceMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -448,6 +478,8 @@ enum Camera_FocusMode
 
 聚焦模式的枚举。
 
+<!--Device-Camera_FocusMode--><!--Device-Camera_FocusMode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
@@ -469,6 +501,8 @@ enum Camera_FocusState
 
 焦点状态的枚举。
 
+<!--Device-Camera_FocusState--><!--Device-Camera_FocusState-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
@@ -488,6 +522,8 @@ enum Camera_VideoStabilizationMode
 **描述：**
 
 录像防抖模式的枚举。
+
+<!--Device-Camera_VideoStabilizationMode--><!--Device-Camera_VideoStabilizationMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -510,6 +546,8 @@ enum Camera_ImageRotation
 **描述：**
 
 图像旋转角度的枚举。
+
+<!--Device-Camera_ImageRotation--><!--Device-Camera_ImageRotation-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -536,6 +574,8 @@ enum Camera_QualityLevel
 
 图像质量等级的枚举。
 
+<!--Device-Camera_QualityLevel--><!--Device-Camera_QualityLevel-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
@@ -555,6 +595,8 @@ enum Camera_MetadataObjectType
 **描述：**
 
 元数据对象类型的枚举。
+
+<!--Device-Camera_MetadataObjectType--><!--Device-Camera_MetadataObjectType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -583,6 +625,8 @@ enum Camera_TorchMode
 
 手电筒模式的枚举。
 
+<!--Device-Camera_TorchMode--><!--Device-Camera_TorchMode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
@@ -606,6 +650,8 @@ enum Camera_SmoothZoomMode
 
 平滑变焦模式的枚举。
 
+<!--Device-Camera_SmoothZoomMode--><!--Device-Camera_SmoothZoomMode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
@@ -624,6 +670,8 @@ enum Camera_PreconfigType
 **描述：**
 
 预配置照片分辨率的枚举。
+
+<!--Device-Camera_PreconfigType--><!--Device-Camera_PreconfigType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -647,6 +695,8 @@ enum Camera_PreconfigRatio
 
 预配置照片比例的枚举。
 
+<!--Device-Camera_PreconfigRatio--><!--Device-Camera_PreconfigRatio-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
@@ -666,6 +716,8 @@ enum Camera_HostDeviceType
 **描述：**
 
 远程设备类型枚举。
+
+<!--Device-Camera_HostDeviceType--><!--Device-Camera_HostDeviceType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -687,6 +739,8 @@ enum Camera_FoldStatus
 **描述：**
 
 折叠状态枚举。
+
+<!--Device-Camera_FoldStatus--><!--Device-Camera_FoldStatus-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -711,6 +765,8 @@ enum Camera_QualityPrioritization
 
 录像质量优先级的枚举。
 
+<!--Device-Camera_QualityPrioritization--><!--Device-Camera_QualityPrioritization-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 14
@@ -729,6 +785,8 @@ enum OH_Camera_AuxiliaryPhotoType
 **描述：**
 
 辅助图类型的枚举。在用于拍摄皮肤健康评估的辅助图时，使用该枚举类型来指定检测目标。
+
+<!--Device-OH_Camera_AuxiliaryPhotoType--><!--Device-OH_Camera_AuxiliaryPhotoType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -749,6 +807,8 @@ enum Camera_ConcurrentType
 
 相机并发状态的枚举。
 
+<!--Device-Camera_ConcurrentType--><!--Device-Camera_ConcurrentType-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 18
@@ -767,6 +827,8 @@ enum Camera_SystemPressureLevel
 **描述：**
 
 系统压力等级的枚举。
+
+<!--Device-Camera_SystemPressureLevel--><!--Device-Camera_SystemPressureLevel-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -790,6 +852,8 @@ enum Camera_PhotoQualityPrioritization
 
 拍照画质优先策略枚举。
 
+<!--Device-Camera_PhotoQualityPrioritization--><!--Device-Camera_PhotoQualityPrioritization-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
@@ -808,6 +872,8 @@ enum Camera_ControlCenterEffectType
 **描述：**
 
 控制器效果类型枚举。
+
+<!--Device-Camera_ControlCenterEffectType--><!--Device-Camera_ControlCenterEffectType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -830,6 +896,8 @@ enum OH_Camera_OISMode
 
 光学防抖（Optical Image Stabilization）模式枚举。
 
+<!--Device-OH_Camera_OISMode--><!--Device-OH_Camera_OISMode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 24
@@ -850,6 +918,8 @@ enum OH_Camera_OISAxes
 
 光学防抖（OIS）轴枚举。
 
+<!--Device-OH_Camera_OISAxes--><!--Device-OH_Camera_OISAxes-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 24
@@ -868,6 +938,8 @@ enum OH_Camera_MetadataObjectEmotion
 **描述：**
 
 元数据对象情绪类型枚举。
+
+<!--Device-OH_Camera_MetadataObjectEmotion--><!--Device-OH_Camera_MetadataObjectEmotion-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -892,6 +964,8 @@ Camera_ErrorCode OH_Camera_GetCameraManager(Camera_Manager** cameraManager)
 **描述：**
 
 创建CameraManager实例。
+
+<!--Device-Camera_ErrorCode OH_Camera_GetCameraManager(Camera_Manager** cameraManager)--><!--Device-Camera_ErrorCode OH_Camera_GetCameraManager(Camera_Manager** cameraManager)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -918,6 +992,8 @@ Camera_ErrorCode OH_Camera_DeleteCameraManager(Camera_Manager* cameraManager)
 **描述：**
 
 删除CameraManager实例。
+
+<!--Device-Camera_ErrorCode OH_Camera_DeleteCameraManager(Camera_Manager* cameraManager)--><!--Device-Camera_ErrorCode OH_Camera_DeleteCameraManager(Camera_Manager* cameraManager)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

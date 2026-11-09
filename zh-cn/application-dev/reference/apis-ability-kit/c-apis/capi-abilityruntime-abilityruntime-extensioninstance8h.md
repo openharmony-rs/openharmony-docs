@@ -8,11 +8,13 @@ typedef struct AbilityRuntime_ExtensionInstance* AbilityRuntime_ExtensionInstanc
 
 定义AbilityRuntime_ExtensionInstance对象指针。
 
+<!--Device-typedef struct AbilityRuntime_ExtensionInstance* AbilityRuntime_ExtensionInstanceHandle--><!--Device-typedef struct AbilityRuntime_ExtensionInstance* AbilityRuntime_ExtensionInstanceHandle-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 24
 
-**相关模块：** [AbilityRuntime](capi-others-abilityruntime.md)
+**相关模块：** [AbilityRuntime](capi-ability-kit-abilityruntime.md)
 
 **所在头文件：** [extension_ability.h](capi-extension-ability-h.md)
 

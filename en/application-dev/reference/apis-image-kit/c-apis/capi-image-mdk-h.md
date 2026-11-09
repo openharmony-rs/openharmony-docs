@@ -52,6 +52,8 @@ enum anonymous0
 
 Enumerates the image formats.
 
+<!--Device-anonymous0--><!--Device-anonymous0-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
@@ -70,6 +72,8 @@ enum anonymous1
 **Description**
 
 Enumerates the image components.
+
+<!--Device-anonymous1--><!--Device-anonymous1-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -94,6 +98,8 @@ ImageNative* OH_Image_InitImageNative(napi_env env, napi_value source)
 **Description**
 
 Parses an [ImageNative](capi-image-imagenative-.md) object at the native layer from a JavaScript native API <b>image </b> object.
+
+<!--Device-ImageNative* OH_Image_InitImageNative(napi_env env, napi_value source)--><!--Device-ImageNative* OH_Image_InitImageNative(napi_env env, napi_value source)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -127,6 +133,8 @@ int32_t OH_Image_ClipRect(const ImageNative* native, struct OhosImageRect* rect)
 
 Obtains [OhosImageRect](capi-image-ohosimagerect.md) of an [ImageNative](capi-image-imagenative-.md) at the native layer.
 
+<!--Device-int32_t OH_Image_ClipRect(const ImageNative* native, struct OhosImageRect* rect)--><!--Device-int32_t OH_Image_ClipRect(const ImageNative* native, struct OhosImageRect* rect)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
@@ -158,6 +166,8 @@ int32_t OH_Image_Size(const ImageNative* native, struct OhosImageSize* size)
 **Description**
 
 Obtains [OhosImageSize](capi-image-ohosimagesize.md) of an [ImageNative](capi-image-imagenative-.md) object at the native layer.
+
+<!--Device-int32_t OH_Image_Size(const ImageNative* native, struct OhosImageSize* size)--><!--Device-int32_t OH_Image_Size(const ImageNative* native, struct OhosImageSize* size)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -191,6 +201,8 @@ int32_t OH_Image_Format(const ImageNative* native, int32_t* format)
 
 Obtains the image format of an [ImageNative](capi-image-imagenative-.md) object at the native layer.
 
+<!--Device-int32_t OH_Image_Format(const ImageNative* native, int32_t* format)--><!--Device-int32_t OH_Image_Format(const ImageNative* native, int32_t* format)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
@@ -222,6 +234,8 @@ int32_t OH_Image_GetComponent(const ImageNative* native, int32_t componentType, 
 **Description**
 
 Obtains [OhosImageComponent](capi-image-ohosimagecomponent.md) of an [ImageNative](capi-image-imagenative-.md) object at the native layer.
+
+<!--Device-int32_t OH_Image_GetComponent(const ImageNative* native, int32_t componentType, struct OhosImageComponent* componentNative)--><!--Device-int32_t OH_Image_GetComponent(const ImageNative* native, int32_t componentType, struct OhosImageComponent* componentNative)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -255,6 +269,8 @@ int32_t OH_Image_Release(ImageNative* native)
 **Description**
 
 Releases an [ImageNative](capi-image-imagenative-.md) object at the native layer. Note: This API is not used to release a JavaScript native API <b>Image</b> object. It is used to release the object [ImageNative](capi-image-imagenative-.md) at the native layer parsed by calling [OH_Image_InitImageNative](capi-image-mdk-h.md#oh_image_initimagenative).
+
+<!--Device-int32_t OH_Image_Release(ImageNative* native)--><!--Device-int32_t OH_Image_Release(ImageNative* native)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 

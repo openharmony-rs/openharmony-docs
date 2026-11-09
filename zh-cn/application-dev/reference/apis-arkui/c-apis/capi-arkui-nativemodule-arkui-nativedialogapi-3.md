@@ -8,11 +8,13 @@ typedef struct ArkUI_NativeDialogAPI_3 {...} ArkUI_NativeDialogAPI_3
 
 ArkUI提供的Native侧自定义弹窗接口集合，支持设置边框样式、尺寸、背景效果、键盘避让模式、焦点管理等能力，用于在Native层精细控制自定义弹窗的外观样式和交互行为，适用于需要高度定制化弹窗UI的场景。
 
+<!--Device-typedef struct ArkUI_NativeDialogAPI_3 {...} ArkUI_NativeDialogAPI_3--><!--Device-typedef struct ArkUI_NativeDialogAPI_3 {...} ArkUI_NativeDialogAPI_3-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [native_dialog.h](capi-native-dialog-h.md)
 
@@ -66,6 +68,8 @@ int32_t (*setLevelOrder)(ArkUI_NativeDialogHandle handle, double levelOrder)
 >
 > setLevelOrder方法需要在调用show之前调用。
 
+<!--Device-int32_t (*setLevelOrder)(ArkUI_NativeDialogHandle handle, double levelOrder)--><!--Device-int32_t (*setLevelOrder)(ArkUI_NativeDialogHandle handle, double levelOrder)-End-->
+
 **起始版本：** 19
 
 **参数：**
@@ -90,6 +94,8 @@ int32_t (*registerOnWillAppear)(ArkUI_NativeDialogHandle handle, void* userData,
 **描述：**
 
 注册自定义弹窗显示之前的回调函数。
+
+<!--Device-int32_t (*registerOnWillAppear)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(void* userData))--><!--Device-int32_t (*registerOnWillAppear)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(void* userData))-End-->
 
 **起始版本：** 19
 
@@ -117,6 +123,8 @@ int32_t (*registerOnDidAppear)(ArkUI_NativeDialogHandle handle, void* userData, 
 
 注册自定义弹窗显示之后的回调函数。
 
+<!--Device-int32_t (*registerOnDidAppear)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(void* userData))--><!--Device-int32_t (*registerOnDidAppear)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(void* userData))-End-->
+
 **起始版本：** 19
 
 **参数：**
@@ -143,6 +151,8 @@ int32_t (*registerOnWillDisappear)(ArkUI_NativeDialogHandle handle, void* userDa
 
 注册自定义弹窗关闭之前的回调函数。
 
+<!--Device-int32_t (*registerOnWillDisappear)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(void* userData))--><!--Device-int32_t (*registerOnWillDisappear)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(void* userData))-End-->
+
 **起始版本：** 19
 
 **参数：**
@@ -168,6 +178,8 @@ int32_t (*registerOnDidDisappear)(ArkUI_NativeDialogHandle handle, void* userDat
 **描述：**
 
 注册自定义弹窗关闭之后的回调函数。
+
+<!--Device-int32_t (*registerOnDidDisappear)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(void* userData))--><!--Device-int32_t (*registerOnDidDisappear)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(void* userData))-End-->
 
 **起始版本：** 19
 
@@ -198,6 +210,8 @@ int32_t (*setBorderWidth)(ArkUI_NativeDialogHandle handle, float top, float righ
 > **说明：**
 >
 > setBorderWidth方法需要在调用show之前调用。
+
+<!--Device-int32_t (*setBorderWidth)(ArkUI_NativeDialogHandle handle, float top, float right, float bottom, float left, ArkUI_LengthMetricUnit unit)--><!--Device-int32_t (*setBorderWidth)(ArkUI_NativeDialogHandle handle, float top, float right, float bottom, float left, ArkUI_LengthMetricUnit unit)-End-->
 
 **起始版本：** 19
 
@@ -232,6 +246,8 @@ int32_t (*setBorderColor)(ArkUI_NativeDialogHandle handle, uint32_t top, uint32_
 >
 > setBorderColor方法需要在调用show之前调用。
 
+<!--Device-int32_t (*setBorderColor)(ArkUI_NativeDialogHandle handle, uint32_t top, uint32_t right, uint32_t bottom, uint32_t left)--><!--Device-int32_t (*setBorderColor)(ArkUI_NativeDialogHandle handle, uint32_t top, uint32_t right, uint32_t bottom, uint32_t left)-End-->
+
 **起始版本：** 19
 
 **参数：**
@@ -263,6 +279,8 @@ int32_t (*setBorderStyle)(ArkUI_NativeDialogHandle handle, int32_t top, int32_t 
 > **说明：**
 >
 > setBorderStyle方法需要在调用show之前调用。
+
+<!--Device-int32_t (*setBorderStyle)(ArkUI_NativeDialogHandle handle, int32_t top, int32_t right, int32_t bottom, int32_t left)--><!--Device-int32_t (*setBorderStyle)(ArkUI_NativeDialogHandle handle, int32_t top, int32_t right, int32_t bottom, int32_t left)-End-->
 
 **起始版本：** 19
 
@@ -296,6 +314,8 @@ int32_t (*setWidth)(ArkUI_NativeDialogHandle handle, float width, ArkUI_LengthMe
 >
 > setWidth方法需要在调用show之前调用。
 
+<!--Device-int32_t (*setWidth)(ArkUI_NativeDialogHandle handle, float width, ArkUI_LengthMetricUnit unit)--><!--Device-int32_t (*setWidth)(ArkUI_NativeDialogHandle handle, float width, ArkUI_LengthMetricUnit unit)-End-->
+
 **起始版本：** 19
 
 **参数：**
@@ -325,6 +345,8 @@ int32_t (*setHeight)(ArkUI_NativeDialogHandle handle, float height, ArkUI_Length
 > **说明：**
 >
 > setHeight方法需要在调用show之前调用。
+
+<!--Device-int32_t (*setHeight)(ArkUI_NativeDialogHandle handle, float height, ArkUI_LengthMetricUnit unit)--><!--Device-int32_t (*setHeight)(ArkUI_NativeDialogHandle handle, float height, ArkUI_LengthMetricUnit unit)-End-->
 
 **起始版本：** 19
 
@@ -356,6 +378,8 @@ int32_t (*setShadow)(ArkUI_NativeDialogHandle handle, ArkUI_ShadowStyle shadow)
 >
 > setShadow方法需要在调用show之前调用。
 
+<!--Device-int32_t (*setShadow)(ArkUI_NativeDialogHandle handle, ArkUI_ShadowStyle shadow)--><!--Device-int32_t (*setShadow)(ArkUI_NativeDialogHandle handle, ArkUI_ShadowStyle shadow)-End-->
+
 **起始版本：** 19
 
 **参数：**
@@ -384,6 +408,8 @@ int32_t (*setCustomShadow)(ArkUI_NativeDialogHandle handle, const ArkUI_Attribut
 > **说明：**
 >
 > setCustomShadow方法需要在调用show之前调用。
+
+<!--Device-int32_t (*setCustomShadow)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* customShadow)--><!--Device-int32_t (*setCustomShadow)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* customShadow)-End-->
 
 **起始版本：** 19
 
@@ -414,6 +440,8 @@ int32_t (*setBackgroundBlurStyle)(ArkUI_NativeDialogHandle handle, ArkUI_BlurSty
 >
 > setBackgroundBlurStyle方法需要在调用show之前调用。
 
+<!--Device-int32_t (*setBackgroundBlurStyle)(ArkUI_NativeDialogHandle handle, ArkUI_BlurStyle blurStyle)--><!--Device-int32_t (*setBackgroundBlurStyle)(ArkUI_NativeDialogHandle handle, ArkUI_BlurStyle blurStyle)-End-->
+
 **起始版本：** 19
 
 **参数：**
@@ -442,6 +470,8 @@ int32_t (*setKeyboardAvoidMode)(ArkUI_NativeDialogHandle handle, ArkUI_KeyboardA
 > **说明：**
 >
 > setKeyboardAvoidMode方法需要在调用show之前调用。
+
+<!--Device-int32_t (*setKeyboardAvoidMode)(ArkUI_NativeDialogHandle handle, ArkUI_KeyboardAvoidMode keyboardAvoidMode)--><!--Device-int32_t (*setKeyboardAvoidMode)(ArkUI_NativeDialogHandle handle, ArkUI_KeyboardAvoidMode keyboardAvoidMode)-End-->
 
 **起始版本：** 19
 
@@ -472,6 +502,8 @@ int32_t (*enableHoverMode)(ArkUI_NativeDialogHandle handle, bool enableHoverMode
 >
 > enableHoverMode方法需要在调用show之前调用。
 
+<!--Device-int32_t (*enableHoverMode)(ArkUI_NativeDialogHandle handle, bool enableHoverMode)--><!--Device-int32_t (*enableHoverMode)(ArkUI_NativeDialogHandle handle, bool enableHoverMode)-End-->
+
 **起始版本：** 19
 
 **参数：**
@@ -500,6 +532,8 @@ int32_t (*setHoverModeArea)(ArkUI_NativeDialogHandle handle, ArkUI_HoverModeArea
 > **说明：**
 >
 > setHoverModeArea方法需要在调用show之前调用。
+
+<!--Device-int32_t (*setHoverModeArea)(ArkUI_NativeDialogHandle handle, ArkUI_HoverModeAreaType hoverModeAreaType)--><!--Device-int32_t (*setHoverModeArea)(ArkUI_NativeDialogHandle handle, ArkUI_HoverModeAreaType hoverModeAreaType)-End-->
 
 **起始版本：** 19
 
@@ -530,6 +564,8 @@ int32_t (*setFocusable)(ArkUI_NativeDialogHandle handle, bool focusable)
 >
 > setFocusable方法需要在调用show之前调用。
 
+<!--Device-int32_t (*setFocusable)(ArkUI_NativeDialogHandle handle, bool focusable)--><!--Device-int32_t (*setFocusable)(ArkUI_NativeDialogHandle handle, bool focusable)-End-->
+
 **起始版本：** 19
 
 **参数：**
@@ -559,6 +595,8 @@ int32_t (*setBackgroundBlurStyleOptions)(ArkUI_NativeDialogHandle handle, const 
 >
 > setBackgroundBlurStyleOptions方法需要在调用show之前调用。
 
+<!--Device-int32_t (*setBackgroundBlurStyleOptions)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* backgroundBlurStyleOptions)--><!--Device-int32_t (*setBackgroundBlurStyleOptions)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* backgroundBlurStyleOptions)-End-->
+
 **起始版本：** 19
 
 **参数：**
@@ -587,6 +625,8 @@ int32_t (*setBackgroundEffect)(ArkUI_NativeDialogHandle handle, const ArkUI_Attr
 > **说明：**
 >
 > setBackgroundEffect方法需要在调用show之前调用。
+
+<!--Device-int32_t (*setBackgroundEffect)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* backgroundEffect)--><!--Device-int32_t (*setBackgroundEffect)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* backgroundEffect)-End-->
 
 **起始版本：** 19
 

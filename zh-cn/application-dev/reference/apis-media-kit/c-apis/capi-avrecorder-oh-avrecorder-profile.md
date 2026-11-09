@@ -10,11 +10,13 @@ struct OH_AVRecorder_Profile {...}
 1. 当 audioBitrate 或 audioChannels 为 0 时，不录制音频。<br>
 2. 当 videoFrameWidth 或 videoFrameHeight 为 0 时，不录制视频。<br><br> 各参数的范围请参见[AVRecorderProfile](arkts-apis-media-i.md#avrecorderprofile9)。
 
+<!--Device-struct OH_AVRecorder_Profile {...}--><!--Device-struct OH_AVRecorder_Profile {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
 **起始版本：** 18
 
-**相关模块：** [AVRecorder](capi-others-avrecorder.md)
+**相关模块：** [AVRecorder](capi-media-kit-avrecorder.md)
 
 **所在头文件：** [avrecorder_base.h](capi-avrecorder-base-h.md)
 

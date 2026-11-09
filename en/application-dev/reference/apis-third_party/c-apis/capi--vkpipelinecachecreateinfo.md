@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineCacheCreateInfo {...}--><!--Device-struct VkPipelineCacheCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

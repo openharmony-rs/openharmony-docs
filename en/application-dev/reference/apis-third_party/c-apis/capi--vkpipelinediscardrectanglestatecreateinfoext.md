@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineDiscardRectangleStateCreateInfoEXT {...}--><!--Device-struct VkPipelineDiscardRectangleStateCreateInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

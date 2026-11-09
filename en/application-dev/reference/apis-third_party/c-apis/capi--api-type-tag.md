@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct api_type_tag {...}--><!--Device-struct api_type_tag {...}-End-->
+
 ## Summary
 
 ### Member variables

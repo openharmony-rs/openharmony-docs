@@ -8,11 +8,13 @@ struct NetConn_TraceRouteOption {...}
 
 Defines the network trace route options.
 
+<!--Device-struct NetConn_TraceRouteOption {...}--><!--Device-struct NetConn_TraceRouteOption {...}-End-->
+
 **System capability**: SystemCapability.Communication.NetManager.Core
 
 **Since**: 20
 
-**Related module**: [NetConnection](capi-others-netconnection.md)
+**Related module**: [NetConnection](capi-network-kit-netconnection.md)
 
 **Header file**: [net_connection_type.h](capi-net-connection-type-h.md)
 

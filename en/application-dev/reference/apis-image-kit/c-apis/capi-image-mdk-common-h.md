@@ -38,6 +38,8 @@ enum IRNdkErrCode
 
 Enumerates the return values that may be used by the interface.
 
+<!--Device-IRNdkErrCode--><!--Device-IRNdkErrCode-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10

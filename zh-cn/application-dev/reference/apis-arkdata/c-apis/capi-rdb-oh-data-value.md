@@ -8,11 +8,13 @@ typedef struct OH_Data_Value OH_Data_Value
 
 OH_Data_Value结构类型，用于存储单条数据值。
 
+<!--Device-typedef struct OH_Data_Value OH_Data_Value--><!--Device-typedef struct OH_Data_Value OH_Data_Value-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
 
-**相关模块：** [RDB](capi-others-rdb.md)
+**相关模块：** [RDB](capi-arkdata-rdb.md)
 
 **所在头文件：** [oh_data_value.h](capi-oh-data-value-h.md)
 

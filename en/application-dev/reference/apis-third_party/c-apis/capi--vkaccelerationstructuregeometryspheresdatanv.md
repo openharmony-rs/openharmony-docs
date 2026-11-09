@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkAccelerationStructureGeometrySpheresDataNV {...}--><!--Device-struct VkAccelerationStructureGeometrySpheresDataNV {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -55,6 +55,8 @@ enum NativeDisplayManager_Rotation
 
 屏幕顺时针的旋转角度。
 
+<!--Device-NativeDisplayManager_Rotation--><!--Device-NativeDisplayManager_Rotation-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 12
@@ -75,6 +77,8 @@ enum NativeDisplayManager_Orientation
 **描述：**
 
 屏幕的旋转方向。
+
+<!--Device-NativeDisplayManager_Orientation--><!--Device-NativeDisplayManager_Orientation-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -97,6 +101,8 @@ enum NativeDisplayManager_ErrorCode
 **描述：**
 
 屏幕管理接口返回状态码枚举。
+
+<!--Device-NativeDisplayManager_ErrorCode--><!--Device-NativeDisplayManager_ErrorCode-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -124,6 +130,8 @@ enum NativeDisplayManager_FoldDisplayMode
 
 可折叠设备的显示模式枚举。
 
+<!--Device-NativeDisplayManager_FoldDisplayMode--><!--Device-NativeDisplayManager_FoldDisplayMode-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 12
@@ -145,6 +153,8 @@ enum NativeDisplayManager_DisplayState
 **描述：**
 
 显示设备的状态枚举。
+
+<!--Device-NativeDisplayManager_DisplayState--><!--Device-NativeDisplayManager_DisplayState-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -169,6 +179,8 @@ enum NativeDisplayManager_SourceMode
 **描述：**
 
 设备的显示模式枚举。
+
+<!--Device-NativeDisplayManager_SourceMode--><!--Device-NativeDisplayManager_SourceMode-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

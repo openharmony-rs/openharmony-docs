@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineRasterizationDepthClipStateCreateInfoEXT {...}--><!--Device-struct VkPipelineRasterizationDepthClipStateCreateInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

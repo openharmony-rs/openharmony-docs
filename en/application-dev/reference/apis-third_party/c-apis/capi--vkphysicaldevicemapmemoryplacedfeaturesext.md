@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceMapMemoryPlacedFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceMapMemoryPlacedFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

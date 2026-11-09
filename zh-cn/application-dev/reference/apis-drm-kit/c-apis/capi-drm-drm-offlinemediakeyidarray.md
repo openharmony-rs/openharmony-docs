@@ -8,11 +8,13 @@ struct DRM_OfflineMediakeyIdArray {...}
 
 离线媒体密钥ID数组。
 
+<!--Device-struct DRM_OfflineMediakeyIdArray {...}--><!--Device-struct DRM_OfflineMediakeyIdArray {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **起始版本：** 11
 
-**相关模块：** [Drm](capi-others-drm.md)
+**相关模块：** [Drm](capi-drm-kit-drm.md)
 
 **所在头文件：** [native_drm_common.h](capi-native-drm-common-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct dphdr {...}--><!--Device-struct dphdr {...}-End-->
+
 ## Summary
 
 ### Member variables

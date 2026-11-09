@@ -8,11 +8,13 @@ typedef struct ArkUI_TranslationOptions {...} ArkUI_TranslationOptions
 
 Defines the translation options for component transition, used to set the translation distance of a component in the x, y, and z directions during the transition.
 
+<!--Device-typedef struct ArkUI_TranslationOptions {...} ArkUI_TranslationOptions--><!--Device-typedef struct ArkUI_TranslationOptions {...} ArkUI_TranslationOptions-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_type_visual.h](capi-native-type-visual-h.md)
 

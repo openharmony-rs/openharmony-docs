@@ -8,11 +8,13 @@ struct DateTimeRule {...}
 
 Defines the date and time rules to specify a date and time.
 
+<!--Device-struct DateTimeRule {...}--><!--Device-struct DateTimeRule {...}-End-->
+
 **System capability**: SystemCapability.Global.I18n
 
 **Since**: 22
 
-**Related module**: [i18n](capi-others-i18n.md)
+**Related module**: [i18n](capi-localization-kit-i18n.md)
 
 **Header file**: [timezone.h](capi-timezone-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct gz_header_s {...}--><!--Device-struct gz_header_s {...}-End-->
+
 ## Summary
 
 ### Member variables

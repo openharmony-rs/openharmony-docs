@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceSurfaceInfo2KHR {...}--><!--Device-struct VkPhysicalDeviceSurfaceInfo2KHR {...}-End-->
+
 ## Summary
 
 ### Member variables

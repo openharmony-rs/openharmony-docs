@@ -55,6 +55,8 @@ enum CryptoSm2CiphertextSpec_item
 
 Defines SM2 ciphertext specification item types.
 
+<!--Device-CryptoSm2CiphertextSpec_item--><!--Device-CryptoSm2CiphertextSpec_item-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -78,6 +80,8 @@ OH_Crypto_ErrCode OH_CryptoAsymCipher_Create(const char *algoName, OH_CryptoAsym
 **Description**
 
 Creates an asymmetric cipher context based on the given algorithm name.
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoAsymCipher_Create(const char *algoName, OH_CryptoAsymCipher **ctx)--><!--Device-OH_Crypto_ErrCode OH_CryptoAsymCipher_Create(const char *algoName, OH_CryptoAsymCipher **ctx)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -113,6 +117,8 @@ OH_Crypto_ErrCode OH_CryptoAsymCipher_Init(OH_CryptoAsymCipher *ctx, Crypto_Ciph
 
 Initializes the asymmetric cipher context with the given cipher mode and key.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoAsymCipher_Init(OH_CryptoAsymCipher *ctx, Crypto_CipherMode mode, OH_CryptoKeyPair *key)--><!--Device-OH_Crypto_ErrCode OH_CryptoAsymCipher_Init(OH_CryptoAsymCipher *ctx, Crypto_CipherMode mode, OH_CryptoKeyPair *key)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -146,6 +152,8 @@ OH_Crypto_ErrCode OH_CryptoAsymCipher_Final(OH_CryptoAsymCipher *ctx, const Cryp
 
 Finishes the cipher operation.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoAsymCipher_Final(OH_CryptoAsymCipher *ctx, const Crypto_DataBlob *in, Crypto_DataBlob *out)--><!--Device-OH_Crypto_ErrCode OH_CryptoAsymCipher_Final(OH_CryptoAsymCipher *ctx, const Crypto_DataBlob *in, Crypto_DataBlob *out)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -176,6 +184,8 @@ void OH_CryptoAsymCipher_Destroy(OH_CryptoAsymCipher *ctx)
 
 Destroys the asymmetric cipher context.
 
+<!--Device-void OH_CryptoAsymCipher_Destroy(OH_CryptoAsymCipher *ctx)--><!--Device-void OH_CryptoAsymCipher_Destroy(OH_CryptoAsymCipher *ctx)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -195,6 +205,8 @@ OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Create(Crypto_DataBlob *sm2Cipherte
 **Description**
 
 Creates an SM2 ciphertext specification.
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Create(Crypto_DataBlob *sm2Ciphertext, OH_CryptoSm2CiphertextSpec **spec)--><!--Device-OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Create(Crypto_DataBlob *sm2Ciphertext, OH_CryptoSm2CiphertextSpec **spec)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -231,6 +243,8 @@ OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_GetItem(OH_CryptoSm2CiphertextSpec 
 
 Obtains the specified item of the SM2 ciphertext.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_GetItem(OH_CryptoSm2CiphertextSpec *spec, CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *out)--><!--Device-OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_GetItem(OH_CryptoSm2CiphertextSpec *spec, CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *out)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -260,6 +274,8 @@ OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_SetItem(OH_CryptoSm2CiphertextSpec 
 **Description**
 
 Sets the specified item of the SM2 ciphertext specification.
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_SetItem(OH_CryptoSm2CiphertextSpec *spec, CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *in)--><!--Device-OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_SetItem(OH_CryptoSm2CiphertextSpec *spec, CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *in)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -294,6 +310,8 @@ OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Encode(OH_CryptoSm2CiphertextSpec *
 
 Encodes the SM2 ciphertext specification to DER format ciphertext.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Encode(OH_CryptoSm2CiphertextSpec *spec, Crypto_DataBlob *out)--><!--Device-OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Encode(OH_CryptoSm2CiphertextSpec *spec, Crypto_DataBlob *out)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -322,6 +340,8 @@ void OH_CryptoSm2CiphertextSpec_Destroy(OH_CryptoSm2CiphertextSpec *spec)
 **Description**
 
 Destroys the SM2 ciphertext specification.
+
+<!--Device-void OH_CryptoSm2CiphertextSpec_Destroy(OH_CryptoSm2CiphertextSpec *spec)--><!--Device-void OH_CryptoSm2CiphertextSpec_Destroy(OH_CryptoSm2CiphertextSpec *spec)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 

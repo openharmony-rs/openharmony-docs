@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDeviceGroupCommandBufferBeginInfo {...}--><!--Device-struct VkDeviceGroupCommandBufferBeginInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

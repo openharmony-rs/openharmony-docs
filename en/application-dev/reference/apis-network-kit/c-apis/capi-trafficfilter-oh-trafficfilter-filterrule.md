@@ -16,11 +16,13 @@ Packet filter rule<br> Defines conditions for matching packets.
 - If `size` < `sizeof(OH_TrafficFilter_FilterRule)`, the implementation treats it as an older version and reads only the prefix fields compatible with that size.
 - If `size` is 0 or the pointer is NULL, the implementation must return an error.
 
+<!--Device-struct OH_TrafficFilter_FilterRule {...}--><!--Device-struct OH_TrafficFilter_FilterRule {...}-End-->
+
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Since**: 26.0.1
 
-**Related module**: [TrafficFilter](capi-others-trafficfilter.md)
+**Related module**: [TrafficFilter](capi-network-kit-trafficfilter.md)
 
 **Header file**: [net_trafficfilter_type.h](capi-net-trafficfilter-type-h.md)
 

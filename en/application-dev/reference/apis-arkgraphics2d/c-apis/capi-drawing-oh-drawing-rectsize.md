@@ -8,11 +8,13 @@ struct OH_Drawing_RectSize {...}
 
 Defines a text rectangle structure.
 
+<!--Device-struct OH_Drawing_RectSize {...}--><!--Device-struct OH_Drawing_RectSize {...}-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 24
 
-**Related module**: [Drawing](capi-others-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 **Header file**: [drawing_text_typography.h](capi-drawing-text-typography-h.md)
 

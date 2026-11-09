@@ -8,11 +8,13 @@ typedef struct ArkWeb_ControllerAPI {...} ArkWeb_ControllerAPI
 
 ArkWeb_ControllerAPI is a native API struct related to the controller. This struct provides features such as JavaScript injection, synchronous and asynchronous JavaScript proxy registration, proxy deletion, page refresh, Web Message Port creation and management, and Frame URL query. It supports the coexistence of synchronous and asynchronous proxies and unified management and control of WebView behavior. It is suitable for scenarios where JavaScript needs to be injected and called from native code and bidirectional communication between native and pages is required. It resolves JSBridge intercommunication and secure injection issues, improving development efficiency and controllability. This is the primary interface for controlling WebView behavior from native code.<br>Controller- related APIs must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Before calling, you are advised to use [ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义) to check the availability of the function pointer to avoid crashes caused by mismatches between the SDK and the device ROM.
 
+<!--Device-typedef struct ArkWeb_ControllerAPI {...} ArkWeb_ControllerAPI--><!--Device-typedef struct ArkWeb_ControllerAPI {...} ArkWeb_ControllerAPI-End-->
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
-**Related module**: [Web](capi-others-web.md)
+**Related module**: [Web](capi-arkweb-web.md)
 
 **Header file**: [arkweb_type.h](capi-arkweb-type-h.md)
 
@@ -53,6 +55,8 @@ void (*runJavaScript)(const char* webTag, const ArkWeb_JavaScriptObject* javascr
 
 Injects a JavaScript script. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. This method injects a JavaScript script into the execution context of the **Web** component and executes it after the page is loaded.
 
+<!--Device-void (*runJavaScript)(const char* webTag, const ArkWeb_JavaScriptObject* javascriptObject)--><!--Device-void (*runJavaScript)(const char* webTag, const ArkWeb_JavaScriptObject* javascriptObject)-End-->
+
 **Parameters**:
 
 | Parameter | Description |
@@ -69,6 +73,8 @@ void (*registerJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* pr
 **Description**
 
 Injects a JavaScript object into the window object and calls the synchronous methods of this object in the window object. This method maps native objects to the JavaScript environment through a bridging mechanism to implement bidirectional communication. Use Cases: for example, JS calls native capabilities to obtain device information or execute native business logic. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Compared with registerAsyncJavaScriptProxy, this method is suitable for scenarios where a synchronous return value is required. If a synchronous return value is not needed or the operation is time-consuming, you are advised to use registerAsyncJavaScriptProxy to avoid blocking the UI thread.
+
+<!--Device-void (*registerJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* proxyObject)--><!--Device-void (*registerJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* proxyObject)-End-->
 
 **Parameters**:
 
@@ -87,6 +93,8 @@ void (*deleteJavaScriptRegister)(const char* webTag, const char* objName)
 
 Deletes the app-side JavaScript object with the specified name that is registered with the window through registerJavaScriptProxy. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. This method unbinds the JavaScript object from the native object and releases related resources. Use Cases: for example, cleaning up registered objects to avoid residue when a component is destroyed, a module is unloaded, or services are switched.
 
+<!--Device-void (*deleteJavaScriptRegister)(const char* webTag, const char* objName)--><!--Device-void (*deleteJavaScriptRegister)(const char* webTag, const char* objName)-End-->
+
 **Parameters**:
 
 | Parameter | Description |
@@ -104,6 +112,8 @@ void (*refresh)(const char* webTag)
 
 Refreshes the current web page. The page stack is cleared during the refresh, as a result, the current page cannot be navigated forward or backward. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method.
 
+<!--Device-void (*refresh)(const char* webTag)--><!--Device-void (*refresh)(const char* webTag)-End-->
+
 **Parameters**:
 
 | Parameter | Description |
@@ -119,6 +129,8 @@ void (*registerAsyncJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObjec
 **Description**
 
 Injects a JavaScript object into the window object and calls the asynchronous methods of this object in the window object. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. This method implements asynchronous calls through a message queue mechanism to avoid blocking the main thread. Compared with registerJavaScriptProxy, this method is suitable for time-consuming operations or scenarios where a synchronous return value is not needed. If a synchronous return value is needed, you are advised to use registerJavaScriptProxy.
+
+<!--Device-void (*registerAsyncJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* proxyObject)--><!--Device-void (*registerAsyncJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* proxyObject)-End-->
 
 **Parameters**:
 
@@ -136,6 +148,8 @@ ArkWeb_WebMessagePortPtr* (*createWebMessagePorts)(const char* webTag, size_t* s
 **Description**
 
 Creates a Post Message port. The Post Message port provides a bidirectional communication mechanism, allowing the native layer and the web layer to securely exchange data messages. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Use Cases: for example, implementing cross-context message channels to support data transfer between iframes and the main page, and between Web and Worker.<br> <br> **Paired call:**<br><br>- Ports created by calling createWebMessagePorts() must be destroyed by calling destroyWebMessagePorts() <br> after use. Undestroyed ports will cause resource leaks and affect app performance. <br> **Combined usage:**<br><br>- After creating ports, you need to send the ports to the HTML main page through postWebMessage() to <br> establish a communication channel. Typical usage flow: createWebMessagePorts() → postWebMessage() <br> → communication interaction → destroyWebMessagePorts().
+
+<!--Device-ArkWeb_WebMessagePortPtr* (*createWebMessagePorts)(const char* webTag, size_t* size)--><!--Device-ArkWeb_WebMessagePortPtr* (*createWebMessagePorts)(const char* webTag, size_t* size)-End-->
 
 **Parameters**:
 
@@ -160,6 +174,8 @@ void (*destroyWebMessagePorts)(ArkWeb_WebMessagePortPtr** ports, size_t size)
 
 Destroys a port. This method closes the port connection, releases related system resources, and stops message transmission. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Use Cases: for example, releasing port resources to avoid leaks when communication ends or the component lifecycle ends.<br> <br> **Paired call:**<br><br>- Must be used in pair with createWebMessagePorts() to destroy the created Post Message ports. Only ports created through createWebMessagePorts() can be destroyed. After destruction, the ports will be unusable and message delivery cannot continue. You are advised to destroy ports in a timely manner after communication ends to release resources. Destroying ports that are not properly created may lead to undefined behavior.
 
+<!--Device-void (*destroyWebMessagePorts)(ArkWeb_WebMessagePortPtr** ports, size_t size)--><!--Device-void (*destroyWebMessagePorts)(ArkWeb_WebMessagePortPtr** ports, size_t size)-End-->
+
 **Parameters**:
 
 | Parameter | Description |
@@ -176,6 +192,8 @@ ArkWeb_ErrorCode (*postWebMessage)(const char* webTag, const char* name, ArkWeb_
 **Description**
 
 Sends ports to the HTML main page. This method passes Post Message ports to the specified HTML page through a message delivery mechanism to establish a cross-origin communication channel. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Use Cases: for example, establishing a bidirectional message channel between the main page and an iframe, or pushing messages across frames.
+
+<!--Device-ArkWeb_ErrorCode (*postWebMessage)(const char* webTag, const char* name, ArkWeb_WebMessagePortPtr* webMessagePorts, size_t size, const char* url)--><!--Device-ArkWeb_ErrorCode (*postWebMessage)(const char* webTag, const char* name, ArkWeb_WebMessagePortPtr* webMessagePorts, size_t size, const char* url)-End-->
 
 **Parameters**:
 
@@ -203,6 +221,8 @@ const char* (*getLastJavascriptProxyCallingFrameUrl)()
 
 Obtains the URL of the last frame that calls JavaScriptProxy. This method records the frame context of the last JavaScript call through a frame stack tracing mechanism. It is called on the thread where JavaScriptProxy is called. A JavaScript object is injected into the window object through registerJavaScriptProxy or JavaScriptProxy. This API can obtain the URL of the frame that last called the injected object. If the injected object has never been called, the return value is undefined. The correct URL can be obtained only when this API is called inside the called function. You can obtain the URL inside the function and save it. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method.
 
+<!--Device-const char* (*getLastJavascriptProxyCallingFrameUrl)()--><!--Device-const char* (*getLastJavascriptProxyCallingFrameUrl)()-End-->
+
 **Since**: 14
 
 **Returns**:
@@ -220,6 +240,8 @@ void (*registerJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObjectWi
 **Description**
 
 Injects a JavaScript object into the window object and calls the synchronous methods of this object in the window object. The synchronous methods of this object can carry return values. This method implements bidirectional data transfer and synchronous calls between JavaScript and native through a synchronous bridging mechanism. Compared with registerJavaScriptProxy, this method adds a permission parameter for configuring JSBridge permission restrictions, and is suitable for scenarios that require permission control or synchronous return values. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Use Cases: for example, business scenarios where synchronous return results are needed when JS calls native.
+
+<!--Device-void (*registerJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObjectWithResult* proxyObject, const char* permission)--><!--Device-void (*registerJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObjectWithResult* proxyObject, const char* permission)-End-->
 
 **Since**: 18
 
@@ -240,6 +262,8 @@ void (*registerAsyncJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObj
 **Description**
 
 Injects a JavaScript object into the window object and calls the asynchronous methods of this object in the window object. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. This method implements asynchronous calls through a message queue mechanism to avoid blocking the main thread. Compared with registerAsyncJavaScriptProxy, this method adds a permission parameter for configuring JSBridge permission restrictions, and is suitable for asynchronous operation scenarios that require permission control.
+
+<!--Device-void (*registerAsyncJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObject* proxyObject, const char* permission)--><!--Device-void (*registerAsyncJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObject* proxyObject, const char* permission)-End-->
 
 **Since**: 18
 

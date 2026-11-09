@@ -87,6 +87,8 @@ enum OH_Archive_Format
 
 文件格式枚举。
 
+<!--Device-OH_Archive_Format--><!--Device-OH_Archive_Format-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
@@ -104,6 +106,8 @@ enum OH_Archive_CompressMethod
 **描述：**
 
 压缩算法枚举。
+
+<!--Device-OH_Archive_CompressMethod--><!--Device-OH_Archive_CompressMethod-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -124,6 +128,8 @@ enum OH_Archive_OpenMode
 
 文件打开模式枚举。
 
+<!--Device-OH_Archive_OpenMode--><!--Device-OH_Archive_OpenMode-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
@@ -141,6 +147,8 @@ enum OH_Archive_ProgressType
 **描述：**
 
 文件进度控制类型枚举。
+
+<!--Device-OH_Archive_ProgressType--><!--Device-OH_Archive_ProgressType-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -160,6 +168,8 @@ enum OH_Archive_StreamChecksumAlg
 **描述：**
 
 用于计算校验和的哈希算法。
+
+<!--Device-OH_Archive_StreamChecksumAlg--><!--Device-OH_Archive_StreamChecksumAlg-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -182,6 +192,8 @@ typedef OH_Archive_ProgressType (*OH_Archive_ProgressHandlerWithData)(int32_t pr
 **描述：**
 
 定义进度处理回调函数的类型。
+
+<!--Device-typedef OH_Archive_ProgressType (*OH_Archive_ProgressHandlerWithData)(int32_t progress, void *userData)--><!--Device-typedef OH_Archive_ProgressType (*OH_Archive_ProgressHandlerWithData)(int32_t progress, void *userData)-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -209,6 +221,8 @@ typedef uint64_t (*OH_Archive_Stream_OutputHandler)(const void* data, uint64_t s
 **描述：**
 
 用户自定义回调函数指针类型，用于处理压缩后的数据。
+
+<!--Device-typedef uint64_t (*OH_Archive_Stream_OutputHandler)(const void* data, uint64_t size, void* userData)--><!--Device-typedef uint64_t (*OH_Archive_Stream_OutputHandler)(const void* data, uint64_t size, void* userData)-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -242,6 +256,8 @@ OH_Archive_Reader_Ctx OH_Archive_Reader_OpenFile(const char *infile)
 >
 > 返回的上下文必须通过调用OH_Archive_Reader_Close()释放相关资源。
 
+<!--Device-OH_Archive_Reader_Ctx OH_Archive_Reader_OpenFile(const char *infile)--><!--Device-OH_Archive_Reader_Ctx OH_Archive_Reader_OpenFile(const char *infile)-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
@@ -269,6 +285,8 @@ OH_Archive_ErrCode OH_Archive_Reader_SetProgressHandlerWithData(OH_Archive_Reade
 **描述：**
 
 设置文件解压缩器的进度回调函数及用户数据。
+
+<!--Device-OH_Archive_ErrCode OH_Archive_Reader_SetProgressHandlerWithData(OH_Archive_Reader_Ctx arc, OH_Archive_ProgressHandlerWithData progressHandler, void *userData)--><!--Device-OH_Archive_ErrCode OH_Archive_Reader_SetProgressHandlerWithData(OH_Archive_Reader_Ctx arc, OH_Archive_ProgressHandlerWithData progressHandler, void *userData)-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -298,6 +316,8 @@ OH_Archive_ErrCode OH_Archive_Reader_ExtractAllFile(OH_Archive_Reader_Ctx arc, c
 
 从压缩包中提取所有文件。
 
+<!--Device-OH_Archive_ErrCode OH_Archive_Reader_ExtractAllFile(OH_Archive_Reader_Ctx arc, const char *outDir)--><!--Device-OH_Archive_ErrCode OH_Archive_Reader_ExtractAllFile(OH_Archive_Reader_Ctx arc, const char *outDir)-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
@@ -324,6 +344,8 @@ OH_Archive_ErrCode OH_Archive_Reader_Close(OH_Archive_Reader_Ctx arc)
 **描述：**
 
 关闭已打开的压缩文件并释放相关资源。
+
+<!--Device-OH_Archive_ErrCode OH_Archive_Reader_Close(OH_Archive_Reader_Ctx arc)--><!--Device-OH_Archive_ErrCode OH_Archive_Reader_Close(OH_Archive_Reader_Ctx arc)-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -355,6 +377,8 @@ OH_Archive_Writer_Ctx OH_Archive_Writer_OpenFile(const char *outfile, OH_Archive
 >
 > 返回的上下文必须通过调用OH_Archive_Writer_Close()释放相关资源。
 
+<!--Device-OH_Archive_Writer_Ctx OH_Archive_Writer_OpenFile(const char *outfile, OH_Archive_OpenMode openMode, OH_Archive_Format fmt)--><!--Device-OH_Archive_Writer_Ctx OH_Archive_Writer_OpenFile(const char *outfile, OH_Archive_OpenMode openMode, OH_Archive_Format fmt)-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
@@ -385,6 +409,8 @@ OH_Archive_ErrCode OH_Archive_Writer_SetCompressMethod(OH_Archive_Writer_Ctx arc
 
 设置压缩文件的压缩算法。
 
+<!--Device-OH_Archive_ErrCode OH_Archive_Writer_SetCompressMethod(OH_Archive_Writer_Ctx arc, OH_Archive_CompressMethod method, int32_t compressLevel)--><!--Device-OH_Archive_ErrCode OH_Archive_Writer_SetCompressMethod(OH_Archive_Writer_Ctx arc, OH_Archive_CompressMethod method, int32_t compressLevel)-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
@@ -412,6 +438,8 @@ OH_Archive_ErrCode OH_Archive_Writer_SetProgressHandlerWithData(OH_Archive_Write
 **描述：**
 
 设置文件压缩器的进度回调函数及用户数据。
+
+<!--Device-OH_Archive_ErrCode OH_Archive_Writer_SetProgressHandlerWithData(OH_Archive_Writer_Ctx arc, OH_Archive_ProgressHandlerWithData progressHandler, void *userData)--><!--Device-OH_Archive_ErrCode OH_Archive_Writer_SetProgressHandlerWithData(OH_Archive_Writer_Ctx arc, OH_Archive_ProgressHandlerWithData progressHandler, void *userData)-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -441,6 +469,8 @@ OH_Archive_ErrCode OH_Archive_Writer_Add(OH_Archive_Writer_Ctx arc, const char *
 
 向压缩包中添加文件列表。
 
+<!--Device-OH_Archive_ErrCode OH_Archive_Writer_Add(OH_Archive_Writer_Ctx arc, const char **infiles, uint64_t fileNum)--><!--Device-OH_Archive_ErrCode OH_Archive_Writer_Add(OH_Archive_Writer_Ctx arc, const char **infiles, uint64_t fileNum)-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
@@ -469,6 +499,8 @@ OH_Archive_ErrCode OH_Archive_Writer_Close(OH_Archive_Writer_Ctx arc)
 
 关闭文件压缩器。 该函数完成压缩包写入过程，将缓冲数据刷新到输出，并释放与文件压缩器的上下文结构体相关的资源。
 
+<!--Device-OH_Archive_ErrCode OH_Archive_Writer_Close(OH_Archive_Writer_Ctx arc)--><!--Device-OH_Archive_ErrCode OH_Archive_Writer_Close(OH_Archive_Writer_Ctx arc)-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
@@ -494,6 +526,8 @@ uint64_t OH_Archive_BufferWriteCompressBound(OH_Archive_CompressMethod method, u
 **描述：**
 
 计算给定源数据长度的最大压缩后数据大小。
+
+<!--Device-uint64_t OH_Archive_BufferWriteCompressBound(OH_Archive_CompressMethod method, uint64_t sourceLen)--><!--Device-uint64_t OH_Archive_BufferWriteCompressBound(OH_Archive_CompressMethod method, uint64_t sourceLen)-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -521,6 +555,8 @@ OH_Archive_ErrCode OH_Archive_BufferWrite(uint8_t *dstBuffer, uint64_t *dstSize,
 **描述：**
 
 向缓冲区写入数据并进行压缩。
+
+<!--Device-OH_Archive_ErrCode OH_Archive_BufferWrite(uint8_t *dstBuffer, uint64_t *dstSize, const uint8_t *srcBuffer, uint64_t srcSize, OH_Archive_CompressMethod method, int32_t compressLevel)--><!--Device-OH_Archive_ErrCode OH_Archive_BufferWrite(uint8_t *dstBuffer, uint64_t *dstSize, const uint8_t *srcBuffer, uint64_t srcSize, OH_Archive_CompressMethod method, int32_t compressLevel)-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -553,6 +589,8 @@ OH_Archive_ErrCode OH_Archive_BufferRead(uint8_t *dstBuffer, uint64_t *dstSize, 
 
 从缓冲区读取数据并进行解压缩。
 
+<!--Device-OH_Archive_ErrCode OH_Archive_BufferRead(uint8_t *dstBuffer, uint64_t *dstSize, const uint8_t *srcBuffer, uint64_t srcSize, OH_Archive_CompressMethod method)--><!--Device-OH_Archive_ErrCode OH_Archive_BufferRead(uint8_t *dstBuffer, uint64_t *dstSize, const uint8_t *srcBuffer, uint64_t srcSize, OH_Archive_CompressMethod method)-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
@@ -583,6 +621,8 @@ OH_Archive_StreamWrite_Ctx OH_Archive_StreamWrite_Create(OH_Archive_Stream_Confi
 
 创建流式压缩的上下文结构体。
 
+<!--Device-OH_Archive_StreamWrite_Ctx OH_Archive_StreamWrite_Create(OH_Archive_Stream_Config config)--><!--Device-OH_Archive_StreamWrite_Ctx OH_Archive_StreamWrite_Create(OH_Archive_Stream_Config config)-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
@@ -610,6 +650,8 @@ OH_Archive_ErrCode OH_Archive_StreamWrite_Start(OH_Archive_StreamWrite_Ctx ctx, 
 **描述：**
 
 启动压缩任务，初始化用户回调函数和用户数据。
+
+<!--Device-OH_Archive_ErrCode OH_Archive_StreamWrite_Start(OH_Archive_StreamWrite_Ctx ctx, OH_Archive_Stream_OutputHandler outputHandler, void* userData)--><!--Device-OH_Archive_ErrCode OH_Archive_StreamWrite_Start(OH_Archive_StreamWrite_Ctx ctx, OH_Archive_Stream_OutputHandler outputHandler, void* userData)-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -639,6 +681,8 @@ OH_Archive_ErrCode OH_Archive_StreamWrite_SetCompressLevel(OH_Archive_StreamWrit
 
 设置流式压缩的压缩级别。
 
+<!--Device-OH_Archive_ErrCode OH_Archive_StreamWrite_SetCompressLevel(OH_Archive_StreamWrite_Ctx ctx, int32_t compressLevel)--><!--Device-OH_Archive_ErrCode OH_Archive_StreamWrite_SetCompressLevel(OH_Archive_StreamWrite_Ctx ctx, int32_t compressLevel)-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
@@ -666,6 +710,8 @@ OH_Archive_ErrCode OH_Archive_StreamWrite_Cancel(OH_Archive_StreamWrite_Ctx ctx)
 
 强制取消当前阻塞的压缩操作，并唤醒所有等待中的线程。
 
+<!--Device-OH_Archive_ErrCode OH_Archive_StreamWrite_Cancel(OH_Archive_StreamWrite_Ctx ctx)--><!--Device-OH_Archive_ErrCode OH_Archive_StreamWrite_Cancel(OH_Archive_StreamWrite_Ctx ctx)-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
@@ -691,6 +737,8 @@ OH_Archive_ErrCode OH_Archive_StreamWrite_Update(OH_Archive_StreamWrite_Ctx ctx,
 **描述：**
 
 提交压缩数据。该接口在内存池已满时会阻塞等待。
+
+<!--Device-OH_Archive_ErrCode OH_Archive_StreamWrite_Update(OH_Archive_StreamWrite_Ctx ctx, const uint8_t* data, uint64_t size)--><!--Device-OH_Archive_ErrCode OH_Archive_StreamWrite_Update(OH_Archive_StreamWrite_Ctx ctx, const uint8_t* data, uint64_t size)-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -720,6 +768,8 @@ OH_Archive_ErrCode OH_Archive_StreamWrite_End(OH_Archive_StreamWrite_Ctx ctx, OH
 
 结束压缩，刷新所有剩余数据。
 
+<!--Device-OH_Archive_ErrCode OH_Archive_StreamWrite_End(OH_Archive_StreamWrite_Ctx ctx, OH_Archive_StreamInfo *streamInfo)--><!--Device-OH_Archive_ErrCode OH_Archive_StreamWrite_End(OH_Archive_StreamWrite_Ctx ctx, OH_Archive_StreamInfo *streamInfo)-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
@@ -747,6 +797,8 @@ void OH_Archive_StreamWrite_Destroy(OH_Archive_StreamWrite_Ctx ctx)
 
 销毁压缩实例并释放相关资源。
 
+<!--Device-void OH_Archive_StreamWrite_Destroy(OH_Archive_StreamWrite_Ctx ctx)--><!--Device-void OH_Archive_StreamWrite_Destroy(OH_Archive_StreamWrite_Ctx ctx)-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
@@ -766,6 +818,8 @@ OH_Archive_StreamRead_Ctx OH_Archive_StreamRead_Create(OH_Archive_Stream_Config 
 **描述：**
 
 创建流式解压缩的上下文结构体。
+
+<!--Device-OH_Archive_StreamRead_Ctx OH_Archive_StreamRead_Create(OH_Archive_Stream_Config config)--><!--Device-OH_Archive_StreamRead_Ctx OH_Archive_StreamRead_Create(OH_Archive_Stream_Config config)-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -795,6 +849,8 @@ OH_Archive_ErrCode OH_Archive_StreamRead_Start(OH_Archive_StreamRead_Ctx ctx, OH
 
 启动解压缩任务，初始化用户回调函数和用户数据。
 
+<!--Device-OH_Archive_ErrCode OH_Archive_StreamRead_Start(OH_Archive_StreamRead_Ctx ctx, OH_Archive_Stream_OutputHandler outputHandler, void* userData)--><!--Device-OH_Archive_ErrCode OH_Archive_StreamRead_Start(OH_Archive_StreamRead_Ctx ctx, OH_Archive_Stream_OutputHandler outputHandler, void* userData)-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
@@ -823,6 +879,8 @@ OH_Archive_ErrCode OH_Archive_StreamRead_Cancel(OH_Archive_StreamRead_Ctx ctx)
 
 强制取消当前阻塞的解压缩操作，并唤醒所有等待中的线程。
 
+<!--Device-OH_Archive_ErrCode OH_Archive_StreamRead_Cancel(OH_Archive_StreamRead_Ctx ctx)--><!--Device-OH_Archive_ErrCode OH_Archive_StreamRead_Cancel(OH_Archive_StreamRead_Ctx ctx)-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
@@ -848,6 +906,8 @@ OH_Archive_ErrCode OH_Archive_StreamRead_Update(OH_Archive_StreamRead_Ctx ctx, c
 **描述：**
 
 提交解压缩数据。该接口在内存池已满时会阻塞等待。
+
+<!--Device-OH_Archive_ErrCode OH_Archive_StreamRead_Update(OH_Archive_StreamRead_Ctx ctx, const uint8_t* data, uint64_t size)--><!--Device-OH_Archive_ErrCode OH_Archive_StreamRead_Update(OH_Archive_StreamRead_Ctx ctx, const uint8_t* data, uint64_t size)-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -877,6 +937,8 @@ OH_Archive_ErrCode OH_Archive_StreamRead_End(OH_Archive_StreamRead_Ctx ctx, OH_A
 
 结束解压缩，刷新所有剩余数据并清理内存。
 
+<!--Device-OH_Archive_ErrCode OH_Archive_StreamRead_End(OH_Archive_StreamRead_Ctx ctx, OH_Archive_StreamInfo *streamInfo)--><!--Device-OH_Archive_ErrCode OH_Archive_StreamRead_End(OH_Archive_StreamRead_Ctx ctx, OH_Archive_StreamInfo *streamInfo)-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
@@ -903,6 +965,8 @@ void OH_Archive_StreamRead_Destroy(OH_Archive_StreamRead_Ctx ctx)
 **描述：**
 
 销毁解压缩实例并释放相关资源。
+
+<!--Device-void OH_Archive_StreamRead_Destroy(OH_Archive_StreamRead_Ctx ctx)--><!--Device-void OH_Archive_StreamRead_Destroy(OH_Archive_StreamRead_Ctx ctx)-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

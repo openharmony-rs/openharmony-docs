@@ -8,11 +8,13 @@ typedef struct BufferHandle {...} BufferHandle
 
 用于传输和获取缓冲区信息的BufferHandle。
 
+<!--Device-typedef struct BufferHandle {...} BufferHandle--><!--Device-typedef struct BufferHandle {...} BufferHandle-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 8
 
-**相关模块：** [NativeWindow](capi-others-nativewindow.md)
+**相关模块：** [NativeWindow](capi-arkgraphics2d-nativewindow.md)
 
 **所在头文件：** [buffer_handle.h](capi-buffer-handle-h.md)
 

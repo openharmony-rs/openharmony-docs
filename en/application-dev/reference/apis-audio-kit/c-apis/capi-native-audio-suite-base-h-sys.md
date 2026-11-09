@@ -41,6 +41,8 @@ enum OH_AudioSuite_SystemNodeType
 
 Define audio node system type.
 
+<!--Device-OH_AudioSuite_SystemNodeType--><!--Device-OH_AudioSuite_SystemNodeType-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.0

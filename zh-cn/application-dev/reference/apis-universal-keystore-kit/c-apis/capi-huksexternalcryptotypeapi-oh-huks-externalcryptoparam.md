@@ -8,11 +8,13 @@ struct OH_Huks_ExternalCryptoParam {...}
 
 定义参数集合中单个参数的结构体。
 
+<!--Device-struct OH_Huks_ExternalCryptoParam {...}--><!--Device-struct OH_Huks_ExternalCryptoParam {...}-End-->
+
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 **起始版本：** 22
 
-**相关模块：** [HuksExternalCryptoTypeApi](capi-others-huksexternalcryptotypeapi.md)
+**相关模块：** [HuksExternalCryptoTypeApi](capi-universal-keystore-kit-huksexternalcryptotypeapi.md)
 
 **所在头文件：** [native_huks_external_crypto_type.h](capi-native-huks-external-crypto-type-h.md)
 

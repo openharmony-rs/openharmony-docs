@@ -8,11 +8,13 @@ typedef struct OH_Drawing_Path OH_Drawing_Path
 
 Defines a struct for a path, which is used to customize various shapes.
 
+<!--Device-typedef struct OH_Drawing_Path OH_Drawing_Path--><!--Device-typedef struct OH_Drawing_Path OH_Drawing_Path-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
-**Related module**: [Drawing](capi-others-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 **Header file**: [drawing_types.h](capi-drawing-types-h.md)
 

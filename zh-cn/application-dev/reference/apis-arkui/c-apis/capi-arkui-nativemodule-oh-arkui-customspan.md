@@ -8,11 +8,13 @@ typedef struct OH_ArkUI_CustomSpan OH_ArkUI_CustomSpan
 
 定义自定义绘制Span，用于在属性字符串中实现自定义测量和绘制能力。自定义绘制Span通过测量回调确定其占位大小，通过绘制回调在对应区域内绘制自定义内容，从而将自定义图形元素嵌入到富文本中。 调用[OH_ArkUI_CustomSpan_Create](capi-styled-string-h.md#oh_arkui_customspan_create)接口创建自定义绘制Span对象。 对象创建后，调用[OH_ArkUI_CustomSpan_RegisterOnMeasureCallback](capi-styled-string-h.md#oh_arkui_customspan_registeronmeasurecallback)接口注册测量回调函数。 调用[OH_ArkUI_CustomSpan_RegisterOnDrawCallback](capi-styled-string-h.md#oh_arkui_customspan_registerondrawcallback)接口注册绘制回调函数。 调用[OH_ArkUI_CustomSpan_Destroy](capi-styled-string-h.md#oh_arkui_customspan_destroy)接口销毁自定义绘制Span对象。
 
+<!--Device-typedef struct OH_ArkUI_CustomSpan OH_ArkUI_CustomSpan--><!--Device-typedef struct OH_ArkUI_CustomSpan OH_ArkUI_CustomSpan-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [styled_string.h](capi-styled-string-h.md)
 

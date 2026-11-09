@@ -64,6 +64,8 @@ const char *OH_GetDeviceType(void)
 
 获取设备类型。返回预定义的设备类型字符串。
 
+<!--Device-const char *OH_GetDeviceType(void)--><!--Device-const char *OH_GetDeviceType(void)-End-->
+
 **系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
@@ -83,6 +85,8 @@ const char *OH_GetManufacture(void)
 **描述：**
 
 获取设备制造商。
+
+<!--Device-const char *OH_GetManufacture(void)--><!--Device-const char *OH_GetManufacture(void)-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -104,6 +108,8 @@ const char *OH_GetBrand(void)
 
 获取设备品牌。
 
+<!--Device-const char *OH_GetBrand(void)--><!--Device-const char *OH_GetBrand(void)-End-->
+
 **系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
@@ -123,6 +129,8 @@ const char *OH_GetMarketName(void)
 **描述：**
 
 获取外部产品系列，即外部产品名称。
+
+<!--Device-const char *OH_GetMarketName(void)--><!--Device-const char *OH_GetMarketName(void)-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -144,6 +152,8 @@ const char *OH_GetProductSeries(void)
 
 获取产品系列。
 
+<!--Device-const char *OH_GetProductSeries(void)--><!--Device-const char *OH_GetProductSeries(void)-End-->
+
 **系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
@@ -163,6 +173,8 @@ const char *OH_GetProductModel(void)
 **描述：**
 
 获取认证型号。
+
+<!--Device-const char *OH_GetProductModel(void)--><!--Device-const char *OH_GetProductModel(void)-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -184,6 +196,8 @@ const char *OH_GetSoftwareModel(void)
 
 获取内部软件子型号，当多个硬件型号共用同一软件版本时，该字段用于区分不同的软件分支。
 
+<!--Device-const char *OH_GetSoftwareModel(void)--><!--Device-const char *OH_GetSoftwareModel(void)-End-->
+
 **系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
@@ -203,6 +217,8 @@ const char *OH_GetHardwareModel(void)
 **描述：**
 
 获取硬件版本号。
+
+<!--Device-const char *OH_GetHardwareModel(void)--><!--Device-const char *OH_GetHardwareModel(void)-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -224,6 +240,8 @@ const char *OH_GetBootloaderVersion(void)
 
 获取Bootloader版本号。
 
+<!--Device-const char *OH_GetBootloaderVersion(void)--><!--Device-const char *OH_GetBootloaderVersion(void)-End-->
+
 **系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
@@ -243,6 +261,8 @@ const char *OH_GetAbiList(void)
 **描述：**
 
 获取应用二进制接口（Abi）。
+
+<!--Device-const char *OH_GetAbiList(void)--><!--Device-const char *OH_GetAbiList(void)-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -264,6 +284,8 @@ const char *OH_GetSecurityPatchTag(void)
 
 获取安全补丁级别。
 
+<!--Device-const char *OH_GetSecurityPatchTag(void)--><!--Device-const char *OH_GetSecurityPatchTag(void)-End-->
+
 **系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
@@ -283,6 +305,8 @@ const char *OH_GetDisplayVersion(void)
 **描述：**
 
 获取产品版本。
+
+<!--Device-const char *OH_GetDisplayVersion(void)--><!--Device-const char *OH_GetDisplayVersion(void)-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -304,6 +328,8 @@ const char *OH_GetIncrementalVersion(void)
 
 获取差异版本。
 
+<!--Device-const char *OH_GetIncrementalVersion(void)--><!--Device-const char *OH_GetIncrementalVersion(void)-End-->
+
 **系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
@@ -323,6 +349,8 @@ const char *OH_GetOsReleaseType(void)
 **描述：**
 
 获取系统的发布类型。返回预定义的发布类型字符串。
+
+<!--Device-const char *OH_GetOsReleaseType(void)--><!--Device-const char *OH_GetOsReleaseType(void)-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -344,6 +372,8 @@ const char *OH_GetOSFullName(void)
 
 获取完整的系统版本名。
 
+<!--Device-const char *OH_GetOSFullName(void)--><!--Device-const char *OH_GetOSFullName(void)-End-->
+
 **系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
@@ -363,6 +393,8 @@ int OH_GetSdkApiVersion(void)
 **描述：**
 
 获取系统软件API版本。
+
+<!--Device-int OH_GetSdkApiVersion(void)--><!--Device-int OH_GetSdkApiVersion(void)-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -384,6 +416,8 @@ int OH_GetSdkMinorApiVersion(void)
 
 获取系统次版本号。从API版本26.0.0起，为配合语义化版本号，新增次版本号的定义，即中间 字段的值，值为整型数。完整版本号由sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion共同构成。
 
+<!--Device-int OH_GetSdkMinorApiVersion(void)--><!--Device-int OH_GetSdkMinorApiVersion(void)-End-->
+
 **系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 26.0.1
@@ -403,6 +437,8 @@ int OH_GetSdkPatchApiVersion(void)
 **描述：**
 
 获取系统修订版本号。从API版本26.0.0起，为配合语义化版本号，新增修订版本号的定义，即第三 个字段的值，值为整型数。完整版本号由sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion共同构成。
+
+<!--Device-int OH_GetSdkPatchApiVersion(void)--><!--Device-int OH_GetSdkPatchApiVersion(void)-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -424,6 +460,8 @@ int OH_GetFirstApiVersion(void)
 
 获取首个版本系统软件API版本。指设备首次发布时所支持的系统软件API版本。
 
+<!--Device-int OH_GetFirstApiVersion(void)--><!--Device-int OH_GetFirstApiVersion(void)-End-->
+
 **系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
@@ -443,6 +481,8 @@ const char *OH_GetVersionId(void)
 **描述：**
 
 获取版本ID。
+
+<!--Device-const char *OH_GetVersionId(void)--><!--Device-const char *OH_GetVersionId(void)-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -464,6 +504,8 @@ const char *OH_GetBuildType(void)
 
 获取系统的构建类型。
 
+<!--Device-const char *OH_GetBuildType(void)--><!--Device-const char *OH_GetBuildType(void)-End-->
+
 **系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
@@ -483,6 +525,8 @@ const char *OH_GetBuildUser(void)
 **描述：**
 
 获取系统的构建用户。
+
+<!--Device-const char *OH_GetBuildUser(void)--><!--Device-const char *OH_GetBuildUser(void)-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -504,6 +548,8 @@ const char *OH_GetBuildHost(void)
 
 获取系统的构建主机。
 
+<!--Device-const char *OH_GetBuildHost(void)--><!--Device-const char *OH_GetBuildHost(void)-End-->
+
 **系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
@@ -523,6 +569,8 @@ const char *OH_GetBuildTime(void)
 **描述：**
 
 获取系统的构建时间。
+
+<!--Device-const char *OH_GetBuildTime(void)--><!--Device-const char *OH_GetBuildTime(void)-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -544,6 +592,8 @@ const char *OH_GetBuildRootHash(void)
 
 获取系统的构建版本Hash。
 
+<!--Device-const char *OH_GetBuildRootHash(void)--><!--Device-const char *OH_GetBuildRootHash(void)-End-->
+
 **系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
@@ -563,6 +613,8 @@ const char *OH_GetDistributionOSName(void)
 **描述：**
 
 获取ISV发行版系统名称。独立软件供应商（ISV）可以使用自定义的系统名称。
+
+<!--Device-const char *OH_GetDistributionOSName(void)--><!--Device-const char *OH_GetDistributionOSName(void)-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -584,6 +636,8 @@ const char *OH_GetDistributionOSVersion(void)
 
 获取ISV发行版系统版本号。
 
+<!--Device-const char *OH_GetDistributionOSVersion(void)--><!--Device-const char *OH_GetDistributionOSVersion(void)-End-->
+
 **系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
@@ -603,6 +657,8 @@ int OH_GetDistributionOSApiVersion(void)
 **描述：**
 
 获取ISV发行版系统API版本。
+
+<!--Device-int OH_GetDistributionOSApiVersion(void)--><!--Device-int OH_GetDistributionOSApiVersion(void)-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -624,6 +680,8 @@ const char *OH_GetDistributionOSReleaseType(void)
 
 获取ISV发行版系统类型。
 
+<!--Device-const char *OH_GetDistributionOSReleaseType(void)--><!--Device-const char *OH_GetDistributionOSReleaseType(void)-End-->
+
 **系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
@@ -644,6 +702,8 @@ int32_t OH_GetDiskSN(char *diskSn)
 
 获取磁盘序列号。
 
+<!--Device-int32_t OH_GetDiskSN(char *diskSn)--><!--Device-int32_t OH_GetDiskSN(char *diskSn)-End-->
+
 **系统能力：** SystemCapability.Startup.SystemInfo
 
 **需要权限：** ohos.permission.ACCESS_DISK_PHY_INFO
@@ -660,7 +720,7 @@ int32_t OH_GetDiskSN(char *diskSn)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul> <li>如果操作成功，则返回0。</li> <li>201如果调用者没有ohos.permission.ACCESS_DISK_PHY_INFO。</li> </ul> |
+| int32_t | <ul> <li>如果操作成功，则返回0。</li> <li>201如果调用者没有ohos.permission.ACCESS_DISK_PHY_INFO。</li> <li>401如果调用者传入的入参非法。</li> </ul> |
 
 ### OH_GetOdid()
 
@@ -671,6 +731,8 @@ const char *OH_GetOdid(void)
 **描述：**
 
 获取开发者匿名设备标识符。
+
+<!--Device-const char *OH_GetOdid(void)--><!--Device-const char *OH_GetOdid(void)-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 

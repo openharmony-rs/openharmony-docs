@@ -8,11 +8,13 @@ struct ScsiPeripheral_Request {...}
 
 Defines the request structure.
 
+<!--Device-struct ScsiPeripheral_Request {...}--><!--Device-struct ScsiPeripheral_Request {...}-End-->
+
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Since**: 18
 
-**Related module**: [ScsiPeripheralDDK](capi-others-scsiperipheralddk.md)
+**Related module**: [ScsiPeripheralDDK](capi-driver-development-kit-scsiperipheralddk.md)
 
 **Header file**: [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md)
 

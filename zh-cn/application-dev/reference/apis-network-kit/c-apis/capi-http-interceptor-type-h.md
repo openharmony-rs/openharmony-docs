@@ -49,6 +49,8 @@ enum OH_Interceptor_Stage
 
 定义拦截器的执行阶段。
 
+<!--Device-OH_Interceptor_Stage--><!--Device-OH_Interceptor_Stage-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 24
@@ -68,6 +70,8 @@ enum OH_Interceptor_Type
 
 定义拦截器的类型。
 
+<!--Device-OH_Interceptor_Type--><!--Device-OH_Interceptor_Type-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 24
@@ -86,6 +90,8 @@ enum OH_Interceptor_Result
 **描述：**
 
 定义拦截器的处理结果。
+
+<!--Device-OH_Interceptor_Result--><!--Device-OH_Interceptor_Result-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -108,6 +114,8 @@ typedef OH_Interceptor_Result (*OH_Http_InterceptorHandler)(OH_Http_Interceptor_
 **描述：**
 
 定义HTTP拦截器处理函数。
+
+<!--Device-typedef OH_Interceptor_Result (*OH_Http_InterceptorHandler)(OH_Http_Interceptor_Request *request, OH_Http_Interceptor_Response *response, int32_t *isModified)--><!--Device-typedef OH_Interceptor_Result (*OH_Http_InterceptorHandler)(OH_Http_Interceptor_Request *request, OH_Http_Interceptor_Response *response, int32_t *isModified)-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 

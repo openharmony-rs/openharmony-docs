@@ -32,6 +32,8 @@ enum OHNativeErrorCode
 
 接口错误码说明（仅用于查询）。
 
+<!--Device-OHNativeErrorCode--><!--Device-OHNativeErrorCode-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 12

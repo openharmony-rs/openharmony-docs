@@ -8,11 +8,13 @@ struct ScsiPeripheral_InquiryRequest {...}
 
 SCSI命令（INQUIRY）的请求结构体，通常用于查询设备的基本信息。
 
+<!--Device-struct ScsiPeripheral_InquiryRequest {...}--><!--Device-struct ScsiPeripheral_InquiryRequest {...}-End-->
+
 **系统能力：** SystemCapability.Driver.SCSI.Extension
 
 **起始版本：** 18
 
-**相关模块：** [ScsiPeripheralDDK](capi-others-scsiperipheralddk.md)
+**相关模块：** [ScsiPeripheralDDK](capi-driver-development-kit-scsiperipheralddk.md)
 
 **所在头文件：** [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md)
 

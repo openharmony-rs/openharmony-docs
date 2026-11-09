@@ -4,6 +4,8 @@
 
 OH Buffer queue state
 
+<!--Device-struct SLOHBufferQueueState_ {...}--><!--Device-struct SLOHBufferQueueState_ {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -8,11 +8,13 @@ struct OH_Http_Interceptor_Headers {...}
 
 定义拦截器的请求/响应头信息。
 
+<!--Device-struct OH_Http_Interceptor_Headers {...}--><!--Device-struct OH_Http_Interceptor_Headers {...}-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 24
 
-**相关模块：** [netstack](capi-others-netstack.md)
+**相关模块：** [netstack](capi-network-kit-netstack.md)
 
 **所在头文件：** [http_interceptor_type.h](capi-http-interceptor-type-h.md)
 

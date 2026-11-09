@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkCommandBufferInheritanceConditionalRenderingInfoEXT {...}--><!--Device-struct VkCommandBufferInheritanceConditionalRenderingInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

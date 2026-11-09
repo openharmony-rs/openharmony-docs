@@ -8,13 +8,15 @@ struct OH_SwapfsDataInfo {...}
 
 Information about a single swap key.
 
+<!--Device-struct OH_SwapfsDataInfo {...}--><!--Device-struct OH_SwapfsDataInfo {...}-End-->
+
 **System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0
 
 **System API:** This is a system API.
 
-**Related module**: [Swapfs](capi-others-swapfs.md)
+**Related module**: [Swapfs](capi-core-file-kit-swapfs.md)
 
 **Header file**: [oh_swapfs.h(System API)](capi-oh-swapfs-h-sys.md)
 

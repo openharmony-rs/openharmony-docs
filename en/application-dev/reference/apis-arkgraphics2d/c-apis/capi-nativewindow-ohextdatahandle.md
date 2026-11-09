@@ -8,13 +8,15 @@ struct OHExtDataHandle {...}
 
 Defines the ExtData Handle
 
+<!--Device-struct OHExtDataHandle {...}--><!--Device-struct OHExtDataHandle {...}-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **Since**: 9
 
 **Deprecated**: 10
 
-**Related module**: [NativeWindow](capi-others-nativewindow.md)
+**Related module**: [NativeWindow](capi-arkgraphics2d-nativewindow.md)
 
 **Header file**: [external_window.h](capi-external-window-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT {...}--><!--Device-struct VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct __ani_interaction_api {...}--><!--Device-struct __ani_interaction_api {...}-End-->
+
 **System capability**: SystemCapability.ArkCompiler.ANI
 
 ## Summary
@@ -447,6 +449,8 @@ ani_status (*GetVersion)(ani_env *env, uint32_t *result)
 
 Retrieves the version information.<br> This function retrieves the version information and stores it in the result parameter.
 
+<!--Device-ani_status (*GetVersion)(ani_env *env, uint32_t *result)--><!--Device-ani_status (*GetVersion)(ani_env *env, uint32_t *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -472,6 +476,8 @@ ani_status (*GetVM)(ani_env *env, ani_vm **result)
 
 Retrieves the Virtual Machine (VM) instance.<br> This function retrieves the VM instance and stores it in the result parameter.
 
+<!--Device-ani_status (*GetVM)(ani_env *env, ani_vm **result)--><!--Device-ani_status (*GetVM)(ani_env *env, ani_vm **result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -496,6 +502,8 @@ ani_status (*Object_New)(ani_env *env, ani_class cls, ani_method ctor, ani_objec
 **Description**
 
 Creates a new object of a specified class using a constructor method.<br> This function creates a new object of the given class and calls the specified constructor method with variadic arguments.
+
+<!--Device-ani_status (*Object_New)(ani_env *env, ani_class cls, ani_method ctor, ani_object *result, ...)--><!--Device-ani_status (*Object_New)(ani_env *env, ani_class cls, ani_method ctor, ani_object *result, ...)-End-->
 
 **Since**: 23
 
@@ -525,6 +533,8 @@ ani_status (*Object_New_A)(ani_env *env, ani_class cls, ani_method ctor, ani_obj
 
 Creates a new object of a specified class using a constructor method (array-based).<br> This function creates a new object of the given class and calls the specified constructor method with arguments provided in an array.
 
+<!--Device-ani_status (*Object_New_A)(ani_env *env, ani_class cls, ani_method ctor, ani_object *result, const ani_value *args)--><!--Device-ani_status (*Object_New_A)(ani_env *env, ani_class cls, ani_method ctor, ani_object *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -552,6 +562,8 @@ ani_status (*Object_New_V)(ani_env *env, ani_class cls, ani_method ctor, ani_obj
 **Description**
 
 Creates a new object of a specified class using a constructor method (variadic arguments).<br> This function creates a new object of the given class and calls the specified constructor method with a `va_list` of arguments.
+
+<!--Device-ani_status (*Object_New_V)(ani_env *env, ani_class cls, ani_method ctor, ani_object *result, va_list args)--><!--Device-ani_status (*Object_New_V)(ani_env *env, ani_class cls, ani_method ctor, ani_object *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -581,6 +593,8 @@ ani_status (*Object_GetType)(ani_env *env, ani_object object, ani_type *result)
 
 Retrieves the type of a given object.<br> This function retrieves the type of the specified object.
 
+<!--Device-ani_status (*Object_GetType)(ani_env *env, ani_object object, ani_type *result)--><!--Device-ani_status (*Object_GetType)(ani_env *env, ani_object object, ani_type *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -606,6 +620,8 @@ ani_status (*Object_InstanceOf)(ani_env *env, ani_object object, ani_type type, 
 **Description**
 
 Checks if an object is an instance of a specified type.<br> This function checks whether the given object is an instance of the specified type.
+
+<!--Device-ani_status (*Object_InstanceOf)(ani_env *env, ani_object object, ani_type type, ani_boolean *result)--><!--Device-ani_status (*Object_InstanceOf)(ani_env *env, ani_object object, ani_type type, ani_boolean *result)-End-->
 
 **Since**: 23
 
@@ -634,6 +650,8 @@ ani_status (*Type_GetSuperClass)(ani_env *env, ani_type type, ani_class *result)
 
 Retrieves the superclass of a specified type.<br> This function retrieves the superclass of a given type and stores it in the result parameter.
 
+<!--Device-ani_status (*Type_GetSuperClass)(ani_env *env, ani_type type, ani_class *result)--><!--Device-ani_status (*Type_GetSuperClass)(ani_env *env, ani_type type, ani_class *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -659,6 +677,8 @@ ani_status (*Type_IsAssignableFrom)(ani_env *env, ani_type from_type, ani_type t
 **Description**
 
 Determines if one type is assignable from another.<br> This function checks if a type is assignable from another and stores the result in the output parameter.
+
+<!--Device-ani_status (*Type_IsAssignableFrom)(ani_env *env, ani_type from_type, ani_type to_type, ani_boolean *result)--><!--Device-ani_status (*Type_IsAssignableFrom)(ani_env *env, ani_type from_type, ani_type to_type, ani_boolean *result)-End-->
 
 **Since**: 23
 
@@ -687,6 +707,8 @@ ani_status (*FindModule)(ani_env *env, const char *module_descriptor, ani_module
 
 Finds a module by its descriptor.<br> This function locates a module based on its descriptor and stores it in the result parameter.
 
+<!--Device-ani_status (*FindModule)(ani_env *env, const char *module_descriptor, ani_module *result)--><!--Device-ani_status (*FindModule)(ani_env *env, const char *module_descriptor, ani_module *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -712,6 +734,8 @@ ani_status (*FindNamespace)(ani_env *env, const char *namespace_descriptor, ani_
 **Description**
 
 Finds a namespace by its descriptor.<br> This function locates a namespace based on its descriptor and stores it in the result parameter.
+
+<!--Device-ani_status (*FindNamespace)(ani_env *env, const char *namespace_descriptor, ani_namespace *result)--><!--Device-ani_status (*FindNamespace)(ani_env *env, const char *namespace_descriptor, ani_namespace *result)-End-->
 
 **Since**: 23
 
@@ -739,6 +763,8 @@ ani_status (*FindClass)(ani_env *env, const char *class_descriptor, ani_class *r
 
 Finds a class by its descriptor.<br> This function locates a class based on its descriptor and stores it in the result parameter.
 
+<!--Device-ani_status (*FindClass)(ani_env *env, const char *class_descriptor, ani_class *result)--><!--Device-ani_status (*FindClass)(ani_env *env, const char *class_descriptor, ani_class *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -765,6 +791,8 @@ ani_status (*FindEnum)(ani_env *env, const char *enum_descriptor, ani_enum *resu
 
 Finds an enum by its descriptor.<br> This function locates an enum based on its descriptor and stores it in the result parameter.
 
+<!--Device-ani_status (*FindEnum)(ani_env *env, const char *enum_descriptor, ani_enum *result)--><!--Device-ani_status (*FindEnum)(ani_env *env, const char *enum_descriptor, ani_enum *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -790,6 +818,8 @@ ani_status (*Module_FindFunction)(ani_env *env, ani_module module, const char *n
 **Description**
 
 Finds a function within a module by its name and signature.<br> This function locates a function within the specified module based on its name and signature.
+
+<!--Device-ani_status (*Module_FindFunction)(ani_env *env, ani_module module, const char *name, const char *signature, ani_function *result)--><!--Device-ani_status (*Module_FindFunction)(ani_env *env, ani_module module, const char *name, const char *signature, ani_function *result)-End-->
 
 **Since**: 23
 
@@ -819,6 +849,8 @@ ani_status (*Module_FindVariable)(ani_env *env, ani_module module, const char *n
 
 Finds a variable within a module by its name.<br> This function locates a variable within the specified module based on its name.
 
+<!--Device-ani_status (*Module_FindVariable)(ani_env *env, ani_module module, const char *name, ani_variable *result)--><!--Device-ani_status (*Module_FindVariable)(ani_env *env, ani_module module, const char *name, ani_variable *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -845,6 +877,8 @@ ani_status (*Namespace_FindFunction)(ani_env *env, ani_namespace ns, const char 
 **Description**
 
 Finds a function within a namespace by its name and signature.<br> This function locates a function within the specified namespace based on its name and signature.
+
+<!--Device-ani_status (*Namespace_FindFunction)(ani_env *env, ani_namespace ns, const char *name, const char *signature, ani_function *result)--><!--Device-ani_status (*Namespace_FindFunction)(ani_env *env, ani_namespace ns, const char *name, const char *signature, ani_function *result)-End-->
 
 **Since**: 23
 
@@ -874,6 +908,8 @@ ani_status (*Namespace_FindVariable)(ani_env *env, ani_namespace ns, const char 
 
 Finds a variable within a namespace by its name.<br> This function locates a variable within the specified namespace based on its name.
 
+<!--Device-ani_status (*Namespace_FindVariable)(ani_env *env, ani_namespace ns, const char *name, ani_variable *result)--><!--Device-ani_status (*Namespace_FindVariable)(ani_env *env, ani_namespace ns, const char *name, ani_variable *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -900,6 +936,8 @@ ani_status (*Module_BindNativeFunctions)(ani_env *env, ani_module module, const 
 **Description**
 
 Binds native functions to a module.<br> This function binds an array of native functions to the specified module.
+
+<!--Device-ani_status (*Module_BindNativeFunctions)(ani_env *env, ani_module module, const ani_native_function *functions, ani_size nr_functions)--><!--Device-ani_status (*Module_BindNativeFunctions)(ani_env *env, ani_module module, const ani_native_function *functions, ani_size nr_functions)-End-->
 
 **Since**: 23
 
@@ -928,6 +966,8 @@ ani_status (*Namespace_BindNativeFunctions)(ani_env *env, ani_namespace ns, cons
 
 Binds native functions to a namespace.<br> This function binds an array of native functions to the specified namespace.
 
+<!--Device-ani_status (*Namespace_BindNativeFunctions)(ani_env *env, ani_namespace ns, const ani_native_function *functions, ani_size nr_functions)--><!--Device-ani_status (*Namespace_BindNativeFunctions)(ani_env *env, ani_namespace ns, const ani_native_function *functions, ani_size nr_functions)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -954,6 +994,8 @@ ani_status (*Class_BindNativeMethods)(ani_env *env, ani_class cls, const ani_nat
 **Description**
 
 Binds native methods to a class.<br> This function binds an array of native instance methods to the specified class.
+
+<!--Device-ani_status (*Class_BindNativeMethods)(ani_env *env, ani_class cls, const ani_native_function *methods, ani_size nr_methods)--><!--Device-ani_status (*Class_BindNativeMethods)(ani_env *env, ani_class cls, const ani_native_function *methods, ani_size nr_methods)-End-->
 
 **Since**: 23
 
@@ -982,6 +1024,8 @@ ani_status (*Reference_Delete)(ani_env *env, ani_ref lref)
 
 Deletes a local reference.<br> This function deletes a specified local reference to free up resources.
 
+<!--Device-ani_status (*Reference_Delete)(ani_env *env, ani_ref lref)--><!--Device-ani_status (*Reference_Delete)(ani_env *env, ani_ref lref)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -1006,6 +1050,8 @@ ani_status (*EnsureEnoughReferences)(ani_env *env, ani_size nr_refs)
 **Description**
 
 Ensures enough local references are available.<br> This function checks and ensures that the specified number of local references can be created.
+
+<!--Device-ani_status (*EnsureEnoughReferences)(ani_env *env, ani_size nr_refs)--><!--Device-ani_status (*EnsureEnoughReferences)(ani_env *env, ani_size nr_refs)-End-->
 
 **Since**: 23
 
@@ -1032,6 +1078,8 @@ ani_status (*CreateLocalScope)(ani_env *env, ani_size nr_refs)
 
 Creates a new local scope for references.<br> This function creates a local scope for references with a specified capacity.
 
+<!--Device-ani_status (*CreateLocalScope)(ani_env *env, ani_size nr_refs)--><!--Device-ani_status (*CreateLocalScope)(ani_env *env, ani_size nr_refs)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -1057,6 +1105,8 @@ ani_status (*DestroyLocalScope)(ani_env *env)
 
 Destroys the current local scope.<br> This function destroys the current local scope and frees all references within it.
 
+<!--Device-ani_status (*DestroyLocalScope)(ani_env *env)--><!--Device-ani_status (*DestroyLocalScope)(ani_env *env)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -1080,6 +1130,8 @@ ani_status (*CreateEscapeLocalScope)(ani_env *env, ani_size nr_refs)
 **Description**
 
 Creates a new escape local scope.<br> This function creates a local scope for references with escape functionality, allowing objects to escape this scope.
+
+<!--Device-ani_status (*CreateEscapeLocalScope)(ani_env *env, ani_size nr_refs)--><!--Device-ani_status (*CreateEscapeLocalScope)(ani_env *env, ani_size nr_refs)-End-->
 
 **Since**: 23
 
@@ -1105,6 +1157,8 @@ ani_status (*DestroyEscapeLocalScope)(ani_env *env, ani_ref ref, ani_ref *result
 **Description**
 
 Destroys the current escape local scope.<br> This function destroys the current escape local scope and allows escaping references to be retrieved.
+
+<!--Device-ani_status (*DestroyEscapeLocalScope)(ani_env *env, ani_ref ref, ani_ref *result)--><!--Device-ani_status (*DestroyEscapeLocalScope)(ani_env *env, ani_ref ref, ani_ref *result)-End-->
 
 **Since**: 23
 
@@ -1132,6 +1186,8 @@ ani_status (*ThrowError)(ani_env *env, ani_error err)
 
 Throws an error.<br> This function throws the specified error in the current environment.
 
+<!--Device-ani_status (*ThrowError)(ani_env *env, ani_error err)--><!--Device-ani_status (*ThrowError)(ani_env *env, ani_error err)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -1156,6 +1212,8 @@ ani_status (*ExistUnhandledError)(ani_env *env, ani_boolean *result)
 **Description**
 
 Checks if there are unhandled errors.<br> This function determines if there are unhandled errors in the current environment.
+
+<!--Device-ani_status (*ExistUnhandledError)(ani_env *env, ani_boolean *result)--><!--Device-ani_status (*ExistUnhandledError)(ani_env *env, ani_boolean *result)-End-->
 
 **Since**: 23
 
@@ -1182,6 +1240,8 @@ ani_status (*GetUnhandledError)(ani_env *env, ani_error *result)
 
 Retrieves the current unhandled error.<br> This function fetches the unhandled error in the environment.
 
+<!--Device-ani_status (*GetUnhandledError)(ani_env *env, ani_error *result)--><!--Device-ani_status (*GetUnhandledError)(ani_env *env, ani_error *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -1207,6 +1267,8 @@ ani_status (*ResetError)(ani_env *env)
 
 Resets the current error state.<br> This function clears the error state in the current environment.
 
+<!--Device-ani_status (*ResetError)(ani_env *env)--><!--Device-ani_status (*ResetError)(ani_env *env)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -1231,6 +1293,8 @@ ani_status (*DescribeError)(ani_env *env)  // NOTE: Print stacktrace for debuggi
 
 Provides a description of the current error.<br> This function prints the stack trace or other debug information for the current error. Printing is done via invocation of `console.error` provided by standard library.
 
+<!--Device-ani_status (*DescribeError)(ani_env *env) // NOTE: Print stacktrace for debugging?--><!--Device-ani_status (*DescribeError)(ani_env *env) // NOTE: Print stacktrace for debugging?-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -1254,6 +1318,8 @@ ani_status (*Abort)(ani_env *env, const char *message)
 **Description**
 
 Aborts execution with a message.<br> This function terminates execution with the specified error message.
+
+<!--Device-ani_status (*Abort)(ani_env *env, const char *message)--><!--Device-ani_status (*Abort)(ani_env *env, const char *message)-End-->
 
 **Since**: 23
 
@@ -1280,6 +1346,8 @@ ani_status (*GetNull)(ani_env *env, ani_ref *result)
 
 Retrieves a null reference.<br> This function provides a null reference in the specified result.
 
+<!--Device-ani_status (*GetNull)(ani_env *env, ani_ref *result)--><!--Device-ani_status (*GetNull)(ani_env *env, ani_ref *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -1305,6 +1373,8 @@ ani_status (*GetUndefined)(ani_env *env, ani_ref *result)
 
 Retrieves an undefined reference.<br> This function provides an undefined reference in the specified result.
 
+<!--Device-ani_status (*GetUndefined)(ani_env *env, ani_ref *result)--><!--Device-ani_status (*GetUndefined)(ani_env *env, ani_ref *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -1329,6 +1399,8 @@ ani_status (*Reference_IsNull)(ani_env *env, ani_ref ref, ani_boolean *result)
 **Description**
 
 Checks if a reference is null.<br> This function determines if the specified reference is null.
+
+<!--Device-ani_status (*Reference_IsNull)(ani_env *env, ani_ref ref, ani_boolean *result)--><!--Device-ani_status (*Reference_IsNull)(ani_env *env, ani_ref ref, ani_boolean *result)-End-->
 
 **Since**: 23
 
@@ -1356,6 +1428,8 @@ ani_status (*Reference_IsUndefined)(ani_env *env, ani_ref ref, ani_boolean *resu
 
 Checks if a reference is undefined.<br> This function determines if the specified reference is undefined.
 
+<!--Device-ani_status (*Reference_IsUndefined)(ani_env *env, ani_ref ref, ani_boolean *result)--><!--Device-ani_status (*Reference_IsUndefined)(ani_env *env, ani_ref ref, ani_boolean *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -1382,6 +1456,8 @@ ani_status (*Reference_IsNullishValue)(ani_env *env, ani_ref ref, ani_boolean *r
 
 Checks if a reference is nullish value (null or undefined).<br> This function determines if the specified reference is either null or undefined.
 
+<!--Device-ani_status (*Reference_IsNullishValue)(ani_env *env, ani_ref ref, ani_boolean *result)--><!--Device-ani_status (*Reference_IsNullishValue)(ani_env *env, ani_ref ref, ani_boolean *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -1407,6 +1483,8 @@ ani_status (*Reference_Equals)(ani_env *env, ani_ref ref0, ani_ref ref1, ani_boo
 **Description**
 
 Compares two references for equality.<br> This function checks if two references are equal.
+
+<!--Device-ani_status (*Reference_Equals)(ani_env *env, ani_ref ref0, ani_ref ref1, ani_boolean *result)--><!--Device-ani_status (*Reference_Equals)(ani_env *env, ani_ref ref0, ani_ref ref1, ani_boolean *result)-End-->
 
 **Since**: 23
 
@@ -1435,6 +1513,8 @@ ani_status (*Reference_StrictEquals)(ani_env *env, ani_ref ref0, ani_ref ref1, a
 
 Compares two references for strict equality.<br> This function checks if two references are strictly equal.
 
+<!--Device-ani_status (*Reference_StrictEquals)(ani_env *env, ani_ref ref0, ani_ref ref1, ani_boolean *result)--><!--Device-ani_status (*Reference_StrictEquals)(ani_env *env, ani_ref ref0, ani_ref ref1, ani_boolean *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -1461,6 +1541,8 @@ ani_status (*String_NewUTF16)(ani_env *env, const uint16_t *utf16_string, ani_si
 **Description**
 
 Creates a new UTF-16 string.<br> This function creates a new string from the provided UTF-16 encoded data.
+
+<!--Device-ani_status (*String_NewUTF16)(ani_env *env, const uint16_t *utf16_string, ani_size utf16_size, ani_string *result)--><!--Device-ani_status (*String_NewUTF16)(ani_env *env, const uint16_t *utf16_string, ani_size utf16_size, ani_string *result)-End-->
 
 **Since**: 23
 
@@ -1489,6 +1571,8 @@ ani_status (*String_GetUTF16Size)(ani_env *env, ani_string string, ani_size *res
 
 Retrieves the size of a UTF-16 string.<br> This function retrieves the size (in code units) of the specified UTF-16 string.
 
+<!--Device-ani_status (*String_GetUTF16Size)(ani_env *env, ani_string string, ani_size *result)--><!--Device-ani_status (*String_GetUTF16Size)(ani_env *env, ani_string string, ani_size *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -1514,6 +1598,8 @@ ani_status (*String_GetUTF16)(ani_env *env, ani_string string, uint16_t *utf16_b
 **Description**
 
 Retrieves the UTF-16 encoded data of a string.<br> This function copies the UTF-16 encoded data of the string into the provided buffer.
+
+<!--Device-ani_status (*String_GetUTF16)(ani_env *env, ani_string string, uint16_t *utf16_buffer, ani_size utf16_buffer_size, ani_size *result)--><!--Device-ani_status (*String_GetUTF16)(ani_env *env, ani_string string, uint16_t *utf16_buffer, ani_size utf16_buffer_size, ani_size *result)-End-->
 
 **Since**: 23
 
@@ -1542,6 +1628,8 @@ ani_status (*String_GetUTF16SubString)(ani_env *env, ani_string string, ani_size
 **Description**
 
 Retrieves a substring of a UTF-16 string.<br> This function copies a portion of the UTF-16 string into the provided buffer.
+
+<!--Device-ani_status (*String_GetUTF16SubString)(ani_env *env, ani_string string, ani_size substr_offset, ani_size substr_size, uint16_t *utf16_buffer, ani_size utf16_buffer_size, ani_size *result)--><!--Device-ani_status (*String_GetUTF16SubString)(ani_env *env, ani_string string, ani_size substr_offset, ani_size substr_size, uint16_t *utf16_buffer, ani_size utf16_buffer_size, ani_size *result)-End-->
 
 **Since**: 23
 
@@ -1573,6 +1661,8 @@ ani_status (*String_NewUTF8)(ani_env *env, const char *utf8_string, ani_size utf
 
 Creates a new UTF-8 string.<br> This function creates a new string from the provided UTF-8 encoded data.
 
+<!--Device-ani_status (*String_NewUTF8)(ani_env *env, const char *utf8_string, ani_size utf8_size, ani_string *result)--><!--Device-ani_status (*String_NewUTF8)(ani_env *env, const char *utf8_string, ani_size utf8_size, ani_string *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -1600,6 +1690,8 @@ ani_status (*String_GetUTF8Size)(ani_env *env, ani_string string, ani_size *resu
 
 Retrieves the size of a UTF-8 string.<br> This function retrieves the size (in bytes) of the specified UTF-8 string.
 
+<!--Device-ani_status (*String_GetUTF8Size)(ani_env *env, ani_string string, ani_size *result)--><!--Device-ani_status (*String_GetUTF8Size)(ani_env *env, ani_string string, ani_size *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -1625,6 +1717,8 @@ ani_status (*String_GetUTF8)(ani_env *env, ani_string string, char *utf8_buffer,
 **Description**
 
 Retrieves the UTF-8 encoded data of a string.<br> This function copies the UTF-8 encoded data of the string into the provided buffer.
+
+<!--Device-ani_status (*String_GetUTF8)(ani_env *env, ani_string string, char *utf8_buffer, ani_size utf8_buffer_size, ani_size *result)--><!--Device-ani_status (*String_GetUTF8)(ani_env *env, ani_string string, char *utf8_buffer, ani_size utf8_buffer_size, ani_size *result)-End-->
 
 **Since**: 23
 
@@ -1653,6 +1747,8 @@ ani_status (*String_GetUTF8SubString)(ani_env *env, ani_string string, ani_size 
 **Description**
 
 Retrieves a substring of a UTF-8 string.<br> This function copies a portion of the UTF-8 string into the provided buffer.
+
+<!--Device-ani_status (*String_GetUTF8SubString)(ani_env *env, ani_string string, ani_size substr_offset, ani_size substr_size, char *utf8_buffer, ani_size utf8_buffer_size, ani_size *result)--><!--Device-ani_status (*String_GetUTF8SubString)(ani_env *env, ani_string string, ani_size substr_offset, ani_size substr_size, char *utf8_buffer, ani_size utf8_buffer_size, ani_size *result)-End-->
 
 **Since**: 23
 
@@ -1684,6 +1780,8 @@ ani_status (*Array_GetLength)(ani_env *env, ani_array array, ani_size *result)
 
 Retrieves the length of an Array.<br> This function retrieves the length of the specified Array object with respect to possible override of the managed method.
 
+<!--Device-ani_status (*Array_GetLength)(ani_env *env, ani_array array, ani_size *result)--><!--Device-ani_status (*Array_GetLength)(ani_env *env, ani_array array, ani_size *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -1710,6 +1808,8 @@ ani_status (*Array_New)(ani_env *env, ani_size length, ani_ref initial_element, 
 
 This function creates a new Array of the specified length.
 
+<!--Device-ani_status (*Array_New)(ani_env *env, ani_size length, ani_ref initial_element, ani_array *result)--><!--Device-ani_status (*Array_New)(ani_env *env, ani_size length, ani_ref initial_element, ani_array *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -1735,6 +1835,8 @@ ani_status (*Array_Set)(ani_env *env, ani_array array, ani_size index, ani_ref r
 **Description**
 
 Sets a value to an Array.<br> This function sets a value at a given index in Array with respect to possible override of the managed method.
+
+<!--Device-ani_status (*Array_Set)(ani_env *env, ani_array array, ani_size index, ani_ref ref)--><!--Device-ani_status (*Array_Set)(ani_env *env, ani_array array, ani_size index, ani_ref ref)-End-->
 
 **Since**: 23
 
@@ -1763,6 +1865,8 @@ ani_status (*Array_Get)(ani_env *env, ani_array array, ani_size index, ani_ref *
 
 Retrieves a value from an Array.<br> This function retrieves a value at a given index from Array with respect to possible override of the managed method.
 
+<!--Device-ani_status (*Array_Get)(ani_env *env, ani_array array, ani_size index, ani_ref *result)--><!--Device-ani_status (*Array_Get)(ani_env *env, ani_array array, ani_size index, ani_ref *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -1790,6 +1894,8 @@ ani_status (*Array_Push)(ani_env *env, ani_array array, ani_ref ref)
 
 Push a value to the end of Array.<br> This function pushes a value to the end of Array with respect to possible override of the managed method.
 
+<!--Device-ani_status (*Array_Push)(ani_env *env, ani_array array, ani_ref ref)--><!--Device-ani_status (*Array_Push)(ani_env *env, ani_array array, ani_ref ref)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -1815,6 +1921,8 @@ ani_status (*Array_Pop)(ani_env *env, ani_array array, ani_ref *result)
 **Description**
 
 Retrieves the last element and erases it from array.<br> This function retrieves the last element and erases it from Array with respect to possible override of the managed method.
+
+<!--Device-ani_status (*Array_Pop)(ani_env *env, ani_array array, ani_ref *result)--><!--Device-ani_status (*Array_Pop)(ani_env *env, ani_array array, ani_ref *result)-End-->
 
 **Since**: 23
 
@@ -1842,6 +1950,8 @@ ani_status (*FixedArray_GetLength)(ani_env *env, ani_fixedarray array, ani_size 
 
 Retrieves the length of a FixedArray.<br> This function retrieves the length of the specified FixedArray.
 
+<!--Device-ani_status (*FixedArray_GetLength)(ani_env *env, ani_fixedarray array, ani_size *result)--><!--Device-ani_status (*FixedArray_GetLength)(ani_env *env, ani_fixedarray array, ani_size *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -1867,6 +1977,8 @@ ani_status (*ValueArray_New_Boolean)(ani_env *env, ani_size length, ani_valuearr
 **Description**
 
 Creates a new ValueArray of booleans.<br> This function creates a new ValueArray of the specified length for boolean values.
+
+<!--Device-ani_status (*ValueArray_New_Boolean)(ani_env *env, ani_size length, ani_valuearray_boolean *result)--><!--Device-ani_status (*ValueArray_New_Boolean)(ani_env *env, ani_size length, ani_valuearray_boolean *result)-End-->
 
 **Since**: 23
 
@@ -1894,6 +2006,8 @@ ani_status (*ValueArray_New_Char)(ani_env *env, ani_size length, ani_valuearray_
 
 Creates a new ValueArray of characters.<br> This function creates a new ValueArray of the specified length for character values.
 
+<!--Device-ani_status (*ValueArray_New_Char)(ani_env *env, ani_size length, ani_valuearray_char *result)--><!--Device-ani_status (*ValueArray_New_Char)(ani_env *env, ani_size length, ani_valuearray_char *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -1919,6 +2033,8 @@ ani_status (*ValueArray_New_Byte)(ani_env *env, ani_size length, ani_valuearray_
 **Description**
 
 Creates a new ValueArray of bytes.<br> This function creates a new ValueArray of the specified length for byte values.
+
+<!--Device-ani_status (*ValueArray_New_Byte)(ani_env *env, ani_size length, ani_valuearray_byte *result)--><!--Device-ani_status (*ValueArray_New_Byte)(ani_env *env, ani_size length, ani_valuearray_byte *result)-End-->
 
 **Since**: 23
 
@@ -1946,6 +2062,8 @@ ani_status (*ValueArray_New_Short)(ani_env *env, ani_size length, ani_valuearray
 
 Creates a new ValueArray of shorts.<br> This function creates a new ValueArray of the specified length for short integer values.
 
+<!--Device-ani_status (*ValueArray_New_Short)(ani_env *env, ani_size length, ani_valuearray_short *result)--><!--Device-ani_status (*ValueArray_New_Short)(ani_env *env, ani_size length, ani_valuearray_short *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -1971,6 +2089,8 @@ ani_status (*ValueArray_New_Int)(ani_env *env, ani_size length, ani_valuearray_i
 **Description**
 
 Creates a new ValueArray of integers.<br> This function creates a new ValueArray of the specified length for integer values.
+
+<!--Device-ani_status (*ValueArray_New_Int)(ani_env *env, ani_size length, ani_valuearray_int *result)--><!--Device-ani_status (*ValueArray_New_Int)(ani_env *env, ani_size length, ani_valuearray_int *result)-End-->
 
 **Since**: 23
 
@@ -1998,6 +2118,8 @@ ani_status (*ValueArray_New_Long)(ani_env *env, ani_size length, ani_valuearray_
 
 Creates a new ValueArray of long integers.<br> This function creates a new ValueArray of the specified length for long integer values.
 
+<!--Device-ani_status (*ValueArray_New_Long)(ani_env *env, ani_size length, ani_valuearray_long *result)--><!--Device-ani_status (*ValueArray_New_Long)(ani_env *env, ani_size length, ani_valuearray_long *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -2023,6 +2145,8 @@ ani_status (*ValueArray_New_Float)(ani_env *env, ani_size length, ani_valuearray
 **Description**
 
 Creates a new ValueArray of floats.<br> This function creates a new ValueArray of the specified length for float values.
+
+<!--Device-ani_status (*ValueArray_New_Float)(ani_env *env, ani_size length, ani_valuearray_float *result)--><!--Device-ani_status (*ValueArray_New_Float)(ani_env *env, ani_size length, ani_valuearray_float *result)-End-->
 
 **Since**: 23
 
@@ -2050,6 +2174,8 @@ ani_status (*ValueArray_New_Double)(ani_env *env, ani_size length, ani_valuearra
 
 Creates a new ValueArray of doubles.<br> This function creates a new ValueArray of the specified length for double values.
 
+<!--Device-ani_status (*ValueArray_New_Double)(ani_env *env, ani_size length, ani_valuearray_double *result)--><!--Device-ani_status (*ValueArray_New_Double)(ani_env *env, ani_size length, ani_valuearray_double *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -2075,6 +2201,8 @@ ani_status (*ValueArray_GetRegion_Boolean)(ani_env *env, ani_valuearray_boolean 
 **Description**
 
 Retrieves a region of boolean values from a ValueArray.<br> This function retrieves a portion of the specified boolean ValueArray into a native buffer.
+
+<!--Device-ani_status (*ValueArray_GetRegion_Boolean)(ani_env *env, ani_valuearray_boolean array, ani_size offset, ani_size length, ani_boolean *native_buffer)--><!--Device-ani_status (*ValueArray_GetRegion_Boolean)(ani_env *env, ani_valuearray_boolean array, ani_size offset, ani_size length, ani_boolean *native_buffer)-End-->
 
 **Since**: 23
 
@@ -2104,6 +2232,8 @@ ani_status (*ValueArray_GetRegion_Char)(ani_env *env, ani_valuearray_char array,
 
 Retrieves a region of character values from a ValueArray.<br> This function retrieves a portion of the specified character ValueArray into a native buffer.
 
+<!--Device-ani_status (*ValueArray_GetRegion_Char)(ani_env *env, ani_valuearray_char array, ani_size offset, ani_size length, ani_char *native_buffer)--><!--Device-ani_status (*ValueArray_GetRegion_Char)(ani_env *env, ani_valuearray_char array, ani_size offset, ani_size length, ani_char *native_buffer)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -2131,6 +2261,8 @@ ani_status (*ValueArray_GetRegion_Byte)(ani_env *env, ani_valuearray_byte array,
 **Description**
 
 Retrieves a region of byte values from a ValueArray.<br> This function retrieves a portion of the specified byte ValueArray into a native buffer.
+
+<!--Device-ani_status (*ValueArray_GetRegion_Byte)(ani_env *env, ani_valuearray_byte array, ani_size offset, ani_size length, ani_byte *native_buffer)--><!--Device-ani_status (*ValueArray_GetRegion_Byte)(ani_env *env, ani_valuearray_byte array, ani_size offset, ani_size length, ani_byte *native_buffer)-End-->
 
 **Since**: 23
 
@@ -2160,6 +2292,8 @@ ani_status (*ValueArray_GetRegion_Short)(ani_env *env, ani_valuearray_short arra
 
 Retrieves a region of short values from a ValueArray.<br> This function retrieves a portion of the specified short ValueArray into a native buffer.
 
+<!--Device-ani_status (*ValueArray_GetRegion_Short)(ani_env *env, ani_valuearray_short array, ani_size offset, ani_size length, ani_short *native_buffer)--><!--Device-ani_status (*ValueArray_GetRegion_Short)(ani_env *env, ani_valuearray_short array, ani_size offset, ani_size length, ani_short *native_buffer)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -2187,6 +2321,8 @@ ani_status (*ValueArray_GetRegion_Int)(ani_env *env, ani_valuearray_int array, a
 **Description**
 
 Retrieves a region of integer values from a ValueArray.<br> This function retrieves a portion of the specified integer ValueArray into a native buffer.
+
+<!--Device-ani_status (*ValueArray_GetRegion_Int)(ani_env *env, ani_valuearray_int array, ani_size offset, ani_size length, ani_int *native_buffer)--><!--Device-ani_status (*ValueArray_GetRegion_Int)(ani_env *env, ani_valuearray_int array, ani_size offset, ani_size length, ani_int *native_buffer)-End-->
 
 **Since**: 23
 
@@ -2216,6 +2352,8 @@ ani_status (*ValueArray_GetRegion_Long)(ani_env *env, ani_valuearray_long array,
 
 Retrieves a region of long integer values from a ValueArray.<br> This function retrieves a portion of the specified long integer ValueArray into a native buffer.
 
+<!--Device-ani_status (*ValueArray_GetRegion_Long)(ani_env *env, ani_valuearray_long array, ani_size offset, ani_size length, ani_long *native_buffer)--><!--Device-ani_status (*ValueArray_GetRegion_Long)(ani_env *env, ani_valuearray_long array, ani_size offset, ani_size length, ani_long *native_buffer)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -2243,6 +2381,8 @@ ani_status (*ValueArray_GetRegion_Float)(ani_env *env, ani_valuearray_float arra
 **Description**
 
 Retrieves a region of float values from a ValueArray.<br> This function retrieves a portion of the specified float ValueArray into a native buffer.
+
+<!--Device-ani_status (*ValueArray_GetRegion_Float)(ani_env *env, ani_valuearray_float array, ani_size offset, ani_size length, ani_float *native_buffer)--><!--Device-ani_status (*ValueArray_GetRegion_Float)(ani_env *env, ani_valuearray_float array, ani_size offset, ani_size length, ani_float *native_buffer)-End-->
 
 **Since**: 23
 
@@ -2272,6 +2412,8 @@ ani_status (*ValueArray_GetRegion_Double)(ani_env *env, ani_valuearray_double ar
 
 Retrieves a region of double values from a ValueArray.<br> This function retrieves a portion of the specified double ValueArray into a native buffer.
 
+<!--Device-ani_status (*ValueArray_GetRegion_Double)(ani_env *env, ani_valuearray_double array, ani_size offset, ani_size length, ani_double *native_buffer)--><!--Device-ani_status (*ValueArray_GetRegion_Double)(ani_env *env, ani_valuearray_double array, ani_size offset, ani_size length, ani_double *native_buffer)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -2299,6 +2441,8 @@ ani_status (*ValueArray_SetRegion_Boolean)(ani_env *env, ani_valuearray_boolean 
 **Description**
 
 Sets a region of boolean values in a ValueArray.<br> This function sets a portion of the specified boolean ValueArray using a native buffer.
+
+<!--Device-ani_status (*ValueArray_SetRegion_Boolean)(ani_env *env, ani_valuearray_boolean array, ani_size offset, ani_size length, const ani_boolean *native_buffer)--><!--Device-ani_status (*ValueArray_SetRegion_Boolean)(ani_env *env, ani_valuearray_boolean array, ani_size offset, ani_size length, const ani_boolean *native_buffer)-End-->
 
 **Since**: 23
 
@@ -2328,6 +2472,8 @@ ani_status (*ValueArray_SetRegion_Char)(ani_env *env, ani_valuearray_char array,
 
 Sets a region of character values in a ValueArray.<br> This function sets a portion of the specified character ValueArray using a native buffer.
 
+<!--Device-ani_status (*ValueArray_SetRegion_Char)(ani_env *env, ani_valuearray_char array, ani_size offset, ani_size length, const ani_char *native_buffer)--><!--Device-ani_status (*ValueArray_SetRegion_Char)(ani_env *env, ani_valuearray_char array, ani_size offset, ani_size length, const ani_char *native_buffer)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -2355,6 +2501,8 @@ ani_status (*ValueArray_SetRegion_Byte)(ani_env *env, ani_valuearray_byte array,
 **Description**
 
 Sets a region of byte values in a ValueArray.<br> This function sets a portion of the specified byte ValueArray using a native buffer.
+
+<!--Device-ani_status (*ValueArray_SetRegion_Byte)(ani_env *env, ani_valuearray_byte array, ani_size offset, ani_size length, const ani_byte *native_buffer)--><!--Device-ani_status (*ValueArray_SetRegion_Byte)(ani_env *env, ani_valuearray_byte array, ani_size offset, ani_size length, const ani_byte *native_buffer)-End-->
 
 **Since**: 23
 
@@ -2384,6 +2532,8 @@ ani_status (*ValueArray_SetRegion_Short)(ani_env *env, ani_valuearray_short arra
 
 Sets a region of short values in a ValueArray.<br> This function sets a portion of the specified short ValueArray using a native buffer.
 
+<!--Device-ani_status (*ValueArray_SetRegion_Short)(ani_env *env, ani_valuearray_short array, ani_size offset, ani_size length, const ani_short *native_buffer)--><!--Device-ani_status (*ValueArray_SetRegion_Short)(ani_env *env, ani_valuearray_short array, ani_size offset, ani_size length, const ani_short *native_buffer)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -2411,6 +2561,8 @@ ani_status (*ValueArray_SetRegion_Int)(ani_env *env, ani_valuearray_int array, a
 **Description**
 
 Sets a region of integer values in a ValueArray.<br> This function sets a portion of the specified integer ValueArray using a native buffer.
+
+<!--Device-ani_status (*ValueArray_SetRegion_Int)(ani_env *env, ani_valuearray_int array, ani_size offset, ani_size length, const ani_int *native_buffer)--><!--Device-ani_status (*ValueArray_SetRegion_Int)(ani_env *env, ani_valuearray_int array, ani_size offset, ani_size length, const ani_int *native_buffer)-End-->
 
 **Since**: 23
 
@@ -2440,6 +2592,8 @@ ani_status (*ValueArray_SetRegion_Long)(ani_env *env, ani_valuearray_long array,
 
 Sets a region of long integer values in a ValueArray.<br> This function sets a portion of the specified long integer ValueArray using a native buffer.
 
+<!--Device-ani_status (*ValueArray_SetRegion_Long)(ani_env *env, ani_valuearray_long array, ani_size offset, ani_size length, const ani_long *native_buffer)--><!--Device-ani_status (*ValueArray_SetRegion_Long)(ani_env *env, ani_valuearray_long array, ani_size offset, ani_size length, const ani_long *native_buffer)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -2467,6 +2621,8 @@ ani_status (*ValueArray_SetRegion_Float)(ani_env *env, ani_valuearray_float arra
 **Description**
 
 Sets a region of float values in a ValueArray.<br> This function sets a portion of the specified float ValueArray using a native buffer.
+
+<!--Device-ani_status (*ValueArray_SetRegion_Float)(ani_env *env, ani_valuearray_float array, ani_size offset, ani_size length, const ani_float *native_buffer)--><!--Device-ani_status (*ValueArray_SetRegion_Float)(ani_env *env, ani_valuearray_float array, ani_size offset, ani_size length, const ani_float *native_buffer)-End-->
 
 **Since**: 23
 
@@ -2496,6 +2652,8 @@ ani_status (*ValueArray_SetRegion_Double)(ani_env *env, ani_valuearray_double ar
 
 Sets a region of double values in a ValueArray.<br> This function sets a portion of the specified double ValueArray using a native buffer.
 
+<!--Device-ani_status (*ValueArray_SetRegion_Double)(ani_env *env, ani_valuearray_double array, ani_size offset, ani_size length, const ani_double *native_buffer)--><!--Device-ani_status (*ValueArray_SetRegion_Double)(ani_env *env, ani_valuearray_double array, ani_size offset, ani_size length, const ani_double *native_buffer)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -2523,6 +2681,8 @@ ani_status (*FixedArray_New)(ani_env *env, ani_type type, ani_size length, ani_r
 **Description**
 
 Creates a new FixedArray of references.<br> This function creates a new FixedArray of references, optionally initializing it with an initial_element ref.
+
+<!--Device-ani_status (*FixedArray_New)(ani_env *env, ani_type type, ani_size length, ani_ref initial_element, ani_fixedarray *result)--><!--Device-ani_status (*FixedArray_New)(ani_env *env, ani_type type, ani_size length, ani_ref initial_element, ani_fixedarray *result)-End-->
 
 **Since**: 23
 
@@ -2552,6 +2712,8 @@ ani_status (*FixedArray_Set)(ani_env *env, ani_fixedarray array, ani_size index,
 
 Sets a reference at a specific index in a FixedArray.<br> This function sets the value of a reference at the specified index in the FixedArray.
 
+<!--Device-ani_status (*FixedArray_Set)(ani_env *env, ani_fixedarray array, ani_size index, ani_ref ref)--><!--Device-ani_status (*FixedArray_Set)(ani_env *env, ani_fixedarray array, ani_size index, ani_ref ref)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -2578,6 +2740,8 @@ ani_status (*FixedArray_Get)(ani_env *env, ani_fixedarray array, ani_size index,
 **Description**
 
 Retrieves a reference from a specific index in a FixedArray.<br> This function retrieves the value of a reference at the specified index in the FixedArray.
+
+<!--Device-ani_status (*FixedArray_Get)(ani_env *env, ani_fixedarray array, ani_size index, ani_ref *result)--><!--Device-ani_status (*FixedArray_Get)(ani_env *env, ani_fixedarray array, ani_size index, ani_ref *result)-End-->
 
 **Since**: 23
 
@@ -2606,6 +2770,8 @@ ani_status (*Enum_GetEnumItemByName)(ani_env *env, ani_enum enm, const char *nam
 
 Retrieves an enum item by its name.<br> This function retrieves an enum item associated with the specified name.
 
+<!--Device-ani_status (*Enum_GetEnumItemByName)(ani_env *env, ani_enum enm, const char *name, ani_enum_item *result)--><!--Device-ani_status (*Enum_GetEnumItemByName)(ani_env *env, ani_enum enm, const char *name, ani_enum_item *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -2632,6 +2798,8 @@ ani_status (*Enum_GetEnumItemByIndex)(ani_env *env, ani_enum enm, ani_size index
 **Description**
 
 Retrieves an enum item by its index.<br> This function retrieves an enum item located at the specified index.
+
+<!--Device-ani_status (*Enum_GetEnumItemByIndex)(ani_env *env, ani_enum enm, ani_size index, ani_enum_item *result)--><!--Device-ani_status (*Enum_GetEnumItemByIndex)(ani_env *env, ani_enum enm, ani_size index, ani_enum_item *result)-End-->
 
 **Since**: 23
 
@@ -2660,6 +2828,8 @@ ani_status (*EnumItem_GetEnum)(ani_env *env, ani_enum_item enum_item, ani_enum *
 
 Retrieves the enum associated with an enum item.<br> This function retrieves the enum to which the specified enum item belongs.
 
+<!--Device-ani_status (*EnumItem_GetEnum)(ani_env *env, ani_enum_item enum_item, ani_enum *result)--><!--Device-ani_status (*EnumItem_GetEnum)(ani_env *env, ani_enum_item enum_item, ani_enum *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -2685,6 +2855,8 @@ ani_status (*EnumItem_GetValue_Int)(ani_env *env, ani_enum_item enum_item, ani_i
 **Description**
 
 Retrieves the integer value of an enum item.<br> This function retrieves the integer representing the value of the specified enum item.
+
+<!--Device-ani_status (*EnumItem_GetValue_Int)(ani_env *env, ani_enum_item enum_item, ani_int *result)--><!--Device-ani_status (*EnumItem_GetValue_Int)(ani_env *env, ani_enum_item enum_item, ani_int *result)-End-->
 
 **Since**: 23
 
@@ -2712,6 +2884,8 @@ ani_status (*EnumItem_GetValue_String)(ani_env *env, ani_enum_item enum_item, an
 
 Retrieves the string value of an enum item.<br> This function retrieves the string representing the value of the specified enum item.
 
+<!--Device-ani_status (*EnumItem_GetValue_String)(ani_env *env, ani_enum_item enum_item, ani_string *result)--><!--Device-ani_status (*EnumItem_GetValue_String)(ani_env *env, ani_enum_item enum_item, ani_string *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -2737,6 +2911,8 @@ ani_status (*EnumItem_GetName)(ani_env *env, ani_enum_item enum_item, ani_string
 **Description**
 
 Retrieves the name of an enum item.<br> This function retrieves the name associated with the specified enum item.
+
+<!--Device-ani_status (*EnumItem_GetName)(ani_env *env, ani_enum_item enum_item, ani_string *result)--><!--Device-ani_status (*EnumItem_GetName)(ani_env *env, ani_enum_item enum_item, ani_string *result)-End-->
 
 **Since**: 23
 
@@ -2764,6 +2940,8 @@ ani_status (*EnumItem_GetIndex)(ani_env *env, ani_enum_item enum_item, ani_size 
 
 Retrieves the index of an enum item.<br> This function retrieves the index of the specified enum item within its enum.
 
+<!--Device-ani_status (*EnumItem_GetIndex)(ani_env *env, ani_enum_item enum_item, ani_size *result)--><!--Device-ani_status (*EnumItem_GetIndex)(ani_env *env, ani_enum_item enum_item, ani_size *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -2789,6 +2967,8 @@ ani_status (*FunctionalObject_Call)(ani_env *env, ani_fn_object fn, ani_size arg
 **Description**
 
 Invokes an object of function type.<br> This function invokes an object of function type with the specified arguments.
+
+<!--Device-ani_status (*FunctionalObject_Call)(ani_env *env, ani_fn_object fn, ani_size argc, ani_ref *argv, ani_ref *result)--><!--Device-ani_status (*FunctionalObject_Call)(ani_env *env, ani_fn_object fn, ani_size argc, ani_ref *argv, ani_ref *result)-End-->
 
 **Since**: 23
 
@@ -2818,6 +2998,8 @@ ani_status (*Variable_SetValue_Boolean)(ani_env *env, ani_variable variable, ani
 
 Sets a boolean value to a variable.<br> This function assigns a boolean value to the specified variable.
 
+<!--Device-ani_status (*Variable_SetValue_Boolean)(ani_env *env, ani_variable variable, ani_boolean value)--><!--Device-ani_status (*Variable_SetValue_Boolean)(ani_env *env, ani_variable variable, ani_boolean value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -2843,6 +3025,8 @@ ani_status (*Variable_SetValue_Char)(ani_env *env, ani_variable variable, ani_ch
 **Description**
 
 Sets a character value to a variable.<br> This function assigns a character value to the specified variable.
+
+<!--Device-ani_status (*Variable_SetValue_Char)(ani_env *env, ani_variable variable, ani_char value)--><!--Device-ani_status (*Variable_SetValue_Char)(ani_env *env, ani_variable variable, ani_char value)-End-->
 
 **Since**: 23
 
@@ -2870,6 +3054,8 @@ ani_status (*Variable_SetValue_Byte)(ani_env *env, ani_variable variable, ani_by
 
 Sets a byte value to a variable.<br> This function assigns a byte value to the specified variable.
 
+<!--Device-ani_status (*Variable_SetValue_Byte)(ani_env *env, ani_variable variable, ani_byte value)--><!--Device-ani_status (*Variable_SetValue_Byte)(ani_env *env, ani_variable variable, ani_byte value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -2895,6 +3081,8 @@ ani_status (*Variable_SetValue_Short)(ani_env *env, ani_variable variable, ani_s
 **Description**
 
 Sets a short value to a variable.<br> This function assigns a short integer value to the specified variable.
+
+<!--Device-ani_status (*Variable_SetValue_Short)(ani_env *env, ani_variable variable, ani_short value)--><!--Device-ani_status (*Variable_SetValue_Short)(ani_env *env, ani_variable variable, ani_short value)-End-->
 
 **Since**: 23
 
@@ -2922,6 +3110,8 @@ ani_status (*Variable_SetValue_Int)(ani_env *env, ani_variable variable, ani_int
 
 Sets an integer value to a variable.<br> This function assigns an integer value to the specified variable.
 
+<!--Device-ani_status (*Variable_SetValue_Int)(ani_env *env, ani_variable variable, ani_int value)--><!--Device-ani_status (*Variable_SetValue_Int)(ani_env *env, ani_variable variable, ani_int value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -2947,6 +3137,8 @@ ani_status (*Variable_SetValue_Long)(ani_env *env, ani_variable variable, ani_lo
 **Description**
 
 Sets a long value to a variable.<br> This function assigns a long integer value to the specified variable.
+
+<!--Device-ani_status (*Variable_SetValue_Long)(ani_env *env, ani_variable variable, ani_long value)--><!--Device-ani_status (*Variable_SetValue_Long)(ani_env *env, ani_variable variable, ani_long value)-End-->
 
 **Since**: 23
 
@@ -2974,6 +3166,8 @@ ani_status (*Variable_SetValue_Float)(ani_env *env, ani_variable variable, ani_f
 
 Sets a float value to a variable.<br> This function assigns a float value to the specified variable.
 
+<!--Device-ani_status (*Variable_SetValue_Float)(ani_env *env, ani_variable variable, ani_float value)--><!--Device-ani_status (*Variable_SetValue_Float)(ani_env *env, ani_variable variable, ani_float value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -2999,6 +3193,8 @@ ani_status (*Variable_SetValue_Double)(ani_env *env, ani_variable variable, ani_
 **Description**
 
 Sets a double value to a variable.<br> This function assigns a double value to the specified variable.
+
+<!--Device-ani_status (*Variable_SetValue_Double)(ani_env *env, ani_variable variable, ani_double value)--><!--Device-ani_status (*Variable_SetValue_Double)(ani_env *env, ani_variable variable, ani_double value)-End-->
 
 **Since**: 23
 
@@ -3026,6 +3222,8 @@ ani_status (*Variable_SetValue_Ref)(ani_env *env, ani_variable variable, ani_ref
 
 Sets a reference value to a variable.<br> This function assigns a reference value to the specified variable.
 
+<!--Device-ani_status (*Variable_SetValue_Ref)(ani_env *env, ani_variable variable, ani_ref value)--><!--Device-ani_status (*Variable_SetValue_Ref)(ani_env *env, ani_variable variable, ani_ref value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -3051,6 +3249,8 @@ ani_status (*Variable_GetValue_Boolean)(ani_env *env, ani_variable variable, ani
 **Description**
 
 Retrieves a boolean value from a variable.<br> This function fetches a boolean value from the specified variable.
+
+<!--Device-ani_status (*Variable_GetValue_Boolean)(ani_env *env, ani_variable variable, ani_boolean *result)--><!--Device-ani_status (*Variable_GetValue_Boolean)(ani_env *env, ani_variable variable, ani_boolean *result)-End-->
 
 **Since**: 23
 
@@ -3078,6 +3278,8 @@ ani_status (*Variable_GetValue_Char)(ani_env *env, ani_variable variable, ani_ch
 
 Retrieves a character value from a variable.<br> This function fetches a character value from the specified variable.
 
+<!--Device-ani_status (*Variable_GetValue_Char)(ani_env *env, ani_variable variable, ani_char *result)--><!--Device-ani_status (*Variable_GetValue_Char)(ani_env *env, ani_variable variable, ani_char *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -3103,6 +3305,8 @@ ani_status (*Variable_GetValue_Byte)(ani_env *env, ani_variable variable, ani_by
 **Description**
 
 Retrieves a byte value from a variable.<br> This function fetches a byte value from the specified variable.
+
+<!--Device-ani_status (*Variable_GetValue_Byte)(ani_env *env, ani_variable variable, ani_byte *result)--><!--Device-ani_status (*Variable_GetValue_Byte)(ani_env *env, ani_variable variable, ani_byte *result)-End-->
 
 **Since**: 23
 
@@ -3130,6 +3334,8 @@ ani_status (*Variable_GetValue_Short)(ani_env *env, ani_variable variable, ani_s
 
 Retrieves a short value from a variable.<br> This function fetches a short integer value from the specified variable.
 
+<!--Device-ani_status (*Variable_GetValue_Short)(ani_env *env, ani_variable variable, ani_short *result)--><!--Device-ani_status (*Variable_GetValue_Short)(ani_env *env, ani_variable variable, ani_short *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -3155,6 +3361,8 @@ ani_status (*Variable_GetValue_Int)(ani_env *env, ani_variable variable, ani_int
 **Description**
 
 Retrieves an integer value from a variable.<br> This function fetches an integer value from the specified variable.
+
+<!--Device-ani_status (*Variable_GetValue_Int)(ani_env *env, ani_variable variable, ani_int *result)--><!--Device-ani_status (*Variable_GetValue_Int)(ani_env *env, ani_variable variable, ani_int *result)-End-->
 
 **Since**: 23
 
@@ -3182,6 +3390,8 @@ ani_status (*Variable_GetValue_Long)(ani_env *env, ani_variable variable, ani_lo
 
 Retrieves a long value from a variable.<br> This function fetches a long integer value from the specified variable.
 
+<!--Device-ani_status (*Variable_GetValue_Long)(ani_env *env, ani_variable variable, ani_long *result)--><!--Device-ani_status (*Variable_GetValue_Long)(ani_env *env, ani_variable variable, ani_long *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -3207,6 +3417,8 @@ ani_status (*Variable_GetValue_Float)(ani_env *env, ani_variable variable, ani_f
 **Description**
 
 Retrieves a float value from a variable.<br> This function fetches a float value from the specified variable.
+
+<!--Device-ani_status (*Variable_GetValue_Float)(ani_env *env, ani_variable variable, ani_float *result)--><!--Device-ani_status (*Variable_GetValue_Float)(ani_env *env, ani_variable variable, ani_float *result)-End-->
 
 **Since**: 23
 
@@ -3234,6 +3446,8 @@ ani_status (*Variable_GetValue_Double)(ani_env *env, ani_variable variable, ani_
 
 Retrieves a double value from a variable.<br> This function fetches a double value from the specified variable.
 
+<!--Device-ani_status (*Variable_GetValue_Double)(ani_env *env, ani_variable variable, ani_double *result)--><!--Device-ani_status (*Variable_GetValue_Double)(ani_env *env, ani_variable variable, ani_double *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -3260,6 +3474,8 @@ ani_status (*Variable_GetValue_Ref)(ani_env *env, ani_variable variable, ani_ref
 
 Retrieves a reference value from a variable.<br> This function fetches a reference value from the specified variable.
 
+<!--Device-ani_status (*Variable_GetValue_Ref)(ani_env *env, ani_variable variable, ani_ref *result)--><!--Device-ani_status (*Variable_GetValue_Ref)(ani_env *env, ani_variable variable, ani_ref *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -3285,6 +3501,8 @@ ani_status (*Function_Call_Boolean)(ani_env *env, ani_function fn, ani_boolean *
 **Description**
 
 Calls a function and retrieves a boolean result.<br> This function calls the specified function with variadic arguments and retrieves a boolean result.
+
+<!--Device-ani_status (*Function_Call_Boolean)(ani_env *env, ani_function fn, ani_boolean *result, ...)--><!--Device-ani_status (*Function_Call_Boolean)(ani_env *env, ani_function fn, ani_boolean *result, ...)-End-->
 
 **Since**: 23
 
@@ -3313,6 +3531,8 @@ ani_status (*Function_Call_Boolean_A)(ani_env *env, ani_function fn, ani_boolean
 
 Calls a function and retrieves a boolean result (array-based).<br> This function calls the specified function with arguments provided in an array and retrieves a boolean result.
 
+<!--Device-ani_status (*Function_Call_Boolean_A)(ani_env *env, ani_function fn, ani_boolean *result, const ani_value *args)--><!--Device-ani_status (*Function_Call_Boolean_A)(ani_env *env, ani_function fn, ani_boolean *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -3339,6 +3559,8 @@ ani_status (*Function_Call_Boolean_V)(ani_env *env, ani_function fn, ani_boolean
 **Description**
 
 Calls a function and retrieves a boolean result (variadic arguments).<br> This function calls the specified function with arguments provided in a `va_list` and retrieves a boolean result.
+
+<!--Device-ani_status (*Function_Call_Boolean_V)(ani_env *env, ani_function fn, ani_boolean *result, va_list args)--><!--Device-ani_status (*Function_Call_Boolean_V)(ani_env *env, ani_function fn, ani_boolean *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -3367,6 +3589,8 @@ ani_status (*Function_Call_Char)(ani_env *env, ani_function fn, ani_char *result
 
 Calls a function and retrieves a character result.<br> This function calls the specified function with variadic arguments and retrieves a character result.
 
+<!--Device-ani_status (*Function_Call_Char)(ani_env *env, ani_function fn, ani_char *result, ...)--><!--Device-ani_status (*Function_Call_Char)(ani_env *env, ani_function fn, ani_char *result, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -3393,6 +3617,8 @@ ani_status (*Function_Call_Char_A)(ani_env *env, ani_function fn, ani_char *resu
 **Description**
 
 Calls a function and retrieves a character result (array-based).<br> This function calls the specified function with arguments provided in an array and retrieves a character result.
+
+<!--Device-ani_status (*Function_Call_Char_A)(ani_env *env, ani_function fn, ani_char *result, const ani_value *args)--><!--Device-ani_status (*Function_Call_Char_A)(ani_env *env, ani_function fn, ani_char *result, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -3421,6 +3647,8 @@ ani_status (*Function_Call_Char_V)(ani_env *env, ani_function fn, ani_char *resu
 
 Calls a function and retrieves a character result (variadic arguments).<br> This function calls the specified function with arguments provided in a `va_list` and retrieves a character result.
 
+<!--Device-ani_status (*Function_Call_Char_V)(ani_env *env, ani_function fn, ani_char *result, va_list args)--><!--Device-ani_status (*Function_Call_Char_V)(ani_env *env, ani_function fn, ani_char *result, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -3447,6 +3675,8 @@ ani_status (*Function_Call_Byte)(ani_env *env, ani_function fn, ani_byte *result
 **Description**
 
 Calls a function and retrieves a byte result.<br> This function calls the specified function with variadic arguments and retrieves a byte result.
+
+<!--Device-ani_status (*Function_Call_Byte)(ani_env *env, ani_function fn, ani_byte *result, ...)--><!--Device-ani_status (*Function_Call_Byte)(ani_env *env, ani_function fn, ani_byte *result, ...)-End-->
 
 **Since**: 23
 
@@ -3475,6 +3705,8 @@ ani_status (*Function_Call_Byte_A)(ani_env *env, ani_function fn, ani_byte *resu
 
 Calls a function and retrieves a byte result (array-based).<br> This function calls the specified function with arguments provided in an array and retrieves a byte result.
 
+<!--Device-ani_status (*Function_Call_Byte_A)(ani_env *env, ani_function fn, ani_byte *result, const ani_value *args)--><!--Device-ani_status (*Function_Call_Byte_A)(ani_env *env, ani_function fn, ani_byte *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -3501,6 +3733,8 @@ ani_status (*Function_Call_Byte_V)(ani_env *env, ani_function fn, ani_byte *resu
 **Description**
 
 Calls a function and retrieves a byte result (variadic arguments).<br> This function calls the specified function with arguments provided in a `va_list` and retrieves a byte result.
+
+<!--Device-ani_status (*Function_Call_Byte_V)(ani_env *env, ani_function fn, ani_byte *result, va_list args)--><!--Device-ani_status (*Function_Call_Byte_V)(ani_env *env, ani_function fn, ani_byte *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -3529,6 +3763,8 @@ ani_status (*Function_Call_Short)(ani_env *env, ani_function fn, ani_short *resu
 
 Calls a function and retrieves a short result.<br> This function calls the specified function with variadic arguments and retrieves a short result.
 
+<!--Device-ani_status (*Function_Call_Short)(ani_env *env, ani_function fn, ani_short *result, ...)--><!--Device-ani_status (*Function_Call_Short)(ani_env *env, ani_function fn, ani_short *result, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -3555,6 +3791,8 @@ ani_status (*Function_Call_Short_A)(ani_env *env, ani_function fn, ani_short *re
 **Description**
 
 Calls a function and retrieves a short result (array-based).<br> This function calls the specified function with arguments provided in an array and retrieves a short result.
+
+<!--Device-ani_status (*Function_Call_Short_A)(ani_env *env, ani_function fn, ani_short *result, const ani_value *args)--><!--Device-ani_status (*Function_Call_Short_A)(ani_env *env, ani_function fn, ani_short *result, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -3583,6 +3821,8 @@ ani_status (*Function_Call_Short_V)(ani_env *env, ani_function fn, ani_short *re
 
 Calls a function and retrieves a short result (variadic arguments).<br> This function calls the specified function with arguments provided in a `va_list` and retrieves a short result.
 
+<!--Device-ani_status (*Function_Call_Short_V)(ani_env *env, ani_function fn, ani_short *result, va_list args)--><!--Device-ani_status (*Function_Call_Short_V)(ani_env *env, ani_function fn, ani_short *result, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -3609,6 +3849,8 @@ ani_status (*Function_Call_Int)(ani_env *env, ani_function fn, ani_int *result, 
 **Description**
 
 Calls a function and retrieves an integer result.<br> This function calls the specified function with variadic arguments and retrieves an integer result.
+
+<!--Device-ani_status (*Function_Call_Int)(ani_env *env, ani_function fn, ani_int *result, ...)--><!--Device-ani_status (*Function_Call_Int)(ani_env *env, ani_function fn, ani_int *result, ...)-End-->
 
 **Since**: 23
 
@@ -3637,6 +3879,8 @@ ani_status (*Function_Call_Int_A)(ani_env *env, ani_function fn, ani_int *result
 
 Calls a function and retrieves an integer result (array-based).<br> This function calls the specified function with arguments provided in an array and retrieves an integer result.
 
+<!--Device-ani_status (*Function_Call_Int_A)(ani_env *env, ani_function fn, ani_int *result, const ani_value *args)--><!--Device-ani_status (*Function_Call_Int_A)(ani_env *env, ani_function fn, ani_int *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -3663,6 +3907,8 @@ ani_status (*Function_Call_Int_V)(ani_env *env, ani_function fn, ani_int *result
 **Description**
 
 Calls a function and retrieves an integer result (variadic arguments).<br> This function calls the specified function with arguments provided in a `va_list` and retrieves an integer result.
+
+<!--Device-ani_status (*Function_Call_Int_V)(ani_env *env, ani_function fn, ani_int *result, va_list args)--><!--Device-ani_status (*Function_Call_Int_V)(ani_env *env, ani_function fn, ani_int *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -3691,6 +3937,8 @@ ani_status (*Function_Call_Long)(ani_env *env, ani_function fn, ani_long *result
 
 Calls a function and retrieves a long result.<br> This function calls the specified function with variadic arguments and retrieves a long result.
 
+<!--Device-ani_status (*Function_Call_Long)(ani_env *env, ani_function fn, ani_long *result, ...)--><!--Device-ani_status (*Function_Call_Long)(ani_env *env, ani_function fn, ani_long *result, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -3717,6 +3965,8 @@ ani_status (*Function_Call_Long_A)(ani_env *env, ani_function fn, ani_long *resu
 **Description**
 
 Calls a function and retrieves a long result (array-based).<br> This function calls the specified function with arguments provided in an array and retrieves a long result.
+
+<!--Device-ani_status (*Function_Call_Long_A)(ani_env *env, ani_function fn, ani_long *result, const ani_value *args)--><!--Device-ani_status (*Function_Call_Long_A)(ani_env *env, ani_function fn, ani_long *result, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -3745,6 +3995,8 @@ ani_status (*Function_Call_Long_V)(ani_env *env, ani_function fn, ani_long *resu
 
 Calls a function and retrieves a long result (variadic arguments).<br> This function calls the specified function with arguments provided in a `va_list` and retrieves a long result.
 
+<!--Device-ani_status (*Function_Call_Long_V)(ani_env *env, ani_function fn, ani_long *result, va_list args)--><!--Device-ani_status (*Function_Call_Long_V)(ani_env *env, ani_function fn, ani_long *result, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -3771,6 +4023,8 @@ ani_status (*Function_Call_Float)(ani_env *env, ani_function fn, ani_float *resu
 **Description**
 
 Calls a function and retrieves a float result.<br> This function calls the specified function with variadic arguments and retrieves a float result.
+
+<!--Device-ani_status (*Function_Call_Float)(ani_env *env, ani_function fn, ani_float *result, ...)--><!--Device-ani_status (*Function_Call_Float)(ani_env *env, ani_function fn, ani_float *result, ...)-End-->
 
 **Since**: 23
 
@@ -3799,6 +4053,8 @@ ani_status (*Function_Call_Float_A)(ani_env *env, ani_function fn, ani_float *re
 
 Calls a function and retrieves a float result (array-based).<br> This function calls the specified function with arguments provided in an array and retrieves a float result.
 
+<!--Device-ani_status (*Function_Call_Float_A)(ani_env *env, ani_function fn, ani_float *result, const ani_value *args)--><!--Device-ani_status (*Function_Call_Float_A)(ani_env *env, ani_function fn, ani_float *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -3825,6 +4081,8 @@ ani_status (*Function_Call_Float_V)(ani_env *env, ani_function fn, ani_float *re
 **Description**
 
 Calls a function and retrieves a float result (variadic arguments).<br> This function calls the specified function with arguments provided in a `va_list` and retrieves a float result.
+
+<!--Device-ani_status (*Function_Call_Float_V)(ani_env *env, ani_function fn, ani_float *result, va_list args)--><!--Device-ani_status (*Function_Call_Float_V)(ani_env *env, ani_function fn, ani_float *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -3853,6 +4111,8 @@ ani_status (*Function_Call_Double)(ani_env *env, ani_function fn, ani_double *re
 
 Calls a function and retrieves a double result.<br> This function calls the specified function with variadic arguments and retrieves a double result.
 
+<!--Device-ani_status (*Function_Call_Double)(ani_env *env, ani_function fn, ani_double *result, ...)--><!--Device-ani_status (*Function_Call_Double)(ani_env *env, ani_function fn, ani_double *result, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -3879,6 +4139,8 @@ ani_status (*Function_Call_Double_A)(ani_env *env, ani_function fn, ani_double *
 **Description**
 
 Calls a function and retrieves a double result (array-based).<br> This function calls the specified function with arguments provided in an array and retrieves a double result.
+
+<!--Device-ani_status (*Function_Call_Double_A)(ani_env *env, ani_function fn, ani_double *result, const ani_value *args)--><!--Device-ani_status (*Function_Call_Double_A)(ani_env *env, ani_function fn, ani_double *result, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -3907,6 +4169,8 @@ ani_status (*Function_Call_Double_V)(ani_env *env, ani_function fn, ani_double *
 
 Calls a function and retrieves a double result (variadic arguments).<br> This function calls the specified function with arguments provided in a `va_list` and retrieves a double result.
 
+<!--Device-ani_status (*Function_Call_Double_V)(ani_env *env, ani_function fn, ani_double *result, va_list args)--><!--Device-ani_status (*Function_Call_Double_V)(ani_env *env, ani_function fn, ani_double *result, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -3933,6 +4197,8 @@ ani_status (*Function_Call_Ref)(ani_env *env, ani_function fn, ani_ref *result, 
 **Description**
 
 Calls a function and retrieves a reference result.<br> This function calls the specified function with variadic arguments and retrieves a reference result.
+
+<!--Device-ani_status (*Function_Call_Ref)(ani_env *env, ani_function fn, ani_ref *result, ...)--><!--Device-ani_status (*Function_Call_Ref)(ani_env *env, ani_function fn, ani_ref *result, ...)-End-->
 
 **Since**: 23
 
@@ -3961,6 +4227,8 @@ ani_status (*Function_Call_Ref_A)(ani_env *env, ani_function fn, ani_ref *result
 
 Calls a function and retrieves a reference result (array-based).<br> This function calls the specified function with arguments provided in an array and retrieves a reference result.
 
+<!--Device-ani_status (*Function_Call_Ref_A)(ani_env *env, ani_function fn, ani_ref *result, const ani_value *args)--><!--Device-ani_status (*Function_Call_Ref_A)(ani_env *env, ani_function fn, ani_ref *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -3987,6 +4255,8 @@ ani_status (*Function_Call_Ref_V)(ani_env *env, ani_function fn, ani_ref *result
 **Description**
 
 Calls a function and retrieves a reference result (variadic arguments).<br> This function calls the specified function with arguments provided in a `va_list` and retrieves a reference result.
+
+<!--Device-ani_status (*Function_Call_Ref_V)(ani_env *env, ani_function fn, ani_ref *result, va_list args)--><!--Device-ani_status (*Function_Call_Ref_V)(ani_env *env, ani_function fn, ani_ref *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -4015,6 +4285,8 @@ ani_status (*Function_Call_Void)(ani_env *env, ani_function fn, ...)
 
 Calls a function without returning a result.<br> This function calls the specified function with variadic arguments and does not return a result.
 
+<!--Device-ani_status (*Function_Call_Void)(ani_env *env, ani_function fn, ...)--><!--Device-ani_status (*Function_Call_Void)(ani_env *env, ani_function fn, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -4040,6 +4312,8 @@ ani_status (*Function_Call_Void_A)(ani_env *env, ani_function fn, const ani_valu
 **Description**
 
 Calls a function without returning a result (array-based).<br> This function calls the specified function with arguments provided in an array and does not return a result.
+
+<!--Device-ani_status (*Function_Call_Void_A)(ani_env *env, ani_function fn, const ani_value *args)--><!--Device-ani_status (*Function_Call_Void_A)(ani_env *env, ani_function fn, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -4067,6 +4341,8 @@ ani_status (*Function_Call_Void_V)(ani_env *env, ani_function fn, va_list args)
 
 Calls a function without returning a result (variadic arguments).<br> This function calls the specified function with arguments provided in a `va_list` and does not return a result.
 
+<!--Device-ani_status (*Function_Call_Void_V)(ani_env *env, ani_function fn, va_list args)--><!--Device-ani_status (*Function_Call_Void_V)(ani_env *env, ani_function fn, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -4092,6 +4368,8 @@ ani_status (*Class_FindField)(ani_env *env, ani_class cls, const char *name, ani
 **Description**
 
 Finds a field from by its name.<br> This function locates a field based on its name and stores it in the result parameter.
+
+<!--Device-ani_status (*Class_FindField)(ani_env *env, ani_class cls, const char *name, ani_field *result)--><!--Device-ani_status (*Class_FindField)(ani_env *env, ani_class cls, const char *name, ani_field *result)-End-->
 
 **Since**: 23
 
@@ -4120,6 +4398,8 @@ ani_status (*Class_FindStaticField)(ani_env *env, ani_class cls, const char *nam
 
 Finds a static field by its name.<br> This function locates a static field based on its name and stores it in the result parameter.
 
+<!--Device-ani_status (*Class_FindStaticField)(ani_env *env, ani_class cls, const char *name, ani_static_field *result)--><!--Device-ani_status (*Class_FindStaticField)(ani_env *env, ani_class cls, const char *name, ani_static_field *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -4146,6 +4426,8 @@ ani_status (*Class_FindMethod)(ani_env *env, ani_class cls, const char *name, co
 **Description**
 
 Finds a method from by its name and signature.<br> This function locates a method based on its name and signature and stores it in the result parameter.
+
+<!--Device-ani_status (*Class_FindMethod)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_method *result)--><!--Device-ani_status (*Class_FindMethod)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_method *result)-End-->
 
 **Since**: 23
 
@@ -4175,6 +4457,8 @@ ani_status (*Class_FindStaticMethod)(ani_env *env, ani_class cls, const char *na
 
 Finds a static method from by its name and signature.<br> This function locates a static method based on its name and signature and stores it in the result parameter.
 
+<!--Device-ani_status (*Class_FindStaticMethod)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_static_method *result)--><!--Device-ani_status (*Class_FindStaticMethod)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_static_method *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -4203,6 +4487,8 @@ ani_status (*Class_FindSetter)(ani_env *env, ani_class cls, const char *name, an
 
 Finds a setter method from by its name.<br> This function locates a setter method based on its name and stores it in the result parameter.
 
+<!--Device-ani_status (*Class_FindSetter)(ani_env *env, ani_class cls, const char *name, ani_method *result)--><!--Device-ani_status (*Class_FindSetter)(ani_env *env, ani_class cls, const char *name, ani_method *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -4229,6 +4515,8 @@ ani_status (*Class_FindGetter)(ani_env *env, ani_class cls, const char *name, an
 **Description**
 
 Finds a getter method from by its name.<br> This function locates a getter method based on its name and stores it in the result parameter.
+
+<!--Device-ani_status (*Class_FindGetter)(ani_env *env, ani_class cls, const char *name, ani_method *result)--><!--Device-ani_status (*Class_FindGetter)(ani_env *env, ani_class cls, const char *name, ani_method *result)-End-->
 
 **Since**: 23
 
@@ -4257,6 +4545,8 @@ ani_status (*Class_FindIndexableGetter)(ani_env *env, ani_class cls, const char 
 
 Finds an indexable getter method from by its signature.<br> This function locates an indexable getter method based on its signature and stores it in the result parameter.
 
+<!--Device-ani_status (*Class_FindIndexableGetter)(ani_env *env, ani_class cls, const char *signature, ani_method *result)--><!--Device-ani_status (*Class_FindIndexableGetter)(ani_env *env, ani_class cls, const char *signature, ani_method *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -4283,6 +4573,8 @@ ani_status (*Class_FindIndexableSetter)(ani_env *env, ani_class cls, const char 
 **Description**
 
 Finds an indexable setter method from by its signature.<br> This function locates an indexable setter method based on its signature and stores it in the result parameter.
+
+<!--Device-ani_status (*Class_FindIndexableSetter)(ani_env *env, ani_class cls, const char *signature, ani_method *result)--><!--Device-ani_status (*Class_FindIndexableSetter)(ani_env *env, ani_class cls, const char *signature, ani_method *result)-End-->
 
 **Since**: 23
 
@@ -4311,6 +4603,8 @@ ani_status (*Class_FindIterator)(ani_env *env, ani_class cls, ani_method *result
 
 Finds an iterator method.<br> This function locates an iterator method
 
+<!--Device-ani_status (*Class_FindIterator)(ani_env *env, ani_class cls, ani_method *result)--><!--Device-ani_status (*Class_FindIterator)(ani_env *env, ani_class cls, ani_method *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -4336,6 +4630,8 @@ ani_status (*Class_GetStaticField_Boolean)(ani_env *env, ani_class cls, ani_stat
 **Description**
 
 Retrieves a boolean value from a static field of a class.<br> This function retrieves the boolean value of the specified static field from the given class.
+
+<!--Device-ani_status (*Class_GetStaticField_Boolean)(ani_env *env, ani_class cls, ani_static_field field, ani_boolean *result)--><!--Device-ani_status (*Class_GetStaticField_Boolean)(ani_env *env, ani_class cls, ani_static_field field, ani_boolean *result)-End-->
 
 **Since**: 23
 
@@ -4364,6 +4660,8 @@ ani_status (*Class_GetStaticField_Char)(ani_env *env, ani_class cls, ani_static_
 
 Retrieves a character value from a static field of a class.<br> This function retrieves the character value of the specified static field from the given class.
 
+<!--Device-ani_status (*Class_GetStaticField_Char)(ani_env *env, ani_class cls, ani_static_field field, ani_char *result)--><!--Device-ani_status (*Class_GetStaticField_Char)(ani_env *env, ani_class cls, ani_static_field field, ani_char *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -4390,6 +4688,8 @@ ani_status (*Class_GetStaticField_Byte)(ani_env *env, ani_class cls, ani_static_
 **Description**
 
 Retrieves a byte value from a static field of a class.<br> This function retrieves the byte value of the specified static field from the given class.
+
+<!--Device-ani_status (*Class_GetStaticField_Byte)(ani_env *env, ani_class cls, ani_static_field field, ani_byte *result)--><!--Device-ani_status (*Class_GetStaticField_Byte)(ani_env *env, ani_class cls, ani_static_field field, ani_byte *result)-End-->
 
 **Since**: 23
 
@@ -4418,6 +4718,8 @@ ani_status (*Class_GetStaticField_Short)(ani_env *env, ani_class cls, ani_static
 
 Retrieves a short value from a static field of a class.<br> This function retrieves the short value of the specified static field from the given class.
 
+<!--Device-ani_status (*Class_GetStaticField_Short)(ani_env *env, ani_class cls, ani_static_field field, ani_short *result)--><!--Device-ani_status (*Class_GetStaticField_Short)(ani_env *env, ani_class cls, ani_static_field field, ani_short *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -4444,6 +4746,8 @@ ani_status (*Class_GetStaticField_Int)(ani_env *env, ani_class cls, ani_static_f
 **Description**
 
 Retrieves an integer value from a static field of a class.<br> This function retrieves the integer value of the specified static field from the given class.
+
+<!--Device-ani_status (*Class_GetStaticField_Int)(ani_env *env, ani_class cls, ani_static_field field, ani_int *result)--><!--Device-ani_status (*Class_GetStaticField_Int)(ani_env *env, ani_class cls, ani_static_field field, ani_int *result)-End-->
 
 **Since**: 23
 
@@ -4472,6 +4776,8 @@ ani_status (*Class_GetStaticField_Long)(ani_env *env, ani_class cls, ani_static_
 
 Retrieves a long value from a static field of a class.<br> This function retrieves the long value of the specified static field from the given class.
 
+<!--Device-ani_status (*Class_GetStaticField_Long)(ani_env *env, ani_class cls, ani_static_field field, ani_long *result)--><!--Device-ani_status (*Class_GetStaticField_Long)(ani_env *env, ani_class cls, ani_static_field field, ani_long *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -4498,6 +4804,8 @@ ani_status (*Class_GetStaticField_Float)(ani_env *env, ani_class cls, ani_static
 **Description**
 
 Retrieves a float value from a static field of a class.<br> This function retrieves the float value of the specified static field from the given class.
+
+<!--Device-ani_status (*Class_GetStaticField_Float)(ani_env *env, ani_class cls, ani_static_field field, ani_float *result)--><!--Device-ani_status (*Class_GetStaticField_Float)(ani_env *env, ani_class cls, ani_static_field field, ani_float *result)-End-->
 
 **Since**: 23
 
@@ -4526,6 +4834,8 @@ ani_status (*Class_GetStaticField_Double)(ani_env *env, ani_class cls, ani_stati
 
 Retrieves a double value from a static field of a class.<br> This function retrieves the double value of the specified static field from the given class.
 
+<!--Device-ani_status (*Class_GetStaticField_Double)(ani_env *env, ani_class cls, ani_static_field field, ani_double *result)--><!--Device-ani_status (*Class_GetStaticField_Double)(ani_env *env, ani_class cls, ani_static_field field, ani_double *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -4552,6 +4862,8 @@ ani_status (*Class_GetStaticField_Ref)(ani_env *env, ani_class cls, ani_static_f
 **Description**
 
 Retrieves a reference value from a static field of a class.<br> This function retrieves the reference value of the specified static field from the given class.
+
+<!--Device-ani_status (*Class_GetStaticField_Ref)(ani_env *env, ani_class cls, ani_static_field field, ani_ref *result)--><!--Device-ani_status (*Class_GetStaticField_Ref)(ani_env *env, ani_class cls, ani_static_field field, ani_ref *result)-End-->
 
 **Since**: 23
 
@@ -4580,6 +4892,8 @@ ani_status (*Class_SetStaticField_Boolean)(ani_env *env, ani_class cls, ani_stat
 
 Sets a boolean value to a static field of a class.<br> This function assigns a boolean value to the specified static field of the given class.
 
+<!--Device-ani_status (*Class_SetStaticField_Boolean)(ani_env *env, ani_class cls, ani_static_field field, ani_boolean value)--><!--Device-ani_status (*Class_SetStaticField_Boolean)(ani_env *env, ani_class cls, ani_static_field field, ani_boolean value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -4606,6 +4920,8 @@ ani_status (*Class_SetStaticField_Char)(ani_env *env, ani_class cls, ani_static_
 **Description**
 
 Sets a character value to a static field of a class.<br> This function assigns a character value to the specified static field of the given class.
+
+<!--Device-ani_status (*Class_SetStaticField_Char)(ani_env *env, ani_class cls, ani_static_field field, ani_char value)--><!--Device-ani_status (*Class_SetStaticField_Char)(ani_env *env, ani_class cls, ani_static_field field, ani_char value)-End-->
 
 **Since**: 23
 
@@ -4634,6 +4950,8 @@ ani_status (*Class_SetStaticField_Byte)(ani_env *env, ani_class cls, ani_static_
 
 Sets a byte value to a static field of a class.<br> This function assigns a byte value to the specified static field of the given class.
 
+<!--Device-ani_status (*Class_SetStaticField_Byte)(ani_env *env, ani_class cls, ani_static_field field, ani_byte value)--><!--Device-ani_status (*Class_SetStaticField_Byte)(ani_env *env, ani_class cls, ani_static_field field, ani_byte value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -4660,6 +4978,8 @@ ani_status (*Class_SetStaticField_Short)(ani_env *env, ani_class cls, ani_static
 **Description**
 
 Sets a short value to a static field of a class.<br> This function assigns a short value to the specified static field of the given class.
+
+<!--Device-ani_status (*Class_SetStaticField_Short)(ani_env *env, ani_class cls, ani_static_field field, ani_short value)--><!--Device-ani_status (*Class_SetStaticField_Short)(ani_env *env, ani_class cls, ani_static_field field, ani_short value)-End-->
 
 **Since**: 23
 
@@ -4688,6 +5008,8 @@ ani_status (*Class_SetStaticField_Int)(ani_env *env, ani_class cls, ani_static_f
 
 Sets an integer value to a static field of a class.<br> This function assigns an integer value to the specified static field of the given class.
 
+<!--Device-ani_status (*Class_SetStaticField_Int)(ani_env *env, ani_class cls, ani_static_field field, ani_int value)--><!--Device-ani_status (*Class_SetStaticField_Int)(ani_env *env, ani_class cls, ani_static_field field, ani_int value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -4714,6 +5036,8 @@ ani_status (*Class_SetStaticField_Long)(ani_env *env, ani_class cls, ani_static_
 **Description**
 
 Sets a long value to a static field of a class.<br> This function assigns a long value to the specified static field of the given class.
+
+<!--Device-ani_status (*Class_SetStaticField_Long)(ani_env *env, ani_class cls, ani_static_field field, ani_long value)--><!--Device-ani_status (*Class_SetStaticField_Long)(ani_env *env, ani_class cls, ani_static_field field, ani_long value)-End-->
 
 **Since**: 23
 
@@ -4742,6 +5066,8 @@ ani_status (*Class_SetStaticField_Float)(ani_env *env, ani_class cls, ani_static
 
 Sets a float value to a static field of a class.<br> This function assigns a float value to the specified static field of the given class.
 
+<!--Device-ani_status (*Class_SetStaticField_Float)(ani_env *env, ani_class cls, ani_static_field field, ani_float value)--><!--Device-ani_status (*Class_SetStaticField_Float)(ani_env *env, ani_class cls, ani_static_field field, ani_float value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -4768,6 +5094,8 @@ ani_status (*Class_SetStaticField_Double)(ani_env *env, ani_class cls, ani_stati
 **Description**
 
 Sets a double value to a static field of a class.<br> This function assigns a double value to the specified static field of the given class.
+
+<!--Device-ani_status (*Class_SetStaticField_Double)(ani_env *env, ani_class cls, ani_static_field field, ani_double value)--><!--Device-ani_status (*Class_SetStaticField_Double)(ani_env *env, ani_class cls, ani_static_field field, ani_double value)-End-->
 
 **Since**: 23
 
@@ -4796,6 +5124,8 @@ ani_status (*Class_SetStaticField_Ref)(ani_env *env, ani_class cls, ani_static_f
 
 Sets a reference value to a static field of a class.<br> This function assigns a reference value to the specified static field of the given class.
 
+<!--Device-ani_status (*Class_SetStaticField_Ref)(ani_env *env, ani_class cls, ani_static_field field, ani_ref value)--><!--Device-ani_status (*Class_SetStaticField_Ref)(ani_env *env, ani_class cls, ani_static_field field, ani_ref value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -4822,6 +5152,8 @@ ani_status (*Class_GetStaticFieldByName_Boolean)(ani_env *env, ani_class cls, co
 **Description**
 
 Retrieves a boolean value from a static field of a class by its name.<br> This function retrieves the boolean value of the specified static field from the given class by its name.
+
+<!--Device-ani_status (*Class_GetStaticFieldByName_Boolean)(ani_env *env, ani_class cls, const char *name, ani_boolean *result)--><!--Device-ani_status (*Class_GetStaticFieldByName_Boolean)(ani_env *env, ani_class cls, const char *name, ani_boolean *result)-End-->
 
 **Since**: 23
 
@@ -4850,6 +5182,8 @@ ani_status (*Class_GetStaticFieldByName_Char)(ani_env *env, ani_class cls, const
 
 Retrieves a character value from a static field of a class by its name.<br> This function retrieves the character value of the specified static field from the given class by its name.
 
+<!--Device-ani_status (*Class_GetStaticFieldByName_Char)(ani_env *env, ani_class cls, const char *name, ani_char *result)--><!--Device-ani_status (*Class_GetStaticFieldByName_Char)(ani_env *env, ani_class cls, const char *name, ani_char *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -4876,6 +5210,8 @@ ani_status (*Class_GetStaticFieldByName_Byte)(ani_env *env, ani_class cls, const
 **Description**
 
 Retrieves a byte value from a static field of a class by its name.<br> This function retrieves the byte value of the specified static field from the given class by its name.
+
+<!--Device-ani_status (*Class_GetStaticFieldByName_Byte)(ani_env *env, ani_class cls, const char *name, ani_byte *result)--><!--Device-ani_status (*Class_GetStaticFieldByName_Byte)(ani_env *env, ani_class cls, const char *name, ani_byte *result)-End-->
 
 **Since**: 23
 
@@ -4904,6 +5240,8 @@ ani_status (*Class_GetStaticFieldByName_Short)(ani_env *env, ani_class cls, cons
 
 Retrieves a short value from a static field of a class by its name.<br> This function retrieves the short value of the specified static field from the given class by its name.
 
+<!--Device-ani_status (*Class_GetStaticFieldByName_Short)(ani_env *env, ani_class cls, const char *name, ani_short *result)--><!--Device-ani_status (*Class_GetStaticFieldByName_Short)(ani_env *env, ani_class cls, const char *name, ani_short *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -4930,6 +5268,8 @@ ani_status (*Class_GetStaticFieldByName_Int)(ani_env *env, ani_class cls, const 
 **Description**
 
 Retrieves an integer value from a static field of a class by its name.<br> This function retrieves the integer value of the specified static field from the given class by its name.
+
+<!--Device-ani_status (*Class_GetStaticFieldByName_Int)(ani_env *env, ani_class cls, const char *name, ani_int *result)--><!--Device-ani_status (*Class_GetStaticFieldByName_Int)(ani_env *env, ani_class cls, const char *name, ani_int *result)-End-->
 
 **Since**: 23
 
@@ -4958,6 +5298,8 @@ ani_status (*Class_GetStaticFieldByName_Long)(ani_env *env, ani_class cls, const
 
 Retrieves a long value from a static field of a class by its name.<br> This function retrieves the long value of the specified static field from the given class by its name.
 
+<!--Device-ani_status (*Class_GetStaticFieldByName_Long)(ani_env *env, ani_class cls, const char *name, ani_long *result)--><!--Device-ani_status (*Class_GetStaticFieldByName_Long)(ani_env *env, ani_class cls, const char *name, ani_long *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -4984,6 +5326,8 @@ ani_status (*Class_GetStaticFieldByName_Float)(ani_env *env, ani_class cls, cons
 **Description**
 
 Retrieves a float value from a static field of a class by its name.<br> This function retrieves the float value of the specified static field from the given class by its name.
+
+<!--Device-ani_status (*Class_GetStaticFieldByName_Float)(ani_env *env, ani_class cls, const char *name, ani_float *result)--><!--Device-ani_status (*Class_GetStaticFieldByName_Float)(ani_env *env, ani_class cls, const char *name, ani_float *result)-End-->
 
 **Since**: 23
 
@@ -5012,6 +5356,8 @@ ani_status (*Class_GetStaticFieldByName_Double)(ani_env *env, ani_class cls, con
 
 Retrieves a double value from a static field of a class by its name.<br> This function retrieves the double value of the specified static field from the given class by its name.
 
+<!--Device-ani_status (*Class_GetStaticFieldByName_Double)(ani_env *env, ani_class cls, const char *name, ani_double *result)--><!--Device-ani_status (*Class_GetStaticFieldByName_Double)(ani_env *env, ani_class cls, const char *name, ani_double *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -5038,6 +5384,8 @@ ani_status (*Class_GetStaticFieldByName_Ref)(ani_env *env, ani_class cls, const 
 **Description**
 
 Retrieves a reference value from a static field of a class by its name.<br> This function retrieves the reference value of the specified static field from the given class by its name.
+
+<!--Device-ani_status (*Class_GetStaticFieldByName_Ref)(ani_env *env, ani_class cls, const char *name, ani_ref *result)--><!--Device-ani_status (*Class_GetStaticFieldByName_Ref)(ani_env *env, ani_class cls, const char *name, ani_ref *result)-End-->
 
 **Since**: 23
 
@@ -5066,6 +5414,8 @@ ani_status (*Class_SetStaticFieldByName_Boolean)(ani_env *env, ani_class cls, co
 
 Sets a boolean value to a static field of a class by its name.<br> This function assigns a boolean value to the specified static field of the given class by its name.
 
+<!--Device-ani_status (*Class_SetStaticFieldByName_Boolean)(ani_env *env, ani_class cls, const char *name, ani_boolean value)--><!--Device-ani_status (*Class_SetStaticFieldByName_Boolean)(ani_env *env, ani_class cls, const char *name, ani_boolean value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -5092,6 +5442,8 @@ ani_status (*Class_SetStaticFieldByName_Char)(ani_env *env, ani_class cls, const
 **Description**
 
 Sets a character value to a static field of a class by its name.<br> This function assigns a character value to the specified static field of the given class by its name.
+
+<!--Device-ani_status (*Class_SetStaticFieldByName_Char)(ani_env *env, ani_class cls, const char *name, ani_char value)--><!--Device-ani_status (*Class_SetStaticFieldByName_Char)(ani_env *env, ani_class cls, const char *name, ani_char value)-End-->
 
 **Since**: 23
 
@@ -5120,6 +5472,8 @@ ani_status (*Class_SetStaticFieldByName_Byte)(ani_env *env, ani_class cls, const
 
 Sets a byte value to a static field of a class by its name.<br> This function assigns a byte value to the specified static field of the given class by its name.
 
+<!--Device-ani_status (*Class_SetStaticFieldByName_Byte)(ani_env *env, ani_class cls, const char *name, ani_byte value)--><!--Device-ani_status (*Class_SetStaticFieldByName_Byte)(ani_env *env, ani_class cls, const char *name, ani_byte value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -5146,6 +5500,8 @@ ani_status (*Class_SetStaticFieldByName_Short)(ani_env *env, ani_class cls, cons
 **Description**
 
 Sets a short value to a static field of a class by its name.<br> This function assigns a short value to the specified static field of the given class by its name.
+
+<!--Device-ani_status (*Class_SetStaticFieldByName_Short)(ani_env *env, ani_class cls, const char *name, ani_short value)--><!--Device-ani_status (*Class_SetStaticFieldByName_Short)(ani_env *env, ani_class cls, const char *name, ani_short value)-End-->
 
 **Since**: 23
 
@@ -5174,6 +5530,8 @@ ani_status (*Class_SetStaticFieldByName_Int)(ani_env *env, ani_class cls, const 
 
 Sets an integer value to a static field of a class by its name.<br> This function assigns an integer value to the specified static field of the given class by its name.
 
+<!--Device-ani_status (*Class_SetStaticFieldByName_Int)(ani_env *env, ani_class cls, const char *name, ani_int value)--><!--Device-ani_status (*Class_SetStaticFieldByName_Int)(ani_env *env, ani_class cls, const char *name, ani_int value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -5200,6 +5558,8 @@ ani_status (*Class_SetStaticFieldByName_Long)(ani_env *env, ani_class cls, const
 **Description**
 
 Sets a long value to a static field of a class by its name.<br> This function assigns a long value to the specified static field of the given class by its name.
+
+<!--Device-ani_status (*Class_SetStaticFieldByName_Long)(ani_env *env, ani_class cls, const char *name, ani_long value)--><!--Device-ani_status (*Class_SetStaticFieldByName_Long)(ani_env *env, ani_class cls, const char *name, ani_long value)-End-->
 
 **Since**: 23
 
@@ -5228,6 +5588,8 @@ ani_status (*Class_SetStaticFieldByName_Float)(ani_env *env, ani_class cls, cons
 
 Sets a float value to a static field of a class by its name.<br> This function assigns a float value to the specified static field of the given class by its name.
 
+<!--Device-ani_status (*Class_SetStaticFieldByName_Float)(ani_env *env, ani_class cls, const char *name, ani_float value)--><!--Device-ani_status (*Class_SetStaticFieldByName_Float)(ani_env *env, ani_class cls, const char *name, ani_float value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -5254,6 +5616,8 @@ ani_status (*Class_SetStaticFieldByName_Double)(ani_env *env, ani_class cls, con
 **Description**
 
 Sets a double value to a static field of a class by its name.<br> This function assigns a double value to the specified static field of the given class by its name.
+
+<!--Device-ani_status (*Class_SetStaticFieldByName_Double)(ani_env *env, ani_class cls, const char *name, ani_double value)--><!--Device-ani_status (*Class_SetStaticFieldByName_Double)(ani_env *env, ani_class cls, const char *name, ani_double value)-End-->
 
 **Since**: 23
 
@@ -5282,6 +5646,8 @@ ani_status (*Class_SetStaticFieldByName_Ref)(ani_env *env, ani_class cls, const 
 
 Sets a reference value to a static field of a class by its name.<br> This function assigns a reference value to the specified static field of the given class by its name.
 
+<!--Device-ani_status (*Class_SetStaticFieldByName_Ref)(ani_env *env, ani_class cls, const char *name, ani_ref value)--><!--Device-ani_status (*Class_SetStaticFieldByName_Ref)(ani_env *env, ani_class cls, const char *name, ani_ref value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -5308,6 +5674,8 @@ ani_status (*Class_CallStaticMethod_Boolean)(ani_env *env, ani_class cls, ani_st
 **Description**
 
 Calls a static method with a boolean return type.<br> This function calls the specified static method of a class and retrieves a boolean result using variadic arguments.
+
+<!--Device-ani_status (*Class_CallStaticMethod_Boolean)(ani_env *env, ani_class cls, ani_static_method method, ani_boolean *result, ...)--><!--Device-ani_status (*Class_CallStaticMethod_Boolean)(ani_env *env, ani_class cls, ani_static_method method, ani_boolean *result, ...)-End-->
 
 **Since**: 23
 
@@ -5337,6 +5705,8 @@ ani_status (*Class_CallStaticMethod_Boolean_A)(ani_env *env, ani_class cls, ani_
 
 Calls a static method with a boolean return type (array-based).<br> This function calls the specified static method of a class and retrieves a boolean result using arguments from an array.
 
+<!--Device-ani_status (*Class_CallStaticMethod_Boolean_A)(ani_env *env, ani_class cls, ani_static_method method, ani_boolean *result, const ani_value *args)--><!--Device-ani_status (*Class_CallStaticMethod_Boolean_A)(ani_env *env, ani_class cls, ani_static_method method, ani_boolean *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -5364,6 +5734,8 @@ ani_status (*Class_CallStaticMethod_Boolean_V)(ani_env *env, ani_class cls, ani_
 **Description**
 
 Calls a static method with a boolean return type (variadic arguments).<br> This function calls the specified static method of a class and retrieves a boolean result using a `va_list`.
+
+<!--Device-ani_status (*Class_CallStaticMethod_Boolean_V)(ani_env *env, ani_class cls, ani_static_method method, ani_boolean *result, va_list args)--><!--Device-ani_status (*Class_CallStaticMethod_Boolean_V)(ani_env *env, ani_class cls, ani_static_method method, ani_boolean *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -5393,6 +5765,8 @@ ani_status (*Class_CallStaticMethod_Char)(ani_env *env, ani_class cls, ani_stati
 
 Calls a static method with a character return type.<br> This function calls the specified static method of a class and retrieves a character result using variadic arguments.
 
+<!--Device-ani_status (*Class_CallStaticMethod_Char)(ani_env *env, ani_class cls, ani_static_method method, ani_char *result, ...)--><!--Device-ani_status (*Class_CallStaticMethod_Char)(ani_env *env, ani_class cls, ani_static_method method, ani_char *result, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -5420,6 +5794,8 @@ ani_status (*Class_CallStaticMethod_Char_A)(ani_env *env, ani_class cls, ani_sta
 **Description**
 
 Calls a static method with a character return type (array-based).<br> This function calls the specified static method of a class and retrieves a character result using arguments from an array.
+
+<!--Device-ani_status (*Class_CallStaticMethod_Char_A)(ani_env *env, ani_class cls, ani_static_method method, ani_char *result, const ani_value *args)--><!--Device-ani_status (*Class_CallStaticMethod_Char_A)(ani_env *env, ani_class cls, ani_static_method method, ani_char *result, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -5449,6 +5825,8 @@ ani_status (*Class_CallStaticMethod_Char_V)(ani_env *env, ani_class cls, ani_sta
 
 Calls a static method with a character return type (variadic arguments).<br> This function calls the specified static method of a class and retrieves a character result using a `va_list`.
 
+<!--Device-ani_status (*Class_CallStaticMethod_Char_V)(ani_env *env, ani_class cls, ani_static_method method, ani_char *result, va_list args)--><!--Device-ani_status (*Class_CallStaticMethod_Char_V)(ani_env *env, ani_class cls, ani_static_method method, ani_char *result, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -5476,6 +5854,8 @@ ani_status (*Class_CallStaticMethod_Byte)(ani_env *env, ani_class cls, ani_stati
 **Description**
 
 Calls a static method with a byte return type.<br> This function calls the specified static method of a class and retrieves a byte result using variadic arguments.
+
+<!--Device-ani_status (*Class_CallStaticMethod_Byte)(ani_env *env, ani_class cls, ani_static_method method, ani_byte *result, ...)--><!--Device-ani_status (*Class_CallStaticMethod_Byte)(ani_env *env, ani_class cls, ani_static_method method, ani_byte *result, ...)-End-->
 
 **Since**: 23
 
@@ -5505,6 +5885,8 @@ ani_status (*Class_CallStaticMethod_Byte_A)(ani_env *env, ani_class cls, ani_sta
 
 Calls a static method with a byte return type (array-based).<br> This function calls the specified static method of a class and retrieves a byte result using arguments from an array.
 
+<!--Device-ani_status (*Class_CallStaticMethod_Byte_A)(ani_env *env, ani_class cls, ani_static_method method, ani_byte *result, const ani_value *args)--><!--Device-ani_status (*Class_CallStaticMethod_Byte_A)(ani_env *env, ani_class cls, ani_static_method method, ani_byte *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -5532,6 +5914,8 @@ ani_status (*Class_CallStaticMethod_Byte_V)(ani_env *env, ani_class cls, ani_sta
 **Description**
 
 Calls a static method with a byte return type (variadic arguments).<br> This function calls the specified static method of a class and retrieves a byte result using a `va_list`.
+
+<!--Device-ani_status (*Class_CallStaticMethod_Byte_V)(ani_env *env, ani_class cls, ani_static_method method, ani_byte *result, va_list args)--><!--Device-ani_status (*Class_CallStaticMethod_Byte_V)(ani_env *env, ani_class cls, ani_static_method method, ani_byte *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -5561,6 +5945,8 @@ ani_status (*Class_CallStaticMethod_Short)(ani_env *env, ani_class cls, ani_stat
 
 Calls a static method with a short return type.<br> This function calls the specified static method of a class and retrieves a short result using variadic arguments.
 
+<!--Device-ani_status (*Class_CallStaticMethod_Short)(ani_env *env, ani_class cls, ani_static_method method, ani_short *result, ...)--><!--Device-ani_status (*Class_CallStaticMethod_Short)(ani_env *env, ani_class cls, ani_static_method method, ani_short *result, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -5588,6 +5974,8 @@ ani_status (*Class_CallStaticMethod_Short_A)(ani_env *env, ani_class cls, ani_st
 **Description**
 
 Calls a static method with a short return type (array-based).<br> This function calls the specified static method of a class and retrieves a short result using arguments from an array.
+
+<!--Device-ani_status (*Class_CallStaticMethod_Short_A)(ani_env *env, ani_class cls, ani_static_method method, ani_short *result, const ani_value *args)--><!--Device-ani_status (*Class_CallStaticMethod_Short_A)(ani_env *env, ani_class cls, ani_static_method method, ani_short *result, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -5617,6 +6005,8 @@ ani_status (*Class_CallStaticMethod_Short_V)(ani_env *env, ani_class cls, ani_st
 
 Calls a static method with a short return type (variadic arguments).<br> This function calls the specified static method of a class and retrieves a short result using a `va_list`.
 
+<!--Device-ani_status (*Class_CallStaticMethod_Short_V)(ani_env *env, ani_class cls, ani_static_method method, ani_short *result, va_list args)--><!--Device-ani_status (*Class_CallStaticMethod_Short_V)(ani_env *env, ani_class cls, ani_static_method method, ani_short *result, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -5644,6 +6034,8 @@ ani_status (*Class_CallStaticMethod_Int)(ani_env *env, ani_class cls, ani_static
 **Description**
 
 Calls a static method with an integer return type.<br> This function calls the specified static method of a class and retrieves an integer result using variadic arguments.
+
+<!--Device-ani_status (*Class_CallStaticMethod_Int)(ani_env *env, ani_class cls, ani_static_method method, ani_int *result, ...)--><!--Device-ani_status (*Class_CallStaticMethod_Int)(ani_env *env, ani_class cls, ani_static_method method, ani_int *result, ...)-End-->
 
 **Since**: 23
 
@@ -5673,6 +6065,8 @@ ani_status (*Class_CallStaticMethod_Int_A)(ani_env *env, ani_class cls, ani_stat
 
 Calls a static method with an integer return type (array-based).<br> This function calls the specified static method of a class and retrieves an integer result using arguments from an array.
 
+<!--Device-ani_status (*Class_CallStaticMethod_Int_A)(ani_env *env, ani_class cls, ani_static_method method, ani_int *result, const ani_value *args)--><!--Device-ani_status (*Class_CallStaticMethod_Int_A)(ani_env *env, ani_class cls, ani_static_method method, ani_int *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -5700,6 +6094,8 @@ ani_status (*Class_CallStaticMethod_Int_V)(ani_env *env, ani_class cls, ani_stat
 **Description**
 
 Calls a static method with an integer return type (variadic arguments).<br> This function calls the specified static method of a class and retrieves an integer result using a `va_list`.
+
+<!--Device-ani_status (*Class_CallStaticMethod_Int_V)(ani_env *env, ani_class cls, ani_static_method method, ani_int *result, va_list args)--><!--Device-ani_status (*Class_CallStaticMethod_Int_V)(ani_env *env, ani_class cls, ani_static_method method, ani_int *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -5729,6 +6125,8 @@ ani_status (*Class_CallStaticMethod_Long)(ani_env *env, ani_class cls, ani_stati
 
 Calls a static method with a long return type.<br> This function calls the specified static method of a class and retrieves a long result using variadic arguments.
 
+<!--Device-ani_status (*Class_CallStaticMethod_Long)(ani_env *env, ani_class cls, ani_static_method method, ani_long *result, ...)--><!--Device-ani_status (*Class_CallStaticMethod_Long)(ani_env *env, ani_class cls, ani_static_method method, ani_long *result, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -5756,6 +6154,8 @@ ani_status (*Class_CallStaticMethod_Long_A)(ani_env *env, ani_class cls, ani_sta
 **Description**
 
 Calls a static method with a long return type (array-based).<br> This function calls the specified static method of a class and retrieves a long result using arguments from an array.
+
+<!--Device-ani_status (*Class_CallStaticMethod_Long_A)(ani_env *env, ani_class cls, ani_static_method method, ani_long *result, const ani_value *args)--><!--Device-ani_status (*Class_CallStaticMethod_Long_A)(ani_env *env, ani_class cls, ani_static_method method, ani_long *result, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -5785,6 +6185,8 @@ ani_status (*Class_CallStaticMethod_Long_V)(ani_env *env, ani_class cls, ani_sta
 
 Calls a static method with a long return type (variadic arguments).<br> This function calls the specified static method of a class and retrieves a long result using a `va_list`.
 
+<!--Device-ani_status (*Class_CallStaticMethod_Long_V)(ani_env *env, ani_class cls, ani_static_method method, ani_long *result, va_list args)--><!--Device-ani_status (*Class_CallStaticMethod_Long_V)(ani_env *env, ani_class cls, ani_static_method method, ani_long *result, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -5812,6 +6214,8 @@ ani_status (*Class_CallStaticMethod_Float)(ani_env *env, ani_class cls, ani_stat
 **Description**
 
 Calls a static method with a float return type.<br> This function calls the specified static method of a class and retrieves a float result using variadic arguments.
+
+<!--Device-ani_status (*Class_CallStaticMethod_Float)(ani_env *env, ani_class cls, ani_static_method method, ani_float *result, ...)--><!--Device-ani_status (*Class_CallStaticMethod_Float)(ani_env *env, ani_class cls, ani_static_method method, ani_float *result, ...)-End-->
 
 **Since**: 23
 
@@ -5841,6 +6245,8 @@ ani_status (*Class_CallStaticMethod_Float_A)(ani_env *env, ani_class cls, ani_st
 
 Calls a static method with a float return type (array-based).<br> This function calls the specified static method of a class and retrieves a float result using arguments from an array.
 
+<!--Device-ani_status (*Class_CallStaticMethod_Float_A)(ani_env *env, ani_class cls, ani_static_method method, ani_float *result, const ani_value *args)--><!--Device-ani_status (*Class_CallStaticMethod_Float_A)(ani_env *env, ani_class cls, ani_static_method method, ani_float *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -5868,6 +6274,8 @@ ani_status (*Class_CallStaticMethod_Float_V)(ani_env *env, ani_class cls, ani_st
 **Description**
 
 Calls a static method with a float return type (variadic arguments).<br> This function calls the specified static method of a class and retrieves a float result using a `va_list`.
+
+<!--Device-ani_status (*Class_CallStaticMethod_Float_V)(ani_env *env, ani_class cls, ani_static_method method, ani_float *result, va_list args)--><!--Device-ani_status (*Class_CallStaticMethod_Float_V)(ani_env *env, ani_class cls, ani_static_method method, ani_float *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -5897,6 +6305,8 @@ ani_status (*Class_CallStaticMethod_Double)(ani_env *env, ani_class cls, ani_sta
 
 Calls a static method with a double return type.<br> This function calls the specified static method of a class and retrieves a double result using variadic arguments.
 
+<!--Device-ani_status (*Class_CallStaticMethod_Double)(ani_env *env, ani_class cls, ani_static_method method, ani_double *result, ...)--><!--Device-ani_status (*Class_CallStaticMethod_Double)(ani_env *env, ani_class cls, ani_static_method method, ani_double *result, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -5924,6 +6334,8 @@ ani_status (*Class_CallStaticMethod_Double_A)(ani_env *env, ani_class cls, ani_s
 **Description**
 
 Calls a static method with a double return type (array-based).<br> This function calls the specified static method of a class and retrieves a double result using arguments from an array.
+
+<!--Device-ani_status (*Class_CallStaticMethod_Double_A)(ani_env *env, ani_class cls, ani_static_method method, ani_double *result, const ani_value *args)--><!--Device-ani_status (*Class_CallStaticMethod_Double_A)(ani_env *env, ani_class cls, ani_static_method method, ani_double *result, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -5953,6 +6365,8 @@ ani_status (*Class_CallStaticMethod_Double_V)(ani_env *env, ani_class cls, ani_s
 
 Calls a static method with a double return type (variadic arguments).<br> This function calls the specified static method of a class and retrieves a double result using a `va_list`.
 
+<!--Device-ani_status (*Class_CallStaticMethod_Double_V)(ani_env *env, ani_class cls, ani_static_method method, ani_double *result, va_list args)--><!--Device-ani_status (*Class_CallStaticMethod_Double_V)(ani_env *env, ani_class cls, ani_static_method method, ani_double *result, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -5980,6 +6394,8 @@ ani_status (*Class_CallStaticMethod_Ref)(ani_env *env, ani_class cls, ani_static
 **Description**
 
 Calls a static method with a reference return type.<br> This function calls the specified static method of a class and retrieves a reference result using variadic arguments.
+
+<!--Device-ani_status (*Class_CallStaticMethod_Ref)(ani_env *env, ani_class cls, ani_static_method method, ani_ref *result, ...)--><!--Device-ani_status (*Class_CallStaticMethod_Ref)(ani_env *env, ani_class cls, ani_static_method method, ani_ref *result, ...)-End-->
 
 **Since**: 23
 
@@ -6009,6 +6425,8 @@ ani_status (*Class_CallStaticMethod_Ref_A)(ani_env *env, ani_class cls, ani_stat
 
 Calls a static method with a reference return type (array-based).<br> This function calls the specified static method of a class and retrieves a reference result using arguments from an array.
 
+<!--Device-ani_status (*Class_CallStaticMethod_Ref_A)(ani_env *env, ani_class cls, ani_static_method method, ani_ref *result, const ani_value *args)--><!--Device-ani_status (*Class_CallStaticMethod_Ref_A)(ani_env *env, ani_class cls, ani_static_method method, ani_ref *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -6036,6 +6454,8 @@ ani_status (*Class_CallStaticMethod_Ref_V)(ani_env *env, ani_class cls, ani_stat
 **Description**
 
 Calls a static method with a reference return type (variadic arguments).<br> This function calls the specified static method of a class and retrieves a reference result using a `va_list`.
+
+<!--Device-ani_status (*Class_CallStaticMethod_Ref_V)(ani_env *env, ani_class cls, ani_static_method method, ani_ref *result, va_list args)--><!--Device-ani_status (*Class_CallStaticMethod_Ref_V)(ani_env *env, ani_class cls, ani_static_method method, ani_ref *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -6065,6 +6485,8 @@ ani_status (*Class_CallStaticMethod_Void)(ani_env *env, ani_class cls, ani_stati
 
 Calls a static method with no return value.<br> This function calls the specified static method of a class using variadic arguments. The method does not return a value.
 
+<!--Device-ani_status (*Class_CallStaticMethod_Void)(ani_env *env, ani_class cls, ani_static_method method, ...)--><!--Device-ani_status (*Class_CallStaticMethod_Void)(ani_env *env, ani_class cls, ani_static_method method, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -6091,6 +6513,8 @@ ani_status (*Class_CallStaticMethod_Void_A)(ani_env *env, ani_class cls, ani_sta
 **Description**
 
 Calls a static method with no return value (array-based).<br> This function calls the specified static method of a class using arguments from an array. The method does not return a value.
+
+<!--Device-ani_status (*Class_CallStaticMethod_Void_A)(ani_env *env, ani_class cls, ani_static_method method, const ani_value *args)--><!--Device-ani_status (*Class_CallStaticMethod_Void_A)(ani_env *env, ani_class cls, ani_static_method method, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -6119,6 +6543,8 @@ ani_status (*Class_CallStaticMethod_Void_V)(ani_env *env, ani_class cls, ani_sta
 
 Calls a static method with no return value (variadic arguments).<br> This function calls the specified static method of a class using a `va_list`. The method does not return a value.
 
+<!--Device-ani_status (*Class_CallStaticMethod_Void_V)(ani_env *env, ani_class cls, ani_static_method method, va_list args)--><!--Device-ani_status (*Class_CallStaticMethod_Void_V)(ani_env *env, ani_class cls, ani_static_method method, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -6145,6 +6571,8 @@ ani_status (*Class_CallStaticMethodByName_Boolean)(ani_env *env, ani_class cls, 
 **Description**
 
 Calls a static method by name with a boolean return type.<br> This function calls the specified static method of a class by its name and retrieves a boolean result using variadic arguments.
+
+<!--Device-ani_status (*Class_CallStaticMethodByName_Boolean)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_boolean *result, ...)--><!--Device-ani_status (*Class_CallStaticMethodByName_Boolean)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_boolean *result, ...)-End-->
 
 **Since**: 23
 
@@ -6175,6 +6603,8 @@ ani_status (*Class_CallStaticMethodByName_Boolean_A)(ani_env *env, ani_class cls
 
 Calls a static method by name with a boolean return type (array-based).<br> This function calls the specified static method of a class by its name and retrieves a boolean result using arguments from an array.
 
+<!--Device-ani_status (*Class_CallStaticMethodByName_Boolean_A)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_boolean *result, const ani_value *args)--><!--Device-ani_status (*Class_CallStaticMethodByName_Boolean_A)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_boolean *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -6203,6 +6633,8 @@ ani_status (*Class_CallStaticMethodByName_Boolean_V)(ani_env *env, ani_class cls
 **Description**
 
 Calls a static method by name with a boolean return type (variadic arguments).<br> This function calls the specified static method of a class by its name and retrieves a boolean result using a `va_list`.
+
+<!--Device-ani_status (*Class_CallStaticMethodByName_Boolean_V)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_boolean *result, va_list args)--><!--Device-ani_status (*Class_CallStaticMethodByName_Boolean_V)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_boolean *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -6233,6 +6665,8 @@ ani_status (*Class_CallStaticMethodByName_Char)(ani_env *env, ani_class cls, con
 
 Calls a static method by name with a char return type.<br> This function calls the specified static method of a class by its name and retrieves a char result using variadic arguments.
 
+<!--Device-ani_status (*Class_CallStaticMethodByName_Char)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_char *result, ...)--><!--Device-ani_status (*Class_CallStaticMethodByName_Char)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_char *result, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -6261,6 +6695,8 @@ ani_status (*Class_CallStaticMethodByName_Char_A)(ani_env *env, ani_class cls, c
 **Description**
 
 Calls a static method by name with a char return type (array-based).<br> This function calls the specified static method of a class by its name and retrieves a char result using arguments from an array.
+
+<!--Device-ani_status (*Class_CallStaticMethodByName_Char_A)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_char *result, const ani_value *args)--><!--Device-ani_status (*Class_CallStaticMethodByName_Char_A)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_char *result, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -6291,6 +6727,8 @@ ani_status (*Class_CallStaticMethodByName_Char_V)(ani_env *env, ani_class cls, c
 
 Calls a static method by name with a char return type (variadic arguments).<br> This function calls the specified static method of a class by its name and retrieves a char result using a `va_list`.
 
+<!--Device-ani_status (*Class_CallStaticMethodByName_Char_V)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_char *result, va_list args)--><!--Device-ani_status (*Class_CallStaticMethodByName_Char_V)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_char *result, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -6319,6 +6757,8 @@ ani_status (*Class_CallStaticMethodByName_Byte)(ani_env *env, ani_class cls, con
 **Description**
 
 Calls a static method by name with a byte return type.<br> This function calls the specified static method of a class by its name and retrieves a byte result using variadic arguments.
+
+<!--Device-ani_status (*Class_CallStaticMethodByName_Byte)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_byte *result, ...)--><!--Device-ani_status (*Class_CallStaticMethodByName_Byte)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_byte *result, ...)-End-->
 
 **Since**: 23
 
@@ -6349,6 +6789,8 @@ ani_status (*Class_CallStaticMethodByName_Byte_A)(ani_env *env, ani_class cls, c
 
 Calls a static method by name with a byte return type (array-based).<br> This function calls the specified static method of a class by its name and retrieves a byte result using arguments from an array.
 
+<!--Device-ani_status (*Class_CallStaticMethodByName_Byte_A)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_byte *result, const ani_value *args)--><!--Device-ani_status (*Class_CallStaticMethodByName_Byte_A)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_byte *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -6377,6 +6819,8 @@ ani_status (*Class_CallStaticMethodByName_Byte_V)(ani_env *env, ani_class cls, c
 **Description**
 
 Calls a static method by name with a byte return type (variadic arguments).<br> This function calls the specified static method of a class by its name and retrieves a byte result using a `va_list`.
+
+<!--Device-ani_status (*Class_CallStaticMethodByName_Byte_V)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_byte *result, va_list args)--><!--Device-ani_status (*Class_CallStaticMethodByName_Byte_V)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_byte *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -6407,6 +6851,8 @@ ani_status (*Class_CallStaticMethodByName_Short)(ani_env *env, ani_class cls, co
 
 Calls a static method by name with a short return type.<br> This function calls the specified static method of a class by its name and retrieves a short result using variadic arguments.
 
+<!--Device-ani_status (*Class_CallStaticMethodByName_Short)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_short *result, ...)--><!--Device-ani_status (*Class_CallStaticMethodByName_Short)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_short *result, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -6435,6 +6881,8 @@ ani_status (*Class_CallStaticMethodByName_Short_A)(ani_env *env, ani_class cls, 
 **Description**
 
 Calls a static method by name with a short return type (array-based).<br> This function calls the specified static method of a class by its name and retrieves a short result using arguments from an array.
+
+<!--Device-ani_status (*Class_CallStaticMethodByName_Short_A)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_short *result, const ani_value *args)--><!--Device-ani_status (*Class_CallStaticMethodByName_Short_A)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_short *result, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -6465,6 +6913,8 @@ ani_status (*Class_CallStaticMethodByName_Short_V)(ani_env *env, ani_class cls, 
 
 Calls a static method by name with a short return type (variadic arguments).<br> This function calls the specified static method of a class by its name and retrieves a short result using a `va_list`.
 
+<!--Device-ani_status (*Class_CallStaticMethodByName_Short_V)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_short *result, va_list args)--><!--Device-ani_status (*Class_CallStaticMethodByName_Short_V)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_short *result, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -6493,6 +6943,8 @@ ani_status (*Class_CallStaticMethodByName_Int)(ani_env *env, ani_class cls, cons
 **Description**
 
 Calls a static method by name with a integer return type.<br> This function calls the specified static method of a class by its name and retrieves a integer result using variadic arguments.
+
+<!--Device-ani_status (*Class_CallStaticMethodByName_Int)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_int *result, ...)--><!--Device-ani_status (*Class_CallStaticMethodByName_Int)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_int *result, ...)-End-->
 
 **Since**: 23
 
@@ -6523,6 +6975,8 @@ ani_status (*Class_CallStaticMethodByName_Int_A)(ani_env *env, ani_class cls, co
 
 Calls a static method by name with a integer return type (array-based).<br> This function calls the specified static method of a class by its name and retrieves a integer result using arguments from an array.
 
+<!--Device-ani_status (*Class_CallStaticMethodByName_Int_A)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_int *result, const ani_value *args)--><!--Device-ani_status (*Class_CallStaticMethodByName_Int_A)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_int *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -6551,6 +7005,8 @@ ani_status (*Class_CallStaticMethodByName_Int_V)(ani_env *env, ani_class cls, co
 **Description**
 
 Calls a static method by name with a integer return type (variadic arguments).<br> This function calls the specified static method of a class by its name and retrieves a integer result using a `va_list`.
+
+<!--Device-ani_status (*Class_CallStaticMethodByName_Int_V)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_int *result, va_list args)--><!--Device-ani_status (*Class_CallStaticMethodByName_Int_V)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_int *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -6581,6 +7037,8 @@ ani_status (*Class_CallStaticMethodByName_Long)(ani_env *env, ani_class cls, con
 
 Calls a static method by name with a long return type.<br> This function calls the specified static method of a class by its name and retrieves a long result using variadic arguments.
 
+<!--Device-ani_status (*Class_CallStaticMethodByName_Long)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_long *result, ...)--><!--Device-ani_status (*Class_CallStaticMethodByName_Long)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_long *result, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -6609,6 +7067,8 @@ ani_status (*Class_CallStaticMethodByName_Long_A)(ani_env *env, ani_class cls, c
 **Description**
 
 Calls a static method by name with a long return type (array-based).<br> This function calls the specified static method of a class by its name and retrieves a long result using arguments from an array.
+
+<!--Device-ani_status (*Class_CallStaticMethodByName_Long_A)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_long *result, const ani_value *args)--><!--Device-ani_status (*Class_CallStaticMethodByName_Long_A)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_long *result, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -6639,6 +7099,8 @@ ani_status (*Class_CallStaticMethodByName_Long_V)(ani_env *env, ani_class cls, c
 
 Calls a static method by name with a long return type (variadic arguments).<br> This function calls the specified static method of a class by its name and retrieves a long result using a `va_list`.
 
+<!--Device-ani_status (*Class_CallStaticMethodByName_Long_V)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_long *result, va_list args)--><!--Device-ani_status (*Class_CallStaticMethodByName_Long_V)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_long *result, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -6667,6 +7129,8 @@ ani_status (*Class_CallStaticMethodByName_Float)(ani_env *env, ani_class cls, co
 **Description**
 
 Calls a static method by name with a float return type.<br> This function calls the specified static method of a class by its name and retrieves a float result using variadic arguments.
+
+<!--Device-ani_status (*Class_CallStaticMethodByName_Float)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_float *result, ...)--><!--Device-ani_status (*Class_CallStaticMethodByName_Float)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_float *result, ...)-End-->
 
 **Since**: 23
 
@@ -6697,6 +7161,8 @@ ani_status (*Class_CallStaticMethodByName_Float_A)(ani_env *env, ani_class cls, 
 
 Calls a static method by name with a float return type (array-based).<br> This function calls the specified static method of a class by its name and retrieves a float result using arguments from an array.
 
+<!--Device-ani_status (*Class_CallStaticMethodByName_Float_A)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_float *result, const ani_value *args)--><!--Device-ani_status (*Class_CallStaticMethodByName_Float_A)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_float *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -6725,6 +7191,8 @@ ani_status (*Class_CallStaticMethodByName_Float_V)(ani_env *env, ani_class cls, 
 **Description**
 
 Calls a static method by name with a float return type (variadic arguments).<br> This function calls the specified static method of a class by its name and retrieves a float result using a `va_list`.
+
+<!--Device-ani_status (*Class_CallStaticMethodByName_Float_V)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_float *result, va_list args)--><!--Device-ani_status (*Class_CallStaticMethodByName_Float_V)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_float *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -6755,6 +7223,8 @@ ani_status (*Class_CallStaticMethodByName_Double)(ani_env *env, ani_class cls, c
 
 Calls a static method by name with a double return type.<br> This function calls the specified static method of a class by its name and retrieves a double result using variadic arguments.
 
+<!--Device-ani_status (*Class_CallStaticMethodByName_Double)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_double *result, ...)--><!--Device-ani_status (*Class_CallStaticMethodByName_Double)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_double *result, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -6783,6 +7253,8 @@ ani_status (*Class_CallStaticMethodByName_Double_A)(ani_env *env, ani_class cls,
 **Description**
 
 Calls a static method by name with a double return type (array-based).<br> This function calls the specified static method of a class by its name and retrieves a double result using arguments from an array.
+
+<!--Device-ani_status (*Class_CallStaticMethodByName_Double_A)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_double *result, const ani_value *args)--><!--Device-ani_status (*Class_CallStaticMethodByName_Double_A)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_double *result, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -6813,6 +7285,8 @@ ani_status (*Class_CallStaticMethodByName_Double_V)(ani_env *env, ani_class cls,
 
 Calls a static method by name with a double return type (variadic arguments).<br> This function calls the specified static method of a class by its name and retrieves a double result using a `va_list`.
 
+<!--Device-ani_status (*Class_CallStaticMethodByName_Double_V)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_double *result, va_list args)--><!--Device-ani_status (*Class_CallStaticMethodByName_Double_V)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_double *result, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -6841,6 +7315,8 @@ ani_status (*Class_CallStaticMethodByName_Ref)(ani_env *env, ani_class cls, cons
 **Description**
 
 Calls a static method by name with a reference return type.<br> This function calls the specified static method of a class by its name and retrieves a reference result using variadic arguments.
+
+<!--Device-ani_status (*Class_CallStaticMethodByName_Ref)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_ref *result, ...)--><!--Device-ani_status (*Class_CallStaticMethodByName_Ref)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_ref *result, ...)-End-->
 
 **Since**: 23
 
@@ -6871,6 +7347,8 @@ ani_status (*Class_CallStaticMethodByName_Ref_A)(ani_env *env, ani_class cls, co
 
 Calls a static method by name with a reference return type (array-based).<br> This function calls the specified static method of a class by its name and retrieves a reference result using arguments from an array.
 
+<!--Device-ani_status (*Class_CallStaticMethodByName_Ref_A)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_ref *result, const ani_value *args)--><!--Device-ani_status (*Class_CallStaticMethodByName_Ref_A)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_ref *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -6899,6 +7377,8 @@ ani_status (*Class_CallStaticMethodByName_Ref_V)(ani_env *env, ani_class cls, co
 **Description**
 
 Calls a static method by name with a reference return type (variadic arguments).<br> This function calls the specified static method of a class by its name and retrieves a reference result using a `va_list`.
+
+<!--Device-ani_status (*Class_CallStaticMethodByName_Ref_V)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_ref *result, va_list args)--><!--Device-ani_status (*Class_CallStaticMethodByName_Ref_V)(ani_env *env, ani_class cls, const char *name, const char *signature, ani_ref *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -6929,6 +7409,8 @@ ani_status (*Class_CallStaticMethodByName_Void)(ani_env *env, ani_class cls, con
 
 Calls a static method by name with no return value.<br> This function calls the specified static method of a class by its name using variadic arguments. The method does not return a value.
 
+<!--Device-ani_status (*Class_CallStaticMethodByName_Void)(ani_env *env, ani_class cls, const char *name, const char *signature, ...)--><!--Device-ani_status (*Class_CallStaticMethodByName_Void)(ani_env *env, ani_class cls, const char *name, const char *signature, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -6956,6 +7438,8 @@ ani_status (*Class_CallStaticMethodByName_Void_A)(ani_env *env, ani_class cls, c
 **Description**
 
 Calls a static method by name with no return value (array-based).<br> This function calls the specified static method of a class by its name using arguments from an array. The method does not return a value.
+
+<!--Device-ani_status (*Class_CallStaticMethodByName_Void_A)(ani_env *env, ani_class cls, const char *name, const char *signature, const ani_value *args)--><!--Device-ani_status (*Class_CallStaticMethodByName_Void_A)(ani_env *env, ani_class cls, const char *name, const char *signature, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -6985,6 +7469,8 @@ ani_status (*Class_CallStaticMethodByName_Void_V)(ani_env *env, ani_class cls, c
 
 Calls a static method by name with no return value (variadic arguments).<br> This function calls the specified static method of a class by its name using a `va_list`. The method does not return a value.
 
+<!--Device-ani_status (*Class_CallStaticMethodByName_Void_V)(ani_env *env, ani_class cls, const char *name, const char *signature, va_list args)--><!--Device-ani_status (*Class_CallStaticMethodByName_Void_V)(ani_env *env, ani_class cls, const char *name, const char *signature, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -7013,6 +7499,8 @@ ani_status (*Object_GetField_Boolean)(ani_env *env, ani_object object, ani_field
 
 Retrieves a boolean value from a field of an object.<br> This function retrieves the boolean value of the specified field from the given object.
 
+<!--Device-ani_status (*Object_GetField_Boolean)(ani_env *env, ani_object object, ani_field field, ani_boolean *result)--><!--Device-ani_status (*Object_GetField_Boolean)(ani_env *env, ani_object object, ani_field field, ani_boolean *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -7039,6 +7527,8 @@ ani_status (*Object_GetField_Char)(ani_env *env, ani_object object, ani_field fi
 **Description**
 
 Retrieves a char value from a field of an object.<br> This function retrieves the char value of the specified field from the given object.
+
+<!--Device-ani_status (*Object_GetField_Char)(ani_env *env, ani_object object, ani_field field, ani_char *result)--><!--Device-ani_status (*Object_GetField_Char)(ani_env *env, ani_object object, ani_field field, ani_char *result)-End-->
 
 **Since**: 23
 
@@ -7067,6 +7557,8 @@ ani_status (*Object_GetField_Byte)(ani_env *env, ani_object object, ani_field fi
 
 Retrieves a byte value from a field of an object.<br> This function retrieves the byte value of the specified field from the given object.
 
+<!--Device-ani_status (*Object_GetField_Byte)(ani_env *env, ani_object object, ani_field field, ani_byte *result)--><!--Device-ani_status (*Object_GetField_Byte)(ani_env *env, ani_object object, ani_field field, ani_byte *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -7093,6 +7585,8 @@ ani_status (*Object_GetField_Short)(ani_env *env, ani_object object, ani_field f
 **Description**
 
 Retrieves a short value from a field of an object.<br> This function retrieves the short value of the specified field from the given object.
+
+<!--Device-ani_status (*Object_GetField_Short)(ani_env *env, ani_object object, ani_field field, ani_short *result)--><!--Device-ani_status (*Object_GetField_Short)(ani_env *env, ani_object object, ani_field field, ani_short *result)-End-->
 
 **Since**: 23
 
@@ -7121,6 +7615,8 @@ ani_status (*Object_GetField_Int)(ani_env *env, ani_object object, ani_field fie
 
 Retrieves a integer value from a field of an object.<br> This function retrieves the integer value of the specified field from the given object.
 
+<!--Device-ani_status (*Object_GetField_Int)(ani_env *env, ani_object object, ani_field field, ani_int *result)--><!--Device-ani_status (*Object_GetField_Int)(ani_env *env, ani_object object, ani_field field, ani_int *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -7147,6 +7643,8 @@ ani_status (*Object_GetField_Long)(ani_env *env, ani_object object, ani_field fi
 **Description**
 
 Retrieves a long value from a field of an object.<br> This function retrieves the long value of the specified field from the given object.
+
+<!--Device-ani_status (*Object_GetField_Long)(ani_env *env, ani_object object, ani_field field, ani_long *result)--><!--Device-ani_status (*Object_GetField_Long)(ani_env *env, ani_object object, ani_field field, ani_long *result)-End-->
 
 **Since**: 23
 
@@ -7175,6 +7673,8 @@ ani_status (*Object_GetField_Float)(ani_env *env, ani_object object, ani_field f
 
 Retrieves a float value from a field of an object.<br> This function retrieves the float value of the specified field from the given object.
 
+<!--Device-ani_status (*Object_GetField_Float)(ani_env *env, ani_object object, ani_field field, ani_float *result)--><!--Device-ani_status (*Object_GetField_Float)(ani_env *env, ani_object object, ani_field field, ani_float *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -7201,6 +7701,8 @@ ani_status (*Object_GetField_Double)(ani_env *env, ani_object object, ani_field 
 **Description**
 
 Retrieves a double value from a field of an object.<br> This function retrieves the double value of the specified field from the given object.
+
+<!--Device-ani_status (*Object_GetField_Double)(ani_env *env, ani_object object, ani_field field, ani_double *result)--><!--Device-ani_status (*Object_GetField_Double)(ani_env *env, ani_object object, ani_field field, ani_double *result)-End-->
 
 **Since**: 23
 
@@ -7229,6 +7731,8 @@ ani_status (*Object_GetField_Ref)(ani_env *env, ani_object object, ani_field fie
 
 Retrieves a reference value from a field of an object.<br> This function retrieves the reference value of the specified field from the given object.
 
+<!--Device-ani_status (*Object_GetField_Ref)(ani_env *env, ani_object object, ani_field field, ani_ref *result)--><!--Device-ani_status (*Object_GetField_Ref)(ani_env *env, ani_object object, ani_field field, ani_ref *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -7255,6 +7759,8 @@ ani_status (*Object_SetField_Boolean)(ani_env *env, ani_object object, ani_field
 **Description**
 
 Sets a boolean value to a field of an object.<br> This function assigns a boolean value to the specified field of the given object.
+
+<!--Device-ani_status (*Object_SetField_Boolean)(ani_env *env, ani_object object, ani_field field, ani_boolean value)--><!--Device-ani_status (*Object_SetField_Boolean)(ani_env *env, ani_object object, ani_field field, ani_boolean value)-End-->
 
 **Since**: 23
 
@@ -7283,6 +7789,8 @@ ani_status (*Object_SetField_Char)(ani_env *env, ani_object object, ani_field fi
 
 Sets a char value to a field of an object.<br> This function assigns a char value to the specified field of the given object.
 
+<!--Device-ani_status (*Object_SetField_Char)(ani_env *env, ani_object object, ani_field field, ani_char value)--><!--Device-ani_status (*Object_SetField_Char)(ani_env *env, ani_object object, ani_field field, ani_char value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -7309,6 +7817,8 @@ ani_status (*Object_SetField_Byte)(ani_env *env, ani_object object, ani_field fi
 **Description**
 
 Sets a byte value to a field of an object.<br> This function assigns a byte value to the specified field of the given object.
+
+<!--Device-ani_status (*Object_SetField_Byte)(ani_env *env, ani_object object, ani_field field, ani_byte value)--><!--Device-ani_status (*Object_SetField_Byte)(ani_env *env, ani_object object, ani_field field, ani_byte value)-End-->
 
 **Since**: 23
 
@@ -7337,6 +7847,8 @@ ani_status (*Object_SetField_Short)(ani_env *env, ani_object object, ani_field f
 
 Sets a short value to a field of an object.<br> This function assigns a short value to the specified field of the given object.
 
+<!--Device-ani_status (*Object_SetField_Short)(ani_env *env, ani_object object, ani_field field, ani_short value)--><!--Device-ani_status (*Object_SetField_Short)(ani_env *env, ani_object object, ani_field field, ani_short value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -7363,6 +7875,8 @@ ani_status (*Object_SetField_Int)(ani_env *env, ani_object object, ani_field fie
 **Description**
 
 Sets a integer value to a field of an object.<br> This function assigns a integer value to the specified field of the given object.
+
+<!--Device-ani_status (*Object_SetField_Int)(ani_env *env, ani_object object, ani_field field, ani_int value)--><!--Device-ani_status (*Object_SetField_Int)(ani_env *env, ani_object object, ani_field field, ani_int value)-End-->
 
 **Since**: 23
 
@@ -7391,6 +7905,8 @@ ani_status (*Object_SetField_Long)(ani_env *env, ani_object object, ani_field fi
 
 Sets a long value to a field of an object.<br> This function assigns a long value to the specified field of the given object.
 
+<!--Device-ani_status (*Object_SetField_Long)(ani_env *env, ani_object object, ani_field field, ani_long value)--><!--Device-ani_status (*Object_SetField_Long)(ani_env *env, ani_object object, ani_field field, ani_long value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -7417,6 +7933,8 @@ ani_status (*Object_SetField_Float)(ani_env *env, ani_object object, ani_field f
 **Description**
 
 Sets a float value to a field of an object.<br> This function assigns a float value to the specified field of the given object.
+
+<!--Device-ani_status (*Object_SetField_Float)(ani_env *env, ani_object object, ani_field field, ani_float value)--><!--Device-ani_status (*Object_SetField_Float)(ani_env *env, ani_object object, ani_field field, ani_float value)-End-->
 
 **Since**: 23
 
@@ -7445,6 +7963,8 @@ ani_status (*Object_SetField_Double)(ani_env *env, ani_object object, ani_field 
 
 Sets a double value to a field of an object.<br> This function assigns a double value to the specified field of the given object.
 
+<!--Device-ani_status (*Object_SetField_Double)(ani_env *env, ani_object object, ani_field field, ani_double value)--><!--Device-ani_status (*Object_SetField_Double)(ani_env *env, ani_object object, ani_field field, ani_double value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -7471,6 +7991,8 @@ ani_status (*Object_SetField_Ref)(ani_env *env, ani_object object, ani_field fie
 **Description**
 
 Sets a reference value to a field of an object.<br> This function assigns a reference value to the specified field of the given object.
+
+<!--Device-ani_status (*Object_SetField_Ref)(ani_env *env, ani_object object, ani_field field, ani_ref value)--><!--Device-ani_status (*Object_SetField_Ref)(ani_env *env, ani_object object, ani_field field, ani_ref value)-End-->
 
 **Since**: 23
 
@@ -7499,6 +8021,8 @@ ani_status (*Object_GetFieldByName_Boolean)(ani_env *env, ani_object object, con
 
 Retrieves a boolean value from a field of an object by its name.<br> This function retrieves the boolean value of the specified field from the given object by its name.
 
+<!--Device-ani_status (*Object_GetFieldByName_Boolean)(ani_env *env, ani_object object, const char *name, ani_boolean *result)--><!--Device-ani_status (*Object_GetFieldByName_Boolean)(ani_env *env, ani_object object, const char *name, ani_boolean *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -7525,6 +8049,8 @@ ani_status (*Object_GetFieldByName_Char)(ani_env *env, ani_object object, const 
 **Description**
 
 Retrieves a char value from a field of an object by its name.<br> This function retrieves the char value of the specified field from the given object by its name.
+
+<!--Device-ani_status (*Object_GetFieldByName_Char)(ani_env *env, ani_object object, const char *name, ani_char *result)--><!--Device-ani_status (*Object_GetFieldByName_Char)(ani_env *env, ani_object object, const char *name, ani_char *result)-End-->
 
 **Since**: 23
 
@@ -7553,6 +8079,8 @@ ani_status (*Object_GetFieldByName_Byte)(ani_env *env, ani_object object, const 
 
 Retrieves a byte value from a field of an object by its name.<br> This function retrieves the byte value of the specified field from the given object by its name.
 
+<!--Device-ani_status (*Object_GetFieldByName_Byte)(ani_env *env, ani_object object, const char *name, ani_byte *result)--><!--Device-ani_status (*Object_GetFieldByName_Byte)(ani_env *env, ani_object object, const char *name, ani_byte *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -7579,6 +8107,8 @@ ani_status (*Object_GetFieldByName_Short)(ani_env *env, ani_object object, const
 **Description**
 
 Retrieves a short value from a field of an object by its name.<br> This function retrieves the short value of the specified field from the given object by its name.
+
+<!--Device-ani_status (*Object_GetFieldByName_Short)(ani_env *env, ani_object object, const char *name, ani_short *result)--><!--Device-ani_status (*Object_GetFieldByName_Short)(ani_env *env, ani_object object, const char *name, ani_short *result)-End-->
 
 **Since**: 23
 
@@ -7607,6 +8137,8 @@ ani_status (*Object_GetFieldByName_Int)(ani_env *env, ani_object object, const c
 
 Retrieves a integer value from a field of an object by its name.<br> This function retrieves the integer value of the specified field from the given object by its name.
 
+<!--Device-ani_status (*Object_GetFieldByName_Int)(ani_env *env, ani_object object, const char *name, ani_int *result)--><!--Device-ani_status (*Object_GetFieldByName_Int)(ani_env *env, ani_object object, const char *name, ani_int *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -7633,6 +8165,8 @@ ani_status (*Object_GetFieldByName_Long)(ani_env *env, ani_object object, const 
 **Description**
 
 Retrieves a long value from a field of an object by its name.<br> This function retrieves the long value of the specified field from the given object by its name.
+
+<!--Device-ani_status (*Object_GetFieldByName_Long)(ani_env *env, ani_object object, const char *name, ani_long *result)--><!--Device-ani_status (*Object_GetFieldByName_Long)(ani_env *env, ani_object object, const char *name, ani_long *result)-End-->
 
 **Since**: 23
 
@@ -7661,6 +8195,8 @@ ani_status (*Object_GetFieldByName_Float)(ani_env *env, ani_object object, const
 
 Retrieves a float value from a field of an object by its name.<br> This function retrieves the float value of the specified field from the given object by its name.
 
+<!--Device-ani_status (*Object_GetFieldByName_Float)(ani_env *env, ani_object object, const char *name, ani_float *result)--><!--Device-ani_status (*Object_GetFieldByName_Float)(ani_env *env, ani_object object, const char *name, ani_float *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -7687,6 +8223,8 @@ ani_status (*Object_GetFieldByName_Double)(ani_env *env, ani_object object, cons
 **Description**
 
 Retrieves a double value from a field of an object by its name.<br> This function retrieves the double value of the specified field from the given object by its name.
+
+<!--Device-ani_status (*Object_GetFieldByName_Double)(ani_env *env, ani_object object, const char *name, ani_double *result)--><!--Device-ani_status (*Object_GetFieldByName_Double)(ani_env *env, ani_object object, const char *name, ani_double *result)-End-->
 
 **Since**: 23
 
@@ -7715,6 +8253,8 @@ ani_status (*Object_GetFieldByName_Ref)(ani_env *env, ani_object object, const c
 
 Retrieves a reference value from a field of an object by its name.<br> This function retrieves the reference value of the specified field from the given object by its name.
 
+<!--Device-ani_status (*Object_GetFieldByName_Ref)(ani_env *env, ani_object object, const char *name, ani_ref *result)--><!--Device-ani_status (*Object_GetFieldByName_Ref)(ani_env *env, ani_object object, const char *name, ani_ref *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -7741,6 +8281,8 @@ ani_status (*Object_SetFieldByName_Boolean)(ani_env *env, ani_object object, con
 **Description**
 
 Sets a boolean value to a field of an object by its name.<br> This function assigns a boolean value to the specified field of the given object by its name.
+
+<!--Device-ani_status (*Object_SetFieldByName_Boolean)(ani_env *env, ani_object object, const char *name, ani_boolean value)--><!--Device-ani_status (*Object_SetFieldByName_Boolean)(ani_env *env, ani_object object, const char *name, ani_boolean value)-End-->
 
 **Since**: 23
 
@@ -7769,6 +8311,8 @@ ani_status (*Object_SetFieldByName_Char)(ani_env *env, ani_object object, const 
 
 Sets a char value to a field of an object by its name.<br> This function assigns a char value to the specified field of the given object by its name.
 
+<!--Device-ani_status (*Object_SetFieldByName_Char)(ani_env *env, ani_object object, const char *name, ani_char value)--><!--Device-ani_status (*Object_SetFieldByName_Char)(ani_env *env, ani_object object, const char *name, ani_char value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -7795,6 +8339,8 @@ ani_status (*Object_SetFieldByName_Byte)(ani_env *env, ani_object object, const 
 **Description**
 
 Sets a byte value to a field of an object by its name.<br> This function assigns a byte value to the specified field of the given object by its name.
+
+<!--Device-ani_status (*Object_SetFieldByName_Byte)(ani_env *env, ani_object object, const char *name, ani_byte value)--><!--Device-ani_status (*Object_SetFieldByName_Byte)(ani_env *env, ani_object object, const char *name, ani_byte value)-End-->
 
 **Since**: 23
 
@@ -7823,6 +8369,8 @@ ani_status (*Object_SetFieldByName_Short)(ani_env *env, ani_object object, const
 
 Sets a short value to a field of an object by its name.<br> This function assigns a short value to the specified field of the given object by its name.
 
+<!--Device-ani_status (*Object_SetFieldByName_Short)(ani_env *env, ani_object object, const char *name, ani_short value)--><!--Device-ani_status (*Object_SetFieldByName_Short)(ani_env *env, ani_object object, const char *name, ani_short value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -7849,6 +8397,8 @@ ani_status (*Object_SetFieldByName_Int)(ani_env *env, ani_object object, const c
 **Description**
 
 Sets a integer value to a field of an object by its name.<br> This function assigns a integer value to the specified field of the given object by its name.
+
+<!--Device-ani_status (*Object_SetFieldByName_Int)(ani_env *env, ani_object object, const char *name, ani_int value)--><!--Device-ani_status (*Object_SetFieldByName_Int)(ani_env *env, ani_object object, const char *name, ani_int value)-End-->
 
 **Since**: 23
 
@@ -7877,6 +8427,8 @@ ani_status (*Object_SetFieldByName_Long)(ani_env *env, ani_object object, const 
 
 Sets a long value to a field of an object by its name.<br> This function assigns a long value to the specified field of the given object by its name.
 
+<!--Device-ani_status (*Object_SetFieldByName_Long)(ani_env *env, ani_object object, const char *name, ani_long value)--><!--Device-ani_status (*Object_SetFieldByName_Long)(ani_env *env, ani_object object, const char *name, ani_long value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -7903,6 +8455,8 @@ ani_status (*Object_SetFieldByName_Float)(ani_env *env, ani_object object, const
 **Description**
 
 Sets a float value to a field of an object by its name.<br> This function assigns a float value to the specified field of the given object by its name.
+
+<!--Device-ani_status (*Object_SetFieldByName_Float)(ani_env *env, ani_object object, const char *name, ani_float value)--><!--Device-ani_status (*Object_SetFieldByName_Float)(ani_env *env, ani_object object, const char *name, ani_float value)-End-->
 
 **Since**: 23
 
@@ -7931,6 +8485,8 @@ ani_status (*Object_SetFieldByName_Double)(ani_env *env, ani_object object, cons
 
 Sets a double value to a field of an object by its name.<br> This function assigns a double value to the specified field of the given object by its name.
 
+<!--Device-ani_status (*Object_SetFieldByName_Double)(ani_env *env, ani_object object, const char *name, ani_double value)--><!--Device-ani_status (*Object_SetFieldByName_Double)(ani_env *env, ani_object object, const char *name, ani_double value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -7957,6 +8513,8 @@ ani_status (*Object_SetFieldByName_Ref)(ani_env *env, ani_object object, const c
 **Description**
 
 Sets a reference value to a field of an object by its name.<br> This function assigns a reference value to the specified field of the given object by its name.
+
+<!--Device-ani_status (*Object_SetFieldByName_Ref)(ani_env *env, ani_object object, const char *name, ani_ref value)--><!--Device-ani_status (*Object_SetFieldByName_Ref)(ani_env *env, ani_object object, const char *name, ani_ref value)-End-->
 
 **Since**: 23
 
@@ -7985,6 +8543,8 @@ ani_status (*Object_GetPropertyByName_Boolean)(ani_env *env, ani_object object, 
 
 Retrieves a boolean value from a property of an object by its name.<br> This function retrieves the boolean value of the specified property from the given object by its name.
 
+<!--Device-ani_status (*Object_GetPropertyByName_Boolean)(ani_env *env, ani_object object, const char *name, ani_boolean *result)--><!--Device-ani_status (*Object_GetPropertyByName_Boolean)(ani_env *env, ani_object object, const char *name, ani_boolean *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -8011,6 +8571,8 @@ ani_status (*Object_GetPropertyByName_Char)(ani_env *env, ani_object object, con
 **Description**
 
 Retrieves a char value from a property of an object by its name.<br> This function retrieves the char value of the specified property from the given object by its name.
+
+<!--Device-ani_status (*Object_GetPropertyByName_Char)(ani_env *env, ani_object object, const char *name, ani_char *result)--><!--Device-ani_status (*Object_GetPropertyByName_Char)(ani_env *env, ani_object object, const char *name, ani_char *result)-End-->
 
 **Since**: 23
 
@@ -8039,6 +8601,8 @@ ani_status (*Object_GetPropertyByName_Byte)(ani_env *env, ani_object object, con
 
 Retrieves a byte value from a property of an object by its name.<br> This function retrieves the byte value of the specified property from the given object by its name.
 
+<!--Device-ani_status (*Object_GetPropertyByName_Byte)(ani_env *env, ani_object object, const char *name, ani_byte *result)--><!--Device-ani_status (*Object_GetPropertyByName_Byte)(ani_env *env, ani_object object, const char *name, ani_byte *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -8065,6 +8629,8 @@ ani_status (*Object_GetPropertyByName_Short)(ani_env *env, ani_object object, co
 **Description**
 
 Retrieves a short value from a property of an object by its name.<br> This function retrieves the short value of the specified property from the given object by its name.
+
+<!--Device-ani_status (*Object_GetPropertyByName_Short)(ani_env *env, ani_object object, const char *name, ani_short *result)--><!--Device-ani_status (*Object_GetPropertyByName_Short)(ani_env *env, ani_object object, const char *name, ani_short *result)-End-->
 
 **Since**: 23
 
@@ -8093,6 +8659,8 @@ ani_status (*Object_GetPropertyByName_Int)(ani_env *env, ani_object object, cons
 
 Retrieves a integer value from a property of an object by its name.<br> This function retrieves the integer value of the specified property from the given object by its name.
 
+<!--Device-ani_status (*Object_GetPropertyByName_Int)(ani_env *env, ani_object object, const char *name, ani_int *result)--><!--Device-ani_status (*Object_GetPropertyByName_Int)(ani_env *env, ani_object object, const char *name, ani_int *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -8119,6 +8687,8 @@ ani_status (*Object_GetPropertyByName_Long)(ani_env *env, ani_object object, con
 **Description**
 
 Retrieves a long value from a property of an object by its name.<br> This function retrieves the long value of the specified property from the given object by its name.
+
+<!--Device-ani_status (*Object_GetPropertyByName_Long)(ani_env *env, ani_object object, const char *name, ani_long *result)--><!--Device-ani_status (*Object_GetPropertyByName_Long)(ani_env *env, ani_object object, const char *name, ani_long *result)-End-->
 
 **Since**: 23
 
@@ -8147,6 +8717,8 @@ ani_status (*Object_GetPropertyByName_Float)(ani_env *env, ani_object object, co
 
 Retrieves a float value from a property of an object by its name.<br> This function retrieves the float value of the specified property from the given object by its name.
 
+<!--Device-ani_status (*Object_GetPropertyByName_Float)(ani_env *env, ani_object object, const char *name, ani_float *result)--><!--Device-ani_status (*Object_GetPropertyByName_Float)(ani_env *env, ani_object object, const char *name, ani_float *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -8173,6 +8745,8 @@ ani_status (*Object_GetPropertyByName_Double)(ani_env *env, ani_object object, c
 **Description**
 
 Retrieves a double value from a property of an object by its name.<br> This function retrieves the double value of the specified property from the given object by its name.
+
+<!--Device-ani_status (*Object_GetPropertyByName_Double)(ani_env *env, ani_object object, const char *name, ani_double *result)--><!--Device-ani_status (*Object_GetPropertyByName_Double)(ani_env *env, ani_object object, const char *name, ani_double *result)-End-->
 
 **Since**: 23
 
@@ -8201,6 +8775,8 @@ ani_status (*Object_GetPropertyByName_Ref)(ani_env *env, ani_object object, cons
 
 Retrieves a reference value from a property of an object by its name.<br> This function retrieves the reference value of the specified property from the given object by its name.
 
+<!--Device-ani_status (*Object_GetPropertyByName_Ref)(ani_env *env, ani_object object, const char *name, ani_ref *result)--><!--Device-ani_status (*Object_GetPropertyByName_Ref)(ani_env *env, ani_object object, const char *name, ani_ref *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -8227,6 +8803,8 @@ ani_status (*Object_SetPropertyByName_Boolean)(ani_env *env, ani_object object, 
 **Description**
 
 Sets a boolean value to a property of an object by its name.<br> This function assigns a boolean value to the specified property of the given object by its name.
+
+<!--Device-ani_status (*Object_SetPropertyByName_Boolean)(ani_env *env, ani_object object, const char *name, ani_boolean value)--><!--Device-ani_status (*Object_SetPropertyByName_Boolean)(ani_env *env, ani_object object, const char *name, ani_boolean value)-End-->
 
 **Since**: 23
 
@@ -8255,6 +8833,8 @@ ani_status (*Object_SetPropertyByName_Char)(ani_env *env, ani_object object, con
 
 Sets a char value to a property of an object by its name.<br> This function assigns a char value to the specified property of the given object by its name.
 
+<!--Device-ani_status (*Object_SetPropertyByName_Char)(ani_env *env, ani_object object, const char *name, ani_char value)--><!--Device-ani_status (*Object_SetPropertyByName_Char)(ani_env *env, ani_object object, const char *name, ani_char value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -8281,6 +8861,8 @@ ani_status (*Object_SetPropertyByName_Byte)(ani_env *env, ani_object object, con
 **Description**
 
 Sets a byte value to a property of an object by its name.<br> This function assigns a byte value to the specified property of the given object by its name.
+
+<!--Device-ani_status (*Object_SetPropertyByName_Byte)(ani_env *env, ani_object object, const char *name, ani_byte value)--><!--Device-ani_status (*Object_SetPropertyByName_Byte)(ani_env *env, ani_object object, const char *name, ani_byte value)-End-->
 
 **Since**: 23
 
@@ -8309,6 +8891,8 @@ ani_status (*Object_SetPropertyByName_Short)(ani_env *env, ani_object object, co
 
 Sets a short value to a property of an object by its name.<br> This function assigns a short value to the specified property of the given object by its name.
 
+<!--Device-ani_status (*Object_SetPropertyByName_Short)(ani_env *env, ani_object object, const char *name, ani_short value)--><!--Device-ani_status (*Object_SetPropertyByName_Short)(ani_env *env, ani_object object, const char *name, ani_short value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -8335,6 +8919,8 @@ ani_status (*Object_SetPropertyByName_Int)(ani_env *env, ani_object object, cons
 **Description**
 
 Sets a integer value to a property of an object by its name.<br> This function assigns a integer value to the specified property of the given object by its name.
+
+<!--Device-ani_status (*Object_SetPropertyByName_Int)(ani_env *env, ani_object object, const char *name, ani_int value)--><!--Device-ani_status (*Object_SetPropertyByName_Int)(ani_env *env, ani_object object, const char *name, ani_int value)-End-->
 
 **Since**: 23
 
@@ -8363,6 +8949,8 @@ ani_status (*Object_SetPropertyByName_Long)(ani_env *env, ani_object object, con
 
 Sets a long value to a property of an object by its name.<br> This function assigns a long value to the specified property of the given object by its name.
 
+<!--Device-ani_status (*Object_SetPropertyByName_Long)(ani_env *env, ani_object object, const char *name, ani_long value)--><!--Device-ani_status (*Object_SetPropertyByName_Long)(ani_env *env, ani_object object, const char *name, ani_long value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -8389,6 +8977,8 @@ ani_status (*Object_SetPropertyByName_Float)(ani_env *env, ani_object object, co
 **Description**
 
 Sets a float value to a property of an object by its name.<br> This function assigns a float value to the specified property of the given object by its name.
+
+<!--Device-ani_status (*Object_SetPropertyByName_Float)(ani_env *env, ani_object object, const char *name, ani_float value)--><!--Device-ani_status (*Object_SetPropertyByName_Float)(ani_env *env, ani_object object, const char *name, ani_float value)-End-->
 
 **Since**: 23
 
@@ -8417,6 +9007,8 @@ ani_status (*Object_SetPropertyByName_Double)(ani_env *env, ani_object object, c
 
 Sets a double value to a property of an object by its name.<br> This function assigns a double value to the specified property of the given object by its name.
 
+<!--Device-ani_status (*Object_SetPropertyByName_Double)(ani_env *env, ani_object object, const char *name, ani_double value)--><!--Device-ani_status (*Object_SetPropertyByName_Double)(ani_env *env, ani_object object, const char *name, ani_double value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -8444,6 +9036,8 @@ ani_status (*Object_SetPropertyByName_Ref)(ani_env *env, ani_object object, cons
 
 Sets a reference value to a property of an object by its name.<br> This function assigns a reference value to the specified property of the given object by its name.
 
+<!--Device-ani_status (*Object_SetPropertyByName_Ref)(ani_env *env, ani_object object, const char *name, ani_ref value)--><!--Device-ani_status (*Object_SetPropertyByName_Ref)(ani_env *env, ani_object object, const char *name, ani_ref value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -8470,6 +9064,8 @@ ani_status (*Object_CallMethod_Boolean)(ani_env *env, ani_object object, ani_met
 **Description**
 
 Calls a method on an object and retrieves a boolean return value.<br> This function calls the specified method of an object using variadic arguments and retrieves a boolean result.
+
+<!--Device-ani_status (*Object_CallMethod_Boolean)(ani_env *env, ani_object object, ani_method method, ani_boolean *result, ...)--><!--Device-ani_status (*Object_CallMethod_Boolean)(ani_env *env, ani_object object, ani_method method, ani_boolean *result, ...)-End-->
 
 **Since**: 23
 
@@ -8499,6 +9095,8 @@ ani_status (*Object_CallMethod_Boolean_A)(ani_env *env, ani_object object, ani_m
 
 Calls a method on an object and retrieves a boolean return value (array-based).<br> This function calls the specified method of an object using arguments provided in an array and retrieves a boolean result.
 
+<!--Device-ani_status (*Object_CallMethod_Boolean_A)(ani_env *env, ani_object object, ani_method method, ani_boolean *result, const ani_value *args)--><!--Device-ani_status (*Object_CallMethod_Boolean_A)(ani_env *env, ani_object object, ani_method method, ani_boolean *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -8526,6 +9124,8 @@ ani_status (*Object_CallMethod_Boolean_V)(ani_env *env, ani_object object, ani_m
 **Description**
 
 Calls a method on an object and retrieves a boolean return value (variadic arguments).<br> This function calls the specified method of an object using a `va_list` and retrieves a boolean result.
+
+<!--Device-ani_status (*Object_CallMethod_Boolean_V)(ani_env *env, ani_object object, ani_method method, ani_boolean *result, va_list args)--><!--Device-ani_status (*Object_CallMethod_Boolean_V)(ani_env *env, ani_object object, ani_method method, ani_boolean *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -8555,6 +9155,8 @@ ani_status (*Object_CallMethod_Char)(ani_env *env, ani_object object, ani_method
 
 Calls a method on an object and retrieves a char return value.<br> This function calls the specified method of an object using variadic arguments and retrieves a char result.
 
+<!--Device-ani_status (*Object_CallMethod_Char)(ani_env *env, ani_object object, ani_method method, ani_char *result, ...)--><!--Device-ani_status (*Object_CallMethod_Char)(ani_env *env, ani_object object, ani_method method, ani_char *result, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -8582,6 +9184,8 @@ ani_status (*Object_CallMethod_Char_A)(ani_env *env, ani_object object, ani_meth
 **Description**
 
 Calls a method on an object and retrieves a char return value (array-based).<br> This function calls the specified method of an object using arguments provided in an array and retrieves a char result.
+
+<!--Device-ani_status (*Object_CallMethod_Char_A)(ani_env *env, ani_object object, ani_method method, ani_char *result, const ani_value *args)--><!--Device-ani_status (*Object_CallMethod_Char_A)(ani_env *env, ani_object object, ani_method method, ani_char *result, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -8611,6 +9215,8 @@ ani_status (*Object_CallMethod_Char_V)(ani_env *env, ani_object object, ani_meth
 
 Calls a method on an object and retrieves a char return value (variadic arguments).<br> This function calls the specified method of an object using a `va_list` and retrieves a char result.
 
+<!--Device-ani_status (*Object_CallMethod_Char_V)(ani_env *env, ani_object object, ani_method method, ani_char *result, va_list args)--><!--Device-ani_status (*Object_CallMethod_Char_V)(ani_env *env, ani_object object, ani_method method, ani_char *result, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -8638,6 +9244,8 @@ ani_status (*Object_CallMethod_Byte)(ani_env *env, ani_object object, ani_method
 **Description**
 
 Calls a method on an object and retrieves a byte return value.<br> This function calls the specified method of an object using variadic arguments and retrieves a byte result.
+
+<!--Device-ani_status (*Object_CallMethod_Byte)(ani_env *env, ani_object object, ani_method method, ani_byte *result, ...)--><!--Device-ani_status (*Object_CallMethod_Byte)(ani_env *env, ani_object object, ani_method method, ani_byte *result, ...)-End-->
 
 **Since**: 23
 
@@ -8667,6 +9275,8 @@ ani_status (*Object_CallMethod_Byte_A)(ani_env *env, ani_object object, ani_meth
 
 Calls a method on an object and retrieves a byte return value (array-based).<br> This function calls the specified method of an object using arguments provided in an array and retrieves a byte result.
 
+<!--Device-ani_status (*Object_CallMethod_Byte_A)(ani_env *env, ani_object object, ani_method method, ani_byte *result, const ani_value *args)--><!--Device-ani_status (*Object_CallMethod_Byte_A)(ani_env *env, ani_object object, ani_method method, ani_byte *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -8694,6 +9304,8 @@ ani_status (*Object_CallMethod_Byte_V)(ani_env *env, ani_object object, ani_meth
 **Description**
 
 Calls a method on an object and retrieves a byte return value (variadic arguments).<br> This function calls the specified method of an object using a `va_list` and retrieves a byte result.
+
+<!--Device-ani_status (*Object_CallMethod_Byte_V)(ani_env *env, ani_object object, ani_method method, ani_byte *result, va_list args)--><!--Device-ani_status (*Object_CallMethod_Byte_V)(ani_env *env, ani_object object, ani_method method, ani_byte *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -8723,6 +9335,8 @@ ani_status (*Object_CallMethod_Short)(ani_env *env, ani_object object, ani_metho
 
 Calls a method on an object and retrieves a short return value.<br> This function calls the specified method of an object using variadic arguments and retrieves a short result.
 
+<!--Device-ani_status (*Object_CallMethod_Short)(ani_env *env, ani_object object, ani_method method, ani_short *result, ...)--><!--Device-ani_status (*Object_CallMethod_Short)(ani_env *env, ani_object object, ani_method method, ani_short *result, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -8750,6 +9364,8 @@ ani_status (*Object_CallMethod_Short_A)(ani_env *env, ani_object object, ani_met
 **Description**
 
 Calls a method on an object and retrieves a short return value (array-based).<br> This function calls the specified method of an object using arguments provided in an array and retrieves a short result.
+
+<!--Device-ani_status (*Object_CallMethod_Short_A)(ani_env *env, ani_object object, ani_method method, ani_short *result, const ani_value *args)--><!--Device-ani_status (*Object_CallMethod_Short_A)(ani_env *env, ani_object object, ani_method method, ani_short *result, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -8779,6 +9395,8 @@ ani_status (*Object_CallMethod_Short_V)(ani_env *env, ani_object object, ani_met
 
 Calls a method on an object and retrieves a short return value (variadic arguments).<br> This function calls the specified method of an object using a `va_list` and retrieves a short result.
 
+<!--Device-ani_status (*Object_CallMethod_Short_V)(ani_env *env, ani_object object, ani_method method, ani_short *result, va_list args)--><!--Device-ani_status (*Object_CallMethod_Short_V)(ani_env *env, ani_object object, ani_method method, ani_short *result, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -8806,6 +9424,8 @@ ani_status (*Object_CallMethod_Int)(ani_env *env, ani_object object, ani_method 
 **Description**
 
 Calls a method on an object and retrieves a integer return value.<br> This function calls the specified method of an object using variadic arguments and retrieves a integer result.
+
+<!--Device-ani_status (*Object_CallMethod_Int)(ani_env *env, ani_object object, ani_method method, ani_int *result, ...)--><!--Device-ani_status (*Object_CallMethod_Int)(ani_env *env, ani_object object, ani_method method, ani_int *result, ...)-End-->
 
 **Since**: 23
 
@@ -8835,6 +9455,8 @@ ani_status (*Object_CallMethod_Int_A)(ani_env *env, ani_object object, ani_metho
 
 Calls a method on an object and retrieves a integer return value (array-based).<br> This function calls the specified method of an object using arguments provided in an array and retrieves a integer result.
 
+<!--Device-ani_status (*Object_CallMethod_Int_A)(ani_env *env, ani_object object, ani_method method, ani_int *result, const ani_value *args)--><!--Device-ani_status (*Object_CallMethod_Int_A)(ani_env *env, ani_object object, ani_method method, ani_int *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -8862,6 +9484,8 @@ ani_status (*Object_CallMethod_Int_V)(ani_env *env, ani_object object, ani_metho
 **Description**
 
 Calls a method on an object and retrieves a integer return value (variadic arguments).<br> This function calls the specified method of an object using a `va_list` and retrieves a integer result.
+
+<!--Device-ani_status (*Object_CallMethod_Int_V)(ani_env *env, ani_object object, ani_method method, ani_int *result, va_list args)--><!--Device-ani_status (*Object_CallMethod_Int_V)(ani_env *env, ani_object object, ani_method method, ani_int *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -8891,6 +9515,8 @@ ani_status (*Object_CallMethod_Long)(ani_env *env, ani_object object, ani_method
 
 Calls a method on an object and retrieves a long return value.<br> This function calls the specified method of an object using variadic arguments and retrieves a long result.
 
+<!--Device-ani_status (*Object_CallMethod_Long)(ani_env *env, ani_object object, ani_method method, ani_long *result, ...)--><!--Device-ani_status (*Object_CallMethod_Long)(ani_env *env, ani_object object, ani_method method, ani_long *result, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -8918,6 +9544,8 @@ ani_status (*Object_CallMethod_Long_A)(ani_env *env, ani_object object, ani_meth
 **Description**
 
 Calls a method on an object and retrieves a long return value (array-based).<br> This function calls the specified method of an object using arguments provided in an array and retrieves a long result.
+
+<!--Device-ani_status (*Object_CallMethod_Long_A)(ani_env *env, ani_object object, ani_method method, ani_long *result, const ani_value *args)--><!--Device-ani_status (*Object_CallMethod_Long_A)(ani_env *env, ani_object object, ani_method method, ani_long *result, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -8947,6 +9575,8 @@ ani_status (*Object_CallMethod_Long_V)(ani_env *env, ani_object object, ani_meth
 
 Calls a method on an object and retrieves a long return value (variadic arguments).<br> This function calls the specified method of an object using a `va_list` and retrieves a long result.
 
+<!--Device-ani_status (*Object_CallMethod_Long_V)(ani_env *env, ani_object object, ani_method method, ani_long *result, va_list args)--><!--Device-ani_status (*Object_CallMethod_Long_V)(ani_env *env, ani_object object, ani_method method, ani_long *result, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -8974,6 +9604,8 @@ ani_status (*Object_CallMethod_Float)(ani_env *env, ani_object object, ani_metho
 **Description**
 
 Calls a method on an object and retrieves a float return value.<br> This function calls the specified method of an object using variadic arguments and retrieves a float result.
+
+<!--Device-ani_status (*Object_CallMethod_Float)(ani_env *env, ani_object object, ani_method method, ani_float *result, ...)--><!--Device-ani_status (*Object_CallMethod_Float)(ani_env *env, ani_object object, ani_method method, ani_float *result, ...)-End-->
 
 **Since**: 23
 
@@ -9003,6 +9635,8 @@ ani_status (*Object_CallMethod_Float_A)(ani_env *env, ani_object object, ani_met
 
 Calls a method on an object and retrieves a float return value (array-based).<br> This function calls the specified method of an object using arguments provided in an array and retrieves a float result.
 
+<!--Device-ani_status (*Object_CallMethod_Float_A)(ani_env *env, ani_object object, ani_method method, ani_float *result, const ani_value *args)--><!--Device-ani_status (*Object_CallMethod_Float_A)(ani_env *env, ani_object object, ani_method method, ani_float *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -9030,6 +9664,8 @@ ani_status (*Object_CallMethod_Float_V)(ani_env *env, ani_object object, ani_met
 **Description**
 
 Calls a method on an object and retrieves a float return value (variadic arguments).<br> This function calls the specified method of an object using a `va_list` and retrieves a float result.
+
+<!--Device-ani_status (*Object_CallMethod_Float_V)(ani_env *env, ani_object object, ani_method method, ani_float *result, va_list args)--><!--Device-ani_status (*Object_CallMethod_Float_V)(ani_env *env, ani_object object, ani_method method, ani_float *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -9059,6 +9695,8 @@ ani_status (*Object_CallMethod_Double)(ani_env *env, ani_object object, ani_meth
 
 Calls a method on an object and retrieves a double return value.<br> This function calls the specified method of an object using variadic arguments and retrieves a double result.
 
+<!--Device-ani_status (*Object_CallMethod_Double)(ani_env *env, ani_object object, ani_method method, ani_double *result, ...)--><!--Device-ani_status (*Object_CallMethod_Double)(ani_env *env, ani_object object, ani_method method, ani_double *result, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -9086,6 +9724,8 @@ ani_status (*Object_CallMethod_Double_A)(ani_env *env, ani_object object, ani_me
 **Description**
 
 Calls a method on an object and retrieves a double return value (array-based).<br> This function calls the specified method of an object using arguments provided in an array and retrieves a double result.
+
+<!--Device-ani_status (*Object_CallMethod_Double_A)(ani_env *env, ani_object object, ani_method method, ani_double *result, const ani_value *args)--><!--Device-ani_status (*Object_CallMethod_Double_A)(ani_env *env, ani_object object, ani_method method, ani_double *result, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -9115,6 +9755,8 @@ ani_status (*Object_CallMethod_Double_V)(ani_env *env, ani_object object, ani_me
 
 Calls a method on an object and retrieves a double return value (variadic arguments).<br> This function calls the specified method of an object using a `va_list` and retrieves a double result.
 
+<!--Device-ani_status (*Object_CallMethod_Double_V)(ani_env *env, ani_object object, ani_method method, ani_double *result, va_list args)--><!--Device-ani_status (*Object_CallMethod_Double_V)(ani_env *env, ani_object object, ani_method method, ani_double *result, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -9142,6 +9784,8 @@ ani_status (*Object_CallMethod_Ref)(ani_env *env, ani_object object, ani_method 
 **Description**
 
 Calls a method on an object and retrieves a reference return value.<br> This function calls the specified method of an object using variadic arguments and retrieves a reference result.
+
+<!--Device-ani_status (*Object_CallMethod_Ref)(ani_env *env, ani_object object, ani_method method, ani_ref *result, ...)--><!--Device-ani_status (*Object_CallMethod_Ref)(ani_env *env, ani_object object, ani_method method, ani_ref *result, ...)-End-->
 
 **Since**: 23
 
@@ -9171,6 +9815,8 @@ ani_status (*Object_CallMethod_Ref_A)(ani_env *env, ani_object object, ani_metho
 
 Calls a method on an object and retrieves a reference return value (array-based).<br> This function calls the specified method of an object using arguments provided in an array and retrieves a reference result.
 
+<!--Device-ani_status (*Object_CallMethod_Ref_A)(ani_env *env, ani_object object, ani_method method, ani_ref *result, const ani_value *args)--><!--Device-ani_status (*Object_CallMethod_Ref_A)(ani_env *env, ani_object object, ani_method method, ani_ref *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -9198,6 +9844,8 @@ ani_status (*Object_CallMethod_Ref_V)(ani_env *env, ani_object object, ani_metho
 **Description**
 
 Calls a method on an object and retrieves a reference return value (variadic arguments).<br> This function calls the specified method of an object using a `va_list` and retrieves a reference result.
+
+<!--Device-ani_status (*Object_CallMethod_Ref_V)(ani_env *env, ani_object object, ani_method method, ani_ref *result, va_list args)--><!--Device-ani_status (*Object_CallMethod_Ref_V)(ani_env *env, ani_object object, ani_method method, ani_ref *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -9227,6 +9875,8 @@ ani_status (*Object_CallMethod_Void)(ani_env *env, ani_object object, ani_method
 
 Calls a method on an object with no return value.<br> This function calls the specified method of an object using variadic arguments. The method does not return a value.
 
+<!--Device-ani_status (*Object_CallMethod_Void)(ani_env *env, ani_object object, ani_method method, ...)--><!--Device-ani_status (*Object_CallMethod_Void)(ani_env *env, ani_object object, ani_method method, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -9253,6 +9903,8 @@ ani_status (*Object_CallMethod_Void_A)(ani_env *env, ani_object object, ani_meth
 **Description**
 
 Calls a method on an object with no return value (array-based).<br> This function calls the specified method of an object using arguments provided in an array. The method does not return a value.
+
+<!--Device-ani_status (*Object_CallMethod_Void_A)(ani_env *env, ani_object object, ani_method method, const ani_value *args)--><!--Device-ani_status (*Object_CallMethod_Void_A)(ani_env *env, ani_object object, ani_method method, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -9281,6 +9933,8 @@ ani_status (*Object_CallMethod_Void_V)(ani_env *env, ani_object object, ani_meth
 
 Calls a method on an object with no return value (variadic arguments).<br> This function calls the specified method of an object using a `va_list`. The method does not return a value.
 
+<!--Device-ani_status (*Object_CallMethod_Void_V)(ani_env *env, ani_object object, ani_method method, va_list args)--><!--Device-ani_status (*Object_CallMethod_Void_V)(ani_env *env, ani_object object, ani_method method, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -9307,6 +9961,8 @@ ani_status (*Object_CallMethodByName_Boolean)(ani_env *env, ani_object object, c
 **Description**
 
 Calls a method by name on an object and retrieves a boolean return value.<br> This function calls the specified method by its name and signature on an object using variadic arguments and retrieves a boolean result.
+
+<!--Device-ani_status (*Object_CallMethodByName_Boolean)(ani_env *env, ani_object object, const char *name, const char *signature, ani_boolean *result, ...)--><!--Device-ani_status (*Object_CallMethodByName_Boolean)(ani_env *env, ani_object object, const char *name, const char *signature, ani_boolean *result, ...)-End-->
 
 **Since**: 23
 
@@ -9337,6 +9993,8 @@ ani_status (*Object_CallMethodByName_Boolean_A)(ani_env *env, ani_object object,
 
 Calls a method by name on an object and retrieves a boolean return value (array-based).<br> This function calls the specified method by its name and signature on an object using arguments provided in an array and retrieves a boolean result.
 
+<!--Device-ani_status (*Object_CallMethodByName_Boolean_A)(ani_env *env, ani_object object, const char *name, const char *signature, ani_boolean *result, const ani_value *args)--><!--Device-ani_status (*Object_CallMethodByName_Boolean_A)(ani_env *env, ani_object object, const char *name, const char *signature, ani_boolean *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -9365,6 +10023,8 @@ ani_status (*Object_CallMethodByName_Boolean_V)(ani_env *env, ani_object object,
 **Description**
 
 Calls a method by name on an object and retrieves a boolean return value (variadic arguments).<br> This function calls the specified method by its name and signature on an object using a `va_list` and retrieves a boolean result.
+
+<!--Device-ani_status (*Object_CallMethodByName_Boolean_V)(ani_env *env, ani_object object, const char *name, const char *signature, ani_boolean *result, va_list args)--><!--Device-ani_status (*Object_CallMethodByName_Boolean_V)(ani_env *env, ani_object object, const char *name, const char *signature, ani_boolean *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -9395,6 +10055,8 @@ ani_status (*Object_CallMethodByName_Char)(ani_env *env, ani_object object, cons
 
 Calls a method by name on an object and retrieves a char return value.<br> This function calls the specified method by its name and signature on an object using variadic arguments and retrieves a char result.
 
+<!--Device-ani_status (*Object_CallMethodByName_Char)(ani_env *env, ani_object object, const char *name, const char *signature, ani_char *result, ...)--><!--Device-ani_status (*Object_CallMethodByName_Char)(ani_env *env, ani_object object, const char *name, const char *signature, ani_char *result, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -9423,6 +10085,8 @@ ani_status (*Object_CallMethodByName_Char_A)(ani_env *env, ani_object object, co
 **Description**
 
 Calls a method by name on an object and retrieves a char return value (array-based).<br> This function calls the specified method by its name and signature on an object using arguments provided in an array and retrieves a char result.
+
+<!--Device-ani_status (*Object_CallMethodByName_Char_A)(ani_env *env, ani_object object, const char *name, const char *signature, ani_char *result, const ani_value *args)--><!--Device-ani_status (*Object_CallMethodByName_Char_A)(ani_env *env, ani_object object, const char *name, const char *signature, ani_char *result, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -9453,6 +10117,8 @@ ani_status (*Object_CallMethodByName_Char_V)(ani_env *env, ani_object object, co
 
 Calls a method by name on an object and retrieves a char return value (variadic arguments).<br> This function calls the specified method by its name and signature on an object using a `va_list` and retrieves a char result.
 
+<!--Device-ani_status (*Object_CallMethodByName_Char_V)(ani_env *env, ani_object object, const char *name, const char *signature, ani_char *result, va_list args)--><!--Device-ani_status (*Object_CallMethodByName_Char_V)(ani_env *env, ani_object object, const char *name, const char *signature, ani_char *result, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -9481,6 +10147,8 @@ ani_status (*Object_CallMethodByName_Byte)(ani_env *env, ani_object object, cons
 **Description**
 
 Calls a method by name on an object and retrieves a byte return value.<br> This function calls the specified method by its name and signature on an object using variadic arguments and retrieves a byte result.
+
+<!--Device-ani_status (*Object_CallMethodByName_Byte)(ani_env *env, ani_object object, const char *name, const char *signature, ani_byte *result, ...)--><!--Device-ani_status (*Object_CallMethodByName_Byte)(ani_env *env, ani_object object, const char *name, const char *signature, ani_byte *result, ...)-End-->
 
 **Since**: 23
 
@@ -9511,6 +10179,8 @@ ani_status (*Object_CallMethodByName_Byte_A)(ani_env *env, ani_object object, co
 
 Calls a method by name on an object and retrieves a byte return value (array-based).<br> This function calls the specified method by its name and signature on an object using arguments provided in an array and retrieves a byte result.
 
+<!--Device-ani_status (*Object_CallMethodByName_Byte_A)(ani_env *env, ani_object object, const char *name, const char *signature, ani_byte *result, const ani_value *args)--><!--Device-ani_status (*Object_CallMethodByName_Byte_A)(ani_env *env, ani_object object, const char *name, const char *signature, ani_byte *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -9539,6 +10209,8 @@ ani_status (*Object_CallMethodByName_Byte_V)(ani_env *env, ani_object object, co
 **Description**
 
 Calls a method by name on an object and retrieves a byte return value (variadic arguments).<br> This function calls the specified method by its name and signature on an object using a `va_list` and retrieves a byte result.
+
+<!--Device-ani_status (*Object_CallMethodByName_Byte_V)(ani_env *env, ani_object object, const char *name, const char *signature, ani_byte *result, va_list args)--><!--Device-ani_status (*Object_CallMethodByName_Byte_V)(ani_env *env, ani_object object, const char *name, const char *signature, ani_byte *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -9569,6 +10241,8 @@ ani_status (*Object_CallMethodByName_Short)(ani_env *env, ani_object object, con
 
 Calls a method by name on an object and retrieves a short return value.<br> This function calls the specified method by its name and signature on an object using variadic arguments and retrieves a short result.
 
+<!--Device-ani_status (*Object_CallMethodByName_Short)(ani_env *env, ani_object object, const char *name, const char *signature, ani_short *result, ...)--><!--Device-ani_status (*Object_CallMethodByName_Short)(ani_env *env, ani_object object, const char *name, const char *signature, ani_short *result, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -9597,6 +10271,8 @@ ani_status (*Object_CallMethodByName_Short_A)(ani_env *env, ani_object object, c
 **Description**
 
 Calls a method by name on an object and retrieves a short return value (array-based).<br> This function calls the specified method by its name and signature on an object using arguments provided in an array and retrieves a short result.
+
+<!--Device-ani_status (*Object_CallMethodByName_Short_A)(ani_env *env, ani_object object, const char *name, const char *signature, ani_short *result, const ani_value *args)--><!--Device-ani_status (*Object_CallMethodByName_Short_A)(ani_env *env, ani_object object, const char *name, const char *signature, ani_short *result, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -9627,6 +10303,8 @@ ani_status (*Object_CallMethodByName_Short_V)(ani_env *env, ani_object object, c
 
 Calls a method by name on an object and retrieves a short return value (variadic arguments).<br> This function calls the specified method by its name and signature on an object using a `va_list` and retrieves a short result.
 
+<!--Device-ani_status (*Object_CallMethodByName_Short_V)(ani_env *env, ani_object object, const char *name, const char *signature, ani_short *result, va_list args)--><!--Device-ani_status (*Object_CallMethodByName_Short_V)(ani_env *env, ani_object object, const char *name, const char *signature, ani_short *result, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -9655,6 +10333,8 @@ ani_status (*Object_CallMethodByName_Int)(ani_env *env, ani_object object, const
 **Description**
 
 Calls a method by name on an object and retrieves a integer return value.<br> This function calls the specified method by its name and signature on an object using variadic arguments and retrieves a integer result.
+
+<!--Device-ani_status (*Object_CallMethodByName_Int)(ani_env *env, ani_object object, const char *name, const char *signature, ani_int *result, ...)--><!--Device-ani_status (*Object_CallMethodByName_Int)(ani_env *env, ani_object object, const char *name, const char *signature, ani_int *result, ...)-End-->
 
 **Since**: 23
 
@@ -9685,6 +10365,8 @@ ani_status (*Object_CallMethodByName_Int_A)(ani_env *env, ani_object object, con
 
 Calls a method by name on an object and retrieves a integer return value (array-based).<br> This function calls the specified method by its name and signature on an object using arguments provided in an array and retrieves a integer result.
 
+<!--Device-ani_status (*Object_CallMethodByName_Int_A)(ani_env *env, ani_object object, const char *name, const char *signature, ani_int *result, const ani_value *args)--><!--Device-ani_status (*Object_CallMethodByName_Int_A)(ani_env *env, ani_object object, const char *name, const char *signature, ani_int *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -9713,6 +10395,8 @@ ani_status (*Object_CallMethodByName_Int_V)(ani_env *env, ani_object object, con
 **Description**
 
 Calls a method by name on an object and retrieves a integer return value (variadic arguments).<br> This function calls the specified method by its name and signature on an object using a `va_list` and retrieves a integer result.
+
+<!--Device-ani_status (*Object_CallMethodByName_Int_V)(ani_env *env, ani_object object, const char *name, const char *signature, ani_int *result, va_list args)--><!--Device-ani_status (*Object_CallMethodByName_Int_V)(ani_env *env, ani_object object, const char *name, const char *signature, ani_int *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -9743,6 +10427,8 @@ ani_status (*Object_CallMethodByName_Long)(ani_env *env, ani_object object, cons
 
 Calls a method by name on an object and retrieves a long return value.<br> This function calls the specified method by its name and signature on an object using variadic arguments and retrieves a long result.
 
+<!--Device-ani_status (*Object_CallMethodByName_Long)(ani_env *env, ani_object object, const char *name, const char *signature, ani_long *result, ...)--><!--Device-ani_status (*Object_CallMethodByName_Long)(ani_env *env, ani_object object, const char *name, const char *signature, ani_long *result, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -9771,6 +10457,8 @@ ani_status (*Object_CallMethodByName_Long_A)(ani_env *env, ani_object object, co
 **Description**
 
 Calls a method by name on an object and retrieves a long return value (array-based).<br> This function calls the specified method by its name and signature on an object using arguments provided in an array and retrieves a long result.
+
+<!--Device-ani_status (*Object_CallMethodByName_Long_A)(ani_env *env, ani_object object, const char *name, const char *signature, ani_long *result, const ani_value *args)--><!--Device-ani_status (*Object_CallMethodByName_Long_A)(ani_env *env, ani_object object, const char *name, const char *signature, ani_long *result, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -9801,6 +10489,8 @@ ani_status (*Object_CallMethodByName_Long_V)(ani_env *env, ani_object object, co
 
 Calls a method by name on an object and retrieves a long return value (variadic arguments).<br> This function calls the specified method by its name and signature on an object using a `va_list` and retrieves a long result.
 
+<!--Device-ani_status (*Object_CallMethodByName_Long_V)(ani_env *env, ani_object object, const char *name, const char *signature, ani_long *result, va_list args)--><!--Device-ani_status (*Object_CallMethodByName_Long_V)(ani_env *env, ani_object object, const char *name, const char *signature, ani_long *result, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -9829,6 +10519,8 @@ ani_status (*Object_CallMethodByName_Float)(ani_env *env, ani_object object, con
 **Description**
 
 Calls a method by name on an object and retrieves a float return value.<br> This function calls the specified method by its name and signature on an object using variadic arguments and retrieves a float result.
+
+<!--Device-ani_status (*Object_CallMethodByName_Float)(ani_env *env, ani_object object, const char *name, const char *signature, ani_float *result, ...)--><!--Device-ani_status (*Object_CallMethodByName_Float)(ani_env *env, ani_object object, const char *name, const char *signature, ani_float *result, ...)-End-->
 
 **Since**: 23
 
@@ -9859,6 +10551,8 @@ ani_status (*Object_CallMethodByName_Float_A)(ani_env *env, ani_object object, c
 
 Calls a method by name on an object and retrieves a float return value (array-based).<br> This function calls the specified method by its name and signature on an object using arguments provided in an array and retrieves a float result.
 
+<!--Device-ani_status (*Object_CallMethodByName_Float_A)(ani_env *env, ani_object object, const char *name, const char *signature, ani_float *result, const ani_value *args)--><!--Device-ani_status (*Object_CallMethodByName_Float_A)(ani_env *env, ani_object object, const char *name, const char *signature, ani_float *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -9887,6 +10581,8 @@ ani_status (*Object_CallMethodByName_Float_V)(ani_env *env, ani_object object, c
 **Description**
 
 Calls a method by name on an object and retrieves a float return value (variadic arguments).<br> This function calls the specified method by its name and signature on an object using a `va_list` and retrieves a float result.
+
+<!--Device-ani_status (*Object_CallMethodByName_Float_V)(ani_env *env, ani_object object, const char *name, const char *signature, ani_float *result, va_list args)--><!--Device-ani_status (*Object_CallMethodByName_Float_V)(ani_env *env, ani_object object, const char *name, const char *signature, ani_float *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -9917,6 +10613,8 @@ ani_status (*Object_CallMethodByName_Double)(ani_env *env, ani_object object, co
 
 Calls a method by name on an object and retrieves a double return value.<br> This function calls the specified method by its name and signature on an object using variadic arguments and retrieves a double result.
 
+<!--Device-ani_status (*Object_CallMethodByName_Double)(ani_env *env, ani_object object, const char *name, const char *signature, ani_double *result, ...)--><!--Device-ani_status (*Object_CallMethodByName_Double)(ani_env *env, ani_object object, const char *name, const char *signature, ani_double *result, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -9945,6 +10643,8 @@ ani_status (*Object_CallMethodByName_Double_A)(ani_env *env, ani_object object, 
 **Description**
 
 Calls a method by name on an object and retrieves a double return value (array-based).<br> This function calls the specified method by its name and signature on an object using arguments provided in an array and retrieves a double result.
+
+<!--Device-ani_status (*Object_CallMethodByName_Double_A)(ani_env *env, ani_object object, const char *name, const char *signature, ani_double *result, const ani_value *args)--><!--Device-ani_status (*Object_CallMethodByName_Double_A)(ani_env *env, ani_object object, const char *name, const char *signature, ani_double *result, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -9975,6 +10675,8 @@ ani_status (*Object_CallMethodByName_Double_V)(ani_env *env, ani_object object, 
 
 Calls a method by name on an object and retrieves a double return value (variadic arguments).<br> This function calls the specified method by its name and signature on an object using a `va_list` and retrieves a double result.
 
+<!--Device-ani_status (*Object_CallMethodByName_Double_V)(ani_env *env, ani_object object, const char *name, const char *signature, ani_double *result, va_list args)--><!--Device-ani_status (*Object_CallMethodByName_Double_V)(ani_env *env, ani_object object, const char *name, const char *signature, ani_double *result, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -10003,6 +10705,8 @@ ani_status (*Object_CallMethodByName_Ref)(ani_env *env, ani_object object, const
 **Description**
 
 Calls a method by name on an object and retrieves a reference return value.<br> This function calls the specified method by its name and signature on an object using variadic arguments and retrieves a reference result.
+
+<!--Device-ani_status (*Object_CallMethodByName_Ref)(ani_env *env, ani_object object, const char *name, const char *signature, ani_ref *result, ...)--><!--Device-ani_status (*Object_CallMethodByName_Ref)(ani_env *env, ani_object object, const char *name, const char *signature, ani_ref *result, ...)-End-->
 
 **Since**: 23
 
@@ -10033,6 +10737,8 @@ ani_status (*Object_CallMethodByName_Ref_A)(ani_env *env, ani_object object, con
 
 Calls a method by name on an object and retrieves a reference return value (array-based).<br> This function calls the specified method by its name and signature on an object using arguments provided in an array and retrieves a reference result.
 
+<!--Device-ani_status (*Object_CallMethodByName_Ref_A)(ani_env *env, ani_object object, const char *name, const char *signature, ani_ref *result, const ani_value *args)--><!--Device-ani_status (*Object_CallMethodByName_Ref_A)(ani_env *env, ani_object object, const char *name, const char *signature, ani_ref *result, const ani_value *args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -10061,6 +10767,8 @@ ani_status (*Object_CallMethodByName_Ref_V)(ani_env *env, ani_object object, con
 **Description**
 
 Calls a method by name on an object and retrieves a reference return value (variadic arguments).<br> This function calls the specified method by its name and signature on an object using a `va_list` and retrieves a reference result.
+
+<!--Device-ani_status (*Object_CallMethodByName_Ref_V)(ani_env *env, ani_object object, const char *name, const char *signature, ani_ref *result, va_list args)--><!--Device-ani_status (*Object_CallMethodByName_Ref_V)(ani_env *env, ani_object object, const char *name, const char *signature, ani_ref *result, va_list args)-End-->
 
 **Since**: 23
 
@@ -10091,6 +10799,8 @@ ani_status (*Object_CallMethodByName_Void)(ani_env *env, ani_object object, cons
 
 Calls a method by name on an object with no return value.<br> This function calls the specified method by its name and signature on an object using variadic arguments. The method does not return a value.
 
+<!--Device-ani_status (*Object_CallMethodByName_Void)(ani_env *env, ani_object object, const char *name, const char *signature, ...)--><!--Device-ani_status (*Object_CallMethodByName_Void)(ani_env *env, ani_object object, const char *name, const char *signature, ...)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -10118,6 +10828,8 @@ ani_status (*Object_CallMethodByName_Void_A)(ani_env *env, ani_object object, co
 **Description**
 
 Calls a method by name on an object with no return value (array-based).<br> This function calls the specified method by its name and signature on an object using arguments provided in an array. The method does not return a value.
+
+<!--Device-ani_status (*Object_CallMethodByName_Void_A)(ani_env *env, ani_object object, const char *name, const char *signature, const ani_value *args)--><!--Device-ani_status (*Object_CallMethodByName_Void_A)(ani_env *env, ani_object object, const char *name, const char *signature, const ani_value *args)-End-->
 
 **Since**: 23
 
@@ -10147,6 +10859,8 @@ ani_status (*Object_CallMethodByName_Void_V)(ani_env *env, ani_object object, co
 
 Calls a method by name on an object with no return value (variadic arguments).<br> This function calls the specified method by its name and signature on an object using a `va_list`. The method does not return a value.
 
+<!--Device-ani_status (*Object_CallMethodByName_Void_V)(ani_env *env, ani_object object, const char *name, const char *signature, va_list args)--><!--Device-ani_status (*Object_CallMethodByName_Void_V)(ani_env *env, ani_object object, const char *name, const char *signature, va_list args)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -10175,6 +10889,8 @@ ani_status (*TupleValue_GetNumberOfItems)(ani_env *env, ani_tuple_value tuple_va
 
 Retrieves the number of items in a tuple value.<br> This function retrieves the total number of items in the specified tuple value.
 
+<!--Device-ani_status (*TupleValue_GetNumberOfItems)(ani_env *env, ani_tuple_value tuple_value, ani_size *result)--><!--Device-ani_status (*TupleValue_GetNumberOfItems)(ani_env *env, ani_tuple_value tuple_value, ani_size *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -10200,6 +10916,8 @@ ani_status (*TupleValue_GetItem_Boolean)(ani_env *env, ani_tuple_value tuple_val
 **Description**
 
 Retrieves a boolean item from a tuple value.<br> This function retrieves the boolean value of the item at the specified index in the tuple value.
+
+<!--Device-ani_status (*TupleValue_GetItem_Boolean)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_boolean *result)--><!--Device-ani_status (*TupleValue_GetItem_Boolean)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_boolean *result)-End-->
 
 **Since**: 23
 
@@ -10228,6 +10946,8 @@ ani_status (*TupleValue_GetItem_Char)(ani_env *env, ani_tuple_value tuple_value,
 
 Retrieves a char item from a tuple value.<br> This function retrieves the char value of the item at the specified index in the tuple value.
 
+<!--Device-ani_status (*TupleValue_GetItem_Char)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_char *result)--><!--Device-ani_status (*TupleValue_GetItem_Char)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_char *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -10254,6 +10974,8 @@ ani_status (*TupleValue_GetItem_Byte)(ani_env *env, ani_tuple_value tuple_value,
 **Description**
 
 Retrieves a byte item from a tuple value.<br> This function retrieves the byte value of the item at the specified index in the tuple value.
+
+<!--Device-ani_status (*TupleValue_GetItem_Byte)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_byte *result)--><!--Device-ani_status (*TupleValue_GetItem_Byte)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_byte *result)-End-->
 
 **Since**: 23
 
@@ -10282,6 +11004,8 @@ ani_status (*TupleValue_GetItem_Short)(ani_env *env, ani_tuple_value tuple_value
 
 Retrieves a short item from a tuple value.<br> This function retrieves the short value of the item at the specified index in the tuple value.
 
+<!--Device-ani_status (*TupleValue_GetItem_Short)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_short *result)--><!--Device-ani_status (*TupleValue_GetItem_Short)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_short *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -10308,6 +11032,8 @@ ani_status (*TupleValue_GetItem_Int)(ani_env *env, ani_tuple_value tuple_value, 
 **Description**
 
 Retrieves a integer item from a tuple value.<br> This function retrieves the integer value of the item at the specified index in the tuple value.
+
+<!--Device-ani_status (*TupleValue_GetItem_Int)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_int *result)--><!--Device-ani_status (*TupleValue_GetItem_Int)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_int *result)-End-->
 
 **Since**: 23
 
@@ -10336,6 +11062,8 @@ ani_status (*TupleValue_GetItem_Long)(ani_env *env, ani_tuple_value tuple_value,
 
 Retrieves a long item from a tuple value.<br> This function retrieves the long value of the item at the specified index in the tuple value.
 
+<!--Device-ani_status (*TupleValue_GetItem_Long)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_long *result)--><!--Device-ani_status (*TupleValue_GetItem_Long)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_long *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -10362,6 +11090,8 @@ ani_status (*TupleValue_GetItem_Float)(ani_env *env, ani_tuple_value tuple_value
 **Description**
 
 Retrieves a float item from a tuple value.<br> This function retrieves the float value of the item at the specified index in the tuple value.
+
+<!--Device-ani_status (*TupleValue_GetItem_Float)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_float *result)--><!--Device-ani_status (*TupleValue_GetItem_Float)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_float *result)-End-->
 
 **Since**: 23
 
@@ -10390,6 +11120,8 @@ ani_status (*TupleValue_GetItem_Double)(ani_env *env, ani_tuple_value tuple_valu
 
 Retrieves a double item from a tuple value.<br> This function retrieves the double value of the item at the specified index in the tuple value.
 
+<!--Device-ani_status (*TupleValue_GetItem_Double)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_double *result)--><!--Device-ani_status (*TupleValue_GetItem_Double)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_double *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -10416,6 +11148,8 @@ ani_status (*TupleValue_GetItem_Ref)(ani_env *env, ani_tuple_value tuple_value, 
 **Description**
 
 Retrieves a reference item from a tuple value.<br> This function retrieves the reference value of the item at the specified index in the tuple value.
+
+<!--Device-ani_status (*TupleValue_GetItem_Ref)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_ref *result)--><!--Device-ani_status (*TupleValue_GetItem_Ref)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_ref *result)-End-->
 
 **Since**: 23
 
@@ -10444,6 +11178,8 @@ ani_status (*TupleValue_SetItem_Boolean)(ani_env *env, ani_tuple_value tuple_val
 
 Sets a boolean value to an item in a tuple value.<br> This function assigns a boolean value to the item at the specified index in the tuple value.
 
+<!--Device-ani_status (*TupleValue_SetItem_Boolean)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_boolean value)--><!--Device-ani_status (*TupleValue_SetItem_Boolean)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_boolean value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -10470,6 +11206,8 @@ ani_status (*TupleValue_SetItem_Char)(ani_env *env, ani_tuple_value tuple_value,
 **Description**
 
 Sets a char value to an item in a tuple value.<br> This function assigns a char value to the item at the specified index in the tuple value.
+
+<!--Device-ani_status (*TupleValue_SetItem_Char)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_char value)--><!--Device-ani_status (*TupleValue_SetItem_Char)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_char value)-End-->
 
 **Since**: 23
 
@@ -10498,6 +11236,8 @@ ani_status (*TupleValue_SetItem_Byte)(ani_env *env, ani_tuple_value tuple_value,
 
 Sets a byte value to an item in a tuple value.<br> This function assigns a byte value to the item at the specified index in the tuple value.
 
+<!--Device-ani_status (*TupleValue_SetItem_Byte)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_byte value)--><!--Device-ani_status (*TupleValue_SetItem_Byte)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_byte value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -10524,6 +11264,8 @@ ani_status (*TupleValue_SetItem_Short)(ani_env *env, ani_tuple_value tuple_value
 **Description**
 
 Sets a short value to an item in a tuple value.<br> This function assigns a short value to the item at the specified index in the tuple value.
+
+<!--Device-ani_status (*TupleValue_SetItem_Short)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_short value)--><!--Device-ani_status (*TupleValue_SetItem_Short)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_short value)-End-->
 
 **Since**: 23
 
@@ -10552,6 +11294,8 @@ ani_status (*TupleValue_SetItem_Int)(ani_env *env, ani_tuple_value tuple_value, 
 
 Sets a integer value to an item in a tuple value.<br> This function assigns a integer value to the item at the specified index in the tuple value.
 
+<!--Device-ani_status (*TupleValue_SetItem_Int)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_int value)--><!--Device-ani_status (*TupleValue_SetItem_Int)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_int value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -10578,6 +11322,8 @@ ani_status (*TupleValue_SetItem_Long)(ani_env *env, ani_tuple_value tuple_value,
 **Description**
 
 Sets a long value to an item in a tuple value.<br> This function assigns a long value to the item at the specified index in the tuple value.
+
+<!--Device-ani_status (*TupleValue_SetItem_Long)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_long value)--><!--Device-ani_status (*TupleValue_SetItem_Long)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_long value)-End-->
 
 **Since**: 23
 
@@ -10606,6 +11352,8 @@ ani_status (*TupleValue_SetItem_Float)(ani_env *env, ani_tuple_value tuple_value
 
 Sets a float value to an item in a tuple value.<br> This function assigns a float value to the item at the specified index in the tuple value.
 
+<!--Device-ani_status (*TupleValue_SetItem_Float)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_float value)--><!--Device-ani_status (*TupleValue_SetItem_Float)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_float value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -10632,6 +11380,8 @@ ani_status (*TupleValue_SetItem_Double)(ani_env *env, ani_tuple_value tuple_valu
 **Description**
 
 Sets a double value to an item in a tuple value.<br> This function assigns a double value to the item at the specified index in the tuple value.
+
+<!--Device-ani_status (*TupleValue_SetItem_Double)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_double value)--><!--Device-ani_status (*TupleValue_SetItem_Double)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_double value)-End-->
 
 **Since**: 23
 
@@ -10660,6 +11410,8 @@ ani_status (*TupleValue_SetItem_Ref)(ani_env *env, ani_tuple_value tuple_value, 
 
 Sets a reference value to an item in a tuple value.<br> This function assigns a reference value to the item at the specified index in the tuple value.
 
+<!--Device-ani_status (*TupleValue_SetItem_Ref)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_ref value)--><!--Device-ani_status (*TupleValue_SetItem_Ref)(ani_env *env, ani_tuple_value tuple_value, ani_size index, ani_ref value)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -10687,6 +11439,8 @@ ani_status (*GlobalReference_Create)(ani_env *env, ani_ref ref, ani_ref *result)
 
 Creates a global reference.<br> This function creates a global reference from a local reference.
 
+<!--Device-ani_status (*GlobalReference_Create)(ani_env *env, ani_ref ref, ani_ref *result)--><!--Device-ani_status (*GlobalReference_Create)(ani_env *env, ani_ref ref, ani_ref *result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -10713,6 +11467,8 @@ ani_status (*GlobalReference_Delete)(ani_env *env, ani_ref gref)
 
 Deletes a global reference.<br> This function deletes the specified global reference, releasing all associated resources.
 
+<!--Device-ani_status (*GlobalReference_Delete)(ani_env *env, ani_ref gref)--><!--Device-ani_status (*GlobalReference_Delete)(ani_env *env, ani_ref gref)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -10737,6 +11493,8 @@ ani_status (*WeakReference_Create)(ani_env *env, ani_ref ref, ani_wref *result)
 **Description**
 
 Creates a weak reference.<br> This function creates a weak reference from a local reference.
+
+<!--Device-ani_status (*WeakReference_Create)(ani_env *env, ani_ref ref, ani_wref *result)--><!--Device-ani_status (*WeakReference_Create)(ani_env *env, ani_ref ref, ani_wref *result)-End-->
 
 **Since**: 23
 
@@ -10764,6 +11522,8 @@ ani_status (*WeakReference_Delete)(ani_env *env, ani_wref wref)
 
 Deletes a weak reference.<br> This function deletes the specified weak reference, releasing all associated resources.
 
+<!--Device-ani_status (*WeakReference_Delete)(ani_env *env, ani_wref wref)--><!--Device-ani_status (*WeakReference_Delete)(ani_env *env, ani_wref wref)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -10788,6 +11548,8 @@ ani_status (*WeakReference_GetReference)(ani_env *env, ani_wref wref, ani_boolea
 **Description**
 
 Retrieves the local reference associated with a weak reference.<br> This function retrieves the local reference that corresponds to the specified weak reference.
+
+<!--Device-ani_status (*WeakReference_GetReference)(ani_env *env, ani_wref wref, ani_boolean *was_released_result, ani_ref *ref_result)--><!--Device-ani_status (*WeakReference_GetReference)(ani_env *env, ani_wref wref, ani_boolean *was_released_result, ani_ref *ref_result)-End-->
 
 **Since**: 23
 
@@ -10816,6 +11578,8 @@ ani_status (*CreateArrayBuffer)(ani_env *env, size_t length, void **data_result,
 
 Creates a new array buffer.<br> This function creates a new array buffer with the specified length and returns a pointer to the allocated data.
 
+<!--Device-ani_status (*CreateArrayBuffer)(ani_env *env, size_t length, void **data_result, ani_arraybuffer *arraybuffer_result)--><!--Device-ani_status (*CreateArrayBuffer)(ani_env *env, size_t length, void **data_result, ani_arraybuffer *arraybuffer_result)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -10842,6 +11606,8 @@ ani_status (*ArrayBuffer_GetInfo)(ani_env *env, ani_arraybuffer arraybuffer, voi
 **Description**
 
 Retrieves information about an array buffer.<br> This function retrieves the data pointer and length of the specified array buffer.
+
+<!--Device-ani_status (*ArrayBuffer_GetInfo)(ani_env *env, ani_arraybuffer arraybuffer, void **data_result, size_t *length_result)--><!--Device-ani_status (*ArrayBuffer_GetInfo)(ani_env *env, ani_arraybuffer arraybuffer, void **data_result, size_t *length_result)-End-->
 
 **Since**: 23
 
@@ -10870,6 +11636,8 @@ ani_status (*Promise_New)(ani_env *env, ani_resolver *result_resolver, ani_objec
 
 Creates a new Promise.<br> This function creates a new promise and a resolver to manage it.
 
+<!--Device-ani_status (*Promise_New)(ani_env *env, ani_resolver *result_resolver, ani_object *result_promise)--><!--Device-ani_status (*Promise_New)(ani_env *env, ani_resolver *result_resolver, ani_object *result_promise)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -10895,6 +11663,8 @@ ani_status (*PromiseResolver_Resolve)(ani_env *env, ani_resolver resolver, ani_r
 **Description**
 
 Resolves a promise.<br> This function resolves a promise by way of the resolver with which it is associated and queues promise `then` callbacks.
+
+<!--Device-ani_status (*PromiseResolver_Resolve)(ani_env *env, ani_resolver resolver, ani_ref resolution)--><!--Device-ani_status (*PromiseResolver_Resolve)(ani_env *env, ani_resolver resolver, ani_ref resolution)-End-->
 
 **Since**: 23
 
@@ -10923,6 +11693,8 @@ void *reserved4void *reserved5void *reserved6void *reserved7void *reserved8void 
 
 Rejects a promise.<br> This function rejects a promise by way of the resolver with which it is associated and queues promise `catch` callbacks.
 
+<!--Device-ani_status (*PromiseResolver_Reject)(ani_env *env, ani_resolver resolver, ani_error rejection) void *reserved4void *reserved5void *reserved6void *reserved7void *reserved8void *reserved9void *reserved10void *reserved11void *reserved12void *reserved13--><!--Device-ani_status (*PromiseResolver_Reject)(ani_env *env, ani_resolver resolver, ani_error rejection) void *reserved4void *reserved5void *reserved6void *reserved7void *reserved8void *reserved9void *reserved10void *reserved11void *reserved12void *reserved13-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -10948,6 +11720,8 @@ ani_status (*Class_BindStaticNativeMethods)(ani_env *env, ani_class cls, const a
 **Description**
 
 Binds static native methods to a class.<br> This function binds an array of static native methods to the specified class.
+
+<!--Device-ani_status (*Class_BindStaticNativeMethods)(ani_env *env, ani_class cls, const ani_native_function *methods, ani_size nr_methods)--><!--Device-ani_status (*Class_BindStaticNativeMethods)(ani_env *env, ani_class cls, const ani_native_function *methods, ani_size nr_methods)-End-->
 
 **Since**: 23
 
@@ -10976,6 +11750,8 @@ ani_status (*Primitive_Box_Boolean)(ani_env *env, ani_boolean value, ani_object 
 
 Box a boolean value into an object.<br> This function boxes a boolean value into an object.
 
+<!--Device-ani_status (*Primitive_Box_Boolean)(ani_env *env, ani_boolean value, ani_object *result)--><!--Device-ani_status (*Primitive_Box_Boolean)(ani_env *env, ani_boolean value, ani_object *result)-End-->
+
 **Since**: 24
 
 **Parameters**:
@@ -11001,6 +11777,8 @@ ani_status (*Primitive_Unbox_Boolean)(ani_env *env, ani_object obj, ani_boolean 
 **Description**
 
 Unbox a boolean object into a boolean value.<br> This function unboxes a boolean object into a boolean value.
+
+<!--Device-ani_status (*Primitive_Unbox_Boolean)(ani_env *env, ani_object obj, ani_boolean *result)--><!--Device-ani_status (*Primitive_Unbox_Boolean)(ani_env *env, ani_object obj, ani_boolean *result)-End-->
 
 **Since**: 24
 
@@ -11028,6 +11806,8 @@ ani_status (*Primitive_Box_Byte)(ani_env *env, ani_byte value, ani_object *resul
 
 Box a byte value into an object.<br> This function boxes a byte value into an object.
 
+<!--Device-ani_status (*Primitive_Box_Byte)(ani_env *env, ani_byte value, ani_object *result)--><!--Device-ani_status (*Primitive_Box_Byte)(ani_env *env, ani_byte value, ani_object *result)-End-->
+
 **Since**: 24
 
 **Parameters**:
@@ -11053,6 +11833,8 @@ ani_status (*Primitive_Unbox_Byte)(ani_env *env, ani_object obj, ani_byte *resul
 **Description**
 
 Unbox a byte object into a byte value.<br> This function unboxes a byte object into a byte value.
+
+<!--Device-ani_status (*Primitive_Unbox_Byte)(ani_env *env, ani_object obj, ani_byte *result)--><!--Device-ani_status (*Primitive_Unbox_Byte)(ani_env *env, ani_object obj, ani_byte *result)-End-->
 
 **Since**: 24
 
@@ -11080,6 +11862,8 @@ ani_status (*Primitive_Box_Char)(ani_env *env, ani_char value, ani_object *resul
 
 Box a char value into an object.<br> This function boxes a char value into an object.
 
+<!--Device-ani_status (*Primitive_Box_Char)(ani_env *env, ani_char value, ani_object *result)--><!--Device-ani_status (*Primitive_Box_Char)(ani_env *env, ani_char value, ani_object *result)-End-->
+
 **Since**: 24
 
 **Parameters**:
@@ -11105,6 +11889,8 @@ ani_status (*Primitive_Unbox_Char)(ani_env *env, ani_object obj, ani_char *resul
 **Description**
 
 Unbox a char object into a char value.<br> This function unboxes a char object into a char value.
+
+<!--Device-ani_status (*Primitive_Unbox_Char)(ani_env *env, ani_object obj, ani_char *result)--><!--Device-ani_status (*Primitive_Unbox_Char)(ani_env *env, ani_object obj, ani_char *result)-End-->
 
 **Since**: 24
 
@@ -11132,6 +11918,8 @@ ani_status (*Primitive_Box_Short)(ani_env *env, ani_short value, ani_object *res
 
 Box a short value into an object.<br> This function boxes a short value into an object.
 
+<!--Device-ani_status (*Primitive_Box_Short)(ani_env *env, ani_short value, ani_object *result)--><!--Device-ani_status (*Primitive_Box_Short)(ani_env *env, ani_short value, ani_object *result)-End-->
+
 **Since**: 24
 
 **Parameters**:
@@ -11157,6 +11945,8 @@ ani_status (*Primitive_Unbox_Short)(ani_env *env, ani_object obj, ani_short *res
 **Description**
 
 Unbox a short object into a short value.<br> This function unboxes a short object into a short value.
+
+<!--Device-ani_status (*Primitive_Unbox_Short)(ani_env *env, ani_object obj, ani_short *result)--><!--Device-ani_status (*Primitive_Unbox_Short)(ani_env *env, ani_object obj, ani_short *result)-End-->
 
 **Since**: 24
 
@@ -11184,6 +11974,8 @@ ani_status (*Primitive_Box_Int)(ani_env *env, ani_int value, ani_object *result)
 
 Box a int value into an object.<br> This function boxes a int value into an object.
 
+<!--Device-ani_status (*Primitive_Box_Int)(ani_env *env, ani_int value, ani_object *result)--><!--Device-ani_status (*Primitive_Box_Int)(ani_env *env, ani_int value, ani_object *result)-End-->
+
 **Since**: 24
 
 **Parameters**:
@@ -11209,6 +12001,8 @@ ani_status (*Primitive_Unbox_Int)(ani_env *env, ani_object obj, ani_int *result)
 **Description**
 
 Unbox a int object into a int value.<br> This function unboxes a int object into a int value.
+
+<!--Device-ani_status (*Primitive_Unbox_Int)(ani_env *env, ani_object obj, ani_int *result)--><!--Device-ani_status (*Primitive_Unbox_Int)(ani_env *env, ani_object obj, ani_int *result)-End-->
 
 **Since**: 24
 
@@ -11236,6 +12030,8 @@ ani_status (*Primitive_Box_Long)(ani_env *env, ani_long value, ani_object *resul
 
 Box a long value into an object.<br> This function boxes a long value into an object.
 
+<!--Device-ani_status (*Primitive_Box_Long)(ani_env *env, ani_long value, ani_object *result)--><!--Device-ani_status (*Primitive_Box_Long)(ani_env *env, ani_long value, ani_object *result)-End-->
+
 **Since**: 24
 
 **Parameters**:
@@ -11261,6 +12057,8 @@ ani_status (*Primitive_Unbox_Long)(ani_env *env, ani_object obj, ani_long *resul
 **Description**
 
 Unbox a long object into a long value.<br> This function unboxes a long object into a long value.
+
+<!--Device-ani_status (*Primitive_Unbox_Long)(ani_env *env, ani_object obj, ani_long *result)--><!--Device-ani_status (*Primitive_Unbox_Long)(ani_env *env, ani_object obj, ani_long *result)-End-->
 
 **Since**: 24
 
@@ -11288,6 +12086,8 @@ ani_status (*Primitive_Box_Float)(ani_env *env, ani_float value, ani_object *res
 
 Box a float value into an object.<br> This function boxes a float value into an object.
 
+<!--Device-ani_status (*Primitive_Box_Float)(ani_env *env, ani_float value, ani_object *result)--><!--Device-ani_status (*Primitive_Box_Float)(ani_env *env, ani_float value, ani_object *result)-End-->
+
 **Since**: 24
 
 **Parameters**:
@@ -11313,6 +12113,8 @@ ani_status (*Primitive_Unbox_Float)(ani_env *env, ani_object obj, ani_float *res
 **Description**
 
 Unbox a float object into a float value.<br> This function unboxes a float object into a float value.
+
+<!--Device-ani_status (*Primitive_Unbox_Float)(ani_env *env, ani_object obj, ani_float *result)--><!--Device-ani_status (*Primitive_Unbox_Float)(ani_env *env, ani_object obj, ani_float *result)-End-->
 
 **Since**: 24
 
@@ -11340,6 +12142,8 @@ ani_status (*Primitive_Box_Double)(ani_env *env, ani_double value, ani_object *r
 
 Box a double value into an object.<br> This function boxes a double value into an object.
 
+<!--Device-ani_status (*Primitive_Box_Double)(ani_env *env, ani_double value, ani_object *result)--><!--Device-ani_status (*Primitive_Box_Double)(ani_env *env, ani_double value, ani_object *result)-End-->
+
 **Since**: 24
 
 **Parameters**:
@@ -11366,6 +12170,8 @@ ani_status (*Primitive_Unbox_Double)(ani_env *env, ani_object obj, ani_double *r
 
 Unbox a double object into a double value.<br> This function unboxes a double object into a double value.
 
+<!--Device-ani_status (*Primitive_Unbox_Double)(ani_env *env, ani_object obj, ani_double *result)--><!--Device-ani_status (*Primitive_Unbox_Double)(ani_env *env, ani_object obj, ani_double *result)-End-->
+
 **Since**: 24
 
 **Parameters**:
@@ -11391,6 +12197,8 @@ ani_status (*ValueArray_GetLength)(ani_env *env, ani_valuearray array, ani_size 
 **Description**
 
 Retrieves the length of a ValueArray.<br> This function retrieves the length of the specified ValueArray.
+
+<!--Device-ani_status (*ValueArray_GetLength)(ani_env *env, ani_valuearray array, ani_size *result)--><!--Device-ani_status (*ValueArray_GetLength)(ani_env *env, ani_valuearray array, ani_size *result)-End-->
 
 **Since**: 26.0.1
 

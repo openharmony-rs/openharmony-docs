@@ -34,6 +34,8 @@ int32_t OH_Vibrator_PlayVibration(int32_t duration, Vibrator_Attribute attribute
 
 Configures the vibrator to vibrate continuously for a given duration. After the API is successfully called, the vibrator starts to vibrate immediately and automatically stops after the specified duration. This method is applicable to scenarios where the vibrator needs to vibrate for a fixed duration, such as alarm clock, timing reminder, game feedback, and message notification.
 
+<!--Device-int32_t OH_Vibrator_PlayVibration(int32_t duration, Vibrator_Attribute attribute)--><!--Device-int32_t OH_Vibrator_PlayVibration(int32_t duration, Vibrator_Attribute attribute)-End-->
+
 **System capability**: SystemCapability.Sensors.MiscDevice
 
 **Required permission**: ohos.permission.VIBRATE
@@ -69,6 +71,8 @@ int32_t OH_Vibrator_PlayVibrationCustom(Vibrator_FileDescription fileDescription
 
 Configures the vibrator to vibrate with the custom sequence. After the API is successfully called, the system plays the vibration effect based on the custom vibration sequence. This method is applicable to scenarios that require complex vibration patterns, such as notification reminders, games, and tactile feedback, to provide personalized vibration experiences and enhance user immersion.
 
+<!--Device-int32_t OH_Vibrator_PlayVibrationCustom(Vibrator_FileDescription fileDescription, Vibrator_Attribute vibrateAttribute)--><!--Device-int32_t OH_Vibrator_PlayVibrationCustom(Vibrator_FileDescription fileDescription, Vibrator_Attribute vibrateAttribute)-End-->
+
 **System capability**: SystemCapability.Sensors.MiscDevice
 
 **Required permission**: ohos.permission.VIBRATE
@@ -102,6 +106,8 @@ int32_t OH_Vibrator_Cancel()
 **Description**
 
 Stops the vibration. After the API is successfully called, the ongoing vibration or custom vibration sequence is stopped immediately. This method is applicable to scenarios where vibration needs to be stopped immediately, such as when a user cancels an operation, switches between apps, or clears a system notification. It helps optimize user experience and reduce device power consumption.
+
+<!--Device-int32_t OH_Vibrator_Cancel()--><!--Device-int32_t OH_Vibrator_Cancel()-End-->
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 

@@ -8,11 +8,13 @@ typedef struct OH_Drawing_BitmapFormat {...} OH_Drawing_BitmapFormat
 
 结构体用于描述位图像素的格式，包括颜色类型和透明度类型。
 
+<!--Device-typedef struct OH_Drawing_BitmapFormat {...} OH_Drawing_BitmapFormat--><!--Device-typedef struct OH_Drawing_BitmapFormat {...} OH_Drawing_BitmapFormat-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
 
-**相关模块：** [Drawing](capi-others-drawing.md)
+**相关模块：** [Drawing](capi-arkgraphics2d-drawing.md)
 
 **所在头文件：** [drawing_bitmap.h](capi-drawing-bitmap-h.md)
 

@@ -8,11 +8,13 @@ struct ResourceManager_Configuration {...}
 
 Structure of the device status.
 
+<!--Device-struct ResourceManager_Configuration {...}--><!--Device-struct ResourceManager_Configuration {...}-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
 
-**Related module**: [resourcemanager](capi-others-resourcemanager.md)
+**Related module**: [resourcemanager](capi-localization-kit-resourcemanager.md)
 
 **Header file**: [resmgr_common.h](capi-resmgr-common-h.md)
 

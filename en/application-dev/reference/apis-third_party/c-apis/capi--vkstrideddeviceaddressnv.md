@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkStridedDeviceAddressNV {...}--><!--Device-struct VkStridedDeviceAddressNV {...}-End-->
+
 ## Summary
 
 ### Member variables

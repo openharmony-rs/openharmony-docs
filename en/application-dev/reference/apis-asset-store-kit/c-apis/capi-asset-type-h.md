@@ -58,6 +58,8 @@ enum Asset_TagType
 
 Enumerates the types of the tags of asset attributes.
 
+<!--Device-Asset_TagType--><!--Device-Asset_TagType-End-->
+
 **System capability**: SystemCapability.Security.Asset
 
 **Since**: 11
@@ -77,6 +79,8 @@ enum Asset_Tag
 **Description**
 
 Enumerates the tags of asset attributes.
+
+<!--Device-Asset_Tag--><!--Device-Asset_Tag-End-->
 
 **System capability**: SystemCapability.Security.Asset
 
@@ -127,6 +131,8 @@ enum Asset_ResultCode
 
 Enumerates the result codes used in the ASSET APIs.
 
+<!--Device-Asset_ResultCode--><!--Device-Asset_ResultCode-End-->
+
 **System capability**: SystemCapability.Security.Asset
 
 **Since**: 11
@@ -165,6 +171,8 @@ enum Asset_Accessibility
 
 Enumerates the types of the access control based on the lock screen status.
 
+<!--Device-Asset_Accessibility--><!--Device-Asset_Accessibility-End-->
+
 **System capability**: SystemCapability.Security.Asset
 
 **Since**: 11
@@ -185,6 +193,8 @@ enum Asset_AuthType
 
 Enumerates the user authentication types supported by assets.
 
+<!--Device-Asset_AuthType--><!--Device-Asset_AuthType-End-->
+
 **System capability**: SystemCapability.Security.Asset
 
 **Since**: 11
@@ -203,6 +213,8 @@ enum Asset_SyncType
 **Description**
 
 Asset sync type.
+
+<!--Device-Asset_SyncType--><!--Device-Asset_SyncType-End-->
 
 **System capability**: SystemCapability.Security.Asset
 
@@ -225,6 +237,8 @@ enum Asset_WrapType
 
 Encrypted import/export type supported by the asset.
 
+<!--Device-Asset_WrapType--><!--Device-Asset_WrapType-End-->
+
 **System capability**: SystemCapability.Security.Asset
 
 **Since**: 18
@@ -243,6 +257,8 @@ enum Asset_ConflictResolution
 **Description**
 
 Policy for resolving the conflict (for example, a duplicate alias).
+
+<!--Device-Asset_ConflictResolution--><!--Device-Asset_ConflictResolution-End-->
 
 **System capability**: SystemCapability.Security.Asset
 
@@ -263,6 +279,8 @@ enum Asset_ReturnType
 
 Type of the asset query result to return.
 
+<!--Device-Asset_ReturnType--><!--Device-Asset_ReturnType-End-->
+
 **System capability**: SystemCapability.Security.Asset
 
 **Since**: 11
@@ -281,6 +299,8 @@ enum Asset_OperationType
 **Description**
 
 Enumerates the additional asset operation types.
+
+<!--Device-Asset_OperationType--><!--Device-Asset_OperationType-End-->
 
 **System capability**: SystemCapability.Security.Asset
 

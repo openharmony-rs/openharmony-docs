@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct p_mreqn {...}--><!--Device-struct p_mreqn {...}-End-->
+
 ## Summary
 
 ### Member variables

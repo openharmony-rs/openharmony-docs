@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineBinaryCreateInfoKHR {...}--><!--Device-struct VkPipelineBinaryCreateInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

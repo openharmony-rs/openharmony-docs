@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

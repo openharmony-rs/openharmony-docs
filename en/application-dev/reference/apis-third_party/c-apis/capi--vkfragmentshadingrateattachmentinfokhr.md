@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkFragmentShadingRateAttachmentInfoKHR {...}--><!--Device-struct VkFragmentShadingRateAttachmentInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDebugUtilsLabelEXT {...}--><!--Device-struct VkDebugUtilsLabelEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

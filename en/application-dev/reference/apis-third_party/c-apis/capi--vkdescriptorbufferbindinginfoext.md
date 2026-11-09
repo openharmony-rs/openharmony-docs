@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDescriptorBufferBindingInfoEXT {...}--><!--Device-struct VkDescriptorBufferBindingInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

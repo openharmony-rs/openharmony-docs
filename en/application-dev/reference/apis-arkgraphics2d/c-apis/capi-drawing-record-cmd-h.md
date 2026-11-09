@@ -38,6 +38,8 @@ OH_Drawing_RecordCmdUtils* OH_Drawing_RecordCmdUtilsCreate(void)
 
 Creates an **OH_Drawing_RecordCmdUtils** object.
 
+<!--Device-OH_Drawing_RecordCmdUtils* OH_Drawing_RecordCmdUtilsCreate(void)--><!--Device-OH_Drawing_RecordCmdUtils* OH_Drawing_RecordCmdUtilsCreate(void)-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 13
@@ -57,6 +59,8 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsDestroy(OH_Drawing_RecordCmdUtils*
 **Description**
 
 Destroys an **OH_Drawing_RecordCmdUtils** object and reclaims the memory occupied by the object.
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsDestroy(OH_Drawing_RecordCmdUtils* recordCmdUtils)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsDestroy(OH_Drawing_RecordCmdUtils* recordCmdUtils)-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -83,6 +87,8 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsBeginRecording(OH_Drawing_RecordCm
 **Description**
 
 Starts recording. This API must be used together with [OH_Drawing_RecordCmdUtilsFinishRecording](capi-drawing-record-cmd-h.md#oh_drawing_recordcmdutilsfinishrecording). The **OH_Drawing_RecordCmdUtils** object generates a canvas object of the recording type and calls the interface of the drawing object to record all drawing commands.
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsBeginRecording(OH_Drawing_RecordCmdUtils* recordCmdUtils, int32_t width, int32_t height, OH_Drawing_Canvas** canvas)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsBeginRecording(OH_Drawing_RecordCmdUtils* recordCmdUtils, int32_t width, int32_t height, OH_Drawing_Canvas** canvas)-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -113,6 +119,8 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsFinishRecording(OH_Drawing_RecordC
 
 Stops video recording. This function must be called after [OH_Drawing_RecordCmdUtilsBeginRecording](capi-drawing-record-cmd-h.md#oh_drawing_recordcmdutilsbeginrecording). The **OH_Drawing_RecordCmdUtils** object ends recording and stores the drawing commands recorded by the canvas object of the recording type into the generated [OH_Drawing_RecordCmdUtilsBeginRecording](capi-drawing-record-cmd-h.md#oh_drawing_recordcmdutilsbeginrecording) object.
 
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsFinishRecording(OH_Drawing_RecordCmdUtils* recordCmdUtils, OH_Drawing_RecordCmd** recordCmd)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsFinishRecording(OH_Drawing_RecordCmdUtils* recordCmdUtils, OH_Drawing_RecordCmd** recordCmd)-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 13
@@ -139,6 +147,8 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsGetHeight(const OH_Drawing_RecordC
 **Description**
 
 Gets the height of recording canvas.
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsGetHeight(const OH_Drawing_RecordCmdUtils *recordCmdUtils, int32_t *height)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsGetHeight(const OH_Drawing_RecordCmdUtils *recordCmdUtils, int32_t *height)-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -167,6 +177,8 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsGetWidth(const OH_Drawing_RecordCm
 
 Gets the width of recording canvas.
 
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsGetWidth(const OH_Drawing_RecordCmdUtils *recordCmdUtils, int32_t *width)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsGetWidth(const OH_Drawing_RecordCmdUtils *recordCmdUtils, int32_t *width)-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 26.0.1
@@ -193,6 +205,8 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdDestroy(OH_Drawing_RecordCmd* recordCmd
 **Description**
 
 Destroys an **OH_Drawing_RecordCmd** object and reclaims the memory occupied by the object.
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_RecordCmdDestroy(OH_Drawing_RecordCmd* recordCmd)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_RecordCmdDestroy(OH_Drawing_RecordCmd* recordCmd)-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceLegacyDitheringFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceLegacyDitheringFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

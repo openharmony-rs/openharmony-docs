@@ -8,11 +8,13 @@ typedef struct OH_PreferencesOption OH_PreferencesOption
 
 定义Preferences配置选项的数据结构。
 
+<!--Device-typedef struct OH_PreferencesOption OH_PreferencesOption--><!--Device-typedef struct OH_PreferencesOption OH_PreferencesOption-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 13
 
-**相关模块：** [Preferences](capi-others-preferences.md)
+**相关模块：** [Preferences](capi-arkdata-preferences.md)
 
 **所在头文件：** [oh_preferences_option.h](capi-oh-preferences-option-h.md)
 

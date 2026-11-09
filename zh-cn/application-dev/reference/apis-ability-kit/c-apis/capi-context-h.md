@@ -51,6 +51,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCacheDir(AbilityRuntime_Co
 
 获取上下文的缓存目录。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCacheDir(AbilityRuntime_ContextHandle context, char* buffer, int32_t bufferSize, int32_t* writeLength)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCacheDir(AbilityRuntime_ContextHandle context, char* buffer, int32_t bufferSize, int32_t* writeLength)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 24
@@ -79,6 +81,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetTempDir(AbilityRuntime_Con
 **描述：**
 
 获取上下文的临时文件目录。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetTempDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetTempDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -109,6 +113,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetFilesDir(AbilityRuntime_Co
 
 获取上下文的通用文件目录。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetFilesDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetFilesDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 24
@@ -137,6 +143,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDatabaseDir(AbilityRuntime
 **描述：**
 
 获取上下文的数据库文件目录。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDatabaseDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDatabaseDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -167,6 +175,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetPreferencesDir(AbilityRunt
 
 获取上下文的首选项文件目录。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetPreferencesDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetPreferencesDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 24
@@ -195,6 +205,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetBundleCodeDir(AbilityRunti
 **描述：**
 
 获取上下文的安装文件目录。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetBundleCodeDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetBundleCodeDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -225,6 +237,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDistributedFilesDir(Abilit
 
 获取上下文的分布式文件目录。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDistributedFilesDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDistributedFilesDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 24
@@ -253,6 +267,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetResourceDir(AbilityRuntime
 **描述：**
 
 获取上下文的资源目录。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetResourceDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetResourceDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -283,6 +299,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCloudFileDir(AbilityRuntim
 
 获取上下文的云文件目录。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCloudFileDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCloudFileDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 24
@@ -312,6 +330,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetAreaMode(AbilityRuntime_Co
 
 获取上下文的数据加密等级。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetAreaMode(AbilityRuntime_ContextHandle context, AbilityRuntime_AreaMode* areaMode)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetAreaMode(AbilityRuntime_ContextHandle context, AbilityRuntime_AreaMode* areaMode)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 24
@@ -339,6 +359,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_SetAreaMode(AbilityRuntime_Co
 
 设置上下文的数据加密等级。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_SetAreaMode(AbilityRuntime_ContextHandle context, AbilityRuntime_AreaMode areaMode)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_SetAreaMode(AbilityRuntime_ContextHandle context, AbilityRuntime_AreaMode areaMode)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 24
@@ -365,6 +387,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetLogFileDir(AbilityRuntime_
 **描述：**
 
 获取上下文的日志文件目录。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetLogFileDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetLogFileDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -394,6 +418,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetProcessName(AbilityRuntime
 **描述：**
 
 获取上下文所在的进程名称。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetProcessName(AbilityRuntime_ContextHandle context, char* buffer, int32_t bufferSize, int32_t* writeLength)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetProcessName(AbilityRuntime_ContextHandle context, char* buffer, int32_t bufferSize, int32_t* writeLength)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

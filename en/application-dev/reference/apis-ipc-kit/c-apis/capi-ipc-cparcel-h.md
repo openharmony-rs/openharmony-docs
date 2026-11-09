@@ -20,9 +20,9 @@ This file provides C APIs for IPC serialization and deserialization, which are u
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) | - | IPC serialization object, used for serializing and deserializing data in cross-process communication. This object must be created and destroyed through related functions. You must follow the lifecycle management specifications of the object and properly manage memory resources. |
-| [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md) | - | IPC remote proxy object, which is used on the client side to proxy the capabilities of a remote service to implement cross-process communication. This object encapsulates a reference to the remote service and supports sending requests to and receiving responses from the remote service. It is applicable to scenarios that require cross-process service capability invocation, such as cross-process service calls, system service access, and cross-application data sharing. Using this object simplifies the implementation of cross-process communication and improves development efficiency. |
-| [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md) | - | Defines an IPC remote service object. This struct is used to represent a remote service on the server. As the service agent of the server in IPC, it processes requests from the client and implements cross-process communication. **OHIPCRemoteStub** is a core struct provided by IPC Kit. It simplifies the IPC service development process and provides a unified request processing mechanism, helping you quickly implement cross-process communication capabilities. |
+| [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) | OHIPCParcel | IPC serialization object, used for serializing and deserializing data in cross-process communication. This object must be created and destroyed through related functions. You must follow the lifecycle management specifications of the object and properly manage memory resources. |
+| [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md) | OHIPCRemoteProxy | IPC remote proxy object, which is used on the client side to proxy the capabilities of a remote service to implement cross-process communication. This object encapsulates a reference to the remote service and supports sending requests to and receiving responses from the remote service. It is applicable to scenarios that require cross-process service capability invocation, such as cross-process service calls, system service access, and cross-application data sharing. Using this object simplifies the implementation of cross-process communication and improves development efficiency. |
+| [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md) | OHIPCRemoteStub | Defines an IPC remote service object. This struct is used to represent a remote service on the server. As the service agent of the server in IPC, it processes requests from the client and implements cross-process communication. **OHIPCRemoteStub** is a core struct provided by IPC Kit. It simplifies the IPC service development process and provides a unified request processing mechanism, helping you quickly implement cross-process communication capabilities. |
 
 ### Function
 
@@ -84,6 +84,8 @@ typedef void* (*OH_IPC_MemAllocator)(int32_t len)
 
 Defines the memory allocation function type, which is used to customize the memory allocation policy for IPC communication. This function is commonly used in scenarios that require special memory management, such as shared memory transmission, memory pool management, and limiting memory usage.
 
+<!--Device-typedef void* (*OH_IPC_MemAllocator)(int32_t len)--><!--Device-typedef void* (*OH_IPC_MemAllocator)(int32_t len)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -115,6 +117,8 @@ Creates an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object for data serial
 - Concurrent access to the same object from multiple threads is not supported.
 - Typical usage flow: [OH_IPCParcel_Create()](capi-ipc-cparcel-h.md#oh_ipcparcel_create()) ? Data read/write operations ? [OH_IPCParcel_Destroy()](capi-ipc-cparcel-h.md#oh_ipcparcel_destroy())
 
+<!--Device-OHIPCParcel* OH_IPCParcel_Create(void)--><!--Device-OHIPCParcel* OH_IPCParcel_Create(void)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -145,6 +149,8 @@ Destroys an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object. When this fun
 - Only objects created by [OH_IPCParcel_Create()](capi-ipc-cparcel-h.md#oh_ipcparcel_create()) can be destroyed.
 - The object cannot be accessed after destruction.
 
+<!--Device-void OH_IPCParcel_Destroy(OHIPCParcel *parcel)--><!--Device-void OH_IPCParcel_Destroy(OHIPCParcel *parcel)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -167,6 +173,8 @@ Obtains the size of the data contained in an [OHIPCParcel](capi-ohipcparcel-ohip
 - The total number of bytes of data that has been written to the **Parcel** object is calculated.
 - The total size of the written data is returned.
 - The read/write position and the data content remain unchanged.
+
+<!--Device-int OH_IPCParcel_GetDataSize(const OHIPCParcel *parcel)--><!--Device-int OH_IPCParcel_GetDataSize(const OHIPCParcel *parcel)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -197,6 +205,8 @@ Obtains the number of bytes that can be written to an [OHIPCParcel](capi-ohipcpa
 - The number of writable bytes is returned.
 - Neither the read/write position nor the data content of the **Parcel** object is changed.
 
+<!--Device-int OH_IPCParcel_GetWritableBytes(const OHIPCParcel *parcel)--><!--Device-int OH_IPCParcel_GetWritableBytes(const OHIPCParcel *parcel)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -226,6 +236,8 @@ Obtains the number of bytes that can be read from an [OHIPCParcel](capi-ohipcpar
 - The number of readable bytes is returned.
 - Neither the read/write position nor the data content of the **Parcel** object is changed.
 
+<!--Device-int OH_IPCParcel_GetReadableBytes(const OHIPCParcel *parcel)--><!--Device-int OH_IPCParcel_GetReadableBytes(const OHIPCParcel *parcel)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -253,6 +265,8 @@ int OH_IPCParcel_GetReadPosition(const OHIPCParcel *parcel)
 Obtains the position where data is read in an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object. This function is commonly used in scenarios such as recording the read position for later restoration, working with [OH_IPCParcel_RewindReadPosition()](capi-ipc-cparcel-h.md#oh_ipcparcel_rewindreadposition()) to enable repeated reads, and debugging the data reading progress. When this function is called:
 - The current read position of the **Parcel** object is returned.
 - The read position and data content remain unchanged.
+
+<!--Device-int OH_IPCParcel_GetReadPosition(const OHIPCParcel *parcel)--><!--Device-int OH_IPCParcel_GetReadPosition(const OHIPCParcel *parcel)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -282,6 +296,8 @@ Obtains the position where data is written in an [OHIPCParcel](capi-ohipcparcel-
 - The current write position of the **Parcel** object is returned.
 - The write position and data content remain unchanged.
 
+<!--Device-int OH_IPCParcel_GetWritePosition(const OHIPCParcel *parcel)--><!--Device-int OH_IPCParcel_GetWritePosition(const OHIPCParcel *parcel)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -310,6 +326,8 @@ Resets the read position of the [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) o
 - The read position pointer is moved to the position specified by **newReadPos**, which must be within the range of [0, current data size].
 - The data already written remains unchanged.
 - Subsequent read operations start from the new position.
+
+<!--Device-int OH_IPCParcel_RewindReadPosition(OHIPCParcel *parcel, uint32_t newReadPos)--><!--Device-int OH_IPCParcel_RewindReadPosition(OHIPCParcel *parcel, uint32_t newReadPos)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -342,6 +360,8 @@ Resets the write position of the [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) 
 - Subsequent write operations start from the new position.
 - Resetting the write position does not affect the read position.
 
+<!--Device-int OH_IPCParcel_RewindWritePosition(OHIPCParcel *parcel, uint32_t newWritePos)--><!--Device-int OH_IPCParcel_RewindWritePosition(OHIPCParcel *parcel, uint32_t newWritePos)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -372,6 +392,8 @@ Writes an int8_t value to an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) obje
 - Calling sequence: First you call **OH_IPCParcel_WriteInt8()** to write the data, and then the receiving side calls [OH_IPCParcel_ReadInt8()](capi-ipc-cparcel-h.md#oh_ipcparcel_readint8()) to read the data.
 - Incorrect pairing: If the functions are not called in the correct sequence or the read type does not match, the read operation will fail or the data will be incorrect.
 
+<!--Device-int OH_IPCParcel_WriteInt8(OHIPCParcel *parcel, int8_t value)--><!--Device-int OH_IPCParcel_WriteInt8(OHIPCParcel *parcel, int8_t value)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -398,6 +420,8 @@ int OH_IPCParcel_ReadInt8(const OHIPCParcel *parcel, int8_t *value)
 **Description**
 
 Reads an int8_t value from an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object. Concurrent access to the same object from multiple threads is not supported.
+
+<!--Device-int OH_IPCParcel_ReadInt8(const OHIPCParcel *parcel, int8_t *value)--><!--Device-int OH_IPCParcel_ReadInt8(const OHIPCParcel *parcel, int8_t *value)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -429,6 +453,8 @@ Writes an int16_t value to an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) obj
 - Calling sequence: First you call **OH_IPCParcel_WriteInt16()** to write the data, and then the receiving side calls [OH_IPCParcel_ReadInt16()](capi-ipc-cparcel-h.md#oh_ipcparcel_readint16()) to read the data.
 - Incorrect pairing: If the functions are not called in the correct sequence or the read type does not match, the read operation will fail or the data will be incorrect.
 
+<!--Device-int OH_IPCParcel_WriteInt16(OHIPCParcel *parcel, int16_t value)--><!--Device-int OH_IPCParcel_WriteInt16(OHIPCParcel *parcel, int16_t value)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -455,6 +481,8 @@ int OH_IPCParcel_ReadInt16(const OHIPCParcel *parcel, int16_t *value)
 **Description**
 
 Reads an int16_t value from an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object.
+
+<!--Device-int OH_IPCParcel_ReadInt16(const OHIPCParcel *parcel, int16_t *value)--><!--Device-int OH_IPCParcel_ReadInt16(const OHIPCParcel *parcel, int16_t *value)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -486,6 +514,8 @@ Writes an int32_t value to an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) obj
 - Calling sequence: First you call **OH_IPCParcel_WriteInt32()** to write the data, and then the receiving side calls [OH_IPCParcel_ReadInt32()](capi-ipc-cparcel-h.md#oh_ipcparcel_readint32()) to read the data.
 - Incorrect pairing: If the functions are not called in the correct sequence or the read type does not match, the read operation will fail or the data will be incorrect.
 
+<!--Device-int OH_IPCParcel_WriteInt32(OHIPCParcel *parcel, int32_t value)--><!--Device-int OH_IPCParcel_WriteInt32(OHIPCParcel *parcel, int32_t value)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -512,6 +542,8 @@ int OH_IPCParcel_ReadInt32(const OHIPCParcel *parcel, int32_t *value)
 **Description**
 
 Reads an int32_t value from an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object.
+
+<!--Device-int OH_IPCParcel_ReadInt32(const OHIPCParcel *parcel, int32_t *value)--><!--Device-int OH_IPCParcel_ReadInt32(const OHIPCParcel *parcel, int32_t *value)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -540,6 +572,8 @@ int OH_IPCParcel_WriteInt64(OHIPCParcel *parcel, int64_t value)
 
 Writes an int64_t value to an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object. The size of written data cannot exceed the total size of IPC serialized data (see [OH_IPCParcel_Create()](capi-ipc-cparcel-h.md#oh_ipcparcel_create())).
 
+<!--Device-int OH_IPCParcel_WriteInt64(OHIPCParcel *parcel, int64_t value)--><!--Device-int OH_IPCParcel_WriteInt64(OHIPCParcel *parcel, int64_t value)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -566,6 +600,8 @@ int OH_IPCParcel_ReadInt64(const OHIPCParcel *parcel, int64_t *value)
 **Description**
 
 Reads an int64_t value from an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object.
+
+<!--Device-int OH_IPCParcel_ReadInt64(const OHIPCParcel *parcel, int64_t *value)--><!--Device-int OH_IPCParcel_ReadInt64(const OHIPCParcel *parcel, int64_t *value)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -594,6 +630,8 @@ int OH_IPCParcel_WriteUint8(OHIPCParcel *parcel, uint8_t value)
 
 Writes a uint8_t value to an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object. The size of written data cannot exceed the total size of IPC serialized data (see [OH_IPCParcel_Create()](capi-ipc-cparcel-h.md#oh_ipcparcel_create())).
 
+<!--Device-int OH_IPCParcel_WriteUint8(OHIPCParcel *parcel, uint8_t value)--><!--Device-int OH_IPCParcel_WriteUint8(OHIPCParcel *parcel, uint8_t value)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 26.0.0
@@ -620,6 +658,8 @@ int OH_IPCParcel_ReadUint8(const OHIPCParcel *parcel, uint8_t *value)
 **Description**
 
 Reads a uint8_t value from an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object.
+
+<!--Device-int OH_IPCParcel_ReadUint8(const OHIPCParcel *parcel, uint8_t *value)--><!--Device-int OH_IPCParcel_ReadUint8(const OHIPCParcel *parcel, uint8_t *value)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -648,6 +688,8 @@ int OH_IPCParcel_WriteUint16(OHIPCParcel *parcel, uint16_t value)
 
 Writes a uint16_t value to an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object. The size of written data cannot exceed the total size of IPC serialized data (see [OH_IPCParcel_Create()](capi-ipc-cparcel-h.md#oh_ipcparcel_create())).
 
+<!--Device-int OH_IPCParcel_WriteUint16(OHIPCParcel *parcel, uint16_t value)--><!--Device-int OH_IPCParcel_WriteUint16(OHIPCParcel *parcel, uint16_t value)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 26.0.0
@@ -674,6 +716,8 @@ int OH_IPCParcel_ReadUint16(const OHIPCParcel *parcel, uint16_t *value)
 **Description**
 
 Reads a uint16_t value from an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object.
+
+<!--Device-int OH_IPCParcel_ReadUint16(const OHIPCParcel *parcel, uint16_t *value)--><!--Device-int OH_IPCParcel_ReadUint16(const OHIPCParcel *parcel, uint16_t *value)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -702,6 +746,8 @@ int OH_IPCParcel_WriteUint32(OHIPCParcel *parcel, uint32_t value)
 
 Writes a uint32_t value to an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object. The size of written data cannot exceed the total size of IPC serialized data (see [OH_IPCParcel_Create()](capi-ipc-cparcel-h.md#oh_ipcparcel_create())).
 
+<!--Device-int OH_IPCParcel_WriteUint32(OHIPCParcel *parcel, uint32_t value)--><!--Device-int OH_IPCParcel_WriteUint32(OHIPCParcel *parcel, uint32_t value)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 26.0.0
@@ -728,6 +774,8 @@ int OH_IPCParcel_ReadUint32(const OHIPCParcel *parcel, uint32_t *value)
 **Description**
 
 Reads a uint32_t value from an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object.
+
+<!--Device-int OH_IPCParcel_ReadUint32(const OHIPCParcel *parcel, uint32_t *value)--><!--Device-int OH_IPCParcel_ReadUint32(const OHIPCParcel *parcel, uint32_t *value)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -756,6 +804,8 @@ int OH_IPCParcel_WriteUint64(OHIPCParcel *parcel, uint64_t value)
 
 Writes a uint64_t value to an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object. The size of written data cannot exceed the total size of IPC serialized data (see [OH_IPCParcel_Create()](capi-ipc-cparcel-h.md#oh_ipcparcel_create())).
 
+<!--Device-int OH_IPCParcel_WriteUint64(OHIPCParcel *parcel, uint64_t value)--><!--Device-int OH_IPCParcel_WriteUint64(OHIPCParcel *parcel, uint64_t value)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 26.0.0
@@ -782,6 +832,8 @@ int OH_IPCParcel_ReadUint64(const OHIPCParcel *parcel, uint64_t *value)
 **Description**
 
 Reads a uint64_t value from an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object.
+
+<!--Device-int OH_IPCParcel_ReadUint64(const OHIPCParcel *parcel, uint64_t *value)--><!--Device-int OH_IPCParcel_ReadUint64(const OHIPCParcel *parcel, uint64_t *value)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -810,6 +862,8 @@ int OH_IPCParcel_WriteFloat(OHIPCParcel *parcel, float value)
 
 Writes a float value to an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object. The size of written data cannot exceed the total size of IPC serialized data (see [OH_IPCParcel_Create()](capi-ipc-cparcel-h.md#oh_ipcparcel_create())).
 
+<!--Device-int OH_IPCParcel_WriteFloat(OHIPCParcel *parcel, float value)--><!--Device-int OH_IPCParcel_WriteFloat(OHIPCParcel *parcel, float value)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -836,6 +890,8 @@ int OH_IPCParcel_ReadFloat(const OHIPCParcel *parcel, float *value)
 **Description**
 
 Reads a float value from an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object.
+
+<!--Device-int OH_IPCParcel_ReadFloat(const OHIPCParcel *parcel, float *value)--><!--Device-int OH_IPCParcel_ReadFloat(const OHIPCParcel *parcel, float *value)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -864,6 +920,8 @@ int OH_IPCParcel_WriteDouble(OHIPCParcel *parcel, double value)
 
 Writes a double value to an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object. The size of written data cannot exceed the total size of IPC serialized data (see [OH_IPCParcel_Create()](capi-ipc-cparcel-h.md#oh_ipcparcel_create())).
 
+<!--Device-int OH_IPCParcel_WriteDouble(OHIPCParcel *parcel, double value)--><!--Device-int OH_IPCParcel_WriteDouble(OHIPCParcel *parcel, double value)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -890,6 +948,8 @@ int OH_IPCParcel_ReadDouble(const OHIPCParcel *parcel, double *value)
 **Description**
 
 Reads a double value from an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object.
+
+<!--Device-int OH_IPCParcel_ReadDouble(const OHIPCParcel *parcel, double *value)--><!--Device-int OH_IPCParcel_ReadDouble(const OHIPCParcel *parcel, double *value)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -918,6 +978,8 @@ int OH_IPCParcel_WriteString(OHIPCParcel *parcel, const char *str)
 
 Writes a string including a string terminator to an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object. The size of written data cannot exceed the total size of IPC serialized data (see [OH_IPCParcel_Create()](capi-ipc-cparcel-h.md#oh_ipcparcel_create())). <br>When this function is called:
 
+<!--Device-int OH_IPCParcel_WriteString(OHIPCParcel *parcel, const char *str)--><!--Device-int OH_IPCParcel_WriteString(OHIPCParcel *parcel, const char *str)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -945,6 +1007,8 @@ const char* OH_IPCParcel_ReadString(const OHIPCParcel *parcel)
 
 Reads a string from an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object. You can obtain the length of the string from **strlen**. <br>When this function is called:
 
+<!--Device-const char* OH_IPCParcel_ReadString(const OHIPCParcel *parcel)--><!--Device-const char* OH_IPCParcel_ReadString(const OHIPCParcel *parcel)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -970,6 +1034,8 @@ int OH_IPCParcel_WriteBuffer(OHIPCParcel *parcel, const uint8_t *buffer, int32_t
 **Description**
 
 Writes data of the specified length from the memory to an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object. This function is commonly used in scenarios such as writing binary data, image data, custom structures, and shared memory content. The size of written data cannot exceed the total size of IPC serialized data (see [OH_IPCParcel_Create()](capi-ipc-cparcel-h.md#oh_ipcparcel_create())). <br>When this function is called:
+
+<!--Device-int OH_IPCParcel_WriteBuffer(OHIPCParcel *parcel, const uint8_t *buffer, int32_t len)--><!--Device-int OH_IPCParcel_WriteBuffer(OHIPCParcel *parcel, const uint8_t *buffer, int32_t len)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -999,6 +1065,8 @@ const uint8_t* OH_IPCParcel_ReadBuffer(const OHIPCParcel *parcel, int32_t len)
 
 Reads memory information of the specified length from an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object. This function is commonly used in scenarios such as reading binary data, image data, custom structures, and shared memory content. <br>When this function is called:
 
+<!--Device-const uint8_t* OH_IPCParcel_ReadBuffer(const OHIPCParcel *parcel, int32_t len)--><!--Device-const uint8_t* OH_IPCParcel_ReadBuffer(const OHIPCParcel *parcel, int32_t len)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -1025,6 +1093,8 @@ int OH_IPCParcel_WriteRemoteStub(OHIPCParcel *parcel, const OHIPCRemoteStub *stu
 **Description**
 
 Writes an [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md) object to an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object. This function is commonly used in scenarios such as passing service objects across processes, implementing remote calls in an IPC server, and sharing service objects. The size of written data cannot exceed the total size of IPC serialized data (see [OH_IPCParcel_Create()](capi-ipc-cparcel-h.md#oh_ipcparcel_create())). <br>When this function is called:
+
+<!--Device-int OH_IPCParcel_WriteRemoteStub(OHIPCParcel *parcel, const OHIPCRemoteStub *stub)--><!--Device-int OH_IPCParcel_WriteRemoteStub(OHIPCParcel *parcel, const OHIPCRemoteStub *stub)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -1053,6 +1123,8 @@ OHIPCRemoteStub* OH_IPCParcel_ReadRemoteStub(const OHIPCParcel *parcel)
 
 Reads the [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md) object from an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object. This function is commonly used in scenarios such as receiving service objects across processes, implementing remote calls in an IPC server, and sharing service objects. <br>When this function is called:
 
+<!--Device-OHIPCRemoteStub* OH_IPCParcel_ReadRemoteStub(const OHIPCParcel *parcel)--><!--Device-OHIPCRemoteStub* OH_IPCParcel_ReadRemoteStub(const OHIPCParcel *parcel)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -1078,6 +1150,8 @@ int OH_IPCParcel_WriteRemoteProxy(OHIPCParcel *parcel, const OHIPCRemoteProxy *p
 **Description**
 
 Writes an [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md) object to an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object. This function is commonly used in scenarios such as passing proxy objects across processes, implementing remote calls in an IPC client, and sharing proxy objects. The size of written data cannot exceed the total size of IPC serialized data (see [OH_IPCParcel_Create()](capi-ipc-cparcel-h.md#oh_ipcparcel_create())). <br>When this function is called:
+
+<!--Device-int OH_IPCParcel_WriteRemoteProxy(OHIPCParcel *parcel, const OHIPCRemoteProxy *proxy)--><!--Device-int OH_IPCParcel_WriteRemoteProxy(OHIPCParcel *parcel, const OHIPCRemoteProxy *proxy)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -1106,6 +1180,8 @@ OHIPCRemoteProxy* OH_IPCParcel_ReadRemoteProxy(const OHIPCParcel *parcel)
 
 Reads the [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md) object from an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object. This function is commonly used in scenarios such as receiving proxy objects across processes, implementing remote calls in an IPC client, and sharing proxy objects. <br>When this function is called:
 
+<!--Device-OHIPCRemoteProxy* OH_IPCParcel_ReadRemoteProxy(const OHIPCParcel *parcel)--><!--Device-OHIPCRemoteProxy* OH_IPCParcel_ReadRemoteProxy(const OHIPCParcel *parcel)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -1131,6 +1207,8 @@ int OH_IPCParcel_WriteFileDescriptor(OHIPCParcel *parcel, int32_t fd)
 **Description**
 
 Writes a file descriptor to an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object. This function is commonly used in scenarios such as passing file handles across processes, shared memory file descriptors, and pipe file descriptors. The size of written data cannot exceed the total size of IPC serialized data (see [OH_IPCParcel_Create()](capi-ipc-cparcel-h.md#oh_ipcparcel_create())). <br>When this function is called:
+
+<!--Device-int OH_IPCParcel_WriteFileDescriptor(OHIPCParcel *parcel, int32_t fd)--><!--Device-int OH_IPCParcel_WriteFileDescriptor(OHIPCParcel *parcel, int32_t fd)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -1159,6 +1237,8 @@ int OH_IPCParcel_ReadFileDescriptor(const OHIPCParcel *parcel, int32_t *fd)
 
 Reads a file descriptor from an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object. This function is commonly used in scenarios such as receiving file handles across processes, shared memory file descriptors, and pipe file descriptors. Concurrent access to the same object from multiple threads is not supported. <br>When this function is called:
 
+<!--Device-int OH_IPCParcel_ReadFileDescriptor(const OHIPCParcel *parcel, int32_t *fd)--><!--Device-int OH_IPCParcel_ReadFileDescriptor(const OHIPCParcel *parcel, int32_t *fd)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -1185,6 +1265,8 @@ int OH_IPCParcel_Append(OHIPCParcel *parcel, const OHIPCParcel *data)
 **Description**
 
 Appends data to an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object. This function is commonly used in scenarios such as merging data from multiple parcels, packet assembly, and merging data written in segments. The size of appended data cannot exceed the total size of IPC serialized data (see [OH_IPCParcel_Create()](capi-ipc-cparcel-h.md#oh_ipcparcel_create())). <br>When this function is called:
+
+<!--Device-int OH_IPCParcel_Append(OHIPCParcel *parcel, const OHIPCParcel *data)--><!--Device-int OH_IPCParcel_Append(OHIPCParcel *parcel, const OHIPCParcel *data)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -1213,6 +1295,8 @@ int OH_IPCParcel_WriteInterfaceToken(OHIPCParcel *parcel, const char *token)
 
 Writes an interface token to an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object for interface identity verification. This function is commonly used in security verification scenarios in IPC communication, such as preventing malicious processes from sending forged requests, ensuring that messages are sent to the correct service API, and distinguishing different API calls in multi-API services. Concurrent access to the same object from multiple threads is not supported. The size of written data cannot exceed the total size of IPC serialized data (see [OH_IPCParcel_Create()](capi-ipc-cparcel-h.md#oh_ipcparcel_create())). <br>When this function is called:
 
+<!--Device-int OH_IPCParcel_WriteInterfaceToken(OHIPCParcel *parcel, const char *token)--><!--Device-int OH_IPCParcel_WriteInterfaceToken(OHIPCParcel *parcel, const char *token)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -1239,6 +1323,8 @@ int OH_IPCParcel_ReadInterfaceToken(const OHIPCParcel *parcel, char **token, int
 **Description**
 
 Reads an interface token from an [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) object for interface identity verification. <br>When this function is called:
+
+<!--Device-int OH_IPCParcel_ReadInterfaceToken(const OHIPCParcel *parcel, char **token, int32_t *len, OH_IPC_MemAllocator allocator)--><!--Device-int OH_IPCParcel_ReadInterfaceToken(const OHIPCParcel *parcel, char **token, int32_t *len, OH_IPC_MemAllocator allocator)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 

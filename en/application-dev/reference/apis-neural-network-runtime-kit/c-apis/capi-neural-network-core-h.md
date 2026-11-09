@@ -81,6 +81,8 @@ OH_NNCompilation *OH_NNCompilation_Construct(const OH_NNModel *model)
 
 Creates a compilation instance of the [OH_NNCompilation](capi-neuralnetworkruntime-oh-nncompilation.md) type.<br> After the OH_NNModel module completes model construction, APIs provided by the OH_NNCompilation module pass the model to underlying device for compilation. This method creates a [OH_NNCompilation](capi-neuralnetworkruntime-oh-nncompilation.md) instance based on the passed [OH_NNModel](capi-neuralnetworkruntime-oh-nnmodel.md) instance. The [OH_NNCompilation_SetDevice](capi-neural-network-core-h.md#oh_nncompilation_setdevice) method is called to set the device to compile on, and [OH_NNCompilation_Build](capi-neural-network-core-h.md#oh_nncompilation_build) is then called to complete compilation.<br> In addition to computing device selection, the OH_NNCompilation module supports features such as model caching, performance preference, priority setting, and float16 computing, which can be implemented by the following methods: [OH_NNCompilation_SetCache](capi-neural-network-core-h.md#oh_nncompilation_setcache) [OH_NNCompilation_SetPerformanceMode](capi-neural-network-core-h.md#oh_nncompilation_setperformancemode) [OH_NNCompilation_SetPriority](capi-neural-network-core-h.md#oh_nncompilation_setpriority) [OH_NNCompilation_EnableFloat16](capi-neural-network-core-h.md#oh_nncompilation_enablefloat16)<br> After [OH_NNCompilation_Build](capi-neural-network-core-h.md#oh_nncompilation_build) is called, the [OH_NNModel](capi-neuralnetworkruntime-oh-nnmodel.md) instance can be released.
 
+<!--Device-OH_NNCompilation *OH_NNCompilation_Construct(const OH_NNModel *model)--><!--Device-OH_NNCompilation *OH_NNCompilation_Construct(const OH_NNModel *model)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
@@ -107,6 +109,8 @@ OH_NNCompilation *OH_NNCompilation_ConstructWithOfflineModelFile(const char *mod
 
 Creates a compilation instance based on an offline model file.<br> This method conflicts with the way of passing an online built model or an offline model file buffer, and you have to choose only one of the three construction methods. <br> Offline model is a type of model that is offline compiled by the model converter provided by a device vendor. So that the offline model can only be used on the specified device, but the compilation time of offline model is usually much less than [OH_NNModel](capi-neuralnetworkruntime-oh-nnmodel.md). <br> You should perform the offline compilation during your development and deploy the offline model in your app package.
 
+<!--Device-OH_NNCompilation *OH_NNCompilation_ConstructWithOfflineModelFile(const char *modelPath)--><!--Device-OH_NNCompilation *OH_NNCompilation_ConstructWithOfflineModelFile(const char *modelPath)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 11
@@ -132,6 +136,8 @@ OH_NNCompilation *OH_NNCompilation_ConstructWithOfflineModelBuffer(const void *m
 **Description**
 
 Creates a compilation instance based on an offline model file buffer.<br> This method conflicts with the way of passing an online built model or an offline model file path, and you have to choose only one of the three construction methods. <br> Note that the returned [OH_NNCompilation](capi-neuralnetworkruntime-oh-nncompilation.md) instance only saves the <b>modelBuffer</b> pointer inside, instead of copying its data. You should not release <b>modelBuffer</b> before the [OH_NNCompilation](capi-neuralnetworkruntime-oh-nncompilation.md) instance is destroied.
+
+<!--Device-OH_NNCompilation *OH_NNCompilation_ConstructWithOfflineModelBuffer(const void *modelBuffer, size_t modelSize)--><!--Device-OH_NNCompilation *OH_NNCompilation_ConstructWithOfflineModelBuffer(const void *modelBuffer, size_t modelSize)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -160,6 +166,8 @@ OH_NNCompilation *OH_NNCompilation_ConstructForCache()
 
 Creates a empty compilation instance for restoration from cache later.<br> See [OH_NNCompilation_SetCache](capi-neural-network-core-h.md#oh_nncompilation_setcache) for the description of cache.<br> The restoration time from the cache is less than compilation with [OH_NNModel](capi-neuralnetworkruntime-oh-nnmodel.md).<br> You should call [OH_NNCompilation_SetCache](capi-neural-network-core-h.md#oh_nncompilation_setcache) or [OH_NNCompilation_ImportCacheFromBuffer](capi-neural-network-core-h.md#oh_nncompilation_importcachefrombuffer) first, and then call [OH_NNCompilation_Build](capi-neural-network-core-h.md#oh_nncompilation_build) to complete the restoration.
 
+<!--Device-OH_NNCompilation *OH_NNCompilation_ConstructForCache()--><!--Device-OH_NNCompilation *OH_NNCompilation_ConstructForCache()-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 11
@@ -179,6 +187,8 @@ OH_NN_ReturnCode OH_NNCompilation_ExportCacheToBuffer(OH_NNCompilation *compilat
 **Description**
 
 Exports the cache to a given buffer.<br> See [OH_NNCompilation_SetCache](capi-neural-network-core-h.md#oh_nncompilation_setcache) for the description of cache.<br> Note that the cache is the result of compilation building [OH_NNCompilation_Build](capi-neural-network-core-h.md#oh_nncompilation_build), so that this method must be called after [OH_NNCompilation_Build](capi-neural-network-core-h.md#oh_nncompilation_build).
+
+<!--Device-OH_NN_ReturnCode OH_NNCompilation_ExportCacheToBuffer(OH_NNCompilation *compilation, const void *buffer, size_t length, size_t *modelSize)--><!--Device-OH_NN_ReturnCode OH_NNCompilation_ExportCacheToBuffer(OH_NNCompilation *compilation, const void *buffer, size_t length, size_t *modelSize)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -209,6 +219,8 @@ OH_NN_ReturnCode OH_NNCompilation_ImportCacheFromBuffer(OH_NNCompilation *compil
 
 Imports the cache from a given buffer.<br> See [OH_NNCompilation_SetCache](capi-neural-network-core-h.md#oh_nncompilation_setcache) for the description of cache.<br> [OH_NNCompilation_Build](capi-neural-network-core-h.md#oh_nncompilation_build) should be called to complete the restoration after [OH_NNCompilation_ImportCacheFromBuffer](capi-neural-network-core-h.md#oh_nncompilation_importcachefrombuffer) is called.<br> Note that <b>compilation</b> only saves the <b>buffer</b> pointer inside, instead of copying its data. You should not release <b>buffer</b> before <b>compilation</b> is destroied.
 
+<!--Device-OH_NN_ReturnCode OH_NNCompilation_ImportCacheFromBuffer(OH_NNCompilation *compilation, const void *buffer, size_t modelSize)--><!--Device-OH_NN_ReturnCode OH_NNCompilation_ImportCacheFromBuffer(OH_NNCompilation *compilation, const void *buffer, size_t modelSize)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 11
@@ -236,6 +248,8 @@ OH_NN_ReturnCode OH_NNCompilation_AddExtensionConfig(OH_NNCompilation *compilati
 **Description**
 
 Adds an extension config for a custom hardware attribute.<br> Some devices have their own specific attributes which have not been opened in NNRt. This method provides an additional way for you to set these custom hardware attributes of the device. You should query their names and values from the device vendor's documents, and add them into compilation instance one by one. These attributes will be passed directly to device driver, and this method will return error code if the driver cannot parse them. <br> After [OH_NNCompilation_Build](capi-neural-network-core-h.md#oh_nncompilation_build) is called, the <b>configName</b> and <b>configValue</b> can be released.
+
+<!--Device-OH_NN_ReturnCode OH_NNCompilation_AddExtensionConfig(OH_NNCompilation *compilation, const char *configName, const void *configValue, const size_t configValueSize)--><!--Device-OH_NN_ReturnCode OH_NNCompilation_AddExtensionConfig(OH_NNCompilation *compilation, const char *configName, const void *configValue, const size_t configValueSize)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -265,6 +279,8 @@ OH_NN_ReturnCode OH_NNCompilation_SetDevice(OH_NNCompilation *compilation, size_
 **Description**
 
 Specifies the device for model compilation and computing.<br> In the compilation phase, you need to specify the device for model compilation and computing. Call [OH_NNDevice_GetAllDevicesID](capi-neural-network-core-h.md#oh_nndevice_getalldevicesid) to obtain available device IDs. Call [OH_NNDevice_GetType](capi-neural-network-core-h.md#oh_nndevice_gettype) and [OH_NNDevice_GetName](capi-neural-network-core-h.md#oh_nndevice_getname) to obtain device information and pass target device ID to this method for setting. <br> *
+
+<!--Device-OH_NN_ReturnCode OH_NNCompilation_SetDevice(OH_NNCompilation *compilation, size_t deviceID)--><!--Device-OH_NN_ReturnCode OH_NNCompilation_SetDevice(OH_NNCompilation *compilation, size_t deviceID)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -299,6 +315,8 @@ Set the cache directory and version of the compiled model.<br> On the device tha
 - The cache file in the cache directory is incomplete or you do not have the permission to access the cache file. Returns the [OH_NN_INVALID_FILE](capi-neural-network-runtime-type-h.md#oh_nn_returncode) error code.<br>
 - The cache directory does not exist or you do not have the access permission. Returns the [OH_NN_INVALID_PATH](capi-neural-network-runtime-type-h.md#oh_nn_returncode) error code.
 
+<!--Device-OH_NN_ReturnCode OH_NNCompilation_SetCache(OH_NNCompilation *compilation, const char *cachePath, uint32_t version)--><!--Device-OH_NN_ReturnCode OH_NNCompilation_SetCache(OH_NNCompilation *compilation, const char *cachePath, uint32_t version)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
@@ -327,6 +345,8 @@ OH_NN_ReturnCode OH_NNCompilation_SetPerformanceMode(OH_NNCompilation *compilati
 
 Sets the performance mode for model computing.<br> Allows you to set the performance mode for model computing to meet the requirements of low power consumption and ultimate performance. If this method is not called to set the performance mode in the compilation phase, the compilation instance assigns the [OH_NN_PERFORMANCE_NONE](capi-neural-network-runtime-type-h.md#oh_nn_performancemode) mode for the model by default. In this case, the device performs computing in the default performance mode. <br> If this method is called on the device that does not support the setting of the performance mode, the [OH_NN_UNAVALIDABLE_DEVICE](capi-neural-network-runtime-type-h.md#oh_nn_returncode) error code is returned.
 
+<!--Device-OH_NN_ReturnCode OH_NNCompilation_SetPerformanceMode(OH_NNCompilation *compilation, OH_NN_PerformanceMode performanceMode)--><!--Device-OH_NN_ReturnCode OH_NNCompilation_SetPerformanceMode(OH_NNCompilation *compilation, OH_NN_PerformanceMode performanceMode)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
@@ -353,6 +373,8 @@ OH_NN_ReturnCode OH_NNCompilation_SetPriority(OH_NNCompilation *compilation, OH_
 **Description**
 
 Sets the model computing priority.<br> Allows you to set computing priorities for models. The priorities apply only to models created by the process with the same UID. The settings will not affect models created by processes with different UIDs on different devices. <br> If this method is called on the device that does not support the priority setting, the [OH_NN_UNAVALIDABLE_DEVICE](capi-neural-network-runtime-type-h.md#oh_nn_returncode) error code is returned.
+
+<!--Device-OH_NN_ReturnCode OH_NNCompilation_SetPriority(OH_NNCompilation *compilation, OH_NN_Priority priority)--><!--Device-OH_NN_ReturnCode OH_NNCompilation_SetPriority(OH_NNCompilation *compilation, OH_NN_Priority priority)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -381,6 +403,8 @@ OH_NN_ReturnCode OH_NNCompilation_EnableFloat16(OH_NNCompilation *compilation, b
 
 Enables float16 for computing.<br> Float32 is used by default for the model of float type. If this method is called on a device that supports float16, float16 will be used for computing the float32 model to reduce memory usage and execution time. <br> This option is useless for the model of int type, e.g. int8 type. <br> If this method is called on the device that does not support float16, the [OH_NN_UNAVALIDABLE_DEVICE](capi-neural-network-runtime-type-h.md#oh_nn_returncode) error code is returned.
 
+<!--Device-OH_NN_ReturnCode OH_NNCompilation_EnableFloat16(OH_NNCompilation *compilation, bool enableFloat16)--><!--Device-OH_NN_ReturnCode OH_NNCompilation_EnableFloat16(OH_NNCompilation *compilation, bool enableFloat16)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
@@ -408,6 +432,8 @@ OH_NN_ReturnCode OH_NNCompilation_Build(OH_NNCompilation *compilation)
 
 Compiles a model.<br> After the compilation configuration is complete, call this method to return the compilation result. The compilation instance pushes the model and compilation options to the device for compilation. After this method is called, additional compilation operations cannot be performed. <br> If the [OH_NNCompilation_SetDevice](capi-neural-network-core-h.md#oh_nncompilation_setdevice), [OH_NNCompilation_SetCache](capi-neural-network-core-h.md#oh_nncompilation_setcache), [OH_NNCompilation_SetPerformanceMode](capi-neural-network-core-h.md#oh_nncompilation_setperformancemode), [OH_NNCompilation_SetPriority](capi-neural-network-core-h.md#oh_nncompilation_setpriority), and [OH_NNCompilation_EnableFloat16](capi-neural-network-core-h.md#oh_nncompilation_enablefloat16) methods are called, [OH_NN_OPERATION_FORBIDDEN](capi-neural-network-runtime-type-h.md#oh_nn_returncode) is returned.
 
+<!--Device-OH_NN_ReturnCode OH_NNCompilation_Build(OH_NNCompilation *compilation)--><!--Device-OH_NN_ReturnCode OH_NNCompilation_Build(OH_NNCompilation *compilation)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
@@ -434,6 +460,8 @@ void OH_NNCompilation_Destroy(OH_NNCompilation **compilation)
 
 Releases the <b>Compilation</b> object.<br> This method needs to be called to release the compilation instance created by [OH_NNCompilation_Construct](capi-neural-network-core-h.md#oh_nncompilation_construct), [OH_NNCompilation_ConstructWithOfflineModelFile](capi-neural-network-core-h.md#oh_nncompilation_constructwithofflinemodelfile), [OH_NNCompilation_ConstructWithOfflineModelBuffer](capi-neural-network-core-h.md#oh_nncompilation_constructwithofflinemodelbuffer) and [OH_NNCompilation_ConstructForCache](capi-neural-network-core-h.md#oh_nncompilation_constructforcache). Otherwise, the memory leak will occur. <br> If <b>compilation</b> or <b>*compilation</b> is a null pointer, this method only prints warning logs and does not execute the release.
 
+<!--Device-void OH_NNCompilation_Destroy(OH_NNCompilation **compilation)--><!--Device-void OH_NNCompilation_Destroy(OH_NNCompilation **compilation)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
@@ -454,6 +482,8 @@ NN_TensorDesc *OH_NNTensorDesc_Create()
 
 Creates an [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) instance.<br> The [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) describes various tensor attributes, such as name/data type/shape/format, etc.<br> The following methods can be called to create a [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md) instance based on the passed [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) instance: [OH_NNTensor_Create](capi-neural-network-core-h.md#oh_nntensor_create) [OH_NNTensor_CreateWithSize](capi-neural-network-core-h.md#oh_nntensor_createwithsize) [OH_NNTensor_CreateWithFd](capi-neural-network-core-h.md#oh_nntensor_createwithfd)<br> Note that these methods will copy the [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) instance into [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md). Therefore you can create multiple [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md) instances with the same [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) instance. And you should destroy the [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) instance by [OH_NNTensorDesc_Destroy](capi-neural-network-core-h.md#oh_nntensordesc_destroy) when it is no longer used.
 
+<!--Device-NN_TensorDesc *OH_NNTensorDesc_Create()--><!--Device-NN_TensorDesc *OH_NNTensorDesc_Create()-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 11
@@ -473,6 +503,8 @@ OH_NN_ReturnCode OH_NNTensorDesc_Destroy(NN_TensorDesc **tensorDesc)
 **Description**
 
 Releases an [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) instance.<br> When the [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) instance is no longer used, this method needs to be called to release it. Otherwise, the memory leak will occur. <br> If <b>tensorDesc</b> or <b>*tensorDesc</b> is a null pointer, this method will return error code and does not execute the release.
+
+<!--Device-OH_NN_ReturnCode OH_NNTensorDesc_Destroy(NN_TensorDesc **tensorDesc)--><!--Device-OH_NN_ReturnCode OH_NNTensorDesc_Destroy(NN_TensorDesc **tensorDesc)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -499,6 +531,8 @@ OH_NN_ReturnCode OH_NNTensorDesc_SetName(NN_TensorDesc *tensorDesc, const char *
 **Description**
 
 Sets the name of a [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md).<br> After the [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) instance is created, call this method to set the tensor name. The value of <b>*name</b> is a C-style string ended with <b>'\0'</b>.<br> if <b>tensorDesc</b> or <b>name</b> is a null pointer, this method will return error code.
+
+<!--Device-OH_NN_ReturnCode OH_NNTensorDesc_SetName(NN_TensorDesc *tensorDesc, const char *name)--><!--Device-OH_NN_ReturnCode OH_NNTensorDesc_SetName(NN_TensorDesc *tensorDesc, const char *name)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -527,6 +561,8 @@ OH_NN_ReturnCode OH_NNTensorDesc_GetName(const NN_TensorDesc *tensorDesc, const 
 
 Gets the name of a [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md).<br> Call this method to obtain the name of the specified [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) instance. The value of <b>*name</b> is a C-style string ended with <b>'\0'</b>.<br> if <b>tensorDesc</b> or <b>name</b> is a null pointer, this method will return error code. As an output parameter, <b>*name</b> must be a null pointer, otherwise the method will return an error code. Fou example, you should define char* tensorName = NULL, and pass &tensorName as the argument of <b>name</b>.<br> You do not need to release the memory of <b>name</b>. It will be released when <b>tensorDesc</b> is destroied.
 
+<!--Device-OH_NN_ReturnCode OH_NNTensorDesc_GetName(const NN_TensorDesc *tensorDesc, const char **name)--><!--Device-OH_NN_ReturnCode OH_NNTensorDesc_GetName(const NN_TensorDesc *tensorDesc, const char **name)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 11
@@ -553,6 +589,8 @@ OH_NN_ReturnCode OH_NNTensorDesc_SetDataType(NN_TensorDesc *tensorDesc, OH_NN_Da
 **Description**
 
 Sets the data type of a [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md).<br> After the [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) instance is created, call this method to set the tensor data type. <br> if <b>tensorDesc</b> is a null pointer, this method will return error code.
+
+<!--Device-OH_NN_ReturnCode OH_NNTensorDesc_SetDataType(NN_TensorDesc *tensorDesc, OH_NN_DataType dataType)--><!--Device-OH_NN_ReturnCode OH_NNTensorDesc_SetDataType(NN_TensorDesc *tensorDesc, OH_NN_DataType dataType)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -581,6 +619,8 @@ OH_NN_ReturnCode OH_NNTensorDesc_GetDataType(const NN_TensorDesc *tensorDesc, OH
 
 Gets the data type of a [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md).<br> Call this method to obtain the data type of the specified [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) instance. <br> if <b>tensorDesc</b> or <b>dataType</b> is a null pointer, this method will return error code.
 
+<!--Device-OH_NN_ReturnCode OH_NNTensorDesc_GetDataType(const NN_TensorDesc *tensorDesc, OH_NN_DataType *dataType)--><!--Device-OH_NN_ReturnCode OH_NNTensorDesc_GetDataType(const NN_TensorDesc *tensorDesc, OH_NN_DataType *dataType)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 11
@@ -607,6 +647,8 @@ OH_NN_ReturnCode OH_NNTensorDesc_SetShape(NN_TensorDesc *tensorDesc, const int32
 **Description**
 
 Sets the shape of a [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md).<br> After the [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) instance is created, call this method to set the tensor shape. <br> if <b>tensorDesc</b> or <b>shape</b> is a null pointer, or <b>shapeLength</b> is 0, this method will return error code.
+
+<!--Device-OH_NN_ReturnCode OH_NNTensorDesc_SetShape(NN_TensorDesc *tensorDesc, const int32_t *shape, size_t shapeLength)--><!--Device-OH_NN_ReturnCode OH_NNTensorDesc_SetShape(NN_TensorDesc *tensorDesc, const int32_t *shape, size_t shapeLength)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -636,6 +678,8 @@ OH_NN_ReturnCode OH_NNTensorDesc_GetShape(const NN_TensorDesc *tensorDesc, int32
 
 Gets the shape of a [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md).<br> Call this method to obtain the shape of the specified [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) instance. <br> if <b>tensorDesc</b>, <b>shape</b> or <b>shapeLength</b> is a null pointer, this method will return error code. As an output parameter, <b>*shape</b> must be a null pointer, otherwise the method will return an error code. Fou example, you should define int32_t* tensorShape = NULL, and pass &tensorShape as the argument of <b>shape</b>. <br> You do not need to release the memory of <b>shape</b>. It will be released when <b>tensorDesc</b> is destroied.
 
+<!--Device-OH_NN_ReturnCode OH_NNTensorDesc_GetShape(const NN_TensorDesc *tensorDesc, int32_t **shape, size_t *shapeLength)--><!--Device-OH_NN_ReturnCode OH_NNTensorDesc_GetShape(const NN_TensorDesc *tensorDesc, int32_t **shape, size_t *shapeLength)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 11
@@ -664,6 +708,8 @@ OH_NN_ReturnCode OH_NNTensorDesc_SetFormat(NN_TensorDesc *tensorDesc, OH_NN_Form
 
 Sets the format of a [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md).<br> After the [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) instance is created, call this method to set the tensor format. <br> if <b>tensorDesc</b> is a null pointer, this method will return error code.
 
+<!--Device-OH_NN_ReturnCode OH_NNTensorDesc_SetFormat(NN_TensorDesc *tensorDesc, OH_NN_Format format)--><!--Device-OH_NN_ReturnCode OH_NNTensorDesc_SetFormat(NN_TensorDesc *tensorDesc, OH_NN_Format format)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 11
@@ -690,6 +736,8 @@ OH_NN_ReturnCode OH_NNTensorDesc_GetFormat(const NN_TensorDesc *tensorDesc, OH_N
 **Description**
 
 Gets the format of a [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md).<br> Call this method to obtain the format of the specified [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) instance. <br> if <b>tensorDesc</b> or <b>format</b> is a null pointer, this method will return error code.
+
+<!--Device-OH_NN_ReturnCode OH_NNTensorDesc_GetFormat(const NN_TensorDesc *tensorDesc, OH_NN_Format *format)--><!--Device-OH_NN_ReturnCode OH_NNTensorDesc_GetFormat(const NN_TensorDesc *tensorDesc, OH_NN_Format *format)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -718,6 +766,8 @@ OH_NN_ReturnCode OH_NNTensorDesc_GetElementCount(const NN_TensorDesc *tensorDesc
 
 Gets the element count of a [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md).<br> Call this method to obtain the element count of the specified [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) instance. If you need to obtain byte size of the tensor data, call [OH_NNTensorDesc_GetByteSize](capi-neural-network-core-h.md#oh_nntensordesc_getbytesize). <br> If the tensor shape is dynamic, this method will return error code, and <b>elementCount</b> will be 0. <br> if <b>tensorDesc</b> or <b>elementCount</b> is a null pointer, this method will return error code.
 
+<!--Device-OH_NN_ReturnCode OH_NNTensorDesc_GetElementCount(const NN_TensorDesc *tensorDesc, size_t *elementCount)--><!--Device-OH_NN_ReturnCode OH_NNTensorDesc_GetElementCount(const NN_TensorDesc *tensorDesc, size_t *elementCount)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 11
@@ -744,6 +794,8 @@ OH_NN_ReturnCode OH_NNTensorDesc_GetByteSize(const NN_TensorDesc *tensorDesc, si
 **Description**
 
 Gets the byte size of a [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md).<br> Call this method to obtain the byte size of the specified [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) instance. <br> If the tensor shape is dynamic, this method will return error code, and <b>byteSize</b> will be 0. <br> If you need to obtain element count of the tensor data, call [OH_NNTensorDesc_GetElementCount](capi-neural-network-core-h.md#oh_nntensordesc_getelementcount). <br> if <b>tensorDesc</b> or <b>byteSize</b> is a null pointer, this method will return error code.
+
+<!--Device-OH_NN_ReturnCode OH_NNTensorDesc_GetByteSize(const NN_TensorDesc *tensorDesc, size_t *byteSize)--><!--Device-OH_NN_ReturnCode OH_NNTensorDesc_GetByteSize(const NN_TensorDesc *tensorDesc, size_t *byteSize)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -772,6 +824,8 @@ NN_Tensor *OH_NNTensor_Create(size_t deviceID, NN_TensorDesc *tensorDesc)
 
 Creates a [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md) instance from [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md).<br> This method use [OH_NNTensorDesc_GetByteSize](capi-neural-network-core-h.md#oh_nntensordesc_getbytesize) to calculate the byte size of tensor data and allocate shared memory on device for it. The device dirver will get the tensor data directly by the "zero-copy" way.<br> Note that this method will copy the <b>tensorDesc</b> into [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md). Therefore you should destroy <b>tensorDesc</b> by [OH_NNTensorDesc_Destroy](capi-neural-network-core-h.md#oh_nntensordesc_destroy) if it is no longer used.<br> If the tensor shape is dynamic, this method will return error code.<br> <b>deviceID</b> indicates the selected device. If it is 0, the first device in the current device list will be used by default.<br> <b>tensorDesc</b> must be provided, and this method will return an error code if it is a null pointer.<br> Call [OH_NNTensor_Destroy](capi-neural-network-core-h.md#oh_nntensor_destroy) to release the [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md) instance if it is no longer used.
 
+<!--Device-NN_Tensor *OH_NNTensor_Create(size_t deviceID, NN_TensorDesc *tensorDesc)--><!--Device-NN_Tensor *OH_NNTensor_Create(size_t deviceID, NN_TensorDesc *tensorDesc)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 11
@@ -798,6 +852,8 @@ NN_Tensor *OH_NNTensor_CreateWithSize(size_t deviceID, NN_TensorDesc *tensorDesc
 **Description**
 
 Creates a [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md) instance with specified size and [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md).<br> This method use <b>size</b> as the byte size of tensor data and allocate shared memory on device for it. The device dirver will get the tensor data directly by the "zero-copy" way.<br> Note that this method will copy the <b>tensorDesc</b> into [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md). Therefore you should destroy <b>tensorDesc</b> by [OH_NNTensorDesc_Destroy](capi-neural-network-core-h.md#oh_nntensordesc_destroy) if it is no longer used.<br> <b>deviceID</b> indicates the selected device. If it is 0, the first device in the current device list will be used by default.<br> <b>tensorDesc</b> must be provided, if it is a null pointer, the method returns an error code. <b>size</b> must be no less than the byte size of tensorDesc. Otherwise, this method will return an error code. If the tensor shape is dynamic, the <b>size</b> will not be checked.<br> Call [OH_NNTensor_Destroy](capi-neural-network-core-h.md#oh_nntensor_destroy) to release the [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md) instance if it is no longer used.
+
+<!--Device-NN_Tensor *OH_NNTensor_CreateWithSize(size_t deviceID, NN_TensorDesc *tensorDesc, size_t size)--><!--Device-NN_Tensor *OH_NNTensor_CreateWithSize(size_t deviceID, NN_TensorDesc *tensorDesc, size_t size)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -826,6 +882,8 @@ NN_Tensor *OH_NNTensor_CreateWithFd(size_t deviceID, NN_TensorDesc *tensorDesc, 
 **Description**
 
 Creates a [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md) instance with specified file descriptor and [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md).<br> This method reuses the shared memory corresponding to the file descriptor <b>fd</b> passed. It may comes from another [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md) instance. When you call the [OH_NNTensor_Destroy](capi-neural-network-core-h.md#oh_nntensor_destroy) method to release the tensor created by this method, the tensor data memory will not be released.<br> Note that this method will copy the <b>tensorDesc</b> into [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md). Therefore you should destroy <b>tensorDesc</b> by [OH_NNTensorDesc_Destroy](capi-neural-network-core-h.md#oh_nntensordesc_destroy) if it is no longer used.<br> <b>deviceID</b> indicates the selected device. If it is 0, the first device in the current device list will be used by default.<br> <b>tensorDesc</b> must be provided, if it is a null pointer, the method returns an error code.<br> Call [OH_NNTensor_Destroy](capi-neural-network-core-h.md#oh_nntensor_destroy) to release the [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md) instance if it is no longer used.
+
+<!--Device-NN_Tensor *OH_NNTensor_CreateWithFd(size_t deviceID, NN_TensorDesc *tensorDesc, int fd, size_t size, size_t offset)--><!--Device-NN_Tensor *OH_NNTensor_CreateWithFd(size_t deviceID, NN_TensorDesc *tensorDesc, int fd, size_t size, size_t offset)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -857,6 +915,8 @@ OH_NN_ReturnCode OH_NNTensor_Destroy(NN_Tensor **tensor)
 
 Releases a [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md) instance.<br> When the [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md) instance is no longer used, this method needs to be called to release the instance. Otherwise, the memory leak will occur.<br> If <b>tensor</b> or <b>*tensor</b> is a null pointer, this method will return error code and does not execute the release.
 
+<!--Device-OH_NN_ReturnCode OH_NNTensor_Destroy(NN_Tensor **tensor)--><!--Device-OH_NN_ReturnCode OH_NNTensor_Destroy(NN_Tensor **tensor)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 11
@@ -882,6 +942,8 @@ NN_TensorDesc *OH_NNTensor_GetTensorDesc(const NN_Tensor *tensor)
 **Description**
 
 Gets the [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) instance of a [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md).<br> Call this method to obtain the inner [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) instance pointer of the specified [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md) instance. You can get various types of the tensor attributes such as name/format/data type/shape from the returned [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) instance.<br> You should not destory the returned [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) instance because it points to the inner instance of [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md). Otherwise, a menory corruption of double free will occur when [OH_NNTensor_Destroy](capi-neural-network-core-h.md#oh_nntensor_destroy) is called.<br> if <b>tensor</b> is a null pointer, this method will return null pointer.
+
+<!--Device-NN_TensorDesc *OH_NNTensor_GetTensorDesc(const NN_Tensor *tensor)--><!--Device-NN_TensorDesc *OH_NNTensor_GetTensorDesc(const NN_Tensor *tensor)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -909,6 +971,8 @@ void *OH_NNTensor_GetDataBuffer(const NN_Tensor *tensor)
 
 Gets the data buffer of a [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md).<br> You can read/write data from/to the tensor data buffer. The buffer is mapped from a shared memory on device, so the device dirver will get the tensor data directly by this "zero-copy" way.<br> Note that the real tensor data only uses the segment [offset, size) of the shared memory. The offset can be got by [OH_NNTensor_GetOffset](capi-neural-network-core-h.md#oh_nntensor_getoffset) and the size can be got by [OH_NNTensor_GetSize](capi-neural-network-core-h.md#oh_nntensor_getsize).<br> if <b>tensor</b> is a null pointer, this method will return null pointer.
 
+<!--Device-void *OH_NNTensor_GetDataBuffer(const NN_Tensor *tensor)--><!--Device-void *OH_NNTensor_GetDataBuffer(const NN_Tensor *tensor)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 11
@@ -934,6 +998,8 @@ OH_NN_ReturnCode OH_NNTensor_GetFd(const NN_Tensor *tensor, int *fd)
 **Description**
 
 Gets the file descriptor of the shared memory of a [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md).<br> The file descriptor <b>fd</b> corresponds to the shared memory of the tensor data, and can be resued by another [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md) through [OH_NNTensor_CreateWithFd](capi-neural-network-core-h.md#oh_nntensor_createwithfd).<br> if <b>tensor</b> or <b>fd</b> is a null pointer, this method will return error code.
+
+<!--Device-OH_NN_ReturnCode OH_NNTensor_GetFd(const NN_Tensor *tensor, int *fd)--><!--Device-OH_NN_ReturnCode OH_NNTensor_GetFd(const NN_Tensor *tensor, int *fd)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -962,6 +1028,8 @@ OH_NN_ReturnCode OH_NNTensor_GetSize(const NN_Tensor *tensor, size_t *size)
 
 Gets the size of the shared memory of a [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md).<br> The <b>size</b> corresponds to the shared memory of the tensor data, and can be resued by another [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md) through [OH_NNTensor_CreateWithFd](capi-neural-network-core-h.md#oh_nntensor_createwithfd).<br> The <b>size</b> is as same as the argument <b>size</b> of [OH_NNTensor_CreateWithSize](capi-neural-network-core-h.md#oh_nntensor_createwithsize) and [OH_NNTensor_CreateWithFd](capi-neural-network-core-h.md#oh_nntensor_createwithfd). But for a tensor created by [OH_NNTensor_Create](capi-neural-network-core-h.md#oh_nntensor_create), it equals to the tensor byte size.<br> Note that the real tensor data only uses the segment [offset, size) of the shared memory. The offset can be got by [OH_NNTensor_GetOffset](capi-neural-network-core-h.md#oh_nntensor_getoffset) and the size can be got by [OH_NNTensor_GetSize](capi-neural-network-core-h.md#oh_nntensor_getsize).<br> if <b>tensor</b> or <b>size</b> is a null pointer, this method will return error code.
 
+<!--Device-OH_NN_ReturnCode OH_NNTensor_GetSize(const NN_Tensor *tensor, size_t *size)--><!--Device-OH_NN_ReturnCode OH_NNTensor_GetSize(const NN_Tensor *tensor, size_t *size)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 11
@@ -988,6 +1056,8 @@ OH_NN_ReturnCode OH_NNTensor_GetOffset(const NN_Tensor *tensor, size_t *offset)
 **Description**
 
 Get the data offset of a tensor.<br> The <b>offset</b> corresponds to the shared memory of the tensor data, and can be resued by another [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md) through [OH_NNTensor_CreateWithFd](capi-neural-network-core-h.md#oh_nntensor_createwithfd).<br> Note that the real tensor data only uses the segment [offset, size) of the shared memory. The offset can be got by [OH_NNTensor_GetOffset](capi-neural-network-core-h.md#oh_nntensor_getoffset) and the size can be got by [OH_NNTensor_GetSize](capi-neural-network-core-h.md#oh_nntensor_getsize).<br> if <b>tensor</b> or <b>offset</b> is a null pointer, this method will return error code.
+
+<!--Device-OH_NN_ReturnCode OH_NNTensor_GetOffset(const NN_Tensor *tensor, size_t *offset)--><!--Device-OH_NN_ReturnCode OH_NNTensor_GetOffset(const NN_Tensor *tensor, size_t *offset)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -1016,6 +1086,8 @@ OH_NNExecutor *OH_NNExecutor_Construct(OH_NNCompilation *compilation)
 
 Creates an executor instance of the [OH_NNExecutor](capi-neuralnetworkruntime-oh-nnexecutor.md) type.<br> This method constructs a model inference executor associated with the device based on the passed compilation. <br> After the [OH_NNExecutor](capi-neuralnetworkruntime-oh-nnexecutor.md) instance is created, you can release the [OH_NNCompilation](capi-neuralnetworkruntime-oh-nncompilation.md) instance if you do not need to create any other executors.
 
+<!--Device-OH_NNExecutor *OH_NNExecutor_Construct(OH_NNCompilation *compilation)--><!--Device-OH_NNExecutor *OH_NNExecutor_Construct(OH_NNCompilation *compilation)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
@@ -1041,6 +1113,8 @@ OH_NN_ReturnCode OH_NNExecutor_GetOutputShape(OH_NNExecutor *executor, uint32_t 
 **Description**
 
 Obtains the dimension information about the output tensor.<br> After [OH_NNExecutor_Run](capi-neural-network-runtime-h.md#oh_nnexecutor_run) is called to complete a single inference, call this method to obtain the specified output dimension information and number of dimensions. It is commonly used in dynamic shape input and output scenarios.<br> If the <b>outputIndex</b> is greater than or equal to the output tensor number, this method will return error code. The output tensor number can be got by [OH_NNExecutor_GetOutputCount](capi-neural-network-core-h.md#oh_nnexecutor_getoutputcount).<br> As an output parameter, <b>*shape</b> must be a null pointer, otherwise the method will return an error code. Fou example, you should define int32_t* tensorShape = NULL, and pass &tensorShape as the argument of <b>shape</b>.<br> You do not need to release the memory of <b>shape</b>. It will be released when <b>executor</b> is destroied.
+
+<!--Device-OH_NN_ReturnCode OH_NNExecutor_GetOutputShape(OH_NNExecutor *executor, uint32_t outputIndex, int32_t **shape, uint32_t *shapeLength)--><!--Device-OH_NN_ReturnCode OH_NNExecutor_GetOutputShape(OH_NNExecutor *executor, uint32_t outputIndex, int32_t **shape, uint32_t *shapeLength)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -1071,6 +1145,8 @@ void OH_NNExecutor_Destroy(OH_NNExecutor **executor)
 
 Destroys an executor instance to release the memory occupied by the executor.<br> This method needs to be called to release the executor instance created by calling [OH_NNExecutor_Construct](capi-neural-network-core-h.md#oh_nnexecutor_construct). Otherwise, the memory leak will occur. <br> If <b>executor</b> or <b>*executor</b> is a null pointer, this method only prints warning logs and does not execute the release.
 
+<!--Device-void OH_NNExecutor_Destroy(OH_NNExecutor **executor)--><!--Device-void OH_NNExecutor_Destroy(OH_NNExecutor **executor)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
@@ -1090,6 +1166,8 @@ OH_NN_ReturnCode OH_NNExecutor_GetInputCount(const OH_NNExecutor *executor, size
 **Description**
 
 Gets the input tensor count.<br> You can get the input tensor count from the executor, and then create an input tensor descriptor with its index by [OH_NNExecutor_CreateInputTensorDesc](capi-neural-network-core-h.md#oh_nnexecutor_createinputtensordesc).
+
+<!--Device-OH_NN_ReturnCode OH_NNExecutor_GetInputCount(const OH_NNExecutor *executor, size_t *inputCount)--><!--Device-OH_NN_ReturnCode OH_NNExecutor_GetInputCount(const OH_NNExecutor *executor, size_t *inputCount)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -1118,6 +1196,8 @@ OH_NN_ReturnCode OH_NNExecutor_GetOutputCount(const OH_NNExecutor *executor, siz
 
 Gets the output tensor count.<br> You can get the output tensor count from the executor, and then create an output tensor descriptor with its index by [OH_NNExecutor_CreateOutputTensorDesc](capi-neural-network-core-h.md#oh_nnexecutor_createoutputtensordesc).
 
+<!--Device-OH_NN_ReturnCode OH_NNExecutor_GetOutputCount(const OH_NNExecutor *executor, size_t *outputCount)--><!--Device-OH_NN_ReturnCode OH_NNExecutor_GetOutputCount(const OH_NNExecutor *executor, size_t *outputCount)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 11
@@ -1144,6 +1224,8 @@ NN_TensorDesc *OH_NNExecutor_CreateInputTensorDesc(const OH_NNExecutor *executor
 **Description**
 
 Creates an input tensor descriptor with its index.<br> The input tensor descriptor contains all attributes of the input tensor. If the <b>index</b> is greater than or equal to the input tensor number, this method will return error code. The input tensor number can be got by [OH_NNExecutor_GetInputCount](capi-neural-network-core-h.md#oh_nnexecutor_getinputcount).
+
+<!--Device-NN_TensorDesc *OH_NNExecutor_CreateInputTensorDesc(const OH_NNExecutor *executor, size_t index)--><!--Device-NN_TensorDesc *OH_NNExecutor_CreateInputTensorDesc(const OH_NNExecutor *executor, size_t index)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -1172,6 +1254,8 @@ NN_TensorDesc *OH_NNExecutor_CreateOutputTensorDesc(const OH_NNExecutor *executo
 
 Creates an output tensor descriptor with its index.<br> The output tensor descriptor contains all attributes of the output tensor. If the <b>index</b> is greater than or equal to the output tensor number, this method will return error code. The output tensor number can be got by [OH_NNExecutor_GetOutputCount](capi-neural-network-core-h.md#oh_nnexecutor_getoutputcount).
 
+<!--Device-NN_TensorDesc *OH_NNExecutor_CreateOutputTensorDesc(const OH_NNExecutor *executor, size_t index)--><!--Device-NN_TensorDesc *OH_NNExecutor_CreateOutputTensorDesc(const OH_NNExecutor *executor, size_t index)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 11
@@ -1198,6 +1282,8 @@ OH_NN_ReturnCode OH_NNExecutor_GetInputDimRange(const OH_NNExecutor *executor, s
 **Description**
 
 Gets the dimension ranges of an input tensor.<br> The supported dimension ranges of an input tensor with dynamic shape may be different among various devices. You can call this method to get the dimension ranges of the input tensor supported by the device. <b>*minInputDims</b> contains the minimum demensions of the input tensor, and <b>*maxInputDims</b> contains the maximum, e.g. if an input tensor has dynamic shape [-1, -1, -1, 3], its <b>*minInputDims</b> may be [1, 10, 10, 3] and <b>*maxInputDims</b> may be [100, 1024, 1024, 3] on the device.<br> If the <b>index</b> is greater than or equal to the input tensor number, this method will return error code. The input tensor number can be got by [OH_NNExecutor_GetInputCount](capi-neural-network-core-h.md#oh_nnexecutor_getinputcount).<br> As an output parameter, <b>*minInputDims</b> or <b>*maxInputDims</b> must be a null pointer, otherwise the method will return an error code. For example, you should define int32_t* minInDims = NULL, and pass &minInDims as the argument of <b>minInputDims</b>.<br> You do not need to release the memory of <b>*minInputDims</b> or <b>*maxInputDims</b>. It will be released when <b>executor</b> is destroied.
+
+<!--Device-OH_NN_ReturnCode OH_NNExecutor_GetInputDimRange(const OH_NNExecutor *executor, size_t index, size_t **minInputDims, size_t **maxInputDims, size_t *shapeLength)--><!--Device-OH_NN_ReturnCode OH_NNExecutor_GetInputDimRange(const OH_NNExecutor *executor, size_t index, size_t **minInputDims, size_t **maxInputDims, size_t *shapeLength)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -1229,6 +1315,8 @@ OH_NN_ReturnCode OH_NNExecutor_SetOnRunDone(OH_NNExecutor *executor, NN_OnRunDon
 
 Sets the callback function handle for the post-process when the asynchronous execution has been done.<br> The definition fo the callback function: [NN_OnRunDone](capi-neural-network-runtime-type-h.md#nn_onrundone).
 
+<!--Device-OH_NN_ReturnCode OH_NNExecutor_SetOnRunDone(OH_NNExecutor *executor, NN_OnRunDone onRunDone)--><!--Device-OH_NN_ReturnCode OH_NNExecutor_SetOnRunDone(OH_NNExecutor *executor, NN_OnRunDone onRunDone)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 11
@@ -1256,6 +1344,8 @@ OH_NN_ReturnCode OH_NNExecutor_SetOnServiceDied(OH_NNExecutor *executor, NN_OnSe
 
 Sets the callback function handle for the post-process when the device driver service is dead during asynchronous execution.<br> The definition fo the callback function: [NN_OnServiceDied](capi-neural-network-runtime-type-h.md#nn_onservicedied).
 
+<!--Device-OH_NN_ReturnCode OH_NNExecutor_SetOnServiceDied(OH_NNExecutor *executor, NN_OnServiceDied onServiceDied)--><!--Device-OH_NN_ReturnCode OH_NNExecutor_SetOnServiceDied(OH_NNExecutor *executor, NN_OnServiceDied onServiceDied)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 11
@@ -1282,6 +1372,8 @@ OH_NN_ReturnCode OH_NNExecutor_RunSync(OH_NNExecutor *executor, NN_Tensor *input
 **Description**
 
 Synchronous execution of the model inference.<br> Input and output tensors should be created first by [OH_NNTensor_Create](capi-neural-network-core-h.md#oh_nntensor_create), [OH_NNTensor_CreateWithSize](capi-neural-network-core-h.md#oh_nntensor_createwithsize) or [OH_NNTensor_CreateWithFd](capi-neural-network-core-h.md#oh_nntensor_createwithfd). And then the input tensors data which is got by [OH_NNTensor_GetDataBuffer](capi-neural-network-core-h.md#oh_nntensor_getdatabuffer) must be filled. The executor will then yield out the results by inference execution and fill them into output tensors data for you to read. <br> In the case of dynamic shape, you can get the real output shape directly by [OH_NNExecutor_GetOutputShape](capi-neural-network-core-h.md#oh_nnexecutor_getoutputshape), or you can create a tensor descriptor from an output tensor by [OH_NNTensor_GetTensorDesc](capi-neural-network-core-h.md#oh_nntensor_gettensordesc), and then read its real shape by [OH_NNTensorDesc_GetShape](capi-neural-network-core-h.md#oh_nntensordesc_getshape).
+
+<!--Device-OH_NN_ReturnCode OH_NNExecutor_RunSync(OH_NNExecutor *executor, NN_Tensor *inputTensor[], size_t inputCount, NN_Tensor *outputTensor[], size_t outputCount)--><!--Device-OH_NN_ReturnCode OH_NNExecutor_RunSync(OH_NNExecutor *executor, NN_Tensor *inputTensor[], size_t inputCount, NN_Tensor *outputTensor[], size_t outputCount)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -1312,6 +1404,8 @@ OH_NN_ReturnCode OH_NNExecutor_RunAsync(OH_NNExecutor *executor, NN_Tensor *inpu
 **Description**
 
 Asynchronous execution of the model inference.<br> Input and output tensors should be created first by [OH_NNTensor_Create](capi-neural-network-core-h.md#oh_nntensor_create), [OH_NNTensor_CreateWithSize](capi-neural-network-core-h.md#oh_nntensor_createwithsize) or [OH_NNTensor_CreateWithFd](capi-neural-network-core-h.md#oh_nntensor_createwithfd). And then the input tensors data which is got by [OH_NNTensor_GetDataBuffer](capi-neural-network-core-h.md#oh_nntensor_getdatabuffer) must be filled. The executor will yield out the results by inference execution and fill them into output tensors data for you to read.<br> In the case of dynamic shape, you can get the real output shape directly by [OH_NNExecutor_GetOutputShape](capi-neural-network-core-h.md#oh_nnexecutor_getoutputshape), or you can create a tensor descriptor from an output tensor by [OH_NNTensor_GetTensorDesc](capi-neural-network-core-h.md#oh_nntensor_gettensordesc), and then read its real shape by [OH_NNTensorDesc_GetShape](capi-neural-network-core-h.md#oh_nntensordesc_getshape).<br> The method is non-blocked and will return immediately.<br> The callback function handles are set by [OH_NNExecutor_SetOnRunDone](capi-neural-network-core-h.md#oh_nnexecutor_setonrundone) and [OH_NNExecutor_SetOnServiceDied](capi-neural-network-core-h.md#oh_nnexecutor_setonservicedied). The inference results and error code can be got by [NN_OnRunDone](capi-neural-network-runtime-type-h.md#nn_onrundone). And you can deal with the abnormal termination of device driver service during asynchronous execution by [NN_OnServiceDied](capi-neural-network-runtime-type-h.md#nn_onservicedied).<br> If the execution time reaches the <b>timeout</b>, the execution will be terminated with no outputs, and the <b>errCode<b> returned in callback function [NN_OnRunDone](capi-neural-network-runtime-type-h.md#nn_onrundone) will be [OH_NN_TIMEOUT](capi-neural-network-runtime-type-h.md#oh_nn_returncode).<br> The <b>userData</b> is asynchronous execution identifier and will be returned as the first parameter of the callback function. You can input any value you want as long as it can identify different asynchronous executions.
+
+<!--Device-OH_NN_ReturnCode OH_NNExecutor_RunAsync(OH_NNExecutor *executor, NN_Tensor *inputTensor[], size_t inputCount, NN_Tensor *outputTensor[], size_t outputCount, int32_t timeout, void *userData)--><!--Device-OH_NN_ReturnCode OH_NNExecutor_RunAsync(OH_NNExecutor *executor, NN_Tensor *inputTensor[], size_t inputCount, NN_Tensor *outputTensor[], size_t outputCount, int32_t timeout, void *userData)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -1345,6 +1439,8 @@ OH_NN_ReturnCode OH_NNDevice_GetAllDevicesID(const size_t **allDevicesID, uint32
 
 Obtains the IDs of all devices connected.<br> Each device has an unique and fixed ID. This method returns device IDs on the current device through the uint32_t array.<br> Device IDs are returned through the size_t array. Each element of the array is the ID of a single device.<br> The array memory is managed inside, so you do not need to care about it. The data pointer is valid before this method is called next time.
 
+<!--Device-OH_NN_ReturnCode OH_NNDevice_GetAllDevicesID(const size_t **allDevicesID, uint32_t *deviceCount)--><!--Device-OH_NN_ReturnCode OH_NNDevice_GetAllDevicesID(const size_t **allDevicesID, uint32_t *deviceCount)-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
@@ -1371,6 +1467,8 @@ OH_NN_ReturnCode OH_NNDevice_GetName(size_t deviceID, const char **name)
 **Description**
 
 Obtains the name of the specified device.<br> <b>deviceID</b> specifies the device whose name will be obtained. The device ID needs to be obtained by calling [OH_NNDevice_GetAllDevicesID](capi-neural-network-core-h.md#oh_nndevice_getalldevicesid). If it is 0, the first device in the current device list will be used by default.<br> The value of <b>*name</b> is a C-style string ended with <b>'\0'</b>. <b>*name</b> must be a null pointer. Otherwise, [OH_NN_INVALID_PARAMETER](capi-neural-network-runtime-type-h.md#oh_nn_returncode) is returned. Fou example, you should define char* deviceName = NULL, and pass &deviceName as the argument of <b>name</b>.
+
+<!--Device-OH_NN_ReturnCode OH_NNDevice_GetName(size_t deviceID, const char **name)--><!--Device-OH_NN_ReturnCode OH_NNDevice_GetName(size_t deviceID, const char **name)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
@@ -1402,6 +1500,8 @@ Obtains the type information of the specified device.<br> <b>deviceID</b> specif
 - <b>OH_NN_GPU</b>: GPU device.
 - <b>OH_NN_ACCELERATOR</b>: machine learning dedicated accelerator.
 - <b>OH_NN_OTHERS</b>: other hardware types.
+
+<!--Device-OH_NN_ReturnCode OH_NNDevice_GetType(size_t deviceID, OH_NN_DeviceType *deviceType)--><!--Device-OH_NN_ReturnCode OH_NNDevice_GetType(size_t deviceID, OH_NN_DeviceType *deviceType)-End-->
 
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 

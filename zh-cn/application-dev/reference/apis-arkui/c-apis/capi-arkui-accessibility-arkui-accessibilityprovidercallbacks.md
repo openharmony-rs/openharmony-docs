@@ -8,11 +8,13 @@ struct ArkUI_AccessibilityProviderCallbacks {...}
 
 第三方provider回调函数结构定义，需要第三方平台实现的相关函数，通过OH_ArkUI_AccessibilityProviderRegisterCallback注册到系统侧。 适用于读屏软件、语音控制、开关控制等无障碍辅助场景，第三方平台通过实现这些回调响应系统的无障碍查询和操作请求。所有的回调函数执行线程为IPC线程，非UI线程。
 
+<!--Device-struct ArkUI_AccessibilityProviderCallbacks {...}--><!--Device-struct ArkUI_AccessibilityProviderCallbacks {...}-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
 
-**相关模块：** [ArkUI_Accessibility](capi-others-arkui-accessibility.md)
+**相关模块：** [ArkUI_Accessibility](capi-arkui-arkui-accessibility.md)
 
 **所在头文件：** [native_interface_accessibility.h](capi-native-interface-accessibility-h.md)
 
@@ -42,6 +44,8 @@ int32_t (*findAccessibilityNodeInfosById)(int64_t elementId, ArkUI_Accessibility
 
 基于指定的节点，根据搜索模式查询对应的节点信息。 由接入方平台实现的回调函数，注册给系统侧调用。
 
+<!--Device-int32_t (*findAccessibilityNodeInfosById)(int64_t elementId, ArkUI_AccessibilitySearchMode mode, int32_t requestId, ArkUI_AccessibilityElementInfoList* elementList)--><!--Device-int32_t (*findAccessibilityNodeInfosById)(int64_t elementId, ArkUI_AccessibilitySearchMode mode, int32_t requestId, ArkUI_AccessibilityElementInfoList* elementList)-End-->
+
 **参数：**
 
 | 参数项 | 描述 |
@@ -66,6 +70,8 @@ int32_t (*findAccessibilityNodeInfosByText)(int64_t elementId, const char* text,
 **描述：**
 
 基于指定的节点，查询满足指定文本内容的节点信息。 由接入方平台实现的回调函数，注册给系统侧调用。
+
+<!--Device-int32_t (*findAccessibilityNodeInfosByText)(int64_t elementId, const char* text, int32_t requestId, ArkUI_AccessibilityElementInfoList* elementList)--><!--Device-int32_t (*findAccessibilityNodeInfosByText)(int64_t elementId, const char* text, int32_t requestId, ArkUI_AccessibilityElementInfoList* elementList)-End-->
 
 **参数：**
 
@@ -92,6 +98,8 @@ int32_t (*findFocusedAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFo
 
 从指定节点出发，根据焦点类型查找当前已获得焦点的节点，并将该节点元素信息返回。 由接入方平台实现的回调函数，注册给系统侧调用。
 
+<!--Device-int32_t (*findFocusedAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFocusType focusType, int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)--><!--Device-int32_t (*findFocusedAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFocusType focusType, int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)-End-->
+
 **参数：**
 
 | 参数项 | 描述 |
@@ -116,6 +124,8 @@ int32_t (*findNextFocusAccessibilityNode)(int64_t elementId, ArkUI_Accessibility
 **描述：**
 
 根据参考节点和查找方向，查询下一个可以聚焦的节点。 由接入方平台实现的回调函数，注册给系统侧调用。
+
+<!--Device-int32_t (*findNextFocusAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFocusMoveDirection direction, int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)--><!--Device-int32_t (*findNextFocusAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFocusMoveDirection direction, int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)-End-->
 
 **参数：**
 
@@ -142,6 +152,8 @@ int32_t (*executeAccessibilityAction)(int64_t elementId, ArkUI_Accessibility_Act
 
 在指定的无障碍节点上执行无障碍操作。 例如，当读屏软件用户通过语音指令或开关控制触发点击、滚动、选择等操作时，系统通过此回调通知第三方平台执行相应动作。由接入方平台实现的回调函数，注册给系统侧调用。
 
+<!--Device-int32_t (*executeAccessibilityAction)(int64_t elementId, ArkUI_Accessibility_ActionType action, ArkUI_AccessibilityActionArguments *actionArguments, int32_t requestId)--><!--Device-int32_t (*executeAccessibilityAction)(int64_t elementId, ArkUI_Accessibility_ActionType action, ArkUI_AccessibilityActionArguments *actionArguments, int32_t requestId)-End-->
+
 **参数：**
 
 | 参数项 | 描述 |
@@ -167,6 +179,8 @@ int32_t (*clearFocusedFocusAccessibilityNode)()
 
 清除当前焦点节点的焦点状态。 例如，当无障碍服务需要重置焦点高亮或用户切换到其他交互区域时触发。由接入方平台实现的回调函数，注册给系统侧调用。
 
+<!--Device-int32_t (*clearFocusedFocusAccessibilityNode)()--><!--Device-int32_t (*clearFocusedFocusAccessibilityNode)()-End-->
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -182,6 +196,8 @@ int32_t (*getAccessibilityNodeCursorPosition)(int64_t elementId, int32_t request
 **描述：**
 
 查询指定节点的当前光标位置。 例如，当读屏软件需要播报光标位置或语音输入法定位文本插入点时触发。由接入方平台实现的回调函数，注册给系统侧调用。
+
+<!--Device-int32_t (*getAccessibilityNodeCursorPosition)(int64_t elementId, int32_t requestId, int32_t* index)--><!--Device-int32_t (*getAccessibilityNodeCursorPosition)(int64_t elementId, int32_t requestId, int32_t* index)-End-->
 
 **参数：**
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceSamplerYcbcrConversionFeatures {...}--><!--Device-struct VkPhysicalDeviceSamplerYcbcrConversionFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

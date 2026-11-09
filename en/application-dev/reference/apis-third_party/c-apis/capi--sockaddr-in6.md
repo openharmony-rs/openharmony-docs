@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct sockaddr_in6 {...}--><!--Device-struct sockaddr_in6 {...}-End-->
+
 ## Summary
 
 ### Member variables

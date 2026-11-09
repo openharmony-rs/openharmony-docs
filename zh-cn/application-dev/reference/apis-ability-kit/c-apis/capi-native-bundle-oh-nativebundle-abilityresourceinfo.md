@@ -8,11 +8,13 @@ struct OH_NativeBundle_AbilityResourceInfo
 
 表示Ability资源信息，用于存储和传递Ability的基本配置信息，包括名称、类型等属性，适用于Native层查询和管理Ability资源的场景。
 
+<!--Device-struct OH_NativeBundle_AbilityResourceInfo--><!--Device-struct OH_NativeBundle_AbilityResourceInfo-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 21
 
-**相关模块：** [Native_Bundle](capi-others-native-bundle.md)
+**相关模块：** [Native_Bundle](capi-ability-kit-native-bundle.md)
 
 **所在头文件：** [ability_resource_info.h](capi-ability-resource-info-h.md)
 

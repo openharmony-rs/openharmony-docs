@@ -52,6 +52,8 @@ enum UsbDdkErrCode
 
 USB DDK 错误码定义。
 
+<!--Device-UsbDdkErrCode--><!--Device-UsbDdkErrCode-End-->
+
 **系统能力：** SystemCapability.Driver.USB.Extension
 
 **起始版本：** 10

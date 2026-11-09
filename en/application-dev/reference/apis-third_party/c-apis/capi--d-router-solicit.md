@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct d_router_solicit {...}--><!--Device-struct d_router_solicit {...}-End-->
+
 ## Summary
 
 ### Member variables

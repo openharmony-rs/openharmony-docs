@@ -8,11 +8,13 @@ struct Camera_FoldStatusInfo {...}
 
 The struct describes the fold status information of the camera.
 
+<!--Device-struct Camera_FoldStatusInfo {...}--><!--Device-struct Camera_FoldStatusInfo {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 13
 
-**Related module**: [OH_Camera](capi-others-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **Header file**: [camera.h](capi-camera-h.md)
 

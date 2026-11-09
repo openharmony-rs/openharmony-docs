@@ -8,11 +8,13 @@ typedef struct OH_VObject {...} OH_VObject
 
 表示允许的数据字段类型。
 
+<!--Device-typedef struct OH_VObject {...} OH_VObject--><!--Device-typedef struct OH_VObject {...} OH_VObject-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 10
 
-**相关模块：** [RDB](capi-others-rdb.md)
+**相关模块：** [RDB](capi-arkdata-rdb.md)
 
 **所在头文件：** [oh_value_object.h](capi-oh-value-object-h.md)
 
@@ -47,6 +49,8 @@ int (*putInt64)(OH_VObject *valueObject, int64_t *value, uint32_t count)
 
 将int64类型的单个参数或者数组转换为OH_VObject类型的值。
 
+<!--Device-int (*putInt64)(OH_VObject *valueObject, int64_t *value, uint32_t count)--><!--Device-int (*putInt64)(OH_VObject *valueObject, int64_t *value, uint32_t count)-End-->
+
 **起始版本：** 10
 
 **参数：**
@@ -77,6 +81,8 @@ int (*putDouble)(OH_VObject *valueObject, double *value, uint32_t count)
 **描述：**
 
 将double类型的单个参数或者数组转换为OH_VObject类型的值。
+
+<!--Device-int (*putDouble)(OH_VObject *valueObject, double *value, uint32_t count)--><!--Device-int (*putDouble)(OH_VObject *valueObject, double *value, uint32_t count)-End-->
 
 **起始版本：** 10
 
@@ -109,6 +115,8 @@ int (*putText)(OH_VObject *valueObject, const char *value)
 
 将char *类型的字符数组转换为OH_VObject类型的值。
 
+<!--Device-int (*putText)(OH_VObject *valueObject, const char *value)--><!--Device-int (*putText)(OH_VObject *valueObject, const char *value)-End-->
+
 **起始版本：** 10
 
 **参数：**
@@ -138,6 +146,8 @@ int (*putTexts)(OH_VObject *valueObject, const char **value, uint32_t count)
 **描述：**
 
 将char *类型的字符串数组转换为OH_VObject类型的值。
+
+<!--Device-int (*putTexts)(OH_VObject *valueObject, const char **value, uint32_t count)--><!--Device-int (*putTexts)(OH_VObject *valueObject, const char **value, uint32_t count)-End-->
 
 **起始版本：** 10
 
@@ -169,6 +179,8 @@ int (*destroy)(OH_VObject *valueObject)
 **描述：**
 
 销毁OH_VObject对象，并回收该对象占用的内存。
+
+<!--Device-int (*destroy)(OH_VObject *valueObject)--><!--Device-int (*destroy)(OH_VObject *valueObject)-End-->
 
 **起始版本：** 10
 

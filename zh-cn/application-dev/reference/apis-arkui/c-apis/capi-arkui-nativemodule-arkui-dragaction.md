@@ -8,11 +8,13 @@ typedef struct ArkUI_DragAction ArkUI_DragAction
 
 拖拽行为，用于主动发起拖拽。
 
+<!--Device-typedef struct ArkUI_DragAction ArkUI_DragAction--><!--Device-typedef struct ArkUI_DragAction ArkUI_DragAction-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [drag_and_drop.h](capi-drag-and-drop-h.md)
 

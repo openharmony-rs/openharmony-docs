@@ -8,11 +8,13 @@ typedef struct ArkUI_UIInputEvent ArkUI_UIInputEvent
 
 Represents a UI input event in ArkUI. The event APIs in **ArkUI_EventModule** pass input event data to callbacks through the object. You can use query APIs to obtain event information, which is suitable for scenarios of recognizing or responding to user input events.
 
+<!--Device-typedef struct ArkUI_UIInputEvent ArkUI_UIInputEvent--><!--Device-typedef struct ArkUI_UIInputEvent ArkUI_UIInputEvent-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
-**Related module**: [ArkUI_EventModule](capi-others-arkui-eventmodule.md)
+**Related module**: [ArkUI_EventModule](capi-arkui-arkui-eventmodule.md)
 
 **Header file**: [ui_input_event.h](capi-ui-input-event-h.md)
 

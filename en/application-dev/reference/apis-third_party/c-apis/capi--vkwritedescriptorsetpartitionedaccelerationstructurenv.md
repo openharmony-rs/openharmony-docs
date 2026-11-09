@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkWriteDescriptorSetPartitionedAccelerationStructureNV {...}--><!--Device-struct VkWriteDescriptorSetPartitionedAccelerationStructureNV {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -8,11 +8,13 @@ typedef struct OH_MIDIDeviceInformation {...} OH_MIDIDeviceInformation
 
 设备信息结构体，用于存储MIDI设备的详细信息，包括设备唯一标识符、设备类型（如USB、BLE）、 支持的MIDI协议、设备名称、厂商ID、产品ID及物理地址等。适用于在MIDI设备枚举、识别和连接管理等场景中， 获取并传递设备的完整属性信息。
 
+<!--Device-typedef struct OH_MIDIDeviceInformation {...} OH_MIDIDeviceInformation--><!--Device-typedef struct OH_MIDIDeviceInformation {...} OH_MIDIDeviceInformation-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
 **起始版本：** 24
 
-**相关模块：** [OHMIDI](capi-others-ohmidi.md)
+**相关模块：** [OHMIDI](capi-audio-kit-ohmidi.md)
 
 **所在头文件：** [native_midi_base.h](capi-native-midi-base-h.md)
 

@@ -40,6 +40,8 @@ uint32_t OH_NetStack_CertVerification(const struct NetStack_CertBlob *cert, cons
 
 Provides certificate chain verification APIs for external systems.
 
+<!--Device-uint32_t OH_NetStack_CertVerification(const struct NetStack_CertBlob *cert, const struct NetStack_CertBlob *caCert)--><!--Device-uint32_t OH_NetStack_CertVerification(const struct NetStack_CertBlob *cert, const struct NetStack_CertBlob *caCert)-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 11
@@ -66,6 +68,8 @@ int32_t OH_NetStack_GetPinSetForHostName(const char *hostname, NetStack_Certific
 **Description**
 
 Obtains the certificate lock information.
+
+<!--Device-int32_t OH_NetStack_GetPinSetForHostName(const char *hostname, NetStack_CertificatePinning *pin)--><!--Device-int32_t OH_NetStack_GetPinSetForHostName(const char *hostname, NetStack_CertificatePinning *pin)-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -94,6 +98,8 @@ int32_t OH_NetStack_GetCertificatesForHostName(const char *hostname, NetStack_Ce
 
 Obtains the certificate information.
 
+<!--Device-int32_t OH_NetStack_GetCertificatesForHostName(const char *hostname, NetStack_Certificates *certs)--><!--Device-int32_t OH_NetStack_GetCertificatesForHostName(const char *hostname, NetStack_Certificates *certs)-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 12
@@ -121,6 +127,8 @@ void OH_Netstack_DestroyCertificatesContent(NetStack_Certificates *certs)
 
 Releases the certificate content.
 
+<!--Device-void OH_Netstack_DestroyCertificatesContent(NetStack_Certificates *certs)--><!--Device-void OH_Netstack_DestroyCertificatesContent(NetStack_Certificates *certs)-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 12
@@ -140,6 +148,8 @@ int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)
 **Description**
 
 Boolean value indicating whether plaintext HTTP is allowed.
+
+<!--Device-int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)--><!--Device-int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -169,6 +179,8 @@ int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *i
 
 Boolean value indicating whether host name–based plaintext HTTP is allowed.
 
+<!--Device-int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *isCleartextPermitted)--><!--Device-int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *isCleartextPermitted)-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Required permission**: ohos.permission.INTERNET
@@ -197,6 +209,8 @@ int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *compo
 **Description**
 
 Checks whether plaintext HTTP interception is enabled.
+
+<!--Device-int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *componentCfg)--><!--Device-int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *componentCfg)-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -229,6 +243,8 @@ Creates and verifies a sorted certificate chain.
 >
 > After use, you must call [OH_NetStack_FreeCertChain](capi-net-ssl-c-h.md#oh_netstack_freecertchain) to release the allocated memory pointed by outSortedChain. Failure to do so will cause memory leaks.
 
+<!--Device-uint32_t OH_NetStack_CreateAndVerifySortedCertChain(const struct NetStack_CertBlob *cert, size_t certCount, const struct NetStack_CertBlob *caCert, const char *hostname, struct NetStack_CertBlob **outSortedChain, size_t *outSortedCount)--><!--Device-uint32_t OH_NetStack_CreateAndVerifySortedCertChain(const struct NetStack_CertBlob *cert, size_t certCount, const struct NetStack_CertBlob *caCert, const char *hostname, struct NetStack_CertBlob **outSortedChain, size_t *outSortedCount)-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 26.0.0
@@ -259,6 +275,8 @@ void OH_NetStack_FreeCertChain(struct NetStack_CertBlob *certChain, size_t certC
 **Description**
 
 Frees the certificate chain allocated by OH_NetStack_CreateAndVerifySortedCertChain.
+
+<!--Device-void OH_NetStack_FreeCertChain(struct NetStack_CertBlob *certChain, size_t certCount)--><!--Device-void OH_NetStack_FreeCertChain(struct NetStack_CertBlob *certChain, size_t certCount)-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 

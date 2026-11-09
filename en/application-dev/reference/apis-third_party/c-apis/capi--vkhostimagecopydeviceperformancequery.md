@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkHostImageCopyDevicePerformanceQuery {...}--><!--Device-struct VkHostImageCopyDevicePerformanceQuery {...}-End-->
+
 ## Summary
 
 ### Member variables

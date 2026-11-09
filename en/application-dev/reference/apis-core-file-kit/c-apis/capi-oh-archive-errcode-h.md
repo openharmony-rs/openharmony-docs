@@ -38,6 +38,8 @@ enum OH_Archive_ErrCode
 
 Error codes for the Archive.
 
+<!--Device-OH_Archive_ErrCode--><!--Device-OH_Archive_ErrCode-End-->
+
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
 **Since**: 26.0.0

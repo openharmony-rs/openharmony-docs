@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkStencilOpState {...}--><!--Device-struct VkStencilOpState {...}-End-->
+
 ## Summary
 
 ### Member variables

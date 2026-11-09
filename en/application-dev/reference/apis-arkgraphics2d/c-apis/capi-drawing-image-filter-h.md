@@ -37,6 +37,8 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlur(float sigmaX, float sig
 
 Creates an image filter with a given blur effect.
 
+<!--Device-OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlur(float sigmaX, float sigmaY, OH_Drawing_TileMode tileMode, OH_Drawing_ImageFilter* imageFilter)--><!--Device-OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlur(float sigmaX, float sigmaY, OH_Drawing_TileMode tileMode, OH_Drawing_ImageFilter* imageFilter)-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
@@ -65,6 +67,8 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlurWithCrop(float sigmaX, f
 **Description**
 
 Creates an image filter with a given blur effect.
+
+<!--Device-OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlurWithCrop(float sigmaX, float sigmaY, OH_Drawing_TileMode tileMode, OH_Drawing_ImageFilter* input, const OH_Drawing_Rect* rect)--><!--Device-OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlurWithCrop(float sigmaX, float sigmaY, OH_Drawing_TileMode tileMode, OH_Drawing_ImageFilter* input, const OH_Drawing_Rect* rect)-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -96,6 +100,8 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromColorFilter(OH_Drawing_C
 
 Creates an **OH_Drawing_ImageFilter** object with a color filter effect. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **colorFilter** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER**<br>is returned.
 
+<!--Device-OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromColorFilter(OH_Drawing_ColorFilter* colorFilter, OH_Drawing_ImageFilter* imageFilter)--><!--Device-OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromColorFilter(OH_Drawing_ColorFilter* colorFilter, OH_Drawing_ImageFilter* imageFilter)-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
@@ -122,6 +128,8 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateOffset(float x, float y, OH_
 **Description**
 
 Creates an offset filter to translate the input filter based on the specified vector.
+
+<!--Device-OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateOffset(float x, float y, OH_Drawing_ImageFilter* imageFilter)--><!--Device-OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateOffset(float x, float y, OH_Drawing_ImageFilter* imageFilter)-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -151,6 +159,8 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromShaderEffect(OH_Drawing_
 
 Creates an **ImageFilter** object based on a shader.
 
+<!--Device-OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromShaderEffect(OH_Drawing_ShaderEffect* shaderEffect)--><!--Device-OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromShaderEffect(OH_Drawing_ShaderEffect* shaderEffect)-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
@@ -176,6 +186,8 @@ void OH_Drawing_ImageFilterDestroy(OH_Drawing_ImageFilter* imageFilter)
 **Description**
 
 Destroys an **OH_Drawing_ImageFilter** object and reclaims the memory occupied by the object.
+
+<!--Device-void OH_Drawing_ImageFilterDestroy(OH_Drawing_ImageFilter* imageFilter)--><!--Device-void OH_Drawing_ImageFilterDestroy(OH_Drawing_ImageFilter* imageFilter)-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 

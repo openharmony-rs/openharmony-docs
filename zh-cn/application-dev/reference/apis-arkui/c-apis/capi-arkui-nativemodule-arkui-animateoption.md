@@ -8,11 +8,13 @@ typedef struct ArkUI_AnimateOption ArkUI_AnimateOption
 
 定义动画效果的配置参数，用于配置动画的相关属性。
 
+<!--Device-typedef struct ArkUI_AnimateOption ArkUI_AnimateOption--><!--Device-typedef struct ArkUI_AnimateOption ArkUI_AnimateOption-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [native_animate.h](capi-native-animate-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct file_handle {...}--><!--Device-struct file_handle {...}-End-->
+
 ## Summary
 
 ### Member variables

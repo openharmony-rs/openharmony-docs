@@ -8,11 +8,13 @@ typedef union TEE_Param {...} TEE_Param
 
 Enumerates the TEE parameter.
 
+<!--Device-typedef union TEE_Param {...} TEE_Param--><!--Device-typedef union TEE_Param {...} TEE_Param-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
-**Related module**: [TeeTrusted](capi-others-teetrusted.md)
+**Related module**: [TeeTrusted](capi-tee-kit-teetrusted.md)
 
 **Header file**: [tee_defines.h](capi-tee-defines-h.md)
 

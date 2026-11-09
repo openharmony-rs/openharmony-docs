@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineViewportCoarseSampleOrderStateCreateInfoNV {...}--><!--Device-struct VkPipelineViewportCoarseSampleOrderStateCreateInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

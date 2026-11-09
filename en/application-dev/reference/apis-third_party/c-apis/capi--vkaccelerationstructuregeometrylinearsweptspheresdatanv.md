@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkAccelerationStructureGeometryLinearSweptSpheresDataNV {...}--><!--Device-struct VkAccelerationStructureGeometryLinearSweptSpheresDataNV {...}-End-->
+
 ## Summary
 
 ### Member variables

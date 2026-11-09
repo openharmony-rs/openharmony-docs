@@ -8,11 +8,13 @@ typedef struct TEEC_Value {...} TEEC_Value
 
 Describes a parameter that carries small raw data passed by <b>value</b>.
 
+<!--Device-typedef struct TEEC_Value {...} TEEC_Value--><!--Device-typedef struct TEEC_Value {...} TEEC_Value-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
-**Related module**: [TeeClient](capi-others-teeclient.md)
+**Related module**: [TeeClient](capi-tee-kit-teeclient.md)
 
 **Header file**: [tee_client_type.h](capi-tee-client-type-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineViewportDepthClipControlCreateInfoEXT {...}--><!--Device-struct VkPipelineViewportDepthClipControlCreateInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

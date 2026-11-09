@@ -8,11 +8,13 @@ typedef struct OH_ArkUI_NativeModule_ImageCollection OH_ArkUI_NativeModule_Image
 
 声明ArkUI图像采集结果结构体。
 
+<!--Device-typedef struct OH_ArkUI_NativeModule_ImageCollection OH_ArkUI_NativeModule_ImageCollection--><!--Device-typedef struct OH_ArkUI_NativeModule_ImageCollection OH_ArkUI_NativeModule_ImageCollection-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.1.0
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [ui_info_collection.h](capi-ui-info-collection-h.md)
 

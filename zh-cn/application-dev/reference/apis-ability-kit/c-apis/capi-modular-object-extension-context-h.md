@@ -43,6 +43,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_GetBaseContext
 
 从ModularObjectExtensionAbility上下文中获取基础上下文。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_GetBaseContext(OH_AbilityRuntime_ModObjExtensionContextHandle modObjExtensionContext, AbilityRuntime_ContextHandle* baseContext)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_GetBaseContext(OH_AbilityRuntime_ModObjExtensionContextHandle modObjExtensionContext, AbilityRuntime_ContextHandle* baseContext)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
@@ -69,6 +71,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbi
 **描述：**
 
 启动当前应用的UIAbility。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbility(OH_AbilityRuntime_ModObjExtensionContextHandle context, const AbilityBase_Want *want)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbility(OH_AbilityRuntime_ModObjExtensionContextHandle context, const AbilityBase_Want *want)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -99,6 +103,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbi
 
 通过StartOptions启动当前应用的UIAbility。
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbilityWithStartOptions(OH_AbilityRuntime_ModObjExtensionContextHandle context, const AbilityBase_Want *want, const AbilityRuntime_StartOptions *options)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbilityWithStartOptions(OH_AbilityRuntime_ModObjExtensionContextHandle context, const AbilityBase_Want *want, const AbilityRuntime_StartOptions *options)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **需要权限：** ohos.permission.NDK_START_SELF_UI_ABILITY
@@ -111,7 +117,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbi
 | -- | -- |
 | [OH_AbilityRuntime_ModObjExtensionContextHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioncontext8h.md) context | 指向ModularObjectExtensionAbility上下文的指针。 |
 | [const AbilityBase_Want](capi-abilitybase-abilitybase-want.md) *want | 启动当前应用UIAbility时需要的Want信息。详细内容参考[AbilityBase_Want](capi-abilitybase-abilitybase-want.md)。 |
-| const AbilityRuntime_StartOptions *options | 启动当前应用UIAbility时需要的StartOptions信息。详细内容参考AbilityRuntime_StartOptions。 |
+| [const AbilityRuntime_StartOptions](capi-abilityruntime-abilityruntime-startoptions.md) *options | 启动当前应用UIAbility时需要的StartOptions信息。详细内容参考[AbilityRuntime_StartOptions](capi-abilityruntime-abilityruntime-startoptions.md)。 |
 
 **返回值：**
 
@@ -128,6 +134,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_TerminateSelf(
 **描述：**
 
 销毁ModularObjectExtensionAbility自身。
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_TerminateSelf(OH_AbilityRuntime_ModObjExtensionContextHandle context)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_TerminateSelf(OH_AbilityRuntime_ModObjExtensionContextHandle context)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -154,6 +162,8 @@ OHIPCRemoteStub* OH_AbilityRuntime_ModObjExtensionContext_CreateIPCRemoteStub(OH
 **描述：**
 
 创建一个OHIPCRemoteStub对象，回调函数将在ExtensionAbility指定的线程上运行。requestCallback和destroyCallback将在由ExtensionAbility的 [OH_AbilityRuntime_ThreadMode](capi-modular-object-extension-manager-h.md#oh_abilityruntime_threadmode)决定的线程上按顺序执行。调用 [OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub](capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub)后，不会再有新的requestCallback回调， 且正在执行的requestCallback完成后才会回调destroyCallback。调用方需调用 [OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub](capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub)销毁返回的对象，避免内存泄漏。
+
+<!--Device-OHIPCRemoteStub* OH_AbilityRuntime_ModObjExtensionContext_CreateIPCRemoteStub(OH_AbilityRuntime_ModObjExtensionContextHandle context, const char *descriptor, OH_OnRemoteRequestCallback requestCallback, OH_OnRemoteDestroyCallback destroyCallback, void *userData)--><!--Device-OHIPCRemoteStub* OH_AbilityRuntime_ModObjExtensionContext_CreateIPCRemoteStub(OH_AbilityRuntime_ModObjExtensionContextHandle context, const char *descriptor, OH_OnRemoteRequestCallback requestCallback, OH_OnRemoteDestroyCallback destroyCallback, void *userData)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -184,6 +194,8 @@ void OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub(OH_AbilityRun
 **描述：**
 
 销毁OHIPCRemoteStub对象。
+
+<!--Device-void OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub(OH_AbilityRuntime_ModObjExtensionContextHandle context, OHIPCRemoteStub *stub)--><!--Device-void OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub(OH_AbilityRuntime_ModObjExtensionContextHandle context, OHIPCRemoteStub *stub)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

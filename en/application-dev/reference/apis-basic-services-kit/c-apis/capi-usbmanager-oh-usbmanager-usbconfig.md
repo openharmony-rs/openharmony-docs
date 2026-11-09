@@ -8,11 +8,13 @@ struct OH_UsbManager_UsbConfig {...}
 
 Defines a USB configuration. One [OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md) can contain multiple <br>**OH_UsbManager_UsbConfig** instances.
 
+<!--Device-struct OH_UsbManager_UsbConfig {...}--><!--Device-struct OH_UsbManager_UsbConfig {...}-End-->
+
 **System capability**: SystemCapability.USB.USBManager
 
 **Since**: 26.0.1
 
-**Related module**: [UsbManager](capi-others-usbmanager.md)
+**Related module**: [UsbManager](capi-basic-services-kit-usbmanager.md)
 
 **Header file**: [ohusb_manager.h](capi-ohusb-manager-h.md)
 

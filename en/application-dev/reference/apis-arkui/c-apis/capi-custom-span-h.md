@@ -60,6 +60,8 @@ Creates measurement information for a custom span.> **NOTE**
 >
 > - After the use, you must call OH_ArkUI_CustomSpanMeasureInfo_Dispose() to release memory. Otherwise it will cause a resource leak.
 
+<!--Device-ArkUI_CustomSpanMeasureInfo* OH_ArkUI_CustomSpanMeasureInfo_Create(void)--><!--Device-ArkUI_CustomSpanMeasureInfo* OH_ArkUI_CustomSpanMeasureInfo_Create(void)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -86,6 +88,8 @@ Disposes of measurement information of a custom span.> **NOTE**
 >
 > - Ensure the object is no longer needed before this API is called. The object is unavailable after the call.
 
+<!--Device-void OH_ArkUI_CustomSpanMeasureInfo_Dispose(ArkUI_CustomSpanMeasureInfo* info)--><!--Device-void OH_ArkUI_CustomSpanMeasureInfo_Dispose(ArkUI_CustomSpanMeasureInfo* info)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -109,6 +113,8 @@ Obtains the font size of the parent text node of a custom span. In the measureme
 > - You must first call **OH_ArkUI_CustomSpanMeasureInfo_Create()** to create a measurement information object.
 >
 > - The **info** parameter must be a valid object pointer returned by the **OH_ArkUI_CustomSpanMeasureInfo_Create()** API.
+
+<!--Device-float OH_ArkUI_CustomSpanMeasureInfo_GetFontSize(ArkUI_CustomSpanMeasureInfo* info)--><!--Device-float OH_ArkUI_CustomSpanMeasureInfo_GetFontSize(ArkUI_CustomSpanMeasureInfo* info)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,6 +148,8 @@ Creates measurement metrics for a custom span.> **NOTE**
 >
 > - After use, you must call **OH_ArkUI_CustomSpanMetrics_Dispose()** to release memory. Otherwise it will cause a resource leak.
 
+<!--Device-ArkUI_CustomSpanMetrics* OH_ArkUI_CustomSpanMetrics_Create(void)--><!--Device-ArkUI_CustomSpanMetrics* OH_ArkUI_CustomSpanMetrics_Create(void)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -168,6 +176,8 @@ Disposes of measurement metrics of a custom span.> **NOTE**
 >
 > - Ensure the object is no longer needed before this API is called. The object is unavailable after the call.
 
+<!--Device-void OH_ArkUI_CustomSpanMetrics_Dispose(ArkUI_CustomSpanMetrics* metrics)--><!--Device-void OH_ArkUI_CustomSpanMetrics_Dispose(ArkUI_CustomSpanMetrics* metrics)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -191,6 +201,8 @@ Sets the width for a custom span. In text and image layout scenarios, you need t
 > - You must first call **OH_ArkUI_CustomSpanMetrics_Create()** to create the measurement metric object.
 >
 > - The **metrics** parameter must be a valid object pointer returned by the **OH_ArkUI_CustomSpanMetrics_Create()** API.
+
+<!--Device-int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, float width)--><!--Device-int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, float width)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -222,6 +234,8 @@ Sets the height for a custom span. In emoji embedding scenarios, you need to set
 > - You must first call **OH_ArkUI_CustomSpanMetrics_Create()** to create the measurement metric object.
 >
 > - The **metrics** parameter must be a valid object pointer returned by the **OH_ArkUI_CustomSpanMetrics_Create()** API.
+
+<!--Device-int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, float height)--><!--Device-int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, float height)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -256,6 +270,8 @@ Creates drawing information for a custom span.> **NOTE**
 >
 > - After use, you must call **OH_ArkUI_CustomSpanDrawInfo_Dispose()** to release memory. Otherwise it will cause a resource leak.
 
+<!--Device-ArkUI_CustomSpanDrawInfo* OH_ArkUI_CustomSpanDrawInfo_Create(void)--><!--Device-ArkUI_CustomSpanDrawInfo* OH_ArkUI_CustomSpanDrawInfo_Create(void)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -282,6 +298,8 @@ Disposes of drawing information for a custom span.> **NOTE**
 >
 > - Ensure the object is no longer needed before this API is called. The object is unavailable after the call.
 
+<!--Device-void OH_ArkUI_CustomSpanDrawInfo_Dispose(ArkUI_CustomSpanDrawInfo* info)--><!--Device-void OH_ArkUI_CustomSpanDrawInfo_Dispose(ArkUI_CustomSpanDrawInfo* info)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -305,6 +323,8 @@ Obtains the x-axis offset of the custom span relative to the mounted component. 
 > - You must first call **OH_ArkUI_CustomSpanDrawInfo_Create()** to create the drawing information object.
 >
 > - The **info** parameter must be a valid object pointer returned by the **OH_ArkUI_CustomSpanDrawInfo_Create()** API.
+
+<!--Device-float OH_ArkUI_CustomSpanDrawInfo_GetXOffset(ArkUI_CustomSpanDrawInfo* info)--><!--Device-float OH_ArkUI_CustomSpanDrawInfo_GetXOffset(ArkUI_CustomSpanDrawInfo* info)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -336,6 +356,8 @@ Obtains the top margin of the custom span relative to the mounted component. In 
 >
 > - The **info** parameter must be a valid object pointer returned by the **OH_ArkUI_CustomSpanDrawInfo_Create()** API.
 
+<!--Device-float OH_ArkUI_CustomSpanDrawInfo_GetLineTop(ArkUI_CustomSpanDrawInfo* info)--><!--Device-float OH_ArkUI_CustomSpanDrawInfo_GetLineTop(ArkUI_CustomSpanDrawInfo* info)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -366,6 +388,8 @@ Obtains the bottom margin of the custom span relative to the mounted component. 
 >
 > - The **info** parameter must be a valid object pointer returned by the **OH_ArkUI_CustomSpanDrawInfo_Create()** API.
 
+<!--Device-float OH_ArkUI_CustomSpanDrawInfo_GetLineBottom(ArkUI_CustomSpanDrawInfo* info)--><!--Device-float OH_ArkUI_CustomSpanDrawInfo_GetLineBottom(ArkUI_CustomSpanDrawInfo* info)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -395,6 +419,8 @@ Obtains the baseline offset of the custom span relative to the mounted component
 > - You must first call **OH_ArkUI_CustomSpanDrawInfo_Create()** to create the drawing information object.
 >
 > - The **info** parameter must be a valid object pointer returned by the **OH_ArkUI_CustomSpanDrawInfo_Create()** API.
+
+<!--Device-float OH_ArkUI_CustomSpanDrawInfo_GetBaseline(ArkUI_CustomSpanDrawInfo* info)--><!--Device-float OH_ArkUI_CustomSpanDrawInfo_GetBaseline(ArkUI_CustomSpanDrawInfo* info)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

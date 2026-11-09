@@ -8,11 +8,13 @@ struct MetadataOutput_Callbacks {...}
 
 元数据输出的回调。
 
+<!--Device-struct MetadataOutput_Callbacks {...}--><!--Device-struct MetadataOutput_Callbacks {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
-**相关模块：** [OH_Camera](capi-others-oh-camera.md)
+**相关模块：** [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **所在头文件：** [metadata_output.h](capi-metadata-output-h.md)
 

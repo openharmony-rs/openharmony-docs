@@ -8,11 +8,13 @@ struct OH_DecodingOptions
 
 The OH_DecodingOptions struct describes the decoding options encapsulated at the native layer. The struct is used to set decoding options and is passed in as an input parameter for creating a PixelMap. For details, see [OH_ImageSourceNative_CreatePixelmap](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap).
 
+<!--Device-struct OH_DecodingOptions--><!--Device-struct OH_DecodingOptions-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 12
 
-**Related module**: [Image_NativeModule](capi-others-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 **Header file**: [image_source_native.h](capi-image-source-native-h.md)
 

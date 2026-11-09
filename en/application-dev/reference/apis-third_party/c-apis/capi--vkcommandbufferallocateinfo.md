@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkCommandBufferAllocateInfo {...}--><!--Device-struct VkCommandBufferAllocateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

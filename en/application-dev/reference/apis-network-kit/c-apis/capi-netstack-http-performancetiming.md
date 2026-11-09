@@ -8,11 +8,13 @@ struct Http_PerformanceTiming {...}
 
 Defines the HTTP response timing information, which will be collected via [Http_Response](capi-netstack-http-response.md).
 
+<!--Device-struct Http_PerformanceTiming {...}--><!--Device-struct Http_PerformanceTiming {...}-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 
-**Related module**: [netstack](capi-others-netstack.md)
+**Related module**: [netstack](capi-network-kit-netstack.md)
 
 **Header file**: [net_http_type.h](capi-net-http-type-h.md)
 

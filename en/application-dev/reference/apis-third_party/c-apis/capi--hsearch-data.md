@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct hsearch_data {...}--><!--Device-struct hsearch_data {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -36,6 +36,8 @@ int32_t OH_CertManager_GetUkeyCertificate(const OH_CM_Blob *keyUri, const OH_CM_
 
 获取USB证书凭据的详情信息列表。调用完成后，需要调用OH_CertManager_FreeUkeyCertificate释放certificateList内存。
 
+<!--Device-int32_t OH_CertManager_GetUkeyCertificate(const OH_CM_Blob *keyUri, const OH_CM_UkeyInfo *ukeyInfo, OH_CM_CredentialDetailList *certificateList)--><!--Device-int32_t OH_CertManager_GetUkeyCertificate(const OH_CM_Blob *keyUri, const OH_CM_UkeyInfo *ukeyInfo, OH_CM_CredentialDetailList *certificateList)-End-->
+
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
@@ -66,6 +68,8 @@ int32_t OH_CertManager_GetPrivateCertificate(const OH_CM_Blob *keyUri, OH_CM_Cre
 
 获取特定应用私有证书凭据详细信息。
 
+<!--Device-int32_t OH_CertManager_GetPrivateCertificate(const OH_CM_Blob *keyUri, OH_CM_Credential *certificate)--><!--Device-int32_t OH_CertManager_GetPrivateCertificate(const OH_CM_Blob *keyUri, OH_CM_Credential *certificate)-End-->
+
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
@@ -94,6 +98,8 @@ int32_t OH_CertManager_GetPublicCertificate(const OH_CM_Blob *keyUri, OH_CM_Cred
 **描述：**
 
 获取特定用户公共证书凭据详细信息。调用完成后，需要调用OH_CertManager_FreeCredential释放certificate内存。
+
+<!--Device-int32_t OH_CertManager_GetPublicCertificate(const OH_CM_Blob *keyUri, OH_CM_Credential *certificate)--><!--Device-int32_t OH_CertManager_GetPublicCertificate(const OH_CM_Blob *keyUri, OH_CM_Credential *certificate)-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -124,6 +130,8 @@ void OH_CertManager_FreeUkeyCertificate(OH_CM_CredentialDetailList *certificateL
 
 销毁证书详情信息列表。
 
+<!--Device-void OH_CertManager_FreeUkeyCertificate(OH_CM_CredentialDetailList *certificateList)--><!--Device-void OH_CertManager_FreeUkeyCertificate(OH_CM_CredentialDetailList *certificateList)-End-->
+
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **起始版本：** 22
@@ -143,6 +151,8 @@ void OH_CertManager_FreeCredential(OH_CM_Credential *certificate)
 **描述：**
 
 销毁证书详情。
+
+<!--Device-void OH_CertManager_FreeCredential(OH_CM_Credential *certificate)--><!--Device-void OH_CertManager_FreeCredential(OH_CM_Credential *certificate)-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 

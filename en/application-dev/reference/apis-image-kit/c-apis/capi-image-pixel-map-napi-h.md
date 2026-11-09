@@ -48,6 +48,8 @@ enum anonymous0
 
 Enumerates the error codes returned by the functions.
 
+<!--Device-anonymous0--><!--Device-anonymous0-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 8
@@ -68,6 +70,8 @@ enum anonymous1
 **Description**
 
 Enumerates the pixel formats.
+
+<!--Device-anonymous1--><!--Device-anonymous1-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -91,6 +95,8 @@ enum anonymous2
 
 Enumerates the pixel map scale modes.
 
+<!--Device-anonymous2--><!--Device-anonymous2-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
@@ -112,6 +118,8 @@ int32_t OH_GetImageInfo(napi_env env, napi_value value, OhosPixelMapInfo *info)
 **Description**
 
 Obtains the information about a <b>PixelMap</b> object and stores the information to the [OhosPixelMapInfo](capi-image-ohospixelmapinfo.md) struct.
+
+<!--Device-int32_t OH_GetImageInfo(napi_env env, napi_value value, OhosPixelMapInfo *info)--><!--Device-int32_t OH_GetImageInfo(napi_env env, napi_value value, OhosPixelMapInfo *info)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -148,6 +156,8 @@ int32_t OH_AccessPixels(napi_env env, napi_value value, void** addrPtr)
 
 Obtains the memory address of a <b>PixelMap</b> object and locks the memory.<br> After the function is executed successfully, <b>*addrPtr</b> is the memory address to be accessed. After the access operation is complete, you must use [OH_UnAccessPixels](capi-image-pixel-map-napi-h.md#oh_unaccesspixels) to unlock the memory. Otherwise, the resources in the memory cannot be released. After the memory is unlocked, its address cannot be accessed or operated.
 
+<!--Device-int32_t OH_AccessPixels(napi_env env, napi_value value, void** addrPtr)--><!--Device-int32_t OH_AccessPixels(napi_env env, napi_value value, void** addrPtr)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 8
@@ -182,6 +192,8 @@ int32_t OH_UnAccessPixels(napi_env env, napi_value value)
 **Description**
 
 Unlocks the memory of a <b>PixelMap</b> object. This function is used with [OH_AccessPixels](capi-image-pixel-map-napi-h.md#oh_accesspixels) in pairs.
+
+<!--Device-int32_t OH_UnAccessPixels(napi_env env, napi_value value)--><!--Device-int32_t OH_UnAccessPixels(napi_env env, napi_value value)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 

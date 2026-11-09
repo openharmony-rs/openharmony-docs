@@ -8,11 +8,13 @@ struct OH_Huks_KeyMaterialDsa {...}
 
 Defines the struct for a DSA key.
 
+<!--Device-struct OH_Huks_KeyMaterialDsa {...}--><!--Device-struct OH_Huks_KeyMaterialDsa {...}-End-->
+
 **System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
 
-**Related module**: [HuksTypeApi](capi-others-hukstypeapi.md)
+**Related module**: [HuksTypeApi](capi-universal-keystore-kit-hukstypeapi.md)
 
 **Header file**: [native_huks_type.h](capi-native-huks-type-h.md)
 

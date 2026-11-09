@@ -8,11 +8,13 @@ typedef struct CommonEvent_SubscribeInfo CommonEvent_SubscribeInfo
 
 Defines a struct for the subscriber information of a common event. This struct is used to describe the configuration information of a subscriber. It is passed as a parameter when the API for creating a subscriber is called.
 
+<!--Device-typedef struct CommonEvent_SubscribeInfo CommonEvent_SubscribeInfo--><!--Device-typedef struct CommonEvent_SubscribeInfo CommonEvent_SubscribeInfo-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 12
 
-**Related module**: [OH_CommonEvent](capi-others-oh-commonevent.md)
+**Related module**: [OH_CommonEvent](capi-basic-services-kit-oh-commonevent.md)
 
 **Header file**: [oh_commonevent.h](capi-oh-commonevent-h.md)
 

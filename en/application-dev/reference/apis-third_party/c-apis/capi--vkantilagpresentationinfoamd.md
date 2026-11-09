@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkAntiLagPresentationInfoAMD {...}--><!--Device-struct VkAntiLagPresentationInfoAMD {...}-End-->
+
 ## Summary
 
 ### Member variables

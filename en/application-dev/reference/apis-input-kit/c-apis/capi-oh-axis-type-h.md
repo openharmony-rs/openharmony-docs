@@ -36,6 +36,8 @@ enum InputEvent_AxisType
 
 Defines the axis type of an input device.
 
+<!--Device-InputEvent_AxisType--><!--Device-InputEvent_AxisType-End-->
+
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
@@ -58,6 +60,8 @@ enum InputEvent_AxisEventType
 
 Event type of the input device.
 
+<!--Device-InputEvent_AxisEventType--><!--Device-InputEvent_AxisEventType-End-->
+
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
@@ -76,6 +80,8 @@ enum InputEvent_AxisAction
 **Description**
 
 Action of the input device.
+
+<!--Device-InputEvent_AxisAction--><!--Device-InputEvent_AxisAction-End-->
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 

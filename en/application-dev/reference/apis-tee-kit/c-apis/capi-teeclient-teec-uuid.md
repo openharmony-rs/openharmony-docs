@@ -8,11 +8,13 @@ typedef struct TEEC_UUID {...} TEEC_UUID
 
 Defines the universally unique identifier (UUID) as defined in RFC4122 [2]. The UUIDs are used to identify TAs.
 
+<!--Device-typedef struct TEEC_UUID {...} TEEC_UUID--><!--Device-typedef struct TEEC_UUID {...} TEEC_UUID-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
-**Related module**: [TeeClient](capi-others-teeclient.md)
+**Related module**: [TeeClient](capi-tee-kit-teeclient.md)
 
 **Header file**: [tee_client_type.h](capi-tee-client-type-h.md)
 

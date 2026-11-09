@@ -8,11 +8,13 @@ typedef struct OH_AbilityRuntime_ModularObjectExtensionContext* OH_AbilityRuntim
 
 表示ModularObjectExtensionAbility上下文的句柄。
 
+<!--Device-typedef struct OH_AbilityRuntime_ModularObjectExtensionContext* OH_AbilityRuntime_ModObjExtensionContextHandle--><!--Device-typedef struct OH_AbilityRuntime_ModularObjectExtensionContext* OH_AbilityRuntime_ModObjExtensionContextHandle-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
-**相关模块：** [AbilityRuntime](capi-others-abilityruntime.md)
+**相关模块：** [AbilityRuntime](capi-ability-kit-abilityruntime.md)
 
 **所在头文件：** [modular_object_extension_context.h](capi-modular-object-extension-context-h.md)
 

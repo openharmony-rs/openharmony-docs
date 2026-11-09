@@ -8,11 +8,13 @@ typedef struct OH_ArkUI_GestureStyle OH_ArkUI_GestureStyle
 
 定义手势样式，适用于需要配置手势样式并接收相关事件回调的场景，便于应用统一管理手势样式及事件回调。 调用[OH_ArkUI_GestureStyle_Create](capi-styled-string-h.md#oh_arkui_gesturestyle_create)接口创建对应的手势样式对象。 对象创建后调用OH_ArkUI_GestureStyle_RegisterOnXXXCallback系列接口注册具体的事件回调， 例如调用[OH_ArkUI_GestureStyle_RegisterOnClickCallback](capi-styled-string-h.md#oh_arkui_gesturestyle_registeronclickcallback)注册点击事件回调。 使用完毕后，调用[OH_ArkUI_GestureStyle_Destroy](capi-styled-string-h.md#oh_arkui_gesturestyle_destroy)接口销毁手势样式对象。
 
+<!--Device-typedef struct OH_ArkUI_GestureStyle OH_ArkUI_GestureStyle--><!--Device-typedef struct OH_ArkUI_GestureStyle OH_ArkUI_GestureStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [styled_string.h](capi-styled-string-h.md)
 

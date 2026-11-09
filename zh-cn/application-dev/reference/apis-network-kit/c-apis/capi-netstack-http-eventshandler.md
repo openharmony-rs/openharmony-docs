@@ -8,11 +8,13 @@ struct Http_EventsHandler {...}
 
 监听不同HTTP事件的回调函数。
 
+<!--Device-struct Http_EventsHandler {...}--><!--Device-struct Http_EventsHandler {...}-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 20
 
-**相关模块：** [netstack](capi-others-netstack.md)
+**相关模块：** [netstack](capi-network-kit-netstack.md)
 
 **所在头文件：** [net_http_type.h](capi-net-http-type-h.md)
 

@@ -37,6 +37,8 @@ enum ArkUI_TextInputType
 
 Enumerates the input types of single-line text.
 
+<!--Device-ArkUI_TextInputType--><!--Device-ArkUI_TextInputType-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -65,6 +67,8 @@ enum ArkUI_CancelButtonStyle
 
 Enumerates the styles of the **Cancel** button.
 
+<!--Device-ArkUI_CancelButtonStyle--><!--Device-ArkUI_CancelButtonStyle-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -84,6 +88,8 @@ enum ArkUI_TextInputContentType
 **Description**
 
 Enumerates autofill types.
+
+<!--Device-ArkUI_TextInputContentType--><!--Device-ArkUI_TextInputContentType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -134,6 +140,8 @@ enum ArkUI_TextInputStyle
 **Description**
 
 Enumerates text input styles.
+
+<!--Device-ArkUI_TextInputStyle--><!--Device-ArkUI_TextInputStyle-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

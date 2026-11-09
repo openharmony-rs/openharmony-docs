@@ -8,11 +8,13 @@ struct OH_CartesianPosition {...}
 
 Represents a position in Cartesian coordinates.<br> Cartesian coordinates use x, y, and z axes to define a position in three-dimensional space.
 
+<!--Device-struct OH_CartesianPosition {...}--><!--Device-struct OH_CartesianPosition {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 26.0.0
 
-**Related module**: [Core](capi-others-core.md)
+**Related module**: [Core](capi-avcodec-kit-core.md)
 
 **Header file**: [native_audio_vivid.h](capi-native-audio-vivid-h.md)
 

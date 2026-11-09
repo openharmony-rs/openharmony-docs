@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceIndexTypeUint8Features {...}--><!--Device-struct VkPhysicalDeviceIndexTypeUint8Features {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkClearRect {...}--><!--Device-struct VkClearRect {...}-End-->
+
 ## Summary
 
 ### Member variables

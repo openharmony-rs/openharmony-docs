@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDrawIndirectCountIndirectCommandEXT {...}--><!--Device-struct VkDrawIndirectCountIndirectCommandEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

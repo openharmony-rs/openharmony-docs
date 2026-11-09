@@ -67,6 +67,8 @@ enum anonymous0
 
 Enumerates the pixel map alpha types.
 
+<!--Device-anonymous0--><!--Device-anonymous0-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
@@ -88,6 +90,8 @@ enum anonymous1
 
 Enumerates the pixel map editing types.
 
+<!--Device-anonymous1--><!--Device-anonymous1-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
@@ -106,6 +110,8 @@ enum OH_PixelMap_AntiAliasingLevel
 **Description**
 
 Enumerates the anti-aliasing level.
+
+<!--Device-OH_PixelMap_AntiAliasingLevel--><!--Device-OH_PixelMap_AntiAliasingLevel-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -130,6 +136,8 @@ int32_t OH_PixelMap_CreatePixelMap(napi_env env, OhosPixelMapCreateOps info, voi
 **Description**
 
 Creates a PixelMap object. Currently, only BGRA input streams are supported.
+
+<!--Device-int32_t OH_PixelMap_CreatePixelMap(napi_env env, OhosPixelMapCreateOps info, void* buf, size_t len, napi_value* res)--><!--Device-int32_t OH_PixelMap_CreatePixelMap(napi_env env, OhosPixelMapCreateOps info, void* buf, size_t len, napi_value* res)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -165,6 +173,8 @@ int32_t OH_PixelMap_CreatePixelMapWithStride(napi_env env, OhosPixelMapCreateOps
 **Description**
 
 Creates a PixelMap object.
+
+<!--Device-int32_t OH_PixelMap_CreatePixelMapWithStride(napi_env env, OhosPixelMapCreateOps info, void* buf, size_t len, int32_t rowStride, napi_value* res)--><!--Device-int32_t OH_PixelMap_CreatePixelMapWithStride(napi_env env, OhosPixelMapCreateOps info, void* buf, size_t len, int32_t rowStride, napi_value* res)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -202,6 +212,8 @@ int32_t OH_PixelMap_CreateAlphaPixelMap(napi_env env, napi_value source, napi_va
 
 Creates a PixelMap object that contains only alpha channel information.
 
+<!--Device-int32_t OH_PixelMap_CreateAlphaPixelMap(napi_env env, napi_value source, napi_value* alpha)--><!--Device-int32_t OH_PixelMap_CreateAlphaPixelMap(napi_env env, napi_value source, napi_value* alpha)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
@@ -235,6 +247,8 @@ NativePixelMap* OH_PixelMap_InitNativePixelMap(napi_env env, napi_value source)
 
 Initializes a NativePixelMap object.
 
+<!--Device-NativePixelMap* OH_PixelMap_InitNativePixelMap(napi_env env, napi_value source)--><!--Device-NativePixelMap* OH_PixelMap_InitNativePixelMap(napi_env env, napi_value source)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
@@ -266,6 +280,8 @@ int32_t OH_PixelMap_GetBytesNumberPerRow(const NativePixelMap* native, int32_t* 
 **Description**
 
 Obtains the number of bytes per row of a NativePixelMap object.
+
+<!--Device-int32_t OH_PixelMap_GetBytesNumberPerRow(const NativePixelMap* native, int32_t* num)--><!--Device-int32_t OH_PixelMap_GetBytesNumberPerRow(const NativePixelMap* native, int32_t* num)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -299,6 +315,8 @@ int32_t OH_PixelMap_GetIsEditable(const NativePixelMap* native, int32_t* editabl
 
 Checks whether a NativePixelMap object is editable.
 
+<!--Device-int32_t OH_PixelMap_GetIsEditable(const NativePixelMap* native, int32_t* editable)--><!--Device-int32_t OH_PixelMap_GetIsEditable(const NativePixelMap* native, int32_t* editable)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
@@ -330,6 +348,8 @@ int32_t OH_PixelMap_IsSupportAlpha(const NativePixelMap* native, int32_t* alpha)
 **Description**
 
 Checks whether a NativePixelMap object supports alpha channels.
+
+<!--Device-int32_t OH_PixelMap_IsSupportAlpha(const NativePixelMap* native, int32_t* alpha)--><!--Device-int32_t OH_PixelMap_IsSupportAlpha(const NativePixelMap* native, int32_t* alpha)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -363,6 +383,8 @@ int32_t OH_PixelMap_SetAlphaAble(const NativePixelMap* native, int32_t alpha)
 
 Sets an alpha channel for a NativePixelMap object.
 
+<!--Device-int32_t OH_PixelMap_SetAlphaAble(const NativePixelMap* native, int32_t alpha)--><!--Device-int32_t OH_PixelMap_SetAlphaAble(const NativePixelMap* native, int32_t alpha)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
@@ -394,6 +416,8 @@ int32_t OH_PixelMap_GetDensity(const NativePixelMap* native, int32_t* density)
 **Description**
 
 Obtains the pixel density of a NativePixelMap object.
+
+<!--Device-int32_t OH_PixelMap_GetDensity(const NativePixelMap* native, int32_t* density)--><!--Device-int32_t OH_PixelMap_GetDensity(const NativePixelMap* native, int32_t* density)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -427,6 +451,8 @@ int32_t OH_PixelMap_SetDensity(const NativePixelMap* native, int32_t density)
 
 Sets the pixel density for a NativePixelMap object.
 
+<!--Device-int32_t OH_PixelMap_SetDensity(const NativePixelMap* native, int32_t density)--><!--Device-int32_t OH_PixelMap_SetDensity(const NativePixelMap* native, int32_t density)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
@@ -458,6 +484,8 @@ int32_t OH_PixelMap_SetOpacity(const NativePixelMap* native, float opacity)
 **Description**
 
 Sets the opacity for a NativePixelMap object.
+
+<!--Device-int32_t OH_PixelMap_SetOpacity(const NativePixelMap* native, float opacity)--><!--Device-int32_t OH_PixelMap_SetOpacity(const NativePixelMap* native, float opacity)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -491,6 +519,8 @@ int32_t OH_PixelMap_Scale(const NativePixelMap* native, float x, float y)
 
 Scales a NativePixelMap object.
 
+<!--Device-int32_t OH_PixelMap_Scale(const NativePixelMap* native, float x, float y)--><!--Device-int32_t OH_PixelMap_Scale(const NativePixelMap* native, float x, float y)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
@@ -523,6 +553,8 @@ int32_t OH_PixelMap_ScaleWithAntiAliasing(const NativePixelMap* native, float x,
 **Description**
 
 Scales a NativePixelMap object based on the specified anti-aliasing level, width, and height.
+
+<!--Device-int32_t OH_PixelMap_ScaleWithAntiAliasing(const NativePixelMap* native, float x, float y, OH_PixelMap_AntiAliasingLevel level)--><!--Device-int32_t OH_PixelMap_ScaleWithAntiAliasing(const NativePixelMap* native, float x, float y, OH_PixelMap_AntiAliasingLevel level)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -558,6 +590,8 @@ int32_t OH_PixelMap_Translate(const NativePixelMap* native, float x, float y)
 
 Translates a NativePixelMap object.
 
+<!--Device-int32_t OH_PixelMap_Translate(const NativePixelMap* native, float x, float y)--><!--Device-int32_t OH_PixelMap_Translate(const NativePixelMap* native, float x, float y)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
@@ -591,6 +625,8 @@ int32_t OH_PixelMap_Rotate(const NativePixelMap* native, float angle)
 
 Rotates a NativePixelMap object.
 
+<!--Device-int32_t OH_PixelMap_Rotate(const NativePixelMap* native, float angle)--><!--Device-int32_t OH_PixelMap_Rotate(const NativePixelMap* native, float angle)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
@@ -622,6 +658,8 @@ int32_t OH_PixelMap_Flip(const NativePixelMap* native, int32_t x, int32_t y)
 **Description**
 
 Flips a NativePixelMap object.
+
+<!--Device-int32_t OH_PixelMap_Flip(const NativePixelMap* native, int32_t x, int32_t y)--><!--Device-int32_t OH_PixelMap_Flip(const NativePixelMap* native, int32_t x, int32_t y)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -655,6 +693,8 @@ int32_t OH_PixelMap_Crop(const NativePixelMap* native, int32_t x, int32_t y, int
 **Description**
 
 Crops a NativePixelMap object.
+
+<!--Device-int32_t OH_PixelMap_Crop(const NativePixelMap* native, int32_t x, int32_t y, int32_t width, int32_t height)--><!--Device-int32_t OH_PixelMap_Crop(const NativePixelMap* native, int32_t x, int32_t y, int32_t width, int32_t height)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -691,6 +731,8 @@ int32_t OH_PixelMap_GetImageInfo(const NativePixelMap* native, OhosPixelMapInfos
 
 Obtains the image information of a NativePixelMap object.
 
+<!--Device-int32_t OH_PixelMap_GetImageInfo(const NativePixelMap* native, OhosPixelMapInfos *info)--><!--Device-int32_t OH_PixelMap_GetImageInfo(const NativePixelMap* native, OhosPixelMapInfos *info)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
@@ -723,6 +765,8 @@ int32_t OH_PixelMap_AccessPixels(const NativePixelMap* native, void** addr)
 
 Obtains the memory address of a NativePixelMap object and locks the memory.
 
+<!--Device-int32_t OH_PixelMap_AccessPixels(const NativePixelMap* native, void** addr)--><!--Device-int32_t OH_PixelMap_AccessPixels(const NativePixelMap* native, void** addr)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
@@ -754,6 +798,8 @@ int32_t OH_PixelMap_UnAccessPixels(const NativePixelMap* native)
 **Description**
 
 Unlocks the memory of a NativePixelMap object. This function is used with [OH_PixelMap_AccessPixels](capi-image-pixel-map-mdk-h.md#oh_pixelmap_accesspixels) in pairs.
+
+<!--Device-int32_t OH_PixelMap_UnAccessPixels(const NativePixelMap* native)--><!--Device-int32_t OH_PixelMap_UnAccessPixels(const NativePixelMap* native)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 

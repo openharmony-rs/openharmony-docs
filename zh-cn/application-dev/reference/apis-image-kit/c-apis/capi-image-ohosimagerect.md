@@ -8,11 +8,13 @@ struct OhosImageRect {...}
 
 定义图像矩形信息。
 
+<!--Device-struct OhosImageRect {...}--><!--Device-struct OhosImageRect {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 10
 
-**相关模块：** [Image](capi-others-image.md)
+**相关模块：** [Image](capi-image-kit-image.md)
 
 **所在头文件：** [image_mdk.h](capi-image-mdk-h.md)
 

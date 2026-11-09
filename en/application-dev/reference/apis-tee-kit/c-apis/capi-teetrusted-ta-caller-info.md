@@ -8,11 +8,13 @@ struct ta_caller_info {...}
 
 Defines the caller information.
 
+<!--Device-struct ta_caller_info {...}--><!--Device-struct ta_caller_info {...}-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
-**Related module**: [TeeTrusted](capi-others-teetrusted.md)
+**Related module**: [TeeTrusted](capi-tee-kit-teetrusted.md)
 
 **Header file**: [tee_ext_api.h](capi-tee-ext-api-h.md)
 

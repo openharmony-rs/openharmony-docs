@@ -8,11 +8,13 @@ typedef struct OH_AVMemory OH_AVMemory
 
 为音视频内存接口定义native层对象。
 
+<!--Device-typedef struct OH_AVMemory OH_AVMemory--><!--Device-typedef struct OH_AVMemory OH_AVMemory-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
 
-**相关模块：** [Core](capi-others-core.md)
+**相关模块：** [Core](capi-avcodec-kit-core.md)
 
 **所在头文件：** [native_avmemory.h](capi-native-avmemory-h.md)
 

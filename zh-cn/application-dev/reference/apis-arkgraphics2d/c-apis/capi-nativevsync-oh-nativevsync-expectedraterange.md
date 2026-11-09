@@ -8,11 +8,13 @@ typedef struct OH_NativeVSync_ExpectedRateRange {...} OH_NativeVSync_ExpectedRat
 
 期望帧率范围结构体。
 
+<!--Device-typedef struct OH_NativeVSync_ExpectedRateRange {...} OH_NativeVSync_ExpectedRateRange--><!--Device-typedef struct OH_NativeVSync_ExpectedRateRange {...} OH_NativeVSync_ExpectedRateRange-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeVsync
 
 **起始版本：** 20
 
-**相关模块：** [NativeVsync](capi-others-nativevsync.md)
+**相关模块：** [NativeVsync](capi-arkgraphics2d-nativevsync.md)
 
 **所在头文件：** [native_vsync.h](capi-native-vsync-h.md)
 
@@ -22,8 +24,8 @@ typedef struct OH_NativeVSync_ExpectedRateRange {...} OH_NativeVSync_ExpectedRat
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t min | 动态回调帧率范围的最小帧率 |
-| int32_t max | 动态回调帧率范围的最大帧率 |
-| int32_t expected | 动态回调帧率范围的期望帧率 |
+| int32_t min | 帧率范围的最小帧率。 |
+| int32_t max | 帧率范围的最大帧率。 |
+| int32_t expected | 帧率范围的期望帧率。 |
 
 

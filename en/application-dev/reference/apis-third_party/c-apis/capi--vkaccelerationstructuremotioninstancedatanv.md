@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-union VkAccelerationStructureMotionInstanceDataNV {...}--><!--Device-union VkAccelerationStructureMotionInstanceDataNV {...}-End-->
+
 ## Summary
 
 ### Member variables

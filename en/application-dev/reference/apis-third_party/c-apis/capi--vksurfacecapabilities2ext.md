@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSurfaceCapabilities2EXT {...}--><!--Device-struct VkSurfaceCapabilities2EXT {...}-End-->
+
 ## Summary
 
 ### Member variables

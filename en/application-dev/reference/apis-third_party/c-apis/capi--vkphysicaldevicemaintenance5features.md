@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceMaintenance5Features {...}--><!--Device-struct VkPhysicalDeviceMaintenance5Features {...}-End-->
+
 ## Summary
 
 ### Member variables

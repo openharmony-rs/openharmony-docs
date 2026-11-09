@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct tms {...}--><!--Device-struct tms {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkShaderResourceUsageAMD {...}--><!--Device-struct VkShaderResourceUsageAMD {...}-End-->
+
 ## Summary
 
 ### Member variables

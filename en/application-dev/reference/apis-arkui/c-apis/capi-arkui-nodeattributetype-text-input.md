@@ -774,7 +774,7 @@ NODE_TEXT_AREA_BLUR_ON_SUBMIT
 
 **Description**
 
-Sets whether the multi-line text box loses focus after the Enter key is pressed to submit information. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether the text box loses focus.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether the text box loses focus.</li> </ul>
+Sets whether the multi-line text box loses focus after the **Enter** key is pressed to submit information. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether the multi-line text box loses focus after the **Enter** key is pressed to submit information. **0**: The multi-line text box does not lose focus. **1**: The multi-line text box loses focus. When [NODE_TEXT_AREA_ENTER_KEY_TYPE](capi-native-node-h.md#arkui_nodeattributetype) is **ARKUI_ENTER_KEY_TYPE_NEW_LINE**, the default value is **0**; for other Enter key types, the default value is **1**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether the multi-line text box loses focus after the **Enter** key is pressed to submit information. The value **0** indicates the multi-line text box does not lose focus, and **1** indicates the multi-line text box loses focus.</li> </ul>
 
 **Since**: 12
 
@@ -810,7 +810,7 @@ NODE_TEXT_AREA_ENTER_KEY_TYPE
 
 **Description**
 
-Defines the type of the Enter key. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: type of the Enter key[ArkUI_EnterKeyType](capi-text-common-h.md#arkui_enterkeytype). The default value is <b>ARKUI_ENTER_KEY_TYPE_DONE</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: type of the Enter key[ArkUI_EnterKeyType](capi-text-common-h.md#arkui_enterkeytype).</li> </ul>
+Defines the type of the Enter key. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: type of the Enter key[ArkUI_EnterKeyType](capi-text-common-h.md#arkui_enterkeytype). The default value is <b>ARKUI_ENTER_KEY_TYPE_NEW_LINE</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: type of the Enter key[ArkUI_EnterKeyType](capi-text-common-h.md#arkui_enterkeytype).</li> </ul>
 
 **Since**: 12
 

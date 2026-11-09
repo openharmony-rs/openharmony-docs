@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct tptimeval {...}--><!--Device-struct tptimeval {...}-End-->
+
 ## Summary
 
 ### Member variables

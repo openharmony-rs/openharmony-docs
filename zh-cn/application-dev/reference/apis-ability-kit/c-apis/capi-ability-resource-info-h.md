@@ -46,6 +46,8 @@ BundleManager_ErrorCode OH_NativeBundle_GetBundleName(OH_NativeBundle_AbilityRes
 
 获取组件的包名。在使用该接口之后，为了防止内存泄漏，需要手动释放接口返回的指针。
 
+<!--Device-BundleManager_ErrorCode OH_NativeBundle_GetBundleName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** bundleName)--><!--Device-BundleManager_ErrorCode OH_NativeBundle_GetBundleName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** bundleName)-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 21
@@ -72,6 +74,8 @@ BundleManager_ErrorCode OH_NativeBundle_GetModuleName(OH_NativeBundle_AbilityRes
 **描述：**
 
 获取组件的模块名。在使用该接口之后，为了防止内存泄漏，需要手动释放接口返回的指针。
+
+<!--Device-BundleManager_ErrorCode OH_NativeBundle_GetModuleName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** moduleName)--><!--Device-BundleManager_ErrorCode OH_NativeBundle_GetModuleName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** moduleName)-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -100,6 +104,8 @@ BundleManager_ErrorCode OH_NativeBundle_GetAbilityName(OH_NativeBundle_AbilityRe
 
 获取组件名。在使用该接口之后，为了防止内存泄漏，需要手动释放接口返回的指针。
 
+<!--Device-BundleManager_ErrorCode OH_NativeBundle_GetAbilityName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** abilityName)--><!--Device-BundleManager_ErrorCode OH_NativeBundle_GetAbilityName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** abilityName)-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 21
@@ -126,6 +132,8 @@ BundleManager_ErrorCode OH_NativeBundle_GetLabel(OH_NativeBundle_AbilityResource
 **描述：**
 
 获取组件的应用名称。在使用该接口之后，为了防止内存泄漏，需要手动释放接口返回的指针。
+
+<!--Device-BundleManager_ErrorCode OH_NativeBundle_GetLabel(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** label)--><!--Device-BundleManager_ErrorCode OH_NativeBundle_GetLabel(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** label)-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -154,6 +162,8 @@ BundleManager_ErrorCode OH_NativeBundle_GetAppIndex(OH_NativeBundle_AbilityResou
 
 获取组件的分身索引。
 
+<!--Device-BundleManager_ErrorCode OH_NativeBundle_GetAppIndex(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, int* appIndex)--><!--Device-BundleManager_ErrorCode OH_NativeBundle_GetAppIndex(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, int* appIndex)-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 21
@@ -180,6 +190,8 @@ BundleManager_ErrorCode OH_NativeBundle_CheckDefaultApp(OH_NativeBundle_AbilityR
 **描述：**
 
 查询组件所属的应用是否为默认应用。
+
+<!--Device-BundleManager_ErrorCode OH_NativeBundle_CheckDefaultApp(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, bool* isDefault)--><!--Device-BundleManager_ErrorCode OH_NativeBundle_CheckDefaultApp(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, bool* isDefault)-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -208,6 +220,8 @@ BundleManager_ErrorCode OH_AbilityResourceInfo_Destroy(OH_NativeBundle_AbilityRe
 
 释放组件资源信息的内存。
 
+<!--Device-BundleManager_ErrorCode OH_AbilityResourceInfo_Destroy(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, size_t count)--><!--Device-BundleManager_ErrorCode OH_AbilityResourceInfo_Destroy(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, size_t count)-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 21
@@ -235,6 +249,8 @@ int OH_NativeBundle_GetSize()
 
 获取单个结构体[OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)的大小。
 
+<!--Device-int OH_NativeBundle_GetSize()--><!--Device-int OH_NativeBundle_GetSize()-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 21
@@ -254,6 +270,8 @@ BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_Ab
 **描述：**
 
 获取组件图标资源对应的DrawableDescriptor对象。在使用该接口之后，为了防止内存泄漏，需要手动调用[OH_AbilityResourceInfo_Destroy](capi-ability-resource-info-h.md#oh_abilityresourceinfo_destroy) 释放接口返回的指针。
+
+<!--Device-BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, ArkUI_DrawableDescriptor** drawableIcon)--><!--Device-BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, ArkUI_DrawableDescriptor** drawableIcon)-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

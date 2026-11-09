@@ -8,11 +8,13 @@ typedef struct ArkUI_RenderContentModifier* ArkUI_RenderContentModifierHandle
 
 定义渲染内容修改器指针，用于引用内容修改器。内容修改器可挂载到渲染节点，并附加渲染属性或设置onDraw回调。
 
+<!--Device-typedef struct ArkUI_RenderContentModifier* ArkUI_RenderContentModifierHandle--><!--Device-typedef struct ArkUI_RenderContentModifier* ArkUI_RenderContentModifierHandle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
-**相关模块：** [ArkUI_RenderNodeUtils](capi-others-arkui-rendernodeutils.md)
+**相关模块：** [ArkUI_RenderNodeUtils](capi-arkui-arkui-rendernodeutils.md)
 
 **所在头文件：** [native_render.h](capi-native-render-h.md)
 

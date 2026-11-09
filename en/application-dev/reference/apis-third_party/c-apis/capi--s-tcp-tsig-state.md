@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct s_tcp_tsig_state {...}--><!--Device-struct s_tcp_tsig_state {...}-End-->
+
 ## Summary
 
 ### Member variables

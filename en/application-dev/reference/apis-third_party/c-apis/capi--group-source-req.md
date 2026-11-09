@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct group_source_req {...}--><!--Device-struct group_source_req {...}-End-->
+
 ## Summary
 
 ### Member variables

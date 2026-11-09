@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPerformanceCounterKHR {...}--><!--Device-struct VkPerformanceCounterKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

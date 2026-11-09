@@ -37,6 +37,8 @@ Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options
 
 Obtains the **needsPackDfxData** parameter in the OH_PackingOptions struct.
 
+<!--Device-Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options, bool *needsPackDfxData)--><!--Device-Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options, bool *needsPackDfxData)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 26.0.0
@@ -65,6 +67,8 @@ Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options
 **Description**
 
 Sets the **needsPackDfxData** parameter in the OH_PackingOptions struct.
+
+<!--Device-Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options, bool needsPackDfxData)--><!--Device-Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options, bool needsPackDfxData)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
@@ -95,6 +99,8 @@ Image_ErrorCode OH_PackingOptions_SetC2paDataSize(OH_PackingOptions *options, ui
 
 Sets the C2PA data size in the OH_PackingOptions struct. The default value is 0, indicating no reserved space is added.
 
+<!--Device-Image_ErrorCode OH_PackingOptions_SetC2paDataSize(OH_PackingOptions *options, uint32_t c2paDataSize)--><!--Device-Image_ErrorCode OH_PackingOptions_SetC2paDataSize(OH_PackingOptions *options, uint32_t c2paDataSize)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 26.0.1
@@ -123,6 +129,8 @@ Image_ErrorCode OH_PackingOptions_GetC2paDataSize(const OH_PackingOptions *optio
 **Description**
 
 Obtains the C2PA data size in the OH_PackingOptions struct.
+
+<!--Device-Image_ErrorCode OH_PackingOptions_GetC2paDataSize(const OH_PackingOptions *options, uint32_t *c2paDataSize)--><!--Device-Image_ErrorCode OH_PackingOptions_GetC2paDataSize(const OH_PackingOptions *options, uint32_t *c2paDataSize)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.ImagePacker
 

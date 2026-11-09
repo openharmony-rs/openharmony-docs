@@ -46,6 +46,8 @@ Camera_ErrorCode OH_CameraDevice_GetCameraOrientation(Camera_Device* camera, uin
 
 Obtains the sensor direction of a camera device.
 
+<!--Device-Camera_ErrorCode OH_CameraDevice_GetCameraOrientation(Camera_Device* camera, uint32_t* orientation)--><!--Device-Camera_ErrorCode OH_CameraDevice_GetCameraOrientation(Camera_Device* camera, uint32_t* orientation)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
@@ -72,6 +74,8 @@ Camera_ErrorCode OH_CameraDevice_GetHostDeviceName(Camera_Device* camera, char**
 **Description**
 
 Obtains the name of a remote device.
+
+<!--Device-Camera_ErrorCode OH_CameraDevice_GetHostDeviceName(Camera_Device* camera, char** hostDeviceName)--><!--Device-Camera_ErrorCode OH_CameraDevice_GetHostDeviceName(Camera_Device* camera, char** hostDeviceName)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -100,6 +104,8 @@ Camera_ErrorCode OH_CameraDevice_GetHostDeviceType(Camera_Device* camera, Camera
 
 Obtains the type of a remote device.
 
+<!--Device-Camera_ErrorCode OH_CameraDevice_GetHostDeviceType(Camera_Device* camera, Camera_HostDeviceType* hostDeviceType)--><!--Device-Camera_ErrorCode OH_CameraDevice_GetHostDeviceType(Camera_Device* camera, Camera_HostDeviceType* hostDeviceType)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 15
@@ -126,6 +132,8 @@ Camera_ErrorCode OH_CameraDevice_GetLensEquivalentFocalLengths(const Camera_Devi
 **Description**
 
 Gets the equivalent focal lengths of a camera device.
+
+<!--Device-Camera_ErrorCode OH_CameraDevice_GetLensEquivalentFocalLengths(const Camera_Device* camera, uint32_t** equivalentFocalLengths, uint32_t* size)--><!--Device-Camera_ErrorCode OH_CameraDevice_GetLensEquivalentFocalLengths(const Camera_Device* camera, uint32_t** equivalentFocalLengths, uint32_t* size)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -155,6 +163,8 @@ Camera_ErrorCode OH_CameraDevice_IsLogicalCamera(const Camera_Device* camera, bo
 
 Checks if a camera device is a logical camera.
 
+<!--Device-Camera_ErrorCode OH_CameraDevice_IsLogicalCamera(const Camera_Device* camera, bool* isLogicalCamera)--><!--Device-Camera_ErrorCode OH_CameraDevice_IsLogicalCamera(const Camera_Device* camera, bool* isLogicalCamera)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
@@ -181,6 +191,8 @@ Camera_ErrorCode OH_CameraDevice_GetLogicalCameraConstituentCameraDevices(const 
 **Description**
 
 Gets the constituent camera devices of a logical camera. Release resources of the constituent cameras by calling [OH_CameraDevice_DeleteConstituentCameraDevices](capi-camera-device-h.md#oh_cameradevice_deleteconstituentcameradevices) .
+
+<!--Device-Camera_ErrorCode OH_CameraDevice_GetLogicalCameraConstituentCameraDevices(const Camera_Device* logicalCamera, Camera_Device** constituentCameras, uint32_t* size)--><!--Device-Camera_ErrorCode OH_CameraDevice_GetLogicalCameraConstituentCameraDevices(const Camera_Device* logicalCamera, Camera_Device** constituentCameras, uint32_t* size)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -210,6 +222,8 @@ Camera_ErrorCode OH_CameraDevice_DeleteConstituentCameraDevices(const Camera_Dev
 
 delete the constituent cameras of logicalCamera.
 
+<!--Device-Camera_ErrorCode OH_CameraDevice_DeleteConstituentCameraDevices(const Camera_Device* logicalCamera, Camera_Device* constituentCameras, uint32_t size)--><!--Device-Camera_ErrorCode OH_CameraDevice_DeleteConstituentCameraDevices(const Camera_Device* logicalCamera, Camera_Device* constituentCameras, uint32_t size)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
@@ -238,6 +252,8 @@ Camera_ErrorCode OH_CameraDevice_GetLensFocalLength(const Camera_Device* camera,
 
 Gets the focal length of a camera lens.
 
+<!--Device-Camera_ErrorCode OH_CameraDevice_GetLensFocalLength(const Camera_Device* camera, float* lensFocalLength)--><!--Device-Camera_ErrorCode OH_CameraDevice_GetLensFocalLength(const Camera_Device* camera, float* lensFocalLength)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
@@ -265,6 +281,8 @@ Camera_ErrorCode OH_CameraDevice_GetMinimumFocusDistance(const Camera_Device* ca
 
 Gets the minimum focus distance of a camera device.
 
+<!--Device-Camera_ErrorCode OH_CameraDevice_GetMinimumFocusDistance(const Camera_Device* camera, float* minimumFocusDistance)--><!--Device-Camera_ErrorCode OH_CameraDevice_GetMinimumFocusDistance(const Camera_Device* camera, float* minimumFocusDistance)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
@@ -291,6 +309,8 @@ Camera_ErrorCode OH_CameraDevice_GetLensDistortion(const Camera_Device* camera, 
 **Description**
 
 Gets the lens distortion parameters of a camera device.
+
+<!--Device-Camera_ErrorCode OH_CameraDevice_GetLensDistortion(const Camera_Device* camera, float** lens, uint32_t* size)--><!--Device-Camera_ErrorCode OH_CameraDevice_GetLensDistortion(const Camera_Device* camera, float** lens, uint32_t* size)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -320,6 +340,8 @@ Camera_ErrorCode OH_CameraDevice_GetIntrinsicCalibration(const Camera_Device* ca
 
 Gets the intrinsic calibration parameters of a camera device.
 
+<!--Device-Camera_ErrorCode OH_CameraDevice_GetIntrinsicCalibration(const Camera_Device* camera, float** intrinsicCalibration, uint32_t* size)--><!--Device-Camera_ErrorCode OH_CameraDevice_GetIntrinsicCalibration(const Camera_Device* camera, float** intrinsicCalibration, uint32_t* size)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
@@ -347,6 +369,8 @@ Camera_ErrorCode OH_CameraDevice_GetSensorPhysicalSize(const Camera_Device* came
 **Description**
 
 Gets the physical size of a camera sensor.
+
+<!--Device-Camera_ErrorCode OH_CameraDevice_GetSensorPhysicalSize(const Camera_Device* camera, float* width, float* height)--><!--Device-Camera_ErrorCode OH_CameraDevice_GetSensorPhysicalSize(const Camera_Device* camera, float* width, float* height)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -376,6 +400,8 @@ Camera_ErrorCode OH_CameraDevice_GetSensorPixelArraySize(const Camera_Device* ca
 
 Gets the pixel array size of a camera sensor.
 
+<!--Device-Camera_ErrorCode OH_CameraDevice_GetSensorPixelArraySize(const Camera_Device* camera, uint32_t* width, uint32_t* height)--><!--Device-Camera_ErrorCode OH_CameraDevice_GetSensorPixelArraySize(const Camera_Device* camera, uint32_t* width, uint32_t* height)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
@@ -404,6 +430,8 @@ Camera_ErrorCode OH_CameraDevice_GetSensorColorFilterArrangement(const Camera_De
 
 Gets the color filter arrangement of a camera sensor.
 
+<!--Device-Camera_ErrorCode OH_CameraDevice_GetSensorColorFilterArrangement(const Camera_Device* camera, OH_Camera_SensorColorFilterArrangement* sensorCFA)--><!--Device-Camera_ErrorCode OH_CameraDevice_GetSensorColorFilterArrangement(const Camera_Device* camera, OH_Camera_SensorColorFilterArrangement* sensorCFA)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
@@ -430,6 +458,8 @@ Camera_ErrorCode OH_CameraDevice_GetAutomotiveCameraPosition(const Camera_Device
 **Description**
 
 Gets the automotive position of a camera sensor.
+
+<!--Device-Camera_ErrorCode OH_CameraDevice_GetAutomotiveCameraPosition(const Camera_Device* camera, OH_Camera_AutomotiveCameraPosition* automotiveCameraPosition)--><!--Device-Camera_ErrorCode OH_CameraDevice_GetAutomotiveCameraPosition(const Camera_Device* camera, OH_Camera_AutomotiveCameraPosition* automotiveCameraPosition)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 

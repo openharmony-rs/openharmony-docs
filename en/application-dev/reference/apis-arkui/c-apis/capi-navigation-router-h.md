@@ -33,6 +33,8 @@ enum ArkUI_NavDestinationState
 
 Enumerates the states of the **NavDestination** component, used to describe the lifecycle state changes of **<br>NavDestination** during navigation.
 
+<!--Device-ArkUI_NavDestinationState--><!--Device-ArkUI_NavDestinationState-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -60,6 +62,8 @@ enum ArkUI_RouterPageState
 **Description**
 
 Enumerates the states of the Router component (route page), used to describe the lifecycle state changes of **Router** during routing.
+
+<!--Device-ArkUI_RouterPageState--><!--Device-ArkUI_RouterPageState-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

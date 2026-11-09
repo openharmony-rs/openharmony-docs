@@ -8,11 +8,13 @@ typedef struct OH_NativeXComponent_MouseEvent {...} OH_NativeXComponent_MouseEve
 
 Represents the mouse event information.
 
+<!--Device-typedef struct OH_NativeXComponent_MouseEvent {...} OH_NativeXComponent_MouseEvent--><!--Device-typedef struct OH_NativeXComponent_MouseEvent {...} OH_NativeXComponent_MouseEvent-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 9
 
-**Related module**: [OH_NativeXComponent Native XComponent](capi-others-oh-nativexcomponent-native-xcomponent.md)
+**Related module**: [OH_NativeXComponent Native XComponent](capi-arkui-oh-nativexcomponent-native-xcomponent.md)
 
 **Header file**: [native_interface_xcomponent.h](capi-native-interface-xcomponent-h.md)
 

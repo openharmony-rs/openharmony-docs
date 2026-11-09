@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSamplerBorderColorComponentMappingCreateInfoEXT {...}--><!--Device-struct VkSamplerBorderColorComponentMappingCreateInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

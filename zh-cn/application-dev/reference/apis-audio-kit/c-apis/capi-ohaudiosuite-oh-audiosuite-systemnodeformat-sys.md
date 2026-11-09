@@ -8,13 +8,15 @@ struct OH_AudioSuite_SystemNodeFormat {...}
 
 定义系统节点的基本音频格式。
 
+<!--Device-struct OH_AudioSuite_SystemNodeFormat {...}--><!--Device-struct OH_AudioSuite_SystemNodeFormat {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
-**相关模块：** [OHAudioSuite](capi-others-ohaudiosuite.md)
+**相关模块：** [OHAudioSuite](capi-audio-kit-ohaudiosuite.md)
 
 **所在头文件：** [native_audio_suite_base.h（系统接口）](capi-native-audio-suite-base-h-sys.md)
 

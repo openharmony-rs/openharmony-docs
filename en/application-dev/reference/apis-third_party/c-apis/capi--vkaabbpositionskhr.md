@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkAabbPositionsKHR {...}--><!--Device-struct VkAabbPositionsKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

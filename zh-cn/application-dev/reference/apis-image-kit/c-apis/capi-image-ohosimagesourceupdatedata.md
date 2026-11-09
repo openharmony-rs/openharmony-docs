@@ -8,11 +8,13 @@ struct OhosImageSourceUpdateData {...}
 
 定义图像源更新数据选项，由[OH_ImageSource_UpdateData](capi-image-source-mdk-h.md#oh_imagesource_updatedata)获取。
 
+<!--Device-struct OhosImageSourceUpdateData {...}--><!--Device-struct OhosImageSourceUpdateData {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 10
 
-**相关模块：** [Image](capi-others-image.md)
+**相关模块：** [Image](capi-image-kit-image.md)
 
 **所在头文件：** [image_source_mdk.h](capi-image-source-mdk-h.md)
 

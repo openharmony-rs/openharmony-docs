@@ -8,11 +8,13 @@ typedef struct ArkUI_AnimatorEvent ArkUI_AnimatorEvent
 
 定义animator回调事件对象，用于在动画状态变化回调中接收事件。
 
+<!--Device-typedef struct ArkUI_AnimatorEvent ArkUI_AnimatorEvent--><!--Device-typedef struct ArkUI_AnimatorEvent ArkUI_AnimatorEvent-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [native_animate.h](capi-native-animate-h.md)
 

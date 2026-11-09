@@ -43,6 +43,8 @@ enum OH_AudioAccessoryType
 
 Enumerates audio accessory connection types.
 
+<!--Device-OH_AudioAccessoryType--><!--Device-OH_AudioAccessoryType-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 26.0.0

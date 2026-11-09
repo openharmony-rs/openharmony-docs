@@ -8,11 +8,13 @@ struct Rdb_TableDetails {...}
 
 Describes the [Rdb_Statistic](capi-rdb-rdb-statistic.md) details of the table.
 
+<!--Device-struct Rdb_TableDetails {...}--><!--Device-struct Rdb_TableDetails {...}-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 11
 
-**Related module**: [RDB](capi-others-rdb.md)
+**Related module**: [RDB](capi-arkdata-rdb.md)
 
 **Header file**: [relational_store.h](capi-relational-store-h.md)
 

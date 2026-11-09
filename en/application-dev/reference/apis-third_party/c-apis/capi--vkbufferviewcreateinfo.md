@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkBufferViewCreateInfo {...}--><!--Device-struct VkBufferViewCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

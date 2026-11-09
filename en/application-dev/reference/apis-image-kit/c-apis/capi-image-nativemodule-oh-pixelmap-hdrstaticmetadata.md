@@ -8,11 +8,13 @@ struct OH_Pixelmap_HdrStaticMetadata {...}
 
 Value for HDR_STATIC_METADATA.
 
+<!--Device-struct OH_Pixelmap_HdrStaticMetadata {...}--><!--Device-struct OH_Pixelmap_HdrStaticMetadata {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
-**Related module**: [Image_NativeModule](capi-others-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 **Header file**: [pixelmap_native.h](capi-pixelmap-native-h.md)
 

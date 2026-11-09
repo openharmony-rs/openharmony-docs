@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkValidationCacheCreateInfoEXT {...}--><!--Device-struct VkValidationCacheCreateInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

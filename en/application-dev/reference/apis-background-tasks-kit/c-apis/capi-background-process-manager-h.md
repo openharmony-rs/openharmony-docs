@@ -42,6 +42,8 @@ enum BackgroundProcessManager_ProcessPriority
 
 Enumerates child process priorities.
 
+<!--Device-BackgroundProcessManager_ProcessPriority--><!--Device-BackgroundProcessManager_ProcessPriority-End-->
+
 **System capability**: SystemCapability.Resourceschedule.BackgroundProcessManager
 
 **Since**: 17
@@ -60,6 +62,8 @@ enum BackgroundProcessManager_ErrorCode
 **Description**
 
 Enumerates the error codes used by the background child process management.
+
+<!--Device-BackgroundProcessManager_ErrorCode--><!--Device-BackgroundProcessManager_ErrorCode-End-->
 
 **System capability**: SystemCapability.Resourceschedule.BackgroundProcessManager
 
@@ -83,6 +87,8 @@ int OH_BackgroundProcessManager_SetProcessPriority(int pid, BackgroundProcessMan
 **Description**
 
 Sets the child process priority. After a child process is suppressed, the CPU resources that can be obtained will be limited. If the scheduling policy of the main process changes, for example, from the background to the foreground, the child process changes with the main process. To suppress the child process, call this API again.
+
+<!--Device-int OH_BackgroundProcessManager_SetProcessPriority(int pid, BackgroundProcessManager_ProcessPriority priority)--><!--Device-int OH_BackgroundProcessManager_SetProcessPriority(int pid, BackgroundProcessManager_ProcessPriority priority)-End-->
 
 **System capability**: SystemCapability.Resourceschedule.BackgroundProcessManager
 
@@ -110,6 +116,8 @@ int OH_BackgroundProcessManager_ResetProcessPriority(int pid)
 **Description**
 
 Unsuppresses the child process. In this case, the child process follows the scheduling policy of the main process. If the scheduling policy of the main process changes, for example, from the background to the foreground, the child process changes with the main process. The effect is the same as calling **resetProcessPriority**.
+
+<!--Device-int OH_BackgroundProcessManager_ResetProcessPriority(int pid)--><!--Device-int OH_BackgroundProcessManager_ResetProcessPriority(int pid)-End-->
 
 **System capability**: SystemCapability.Resourceschedule.BackgroundProcessManager
 

@@ -8,11 +8,13 @@ struct OH_TrafficFilter_PacketDesc {...}
 
 报文描述符<br> 包含五元组信息和报文数据
 
+<!--Device-struct OH_TrafficFilter_PacketDesc {...}--><!--Device-struct OH_TrafficFilter_PacketDesc {...}-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 **起始版本：** 26.0.1
 
-**相关模块：** [TrafficFilter](capi-others-trafficfilter.md)
+**相关模块：** [TrafficFilter](capi-network-kit-trafficfilter.md)
 
 **所在头文件：** [net_trafficfilter_type.h](capi-net-trafficfilter-type-h.md)
 

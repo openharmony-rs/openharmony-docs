@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkExternalBufferProperties {...}--><!--Device-struct VkExternalBufferProperties {...}-End-->
+
 ## Summary
 
 ### Member variables

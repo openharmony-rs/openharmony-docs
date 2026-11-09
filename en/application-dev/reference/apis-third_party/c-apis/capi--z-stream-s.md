@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct z_stream_s {...}--><!--Device-struct z_stream_s {...}-End-->
+
 ## Summary
 
 ### Member variables

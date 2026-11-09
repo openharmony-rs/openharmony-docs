@@ -18,6 +18,30 @@ Defines native api of ArkTS 1.2 native module.
 
 | Name | Description |
 | -- | -- |
+| [\_\_ani_ref](capi----ani-ref.md) | Defines native api of ArkTS 1.2 native module. |
+| [\_\_ani_object](capi----ani-object.md) |  |
+| [\_\_ani_fn_object](capi----ani-fn-object.md) |  |
+| [\_\_ani_enum_item](capi----ani-enum-item.md) |  |
+| [\_\_ani_error](capi----ani-error.md) |  |
+| [\_\_ani_tuple_value](capi----ani-tuple-value.md) |  |
+| [\_\_ani_arraybuffer](capi----ani-arraybuffer.md) |  |
+| [\_\_ani_string](capi----ani-string.md) |  |
+| [\_\_ani_type](capi----ani-type.md) |  |
+| [\_\_ani_class](capi----ani-class.md) |  |
+| [\_\_ani_module](capi----ani-module.md) |  |
+| [\_\_ani_namespace](capi----ani-namespace.md) |  |
+| [\_\_ani_enum](capi----ani-enum.md) |  |
+| [\_\_ani_array](capi----ani-array.md) |  |
+| [\_\_ani_fixedarray](capi----ani-fixedarray.md) |  |
+| [\_\_ani_valuearray](capi----ani-valuearray.md) |  |
+| [\_\_ani_valuearray_boolean](capi----ani-valuearray-boolean.md) |  |
+| [\_\_ani_valuearray_char](capi----ani-valuearray-char.md) |  |
+| [\_\_ani_valuearray_byte](capi----ani-valuearray-byte.md) |  |
+| [\_\_ani_valuearray_short](capi----ani-valuearray-short.md) |  |
+| [\_\_ani_valuearray_int](capi----ani-valuearray-int.md) |  |
+| [\_\_ani_valuearray_long](capi----ani-valuearray-long.md) |  |
+| [\_\_ani_valuearray_float](capi----ani-valuearray-float.md) |  |
+| [\_\_ani_valuearray_double](capi----ani-valuearray-double.md) |  |
 | [ani_value](capi--ani-value.md) |  |
 | [ani_native_function](capi--ani-native-function.md) |  |
 | [ani_option](capi--ani-option.md) |  |
@@ -59,6 +83,8 @@ enum
 
 Defines native api of ArkTS 1.2 native module.
 
+<!--Device---><!--Device--End-->
+
 **System capability**: SystemCapability.ArkCompiler.ANI
 
 **Since**: 23
@@ -76,6 +102,8 @@ enum
 
 Defines native api of ArkTS 1.2 native module.
 
+<!--Device---><!--Device--End-->
+
 **System capability**: SystemCapability.ArkCompiler.ANI
 
 **Since**: 23
@@ -92,6 +120,8 @@ enum ani_status
 **Description**
 
 Defines native api of ArkTS 1.2 native module.
+
+<!--Device-ani_status--><!--Device-ani_status-End-->
 
 **System capability**: SystemCapability.ArkCompiler.ANI
 

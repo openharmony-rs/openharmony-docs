@@ -65,6 +65,8 @@ enum Ability_NativeChildProcess_ErrCode
 
 Defines an enum for the error codes used by the native child process module.
 
+<!--Device-Ability_NativeChildProcess_ErrCode--><!--Device-Ability_NativeChildProcess_ErrCode-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 12
@@ -96,6 +98,8 @@ enum NativeChildProcess_IsolationMode
 
 Enumerates the sharing modes available for the data sandbox and network environment of a native child process.
 
+<!--Device-NativeChildProcess_IsolationMode--><!--Device-NativeChildProcess_IsolationMode-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 13
@@ -118,6 +122,8 @@ Ability_ChildProcessConfigs* OH_Ability_CreateChildProcessConfigs(void)
 
 Creates a child process configuration object. When this object is no longer needed, call [OH_Ability_DestroyChildProcessConfigs](capi-native-child-process-h.md#oh_ability_destroychildprocessconfigs) to destroy the object to prevent memory leakage.
 
+<!--Device-Ability_ChildProcessConfigs* OH_Ability_CreateChildProcessConfigs(void)--><!--Device-Ability_ChildProcessConfigs* OH_Ability_CreateChildProcessConfigs(void)-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 20
@@ -137,6 +143,8 @@ Ability_NativeChildProcess_ErrCode OH_Ability_DestroyChildProcessConfigs(Ability
 **Description**
 
 Destroys a child process configuration object and releases its memory. After this function is called, do not use the destroyed object.
+
+<!--Device-Ability_NativeChildProcess_ErrCode OH_Ability_DestroyChildProcessConfigs(Ability_ChildProcessConfigs* configs)--><!--Device-Ability_NativeChildProcess_ErrCode OH_Ability_DestroyChildProcessConfigs(Ability_ChildProcessConfigs* configs)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -163,6 +171,8 @@ Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationMo
 **Description**
 
 Sets the sharing mode of the data sandbox and network environment for a child process configuration object. For details, see [NativeChildProcess_IsolationMode](capi-native-child-process-h.md#nativechildprocess_isolationmode). This setting takes effect only when [OH_Ability_StartNativeChildProcessWithConfigs](capi-native-child-process-h.md#oh_ability_startnativechildprocesswithconfigs) or [OH_Ability_CreateNativeChildProcessWithConfigs](capi-native-child-process-h.md#oh_ability_createnativechildprocesswithconfigs) is called.
+
+<!--Device-Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationMode(Ability_ChildProcessConfigs* configs, NativeChildProcess_IsolationMode isolationMode)--><!--Device-Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationMode(Ability_ChildProcessConfigs* configs, NativeChildProcess_IsolationMode isolationMode)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -191,6 +201,8 @@ Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationUi
 
 Sets whether the child process uses an independent UID. For example, in browser security hardening scenarios, you can isolate the UIDs of the main process and its child processes.
 
+<!--Device-Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationUid(Ability_ChildProcessConfigs* configs, bool isolationUid)--><!--Device-Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationUid(Ability_ChildProcessConfigs* configs, bool isolationUid)-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 21
@@ -217,6 +229,8 @@ Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetProcessName
 **Description**
 
 Sets the process name in a child process configuration object.
+
+<!--Device-Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetProcessName(Ability_ChildProcessConfigs* configs, const char* processName)--><!--Device-Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetProcessName(Ability_ChildProcessConfigs* configs, const char* processName)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -245,6 +259,8 @@ typedef void (*OH_Ability_OnNativeChildProcessStarted)(int errCode, OHIPCRemoteP
 
 Defines a callback function for notifying the child process startup result.
 
+<!--Device-typedef void (*OH_Ability_OnNativeChildProcessStarted)(int errCode, OHIPCRemoteProxy *remoteProxy)--><!--Device-typedef void (*OH_Ability_OnNativeChildProcessStarted)(int errCode, OHIPCRemoteProxy *remoteProxy)-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 12
@@ -254,7 +270,7 @@ Defines a callback function for notifying the child process startup result.
 | Parameter | Description |
 | -- | -- |
 | int errCode | Error code returned by the callback function. [NCP_NO_ERROR](capi-native-child-process-h.md#ability_nativechildprocess_errcode): The child process is created successfully. [NCP_ERR_LIB_LOADING_FAILED](capi-native-child-process-h.md#ability_nativechildprocess_errcode): Loading the dynamic library file fails or the necessary export function is not implemented in the dynamic library. [NCP_ERR_CONNECTION_FAILED](capi-native-child-process-h.md#ability_nativechildprocess_errcode): The **OnConnect** method implemented in the dynamic library does not return a valid IPC stub pointer. For details, see [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode). |
-| [OHIPCRemoteProxy](../../apis-ipc-kit/c-apis/capi-ohipcparcel-ohipcremoteproxy.md) *remoteProxy | Pointer to the IPC object of the child process. If an exception occurs, the value may be nullptr. The object must be released by calling [OH_IPCRemoteProxy_Destroy](capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_destroy) when it is no longer needed. |
+| [OHIPCRemoteProxy](../../apis-ipc-kit/c-apis/capi-ohipcparcel-ohipcremoteproxy.md) *remoteProxy | Pointer to the IPC object of the child process. If an exception occurs, the value may be nullptr. The object must be released by calling [OH_IPCRemoteProxy_Destroy](../../apis-ipc-kit/c-apis/capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_destroy) when it is no longer needed. |
 
 **Reference**:
 
@@ -281,6 +297,8 @@ Creates a child process, loads the specified dynamic library file, and returns t
 6. NativeChildProcess_MainProc() Main process:
 7. onProcessStartedCallback(ipcRemote, errCode) Child process:
 8. The child process exits after the NativeChildProcess_MainProc() function is returned.
+
+<!--Device-int OH_Ability_CreateNativeChildProcess(const char* libName, OH_Ability_OnNativeChildProcessStarted onProcessStarted)--><!--Device-int OH_Ability_CreateNativeChildProcess(const char* libName, OH_Ability_OnNativeChildProcessStarted onProcessStarted)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -313,6 +331,8 @@ Ability_NativeChildProcess_ErrCode OH_Ability_CreateNativeChildProcessWithConfig
 **Description**
 
 Creates a child process based on a child process configuration object and loads the specified dynamic library file. The startup result is asynchronously communicated to the caller via a callback. The callback runs in a separate thread. You must ensure thread synchronization and avoid time-consuming operations to prevent delays.
+
+<!--Device-Ability_NativeChildProcess_ErrCode OH_Ability_CreateNativeChildProcessWithConfigs(const char* libName, Ability_ChildProcessConfigs* configs, OH_Ability_OnNativeChildProcessStarted onProcessStarted)--><!--Device-Ability_NativeChildProcess_ErrCode OH_Ability_CreateNativeChildProcessWithConfigs(const char* libName, Ability_ChildProcessConfigs* configs, OH_Ability_OnNativeChildProcessStarted onProcessStarted)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -351,6 +371,8 @@ Starts a native child process, loads the specified dynamic library file, and cal
 3. dlsym("Main")
 4. Main(args)
 5. The child process exits after the Main(args) function is returned
+
+<!--Device-Ability_NativeChildProcess_ErrCode OH_Ability_StartNativeChildProcess(const char* entry, NativeChildProcess_Args args, NativeChildProcess_Options options, int32_t *pid)--><!--Device-Ability_NativeChildProcess_ErrCode OH_Ability_StartNativeChildProcess(const char* entry, NativeChildProcess_Args args, NativeChildProcess_Options options, int32_t *pid)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -391,6 +413,8 @@ Starts a native child process based on the child process configuration object, l
 4. Main(args)
 5. The child process exits after the Main(args) function is returned
 
+<!--Device-Ability_NativeChildProcess_ErrCode OH_Ability_StartNativeChildProcessWithConfigs(const char* entry, NativeChildProcess_Args args, Ability_ChildProcessConfigs* configs, int32_t *pid)--><!--Device-Ability_NativeChildProcess_ErrCode OH_Ability_StartNativeChildProcessWithConfigs(const char* entry, NativeChildProcess_Args args, Ability_ChildProcessConfigs* configs, int32_t *pid)-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 20
@@ -420,6 +444,8 @@ NativeChildProcess_Args* OH_Ability_GetCurrentChildProcessArgs(void)
 
 Used by a child process, after being started by calling [OH_Ability_StartNativeChildProcess](capi-native-child-process-h.md#oh_ability_startnativechildprocess), to obtain the startup parameter [NativeChildProcess_Args](capi-childprocess-nativechildprocess-args.md) from any .so file or child thread.
 
+<!--Device-NativeChildProcess_Args* OH_Ability_GetCurrentChildProcessArgs(void)--><!--Device-NativeChildProcess_Args* OH_Ability_GetCurrentChildProcessArgs(void)-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 17
@@ -439,6 +465,8 @@ typedef void (*OH_Ability_OnNativeChildProcessExit)(int32_t pid, int32_t signal)
 **Description**
 
 Defines a callback to listen for child process exit.
+
+<!--Device-typedef void (*OH_Ability_OnNativeChildProcessExit)(int32_t pid, int32_t signal)--><!--Device-typedef void (*OH_Ability_OnNativeChildProcessExit)(int32_t pid, int32_t signal)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -460,6 +488,8 @@ Ability_NativeChildProcess_ErrCode OH_Ability_RegisterNativeChildProcessExitCall
 **Description**
 
 Registers a callback to listen for child process exit. When a child process started by calling [OH_Ability_StartNativeChildProcess](capi-native-child-process-h.md#oh_ability_startnativechildprocess) or startNativeChildProcess in @ohos.app.ability.childProcessManager exits abnormally, the callback function is invoked. If the same callback function is registered multiple times, the callback function is executed only once when the child process exits.
+
+<!--Device-Ability_NativeChildProcess_ErrCode OH_Ability_RegisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)--><!--Device-Ability_NativeChildProcess_ErrCode OH_Ability_RegisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -487,6 +517,8 @@ Ability_NativeChildProcess_ErrCode OH_Ability_UnregisterNativeChildProcessExitCa
 
 Unregisters the callback used to listen for child process exit.
 
+<!--Device-Ability_NativeChildProcess_ErrCode OH_Ability_UnregisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)--><!--Device-Ability_NativeChildProcess_ErrCode OH_Ability_UnregisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 20
@@ -512,6 +544,8 @@ Ability_NativeChildProcess_ErrCode OH_Ability_KillChildProcess(int32_t pid)
 **Description**
 
 Terminates a child process created by the current process.
+
+<!--Device-Ability_NativeChildProcess_ErrCode OH_Ability_KillChildProcess(int32_t pid)--><!--Device-Ability_NativeChildProcess_ErrCode OH_Ability_KillChildProcess(int32_t pid)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -539,6 +573,8 @@ bool OH_Ability_IsNativeChildProcessSupported()
 
 Check whether the caller is allowed to use native process capabilities.
 
+<!--Device-bool OH_Ability_IsNativeChildProcessSupported()--><!--Device-bool OH_Ability_IsNativeChildProcessSupported()-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
@@ -563,6 +599,8 @@ Acquires child process infos of the current application.<br> Includes child proc
 - childProcessManager.startChildProcess (non-SELF_FORK mode)
 - childProcessManager.startArkChildProcess
 - childProcessManager.startNativeChildProcess
+
+<!--Device-Ability_NativeChildProcess_ErrCode OH_Ability_AcquireChildProcessInfos(OH_AbilityRuntime_ChildProcessInfosHandle* infos, uint32_t* count)--><!--Device-Ability_NativeChildProcess_ErrCode OH_Ability_AcquireChildProcessInfos(OH_AbilityRuntime_ChildProcessInfosHandle* infos, uint32_t* count)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

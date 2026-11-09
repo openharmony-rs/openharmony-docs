@@ -46,6 +46,8 @@ const char *OH_ResourceManager_GetRawFileName(RawDir *rawDir, int index)
 
 通过索引获取rawfile目录中的文件名称。当需要遍历rawfile目录时，可以与[OH_ResourceManager_GetRawFileCount](capi-raw-dir-h.md#oh_resourcemanager_getrawfilecount)搭配使用，通过循环遍历目录。
 
+<!--Device-const char *OH_ResourceManager_GetRawFileName(RawDir *rawDir, int index)--><!--Device-const char *OH_ResourceManager_GetRawFileName(RawDir *rawDir, int index)-End-->
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 8
@@ -78,6 +80,8 @@ int OH_ResourceManager_GetRawFileCount(RawDir *rawDir)
 
 获取rawfile下子目录和文件数量。当需要遍历rawfile目录时，可以与[OH_ResourceManager_GetRawFileName](capi-raw-dir-h.md#oh_resourcemanager_getrawfilename)搭配使用，通过循环遍历目录。
 
+<!--Device-int OH_ResourceManager_GetRawFileCount(RawDir *rawDir)--><!--Device-int OH_ResourceManager_GetRawFileCount(RawDir *rawDir)-End-->
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 8
@@ -108,6 +112,8 @@ void OH_ResourceManager_CloseRawDir(RawDir *rawDir)
 **描述：**
 
 关闭已打开的RawDir对象并释放所有相关资源。遍历rawfile目录后，须调用此函数关闭目录和释放资源。
+
+<!--Device-void OH_ResourceManager_CloseRawDir(RawDir *rawDir)--><!--Device-void OH_ResourceManager_CloseRawDir(RawDir *rawDir)-End-->
 
 **系统能力：** SystemCapability.Global.ResourceManager
 

@@ -8,11 +8,13 @@ struct HiDebug_MemoryLimit {...}
 
 应用程序进程内存限制结构类型定义。
 
+<!--Device-struct HiDebug_MemoryLimit {...}--><!--Device-struct HiDebug_MemoryLimit {...}-End-->
+
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 12
 
-**相关模块：** [HiDebug](capi-others-hidebug.md)
+**相关模块：** [HiDebug](capi-performance-analysis-kit-hidebug.md)
 
 **所在头文件：** [hidebug_type.h](capi-hidebug-type-h.md)
 

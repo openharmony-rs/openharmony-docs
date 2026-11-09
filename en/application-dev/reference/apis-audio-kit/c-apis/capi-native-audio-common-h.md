@@ -35,6 +35,8 @@ enum OH_AudioCommon_Result
 
 Define the result of the function execution.
 
+<!--Device-OH_AudioCommon_Result--><!--Device-OH_AudioCommon_Result-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
@@ -65,6 +67,8 @@ enum OH_AudioScene
 
 Defines the audio scene.
 
+<!--Device-OH_AudioScene--><!--Device-OH_AudioScene-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
@@ -86,6 +90,8 @@ enum OH_AudioRingerMode
 
 Defines the ringer mode.
 
+<!--Device-OH_AudioRingerMode--><!--Device-OH_AudioRingerMode-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
@@ -105,6 +111,8 @@ enum OH_AudioNoiseReductionMode
 **Description**
 
 Enumerates the noise reduction modes.
+
+<!--Device-OH_AudioNoiseReductionMode--><!--Device-OH_AudioNoiseReductionMode-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 

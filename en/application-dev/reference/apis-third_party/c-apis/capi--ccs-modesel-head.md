@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct ccs_modesel_head {...}--><!--Device-struct ccs_modesel_head {...}-End-->
+
 ## Summary
 
 ### Member variables

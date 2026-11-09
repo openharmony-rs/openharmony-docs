@@ -8,11 +8,13 @@ typedef struct Scan_ScannerOptions {...} Scan_ScannerOptions
 
 表示一个扫描仪的可设置参数选项，用于配置扫描仪的参数，支持配置选项标题、描述、可设置范围及选项数量。每个选项由一组标题（titles）、描述（descriptions）和可设置范围（ranges）组成， 三者以平行数组的形式存储，optionCount表示选项的总数量，开发者可通过索引i（需满足0 ≤ i < optionCount）同时访问titles[i]、descriptions[i] 和ranges[i] 来获取第i个选项的完整信息。需保证titles、descriptions、ranges三者的数组长度一致且等于optionCount，否则可能无法正确获取选项的完整信息。
 
+<!--Device-typedef struct Scan_ScannerOptions {...} Scan_ScannerOptions--><!--Device-typedef struct Scan_ScannerOptions {...} Scan_ScannerOptions-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **起始版本：** 12
 
-**相关模块：** [OH_Scan](capi-others-oh-scan.md)
+**相关模块：** [OH_Scan](capi-basic-services-kit-oh-scan.md)
 
 **所在头文件：** [ohscan.h](capi-ohscan-h.md)
 

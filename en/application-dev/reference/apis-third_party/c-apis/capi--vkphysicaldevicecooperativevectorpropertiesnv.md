@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceCooperativeVectorPropertiesNV {...}--><!--Device-struct VkPhysicalDeviceCooperativeVectorPropertiesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

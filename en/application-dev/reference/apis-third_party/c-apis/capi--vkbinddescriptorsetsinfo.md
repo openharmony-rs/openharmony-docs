@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkBindDescriptorSetsInfo {...}--><!--Device-struct VkBindDescriptorSetsInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

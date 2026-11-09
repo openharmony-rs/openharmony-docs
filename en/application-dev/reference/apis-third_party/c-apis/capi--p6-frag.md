@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct p6_frag {...}--><!--Device-struct p6_frag {...}-End-->
+
 ## Summary
 
 ### Member variables

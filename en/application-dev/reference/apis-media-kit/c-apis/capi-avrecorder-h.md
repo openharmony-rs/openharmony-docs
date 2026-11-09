@@ -49,6 +49,8 @@ OH_AVRecorder *OH_AVRecorder_Create(void)
 
 Creates an AVRecorder instance. After this function is successfully called, the AVRecorder transitions to the AVRECORDER_IDLE state. After using the AVRecorder instance, you must call [OH_AVRecorder_Release][OH_AVRecorder_Release](capi-avrecorder-h.md#oh_avrecorder_release) to release resources to prevent resource leaks.
 
+<!--Device-OH_AVRecorder *OH_AVRecorder_Create(void)--><!--Device-OH_AVRecorder *OH_AVRecorder_Create(void)-End-->
+
 **Since**: 18
 
 **Returns**:
@@ -66,6 +68,8 @@ OH_AVErrCode OH_AVRecorder_Prepare(OH_AVRecorder *recorder, OH_AVRecorder_Config
 **Description**
 
 Sets AVRecorder parameters to prepare for recording. This function must be called after [OH_AVRecorder_Create][OH_AVRecorder_Create](capi-avrecorder-h.md#oh_avrecorder_create) and before [OH_AVRecorder_Start][OH_AVRecorder_Start](capi-avrecorder-h.md#oh_avrecorder_start). After this function is successfully called, the AVRecorder transitions to the **AVRECORDER_PREPARED** state.<br>If video-related parameters are not set, only audio is recorded. Similarly, if audio-related parameters are not set, only video is recorded.
+
+<!--Device-OH_AVErrCode OH_AVRecorder_Prepare(OH_AVRecorder *recorder, OH_AVRecorder_Config *config)--><!--Device-OH_AVErrCode OH_AVRecorder_Prepare(OH_AVRecorder *recorder, OH_AVRecorder_Config *config)-End-->
 
 **Since**: 18
 
@@ -92,6 +96,8 @@ OH_AVErrCode OH_AVRecorder_GetAVRecorderConfig(OH_AVRecorder *recorder, OH_AVRec
 
 Obtains the AVRecorder configuration. This function must be called after [OH_AVRecorder_Prepare][OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare). Typical use scenarios include checking whether the configuration parameters are correct before recording starts and displaying the current recording settings on the UI. <br>**config** must be set to **nullptr**. The framework layer allocates and releases the memory in a unified manner to avoid leaks or double freeing.
 
+<!--Device-OH_AVErrCode OH_AVRecorder_GetAVRecorderConfig(OH_AVRecorder *recorder, OH_AVRecorder_Config **config)--><!--Device-OH_AVErrCode OH_AVRecorder_GetAVRecorderConfig(OH_AVRecorder *recorder, OH_AVRecorder_Config **config)-End-->
+
 **Since**: 18
 
 **Parameters**:
@@ -116,6 +122,8 @@ OH_AVErrCode OH_AVRecorder_GetInputSurface(OH_AVRecorder *recorder, OHNativeWind
 **Description**
 
 Obtains an input surface. This function must be called after [OH_AVRecorder_Prepare][OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare) and before [OH_AVRecorder_Start][OH_AVRecorder_Start](capi-avrecorder-h.md#oh_avrecorder_start).<br> **window** must be set to nullptr. The framework layer allocates and releases the memory in a unified manner to avoid issues with memory management, such as leaks or double freeing.<br>The caller obtains the **surfaceBuffer** from this surface and fills in data of the video to be recorded.
+
+<!--Device-OH_AVErrCode OH_AVRecorder_GetInputSurface(OH_AVRecorder *recorder, OHNativeWindow **window)--><!--Device-OH_AVErrCode OH_AVRecorder_GetInputSurface(OH_AVRecorder *recorder, OHNativeWindow **window)-End-->
 
 **Since**: 18
 
@@ -142,6 +150,8 @@ OH_AVErrCode OH_AVRecorder_UpdateRotation(OH_AVRecorder *recorder, int32_t rotat
 
 Updates the video rotation angle. Typical use scenarios include adjusting the video orientation when the device is switched between landscape and portrait modes, and setting the video rotation angle based on the camera image capture direction. This function must be called after [OH_AVRecorder_Prepare][OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare) and before [OH_AVRecorder_Start][OH_AVRecorder_Start](capi-avrecorder-h.md#oh_avrecorder_start).
 
+<!--Device-OH_AVErrCode OH_AVRecorder_UpdateRotation(OH_AVRecorder *recorder, int32_t rotation)--><!--Device-OH_AVErrCode OH_AVRecorder_UpdateRotation(OH_AVRecorder *recorder, int32_t rotation)-End-->
+
 **Since**: 18
 
 **Parameters**:
@@ -167,6 +177,8 @@ OH_AVErrCode OH_AVRecorder_Start(OH_AVRecorder *recorder)
 
 Starts recording. This function must be called after [OH_AVRecorder_Prepare][OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare) is called. After this function is successfully called, the AVRecorder transitions to the **AVRECORDER_STARTED** state.
 
+<!--Device-OH_AVErrCode OH_AVRecorder_Start(OH_AVRecorder *recorder)--><!--Device-OH_AVErrCode OH_AVRecorder_Start(OH_AVRecorder *recorder)-End-->
+
 **Since**: 18
 
 **Parameters**:
@@ -190,6 +202,8 @@ OH_AVErrCode OH_AVRecorder_Pause(OH_AVRecorder *recorder)
 **Description**
 
 Pauses recording. This function must be called after [OH_AVRecorder_Start][OH_AVRecorder_Start](capi-avrecorder-h.md#oh_avrecorder_start) is called. After this function is successfully called, the AVRecorder transitions to the **AVRECORDER_PAUSED** state. <br>Then, you can call [OH_AVRecorder_Resume][OH_AVRecorder_Resume](capi-avrecorder-h.md#oh_avrecorder_resume) to resume recording, and the AVRecorder transitions the AVRECORDER_STARTED state again.
+
+<!--Device-OH_AVErrCode OH_AVRecorder_Pause(OH_AVRecorder *recorder)--><!--Device-OH_AVErrCode OH_AVRecorder_Pause(OH_AVRecorder *recorder)-End-->
 
 **Since**: 18
 
@@ -215,6 +229,8 @@ OH_AVErrCode OH_AVRecorder_Resume(OH_AVRecorder *recorder)
 
 Resumes recording. This function must be called after [OH_AVRecorder_Pause][OH_AVRecorder_Pause](capi-avrecorder-h.md#oh_avrecorder_pause) is called. After this function is successfully called, the AVRecorder transitions to the **AVRECORDER_STARTED** state.
 
+<!--Device-OH_AVErrCode OH_AVRecorder_Resume(OH_AVRecorder *recorder)--><!--Device-OH_AVErrCode OH_AVRecorder_Resume(OH_AVRecorder *recorder)-End-->
+
 **Since**: 18
 
 **Parameters**:
@@ -238,6 +254,8 @@ OH_AVErrCode OH_AVRecorder_Stop(OH_AVRecorder *recorder)
 **Description**
 
 Stops recording. This function must be called after [OH_AVRecorder_Start][OH_AVRecorder_Start](capi-avrecorder-h.md#oh_avrecorder_start) is called. After this function is successfully called, the AVRecorder transitions to the **AVRECORDER_STOPPED** state. <br>For audio-only recording, you can call [OH_AVRecorder_Prepare][OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare) again for re-recording.<br>For video-only recording or audio and video recording, you can call [OH_AVRecorder_Prepare][OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare) and [OH_AVRecorder_GetInputSurface][OH_AVRecorder_GetInputSurface](capi-avrecorder-h.md#oh_avrecorder_getinputsurface) again for re-recording.<br>When [OH_AVRecorder_FileGenerationMode][OH_AVRecorder_FileGenerationMode](capi-avrecorder-base-h.md#oh_avrecorder_filegenerationmode) is used during media file creation, the [OH_MediaAsset][OH_MediaAsset](../../apis-media-library-kit/c-apis/capi-mediaassetmanager-oh-mediaasset.md) object is called back to the app through [OH_AVRecorder_SetUriCallback][OH_AVRecorder_SetUriCallback](capi-avrecorder-h.md#oh_avrecorder_seturicallback) after the **stop** operation is complete.
+
+<!--Device-OH_AVErrCode OH_AVRecorder_Stop(OH_AVRecorder *recorder)--><!--Device-OH_AVErrCode OH_AVRecorder_Stop(OH_AVRecorder *recorder)-End-->
 
 **Since**: 18
 
@@ -263,6 +281,8 @@ OH_AVErrCode OH_AVRecorder_Reset(OH_AVRecorder *recorder)
 
 Resets the recording state. This function must be called when the AVRecorder is not in the AVRECORDER_RELEASED state. After this function is successfully called, the AVRecorder transitions to the AVRECORDER_IDLE state. Typical use scenarios include reconfiguring parameters for a new round of recording after the previous recording is complete, and resetting the AVRecorder to the initial state and starting recording again after an error occurs during recording.<br>For audio-only recording, you can call [OH_AVRecorder_Prepare][OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare) again for re-recording.<br>For video-only recording or audio and video recording, you can call [OH_AVRecorder_Prepare][OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare) and [OH_AVRecorder_GetInputSurface][OH_AVRecorder_GetInputSurface](capi-avrecorder-h.md#oh_avrecorder_getinputsurface) again for re-recording.
 
+<!--Device-OH_AVErrCode OH_AVRecorder_Reset(OH_AVRecorder *recorder)--><!--Device-OH_AVErrCode OH_AVRecorder_Reset(OH_AVRecorder *recorder)-End-->
+
 **Since**: 18
 
 **Parameters**:
@@ -287,6 +307,8 @@ OH_AVErrCode OH_AVRecorder_Release(OH_AVRecorder *recorder)
 
 Releases recording resources. This function must be called when the AVRecorder is not in the **AVRECORDER_RELEASED** state. After this function is successfully called, the AVRecorder transitions to the **AVRECORDER_RELEASED** state.<br>After this function is called, the recorder memory is released. The app layer must explicitly set the recorder pointer to **nullptr** to avoid access to wild pointers. After the resources are released, you can no longer perform any operation on the **OH_AVRecorder** instance.
 
+<!--Device-OH_AVErrCode OH_AVRecorder_Release(OH_AVRecorder *recorder)--><!--Device-OH_AVErrCode OH_AVRecorder_Release(OH_AVRecorder *recorder)-End-->
+
 **Since**: 18
 
 **Parameters**:
@@ -310,6 +332,8 @@ OH_AVErrCode OH_AVRecorder_GetAvailableEncoder(OH_AVRecorder *recorder, OH_AVRec
 **Description**
 
 Obtains information about the available encoders of the AVRecorder. This API must be called when the AVRecorder is not in the **AVRECORDER_RELEASED** or **AVRECORDER_ERROR** state. Typical use scenarios include querying the encoders supported by the device when the app is started, selecting a proper encoding format based on the available encoders, and displaying the list of available encoders on the encoder selection screen.<br>**info**<br>must be set to **nullptr**. The framework layer allocates and releases the memory in a unified manner to avoid leaks or double freeing.
+
+<!--Device-OH_AVErrCode OH_AVRecorder_GetAvailableEncoder(OH_AVRecorder *recorder, OH_AVRecorder_EncoderInfo **info, int32_t *length)--><!--Device-OH_AVErrCode OH_AVRecorder_GetAvailableEncoder(OH_AVRecorder *recorder, OH_AVRecorder_EncoderInfo **info, int32_t *length)-End-->
 
 **Since**: 18
 
@@ -337,6 +361,8 @@ OH_AVErrCode OH_AVRecorder_SetStateCallback(OH_AVRecorder *recorder, OH_AVRecord
 
 Sets a state change callback so that the application can respond to state change events generated by the AVRecorder. This function must be called before [OH_AVRecorder_Start][OH_AVRecorder_Start](capi-avrecorder-h.md#oh_avrecorder_start).<br>An app can set only one state change callback. If the app set multiple callbacks, the last one set will take effect.
 
+<!--Device-OH_AVErrCode OH_AVRecorder_SetStateCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnStateChange callback, void *userData)--><!--Device-OH_AVErrCode OH_AVRecorder_SetStateCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnStateChange callback, void *userData)-End-->
+
 **Since**: 18
 
 **Parameters**:
@@ -362,6 +388,8 @@ OH_AVErrCode OH_AVRecorder_SetErrorCallback(OH_AVRecorder *recorder, OH_AVRecord
 **Description**
 
 Sets an error callback so that the application can respond to error events generated by the AVRecorder. This function must be called before [OH_AVRecorder_Start][OH_AVRecorder_Start](capi-avrecorder-h.md#oh_avrecorder_start).<br>An app can set only one error callback. If the app set multiple callbacks, the last one set will take effect.
+
+<!--Device-OH_AVErrCode OH_AVRecorder_SetErrorCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnError callback, void *userData)--><!--Device-OH_AVErrCode OH_AVRecorder_SetErrorCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnError callback, void *userData)-End-->
 
 **Since**: 18
 
@@ -389,6 +417,8 @@ OH_AVErrCode OH_AVRecorder_SetUriCallback(OH_AVRecorder *recorder, OH_AVRecorder
 
 Sets a URI callback. When [OH_AVRecorder_FileGenerationMode][OH_AVRecorder_FileGenerationMode](capi-avrecorder-base-h.md#oh_avrecorder_filegenerationmode) is used during media file creation, this callback is triggered after the [OH_AVRecorder_Stop][OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop) operation is complete, and the [OH_MediaAsset][OH_MediaAsset](../../apis-media-library-kit/c-apis/capi-mediaassetmanager-oh-mediaasset.md) object is called back to the app. Typical use scenarios include obtaining the URI of the output file for file sharing or display after the recording is complete, and updating the file list in the app based on the URI. This function must be called before [OH_AVRecorder_Start][OH_AVRecorder_Start](capi-avrecorder-h.md#oh_avrecorder_start).<br>An app can set only one URI callback. If the app set multiple callbacks, the last one set will take effect.
 
+<!--Device-OH_AVErrCode OH_AVRecorder_SetUriCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnUri callback, void *userData)--><!--Device-OH_AVErrCode OH_AVRecorder_SetUriCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnUri callback, void *userData)-End-->
+
 **Since**: 18
 
 **Parameters**:
@@ -415,6 +445,8 @@ OH_AVErrCode OH_AVRecorder_SetWillMuteWhenInterrupted(OH_AVRecorder *recorder, b
 
 Sets whether to enable the mute interruption mode. This mode controls the behavior when the audio stream is interrupted. The value **true** indicates that the recording is muted when the audio stream is interrupted. The value **false** indicates that the recording stops when the audio stream is interrupted. The default value is **false**. Typical use scenarios: In scenarios where continuous recording is required, such as conference recording, enable the mute interruption mode to ensure that the recording remains muted when an incoming call interrupts the recording, preventing loss of subsequent content. In normal recording scenarios, disable the mute interruption mode so that the recording stops directly when interrupted, saving storage space. This function must be called before [OH_AVRecorder_Prepare][OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare).
 
+<!--Device-OH_AVErrCode OH_AVRecorder_SetWillMuteWhenInterrupted(OH_AVRecorder *recorder, bool muteWhenInterrupted)--><!--Device-OH_AVErrCode OH_AVRecorder_SetWillMuteWhenInterrupted(OH_AVRecorder *recorder, bool muteWhenInterrupted)-End-->
+
 **Since**: 20
 
 **Parameters**:
@@ -440,6 +472,8 @@ OH_AVErrCode OH_AVRecorder_GetAudioCapturerMaxAmplitude(OH_AVRecorder *recorder,
 
 Obtains the maximum amplitude of the current audio capturer. Typical use scenarios include real-time display of the volume level during audio recording, audio waveform display, and checking whether the recording is muted. The return value is the maximum amplitude between the last two calls. For example, if the maximum amplitude is obtained once at 1s and then the API is called again at 2s, the return value is the maximum amplitude between 1s and 2s. This function must be called after [OH_AVRecorder_Prepare][OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare) and before [OH_AVRecorder_Stop][OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop).
 
+<!--Device-OH_AVErrCode OH_AVRecorder_GetAudioCapturerMaxAmplitude(OH_AVRecorder *recorder, int32_t* amplitude)--><!--Device-OH_AVErrCode OH_AVRecorder_GetAudioCapturerMaxAmplitude(OH_AVRecorder *recorder, int32_t* amplitude)-End-->
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -464,6 +498,8 @@ OH_AVErrCode OH_AVRecorder_SetMetadata(OH_AVRecorder *recorder, const OH_AVForma
 **Description**
 
 Sets the metadata information to record. Typical use scenarios include adding custom metadata such as author information, copyright information, geographical location, and recording time to recorded video or audio files. If the **metadata** parameter contains the same key as that in **config.metadata.customInfo** (see [OH_AVRecorder_Prepare][OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare) and [OH_AVRecorder_Config][OH_AVRecorder_Config](capi-avrecorder-oh-avrecorder-config.md)), the value of the former will overwrite that of the latter. This function must be called after [OH_AVRecorder_Prepare][OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare) and before [OH_AVRecorder_Stop][OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop).
+
+<!--Device-OH_AVErrCode OH_AVRecorder_SetMetadata(OH_AVRecorder *recorder, const OH_AVFormat *metadata)--><!--Device-OH_AVErrCode OH_AVRecorder_SetMetadata(OH_AVRecorder *recorder, const OH_AVFormat *metadata)-End-->
 
 **Since**: 26.0.0
 

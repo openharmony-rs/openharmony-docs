@@ -8,11 +8,13 @@ struct Camera_DeviceQueryInfo {...}
 
 Camera device query information.
 
+<!--Device-struct Camera_DeviceQueryInfo {...}--><!--Device-struct Camera_DeviceQueryInfo {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 23
 
-**Related module**: [OH_Camera](capi-others-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **Header file**: [camera.h](capi-camera-h.md)
 

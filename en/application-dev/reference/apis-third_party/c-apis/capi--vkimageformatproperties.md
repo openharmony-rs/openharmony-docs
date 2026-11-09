@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkImageFormatProperties {...}--><!--Device-struct VkImageFormatProperties {...}-End-->
+
 ## Summary
 
 ### Member variables

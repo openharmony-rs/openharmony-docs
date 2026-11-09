@@ -32,6 +32,8 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CaptureScreenPixelmap(uin
 
 Takes a screenshot of the entire screen. This function can be used to capture a full-screen screenshot on the specified display.
 
+<!--Device-NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CaptureScreenPixelmap(uint32_t displayId, OH_PixelmapNative **pixelMap)--><!--Device-NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CaptureScreenPixelmap(uint32_t displayId, OH_PixelmapNative **pixelMap)-End-->
+
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Required permission**: ohos.permission.CUSTOM_SCREEN_CAPTURE [since 14]

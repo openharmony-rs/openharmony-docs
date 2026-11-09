@@ -8,11 +8,13 @@ struct HiDebug_ProcessSamplerConfig {...}
 
 Defines a struct for sampling configuration.
 
+<!--Device-struct HiDebug_ProcessSamplerConfig {...}--><!--Device-struct HiDebug_ProcessSamplerConfig {...}-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 22
 
-**Related module**: [HiDebug](capi-others-hidebug.md)
+**Related module**: [HiDebug](capi-performance-analysis-kit-hidebug.md)
 
 **Header file**: [hidebug_type.h](capi-hidebug-type-h.md)
 

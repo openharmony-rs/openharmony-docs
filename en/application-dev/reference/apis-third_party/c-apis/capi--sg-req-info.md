@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct sg_req_info {...}--><!--Device-struct sg_req_info {...}-End-->
+
 ## Summary
 
 ### Member variables

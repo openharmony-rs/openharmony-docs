@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkBufferUsageFlags2CreateInfo {...}--><!--Device-struct VkBufferUsageFlags2CreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

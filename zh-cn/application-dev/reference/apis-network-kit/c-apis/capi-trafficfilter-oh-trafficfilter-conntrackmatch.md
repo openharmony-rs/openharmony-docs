@@ -8,11 +8,13 @@ struct OH_TrafficFilter_ConntrackMatch {...}
 
 连接跟踪匹配条件<br> 基于连接跟踪状态匹配报文
 
+<!--Device-struct OH_TrafficFilter_ConntrackMatch {...}--><!--Device-struct OH_TrafficFilter_ConntrackMatch {...}-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 **起始版本：** 26.0.1
 
-**相关模块：** [TrafficFilter](capi-others-trafficfilter.md)
+**相关模块：** [TrafficFilter](capi-network-kit-trafficfilter.md)
 
 **所在头文件：** [net_trafficfilter_type.h](capi-net-trafficfilter-type-h.md)
 

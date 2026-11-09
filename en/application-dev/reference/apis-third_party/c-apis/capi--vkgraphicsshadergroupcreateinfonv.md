@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkGraphicsShaderGroupCreateInfoNV {...}--><!--Device-struct VkGraphicsShaderGroupCreateInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

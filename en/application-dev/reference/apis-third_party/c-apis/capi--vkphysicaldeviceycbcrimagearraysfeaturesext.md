@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceYcbcrImageArraysFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceYcbcrImageArraysFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

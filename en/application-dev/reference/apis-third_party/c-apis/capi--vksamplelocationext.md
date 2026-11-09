@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSampleLocationEXT {...}--><!--Device-struct VkSampleLocationEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

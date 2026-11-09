@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDescriptorUpdateTemplateCreateInfo {...}--><!--Device-struct VkDescriptorUpdateTemplateCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

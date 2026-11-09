@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceAccelerationStructurePropertiesKHR {...}--><!--Device-struct VkPhysicalDeviceAccelerationStructurePropertiesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

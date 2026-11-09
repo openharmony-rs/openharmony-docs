@@ -32,6 +32,8 @@ enum ArkUI_CheckboxShape
 
 定义CheckBox组件形状。
 
+<!--Device-ArkUI_CheckboxShape--><!--Device-ArkUI_CheckboxShape-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12

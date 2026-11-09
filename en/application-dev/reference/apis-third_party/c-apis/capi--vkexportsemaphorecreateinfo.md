@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkExportSemaphoreCreateInfo {...}--><!--Device-struct VkExportSemaphoreCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -8,11 +8,13 @@ typedef struct Print_DefaultValue {...} Print_DefaultValue
 
 表示打印机的默认属性值，包含色彩模式、双面模式、介质类型、纸张尺寸、边距、纸张来源、打印质量、份数、分辨率、方向等默认打印参数。
 
+<!--Device-typedef struct Print_DefaultValue {...} Print_DefaultValue--><!--Device-typedef struct Print_DefaultValue {...} Print_DefaultValue-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **起始版本：** 12
 
-**相关模块：** [Print](capi-others-print.md)
+**相关模块：** [Print](capi-basic-services-kit-print.md)
 
 **所在头文件：** [ohprint.h](capi-ohprint-h.md)
 

@@ -51,6 +51,8 @@ enum TransientTask_ErrorCode
 
 Enumerates the error codes available for a transient task.
 
+<!--Device-TransientTask_ErrorCode--><!--Device-TransientTask_ErrorCode-End-->
+
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
 **Since**: 13
@@ -79,6 +81,8 @@ typedef void (*TransientTask_Callback)(void)
 **Description**
 
 Defines a callback for transient task timeout.
+
+<!--Device-typedef void (*TransientTask_Callback)(void)--><!--Device-typedef void (*TransientTask_Callback)(void)-End-->
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 

@@ -8,11 +8,13 @@ typedef struct ArkUI_NodeContentEvent ArkUI_NodeContentEvent
 
 Defines the general structure of a node content event.
 
+<!--Device-typedef struct ArkUI_NodeContentEvent ArkUI_NodeContentEvent--><!--Device-typedef struct ArkUI_NodeContentEvent ArkUI_NodeContentEvent-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [native_node.h](capi-native-node-h.md)
 

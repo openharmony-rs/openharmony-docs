@@ -16,11 +16,13 @@ struct OH_TrafficFilter_FilterRule {...}
 - 如果`size` < `sizeof(OH_TrafficFilter_FilterRule)`，实现将其视为旧版本，仅读取 与该大小兼容的前缀字段。
 - 如果`size`为0或指针为NULL，实现必须返回错误。
 
+<!--Device-struct OH_TrafficFilter_FilterRule {...}--><!--Device-struct OH_TrafficFilter_FilterRule {...}-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 **起始版本：** 26.0.1
 
-**相关模块：** [TrafficFilter](capi-others-trafficfilter.md)
+**相关模块：** [TrafficFilter](capi-network-kit-trafficfilter.md)
 
 **所在头文件：** [net_trafficfilter_type.h](capi-net-trafficfilter-type-h.md)
 

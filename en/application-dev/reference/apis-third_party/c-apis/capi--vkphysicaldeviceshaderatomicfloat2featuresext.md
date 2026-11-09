@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

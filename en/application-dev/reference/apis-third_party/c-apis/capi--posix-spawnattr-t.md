@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct posix_spawnattr_t {...}--><!--Device-struct posix_spawnattr_t {...}-End-->
+
 ## Summary
 
 ### Member variables

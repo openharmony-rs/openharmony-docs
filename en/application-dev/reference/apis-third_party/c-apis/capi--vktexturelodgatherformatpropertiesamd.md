@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkTextureLODGatherFormatPropertiesAMD {...}--><!--Device-struct VkTextureLODGatherFormatPropertiesAMD {...}-End-->
+
 ## Summary
 
 ### Member variables

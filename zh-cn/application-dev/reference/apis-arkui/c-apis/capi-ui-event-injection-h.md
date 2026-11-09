@@ -43,6 +43,8 @@ enum OH_ArkUI_NativeModule_UIEventInjection_ResultCode
 
 枚举UI事件注入的结果码。<br> 所有注入接口共用此枚举，包括宽松交互注入（非精确）和面向指定组件的精确注入。 非零结果码表示执行失败，其具体值表示失败原因。
 
+<!--Device-OH_ArkUI_NativeModule_UIEventInjection_ResultCode--><!--Device-OH_ArkUI_NativeModule_UIEventInjection_ResultCode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.1.0
@@ -66,6 +68,8 @@ typedef void (*OH_ArkUI_NativeModule_UIEventInjectionCallback)(OH_ArkUI_NativeMo
 **描述：**
 
 注入完成回调。<br> 用于通知命令的派发结果和组件对命令的即时处理结果，不等待组件延迟效果或渲染完成。 每个已受理请求在注入函数返回后，在原UI线程恰好回调一次。不同UI线程上的回调不保证全局串行执行。
+
+<!--Device-typedef void (*OH_ArkUI_NativeModule_UIEventInjectionCallback)(OH_ArkUI_NativeModule_UIEventInjection_ResultCode result, void *userData)--><!--Device-typedef void (*OH_ArkUI_NativeModule_UIEventInjectionCallback)(OH_ArkUI_NativeModule_UIEventInjection_ResultCode result, void *userData)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,6 +95,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_Cont
 - scroll：模式（可选，默认为“auto”）;action_info.direct(“向前”\|“向后”\|“向左” \| "right" \| "up" \| "down"，可选，默认"forward";action_info.mote，非负 物理像素值（可选，默认为窗口高度的三分之一）;action_info.坐标 其中x1和y1是必需的，x2和y2是可选的。
 - backpress：无参数。
 - key: action_info.code，密钥的虚拟密钥代码，必须是有效的密钥代码 （必填项）。<br> 所有位置坐标都是相对于窗口的，以物理像素（px）为单位。如果需要 字段缺失或值超出其有效范围， 返回RKUI_ERROR_CODE_PARAM_INVALID。<br> 这个函数是线程安全的，可以从任何线程调用，不会阻塞调用者，并且是 而不是async-signal-safe。
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_ContextHandle uiContext, const OH_ArkUI_NativeModule_UIJsonWrapper *command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void *userData)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_ContextHandle uiContext, const OH_ArkUI_NativeModule_UIJsonWrapper *command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void *userData)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,6 +126,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectCompositeCommand(ArkUI_Contex
 **描述：**
 
 向目标UI节点异步注入控制命令。<br> 本接口不提供取消操作或固定的完成超时，完成依赖UI线程的任务处理。 调用方等待超时不会取消已受理请求。 实例销毁不会取消已受理请求的完成回调。
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectCompositeCommand(ArkUI_ContextHandle uiContext, uint32_t uniqueId, const OH_ArkUI_NativeModule_UIJsonWrapper *command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void *userData)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectCompositeCommand(ArkUI_ContextHandle uiContext, uint32_t uniqueId, const OH_ArkUI_NativeModule_UIJsonWrapper *command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void *userData)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

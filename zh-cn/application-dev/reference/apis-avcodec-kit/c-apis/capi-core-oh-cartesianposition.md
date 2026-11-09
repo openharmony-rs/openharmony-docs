@@ -8,11 +8,13 @@ struct OH_CartesianPosition {...}
 
 表示对象声源在笛卡尔坐标系（Cartesian coordinate system）中的位置。<br> 笛卡尔坐标系使用x、y、z轴定义三维空间中的位置。
 
+<!--Device-struct OH_CartesianPosition {...}--><!--Device-struct OH_CartesianPosition {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 26.0.0
 
-**相关模块：** [Core](capi-others-core.md)
+**相关模块：** [Core](capi-avcodec-kit-core.md)
 
 **所在头文件：** [native_audio_vivid.h](capi-native-audio-vivid-h.md)
 

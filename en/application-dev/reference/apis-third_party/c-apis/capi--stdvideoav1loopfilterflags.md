@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoAV1LoopFilterFlags {...}--><!--Device-struct StdVideoAV1LoopFilterFlags {...}-End-->
+
 ## Summary
 
 ### Member variables

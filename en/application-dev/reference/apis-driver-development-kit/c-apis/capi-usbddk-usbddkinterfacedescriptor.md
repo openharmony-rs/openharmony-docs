@@ -8,11 +8,13 @@ struct UsbDdkInterfaceDescriptor {...}
 
 Defines interface descriptors, including standard interface descriptors and endpoint descriptors.
 
+<!--Device-struct UsbDdkInterfaceDescriptor {...}--><!--Device-struct UsbDdkInterfaceDescriptor {...}-End-->
+
 **System capability**: SystemCapability.Driver.USB.Extension
 
 **Since**: 10
 
-**Related module**: [UsbDdk](capi-others-usbddk.md)
+**Related module**: [UsbDdk](capi-driver-development-kit-usbddk.md)
 
 **Header file**: [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 

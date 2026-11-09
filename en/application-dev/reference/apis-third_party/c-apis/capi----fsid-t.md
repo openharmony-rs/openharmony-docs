@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct __fsid_t {...}--><!--Device-struct __fsid_t {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoEncodeH264ReferenceInfo {...}--><!--Device-struct StdVideoEncodeH264ReferenceInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

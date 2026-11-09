@@ -108,6 +108,8 @@ enum HiDebug_ErrorCode
 
 Enumerates the error codes used in the HiDebug module.
 
+<!--Device-HiDebug_ErrorCode--><!--Device-HiDebug_ErrorCode-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 12
@@ -158,6 +160,8 @@ enum HiDebug_TraceFlag
 
 Enumerates the thread types for trace collection.
 
+<!--Device-HiDebug_TraceFlag--><!--Device-HiDebug_TraceFlag-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 12
@@ -177,6 +181,8 @@ enum HiDebug_StackFrameType
 
 Enumerates the stack frame types.
 
+<!--Device-HiDebug_StackFrameType--><!--Device-HiDebug_StackFrameType-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 20
@@ -195,6 +201,8 @@ enum HiDebug_CrashObjType
 **Description**
 
 Enumerates the data types of debugging information.
+
+<!--Device-HiDebug_CrashObjType--><!--Device-HiDebug_CrashObjType-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -218,6 +226,8 @@ enum OH_HiDebug_ResourceType
 **Description**
 
 Enumerates the resource profiling types.
+
+<!--Device-OH_HiDebug_ResourceType--><!--Device-OH_HiDebug_ResourceType-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -244,6 +254,8 @@ enum OH_HiDebug_MemListenerType
 
 Enumerates the memory listener callback types. You can process the related logic based on the callback type.
 
+<!--Device-OH_HiDebug_MemListenerType--><!--Device-OH_HiDebug_MemListenerType-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 26.0.0
@@ -263,6 +275,8 @@ enum OH_HiDebug_ProfilerStackTraceMode
 **Description**
 
 Defines an enum for stack trace mode.
+
+<!--Device-OH_HiDebug_ProfilerStackTraceMode--><!--Device-OH_HiDebug_ProfilerStackTraceMode-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -286,6 +300,8 @@ typedef void (*OH_HiDebug_RequestTraceCallback)(HiDebug_ErrorCode errorCode, con
 
 Triggered for the trace collection request.
 
+<!--Device-typedef void (*OH_HiDebug_RequestTraceCallback)(HiDebug_ErrorCode errorCode, const char* filePath)--><!--Device-typedef void (*OH_HiDebug_RequestTraceCallback)(HiDebug_ErrorCode errorCode, const char* filePath)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 24
@@ -306,6 +322,8 @@ typedef void (*OH_HiDebug_ProfilingCallback)(OH_HiDebug_ProfilingResult* result)
 **Description**
 
 Triggered for the resource profiling.
+
+<!--Device-typedef void (*OH_HiDebug_ProfilingCallback)(OH_HiDebug_ProfilingResult* result)--><!--Device-typedef void (*OH_HiDebug_ProfilingCallback)(OH_HiDebug_ProfilingResult* result)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 

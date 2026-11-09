@@ -61,6 +61,8 @@ enum DrmCencAlgorithm
 
 Enumerates the DRM CENC algorithm types.
 
+<!--Device-DrmCencAlgorithm--><!--Device-DrmCencAlgorithm-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 12
@@ -84,6 +86,8 @@ enum DrmCencInfoMode
 
 Enumerates the modes for setting the key ID, IV, and subsample in the CENC information.
 
+<!--Device-DrmCencInfoMode--><!--Device-DrmCencInfoMode-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 12
@@ -106,6 +110,8 @@ OH_AVCencInfo *OH_AVCencInfo_Create()
 
 Creates an OH_AVCencInfo instance for setting the CENC information.
 
+<!--Device-OH_AVCencInfo *OH_AVCencInfo_Create()--><!--Device-OH_AVCencInfo *OH_AVCencInfo_Create()-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 12
@@ -125,6 +131,8 @@ OH_AVErrCode OH_AVCencInfo_Destroy(OH_AVCencInfo *cencInfo)
 **Description**
 
 Destroys an OH_AVCencInfo instance and clears internal resources.<br> An instance can be destroyed only once. Do not use the instance until it is created again. You are advised to set the instance pointer to nullptr once the instance is destroyed.
+
+<!--Device-OH_AVErrCode OH_AVCencInfo_Destroy(OH_AVCencInfo *cencInfo)--><!--Device-OH_AVErrCode OH_AVCencInfo_Destroy(OH_AVCencInfo *cencInfo)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
@@ -152,6 +160,8 @@ OH_AVErrCode OH_AVCencInfo_SetAlgorithm(OH_AVCencInfo *cencInfo, enum DrmCencAlg
 
 Sets an encryption algorithm of the CENC information.
 
+<!--Device-OH_AVErrCode OH_AVCencInfo_SetAlgorithm(OH_AVCencInfo *cencInfo, enum DrmCencAlgorithm algo)--><!--Device-OH_AVErrCode OH_AVCencInfo_SetAlgorithm(OH_AVCencInfo *cencInfo, enum DrmCencAlgorithm algo)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 12
@@ -178,6 +188,8 @@ OH_AVErrCode OH_AVCencInfo_SetKeyIdAndIv(OH_AVCencInfo *cencInfo, uint8_t *keyId
 **Description**
 
 Sets the key ID and IV in the CENC information.
+
+<!--Device-OH_AVErrCode OH_AVCencInfo_SetKeyIdAndIv(OH_AVCencInfo *cencInfo, uint8_t *keyId, uint32_t keyIdLen, uint8_t *iv, uint32_t ivLen)--><!--Device-OH_AVErrCode OH_AVCencInfo_SetKeyIdAndIv(OH_AVCencInfo *cencInfo, uint8_t *keyId, uint32_t keyIdLen, uint8_t *iv, uint32_t ivLen)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
@@ -208,6 +220,8 @@ OH_AVErrCode OH_AVCencInfo_SetSubsampleInfo(OH_AVCencInfo *cencInfo, uint32_t en
 **Description**
 
 Sets the subsample information in the CENC information.
+
+<!--Device-OH_AVErrCode OH_AVCencInfo_SetSubsampleInfo(OH_AVCencInfo *cencInfo, uint32_t encryptedBlockCount, uint32_t skippedBlockCount, uint32_t firstEncryptedOffset, uint32_t subsampleCount, DrmSubsample *subsamples)--><!--Device-OH_AVErrCode OH_AVCencInfo_SetSubsampleInfo(OH_AVCencInfo *cencInfo, uint32_t encryptedBlockCount, uint32_t skippedBlockCount, uint32_t firstEncryptedOffset, uint32_t subsampleCount, DrmSubsample *subsamples)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
@@ -240,6 +254,8 @@ OH_AVErrCode OH_AVCencInfo_SetMode(OH_AVCencInfo *cencInfo, enum DrmCencInfoMode
 
 Sets the CENC information mode.
 
+<!--Device-OH_AVErrCode OH_AVCencInfo_SetMode(OH_AVCencInfo *cencInfo, enum DrmCencInfoMode mode)--><!--Device-OH_AVErrCode OH_AVCencInfo_SetMode(OH_AVCencInfo *cencInfo, enum DrmCencInfoMode mode)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 12
@@ -266,6 +282,8 @@ OH_AVErrCode OH_AVCencInfo_SetAVBuffer(OH_AVCencInfo *cencInfo, OH_AVBuffer *buf
 **Description**
 
 Sets the CENC information to an AVBuffer.
+
+<!--Device-OH_AVErrCode OH_AVCencInfo_SetAVBuffer(OH_AVCencInfo *cencInfo, OH_AVBuffer *buffer)--><!--Device-OH_AVErrCode OH_AVCencInfo_SetAVBuffer(OH_AVCencInfo *cencInfo, OH_AVBuffer *buffer)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 

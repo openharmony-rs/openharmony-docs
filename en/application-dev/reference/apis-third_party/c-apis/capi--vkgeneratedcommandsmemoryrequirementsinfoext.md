@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkGeneratedCommandsMemoryRequirementsInfoEXT {...}--><!--Device-struct VkGeneratedCommandsMemoryRequirementsInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

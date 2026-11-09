@@ -58,6 +58,8 @@ enum Location_ResultCode
 
 Enumerates the location result codes.
 
+<!--Device-Location_ResultCode--><!--Device-Location_ResultCode-End-->
+
 **System capability**: SystemCapability.Location.Location.Core
 
 **Since**: 13
@@ -81,6 +83,8 @@ enum Location_UseScene
 
 Enumeration values of use scenarios.
 
+<!--Device-Location_UseScene--><!--Device-Location_UseScene-End-->
+
 **System capability**: SystemCapability.Location.Location.Core
 
 **Since**: 13
@@ -102,6 +106,8 @@ enum Location_PowerConsumptionScene
 
 Enumerates the power consumption scenario.
 
+<!--Device-Location_PowerConsumptionScene--><!--Device-Location_PowerConsumptionScene-End-->
+
 **System capability**: SystemCapability.Location.Location.Core
 
 **Since**: 13
@@ -121,6 +127,8 @@ enum Location_SourceType
 **Description**
 
 Enumerates the source type of location.
+
+<!--Device-Location_SourceType--><!--Device-Location_SourceType-End-->
 
 **System capability**: SystemCapability.Location.Location.Core
 
@@ -145,6 +153,8 @@ bool OH_LocationInfo_IsFromMock(Location_Info* location)
 **Description**
 
 Indicates whether the location was obtained from the mock location function.
+
+<!--Device-bool OH_LocationInfo_IsFromMock(Location_Info* location)--><!--Device-bool OH_LocationInfo_IsFromMock(Location_Info* location)-End-->
 
 **System capability**: SystemCapability.Location.Location.Core
 
@@ -172,6 +182,8 @@ Location_BasicInfo OH_LocationInfo_GetBasicInfo(Location_Info* location)
 
 Obtain basic location information.
 
+<!--Device-Location_BasicInfo OH_LocationInfo_GetBasicInfo(Location_Info* location)--><!--Device-Location_BasicInfo OH_LocationInfo_GetBasicInfo(Location_Info* location)-End-->
+
 **System capability**: SystemCapability.Location.Location.Core
 
 **Since**: 13
@@ -197,6 +209,8 @@ Location_ResultCode OH_LocationInfo_GetAdditionalInfo(Location_Info* location, c
 **Description**
 
 Obtain additional information from the location information.
+
+<!--Device-Location_ResultCode OH_LocationInfo_GetAdditionalInfo(Location_Info* location, char* additionalInfo, uint32_t length)--><!--Device-Location_ResultCode OH_LocationInfo_GetAdditionalInfo(Location_Info* location, char* additionalInfo, uint32_t length)-End-->
 
 **System capability**: SystemCapability.Location.Location.Core
 
@@ -226,6 +240,8 @@ typedef void (*Location_InfoCallback)(Location_Info* location, void* userData)
 
 Defines the callback function used to report location data.
 
+<!--Device-typedef void (*Location_InfoCallback)(Location_Info* location, void* userData)--><!--Device-typedef void (*Location_InfoCallback)(Location_Info* location, void* userData)-End-->
+
 **System capability**: SystemCapability.Location.Location.Core
 
 **Since**: 13
@@ -247,6 +263,8 @@ Location_RequestConfig* OH_Location_CreateRequestConfig(void)
 
 Create a location request parameter structure instance.
 
+<!--Device-Location_RequestConfig* OH_Location_CreateRequestConfig(void)--><!--Device-Location_RequestConfig* OH_Location_CreateRequestConfig(void)-End-->
+
 **System capability**: SystemCapability.Location.Location.Core
 
 **Since**: 13
@@ -267,6 +285,8 @@ void OH_Location_DestroyRequestConfig(Location_RequestConfig* requestConfig)
 
 Destroy the location request parameter instance and reclaim memory.
 
+<!--Device-void OH_Location_DestroyRequestConfig(Location_RequestConfig* requestConfig)--><!--Device-void OH_Location_DestroyRequestConfig(Location_RequestConfig* requestConfig)-End-->
+
 **System capability**: SystemCapability.Location.Location.Core
 
 **Since**: 13
@@ -286,6 +306,8 @@ void OH_LocationRequestConfig_SetUseScene(Location_RequestConfig* requestConfig,
 **Description**
 
 Set the use scenario in the location request parameter. Prioritize useScene in the location request parameter [Location_RequestConfig](capi-location-location-requestconfig.md). If useScene is set, powerConsumptionScene becomes invalid. If useScene is not set and powerConsumptionScene is set, this parameter takes effect. If both parameters are not set, the default useScene is [LOCATION_USE_SCENE_DAILY_LIFE_SERVICE](capi-oh-location-type-h.md#location_usescene), and the powerConsumptionCenario parameter is invalid.
+
+<!--Device-void OH_LocationRequestConfig_SetUseScene(Location_RequestConfig* requestConfig, Location_UseScene useScene)--><!--Device-void OH_LocationRequestConfig_SetUseScene(Location_RequestConfig* requestConfig, Location_UseScene useScene)-End-->
 
 **System capability**: SystemCapability.Location.Location.Core
 
@@ -308,6 +330,8 @@ void OH_LocationRequestConfig_SetPowerConsumptionScene(Location_RequestConfig* r
 
 Set the power consumption scenario in the location request parameters.
 
+<!--Device-void OH_LocationRequestConfig_SetPowerConsumptionScene(Location_RequestConfig* requestConfig, Location_PowerConsumptionScene powerConsumptionScene)--><!--Device-void OH_LocationRequestConfig_SetPowerConsumptionScene(Location_RequestConfig* requestConfig, Location_PowerConsumptionScene powerConsumptionScene)-End-->
+
 **System capability**: SystemCapability.Location.Location.Core
 
 **Since**: 13
@@ -329,6 +353,8 @@ void OH_LocationRequestConfig_SetInterval(Location_RequestConfig* requestConfig,
 
 Set the location reporting interval in the location request parameter.
 
+<!--Device-void OH_LocationRequestConfig_SetInterval(Location_RequestConfig* requestConfig, int interval)--><!--Device-void OH_LocationRequestConfig_SetInterval(Location_RequestConfig* requestConfig, int interval)-End-->
+
 **System capability**: SystemCapability.Location.Location.Core
 
 **Since**: 13
@@ -349,6 +375,8 @@ void OH_LocationRequestConfig_SetCallback(Location_RequestConfig* requestConfig,
 **Description**
 
 Set up a callback function for receiving location information.
+
+<!--Device-void OH_LocationRequestConfig_SetCallback(Location_RequestConfig* requestConfig, Location_InfoCallback callback, void* userData)--><!--Device-void OH_LocationRequestConfig_SetCallback(Location_RequestConfig* requestConfig, Location_InfoCallback callback, void* userData)-End-->
 
 **System capability**: SystemCapability.Location.Location.Core
 

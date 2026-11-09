@@ -8,11 +8,13 @@ struct OH_Pixelmap_HdrGainmapMetadata {...}
 
 Value for HDR_GAINMAP_METADATA.
 
+<!--Device-struct OH_Pixelmap_HdrGainmapMetadata {...}--><!--Device-struct OH_Pixelmap_HdrGainmapMetadata {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
-**Related module**: [Image_NativeModule](capi-others-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 **Header file**: [pixelmap_native.h](capi-pixelmap-native-h.md)
 

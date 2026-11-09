@@ -8,11 +8,13 @@ typedef struct ArkUI_StringAsyncEvent {...} ArkUI_StringAsyncEvent
 
 定义组件回调事件使用字符串参数的类型，用于在组件异步事件回调中传递字符串数据，适用于组件回调事件需要携带文本信息的场景。
 
+<!--Device-typedef struct ArkUI_StringAsyncEvent {...} ArkUI_StringAsyncEvent--><!--Device-typedef struct ArkUI_StringAsyncEvent {...} ArkUI_StringAsyncEvent-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [native_node.h](capi-native-node-h.md)
 

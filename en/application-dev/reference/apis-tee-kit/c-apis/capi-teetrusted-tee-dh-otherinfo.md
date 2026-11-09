@@ -8,11 +8,13 @@ typedef struct TEE_DH_OtherInfo {...} TEE_DH_OtherInfo
 
 Defines a struct for TEE_DH_OtherInfo.
 
+<!--Device-typedef struct TEE_DH_OtherInfo {...} TEE_DH_OtherInfo--><!--Device-typedef struct TEE_DH_OtherInfo {...} TEE_DH_OtherInfo-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
-**Related module**: [TeeTrusted](capi-others-teetrusted.md)
+**Related module**: [TeeTrusted](capi-tee-kit-teetrusted.md)
 
 **Header file**: [tee_crypto_api.h](capi-tee-crypto-api-h.md)
 

@@ -8,11 +8,13 @@ struct TimeZoneRuleQuery {...}
 
 Used to input the query information and receive the query result.
 
+<!--Device-struct TimeZoneRuleQuery {...}--><!--Device-struct TimeZoneRuleQuery {...}-End-->
+
 **System capability**: SystemCapability.Global.I18n
 
 **Since**: 22
 
-**Related module**: [i18n](capi-others-i18n.md)
+**Related module**: [i18n](capi-localization-kit-i18n.md)
 
 **Header file**: [timezone.h](capi-timezone-h.md)
 

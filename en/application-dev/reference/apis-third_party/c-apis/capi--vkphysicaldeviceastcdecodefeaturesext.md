@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceASTCDecodeFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceASTCDecodeFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

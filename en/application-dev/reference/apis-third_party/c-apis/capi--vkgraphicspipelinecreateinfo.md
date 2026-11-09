@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkGraphicsPipelineCreateInfo {...}--><!--Device-struct VkGraphicsPipelineCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

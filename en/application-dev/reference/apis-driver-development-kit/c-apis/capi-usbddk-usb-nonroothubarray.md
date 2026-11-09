@@ -8,11 +8,13 @@ struct Usb_NonRootHubArray {...}
 
 Defines the non-root hub array, which is used to store the non-root hub IDs and quantity obtained using [OH_Usb_GetNonRootHubs](capi-usb-ddk-api-h.md#oh_usb_getnonroothubs). After using the structure, you must release the memory allocated for the non-root hub ID array. Otherwise, resource leaks may occur.
 
+<!--Device-struct Usb_NonRootHubArray {...}--><!--Device-struct Usb_NonRootHubArray {...}-End-->
+
 **System capability**: SystemCapability.Driver.USB.Extension
 
 **Since**: 26.0.0
 
-**Related module**: [UsbDdk](capi-others-usbddk.md)
+**Related module**: [UsbDdk](capi-driver-development-kit-usbddk.md)
 
 **Header file**: [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 

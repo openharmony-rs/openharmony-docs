@@ -8,11 +8,13 @@ struct MediaLibrary_RequestOptions {...}
 
 The struct defines how media assets are requested and processed.
 
+<!--Device-struct MediaLibrary_RequestOptions {...}--><!--Device-struct MediaLibrary_RequestOptions {...}-End-->
+
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since**: 12
 
-**Related module**: [MediaAssetManager](capi-others-mediaassetmanager.md)
+**Related module**: [MediaAssetManager](capi-media-library-kit-mediaassetmanager.md)
 
 **Header file**: [media_asset_base_capi.h](capi-media-asset-base-capi-h.md)
 

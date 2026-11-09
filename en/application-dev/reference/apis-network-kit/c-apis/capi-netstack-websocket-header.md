@@ -8,11 +8,13 @@ struct WebSocket_Header {...}
 
 Defines the header linked list added to the WebSocket client.
 
+<!--Device-struct WebSocket_Header {...}--><!--Device-struct WebSocket_Header {...}-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 11
 
-**Related module**: [netstack](capi-others-netstack.md)
+**Related module**: [netstack](capi-network-kit-netstack.md)
 
 **Header file**: [net_websocket_type.h](capi-net-websocket-type-h.md)
 

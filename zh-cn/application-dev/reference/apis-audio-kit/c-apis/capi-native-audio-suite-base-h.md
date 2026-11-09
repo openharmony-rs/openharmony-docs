@@ -54,7 +54,7 @@
 | 名称 | 描述 |
 | -- | -- |
 | EQUALIZER_BAND_NUM (10) | 定义均衡器频带数量为10个。<br>**起始版本：** 22 |
-| OH_PURE_VOICE_DEFAULT_PITCH (0.0f) | Use system recommended pitch. Use in [OH_AudioSuite_PureVoiceChangeOption](capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md).<br>**起始版本：** 23 |
+| OH_PURE_VOICE_DEFAULT_PITCH (0.0f) | 使用系统推荐的音调。 用于 [OH_AudioSuite_PureVoiceChangeOption](capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md).<br>**起始版本：** 23 |
 
 ### 变量
 
@@ -81,6 +81,8 @@ enum OH_AudioNode_Type
 **描述：**
 
 定义音频编创节点类型。
+
+<!--Device-OH_AudioNode_Type--><!--Device-OH_AudioNode_Type-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -113,6 +115,8 @@ enum OH_AudioSuite_PipelineWorkMode
 
 定义音频编创管线工作模式。
 
+<!--Device-OH_AudioSuite_PipelineWorkMode--><!--Device-OH_AudioSuite_PipelineWorkMode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 22
@@ -132,6 +136,8 @@ enum OH_AudioSuite_PipelineState
 
 定义音频编创管线运行状态。
 
+<!--Device-OH_AudioSuite_PipelineState--><!--Device-OH_AudioSuite_PipelineState-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 22
@@ -150,6 +156,8 @@ enum OH_AudioSuite_Result
 **描述：**
 
 音频编创错误码。
+
+<!--Device-OH_AudioSuite_Result--><!--Device-OH_AudioSuite_Result-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -182,6 +190,8 @@ enum OH_Audio_SampleFormat
 
 定义音频编创节点音频流的位深度。
 
+<!--Device-OH_Audio_SampleFormat--><!--Device-OH_Audio_SampleFormat-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 22
@@ -204,6 +214,8 @@ enum OH_Audio_EncodingType
 
 定义音频流编码类型。
 
+<!--Device-OH_Audio_EncodingType--><!--Device-OH_Audio_EncodingType-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 22
@@ -221,6 +233,8 @@ enum OH_Audio_SampleRate
 **描述：**
 
 定义音频采样率。
+
+<!--Device-OH_Audio_SampleRate--><!--Device-OH_Audio_SampleRate-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -253,6 +267,8 @@ enum OH_SoundFieldType
 
 定义音频编创声场效果节点的效果模式。
 
+<!--Device-OH_SoundFieldType--><!--Device-OH_SoundFieldType-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 22
@@ -273,6 +289,8 @@ enum OH_EnvironmentType
 **描述：**
 
 定义音频编创环境效果节点的模式。
+
+<!--Device-OH_EnvironmentType--><!--Device-OH_EnvironmentType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -295,6 +313,8 @@ enum OH_VoiceBeautifierType
 
 定义音频编创美化效果节点模式。
 
+<!--Device-OH_VoiceBeautifierType--><!--Device-OH_VoiceBeautifierType-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 22
@@ -316,6 +336,8 @@ enum OH_AudioSuite_SurroundDirection
 
 定义空间渲染效果节点旋转模式环绕方向。
 
+<!--Device-OH_AudioSuite_SurroundDirection--><!--Device-OH_AudioSuite_SurroundDirection-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 23
@@ -335,6 +357,8 @@ enum OH_AudioSuite_PureVoiceChangeGenderOption
 
 定义音频编创传统变声效果节点的性别。
 
+<!--Device-OH_AudioSuite_PureVoiceChangeGenderOption--><!--Device-OH_AudioSuite_PureVoiceChangeGenderOption-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 23
@@ -353,6 +377,8 @@ enum OH_AudioSuite_PureVoiceChangeType
 **描述：**
 
 定义音频编创传统变声效果节点的变声类型。
+
+<!--Device-OH_AudioSuite_PureVoiceChangeType--><!--Device-OH_AudioSuite_PureVoiceChangeType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -377,6 +403,8 @@ enum OH_AudioSuite_GeneralVoiceChangeType
 **描述：**
 
 定义音频编创通用变声的节点类型。
+
+<!--Device-OH_AudioSuite_GeneralVoiceChangeType--><!--Device-OH_AudioSuite_GeneralVoiceChangeType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 

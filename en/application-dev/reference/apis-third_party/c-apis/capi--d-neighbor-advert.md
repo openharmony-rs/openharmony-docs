@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct d_neighbor_advert {...}--><!--Device-struct d_neighbor_advert {...}-End-->
+
 ## Summary
 
 ### Member variables

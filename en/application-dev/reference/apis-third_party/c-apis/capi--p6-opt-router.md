@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct p6_opt_router {...}--><!--Device-struct p6_opt_router {...}-End-->
+
 ## Summary
 
 ### Member variables

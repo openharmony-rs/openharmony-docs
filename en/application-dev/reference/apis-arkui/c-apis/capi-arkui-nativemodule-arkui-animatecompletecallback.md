@@ -8,11 +8,13 @@ typedef struct ArkUI_AnimateCompleteCallback {...} ArkUI_AnimateCompleteCallback
 
 Defines the callback type for when the animation playback is complete, which is used to notify you that the animation playback is complete. You can use the **type** field to specify a callback trigger mode, use the **callback** field to set a custom callback function, and use the **userData** field to pass user-defined data to the callback function.
 
+<!--Device-typedef struct ArkUI_AnimateCompleteCallback {...} ArkUI_AnimateCompleteCallback--><!--Device-typedef struct ArkUI_AnimateCompleteCallback {...} ArkUI_AnimateCompleteCallback-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_animate.h](capi-native-animate-h.md)
 
@@ -43,5 +45,7 @@ void (*callback)(void* userData)
 **Description**
 
 Invoked when the animation playback is complete. It is used together with **type** and **userData**. The **type**<br>parameter determines the timing type for triggering the callback, and the callback function receives **userData**<br>as an input parameter. After this callback is set, it is automatically invoked when the animation playback ends. You can execute custom logic in the callback through the **userData** parameter, such as updating the UI state or handling subsequent operations after the animation playback is complete.
+
+<!--Device-void (*callback)(void* userData)--><!--Device-void (*callback)(void* userData)-End-->
 
 

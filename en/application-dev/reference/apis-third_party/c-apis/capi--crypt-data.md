@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct crypt_data {...}--><!--Device-struct crypt_data {...}-End-->
+
 ## Summary
 
 ### Member variables

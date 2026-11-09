@@ -8,11 +8,13 @@ typedef struct ArkUI_Curve ArkUI_Curve
 
 提供动画曲线的插值对象定义，用于动画属性值的插值计算。
 
+<!--Device-typedef struct ArkUI_Curve ArkUI_Curve--><!--Device-typedef struct ArkUI_Curve ArkUI_Curve-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [native_animate.h](capi-native-animate-h.md)
 

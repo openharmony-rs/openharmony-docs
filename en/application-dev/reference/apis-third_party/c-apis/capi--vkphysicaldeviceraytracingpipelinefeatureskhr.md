@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceRayTracingPipelineFeaturesKHR {...}--><!--Device-struct VkPhysicalDeviceRayTracingPipelineFeaturesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

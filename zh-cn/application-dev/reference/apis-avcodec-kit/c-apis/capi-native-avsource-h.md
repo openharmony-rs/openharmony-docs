@@ -49,6 +49,8 @@ OH_AVSource *OH_AVSource_CreateWithDataSource(OH_AVDataSource *dataSource)
 
 为用户自定义数据源的资源对象创建OH_AVSource实例，可以通过调用[OH_AVSource_Destroy](capi-native-avsource-h.md#oh_avsource_destroy)接口释放实例。<br> 参数dataSource生命周期需与返回的指针OH_AVSource *保持一致。
 
+<!--Device-OH_AVSource *OH_AVSource_CreateWithDataSource(OH_AVDataSource *dataSource)--><!--Device-OH_AVSource *OH_AVSource_CreateWithDataSource(OH_AVDataSource *dataSource)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
 **起始版本：** 12
@@ -74,6 +76,8 @@ OH_AVSource *OH_AVSource_CreateWithDataSourceExt(OH_AVDataSourceExt *dataSource,
 **描述：**
 
 为用户自定义数据源的资源对象创建OH_AVSource实例，可以通过调用[OH_AVSource_Destroy](capi-native-avsource-h.md#oh_avsource_destroy)接口释放实例。<br> 回调支持通过userData传递用户自定义数据。<br> 参数dataSource生命周期需与返回的指针OH_AVSource *保持一致。
+
+<!--Device-OH_AVSource *OH_AVSource_CreateWithDataSourceExt(OH_AVDataSourceExt *dataSource, void *userData)--><!--Device-OH_AVSource *OH_AVSource_CreateWithDataSourceExt(OH_AVDataSourceExt *dataSource, void *userData)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
@@ -102,6 +106,8 @@ OH_AVSource *OH_AVSource_CreateWithURI(char *uri)
 
 为统一资源标识符对应的资源对象创建OH_AVSource实例，可以通过调用[OH_AVSource_Destroy](capi-native-avsource-h.md#oh_avsource_destroy)接口释放实例。<br> 该接口仅支持HTTP渐进式流媒体，不支持HLS/DASH的流媒体；对于HLS/DASH的流媒体播放，推荐使用AVPlayer组件进行开发。
 
+<!--Device-OH_AVSource *OH_AVSource_CreateWithURI(char *uri)--><!--Device-OH_AVSource *OH_AVSource_CreateWithURI(char *uri)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
 **起始版本：** 10
@@ -127,6 +133,8 @@ OH_AVSource *OH_AVSource_CreateWithFD(int32_t fd, int64_t offset, int64_t size)
 **描述：**
 
 为文件描述符对应的资源对象创建OH_AVSource实例。可以通过调用[OH_AVSource_Destroy](capi-native-avsource-h.md#oh_avsource_destroy)接口释放实例。<br> 接口如果传入offset不为文件起始位置，或size不为文件大小时，可能会因数据获取不完整导致 OH_AVSource创建失败、后续解封装失败等未定义错误。
+
+<!--Device-OH_AVSource *OH_AVSource_CreateWithFD(int32_t fd, int64_t offset, int64_t size)--><!--Device-OH_AVSource *OH_AVSource_CreateWithFD(int32_t fd, int64_t offset, int64_t size)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
@@ -156,6 +164,8 @@ OH_AVErrCode OH_AVSource_Destroy(OH_AVSource *source)
 
 销毁OH_AVSource实例并清理内部资源。<br> 同一实例只能被销毁一次。销毁的实例在被重新创建之前不能再被使用。建议实例销毁成功后将指针置为NULL。
 
+<!--Device-OH_AVErrCode OH_AVSource_Destroy(OH_AVSource *source)--><!--Device-OH_AVErrCode OH_AVSource_Destroy(OH_AVSource *source)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
 **起始版本：** 10
@@ -181,6 +191,8 @@ OH_AVFormat *OH_AVSource_GetSourceFormat(OH_AVSource *source)
 **描述：**
 
 获取媒体资源文件的基础信息。<br> 需要注意的是，指向的OH_AVFormat实例在生命周期结束时需调用者通过调用接口[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)释放。
+
+<!--Device-OH_AVFormat *OH_AVSource_GetSourceFormat(OH_AVSource *source)--><!--Device-OH_AVFormat *OH_AVSource_GetSourceFormat(OH_AVSource *source)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
@@ -208,6 +220,8 @@ OH_AVFormat *OH_AVSource_GetTrackFormat(OH_AVSource *source, uint32_t trackIndex
 
 获取轨道的基础信息。<br> 需要注意的是，指向的OH_AVFormat实例在生命周期结束时需调用者通过调用接口[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)释放。
 
+<!--Device-OH_AVFormat *OH_AVSource_GetTrackFormat(OH_AVSource *source, uint32_t trackIndex)--><!--Device-OH_AVFormat *OH_AVSource_GetTrackFormat(OH_AVSource *source, uint32_t trackIndex)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
 **起始版本：** 10
@@ -234,6 +248,8 @@ OH_AVFormat *OH_AVSource_GetCustomMetadataFormat(OH_AVSource *source)
 **描述：**
 
 获取自定义元数据的基础信息。<br> 需要注意的是，指向的OH_AVFormat实例在生命周期结束时需开发者通过调用接口[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)释放。
+
+<!--Device-OH_AVFormat *OH_AVSource_GetCustomMetadataFormat(OH_AVSource *source)--><!--Device-OH_AVFormat *OH_AVSource_GetCustomMetadataFormat(OH_AVSource *source)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 

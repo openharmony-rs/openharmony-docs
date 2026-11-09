@@ -12,11 +12,13 @@ Defines a drag action handle, which is used to proactively initiate dragging, wh
 3. Start dragging by calling [OH_ArkUI_StartDrag](capi-drag-and-drop-h.md#oh_arkui_startdrag).
 4. When the object is no longer needed, call [OH_ArkUI_DragAction_Dispose](capi-drag-and-drop-h.md#oh_arkui_dragaction_dispose) to destroy the object and release resources.<br> For details about the creation, configuration, and execution mechanisms, see Binding Drag Events.
 
+<!--Device-typedef struct ArkUI_DragAction ArkUI_DragAction--><!--Device-typedef struct ArkUI_DragAction ArkUI_DragAction-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [drag_and_drop.h](capi-drag-and-drop-h.md)
 

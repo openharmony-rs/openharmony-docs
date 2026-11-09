@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkAttachmentDescriptionStencilLayout {...}--><!--Device-struct VkAttachmentDescriptionStencilLayout {...}-End-->
+
 ## Summary
 
 ### Member variables

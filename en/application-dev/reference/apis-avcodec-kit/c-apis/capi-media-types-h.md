@@ -32,6 +32,8 @@ enum OH_Core_HdrType
 
 Enumerates HDR types.
 
+<!--Device-OH_Core_HdrType--><!--Device-OH_Core_HdrType-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 18

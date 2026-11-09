@@ -56,6 +56,8 @@ typedef void (*OH_VideoOutput_OnFrameStart)(Camera_VideoOutput* videoOutput)
 
 Defines the callback defined in the [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) struct and used to report video output frame start events.
 
+<!--Device-typedef void (*OH_VideoOutput_OnFrameStart)(Camera_VideoOutput* videoOutput)--><!--Device-typedef void (*OH_VideoOutput_OnFrameStart)(Camera_VideoOutput* videoOutput)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
@@ -75,6 +77,8 @@ typedef void (*OH_VideoOutput_OnFrameEnd)(Camera_VideoOutput* videoOutput, int32
 **Description**
 
 Defines the callback defined in the [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) struct and used to report video output frame end events.
+
+<!--Device-typedef void (*OH_VideoOutput_OnFrameEnd)(Camera_VideoOutput* videoOutput, int32_t frameCount)--><!--Device-typedef void (*OH_VideoOutput_OnFrameEnd)(Camera_VideoOutput* videoOutput, int32_t frameCount)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -96,6 +100,8 @@ typedef void (*OH_VideoOutput_OnError)(Camera_VideoOutput* videoOutput, Camera_E
 **Description**
 
 Defines the callback defined in the [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) struct and used to report video output errors.
+
+<!--Device-typedef void (*OH_VideoOutput_OnError)(Camera_VideoOutput* videoOutput, Camera_ErrorCode errorCode)--><!--Device-typedef void (*OH_VideoOutput_OnError)(Camera_VideoOutput* videoOutput, Camera_ErrorCode errorCode)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -122,6 +128,8 @@ Camera_ErrorCode OH_VideoOutput_RegisterCallback(Camera_VideoOutput* videoOutput
 **Description**
 
 Registers a callback to listen for video output events.
+
+<!--Device-Camera_ErrorCode OH_VideoOutput_RegisterCallback(Camera_VideoOutput* videoOutput, VideoOutput_Callbacks* callback)--><!--Device-Camera_ErrorCode OH_VideoOutput_RegisterCallback(Camera_VideoOutput* videoOutput, VideoOutput_Callbacks* callback)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -150,6 +158,8 @@ Camera_ErrorCode OH_VideoOutput_UnregisterCallback(Camera_VideoOutput* videoOutp
 
 Unregisters the callback used to listen for video output events.
 
+<!--Device-Camera_ErrorCode OH_VideoOutput_UnregisterCallback(Camera_VideoOutput* videoOutput, VideoOutput_Callbacks* callback)--><!--Device-Camera_ErrorCode OH_VideoOutput_UnregisterCallback(Camera_VideoOutput* videoOutput, VideoOutput_Callbacks* callback)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
@@ -177,6 +187,8 @@ Camera_ErrorCode OH_VideoOutput_Start(Camera_VideoOutput* videoOutput)
 
 Starts video output.
 
+<!--Device-Camera_ErrorCode OH_VideoOutput_Start(Camera_VideoOutput* videoOutput)--><!--Device-Camera_ErrorCode OH_VideoOutput_Start(Camera_VideoOutput* videoOutput)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
@@ -202,6 +214,8 @@ Camera_ErrorCode OH_VideoOutput_Stop(Camera_VideoOutput* videoOutput)
 **Description**
 
 Stops video output.
+
+<!--Device-Camera_ErrorCode OH_VideoOutput_Stop(Camera_VideoOutput* videoOutput)--><!--Device-Camera_ErrorCode OH_VideoOutput_Stop(Camera_VideoOutput* videoOutput)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -229,6 +243,8 @@ Camera_ErrorCode OH_VideoOutput_Release(Camera_VideoOutput* videoOutput)
 
 Releases a VideoOutput instance.
 
+<!--Device-Camera_ErrorCode OH_VideoOutput_Release(Camera_VideoOutput* videoOutput)--><!--Device-Camera_ErrorCode OH_VideoOutput_Release(Camera_VideoOutput* videoOutput)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
@@ -254,6 +270,8 @@ Camera_ErrorCode OH_VideoOutput_GetActiveProfile(Camera_VideoOutput* videoOutput
 **Description**
 
 Obtains the profile of a VideoOutput instance.
+
+<!--Device-Camera_ErrorCode OH_VideoOutput_GetActiveProfile(Camera_VideoOutput* videoOutput, Camera_VideoProfile** profile)--><!--Device-Camera_ErrorCode OH_VideoOutput_GetActiveProfile(Camera_VideoOutput* videoOutput, Camera_VideoProfile** profile)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -282,6 +300,8 @@ Camera_ErrorCode OH_VideoOutput_DeleteProfile(Camera_VideoProfile* profile)
 
 Deletes the profile of a VideoOutput instance.
 
+<!--Device-Camera_ErrorCode OH_VideoOutput_DeleteProfile(Camera_VideoProfile* profile)--><!--Device-Camera_ErrorCode OH_VideoOutput_DeleteProfile(Camera_VideoProfile* profile)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
@@ -307,6 +327,8 @@ Camera_ErrorCode OH_VideoOutput_IsMirrorSupported(Camera_VideoOutput* videoOutpu
 **Description**
 
 Check whether mirror mode is supported for videoOutput
+
+<!--Device-Camera_ErrorCode OH_VideoOutput_IsMirrorSupported(Camera_VideoOutput* videoOutput, bool* isSupported)--><!--Device-Camera_ErrorCode OH_VideoOutput_IsMirrorSupported(Camera_VideoOutput* videoOutput, bool* isSupported)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -335,6 +357,8 @@ Camera_ErrorCode OH_VideoOutput_EnableMirror(Camera_VideoOutput* videoOutput, bo
 
 Enable or disable mirror mode for videoOutput
 
+<!--Device-Camera_ErrorCode OH_VideoOutput_EnableMirror(Camera_VideoOutput* videoOutput, bool mirrorMode)--><!--Device-Camera_ErrorCode OH_VideoOutput_EnableMirror(Camera_VideoOutput* videoOutput, bool mirrorMode)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 15
@@ -361,6 +385,8 @@ Camera_ErrorCode OH_VideoOutput_GetVideoRotation(Camera_VideoOutput* videoOutput
 **Description**
 
 Obtains the rotation angle of a video.
+
+<!--Device-Camera_ErrorCode OH_VideoOutput_GetVideoRotation(Camera_VideoOutput* videoOutput, int deviceDegree, Camera_ImageRotation* imageRotation)--><!--Device-Camera_ErrorCode OH_VideoOutput_GetVideoRotation(Camera_VideoOutput* videoOutput, int deviceDegree, Camera_ImageRotation* imageRotation)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -390,6 +416,8 @@ Camera_ErrorCode OH_VideoOutput_GetVideoRotationWithoutDeviceDegree(Camera_Video
 
 Obtains the rotation angle of a video.
 
+<!--Device-Camera_ErrorCode OH_VideoOutput_GetVideoRotationWithoutDeviceDegree(Camera_VideoOutput* videoOutput, Camera_ImageRotation* imageRotation)--><!--Device-Camera_ErrorCode OH_VideoOutput_GetVideoRotationWithoutDeviceDegree(Camera_VideoOutput* videoOutput, Camera_ImageRotation* imageRotation)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 23
@@ -416,6 +444,8 @@ Camera_ErrorCode OH_VideoOutput_GetSupportedFrameRates(Camera_VideoOutput* video
 **Description**
 
 Obtains the list of frame rates supported by a VideoOutput instance.
+
+<!--Device-Camera_ErrorCode OH_VideoOutput_GetSupportedFrameRates(Camera_VideoOutput* videoOutput, Camera_FrameRateRange** frameRateRange, uint32_t* size)--><!--Device-Camera_ErrorCode OH_VideoOutput_GetSupportedFrameRates(Camera_VideoOutput* videoOutput, Camera_FrameRateRange** frameRateRange, uint32_t* size)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -445,6 +475,8 @@ Camera_ErrorCode OH_VideoOutput_DeleteFrameRates(Camera_VideoOutput* videoOutput
 
 Deletes the frame rate list.
 
+<!--Device-Camera_ErrorCode OH_VideoOutput_DeleteFrameRates(Camera_VideoOutput* videoOutput, Camera_FrameRateRange* frameRateRange)--><!--Device-Camera_ErrorCode OH_VideoOutput_DeleteFrameRates(Camera_VideoOutput* videoOutput, Camera_FrameRateRange* frameRateRange)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
@@ -471,6 +503,8 @@ Camera_ErrorCode OH_VideoOutput_SetFrameRate(Camera_VideoOutput* videoOutput, in
 **Description**
 
 Sets the frame rates for a VideoOutput instance.
+
+<!--Device-Camera_ErrorCode OH_VideoOutput_SetFrameRate(Camera_VideoOutput* videoOutput, int32_t minFps, int32_t maxFps)--><!--Device-Camera_ErrorCode OH_VideoOutput_SetFrameRate(Camera_VideoOutput* videoOutput, int32_t minFps, int32_t maxFps)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -499,6 +533,8 @@ Camera_ErrorCode OH_VideoOutput_GetActiveFrameRate(Camera_VideoOutput* videoOutp
 **Description**
 
 Obtains the active frame rates of a VideoOutput instance.
+
+<!--Device-Camera_ErrorCode OH_VideoOutput_GetActiveFrameRate(Camera_VideoOutput* videoOutput, Camera_FrameRateRange* frameRateRange)--><!--Device-Camera_ErrorCode OH_VideoOutput_GetActiveFrameRate(Camera_VideoOutput* videoOutput, Camera_FrameRateRange* frameRateRange)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 

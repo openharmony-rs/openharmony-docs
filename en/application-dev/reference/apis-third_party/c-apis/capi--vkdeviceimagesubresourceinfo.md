@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDeviceImageSubresourceInfo {...}--><!--Device-struct VkDeviceImageSubresourceInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

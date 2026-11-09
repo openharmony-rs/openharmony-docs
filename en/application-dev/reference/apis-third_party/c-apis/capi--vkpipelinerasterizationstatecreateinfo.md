@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineRasterizationStateCreateInfo {...}--><!--Device-struct VkPipelineRasterizationStateCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

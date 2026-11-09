@@ -34,6 +34,8 @@ enum DeviceManager_ErrorCode
 
 Error codes of the distributed device management module.
 
+<!--Device-DeviceManager_ErrorCode--><!--Device-DeviceManager_ErrorCode-End-->
+
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **Since**: 20

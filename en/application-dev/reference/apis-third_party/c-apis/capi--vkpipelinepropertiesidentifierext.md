@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelinePropertiesIdentifierEXT {...}--><!--Device-struct VkPipelinePropertiesIdentifierEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct cred {...}--><!--Device-struct cred {...}-End-->
+
 ## Summary
 
 ### Member variables

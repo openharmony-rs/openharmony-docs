@@ -8,11 +8,13 @@ struct CloudDisk_DisplayNameInfo {...}
 
 定义同步根路径的显示名称信息。
 
+<!--Device-struct CloudDisk_DisplayNameInfo {...}--><!--Device-struct CloudDisk_DisplayNameInfo {...}-End-->
+
 **系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **起始版本：** 21
 
-**相关模块：** [CloudDisk](capi-others-clouddisk.md)
+**相关模块：** [CloudDisk](capi-core-file-kit-clouddisk.md)
 
 **所在头文件：** [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
 

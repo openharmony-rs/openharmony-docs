@@ -48,6 +48,8 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetUri(OH_MediaAsset* mediaAsset, const cha
 
 Obtains the URI of a media asset.
 
+<!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetUri(OH_MediaAsset* mediaAsset, const char** uri)--><!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetUri(OH_MediaAsset* mediaAsset, const char** uri)-End-->
+
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since**: 12
@@ -74,6 +76,8 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetMediaType(OH_MediaAsset* mediaAsset, Med
 **Description**
 
 Obtains the type of a media asset.
+
+<!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetMediaType(OH_MediaAsset* mediaAsset, MediaLibrary_MediaType* mediaType)--><!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetMediaType(OH_MediaAsset* mediaAsset, MediaLibrary_MediaType* mediaType)-End-->
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -102,6 +106,8 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetMediaSubType(OH_MediaAsset* mediaAsset, 
 
 Obtains the subtype of a media asset.
 
+<!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetMediaSubType(OH_MediaAsset* mediaAsset, MediaLibrary_MediaSubType* mediaSubType)--><!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetMediaSubType(OH_MediaAsset* mediaAsset, MediaLibrary_MediaSubType* mediaSubType)-End-->
+
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since**: 13
@@ -128,6 +134,8 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDisplayName(OH_MediaAsset* mediaAsset, c
 **Description**
 
 Obtains the display name of a media asset.
+
+<!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetDisplayName(OH_MediaAsset* mediaAsset, const char** displayName)--><!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetDisplayName(OH_MediaAsset* mediaAsset, const char** displayName)-End-->
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -156,6 +164,8 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetSize(OH_MediaAsset* mediaAsset, uint32_t
 
 Obtains the size of a media asset file.
 
+<!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetSize(OH_MediaAsset* mediaAsset, uint32_t* size)--><!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetSize(OH_MediaAsset* mediaAsset, uint32_t* size)-End-->
+
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since**: 12
@@ -182,6 +192,8 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDateAdded(OH_MediaAsset* mediaAsset, uin
 **Description**
 
 Obtains the date when a media asset was added.
+
+<!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetDateAdded(OH_MediaAsset* mediaAsset, uint32_t* dateAdded)--><!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetDateAdded(OH_MediaAsset* mediaAsset, uint32_t* dateAdded)-End-->
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -210,6 +222,8 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDateModified(OH_MediaAsset* mediaAsset, 
 
 Obtains the date when a media asset (content not the media asset name) was last modified.
 
+<!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetDateModified(OH_MediaAsset* mediaAsset, uint32_t* dateModified)--><!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetDateModified(OH_MediaAsset* mediaAsset, uint32_t* dateModified)-End-->
+
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since**: 13
@@ -236,6 +250,8 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDateTaken(OH_MediaAsset* mediaAsset, uin
 **Description**
 
 Obtains the date when a media asset was taken.
+
+<!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetDateTaken(OH_MediaAsset* mediaAsset, uint32_t* dateTaken)--><!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetDateTaken(OH_MediaAsset* mediaAsset, uint32_t* dateTaken)-End-->
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -264,6 +280,8 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDateAddedMs(OH_MediaAsset* mediaAsset, u
 
 Obtains the date when a media asset was added, in ms.
 
+<!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetDateAddedMs(OH_MediaAsset* mediaAsset, uint32_t* dateAddedMs)--><!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetDateAddedMs(OH_MediaAsset* mediaAsset, uint32_t* dateAddedMs)-End-->
+
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since**: 13
@@ -290,6 +308,8 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDateModifiedMs(OH_MediaAsset* mediaAsset
 **Description**
 
 Obtains the date when a media asset (content not the media asset name) was last modified, in ms.
+
+<!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetDateModifiedMs(OH_MediaAsset* mediaAsset, uint32_t* dateModifiedMs)--><!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetDateModifiedMs(OH_MediaAsset* mediaAsset, uint32_t* dateModifiedMs)-End-->
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -318,6 +338,8 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDuration(OH_MediaAsset* mediaAsset, uint
 
 Obtains the duration of a media asset, in ms.
 
+<!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetDuration(OH_MediaAsset* mediaAsset, uint32_t* duration)--><!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetDuration(OH_MediaAsset* mediaAsset, uint32_t* duration)-End-->
+
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since**: 13
@@ -344,6 +366,8 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetWidth(OH_MediaAsset* mediaAsset, uint32_
 **Description**
 
 Obtains the image width (in pixels) of a media asset.
+
+<!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetWidth(OH_MediaAsset* mediaAsset, uint32_t* width)--><!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetWidth(OH_MediaAsset* mediaAsset, uint32_t* width)-End-->
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -372,6 +396,8 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetHeight(OH_MediaAsset* mediaAsset, uint32
 
 Obtains the image height (in pixels) of a media asset.
 
+<!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetHeight(OH_MediaAsset* mediaAsset, uint32_t* height)--><!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetHeight(OH_MediaAsset* mediaAsset, uint32_t* height)-End-->
+
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since**: 12
@@ -398,6 +424,8 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetOrientation(OH_MediaAsset* mediaAsset, u
 **Description**
 
 Obtains the orientation of a media asset, in degrees.
+
+<!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetOrientation(OH_MediaAsset* mediaAsset, uint32_t* orientation)--><!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetOrientation(OH_MediaAsset* mediaAsset, uint32_t* orientation)-End-->
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -426,6 +454,8 @@ MediaLibrary_ErrorCode OH_MediaAsset_IsFavorite(OH_MediaAsset* mediaAsset, uint3
 
 Checks whether a media asset is favorited.
 
+<!--Device-MediaLibrary_ErrorCode OH_MediaAsset_IsFavorite(OH_MediaAsset* mediaAsset, uint32_t* favorite)--><!--Device-MediaLibrary_ErrorCode OH_MediaAsset_IsFavorite(OH_MediaAsset* mediaAsset, uint32_t* favorite)-End-->
+
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since**: 13
@@ -453,6 +483,8 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetTitle(OH_MediaAsset* mediaAsset, const c
 
 Obtains the title of a media asset.
 
+<!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetTitle(OH_MediaAsset* mediaAsset, const char** title)--><!--Device-MediaLibrary_ErrorCode OH_MediaAsset_GetTitle(OH_MediaAsset* mediaAsset, const char** title)-End-->
+
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since**: 13
@@ -479,6 +511,8 @@ MediaLibrary_ErrorCode OH_MediaAsset_Release(OH_MediaAsset* mediaAsset)
 **Description**
 
 Releases a media asset.
+
+<!--Device-MediaLibrary_ErrorCode OH_MediaAsset_Release(OH_MediaAsset* mediaAsset)--><!--Device-MediaLibrary_ErrorCode OH_MediaAsset_Release(OH_MediaAsset* mediaAsset)-End-->
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 

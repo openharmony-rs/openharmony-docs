@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceSynchronization2Features {...}--><!--Device-struct VkPhysicalDeviceSynchronization2Features {...}-End-->
+
 ## Summary
 
 ### Member variables

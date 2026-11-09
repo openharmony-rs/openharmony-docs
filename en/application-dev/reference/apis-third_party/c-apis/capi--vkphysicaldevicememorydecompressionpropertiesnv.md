@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceMemoryDecompressionPropertiesNV {...}--><!--Device-struct VkPhysicalDeviceMemoryDecompressionPropertiesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

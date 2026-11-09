@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceShaderAtomicInt64Features {...}--><!--Device-struct VkPhysicalDeviceShaderAtomicInt64Features {...}-End-->
+
 ## Summary
 
 ### Member variables

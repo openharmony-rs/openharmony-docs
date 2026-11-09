@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct timerval {...}--><!--Device-struct timerval {...}-End-->
+
 ## Summary
 
 ### Member variables

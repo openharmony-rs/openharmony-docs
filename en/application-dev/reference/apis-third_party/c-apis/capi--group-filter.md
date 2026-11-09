@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct group_filter {...}--><!--Device-struct group_filter {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceToolProperties {...}--><!--Device-struct VkPhysicalDeviceToolProperties {...}-End-->
+
 ## Summary
 
 ### Member variables

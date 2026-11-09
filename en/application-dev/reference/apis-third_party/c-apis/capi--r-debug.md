@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct r_debug {...}--><!--Device-struct r_debug {...}-End-->
+
 ## Summary
 
 ### Member variables

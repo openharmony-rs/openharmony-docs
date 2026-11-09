@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPerformanceConfigurationAcquireInfoINTEL {...}--><!--Device-struct VkPerformanceConfigurationAcquireInfoINTEL {...}-End-->
+
 ## Summary
 
 ### Member variables

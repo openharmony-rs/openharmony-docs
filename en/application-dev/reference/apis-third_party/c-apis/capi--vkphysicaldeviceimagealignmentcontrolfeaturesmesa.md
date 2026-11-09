@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceImageAlignmentControlFeaturesMESA {...}--><!--Device-struct VkPhysicalDeviceImageAlignmentControlFeaturesMESA {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -34,6 +34,8 @@ fileio模块接口定义，提供获取文件存储位置的native接口，帮�
 
 Obtains the location of a file.
 
+<!--Device-FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileIO_FileLocation *location)--><!--Device-FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileIO_FileLocation *location)-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 12

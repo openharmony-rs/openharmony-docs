@@ -8,11 +8,13 @@ typedef struct Sensor_Event Sensor_Event
 
 Defines a struct for the sensor event, including the sensor type, timestamp, and sensor data.
 
+<!--Device-typedef struct Sensor_Event Sensor_Event--><!--Device-typedef struct Sensor_Event Sensor_Event-End-->
+
 **System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
-**Related module**: [Sensor](capi-others-sensor.md)
+**Related module**: [Sensor](capi-sensor-service-kit-sensor.md)
 
 **Header file**: [oh_sensor_type.h](capi-oh-sensor-type-h.md)
 

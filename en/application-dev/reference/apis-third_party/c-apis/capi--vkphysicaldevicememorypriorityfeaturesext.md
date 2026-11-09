@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceMemoryPriorityFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceMemoryPriorityFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

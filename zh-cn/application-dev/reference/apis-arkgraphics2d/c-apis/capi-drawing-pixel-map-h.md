@@ -41,6 +41,8 @@ OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromNativePixelMap(NativePixelMap_* n
 
 从图像框架定义的像素图对象中获取本模块定义的像素图对象。对象使用完毕后， 调用[OH_Drawing_PixelMapDissolve](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapdissolve)解除关系，否则会引发内存泄漏问题。
 
+<!--Device-OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromNativePixelMap(NativePixelMap_* nativePixelMap)--><!--Device-OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromNativePixelMap(NativePixelMap_* nativePixelMap)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -67,6 +69,8 @@ OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromOhPixelMapNative(OH_PixelmapNativ
 
 从图像框架定义的像素图对象中获取本模块定义的像素图对象。对象使用完毕后， 调用[OH_Drawing_PixelMapDissolve](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapdissolve)解除关系，否则会引发内存泄漏问题。
 
+<!--Device-OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromOhPixelMapNative(OH_PixelmapNative* pixelmapNative)--><!--Device-OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromOhPixelMapNative(OH_PixelmapNative* pixelmapNative)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -92,6 +96,8 @@ void OH_Drawing_PixelMapDissolve(OH_Drawing_PixelMap* pixelMap)
 **描述：**
 
 解除本模块定义的像素图对象和图像框架定义的像素图对象之间的关系。 必须先调用[OH_Drawing_PixelMapGetFromNativePixelMap](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapgetfromnativepixelmap)或 [OH_Drawing_PixelMapGetFromOhPixelMapNative](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapgetfromohpixelmapnative)获取像素图对象并建立关联关系后，才能调用本方法解除该关系。
+
+<!--Device-void OH_Drawing_PixelMapDissolve(OH_Drawing_PixelMap* pixelMap)--><!--Device-void OH_Drawing_PixelMapDissolve(OH_Drawing_PixelMap* pixelMap)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

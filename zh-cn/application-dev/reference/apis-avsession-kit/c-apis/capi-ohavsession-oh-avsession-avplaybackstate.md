@@ -8,11 +8,13 @@ typedef struct OH_AVSession_AVPlaybackState OH_AVSession_AVPlaybackState
 
 播放状态对象。
 
+<!--Device-typedef struct OH_AVSession_AVPlaybackState OH_AVSession_AVPlaybackState--><!--Device-typedef struct OH_AVSession_AVPlaybackState OH_AVSession_AVPlaybackState-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
-**相关模块：** [OHAVSession](capi-others-ohavsession.md)
+**相关模块：** [OHAVSession](capi-avsession-kit-ohavsession.md)
 
 **所在头文件：** [native_avplaybackstate.h](capi-native-avplaybackstate-h.md)
 

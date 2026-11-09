@@ -48,6 +48,8 @@ int32_t OH_ScsiPeripheral_Init(void)
 
 Initializes the SCSI Peripheral DDK. This method must be called before all other SCSI Peripheral DDK methods. After using the method, you must call **OH_ScsiPeripheral_Release** to release resources. Otherwise, resource leaks may occur.
 
+<!--Device-int32_t OH_ScsiPeripheral_Init(void)--><!--Device-int32_t OH_ScsiPeripheral_Init(void)-End-->
+
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
@@ -70,6 +72,8 @@ int32_t OH_ScsiPeripheral_Release(void)
 
 Releases the SCSI Peripheral DDK. You must call **OH_ScsiPeripheral_Init** to initialize the SCSI Peripheral DDK and call this method to release resources when it is no longer used to avoid resource leaks.
 
+<!--Device-int32_t OH_ScsiPeripheral_Release(void)--><!--Device-int32_t OH_ScsiPeripheral_Release(void)-End-->
+
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
@@ -91,6 +95,8 @@ int32_t OH_ScsiPeripheral_Open(uint64_t deviceId, uint8_t interfaceIndex, ScsiPe
 **Description**
 
 Opens the SCSI device specified by **deviceId** and **interfaceIndex**. The **deviceId** can be obtained by shifting the bus number of the USB device left by 32 bits and then performing a bitwise OR operation with the device address. **interfaceIndex** refers to the index of the USB interface to be opened. After using the device, you must call **OH_ScsiPeripheral_Close** to close the device and release resources. Otherwise, resource leaks may occur.
+
+<!--Device-int32_t OH_ScsiPeripheral_Open(uint64_t deviceId, uint8_t interfaceIndex, ScsiPeripheral_Device **dev)--><!--Device-int32_t OH_ScsiPeripheral_Open(uint64_t deviceId, uint8_t interfaceIndex, ScsiPeripheral_Device **dev)-End-->
 
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
@@ -122,6 +128,8 @@ int32_t OH_ScsiPeripheral_Close(ScsiPeripheral_Device **dev)
 
 Closes the SCSI device, releases the device handle resources, and invalidates the handle. This API is used together with **OH_ScsiPeripheral_Open**. After using the device, you must call this API to close the device and release resources. Otherwise, resource leaks may occur.
 
+<!--Device-int32_t OH_ScsiPeripheral_Close(ScsiPeripheral_Device **dev)--><!--Device-int32_t OH_ScsiPeripheral_Close(ScsiPeripheral_Device **dev)-End-->
+
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
@@ -149,6 +157,8 @@ int32_t OH_ScsiPeripheral_TestUnitReady(ScsiPeripheral_Device *dev, ScsiPeripher
 **Description**
 
 Checks whether the logical unit is ready. A logical unit is an I/O operation entity that can be independently addressed in a SCSI device.
+
+<!--Device-int32_t OH_ScsiPeripheral_TestUnitReady(ScsiPeripheral_Device *dev, ScsiPeripheral_TestUnitReadyRequest *request, ScsiPeripheral_Response *response)--><!--Device-int32_t OH_ScsiPeripheral_TestUnitReady(ScsiPeripheral_Device *dev, ScsiPeripheral_TestUnitReadyRequest *request, ScsiPeripheral_Response *response)-End-->
 
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
@@ -179,6 +189,8 @@ int32_t OH_ScsiPeripheral_Inquiry(ScsiPeripheral_Device *dev, ScsiPeripheral_Inq
 **Description**
 
 Queries basic information about the SCSI device.
+
+<!--Device-int32_t OH_ScsiPeripheral_Inquiry(ScsiPeripheral_Device *dev, ScsiPeripheral_InquiryRequest *request, ScsiPeripheral_InquiryInfo *inquiryInfo, ScsiPeripheral_Response *response)--><!--Device-int32_t OH_ScsiPeripheral_Inquiry(ScsiPeripheral_Device *dev, ScsiPeripheral_InquiryRequest *request, ScsiPeripheral_InquiryInfo *inquiryInfo, ScsiPeripheral_Response *response)-End-->
 
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
@@ -211,6 +223,8 @@ int32_t OH_ScsiPeripheral_ReadCapacity10(ScsiPeripheral_Device *dev, ScsiPeriphe
 
 Obtains the capacity information about the SCSI device.
 
+<!--Device-int32_t OH_ScsiPeripheral_ReadCapacity10(ScsiPeripheral_Device *dev, ScsiPeripheral_ReadCapacityRequest *request, ScsiPeripheral_CapacityInfo *capacityInfo, ScsiPeripheral_Response *response)--><!--Device-int32_t OH_ScsiPeripheral_ReadCapacity10(ScsiPeripheral_Device *dev, ScsiPeripheral_ReadCapacityRequest *request, ScsiPeripheral_CapacityInfo *capacityInfo, ScsiPeripheral_Response *response)-End-->
+
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
@@ -242,6 +256,8 @@ int32_t OH_ScsiPeripheral_RequestSense(ScsiPeripheral_Device *dev, ScsiPeriphera
 
 Obtains sense data, that is, information returned by the SCSI device to the host, which is used to report the device status, error information, and diagnosis information.
 
+<!--Device-int32_t OH_ScsiPeripheral_RequestSense(ScsiPeripheral_Device *dev, ScsiPeripheral_RequestSenseRequest *request, ScsiPeripheral_Response *response)--><!--Device-int32_t OH_ScsiPeripheral_RequestSense(ScsiPeripheral_Device *dev, ScsiPeripheral_RequestSenseRequest *request, ScsiPeripheral_Response *response)-End-->
+
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
@@ -271,6 +287,8 @@ int32_t OH_ScsiPeripheral_Read10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORe
 **Description**
 
 Reads data from the specified logical block(s).
+
+<!--Device-int32_t OH_ScsiPeripheral_Read10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORequest *request, ScsiPeripheral_Response *response)--><!--Device-int32_t OH_ScsiPeripheral_Read10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORequest *request, ScsiPeripheral_Response *response)-End-->
 
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
@@ -302,6 +320,8 @@ int32_t OH_ScsiPeripheral_Write10(ScsiPeripheral_Device *dev, ScsiPeripheral_IOR
 
 Writes data to the specified logical block(s) of a device.
 
+<!--Device-int32_t OH_ScsiPeripheral_Write10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORequest *request, ScsiPeripheral_Response *response)--><!--Device-int32_t OH_ScsiPeripheral_Write10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORequest *request, ScsiPeripheral_Response *response)-End-->
+
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
@@ -331,6 +351,8 @@ int32_t OH_ScsiPeripheral_Verify10(ScsiPeripheral_Device *dev, ScsiPeripheral_Ve
 **Description**
 
 Verifies the specified logical block(s).
+
+<!--Device-int32_t OH_ScsiPeripheral_Verify10(ScsiPeripheral_Device *dev, ScsiPeripheral_VerifyRequest *request, ScsiPeripheral_Response *response)--><!--Device-int32_t OH_ScsiPeripheral_Verify10(ScsiPeripheral_Device *dev, ScsiPeripheral_VerifyRequest *request, ScsiPeripheral_Response *response)-End-->
 
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
@@ -362,6 +384,8 @@ int32_t OH_ScsiPeripheral_SendRequestByCdb(ScsiPeripheral_Device *dev, ScsiPerip
 
 Sends SCSI commands in CDB mode.
 
+<!--Device-int32_t OH_ScsiPeripheral_SendRequestByCdb(ScsiPeripheral_Device *dev, ScsiPeripheral_Request *request, ScsiPeripheral_Response *response)--><!--Device-int32_t OH_ScsiPeripheral_SendRequestByCdb(ScsiPeripheral_Device *dev, ScsiPeripheral_Request *request, ScsiPeripheral_Response *response)-End-->
+
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
@@ -392,6 +416,8 @@ int32_t OH_ScsiPeripheral_CreateDeviceMemMap(ScsiPeripheral_Device *dev, size_t 
 
 Creates a buffer. To avoid memory leakage, use [OH_ScsiPeripheral_DestroyDeviceMemMap](capi-scsi-peripheral-api-h.md#oh_scsiperipheral_destroydevicememmap) to destroy a buffer after use.
 
+<!--Device-int32_t OH_ScsiPeripheral_CreateDeviceMemMap(ScsiPeripheral_Device *dev, size_t size, ScsiPeripheral_DeviceMemMap **devMmap)--><!--Device-int32_t OH_ScsiPeripheral_CreateDeviceMemMap(ScsiPeripheral_Device *dev, size_t size, ScsiPeripheral_DeviceMemMap **devMmap)-End-->
+
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Since**: 18
@@ -420,6 +446,8 @@ int32_t OH_ScsiPeripheral_DestroyDeviceMemMap(ScsiPeripheral_DeviceMemMap *devMm
 
 Destroys a buffer. To prevent resource leakage, destroy a buffer in time after use.
 
+<!--Device-int32_t OH_ScsiPeripheral_DestroyDeviceMemMap(ScsiPeripheral_DeviceMemMap *devMmap)--><!--Device-int32_t OH_ScsiPeripheral_DestroyDeviceMemMap(ScsiPeripheral_DeviceMemMap *devMmap)-End-->
+
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Since**: 18
@@ -445,6 +473,8 @@ int32_t OH_ScsiPeripheral_ParseBasicSenseInfo(uint8_t *senseData, uint8_t senseD
 **Description**
 
 Parses basic sense data, including the **Information**, **Command specific information**, and **Sense key specific** fields.
+
+<!--Device-int32_t OH_ScsiPeripheral_ParseBasicSenseInfo(uint8_t *senseData, uint8_t senseDataLen, ScsiPeripheral_BasicSenseInfo *senseInfo)--><!--Device-int32_t OH_ScsiPeripheral_ParseBasicSenseInfo(uint8_t *senseData, uint8_t senseDataLen, ScsiPeripheral_BasicSenseInfo *senseInfo)-End-->
 
 **System capability**: SystemCapability.Driver.SCSI.Extension
 

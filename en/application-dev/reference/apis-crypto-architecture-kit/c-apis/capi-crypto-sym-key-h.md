@@ -48,6 +48,8 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Create(const char *algoName, OH_Crypt
 
 Creates a symmetric key generator based on the given algorithm name, e.g. AES256.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Create(const char *algoName, OH_CryptoSymKeyGenerator **ctx)--><!--Device-OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Create(const char *algoName, OH_CryptoSymKeyGenerator **ctx)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
@@ -83,6 +85,8 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Generate(OH_CryptoSymKeyGenerator *ct
 
 Generates a symmetric key randomly.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Generate(OH_CryptoSymKeyGenerator *ctx, OH_CryptoSymKey **keyCtx)--><!--Device-OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Generate(OH_CryptoSymKeyGenerator *ctx, OH_CryptoSymKey **keyCtx)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
@@ -111,6 +115,8 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Convert(OH_CryptoSymKeyGenerator *ctx
 **Description**
 
 Converts symmetric key data to a symmetric key.
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Convert(OH_CryptoSymKeyGenerator *ctx, const Crypto_DataBlob *keyData, OH_CryptoSymKey **keyCtx)--><!--Device-OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Convert(OH_CryptoSymKeyGenerator *ctx, const Crypto_DataBlob *keyData, OH_CryptoSymKey **keyCtx)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -142,6 +148,8 @@ const char *OH_CryptoSymKeyGenerator_GetAlgoName(OH_CryptoSymKeyGenerator *ctx)
 
 Obtains the algorithm name of the symmetric key generator.
 
+<!--Device-const char *OH_CryptoSymKeyGenerator_GetAlgoName(OH_CryptoSymKeyGenerator *ctx)--><!--Device-const char *OH_CryptoSymKeyGenerator_GetAlgoName(OH_CryptoSymKeyGenerator *ctx)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
@@ -168,6 +176,8 @@ void OH_CryptoSymKeyGenerator_Destroy(OH_CryptoSymKeyGenerator *ctx)
 
 Destroys the symmetric key generator.
 
+<!--Device-void OH_CryptoSymKeyGenerator_Destroy(OH_CryptoSymKeyGenerator *ctx)--><!--Device-void OH_CryptoSymKeyGenerator_Destroy(OH_CryptoSymKeyGenerator *ctx)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
@@ -187,6 +197,8 @@ const char *OH_CryptoSymKey_GetAlgoName(OH_CryptoSymKey *keyCtx)
 **Description**
 
 Obtains the symmetric key algorithm name from the symmetric key.
+
+<!--Device-const char *OH_CryptoSymKey_GetAlgoName(OH_CryptoSymKey *keyCtx)--><!--Device-const char *OH_CryptoSymKey_GetAlgoName(OH_CryptoSymKey *keyCtx)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -213,6 +225,8 @@ OH_Crypto_ErrCode OH_CryptoSymKey_GetKeyData(OH_CryptoSymKey *keyCtx, Crypto_Dat
 **Description**
 
 Obtains the symmetric key data from the symmetric key.
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoSymKey_GetKeyData(OH_CryptoSymKey *keyCtx, Crypto_DataBlob *out)--><!--Device-OH_Crypto_ErrCode OH_CryptoSymKey_GetKeyData(OH_CryptoSymKey *keyCtx, Crypto_DataBlob *out)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -242,6 +256,8 @@ void OH_CryptoSymKey_Destroy(OH_CryptoSymKey *keyCtx)
 **Description**
 
 Destroys the symmetric key.
+
+<!--Device-void OH_CryptoSymKey_Destroy(OH_CryptoSymKey *keyCtx)--><!--Device-void OH_CryptoSymKey_Destroy(OH_CryptoSymKey *keyCtx)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 

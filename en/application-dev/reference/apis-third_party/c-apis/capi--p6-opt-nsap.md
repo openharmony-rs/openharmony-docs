@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct p6_opt_nsap {...}--><!--Device-struct p6_opt_nsap {...}-End-->
+
 ## Summary
 
 ### Member variables

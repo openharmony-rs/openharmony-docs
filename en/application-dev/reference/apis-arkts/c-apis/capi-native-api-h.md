@@ -235,6 +235,8 @@ typedef void* (*napi_native_binding_detach_callback)(napi_env env, void* native_
 
 Native detach callback of napi_coerce_to_native_binding_object that can be used to detach the ArkTS object and the native object.
 
+<!--Device-typedef void* (*napi_native_binding_detach_callback)(napi_env env, void* native_object, void* hint)--><!--Device-typedef void* (*napi_native_binding_detach_callback)(napi_env env, void* native_object, void* hint)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 11
@@ -252,6 +254,8 @@ NAPI_EXTERN napi_status napi_queue_async_work_with_qos(napi_env env, napi_async_
 
 Native attach callback of napi_coerce_to_native_binding_object that can be used to bind the ArkTS object and the native object.
 
+<!--Device-typedef napi_value (*napi_native_binding_attach_callback)(napi_env env, void* native_object, void* hint) NAPI_EXTERN napi_status napi_run_script_path(napi_env env, const char* path, napi_value* result) NAPI_EXTERN napi_status napi_queue_async_work_with_qos(napi_env env, napi_async_work work, napi_qos_t qos)--><!--Device-typedef napi_value (*napi_native_binding_attach_callback)(napi_env env, void* native_object, void* hint) NAPI_EXTERN napi_status napi_run_script_path(napi_env env, const char* path, napi_value* result) NAPI_EXTERN napi_status napi_queue_async_work_with_qos(napi_env env, napi_async_work work, napi_qos_t qos)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 11
@@ -266,6 +270,8 @@ typedef void (*napi_finalize_callback)(void* finalize_data, void* finalize_hint)
 
 Native finalize callback is utilized to recycle native object resource.
 
+<!--Device-typedef void (*napi_finalize_callback)(void* finalize_data, void* finalize_hint)--><!--Device-typedef void (*napi_finalize_callback)(void* finalize_data, void* finalize_hint)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 22
@@ -279,6 +285,8 @@ NAPI_EXTERN napi_status napi_load_module(napi_env env, const char* path, napi_va
 **Description**
 
 Loads an .abc file as a module. This API returns the namespace of the module.
+
+<!--Device-NAPI_EXTERN napi_status napi_load_module(napi_env env, const char* path, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_load_module(napi_env env, const char* path, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -307,6 +315,8 @@ NAPI_EXTERN napi_status napi_set_instance_data(napi_env env, void* data, napi_fi
 **Description**
 
 Associates data with the currently running environment.
+
+<!--Device-NAPI_EXTERN napi_status napi_set_instance_data(napi_env env, void* data, napi_finalize finalize_cb, void* finalize_hint)--><!--Device-NAPI_EXTERN napi_status napi_set_instance_data(napi_env env, void* data, napi_finalize finalize_cb, void* finalize_hint)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -337,6 +347,8 @@ NAPI_EXTERN napi_status napi_get_instance_data(napi_env env, void** data)
 
 Retrieves the data that was previously associated with the currently running environment.
 
+<!--Device-NAPI_EXTERN napi_status napi_get_instance_data(napi_env env, void** data)--><!--Device-NAPI_EXTERN napi_status napi_get_instance_data(napi_env env, void** data)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 11
@@ -363,6 +375,8 @@ NAPI_EXTERN napi_status napi_add_env_cleanup_hook(napi_env env, void (*fun)(void
 **Description**
 
 Registers a clean-up hook for releasing resources when the environment exits.
+
+<!--Device-NAPI_EXTERN napi_status napi_add_env_cleanup_hook(napi_env env, void (*fun)(void* arg), void* arg)--><!--Device-NAPI_EXTERN napi_status napi_add_env_cleanup_hook(napi_env env, void (*fun)(void* arg), void* arg)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -392,6 +406,8 @@ NAPI_EXTERN napi_status napi_remove_env_cleanup_hook(napi_env env, void (*fun)(v
 
 Unregisters the clean-up hook.
 
+<!--Device-NAPI_EXTERN napi_status napi_remove_env_cleanup_hook(napi_env env, void (*fun)(void* arg), void* arg)--><!--Device-NAPI_EXTERN napi_status napi_remove_env_cleanup_hook(napi_env env, void (*fun)(void* arg), void* arg)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 11
@@ -419,6 +435,8 @@ NAPI_EXTERN napi_status napi_add_async_cleanup_hook(napi_env env, napi_async_cle
 **Description**
 
 Registers an asynchronous clean-up hook for releasing resources when the environment exits.
+
+<!--Device-NAPI_EXTERN napi_status napi_add_async_cleanup_hook(napi_env env, napi_async_cleanup_hook hook, void* arg, napi_async_cleanup_hook_handle* remove_handle)--><!--Device-NAPI_EXTERN napi_status napi_add_async_cleanup_hook(napi_env env, napi_async_cleanup_hook hook, void* arg, napi_async_cleanup_hook_handle* remove_handle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -449,6 +467,8 @@ NAPI_EXTERN napi_status napi_remove_async_cleanup_hook(napi_async_cleanup_hook_h
 
 Unregisters the asynchronous clean-up hook.
 
+<!--Device-NAPI_EXTERN napi_status napi_remove_async_cleanup_hook(napi_async_cleanup_hook_handle remove_handle)--><!--Device-NAPI_EXTERN napi_status napi_remove_async_cleanup_hook(napi_async_cleanup_hook_handle remove_handle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 11
@@ -474,6 +494,8 @@ NAPI_EXTERN napi_status napi_async_init(napi_env env, napi_value async_resource,
 **Description**
 
 Creates an asynchronous context. The capabilities related to 'async_hook' are not supported currently.
+
+<!--Device-NAPI_EXTERN napi_status napi_async_init(napi_env env, napi_value async_resource, napi_value async_resource_name, napi_async_context* result)--><!--Device-NAPI_EXTERN napi_status napi_async_init(napi_env env, napi_value async_resource, napi_value async_resource_name, napi_async_context* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -504,6 +526,8 @@ NAPI_EXTERN napi_status napi_async_destroy(napi_env env, napi_async_context asyn
 
 Destroys the previously created asynchronous context. The capabilities related to 'async_hook' are not supported currently.
 
+<!--Device-NAPI_EXTERN napi_status napi_async_destroy(napi_env env, napi_async_context async_context)--><!--Device-NAPI_EXTERN napi_status napi_async_destroy(napi_env env, napi_async_context async_context)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 11
@@ -530,6 +554,8 @@ NAPI_EXTERN napi_status napi_open_callback_scope(napi_env env, napi_value resour
 **Description**
 
 Opens a callback scope. The capabilities related to 'async_hook' are not supported currently.
+
+<!--Device-NAPI_EXTERN napi_status napi_open_callback_scope(napi_env env, napi_value resource_object, napi_async_context context, napi_callback_scope* result)--><!--Device-NAPI_EXTERN napi_status napi_open_callback_scope(napi_env env, napi_value resource_object, napi_async_context context, napi_callback_scope* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -560,6 +586,8 @@ NAPI_EXTERN napi_status napi_close_callback_scope(napi_env env, napi_callback_sc
 
 Closes the callback scope. The capabilities related to 'async_hook' are not supported currently.
 
+<!--Device-NAPI_EXTERN napi_status napi_close_callback_scope(napi_env env, napi_callback_scope scope)--><!--Device-NAPI_EXTERN napi_status napi_close_callback_scope(napi_env env, napi_callback_scope scope)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 11
@@ -587,6 +615,8 @@ NAPI_EXTERN napi_status node_api_get_module_file_name(napi_env env, const char**
 
 Obtains the absolute path of the location, from which the addon is loaded.
 
+<!--Device-NAPI_EXTERN napi_status node_api_get_module_file_name(napi_env env, const char** result)--><!--Device-NAPI_EXTERN napi_status node_api_get_module_file_name(napi_env env, const char** result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 11
@@ -613,6 +643,8 @@ NAPI_EXTERN napi_status napi_create_object_with_properties(napi_env env, napi_va
 **Description**
 
 Create ArkTS Object with initial properties given by descriptors, note that property key must be String, and must can not convert to element_index, also all keys must not duplicate.
+
+<!--Device-NAPI_EXTERN napi_status napi_create_object_with_properties(napi_env env, napi_value* result, size_t property_count, const napi_property_descriptor* properties)--><!--Device-NAPI_EXTERN napi_status napi_create_object_with_properties(napi_env env, napi_value* result, size_t property_count, const napi_property_descriptor* properties)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -643,6 +675,8 @@ NAPI_EXTERN napi_status napi_create_object_with_named_properties(napi_env env, n
 
 Create ArkTS Object with initial properties given by keys and values, note that property key must be String, and must can not convert to element_index, also all keys must not duplicate.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_object_with_named_properties(napi_env env, napi_value* result, size_t property_count, const char** keys, const napi_value* values)--><!--Device-NAPI_EXTERN napi_status napi_create_object_with_named_properties(napi_env env, napi_value* result, size_t property_count, const char** keys, const napi_value* values)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 11
@@ -672,6 +706,8 @@ NAPI_EXTERN napi_status napi_coerce_to_native_binding_object(napi_env env, napi_
 **Description**
 
 This API sets native properties to a object and converts this ArkTS object to native binding object.
+
+<!--Device-NAPI_EXTERN napi_status napi_coerce_to_native_binding_object(napi_env env, napi_value js_object, napi_native_binding_detach_callback detach_cb, napi_native_binding_attach_callback attach_cb, void* native_object, void* hint)--><!--Device-NAPI_EXTERN napi_status napi_coerce_to_native_binding_object(napi_env env, napi_value js_object, napi_native_binding_detach_callback detach_cb, napi_native_binding_attach_callback attach_cb, void* native_object, void* hint)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -704,6 +740,8 @@ NAPI_EXTERN napi_status napi_add_finalizer(napi_env env, napi_value js_object, v
 
 Adds a 'napi_finalize' callback, which will be called when the ArkTS object is garbage-collected.
 
+<!--Device-NAPI_EXTERN napi_status napi_add_finalizer(napi_env env, napi_value js_object, void* native_object, napi_finalize finalize_cb, void* finalize_hint, napi_ref* result)--><!--Device-NAPI_EXTERN napi_status napi_add_finalizer(napi_env env, napi_value js_object, void* native_object, napi_finalize finalize_cb, void* finalize_hint, napi_ref* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 11
@@ -735,6 +773,8 @@ NAPI_EXTERN napi_status napi_load_module_with_info(napi_env env, const char* pat
 
 The module is loaded through the NAPI. By default, the default object is exported from the module.
 
+<!--Device-NAPI_EXTERN napi_status napi_load_module_with_info(napi_env env, const char* path, const char* module_info, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_load_module_with_info(napi_env env, const char* path, const char* module_info, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
@@ -764,6 +804,8 @@ NAPI_EXTERN napi_status napi_create_ark_runtime(napi_env* env)
 
 Create the ark runtime.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_ark_runtime(napi_env* env)--><!--Device-NAPI_EXTERN napi_status napi_create_ark_runtime(napi_env* env)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
@@ -790,6 +832,8 @@ NAPI_EXTERN napi_status napi_destroy_ark_runtime(napi_env* env)
 
 Destroy the ark runtime.
 
+<!--Device-NAPI_EXTERN napi_status napi_destroy_ark_runtime(napi_env* env)--><!--Device-NAPI_EXTERN napi_status napi_destroy_ark_runtime(napi_env* env)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
@@ -815,6 +859,8 @@ NAPI_EXTERN napi_status napi_define_sendable_class(napi_env env, const char* utf
 **Description**
 
 Defines a sendable class.
+
+<!--Device-NAPI_EXTERN napi_status napi_define_sendable_class(napi_env env, const char* utf8name, size_t length, napi_callback constructor, void* data, size_t property_count, const napi_property_descriptor* properties, napi_value parent, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_define_sendable_class(napi_env env, const char* utf8name, size_t length, napi_callback constructor, void* data, size_t property_count, const napi_property_descriptor* properties, napi_value parent, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -850,6 +896,8 @@ NAPI_EXTERN napi_status napi_is_sendable(napi_env env, napi_value value, bool* r
 
 Queries a napi_value to check if it is sendable.
 
+<!--Device-NAPI_EXTERN napi_status napi_is_sendable(napi_env env, napi_value value, bool* result)--><!--Device-NAPI_EXTERN napi_status napi_is_sendable(napi_env env, napi_value value, bool* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
@@ -877,6 +925,8 @@ NAPI_EXTERN napi_status napi_create_sendable_object_with_properties(napi_env env
 **Description**
 
 Defines a sendable object.
+
+<!--Device-NAPI_EXTERN napi_status napi_create_sendable_object_with_properties(napi_env env, size_t property_count, const napi_property_descriptor* properties, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_sendable_object_with_properties(napi_env env, size_t property_count, const napi_property_descriptor* properties, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -907,6 +957,8 @@ NAPI_EXTERN napi_status napi_wrap_sendable(napi_env env, napi_value js_object, v
 
 Wraps a native instance in an ArkTS object.
 
+<!--Device-NAPI_EXTERN napi_status napi_wrap_sendable(napi_env env, napi_value js_object, void* native_object, napi_finalize finalize_cb, void* finalize_hint)--><!--Device-NAPI_EXTERN napi_status napi_wrap_sendable(napi_env env, napi_value js_object, void* native_object, napi_finalize finalize_cb, void* finalize_hint)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
@@ -936,6 +988,8 @@ NAPI_EXTERN napi_status napi_wrap_sendable_with_size(napi_env env, napi_value js
 **Description**
 
 Wraps a native instance in an ArkTS object.
+
+<!--Device-NAPI_EXTERN napi_status napi_wrap_sendable_with_size(napi_env env, napi_value js_object, void* native_object, napi_finalize finalize_cb, void* finalize_hint, size_t native_binding_size)--><!--Device-NAPI_EXTERN napi_status napi_wrap_sendable_with_size(napi_env env, napi_value js_object, void* native_object, napi_finalize finalize_cb, void* finalize_hint, size_t native_binding_size)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -968,6 +1022,8 @@ NAPI_EXTERN napi_status napi_unwrap_sendable(napi_env env, napi_value js_object,
 
 Retrieves a native instance that was previously wrapped in an ArkTS object.
 
+<!--Device-NAPI_EXTERN napi_status napi_unwrap_sendable(napi_env env, napi_value js_object, void** result)--><!--Device-NAPI_EXTERN napi_status napi_unwrap_sendable(napi_env env, napi_value js_object, void** result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
@@ -995,6 +1051,8 @@ NAPI_EXTERN napi_status napi_remove_wrap_sendable(napi_env env, napi_value js_ob
 **Description**
 
 Retrieves a native instance that was previously wrapped in an ArkTS object and removes the wrapping.
+
+<!--Device-NAPI_EXTERN napi_status napi_remove_wrap_sendable(napi_env env, napi_value js_object, void** result)--><!--Device-NAPI_EXTERN napi_status napi_remove_wrap_sendable(napi_env env, napi_value js_object, void** result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -1024,6 +1082,8 @@ NAPI_EXTERN napi_status napi_create_sendable_array(napi_env env, napi_value* res
 
 Create a sendable array.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_sendable_array(napi_env env, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_sendable_array(napi_env env, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
@@ -1050,6 +1110,8 @@ NAPI_EXTERN napi_status napi_create_sendable_array_with_length(napi_env env, siz
 **Description**
 
 Create a sendable array with length.
+
+<!--Device-NAPI_EXTERN napi_status napi_create_sendable_array_with_length(napi_env env, size_t length, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_sendable_array_with_length(napi_env env, size_t length, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -1079,6 +1141,8 @@ NAPI_EXTERN napi_status napi_create_sendable_arraybuffer(napi_env env, size_t by
 
 Create a sendable arraybuffer.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_sendable_arraybuffer(napi_env env, size_t byte_length, void** data, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_sendable_arraybuffer(napi_env env, size_t byte_length, void** data, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
@@ -1107,6 +1171,8 @@ NAPI_EXTERN napi_status napi_create_sendable_typedarray(napi_env env, napi_typed
 **Description**
 
 Create a sendable typedarray.
+
+<!--Device-NAPI_EXTERN napi_status napi_create_sendable_typedarray(napi_env env, napi_typedarray_type type, size_t length, napi_value arraybuffer, size_t byte_offset, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_sendable_typedarray(napi_env env, napi_typedarray_type type, size_t length, napi_value arraybuffer, size_t byte_offset, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -1139,6 +1205,8 @@ NAPI_EXTERN napi_status napi_run_event_loop(napi_env env, napi_event_mode mode)
 
 Run the event loop by the given env and running mode in current thread.<br> Support to run the native event loop in an asynchronous native thread with the specified running mode.
 
+<!--Device-NAPI_EXTERN napi_status napi_run_event_loop(napi_env env, napi_event_mode mode)--><!--Device-NAPI_EXTERN napi_status napi_run_event_loop(napi_env env, napi_event_mode mode)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
@@ -1166,6 +1234,8 @@ NAPI_EXTERN napi_status napi_stop_event_loop(napi_env env)
 
 Stop the event loop in current thread.<br> Support to stop the running event loop in current native thread.
 
+<!--Device-NAPI_EXTERN napi_status napi_stop_event_loop(napi_env env)--><!--Device-NAPI_EXTERN napi_status napi_stop_event_loop(napi_env env)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
@@ -1191,6 +1261,8 @@ NAPI_EXTERN napi_status napi_serialize(napi_env env, napi_value object, napi_val
 **Description**
 
 Serialize an ArkTS object.
+
+<!--Device-NAPI_EXTERN napi_status napi_serialize(napi_env env, napi_value object, napi_value transfer_list, napi_value clone_list, void** result)--><!--Device-NAPI_EXTERN napi_status napi_serialize(napi_env env, napi_value object, napi_value transfer_list, napi_value clone_list, void** result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -1222,6 +1294,8 @@ NAPI_EXTERN napi_status napi_deserialize(napi_env env, void* buffer, napi_value*
 
 Restore serialization data to an ArkTS object.
 
+<!--Device-NAPI_EXTERN napi_status napi_deserialize(napi_env env, void* buffer, napi_value* object)--><!--Device-NAPI_EXTERN napi_status napi_deserialize(napi_env env, void* buffer, napi_value* object)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
@@ -1250,6 +1324,8 @@ NAPI_EXTERN napi_status napi_delete_serialization_data(napi_env env, void* buffe
 
 Delete serialization data.
 
+<!--Device-NAPI_EXTERN napi_status napi_delete_serialization_data(napi_env env, void* buffer)--><!--Device-NAPI_EXTERN napi_status napi_delete_serialization_data(napi_env env, void* buffer)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
@@ -1276,6 +1352,8 @@ NAPI_EXTERN napi_status napi_call_threadsafe_function_with_priority(napi_threads
 **Description**
 
 Dispatch a task with specified priority from a native thread to an ArkTS thread, the task will execute the given thread safe function.
+
+<!--Device-NAPI_EXTERN napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function func, void *data, napi_task_priority priority, bool isTail)--><!--Device-NAPI_EXTERN napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function func, void *data, napi_task_priority priority, bool isTail)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -1306,6 +1384,8 @@ NAPI_EXTERN napi_status napi_fatal_exception(napi_env env, napi_value err)
 
 Throws UncaughtException to ArkTS.
 
+<!--Device-NAPI_EXTERN napi_status napi_fatal_exception(napi_env env, napi_value err)--><!--Device-NAPI_EXTERN napi_status napi_fatal_exception(napi_env env, napi_value err)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
@@ -1332,6 +1412,8 @@ NAPI_EXTERN napi_status napi_make_callback(napi_env env, napi_async_context asyn
 **Description**
 
 Allows an ArkTS function to be called in the asynchronous context. The capabilities related to 'async_hook' are not supported currently.
+
+<!--Device-NAPI_EXTERN napi_status napi_make_callback(napi_env env, napi_async_context async_context, napi_value recv, napi_value func, size_t argc, const napi_value* argv, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_make_callback(napi_env env, napi_async_context async_context, napi_value recv, napi_value func, size_t argc, const napi_value* argv, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -1365,6 +1447,8 @@ NAPI_EXTERN napi_status napi_create_buffer(napi_env env, size_t length, void** d
 
 Creates an ArkTS ArrayBuffer object of the specified size.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_buffer(napi_env env, size_t length, void** data, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_buffer(napi_env env, size_t length, void** data, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -1394,6 +1478,8 @@ NAPI_EXTERN napi_status napi_create_promise(napi_env env, napi_deferred* deferre
 
 Creates a deferred object and an ArkTS promise.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_promise(napi_env env, napi_deferred* deferred, napi_value* promise)--><!--Device-NAPI_EXTERN napi_status napi_create_promise(napi_env env, napi_deferred* deferred, napi_value* promise)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -1421,6 +1507,8 @@ NAPI_EXTERN napi_status napi_resolve_deferred(napi_env env, napi_deferred deferr
 **Description**
 
 Resolves a promise by way of the deferred object associated.
+
+<!--Device-NAPI_EXTERN napi_status napi_resolve_deferred(napi_env env, napi_deferred deferred, napi_value resolution)--><!--Device-NAPI_EXTERN napi_status napi_resolve_deferred(napi_env env, napi_deferred deferred, napi_value resolution)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -1450,6 +1538,8 @@ NAPI_EXTERN napi_status napi_reject_deferred(napi_env env, napi_deferred deferre
 
 Rejects a promise by way of the deferred object associated.
 
+<!--Device-NAPI_EXTERN napi_status napi_reject_deferred(napi_env env, napi_deferred deferred, napi_value rejection)--><!--Device-NAPI_EXTERN napi_status napi_reject_deferred(napi_env env, napi_deferred deferred, napi_value rejection)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -1477,6 +1567,8 @@ NAPI_EXTERN napi_status napi_is_promise(napi_env env, napi_value value, bool* is
 **Description**
 
 Checks whether the given 'napi_value' is a promise object.
+
+<!--Device-NAPI_EXTERN napi_status napi_is_promise(napi_env env, napi_value value, bool* is_promise)--><!--Device-NAPI_EXTERN napi_status napi_is_promise(napi_env env, napi_value value, bool* is_promise)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -1506,6 +1598,8 @@ NAPI_EXTERN napi_status napi_get_uv_event_loop(napi_env env, struct uv_loop_s** 
 
 Obtains the current libuv loop instance.
 
+<!--Device-NAPI_EXTERN napi_status napi_get_uv_event_loop(napi_env env, struct uv_loop_s** loop)--><!--Device-NAPI_EXTERN napi_status napi_get_uv_event_loop(napi_env env, struct uv_loop_s** loop)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -1532,6 +1626,8 @@ NAPI_EXTERN napi_status napi_create_threadsafe_function(napi_env env, napi_value
 **Description**
 
 Creates a thread-safe function.
+
+<!--Device-NAPI_EXTERN napi_status napi_create_threadsafe_function(napi_env env, napi_value func, napi_value async_resource, napi_value async_resource_name, size_t max_queue_size, size_t initial_thread_count, void* thread_finalize_data, napi_finalize thread_finalize_cb, void* context, napi_threadsafe_function_call_js call_js_cb, napi_threadsafe_function* result)--><!--Device-NAPI_EXTERN napi_status napi_create_threadsafe_function(napi_env env, napi_value func, napi_value async_resource, napi_value async_resource_name, size_t max_queue_size, size_t initial_thread_count, void* thread_finalize_data, napi_finalize thread_finalize_cb, void* context, napi_threadsafe_function_call_js call_js_cb, napi_threadsafe_function* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -1569,6 +1665,8 @@ NAPI_EXTERN napi_status napi_get_threadsafe_function_context(napi_threadsafe_fun
 
 Obtains the context of a thread-safe function.
 
+<!--Device-NAPI_EXTERN napi_status napi_get_threadsafe_function_context(napi_threadsafe_function func, void** result)--><!--Device-NAPI_EXTERN napi_status napi_get_threadsafe_function_context(napi_threadsafe_function func, void** result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -1595,6 +1693,8 @@ NAPI_EXTERN napi_status napi_call_threadsafe_function(napi_threadsafe_function f
 **Description**
 
 Calls a thread-safe function.
+
+<!--Device-NAPI_EXTERN napi_status napi_call_threadsafe_function(napi_threadsafe_function func, void* data, napi_threadsafe_function_call_mode is_blocking)--><!--Device-NAPI_EXTERN napi_status napi_call_threadsafe_function(napi_threadsafe_function func, void* data, napi_threadsafe_function_call_mode is_blocking)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -1624,6 +1724,8 @@ NAPI_EXTERN napi_status napi_acquire_threadsafe_function(napi_threadsafe_functio
 
 Acquires a thread-safe function.
 
+<!--Device-NAPI_EXTERN napi_status napi_acquire_threadsafe_function(napi_threadsafe_function func)--><!--Device-NAPI_EXTERN napi_status napi_acquire_threadsafe_function(napi_threadsafe_function func)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -1649,6 +1751,8 @@ NAPI_EXTERN napi_status napi_release_threadsafe_function(napi_threadsafe_functio
 **Description**
 
 Releases a thread-safe function.
+
+<!--Device-NAPI_EXTERN napi_status napi_release_threadsafe_function(napi_threadsafe_function func, napi_threadsafe_function_release_mode mode)--><!--Device-NAPI_EXTERN napi_status napi_release_threadsafe_function(napi_threadsafe_function func, napi_threadsafe_function_release_mode mode)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -1677,6 +1781,8 @@ NAPI_EXTERN napi_status napi_unref_threadsafe_function(napi_env env, napi_thread
 
 Indicates that the event loop running on the main thread may exit before the thread-safe function is destroyed.
 
+<!--Device-NAPI_EXTERN napi_status napi_unref_threadsafe_function(napi_env env, napi_threadsafe_function func)--><!--Device-NAPI_EXTERN napi_status napi_unref_threadsafe_function(napi_env env, napi_threadsafe_function func)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -1704,6 +1810,8 @@ NAPI_EXTERN napi_status napi_ref_threadsafe_function(napi_env env, napi_threadsa
 
 Indicates that the event loop running on the main thread should not exit until the thread-safe function is destroyed.
 
+<!--Device-NAPI_EXTERN napi_status napi_ref_threadsafe_function(napi_env env, napi_threadsafe_function func)--><!--Device-NAPI_EXTERN napi_status napi_ref_threadsafe_function(napi_env env, napi_threadsafe_function func)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -1730,6 +1838,8 @@ NAPI_EXTERN napi_status napi_create_date(napi_env env, double time, napi_value* 
 **Description**
 
 Creates an ArkTS 'Date' object from C double data
+
+<!--Device-NAPI_EXTERN napi_status napi_create_date(napi_env env, double time, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_date(napi_env env, double time, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -1759,6 +1869,8 @@ NAPI_EXTERN napi_status napi_is_date(napi_env env, napi_value value, bool* is_da
 
 Checks whether the given ArkTS value is a 'Date' object. You can use this API to check the type of the parameter passed from ArkTS.
 
+<!--Device-NAPI_EXTERN napi_status napi_is_date(napi_env env, napi_value value, bool* is_date)--><!--Device-NAPI_EXTERN napi_status napi_is_date(napi_env env, napi_value value, bool* is_date)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -1786,6 +1898,8 @@ NAPI_EXTERN napi_status napi_get_date_value(napi_env env, napi_value value, doub
 **Description**
 
 Obtains the C equivalent of the given ArkTS 'Date' object.
+
+<!--Device-NAPI_EXTERN napi_status napi_get_date_value(napi_env env, napi_value value, double* result)--><!--Device-NAPI_EXTERN napi_status napi_get_date_value(napi_env env, napi_value value, double* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -1815,6 +1929,8 @@ NAPI_EXTERN napi_status napi_create_bigint_int64(napi_env env, int64_t value, na
 
 Creates an ArkTS BigInt from C int64 data.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_bigint_int64(napi_env env, int64_t value, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_bigint_int64(napi_env env, int64_t value, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -1843,6 +1959,8 @@ NAPI_EXTERN napi_status napi_create_bigint_uint64(napi_env env, uint64_t value, 
 
 Creates an ArkTS BigInt from C int64 data.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_bigint_uint64(napi_env env, uint64_t value, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_bigint_uint64(napi_env env, uint64_t value, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -1870,6 +1988,8 @@ NAPI_EXTERN napi_status napi_create_bigint_words(napi_env env, int sign_bit, siz
 **Description**
 
 Creates a single ArkTS BigInt from a C uint64 array.
+
+<!--Device-NAPI_EXTERN napi_status napi_create_bigint_words(napi_env env, int sign_bit, size_t word_count, const uint64_t* words, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_bigint_words(napi_env env, int sign_bit, size_t word_count, const uint64_t* words, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -1901,6 +2021,8 @@ NAPI_EXTERN napi_status napi_get_value_bigint_int64(napi_env env, napi_value val
 
 Obtains a signed 64-bit integer from an ArkTS BigInt object.
 
+<!--Device-NAPI_EXTERN napi_status napi_get_value_bigint_int64(napi_env env, napi_value value, int64_t* result, bool* lossless)--><!--Device-NAPI_EXTERN napi_status napi_get_value_bigint_int64(napi_env env, napi_value value, int64_t* result, bool* lossless)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -1929,6 +2051,8 @@ NAPI_EXTERN napi_status napi_get_value_bigint_uint64(napi_env env, napi_value va
 **Description**
 
 Obtains an unsigned 64-bit integer from an ArkTS BigInt object.
+
+<!--Device-NAPI_EXTERN napi_status napi_get_value_bigint_uint64(napi_env env, napi_value value, uint64_t* result, bool* lossless)--><!--Device-NAPI_EXTERN napi_status napi_get_value_bigint_uint64(napi_env env, napi_value value, uint64_t* result, bool* lossless)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -1959,6 +2083,8 @@ NAPI_EXTERN napi_status napi_get_value_bigint_words(napi_env env, napi_value val
 
 Obtains the underlying 64-bit unsigned (uint64) byte data from an ArkTS BigInt object.
 
+<!--Device-NAPI_EXTERN napi_status napi_get_value_bigint_words(napi_env env, napi_value value, int* sign_bit, size_t* word_count, uint64_t* words)--><!--Device-NAPI_EXTERN napi_status napi_get_value_bigint_words(napi_env env, napi_value value, int* sign_bit, size_t* word_count, uint64_t* words)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -1988,6 +2114,8 @@ NAPI_EXTERN napi_status napi_create_external_buffer(napi_env env, size_t length,
 **Description**
 
 Creates an ArkTS ArrayBuffer object of the specified size and initializes it with the given data.
+
+<!--Device-NAPI_EXTERN napi_status napi_create_external_buffer(napi_env env, size_t length, void* data, napi_finalize finalize_cb, void* finalize_hint, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_external_buffer(napi_env env, size_t length, void* data, napi_finalize finalize_cb, void* finalize_hint, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -2020,6 +2148,8 @@ NAPI_EXTERN napi_status napi_create_buffer_copy(napi_env env, size_t length, con
 
 Creates an ArkTS ArrayBuffer object of the specified size and initializes it with the given data.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_buffer_copy(napi_env env, size_t length, const void* data, void** result_data, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_buffer_copy(napi_env env, size_t length, const void* data, void** result_data, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -2050,6 +2180,8 @@ NAPI_EXTERN napi_status napi_is_buffer(napi_env env, napi_value value, bool* res
 
 Checks whether the given ArkTS value is a 'ArrayBuffer' object.
 
+<!--Device-NAPI_EXTERN napi_status napi_is_buffer(napi_env env, napi_value value, bool* result)--><!--Device-NAPI_EXTERN napi_status napi_is_buffer(napi_env env, napi_value value, bool* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -2077,6 +2209,8 @@ NAPI_EXTERN napi_status napi_get_buffer_info(napi_env env, napi_value value, voi
 **Description**
 
 Obtains the underlying data of 'ArrayBuffer' and its length.
+
+<!--Device-NAPI_EXTERN napi_status napi_get_buffer_info(napi_env env, napi_value value, void** data, size_t* length)--><!--Device-NAPI_EXTERN napi_status napi_get_buffer_info(napi_env env, napi_value value, void** data, size_t* length)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -2107,6 +2241,8 @@ NAPI_EXTERN napi_status napi_object_freeze(napi_env env, napi_value object)
 
 Freezes an ArkTS object. Once an object is frozen, its properties are immutable.
 
+<!--Device-NAPI_EXTERN napi_status napi_object_freeze(napi_env env, napi_value object)--><!--Device-NAPI_EXTERN napi_status napi_object_freeze(napi_env env, napi_value object)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -2133,6 +2269,8 @@ NAPI_EXTERN napi_status napi_object_seal(napi_env env, napi_value object)
 **Description**
 
 Seals an ArkTS object. Once an object is sealed, its properties cannot be added or deleted, but property values can be modified.
+
+<!--Device-NAPI_EXTERN napi_status napi_object_seal(napi_env env, napi_value object)--><!--Device-NAPI_EXTERN napi_status napi_object_seal(napi_env env, napi_value object)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -2161,6 +2299,8 @@ NAPI_EXTERN napi_status napi_detach_arraybuffer(napi_env env, napi_value arraybu
 
 Detaches the underlying data from an 'ArrayBuffer' object. After the data is detached, you can operate the data in C/C++.
 
+<!--Device-NAPI_EXTERN napi_status napi_detach_arraybuffer(napi_env env, napi_value arraybuffer)--><!--Device-NAPI_EXTERN napi_status napi_detach_arraybuffer(napi_env env, napi_value arraybuffer)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -2187,6 +2327,8 @@ NAPI_EXTERN napi_status napi_is_detached_arraybuffer(napi_env env, napi_value va
 **Description**
 
 Checks whether the given 'ArrayBuffer' has been detached.
+
+<!--Device-NAPI_EXTERN napi_status napi_is_detached_arraybuffer(napi_env env, napi_value value, bool* result)--><!--Device-NAPI_EXTERN napi_status napi_is_detached_arraybuffer(napi_env env, napi_value value, bool* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -2215,6 +2357,8 @@ NAPI_EXTERN napi_status napi_get_all_property_names(napi_env env, napi_value obj
 **Description**
 
 Obtains the names of all properties of an ArkTS object.
+
+<!--Device-NAPI_EXTERN napi_status napi_get_all_property_names(napi_env env, napi_value object, napi_key_collection_mode key_mode, napi_key_filter key_filter, napi_key_conversion key_conversion, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_get_all_property_names(napi_env env, napi_value object, napi_key_collection_mode key_mode, napi_key_filter key_filter, napi_key_conversion key_conversion, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -2247,6 +2391,8 @@ NAPI_EXTERN void napi_module_register(napi_module* mod)
 
 Registers a native module.
 
+<!--Device-NAPI_EXTERN void napi_module_register(napi_module* mod)--><!--Device-NAPI_EXTERN void napi_module_register(napi_module* mod)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -2266,6 +2412,8 @@ NAPI_EXTERN napi_status napi_get_last_error_info(napi_env env, const napi_extend
 **Description**
 
 Obtains the napi_extended_error_info struct, which contains the latest error information.
+
+<!--Device-NAPI_EXTERN napi_status napi_get_last_error_info(napi_env env, const napi_extended_error_info** result)--><!--Device-NAPI_EXTERN napi_status napi_get_last_error_info(napi_env env, const napi_extended_error_info** result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -2294,6 +2442,8 @@ NAPI_EXTERN napi_status napi_throw(napi_env env, napi_value error)
 
 Throws an ArkTS error.
 
+<!--Device-NAPI_EXTERN napi_status napi_throw(napi_env env, napi_value error)--><!--Device-NAPI_EXTERN napi_status napi_throw(napi_env env, napi_value error)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -2320,6 +2470,8 @@ NAPI_EXTERN napi_status napi_throw_error(napi_env env, const char* code, const c
 **Description**
 
 Throws an ArkTS Error with text information.
+
+<!--Device-NAPI_EXTERN napi_status napi_throw_error(napi_env env, const char* code, const char* msg)--><!--Device-NAPI_EXTERN napi_status napi_throw_error(napi_env env, const char* code, const char* msg)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -2349,6 +2501,8 @@ NAPI_EXTERN napi_status napi_throw_type_error(napi_env env, const char* code, co
 
 Throws an ArkTS TypeError with text information.
 
+<!--Device-NAPI_EXTERN napi_status napi_throw_type_error(napi_env env, const char* code, const char* msg)--><!--Device-NAPI_EXTERN napi_status napi_throw_type_error(napi_env env, const char* code, const char* msg)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -2376,6 +2530,8 @@ NAPI_EXTERN napi_status napi_throw_range_error(napi_env env, const char* code, c
 **Description**
 
 Throws an ArkTS RangeError with text information.
+
+<!--Device-NAPI_EXTERN napi_status napi_throw_range_error(napi_env env, const char* code, const char* msg)--><!--Device-NAPI_EXTERN napi_status napi_throw_range_error(napi_env env, const char* code, const char* msg)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -2405,6 +2561,8 @@ NAPI_EXTERN napi_status napi_is_error(napi_env env, napi_value value, bool* resu
 
 Checks whether a 'napi_value' is an error object.
 
+<!--Device-NAPI_EXTERN napi_status napi_is_error(napi_env env, napi_value value, bool* result)--><!--Device-NAPI_EXTERN napi_status napi_is_error(napi_env env, napi_value value, bool* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -2432,6 +2590,8 @@ NAPI_EXTERN napi_status napi_create_error(napi_env env, napi_value code, napi_va
 **Description**
 
 Creates an ArkTS Error with text information.
+
+<!--Device-NAPI_EXTERN napi_status napi_create_error(napi_env env, napi_value code, napi_value msg, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_error(napi_env env, napi_value code, napi_value msg, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -2462,6 +2622,8 @@ NAPI_EXTERN napi_status napi_create_type_error(napi_env env, napi_value code, na
 
 Creates an ArkTS TypeError with text information.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_type_error(napi_env env, napi_value code, napi_value msg, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_type_error(napi_env env, napi_value code, napi_value msg, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -2490,6 +2652,8 @@ NAPI_EXTERN napi_status napi_create_range_error(napi_env env, napi_value code, n
 **Description**
 
 Creates an ArkTS RangeError with text information.
+
+<!--Device-NAPI_EXTERN napi_status napi_create_range_error(napi_env env, napi_value code, napi_value msg, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_range_error(napi_env env, napi_value code, napi_value msg, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -2520,6 +2684,8 @@ NAPI_EXTERN napi_status napi_is_exception_pending(napi_env env, bool* result)
 
 Checks whether an exception occurs.
 
+<!--Device-NAPI_EXTERN napi_status napi_is_exception_pending(napi_env env, bool* result)--><!--Device-NAPI_EXTERN napi_status napi_is_exception_pending(napi_env env, bool* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -2546,6 +2712,8 @@ NAPI_EXTERN napi_status napi_get_and_clear_last_exception(napi_env env, napi_val
 **Description**
 
 Obtains and clears the latest exception.
+
+<!--Device-NAPI_EXTERN napi_status napi_get_and_clear_last_exception(napi_env env, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_get_and_clear_last_exception(napi_env env, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -2574,6 +2742,8 @@ NAPI_EXTERN NAPI_NO_RETURN void napi_fatal_error(const char* location, size_t lo
 
 Raises a fatal error to terminate the process immediately.
 
+<!--Device-NAPI_EXTERN NAPI_NO_RETURN void napi_fatal_error(const char* location, size_t location_len, const char* message, size_t message_len)--><!--Device-NAPI_EXTERN NAPI_NO_RETURN void napi_fatal_error(const char* location, size_t location_len, const char* message, size_t message_len)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -2596,6 +2766,8 @@ NAPI_EXTERN napi_status napi_open_handle_scope(napi_env env, napi_handle_scope* 
 **Description**
 
 Opens a scope.
+
+<!--Device-NAPI_EXTERN napi_status napi_open_handle_scope(napi_env env, napi_handle_scope* result)--><!--Device-NAPI_EXTERN napi_status napi_open_handle_scope(napi_env env, napi_handle_scope* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -2624,6 +2796,8 @@ NAPI_EXTERN napi_status napi_close_handle_scope(napi_env env, napi_handle_scope 
 
 Closes the scope passed in. After the scope is closed, all references declared in it are closed.
 
+<!--Device-NAPI_EXTERN napi_status napi_close_handle_scope(napi_env env, napi_handle_scope scope)--><!--Device-NAPI_EXTERN napi_status napi_close_handle_scope(napi_env env, napi_handle_scope scope)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -2650,6 +2824,8 @@ NAPI_EXTERN napi_status napi_open_escapable_handle_scope(napi_env env, napi_esca
 **Description**
 
 Opens an escapable handle scope from which the declared values can be returned to the outer scope.
+
+<!--Device-NAPI_EXTERN napi_status napi_open_escapable_handle_scope(napi_env env, napi_escapable_handle_scope* result)--><!--Device-NAPI_EXTERN napi_status napi_open_escapable_handle_scope(napi_env env, napi_escapable_handle_scope* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -2678,6 +2854,8 @@ NAPI_EXTERN napi_status napi_close_escapable_handle_scope(napi_env env, napi_esc
 
 Closes the escapable handle scope passed in.
 
+<!--Device-NAPI_EXTERN napi_status napi_close_escapable_handle_scope(napi_env env, napi_escapable_handle_scope scope)--><!--Device-NAPI_EXTERN napi_status napi_close_escapable_handle_scope(napi_env env, napi_escapable_handle_scope scope)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -2704,6 +2882,8 @@ NAPI_EXTERN napi_status napi_escape_handle(napi_env env, napi_escapable_handle_s
 **Description**
 
 Promotes the handle to the input ArkTS object so that it is valid for the lifespan of its outer scope.
+
+<!--Device-NAPI_EXTERN napi_status napi_escape_handle(napi_env env, napi_escapable_handle_scope scope, napi_value escapee, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_escape_handle(napi_env env, napi_escapable_handle_scope scope, napi_value escapee, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -2734,6 +2914,8 @@ NAPI_EXTERN napi_status napi_create_reference(napi_env env, napi_value value, ui
 
 Creates a reference for an object to extend its lifespan. The caller needs to manage the reference lifespan.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_reference(napi_env env, napi_value value, uint32_t initial_refcount, napi_ref* result)--><!--Device-NAPI_EXTERN napi_status napi_create_reference(napi_env env, napi_value value, uint32_t initial_refcount, napi_ref* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -2763,6 +2945,8 @@ NAPI_EXTERN napi_status napi_delete_reference(napi_env env, napi_ref ref)
 
 Deletes the reference passed in.
 
+<!--Device-NAPI_EXTERN napi_status napi_delete_reference(napi_env env, napi_ref ref)--><!--Device-NAPI_EXTERN napi_status napi_delete_reference(napi_env env, napi_ref ref)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -2789,6 +2973,8 @@ NAPI_EXTERN napi_status napi_reference_ref(napi_env env, napi_ref ref, uint32_t*
 **Description**
 
 Increments the reference count for the reference passed in and returns the count.
+
+<!--Device-NAPI_EXTERN napi_status napi_reference_ref(napi_env env, napi_ref ref, uint32_t* result)--><!--Device-NAPI_EXTERN napi_status napi_reference_ref(napi_env env, napi_ref ref, uint32_t* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -2818,6 +3004,8 @@ NAPI_EXTERN napi_status napi_reference_unref(napi_env env, napi_ref ref, uint32_
 
 Decrements the reference count for the reference passed in and returns the count.
 
+<!--Device-NAPI_EXTERN napi_status napi_reference_unref(napi_env env, napi_ref ref, uint32_t* result)--><!--Device-NAPI_EXTERN napi_status napi_reference_unref(napi_env env, napi_ref ref, uint32_t* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -2845,6 +3033,8 @@ NAPI_EXTERN napi_status napi_get_reference_value(napi_env env, napi_ref ref, nap
 **Description**
 
 Obtains the ArkTS Object associated with the reference.
+
+<!--Device-NAPI_EXTERN napi_status napi_get_reference_value(napi_env env, napi_ref ref, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_get_reference_value(napi_env env, napi_ref ref, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -2874,6 +3064,8 @@ NAPI_EXTERN napi_status napi_has_own_property(napi_env env, napi_value object, n
 
 Check if the given ArkTS Object has the named own property or not.
 
+<!--Device-NAPI_EXTERN napi_status napi_has_own_property(napi_env env, napi_value object, napi_value key, bool* result)--><!--Device-NAPI_EXTERN napi_status napi_has_own_property(napi_env env, napi_value object, napi_value key, bool* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -2902,6 +3094,8 @@ NAPI_EXTERN napi_status napi_define_class(napi_env env, const char* utf8name, si
 **Description**
 
 Defines an ArkTS class, including constructor function and properties.
+
+<!--Device-NAPI_EXTERN napi_status napi_define_class(napi_env env, const char* utf8name, size_t length, napi_callback constructor, void* data, size_t property_count, const napi_property_descriptor* properties, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_define_class(napi_env env, const char* utf8name, size_t length, napi_callback constructor, void* data, size_t property_count, const napi_property_descriptor* properties, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -2936,6 +3130,8 @@ NAPI_EXTERN napi_status napi_create_symbol(napi_env env, napi_value description,
 
 Creates an ArkTS symbol.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_symbol(napi_env env, napi_value description, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_symbol(napi_env env, napi_value description, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -2963,6 +3159,8 @@ NAPI_EXTERN napi_status napi_create_function(napi_env env, const char* utf8name,
 **Description**
 
 Create an ArkTS function. This is the primary mechanism to call back into native code from ArkTS.
+
+<!--Device-NAPI_EXTERN napi_status napi_create_function(napi_env env, const char* utf8name, size_t length, napi_callback cb, void* data, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_function(napi_env env, const char* utf8name, size_t length, napi_callback cb, void* data, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -2995,6 +3193,8 @@ NAPI_EXTERN napi_status napi_typeof(napi_env env, napi_value value, napi_valuety
 
 Similar to typeof operation, support external value, detects null as a separate type.
 
+<!--Device-NAPI_EXTERN napi_status napi_typeof(napi_env env, napi_value value, napi_valuetype* result)--><!--Device-NAPI_EXTERN napi_status napi_typeof(napi_env env, napi_value value, napi_valuetype* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -3022,6 +3222,8 @@ NAPI_EXTERN napi_status napi_get_value_double(napi_env env, napi_value value, do
 **Description**
 
 Obtains the double value corresponding to the given ArkTS value.
+
+<!--Device-NAPI_EXTERN napi_status napi_get_value_double(napi_env env, napi_value value, double* result)--><!--Device-NAPI_EXTERN napi_status napi_get_value_double(napi_env env, napi_value value, double* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -3051,6 +3253,8 @@ NAPI_EXTERN napi_status napi_get_value_int32(napi_env env, napi_value value, int
 
 Obtains the int32_t value corresponding to the given ArkTS value.
 
+<!--Device-NAPI_EXTERN napi_status napi_get_value_int32(napi_env env, napi_value value, int32_t* result)--><!--Device-NAPI_EXTERN napi_status napi_get_value_int32(napi_env env, napi_value value, int32_t* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -3078,6 +3282,8 @@ NAPI_EXTERN napi_status napi_get_value_uint32(napi_env env, napi_value value, ui
 **Description**
 
 Obtains the uint32_t value corresponding to the given ArkTS value.
+
+<!--Device-NAPI_EXTERN napi_status napi_get_value_uint32(napi_env env, napi_value value, uint32_t* result)--><!--Device-NAPI_EXTERN napi_status napi_get_value_uint32(napi_env env, napi_value value, uint32_t* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -3107,6 +3313,8 @@ NAPI_EXTERN napi_status napi_get_value_int64(napi_env env, napi_value value, int
 
 Obtains the int64_t value corresponding to the given ArkTS value.
 
+<!--Device-NAPI_EXTERN napi_status napi_get_value_int64(napi_env env, napi_value value, int64_t* result)--><!--Device-NAPI_EXTERN napi_status napi_get_value_int64(napi_env env, napi_value value, int64_t* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -3135,6 +3343,8 @@ NAPI_EXTERN napi_status napi_get_value_bool(napi_env env, napi_value value, bool
 
 Obtains the C Boolean equivalent of an ArkTS Boolean value.
 
+<!--Device-NAPI_EXTERN napi_status napi_get_value_bool(napi_env env, napi_value value, bool* result)--><!--Device-NAPI_EXTERN napi_status napi_get_value_bool(napi_env env, napi_value value, bool* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -3162,6 +3372,8 @@ NAPI_EXTERN napi_status napi_get_value_string_latin1(napi_env env, napi_value va
 **Description**
 
 Obtains the ISO-8859-1-encoded string corresponding to the given ArkTS value.
+
+<!--Device-NAPI_EXTERN napi_status napi_get_value_string_latin1(napi_env env, napi_value value, char* buf, size_t bufsize, size_t* result)--><!--Device-NAPI_EXTERN napi_status napi_get_value_string_latin1(napi_env env, napi_value value, char* buf, size_t bufsize, size_t* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -3193,6 +3405,8 @@ NAPI_EXTERN napi_status napi_get_value_string_utf8(napi_env env, napi_value valu
 
 Obtains the UTF8-encoded string corresponding to the given ArkTS value.
 
+<!--Device-NAPI_EXTERN napi_status napi_get_value_string_utf8(napi_env env, napi_value value, char* buf, size_t bufsize, size_t* result)--><!--Device-NAPI_EXTERN napi_status napi_get_value_string_utf8(napi_env env, napi_value value, char* buf, size_t bufsize, size_t* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -3223,6 +3437,8 @@ NAPI_EXTERN napi_status napi_get_undefined(napi_env env, napi_value* result)
 
 Obtains the ArkTS undefined value.
 
+<!--Device-NAPI_EXTERN napi_status napi_get_undefined(napi_env env, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_get_undefined(napi_env env, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -3250,6 +3466,8 @@ NAPI_EXTERN napi_status napi_get_null(napi_env env, napi_value* result)
 
 Obtains the ArkTS null value.
 
+<!--Device-NAPI_EXTERN napi_status napi_get_null(napi_env env, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_get_null(napi_env env, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -3276,6 +3494,8 @@ NAPI_EXTERN napi_status napi_get_global(napi_env env, napi_value* result)
 **Description**
 
 Obtains the ArkTS global object.
+
+<!--Device-NAPI_EXTERN napi_status napi_get_global(napi_env env, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_get_global(napi_env env, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -3306,6 +3526,8 @@ NAPI_EXTERN napi_status napi_get_boolean(napi_env env, bool value, napi_value* r
 
 Obtains the ArkTS singleton value corresponding to given C primitive boolean value.
 
+<!--Device-NAPI_EXTERN napi_status napi_get_boolean(napi_env env, bool value, napi_value* result) // Methods to create Primitive types/Objects--><!--Device-NAPI_EXTERN napi_status napi_get_boolean(napi_env env, bool value, napi_value* result) // Methods to create Primitive types/Objects-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -3334,6 +3556,8 @@ NAPI_EXTERN napi_status napi_create_object(napi_env env, napi_value* result)
 
 Creates a default ArkTS object.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_object(napi_env env, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_object(napi_env env, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -3361,6 +3585,8 @@ NAPI_EXTERN napi_status napi_create_array(napi_env env, napi_value* result)
 
 Creates an ArkTS array.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_array(napi_env env, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_array(napi_env env, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -3387,6 +3613,8 @@ NAPI_EXTERN napi_status napi_create_array_with_length(napi_env env, size_t lengt
 **Description**
 
 Creates an ArkTS array of the specified length.
+
+<!--Device-NAPI_EXTERN napi_status napi_create_array_with_length(napi_env env, size_t length, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_array_with_length(napi_env env, size_t length, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -3416,6 +3644,8 @@ NAPI_EXTERN napi_status napi_create_double(napi_env env, double value, napi_valu
 
 Creates an ArkTS number from C double data.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_double(napi_env env, double value, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_double(napi_env env, double value, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -3443,6 +3673,8 @@ NAPI_EXTERN napi_status napi_create_int32(napi_env env, int32_t value, napi_valu
 **Description**
 
 Creates an ArkTS number from C int32_t data.
+
+<!--Device-NAPI_EXTERN napi_status napi_create_int32(napi_env env, int32_t value, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_int32(napi_env env, int32_t value, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -3472,6 +3704,8 @@ NAPI_EXTERN napi_status napi_create_uint32(napi_env env, uint32_t value, napi_va
 
 Creates an ArkTS number from C uint32_t data.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_uint32(napi_env env, uint32_t value, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_uint32(napi_env env, uint32_t value, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -3500,6 +3734,8 @@ NAPI_EXTERN napi_status napi_create_int64(napi_env env, int64_t value, napi_valu
 
 Creates an ArkTS number from C int64_t data.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_int64(napi_env env, int64_t value, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_int64(napi_env env, int64_t value, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -3527,6 +3763,8 @@ NAPI_EXTERN napi_status napi_create_string_latin1(napi_env env, const char* str,
 **Description**
 
 Creates an ArkTS string from an ISO-8859-1-encoded C string.
+
+<!--Device-NAPI_EXTERN napi_status napi_create_string_latin1(napi_env env, const char* str, size_t length, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_string_latin1(napi_env env, const char* str, size_t length, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -3557,6 +3795,8 @@ NAPI_EXTERN napi_status napi_create_string_utf8(napi_env env, const char* str, s
 
 Creates an ArkTS string from a UTF8-encoded C string.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_string_utf8(napi_env env, const char* str, size_t length, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_string_utf8(napi_env env, const char* str, size_t length, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -3586,6 +3826,8 @@ NAPI_EXTERN napi_status napi_is_arraybuffer(napi_env env, napi_value value, bool
 
 Checks if the ArkTS value is an ArkTS ArrayBuffer.
 
+<!--Device-NAPI_EXTERN napi_status napi_is_arraybuffer(napi_env env, napi_value value, bool* result)--><!--Device-NAPI_EXTERN napi_status napi_is_arraybuffer(napi_env env, napi_value value, bool* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -3613,6 +3855,8 @@ NAPI_EXTERN napi_status napi_create_arraybuffer(napi_env env, size_t byte_length
 **Description**
 
 Creates an ArkTS ArrayBuffer of the specified size.
+
+<!--Device-NAPI_EXTERN napi_status napi_create_arraybuffer(napi_env env, size_t byte_length, void** data, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_arraybuffer(napi_env env, size_t byte_length, void** data, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -3643,6 +3887,8 @@ NAPI_EXTERN napi_status napi_create_external(napi_env env, void* data, napi_fina
 
 Allocates a JS value with external data.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_external(napi_env env, void* data, napi_finalize finalize_cb, void* finalize_hint, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_external(napi_env env, void* data, napi_finalize finalize_cb, void* finalize_hint, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -3672,6 +3918,8 @@ NAPI_EXTERN napi_status napi_create_external_arraybuffer(napi_env env, void* ext
 **Description**
 
 The underlying data that ArrayBuffer point to.
+
+<!--Device-NAPI_EXTERN napi_status napi_create_external_arraybuffer(napi_env env, void* external_data, size_t byte_length, napi_finalize finalize_cb, void* finalize_hint, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_external_arraybuffer(napi_env env, void* external_data, size_t byte_length, napi_finalize finalize_cb, void* finalize_hint, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -3704,6 +3952,8 @@ NAPI_EXTERN napi_status napi_get_arraybuffer_info(napi_env env, napi_value array
 
 Obtains the underlying data buffer of ArrayBuffer and its length.
 
+<!--Device-NAPI_EXTERN napi_status napi_get_arraybuffer_info(napi_env env, napi_value arraybuffer, void** data, size_t* byte_length)--><!--Device-NAPI_EXTERN napi_status napi_get_arraybuffer_info(napi_env env, napi_value arraybuffer, void** data, size_t* byte_length)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -3733,6 +3983,8 @@ NAPI_EXTERN napi_status napi_is_typedarray(napi_env env, napi_value value, bool*
 
 Checks if the ArkTS value is an ArkTS TypedArray.
 
+<!--Device-NAPI_EXTERN napi_status napi_is_typedarray(napi_env env, napi_value value, bool* result)--><!--Device-NAPI_EXTERN napi_status napi_is_typedarray(napi_env env, napi_value value, bool* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -3760,6 +4012,8 @@ NAPI_EXTERN napi_status napi_create_typedarray(napi_env env, napi_typedarray_typ
 **Description**
 
 Creates an ArkTS TypeArray from an existing ArrayBuffer.
+
+<!--Device-NAPI_EXTERN napi_status napi_create_typedarray(napi_env env, napi_typedarray_type type, size_t length, napi_value arraybuffer, size_t byte_offset, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_typedarray(napi_env env, napi_typedarray_type type, size_t length, napi_value arraybuffer, size_t byte_offset, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -3791,6 +4045,8 @@ NAPI_EXTERN napi_status napi_get_typedarray_info(napi_env env, napi_value typeda
 **Description**
 
 Obtains properties of a TypedArray.
+
+<!--Device-NAPI_EXTERN napi_status napi_get_typedarray_info(napi_env env, napi_value typedarray, napi_typedarray_type* type, size_t* length, void** data, napi_value* arraybuffer, size_t* byte_offset)--><!--Device-NAPI_EXTERN napi_status napi_get_typedarray_info(napi_env env, napi_value typedarray, napi_typedarray_type* type, size_t* length, void** data, napi_value* arraybuffer, size_t* byte_offset)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -3824,6 +4080,8 @@ NAPI_EXTERN napi_status napi_create_dataview(napi_env env, size_t length, napi_v
 
 Creates an ArkTS DataView from an existing ArrayBuffer.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_dataview(napi_env env, size_t length, napi_value arraybuffer, size_t byte_offset, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_dataview(napi_env env, size_t length, napi_value arraybuffer, size_t byte_offset, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -3854,6 +4112,8 @@ NAPI_EXTERN napi_status napi_is_dataview(napi_env env, napi_value value, bool* r
 
 Checks if the ArkTS value is an ArkTS DataView.
 
+<!--Device-NAPI_EXTERN napi_status napi_is_dataview(napi_env env, napi_value value, bool* result)--><!--Device-NAPI_EXTERN napi_status napi_is_dataview(napi_env env, napi_value value, bool* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -3881,6 +4141,8 @@ NAPI_EXTERN napi_status napi_get_dataview_info(napi_env env, napi_value dataview
 **Description**
 
 Obtains properties of a DataView.
+
+<!--Device-NAPI_EXTERN napi_status napi_get_dataview_info(napi_env env, napi_value dataview, size_t* bytelength, void** data, napi_value* arraybuffer, size_t* byte_offset)--><!--Device-NAPI_EXTERN napi_status napi_get_dataview_info(napi_env env, napi_value dataview, size_t* bytelength, void** data, napi_value* arraybuffer, size_t* byte_offset)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -3913,6 +4175,8 @@ NAPI_EXTERN napi_status napi_get_array_length(napi_env env, napi_value value, ui
 
 Obtains the array length.
 
+<!--Device-NAPI_EXTERN napi_status napi_get_array_length(napi_env env, napi_value value, uint32_t* result)--><!--Device-NAPI_EXTERN napi_status napi_get_array_length(napi_env env, napi_value value, uint32_t* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -3940,6 +4204,8 @@ NAPI_EXTERN napi_status napi_get_prototype(napi_env env, napi_value object, napi
 **Description**
 
 Obtains the prototype of an ArkTS object.
+
+<!--Device-NAPI_EXTERN napi_status napi_get_prototype(napi_env env, napi_value object, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_get_prototype(napi_env env, napi_value object, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -3969,6 +4235,8 @@ NAPI_EXTERN napi_status napi_get_value_external(napi_env env, napi_value value, 
 
 Obtains the external data pointer previously passed through napi_create_external().
 
+<!--Device-NAPI_EXTERN napi_status napi_get_value_external(napi_env env, napi_value value, void** result)--><!--Device-NAPI_EXTERN napi_status napi_get_value_external(napi_env env, napi_value value, void** result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -3996,6 +4264,8 @@ NAPI_EXTERN napi_status napi_coerce_to_bool(napi_env env, napi_value value, napi
 **Description**
 
 Coerce the given ArkTS value to an ArkTS boolean value.
+
+<!--Device-NAPI_EXTERN napi_status napi_coerce_to_bool(napi_env env, napi_value value, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_coerce_to_bool(napi_env env, napi_value value, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -4025,6 +4295,8 @@ NAPI_EXTERN napi_status napi_coerce_to_number(napi_env env, napi_value value, na
 
 Coerce the given ArkTS value to an ArkTS number value.
 
+<!--Device-NAPI_EXTERN napi_status napi_coerce_to_number(napi_env env, napi_value value, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_coerce_to_number(napi_env env, napi_value value, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -4052,6 +4324,8 @@ NAPI_EXTERN napi_status napi_coerce_to_object(napi_env env, napi_value value, na
 **Description**
 
 Coerce the given ArkTS value to an ArkTS object value.
+
+<!--Device-NAPI_EXTERN napi_status napi_coerce_to_object(napi_env env, napi_value value, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_coerce_to_object(napi_env env, napi_value value, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -4081,6 +4355,8 @@ NAPI_EXTERN napi_status napi_coerce_to_string(napi_env env, napi_value value, na
 
 Coerce the given ArkTS value to an ArkTS string value.
 
+<!--Device-NAPI_EXTERN napi_status napi_coerce_to_string(napi_env env, napi_value value, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_coerce_to_string(napi_env env, napi_value value, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -4108,6 +4384,8 @@ NAPI_EXTERN napi_status napi_instanceof(napi_env env, napi_value object, napi_va
 **Description**
 
 Invoke instanceof operation on the object.
+
+<!--Device-NAPI_EXTERN napi_status napi_instanceof(napi_env env, napi_value object, napi_value constructor, bool* result)--><!--Device-NAPI_EXTERN napi_status napi_instanceof(napi_env env, napi_value object, napi_value constructor, bool* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -4138,6 +4416,8 @@ NAPI_EXTERN napi_status napi_is_array(napi_env env, napi_value value, bool* resu
 
 Checks if the ArkTS value is an ArkTS Array.
 
+<!--Device-NAPI_EXTERN napi_status napi_is_array(napi_env env, napi_value value, bool* result)--><!--Device-NAPI_EXTERN napi_status napi_is_array(napi_env env, napi_value value, bool* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -4165,6 +4445,8 @@ NAPI_EXTERN napi_status napi_strict_equals(napi_env env, napi_value lhs, napi_va
 **Description**
 
 Checks if the two ArkTS values are equal.
+
+<!--Device-NAPI_EXTERN napi_status napi_strict_equals(napi_env env, napi_value lhs, napi_value rhs, bool* result)--><!--Device-NAPI_EXTERN napi_status napi_strict_equals(napi_env env, napi_value lhs, napi_value rhs, bool* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -4195,6 +4477,8 @@ NAPI_EXTERN napi_status napi_get_property_names(napi_env env, napi_value object,
 
 Obtains the names of the enumerable properties of object as an Array of Strings. The keys that are symbols will not be included.
 
+<!--Device-NAPI_EXTERN napi_status napi_get_property_names(napi_env env, napi_value object, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_get_property_names(napi_env env, napi_value object, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -4222,6 +4506,8 @@ NAPI_EXTERN napi_status napi_set_property(napi_env env, napi_value object, napi_
 **Description**
 
 Set a property on the given ArkTS Object.
+
+<!--Device-NAPI_EXTERN napi_status napi_set_property(napi_env env, napi_value object, napi_value key, napi_value value)--><!--Device-NAPI_EXTERN napi_status napi_set_property(napi_env env, napi_value object, napi_value key, napi_value value)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -4252,6 +4538,8 @@ NAPI_EXTERN napi_status napi_get_property(napi_env env, napi_value object, napi_
 
 Get the requests property of the given ArkTS Object.
 
+<!--Device-NAPI_EXTERN napi_status napi_get_property(napi_env env, napi_value object, napi_value key, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_get_property(napi_env env, napi_value object, napi_value key, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -4280,6 +4568,8 @@ NAPI_EXTERN napi_status napi_has_property(napi_env env, napi_value object, napi_
 **Description**
 
 Check if the given ArkTS Object has the named property or not.
+
+<!--Device-NAPI_EXTERN napi_status napi_has_property(napi_env env, napi_value object, napi_value key, bool* result)--><!--Device-NAPI_EXTERN napi_status napi_has_property(napi_env env, napi_value object, napi_value key, bool* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -4310,6 +4600,8 @@ NAPI_EXTERN napi_status napi_delete_property(napi_env env, napi_value object, na
 
 Delete the named property of the given ArkTS Object.
 
+<!--Device-NAPI_EXTERN napi_status napi_delete_property(napi_env env, napi_value object, napi_value key, bool* result)--><!--Device-NAPI_EXTERN napi_status napi_delete_property(napi_env env, napi_value object, napi_value key, bool* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -4338,6 +4630,8 @@ NAPI_EXTERN napi_status napi_set_named_property(napi_env env, napi_value object,
 **Description**
 
 Set a property on the given ArkTS Object.
+
+<!--Device-NAPI_EXTERN napi_status napi_set_named_property(napi_env env, napi_value object, const char* utf8name, napi_value value)--><!--Device-NAPI_EXTERN napi_status napi_set_named_property(napi_env env, napi_value object, const char* utf8name, napi_value value)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -4368,6 +4662,8 @@ NAPI_EXTERN napi_status napi_get_named_property(napi_env env, napi_value object,
 
 Get the requests property of the given ArkTS Object.
 
+<!--Device-NAPI_EXTERN napi_status napi_get_named_property(napi_env env, napi_value object, const char* utf8name, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_get_named_property(napi_env env, napi_value object, const char* utf8name, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -4396,6 +4692,8 @@ NAPI_EXTERN napi_status napi_has_named_property(napi_env env, napi_value object,
 **Description**
 
 Check if the given ArkTS Object has the named property or not.
+
+<!--Device-NAPI_EXTERN napi_status napi_has_named_property(napi_env env, napi_value object, const char* utf8name, bool* result)--><!--Device-NAPI_EXTERN napi_status napi_has_named_property(napi_env env, napi_value object, const char* utf8name, bool* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -4426,6 +4724,8 @@ NAPI_EXTERN napi_status napi_set_element(napi_env env, napi_value object, uint32
 
 Set a element on the given ArkTS Array.
 
+<!--Device-NAPI_EXTERN napi_status napi_set_element(napi_env env, napi_value object, uint32_t index, napi_value value)--><!--Device-NAPI_EXTERN napi_status napi_set_element(napi_env env, napi_value object, uint32_t index, napi_value value)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -4454,6 +4754,8 @@ NAPI_EXTERN napi_status napi_get_element(napi_env env, napi_value object, uint32
 **Description**
 
 Get the requests element of the given ArkTS Array.
+
+<!--Device-NAPI_EXTERN napi_status napi_get_element(napi_env env, napi_value object, uint32_t index, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_get_element(napi_env env, napi_value object, uint32_t index, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -4484,6 +4786,8 @@ NAPI_EXTERN napi_status napi_has_element(napi_env env, napi_value object, uint32
 
 Check if the given ArkTS Array has an element at the requested index.
 
+<!--Device-NAPI_EXTERN napi_status napi_has_element(napi_env env, napi_value object, uint32_t index, bool* result)--><!--Device-NAPI_EXTERN napi_status napi_has_element(napi_env env, napi_value object, uint32_t index, bool* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -4512,6 +4816,8 @@ NAPI_EXTERN napi_status napi_delete_element(napi_env env, napi_value object, uin
 **Description**
 
 Delete the special index from the given ArkTS Array.
+
+<!--Device-NAPI_EXTERN napi_status napi_delete_element(napi_env env, napi_value object, uint32_t index, bool* result)--><!--Device-NAPI_EXTERN napi_status napi_delete_element(napi_env env, napi_value object, uint32_t index, bool* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -4542,6 +4848,8 @@ NAPI_EXTERN napi_status napi_define_properties(napi_env env, napi_value object, 
 
 Efficient define multiple properties on the given ArkTS Object by napi_property_descriptor.
 
+<!--Device-NAPI_EXTERN napi_status napi_define_properties(napi_env env, napi_value object, size_t property_count, const napi_property_descriptor* properties)--><!--Device-NAPI_EXTERN napi_status napi_define_properties(napi_env env, napi_value object, size_t property_count, const napi_property_descriptor* properties)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -4570,6 +4878,8 @@ NAPI_EXTERN napi_status napi_call_function(napi_env env, napi_value recv, napi_v
 **Description**
 
 Invoke an ArkTS function. This is the primary mechanism to call back into JavaScript.
+
+<!--Device-NAPI_EXTERN napi_status napi_call_function(napi_env env, napi_value recv, napi_value func, size_t argc, const napi_value* argv, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_call_function(napi_env env, napi_value recv, napi_value func, size_t argc, const napi_value* argv, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -4602,6 +4912,8 @@ NAPI_EXTERN napi_status napi_get_cb_info(napi_env env, napi_callback_info cbinfo
 
 Obtains callback details about the call like arguments, this from given callback info.
 
+<!--Device-NAPI_EXTERN napi_status napi_get_cb_info(napi_env env, napi_callback_info cbinfo, size_t* argc, napi_value* argv, napi_value* this_arg, void** data)--><!--Device-NAPI_EXTERN napi_status napi_get_cb_info(napi_env env, napi_callback_info cbinfo, size_t* argc, napi_value* argv, napi_value* this_arg, void** data)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -4633,6 +4945,8 @@ NAPI_EXTERN napi_status napi_get_new_target(napi_env env, napi_callback_info cbi
 
 Obtains callback details about the call like arguments, this from given callback info.
 
+<!--Device-NAPI_EXTERN napi_status napi_get_new_target(napi_env env, napi_callback_info cbinfo, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_get_new_target(napi_env env, napi_callback_info cbinfo, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -4660,6 +4974,8 @@ NAPI_EXTERN napi_status napi_new_instance(napi_env env, napi_value constructor, 
 **Description**
 
 Instantiate a new ArkTS value using a given napi_value that represents the constructor for the object.
+
+<!--Device-NAPI_EXTERN napi_status napi_new_instance(napi_env env, napi_value constructor, size_t argc, const napi_value* argv, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_new_instance(napi_env env, napi_value constructor, size_t argc, const napi_value* argv, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -4690,6 +5006,8 @@ NAPI_EXTERN napi_status napi_wrap(napi_env env, napi_value js_object, void* nati
 **Description**
 
 Wraps a native instance in a ArkTS object. The native instance can be retrieved later using napi_unwrap.
+
+<!--Device-NAPI_EXTERN napi_status napi_wrap(napi_env env, napi_value js_object, void* native_object, napi_finalize finalize_cb, void* finalize_hint, napi_ref* result)--><!--Device-NAPI_EXTERN napi_status napi_wrap(napi_env env, napi_value js_object, void* native_object, napi_finalize finalize_cb, void* finalize_hint, napi_ref* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -4722,6 +5040,8 @@ NAPI_EXTERN napi_status napi_unwrap(napi_env env, napi_value js_object, void** r
 
 Retrieves a native instance that was previously wrapped in an ArkTS object using napi_wrap.
 
+<!--Device-NAPI_EXTERN napi_status napi_unwrap(napi_env env, napi_value js_object, void** result)--><!--Device-NAPI_EXTERN napi_status napi_unwrap(napi_env env, napi_value js_object, void** result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -4750,6 +5070,8 @@ NAPI_EXTERN napi_status napi_remove_wrap(napi_env env, napi_value js_object, voi
 
 Retrieves a native instance that was previously wrapped in the ArkTS object js_object using napi_wrap and removes the wrapping.
 
+<!--Device-NAPI_EXTERN napi_status napi_remove_wrap(napi_env env, napi_value js_object, void** result)--><!--Device-NAPI_EXTERN napi_status napi_remove_wrap(napi_env env, napi_value js_object, void** result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -4777,6 +5099,8 @@ NAPI_EXTERN napi_status napi_create_async_work(napi_env env, napi_value async_re
 **Description**
 
 Allocate a work object that is used to execute logic asynchronously.
+
+<!--Device-NAPI_EXTERN napi_status napi_create_async_work(napi_env env, napi_value async_resource, napi_value async_resource_name, napi_async_execute_callback execute, napi_async_complete_callback complete, void* data, napi_async_work* result)--><!--Device-NAPI_EXTERN napi_status napi_create_async_work(napi_env env, napi_value async_resource, napi_value async_resource_name, napi_async_execute_callback execute, napi_async_complete_callback complete, void* data, napi_async_work* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -4810,6 +5134,8 @@ NAPI_EXTERN napi_status napi_delete_async_work(napi_env env, napi_async_work wor
 
 Free a previously allocated work object.
 
+<!--Device-NAPI_EXTERN napi_status napi_delete_async_work(napi_env env, napi_async_work work)--><!--Device-NAPI_EXTERN napi_status napi_delete_async_work(napi_env env, napi_async_work work)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -4836,6 +5162,8 @@ NAPI_EXTERN napi_status napi_queue_async_work(napi_env env, napi_async_work work
 **Description**
 
 Requests that the previously allocated work be scheduled for execution. Once it returns successfully, this API must not be called again with the same napi_async_work item or the result will be undefined.
+
+<!--Device-NAPI_EXTERN napi_status napi_queue_async_work(napi_env env, napi_async_work work)--><!--Device-NAPI_EXTERN napi_status napi_queue_async_work(napi_env env, napi_async_work work)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -4864,6 +5192,8 @@ NAPI_EXTERN napi_status napi_cancel_async_work(napi_env env, napi_async_work wor
 
 Cancels queued work if it has not yet been started. If it has already started executing, it cannot be cancelled. If successful, the complete callback will be invoked with a status value of napi_cancelled. The work should not be deleted before the complete callback invocation, even if it has been successfully cancelled.
 
+<!--Device-NAPI_EXTERN napi_status napi_cancel_async_work(napi_env env, napi_async_work work)--><!--Device-NAPI_EXTERN napi_status napi_cancel_async_work(napi_env env, napi_async_work work)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 10
@@ -4890,6 +5220,8 @@ NAPI_EXTERN napi_status napi_wrap_enhance(napi_env env, napi_value js_object, vo
 **Description**
 
 Wraps a native instance in an ArkTS object.
+
+<!--Device-NAPI_EXTERN napi_status napi_wrap_enhance(napi_env env, napi_value js_object, void* native_object, napi_finalize finalize_cb, bool async_finalizer, void* finalize_hint, size_t native_binding_size, napi_ref* result)--><!--Device-NAPI_EXTERN napi_status napi_wrap_enhance(napi_env env, napi_value js_object, void* native_object, napi_finalize finalize_cb, bool async_finalizer, void* finalize_hint, size_t native_binding_size, napi_ref* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -4924,6 +5256,8 @@ NAPI_EXTERN napi_status napi_create_ark_context(napi_env env, napi_env *newEnv)
 
 To create a new virtual machine context.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_ark_context(napi_env env, napi_env *newEnv)--><!--Device-NAPI_EXTERN napi_status napi_create_ark_context(napi_env env, napi_env *newEnv)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 20
@@ -4951,6 +5285,8 @@ NAPI_EXTERN napi_status napi_switch_ark_context(napi_env env)
 
 To switch a virtual machine context which is expected to be used later.
 
+<!--Device-NAPI_EXTERN napi_status napi_switch_ark_context(napi_env env)--><!--Device-NAPI_EXTERN napi_status napi_switch_ark_context(napi_env env)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 20
@@ -4977,6 +5313,8 @@ NAPI_EXTERN napi_status napi_destroy_ark_context(napi_env env)
 
 To destroy a virtual machine context which will not be used again.
 
+<!--Device-NAPI_EXTERN napi_status napi_destroy_ark_context(napi_env env)--><!--Device-NAPI_EXTERN napi_status napi_destroy_ark_context(napi_env env)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 20
@@ -5002,6 +5340,8 @@ NAPI_EXTERN napi_status napi_open_critical_scope(napi_env env, napi_critical_sco
 **Description**
 
 To open a critical scope.
+
+<!--Device-NAPI_EXTERN napi_status napi_open_critical_scope(napi_env env, napi_critical_scope* scope)--><!--Device-NAPI_EXTERN napi_status napi_open_critical_scope(napi_env env, napi_critical_scope* scope)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -5030,6 +5370,8 @@ NAPI_EXTERN napi_status napi_close_critical_scope(napi_env env, napi_critical_sc
 
 To close a critical scope.
 
+<!--Device-NAPI_EXTERN napi_status napi_close_critical_scope(napi_env env, napi_critical_scope scope)--><!--Device-NAPI_EXTERN napi_status napi_close_critical_scope(napi_env env, napi_critical_scope scope)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 21
@@ -5056,6 +5398,8 @@ NAPI_EXTERN napi_status napi_get_buffer_string_utf16_in_critical_scope(napi_env 
 **Description**
 
 To obtain a ArkTS string buffer cache within the critical scope.
+
+<!--Device-NAPI_EXTERN napi_status napi_get_buffer_string_utf16_in_critical_scope(napi_env env, napi_value value, const char16_t** buffer, size_t* length)--><!--Device-NAPI_EXTERN napi_status napi_get_buffer_string_utf16_in_critical_scope(napi_env env, napi_value value, const char16_t** buffer, size_t* length)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -5086,6 +5430,8 @@ NAPI_EXTERN napi_status napi_create_strong_reference(napi_env env, napi_value va
 
 Creates a strong reference for an ArkTS object to extend its lifespan. The caller needs to manage the reference lifespan.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_strong_reference(napi_env env, napi_value value, napi_strong_ref* result)--><!--Device-NAPI_EXTERN napi_status napi_create_strong_reference(napi_env env, napi_value value, napi_strong_ref* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 21
@@ -5114,6 +5460,8 @@ NAPI_EXTERN napi_status napi_delete_strong_reference(napi_env env, napi_strong_r
 
 Deletes the strong reference passed in.
 
+<!--Device-NAPI_EXTERN napi_status napi_delete_strong_reference(napi_env env, napi_strong_ref ref)--><!--Device-NAPI_EXTERN napi_status napi_delete_strong_reference(napi_env env, napi_strong_ref ref)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 21
@@ -5140,6 +5488,8 @@ NAPI_EXTERN napi_status napi_get_strong_reference_value(napi_env env, napi_stron
 **Description**
 
 Obtains the ArkTS Object associated with the strong reference.
+
+<!--Device-NAPI_EXTERN napi_status napi_get_strong_reference_value(napi_env env, napi_strong_ref ref, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_get_strong_reference_value(napi_env env, napi_strong_ref ref, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -5168,6 +5518,8 @@ NAPI_EXTERN napi_status napi_create_external_string_utf16(napi_env env, const ch
 **Description**
 
 Creates an ArkTS string from a UTF16-encoded C string.
+
+<!--Device-NAPI_EXTERN napi_status napi_create_external_string_utf16(napi_env env, const char16_t* str, size_t length, napi_finalize_callback finalize_callback, void* finalize_hint, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_external_string_utf16(napi_env env, const char16_t* str, size_t length, napi_finalize_callback finalize_callback, void* finalize_hint, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -5200,6 +5552,8 @@ NAPI_EXTERN napi_status napi_create_external_string_ascii(napi_env env, const ch
 
 Creates an ArkTS string from a ASCII-encoded C string.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_external_string_ascii(napi_env env, const char* str, size_t length, napi_finalize_callback finalize_callback, void* finalize_hint, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_create_external_string_ascii(napi_env env, const char* str, size_t length, napi_finalize_callback finalize_callback, void* finalize_hint, napi_value* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 22
@@ -5231,6 +5585,8 @@ NAPI_EXTERN napi_status napi_create_strong_sendable_reference(napi_env env, napi
 
 Creates a strong sendable reference for an ArkTS object to extend its lifespan. The caller needs to manage the sendable reference lifespan.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_strong_sendable_reference(napi_env env, napi_value value, napi_sendable_ref* result)--><!--Device-NAPI_EXTERN napi_status napi_create_strong_sendable_reference(napi_env env, napi_value value, napi_sendable_ref* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 22
@@ -5259,6 +5615,8 @@ NAPI_EXTERN napi_status napi_delete_strong_sendable_reference(napi_env env, napi
 
 Deletes the strong sendable reference passed in.
 
+<!--Device-NAPI_EXTERN napi_status napi_delete_strong_sendable_reference(napi_env env, napi_sendable_ref ref)--><!--Device-NAPI_EXTERN napi_status napi_delete_strong_sendable_reference(napi_env env, napi_sendable_ref ref)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 22
@@ -5285,6 +5643,8 @@ NAPI_EXTERN napi_status napi_get_strong_sendable_reference_value(napi_env env, n
 **Description**
 
 Obtains the ArkTS Object associated with the strong reference.
+
+<!--Device-NAPI_EXTERN napi_status napi_get_strong_sendable_reference_value(napi_env env, napi_sendable_ref ref, napi_value* result)--><!--Device-NAPI_EXTERN napi_status napi_get_strong_sendable_reference_value(napi_env env, napi_sendable_ref ref, napi_value* result)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -5314,6 +5674,8 @@ NAPI_EXTERN napi_status napi_throw_business_error(napi_env env, int32_t errorCod
 
 Throws an ArkTS Error with text information.
 
+<!--Device-NAPI_EXTERN napi_status napi_throw_business_error(napi_env env, int32_t errorCode, const char* msg)--><!--Device-NAPI_EXTERN napi_status napi_throw_business_error(napi_env env, int32_t errorCode, const char* msg)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 23
@@ -5342,6 +5704,8 @@ NAPI_EXTERN napi_status napi_create_callsite_info(napi_env env, napi_callsite_in
 
 Creates a callsite info handle for caching inline cache (IC) information of property access. Each different callsite should create an independent handle. The same handle can be reused across multiple calls but must not be used across threads. When no longer needed, napi_delete_callsite_info must be called to release the handle.
 
+<!--Device-NAPI_EXTERN napi_status napi_create_callsite_info(napi_env env, napi_callsite_info* result)--><!--Device-NAPI_EXTERN napi_status napi_create_callsite_info(napi_env env, napi_callsite_info* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 24
@@ -5369,6 +5733,8 @@ NAPI_EXTERN napi_status napi_delete_callsite_info(napi_env env, napi_callsite_in
 
 Deletes a callsite info handle and releases associated cache resources.
 
+<!--Device-NAPI_EXTERN napi_status napi_delete_callsite_info(napi_env env, napi_callsite_info info)--><!--Device-NAPI_EXTERN napi_status napi_delete_callsite_info(napi_env env, napi_callsite_info info)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 24
@@ -5395,6 +5761,8 @@ NAPI_EXTERN napi_status napi_get_property_with_callsite_info(napi_env env, napi_
 **Description**
 
 Uses callsite info to quickly get an object property value. When the IC hits (the object has the same hidden class), it skips the regular hash table lookup and prototype chain traversal. The info parameter can be NULL, in which case the behavior is equivalent to napi_get_property.
+
+<!--Device-NAPI_EXTERN napi_status napi_get_property_with_callsite_info(napi_env env, napi_value object, napi_value key, napi_callsite_info info, napi_value* result, bool* hit)--><!--Device-NAPI_EXTERN napi_status napi_get_property_with_callsite_info(napi_env env, napi_value object, napi_value key, napi_callsite_info info, napi_value* result, bool* hit)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -5427,6 +5795,8 @@ NAPI_EXTERN napi_status napi_set_property_with_callsite_info(napi_env env, napi_
 
 Uses callsite info to quickly set an object property value. When the IC hits (the object has the same hidden class), it skips the regular property setting process. The info parameter can be NULL, in which case the behavior is equivalent to napi_set_property.
 
+<!--Device-NAPI_EXTERN napi_status napi_set_property_with_callsite_info(napi_env env, napi_value object, napi_value key, napi_value value, napi_callsite_info info, bool* hit)--><!--Device-NAPI_EXTERN napi_status napi_set_property_with_callsite_info(napi_env env, napi_value object, napi_value key, napi_value value, napi_callsite_info info, bool* hit)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 24
@@ -5457,6 +5827,8 @@ NAPI_EXTERN napi_status napi_get_global_handle_count(napi_env env, size_t* count
 **Description**
 
 To obtain the count of global object in current ArkTS runtime thread.
+
+<!--Device-NAPI_EXTERN napi_status napi_get_global_handle_count(napi_env env, size_t* count)--><!--Device-NAPI_EXTERN napi_status napi_get_global_handle_count(napi_env env, size_t* count)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
@@ -5489,6 +5861,8 @@ Creates a microtask scope in the current ArkTS runtime. Within this scope, micro
 >
 > This API must be called before [napi_close_microtask_scope](capi-native-api-h.md#napi_close_microtask_scope). Each call to this API must be paired with a call to [napi_close_microtask_scope](capi-native-api-h.md#napi_close_microtask_scope).
 
+<!--Device-NAPI_EXTERN napi_status napi_open_microtask_scope(napi_env env, napi_microtask_scope* scope)--><!--Device-NAPI_EXTERN napi_status napi_open_microtask_scope(napi_env env, napi_microtask_scope* scope)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 26.1.0
@@ -5520,6 +5894,8 @@ To destroy the microtask scope in current ArkTS runtime. After the scope is dest
 >
 > This API must be called after [napi_open_microtask_scope](capi-native-api-h.md#napi_open_microtask_scope).
 
+<!--Device-NAPI_EXTERN napi_status napi_close_microtask_scope(napi_env env, napi_microtask_scope scope)--><!--Device-NAPI_EXTERN napi_status napi_close_microtask_scope(napi_env env, napi_microtask_scope scope)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 26.1.0
@@ -5546,6 +5922,8 @@ NAPI_EXTERN void napi_shared_module_register(napi_module* mod)
 **Description**
 
 To register a native sendable module which will be utilized in different threads of a process.
+
+<!--Device-NAPI_EXTERN void napi_shared_module_register(napi_module* mod)--><!--Device-NAPI_EXTERN void napi_shared_module_register(napi_module* mod)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 

@@ -8,11 +8,13 @@ struct OH_CloudDisk_DehydrateInfo {...}
 
 脱水授权信息。
 
+<!--Device-struct OH_CloudDisk_DehydrateInfo {...}--><!--Device-struct OH_CloudDisk_DehydrateInfo {...}-End-->
+
 **系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **起始版本：** 26.0.1
 
-**相关模块：** [CloudDisk](capi-others-clouddisk.md)
+**相关模块：** [CloudDisk](capi-core-file-kit-clouddisk.md)
 
 **所在头文件：** [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
 

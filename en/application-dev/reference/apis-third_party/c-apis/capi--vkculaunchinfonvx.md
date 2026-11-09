@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkCuLaunchInfoNVX {...}--><!--Device-struct VkCuLaunchInfoNVX {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkCopyImageToBufferInfo2 {...}--><!--Device-struct VkCopyImageToBufferInfo2 {...}-End-->
+
 ## Summary
 
 ### Member variables

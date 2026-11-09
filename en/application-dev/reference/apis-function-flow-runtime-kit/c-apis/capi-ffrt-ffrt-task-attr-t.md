@@ -8,11 +8,13 @@ typedef struct ffrt_task_attr_t {...} ffrt_task_attr_t
 
 Defines the task attribute structure used to store task attribute information.
 
+<!--Device-typedef struct ffrt_task_attr_t {...} ffrt_task_attr_t--><!--Device-typedef struct ffrt_task_attr_t {...} ffrt_task_attr_t-End-->
+
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
 
-**Related module**: [FFRT](capi-others-ffrt.md)
+**Related module**: [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 
 **Header file**: [type_def.h](capi-type-def-h.md)
 

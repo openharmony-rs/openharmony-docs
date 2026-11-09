@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSubpassBeginInfo {...}--><!--Device-struct VkSubpassBeginInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

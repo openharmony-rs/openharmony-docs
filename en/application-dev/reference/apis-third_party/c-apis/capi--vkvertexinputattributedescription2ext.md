@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkVertexInputAttributeDescription2EXT {...}--><!--Device-struct VkVertexInputAttributeDescription2EXT {...}-End-->
+
 ## Summary
 
 ### Member variables

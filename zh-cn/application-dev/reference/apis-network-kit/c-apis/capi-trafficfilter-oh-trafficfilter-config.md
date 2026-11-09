@@ -17,11 +17,13 @@ NFQueue配置结构体
 3. 将所有其他字段设置为定义范围内的有效值（见下文）。
 - **未遵守**此约定（例如`size`不正确、字段值超出范围） 将导致接口返回`OH_TRAFFICFILTER_ERROR_INVALID_PARAM`。
 
+<!--Device-struct OH_TrafficFilter_Config {...}--><!--Device-struct OH_TrafficFilter_Config {...}-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 **起始版本：** 26.0.1
 
-**相关模块：** [TrafficFilter](capi-others-trafficfilter.md)
+**相关模块：** [TrafficFilter](capi-network-kit-trafficfilter.md)
 
 **所在头文件：** [net_trafficfilter_type.h](capi-net-trafficfilter-type-h.md)
 

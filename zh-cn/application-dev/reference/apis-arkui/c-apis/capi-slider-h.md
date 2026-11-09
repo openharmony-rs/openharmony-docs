@@ -34,6 +34,8 @@ enum ArkUI_SliderBlockStyle
 
 定义滑块形状。
 
+<!--Device-ArkUI_SliderBlockStyle--><!--Device-ArkUI_SliderBlockStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
@@ -54,6 +56,8 @@ enum ArkUI_SliderDirection
 
 定义滑动条滑动方向。
 
+<!--Device-ArkUI_SliderDirection--><!--Device-ArkUI_SliderDirection-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
@@ -72,6 +76,8 @@ enum ArkUI_SliderStyle
 **描述：**
 
 定义滑块与滑轨显示样式。
+
+<!--Device-ArkUI_SliderStyle--><!--Device-ArkUI_SliderStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct d_opt_adv_interval {...}--><!--Device-struct d_opt_adv_interval {...}-End-->
+
 ## Summary
 
 ### Member variables

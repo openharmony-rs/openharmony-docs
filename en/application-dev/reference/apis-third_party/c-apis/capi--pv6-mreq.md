@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct pv6_mreq {...}--><!--Device-struct pv6_mreq {...}-End-->
+
 ## Summary
 
 ### Member variables

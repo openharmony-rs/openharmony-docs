@@ -8,11 +8,13 @@ struct UsbRequestPipe {...}
 
 Defines a request pipe, which is actually a USB data transfer request. It describes the basic configuration parameters for USB data transfer, including the interface handle, endpoint address, and timeout interval. This API applies to scenarios where USB data transfer is required.
 
+<!--Device-struct UsbRequestPipe {...}--><!--Device-struct UsbRequestPipe {...}-End-->
+
 **System capability**: SystemCapability.Driver.USB.Extension
 
 **Since**: 10
 
-**Related module**: [UsbDdk](capi-others-usbddk.md)
+**Related module**: [UsbDdk](capi-driver-development-kit-usbddk.md)
 
 **Header file**: [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 

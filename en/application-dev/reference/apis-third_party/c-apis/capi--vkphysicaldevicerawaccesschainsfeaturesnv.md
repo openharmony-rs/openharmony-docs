@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceRawAccessChainsFeaturesNV {...}--><!--Device-struct VkPhysicalDeviceRawAccessChainsFeaturesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

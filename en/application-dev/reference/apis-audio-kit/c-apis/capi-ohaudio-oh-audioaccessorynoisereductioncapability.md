@@ -8,11 +8,13 @@ typedef struct OH_AudioAccessoryNoiseReductionCapability {...} OH_AudioAccessory
 
 Defines the noise reduction capability of an audio accessory.
 
+<!--Device-typedef struct OH_AudioAccessoryNoiseReductionCapability {...} OH_AudioAccessoryNoiseReductionCapability--><!--Device-typedef struct OH_AudioAccessoryNoiseReductionCapability {...} OH_AudioAccessoryNoiseReductionCapability-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 26.0.0
 
-**Related module**: [OHAudio](capi-others-ohaudio.md)
+**Related module**: [OHAudio](capi-audio-kit-ohaudio.md)
 
 **Header file**: [native_audio_accessory_common.h](capi-native-audio-accessory-common-h.md)
 

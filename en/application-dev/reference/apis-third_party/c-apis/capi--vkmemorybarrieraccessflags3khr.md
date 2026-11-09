@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkMemoryBarrierAccessFlags3KHR {...}--><!--Device-struct VkMemoryBarrierAccessFlags3KHR {...}-End-->
+
 ## Summary
 
 ### Member variables

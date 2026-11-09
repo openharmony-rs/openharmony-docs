@@ -56,6 +56,8 @@ enum ArkUI_AnimationStatus
 
 定义帧动画的播放状态。
 
+<!--Device-ArkUI_AnimationStatus--><!--Device-ArkUI_AnimationStatus-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
@@ -79,6 +81,8 @@ ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(c
 **描述：**
 
 使用图片路径创建帧图片信息，图片格式为svg、png和jpg。 支持应用沙箱内的相对路径和绝对路径。返回的帧图片对象使用完毕后需调用 [OH_ArkUI_ImageAnimatorFrameInfo_Dispose](capi-image-animator-h.md#oh_arkui_imageanimatorframeinfo_dispose)释放，避免内存泄漏。
+
+<!--Device-ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(char* src)--><!--Device-ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(char* src)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,6 +110,8 @@ ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawable
 
 使用[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象创建帧图片信息，图片格式为Resource和PixelMap。 返回的帧图片对象使用完毕后需调用[OH_ArkUI_ImageAnimatorFrameInfo_Dispose](capi-image-animator-h.md#oh_arkui_imageanimatorframeinfo_dispose)释放，避免内存泄漏。
 
+<!--Device-ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor(ArkUI_DrawableDescriptor* drawable)--><!--Device-ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor(ArkUI_DrawableDescriptor* drawable)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
@@ -132,6 +138,8 @@ void OH_ArkUI_ImageAnimatorFrameInfo_Dispose(ArkUI_ImageAnimatorFrameInfo* image
 
 销毁帧图片对象指针。用于释放由[OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString](capi-image-animator-h.md#oh_arkui_imageanimatorframeinfo_createfromstring)和 [OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor](capi-image-animator-h.md#oh_arkui_imageanimatorframeinfo_createfromdrawabledescriptor)创建的对象，避免内存泄漏。
 
+<!--Device-void OH_ArkUI_ImageAnimatorFrameInfo_Dispose(ArkUI_ImageAnimatorFrameInfo* imageInfo)--><!--Device-void OH_ArkUI_ImageAnimatorFrameInfo_Dispose(ArkUI_ImageAnimatorFrameInfo* imageInfo)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
@@ -151,6 +159,8 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetWidth(ArkUI_ImageAnimatorFrameInfo* imag
 **描述：**
 
 设置图片宽度。
+
+<!--Device-void OH_ArkUI_ImageAnimatorFrameInfo_SetWidth(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t width)--><!--Device-void OH_ArkUI_ImageAnimatorFrameInfo_SetWidth(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t width)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -172,6 +182,8 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetWidth(ArkUI_ImageAnimatorFrameInfo* i
 **描述：**
 
 获取图片宽度。
+
+<!--Device-int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetWidth(ArkUI_ImageAnimatorFrameInfo* imageInfo)--><!--Device-int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetWidth(ArkUI_ImageAnimatorFrameInfo* imageInfo)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -199,6 +211,8 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetHeight(ArkUI_ImageAnimatorFrameInfo* ima
 
 设置图片高度。
 
+<!--Device-void OH_ArkUI_ImageAnimatorFrameInfo_SetHeight(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t height)--><!--Device-void OH_ArkUI_ImageAnimatorFrameInfo_SetHeight(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t height)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
@@ -219,6 +233,8 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetHeight(ArkUI_ImageAnimatorFrameInfo* 
 **描述：**
 
 获取图片高度。
+
+<!--Device-int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetHeight(ArkUI_ImageAnimatorFrameInfo* imageInfo)--><!--Device-int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetHeight(ArkUI_ImageAnimatorFrameInfo* imageInfo)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -246,6 +262,8 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetTop(ArkUI_ImageAnimatorFrameInfo* imageI
 
 设置图片相对于组件左上角的纵向坐标。
 
+<!--Device-void OH_ArkUI_ImageAnimatorFrameInfo_SetTop(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t top)--><!--Device-void OH_ArkUI_ImageAnimatorFrameInfo_SetTop(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t top)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
@@ -266,6 +284,8 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetTop(ArkUI_ImageAnimatorFrameInfo* ima
 **描述：**
 
 获取图片相对于组件左上角的纵向坐标。
+
+<!--Device-int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetTop(ArkUI_ImageAnimatorFrameInfo* imageInfo)--><!--Device-int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetTop(ArkUI_ImageAnimatorFrameInfo* imageInfo)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -293,6 +313,8 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetLeft(ArkUI_ImageAnimatorFrameInfo* image
 
 设置图片相对于组件左上角的横向坐标。
 
+<!--Device-void OH_ArkUI_ImageAnimatorFrameInfo_SetLeft(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t left)--><!--Device-void OH_ArkUI_ImageAnimatorFrameInfo_SetLeft(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t left)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
@@ -313,6 +335,8 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetLeft(ArkUI_ImageAnimatorFrameInfo* im
 **描述：**
 
 获取图片相对于组件左上角的横向坐标。
+
+<!--Device-int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetLeft(ArkUI_ImageAnimatorFrameInfo* imageInfo)--><!--Device-int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetLeft(ArkUI_ImageAnimatorFrameInfo* imageInfo)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -340,6 +364,8 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetDuration(ArkUI_ImageAnimatorFrameInfo* i
 
 设置图片的播放时长。
 
+<!--Device-void OH_ArkUI_ImageAnimatorFrameInfo_SetDuration(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t duration)--><!--Device-void OH_ArkUI_ImageAnimatorFrameInfo_SetDuration(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t duration)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
@@ -360,6 +386,8 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetDuration(ArkUI_ImageAnimatorFrameInfo
 **描述：**
 
 获取图片的播放时长。
+
+<!--Device-int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetDuration(ArkUI_ImageAnimatorFrameInfo* imageInfo)--><!--Device-int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetDuration(ArkUI_ImageAnimatorFrameInfo* imageInfo)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

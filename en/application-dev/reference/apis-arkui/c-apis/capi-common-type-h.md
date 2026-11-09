@@ -4,6 +4,8 @@
 
 Defines the common types for ArkUI native APIs.
 
+**File to Include**: <arkui/common_type.h>
+
 **Library**: libace_ndk.z.so
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full

@@ -8,11 +8,13 @@ typedef struct TEE_Attribute {...} TEE_Attribute
 
 Defines an object attribute.
 
+<!--Device-typedef struct TEE_Attribute {...} TEE_Attribute--><!--Device-typedef struct TEE_Attribute {...} TEE_Attribute-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
-**Related module**: [TeeTrusted](capi-others-teetrusted.md)
+**Related module**: [TeeTrusted](capi-tee-kit-teetrusted.md)
 
 **Header file**: [tee_defines.h](capi-tee-defines-h.md)
 

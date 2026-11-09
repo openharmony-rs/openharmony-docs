@@ -33,6 +33,8 @@ enum Udmf_ErrCode
 
 错误码信息。
 
+<!--Device-Udmf_ErrCode--><!--Device-Udmf_ErrCode-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 12
@@ -52,6 +54,8 @@ enum Udmf_ListenerStatus
 **描述：**
 
 异步获取数据时的状态码枚举。
+
+<!--Device-Udmf_ListenerStatus--><!--Device-Udmf_ListenerStatus-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 

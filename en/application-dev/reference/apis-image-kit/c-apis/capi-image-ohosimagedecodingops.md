@@ -8,11 +8,13 @@ struct OhosImageDecodingOps {...}
 
 Defines the options for decoding the image source. It is used in [OH_ImageSource_CreatePixelMap](capi-image-source-mdk-h.md#oh_imagesource_createpixelmap) and [OH_ImageSource_CreatePixelMapList](capi-image-source-mdk-h.md#oh_imagesource_createpixelmaplist).
 
+<!--Device-struct OhosImageDecodingOps {...}--><!--Device-struct OhosImageDecodingOps {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 10
 
-**Related module**: [Image](capi-others-image.md)
+**Related module**: [Image](capi-image-kit-image.md)
 
 **Header file**: [image_source_mdk.h](capi-image-source-mdk-h.md)
 

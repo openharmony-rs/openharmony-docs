@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct seminfo {...}--><!--Device-struct seminfo {...}-End-->
+
 ## Summary
 
 ### Member variables

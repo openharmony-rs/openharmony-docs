@@ -8,11 +8,13 @@ typedef struct ArkWeb_JavaScriptValue* ArkWeb_JavaScriptValuePtr
 
 ArkWeb_JavaScriptValue is a struct used to encapsulate JavaScript values in native code. It provides basic creation and manipulation capabilities for JavaScript values. This struct supports converting native data into a JavaScript-recognizable format, addressing type safety and format compatibility issues in bidirectional data transfer between native and JavaScript. As the fundamental data transfer type in JavaScript bridge communication, it helps reduce manual conversion costs, improve bridge communication efficiency, and enhance maintainability.
 
+<!--Device-typedef struct ArkWeb_JavaScriptValue* ArkWeb_JavaScriptValuePtr--><!--Device-typedef struct ArkWeb_JavaScriptValue* ArkWeb_JavaScriptValuePtr-End-->
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 18
 
-**Related module**: [Web](capi-others-web.md)
+**Related module**: [Web](capi-arkweb-web.md)
 
 **Header file**: [arkweb_type.h](capi-arkweb-type-h.md)
 

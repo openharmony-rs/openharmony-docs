@@ -76,6 +76,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnCommand)(OH_AVSession*
 
 通用的执行播控命令的回调。
 
+<!--Device-typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnCommand)(OH_AVSession* session, AVSession_ControlCommand command, void* userData)--><!--Device-typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnCommand)(OH_AVSession* session, AVSession_ControlCommand command, void* userData)-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
@@ -97,6 +99,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnFastForward)(OH_AVSess
 **描述：**
 
 快进的回调。
+
+<!--Device-typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnFastForward)(OH_AVSession* session, uint32_t seekTime, void* userData)--><!--Device-typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnFastForward)(OH_AVSession* session, uint32_t seekTime, void* userData)-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -120,6 +124,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnRewind)(OH_AVSession* 
 
 快退的回调。
 
+<!--Device-typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnRewind)(OH_AVSession* session, uint32_t seekTime, void* userData)--><!--Device-typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnRewind)(OH_AVSession* session, uint32_t seekTime, void* userData)-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
@@ -141,6 +147,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSeek)(OH_AVSession* se
 **描述：**
 
 进度调节的回调。
+
+<!--Device-typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSeek)(OH_AVSession* session, uint64_t seekTime, void* userData)--><!--Device-typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSeek)(OH_AVSession* session, uint64_t seekTime, void* userData)-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -164,6 +172,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSetLoopMode)(OH_AVSess
 
 设置循环模式的回调。
 
+<!--Device-typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSetLoopMode)(OH_AVSession* session, AVSession_LoopMode curLoopMode, void* userData)--><!--Device-typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSetLoopMode)(OH_AVSession* session, AVSession_LoopMode curLoopMode, void* userData)-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
@@ -185,6 +195,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnToggleFavorite)(OH_AVS
 **描述：**
 
 收藏的回调。
+
+<!--Device-typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnToggleFavorite)(OH_AVSession* session, const char* assetId, void* userData)--><!--Device-typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnToggleFavorite)(OH_AVSession* session, const char* assetId, void* userData)-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -208,6 +220,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OutputDeviceChange)(OH_A
 
 设备变化的回调。
 
+<!--Device-typedef AVSessionCallback_Result (*OH_AVSessionCallback_OutputDeviceChange)(OH_AVSession* session, AVSession_ConnectionState state, AVSession_OutputDeviceInfo* outputDeviceInfo)--><!--Device-typedef AVSessionCallback_Result (*OH_AVSessionCallback_OutputDeviceChange)(OH_AVSession* session, AVSession_ConnectionState state, AVSession_OutputDeviceInfo* outputDeviceInfo)-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
@@ -229,6 +243,8 @@ AVSession_ErrCode OH_AVSession_Create(AVSession_Type sessionType, const char* se
 **描述：**
 
 创建会话对象。
+
+<!--Device-AVSession_ErrCode OH_AVSession_Create(AVSession_Type sessionType, const char* sessionTag, const char* bundleName, const char* abilityName, OH_AVSession** avsession)--><!--Device-AVSession_ErrCode OH_AVSession_Create(AVSession_Type sessionType, const char* sessionTag, const char* bundleName, const char* abilityName, OH_AVSession** avsession)-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -260,6 +276,8 @@ AVSession_ErrCode OH_AVSession_Destroy(OH_AVSession* avsession)
 
 销毁会话对象。
 
+<!--Device-AVSession_ErrCode OH_AVSession_Destroy(OH_AVSession* avsession)--><!--Device-AVSession_ErrCode OH_AVSession_Destroy(OH_AVSession* avsession)-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
@@ -285,6 +303,8 @@ AVSession_ErrCode OH_AVSession_Activate(OH_AVSession* avsession)
 **描述：**
 
 激活会话。
+
+<!--Device-AVSession_ErrCode OH_AVSession_Activate(OH_AVSession* avsession)--><!--Device-AVSession_ErrCode OH_AVSession_Activate(OH_AVSession* avsession)-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -312,6 +332,8 @@ AVSession_ErrCode OH_AVSession_Deactivate(OH_AVSession* avsession)
 
 取消激活媒体会话。
 
+<!--Device-AVSession_ErrCode OH_AVSession_Deactivate(OH_AVSession* avsession)--><!--Device-AVSession_ErrCode OH_AVSession_Deactivate(OH_AVSession* avsession)-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
@@ -337,6 +359,8 @@ AVSession_ErrCode OH_AVSession_GetSessionType(OH_AVSession* avsession, AVSession
 **描述：**
 
 获取会话类型。
+
+<!--Device-AVSession_ErrCode OH_AVSession_GetSessionType(OH_AVSession* avsession, AVSession_Type* sessionType)--><!--Device-AVSession_ErrCode OH_AVSession_GetSessionType(OH_AVSession* avsession, AVSession_Type* sessionType)-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -365,6 +389,8 @@ AVSession_ErrCode OH_AVSession_GetSessionId(OH_AVSession* avsession, const char*
 
 获取会话ID。
 
+<!--Device-AVSession_ErrCode OH_AVSession_GetSessionId(OH_AVSession* avsession, const char** sessionId)--><!--Device-AVSession_ErrCode OH_AVSession_GetSessionId(OH_AVSession* avsession, const char** sessionId)-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
@@ -391,6 +417,8 @@ AVSession_ErrCode OH_AVSession_SetAVMetadata(OH_AVSession* avsession, OH_AVMetad
 **描述：**
 
 设置媒体元数据。
+
+<!--Device-AVSession_ErrCode OH_AVSession_SetAVMetadata(OH_AVSession* avsession, OH_AVMetadata* avmetadata)--><!--Device-AVSession_ErrCode OH_AVSession_SetAVMetadata(OH_AVSession* avsession, OH_AVMetadata* avmetadata)-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -419,6 +447,8 @@ AVSession_ErrCode OH_AVSession_SetPlaybackState(OH_AVSession* avsession, AVSessi
 
 设置播放状态。
 
+<!--Device-AVSession_ErrCode OH_AVSession_SetPlaybackState(OH_AVSession* avsession, AVSession_PlaybackState playbackState)--><!--Device-AVSession_ErrCode OH_AVSession_SetPlaybackState(OH_AVSession* avsession, AVSession_PlaybackState playbackState)-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
@@ -445,6 +475,8 @@ AVSession_ErrCode OH_AVSession_SetPlaybackPosition(OH_AVSession* avsession, AVSe
 **描述：**
 
 设置播放位置。
+
+<!--Device-AVSession_ErrCode OH_AVSession_SetPlaybackPosition(OH_AVSession* avsession, AVSession_PlaybackPosition* playbackPosition)--><!--Device-AVSession_ErrCode OH_AVSession_SetPlaybackPosition(OH_AVSession* avsession, AVSession_PlaybackPosition* playbackPosition)-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -473,6 +505,8 @@ AVSession_ErrCode OH_AVSession_SetFavorite(OH_AVSession* avsession, bool favorit
 
 设置收藏状态。
 
+<!--Device-AVSession_ErrCode OH_AVSession_SetFavorite(OH_AVSession* avsession, bool favorite)--><!--Device-AVSession_ErrCode OH_AVSession_SetFavorite(OH_AVSession* avsession, bool favorite)-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
@@ -499,6 +533,8 @@ AVSession_ErrCode OH_AVSession_SetLoopMode(OH_AVSession* avsession, AVSession_Lo
 **描述：**
 
 设置循环模式。
+
+<!--Device-AVSession_ErrCode OH_AVSession_SetLoopMode(OH_AVSession* avsession, AVSession_LoopMode loopMode)--><!--Device-AVSession_ErrCode OH_AVSession_SetLoopMode(OH_AVSession* avsession, AVSession_LoopMode loopMode)-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -527,6 +563,8 @@ AVSession_ErrCode OH_AVSession_SetRemoteCastEnabled(OH_AVSession* avsession, boo
 
 请求使能远程投播。
 
+<!--Device-AVSession_ErrCode OH_AVSession_SetRemoteCastEnabled(OH_AVSession* avsession, bool enabled)--><!--Device-AVSession_ErrCode OH_AVSession_SetRemoteCastEnabled(OH_AVSession* avsession, bool enabled)-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
@@ -553,6 +591,8 @@ AVSession_ErrCode OH_AVSession_RegisterCommandCallback(OH_AVSession* avsession, 
 **描述：**
 
 注册通用播控的回调。
+
+<!--Device-AVSession_ErrCode OH_AVSession_RegisterCommandCallback(OH_AVSession* avsession, AVSession_ControlCommand command, OH_AVSessionCallback_OnCommand callback, void* userData)--><!--Device-AVSession_ErrCode OH_AVSession_RegisterCommandCallback(OH_AVSession* avsession, AVSession_ControlCommand command, OH_AVSessionCallback_OnCommand callback, void* userData)-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -583,6 +623,8 @@ AVSession_ErrCode OH_AVSession_UnregisterCommandCallback(OH_AVSession* avsession
 
 取消注册通用播控的回调。
 
+<!--Device-AVSession_ErrCode OH_AVSession_UnregisterCommandCallback(OH_AVSession* avsession, AVSession_ControlCommand command, OH_AVSessionCallback_OnCommand callback)--><!--Device-AVSession_ErrCode OH_AVSession_UnregisterCommandCallback(OH_AVSession* avsession, AVSession_ControlCommand command, OH_AVSessionCallback_OnCommand callback)-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
@@ -610,6 +652,8 @@ AVSession_ErrCode OH_AVSession_RegisterForwardCallback(OH_AVSession* avsession, 
 **描述：**
 
 注册快进的回调。
+
+<!--Device-AVSession_ErrCode OH_AVSession_RegisterForwardCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnFastForward callback, void* userData)--><!--Device-AVSession_ErrCode OH_AVSession_RegisterForwardCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnFastForward callback, void* userData)-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -639,6 +683,8 @@ AVSession_ErrCode OH_AVSession_UnregisterForwardCallback(OH_AVSession* avsession
 
 取消注册快进的回调。
 
+<!--Device-AVSession_ErrCode OH_AVSession_UnregisterForwardCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnFastForward callback)--><!--Device-AVSession_ErrCode OH_AVSession_UnregisterForwardCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnFastForward callback)-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
@@ -665,6 +711,8 @@ AVSession_ErrCode OH_AVSession_RegisterRewindCallback(OH_AVSession* avsession, O
 **描述：**
 
 注册快退的回调。
+
+<!--Device-AVSession_ErrCode OH_AVSession_RegisterRewindCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnRewind callback, void* userData)--><!--Device-AVSession_ErrCode OH_AVSession_RegisterRewindCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnRewind callback, void* userData)-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -694,6 +742,8 @@ AVSession_ErrCode OH_AVSession_UnregisterRewindCallback(OH_AVSession* avsession,
 
 取消注册快退的回调。
 
+<!--Device-AVSession_ErrCode OH_AVSession_UnregisterRewindCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnRewind callback)--><!--Device-AVSession_ErrCode OH_AVSession_UnregisterRewindCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnRewind callback)-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
@@ -720,6 +770,8 @@ AVSession_ErrCode OH_AVSession_RegisterSeekCallback(OH_AVSession* avsession, OH_
 **描述：**
 
 注册跳转的回调。
+
+<!--Device-AVSession_ErrCode OH_AVSession_RegisterSeekCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnSeek callback, void* userData)--><!--Device-AVSession_ErrCode OH_AVSession_RegisterSeekCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnSeek callback, void* userData)-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -749,6 +801,8 @@ AVSession_ErrCode OH_AVSession_UnregisterSeekCallback(OH_AVSession* avsession, O
 
 取消注册跳转的回调。
 
+<!--Device-AVSession_ErrCode OH_AVSession_UnregisterSeekCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnSeek callback)--><!--Device-AVSession_ErrCode OH_AVSession_UnregisterSeekCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnSeek callback)-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
@@ -775,6 +829,8 @@ AVSession_ErrCode OH_AVSession_RegisterSetLoopModeCallback(OH_AVSession* avsessi
 **描述：**
 
 注册设置循环模式的回调。
+
+<!--Device-AVSession_ErrCode OH_AVSession_RegisterSetLoopModeCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnSetLoopMode callback, void* userData)--><!--Device-AVSession_ErrCode OH_AVSession_RegisterSetLoopModeCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnSetLoopMode callback, void* userData)-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -804,6 +860,8 @@ AVSession_ErrCode OH_AVSession_UnregisterSetLoopModeCallback(OH_AVSession* avses
 
 取消注册设置循环模式的回调。
 
+<!--Device-AVSession_ErrCode OH_AVSession_UnregisterSetLoopModeCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnSetLoopMode callback)--><!--Device-AVSession_ErrCode OH_AVSession_UnregisterSetLoopModeCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnSetLoopMode callback)-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
@@ -830,6 +888,8 @@ AVSession_ErrCode OH_AVSession_RegisterToggleFavoriteCallback(OH_AVSession* avse
 **描述：**
 
 设置收藏的回调。
+
+<!--Device-AVSession_ErrCode OH_AVSession_RegisterToggleFavoriteCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnToggleFavorite callback, void* userData)--><!--Device-AVSession_ErrCode OH_AVSession_RegisterToggleFavoriteCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnToggleFavorite callback, void* userData)-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -859,6 +919,8 @@ AVSession_ErrCode OH_AVSession_UnregisterToggleFavoriteCallback(OH_AVSession* av
 
 取消设置收藏的回调。
 
+<!--Device-AVSession_ErrCode OH_AVSession_UnregisterToggleFavoriteCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnToggleFavorite callback)--><!--Device-AVSession_ErrCode OH_AVSession_UnregisterToggleFavoriteCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnToggleFavorite callback)-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
@@ -885,6 +947,8 @@ AVSession_ErrCode OH_AVSession_RegisterOutputDeviceChangeCallback(OH_AVSession* 
 **描述：**
 
 注册设备变化的回调。
+
+<!--Device-AVSession_ErrCode OH_AVSession_RegisterOutputDeviceChangeCallback(OH_AVSession* avsession, OH_AVSessionCallback_OutputDeviceChange callback)--><!--Device-AVSession_ErrCode OH_AVSession_RegisterOutputDeviceChangeCallback(OH_AVSession* avsession, OH_AVSessionCallback_OutputDeviceChange callback)-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -913,6 +977,8 @@ AVSession_ErrCode OH_AVSession_UnregisterOutputDeviceChangeCallback(OH_AVSession
 
 取消注册设备变化的回调。
 
+<!--Device-AVSession_ErrCode OH_AVSession_UnregisterOutputDeviceChangeCallback(OH_AVSession* avsession, OH_AVSessionCallback_OutputDeviceChange callback)--><!--Device-AVSession_ErrCode OH_AVSession_UnregisterOutputDeviceChangeCallback(OH_AVSession* avsession, OH_AVSessionCallback_OutputDeviceChange callback)-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
@@ -939,6 +1005,8 @@ AVSession_ErrCode OH_AVSession_AcquireSession(const char* sessionTag, const char
 **描述：**
 
 获取已经存在的媒体会话对象。 当不再使用媒体会话对象时，调用[OH_AVSession_Destroy](capi-native-avsession-h.md#oh_avsession_destroy)进行释放。
+
+<!--Device-AVSession_ErrCode OH_AVSession_AcquireSession(const char* sessionTag, const char* bundleName, const char* abilityName, OH_AVSession** avsession)--><!--Device-AVSession_ErrCode OH_AVSession_AcquireSession(const char* sessionTag, const char* bundleName, const char* abilityName, OH_AVSession** avsession)-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -969,6 +1037,8 @@ AVSession_ErrCode OH_AVSession_CreateAVCastController(OH_AVSession* avsession, O
 
 创建投播控制器对象。 当投播控制器对象不再使用时，调用[OH_AVCastController_Destroy](capi-native-avcastcontroller-h.md#oh_avcastcontroller_destroy)进行释放。
 
+<!--Device-AVSession_ErrCode OH_AVSession_CreateAVCastController(OH_AVSession* avsession, OH_AVCastController** avcastcontroller)--><!--Device-AVSession_ErrCode OH_AVSession_CreateAVCastController(OH_AVSession* avsession, OH_AVCastController** avcastcontroller)-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
@@ -996,6 +1066,8 @@ AVSession_ErrCode OH_AVSession_StopCasting(OH_AVSession* avsession)
 
 停止当前投播并断开设备连接。
 
+<!--Device-AVSession_ErrCode OH_AVSession_StopCasting(OH_AVSession* avsession)--><!--Device-AVSession_ErrCode OH_AVSession_StopCasting(OH_AVSession* avsession)-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
@@ -1021,6 +1093,8 @@ AVSession_ErrCode OH_AVSession_AcquireOutputDevice(OH_AVSession* avsession, AVSe
 **描述：**
 
 获取当前输出设备。
+
+<!--Device-AVSession_ErrCode OH_AVSession_AcquireOutputDevice(OH_AVSession* avsession, AVSession_OutputDeviceInfo** outputDeviceInfo)--><!--Device-AVSession_ErrCode OH_AVSession_AcquireOutputDevice(OH_AVSession* avsession, AVSession_OutputDeviceInfo** outputDeviceInfo)-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -1048,6 +1122,8 @@ AVSession_ErrCode OH_AVSession_ReleaseOutputDevice(OH_AVSession* avsession, AVSe
 **描述：**
 
 释放输出设备对象。
+
+<!--Device-AVSession_ErrCode OH_AVSession_ReleaseOutputDevice(OH_AVSession* avsession, AVSession_OutputDeviceInfo *outputDeviceInfo)--><!--Device-AVSession_ErrCode OH_AVSession_ReleaseOutputDevice(OH_AVSession* avsession, AVSession_OutputDeviceInfo *outputDeviceInfo)-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 

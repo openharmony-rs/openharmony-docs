@@ -8,11 +8,13 @@ struct OH_NativeWindow_ScreenInfoRect {...}
 
 定义一个包含坐标和尺寸信息的矩形描述屏幕信息<br> 该结构体用于 [OH_NativeWindow_NativeWindowHandleOpt](capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt) 接口的 SET_SCREEN_INFO 和 GET_SCREEN_INFO 操作码， 用来承载当前帧的偏移/尺寸以及 原始内容在屏幕中的偏移/尺寸
 
+<!--Device-struct OH_NativeWindow_ScreenInfoRect {...}--><!--Device-struct OH_NativeWindow_ScreenInfoRect {...}-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 26.2.0
 
-**相关模块：** [NativeWindow](capi-others-nativewindow.md)
+**相关模块：** [NativeWindow](capi-arkgraphics2d-nativewindow.md)
 
 **所在头文件：** [external_window.h](capi-external-window-h.md)
 

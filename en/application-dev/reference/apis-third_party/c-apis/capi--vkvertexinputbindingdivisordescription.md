@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkVertexInputBindingDivisorDescription {...}--><!--Device-struct VkVertexInputBindingDivisorDescription {...}-End-->
+
 ## Summary
 
 ### Member variables

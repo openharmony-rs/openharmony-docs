@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct ether_arp {...}--><!--Device-struct ether_arp {...}-End-->
+
 ## Summary
 
 ### Member variables

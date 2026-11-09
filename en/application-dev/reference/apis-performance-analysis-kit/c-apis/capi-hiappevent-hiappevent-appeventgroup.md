@@ -8,11 +8,13 @@ struct HiAppEvent_AppEventGroup {...}
 
 Defines the information of an event group, including its name, the array of event information grouped by name, and the length of the event array.
 
+<!--Device-struct HiAppEvent_AppEventGroup {...}--><!--Device-struct HiAppEvent_AppEventGroup {...}-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 12
 
-**Related module**: [HiAppEvent](capi-others-hiappevent.md)
+**Related module**: [HiAppEvent](capi-performance-analysis-kit-hiappevent.md)
 
 **Header file**: [hiappevent.h](capi-hiappevent-h.md)
 
@@ -22,11 +24,8 @@ Defines the information of an event group, including its name, the array of even
 
 | Name | Description |
 | -- | -- |
-| /* The name of the event. */
-    const char* name |  |
-| /* The event array which is grouped by the name. */
-    const struct HiAppEvent_AppEventInfo* appEventInfos |  |
-| /* The length of appEventInfos array. */
-    uint32_t infoLen |  |
+| const char* name | The name of the event.<br>**Since**: 12 |
+| [const struct HiAppEvent_AppEventInfo*](capi-hiappevent-hiappevent-appeventinfo.md) appEventInfos | The event array which is grouped by the name.<br>**Since**: 12 |
+| uint32_t infoLen | The length of appEventInfos array.<br>**Since**: 12 |
 
 

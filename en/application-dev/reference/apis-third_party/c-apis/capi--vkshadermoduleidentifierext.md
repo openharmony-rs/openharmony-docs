@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkShaderModuleIdentifierEXT {...}--><!--Device-struct VkShaderModuleIdentifierEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

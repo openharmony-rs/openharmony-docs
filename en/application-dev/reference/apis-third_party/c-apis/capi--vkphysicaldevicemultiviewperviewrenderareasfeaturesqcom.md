@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM {...}--><!--Device-struct VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM {...}-End-->
+
 ## Summary
 
 ### Member variables

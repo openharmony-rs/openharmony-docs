@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct __ptrace_peeksiginfo_args {...}--><!--Device-struct __ptrace_peeksiginfo_args {...}-End-->
+
 ## Summary
 
 ### Member variables

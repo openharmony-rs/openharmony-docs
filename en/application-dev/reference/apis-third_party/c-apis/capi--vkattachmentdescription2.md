@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkAttachmentDescription2 {...}--><!--Device-struct VkAttachmentDescription2 {...}-End-->
+
 ## Summary
 
 ### Member variables

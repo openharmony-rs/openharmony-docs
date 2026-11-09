@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures {...}--><!--Device-struct VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

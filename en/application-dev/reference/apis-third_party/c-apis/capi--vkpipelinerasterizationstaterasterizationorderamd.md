@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineRasterizationStateRasterizationOrderAMD {...}--><!--Device-struct VkPipelineRasterizationStateRasterizationOrderAMD {...}-End-->
+
 ## Summary
 
 ### Member variables

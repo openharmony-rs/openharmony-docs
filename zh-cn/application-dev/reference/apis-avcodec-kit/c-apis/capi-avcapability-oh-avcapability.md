@@ -8,11 +8,13 @@ typedef struct OH_AVCapability OH_AVCapability
 
 为OH_AVCapability接口定义native层对象。
 
+<!--Device-typedef struct OH_AVCapability OH_AVCapability--><!--Device-typedef struct OH_AVCapability OH_AVCapability-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 10
 
-**相关模块：** [AVCapability](capi-others-avcapability.md)
+**相关模块：** [AVCapability](capi-avcodec-kit-avcapability.md)
 
 **所在头文件：** [native_avcapability.h](capi-native-avcapability-h.md)
 

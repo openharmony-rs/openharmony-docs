@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkFenceCreateInfo {...}--><!--Device-struct VkFenceCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

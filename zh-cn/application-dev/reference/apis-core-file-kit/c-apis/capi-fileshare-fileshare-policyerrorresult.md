@@ -8,11 +8,13 @@ struct FileShare_PolicyErrorResult {...}
 
 授予或激活权限失败的URI策略结果，用于记录失败URI、错误码和失败原因。
 
+<!--Device-struct FileShare_PolicyErrorResult {...}--><!--Device-struct FileShare_PolicyErrorResult {...}-End-->
+
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 **起始版本：** 12
 
-**相关模块：** [fileShare](capi-others-fileshare.md)
+**相关模块：** [fileShare](capi-core-file-kit-fileshare.md)
 
 **所在头文件：** [oh_file_share.h](capi-oh-file-share-h.md)
 

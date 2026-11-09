@@ -58,6 +58,8 @@ typedef void (*OH_MetadataOutput_OnMetadataObjectAvailable)(Camera_MetadataOutpu
 
 Defines the callback defined in the [MetadataOutput_Callbacks](capi-oh-camera-metadataoutput-callbacks.md) struct and used to report metadata output data.
 
+<!--Device-typedef void (*OH_MetadataOutput_OnMetadataObjectAvailable)(Camera_MetadataOutput* metadataOutput, Camera_MetadataObject* metadataObject, uint32_t size)--><!--Device-typedef void (*OH_MetadataOutput_OnMetadataObjectAvailable)(Camera_MetadataOutput* metadataOutput, Camera_MetadataObject* metadataObject, uint32_t size)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
@@ -80,6 +82,8 @@ typedef void (*OH_MetadataOutput_OnMetadataObjectExtAvailable)(void* context, OH
 
 Defines the callback used to listen for metadata object ext available.
 
+<!--Device-typedef void (*OH_MetadataOutput_OnMetadataObjectExtAvailable)(void* context, OH_Camera_MetadataObjectExt** metadataObjectExt, uint32_t size)--><!--Device-typedef void (*OH_MetadataOutput_OnMetadataObjectExtAvailable)(void* context, OH_Camera_MetadataObjectExt** metadataObjectExt, uint32_t size)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
@@ -101,6 +105,8 @@ typedef void (*OH_MetadataOutput_OnError)(Camera_MetadataOutput* metadataOutput,
 **Description**
 
 Defines the callback defined in the [MetadataOutput_Callbacks](capi-oh-camera-metadataoutput-callbacks.md) struct and used to report metadata output errors.
+
+<!--Device-typedef void (*OH_MetadataOutput_OnError)(Camera_MetadataOutput* metadataOutput, Camera_ErrorCode errorCode)--><!--Device-typedef void (*OH_MetadataOutput_OnError)(Camera_MetadataOutput* metadataOutput, Camera_ErrorCode errorCode)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -128,6 +134,8 @@ typedef void (*OH_MetadataOutput_OnErrorExt)(void* context, Camera_ErrorCode err
 
 Defines the callback used to listen for error ext event.
 
+<!--Device-typedef void (*OH_MetadataOutput_OnErrorExt)(void* context, Camera_ErrorCode errorCode)--><!--Device-typedef void (*OH_MetadataOutput_OnErrorExt)(void* context, Camera_ErrorCode errorCode)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
@@ -153,6 +161,8 @@ Camera_ErrorCode OH_MetadataOutput_RegisterCallback(Camera_MetadataOutput* metad
 **Description**
 
 Registers a callback to listen for metadata output events.
+
+<!--Device-Camera_ErrorCode OH_MetadataOutput_RegisterCallback(Camera_MetadataOutput* metadataOutput, MetadataOutput_Callbacks* callback)--><!--Device-Camera_ErrorCode OH_MetadataOutput_RegisterCallback(Camera_MetadataOutput* metadataOutput, MetadataOutput_Callbacks* callback)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -181,6 +191,8 @@ Camera_ErrorCode OH_MetadataOutput_UnregisterCallback(Camera_MetadataOutput* met
 
 Unregisters the callback used to listen for metadata output events.
 
+<!--Device-Camera_ErrorCode OH_MetadataOutput_UnregisterCallback(Camera_MetadataOutput* metadataOutput, MetadataOutput_Callbacks* callback)--><!--Device-Camera_ErrorCode OH_MetadataOutput_UnregisterCallback(Camera_MetadataOutput* metadataOutput, MetadataOutput_Callbacks* callback)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
@@ -207,6 +219,8 @@ Camera_ErrorCode OH_MetadataOutput_RegisterMetadataObjectExtAvailableCallback(Ca
 **Description**
 
 Registers a callback to listen for [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md) events. The callback can be unregistered by [OH_MetadataOutput_UnregisterMetadataObjectExtAvailableCallback](capi-metadata-output-h.md#oh_metadataoutput_unregistermetadataobjectextavailablecallback).
+
+<!--Device-Camera_ErrorCode OH_MetadataOutput_RegisterMetadataObjectExtAvailableCallback(Camera_MetadataOutput* metadataOutput, void* context, OH_MetadataOutput_OnMetadataObjectExtAvailable callback)--><!--Device-Camera_ErrorCode OH_MetadataOutput_RegisterMetadataObjectExtAvailableCallback(Camera_MetadataOutput* metadataOutput, void* context, OH_MetadataOutput_OnMetadataObjectExtAvailable callback)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -236,6 +250,8 @@ Camera_ErrorCode OH_MetadataOutput_UnregisterMetadataObjectExtAvailableCallback(
 
 Unregisters the callback used to listen for metadata object ext events.
 
+<!--Device-Camera_ErrorCode OH_MetadataOutput_UnregisterMetadataObjectExtAvailableCallback(Camera_MetadataOutput* metadataOutput, void* context, OH_MetadataOutput_OnMetadataObjectExtAvailable callback)--><!--Device-Camera_ErrorCode OH_MetadataOutput_UnregisterMetadataObjectExtAvailableCallback(Camera_MetadataOutput* metadataOutput, void* context, OH_MetadataOutput_OnMetadataObjectExtAvailable callback)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
@@ -263,6 +279,8 @@ Camera_ErrorCode OH_MetadataOutput_RegisterErrorExtCallback(Camera_MetadataOutpu
 **Description**
 
 Registers a callback to listen for error ext events. The callback can be unregistered by [OH_MetadataOutput_UnregisterErrorExtCallback](capi-metadata-output-h.md#oh_metadataoutput_unregistererrorextcallback).
+
+<!--Device-Camera_ErrorCode OH_MetadataOutput_RegisterErrorExtCallback(Camera_MetadataOutput* metadataOutput, void* context, OH_MetadataOutput_OnErrorExt callback)--><!--Device-Camera_ErrorCode OH_MetadataOutput_RegisterErrorExtCallback(Camera_MetadataOutput* metadataOutput, void* context, OH_MetadataOutput_OnErrorExt callback)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -292,6 +310,8 @@ Camera_ErrorCode OH_MetadataOutput_UnregisterErrorExtCallback(Camera_MetadataOut
 
 Unregisters the callback used to listen for error ext events.
 
+<!--Device-Camera_ErrorCode OH_MetadataOutput_UnregisterErrorExtCallback(Camera_MetadataOutput* metadataOutput, void* context, OH_MetadataOutput_OnErrorExt callback)--><!--Device-Camera_ErrorCode OH_MetadataOutput_UnregisterErrorExtCallback(Camera_MetadataOutput* metadataOutput, void* context, OH_MetadataOutput_OnErrorExt callback)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
@@ -320,6 +340,8 @@ Camera_ErrorCode OH_MetadataOutput_Start(Camera_MetadataOutput* metadataOutput)
 
 Starts metadata output.
 
+<!--Device-Camera_ErrorCode OH_MetadataOutput_Start(Camera_MetadataOutput* metadataOutput)--><!--Device-Camera_ErrorCode OH_MetadataOutput_Start(Camera_MetadataOutput* metadataOutput)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
@@ -345,6 +367,8 @@ Camera_ErrorCode OH_MetadataOutput_Stop(Camera_MetadataOutput* metadataOutput)
 **Description**
 
 Stops metadata output.
+
+<!--Device-Camera_ErrorCode OH_MetadataOutput_Stop(Camera_MetadataOutput* metadataOutput)--><!--Device-Camera_ErrorCode OH_MetadataOutput_Stop(Camera_MetadataOutput* metadataOutput)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -372,6 +396,8 @@ Camera_ErrorCode OH_MetadataOutput_Release(Camera_MetadataOutput* metadataOutput
 
 Releases a MetadataOutput instance.
 
+<!--Device-Camera_ErrorCode OH_MetadataOutput_Release(Camera_MetadataOutput* metadataOutput)--><!--Device-Camera_ErrorCode OH_MetadataOutput_Release(Camera_MetadataOutput* metadataOutput)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
@@ -397,6 +423,8 @@ Camera_ErrorCode OH_MetadataOutput_AddMetadataObjectTypes (Camera_MetadataOutput
 **Description**
 
 Adds the metadata object types.
+
+<!--Device-Camera_ErrorCode OH_MetadataOutput_AddMetadataObjectTypes (Camera_MetadataOutput* metadataOutput, Camera_MetadataObjectType* types, uint32_t size)--><!--Device-Camera_ErrorCode OH_MetadataOutput_AddMetadataObjectTypes (Camera_MetadataOutput* metadataOutput, Camera_MetadataObjectType* types, uint32_t size)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -426,6 +454,8 @@ Camera_ErrorCode OH_MetadataOutput_RemoveMetadataObjectTypes (Camera_MetadataOut
 
 Removes the metadata object types.
 
+<!--Device-Camera_ErrorCode OH_MetadataOutput_RemoveMetadataObjectTypes (Camera_MetadataOutput* metadataOutput, Camera_MetadataObjectType* types, uint32_t size)--><!--Device-Camera_ErrorCode OH_MetadataOutput_RemoveMetadataObjectTypes (Camera_MetadataOutput* metadataOutput, Camera_MetadataObjectType* types, uint32_t size)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 23
@@ -454,6 +484,8 @@ bool OH_MetadataOutput_IsLockMetadataObjectTrackingSupported(const Camera_Metada
 
 Checks whether the lock metadata object tracking is supported.
 
+<!--Device-bool OH_MetadataOutput_IsLockMetadataObjectTrackingSupported(const Camera_MetadataOutput* metadataOutput)--><!--Device-bool OH_MetadataOutput_IsLockMetadataObjectTrackingSupported(const Camera_MetadataOutput* metadataOutput)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
@@ -479,6 +511,8 @@ Camera_ErrorCode OH_MetadataOutput_LockMetadataObjectTracking(Camera_MetadataOut
 **Description**
 
 Lock metadata object tracking, can be unlocked by [OH_MetadataOutput_UnlockMetadataObjectTracking](capi-metadata-output-h.md#oh_metadataoutput_unlockmetadataobjecttracking).
+
+<!--Device-Camera_ErrorCode OH_MetadataOutput_LockMetadataObjectTracking(Camera_MetadataOutput* metadataOutput, Camera_Point* pointOfInterest)--><!--Device-Camera_ErrorCode OH_MetadataOutput_LockMetadataObjectTracking(Camera_MetadataOutput* metadataOutput, Camera_Point* pointOfInterest)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -507,6 +541,8 @@ Camera_ErrorCode OH_MetadataOutput_UnlockMetadataObjectTracking(Camera_MetadataO
 
 Unlock metadata object tracking.
 
+<!--Device-Camera_ErrorCode OH_MetadataOutput_UnlockMetadataObjectTracking(Camera_MetadataOutput* metadataOutput)--><!--Device-Camera_ErrorCode OH_MetadataOutput_UnlockMetadataObjectTracking(Camera_MetadataOutput* metadataOutput)-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
@@ -532,6 +568,8 @@ Camera_ErrorCode OH_MetadataOutput_SetInFrameMetadataForEncoderEnabled(Camera_Me
 **Description**
 
 Enable or disable in frame metadata delivery for encoder.
+
+<!--Device-Camera_ErrorCode OH_MetadataOutput_SetInFrameMetadataForEncoderEnabled(Camera_MetadataOutput* metadataOutput, bool enable)--><!--Device-Camera_ErrorCode OH_MetadataOutput_SetInFrameMetadataForEncoderEnabled(Camera_MetadataOutput* metadataOutput, bool enable)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -559,6 +597,8 @@ bool OH_MetadataOutput_IsInFrameMetadataForEncoderSupported(const Camera_Metadat
 **Description**
 
 Check if in frame metdata for encoder is supported.
+
+<!--Device-bool OH_MetadataOutput_IsInFrameMetadataForEncoderSupported(const Camera_MetadataOutput* metadataOutput)--><!--Device-bool OH_MetadataOutput_IsInFrameMetadataForEncoderSupported(const Camera_MetadataOutput* metadataOutput)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 

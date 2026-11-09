@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

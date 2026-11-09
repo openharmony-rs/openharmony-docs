@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkMemoryGetRemoteAddressInfoNV {...}--><!--Device-struct VkMemoryGetRemoteAddressInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

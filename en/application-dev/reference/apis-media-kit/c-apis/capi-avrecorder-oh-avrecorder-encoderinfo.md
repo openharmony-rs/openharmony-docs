@@ -8,9 +8,11 @@ struct OH_AVRecorder_EncoderInfo {...}
 
 Provides AVRecorder encoder capability information, including the MIME type, bit rate range, and frame rate range of the encoder. This struct is applicable to scenarios where you need to query and select a proper audio or video encoder configuration before recording, helping you select the optimal encoding configuration based on the encoder capability parameters. You can obtain this struct object by calling [OH_AVRecorder_GetAvailableEncoder][OH_AVRecorder_GetAvailableEncoder](capi-avrecorder-h.md#oh_avrecorder_getavailableencoder).
 
+<!--Device-struct OH_AVRecorder_EncoderInfo {...}--><!--Device-struct OH_AVRecorder_EncoderInfo {...}-End-->
+
 **Since**: 18
 
-**Related module**: [AVRecorder](capi-others-avrecorder.md)
+**Related module**: [AVRecorder](capi-media-kit-avrecorder.md)
 
 **Header file**: [avrecorder_base.h](capi-avrecorder-base-h.md)
 

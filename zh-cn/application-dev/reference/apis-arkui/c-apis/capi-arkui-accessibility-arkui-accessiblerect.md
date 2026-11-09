@@ -8,11 +8,13 @@ typedef struct ArkUI_AccessibleRect {...} ArkUI_AccessibleRect
 
 节点在屏幕中的矩形区域坐标位置。 该结构体用于描述无障碍节点的边界矩形，通过左上角和右下角的坐标定义节点在屏幕上的可视区域，支持无障碍服务获取节点的位置和大小信息。
 
+<!--Device-typedef struct ArkUI_AccessibleRect {...} ArkUI_AccessibleRect--><!--Device-typedef struct ArkUI_AccessibleRect {...} ArkUI_AccessibleRect-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
 
-**相关模块：** [ArkUI_Accessibility](capi-others-arkui-accessibility.md)
+**相关模块：** [ArkUI_Accessibility](capi-arkui-arkui-accessibility.md)
 
 **所在头文件：** [native_interface_accessibility.h](capi-native-interface-accessibility-h.md)
 

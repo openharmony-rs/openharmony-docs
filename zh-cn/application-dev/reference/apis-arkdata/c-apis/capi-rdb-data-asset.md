@@ -8,11 +8,13 @@ typedef struct Data_Asset Data_Asset
 
 表示资产附件类型的数据。<br>提供资产附件的信息。
 
+<!--Device-typedef struct Data_Asset Data_Asset--><!--Device-typedef struct Data_Asset Data_Asset-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 11
 
-**相关模块：** [RDB](capi-others-rdb.md)
+**相关模块：** [RDB](capi-arkdata-rdb.md)
 
 **所在头文件：** [data_asset.h](capi-data-asset-h.md)
 

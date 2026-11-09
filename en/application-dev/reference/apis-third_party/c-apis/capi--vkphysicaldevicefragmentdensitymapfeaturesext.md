@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceFragmentDensityMapFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceFragmentDensityMapFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

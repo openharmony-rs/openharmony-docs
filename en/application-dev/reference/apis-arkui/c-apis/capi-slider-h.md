@@ -34,6 +34,8 @@ enum ArkUI_SliderBlockStyle
 
 Enumerates the styles of the slider in the block direction.
 
+<!--Device-ArkUI_SliderBlockStyle--><!--Device-ArkUI_SliderBlockStyle-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -54,6 +56,8 @@ enum ArkUI_SliderDirection
 
 Enumerates the scroll directions of the slider.
 
+<!--Device-ArkUI_SliderDirection--><!--Device-ArkUI_SliderDirection-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -72,6 +76,8 @@ enum ArkUI_SliderStyle
 **Description**
 
 Enumerates the slider styles.
+
+<!--Device-ArkUI_SliderStyle--><!--Device-ArkUI_SliderStyle-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

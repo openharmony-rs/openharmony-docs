@@ -8,11 +8,13 @@ struct HiAppEvent_AppEventInfo {...}
 
 单个事件信息，包含事件领域、事件名称、事件类型和事件携带的用JSON格式字符串表示的自定义参数列表。
 
+<!--Device-struct HiAppEvent_AppEventInfo {...}--><!--Device-struct HiAppEvent_AppEventInfo {...}-End-->
+
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
 **起始版本：** 12
 
-**相关模块：** [HiAppEvent](capi-others-hiappevent.md)
+**相关模块：** [HiAppEvent](capi-performance-analysis-kit-hiappevent.md)
 
 **所在头文件：** [hiappevent.h](capi-hiappevent-h.md)
 
@@ -22,13 +24,9 @@ struct HiAppEvent_AppEventInfo {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| /* 事件领域。表示事件所属的业务领域或功能模块，用于事件分类和管理。 */
-    const char* domain |  |
-| /* 事件名称。与domain配合使用唯一标识具体的事件。 */
-    const char* name |  |
-| /* 事件的类型。*/
-    enum EventType type |  |
-| /* JSON格式字符串类型的事件参数列表。 */
-    const char* params |  |
+| const char* domain | 事件领域。表示事件所属的业务领域或功能模块，用于事件分类和管理。<br>**起始版本：** 12 |
+| const char* name | 事件名称。与domain配合使用唯一标识具体的事件。<br>**起始版本：** 12 |
+| enum EventType type | 事件的类型。<br>**起始版本：** 12 |
+| const char* params | JSON格式字符串类型的事件参数列表。<br>**起始版本：** 12 |
 
 

@@ -8,11 +8,13 @@ struct NetConn_NetConnCallback {...}
 
 Defines a struct for the network status listener callback collection. All callback events must be registered; those not requiring attention can be set to empty.
 
+<!--Device-struct NetConn_NetConnCallback {...}--><!--Device-struct NetConn_NetConnCallback {...}-End-->
+
 **System capability**: SystemCapability.Communication.NetManager.Core
 
 **Since**: 12
 
-**Related module**: [NetConnection](capi-others-netconnection.md)
+**Related module**: [NetConnection](capi-network-kit-netconnection.md)
 
 **Header file**: [net_connection_type.h](capi-net-connection-type-h.md)
 

@@ -8,11 +8,13 @@ struct OH_OnFrameAvailableListener {...}
 
 一个OH_NativeImage的监听者，通过OH_NativeImage_SetOnFrameAvailableListener接口注册该监听结构体，当有buffer可获取时，将触发回调给用户。
 
+<!--Device-struct OH_OnFrameAvailableListener {...}--><!--Device-struct OH_OnFrameAvailableListener {...}-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 11
 
-**相关模块：** [OH_NativeImage](capi-others-oh-nativeimage.md)
+**相关模块：** [OH_NativeImage](capi-arkgraphics2d-oh-nativeimage.md)
 
 **所在头文件：** [native_image.h](capi-native-image-h.md)
 

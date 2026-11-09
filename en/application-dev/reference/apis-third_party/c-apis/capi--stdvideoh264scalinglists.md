@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoH264ScalingLists {...}--><!--Device-struct StdVideoH264ScalingLists {...}-End-->
+
 ## Summary
 
 ### Member variables

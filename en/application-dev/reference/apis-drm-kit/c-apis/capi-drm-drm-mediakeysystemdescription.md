@@ -8,11 +8,13 @@ struct DRM_MediaKeySystemDescription {...}
 
 The struct describes the DRM solution name and UUID list.
 
+<!--Device-struct DRM_MediaKeySystemDescription {...}--><!--Device-struct DRM_MediaKeySystemDescription {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 12
 
-**Related module**: [Drm](capi-others-drm.md)
+**Related module**: [Drm](capi-drm-kit-drm.md)
 
 **Header file**: [native_drm_common.h](capi-native-drm-common-h.md)
 

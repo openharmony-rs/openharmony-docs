@@ -8,11 +8,13 @@ typedef struct OH_Rdb_Config {...} OH_Rdb_Config
 
 Manages relational database configurations.
 
+<!--Device-typedef struct OH_Rdb_Config {...} OH_Rdb_Config--><!--Device-typedef struct OH_Rdb_Config {...} OH_Rdb_Config-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 10
 
-**Related module**: [RDB](capi-others-rdb.md)
+**Related module**: [RDB](capi-arkdata-rdb.md)
 
 **Header file**: [relational_store.h](capi-relational-store-h.md)
 

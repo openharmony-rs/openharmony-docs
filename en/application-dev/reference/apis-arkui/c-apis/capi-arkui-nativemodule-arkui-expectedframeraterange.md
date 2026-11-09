@@ -8,11 +8,13 @@ typedef struct ArkUI_ExpectedFrameRateRange {...} ArkUI_ExpectedFrameRateRange
 
 Sets the expected frame rate for an animation. This struct defines the frame rate range through **min**, **max**, and **expected**. The system attempts to meet the expected frame rate as much as possible.
 
+<!--Device-typedef struct ArkUI_ExpectedFrameRateRange {...} ArkUI_ExpectedFrameRateRange--><!--Device-typedef struct ArkUI_ExpectedFrameRateRange {...} ArkUI_ExpectedFrameRateRange-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_animate.h](capi-native-animate-h.md)
 

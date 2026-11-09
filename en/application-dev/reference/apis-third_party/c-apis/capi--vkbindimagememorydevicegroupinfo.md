@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkBindImageMemoryDeviceGroupInfo {...}--><!--Device-struct VkBindImageMemoryDeviceGroupInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

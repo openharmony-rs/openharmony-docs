@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct _pktinfo {...}--><!--Device-struct _pktinfo {...}-End-->
+
 ## Summary
 
 ### Member variables

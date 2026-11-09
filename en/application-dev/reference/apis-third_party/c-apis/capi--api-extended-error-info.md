@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct api_extended_error_info {...}--><!--Device-struct api_extended_error_info {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -8,13 +8,15 @@ struct OhosPixelMapInfo {...}
 
 Defines the pixel map information.
 
+<!--Device-struct OhosPixelMapInfo {...}--><!--Device-struct OhosPixelMapInfo {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 8
 
 **Deprecated**: 10
 
-**Related module**: [Image](capi-others-image.md)
+**Related module**: [Image](capi-image-kit-image.md)
 
 **Header file**: [image_pixel_map_napi.h](capi-image-pixel-map-napi-h.md)
 

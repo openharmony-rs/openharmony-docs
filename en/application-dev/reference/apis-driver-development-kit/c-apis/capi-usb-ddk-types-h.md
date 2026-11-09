@@ -52,6 +52,8 @@ enum UsbDdkErrCode
 
 Enumerates the USB DDK error code definitions.
 
+<!--Device-UsbDdkErrCode--><!--Device-UsbDdkErrCode-End-->
+
 **System capability**: SystemCapability.Driver.USB.Extension
 
 **Since**: 10

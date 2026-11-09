@@ -8,11 +8,13 @@ typedef struct OH_AudioRoutingManager OH_AudioRoutingManager
 
 Declaring the audio routing manager. The handle of audio routing manager used for routing and device related functions.
 
+<!--Device-typedef struct OH_AudioRoutingManager OH_AudioRoutingManager--><!--Device-typedef struct OH_AudioRoutingManager OH_AudioRoutingManager-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
 
-**Related module**: [OHAudio](capi-others-ohaudio.md)
+**Related module**: [OHAudio](capi-audio-kit-ohaudio.md)
 
 **Header file**: [native_audio_routing_manager.h](capi-native-audio-routing-manager-h.md)
 

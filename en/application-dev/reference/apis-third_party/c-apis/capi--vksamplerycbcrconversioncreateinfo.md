@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSamplerYcbcrConversionCreateInfo {...}--><!--Device-struct VkSamplerYcbcrConversionCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

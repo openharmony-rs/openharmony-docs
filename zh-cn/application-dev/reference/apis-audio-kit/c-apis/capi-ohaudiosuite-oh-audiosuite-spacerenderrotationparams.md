@@ -8,11 +8,13 @@ struct OH_AudioSuite_SpaceRenderRotationParams {...}
 
 定义空间渲染效果节点旋转模式配置参数。
 
+<!--Device-struct OH_AudioSuite_SpaceRenderRotationParams {...}--><!--Device-struct OH_AudioSuite_SpaceRenderRotationParams {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 23
 
-**相关模块：** [OHAudioSuite](capi-others-ohaudiosuite.md)
+**相关模块：** [OHAudioSuite](capi-audio-kit-ohaudiosuite.md)
 
 **所在头文件：** [native_audio_suite_base.h](capi-native-audio-suite-base-h.md)
 

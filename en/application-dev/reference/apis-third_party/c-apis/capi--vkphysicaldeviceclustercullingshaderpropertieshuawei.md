@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI {...}--><!--Device-struct VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI {...}-End-->
+
 ## Summary
 
 ### Member variables

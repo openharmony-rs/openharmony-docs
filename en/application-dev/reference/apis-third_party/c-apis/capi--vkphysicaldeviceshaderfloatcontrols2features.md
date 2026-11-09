@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceShaderFloatControls2Features {...}--><!--Device-struct VkPhysicalDeviceShaderFloatControls2Features {...}-End-->
+
 ## Summary
 
 ### Member variables

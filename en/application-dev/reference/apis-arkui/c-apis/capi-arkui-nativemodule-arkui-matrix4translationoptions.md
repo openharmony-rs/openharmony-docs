@@ -8,11 +8,13 @@ typedef struct ArkUI_Matrix4TranslationOptions ArkUI_Matrix4TranslationOptions
 
 Defines the configuration options for matrix translation.
 
+<!--Device-typedef struct ArkUI_Matrix4TranslationOptions ArkUI_Matrix4TranslationOptions--><!--Device-typedef struct ArkUI_Matrix4TranslationOptions ArkUI_Matrix4TranslationOptions-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_type_visual.h](capi-native-type-visual-h.md)
 

@@ -42,6 +42,8 @@ typedef void (*OH_AudioManager_OnAudioSceneChangeCallback)(void *userData, OH_Au
 
 Prototype for the audio scene change function that is passed to [OH_AudioManager_RegisterAudioSceneChangeCallback](capi-native-audio-manager-h.md#oh_audiomanager_registeraudioscenechangecallback).
 
+<!--Device-typedef void (*OH_AudioManager_OnAudioSceneChangeCallback)(void *userData, OH_AudioScene scene)--><!--Device-typedef void (*OH_AudioManager_OnAudioSceneChangeCallback)(void *userData, OH_AudioScene scene)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
@@ -62,6 +64,8 @@ OH_AudioCommon_Result OH_GetAudioManager(OH_AudioManager **audioManager)
 **Description**
 
 Get audio manager handle.
+
+<!--Device-OH_AudioCommon_Result OH_GetAudioManager(OH_AudioManager **audioManager)--><!--Device-OH_AudioCommon_Result OH_GetAudioManager(OH_AudioManager **audioManager)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -88,6 +92,8 @@ OH_AudioCommon_Result OH_GetAudioScene(OH_AudioManager* manager, OH_AudioScene *
 **Description**
 
 Get audio scene.
+
+<!--Device-OH_AudioCommon_Result OH_GetAudioScene(OH_AudioManager* manager, OH_AudioScene *scene)--><!--Device-OH_AudioCommon_Result OH_GetAudioScene(OH_AudioManager* manager, OH_AudioScene *scene)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -116,6 +122,8 @@ OH_AudioCommon_Result OH_AudioManager_RegisterAudioSceneChangeCallback(OH_AudioM
 
 Register callback to receive audio scene changed events.
 
+<!--Device-OH_AudioCommon_Result OH_AudioManager_RegisterAudioSceneChangeCallback(OH_AudioManager *manager, OH_AudioManager_OnAudioSceneChangeCallback callback, void *userData)--><!--Device-OH_AudioCommon_Result OH_AudioManager_RegisterAudioSceneChangeCallback(OH_AudioManager *manager, OH_AudioManager_OnAudioSceneChangeCallback callback, void *userData)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
@@ -143,6 +151,8 @@ OH_AudioCommon_Result OH_AudioManager_UnregisterAudioSceneChangeCallback(OH_Audi
 **Description**
 
 Unregister audio scene change callback.
+
+<!--Device-OH_AudioCommon_Result OH_AudioManager_UnregisterAudioSceneChangeCallback(OH_AudioManager *manager, OH_AudioManager_OnAudioSceneChangeCallback callback)--><!--Device-OH_AudioCommon_Result OH_AudioManager_UnregisterAudioSceneChangeCallback(OH_AudioManager *manager, OH_AudioManager_OnAudioSceneChangeCallback callback)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 

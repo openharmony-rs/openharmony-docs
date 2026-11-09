@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDebugMarkerObjectTagInfoEXT {...}--><!--Device-struct VkDebugMarkerObjectTagInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

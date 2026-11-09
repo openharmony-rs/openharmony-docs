@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoH265ShortTermRefPicSet {...}--><!--Device-struct StdVideoH265ShortTermRefPicSet {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -49,6 +49,8 @@ enum OH_ArkUI_NativeModule_UIJsonFormat
 
 定义JSON输出格式的枚举类型。
 
+<!--Device-OH_ArkUI_NativeModule_UIJsonFormat--><!--Device-OH_ArkUI_NativeModule_UIJsonFormat-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.1.0
@@ -70,6 +72,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIJsonWrapperCreate(const char *data, uint
 **描述：**
 
 根据调用方提供的JSON字符串创建JSON数据对象。<br> 传入的字符串会被复制到对象中。调用方拥有所创建对象的所有权， 并且必须在不再使用时调用[OH_ArkUI_NativeModule_UIJsonWrapperDestroy](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy)释放该对象。 复制返回的指针不会延长对象生命周期，也不会产生新的所有者。 对象销毁后，该指针及其所有别名均失效，不得再次使用或销毁。<br> 传入的字符串必须表示有效的JSON对象，且对象顶层必须包含schemaVersion字段。 如果缺少该字段，或其值超出支持的版本范围，本函数返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)， 不使用默认版本。示例如下： { "schemaVersion": 1, ... }<br> 注意：传入的data字符串仍归调用方所有。销毁本接口返回的JSON封装对象， 不会代替调用方释放data所指向的内存。 参数错误需要修正输入后再重试。大小溢出或内存分配失败时，应减小输入或释放资源后再重试，避免忙循环。 失败时不会转移任何对象的所有权，有效的输出参数所指向的对象指针为NULL。
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIJsonWrapperCreate(const char *data, uint32_t size, OH_ArkUI_NativeModule_UIJsonWrapper **outOwned)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIJsonWrapperCreate(const char *data, uint32_t size, OH_ArkUI_NativeModule_UIJsonWrapper **outOwned)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,6 +105,8 @@ const char *OH_ArkUI_NativeModule_UIJsonWrapperGetData(const OH_ArkUI_NativeModu
 
 获取对象保存的JSON字符串。<br> 返回的字符串为只读字符串，以空字符结尾。字符串所在的内存归JSON对象所有，在该对象销毁前一直有效。 调用方不得修改或释放返回的字符串。JSON对象顶层包含schemaVersion字段。
 
+<!--Device-const char *OH_ArkUI_NativeModule_UIJsonWrapperGetData(const OH_ArkUI_NativeModule_UIJsonWrapper *json)--><!--Device-const char *OH_ArkUI_NativeModule_UIJsonWrapperGetData(const OH_ArkUI_NativeModule_UIJsonWrapper *json)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.1.0
@@ -127,6 +133,8 @@ uint32_t OH_ArkUI_NativeModule_UIJsonWrapperGetSize(const OH_ArkUI_NativeModule_
 
 获取JSON字符串的字节长度。<br> 返回的长度不包含末尾的空字符，包含JSON字符串中schemaVersion字段所占的字节。<br> 传入NULL时未获取到对象的长度。重试前应提供有效且尚未销毁的对象，使用相同NULL参数重试无法成功。 本查询不分配或释放资源。
 
+<!--Device-uint32_t OH_ArkUI_NativeModule_UIJsonWrapperGetSize(const OH_ArkUI_NativeModule_UIJsonWrapper *json)--><!--Device-uint32_t OH_ArkUI_NativeModule_UIJsonWrapperGetSize(const OH_ArkUI_NativeModule_UIJsonWrapper *json)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.1.0
@@ -152,6 +160,8 @@ void OH_ArkUI_NativeModule_UIJsonWrapperDestroy(OH_ArkUI_NativeModule_UIJsonWrap
 **描述：**
 
 销毁JSON数据对象并释放其资源。<br> 传入NULL时不执行任何操作。调用本函数后， [OH_ArkUI_NativeModule_UIJsonWrapperGetData](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappergetdata)返回的所有指针均失效。<br> 注意：仅可对调用方明确拥有所有权的JSON封装对象调用本函数， 例如通过[OH_ArkUI_NativeModule_UIJsonWrapperCreate](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappercreate)创建的对象， 或通过所有权转移函数明确取得所有权的对象。 不得使用本函数释放由系统构造并传出的JSON封装对象， 例如通过[OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiinfocollectioninteractionjsoncallback)传入的对象。
+
+<!--Device-void OH_ArkUI_NativeModule_UIJsonWrapperDestroy(OH_ArkUI_NativeModule_UIJsonWrapper *json)--><!--Device-void OH_ArkUI_NativeModule_UIJsonWrapperDestroy(OH_ArkUI_NativeModule_UIJsonWrapper *json)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

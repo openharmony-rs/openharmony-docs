@@ -8,11 +8,13 @@ typedef struct OH_AVSession OH_AVSession
 
 AVSession object<br> A pointer can be created using [OH_AVSession_Create](capi-native-avsession-h.md#oh_avsession_create) method.
 
+<!--Device-typedef struct OH_AVSession OH_AVSession--><!--Device-typedef struct OH_AVSession OH_AVSession-End-->
+
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
-**Related module**: [OHAVSession](capi-others-ohavsession.md)
+**Related module**: [OHAVSession](capi-avsession-kit-ohavsession.md)
 
 **Header file**: [native_avsession.h](capi-native-avsession-h.md)
 

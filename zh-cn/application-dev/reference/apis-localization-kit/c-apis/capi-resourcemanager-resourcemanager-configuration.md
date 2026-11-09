@@ -8,11 +8,13 @@ struct ResourceManager_Configuration {...}
 
 设备状态的结构体。
 
+<!--Device-struct ResourceManager_Configuration {...}--><!--Device-struct ResourceManager_Configuration {...}-End-->
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 12
 
-**相关模块：** [resourcemanager](capi-others-resourcemanager.md)
+**相关模块：** [resourcemanager](capi-localization-kit-resourcemanager.md)
 
 **所在头文件：** [resmgr_common.h](capi-resmgr-common-h.md)
 

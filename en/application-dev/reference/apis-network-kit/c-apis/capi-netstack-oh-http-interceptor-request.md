@@ -8,11 +8,13 @@ struct OH_Http_Interceptor_Request {...}
 
 Defines a struct for the HTTP request data packet of the interceptor.
 
+<!--Device-struct OH_Http_Interceptor_Request {...}--><!--Device-struct OH_Http_Interceptor_Request {...}-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 24
 
-**Related module**: [netstack](capi-others-netstack.md)
+**Related module**: [netstack](capi-network-kit-netstack.md)
 
 **Header file**: [http_interceptor_type.h](capi-http-interceptor-type-h.md)
 

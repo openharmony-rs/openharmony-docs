@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkQueryLowLatencySupportNV {...}--><!--Device-struct VkQueryLowLatencySupportNV {...}-End-->
+
 ## Summary
 
 ### Member variables

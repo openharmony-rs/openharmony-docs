@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkMutableDescriptorTypeListEXT {...}--><!--Device-struct VkMutableDescriptorTypeListEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

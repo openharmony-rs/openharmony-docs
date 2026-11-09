@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkAccelerationStructureTrianglesOpacityMicromapEXT {...}--><!--Device-struct VkAccelerationStructureTrianglesOpacityMicromapEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

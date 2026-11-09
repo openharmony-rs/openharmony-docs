@@ -8,11 +8,13 @@ typedef struct OH_UdsDetails OH_UdsDetails
 
 描述字典类型的统一数据结构。
 
+<!--Device-typedef struct OH_UdsDetails OH_UdsDetails--><!--Device-typedef struct OH_UdsDetails OH_UdsDetails-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 22
 
-**相关模块：** [UDMF](capi-others-udmf.md)
+**相关模块：** [UDMF](capi-arkdata-udmf.md)
 
 **所在头文件：** [uds.h](capi-uds-h.md)
 

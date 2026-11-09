@@ -8,11 +8,13 @@ typedef struct OH_WindowManager_FrameMetrics OH_WindowManager_FrameMetrics
 
 帧率指标数据对象。
 
+<!--Device-typedef struct OH_WindowManager_FrameMetrics OH_WindowManager_FrameMetrics--><!--Device-typedef struct OH_WindowManager_FrameMetrics OH_WindowManager_FrameMetrics-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 26.0.0
 
-**相关模块：** [WindowManager](capi-others-windowmanager.md)
+**相关模块：** [WindowManager](capi-arkui-windowmanager.md)
 
 **所在头文件：** [oh_window_comm.h](capi-oh-window-comm-h.md)
 

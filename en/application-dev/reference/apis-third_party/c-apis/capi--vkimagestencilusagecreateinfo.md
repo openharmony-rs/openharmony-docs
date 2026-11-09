@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkImageStencilUsageCreateInfo {...}--><!--Device-struct VkImageStencilUsageCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

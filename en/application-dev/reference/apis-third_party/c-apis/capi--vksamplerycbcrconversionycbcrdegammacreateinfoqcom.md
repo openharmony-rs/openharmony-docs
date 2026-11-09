@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM {...}--><!--Device-struct VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM {...}-End-->
+
 ## Summary
 
 ### Member variables

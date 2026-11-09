@@ -57,6 +57,8 @@ enum Pseudo_PropSetHandle
 
 Enumerates the types of the property set.
 
+<!--Device-Pseudo_PropSetHandle--><!--Device-Pseudo_PropSetHandle-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -80,6 +82,8 @@ TEE_Result TEE_GetPropertyAsString(TEE_PropSetHandle propsetOrEnumerator, const 
 **Description**
 
 Obtains a property from a property set and converts its value into a printable string.<br> *
+
+<!--Device-TEE_Result TEE_GetPropertyAsString(TEE_PropSetHandle propsetOrEnumerator, const char *name, char *valueBuffer, size_t *valueBufferLen)--><!--Device-TEE_Result TEE_GetPropertyAsString(TEE_PropSetHandle propsetOrEnumerator, const char *name, char *valueBuffer, size_t *valueBufferLen)-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -110,6 +114,8 @@ TEE_Result TEE_GetPropertyAsBool(TEE_PropSetHandle propsetOrEnumerator, const ch
 
 Obtains a property from a property set and converts its value into a Boolean value.
 
+<!--Device-TEE_Result TEE_GetPropertyAsBool(TEE_PropSetHandle propsetOrEnumerator, const char *name, bool *value)--><!--Device-TEE_Result TEE_GetPropertyAsBool(TEE_PropSetHandle propsetOrEnumerator, const char *name, bool *value)-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -137,6 +143,8 @@ TEE_Result TEE_GetPropertyAsU32(TEE_PropSetHandle propsetOrEnumerator, const cha
 **Description**
 
 Obtains a property from a property set and converts its value into a 32-bit unsigned integer.
+
+<!--Device-TEE_Result TEE_GetPropertyAsU32(TEE_PropSetHandle propsetOrEnumerator, const char *name, uint32_t *value)--><!--Device-TEE_Result TEE_GetPropertyAsU32(TEE_PropSetHandle propsetOrEnumerator, const char *name, uint32_t *value)-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -166,6 +174,8 @@ TEE_Result TEE_GetPropertyAsU64(TEE_PropSetHandle propsetOrEnumerator, const cha
 
 Obtains a property from a property set and converts its value into a 64-bit unsigned integer.
 
+<!--Device-TEE_Result TEE_GetPropertyAsU64(TEE_PropSetHandle propsetOrEnumerator, const char *name, uint64_t *value)--><!--Device-TEE_Result TEE_GetPropertyAsU64(TEE_PropSetHandle propsetOrEnumerator, const char *name, uint64_t *value)-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -193,6 +203,8 @@ TEE_Result TEE_GetPropertyAsBinaryBlock(TEE_PropSetHandle propsetOrEnumerator, c
 **Description**
 
 Obtains a property from a property set and converts its value into a binary block.
+
+<!--Device-TEE_Result TEE_GetPropertyAsBinaryBlock(TEE_PropSetHandle propsetOrEnumerator, const char *name, void *valueBuffer, size_t *valueBufferLen)--><!--Device-TEE_Result TEE_GetPropertyAsBinaryBlock(TEE_PropSetHandle propsetOrEnumerator, const char *name, void *valueBuffer, size_t *valueBufferLen)-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -223,6 +235,8 @@ TEE_Result TEE_GetPropertyAsUUID(TEE_PropSetHandle propsetOrEnumerator, const ch
 
 Obtains a property from a property set and converts its value to the <b>TEE_UUID</b> struct.
 
+<!--Device-TEE_Result TEE_GetPropertyAsUUID(TEE_PropSetHandle propsetOrEnumerator, const char *name, TEE_UUID *value)--><!--Device-TEE_Result TEE_GetPropertyAsUUID(TEE_PropSetHandle propsetOrEnumerator, const char *name, TEE_UUID *value)-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -250,6 +264,8 @@ TEE_Result TEE_GetPropertyAsIdentity(TEE_PropSetHandle propsetOrEnumerator, cons
 **Description**
 
 Obtains a property from a property set and converts its value to the <b>TEE_Identity</b> struct.
+
+<!--Device-TEE_Result TEE_GetPropertyAsIdentity(TEE_PropSetHandle propsetOrEnumerator, const char *name, TEE_Identity *value)--><!--Device-TEE_Result TEE_GetPropertyAsIdentity(TEE_PropSetHandle propsetOrEnumerator, const char *name, TEE_Identity *value)-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -279,6 +295,8 @@ TEE_Result TEE_AllocatePropertyEnumerator(TEE_PropSetHandle *enumerator)
 
 Allocates a property enumerator object.
 
+<!--Device-TEE_Result TEE_AllocatePropertyEnumerator(TEE_PropSetHandle *enumerator)--><!--Device-TEE_Result TEE_AllocatePropertyEnumerator(TEE_PropSetHandle *enumerator)-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -305,6 +323,8 @@ void TEE_FreePropertyEnumerator(TEE_PropSetHandle enumerator)
 
 Releases a property enumerator object.
 
+<!--Device-void TEE_FreePropertyEnumerator(TEE_PropSetHandle enumerator)--><!--Device-void TEE_FreePropertyEnumerator(TEE_PropSetHandle enumerator)-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -324,6 +344,8 @@ void TEE_StartPropertyEnumerator(TEE_PropSetHandle enumerator, TEE_PropSetHandle
 **Description**
 
 Starts to enumerate the properties in an enumerator.
+
+<!--Device-void TEE_StartPropertyEnumerator(TEE_PropSetHandle enumerator, TEE_PropSetHandle propSet)--><!--Device-void TEE_StartPropertyEnumerator(TEE_PropSetHandle enumerator, TEE_PropSetHandle propSet)-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -346,6 +368,8 @@ void TEE_ResetPropertyEnumerator(TEE_PropSetHandle enumerator)
 
 Resets a property enumerator immediately after allocation.
 
+<!--Device-void TEE_ResetPropertyEnumerator(TEE_PropSetHandle enumerator)--><!--Device-void TEE_ResetPropertyEnumerator(TEE_PropSetHandle enumerator)-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -365,6 +389,8 @@ TEE_Result TEE_GetPropertyName(TEE_PropSetHandle enumerator, void *nameBuffer, s
 **Description**
 
 Obtains the name of this property in an enumerator.
+
+<!--Device-TEE_Result TEE_GetPropertyName(TEE_PropSetHandle enumerator, void *nameBuffer, size_t *nameBufferLen)--><!--Device-TEE_Result TEE_GetPropertyName(TEE_PropSetHandle enumerator, void *nameBuffer, size_t *nameBufferLen)-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -393,6 +419,8 @@ TEE_Result TEE_GetNextProperty(TEE_PropSetHandle enumerator)
 **Description**
 
 Obtains the next property in an enumerator.
+
+<!--Device-TEE_Result TEE_GetNextProperty(TEE_PropSetHandle enumerator)--><!--Device-TEE_Result TEE_GetNextProperty(TEE_PropSetHandle enumerator)-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 

@@ -8,11 +8,13 @@ typedef struct OH_LowPowerVideoSinkCallback OH_LowPowerVideoSinkCallback
 
 The struct contains a set of callback function pointers for the LowPowerVideoSink.
 
+<!--Device-typedef struct OH_LowPowerVideoSinkCallback OH_LowPowerVideoSinkCallback--><!--Device-typedef struct OH_LowPowerVideoSinkCallback OH_LowPowerVideoSinkCallback-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink
 
 **Since**: 20
 
-**Related module**: [LowPowerVideoSink](capi-others-lowpowervideosink.md)
+**Related module**: [LowPowerVideoSink](capi-media-kit-lowpowervideosink.md)
 
 **Header file**: [lowpower_video_sink_base.h](capi-lowpower-video-sink-base-h.md)
 

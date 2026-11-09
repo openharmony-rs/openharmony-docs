@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct d_neighbor_solicit {...}--><!--Device-struct d_neighbor_solicit {...}-End-->
+
 ## Summary
 
 ### Member variables

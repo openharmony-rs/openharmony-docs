@@ -34,6 +34,8 @@ Sensor_Result OH_Sensor_GetInfos(Sensor_Info **infos, uint32_t *count)
 
 获取设备上所有传感器的信息。使用场景：应用启动时查询设备支持的传感器列表，根据传感器能力展示或隐藏相关功能；选择合适的传感器进行订阅。调用成功后，通过指针infos返回传感器信息数组，通过指针count返回传感器数量。
 
+<!--Device-Sensor_Result OH_Sensor_GetInfos(Sensor_Info **infos, uint32_t *count)--><!--Device-Sensor_Result OH_Sensor_GetInfos(Sensor_Info **infos, uint32_t *count)-End-->
+
 **系统能力：** SystemCapability.Sensors.Sensor
 
 **起始版本：** 11
@@ -60,6 +62,8 @@ Sensor_Result OH_Sensor_Subscribe(const Sensor_SubscriptionId *id, const Sensor_
 **描述：**
 
 订阅传感器数据。系统将以指定的频率向用户报告传感器数据。该订阅通过事件回调机制实现。使用场景：运动健康应用实时监测用户步数、心率等数据；游戏应用使用加速度传感器实现重力感应；导航应用使用陀螺仪传感器辅助定位。 <br>权限说明：订阅加速度传感器，需要申请ohos.permission.ACCELEROMETER权限；订阅陀螺仪传感器，需要申请ohos.permission.GYROSCOPE权限；订阅计步器相关传感器时， 需要申请ohos.permission.ACTIVITY_MOTION权限；订阅与健康相关的传感器时，例如心率传感器，需要申请ohos.permission.READ_HEALTH_DATA权限，否则订阅失败。 订阅其余传感器不需要申请权限。
+
+<!--Device-Sensor_Result OH_Sensor_Subscribe(const Sensor_SubscriptionId *id, const Sensor_SubscriptionAttribute *attribute, const Sensor_Subscriber *subscriber)--><!--Device-Sensor_Result OH_Sensor_Subscribe(const Sensor_SubscriptionId *id, const Sensor_SubscriptionAttribute *attribute, const Sensor_Subscriber *subscriber)-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
@@ -90,6 +94,8 @@ Sensor_Result OH_Sensor_Unsubscribe(const Sensor_SubscriptionId *id, const Senso
 **描述：**
 
 取消订阅传感器数据。该操作会停止传感器数据上报。 <br>取消订阅加速度传感器，需要申请ohos.permission.ACCELEROMETER权限；取消订阅陀螺仪传感器，需要申请ohos.permission.GYROSCOPE权限；取消订阅计步器相关传感器时， 需要申请ohos.permission.ACTIVITY_MOTION权限；取消订阅与健康相关的传感器时，例如心率传感器，需要申请ohos.permission.READ_HEALTH_DATA权限，否则取消订阅失败。 取消订阅其余传感器不需要申请权限。
+
+<!--Device-Sensor_Result OH_Sensor_Unsubscribe(const Sensor_SubscriptionId *id, const Sensor_Subscriber *subscriber)--><!--Device-Sensor_Result OH_Sensor_Unsubscribe(const Sensor_SubscriptionId *id, const Sensor_Subscriber *subscriber)-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
 

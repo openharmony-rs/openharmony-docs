@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct Elf32_RegInfo {...}--><!--Device-struct Elf32_RegInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

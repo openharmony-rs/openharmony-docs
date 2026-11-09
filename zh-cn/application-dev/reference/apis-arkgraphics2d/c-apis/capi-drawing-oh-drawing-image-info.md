@@ -8,11 +8,13 @@ typedef struct OH_Drawing_Image_Info {...} OH_Drawing_Image_Info
 
 定义图片信息结构体。
 
+<!--Device-typedef struct OH_Drawing_Image_Info {...} OH_Drawing_Image_Info--><!--Device-typedef struct OH_Drawing_Image_Info {...} OH_Drawing_Image_Info-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
-**相关模块：** [Drawing](capi-others-drawing.md)
+**相关模块：** [Drawing](capi-arkgraphics2d-drawing.md)
 
 **所在头文件：** [drawing_types.h](capi-drawing-types-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDepthClampRangeEXT {...}--><!--Device-struct VkDepthClampRangeEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

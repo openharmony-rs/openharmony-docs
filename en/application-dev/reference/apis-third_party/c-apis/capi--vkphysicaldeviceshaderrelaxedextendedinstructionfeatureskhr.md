@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR {...}--><!--Device-struct VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

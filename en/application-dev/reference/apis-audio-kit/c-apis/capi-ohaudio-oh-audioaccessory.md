@@ -8,11 +8,13 @@ typedef struct OH_AudioAccessory OH_AudioAccessory
 
 Declare the audio accessory.
 
+<!--Device-typedef struct OH_AudioAccessory OH_AudioAccessory--><!--Device-typedef struct OH_AudioAccessory OH_AudioAccessory-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 26.0.0
 
-**Related module**: [OHAudio](capi-others-ohaudio.md)
+**Related module**: [OHAudio](capi-audio-kit-ohaudio.md)
 
 **Header file**: [native_audio_accessory_common.h](capi-native-audio-accessory-common-h.md)
 

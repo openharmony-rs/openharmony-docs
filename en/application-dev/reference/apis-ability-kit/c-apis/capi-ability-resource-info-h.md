@@ -46,6 +46,8 @@ BundleManager_ErrorCode OH_NativeBundle_GetBundleName(OH_NativeBundle_AbilityRes
 
 Obtains the bundle name of the ability. After using this function, you must manually release the pointer returned to prevent memory leakage.
 
+<!--Device-BundleManager_ErrorCode OH_NativeBundle_GetBundleName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** bundleName)--><!--Device-BundleManager_ErrorCode OH_NativeBundle_GetBundleName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** bundleName)-End-->
+
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **Since**: 21
@@ -72,6 +74,8 @@ BundleManager_ErrorCode OH_NativeBundle_GetModuleName(OH_NativeBundle_AbilityRes
 **Description**
 
 Obtains the module name of the ability. After using this function, you must manually release the pointer returned to prevent memory leakage.
+
+<!--Device-BundleManager_ErrorCode OH_NativeBundle_GetModuleName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** moduleName)--><!--Device-BundleManager_ErrorCode OH_NativeBundle_GetModuleName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** moduleName)-End-->
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
@@ -100,6 +104,8 @@ BundleManager_ErrorCode OH_NativeBundle_GetAbilityName(OH_NativeBundle_AbilityRe
 
 Obtains the ability name. After using this function, you must manually release the pointer returned to prevent memory leakage.
 
+<!--Device-BundleManager_ErrorCode OH_NativeBundle_GetAbilityName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** abilityName)--><!--Device-BundleManager_ErrorCode OH_NativeBundle_GetAbilityName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** abilityName)-End-->
+
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **Since**: 21
@@ -126,6 +132,8 @@ BundleManager_ErrorCode OH_NativeBundle_GetLabel(OH_NativeBundle_AbilityResource
 **Description**
 
 Obtains the application name of the ability. After using this function, you must manually release the pointerreturned to prevent memory leakage.
+
+<!--Device-BundleManager_ErrorCode OH_NativeBundle_GetLabel(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** label)--><!--Device-BundleManager_ErrorCode OH_NativeBundle_GetLabel(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** label)-End-->
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
@@ -154,6 +162,8 @@ BundleManager_ErrorCode OH_NativeBundle_GetAppIndex(OH_NativeBundle_AbilityResou
 
 Obtains the clone index of the ability.
 
+<!--Device-BundleManager_ErrorCode OH_NativeBundle_GetAppIndex(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, int* appIndex)--><!--Device-BundleManager_ErrorCode OH_NativeBundle_GetAppIndex(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, int* appIndex)-End-->
+
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **Since**: 21
@@ -180,6 +190,8 @@ BundleManager_ErrorCode OH_NativeBundle_CheckDefaultApp(OH_NativeBundle_AbilityR
 **Description**
 
 Checks whether the application to which the ability belongs is a default application.
+
+<!--Device-BundleManager_ErrorCode OH_NativeBundle_CheckDefaultApp(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, bool* isDefault)--><!--Device-BundleManager_ErrorCode OH_NativeBundle_CheckDefaultApp(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, bool* isDefault)-End-->
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
@@ -208,6 +220,8 @@ BundleManager_ErrorCode OH_AbilityResourceInfo_Destroy(OH_NativeBundle_AbilityRe
 
 Releases memory allocated for ability resource information.
 
+<!--Device-BundleManager_ErrorCode OH_AbilityResourceInfo_Destroy(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, size_t count)--><!--Device-BundleManager_ErrorCode OH_AbilityResourceInfo_Destroy(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, size_t count)-End-->
+
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **Since**: 21
@@ -235,6 +249,8 @@ int OH_NativeBundle_GetSize()
 
 Obtains the size of a single [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md) struct.
 
+<!--Device-int OH_NativeBundle_GetSize()--><!--Device-int OH_NativeBundle_GetSize()-End-->
+
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **Since**: 21
@@ -254,6 +270,8 @@ BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_Ab
 **Description**
 
 Obtains the DrawableDescriptor object of the ability icon resource. After using this function, you must manually release the pointer returned to prevent memory leakage.
+
+<!--Device-BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, ArkUI_DrawableDescriptor** drawableIcon)--><!--Device-BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, ArkUI_DrawableDescriptor** drawableIcon)-End-->
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 

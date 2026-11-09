@@ -8,11 +8,13 @@ typedef struct ffrt_mutexattr_t {...} ffrt_mutexattr_t
 
 Defines the mutex attribute structure used to store mutex attribute information.
 
+<!--Device-typedef struct ffrt_mutexattr_t {...} ffrt_mutexattr_t--><!--Device-typedef struct ffrt_mutexattr_t {...} ffrt_mutexattr_t-End-->
+
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
 
-**Related module**: [FFRT](capi-others-ffrt.md)
+**Related module**: [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 
 **Header file**: [type_def.h](capi-type-def-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkVideoEncodeH264QualityLevelPropertiesKHR {...}--><!--Device-struct VkVideoEncodeH264QualityLevelPropertiesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct strioctl {...}--><!--Device-struct strioctl {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -8,11 +8,13 @@ struct OH_UsbManager_UsbDevice {...}
 
 Defines a flat representation of a USB device.
 
+<!--Device-struct OH_UsbManager_UsbDevice {...}--><!--Device-struct OH_UsbManager_UsbDevice {...}-End-->
+
 **System capability**: SystemCapability.USB.USBManager
 
 **Since**: 26.0.1
 
-**Related module**: [UsbManager](capi-others-usbmanager.md)
+**Related module**: [UsbManager](capi-basic-services-kit-usbmanager.md)
 
 **Header file**: [ohusb_manager.h](capi-ohusb-manager-h.md)
 

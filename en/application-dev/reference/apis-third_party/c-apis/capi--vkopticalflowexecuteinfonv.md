@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkOpticalFlowExecuteInfoNV {...}--><!--Device-struct VkOpticalFlowExecuteInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -48,6 +48,8 @@ enum OH_ImageSource_SVGResourceLimitLevel
 
 Indicates the enumeration of SVG resource restriction levels. Higher levels allow fewer resources to be used when parsing and rendering SVG images. System resource limits are enforced regardless of the level specified.
 
+<!--Device-OH_ImageSource_SVGResourceLimitLevel--><!--Device-OH_ImageSource_SVGResourceLimitLevel-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 26.0.1
@@ -73,6 +75,8 @@ Image_ErrorCode OH_ImageSourceNative_SetSvgResourceLimitLevel(OH_ImageSourceNati
 **Description**
 
 Sets the SVG resource limit level for the image source. This only takes effect for SVG format images. For non-SVG images, this function has no effect. Must be called before [OH_ImageSourceNative_CreatePixelmap](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap) to ensure the limit takes effect on both DOM parsing and rendering stages.
+
+<!--Device-Image_ErrorCode OH_ImageSourceNative_SetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel level)--><!--Device-Image_ErrorCode OH_ImageSourceNative_SetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel level)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
@@ -103,6 +107,8 @@ Image_ErrorCode OH_ImageSourceNative_GetSvgResourceLimitLevel(OH_ImageSourceNati
 
 Gets the SVG resource limit level of the image source.
 
+<!--Device-Image_ErrorCode OH_ImageSourceNative_GetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel *level)--><!--Device-Image_ErrorCode OH_ImageSourceNative_GetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel *level)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 26.0.1
@@ -131,6 +137,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_GetNeedsDecodeDfxData(OH_DecodingOp
 **Description**
 
 Obtains the **needsDecodeDfxData** parameter in the decoding options.
+
+<!--Device-Image_ErrorCode OH_DecodingOptionsForPicture_GetNeedsDecodeDfxData(OH_DecodingOptionsForPicture *options, bool *needsDecodeDfxData)--><!--Device-Image_ErrorCode OH_DecodingOptionsForPicture_GetNeedsDecodeDfxData(OH_DecodingOptionsForPicture *options, bool *needsDecodeDfxData)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
@@ -161,6 +169,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_SetNeedsDecodeDfxData(OH_DecodingOp
 
 Sets the **needsDecodeDfxData** parameter in the decoding options.
 
+<!--Device-Image_ErrorCode OH_DecodingOptionsForPicture_SetNeedsDecodeDfxData(OH_DecodingOptionsForPicture *options, bool needsDecodeDfxData)--><!--Device-Image_ErrorCode OH_DecodingOptionsForPicture_SetNeedsDecodeDfxData(OH_DecodingOptionsForPicture *options, bool needsDecodeDfxData)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 26.0.0
@@ -189,6 +199,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredSizeForMainPixelmap(OH_De
 **Description**
 
 Gets the desiredSizeForMainPixelMap number for DecodingOptionsForPicture struct.
+
+<!--Device-Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredSizeForMainPixelmap(OH_DecodingOptionsForPicture *options, Image_Size *desiredSizeForMainPixelmap)--><!--Device-Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredSizeForMainPixelmap(OH_DecodingOptionsForPicture *options, Image_Size *desiredSizeForMainPixelmap)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
@@ -219,6 +231,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredSizeForMainPixelmap(OH_De
 
 Sets the desiredSizeForMainPixelMap number for DecodingOptionsForPicture struct.
 
+<!--Device-Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredSizeForMainPixelmap(OH_DecodingOptionsForPicture *options, Image_Size desiredSizeForMainPixelmap)--><!--Device-Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredSizeForMainPixelmap(OH_DecodingOptionsForPicture *options, Image_Size desiredSizeForMainPixelmap)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 26.0.0
@@ -247,6 +261,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredPixelFormat(OH_DecodingOp
 **Description**
 
 Get pixelFormat number for DecodingOptionsForPicture struct.
+
+<!--Device-Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredPixelFormat(OH_DecodingOptionsForPicture *options, PIXEL_FORMAT *desiredPixelFormat)--><!--Device-Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredPixelFormat(OH_DecodingOptionsForPicture *options, PIXEL_FORMAT *desiredPixelFormat)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
@@ -277,6 +293,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredPixelFormat(OH_DecodingOp
 
 Set pixelFormat number for DecodingOptionsForPicture struct.
 
+<!--Device-Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredPixelFormat(OH_DecodingOptionsForPicture *options, PIXEL_FORMAT desiredPixelFormat)--><!--Device-Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredPixelFormat(OH_DecodingOptionsForPicture *options, PIXEL_FORMAT desiredPixelFormat)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 26.0.0
@@ -305,6 +323,8 @@ Image_ErrorCode OH_ImageSourceNative_ReadImageMetadataByType(OH_ImageSourceNativ
 **Description**
 
 Read metadata of the image source, use metadatatype to specify metadata of interest. If metadataType is not specified, all supported metadata will be returned.
+
+<!--Device-Image_ErrorCode OH_ImageSourceNative_ReadImageMetadataByType(OH_ImageSourceNative *source, uint32_t index, Image_MetadataType *metadataTypes, size_t typeCount, OH_PictureMetadata **outMetadataArray, size_t *metadataCount)--><!--Device-Image_ErrorCode OH_ImageSourceNative_ReadImageMetadataByType(OH_ImageSourceNative *source, uint32_t index, Image_MetadataType *metadataTypes, size_t typeCount, OH_PictureMetadata **outMetadataArray, size_t *metadataCount)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 

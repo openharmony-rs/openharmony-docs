@@ -51,6 +51,8 @@ enum Preferences_StorageType
 
 Enumerates the preferences storage types.
 
+<!--Device-Preferences_StorageType--><!--Device-Preferences_StorageType-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 18
@@ -72,6 +74,8 @@ OH_PreferencesOption *OH_PreferencesOption_Create(void)
 **Description**
 
 Creates a [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance and a pointer to it. If this pointer is no longer required, use [OH_PreferencesOption_Destroy](capi-oh-preferences-option-h.md#oh_preferencesoption_destroy) to destroy it. Otherwise, memory leaks may occur.
+
+<!--Device-OH_PreferencesOption *OH_PreferencesOption_Create(void)--><!--Device-OH_PreferencesOption *OH_PreferencesOption_Create(void)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -97,6 +101,8 @@ int OH_PreferencesOption_SetFileName(OH_PreferencesOption *option, const char *f
 **Description**
 
 Sets the file name for an [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance.
+
+<!--Device-int OH_PreferencesOption_SetFileName(OH_PreferencesOption *option, const char *fileName)--><!--Device-int OH_PreferencesOption_SetFileName(OH_PreferencesOption *option, const char *fileName)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -130,6 +136,8 @@ int OH_PreferencesOption_SetBundleName(OH_PreferencesOption *option, const char 
 
 Sets the bundle name for an [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance.
 
+<!--Device-int OH_PreferencesOption_SetBundleName(OH_PreferencesOption *option, const char *bundleName)--><!--Device-int OH_PreferencesOption_SetBundleName(OH_PreferencesOption *option, const char *bundleName)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 13
@@ -161,6 +169,8 @@ int OH_PreferencesOption_SetDataGroupId(OH_PreferencesOption *option, const char
 **Description**
 
 Sets the application group ID for an [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance. After the application group ID is set, the **Preferences** instance will be created in the sandbox directory of the application group ID. The application group ID must be obtained from AppGallery. This parameter is not supported currently. If the application group ID is an empty string, the **Preferences** instance will be created in the sandbox directory of the current application.
+
+<!--Device-int OH_PreferencesOption_SetDataGroupId(OH_PreferencesOption *option, const char *dataGroupId)--><!--Device-int OH_PreferencesOption_SetDataGroupId(OH_PreferencesOption *option, const char *dataGroupId)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -194,6 +204,8 @@ int OH_PreferencesOption_SetStorageType(OH_PreferencesOption *option, Preference
 
 Sets the storage type for a **Preferences** instance.
 
+<!--Device-int OH_PreferencesOption_SetStorageType(OH_PreferencesOption *option, Preferences_StorageType type)--><!--Device-int OH_PreferencesOption_SetStorageType(OH_PreferencesOption *option, Preferences_StorageType type)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 18
@@ -225,6 +237,8 @@ int OH_PreferencesOption_SetSharedMapSize(OH_PreferencesOption *option, int32_t 
 **Description**
 
 Sets the shared map size for a [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance.
+
+<!--Device-int OH_PreferencesOption_SetSharedMapSize(OH_PreferencesOption *option, int32_t sharedMapSize)--><!--Device-int OH_PreferencesOption_SetSharedMapSize(OH_PreferencesOption *option, int32_t sharedMapSize)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -258,6 +272,8 @@ int32_t OH_PreferencesOption_GetSharedMapSize(OH_PreferencesOption *option)
 
 Gets the shared map size from an [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance.
 
+<!--Device-int32_t OH_PreferencesOption_GetSharedMapSize(OH_PreferencesOption *option)--><!--Device-int32_t OH_PreferencesOption_GetSharedMapSize(OH_PreferencesOption *option)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 26.1.0
@@ -288,6 +304,8 @@ int OH_PreferencesOption_Destroy(OH_PreferencesOption *option)
 **Description**
 
 Destroys an [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance.
+
+<!--Device-int OH_PreferencesOption_Destroy(OH_PreferencesOption *option)--><!--Device-int OH_PreferencesOption_Destroy(OH_PreferencesOption *option)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 

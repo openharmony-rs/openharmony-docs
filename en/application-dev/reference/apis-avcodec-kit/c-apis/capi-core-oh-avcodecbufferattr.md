@@ -8,11 +8,13 @@ struct OH_AVCodecBufferAttr {...}
 
 The struct describes the description information about the buffer of an OH_AVCodec instance.
 
+<!--Device-struct OH_AVCodecBufferAttr {...}--><!--Device-struct OH_AVCodecBufferAttr {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 9
 
-**Related module**: [Core](capi-others-core.md)
+**Related module**: [Core](capi-avcodec-kit-core.md)
 
 **Header file**: [native_avbuffer_info.h](capi-native-avbuffer-info-h.md)
 

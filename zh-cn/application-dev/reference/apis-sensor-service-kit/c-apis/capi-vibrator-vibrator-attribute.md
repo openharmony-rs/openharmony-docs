@@ -8,11 +8,13 @@ struct Vibrator_Attribute {...}
 
 Vibrator_Attribute结构体用于描述马达的属性信息。开发者使用该结构体可以指定马达ID和振动场景。具体使用场景和实现机制请参见Vibrator模块文档。
 
+<!--Device-struct Vibrator_Attribute {...}--><!--Device-struct Vibrator_Attribute {...}-End-->
+
 **系统能力：** SystemCapability.Sensors.MiscDevice
 
 **起始版本：** 11
 
-**相关模块：** [Vibrator](capi-others-vibrator.md)
+**相关模块：** [Vibrator](capi-sensor-service-kit-vibrator.md)
 
 **所在头文件：** [vibrator_type.h](capi-vibrator-type-h.md)
 

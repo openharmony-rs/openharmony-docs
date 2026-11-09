@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceCudaKernelLaunchFeaturesNV {...}--><!--Device-struct VkPhysicalDeviceCudaKernelLaunchFeaturesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

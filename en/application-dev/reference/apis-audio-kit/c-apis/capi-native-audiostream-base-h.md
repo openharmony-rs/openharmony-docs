@@ -73,6 +73,8 @@ enum OH_AudioStream_Result
 
 Define the result of the function execution.
 
+<!--Device-OH_AudioStream_Result--><!--Device-OH_AudioStream_Result-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
@@ -84,6 +86,7 @@ Define the result of the function execution.
 | AUDIOSTREAM_ERROR_ILLEGAL_STATE = 2 | &nbsp;Execution status exception.<br>**Since**: 10 |
 | AUDIOSTREAM_ERROR_SYSTEM = 3 | &nbsp;An system error has occurred.<br>**Since**: 10 |
 | AUDIOSTREAM_ERROR_UNSUPPORTED_FORMAT = 4 | &nbsp;Unsupported audio format, such as unsupported encoding type, sample format etc.<br>**Since**: 19 |
+| AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED = 201 | Permission denied.<br>**Since**: 26.1.0 |
 | AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY = 6800104 | &nbsp;Unsupported audio stream ability, including function and configuration.<br>**Since**: 26.0.0 |
 | AUDIOSTREAM_ERROR_SERVICE_DIED = 6800302 | &nbsp;Audio server process died.<br>**Since**: 26.0.0 |
 
@@ -96,6 +99,8 @@ enum OH_AudioStream_Type
 **Description**
 
 Define the audio stream type.
+
+<!--Device-OH_AudioStream_Type--><!--Device-OH_AudioStream_Type-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -115,6 +120,8 @@ enum OH_AudioStream_SampleFormat
 **Description**
 
 Define the audio stream sample format.
+
+<!--Device-OH_AudioStream_SampleFormat--><!--Device-OH_AudioStream_SampleFormat-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -138,6 +145,8 @@ enum OH_AudioStream_EncodingType
 
 Define the audio encoding type.
 
+<!--Device-OH_AudioStream_EncodingType--><!--Device-OH_AudioStream_EncodingType-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
@@ -157,6 +166,8 @@ enum OH_AudioStream_Usage
 **Description**
 
 Define the audio stream usage. Audio stream usage is used to describe what work scenario the current stream is used for.
+
+<!--Device-OH_AudioStream_Usage--><!--Device-OH_AudioStream_Usage-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -189,6 +200,8 @@ enum OH_AudioStream_LatencyMode
 
 Define the audio latency mode.
 
+<!--Device-OH_AudioStream_LatencyMode--><!--Device-OH_AudioStream_LatencyMode-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
@@ -197,6 +210,7 @@ Define the audio latency mode.
 | -- | -- |
 | AUDIOSTREAM_LATENCY_MODE_NORMAL = 0 | This is a normal audio scene.<br>**Since**: 10 |
 | AUDIOSTREAM_LATENCY_MODE_FAST = 1 | This is a low latency audio scene.<br>**Since**: 10 |
+| AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST = 2 | Indicates the ultra-low latency audio stream mode. <br>In this mode, the length of each callback data is 2.5 ms, and the length of each callback data is 5 ms in low-latency mode. <br>The performance requirements and power consumption impact of this mode are significantly higher than those of the low-latency mode, which may cause audio freeze risks and increased power consumption. Recommended only in scenarios where delay is extremely sensitive and the [AUDIOSTREAM_LATENCY_MODE_FAST](capi-native-audiostream-base-h.md#oh_audiostream_latencymode) mode cannot meet delay requirements. Use this mode again, for example, in scenarios such as K song soft ear return. <br>This mode is recommended for continuous audio playback or recording. It is not recommended for short audio. Otherwise, user experience may be affected. <br>Before creating audio streams in this mode, you must have the `ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM` permission. <br>This mode supports less [OH_AudioDevice_Type](capi-native-audio-device-base-h.md#oh_audiodevice_type) than [AUDIOSTREAM_LATENCY_MODE_FAST](capi-native-audiostream-base-h.md#oh_audiostream_latencymode), So before setting this mode, use [OH_AudioStreamManager_IsUltraFastPlaybackSupported](capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastplaybacksupported) or [OH_AudioStreamManager_IsUltraFastRecordingSupported](capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastrecordingsupported) Queries whether the current device supports this function. <br>If you do not have the permission, [AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED](capi-native-audiostream-base-h.md#oh_audiostream_result) is returned when you create an audio stream. The current hardware is used. If this function is not supported, [AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY](capi-native-audiostream-base-h.md#oh_audiostream_result) is returned when an audio stream is created. <br>After the audio stream is successfully started, the audio stream can be started through [OH_AudioRenderer_GetFastStatus](capi-native-audiorenderer-h.md#oh_audiorenderer_getfaststatus) or [OH_AudioCapturer_GetFastStatus](capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus) Check whether the system is running in this mode. <br>If you want to obtain the change of the running mode in a timely manner, click {@link} OH_AudioStreamBuilder_SetRendererFastStatusChangeCallback} or {@link OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback} Register callback.<br>**Since**: 26.1.0 |
 
 ### OH_AudioStream_DirectPlaybackMode
 
@@ -207,6 +221,8 @@ enum OH_AudioStream_DirectPlaybackMode
 **Description**
 
 Enumerates audio direct playback modes.
+
+<!--Device-OH_AudioStream_DirectPlaybackMode--><!--Device-OH_AudioStream_DirectPlaybackMode-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -227,6 +243,8 @@ enum OH_AudioStream_Event
 **Description**
 
 Define the audio event.
+
+<!--Device-OH_AudioStream_Event--><!--Device-OH_AudioStream_Event-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -249,6 +267,8 @@ enum OH_AudioStream_State
 **Description**
 
 The audio stream states
+
+<!--Device-OH_AudioStream_State--><!--Device-OH_AudioStream_State-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -274,6 +294,8 @@ enum OH_AudioInterrupt_ForceType
 
 Defines the audio interrupt type.
 
+<!--Device-OH_AudioInterrupt_ForceType--><!--Device-OH_AudioInterrupt_ForceType-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
@@ -292,6 +314,8 @@ enum OH_AudioInterrupt_Hint
 **Description**
 
 Defines the audio interrupt hint type.
+
+<!--Device-OH_AudioInterrupt_Hint--><!--Device-OH_AudioInterrupt_Hint-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -317,6 +341,8 @@ enum OH_AudioStream_SourceType
 **Description**
 
 Defines the audio source type.
+
+<!--Device-OH_AudioStream_SourceType--><!--Device-OH_AudioStream_SourceType-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -345,6 +371,8 @@ enum OH_AudioInterrupt_Mode
 
 Defines the audio interrupt mode.
 
+<!--Device-OH_AudioInterrupt_Mode--><!--Device-OH_AudioInterrupt_Mode-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
@@ -363,6 +391,8 @@ enum OH_AudioStream_AudioEffectMode
 **Description**
 
 Defines the audio effect mode.
+
+<!--Device-OH_AudioStream_AudioEffectMode--><!--Device-OH_AudioStream_AudioEffectMode-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -383,6 +413,8 @@ enum OH_AudioStream_FastStatus
 
 Defines the fast status.
 
+<!--Device-OH_AudioStream_FastStatus--><!--Device-OH_AudioStream_FastStatus-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
@@ -391,6 +423,7 @@ Defines the fast status.
 | -- | -- |
 | AUDIOSTREAM_FASTSTATUS_NORMAL = 0 | normal status |
 | AUDIOSTREAM_FASTSTATUS_FAST = 1 | fast status |
+| AUDIOSTREAM_FASTSTATUS_ULTRA_FAST = 2 | Indicates the status of the ultra-low latency audio stream.<br>**Since**: 26.1.0 |
 
 ### OH_AudioStream_DeviceChangeReason
 
@@ -401,6 +434,8 @@ enum OH_AudioStream_DeviceChangeReason
 **Description**
 
 Defines reason for device changes of one audio stream.
+
+<!--Device-OH_AudioStream_DeviceChangeReason--><!--Device-OH_AudioStream_DeviceChangeReason-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -425,6 +460,8 @@ enum OH_AudioStream_PrivacyType
 
 Defines Enumeration of audio stream privacy type for playback capture.
 
+<!--Device-OH_AudioStream_PrivacyType--><!--Device-OH_AudioStream_PrivacyType-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
@@ -445,6 +482,8 @@ enum OH_AudioData_Callback_Result
 
 Defines enumeration of audio data callback result.
 
+<!--Device-OH_AudioData_Callback_Result--><!--Device-OH_AudioData_Callback_Result-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
@@ -464,6 +503,8 @@ enum OH_AudioStream_VolumeMode
 
 Define the audio stream volume mode.
 
+<!--Device-OH_AudioStream_VolumeMode--><!--Device-OH_AudioStream_VolumeMode-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 19
@@ -482,6 +523,8 @@ enum OH_AudioStream_LatencyType
 **Description**
 
 Defines audio latency types.
+
+<!--Device-OH_AudioStream_LatencyType--><!--Device-OH_AudioStream_LatencyType-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -503,6 +546,8 @@ enum OH_AudioStream_PlaybackCaptureMode
 
 Defines mode for playback capture, each mode means different target streams to capture.
 
+<!--Device-OH_AudioStream_PlaybackCaptureMode--><!--Device-OH_AudioStream_PlaybackCaptureMode-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 23
@@ -522,6 +567,8 @@ enum OH_AudioStream_PlaybackCaptureStartState
 **Description**
 
 Defines the playback capture start state, which is returned asynchronously after calling [OH_AudioCapturer_RequestPlaybackCaptureStart](capi-native-audiocapturer-h.md#oh_audiocapturer_requestplaybackcapturestart) function.
+
+<!--Device-OH_AudioStream_PlaybackCaptureStartState--><!--Device-OH_AudioStream_PlaybackCaptureStartState-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -546,6 +593,8 @@ typedef void (*OH_AudioRenderer_OutputDeviceChangeCallback)(OH_AudioRenderer* re
 
 Callback when the output device of an audio renderer changed.
 
+<!--Device-typedef void (*OH_AudioRenderer_OutputDeviceChangeCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_DeviceChangeReason reason)--><!--Device-typedef void (*OH_AudioRenderer_OutputDeviceChangeCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_DeviceChangeReason reason)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 11
@@ -568,6 +617,8 @@ typedef void (*OH_AudioRenderer_OnMarkReachedCallback)(OH_AudioRenderer* rendere
 
 Callback when the mark position reached.
 
+<!--Device-typedef void (*OH_AudioRenderer_OnMarkReachedCallback)(OH_AudioRenderer* renderer, uint32_t samplePos, void* userData)--><!--Device-typedef void (*OH_AudioRenderer_OnMarkReachedCallback)(OH_AudioRenderer* renderer, uint32_t samplePos, void* userData)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
@@ -589,6 +640,8 @@ typedef int32_t (*OH_AudioRenderer_WriteDataWithMetadataCallback)(OH_AudioRender
 **Description**
 
 This function pointer will point to the callback function that is used to write audio data with metadata
+
+<!--Device-typedef int32_t (*OH_AudioRenderer_WriteDataWithMetadataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize, void* metadata, int32_t metadataSize)--><!--Device-typedef int32_t (*OH_AudioRenderer_WriteDataWithMetadataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize, void* metadata, int32_t metadataSize)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -620,6 +673,8 @@ typedef OH_AudioData_Callback_Result (*OH_AudioRenderer_OnWriteDataCallback)(OH_
 **Description**
 
 Callback function of write data.<br> This function is similar with OH_AudioRenderer_Callbacks_Struct.OH_AudioRenderer_OnWriteData instead of the return value. The return result of this function indicates whether the data filled in the buffer is valid or invalid. If result is invalid, the data filled by user will not be played.
+
+<!--Device-typedef OH_AudioData_Callback_Result (*OH_AudioRenderer_OnWriteDataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)--><!--Device-typedef OH_AudioData_Callback_Result (*OH_AudioRenderer_OnWriteDataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 

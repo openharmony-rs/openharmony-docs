@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDeviceFaultVendorBinaryHeaderVersionOneEXT {...}--><!--Device-struct VkDeviceFaultVendorBinaryHeaderVersionOneEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

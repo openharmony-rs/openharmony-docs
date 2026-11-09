@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceProtectedMemoryProperties {...}--><!--Device-struct VkPhysicalDeviceProtectedMemoryProperties {...}-End-->
+
 ## Summary
 
 ### Member variables

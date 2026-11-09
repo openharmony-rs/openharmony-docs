@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct faddr {...}--><!--Device-struct faddr {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -19,7 +19,7 @@ Want是对象间信息传递的载体，可以用于应用组件间的信息传�
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [AbilityBase_Element](capi-abilitybase-abilitybase-element.md) | - | 声明Want中Element结构体。 |
-| [AbilityBase_Want](capi-abilitybase-abilitybase-want.md) | - | 声明元能力Want结构。 |
+| [AbilityBase_Want](capi-abilitybase-abilitybase-want.md) | AbilityBase_Want | 声明元能力Want结构。 |
 
 ### 函数
 
@@ -54,6 +54,8 @@ AbilityBase_Want* OH_AbilityBase_CreateWant(AbilityBase_Element element)
 
 创建Want。
 
+<!--Device-AbilityBase_Want* OH_AbilityBase_CreateWant(AbilityBase_Element element)--><!--Device-AbilityBase_Want* OH_AbilityBase_CreateWant(AbilityBase_Element element)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 15
@@ -80,6 +82,8 @@ AbilityBase_ErrorCode OH_AbilityBase_DestroyWant(AbilityBase_Want* want)
 
 销毁Want。销毁后的Want不可使用，否则会导致未定义行为。
 
+<!--Device-AbilityBase_ErrorCode OH_AbilityBase_DestroyWant(AbilityBase_Want* want)--><!--Device-AbilityBase_ErrorCode OH_AbilityBase_DestroyWant(AbilityBase_Want* want)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 15
@@ -105,6 +109,8 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantElement(AbilityBase_Want* want, Abil
 **描述：**
 
 设置Want中由bundleName、moduleName与abilityName组成的Element结构体。
+
+<!--Device-AbilityBase_ErrorCode OH_AbilityBase_SetWantElement(AbilityBase_Want* want, AbilityBase_Element element)--><!--Device-AbilityBase_ErrorCode OH_AbilityBase_SetWantElement(AbilityBase_Want* want, AbilityBase_Element element)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -133,6 +139,8 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantElement(AbilityBase_Want* want, Abil
 
 获取Want中由bundleName、moduleName与abilityName组成的Element结构体。
 
+<!--Device-AbilityBase_ErrorCode OH_AbilityBase_GetWantElement(AbilityBase_Want* want, AbilityBase_Element* element)--><!--Device-AbilityBase_ErrorCode OH_AbilityBase_GetWantElement(AbilityBase_Want* want, AbilityBase_Element* element)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 15
@@ -159,6 +167,8 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantCharParam(AbilityBase_Want* want, co
 **描述：**
 
 设置Want Param参数，Param可参考Want中的parameters参数。
+
+<!--Device-AbilityBase_ErrorCode OH_AbilityBase_SetWantCharParam(AbilityBase_Want* want, const char* key, const char* value)--><!--Device-AbilityBase_ErrorCode OH_AbilityBase_SetWantCharParam(AbilityBase_Want* want, const char* key, const char* value)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -187,6 +197,8 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantCharParam(AbilityBase_Want* want, co
 **描述：**
 
 获取[OH_AbilityBase_SetWantCharParam](capi-want-h.md#oh_abilitybase_setwantcharparam)方法设置的Want Param参数。
+
+<!--Device-AbilityBase_ErrorCode OH_AbilityBase_GetWantCharParam(AbilityBase_Want* want, const char* key, char* value, size_t valueSize)--><!--Device-AbilityBase_ErrorCode OH_AbilityBase_GetWantCharParam(AbilityBase_Want* want, const char* key, char* value, size_t valueSize)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -217,6 +229,8 @@ AbilityBase_ErrorCode OH_AbilityBase_AddWantFd(AbilityBase_Want* want, const cha
 
 添加Want文件描述符，文件描述符可通过fileIo.open获取。
 
+<!--Device-AbilityBase_ErrorCode OH_AbilityBase_AddWantFd(AbilityBase_Want* want, const char* key, int32_t fd)--><!--Device-AbilityBase_ErrorCode OH_AbilityBase_AddWantFd(AbilityBase_Want* want, const char* key, int32_t fd)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 15
@@ -244,6 +258,8 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantFd(AbilityBase_Want* want, const cha
 **描述：**
 
 获取Want文件描述符。
+
+<!--Device-AbilityBase_ErrorCode OH_AbilityBase_GetWantFd(AbilityBase_Want* want, const char* key, int32_t* fd)--><!--Device-AbilityBase_ErrorCode OH_AbilityBase_GetWantFd(AbilityBase_Want* want, const char* key, int32_t* fd)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -273,6 +289,8 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantUri(AbilityBase_Want* want, const ch
 
 设置Want中URI字符串，URI可参考Want中的uri描述。
 
+<!--Device-AbilityBase_ErrorCode OH_AbilityBase_SetWantUri(AbilityBase_Want* want, const char* uri)--><!--Device-AbilityBase_ErrorCode OH_AbilityBase_SetWantUri(AbilityBase_Want* want, const char* uri)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 17
@@ -299,6 +317,8 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantUri(AbilityBase_Want* want, char* ur
 **描述：**
 
 获取Want中URI字符串。URI可参考Want中的uri描述。
+
+<!--Device-AbilityBase_ErrorCode OH_AbilityBase_GetWantUri(AbilityBase_Want* want, char* uri, size_t uriSize)--><!--Device-AbilityBase_ErrorCode OH_AbilityBase_GetWantUri(AbilityBase_Want* want, char* uri, size_t uriSize)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -328,6 +348,8 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantInt32Param(AbilityBase_Want* want, c
 
 设置Want中int32_t类型的值。
 
+<!--Device-AbilityBase_ErrorCode OH_AbilityBase_SetWantInt32Param(AbilityBase_Want* want, const char* key, int32_t value)--><!--Device-AbilityBase_ErrorCode OH_AbilityBase_SetWantInt32Param(AbilityBase_Want* want, const char* key, int32_t value)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 17
@@ -355,6 +377,8 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantInt32Param(AbilityBase_Want* want, c
 **描述：**
 
 获取Want中int32_t类型的值。
+
+<!--Device-AbilityBase_ErrorCode OH_AbilityBase_GetWantInt32Param(AbilityBase_Want* want, const char* key, int32_t* value)--><!--Device-AbilityBase_ErrorCode OH_AbilityBase_GetWantInt32Param(AbilityBase_Want* want, const char* key, int32_t* value)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -384,6 +408,8 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantBoolParam(AbilityBase_Want* want, co
 
 设置Want中bool类型的值。
 
+<!--Device-AbilityBase_ErrorCode OH_AbilityBase_SetWantBoolParam(AbilityBase_Want* want, const char* key, bool value)--><!--Device-AbilityBase_ErrorCode OH_AbilityBase_SetWantBoolParam(AbilityBase_Want* want, const char* key, bool value)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 17
@@ -411,6 +437,8 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantBoolParam(AbilityBase_Want* want, co
 **描述：**
 
 获取Want中bool类型的值。
+
+<!--Device-AbilityBase_ErrorCode OH_AbilityBase_GetWantBoolParam(AbilityBase_Want* want, const char* key, bool* value)--><!--Device-AbilityBase_ErrorCode OH_AbilityBase_GetWantBoolParam(AbilityBase_Want* want, const char* key, bool* value)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -440,6 +468,8 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantDoubleParam(AbilityBase_Want* want, 
 
 设置Want中double类型的值。
 
+<!--Device-AbilityBase_ErrorCode OH_AbilityBase_SetWantDoubleParam(AbilityBase_Want* want, const char* key, double value)--><!--Device-AbilityBase_ErrorCode OH_AbilityBase_SetWantDoubleParam(AbilityBase_Want* want, const char* key, double value)-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 17
@@ -467,6 +497,8 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantDoubleParam(AbilityBase_Want* want, 
 **描述：**
 
 获取Want中double类型的值。
+
+<!--Device-AbilityBase_ErrorCode OH_AbilityBase_GetWantDoubleParam(AbilityBase_Want* want, const char* key, double* value)--><!--Device-AbilityBase_ErrorCode OH_AbilityBase_GetWantDoubleParam(AbilityBase_Want* want, const char* key, double* value)-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 

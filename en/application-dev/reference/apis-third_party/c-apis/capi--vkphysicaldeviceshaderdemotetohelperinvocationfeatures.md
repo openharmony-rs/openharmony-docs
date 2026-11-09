@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures {...}--><!--Device-struct VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

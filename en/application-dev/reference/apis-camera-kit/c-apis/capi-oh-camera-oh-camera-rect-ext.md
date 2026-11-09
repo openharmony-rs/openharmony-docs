@@ -8,11 +8,13 @@ struct OH_Camera_Rect_Ext {...}
 
 Describes the camera rect ext.
 
+<!--Device-struct OH_Camera_Rect_Ext {...}--><!--Device-struct OH_Camera_Rect_Ext {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
-**Related module**: [OH_Camera](capi-others-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **Header file**: [camera.h](capi-camera-h.md)
 

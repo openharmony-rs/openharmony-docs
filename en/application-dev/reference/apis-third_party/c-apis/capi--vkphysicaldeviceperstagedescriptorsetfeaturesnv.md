@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDevicePerStageDescriptorSetFeaturesNV {...}--><!--Device-struct VkPhysicalDevicePerStageDescriptorSetFeaturesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

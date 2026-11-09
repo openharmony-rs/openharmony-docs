@@ -8,11 +8,13 @@ typedef struct OH_ArkUI_TextEditorStyledStringController OH_ArkUI_TextEditorStyl
 
 定义文本编辑器的属性字符串控制器，支持属性字符串的设置与获取、输入样式设置、光标控制等操作，可用于调整光标位置、设置选区、获取预览文本、向后删除等。
 
+<!--Device-typedef struct OH_ArkUI_TextEditorStyledStringController OH_ArkUI_TextEditorStyledStringController--><!--Device-typedef struct OH_ArkUI_TextEditorStyledStringController OH_ArkUI_TextEditorStyledStringController-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [rich_editor.h](capi-rich-editor-h.md)
 

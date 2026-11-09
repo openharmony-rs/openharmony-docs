@@ -8,11 +8,13 @@ typedef struct OH_CryptoRand OH_CryptoRand
 
 Random number generator structure, representing a random number generator context.
 
+<!--Device-typedef struct OH_CryptoRand OH_CryptoRand--><!--Device-typedef struct OH_CryptoRand OH_CryptoRand-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 
-**Related module**: [CryptoRandApi](capi-others-cryptorandapi.md)
+**Related module**: [CryptoRandApi](capi-crypto-architecture-kit-cryptorandapi.md)
 
 **Header file**: [crypto_rand.h](capi-crypto-rand-h.md)
 

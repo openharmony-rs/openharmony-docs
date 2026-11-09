@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkMemoryMapInfo {...}--><!--Device-struct VkMemoryMapInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

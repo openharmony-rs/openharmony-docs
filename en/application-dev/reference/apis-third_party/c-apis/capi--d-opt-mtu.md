@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct d_opt_mtu {...}--><!--Device-struct d_opt_mtu {...}-End-->
+
 ## Summary
 
 ### Member variables

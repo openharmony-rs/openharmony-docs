@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoEncodeAV1OperatingPointInfoFlags {...}--><!--Device-struct StdVideoEncodeAV1OperatingPointInfoFlags {...}-End-->
+
 ## Summary
 
 ### Member variables

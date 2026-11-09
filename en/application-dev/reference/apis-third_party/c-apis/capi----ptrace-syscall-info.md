@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct __ptrace_syscall_info {...}--><!--Device-struct __ptrace_syscall_info {...}-End-->
+
 ## Summary
 
 ### Member variables

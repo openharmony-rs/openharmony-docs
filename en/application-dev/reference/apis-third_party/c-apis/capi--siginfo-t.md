@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct siginfo_t {...}--><!--Device-struct siginfo_t {...}-End-->
+
 ## Summary
 
 ### Member variables

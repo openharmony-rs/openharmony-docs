@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkFramebufferAttachmentsCreateInfo {...}--><!--Device-struct VkFramebufferAttachmentsCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

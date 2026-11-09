@@ -8,11 +8,13 @@ struct OH_UsbManager_UsbEndpoint {...}
 
 Defines the USB endpoint from which data is sent or received. An endpoint <br>is obtained from [OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md).
 
+<!--Device-struct OH_UsbManager_UsbEndpoint {...}--><!--Device-struct OH_UsbManager_UsbEndpoint {...}-End-->
+
 **System capability**: SystemCapability.USB.USBManager
 
 **Since**: 26.0.1
 
-**Related module**: [UsbManager](capi-others-usbmanager.md)
+**Related module**: [UsbManager](capi-basic-services-kit-usbmanager.md)
 
 **Header file**: [ohusb_manager.h](capi-ohusb-manager-h.md)
 

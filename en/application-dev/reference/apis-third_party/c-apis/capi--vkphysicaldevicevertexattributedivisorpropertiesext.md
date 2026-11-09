@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT {...}--><!--Device-struct VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

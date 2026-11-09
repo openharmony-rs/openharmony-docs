@@ -48,6 +48,8 @@ enum anonymous0
 
 函数方法返回值的错误码的枚举。
 
+<!--Device-anonymous0--><!--Device-anonymous0-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 8
@@ -68,6 +70,8 @@ enum anonymous1
 **描述：**
 
 像素格式的枚举。
+
+<!--Device-anonymous1--><!--Device-anonymous1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -91,6 +95,8 @@ enum anonymous2
 
 PixelMap缩放类型的枚举。
 
+<!--Device-anonymous2--><!--Device-anonymous2-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 10
@@ -112,6 +118,8 @@ int32_t OH_GetImageInfo(napi_env env, napi_value value, OhosPixelMapInfo *info)
 **描述：**
 
 获取PixelMap的信息，并记录信息到[OhosPixelMapInfo](capi-image-ohospixelmapinfo.md)结构中。
+
+<!--Device-int32_t OH_GetImageInfo(napi_env env, napi_value value, OhosPixelMapInfo *info)--><!--Device-int32_t OH_GetImageInfo(napi_env env, napi_value value, OhosPixelMapInfo *info)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -143,6 +151,8 @@ int32_t OH_AccessPixels(napi_env env, napi_value value, void** addrPtr)
 
 获取PixelMap对象数据的内存地址，并锁定该内存。<br><br> 函数执行成功后，\*addrPtr就是获取的待访问的内存地址。访问操作完成后，必须要使用[OH_UnAccessPixels](capi-image-pixel-map-napi-h.md#oh_unaccesspixels)来释放锁，否则的话资源无法被释放。 待解锁后，内存地址就不可以再被访问和操作。
 
+<!--Device-int32_t OH_AccessPixels(napi_env env, napi_value value, void** addrPtr)--><!--Device-int32_t OH_AccessPixels(napi_env env, napi_value value, void** addrPtr)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 8
@@ -172,6 +182,8 @@ int32_t OH_UnAccessPixels(napi_env env, napi_value value)
 **描述：**
 
 释放PixelMap对象数据的内存锁，用于匹配方法[OH_AccessPixels](capi-image-pixel-map-napi-h.md#oh_accesspixels)。
+
+<!--Device-int32_t OH_UnAccessPixels(napi_env env, napi_value value)--><!--Device-int32_t OH_UnAccessPixels(napi_env env, napi_value value)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 

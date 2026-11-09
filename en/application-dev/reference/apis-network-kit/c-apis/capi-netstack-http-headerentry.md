@@ -8,11 +8,13 @@ struct Http_HeaderEntry {...}
 
 Defines all key-value pairs in the request or response header.
 
+<!--Device-struct Http_HeaderEntry {...}--><!--Device-struct Http_HeaderEntry {...}-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 
-**Related module**: [netstack](capi-others-netstack.md)
+**Related module**: [netstack](capi-network-kit-netstack.md)
 
 **Header file**: [net_http_type.h](capi-net-http-type-h.md)
 

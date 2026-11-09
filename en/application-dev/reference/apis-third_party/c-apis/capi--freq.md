@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct freq {...}--><!--Device-struct freq {...}-End-->
+
 ## Summary
 
 ### Member variables

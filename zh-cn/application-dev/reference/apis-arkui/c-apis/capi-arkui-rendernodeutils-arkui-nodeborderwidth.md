@@ -8,11 +8,13 @@ typedef struct ArkUI_NodeBorderWidth ArkUI_NodeBorderWidthOption
 
 定义边框宽度配置项，用于配置渲染节点各边的边框宽度。
 
+<!--Device-typedef struct ArkUI_NodeBorderWidth ArkUI_NodeBorderWidthOption--><!--Device-typedef struct ArkUI_NodeBorderWidth ArkUI_NodeBorderWidthOption-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
-**相关模块：** [ArkUI_RenderNodeUtils](capi-others-arkui-rendernodeutils.md)
+**相关模块：** [ArkUI_RenderNodeUtils](capi-arkui-arkui-rendernodeutils.md)
 
 **所在头文件：** [native_render.h](capi-native-render-h.md)
 

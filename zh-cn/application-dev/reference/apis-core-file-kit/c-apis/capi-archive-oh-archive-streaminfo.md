@@ -8,11 +8,13 @@ typedef struct OH_Archive_StreamInfo {...} OH_Archive_StreamInfo
 
 流式压缩/解压缩信息结构体。
 
+<!--Device-typedef struct OH_Archive_StreamInfo {...} OH_Archive_StreamInfo--><!--Device-typedef struct OH_Archive_StreamInfo {...} OH_Archive_StreamInfo-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
 
-**相关模块：** [Archive](capi-others-archive.md)
+**相关模块：** [Archive](capi-core-file-kit-archive.md)
 
 **所在头文件：** [oh_archive.h](capi-oh-archive-h.md)
 

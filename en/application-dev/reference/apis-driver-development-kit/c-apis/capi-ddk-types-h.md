@@ -40,6 +40,8 @@ enum DDK_RetCode
 
 Enumerates error codes used in the BASE DDK. After calling a DDK API, you can check the return value to determine whether the operation is successful, and handle the error based on the specific error code (for example, invalid parameter or null pointer error).
 
+<!--Device-DDK_RetCode--><!--Device-DDK_RetCode-End-->
+
 **System capability**: SystemCapability.Driver.DDK.Extension
 
 **Since**: 12

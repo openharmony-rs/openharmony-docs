@@ -8,11 +8,13 @@ typedef struct Print_PrinterInfo {...} Print_PrinterInfo
 
 Represents the printer information, including the printer status, capabilities, default attributes, and identification information (such as the printer ID, name, description, location, brand, model, and URI). This API can be used by apps to obtain and display detailed printer information in printing scenarios, helping developers select appropriate printers based on their capabilities and attributes. You can obtain the value by calling [OH_Print_StartPrinterDiscovery](capi-ohprint-h.md#oh_print_startprinterdiscovery) or [OH_Print_QueryPrinterInfo](capi-ohprint-h.md#oh_print_queryprinterinfo).
 
+<!--Device-typedef struct Print_PrinterInfo {...} Print_PrinterInfo--><!--Device-typedef struct Print_PrinterInfo {...} Print_PrinterInfo-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
-**Related module**: [Print](capi-others-print.md)
+**Related module**: [Print](capi-basic-services-kit-print.md)
 
 **Header file**: [ohprint.h](capi-ohprint-h.md)
 

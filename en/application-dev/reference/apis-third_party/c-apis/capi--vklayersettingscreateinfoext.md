@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkLayerSettingsCreateInfoEXT {...}--><!--Device-struct VkLayerSettingsCreateInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

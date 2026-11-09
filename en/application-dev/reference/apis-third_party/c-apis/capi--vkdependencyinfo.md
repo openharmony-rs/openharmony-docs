@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDependencyInfo {...}--><!--Device-struct VkDependencyInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

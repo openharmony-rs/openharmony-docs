@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-union VkDeviceOrHostAddressConstKHR {...}--><!--Device-union VkDeviceOrHostAddressConstKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

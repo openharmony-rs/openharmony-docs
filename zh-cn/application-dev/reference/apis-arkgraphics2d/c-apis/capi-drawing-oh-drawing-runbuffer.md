@@ -8,11 +8,13 @@ typedef struct OH_Drawing_RunBuffer {...} OH_Drawing_RunBuffer
 
 结构体用于描述一块内存，该内存用于存储文字和位置信息。
 
+<!--Device-typedef struct OH_Drawing_RunBuffer {...} OH_Drawing_RunBuffer--><!--Device-typedef struct OH_Drawing_RunBuffer {...} OH_Drawing_RunBuffer-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 
-**相关模块：** [Drawing](capi-others-drawing.md)
+**相关模块：** [Drawing](capi-arkgraphics2d-drawing.md)
 
 **所在头文件：** [drawing_text_blob.h](capi-drawing-text-blob-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkTilePropertiesQCOM {...}--><!--Device-struct VkTilePropertiesQCOM {...}-End-->
+
 ## Summary
 
 ### Member variables

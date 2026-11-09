@@ -20,7 +20,7 @@ The file declares the common enums and structs used by the image interface.
 | -- | -- | -- |
 | [Image_Size](capi-image-nativemodule-image-size.md) | Image_Size | Declaration the image size. |
 | [Image_Region](capi-image-nativemodule-image-region.md) | Image_Region | Declaration the image region. |
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) | - | Define a PictureMetadata struct type, used for picture metadata. |
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) | OH_PictureMetadata | Define a PictureMetadata struct type, used for picture metadata. |
 | [Image_String](capi-image-nativemodule-image-string.md) | Image_String | Defines the property string (in key-value format) of the image source. |
 
 ### Enum
@@ -56,6 +56,8 @@ enum Image_ErrorCode
 **Description**
 
 Enumerates the return values that may be used by the interface.
+
+<!--Device-Image_ErrorCode--><!--Device-Image_ErrorCode-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -112,6 +114,8 @@ enum Image_MetadataType
 
 Enumerates the metadata types.
 
+<!--Device-Image_MetadataType--><!--Device-Image_MetadataType-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
@@ -131,6 +135,8 @@ enum IMAGE_ALLOCATOR_MODE
 **Description**
 
 Type of allocator used to allocate memory of a PixelMap.
+
+<!--Device-IMAGE_ALLOCATOR_MODE--><!--Device-IMAGE_ALLOCATOR_MODE-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -154,6 +160,8 @@ Image_ErrorCode OH_PictureMetadata_Create(Image_MetadataType metadataType, OH_Pi
 **Description**
 
 Creates the pointer to an OH_PictureMetadata struct.
+
+<!--Device-Image_ErrorCode OH_PictureMetadata_Create(Image_MetadataType metadataType, OH_PictureMetadata **metadata)--><!--Device-Image_ErrorCode OH_PictureMetadata_Create(Image_MetadataType metadataType, OH_PictureMetadata **metadata)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -181,6 +189,8 @@ Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Ima
 **Description**
 
 Obtains a property of metadata based on the key. **value.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.
+
+<!--Device-Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)--><!--Device-Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -210,6 +220,8 @@ Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metad
 
 Obtains the metadata value of an OH_PictureMetadata instance. The output **value.data** ends with the string terminator **\0**.
 
+<!--Device-Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)--><!--Device-Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 19
@@ -237,6 +249,8 @@ Image_ErrorCode OH_PictureMetadata_SetProperty(OH_PictureMetadata *metadata, Ima
 **Description**
 
 Sets a property of metadata based on the key.
+
+<!--Device-Image_ErrorCode OH_PictureMetadata_SetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)--><!--Device-Image_ErrorCode OH_PictureMetadata_SetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -266,6 +280,8 @@ Image_ErrorCode OH_PictureMetadata_SetBlobData(OH_PictureMetadata *metadata, uin
 
 Sets blob data in the metadata.
 
+<!--Device-Image_ErrorCode OH_PictureMetadata_SetBlobData(OH_PictureMetadata *metadata, uint8_t *blob, uint32_t blobSize)--><!--Device-Image_ErrorCode OH_PictureMetadata_SetBlobData(OH_PictureMetadata *metadata, uint8_t *blob, uint32_t blobSize)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
@@ -294,6 +310,8 @@ Image_ErrorCode OH_PictureMetadata_GetBlobDataSize(OH_PictureMetadata *metadata,
 
 Obtains the size of the blob data in the metadata.
 
+<!--Device-Image_ErrorCode OH_PictureMetadata_GetBlobDataSize(OH_PictureMetadata *metadata, uint32_t *blobSize)--><!--Device-Image_ErrorCode OH_PictureMetadata_GetBlobDataSize(OH_PictureMetadata *metadata, uint32_t *blobSize)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
@@ -320,6 +338,8 @@ Image_ErrorCode OH_PictureMetadata_GetBlobData(OH_PictureMetadata *metadata, uin
 **Description**
 
 Obtains blob data from the metadata.
+
+<!--Device-Image_ErrorCode OH_PictureMetadata_GetBlobData(OH_PictureMetadata *metadata, uint8_t *blob, uint32_t blobSize)--><!--Device-Image_ErrorCode OH_PictureMetadata_GetBlobData(OH_PictureMetadata *metadata, uint8_t *blob, uint32_t blobSize)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -349,6 +369,8 @@ Image_ErrorCode OH_PictureMetadata_Release(OH_PictureMetadata *metadata)
 
 Releases the pointer to an OH_PictureMetadata struct.
 
+<!--Device-Image_ErrorCode OH_PictureMetadata_Release(OH_PictureMetadata *metadata)--><!--Device-Image_ErrorCode OH_PictureMetadata_Release(OH_PictureMetadata *metadata)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
@@ -374,6 +396,8 @@ Image_ErrorCode OH_PictureMetadata_Clone(OH_PictureMetadata *oldMetadata, OH_Pic
 **Description**
 
 Clones metadata.
+
+<!--Device-Image_ErrorCode OH_PictureMetadata_Clone(OH_PictureMetadata *oldMetadata, OH_PictureMetadata **newMetadata)--><!--Device-Image_ErrorCode OH_PictureMetadata_Clone(OH_PictureMetadata *oldMetadata, OH_PictureMetadata **newMetadata)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 

@@ -8,13 +8,15 @@ struct OH_AudioSuite_FeatureVersionInfo {...}
 
 Define feature version information structure.
 
+<!--Device-struct OH_AudioSuite_FeatureVersionInfo {...}--><!--Device-struct OH_AudioSuite_FeatureVersionInfo {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.1
 
 **System API:** This is a system API.
 
-**Related module**: [OHAudioSuite](capi-others-ohaudiosuite.md)
+**Related module**: [OHAudioSuite](capi-audio-kit-ohaudiosuite.md)
 
 **Header file**: [native_audio_suite_download_manager.h(System API)](capi-native-audio-suite-download-manager-h-sys.md)
 

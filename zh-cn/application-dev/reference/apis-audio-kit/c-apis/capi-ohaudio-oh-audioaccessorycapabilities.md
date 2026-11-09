@@ -8,11 +8,13 @@ typedef struct OH_AudioAccessoryCapabilities {...} OH_AudioAccessoryCapabilities
 
 定义音频配件的能力。<br> <b>版本控制：</b>调用方必须将structSize设置为sizeof(OH_AudioAccessoryCapabilities)。
 
+<!--Device-typedef struct OH_AudioAccessoryCapabilities {...} OH_AudioAccessoryCapabilities--><!--Device-typedef struct OH_AudioAccessoryCapabilities {...} OH_AudioAccessoryCapabilities-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 26.0.0
 
-**相关模块：** [OHAudio](capi-others-ohaudio.md)
+**相关模块：** [OHAudio](capi-audio-kit-ohaudio.md)
 
 **所在头文件：** [native_audio_accessory_common.h](capi-native-audio-accessory-common-h.md)
 

@@ -32,6 +32,8 @@ enum OH_Rdb_ErrCode
 
 Indicates the error code information.
 
+<!--Device-OH_Rdb_ErrCode--><!--Device-OH_Rdb_ErrCode-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 10

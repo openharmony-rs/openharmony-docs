@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-union VkClearValue {...}--><!--Device-union VkClearValue {...}-End-->
+
 ## Summary
 
 ### Member variables

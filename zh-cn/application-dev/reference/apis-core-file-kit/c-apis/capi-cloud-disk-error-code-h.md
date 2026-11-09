@@ -32,6 +32,8 @@ enum CloudDisk_ErrorCode
 
 定义云盘管理模块的错误码。
 
+<!--Device-CloudDisk_ErrorCode--><!--Device-CloudDisk_ErrorCode-End-->
+
 **系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **起始版本：** 21

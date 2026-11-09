@@ -8,11 +8,13 @@ struct Rdb_KeyInfo {...}
 
 Describes the primary keys or row-ids of changed rows.
 
+<!--Device-struct Rdb_KeyInfo {...}--><!--Device-struct Rdb_KeyInfo {...}-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 11
 
-**Related module**: [RDB](capi-others-rdb.md)
+**Related module**: [RDB](capi-arkdata-rdb.md)
 
 **Header file**: [relational_store.h](capi-relational-store-h.md)
 

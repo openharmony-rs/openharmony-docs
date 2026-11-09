@@ -8,11 +8,13 @@ typedef struct OH_NativeBuffer_Planes {...} OH_NativeBuffer_Planes
 
 OH_NativeBuffer的图像平面格式信息。
 
+<!--Device-typedef struct OH_NativeBuffer_Planes {...} OH_NativeBuffer_Planes--><!--Device-typedef struct OH_NativeBuffer_Planes {...} OH_NativeBuffer_Planes-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **起始版本：** 12
 
-**相关模块：** [OH_NativeBuffer](capi-others-oh-nativebuffer.md)
+**相关模块：** [OH_NativeBuffer](capi-arkgraphics2d-oh-nativebuffer.md)
 
 **所在头文件：** [native_buffer.h](capi-native-buffer-h.md)
 

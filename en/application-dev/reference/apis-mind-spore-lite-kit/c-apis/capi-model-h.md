@@ -80,6 +80,8 @@ OH_AI_API OH_AI_ModelHandle OH_AI_ModelCreate(void)
 
 Create a model object.
 
+<!--Device-OH_AI_API OH_AI_ModelHandle OH_AI_ModelCreate(void)--><!--Device-OH_AI_API OH_AI_ModelHandle OH_AI_ModelCreate(void)-End-->
+
 **Since**: 9
 
 **Returns**:
@@ -98,6 +100,8 @@ OH_AI_API void OH_AI_ModelDestroy(OH_AI_ModelHandle *model)
 
 Destroy the model object.
 
+<!--Device-OH_AI_API void OH_AI_ModelDestroy(OH_AI_ModelHandle *model)--><!--Device-OH_AI_API void OH_AI_ModelDestroy(OH_AI_ModelHandle *model)-End-->
+
 **Since**: 9
 
 **Parameters**:
@@ -115,6 +119,8 @@ OH_AI_API OH_AI_Status OH_AI_ModelBuild(OH_AI_ModelHandle model, const void *mod
 **Description**
 
 Build the model from model file buffer so that it can run on a device.
+
+<!--Device-OH_AI_API OH_AI_Status OH_AI_ModelBuild(OH_AI_ModelHandle model, const void *model_data, size_t data_size, OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context)--><!--Device-OH_AI_API OH_AI_Status OH_AI_ModelBuild(OH_AI_ModelHandle model, const void *model_data, size_t data_size, OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context)-End-->
 
 **Since**: 9
 
@@ -144,6 +150,8 @@ OH_AI_API OH_AI_Status OH_AI_ModelBuildFromFile(OH_AI_ModelHandle model, const c
 
 Load and build the model from model path so that it can run on a device.
 
+<!--Device-OH_AI_API OH_AI_Status OH_AI_ModelBuildFromFile(OH_AI_ModelHandle model, const char *model_path, OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context)--><!--Device-OH_AI_API OH_AI_Status OH_AI_ModelBuildFromFile(OH_AI_ModelHandle model, const char *model_path, OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context)-End-->
+
 **Since**: 9
 
 **Parameters**:
@@ -171,6 +179,8 @@ OH_AI_API OH_AI_Status OH_AI_ModelResize(OH_AI_ModelHandle model, const OH_AI_Te
 
 Resizes the shapes of inputs.
 
+<!--Device-OH_AI_API OH_AI_Status OH_AI_ModelResize(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs, OH_AI_ShapeInfo *shape_infos, size_t shape_info_num)--><!--Device-OH_AI_API OH_AI_Status OH_AI_ModelResize(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs, OH_AI_ShapeInfo *shape_infos, size_t shape_info_num)-End-->
+
 **Since**: 9
 
 **Parameters**:
@@ -197,6 +207,8 @@ OH_AI_API OH_AI_Status OH_AI_ModelPredict(OH_AI_ModelHandle model, const OH_AI_T
 **Description**
 
 Inference model.
+
+<!--Device-OH_AI_API OH_AI_Status OH_AI_ModelPredict(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs, OH_AI_TensorHandleArray *outputs, const OH_AI_KernelCallBack before, const OH_AI_KernelCallBack after)--><!--Device-OH_AI_API OH_AI_Status OH_AI_ModelPredict(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs, OH_AI_TensorHandleArray *outputs, const OH_AI_KernelCallBack before, const OH_AI_KernelCallBack after)-End-->
 
 **Since**: 9
 
@@ -226,6 +238,8 @@ OH_AI_API OH_AI_TensorHandleArray OH_AI_ModelGetInputs(const OH_AI_ModelHandle m
 
 Obtains all input tensor handles of the model.
 
+<!--Device-OH_AI_API OH_AI_TensorHandleArray OH_AI_ModelGetInputs(const OH_AI_ModelHandle model)--><!--Device-OH_AI_API OH_AI_TensorHandleArray OH_AI_ModelGetInputs(const OH_AI_ModelHandle model)-End-->
+
 **Since**: 9
 
 **Parameters**:
@@ -250,6 +264,8 @@ OH_AI_API OH_AI_TensorHandleArray OH_AI_ModelGetOutputs(const OH_AI_ModelHandle 
 
 Obtains all output tensor handles of the model.
 
+<!--Device-OH_AI_API OH_AI_TensorHandleArray OH_AI_ModelGetOutputs(const OH_AI_ModelHandle model)--><!--Device-OH_AI_API OH_AI_TensorHandleArray OH_AI_ModelGetOutputs(const OH_AI_ModelHandle model)-End-->
+
 **Since**: 9
 
 **Parameters**:
@@ -273,6 +289,8 @@ OH_AI_API OH_AI_TensorHandle OH_AI_ModelGetInputByTensorName(const OH_AI_ModelHa
 **Description**
 
 Obtains the input tensor handle of the model by name.
+
+<!--Device-OH_AI_API OH_AI_TensorHandle OH_AI_ModelGetInputByTensorName(const OH_AI_ModelHandle model, const char *tensor_name)--><!--Device-OH_AI_API OH_AI_TensorHandle OH_AI_ModelGetInputByTensorName(const OH_AI_ModelHandle model, const char *tensor_name)-End-->
 
 **Since**: 9
 
@@ -299,6 +317,8 @@ OH_AI_API OH_AI_TensorHandle OH_AI_ModelGetOutputByTensorName(const OH_AI_ModelH
 
 Obtains the output tensor handle of the model by name.
 
+<!--Device-OH_AI_API OH_AI_TensorHandle OH_AI_ModelGetOutputByTensorName(const OH_AI_ModelHandle model, const char *tensor_name)--><!--Device-OH_AI_API OH_AI_TensorHandle OH_AI_ModelGetOutputByTensorName(const OH_AI_ModelHandle model, const char *tensor_name)-End-->
+
 **Since**: 9
 
 **Parameters**:
@@ -324,6 +344,8 @@ OH_AI_API OH_AI_TrainCfgHandle OH_AI_TrainCfgCreate()
 
 Create a TrainCfg object. Only valid for Lite Train.
 
+<!--Device-OH_AI_API OH_AI_TrainCfgHandle OH_AI_TrainCfgCreate()--><!--Device-OH_AI_API OH_AI_TrainCfgHandle OH_AI_TrainCfgCreate()-End-->
+
 **Since**: 11
 
 **Returns**:
@@ -342,6 +364,8 @@ OH_AI_API void OH_AI_TrainCfgDestroy(OH_AI_TrainCfgHandle *train_cfg)
 
 Destroy the train_cfg object. Only valid for Lite Train.
 
+<!--Device-OH_AI_API void OH_AI_TrainCfgDestroy(OH_AI_TrainCfgHandle *train_cfg)--><!--Device-OH_AI_API void OH_AI_TrainCfgDestroy(OH_AI_TrainCfgHandle *train_cfg)-End-->
+
 **Since**: 11
 
 **Parameters**:
@@ -359,6 +383,8 @@ OH_AI_API char **OH_AI_TrainCfgGetLossName(OH_AI_TrainCfgHandle train_cfg, size_
 **Description**
 
 Obtains part of the name that identify a loss kernel. Only valid for Lite Train.
+
+<!--Device-OH_AI_API char **OH_AI_TrainCfgGetLossName(OH_AI_TrainCfgHandle train_cfg, size_t *num)--><!--Device-OH_AI_API char **OH_AI_TrainCfgGetLossName(OH_AI_TrainCfgHandle train_cfg, size_t *num)-End-->
 
 **Since**: 11
 
@@ -385,6 +411,8 @@ OH_AI_API void OH_AI_TrainCfgSetLossName(OH_AI_TrainCfgHandle train_cfg, const c
 
 Set part of the name that identify a loss kernel. Only valid for Lite Train.
 
+<!--Device-OH_AI_API void OH_AI_TrainCfgSetLossName(OH_AI_TrainCfgHandle train_cfg, const char **loss_name, size_t num)--><!--Device-OH_AI_API void OH_AI_TrainCfgSetLossName(OH_AI_TrainCfgHandle train_cfg, const char **loss_name, size_t num)-End-->
+
 **Since**: 11
 
 **Parameters**:
@@ -404,6 +432,8 @@ OH_AI_API OH_AI_OptimizationLevel OH_AI_TrainCfgGetOptimizationLevel(OH_AI_Train
 **Description**
 
 Obtains optimization level of the train_cfg. Only valid for Lite Train.
+
+<!--Device-OH_AI_API OH_AI_OptimizationLevel OH_AI_TrainCfgGetOptimizationLevel(OH_AI_TrainCfgHandle train_cfg)--><!--Device-OH_AI_API OH_AI_OptimizationLevel OH_AI_TrainCfgGetOptimizationLevel(OH_AI_TrainCfgHandle train_cfg)-End-->
 
 **Since**: 11
 
@@ -429,6 +459,8 @@ OH_AI_API void OH_AI_TrainCfgSetOptimizationLevel(OH_AI_TrainCfgHandle train_cfg
 
 Set optimization level of the train_cfg. Only valid for Lite Train.
 
+<!--Device-OH_AI_API void OH_AI_TrainCfgSetOptimizationLevel(OH_AI_TrainCfgHandle train_cfg, OH_AI_OptimizationLevel level)--><!--Device-OH_AI_API void OH_AI_TrainCfgSetOptimizationLevel(OH_AI_TrainCfgHandle train_cfg, OH_AI_OptimizationLevel level)-End-->
+
 **Since**: 11
 
 **Parameters**:
@@ -447,6 +479,8 @@ OH_AI_API OH_AI_Status OH_AI_TrainModelBuild(OH_AI_ModelHandle model, const void
 **Description**
 
 Build the train model from model buffer so that it can run on a device. Only valid for Lite Train.
+
+<!--Device-OH_AI_API OH_AI_Status OH_AI_TrainModelBuild(OH_AI_ModelHandle model, const void *model_data, size_t data_size, OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context, const OH_AI_TrainCfgHandle train_cfg)--><!--Device-OH_AI_API OH_AI_Status OH_AI_TrainModelBuild(OH_AI_ModelHandle model, const void *model_data, size_t data_size, OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context, const OH_AI_TrainCfgHandle train_cfg)-End-->
 
 **Since**: 11
 
@@ -477,6 +511,8 @@ OH_AI_API OH_AI_Status OH_AI_TrainModelBuildFromFile(OH_AI_ModelHandle model, co
 
 Build the train model from model file buffer so that it can run on a device. Only valid for Lite Train.
 
+<!--Device-OH_AI_API OH_AI_Status OH_AI_TrainModelBuildFromFile(OH_AI_ModelHandle model, const char *model_path, OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context, const OH_AI_TrainCfgHandle train_cfg)--><!--Device-OH_AI_API OH_AI_Status OH_AI_TrainModelBuildFromFile(OH_AI_ModelHandle model, const char *model_path, OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context, const OH_AI_TrainCfgHandle train_cfg)-End-->
+
 **Since**: 11
 
 **Parameters**:
@@ -505,6 +541,8 @@ OH_AI_API OH_AI_Status OH_AI_RunStep(OH_AI_ModelHandle model, const OH_AI_Kernel
 
 Train model by step. Only valid for Lite Train.
 
+<!--Device-OH_AI_API OH_AI_Status OH_AI_RunStep(OH_AI_ModelHandle model, const OH_AI_KernelCallBack before, const OH_AI_KernelCallBack after)--><!--Device-OH_AI_API OH_AI_Status OH_AI_RunStep(OH_AI_ModelHandle model, const OH_AI_KernelCallBack before, const OH_AI_KernelCallBack after)-End-->
+
 **Since**: 11
 
 **Parameters**:
@@ -531,6 +569,8 @@ OH_AI_API OH_AI_Status OH_AI_ModelSetLearningRate(OH_AI_ModelHandle model, float
 
 Sets the Learning Rate of the training. Only valid for Lite Train.
 
+<!--Device-OH_AI_API OH_AI_Status OH_AI_ModelSetLearningRate(OH_AI_ModelHandle model, float learning_rate)--><!--Device-OH_AI_API OH_AI_Status OH_AI_ModelSetLearningRate(OH_AI_ModelHandle model, float learning_rate)-End-->
+
 **Since**: 11
 
 **Parameters**:
@@ -554,6 +594,8 @@ OH_AI_API float OH_AI_ModelGetLearningRate(OH_AI_ModelHandle model)
 **Description**
 
 Obtains the Learning Rate of the optimizer. Only valid for Lite Train.
+
+<!--Device-OH_AI_API float OH_AI_ModelGetLearningRate(OH_AI_ModelHandle model)--><!--Device-OH_AI_API float OH_AI_ModelGetLearningRate(OH_AI_ModelHandle model)-End-->
 
 **Since**: 11
 
@@ -579,6 +621,8 @@ OH_AI_API OH_AI_TensorHandleArray OH_AI_ModelGetWeights(OH_AI_ModelHandle model)
 
 Obtains all weights tensors of the model. Only valid for Lite Train.
 
+<!--Device-OH_AI_API OH_AI_TensorHandleArray OH_AI_ModelGetWeights(OH_AI_ModelHandle model)--><!--Device-OH_AI_API OH_AI_TensorHandleArray OH_AI_ModelGetWeights(OH_AI_ModelHandle model)-End-->
+
 **Since**: 11
 
 **Parameters**:
@@ -602,6 +646,8 @@ OH_AI_API OH_AI_Status OH_AI_ModelUpdateWeights(OH_AI_ModelHandle model, const O
 **Description**
 
 update weights tensors of the model. Only valid for Lite Train.
+
+<!--Device-OH_AI_API OH_AI_Status OH_AI_ModelUpdateWeights(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray new_weights)--><!--Device-OH_AI_API OH_AI_Status OH_AI_ModelUpdateWeights(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray new_weights)-End-->
 
 **Since**: 11
 
@@ -627,6 +673,8 @@ OH_AI_API bool OH_AI_ModelGetTrainMode(OH_AI_ModelHandle model)
 
 Get the model running mode.
 
+<!--Device-OH_AI_API bool OH_AI_ModelGetTrainMode(OH_AI_ModelHandle model)--><!--Device-OH_AI_API bool OH_AI_ModelGetTrainMode(OH_AI_ModelHandle model)-End-->
+
 **Since**: 11
 
 **Parameters**:
@@ -650,6 +698,8 @@ OH_AI_API OH_AI_Status OH_AI_ModelSetTrainMode(OH_AI_ModelHandle model, bool tra
 **Description**
 
 Set the model running mode. Only valid for Lite Train.
+
+<!--Device-OH_AI_API OH_AI_Status OH_AI_ModelSetTrainMode(OH_AI_ModelHandle model, bool train)--><!--Device-OH_AI_API OH_AI_Status OH_AI_ModelSetTrainMode(OH_AI_ModelHandle model, bool train)-End-->
 
 **Since**: 11
 
@@ -675,6 +725,8 @@ OH_AI_API OH_AI_Status OH_AI_ModelSetupVirtualBatch(OH_AI_ModelHandle model, int
 **Description**
 
 Setup training with virtual batches. Only valid for Lite Train.
+
+<!--Device-OH_AI_API OH_AI_Status OH_AI_ModelSetupVirtualBatch(OH_AI_ModelHandle model, int virtual_batch_multiplier, float lr, float momentum)--><!--Device-OH_AI_API OH_AI_Status OH_AI_ModelSetupVirtualBatch(OH_AI_ModelHandle model, int virtual_batch_multiplier, float lr, float momentum)-End-->
 
 **Since**: 11
 
@@ -702,6 +754,8 @@ OH_AI_API OH_AI_Status OH_AI_ExportModel(OH_AI_ModelHandle model, OH_AI_ModelTyp
 **Description**
 
 Export training model from file. Only valid for Lite Train.
+
+<!--Device-OH_AI_API OH_AI_Status OH_AI_ExportModel(OH_AI_ModelHandle model, OH_AI_ModelType model_type, const char *model_file, OH_AI_QuantizationType quantization_type, bool export_inference_only, char **output_tensor_name, size_t num)--><!--Device-OH_AI_API OH_AI_Status OH_AI_ExportModel(OH_AI_ModelHandle model, OH_AI_ModelType model_type, const char *model_file, OH_AI_QuantizationType quantization_type, bool export_inference_only, char **output_tensor_name, size_t num)-End-->
 
 **Since**: 11
 
@@ -732,6 +786,8 @@ OH_AI_API OH_AI_Status OH_AI_ExportModelBuffer(OH_AI_ModelHandle model, OH_AI_Mo
 **Description**
 
 Export training model from buffer. Only valid for Lite Train.
+
+<!--Device-OH_AI_API OH_AI_Status OH_AI_ExportModelBuffer(OH_AI_ModelHandle model, OH_AI_ModelType model_type, void *model_data, size_t *data_size, OH_AI_QuantizationType quantization_type, bool export_inference_only, char **output_tensor_name, size_t num)--><!--Device-OH_AI_API OH_AI_Status OH_AI_ExportModelBuffer(OH_AI_ModelHandle model, OH_AI_ModelType model_type, void *model_data, size_t *data_size, OH_AI_QuantizationType quantization_type, bool export_inference_only, char **output_tensor_name, size_t num)-End-->
 
 **Since**: 11
 
@@ -764,6 +820,8 @@ OH_AI_API OH_AI_Status OH_AI_ExportWeightsCollaborateWithMicro(OH_AI_ModelHandle
 
 Export model's weights, which can be used in micro only. Only valid for Lite Train.
 
+<!--Device-OH_AI_API OH_AI_Status OH_AI_ExportWeightsCollaborateWithMicro(OH_AI_ModelHandle model, OH_AI_ModelType model_type, const char *weight_file, bool is_inference, bool enable_fp16, char **changeable_weights_name, size_t num)--><!--Device-OH_AI_API OH_AI_Status OH_AI_ExportWeightsCollaborateWithMicro(OH_AI_ModelHandle model, OH_AI_ModelType model_type, const char *weight_file, bool is_inference, bool enable_fp16, char **changeable_weights_name, size_t num)-End-->
+
 **Since**: 11
 
 **Parameters**:
@@ -794,6 +852,8 @@ OH_AI_API OH_AI_Status OH_AI_ModelLoadConfig(OH_AI_ModelHandle model, const char
 
 Load the config file of the model.
 
+<!--Device-OH_AI_API OH_AI_Status OH_AI_ModelLoadConfig(OH_AI_ModelHandle model, const char *config_path)--><!--Device-OH_AI_API OH_AI_Status OH_AI_ModelLoadConfig(OH_AI_ModelHandle model, const char *config_path)-End-->
+
 **Since**: 20
 
 **Parameters**:
@@ -818,6 +878,8 @@ OH_AI_API OH_AI_Status OH_AI_ModelPredictWithConfig(OH_AI_ModelHandle model, con
 **Description**
 
 Run model inference with configuration.
+
+<!--Device-OH_AI_API OH_AI_Status OH_AI_ModelPredictWithConfig(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs, OH_AI_TensorHandleArray *outputs, const char *config, const OH_AI_KernelCallBack before, const OH_AI_KernelCallBack after)--><!--Device-OH_AI_API OH_AI_Status OH_AI_ModelPredictWithConfig(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs, OH_AI_TensorHandleArray *outputs, const char *config, const OH_AI_KernelCallBack before, const OH_AI_KernelCallBack after)-End-->
 
 **Since**: 23
 

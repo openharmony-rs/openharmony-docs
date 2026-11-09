@@ -73,6 +73,8 @@ enum OH_AudioStream_Result
 
 音频错误码。
 
+<!--Device-OH_AudioStream_Result--><!--Device-OH_AudioStream_Result-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 10
@@ -84,6 +86,7 @@ enum OH_AudioStream_Result
 | AUDIOSTREAM_ERROR_ILLEGAL_STATE = 2 | &nbsp;非法状态。<br>**起始版本：** 10 |
 | AUDIOSTREAM_ERROR_SYSTEM = 3 | &nbsp;系统通用错误。<br>**起始版本：** 10 |
 | AUDIOSTREAM_ERROR_UNSUPPORTED_FORMAT = 4 | &nbsp;不支持的音频格式，如不支持的编码类型、采样格式等。<br>**起始版本：** 19 |
+| AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED = 201 | 权限被拒绝。<br>**起始版本：** 26.1.0 |
 | AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY = 6800104 | &nbsp;不支持的音频流功能，包括功能和配置。<br>**起始版本：** 26.0.0 |
 | AUDIOSTREAM_ERROR_SERVICE_DIED = 6800302 | &nbsp;音频服务器进程死掉。<br>**起始版本：** 26.0.0 |
 
@@ -96,6 +99,8 @@ enum OH_AudioStream_Type
 **描述：**
 
 音频流类型。
+
+<!--Device-OH_AudioStream_Type--><!--Device-OH_AudioStream_Type-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -115,6 +120,8 @@ enum OH_AudioStream_SampleFormat
 **描述：**
 
 定义音频流采样格式。
+
+<!--Device-OH_AudioStream_SampleFormat--><!--Device-OH_AudioStream_SampleFormat-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -138,6 +145,8 @@ enum OH_AudioStream_EncodingType
 
 定义音频流编码类型。
 
+<!--Device-OH_AudioStream_EncodingType--><!--Device-OH_AudioStream_EncodingType-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 10
@@ -157,6 +166,8 @@ enum OH_AudioStream_Usage
 **描述：**
 
 定义音频播放流使用场景。 <br>使用场景影响音频播放流的音效、音量、设备与焦点策略。
+
+<!--Device-OH_AudioStream_Usage--><!--Device-OH_AudioStream_Usage-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -189,6 +200,8 @@ enum OH_AudioStream_LatencyMode
 
 定义音频时延模式。
 
+<!--Device-OH_AudioStream_LatencyMode--><!--Device-OH_AudioStream_LatencyMode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 10
@@ -197,6 +210,7 @@ enum OH_AudioStream_LatencyMode
 | -- | -- |
 | AUDIOSTREAM_LATENCY_MODE_NORMAL = 0 | 普通时延模式。默认模式，常规的媒体、通话和录音录像场景均推荐使用此模式。<br>**起始版本：** 10 |
 | AUDIOSTREAM_LATENCY_MODE_FAST = 1 | 低时延模式。使用此模式进行音频播放或录制，会消耗更多系统CPU资源，适用于游戏和K歌场景。<br>**起始版本：** 10 |
+| AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST = 2 | 超低时延音频流模式。 <br>该模式每次回调数据长度为2.5ms，而低时延模式则为5ms。 <br>该模式的性能要求和功耗影响明显高于低时延模式，从而可能带来音频卡顿风险和功耗的升高，所以 推荐只在对时延极度敏感且[AUDIOSTREAM_LATENCY_MODE_FAST](capi-native-audiostream-base-h.md#oh_audiostream_latencymode)模式也无法满足时延要求的场景 下再使用该模式，比如K歌软耳返等场景。 <br>该模式推荐在连续音频播放或录制场景使用，不建议使用在短音频的场景，否则可能会影响用户体验。 <br>应用创建该模式的音频流前，必须具备`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`权限。 <br>该模式支持的[OH_AudioDevice_Type](capi-native-audio-device-base-h.md#oh_audiodevice_type)比[AUDIOSTREAM_LATENCY_MODE_FAST](capi-native-audiostream-base-h.md#oh_audiostream_latencymode)少， 所以设置该模式前，请使用[OH_AudioStreamManager_IsUltraFastPlaybackSupported](capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastplaybacksupported)或 [OH_AudioStreamManager_IsUltraFastRecordingSupported](capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastrecordingsupported)查询当前设备是否支持。 <br>未具备权限时，创建音频流返回[AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED](capi-native-audiostream-base-h.md#oh_audiostream_result)；当前硬件 不支持时，创建音频流返回[AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY](capi-native-audiostream-base-h.md#oh_audiostream_result)。 <br>音频流成功启动后，可通过[OH_AudioRenderer_GetFastStatus](capi-native-audiorenderer-h.md#oh_audiorenderer_getfaststatus)或 [OH_AudioCapturer_GetFastStatus](capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)查询是否实际运行在该模式。 <br>如果希望可以及时获取到运行模式的变化，可通过{@link OH_AudioStreamBuilder_SetRendererFastStatusChangeCallback}或{@link OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback}注册回调。<br>**起始版本：** 26.1.0 |
 
 ### OH_AudioStream_DirectPlaybackMode
 
@@ -207,6 +221,8 @@ enum OH_AudioStream_DirectPlaybackMode
 **描述：**
 
 定义音频流直通通路播放模式。 <br>使用直通通路的音频播放流，不会与其他播放流混音，系统也不会对数据进行处理，直接输出到底层硬件。 通常用于高音质音源播放场景。
+
+<!--Device-OH_AudioStream_DirectPlaybackMode--><!--Device-OH_AudioStream_DirectPlaybackMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -227,6 +243,8 @@ enum OH_AudioStream_Event
 **描述：**
 
 定义音频事件。
+
+<!--Device-OH_AudioStream_Event--><!--Device-OH_AudioStream_Event-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -249,6 +267,8 @@ enum OH_AudioStream_State
 **描述：**
 
 定义音频流的状态。
+
+<!--Device-OH_AudioStream_State--><!--Device-OH_AudioStream_State-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -274,6 +294,8 @@ enum OH_AudioInterrupt_ForceType
 
 定义音频中断是否由系统强制执行。 <br>当用户监听到音频中断时，将获取此信息。 <br>此类型表示音频中断提示[OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint)对应的操作是否已由系统强制执行，具体操作信息（如音频暂停、停止等）可通过[OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint)获取。 <br>其中，AUDIOSTREAM_INTERRUPT_HINT_RESUME对应的[OH_AudioInterrupt_ForceType](capi-native-audiostream-base-h.md#oh_audiointerrupt_forcetype)一定为AUDIOSTREAM_INTERRUPT_SHARE， <br>即恢复操作无法由系统强制执行，需应用自行触发。
 
+<!--Device-OH_AudioInterrupt_ForceType--><!--Device-OH_AudioInterrupt_ForceType-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 10
@@ -292,6 +314,8 @@ enum OH_AudioInterrupt_Hint
 **描述：**
 
 定义音频中断提示类型。 <br>当用户监听到音频中断时，将获取此信息。 <br>此类型表示根据焦点策略，当前需要对音频流的具体操作（如暂停、调整音量等）。 <br>可以结合[OH_AudioInterrupt_ForceType](capi-native-audiostream-base-h.md#oh_audiointerrupt_forcetype)信息，判断该操作是否已由系统强制执行。
+
+<!--Device-OH_AudioInterrupt_Hint--><!--Device-OH_AudioInterrupt_Hint-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -317,6 +341,8 @@ enum OH_AudioStream_SourceType
 **描述：**
 
 定义音频录制流使用场景。 <br>使用场景影响音频录制流的音效、设备与焦点策略。
+
+<!--Device-OH_AudioStream_SourceType--><!--Device-OH_AudioStream_SourceType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -345,6 +371,8 @@ enum OH_AudioInterrupt_Mode
 
 定义音频中断模式。
 
+<!--Device-OH_AudioInterrupt_Mode--><!--Device-OH_AudioInterrupt_Mode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
@@ -363,6 +391,8 @@ enum OH_AudioStream_AudioEffectMode
 **描述：**
 
 定义音效模式。
+
+<!--Device-OH_AudioStream_AudioEffectMode--><!--Device-OH_AudioStream_AudioEffectMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -383,6 +413,8 @@ enum OH_AudioStream_FastStatus
 
 定义低时延状态。
 
+<!--Device-OH_AudioStream_FastStatus--><!--Device-OH_AudioStream_FastStatus-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
@@ -391,6 +423,7 @@ enum OH_AudioStream_FastStatus
 | -- | -- |
 | AUDIOSTREAM_FASTSTATUS_NORMAL = 0 | 普通音频流状态。 |
 | AUDIOSTREAM_FASTSTATUS_FAST = 1 | 低时延音频流状态。<br>**起始版本：** 20 |
+| AUDIOSTREAM_FASTSTATUS_ULTRA_FAST = 2 | 超低时延音频流状态。<br>**起始版本：** 26.1.0 |
 
 ### OH_AudioStream_DeviceChangeReason
 
@@ -401,6 +434,8 @@ enum OH_AudioStream_DeviceChangeReason
 **描述：**
 
 流设备变更原因。
+
+<!--Device-OH_AudioStream_DeviceChangeReason--><!--Device-OH_AudioStream_DeviceChangeReason-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -425,6 +460,8 @@ enum OH_AudioStream_PrivacyType
 
 用于标识对应播放音频流是否支持被其他应用录制。
 
+<!--Device-OH_AudioStream_PrivacyType--><!--Device-OH_AudioStream_PrivacyType-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
@@ -445,6 +482,8 @@ enum OH_AudioData_Callback_Result
 
 定义音频数据回调结果。
 
+<!--Device-OH_AudioData_Callback_Result--><!--Device-OH_AudioData_Callback_Result-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
@@ -464,6 +503,8 @@ enum OH_AudioStream_VolumeMode
 
 定义音频流音量模式。
 
+<!--Device-OH_AudioStream_VolumeMode--><!--Device-OH_AudioStream_VolumeMode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 19
@@ -482,6 +523,8 @@ enum OH_AudioStream_LatencyType
 **描述：**
 
 定义音频时延类型。
+
+<!--Device-OH_AudioStream_LatencyType--><!--Device-OH_AudioStream_LatencyType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -503,6 +546,8 @@ enum OH_AudioStream_PlaybackCaptureMode
 
 表示内录（录制设备内部应用的声音）的过滤类型，每种过滤类型可录制不同的播放流类型。 该API最初仅对特定系统应用可用，从API版本26.0.0开始，支持任意应用使用。
 
+<!--Device-OH_AudioStream_PlaybackCaptureMode--><!--Device-OH_AudioStream_PlaybackCaptureMode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 23
@@ -522,6 +567,8 @@ enum OH_AudioStream_PlaybackCaptureStartState
 **描述：**
 
 定义内录的启动状态，该状态在调用[OH_AudioCapturer_RequestPlaybackCaptureStart](capi-native-audiocapturer-h.md#oh_audiocapturer_requestplaybackcapturestart)函数后异步返回。 该API最初仅对特定系统应用可用，从API版本26.0.0开始，支持任意应用使用。
+
+<!--Device-OH_AudioStream_PlaybackCaptureStartState--><!--Device-OH_AudioStream_PlaybackCaptureStartState-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -546,6 +593,8 @@ typedef void (*OH_AudioRenderer_OutputDeviceChangeCallback)(OH_AudioRenderer* re
 
 音频播放流输出设备变化回调函数的原型定义。
 
+<!--Device-typedef void (*OH_AudioRenderer_OutputDeviceChangeCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_DeviceChangeReason reason)--><!--Device-typedef void (*OH_AudioRenderer_OutputDeviceChangeCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_DeviceChangeReason reason)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 11
@@ -568,6 +617,8 @@ typedef void (*OH_AudioRenderer_OnMarkReachedCallback)(OH_AudioRenderer* rendere
 
 音频播放到达标记位置事件回调函数的原型定义。
 
+<!--Device-typedef void (*OH_AudioRenderer_OnMarkReachedCallback)(OH_AudioRenderer* renderer, uint32_t samplePos, void* userData)--><!--Device-typedef void (*OH_AudioRenderer_OnMarkReachedCallback)(OH_AudioRenderer* renderer, uint32_t samplePos, void* userData)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
@@ -589,6 +640,8 @@ typedef int32_t (*OH_AudioRenderer_WriteDataWithMetadataCallback)(OH_AudioRender
 **描述：**
 
 音频播放流写入音频数据和元数据回调函数的原型定义。 <br>回调函数仅用来写入音频数据，请勿在回调函数中调用AudioRenderer相关接口。 <br>回调函数结束后，音频服务会把audioData指针数据放入队列里等待播放， 因此请勿在回调外再次更改audioData指向的数据，且务必保证往audioData填满audioDataSize长度的待播放数据， 否则会导致音频服务播放杂音。
+
+<!--Device-typedef int32_t (*OH_AudioRenderer_WriteDataWithMetadataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize, void* metadata, int32_t metadataSize)--><!--Device-typedef int32_t (*OH_AudioRenderer_WriteDataWithMetadataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize, void* metadata, int32_t metadataSize)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -620,6 +673,8 @@ typedef OH_AudioData_Callback_Result (*OH_AudioRenderer_OnWriteDataCallback)(OH_
 **描述：**
 
 音频播放流写入音频数据回调函数的原型定义。 <br>回调函数仅用来写入音频数据，请勿在回调函数中调用AudioRenderer相关接口。 <br>该函数的返回结果表示填充到缓冲区的数据是否有效。如果结果是无效，用户填写的数据将不被播放。 <br>回调函数结束后，音频服务会把audioData指针数据放入队列里等待播放， 因此请勿在回调外再次更改audioData指向的数据，且务必保证往audioData填满audioDataSize长度的待播放数据， 否则会导致音频服务播放杂音。 <br>参数audioDataSize可以通过[OH_AudioStreamBuilder_SetFrameSizeInCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback)设置。 <br>为避免音频播放启动和停止时数据不连续可能出现的杂音，系统通常会在启动和停止时对音频数据做20ms以内的淡入淡出处理。
+
+<!--Device-typedef OH_AudioData_Callback_Result (*OH_AudioRenderer_OnWriteDataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)--><!--Device-typedef OH_AudioData_Callback_Result (*OH_AudioRenderer_OnWriteDataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 

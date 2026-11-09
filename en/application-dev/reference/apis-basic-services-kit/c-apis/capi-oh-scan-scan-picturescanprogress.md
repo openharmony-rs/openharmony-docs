@@ -8,11 +8,13 @@ typedef struct Scan_PictureScanProgress {...} Scan_PictureScanProgress
 
 Defines the progress of scanning a picture by the scanner. This struct contains the **progress**, **fd** ( file descriptor), and **isFinal** (whether the picture is the last one to be scanned) attributes. It can be used to track the picture scanning status in real time and obtain the scanning result file in an app. For details about the implementation mechanism, see OH_Scan.
 
+<!--Device-typedef struct Scan_PictureScanProgress {...} Scan_PictureScanProgress--><!--Device-typedef struct Scan_PictureScanProgress {...} Scan_PictureScanProgress-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
-**Related module**: [OH_Scan](capi-others-oh-scan.md)
+**Related module**: [OH_Scan](capi-basic-services-kit-oh-scan.md)
 
 **Header file**: [ohscan.h](capi-ohscan-h.md)
 

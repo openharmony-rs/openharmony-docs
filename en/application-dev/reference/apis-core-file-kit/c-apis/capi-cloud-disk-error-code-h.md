@@ -32,6 +32,8 @@ enum CloudDisk_ErrorCode
 
 Enumerates the error codes of the cloud disk management module.
 
+<!--Device-CloudDisk_ErrorCode--><!--Device-CloudDisk_ErrorCode-End-->
+
 **System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 21

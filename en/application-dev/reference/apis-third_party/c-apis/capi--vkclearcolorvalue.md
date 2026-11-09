@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-union VkClearColorValue {...}--><!--Device-union VkClearColorValue {...}-End-->
+
 ## Summary
 
 ### Member variables

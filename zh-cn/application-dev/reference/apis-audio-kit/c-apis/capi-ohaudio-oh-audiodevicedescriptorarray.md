@@ -8,11 +8,13 @@ struct OH_AudioDeviceDescriptorArray {...}
 
 声明音频设备描述符数组的结构体，该结构体表示一组音频设备描述符，通过每个描述符可查询设备详细信息。
 
+<!--Device-struct OH_AudioDeviceDescriptorArray {...}--><!--Device-struct OH_AudioDeviceDescriptorArray {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
 
-**相关模块：** [OHAudio](capi-others-ohaudio.md)
+**相关模块：** [OHAudio](capi-audio-kit-ohaudio.md)
 
 **所在头文件：** [native_audio_device_base.h](capi-native-audio-device-base-h.md)
 

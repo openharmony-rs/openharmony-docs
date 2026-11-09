@@ -8,11 +8,13 @@ struct Camera_CaptureEndInfo {...}
 
 The struct describes the capture end information.
 
+<!--Device-struct Camera_CaptureEndInfo {...}--><!--Device-struct Camera_CaptureEndInfo {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
-**Related module**: [OH_Camera](capi-others-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **Header file**: [camera.h](capi-camera-h.md)
 

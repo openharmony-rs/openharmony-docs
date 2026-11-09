@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkBindDescriptorBufferEmbeddedSamplersInfoEXT {...}--><!--Device-struct VkBindDescriptorBufferEmbeddedSamplersInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

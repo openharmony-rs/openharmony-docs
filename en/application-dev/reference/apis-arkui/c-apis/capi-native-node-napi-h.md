@@ -4,6 +4,8 @@
 
 Declares APIs for converting <b>FrameNode</b> objects on the ArkTS side to <b>ArkUI_NodeHandle</b> objects on the native side.
 
+**File to Include**: <arkui/native_node_napi.h>
+
 **Library**: libace_ndk.z.so
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -54,6 +56,8 @@ int32_t OH_ArkUI_GetNodeHandleFromNapiValue(napi_env env, napi_value frameNode, 
 
 Obtains an <b>ArkUI_NodeHandle</b> object on the native side mapped from the <b>FrameNode</b> object created on the ArkTS side. This is applicable to scenarios where the native side needs to operate on or manage a FrameNode on the ArkTS side.
 
+<!--Device-int32_t OH_ArkUI_GetNodeHandleFromNapiValue(napi_env env, napi_value frameNode, ArkUI_NodeHandle* handle)--><!--Device-int32_t OH_ArkUI_GetNodeHandleFromNapiValue(napi_env env, napi_value frameNode, ArkUI_NodeHandle* handle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -81,6 +85,8 @@ int32_t OH_ArkUI_GetContextFromNapiValue(napi_env env, napi_value value, ArkUI_C
 **Description**
 
 Obtains an <b>ArkUI_ContextHandle</b> object on the native side mapped from the UIContext object created on the ArkTS side. This is applicable to scenarios where the native side needs to invoke ArkUI capabilities based on <b>UIContext</b>.
+
+<!--Device-int32_t OH_ArkUI_GetContextFromNapiValue(napi_env env, napi_value value, ArkUI_ContextHandle* context)--><!--Device-int32_t OH_ArkUI_GetContextFromNapiValue(napi_env env, napi_value value, ArkUI_ContextHandle* context)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,6 +116,8 @@ int32_t OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, Ark
 
 Obtains an <b>ArkUI_NodeContentHandle</b> object on the native side mapped from the <b>NodeContent</b> object created on the ArkTS side. This is applicable to scenarios where the native side needs to operate on or mount the <b>NodeContent</b> content on the ArkTS side.
 
+<!--Device-int32_t OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, ArkUI_NodeContentHandle* content)--><!--Device-int32_t OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, ArkUI_NodeContentHandle* content)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -137,6 +145,8 @@ int32_t OH_ArkUI_GetDrawableDescriptorFromNapiValue(napi_env env, napi_value val
 **Description**
 
 Obtains an [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) object on the native side mapped from the DrawableDescriptor object created on the ArkTS side. This is applicable to scenarios where the native side needs to use an image resource description object on the ArkTS side.
+
+<!--Device-int32_t OH_ArkUI_GetDrawableDescriptorFromNapiValue(napi_env env, napi_value value, ArkUI_DrawableDescriptor** drawableDescriptor)--><!--Device-int32_t OH_ArkUI_GetDrawableDescriptorFromNapiValue(napi_env env, napi_value value, ArkUI_DrawableDescriptor** drawableDescriptor)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -166,6 +176,8 @@ int32_t OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue(napi_env env, napi_v
 
 Converts a resource object obtained through <b>$r()</b> on the ArkTS side into an [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) object usable on the native side. This is applicable to scenarios where the native side needs to use an ArkTS resource object as an image resource descriptor.
 
+<!--Device-int32_t OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue(napi_env env, napi_value value, ArkUI_DrawableDescriptor** drawableDescriptor)--><!--Device-int32_t OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue(napi_env env, napi_value value, ArkUI_DrawableDescriptor** drawableDescriptor)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -193,6 +205,8 @@ ArkUI_ErrorCode OH_ArkUI_GetNavigationId(ArkUI_NodeHandle node, char* buffer, in
 **Description**
 
 Obtains the ID of the Navigation component where the specified node is located.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_GetNavigationId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)--><!--Device-ArkUI_ErrorCode OH_ArkUI_GetNavigationId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -223,6 +237,8 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationName(ArkUI_NodeHandle node, char* buff
 
 Obtains the name of the NavDestination component where the specified node is located.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_GetNavDestinationName(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)--><!--Device-ArkUI_ErrorCode OH_ArkUI_GetNavDestinationName(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -252,6 +268,8 @@ ArkUI_ErrorCode OH_ArkUI_GetNavStackLength(ArkUI_NodeHandle node, int32_t* lengt
 
 Obtains the length of the Navigation stack where the specified node is located.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_GetNavStackLength(ArkUI_NodeHandle node, int32_t* length)--><!--Device-ArkUI_ErrorCode OH_ArkUI_GetNavStackLength(ArkUI_NodeHandle node, int32_t* length)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -278,6 +296,8 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationNameByIndex(ArkUI_NodeHandle node, int
 **Description**
 
 Obtains the name of the page in the navigation stack where the specified node is located based on the given index. The index starts from 0, which indicates the bottom of the stack.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_GetNavDestinationNameByIndex(ArkUI_NodeHandle node, int32_t index, char* buffer, int32_t bufferSize, int32_t* writeLength)--><!--Device-ArkUI_ErrorCode OH_ArkUI_GetNavDestinationNameByIndex(ArkUI_NodeHandle node, int32_t index, char* buffer, int32_t bufferSize, int32_t* writeLength)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -309,6 +329,8 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationId(ArkUI_NodeHandle node, char* buffer
 
 Obtains the ID of the NavDestination component where the specified node is located.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_GetNavDestinationId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)--><!--Device-ArkUI_ErrorCode OH_ArkUI_GetNavDestinationId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -338,6 +360,8 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationState(ArkUI_NodeHandle node, ArkUI_Nav
 
 Obtains the state of the NavDestination component where the specified node is located.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_GetNavDestinationState(ArkUI_NodeHandle node, ArkUI_NavDestinationState* state)--><!--Device-ArkUI_ErrorCode OH_ArkUI_GetNavDestinationState(ArkUI_NodeHandle node, ArkUI_NavDestinationState* state)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -364,6 +388,8 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationIndex(ArkUI_NodeHandle node, int32_t* 
 **Description**
 
 Obtains the index of the NavDestination component where the current node is located in the page stack.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_GetNavDestinationIndex(ArkUI_NodeHandle node, int32_t* index)--><!--Device-ArkUI_ErrorCode OH_ArkUI_GetNavDestinationIndex(ArkUI_NodeHandle node, int32_t* index)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -392,6 +418,8 @@ napi_value OH_ArkUI_GetNavDestinationParam(ArkUI_NodeHandle node)
 
 Obtains the parameter of the NavDestination component where the specified node is located.
 
+<!--Device-napi_value OH_ArkUI_GetNavDestinationParam(ArkUI_NodeHandle node)--><!--Device-napi_value OH_ArkUI_GetNavDestinationParam(ArkUI_NodeHandle node)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -417,6 +445,8 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageIndex(ArkUI_NodeHandle node, int32_t* inde
 **Description**
 
 Obtains the index of the Router page stack where the specified node is located.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_GetRouterPageIndex(ArkUI_NodeHandle node, int32_t* index)--><!--Device-ArkUI_ErrorCode OH_ArkUI_GetRouterPageIndex(ArkUI_NodeHandle node, int32_t* index)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -444,6 +474,8 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageName(ArkUI_NodeHandle node, char* buffer, 
 **Description**
 
 Obtains the name of the Router page where the specified node is located.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_GetRouterPageName(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)--><!--Device-ArkUI_ErrorCode OH_ArkUI_GetRouterPageName(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -474,6 +506,8 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPagePath(ArkUI_NodeHandle node, char* buffer, 
 
 Obtains the path of the Router page where the specified node is located.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_GetRouterPagePath(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)--><!--Device-ArkUI_ErrorCode OH_ArkUI_GetRouterPagePath(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -503,6 +537,8 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageState(ArkUI_NodeHandle node, ArkUI_RouterP
 
 Obtains the status of the Router page where the specified node is located.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_GetRouterPageState(ArkUI_NodeHandle node, ArkUI_RouterPageState* state)--><!--Device-ArkUI_ErrorCode OH_ArkUI_GetRouterPageState(ArkUI_NodeHandle node, ArkUI_RouterPageState* state)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -529,6 +565,8 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageId(ArkUI_NodeHandle node, char* buffer, in
 **Description**
 
 Obtains the ID of the Router page where the specified node is located.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_GetRouterPageId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)--><!--Device-ArkUI_ErrorCode OH_ArkUI_GetRouterPageId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -558,6 +596,8 @@ int32_t OH_ArkUI_PostFrameCallback(ArkUI_ContextHandle uiContext, void* userData
 **Description**
 
 Register a callback to be executed when rendering in the next frame. Cannot be called on the non-UI thread. Checking for non-UI thread calls will abort.
+
+<!--Device-int32_t OH_ArkUI_PostFrameCallback(ArkUI_ContextHandle uiContext, void* userData, void (*callback)(uint64_t nanoTimestamp, uint32_t frameCount, void* userData))--><!--Device-int32_t OH_ArkUI_PostFrameCallback(ArkUI_ContextHandle uiContext, void* userData, void (*callback)(uint64_t nanoTimestamp, uint32_t frameCount, void* userData))-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -589,6 +629,8 @@ ArkUI_ErrorCode OH_ArkUI_InitModuleForArkTSEnv(napi_env env)
 
 Initializes ArkUI-related APIs for the specified context environment. This is applicable to scenarios where the context environment needs to be initialized before the native side uses ArkUI-related APIs. This API must not be called on a non-UI thread; otherwise, the program will actively abort. After the specified context environment is initialized using this API, call [OH_ArkUI_NotifyArkTSEnvDestroy](capi-native-node-napi-h.md#oh_arkui_notifyarktsenvdestroy) to notify that the environment has been destroyed when the corresponding environment is destroyed.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_InitModuleForArkTSEnv(napi_env env)--><!--Device-ArkUI_ErrorCode OH_ArkUI_InitModuleForArkTSEnv(napi_env env)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -615,6 +657,8 @@ void OH_ArkUI_NotifyArkTSEnvDestroy(napi_env env)
 
 Notifies that the specified context environment has been destroyed. This is applicable to scenarios where the native side synchronously cleans up related states when the ArkTS context environment is destroyed. After the context environment is initialized using [OH_ArkUI_InitModuleForArkTSEnv](capi-native-node-napi-h.md#oh_arkui_initmoduleforarktsenv), this API should be called when the environment is destroyed. This API must not be called on a non-UI thread; otherwise, the program will actively abort.
 
+<!--Device-void OH_ArkUI_NotifyArkTSEnvDestroy(napi_env env)--><!--Device-void OH_ArkUI_NotifyArkTSEnvDestroy(napi_env env)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -634,6 +678,8 @@ int32_t OH_ArkUI_PostIdleCallback(ArkUI_ContextHandle uiContext, void* userData,
 **Description**
 
 Registers a callback. This is applicable to scenarios where the native side needs to use the idle time between frames to process non-urgent tasks. After the next frame is rendered, if the remaining time before the next VSync signal following that frame is greater than 1 ms, the callback will be executed; if the remaining time is less than 1 ms, the callback will be postponed until the remaining time after a subsequent frame is rendered is greater than 1 ms. If there is no next frame currently, the next frame will be requested automatically. This API must not be called on a non-UI thread; otherwise, the program will actively abort.
+
+<!--Device-int32_t OH_ArkUI_PostIdleCallback(ArkUI_ContextHandle uiContext, void* userData, void (*callback)(uint64_t nanoTimeLeft, uint32_t frameCount, void* userData))--><!--Device-int32_t OH_ArkUI_PostIdleCallback(ArkUI_ContextHandle uiContext, void* userData, void (*callback)(uint64_t nanoTimeLeft, uint32_t frameCount, void* userData))-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -662,6 +708,8 @@ ArkUI_ErrorCode OH_ArkUI_EnableEventPassthrough(ArkUI_ContextHandle uiContext, b
 **Description**
 
 Enables or disables event passthrough. Event passthrough indicates that an event is directly delivered to a component without resampling during event distribution.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_EnableEventPassthrough(ArkUI_ContextHandle uiContext, bool enabled, ArkUI_RawInputEventType type)--><!--Device-ArkUI_ErrorCode OH_ArkUI_EnableEventPassthrough(ArkUI_ContextHandle uiContext, bool enabled, ArkUI_RawInputEventType type)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

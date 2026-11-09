@@ -10,11 +10,13 @@ OH_ImagePackerNative用于将ImageSource、PixelMap、Picture或PixelMap序列�
 \| -- \|\| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) \| 数据缓冲区 \| [OH_ImagePackerNative_PackToDataFromImageSource](capi-image-packer-native-h.md#oh_imagepackernative_packtodatafromimagesource) \| 将ImageSource编码为指定格式的数据。 \|\| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) \| 数据缓冲区 \| [OH_ImagePackerNative_PackToDataFromPixelmap](capi-image-packer-native-h.md#oh_imagepackernative_packtodatafrompixelmap) \| 将PixelMap编码为指定格式的数据。 \|\| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) \| 数据缓冲区 \| [OH_ImagePackerNative_PackToDataFromPicture](capi-image-packer-native-h.md#oh_imagepackernative_packtodatafrompicture) \| 将Picture编码为指定格式的数据，仅支持JPEG和HEIF。 \|\| OH_PixelmapNative数组 \| 数据缓冲区 \| [OH_ImagePackerNative_PackToDataFromPixelmapSequence](capi-image-packer-native-h.md#oh_imagepackernative_packtodatafrompixelmapsequence) \| 将PixelMap序列编码为GIF格式数据。 \|\| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md)
 \| 文件描述符 \| [OH_ImagePackerNative_PackToFileFromImageSource](capi-image-packer-native-h.md#oh_imagepackernative_packtofilefromimagesource) \| 将ImageSource编码到文件中。 \|\| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) \| 文件描述符 \| [OH_ImagePackerNative_PackToFileFromPixelmap](capi-image-packer-native-h.md#oh_imagepackernative_packtofilefrompixelmap) \| 将PixelMap编码到文件中。 \|\| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) \| 文件描述符 \| [OH_ImagePackerNative_PackToFileFromPicture](capi-image-packer-native-h.md#oh_imagepackernative_packtofilefrompicture) \| 将Picture编码到文件中，仅支持JPEG和HEIF。 \|\| OH_PixelmapNative数组 \| 文件描述符 \| [OH_ImagePackerNative_PackToFileFromPixelmapSequence](capi-image-packer-native-h.md#oh_imagepackernative_packtofilefrompixelmapsequence) \| 将PixelMap序列编码为GIF格式并写入文件。 \|<br>获取支持编码的图片格式使用 [OH_ImagePackerNative_GetSupportedFormats](capi-image-packer-native-h.md#oh_imagepackernative_getsupportedformats)函数。
 
+<!--Device-struct OH_ImagePackerNative--><!--Device-struct OH_ImagePackerNative-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 12
 
-**相关模块：** [Image_NativeModule](capi-others-image-nativemodule.md)
+**相关模块：** [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 **所在头文件：** [image_packer_native.h](capi-image-packer-native-h.md)
 

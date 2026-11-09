@@ -8,11 +8,13 @@ typedef struct OH_DisplaySoloist OH_DisplaySoloist
 
 OH_DisplaySoloist结构体声明，此结构体用于需要在独立线程中实现帧率控制的Native侧业务。
 
+<!--Device-typedef struct OH_DisplaySoloist OH_DisplaySoloist--><!--Device-typedef struct OH_DisplaySoloist OH_DisplaySoloist-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.HyperGraphicManager
 
 **起始版本：** 12
 
-**相关模块：** [NativeDisplaySoloist](capi-others-nativedisplaysoloist.md)
+**相关模块：** [NativeDisplaySoloist](capi-arkgraphics2d-nativedisplaysoloist.md)
 
 **所在头文件：** [native_display_soloist.h](capi-native-display-soloist-h.md)
 

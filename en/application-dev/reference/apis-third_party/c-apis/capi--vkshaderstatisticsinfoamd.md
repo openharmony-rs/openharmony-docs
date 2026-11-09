@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkShaderStatisticsInfoAMD {...}--><!--Device-struct VkShaderStatisticsInfoAMD {...}-End-->
+
 ## Summary
 
 ### Member variables

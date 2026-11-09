@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct __res_state {...}--><!--Device-struct __res_state {...}-End-->
+
 ## Summary
 
 ### Member variables

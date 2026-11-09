@@ -8,11 +8,13 @@ typedef struct ArkUI_CircleShape ArkUI_CircleShapeOption
 
 Defines a circle shape option, which is used to create a circle shape in ArkUI_RenderNodeUtils and configure the center coordinates and radius, serving as a mask or clip shape for a RenderNode.
 
+<!--Device-typedef struct ArkUI_CircleShape ArkUI_CircleShapeOption--><!--Device-typedef struct ArkUI_CircleShape ArkUI_CircleShapeOption-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 
-**Related module**: [ArkUI_RenderNodeUtils](capi-others-arkui-rendernodeutils.md)
+**Related module**: [ArkUI_RenderNodeUtils](capi-arkui-arkui-rendernodeutils.md)
 
 **Header file**: [native_render.h](capi-native-render-h.md)
 

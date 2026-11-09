@@ -8,11 +8,13 @@ typedef struct OH_WifiLinkedInfo {...} OH_WifiLinkedInfo
 
 Represents the Wi-Fi connection information.<br> This structure describes the hotspot information of the current station connection. The information can be obtained by calling [OH_Wifi_GetLinkedInfo](capi-oh-wifi-h.md#oh_wifi_getlinkedinfo).
 
+<!--Device-typedef struct OH_WifiLinkedInfo {...} OH_WifiLinkedInfo--><!--Device-typedef struct OH_WifiLinkedInfo {...} OH_WifiLinkedInfo-End-->
+
 **System capability**: SystemCapability.Communication.WiFi.STA
 
 **Since**: 24
 
-**Related module**: [Wifi](capi-others-wifi.md)
+**Related module**: [Wifi](capi-connectivity-kit-wifi.md)
 
 **Header file**: [oh_wifi.h](capi-oh-wifi-h.md)
 

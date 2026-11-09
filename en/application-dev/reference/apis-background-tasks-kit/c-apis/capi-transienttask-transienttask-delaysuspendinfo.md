@@ -8,11 +8,13 @@ struct TransientTask_DelaySuspendInfo {...}
 
 A struct that describes the returned information about a transient task. The struct returns the ID and remaining time of the transient task.
 
+<!--Device-struct TransientTask_DelaySuspendInfo {...}--><!--Device-struct TransientTask_DelaySuspendInfo {...}-End-->
+
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
 **Since**: 13
 
-**Related module**: [TransientTask](capi-others-transienttask.md)
+**Related module**: [TransientTask](capi-background-tasks-kit-transienttask.md)
 
 **Header file**: [transient_task_type.h](capi-transient-task-type-h.md)
 

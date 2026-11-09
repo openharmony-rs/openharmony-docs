@@ -8,11 +8,13 @@ struct OH_AVDataSource {...}
 
 用户自定义数据源。
 
+<!--Device-struct OH_AVDataSource {...}--><!--Device-struct OH_AVDataSource {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 12
 
-**相关模块：** [CodecBase](capi-others-codecbase.md)
+**相关模块：** [CodecBase](capi-avcodec-kit-codecbase.md)
 
 **所在头文件：** [native_avcodec_base.h](capi-native-avcodec-base-h.md)
 

@@ -8,11 +8,13 @@ struct OH_AudioCaptureInfo {...}
 
 音频采样信息。<br> 用于配置屏幕录制中的音频采集参数，包括采样率、声道数和音频源类型。 开发者可通过设置audioSampleRate和audioChannels参数来控制录制音频的质量和声道布局， 适用于屏幕录制时需要采集系统音频或麦克风音频的场景。<br> 当audioSampleRate和audioChannels同时为0时，忽略该类型音频相关参数，不录制该类型音频数据。
 
+<!--Device-struct OH_AudioCaptureInfo {...}--><!--Device-struct OH_AudioCaptureInfo {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **起始版本：** 10
 
-**相关模块：** [AVScreenCapture](capi-others-avscreencapture.md)
+**相关模块：** [AVScreenCapture](capi-media-kit-avscreencapture.md)
 
 **所在头文件：** [native_avscreen_capture_base.h](capi-native-avscreen-capture-base-h.md)
 

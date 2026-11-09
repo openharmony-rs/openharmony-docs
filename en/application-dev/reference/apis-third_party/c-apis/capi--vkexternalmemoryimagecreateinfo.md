@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkExternalMemoryImageCreateInfo {...}--><!--Device-struct VkExternalMemoryImageCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct re_pattern_buffer {...}--><!--Device-struct re_pattern_buffer {...}-End-->
+
 ## Summary
 
 ### Member variables

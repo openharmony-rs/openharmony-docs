@@ -8,11 +8,13 @@ struct Hid_MscEventArray {...}
 
 Defines an array of miscellaneous events, which stores information about the miscellaneous events supported by an HID device.
 
+<!--Device-struct Hid_MscEventArray {...}--><!--Device-struct Hid_MscEventArray {...}-End-->
+
 **System capability**: SystemCapability.Driver.HID.Extension
 
 **Since**: 11
 
-**Related module**: [HidDdk](capi-others-hidddk.md)
+**Related module**: [HidDdk](capi-driver-development-kit-hidddk.md)
 
 **Header file**: [hid_ddk_types.h](capi-hid-ddk-types-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct qm_trace {...}--><!--Device-struct qm_trace {...}-End-->
+
 ## Summary
 
 ### Member variables

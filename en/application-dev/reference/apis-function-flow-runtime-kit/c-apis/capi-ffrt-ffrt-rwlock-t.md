@@ -8,11 +8,13 @@ typedef struct ffrt_rwlock_t {...} ffrt_rwlock_t
 
 Defines the rwlock structure used to store internal data of the rwlock.
 
+<!--Device-typedef struct ffrt_rwlock_t {...} ffrt_rwlock_t--><!--Device-typedef struct ffrt_rwlock_t {...} ffrt_rwlock_t-End-->
+
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 18
 
-**Related module**: [FFRT](capi-others-ffrt.md)
+**Related module**: [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 
 **Header file**: [type_def.h](capi-type-def-h.md)
 

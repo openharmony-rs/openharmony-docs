@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct strpeek {...}--><!--Device-struct strpeek {...}-End-->
+
 ## Summary
 
 ### Member variables

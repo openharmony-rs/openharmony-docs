@@ -104,6 +104,8 @@ enum HiAppEvent_ErrorCode
 
 Enumerates the error codes used in the HiAppEvent module.
 
+<!--Device-HiAppEvent_ErrorCode--><!--Device-HiAppEvent_ErrorCode-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 15
@@ -130,6 +132,8 @@ enum EventType
 
 Enumerates the event types. You are advised to select different event types based on application scenarios.
 
+<!--Device-EventType--><!--Device-EventType-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 8
@@ -150,6 +154,8 @@ enum OH_HiAppEvent_SysEvent
 **Description**
 
 System event types.<br> You are advised to select system event types based on their respective usage scenarios.
+
+<!--Device-OH_HiAppEvent_SysEvent--><!--Device-OH_HiAppEvent_SysEvent-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -174,6 +180,8 @@ enum OH_HiAppEvent_FrameworkType
 
 Enumerates the application framework types. You are advised to select an application framework type based on the actual application scenario.
 
+<!--Device-OH_HiAppEvent_FrameworkType--><!--Device-OH_HiAppEvent_FrameworkType-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 26.0.0
@@ -197,6 +205,8 @@ typedef void (*OH_HiAppEvent_OnReceive)(const char* domain, const struct HiAppEv
 
 Passes event content to the caller. Note: The lifecycle of the object pointed by the pointer in the callback is limited to the callback function. Do not use the pointer outside of the callback function. If the information needs to be cached, perform a deep copy of the content pointed by the pointer.
 
+<!--Device-typedef void (*OH_HiAppEvent_OnReceive)(const char* domain, const struct HiAppEvent_AppEventGroup* appEventGroups, uint32_t groupLen)--><!--Device-typedef void (*OH_HiAppEvent_OnReceive)(const char* domain, const struct HiAppEvent_AppEventGroup* appEventGroups, uint32_t groupLen)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 12
@@ -219,6 +229,8 @@ typedef void (*OH_HiAppEvent_OnTrigger)(int row, int size)
 
 Invoked if the event received by the watcher meets the conditions specified by [OH_HiAppEvent_SetTriggerCondition](capi-hiappevent-h.md#oh_hiappevent_settriggercondition). When the **OH_HiAppEvent_OnReceive** callback is not set in the watcher, the event received by the watcher will be saved. After the callback is complete, if a newly saved event meets the specified condition, the callback is invoked again.
 
+<!--Device-typedef void (*OH_HiAppEvent_OnTrigger)(int row, int size)--><!--Device-typedef void (*OH_HiAppEvent_OnTrigger)(int row, int size)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 12
@@ -239,6 +251,8 @@ typedef void (*OH_HiAppEvent_OnTake)(const char* const *events, uint32_t eventLe
 **Description**
 
 Passes the events received by the watcher to the caller when [OH_HiAppEvent_TakeWatcherData](capi-hiappevent-h.md#oh_hiappevent_takewatcherdata) is used to obtain the events. Note: The lifecycle of the object pointed by the pointer in the callback is limited to the callback function. Do not use the pointer outside of the callback function. If the information needs to be cached, perform a deep copy of the content pointed by the pointer.
+
+<!--Device-typedef void (*OH_HiAppEvent_OnTake)(const char* const *events, uint32_t eventLen)--><!--Device-typedef void (*OH_HiAppEvent_OnTake)(const char* const *events, uint32_t eventLen)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -261,6 +275,8 @@ ParamList OH_HiAppEvent_CreateParamList(void)
 
 Creates a pointer to a parameter list object. Note: If the created pointer to a parameter list object is no longer used, destroy it by calling [OH_HiAppEvent_DestroyParamList](capi-hiappevent-h.md#oh_hiappevent_destroyparamlist).
 
+<!--Device-ParamList OH_HiAppEvent_CreateParamList(void)--><!--Device-ParamList OH_HiAppEvent_CreateParamList(void)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 8
@@ -281,6 +297,8 @@ void OH_HiAppEvent_DestroyParamList(ParamList list)
 
 Destroys a pointer to a parameter list object and releases its allocated memory.
 
+<!--Device-void OH_HiAppEvent_DestroyParamList(ParamList list)--><!--Device-void OH_HiAppEvent_DestroyParamList(ParamList list)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 8
@@ -300,6 +318,8 @@ ParamList OH_HiAppEvent_AddBoolParam(ParamList list, const char* name, bool bool
 **Description**
 
 Adds an event parameter of the Boolean type to the parameter list.
+
+<!--Device-ParamList OH_HiAppEvent_AddBoolParam(ParamList list, const char* name, bool boolean)--><!--Device-ParamList OH_HiAppEvent_AddBoolParam(ParamList list, const char* name, bool boolean)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -328,6 +348,8 @@ ParamList OH_HiAppEvent_AddBoolArrayParam(ParamList list, const char* name, cons
 **Description**
 
 Adds an event parameter of the Boolean array type to the parameter list.
+
+<!--Device-ParamList OH_HiAppEvent_AddBoolArrayParam(ParamList list, const char* name, const bool* booleans, int arrSize)--><!--Device-ParamList OH_HiAppEvent_AddBoolArrayParam(ParamList list, const char* name, const bool* booleans, int arrSize)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -358,6 +380,8 @@ ParamList OH_HiAppEvent_AddInt8Param(ParamList list, const char* name, int8_t nu
 
 Adds an event parameter of the int8_t type to the parameter list.
 
+<!--Device-ParamList OH_HiAppEvent_AddInt8Param(ParamList list, const char* name, int8_t num)--><!--Device-ParamList OH_HiAppEvent_AddInt8Param(ParamList list, const char* name, int8_t num)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 8
@@ -385,6 +409,8 @@ ParamList OH_HiAppEvent_AddInt8ArrayParam(ParamList list, const char* name, cons
 **Description**
 
 Adds an event parameter of the int8_t array type to the parameter list.
+
+<!--Device-ParamList OH_HiAppEvent_AddInt8ArrayParam(ParamList list, const char* name, const int8_t* nums, int arrSize)--><!--Device-ParamList OH_HiAppEvent_AddInt8ArrayParam(ParamList list, const char* name, const int8_t* nums, int arrSize)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -415,6 +441,8 @@ ParamList OH_HiAppEvent_AddInt16Param(ParamList list, const char* name, int16_t 
 
 Adds an event parameter of the int16_t type to the parameter list.
 
+<!--Device-ParamList OH_HiAppEvent_AddInt16Param(ParamList list, const char* name, int16_t num)--><!--Device-ParamList OH_HiAppEvent_AddInt16Param(ParamList list, const char* name, int16_t num)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 8
@@ -442,6 +470,8 @@ ParamList OH_HiAppEvent_AddInt16ArrayParam(ParamList list, const char* name, con
 **Description**
 
 Adds an event parameter of the int16_t array type to the parameter list.
+
+<!--Device-ParamList OH_HiAppEvent_AddInt16ArrayParam(ParamList list, const char* name, const int16_t* nums, int arrSize)--><!--Device-ParamList OH_HiAppEvent_AddInt16ArrayParam(ParamList list, const char* name, const int16_t* nums, int arrSize)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -472,6 +502,8 @@ ParamList OH_HiAppEvent_AddInt32Param(ParamList list, const char* name, int32_t 
 
 Adds an event parameter of the int32_t type to the parameter list.
 
+<!--Device-ParamList OH_HiAppEvent_AddInt32Param(ParamList list, const char* name, int32_t num)--><!--Device-ParamList OH_HiAppEvent_AddInt32Param(ParamList list, const char* name, int32_t num)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 8
@@ -499,6 +531,8 @@ ParamList OH_HiAppEvent_AddInt32ArrayParam(ParamList list, const char* name, con
 **Description**
 
 Adds an event parameter of the int32_t array type to the parameter list.
+
+<!--Device-ParamList OH_HiAppEvent_AddInt32ArrayParam(ParamList list, const char* name, const int32_t* nums, int arrSize)--><!--Device-ParamList OH_HiAppEvent_AddInt32ArrayParam(ParamList list, const char* name, const int32_t* nums, int arrSize)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -529,6 +563,8 @@ ParamList OH_HiAppEvent_AddInt64Param(ParamList list, const char* name, int64_t 
 
 Adds an event parameter of the int64_t type to the parameter list.
 
+<!--Device-ParamList OH_HiAppEvent_AddInt64Param(ParamList list, const char* name, int64_t num)--><!--Device-ParamList OH_HiAppEvent_AddInt64Param(ParamList list, const char* name, int64_t num)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 8
@@ -556,6 +592,8 @@ ParamList OH_HiAppEvent_AddInt64ArrayParam(ParamList list, const char* name, con
 **Description**
 
 Adds an event parameter of the int64_t array type to the parameter list.
+
+<!--Device-ParamList OH_HiAppEvent_AddInt64ArrayParam(ParamList list, const char* name, const int64_t* nums, int arrSize)--><!--Device-ParamList OH_HiAppEvent_AddInt64ArrayParam(ParamList list, const char* name, const int64_t* nums, int arrSize)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -586,6 +624,8 @@ ParamList OH_HiAppEvent_AddFloatParam(ParamList list, const char* name, float nu
 
 Adds an event parameter of the float type to the parameter list.
 
+<!--Device-ParamList OH_HiAppEvent_AddFloatParam(ParamList list, const char* name, float num)--><!--Device-ParamList OH_HiAppEvent_AddFloatParam(ParamList list, const char* name, float num)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 8
@@ -613,6 +653,8 @@ ParamList OH_HiAppEvent_AddFloatArrayParam(ParamList list, const char* name, con
 **Description**
 
 Adds an event parameter of the float array type to the parameter list.
+
+<!--Device-ParamList OH_HiAppEvent_AddFloatArrayParam(ParamList list, const char* name, const float* nums, int arrSize)--><!--Device-ParamList OH_HiAppEvent_AddFloatArrayParam(ParamList list, const char* name, const float* nums, int arrSize)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -643,6 +685,8 @@ ParamList OH_HiAppEvent_AddDoubleParam(ParamList list, const char* name, double 
 
 Adds an event parameter of the Double type to the parameter list.
 
+<!--Device-ParamList OH_HiAppEvent_AddDoubleParam(ParamList list, const char* name, double num)--><!--Device-ParamList OH_HiAppEvent_AddDoubleParam(ParamList list, const char* name, double num)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 8
@@ -670,6 +714,8 @@ ParamList OH_HiAppEvent_AddDoubleArrayParam(ParamList list, const char* name, co
 **Description**
 
 Adds an event parameter of the double array type to the parameter list.
+
+<!--Device-ParamList OH_HiAppEvent_AddDoubleArrayParam(ParamList list, const char* name, const double* nums, int arrSize)--><!--Device-ParamList OH_HiAppEvent_AddDoubleArrayParam(ParamList list, const char* name, const double* nums, int arrSize)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -700,6 +746,8 @@ ParamList OH_HiAppEvent_AddStringParam(ParamList list, const char* name, const c
 
 Adds a parameter of the string type to the parameter list.
 
+<!--Device-ParamList OH_HiAppEvent_AddStringParam(ParamList list, const char* name, const char* str)--><!--Device-ParamList OH_HiAppEvent_AddStringParam(ParamList list, const char* name, const char* str)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 8
@@ -727,6 +775,8 @@ ParamList OH_HiAppEvent_AddStringArrayParam(ParamList list, const char* name, co
 **Description**
 
 Adds a parameter of the string array type to the parameter list.
+
+<!--Device-ParamList OH_HiAppEvent_AddStringArrayParam(ParamList list, const char* name, const char * const *strs, int arrSize)--><!--Device-ParamList OH_HiAppEvent_AddStringArrayParam(ParamList list, const char* name, const char * const *strs, int arrSize)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -757,6 +807,8 @@ int OH_HiAppEvent_Write(const char* domain, const char* name, enum EventType typ
 
 Logs application events whose parameters are of the list type. Before application event logging, use this API to verify parameters of the events. If the verification is successful, the API writes the events to the event file.
 
+<!--Device-int OH_HiAppEvent_Write(const char* domain, const char* name, enum EventType type, const ParamList list)--><!--Device-int OH_HiAppEvent_Write(const char* domain, const char* name, enum EventType type, const ParamList list)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 8
@@ -786,6 +838,8 @@ bool OH_HiAppEvent_Configure(const char* name, const char* value)
 
 Configures the application event logging function. This function is used to configure the event logging function and the storage quota of the event file directory.
 
+<!--Device-bool OH_HiAppEvent_Configure(const char* name, const char* value)--><!--Device-bool OH_HiAppEvent_Configure(const char* name, const char* value)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 8
@@ -813,6 +867,8 @@ HiAppEvent_Watcher* OH_HiAppEvent_CreateWatcher(const char* name)
 
 Creates a watcher for application events. Note: If a created watcher is no longer used, destroy it by calling [OH_HiAppEvent_DestroyWatcher](capi-hiappevent-h.md#oh_hiappevent_destroywatcher).
 
+<!--Device-HiAppEvent_Watcher* OH_HiAppEvent_CreateWatcher(const char* name)--><!--Device-HiAppEvent_Watcher* OH_HiAppEvent_CreateWatcher(const char* name)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 12
@@ -839,6 +895,8 @@ void OH_HiAppEvent_DestroyWatcher(HiAppEvent_Watcher* watcher)
 
 Destroys a created watcher. Note: If a created watcher is no longer used, destroy it to release memory to prevent memory leaks. After the watcher is destroyed, set its pointer to null.
 
+<!--Device-void OH_HiAppEvent_DestroyWatcher(HiAppEvent_Watcher* watcher)--><!--Device-void OH_HiAppEvent_DestroyWatcher(HiAppEvent_Watcher* watcher)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 12
@@ -858,6 +916,8 @@ int OH_HiAppEvent_SetTriggerCondition(HiAppEvent_Watcher* watcher, int row, int 
 **Description**
 
 Sets the trigger condition of the [OH_HiAppEvent_OnTrigger](capi-hiappevent-h.md#oh_hiappevent_ontrigger) callback. You can set the trigger condition by the number and size of new events received by the watcher, and **onTrigger**<br>timeout interval. Ensure that at least one of the trigger conditions is set on the caller side.
+
+<!--Device-int OH_HiAppEvent_SetTriggerCondition(HiAppEvent_Watcher* watcher, int row, int size, int timeOut)--><!--Device-int OH_HiAppEvent_SetTriggerCondition(HiAppEvent_Watcher* watcher, int row, int size, int timeOut)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -887,6 +947,8 @@ int OH_HiAppEvent_SetAppEventFilter(HiAppEvent_Watcher* watcher, const char* dom
 **Description**
 
 Sets the type of events to listen for. This function can be called repeatedly. You can add multiple filtering conditions instead of replacing them. The watcher will receive notifications of events that meet any of the filtering conditions.
+
+<!--Device-int OH_HiAppEvent_SetAppEventFilter(HiAppEvent_Watcher* watcher, const char* domain, uint8_t eventTypes, const char* const *names, int namesLen)--><!--Device-int OH_HiAppEvent_SetAppEventFilter(HiAppEvent_Watcher* watcher, const char* domain, uint8_t eventTypes, const char* const *names, int namesLen)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -918,6 +980,8 @@ int OH_HiAppEvent_SetWatcherOnTrigger(HiAppEvent_Watcher* watcher, OH_HiAppEvent
 
 Sets the **onTrigger** callback. If **OnReceive** is not set or is set to **nullptr**, the application events received by the watcher will be saved. If the saved application events meet the trigger conditions of the **onTrigger** callback, the **onTrigger**<br>callback will be called.
 
+<!--Device-int OH_HiAppEvent_SetWatcherOnTrigger(HiAppEvent_Watcher* watcher, OH_HiAppEvent_OnTrigger onTrigger)--><!--Device-int OH_HiAppEvent_SetWatcherOnTrigger(HiAppEvent_Watcher* watcher, OH_HiAppEvent_OnTrigger onTrigger)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 12
@@ -945,6 +1009,8 @@ int OH_HiAppEvent_SetWatcherOnReceive(HiAppEvent_Watcher* watcher, OH_HiAppEvent
 
 Sets the **onReceive** callback. When the listener detects the corresponding event, the onReceive callback is called.
 
+<!--Device-int OH_HiAppEvent_SetWatcherOnReceive(HiAppEvent_Watcher* watcher, OH_HiAppEvent_OnReceive onReceive)--><!--Device-int OH_HiAppEvent_SetWatcherOnReceive(HiAppEvent_Watcher* watcher, OH_HiAppEvent_OnReceive onReceive)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 12
@@ -971,6 +1037,8 @@ int OH_HiAppEvent_TakeWatcherData(HiAppEvent_Watcher* watcher, uint32_t eventNum
 **Description**
 
 Obtains the event saved by the watcher.
+
+<!--Device-int OH_HiAppEvent_TakeWatcherData(HiAppEvent_Watcher* watcher, uint32_t eventNum, OH_HiAppEvent_OnTake onTake)--><!--Device-int OH_HiAppEvent_TakeWatcherData(HiAppEvent_Watcher* watcher, uint32_t eventNum, OH_HiAppEvent_OnTake onTake)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1007,6 +1075,8 @@ Adds a watcher. Once a watcher is added, it starts to listen for system messages
 > The name passed to the [OH_HiAppEvent_AddWatcher](capi-hiappevent-h.md#oh_hiappevent_addwatcher) API should be unique. If the same name is passed, the
 > previous subscription will be overwritten.
 
+<!--Device-int OH_HiAppEvent_AddWatcher(HiAppEvent_Watcher* watcher)--><!--Device-int OH_HiAppEvent_AddWatcher(HiAppEvent_Watcher* watcher)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 12
@@ -1032,6 +1102,8 @@ int OH_HiAppEvent_RemoveWatcher(HiAppEvent_Watcher* watcher)
 **Description**
 
 Removes a watcher. Once a watcher is removed, it stops listening for system messages. Note: This API only enables the watcher to stop listening for system messages. It does not destroy the watcher. The watcher still resides in the memory until the [OH_HiAppEvent_DestroyWatcher](capi-hiappevent-h.md#oh_hiappevent_destroywatcher) API is called.
+
+<!--Device-int OH_HiAppEvent_RemoveWatcher(HiAppEvent_Watcher* watcher)--><!--Device-int OH_HiAppEvent_RemoveWatcher(HiAppEvent_Watcher* watcher)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1059,6 +1131,8 @@ void OH_HiAppEvent_ClearData()
 
 Clears the events saved by all watchers.
 
+<!--Device-void OH_HiAppEvent_ClearData()--><!--Device-void OH_HiAppEvent_ClearData()-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 12
@@ -1072,6 +1146,8 @@ HiAppEvent_Processor* OH_HiAppEvent_CreateProcessor(const char* name)
 **Description**
 
 Creates a processor for application events. Note: If a created processor is no longer used, destroy it by calling [OH_HiAppEvent_DestroyProcessor](capi-hiappevent-h.md#oh_hiappevent_destroyprocessor).
+
+<!--Device-HiAppEvent_Processor* OH_HiAppEvent_CreateProcessor(const char* name)--><!--Device-HiAppEvent_Processor* OH_HiAppEvent_CreateProcessor(const char* name)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1098,6 +1174,8 @@ int OH_HiAppEvent_SetReportRoute(HiAppEvent_Processor* processor, const char* ap
 **Description**
 
 Sets the report route for the processor.
+
+<!--Device-int OH_HiAppEvent_SetReportRoute(HiAppEvent_Processor* processor, const char* appId, const char* routeInfo)--><!--Device-int OH_HiAppEvent_SetReportRoute(HiAppEvent_Processor* processor, const char* appId, const char* routeInfo)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1126,6 +1204,8 @@ int OH_HiAppEvent_SetReportPolicy(HiAppEvent_Processor* processor, int periodRep
 **Description**
 
 Sets the report policy for the processor.
+
+<!--Device-int OH_HiAppEvent_SetReportPolicy(HiAppEvent_Processor* processor, int periodReport, int batchReport, bool onStartReport, bool onBackgroundReport)--><!--Device-int OH_HiAppEvent_SetReportPolicy(HiAppEvent_Processor* processor, int periodReport, int batchReport, bool onStartReport, bool onBackgroundReport)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1157,6 +1237,8 @@ int OH_HiAppEvent_SetReportEvent(HiAppEvent_Processor* processor, const char* do
 
 Sets the report event for the processor.
 
+<!--Device-int OH_HiAppEvent_SetReportEvent(HiAppEvent_Processor* processor, const char* domain, const char* name, bool isRealTime)--><!--Device-int OH_HiAppEvent_SetReportEvent(HiAppEvent_Processor* processor, const char* domain, const char* name, bool isRealTime)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 18
@@ -1186,6 +1268,8 @@ int OH_HiAppEvent_SetCustomConfig(HiAppEvent_Processor* processor, const char* k
 
 Sets the custom extension parameters of the processor.
 
+<!--Device-int OH_HiAppEvent_SetCustomConfig(HiAppEvent_Processor* processor, const char* key, const char* value)--><!--Device-int OH_HiAppEvent_SetCustomConfig(HiAppEvent_Processor* processor, const char* key, const char* value)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 18
@@ -1214,6 +1298,8 @@ int OH_HiAppEvent_SetConfigId(HiAppEvent_Processor* processor, int configId)
 
 Sets the configuration ID of the processor.
 
+<!--Device-int OH_HiAppEvent_SetConfigId(HiAppEvent_Processor* processor, int configId)--><!--Device-int OH_HiAppEvent_SetConfigId(HiAppEvent_Processor* processor, int configId)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 18
@@ -1241,6 +1327,8 @@ int OH_HiAppEvent_SetConfigName(HiAppEvent_Processor* processor, const char* con
 
 Sets the configuration name of the processor.
 
+<!--Device-int OH_HiAppEvent_SetConfigName(HiAppEvent_Processor* processor, const char* configName)--><!--Device-int OH_HiAppEvent_SetConfigName(HiAppEvent_Processor* processor, const char* configName)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 20
@@ -1267,6 +1355,8 @@ int OH_HiAppEvent_SetReportUserId(HiAppEvent_Processor* processor, const char* c
 **Description**
 
 Sets the report user ID of the processor.
+
+<!--Device-int OH_HiAppEvent_SetReportUserId(HiAppEvent_Processor* processor, const char* const * userIdNames, int size)--><!--Device-int OH_HiAppEvent_SetReportUserId(HiAppEvent_Processor* processor, const char* const * userIdNames, int size)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1296,6 +1386,8 @@ int OH_HiAppEvent_SetReportUserProperty(HiAppEvent_Processor* processor, const c
 
 Sets the report user property of the processor.
 
+<!--Device-int OH_HiAppEvent_SetReportUserProperty(HiAppEvent_Processor* processor, const char* const * userPropertyNames, int size)--><!--Device-int OH_HiAppEvent_SetReportUserProperty(HiAppEvent_Processor* processor, const char* const * userPropertyNames, int size)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 18
@@ -1324,6 +1416,8 @@ int64_t OH_HiAppEvent_AddProcessor(HiAppEvent_Processor* processor)
 
 Adds a processor. You can add a processor to migrate event data to the cloud. You can preset the implementation of the processor on the device and set its properties based on its constraints. Note that the configuration information of **Processor** must be provided by the data processor. Yet, as no data processor is preset in the device for interaction for the moment, migrating events to the cloud is unavailable.
 
+<!--Device-int64_t OH_HiAppEvent_AddProcessor(HiAppEvent_Processor* processor)--><!--Device-int64_t OH_HiAppEvent_AddProcessor(HiAppEvent_Processor* processor)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 18
@@ -1350,6 +1444,8 @@ void OH_HiAppEvent_DestroyProcessor(HiAppEvent_Processor* processor)
 
 Destroys a processor. Note: If a processor is no longer used, destroy it to release memory to prevent memory leaks. After the processor is destroyed, set its pointer to null.
 
+<!--Device-void OH_HiAppEvent_DestroyProcessor(HiAppEvent_Processor* processor)--><!--Device-void OH_HiAppEvent_DestroyProcessor(HiAppEvent_Processor* processor)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 18
@@ -1369,6 +1465,8 @@ int OH_HiAppEvent_RemoveProcessor(int64_t processorId)
 **Description**
 
 Removes a processor. Once a processor is removed, it stops reporting events. Note: This API only stops the processor reporting events but does not destroy the processor. You can call [OH_HiAppEvent_DestroyProcessor](capi-hiappevent-h.md#oh_hiappevent_destroyprocessor) to destroy the processor and release the memory.
+
+<!--Device-int OH_HiAppEvent_RemoveProcessor(int64_t processorId)--><!--Device-int OH_HiAppEvent_RemoveProcessor(int64_t processorId)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1396,6 +1494,8 @@ HiAppEvent_Config* OH_HiAppEvent_CreateConfig(void)
 
 Creates a pointer to the configuration object that sets the conditions for triggering system events. Note: If the created pointer to the configuration object that sets the conditions for triggering system events is no longer used, destroy it by calling [OH_HiAppEvent_DestroyConfig](capi-hiappevent-h.md#oh_hiappevent_destroyconfig).
 
+<!--Device-HiAppEvent_Config* OH_HiAppEvent_CreateConfig(void)--><!--Device-HiAppEvent_Config* OH_HiAppEvent_CreateConfig(void)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 15
@@ -1416,6 +1516,8 @@ void OH_HiAppEvent_DestroyConfig(HiAppEvent_Config* config)
 
 Destroys a configuration object. Note: If a configuration object is no longer used, destroy it to release memory to prevent memory leaks. After the object is destroyed, set its pointer to null.
 
+<!--Device-void OH_HiAppEvent_DestroyConfig(HiAppEvent_Config* config)--><!--Device-void OH_HiAppEvent_DestroyConfig(HiAppEvent_Config* config)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 15
@@ -1435,6 +1537,8 @@ int OH_HiAppEvent_SetConfigItem(HiAppEvent_Config* config, const char* itemName,
 **Description**
 
 Sets the items in the configuration object.
+
+<!--Device-int OH_HiAppEvent_SetConfigItem(HiAppEvent_Config* config, const char* itemName, const char* itemValue)--><!--Device-int OH_HiAppEvent_SetConfigItem(HiAppEvent_Config* config, const char* itemName, const char* itemValue)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1464,6 +1568,8 @@ int OH_HiAppEvent_SetEventConfig(const char* name, HiAppEvent_Config* config)
 
 Sets event configuration parameters. Configuration items vary depending on events. Currently, only the following events are supported: **MAIN_THREAD_JANK**. **MAIN_THREAD_JANK_V2**. **EVENT_APP_CRASH**, is supported since API version 24.
 
+<!--Device-int OH_HiAppEvent_SetEventConfig(const char* name, HiAppEvent_Config* config)--><!--Device-int OH_HiAppEvent_SetEventConfig(const char* name, HiAppEvent_Config* config)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 15
@@ -1491,6 +1597,8 @@ typedef void (*OH_HiAppEvent_ExternalLogCapacityReachedCallback)(OH_HiAppEvent_E
 
 The parameter of OH_HiAppEvent_RegExternalLogCapacityReachedCallback function which acts as the callback function when external log directory capacity is reached.
 
+<!--Device-typedef void (*OH_HiAppEvent_ExternalLogCapacityReachedCallback)(OH_HiAppEvent_ExternalLog* externalLogArr, uint32_t arrLen)--><!--Device-typedef void (*OH_HiAppEvent_ExternalLogCapacityReachedCallback)(OH_HiAppEvent_ExternalLog* externalLogArr, uint32_t arrLen)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 **Since**: 26.0.1
@@ -1511,6 +1619,8 @@ int OH_HiAppEvent_RegExternalLogCapacityReachedCallback(OH_HiAppEvent_ExternalLo
 **Description**
 
 The interface to set the callback when external log directory capacity is reached.
+
+<!--Device-int OH_HiAppEvent_RegExternalLogCapacityReachedCallback(OH_HiAppEvent_ExternalLogCapacityReachedCallback callback)--><!--Device-int OH_HiAppEvent_RegExternalLogCapacityReachedCallback(OH_HiAppEvent_ExternalLogCapacityReachedCallback callback)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1537,6 +1647,8 @@ int OH_HiAppEvent_ReportFrameworkMemAnomaly(enum OH_HiAppEvent_FrameworkType fra
 **Description**
 
 Reports information about abnormal memory usage of the application framework. <br>This API can be called once every minute at most. If the frequency limit is exceeded, the error code **HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED** will be returned. <br>When the application detects that the memory usage of the application framework is abnormal and the operation is successful after this API is called: <br>1. If you have subscribed to the application event whose domain is **HIVIEWDFX** and name is **FW_MEM_ANOMALY**, the application will receive a callback containing the information about the abnormal memory usage of the application framework. <br>2. If you have not subscribed to this application event, the application will not receive the callback containing the information about the abnormal memory usage of the application framework.
+
+<!--Device-int OH_HiAppEvent_ReportFrameworkMemAnomaly(enum OH_HiAppEvent_FrameworkType frameworkType, const char* frameworkVersion, const char* description)--><!--Device-int OH_HiAppEvent_ReportFrameworkMemAnomaly(enum OH_HiAppEvent_FrameworkType frameworkType, const char* frameworkVersion, const char* description)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 

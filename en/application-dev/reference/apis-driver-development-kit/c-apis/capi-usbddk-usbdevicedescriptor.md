@@ -8,11 +8,13 @@ struct UsbDeviceDescriptor {...}
 
 Defines standard device descriptors, which correspond to **Standard Device Descriptor** in the USB protocol.
 
+<!--Device-struct UsbDeviceDescriptor {...}--><!--Device-struct UsbDeviceDescriptor {...}-End-->
+
 **System capability**: SystemCapability.Driver.USB.Extension
 
 **Since**: 10
 
-**Related module**: [UsbDdk](capi-others-usbddk.md)
+**Related module**: [UsbDdk](capi-driver-development-kit-usbddk.md)
 
 **Header file**: [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 

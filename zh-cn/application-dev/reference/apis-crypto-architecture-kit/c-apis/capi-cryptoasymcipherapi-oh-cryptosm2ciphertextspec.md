@@ -8,11 +8,13 @@ typedef struct OH_CryptoSm2CiphertextSpec OH_CryptoSm2CiphertextSpec
 
 SM2密文规格结构体，表示SM2密文规格。
 
+<!--Device-typedef struct OH_CryptoSm2CiphertextSpec OH_CryptoSm2CiphertextSpec--><!--Device-typedef struct OH_CryptoSm2CiphertextSpec OH_CryptoSm2CiphertextSpec-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 
-**相关模块：** [CryptoAsymCipherApi](capi-others-cryptoasymcipherapi.md)
+**相关模块：** [CryptoAsymCipherApi](capi-crypto-architecture-kit-cryptoasymcipherapi.md)
 
 **所在头文件：** [crypto_asym_cipher.h](capi-crypto-asym-cipher-h.md)
 

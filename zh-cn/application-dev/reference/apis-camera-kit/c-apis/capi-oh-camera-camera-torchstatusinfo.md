@@ -8,11 +8,13 @@ struct Camera_TorchStatusInfo {...}
 
 手电筒状态信息。
 
+<!--Device-struct Camera_TorchStatusInfo {...}--><!--Device-struct Camera_TorchStatusInfo {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
 
-**相关模块：** [OH_Camera](capi-others-oh-camera.md)
+**相关模块：** [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **所在头文件：** [camera.h](capi-camera-h.md)
 

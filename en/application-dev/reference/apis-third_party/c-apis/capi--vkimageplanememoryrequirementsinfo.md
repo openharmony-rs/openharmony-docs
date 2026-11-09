@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkImagePlaneMemoryRequirementsInfo {...}--><!--Device-struct VkImagePlaneMemoryRequirementsInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

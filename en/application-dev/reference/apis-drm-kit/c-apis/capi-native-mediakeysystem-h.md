@@ -54,6 +54,8 @@ typedef Drm_ErrCode (*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t 
 
 Call back will be invoked when event triggers.
 
+<!--Device-typedef Drm_ErrCode (*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)--><!--Device-typedef Drm_ErrCode (*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)-End-->
+
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
@@ -82,6 +84,8 @@ typedef Drm_ErrCode (*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem
 **Description**
 
 Call back will be invoked when event triggers.
+
+<!--Device-typedef Drm_ErrCode (*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)--><!--Device-typedef Drm_ErrCode (*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)-End-->
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -113,6 +117,8 @@ Drm_ErrCode OH_MediaKeySystem_SetCallback(MediaKeySystem *mediaKeySystem, OH_Med
 
 Set media key system event callback.
 
+<!--Device-Drm_ErrCode OH_MediaKeySystem_SetCallback(MediaKeySystem *mediaKeySystem, OH_MediaKeySystem_Callback callback)--><!--Device-Drm_ErrCode OH_MediaKeySystem_SetCallback(MediaKeySystem *mediaKeySystem, OH_MediaKeySystem_Callback callback)-End-->
+
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 12
@@ -139,6 +145,8 @@ Drm_ErrCode OH_MediaKeySystem_GetMediaKeySystems(DRM_MediaKeySystemDescription *
 **Description**
 
 Acquire supported media key systems' name and uuid.
+
+<!--Device-Drm_ErrCode OH_MediaKeySystem_GetMediaKeySystems(DRM_MediaKeySystemDescription *descs, uint32_t *count)--><!--Device-Drm_ErrCode OH_MediaKeySystem_GetMediaKeySystems(DRM_MediaKeySystemDescription *descs, uint32_t *count)-End-->
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -167,6 +175,8 @@ bool OH_MediaKeySystem_IsSupported(const char *name)
 
 Checks whether the device supports the specified DRM solution.
 
+<!--Device-bool OH_MediaKeySystem_IsSupported(const char *name)--><!--Device-bool OH_MediaKeySystem_IsSupported(const char *name)-End-->
+
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
@@ -192,6 +202,8 @@ bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)
 **Description**
 
 Checks whether the device supports the combination of the DRM solution and MIME type.
+
+<!--Device-bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)--><!--Device-bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)-End-->
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -219,6 +231,8 @@ bool OH_MediaKeySystem_IsSupported3(const char *name, const char *mimeType, DRM_
 **Description**
 
 Checks whether the device supports the combination of the DRM solution, MIME type, and content protection level.
+
+<!--Device-bool OH_MediaKeySystem_IsSupported3(const char *name, const char *mimeType, DRM_ContentProtectionLevel contentProtectionLevel)--><!--Device-bool OH_MediaKeySystem_IsSupported3(const char *name, const char *mimeType, DRM_ContentProtectionLevel contentProtectionLevel)-End-->
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -248,6 +262,8 @@ Drm_ErrCode OH_MediaKeySystem_Create(const char *name, MediaKeySystem **mediaKey
 
 Creates a media key system instance from the name.
 
+<!--Device-Drm_ErrCode OH_MediaKeySystem_Create(const char *name, MediaKeySystem **mediaKeySystem)--><!--Device-Drm_ErrCode OH_MediaKeySystem_Create(const char *name, MediaKeySystem **mediaKeySystem)-End-->
+
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
@@ -274,6 +290,8 @@ Drm_ErrCode OH_MediaKeySystem_SetConfigurationString(MediaKeySystem *mediaKeySys
 **Description**
 
 Set media key system configuration value by name.
+
+<!--Device-Drm_ErrCode OH_MediaKeySystem_SetConfigurationString(MediaKeySystem *mediaKeySystem, const char *configName, const char *value)--><!--Device-Drm_ErrCode OH_MediaKeySystem_SetConfigurationString(MediaKeySystem *mediaKeySystem, const char *configName, const char *value)-End-->
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -302,6 +320,8 @@ Drm_ErrCode OH_MediaKeySystem_GetConfigurationString(MediaKeySystem *mediaKeySys
 **Description**
 
 Get media key system configuration value by name.
+
+<!--Device-Drm_ErrCode OH_MediaKeySystem_GetConfigurationString(MediaKeySystem *mediaKeySystem, const char *configName, char *value, int32_t valueLen)--><!--Device-Drm_ErrCode OH_MediaKeySystem_GetConfigurationString(MediaKeySystem *mediaKeySystem, const char *configName, char *value, int32_t valueLen)-End-->
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -332,6 +352,8 @@ Drm_ErrCode OH_MediaKeySystem_SetConfigurationByteArray(MediaKeySystem *mediaKey
 
 Set media key system configuration value by name.
 
+<!--Device-Drm_ErrCode OH_MediaKeySystem_SetConfigurationByteArray(MediaKeySystem *mediaKeySystem, const char *configName, uint8_t *value, int32_t valueLen)--><!--Device-Drm_ErrCode OH_MediaKeySystem_SetConfigurationByteArray(MediaKeySystem *mediaKeySystem, const char *configName, uint8_t *value, int32_t valueLen)-End-->
+
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
@@ -360,6 +382,8 @@ Drm_ErrCode OH_MediaKeySystem_GetConfigurationByteArray(MediaKeySystem *mediaKey
 **Description**
 
 Get media key system configuration value by name.
+
+<!--Device-Drm_ErrCode OH_MediaKeySystem_GetConfigurationByteArray(MediaKeySystem *mediaKeySystem, const char *configName, uint8_t *value, int32_t *valueLen)--><!--Device-Drm_ErrCode OH_MediaKeySystem_GetConfigurationByteArray(MediaKeySystem *mediaKeySystem, const char *configName, uint8_t *value, int32_t *valueLen)-End-->
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -390,6 +414,8 @@ Drm_ErrCode OH_MediaKeySystem_GetStatistics(MediaKeySystem *mediaKeySystem, DRM_
 
 Get media key system statistics info.
 
+<!--Device-Drm_ErrCode OH_MediaKeySystem_GetStatistics(MediaKeySystem *mediaKeySystem, DRM_Statistics *statistics)--><!--Device-Drm_ErrCode OH_MediaKeySystem_GetStatistics(MediaKeySystem *mediaKeySystem, DRM_Statistics *statistics)-End-->
+
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
@@ -416,6 +442,8 @@ Drm_ErrCode OH_MediaKeySystem_GetMaxContentProtectionLevel(MediaKeySystem *media
 **Description**
 
 Get the max content protection level media key system supported.
+
+<!--Device-Drm_ErrCode OH_MediaKeySystem_GetMaxContentProtectionLevel(MediaKeySystem *mediaKeySystem, DRM_ContentProtectionLevel *contentProtectionLevel)--><!--Device-Drm_ErrCode OH_MediaKeySystem_GetMaxContentProtectionLevel(MediaKeySystem *mediaKeySystem, DRM_ContentProtectionLevel *contentProtectionLevel)-End-->
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -444,6 +472,8 @@ Drm_ErrCode OH_MediaKeySystem_SetMediaKeySystemCallback(MediaKeySystem *mediaKey
 
 Set media key system event callback.
 
+<!--Device-Drm_ErrCode OH_MediaKeySystem_SetMediaKeySystemCallback(MediaKeySystem *mediaKeySystem, MediaKeySystem_Callback callback)--><!--Device-Drm_ErrCode OH_MediaKeySystem_SetMediaKeySystemCallback(MediaKeySystem *mediaKeySystem, MediaKeySystem_Callback callback)-End-->
+
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
@@ -470,6 +500,8 @@ Drm_ErrCode OH_MediaKeySystem_CreateMediaKeySession(MediaKeySystem *mediaKeySyst
 **Description**
 
 Create a media key session instance.
+
+<!--Device-Drm_ErrCode OH_MediaKeySystem_CreateMediaKeySession(MediaKeySystem *mediaKeySystem, DRM_ContentProtectionLevel *level, MediaKeySession **mediaKeySession)--><!--Device-Drm_ErrCode OH_MediaKeySystem_CreateMediaKeySession(MediaKeySystem *mediaKeySystem, DRM_ContentProtectionLevel *level, MediaKeySession **mediaKeySession)-End-->
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -498,6 +530,8 @@ Drm_ErrCode OH_MediaKeySystem_GenerateKeySystemRequest(MediaKeySystem *mediaKeyS
 **Description**
 
 Generate a media key system provision request.
+
+<!--Device-Drm_ErrCode OH_MediaKeySystem_GenerateKeySystemRequest(MediaKeySystem *mediaKeySystem, uint8_t *request, int32_t *requestLen, char *defaultUrl, int32_t defaultUrlLen)--><!--Device-Drm_ErrCode OH_MediaKeySystem_GenerateKeySystemRequest(MediaKeySystem *mediaKeySystem, uint8_t *request, int32_t *requestLen, char *defaultUrl, int32_t defaultUrlLen)-End-->
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -529,6 +563,8 @@ Drm_ErrCode OH_MediaKeySystem_ProcessKeySystemResponse(MediaKeySystem *mediaKeyS
 
 Process a media key system provision response.
 
+<!--Device-Drm_ErrCode OH_MediaKeySystem_ProcessKeySystemResponse(MediaKeySystem *mediaKeySystem, uint8_t *response, int32_t responseLen)--><!--Device-Drm_ErrCode OH_MediaKeySystem_ProcessKeySystemResponse(MediaKeySystem *mediaKeySystem, uint8_t *response, int32_t responseLen)-End-->
+
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
@@ -557,6 +593,8 @@ Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyIds(MediaKeySystem *mediaKeySyst
 
 Get offline media key ids .
 
+<!--Device-Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyIds(MediaKeySystem *mediaKeySystem, DRM_OfflineMediakeyIdArray *offlineMediaKeyIds)--><!--Device-Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyIds(MediaKeySystem *mediaKeySystem, DRM_OfflineMediakeyIdArray *offlineMediaKeyIds)-End-->
+
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
@@ -583,6 +621,8 @@ Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyStatus(MediaKeySystem *mediaKeyS
 **Description**
 
 Get offline media key status.
+
+<!--Device-Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyStatus(MediaKeySystem *mediaKeySystem, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, DRM_OfflineMediaKeyStatus *status)--><!--Device-Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyStatus(MediaKeySystem *mediaKeySystem, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, DRM_OfflineMediaKeyStatus *status)-End-->
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
@@ -613,6 +653,8 @@ Drm_ErrCode OH_MediaKeySystem_ClearOfflineMediaKeys(MediaKeySystem *mediaKeySyst
 
 Clear an offline media key by id.
 
+<!--Device-Drm_ErrCode OH_MediaKeySystem_ClearOfflineMediaKeys(MediaKeySystem *mediaKeySystem, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen)--><!--Device-Drm_ErrCode OH_MediaKeySystem_ClearOfflineMediaKeys(MediaKeySystem *mediaKeySystem, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen)-End-->
+
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
@@ -641,6 +683,8 @@ Drm_ErrCode OH_MediaKeySystem_GetCertificateStatus(MediaKeySystem *mediaKeySyste
 
 Get certificate status of media key system.
 
+<!--Device-Drm_ErrCode OH_MediaKeySystem_GetCertificateStatus(MediaKeySystem *mediaKeySystem, DRM_CertificateStatus *certStatus)--><!--Device-Drm_ErrCode OH_MediaKeySystem_GetCertificateStatus(MediaKeySystem *mediaKeySystem, DRM_CertificateStatus *certStatus)-End-->
+
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
@@ -667,6 +711,8 @@ Drm_ErrCode OH_MediaKeySystem_Destroy(MediaKeySystem *mediaKeySystem)
 **Description**
 
 Destroy a media key system instance.
+
+<!--Device-Drm_ErrCode OH_MediaKeySystem_Destroy(MediaKeySystem *mediaKeySystem)--><!--Device-Drm_ErrCode OH_MediaKeySystem_Destroy(MediaKeySystem *mediaKeySystem)-End-->
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 

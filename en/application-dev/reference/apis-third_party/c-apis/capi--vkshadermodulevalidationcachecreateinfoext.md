@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkShaderModuleValidationCacheCreateInfoEXT {...}--><!--Device-struct VkShaderModuleValidationCacheCreateInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

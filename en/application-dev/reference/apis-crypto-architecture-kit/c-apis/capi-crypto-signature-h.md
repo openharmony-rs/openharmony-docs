@@ -69,6 +69,8 @@ enum CryptoSignature_ParamType
 
 Defines signature parameter types.
 
+<!--Device-CryptoSignature_ParamType--><!--Device-CryptoSignature_ParamType-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
@@ -94,6 +96,8 @@ OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify *
 **Description**
 
 Creates a verification context based on the given algorithm name.
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify **verify)--><!--Device-OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify **verify)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -129,6 +133,8 @@ OH_Crypto_ErrCode OH_CryptoVerify_Init(OH_CryptoVerify *ctx, OH_CryptoPubKey *pu
 
 Initializes the verification context with the given public key.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoVerify_Init(OH_CryptoVerify *ctx, OH_CryptoPubKey *pubKey)--><!--Device-OH_Crypto_ErrCode OH_CryptoVerify_Init(OH_CryptoVerify *ctx, OH_CryptoPubKey *pubKey)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
@@ -163,6 +169,8 @@ OH_Crypto_ErrCode OH_CryptoVerify_Update(OH_CryptoVerify *ctx, Crypto_DataBlob *
 
 Appends message data to be verified.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoVerify_Update(OH_CryptoVerify *ctx, Crypto_DataBlob *in)--><!--Device-OH_Crypto_ErrCode OH_CryptoVerify_Update(OH_CryptoVerify *ctx, Crypto_DataBlob *in)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
@@ -195,6 +203,8 @@ bool OH_CryptoVerify_Final(OH_CryptoVerify *ctx, Crypto_DataBlob *in, Crypto_Dat
 
 Verifies message data.
 
+<!--Device-bool OH_CryptoVerify_Final(OH_CryptoVerify *ctx, Crypto_DataBlob *in, Crypto_DataBlob *signData)--><!--Device-bool OH_CryptoVerify_Final(OH_CryptoVerify *ctx, Crypto_DataBlob *in, Crypto_DataBlob *signData)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
@@ -222,6 +232,8 @@ OH_Crypto_ErrCode OH_CryptoVerify_Recover(OH_CryptoVerify *ctx, Crypto_DataBlob 
 **Description**
 
 Recovers signature data. Only RSA algorithm is supported.
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoVerify_Recover(OH_CryptoVerify *ctx, Crypto_DataBlob *signData, Crypto_DataBlob *rawSignData)--><!--Device-OH_Crypto_ErrCode OH_CryptoVerify_Recover(OH_CryptoVerify *ctx, Crypto_DataBlob *signData, Crypto_DataBlob *rawSignData)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -253,6 +265,8 @@ const char *OH_CryptoVerify_GetAlgoName(OH_CryptoVerify *ctx)
 
 Obtains the algorithm name of the verification context.
 
+<!--Device-const char *OH_CryptoVerify_GetAlgoName(OH_CryptoVerify *ctx)--><!--Device-const char *OH_CryptoVerify_GetAlgoName(OH_CryptoVerify *ctx)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
@@ -278,6 +292,8 @@ OH_Crypto_ErrCode OH_CryptoVerify_SetParam(OH_CryptoVerify *ctx, CryptoSignature
 **Description**
 
 Sets the specified parameter of the verification context.
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoVerify_SetParam(OH_CryptoVerify *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)--><!--Device-OH_Crypto_ErrCode OH_CryptoVerify_SetParam(OH_CryptoVerify *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -306,6 +322,8 @@ OH_Crypto_ErrCode OH_CryptoVerify_GetParam(OH_CryptoVerify *ctx, CryptoSignature
 **Description**
 
 Obtains the specified parameter of the verification context.
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoVerify_GetParam(OH_CryptoVerify *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)--><!--Device-OH_Crypto_ErrCode OH_CryptoVerify_GetParam(OH_CryptoVerify *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -337,6 +355,8 @@ void OH_CryptoVerify_Destroy(OH_CryptoVerify *ctx)
 
 Destroys the verification context.
 
+<!--Device-void OH_CryptoVerify_Destroy(OH_CryptoVerify *ctx)--><!--Device-void OH_CryptoVerify_Destroy(OH_CryptoVerify *ctx)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
@@ -356,6 +376,8 @@ OH_Crypto_ErrCode OH_CryptoSign_Create(const char *algoName, OH_CryptoSign **sig
 **Description**
 
 Creates a signing context based on the given algorithm name.
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoSign_Create(const char *algoName, OH_CryptoSign **sign)--><!--Device-OH_Crypto_ErrCode OH_CryptoSign_Create(const char *algoName, OH_CryptoSign **sign)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -391,6 +413,8 @@ OH_Crypto_ErrCode OH_CryptoSign_Init(OH_CryptoSign *ctx, OH_CryptoPrivKey *privK
 
 Initializes the signing context.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoSign_Init(OH_CryptoSign *ctx, OH_CryptoPrivKey *privKey)--><!--Device-OH_Crypto_ErrCode OH_CryptoSign_Init(OH_CryptoSign *ctx, OH_CryptoPrivKey *privKey)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -424,6 +448,8 @@ OH_Crypto_ErrCode OH_CryptoSign_Update(OH_CryptoSign *ctx, const Crypto_DataBlob
 
 Updates data to be signed.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoSign_Update(OH_CryptoSign *ctx, const Crypto_DataBlob *in)--><!--Device-OH_Crypto_ErrCode OH_CryptoSign_Update(OH_CryptoSign *ctx, const Crypto_DataBlob *in)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -456,6 +482,8 @@ OH_Crypto_ErrCode OH_CryptoSign_Final(OH_CryptoSign *ctx, const Crypto_DataBlob 
 
 Finishes the signing operation.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoSign_Final(OH_CryptoSign *ctx, const Crypto_DataBlob *in, Crypto_DataBlob *out)--><!--Device-OH_Crypto_ErrCode OH_CryptoSign_Final(OH_CryptoSign *ctx, const Crypto_DataBlob *in, Crypto_DataBlob *out)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -486,6 +514,8 @@ const char *OH_CryptoSign_GetAlgoName(OH_CryptoSign *ctx)
 
 Obtains the algorithm name of the signing context.
 
+<!--Device-const char *OH_CryptoSign_GetAlgoName(OH_CryptoSign *ctx)--><!--Device-const char *OH_CryptoSign_GetAlgoName(OH_CryptoSign *ctx)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -511,6 +541,8 @@ OH_Crypto_ErrCode OH_CryptoSign_SetParam(OH_CryptoSign *ctx, CryptoSignature_Par
 **Description**
 
 Sets the specified parameter for the signing context.
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoSign_SetParam(OH_CryptoSign *ctx, CryptoSignature_ParamType type, const Crypto_DataBlob *value)--><!--Device-OH_Crypto_ErrCode OH_CryptoSign_SetParam(OH_CryptoSign *ctx, CryptoSignature_ParamType type, const Crypto_DataBlob *value)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -539,6 +571,8 @@ OH_Crypto_ErrCode OH_CryptoSign_GetParam(OH_CryptoSign *ctx, CryptoSignature_Par
 **Description**
 
 Obtains the specified parameter from the signing context.
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoSign_GetParam(OH_CryptoSign *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)--><!--Device-OH_Crypto_ErrCode OH_CryptoSign_GetParam(OH_CryptoSign *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -570,6 +604,8 @@ void OH_CryptoSign_Destroy(OH_CryptoSign *ctx)
 
 Destroys the signing context.
 
+<!--Device-void OH_CryptoSign_Destroy(OH_CryptoSign *ctx)--><!--Device-void OH_CryptoSign_Destroy(OH_CryptoSign *ctx)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -589,6 +625,8 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Create(Crypto_DataBlob *eccSignature
 **Description**
 
 Creates an ECC signature specification. Also supports SM2 signatures.
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Create(Crypto_DataBlob *eccSignature, OH_CryptoEccSignatureSpec **spec)--><!--Device-OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Create(Crypto_DataBlob *eccSignature, OH_CryptoEccSignatureSpec **spec)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -625,6 +663,8 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_GetRAndS(OH_CryptoEccSignatureSpec *
 
 Gets the r and s values from the ECC signature specification.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_GetRAndS(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *r, Crypto_DataBlob *s)--><!--Device-OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_GetRAndS(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *r, Crypto_DataBlob *s)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -654,6 +694,8 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_SetRAndS(OH_CryptoEccSignatureSpec *
 **Description**
 
 Sets the r and s values for the ECC signature specification.
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_SetRAndS(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *r, Crypto_DataBlob *s)--><!--Device-OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_SetRAndS(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *r, Crypto_DataBlob *s)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -688,6 +730,8 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Encode(OH_CryptoEccSignatureSpec *sp
 
 Encodes the ECC signature specification into DER format signature data.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Encode(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *out)--><!--Device-OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Encode(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *out)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -716,6 +760,8 @@ void OH_CryptoEccSignatureSpec_Destroy(OH_CryptoEccSignatureSpec *spec)
 **Description**
 
 Destroys the ECC signature specification.
+
+<!--Device-void OH_CryptoEccSignatureSpec_Destroy(OH_CryptoEccSignatureSpec *spec)--><!--Device-void OH_CryptoEccSignatureSpec_Destroy(OH_CryptoEccSignatureSpec *spec)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 

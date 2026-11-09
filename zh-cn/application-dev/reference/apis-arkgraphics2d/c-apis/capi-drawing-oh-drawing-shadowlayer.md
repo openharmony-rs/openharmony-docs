@@ -8,11 +8,13 @@ typedef struct OH_Drawing_ShadowLayer OH_Drawing_ShadowLayer
 
 定义一个阴影层，用于描述绘制内容的阴影效果。
 
+<!--Device-typedef struct OH_Drawing_ShadowLayer OH_Drawing_ShadowLayer--><!--Device-typedef struct OH_Drawing_ShadowLayer OH_Drawing_ShadowLayer-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
-**相关模块：** [Drawing](capi-others-drawing.md)
+**相关模块：** [Drawing](capi-arkgraphics2d-drawing.md)
 
 **所在头文件：** [drawing_types.h](capi-drawing-types-h.md)
 

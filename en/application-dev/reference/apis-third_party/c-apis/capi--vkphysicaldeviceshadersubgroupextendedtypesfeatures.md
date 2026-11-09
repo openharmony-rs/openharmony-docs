@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures {...}--><!--Device-struct VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

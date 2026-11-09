@@ -8,11 +8,13 @@ typedef struct GameDevice_AllDeviceInfos GameDevice_AllDeviceInfos
 
 定义[OH_GameDevice_GetAllDeviceInfos](capi-game-device-h.md#oh_gamedevice_getalldeviceinfos)接口的调用结果。
 
+<!--Device-typedef struct GameDevice_AllDeviceInfos GameDevice_AllDeviceInfos--><!--Device-typedef struct GameDevice_AllDeviceInfos GameDevice_AllDeviceInfos-End-->
+
 **系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
-**相关模块：** [GameController](capi-others-gamecontroller.md)
+**相关模块：** [GameController](capi-game-controller-kit-gamecontroller.md)
 
 **所在头文件：** [game_device.h](capi-game-device-h.md)
 

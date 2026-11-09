@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkConformanceVersion {...}--><!--Device-struct VkConformanceVersion {...}-End-->
+
 ## Summary
 
 ### Member variables

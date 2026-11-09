@@ -8,11 +8,13 @@ struct OH_Camera_PhysicalAperture {...}
 
 Describes the physical aperture configuration.
 
+<!--Device-struct OH_Camera_PhysicalAperture {...}--><!--Device-struct OH_Camera_PhysicalAperture {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
-**Related module**: [OH_Camera](capi-others-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **Header file**: [camera.h](capi-camera-h.md)
 

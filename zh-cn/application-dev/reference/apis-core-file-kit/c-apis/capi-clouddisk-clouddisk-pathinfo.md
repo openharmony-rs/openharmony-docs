@@ -8,9 +8,11 @@ typedef CloudDisk_PathInfo CloudDisk_SyncFolderPath
 
 定义的同步根路径。
 
+<!--Device-typedef CloudDisk_PathInfo CloudDisk_SyncFolderPath--><!--Device-typedef CloudDisk_PathInfo CloudDisk_SyncFolderPath-End-->
+
 **起始版本：** 21
 
-**相关模块：** [CloudDisk](capi-others-clouddisk.md)
+**相关模块：** [CloudDisk](capi-core-file-kit-clouddisk.md)
 
 **所在头文件：** [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
 

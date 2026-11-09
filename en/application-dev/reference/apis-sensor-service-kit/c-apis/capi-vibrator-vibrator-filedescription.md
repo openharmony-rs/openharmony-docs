@@ -8,11 +8,13 @@ struct Vibrator_FileDescription {...}
 
 Defines the vibration file description. This method is used to describe the file information of a custom vibration pattern. You can use a custom vibration file to implement precise vibration control.
 
+<!--Device-struct Vibrator_FileDescription {...}--><!--Device-struct Vibrator_FileDescription {...}-End-->
+
 **System capability**: SystemCapability.Sensors.MiscDevice
 
 **Since**: 11
 
-**Related module**: [Vibrator](capi-others-vibrator.md)
+**Related module**: [Vibrator](capi-sensor-service-kit-vibrator.md)
 
 **Header file**: [vibrator_type.h](capi-vibrator-type-h.md)
 

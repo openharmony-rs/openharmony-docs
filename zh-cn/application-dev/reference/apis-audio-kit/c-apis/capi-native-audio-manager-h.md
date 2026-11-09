@@ -42,6 +42,8 @@ typedef void (*OH_AudioManager_OnAudioSceneChangeCallback)(void *userData, OH_Au
 
 音频场景变化回调函数的原型定义，用于[OH_AudioManager_RegisterAudioSceneChangeCallback](capi-native-audio-manager-h.md#oh_audiomanager_registeraudioscenechangecallback)接口。
 
+<!--Device-typedef void (*OH_AudioManager_OnAudioSceneChangeCallback)(void *userData, OH_AudioScene scene)--><!--Device-typedef void (*OH_AudioManager_OnAudioSceneChangeCallback)(void *userData, OH_AudioScene scene)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
@@ -62,6 +64,8 @@ OH_AudioCommon_Result OH_GetAudioManager(OH_AudioManager **audioManager)
 **描述：**
 
 获取音频基础管理器实例，该实例为单例，用于调用音频基础管理功能接口。
+
+<!--Device-OH_AudioCommon_Result OH_GetAudioManager(OH_AudioManager **audioManager)--><!--Device-OH_AudioCommon_Result OH_GetAudioManager(OH_AudioManager **audioManager)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -88,6 +92,8 @@ OH_AudioCommon_Result OH_GetAudioScene(OH_AudioManager* manager, OH_AudioScene *
 **描述：**
 
 获取音频场景。 <br>音频场景主要用于表示音频通话相关的系统状态，调用者可通过音频场景识别系统是否处于语音通话或通话响铃状态。
+
+<!--Device-OH_AudioCommon_Result OH_GetAudioScene(OH_AudioManager* manager, OH_AudioScene *scene)--><!--Device-OH_AudioCommon_Result OH_GetAudioScene(OH_AudioManager* manager, OH_AudioScene *scene)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -116,6 +122,8 @@ OH_AudioCommon_Result OH_AudioManager_RegisterAudioSceneChangeCallback(OH_AudioM
 
 注册音频场景变化回调函数。 <br>音频场景主要用于表示音频通话相关的系统状态，调用者可通过此接口监听系统是否进入或退出通话状态。 <br>若不再需要监听音频场景变化，可调用[OH_AudioManager_UnregisterAudioSceneChangeCallback](capi-native-audio-manager-h.md#oh_audiomanager_unregisteraudioscenechangecallback)取消注册。
 
+<!--Device-OH_AudioCommon_Result OH_AudioManager_RegisterAudioSceneChangeCallback(OH_AudioManager *manager, OH_AudioManager_OnAudioSceneChangeCallback callback, void *userData)--><!--Device-OH_AudioCommon_Result OH_AudioManager_RegisterAudioSceneChangeCallback(OH_AudioManager *manager, OH_AudioManager_OnAudioSceneChangeCallback callback, void *userData)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
@@ -143,6 +151,8 @@ OH_AudioCommon_Result OH_AudioManager_UnregisterAudioSceneChangeCallback(OH_Audi
 **描述：**
 
 取消注册音频场景变化回调函数。
+
+<!--Device-OH_AudioCommon_Result OH_AudioManager_UnregisterAudioSceneChangeCallback(OH_AudioManager *manager, OH_AudioManager_OnAudioSceneChangeCallback callback)--><!--Device-OH_AudioCommon_Result OH_AudioManager_UnregisterAudioSceneChangeCallback(OH_AudioManager *manager, OH_AudioManager_OnAudioSceneChangeCallback callback)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 

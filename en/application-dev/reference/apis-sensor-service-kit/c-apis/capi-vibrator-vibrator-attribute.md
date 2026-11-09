@@ -8,11 +8,13 @@ struct Vibrator_Attribute {...}
 
 The **Vibrator_Attribute** struct is used to describe the attributes of the vibrator. You can use this struct to specify the vibrator ID and vibration scenario. For details about the application scenarios and implementation mechanism, see the Vibrator module documentation.
 
+<!--Device-struct Vibrator_Attribute {...}--><!--Device-struct Vibrator_Attribute {...}-End-->
+
 **System capability**: SystemCapability.Sensors.MiscDevice
 
 **Since**: 11
 
-**Related module**: [Vibrator](capi-others-vibrator.md)
+**Related module**: [Vibrator](capi-sensor-service-kit-vibrator.md)
 
 **Header file**: [vibrator_type.h](capi-vibrator-type-h.md)
 
