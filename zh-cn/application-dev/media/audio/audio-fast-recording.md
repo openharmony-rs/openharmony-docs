@@ -62,8 +62,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 <!-- @[latencyMode_UltraFast_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
 
 ``` C++
-OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST;
-OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
+OH_AudioStreamBuilder_SetLatencyMode(builder, AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST);
 ```
 
 针对OHAudio开发音频录制，有以下相关实例可供参考：
