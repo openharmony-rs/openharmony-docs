@@ -3396,9 +3396,6 @@ struct ShaderColorStyle {
   }
 }
 ```
-<<<<<<< HEAD
-![StyledStringShaderStyle](figures/styledStringShaderStyle.png)
-=======
 ![StyledStringShaderStyle](figures/styledStringShaderStyle.png)
 
 ### 示例21（设置文本尾部缩进）
@@ -3651,4 +3648,3 @@ struct StyledStringImageTagDemo {
 
 ![imageAttachmentImageTag](figures/styledStringImageTag.gif)
 
->>>>>>> eef4c2c5c78066b79ee3da0f42694b1f9b809bb2
