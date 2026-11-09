@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "How to use JSVM-API tracing to start collection by category with OH_JSVM_TraceStart and stop collection with OH_JSVM_TraceStop, which outputs runtime events in JSON format through a callback for troubleshooting and performance analysis."
+keywords: [OH_JSVM_TraceStart, OH_JSVM_TraceStop, tracing, event categories, JSON format, callbacks, performance analysis, JSVM_TraceCategory]
+doctype: guide
+status: active
+---
+
 # Working with Trace Using JSVM-API
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=1bcf41641a10f17d0f56bfc82362dc9488eaf7eb translatedAt=2026-11-09T08:52:17.339Z nl=1 -->
 
 ## Introduction
 
@@ -43,7 +52,7 @@ bool OutputStream(const char *data, int size, void *streamData) {
 
 // OH_JSVM_TraceStart/OH_JSVM_TraceStop methods.
 static JSVM_Value Trace(JSVM_Env env, JSVM_CallbackInfo info) {
-    // Start trace based on the specified categories.
+    // Start trace with categories
     std::vector<JSVM_TraceCategory> categories = {JSVM_TRACE_VM};
     JSVM_CALL(OH_JSVM_TraceStart(categories.size(), categories.data(), "trace test", 0));
 
@@ -82,8 +91,8 @@ static JSVM_PropertyDescriptor descriptor[] = {
 // Call the C++ code from JS.
 const char *srcCallNative = R"JS(trace())JS";
 ```
-Expected result:
-```
+Expected output:
+```txt
 JSVM Trace success:{"trace test":[{"pid":54485,"tid":54485,"ts":341364468711,"tts":139452,"ph":"B","cat":"devtools.timeline,v8","name":"MinorGC","dur":0,"tdur":0,"args":{"usedHeapSizeBefore":1592824,"type":"allocation failure"}},{"pid":54485,"tid":54485,"ts":341364468727,"tts":139463,"ph":"X","cat":"v8","name":"V8.GCScavenger","dur":203,"tdur":203,"args":{}},{"pid":54485,"tid":54485,"ts":341364468949,"tts":139684,"ph":"E","cat":"devtools.timeline,v8","name":"MinorGC","dur":0,"tdur":0,"args":{"usedHeapSizeAfter":173472}},{"pid":54485,"tid":54485,"ts":341364471055,"tts":141792,"ph":"B","cat":"devtools.timeline,v8","name":"MinorGC","dur":0,"tdur":0,"args":{"usedHeapSizeBefore":1208672,"type":"allocation failure"}},{"pid":54485,"tid":54485,"ts":341364471060,"tts":141796,"ph":"X","cat":"v8","name":"V8.GCScavenger","dur":110,"tdur":110,"args":{}},{"pid":54485,"tid":54485,"ts":341364471182,"tts":141918,"ph":"E","cat":"devtools.timeline,v8","name":"MinorGC","dur":0,"tdur":0,"args":{"usedHeapSizeAfter":173472}},{"pid":54485,"tid":54485,"ts":341364472901,"tts":143638,"ph":"B","cat":"devtools.timeline,v8","name":"MinorGC","dur":0,"tdur":0,"args":{"usedHeapSizeBefore":1221944,"type":"allocation failure"}},{"pid":54485,"tid":54485,"ts":341364472905,"tts":143641,"ph":"X","cat":"v8","name":"V8.GCScavenger","dur":26,"tdur":26,"args":{}},{"pid":54485,"tid":54485,"ts":341364472940,"tts":143675,"ph":"E","cat":"devtools.timeline,v8","name":"MinorGC","dur":0,"tdur":0,"args":{"usedHeapSizeAfter":173472}},{"pid":54485,"tid":54485,"ts":341364474583,"tts":145319,"ph":"B","cat":"devtools.timeline,v8","name":"MinorGC","dur":0,"tdur":0,"args":{"usedHeapSizeBefore":1221944,"type":"allocation failure"}},{"pid":54485,"tid":54485,"ts":341364474585,"tts":145321,"ph":"X","cat":"v8","name":"V8.GCScavenger","dur":17,"tdur":16,"args":{}},{"pid":54485,"tid":54485,"ts":341364474608,"tts":145343,"ph":"E","cat":"devtools.timeline,v8","name":"MinorGC","dur":0,"tdur":0,"args":{"usedHeapSizeAfter":173472}}]}
 ```
 Note: The result of your demo may not be the same as the reference result, as the ID allocation mode is subject to the user environment.
