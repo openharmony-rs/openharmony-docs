@@ -26,6 +26,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
+| [OH_InputMethod_UnderlineStyle](#oh_inputmethod_underlinestyle) | OH_InputMethod_UnderlineStyle | 预上屏文本的下划线样式枚举。 |
 | [InputMethod_KeyboardStatus](#inputmethod_keyboardstatus) | InputMethod_KeyboardStatus | 键盘状态。定义软键盘的显示和隐藏状态，用于在OH_TextEditorProxy_SendKeyboardStatusFunc回调中标识当前键盘状态。 |
 | [InputMethod_EnterKeyType](#inputmethod_enterkeytype) | InputMethod_EnterKeyType | 回车键功能类型。定义在不同输入场景下回车键的触发行为，用于配置编辑框回车键的功能语义。 |
 | [InputMethod_Direction](#inputmethod_direction) | InputMethod_Direction | 移动方向。该类型定义了在编辑框中光标或选择区域的移动方向，用于支持输入法应用实现光标移动、文本选择等编辑操作。 |
@@ -37,6 +38,25 @@
 | [InputMethod_InputCapabilityType](#inputmethod_inputcapabilitytype) | InputMethod_InputCapabilityType | 系统输入能力类型。用于OH_InputMethod_InputMethodProxy_RequestSystemInputCapability指定请求的系统输入能力类型。 |
 
 ## 枚举类型说明
+
+### OH_InputMethod_UnderlineStyle
+
+```c
+enum OH_InputMethod_UnderlineStyle
+```
+
+**描述**
+
+预上屏文本的下划线样式枚举。
+
+**起始版本：** 26.1.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_INPUTMETHOD_UNDERLINE_STYLE_NONE = 0 | 无下划线。 |
+| OH_INPUTMETHOD_UNDERLINE_STYLE_SOLID = 1 | 实线下划线。 |
+| OH_INPUTMETHOD_UNDERLINE_STYLE_WAVY = 2 | 波浪线下划线。 |
+| OH_INPUTMETHOD_UNDERLINE_STYLE_DASHED = 3 | 虚线下划线。 |
 
 ### InputMethod_KeyboardStatus
 
