@@ -260,7 +260,7 @@ bool OH_AVCapability_IsSecure(OH_AVCapability *capability)
 
 **描述**
 
-检查能力实例是否描述了一个DRM解码器。
+检查能力实例是否描述了一个DRM(Digital Rights Management)解码器。
 
 **起始版本：** 24
 
