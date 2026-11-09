@@ -1,12 +1,11 @@
 # Class (BaseGestureHandlingProposal)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1679aa2b39603a323ce91f1907155d8cbd2b330b translatedAt=2026-08-11T01:52:47.083Z pushedAt=2026-08-11T06:04:50.152Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-02T12:35:18.292Z pushedAt=2026-11-05T02:59:33.962Z nl=1 -->
 
 Base class for smart gesture handling. When the [registerMonitor](./arkts-apis-uicontext-smartgesturecontroller.md#registermonitor) API is used to dynamically customize smart gesture behaviors, the callback parameter is an instance of a specific subclass type.
 
@@ -20,7 +19,7 @@ Base class for smart gesture handling. When the [registerMonitor](./arkts-apis-u
 
 **Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name | Type | Read-Only | Optional | Description |
 | ---- | ---- | ---- | ---- | ---- |
@@ -33,7 +32,7 @@ This example demonstrates how to obtain smart gesture handling information from 
 
 ```ts
 import {
-  BaseGestureHandlingProposal, GestureHandlingResolution,
+  BaseGestureHandlingProposal, GestureHandlingResolution, GestureShortcut,
 } from '@kit.ArkUI';
 
 @Entry

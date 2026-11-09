@@ -496,6 +496,8 @@ cpsr:208f0030          <-  状态寄存器值（arm32架构为cpsr，aarch64架�
 
 以递归调用时未设置递归终止条件导致栈内存耗尽为例，示例代码如下：
 
+<!-- @[CppCrash_Stack_Overflow_C++](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+
 ```c++
 static void *DoStackOverflow(void * inputArg) __attribute__((optnone))
 {
@@ -1074,24 +1076,27 @@ SIGPIPE异常退出时关键日志如下所示：
 
   在HILOG中使用关键字`C02D11`过滤日志，根据筛选日志能够获取异常发生所在行相应信息，则表示调用栈功能成功开启。
 
-  以通过testSIGPIPE()函数来实现SIGPIPE的异常场景为例：
+  以通过TestSigpipe()函数来实现SIGPIPE的异常场景为例：
+
+  <!-- @[CppCrash_Sigpipe_Test_C++](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
 
   ```c++
   #include <unistd.h>
-  #include <signal.h>
+  #include <csignal>
 
-  int testSIGPIPE()
+  int TestSigpipe()
   {
-      sigset_t set, oldset;
+      sigset_t set;
+      sigset_t oldset;
       // 初始化信号集，加入要临时解除阻塞的信号
       sigemptyset(&set);
       sigaddset(&set, SIGPIPE);
       // 先保存当前的信号屏蔽集
-      if (sigprocmask(SIG_SETMASK, NULL, &oldset) != 0) {
+      if (sigprocmask(SIG_SETMASK, nullptr, &oldset) != 0) {
           return -1;
       }
       // 临时解除阻塞
-      if (sigprocmask(SIG_UNBLOCK, &set, NULL) != 0) {
+      if (sigprocmask(SIG_UNBLOCK, &set, nullptr) != 0) {
           return -1;
       }
       // 创建pipe后，先关闭读端pipe，然后写端继续写，构建SIGPIPE的异常场景
@@ -1103,16 +1108,16 @@ SIGPIPE异常退出时关键日志如下所示：
       int src = 1;
       write(pipe[1], reinterpret_cast<const void*>(&src), sizeof(int));
       close(pipe[1]);
-    
+
       // 最后恢复原来的屏蔽集
-      if (sigprocmask(SIG_SETMASK, &oldset, NULL) != 0) {
+      if (sigprocmask(SIG_SETMASK, &oldset, nullptr) != 0) {
           return -1;
       }
       return 0;
   }
   ```
 
-  过滤日志信息，根据调用栈信息，成功定位到异常发生在testSIGPIPE()函数中，表示功能开启成功。
+  过滤日志信息，根据调用栈信息，成功定位到异常发生在TestSigpipe()函数中，表示功能开启成功。
 
   ```text
   ...
@@ -1126,7 +1131,7 @@ SIGPIPE异常退出时关键日志如下所示：
   03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     Fault thread info:
   03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     Tid:19787, Name:e.myapplication
   03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     #00 pc 00000000001e8150 /system/lib/ld-musl-aarch64.so.1(write+68)(90776dcdb3f38042fc78b97d93138bde)
-  03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     #01 pc 0000000000001cf8 /data/storage/el1/bundle/libs/arm64/libentry.so(testSIGPIPE()+228)(d6af99a8111f4c2761800cb1432bea140f5176e4)
+  03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     #01 pc 0000000000001cf8 /data/storage/el1/bundle/libs/arm64/libentry.so(TestSigpipe()+228)(d6af99a8111f4c2761800cb1432bea140f5176e4)
   03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     #02 pc 0000000000001e34 /data/storage/el1/bundle/libs/arm64/libentry.so(d6af99a8111f4c2761800cb1432bea140f5176e4)
   ...
   ```

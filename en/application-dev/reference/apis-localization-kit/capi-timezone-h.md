@@ -3,13 +3,14 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=9da32f18d9f596600b1bcf7b3e4ed4f31b219c61 translatedAt=2026-11-09T06:19:12.723Z pushedAt=2026-11-09T06:58:22.865Z nl=1 -->
 
 ## Overview
 
-Provides the capability of obtaining time zone information.
+Provides APIs for obtaining time zone information.
 
 **Header file**: <i18n/timezone.h>
 
@@ -407,3 +408,5 @@ Obtains the effective time of the time zone rule in a specified year based on An
 | Type| Description|
 | -- | -- |
 | [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | **0**: Success.<br>         **8900001**: Invalid input parameters.<br>         **8900050**: Unexpected error, for example, memory error.|
+
+

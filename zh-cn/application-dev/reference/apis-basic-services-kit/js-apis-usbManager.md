@@ -72,7 +72,7 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 ```ts
 try {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-  console.info(`devicesList = ${devicesList}`);
+  console.info(`devicesList = ${JSON.stringify(devicesList)}`);
 } catch (err) {
   console.error(`getDevices failed. Code: ${err.code}, message: ${err.message}`);
 }

@@ -6,7 +6,7 @@
 <!--Designer: @piggyguy; @s10021109; @hehongyang3-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8dd2d5cdf88acdc31ee17ec2006247a008c91d7c translatedAt=2026-08-28T01:37:05.097Z pushedAt=2026-08-28T08:31:50.781Z -->
+<!-- md-trans-meta sourceCommit=df3e5e9df90d71f820cb188be6b068a9042c944e translatedAt=2026-11-03T01:49:37.145Z pushedAt=2026-11-05T06:51:32.522Z nl=1 -->
 
 This document summarizes the public enums in ArkUI development, for developers to look up the meanings and applicable scenarios of enum values.
 
@@ -448,8 +448,8 @@ Defines the horizontal layout direction of elements.
 
 | Name | Value  | Description         |
 | ---- | ---- | ----------- |
-| Ltr  | 0 | Components are arranged from left to right.  |
-| Rtl  | 1 |Components are arranged from right to left.  |
+| Ltr  | 0 | Elements are arranged from left to right.  |
+| Rtl  | 1 |Elements are arranged from right to left.  |
 | Auto | 2 |The default layout direction is used.|
 
 ## DividerMode<sup>19+</sup>
@@ -516,7 +516,6 @@ Sets the position of ellipsis.
 | MULTILINE_CENTER<sup>24+</sup> | 4 | An ellipsis is used at the center of the line of text. This applies to single-line and multi-line text scenarios.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 
 ## EmbeddedType<sup>12+</sup>
-
 Enumerates the types of the providers that can be started by the **EmbeddedComponent**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -869,7 +868,7 @@ Sets the response logic and node blocking rules for the hit test.
 
 > **NOTE**
 >
-> When multiple nodes in a **Stack** component have overlapping touch areas, if the touch point hits a child component of the topmost node, only the topmost node will undergo hit testing by default. In this case, touch testing for lower-layer nodes can only be triggered by setting the [hitTestBehavior](./ts-universal-attributes-hit-test-behavior.md#hittestbehavior) of the topmost node to **HitTestMode.Transparent**.
+> When multiple nodes in a **Stack** component have overlapping touch areas, if the touch point hits a child component of the topmost node, only the topmost node will undergo hit testing by default. In this case, hit test for lower-layer nodes can only be triggered by setting the [hitTestBehavior](./ts-universal-attributes-hit-test-behavior.md#hittestbehavior) of the topmost node to **HitTestMode.Transparent**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1335,7 +1334,7 @@ Enumerates column count policies for different [breakpoints](../../../ui/arkts-l
 
 | Name           | Value  | Description                                                        |
 | --------------- | ---- | ------------------------------------------------------------ |
-| BREAKPOINT_DEFAULT         | 0    | For **List** and **Swiper** components: displays 1 column when the component width falls within the sm and smaller breakpoint range, 2 columns within the md breakpoint range, and 3 columns within the lg and larger breakpoint range.<br> For **Grid**, **WaterFlow**, and **LazyVWaterFlowLayout** components: displays 2 columns when the component width falls within the sm and smaller breakpoint range, 3 columns within the md breakpoint range, and 5 columns within the lg and larger breakpoint range. **LazyVWaterFlowLayout** is supported since API version 26.0.0.                                       |
+| BREAKPOINT_DEFAULT         | 0    | For the **List** and **Swiper** components: one column is displayed when the component width falls within the sm or smaller breakpoint range, two columns when it falls within the md breakpoint range, and three columns when it falls within the lg or larger breakpoint range.<br> For the **Grid**, **WaterFlow**, **LazyVWaterFlowLayout**, and **LazyVGridLayout** components: two columns are displayed when the component width falls within the sm or smaller breakpoint range, three columns when it falls within the md breakpoint range, and five columns when it falls within the lg or larger breakpoint range. The **LazyVWaterFlowLayout** component is supported since API version 26.0.0, and the **LazyVGridLayout** component is supported since API version 26.1.0.<br> **LazyVWaterFlowLayout** and **LazyVGridLayout** determine the breakpoint based on the content area width, which is the available width obtained by subtracting the left and right padding and the left and right border widths that occupy the layout from the component width. |
 | BREAKPOINT_SM1MD2LG3 | 1    | Displays 1 column when the component width falls within the sm and smaller breakpoint range, 2 columns within the md breakpoint range, and 3 columns within the lg and larger breakpoint range. |
 | BREAKPOINT_SM2MD3LG5 | 2    | Displays 2 columns when the component width falls within the sm and smaller breakpoint range, 3 columns within the md breakpoint range, and 5 columns within the lg and larger breakpoint range. |
 
@@ -1412,6 +1411,7 @@ Enumerates the modes in which the final state of the component's content is rend
 | RESIZE_COVER                | 13                          | While maintaining its aspect ratio in the final state, the component's content is scaled to cover the component's entire content box. It is always aligned with the center of the component, so that its middle part is displayed.   ![renderfit_resize_cover](figures/renderfit_resize_cover.png) |
 | RESIZE_COVER_TOP_LEFT       | 14                          | While maintaining its aspect ratio in the final state, the component's content is scaled to cover the component's entire content box. When there is remaining space in the width direction, the content is left-aligned with the component, so that its left part is displayed. When there is remaining space in the height direction, the content is top-aligned with the component, so that its top part is displayed.   ![renderfit_resize_cover_top_left](figures/renderfit_resize_cover_top_left.png) |
 | RESIZE_COVER_BOTTOM_RIGHT   | 15                          | While maintaining its aspect ratio in the final state, the component's content is scaled to cover the component's entire content box. When there is remaining space in the width direction, the content is right-aligned with the component, so that its right part is displayed. When there is remaining space in the height direction, the content is bottom-aligned with the component, so that its bottom part is displayed.   ![renderfit_resize_cover_bottom_right](figures/renderfit_resize_cover_bottom_right.png) |
+
 
 > **NOTE**
 >
@@ -1621,8 +1621,8 @@ Sets the polymorphic style of the text box.
 
 | Name   | Value| Description                                                        |
 | ------- | ----------- | ------------------------------------------------------------ |
-| DEFAULT | - | Default style. The caret width is 1.5 vp, and the caret height is subject to the background height and font size of the selected text.|
-| INLINE  | - | Inline input style, also known as inline mode. The text selection background height is the same as the input box height.<br/>Inline input is used in scenarios where there is a clear distinction between editing and non-editing states, for example, renaming in a file list view.<br/>The **showError** attribute is not supported.<br/>In inline mode, dragging text is not supported. |
+| DEFAULT | - | Default style. The cursor width is 1.5 vp, and the cursor height is related to the text selection highlight height and font size. |
+| INLINE  | - | Inline input style, also known as inline mode. The text selection highlight height is the same as the input box height.<br/>Inline input is used in scenarios where there is a clear distinction between editing and non-editing states, for example, renaming in a file list view.<br/>The **showError** attribute is not supported.<br/>In inline mode, dragging text is not supported. |
 
 ## TextSelectableMode<sup>12+</sup>
 
@@ -1815,3 +1815,45 @@ Enumerates the input event interception actions, used to control whether input e
 | -------- | -------- | ---- |
 | CONTINUE | 0 | The event is permitted to propagate to the UI framework.|
 | BLOCK | 1 | The event is blocked from propagating to the UI framework.|
+
+## ImmersiveStrategy
+
+Defines the immersive strategy for the safe area.
+
+**Since:** 26.1.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name | Value | Description |
+| ------ | ---- | ---------- |
+| AVOID_CUTOUT | 0 | Avoids the cutout area.<br/>The priority of this strategy is lower than that of the **avoid_cutout** configuration item in **module.json5**. If **avoid_cutout** is configured in the metadata of **module.json5**, the effect of this configuration item takes precedence. For details about the configuration, see [Safe Area](ts-universal-attributes-expand-safe-area.md). |
+| AVOID_FLOAT_NAV | 1 | Avoids the three-key navigation bar area. |
+| GRID_EXPAND_SAFE_AREA | 2 | Expands the clipped content of the [Grid](ts-container-grid.md) component to the safe area. If [clipContent](ts-container-scrollable-common.md#clipcontent14) is explicitly set on the **Grid** component, the explicit setting takes precedence over this configuration. |
+| LIST_EXPAND_SAFE_AREA | 3 | Expands the clipped content of the [List](ts-container-list.md) component to the safe area. If [clipContent](ts-container-scrollable-common.md#clipcontent14) is explicitly set on the **List** component, the explicit setting takes precedence over this configuration. |
+| SCROLL_EXPAND_SAFE_AREA | 4 | Expands the clipped content of the [Scroll](ts-container-scroll.md) component to the safe area. If [clipContent](ts-container-scrollable-common.md#clipcontent14) is explicitly set on the **Scroll** component, the explicit setting takes precedence over this configuration. |
+| WATER_FLOW_EXPAND_SAFE_AREA | 5 | Expands the clipped content of the [WaterFlow](ts-container-waterflow.md) component to the safe area. If [clipContent](ts-container-scrollable-common.md#clipcontent14) is explicitly set on the **WaterFlow** component, the explicit setting takes precedence over this configuration. |
+| AVOID_WINDOW_CONTROLS | 6 | In the [freeform window](../../../windowmanager/window-terminology.md#freeform-window) state, when the window title bar is hidden through the [setWindowDecorVisible](../arkts-apis-window-Window.md#setwindowdecorvisible11) API, this strategy is set to avoid the three window buttons, that is, the maximize/restore, minimize, and close buttons in the upper right corner of the window. |
+| BIND_SHEET_EXPAND_SAFE_AREA | 7 | Expands the title area of [bindSheet](ts-universal-attributes-sheet-transition.md#bindsheet) as the safe area of the content area. After this strategy is applied through [UIContext.applyDefaultImmersiveStrategy](../arkts-apis-uicontext-uicontext.md#applydefaultimmersivestrategy), the default value of [SheetOptions](ts-universal-attributes-sheet-transition.md#sheetoptions).titleBarHoverMode of **bindSheet** is [SheetTitleBarHoverMode.SAFE_AREA_PADDING](ts-universal-attributes-sheet-transition.md#sheettitlebarhovermode). |
+| NAVIGATION_EXPAND_SAFE_AREA | 8 | Expands the title bar and toolbar of the **Navigation**/**NavDestination** component as the safe area of the content area. If the title bar or toolbar style is explicitly set on the **Navigation**/**NavDestination** component, the explicit setting takes precedence over this configuration. |
+
+## ShadowClipMode
+
+Enumerates the clipping mode when the shadow is not filled.
+
+**Since:** 26.1.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name | Value | Description |
+| ------ | ---- | ---------- |
+| DEFAULT_SHAPE | 0 | Clips the shadow based on the default shape (priority order: [shadowShape](ts-universal-attributes-image-effect.md#shadowshape) > [clipShape](ts-universal-attributes-sharp-clipping.md#clipshape12) > component boundary). |
+| BOUNDS_SHAPE | 1 | Clips the shadow based on the component boundary. |
+<!--no_check-->

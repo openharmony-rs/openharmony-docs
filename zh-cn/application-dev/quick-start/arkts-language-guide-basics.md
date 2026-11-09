@@ -9,20 +9,20 @@ status: active
 # 基础知识
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
-<!--Designer: @oatuwwutao-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @jokerxd-liu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-ArkTS是基于TypeScript的扩展语言，专为OpenHarmony开发设计。本章介绍ArkTS的基础知识，包括常量与变量、类型系统、注释、分号等核心概念。
+ArkTS是基于TypeScript的扩展语言，专为OpenHarmony应用开发设计。本章介绍ArkTS的基础知识，包括常量与变量、类型系统、注释、分号等核心概念。
 
 ## 常量与变量
 
-ArkTS使用`const`声明不可重新赋值的常量、`let`声明可重新赋值的变量。选择准则：默认使用`const`，仅在需要重新赋值时改用`let`，这遵循最小权限原则——不打算修改的数据不应被意外写入。`const`保证变量绑定不变，但对象类型的`const`仅锁定引用，对象内部属性仍可修改（如`const arr = []; arr.push(1)`合法）。ArkTS不使用`var`，因其函数作用域和变量提升特性不符合静态可预测的编码要求。
+ArkTS使用`const`声明不可重新赋值的常量、`let`声明可重新赋值的变量。选择准则：默认使用`const`，仅在需要重新赋值时改用`let`，这遵循最小权限原则——不打算修改的数据不应被意外写入。`const`保证变量绑定不变，但对象类型的`const`仅锁定引用，对象内部属性仍可修改（如`const arr = []; arr.push(1)`合法）。
 
 ### 声明
 
-ArkTS使用`let`和`const`声明变量与常量。TypeScript中的`var`具有函数作用域和变量提升特性，不符合ArkTS对静态、可预测作用域的要求，ArkTS代码中不使用`var`。
+ArkTS使用`let`和`const`声明变量与常量。
 
 <!-- @[variable_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -93,15 +93,16 @@ interface IRepository { }
 
 | 类别 | 关键字 |
 | --- | --- |
-| 控制流 | `break` `case` `catch` `continue` `default` `do` `else` `finally` `for` `if` `return` `switch` `throw` `try` `while` |
-| 声明 | `class` `const` `enum` `export` `extends` `function` `import` `interface` `let` `var` |
+| 控制流 | `break` `case` `catch` `continue` `default` `do` `else` `finally` `for` `if` `of` `return` `switch` `throw` `try` `while` |
+| 声明 | `class` `const` `declare` `enum` `export` `extends` `function` `import` `interface` `let` `type` `var` |
+| 修饰符与访问器 | `abstract` `get` `private` `protected` `public` `readonly` `set` `static` |
 | 运算符与操作 | `delete` `in` `instanceof` `new` `super` `this` `typeof` `void` |
 | 值 | `false` `null` `true` |
-| 其他 | `abstract` `as` `async` `await` `debugger` `implements` `package` `readonly` `static` `with` `yield` |
+| 其他 | `as` `async` `await` `debugger` `implements` `package` `with` `yield` |
 
 ### 打印
 
-console提供多种输出方式：`console.info`输出一般信息，`console.warn`输出警告，`console.error`输出错误。开发调试时可用模板字面量拼接变量值，或用`JSON.stringify`输出对象。
+`console`提供多种输出方式：`console.info`输出一般信息，`console.warn`输出警告，`console.error`输出错误，`console.log`输出日志。不建议使用`console.log`，应使用`console.info`替代。开发调试时可用模板字面量拼接变量值，或用`JSON.stringify`输出对象。
 
 <!-- @[variable_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -109,12 +110,12 @@ console提供多种输出方式：`console.info`输出一般信息，`console.wa
 let outputName: string = 'ArkTS';
 const version: number = 1.0;
 
-console.info(`${outputName}`);              // ArkTS
+console.info(`${outputName}`);              // 'ArkTS'
 console.info(`${version}`);      // 1
-console.info(`Name: ${outputName}`);   // Name: ArkTS
-console.info(`Version: ${version}, Name: ${outputName}`);  // Version: 1, Name: ArkTS
-console.warn(`Version: ${version}, Name: ${outputName}`);  // Version: 1, Name: ArkTS
-console.error('Invalid input');        // Invalid input
+console.info(`Name: ${outputName}`);   // 'Name: ArkTS'
+console.info(`Version: ${version}, Name: ${outputName}`);  // 'Version: 1, Name: ArkTS'
+console.warn(`Version: ${version}, Name: ${outputName}`);  // 'Version: 1, Name: ArkTS'
+console.error('Invalid input');        // 'Invalid input'
 ```
 
 调试时建议根据信息级别选择对应方法，并用模板字符串或`JSON.stringify`格式化复杂对象输出。
@@ -188,11 +189,11 @@ function greet(): void {
 
 ## 类型声明
 
-类型声明通过类型标注在编译期约束变量、参数和返回值的类型，使编译器能在运行前发现类型不匹配的错误（如将`string`赋给`number`变量），而非等到运行时才暴露。ArkTS中类型声明有三种形式：类型注解（`: type`）、类型别名（`type Name = ...`）和接口声明（`interface`），分别适用于不同场景。
+类型声明通过类型标注在编译期约束变量、参数和返回值的类型，使编译器能在运行前发现类型不匹配的错误（如将`string`赋给`number`变量），而非等到运行时才暴露。ArkTS中类型声明有三种形式：[类型注解](#类型标注)（`: type`）、[类型别名](#类型别名)（`type Name = ...`）和[接口声明](arkts-language-guide-interfaces.md)（`interface`），分别适用于不同场景。
 
 ### 基本类型声明
 
-通过[类型标注](#类型标注)（: type）为变量、参数和返回值标注类型。
+通过[类型标注](#类型标注)（`: type`）为变量、参数和返回值标注类型。
 
 <!-- @[type_annotation_examples](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -228,7 +229,7 @@ userId = 'ABC';
 
 ### 接口声明
 
-interface定义对象的结构契约，描述属性名、类型和可选性。详细内容见[接口](arkts-language-guide-interfaces.md)。
+`interface`定义对象的结构契约，描述属性名、类型和可选性。详细内容见[接口](arkts-language-guide-interfaces.md)。
 
 <!-- @[interface_definition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -244,11 +245,11 @@ let user: IfaceDefUser = { id: 1, name: 'Alice' };
 
 ## 类型
 
-ArkTS提供number、boolean、string、数组、枚举等类型，约束值的范围和操作。
+ArkTS提供`number`、`boolean`、`string`、数组、枚举等类型，约束值的范围和操作。
 
 ### number类型
 
-number类型表示IEEE 754双精度浮点数（64位），没有独立的整数类型。支持十进制、十六进制、二进制和八进制字面量。
+`number`类型表示IEEE 754双精度浮点数（64位），没有独立的整数类型。支持十进制、十六进制、二进制和八进制字面量。
 
 <!-- @[number_literals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -261,7 +262,7 @@ let octal: number = 0o755;     // 八进制 (493)
 
 ### boolean类型
 
-boolean类型表示逻辑值true或false，由直接赋值、比较运算（`===`、`!==`、`>`、`<`）和逻辑运算（`&&`、`||`、`!`）产生。布尔类型不可与其他类型隐式转换，避免JavaScript的类型混淆问题。
+`boolean`类型表示逻辑值`true`或`false`，由直接赋值、比较运算（`===`、`!==`、`>`、`<`）和逻辑运算（`&&`、`||`、`!`）产生。布尔类型不可与其他类型隐式转换，避免JavaScript的类型混淆问题。
 
 <!-- @[boolean_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -296,35 +297,9 @@ let first: number = arrTypeNumbers[0];
 
 两种语法等价，团队内建议统一选用`number[]`以保持风格一致。
 
-### object类型
-
-object类型表示引用类型，包括类实例和接口对象，通过引用访问。
-
-<!-- @[object_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
-
-``` TypeScript
-class Point {
-  public x: number = 0;
-  public y: number = 0;
-}
-
-let point: Point = new Point();
-point.x = 10;
-point.y = 20;
-
-// 使用接口定义对象结构
-interface ObjTypeUser {
-  id: number;
-  name: string;
-}
-
-let objTypeUser: ObjTypeUser = { id: 1, name: 'Alice' };
-```
-ArkTS要求对象布局在编译期确定，运行时不动态添加或删除属性。详细内容见[集合类型](arkts-language-guide-collection-types.md)。
-
 ### enum类型
 
-enum类型为一组命名的常量值定义枚举，便于语义化表达固定状态。详细内容见[枚举](arkts-language-guide-enums.md)。
+`enum`类型为一组命名的常量值定义枚举，便于语义化表达固定状态。详细内容见[枚举](arkts-language-guide-enums.md)。
 
 <!-- @[enum_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -384,7 +359,7 @@ state = 'running';
 
 ### void类型
 
-void类型表示函数无返回值，常用于只执行操作不返回结果的函数；注意void与undefined不同，后者表示未定义值。
+`void`类型表示函数无返回值，常用于只执行操作不返回结果的函数；注意`void`与`undefined`不同，后者表示未定义值。
 
 <!-- @[void_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -400,7 +375,7 @@ function doNothing(): void {
 
 ### never类型
 
-never类型表示永不返回的函数——抛出异常或无限循环。
+`never`类型表示永不返回的函数——抛出异常或无限循环。
 
 <!-- @[never_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -414,40 +389,11 @@ function assertNever(value: never): never {
 }
 ```
 
-never类型常用于两类场景：异常函数总是抛出异常永不返回，以及穷尽性检查——通过让default分支返回never确保switch覆盖所有枚举值。
-
-### any和unknown的限制
-
-ArkTS不支持any和unknown类型，应使用明确类型、联合类型或泛型替代。
-
-**TypeScript对照**
-
-<!-- @[ts_avoid_any_unknown](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Basics.ts) -->
-
-``` TypeScript
-// ArkTS中不使用：
-let value: any;
-let raw: unknown;
-
-type InputValue = string | number | boolean;
-let inputValue: InputValue = 'ok';
-```
-在定义变量类型时，应根据具体场景选择使用明确类型、联合类型、接口或类来实现类型安全。
-
-### 高级类型边界
-
-ArkTS更强调静态可判定的类型关系，以下TypeScript高级类型在ArkTS中均不支持，优先使用`interface extends`、类继承、泛型约束等替代方案：
-
-| TypeScript高级类型 | 语法示例 | ArkTS替代方案 |
-| --- | --- | --- |
-| 交叉类型 | `A & B` | 使用`interface extends`多继承或类组合 |
-| 条件类型 | `T extends U ? X : Y` | 使用显式接口或函数重载 |
-| 映射类型 | `{ [K in keyof T]: ... }` | 使用显式接口或类 |
-| 索引访问类型 | `T[K]` | 使用显式返回类型和字段访问方法 |
+`never`类型常用于两类场景：异常函数总是抛出异常永不返回，以及穷尽性检查——通过让`default`分支返回`never`确保`switch`覆盖所有枚举值。
 
 ### bigint类型
 
-bigint类型表示任意精度的整数，用n后缀标记字面量，适合超大整数运算。
+`bigint`类型表示任意精度的整数，用n后缀标记字面量，适合超大整数运算。
 
 <!-- @[bigint_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -459,7 +405,7 @@ let nextValue: bigint = bigValue + 1n;
 console.info(`${nextValue.toString()}`);
 ```
 
-数字字面量后加`n`表示bigint类型，`bigValue`表示超大整数无精度损失，`nextValue`进行加法运算结果精确。bigint不能和`number`直接混合运算，需要显式转换。
+数字字面量后加`n`表示`bigint`类型，`bigValue`表示超大整数无精度损失，`nextValue`进行加法运算结果精确。`bigint`不能和`number`直接混合运算，需要显式转换。
 
 <!-- @[bigint_conversion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -469,25 +415,7 @@ let preciseCount: bigint = BigInt(bigintCount);
 let total: bigint = preciseCount + 20n;
 ```
 
-需要注意的是，某些特定的API（如Date相关方法）或注解字段可能不支持`bigint`，使用前应确认对应API文档的类型约束。大整数优先使用bigint避免`number`精度损失，混合运算必须显式转换，bigint只支持整数运算不支持小数，部分旧版本API可能不支持bigint。
-
-### symbol类型
-
-symbol表示全局唯一的原始值，通过`Symbol()`创建，每次调用返回不同的唯一值，适合用作对象属性键以避免命名冲突。**ArkTS不支持`Symbol()` API**。
-
-<!-- @[ts_symbol_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Basics.ts) -->
-
-``` TypeScript
-// TypeScript支持symbol类型，ArkTS不支持Symbol() API
-let sym1: symbol = Symbol('name');
-let sym2: symbol = Symbol('name');
-console.info(`${sym1 === sym2}`); // false，每个symbol唯一
-
-let uniqueKey: symbol = Symbol('id');
-let myMap: Map<symbol, string> = new Map();
-myMap.set(uniqueKey, '123');
-console.info(`${myMap.get(uniqueKey)}`); // 123
-```
+需要注意的是，某些特定的API（如`Date`相关方法）或注解字段可能不支持`bigint`，使用前应确认对应API文档的类型约束。大整数优先使用`bigint`避免`number`精度损失，混合运算必须显式转换，`bigint`只支持整数运算不支持小数，部分旧版本API可能不支持`bigint`。
 
 ## 类型标注
 
@@ -537,9 +465,7 @@ const tiPi = 3.14;   // 推断为3.14（字面量类型）
 let tiRatio = 3.14;  // 推断为number（宽泛类型）
 ```
 
-### 最佳通用类型
-
-当多个候选类型存在时，编译器从中选择最通用的类型。数组包含多种类型元素时，推断为元素类型的联合。
+当多个候选类型存在时，编译器从中选择最通用的类型。数组包含多种类型元素（如数值与`null`混用）时，需要显式标注为元素类型的联合数组。
 
 <!-- @[type_inference_best_common](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -550,21 +476,6 @@ let tiNames: string[] = ['Alice', 'Bob'];      // 推断为string[]
 
 如果无法找到统一的通用类型，则需要开发者显式标注。
 
-### 上下文类型
-
-上下文类型是指编译器根据变量所在的位置（如函数参数、回调）推断其类型。当函数的参数类型已知时，传入的回调函数参数会自动推断。
-
-<!-- @[type_inference_contextual](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
-
-``` TypeScript
-let tiCtxNames: string[] = ['Alice', 'Bob', 'Charlie'];
-tiCtxNames.forEach((s) => {
-  console.info(s.toUpperCase()); // s自动推断为string
-});
-```
-
-回调函数的参数`s`无需标注类型，编译器根据`forEach`的签名自动推断为`string`。上下文类型与最佳通用类型互补，共同覆盖大多数推断场景。
-
 ### 控制流推断
 
 编译器沿`if`/`else`、`switch`、循环等控制流分支追踪类型变化，在不同分支内将变量收窄为更具体的类型，分支合并后取联合类型。
@@ -574,23 +485,19 @@ tiCtxNames.forEach((s) => {
 ``` TypeScript
 let tiValue: string | number = 'hello';
 if (typeof tiValue === 'string') {
-  console.info(tiValue.toUpperCase()); // 此处value收窄为string
+  console.info(tiValue.toUpperCase()); // 此处tiValue收窄为string
 } else {
-  console.info(`${tiValue}`);          // 此处value收窄为number
+  console.info(`${tiValue}`);          // 此处tiValue收窄为number
 }
 ```
 
-### 字面量推断
-
-对象属性默认推断为宽泛类型而非字面量类型。TypeScript中可用`as const`将对象属性推断为字面量类型，ArkTS中不使用`as const`，需要字面量约束时使用`enum`或显式类型标注。
-
 ## 可选/可空类型
 
-可选类型允许null或undefined，表示可能缺失的值。
+可选类型允许`null`或`undefined`，表示可能缺失的值。
 
 ### null/undefined
 
-null表示有意赋的空值，undefined表示变量未赋值或属性不存在。两者语义不同，ArkTS中需显式区分。
+`null`表示有意赋的空值，`undefined`表示变量未赋值或属性不存在。两者语义不同，ArkTS中需显式区分。
 
 <!-- @[null_undefined_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -633,7 +540,7 @@ if (optPropUser.email !== undefined) {
 
 ### 提供默认值
 
-通过空值合并运算符（??）或函数默认参数，在值为null/undefined时提供兜底值。注意`??`仅对`null`/`undefined`生效，而`||`会对所有假值（`0`、`false`、`''`）生效，需根据场景选择。
+通过空值合并运算符（??）或函数默认参数，在值为`null`/`undefined`时提供兜底值。注意`??`仅对`null`/`undefined`生效，而`||`会对所有假值（`0`、`false`、`''`）生效，需根据场景选择。
 
 <!-- @[null_handling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -647,8 +554,8 @@ function nullHandleGreet(name: string, title: string = 'User'): string {
   return `Hello, ${title} ${name}`;
 }
 
-nullHandleGreet('Alice');           // Hello, User Alice
-nullHandleGreet('Alice', 'Dr.');    // Hello, Dr. Alice
+nullHandleGreet('Alice');           // 'Hello, User Alice'
+nullHandleGreet('Alice', 'Dr.');    // 'Hello, Dr. Alice'
 ```
 
 当默认值需要保留`0`、`false`、`''`等合法值时，必须使用`??`而非`||`。
@@ -700,13 +607,11 @@ let obj: NullableObj = {};
 let sub: string | undefined = obj?.prop?.sub;
 ```
 
-## 类型安全与不可变性
+## 类型安全
 
-类型安全在编译期捕获类型错误，不可变性通过const防止值被重新赋值。
+类型安全在编译期捕获类型错误，减少运行时产生难以排查的问题。
 
-### 类型安全
-
-编译器拒绝类型不匹配的赋值，如将string赋给number变量。
+编译器拒绝类型不匹配的赋值，如将`string`赋给`number`变量。
 
 <!-- @[ts_type_mismatch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Basics.ts) -->
 
@@ -724,37 +629,13 @@ typeCheckAdd(1, '2');    // 编译错误
 
 类型安全能在编译期提前发现错误、避免运行时崩溃，同时提高代码可读性和重构安全性，并支持DevEco Studio的智能提示。
 
-### 不可变性
-
-const声明的变量不可重新赋值，确保值在生命周期内不变。
-
-<!-- @[ts_immutability_violation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Basics.ts) -->
-
-``` TypeScript
-// const声明不可变常量
-const MAX_VALUE: number = 100;
-MAX_VALUE = 200;  // 编译错误
-
-// readonly只读属性
-interface Config {
-  readonly apiKey: string;
-}
-
-let config: Config = { apiKey: 'key' };
-config.apiKey = 'new';  // 编译错误
-
-// 只读数组
-let readonlyNumbers: ReadonlyArray<number> = [1, 2, 3];
-readonlyNumbers[0] = 10;  // 编译错误
-```
-
 ## 错误处理
 
-通过try-catch捕获运行时异常，防止程序意外终止。
+通过`try-catch`捕获运行时异常，防止程序意外终止。
 
 ### try-catch异常捕获
 
-try块包裹可能抛出异常的代码，catch块捕获并处理异常，防止程序意外终止。
+`try`块包裹可能抛出异常的代码，`catch`块捕获并处理异常，防止程序意外终止。
 
 <!-- @[try_catch_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -787,7 +668,7 @@ try {
 
 ### throw抛出错误
 
-throw语句抛出Error对象，中断当前函数并向外传播异常。
+`throw`语句抛出`Error`对象，中断当前函数并向外传播异常。
 
 <!-- @[throwing_exceptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -802,7 +683,7 @@ function validateAge(age: number): void {
 }
 ```
 
-抛出异常时应始终使用Error对象并附上清晰明确的错误信息，且仅在真正异常的情况下抛出，避免用异常控制正常流程。
+抛出异常时应始终使用`Error`对象并附上清晰明确的错误信息，且仅在真正异常的情况下抛出，避免用异常控制正常流程。
 
 ### 错误处理约定
 
@@ -828,86 +709,13 @@ if (error !== null) {
 }
 ```
 
-## 断言与先决条件
-
-断言在开发期验证内部假设，先决条件在函数入口校验外部入参。
-
-### 使用断言调试
-
-断言函数在条件为false时抛出错误，用于开发期发现逻辑错误。
-
-<!-- @[assertion_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
-
-``` TypeScript
-function assert(condition: boolean, message: string = 'Assertion failed'): void {
-  if (!condition) {
-    throw new Error(message);
-  }
-}
-
-function assertEqual<T>(actual: T, expected: T, message?: string): void {
-  if (actual !== expected) {
-    throw new Error(message ?? `Expected ${expected}, got ${actual}`);
-  }
-}
-
-// 使用断言
-let assertFuncValue: number = 10;
-assert(assertFuncValue > 0, '值必须为正数');
-assertEqual(assertFuncValue, 10);
-```
-
-### 强制执行先决条件
-
-先决条件函数在函数入口校验参数，不满足时立即抛出错误。
-
-<!-- @[precondition_checks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
-
-``` TypeScript
-function precondition(condition: boolean, message: string): void {
-  if (!condition) {
-    throw new Error(`Precondition failed: ${message}`);
-  }
-}
-
-function calculateSquareRoot(value: number): number {
-  precondition(value >= 0, '参数必须为非负数');
-  return Math.sqrt(value);
-}
-
-function getElement(arr: number[], index: number): number {
-  precondition(index >= 0, '索引不能为负数');
-  precondition(index < arr.length, '索引超出数组范围');
-  return arr[index];
-}
-```
-
 ## 作用域规则
 
 作用域决定变量的可见性和生命周期。ArkTS支持块级作用域和函数作用域。
 
-### var声明（函数作用域）
-
-`var`声明的变量具有函数作用域，存在变量提升（hoisting），可在声明前访问（值为`undefined`），且允许重复声明。**ArkTS不支持`var`声明**，使用`let`或`const`替代。
-
-<!-- @[ts_var_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Basics.ts) -->
-
-``` TypeScript
-// TypeScript支持var声明，ArkTS不支持
-function tsVarScope(): void {
-  var x: number = 10;
-  if (true) {
-    var x: number = 20; // 同一作用域，重复声明
-  }
-  console.info(`${x}`); // 20
-}
-
-tsVarScope();
-```
-
 ### let/const声明（块级作用域）
 
-`let`和`const`声明的变量具有块级作用域，受暂时性死区（TDZ）保护，声明前不可访问，且不允许在同一作用域内重复声明。
+`let`和`const`声明的变量具有块级作用域，声明前不可访问，且不允许在同一作用域内重复声明。
 
 <!-- @[let_const_block_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -926,7 +734,7 @@ function blockScope(): void {
 
 ### 嵌套作用域
 
-内层作用域可访问外层变量，反之不行。`let`/`const`在嵌套块中可遮蔽外层同名变量，`var`则不行（同一函数作用域）。
+内层作用域可访问外层变量，反之不行。`let`/`const`在嵌套块中可遮蔽外层同名变量。
 
 <!-- @[nested_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -945,151 +753,26 @@ function nestedScope(): void {
 }
 ```
 
-ArkTS推荐使用`let`和`const`，避免使用`var`。`const`用于不可重新赋值的引用，`let`用于需要修改的变量。
-
-## 解构赋值
-
-解构赋值允许从数组或对象中按位置或名称提取值赋给变量。TypeScript支持数组解构和对象解构，ArkTS不支持解构赋值语法。
-
-### 数组解构
-
-TypeScript中可用`let [a, b] = [1, 2]`从数组提取元素。ArkTS不支持解构变量声明（`arkts-no-destruct-decls`），详见[从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md#不支持解构变量声明)，使用逐个赋值替代。
-
-**TypeScript对照**
-
-<!-- @[ts_array_destructuring](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Basics.ts) -->
-
-``` TypeScript
-// TypeScript数组解构写法，ArkTS不支持
-let pair: number[] = [1, 2];
-let [first, second] = pair;
-console.info(`${first}, ${second}`); // 1, 2
-```
-
-ArkTS替代方式：按索引访问数组元素。
-
-<!-- @[array_access_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
-
-``` TypeScript
-let arrPair: number[] = [1, 2];
-let arrFirst: number = arrPair[0];
-let arrSecond: number = arrPair[1];
-```
-
-### 对象解构
-
-TypeScript中可用`let { name, age } = obj`从对象提取属性。ArkTS不支持解构变量声明（`arkts-no-destruct-decls`），详见[从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md#不支持解构变量声明)，使用逐个赋值替代。
-
-**TypeScript对照**
-
-<!-- @[ts_object_destructuring](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Basics.ts) -->
-
-``` TypeScript
-// TypeScript对象解构写法，ArkTS不支持
-interface TsUserInfo {
-  name: string;
-  age: number;
-}
-
-let tsUser: TsUserInfo = { name: 'Alice', age: 25 };
-let { name: userName, age: userAge } = tsUser;
-console.info(`${userName}, ${userAge}`); // Alice, 25
-```
-
-ArkTS替代方式：逐个访问属性。
-
-<!-- @[object_access_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
-
-``` TypeScript
-interface DestrUserInfo {
-  name: string;
-  age: number;
-}
-
-let destrUser: DestrUserInfo = { name: 'Alice', age: 25 };
-let destrUserName: string = destrUser.name;
-let destrUserAge: number = destrUser.age;
-```
-
-### 函数参数解构
-
-TypeScript中函数参数可直接解构对象。ArkTS不支持参数解构（`arkts-no-destruct-params`），详见[从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md#不支持参数解构的函数声明)，使用接口类型参数替代。
-
-**TypeScript对照**
-
-<!-- @[ts_param_destructuring](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Basics.ts) -->
-
-``` TypeScript
-// TypeScript写法，ArkTS不支持函数参数解构
-interface GreetParam {
-  name: string;
-  age: number;
-}
-
-function greet({ name, age }: GreetParam): void {
-  console.info(`Hello, ${name}, age ${age}`);
-}
-
-let greetParam: GreetParam = { name: 'Alice', age: 25 };
-greet(greetParam);
-```
-
-ArkTS替代方式：使用接口类型参数替代。
-
-<!-- @[param_destructuring_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
-
-``` TypeScript
-interface ParamUserInfo {
-  name: string;
-  age: number;
-}
-
-function greetUser(user: ParamUserInfo): void {
-  console.info(`Hello, ${user.name}, age ${user.age}`);
-}
-
-greetUser({ name: 'Alice', age: 25 });
-```
-
 ## 展开语法（spread）
 
-展开语法`...`在ArkTS中仅支持数组和剩余参数，不支持对象展开（`arkts-no-spread`），详见[从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md#部分支持展开运算符)。需要复制对象属性时，逐个赋值。
-
-**TypeScript对照**
-
-<!-- @[ts_object_spread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Basics.ts) -->
-
-``` TypeScript
-// TypeScript对象展开写法，ArkTS不支持
-interface TsConfig {
-  host: string;
-  port: number;
-}
-
-let original: TsConfig = { host: 'localhost', port: 8080 };
-let copy: TsConfig = { ...original, port: 3000 };
-console.info(`${copy.host}, ${copy.port}`); // localhost, 3000
-```
-
-ArkTS替代方式：逐个赋值对象属性。
+展开语法`...`用于将数组展开为独立的元素。ArkTS支持在数组字面量中展开数组，以及将数组展开传递给函数的剩余参数。
 
 <!-- @[spread_syntax_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
 ``` TypeScript
-interface SpreadConfig {
-  host: string;
-  port: number;
-}
-
-// 数组展开，ArkTS支持
+// 复制数组到数组字面量
 let spreadArr1: number[] = [1, 2, 3];
 let spreadArr2: number[] = [...spreadArr1, 4, 5];
 
-// 对象属性复制，使用逐个赋值
-let spreadOriginal: SpreadConfig = { host: 'localhost', port: 8080 };
-let spreadCopy: SpreadConfig = {
-  host: spreadOriginal.host,
-  port: 3000
-};
-console.info(`${spreadCopy.host}, ${spreadCopy.port}`); // localhost, 3000
+// 展开数组传递给剩余参数
+function spreadTotal(...values: number[]): number {
+  let total: number = 0;
+  for (const value of values) {
+    total += value;
+  }
+  return total;
+}
+
+let spreadNums: number[] = [1, 2, 3];
+console.info(`${spreadTotal(...spreadNums)}`);  // 6
 ```

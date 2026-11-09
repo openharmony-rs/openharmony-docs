@@ -3,9 +3,10 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=9da32f18d9f596600b1bcf7b3e4ed4f31b219c61 translatedAt=2026-11-09T06:18:38.169Z pushedAt=2026-11-09T06:55:24.442Z nl=1 -->
 
 ```c
 typedef struct DateTimeRule {...} DateTimeRule
@@ -13,7 +14,7 @@ typedef struct DateTimeRule {...} DateTimeRule
 
 ## Overview
 
-Rule of time and date.
+Describes the rule of time and date.
 
 **Since**: 22
 
@@ -34,3 +35,5 @@ Rule of time and date.
 | int32_t millisInDay | Millisecond value from 00:00 on the current day to the current time.|
 | [DateRuleType](capi-timezone-h.md#dateruletype) dateRuleType | Date rule type.|
 | [TimeRuleType](capi-timezone-h.md#timeruletype) timeRuleType | Time rule type.|
+
+
