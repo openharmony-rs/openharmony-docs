@@ -232,10 +232,10 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
    编辑“index.d.ts”文件。
 
     <!-- @[ExternalLog_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-
-   ``` TypeScript
-   export const registerExternalLogMgr: () => void;
-   ```
+    
+    ``` TypeScript
+    export const registerExternalLogMgr: () => void;
+    ```
    ArkTS-Sta：
 
    编辑“EntryAbility.ets”文件。
