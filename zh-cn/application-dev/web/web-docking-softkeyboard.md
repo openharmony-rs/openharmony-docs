@@ -100,6 +100,8 @@
 // Index.ets
 import { webview } from '@kit.ArkWeb';
 import { inputMethod } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
@@ -113,6 +115,8 @@ struct WebComponent {
             setTimeout(() => {
               inputMethod.getController().showTextInput();
             }, 10);
+          }).catch((error: BusinessError) => {
+            hilog.error(0x0000, 'testTag', 'Failed to run JavaScript. Cause: %{public}s', JSON.stringify(error));
           });
         });
     }
