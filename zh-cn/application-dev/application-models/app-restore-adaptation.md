@@ -15,7 +15,7 @@
 
 整机内存紧张时，系统会回收后台应用进程以释放内存。应用被回收后用户原页面操作中断——用户乘坐地铁刷码进站，在地铁码页面退后台，应用被回收后，用户下次点击桌面图标可直接打开至出行界面正常刷码出站，无须从首页再逐级进入。小说阅读、新闻阅读、视频播放等场景同理：应用被回收后再次启动时恢复到原操作页面，用户操作不中断。
 
-[UIAbility备份恢复](ability-recover-guideline.md)基础文档介绍了通过[setRestoreEnabled()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setrestoreenabled14)开启备份恢复、通过[onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)保存临时数据的基本用法：应用切后台时系统调用onSaveState()并把页面栈序列化落盘；应用被回收后恢复启动时，系统把保存的数据合并进本次启动Want的parameters字段带回（一次性，读取后即清除），页面栈由系统注入恢复。
+[UIAbility备份恢复](ability-recover-guideline.md)基础文档介绍了通过[setRestoreEnabled()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setrestoreenabled14)开启备份恢复、通过[onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)保存临时数据的基本用法：应用切后台时系统调用onSaveState()并把页面栈序列化后写入磁盘；应用被回收后恢复启动时，系统把保存的数据合并进本次启动Want的parameters字段带回（一次性，读取后即清除），页面栈由系统注入恢复。
 
 对照下表按第一列描述的应用情况选择对应场景，第二列是该情况的典型应用例子：
 
@@ -24,22 +24,24 @@
 | 可接受恢复启动后回到首页，且没有未持久化的临时数据 | 简单工具类应用 | 无需适配，恢复启动后重新加载即可 | — |
 | 单页应用，需要恢复未持久化的临时数据 | 计算器历史记录、备忘录草稿 | 开启总开关 + onSaveState()保存数据 | [数据恢复](#数据恢复) |
 | 多页应用，页面可接受恢复启动后回到首页，但业务数据不能丢 | 编辑器（恢复启动后回首页但草稿不丢） | 同上：数据走数据通道保存恢复，无需页面栈改造 | [数据恢复](#数据恢复) |
-| Navigation应用，页面栈层级较浅 | 出行码页、设置二级页 | 页面栈恢复三件套配置 + 数据通道 + 空值兜底 | [页面栈恢复：Navigation](#页面栈恢复navigation) |
-| Navigation应用，页面栈层级较深 | 阅读器逐章深跳、商品多级筛选 | 在上一行基础上增加路径快照补推 | [深层栈补齐](#深层栈补齐) |
+| Navigation应用，页面栈层级较浅 | 出行码页、设置二级页 | 页面栈恢复三项配置 + 数据通道 + 参数为空降级 | [页面栈恢复：Navigation](#页面栈恢复navigation) |
+| Navigation应用，页面栈层级较深 | 阅读器逐章深跳、商品多级筛选 | 在上一行基础上增加路径快照，补齐未恢复的深层页面 | [深层栈补齐](#深层栈补齐) |
 | Navigation应用，页面名动态生成/加密或页面懒加载 | 页面名混淆、按需加载的工程 | 先改静态页面名、保证PageMap（页面名到页面组件构建器的映射）可解析，再按层级浅/深对应行适配 | [三项配置](#三项配置) |
 | @ohos.router应用 | 使用router.pushUrl的工程 | recoverable: false排除无需恢复的页面 | [页面栈恢复：Router](#页面栈恢复router) |
-| 三方路由框架（HMRouter等） | 基于三方框架路由的工程 | 路由凭证保存重放 | [页面栈恢复：三方路由](#页面栈恢复三方路由) |
+| 三方路由框架（HMRouter等） | 基于三方框架路由的工程 | 保存路由信息（uri与参数），恢复启动后逐层重新执行跳转 | [页面栈恢复：三方路由](#页面栈恢复三方路由) |
 
 > **说明：**
 >
 > 页面栈恢复：Navigation/Router/三方路由各章只负责页面栈的恢复，业务数据（草稿、进度等）的保存与恢复一律复用[数据恢复](#数据恢复)的数据通道。
+>
+> 数据通道指页面通过AppStorage向onSaveState()传递数据的固定路径。
 
 无论选择哪种适配方案，以下常见问题按需叠加处理：
 
 | 遇到的情况 | 处理方式 | 详见 |
 | --- | --- | --- |
 | 页面参数含函数、回调、Proxy等不可序列化对象 | 替换为定位键、注册表等可重建数据 | [不可序列化参数处理](#不可序列化参数处理) |
-| 单条数据过大，挤占want.parameters序列化后总大小上限（200KB） | 数据本体落盘，快照只存文件名 | [超大数据分流](#超大数据分流) |
+| 单条数据过大，超出want.parameters序列化后总大小上限（200KB） | 数据本体写入磁盘，快照只存文件名 | [超大数据分流](#超大数据分流) |
 | 需要区分恢复启动与正常启动 | 系统键/恢复键/launchReason三信号合判 | [判定恢复启动](#判定恢复启动) |
 
 此外，部分情况无法接入本机制（完整约束清单见[约束与限制](#约束与限制)）：[UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)不支持备份恢复；PC/2in1等不支持任务保留的设备该机制不生效。
@@ -59,15 +61,15 @@
 **数据与容量**
 
 - 备份数据存储在[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md#want)的parameters字段中，序列化后总大小上限为200KB，不适合存放大数据（如长文本草稿、大段编辑内容），此类数据使用[超大数据分流](#超大数据分流)。
-- [onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)必须返回`ALL_AGREE`，否则数据不落盘；若应用实现了[onSaveStateAsync()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestateasync20)（API版本20起），系统不再调用同步版onSaveState()，两者不要同时使用。
+- [onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)必须返回`ALL_AGREE`，否则数据不写入磁盘；若应用实现了[onSaveStateAsync()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestateasync20)（API版本20起），系统不再调用同步版onSaveState()，两者不要同时使用。
 - Want parameters的值只支持String/Number/Boolean/PlainObject等基本类型，函数、Map/Set、Date、类实例不可直接传输，需先转换（详见[不可序列化参数处理](#不可序列化参数处理)）。
 - Navigation参数序列化存在窄约束（嵌套深度、属性个数、字符串长度等限制，具体阈值属于系统内部实现、不对外承诺），违规属性会被静默丢弃且无告警，恢复后的页面必须做[参数为空降级](#参数为空降级)，不应依赖任何具体阈值。
 
 **功能与设备**
 
-- Navigation页面栈恢复不保证覆盖全部层级，更深层级需保存路径快照自行补推（见[深层栈补齐](#深层栈补齐)）。
+- Navigation页面栈恢复不保证覆盖全部层级，更深层级需保存路径快照自行补齐（见[深层栈补齐](#深层栈补齐)）。
 - Navigation与router混用的应用，以主框架的方案为准——混用两套恢复链路有互相破坏风险，典型表现如页面被重复恢复、恢复出的栈顶页被另一链路覆盖、返回栈顺序错乱；恢复后出现上述异常时，优先排查是否两套链路同时开启。
-- 逐页评估可行性：页面参数可序列化且有空值兜底的页面才允许参与页面栈恢复，否则只恢复数据、不恢复页面栈——恢复出白屏页面比回到首页体验更差。
+- 逐页评估可行性：页面参数可序列化且已做参数为空降级处理的页面才允许参与页面栈恢复，否则只恢复数据、不恢复页面栈——恢复出白屏页面比回到首页体验更差。
 
 ## 适配准备
 
@@ -90,13 +92,13 @@ export default class EntryAbility extends UIAbility {
 
 ### 判定恢复启动
 
-恢复场景下[launchParam.launchReason](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchparam)取值为`APP_RECOVERY`。但**API版本26.0.0之前的系统版本中，从系统设置强行停止应用后的再次启动也会把launchReason误标为APP_RECOVERY**（被误当作内存或性能管控回收而触发栈恢复，但强停不应恢复）；API版本26.0.0起系统不再误标。因此API版本26.0.0之前不能单独依赖launchReason判定恢复，需要组合以下信号（按可靠性排序）：
+恢复场景下[launchParam.launchReason](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchparam)取值为`APP_RECOVERY`。但**API版本26.0.0之前的系统版本中，从系统设置强行停止应用后的再次启动也会把launchReason误标为APP_RECOVERY**（被误当作内存或性能管控回收而触发栈恢复，但强行停止不应恢复）；API版本26.0.0起系统不再误标。因此API版本26.0.0之前不能单独依赖launchReason判定恢复，需要组合以下信号（按可靠性排序）：
 
 | 信号 | 可靠性 | 说明 |
 | --- | --- | --- |
 | 系统键`ohos.ability.params.abilityRecoveryRestart`为`true` | 全版本可靠 | 恢复启动时由系统合并进want.parameters，恢复启动一定为true |
 | want.parameters中存在本应用保存的恢复键 | 高 | 恢复键只在恢复启动时由系统合并回来，API版本26.0.0之前最可靠的信号 |
-| launchReason === APP_RECOVERY | API版本26.0.0及以上可靠 | API版本26.0.0起可单独成立；之前版本存在强停误标场景，只能作为辅助信号，与前两个信号联合判定 |
+| launchReason === APP_RECOVERY | API版本26.0.0及以上可靠 | API版本26.0.0起可单独成立；之前版本存在强行停止误标场景，只能作为辅助信号，与前两个信号联合判定 |
 
 示例工程把三信号合判封装成一个普通函数`isRestoreLaunch`：
 
@@ -276,7 +278,7 @@ aboutToAppear(): void {
 
 ### 超大数据分流
 
-任一适配方案下存在单项数据接近或超过want.parameters序列化后总大小上限200KB（如未提交的长文本草稿），直接放want.parameters会超限或挤占页面栈预算。做法：数据本体写入应用沙箱文件，want.parameters中只放**文件名**（恢复时按文件名读回，读不到按空数据降级）：
+任一适配方案下存在单项数据接近或超过want.parameters序列化后总大小上限200KB（如未提交的长文本草稿），直接放want.parameters会超限，或使页面栈数据无法完整保存。做法：数据本体写入应用沙箱文件，want.parameters中只放**文件名**（恢复时按文件名读回，读不到按空数据降级）：
 
 <!-- @[blob_save](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/common/RestoreUtil.ets) -->
 
@@ -295,7 +297,7 @@ export function saveBlob(context: common.Context, key: string, data: string): st
 }
 ```
 
-onSaveState()按数据长度分流（短数据直接放，超长走落盘，见[最小适配](#最小适配)onSaveState()示例中的草稿分支。示例中的2048字节仅为分流阈值的示例取值，可按业务调整——系统约束是快照序列化后总大小上限200KB，接近该量级的数据都应落盘）；onCreate()读回时`loadBlob(...) ?? ''`读不到降级为空。非恢复启动时清理过期落盘文件（示例工程按7天清理，与系统备份数据过期时间对齐），防止残留堆积。
+onSaveState()按数据长度分流（短数据直接放，超长保存到文件，见[最小适配](#最小适配)onSaveState()示例中的草稿分支。示例中的2048字节仅为分流阈值的示例取值，可按业务调整——系统约束是快照序列化后总大小上限200KB，接近该量级的数据都应保存到文件）；onCreate()读回时`loadBlob(...) ?? ''`读不到降级为空。非恢复启动时清理过期文件（示例工程按7天清理，与系统备份数据过期时间对齐），防止残留堆积。
 
 ## 页面栈恢复：Navigation
 
@@ -303,9 +305,9 @@ onSaveState()按数据长度分流（短数据直接放，超长走落盘，见[
 
 ### 三项配置
 
-配置时前两项缺一不可：未设置id()或未开启Navigation的recoverable(true)，整座Navigation页面栈都不参与恢复；NavDestination默认参与恢复，不需要恢复的页面才显式设置`.recoverable(false)`。三项配置（Navigation的id()与recoverable()、NavDestination的recoverable()，下文简称"三件套"）如下：
+配置时前两项缺一不可：未设置id()或未开启Navigation的recoverable(true)，整个Navigation组件的页面栈都不参与恢复；NavDestination默认参与恢复，不需要恢复的页面才显式设置`.recoverable(false)`。Navigation页面栈恢复配置共三项（Navigation的id()与recoverable()、NavDestination的recoverable()，简称三项配置）如下：
 
-1. Navigation设置通用属性[id()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)（恢复按id匹配，不设则整座Navigation不恢复）。
+1. Navigation设置通用属性[id()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)（恢复按id匹配，不设则整个Navigation组件不恢复）。
 2. Navigation设置[recoverable(true)](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#recoverable14)（默认false）。
 3. NavDestination的[recoverable](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#recoverable14)属性**默认值为true**（与Navigation相反）：Navigation开启recoverable(true)后，其下**所有未显式排除的NavDestination默认全部参与恢复**；只想恢复部分页面时，不参与恢复的页面必须显式设置`.recoverable(false)`。
 
@@ -314,12 +316,12 @@ onSaveState()按数据长度分流（短数据直接放，超长走落盘，见[
 | 开关 | 默认值 | 效果 |
 |---|---|---|
 | [setRestoreEnabled()](#开启备份恢复)（UIAbility级总开关） | false | 不开启则系统不保存/恢复任何数据。 |
-| Navigation的recoverable（API版本14+） | false | 不开启则整座Navigation页面栈不参与恢复。 |
+| Navigation的recoverable（API版本14+） | false | 不开启则整个Navigation组件的页面栈不参与恢复。 |
 | NavDestination的recoverable（API版本14+） | **true** | Navigation开启后，未显式设置的子页面默认全部参与恢复。 |
 
 > **说明：**
 >
-> NavDestination的recoverable默认值为true。这意味着Navigation一旦开启recoverable(true)，其下所有NavDestination（含广告页、登录页、活动页等）默认全部参与恢复。系统恢复时只还原页面组件结构与启动参数，无数据兜底的页面恢复后参数为空，表现为白屏。因此**选择性恢复的推荐做法是反向排除**：不参与恢复的页面必须逐个显式设置`.recoverable(false)`，"不写recoverable"不等于"不恢复"。
+> NavDestination的recoverable默认值为true。这意味着Navigation一旦开启recoverable(true)，其下所有NavDestination（含广告页、登录页、活动页等）默认全部参与恢复。系统恢复时只还原页面组件结构与启动参数，未做参数为空降级处理的页面恢复后参数为空，表现为白屏。因此**选择性恢复的推荐做法是反向排除**：不参与恢复的页面必须逐个显式设置`.recoverable(false)`，"不写recoverable"不等于"不恢复"。
 
 <!-- @[nav_three_piece](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/restore/RestoreIndex.ets) -->
 
@@ -368,7 +370,7 @@ Navigation(this.pathStack) {
 .mode(NavigationMode.Stack)
 ```
 
-页面级（NavDestination）在完成数据通道（见[数据恢复](#数据恢复)）与空值兜底后开启：
+页面级（NavDestination）在完成数据通道（见[数据恢复](#数据恢复)）与参数为空降级处理后开启：
 
 ``` TypeScript
 NavDestination() {
@@ -393,11 +395,11 @@ NavDestination() {
 .recoverable(false)
 ```
 
-**三件套使用要点**：
+**三项配置使用要点**：
 
-- 只有**参数可序列化且有空值兜底**的页面才可参与恢复；广告页、登录页等无需恢复的页面因NavDestination默认值为true，**必须显式设置`.recoverable(false)`排除**——不设置不等于不恢复；
+- 只有**参数可序列化且已做参数为空降级处理**的页面才可参与恢复；广告页、登录页等无需恢复的页面因NavDestination默认值为true，**必须显式设置`.recoverable(false)`排除**——不设置不等于不恢复；
 - **页面名必须静态稳定**：系统恢复按NavDestination的name在PageMap中匹配页面，运行时动态拼接或加密生成的页面名，恢复时匹配不上，该页面无法恢复。此类工程需把页面名改为静态常量；确需加密的改为加密param，页面名保持明文静态；
-- **懒加载页面需保证恢复时映射可解析**：PageMap中懒加载（动态import等）的页面，需保证恢复启动时按name能同步取到组件（如预注册name到组件构建器的映射，或在补推前完成动态加载），否则恢复的页面无法构建；
+- **懒加载页面需保证恢复时映射可解析**：PageMap中懒加载（动态import等）的页面，需保证恢复启动时按name能同步取到组件（如预注册name到组件构建器的映射，或在补齐前完成动态加载），否则恢复的页面无法构建；
 - 若工程入口是广告页/闪屏页，恢复启动时应直接加载内容页绕过广告页，否则广告页会把恢复出的栈顶页覆盖。
 
 ### 参数为空降级
@@ -441,15 +443,15 @@ private handleParam(ctx: NavDestinationContext): void {
 }
 ```
 
-当该页为导航栈内唯一页面时，`pop()`后回到Navigation主页（NavBar），由主页内容兜底展示。
+当该页为导航栈内唯一页面时，`pop()`后回到Navigation主页（NavBar），由主页内容降级展示。
 
 ### 深层栈补齐
 
-Navigation页面栈恢复不保证覆盖全部层级，更深层级需应用自行补推。
+Navigation页面栈恢复不保证覆盖全部层级，更深层级需应用自行补齐。
 
-**路径快照 + 补推**——平时在导航栈每次变化后（进入、返回、替换，示例通过NavPathStack的[setInterception](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#setinterception12)统一监听）把当前栈路径快照发布到AppStorage（onSaveState()同步读取，见[数据恢复](#数据恢复)数据通道）；恢复启动后在首页`onPageShow()`按快照补齐缺失的更深层级。
+**路径快照补齐**——平时在导航栈每次变化后（进入、返回、替换，示例通过NavPathStack的[setInterception](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#setinterception12)统一监听）把当前栈路径快照发布到AppStorage（onSaveState()同步读取，见[数据恢复](#数据恢复)数据通道）；恢复启动后在首页`onPageShow()`按快照补齐缺失的更深层级。
 
-补推时机：**首页onPageShow()**——此时系统页面栈恢复已完成、页面已渲染。禁止在loadContent()回调中补推（系统栈恢复尚未执行，会与系统恢复互相冲突）：
+补齐时机：**首页onPageShow()**——此时系统页面栈恢复已完成、页面已渲染。禁止在loadContent()回调中补齐（系统栈恢复尚未执行，会与系统恢复互相冲突）：
 
 <!-- @[deep_stack_replay_timing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/restore/RestoreIndex.ets) -->
 
@@ -482,7 +484,7 @@ private reportNavSnapshot(): void {
 }
 ```
 
-恢复后逐层补推：
+恢复后逐层补齐：
 
 <!-- @[deep_stack_replay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/restore/RestoreIndex.ets) -->
 
@@ -510,12 +512,12 @@ private replayDeepStack(): void {
 
 **使用要点**：
 
-- 补推的页面param按空对象传入，页面数据靠[数据恢复](#数据恢复)数据通道恢复——路径快照只存页面名，各页数据在页面挂载后从数据通道读取或按定位键重新加载，不要试图把原始param塞进快照；
+- 补齐的页面param按空对象传入，页面数据靠[数据恢复](#数据恢复)数据通道恢复——路径快照只存页面名，各页数据在页面挂载后从数据通道读取或按定位键重新加载，不要试图把原始param塞进快照；
 - 路径快照只是页面名数组，对深栈param有依赖的页面要先做[不可序列化参数处理](#不可序列化参数处理)。
 
 ## 页面栈恢复：Router
 
-使用@ohos.router的应用不需要三件套——router页面的`recoverable`属性默认为**true**（API版本14起），页面栈由系统惰性全栈恢复，无需任何页面栈改造。唯一要做的页面栈相关工作是排除不需要恢复的页面（广告页等），通过`recoverable: false`显式排除：
+使用@ohos.router的应用不需要三项配置——router页面的`recoverable`属性默认为**true**（API版本14起），页面栈由系统惰性全栈恢复，无需任何页面栈改造。唯一要做的页面栈相关工作是排除不需要恢复的页面（广告页等），通过`recoverable: false`显式排除：
 
 <!-- @[router_exclude](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/restore/RouterPage.ets) -->
 
@@ -533,11 +535,11 @@ Button('跳转广告页（不参与恢复）')
 
 ## 页面栈恢复：三方路由
 
-应用使用HMRouter（@hadss/hmrouter）等基于uri的三方路由框架，或自研路由时，三方路由内部不走系统Navigation栈恢复链路，`recoverable`三件套不可控，采用**路由凭证保存重放**——uri天然可序列化，onSaveState()只存轻量路由凭证（uri + 可序列化参数），恢复启动后由应用自行按凭证逐层重放路由：
+应用使用HMRouter（@hadss/hmrouter）等基于uri的三方路由框架，或自研路由时，三方路由内部不走系统Navigation栈恢复链路，`recoverable`三项配置不可控，采用**保存路由信息（uri与参数），恢复启动后逐层重新执行跳转**——uri天然可序列化，onSaveState()只存轻量路由信息（uri + 可序列化参数），恢复启动后由应用自行按路由信息逐层重新执行跳转：
 
-1. **页面登记**：维护"页面名 → 路由凭证"的映射，凭证只含uri与可序列化参数；
-2. **保存**：onSaveState()把当前路由路径的凭证列表写入wantParam；
-3. **重放**：onCreate()判定恢复启动后把凭证列表经AppStorage中转，在首页onPageShow()（once语义，避免重复触发）按凭证逐层路由跳转。
+1. **页面登记**：维护"页面名 → 路由信息"的映射，路由信息只含uri与可序列化参数；
+2. **保存**：onSaveState()把当前路由路径的路由信息列表写入wantParam；
+3. **重新跳转**：onCreate()判定恢复启动后把路由信息列表经AppStorage中转，在首页onPageShow()（once语义，避免重复触发）按路由信息逐层重新执行路由跳转。
 
 ``` TypeScript
 // 伪代码示意（HMRouter 需按其路由 API 调整跳转调用）
@@ -561,8 +563,8 @@ if (routes !== undefined) {
 
 **使用要点**：
 
-- 重放期间应用若有"自动跳首页/重定向登录"等导航逻辑必须跳过（用一个布尔变量记录恢复流程未结束即可），重放完成后恢复正常，否则重放的路由会被自动跳转覆盖；
-- 本方案demo不随示例工程提供（依赖三方路由包）。HMRouter场景若愿意为其内部Navigation设置id+recoverable，也可选用[页面栈恢复：Navigation](#页面栈恢复navigation)三件套方案，但HMRouter内部Navigation实例不易注入属性，默认推荐本方案。
+- 重新跳转期间应用若有"自动跳首页/重定向登录"等导航逻辑必须跳过（用一个布尔变量记录恢复流程未结束即可），重新跳转完成后恢复正常，否则重新执行的路由会被自动跳转覆盖；
+- 本方案demo不随示例工程提供（依赖三方路由包）。HMRouter场景若愿意为其内部Navigation设置id+recoverable，也可选用[页面栈恢复：Navigation](#页面栈恢复navigation)三项配置方案，但HMRouter内部Navigation实例不易注入属性，默认推荐本方案。
 
 ## 通用适配要点
 
@@ -578,7 +580,7 @@ Want parameters的值只支持String/Number/Boolean/PlainObject等基本类型�
 | PlainObject（纯数据对象） | 直接保留 |
 | Function / Callback | 删除，页面改为从AppStorage或注册表重新获取 |
 | 类实例（MediaItem、PhotoAsset等） | 替换为定位键（如uri、id），页面挂载后按定位键重新查询 |
-| Map / Set / Date | 拍平为PlainObject或序列化字符串（如JSON.stringify后随字符串传输） |
+| Map / Set / Date | 转换为普通对象（PlainObject）或序列化字符串（如JSON.stringify后随字符串传输） |
 | 已持久化的数据（preferences/RDB/文件） | 不进快照（进程重建后仍在），只存定位键 |
 
 回调函数、Proxy对象等复杂对象没有随页面栈恢复的序列化机制，不能进入快照，必须按上表方式替换为定位键、注册表等可重建的数据，页面挂载后重新绑定。
