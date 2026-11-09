@@ -62,7 +62,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
    # 解压jsoncpp-1.9.6.tar.gz到entry/build，得到jsoncpp头文件的目录
    execute_process(COMMAND tar -xzf ${GZ_FILE} -C ${DEST_DIR}
        WORKING_DIRECTORY ${DEST_DIR})
-   
+
    add_library(entry SHARED napi_init.cpp)
    # 新增动态库依赖libhiappevent_ndk.z.so和libhilog_ndk.z.so(日志输出)
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
