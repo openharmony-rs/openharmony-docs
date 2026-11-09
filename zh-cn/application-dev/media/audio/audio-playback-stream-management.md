@@ -1,7 +1,7 @@
 ---
 kits: ["Audio Kit / 音频服务"]
 description: "指导开发者实时查询、监听音频播放流状态，及时感知状态变化并做出相应适配。"
-keywords: [播放流管理, 播放状态]
+keywords: [播放流管理, 播放状态, AudioStreamManager, audioRendererChange, 音频流监听]
 doctype: guide
 status: active
 ---
