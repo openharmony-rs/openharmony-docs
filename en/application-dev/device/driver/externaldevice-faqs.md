@@ -48,7 +48,7 @@ The message "code:9568347 error: install parse native so failed" is displayed du
 
 ### Solution
 
-The ABI type supported by the device does not match the Abi type configured in the C++ project. Follow the solution provided in [bm tool error code 9568347](https://developer.huawei.com/consumer/en/doc/doccenter-capabilities/bm-tool#section9568347-failed-to-parse-native-so-files). Run `param get const.product.cpu.abilist` through `hdc shell` to query the list of ABI types supported by the device, and configure the ABI types supported by the device in the `abiFilters` parameter of the module-level `build-profile.json5`.
+The ABI type supported by the device does not match the ABI type configured in the C++ project. Follow the solution provided in [bm tool error code 9568347](https://developer.huawei.com/consumer/en/doc/doccenter-capabilities/bm-tool#section9568347-failed-to-parse-native-so-files). Run `param get const.product.cpu.abilist` through `hdc shell` to query the list of ABI types supported by the device, and configure the ABI types supported by the device in the `abiFilters` parameter of the module-level `build-profile.json5`.
 
 ## HAP Installation Fails with Error 9568289 After the ohos.permission.ACCESS_DDK_DRIVERS Permission Is Granted
 
