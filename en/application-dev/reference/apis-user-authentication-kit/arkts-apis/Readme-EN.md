@@ -57,15 +57,21 @@
 <!--Del-->
 - [@ohos.userIAM.pinAuth(PIN Authentication)](arkts-userauthentication-useriam-pinauth.md)<!--DelEnd-->
   <!--Del-->
+  - [clearPinHistoryCheckRange(system api)](arkts-userauthentication-pinauth-clearpinhistorycheckrange-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [getPinComplexityPolicy(system api)](arkts-userauthentication-pinauth-getpincomplexitypolicy-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getPinDeletionDisabledState(system api)](arkts-userauthentication-pinauth-getpindeletiondisabledstate-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getPinHistoryCheckRange(system api)](arkts-userauthentication-pinauth-getpinhistorycheckrange-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getPinValidityPeriod(system api)](arkts-userauthentication-pinauth-getpinvalidityperiod-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [setPinComplexityPolicy(system api)](arkts-userauthentication-pinauth-setpincomplexitypolicy-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [setPinDeletionDisabledState(system api)](arkts-userauthentication-pinauth-setpindeletiondisabledstate-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setPinHistoryCheckRange(system api)](arkts-userauthentication-pinauth-setpinhistorycheckrange-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [setPinValidityPeriod(system api)](arkts-userauthentication-pinauth-setpinvalidityperiod-f-sys.md)<!--DelEnd-->
   <!--Del-->

@@ -4,7 +4,7 @@
 type PiPActionEventType = PiPVideoActionEvent | PiPCallActionEvent | PiPMeetingActionEvent | PiPLiveActionEvent
 ```
 
-画中画控制面板控件动作事件类型，支持以下四种。
+画中画控制面板控件动作事件类型。
 
 **起始版本：** 11
 

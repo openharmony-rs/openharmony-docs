@@ -1211,6 +1211,28 @@ inputMethodController.off('finishTextPreview');
 console.info(`All callbacks unsubscribed from finishTextPreview`);
 ```
 
+## offSetPreviewTextWithStyle
+
+```TypeScript
+offSetPreviewTextWithStyle(callback?:SetPreviewTextWithStyleCallback): void
+```
+
+取消订阅带样式的预上屏文本事件。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-InputMethodController-offSetPreviewTextWithStyle(callback?:SetPreviewTextWithStyleCallback): void--><!--Device-InputMethodController-offSetPreviewTextWithStyle(callback?:SetPreviewTextWithStyleCallback): void-End-->
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [SetPreviewTextWithStyleCallback](arkts-ime-inputmethod-setpreviewtextwithstylecallback-t.md) | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
+
 ## on('selectByRange')
 
 ```TypeScript
@@ -1777,6 +1799,33 @@ inputMethodController.off('finishTextPreview');
 console.info(`All callbacks unsubscribed from finishTextPreview`);
 ```
 
+## onSetPreviewTextWithStyle
+
+```TypeScript
+onSetPreviewTextWithStyle(callback: SetPreviewTextWithStyleCallback): void
+```
+
+订阅带样式的预上屏文本事件。使用callback异步回调。<br> <br>  
+> **说明：** <br>
+> <br>
+> 使用带样式的预上屏文本功能，需在调用<br>
+> [attach](#attach-1) <br>
+> 前订阅此事件。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-InputMethodController-onSetPreviewTextWithStyle(callback: SetPreviewTextWithStyleCallback): void--><!--Device-InputMethodController-onSetPreviewTextWithStyle(callback: SetPreviewTextWithStyleCallback): void-End-->
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [SetPreviewTextWithStyleCallback](arkts-ime-inputmethod-setpreviewtextwithstylecallback-t.md) | 是 | 回调函数。用于接收带样式的预上屏文本内容。 |
+
 ## recvMessage
 
 ```TypeScript
@@ -1828,6 +1877,43 @@ inputMethodController.recvMessage(messageHandler);
 // 取消已注册的MessageHandler
 inputMethodController.recvMessage();
 ```
+
+## requestSystemInputCapability
+
+```TypeScript
+requestSystemInputCapability(type: InputCapabilityType): Promise<void>
+```
+
+请求系统输入能力。使用promise异步回调。<br> <br>当type为TRANSLATION时，当前输入法须为系统预置默认输入法，否则请求被拒绝。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-InputMethodController-requestSystemInputCapability(type: InputCapabilityType): Promise<void>--><!--Device-InputMethodController-requestSystemInputCapability(type: InputCapabilityType): Promise<void>-End-->
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | [InputCapabilityType](arkts-ime-inputmethod-inputcapabilitytype-e.md) | 是 | 系统输入能力类型。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | 输入法管理服务错误。可能原因：系统错误，如空指针、IPC异常。 |
+| [12800009](../errorcode-inputmethod-framework.md#12800009-输入法客户端未绑定) | 输入法客户端断开连接。 |
+| [12800010](../errorcode-inputmethod-framework.md#12800010-不是系统配置的默认输入法) | 当前输入法应用不是系统配置的默认输入法。 |
+| [12800029](../errorcode-inputmethod-framework.md#12800029-输入类型不支持) | 输入类型不支持。 |
 
 ## sendMessage
 

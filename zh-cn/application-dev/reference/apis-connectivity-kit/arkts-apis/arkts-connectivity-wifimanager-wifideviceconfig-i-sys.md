@@ -76,7 +76,7 @@ disableReason?: number
 
 5 - 认证无凭据，6 - 永久无互联网连接
 
-7 - 由WIFI管理器禁用，8 - 由于密码错误禁用
+7 - 由Wi-Fi管理器禁用，8 - 由于密码错误禁用
 
 9 - 认证无订阅，10 - 私有EAP认证错误
 
@@ -104,7 +104,7 @@ disableReason?: number
 family?: number
 ```
 
-静态IP家族: 0 - IPv4, 1 - Ipv6.
+静态IP协议版本。0: IPv4，1: IPv6。
 
 **类型：** number
 
@@ -142,7 +142,7 @@ IP地址类型。
 isAutoConnectAllowed?: boolean
 ```
 
-是否允许自动连接。false:不允许，true:允许自动连接。
+是否允许自动连接。true表示允许自动连接，false表示不允许自动连接。
 
 **系统接口：** 此接口为系统接口。
 
@@ -162,7 +162,7 @@ isAutoConnectAllowed?: boolean
 isSecureWifi?: boolean
 ```
 
-安全Wi-Fi检测。false:不是安全Wi-Fi，true:是安全Wi-Fi。
+安全Wi-Fi检测。true表示是安全Wi-Fi，false表示不是安全Wi-Fi。
 
 **系统接口：** 此接口为系统接口。
 

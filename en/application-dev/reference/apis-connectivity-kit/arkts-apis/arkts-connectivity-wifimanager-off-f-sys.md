@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function off(type: 'streamChange', callback?: Callback<number>): void
 ```
 
-Unsubscribe Wi-Fi stream change events. All callback functions will be deregistered If there is no specific callback parameter.
+Unsubscribes from Wi-Fi stream changes.
 
 **Since:** 9
 
@@ -28,8 +28,8 @@ Unsubscribe Wi-Fi stream change events. All callback functions will be deregiste
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'streamChange' | Yes | event name. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | No | the callback of off |
+| type | 'streamChange' | Yes | Event type, which has a fixed value of **streamChange**. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | No | Callback to unregister. It must be the same as the callback passed in **on()**. If this parameter is not specified, all callbacks of this event are unregistered. |
 
 **Error codes:**
 
@@ -67,7 +67,7 @@ wifiManager.off("streamChange", recvStreamChangeFunc);
 function off(type: 'deviceConfigChange', callback?: Callback<number>): void
 ```
 
-Subscribe Wi-Fi device config change events.
+Unsubscribes from Wi-Fi device configuration changes.
 
 **Since:** 9
 
@@ -83,8 +83,8 @@ Subscribe Wi-Fi device config change events.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'deviceConfigChange' | Yes | event name. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | No | the callback of off, 0: config is added, 1: config is changed, 2: config is removed. |
+| type | 'deviceConfigChange' | Yes | Event type, which has a fixed value of **deviceConfigChange**. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | No | Callback to unregister. It must be the same as the callback passed in **on()**. If this parameter is not specified, all callbacks of this event are unregistered. |
 
 **Error codes:**
 
@@ -122,7 +122,7 @@ wifiManager.off("deviceConfigChange", recvDeviceConfigChangeFunc);
 function off(type: 'hotspotStaJoin', callback?: Callback<StationInfo>): void
 ```
 
-Unsubscribe Wi-Fi hotspot sta join events. All callback functions will be deregistered If there is no specific callback parameter.
+Unsubscribes from the connection of an STA to a Wi-Fi hotspot.
 
 **Since:** 9
 
@@ -138,8 +138,8 @@ Unsubscribe Wi-Fi hotspot sta join events. All callback functions will be deregi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'hotspotStaJoin' | Yes | event name. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[StationInfo](arkts-connectivity-wifimanager-stationinfo-i-sys.md)&gt; | No | the callback of off |
+| type | 'hotspotStaJoin' | Yes | Event type, which has a fixed value of **hotspotStaJoin**. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[StationInfo](arkts-connectivity-wifimanager-stationinfo-i-sys.md)&gt; | No | Callback to unregister. It must be the same as the callback passed in **on()**. If this parameter is not specified, all callbacks of this event are unregistered. |
 
 **Error codes:**
 
@@ -177,7 +177,7 @@ wifiManager.off("hotspotStaJoin", recvHotspotStaJoinFunc);
 function off(type: 'hotspotStaLeave', callback?: Callback<StationInfo>): void
 ```
 
-Unsubscribe Wi-Fi hotspot sta leave events.
+Unsubscribes from the disconnection of a STA from a Wi-Fi hotspot.
 
 **Since:** 9
 
@@ -193,8 +193,8 @@ Unsubscribe Wi-Fi hotspot sta leave events.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'hotspotStaLeave' | Yes | event name. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[StationInfo](arkts-connectivity-wifimanager-stationinfo-i-sys.md)&gt; | No | the callback of off |
+| type | 'hotspotStaLeave' | Yes | Event type, which has a fixed value of **hotspotStaLeave**. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[StationInfo](arkts-connectivity-wifimanager-stationinfo-i-sys.md)&gt; | No | Callback to unregister. It must be the same as the callback passed in **on()**. If this parameter is not specified, all callbacks of this event are unregistered. |
 
 **Error codes:**
 

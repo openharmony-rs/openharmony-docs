@@ -303,8 +303,8 @@ forEach(callbackFn: (value?: T, key?: T, set?: TreeSet<T>) => void, thisArg?: Ob
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value?: T, key?: T, set?: TreeSet&lt;T&gt;) =&gt; void | 是 | 遍历实例对象中每个元素时调用的回调函数，开发者可在回调中对元素及其下标进行自定义处理。 |
-| thisArg | Object | 否 | callbackFn被调用时用作this值。ArkTS中箭头函数的this取自外层作用域，普通函数不支持使用this；如需访问外部对象，请在箭头函数中直接引用。不传入时默认值为undefined。 |
+| callbackFn | (value?: T, key?: T, set?: TreeSet&lt;T&gt;) =&gt; void | 是 | 遍历实例对象中每个元素时调用的回调函数，开发者可在回调中对元素及其下标进行自定义处理。value始终传入回调；key与value相同，均为当前元素；set为当前实例对象。 |
+| thisArg | Object | 否 | callbackFn被调用时用作this值。不传入时默认值为undefined。  > **说明：**  >  > 不建议使用`thisArg`参数。ArkTS中，箭头函数的`this`由外层上下文决定，`thisArg`无法改变回调函数中的`this`；普通函数中则不允许使用`this`。因此该参数实际不生效。如需在回调函数中访问外部对象，建议直接在箭头函数中引用。 |
 
 **错误码：**
 

@@ -30,7 +30,7 @@ Obtains the available space (in bytes) of the built-in storage. This API uses an
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:Mandatory parameters are left unspecified; |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid. Possible causes: Mandatory parameters are left unspecified. |
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
 

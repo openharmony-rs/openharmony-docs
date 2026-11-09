@@ -26,6 +26,8 @@ CENTER = 1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
 <!--Device-EllipsisMode-CENTER = 1--><!--Device-EllipsisMode-CENTER = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -43,6 +45,8 @@ END = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-EllipsisMode-END = 2--><!--Device-EllipsisMode-END = 2-End-->
 
@@ -62,6 +66,8 @@ MULTILINE_CENTER = 4
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
 <!--Device-EllipsisMode-MULTILINE_CENTER = 4--><!--Device-EllipsisMode-MULTILINE_CENTER = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -80,6 +86,8 @@ MULTILINE_START = 3
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
 <!--Device-EllipsisMode-MULTILINE_START = 3--><!--Device-EllipsisMode-MULTILINE_START = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -97,6 +105,8 @@ START = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-EllipsisMode-START = 0--><!--Device-EllipsisMode-START = 0-End-->
 

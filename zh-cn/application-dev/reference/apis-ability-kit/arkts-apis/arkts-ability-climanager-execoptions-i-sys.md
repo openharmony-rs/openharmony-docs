@@ -66,6 +66,28 @@ dmSessionId?: string
 
 **系统接口：** 此接口为系统接口。
 
+## policy
+
+```TypeScript
+policy?: string
+```
+
+安全策略，参数格式为JSON字符串。
+
+该策略字符串由系统服务解析，用于对命令执行施加额外的安全约束。
+
+**类型：** string
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ExecOptions-policy?: string--><!--Device-ExecOptions-policy?: string-End-->
+
+**系统能力：** SystemCapability.Ability.AgentRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## taskId
 
 ```TypeScript

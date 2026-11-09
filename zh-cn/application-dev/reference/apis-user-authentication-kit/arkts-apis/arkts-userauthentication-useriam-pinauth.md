@@ -25,11 +25,14 @@ import { pinAuth } from '@kit.UserAuthenticationKit';
 
 | 名称 | 说明 |
 | --- | --- |
+| [clearPinHistoryCheckRange](arkts-userauthentication-pinauth-clearpinhistorycheckrange-f-sys.md#clearpinhistorycheckrange-1) | 清除PIN历史检查范围策略。清除策略后，用户在更改PIN时可以重用任何历史PIN。 |
 | [getPinComplexityPolicy](arkts-userauthentication-pinauth-getpincomplexitypolicy-f-sys.md#getpincomplexitypolicy-1) | 获取PIN复杂度检查策略和描述。 |
 | [getPinDeletionDisabledState](arkts-userauthentication-pinauth-getpindeletiondisabledstate-f-sys.md#getpindeletiondisabledstate-1) | 获取PIN删除功能的禁用状态。 |
+| [getPinHistoryCheckRange](arkts-userauthentication-pinauth-getpinhistorycheckrange-f-sys.md#getpinhistorycheckrange-1) | 获取更改PIN时要检查的最近历史PIN数。 |
 | [getPinValidityPeriod](arkts-userauthentication-pinauth-getpinvalidityperiod-f-sys.md#getpinvalidityperiod-1) | 获取PIN有效期。 |
 | [setPinComplexityPolicy](arkts-userauthentication-pinauth-setpincomplexitypolicy-f-sys.md#setpincomplexitypolicy-1) | 设置PIN码复杂度检查策略和描述信息。设置策略后，用户新注册和修改的锁屏密码必须匹配指定的复杂度正则表达式。 |
 | [setPinDeletionDisabledState](arkts-userauthentication-pinauth-setpindeletiondisabledstate-f-sys.md#setpindeletiondisabledstate-1) | 设置PIN删除功能的禁用状态。策略设置完成后，用户功能禁用时，无法删除PIN。 |
+| [setPinHistoryCheckRange](arkts-userauthentication-pinauth-setpinhistorycheckrange-f-sys.md#setpinhistorycheckrange-1) | 设置更改PIN时要检查的最近历史PIN数。设置策略后，用户不能重用任何指定数量的更改PIN时的最新历史PIN。 |
 | [setPinValidityPeriod](arkts-userauthentication-pinauth-setpinvalidityperiod-f-sys.md#setpinvalidityperiod-1) | 设置PIN有效期。设置策略后，当口令过期时，会弹出安全提示要求用户重置口令。 |
 <!--DelEnd-->
 

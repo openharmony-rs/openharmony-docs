@@ -26,7 +26,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 band: number
 ```
 
-热点的带宽。1: 2.4G, 2: 5G, 3: 双模频段
+热点的带宽。1: 2.4GHz，2: 5GHz，3: 双模频段。
 
 **类型：** number
 
@@ -44,7 +44,7 @@ band: number
 channel?: number
 ```
 
-热点的信道（2.4G：1~14,5G：7~196）。
+热点的信道（2.4GHz：1~14，5GHz：7~196）。
 
 **类型：** number
 

@@ -24,7 +24,7 @@ import { xml } from '@kit.ArkTS';
 attributeValueCallbackFunction?: (name: string, value: string) => boolean
 ```
 
-解析属性和属性值，默认值undefined，表示不解析。
+解析属性和属性值，默认值undefined，表示不解析。返回true表示继续解析，返回false表示停止解析。
 
 **起始版本：** 8
 
@@ -63,7 +63,7 @@ attributeWithTagCallbackFunction?: AttributeWithTagCb
 tagValueCallbackFunction?: (name: string, value: string) => boolean
 ```
 
-解析开始标签、标签值和结束标签，默认值undefined，表示不解析。
+解析开始标签、标签值和结束标签，默认值undefined，表示不解析。返回true表示继续解析，返回false表示停止解析。
 
 **起始版本：** 8
 

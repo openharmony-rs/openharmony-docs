@@ -68,6 +68,7 @@ Creates a **Tabs** container.
 | [TabsBreakpointType](arkts-arkui-tabs-comp-tabsbreakpointtype-i.md) | Defines the value type for different Tabs container sizes. |
 | [TabsOptions](arkts-arkui-tabs-comp-tabsoptions-i.md) | Provides parameters for configuring the **Tabs** component, including tab positions, the current index of the displayed tab, the **Tabs** controller, and [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) for the **TabBar**. |
 | [TabsSidebarSearchableOptions](arkts-arkui-tabs-comp-tabssidebarsearchableoptions-i.md) | Defines the options for the searchable sidebar tab bar. |
+| [TabsSidebarTitleBarOptions](arkts-arkui-tabs-comp-tabssidebartitlebaroptions-i.md) | Defines ths options for the title bar of the sidebar tab bar. The title bar is displayed above the header area. When the title bar is set, the expand/collapse button moves from the default left side to the right side of the title bar. |
 | [TopFloatingTabBarStyle](arkts-arkui-tabs-comp-topfloatingtabbarstyle-i.md) | Provides an interface for the options for the top floating tab bar style. |
 
 ### Types

@@ -53,7 +53,7 @@ import { PiPWindow } from '@kit.ArkUI';
 | 名称 | 说明 |
 | --- | --- |
 | [ControlPanelActionEventCallback](arkts-arkui-pipwindow-controlpanelactioneventcallback-t.md) | 描述画中画控制面板控件动作事件回调。 |
-| [PiPActionEventType](arkts-arkui-pipwindow-pipactioneventtype-t.md) | 画中画控制面板控件动作事件类型，支持以下四种。 |
+| [PiPActionEventType](arkts-arkui-pipwindow-pipactioneventtype-t.md) | 画中画控制面板控件动作事件类型。 |
 | [PiPCallActionEvent](arkts-arkui-pipwindow-pipcallactionevent-t.md) | 视频通话控制事件类型。 |
 | [PiPControlGroup](arkts-arkui-pipwindow-pipcontrolgroup-t.md) | 画中画控制面板的可选控件组列表，应用可以配置是否显示可选控件。使用时必须和[PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md)对应，否则[create](arkts-arkui-pipwindow-create-f.md#create-1)接口抛出401错误码。 |
 | [PiPLiveActionEvent](arkts-arkui-pipwindow-pipliveactionevent-t.md) | 直播控制事件类型。 |

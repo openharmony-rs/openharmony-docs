@@ -33,6 +33,7 @@ import { browser } from '@kit.MDMKit';
 | [getSelfManagedBrowserPolicy](arkts-mdm-browser-getselfmanagedbrowserpolicy-f.md#getselfmanagedbrowserpolicy-1) | Obtains the browser policy of the current device. |
 | [getSelfManagedBrowserPolicyVersion](arkts-mdm-browser-getselfmanagedbrowserpolicyversion-f.md#getselfmanagedbrowserpolicyversion-1) | Obtains the browser policy version of the current device. |
 | [setManagedBrowserPolicy](arkts-mdm-browser-setmanagedbrowserpolicy-f.md#setmanagedbrowserpolicy-1) | Sets a browser policy for a specified browser. This API is applicable to scenarios where an enterprise needs to manage employees' browser behavior in a unified manner, such as configuring browser security policies. After the setting is successful, the system common event [COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_managed_browser_policy_changed) is released. |
+| [setManagedBrowserPolicy](arkts-mdm-browser-setmanagedbrowserpolicy-f.md#setmanagedbrowserpolicy-2) | Sets the managed browser policy for a specified browser application. |
 | [setPolicySync](arkts-mdm-browser-setpolicysync-f.md#setpolicysync-1) | Sets a browser sub-policy for a specified browser. This API is applicable to scenarios where an enterprise needs to manage employees' browser behavior in a unified manner. |
 
 <!--Del-->

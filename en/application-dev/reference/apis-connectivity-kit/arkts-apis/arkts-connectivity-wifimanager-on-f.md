@@ -14,7 +14,7 @@ function on(type: 'wifiStateChange', callback: Callback<number>): void
 
 Subscribe Wi-Fi status change events.
 
-**Since:** 12
+**Since:** 9
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
@@ -49,7 +49,7 @@ function on(type: 'wifiConnectionChange', callback: Callback<number>): void
 
 Subscribe Wi-Fi connection change events.
 
-**Since:** 12
+**Since:** 9
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
@@ -84,7 +84,7 @@ function on(type: 'wifiScanStateChange', callback: Callback<number>): void
 
 Subscribe Wi-Fi scan status change events.
 
-**Since:** 12
+**Since:** 9
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
@@ -251,9 +251,11 @@ function on(type: 'p2pDeviceChange', callback: Callback<WifiP2pDevice>): void
 
 Subscribe P2P local device change events.
 
-**Since:** 10
+**Since:** 9
 
-**Required permissions:** ohos.permission.GET_WIFI_INFO
+**Required permissions:** 
+- API version 10 and later: ohos.permission.GET_WIFI_INFO
+- API version 9: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
 <!--Device-wifiManager-function on(type: 'p2pDeviceChange', callback: Callback<WifiP2pDevice>): void--><!--Device-wifiManager-function on(type: 'p2pDeviceChange', callback: Callback<WifiP2pDevice>): void-End-->
 
@@ -284,9 +286,11 @@ function on(type: 'p2pPeerDeviceChange', callback: Callback<WifiP2pDevice[]>): v
 
 Subscribe P2P peer device change events.
 
-**Since:** 10
+**Since:** 9
 
-**Required permissions:** ohos.permission.GET_WIFI_INFO
+**Required permissions:** 
+- API version 10 and later: ohos.permission.GET_WIFI_INFO
+- API version 9: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
 <!--Device-wifiManager-function on(type: 'p2pPeerDeviceChange', callback: Callback<WifiP2pDevice[]>): void--><!--Device-wifiManager-function on(type: 'p2pPeerDeviceChange', callback: Callback<WifiP2pDevice[]>): void-End-->
 

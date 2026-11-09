@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function isOpenSoftApAllowed(): boolean
 ```
 
-Check whether Wi-Fi hotspot is can be operated under some situation. When the airplane mode is turned on and does not support the coexistence of softap and sta, nor does it support signal bridge, the hotspot switch cannot be operated.
+Checks whether Wi-Fi hotspot operations are allowed under certain circumstances. When Airplane mode is enabled, if the system does not support the coexistence of SoftAP and STA or signal bridging, the hotspot switch cannot be operated.
 
 **Since:** 18
 
@@ -28,7 +28,7 @@ Check whether Wi-Fi hotspot is can be operated under some situation. When the ai
 
 | Type | Description |
 | --- | --- |
-| boolean | `true` if Wi-Fi hotspot can be operated, returns `false` otherwise. |
+| boolean | Whether Wi-Fi hotspot operations are allowed. The value **true** indicates Wi-Fi hotspot operations are allowed, and the value **false** indicates the opposite. |
 
 **Error codes:**
 

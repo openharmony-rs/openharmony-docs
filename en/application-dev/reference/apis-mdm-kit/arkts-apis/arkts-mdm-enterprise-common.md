@@ -36,6 +36,7 @@ import { common } from '@kit.MDMKit';
 | [ExternalStorageDeviceInfo](arkts-mdm-common-externalstoragedeviceinfo-i.md) | External storage device information. |
 | [InstallationResult](arkts-mdm-common-installationresult-i.md) | An object that holds the application installation result. |
 | [PolicyChangedEvent](arkts-mdm-common-policychangedevent-i.md) | Defines the policy change event. |
+| [SmsReceiveInfo](arkts-mdm-common-smsreceiveinfo-i.md) | SMS received information. |
 
 ### Types
 

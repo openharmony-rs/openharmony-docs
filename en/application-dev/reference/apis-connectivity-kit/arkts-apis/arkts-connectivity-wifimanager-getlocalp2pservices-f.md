@@ -28,7 +28,7 @@ Queries the local P2P services. This API uses a promise to return the result.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[WifiP2pServiceInfo](arkts-connectivity-wifimanager-wifip2pserviceinfo-i.md)&gt;&gt; | promise used to return the registered local P2P service list. |
+| Promise&lt;Array&lt;[WifiP2pServiceInfo](arkts-connectivity-wifimanager-wifip2pserviceinfo-i.md)&gt;&gt; | Promise used to return the array of registered local P2P services. |
 
 **Error codes:**
 
@@ -36,7 +36,7 @@ Queries the local P2P services. This API uses a promise to return the result.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| [2801000](../errorcode-wifi.md#2801000-p2p-module-error) | The Wi-Fi service is not started properly, or there is an Wi-Fi service error. |
+| [2801000](../errorcode-wifi.md#2801000-p2p-module-error) | Operation failed. |
 
 **Examples**
 

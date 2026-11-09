@@ -12,7 +12,7 @@ import { wifi } from '@kit.ConnectivityKit';
 function removeGroup(): boolean
 ```
 
-Removes a P2P group.
+Removes this P2P group.
 
 **Since:** 8
 
@@ -30,7 +30,7 @@ Removes a P2P group.
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns `true` if the operation is successful, returns `false` otherwise. |
+| boolean | Returns **true** if the operation is successful; returns **false** otherwise. |
 
 **Examples**
 

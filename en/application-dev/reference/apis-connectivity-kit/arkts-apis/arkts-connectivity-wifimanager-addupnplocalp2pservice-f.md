@@ -13,7 +13,7 @@ function addUpnpLocalP2pService(uuid: string, device: string,
     services: Array<string>, serviceName: string): void
 ```
 
-Add a UPnP local P2P service description and register it.
+Adds and registers the local P2P service description of the UPnP (Universal Plug and Play) service to be discovered by the peer device.
 
 **Since:** 26.0.1
 
@@ -29,10 +29,10 @@ Add a UPnP local P2P service description and register it.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uuid | string | Yes | A string representation of this UUID in the following format. as per <a href="http://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>.<br> The standard fixed length is 36 characters, and spaces are not allowed. for example, "6859dede-8574-59ab-9332-123456789012" |
-| device | string | Yes | UPnP device type, a string representation of this device in the following format, as per <a href="http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf">. UPnP Device Architecture 1.1</a><br> The length depends on the standard definition, and spaces are not allowed. It is usually tens of characters, and it is recommended to keep it within 255 characters. for example, "urn:schemas-upnp-org:device:MediaServer:1" |
-| services | Array&lt;string&gt; | Yes | UPnP service type list, a string representation of this service in the following format, as per <a href="http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf">. UPnP Device Architecture 1.1</a><br> The length of each service must not exceed 512 bytes. It is recommended that the Array contain no more. for example, ["urn:schemas-upnp-org:service:ContentDirectory:1"] |
-| serviceName | string | Yes | Service name used to identify the local service object. |
+| uuid | string | Yes | UUID, which is in the form of a string. For details about the format, see [RFC 4122](http://www.ietf.org/rfc/rfc4122.txt). The value has a fixed length of 36 characters and cannot contain spaces, for example, **6859dede-8574-59ab-9332-123456789012**. |
+| device | string | Yes | UPnP device type, which is in the form of a string. For details about the format, see [UPnP Device Architecture 1.1](http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf). The length depends on the protocol definition and cannot contain spaces. The length is generally dozens of characters, and it is recommended to keep it within 255 bytes, for example, **urn:schemas-upnp-org:device:MediaServer:1**. |
+| services | Array&lt;string&gt; | Yes | Array of UPnP service types, which is in the form of a string. For details about the format, see [UPnP Device Architecture 1.1](http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf). The length of each element in the array must not exceed 512 bytes, and the array should not contain too many elements. An example of this parameter is **urn:schemas-upnp-org:service:ContentDirectory:1**. |
+| serviceName | string | Yes | Service name used to identify the local service object. The value contains a maximum of 63 characters. |
 
 **Error codes:**
 
@@ -40,7 +40,7 @@ Add a UPnP local P2P service description and register it.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| [2801000](../errorcode-wifi.md#2801000-p2p-module-error) | The Wi-Fi service is not started properly, or there is an Wi-Fi service error. |
+| [2801000](../errorcode-wifi.md#2801000-p2p-module-error) | Operation failed. |
 | [2801001](../errorcode-wifi.md#2801001-p2p-module-error) | Wi-Fi STA disabled. |
 
 **Examples**

@@ -38,10 +38,10 @@ Specifies whether to clean up dirty data that is synchronized to the local but d
 
 **System API:** This is a system API.
 
-## dumpStackOnFileDel
+## dumpStackOnFileDeletion
 
 ```TypeScript
-dumpStackOnFileDel?: boolean
+dumpStackOnFileDeletion?: boolean
 ```
 
 Specifies whether to enable dump-stack on file deletion for the RDB store, which is used to locate issues where database files are unexpectedly deleted.
@@ -64,7 +64,7 @@ Default value: false.
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-StoreConfig-dumpStackOnFileDel?: boolean--><!--Device-StoreConfig-dumpStackOnFileDel?: boolean-End-->
+<!--Device-StoreConfig-dumpStackOnFileDeletion?: boolean--><!--Device-StoreConfig-dumpStackOnFileDeletion?: boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 

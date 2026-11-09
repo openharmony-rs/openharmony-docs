@@ -4018,6 +4018,41 @@ struct MatrixExample {
 }
 ```
 
+## registerApplicationShortcut
+
+```TypeScript
+static registerApplicationShortcut(value: string | FunctionKey, keys: Array<ModifierKey>,
+    callback: Callback<ApplicationShortcutCallbackInfo>): number
+```
+
+Registers an application-level keyboard shortcut.
+
+The shortcut takes effect globally in the application. When the shortcut is triggered, the callback receives the **UIContext** of the UI instance where the shortcut is triggered. Each registration returns a positive integer registration ID unique within the application, even when the shortcut and callback are identical. Multiple registrations of the same shortcut are retained, and only the latest registration that has not been unregistered takes effect. Registration IDs are not reused during the application lifetime.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-UIContext-static registerApplicationShortcut(value: string | FunctionKey, keys: Array<ModifierKey>,    callback: Callback<ApplicationShortcutCallbackInfo>): int--><!--Device-UIContext-static registerApplicationShortcut(value: string | FunctionKey, keys: Array<ModifierKey>,    callback: Callback<ApplicationShortcutCallbackInfo>): int-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| value | string &#124; [FunctionKey](arkts-arkui-functionkey-e.md) | Yes | A single character of the hotkey (a character that can be entered using a keyboard) or a function key. |
+| keys | Array&lt;[ModifierKey](arkts-arkui-modifierkey-e.md)&gt; | Yes | Modifier keys of the shortcut. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ApplicationShortcutCallbackInfo](arkts-arkui-arkui-uicontext-applicationshortcutcallbackinfo-i.md)&gt; | Yes | Callback that provides information about the UI instance that triggers the hotkey (ApplicationShortcutCallbackInfo). |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| number | Unique registration ID of this shortcut binding. |
+
 ## removeLocalInputEventMonitor
 
 ```TypeScript
@@ -5226,6 +5261,32 @@ Unbind tabs from scrollable container component.
 **Examples**
 
 See the example for [bindTabsToScrollable](#bindtabstoscrollable).
+
+## unregisterApplicationShortcut
+
+```TypeScript
+static unregisterApplicationShortcut(registrationId: number): void
+```
+
+Unregisters the application-level keyboard shortcut binding identified by the registration ID.
+
+Only the specified binding is removed. Other bindings are unaffected. If the active binding is removed, the most recent remaining registration of the same shortcut takes effect. If the ID does not exist or has already been unregistered, this method does nothing.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-UIContext-static unregisterApplicationShortcut(registrationId: int): void--><!--Device-UIContext-static unregisterApplicationShortcut(registrationId: int): void-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| registrationId | number | Yes | Registration ID returned when registering the shortcut. |
 
 ## updateBindSheet
 

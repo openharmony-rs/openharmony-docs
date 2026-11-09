@@ -4,7 +4,7 @@
 enum WifiDetailState
 ```
 
-Wi-Fi detail state.
+Enumerates Wi-Fi states.
 
 **Since:** 12
 
@@ -20,7 +20,7 @@ Wi-Fi detail state.
 ACTIVATED = 1
 ```
 
-wifi is opened
+wifi is opened.
 
 **Since:** 12
 
@@ -36,7 +36,7 @@ wifi is opened
 ACTIVATING = 2
 ```
 
-wifi is opening
+wifi is opening.
 
 **Since:** 12
 
@@ -52,7 +52,7 @@ wifi is opening
 DEACTIVATING = 3
 ```
 
-wifi is closing
+wifi is closing.
 
 **Since:** 12
 
@@ -68,7 +68,7 @@ wifi is closing
 INACTIVE = 0
 ```
 
-wifi is closed
+wifi is closed.
 
 **Since:** 12
 
@@ -84,7 +84,7 @@ wifi is closed
 SEMI_ACTIVATING = 4
 ```
 
-wifi sta is entering semi active
+wifi sta is entering semi active.
 
 **Since:** 12
 
@@ -100,7 +100,7 @@ wifi sta is entering semi active
 SEMI_ACTIVE = 5
 ```
 
-wifi sta is semi active
+wifi sta is semi active.
 
 **Since:** 12
 
@@ -116,7 +116,7 @@ wifi sta is semi active
 UNKNOWN = -1
 ```
 
-state is unknown
+state is unknown.
 
 **Since:** 12
 

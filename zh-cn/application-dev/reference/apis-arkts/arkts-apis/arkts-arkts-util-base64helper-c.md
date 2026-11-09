@@ -24,7 +24,7 @@ import { util } from '@kit.ArkTS';
 constructor()
 ```
 
-用于创建 **Base64Helper** 实例的构造函数。
+Base64Helper的构造函数，创建一个用于Base64编解码的Base64Helper实例。
 
 **起始版本：** 9
 
@@ -46,7 +46,7 @@ let base64 = new util.Base64Helper();
 decode(src: Uint8Array | string, options?: Type): Promise<Uint8Array>
 ```
 
-将输入内容解码为 Uint8Array 对象。该接口使用 promise 返回结果。
+将输入参数异步解码后输出对应Uint8Array对象。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -60,14 +60,14 @@ decode(src: Uint8Array | string, options?: Type): Promise<Uint8Array>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | Uint8Array &#124; string | 是 | 要解码的 Uint8Array 对象或字符串。 |
-| options | [Type](arkts-arkts-util-type-e.md) | 否 | 解码格式。<br>可取值如下：<br>- **util.Type.BASIC**（默认）：Base64 解码。<br>- **util.Type.MIME**：Base64 解码。输入参数 **src** 包含回车符和换行符。<br>- **util.Type.BASIC_URL_SAFE**：Base64URL 解码。<br>- **util.Type.MIME_URL_SAFE**：Base64URL 解码。输入参数 **src** 包含回车符和换行符。<br>**适用版本：** 10 |
+| src | Uint8Array &#124; string | 是 | 异步解码输入Uint8Array对象或者字符串。 |
+| options | [Type](arkts-arkts-util-type-e.md) | 否 | 从API version 10开始支持该参数，表示对应的解码格式。<br>此参数可选，可选值为：util.Type.BASIC，util.Type.MIME，util.Type.BASIC_URL_SAFE和util.Type.MIME_URL_SAFE，默认值为：util.Type.BASIC。<br>- 当参数取值为util.Type.BASIC时，表示Base64解码。<br>- 当参数取值为util.Type.MIME时，表示Base64解码，src入参包含回车符、换行符。<br>- 当参数取值为util.Type.BASIC_URL_SAFE，表示Base64URL解码。<br>- 当参数取值为util.Type.MIME_URL_SAFE，表示Base64URL解码，src入参包含回车符、换行符。<br>**适用版本：** 10 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Uint8Array&gt; | 用于返回获取到的 Uint8Array 对象的 promise。 |
+| Promise&lt;Uint8Array&gt; | 返回异步解码后新分配的Uint8Array对象。 |
 
 **示例**
 
@@ -88,7 +88,7 @@ base64Helper.decode(array, util.Type.MIME).then((val) => {
 decodeSync(src: Uint8Array | string, options?: Type): Uint8Array
 ```
 
-将字符串解码为 Uint8Array 对象。该接口同步返回结果。
+将输入参数解码后输出对应Uint8Array对象。
 
 **起始版本：** 9
 
@@ -102,14 +102,14 @@ decodeSync(src: Uint8Array | string, options?: Type): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | Uint8Array &#124; string | 是 | 要解码的 Uint8Array 对象或字符串。 |
-| options | [Type](arkts-arkts-util-type-e.md) | 否 | 解码格式。<br>可取值如下：<br>- **util.Type.BASIC**（默认）：Base64 解码。<br>- **util.Type.MIME**：Base64 解码。输入参数 **src** 包含回车符和换行符。<br>- **util.Type.BASIC_URL_SAFE**：Base64URL 解码。<br>- **util.Type.MIME_URL_SAFE**：Base64URL 解码。输入参数 **src** 包含回车符和换行符。<br>**适用版本：** 10 |
+| src | Uint8Array &#124; string | 是 | 待解码的Uint8Array对象或者字符串。 |
+| options | [Type](arkts-arkts-util-type-e.md) | 否 | 从API version 10开始支持该参数，表示对应的解码格式。<br>此参数可选，可选值为：util.Type.BASIC，util.Type.MIME，util.Type.BASIC_URL_SAFE和util.Type.MIME_URL_SAFE，默认值为：util.Type.BASIC。<br>- 当参数取值为util.Type.BASIC，表示Base64解码。<br>- 当参数取值为util.Type.MIME，表示Base64解码，src入参包含回车符、换行符。<br>- 当参数取值为util.Type.BASIC_URL_SAFE，表示Base64URL解码。<br>- 当参数取值为util.Type.MIME_URL_SAFE，表示Base64URL解码，src入参包含回车符、换行符。<br>**适用版本：** 10 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Uint8Array | 获取到的 Uint8Array 对象。 |
+| Uint8Array | 返回解码后新分配的Uint8Array对象。 |
 
 **示例**
 
@@ -129,7 +129,7 @@ console.info("result = " + result);
 encode(src: Uint8Array, options?: Type): Promise<Uint8Array>
 ```
 
-将输入内容编码为 Uint8Array 对象。该接口使用 promise 返回结果。
+将输入参数异步编码后输出对应Uint8Array对象。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -143,14 +143,14 @@ encode(src: Uint8Array, options?: Type): Promise<Uint8Array>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | Uint8Array | 是 | 要编码的 Uint8Array 对象。 |
-| options | [Type](arkts-arkts-util-type-e.md) | 否 | 编码格式。<br>可取值如下：<br>- **util.Type.BASIC**（默认）：Base64 编码。<br>- **util.Type.BASIC_URL_SAFE**：Base64URL 编码。<br>**适用版本：** 12 |
+| src | Uint8Array | 是 | 待编码Uint8Array对象。 |
+| options | [Type](arkts-arkts-util-type-e.md) | 否 | 从API version 12开始支持该参数，表示对应的编码格式。<br>此参数可选，可选值为：util.Type.BASIC和util.Type.BASIC_URL_SAFE，默认值为：util.Type.BASIC。<br>util.Type.BASIC表示Base64编码。<br>util.Type.BASIC_URL_SAFE表示Base64URL编码。<br>**适用版本：** 12 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Uint8Array&gt; | 用于返回获取到的 Uint8Array 对象的 promise。 |
+| Promise&lt;Uint8Array&gt; | Promise对象。编码成功时resolve为新分配的Uint8Array对象，编码失败时reject为错误对象。 |
 
 **示例**
 
@@ -169,7 +169,7 @@ base64Helper.encode(array).then((val) => {
 encodeSync(src: Uint8Array, options?: Type): Uint8Array
 ```
 
-将输入内容编码为 Uint8Array 对象。
+通过输入参数编码后输出Uint8Array对象。
 
 **起始版本：** 9
 
@@ -183,14 +183,14 @@ encodeSync(src: Uint8Array, options?: Type): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | Uint8Array | 是 | 要编码的 Uint8Array 对象。 |
-| options | [Type](arkts-arkts-util-type-e.md) | 否 | 编码格式。<br>可取值如下：<br>- **util.Type.BASIC**（默认）：Base64 编码。<br>- **util.Type.BASIC_URL_SAFE**：Base64URL 编码。<br>**适用版本：** 12 |
+| src | Uint8Array | 是 | 待编码的Uint8Array对象。 |
+| options | [Type](arkts-arkts-util-type-e.md) | 否 | 从API version 12开始支持该参数，表示对应的编码格式。<br>此参数可选，可选值为：util.Type.BASIC和util.Type.BASIC_URL_SAFE，默认值为：util.Type.BASIC。<br>util.Type.BASIC表示Base64编码。<br>util.Type.BASIC_URL_SAFE表示Base64URL编码。<br>**适用版本：** 12 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Uint8Array | 获取到的 Uint8Array 对象。 |
+| Uint8Array | 返回编码后的Uint8Array对象。 |
 
 **示例**
 
@@ -208,7 +208,7 @@ console.info("result = " + result);
 encodeToString(src: Uint8Array | collections.Uint8Array, options?: Type): Promise<string>
 ```
 
-将输入内容编码为字符串。该接口使用 promise 返回结果。
+将输入参数异步编码后输出对应文本。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -222,14 +222,14 @@ encodeToString(src: Uint8Array | collections.Uint8Array, options?: Type): Promis
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | Uint8Array &#124; [collections.Uint8Array](arkts-arkts-collections-uint8array-c.md) | 是 | 要编码的 Uint8Array 对象。<br>**适用版本：** 26.1.0 |
-| options | [Type](arkts-arkts-util-type-e.md) | 否 | 编码格式。<br>可取值如下：<br>- **util.Type.BASIC**（默认）：Base64 编码。返回值不包含回车符或换行符。<br>- **util.Type.MIME**：Base64 编码。返回值每行最多 76 个字符且以 '\r\n' 结尾。<br>- **util.Type.BASIC_URL_SAFE**：Base64URL 编码。返回值不包含回车符或换行符。<br>- **util.Type.MIME_URL_SAFE**：Base64URL 编码。返回值每行最多 76 个字符且以 '\r\n' 结尾。<br>**适用版本：** 10 |
+| src | Uint8Array &#124; [collections.Uint8Array](arkts-arkts-collections-uint8array-c.md) | 是 | 异步编码输入的Uint8Array对象。<br>**说明：** 从API version 26.1.0开始，支持传入collections.Uint8Array（Sendable字节数组），可直接编码跨并发实例（TaskPool/Worker）传递的字节数据，无需先拷贝为普通Uint8Array。<br>**适用版本：** 26.1.0 |
+| options | [Type](arkts-arkts-util-type-e.md) | 否 | 从API version 10开始支持该参数，表示对应的编码格式。<br>此参数可选，可选值为：util.Type.BASIC，util.Type.MIME，util.Type.BASIC_URL_SAFE和util.Type.MIME_URL_SAFE，默认值为：util.Type.BASIC。<br>- 当参数取值为util.Type.BASIC，表示Base64编码，返回值没有回车符、换行符。<br>- 当参数取值为util.Type.MIME，表示Base64编码，返回值每一行不超过76个字符，而且每行以'\r\n'符结束。<br>- 当参数取值为util.Type.BASIC_URL_SAFE，表示Base64URL编码，返回值没有回车符、换行符。<br>- 当参数取值为util.Type.MIME_URL_SAFE，表示Base64URL编码，返回值每一行不超过76个字符，而且每行以'\r\n'符结束。<br>**适用版本：** 10 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | 用于返回获取到的字符串的 promise。 |
+| Promise&lt;string&gt; | Promise对象。编码成功时resolve为Base64编码后的字符串，编码失败时reject为错误对象。 |
 
 **示例**
 
@@ -264,7 +264,7 @@ base64Helper.encodeToString(sendableArray, util.Type.BASIC).then((val) => {
 encodeToStringSync(src: Uint8Array | collections.Uint8Array, options?: Type): string
 ```
 
-对输入的 Uint8Array 字节数组进行 Base64 编码，并返回字符串。该方法支持多种编码格式，包括标准 Base64 编码、符合MIME 规范的 Base64 编码（带换行）以及 URL 安全的 Base64 编码。
+将输入的Uint8Array字节数组进行Base64编码，返回一个字符串结果。该方法支持多种编码格式，包括标准Base64编码、MIME格式的Base64编码（带有换行符）、URL安全格式的Base64编码等。
 
 **起始版本：** 9
 
@@ -278,14 +278,14 @@ encodeToStringSync(src: Uint8Array | collections.Uint8Array, options?: Type): st
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | Uint8Array &#124; [collections.Uint8Array](arkts-arkts-collections-uint8array-c.md) | 是 | 要编码的 Uint8Array 对象。<br>**适用版本：** 26.1.0 |
-| options | [Type](arkts-arkts-util-type-e.md) | 否 | 编码格式。<br>可取值如下：<br>- **util.Type.BASIC**（默认）：Base64 编码。返回值不包含回车符或换行符。<br>- **util.Type.MIME**：Base64 编码。如果返回值超过 76 个字符，则每 76 个字符插入一个换行，每行以 '\r\n' 结尾。如果返回值少于 76 个字符，则抛出异常。<br>- **util.Type.BASIC_URL_SAFE**：Base64URL编码。返回值不包含回车符或换行符。<br>- **util.Type.MIME_URL_SAFE**：Base64URL 编码。返回值每行最多 76 个字符且以 '\r\n' 结尾。<br>**适用版本：** 12 |
+| src | Uint8Array &#124; [collections.Uint8Array](arkts-arkts-collections-uint8array-c.md) | 是 | 待编码的Uint8Array对象。<br>**说明：** 从API version 26.1.0开始，支持传入collections.Uint8Array（Sendable字节数组），可直接编码跨并发实例（TaskPool/Worker）传递的字节数据，无需先拷贝为普通Uint8Array。<br>**适用版本：** 26.1.0 |
+| options | [Type](arkts-arkts-util-type-e.md) | 否 | 从API version 10开始支持该参数，表示对应的编码格式。<br>此参数可选，可选值为：util.Type.BASIC，util.Type.MIME，util.Type.BASIC_URL_SAFE 和util.Type.MIME_URL_SAFE，默认值为：util.Type.BASIC。<br>- 当参数取值为util.Type.BASIC，表示Base64编码，返回值没有回车符、换行符。<br>- 当参数取值为util.Type.MIME，表示使用Base64编码。如果返回值超过76个字符，则会在每76个字符处进行换行，并以'\r\n'结束每行。如果返回值少于76个字符，则会抛出异常。<br>- 当参数取值为util.Type.BASIC_URL_SAFE，表示Base64URL编码，返回值没有回车符、换行符。<br>- 当参数取值为util.Type.MIME_URL_SAFE，表示Base64URL编码，返回值每一行不超过76个字符，而且每行以'\r\n'符结束。<br>**适用版本：** 12 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 获取到的字符串。 |
+| string | 返回编码后的字符串。 |
 
 **示例**
 

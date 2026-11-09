@@ -36,7 +36,9 @@ import { adminManager } from '@kit.MDMKit';
 | [setDelegatedPolicies](arkts-mdm-adminmanager-setdelegatedpolicies-f.md#setdelegatedpolicies-1) | 委托其他应用来设置设备的管控策略。被委托的其他应用需申请委托策略对应接口所需权限。 |
 | [startAdminProvision](arkts-mdm-adminmanager-startadminprovision-f.md#startadminprovision-1) | 设备管理应用拉起BYOD管理员激活页面进行激活。 |
 | [subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribemanagedeventsync-1) | 订阅系统管理事件。调用成功后，当已订阅的系统管理事件发生时，设备管理应用将收到相应的通知。 |
+| [subscribeSmsEvent](arkts-mdm-adminmanager-subscribesmsevent-f.md#subscribesmsevent-1) | 订阅监听短信事件 |
 | [unsubscribeManagedEventSync](arkts-mdm-adminmanager-unsubscribemanagedeventsync-f.md#unsubscribemanagedeventsync-1) | 取消订阅系统管理事件。调用成功后，将不再收到已取消订阅的系统管理事件通知。 |
+| [unsubscribeSmsEvent](arkts-mdm-adminmanager-unsubscribesmsevent-f.md#unsubscribesmsevent-1) | 取消订阅监听短信事件 |
 
 <!--Del-->
 ### 函数（系统接口）

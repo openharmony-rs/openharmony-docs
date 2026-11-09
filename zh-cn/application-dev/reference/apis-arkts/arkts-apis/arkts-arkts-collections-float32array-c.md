@@ -33,6 +33,8 @@ import { collections } from '@kit.ArkTS';
 
 返回包含ArkTS Float32Array中每个元素的迭代器。
 
+本接口不支持在.ets文件中使用。
+
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
@@ -215,8 +217,8 @@ constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | 是 | 用于构造ArkTS Float32Array的ArrayBuffer对象。buffer所占的字节数需是4的整数倍。 |
-| byteOffset | number | 否 | 指定buffer的字节偏移，从0开始，默认为**0**。 |
-| length | number | 否 | 指定ArkTS Float32Array的长度，默认为**0**。 |
+| byteOffset | number | 否 | 指定buffer的字节偏移，从0开始，默认值为0。byteOffset需为4的整数倍。 |
+| length | number | 否 | 指定ArkTS Float32Array的长度，需为非负整数。默认值为0。且需满足byteOffset + length * 4 &lt;= buffer.byteLength。 |
 
 **错误码：**
 
@@ -603,7 +605,7 @@ includes(searchElement: number, fromIndex?: number): boolean
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | searchElement | number | 是 | 待搜索的元素。 |
-| fromIndex | number | 否 | 开始搜索的索引。 |
+| fromIndex | number | 否 | 开始搜索的索引，默认值为0。如果fromIndex &lt; 0，则会从fromIndex + Float32Array.length位置开始从前向后搜索。 |
 
 **返回值：**
 
@@ -739,7 +741,7 @@ lastIndexOf(searchElement: number, fromIndex?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | searchElement | number | 是 | 待索引的值。 |
-| fromIndex | number | 否 | 搜索的起始下标。默认值为ArkTS Float32Array长度减1（即从末尾开始）。如果下标大于等于ArkTS Float32Array的长度，则返回**-1**。如果提供的下标值是负数，则被当做距离数组尾部的偏移，从后到前搜索。 |
+| fromIndex | number | 否 | 搜索的起始索引，从该位置开始往前查找。默认值为ArkTS Float32Array长度减1（即从末尾开始）。如果索引大于等于ArkTS Float32Array的长度，则从末尾开始往前查找。如果提供的索引值是负数，则被当作距离数组尾部的偏移，从后到前搜索。 |
 
 **返回值：**
 
@@ -809,7 +811,7 @@ static of(...items: number[]): Float32Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | number[] | 是 | 用于创建数组的元素，参数个数可以是0个、1个或者多个。 |
+| items | number[] | 是 | 用于创建数组的元素，参数个数可以是0个、1个或者多个。默认值为空数组。 |
 
 **返回值：**
 
@@ -1009,7 +1011,7 @@ set(array: ArrayLike<number>, offset?: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | array | ArrayLike&lt;number&gt; | 是 | 用于设置的ArrayLike对象。 |
-| offset | number | 否 | 写入的起始位置。默认为0。 |
+| offset | number | 否 | 写入的起始位置，需为非负整数。默认值为0。offset与array.length之和不能超过ArkTS Float32Array的长度。 |
 
 **错误码：**
 
@@ -1254,6 +1256,8 @@ values(): IterableIterator<number>
 ```
 
 返回ArkTS Float32Array指定索引位置的元素。
+
+所需元素的从零开始的索引。取值范围为[0, Float32Array.length - 1]。
 
 **类型：** number
 

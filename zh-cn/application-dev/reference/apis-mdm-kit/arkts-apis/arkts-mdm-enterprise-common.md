@@ -36,6 +36,7 @@ import { common } from '@kit.MDMKit';
 | [ExternalStorageDeviceInfo](arkts-mdm-common-externalstoragedeviceinfo-i.md) | 外置存储设备信息。 |
 | [InstallationResult](arkts-mdm-common-installationresult-i.md) | 应用安装结果。 |
 | [PolicyChangedEvent](arkts-mdm-common-policychangedevent-i.md) | 策略变更事件。 |
+| [SmsReceiveInfo](arkts-mdm-common-smsreceiveinfo-i.md) | 短信接收信息。 |
 
 ### 类型
 

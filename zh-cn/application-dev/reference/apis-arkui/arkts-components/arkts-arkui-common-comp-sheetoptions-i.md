@@ -54,6 +54,32 @@ shouldDismiss与[onWillDismiss](arkts-arkui-common-comp-sheetoptions-i.md)同为
 | --- | --- | --- | --- |
 | sheetDismiss | [SheetDismiss](arkts-arkui-common-comp-sheetdismiss-i.md) | 是 |  |
 
+## adaptToHandedness
+
+```TypeScript
+adaptToHandedness?: HandednessFollowMode
+```
+
+半模态如何适配握持习惯。
+
+默认值：HandednessFollowMode.NONE，不适配握持习惯
+
+**说明：** 
+
+该属性仅在preferType设置为SheetType.CENTER（居中弹窗）时生效，其他弹窗样式下该属性不生效。
+
+**类型：** [HandednessFollowMode](../arkts-apis/arkts-arkui-arkui-dialog-handednessfollowmode-e.md)
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-SheetOptions-adaptToHandedness?: HandednessFollowMode--><!--Device-SheetOptions-adaptToHandedness?: HandednessFollowMode-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## blurStyle
 
 ```TypeScript
@@ -858,6 +884,28 @@ radiusRenderStrategy?: RenderStrategy
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-SheetOptions-radiusRenderStrategy?: RenderStrategy--><!--Device-SheetOptions-radiusRenderStrategy?: RenderStrategy-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## scrollBarState
+
+```TypeScript
+scrollBarState?: BarState
+```
+
+半模态内容区Scroll滚动条的显示状态。
+
+默认值：BarState.Off
+
+**类型：** [BarState](../arkts-apis/arkts-arkui-barstate-e.md)
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-SheetOptions-scrollBarState?: BarState--><!--Device-SheetOptions-scrollBarState?: BarState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

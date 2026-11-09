@@ -24,7 +24,7 @@ import { taskpool } from '@kit.ArkTS';
 addDependency(...tasks: Task[]): void
 ```
 
-为当前任务添加对其他任务的依赖。使用该方法前需先构造**Task**实例。该任务和被依赖的任务不能是任务组任务、串行队列任务、异步队列任务、已执行任务或周期任务。存在依赖关系的任务（依赖其他任务的任务或被依赖的任务）执行后不可再次执行。
+为当前任务添加对其他任务的依赖。使用该方法前需先构造Task。该任务和被依赖的任务不能是任务组任务、串行队列任务、异步队列任务、已执行任务或周期任务。存在依赖关系的任务（依赖其他任务的任务或被依赖的任务）执行后不可再次执行。
 
 **起始版本：** 11
 
@@ -38,7 +38,7 @@ addDependency(...tasks: Task[]): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tasks | [Task](arkts-arkts-taskpool-task-c.md)[] | 是 | 被依赖的任务数组。默认值为**undefined**。 |
+| tasks | [Task](arkts-arkts-taskpool-task-c.md)[] | 是 | 被依赖的任务数组。默认值为undefined。 |
 
 **错误码：**
 
@@ -101,8 +101,8 @@ Task的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| func | Function | 是 | 待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。 |
-| args | Object[] | 是 | 任务执行函数的入参，支持的参数类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
+| func | Function | 是 | 待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰，支持的函数返回值类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。 |
+| args | Object[] | 是 | 任务执行函数的入参，支持的参数类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为undefined。 |
 
 **错误码：**
 
@@ -143,8 +143,8 @@ Task的构造函数用于创建任务，并可指定任务名称。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 任务名称。 |
-| func | Function | 是 | 待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。 |
-| args | Object[] | 是 | 任务执行函数的入参。支持的类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
+| func | Function | 是 | 待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰，支持的函数返回值类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。 |
+| args | Object[] | 是 | 任务执行函数的入参。支持的类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为undefined。 |
 
 **错误码：**
 
@@ -172,7 +172,7 @@ let name: string = task.name;
 static isCanceled(): boolean
 ```
 
-检查当前正在运行的任务是否已取消。使用此方法前，需要先创建一个**Task**对象。
+检查当前正在运行的任务是否已取消。使用此方法前，需要先创建一个Task对象。
 
 > **说明：** 
 > 
@@ -190,7 +190,7 @@ static isCanceled(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 如果当前正在运行的任务被取消返回**true**，否则返回**false**。 |
+| boolean | 如果当前正在运行的任务被取消返回true，否则返回false。 |
 
 **示例**
 
@@ -264,7 +264,7 @@ isDone(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。任务执行完成时返回**true**，任务未执行完成时返回**false**。 |
+| boolean | 任务执行完成时返回true，任务未执行完成时返回false。 |
 
 **示例**
 
@@ -465,9 +465,9 @@ onReceiveData(callback?: Function): void
 
 > **说明：** 
 > 
-> 该方法与[sendData](#senddata)配对使用。
+> - 该方法与[sendData](#senddata)配对使用。
 > 
-> 不支持为同一任务定义多种回调函数。如果多次赋值，只有最后一次赋值的回调函数会生效。
+> - 不支持为同一任务定义多种回调函数。如果多次赋值，只有最后一次赋值的回调函数会生效。
 
 **起始版本：** 11
 
@@ -567,7 +567,7 @@ taskpool.execute(task).then(() => {
 removeDependency(...tasks: Task[]): void
 ```
 
-删除当前任务对其他任务的依赖。在使用该方法之前，需要先构造**Task**对象。
+删除当前任务对其他任务的依赖。在使用该方法之前，需要先构造Task对象。
 
 **起始版本：** 11
 
@@ -581,7 +581,7 @@ removeDependency(...tasks: Task[]): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tasks | [Task](arkts-arkts-taskpool-task-c.md)[] | 是 | 被依赖的任务数组。默认值为**undefined**。 |
+| tasks | [Task](arkts-arkts-taskpool-task-c.md)[] | 是 | 被依赖的任务数组。默认值为undefined。 |
 
 **错误码：**
 
@@ -634,7 +634,7 @@ taskpool.execute(task3).then(() => {
 static sendData(...args: Object[]): void
 ```
 
-任务执行过程中向宿主线程发送消息并触发已注册的回调函数。使用此方法前需构造**Task**对象。
+任务执行过程中向宿主线程发送消息并触发回调。使用此方法前需构造Task。
 
 > **说明：** 
 > 
@@ -642,9 +642,9 @@ static sendData(...args: Object[]): void
 > 
 > - 避免在回调函数中调用该方法，否则可能导致消息无法传递到宿主线程。
 > 
-> - 避免在异步函数中调用该方法，否则可能导致消息无法传递到宿主线程。如果在异步函数中使用，则需要使用**await**来确保该异步函数在任务中同步执行完成。
+> - 避免在异步函数中调用该方法，否则可能导致消息无法传递到宿主线程。如果在异步函数中使用，则需要使用await来确保该异步函数在任务中同步执行完成。
 > 
-> - 调用该接口时，请确保处理数据的回调函数已在宿主线程注册。
+> - 调用该接口时，请确保处理数据的回调函数在宿主线程通过[onReceiveData](#onreceivedata)注册。
 
 **起始版本：** 11
 
@@ -658,7 +658,7 @@ static sendData(...args: Object[]): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| args | Object[] | 是 | 作为已注册回调函数入参的数据，可传输对象默认转移；支持的参数类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
+| args | Object[] | 是 | 可传输对象默认转移，作为回调函数的参数。支持的参数类型请参见[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)，默认值为undefined。 |
 
 **错误码：**
 
@@ -732,14 +732,13 @@ taskpoolTest();
 setCloneList(cloneList: Object[] | ArrayBuffer[]): void
 ```
 
-设置任务的拷贝列表。在使用该方法前，需先构造**Task**对象。
+设置任务的拷贝列表。在使用该方法前，需先构造Task对象。
 
 > **说明：** 
 > 
 > - 此接口与[setTransferList](#settransferlist)互斥：同一个ArrayBuffer不能同时设置在transfer列表和clone列表中。
 > 
-> 该接口需搭配
-> [@Sendable装饰器](../../../arkts-utils/arkts-sendable.md#sendable装饰器)使用，否则会抛异常。建议开发者使用该装饰器以避免异常。
+> - 需搭配[@Sendable装饰器](../../../arkts-utils/arkts-sendable.md#sendable装饰器)使用，否则会抛异常。建议开发者使用该装饰器以避免异常。
 
 **起始版本：** 11
 
@@ -753,7 +752,7 @@ setCloneList(cloneList: Object[] | ArrayBuffer[]): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| cloneList | Object[] &#124; ArrayBuffer[] | 是 | 传入数组的类型必须为[Sendable支持的数据类型](../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)或ArrayBuffer。<br>- 所有传入**cloneList**的对象所持有的[Sendable class](../../../arkts-utils/arkts-sendable.md#sendable-class)实例或ArrayBuffer类型对象，在线程间传输的行为都会变成拷贝传递，即修改传输后的对象不会对原有对象产生任何影响。 |
+| cloneList | Object[] &#124; ArrayBuffer[] | 是 | 传入数组的类型必须为[Sendable支持的数据类型](../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)或ArrayBuffer。<br>- 所有传入cloneList的对象持有的[Sendable class](../../../arkts-utils/arkts-sendable.md#sendable-class)实例或ArrayBuffer类型对象，在线程间传输的行为都会变成拷贝传递，即修改传输后的对象不会对原有对象产生任何影响。 |
 
 **错误码：**
 
@@ -896,14 +895,13 @@ struct Index {
 setTransferList(transfer?: ArrayBuffer[]): void
 ```
 
-设置任务的传输列表。使用该方法前需要先构造**Task**。不调用该接口，则传给任务的数据中的ArrayBuffer默认transfer转移。
+设置任务的传输列表。使用该方法前需要先构造Task对象。不调用该接口，则传给任务的数据中的ArrayBuffer默认transfer转移。
 
 > **说明：** 
 > 
 > - 此接口与[setCloneList](#setclonelist)互斥：同一个ArrayBuffer不能同时设置在transfer列表和clone列表中。
 > 
-> 此接口可以设置任务池中ArrayBuffer的transfer列表，transfer列表中的ArrayBuffer对象在传输时不会复制buffer内容到工作线程，
-> 而是转移buffer控制权至工作线程，传输后当前的ArrayBuffer失效。若ArrayBuffer为空，则不会transfer转移。
+> - 此接口可以设置任务池中ArrayBuffer的transfer列表，transfer列表中的ArrayBuffer对象在传输时不会复制buffer内容到工作线程而是转移buffer控制权至工作线程，传输后当前的ArrayBuffer失效。若ArrayBuffer为空，则不会transfer转移。
 
 **起始版本：** 10
 
@@ -1004,7 +1002,7 @@ cpuDuration: number
 function: Function
 ```
 
-待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰，支持的函数返回值类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。<br>从API version 11开始，该接口支持在原子化服务中使用。
+待执行的函数，必须使用@Concurrent装饰器装饰，支持的函数返回值类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。<br>从API version 11开始，该接口支持在原子化服务中使用。
 
 **类型：** Function
 

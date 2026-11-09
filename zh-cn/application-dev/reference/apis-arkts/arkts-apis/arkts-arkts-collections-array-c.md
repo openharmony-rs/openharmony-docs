@@ -38,6 +38,8 @@ import { collections } from '@kit.ArkTS';
 
 获取一个迭代器，迭代器的每一项都是一个 JavaScript 对象。
 
+本接口不支持在.ets文件中使用。
+
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
@@ -113,7 +115,7 @@ concat(...items: ConcatArray<T>[]): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | ConcatArray&lt;T&gt;[] | 是 | 用于拼接ArkTS Array的一个或多个数组，省略时返回原数组的浅拷贝。 |
+| items | ConcatArray&lt;T&gt;[] | 是 | 拼接两个或多个数组，省略时返回原数组的浅拷贝。 |
 
 **返回值：**
 
@@ -171,7 +173,7 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | first | T | 是 | 初始化ArkTS Array的第一个元素。 |
-| left | T[] | 是 | 初始化ArkTS Array的剩余元素。 |
+| left | T[] | 是 | 初始化ArkTS Array的剩余元素。默认值为空数组。 |
 
 **错误码：**
 
@@ -338,7 +340,7 @@ static create<T>(arrayLength: number, initialValue: T): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arrayLength | number | 是 | ArkTS Array的长度。 |
+| arrayLength | number | 是 | 用于构造ArkTS Array的长度。取值应为非负整数，否则会抛出异常。 |
 | initialValue | T | 是 | ArkTS Array中每个元素的初始值。 |
 
 **返回值：**
@@ -468,8 +470,8 @@ fill(value: T, start?: number, end?: number): Array<T>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | T | 是 | 要填充的值。 |
-| start | number | 否 | 开始填充的索引。默认值为**0**。 |
-| end | number | 否 | 结束填充的索引（不包括该元素）。如果未传入，则指代数组的最后一个元素。 |
+| start | number | 否 | 开始填充的索引。默认值为0。如果start &lt; 0，则取max(start + len, 0)。如果start &gt; 数组长度或start &gt; end，则不做填充。填充过程中包含start位置下标所在的元素。 |
+| end | number | 否 | 结束填充的索引（不包括该元素）。如果end &lt; 0，则取max(end + len, 0)。如果省略或end &gt;数组长度，则填充到Array的最后一个元素。如果start &gt; end，则不做填充。填充过程中不包含end位置下标所在的元素。 |
 
 **返回值：**
 
@@ -765,7 +767,7 @@ includes(searchElement: T, fromIndex?: number): boolean
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | searchElement | T | 是 | 要搜索的元素。 |
-| fromIndex | number | 否 | 开始搜索的索引。默认值为**0**。 |
+| fromIndex | number | 否 | 开始搜索的索引。默认值为0。如果下标大于等于ArkTS Array的长度，则返回false。如果fromIndex &lt; 0，则会从fromIndex + array.length位置开始搜索。 |
 
 **返回值：**
 
@@ -801,7 +803,7 @@ indexOf(searchElement: T, fromIndex?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | searchElement | T | 是 | 要搜索的值。 |
-| fromIndex | number | 否 | 开始搜索的索引，从0开始。默认值为**0**。 |
+| fromIndex | number | 否 | 开始搜索的索引，从0开始，默认值为0。如果下标大于等于ArkTS Array的长度，则返回-1。如果fromIndex &lt; 0，则会从fromIndex + array.length位置开始搜索。 |
 
 **返回值：**
 
@@ -999,7 +1001,7 @@ static of<T>(...items: T[]): Array<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | T[] | 是 | 用于创建数组的元素集合，参数个数可以是0个、1个或多个。 |
+| items | T[] | 是 | 用于创建数组的元素集合，参数个数可以是0个、1个或者多个。默认值为空数组。 |
 
 **返回值：**
 

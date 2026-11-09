@@ -39,6 +39,7 @@ import { applicationManager } from '@kit.MDMKit';
 | [addOptimizationBatteryExclusionApps](arkts-mdm-applicationmanager-addoptimizationbatteryexclusionapps-f.md#addoptimizationbatteryexclusionapps-1) | 添加应用至电池优化排除列表。使用异步回调返回结果。 |
 | [addUserNonStopApps](arkts-mdm-applicationmanager-addusernonstopapps-f.md#addusernonstopapps-1) | 为指定用户添加不可关停应用名单，仅可对已安装应用设置该策略。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。 |
 | [clearUpApplicationData](arkts-mdm-applicationmanager-clearupapplicationdata-f.md#clearupapplicationdata-1) | 清除应用产生的所有数据。 |
+| [getAllMainWindowStates](arkts-mdm-applicationmanager-getallmainwindowstates-f.md#getallmainwindowstates-1) | 获取所有主窗口的状态。 |
 | [getAllowedDistributeAbilityConnBundles](arkts-mdm-applicationmanager-getalloweddistributeabilityconnbundles-f.md#getalloweddistributeabilityconnbundles-1) | 获取指定用户下特定分布式业务的允许跨设备应用名单。 |
 | [getAllowedKioskApps](arkts-mdm-applicationmanager-getallowedkioskapps-f.md#getallowedkioskapps-1) | 获取允许在Kiosk模式下运行的应用。 |
 | [getAllowedKioskApps](arkts-mdm-applicationmanager-getallowedkioskapps-f.md#getallowedkioskapps-2) | 获取允许在Kiosk模式下运行的应用。 |
@@ -70,6 +71,7 @@ import { applicationManager } from '@kit.MDMKit';
 | [queryBundleStatsInfos](arkts-mdm-applicationmanager-querybundlestatsinfos-f.md#querybundlestatsinfos-1) | 查询指定用户账户在给定时间段内，各应用在前台运行的累计时长统计信息。查询的最小粒度是天，调用时需要传入起始时间（startTime）、结束时间（endTime）以及目标用户账户ID（accountId）。请求参数startTime和endTime为毫秒级时间戳，支持调用方传入自定义值，startTime默认取当天的00:00:00.000，endTime默认取当天的24:00:00.000（即次日零点）。请求参数接口返回BundleStatsInfo数组，每个元素包含一个应用的包名，其分身索引值及其对应时间段内的前台使用时长（毫秒级时间戳）。若startTime为0，则表示从设备首次开机的时间开始查询。若起始时间晚于结束时间，接口将返回错误码9200012。 |
 | [queryTrafficStats](arkts-mdm-applicationmanager-querytrafficstats-f.md#querytrafficstats-1) | 查询当前用户下指定应用在特定时间段内使用流量情况。使用Promise异步回调。 |
 | [releaseExemptionResource](arkts-mdm-applicationmanager-releaseexemptionresource-f.md#releaseexemptionresource-1) | 释放指定应用的备用资源豁免。 |
+| [removeAllNotifications](arkts-mdm-applicationmanager-removeallnotifications-f.md#removeallnotifications-1) | 删除指定用户的所有通知。 |
 | [removeAllowedDistributeAbilityConnBundles](arkts-mdm-applicationmanager-removealloweddistributeabilityconnbundles-f.md#removealloweddistributeabilityconnbundles-1) | 为指定用户下的特定分布式业务移除允许跨设备的应用名单。移除后，若名单中还有剩余的应用，则仅名单中的应用可以不受[setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md)的限制，通过使用该特定分布式业务跨设备传输数据；若名单已被清空，无剩余的应用，则所有应用在指定用户下都不允许使用该特定分布式业务跨设备传输数据。 |
 | [removeAllowedNotificationBundles](arkts-mdm-applicationmanager-removeallowednotificationbundles-f.md#removeallowednotificationbundles-1) | 从允许发送通知的应用名单中移除应用。 |
 | [removeAllowedRunningBundles](arkts-mdm-applicationmanager-removeallowedrunningbundles-f.md#removeallowedrunningbundles-1) | 将应用从指定用户下的应用运行允许名单中移除。移除后，该应用将不允许在指定用户下运行。 |
@@ -110,6 +112,7 @@ import { applicationManager } from '@kit.MDMKit';
 | [BundleStatsInfo](arkts-mdm-applicationmanager-bundlestatsinfo-i.md) | 应用包统计信息。 |
 | [DockInfo](arkts-mdm-applicationmanager-dockinfo-i.md) | 快捷栏中的应用信息。 |
 | [FormInfo](arkts-mdm-applicationmanager-forminfo-i.md) | 卡片信息 |
+| [MainWindowStates](arkts-mdm-applicationmanager-mainwindowstates-i.md) | 主窗口显示信息。 |
 | [WindowStateInfo](arkts-mdm-applicationmanager-windowstateinfo-i.md) | 应用窗口状态信息。 |
 
 ### 枚举

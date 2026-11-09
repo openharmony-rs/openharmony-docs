@@ -24,10 +24,7 @@ import { HashSet } from '@kit.ArkTS';
 [Symbol.iterator](): IterableIterator<T>
 ```
 
-返回一个迭代器，迭代器的每一项为HashSet中的元素。  
-> **说明：** 
-> 
-> 不建议在Symbol.iterator中使用add、remove方法，因其可能导致迭代过程中的状态异常，建议使用for循环来进行安全的插入与删除操作。
+返回一个迭代器，迭代器的每一项为HashSet中的元素。
 
 **起始版本：** 8
 
@@ -274,7 +271,7 @@ forEach(callbackFn: (value?: T, key?: T, set?: HashSet<T>) => void, thisArg?: Ob
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value?: T, key?: T, set?: HashSet&lt;T&gt;) =&gt; void | 是 | 回调函数，在遍历过程中对每个元素调用一次。回调参数包括value、key和set，详见callbackFn的参数说明。 |
+| callbackFn | (value?: T, key?: T, set?: HashSet&lt;T&gt;) =&gt; void | 是 | 回调函数，在遍历过程中对每个元素调用一次。 value是当前元素的值，key与value相同，两者每次调用都会传入；set是当前调用的HashSet实例。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值。当需要改变回调函数内this指向时传入此参数，不传入时默认值为当前实例对象。 |
 
 **错误码：**

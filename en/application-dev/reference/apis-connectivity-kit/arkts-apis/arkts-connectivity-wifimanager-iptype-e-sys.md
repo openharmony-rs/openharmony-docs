@@ -4,7 +4,7 @@
 enum IpType
 ```
 
-Wi-Fi IP type enumeration.
+Enumerates the IP address types.
 
 **Since:** 9
 
@@ -20,7 +20,7 @@ Wi-Fi IP type enumeration.
 DHCP
 ```
 
-Use dynamically configured IP settings
+IP address allocated by DHCP.
 
 **Since:** 9
 
@@ -36,7 +36,7 @@ Use dynamically configured IP settings
 STATIC
 ```
 
-Use statically configured IP settings
+Static IP address.
 
 **Since:** 9
 
@@ -52,7 +52,7 @@ Use statically configured IP settings
 UNKNOWN
 ```
 
-No IP details are assigned
+Unspecified.
 
 **Since:** 9
 

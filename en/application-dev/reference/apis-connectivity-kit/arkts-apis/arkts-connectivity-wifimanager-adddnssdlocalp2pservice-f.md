@@ -13,7 +13,7 @@ function addDnsSdLocalP2pService(instanceName: string, serviceType: string,
     txtRecord: Map<string, string>, serviceName: string): void
 ```
 
-Add a Bonjour (DNS-SD) local P2P service description and register it.
+Adds and registers the local P2P service description of DNS-SD (DNS service discovery) to be discovered by the peer device.
 
 **Since:** 26.0.1
 
@@ -29,10 +29,10 @@ Add a Bonjour (DNS-SD) local P2P service description and register it.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| instanceName | string | Yes | Instance name, which is used for peer service discovery. <br>The maximum length is 63. |
-| serviceType | string | Yes | Service type, which is used for peer service discovery. This parameter cannot be left blank. The value can be customized. The recommended format is "_<ServiceName>._<Protocol>", for example, "_http._tcp". <br>The maximum length is 63. |
-| txtRecord | Map&lt;string, string&gt; | Yes | TXT record containing key/value pairs. The key cannot contain an equal sign (=), and the length of a single record (key.length + value.length). must be less than 255 bytes. <br> It is recommended that the total size of all keys and values after serialization be kept within 200-400 bytes. <br>Exceeding the limit of a single mDNS packet will cause the data to fail to be properly broadcast or to be ignored by the peer. There is no limit to the number of key-value pairs. The definition format is as follows: <a href="http://files.dns-sd.org/draft-cheshire-dnsext-dns-sd.txt">draft-cheshire-dnsext-dns-sd.txt</a> |
-| serviceName | string | Yes | Service name used to identify the local service object. <br>The maximum length is 63. |
+| instanceName | string | Yes | Instance name, which is used for service discovery by the peer device. The value contains a maximum of 63 characters. |
+| serviceType | string | Yes | Service type, which is used for service discovery by the peer device. The value contains a maximum of 63 characters. It cannot be an empty string and can be customized. The recommended format is _<ServiceName>._<Protocol>, for example, **_http._tcp**. |
+| txtRecord | Map&lt;string, string&gt; | Yes | TXT record containing key-value pairs. A key cannot contain equal signs (=). The length of a single record equals to **key.length** + **value.length**, which must be less than 255 bytes. It is recommended that the total length of all serialized keys and values be 200 to 400 bytes. If the length exceeds the limit of a single mDNS packet, the data may fail to be broadcast correctly or be ignored by the peer device. There is no limit on the number of key-value pairs. For the format, see [draft-cheshire-dnsext-dns-sd-11.txt](http://files.dns-sd.org/draft-cheshire-dnsext-dns-sd.txt). |
+| serviceName | string | Yes | Service name, which is used to identify the local service object. The value contains a maximum of 63 characters. |
 
 **Error codes:**
 
@@ -40,7 +40,7 @@ Add a Bonjour (DNS-SD) local P2P service description and register it.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| [2801000](../errorcode-wifi.md#2801000-p2p-module-error) | The Wi-Fi service is not started properly, or there is an Wi-Fi service error. |
+| [2801000](../errorcode-wifi.md#2801000-p2p-module-error) | Operation failed. |
 | [2801001](../errorcode-wifi.md#2801001-p2p-module-error) | Wi-Fi STA disabled. |
 
 **Examples**

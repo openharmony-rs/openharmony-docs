@@ -24,7 +24,7 @@ import { util } from '@kit.ArkTS';
 compare(another: RationalNumber): number
 ```
 
-将当前的 RationalNumber 对象与给定对象进行比较。
+将当前RationalNumber对象与目标RationalNumber对象进行比较，并返回比较结果。
 
 **起始版本：** 9
 
@@ -38,13 +38,13 @@ compare(another: RationalNumber): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| another | [RationalNumber](arkts-arkts-util-rationalnumber-c.md) | 是 | 表示其他有理数的对象。 |
+| another | [RationalNumber](arkts-arkts-util-rationalnumber-c.md) | 是 | 其他的有理数对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 相等时返回0；给定对象小于当前对象时返回1；给定对象大于当前对象时返回-1。 |
+| number | 两个对象相等时返回0；给定对象小于当前对象时返回1；给定对象大于当前对象时返回-1。 |
 
 **示例**
 
@@ -62,7 +62,7 @@ console.info("result = " + result);
 constructor()
 ```
 
-用于创建 **RationalNumber** 对象的构造函数。
+RationalNumber的构造函数，创建一个默认分子为0、分母为1的RationalNumber实例。
 
 **起始版本：** 9
 
@@ -84,7 +84,7 @@ let rationalNumber = new util.RationalNumber();
 constructor(numerator: number, denominator: number)
 ```
 
-用于创建 **RationalNumber** 对象的构造函数。无参构造时分子为0、分母为1。
+RationalNumber的构造函数。
 
 **起始版本：** 8
 
@@ -100,8 +100,8 @@ constructor(numerator: number, denominator: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| numerator | number | 是 | 分子，为整数。 |
-| denominator | number | 是 | 分母，为整数。 |
+| numerator | number | 是 | 分子，整数类型。取值范围：-Number.MAX_VALUE &lt;= numerator &lt;= Number.MAX_VALUE。 |
+| denominator | number | 是 | 分母，整数类型。取值范围：-Number.MAX_VALUE &lt;= denominator &lt;= Number.MAX_VALUE。 |
 
 **示例**
 
@@ -115,11 +115,11 @@ let rationalNumber = new util.RationalNumber(1,2);
 static createRationalFromString(rationalString: string): RationalNumber
 ```
 
-根据给定的字符串创建一个 **RationalNumber** 对象。
+使用给定的字符串创建RationalNumber对象。
 
-> **NOTE:** 
+> **说明：** 
 > 
-> **rationalString** 参数必须为字符串。如果传入小数字符串，该函数不会被拦截，但会显示错误信息
+> 该接口要求参数rationalString是字符串格式。如果传入的参数是小数类型字符串格式，不会进行拦截，但是会输出错误信息
 > "createRationalFromString: The type of Parameter must be integer string"。
 
 **起始版本：** 8
@@ -134,13 +134,13 @@ static createRationalFromString(rationalString: string): RationalNumber
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rationalString | string | 是 | 用于创建 **RationalNumber** 对象的字符串。 |
+| rationalString | string | 是 | 有理数字符串格式，如"3/4"。若传入小数类型字符串格式，不会拦截但会输出错误信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [RationalNumber](arkts-arkts-util-rationalnumber-c.md) | 返回根据给定字符串生成的 RationalNumber 对象。 |
+| [RationalNumber](arkts-arkts-util-rationalnumber-c.md) | 由给定字符串创建的RationalNumber有理数对象。 |
 
 **示例**
 
@@ -154,7 +154,7 @@ let rational = util.RationalNumber.createRationalFromString("3/4");
 equals(obj: Object): boolean
 ```
 
-判断此 **RationalNumber** 对象与给定对象是否相等。
+比较当前的RationalNumber对象与给定对象是否相等。
 
 **起始版本：** 8
 
@@ -168,13 +168,13 @@ equals(obj: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| obj | Object | 是 | 用于与此 **RationalNumber** 对象进行比较的对象。 |
+| obj | Object | 是 | 用于与当前RationalNumber对象比较的对象，传入非RationalNumber类型时返回false。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果两个对象相等，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果给定对象与当前对象相同，则返回true；否则返回false。 |
 
 **示例**
 
@@ -202,11 +202,11 @@ console.info("result = " + result);
 static getCommonFactor(number1: number, number2: number): number
 ```
 
-获取两个指定整数的最大公约数。
+获取两个整数的最大公约数。
 
-> **NOTE:** 
+> **说明：** 
 > 
-> **number1** 和 **number2** 参数必须为整数。如果传入小数，该函数不会被拦截，但会显示错误信息
+> 该接口要求参数number1和number2必须是整数类型。如果传入的参数是小数类型，不会进行拦截，但是会输出错误信息
 > "getCommonFactor: The type of Parameter must be integer"。
 
 **起始版本：** 9
@@ -221,14 +221,14 @@ static getCommonFactor(number1: number, number2: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| number1 | number | 是 | 用于获取最大公约数的第一个整数。取值范围：-Number.MAX_VALUE &lt;= number1 &lt;= Number.MAX_VALUE。 |
-| number2 | number | 是 | 用于获取最大公约数的第二个整数。取值范围：-Number.MAX_VALUE &lt;= number2 &lt;= Number.MAX_VALUE。 |
+| number1 | number | 是 | 整数类型。-Number.MAX_VALUE &lt;= number1 &lt;= Number.MAX_VALUE。 |
+| number2 | number | 是 | 整数类型。-Number.MAX_VALUE &lt;= number2 &lt;= Number.MAX_VALUE。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 获取到的最大公约数。 |
+| number | 返回两个给定数字的最大公约数。 |
 
 **示例**
 
@@ -244,7 +244,7 @@ console.info("result = " + result);
 getDenominator(): number
 ```
 
-获取此 **RationalNumber** 对象的分母。
+获取当前RationalNumber对象的分母。
 
 **起始版本：** 8
 
@@ -258,7 +258,7 @@ getDenominator(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 此 **RationalNumber** 对象的分母。 |
+| number | 返回RationalNumber对象的分母。 |
 
 **示例**
 
@@ -284,7 +284,7 @@ console.info("result = " + result);
 getNumerator(): number
 ```
 
-获取此 **RationalNumber** 对象的分子。
+获取当前RationalNumber对象的分子。
 
 **起始版本：** 8
 
@@ -298,7 +298,7 @@ getNumerator(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 此 **RationalNumber** 对象的分子。 |
+| number | 返回RationalNumber对象的分子。 |
 
 **示例**
 
@@ -324,7 +324,7 @@ console.info("result = " + result);
 isFinite(): boolean
 ```
 
-判断此 **RationalNumber** 对象表示的是否为有限值。
+检查RationalNumber对象是否表示一个有限值。
 
 **起始版本：** 8
 
@@ -338,7 +338,7 @@ isFinite(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果此 **RationalNumber** 对象表示有限值（分母不为 **0**），则返回 **true**；否则返回 **false**。 |
+| boolean | 如果分母不为0，则返回true；否则返回false。 |
 
 **示例**
 
@@ -364,7 +364,7 @@ console.info("result = " + result);
 isNaN(): boolean
 ```
 
-判断此 **RationalNumber** 对象是否为非数字（NaN）。
+检查当前RationalNumber对象是否表示非数字(NaN)值。
 
 **起始版本：** 8
 
@@ -378,7 +378,7 @@ isNaN(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果此 **RationalNumber** 对象为 NaN（分母和分子都为 **0**），则返回 **true**；否则返回 **false**。 |
+| boolean | 如果分母和分子都为0，则返回true；否则返回false。 |
 
 **示例**
 
@@ -404,7 +404,7 @@ console.info("result = " + result);
 isZero(): boolean
 ```
 
-判断此 **RationalNumber** 对象的值是否为 **0**。
+检查当前RationalNumber对象是否为0。
 
 **起始版本：** 8
 
@@ -418,7 +418,7 @@ isZero(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果此 **RationalNumber** 对象的值为 **0**，则返回 **true**；否则返回**false**。 |
+| boolean | 如果当前对象的值为0，则返回true；否则返回false。 |
 
 **示例**
 
@@ -444,11 +444,11 @@ console.info("result = " + result);
 static parseRationalNumber(numerator: number, denominator: number): RationalNumber
 ```
 
-根据给定的分子和分母创建一个 **RationalNumber** 实例。
+创建具有给定分子和分母的RationalNumber实例。
 
-> **NOTE:** 
+> **说明：** 
 > 
-> **numerator** 和 **denominator** 参数必须为整数。如果传入小数，该函数不会被拦截，但会显示错误信息
+> 该接口要求参数numerator和denominator必须是整数类型。如果传入的参数是小数类型，不会进行拦截，但是会输出错误信息
 > "parseRationalNumber: The type of Parameter must be integer"。
 
 **起始版本：** 9
@@ -463,14 +463,14 @@ static parseRationalNumber(numerator: number, denominator: number): RationalNumb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| numerator | number | 是 | 分子，为整数。取值范围：-Number.MAX_VALUE &lt;= numerator &lt;= Number.MAX_VALUE。 |
-| denominator | number | 是 | 分母，为整数。取值范围：-Number.MAX_VALUE &lt;= denominator &lt;= Number.MAX_VALUE。 |
+| numerator | number | 是 | 分子，整数类型。取值范围：-Number.MAX_VALUE &lt;= numerator &lt;= Number.MAX_VALUE。 |
+| denominator | number | 是 | 分母，整数类型。取值范围：-Number.MAX_VALUE &lt;= denominator &lt;= Number.MAX_VALUE。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [RationalNumber](arkts-arkts-util-rationalnumber-c.md) | 获取到的 **RationalNumber** 对象。 |
+| [RationalNumber](arkts-arkts-util-rationalnumber-c.md) | 具有给定分子和分母的RationalNumber有理数对象。 |
 
 **示例**
 
@@ -484,7 +484,7 @@ let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
 toString(): string
 ```
 
-获取此 **RationalNumber** 对象的字符串表示形式。
+获取RationalNumber对象的字符串表示形式。
 
 **起始版本：** 8
 
@@ -498,7 +498,7 @@ toString(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 正常情况下返回以分子/分母格式的字符串，例如 3/5；如果此对象的分子为 **0**，则返回**0/1**；如果分母为 **0**，则返回 **Infinity**；如果分子和分母都为 **0**，则返回 **NaN**。 |
+| string | 返回Numerator/Denominator格式的字符串，例如3/5，如果分子为0，则返回0/1。如果分母为0，则返回Infinity。如果分子和分母都为0，则返回NaN。 |
 
 **示例**
 
@@ -524,7 +524,7 @@ console.info("result = " + result);
 valueOf(): number
 ```
 
-获取此 **RationalNumber** 对象的整数或浮点数值。
+获取当前RationalNumber对象的整数或浮点数值。
 
 **起始版本：** 8
 
@@ -538,7 +538,7 @@ valueOf(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 整数或浮点数。 |
+| number | 返回整数或者浮点数的值。 |
 
 **示例**
 
@@ -564,7 +564,7 @@ console.info("result = " + result);
 compareTo(another: RationalNumber): number
 ```
 
-将当前的 RationalNumber 对象与给定对象进行比较。
+比较当前的RationalNumber对象与给定的对象。
 
 **起始版本：** 8
 
@@ -580,13 +580,13 @@ compareTo(another: RationalNumber): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| another | [RationalNumber](arkts-arkts-util-rationalnumber-c.md) | 是 | 表示其他有理数的对象。 |
+| another | [RationalNumber](arkts-arkts-util-rationalnumber-c.md) | 是 | 其他的有理数对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 相等时返回0；给定对象小于当前对象时返回1；给定对象大于当前对象时返回-1。 |
+| number | 如果两个对象相等，则返回0；如果给定对象小于当前对象，则返回1；如果给定对象大于当前对象，则返回-1。 |
 
 **示例**
 
@@ -620,11 +620,11 @@ static getCommonDivisor(number1: number, number2: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| number1 | number | 是 | 用于获取最大公约数的第一个整数。 |
-| number2 | number | 是 | 用于获取最大公约数的第二个整数。 |
+| number1 | number | 是 | 整数类型。-Number.MAX_VALUE &lt;= number1 &lt;= Number.MAX_VALUE。 |
+| number2 | number | 是 | 整数类型。-Number.MAX_VALUE &lt;= number2 &lt;= Number.MAX_VALUE。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 获取到的最大公约数。 |
+| number | 返回两个给定数字的最大公约数。 |

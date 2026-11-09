@@ -32,7 +32,7 @@ Closes the widget editing page.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [16500050](../errorcode-form.md#16500050-ipc-failure) | IPC connection error. |
 | [16501015](../errorcode-form.md#16501015-failed-to-close-semi-modal-widget-editing-page-of-another-application) | Cannot close the widget editing page opened by other apps. |
 

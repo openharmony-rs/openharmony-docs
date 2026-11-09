@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function getWifiCapability(capability: WifiCapability): boolean
 ```
 
-Get Wi-Fi capability
+Obtains the Wi-Fi capabilities.
 
 **Since:** 26.0.0
 
@@ -30,13 +30,13 @@ Get Wi-Fi capability
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| capability | [WifiCapability](arkts-connectivity-wifimanager-wificapability-e.md) | Yes | Identifies the Wi-Fi capability |
+| capability | [WifiCapability](arkts-connectivity-wifimanager-wificapability-e.md) | Yes | Wi-Fi capability. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns `true` the specified is enable Returns `false` otherwise. |
+| boolean | The value **true** indicates the Wi-Fi capability is enabled, and the value **false** indicates the opposite. |
 
 **Error codes:**
 

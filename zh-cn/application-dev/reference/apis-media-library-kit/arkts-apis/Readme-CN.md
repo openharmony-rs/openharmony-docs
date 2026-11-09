@@ -100,6 +100,8 @@
   - [AnalysisToolResult（系统接口）](arkts-medialibrary-photoaccesshelper-analysistoolresult-i-sys.md)<!--DelEnd-->
   - [AssetCompatibleCapability](arkts-medialibrary-photoaccesshelper-assetcompatiblecapability-i.md)
   <!--Del-->
+  - [AssetUriResult（系统接口）](arkts-medialibrary-photoaccesshelper-asseturiresult-i-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [BatchOperationOptions（系统接口）](arkts-medialibrary-photoaccesshelper-batchoperationoptions-i-sys.md)<!--DelEnd-->
   - [ChangeData](arkts-medialibrary-photoaccesshelper-changedata-i.md)
   <!--Del-->

@@ -29,7 +29,7 @@ function off(type: 'streamChange', callback?: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'streamChange' | 是 | 固定填"streamChange"字符串。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 状态改变回调函数，返回0:无，1:向下，2:向上，3:双向。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 状态改变回调函数。返回状态值枚举：<br>- 0: 无。<br>- 1: 向下。<br>- 2: 向上。<br>- 3: 双向。 |
 
 **错误码：**
 
@@ -84,7 +84,7 @@ function off(type: 'deviceConfigChange', callback?: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deviceConfigChange' | 是 | 固定填"deviceConfigChange"字符串。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 状态改变回调函数，返回值为 0: 添加配置。1: 更改配置。2: 删除配置。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 状态改变回调函数。返回值为：<br>- 0: 配置已添加。<br>- 1: 配置已改变。<br>- 2: 配置已移除。 |
 
 **错误码：**
 

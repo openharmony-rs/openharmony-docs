@@ -24,7 +24,7 @@ import { util } from '@kit.ArkTS';
 constructor(encoding?: string)
 ```
 
-用于创建 **StringDecoder** 实例的构造函数。
+StringDecoder的构造函数，创建一个默认编码为'utf-8'的StringDecoder实例。
 
 **起始版本：** 12
 
@@ -38,7 +38,7 @@ constructor(encoding?: string)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| encoding | string | 否 | 输入数据的编码类型。默认值为 **utf-8**。 |
+| encoding | string | 否 | 输入数据的编码类型。默认值：'utf-8'。 |
 
 **示例**
 
@@ -52,7 +52,7 @@ let decoder = new util.StringDecoder();
 end(chunk?: string | Uint8Array): string
 ```
 
-结束解码过程，并将内部缓存中存储的任何剩余输入作为字符串返回。如果传入 **chunk**，则将其作为最后一部分数据进行解码；如果未传入 **chunk**，则仅返回内部缓存中不完整字节序列的解码结果，不再处理新数据。
+结束解码过程，以字符串形式返回存储在内部缓冲区中的所有剩余输入。
 
 **起始版本：** 12
 
@@ -66,13 +66,13 @@ end(chunk?: string | Uint8Array): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| chunk | string &#124; Uint8Array | 否 | 要解码的字符串。默认值为 **undefined**。 |
+| chunk | string &#124; Uint8Array | 否 | 需要解码的最后一部分数据，默认为undefined。当还有剩余数据需要在结束解码时一并处理时传入此参数；不传入时默认为undefined，即仅返回内部缓冲区中存储的不完整字节序列的解码结果，不再处理新数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 解码后的字符串。 |
+| string | 返回存储在内部缓冲区中的所有剩余解码内容组成的字符串。 |
 
 **示例**
 
@@ -93,7 +93,7 @@ console.info("endString:", endString);
 write(chunk: string | Uint8Array): string
 ```
 
-解码字符串。Uint8Array 末尾的任何不完整多字节字符都会从返回的字符串中过滤掉，并存储在内部缓存中以供下次调用使用。
+返回一个解码后的字符串，确保Uint8Array末尾的任何不完整的多字节字符从返回的字符串中被过滤，并保存在一个内部的buffer中用于下次调用。
 
 **起始版本：** 12
 
@@ -107,13 +107,13 @@ write(chunk: string | Uint8Array): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| chunk | string &#124; Uint8Array | 是 | 要解码的字符串。基于输入的编码类型进行解码。如果输入为 Uint8Array 类型，则正常解码。如果输入为字符串类型，则直接返回该参数。 |
+| chunk | string &#124; Uint8Array | 是 | 需要解码的字符串。会根据输入的编码类型进行解码，参数为Uint8Array时正常解码，参数为string时会将参数直接返回。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 解码后的字符串。 |
+| string | 返回解码后的字符串，不完整的多字节字符已从返回值中过滤，并保存在内部缓冲区中供下次调用处理。 |
 
 **示例**
 

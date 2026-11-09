@@ -4,7 +4,7 @@
 type AudioSuiteFeatureStatusInfoArray = Array<AudioSuiteFeatureStatusInfo>
 ```
 
-Defines the audio suite feature status information array.
+Defines the status information array of the audio encoding feature.
 
 **Type:** Array&lt;[AudioSuiteFeatureStatusInfo](arkts-audio-audio-audiosuitefeaturestatusinfo-i-sys.md)&gt;
 

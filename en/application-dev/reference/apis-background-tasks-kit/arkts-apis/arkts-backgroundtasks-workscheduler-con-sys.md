@@ -6,7 +6,7 @@
 const EXECUTE_IMMEDIATE: string
 ```
 
-Whether the requested task is executed immediately.
+Whether the requested task is executed immediately. value: 'execute_immediate'.
 
 **Type:** string
 
@@ -26,7 +26,7 @@ Whether the requested task is executed immediately.
 const WORK_SCHEDULER_CONDITION: string
 ```
 
-The last condition met when the current task is triggered.
+The last condition met when the current task is triggered. value: 'WORK_SCHEDULER_CONDITION'.
 
 **Type:** string
 

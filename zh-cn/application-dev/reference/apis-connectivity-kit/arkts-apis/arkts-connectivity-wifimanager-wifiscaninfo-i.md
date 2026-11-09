@@ -174,7 +174,7 @@ infoElems: Array<WifiInfoElem>
 isHiLinkNetwork: boolean
 ```
 
-热点是否支持hiLink，true表示支持， false表示不支持。
+热点是否支持HiLink，true表示支持，false表示不支持。
 
 **类型：** boolean
 
@@ -190,7 +190,7 @@ isHiLinkNetwork: boolean
 rssi: number
 ```
 
-热点的信号强度(dBm)。
+热点的信号强度，单位：dBm。
 
 **类型：** number
 

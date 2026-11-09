@@ -116,6 +116,7 @@ Navigation(pathInfos: NavPathStack, homeDestination: HomePathInfo)
 | [NavigationToolbarOptions](arkts-arkui-navigation-comp-navigationtoolbaroptions-i.md) | 工具栏选项。 |
 | [NavigationTransitionProxy](arkts-arkui-navigation-comp-navigationtransitionproxy-i.md) | 自定义转场动画代理对象。 |
 | [PopInfo](arkts-arkui-navigation-comp-popinfo-i.md) | 下一个页面返回的回调信息载体。 |
+| [PreloadOptions](arkts-arkui-navigation-comp-preloadoptions-i.md) | 预加载页面的选项。 |
 | [ScrollEffectOptions](arkts-arkui-navigation-comp-scrolleffectoptions-i.md) | 定义标题栏的滑动模糊效果选项。 |
 | [ToolbarItem](arkts-arkui-navigation-comp-toolbaritem-i.md) | 工具栏可配置参数。 |
 

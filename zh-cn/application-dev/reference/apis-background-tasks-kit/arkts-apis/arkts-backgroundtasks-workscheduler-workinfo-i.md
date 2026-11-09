@@ -6,6 +6,16 @@ export interface WorkInfo
 
 延迟任务的具体信息, 用于设置延迟任务的触发条件等。
 
+> **说明：** 
+
+> WorkInfo参数设置时需遵循以下规则：
+
+> 1. workId、bundleName、abilityName为必填项，bundleName需为本应用包名。
+> 2. 携带参数信息仅支持number、string、boolean三种类型。
+> 3. 至少设置一个满足的条件，包括网络类型、充电类型、存储状态、电池状态等。
+> 4. 对于循环任务，任务执行间隔至少2小时。设置了循环任务时间间隔时，须同时设置是否循环或循环次数中的一个。
+> 5. 对于可选参数，如果缺省表示延迟任务的触发不依赖该条件。
+
 **起始版本：** 9
 
 <!--Device-workScheduler-export interface WorkInfo--><!--Device-workScheduler-export interface WorkInfo-End-->
@@ -293,7 +303,7 @@ parameters?: Record<string, number | string | boolean>
 repeatCount?: number
 ```
 
-循环次数。
+循环次数。取值范围：正整数（大于0）。
 
 **类型：** number
 

@@ -102,6 +102,8 @@ checkSpecialScenarioAuthResult(context: Context): Promise<UserAuthResult>
 
 Check whether the application can request MODE_SPECIAL_SCENARIO_PROCESSING. No exception will be thrown whether authorized or not.
 
+Checks whether the user has authorized tasks to run continuously in the background. This API uses a promise to return the result. If the user has not granted authorization, [NOT_DETERMINED](arkts-backgroundtasks-backgroundtaskmanager-userauthresult-e.md#not_determined) is returned. If no continuous task of the [MODE_SPECIAL_SCENARIO_PROCESSING] [MODE_SPECIAL_SCENARIO_PROCESSING](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md#mode_special_scenario_processing) type is configured, [NOT_SUPPORTED](arkts-backgroundtasks-backgroundtaskmanager-userauthresult-e.md#not_supported) is returned.
+
 **Since:** 26.0.0
 
 **Required permissions:** ohos.permission.KEEP_BACKGROUND_RUNNING
@@ -217,7 +219,7 @@ export default class EntryAbility extends UIAbility {
 requestAuthFromUser(context: Context, callback: Callback<UserAuthResult>): void
 ```
 
-Requests user authorization to run tasks continuously in the background. This API uses an asynchronous callback to return the result. If the API call is successful, a banner notification with a sound is sent. This API is applicable only to continuous tasks of the [MODE_SPECIAL_SCENARIO_PROCESSING](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md) type.
+Requests user authorization to run tasks continuously in the background. This API uses an asynchronous callback to return the result. If the API call is successful, a banner notification with a sound is sent. This API is applicable only to continuous tasks of the [MODE_SPECIAL_SCENARIO_PROCESSING] [MODE_SPECIAL_SCENARIO_PROCESSING](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md#mode_special_scenario_processing) type.
 
 **Since:** 22
 
@@ -279,7 +281,7 @@ export default class EntryAbility extends UIAbility {
 requestAuthFromUserByDialog(context: Context, callback: Callback<UserAuthResult>): void
 ```
 
-Requesting MODE_SPECIAL_SCENARIO_PROCESSING authorization from users, a dialog box will be displayed.
+Requests user authorization to run tasks continuously in the background. This API uses an asynchronous callback to return the result. If the API call is successful, a dialog box is displayed for authorization. The user can choose to grant authorization once, grant authorization always, or not to grant authorization. When the app requests authorization again, the previous authorization result will be directly returned, and no dialog box will be displayed. It is recommended that this API be called when the application is running in the foreground to prompt the user to grant authorization. This API is applicable only to continuous tasks of the [MODE_SPECIAL_SCENARIO_PROCESSING] [MODE_SPECIAL_SCENARIO_PROCESSING](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md#mode_special_scenario_processing) type.
 
 **Since:** 26.0.0
 
@@ -296,7 +298,7 @@ Requesting MODE_SPECIAL_SCENARIO_PROCESSING authorization from users, a dialog b
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | context | Context | Yes | App running context. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[UserAuthResult](arkts-backgroundtasks-backgroundtaskmanager-userauthresult-e.md)&gt; | Yes | The callback of the function. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[UserAuthResult](arkts-backgroundtasks-backgroundtaskmanager-userauthresult-e.md)&gt; | Yes | Callback used to return the user authorization result. |
 
 **Error codes:**
 
@@ -457,7 +459,7 @@ You can call the [getAllContinuousTasks](arkts-backgroundtasks-backgroundtaskman
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
-<!--Device-ContinuousTaskRequest-continuousTaskId?: number--><!--Device-ContinuousTaskRequest-continuousTaskId?: number-End-->
+<!--Device-ContinuousTaskRequest-continuousTaskId?: int--><!--Device-ContinuousTaskRequest-continuousTaskId?: int-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 

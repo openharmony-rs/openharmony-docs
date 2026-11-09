@@ -2121,6 +2121,44 @@ export default class EntryAbility extends UIAbility {
 
 <!--DelEnd-->
 
+## setPointerInterceptable
+
+```TypeScript
+setPointerInterceptable(isInterceptable: boolean): Promise<void>
+```
+
+设置窗口启用（禁用）拦截点击事件
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Window-setPointerInterceptable(isInterceptable: boolean): Promise<void>--><!--Device-Window-setPointerInterceptable(isInterceptable: boolean): Promise<void>-End-->
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| isInterceptable | boolean | 是 | 是否可以拦截此窗口的指针事件。**true**表示可以拦截指针事件，**false**表示相反。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | 不返回任何值的Promise。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: <br>1. The hardware does not support the capability. <br>2. The chip does not support the capability. <br>3. A dependent service feature is not supported. |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
+
 ## setRaiseByClickEnabled
 
 ```TypeScript

@@ -6,6 +6,8 @@ type TypedArrayFromMapFn<FromElementType, ToElementType> = (value: FromElementTy
 
 ArkTS TypedArray映射函数类型。
 
+此类型被TypedArray类的from()接口使用。
+
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。

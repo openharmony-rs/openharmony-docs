@@ -24,7 +24,7 @@ import { url } from '@kit.ArkTS';
 [Symbol.iterator](): IterableIterator<[string, string]>
 ```
 
-获取一个迭代器，迭代器的每一项都是一个JavaScript数组，数组的第一项和第二项分别是键和值。
+返回一个迭代器，迭代器的每一项都是一个Array。Array的第一项是name，Array的第二项是value。
 
 **起始版本：** 9
 
@@ -169,7 +169,7 @@ paramsObject.delete('fod');
 entries(): IterableIterator<[string, string]>
 ```
 
-返回一个ES6的迭代器，迭代器的每一项都是一个Array。Array的第一项是name，Array的第二项是value。
+返回一个迭代器，迭代器的每一项都是一个Array。Array的第一项是name，Array的第二项是value。该方法与[Symbol.iterator]行为一致，均返回键值对的迭代器。
 
 **起始版本：** 9
 
@@ -183,7 +183,7 @@ entries(): IterableIterator<[string, string]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[string, string]&gt; | 返回一个ES6的迭代器。 |
+| IterableIterator&lt;[string, string]&gt; | 返回一个迭代器，迭代器的每一项为包含name和value的[string, string]数组。 |
 
 **示例**
 
@@ -220,7 +220,7 @@ forEach(callbackFn: (value: string, key: string, searchParams: URLParams) => voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: string, key: string, searchParams: URLParams) =&gt; void | 是 | 遍历键值对时执行的回调函数，对每个键值对调用一次。 |
+| callbackFn | (value: string, key: string, searchParams: URLParams) =&gt; void | 是 | 遍历键值对时执行的回调函数，对每个键值对调用一次。value为当前遍历到的值，key为键名，searchParams为当前调用forEach方法的实例对象。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值是本对象。 |
 
 **示例**
@@ -241,6 +241,10 @@ get(name: string): string | null
 ```
 
 获取指定名称对应的第一个值。
+
+> **说明：** 
+> 
+> 若查找一个不存在的键值对名称时返回值为undefined。
 
 **起始版本：** 9
 

@@ -28,7 +28,7 @@ import { util } from '@kit.ArkTS';
 constructor()
 ```
 
-用于创建 **Base64** 对象的构造函数。
+Base64的构造函数。
 
 **起始版本：** 8
 
@@ -52,7 +52,7 @@ let base64 = new util.Base64();
 decode(src: Uint8Array | string): Promise<Uint8Array>
 ```
 
-将输入内容解码为 Uint8Array 对象。该接口使用 promise 返回结果。
+将输入参数异步解码后输出对应文本。
 
 **起始版本：** 8
 
@@ -68,13 +68,13 @@ decode(src: Uint8Array | string): Promise<Uint8Array>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | Uint8Array &#124; string | 是 | 要解码的 Uint8Array 对象或字符串。 |
+| src | Uint8Array &#124; string | 是 | 异步解码输入Uint8数组或者字符串。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Uint8Array&gt; | 用于返回获取到的 Uint8Array 对象的 promise。 |
+| Promise&lt;Uint8Array&gt; | 返回异步解码后新分配的Uint8数组。 |
 
 **示例**
 
@@ -93,7 +93,7 @@ base64.decode(array).then((val) => {
 decodeSync(src: Uint8Array | string): Uint8Array
 ```
 
-将输入内容解码为 Uint8Array 对象。
+通过输入参数解码后输出对应文本。
 
 **起始版本：** 8
 
@@ -109,13 +109,13 @@ decodeSync(src: Uint8Array | string): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | Uint8Array &#124; string | 是 | 要解码的 Uint8Array 对象或字符串。 |
+| src | Uint8Array &#124; string | 是 | 解码输入Uint8数组或者字符串。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Uint8Array | 获取到的 Uint8Array 对象。 |
+| Uint8Array | 返回解码后新分配的Uint8数组。 |
 
 **示例**
 
@@ -133,7 +133,7 @@ console.info("result = " + result);
 encode(src: Uint8Array): Promise<Uint8Array>
 ```
 
-将输入内容编码为 Uint8Array 对象。该接口使用 promise 返回结果。
+通过输入参数异步编码后输出对应文本。
 
 **起始版本：** 8
 
@@ -149,13 +149,13 @@ encode(src: Uint8Array): Promise<Uint8Array>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | Uint8Array | 是 | 要编码的 Uint8Array 对象。 |
+| src | Uint8Array | 是 | 异步编码输入Uint8数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Uint8Array&gt; | 用于返回获取到的 Uint8Array 对象的 promise。 |
+| Promise&lt;Uint8Array&gt; | 返回异步编码后新分配的Uint8数组。 |
 
 **示例**
 
@@ -174,7 +174,7 @@ base64.encode(array).then((val) => {
 encodeSync(src: Uint8Array): Uint8Array
 ```
 
-对输入的 Uint8Array 字节数组进行 Base64 编码，并返回编码后的 Uint8Array。
+将输入的Uint8Array字节数组进行Base64编码，返回编码后的Uint8Array数组。
 
 **起始版本：** 8
 
@@ -190,13 +190,13 @@ encodeSync(src: Uint8Array): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | Uint8Array | 是 | 要编码的 Uint8Array 对象。 |
+| src | Uint8Array | 是 | 编码输入Uint8数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Uint8Array | 获取到的 Uint8Array 对象。 |
+| Uint8Array | 返回编码后新分配的Uint8数组。 |
 
 **示例**
 
@@ -214,7 +214,7 @@ console.info("result = " + result);
 encodeToString(src: Uint8Array): Promise<string>
 ```
 
-将输入内容编码为字符串。该接口使用 promise 返回结果。
+通过输入参数异步编码后输出对应文本。
 
 **起始版本：** 8
 
@@ -230,13 +230,13 @@ encodeToString(src: Uint8Array): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | Uint8Array | 是 | 要编码的 Uint8Array 对象。 |
+| src | Uint8Array | 是 | 异步编码输入Uint8数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | 用于返回获取到的字符串的 promise。 |
+| Promise&lt;string&gt; | 返回异步编码后的字符串。 |
 
 **示例**
 
@@ -255,7 +255,7 @@ base64.encodeToString(array).then((val) => {
 encodeToStringSync(src: Uint8Array): string
 ```
 
-对输入的 Uint8Array 字节数组进行 Base64 编码，并返回编码后的字符串。
+将输入的Uint8Array字节数组进行Base64编码，返回编码后的字符串结果。
 
 **起始版本：** 8
 
@@ -271,13 +271,13 @@ encodeToStringSync(src: Uint8Array): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | Uint8Array | 是 | 要编码的 Uint8Array 对象。 |
+| src | Uint8Array | 是 | 编码输入Uint8数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 获取到的字符串。 |
+| string | 返回编码后的字符串。 |
 
 **示例**
 

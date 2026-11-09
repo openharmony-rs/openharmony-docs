@@ -118,7 +118,7 @@ onmessageerror?: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void
 postMessage(messageObject: Object, transfer: Transferable[]): void
 ```
 
-Worker线程向宿主线程发送消息。
+Worker线程通过转移对象所有权的方式向宿主线程发送消息。
 
 **起始版本：** 7
 
@@ -134,8 +134,8 @@ Worker线程向宿主线程发送消息。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| messageObject | Object | 是 | messageObject 发送至宿主线程的数据。 |
-| transfer | Transferable[] | 是 | transfer 数组不可包含null。 |
+| messageObject | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化对象，序列化支持类型见序列化支持类型。 |
+| transfer | Transferable[] | 是 | 暂不支持该参数类型。 |
 
 **示例**
 
@@ -191,7 +191,7 @@ parentPort.onmessage = (e: MessageEvents) => {
 postMessage(messageObject: Object, options?: PostMessageOptions): void
 ```
 
-Worker线程向宿主线程发送消息。
+Worker线程通过转移对象所有权或者拷贝数据的方式向宿主线程发送消息。
 
 **起始版本：** 7
 
@@ -207,8 +207,8 @@ Worker线程向宿主线程发送消息。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| messageObject | Object | 是 | messageObject 发送至宿主线程的数据。 |
-| options | [PostMessageOptions](arkts-arkts-worker-postmessageoptions-i.md) | 否 | 可为postMessage设置的选项。 |
+| messageObject | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化对象，序列化支持类型见序列化支持类型。 |
+| options | [PostMessageOptions](arkts-arkts-worker-postmessageoptions-i.md) | 否 | 当填入该参数时，与传入ArrayBuffer[]的作用一致，该数组中对象的所有权会被转移到宿主线程，在Worker线程中将会变为不可用，仅在宿主线程中可用。若不填入该参数，默认设置为 undefined，通过拷贝数据的方式传输信息到宿主线程。 |
 
 **示例**
 
@@ -239,7 +239,7 @@ parentPort.onmessage = (e: MessageEvents) => {
 postMessage(messageObject: Object, transfer: ArrayBuffer[]): void
 ```
 
-Worker线程向宿主线程发送消息。
+Worker线程通过转移对象所有权的方式向宿主线程发送消息。
 
 **起始版本：** 9
 
@@ -255,8 +255,8 @@ Worker线程向宿主线程发送消息。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| messageObject | Object | 是 | messageObject 发送至宿主线程的数据。 |
-| transfer | ArrayBuffer[] | 是 | transfer 数组不可包含null。 |
+| messageObject | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化对象，序列化支持类型见序列化支持类型。 |
+| transfer | ArrayBuffer[] | 是 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到宿主线程，在Worker线程中将会变为不可用，仅在宿主线程中可用，数组不可传入null。 |
 
 **示例**
 

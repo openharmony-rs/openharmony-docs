@@ -538,6 +538,16 @@ fallbackLineSpacing(enabled: Optional<boolean>)
 
 该接口依赖[RichEditorTextStyle](arkts-arkui-richeditor-comp-richeditortextstyle-i.md)的lineHeight属性。当lineHeight设置值小于当前字号下文本渲染出的实际高度时，fallbackLineSpacing属性将生效。
 
+从API版本26.1.0开始，该接口与[includeFontPadding](#includefontpadding)支持通过module.json5中配置metadata字段统一开启，两个能力同时生效，不支持单独开启。配置后，Text、TextArea、TextInput、[RichEditor](arkts-arkui-richeditor-comp.md#richeditor)、Search等文本类组件在未显式设置对应属性时默认按true处理；组件显式设置的值优先于metadata开关；未配置metadata的应用行为不变。配置如下：  
+```json
+"metadata": [
+  {
+    "name": "configTextStyleOptimizeFlagInArkUI",
+    "value": "true"
+  }
+]
+```
+
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -585,6 +595,16 @@ includeFontPadding(include: Optional<boolean>)
 ```
 
 设置是否在首行和尾行增加间距以避免文字截断。适用于自定义字体行高较小导致文字被裁剪、紧凑排版等场景。不通过该接口设置，默认不增加间距。
+
+从API版本26.1.0开始，该接口与[fallbackLineSpacing](#fallbacklinespacing)支持通过module.json5中配置metadata字段统一开启，两个能力同时生效，不支持单独开启。配置后，Text、TextArea、TextInput、[RichEditor](arkts-arkui-richeditor-comp.md#richeditor)、Search等文本类组件在未显式设置对应属性时默认按true处理；组件显式设置的值优先于metadata开关；未配置metadata的应用行为不变。配置如下：  
+```json
+"metadata": [
+  {
+    "name": "configTextStyleOptimizeFlagInArkUI",
+    "value": "true"
+  }
+]
+```
 
 **起始版本：** 23
 

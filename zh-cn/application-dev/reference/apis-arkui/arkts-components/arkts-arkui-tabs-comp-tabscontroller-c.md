@@ -50,6 +50,30 @@ TabsController的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## getBarDisplayMode
+
+```TypeScript
+getBarDisplayMode(): TabBarDisplayMode
+```
+
+获取选项卡的当前显示模式。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsController-getBarDisplayMode(): TabBarDisplayMode--><!--Device-TabsController-getBarDisplayMode(): TabBarDisplayMode-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [TabBarDisplayMode](arkts-arkui-tabs-comp-tabbardisplaymode-e.md) | 当前显示模式。 |
+
 ## preloadItems
 
 ```TypeScript

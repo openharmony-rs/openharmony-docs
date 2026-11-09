@@ -15,7 +15,7 @@ declare enum RepeatMode
 ## Repeat
 
 ```TypeScript
-Repeat = 0
+Repeat
 ```
 
 被切割的图片会重复铺平在图片边框上，超出部分会被剪裁。
@@ -26,14 +26,14 @@ Repeat = 0
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-RepeatMode-Repeat = 0--><!--Device-RepeatMode-Repeat = 0-End-->
+<!--Device-RepeatMode-Repeat--><!--Device-RepeatMode-Repeat-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Round
 
 ```TypeScript
-Round = 2
+Round
 ```
 
 被切割的图片会以整数次平铺在图片边框上，无法以整数次平铺时会压缩图片。
@@ -44,14 +44,14 @@ Round = 2
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-RepeatMode-Round = 2--><!--Device-RepeatMode-Round = 2-End-->
+<!--Device-RepeatMode-Round--><!--Device-RepeatMode-Round-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Space
 
 ```TypeScript
-Space = 3
+Space
 ```
 
 被切割的图片会以整数次平铺在图片边框上，无法以整数次平铺时会以空白填充。
@@ -62,14 +62,14 @@ Space = 3
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-RepeatMode-Space = 3--><!--Device-RepeatMode-Space = 3-End-->
+<!--Device-RepeatMode-Space--><!--Device-RepeatMode-Space-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Stretch
 
 ```TypeScript
-Stretch = 1
+Stretch
 ```
 
 被切割的图片会以拉伸填充的方式铺满图片边框。
@@ -80,6 +80,6 @@ Stretch = 1
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-RepeatMode-Stretch = 1--><!--Device-RepeatMode-Stretch = 1-End-->
+<!--Device-RepeatMode-Stretch--><!--Device-RepeatMode-Stretch-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

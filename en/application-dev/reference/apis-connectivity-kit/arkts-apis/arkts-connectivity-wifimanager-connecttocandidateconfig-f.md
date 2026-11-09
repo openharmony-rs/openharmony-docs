@@ -14,7 +14,7 @@ function connectToCandidateConfig(networkId: number): void
 
 Connect to a specified candidate hotspot by networkId, only the configuration which is added by ourself is allowed to be connected. This method connect to a configuration at a time. The app must be in the foreground.
 
-**Since:** 12
+**Since:** 9
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO
 

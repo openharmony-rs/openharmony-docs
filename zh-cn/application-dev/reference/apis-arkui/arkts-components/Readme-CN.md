@@ -407,6 +407,8 @@
   - [SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md)
   <!--Del-->
   - [SheetOptions（系统接口）](arkts-arkui-common-comp-sheetoptions-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [SheetTitleBarBackgroundBlurOptions（系统接口）](arkts-arkui-common-comp-sheettitlebarbackgroundbluroptions-i-sys.md)<!--DelEnd-->
   - [SheetTitleOptions](arkts-arkui-common-comp-sheettitleoptions-i.md)
   - [SizeResult](arkts-arkui-common-comp-sizeresult-i.md)
   - [SmartGestureShortcutOptions](arkts-arkui-common-comp-smartgestureshortcutoptions-i.md)
@@ -559,6 +561,8 @@
   - [SheetKeyboardAvoidMode](arkts-arkui-common-comp-sheetkeyboardavoidmode-e.md)
   - [SheetMode](arkts-arkui-common-comp-sheetmode-e.md)
   - [SheetSize](arkts-arkui-common-comp-sheetsize-e.md)
+  <!--Del-->
+  - [SheetTitleBarBackgroundBlur（系统接口）](arkts-arkui-common-comp-sheettitlebarbackgroundblur-e-sys.md)<!--DelEnd-->
   - [SheetTitleBarHoverMode](arkts-arkui-common-comp-sheettitlebarhovermode-e.md)
   - [SheetType](arkts-arkui-common-comp-sheettype-e.md)
   - [SourceTool](arkts-arkui-common-comp-sourcetool-e.md)
@@ -968,6 +972,7 @@
   - [NavigationToolbarOptions](arkts-arkui-navigation-comp-navigationtoolbaroptions-i.md)
   - [NavigationTransitionProxy](arkts-arkui-navigation-comp-navigationtransitionproxy-i.md)
   - [PopInfo](arkts-arkui-navigation-comp-popinfo-i.md)
+  - [PreloadOptions](arkts-arkui-navigation-comp-preloadoptions-i.md)
   - [ScrollEffectOptions](arkts-arkui-navigation-comp-scrolleffectoptions-i.md)
   - [ToolbarItem](arkts-arkui-navigation-comp-toolbaritem-i.md)
   - [InterceptionCallback](arkts-arkui-navigation-comp-interceptioncallback-t.md)
@@ -1364,6 +1369,7 @@
   - [DrawableDescriptor](arkts-arkui-tabcontent-comp-drawabledescriptor-t.md)
   - [LayoutMode](arkts-arkui-tabcontent-comp-layoutmode-e.md)
   - [SelectedMode](arkts-arkui-tabcontent-comp-selectedmode-e.md)
+  - [TabVisibility](arkts-arkui-tabcontent-comp-tabvisibility-e.md)
 - [Tabs](arkts-arkui-tabs-comp.md)
   - [Tabs属性/事件](arkts-arkui-tabs-comp-attribute.md)
   - [TabsController](arkts-arkui-tabs-comp-tabscontroller-c.md)
@@ -1375,7 +1381,9 @@
   - [TabContentAnimatedTransition](arkts-arkui-tabs-comp-tabcontentanimatedtransition-i.md)
   - [TabContentTransitionProxy](arkts-arkui-tabs-comp-tabcontenttransitionproxy-i.md)
   - [TabsAnimationEvent](arkts-arkui-tabs-comp-tabsanimationevent-i.md)
+  - [TabsBreakpointType](arkts-arkui-tabs-comp-tabsbreakpointtype-i.md)
   - [TabsOptions](arkts-arkui-tabs-comp-tabsoptions-i.md)
+  - [TabsSidebarSearchableOptions](arkts-arkui-tabs-comp-tabssidebarsearchableoptions-i.md)
   - [CommonModifier](arkts-arkui-tabs-comp-commonmodifier-t.md)
   - [OnTabsAnimationEndCallback](arkts-arkui-tabs-comp-ontabsanimationendcallback-t.md)
   - [OnTabsAnimationStartCallback](arkts-arkui-tabs-comp-ontabsanimationstartcallback-t.md)
@@ -1383,11 +1391,14 @@
   - [OnTabsContentWillChangeCallback](arkts-arkui-tabs-comp-ontabscontentwillchangecallback-t.md)
   - [OnTabsGestureSwipeCallback](arkts-arkui-tabs-comp-ontabsgestureswipecallback-t.md)
   - [TabsCustomContentTransitionCallback](arkts-arkui-tabs-comp-tabscustomcontenttransitioncallback-t.md)
+  - [TabsSidebarSearchFilterCallback](arkts-arkui-tabs-comp-tabssidebarsearchfiltercallback-t.md)
   - [UIMaterial](arkts-arkui-tabs-comp-uimaterial-t.md)
   - [AnimationMode](arkts-arkui-tabs-comp-animationmode-e.md)
   - [BarMode](arkts-arkui-tabs-comp-barmode-e.md)
   - [BarPosition](arkts-arkui-tabs-comp-barposition-e.md)
   - [LayoutStyle](arkts-arkui-tabs-comp-layoutstyle-e.md)
+  - [TabBarDisplayMode](arkts-arkui-tabs-comp-tabbardisplaymode-e.md)
+  - [TabBarStyle](arkts-arkui-tabs-comp-tabbarstyle-e.md)
   - [TabsCacheMode](arkts-arkui-tabs-comp-tabscachemode-e.md)
   - [TabsNestedScrollMode](arkts-arkui-tabs-comp-tabsnestedscrollmode-e.md)
 - [Text](arkts-arkui-text-comp.md)

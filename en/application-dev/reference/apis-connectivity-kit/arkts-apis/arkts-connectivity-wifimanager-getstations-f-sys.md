@@ -12,11 +12,13 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function getStations(): Array<StationInfo>
 ```
 
-Obtain the list of stations that are connected to the Wi-Fi hotspot. This method can only be used on a device that serves as a Wi-Fi hotspot.
+Obtains the list of all devices that are currently connected to the hotspot of the device.
 
-**Since:** 10
+**Since:** 9
 
-**Required permissions:** ohos.permission.GET_WIFI_INFO and ohos.permission.MANAGE_WIFI_HOTSPOT
+**Required permissions:** 
+- API version 10 and later: ohos.permission.GET_WIFI_INFO and ohos.permission.MANAGE_WIFI_HOTSPOT
+- API version 9: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION and ohos.permission.MANAGE_WIFI_HOTSPOT
 
 <!--Device-wifiManager-function getStations(): Array<StationInfo>--><!--Device-wifiManager-function getStations(): Array<StationInfo>-End-->
 
@@ -28,7 +30,7 @@ Obtain the list of stations that are connected to the Wi-Fi hotspot. This method
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[StationInfo](arkts-connectivity-wifimanager-stationinfo-i-sys.md)&gt; | the list of clients that are connected to the Wi-Fi hotspot. |
+| Array&lt;[StationInfo](arkts-connectivity-wifimanager-stationinfo-i-sys.md)&gt; | Connected stations obtained. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **macAddress** in the return value is a real MAC address; otherwise, **macAddress** is a random MAC address. |
 
 **Error codes:**
 

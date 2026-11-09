@@ -4,7 +4,7 @@
 interface Ipv6Info
 ```
 
-Wi-Fi IPv6 information. @typedef Ipv6Info
+Wi-Fi IPv6 information.
 
 **Since:** 10
 

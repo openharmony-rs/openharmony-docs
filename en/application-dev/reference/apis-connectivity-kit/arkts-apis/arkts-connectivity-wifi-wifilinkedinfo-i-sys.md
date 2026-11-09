@@ -4,7 +4,7 @@
 interface WifiLinkedInfo
 ```
 
-Wi-Fi connection information.
+Provides information about a Wi-Fi connection.
 
 **Since:** 6
 

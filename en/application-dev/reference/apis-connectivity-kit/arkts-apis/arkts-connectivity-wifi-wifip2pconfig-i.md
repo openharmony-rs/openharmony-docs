@@ -4,7 +4,7 @@
 interface WifiP2PConfig
 ```
 
-P2P config. @interface WifiP2PConfig
+Represents P2P group configuration.
 
 **Since:** 8
 
@@ -28,7 +28,7 @@ import { wifi } from '@kit.ConnectivityKit';
 deviceAddress: string
 ```
 
-Device mac address s
+Device address.
 
 **Type:** string
 
@@ -48,7 +48,7 @@ Device mac address s
 goBand: GroupOwnerBand
 ```
 
-Group owner band
+Frequency band of the group.
 
 **Type:** [GroupOwnerBand](arkts-connectivity-wifi-groupownerband-e.md)
 
@@ -68,7 +68,7 @@ Group owner band
 groupName: string
 ```
 
-Group name
+Group name.
 
 **Type:** string
 
@@ -88,7 +88,7 @@ Group name
 netId: number
 ```
 
-Group network ID. When creating a group, -1 indicates creates a temporary group, -2: indicates creates a persistent group
+Network ID. The value **-1** indicates a temporary group, and **-2** indicates a persistent group.
 
 **Type:** number
 
@@ -108,7 +108,7 @@ Group network ID. When creating a group, -1 indicates creates a temporary group,
 passphrase: string
 ```
 
-The passphrase of this `WifiP2pConfig` instance
+Passphrase of the group.
 
 **Type:** string
 

@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function getHotspotConfig(): HotspotConfig
 ```
 
-Obtain the Wi-Fi hotspot configuration.
+Obtains the Wi-Fi hotspot configuration information, including the SSID, encryption mode, password, bandwidth, channel, and maximum number of connected STAs.
 
 **Since:** 9
 
@@ -28,7 +28,7 @@ Obtain the Wi-Fi hotspot configuration.
 
 | Type | Description |
 | --- | --- |
-| [HotspotConfig](arkts-connectivity-wifimanager-hotspotconfig-i-sys.md) | Returns the configuration of an existed or enabled Wi-Fi hotspot. |
+| [HotspotConfig](arkts-connectivity-wifimanager-hotspotconfig-i-sys.md) | Hotspot configuration obtained. |
 
 **Error codes:**
 

@@ -129,6 +129,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | [AnalysisConfig](arkts-medialibrary-photoaccesshelper-analysisconfig-i-sys.md) | 资产分析配置。 |
 | [AnalysisResult](arkts-medialibrary-photoaccesshelper-analysisresult-i-sys.md) | 资产分析结果信息。 |
 | [AnalysisToolResult](arkts-medialibrary-photoaccesshelper-analysistoolresult-i-sys.md) | 分析工具执行的结果。 |
+| [AssetUriResult](arkts-medialibrary-photoaccesshelper-asseturiresult-i-sys.md) | 媒体资产URI的操作结果信息。 |
 | [BatchOperationOptions](arkts-medialibrary-photoaccesshelper-batchoperationoptions-i-sys.md) | 批量复制操作选项。 |
 | [ChangeData](arkts-medialibrary-photoaccesshelper-changedata-i-sys.md) | 监听器回调函数的返回值。 |
 | [CleanupSize](arkts-medialibrary-photoaccesshelper-cleanupsize-i-sys.md) | Rom收益 |

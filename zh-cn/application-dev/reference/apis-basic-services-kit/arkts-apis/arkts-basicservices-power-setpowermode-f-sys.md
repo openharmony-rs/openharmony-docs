@@ -63,7 +63,7 @@ power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE, (err: BusinessError) 
 function setPowerMode(mode: DevicePowerMode): Promise<void>
 ```
 
-设置当前设备的电源模式，不同的电源模式会影响设备的性能与功耗策略。使用Promise异步回调。
+设置当前设备的电源模式，不同的电源模式会影响设备的性能与功耗策略。使用Promise异步回调。如需同时设置电源模式及其子模式，请使用[setPowerMode(mode, subMode)](#setpowermode-3)。
 
 **起始版本：** 9
 
@@ -99,6 +99,75 @@ function setPowerMode(mode: DevicePowerMode): Promise<void>
 
 <!--Del-->
 **示例**
+
+```TypeScript
+power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
+.then(() => {
+    console.info('set power mode to MODE_PERFORMANCE');
+})
+.catch((err: BusinessError) => {
+    console.error(`Failed to set power mode. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+<!--DelEnd-->
+
+
+## setPowerMode
+
+```TypeScript
+function setPowerMode(mode: DevicePowerMode, subMode?: DevicePowerSubMode): Promise<void>
+```
+
+设置当前设备的电源模式及其子模式。使用 Promise 异步回调。如仅需设置电源模式，请使用[setPowerMode(promise)][setPowerMode(promise)](#setpowermode-2)或 [setPowerMode(callback)](#setpowermode-1)。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.POWER_OPTIMIZATION
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-power-function setPowerMode(mode: DevicePowerMode, subMode?: DevicePowerSubMode): Promise<void>--><!--Device-power-function setPowerMode(mode: DevicePowerMode, subMode?: DevicePowerSubMode): Promise<void>-End-->
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| mode | [DevicePowerMode](arkts-basicservices-power-devicepowermode-e.md) | 是 | 电源模式。各模式含义请参见DevicePowerMode枚举说明。 |
+| subMode | [DevicePowerSubMode](arkts-basicservices-power-devicepowersubmode-e.md) | 否 | 电源模式子模式。各模式含义请参见DevicePowerSubMode枚举说明。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [203](../../errorcode-universal.md#203-企业管理策略禁止使用此系统功能) | This function is prohibited by enterprise management policies. |
+| [4900101](../errorcode-power.md#4900101-连接服务失败) | Failed to connect to the service. |
+| [4900301](../errorcode-power.md#4900301-电源模式设置失败) | Failed to set the power mode. Possible causes: <br>1. The power mode switching constraint is not met; <br>2. The power mode does not support the sub-mode, or the sub-mode does not match the power mode. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE, (err: BusinessError) => {
+    if (err) {
+        console.error(`Failed to set power mode. Code: ${err.code}, message: ${err.message}`);
+        return;
+    }
+    console.info('set power mode to MODE_PERFORMANCE');
+});
+```
 
 ```TypeScript
 power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)

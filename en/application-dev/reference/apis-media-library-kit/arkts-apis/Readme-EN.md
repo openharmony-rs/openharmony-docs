@@ -100,6 +100,8 @@
   - [AnalysisToolResult(system api)](arkts-medialibrary-photoaccesshelper-analysistoolresult-i-sys.md)<!--DelEnd-->
   - [AssetCompatibleCapability](arkts-medialibrary-photoaccesshelper-assetcompatiblecapability-i.md)
   <!--Del-->
+  - [AssetUriResult(system api)](arkts-medialibrary-photoaccesshelper-asseturiresult-i-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [BatchOperationOptions(system api)](arkts-medialibrary-photoaccesshelper-batchoperationoptions-i-sys.md)<!--DelEnd-->
   - [ChangeData](arkts-medialibrary-photoaccesshelper-changedata-i.md)
   <!--Del-->

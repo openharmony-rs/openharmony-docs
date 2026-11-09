@@ -253,7 +253,7 @@ forEach(callbackFn: (value: T, value2: T, set: Set<T>) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, value2: T, set: Set&lt;T&gt;) =&gt; void | 是 | 对每个键值对运行的回调函数。 |
+| callbackFn | (value: T, value2: T, set: Set&lt;T&gt;) =&gt; void | 是 | 回调函数。回调执行期间不应修改当前Set对象，否则会触发并发修改错误。value为当前遍历到的元素键值对的值，value2为当前遍历到的元素键值对的键，set为当前Set实例对象。 |
 
 **错误码：**
 

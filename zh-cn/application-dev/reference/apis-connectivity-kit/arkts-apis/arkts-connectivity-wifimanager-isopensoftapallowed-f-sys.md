@@ -28,7 +28,7 @@ function isOpenSoftApAllowed(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | true:允许， false:不允许。 |
+| boolean | true表示允许，false表示不允许。 |
 
 **错误码：**
 

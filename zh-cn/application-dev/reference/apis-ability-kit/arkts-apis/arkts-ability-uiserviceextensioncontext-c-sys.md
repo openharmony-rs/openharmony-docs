@@ -28,7 +28,7 @@ UIServiceExtensionContext模块提供访问[UIServiceExtension](arkts-ability-ap
 connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 ```
 
-连接到[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)，返回连接id。
+连接到[ServiceExtensionAbility](arkts-ability-app-ability-serviceextensionability-serviceextensionability-c-sys.md)，返回连接id。
 
 > **说明：** 
 > 
@@ -148,7 +148,7 @@ struct Page_UIServiceExtensionAbility {
 disconnectServiceExtensionAbility(connectionId: number): Promise<void>
 ```
 
-断开与[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)的连接，与[connectServiceExtensionAbility](#connectserviceextensionability)功能相反。使用Promise异步回调。
+断开与[ServiceExtensionAbility](arkts-ability-app-ability-serviceextensionability-serviceextensionability-c-sys.md)的连接，与[connectServiceExtensionAbility](#connectserviceextensionability)功能相反。使用Promise异步回调。
 
 **起始版本：** 14
 

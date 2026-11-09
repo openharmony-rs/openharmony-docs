@@ -32,7 +32,7 @@ Custom power saving mode.
 MODE_EXTREME_POWER_SAVE
 ```
 
-Ultra power saving mode.
+Extended power saving mode. This mode supports sub-modes defined in [DevicePowerSubMode](arkts-basicservices-power-devicepowersubmode-e.md).
 
 **Since:** 9
 

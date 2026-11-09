@@ -4,7 +4,7 @@
 interface SharedPhotoAsset extends lang.ISendable
 ```
 
-Defines the shared photo asset
+共享图片资产。
 
 **继承/实现关系：** SharedPhotoAsset extends [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md)
 
@@ -46,7 +46,7 @@ Camera shot key of photo asset
 data: string
 ```
 
-Path data of photo asset
+图片资产的路径数据。
 
 **类型：** string
 
@@ -64,7 +64,7 @@ Path data of photo asset
 dateAdded: number
 ```
 
-Added date of photo asset单位为： ms，取值应为≥0的整数。
+添加图片资产数据。单位为： ms，取值应为≥0的整数。
 
 **类型：** number
 
@@ -118,7 +118,7 @@ The day of the file created
 dateModified: number
 ```
 
-Modify date of photo asset单位为： ms，取值应为≥0的整数。
+更改了图片资产数据。单位为： ms，取值应为≥0的整数。
 
 **类型：** number
 
@@ -172,7 +172,7 @@ The month of the file created
 dateTaken: number
 ```
 
-DateTaken of photo asset单位为： ms，取值应为≥0的整数。
+图片资产拍照后存入本地时间。单位为： ms，取值应为≥0的整数。
 
 **类型：** number
 
@@ -190,7 +190,7 @@ DateTaken of photo asset单位为： ms，取值应为≥0的整数。
 dateTrashed: number
 ```
 
-Trashed date of photo asset
+图片资产是否在回收站中。
 
 **类型：** number
 
@@ -244,7 +244,7 @@ The year of the file created
 displayName: string
 ```
 
-Display name of photo asset
+图片资产的显示名称。
 
 **类型：** string
 
@@ -262,7 +262,7 @@ Display name of photo asset
 duration: number
 ```
 
-Duration of video photo asset单位为： ms，取值应为≥0的整数。
+视频类型的图片资产时长。单位为： ms，取值应为≥0的整数。
 
 **类型：** number
 
@@ -298,7 +298,7 @@ Dynamic range type of the asset
 fileId: number
 ```
 
-File id of photo asset
+图片资产标识id。
 
 **类型：** number
 
@@ -316,7 +316,7 @@ File id of photo asset
 height: number
 ```
 
-Height of photo asset单位为： px，取值应为≥0的整数。
+图片资产的像素高度。单位为： px，取值应为≥0的整数。
 
 **类型：** number
 
@@ -334,7 +334,7 @@ Height of photo asset单位为： px，取值应为≥0的整数。
 hidden: boolean
 ```
 
-Hidden state of photo asset
+图片资产是否隐藏。true表示已隐藏，false表示未隐藏。
 
 **类型：** boolean
 
@@ -352,7 +352,7 @@ Hidden state of photo asset
 isFavorite: boolean
 ```
 
-Favorite state of photo asset
+是否收藏了此图片。true表示已收藏，false表示未收藏。
 
 **类型：** boolean
 
@@ -388,7 +388,7 @@ Width and height information of lcd picture
 mediaType: PhotoType
 ```
 
-Media type of photo asset
+图片资产的媒体类型。
 
 **类型：** [PhotoType](arkts-medialibrary-sendablephotoaccesshelper-phototype-e.md)
 
@@ -424,7 +424,7 @@ Effect mode of moving photo
 orientation: number
 ```
 
-Orientation of photo asset单位为： deg，取值应为[0,359]内的整数。
+图片资产的旋转角度。单位为： deg，取值应为[0,359]内的整数。
 
 **类型：** number
 
@@ -460,7 +460,7 @@ Pending state of the asset, true means asset is pending
 position: PositionType
 ```
 
-Position of photo asset
+图片资产存在位置。
 
 **类型：** [PositionType](arkts-medialibrary-photoaccesshelper-positiontype-e.md)
 
@@ -478,7 +478,7 @@ Position of photo asset
 size: number
 ```
 
-Size of photo asset单位为： Byte，取值应为≥0的整数。
+图片资产文件大小。单位为： Byte，取值应为≥0的整数。
 
 **类型：** number
 
@@ -586,7 +586,7 @@ visibility of thumbnails
 title: string
 ```
 
-Title of photo asset
+图片资产的标题。
 
 **类型：** string
 
@@ -604,7 +604,7 @@ Title of photo asset
 uri: string
 ```
 
-URI of photo asset
+图片资产uri。
 
 **类型：** string
 
@@ -622,7 +622,7 @@ URI of photo asset
 userComment: string
 ```
 
-User comment info of photo asset
+图片资产的用户评论信息。
 
 **类型：** string
 
@@ -640,7 +640,7 @@ User comment info of photo asset
 width: number
 ```
 
-Width of photo asset单位为： px，取值应为≥0的整数。
+图片资产的像素宽度。单位为： px，取值应为≥0的整数。
 
 **类型：** number
 

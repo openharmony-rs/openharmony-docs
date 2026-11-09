@@ -24,6 +24,8 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 rssLimit: bigint
 ```
 
+应用程序进程可用的物理内存限制，以KB为单位，实际当前系统未对进程可用物理内存做限制，但是进程的可用物理内存仍然不会超过设备的实际最大可用物理内存，当前设备的物理内存使用情况可通过[hidebug.getSystemMemInfo](arkts-performanceanalysis-hidebug-getsystemmeminfo-f.md)获取。
+
 **类型：** bigint
 
 **起始版本：** 12
@@ -37,6 +39,8 @@ rssLimit: bigint
 ```TypeScript
 vmHeapLimit: bigint
 ```
+
+当前线程的 JS VM 堆大小限制，以KB为单位。
 
 **类型：** bigint
 
@@ -52,6 +56,8 @@ vmHeapLimit: bigint
 vmTotalHeapSize: bigint
 ```
 
+当前进程的 JS 堆内存大小限制，以KB为单位。
+
 **类型：** bigint
 
 **起始版本：** 12
@@ -65,6 +71,8 @@ vmTotalHeapSize: bigint
 ```TypeScript
 vssLimit: bigint
 ```
+
+进程的虚拟内存限制，以KB为单位。
 
 **类型：** bigint
 

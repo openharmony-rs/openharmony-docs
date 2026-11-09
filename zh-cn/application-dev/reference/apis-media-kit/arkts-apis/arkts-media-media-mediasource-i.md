@@ -194,3 +194,27 @@ setTrackSelectionFilter(filter: TrackSelectionFilter): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | filter | [TrackSelectionFilter](arkts-media-media-trackselectionfilter-i.md) | 是 | 指定预下载流媒体的音视频特征。 |
+
+## setTransparentVideoLayoutMode
+
+```TypeScript
+setTransparentVideoLayoutMode(mode : SideBySideTransparentVideoLayoutMode):void
+```
+
+设置拼接模式的视频源的布局信息，用于指导播放器合成出来正确的透明视频
+
+若不配置，按普通视频进行播放;
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-MediaSource-setTransparentVideoLayoutMode(mode : SideBySideTransparentVideoLayoutMode):void--><!--Device-MediaSource-setTransparentVideoLayoutMode(mode : SideBySideTransparentVideoLayoutMode):void-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| mode | [SideBySideTransparentVideoLayoutMode](arkts-media-media-sidebysidetransparentvideolayoutmode-e.md) | 是 | 拼接视频的布局模式值。 |

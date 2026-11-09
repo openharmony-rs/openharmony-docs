@@ -38,7 +38,7 @@ import { TreeMap } from '@kit.ArkTS';
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[K, V]&gt; | 返回包含此映射中所有键值对的迭代器对象。 |
+| IterableIterator&lt;[K, V]&gt; | 返回一个迭代器。 |
 
 **错误码：**
 
@@ -215,7 +215,7 @@ entries(): IterableIterator<[K, V]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[K, V]&gt; | 返回一个迭代器。 |
+| IterableIterator&lt;[K, V]&gt; | 返回包含此映射中所有键值对的迭代器对象。 |
 
 **错误码：**
 
@@ -259,7 +259,7 @@ while (!nextResult.done) {
 forEach(callbackFn: (value?: V, key?: K, map?: TreeMap<K, V>) => void, thisArg?: Object): void
 ```
 
-通过回调函数来遍历实例对象上的元素及其键。不会对已删除的key执行回调。
+通过回调函数来遍历实例对象上的元素及其键。
 
 **起始版本：** 8
 
@@ -273,7 +273,7 @@ forEach(callbackFn: (value?: V, key?: K, map?: TreeMap<K, V>) => void, thisArg?:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value?: V, key?: K, map?: TreeMap&lt;K, V&gt;) =&gt; void | 是 | 回调函数。依次接收value、key和map三个参数：value为当前元素的值，key为当前元素的键，map为当前调用forEach方法的TreeMap实例。 |
+| callbackFn | (value?: V, key?: K, map?: TreeMap&lt;K, V&gt;) =&gt; void | 是 | 回调函数，用于遍历实例对象中的每个键值对并在回调中执行自定义操作。value（可选）当前遍历到的元素键值对的值。key（可选）当前遍历到的元素键值对的键。map（可选）当前调用forEach方法的实例对象。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为undefined。 |
 
 **错误码：**
@@ -747,7 +747,7 @@ console.info('result = ' + result); // result = 356
 replace(key: K, newValue: V): boolean
 ```
 
-对容器中指定key对应的键值对进行更新（替换）。
+对容器中指定key对应的value进行替换，若key存在则替换成功并返回true，若key不存在则不做修改并返回false。
 
 **起始版本：** 8
 

@@ -73,6 +73,7 @@ import { pointer } from '@kit.InputKit';
 | [getTouchpadSwipeSwitch](arkts-input-pointer-gettouchpadswipeswitch-f-sys.md#gettouchpadswipeswitch-2) | 获取触控板多指滑动功能开启状态，使用Promise异步回调。 |
 | [getTouchpadTapSwitch](arkts-input-pointer-gettouchpadtapswitch-f-sys.md#gettouchpadtapswitch-1) | 获取触控板轻触能力开启状态，使用callback异步回调。 |
 | [getTouchpadTapSwitch](arkts-input-pointer-gettouchpadtapswitch-f-sys.md#gettouchpadtapswitch-2) | 获取触控板轻触功能开启状态，使用Promise异步回调。 |
+| [setGlobalPriorityCursor](arkts-input-pointer-setglobalprioritycursor-f-sys.md#setglobalprioritycursor-1) | 设置全局高优先级光标。设置成功后，当光标可见时光标样式将被锁定和限制，不受其他样式的影响，直到它被清除或被新的全局高优先级光标覆盖。 |
 | [setHoverScrollState](arkts-input-pointer-sethoverscrollstate-f-sys.md#sethoverscrollstate-1) | 设置鼠标悬停滚动开关状态，使用callback异步回调。 |
 | [setHoverScrollState](arkts-input-pointer-sethoverscrollstate-f-sys.md#sethoverscrollstate-2) | 设置鼠标悬停滚动开关状态，使用Promise异步回调。 |
 | [setMousePrimaryButton](arkts-input-pointer-setmouseprimarybutton-f-sys.md#setmouseprimarybutton-1) | 设置鼠标主键，使用callback异步回调。 |
@@ -105,6 +106,7 @@ import { pointer } from '@kit.InputKit';
 | [setTouchpadSwipeSwitch](arkts-input-pointer-settouchpadswipeswitch-f-sys.md#settouchpadswipeswitch-2) | 设置触控板多指滑动功能开关，使用Promise异步回调。 |
 | [setTouchpadTapSwitch](arkts-input-pointer-settouchpadtapswitch-f-sys.md#settouchpadtapswitch-1) | 设置触控板轻触功能开关，使用callback异步回调。 |
 | [setTouchpadTapSwitch](arkts-input-pointer-settouchpadtapswitch-f-sys.md#settouchpadtapswitch-2) | 设置触控板轻触功能开关，使用Promise异步回调。 |
+| [unsetGlobalPriorityCursor](arkts-input-pointer-unsetglobalprioritycursor-f-sys.md#unsetglobalprioritycursor-1) | 清除全局高优先级光标。只有调用者设置的全局高优先级光标才能被清除。 |
 <!--DelEnd-->
 
 ### 接口

@@ -33,6 +33,8 @@ import { collections } from '@kit.ArkTS';
 
 返回一个迭代器，用于迭代 BitVector 中的元素。
 
+本接口不支持在.ets文件中使用。
+
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
@@ -515,6 +517,8 @@ values(): IterableIterator<number>
 ```
 
 返回指定索引位置的元素。
+
+所需代码单元的从零开始的索引。当index &lt; 0或者index &gt;= length时，会抛出错误。
 
 **类型：** number
 

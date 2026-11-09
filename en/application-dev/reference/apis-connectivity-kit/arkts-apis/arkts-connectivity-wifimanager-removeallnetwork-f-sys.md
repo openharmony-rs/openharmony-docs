@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function removeAllNetwork(): void
 ```
 
-Remove all the saved Wi-Fi configurations.
+Removes the configuration of all networks.
 
 **Since:** 9
 

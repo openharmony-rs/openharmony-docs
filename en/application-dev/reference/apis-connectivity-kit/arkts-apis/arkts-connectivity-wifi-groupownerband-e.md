@@ -4,7 +4,7 @@
 enum GroupOwnerBand
 ```
 
-P2P group owner band.
+Enumerates the P2P group frequency bands.
 
 **Since:** 8
 
@@ -22,7 +22,7 @@ P2P group owner band.
 GO_BAND_2GHZ = 1
 ```
 
-2.4G band.
+2.4 GHz.
 
 **Since:** 8
 
@@ -40,7 +40,7 @@ GO_BAND_2GHZ = 1
 GO_BAND_5GHZ = 2
 ```
 
-5G band.
+5 GHz.
 
 **Since:** 8
 
@@ -58,7 +58,7 @@ GO_BAND_5GHZ = 2
 GO_BAND_AUTO = 0
 ```
 
-default band.
+Auto.
 
 **Since:** 8
 

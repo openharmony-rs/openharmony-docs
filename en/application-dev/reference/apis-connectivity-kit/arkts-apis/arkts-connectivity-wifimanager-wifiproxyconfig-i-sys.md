@@ -4,7 +4,7 @@
 interface WifiProxyConfig
 ```
 
-Wi-Fi Proxy config. @typedef WifiProxyConfig
+Represents the Wi-Fi proxy configuration.
 
 **Since:** 10
 
@@ -26,7 +26,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 exclusionObjects?: string
 ```
 
-Exclusion objects for manual configured proxy. objects are separated by ','.
+Excluded objects of the manually configured proxy. Multiple objects are separated by commas (,).
 
 **Type:** string
 
@@ -44,7 +44,7 @@ Exclusion objects for manual configured proxy. objects are separated by ','.
 pacWebAddress?: string
 ```
 
-PAC web address for auto configured proxy.
+PAC web address of the proxy automatically configured.
 
 **Type:** string
 
@@ -62,7 +62,7 @@ PAC web address for auto configured proxy.
 proxyMethod?: ProxyMethod
 ```
 
-Wi-Fi proxy method
+Proxy method.
 
 **Type:** [ProxyMethod](arkts-connectivity-wifimanager-proxymethod-e-sys.md)
 
@@ -80,7 +80,7 @@ Wi-Fi proxy method
 serverHostName?: string
 ```
 
-Server host name for manual configured proxy.
+Server host name of the proxy manually configured.
 
 **Type:** string
 
@@ -98,7 +98,7 @@ Server host name for manual configured proxy.
 serverPort?: number
 ```
 
-Server port for manual configured proxy.
+Server port of the proxy manually configured.
 
 **Type:** number
 

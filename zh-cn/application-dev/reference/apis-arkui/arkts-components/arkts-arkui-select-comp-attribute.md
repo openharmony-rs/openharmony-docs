@@ -612,6 +612,30 @@ menuOutline(outline: MenuOutlineOptions)
 | --- | --- | --- | --- |
 | outline | [MenuOutlineOptions](arkts-arkui-select-comp-menuoutlineoptions-i.md) | 是 | 下拉菜单框的外描边样式。 |
 
+## menuSystemMaterial
+
+```TypeScript
+menuSystemMaterial(material: Optional<SystemUiMaterial>)
+```
+
+设置Select下拉菜单的系统材质。不同系统材质对应不同的属性影响效果，该接口影响下拉菜单背景色[menuBackgroundColor](#menubackgroundcolor-2)、边框颜色[borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow-1)等参数，不建议与上述接口一起使用。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-menuSystemMaterial(material: Optional<SystemUiMaterial>): SelectAttribute--><!--Device-SelectAttribute-menuSystemMaterial(material: Optional<SystemUiMaterial>): SelectAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| material | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[SystemUiMaterial](arkts-arkui-common-comp-systemuimaterial-t.md)&gt; | 是 | 设置下拉菜单系统材质。材质设置为无效值、undefined时，按照不设置系统材质处理。 |
+
 ## minKeyboardAvoidDistance
 
 ```TypeScript

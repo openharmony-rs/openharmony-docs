@@ -12,7 +12,10 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function deletePersistentGroup(netId: number): void
 ```
 
-Delete the persistent P2P group with the specified network ID.
+Deletes the permanent Wi-Fi group configuration of a specified network. This API is used to clear the saved Wi-Fi network configuration information so that the WLAN network cannot be automatically connected.
+
+- Deletes the permanent group information previously established with the P2P device according to the network ID,  
+and performs P2P negotiation again when establishing a P2P connection with the P2P device subsequently.
 
 **Since:** 9
 
@@ -28,7 +31,7 @@ Delete the persistent P2P group with the specified network ID.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| netId | number | Yes | Indicates the network ID of the group to be deleted. |
+| netId | number | Yes | ID of the group to delete. |
 
 **Error codes:**
 

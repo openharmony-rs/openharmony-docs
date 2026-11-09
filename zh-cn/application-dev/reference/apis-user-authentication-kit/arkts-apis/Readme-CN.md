@@ -57,15 +57,21 @@
 <!--Del-->
 - [@ohos.userIAM.pinAuth（PIN Authentication）](arkts-userauthentication-useriam-pinauth.md)<!--DelEnd-->
   <!--Del-->
+  - [clearPinHistoryCheckRange（系统接口）](arkts-userauthentication-pinauth-clearpinhistorycheckrange-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [getPinComplexityPolicy（系统接口）](arkts-userauthentication-pinauth-getpincomplexitypolicy-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getPinDeletionDisabledState（系统接口）](arkts-userauthentication-pinauth-getpindeletiondisabledstate-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getPinHistoryCheckRange（系统接口）](arkts-userauthentication-pinauth-getpinhistorycheckrange-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getPinValidityPeriod（系统接口）](arkts-userauthentication-pinauth-getpinvalidityperiod-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [setPinComplexityPolicy（系统接口）](arkts-userauthentication-pinauth-setpincomplexitypolicy-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [setPinDeletionDisabledState（系统接口）](arkts-userauthentication-pinauth-setpindeletiondisabledstate-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setPinHistoryCheckRange（系统接口）](arkts-userauthentication-pinauth-setpinhistorycheckrange-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [setPinValidityPeriod（系统接口）](arkts-userauthentication-pinauth-setpinvalidityperiod-f-sys.md)<!--DelEnd-->
   <!--Del-->

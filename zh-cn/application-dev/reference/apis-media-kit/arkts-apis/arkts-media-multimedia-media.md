@@ -191,6 +191,7 @@ import { media } from '@kit.MediaKit';
 | [PlaybackSpeed](arkts-media-media-playbackspeed-e.md) | 视频播放的倍速枚举，可通过setSpeed方法作为参数传递下去。 |
 | [PlaylistLoopMode](arkts-media-media-playlistloopmode-e.md) | 表示播放列表循环模式的枚举。 |
 | [SeekMode](arkts-media-media-seekmode-e.md) | 视频播放的Seek模式枚举，可通过seek方法作为参数传递下去。 |
+| [SideBySideTransparentVideoLayoutMode](arkts-media-media-sidebysidetransparentvideolayoutmode-e.md) | 拼接模式的透明视频布局枚举定义;用于指明透明视频的alpha数据在图像中的位置，便于播放器正确合成透明效果的视频； |
 | [SoundInterruptMode](arkts-media-media-soundinterruptmode-e.md) | 表示在SoundPool中，同一ID的音频在播放时的打断模式的枚举。 |
 | [StateChangeReason](arkts-media-media-statechangereason-e.md) | 表示播放或录制实例状态机切换原因的枚举，伴随state一起上报。 |
 | [SwitchMode](arkts-media-media-switchmode-e.md) | 表示视频播放的selectTrack模式枚举。 |

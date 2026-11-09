@@ -26,7 +26,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 isCeairPlaneWifi?: boolean
 ```
 
-Whether the connected Wi-Fi is CEAIR airplane Wi-Fi
+Whether the connected Wi-Fi is CEAIR airplane Wi-Fi.
 
 **Type:** boolean
 
@@ -46,7 +46,7 @@ Whether the connected Wi-Fi is CEAIR airplane Wi-Fi
 networkId: number
 ```
 
-The network ID of the connected Wi-Fi
+The network ID of the connected Wi-Fi.
 
 **Type:** number
 

@@ -14,9 +14,11 @@ function startDiscoverDevices(): void
 
 Start discover Wi-Fi P2P devices.
 
-**Since:** 10
+**Since:** 9
 
-**Required permissions:** ohos.permission.GET_WIFI_INFO
+**Required permissions:** 
+- API version 10 and later: ohos.permission.GET_WIFI_INFO
+- API version 9: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
 <!--Device-wifiManager-function startDiscoverDevices(): void--><!--Device-wifiManager-function startDiscoverDevices(): void-End-->
 

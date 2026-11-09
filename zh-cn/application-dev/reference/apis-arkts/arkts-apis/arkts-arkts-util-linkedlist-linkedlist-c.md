@@ -343,7 +343,7 @@ forEach(callbackFn: (value: T, index?: number, LinkedList?: LinkedList<T>) => vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, LinkedList?: LinkedList&lt;T&gt;) =&gt; void | 是 | 回调函数。 |
+| callbackFn | (value: T, index?: number, LinkedList?: LinkedList&lt;T&gt;) =&gt; void | 是 | 回调函数。 value是当前遍历的元素；index是当前下标，默认值为0；LinkedList是当前调用的LinkedList实例，默认值为当前实例。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
 
 **错误码：**

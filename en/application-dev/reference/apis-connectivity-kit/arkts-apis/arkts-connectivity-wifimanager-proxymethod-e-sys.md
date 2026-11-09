@@ -4,7 +4,7 @@
 enum ProxyMethod
 ```
 
-Wi-Fi Proxy method.
+Enumerates the Wi-Fi proxy methods.
 
 **Since:** 10
 
@@ -20,7 +20,7 @@ Wi-Fi Proxy method.
 METHOD_AUTO = 1
 ```
 
-Use auto configured proxy.
+Use an automatically configured proxy.
 
 **Since:** 10
 
@@ -36,7 +36,7 @@ Use auto configured proxy.
 METHOD_MANUAL = 2
 ```
 
-Use manual configured proxy.
+Use a manually configured proxy.
 
 **Since:** 10
 
@@ -52,7 +52,7 @@ Use manual configured proxy.
 METHOD_NONE = 0
 ```
 
-No proxy is to be used.
+No proxy.
 
 **Since:** 10
 

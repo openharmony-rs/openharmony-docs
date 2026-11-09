@@ -38,7 +38,7 @@ abs(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回绝对值运算后的Decimal对象实例。 |
 
 ## abs
 
@@ -60,13 +60,13 @@ static abs(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 取绝对值的参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回一个值为参数n的绝对值的Decimal。 |
 
 **错误码：**
 
@@ -94,7 +94,7 @@ acos(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回计算反余弦值的Decimal对象实例。 |
 
 **错误码：**
 
@@ -122,13 +122,13 @@ static acos(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 需要求反余弦值的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回n的反余弦值对应的Decimal对象实例。 |
 
 **错误码：**
 
@@ -143,7 +143,7 @@ static acos(n: Value): Decimal
 acosh(): Decimal
 ```
 
-返回一个新的Decimal对象，其值是此Decimal值的反双曲余弦值。
+返回一个新的Decimal对象，其值是此Decimal值的反双曲余弦。
 
 **起始版本：** 12
 
@@ -157,7 +157,7 @@ acosh(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回计算反双曲余弦值的Decimal对象实例。 |
 
 **错误码：**
 
@@ -185,13 +185,13 @@ static acosh(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 需要求反双曲余弦值的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回n的反双曲余弦值对应的Decimal对象实例。 |
 
 **错误码：**
 
@@ -206,7 +206,7 @@ static acosh(n: Value): Decimal
 add(n: Value): Decimal
 ```
 
-返回一个新的Decimal对象，其值是将此Decimal的值加上n。按照precision设置有效位数，按照rounding设置舍入模式。
+返回一个新的Decimal对象，其值是将此Decimal的值加上n。
 
 **起始版本：** 12
 
@@ -220,13 +220,13 @@ add(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 加法运算的加数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回加法运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -254,14 +254,14 @@ static add(x: Value, y: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
-| y | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| x | [Value](arkts-arkts-value-t.md) | 是 | 加法的一个加数。 |
+| y | [Value](arkts-arkts-value-t.md) | 是 | 加法的另一个加数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回加法运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -289,7 +289,7 @@ asin(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回计算反正弦值的Decimal对象实例。 |
 
 **错误码：**
 
@@ -317,13 +317,13 @@ static asin(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 需要求反正弦值的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回n的反正弦值对应的Decimal对象实例。 |
 
 **错误码：**
 
@@ -338,7 +338,7 @@ static asin(n: Value): Decimal
 asinh(): Decimal
 ```
 
-返回一个新的Decimal对象，其值是此Decimal值的反双曲正弦值。
+返回一个新的Decimal对象，其值是此Decimal值的反双曲正弦。
 
 **起始版本：** 12
 
@@ -352,7 +352,7 @@ asinh(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回计算反双曲正弦值的Decimal对象实例。 |
 
 **错误码：**
 
@@ -386,7 +386,7 @@ static asinh(n: Value): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回n的反双曲正弦值对应的Decimal对象实例。 |
 
 **错误码：**
 
@@ -415,7 +415,7 @@ atan(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回计算反正切值的Decimal对象实例。 |
 
 **错误码：**
 
@@ -443,13 +443,13 @@ static atan(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 需要求反正切值的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回n的反正切值对应的Decimal对象实例。 |
 
 **错误码：**
 
@@ -485,7 +485,7 @@ static atan2(y: Value, x: Value): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回-π到π范围内的"y/x"反正切值对应的Decimal对象实例。 |
 
 **错误码：**
 
@@ -500,7 +500,7 @@ static atan2(y: Value, x: Value): Decimal
 atanh(): Decimal
 ```
 
-返回一个新的Decimal对象，其值是此Decimal值的反双曲正切值。
+返回一个新的Decimal对象，其值是此Decimal值的反双曲正切。
 
 **起始版本：** 12
 
@@ -514,7 +514,7 @@ atanh(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回计算反双曲正切值的Decimal对象实例。 |
 
 **错误码：**
 
@@ -548,7 +548,7 @@ static atanh(n: Value): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回n的反双曲正切值对应的Decimal对象实例。 |
 
 **错误码：**
 
@@ -563,7 +563,7 @@ static atanh(n: Value): Decimal
 cbrt(): Decimal
 ```
 
-返回一个新的Decimal对象，其值是当前Decimal对象的立方根。按照precision设置有效位数，按照rounding设置舍入模式。
+返回一个新的Decimal对象，其值是当前Decimal对象的立方根。
 
 **起始版本：** 12
 
@@ -577,7 +577,7 @@ cbrt(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回立方根运算后的Decimal对象实例。 |
 
 ## cbrt
 
@@ -599,13 +599,13 @@ static cbrt(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 取立方根的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回立方根运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -633,7 +633,7 @@ ceil(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回向正无穷方向舍入后的Decimal对象实例。 |
 
 ## ceil
 
@@ -655,13 +655,13 @@ static ceil(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 需要舍入的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回舍入之后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -689,14 +689,14 @@ clamp(min: Value, max: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| min | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
-| max | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| min | [Value](arkts-arkts-value-t.md) | 是 | 限制的最小值。包含该值。 |
+| max | [Value](arkts-arkts-value-t.md) | 是 | 限制的最大值。包含该值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回符合范围内的Decimal对象实例。 |
 
 **错误码：**
 
@@ -725,15 +725,15 @@ static clamp(n: Value, min: Value, max: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
-| min | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
-| max | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 需要被限制的值。 |
+| min | [Value](arkts-arkts-value-t.md) | 是 | 限制的最小值。包含该值。 |
+| max | [Value](arkts-arkts-value-t.md) | 是 | 限制的最大值。包含该值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回符合范围的Decimal对象实例。 |
 
 **错误码：**
 
@@ -748,7 +748,7 @@ static clamp(n: Value, min: Value, max: Value): Decimal
 comparedTo(n: Value): number
 ```
 
-返回该Decimal与比较值的比较结果。1 如果此Decimal大于n的值，-1 如果此Decimal小于n的值，0 如果两者的值相等，NaN 如果两者中任一Decimal的值为NaN。
+返回该Decimal与比较值的比较结果。
 
 **起始版本：** 12
 
@@ -762,13 +762,13 @@ comparedTo(n: Value): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 待比较的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | the number type |
+| number | 返回该Decimal与n的比较结果。<br>1:该Decimal大于比较值。<br>-1:该Decimal小于比较值。<br>0:该Decimal等于比较值。<br>NaN:该Decimal与比较值有一个值为NaN。 |
 
 **错误码：**
 
@@ -796,7 +796,7 @@ Decimal的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 构造Decimal时的初始值。 |
 
 **错误码：**
 
@@ -810,7 +810,7 @@ Decimal的构造函数。
 cos(): Decimal
 ```
 
-返回一个新的Decimal对象，其值是此Decimal的余弦值。
+返回一个新的Decimal对象，其值是此Decimal的余弦值。输入值以弧度为单位。
 
 **起始版本：** 12
 
@@ -824,7 +824,7 @@ cos(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回计算余弦值的Decimal对象实例。 |
 
 ## cos
 
@@ -852,7 +852,7 @@ static cos(n: Value): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回n的余弦值对应的Decimal对象实例。 |
 
 **错误码：**
 
@@ -880,7 +880,7 @@ cosh(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回计算双曲余弦值的Decimal对象实例。 |
 
 ## cosh
 
@@ -908,7 +908,7 @@ static cosh(n: Value): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回n的双曲余弦值对应的Decimal对象实例。 |
 
 **错误码：**
 
@@ -936,7 +936,7 @@ decimalPlaces(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | the number type |
+| number | 返回Decimal对象的小数位数。 |
 
 ## div
 
@@ -944,7 +944,7 @@ decimalPlaces(): number
 div(n: Value): Decimal
 ```
 
-返回一个新的Decimal对象，其值是将此Decimal的值除以n。按照precision设置有效位数，按照rounding设置舍入模式。
+返回一个新的Decimal对象，其值是将此Decimal的值除以n。
 
 **起始版本：** 12
 
@@ -958,13 +958,13 @@ div(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 除法运算的除数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回除法运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -992,14 +992,14 @@ static div(x: Value, y: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
-| y | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| x | [Value](arkts-arkts-value-t.md) | 是 | 除法的被除数。 |
+| y | [Value](arkts-arkts-value-t.md) | 是 | 除法的除数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回除法运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -1013,7 +1013,7 @@ static div(x: Value, y: Value): Decimal
 dividedToIntegerBy(n: Value): Decimal
 ```
 
-返回该Decimal除以n后获得的整数部分。按照precision设置有效位数，按照rounding设置舍入模式。
+返回该Decimal除以n后获得的整数部分。
 
 **起始版本：** 12
 
@@ -1027,13 +1027,13 @@ dividedToIntegerBy(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 除法的除数值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回一个Decimal对象，其值是将此Decimal的值除以n值的整数部分。 |
 
 **错误码：**
 
@@ -1047,7 +1047,7 @@ dividedToIntegerBy(n: Value): Decimal
 equals(n: Value): boolean
 ```
 
-返回此Decimal是否等于比较值n，相等返回true，否则返回false。
+返回该Decimal是否等于比较值。
 
 **起始版本：** 12
 
@@ -1061,13 +1061,13 @@ equals(n: Value): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 待比较的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | the boolean type |
+| boolean | true表示该Decimal与比较值相等，false表示该Decimal与比较值不相等。 |
 
 **错误码：**
 
@@ -1081,7 +1081,7 @@ equals(n: Value): boolean
 exp(): Decimal
 ```
 
-返回一个新的Decimal对象，其值是此Decimal值的自然指数（即以e为底，此Decimal值为指数的幂）。按照precision设置有效位数，按照rounding设置舍入模式。
+返回一个新的Decimal对象，其值是此Decimal值的自然指数。
 
 **起始版本：** 12
 
@@ -1095,7 +1095,7 @@ exp(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回自然指数运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -1123,13 +1123,13 @@ static exp(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 需要求自然指数的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回自然指数运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -1158,7 +1158,7 @@ floor(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回向负无穷方向舍入后的Decimal对象实例。 |
 
 ## floor
 
@@ -1180,13 +1180,13 @@ static floor(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 需要舍入的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回舍入之后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -1200,7 +1200,7 @@ static floor(n: Value): Decimal
 greaterThan(n: Value): boolean
 ```
 
-返回此Decimal是否大于比较值n，大于返回true，否则返回false。
+返回该Decimal是否大于比较值。
 
 **起始版本：** 12
 
@@ -1214,13 +1214,13 @@ greaterThan(n: Value): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 待比较的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | the boolean type |
+| boolean | true表示该Decimal大于比较值，false表示该Decimal小于等于比较值。 |
 
 **错误码：**
 
@@ -1234,7 +1234,7 @@ greaterThan(n: Value): boolean
 greaterThanOrEqualTo(n: Value): boolean
 ```
 
-返回此Decimal是否大于等于比较值n，大于等于返回true，否则返回false。
+返回该Decimal是否大于等于比较值。
 
 **起始版本：** 12
 
@@ -1248,13 +1248,13 @@ greaterThanOrEqualTo(n: Value): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 待比较的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | the boolean type |
+| boolean | true表示该Decimal大于等于比较值，false表示该Decimal小于比较值。 |
 
 **错误码：**
 
@@ -1282,13 +1282,13 @@ static hypot(...n: Value[]): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md)[] | 是 | {double &#124; string &#124; Decimal} Decimal |
+| n | [Value](arkts-arkts-value-t.md)[] | 是 | 需要求平方和的序列。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回值为所有参数平方和的平方根的Decimal对象实例。 |
 
 **错误码：**
 
@@ -1302,7 +1302,7 @@ static hypot(...n: Value[]): Decimal
 isFinite(): boolean
 ```
 
-返回此Decimal是否为有限值，是有限值返回true，否则返回false。
+返回该Decimal是否为有限值。
 
 **起始版本：** 12
 
@@ -1316,7 +1316,7 @@ isFinite(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | the boolean type |
+| boolean | true表示该Decimal为有限值，false表示该Decimal不是有限值（如Infinity或NaN）。 |
 
 ## isInteger
 
@@ -1324,7 +1324,7 @@ isFinite(): boolean
 isInteger(): boolean
 ```
 
-返回此Decimal是否为整数，是整数返回true，否则返回false。
+返回该Decimal是否为整数。
 
 **起始版本：** 12
 
@@ -1338,7 +1338,7 @@ isInteger(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | the boolean type |
+| boolean | true表示该Decimal为整数，false表示该Decimal不为整数。 |
 
 ## isNaN
 
@@ -1346,7 +1346,7 @@ isInteger(): boolean
 isNaN(): boolean
 ```
 
-返回此Decimal是否为无效值（NaN），是NaN返回true，否则返回false。
+返回该Decimal是否为无效值。
 
 **起始版本：** 12
 
@@ -1360,7 +1360,7 @@ isNaN(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | the boolean type |
+| boolean | true表示该Decimal为NaN，false表示该Decimal不为NaN。 |
 
 ## isNegative
 
@@ -1368,7 +1368,7 @@ isNaN(): boolean
 isNegative(): boolean
 ```
 
-返回此Decimal是否为负数（区分正负零），是负数返回true，否则返回false。
+返回该Decimal是否为负数（区分正负零）。
 
 **起始版本：** 12
 
@@ -1382,7 +1382,7 @@ isNegative(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | the boolean type |
+| boolean | true表示该Decimal为负数，false表示该Decimal不为负数。 |
 
 ## isPositive
 
@@ -1390,7 +1390,7 @@ isNegative(): boolean
 isPositive(): boolean
 ```
 
-返回此Decimal是否为正数（区分正负零），是正数返回true，否则返回false。
+返回该Decimal是否为正数（区分正负零）。
 
 **起始版本：** 12
 
@@ -1404,7 +1404,7 @@ isPositive(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | the boolean type |
+| boolean | true表示该Decimal为正数，false表示该Decimal不为正数。 |
 
 ## isZero
 
@@ -1412,7 +1412,7 @@ isPositive(): boolean
 isZero(): boolean
 ```
 
-返回此Decimal是否为0或是-0，是返回true，否则返回false。
+返回该Decimal是否为0或是-0。
 
 **起始版本：** 12
 
@@ -1426,7 +1426,7 @@ isZero(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | the boolean type |
+| boolean | true表示该Decimal为0或是-0，false表示该Decimal不为0且不为-0。 |
 
 ## lessThan
 
@@ -1434,7 +1434,7 @@ isZero(): boolean
 lessThan(n: Value): boolean
 ```
 
-返回此Decimal是否小于比较值n，小于返回true，否则返回false。
+返回该Decimal是否小于比较值。
 
 **起始版本：** 12
 
@@ -1448,13 +1448,13 @@ lessThan(n: Value): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 待比较的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | the boolean type |
+| boolean | true表示该Decimal小于比较值，false表示该Decimal大于等于比较值。 |
 
 **错误码：**
 
@@ -1468,7 +1468,7 @@ lessThan(n: Value): boolean
 lessThanOrEqualTo(n: Value): boolean
 ```
 
-返回此Decimal是否小于等于比较值n，小于等于返回true，否则返回false。
+返回该Decimal是否小于等于比较值。
 
 **起始版本：** 12
 
@@ -1482,13 +1482,13 @@ lessThanOrEqualTo(n: Value): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 待比较的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | the boolean type |
+| boolean | true表示该Decimal小于等于比较值，false表示该Decimal大于比较值。 |
 
 **错误码：**
 
@@ -1502,7 +1502,7 @@ lessThanOrEqualTo(n: Value): boolean
 ln(): Decimal
 ```
 
-返回一个新的Decimal对象，其值是此Decimal值的自然对数。按照precision设置有效位数，按照rounding设置舍入模式。
+返回一个新的Decimal对象，其值是此Decimal值的自然对数。
 
 **起始版本：** 12
 
@@ -1516,7 +1516,7 @@ ln(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回自然对数运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -1544,13 +1544,13 @@ static ln(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 对数运算的真数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回自然对数运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -1565,7 +1565,7 @@ static ln(n: Value): Decimal
 log(n: Value): Decimal
 ```
 
-返回一个对数运算后的Decimal对象，其值是以n为底的此Decimal的对数值。按照precision设置有效位数，按照rounding设置舍入模式。
+返回一个对数运算后的Decimal对象，其值是以n为底的此Decimal的对数值。
 
 **起始版本：** 12
 
@@ -1579,13 +1579,13 @@ log(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 对数计算的底数值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回对数运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -1614,14 +1614,14 @@ static log(n: Value, base: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
-| base | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 对数运算的真数。 |
+| base | [Value](arkts-arkts-value-t.md) | 是 | 对数运算的底数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回对数运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -1650,13 +1650,13 @@ static log10(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 对数运算的真数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回以10为底的对数运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -1685,13 +1685,13 @@ static log2(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 对数运算的真数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回以2为底的对数运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -1720,13 +1720,13 @@ static max(...n: Value[]): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md)[] | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md)[] | 是 | 需要求最大值的序列。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回所有参数中的最大值的Decimal对象实例。 |
 
 **错误码：**
 
@@ -1754,13 +1754,13 @@ static min(...n: Value[]): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md)[] | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md)[] | 是 | 需要求最小值的序列。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回所有参数中的最小值的Decimal对象实例。 |
 
 **错误码：**
 
@@ -1774,7 +1774,7 @@ static min(...n: Value[]): Decimal
 mod(n: Value): Decimal
 ```
 
-返回一个新的Decimal对象，其值是将此Decimal的值除以n后的模。按照precision设置有效位数，按照rounding设置舍入模式。
+返回一个新的Decimal对象，其值是将此Decimal的值除以n后的模。
 
 **起始版本：** 12
 
@@ -1788,13 +1788,13 @@ mod(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 模运算的除数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回模运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -1822,14 +1822,14 @@ static mod(x: Value, y: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
-| y | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| x | [Value](arkts-arkts-value-t.md) | 是 | 模运算的被除数。 |
+| y | [Value](arkts-arkts-value-t.md) | 是 | 模运算的除数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回模运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -1843,7 +1843,7 @@ static mod(x: Value, y: Value): Decimal
 mul(n: Value): Decimal
 ```
 
-返回一个新的Decimal对象，其值是将此Decimal的值乘以n。按照precision设置有效位数，按照rounding设置舍入模式。
+返回一个新的Decimal对象，其值是将此Decimal的值乘以n。
 
 **起始版本：** 12
 
@@ -1857,13 +1857,13 @@ mul(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 乘法运算的乘数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回乘法运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -1891,14 +1891,14 @@ static mul(x: Value, y: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
-| y | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| x | [Value](arkts-arkts-value-t.md) | 是 | 乘法的被乘数。 |
+| y | [Value](arkts-arkts-value-t.md) | 是 | 乘法的乘数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回乘法运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -1912,7 +1912,7 @@ static mul(x: Value, y: Value): Decimal
 negate(): Decimal
 ```
 
-返回一个新的Decimal对象，其值将此Decimal的值乘以-1。
+对Decimal值进行取负操作（乘以-1）。
 
 **起始版本：** 12
 
@@ -1926,7 +1926,7 @@ negate(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回一个Decimal对象，其值将此Decimal的值乘以-1。 |
 
 ## pow
 
@@ -1934,7 +1934,7 @@ negate(): Decimal
 pow(n: Value): Decimal
 ```
 
-返回一个新的Decimal对象，其值是这个Decimal值的n次幂。按照precision设置有效位数，按照rounding设置舍入模式。
+返回一个新的Decimal对象，其值是这个Decimal值的n次幂。
 
 **起始版本：** 12
 
@@ -1948,13 +1948,13 @@ pow(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 幂运算的指数值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回幂运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -1990,7 +1990,7 @@ static pow(base: Value, exponent: Value): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回幂运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -2019,7 +2019,7 @@ precision(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | the number type |
+| number | 返回Decimal对象的有效位数。 |
 
 ## precision
 
@@ -2047,7 +2047,7 @@ precision(includeZeros: boolean | number): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | the number type |
+| number | 返回Decimal对象的有效位数。 |
 
 **错误码：**
 
@@ -2075,7 +2075,7 @@ static random(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 大于等于0小于1的随机值的Decimal对象实例。 |
 
 **错误码：**
 
@@ -2109,7 +2109,7 @@ static random(significantDigits: number): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 大于等于0小于1的随机值的Decimal对象实例。 |
 
 **错误码：**
 
@@ -2138,13 +2138,13 @@ static round(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 需要舍入的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回舍入之后的整数对应的Decimal对象实例。 |
 
 **错误码：**
 
@@ -2202,7 +2202,7 @@ static sign(n: Value): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 需要判断的值。 |
 
 **返回值：**
 
@@ -2237,7 +2237,7 @@ sin(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回计算正弦值的Decimal对象实例。 |
 
 ## sin
 
@@ -2265,7 +2265,7 @@ static sin(n: Value): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回n的正弦值对应的Decimal对象实例。 |
 
 **错误码：**
 
@@ -2293,7 +2293,7 @@ sinh(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回计算双曲正弦值的Decimal对象实例。 |
 
 ## sinh
 
@@ -2315,13 +2315,13 @@ static sinh(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 需要求的双曲正弦值的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回n的双曲正弦值对应的Decimal对象实例。 |
 
 **错误码：**
 
@@ -2335,7 +2335,7 @@ static sinh(n: Value): Decimal
 sqrt(): Decimal
 ```
 
-返回一个新的Decimal对象，其值是当前Decimal的平方根。按照precision设置有效位数，按照rounding设置舍入模式。
+返回一个新的Decimal对象，其值是当前Decimal的平方根。
 
 **起始版本：** 12
 
@@ -2349,7 +2349,7 @@ sqrt(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回平方根运算后的Decimal对象实例。 |
 
 ## sqrt
 
@@ -2371,13 +2371,13 @@ static sqrt(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 取平方根的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回平方根运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -2391,7 +2391,7 @@ static sqrt(n: Value): Decimal
 sub(n: Value): Decimal
 ```
 
-返回一个新的Decimal对象，其值是将此Decimal的值减去n。按照precision设置有效位数，按照rounding设置舍入模式。
+返回一个新的Decimal对象，其值是将此Decimal的值减去n。
 
 **起始版本：** 12
 
@@ -2405,13 +2405,13 @@ sub(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 减法运算的减数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回减法运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -2439,14 +2439,14 @@ static sub(x: Value, y: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
-| y | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| x | [Value](arkts-arkts-value-t.md) | 是 | 减法的被减数。 |
+| y | [Value](arkts-arkts-value-t.md) | 是 | 减法的减数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回减法运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -2476,13 +2476,13 @@ static sum(...n: Value[]): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md)[] | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md)[] | 是 | 加数的序列。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回加法运算后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -2510,7 +2510,7 @@ tan(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回计算正切值的Decimal对象实例。 |
 
 ## tan
 
@@ -2538,7 +2538,7 @@ static tan(n: Value): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回n的正切值对应的Decimal对象实例。 |
 
 **错误码：**
 
@@ -2566,7 +2566,7 @@ tanh(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回计算双曲正切值的Decimal对象实例。 |
 
 ## tanh
 
@@ -2594,7 +2594,7 @@ static tanh(n: Value): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回n的双曲正切值对应的Decimal对象实例。 |
 
 **错误码：**
 
@@ -2622,7 +2622,7 @@ toBinary(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | the string type |
+| string | 返回二进制表示的字符串。 |
 
 ## toBinary
 
@@ -2630,7 +2630,7 @@ toBinary(): string
 toBinary(significantDigits: number): string
 ```
 
-将Decimal转换为二进制表示的字符串，可按照significantDigits设置有效数字。
+将Decimal转换为二进制表示的字符串，并可按照significantDigits设置有效数字。使用DecimalConfig.rounding的值设置舍入模式。
 
 **起始版本：** 12
 
@@ -2644,13 +2644,13 @@ toBinary(significantDigits: number): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| significantDigits | number | 是 | 转换时保留的有效数字。取值范围为[1, 1e9]的整数。 |
+| significantDigits | number | 是 | 转换时保留的有效数字，取值范围为[1, 1e9]的整数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | the string type |
+| string | 返回二进制表示的字符串。 |
 
 **错误码：**
 
@@ -2664,7 +2664,7 @@ toBinary(significantDigits: number): string
 toBinary(significantDigits: number, rounding: Rounding): string
 ```
 
-将Decimal转换为二进制表示的字符串，可按照significantDigits设置有效数字，可按照rounding设置舍入模式。
+将Decimal转换为二进制表示的字符串，并可按照significantDigits设置有效数字，以及按照rounding设置舍入模式。
 
 **起始版本：** 12
 
@@ -2678,14 +2678,14 @@ toBinary(significantDigits: number, rounding: Rounding): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| significantDigits | number | 是 | 转换时保留的有效数字。取值范围为[1, 1e9]的整数。 |
-| rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式。取值范围为0到8的整数。 |
+| significantDigits | number | 是 | 转换时保留的有效数字，取值范围为[1, 1e9]的整数。 |
+| rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式，取值范围参考Rounding。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | the string type |
+| string | 返回二进制表示的字符串。 |
 
 **错误码：**
 
@@ -2699,7 +2699,7 @@ toBinary(significantDigits: number, rounding: Rounding): string
 toDecimalPlaces(): Decimal
 ```
 
-返回一个保留小数点后指定位数的Decimal对象，不进行小数的取舍。
+返回一个保留小数点后指定位数的Decimal对象，不进行小数的舍入。
 
 **起始版本：** 12
 
@@ -2713,7 +2713,7 @@ toDecimalPlaces(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回一个Decimal对象保留小数点后指定位数。 |
 
 ## toDecimalPlaces
 
@@ -2721,7 +2721,7 @@ toDecimalPlaces(): Decimal
 toDecimalPlaces(decimalPlaces: number): Decimal
 ```
 
-返回一个保留小数点后指定位数的Decimal对象，可按照decimalPlaces设置小数位数。
+返回一个保留小数点后指定位数的Decimal对象，可按照decimalPlaces设置小数位数。使用DecimalConfig.rounding的值设置舍入模式。
 
 **起始版本：** 12
 
@@ -2735,13 +2735,13 @@ toDecimalPlaces(decimalPlaces: number): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| decimalPlaces | number | 是 | 转换时保留的小数点后有效位数。取值范围为[0, 1e9]的整数。 |
+| decimalPlaces | number | 是 | 转换时保留的小数点后有效位数，取值范围为[0, 1e9]的整数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回一个Decimal对象保留小数点后指定位数。 |
 
 **错误码：**
 
@@ -2769,14 +2769,14 @@ toDecimalPlaces(decimalPlaces: number, rounding: Rounding): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| decimalPlaces | number | 是 | 转换时保留的小数点后有效位数。取值范围为[0, 1e9]的整数。 |
-| rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式。取值范围为0到8的整数。 |
+| decimalPlaces | number | 是 | 转换时保留的小数点后有效位数，取值范围为[0, 1e9]的整数。 |
+| rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式。取值范围参考Rounding。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回一个Decimal对象保留小数点后指定位数。 |
 
 **错误码：**
 
@@ -2804,7 +2804,7 @@ toExponential(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | the string type |
+| string | 返回按照指数表示法显示的字符串。 |
 
 ## toExponential
 
@@ -2812,7 +2812,7 @@ toExponential(): string
 toExponential(decimalPlaces: number): string
 ```
 
-将数值转换为指数表示法的字符串，可按照decimalPlaces设置小数位数。
+将数值转换为按照指数表示法显示的字符串，可按照decimalPlaces设置小数位数。使用DecimalConfig.rounding的值设置舍入模式。
 
 **起始版本：** 12
 
@@ -2826,13 +2826,13 @@ toExponential(decimalPlaces: number): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| decimalPlaces | number | 是 | 转换时保留的小数点后有效位数。取值范围为[0, 1e9]的整数。 |
+| decimalPlaces | number | 是 | 转换时保留的小数点后有效位数，取值范围为[0, 1e9]的整数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | the string type |
+| string | 返回按照指数表示法显示的字符串。 |
 
 **错误码：**
 
@@ -2846,7 +2846,7 @@ toExponential(decimalPlaces: number): string
 toExponential(decimalPlaces: number, rounding: Rounding): string
 ```
 
-将数值转换为指数表示法的字符串，可按照decimalPlaces设置小数位数，可按照rounding设置舍入模式。
+转换为按照指数表示法显示的字符串，可按照decimalPlaces设置小数位数，可按照rounding设置舍入模式。
 
 **起始版本：** 12
 
@@ -2860,14 +2860,14 @@ toExponential(decimalPlaces: number, rounding: Rounding): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| decimalPlaces | number | 是 | 转换时保留的小数点后有效位数。取值范围为[0, 1e9]的整数。 |
-| rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式。取值范围为0到8的整数。 |
+| decimalPlaces | number | 是 | 转换时保留的小数点后有效位数，取值范围为[0, 1e9]的整数。 |
+| rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式，取值范围参考Rounding。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | the string type |
+| string | 返回按照指数表示法显示的字符串。 |
 
 **错误码：**
 
@@ -2881,7 +2881,7 @@ toExponential(decimalPlaces: number, rounding: Rounding): string
 toFixed(): string
 ```
 
-将数值转换为十进制定点模式表示的字符串，不进行小数的取舍。
+将数值转换为十进制定点模式表示的字符串，不进行小数的舍入。
 
 **起始版本：** 12
 
@@ -2895,7 +2895,7 @@ toFixed(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | the string type |
+| string | 返回按照正常模式（十进制定点模式）表示的字符串。 |
 
 ## toFixed
 
@@ -2903,7 +2903,7 @@ toFixed(): string
 toFixed(decimalPlaces: number): string
 ```
 
-将数值转换为十进制定点模式表示的字符串，可按照decimalPlaces设置小数位数。
+将数值转换为十进制定点模式表示的字符串，可按照decimalPlaces设置小数位数。使用DecimalConfig.rounding的值设置舍入模式。
 
 **起始版本：** 12
 
@@ -2917,13 +2917,13 @@ toFixed(decimalPlaces: number): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| decimalPlaces | number | 是 | 转换时保留的小数点后有效位数。取值范围为[0, 1e9]的整数。 |
+| decimalPlaces | number | 是 | 转换时保留的小数点后有效位数，取值范围为[0, 1e9]的整数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | the string type |
+| string | 返回按照正常模式（十进制定点模式）表示的字符串。 |
 
 **错误码：**
 
@@ -2951,14 +2951,14 @@ toFixed(decimalPlaces: number, rounding: Rounding): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| decimalPlaces | number | 是 | 转换时保留的小数点后有效位数。取值范围为[0, 1e9]的整数。 |
-| rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式。取值范围为0到8的整数。 |
+| decimalPlaces | number | 是 | 转换时保留的小数点后有效位数，取值范围为[0, 1e9]的整数。 |
+| rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式，取值范围参考Rounding。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | the string type |
+| string | 返回按照正常模式（十进制定点模式）表示的字符串。 |
 
 **错误码：**
 
@@ -2986,7 +2986,7 @@ toFraction(): Decimal[]
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md)[] | the Decimal[] type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md)[] | 返回一个Decimal数组，该数组长度固定为2，其值表示为具有整数分子和整数分母的简单分数。且分子在前，分母在后。 |
 
 ## toFraction
 
@@ -3008,13 +3008,13 @@ toFraction(maxDenominator: Value): Decimal[]
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| maxDenominator | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| maxDenominator | [Value](arkts-arkts-value-t.md) | 是 | 分母的最大值。包含该值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md)[] | the Decimal[] type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md)[] | 返回一个Decimal数组，该数组长度固定为2，其值表示为具有整数分子和整数分母的简单分数。且分子在前，分母在后。 |
 
 **错误码：**
 
@@ -3028,7 +3028,7 @@ toFraction(maxDenominator: Value): Decimal[]
 toHexadecimal(): string
 ```
 
-将Decimal转换为十六进制表示的字符串。
+转换为十六进制表示的字符串。
 
 **起始版本：** 12
 
@@ -3042,7 +3042,7 @@ toHexadecimal(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | the string type |
+| string | 返回十六进制表示的字符串。 |
 
 ## toHexadecimal
 
@@ -3050,7 +3050,7 @@ toHexadecimal(): string
 toHexadecimal(significantDigits: number): string
 ```
 
-将Decimal转换为十六进制表示的字符串，可按照significantDigits设置有效数字。
+转换为十六进制表示的字符串，可按照significantDigits设置有效数字。使用DecimalConfig.rounding的值设置舍入模式。
 
 **起始版本：** 12
 
@@ -3064,13 +3064,13 @@ toHexadecimal(significantDigits: number): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| significantDigits | number | 是 | 转换时保留的有效数字。取值范围为[1, 1e9]的整数。 |
+| significantDigits | number | 是 | 转换时保留的有效数字，取值范围为[1, 1e9]的整数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | the string type |
+| string | 返回十六进制表示的字符串。 |
 
 **错误码：**
 
@@ -3084,7 +3084,7 @@ toHexadecimal(significantDigits: number): string
 toHexadecimal(significantDigits: number, rounding: Rounding): string
 ```
 
-将Decimal转换为十六进制表示的字符串，可按照significantDigits设置有效数字，可按照rounding设置舍入模式。
+转换为十六进制表示的字符串，可按照significantDigits设置有效数字，可按照rounding设置舍入模式。
 
 **起始版本：** 12
 
@@ -3098,14 +3098,14 @@ toHexadecimal(significantDigits: number, rounding: Rounding): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| significantDigits | number | 是 | 转换时保留的有效数字。取值范围为[1, 1e9]的整数。 |
-| rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式。取值范围为0到8的整数。 |
+| significantDigits | number | 是 | 转换时保留的有效数字，取值范围为[1, 1e9]的整数。 |
+| rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式，取值范围参考Rounding。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | the string type |
+| string | 返回十六进制表示的字符串。 |
 
 **错误码：**
 
@@ -3133,13 +3133,13 @@ toNearest(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 参考的指定值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回一个Decimal对象，为最接近原值的指定值的倍数值。 |
 
 **错误码：**
 
@@ -3167,14 +3167,14 @@ toNearest(n: Value, rounding: Rounding): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 参考的指定值。 |
 | rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式。取值范围为0到8的整数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回一个Decimal对象，为最接近原值的指定值的倍数值。 |
 
 **错误码：**
 
@@ -3203,7 +3203,7 @@ toNumber(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | the number type |
+| number | 返回一个表示Decimal的number值。 |
 
 ## toOctal
 
@@ -3211,7 +3211,7 @@ toNumber(): number
 toOctal(): string
 ```
 
-将Decimal转换为八进制表示的字符串。
+转换为八进制表示的字符串。
 
 **起始版本：** 12
 
@@ -3225,7 +3225,7 @@ toOctal(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | the string type |
+| string | 返回八进制表示的字符串。 |
 
 ## toOctal
 
@@ -3233,7 +3233,7 @@ toOctal(): string
 toOctal(significantDigits: number): string
 ```
 
-将Decimal转换为八进制表示的字符串，可按照significantDigits设置有效数字。
+转换为八进制表示的字符串，可按照significantDigits设置有效数字。使用DecimalConfig.rounding的值设置舍入模式。
 
 **起始版本：** 12
 
@@ -3253,7 +3253,7 @@ toOctal(significantDigits: number): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | the string type |
+| string | 返回八进制表示的字符串。 |
 
 **错误码：**
 
@@ -3267,7 +3267,7 @@ toOctal(significantDigits: number): string
 toOctal(significantDigits: number, rounding: Rounding): string
 ```
 
-将Decimal转换为八进制表示的字符串，可按照significantDigits设置有效数字，可按照rounding设置舍入模式。
+转换为八进制表示的字符串，可按照significantDigits设置有效数字，可按照rounding设置舍入模式。
 
 **起始版本：** 12
 
@@ -3282,13 +3282,13 @@ toOctal(significantDigits: number, rounding: Rounding): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | significantDigits | number | 是 | 转换时保留的有效数字，取值范围为[1, 1e9]的整数。 |
-| rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式。取值范围为0到8的整数。 |
+| rounding | [Rounding](arkts-arkts-rounding-t.md) | 是 | 转换时使用的舍入模式，取值范围参考Rounding。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | the string type |
+| string | 返回八进制表示的字符串。 |
 
 **错误码：**
 
@@ -3316,7 +3316,7 @@ toPrecision(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | the string type |
+| string | 返回一个表示Decimal对象的字符串。 |
 
 ## toPrecision
 
@@ -3344,7 +3344,7 @@ toPrecision(significantDigits: number): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | the string type |
+| string | 返回一个表示Decimal对象的字符串。 |
 
 **错误码：**
 
@@ -3379,7 +3379,7 @@ toPrecision(significantDigits: number, rounding: Rounding): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | the string type |
+| string | 返回一个表示Decimal对象的字符串。 |
 
 **错误码：**
 
@@ -3407,7 +3407,7 @@ toSignificantDigits(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回一个保留有效数字后的Decimal对象实例。 |
 
 ## toSignificantDigits
 
@@ -3435,7 +3435,7 @@ toSignificantDigits(significantDigits: number): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回一个保留有效数字后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -3470,7 +3470,7 @@ toSignificantDigits(significantDigits: number, rounding: Rounding): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回一个保留有效数字后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -3498,7 +3498,7 @@ toString(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | the string type |
+| string | 返回一个表示Decimal的字符串。 |
 
 ## trunc
 
@@ -3506,7 +3506,7 @@ toString(): string
 trunc(): Decimal
 ```
 
-返回一个新的Decimal对象，其值是将当前Decimal截断为整数部分。
+返回一个新的Decimal对象，其值是将此Decimal截断为整数部分。
 
 **起始版本：** 12
 
@@ -3520,7 +3520,7 @@ trunc(): Decimal
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回截断之后的Decimal对象实例。 |
 
 ## trunc
 
@@ -3542,13 +3542,13 @@ static trunc(n: Value): Decimal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| n | [Value](arkts-arkts-value-t.md) | 是 | {double &#124; string &#124; Decimal} |
+| n | [Value](arkts-arkts-value-t.md) | 是 | 需要截断的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+| [Decimal](arkts-arkts-math-decimal-decimal-c.md) | 返回截断之后的Decimal对象实例。 |
 
 **错误码：**
 
@@ -3576,7 +3576,7 @@ valueOf(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | the string type |
+| string | 返回一个表示Decimal的字符串。 |
 
 ## d
 

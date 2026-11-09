@@ -4,7 +4,7 @@
 interface WifiDeviceConfig
 ```
 
-Wi-Fi device configuration information.
+Represents the Wi-Fi configuration information.
 
 **Since:** 6
 
@@ -28,7 +28,7 @@ import { wifi } from '@kit.ConnectivityKit';
 bssid: string
 ```
 
-Wi-Fi bssid(MAC): the length is 6
+BSSID of the hotspot, for example, **00:11:22:33:44:55**.
 
 **Type:** string
 
@@ -48,7 +48,7 @@ Wi-Fi bssid(MAC): the length is 6
 isHiddenSsid: boolean
 ```
 
-Hide SSID or not, false(default): not hide
+Whether the network is hidden. The value **true** indicates that the network is hidden, and the value **false** indicates the opposite.
 
 **Type:** boolean
 
@@ -68,7 +68,7 @@ Hide SSID or not, false(default): not hide
 preSharedKey: string
 ```
 
-Wi-Fi key: maximum length is 64
+PSK of the hotspot. The maximum length is 64 bytes.
 
 **Type:** string
 
@@ -88,7 +88,7 @@ Wi-Fi key: maximum length is 64
 securityType: WifiSecurityType
 ```
 
-Security type: reference definition of WifiSecurityType
+Security type.
 
 **Type:** [WifiSecurityType](arkts-connectivity-wifi-wifisecuritytype-e.md)
 
@@ -108,7 +108,7 @@ Security type: reference definition of WifiSecurityType
 ssid: string
 ```
 
-Wi-Fi SSID: the maximum length is 32
+Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.
 
 **Type:** string
 

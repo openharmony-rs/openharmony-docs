@@ -4,7 +4,7 @@
 interface WifiLinkedInfo
 ```
 
-Wi-Fi connection information.
+Provides information about a Wi-Fi connection.
 
 **Since:** 6
 
@@ -28,7 +28,7 @@ import { wifi } from '@kit.ConnectivityKit';
 band: number
 ```
 
-The frequency band of a Wi-Fi access point.
+Frequency band of the Wi-Fi access point. The value **1** indicates 2.4 GHz, and the value **2** indicates 5 GHz.
 
 **Type:** number
 
@@ -48,7 +48,7 @@ The frequency band of a Wi-Fi access point.
 bssid: string
 ```
 
-The BSSID of the Wi-Fi hotspot
+BSSID of the hotspot, for example, **00:11:22:33:44:55**.
 
 **Type:** string
 
@@ -68,7 +68,7 @@ The BSSID of the Wi-Fi hotspot
 connState: ConnState
 ```
 
-The state of this Wi-Fi connection.
+Wi-Fi connection status.
 
 **Type:** [ConnState](arkts-connectivity-wifi-connstate-e.md)
 
@@ -88,7 +88,7 @@ The state of this Wi-Fi connection.
 frequency: number
 ```
 
-The frequency of a Wi-Fi access point.
+Frequency of the Wi-Fi access point, in MHz.
 
 **Type:** number
 
@@ -108,7 +108,7 @@ The frequency of a Wi-Fi access point.
 ipAddress: number
 ```
 
-The IP address of this Wi-Fi connection.
+IP address of the Wi-Fi connection.
 
 **Type:** number
 
@@ -128,7 +128,7 @@ The IP address of this Wi-Fi connection.
 isHidden: boolean
 ```
 
-Whether the SSID of the access point (AP) of this Wi-Fi connection is hidden.
+Whether the Wi-Fi access point is a hidden network. The value **true** indicates that the Wi-Fi access point is a hidden network; the value **false** indicates the opposite.
 
 **Type:** boolean
 
@@ -148,7 +148,7 @@ Whether the SSID of the access point (AP) of this Wi-Fi connection is hidden.
 isRestricted: boolean
 ```
 
-Whether this Wi-Fi connection restricts the data volume.
+Whether to restrict data volume at the Wi-Fi access point. The value **true** means to restrict data volume at the Wi-Fi access point, and the value **false** indicates the opposite.
 
 **Type:** boolean
 
@@ -168,7 +168,7 @@ Whether this Wi-Fi connection restricts the data volume.
 linkSpeed: number
 ```
 
-The speed of a Wi-Fi access point.
+Speed of the Wi-Fi access point, in Mbit/s.
 
 **Type:** number
 
@@ -188,7 +188,7 @@ The speed of a Wi-Fi access point.
 macAddress: string
 ```
 
-The Wi-Fi MAC address of a device.
+MAC address of the device.
 
 **Type:** string
 
@@ -208,7 +208,7 @@ The Wi-Fi MAC address of a device.
 rssi: number
 ```
 
-The RSSI(dBm) of a Wi-Fi access point.
+RSSI of the hotspot, in dBm.
 
 **Type:** number
 
@@ -228,7 +228,7 @@ The RSSI(dBm) of a Wi-Fi access point.
 ssid: string
 ```
 
-The SSID of the Wi-Fi hotspot
+Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.
 
 **Type:** string
 

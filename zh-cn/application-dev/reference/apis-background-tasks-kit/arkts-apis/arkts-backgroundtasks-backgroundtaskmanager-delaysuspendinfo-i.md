@@ -24,7 +24,7 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 actualDelayTime: number
 ```
 
-应用实际申请的短时任务时间，单位：ms。<br>Unit:ms
+应用实际申请的短时任务时间，单位：ms。
 
 **说明：** 申请时间最长为3分钟，低电量（[BatteryCapacityLevel](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-batteryinfo-batterycapacitylevel-e.md)为LEVEL_LOW）时最长为1分钟。
 

@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function startWifiDetection(): void
 ```
 
-发起WiFi网络探测。
+发起Wi-Fi网络探测。
 
 **起始版本：** 21
 

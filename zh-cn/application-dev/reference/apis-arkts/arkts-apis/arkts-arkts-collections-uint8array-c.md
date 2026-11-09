@@ -606,7 +606,7 @@ includes(searchElement: number, fromIndex?: number): boolean
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | searchElement | number | 是 | 待搜索的元素。 |
-| fromIndex | number | 否 | 在数组中开始搜索searchElement的位置。 |
+| fromIndex | number | 否 | 开始搜索的索引，默认值为0。如果fromIndex &lt; 0，则会从fromIndex + Uint8Array.length位置开始从前向后搜索。如果fromIndex的值导致搜索区间和数组范围没有重叠，则返回false。 |
 
 **返回值：**
 
@@ -812,7 +812,7 @@ static of(...items: number[]): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | number[] | 是 | 用于创建数组的元素，参数个数可以是0个、1个或者多个。 |
+| items | number[] | 是 | 用于创建数组的元素，参数个数可以是0个、1个或者多个。默认值为空数组。 |
 
 **返回值：**
 
@@ -1048,7 +1048,7 @@ set(array: ArrayLike<number>, offset?: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | array | ArrayLike&lt;number&gt; | 是 | 用于设置的ArrayLike对象。 |
-| offset | number | 否 | 当前数组中要写入值的起始位置索引。 |
+| offset | number | 否 | 写入的起始位置，需为非负整数。默认值为0。offset与array.length之和不能超过ArkTS Uint8Array的长度。超出范围时将抛出异常。 |
 
 **错误码：**
 
@@ -1293,6 +1293,8 @@ values(): IterableIterator<number>
 ```
 
 返回指定索引位置的元素。
+
+所需元素的从零开始的索引。取值范围为[0, Uint8Array.length - 1]。超出范围时或不为整数时返回undefined。
 
 **类型：** number
 

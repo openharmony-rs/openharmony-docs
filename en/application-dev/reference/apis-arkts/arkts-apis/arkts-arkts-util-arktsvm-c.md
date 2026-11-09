@@ -18,6 +18,22 @@ A class that provides VM maintenance and test capabilities for developers.
 import { util } from '@kit.ArkTS';
 ```
 
+## enableHandleMemoryOptimization
+
+```TypeScript
+static enableHandleMemoryOptimization(): void
+```
+
+Enable the proportional handle/primitive storage shrink optimization. OFF by default; once enabled it cannot be turned off. Before enablement the legacy conservative shrink is used.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ArkTSVM-static enableHandleMemoryOptimization(): void--><!--Device-ArkTSVM-static enableHandleMemoryOptimization(): void-End-->
+
+**System capability:** SystemCapability.Utils.Lang
+
 ## enableLocalHandleDetection
 
 ```TypeScript
@@ -92,6 +108,28 @@ Gets the number of global handles currently in use by the ArkTS VM on the callin
 | Type | Description |
 | --- | --- |
 | number | Returns the number of global handles currently in use by the VM. The value is greater than or equal to 0. |
+
+## hintGC
+
+```TypeScript
+static hintGC(level?: UrgencyLevel): void
+```
+
+Interface of suggesting current ArkTS VM to perform proactive GC. The VM determines whether to trigger GC based on the memory status and urgency level. The default value of param is Urgency.LOW. High-frequency calling is not recommended because GC may cause high performance overhead.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ArkTSVM-static hintGC(level?: UrgencyLevel): void--><!--Device-ArkTSVM-static hintGC(level?: UrgencyLevel): void-End-->
+
+**System capability:** SystemCapability.Utils.Lang
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| level | [UrgencyLevel](arkts-arkts-util-urgencylevel-e.md) | No | Urgency level.<br>The following values are available: <br>- **Urgency.LOW** (default): low urgency level, GC threshold is relatively high, suitable for scenarios where the developer expects to proactively trigger GC to reclaim some dead objects, but the ArkTS memory pressure of the application is under control. <br>- **Urgency.MEDIUM**: medium urgency level, GC threshold is between LOW and HIGH. <br>- **Urgency.HIGH**: high urgency level, GC threshold is low, suitable for scenarios the ArkTS memory pressure of the application is extremely high, developers expect the system to trigger GC as soon as possible to reclaim memory. |
 
 ## offVMHeapMemoryPressure
 

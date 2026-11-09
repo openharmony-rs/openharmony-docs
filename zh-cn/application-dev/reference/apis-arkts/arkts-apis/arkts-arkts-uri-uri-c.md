@@ -286,7 +286,7 @@ console.info(uriInstance.clearQuery().toString()); // https://www.test.com
 constructor(uri: string)
 ```
 
-构造函数用于创建URI对象，将输入的URI字符串按照RFC3986规范解析并分解为scheme、userInfo、host、port、path、query和fragment等组件。URI的标准形式为[scheme:]scheme-specific-part[#fragment]，细化形式为[scheme:][//authority][path][?query][#fragment]。包含scheme的URI为绝对URI，否则为相对URI；scheme-specific-part以“/”开头时为分层URI，否则为不透明URI；authority由[userInfo@]host[:port]组成，authority存在时必须包含host。
+构造函数用于创建URI对象，将输入的URI字符串按照RFC3986规范解析并分解为scheme、userInfo、host、port、path、query和fragment等组件。URI字符串格式请参见命名规则。
 
 **起始版本：** 8
 
@@ -614,9 +614,9 @@ normalize(): URI
 > 
 > 如果此URI是不透明的，或者其路径已经是规范形式，则返回该URI。否则将构造一个新的URI，该URI与当前URI相同，唯一的区别是其路径通过规范化当前URI的路径来计算，具体规则如下：
 > 
-> 1.移除所有的 .（点）段。
+> 1. 移除所有的 .（点）段。
 > 
-> 2.如果 ..（双点）段前面有一个非 .. 段，则将这两个段一起移除。重复此步骤，直到不再适用为止。
+> 2. 如果 ..（双点）段前面有一个非 .. 段，则将这两个段一起移除。重复此步骤，直到不再适用为止。
 > 
 > 如果路径规范化后以 ..（双点）段开头，这表明之前没有足够的非 .. 段可以移除，因此路径将以 .. 段开始。
 
@@ -684,7 +684,7 @@ let result1 = result.toString(); // https://username:password@host:8080/director
 equals(other: URI): boolean
 ```
 
-判断此URI是否与其他URI对象相等，通过逐组件比较scheme、authority、path、query和fragment等内容来确定两个URI是否等价。
+判断此URI是否与其他URI对象相等。
 
 **起始版本：** 8
 

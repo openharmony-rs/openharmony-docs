@@ -39,7 +39,7 @@ will return error code 9200010. To resolve the conflict, remove the previously s
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application. |
 | policy | [adminManager.Policy](arkts-mdm-adminmanager-policy-e.md) | Yes | Policy for trustlist or blocklist. **BLOCK_LIST** indicates a blocklist, and **TRUST_LIST** indicates a trustlist. |
-| numbers | Array&lt;string&gt; | Yes | List of phone numbers. Currently, only full number matching is supported. The total length of the array must not exceed 1,000. For example, if there are already 100 numbers in the current trustlist array, this API supports adding up to 900 more numbers. |
+| numbers | Array&lt;string&gt; | Yes | Call number list. Currently, only full number matching is supported. In versions earlier than API 26.1.0, the total length of the array cannot exceed 1000. For example, if there are 100 numbers in the allowed list, a maximum of 900 numbers can be added through this API. The total length of the array in API 26.1.0 and later versions cannot exceed 10000. For example, if there are 1000 numbers in the allowed list, a maximum of 9000 numbers can be added through this API. |
 
 **Error codes:**
 

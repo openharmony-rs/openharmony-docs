@@ -4,7 +4,7 @@
 enum WifiSecurityType
 ```
 
-Describes the wifi security type.
+Enumerates the Wi-Fi security types.
 
 **Since:** 6
 
@@ -22,7 +22,7 @@ Describes the wifi security type.
 WIFI_SEC_TYPE_INVALID = 0
 ```
 
-Invalid security type
+Invalid security type.
 
 **Since:** 6
 
@@ -40,7 +40,7 @@ Invalid security type
 WIFI_SEC_TYPE_OPEN = 1
 ```
 
-Open
+Open security type.
 
 **Since:** 6
 
@@ -58,7 +58,7 @@ Open
 WIFI_SEC_TYPE_PSK = 3
 ```
 
-Pre-shared key (PSK)
+Pre-shared key (PSK).
 
 **Since:** 6
 
@@ -76,7 +76,7 @@ Pre-shared key (PSK)
 WIFI_SEC_TYPE_SAE = 4
 ```
 
-Simultaneous Authentication of Equals (SAE)
+Simultaneous Authentication of Equals (SAE).
 
 **Since:** 6
 
@@ -94,7 +94,7 @@ Simultaneous Authentication of Equals (SAE)
 WIFI_SEC_TYPE_WEP = 2
 ```
 
-Wired Equivalent Privacy (WEP)
+Wired Equivalent Privacy (WEP).
 
 **Since:** 6
 

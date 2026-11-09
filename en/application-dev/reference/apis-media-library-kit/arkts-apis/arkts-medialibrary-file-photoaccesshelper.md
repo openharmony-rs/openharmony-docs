@@ -129,6 +129,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | [AnalysisConfig](arkts-medialibrary-photoaccesshelper-analysisconfig-i-sys.md) | Defines the asset analysis configuration. |
 | [AnalysisResult](arkts-medialibrary-photoaccesshelper-analysisresult-i-sys.md) | Defines the asset analysis result. |
 | [AnalysisToolResult](arkts-medialibrary-photoaccesshelper-analysistoolresult-i-sys.md) | Result of an analysis tool execution. |
+| [AssetUriResult](arkts-medialibrary-photoaccesshelper-asseturiresult-i-sys.md) | Describes the operation result of a media asset URI. |
 | [BatchOperationOptions](arkts-medialibrary-photoaccesshelper-batchoperationoptions-i-sys.md) | Batch operation options |
 | [ChangeData](arkts-medialibrary-photoaccesshelper-changedata-i-sys.md) | Defines the return value of the listener callback. |
 | [CleanupSize](arkts-medialibrary-photoaccesshelper-cleanupsize-i-sys.md) | ROM revenue. |

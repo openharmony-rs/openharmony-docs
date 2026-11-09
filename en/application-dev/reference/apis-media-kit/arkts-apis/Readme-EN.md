@@ -156,6 +156,7 @@
   <!--Del-->
   - [ScreenCaptureEvent(system api)](arkts-media-media-screencaptureevent-e-sys.md)<!--DelEnd-->
   - [SeekMode](arkts-media-media-seekmode-e.md)
+  - [SideBySideTransparentVideoLayoutMode](arkts-media-media-sidebysidetransparentvideolayoutmode-e.md)
   - [SoundInterruptMode](arkts-media-media-soundinterruptmode-e.md)
   - [StateChangeReason](arkts-media-media-statechangereason-e.md)
   - [SwitchMode](arkts-media-media-switchmode-e.md)

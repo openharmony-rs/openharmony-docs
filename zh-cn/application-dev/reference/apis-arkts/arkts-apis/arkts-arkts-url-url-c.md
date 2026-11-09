@@ -24,7 +24,7 @@ import { url } from '@kit.ArkTS';
 constructor()
 ```
 
-URL的无参构造函数，不建议直接调用。请使用parseURL方法创建URL对象。
+URL的无参构造函数，不建议直接调用。请使用[parseURL](#parseurl)方法创建URL对象。
 
 **起始版本：** 9
 
@@ -57,7 +57,7 @@ new url.URL('https://www.example.com', absoluteUrl); // Output https://www.examp
 constructor(url: string, base?: string | URL)
 ```
 
-URL的构造函数。与parseURL方法功能相同，但parseURL为静态工厂方法，推荐使用parseURL来创建URL对象。
+URL的构造函数。与[parseURL](#parseurl)方法功能相同，但parseURL为静态工厂方法，推荐使用parseURL来创建URL对象。
 
 **起始版本：** 7
 
@@ -105,7 +105,7 @@ static parseURL(url: string, base?: string | URL): URL
 > 
 > 当入参url是相对URL时，调用该接口解析后的URL并不是简单地将入参url和base直接拼接。
 > url内容为相对路径格式时，会相对于base的当前目录进行解析，包括base中path字段最后一个斜杠前的所有路径片段，
-> 但不包括其后的部分（参照示例中url1）。url内容为指向根目录的格式时，会相对于base的原始地址（origin）进行解析（参照示例中url2）。
+> 但不包括其后的部分（参照示例中url1）。url内容为指向根目录的格式时，会相对于 base 的原始地址（origin）进行解析（参照示例中url2）。
 
 **起始版本：** 9
 

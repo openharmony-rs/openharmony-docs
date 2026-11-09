@@ -62,6 +62,28 @@ Indicates the session ID of the dialog manager (DM), which uniquely identifies t
 
 **System API:** This is a system API.
 
+## policy
+
+```TypeScript
+policy?: string
+```
+
+Indicates the security policy. The parameter format is a JSON string.
+
+The policy string is interpreted by the system service to enforce additional security constraints on the command.
+
+**Type:** string
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExecOptions-policy?: string--><!--Device-ExecOptions-policy?: string-End-->
+
+**System capability:** SystemCapability.Ability.AgentRuntime.Core
+
+**System API:** This is a system API.
+
 ## taskId
 
 ```TypeScript

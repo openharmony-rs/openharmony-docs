@@ -28,7 +28,7 @@ UIServiceExtensionContext provides access to a [UIServiceExtensionAbility](arkts
 connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 ```
 
-Connects to a [UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md) and returns the connection ID.
+Connects to a [ServiceExtensionAbility](arkts-ability-app-ability-serviceextensionability-serviceextensionability-c-sys.md) and returns the connection ID.
 
 > **NOTE:** 
 > 
@@ -149,7 +149,7 @@ struct Page_UIServiceExtensionAbility {
 disconnectServiceExtensionAbility(connectionId: number): Promise<void>
 ```
 
-Disconnects from a [UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md). This API is opposite to [connectServiceExtensionAbility](#connectserviceextensionability). This API uses a promise to return the result.
+Disconnects from a [ServiceExtensionAbility](arkts-ability-app-ability-serviceextensionability-serviceextensionability-c-sys.md). This API is opposite to [connectServiceExtensionAbility](#connectserviceextensionability). This API uses a promise to return the result.
 
 **Since:** 14
 

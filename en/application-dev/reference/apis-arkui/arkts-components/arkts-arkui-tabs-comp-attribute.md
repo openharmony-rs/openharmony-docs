@@ -1388,6 +1388,30 @@ Sets the selected color of the tab text in sidebar mode.
 | --- | --- | --- | --- |
 | value | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | Yes | Selected color of the tab text in sidebar mode. |
 
+## sidebarTitleBar
+
+```TypeScript
+sidebarTitleBar(value: Optional<TabsSidebarTitleBarOptions>)
+```
+
+Sets the title bar of the sidebar tab bar. The title bar is displayed above the header area. When the title bar is set, the expand/collapse button moves from the default left side to the right side of the title bar.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-TabsAttribute-sidebarTitleBar(value: Optional<TabsSidebarTitleBarOptions>): TabsAttribute--><!--Device-TabsAttribute-sidebarTitleBar(value: Optional<TabsSidebarTitleBarOptions>): TabsAttribute-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| value | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[TabsSidebarTitleBarOptions](arkts-arkui-tabs-comp-tabssidebartitlebaroptions-i.md)&gt; | Yes | Title bar options of the sidebar tab bar. |
+
 ## sidebarUnselectedIconColor
 
 ```TypeScript

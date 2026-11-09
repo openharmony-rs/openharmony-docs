@@ -22,7 +22,7 @@ declare interface BuilderSpanInfo
 id?: string
 ```
 
-开发者自定义的追踪标识，用于跟踪BuilderSpan。框架不强制唯一性约束，由开发者自行保证唯一性。未传入时，值为**undefined**。
+开发者自定义的身份标识，用于标识BuilderSpan。框架不强制唯一性约束，由开发者自行保证唯一性。未传入时，值为**undefined**，表示该BuilderSpan为匿名BuilderSpan。
 
 **类型：** string
 
@@ -42,7 +42,7 @@ id?: string
 offset?: number
 ```
 
-BuilderSpan在文本内容中的当前偏移位置。该值由框架维护，随文本内容变化动态更新。
+当作为[addRichEditorBuilderSpan](arkts-arkui-richeditor-comp-richeditorcontroller-c.md#addricheditorbuilderspan)的参数传入时，表示BuilderSpan的插入位置。省略或当值小于0或大于所有内容长度时，添加到所有内容最后面。当通过[getRichEditorBuilderSpans](arkts-arkui-richeditor-comp-richeditorcontroller-c.md#getricheditorbuilderspans)或回调获取时，表示BuilderSpan在文本内容中的当前偏移位置，该值由框架维护，随文本内容变化动态更新。
 
 **类型：** number
 

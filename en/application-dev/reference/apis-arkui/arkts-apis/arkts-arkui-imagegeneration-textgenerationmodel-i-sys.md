@@ -50,7 +50,7 @@ Cancel AI text generation task.
 onComplain(sessionId: number, request: string, result: GenerateTextTaskResult): void
 ```
 
-User use complaint menu to complain the result of an AI-generated text task.
+User uses complaint menu to complain the result of an AI-generated text task.
 
 **Since:** 23
 
@@ -66,7 +66,7 @@ User use complaint menu to complain the result of an AI-generated text task.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| sessionId | number | Yes | The session id of AI text generation task. <br>Value: range: [0, +∞] |
+| sessionId | number | Yes | The session id of AI text generation task. <br>Value range:[0, +∞] |
 | request | string | Yes | The origin request for AI-generated text task. |
 | result | [GenerateTextTaskResult](arkts-arkui-imagegeneration-generatetexttaskresult-i-sys.md) | Yes | The result for AI-generated text task. |
 

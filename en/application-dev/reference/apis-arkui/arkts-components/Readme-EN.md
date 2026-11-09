@@ -1400,6 +1400,7 @@
   - [TabsBreakpointType](arkts-arkui-tabs-comp-tabsbreakpointtype-i.md)
   - [TabsOptions](arkts-arkui-tabs-comp-tabsoptions-i.md)
   - [TabsSidebarSearchableOptions](arkts-arkui-tabs-comp-tabssidebarsearchableoptions-i.md)
+  - [TabsSidebarTitleBarOptions](arkts-arkui-tabs-comp-tabssidebartitlebaroptions-i.md)
   - [TopFloatingTabBarStyle](arkts-arkui-tabs-comp-topfloatingtabbarstyle-i.md)
   - [CommonModifier](arkts-arkui-tabs-comp-commonmodifier-t.md)
   - [OnTabsAnimationEndCallback](arkts-arkui-tabs-comp-ontabsanimationendcallback-t.md)

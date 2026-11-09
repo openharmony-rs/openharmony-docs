@@ -4,7 +4,7 @@
 enum NetworkType
 ```
 
-Enumerates the network types for audio suite download.
+Network type for downloading the audio encoding feature.
 
 **Since:** 26.0.1
 

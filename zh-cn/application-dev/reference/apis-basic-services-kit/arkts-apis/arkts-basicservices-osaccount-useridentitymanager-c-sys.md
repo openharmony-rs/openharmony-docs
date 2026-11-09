@@ -951,6 +951,7 @@ updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 | [12300109](../errorcode-account.md#12300109-认证凭据录入更新等操作被取消) | The authentication, enrollment, or update operation is canceled. |
 | [12300111](../errorcode-account.md#12300111-认证超时) | The operation time out. |
 | [12300116](../errorcode-account.md#12300116-凭证复杂度验证失败) | Credential complexity verification failed.<br>**适用版本：** 12+ |
+| [12300121](../errorcode-account.md#12300121-凭据近期已被使用) | The credential has been used recently and cannot be reused. Suggested solutions: Use an unused credential.<br>**适用版本：** 26.1.0+ |
 
 <!--Del-->
 **示例**

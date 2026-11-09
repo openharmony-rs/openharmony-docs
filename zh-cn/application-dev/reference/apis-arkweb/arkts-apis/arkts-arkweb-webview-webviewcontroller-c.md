@@ -3217,6 +3217,40 @@ struct WebComponent {
 }
 ```
 
+## getNavigationEntryUserData
+
+```TypeScript
+getNavigationEntryUserData(key: string): string
+```
+
+获取与当前导航条目上的指定键关联的用户数据值。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebviewController-getNavigationEntryUserData(key: string): string--><!--Device-WebviewController-getNavigationEntryUserData(key: string): string-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| key | string | 是 | 用户数据的密钥。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| string | 用户数据的值，如果键不存在，则为空字符串。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | 初始化错误。WebviewController必须与Web组件关联。调用该接口前，请确保WebviewController关联了Web组件。 |
+
 ## getOriginalUrl
 
 ```TypeScript
@@ -7603,6 +7637,85 @@ struct WebComponent {
 }
 ```
 
+## removeNavigationEntryUserData
+
+```TypeScript
+removeNavigationEntryUserData(key: string): void
+```
+
+从当前导航条目中删除与指定键关联的用户数据。如果密钥不存在，则此API不执行任何操作。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebviewController-removeNavigationEntryUserData(key: string): void--><!--Device-WebviewController-removeNavigationEntryUserData(key: string): void-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| key | string | 是 | 要删除的用户数据的密钥。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | 初始化错误。WebviewController必须与Web组件关联。调用该接口前，请确保WebviewController关联了Web组件。 |
+
+## removeVisitedLinksSince
+
+```TypeScript
+static removeVisitedLinksSince(date: Date, callback: Callback<void>): void
+```
+
+删除指定日期之后发生变化的已访问链接记录。该接口使用异步回调返回结果。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebviewController-static removeVisitedLinksSince(date: Date, callback: Callback<void>): void--><!--Device-WebviewController-static removeVisitedLinksSince(date: Date, callback: Callback<void>): void-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| date | Date | 是 | 数据删除的时间点。已访问链接记录删除该日期后发生变化的数据。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 回调函数，用于返回结果。 |
+
+## removeVisitedLinksSince
+
+```TypeScript
+static removeVisitedLinksSince(date: Date): Promise<void>
+```
+
+删除指定日期之后发生变化的已访问链接记录。该接口使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebviewController-static removeVisitedLinksSince(date: Date): Promise<void>--><!--Device-WebviewController-static removeVisitedLinksSince(date: Date): Promise<void>-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| date | Date | 是 | 数据删除的时间点。已访问链接记录删除该日期后发生变化的数据。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
 ## requestFocus
 
 ```TypeScript
@@ -10079,6 +10192,37 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+## setNavigationEntryUserData
+
+```TypeScript
+setNavigationEntryUserData(key: string, value: string): void
+```
+
+在当前导航条目上设置用户数据的键值对。
+
+用户数据与导航入口生命周期相关联。当前导航条目指导航历史记录中的活动条目。当条目被销毁时（例如，通过历史导航或clearHistory）清除用户数据。如果一个具有相同的键已经存在，它将被覆盖。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebviewController-setNavigationEntryUserData(key: string, value: string): void--><!--Device-WebviewController-setNavigationEntryUserData(key: string, value: string): void-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| key | string | 是 | 用户数据的密钥。 |
+| value | string | 是 | 用户数据的价值。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | 初始化错误。WebviewController必须与Web组件关联。调用该接口前，请确保WebviewController关联了Web组件。 |
 
 ## setNetworkAvailable
 

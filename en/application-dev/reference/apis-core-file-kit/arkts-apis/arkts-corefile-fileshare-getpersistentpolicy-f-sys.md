@@ -46,8 +46,8 @@ Get all persistence permissions for the application.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 13900001 | Operation not permitted. |
-| 13900011 | Out of memory |
-| 13900020 | Invalid tokenID |
+| 13900011 | Out of memory. |
+| 13900020 | Invalid tokenID. |
 
 <!--Del-->
 **Examples**

@@ -21,7 +21,7 @@ ArkTS Array归约函数类型，被Array类的'reduceRight'接口使用。
 | --- | --- | --- | --- |
 | previousValue | AccType | 是 | 当前遍历所累积的值。 |
 | currentValue | ElementType | 是 | 当前遍历的ArkTS Array元素，该元素将与previousValue进行归约计算。 |
-| currentIndex | number | 是 | 当前遍历的ArkTS Array元素索引。 |
+| currentIndex | number | 是 | 当前遍历的ArkTS Array元素索引，从0开始。 |
 | array | ArrayType | 是 | 当前遍历的ArkTS Array实例。 |
 
 **返回值：**

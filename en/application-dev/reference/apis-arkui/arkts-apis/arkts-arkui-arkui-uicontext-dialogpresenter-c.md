@@ -4,7 +4,7 @@
 export class DialogPresenter
 ```
 
-Provides unified dialog APIs.
+Provides unified dialog APIs. It provides APIs for creating and displaying fixed-style and custom-style dialog boxes, updating and closing dialog boxes. It applies to scenarios where pop-up interactions such as prompts, confirmations, and selections are required within an application.
 
 **Since:** 26.0.1
 
@@ -24,7 +24,7 @@ import { AtomicServiceBar, ComponentUtils, ContextMenuController, CursorControll
 dismiss(target: number | ComponentContent<Object>): Promise<void>
 ```
 
-Dismisses a dialog box. Accepts either the dialog ID (returned by present) or the ComponentContent reference.
+Dismisses a dialog box. Accepts either the dialog ID (returned by present) or the ComponentContent reference. This API uses a promise to return the result. It is applicable to scenarios where the dialog box needs to be closed after a user completes the interaction.
 
 **Since:** 26.0.1
 
@@ -61,7 +61,14 @@ Dismisses a dialog box. Accepts either the dialog ID (returned by present) or th
 present(options?: dialog.DialogStyleOptions): Promise<DialogResult>
 ```
 
-Presents a fixed-style dialog box.
+Presents a fixed-style dialog box and returns the dialog result. This API uses a promise to return the result. It is applicable to scenarios where the system's unified style is used to display prompts or confirmation information.
+
+> **NOTE:** 
+> 
+> Configuration options are used to configure the title, subtitle, message, buttons, and sheet items of the
+> dialog box. The dialog box style (background, alignment, mask, avoidance, etc.) inherits from
+> **dialog.DialogBaseOptions**. In **dialog.DialogBaseOptions**, **isModal** and **showInSubWindow** cannot be set
+> to **true** at the same time.
 
 **Since:** 26.0.1
 
@@ -83,7 +90,7 @@ Presents a fixed-style dialog box.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[DialogResult](arkts-arkui-arkui-dialog-dialogresult-i.md)&gt; | Promise used to return the dialog result. |
+| Promise&lt;[DialogResult](arkts-arkui-arkui-dialog-dialogresult-i.md)&gt; | Promise used to return the dialog result. The dialog ID is returned via **dialogId** in **DialogResult**. |
 
 **Error codes:**
 
@@ -100,9 +107,12 @@ present(content: CustomBuilder | CustomBuilderWithId | ComponentContent<Object>,
 
 Presents a custom-style dialog box with the provided content.
 
-The content parameter accepts CustomBuilder or ComponentContent via union type:  
+It returns the dialog result via a promise. It is applicable to scenarios where the content, layout, and style of the dialog box need to be customized.
+
+The content parameter accepts three types via union type:  
 - CustomBuilder: Builder function for custom dialog content.  
-- ComponentContent: ComponentContent supporting state-driven updates.
+- CustomBuilderWithId: Builder function that supports passing an ID.  
+- ComponentContent: Component content supporting state-driven updates.
 
 isModal = true and showInSubWindow = true cannot be used at the same time.
 
@@ -127,7 +137,7 @@ isModal = true and showInSubWindow = true cannot be used at the same time.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[DialogResult](arkts-arkui-arkui-dialog-dialogresult-i.md)&gt; | Promise used to return the dialog result. |
+| Promise&lt;[DialogResult](arkts-arkui-arkui-dialog-dialogresult-i.md)&gt; | Promise used to return the dialog result. The dialog ID is returned via **dialogId** in **DialogResult**. |
 
 **Error codes:**
 
@@ -144,7 +154,11 @@ isModal = true and showInSubWindow = true cannot be used at the same time.
 update(content: ComponentContent<Object>, options?: dialog.DialogBaseOptions): Promise<void>
 ```
 
-Updates a presented custom dialog box.
+Updates a displayed custom dialog box. This API uses a promise to return the result. It applies to interaction scenarios where the style or position of a dialog box needs to be dynamically updated after it is displayed.
+
+> **NOTE:** 
+> 
+> Currently, only **alignment**, **offset**, **autoCancel**, and **maskColor** can be updated.
 
 **Since:** 26.0.1
 

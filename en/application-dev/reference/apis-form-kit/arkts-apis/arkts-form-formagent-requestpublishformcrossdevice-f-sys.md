@@ -46,7 +46,7 @@ Requests to publish a form to the form host service of the remote device.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permissions denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The application is not a system application. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [16500050](../errorcode-form.md#16500050-ipc-failure) | IPC connection error. |
 | [16501020](../errorcode-form.md#16501020-remote-widget-service-unavailable) | Remote form service is unavailable. |
 | [16501021](../errorcode-form.md#16501021-remote-widget-application-not-installed-or-version-too-low) | The peer form application is not installed or the version is too old. |

@@ -24,7 +24,7 @@ import { url } from '@kit.ArkTS';
 static toString(urlParams: URLParams): string
 ```
 
-将指定的URLParams对象序列化为字符串，其中空格被百分比编码为%20（而非'+'）。
+将URLParams对象序列化为查询字符串，其中空格百分比编码为%20（而非'+'）。该接口不会修改入参urlParams及其所属URL对象的状态。
 
 **起始版本：** 26.1.0
 
@@ -40,13 +40,13 @@ static toString(urlParams: URLParams): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| urlParams | [URLParams](arkts-arkts-url-urlparams-c.md) | 是 | 待序列化的URLParams对象。 |
+| urlParams | [URLParams](arkts-arkts-url-urlparams-c.md) | 是 | 待序列化的URLParams对象。可通过构造函数创建，也可通过[URL](arkts-arkts-url-url-c.md)对象的params属性获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 返回序列化后的字符串，其中空格被编码为%20。 |
+| string | 返回序列化后的字符串，其中空格被编码为%20。此方法不会修改入参及其所属URL对象的状态；没有键值对时返回空字符串。 |
 
 **示例**
 

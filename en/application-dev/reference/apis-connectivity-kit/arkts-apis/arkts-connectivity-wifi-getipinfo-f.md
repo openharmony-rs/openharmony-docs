@@ -12,9 +12,7 @@ import { wifi } from '@kit.ConnectivityKit';
 function getIpInfo(): IpInfo
 ```
 
-Obtains the IP information of a Wi-Fi connection.
-
-<p>The IP information includes the host IP address, gateway address, and DNS information.
+Obtains IP information.
 
 **Since:** 7
 
@@ -32,7 +30,7 @@ Obtains the IP information of a Wi-Fi connection.
 
 | Type | Description |
 | --- | --- |
-| [IpInfo](arkts-connectivity-wifi-ipinfo-i.md) | Returns the IP information of the Wi-Fi connection. |
+| [IpInfo](arkts-connectivity-wifi-ipinfo-i.md) | IP information obtained. |
 
 **Examples**
 

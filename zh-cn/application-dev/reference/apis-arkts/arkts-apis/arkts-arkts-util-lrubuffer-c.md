@@ -28,7 +28,7 @@ import { util } from '@kit.ArkTS';
 [Symbol.iterator](): IterableIterator<[K, V]>
 ```
 
-指定对象的默认迭代器。
+返回一个键值对形式的二维数组。
 
 **起始版本：** 8
 
@@ -44,7 +44,7 @@ import { util } from '@kit.ArkTS';
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[K, V]&gt; | 返回以键值对形式的二维数组。 |
+| IterableIterator&lt;[K, V]&gt; | 返回一个键值对形式的二维数组。 |
 
 **示例**
 
@@ -60,7 +60,7 @@ let result = pro[Symbol.iterator]();
 afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 ```
 
-在移除值后执行后续操作。
+删除值后执行后续操作。
 
 **起始版本：** 8
 
@@ -76,10 +76,10 @@ afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isEvict | boolean | 是 | 容量是否不足。如果值为 **true**，则由于容量不足而调用此 API。 |
-| key | K | 是 | 被移除的 key。 |
-| value | V | 是 | 被移除的值。 |
-| newValue | V | 是 | 如果调用了 **put()** 方法并且要添加的 key 已存在时该 key 的新值。其他情况下此参数为空。 |
+| isEvict | boolean | 是 | 因容量不足而调用该方法时，参数值为true，其他情况为false。 |
+| key | K | 是 | 表示删除的键。 |
+| value | V | 是 | 表示删除的值。 |
+| newValue | V | 是 | 如果已调用put方法并且要添加的键已经存在，则参数值是关联的新值。其他情况下参数值为空。 |
 
 **示例**
 
@@ -112,7 +112,7 @@ lru.put(33, 3);
 clear(): void
 ```
 
-从此缓存中清除键值对。将调用 **afterRemoval()** API 执行后续操作。
+清除当前缓冲区中的键值对，后续调用[afterRemoval](#afterremoval)方法执行操作。
 
 **起始版本：** 8
 
@@ -139,7 +139,7 @@ pro.clear();
 constructor(capacity?: number)
 ```
 
-用于创建 **LruBuffer** 实例的构造函数。缓存的默认容量为 64。
+构造函数用于创建一个新的LruBuffer实例，默认容量为64。
 
 **起始版本：** 8
 
@@ -155,7 +155,7 @@ constructor(capacity?: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| capacity | number | 否 | 要创建的缓存的容量。默认值为 **64**。 |
+| capacity | number | 否 | 指示要为缓冲区自定义的容量，取值范围为[0, 2147483647]，默认值为64。 |
 
 **示例**
 
@@ -169,7 +169,7 @@ let pro : util.LruBuffer<number,number> = new util.LruBuffer();
 contains(key: K): boolean
 ```
 
-判断此缓存是否包含指定的 key。
+检查当前缓冲区是否包含指定的键。
 
 **起始版本：** 8
 
@@ -185,13 +185,13 @@ contains(key: K): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | K | 是 | 要检查的 key。 |
+| key | K | 是 | 表示要检查的键。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果缓存包含指定的 key，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果缓冲区包含指定的键，则返回true；否则返回false。 |
 
 **示例**
 
@@ -209,7 +209,7 @@ console.info('result = ' + result);
 createDefault(key: K): V
 ```
 
-当指定 key 的值不可用时，创建一个值。
+当缓冲区中未匹配到指定键时，执行后续处理逻辑，参数表示未匹配到的键，返回与该键关联的值，默认返回undefined。
 
 **起始版本：** 8
 
@@ -225,13 +225,13 @@ createDefault(key: K): V
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | K | 是 | 缺少值的 key。 |
+| key | K | 是 | 表示丢失的键。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| V | key 对应的值。 |
+| V | 返回与键关联的值。 |
 
 **示例**
 
@@ -246,7 +246,7 @@ let result = pro.createDefault(50);
 entries(): IterableIterator<[K, V]>
 ```
 
-获取一个新的迭代器对象，该对象包含此对象中的所有键值对。
+允许迭代包含在这个对象中的所有键值对。
 
 **起始版本：** 8
 
@@ -262,7 +262,7 @@ entries(): IterableIterator<[K, V]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[K, V]&gt; | 可迭代的数组。 |
+| IterableIterator&lt;[K, V]&gt; | 返回一个可迭代数组。 |
 
 **示例**
 
@@ -278,7 +278,7 @@ let result = pro.entries();
 get(key: K): V | undefined
 ```
 
-获取指定 key 对应的值。
+返回键对应的值。当键不在缓冲区中时，返回undefined。
 
 **起始版本：** 8
 
@@ -294,13 +294,13 @@ get(key: K): V | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | K | 是 | 要查询值的 key。 |
+| key | K | 是 | 要查询的键。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| V &#124; undefined | key 对应的值。如果未找到匹配项，则返回 **undefined**。 |
+| V &#124; undefined | 如果指定的键存在于缓冲区中，则返回与键关联的值；否则返回undefined。 |
 
 **示例**
 
@@ -318,7 +318,7 @@ console.info("result = " + result);
 getCapacity(): number
 ```
 
-获取此缓存的容量。
+获取当前缓冲区的容量。
 
 **起始版本：** 8
 
@@ -334,7 +334,7 @@ getCapacity(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 缓存的容量。 |
+| number | 返回当前缓冲区的容量。 |
 
 **示例**
 
@@ -351,7 +351,7 @@ console.info("result = " + result);
 getCreateCount(): number
 ```
 
-获取 **createDefault()** 的返回值数量。
+获取createDefault()返回值的次数。
 
 **起始版本：** 8
 
@@ -367,7 +367,7 @@ getCreateCount(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | **createDefault()** 的返回值数量。 |
+| number | 返回createDefault()返回值的次数。 |
 
 **示例**
 
@@ -385,7 +385,7 @@ console.info("result = " + result);
 getMatchCount(): number
 ```
 
-获取查询值匹配的次数。
+获取查询值匹配成功的次数。
 
 **起始版本：** 8
 
@@ -401,7 +401,7 @@ getMatchCount(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 查询值匹配的次数。 |
+| number | 返回查询值匹配成功的次数。 |
 
 **示例**
 
@@ -420,7 +420,7 @@ console.info("result = " + result);
 getMissCount(): number
 ```
 
-获取查询值未匹配的次数。
+获取查询值不匹配的次数。
 
 **起始版本：** 8
 
@@ -436,7 +436,7 @@ getMissCount(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 查询值未匹配的次数。 |
+| number | 返回查询值不匹配的次数。 |
 
 **示例**
 
@@ -455,7 +455,7 @@ console.info("result = " + result);
 getPutCount(): number
 ```
 
-获取向此缓存添加的次数。
+获取将值添加到缓冲区的次数。
 
 **起始版本：** 8
 
@@ -471,7 +471,7 @@ getPutCount(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 向缓存添加的次数。 |
+| number | 返回将值添加到缓冲区的次数。 |
 
 **示例**
 
@@ -489,7 +489,7 @@ console.info("result = " + result);
 getRemovalCount(): number
 ```
 
-获取从此缓存中移除的次数。
+获取从缓冲区中逐出值的次数。
 
 **起始版本：** 8
 
@@ -505,7 +505,7 @@ getRemovalCount(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 从缓存中移除的次数。 |
+| number | 返回从缓冲区中驱逐的次数。 |
 
 **示例**
 
@@ -525,7 +525,7 @@ console.info("result = " + result);
 isEmpty(): boolean
 ```
 
-判断此缓存是否为空。
+检查当前缓冲区是否为空。
 
 **起始版本：** 8
 
@@ -541,7 +541,7 @@ isEmpty(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 如果缓存不包含任何值，则返回 **true**。 |
+| boolean | 如果当前缓冲区不包含任何值，则返回true；否则返回false。 |
 
 **示例**
 
@@ -559,7 +559,7 @@ console.info("result = " + result);
 keys(): K[]
 ```
 
-获取此缓存中的所有 key，按从最近最多访问到最近最少访问的顺序排列。
+获取当前缓冲区中所有键从最近访问到最近最少访问的升序列表。
 
 **起始版本：** 8
 
@@ -575,7 +575,7 @@ keys(): K[]
 
 | 类型 | 说明 |
 | --- | --- |
-| K[] | 此缓存中的所有 key，按从最近最多访问到最近最少访问的顺序排列。 |
+| K[] | 按升序返回当前缓冲区中所有键的列表，从最近访问到最近最少访问。 |
 
 **示例**
 
@@ -593,7 +593,7 @@ console.info("result = " + result);
 put(key: K, value: V): V
 ```
 
-向此缓存添加键值对。
+将键值对添加到缓冲区。
 
 **起始版本：** 8
 
@@ -609,14 +609,14 @@ put(key: K, value: V): V
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | K | 是 | 要添加的键值对的 key。 |
-| value | V | 是 | 要添加的键值对的 value。 |
+| key | K | 是 | 要添加的键。 |
+| value | V | 是 | 指示与要添加的键关联的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| V | 添加的值。如果 key 已存在，则返回已存在的值；如果 **key** 或 **value** 传入 **null**，则抛出错误。 |
+| V | 返回与添加的键关联的值；如果要添加的键已经存在，则返回原始值，如果键或值为空，则抛出此异常。 |
 
 **示例**
 
@@ -633,7 +633,7 @@ console.info("result = " + result);
 remove(key: K): V | undefined
 ```
 
-从此缓存中移除指定的 key 及其对应的值。
+删除当前缓冲区中指定的键及其关联的值。
 
 **起始版本：** 8
 
@@ -649,13 +649,13 @@ remove(key: K): V | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | K | 是 | 要移除的 key。 |
+| key | K | 是 | 要删除的键。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| V &#124; undefined | 包含被移除键值对的 **Optional** 对象。如果 key 不存在，则返回空的 **Optional**对象；如果 **key** 传入 **null**，则抛出错误。 |
+| V &#124; undefined | 返回一个包含已删除键值对的Optional对象；如果key不存在，则返回一个空的Optional对象，如果key为null，则抛出异常。 |
 
 **示例**
 
@@ -673,7 +673,7 @@ console.info("result = " + result);
 toString(): string
 ```
 
-获取此缓存的字符串表示形式。
+返回对象的字符串表示形式。
 
 **起始版本：** 8
 
@@ -689,7 +689,7 @@ toString(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 此缓存的字符串表示形式。 |
+| string | 返回对象的字符串表示形式。 |
 
 **示例**
 
@@ -709,7 +709,7 @@ console.info("result = " + result);
 updateCapacity(newCapacity: number): void
 ```
 
-改变缓存容量。如果新容量小于等于 **0**，则抛出异常。
+将缓冲区容量更新为指定容量，如果newCapacity小于或等于0，则抛出异常。
 
 **起始版本：** 8
 
@@ -725,7 +725,7 @@ updateCapacity(newCapacity: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| newCapacity | number | 是 | 缓存的新容量，取值范围为 [0, 2147483647]。 |
+| newCapacity | number | 是 | 指示要为缓冲区自定义的容量，取值范围为[0, 2147483647]。 |
 
 **示例**
 
@@ -740,7 +740,7 @@ pro.updateCapacity(100);
 values(): V[]
 ```
 
-获取此缓存中的所有值，按从最近最多访问到最近最少访问的顺序排列。
+获取当前缓冲区中所有值从最近访问到最近最少访问的顺序列表。
 
 **起始版本：** 8
 
@@ -756,7 +756,7 @@ values(): V[]
 
 | 类型 | 说明 |
 | --- | --- |
-| V[] | 此缓存中的所有值，按从最近最多访问到最近最少访问的顺序排列。 |
+| V[] | 按从最近访问到最近最少访问的顺序返回当前缓冲区中所有值的列表。 |
 
 **示例**
 

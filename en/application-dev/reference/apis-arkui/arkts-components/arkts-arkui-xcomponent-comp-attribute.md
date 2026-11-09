@@ -92,6 +92,28 @@ Sets whether to enable the secure surface to protect the content rendered within
 | --- | --- | --- | --- |
 | isSecure | boolean | Yes | Whether to enable the privacy layer mode.<br>true: enables the privacy layer mode; false: disables the privacy layer mode.<br>Default value: false |
 
+## enableSurfaceVisibilityLifecycle
+
+```TypeScript
+enableSurfaceVisibilityLifecycle(isVisibilityLifecycle: Optional<boolean>)
+```
+
+Enable the surface visibility lifecycle for XComponent.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-XComponentAttribute-enableSurfaceVisibilityLifecycle(isVisibilityLifecycle: Optional<boolean>): XComponentAttribute--><!--Device-XComponentAttribute-enableSurfaceVisibilityLifecycle(isVisibilityLifecycle: Optional<boolean>): XComponentAttribute-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| isVisibilityLifecycle | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable the surface visibility lifecycle. |
+
 ## hdrBrightness
 
 ```TypeScript

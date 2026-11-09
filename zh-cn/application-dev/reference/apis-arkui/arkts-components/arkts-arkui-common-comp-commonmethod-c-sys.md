@@ -144,6 +144,36 @@ excludeFromRenderGroup(exclude: boolean | undefined): T
 | --- | --- |
 | T | 返回当前组件，用于链式调用。 |
 
+## markLayeredRender
+
+```TypeScript
+markLayeredRender(value: boolean | undefined): T
+```
+
+标记节点是否为独立图层进行绘制，基于该分层标记使能离屏缓存并且在后续帧会复用此缓存，缓存需要刷新时会基于脏区进行局部刷新，达到降负载效果。未通过该接口设置时，节点不标记为独立图层进行绘制。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CommonMethod-markLayeredRender(value: boolean | undefined): T--><!--Device-CommonMethod-markLayeredRender(value: boolean | undefined): T-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | boolean &#124; undefined | 是 | 标记节点是否为独立图层进行绘制。true表示标记为独立图层进行绘制；false表示不标记为独立图层进行绘制。当value的值为undefined时，按false处理。<br>**说明：** <br>以下场景不应设置分层渲染：<br>1. 当前节点不透明度opacity小于1。<br>2. 当前节点的任意孩子节点设置了系统材质systemMaterial、背景模糊（backgroundBlurStyle、backgroundEffect、backdropBlur、foregroundBlurStyle、foregroundEffect、blur）。<br>3. 当前节点的任意孩子节点为自绘制图层，如XComponent、Canvas、Video、Web。<br>4. 当前节点的子树在动效期间频繁大面积更新。<br>5. 当前节点已使用节点组renderGroup。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| T | 返回当前组件，用于链式调用。 |
+
 ## safeAreaInset
 
 ```TypeScript

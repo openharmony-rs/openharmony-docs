@@ -77,3 +77,4 @@ import { util } from '@kit.ArkTS';
 | Name | Description |
 | --- | --- |
 | [Type](arkts-arkts-util-type-e.md) | Enumerates the Base64 encoding formats. |
+| [UrgencyLevel](arkts-arkts-util-urgencylevel-e.md) | Enumerates the urgency level of hint GC. |

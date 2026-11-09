@@ -4,7 +4,7 @@
 export enum PowerMode
 ```
 
-The power Mode enumeration.
+Enumerates the power modes.
 
 **Since:** 9
 
@@ -18,7 +18,7 @@ The power Mode enumeration.
 GENERAL = 1
 ```
 
-General Mode.
+General mode.
 
 **Since:** 9
 
@@ -32,7 +32,7 @@ General Mode.
 SLEEPING = 0
 ```
 
-Sleeping Mode.
+Sleeping mode.
 
 **Since:** 9
 
@@ -46,7 +46,7 @@ Sleeping Mode.
 THROUGH_WALL = 2
 ```
 
-Through wall Mode.
+Through-wall mode.
 
 **Since:** 9
 

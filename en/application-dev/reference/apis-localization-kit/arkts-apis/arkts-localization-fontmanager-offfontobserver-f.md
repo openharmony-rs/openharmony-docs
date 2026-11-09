@@ -30,4 +30,4 @@ Unregisters the font service status listener.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [31100110](../errorcode-font-manager.md#31100110-failed-to-call-the-api-due-to-system-errors) | Call failed due to system error. |
-| 31100115 | The font observer is not registered. |
+| [31100115](../errorcode-font-manager.md#31100115-font-observer-not-registered) | The font observer is not registered. |

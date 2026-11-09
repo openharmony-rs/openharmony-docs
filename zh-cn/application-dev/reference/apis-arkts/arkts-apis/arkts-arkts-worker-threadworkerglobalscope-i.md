@@ -42,14 +42,14 @@ Worker线程调用宿主线程上注册的对象的指定方法，此调用对Wo
 | --- | --- | --- | --- |
 | instanceName | string | 是 | 注册对象时使用的键，用于在宿主线程中查找对象。 |
 | methodName | string | 是 | 在已注册对象上调用的方法名。该方法不能使用async修饰，也不能基于底层异步机制返回结果，否则会抛出异常。 |
-| timeout | number | 是 | 表示从Worker线程发起调用开始到在主线程中执行目标方法的最大等待时间，单位为ms，取整数，取值范围为[1-5000]。也可取特殊值0，此时表示本次调用等待时间为5000ms。该值应为整数。<br>单位：ms。 |
+| timeout | number | 是 | 最大等待时间，单位为ms，取整数，取值范围为[1-5000]ms。超出范围时按5000ms处理。API version 21之前，debug模式也受此最大等待时间限制；从API version 21开始，debug模式不受此限制，可一直等待。 |
 | args | Object[] | 是 | 注册对象上所调用方法的参数数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Object | 返回值为调用方法在宿主线程的返回值，无返回值时返回void。 |
+| Object | 返回值为调用方法在宿主线程的返回值，无返回值时返回void。返回值必须可序列化，支持类型见worker的序列化类型说明。 |
 
 **错误码：**
 
@@ -230,8 +230,8 @@ Worker线程通过转移对象所有权的方式向宿主线程发送消息。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| messageObject | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化对象。支持的参数类型请参考序列化支持类型。 |
-| transfer | ArrayBuffer[] | 是 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到宿主线程，转移后该对象仅在宿主线程中可用。该数组不可传入null。 |
+| messageObject | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化对象，序列化支持类型见序列化支持类型。 |
+| transfer | ArrayBuffer[] | 是 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到宿主线程，在Worker线程中将会变为不可用，仅在宿主线程中可用，数组不可传入null。 |
 
 **错误码：**
 
@@ -270,7 +270,7 @@ workerPort.onmessage = (e: MessageEvents): void => {
 postMessage(messageObject: Object, options?: PostMessageOptions): void
 ```
 
-Worker线程通过转移对象所有权或拷贝数据的方式向宿主线程发送消息。
+Worker线程通过转移对象所有权或拷贝数据的方式向宿主线程发送消息。在传递Sendable对象时，使用拷贝数据的方式进行传递。
 
 **起始版本：** 9
 
@@ -284,8 +284,8 @@ Worker线程通过转移对象所有权或拷贝数据的方式向宿主线程�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| messageObject | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化对象。支持的参数类型请参考序列化支持类型。 |
-| options | [PostMessageOptions](arkts-arkts-worker-postmessageoptions-i.md) | 否 | 当填入该参数时，其作用与传入ArrayBuffer[]相同，该数组中对象的所有权会被转移到宿主线程，在Worker线程中将变为不可用，仅在宿主线程中可用。若不填入该参数，默认设置为undefined，通过拷贝数据的方式传输信息到宿主线程。 |
+| messageObject | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化对象，序列化支持类型见序列化支持类型。 |
+| options | [PostMessageOptions](arkts-arkts-worker-postmessageoptions-i.md) | 否 | 当填入该参数时，其作用与传入ArrayBuffer[]相同，该数组中对象的所有权会被转移到宿主线程，在Worker线程中将变为不可用，仅在宿主线程中可用。若不填入该参数，默认设置为 undefined，通过拷贝数据的方式传输信息到宿主线程。 |
 
 **错误码：**
 
@@ -323,7 +323,7 @@ workerPort.onmessage = (e: MessageEvents): void => {
 postMessageAtFront?(message: Object, priority: Priority, transfer?: ArrayBuffer[]): void
 ```
 
-Worker线程通过转移对象所有权的方式向宿主线程发送插队消息，并插入到对应优先级队列的队头。除Worker线程向主线程发送的场景外，该接口与postMessage功能一致。
+Worker线程向宿主线程发送插队消息，消息中的Sendable对象通过引用传递，非Sendable对象通过拷贝数据的方式传递。
 
 > **说明：** 
 > 
@@ -347,9 +347,9 @@ Worker线程通过转移对象所有权的方式向宿主线程发送插队消�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| message | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化或可共享。支持的序列化类型请参考序列化支持类型。支持的共享类型请参考Sendable支持的数据类型。 |
-| priority | [Priority](arkts-arkts-worker-priority-e.md) | 是 | Worker EventHandler的优先级。 |
-| transfer | ArrayBuffer[] | 否 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到主线程，转移后该对象仅在主线程中可用。该数组不可传入null。 |
+| message | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化或可共享，序列化支持类型见序列化支持类型，共享支持类型见Sendable支持的数据类型。 |
+| priority | [Priority](arkts-arkts-worker-priority-e.md) | 是 | 消息发送的优先级。 |
+| transfer | ArrayBuffer[] | 否 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到宿主线程，在Worker线程中将会变为不可用，仅在宿主线程中可用，数组不可传入null。默认值为空数组。 |
 
 **错误码：**
 
@@ -460,8 +460,8 @@ Worker线程向宿主线程发送消息，消息中的Sendable对象通过引用
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| message | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化或可共享。支持的序列化类型请参考序列化支持类型。支持的共享类型请参考Sendable支持的数据类型。 |
-| transfer | ArrayBuffer[] | 否 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到宿主线程，转移后该对象仅在宿主线程中可用。该数组不可传入null。默认值为空数组。 |
+| message | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化或可共享，序列化支持类型见序列化支持类型，共享支持类型见Sendable支持的数据类型。 |
+| transfer | ArrayBuffer[] | 否 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到宿主线程，在Worker线程中将会变为不可用，仅在宿主线程中可用，数组不可传入null。默认值为空数组。 |
 
 **错误码：**
 

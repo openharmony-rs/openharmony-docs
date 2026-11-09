@@ -1116,6 +1116,8 @@ fp2px(value: number): number
 
 <!--Device-UIContext-fp2px(value: number): number--><!--Device-UIContext-fp2px(value: number): number-End-->
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -3403,6 +3405,8 @@ lpx2px(value: number): number
 
 <!--Device-UIContext-lpx2px(value: number): number--><!--Device-UIContext-lpx2px(value: number): number-End-->
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -3722,6 +3726,8 @@ px2fp(value: number): number
 
 <!--Device-UIContext-px2fp(value: number): number--><!--Device-UIContext-px2fp(value: number): number-End-->
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -3783,6 +3789,8 @@ px2lpx(value: number): number
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-UIContext-px2lpx(value: number): number--><!--Device-UIContext-px2lpx(value: number): number-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -3848,6 +3856,8 @@ px2vp(value: number): number
 
 <!--Device-UIContext-px2vp(value: number): number--><!--Device-UIContext-px2vp(value: number): number-End-->
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -3885,6 +3895,41 @@ struct MatrixExample {
   }
 }
 ```
+
+## registerApplicationShortcut
+
+```TypeScript
+static registerApplicationShortcut(value: string | FunctionKey, keys: Array<ModifierKey>,
+    callback: Callback<ApplicationShortcutCallbackInfo>): number
+```
+
+注册应用级键盘快捷键。
+
+快捷键在应用内全局生效。快捷键触发时，回调参数包含触发该快捷键的UI实例对应的UIContext。每次注册返回一个应用内唯一的正整数注册标识符，即使快捷键和回调相同，标识符也不同。同一个快捷键的多次注册均被保留，仅最近一次未注销的注册生效。注册标识符在应用运行期间不复用。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-UIContext-static registerApplicationShortcut(value: string | FunctionKey, keys: Array<ModifierKey>,    callback: Callback<ApplicationShortcutCallbackInfo>): int--><!--Device-UIContext-static registerApplicationShortcut(value: string | FunctionKey, keys: Array<ModifierKey>,    callback: Callback<ApplicationShortcutCallbackInfo>): int-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | string &#124; [FunctionKey](arkts-arkui-functionkey-e.md) | 是 | 热键的单个字符（可以通过键盘输入的字符）或功能键。 |
+| keys | Array&lt;[ModifierKey](arkts-arkui-modifierkey-e.md)&gt; | 是 | 快捷键中的修饰键。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ApplicationShortcutCallbackInfo](arkts-arkui-arkui-uicontext-applicationshortcutcallbackinfo-i.md)&gt; | 是 | 回调函数，返回触发热键的UI实例信息（ApplicationShortcutCallbackInfo）。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| number | 本次快捷键绑定的唯一注册标识符。 |
 
 ## removeLocalInputEventMonitor
 
@@ -4616,7 +4661,7 @@ showActionSheet(value: ActionSheetOptions): void
 
 Shows an action sheet in the given settings.
 
-**起始版本：** 11
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5059,6 +5104,32 @@ Unbind tabs from scrollable container component.
 
 参考[bindTabsToScrollable](#bindtabstoscrollable)接口示例。
 
+## unregisterApplicationShortcut
+
+```TypeScript
+static unregisterApplicationShortcut(registrationId: number): void
+```
+
+注销指定注册标识符对应的应用级键盘快捷键绑定。
+
+仅移除该标识符对应的绑定，其他绑定不受影响。如果移除的是当前生效的绑定，则最近一次仍未注销的同快捷键绑定恢复生效。标识符不存在或已注销时，不执行任何操作。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-UIContext-static unregisterApplicationShortcut(registrationId: int): void--><!--Device-UIContext-static unregisterApplicationShortcut(registrationId: int): void-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| registrationId | number | 是 | 注册快捷键时返回的注册标识符。 |
+
 ## updateBindSheet
 
 ```TypeScript
@@ -5217,6 +5288,8 @@ vp2px(value: number): number
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-UIContext-vp2px(value: number): number--><!--Device-UIContext-vp2px(value: number): number-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 

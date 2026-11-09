@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function getDisconnectedReason(): DisconnectedReason
 ```
 
-Obtain the latest disconnected reason.
+Obtains the reason of the latest disconnection.
 
 **Since:** 10
 
@@ -28,7 +28,7 @@ Obtain the latest disconnected reason.
 
 | Type | Description |
 | --- | --- |
-| [DisconnectedReason](arkts-connectivity-wifimanager-disconnectedreason-e-sys.md) | Returns the latest disconnected reason. |
+| [DisconnectedReason](arkts-connectivity-wifimanager-disconnectedreason-e-sys.md) | Returns the reason of the latest disconnection obtained. |
 
 **Error codes:**
 

@@ -215,8 +215,8 @@ constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | 是 | 用于构造ArkTS Int16Array的ArrayBuffer对象。buffer所占的字节数须是2的整数倍。 |
-| byteOffset | number | 否 | 指定buffer的字节偏移，从0开始，默认为**0**。 |
-| length | number | 否 | 指定ArkTS Int16Array的长度，默认为**0**。 |
+| byteOffset | number | 否 | 指定buffer的字节偏移，从0开始，默认值为0。byteOffset需为2的整数倍。 |
+| length | number | 否 | 指定ArkTS Int16Array的长度，需为非负整数。默认值为0。且需满足byteOffset + length * 2 &lt;= buffer.byteLength。 |
 
 **错误码：**
 
@@ -739,7 +739,7 @@ lastIndexOf(searchElement: number, fromIndex?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | searchElement | number | 是 | 待索引的值。 |
-| fromIndex | number | 否 | 搜索的起始下标。默认值为ArkTS Int16Array长度减1（即从末尾开始）。如果下标大于等于ArkTS Int16Array的长度，则返回**-1**。如果提供的下标值是负数，则被当做距离数组尾部的偏移，从后到前搜索。 |
+| fromIndex | number | 否 | 搜索的起始索引，从该位置开始往前查找。默认值为ArkTS Int16Array长度减1（即从末尾开始）。如果索引大于等于ArkTS Int16Array的长度，则从末尾开始往前查找。如果提供的索引值是负数，则被当作距离数组尾部的偏移，从后到前搜索。 |
 
 **返回值：**
 
@@ -774,7 +774,7 @@ map(callbackFn: TypedArrayMapCallback<number, Int16Array>): Int16Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | [TypedArrayMapCallback](arkts-arkts-collections-typedarraymapcallback-t.md)&lt;number, Int16Array&gt; | 是 | 回调函数。回调执行期间不能修改当前Map对象，否则会触发并发修改错误。map方法对数组中的每个元素调用一次callbackfn函数。 |
+| callbackFn | [TypedArrayMapCallback](arkts-arkts-collections-typedarraymapcallback-t.md)&lt;number, Int16Array&gt; | 是 | 回调函数。 |
 
 **返回值：**
 
@@ -809,7 +809,7 @@ static of(...items: number[]): Int16Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | number[] | 是 | 用于创建数组的元素，参数个数可以是0个、1个或者多个。 |
+| items | number[] | 是 | 用于创建数组的元素，参数个数可以是0个、1个或者多个。默认值为空数组。 |
 
 **返回值：**
 
@@ -1045,7 +1045,7 @@ set(array: ArrayLike<number>, offset?: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | array | ArrayLike&lt;number&gt; | 是 | 用于设置的ArrayLike对象。 |
-| offset | number | 否 | 写入的起始位置。默认为0。 |
+| offset | number | 否 | 写入的起始位置，需为非负整数。默认值为0。offset与array.length之和不能超过ArkTS Int16Array的长度。 |
 
 **错误码：**
 
@@ -1290,6 +1290,8 @@ values(): IterableIterator<number>
 ```
 
 返回ArkTS Int16Array指定索引位置的元素。
+
+所需元素的从零开始的索引。取值范围为[0, Int16Array.length - 1]。
 
 **类型：** number
 

@@ -30,13 +30,13 @@ function getWifiCapability(capability: WifiCapability): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| capability | [WifiCapability](arkts-connectivity-wifimanager-wificapability-e.md) | 是 | wifi能力枚举。 |
+| capability | [WifiCapability](arkts-connectivity-wifimanager-wificapability-e.md) | 是 | Wi-Fi能力枚举值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | true:已使能， false:未使能。 |
+| boolean | true表示已使能，false表示未使能。 |
 
 **错误码：**
 

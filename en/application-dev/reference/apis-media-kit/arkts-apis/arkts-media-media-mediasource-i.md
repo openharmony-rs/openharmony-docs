@@ -211,3 +211,27 @@ Set the audio and video feature filtering items of the MediaSource, After the us
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | filter | [TrackSelectionFilter](arkts-media-media-trackselectionfilter-i.md) | Yes | Specifies the audio and video features of the pre-downloaded streaming media. |
+
+## setTransparentVideoLayoutMode
+
+```TypeScript
+setTransparentVideoLayoutMode(mode : SideBySideTransparentVideoLayoutMode):void
+```
+
+Sets the layout information of the video source in stitching mode, which is used to guide the player to synthesize the correct transparent video.
+
+If this parameter is not set, the video is played as a common video.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MediaSource-setTransparentVideoLayoutMode(mode : SideBySideTransparentVideoLayoutMode):void--><!--Device-MediaSource-setTransparentVideoLayoutMode(mode : SideBySideTransparentVideoLayoutMode):void-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| mode | [SideBySideTransparentVideoLayoutMode](arkts-media-media-sidebysidetransparentvideolayoutmode-e.md) | Yes | Layout mode value of the side-by-side video. |

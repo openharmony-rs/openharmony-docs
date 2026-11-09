@@ -270,6 +270,7 @@ Common()
 | [PointLightStyle](arkts-arkui-common-comp-pointlightstyle-i-sys.md) | 通过设置光源和被照亮的类型实现点光源照亮周围组件的UI效果。 |
 | [SafeAreaInsetEdgeConfig](arkts-arkui-common-comp-safeareainsetedgeconfig-i-sys.md) | 单个边缘内容及其布局配置。 |
 | [SafeAreaInsetOptions](arkts-arkui-common-comp-safeareainsetoptions-i-sys.md) | 组件四边的完整边缘内容配置。 |
+| [SheetTitleBarBackgroundBlurOptions](arkts-arkui-common-comp-sheettitlebarbackgroundbluroptions-i-sys.md) | 标题栏背景模糊效果层的自定义参数，所有子属性均为可选，未设置的属性使用系统默认值。 |
 | [SpatialEffectParams](arkts-arkui-common-comp-spatialeffectparams-i-sys.md) | 空间效果选项。用于为组件设置空间效果参数。 |
 | [SpatialPosition](arkts-arkui-common-comp-spatialposition-i-sys.md) | 三维空间中的空间角位置。用于为组件设置空间效果参数。 |
 <!--DelEnd-->
@@ -423,6 +424,7 @@ Common()
 | [DragAnimationType](arkts-arkui-common-comp-draganimationtype-e-sys.md) | 拖拽动画类型。 |
 | [EdgeLightMode](arkts-arkui-common-comp-edgelightmode-e-sys.md) | 边缘光效动画模式枚举。 |
 | [SafeAreaInsetAlignment](arkts-arkui-common-comp-safeareainsetalignment-e-sys.md) | 沿边方向的内容对齐方式。上、下边沿水平方向对齐；起始边、结束边沿垂直方向对齐。 |
+| [SheetTitleBarBackgroundBlur](arkts-arkui-common-comp-sheettitlebarbackgroundblur-e-sys.md) | 标题栏背景模糊样式枚举。 |
 | [SpatialPositionMode](arkts-arkui-common-comp-spatialpositionmode-e-sys.md) | 空间位置模式。表示角点位置使用的坐标系。 |
 | [TransitionHierarchyStrategy](arkts-arkui-common-comp-transitionhierarchystrategy-e-sys.md) | 共享元素动画过程中in/out组件层级位置移动策略枚举。 |
 <!--DelEnd-->

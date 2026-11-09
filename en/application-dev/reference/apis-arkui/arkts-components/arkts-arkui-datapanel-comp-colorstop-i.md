@@ -28,6 +28,8 @@ Color value at the gradient color stop.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
+
 <!--Device-ColorStop-color: ResourceColor--><!--Device-ColorStop-color: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -53,6 +55,8 @@ For example, **'10vp'** is converted to 10, and **'10%'** is converted to 0.1.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
 
 <!--Device-ColorStop-offset: Length--><!--Device-ColorStop-offset: Length-End-->
 

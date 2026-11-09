@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function startPortalCertification(): void
 ```
 
-Start Portal certification.
+Starts the Portal authentication process, which is used to process public Wi-Fi networks (such as networks in hotels, airports, and cafes) that require web page authentication.
 
 **Since:** 11
 

@@ -49,6 +49,7 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | [Panel](arkts-ime-inputmethodengine-panel-i.md) | In the following API examples, you must first use [createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel-1) to obtain a **Panel** instance, and then call the APIs using the obtained instance. |
 | [PanelInfo](arkts-ime-inputmethodengine-panelinfo-i.md) | Describes the attributes of the input method panel. |
 | [PanelRect](arkts-ime-inputmethodengine-panelrect-i.md) | Represents the size of the input method panel. |
+| [PreviewTextStyle](arkts-ime-inputmethodengine-previewtextstyle-i.md) | Style of the preview text. |
 | [ProxyInputMethodAbility](arkts-ime-inputmethodengine-proxyinputmethodability-i.md) | In the following API examples, you must first use [getProxyInputMethodAbility](arkts-ime-inputmethodengine-getproxyinputmethodability-f.md) to obtain a **ProxyInputMethodAbility** instance, and then call the APIs using the obtained instance. |
 | [ProxyKeyboardController](arkts-ime-inputmethodengine-proxykeyboardcontroller-i.md) | You must first use [onInputStart](arkts-ime-inputmethodengine-proxyinputmethodability-i.md#oninputstart) to obtain a **ProxyKeyboardController** instance, and then use this instance to call the following APIs. |
 | [ProxyKeyboardDelegate](arkts-ime-inputmethodengine-proxykeyboarddelegate-i.md) | In the following API examples, you must first use [getProxyKeyboardDelegate](arkts-ime-inputmethodengine-getproxykeyboarddelegate-f.md) to obtain a **ProxyKeyboardDelegate** instance, and then call the APIs using the obtained instance. |
@@ -101,6 +102,7 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | [RequestKeyboardReason](arkts-ime-inputmethodengine-requestkeyboardreason-e.md) | Enumerates the reasons for requesting keyboard input. <br> |
 | [SecurityMode](arkts-ime-inputmethodengine-securitymode-e.md) | Describes the security mode. |
 | [SpanType](arkts-ime-inputmethodengine-spantype-e.md) | Enumerates the types of spans in the rich text.<br> <br> |
+| [UnderlineStyle](arkts-ime-inputmethodengine-underlinestyle-e.md) | Enumerates the underline styles for preview text. |
 
 <!--Del-->
 ### Enums(System API)

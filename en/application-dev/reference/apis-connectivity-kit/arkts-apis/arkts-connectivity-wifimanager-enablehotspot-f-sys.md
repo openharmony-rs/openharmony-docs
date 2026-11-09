@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function enableHotspot(): void
 ```
 
-Enable Wi-Fi hotspot function. This method is asynchronous. After the Wi-Fi hotspot is enabled, Wi-Fi may be disabled.
+Enables this hotspot. This API is an asynchronous interface. The **hotspotStateChange** callback must be registered and listened for.
 
 **Since:** 9
 

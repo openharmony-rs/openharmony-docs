@@ -72,7 +72,7 @@ Group owner band
 goFreq?: number
 ```
 
-Group owner frequency
+Group owner frequency. The value should be an integer.
 
 **Type:** number
 

@@ -24,16 +24,16 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [tags](arkts-performanceanalysis-hidebug-tags-n.md) |  |
+| [tags](arkts-performanceanalysis-hidebug-tags-n.md) | 支持trace使用场景的标签，用户可通过[hitrace](../../../dfx/hitrace.md)抓取指定标签的trace内容。 |
 
 ### 函数
 
 | 名称 | 说明 |
 | --- | --- |
 | [disableGwpAsanGrayscale](arkts-performanceanalysis-hidebug-disablegwpasangrayscale-f.md#disablegwpasangrayscale-1) | 停止使能GWP-ASan。调用该接口将取消自定义配置，恢复默认参数[GwpAsanOptions](arkts-performanceanalysis-hidebug-gwpasanoptions-i.md)。 |
-| [dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md#dumpjsrawheapdata-1) | 为当前线程转储虚拟机的原始堆快照，并生成的rawheap格式文件，使用Promise异步回调完成。该文件可通过rawheap-translator工具转化为heapsnapshot格式文件进行解析。 |
-| [dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md#dumpjsrawheapdata-2) | 为当前线程转储虚拟机的原始堆快照，并支持清除nodeId缓存。生成的文件为rawheap格式，使用Promise异步回调完成。该文件可通过rawheap-translator工具转化为heapsnapshot格式文件进行解析。 |
-| [dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md#dumpjsrawheapdata-3) | 为当前线程或其所属进程生成虚拟机的原始堆快照，并支持清除nodeId缓存，生成的文件为rawheap格式。使用Promise异步回调。文件可通过rawheap-translator工具转换为heapsnapshot格式文件进行解析。 |
+| [dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md#dumpjsrawheapdata-1) | 为当前线程转储虚拟机的原始堆快照，并生成的rawheap格式文件，使用Promise异步回调完成。该文件可通过[rawheap-translator工具](../../../tools/rawheap-translator.md)转化为heapsnapshot格式文件进行解析。 |
+| [dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md#dumpjsrawheapdata-2) | 为当前线程转储虚拟机的原始堆快照，并支持清除nodeId缓存。生成的文件为rawheap格式，使用Promise异步回调完成。该文件可通过[rawheap-translator工具](../../../tools/rawheap-translator.md)转化为heapsnapshot格式文件进行解析。 |
+| [dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md#dumpjsrawheapdata-3) | 为当前线程或其所属进程生成虚拟机的原始堆快照，并支持清除nodeId缓存，生成的文件为rawheap格式。使用Promise异步回调。文件可通过[rawheap-translator工具](../../../tools/rawheap-translator.md)转换为heapsnapshot格式文件进行解析。 |
 | [enableGwpAsanGrayscale](arkts-performanceanalysis-hidebug-enablegwpasangrayscale-f.md#enablegwpasangrayscale-1) | 使能GWP-ASan，用于检测堆内存使用中的非法行为。 |
 | [getAppMemoryLimit](arkts-performanceanalysis-hidebug-getappmemorylimit-f.md#getappmemorylimit-1) | 获取应用程序进程的内存限制。 |
 | [getAppNativeMemInfo](arkts-performanceanalysis-hidebug-getappnativememinfo-f.md#getappnativememinfo-1) | 获取应用进程内存信息。读取/proc/{pid}/smaps_rollup和/proc/{pid}/statm节点的数据。 |
@@ -59,8 +59,8 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 | [getSharedDirty](arkts-performanceanalysis-hidebug-getshareddirty-f.md#getshareddirty-1) | 获取进程的共享脏内存大小。接口实现方式：读取/proc/{pid}/smaps_rollup节点中的Shared_Dirty值。 |
 | [getSystemCpuUsage](arkts-performanceanalysis-hidebug-getsystemcpuusage-f.md#getsystemcpuusage-1) | 获取系统的CPU资源占用情况。 |
 | [getSystemMemInfo](arkts-performanceanalysis-hidebug-getsystemmeminfo-f.md#getsystemmeminfo-1) | 获取系统内存信息。读取/proc/meminfo节点的数据。 |
-| [getVMRuntimeStat](arkts-performanceanalysis-hidebug-getvmruntimestat-f.md#getvmruntimestat-1) | 根据参数获取指定的系统GC统计信息。 |
-| [getVMRuntimeStats](arkts-performanceanalysis-hidebug-getvmruntimestats-f.md#getvmruntimestats-1) | 获取系统GC统计信息。 |
+| [getVMRuntimeStat](arkts-performanceanalysis-hidebug-getvmruntimestat-f.md#getvmruntimestat-1) | 根据参数获取指定的系统[GC](../../../arkts-utils/gc-introduction.md)统计信息。 |
+| [getVMRuntimeStats](arkts-performanceanalysis-hidebug-getvmruntimestats-f.md#getvmruntimestats-1) | 获取系统[GC](../../../arkts-utils/gc-introduction.md)统计信息。 |
 | [getVss](arkts-performanceanalysis-hidebug-getvss-f.md#getvss-1) | 获取应用进程占用的虚拟内存大小。接口实现方式：读取/proc/{pid}/statm节点中的size值（内存页数），vss = size * 页大小（4KB/页）。 |
 | [isDebugState](arkts-performanceanalysis-hidebug-isdebugstate-f.md#isdebugstate-1) | 获取应用进程的调试状态。 |
 | [requestTrace](arkts-performanceanalysis-hidebug-requesttrace-f.md#requesttrace-1) | 获取当前进程的trace信息，包含应用tag、图像窗口tag、cpu调度和binder内核信息。使用Promise异步回调。 |
@@ -95,7 +95,7 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [GcStats](arkts-performanceanalysis-hidebug-gcstats-t.md) | 描述用于存储GC统计信息的键值对。该类型不支持多线程操作，如果应用中存在多线程同时访问，需加锁保护。 |
+| [GcStats](arkts-performanceanalysis-hidebug-gcstats-t.md) | 描述用于存储GC统计信息的键值对。该类型不支持多线程操作，如果应用中存在多线程同时访问，需加锁保护。包含以下键值信息：<br>"ark.gc.gc-count"：当前线程的GC次数。<br>"ark.gc.gc-time"：当前线程触发的GC总耗时，以ms为单位。<br>"ark.gc.gc-bytes-allocated"：当前线程Ark虚拟机已分配的内存大小，以B为单位。<br>"ark.gc.gc-bytes-freed"：当前线程GC成功回收的内存，以B为单位。<br>"ark.gc.fullgc-longtime-count"：当前线程超长fullGC次数。 |
 
 ### 枚举
 

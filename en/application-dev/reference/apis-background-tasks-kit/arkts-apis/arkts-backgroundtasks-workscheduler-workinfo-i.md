@@ -6,6 +6,16 @@ export interface WorkInfo
 
 Represents the deferred task information, which is used to set the trigger condition.
 
+> **NOTE:** 
+
+> The following rules apply when setting WorkInfo parameters:
+
+> 1. **workId**, **bundleName**, and **abilityName** are mandatory. **bundleName** must be set to the bundle name of the current application.
+> 2. The carried parameters can be of the number, string, or boolean type.
+> 3. At least one triggering condition must be set, including the network type, charging type, storage status, and battery status.
+> 4. For a cyclic task, the task execution interval must be at least 2 hours. When **repeatCycleTime** is set,you must set **isRepeat** or **repeatCount**.
+> 5. For optional parameters, if left default (not configured), it indicates that the triggering of the delayed task does not depend on the parameter's corresponding condition.
+
 **Since:** 9
 
 <!--Device-workScheduler-export interface WorkInfo--><!--Device-workScheduler-export interface WorkInfo-End-->
@@ -294,7 +304,7 @@ Carried parameters.
 repeatCount?: number
 ```
 
-Number of repeat times.
+Number of repeat times. Value range: positive integer(greater than 0).
 
 **Type:** number
 

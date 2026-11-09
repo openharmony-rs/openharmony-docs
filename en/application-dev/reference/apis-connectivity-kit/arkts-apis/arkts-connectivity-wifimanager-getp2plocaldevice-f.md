@@ -14,9 +14,11 @@ function getP2pLocalDevice(): Promise<WifiP2pDevice>
 
 Obtain the information about own device information. DeviceAddress in the returned WifiP2pDevice will be set "00:00:00:00:00:00", if ohos.permission.GET_WIFI_LOCAL_MAC is not granted.
 
-**Since:** 11
+**Since:** 9
 
-**Required permissions:** ohos.permission.GET_WIFI_INFO
+**Required permissions:** 
+- API version 11 and later: ohos.permission.GET_WIFI_INFO
+- API versions 9 to 10: ohos.permission.GET_WIFI_INFO and ohos.permission.GET_WIFI_CONFIG
 
 <!--Device-wifiManager-function getP2pLocalDevice(): Promise<WifiP2pDevice>--><!--Device-wifiManager-function getP2pLocalDevice(): Promise<WifiP2pDevice>-End-->
 
@@ -63,9 +65,11 @@ function getP2pLocalDevice(callback: AsyncCallback<WifiP2pDevice>): void
 
 Obtain the information about own device information. DeviceAddress in the returned WifiP2pDevice will be set "00:00:00:00:00:00", if ohos.permission.GET_WIFI_LOCAL_MAC is not granted.
 
-**Since:** 11
+**Since:** 9
 
-**Required permissions:** ohos.permission.GET_WIFI_INFO
+**Required permissions:** 
+- API version 11 and later: ohos.permission.GET_WIFI_INFO
+- API versions 9 to 10: ohos.permission.GET_WIFI_INFO and ohos.permission.GET_WIFI_CONFIG
 
 <!--Device-wifiManager-function getP2pLocalDevice(callback: AsyncCallback<WifiP2pDevice>): void--><!--Device-wifiManager-function getP2pLocalDevice(callback: AsyncCallback<WifiP2pDevice>): void-End-->
 

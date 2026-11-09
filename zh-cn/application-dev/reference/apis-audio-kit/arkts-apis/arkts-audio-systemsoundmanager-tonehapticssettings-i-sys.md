@@ -26,7 +26,7 @@ import { systemSoundManager } from '@kit.AudioKit';
 hapticsUri?: string
 ```
 
-振动 URI。当 [mode](#mode) 为 NON_SYC 时，用户可以设置或获取此参数；在其他情况下，该 URI 无效，应予以忽略。
+系统铃音的振动路径，当振动模式不是非同步振动应该被忽略，振动的路径可通过[getToneHapticsList](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#gettonehapticslist)获取。在其他情况下，该 URI 无效，应予以忽略。
 
 **类型：** string
 

@@ -40,5 +40,5 @@ Registers a listener for monitoring the font service status.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [31100110](../errorcode-font-manager.md#31100110-failed-to-call-the-api-due-to-system-errors) | Call failed due to system error. |
-| 31100113 | The font observer is already registered. |
-| 31100114 | The maximum number of font observers has been reached. |
+| [31100113](../errorcode-font-manager.md#31100113-font-observer-already-registered) | The font observer is already registered. |
+| [31100114](../errorcode-font-manager.md#31100114-maximum-number-of-font-observers-exceeded) | The maximum number of font observers has been reached. |

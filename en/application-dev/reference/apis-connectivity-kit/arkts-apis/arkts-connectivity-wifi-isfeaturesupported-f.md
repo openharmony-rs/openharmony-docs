@@ -12,7 +12,7 @@ import { wifi } from '@kit.ConnectivityKit';
 function isFeatureSupported(featureId: number): boolean
 ```
 
-Checks whether this device supports a specified feature.
+Checks whether the device supports the Wi-Fi feature specified by the feature ID.
 
 **Since:** 7
 
@@ -30,13 +30,13 @@ Checks whether this device supports a specified feature.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| featureId | number | Yes | Indicates the ID of the feature. |
+| featureId | number | Yes | Feature ID. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns `true` if this device supports the specified feature, returns `false` otherwise. |
+| boolean | Returns **true** if the feature is supported; returns **false** otherwise. |
 
 **Examples**
 

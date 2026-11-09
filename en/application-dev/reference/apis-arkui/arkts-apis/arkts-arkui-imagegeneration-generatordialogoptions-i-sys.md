@@ -146,7 +146,7 @@ Information for LiveView in AI image generation.
 minimizeDuringGeneration?: boolean
 ```
 
-Indicates whether to enable minimize during image generation.
+Indicates whether to enable minimization during image generation.
 
 **Type:** boolean
 

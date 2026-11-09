@@ -12,7 +12,11 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
 ```
 
-User can trigger scan even Wi-Fi is disabled.
+Sets whether scan is always allowed.
+
+- This interface controls whether the device can support hotspot scanning when Wi-Fi is disabled.  
+- After this function is enabled, the system can still scan for nearby Wi-Fi hotspots even if Wi-Fi is disabled.  
+- This function is mainly used in network discovery and location locating scenarios.
 
 **Since:** 10
 
@@ -28,7 +32,7 @@ User can trigger scan even Wi-Fi is disabled.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isScanAlwaysAllowed | boolean | Yes | true for allow trigger scan, otherwise don't allow trigger scan when Wi-Fi is disabled. |
+| isScanAlwaysAllowed | boolean | Yes | Whether scan is always allowed. The value **true** indicates that scan is always allowed, and the value **false** indicates the opposite. |
 
 **Error codes:**
 

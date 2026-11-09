@@ -12,7 +12,11 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 function setPowerMode(mode: PowerMode): void
 ```
 
-Set the current Wi-Fi power mode.
+Sets the power mode.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 9 and deprecated since API version 10.
 
 **Since:** 9
 
@@ -28,7 +32,7 @@ Set the current Wi-Fi power mode.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mode | [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md) | Yes |  |
+| mode | [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md) | Yes | Power mode to set. |
 
 **Error codes:**
 

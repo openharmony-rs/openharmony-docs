@@ -12,9 +12,7 @@ import { wifi } from '@kit.ConnectivityKit';
 function off(type: 'wifiStateChange', callback?: Callback<number>): void
 ```
 
-Unsubscribe Wi-Fi status change events.
-
-<p>All callback functions will be deregistered If there is no specific callback parameter.</p>
+Unsubscribes from Wi-Fi status change events.
 
 **Since:** 7
 
@@ -32,8 +30,8 @@ Unsubscribe Wi-Fi status change events.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'wifiStateChange' | Yes | event name. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | No | the callback of on, 0: inactive, 1: active, 2: activating, 3: de-activating |
+| type | 'wifiStateChange' | Yes | Event type, which has a fixed value of **wifiStateChange**. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | No | Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered. |
 
 **Examples**
 
@@ -58,9 +56,7 @@ wifi.off("wifiStateChange", recvPowerNotifyFunc);
 function off(type: 'wifiConnectionChange', callback?: Callback<number>): void
 ```
 
-Unsubscribe Wi-Fi connection change events.
-
-<p>All callback functions will be deregistered If there is no specific callback parameter.</p>
+Unsubscribes from Wi-Fi connection status change events.
 
 **Since:** 7
 
@@ -78,8 +74,8 @@ Unsubscribe Wi-Fi connection change events.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'wifiConnectionChange' | Yes | event name. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | No | the callback of on, 0: disconnected, 1: connected |
+| type | 'wifiConnectionChange' | Yes | Event type, which has a fixed value of **wifiConnectionChange**. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | No | Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered. |
 
 **Examples**
 
@@ -104,9 +100,7 @@ wifi.off("wifiConnectionChange", recvWifiConnectionChangeFunc);
 function off(type: 'wifiScanStateChange', callback?: Callback<number>): void
 ```
 
-Unsubscribe Wi-Fi scan status change events.
-
-<p>All callback functions will be deregistered If there is no specific callback parameter.</p>
+Unsubscribes from WLAN scan state changes.
 
 **Since:** 7
 
@@ -124,8 +118,8 @@ Unsubscribe Wi-Fi scan status change events.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'wifiScanStateChange' | Yes | event name. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | No | the callback of on, 0: scan fail, 1: scan success |
+| type | 'wifiScanStateChange' | Yes | Event type, which has a fixed value of **wifiScanStateChange**. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | No | Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered. |
 
 **Examples**
 
@@ -150,9 +144,7 @@ wifi.off("wifiScanStateChange", recvWifiScanStateChangeFunc);
 function off(type: 'wifiRssiChange', callback?: Callback<number>): void
 ```
 
-Unsubscribe Wi-Fi rssi change events.
-
-<p>All callback functions will be deregistered If there is no specific callback parameter.</p>
+Unsubscribes from RSSI changes.
 
 **Since:** 7
 
@@ -170,8 +162,8 @@ Unsubscribe Wi-Fi rssi change events.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'wifiRssiChange' | Yes | event name. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | No | the callback of on |
+| type | 'wifiRssiChange' | Yes | Event type, which has a fixed value of **wifiRssiChange**. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | No | Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered. |
 
 **Examples**
 
@@ -196,9 +188,7 @@ wifi.off("wifiRssiChange", recvWifiRssiChangeFunc);
 function off(type: 'hotspotStateChange', callback?: Callback<number>): void
 ```
 
-Unsubscribe Wi-Fi hotspot state change events.
-
-<p>All callback functions will be deregistered If there is no specific callback parameter.</p>
+Unsubscribes from hotspot state changes.
 
 **Since:** 7
 
@@ -216,8 +206,8 @@ Unsubscribe Wi-Fi hotspot state change events.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'hotspotStateChange' | Yes | event name. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | No | the callback of on, 0: inactive, 1: active, 2: activating, 3: de-activating |
+| type | 'hotspotStateChange' | Yes | Event type, which has a fixed value of **hotspotStateChange**. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | No | Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered. |
 
 
 ## off('p2pStateChange')
@@ -226,7 +216,7 @@ Unsubscribe Wi-Fi hotspot state change events.
 function off(type: 'p2pStateChange', callback?: Callback<number>): void
 ```
 
-Unsubscribe P2P status change events.
+Unsubscribes from P2P state changes.
 
 **Since:** 8
 
@@ -244,8 +234,8 @@ Unsubscribe P2P status change events.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'p2pStateChange' | Yes | event name. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | No | the callback of on, 1: idle, 2: starting, 3:started, 4: closing, 5: closed |
+| type | 'p2pStateChange' | Yes | Event type, which has a fixed value of **p2pStateChange**. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | No | Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered. |
 
 **Examples**
 
@@ -270,7 +260,7 @@ wifi.off("p2pStateChange", recvP2pStateChangeFunc);
 function off(type: 'p2pConnectionChange', callback?: Callback<WifiP2pLinkedInfo>): void
 ```
 
-Unsubscribe P2P connection change events.
+Unsubscribes from P2P connection state changes.
 
 **Since:** 8
 
@@ -288,8 +278,8 @@ Unsubscribe P2P connection change events.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'p2pConnectionChange' | Yes | event name. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[WifiP2pLinkedInfo](arkts-connectivity-wifi-wifip2plinkedinfo-i.md)&gt; | No | the callback of on |
+| type | 'p2pConnectionChange' | Yes | Event type, which has a fixed value of **p2pConnectionChange**. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[WifiP2pLinkedInfo](arkts-connectivity-wifi-wifip2plinkedinfo-i.md)&gt; | No | Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered. |
 
 **Examples**
 
@@ -314,7 +304,7 @@ wifi.off("p2pConnectionChange", recvP2pConnectionChangeFunc);
 function off(type: 'p2pDeviceChange', callback?: Callback<WifiP2pDevice>): void
 ```
 
-Unsubscribe P2P local device change events.
+Unsubscribes from P2P device state changes.
 
 **Since:** 8
 
@@ -332,8 +322,8 @@ Unsubscribe P2P local device change events.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'p2pDeviceChange' | Yes | event name. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[WifiP2pDevice](arkts-connectivity-wifi-wifip2pdevice-i.md)&gt; | No | the callback of on |
+| type | 'p2pDeviceChange' | Yes | Event type, which has a fixed value of **p2pDeviceChange**. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[WifiP2pDevice](arkts-connectivity-wifi-wifip2pdevice-i.md)&gt; | No | Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered. |
 
 **Examples**
 
@@ -358,7 +348,7 @@ wifi.off("p2pDeviceChange", recvP2pDeviceChangeFunc);
 function off(type: 'p2pPeerDeviceChange', callback?: Callback<WifiP2pDevice[]>): void
 ```
 
-Unsubscribe P2P peer device change events.
+Unsubscribes from P2P peer device state changes.
 
 **Since:** 8
 
@@ -376,8 +366,8 @@ Unsubscribe P2P peer device change events.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'p2pPeerDeviceChange' | Yes | event name. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[WifiP2pDevice](arkts-connectivity-wifi-wifip2pdevice-i.md)[]&gt; | No | the callback of on |
+| type | 'p2pPeerDeviceChange' | Yes | Event type, which has a fixed value of **p2pPeerDeviceChange**. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[WifiP2pDevice](arkts-connectivity-wifi-wifip2pdevice-i.md)[]&gt; | No | Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered. |
 
 **Examples**
 
@@ -402,7 +392,7 @@ wifi.off("p2pPeerDeviceChange", recvP2pPeerDeviceChangeFunc);
 function off(type: 'p2pPersistentGroupChange', callback?: Callback<void>): void
 ```
 
-Unsubscribe P2P persistent group change events.
+Unsubscribes from P2P persistent group state changes.
 
 **Since:** 8
 
@@ -420,8 +410,8 @@ Unsubscribe P2P persistent group change events.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'p2pPersistentGroupChange' | Yes | event name. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | No | the callback of on |
+| type | 'p2pPersistentGroupChange' | Yes | Event type, which has a fixed value of **p2pPersistentGroupChange**. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | No | Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered. |
 
 **Examples**
 
@@ -446,7 +436,7 @@ wifi.off("p2pPersistentGroupChange", recvP2pPersistentGroupChangeFunc);
 function off(type: 'p2pDiscoveryChange', callback?: Callback<number>): void
 ```
 
-Unsubscribe P2P discovery events.
+Unsubscribes from P2P device discovery state changes.
 
 **Since:** 8
 
@@ -464,8 +454,8 @@ Unsubscribe P2P discovery events.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'p2pDiscoveryChange' | Yes | event name. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | No | the callback of on |
+| type | 'p2pDiscoveryChange' | Yes | Event type, which has a fixed value of **p2pDiscoveryChange**. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | No | Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered. |
 
 **Examples**
 

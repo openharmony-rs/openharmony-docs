@@ -28,7 +28,7 @@ import { url } from '@kit.ArkTS';
 [Symbol.iterator](): IterableIterator<[string, string]>
 ```
 
-返回一个迭代器，允许遍历此对象中包含的所有键值对。
+返回一个迭代器，迭代器的每一项都是一个Array。Array的第一项是name，Array的第二项是value。
 
 **起始版本：** 7
 
@@ -64,7 +64,7 @@ for (let pair of pairs) {
 append(name: string, value: string): void
 ```
 
-将新的键值对插入到查询字符串。与set方法不同，append不会替换已存在的键名对应的值，而是追加一个新的键值对，允许同一键名存在多个值。如需替换已有键值，请使用set方法。
+将新的键值对插入到查询字符串。
 
 **起始版本：** 7
 
@@ -131,7 +131,7 @@ let params = new url.URLSearchParams(urlObject.search);
 delete(name: string): void
 ```
 
-删除指定名称的所有键值对。如果指定名称不存在，则不做任何操作。
+删除指定名称的键值对。
 
 **起始版本：** 7
 
@@ -163,7 +163,7 @@ paramsObject.delete('fod');
 entries(): IterableIterator<[string, string]>
 ```
 
-返回一个ES6的迭代器，迭代器的每一项都是一个Array。Array的第一项是name，Array的第二项是value。
+返回一个迭代器，迭代器的每一项都是一个Array。Array的第一项是name，Array的第二项是value。
 
 **起始版本：** 7
 
@@ -179,7 +179,7 @@ entries(): IterableIterator<[string, string]>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;[string, string]&gt; | 返回一个ES6的迭代器。 |
+| IterableIterator&lt;[string, string]&gt; | 返回一个迭代器，迭代器的每一项为包含name和value的[string, string]数组。 |
 
 **示例**
 
@@ -215,7 +215,7 @@ forEach(callbackFn: (value: string, key: string, searchParams: URLSearchParams) 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: string, key: string, searchParams: URLSearchParams) =&gt; void | 是 | 回调函数。 |
+| callbackFn | (value: string, key: string, searchParams: URLSearchParams) =&gt; void | 是 | 回调函数。value为当前遍历到的值，key为键名，searchParams为当前调用forEach方法的实例对象。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值是本对象。 |
 
 **示例**
@@ -234,6 +234,10 @@ get(name: string): string | null
 ```
 
 获取指定名称对应的第一个值。
+
+> **说明：** 
+> 
+> 若查找一个不存在的键值对名称时返回值为undefined。
 
 **起始版本：** 7
 
@@ -272,7 +276,7 @@ let getObj = paramsObject.get("abc"); // undefined
 getAll(name: string): string[]
 ```
 
-获取指定名称的所有键对应值的集合。若查找一个不存在的键值对名称时返回值为空数组。
+获取指定名称的所有键对应值的集合。
 
 **起始版本：** 7
 
@@ -385,7 +389,7 @@ for (let key of keys) {
 set(name: string, value: string): void
 ```
 
-将与name关联的URLParams对象中的值设置为value。如果存在名称为name的键值对，请将第一个键值对的值设置为value并删除所有其他值。如果不存在该键名，则将键值对附加到查询字符串。
+将与name关联的URLSearchParams对象中的值设置为value。如果存在名称为name的键值对，请将第一个键值对的值设置为value并删除所有其他值。如果不是，则将键值对附加到查询字符串。
 
 **起始版本：** 7
 

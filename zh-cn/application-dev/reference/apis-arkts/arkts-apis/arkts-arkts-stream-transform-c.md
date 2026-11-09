@@ -26,7 +26,7 @@ import { stream } from '@kit.ArkTS';
 constructor()
 ```
 
-创建**Transform**对象的构造函数。
+Transform的构造函数。
 
 **起始版本：** 12
 
@@ -48,7 +48,7 @@ let transformStream = new stream.Transform();
 doFlush(callback: Function): void
 ```
 
-在流结束时调用，用于处理剩余数据。使用异步回调返回结果。
+该函数会在流结束时被调用，用于处理剩余的数据。使用callback异步回调。
 
 **起始版本：** 12
 
@@ -94,7 +94,7 @@ transformStream.on("data", (data) => {
 doTransform(chunk: string, encoding: string, callback: Function): void
 ```
 
-转换或处理输入的数据块，并通过回调通知处理完成。
+对输入的数据块进行转换或处理，并通过回调函数通知操作完成。
 
 **起始版本：** 12
 

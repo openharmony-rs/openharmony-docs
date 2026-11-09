@@ -686,6 +686,38 @@ accessibilityVirtualNode(builder: CustomBuilder): T
 | --- | --- |
 | T | 返回当前对象。 |
 
+## agentControlMode
+
+```TypeScript
+agentControlMode(value: AgentControlMode | undefined): T
+```
+
+设置组件对Agent生成事件的输入管控级别。
+
+Agent生成的事件包括系统Agent生成的事件，以及具有ohos.permission.CONTROL_DEVICE权限的应用注入的事件。该设置适用于支持的Agent生成输入事件，例如触摸和鼠标事件，不影响用户生成的输入事件或其他注入事件。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-CommonMethod-agentControlMode(value: AgentControlMode | undefined): T--><!--Device-CommonMethod-agentControlMode(value: AgentControlMode | undefined): T-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | [AgentControlMode](../arkts-apis/arkts-arkui-agentcontrolmode-e.md) &#124; undefined | 是 | 系统Agent生成事件的输入管控级别。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| T | 返回当前组件。 |
+
 ## align
 
 ```TypeScript
@@ -1790,7 +1822,13 @@ bindContextMenu(content: CustomBuilder, responseType: ResponseType, options?: Co
 
 Binds a context menu to this component, which is displayed when the user long-presses or right-clicks the component. Only custom menu items are supported.
 
-**起始版本：** 11
+> **NOTE:** 
+> 
+> - **bindContextMenu** (implemented in subwindows by default) is not supported in input method windows.
+> - This API cannot be called within [attributeModifier](#attributemodifier).
+> - Long pressing with a mouse device is not supported when **responseType** is **ResponseType.RightClick**.
+
+**起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -1980,7 +2018,13 @@ bindMenu(content: Array<MenuElement> | CustomBuilder, options?: MenuOptions): T
 
 Menu control
 
-**起始版本：** 11
+> **NOTE:** 
+> 
+> - This API can be called within [attributeModifier](#attributemodifier) since API version 20only if the input parameter type of **content** is Array&lt;MenuElement&gt;.
+> - Multi-level menus cannot be displayed using **bindMenu** in **CustomBuilder**. Use the Menu component instead.
+> - **bindMenu** can be configured to display in subwindows by setting the **showInSubWindow** property in MenuOptions.
+
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -2009,7 +2053,7 @@ bindMenu(isShow: boolean, content: Array<MenuElement> | CustomBuilder, options?:
 
 Menu control
 
-**起始版本：** 12
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2023,7 +2067,7 @@ Menu control
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isShow | boolean | 是 | true means display menu, false means hide menu. |
+| isShow | boolean | 是 | true means display menu, false means hide menu, default is false. |
 | content | Array&lt;[MenuElement](arkts-arkui-common-comp-menuelement-i.md)&gt; &#124; [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | 是 | Indicates the content of menu. |
 | options | [MenuOptions](arkts-arkui-common-comp-menuoptions-i.md) | 否 | Indicates the options of menu. |
 

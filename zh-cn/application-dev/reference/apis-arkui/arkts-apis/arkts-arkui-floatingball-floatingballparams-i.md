@@ -24,7 +24,7 @@ import { floatingBall } from '@kit.ArkUI';
 backgroundColor?: string
 ```
 
-闪控球背景颜色，为不带透明度的十六进制颜色格式（例如'#008EF5'或'#FF008EF5'），不传入时闪控球跟随系统深浅色模式的默认背景色。
+闪控球背景颜色，为不带透明度的十六进制颜色格式（例如'#008EF5'或'#FF008EF5'）。格式错误时返回错误码1300019。不传入时闪控球跟随系统深浅色模式的默认背景色。
 
 **类型：** string
 
@@ -56,14 +56,11 @@ content?: string
 contentColor?: string
 ```
 
-闪控球内容颜色，为不带透明度的十六进制颜色格式（例如'#008EF5'或'#FF008EF5'）。如果背景颜色没有指定，不允许指定内容颜色。
+闪控球内容文字颜色，为不带透明度的十六进制颜色格式（例如'#008EF5'或'#FF008EF5'）。不传入时根据背景色色度自动填充，若背景色为亮色则填充黑色('#99000000')，若背景色为暗色则填充白色('#99FFFFFF')。配置此属性时，必须配置背景色backgroundColor，否则返回错误码1300019。
 
 **类型：** string
 
-**默认值：** Set different default values according to the 'backgroundColor'.
-        - If 'backgroundColor' is provided, when 'backgroundColor' is light color, default value is '#99FFFFFF',
-otherwise is '#99000000'
-        - If 'backgroundColor' is not provided, default value is $r('sys.color.font_secondary')
+**默认值：** 根据'backgroundColor'设置不同的默认值。当'backgroundColor'为亮色时，默认值为'#99000000'，否则为'#99FFFFFF'。
 
 **起始版本：** 26.0.0
 
@@ -147,14 +144,11 @@ title: string
 titleColor?: string
 ```
 
-闪控球标题颜色，为不带透明度的十六进制颜色格式（例如'#008EF5'或'#FF008EF5'）。如果背景颜色没有指定，不允许指定标题颜色。
+闪控球标题文字颜色，为不带透明度的十六进制颜色格式（例如'#008EF5'或'#FF008EF5'）。不传入时根据背景色色度自动填充，若背景色为亮色则填充黑色('#E5000000')，若背景色为暗色则填充白色('#E5FFFFFF')。配置此属性时，必须配置背景色backgroundColor，否则返回错误码1300019。
 
 **类型：** string
 
-**默认值：** Set different default values according to the 'backgroundColor'.
-        - If 'backgroundColor' is provided, when 'backgroundColor' is light color, default value is '#E5FFFFFF',
-otherwise is '#E5000000'.
-        - If 'backgroundColor' is not provided, default value is $r('sys.color.font_primary').
+**默认值：** 根据'backgroundColor'设置不同的默认值。当'backgroundColor'为亮色时，默认值为'#E5000000'，否则为'#E5FFFFFF'。
 
 **起始版本：** 26.0.0
 

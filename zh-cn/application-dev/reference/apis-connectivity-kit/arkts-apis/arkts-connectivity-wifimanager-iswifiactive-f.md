@@ -30,7 +30,7 @@ function isWifiActive(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | true:已激活， false:未激活。 |
+| boolean | true表示已激活，false表示未激活。 |
 
 **错误码：**
 

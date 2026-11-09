@@ -14,6 +14,18 @@ function format(format: string, ...args: Object[]): string
 
 使用样式化字符串将输入内容按特定格式输出，适用于日志输出、用户界面文本格式化等场景。
 
+| 格式说明符 | 说明 |  
+| --- | --- |  
+| %s | 将除Object、BigInt和-0之外的值转换为字符串。 |  
+| %d | 将除Symbol和BigInt之外的值作为十进制整数格式化输出。 |  
+| %i | 将字符串转换为十进制整数，不适用于BigInt和Symbol。 |  
+| %f | 将字符串转换为浮点数，不适用于BigInt和Symbol。 |  
+| %j | 将JavaScript对象序列化为JSON字符串。 |  
+| %o | 将JavaScript对象转换为字符串，不包含原型链信息。 |  
+| %O | 将JavaScript对象转换为字符串。 |  
+| %c | CSS样式占位符，仅在浏览器中有效，其他环境忽略。 |  
+| %% | 转义百分号。 |
+
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。

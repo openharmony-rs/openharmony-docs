@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function reconnect(): void
 ```
 
-Re-connect to current network.
+Reconnects to the network.
 
 **Since:** 9
 

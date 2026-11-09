@@ -30,7 +30,7 @@ function setWifiCapability(capability: WifiCapability, enable: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| capability | [WifiCapability](arkts-connectivity-wifimanager-wificapability-e.md) | 是 | wifi能力枚举。 |
+| capability | [WifiCapability](arkts-connectivity-wifimanager-wificapability-e.md) | 是 | Wi-Fi能力枚举值。 |
 | enable | boolean | 是 | 是否开启Wi-Fi能力，true表示开启，false表示关闭。 |
 
 **错误码：**

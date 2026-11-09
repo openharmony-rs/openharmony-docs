@@ -46,7 +46,7 @@ function requestPublishFormCrossDevice(peerServiceInfo: formInfo.PeerFormHostSer
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permissions denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16501020](../errorcode-form.md#16501020-远端卡片服务不可用) | Remote form service is unavailable. |
 | [16501021](../errorcode-form.md#16501021-远端卡片应用未安装或版本过低) | The peer form application is not installed or the version is too old. |

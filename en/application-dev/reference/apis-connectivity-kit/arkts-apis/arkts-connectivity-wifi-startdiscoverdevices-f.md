@@ -12,7 +12,7 @@ import { wifi } from '@kit.ConnectivityKit';
 function startDiscoverDevices(): boolean
 ```
 
-Discover Wi-Fi P2P devices.
+Starts to discover devices.
 
 **Since:** 8
 
@@ -30,7 +30,7 @@ Discover Wi-Fi P2P devices.
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns `true` if the operation is successful, returns `false` otherwise. |
+| boolean | Returns **true** if the operation is successful; returns **false** otherwise. |
 
 **Examples**
 

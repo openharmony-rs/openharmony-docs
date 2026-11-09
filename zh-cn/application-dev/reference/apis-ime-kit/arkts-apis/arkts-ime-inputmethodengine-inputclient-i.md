@@ -2167,3 +2167,71 @@ setPreviewTextSync(text: string, range: Range): void
 let range: inputMethodEngine.Range = { start: 0, end: 1 };
 inputClient.setPreviewTextSync('test', range);
 ```
+
+## setPreviewTextWithStyle
+
+```TypeScript
+setPreviewTextWithStyle(text: string, range: Range, style: PreviewTextStyle): Promise<void>
+```
+
+设置带样式的预上屏文本。使用promise异步回调。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-InputClient-setPreviewTextWithStyle(text: string, range: Range, style: PreviewTextStyle): Promise<void>--><!--Device-InputClient-setPreviewTextWithStyle(text: string, range: Range, style: PreviewTextStyle): Promise<void>-End-->
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| text | string | 是 | 预上屏文本。 |
+| range | [Range](arkts-ime-inputmethodengine-range-i.md) | 是 | 预上屏文本范围。 |
+| style | [PreviewTextStyle](arkts-ime-inputmethodengine-previewtextstyle-i.md) | 是 | 预上屏文本的样式。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| [12800011](../errorcode-inputmethod-framework.md#12800011-当前输入框不支持预上屏) | text preview not supported. |
+
+## setPreviewTextWithStyleSync
+
+```TypeScript
+setPreviewTextWithStyleSync(text: string, range: Range, style: PreviewTextStyle): void
+```
+
+设置带样式的预上屏文本。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-InputClient-setPreviewTextWithStyleSync(text: string, range: Range, style: PreviewTextStyle): void--><!--Device-InputClient-setPreviewTextWithStyleSync(text: string, range: Range, style: PreviewTextStyle): void-End-->
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| text | string | 是 | 预上屏文本。 |
+| range | [Range](arkts-ime-inputmethodengine-range-i.md) | 是 | 预上屏文本范围。 |
+| style | [PreviewTextStyle](arkts-ime-inputmethodengine-previewtextstyle-i.md) | 是 | 预上屏文本的样式。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| [12800011](../errorcode-inputmethod-framework.md#12800011-当前输入框不支持预上屏) | text preview not supported. |

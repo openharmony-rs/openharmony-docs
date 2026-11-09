@@ -6,7 +6,7 @@ enum WifiSecurityType
 
 Describes the wifi security type.
 
-**Since:** 12
+**Since:** 9
 
 <!--Device-wifiManager-enum WifiSecurityType--><!--Device-wifiManager-enum WifiSecurityType-End-->
 
@@ -62,7 +62,7 @@ WIFI_SEC_TYPE_OPEN = 1
 
 Open
 
-**Since:** 12
+**Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 

@@ -581,7 +581,7 @@
   - [ScrollEventType](arkts-arkui-uiobserver-scrolleventtype-e.md)
   - [TabContentState](arkts-arkui-uiobserver-tabcontentstate-e.md)
 <!--Del-->
-- [@ohos.arkui.performanceMonitor](arkts-arkui-arkui-performancemonitor.md)<!--DelEnd-->
+- [@ohos.arkui.performanceMonitor(Performance Monitoring)](arkts-arkui-arkui-performancemonitor.md)<!--DelEnd-->
   <!--Del-->
   - [begin(system api)](arkts-arkui-performancemonitor-begin-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -699,6 +699,7 @@
   - [UIContext(system api)](arkts-arkui-arkui-uicontext-uicontext-c-sys.md)<!--DelEnd-->
   - [UIInspector](arkts-arkui-arkui-uicontext-uiinspector-c.md)
   - [UIObserver](arkts-arkui-arkui-uicontext-uiobserver-c.md)
+  - [ApplicationShortcutCallbackInfo](arkts-arkui-arkui-uicontext-applicationshortcutcallbackinfo-i.md)
   - [AtomicServiceBar](arkts-arkui-arkui-uicontext-atomicservicebar-i.md)
   <!--Del-->
   - [BackgroundLuminanceSamplingConfigs(system api)](arkts-arkui-arkui-uicontext-backgroundluminancesamplingconfigs-i-sys.md)<!--DelEnd-->
@@ -708,6 +709,7 @@
   - [ModalUIExtensionCallback(system api)](arkts-arkui-arkui-uicontext-modaluiextensioncallback-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [ModalUIExtensionOptions(system api)](arkts-arkui-arkui-uicontext-modaluiextensionoptions-i-sys.md)<!--DelEnd-->
+  - [NodeSensitiveInputInfo](arkts-arkui-arkui-uicontext-nodesensitiveinputinfo-i.md)
   - [OrderOverlayOptions](arkts-arkui-arkui-uicontext-orderoverlayoptions-i.md)
   - [OverlayManagerOptions](arkts-arkui-arkui-uicontext-overlaymanageroptions-i.md)
   - [PageInfo](arkts-arkui-arkui-uicontext-pageinfo-i.md)
@@ -721,6 +723,7 @@
   - [GestureListenerCallback](arkts-arkui-gesturelistenercallback-t.md)
   - [NodeIdentity](arkts-arkui-nodeidentity-t.md)
   - [NodeRenderStateChangeCallback](arkts-arkui-noderenderstatechangecallback-t.md)
+  - [NodeSensitiveInputCallback](arkts-arkui-nodesensitiveinputcallback-t.md)
   - [OnOverlayBackPressCallback](arkts-arkui-onoverlaybackpresscallback-t.md)
   - [PanListenerCallback](arkts-arkui-panlistenercallback-t.md)
   - [PointerStyle](arkts-arkui-pointerstyle-t.md)
@@ -730,6 +733,7 @@
   - [KeyboardAvoidMode](arkts-arkui-arkui-uicontext-keyboardavoidmode-e.md)
   - [MarqueeDynamicSyncSceneType](arkts-arkui-arkui-uicontext-marqueedynamicsyncscenetype-e.md)
   - [NodeRenderState](arkts-arkui-arkui-uicontext-noderenderstate-e.md)
+  - [NodeSensitiveInputEventType](arkts-arkui-arkui-uicontext-nodesensitiveinputeventtype-e.md)
   - [ResolveStrategy](arkts-arkui-arkui-uicontext-resolvestrategy-e.md)
   - [SwiperDynamicSyncSceneType](arkts-arkui-arkui-uicontext-swiperdynamicsyncscenetype-e.md)
   - [TextSelectionClearPolicy](arkts-arkui-arkui-uicontext-textselectionclearpolicy-e.md)
@@ -1417,6 +1421,7 @@
 - [enums(Enums)](arkts-arkui-enums.md)
   - [Nullable](arkts-arkui-nullable-t.md)
   - [AccessibilityHoverType](arkts-arkui-accessibilityhovertype-e.md)
+  - [AgentControlMode](arkts-arkui-agentcontrolmode-e.md)
   - [Alignment](arkts-arkui-alignment-e.md)
   - [AnimationPropertyType](arkts-arkui-animationpropertytype-e.md)
   - [AnimationStatus](arkts-arkui-animationstatus-e.md)
@@ -1523,7 +1528,6 @@
   - [TitleHeight](arkts-arkui-titleheight-e.md)
   - [TouchType](arkts-arkui-touchtype-e.md)
   - [TransitionType](arkts-arkui-transitiontype-e.md)
-  - [UIMaterialAnimationMode](arkts-arkui-uimaterialanimationmode-e.md)
   - [VerticalAlign](arkts-arkui-verticalalign-e.md)
   - [Visibility](arkts-arkui-visibility-e.md)
   - [Week](arkts-arkui-week-e.md)

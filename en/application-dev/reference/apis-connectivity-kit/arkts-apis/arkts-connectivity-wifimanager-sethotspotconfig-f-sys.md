@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function setHotspotConfig(config: HotspotConfig): void
 ```
 
-Set the hotspot configuration for the device.
+Sets the Wi-Fi hotspot configuration information, including the SSID, encryption mode, password, bandwidth, channel, and maximum number of connected STAs.
 
 **Since:** 9
 
@@ -28,7 +28,7 @@ Set the hotspot configuration for the device.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [HotspotConfig](arkts-connectivity-wifimanager-hotspotconfig-i-sys.md) | Yes | Indicates the Wi-Fi hotspot configuration. The SSID and `securityType` must be available and correct. If `securityType` is not `open`, `preSharedKey` must be available and correct. |
+| config | [HotspotConfig](arkts-connectivity-wifimanager-hotspotconfig-i-sys.md) | Yes | Hotspot configuration to set. |
 
 **Error codes:**
 

@@ -12,7 +12,7 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 function dumpJsRawHeapData(needGC?: boolean): Promise<string>
 ```
 
-为当前线程转储虚拟机的原始堆快照，并生成的rawheap格式文件，使用Promise异步回调完成。该文件可通过rawheap-translator工具转化为heapsnapshot格式文件进行解析。
+为当前线程转储虚拟机的原始堆快照，并生成的rawheap格式文件，使用Promise异步回调完成。该文件可通过[rawheap-translator工具](../../../tools/rawheap-translator.md)转化为heapsnapshot格式文件进行解析。
 
 > **注意**：
 > 
@@ -38,7 +38,7 @@ function dumpJsRawHeapData(needGC?: boolean): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回生成的快照文件路径（应用沙箱内路径）。 |
+| Promise&lt;string&gt; | Promise对象，返回生成的快照文件路径（[应用沙箱内路径](../../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)）。 |
 
 **错误码：**
 
@@ -72,7 +72,7 @@ hidebug.dumpJsRawHeapData().then((filePath: string) => {
 function dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise<string>
 ```
 
-为当前线程转储虚拟机的原始堆快照，并支持清除nodeId缓存。生成的文件为rawheap格式，使用Promise异步回调完成。该文件可通过rawheap-translator工具转化为heapsnapshot格式文件进行解析。
+为当前线程转储虚拟机的原始堆快照，并支持清除nodeId缓存。生成的文件为rawheap格式，使用Promise异步回调完成。该文件可通过[rawheap-translator工具](../../../tools/rawheap-translator.md)转化为heapsnapshot格式文件进行解析。
 
 > **注意**：
 > 
@@ -101,7 +101,7 @@ function dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回生成的快照文件路径（应用沙箱内路径）。 |
+| Promise&lt;string&gt; | Promise对象，返回生成的快照文件路径（[应用沙箱内路径](../../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)）。 |
 
 **错误码：**
 
@@ -136,7 +136,7 @@ hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
 function dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boolean): Promise<Array<string>>
 ```
 
-为当前线程或其所属进程生成虚拟机的原始堆快照，并支持清除nodeId缓存，生成的文件为rawheap格式。使用Promise异步回调。文件可通过rawheap-translator工具转换为heapsnapshot格式文件进行解析。
+为当前线程或其所属进程生成虚拟机的原始堆快照，并支持清除nodeId缓存，生成的文件为rawheap格式。使用Promise异步回调。文件可通过[rawheap-translator工具](../../../tools/rawheap-translator.md)转换为heapsnapshot格式文件进行解析。
 
 > **注意**：
 > 
@@ -166,7 +166,7 @@ function dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回生成的快照文件路径数组（应用沙箱内路径）。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回生成的快照文件路径数组（[应用沙箱内路径](../../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)）。 |
 
 **错误码：**
 

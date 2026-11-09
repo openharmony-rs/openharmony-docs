@@ -24,7 +24,7 @@ import { util } from '@kit.ArkTS';
 constructor()
 ```
 
-用于创建 **Types** 对象的构造函数。
+Types的构造函数，创建一个用于内置对象类型检查的types实例。
 
 **起始版本：** 8
 
@@ -46,7 +46,7 @@ let type = new util.types();
 isAnyArrayBuffer(value: Object): boolean
 ```
 
-判断入参是否为 ArrayBuffer 或 SharedArrayBuffer 类型。
+检查value是否为ArrayBuffer或SharedArrayBuffer类型。
 
 **起始版本：** 8
 
@@ -60,13 +60,13 @@ isAnyArrayBuffer(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 ArrayBuffer 或 SharedArrayBuffer 类型，则返回 **true**；否则返回**false**。 |
+| boolean | 如果是ArrayBuffer或SharedArrayBuffer类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -83,7 +83,7 @@ console.info("result = " + result);
 isArgumentsObject(value: Object): boolean
 ```
 
-判断入参是否为 **arguments** 对象。
+检查value是否为arguments对象。
 
 **起始版本：** 8
 
@@ -97,13 +97,13 @@ isArgumentsObject(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 **arguments** 对象，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是arguments对象则返回true，否则返回false。 |
 
 **示例**
 
@@ -123,7 +123,7 @@ let f = foo();
 isArrayBuffer(value: Object): boolean
 ```
 
-判断入参是否为 ArrayBuffer 类型。
+检查value是否为ArrayBuffer类型。
 
 **起始版本：** 8
 
@@ -137,13 +137,13 @@ isArrayBuffer(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 ArrayBuffer 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是ArrayBuffer类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -160,7 +160,9 @@ console.info("result = " + result);
 isArrayBufferView(value: Object): boolean
 ```
 
-判断入参是否为 ArrayBufferView 类型。ArrayBufferView 类型包括 Int8Array、Int16Array、Int32Array、Uint8Array、Uint8ClampedArray、Uint32Array、Float32Array、Float64Array 和 DataView。
+检查value是否为ArrayBufferView类型。
+
+ArrayBufferView类型包括：Int8Array、Int16Array、Int32Array、Uint8Array、Uint8ClampedArray、Uint32Array、Float32Array、Float64Array、DataView。
 
 **起始版本：** 8
 
@@ -174,13 +176,13 @@ isArrayBufferView(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 ArrayBufferView 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是ArrayBufferView类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -274,7 +276,7 @@ console.info("result = " + result2);
 isBigInt64Array(value: Object): boolean
 ```
 
-判断入参是否为 BigInt64Array 类型。
+检查value是否为BigInt64Array类型。
 
 **起始版本：** 8
 
@@ -288,13 +290,13 @@ isBigInt64Array(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 BigInt64Array 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是BigInt64Array类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -311,7 +313,7 @@ console.info("result = " + result);
 isBigUint64Array(value: Object): boolean
 ```
 
-判断入参是否为 BigUint64Array 类型。
+检查value是否为BigUint64Array类型。
 
 **起始版本：** 8
 
@@ -325,13 +327,13 @@ isBigUint64Array(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 BigUint64Array 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是BigUint64Array类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -348,7 +350,7 @@ console.info("result = " + result);
 isDataView(value: Object): boolean
 ```
 
-判断入参是否为 DataView 类型。
+检查value是否为DataView类型。
 
 **起始版本：** 8
 
@@ -362,13 +364,13 @@ isDataView(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 DataView 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是DataView类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -386,7 +388,7 @@ console.info("result = " + result);
 isDate(value: Object): boolean
 ```
 
-判断入参是否为 Date 类型。
+检查value是否为Date类型。
 
 **起始版本：** 8
 
@@ -400,13 +402,13 @@ isDate(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 Date 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是Date类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -423,7 +425,7 @@ console.info("result = " + result);
 isExternal(value: Object): boolean
 ```
 
-判断入参是否为 native external 类型。
+检查value是否为native External类型。
 
 **起始版本：** 8
 
@@ -437,13 +439,13 @@ isExternal(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 native external 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是native External类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -498,7 +500,7 @@ console.info("result01 = " + result01);
 isFloat32Array(value: Object): boolean
 ```
 
-判断入参是否为 Float32Array 类型。
+检查value是否为Float32Array数组类型。
 
 **起始版本：** 8
 
@@ -512,13 +514,13 @@ isFloat32Array(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 Float32Array 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是Float32Array数组类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -535,7 +537,7 @@ console.info("result = " + result);
 isFloat64Array(value: Object): boolean
 ```
 
-判断入参是否为 Float64Array 类型。
+检查value是否为Float64Array数组类型。
 
 **起始版本：** 8
 
@@ -549,13 +551,13 @@ isFloat64Array(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 Float64Array 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是Float64Array数组类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -642,7 +644,7 @@ console.info("asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : "
 isGeneratorObject(value: Object): boolean
 ```
 
-判断入参是否为 generator 对象。
+检查value是否为generator对象类型。
 
 **起始版本：** 8
 
@@ -656,13 +658,13 @@ isGeneratorObject(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 generator 对象，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是generator对象则返回true，否则返回false。 |
 
 **示例**
 
@@ -687,7 +689,7 @@ console.info("result = " + result);
 isInt16Array(value: Object): boolean
 ```
 
-判断入参是否为 Int16Array 类型。
+检查value是否为Int16Array数组类型。
 
 **起始版本：** 8
 
@@ -701,13 +703,13 @@ isInt16Array(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 Int16Array 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是Int16Array数组类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -724,7 +726,7 @@ console.info("result = " + result);
 isInt32Array(value: Object): boolean
 ```
 
-判断入参是否为 Int32Array 类型。
+检查value是否为Int32Array数组类型。
 
 **起始版本：** 8
 
@@ -738,13 +740,13 @@ isInt32Array(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 Int32Array 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是Int32Array数组类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -761,7 +763,7 @@ console.info("result = " + result);
 isInt8Array(value: Object): boolean
 ```
 
-判断入参是否为 Int8Array 类型。
+检查value是否为Int8Array数组类型。
 
 **起始版本：** 8
 
@@ -775,13 +777,13 @@ isInt8Array(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 Int8Array 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是Int8Array数组类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -798,7 +800,7 @@ console.info("result = " + result);
 isMap(value: Object): boolean
 ```
 
-判断入参是否为 Map 类型。
+检查value是否为Map类型。
 
 **起始版本：** 8
 
@@ -812,13 +814,13 @@ isMap(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 Map 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是Map类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -835,7 +837,7 @@ console.info("result = " + result);
 isMapIterator(value: Object): boolean
 ```
 
-判断入参是否为 MapIterator 类型。
+检查value是否为Map的Iterator类型。
 
 **起始版本：** 8
 
@@ -849,13 +851,13 @@ isMapIterator(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 MapIterator 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是Map的Iterator类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -873,7 +875,7 @@ console.info("result = " + result);
 isModuleNamespaceObject(value: Object): boolean
 ```
 
-判断入参是否为模块命名空间对象。
+检查value是否为Module Namespace Object类型。
 
 **起始版本：** 8
 
@@ -887,13 +889,13 @@ isModuleNamespaceObject(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为模块命名空间对象，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是Module Namespace Object类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -919,7 +921,7 @@ console.info("result = " + result);
 isNativeError(value: Object): boolean
 ```
 
-判断入参是否为 Error 类型。
+检查value是否为Error类型。
 
 **起始版本：** 8
 
@@ -933,13 +935,13 @@ isNativeError(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 Error 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是Error类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -956,7 +958,7 @@ console.info("result = " + result);
 isPromise(value: Object): boolean
 ```
 
-判断入参是否为 promise。
+检查value是否为Promise类型。
 
 **起始版本：** 8
 
@@ -970,13 +972,13 @@ isPromise(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 promise，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是Promise类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -993,7 +995,7 @@ console.info("result = " + result);
 isProxy(value: Object): boolean
 ```
 
-判断入参是否为 proxy。
+检查value是否为Proxy类型。
 
 **起始版本：** 8
 
@@ -1007,13 +1009,13 @@ isProxy(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 proxy，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是Proxy类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -1034,7 +1036,7 @@ console.info("result = " + result);
 isRegExp(value: Object): boolean
 ```
 
-判断入参是否为 RegExp 类型。
+检查value是否为RegExp类型。
 
 **起始版本：** 8
 
@@ -1048,13 +1050,13 @@ isRegExp(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 RegExp 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是RegExp类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -1071,7 +1073,7 @@ console.info("result = " + result);
 isSet(value: Object): boolean
 ```
 
-判断入参是否为 Set 类型。
+检查value是否为Set类型。
 
 **起始版本：** 8
 
@@ -1085,13 +1087,13 @@ isSet(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 Set 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是Set类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -1109,7 +1111,7 @@ console.info("result = " + result);
 isSetIterator(value: Object): boolean
 ```
 
-判断入参是否为 SetIterator 类型。
+检查value是否为Set的Iterator类型。
 
 **起始版本：** 8
 
@@ -1123,13 +1125,13 @@ isSetIterator(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 SetIterator 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是Set的Iterator类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -1147,7 +1149,7 @@ console.info("result = " + result);
 isSharedArrayBuffer(value: Object): boolean
 ```
 
-判断入参是否为 SharedArrayBuffer 类型。
+检查value是否为SharedArrayBuffer类型。
 
 **起始版本：** 8
 
@@ -1161,13 +1163,13 @@ isSharedArrayBuffer(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 SharedArrayBuffer 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是SharedArrayBuffer类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -1184,7 +1186,9 @@ console.info("result = " + result);
 isTypedArray(value: Object): boolean
 ```
 
-判断入参是否为 TypedArray 类型。TypedArray 类型包括 Int8Array、Int16Array、Int32Array、Uint8Array、Uint8ClampedArray、Uint16Array、Uint32Array、Float32Array、Float64Array、BigInt64Array 和 BigUint64Array。
+检查value是否为TypedArray类型。
+
+TypedArray类型，包括Int8Array、Int16Array、Int32Array、Uint8Array、Uint8ClampedArray、Uint16Array、Uint32Array、Float32Array、Float64Array、BigInt64Array、BigUint64Array。
 
 **起始版本：** 8
 
@@ -1198,13 +1202,13 @@ isTypedArray(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 TypedArray 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是TypedArray包含的类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -1221,7 +1225,7 @@ console.info("result = " + result);
 isUint16Array(value: Object): boolean
 ```
 
-判断入参是否为 Uint16Array 类型。
+检查value是否为Uint16Array数组类型。
 
 **起始版本：** 8
 
@@ -1235,13 +1239,13 @@ isUint16Array(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 Uint16Array 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是Uint16Array数组类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -1258,7 +1262,7 @@ console.info("result = " + result);
 isUint32Array(value: Object): boolean
 ```
 
-判断入参是否为 Uint32Array 类型。
+检查value是否为Uint32Array数组类型。
 
 **起始版本：** 8
 
@@ -1272,13 +1276,13 @@ isUint32Array(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 Uint32Array 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是Uint32Array数组类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -1295,7 +1299,7 @@ console.info("result = " + result);
 isUint8Array(value: Object): boolean
 ```
 
-判断入参是否为 Uint8Array 类型。
+检查value是否为Uint8Array数组类型。
 
 **起始版本：** 8
 
@@ -1309,13 +1313,13 @@ isUint8Array(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 Uint8Array 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是Uint8Array数组类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -1332,7 +1336,7 @@ console.info("result = " + result);
 isUint8ClampedArray(value: Object): boolean
 ```
 
-判断入参是否为 Uint8ClampedArray 类型。
+检查value是否为Uint8ClampedArray数组类型。
 
 **起始版本：** 8
 
@@ -1346,13 +1350,13 @@ isUint8ClampedArray(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 Uint8ClampedArray 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是Uint8ClampedArray数组类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -1369,7 +1373,7 @@ console.info("result = " + result);
 isWeakMap(value: Object): boolean
 ```
 
-判断入参是否为 WeakMap 类型。
+检查value是否为WeakMap类型。
 
 **起始版本：** 8
 
@@ -1383,13 +1387,13 @@ isWeakMap(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 WeakMap 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是WeakMap类型则返回true，否则返回false。 |
 
 **示例**
 
@@ -1407,7 +1411,7 @@ console.info("result = " + result);
 isWeakSet(value: Object): boolean
 ```
 
-判断入参是否为 WeakSet 类型。
+检查value是否为WeakSet类型。
 
 **起始版本：** 8
 
@@ -1421,13 +1425,13 @@ isWeakSet(value: Object): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Object | 是 | 要检查的对象。 |
+| value | Object | 是 | 待检测对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果入参为 WeakSet 类型，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果是WeakSet类型则返回true，否则返回false。 |
 
 **示例**
 

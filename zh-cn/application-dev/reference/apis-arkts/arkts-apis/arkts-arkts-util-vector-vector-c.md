@@ -130,7 +130,7 @@ let result3 = vector.add(personInfo);
 clear(): void
 ```
 
-清除Vector中的所有元素，并将length置为0。
+清除Vector中的所有元素，并把length置为0。
 
 **起始版本：** 8
 
@@ -157,7 +157,7 @@ vector.clear();
 clone(): Vector<T>
 ```
 
-克隆一个实例，并返回克隆后的实例。修改克隆后的实例并不会影响原实例。
+克隆一个与Vector相同的实例，并返回克隆后的实例。修改克隆后的实例并不会影响原实例。
 
 **起始版本：** 8
 
@@ -212,7 +212,7 @@ let vector : Vector<string | number | Array<number>> = new Vector();
 convertToArray(): Array<T>
 ```
 
-将Vector实例转换为数组。
+把当前Vector实例转换成数组，并返回转换后的数组。
 
 **起始版本：** 8
 
@@ -245,7 +245,7 @@ let result = vector.convertToArray();
 copyToArray(array: Array<T>): void
 ```
 
-将Vector中的元素复制到指定数组中，覆盖数组中相同下标的元素。
+将Vector实例中的元素按索引对应关系复制到指定数组中对应位置。
 
 **起始版本：** 8
 
@@ -281,7 +281,7 @@ forEach(callbackFn: (value: T, index?: number, vector?: Vector<T>) => void, this
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, vector?: Vector&lt;T&gt;) =&gt; void | 是 | 回调函数，用于遍历Vector中的每个元素。回调函数依次接收value、index和vector参数，分别表示当前元素的值、元素下标和当前调用forEach方法的Vector实例。 |
+| callbackFn | (value: T, index?: number, vector?: Vector&lt;T&gt;) =&gt; void | 是 | 回调函数，用于遍历Vector中的每个元素。回调函数依次接收value、index和vector参数，分别表示当前遍历到的元素、当前遍历到的下标值和当前调用forEach方法的实例对象，默认值为当前实例对象。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
 
 **示例**
@@ -344,7 +344,7 @@ let result = vector.get(2);
 getCapacity(): number
 ```
 
-获取Vector实例的容量大小。
+获取当前实例的容量大小。
 
 **起始版本：** 8
 
@@ -377,7 +377,7 @@ let result = vector.getCapacity();
 getFirstElement(): T
 ```
 
-获取Vector实例中的第一个元素。Vector为空时返回undefined。
+获取实例中的第一个元素。Vector为空时返回undefined。
 
 **起始版本：** 8
 
@@ -450,7 +450,7 @@ let result = vector.getIndexFrom(4, 3);
 getIndexOf(element: T): number
 ```
 
-获取指定元素第一次出现的下标值，如果未找到则返回-1。
+返回指定元素第一次出现时的下标值，查找失败返回-1。与getLastIndexOf的区别：getIndexOf返回元素首次出现的位置，getLastIndexOf返回元素末次出现的位置。
 
 **起始版本：** 8
 
@@ -565,7 +565,7 @@ let result = vector.getLastIndexFrom(4,3);
 getLastIndexOf(element: T): number
 ```
 
-获取指定元素最后一次出现的下标值，如果未找到则返回-1。
+返回指定元素最后一次出现时的下标值，查找失败返回-1。
 
 **起始版本：** 8
 
@@ -721,7 +721,7 @@ vector.insert(true, 2);
 isEmpty(): boolean
 ```
 
-判断Vector是否为空。
+判断该Vector是否为空。
 
 **起始版本：** 8
 
@@ -754,7 +754,7 @@ let result = vector.isEmpty();
 remove(element: T): boolean
 ```
 
-删除指定元素第一次出现的元素。
+删除查找到的第一个指定的元素，并将其后续元素向左移动。
 
 **起始版本：** 8
 
@@ -768,7 +768,7 @@ remove(element: T): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| element | T | 是 | 待删除的元素。 |
+| element | T | 是 | 指定元素。 |
 
 **返回值：**
 
@@ -883,7 +883,7 @@ replaceAllElements(callbackFn: (value: T, index?: number, vector?: Vector<T>) =>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, vector?: Vector&lt;T&gt;) =&gt; T | 是 | 回调函数，用于操作Vector中的元素，并用操作后的结果替换原元素。回调函数依次接收value、index和vector参数，分别表示当前元素的值、元素下标和当前调用replaceAllElements方法的Vector实例。 |
+| callbackFn | (value: T, index?: number, vector?: Vector&lt;T&gt;) =&gt; T | 是 | 回调函数，用于操作Vector中的元素，并用操作后的结果替换原元素。回调函数依次接收value、index和vector参数，分别表示当前遍历到的元素、当前遍历到的下标值和当前调用replaceAllElements方法的实例对象，默认值为当前实例对象。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
 
 **示例**
@@ -1010,7 +1010,7 @@ vector.sort();
 subVector(fromIndex: number, toIndex: number): Vector<T>
 ```
 
-获取Vector实例中指定范围内的元素，包括起始位置但不包括结束位置的元素，作为一个新的Vector实例返回。
+根据下标截取Vector中的一段元素，并返回这一段Vector实例，包括起始值但不包括终止值。
 
 **起始版本：** 8
 
@@ -1056,7 +1056,7 @@ let result1 = vector.subVector(2,4);
 toString(): string
 ```
 
-用逗号（,）将Vector实例中的元素拼接成字符串。
+用","将Vector实例中的元素按顺序拼接成字符串。
 
 **起始版本：** 8
 

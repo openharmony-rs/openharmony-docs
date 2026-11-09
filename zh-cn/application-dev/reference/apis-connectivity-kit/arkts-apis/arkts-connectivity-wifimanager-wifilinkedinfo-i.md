@@ -110,8 +110,8 @@ ipAddress: number
 
 Wi-Fi连接的IP地址。
 
-1. IP地址在WiFi连接信息和"设置 &gt; 关于本机 &gt; 状态信息"中可以查看。
-2. ipAddress值为number类型，需要转换为点分十进制格式的IP地址（如192.168.1.1），具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4)。
+1. IP地址在Wi-Fi连接信息和"设置 &gt; 关于本机 &gt; 状态信息"中可以查看。
+2. ipAddress值为int类型，需要转换为点分十进制格式的IP地址（如192.168.1.1），具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4)。
 
 **类型：** number
 
@@ -143,7 +143,7 @@ Wi-Fi接入点是否是隐藏网络，true表示是隐藏网络，false表示不
 isHiLinkNetwork: boolean
 ```
 
-热点是否支持hilink，true表示支持， false表示不支持。
+热点是否支持HiLink，true表示支持，false表示不支持。
 
 **类型：** boolean
 
@@ -175,7 +175,7 @@ Wi-Fi接入点是否限制数据量，true表示限制，false表示不限制。
 linkSpeed: number
 ```
 
-Wi-Fi接入点的上行速度，单位Mbps。
+Wi-Fi接入点的上行速度，单位：Mbps。
 
 **类型：** number
 
@@ -207,7 +207,7 @@ macAddress: string
 macType: number
 ```
 
-MAC地址类型。0 - 设备MAC地址，1 - 随机MAC地址。
+MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址。
 
 **类型：** number
 
@@ -223,7 +223,7 @@ MAC地址类型。0 - 设备MAC地址，1 - 随机MAC地址。
 maxSupportedRxLinkSpeed: number
 ```
 
-当前支持的最大下行速率，单位Mbps。
+当前支持的最大下行速率，单位：Mbps。
 
 **类型：** number
 
@@ -239,7 +239,7 @@ maxSupportedRxLinkSpeed: number
 maxSupportedTxLinkSpeed: number
 ```
 
-当前支持的最大上行速率，单位Mbps。
+当前支持的最大上行速率，单位：Mbps。
 
 **类型：** number
 
@@ -255,7 +255,7 @@ maxSupportedTxLinkSpeed: number
 rssi: number
 ```
 
-热点的信号强度(dBm)。
+热点的信号强度，单位：dBm。
 
 RSSI（Received Signal Strength Indicator，接收信号强度指示），其标准取值范围为-127dBm至0dBm。在正常使用场景下，常见有效范围为-100dBm（弱信号）至-30dBm（强信号），接近0dBm表示信号极强。
 
@@ -275,7 +275,7 @@ RSSI（Received Signal Strength Indicator，接收信号强度指示），其标
 rxLinkSpeed: number
 ```
 
-Wi-Fi接入点的下行速度，单位Mbps。
+Wi-Fi接入点的下行速度，单位：Mbps。
 
 **类型：** number
 

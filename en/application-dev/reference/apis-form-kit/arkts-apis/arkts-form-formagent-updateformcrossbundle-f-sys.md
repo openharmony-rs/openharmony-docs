@@ -44,7 +44,7 @@ Updates a widget by cross bundle. This API uses a promise to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permissions denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The application is not a system application. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [16500050](../errorcode-form.md#16500050-ipc-failure) | Possible cause IPC connection error. Such as the remote object does not exist. |
 | [16500060](../errorcode-form.md#16500060-service-connection-failure) | Possible cause Service State error. Such as the form is recovering. |
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | Possible cause internal functional error. Such as virtualization failed. |

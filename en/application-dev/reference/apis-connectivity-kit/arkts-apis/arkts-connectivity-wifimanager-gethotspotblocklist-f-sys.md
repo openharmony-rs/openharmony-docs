@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function getHotspotBlockList(): Array<StationInfo>
 ```
 
-Get all the stations in the block list. If does't have the permission of ohos.permission.GET_WIFI_PEERS_MAC, return random bssid.
+Obtains the list of devices that are in the blocklist of the current Wi-Fi hotspot. This API is valid when the device is in hotspot (AP) mode.
 
 **Since:** 11
 
@@ -28,7 +28,7 @@ Get all the stations in the block list. If does't have the permission of ohos.pe
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[StationInfo](arkts-connectivity-wifimanager-stationinfo-i-sys.md)&gt; | stations in the block list. |
+| Array&lt;[StationInfo](arkts-connectivity-wifimanager-stationinfo-i-sys.md)&gt; | List of blocked devices obtained. |
 
 **Error codes:**
 

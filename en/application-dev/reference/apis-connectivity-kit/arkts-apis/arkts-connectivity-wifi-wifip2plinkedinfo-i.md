@@ -4,7 +4,7 @@
 interface WifiP2pLinkedInfo
 ```
 
-P2P linked information. @typedef WifiP2pLinkedInfo
+Provides information about the P2P connection.
 
 **Since:** 8
 
@@ -28,7 +28,7 @@ import { wifi } from '@kit.ConnectivityKit';
 connectState: P2pConnectState
 ```
 
-Connection status
+P2P connection state.
 
 **Type:** [P2pConnectState](arkts-connectivity-wifi-p2pconnectstate-e.md)
 
@@ -48,7 +48,7 @@ Connection status
 groupOwnerAddr: string
 ```
 
-Group owner address
+MAC address of the group.
 
 **Type:** string
 
@@ -68,7 +68,7 @@ Group owner address
 isGroupOwner: boolean
 ```
 
-Indicates whether it is group owner
+Whether the device is the group owner. The value **true** indicates that the device is the group owner, and the value **false** indicates the opposite.
 
 **Type:** boolean
 

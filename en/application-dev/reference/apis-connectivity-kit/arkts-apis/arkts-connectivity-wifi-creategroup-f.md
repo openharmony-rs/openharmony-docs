@@ -30,13 +30,13 @@ Creates a P2P group.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [WifiP2PConfig](arkts-connectivity-wifi-wifip2pconfig-i.md) | Yes | Indicates the configuration for creating a group. |
+| config | [WifiP2PConfig](arkts-connectivity-wifi-wifip2pconfig-i.md) | Yes | Group configuration. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns `true` if the operation is successful, returns `false` otherwise. |
+| boolean | Returns **true** if the operation is successful; returns **false** otherwise. |
 
 **Examples**
 

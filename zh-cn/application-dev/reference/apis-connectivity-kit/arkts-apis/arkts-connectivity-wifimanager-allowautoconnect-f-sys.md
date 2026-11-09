@@ -28,8 +28,8 @@ function allowAutoConnect(netId: number, isAllowed: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| netId | number | 是 | 标识要设置的网络。networkId的值不能小于0。 |
-| isAllowed | boolean | 是 | 标识是否允许自动连接。 |
+| netId | number | 是 | 标识要设置的网络。netId的值不能小于0。 |
+| isAllowed | boolean | 是 | 是否允许自动连接。 |
 
 **错误码：**
 

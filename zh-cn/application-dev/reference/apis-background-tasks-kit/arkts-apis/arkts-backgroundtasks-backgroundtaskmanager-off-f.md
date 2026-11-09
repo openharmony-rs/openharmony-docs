@@ -12,7 +12,7 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 function off(type: 'continuousTaskCancel', callback?: Callback<ContinuousTaskCancelInfo>): void
 ```
 
-解除长时任务取消的监听，使用callback异步回调。
+取消长时任务取消的监听，使用callback异步回调。
 
 **起始版本：** 15
 

@@ -16,7 +16,7 @@ Unsubscribe Wi-Fi status change events.
 
 All callback functions will be deregistered If there is no specific callback parameter.
 
-**Since:** 12
+**Since:** 9
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
@@ -67,7 +67,7 @@ function off(type: 'wifiConnectionChange', callback?: Callback<number>): void
 
 Unsubscribe Wi-Fi connection change events. All callback functions will be deregistered If there is no specific callback parameter.
 
-**Since:** 12
+**Since:** 9
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
@@ -118,7 +118,7 @@ function off(type: 'wifiScanStateChange', callback?: Callback<number>): void
 
 Unsubscribe Wi-Fi scan status change events. All callback functions will be deregistered If there is no specific callback parameter.
 
-**Since:** 12
+**Since:** 9
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
@@ -365,7 +365,11 @@ function off(type: 'p2pDeviceChange', callback?: Callback<WifiP2pDevice>): void
 
 Unsubscribe P2P local device change events.
 
-**Since:** 10
+**Since:** 9
+
+**Required permissions:** 
+- API version 10 and later: N/A
+- API version 9: ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
 <!--Device-wifiManager-function off(type: 'p2pDeviceChange', callback?: Callback<WifiP2pDevice>): void--><!--Device-wifiManager-function off(type: 'p2pDeviceChange', callback?: Callback<WifiP2pDevice>): void-End-->
 
@@ -412,7 +416,11 @@ function off(type: 'p2pPeerDeviceChange', callback?: Callback<WifiP2pDevice[]>):
 
 Unsubscribe P2P peer device change events.
 
-**Since:** 10
+**Since:** 9
+
+**Required permissions:** 
+- API version 10 and later: N/A
+- API version 9: ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
 <!--Device-wifiManager-function off(type: 'p2pPeerDeviceChange', callback?: Callback<WifiP2pDevice[]>): void--><!--Device-wifiManager-function off(type: 'p2pPeerDeviceChange', callback?: Callback<WifiP2pDevice[]>): void-End-->
 

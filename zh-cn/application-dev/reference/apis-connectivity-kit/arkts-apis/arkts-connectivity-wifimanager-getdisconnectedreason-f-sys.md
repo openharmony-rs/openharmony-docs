@@ -28,7 +28,7 @@ function getDisconnectedReason(): DisconnectedReason
 
 | 类型 | 说明 |
 | --- | --- |
-| [DisconnectedReason](arkts-connectivity-wifimanager-disconnectedreason-e-sys.md) | 最近断开的原因 |
+| [DisconnectedReason](arkts-connectivity-wifimanager-disconnectedreason-e-sys.md) | 最近断开的原因。 |
 
 **错误码：**
 

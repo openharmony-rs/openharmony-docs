@@ -4,9 +4,9 @@
 interface WifiDeviceConfig
 ```
 
-Wi-Fi device configuration information. @typedef WifiDeviceConfig
+Represents the Wi-Fi configuration information.
 
-**Since:** 12
+**Since:** 9
 
 <!--Device-wifiManager-interface WifiDeviceConfig--><!--Device-wifiManager-interface WifiDeviceConfig-End-->
 
@@ -28,7 +28,7 @@ Wi-Fi bssid(MAC): the length is 6.
 
 **Type:** string
 
-**Since:** 12
+**Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -46,7 +46,7 @@ Wi-Fi bssid type.
 
 **Type:** [DeviceAddressType](arkts-connectivity-wifimanager-deviceaddresstype-e.md)
 
-**Since:** 12
+**Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -112,7 +112,7 @@ Wi-Fi key: maximum length is 64.
 
 **Type:** string
 
-**Since:** 12
+**Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -130,7 +130,7 @@ Security type: reference definition of WifiSecurityType
 
 **Type:** [WifiSecurityType](arkts-connectivity-wifimanager-wifisecuritytype-e.md)
 
-**Since:** 12
+**Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -166,7 +166,7 @@ Wi-Fi SSID: the maximum length is 32.
 
 **Type:** string
 
-**Since:** 12
+**Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 

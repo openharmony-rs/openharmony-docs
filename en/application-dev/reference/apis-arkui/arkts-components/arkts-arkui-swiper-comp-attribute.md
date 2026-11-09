@@ -313,8 +313,7 @@ Sets the number of elements to display per page.
 > 
 > - This API can be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 18.When the navigation indicator is set to dot style and the number of child elements displayed in the viewport is greater than 1 (multi-page scenario)<!--RP1--><!--RP1End-->, the number of displayed navigation dots follows the rules below.
 
-| Total Children Count Visible Children Count| Swiping by Group Enabled| Loop Status | Number of Navigation Dots Displayed | Description |
-
+| Total Children Count Visible Children Count| Swiping by Group Enabled| Loop Status | Number of Navigation Dots Displayed | Description |  
 | ------------------------------------------ | ------------ | --------------- | ------------------------------------------------------------ | ---------------------------------------- |  
 | Yes | Yes | **loop** set to **true** | Equals the number of groups (calculated by dividing the total number of child elements by the number of visible child elements, with rounding up if there is a remainder).| Not effective when **displayCount** is set to **'auto'**.|  
 | Yes | Yes | **loop** set to **false**| Equals the number of groups (calculated by dividing the total number of child elements by the number of visible child elements, with rounding up if there is a remainder).| Not effective when **displayCount** is set to **'auto'**.|  

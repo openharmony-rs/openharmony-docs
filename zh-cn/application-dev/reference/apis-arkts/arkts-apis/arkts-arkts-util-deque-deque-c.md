@@ -132,7 +132,7 @@ forEach(callbackFn: (value: T, index?: number, deque?: Deque<T>) => void, thisAr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, deque?: Deque&lt;T&gt;) =&gt; void | 是 | 遍历每个元素时执行的回调函数，执行时的this值可通过thisArg参数指定。在回调函数执行过程中，不建议修改Deque（如插入或删除元素），否则可能导致遍历行为异常。 |
+| callbackFn | (value: T, index?: number, deque?: Deque&lt;T&gt;) =&gt; void | 是 | 遍历每个元素时执行的回调函数，执行时的this值可通过thisArg参数指定。在回调函数执行过程中，不建议修改Deque（如插入或删除元素），否则可能导致遍历行为异常。 value是当前遍历的元素；index是当前下标，从0开始递增；deque是当前遍历的Deque实例。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值。当需要改变回调函数中的this指向时传入此参数；不传入时默认值为当前实例对象。 |
 
 **错误码：**

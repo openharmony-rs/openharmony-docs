@@ -12,7 +12,7 @@ import { wifi } from '@kit.ConnectivityKit';
 function p2pCancelConnect(): boolean
 ```
 
-Canceling a P2P connection.
+Cancels this P2P connection.
 
 **Since:** 8
 
@@ -30,7 +30,7 @@ Canceling a P2P connection.
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns `true` if the operation is successful, returns `false` otherwise. |
+| boolean | Returns **true** if the operation is successful; returns **false** otherwise. |
 
 **Examples**
 

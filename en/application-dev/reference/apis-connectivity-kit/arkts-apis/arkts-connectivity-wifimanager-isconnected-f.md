@@ -14,7 +14,7 @@ function isConnected(): boolean
 
 Check whether the Wi-Fi connection has been set up.
 
-**Since:** 12
+**Since:** 9
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 

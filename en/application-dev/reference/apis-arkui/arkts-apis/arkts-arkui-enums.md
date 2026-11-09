@@ -13,6 +13,7 @@
 | Name | Description |
 | --- | --- |
 | [AccessibilityHoverType](arkts-arkui-accessibilityhovertype-e.md) | Enumerates the accessibility hover action types. |
+| [AgentControlMode](arkts-arkui-agentcontrolmode-e.md) | Defines the input control mode for Agent-generated events. |
 | [Alignment](arkts-arkui-alignment-e.md) | Defines the alignment mode for child elements in the container drawing area. |
 | [AnimationPropertyType](arkts-arkui-animationpropertytype-e.md) | Enumerates animatable property types for component animations. |
 | [AnimationStatus](arkts-arkui-animationstatus-e.md) | Sets the animation playback status. |
@@ -111,7 +112,6 @@
 | [TitleHeight](arkts-arkui-titleheight-e.md) | Sets the recommended height of the title bar. |
 | [TouchType](arkts-arkui-touchtype-e.md) | Sets the trigger status type of a touch operation. |
 | [TransitionType](arkts-arkui-transitiontype-e.md) | Sets the transition type. |
-| [UIMaterialAnimationMode](arkts-arkui-uimaterialanimationmode-e.md) | Enumerates the component animation modes under the UI material effect. |
 | [VerticalAlign](arkts-arkui-verticalalign-e.md) | Sets the vertical alignment mode of child components. |
 | [Visibility](arkts-arkui-visibility-e.md) | Defines the visibility and layout placeholder status of the component. |
 | [Week](arkts-arkui-week-e.md) | Enumerates the days of the week. |

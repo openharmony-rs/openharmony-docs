@@ -65,7 +65,7 @@ addEventListener(type: string, listener: WorkerEventListener): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 监听的事件类型。 |
-| listener | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 是 | 当指定类型的事件发生时调用的回调函数。 |
+| listener | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 是 | 回调的事件。 |
 
 **错误码：**
 
@@ -138,7 +138,7 @@ const workerInstance = new worker.ThreadWorker('entry/ets/workers/worker.ets', {
 dispatchEvent(event: Event): boolean
 ```
 
-分发定义在Worker线程的事件。
+在宿主线程将事件对象分发到Worker线程的事件系统，该系统会自动触发该类型事件对应的所有监听器回调。
 
 **起始版本：** 9
 
@@ -158,7 +158,7 @@ dispatchEvent(event: Event): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean |  |
+| boolean | 分发的结果。true表示分发成功，false表示分发失败。 |
 
 **错误码：**
 
@@ -203,8 +203,8 @@ off(type: string, listener?: WorkerEventListener): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | string | 是 | 需要移除的事件类型。 |
-| listener | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 否 | listener 要移除的事件监听的回调函数。 |
+| type | string | 是 | 需要删除的事件类型。事件类型通过on设置。 |
+| listener | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 否 | 需要删除的特定监听器回调函数。如果未传入此参数，则会删除该类型的所有监听器。 |
 
 **错误码：**
 
@@ -262,7 +262,7 @@ on(type: string, listener: WorkerEventListener): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 监听的事件类型。 |
-| listener | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 是 | 当指定类型的事件发生时调用的回调函数。 |
+| listener | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 是 | 回调的事件。 |
 
 **错误码：**
 
@@ -332,7 +332,7 @@ once(type: string, listener: WorkerEventListener): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 监听的事件类型。 |
-| listener | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 是 | listener 当指定类型的事件发生时调用的回调函数。 |
+| listener | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 是 | 回调的事件。 |
 
 **错误码：**
 
@@ -492,8 +492,8 @@ postMessage(message: Object, transfer: ArrayBuffer[]): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| message | Object | 是 | 发送至Worker的数据，该数据对象必须是可序列化对象。支持的参数类型请参考序列化支持类型。 |
-| transfer | ArrayBuffer[] | 是 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到Worker线程，在宿主线程中将会变为不可用，仅在Worker线程中可用。该数组不可传入null。 |
+| message | Object | 是 | 发送至Worker的数据，该数据对象必须是可序列化对象，序列化支持类型见序列化支持类型。 |
+| transfer | ArrayBuffer[] | 是 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到Worker线程，在宿主线程中将会变为不可用，仅在Worker线程中可用，数组不可传入null。 |
 
 **错误码：**
 
@@ -583,7 +583,7 @@ struct Index {
 postMessage(message: Object, options?: PostMessageOptions): void
 ```
 
-宿主线程可以通过转移对象所有权或拷贝数据的方式向Worker线程发送消息。
+宿主线程可以通过转移对象所有权或拷贝数据的方式向Worker线程发送消息。在传递Sendable对象时，使用拷贝数据的方式。
 
 **起始版本：** 9
 
@@ -597,8 +597,8 @@ postMessage(message: Object, options?: PostMessageOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| message | Object | 是 | 发送至Worker的数据，该数据对象必须是可序列化对象。支持的参数类型请参考序列化支持类型。 |
-| options | [PostMessageOptions](arkts-arkts-worker-postmessageoptions-i.md) | 否 | 当填入该参数时，其作用与传入ArrayBuffer[]相同，该数组中对象的所有权会被转移到Worker线程，在宿主线程中将变为不可用，仅在Worker线程中可用。若不填入该参数，默认设置为undefined，通过拷贝数据的方式传输信息到Worker线程。 |
+| message | Object | 是 | 发送至Worker的数据，该数据对象必须是可序列化对象，序列化支持类型见序列化支持类型。 |
+| options | [PostMessageOptions](arkts-arkts-worker-postmessageoptions-i.md) | 否 | 当填入该参数时，传输的数据将通过所有权转移的方式发送到Worker线程。这些数据在宿主线程中将变为不可用，仅在Worker线程中可用。若不填入该参数，默认设置为 undefined，数据将通过拷贝的方式传输到Worker线程。 |
 
 **错误码：**
 
@@ -642,8 +642,8 @@ postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| message | Object | 是 | 发送至Worker线程的数据，该数据对象必须是可序列化或可共享。支持的序列化类型请参考序列化支持类型。支持的共享类型请参考Sendable支持的数据类型。 |
-| transfer | ArrayBuffer[] | 否 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到Worker线程，转移后该对象仅在Worker线程中可用。该数组不可传入null。默认值为undefined。 |
+| message | Object | 是 | 发送至Worker的数据，该数据对象必须是可序列化对象，序列化支持类型见序列化支持类型。如果需要共享数据，支持类型见Sendable支持的数据类型。 |
+| transfer | ArrayBuffer[] | 否 | 可转移的ArrayBuffer实例对象数组。该数组中对象的所有权将转移到Worker线程，在宿主线程中变为不可用，仅在Worker线程中可用，数组不可传入null。默认值为空数组。 |
 
 **错误码：**
 
@@ -701,7 +701,7 @@ workerPort.onmessage = (e: MessageEvents) => {
 registerGlobalCallObject(instanceName: string, globalCallObject: Object): void
 ```
 
-在宿主线程的ThreadWorker实例上注册一个对象，该对象的方法可在Worker线程中通过callGlobalCallObjectMethod调用。
+在宿主线程的ThreadWorker实例上注册一个对象，该对象的方法可在Worker线程中调用。详情请参见callGlobalCallObjectMethod。
 
 **起始版本：** 11
 
@@ -716,7 +716,7 @@ registerGlobalCallObject(instanceName: string, globalCallObject: Object): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | instanceName | string | 是 | 注册对象时使用的键，调用时通过该键值找到被注册的对象。 |
-| globalCallObject | Object | 是 | 被注册的对象，ThreadWorker实例会持有该对象的强引用。 |
+| globalCallObject | Object | 是 | 被注册的对象，ThreadWorker实例会持有被注册对象的强引用。 |
 
 **错误码：**
 
@@ -826,8 +826,8 @@ removeEventListener(type: string, callback?: WorkerEventListener): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | string | 是 | 需要移除的事件类型。 |
-| callback | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 否 | 要移除的特定事件监听回调函数；省略时移除该类型的全部监听器。 |
+| type | string | 是 | 需要删除的监听事件类型。事件类型通过addEventListener设置。 |
+| callback | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 否 | 需要删除的特定监听器回调函数。如果未传入此参数，则会删除该类型的所有监听器。 |
 
 **错误码：**
 
@@ -890,7 +890,7 @@ workerInstance.terminate();
 unregisterGlobalCallObject(instanceName?: string): void
 ```
 
-取消在宿主线程ThreadWorker实例上注册的对象，该方法会释放ThreadWorker实例与目标对象之间的强引用。如果无匹配对象，该方法不会报错。
+取消在宿主线程ThreadWorker实例上注册的对象，该方法会释放ThreadWorker实例中与该键相匹配的对象的强引用。如果无匹配对象，该方法不会报错。
 
 **起始版本：** 11
 

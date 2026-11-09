@@ -26,6 +26,8 @@ BREAK_ALL = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
 <!--Device-WordBreak-BREAK_ALL = 1--><!--Device-WordBreak-BREAK_ALL = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -43,6 +45,8 @@ BREAK_WORD = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-WordBreak-BREAK_WORD = 2--><!--Device-WordBreak-BREAK_WORD = 2-End-->
 
@@ -62,6 +66,8 @@ HYPHENATION = 3
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
 <!--Device-WordBreak-HYPHENATION = 3--><!--Device-WordBreak-HYPHENATION = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -79,6 +85,8 @@ CJK(中文、日文、韩文)文本可以在任意2个字符间断行，而Non-C
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-WordBreak-NORMAL = 0--><!--Device-WordBreak-NORMAL = 0-End-->
 

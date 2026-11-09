@@ -12,7 +12,7 @@ import { wifi } from '@kit.ConnectivityKit';
 function getCurrentGroup(): Promise<WifiP2pGroupInfo>
 ```
 
-Obtains information about the current group.
+Obtains the current P2P group information. This API uses a promise to return the result.
 
 **Since:** 8
 
@@ -30,7 +30,7 @@ Obtains information about the current group.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[WifiP2pGroupInfo](arkts-connectivity-wifi-wifip2pgroupinfo-i.md)&gt; | Returns the current group information. |
+| Promise&lt;[WifiP2pGroupInfo](arkts-connectivity-wifi-wifip2pgroupinfo-i.md)&gt; | Promise used to return the P2P group information obtained. |
 
 **Examples**
 
@@ -57,7 +57,7 @@ wifi.getCurrentGroup().then(data => {
 function getCurrentGroup(callback: AsyncCallback<WifiP2pGroupInfo>): void
 ```
 
-Obtains information about the current group.
+Obtains the current P2P group information. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
 
@@ -75,7 +75,7 @@ Obtains information about the current group.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[WifiP2pGroupInfo](arkts-connectivity-wifi-wifip2pgroupinfo-i.md)&gt; | Yes |  |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[WifiP2pGroupInfo](arkts-connectivity-wifi-wifip2pgroupinfo-i.md)&gt; | Yes | Callback used to return the result. |
 
 **Examples**
 

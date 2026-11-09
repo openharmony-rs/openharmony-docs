@@ -26,7 +26,7 @@ import { ArkTSUtils } from '@kit.ArkTS';
 constructor()
 ```
 
-默认构造函数。
+默认构造函数。创建一个异步锁。
 
 **起始版本：** 12
 
@@ -205,7 +205,7 @@ static queryAll(): AsyncLockState[]
 static request(name: string): AsyncLock
 ```
 
-使用指定的名称查找或创建AsyncLock实例。
+使用指定的名称查找或创建（如果未找到）异步锁实例。
 
 **起始版本：** 12
 
@@ -219,13 +219,13 @@ static request(name: string): AsyncLock
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | 要查找或创建的锁的名称。 |
+| name | string | 是 | 按指定名称查找或创建异步锁实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [AsyncLock](arkts-arkts-locks-asynclock-c.md) | 返回AsyncLock实例。 |
+| [AsyncLock](arkts-arkts-locks-asynclock-c.md) | 返回查找到或创建后的异步锁实例。 |
 
 ## name
 

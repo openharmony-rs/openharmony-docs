@@ -4,7 +4,7 @@
 enum WifiCapability
 ```
 
-Wi-Fi Capability
+Describes the capabilities supported by the Wi-Fi module.
 
 **Since:** 26.0.0
 
@@ -18,7 +18,7 @@ Wi-Fi Capability
 WIFI_AUTO_ENABLE = 0
 ```
 
-Wi-Fi auto enable capability
+Wi-Fi enabled automatically.
 
 **Since:** 26.0.0
 

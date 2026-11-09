@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function getSupportedFeatures(): number
 ```
 
-Obtain the features supported by the device. To check whether this device supports a specified feature.
+Obtains the features supported by this device.
 
 **Since:** 9
 
@@ -28,7 +28,7 @@ Obtain the features supported by the device. To check whether this device suppor
 
 | Type | Description |
 | --- | --- |
-| number | Returns the features supported by this device. |
+| number | Feature value. Each bit represents a feature: <br>0x0001: WLAN infrastructure mode <br>0x0002: 5 GHz feature <br>0x0004: Generic Advertisement Service (GAS)/Access Network Query Protocol (ANQP) feature <br>0x0008: Wi-Fi Direct <br>0x0010: SoftAP <br>0x0040: Wi-Fi Aware <br>0x8000: WLAN AP/STA concurrency <br>0x8000000: WPA3 Personal (WPA-3 SAE) <br>0x10000000: WPA3-Enterprise Suite B <br>0x20000000: Enhanced open feature |
 
 **Error codes:**
 

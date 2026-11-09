@@ -43,7 +43,7 @@ function unregisterFormHostService(serviceId: string): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permissions denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16501019](../errorcode-form.md#16501019-无法注销非本应用注册的卡片服务) | A form service not owned by you cannot be unregistered. |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |

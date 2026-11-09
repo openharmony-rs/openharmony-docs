@@ -28,7 +28,7 @@ function enableHiLinkHandshake(isHiLinkEnable: boolean, bssid: string, config: W
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isHiLinkEnable | boolean | 是 | 是否使能hiLink。true:使能， false:去使能。 |
+| isHiLinkEnable | boolean | 是 | 是否使能HiLink。true表示使能，false表示去使能。 |
 | bssid | string | 是 | 热点的MAC地址，例如：00:11:22:33:44:55。 |
 | config | [WifiDeviceConfig](arkts-connectivity-wifimanager-wifideviceconfig-i.md) | 是 | Wi-Fi的配置信息。config.bssid必须和第二个参数bssid保持一致。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
 

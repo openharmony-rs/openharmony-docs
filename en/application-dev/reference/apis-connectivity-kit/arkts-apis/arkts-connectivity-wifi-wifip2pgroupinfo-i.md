@@ -4,7 +4,7 @@
 interface WifiP2pGroupInfo
 ```
 
-P2P group information. @interface WifiP2pGroupInfo
+Represents the P2P group information.
 
 **Since:** 8
 
@@ -28,7 +28,7 @@ import { wifi } from '@kit.ConnectivityKit';
 clientDevices: WifiP2pDevice[]
 ```
 
-Client list
+List of connected devices.
 
 **Type:** [WifiP2pDevice](arkts-connectivity-wifi-wifip2pdevice-i.md)[]
 
@@ -48,7 +48,7 @@ Client list
 frequency: number
 ```
 
-Frequency
+Frequency of the group, in MHz.
 
 **Type:** number
 
@@ -68,7 +68,7 @@ Frequency
 goIpAddress: string
 ```
 
-Group owner IP address
+IP address of the group.
 
 **Type:** string
 
@@ -88,7 +88,7 @@ Group owner IP address
 groupName: string
 ```
 
-Group name
+Group name.
 
 **Type:** string
 
@@ -108,7 +108,7 @@ Group name
 interface: string
 ```
 
-Interface name
+Interface name.
 
 **Type:** string
 
@@ -128,7 +128,7 @@ Interface name
 isP2pGo: boolean
 ```
 
-Indicates whether it is group owner
+Whether the device is the group owner. The value **true** indicates that the device is the group owner, and the value **false** indicates the opposite.
 
 **Type:** boolean
 
@@ -148,7 +148,7 @@ Indicates whether it is group owner
 networkId: number
 ```
 
-Network ID
+Network ID.
 
 **Type:** number
 
@@ -168,7 +168,7 @@ Network ID
 ownerInfo: WifiP2pDevice
 ```
 
-Group owner information
+Device information of the group.
 
 **Type:** [WifiP2pDevice](arkts-connectivity-wifi-wifip2pdevice-i.md)
 
@@ -188,7 +188,7 @@ Group owner information
 passphrase: string
 ```
 
-The group passphrase
+Passphrase of the group.
 
 **Type:** string
 

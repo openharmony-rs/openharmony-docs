@@ -24,7 +24,7 @@ import { util } from '@kit.ArkTS';
 constructor()
 ```
 
-用于创建 **TextEncoder** 对象的构造函数。
+TextEncoder的构造函数，创建一个默认编码格式为'utf-8'的TextEncoder实例。
 
 **起始版本：** 7
 
@@ -46,7 +46,7 @@ let textEncoder = new util.TextEncoder();
 constructor(encoding?: string)
 ```
 
-用于创建 **TextEncoder** 对象的构造函数。
+TextEncoder的构造函数。
 
 **起始版本：** 9
 
@@ -60,7 +60,7 @@ constructor(encoding?: string)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| encoding | string | 否 | 编码格式。默认格式为 **'utf-8'**。 |
+| encoding | string | 否 | 编码格式，支持格式参见encoding属性，默认值为'utf-8'。 |
 
 **示例**
 
@@ -74,7 +74,7 @@ let textEncoder = new util.TextEncoder("utf-8");
 static create(encoding?: string): TextEncoder
 ```
 
-创建一个 **TextEncoder** 对象。
+创建TextEncoder对象的方法。
 
 **起始版本：** 12
 
@@ -88,13 +88,13 @@ static create(encoding?: string): TextEncoder
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| encoding | string | 否 | 编码格式。默认格式为 **'utf-8'**。 |
+| encoding | string | 否 | 编码格式，默认值为'utf-8'。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [TextEncoder](arkts-arkts-util-textencoder-c.md) | **TextEncoder** 对象。 |
+| [TextEncoder](arkts-arkts-util-textencoder-c.md) | 返回一个用于将字符串按指定编码格式编码为字节数组的TextEncoder对象。 |
 
 **示例**
 
@@ -108,7 +108,7 @@ let textEncoder = util.TextEncoder.create("utf-8");
 encodeInto(input?: string): Uint8Array
 ```
 
-将输入内容编码为 Uint8Array 对象。
+将输入参数编码后输出Uint8Array对象。
 
 **起始版本：** 9
 
@@ -122,13 +122,13 @@ encodeInto(input?: string): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| input | string | 否 | 要编码的字符串。默认值为空字符串。如果输入参数为空字符串，则返回值为 undefined。 |
+| input | string | 否 | 需要编码的字符串，默认值是空字符串。当入参是空字符串时，返回undefined。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Uint8Array | 获取到的 Uint8Array 对象。 |
+| Uint8Array | 返回编码后的Uint8Array对象。当入参为空字符串时，返回undefined。 |
 
 **示例**
 
@@ -145,7 +145,7 @@ console.info("result = " + result);
 encodeInto(input: string, dest: Uint8Array): { read: number; written: number }
 ```
 
-将生成的 UTF-8 编码文本写入到数组中。
+将生成的utf-8编码文本写入dest数组。
 
 **起始版本：** 7
 
@@ -161,14 +161,14 @@ encodeInto(input: string, dest: Uint8Array): { read: number; written: number }
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| input | string | 是 | 要编码的字符串。 |
-| dest | Uint8Array | 是 | 用于存储 UTF-8 编码文本的 Uint8Array 对象。 |
+| input | string | 是 | 需要编码的字符串。 |
+| dest | Uint8Array | 是 | Uint8Array对象实例，用于将生成的utf-8编码文本放入其中。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| object | 获取到的对象。**read** 表示已编码的字符数，**written** 表示已编码字符所占用的字节数。 |
+| object | 返回一个对象，read表示已编码的字符数，written表示编码字符所占用的字节数。 |
 
 **示例**
 
@@ -187,7 +187,7 @@ console.info("uint8 = " + uint8);
 encodeIntoUint8Array(input: string, dest: Uint8Array): EncodeIntoUint8ArrayInfo
 ```
 
-对输入内容进行编码，并将结果存储到 Uint8Array 对象中。
+对字符串进行编码，将结果存储到dest数组。
 
 **起始版本：** 9
 
@@ -201,8 +201,8 @@ encodeIntoUint8Array(input: string, dest: Uint8Array): EncodeIntoUint8ArrayInfo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| input | string | 是 | 要编码的字符串。 |
-| dest | Uint8Array | 是 | 用于存储 UTF-8 编码文本的 Uint8Array 对象。 |
+| input | string | 是 | 需要编码的字符串。 |
+| dest | Uint8Array | 是 | Uint8Array对象实例，用于将生成的utf-8编码文本放入其中。 |
 
 **返回值：**
 
@@ -232,7 +232,7 @@ console.info("result.written = " + result.written);
 encode(input?: string): Uint8Array
 ```
 
-将输入内容编码为 Uint8Array 对象。
+将输入字符串编码后输出对应的Uint8Array字节数组。
 
 **起始版本：** 7
 
@@ -248,13 +248,13 @@ encode(input?: string): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| input | string | 否 | 要编码的字符串。默认值为空字符串。 |
+| input | string | 否 | 需要编码的字符串，默认值是空字符串。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Uint8Array | 获取到的 Uint8Array 对象。 |
+| Uint8Array | 返回编码后的文本。 |
 
 **示例**
 

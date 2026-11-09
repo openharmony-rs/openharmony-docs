@@ -14,7 +14,7 @@ function getLinkedInfo(): Promise<WifiLinkedInfo>
 
 Obtain connection information about the Wi-Fi connection. If does't have the permission of ohos.permission.GET_WIFI_PEERS_MAC, return random bssid.
 
-**Since:** 12
+**Since:** 9
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
@@ -60,7 +60,7 @@ function getLinkedInfo(callback: AsyncCallback<WifiLinkedInfo>): void
 
 Obtain connection information about the Wi-Fi connection.
 
-**Since:** 12
+**Since:** 9
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 

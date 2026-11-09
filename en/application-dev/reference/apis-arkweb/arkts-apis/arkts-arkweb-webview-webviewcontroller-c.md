@@ -3225,6 +3225,40 @@ struct WebComponent {
 }
 ```
 
+## getNavigationEntryUserData
+
+```TypeScript
+getNavigationEntryUserData(key: string): string
+```
+
+Obtains the user data value associated with the specified key on the current navigation entry.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebviewController-getNavigationEntryUserData(key: string): string--><!--Device-WebviewController-getNavigationEntryUserData(key: string): string-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| key | string | Yes | Key of the user data. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| string | Value of the user data, or an empty string if the key does not exist. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. Ensure that the WebviewController is associated with a Web component before calling this API. |
+
 ## getOriginalUrl
 
 ```TypeScript
@@ -7606,6 +7640,85 @@ struct WebComponent {
 }
 ```
 
+## removeNavigationEntryUserData
+
+```TypeScript
+removeNavigationEntryUserData(key: string): void
+```
+
+Removes the user data associated with the specified key from the current navigation entry. If the key does not exist, this API does nothing.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebviewController-removeNavigationEntryUserData(key: string): void--><!--Device-WebviewController-removeNavigationEntryUserData(key: string): void-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| key | string | Yes | Key of the user data to remove. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. Ensure that the WebviewController is associated with a Web component before calling this API. |
+
+## removeVisitedLinksSince
+
+```TypeScript
+static removeVisitedLinksSince(date: Date, callback: Callback<void>): void
+```
+
+Removes visited link records that changed after the specified date. This API uses an asynchronous callback to return the result.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebviewController-static removeVisitedLinksSince(date: Date, callback: Callback<void>): void--><!--Device-WebviewController-static removeVisitedLinksSince(date: Date, callback: Callback<void>): void-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| date | Date | Yes | The time point for the data removal.     The visited link records remove data that changed after the date. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+
+## removeVisitedLinksSince
+
+```TypeScript
+static removeVisitedLinksSince(date: Date): Promise<void>
+```
+
+Removes visited link records that changed after the specified date. This API uses a promise to return the result.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebviewController-static removeVisitedLinksSince(date: Date): Promise<void>--><!--Device-WebviewController-static removeVisitedLinksSince(date: Date): Promise<void>-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| date | Date | Yes | The time point for the data removal.     The visited link records remove data that changed after the date. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
 ## requestFocus
 
 ```TypeScript
@@ -10083,6 +10196,37 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+## setNavigationEntryUserData
+
+```TypeScript
+setNavigationEntryUserData(key: string, value: string): void
+```
+
+Sets a key-value pair of user data on the current navigation entry.
+
+The user data is associated with the NavigationEntry lifecycle. The current navigation entry refers to the active entry in the navigation history. When the entry is destroyed (e.g., via history navigation or clearHistory), the user data is cleared. If a value with the same key already exists, it will be overwritten.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebviewController-setNavigationEntryUserData(key: string, value: string): void--><!--Device-WebviewController-setNavigationEntryUserData(key: string, value: string): void-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| key | string | Yes | Key of the user data. |
+| value | string | Yes | Value of the user data. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. Ensure that the WebviewController is associated with a Web component before calling this API. |
 
 ## setNetworkAvailable
 

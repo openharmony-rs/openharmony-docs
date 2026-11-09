@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function getWifiDetailState(): WifiDetailState
 ```
 
-Obtains information about a Wi-Fi detail state.
+Obtains the Wi-Fi state.
 
 **Since:** 12
 
@@ -28,7 +28,7 @@ Obtains information about a Wi-Fi detail state.
 
 | Type | Description |
 | --- | --- |
-| [WifiDetailState](arkts-connectivity-wifimanager-wifidetailstate-e-sys.md) | Returns information about wifi state. |
+| [WifiDetailState](arkts-connectivity-wifimanager-wifidetailstate-e-sys.md) | Wi-Fi state obtained. |
 
 **Error codes:**
 

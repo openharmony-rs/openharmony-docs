@@ -12,7 +12,7 @@ import { wifi } from '@kit.ConnectivityKit';
 function getScanInfos(): Promise<Array<WifiScanInfo>>
 ```
 
-Obtains the hotspot information that scanned.
+Obtains the scan result. This API uses a promise to return the result.
 
 **Since:** 6
 
@@ -30,7 +30,7 @@ Obtains the hotspot information that scanned.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[WifiScanInfo](arkts-connectivity-wifi-wifiscaninfo-i.md)&gt;&gt; | Returns information about scanned Wi-Fi hotspot if any. |
+| Promise&lt;Array&lt;[WifiScanInfo](arkts-connectivity-wifi-wifiscaninfo-i.md)&gt;&gt; | Promise used to return the detected hotspots. |
 
 **Examples**
 
@@ -61,7 +61,7 @@ wifi.getScanInfos().then(result => {
 function getScanInfos(callback: AsyncCallback<Array<WifiScanInfo>>): void
 ```
 
-Obtains the hotspot information that scanned.
+Obtains the scan result. This API uses an asynchronous callback to return the result.
 
 **Since:** 6
 
@@ -79,7 +79,7 @@ Obtains the hotspot information that scanned.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[WifiScanInfo](arkts-connectivity-wifi-wifiscaninfo-i.md)&gt;&gt; | Yes |  |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[WifiScanInfo](arkts-connectivity-wifi-wifiscaninfo-i.md)&gt;&gt; | Yes | Callback used to return the result. |
 
 **Examples**
 

@@ -24,7 +24,7 @@ import { util } from '@kit.ArkTS';
 static addAfter(targetClass: Object, methodName: string, isStatic: boolean, after: Function): void
 ```
 
-在类对象的方法后插入一个函数。最终的返回值为被插入函数的返回值。
+在指定的类方法执行后插入一段逻辑。最终返回插入函数执行后的返回值。
 
 **起始版本：** 11
 
@@ -38,10 +38,10 @@ static addAfter(targetClass: Object, methodName: string, isStatic: boolean, afte
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetClass | Object | 是 | 目标类对象。 |
-| methodName | string | 是 | 方法名。不支持只读方法。 |
-| isStatic | boolean | 是 | 该方法是否为静态方法。值为 **true** 表示静态方法，值为 **false** 表示实例方法。 |
-| after | Function | 是 | 要插入的函数。如果该函数携带参数，则第一个参数为 **this** 对象：当 **isStatic**为 **true** 时为目标类对象（由 **targetClass** 指定），当 **isStatic** 为 **false** 时为该方法的实例对象；第二个参数为原方法的返回值（如果原方法没有返回值则为 **undefined**）；其余参数为原方法携带的参数。如果该函数不携带任何参数，则不执行任何处理。 |
+| targetClass | Object | 是 | 指定的类对象。 |
+| methodName | string | 是 | 指定的原方法名，不支持read-only方法。 |
+| isStatic | boolean | 是 | 指定的原方法是否为静态方法。true表示静态方法，false表示实例方法。 |
+| after | Function | 是 | 要插入的函数。函数有参数时，则第一个参数是this对象（若isStatic为true，则为类对象即targetClass；若isStatic为false，则为调用方法的实例对象），第二个参数是原方法的返回值（如果原方法没有返回值，则为undefined），其余参数是原方法的参数。函数也可以无参，无参时不做处理。 |
 
 **示例**
 
@@ -105,7 +105,7 @@ util.Aspect.addAfter(AroundTest, 'foo', false, () => {
 static addBefore(targetClass: Object, methodName: string, isStatic: boolean, before: Function): void
 ```
 
-在类对象的方法前插入一个函数。被插入的函数会先于类对象的原方法执行。
+在指定的类对象的原方法执行前插入一个函数，适用于日志记录、性能监控、权限校验等需要在方法执行前进行拦截处理的场景。执行addBefore接口后，先运行插入的函数逻辑，再执行指定类对象的原方法。
 
 **起始版本：** 11
 
@@ -119,10 +119,10 @@ static addBefore(targetClass: Object, methodName: string, isStatic: boolean, bef
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetClass | Object | 是 | 目标类对象。 |
-| methodName | string | 是 | 方法名。不支持只读方法。 |
-| isStatic | boolean | 是 | 该方法是否为静态方法。值为 **true** 表示静态方法，值为 **false** 表示实例方法。 |
-| before | Function | 是 | 要插入的函数。如果该函数携带参数，则第一个参数为 **this** 对象：当 **isStatic**为 **true** 时为目标类对象（由 **targetClass** 指定），当 **isStatic** 为 **false** 时为该方法的实例对象；其余参数为原方法携带的参数。如果该函数不携带任何参数，则不执行任何处理。 |
+| targetClass | Object | 是 | 指定的类对象。 |
+| methodName | string | 是 | 指定的原方法名，不支持read-only方法。 |
+| isStatic | boolean | 是 | 指定的原方法是否为静态方法。true表示静态方法，false表示实例方法。 |
+| before | Function | 是 | 要插入的函数对象。函数有参数，则第一个参数是this对象（若isStatic为true，则为类对象即targetClass；若isStatic为false，则为调用方法的实例对象），其余参数是原方法的参数。函数也可以无参数，无参时不做处理。 |
 
 **示例**
 
@@ -195,7 +195,7 @@ console.info('MyClass.data is ' + MyClass.data);
 static replace(targetClass: Object, methodName: string, isStatic: boolean, instead: Function) : void
 ```
 
-使用另一个函数替换类对象的方法。替换后，仅执行新函数的逻辑。最终的返回值为新函数的返回值。
+将指定类的原方法替换为另一个函数，适用于行为替换、兼容性适配、条件执行等需要完全改变方法实现逻辑的场景。replace接口执行完成后，调用指定的类方法时，仅执行替换后的逻辑。最终返回替换函数执行完毕的返回值。
 
 **起始版本：** 11
 
@@ -209,10 +209,10 @@ static replace(targetClass: Object, methodName: string, isStatic: boolean, inste
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetClass | Object | 是 | 目标类对象。 |
-| methodName | string | 是 | 方法名。不支持只读方法。 |
-| isStatic | boolean | 是 | 该方法是否为静态方法。值为 **true** 表示静态方法，值为 **false** 表示实例方法。 |
-| instead | Function | 是 | 用于替换的函数。如果该函数携带参数，则第一个参数为 **this** 对象：当 **isStatic**为 **true** 时为目标类对象（由 **targetClass** 指定），当 **isStatic** 为 **false** 时为该方法的实例对象；其余参数为原方法携带的参数。如果该函数不携带任何参数，则不执行任何处理。 |
+| targetClass | Object | 是 | 指定的类对象。 |
+| methodName | string | 是 | 指定的原方法名，不支持read-only方法。 |
+| isStatic | boolean | 是 | 指定的原方法是否为静态方法。true表示静态方法，false表示实例方法。 |
+| instead | Function | 是 | 要用来替换原方法的函数。函数有参数时，则第一个参数是this对象（若isStatic为true，则为类对象即targetClass；若isStatic为false，则为调用方法的实例对象），其余参数是原方法的参数。函数也可以无参，无参时不做处理。 |
 
 **示例**
 

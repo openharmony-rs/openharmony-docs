@@ -2126,6 +2126,44 @@ export default class EntryAbility extends UIAbility {
 
 <!--DelEnd-->
 
+## setPointerInterceptable
+
+```TypeScript
+setPointerInterceptable(isInterceptable: boolean): Promise<void>
+```
+
+Sets whether to enable pointer event interception for the window.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Window-setPointerInterceptable(isInterceptable: boolean): Promise<void>--><!--Device-Window-setPointerInterceptable(isInterceptable: boolean): Promise<void>-End-->
+
+**System capability:** SystemCapability.Window.SessionManager
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| isInterceptable | boolean | Yes | Whether to intercept the pointer event of this window. The value **true** indicates to intercept, and **false** indicates the opposite. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: <br>1. The hardware does not support the capability. <br>2. The chip does not support the capability. <br>3. A dependent service feature is not supported. |
+| [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. Possible cause: Internal IPC error. |
+
 ## setRaiseByClickEnabled
 
 ```TypeScript

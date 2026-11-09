@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function isRandomMacDisabled(): boolean
 ```
 
-is random mac disabled
+Whether the random MAC address is disabled.
 
 **Since:** 21
 
@@ -28,7 +28,7 @@ is random mac disabled
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns `true` is random mac disabled; Returns `false` otherwise. |
+| boolean | The value **true** indicates that random MAC addresses are disabled, and the value **false** indicates the opposite. |
 
 **Error codes:**
 

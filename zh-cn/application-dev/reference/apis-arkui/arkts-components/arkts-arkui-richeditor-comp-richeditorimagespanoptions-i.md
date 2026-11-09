@@ -76,7 +76,7 @@ imageStyle?: RichEditorImageSpanStyle
 imageTag?: string
 ```
 
-图片文本标签。
+图片文本标签。省略时，不设置图片文本标签。
 
 **类型：** string
 

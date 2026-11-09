@@ -93,3 +93,46 @@ When the application is in the foreground and there is no valid authorization, t
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | 12300302 | User interaction is required but not allowed. Possible causes: 1. The specified UI context is invalid; 2. The application is not in the foreground. Suggested solutions: Ensure the application is in the foreground and pass a valid UIAbilityContext. |
 | 12300304 | Authorization service is busy. Possible cause: Another authorization is being processed. |
+
+## requestBatchAuthorization
+
+```TypeScript
+requestBatchAuthorization(privileges: Array<Privilege>, context: UIAbilityContext): Promise<Map<Privilege, AuthorizationResult>>
+```
+
+Requests that the specified batch privileges be granted to the current process. This API uses a promise to return the result.
+
+When the application is in the foreground and there is no valid authorization, the authorization dialog is displayed in modal application mode. If a valid authorization already exists, it will be reused.
+
+**Since:** 26.1.0
+
+**Required permissions:** ohos.permission.REQUEST_LOCAL_ACCOUNT_AUTHORIZATION
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AuthorizationManager-requestBatchAuthorization(privileges: Array<Privilege>, context: UIAbilityContext): Promise<Map<Privilege, AuthorizationResult>>--><!--Device-AuthorizationManager-requestBatchAuthorization(privileges: Array<Privilege>, context: UIAbilityContext): Promise<Map<Privilege, AuthorizationResult>>-End-->
+
+**System capability:** SystemCapability.Account.OsAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| privileges | Array&lt;[Privilege](arkts-basicservices-authorization-privilege-e.md)&gt; | Yes | Target batch privileges. For available value, see [Privilege](arkts-basicservices-authorization-privilege-e.md). <br>The maxium length is 5 and connot be empty |
+| context | [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md) | Yes | The [UIAbility context](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md) that hosts the authorization dialog. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Map&lt;[Privilege](arkts-basicservices-authorization-privilege-e.md), [AuthorizationResult](arkts-basicservices-authorization-authorizationresult-i.md)&gt;&gt; | Promise used to return the authorization results. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-invalid-parameter) | The privileges array is empty or exceeds the batch limit. |
+| 12300302 | User interaction is required but not allowed. Possible causes: 1. The specified UI context is invalid; 2. The application is not in the foreground. Suggested solutions: Ensure the application is in the foreground and pass a valid UIAbilityContext. |
+| 12300304 | Authorization service is busy. Possible cause: Another authorization is being processed. |

@@ -12,7 +12,7 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 function getSupportedPowerMode(): Promise<Array<PowerMode>>
 ```
 
-Obtains the supported power Mode.
+Obtains the supported power modes. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -26,7 +26,7 @@ Obtains the supported power Mode.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)&gt;&gt; | Returns a list of application PowerMode. |
+| Promise&lt;Array&lt;[PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)&gt;&gt; | Promise used to return the power modes obtained. |
 
 **Error codes:**
 
@@ -57,7 +57,7 @@ wifiManagerExt.getSupportedPowerMode((err, data: wifiManagerExt.PowerMode[]) => 
 function getSupportedPowerMode(callback: AsyncCallback<Array<PowerMode>>): void
 ```
 
-Obtains the supported power Mode.
+Obtains the supported power modes. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -71,7 +71,7 @@ Obtains the supported power Mode.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)&gt;&gt; | Yes | the callback of model. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)&gt;&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
 

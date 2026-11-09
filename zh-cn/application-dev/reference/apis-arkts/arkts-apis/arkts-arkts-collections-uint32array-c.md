@@ -32,6 +32,8 @@ import { collections } from '@kit.ArkTS';
 
 返回一个迭代器，迭代器的每一项都是一个数字。
 
+本接口不支持在.ets文件中使用。
+
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
@@ -214,8 +216,8 @@ constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | 是 | 用于构造ArkTS Uint32Array的ArrayBuffer对象。buffer所占的字节数须是4的整数倍。 |
-| byteOffset | number | 否 | 指定buffer的字节偏移，从0开始。默认值为**0**。 |
-| length | number | 否 | 指定ArkTS Uint32Array的长度。默认值为**0**。 |
+| byteOffset | number | 否 | 指定buffer的字节偏移，从0开始，默认值为0。byteOffset需为4的整数倍。 |
+| length | number | 否 | 指定ArkTS Uint32Array的长度，需为非负整数。默认值为0。 |
 
 **错误码：**
 
@@ -602,7 +604,7 @@ includes(searchElement: number, fromIndex?: number): boolean
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | searchElement | number | 是 | 待搜索的元素。 |
-| fromIndex | number | 否 | 开始搜索的位置。 |
+| fromIndex | number | 否 | 开始搜索的索引，默认值为0。如果fromIndex &lt; 0，则会从fromIndex + Uint32Array.length位置开始从前向后搜索。 |
 
 **返回值：**
 
@@ -638,7 +640,7 @@ indexOf(searchElement: number, fromIndex?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | searchElement | number | 是 | 待索引的值。 |
-| fromIndex | number | 否 | 搜索的起始下标。默认值为**0**。如果下标大于等于ArkTS Uint32Array的长度，则返回**-1**。如果传入负数，则从ArkTS Uint32Array的末尾开始向前搜索。 |
+| fromIndex | number | 否 | 搜索的起始下标。默认值为0。如果下标大于等于ArkTS Uint32Array的长度，则返回-1。如果下标为负数，则从fromIndex + Uint32Array.length位置开始从前到后搜索。 |
 
 **返回值：**
 
@@ -808,7 +810,7 @@ static of(...items: number[]): Uint32Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | number[] | 是 | 用于创建数组的元素，参数个数可以是0个、1个或者多个。 |
+| items | number[] | 是 | 用于创建数组的元素，参数个数可以是0个、1个或者多个。默认值为空数组。 |
 
 **返回值：**
 
@@ -1044,7 +1046,7 @@ set(array: ArrayLike<number>, offset?: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | array | ArrayLike&lt;number&gt; | 是 | 用于设置的ArrayLike对象。 |
-| offset | number | 否 | 写入的起始位置。 |
+| offset | number | 否 | 写入的起始位置，需为非负整数。默认值为0。 |
 
 **错误码：**
 
@@ -1289,6 +1291,8 @@ values(): IterableIterator<number>
 ```
 
 返回ArkTS Uint32Array指定索引位置的元素。
+
+所需元素的从零开始的索引。取值范围为[0, Uint32Array.length - 1]。
 
 **类型：** number
 

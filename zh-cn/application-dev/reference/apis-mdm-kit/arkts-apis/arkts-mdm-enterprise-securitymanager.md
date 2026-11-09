@@ -38,6 +38,7 @@ import { securityManager } from '@kit.MDMKit';
 | [getAppClipboardPolicy](arkts-mdm-securitymanager-getappclipboardpolicy-f.md#getappclipboardpolicy-4) | 获取指定用户下指定应用的设备剪贴板策略。企业可通过此接口查询特定应用的剪贴板使用权限配置，用于策略审计和合规性检查。 |
 | [getDeviceSecurityLevelPolicy](arkts-mdm-securitymanager-getdevicesecuritylevelpolicy-f.md#getdevicesecuritylevelpolicy-1) | 查询DSL切换策略 |
 | [getDisallowedPermissions](arkts-mdm-securitymanager-getdisallowedpermissions-f.md#getdisallowedpermissions-1) | 获取指定用户下禁用的权限列表。 |
+| [getEnterpriseResetPolicy](arkts-mdm-securitymanager-getenterpriseresetpolicy-f.md#getenterpriseresetpolicy-1) | 获取企业重置策略。该接口同步返回结果。 |
 | [getExternalSourceExtensionsPolicy](arkts-mdm-securitymanager-getexternalsourceextensionspolicy-f.md#getexternalsourceextensionspolicy-1) | 获取外部来源扩展程序的管控策略。 |
 | [getExternalSourceExtensionsPolicy](arkts-mdm-securitymanager-getexternalsourceextensionspolicy-f.md#getexternalsourceextensionspolicy-2) | 获取外部来源扩展程序的管控策略。 |
 | [getPasswordLastChangedTime](arkts-mdm-securitymanager-getpasswordlastchangedtime-f.md#getpasswordlastchangedtime-1) | 根据账号ID获取最近一次修改密码时间。同步返回时间。企业可以通过该接口查询最近一次修改密码时间，用于密码策略审计和合规性检查。 |
@@ -61,6 +62,7 @@ import { securityManager } from '@kit.MDMKit';
 | [setAppClipboardPolicy](arkts-mdm-securitymanager-setappclipboardpolicy-f.md#setappclipboardpolicy-2) | 设置指定用户下指定应用的设备剪贴板策略。策略设置后，指定应用的剪贴板将按照策略限制使用范围。企业可为不同用户的不同应用配置差异化的剪贴板使用权限，实现精细化的数据访问控制，满足多用户多应用场景下的安全管控需求。 |
 | [setDeviceSecurityLevelPolicy](arkts-mdm-securitymanager-setdevicesecuritylevelpolicy-f.md#setdevicesecuritylevelpolicy-1) | 设备DSL切换策略 |
 | [setDisallowedPermission](arkts-mdm-securitymanager-setdisallowedpermission-f.md#setdisallowedpermission-1) | 禁用指定用户下的指定权限，禁用后指定用户下的所有应用申请和使用指定权限时默认拒绝。适用于企业安全合规场景，如禁用相机、麦克风等高风险权限防止隐私泄露，或禁用特定功能（如蓝牙分享）防止企业数据外传。 |
+| [setEnterpriseResetPolicy](arkts-mdm-securitymanager-setenterpriseresetpolicy-f.md#setenterpriseresetpolicy-1) | 设置企业重置策略。 |
 | [setExternalSourceExtensionsPolicy](arkts-mdm-securitymanager-setexternalsourceextensionspolicy-f.md#setexternalsourceextensionspolicy-1) | 设置外部来源扩展程序的管控策略。策略设置后，系统将按照设置的策略控制外部来源扩展程序的运行行为。适用于企业安全管控场景，如防止员工安装非授权浏览器扩展程序，或强制开启企业批准的扩展程序功能，保障企业终端安全。 |
 | [setPasswordPolicy](arkts-mdm-securitymanager-setpasswordpolicy-f.md#setpasswordpolicy-1) | 设置设备锁屏口令策略。策略设置后，当用户设置锁屏口令时，如果设置的锁屏口令不符合要求，会有安全提示重新设置锁屏口令。适用于企业安全合规场景，如强制要求员工使用强密码、定期更换密码等，降低企业数据泄露风险。 |
 | [setPermissionManagedState](arkts-mdm-securitymanager-setpermissionmanagedstate-f.md#setpermissionmanagedstate-1) | 设置指定应用的user_grant权限的管理策略。适用于企业应用批量部署场景，如静默授权减少权限弹窗干扰、统一企业应用权限管理策略，提升员工使用体验和管理效率。 |
@@ -109,6 +111,7 @@ import { securityManager } from '@kit.MDMKit';
 | --- | --- |
 | [ClipboardPolicy](arkts-mdm-securitymanager-clipboardpolicy-e.md) | 设备剪贴板策略。 |
 | [DeviceSecurityLevelPolicy](arkts-mdm-securitymanager-devicesecuritylevelpolicy-e.md) | DLS策略 |
+| [EnterpriseResetPolicy](arkts-mdm-securitymanager-enterpriseresetpolicy-e.md) | 表示企业重置策略。 |
 | [PasswordAlgs](arkts-mdm-securitymanager-passwordalgs-e.md) | 处理口令数据使用的加密算法。 |
 | [PermissionManagedState](arkts-mdm-securitymanager-permissionmanagedstate-e.md) | 应用权限的管理状态。 |
 | [UnlockPolicy](arkts-mdm-securitymanager-unlockpolicy-e.md) | 解锁认证策略 |

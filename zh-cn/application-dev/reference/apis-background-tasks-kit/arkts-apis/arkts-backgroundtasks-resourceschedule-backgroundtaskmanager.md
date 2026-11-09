@@ -26,7 +26,7 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 | [getRemainingDelayTime](arkts-backgroundtasks-backgroundtaskmanager-getremainingdelaytime-f.md#getremainingdelaytime-1) | 获取本次短时任务的剩余时间，使用callback异步回调。 |
 | [getRemainingDelayTime](arkts-backgroundtasks-backgroundtaskmanager-getremainingdelaytime-f.md#getremainingdelaytime-2) | 获取本次短时任务的剩余时间，使用Promise异步回调。 |
 | [getTransientTaskInfo](arkts-backgroundtasks-backgroundtaskmanager-gettransienttaskinfo-f.md#gettransienttaskinfo-1) | 获取所有短时任务信息，如当日剩余总配额等，使用Promise异步回调。 |
-| [off('continuousTaskCancel')](arkts-backgroundtasks-backgroundtaskmanager-off-f.md#offcontinuoustaskcancel) | 解除长时任务取消的监听，使用callback异步回调。 |
+| [off('continuousTaskCancel')](arkts-backgroundtasks-backgroundtaskmanager-off-f.md#offcontinuoustaskcancel) | 取消长时任务取消的监听，使用callback异步回调。 |
 | [off('continuousTaskSuspend')](arkts-backgroundtasks-backgroundtaskmanager-off-f.md#offcontinuoustasksuspend) | 取消长时任务暂停的监听，使用callback异步回调。 |
 | [off('continuousTaskActive')](arkts-backgroundtasks-backgroundtaskmanager-off-f.md#offcontinuoustaskactive) | 取消长时任务激活的监听，使用callback异步回调。 |
 | [on('continuousTaskCancel')](arkts-backgroundtasks-backgroundtaskmanager-on-f.md#oncontinuoustaskcancel) | 注册长时任务取消的监听，使用callback异步回调。 |

@@ -68,6 +68,7 @@ import { appManager } from '@kit.AbilityKit';
 | [killProcessWithAccount](arkts-ability-appmanager-killprocesswithaccount-f-sys.md#killprocesswithaccount-1) | 终止指定系统账号下的应用进程。使用Promise异步回调。 |
 | [killProcessWithAccount](arkts-ability-appmanager-killprocesswithaccount-f-sys.md#killprocesswithaccount-2) | 终止指定系统账号下的应用进程。使用Promise异步回调。 |
 | [killProcessWithAccount](arkts-ability-appmanager-killprocesswithaccount-f-sys.md#killprocesswithaccount-3) | 终止account进程。使用callback异步回调。 |
+| [killProcessWithAccountSafely](arkts-ability-appmanager-killprocesswithaccountsafely-f-sys.md#killprocesswithaccountsafely-1) | 根据包名、账号ID和应用分身ID安全终止进程。如果目标进程受到保护，则无法终止。使用Promise异步回调。 |
 | [off('appForegroundState')](arkts-ability-appmanager-off-f-sys.md#offappforegroundstate) | 注销应用启动和退出的监听器。 |
 | [off('abilityFirstFrameState')](arkts-ability-appmanager-off-f-sys.md#offabilityfirstframestate) | 取消注册监听Ability首帧绘制完成事件观察者对象。 |
 | [on('applicationState')](arkts-ability-appmanager-on-f-sys.md#onapplicationstate) | 注册应用程序的状态监听器，并通过设置过滤条件来筛选所需监听的应用生命周期变化事件。 |

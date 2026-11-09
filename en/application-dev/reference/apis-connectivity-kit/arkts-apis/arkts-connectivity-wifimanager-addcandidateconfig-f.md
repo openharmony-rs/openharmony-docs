@@ -14,7 +14,7 @@ function addCandidateConfig(config: WifiDeviceConfig): Promise<number>
 
 Add a specified candidate hotspot configuration and returns the networkId. This method adds one configuration at a time. After this configuration is added, your device will determine whether to connect to the hotspot. The app must be in the foreground.
 
-**Since:** 12
+**Since:** 9
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO
 
@@ -75,7 +75,7 @@ function addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback<nu
 
 Add a specified candidate hotspot configuration and returns the networkId. This method adds one configuration at a time. After this configuration is added, your device will determine whether to connect to the hotspot. The app must be in the foreground.
 
-**Since:** 12
+**Since:** 9
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO
 

@@ -4,9 +4,9 @@
 interface WifiScanInfo
 ```
 
-Describes the scanned Wi-Fi information. @typedef WifiScanInfo
+Provides information about Wi-Fi scanning.
 
-**Since:** 12
+**Since:** 9
 
 <!--Device-wifiManager-interface WifiScanInfo--><!--Device-wifiManager-interface WifiScanInfo-End-->
 
@@ -24,7 +24,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 isHiLinkProNetwork?: boolean
 ```
 
-Whether the Wi-Fi hotspot is HiLinkPro network.
+Whether the network is a HiLinkPro network. The value **true** indicates that the network is a HiLinkPro network, and the value **false** indicates the opposite.
 
 **Type:** boolean
 

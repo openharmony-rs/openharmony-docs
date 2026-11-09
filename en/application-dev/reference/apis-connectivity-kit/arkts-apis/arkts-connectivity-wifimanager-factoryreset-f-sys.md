@@ -12,8 +12,6 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function factoryReset(): void
 ```
 
-Reset all saved device configure.
-
 **Since:** 11
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and ohos.permission.SET_WIFI_CONFIG

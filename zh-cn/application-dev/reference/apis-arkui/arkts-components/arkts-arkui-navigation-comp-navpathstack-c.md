@@ -526,6 +526,45 @@ popToName(name: string, result: Object, animated?: boolean): number
 | --- | --- |
 | number | 如果栈中存在名为name的NavDestination页面，则返回由栈底开始第一个名为name的NavDestination页面的索引，否则返回-1。 |
 
+## preloadPath
+
+```TypeScript
+preloadPath(info: NavPathInfo, options?: PreloadOptions): Promise<void>
+```
+
+预加载**info**指定的导航目标页面。预加载的页面不会立即显示，而是会被缓存。稍后使用匹配的参数调用**pushPath**时，预加载的实例将用于快速显示。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavPathStack-preloadPath(info: NavPathInfo, options?: PreloadOptions): Promise<void>--><!--Device-NavPathStack-preloadPath(info: NavPathInfo, options?: PreloadOptions): Promise<void>-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| info | [NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md) | 是 | 表示要预加载的NavDestination。 |
+| options | [PreloadOptions](arkts-arkui-navigation-comp-preloadoptions-i.md) | 否 | 表示预加载的选项。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | 函数返回的promise。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
+| [100005](../errorcode-router.md#100005-navigation跳转时未注册builder函数) | Builder function not registered. |
+| [100006](../errorcode-router.md#100006-navigation跳转时目标页面不存在navdestination组件) | NavDestination not found. |
+
 ## pushDestination
 
 ```TypeScript

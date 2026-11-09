@@ -4,9 +4,9 @@
 interface WifiScanInfo
 ```
 
-Describes the scanned Wi-Fi information. @typedef WifiScanInfo
+Provides information about Wi-Fi scanning.
 
-**Since:** 12
+**Since:** 9
 
 <!--Device-wifiManager-interface WifiScanInfo--><!--Device-wifiManager-interface WifiScanInfo-End-->
 
@@ -44,7 +44,7 @@ Wi-Fi bssid(MAC): the length is 6
 
 **Type:** string
 
-**Since:** 12
+**Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -62,7 +62,7 @@ Wi-Fi bssid type
 
 **Type:** [DeviceAddressType](arkts-connectivity-wifimanager-deviceaddresstype-e.md)
 
-**Since:** 12
+**Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -144,7 +144,7 @@ Frequency
 
 **Type:** number
 
-**Since:** 12
+**Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -194,7 +194,7 @@ Received signal strength indicator (RSSI)
 
 **Type:** number
 
-**Since:** 12
+**Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -212,7 +212,7 @@ Security type: reference definition of WifiSecurityType
 
 **Type:** [WifiSecurityType](arkts-connectivity-wifimanager-wifisecuritytype-e.md)
 
-**Since:** 12
+**Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -230,7 +230,7 @@ Wi-Fi SSID: the maximum length is 32
 
 **Type:** string
 
-**Since:** 12
+**Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 

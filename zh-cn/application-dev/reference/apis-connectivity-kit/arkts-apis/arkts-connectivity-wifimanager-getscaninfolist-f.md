@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function getScanInfoList(): Array<WifiScanInfo>
 ```
 
-获取包含当前时间点前30s内的缓存扫描结果。
+获取包含当前时间点前30秒内的缓存扫描结果。
 
 **起始版本：** 10
 

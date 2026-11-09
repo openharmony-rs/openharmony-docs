@@ -12,7 +12,7 @@ import { wifi } from '@kit.ConnectivityKit';
 function isConnected(): boolean
 ```
 
-Checks whether a Wi-Fi connection has been set up.
+Checks whether the Wi-Fi connection is established.
 
 **Since:** 7
 
@@ -30,4 +30,4 @@ Checks whether a Wi-Fi connection has been set up.
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns `true` if a Wi-Fi connection has been set up, returns `false` otherwise. |
+| boolean | Returns **true** if the Wi-Fi connection is established; returns **false** otherwise. |

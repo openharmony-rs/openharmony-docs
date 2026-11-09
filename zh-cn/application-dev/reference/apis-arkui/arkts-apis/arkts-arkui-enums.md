@@ -13,6 +13,7 @@
 | 名称 | 说明 |
 | --- | --- |
 | [AccessibilityHoverType](arkts-arkui-accessibilityhovertype-e.md) | 辅助功能悬停事件的类型。 |
+| [AgentControlMode](arkts-arkui-agentcontrolmode-e.md) | 定义Agent生成事件的输入管控模式。 |
 | [Alignment](arkts-arkui-alignment-e.md) | 定义容器元素绘制区域内的子元素的对齐方式。 |
 | [AnimationPropertyType](arkts-arkui-animationpropertytype-e.md) | 用于动画的属性类型。 |
 | [AnimationStatus](arkts-arkui-animationstatus-e.md) | 用于动画播放状态。 |
@@ -111,7 +112,6 @@
 | [TitleHeight](arkts-arkui-titleheight-e.md) | 设置标题栏的推荐高度。 |
 | [TouchType](arkts-arkui-touchtype-e.md) | 定义触摸操作的触发状态类型。 |
 | [TransitionType](arkts-arkui-transitiontype-e.md) | 指定该转场样式生效的场景。 |
-| [UIMaterialAnimationMode](arkts-arkui-uimaterialanimationmode-e.md) | Enumerates the component animation modes under the UI material effect. |
 | [VerticalAlign](arkts-arkui-verticalalign-e.md) | 定义子组件在垂直方向上的对齐格式。 |
 | [Visibility](arkts-arkui-visibility-e.md) | 定义组件的可见性及布局占位状态。 |
 | [Week](arkts-arkui-week-e.md) | 定义星期枚举值。 |

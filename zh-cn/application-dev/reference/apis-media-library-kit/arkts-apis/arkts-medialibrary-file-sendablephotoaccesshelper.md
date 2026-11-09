@@ -49,7 +49,7 @@ import { sendablePhotoAccessHelper } from '@kit.MediaLibraryKit';
 | [Album](arkts-medialibrary-sendablephotoaccesshelper-album-i-sys.md) | 实体相册 |
 | [PhotoAccessHelper](arkts-medialibrary-sendablephotoaccesshelper-photoaccesshelper-i-sys.md) | 提供操作系统媒体资源能力的接口。 |
 | [PhotoAsset](arkts-medialibrary-sendablephotoaccesshelper-photoasset-i-sys.md) | 提供封装文件属性的方法。 |
-| [SharedPhotoAsset](arkts-medialibrary-sendablephotoaccesshelper-sharedphotoasset-i-sys.md) | Defines the shared photo asset |
+| [SharedPhotoAsset](arkts-medialibrary-sendablephotoaccesshelper-sharedphotoasset-i-sys.md) | 共享图片资产。 |
 <!--DelEnd-->
 
 ### 枚举

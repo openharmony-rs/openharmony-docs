@@ -4,7 +4,7 @@
 enum DisconnectedReason
 ```
 
-Wi-Fi disconnected reason.
+Enumerates the reasons why the Wi-Fi connection is disconnected. This API is used to diagnose network connection problems and optimize connection policies.
 
 **Since:** 10
 
@@ -20,7 +20,7 @@ Wi-Fi disconnected reason.
 DISC_REASON_CONNECTION_FULL = 2
 ```
 
-The number of router's connection reaches the maximum number limit
+The number of connections to the router has reached the limit.
 
 **Since:** 10
 
@@ -36,7 +36,7 @@ The number of router's connection reaches the maximum number limit
 DISC_REASON_DEFAULT = 0
 ```
 
-Default reason
+Default reason.
 
 **Since:** 10
 
@@ -52,7 +52,7 @@ Default reason
 DISC_REASON_WRONG_PWD = 1
 ```
 
-Password is wrong
+Incorrect password.
 
 **Since:** 10
 

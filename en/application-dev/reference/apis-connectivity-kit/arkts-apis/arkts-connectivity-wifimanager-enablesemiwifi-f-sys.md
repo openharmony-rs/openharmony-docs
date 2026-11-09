@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function enableSemiWifi(): void
 ```
 
-Enable semi - Wifi.
+Enables Wi-Fi partially, that is, enables P2P and Huawei Magneto Link (HML) while disabling STA. You need to register a callback for the **wifiStateChange** event to return the operation result.
 
 **Since:** 12
 

@@ -112,9 +112,9 @@ slice(start?: number, end?: number, type?: string): Blob
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| start | number | 否 | 起始位置。默认值：0。 |
-| end | number | 否 | 结束位置。默认值：原Blob对象中的数据长度。 |
-| type | string | 否 | 内容类型。默认值：''。 |
+| start | number | 否 | 起始位置。默认值为0。 |
+| end | number | 否 | 结束位置。默认值为原Blob对象中的数据长度。 |
+| type | string | 否 | 内容类型。默认值为''。 |
 
 **返回值：**
 

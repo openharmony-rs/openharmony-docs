@@ -47,5 +47,5 @@ Revoke the URIs permission by user.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: <br>1. The hardware does not support the capability. <br>2. The chip does not support the capability. <br>3. A dependent service feature is not supported. |
 | 13900001 | Operation not permitted. |
-| 13900011 | Out of memory |
-| 13900020 | Invalid tokenID |
+| 13900011 | Out of memory. |
+| 13900020 | Invalid tokenID. |

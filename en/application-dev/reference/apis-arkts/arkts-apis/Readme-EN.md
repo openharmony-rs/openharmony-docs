@@ -195,6 +195,7 @@
   - [TextDecoderOptions](arkts-arkts-util-textdecoderoptions-i.md)
   - [ScopeType](arkts-arkts-util-scopetype-t.md)
   - [Type](arkts-arkts-util-type-e.md)
+  - [UrgencyLevel](arkts-arkts-util-urgencylevel-e.md)
 - [@ohos.util.ArrayList(Linear Container ArrayList)](arkts-arkts-util-arraylist.md)
   - [ArrayList](arkts-arkts-util-arraylist-arraylist-c.md)
   - [ArrayListComparatorFn](arkts-arkts-arraylistcomparatorfn-t.md)

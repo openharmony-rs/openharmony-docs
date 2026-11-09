@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function setWifiCapability(capability: WifiCapability, enable: boolean): void
 ```
 
-Set Wi-Fi capability
+Sets the Wi-Fi capability.
 
 **Since:** 26.0.0
 
@@ -30,8 +30,8 @@ Set Wi-Fi capability
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| capability | [WifiCapability](arkts-connectivity-wifimanager-wificapability-e.md) | Yes | Identifies the Wi-Fi capability |
-| enable | boolean | Yes | Identifies enable or disable specified Wi-Fi capability. |
+| capability | [WifiCapability](arkts-connectivity-wifimanager-wificapability-e.md) | Yes | Wi-Fi capability. |
+| enable | boolean | Yes | Whether to enable the Wi-Fi capability. The value **true** means to enable, and the value **false** means the opposite. |
 
 **Error codes:**
 

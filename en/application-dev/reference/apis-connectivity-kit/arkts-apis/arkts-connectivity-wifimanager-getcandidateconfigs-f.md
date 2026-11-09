@@ -14,9 +14,11 @@ function getCandidateConfigs(): Array<WifiDeviceConfig>
 
 Obtain the list of all existed candidate Wi-Fi configurations which added by ourself. You can obtain only the Wi-Fi configurations you created on your own application.
 
-**Since:** 12
+**Since:** 9
 
-**Required permissions:** ohos.permission.GET_WIFI_INFO
+**Required permissions:** 
+- API version 10 and later: ohos.permission.GET_WIFI_INFO
+- API version 9: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 

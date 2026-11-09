@@ -26,6 +26,8 @@ Describes the linear gradient.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
+
 <!--Device-LinearGradient-constructor(colorStops: ColorStop[])--><!--Device-LinearGradient-constructor(colorStops: ColorStop[])-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
