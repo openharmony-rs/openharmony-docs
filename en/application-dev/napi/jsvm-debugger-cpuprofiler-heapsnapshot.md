@@ -5,7 +5,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=7d9ce201efa894024f69109a8bec89b278e1456d translatedAt=2026-10-13T13:04:11.222Z pushedAt=2026-10-16T03:42:28.378Z -->
+<!-- md-trans-meta sourceCommit=82fa8667c7a1bac75d966dbc40c3e4fe85d35e91 translatedAt=2026-11-09T01:01:51.645Z pushedAt=2026-11-09T07:15:49.044Z nl=1 -->
 
 JavaScript virtual machine (JSVM) is a standard JavaScript (JS) code execution engine that strictly complies with the ECMAScript specification. For details, see [JSVM](../reference/common/capi-jsvm.md).
 
@@ -44,7 +44,7 @@ This topic describes how to use Debugger, CPU Profiler, and Heap Snapshot.
    }]
    ```
 
-2. To prevent the pause during the debugging process from being falsely reported as no response, enable the DevEco Studio debug mode by referring to [Starting and Debugging an App/Atomic Service](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-debug-arkts-debug-V5) without setting breakpoints or run JSVM-API in threads except the main thread.
+2. To prevent pauses during debugging from being misreported as unresponsive exceptions, enable the Debug mode of DevEco Studio. For details, see [debug startup debugging](https://developer.huawei.com/consumer/en/doc/doccenter-deveco-studio/ide-debug-arkts-debug) (no breakpoint needs to be set). Alternatively, run JSVM in a non-main thread.
    ```cpp
    // Run the JSVM sample code in a non-main thread.
    static napi_value RunTest(napi_env env, napi_callback_info info)
@@ -154,7 +154,7 @@ void TestJSVM() {
    }]
    ```
 
-2. To prevent the pause during the debugging process from being falsely reported as no response, [enable the DevEco Studio debug mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-debug-arkts-debug-V5) without setting breakpoints or run JSVM-API in threads except the main thread.
+2. To prevent pauses during debugging from being misreported as unresponsive exceptions, you can [enable the Debug mode of DevEco Studio](https://developer.huawei.com/consumer/en/doc/doccenter-deveco-studio/ide-debug-arkts-debug) (no breakpoint needs to be set), or run JSVM in a non-main thread.
 3. Open the inspector port and connect to DevTools for debugging. The process is as follows: Before executing JS code, call **OH_JSVM_OpenInspectorWithName** to activate the inspector on the specified host and port and create a socket. For example, **OH_JSVM_OpenInspectorWithName(env, 123, "test")** creates a TCP socket and its corresponding Unix domain port.
 4. Call **OH_JSVM_WaitForDebugger** to wait for the setup of a socket connection.
 5. Check whether the port on the device is enabled successfully. <br>Run **hdc shell "cat /proc/net/unix | grep jsvm"**. An available Unix port is displayed, for example, **jsvm_devtools_remote_9229_123**, where **9229** is the TCP port number and **123** is the PID.

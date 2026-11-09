@@ -6,7 +6,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @qin_wei_jie-->
-<!-- md-trans-meta sourceCommit=e4b0ca60eae587775eeae97f31ef4d7083b5ebc9 translatedAt=2026-11-04T06:36:58.099Z pushedAt=2026-11-04T06:36:58.099Z nl=1 -->
+<!-- md-trans-meta sourceCommit=7e14b9d224392df461c466a473362a61b3dc24c1 translatedAt=2026-11-09T01:01:31.847Z pushedAt=2026-11-09T07:09:20.103Z nl=1 -->
 
 ## When to Use
 
@@ -20,8 +20,8 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
 
 1. Import the DRM Kit module.
 
-   <!-- @[drm_import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+   <!-- @[drm_import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
    ``` C++
    // ...
    #include <cstring>
@@ -39,8 +39,8 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
 
 3. Obtain the name and ID list of the DRM solutions supported by the device.
 
-   <!-- @[drm_getMediaKeySystems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+   <!-- @[drm_getMediaKeySystems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
    ``` C++
    uint32_t count = 3; // count specifies the number of DRM plugins supported by the device. Pass in the actual number.
    DRM_MediaKeySystemDescription descriptions[3];
@@ -51,8 +51,8 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
 
 4. (Optional) Check whether the device supports a specific DRM solution based on the name, MIME type, and content protection level.
 
-   <!-- @[drm_isSupported3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+   <!-- @[drm_isSupported3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
    ``` C++
    bool isSupported = OH_MediaKeySystem_IsSupported3(name, mimeType, CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
    // ...
@@ -60,8 +60,8 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
 
 5. Create a MediaKeySystem instance.
 
-   <!-- @[drm_createMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+   <!-- @[drm_createMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
    ``` C++
    Drm_ErrCode ret = OH_MediaKeySystem_Create(name, &mediaKeySystem);
    if (ret != DRM_ERR_OK || mediaKeySystem == nullptr) {
@@ -73,8 +73,8 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
 
 6. (Optional) Set the MediaKeySystem event listener callback.
 
-   <!-- @[drm_bindMediaKeySystemCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+   <!-- @[drm_bindMediaKeySystemCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
    ``` C++
    ret = OH_MediaKeySystem_SetCallback(mediaKeySystem, SystemCallBackWithObj);
    // ...
@@ -82,8 +82,8 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
 
 7. (Optional) Obtain the status of the DRM certificate.
 
-   <!-- @[drm_getCertificateStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+   <!-- @[drm_getCertificateStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
    ``` C++
    DRM_CertificateStatus certStatus = CERT_STATUS_NOT_PROVISIONED;
    ret = OH_MediaKeySystem_GetCertificateStatus(mediaKeySystem, &certStatus);
@@ -92,8 +92,8 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
 
 8. (Optional) Generate a DRM certificate request and process its response.
 
-   <!-- @[drm_generateKeySystemRequest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+   <!-- @[drm_generateKeySystemRequest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
    ``` C++
    unsigned char request[MAX_DRM_PROVISION_BUF_SIZE] = {0x00};
    int32_t requestLen = MAX_DRM_PROVISION_BUF_SIZE;
@@ -103,8 +103,8 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
    // ...
    ```
 
-   <!-- @[drm_processKeySystemResponse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+   <!-- @[drm_processKeySystemResponse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
    ``` C++
    // Send the device DRM certificate request to the DRM service over the network and pass in the actual keySystemResponse.
    unsigned char keySystemResponse[MAX_DRM_PROVISION_BUF_SIZE] = {0x00};
@@ -114,8 +114,8 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
 
 9. (Optional) Obtain the maximum content protection level supported by the device.
 
-   <!-- @[drm_getMaxContentProtectionLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+   <!-- @[drm_getMaxContentProtectionLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
    ``` C++
    DRM_ContentProtectionLevel level = CONTENT_PROTECTION_LEVEL_UNKNOWN;
    ret = OH_MediaKeySystem_GetMaxContentProtectionLevel(mediaKeySystem, &level);
@@ -124,8 +124,8 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
 
 10. Create a MediaKeySession instance.
 
-    <!-- @[drm_createMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+    <!-- @[drm_createMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+    
     ``` C++
     DRM_ContentProtectionLevel securityLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
     ret = OH_MediaKeySystem_CreateMediaKeySession(mediaKeySystem, &securityLevel, &mediaKeySession);
@@ -134,8 +134,8 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
 
 11. (Optional) Set the MediaKeySession event listener callback.
 
-    <!-- @[drm_bindMediaKeySessionCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+    <!-- @[drm_bindMediaKeySessionCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+    
     ``` C++
     OH_MediaKeySession_Callback sessionCallback = { SessionEventCallBackWithObj, SessionKeyChangeCallBackWithObj };
     ret = OH_MediaKeySession_SetCallback(mediaKeySession, &sessionCallback);
@@ -144,8 +144,8 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
 
 12. (Optional) Check whether secure decoding is required.
 
-    <!-- @[drm_requireSecureDecoderModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+    <!-- @[drm_requireSecureDecoderModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+    
     ``` C++
     bool requireSecureDecoder = false;
     ret = OH_MediaKeySession_RequireSecureDecoderModule(mediaKeySession, mimeType, &requireSecureDecoder);
@@ -154,8 +154,8 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
 
 13. Generate a media key request and process its response to request a license for content authorization.
 
-    <!-- @[drm_generateMediaKeyRequest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+    <!-- @[drm_generateMediaKeyRequest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+    
     ``` C++
     DRM_MediaKeyRequest mediaKeyRequest;
     DRM_MediaKeyRequestInfo info;
@@ -173,8 +173,8 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
     // ...
     ```
 
-    <!-- @[drm_processMediaKeyResponse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+    <!-- @[drm_processMediaKeyResponse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+    
     ``` C++
     // Obtain mediaKeyResponse from the DRM service over the network and pass in the actual response data.
     unsigned char mediaKeyId[128] = {0x00};
@@ -188,8 +188,8 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
 
 14. (Optional) Restore offline media keys.
 
-    <!-- @[drm_restoreOfflineMediaKeys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+    <!-- @[drm_restoreOfflineMediaKeys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+    
     ``` C++
     ret = OH_MediaKeySession_RestoreOfflineMediaKeys(mediaKeySession, mediaKeyId, mediaKeyIdLen);
     // ...
@@ -197,8 +197,8 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
 
 15. (Optional) Check the status of media keys.
 
-    <!-- @[drm_checkMediaKeyStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+    <!-- @[drm_checkMediaKeyStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+    
     ``` C++
     DRM_MediaKeyStatus mediaKeyStatus = {0};
     ret = OH_MediaKeySession_CheckMediaKeyStatus(mediaKeySession, &mediaKeyStatus);
@@ -207,8 +207,8 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
 
 16. (Optional) Obtain the IDs of offline media keys, obtain their status, and clear them.
 
-    <!-- @[drm_offlineMediaKeyManagement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+    <!-- @[drm_offlineMediaKeyManagement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+    
     ``` C++
     DRM_OfflineMediakeyIdArray offlineMediaKeyIds;
     ret = OH_MediaKeySystem_GetOfflineMediaKeyIds(mediaKeySystem, &offlineMediaKeyIds);
@@ -226,8 +226,8 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
 
 17. Destroy the MediaKeySession instance.
 
-    <!-- @[drm_destroyMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+    <!-- @[drm_destroyMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+    
     ``` C++
     ret = OH_MediaKeySession_Destroy(mediaKeySession);
     // ...
@@ -235,8 +235,8 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
 
 18. Destroy the MediaKeySystem instance.
 
-    <!-- @[drm_destroyMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+    <!-- @[drm_destroyMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+    
     ``` C++
     ret = OH_MediaKeySystem_Destroy(mediaKeySystem);
     // ...

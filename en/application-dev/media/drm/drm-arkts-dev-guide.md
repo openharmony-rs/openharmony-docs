@@ -6,7 +6,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @qin_wei_jie-->
-<!-- md-trans-meta sourceCommit=e4b0ca60eae587775eeae97f31ef4d7083b5ebc9 translatedAt=2026-11-04T06:36:58.098Z pushedAt=2026-11-04T06:36:58.098Z nl=1 -->
+<!-- md-trans-meta sourceCommit=7e14b9d224392df461c466a473362a61b3dc24c1 translatedAt=2026-11-09T01:01:16.881Z pushedAt=2026-11-09T07:09:08.013Z nl=1 -->
 
 DRM Kit provides ArkTS APIs for comprehensive digital rights management, covering certificate management, license management, content authorization, and content decryption.
 
@@ -18,24 +18,24 @@ For detailed API descriptions, refer to [@ohos.multimedia.drm](../../reference/a
 
 1. Import the DRM Kit module.
 
-   <!-- @[arkts_import_drm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
-
+   <!-- @[arkts_import_drm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    import { drm } from '@kit.DrmKit';
    ```
 
 2. Import the BusinessError module to handle error codes from DRM Kit APIs.
 
-   <!-- @[arkts_import_business_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
-
+   <!-- @[arkts_import_business_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
 3. (Optional) Call [getMediaKeySystems](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmgetmediakeysystems12) to obtain the name and ID list of the DRM solutions supported by the device.
 
-   <!-- @[arkts_getMediaKeySystems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
-
+   <!-- @[arkts_getMediaKeySystems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    const descriptions: drm.MediaKeySystemDescription[] = drm.getMediaKeySystems();
    ```
@@ -44,8 +44,8 @@ For detailed API descriptions, refer to [@ohos.multimedia.drm](../../reference/a
 
 4. (Optional) Call [isMediaKeySystemSupported](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmismediakeysystemsupported) to check whether the device supports a specific DRM solution based on the name, MIME type, and content protection level.
 
-   <!-- @[arkts_isMediaKeySystemSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
-
+   <!-- @[arkts_isMediaKeySystemSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    const byName = drm.isMediaKeySystemSupported(DRM_SOLUTION_NAME);
    // ...
@@ -60,8 +60,8 @@ For detailed API descriptions, refer to [@ohos.multimedia.drm](../../reference/a
 
 5. Call [createMediaKeySystem](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmcreatemediakeysystem) to create a MediaKeySystem instance.
 
-   <!-- @[arkts_createMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
-
+   <!-- @[arkts_createMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    mediaKeySystem = drm.createMediaKeySystem(DRM_SOLUTION_NAME);
    ```
@@ -72,8 +72,8 @@ For detailed API descriptions, refer to [@ohos.multimedia.drm](../../reference/a
 
    Register the **keySystemRequired** callback to listen for DRM certificate request events. This event is triggered when a DRM certificate is needed. Complete the certificate request and handling process at this point.
 
-   <!-- @[arkts_onKeySystemRequired](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
-
+   <!-- @[arkts_onKeySystemRequired](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    mediaKeySystem.on('keySystemRequired', (eventInfo: drm.EventInfo) => {
      console.info(`keySystemRequired extra:${eventInfo.extraInfo} data:${eventInfo.info}`);
@@ -83,8 +83,8 @@ For detailed API descriptions, refer to [@ohos.multimedia.drm](../../reference/a
 
 7. (Optional) Call [getCertificateStatus](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySystem.md#getcertificatestatus) to obtain the status of the DRM certificate.
 
-   <!-- @[arkts_getCertificateStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
-
+   <!-- @[arkts_getCertificateStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    const certificateStatus = mediaKeySystem.getCertificateStatus();
    ```
@@ -93,14 +93,14 @@ For detailed API descriptions, refer to [@ohos.multimedia.drm](../../reference/a
 
    If the DRM certificate status is not **drm.CertificateStatus.CERT_STATUS_PROVISIONED**, generate a DRM certificate request and process its response.
 
-   <!-- @[arkts_generateKeySystemRequest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
-
+   <!-- @[arkts_generateKeySystemRequest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    const provisionRequest = await mediaKeySystem.generateKeySystemRequest();
    ```
 
-   <!-- @[arkts_processKeySystemResponse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
-
+   <!-- @[arkts_processKeySystemResponse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    // Send provisionRequest.data to the DRM certificate service over the network to obtain and process the device DRM certificate response.
    const provisionResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]); // Device DRM certificate response.
@@ -111,8 +111,8 @@ For detailed API descriptions, refer to [@ohos.multimedia.drm](../../reference/a
 
    Create a MediaKeySession instance with the default content protection level of the DRM solution.
 
-   <!-- @[arkts_createMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
-
+   <!-- @[arkts_createMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    mediaKeySession = mediaKeySystem.createMediaKeySession();
    ```
@@ -123,8 +123,8 @@ For detailed API descriptions, refer to [@ohos.multimedia.drm](../../reference/a
 
     - Call [on('keyRequired')](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#onkeyrequired) to listen for media key request events. Complete the media key request and handling process at this point.
 
-      <!-- @[arkts_onKeyRequired](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
-
+      <!-- @[arkts_onKeyRequired](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
+      
       ``` TypeScript
       mediaKeySession.on('keyRequired', (eventInfo: drm.EventInfo) => {
         console.info(`keyRequired info:${eventInfo.info} extraInfo:${eventInfo.extraInfo}`);
@@ -134,8 +134,8 @@ For detailed API descriptions, refer to [@ohos.multimedia.drm](../../reference/a
 
     - Call [on('keyExpired')](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#onkeyexpired) to listen for media key expiration events.
 
-      <!-- @[arkts_onKeyExpired](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
-
+      <!-- @[arkts_onKeyExpired](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
+      
       ``` TypeScript
       mediaKeySession.on('keyExpired', (eventInfo: drm.EventInfo) => {
         console.info(`keyExpired info:${eventInfo.info} extraInfo:${eventInfo.extraInfo}`);
@@ -144,8 +144,8 @@ For detailed API descriptions, refer to [@ohos.multimedia.drm](../../reference/a
 
     - Call [on('expirationUpdate')](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#onexpirationupdate) to listen for media key validity period update events.
 
-      <!-- @[arkts_onExpirationUpdate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
-
+      <!-- @[arkts_onExpirationUpdate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
+      
       ``` TypeScript
       mediaKeySession.on('expirationUpdate', (eventInfo: drm.EventInfo) => {
         console.info(`expirationUpdate info:${eventInfo.info} extraInfo:${eventInfo.extraInfo}`);
@@ -154,8 +154,8 @@ For detailed API descriptions, refer to [@ohos.multimedia.drm](../../reference/a
 
     - Call [on('keysChange')](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#onkeyschange) to listen for media key change events.
 
-      <!-- @[arkts_onKeysChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
-
+      <!-- @[arkts_onKeysChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
+      
       ``` TypeScript
       mediaKeySession.on('keysChange', (keyInfo: drm.KeysInfo[], newKeyAvailable: boolean) => {
         for (let i = 0; i < keyInfo.length; i++) {
@@ -166,8 +166,8 @@ For detailed API descriptions, refer to [@ohos.multimedia.drm](../../reference/a
 
 11. (Optional) Call [requireSecureDecoderModule](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#requiresecuredecodermodule) to check whether secure decoding is required.
 
-    <!-- @[arkts_requireSecureDecoderModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
-
+    <!-- @[arkts_requireSecureDecoderModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
     ``` TypeScript
     const needSecureDecoder = mediaKeySession.requireSecureDecoderModule(MIME_TYPE);
     ```
@@ -176,8 +176,8 @@ For detailed API descriptions, refer to [@ohos.multimedia.drm](../../reference/a
 
     When DRM information is obtained from protected content, generate a media key request and process its response to acquire a license for content authorization.
 
-    <!-- @[arkts_generateMediaKeyRequest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
-
+    <!-- @[arkts_generateMediaKeyRequest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
     ``` TypeScript
     // In an actual app, extract initData from the PSSH box of the media content.
     const initData = new Uint8Array([0x00, 0x01, 0x02, 0x03]);
@@ -190,8 +190,8 @@ For detailed API descriptions, refer to [@ohos.multimedia.drm](../../reference/a
       MIME_TYPE, initData, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionalData);
     ```
 
-    <!-- @[arkts_processMediaKeyResponse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
-
+    <!-- @[arkts_processMediaKeyResponse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
     ``` TypeScript
     // Send mediaKeyRequest.data to the DRM service over the network to obtain and process the media key response.
     const mediaKeyResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]); // Example response data.
@@ -200,16 +200,16 @@ For detailed API descriptions, refer to [@ohos.multimedia.drm](../../reference/a
 
 13. (Optional) Call [restoreOfflineMediaKeys](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#restoreofflinemediakeys) to restore offline media keys.
 
-    <!-- @[arkts_restoreOfflineMediaKeys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
-
+    <!-- @[arkts_restoreOfflineMediaKeys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
     ``` TypeScript
     await mediaKeySession.restoreOfflineMediaKeys(offlineMediaKeyId);
     ```
 
 14. (Optional) Call [checkMediaKeyStatus](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#checkmediakeystatus) to check the status of media keys.
 
-    <!-- @[arkts_checkMediaKeyStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
-
+    <!-- @[arkts_checkMediaKeyStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
     ``` TypeScript
     const keyStatus = mediaKeySession.checkMediaKeyStatus();
     ```
@@ -218,8 +218,8 @@ For detailed API descriptions, refer to [@ohos.multimedia.drm](../../reference/a
 
     The media key ID is used for offline media key management.
 
-    <!-- @[arkts_offlineMediaKeyManagement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
-
+    <!-- @[arkts_offlineMediaKeyManagement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
     ``` TypeScript
     const offlineMediaKeyIds = mediaKeySystem.getOfflineMediaKeyIds();
     if (offlineMediaKeyIds.length > 0) {
@@ -232,8 +232,8 @@ For detailed API descriptions, refer to [@ohos.multimedia.drm](../../reference/a
 
     Destroy the MediaKeySession instance when decryption is complete and the instance is no longer needed.
 
-    <!-- @[arkts_destroyMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
-
+    <!-- @[arkts_destroyMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
     ``` TypeScript
     mediaKeySession.destroy();
     ```
@@ -242,8 +242,8 @@ For detailed API descriptions, refer to [@ohos.multimedia.drm](../../reference/a
 
     Destroy the MediaKeySystem instance when DRM operations are complete and the instance is no longer needed.
 
-    <!-- @[arkts_destroyMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
-
+    <!-- @[arkts_destroyMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
     ``` TypeScript
     mediaKeySystem.destroy();
     ```

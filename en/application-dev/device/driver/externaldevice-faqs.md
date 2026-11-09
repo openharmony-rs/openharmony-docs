@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=4672a80de73f4c73d2f9912987e31312f5fa3743 translatedAt=2026-09-20T06:19:14.559Z pushedAt=2026-09-20T07:45:41.309Z -->
+<!-- md-trans-meta sourceCommit=625416a27968ac651822e2102d166c4b2af318c4 translatedAt=2026-11-09T01:00:57.807Z pushedAt=2026-11-09T02:50:30.767Z nl=1 -->
 
 ## Failed to Find the Header File During Compilation or Running
 
@@ -23,7 +23,7 @@ The message "usb/usb_ddk_api.h not found" or "hid/hid_ddk_api.h not found" is di
 
 ### Symptom
 
-The message "compileSdkVersion and releaseType of the app do not match the apiVersion and releaseType on the device" is displayed during HAP installation.
+The message "compileSdkVersion and releaseType of the app do not match the apiVersion and releaseType on the device" is displayed during HAP installation. 
 
 ### Solution
 
@@ -48,7 +48,7 @@ The message "code:9568347 error: install parse native so failed" is displayed du
 
 ### Solution
 
-The ABI types supported by the device do not match those configured in the C++ project. Follow the solution for [bm tool error code 9568347](https://developer.huawei.com/consumer/en/doc/doccenter-capabilities/bm-tool#section9568347-failed-to-parse-native-so-files). Run `param get const.product.cpu.abilist` through `hdc shell` to query the ABI types supported by the device, and configure these types in **abiFilters** in the module-level **build-profile.json5** file.
+The ABI type supported by the device does not match the Abi type configured in the C++ project. Follow the solution provided in [bm tool error code 9568347](https://developer.huawei.com/consumer/en/doc/doccenter-capabilities/bm-tool#section9568347-failed-to-parse-native-so-files). Run `param get const.product.cpu.abilist` through `hdc shell` to query the list of ABI types supported by the device, and configure the ABI types supported by the device in the `abiFilters` parameter of the module-level `build-profile.json5`.
 
 ## HAP Installation Fails with Error 9568289 After the ohos.permission.ACCESS_DDK_DRIVERS Permission Is Granted
 
@@ -76,7 +76,7 @@ The implementation of such APIs uses the entire buffer for transmission accordin
 /**
  * Assume that data has been filled with valid data, deviceId is the ID of the corresponding peripheral, and pipe is the pipe information to be transferred.
  * Preset scenario: transfer the 32-byte data starting from index 0x10 in data.*/
-uint8_t *data = new uint8_t [128];
+ uint8_t *data = new uint8_t [128];
 
 /** Create a data buffer. */
 UsbDeviceMemMap *devMmap;
