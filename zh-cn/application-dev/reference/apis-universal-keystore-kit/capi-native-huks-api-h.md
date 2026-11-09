@@ -37,6 +37,8 @@
 | [struct OH_Huks_Result OH_Huks_IsKeyItemExist(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet)](#oh_huks_iskeyitemexist) | 判断密钥是否存在。 |
 | [struct OH_Huks_Result OH_Huks_AttestKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_CertChain *certChain)](#oh_huks_attestkeyitem) | 获取密钥证书链。该API仅面向系统应用开放。 |
 | [struct OH_Huks_Result OH_Huks_AnonAttestKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_CertChain *certChain)](#oh_huks_anonattestkeyitem) | 获取密钥证书链。<br> 这是一个涉及网络的耗时接口，调用方可以通过异步线程获取证书链。 |
+| [typedef void (\*OH_Huks_AsyncAnonAttestCallback)(void *outOwnedCtxData, int32_t result, const struct OH_Huks_CertChain *outBorrowedCertChain)](#oh_huks_asyncanonattestcallback) | 接收异步匿名证明结果的回调函数指针。 |
+| [struct OH_Huks_Result OH_Huks_AsyncAnonAttestKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, const OH_Huks_AsyncAnonAttestCallback callback, void *ctxData)](#oh_huks_asyncanonattestkeyitem) | 获取密钥的证书链。异步对指定密钥执行匿名证明。<br> 这是一个涉及网络的耗时接口。 |
 | [struct OH_Huks_Result OH_Huks_InitSession(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_Blob *handle, struct OH_Huks_Blob *token)](#oh_huks_initsession) | 初始化密钥会话接口，并获取一个句柄（必选）和挑战值（可选）。 |
 | [struct OH_Huks_Result OH_Huks_UpdateSession(const struct OH_Huks_Blob *handle, const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *outData)](#oh_huks_updatesession) | 分段添加密钥操作的数据并进行相应的密钥操作，输出处理数据。 |
 | [struct OH_Huks_Result OH_Huks_FinishSession(const struct OH_Huks_Blob *handle, const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *outData)](#oh_huks_finishsession) | 结束密钥会话并进行相应的密钥操作，输出处理数据。 |
@@ -311,6 +313,53 @@ struct OH_Huks_Result OH_Huks_AnonAttestKeyItem(const struct OH_Huks_Blob *keyAl
 | 类型 | 说明 |
 | -- | -- |
 | [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0：操作成功。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 401：参数keyAlias、paramSet、certChain存在无效参数。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED 12000001：暂不支持该功能。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT 12000002：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT 12000003：密钥参数无效。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005：IPC通信失败。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL 12000006：加密引擎失败。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011：密钥文件不存在。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014：内存不足。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018：（API 23新增）通过访问群组标签指定的群组名无效。 |
+
+### OH_Huks_AsyncAnonAttestCallback()
+
+```c
+typedef void (*OH_Huks_AsyncAnonAttestCallback)(void *outOwnedCtxData, int32_t result, const struct OH_Huks_CertChain *outBorrowedCertChain)
+```
+
+**描述**
+
+接收异步匿名证明结果的回调函数指针。<br>证书链由HUKS分配，仅在回调执行期间有效，HUKS会在回调返回后释放；调用方若需保留证书链数据，须在回调内复制。<br>密钥操作相关的错误码在同步接口返回，联网证书获取相关的错误码在异步回调中返回。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| void *outOwnedCtxData | [出参] 指向用户定义的上下文数据的指针，在调用回调时传回。 |
+| int32_t result | [出参] 表示异步操作执行结果的状态码。 |
+| [const struct OH_Huks_CertChain](capi-hukstypeapi-oh-huks-certchain.md) *outBorrowedCertChain | [出参] 指向异步生成的返回证书链结构的指针。 |
+
+### OH_Huks_AsyncAnonAttestKeyItem()
+
+```c
+struct OH_Huks_Result OH_Huks_AsyncAnonAttestKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, const OH_Huks_AsyncAnonAttestCallback callback, void *ctxData)
+```
+
+**描述**
+
+获取密钥的证书链。异步对指定密钥执行匿名证明。<br> 这是一个涉及网络的耗时接口。<br> 接口在请求被密钥管理服务受理后立即返回，不会阻塞调用线程，证明结果（错误码和证书链）后续通过回调函数送达；若接口返回非0错误码，表示请求未被受理，回调不会被调用。当受理时证书链已经生成（如无DCM网络请求的软件环境），回调可能在接口返回前被调用。密钥操作相关的错误码在同步接口返回，联网证书获取相关的错误码在异步回调中返回。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *keyAlias | [入参] 指向目标密钥别名的指针。 |
+| [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | [入参] 获取证书链参数指针。 |
+| [OH_Huks_AsyncAnonAttestCallback](capi-native-huks-api-h.md#oh_huks_asyncanonattestcallback) callback | [入参] 异步操作完成时调用的回调函数指针。 |
+| void *ctxData | [入参] 指向用户定义的上下文数据的指针，直接传递给回调函数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0：操作成功。<br>         OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED 12000001：该特性暂不支持。<br>         OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT 12000002：获取密钥参数失败。<br>         OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT 12000003：密钥参数非法。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005：IPC通信失败。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL 12000006：加密引擎故障。<br>         OH_HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011：密钥文件不存在。<br>         OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012：设备环境或输入参数异常。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014：内存不足。<br>         OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018：访问组标签指定的组名无效。（API 23版本新增） |
 
 ### OH_Huks_InitSession()
 
