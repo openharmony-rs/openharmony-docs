@@ -817,7 +817,7 @@ ToolbarV2TitleStyle的构造函数。
 
 ## AdvancedToolBarV2Modifier
 
-AdvancedToolBarV2Modifier是ToolBarV2的高级modifier，将布局属性、样式配置和溢出菜单样式合并至单个modifier类中，提供设置工具栏主轴长度（mainAxisLength）、交叉轴长度（crossAxisLength）、布局方向（direction）、溢出菜单样式（overflowMenuStyle）的方法，方法支持链式调用。
+AdvancedToolBarV2Modifier是ToolBarV2的高级modifier，将布局属性、样式配置和溢出菜单样式合并至单个modifier类中，提供设置工具栏主轴长度（mainAxisLength）、交叉轴长度（crossAxisLength）、布局方向（direction）、样式配置（style）、溢出菜单样式（overflowMenuStyle）的方法，方法支持链式调用。
 
 **起始版本：** 26.1.0
 
