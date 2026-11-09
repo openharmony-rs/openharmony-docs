@@ -109,12 +109,12 @@ Specifically, most Node-APIs return a status code enumeration of the **napi_stat
 | napi_create_symbol | Creates an ArkTS symbol.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_create_symbol | Creates an ArkTS symbol.| napi_invalid_arg | The input parameter **result** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_create_symbol | Creates an ArkTS symbol.| napi_invalid_arg | The input parameter **description** is neither **nullptr** nor a ArkTS string.| Ensure that the input parameter is correct.|
-| napi_create_typedarray | Creates an ArkTS **TypeArray** from an existing **ArrayBuffer**.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
-| napi_create_typedarray | Creates an ArkTS **TypeArray** from an existing **ArrayBuffer**.| napi_invalid_arg | The input parameter **arraybuffer** is **nullptr**.| Ensure that the input parameter is correct.|
-| napi_create_typedarray | Creates an ArkTS **TypeArray** from an existing **ArrayBuffer**.| napi_invalid_arg | The input parameter **result** is **nullptr**.| Ensure that the input parameter is correct.|
-| napi_create_typedarray | Creates an ArkTS **TypeArray** from an existing **ArrayBuffer**.| napi_invalid_arg | The input parameter **type** is not **napi_typedarray_type**.| Ensure that the input parameter is correct.|
-| napi_create_typedarray | Creates an ArkTS **TypeArray** from an existing **ArrayBuffer**.| napi_arraybuffer_expected | The input parameter **arraybuffer** is not of the ArkTS ArrayBuffer type.| Ensure that the input parameter is correct.|
-| napi_create_typedarray | Creates an ArkTS **TypeArray** from an existing **ArrayBuffer**.| napi_pending_exception | An uncaught ArkTS exception occurs before or during the API call.| Handle the exception based on the exception information (HiLog/crash stack).|
+| napi_create_typedarray | Creates an ArkTS **TypedArray** from an existing **ArrayBuffer**.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
+| napi_create_typedarray | Creates an ArkTS **TypedArray** from an existing **ArrayBuffer**.| napi_invalid_arg | The input parameter **arraybuffer** is **nullptr**.| Ensure that the input parameter is correct.|
+| napi_create_typedarray | Creates an ArkTS **TypedArray** from an existing **ArrayBuffer**.| napi_invalid_arg | The input parameter **result** is **nullptr**.| Ensure that the input parameter is correct.|
+| napi_create_typedarray | Creates an ArkTS **TypedArray** from an existing **ArrayBuffer**.| napi_invalid_arg | The input parameter **type** is not **napi_typedarray_type**.| Ensure that the input parameter is correct.|
+| napi_create_typedarray | Creates an ArkTS **TypedArray** from an existing **ArrayBuffer**.| napi_arraybuffer_expected | The input parameter **arraybuffer** is not of the ArkTS ArrayBuffer type.| Ensure that the input parameter is correct.|
+| napi_create_typedarray | Creates an ArkTS **TypedArray** from an existing **ArrayBuffer**.| napi_pending_exception | An uncaught ArkTS exception occurs before or during the API call.| Handle the exception based on the exception information (HiLog/crash stack).|
 | napi_create_dataview | Creates an ArkTS **DataView** from an existing **ArrayBuffer**.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_create_dataview | Creates an ArkTS **DataView** from an existing **ArrayBuffer**.| napi_invalid_arg | The input parameter **arraybuffer** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_create_dataview | Creates an ArkTS **DataView** from an existing **ArrayBuffer**.| napi_invalid_arg | The input parameter **result** is **nullptr**.| Ensure that the input parameter is correct.|
@@ -196,13 +196,13 @@ Specifically, most Node-APIs return a status code enumeration of the **napi_stat
 | napi_get_value_uint32 | Obtains the C uint32 equivalent of an ArkTS number.| napi_invalid_arg | The input parameter **result** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_get_value_uint32 | Obtains the C uint32 equivalent of an ArkTS number.| napi_number_expected | The input parameter **value** is not of the ArkTS number type.| Ensure that the input parameter is correct.|
 | napi_get_boolean | Obtains an ArkTS bool object based on a C boolean value.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
-| napi_get_boolean | Obtains an ArkTS bool object based on a C boolean value.| napi_invalid_arg | The input parameter **value** is **nullptr**.| Ensure that the input parameter is correct.|
+| napi_get_boolean | Obtains an ArkTS bool object based on a C boolean value.| napi_invalid_arg | The input parameter **result** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_get_global | Obtains the **global** object.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
-| napi_get_global | Obtains the **global** object.| napi_invalid_arg | The input parameter **value** is **nullptr**.| Ensure that the input parameter is correct.|
+| napi_get_global | Obtains the **global** object.| napi_invalid_arg | The input parameter **result** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_get_null | Obtains the **null** object.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
-| napi_get_null | Obtains the **null** object.| napi_invalid_arg | The input parameter **value** is **nullptr**.| Ensure that the input parameter is correct.|
+| napi_get_null | Obtains the **null** object.| napi_invalid_arg | The input parameter **result** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_get_undefined | Obtains the **undefined** object.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
-| napi_get_undefined | Obtains the **undefined** object.| napi_invalid_arg | The input parameter **value** is **nullptr**.| Ensure that the input parameter is correct.|
+| napi_get_undefined | Obtains the **undefined** object.| napi_invalid_arg | The input parameter **result** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_coerce_to_bool | Forcibly converts an ArkTS value to an ArkTS boolean.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_coerce_to_bool | Forcibly converts an ArkTS value to an ArkTS boolean.| napi_invalid_arg | The input parameter **value** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_coerce_to_bool | Forcibly converts an ArkTS value to an ArkTS boolean.| napi_invalid_arg | The input parameter **result** is **nullptr**.| Ensure that the input parameter is correct.|
@@ -240,7 +240,7 @@ Specifically, most Node-APIs return a status code enumeration of the **napi_stat
 | napi_is_dataview | Checks whether an ArkTS value is a DataView.| napi_invalid_arg | The input parameter **result** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_is_date | Checks whether an ArkTS value is an ArkTS **Date** object.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_is_date | Checks whether an ArkTS value is an ArkTS **Date** object.| napi_invalid_arg | The input parameter **value** is **nullptr**.| Ensure that the input parameter is correct.|
-| napi_is_date | Checks whether an ArkTS value is an ArkTS **Date** object.| napi_invalid_arg | The input parameter **result** is **nullptr**.| Ensure that the input parameter is correct.|
+| napi_is_date | Checks whether an ArkTS value is an ArkTS **Date** object.| napi_invalid_arg | The input parameter **is_date** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_strict_equals | Checks whether two ArkTS values are strictly equal.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_strict_equals | Checks whether two ArkTS values are strictly equal.| napi_invalid_arg | The input parameter **lhs** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_strict_equals | Checks whether two ArkTS values are strictly equal.| napi_invalid_arg | The input parameter **rhs** is **nullptr**.| Ensure that the input parameter is correct.|
@@ -252,7 +252,7 @@ Specifically, most Node-APIs return a status code enumeration of the **napi_stat
 | napi_set_property | Sets a property for an object.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_set_property | Sets a property for an object.| napi_invalid_arg | The input parameter **object** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_set_property | Sets a property for an object.| napi_invalid_arg | The input parameter **key** is **nullptr**.| Ensure that the input parameter is correct.|
-| napi_set_property | Sets a property for an object.| napi_invalid_arg | The input parameter **result** is **nullptr**.| Ensure that the input parameter is correct.|
+| napi_set_property | Sets a property for an object.| napi_invalid_arg | The input parameter **value** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_set_property | Sets a property for an object.| napi_object_expected | The input parameter **object** is not of the ArkTS object type.| Ensure that the input parameter is correct.|
 | napi_set_property | Sets a property for an object.| napi_pending_exception | An uncaught ArkTS exception occurs before or during the API call.| Handle the exception based on the exception information (HiLog/crash stack).|
 | napi_get_property | Obtains the requested property of an object.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
@@ -281,7 +281,7 @@ Specifically, most Node-APIs return a status code enumeration of the **napi_stat
 | napi_set_named_property | Sets a property with the specified name for an object.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_set_named_property | Sets a property with the specified name for an object.| napi_invalid_arg | The input parameter **object** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_set_named_property | Sets a property with the specified name for an object.| napi_invalid_arg | The input parameter **utf8name** is **nullptr**.| Ensure that the input parameter is correct.|
-| napi_set_named_property | Sets a property with the specified name for an object.| napi_invalid_arg | The input parameter **result** is **nullptr**.| Ensure that the input parameter is correct.|
+| napi_set_named_property | Sets a property with the specified name for an object.| napi_invalid_arg | The input parameter **value** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_set_named_property | Sets a property with the specified name for an object.| napi_object_expected | The input parameter **object** is not of the ArkTS object type.| Ensure that the input parameter is correct.|
 | napi_set_named_property | Sets a property with the specified name for an object.| napi_pending_exception | An uncaught ArkTS exception occurs before or during the API call.| Handle the exception based on the exception information (HiLog/crash stack).|
 | napi_get_named_property | Obtains the property with the specified name in an object.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
@@ -443,16 +443,16 @@ Specifically, most Node-APIs return a status code enumeration of the **napi_stat
 | napi_call_threadsafe_function | Calls a thread-safe function.| napi_invalid_arg | **threadsafe_function** is disabled.| Do not call this API after **napi_release_threadsafe_function** disables **func**.|
 | napi_call_threadsafe_function | Calls a thread-safe function.| napi_queue_full | The input parameter **is_blocking** is **napi_tsfn_nonblocking**, and the queue is full.| Increase the value of **max_queue_size**, or change **is_blocking** to **napi_tsfn_blocking**.|
 | napi_call_threadsafe_function | Calls a thread-safe function.| napi_closing | **threadsafe_function** is being disabled.| Do not call this API after **napi_release_threadsafe_function** disables **func**.|
-| napi_call_threadsafe_function | Calls a thread-safe function.| napi_closing | The input parameter **env** has been destroyed, and the env address is reused by a new **env**.| Do not use this API after the **env** is destroyed.|
+| napi_call_threadsafe_function | Calls a thread-safe function.| napi_closing | The **env** used to create **func** has been destroyed, and its address has been reused by a new **env**.| Do not use this API after the **env** is destroyed.|
 | napi_call_threadsafe_function | Calls a thread-safe function.| napi_generic_failure | **uv_async_send** failed.| NA |
-| napi_call_threadsafe_function | Calls a thread-safe function.| napi_generic_failure | The input parameter **env** has been destroyed.| Do not use this API after the **env** is destroyed.|
+| napi_call_threadsafe_function | Calls a thread-safe function.| napi_generic_failure | The **env** used to create **func** has been destroyed.| Do not use this API after the **env** is destroyed.|
 | napi_acquire_threadsafe_function | Acquires a thread-safe function.| napi_invalid_arg | The input parameter **func** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_acquire_threadsafe_function | Acquires a thread-safe function.| napi_generic_failure | **threadsafe_function** is being disabled/has been disabled.| Do not call this API after **napi_release_threadsafe_function** disables **func**.|
 | napi_release_threadsafe_function | Releases a thread-safe function.| napi_invalid_arg | The input parameter **func** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_release_threadsafe_function | Releases a thread-safe function.| napi_generic_failure | **threadsafe_function** is being disabled/has been disabled.| Do not call this API after **napi_release_threadsafe_function** disables **func**.|
 | napi_release_threadsafe_function | Releases a thread-safe function.| napi_generic_failure | When this API is called, the number of threads that occupy **threadsafe_function** is 0.| The number of release times must match the values of **initial_thread_count** and **acquire**.|
 | napi_release_threadsafe_function | Releases a thread-safe function.| napi_generic_failure | **uv_async_send** failed.| NA |
-| napi_release_threadsafe_function | Releases a thread-safe function.| napi_generic_failure | The input parameter **env** has been destroyed.| Ensure that the input parameter is correct.|
+| napi_release_threadsafe_function | Releases a thread-safe function.| napi_generic_failure | The **env** used to create **func** has been destroyed.| Ensure that the input parameter is correct.|
 | napi_ref_threadsafe_function | Indicates that the event loop running on the main thread should not exit until the thread-safe function is destroyed.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_ref_threadsafe_function | Indicates that the event loop running on the main thread should not exit until the thread-safe function is destroyed.| napi_invalid_arg | The input parameter **func** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_ref_threadsafe_function | Indicates that the event loop running on the main thread should not exit until the thread-safe function is destroyed.| napi_generic_failure | **env** is not in the current thread.| This API can be called only from the thread to which the **env** belongs.|
@@ -508,7 +508,7 @@ Specifically, most Node-APIs return a status code enumeration of the **napi_stat
 | napi_create_external_buffer | Creates an ArkTS buffer of the specified size, and initializes it with the given data. The buffer created can include extra data.| napi_invalid_arg | The input parameter size is 0 or greater than 2 MiB (2097152 bytes).| Ensure that the input parameter is correct.|
 | napi_create_external_buffer | Creates an ArkTS buffer of the specified size, and initializes it with the given data. The buffer created can include extra data.| napi_pending_exception | An uncaught ArkTS exception occurs before or during the API call.| Handle the exception based on the exception information (HiLog/crash stack).|
 | napi_get_buffer_info | Obtains the underlying data of an ArkTS buffer and its length.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
-| napi_get_buffer_info | Obtains the underlying data of an ArkTS buffer and its length.| napi_invalid_arg | The input parameter **result** is **nullptr**.| Ensure that the input parameter is correct.|
+| napi_get_buffer_info | Obtains the underlying data of an ArkTS buffer and its length.| napi_invalid_arg | The input parameter **value** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_get_buffer_info | Obtains the underlying data of an ArkTS buffer and its length.| napi_arraybuffer_expected | The input parameter value is not of the ArkTS ArrayBuffer type.| Ensure that the input parameter is correct.|
 | napi_is_buffer | Checks whether the given ArkTS value is a **Buffer** object.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_is_buffer | Checks whether the given ArkTS value is a **Buffer** object.| napi_invalid_arg | The input parameter **value** is **nullptr**.| Ensure that the input parameter is correct.|
@@ -534,9 +534,9 @@ Specifically, most Node-APIs return a status code enumeration of the **napi_stat
 | napi_detach_arraybuffer | Detaches the underlying data of the given ArrayBuffer.| napi_invalid_arg | The input parameter **arraybuffer** has been detached.| Ensure that the **arraybuffer** is not detached.|
 | napi_detach_arraybuffer | Detaches the underlying data of the given ArrayBuffer.| napi_object_expected | The input parameter **arraybuffer** is not of the ArkTS object type.| Ensure that the input parameter is correct.|
 | napi_is_detached_arraybuffer | Checks whether the given ArrayBuffer has been detached.| napi_invalid_arg | The input parameter **env** is **nullptr**.| Ensure that the input parameter is correct.|
-| napi_is_detached_arraybuffer | Checks whether the given ArrayBuffer has been detached.| napi_invalid_arg | The input parameter **arraybuffer** is **nullptr**.| Ensure that the input parameter is correct.|
+| napi_is_detached_arraybuffer | Checks whether the given ArrayBuffer has been detached.| napi_invalid_arg | The input parameter **value** is **nullptr**.| Ensure that the input parameter is correct.|
 | napi_is_detached_arraybuffer | Checks whether the given ArrayBuffer has been detached.| napi_invalid_arg | The input parameter **result** is **nullptr**.| Ensure that the input parameter is correct.|
-| napi_is_detached_arraybuffer | Checks whether the given ArrayBuffer has been detached.| napi_invalid_arg | The input parameter **arraybuffer** is not of the ArkTS ArrayBuffer type.| Ensure that the input parameter is correct.|
+| napi_is_detached_arraybuffer | Checks whether the given ArrayBuffer has been detached.| napi_invalid_arg | The input parameter **value** is not of the ArkTS ArrayBuffer type.| Ensure that the input parameter is correct.|
 | napi_run_script | Runs a given object as ArkTS code. This API is currently an empty implementation. Use the system extension API **napi_run_script_path** to improve security. | napi_invalid_arg | The input parameter env is nullptr. | Ensure that the input parameter is correct. |
 | napi_run_script | Runs a given object as ArkTS code. This API is currently an empty implementation. Use the system extension API **napi_run_script_path** to improve security. | napi_invalid_arg | The input parameter script is nullptr. | Ensure that the input parameter is correct. |
 | napi_run_script | Runs a given object as ArkTS code. This API is currently an empty implementation. Use the system extension API **napi_run_script_path** to improve security. | napi_invalid_arg | The input parameter result is nullptr. | Ensure that the input parameter is correct. |
