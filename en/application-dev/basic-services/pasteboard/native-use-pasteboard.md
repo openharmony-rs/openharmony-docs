@@ -1,11 +1,11 @@
-# Using the Pasteboard for Copy and Paste (C/C++)
+# Using the Pasteboard to Copy and Paste (C/C++)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @yangxiaodong41-->
 <!--Designer: @zhusiyuan2-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=11aacbab055b6787010ae1c1d532b8f6460691e9 translatedAt=2026-11-06T12:03:58.425Z pushedAt=2026-11-09T09:12:26.015Z nl=1 -->
+<!-- md-trans-meta sourceCommit=11aacbab055b6787010ae1c1d532b8f6460691e9 translatedAt=2026-11-06T12:03:58.425Z pushedAt=2026-11-09T13:30:21.359Z nl=1 -->
 
 ## When to Use
 

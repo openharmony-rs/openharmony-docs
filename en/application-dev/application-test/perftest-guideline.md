@@ -16,7 +16,6 @@ PerfTest provides white-box performance test capabilities for specified code seg
 
 The following figure shows the PerfTest feature design.
 
-![perftest](figures/perftest.png)
 
 PerfTest provides ArkTS APIs for setting performance test strategies, executing performance tests, and obtaining test results. <!--RP1-->For details, see [@ohos.test.PerfTest](../reference/apis-test-kit/js-apis-perftest.md)<!--RP1End-->.
 

@@ -1,4 +1,4 @@
-# Applying Constraints for System Accounts (for System Applications Only)
+# Applying Constraints for System Accounts (Open Only to System Applications)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Account-->
@@ -6,7 +6,7 @@
 <!--Designer: @JiDong-CS1-->
 <!--Tester: @zhaimengchao-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=59edb11f36a94982be51a04819a08ffc4ccba2e6 translatedAt=2026-11-06T11:56:05.713Z pushedAt=2026-11-09T12:18:10.858Z nl=1 -->
+<!-- md-trans-meta sourceCommit=59edb11f36a94982be51a04819a08ffc4ccba2e6 translatedAt=2026-11-06T11:56:05.713Z pushedAt=2026-11-09T13:28:27.252Z nl=1 -->
 
 The **account** module provides a role-based access control mechanism. You can set constraints for system accounts to restrict their behaviors.
 

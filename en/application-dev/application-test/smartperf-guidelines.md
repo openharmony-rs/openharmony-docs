@@ -1,11 +1,11 @@
-# SmartPerf Device User Guide
+# SmartPerf User Guide
 <!--Kit: Test Kit-->
 <!--Subsystem: Test-->
 <!--Owner: @zhzhchuai-->
 <!--Designer: @zhzhchuai-->
 <!--Tester: @laonie666-->
 <!--Adviser: @chen8281-->
-<!-- md-trans-meta sourceCommit=ebd657d8f7b9c259e6bda7197d2f50e9ebac1845 translatedAt=2026-11-06T12:31:01.659Z pushedAt=2026-11-09T07:14:45.500Z nl=1 -->
+<!-- md-trans-meta sourceCommit=ebd657d8f7b9c259e6bda7197d2f50e9ebac1845 translatedAt=2026-11-06T12:31:01.659Z pushedAt=2026-11-09T13:27:00.699Z nl=1 -->
 
 ## Introduction
 

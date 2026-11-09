@@ -6,7 +6,7 @@
 <!--Designer: @weredust-->
 <!--Tester: @weredust-->
 <!--Adviser: @weredust-->
-<!-- md-trans-meta sourceCommit=3194fdbc42d6357f420eb498f6d963c04a35b419 translatedAt=2026-11-06T12:37:54.319Z pushedAt=2026-11-09T12:10:24.305Z nl=1 -->
+<!-- md-trans-meta sourceCommit=3194fdbc42d6357f420eb498f6d963c04a35b419 translatedAt=2026-11-06T12:37:54.319Z pushedAt=2026-11-09T13:24:48.706Z nl=1 -->
 
 Starting from API version 26.1.0, Automatic Scene Configuration Kit (Scene Configuration Service) provides applications with scenario-based system capability configuration and control. The system implements the configuration and control on the system side, so applications do not need to implement interception logic themselves, nor can they bypass or remove the restrictions on their own. This Kit currently delivers the preceding capabilities through the Assessment Management (assessment) module, targeting business scenarios such as online exams and training assessments that require process fairness. The entire control process requires user confirmation or can be perceived by the user.
 
@@ -30,7 +30,7 @@ Starting from API version 26.1.0, Automatic Scene Configuration Kit (Scene Confi
 
 - The capabilities of this Kit can be used only under the Stage model.
 - Supported devices: Phone | PC/2in1 | Tablet.
-- Calling the capabilities of this Kit requires applying for restricted permissions. For permission information, approval rules, and module-level specifications, see [Assessment Management Development Guide](assessment-guide.md#constraints-and-limitations).
+- Calling the capabilities of this Kit requires applying for restricted permissions. For permission information, approval rules, and module-level specifications, see [Assessment Management Development Guide](assessment-guide.md#constraints).
 
 ## Relationship with Related Kits
 
