@@ -3104,9 +3104,6 @@ struct ShaderColorStyle {
   }
 }
 ```
-<<<<<<< HEAD
-![SearchShaderStyle](figures/searchShaderStyle.png)
-=======
 ![SearchShaderStyle](figures/searchShaderStyle.png)
 
 ### 示例32（设置文本选择的AI菜单）
@@ -3136,4 +3133,3 @@ struct SearchExample {
 }
 ```
 <!--RP3--><!--RP3End-->
->>>>>>> eef4c2c5c78066b79ee3da0f42694b1f9b809bb2
