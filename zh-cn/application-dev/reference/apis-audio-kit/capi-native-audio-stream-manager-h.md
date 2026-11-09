@@ -281,7 +281,7 @@ bool OH_AudioStreamManager_IsOffloadPlaybackSupported(OH_AudioStreamManager *str
 ### OH_AudioStreamManager_IsUltraFastPlaybackSupported()
 
 ```c
-bool OH_AudioStreamManager_IsUltraFastPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage, bool *supported)
+OH_AudioCommon_Result OH_AudioStreamManager_IsUltraFastPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage, bool *supported)
 ```
 
 **描述**
@@ -303,7 +303,7 @@ bool OH_AudioStreamManager_IsUltraFastPlaybackSupported(OH_AudioStreamManager *s
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOCOMMON_RESULT_SUCCESS = 0 ：函数执行成功。<br>          AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM = 6800101 ：<br>                                                    1.参数streamManager为nullptr；<br>                                                    2.参数streamInfo无效；<br>                                                    3.参数supported为nullptr。<br>AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED = 6800302 ：音频服务进程异常退出。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS = 0 ：函数执行成功。<br>          AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM = 6800101 ：<br>                                                    1.参数streamManager为nullptr；<br>                                                    2.参数streamInfo无效；<br>                                                    3.参数supported为nullptr。<br>AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED = 6800302 ：音频服务进程异常退出。 |
 
 ### OH_AudioStreamManager_IsUltraFastRecordingSupported()
  
@@ -332,7 +332,7 @@ OH_AudioCommon_Result OH_AudioStreamManager_IsUltraFastRecordingSupported(
  
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS = 0 ：函数执行成功。<br>          AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM = 6800101 ：<br>                                                    1.参数audioStreamManager为nullptr；<br>                                                    2.参数streamInfo无效；<br>                                                    3.参数supported为nullptr。<br>AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED = 6800302 ：音频服务进程异常退出。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS = 0 ：函数执行成功。<br>          AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM = 6800101 ：<br>                                                    1.参数streamManager为nullptr；<br>                                                    2.参数streamInfo无效；<br>                                                    3.参数supported为nullptr。<br>AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED = 6800302 ：音频服务进程异常退出。 |
  
 
 

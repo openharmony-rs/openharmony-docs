@@ -80,7 +80,7 @@ OH_AudioStreamBuilder_SetLatencyMode(ultraFastBuilder, latencyMode);
 
 ### 超低时延模式限制
 
-创建播放实例时，若应用未申请`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`权限，或当前系统不支持超低时延能力，接口会直接返回错误码201（AUDIOSTREAM_ERROR_PERMISSION_DENIED_ULTRA_FAST）；若当前系统不支持超低时延能力，返回错误码6800107（AUDIOSTREAM_ERROR_UNSUPPORTED_ULTRA_FAST），均不会创建播放实例。
+创建播放实例时，系统会校验权限和设备能力：若应用未申请`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`权限，接口返回错误码201（AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED）；若当前硬件不支持超低时延能力，接口返回错误码6800104（AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY）。以上两种情况均不会创建播放实例。
 
 创建成功后，在以下场景中，即使设置了超低时延模式，系统仍会使用低时延模式或普通模式。
 - 非系统应用且当前输出设备不是USB ARM耳机，降级为低时延模式。
@@ -90,8 +90,9 @@ OH_AudioStreamBuilder_SetLatencyMode(ultraFastBuilder, latencyMode);
 - 当前系统中存在更高优先级流（如：蜂窝通话），新增的流降级为普通模式。
 
 ### 时延状态查询
+
 从API version 20开始，支持时延状态查询接口。
-- 可通过[OH_AudioRenderer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getfaststatus)来获取音频播放流是否正在低时延状态下工作。从API version 26.1.0起，OH_AudioRenderer_GetFastStatus() 可返回 AUDIOSTREAM_FASTSTATUS_ULTRA_FAST。
+- 可通过[OH_AudioRenderer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getfaststatus)来获取音频播放流是否正在低时延状态下工作。从API version 26.1.0起，OH_AudioRenderer_GetFastStatus()可返回 AUDIOSTREAM_FASTSTATUS_ULTRA_FAST。
 - 在部分特殊场景（如：存在更高优先级流、当前连接设备不支持等）下，开发者可以通过调用[OH_AudioRenderer_OnFastStatusChange()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_onfaststatuschange)来获取低时延状态改变事件。
 
 > **注意：**
