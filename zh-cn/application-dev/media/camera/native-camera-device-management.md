@@ -87,6 +87,7 @@
    ```
 
    方法二：获取物理相机，通过[OH_CameraManager_GetCameraDevices](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getcameradevices)方法，获取当前设备支持的相机列表，通过[OH_CameraDevice_IsLogicalCamera](../../reference/apis-camera-kit/capi-camera-device-h.md#oh_cameradevice_islogicalcamera)方法获取物理镜头。
+
    物理镜头根据[Camera_Type](../../reference/apis-camera-kit/capi-camera-h.md#camera_type)区分各自镜头属性，开发者可根据使用场景使用符合采集诉求的相机镜头。
 
    <!-- @[get_camera_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->

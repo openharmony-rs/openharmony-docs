@@ -82,6 +82,7 @@
    ```
 
    方法二：获取物理相机，通过[CameraManager](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md)的[getCameraDevices](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameradevices23)方法，获取当前设备支持的相机列表，筛选相机属性[CameraDevice](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameradevice).isLogicalCamera为false的相机。
+
    物理镜头根据[CameraType](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameratype)区分各自镜头属性，开发者可根据使用场景使用符合采集诉求的相机镜头。
 
    <!-- @[camera_getCameraDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
