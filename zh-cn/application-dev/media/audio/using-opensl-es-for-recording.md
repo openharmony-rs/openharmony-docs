@@ -4,7 +4,6 @@ description: "为存量应用提供OpenSL ES录音与缓冲队列示例，新开
 keywords: [OpenSL ES, OHAudio, 录音缓冲队列, CreateAudioRecorder, SetRecordState]
 doctype: guide
 status: not_recommended
-wanglu11941024
 ---
 
 # 使用OpenSL ES开发音频录制功能(C/C++)
