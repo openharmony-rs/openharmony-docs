@@ -88,6 +88,7 @@
 | [Image_ErrorCode OH_AuxiliaryPictureInfo_Release(OH_AuxiliaryPictureInfo *info)](#oh_auxiliarypictureinfo_release) | 释放OH_AuxiliaryPictureInfo指针。 |
 | <!--DelRow-->[Image_ErrorCode OH_DecomposeOptions_Create(OH_DecomposeOptions **outOwnedOptions)](#oh_decomposeoptions_create) | 创建OH_DecomposeOptions实例。 |
 | <!--DelRow-->[Image_ErrorCode OH_DecomposeOptions_SetIsFullSizeGainmap(OH_DecomposeOptions *options, bool isFullSizeGainmap)](#oh_decomposeoptions_setisfullsizegainmap) | 设置是否生成全尺寸增益图（指增益图和主图尺寸一致）。若不自行设置，默认值为false，即增益图的尺寸是主图的一半。 |
+| <!--DelRow-->[Image_ErrorCode OH_DecomposeOptions_GetIsFullSizeGainmap(OH_DecomposeOptions *options, bool *isFullSizeGainmap)](#oh_decomposeoptions_getisfullsizegainmap) | 获取是否生成全尺寸增益图（指增益图和主图尺寸一致）。如果isFullSizeGainmap为true，则增益图和主图尺寸一致；否则，增益图为主图尺寸的一半。 |
 | <!--DelRow-->[Image_ErrorCode OH_DecomposeOptions_SetDesiredPixelFormat(OH_DecomposeOptions *options, int32_t desiredPixelFormat)](#oh_decomposeoptions_setdesiredpixelformat) | 设置HDR分解后SDR PixelMap的像素格式。 |
 | <!--DelRow-->[Image_ErrorCode OH_DecomposeOptions_GetDesiredPixelFormat(OH_DecomposeOptions *options, int32_t *desiredPixelFormat)](#oh_decomposeoptions_getdesiredpixelformat) | 获取HDR分解后SDR PixelMap的像素格式。 |
 | <!--DelRow-->[Image_ErrorCode OH_DecomposeOptions_Release(OH_DecomposeOptions *options)](#oh_decomposeoptions_release) | 释放OH_DecomposeOptions指针。 |
