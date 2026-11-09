@@ -37,3 +37,5 @@
 2. 大部分的set方法建议在commitConfig之后进行调用，比如白平衡相关的set接口。
 
 3. 大部分监听相关接口，需要在addInput之后调用，保证镜头打开并添加到session中后，数据可通过监听返回。
+
+具体代码可参考[拍照实践(ArkTS)](camera-shooting-case.md)。
