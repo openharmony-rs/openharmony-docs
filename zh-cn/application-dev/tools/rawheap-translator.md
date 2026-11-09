@@ -1,7 +1,7 @@
 ---
 kits: ["ArkTS Kit / 方舟编程语言"]
 description: "将 ArkTS 原始堆快照转换为 heapsnapshot，用于 OOM 后的离线内存分析与故障排查。"
-keywords: [rawheap_translator, ArkTS内存OOM, rawheap, heapsnapshot, 离线内存分析, 环境变量配置, 堆快照裁剪级别, 工具版本匹配, 文件写入权限]
+keywords: [rawheap_translator, ArkTS内存OOM, rawheap, heapsnapshot, 离线内存分析, 堆快照裁剪级别]
 doctype: guide
 status: active
 ---
@@ -186,16 +186,16 @@ rawheap_translator memleak-js-com.example.myapplication-7979-7979-20241215191332
 
 ## 文件参考规格
 
-rawheap 文件的大小和生成耗时与当前 ArkTS 堆内存大小及存活对象数量呈强正相关。当 ArkTS 堆内存占用较大、存活对象数量较多时，生成的文件会更大，耗时也会更长。开发者可以订阅[资源泄漏事件][resource-leak-events]，自定义事件处理逻辑。
+rawheap 文件的大小和生成耗时与当前 ArkTS 堆内存大小及存活对象数量呈强正相关。当 ArkTS 堆内存占用较大、存活对象数量较多时，生成的文件会更大，耗时也会更长。如需在应用发生 JS 内存 OOM 时获取快照，可参考[资源泄漏事件][resource-leak-events]配置堆快照采集，并使用 rawheap_translator 解析实际获取到的 rawheap 文件。
 
-从 API version 20 开始，虚拟机支持两种规格的 HeapDump。开发者可调用[hidebug.setJsRawHeapTrimLevel][set-rawheap-trim-level]接口，设置当前进程转储虚拟机原始堆快照的裁剪级别。设置`TRIM_LEVEL_2`时，需使用支持该格式的解析工具；旧版工具可能转换失败。
+从 API version 20 开始，虚拟机支持两种规格的 HeapDump。开发者可调用[hidebug.setJsRawHeapTrimLevel][set-rawheap-trim-level]接口，设置当前进程转储虚拟机原始堆快照的裁剪级别。设置`TRIM_LEVEL_2`时，请使用与快照生成环境匹配的 SDK 工具，并参照该接口说明中的工具兼容性要求；不支持该格式的工具可能转换失败。
 
-从 API version 22 开始，`TRIM_LEVEL_1`模式新增对象属性名解析能力。生成的 rawheap 文件相对于原先会变大，具体增长大小与对象属性名数量和字符串大小有关。
+从 API version 22 开始，`TRIM_LEVEL_1`规格新增对象属性名解析能力。生成的 rawheap 文件相对于原先会变大，具体增长大小与对象属性名数量和字符串大小有关。
 
 | 规格 | 特点 |
 | --- | --- |
-| `TRIM_LEVEL_1` | dump 速度快，生成的 rawheap 文件大。API version 20 之前版本，虚拟机默认为此规格。 |
-| `TRIM_LEVEL_2` | dump 速度稍慢，生成的 rawheap 文件大小相比`TRIM_LEVEL_1`缩小 40% 左右。 |
+| `TRIM_LEVEL_1` | HeapDump 速度快，生成的 rawheap 文件大。此规格为默认裁剪级别；从 API version 20 开始，可通过[hidebug.setJsRawHeapTrimLevel][set-rawheap-trim-level]切换裁剪级别。 |
+| `TRIM_LEVEL_2` | HeapDump 速度稍慢，生成的 rawheap 文件大小相比`TRIM_LEVEL_1`缩小 40% 左右。 |
 
 下表给出不同堆大小下，rawheap 文件大小、生成耗时及解析耗时的示例，供评估文件上报的性能和流量开销时参考。实际数据会随应用、设备和工具版本变化。
 
