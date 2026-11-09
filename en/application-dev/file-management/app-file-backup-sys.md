@@ -5,7 +5,7 @@
 <!--Designer: @chenxi0605-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=9ba5cc8a5a6376c01d21ba01049967807da4bf5c translatedAt=2026-11-04T08:39:43.589Z pushedAt=2026-11-04T09:32:02.736Z nl=1 -->
+<!-- md-trans-meta sourceCommit=dac703c25b72f2c4249f676cf2addd00c46c1537 translatedAt=2026-11-09T07:43:55.817Z pushedAt=2026-11-09T07:47:23.269Z nl=1 -->
 
 The backup and restore framework provides a solution for backing up and restoring data of applications and services on a device. You can follow the procedure below to enable an application to trigger data backup or restoration:
 
@@ -40,8 +40,7 @@ Call [backup.getLocalCapabilities()](../reference/apis-core-file-kit/js-apis-fil
 <!-- @[get_local_cap_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->  
 
 ``` TypeScript
-import { fileIo } from '@kit.CoreFileKit';
-import { backup } from '@kit.CoreFileKit';
+import { fileIo, backup } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
 
@@ -109,8 +108,7 @@ You can save the file to a local directory as required.
   <!-- @[session_backup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->  
   
   ``` TypeScript
-  import { fileIo } from '@kit.CoreFileKit';
-  import { backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   // ...
   
@@ -207,8 +205,7 @@ When all the data of the application is ready, the service starts to restore the
   <!-- @[session_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
   
   ``` TypeScript
-  import { fileIo } from '@kit.CoreFileKit';
-  import { backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   // ...
   

@@ -1,12 +1,11 @@
 # NativeImage Development (C/C++)
-
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=ccef03d6ee99dcba5b0a6890aa3d1cd03c3eb62f translatedAt=2026-08-15T01:51:33.958Z pushedAt=2026-08-15T08:27:28.220Z -->
+<!-- md-trans-meta sourceCommit=d1482a17191db6d1073a34c67ac0e1249e985c36 translatedAt=2026-11-09T07:44:33.371Z pushedAt=2026-11-09T08:06:57.263Z nl=2 -->
 
 ## Overview
 
@@ -65,36 +64,35 @@ libnative_buffer.so
 1. Initialize the EGL environment.
 
     Refer to the code snippet below. For details about how to use the XComponent, see [XComponent Development](../ui/napi-xcomponent-guidelines.md).
-
     <!-- @[init_egl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/image_render.cpp) -->
-
+    
     ``` C++
     bool ImageRender::InitEGL(EGLNativeWindowType window, uint64_t width, uint64_t height)
     {
         window_ = window;
         width_ = width;
         height_ = height;
-
+    
         if (!InitializeEGLDisplay() || !ChooseEGLConfig() || !CreateEGLContext() || !CreateEGLSurface()) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to initialize EGL");
             return false;
         }
-
+    
         if (!MakeCurrentContext()) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to make EGL context current");
             return false;
         }
-
+    
         if (!CompileAndLinkShaders()) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to compile and link shaders");
             return false;
         }
-
+    
         UpdateViewport();
-
+    
         return true;
     }
-
+    
     // ...
     bool ImageRender::InitializeEGLDisplay()
     {
@@ -103,15 +101,15 @@ libnative_buffer.so
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to get EGL display");
             return false;
         }
-
+    
         if (!eglInitialize(display_, nullptr, nullptr)) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to initialize EGL");
             return false;
         }
-
+    
         return true;
     }
-
+    
     bool ImageRender::ChooseEGLConfig()
     {
         const EGLint attribs[] = {
@@ -123,7 +121,7 @@ libnative_buffer.so
             EGL_ALPHA_SIZE, 8,
             EGL_NONE
         };
-
+    
         EGLint numConfigs;
         if (!eglChooseConfig(display_, attribs, &config_, 1, &numConfigs) || numConfigs == 0) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to choose EGL config");
@@ -131,7 +129,7 @@ libnative_buffer.so
         }
         return true;
     }
-
+    
     bool ImageRender::CreateEGLContext()
     {
         const EGLint contextAttribs[] = { EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE };
@@ -142,7 +140,7 @@ libnative_buffer.so
         }
         return true;
     }
-
+    
     bool ImageRender::CreateEGLSurface()
     {
         surface_ = eglCreateWindowSurface(display_, config_, window_, nullptr);
@@ -152,7 +150,7 @@ libnative_buffer.so
         }
         return true;
     }
-
+    
     bool ImageRender::MakeCurrentContext()
     {
         if (!eglMakeCurrent(display_, surface_, surface_, context_)) {
@@ -161,32 +159,32 @@ libnative_buffer.so
         }
         return true;
     }
-
+    
     void ImageRender::UpdateViewport()
     {
         glViewport(0, 0, static_cast<GLsizei>(width_), static_cast<GLsizei>(height_));
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ImageRender",
                      "Viewport updated to %{public}llu x %{public}llu", width_, height_);
     }
-
+    
     bool ImageRender::CompileAndLinkShaders()
     {
         GLuint vertexShader = CompileShader(GL_VERTEX_SHADER, g_vertexShaderSource);
         if (vertexShader == 0) {
             return false;
         }
-
+    
         GLuint fragmentShader = CompileShader(GL_FRAGMENT_SHADER, g_fragmentShaderSource);
         if (fragmentShader == 0) {
             glDeleteShader(vertexShader);
             return false;
         }
-
+    
         shaderProgram_ = glCreateProgram();
         glAttachShader(shaderProgram_, vertexShader);
         glAttachShader(shaderProgram_, fragmentShader);
         glLinkProgram(shaderProgram_);
-
+    
         GLint linked;
         glGetProgramiv(shaderProgram_, GL_LINK_STATUS, &linked);
         if (!linked) {
@@ -196,19 +194,19 @@ libnative_buffer.so
             glDeleteShader(fragmentShader);
             return false;
         }
-
+    
         glUseProgram(shaderProgram_);
-
+    
         positionAttrib_ = glGetAttribLocation(shaderProgram_, "aPosition");
         texCoordAttrib_ = glGetAttribLocation(shaderProgram_, "aTexCoord");
         textureUniform_ = glGetUniformLocation(shaderProgram_, "uTexture");
-
+    
         glDeleteShader(vertexShader);
         glDeleteShader(fragmentShader);
-
+    
         return true;
     }
-
+    
     void ImageRender::PrintProgramLinkError(GLuint program)
     {
         GLint infoLen = 0;
@@ -222,10 +220,12 @@ libnative_buffer.so
     }
     ```
 
+
 2. Create an **OH_NativeImage** instance.
-
+ 
+    The created `nativeImage_` is an **OH_NativeImage** instance, which is used as an input parameter of [OH_NativeImage_AcquireNativeWindow()](../reference/apis-arkgraphics2d/capi-native-image-h.md#oh_nativeimage_acquirenativewindow).
     <!-- @[nativeimage_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
-
+    
     ``` C++
     glGenTextures(1, &nativeImageTexId_);
     // ...
@@ -234,16 +234,16 @@ libnative_buffer.so
 
 3. Obtain the **OHNativeWindow** instance that functions as the producer.
 
+    Pass `image` to obtain the **OHNativeWindow** instance that functions as the producer. `image` is an **OH_NativeImage** instance created by [OH_NativeImage_Create()](../reference/apis-arkgraphics2d/capi-native-image-h.md#oh_nativeimage_create).
     <!-- @[nativeimage_acquire_nativewindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
-
+    
     ``` C++
     nativeWindow_ = OH_NativeImage_AcquireNativeWindow(image);
     ```
 
 4. Set the width and height of the **OHNativeWindow** instance.
-
     <!-- @[set_buffer_geometry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
-
+    
     ``` C++
     int32_t result = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow_, SET_BUFFER_GEOMETRY,
         static_cast<int32_t>(width_), static_cast<int32_t>(height_));
@@ -256,9 +256,8 @@ libnative_buffer.so
 5. Write the produced content to the **OHNativeWindowBuffer**.
 
     1. Obtain an **OHNativeWindowBuffer** instance from the **NativeWindow** instance.
-
         <!-- @[nativewindow_request_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
-
+        
         ``` C++
         OHNativeWindowBuffer *buffer = nullptr;
         int releaseFenceFd = INVALID_FD;
@@ -273,9 +272,8 @@ libnative_buffer.so
         ```
 
     2. Write the produced content to the **OHNativeWindowBuffer**.
-
         <!-- @[write_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
-
+        
         ``` C++
         // Use mmap to obtain the virtual address.
         void *mappedAddr = mmap(nullptr, handle->size, PROT_READ | PROT_WRITE, MAP_SHARED, handle->fd, 0);
@@ -283,13 +281,13 @@ libnative_buffer.so
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "OHNativeRender", "Failed to mmap buffer.");
             return;
         }
-
+    
         // Obtain the pixel pointer.
         uint32_t *pixel = static_cast<uint32_t *>(mappedAddr);
-
+    
         // Call the encapsulated function to draw gradients.
         DrawGradient(pixel, handle->stride / BYTES_PER_PIXEL, height_);
-
+    
         // Unmap the memory.
         result = munmap(mappedAddr, handle->size);
         if (result == FAILURE) {
@@ -301,7 +299,7 @@ libnative_buffer.so
             static double time = 0.0;
             time += ANIMATION_SPEED_INCREMENT;
             double offset = (sin(time) + MAX_INTENSITY) / INTENSITY_MULTIPLIER;
-
+        
             // Arrow parameters.
             const int arrowSize = std::min(width, height) / ARROW_SIZE_DIVISOR;
             const int arrowX = width / ARROW_SIZE_DIVISOR;
@@ -311,19 +309,19 @@ libnative_buffer.so
             const int headLength = arrowSize / HEAD_LENGTH_DIVISOR;
             const int stemStart = arrowX - arrowSize / ARROW_SIZE_DIVISOR;
             const int stemEnd = arrowX + arrowSize / ARROW_SIZE_DIVISOR - headLength;
-
+        
             for (uint64_t y = 0; y < height; y++) {
                 for (uint64_t x = 0; x < width; x++) {
                     double normalizedX = static_cast<double>(x) / static_cast<double>(width - 1);
                     bool isArrow = false;
-
+        
                     if ((x >= stemStart && x <= stemEnd && y >= arrowY - stemWidth * HEAD_SLOPE_MULTIPLIER &&
                         y <= arrowY + stemWidth * HEAD_SLOPE_MULTIPLIER) || (x >= stemEnd && x <= stemEnd + headLength &&
                         fabs(static_cast<int>(y - arrowY)) <= (headWidth * HEAD_SLOPE_MULTIPLIER) *
                         (1.0 - static_cast<double>(x - stemEnd) / headLength))) {
                         isArrow = true;
                     }
-
+        
                     uint8_t red = static_cast<uint8_t>((1.0 - normalizedX) * MAX_COLOR_VALUE);
                     uint8_t blue = static_cast<uint8_t>(normalizedX * MAX_COLOR_VALUE);
                     uint8_t green = 0;
@@ -334,11 +332,11 @@ libnative_buffer.so
                     double intensity = fabs(normalizedX - offset);
                     intensity = MAX_INTENSITY - std::min(INTENSITY_MULTIPLIER * intensity, INTENSITY_LIMIT);
                     intensity = std::max(intensity, MIN_INTENSITY);
-
+        
                     red = static_cast<uint8_t>(red * intensity);
                     green = static_cast<uint8_t>(green * intensity);
                     blue = static_cast<uint8_t>(blue * intensity);
-
+        
                     *pixel++ = (static_cast<uint32_t>(alpha) << ALPHA_SHIFT) | (static_cast<uint32_t>(red) << RED_SHIFT) |
                         (static_cast<uint32_t>(green) << GREEN_SHIFT) | (static_cast<uint32_t>(blue) << BLUE_SHIFT);
                 }
@@ -346,10 +344,10 @@ libnative_buffer.so
         }
         ```
 
+        
     3. Flush the **OHNativeWindowBuffer** to the **NativeWindow**.
-
         <!-- @[flush_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
-
+        
         ``` C++
         // Set the dirty region.
         Region region{nullptr, 0};
@@ -361,10 +359,10 @@ libnative_buffer.so
         }
         ```
 
+
 6. Update the content to the OpenGL texture.
-
    <!-- @[update_surfaceimage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
-
+   
    ``` C++
        int32_t ret = OH_NativeImage_UpdateSurfaceImage(nativeImage_);
        if (ret != 0) {
@@ -373,7 +371,7 @@ libnative_buffer.so
                         ret, nativeImageTexId_);
            return;
        }
-
+   
        UpdateTextureMatrix();
        if (imageRender_) {
            imageRender_->Render();
@@ -381,7 +379,7 @@ libnative_buffer.so
            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "RenderEngine", "ImageRender is null");
        }
        // ...
-
+   
    void RenderEngine::UpdateTextureMatrix()
    {
        float matrix[16];
@@ -395,10 +393,10 @@ libnative_buffer.so
    }
    ```
 
+
 7. Detach the **OH_NativeImage** from the current OpenGL texture and attach it to a new external texture.
-
    <!-- @[nativeimage_change_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
-
+   
    ``` C++
    // Detach the OH_NativeImage instance from the current OpenGL ES context.
    OH_NativeImage_DetachContext(nativeImage_);
@@ -408,18 +406,18 @@ libnative_buffer.so
    int ret = OH_NativeImage_AttachContext(nativeImage_, nativeImageTexId_);
    ```
 
+
 8. Destroy the **OH_NativeImage** instance when it is no longer needed.
-
    <!-- @[destroy_nativeimage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
-
+   
    ``` C++
    OH_NativeImage_Destroy(&nativeImage_);
    ```
+
 
 ## Samples
 
 The following samples are provided to help you better understand how to use the NativeImage module for development:
 
 - [Native Window (API12)](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow)
-
 - [Smooth Gradient Animation Effect Based on NdkNativeImage (API12)](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage)

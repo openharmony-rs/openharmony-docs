@@ -1,12 +1,11 @@
 # Introduction to Audio Focus
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @funny_sunix-->
 <!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=249567c57853ff4ccedf632ba69d388b5f14b19c translatedAt=2026-08-06T01:46:34.828Z pushedAt=2026-08-06T11:28:17.808Z -->
+<!-- md-trans-meta sourceCommit=61c08d373812f0b6e156fe4f99155409daa119e9 translatedAt=2026-11-09T07:45:00.595Z pushedAt=2026-11-09T08:07:39.757Z nl=1 -->
 
 ## Audio Focus Overview
 
@@ -75,13 +74,9 @@ To prevent unexpected focus changes, accurately set StreamUsage based on the usa
 Common audio focus scenarios are as follows:
 
 - When a Movie stream starts playing, the Music stream that is playing will be paused. When the Movie stream ends, the Music stream will not receive any resume notification.
-
 - When a Navigation stream starts playing, the Music stream that is playing will be ducked. When the Navigation stream ends, the volume of the Music stream will be restored.
-
 - A Music stream and a Game stream can be mixed and played concurrently without affecting each other.
-
 - When a VoiceCommunication stream starts playing, the Music stream that is playing will be paused. When the VoiceCommunication stream ends, the Music stream will receive a notification to resume playback.
-
 - When a VoiceMessage stream starts recording, the Music stream will be paused. When the VoiceMessage recording ends, the Music stream will receive a notification to resume playback.
 
 If the default audio focus policy cannot meet the requirements of specific scenarios, the app can use [audio session management](audio-session-management.md) to adjust the audio focus policy used by its audio streams.
@@ -133,11 +128,8 @@ In an audio focus event, applications should pay attention to two key pieces of 
     This operation cannot be forcibly performed by the system, and the corresponding **InterruptForceType** must be **INTERRUPT_SHARE**.
 
   - **INTERRUPT_HINT_PAUSE**: The audio stream is paused and audio focus is lost temporarily. When focus is available, **INTERRUPT_HINT_RESUME** will be received.
-
   - **INTERRUPT_HINT_STOP**: The audio stream stops and audio focus is lost.
-
   - **INTERRUPT_HINT_DUCK**: The audio stream should lower its volume but continue playing, defaulting to 20% of the normal volume.
-
   - **INTERRUPT_HINT_UNDUCK**: The audio stream should return to its normal volume.
 
 ### Typical Scenarios
