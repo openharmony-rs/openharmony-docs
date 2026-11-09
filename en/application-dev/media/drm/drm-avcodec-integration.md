@@ -6,7 +6,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @qin_wei_jie-->
-<!-- md-trans-meta sourceCommit=e4b0ca60eae587775eeae97f31ef4d7083b5ebc9 translatedAt=2026-11-04T06:36:58.098Z pushedAt=2026-11-04T06:36:58.098Z nl=1 -->
+<!-- md-trans-meta sourceCommit=7e14b9d224392df461c466a473362a61b3dc24c1 translatedAt=2026-11-09T01:01:18.159Z pushedAt=2026-11-09T07:09:12.323Z nl=1 -->
 
 ## When to Use
 
@@ -51,8 +51,8 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 
 1. Import the DRM Kit module.
 
-   <!-- @[drm_import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+   <!-- @[drm_import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
    ``` C++
    // ...
    #include <cstring>
@@ -64,8 +64,8 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 
 2. Obtain the name and ID list of the DRM solutions supported by the device.
 
-   <!-- @[drm_getMediaKeySystems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+   <!-- @[drm_getMediaKeySystems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
    ``` C++
    uint32_t count = 3; // count specifies the number of DRM plugins supported by the device. Pass in the actual number.
    DRM_MediaKeySystemDescription descriptions[3];
@@ -80,8 +80,8 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 
 3. Create a MediaKeySystem instance.
 
-   <!-- @[drm_createMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+   <!-- @[drm_createMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
    ``` C++
    Drm_ErrCode ret = OH_MediaKeySystem_Create(name, &mediaKeySystem);
    if (ret != DRM_ERR_OK || mediaKeySystem == nullptr) {
@@ -93,8 +93,8 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 
 4. Create a MediaKeySession instance.
 
-   <!-- @[drm_createMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+   <!-- @[drm_createMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
    ``` C++
    DRM_ContentProtectionLevel securityLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
    ret = OH_MediaKeySystem_CreateMediaKeySession(mediaKeySystem, &securityLevel, &mediaKeySession);
@@ -103,8 +103,8 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 
 5. Check whether secure decoding is required.
 
-   <!-- @[drm_requireSecureDecoderModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+   <!-- @[drm_requireSecureDecoderModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
    ``` C++
    bool requireSecureDecoder = false;
    ret = OH_MediaKeySession_RequireSecureDecoderModule(mediaKeySession, mimeType, &requireSecureDecoder);
@@ -113,8 +113,8 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 
 6. Generate a media key request and process its response.
 
-   <!-- @[drm_generateMediaKeyRequest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+   <!-- @[drm_generateMediaKeyRequest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
    ``` C++
    DRM_MediaKeyRequest mediaKeyRequest;
    DRM_MediaKeyRequestInfo info;
@@ -132,8 +132,8 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
    // ...
    ```
 
-   <!-- @[drm_processMediaKeyResponse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+   <!-- @[drm_processMediaKeyResponse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
    ``` C++
    // Obtain mediaKeyResponse from the DRM service over the network and pass in the actual response data.
    unsigned char mediaKeyId[128] = {0x00};
@@ -149,8 +149,8 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 
 7. Destroy the MediaKeySession instance.
 
-   <!-- @[drm_destroyMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+   <!-- @[drm_destroyMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
    ``` C++
    ret = OH_MediaKeySession_Destroy(mediaKeySession);
    // ...
@@ -158,8 +158,8 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 
 8. Destroy the MediaKeySystem instance.
 
-   <!-- @[drm_destroyMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
-
+   <!-- @[drm_destroyMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
+   
    ``` C++
    ret = OH_MediaKeySystem_Destroy(mediaKeySystem);
    // ...

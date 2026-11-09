@@ -5,7 +5,7 @@
 <!--Designer: @chenxi0605-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=9ba5cc8a5a6376c01d21ba01049967807da4bf5c translatedAt=2026-10-13T12:51:24.024Z pushedAt=2026-10-15T11:07:55.182Z -->
+<!-- md-trans-meta sourceCommit=b796bc780c98fc3558588d74f9c0f7c68eb0e673 translatedAt=2026-11-09T01:00:12.320Z pushedAt=2026-11-09T02:57:37.233Z nl=1 -->
 
 You can use **BackupExtensionAbility** to enable an application to access the backup and restore framework.
 
@@ -82,7 +82,7 @@ The following table lists the key APIs of the backup and restore extension capab
    }
    ```
 
-3. Customize `BackupExtensionAbility` in the `BackupExtension.ets` file and override `onBackup/onBackupEx` or `onRestore/onRestoreEx` to back up preprocessed application data or process the data to be restored.
+3. Customize `BackupExtensionAbility` in the `BackupExtension.ets` file and override `onBackup/onBackupEx` or `onRestore/onRestoreEx` to preprocess application data in the backup phase or process the files to be restored in the restore phase.
 
    Empty implementation can be used if there is no special requirement. In this case, the backup and restore service backs up or restores data based on the unified backup and restore rules.
 

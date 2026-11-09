@@ -5,7 +5,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=2a2bdc1242c7ecfe3d781d7980b3ff83613b9126 translatedAt=2026-10-13T13:22:54.725Z pushedAt=2026-10-16T03:07:46.164Z -->
+<!-- md-trans-meta sourceCommit=3c9338f9d6c3c72ed3c19bbcbad1f9433cd91c7b translatedAt=2026-11-09T01:02:20.372Z pushedAt=2026-11-09T07:14:07.293Z nl=1 -->
 
 The [SoundPool](media-kit-intro.md#soundpool) class provides APIs to implement low-latency playback of short sounds.
 
@@ -27,27 +27,24 @@ During application development, you must subscribe to playback state changes and
 
 1. Call [createSoundPool](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreatesoundpool10-1) to create a SoundPool instance.
 
-   ```ts
-   import { media } from '@kit.MediaKit';
-   import { audio } from '@kit.AudioKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-
-   private soundPool: media.SoundPool | undefined = undefined;
-   // If the value of usage in audioRenderInfo is STREAM_USAGE_UNKNOWN, STREAM_USAGE_MUSIC, STREAM_USAGE_MOVIE,
+   <!-- @[SoundPool_Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // The value of the usage parameter in audioRendererInfo can be STREAM_USAGE_UNKNOWN, STREAM_USAGE_MUSIC, or STREAM_USAGE_MOVIE.
    // or STREAM_USAGE_AUDIOBOOK, SoundPool plays a short sound in audio mixing mode, without interrupting the playback of other audio streams.
    let audioRendererInfo: audio.AudioRendererInfo = {
      usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // Audio stream usage type: music. Set this parameter based on the service scenario.
      rendererFlags: 1 // AudioRenderer flag.
-   };
-
+   }
    // Create a SoundPool instance.
-   this.soundPool = await media.createSoundPool(14, audioRendererInfo); // A maximum of 14 streams can be played simultaneously.
+   this.soundPool = await media.createSoundPool(14, audioRendererInfo);
    ```
 
 2. Call [on('loadComplete')](../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md#onloadcomplete) to listen for the completion of sound loading.
 
-   ```ts
-   private soundId: number = 0;
+   <!-- @[SoundPool_onLoadComplete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    // Callback invoked when the sound finishes loading.
    this.soundPool!.on('loadComplete', (soundId_: number) => {
      this.soundId = soundId_;
@@ -61,24 +58,25 @@ During application development, you must subscribe to playback state changes and
 
     When both the **'playFinished'** and **'playFinishedWithStreamId'** event callbacks are registered, only the **'playFinishedWithStreamId'** event callback is triggered when audio playback finishes. The **'playFinished'** event callback is not triggered.
 
-    ```ts
-    this.soundPool!.on('playFinished', () => {
-      console.info("receive play finished message");
-      // The sound can be played again.
-    });
-    this.soundPool!.on('playFinishedWithStreamId', (streamId) => {
-      console.info("receive play finished message, streamId: " + streamId);
-    });
-    ```
+   <!-- @[SoundPool_onPlayFinished](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   this.soundPool!.on('playFinished', () => {
+     console.info('receive play finished message');
+     // Ready for the next playback.
+   })
+   ```
 
 4. Call **on('error')** to listen for errors that may occur.
 
-    ```ts
-    this.soundPool!.on('error', (error: BusinessError) => {
-      console.error('error happened,message is :' + error.code);
-      console.error('error happened,message is :' + error.message);
-    });
-    ```
+   <!-- @[SoundPool_onError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   this.soundPool!.on('error', (error: BusinessError) => {
+     console.error('error happened,message is :' + error.code);
+     console.error('error happened,message is :' + error.message);
+   })
+   ```
 
 5. Call **load()** to load a sound.
 
@@ -86,97 +84,112 @@ During application development, you must subscribe to playback state changes and
 
     When the system finishes loading the sound, the **loadComplete** callback is invoked to notify the user that the loading is complete. Perform the subsequent play operation after the callback is received.
 
-    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    private soundId: number = 0;
-    // Obtain the context of the ability to which the current component belongs and obtain the application file path through the context.
-    let context = this.getUIContext().getHostContext();
-    // Obtain the file descriptor of the input file. test.ogg is a preset resource in the rawfile directory. Replace it with the actual one.
-    let fileDescriptor = await context!.resourceManager.getRawFd('test.ogg');
-    this.soundId = await this.soundPool!.load(fileDescriptor.fd, fileDescriptor.offset, fileDescriptor.length);
-    console.info(`load soundPool soundId: ${this.soundId}`)
-    ```
+   <!-- @[SoundPool_Load](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let context = this.getUIContext().getHostContext();;
+   let fileDescriptor = await context!.resourceManager.getRawFd('test.ogg');
+   this.soundId = await this.soundPool!.load(fileDescriptor.fd, fileDescriptor.offset, fileDescriptor.length);
+   console.info(`load soundPool soundId: ${this.soundId}`)
+   ```
 
 6. Set **PlayParameters**, and call **play** after the **loadComplete** callback is received. If **play()** with the same sound ID passed in is called for multiple times, the sound is played only once.
 
-    ```ts
-    private soundId: number = 0;
-    private streamId: number = 0;
-    let playParameters: media.PlayParameters = {
-      loop: 1, // Loop once, meaning the sound will play twice in total.
-      rate: 1, // Play at double speed.
-      leftVolume: 0.5, // The value ranges from 0.0 to 1.0.
-      rightVolume: 0.5, // The value ranges from 0.0 to 1.0.
-      priority: 0, // The sound playback has the lowest priority.
-    };
-    // Start playback. The play operation can also contain PlayParameters. Perform the play operation after the audio resources are loaded, that is, after the loadComplete callback is received.
-    this.soundPool!.play(this.soundId, playParameters, (error, streamID: number) => {
-      if (error) {
-        console.error(`play sound Error: errCode is ${error.code}, errMessage is ${error.message}`)
-      } else {
-        this.streamId = streamID;
-        console.info('play success soundId:' + this.streamId);
-      }
-    });
-    ```
+   <!-- @[SoundPool_Play](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let playParameters: media.PlayParameters = {
+     loop: 1, // Loop once, that is, play twice.
+     rate: 1, // Play at 1x speed.
+     leftVolume: 0.5, // Value range: [0.0, 1.0].
+     rightVolume: 0.5, // Value range: [0.0, 1.0].
+     priority: 0, // Lowest priority.
+   };
+   // Start playback. Here, play can also carry the playback parameter PlayParameters. Call play only after the audio resource is loaded, that is, after the loadComplete callback is received.
+   this.soundPool!.play(this.soundId, playParameters, (error, streamID: number) => {
+     if (error) {
+       console.error(`play sound Error: errCode is ${error.code}, errMessage is ${error.message}`)
+     } else {
+       this.streamId = streamID;
+       console.info('play success soundid:' + this.streamId);
+     }
+   });
+   ```
 
 7. Call **setLoop()** to set the number of loops.
 
-    ```ts
-    // Set the number of loops.
-    await this.soundPool!.setLoop(this.streamId, 2); // Play the sound three times.
-    ```
+   <!-- @[SoundPool_SetLoop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // Set the number of loop plays.
+   await this.soundPool!.setLoop(this.streamId, 2); // Play 3 times.
+   ```
 
 8. Call **setPriority()** to set the playback priority.
 
-    ```ts
-    // Set the priority.
-    await this.soundPool!.setPriority(this.streamId, 1);
-    ```
+   <!-- @[SoundPool_SetPriority](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // Set the priority of the corresponding stream.
+   await this.soundPool!.setPriority(this.streamId, 1);
+   ```
 
 9. Call **setVolume()** to set the playback volume.
 
-    ```ts
-    // Set the volume.
-    await this.soundPool!.setVolume(this.streamId, 0.5, 0.5);
-    ```
+   <!-- @[SoundPool_SetVolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // Set the volume.
+   await this.soundPool!.setVolume(this.streamId, 0.5, 0.5);
+   ```
 
 10. Call **stop()** to stop the playback.
 
-    ```ts
+    <!-- @[SoundPool_Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
     // Stop the playback of the stream.
     await this.soundPool!.stop(this.streamId);
     ```
 
 11. Call **unload()** to unload a sound.
 
-    ```ts
+    <!-- @[SoundPool_Unload](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
     // Unload the sound.
     await this.soundPool!.unload(this.soundId);
     ```
 
 12. Call **off('loadComplete')** to stop listening for the completion of sound loading.
 
-    ```ts
-    await this.soundPool!.off('loadComplete');
+    <!-- @[SoundPool_offLoadComplete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    this.soundPool!.off('loadComplete');
     ```
 
 13. Call **off('playFinished')** to stop listening for the completion of audio playback.
 
-    ```ts
-    await this.soundPool!.off('playFinished');
+    <!-- @[SoundPool_offPlayFinished](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    this.soundPool!.off('playFinished');
     ```
 
 14. Call **off('error')** to stop listening for errors.
 
-    ```ts
-    await this.soundPool!.off('error');
+    <!-- @[SoundPool_offError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    this.soundPool!.off('error');
     ```
 
 15. Call **release()** to release the SoundPool instance.
 
-    ```ts
+    <!-- @[SoundPool_Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
     // Release the SoundPool instance.
     await this.soundPool!.release();
     ```

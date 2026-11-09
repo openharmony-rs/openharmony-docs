@@ -6,7 +6,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @qin_wei_jie-->
-<!-- md-trans-meta sourceCommit=e4b0ca60eae587775eeae97f31ef4d7083b5ebc9 translatedAt=2026-11-04T06:36:58.099Z pushedAt=2026-11-04T06:36:58.099Z nl=1 -->
+<!-- md-trans-meta sourceCommit=7e14b9d224392df461c466a473362a61b3dc24c1 translatedAt=2026-11-09T01:01:24.164Z pushedAt=2026-11-09T07:09:16.465Z nl=1 -->
 
 To play DRM-protected content using AVPlayer, you can use the ArkTS APIs provided by DRM Kit and Media Kit.
 
@@ -14,8 +14,8 @@ To play DRM-protected content using AVPlayer, you can use the ArkTS APIs provide
 
 1. Import the DRM Kit and Media Kit modules.
 
-   <!-- @[avplayer_import_kits](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
-
+   <!-- @[avplayer_import_kits](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmAVPlayer/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
+   
    ``` TypeScript
    import { drm } from '@kit.DrmKit';
    import { media } from '@kit.MediaKit';
@@ -23,19 +23,19 @@ To play DRM-protected content using AVPlayer, you can use the ArkTS APIs provide
 
 2. Import the BusinessError module to handle error codes from DRM Kit APIs.
 
-   <!-- @[avplayer_import_business_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
-
+   <!-- @[avplayer_import_business_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmAVPlayer/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
+   
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
 3. Call [createAVPlayer](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavplayer9) to create an AVPlayer instance and set a DRM information listener.
 
-   <!-- @[avplayer_initPlayer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
-
+   <!-- @[avplayer_initPlayer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmAVPlayer/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
+   
    ``` TypeScript
    private playerHandle?: media.AVPlayer;
-
+   
    async initPlayer(): Promise<void> {
      this.playerHandle = await media.createAVPlayer();
      this.playerHandle.on('mediaKeySystemInfoUpdate', async (mediaKeySystemInfo: drm.MediaKeySystemInfo[]) => {
@@ -53,12 +53,12 @@ To play DRM-protected content using AVPlayer, you can use the ArkTS APIs provide
 
 4. Call [createMediaKeySystem](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmcreatemediakeysystem) and [createMediaKeySession](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySystem.md#createmediakeysession-1) to create MediaKeySystem and MediaKeySession instances based on the UUID in the DRM information.
 
-   <!-- @[avplayer_processDrmInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
-
+   <!-- @[avplayer_processDrmInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmAVPlayer/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
+   
    ``` TypeScript
    private mediaKeySystem?: drm.MediaKeySystem;
    private mediaKeySession?: drm.MediaKeySession;
-
+   
    async processDrmInfo(mediaKeySystemInfo: drm.MediaKeySystemInfo[]): Promise<void> {
      const drmInfoArr: drm.MediaKeySystemInfo[] = mediaKeySystemInfo;
      for (let i = 0; i < drmInfoArr.length; i++) {
@@ -89,8 +89,8 @@ To play DRM-protected content using AVPlayer, you can use the ArkTS APIs provide
 
 5. Call [generateMediaKeyRequest](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#generatemediakeyrequest) to generate a media key request, and call [processMediaKeyResponse](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#processmediakeyresponse) to process its response.
 
-   <!-- @[avplayer_processMediaKey](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
-
+   <!-- @[avplayer_processMediaKey](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmAVPlayer/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
+   
    ``` TypeScript
    async processMediaKey(pssh: Uint8Array, mimeType: string): Promise<void> {
      if (this.mediaKeySession === undefined) {
@@ -117,8 +117,8 @@ To play DRM-protected content using AVPlayer, you can use the ArkTS APIs provide
 
 6. Call [requireSecureDecoderModule](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#requiresecuredecodermodule) and [setDecryptionConfig](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#setdecryptionconfig11) to set the decryption session after the media key response is successfully processed.
 
-   <!-- @[avplayer_setDecryptionConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
-
+   <!-- @[avplayer_setDecryptionConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmAVPlayer/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
+   
    ``` TypeScript
    setDecryptionConfig(): void {
      if (this.playerHandle === undefined || this.mediaKeySession === undefined) {
@@ -132,7 +132,7 @@ To play DRM-protected content using AVPlayer, you can use the ArkTS APIs provide
 
 7. Destroy the AVPlayer instance and destroy the MediaKeySession and MediaKeySystem instances based on the released event.
 
-   <!-- @[avplayer_releasePlayer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
+   <!-- @[avplayer_releasePlayer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmAVPlayer/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
    
    ``` TypeScript
    async releasePlayer(): Promise<void> {
