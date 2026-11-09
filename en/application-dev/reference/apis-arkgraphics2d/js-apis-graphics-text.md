@@ -329,18 +329,18 @@ struct GetFontDescriptorsFromPathTest {
         .onClick(async () => {
           let promise = text.getFontDescriptorsFromPath("file:///system/fonts/NotoSansCJK-Regular.ttc")
           promise.then((fontFullDescriptors) => {
-            for (let index = 0; index < fontFullDescriptors.length; index++) {
-              console.info("Path:" + fontFullDescriptors[index].path +
-                          "\npostScriptName:" + fontFullDescriptors[index].postScriptName +
-                          "\nfullName:" + fontFullDescriptors[index].fullName +
-                          "\nfamilyName:" + fontFullDescriptors[index].fontFamily +
-                          "\nfontSubName:" + fontFullDescriptors[index].fontSubfamily +
-                          "\nweight:" + fontFullDescriptors[index].weight +
-                          "\nwidth:" + fontFullDescriptors[index].width +
-                          "\nitalic:" + fontFullDescriptors[index].italic +
-                          "\nmonoSpace:" + fontFullDescriptors[index].monoSpace +
-                          "\nsymbolic:" + fontFullDescriptors[index].symbolic)
-            }
+            fontFullDescriptors.forEach((fontFullDescriptor) => {
+              console.info("Path:" + fontFullDescriptor.path +
+                          "\npostScriptName:" + fontFullDescriptor.postScriptName +
+                          "\nfullName:" + fontFullDescriptor.fullName +
+                          "\nfamilyName:" + fontFullDescriptor.fontFamily +
+                          "\nfontSubName:" + fontFullDescriptor.fontSubfamily +
+                          "\nweight:" + fontFullDescriptor.weight +
+                          "\nwidth:" + fontFullDescriptor.width +
+                          "\nitalic:" + fontFullDescriptor.italic +
+                          "\nmonoSpace:" + fontFullDescriptor.monoSpace +
+                          "\nsymbolic:" + fontFullDescriptor.symbolic)
+            })
           })
         })
     }.width("100%")
@@ -388,9 +388,9 @@ struct GetFontUnicodeSetTest {
         .onClick(async () => {
           let promise = text.getFontUnicodeSet("file:///system/fonts/HMSymbolVF.ttf", 0)
           promise.then((unicodeSet) => {
-            for (let index = 0; index < unicodeSet.length; index++) {
-              console.info(unicodeSet[index].toString())
-            }
+            unicodeSet.forEach((unicode) => {
+              console.info(unicode.toString())
+            })
           })
         })
     }.width("100%")
@@ -483,9 +483,9 @@ struct GetFontPathsByTypeTest {
         .onClick(() => {
           let fontList = text.getFontPathsByType(text.SystemFontType.ALL)
           console.info("file count: " + fontList.length)
-          for (let index = 0; index < fontList.length; index++) {
-            console.info("file path: " + fontList[index])
-          }
+          fontList.forEach((fontPath) => {
+            console.info("file path: " + fontPath)
+          })
         })
     }.width("100%")
     .height("100%")
