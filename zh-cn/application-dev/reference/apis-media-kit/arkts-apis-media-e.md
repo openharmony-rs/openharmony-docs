@@ -86,6 +86,21 @@ Codec MIME类型枚举。
 | AUDIO_AMR_NB<sup>18+</sup>   | 'audio/3gpp'     | 表示音频/amr-nb类型。<br>**ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 23 |
 | AUDIO_AMR_WB<sup>18+</sup>   | 'audio/amr-wb'     | 表示音频/amr-wb类型。<br>**ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 23 |
 
+## DestHDRMode
+ 
+转码目标模式类型枚举。
+ 
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+ 
+**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+ 
+| 名称            | 值                    | 说明                     |
+| --------------- | --------------------- | ------------------------ |
+| SDR             | 0                     | 表示转码为SDR视频模式。      |
+| AUTO_HDR_VIVID  | 1                     | 表示HDRvivid自动转码模式。在该模式下，当输入HDRvivid视频时，目标文件也为HDRvivid，输入其他视频，目标文件为SDR。 |
+
 ## AacProfile<sup>22+</sup>
 
 高级音频编码（AAC）类型枚举。
