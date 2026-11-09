@@ -1382,22 +1382,26 @@ DLP文件授权类型的枚举。
 | READ_ONLY | 1 | 表示文件的只读权限。 |
 | CONTENT_EDIT | 2 | 表示文件的编辑权限。 |
 | FULL_CONTROL | 3 | 表示文件的完全控制权限。 |
-| ATOMIC_CONTROL | 4 | 表示文件的原子控制权限。 |
+| ATOMIC_CONTROL | 4 | 用户对文件拥有原子控制。通过[DlpAtomicPermissionType](#dlpatomicpermissiontype)位掩码实现细粒度权限管理。与授予所有权限的FULL_CONTROL相比，这提供了更细粒度的控制。 <br>**起始版本：** 26.1.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## DlpAtomicPermissionType
 
-DLP文件原子权限的枚举。
+枚举DLP文件的原子权限，包括用户操作和应用权限控制。该枚举支持按位或运算，以组合多个权限。
+
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| ATOMIC_READ | 0x01 | 表示读取文件的原子权限。 |
-| ATOMIC_EDIT | 0x02 | 表示文件编辑原子权限。 |
-| ATOMIC_COPY | 0x04 | 表示复制文件内容的原子权限。 |
-| ATOMIC_SCREENSHOT | 0x08 | 表示截图文件的原子权限。|
-| ATOMIC_PRINT | 0x10 | 表示打印文件的原子权限。 |
-| ATOMIC_APP_PERMISSION | 0x20 | 表示沙箱在继承的权限内访问系统服务。 |
+| ATOMIC_READ | 0x01 | 读取文件的原子权限。 |
+| ATOMIC_EDIT | 0x02 | 编辑文件的原子权限。 |
+| ATOMIC_COPY | 0x04 | 复制文件内容的原子权限。 |
+| ATOMIC_SCREENSHOT | 0x08 | 截图文件的原子权限。 |
+| ATOMIC_PRINT | 0x10 | 打印文件的原子权限。 |
+| ATOMIC_APP_PERMISSION | 0x20 | 允许沙箱应用访问被限制的系统服务的原子权限。<br>访问DLP文件时，系统会创建应用的独立沙箱，该沙箱继承应用的数据、配置和权限。<br>该标志位允许沙箱在继承的权限内访问系统服务。例如，如果原始应用没有使用蓝牙权限，那么即使启用此标志，沙箱应用也无法调用蓝牙相关API。<br>具体包括以下权限：<br> -访问互联网，设置Wi-Fi配置，设置Wi-Fi信息，管理Wi-Fi热点权限。<br> -使用蓝牙，管理蓝牙，访问蓝牙，发现蓝牙权限。<br> -访问NearLink并管理NearLink权限。<br> -使用云公共服务、使用云备份服务、使用云硬盘服务、云文件同步、云文件同步管理器权限。<br> -发送消息、接收短信、接收彩信、接收WAP消息权限。<br> -写入音频、写入文档、写入图像/视频和写入媒体权限。<br> -读写下载目录、读写桌面目录、读写文档目录权限。<br> -写入整个日历权限。<br> -代理授权URI权限。<br> -文件访问管理器权限。<br> -分布式数据同步权限。<br> -NFC标签权限。<br>该权限可以与其他原子权限使用按位或运算组合。<br>查看 [DLP服务开发指导](../../security/DataProtectionKit/dlp-guidelines.md)。 |
 
 
 ## DLPPermissionInfo
@@ -1752,7 +1756,7 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 | authAccountType | [AccountType](#accounttype21) | 否 | 否 | 表示被授权用户账号类型。 |
 | dlpFileAccess | [DLPFileAccess](#dlpfileaccess) | 否 | 否 | 表示被授予的权限。 |
 | permExpiryTime | number | 否 | 否 | 表示授权到期时间戳。取值范围大于等于0，超出此范围将被强转为无符号整数。单位：s。 |
-| atomicDlpFileAccess | number | 否 | 是 | DLP文件的原子权限控制位掩码。值是由DlpAtomicPermissionType标志的按位或运算符（|）形成的掩码，来控制读取、编辑、复制、截图、打印和应用级权限。|
+| atomicDlpFileAccess | number | 否 | 是 | DLP文件的原子权限控制位掩码。值是由DlpAtomicPermissionType标志的按位或运算符（\|）形成的掩码，来控制读取、编辑、复制、截图、打印和应用级权限。<br>**起始版本：** 26.1.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## DlpConnPlugin<sup>21+</sup>
 
