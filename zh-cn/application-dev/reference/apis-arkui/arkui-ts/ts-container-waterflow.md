@@ -765,6 +765,68 @@ scrollSnapStrategy(strategy: ScrollSnapAlign | ScrollSnapOffsetProvider | undefi
 | ------ | ------ | ---- | ------------------------------------ |
 | strategy | [ScrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明) \| [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) \| undefined | 是 | 限位滚动策略。<br/>传入[ScrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明)枚举时，使用内置对齐方式。START、CENTER和END分别将目标FlowItem对齐到视口沿滚动轴的起始、中央和末尾。<br/>传入实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口的对象时，由开发者计算滚动距离和最终吸附位置：[calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset)确定惯性阶段的滚动距离，[calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset)确定最终吸附位置。<br/>不设置或传入ScrollSnapAlign.NONE、undefined时，不启用限位滚动，WaterFlow不做吸附对齐，按惯性自然滑行至停止。 |
 
+### scrollPlaceholder
+
+scrollPlaceholder(provider?: PlaceholderProvider)
+
+设置WaterFlow组件的滚动占位提供者。当框架预测在剩余帧预算内创建下一个瀑布流子组件会导致超帧时，先为该项显示占位组件，真实瀑布流子组件在UI线程分帧创建，以减少快速滚动时的丢帧。
+
+> **说明：**
+>
+> - 占位提供者为[PlaceholderProvider](../arkts-apis-placeholderregister.md#placeholderprovider)类型：在UI线程滚动过程中同步调用，须为纯计算，入参为即将创建的瀑布流子组件索引，返回[PlaceholderOptions](../arkts-apis-placeholderregister.md#placeholderoptions)表示该项的占位信息，返回undefined表示该瀑布流子组件不需要占位。
+>
+> - [PlaceholderOptions](../arkts-apis-placeholderregister.md#placeholderoptions)包含id和size两个可选字段：id为占位模板的ID，占位模板须为全局、无参、只读静态渲染的`@Builder({ isPlaceholder: true })`函数，经wrapBuilder包装后通过UIContext的[getPlaceholderRegister()](../arkts-apis-uicontext-uicontext.md#getplaceholderregister)注册；size为占位的建议尺寸，越接近真实瀑布流子组件的尺寸，替换时的视觉跳动越小；size的宽高不建议大于当前滚动容器可视范围的宽高，否则可能导致性能劣化或AppFreeze。
+>
+> - provider返回undefined，或返回的id为空、未注册时，使用系统默认占位，且滚动不中断。
+>
+> - 真实瀑布流子组件创建完成后，在[FlowItem](ts-container-flowitem.md)的正常布局约束下重新布局并替换占位，同时保持滚动锚点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| provider | [PlaceholderProvider](../arkts-apis-placeholderregister.md#placeholderprovider) | 否   | 瀑布流子组件的占位提供者。未设置此属性时，关闭滚动占位，WaterFlow保持既有行为（含syncLoad语义）。 |
+
+### scrollPlaceholder
+
+scrollPlaceholder(provider: PlaceholderProvider | undefined)
+
+设置WaterFlow组件的滚动占位提供者。当框架预测在剩余帧预算内创建下一个瀑布流子组件会导致超帧时，先为该项显示占位组件，真实瀑布流子组件在UI线程分帧创建，以减少快速滚动时的丢帧。
+
+> **说明：**
+>
+> - 占位提供者为[PlaceholderProvider](../arkts-apis-placeholderregister.md#placeholderprovider)类型：在UI线程滚动过程中同步调用，须为纯计算，入参为即将创建的瀑布流子组件索引，返回[PlaceholderOptions](../arkts-apis-placeholderregister.md#placeholderoptions)表示该项的占位信息，返回undefined表示该瀑布流子组件不需要占位。
+>
+> - [PlaceholderOptions](../arkts-apis-placeholderregister.md#placeholderoptions)包含id和size两个可选字段：id为占位模板的ID，占位模板须为全局、无参、只读静态渲染的`@Builder({ isPlaceholder: true })`函数，经wrapBuilder包装后通过UIContext的[getPlaceholderRegister()](../arkts-apis-uicontext-uicontext.md#getplaceholderregister)注册；size为占位的建议尺寸，越接近真实瀑布流子组件的尺寸，替换时的视觉跳动越小；size的宽高不建议大于当前滚动容器可视范围的宽高，否则可能导致性能劣化或AppFreeze。
+>
+> - provider返回undefined，或返回的id为空、未注册时，使用系统默认占位，且滚动不中断。
+>
+> - 真实瀑布流子组件创建完成后，在[FlowItem](ts-container-flowitem.md)的正常布局约束下重新布局并替换占位，同时保持滚动锚点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| provider | [PlaceholderProvider](../arkts-apis-placeholderregister.md#placeholderprovider) \| undefined | 是   | 瀑布流子组件的占位提供者。未设置或设置为undefined时，关闭滚动占位，WaterFlow保持既有行为（含syncLoad语义）。 |
+
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)和[滚动组件通用事件](ts-container-scrollable-common.md#事件)外，还支持以下事件：
@@ -4038,3 +4100,142 @@ struct WaterFlowSnapExample {
 ```
 
 ![scrollSnapStrategy-waterflow](figures/scrollSnapStrategy-waterflow.gif)
+
+### 示例13（设置滚动占位）
+
+该示例通过[scrollPlaceholder](#scrollplaceholder)（ArkTS-Dyn）或[scrollPlaceholder](#scrollplaceholder-1)（ArkTS-Sta）接口为WaterFlow设置滚动占位：占位模板经wrapBuilder包装后，通过UIContext的[getPlaceholderRegister()](../arkts-apis-uicontext-uicontext.md#getplaceholderregister)注册（完整说明参考[PlaceholderRegister](../arkts-apis-placeholderregister.md#placeholderregister)）；快速滚动时，帧预算不足的瀑布流子组件先显示已注册的占位模板，真实瀑布流子组件分帧创建完成后替换占位，减少丢帧。
+
+从API版本26.1.0开始，WaterFlow组件新增scrollPlaceholder接口。
+
+WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)中对应范式的实现。
+
+ArkTS-Dyn示例：
+
+<!--code_no_check-->
+```ts
+// xxx.ets
+import { WaterFlowDataSource } from './WaterFlowDataSource';
+import { PlaceholderOptions } from '@kit.ArkUI';
+
+// 占位模板须为全局、无参、只读静态渲染的受限Builder
+@Builder({ isPlaceholder: true })
+function ItemPlaceholder() {
+  Column() {
+    Text('加载中...')
+      .fontSize(16)
+      .fontColor(0x999999)
+  }
+  .width('100%')
+  .height(100)
+  .justifyContent(FlexAlign.Center)
+}
+
+@Entry
+@Component
+struct WaterFlowPlaceholderExample {
+  private dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+
+  aboutToAppear() {
+    // 通过UIContext获取占位注册表，占位模板经wrapBuilder包装后注册，供provider按id引用
+    this.getUIContext().getPlaceholderRegister().register('itemPlaceholder', wrapBuilder(ItemPlaceholder));
+  }
+
+  build() {
+    Column({ space: 10 }) {
+      WaterFlow() {
+        LazyForEach(this.dataSource, (item: number) => {
+          FlowItem() {
+            Text(item.toString())
+              .fontSize(16)
+              .width('100%')
+              .height('100%')
+              .textAlign(TextAlign.Center)
+          }
+          .width('100%')
+          .height(100)
+          .backgroundColor(0xF9CF93)
+          .borderRadius(8)
+        }, (item: number) => item.toString())
+      }
+      .columnsTemplate('1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(20)
+      .width('100%')
+      .height(400)
+      // id对应已注册的占位模板，size为占位的建议尺寸，与真实FlowItem高度一致
+      .scrollPlaceholder((index: number): PlaceholderOptions | undefined => {
+        return { id: 'itemPlaceholder', size: { height: 100 } };
+      })
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+// xxx.ets
+import {
+  Entry, Component, Column, ColumnOptions, Text, TextAlign, WaterFlow,
+  FlowItem, LazyForEach, Builder, wrapBuilder, PlaceholderOptions, FlexAlign
+} from '@kit.ArkUI';
+import { WaterFlowDataSource } from './WaterFlowDataSource';
+
+// 占位模板须为全局、无参、只读静态渲染的受限Builder
+@Builder({ isPlaceholder: true })
+function ItemPlaceholder() {
+  Column() {
+    Text('加载中...')
+      .fontSize(16)
+      .fontColor(0x999999)
+  }
+  .width('100%')
+  .height(100)
+  .justifyContent(FlexAlign.Center)
+}
+
+@Entry
+@Component
+struct WaterFlowPlaceholderExample {
+  private dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+
+  aboutToAppear(): void {
+    // 通过UIContext获取占位注册表，占位模板经wrapBuilder包装后注册，供provider按id引用
+    this.getUIContext().getPlaceholderRegister().register('itemPlaceholder', wrapBuilder(ItemPlaceholder));
+  }
+
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      WaterFlow() {
+        LazyForEach<number>(this.dataSource, (item: number) => {
+          FlowItem() {
+            Text(item.toString())
+              .fontSize(16)
+              .width('100%')
+              .height('100%')
+              .textAlign(TextAlign.Center)
+          }
+          .width('100%')
+          .height(100)
+          .backgroundColor(0xF9CF93)
+          .borderRadius(8)
+        }, (item: number): string => item.toString())
+      }
+      .columnsTemplate('1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(20)
+      .width('100%')
+      .height(400)
+      // id对应已注册的占位模板，size为占位的建议尺寸，与真实FlowItem高度一致
+      .scrollPlaceholder((index: int): PlaceholderOptions | undefined => {
+        return { id: 'itemPlaceholder', size: { height: 100 } };
+      })
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```

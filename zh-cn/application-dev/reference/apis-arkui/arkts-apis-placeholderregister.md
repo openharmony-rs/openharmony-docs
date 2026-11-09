@@ -6,7 +6,7 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本模块提供滚动占位模板的注册、注销和查询能力。快速滚动场景下，当框架预测在剩余帧预算内创建下一个列表项会导致超帧时，可滚动组件（如[List](arkui-ts/ts-container-list.md)）会先为该项显示占位组件，真实列表项在UI线程分帧创建完成后替换占位，以减少丢帧。占位模板经[register](#register)注册后，供[List](arkui-ts/ts-container-list.md)的[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholder)属性按id引用。
+本模块提供滚动占位模板的注册、注销和查询能力。快速滚动场景下，当框架预测在剩余帧预算内创建下一个列表项会导致超帧时，可滚动组件（如[List](arkui-ts/ts-container-list.md)、[WaterFlow](arkui-ts/ts-container-waterflow.md)）会先为该项显示占位组件，真实列表项在UI线程分帧创建完成后替换占位，以减少丢帧。占位模板经[register](#register)注册后，供[List](arkui-ts/ts-container-list.md)、[WaterFlow](arkui-ts/ts-container-waterflow.md)的[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholder)属性按id引用。
 
 > **说明：**
 >
@@ -172,7 +172,7 @@ ArkTS-Dyn: type PlaceholderProvider = (index: number) => PlaceholderOptions | un
 
 ArkTS-Sta: type PlaceholderProvider = (index: int) => PlaceholderOptions | undefined
 
-列表项占位信息的提供函数，供[List](arkui-ts/ts-container-list.md)的[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholder)属性使用。该函数在UI线程滚动过程中同步调用，须为纯计算，不得执行耗时操作。
+列表项占位信息的提供函数，供[List](arkui-ts/ts-container-list.md)、[WaterFlow](arkui-ts/ts-container-waterflow.md)的[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholder)属性使用。该函数在UI线程滚动过程中同步调用，须为纯计算，不得执行耗时操作。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
