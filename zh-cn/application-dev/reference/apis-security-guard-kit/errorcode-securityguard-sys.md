@@ -1,4 +1,4 @@
-# 设备风险管理错误码
+# 设备风险管理错误码（系统接口错误码）
 
 <!--Kit: Security Guard Kit-->
 <!--Subsystem: Security-->
