@@ -4094,19 +4094,12 @@ struct TextExample {
 
 ### 示例33（设置文本着色器效果）
 
-<<<<<<< HEAD
-该示例通过[shaderStyle](#shaderstyle)接口实现对TextInput组件内文本着色效果。
-=======
 该示例通过[shaderStyle](#shaderstyle)接口实现TextInput组件内文本的着色效果。
->>>>>>> eef4c2c5c78066b79ee3da0f42694b1f9b809bb2
 
 从API版本26.0.0开始，新增shaderStyle接口。
 
 ```ts
-<<<<<<< HEAD
-=======
 // xxx.ets
->>>>>>> eef4c2c5c78066b79ee3da0f42694b1f9b809bb2
 @Entry
 @Component
 struct ShaderColorStyle {
@@ -4167,9 +4160,6 @@ struct ShaderColorStyle {
   }
 }
 ```
-<<<<<<< HEAD
-![TextInputShaderStyle](figures/textInputShaderStyle.png)
-=======
 
 ![TextInputShaderStyle](figures/textInputShaderStyle.png)
 
@@ -4201,4 +4191,3 @@ struct Demo34 {
 }
 ```
 <!--RP5--><!--RP5End-->
->>>>>>> eef4c2c5c78066b79ee3da0f42694b1f9b809bb2
