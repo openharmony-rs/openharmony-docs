@@ -1049,9 +1049,9 @@ async function PackToFile(context : Context) {
   let packer = image.createImagePacker();
   packer.packToFileFromPixelmapSequence(pixelMapList, file.fd, ops)
     .then(() => {
-      console.info('Succeeded in packToFileMultiFrames.');
+      console.info('Succeeded in packToFileFromPixelmapSequence.');
     }).catch((error: BusinessError) => {
-    console.error('Failed to packToFileMultiFrames.');
+    console.error('Failed to packToFileFromPixelmapSequence.');
   })
 }
 ```
@@ -1130,7 +1130,7 @@ import { fileIo } from '@kit.CoreFileKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
-const DOMAIN = 0X00000;
+const DOMAIN = 0X0000;
 const TAG: string = 'PackBinaryImageToTiffFile';
 
 async function PackBinaryImageToTiffFile(context: Context) {
@@ -1205,7 +1205,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
-const DOMAIN = 0X00000;
+const DOMAIN = 0X0000;
 const TAG: string = 'PackBinaryImageToTiffData';
 
 async function PackBinaryImageToTiffData() {
