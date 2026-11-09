@@ -1450,6 +1450,56 @@ inputMethod.getController().discardTypingText().then(() => {
 });
 ```
 
+### requestSystemInputCapability
+
+requestSystemInputCapability(type: InputCapabilityType): Promise&lt;void&gt;
+
+请求系统输入能力。使用promise异步回调。
+
+当type为TRANSLATION时，当前输入法须为系统配置的默认输入法，否则请求被拒绝。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| type | [InputCapabilityType](#inputcapabilitytype) | 是 | 系统输入能力类型。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800009 | input method client detached. |
+| 12800010 | Not the preconfigured default input method. |
+| 12800029 | the input type is not supported. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 请求翻译输入能力
+inputMethod.getController().requestSystemInputCapability(
+  inputMethod.InputCapabilityType.TRANSLATION
+).then((): void => {
+  console.info('Succeeded requestSystemInputCapability.');
+}).catch((err: BusinessError): void => {
+  console.error(`Failed to requestSystemInputCapability, code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ### showTextInput<sup>10+</sup>
 
 showTextInput(callback: AsyncCallback&lt;void&gt;): void
@@ -4293,3 +4343,15 @@ inputMethod.getSetting().getInputMethodState().then((status: inputMethod.Enabled
   console.error(`Failed to getInputMethodState, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+## InputCapabilityType
+
+系统输入能力类型。用于[requestSystemInputCapability](#requestsysteminputcapability)指定请求的系统输入能力类型。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**起始版本：** 26.1.0
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| TRANSLATION | 0 | 翻译输入能力。<br/>使用场景：用于请求输入法切换到翻译模式。当前输入法须为系统配置的默认输入法，否则请求将被拒绝并返回12800010错误码。 |
