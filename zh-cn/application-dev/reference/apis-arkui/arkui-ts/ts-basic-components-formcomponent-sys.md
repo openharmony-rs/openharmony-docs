@@ -161,10 +161,10 @@ FormComponent(value: FormInfo)
 | Dimension_2_4              | 2 | 2*4 卡片 <br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23|
 | Dimension_4_4              | 3 | 4*4 卡片 <br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23|
 | Dimension_2_1<sup>(deprecated)</sup> | 4 | 2*1 卡片 <br>**说明:** 该字段从API version 9开始支持，从API version 20开始废弃。|
-| DIMENSION_1_1<sup>11+</sup> | 6 | 1*1 卡片 |
-| DIMENSION_6_4<sup>12+</sup> | 7 | 6*4 卡片 |
-| DIMENSION_2_3<sup>18+</sup> | 8 | 2*3 卡片为穿戴设备使用 |
-| DIMENSION_3_3<sup>18+</sup> | 9 | 3*3 卡片为穿戴设备使用 |
+| DIMENSION_1_1<sup>11+</sup> | 6 | 1*1 卡片 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23|
+| DIMENSION_6_4<sup>12+</sup> | 7 | 6*4 卡片 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23|
+| DIMENSION_2_3<sup>18+</sup> | 8 | 2*3 卡片为穿戴设备使用 <br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23|
+| DIMENSION_3_3<sup>18+</sup> | 9 | 3*3 卡片为穿戴设备使用 <br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23|
 
 ## FormRenderingMode<sup>11+</sup>
 
