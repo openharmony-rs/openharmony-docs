@@ -153,8 +153,8 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
     <!-- @[EventSub_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
     ``` TypeScript
-   import testNapi from 'libentry.so';
-   ``` 
+    import testNapi from 'libentry.so';
+    ```
 
    ``` ts
    // 在onCreate()函数中添加C API接口调用
