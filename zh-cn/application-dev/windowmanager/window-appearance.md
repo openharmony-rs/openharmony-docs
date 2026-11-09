@@ -287,7 +287,7 @@ struct SliderDemo {
 
 ![backgroundColor](figures/backgroundColor.gif)
 
-示例代码如下：
+此处以使用[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)设置窗口内容区域背景色为例：
 
 <!--@[backgroundColor_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/backgroundColor/entry/src/main/ets/pages/Index.ets) -->
 
