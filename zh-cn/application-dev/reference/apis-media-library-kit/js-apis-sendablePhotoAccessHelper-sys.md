@@ -526,14 +526,14 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 | pending | boolean | 否 | 否 | 图片资产等待状态，true表示等待，false表示解除等待。|
 | dateAddedMs | number | 否 | 否 | 图片资产数据添加后经过时间，单位：毫秒（ms）。|
 | dateTrashedMs | number | 否 | 否 | 图片资产数据进回收站后经过时间，单位：毫秒（ms）。|
-| subtype | [PhotoSubtype](#photosubtype) | 否 | 否 | 图片资产子类型。|
-| movingPhotoEffectMode | [MovingPhotoEffectMode](#movingphotoeffectmode12) | 否 | 否 | 动态照片效果模式。|
+| subtype | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12) | 否 | 否 | 图片资产子类型。|
+| movingPhotoEffectMode | [MovingPhotoEffectMode](js-apis-photoAccessHelper-sys.md#movingphotoeffectmode12) | 否 | 否 | 动态照片效果模式。|
 | dynamicRangeType | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12) | 否 | 否 | 媒体文件的动态范围类型。|
 | thumbnailReady | boolean | 否 | 否 | 图片资产的缩略图是否准备好。true表示已准备好，false表示未准备好。|
 | lcdSize | string | 否 | 否 | 图片资产的lcd缩略图宽高信息。|
 | thmSize | string | 否 | 否 | 图片资产的thumb缩略图宽高信息。|
 | thumbnailModifiedMs<sup>14+</sup> | number | 否 | 是 | 图片资产的缩略图状态改变时间，单位：毫秒（ms）。|
-| thumbnailVisible<sup>14+</sup> | [ThumbnailVisibility](#thumbnailvisibility14) | 否 | 否 | 图片资产的缩略图是否可见。|
+| thumbnailVisible<sup>14+</sup> | [ThumbnailVisibility](js-apis-photoAccessHelper-sys.md#thumbnailvisibility14) | 否 | 否 | 图片资产的缩略图是否可见。|
 
 ## Album
 
