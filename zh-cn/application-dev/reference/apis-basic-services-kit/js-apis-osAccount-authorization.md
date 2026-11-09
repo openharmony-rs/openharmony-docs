@@ -184,7 +184,7 @@ requestBatchAuthorization(privileges: Array&lt;Privilege&gt;, context: UIAbility
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 12300001 | The system service works abnormally.                         |
 | 12300002 | The privileges array is empty or exceeds the batch limit.   |
 | 12300302 | User interaction is required but not allowed.<br>Possible causes: 1. The specified UI context is invalid; 2. The application is not in the foreground.<br>Suggested solutions: Ensure the application is in the foreground and pass a valid UIAbilityContext.   |
