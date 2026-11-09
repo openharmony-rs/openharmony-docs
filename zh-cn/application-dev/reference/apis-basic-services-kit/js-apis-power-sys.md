@@ -327,11 +327,13 @@ power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
 });
 ```
 
-## power.setPowerMode<sup>26.1.0+</sup>
+## power.setPowerMode
 
 setPowerMode(mode: DevicePowerMode, subMode?: DevicePowerSubMode): Promise&lt;void&gt;
 
 同时设置当前设备的电源模式及其子模式。使用Promise异步回调。subMode 仅在 mode 为 MODE_EXTREME_POWER_SAVE 时有效。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -348,7 +350,7 @@ setPowerMode(mode: DevicePowerMode, subMode?: DevicePowerSubMode): Promise&lt;vo
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
 | mode | [DevicePowerMode](js-apis-power.md#devicepowermode9) | 是 | 电源模式；该参数类型是一个枚举类。 |
-| subMode | [DevicePowerSubMode](js-apis-power.md#devicepowersubmode2610) | 否 | 电源模式子模式。仅在 mode 为 MODE_EXTREME_POWER_SAVE 时有效。 |
+| subMode | [DevicePowerSubMode](js-apis-power.md#devicepowersubmode) | 否 | 电源模式子模式。仅在 mode 为 MODE_EXTREME_POWER_SAVE 时有效。 |
 
 **返回值：**
 

@@ -210,13 +210,15 @@ power.isScreenOn()
 | MODE_EXTREME_POWER_SAVE | 603  | 表示扩展省电模式。此模式支持子模式。<br/><strong>ArkTS-Dyn起始版本：</strong>9<br/><strong>ArkTS-Sta起始版本：</strong>23     |
 | MODE_CUSTOM_POWER_SAVE<sup>20+</sup> | 650 | 表示自定义省电模式。<br/><strong>ArkTS-Dyn起始版本：</strong>20<br/><strong>ArkTS-Sta起始版本：</strong>23   |
 
-## power.getPowerSubMode<sup>26.1.0+</sup>
+## power.getPowerSubMode
 
 getPowerSubMode(): DevicePowerSubMode
 
 获取当前设备的电源模式子模式，用于区分同一电源模式下的不同省电子场景。
 
 当前电源模式不支持子模式时返回 SUB_MODE_INVALID。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -228,7 +230,7 @@ getPowerSubMode(): DevicePowerSubMode
 
 | 类型 | 说明 |
 | --- | --- |
-| [DevicePowerSubMode](#devicepowersubmode2610) | 电源模式子模式。当前电源模式不支持子模式时返回 SUB_MODE_INVALID。 |
+| [DevicePowerSubMode](#devicepowersubmode) | 电源模式子模式。当前电源模式不支持子模式时返回 SUB_MODE_INVALID。 |
 
 **错误码：**
 
@@ -245,9 +247,11 @@ let subMode = power.getPowerSubMode();
 console.info('power sub mode: ' + subMode);
 ```
 
-## DevicePowerSubMode<sup>26.1.0+</sup>
+## DevicePowerSubMode
 
 表示电源模式子模式的枚举值，用于区分同一电源模式下的不同省电子场景。SUB_MODE_SUPER_POWER_SAVE 和 SUB_MODE_EMERGENCY 仅在电源模式为 MODE_EXTREME_POWER_SAVE（603）时有效；SUB_MODE_INVALID(-1) 表示当前电源模式不支持子模式。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
