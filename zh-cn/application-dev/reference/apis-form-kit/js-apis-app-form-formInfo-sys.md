@@ -42,6 +42,7 @@ import { formInfo } from '@kit.FormKit';
 | isStandbyAdapted<sup>23+</sup> | boolean  | 是    | 是     | 卡片是否已适配灵动显示规则。<br/>-&nbsp;true：已适配灵动显示。<br/>-&nbsp;false：未适配灵动显示。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23|
 | isPrivacySensitive<sup>23+</sup> | boolean  | 是    | 是     | 卡片是否是隐私敏感卡片。<br/>-&nbsp;true：是隐私敏感卡片。<br/>-&nbsp;false：不是隐私敏感卡片。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23|
 | isFontScaleFollowSystem | boolean  | 否    | 是     | 卡片的字体缩放是否跟随系统，默认值为true。<br/>-&nbsp;true：字体缩放跟随系统。<br/>-&nbsp;false：字体缩放不会跟随系统。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0  |
+| enableTint | boolean  | 是    | 是     | 卡片是否使能赋色。<br/>-&nbsp;true：使能。<br/>-&nbsp;false：不使能。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0 <br/>**ArkTS-Sta起始版本：** 26.1.0  |
 
 ##  FormParam
 
