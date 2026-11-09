@@ -11560,7 +11560,7 @@ struct WebComponent {
 </html>
 ```
 
-> **示例说明：**
+> **说明：**
 >
 > 示例中使用的`iframe_error.html`文件需放置在应用资源的`resources/rawfile/`目录下，该HTML文件中包含一个加载失败URL的iframe，用于触发subframe错误页。
 
@@ -11605,7 +11605,9 @@ enableAutoReload(enable: boolean): void
 > **说明：**
 >
 > - 只有网络错误才会触发自动重新加载。不包括以下内容：证书错误、SSL（安全套接字层）协议错误、身份验证错误、POST请求、非HTTP(S)协议和客户端拦截的错误。
+>
 > - 自动重新加载不会影响[onOverrideErrorPage](./arkts-basic-components-web-events.md#onoverrideerrorpage20)回调。
+>
 > - 当触发自动重新加载时，每次重试时[onErrorReceive](./arkts-basic-components-web-events.md#onerrorreceive)回调都会被重新调用。
 
 **起始版本：** 26.1.0
@@ -11670,7 +11672,7 @@ isAutoReloadEnabled(): boolean
 
 | 类型                 | 说明                      |
 | -------------------- | ------------------------- |
-| boolean | 是否使能自动重新加载。如果启用，则返回true，否则返回false。|
+| boolean | 是否启用自动重载。如果启用，则返回true，否则返回false。|
 
 **错误码：**
 
