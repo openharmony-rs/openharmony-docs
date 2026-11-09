@@ -150,7 +150,7 @@ try {
 
 获取窗口实例对象后，可以通过[window.on('windowSizeChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowsizechange7)方法实现对窗口尺寸大小变化的监听。
 
-需要注意的是，在window侧如果窗口大小没发生变化，此监听不会被触发。如直接旋转180度的情况下，窗口大小并没有改变，此时不会通知回调。在这种情况下，应用可以通过监听[display.on('change')](../reference/apis-arkui/js-apis-display.md#displayonaddremovechange)事件，在callback中通过display接口来获取窗口尺寸大小。
+需要注意的是，在window侧如果窗口大小没发生变化，此监听不会被触发。如直接旋转180度的情况下，窗口大小并没有改变，此时不会通知回调。在这种情况下，应用可以通过监听[display.on('change')](../reference/apis-arkui/js-apis-display.md#displayonadd--remove--change)事件，在callback中通过display接口来获取窗口尺寸大小。
 
 ```
 try {
@@ -170,7 +170,7 @@ try {
 
 **参考链接**
 
-[开启显示设备变化的监听](../reference/apis-arkui/js-apis-display.md#displayonaddremovechange)
+[开启显示设备变化的监听](../reference/apis-arkui/js-apis-display.md#displayonadd--remove--change)
 
 ## 如何实现页面跟随屏幕横竖屏自动旋转(API 10)
 
@@ -254,7 +254,7 @@ struct ScreenTest {
 **参考链接**
 
 [设置窗口的显示方向属性](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9)  
-[开启显示设备变化的监听](../reference/apis-arkui/js-apis-display.md#displayonaddremovechange)
+[开启显示设备变化的监听](../reference/apis-arkui/js-apis-display.md#displayonadd--remove--change)
 
 ## 在display.on('change')监听回调中，无法使用Window实例获取更新后的窗口大小(API 10)
 
@@ -291,7 +291,7 @@ display.on('change', (data) => {
 
 **参考链接**
 
-[display.on('change')](../reference/apis-arkui/js-apis-display.md#displayonaddremovechange)
+[display.on('change')](../reference/apis-arkui/js-apis-display.md#displayonadd--remove--change)
 
 ## 如何同时获取屏幕方向orientation和系统避让区avoidAreaChange信息(API 10)
 
@@ -328,7 +328,7 @@ display.on('change', (data) => {
 
 **参考链接**
 
-[display.on('change')](../reference/apis-arkui/js-apis-display.md#displayonaddremovechange)
+[display.on('change')](../reference/apis-arkui/js-apis-display.md#displayonadd--remove--change)
 
 ## 窗口Orientation枚举值8\~10或12和枚举值13\~16的区别(API9)
 
