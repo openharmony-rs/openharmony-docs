@@ -3709,9 +3709,6 @@ struct ShaderColorStyle {
   }
 }
 ```
-<<<<<<< HEAD
-![TextAreaShaderStyle](figures/textAreaShaderStyle.png)
-=======
 ![TextAreaShaderStyle](figures/textAreaShaderStyle.png)
 
 ### 示例36（设置文本选择的AI菜单）
@@ -3741,4 +3738,3 @@ struct Demo36 {
 }
 ```
 <!--RP7--><!--RP7End-->
->>>>>>> eef4c2c5c78066b79ee3da0f42694b1f9b809bb2
