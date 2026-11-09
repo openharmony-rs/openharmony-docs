@@ -26,6 +26,8 @@ enableHotspot(): boolean;
 
 启用Wi-Fi热点。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManagerExt.enableHotspot](js-apis-wifiManagerExt.md#wifimanagerextenablehotspotdeprecated)替代。
@@ -47,6 +49,8 @@ disableHotspot(): boolean;
 
 禁用Wi-Fi热点。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManagerExt.disableHotspot](js-apis-wifiManagerExt.md#wifimanagerextdisablehotspotdeprecated)替代。
@@ -67,6 +71,8 @@ disableHotspot(): boolean;
 getSupportedPowerModel(): Promise&lt;Array&lt;PowerModel&gt;&gt;
 
 获取支持的功率模式。使用Promise异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >
@@ -123,6 +129,8 @@ getPowerModel(): Promise&lt;PowerModel&gt;
 
 获取功率模式，使用Promise异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManagerExt.getPowerMode](js-apis-wifiManagerExt.md#wifimanagerextgetpowermode)替代。
@@ -144,6 +152,8 @@ getPowerModel(callback: AsyncCallback&lt;PowerModel&gt;): void
 
 获取功率模式。使用callback异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManagerExt.getPowerMode](js-apis-wifiManagerExt.md#wifimanagerextgetpowermode-1)替代。
@@ -164,6 +174,8 @@ getPowerModel(callback: AsyncCallback&lt;PowerModel&gt;): void
 setPowerModel(model: PowerModel) : boolean;
 
 设置功率模式。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >

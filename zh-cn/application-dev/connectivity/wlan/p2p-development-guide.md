@@ -45,7 +45,7 @@ P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以�
    ``` TypeScript
    import { wifiManager } from '@kit.ConnectivityKit';
    ```
-2. 开启设备的Wi-Fi。
+2. 开启设备的Wi-Fi，开启之前您可以调用[wifiManager.isWlanSupported](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 3. 需要SystemCapability.Communication.WiFi.P2P系统能力。
 4. 创建/删除P2P群组。
    <!-- @[createGroup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
