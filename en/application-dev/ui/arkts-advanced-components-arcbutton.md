@@ -5,7 +5,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8bc9ee73f5dcd45e712dc5d0b26478cba7904637 translatedAt=2026-09-21T02:35:09.907Z pushedAt=2026-09-21T03:03:49.768Z -->
+<!-- md-trans-meta sourceCommit=35275ad1fec674addf0ad74b53e102b4f36f1eef translatedAt=2026-11-03T06:40:41.486Z pushedAt=2026-11-03T07:59:24.173Z nl=1 -->
 
 
 Supported since API version 18, the **ArcButton** component represents an arc button. It is recommended for circular screens. It offers various button styles, such as emphasized, normal, and warning, tailored for users. For details, see [ArcButton](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md).
@@ -26,19 +26,19 @@ ArcButton({
   })
 })
 ```
-  [label](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions): sets the text displayed on the button.<br>[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions): sets the type of the button.<br>[styleMode](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions): sets the style mode of the button.
+  [label](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions): sets the text displayed on the button.<br>[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions): sets the position of the button.<br>[styleMode](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions): sets the style of the button.
 
   ![top](figures/ArcButtonTop.png)
 
 ## Setting the Button Type
 
-The **ArcButton** component offers two types: top arc button and bottom arc button. Use the [position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions) attribute to set the type.
+The **ArcButton** component offers two types: top arc button and bottom arc button. Use the [position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions) attribute to set the position.
 
 - Bottom arc button (default type)
 
   Set [position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions) to **ArcButtonPosition.BOTTOM_EDGE**.
   <!-- @[button_align_bottom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonAlignBottom.ets) -->
-
+  
   ``` TypeScript
   ArcButton({
     options: new ArcButtonOptions({
@@ -56,7 +56,7 @@ The **ArcButton** component offers two types: top arc button and bottom arc butt
 
   Set [position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions) to **ArcButtonPosition.TOP_EDGE**.
   <!-- @[button_align_top](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonAlignTop.ets) -->
-
+  
   ``` TypeScript
   ArcButton({
     options: new ArcButtonOptions({
@@ -75,7 +75,7 @@ The **ArcButton** component offers two types: top arc button and bottom arc butt
 
   Use the [backgroundColor](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions) attribute to set the background color of the button.
   <!-- @[button_bcg_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonBcgColor.ets) -->
-
+  
   ``` TypeScript
   ArcButton({
     options: new ArcButtonOptions({
@@ -91,7 +91,7 @@ The **ArcButton** component offers two types: top arc button and bottom arc butt
 
   Use the [fontColor](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions) attribute to set the font color of the button.
   <!-- @[button_font_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonFontColor.ets) -->
-
+  
   ``` TypeScript
   ArcButton({
     options: new ArcButtonOptions({
@@ -108,7 +108,7 @@ The **ArcButton** component offers two types: top arc button and bottom arc butt
 
   Enable the button shadow using the [shadowEnabled](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions) attribute and set the shadow color using the [shadowColor](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions) attribute.
   <!-- @[button_shadow_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonShadow.ets) -->
-
+  
   ``` TypeScript
   ArcButton({
     options: new ArcButtonOptions({
@@ -124,7 +124,7 @@ The **ArcButton** component offers two types: top arc button and bottom arc butt
 
 - Bind the **onClick** event to define custom behavior to be executed when the button is clicked.
   <!-- @[button_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonAlignTop.ets) -->
-
+  
   ``` TypeScript
   ArcButton({
     options: new ArcButtonOptions({
@@ -138,7 +138,7 @@ The **ArcButton** component offers two types: top arc button and bottom arc butt
   ```
 - Bind the **onTouch** event to define custom behavior to be executed when the button is touched.
   <!-- @[button_touch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonAlignBottom.ets) -->
-
+  
   ``` TypeScript
   ArcButton({
     options: new ArcButtonOptions({

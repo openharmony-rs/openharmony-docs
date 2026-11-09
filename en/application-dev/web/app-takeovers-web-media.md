@@ -5,7 +5,7 @@
 <!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=cb25416af3a36547504561178cf906991b8f711f translatedAt=2026-09-22T01:49:24.591Z pushedAt=2026-09-22T04:21:13.491Z -->
+<!-- md-trans-meta sourceCommit=a8d9416a94ae4b045442b5bb2646df1bfe03120f translatedAt=2026-11-03T03:01:37.216Z pushedAt=2026-11-03T03:04:46.089Z nl=1 -->
 
 The **Web** component provides the capability for applications to take over media playback on web pages, which improves media playback qualities on the web page.
 
@@ -82,7 +82,7 @@ Use the [enableNativeMediaPlayer](../reference/apis-arkweb/arkts-basic-component
 
 After this feature is enabled, the ArkWeb kernel triggers the callback registered by [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12) when a media file needs to be played on the web page.
 
-The app needs to call onCreateNativeMediaPlayer to register a callback for creating a native media player.
+The application needs to call onCreateNativeMediaPlayer() to register a callback function for creating a local player.
 
 The callback function determines whether to create a native media player to take over the web page media resources based on the media information.
 
@@ -154,7 +154,7 @@ This process is the same as that of [same-layer rendering](web-same-layer.md)
 1. During app startup, save the [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) so that it can be used in the subsequent same-layer rendering and drawing process.
 
    <!-- @[allow_subsequent_rendering_to_use_ui](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
-
+   
    ``` TypeScript
    import { window } from '@kit.ArkUI';
    
@@ -652,7 +652,7 @@ In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-W
     }
     onError() {
       // Notify the ArkWeb kernel that the local player has encountered an error.
-      console.info('AVPlayerListenerImpl.onError');
+      console.error('AVPlayerListenerImpl.onError');
       this.component.has_error = true;
       setTimeout(()=>{
         this.handler.handleError(1, "Oops!");
@@ -993,7 +993,7 @@ In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-W
   }
   ```
 
-- Example of using video playback on the application side:
+- Application-side code, video playback example, ./PlayerDemo.ets. For the XComponent creation method, see [Custom Rendering (XComponent)](../ui/napi-xcomponent-guidelines.md).
 
   ```ts
   import { media } from '@kit.MediaKit';

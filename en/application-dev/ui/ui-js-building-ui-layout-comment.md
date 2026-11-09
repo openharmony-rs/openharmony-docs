@@ -2,9 +2,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-10-29T09:03:43.804Z pushedAt=2026-10-30T02:59:14.861Z nl=1 -->
 
 The comment component allows users to input messages and submit them by clicking the confirm button. Submitted comments are displayed in the comment area, where users can delete individual comments by clicking the delete button and then enter new messages.
 

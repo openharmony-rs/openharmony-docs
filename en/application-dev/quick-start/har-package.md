@@ -3,13 +3,14 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=850c7d4f71d6bc50d82f299a21bb9cea3a266f3d translatedAt=2026-10-30T06:21:33.935Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
 
 A Harmony Archive (HAR) is a static shared package that can contain code, C++ libraries, resource files, and configuration files (also called profiles). It enables modules and projects to share code of ArkUI components, resources, and more.
 
 ## When to Use
-- Supports intra-application sharing or, after being released, intra-application sharing.
+- Supports sharing within an application and can be published as a second-party or third-party library (SDK) for use by other applications.
 - As a second-party library for internal applications, by being released to the [OHPM private repository](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-ohpm-repo).
 - As a third-party library for external applications, by being released to the [OHPM central repository](https://ohpm.openharmony.cn/#/en/home).
 
@@ -363,11 +364,11 @@ For details, see [Building a HAR](https://developer.huawei.com/consumer/en/doc/h
 
 ### Configuring Obfuscation
 
-HAR can be used as a second-party or third-party library for other applications. To protect code assets, you are advised to [enable code obfuscation](../arkts-utils/source-obfuscation-guide.md#enabling-source-code-obfuscation).
+HAR can be provided to other apps as a second-party or third-party library. If you need to protect code assets, it is recommended that you obfuscate the source code by following [HAR Package Obfuscation Recommendations](../arkts-utils/source-obfuscation-practice.md#har-package-obfuscation-recommendations).
 
 After [code obfuscation](../arkts-utils/source-obfuscation.md) is enabled, DevEco Studio compiles, obfuscates, and compresses code when building HARs to protect code assets.
 
-The obfuscation capability is enabled by default for the HAR module. When the compilation module is release, simple code obfuscation is automatically performed for the HAR module of API version 10 or later. **Since DevEco Studio 5.0.3.600, the code obfuscation is disabled by default when a project is created.** You can enable this feature by setting **enable** in the **ruleOptions** field in the **build-profile.json5** file of the HAR module. For details, see [Using Obfuscation for Code Hardening](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-build-obfuscation). The configuration is as follows:
+Previously, obfuscation was enabled by default for HAR modules. Simple code obfuscation was automatically performed for HAR modules targeting API version 10 or later when built in Release mode. **Since DevEco Studio 5.0.3.600, code obfuscation is disabled by default for new projects.** You can enable this feature by setting **enable** in the **ruleOptions** field in the **build-profile.json5** file of the HAR module. For details, see [Using Obfuscation for Code Hardening](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-build-obfuscation). The configuration is as follows:
 
   <!-- @[har_package_013](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/build-profile.json5) -->
   
@@ -409,6 +410,6 @@ The obfuscation capability is enabled by default for the HAR module. When the co
 
 For details, see [Publishing a Shared Package](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-har-publish).
 
-##  
+## Samples
 
--  
+- [Shopping App Example](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Shopping/OrangeShopping)

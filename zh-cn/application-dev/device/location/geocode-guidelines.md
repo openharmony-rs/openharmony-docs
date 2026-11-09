@@ -44,43 +44,50 @@
       import { geoLocationManager } from '@kit.LocationKit';
       try {
           let isAvailable = geoLocationManager.isGeocoderAvailable();
+          if (!isAvailable) {
+              console.error("current device do not support geocoder");
+          }
       } catch (err) {
-          console.error("errCode:" + JSON.stringify(err));
+          console.error("errCode:" + err.code + ", message:"  + err.message);
       }
       ```
 
 3. 获取转化结果。
-   - 调用getAddressesFromLocation，把经纬度坐标转化为地理编码（即位置信息）。应用可以获得与此坐标匹配的[GeoAddress](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geoaddress)（地理编码地址信息）列表，应用可以根据实际使用需求，读取相应的参数数据。
+   - 调用getAddressesFromLocation，把经纬度坐标转化为与此坐标匹配的[GeoAddress](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geoaddress)（地理编码地址信息）列表。
      
       ```ts
       let reverseGeocodeRequest:geoLocationManager.ReverseGeoCodeRequest = {"latitude": 31.12, "longitude": 121.11, "maxItems": 1};
       try {
-          geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest, (err, data) => {
+          if (geoLocationManager.isGeocoderAvailable()) {
+            geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest, (err,data) => {
               if (err) {
-                  console.error('getAddressesFromLocation err: ' + JSON.stringify(err));
+                console.error("getAddressesFromLocation errCode:" + err.code + ", message:"  + err.message);
               } else {
-                  console.info('getAddressesFromLocation data: ' + JSON.stringify(data));
+                console.info('getAddressesFromLocation data: ' + JSON.stringify(data));
               }
-          });
+            });
+          }
       } catch (err) {
-          console.error("errCode:" + JSON.stringify(err));
+          console.error("errCode:" + err.code + ", message:"  + err.message);
       }
       ```
 
    - 调用getAddressesFromLocationName把地理编码（即位置信息）转化为经纬度坐标。
      
       ```ts
-      let geocodeRequest:geoLocationManager.GeoCodeRequest = {"description": "上海市浦东新区xx路xx号", "maxItems": 1};
+      let geocodeRequest:geoLocationManager.GeoCodeRequest = {"description": "上海市浦东新区张江路", "maxItems": 1};
       try {
-          geoLocationManager.getAddressesFromLocationName(geocodeRequest, (err, data) => {
+          if (geoLocationManager.isGeocoderAvailable()) {
+            geoLocationManager.getAddressesFromLocationName(geocodeRequest, (err, data) => {
               if (err) {
-                  console.error('getAddressesFromLocationName err: ' + JSON.stringify(err));
+                console.error("getAddressesFromLocationName errCode:" + err.code + ", message:"  + err.message);
               } else {
-                  console.info('getAddressesFromLocationName data: ' + JSON.stringify(data));
+                console.info('getAddressesFromLocationName data: ' + JSON.stringify(data));
               }
-          });
+            });
+          }
       } catch (err) {
-          console.error("errCode:" + JSON.stringify(err));
+          console.error("errCode:" + err.code + ", message:"  + err.message);
       }
       ```
 

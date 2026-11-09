@@ -1,12 +1,11 @@
 # ArkUI_NodeAttributeType (Animation and Visual Effect Attributes)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e10e7def4863f4f964c4d0cb425b7650081cb83e translatedAt=2026-08-25T02:24:25.838Z pushedAt=2026-08-26T02:58:36.313Z -->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-03T08:46:47.771Z pushedAt=2026-11-04T01:49:56.497Z nl=1 -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -22,6 +21,7 @@ Enumerates the animation and visual effect attribute types that can be set by Ar
 
 **Header file**: [native_node.h](capi-native-node-h.md)
 
+
 ## NODE_TRANSLATE
 
 ```c
@@ -33,6 +33,7 @@ This attribute is mutually exclusive with **NODE_TRANSLATE_WITH_PERCENT**. A com
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -61,6 +62,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -86,6 +88,7 @@ This attribute is mutually exclusive with **NODE_ROTATE_ANGLE**. A component can
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -118,6 +121,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -140,6 +144,7 @@ Saturation attribute, which can be set, reset, and obtained as required through 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -164,6 +169,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -187,6 +193,7 @@ This attribute is mutually exclusive with **NODE_SWEEP_GRADIENT** and **NODE_RAD
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -223,6 +230,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -245,6 +253,7 @@ Z-index attribute for the stack sequence. This attribute can be set, reset, and 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -269,6 +278,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -292,6 +302,7 @@ This attribute is mutually exclusive with **NODE_CLIP_SHAPE**. A component can u
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -320,93 +331,94 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 1. Rectangle<br>
 
-| Name| Description|
-| -- | -- |
-| .value[0].i32 | Clip type. The parameter type is [ArkUI_ClipType](capi-native-type-visual-h.md#arkui_cliptype). For the rectangle type, set this to **ARKUI_CLIP_TYPE_RECTANGLE**. |
-| .value[1].f32 | Width of the rectangle, in vp.|
-| .value[2].f32 | Height of the rectangle, in vp.|
-| .value[3].f32 | Width of the rounded corner of the rectangle, in vp.|
-| .value[4].f32 | Height of the rounded corner of the rectangle, in vp.|
-| .value[5]?.f32 | Radius of the upper left rounded corner of the rectangle, in vp. Default value: **0**. |
-| .value[6]?.f32 | Radius of the lower left rounded corner of the rectangle, in vp. Default value: **0**. |
-| .value[7]?.f32 | Radius of the upper right rounded corner of the rectangle, in vp. Default value: **0**. |
-| .value[8]?.f32 | Radius of the lower right rounded corner of the rectangle, in vp. Default value: **0**. |
-| .object | Coordinate offset of the rectangle. The parameter type is [ArkUI_RenderNodeClipOption](capi-arkui-nativemodule-arkui-rendernodeclipoption.md). It takes effect only when the **.object** parameter is passed. |
+   | Name| Description|
+   | -- | -- |
+   | .value[0].i32 | Clip type. The parameter type is [ArkUI_ClipType](capi-native-type-visual-h.md#arkui_cliptype). For the rectangle type, set this to **ARKUI_CLIP_TYPE_RECTANGLE**. |
+   | .value[1].f32 | Width of the rectangle, in vp.|
+   | .value[2].f32 | Height of the rectangle, in vp.|
+   | .value[3].f32 | Width of the rounded corner of the rectangle, in vp.|
+   | .value[4].f32 | Height of the rounded corner of the rectangle, in vp.|
+   | .value[5]?.f32 | Radius of the upper left rounded corner of the rectangle, in vp. Default value: **0**. |
+   | .value[6]?.f32 | Radius of the lower left rounded corner of the rectangle, in vp. Default value: **0**. |
+   | .value[7]?.f32 | Radius of the upper right rounded corner of the rectangle, in vp. Default value: **0**. |
+   | .value[8]?.f32 | Radius of the lower right rounded corner of the rectangle, in vp. Default value: **0**. |
+   | .object | Coordinate offset of the rectangle. The parameter type is [ArkUI_RenderNodeClipOption](capi-arkui-nativemodule-arkui-rendernodeclipoption.md). It takes effect only when the **.object** parameter is passed. |
 
 2. Circle<br>
 
-| Name| Description|
-| -- | -- |
-| .value[0].i32 | Clip type. The parameter type is **ArkUI_ClipType**. For the circle type, set this parameter to **ARKUI_CLIP_TYPE_CIRCLE**. |
-| .value[1].f32 | Width of the circle, in vp.|
-| .value[2].f32 | Height of the circle, in vp.|
-| .object | Coordinate offset of the circle. The parameter type is [ArkUI_RenderNodeClipOption](capi-arkui-nativemodule-arkui-rendernodeclipoption.md). It takes effect only when the **.object** parameter is passed. |
+   | Name| Description|
+   | -- | -- |
+   | .value[0].i32 | Clip type. The parameter type is **ArkUI_ClipType**. For the circle type, set this parameter to **ARKUI_CLIP_TYPE_CIRCLE**. |
+   | .value[1].f32 | Width of the circle, in vp.|
+   | .value[2].f32 | Height of the circle, in vp.|
+   | .object | Coordinate offset of the circle. The parameter type is [ArkUI_RenderNodeClipOption](capi-arkui-nativemodule-arkui-rendernodeclipoption.md). It takes effect only when the **.object** parameter is passed. |
 
 3. Ellipse<br>
 
-| Name| Description|
-| -- | -- |
-| .value[0].i32 | Clip type. The parameter type is **ArkUI_ClipType**. For the ellipse type, set this parameter to **ARKUI_CLIP_TYPE_ELLIPSE**. |
-| .value[1].f32 | Width of the ellipse, in vp.|
-| .value[2].f32 | Height of the ellipse, in vp.|
-| .object | Coordinate offset of the ellipse. The parameter type is [ArkUI_RenderNodeClipOption](capi-arkui-nativemodule-arkui-rendernodeclipoption.md). It takes effect only when the **.object** parameter is passed. |
+   | Name| Description|
+   | -- | -- |
+   | .value[0].i32 | Clip type. The parameter type is **ArkUI_ClipType**. For the ellipse type, set this parameter to **ARKUI_CLIP_TYPE_ELLIPSE**. |
+   | .value[1].f32 | Width of the ellipse, in vp.|
+   | .value[2].f32 | Height of the ellipse, in vp.|
+   | .object | Coordinate offset of the ellipse. The parameter type is [ArkUI_RenderNodeClipOption](capi-arkui-nativemodule-arkui-rendernodeclipoption.md). It takes effect only when the **.object** parameter is passed. |
 
 4. Path<br>
 
-| Name| Description|
-| -- | -- |
-| .value[0].i32 | Clip type. The parameter type is **ArkUI_ClipType**. For the path type, set this parameter to **ARKUI_CLIP_TYPE_PATH**. |
-| .value[1].f32 | Width of the path, in vp.|
-| .value[2].f32 | Height of the path, in vp.|
-| .string | Command string for drawing the path. The format follows the SVG path data syntax, for example, 'M0 0 L100 100 Z'. |
-| .object | Command for drawing the path. The parameter type is [ArkUI_RenderNodeClipOption](capi-arkui-nativemodule-arkui-rendernodeclipoption.md). It takes effect only when the **.object** parameter is passed. |
+   | Name| Description|
+   | -- | -- |
+   | .value[0].i32 | Clip type. The parameter type is **ArkUI_ClipType**. For the path type, set this parameter to **ARKUI_CLIP_TYPE_PATH**. |
+   | .value[1].f32 | Width of the path, in vp.|
+   | .value[2].f32 | Height of the path, in vp.|
+   | .string | Command string for drawing the path. The format follows the SVG path data syntax, for example, 'M0,0 L100,100 Z'. |
+   | .object | Command for drawing the path. The parameter type is [ArkUI_RenderNodeClipOption](capi-arkui-nativemodule-arkui-rendernodeclipoption.md). It takes effect only when the **.object** parameter is passed. |
 
 **Returns**
 
 1. Rectangle<br>
 
-| Type| Description|
-| -- | -- |
-| .value[0].i32 | Clip type. The parameter type is [ArkUI_ClipType](capi-native-type-visual-h.md#arkui_cliptype). For the rectangle type, **ARKUI_CLIP_TYPE_RECTANGLE** is returned. |
-| .value[1].f32 | Width of the rectangle, in vp.|
-| .value[2].f32 | Height of the rectangle, in vp.|
-| .value[3].f32 | Width of the rounded corner of the rectangle, in vp.|
-| .value[4].f32 | Height of the rounded corner of the rectangle, in vp.|
-| .value[5]?.f32 | Radius of the upper left corner of the rectangle, in vp.|
-| .value[6]?.f32 | Radius of the lower left corner of the rectangle, in vp.|
-| .value[7]?.f32 | Radius of the upper right corner of the rectangle, in vp.|
-| .value[8]?.f32 | Radius of the lower right corner of the rectangle, in vp.|
-| .value[9]?.f32 | Horizontal coordinate offset of the rectangle, in vp.|
-| .value[10]?.f32 | Vertical coordinate offset of the rectangle, in vp.|
+   | Type| Description|
+   | -- | -- |
+   | .value[0].i32 | Clip type. The parameter type is [ArkUI_ClipType](capi-native-type-visual-h.md#arkui_cliptype). For the rectangle type, **ARKUI_CLIP_TYPE_RECTANGLE** is returned. |
+   | .value[1].f32 | Width of the rectangle, in vp.|
+   | .value[2].f32 | Height of the rectangle, in vp.|
+   | .value[3].f32 | Width of the rounded corner of the rectangle, in vp.|
+   | .value[4].f32 | Height of the rounded corner of the rectangle, in vp.|
+   | .value[5]?.f32 | Radius of the upper left corner of the rectangle, in vp.|
+   | .value[6]?.f32 | Radius of the lower left corner of the rectangle, in vp.|
+   | .value[7]?.f32 | Radius of the upper right corner of the rectangle, in vp.|
+   | .value[8]?.f32 | Radius of the lower right corner of the rectangle, in vp.|
+   | .value[9]?.f32 | Horizontal coordinate offset of the rectangle, in vp.|
+   | .value[10]?.f32 | Vertical coordinate offset of the rectangle, in vp.|
 
 2. Circle<br>
 
-| Type| Description|
-| -- | -- |
-| .value[0].i32 | Clip type. The parameter type is [ArkUI_ClipType](capi-native-type-visual-h.md#arkui_cliptype). For the circle type, **ARKUI_CLIP_TYPE_CIRCLE** is returned. |
-| .value[1].f32 | Width of the circle, in vp.|
-| .value[2].f32 | Height of the circle, in vp.|
-| .value[3]?.f32 | Horizontal coordinate offset of the circle, in vp.|
-| .value[4]?.f32 | Vertical coordinate offset of the circle, in vp.|
+   | Type| Description|
+   | -- | -- |
+   | .value[0].i32 | Clip type. The parameter type is [ArkUI_ClipType](capi-native-type-visual-h.md#arkui_cliptype). For the circle type, **ARKUI_CLIP_TYPE_CIRCLE** is returned. |
+   | .value[1].f32 | Width of the circle, in vp.|
+   | .value[2].f32 | Height of the circle, in vp.|
+   | .value[3]?.f32 | Horizontal coordinate offset of the circle, in vp.|
+   | .value[4]?.f32 | Vertical coordinate offset of the circle, in vp.|
 
 3. Ellipse<br>
 
-| Type| Description|
-| -- | -- |
-| .value[0].i32 | Clip type. The parameter type is [ArkUI_ClipType](capi-native-type-visual-h.md#arkui_cliptype). For the ellipse type, **ARKUI_CLIP_TYPE_ELLIPSE** is returned. |
-| .value[1].f32 | Width of the ellipse, in vp.|
-| .value[2].f32 | Height of the ellipse, in vp.|
-| .value[3]?.f32 | Horizontal coordinate offset of the ellipse, in vp.|
-| .value[4]?.f32 | Vertical coordinate offset of the ellipse, in vp.|
+   | Type| Description|
+   | -- | -- |
+   | .value[0].i32 | Clip type. The parameter type is [ArkUI_ClipType](capi-native-type-visual-h.md#arkui_cliptype). For the ellipse type, **ARKUI_CLIP_TYPE_ELLIPSE** is returned. |
+   | .value[1].f32 | Width of the ellipse, in vp.|
+   | .value[2].f32 | Height of the ellipse, in vp.|
+   | .value[3]?.f32 | Horizontal coordinate offset of the ellipse, in vp.|
+   | .value[4]?.f32 | Vertical coordinate offset of the ellipse, in vp.|
 
 4. Path<br>
 
-| Type| Description|
-| -- | -- |
-| .value[0].i32 | Clip type. The parameter type is [ArkUI_ClipType](capi-native-type-visual-h.md#arkui_cliptype). For the path type. **ARKUI_CLIP_TYPE_PATH** is returned. |
-| .value[1].f32 | Width of the path, in vp.|
-| .value[2].f32 | Height of the path, in vp.|
-| .string | Command string for drawing the path.|
+   | Type| Description|
+   | -- | -- |
+   | .value[0].i32 | Clip type. The parameter type is [ArkUI_ClipType](capi-native-type-visual-h.md#arkui_cliptype). For the path type, **ARKUI_CLIP_TYPE_PATH** is returned. |
+   | .value[1].f32 | Width of the path, in vp.|
+   | .value[2].f32 | Height of the path, in vp.|
+   | .string | Command string for drawing the path.|
+
 
 ## NODE_TRANSFORM
 
@@ -418,6 +430,7 @@ Transform attribute, which can be used to translate, rotate, and scale images. T
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -443,6 +456,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -466,6 +480,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -475,7 +490,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[2]?.f32 | Offset of the shadow along the x-axis, in px. Default value: **0.0**. |
 | .value[3]?.f32 | Offset of the shadow along the y-axis, in px. Default value: **0.0**. |
 | .value[4]?.i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype). The default value is **ARKUI_SHADOW_TYPE_COLOR**. |
-| .value[5]?.u32 | It specifies the shadow color when the coloring strategy is disabled (**.value[1]** is set to **0**), in 0xARGB format. For example, **0xFFFF0000** indicates red. If not passed, the default value is **0xFF000000** (black). It specifies the coloring strategy when the coloring strategy is enabled (**.value[1]** is set to **1**), and the parameter type is [ArkUI_ColorStrategy](capi-native-type-visual-h.md#arkui_colorstrategy). |
+| .value[5]?.u32 | It specifies the shadow color when the coloring strategy is disabled (**.value[1]** is set to **0**), in 0xAARRGGBB format. For example, **0xFFFF0000** indicates red. If not passed, the default value is **0xFF000000** (black). It specifies the coloring strategy when the coloring strategy is enabled (**.value[1]** is set to **1**), and the parameter type is [ArkUI_ColorStrategy](capi-native-type-visual-h.md#arkui_colorstrategy). |
 | .value[6]?.u32 | Whether to fill the shadow. The value **1** means to fill the shadow, and **0** means the opposite.|
 
 **Returns**
@@ -487,7 +502,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[2].f32 | Offset of the shadow along the x-axis, in px.|
 | .value[3].f32 | Offset of the shadow along the y-axis, in px.|
 | .value[4].i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype), and the default value is **ARKUI_SHADOW_TYPE_COLOR**. The enumerated values include: **ARKUI_SHADOW_TYPE_COLOR** (color shadow) and **ARKUI_SHADOW_TYPE_BLUR** (blur shadow). |
-| .value[5].u32 | Shadow color, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
+| .value[5].u32 | Shadow color, in 0xAARRGGBB format. For example, **0xFFFF0000** indicates red. |
 | .value[6].u32 | Whether the shadow is filled. The value **1** means that the shadow is filled, and **0** means the opposite.|
 
 ## NODE_BACKGROUND_BLUR_STYLE
@@ -500,6 +515,7 @@ Background blur attribute. The blur effect is applied between the background lay
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -535,6 +551,7 @@ Note: If the coordinate is expressed in a number that represents a percentage, t
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -565,6 +582,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 23
 
+
 **Parameters**
 
 | Name| Description|
@@ -587,6 +605,7 @@ Transition opacity attribute, which can be set, reset, and obtained as required 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -622,6 +641,7 @@ Transition rotation attribute, which takes effect only when a component is inser
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -666,6 +686,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -704,6 +725,7 @@ Transition translation attribute, which can be set, reset, and obtained as requi
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -744,6 +766,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -778,6 +801,7 @@ Sweep gradient effect. This attribute can be set, reset, and obtained as require
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -820,6 +844,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -857,24 +882,25 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| 1. rect type | .value[0].u32: fill color, in 0xARGB format.<br>.value[1].u32: stroke color, in 0xARGB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type. The parameter type is [ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype). The value is **ARKUI_MASK_TYPE_RECTANGLE**.<br>.value[4].f32: width of the rectangle, in vp.<br>.value[5].f32: height of the rectangle, in vp.<br>.value[6].f32: width of the rounded corner of the rectangle, in vp.<br>.value[7].f32: height of the rounded corner of the rectangle, in vp.<br>.value[8]?.f32: radius of the upper left corner of the rectangle, in vp. The default value is **0**.<br>.value[9]?.f32: radius of the lower left corner of the rectangle, in vp. The default value is **0**.<br>.value[10]?.f32: radius of the upper right corner of the rectangle, in vp. The default value is **0**.<br>.value[11]?.f32: radius of the lower right corner of the rectangle, in vp. The default value is **0**. |
-| 2. Circle| .value[0].u32: fill color, in 0xARGB format.<br>.value[1].u32: stroke color, in 0xARGB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type. The parameter type is [ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype). The value is **ARKUI_MASK_TYPE_CIRCLE**.<br>.value[4].f32: width of the circle, in vp.<br>.value[5].f32: height of the circle, in vp.|
-| 3. Ellipse| .value[0].u32: fill color, in 0xARGB format.<br>.value[1].u32: stroke color, in 0xARGB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type. The parameter type is [ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype). The value is **ARKUI_MASK_TYPE_ELLIPSE**.<br>.value[4].f32: width of the ellipse, in vp.<br>.value[5].f32: height of the ellipse, in vp.|
-| 4. path type | .value[0].u32: fill color, in 0xARGB format.<br>.value[1].u32: stroke color, in 0xARGB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type. The parameter type is [ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype). The value is **ARKUI_MASK_TYPE_PATH**.<br>.value[4].f32: width of the path, in vp.<br>.value[5].f32: height of the path, in vp.<br>.string: command string for drawing the path. The format follows the SVG path data syntax, for example, 'M0 0 L100 100 Z'. |
+| 1. Rect | .value[0].u32: fill color, in 0xAARRGGBB format.<br>.value[1].u32: stroke color, in 0xAARRGGBB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type. The parameter type is [ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype). The value is **ARKUI_MASK_TYPE_RECTANGLE**.<br>.value[4].f32: width of the rectangle, in vp.<br>.value[5].f32: height of the rectangle, in vp.<br>.value[6].f32: width of the rounded corner of the rectangle, in vp.<br>.value[7].f32: height of the rounded corner of the rectangle, in vp.<br>.value[8]?.f32: radius of the upper left corner of the rectangle, in vp. The default value is **0**.<br>.value[9]?.f32: radius of the lower left corner of the rectangle, in vp. The default value is **0**.<br>.value[10]?.f32: radius of the upper right corner of the rectangle, in vp. The default value is **0**.<br>.value[11]?.f32: radius of the lower right corner of the rectangle, in vp. The default value is **0**. |
+| 2. Circle | .value[0].u32: fill color, in 0xAARRGGBB format.<br>.value[1].u32: stroke color, in 0xAARRGGBB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type. The parameter type is [ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype). The value is **ARKUI_MASK_TYPE_CIRCLE**.<br>.value[4].f32: width of the circle, in vp.<br>.value[5].f32: height of the circle, in vp. |
+| 3. Ellipse | .value[0].u32: fill color, in 0xAARRGGBB format.<br>.value[1].u32: stroke color, in 0xAARRGGBB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type. The parameter type is [ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype). The value is **ARKUI_MASK_TYPE_ELLIPSE**.<br>.value[4].f32: width of the ellipse, in vp.<br>.value[5].f32: height of the ellipse, in vp. |
+| 4. Path | .value[0].u32: fill color, in 0xAARRGGBB format.<br>.value[1].u32: stroke color, in 0xAARRGGBB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type. The parameter type is [ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype). The value is **ARKUI_MASK_TYPE_PATH**.<br>.value[4].f32: width of the path, in vp.<br>.value[5].f32: height of the path, in vp.<br>.string: command string for drawing the path. The format follows the SVG path data syntax, for example, 'M0,0 L100,100 Z'. |
 | 5. Progress| .value[0].i32: mask type. The parameter type is [ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype). The value is **ARKUI_MASK_TYPE_PROGRESS**.<br>.value[1].f32: current value of the progress indicator.<br>.value[2].f32: maximum value of the progress indicator.<br>.value[3].u32: color of the progress indicator.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| 1. Rectangle| .value[0].u32: fill color, in 0xARGB format.<br>.value[1].u32: stroke color, in 0xARGB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type.<br>.value[4].f32: width of the rectangle, in vp.<br>.value[5].f32: height of the rectangle, in vp.<br>.value[6].f32: width of the rounded corner of the rectangle, in vp.<br>.value[7].f32: height of the rounded corner of the rectangle, in vp.<br>.value[8]?.f32: radius of the upper left corner of the rectangle, in vp.<br>.value[9]?.f32: radius of the lower left corner of the rectangle, in vp.<br>.value[10]?.f32: radius of the upper right corner of the rectangle, in vp.<br>.value[11]?.f32: radius of the lower right corner of the rectangle, in vp.|
-| 2. Circle| .value[0].u32: fill color, in 0xARGB format.<br>.value[1].u32: stroke color, in 0xARGB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type.<br>.value[4].f32: width of the circle, in vp.<br>.value[5].f32: height of the circle, in vp.|
-| 3. Ellipse| .value[0].u32: fill color, in 0xARGB format.<br>.value[1].u32: stroke color, in 0xARGB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type.<br>.value[4].f32: width of the ellipse, in vp.<br>.value[5].f32: height of the ellipse, in vp.|
-| 4. path type | .value[0].u32: fill color, in 0xARGB format.<br>.value[1].u32: stroke color, in 0xARGB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type.<br>.value[4].f32: width of the path, in vp.<br>.value[5].f32: height of the path, in vp.<br>.string: command string for drawing the path. The format follows the SVG path data syntax, for example, 'M0 0 L100 100 Z'. |
+| 1. Rect | .value[0].u32: fill color, in 0xAARRGGBB format.<br>.value[1].u32: stroke color, in 0xAARRGGBB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type.<br>.value[4].f32: width of the rectangle, in vp.<br>.value[5].f32: height of the rectangle, in vp.<br>.value[6].f32: width of the rounded corner of the rectangle, in vp.<br>.value[7].f32: height of the rounded corner of the rectangle, in vp.<br>.value[8]?.f32: radius of the upper left corner of the rectangle, in vp.<br>.value[9]?.f32: radius of the lower left corner of the rectangle, in vp.<br>.value[10]?.f32: radius of the upper right corner of the rectangle, in vp.<br>.value[11]?.f32: radius of the lower right corner of the rectangle, in vp. |
+| 2. Circle | .value[0].u32: fill color, in 0xAARRGGBB format.<br>.value[1].u32: stroke color, in 0xAARRGGBB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type.<br>.value[4].f32: width of the circle, in vp.<br>.value[5].f32: height of the circle, in vp. |
+| 3. Ellipse | .value[0].u32: fill color, in 0xAARRGGBB format.<br>.value[1].u32: stroke color, in 0xAARRGGBB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type.<br>.value[4].f32: width of the ellipse, in vp.<br>.value[5].f32: height of the ellipse, in vp. |
+| 4. Path | .value[0].u32: fill color, in 0xAARRGGBB format.<br>.value[1].u32: stroke color, in 0xAARRGGBB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type.<br>.value[4].f32: width of the path, in vp.<br>.value[5].f32: height of the path, in vp.<br>.string: command string for drawing the path. The format follows the SVG path data syntax, for example, 'M0 0 L100 100 Z'. |
 | 5. Progress| .value[0].i32: mask type.<br>.value[1].f32: current value of the progress indicator.<br>.value[2].f32: maximum value of the progress indicator.<br>.value[3].u32: color of the progress indicator.|
 
 ## NODE_BLEND_MODE
@@ -887,6 +913,7 @@ Blends the component's background with the content of the component's child node
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -913,6 +940,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -935,6 +963,7 @@ Image inversion ratio. This attribute can be set, reset, and obtained as require
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -959,6 +988,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -981,6 +1011,7 @@ Contrast attribute, which can be set, reset, and obtained as required through AP
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1005,6 +1036,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1016,7 +1048,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Color, in 0xARGB format.|
+| .value[0].u32 | Color, in 0xAARRGGBB format. |
 
 ## NODE_OUTLINE_WIDTH
 
@@ -1058,6 +1090,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1083,6 +1116,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1106,24 +1140,25 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Color of the four outlines, in 0xARGB format, for example, **0xFFFF11FF**. This parameter takes effect only when **.value[0]** is passed. |
-| .value[0].u32 | Color of the top outline, in 0xARGB format, for example, **0xFFFF11FF**. This parameter takes effect when the four values from **.value[0]** to **.value[3]** are passed. |
-| .value[1].u32 | Color of the right outline, in 0xARGB format, for example, **0xFFFF11FF**.|
-| .value[2].u32 | Color of the bottom outline, in 0xARGB format, for example, **0xFFFF11FF**.|
-| .value[3].u32 | Color of the left outline, in 0xARGB format, for example, **0xFFFF11FF**.|
+| .value[0].u32 | Color of the four outlines, in 0xAARRGGBB format, for example, **0xFFFF11FF**. This parameter takes effect only when **.value[0]** is passed. |
+| .value[0].u32 | Color of the top outline, in 0xAARRGGBB format, for example, **0xFFFF11FF**. This parameter takes effect when the four values from **.value[0]** to **.value[3]** are passed. |
+| .value[1].u32 | Color of the right outline, in 0xAARRGGBB format, for example, **0xFFFF11FF**. |
+| .value[2].u32 | Color of the bottom outline, in 0xAARRGGBB format, for example, **0xFFFF11FF**. |
+| .value[3].u32 | Color of the left outline, in 0xAARRGGBB format, for example, **0xFFFF11FF**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Color of the top outline, in 0xARGB format, for example, **0xFFFF11FF**.|
-| .value[1].u32 | Color of the right outline, in 0xARGB format, for example, **0xFFFF11FF**.|
-| .value[2].u32 | Color of the bottom outline, in 0xARGB format, for example, **0xFFFF11FF**.|
-| .value[3].u32 | Color of the left outline, in 0xARGB format, for example, **0xFFFF11FF**.|
+| .value[0].u32 | Color of the top outline, in 0xAARRGGBB format, for example, **0xFFFF11FF**. |
+| .value[1].u32 | Color of the right outline, in 0xAARRGGBB format, for example, **0xFFFF11FF**. |
+| .value[2].u32 | Color of the bottom outline, in 0xAARRGGBB format, for example, **0xFFFF11FF**. |
+| .value[3].u32 | Color of the left outline, in 0xAARRGGBB format, for example, **0xFFFF11FF**. |
 
 ## NODE_COLOR_BLEND
 
@@ -1136,17 +1171,18 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Color to blend with the component, in 0xARGB format. The default value is **0x00000000**.|
+| .value[0].u32 | Color to blend with the component, in 0xAARRGGBB format. The default value is **0x00000000**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Color to blend with the component, in 0xARGB format, for example, **0xFFFF11FF**.|
+| .value[0].u32 | Color to blend with the component, in 0xAARRGGBB format, for example, **0xFFFF11FF**. |
 
 ## NODE_FOREGROUND_BLUR_STYLE
 
@@ -1158,6 +1194,7 @@ Applies a foreground blur style to the component. This attribute can be set, res
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1192,6 +1229,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -1214,6 +1252,7 @@ Background blur effect. This attribute can be set, reset, and obtained as requir
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -1241,6 +1280,7 @@ Resizable attribute of a background image when it is stretched. This attribute c
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -1270,6 +1310,7 @@ Component translation, with support for percentage-based translation parameters.
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -1302,6 +1343,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 20
 
+
 **Parameters**
 
 | Name| Description|
@@ -1330,6 +1372,7 @@ Pixel rounding policy of the component, used to avoid issues such as visual alia
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 21
+
 
 **Parameters**
 
@@ -1369,4 +1412,55 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .object | System material object. The parameter type is [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md). The **ArkUI_ImmersiveMaterialHandle** object in the return value is a pointer to a static member. Therefore, you do not need to and are not allowed to release the returned object using [OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_destroy). |
+| .object | System material object. The parameter type is [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md). The **ArkUI_ImmersiveMaterialHandle** object in the return value is a pointer to a static member. Therefore, you are not allowed to call [OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_destroy) to release the returned object. |
+
+## NODE_TRANSFORM_3D
+
+```c
+NODE_TRANSFORM_3D = 128
+```
+
+3D transform attribute, which is used to set the 3D transform matrix of a component. When a 3D transform with a perspective effect is involved, the display effect of [NODE_TRANSFORM](#node_transform) may be incorrect, in which case this attribute is recommended. This attribute can be set, reset, and obtained as required through APIs. If this attribute is reset, the component restores to the identity matrix (no transform).
+
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0...15].f32 | 16 floating-point numbers, indicating a 4 x 4 transform matrix. The array length must be 16. |
+| .object | Pointer to the [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md) object, indicating a 4 x 4 transform matrix. Use either **.value** or **.object** to set the matrix. If both are set, **.value** takes precedence. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| .value[0...15].f32 | 16 floating-point numbers, indicating the current 3D transform matrix. |
+
+## NODE_LINEAR_GRADIENT_BLUR
+
+```c
+NODE_LINEAR_GRADIENT_BLUR = 129
+```
+
+Linear gradient blur attribute, which can be set, reset, and obtained as required through APIs.
+
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.
+
+**Since:** 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .object | Linear gradient blur option object. The parameter type is [OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md)*. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| .object | Linear gradient blur option object. The parameter type is [OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md)*. The **OH_ArkUI_LinearGradientBlurOptions** object in the return value is a pointer to a static member. Therefore, do not call [OH_ArkUI_NativeModule_LinearGradientBlurOptions_Destroy](capi-native-type-visual-h.md#oh_arkui_nativemodule_lineargradientbluroptions_destroy) to release the returned object. When the attribute is not set or has been reset, the returned object contains the default values (**blurRadius** = **0**, **fractionStops** = **{0.0, 0.0, 0.0, 1.0}**, **direction** = [OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_BOTTOM](capi-native-type-visual-h.md#oh_arkui_lineargradientblurdirection)). |
+
+<!--no_check-->

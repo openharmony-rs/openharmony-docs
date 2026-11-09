@@ -6,12 +6,13 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=44cc3978a01b17856a98c72090b06049c02dfb64 translatedAt=2026-10-30T08:58:20.883Z pushedAt=2026-10-31T00:47:56.066Z nl=1 -->
 
 User authorization is required when an application needs to access user privacy information (such as Location or Calendar information) or using system abilities (such as the camera ability to take photos or record videos). The permissions that must be authorized by users are user_grant permissions.
 
 The procedure for requesting user_grant permissions is as follows:
 
-1. Declare the permissions required by your application in the configuration file. 
+1. Declare the permissions required by your application in the configuration file.
 
 2. Associate each object that requires a user_grant permission with the related permission. This lets the user know what operations need user authorization.
 
@@ -53,7 +54,7 @@ The following example steps walk you through on how to request the location perm
 **Figure 1** Requesting the location permissions
 
 <!--RP4-->
-![en_image_location](figures/en_image_location.png)
+![image-location](figures/image-location.png)
 <!--RP4End-->
 
 1. Request the ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION permissions. For details, see [Declaring Permissions](declare-permissions.md).

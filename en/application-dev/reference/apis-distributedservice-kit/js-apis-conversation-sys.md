@@ -5,7 +5,7 @@
 <!--Designer: @yangyang2-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=13c8a436d2c729ca494c1251c49f536b24653eac translatedAt=2026-09-08T07:22:37.432Z pushedAt=2026-09-08T09:24:30.329Z -->
+<!-- md-trans-meta sourceCommit=55df9c11d6d7c450cc6d9d1ac7b0b998394459f6 translatedAt=2026-11-03T10:55:09.988Z pushedAt=2026-11-03T11:30:31.973Z nl=1 -->
 
 The DSoftBus module **conversation** provides APIs for cross-device interaction of apps, including obtaining the trusted device list, and sending and receiving session data. With this module, your app can obtain trusted devices under the same account, register a listener to receive cross-device data, and send data to a specified device through a session channel. This module is applicable to scenarios that require cross-device collaboration and multi-device data transfer, simplifying the development of cross-device interaction.
 

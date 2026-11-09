@@ -5,7 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e8dea55025812d3c37e296df8259ee62d6d27ff0 translatedAt=2026-09-21T02:38:17.790Z pushedAt=2026-09-21T09:30:38.183Z -->
+<!-- md-trans-meta sourceCommit=64f0c8d8142926f071f02583b7d1ae397c76db87 translatedAt=2026-11-03T08:15:20.289Z pushedAt=2026-11-03T08:49:16.790Z nl=1 -->
 
 Animation effects can add detail to your animations and create a sense of realism. For example, blur and shadow effects can lend a 3D look to objects and deliver a more engaging animation experience. ArkUI provides a diverse array of efficient APIs for you to develop exquisite and personalized effects. This topic covers the common blur, shadow, and color effects.
 
@@ -57,7 +57,7 @@ struct BlurEffectsExample {
 ![en-us_image_0000001599812870](figures/backdropBlur.png)
 
 
-## Applying Foreground Blur with blur
+## Applying Foreground Blur with Blur
 
 <!-- @[animationBlur_template2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template2/Index.ets) -->
 
@@ -679,7 +679,7 @@ import { curves } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct motionBlurTest {
+struct MotionBlurTest {
   @State widthSize: number = 300;
   @State heightSize: number = 240;
   @State flag: boolean = true;
@@ -718,5 +718,6 @@ struct motionBlurTest {
 
 
 
-![motionBlurTest](figures/motionBlur.gif)
+![MotionBlurTest](figures/motionBlur.gif)
+
 <!--no_check-->

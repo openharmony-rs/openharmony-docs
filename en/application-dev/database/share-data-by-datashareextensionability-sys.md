@@ -2,11 +2,11 @@
 
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
-<!--Tester: @chenwan188; @logic42-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
+<!--Tester: @hanjiawei; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=c59f00eb26df888e3e1e1c9bbf1efd8efcc6319a translatedAt=2026-07-28T06:45:36.569Z pushedAt=2026-07-28T08:22:49.248Z -->
+<!-- md-trans-meta sourceCommit=69b45c178990ec9e5457e0b4791f6638c738fb6a translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
 
 ## When to Use
 
@@ -86,7 +86,6 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
    export default class DataShareExtAbility extends DataShareExtensionAbility {
      // Override the onCreate API.
      onCreate(want: Want, callback: Function) {
-       result = this.context.cacheDir + '/datashare.txt';
        // Use an RDB store for data management.
        relationalStore.getRdbStore(this.context, {
          name: DB_NAME,
@@ -207,8 +206,8 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
    // The following configuration uses settingsdata as an example. Configure each field based on your application requirements.
    "extensionAbilities": [
      {
-       "srcEntry": "./ets/DataAbility/DataExtAbility.ets",
-       "name": "DataExtAbility",
+       "srcEntry": "./ets/DataShareExtAbility/DataShareExtAbility.ets",
+       "name": "DataShareExtAbility",
        "icon": "$media:icon",
        "description": "$string:description_datashareextability",
        "type": "dataShare",

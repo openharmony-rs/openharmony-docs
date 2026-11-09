@@ -6,7 +6,7 @@
 <!--Designer: @selina_jiang; @RainbowLLL-->
 <!--Tester: @zheng1368-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=51a4d474cf496c221e08074148023a74c0addf3b translatedAt=2026-08-26T04:29:01.030Z pushedAt=2026-08-28T03:17:19.192Z -->
+<!-- md-trans-meta sourceCommit=51a4d474cf496c221e08074148023a74c0addf3b translatedAt=2026-10-29T10:30:53.740Z pushedAt=2026-10-29T10:30:53.740Z nl=1 -->
 
 ## When to Use
 
@@ -26,7 +26,7 @@ For detailed API descriptions, see [oh_archive.h](../reference/apis-core-file-ki
 
 ### Archive File Compression APIs
 
-| API | Description |
+| Name | Description |
 | -------- | ---- |
 | OH_Archive_Writer_OpenFile(const char *outFile, OH_Archive_OpenMode openMode, OH_Archive_Format fmt) | Opens an archive file and creates a writer. |
 | OH_Archive_Writer_Add(OH_Archive_Writer_Ctx arc, const char **infiles, uint64_t fileNum) | Adds files or directories to the archive file. |

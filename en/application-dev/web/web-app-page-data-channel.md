@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-09-21T01:54:36.763Z pushedAt=2026-09-21T09:02:48.689Z -->
+<!-- md-trans-meta sourceCommit=05725db2300dee54c639a4dd6b5c07a9955cf778 translatedAt=2026-11-03T03:03:03.443Z pushedAt=2026-11-03T03:05:53.649Z nl=1 -->
 
 
 The [createWebMessagePorts()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createwebmessageports) API allows you to create message ports to implement communication between the application and frontend page.
@@ -15,12 +15,12 @@ In the following example, **createWebMessagePorts** is used to create two messag
 
 
 - Application code:
-
-  ```ts
-  // xxx.ets
+  <!-- @[create_a_message_port_to_implement_communication_between_the_two_ends](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry3/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
@@ -28,7 +28,7 @@ In the following example, **createWebMessagePorts** is used to create two messag
     ports: webview.WebMessagePort[] = [];
     @State sendFromEts: string = 'Send this message from ets to HTML';
     @State receivedFromHtml: string = 'Display received message send from HTML';
-
+  
     build() {
       Column() {
         // Display the content received from the HTML side.
@@ -38,7 +38,7 @@ In the following example, **createWebMessagePorts** is used to create two messag
           .onChange((value: string) => {
             this.sendFromEts = value;
           })
-
+  
         // The following can be called in the onPageEnd lifecycle callback.
         Button('postMessage')
           .onClick(() => {
@@ -46,7 +46,7 @@ In the following example, **createWebMessagePorts** is used to create two messag
               // 1. Create two message ports.
               this.ports = this.controller.createWebMessagePorts();
               if (this.ports && this.ports[0] && this.ports[1]) {
-                // 2. Register a callback for the message port (for example, port 1) on the application.
+                // 2. Register a callback on the message port (for example, port 1) on the application.
                 this.ports[1].onMessageEvent((result: webview.WebMessage) => {
                   let msg = 'Got msg from HTML:';
                   if (typeof (result) === 'string') {
@@ -70,10 +70,11 @@ In the following example, **createWebMessagePorts** is used to create two messag
                 console.error(`ports is null, Please initialize first`);
               }
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-
+  
         // 4. Use the message port on the application to send messages to the message port that has been sent to the HTML side.
         Button('SendDataToHTML')
           .onClick(() => {
@@ -84,10 +85,11 @@ In the following example, **createWebMessagePorts** is used to create two messag
                 console.error(`ports is null, Please initialize first`);
               }
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-
+  
         // 5. Close the port.  
         Button('closePort')
         .onClick(() => {
@@ -96,10 +98,11 @@ In the following example, **createWebMessagePorts** is used to create two messag
               this.ports[0].close();
               this.ports = [];
             } else {
-              console.error("ports is null, not need close");
+              console.error(`ports is null, not need close`);
             }
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
         Web({ src: $rawfile('index.html'), controller: this.controller })

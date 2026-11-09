@@ -551,7 +551,7 @@ napi_value AttachCallback(napi_env env, void* value, void* hint)
     // 将JS对象object和native对象value生命周期进行绑定
     napi_status status = napi_wrap(env, object, value, FinalizerCallback, nullptr, nullptr);
     if (status != napi_ok) {
-        OH_LOG_INFO(LOG_APP, "Node-API attachCallback is failed.");
+        OH_LOG_ERROR(LOG_APP, "Node-API attachCallback is failed.");
     }
     // JS对象携带native信息
     napi_coerce_to_native_binding_object(env, object, DetachCallback, AttachCallback, value, hint);
@@ -571,7 +571,7 @@ static napi_value Init(napi_env env, napi_value exports)
     auto object = Object::GetInstance();
     napi_status status = napi_wrap(env, exports, reinterpret_cast<void*>(object), FinalizerCallback, nullptr, nullptr);
     if (status != napi_ok) {
-        OH_LOG_INFO(LOG_APP, "Node-API napi_wrap is failed.");
+        OH_LOG_ERROR(LOG_APP, "Node-API napi_wrap is failed.");
     }
     napi_coerce_to_native_binding_object(env, exports, DetachCallback, AttachCallback, reinterpret_cast<void*>(object),
                                          nullptr);
@@ -1588,3 +1588,18 @@ testNapi.testNapiWrapEnhance();
 **napi_get_global_handle_count**
 
 [使用扩展的Node-API接口获取global handle数量](use-napi-life-cycle.md)
+
+## napi支持限制微任务的执行
+
+### 接口描述
+
+| 接口 | 描述 |
+| -------- | -------- |
+| napi_open_microtask_scope | 打开微任务作用域，限制微任务的执行。 |
+| napi_close_microtask_scope | 关闭微任务作用域，并同步执行作用域打开期间累积的微任务。 |
+
+### 使用示例
+
+**napi_open_microtask_scope、napi_close_microtask_scope**
+
+[使用扩展的Node-API接口限制微任务的执行](use-napi-about-microtask.md)

@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
-hdc（OpenHarmony Device Connector）是提供给开发人员的命令行调试工具，用于与设备进行交互调试、数据传输、日志查看以及应用安装等操作。该工具支持在Windows/Linux/MacOS系统上运行，为开发者提供高效、便捷的设备调试能力。
+hdc（OpenHarmony Device Connector）是提供给开发人员的命令行调试工具，用于与设备进行交互调试、数据传输、日志查看以及应用安装等操作。该工具支持在Windows/Linux/MacOS/OpenHarmony系统上运行，为开发者提供高效、便捷的设备调试能力。
 
 hdc包含三部分：
 
@@ -31,7 +31,7 @@ hdc包含三部分：
 
 hdc可以选择以下任意一种方式获取：
 
-1. 通过OpenHarmony SDK获取hdc工具。OpenHarmony SDK已嵌入[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)中，无需额外下载配置。hdc默认安装在DevEco Studio/sdk/default/openharmony/toolchains路径下，MacOS系统的sdk位于DevEco Studio/Contents目录下。
+1. 通过OpenHarmony SDK获取hdc工具。OpenHarmony SDK已嵌入[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)中，无需额外下载配置。hdc默认安装在DevEco Studio/sdk/default/openharmony/toolchains路径下，MacOS系统的sdk位于DevEco Studio/Contents目录下，hdc全路径可以在DevEco Studio的终端中执行where/which hdc查看。
 
 2. 通过[Command Line Tools](https://developer.huawei.com/consumer/cn/download/)工具中的sdk目录获取相关工具。hdc程序默认安装在Command Line Tools/sdk/default/openharmony/toolchains路径下。
 
@@ -53,7 +53,7 @@ hdc支持USB和无线两种连接调试方式。在设备的设置>系统>开发
 
    - 在搜索栏中搜索“查看高级系统设置”。在环境变量>系统变量>Path>编辑中，将hdc.exe所在目录添加到Path。环境变量配置完成后，请重启电脑，即可在命令行窗口执行hdc命令。
 
-2. Linux/MacOS系统：
+2. Linux/MacOS/OpenHarmony系统：
 
    - 打开终端工具，执行以下命令，根据输出结果分别执行不同的命令。
 
@@ -1509,6 +1509,7 @@ hdc -l 5 start
 | Windows | %temp%\ | 实际路径参考：C:\\Users\用户名\AppData\Local\Temp<br/>（实际使用请替换用户名变量）。 |
 | Linux | /tmp/ | - |
 | MacOS | $TMPDIR/ | 实际路径可通过echo $TMPDIR查看，执行cd $TMPDIR命令可直接跳转至相应目录。 |
+| OpenHarmony | $TMPDIR/ | 实际路径参考：/storage/media/{currentUserId}/local/files/Docs/.hdc<br/>（实际使用请替换用户id）。 |
 
 日志文件类型包括：
 
@@ -1648,6 +1649,7 @@ Kill subservers finish
 | Windows | %temp%\hdc_cmd\ | 实际路径参考：C:\\Users\用户名\AppData\Local\Temp\hdc_cmd\<br/>（实际使用请替换用户名变量）。 |
 | Linux | /tmp/hdc_cmd/ | - |
 | MacOS | $TMPDIR/hdc_cmd/ | - |
+| OpenHarmony | $TMPDIR/hdc_cmd/ | 实际路径参考：/storage/media/{currentUserId}/local/files/Docs/hdc_cmd<br/>（实际使用请替换用户id）。|
 
 ### OHOS_HDC_ENCRYPT_CHANNEL
 
@@ -1686,6 +1688,7 @@ Kill subservers finish
 | Windows | 在电脑设置中搜索“查看高级系统设置”，在环境变量>系统变量>Path>编辑中，添加环境变量名称为OHOS_HDC_LOG_LEVEL，变量值为5。配置完毕后点击确认。环境变量配置完成后，关闭并重启命令行或其他使用到OpenHarmony SDK的软件，以生效新配置的环境变量。 |
 | Linux | 在~/.bash_profile文件末尾追加内容export OHOS_HDC_LOG_LEVEL=5并保存后，执行source ~/.bash_profile生效当前环境变量。 |
 | MacOS | 在~/.zshrc文件末尾追加内容export OHOS_HDC_LOG_LEVEL=5并保存后，执行source ~/.zshrc生效当前环境变量。环境变量配置完成后，关闭并重启命令行或其他使用到OpenHarmony SDK的软件，以生效新配置的环境变量。 |
+| OpenHarmony | 在~/.zshrc文件末尾追加内容export OHOS_HDC_LOG_LEVEL=5并保存后，执行source ~/.zshrc生效当前环境变量。环境变量配置完成后，关闭并重启命令行或其他使用到OpenHarmony SDK的软件，以生效新配置的环境变量。 |
 
 ## hdc版本配套表
 
@@ -2271,6 +2274,32 @@ DevEco Studio中模拟器调试不支持hdc tmode命令。
 
 如需调试tmode相关命令，请连接实体设备后进行调试。
 
+### E001408 UART连接异常
+
+**错误信息**
+
+UART communication abnormal, please check the UART communication link.
+
+**错误描述**
+
+UART（串口）通信异常，请检查串口通信链路。
+
+**可能原因**
+
+1. 串口连接线松动或断开。
+
+2. 串口设备被其他应用程序占用。
+
+3. 串口设备权限不足或设备未正确识别。
+
+**处理步骤**
+
+1. 确认串口连接线连接牢固，可尝试重新插拔串口连接线。
+
+2. 确认串口设备未被其他应用程序占用，如有占用请先关闭占用程序。
+
+3. 确认当前用户对串口设备具有读写权限。
+
 ### E002101 服务器进程无法结束
 
 **错误信息**
@@ -2328,6 +2357,90 @@ Failed to communicate with daemon.
 1. 检查并确保设备已正常连接。
 
 2. 检查网络状态，网络稳定后重新尝试连接。
+
+### E002110 HDC服务器连接失败
+
+**错误信息**
+
+HDC server connection failed
+
+当存在具体的连接错误信息时，错误信息后会追加冒号及具体的错误原因，例如：
+
+HDC server connection failed: <具体错误原因>
+
+常见附加错误原因包括：
+
+1. invalid server endpoint：服务器端点（ip:port或uds路径）格式无效。
+
+2. handshake failed：握手失败。
+
+3. 其它依赖库错误信息（如内存不足、连接被拒绝等）。
+
+**错误描述**
+
+客户端与HDC服务器建立连接失败。
+
+**可能原因**
+
+1. 服务器进程未启动或已异常退出。
+
+2. 客户端连接的服务器端点不正确。
+
+3. 服务器监听端口被其他程序占用。
+
+4. 客户端或者服务器防火墙限制。
+
+**处理步骤**
+
+1. 执行hdc start命令启动服务器进程，或执行hdc kill -r重启服务器进程。
+
+2. 检查服务器端点IP地址和端口号正确后重新尝试连接。
+
+3. 确认服务器监听端口未被占用，可通过hdc -m以前台模式启动查看详细日志。
+
+4. 确认客户端和服务器防火墙设置允许HDC通信，然后重新尝试连接。
+
+### E002116 HDC服务器端点冲突
+
+**错误信息**
+
+HDC server endpoint conflict: requested <请求端点>, active <活跃端点>. Use "-s <活跃端点>" or stop the active server.
+
+**错误描述**
+
+检测到已有一个活跃的HDC服务器实例使用了不同的网络端点，当前请求的端点与之冲突。
+
+**可能原因**
+
+系统中已存在一个正在运行的HDC服务器实例，但其监听的网络端点与当前命令请求的端点不同。
+
+**处理步骤**
+
+  - 使用-s参数指定与活跃服务器一致的端点，例如：hdc -s <活跃端点> [command]。
+
+  - 停止已运行的服务器进程，执行hdc kill命令后重新启动服务。
+
+### E002117 写入HDC服务器端点信息失败
+
+**错误信息**
+
+Failed to write HDC server endpoint information.
+
+**错误描述**
+
+HDC服务器启动时，无法将服务器端点信息写入临时目录的实例信息文件。
+
+**可能原因**
+
+1. 系统临时目录不可写或磁盘空间不足。
+
+2. 临时目录中存在残留的实例信息文件且无法覆盖。
+
+**处理步骤**
+
+1. 检查系统临时目录是否具有写入权限，并确认磁盘有充足的可用空间。
+
+2. 尝试执行hdc kill清理残留进程和文件后重新启动服务。
 
 ### E003001 （命令行）指定的包名非法
 

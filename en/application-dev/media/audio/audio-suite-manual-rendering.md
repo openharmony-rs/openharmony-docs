@@ -5,7 +5,7 @@
 <!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=5f0d33950c34d1dc0d3ca28a98a4b98f3cce1640 translatedAt=2026-09-18T03:10:34.117Z pushedAt=2026-09-18T10:07:24.052Z -->
+<!-- md-trans-meta sourceCommit=8d61f9389486586313e9f62eb27036f4b3e66308 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Starting from API version 22, [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md) provides offline audio editing capability, allowing you to process audio data in non-real-time preview scenarios. You can combine multiple audio nodes to implement complex audio processing pipelines.
 
@@ -15,9 +15,12 @@ To use the offline editing capabilities provided by [OHAudioSuite](../../referen
 
 ### Linking the Dynamic Library in the CMake Script
 
-``` cmake
-target_link_libraries(sample PUBLIC libohaudiosuite.so)
+<!-- @[CMake_lib_suite_libohaudiosuite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
+target_link_libraries(entry PUBLIC libohaudiosuite.so)
 ```
+
 ### Adding Header Files
 To use APIs related to audio creation, include the <[native_audio_suite_base.h](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md)> and <[native_audio_suite_engine.h](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md)> header files.
 
@@ -52,15 +55,15 @@ Use an effect node (such as an equalizer effect node) to process the input PCM (
 
 
 1. Create an engine and pipeline.
-
+   
    <!-- @[audioSuite_CreateEngineAndPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
-
+   
    ``` C++
-   // The sample API does not include return value validation. Be sure to add validation logic when using it in practice.
+   // The sample interface does not include return value validation. Be sure to add validation logic in actual use.
    // Create an engine.
    OH_AudioSuiteEngine *audioSuiteEngine = nullptr;
    OH_AudioSuiteEngine_Create(&audioSuiteEngine);
-
+   
    // Create a pipeline.
    OH_AudioSuitePipeline *audioSuitePipeline = nullptr;
    OH_AudioSuiteEngine_CreatePipeline(audioSuiteEngine, &audioSuitePipeline,
@@ -70,19 +73,19 @@ Use an effect node (such as an equalizer effect node) to process the input PCM (
 2. Create input, output, and equalizer nodes and connect them.
 
    To create an input node, implement a custom callback function **InputNodeWriteDataCallBack** of the type [OH_InputNode_RequestDataCallback()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_inputnode_requestdatacallback), and set the callback function using [OH_AudioSuiteNodeBuilder_SetRequestDataCallback()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_setrequestdatacallback).
-
+ 
    <!-- @[audioSuite_AudioDataInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/pcm_file_utils.h) -->
-
+   
    ``` C
    struct AudioDataInfo {
        uint8_t *buffer = nullptr;   // Audio data.
        int32_t bufferSize = 0;      // Total size of the audio data.
        int32_t totalWriteSize = 0;  // Total size of the processed audio data.
-       int32_t totalReadSize = 0;  // Total size of the audio data that has been read.
+       int32_t totalReadSize = 0;  // Total size of the read audio data.
    };
    ```
    <!-- @[audioSuite_InputNodeWriteDataCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
-
+   
    ``` C++
    // The sample API does not include return value validation. Be sure to add validation logic in actual use.
    // Callback for the input node to request data.
@@ -110,7 +113,7 @@ Use an effect node (such as an equalizer effect node) to process the input PCM (
    }
    ```
    <!-- @[audioSuite_CreateBaseNodeOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
-
+   
    ``` C++
    // The sample API does not include return value validation. Be sure to add validation logic in actual use.
    // Create a node builder.
@@ -129,17 +132,17 @@ Use an effect node (such as an equalizer effect node) to process the input PCM (
    void *userData = static_cast<void *>(audioInfo);
    OH_AudioSuiteNodeBuilder_SetRequestDataCallback(nodeBuilder, InputNodeWriteDataCallBack, userData);
    // Create an input node.
-   OH_AudioSuiteEngine_CreateNode(audioSuiteEngine, nodeBuilder, &nodes.inputNode);
+   OH_AudioSuiteEngine_CreateNode(audioSuitePipeline, nodeBuilder, &nodes.inputNode);
    
    // Reset the builder configuration and create an effect node.
    OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
    // Set different effect node types as needed.
    ```
-
+   
    Set the equalizer effect.
-
+   
    <!-- @[audioSuite_SetEqualizerType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_effect/audio_effect.h) -->
-
+   
    ``` C
    // Set the equalizer node type.
    OH_AudioSuiteNodeBuilder_SetNodeType(builder, OH_AudioNode_Type::EFFECT_NODE_TYPE_EQUALIZER);
@@ -149,9 +152,9 @@ Use an effect node (such as an equalizer effect node) to process the input PCM (
    // Set the equalizer node effect.
    OH_AudioSuiteEngine_SetEqualizerFrequencyBandGains(*node, gains);
    ```
-
+   
    <!-- @[audioSuite_CreateBaseNodeTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
-
+   
    ``` C++
    // Reset the builder configuration and set the output node type.
    OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
@@ -165,7 +168,7 @@ Use an effect node (such as an equalizer effect node) to process the input PCM (
    audioFormatOutput.encodingType = OH_Audio_EncodingType::AUDIO_ENCODING_TYPE_RAW;
    OH_AudioSuiteNodeBuilder_SetFormat(nodeBuilder, audioFormatOutput);
    // Create an output node.
-   OH_AudioSuiteEngine_CreateNode(audioSuiteEngine, nodeBuilder, &nodes.outputNode);
+   OH_AudioSuiteEngine_CreateNode(audioSuitePipeline, nodeBuilder, &nodes.outputNode);
    
    // Destroy the node builder.
    OH_AudioSuiteNodeBuilder_Destroy(nodeBuilder);
@@ -179,9 +182,9 @@ Use an effect node (such as an equalizer effect node) to process the input PCM (
 3. Render audio data.
 
    Call [OH_AudioSuiteEngine_RenderFrame()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_renderframe) to render and obtain PCM audio data.
-
+   
    <!-- @[audioSuite_StartBasePipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
-
+   
    ``` C++
    // The sample API does not include return value validation. Be sure to add validation logic in actual use.
    // Calculate the amount of data to be processed per frame based on the format of the output node. If samplingRate is 11025, use 40 ms for the calculation.
@@ -212,19 +215,19 @@ Use an effect node (such as an equalizer effect node) to process the input PCM (
    ```
 
 4. Destroy resources.
-
+   
    <!-- @[audioSuite_DestroyBase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
-
+   
    ``` C++
    // The sample API does not include return value validation. Be sure to add validation logic in actual use.
    // Destroy the nodes.
    OH_AudioSuiteEngine_DestroyNode(nodes.inputNode);
    OH_AudioSuiteEngine_DestroyNode(nodes.eqNode);
    OH_AudioSuiteEngine_DestroyNode(nodes.outputNode);
-
+   
    // Destroy the pipeline.
    OH_AudioSuiteEngine_DestroyPipeline(audioSuitePipeline);
-
+   
    // Destroy the engine.
    OH_AudioSuiteEngine_Destroy(audioSuiteEngine);
    ```
@@ -242,15 +245,15 @@ Before creating a source separation node, call [OH_AudioSuiteEngine_IsNodeTypeSu
 The sample code is as follows:
 
 1. Create an engine and pipeline.
-
+ 
    <!-- @[audioSuite_CreateSeparationEngineAndPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
-
+   
    ``` C++
    // The sample interface does not include return value validation. Be sure to add validation logic in actual use.
    // Create an engine.
    OH_AudioSuiteEngine *audioSuiteEngine = nullptr;
    OH_AudioSuiteEngine_Create(&audioSuiteEngine);
-
+   
    // Create a pipeline.
    OH_AudioSuitePipeline *audioSuitePipeline = nullptr;
    OH_AudioSuiteEngine_CreatePipeline(audioSuiteEngine, &audioSuitePipeline,
@@ -262,17 +265,17 @@ The sample code is as follows:
    To create an input node, implement a custom callback function **InputNodeWriteDataCallBack** of the type [OH_InputNode_RequestDataCallback()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_inputnode_requestdatacallback), and set the callback function using [OH_AudioSuiteNodeBuilder_SetRequestDataCallback()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_setrequestdatacallback).
 
    <!-- @[audioSuite_AudioDataInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/pcm_file_utils.h) -->
-
+   
    ``` C
    struct AudioDataInfo {
        uint8_t *buffer = nullptr;   // Audio data.
        int32_t bufferSize = 0;      // Total size of the audio data.
        int32_t totalWriteSize = 0;  // Total size of the processed audio data.
-       int32_t totalReadSize = 0;  // Total size of the audio data that has been read.
+       int32_t totalReadSize = 0;  // Total size of the read audio data.
    };
    ```
    <!-- @[audioSuite_InputNodeWriteDataCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
-
+   
    ``` C++
    // The sample API does not include return value validation. Be sure to add validation logic in actual use.
    // Callback for the input node to request data.
@@ -301,7 +304,7 @@ The sample code is as follows:
    ```
 
    <!-- @[audioSuite_IsSupportedSeparationNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
-
+   
    ``` C++
    // Check whether the audio source separation node is supported.
    bool isSupported = false;
@@ -315,7 +318,7 @@ The sample code is as follows:
    ```
 
    <!-- @[audioSuite_CreateSeparationNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
-
+   
    ``` C++
    // The sample API does not include return value validation. Be sure to add validation logic in actual use.
    // Create a node builder.
@@ -374,7 +377,7 @@ The sample code is as follows:
    For the pipeline that contains the source separation node , use [OH_AudioSuiteEngine_MultiRenderFrame()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_multirenderframe) to render and obtain two streams of PCM audio data.
 
    <!-- @[audioSuite_StartSeparationPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
-
+   
    ``` C++
    // The sample API does not include return value validation. Be sure to add validation logic in actual use.
    // Calculate the data size per frame based on the format of the output node. If samplingRate is 11025, use 40 ms for the calculation.
@@ -391,7 +394,7 @@ The sample code is as follows:
    audioDataArray.requestFrameSize = frameSize;
    int32_t responseSize = 0;
    bool finished = false;
-
+   
    // Start rendering.
    OH_AudioSuiteEngine_StartPipeline(audioSuitePipeline);
    // ...
@@ -410,7 +413,7 @@ The sample code is as follows:
    } while (!finished);
    // ...
    OH_AudioSuiteEngine_StopPipeline(audioSuitePipeline);
-
+   
    for (int32_t i = 0; i < outputNum; i++) {
        free(audioDataArray.audioDataArray[i]);
        audioDataArray.audioDataArray[i] = nullptr;
@@ -420,19 +423,19 @@ The sample code is as follows:
    ```
 
 4. Destroy resources.
-
+   
    <!-- @[audioSuite_DestroySeparation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
-
+   
    ``` C++
    // The sample API does not include return value validation. Be sure to add validation logic in actual use.
    // Destroy the nodes.
    OH_AudioSuiteEngine_DestroyNode(nodes.inputNode);
    OH_AudioSuiteEngine_DestroyNode(nodes.aissNode);
    OH_AudioSuiteEngine_DestroyNode(nodes.outputNode);
-
+   
    // Destroy the pipeline.
    OH_AudioSuiteEngine_DestroyPipeline(audioSuitePipeline);
-
+   
    // Destroy the engine.
    OH_AudioSuiteEngine_Destroy(audioSuiteEngine);
    ```
@@ -448,15 +451,15 @@ Input multiple PCM audio data streams, mix them using an audio mixer node, and o
 The sample code is as follows:
 
 1. Create an engine and pipeline.
-
+ 
    <!-- @[audioSuite_CreateMixingEngineAndPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
-
+   
    ``` C++
    // The sample interface does not include return value validation. Be sure to add validation logic in actual use.
    // Create an engine.
    OH_AudioSuiteEngine *audioSuiteEngine = nullptr;
    OH_AudioSuiteEngine_Create(&audioSuiteEngine);
-
+   
    // Create a pipeline.
    OH_AudioSuitePipeline *audioSuitePipeline = nullptr;
    OH_AudioSuiteEngine_CreatePipeline(audioSuiteEngine, &audioSuitePipeline,
@@ -468,7 +471,7 @@ The sample code is as follows:
    The audio mixing functionality has multiple input nodes. You need to set the **userData** parameter in the callback function **InputNodeWriteDataCallBack** to distinguish between multiple input nodes, thereby enabling the input of multiple PCM audio data streams. The **InputNodeWriteDataCallBack** function type is [OH_InputNode_RequestDataCallback()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_inputnode_requestdatacallback).
 
    <!-- @[audioSuite_AudioDataInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/pcm_file_utils.h) -->
-
+   
    ``` C
    struct AudioDataInfo {
        uint8_t *buffer = nullptr;   // Audio data.
@@ -478,7 +481,7 @@ The sample code is as follows:
    };
    ```
    <!-- @[audioSuite_InputNodeWriteDataCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
-
+   
    ``` C++
    // The sample API does not include return value validation. Be sure to add validation logic in actual use.
    // Callback for the input node to request data.
@@ -506,7 +509,7 @@ The sample code is as follows:
    }
    ```
    <!-- @[audioSuite_CreateMixingNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
-
+   
    ``` C++
    // The sample API does not include return value validation. Be sure to add validation logic in actual use.
    // Create a node builder.
@@ -540,7 +543,7 @@ The sample code is as follows:
    // Reset the builder configuration and set the sound field node type.
    OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
    OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder, OH_AudioNode_Type::EFFECT_NODE_TYPE_SOUND_FIELD);
-   // Create a sound field node and set the sound field mode to listening.
+   // Create the sound field node and set the sound field mode to front.
    OH_AudioSuiteEngine_CreateNode(audioSuitePipeline, nodeBuilder, &nodes.fieldNode);
    OH_AudioSuiteEngine_SetSoundFieldType(nodes.fieldNode, SOUND_FIELD_FRONT_FACING);
    
@@ -577,9 +580,9 @@ The sample code is as follows:
 3. Render audio data.
 
    Call [OH_AudioSuiteEngine_RenderFrame()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_renderframe) to render and obtain PCM audio data.
-
+   
    <!-- @[audioSuite_StartMixingPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
-
+   
    ``` C++
    // The sample API does not include return value validation. Be sure to add validation logic in actual use.
    // Calculate the data size per frame based on the format of the output node. If samplingRate is 11025, use 40 ms for the calculation.
@@ -589,7 +592,7 @@ The sample code is as follows:
    uint8_t *audioData = (uint8_t *)malloc(frameSize);
    int32_t responseSize = 0;
    bool finished = false;
-
+   
    // Start rendering.
    OH_AudioSuiteEngine_StartPipeline(audioSuitePipeline);
    // ...
@@ -611,9 +614,9 @@ The sample code is as follows:
    ```
 
 4. Destroy resources.
-
+   
    <!-- @[audioSuite_DestroyMixing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
-
+   
    ``` C++
    // The sample interface does not include return value validation. Be sure to add validation logic in actual use.
    // Destroy the nodes.
@@ -622,10 +625,10 @@ The sample code is as follows:
    OH_AudioSuiteEngine_DestroyNode(nodes.fieldNode);
    OH_AudioSuiteEngine_DestroyNode(nodes.mixerNode);
    OH_AudioSuiteEngine_DestroyNode(nodes.outputNode);
-
+   
    // Destroy the pipeline.
    OH_AudioSuiteEngine_DestroyPipeline(audioSuitePipeline);
-
+   
    // Destroy the engine.
    OH_AudioSuiteEngine_Destroy(audioSuiteEngine);
    ```

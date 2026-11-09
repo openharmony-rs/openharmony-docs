@@ -1,10 +1,20 @@
+---
+kits: ["ArkGraphics 3D"]
+description: "Describes how to play and control animation resources in a 3D scene, including loading, starting, pausing, stopping, finishing, restarting, and seeking animations, and using the onStarted and onFinished callbacks."
+keywords: [ArkGraphics 3D, 3D animation, onStarted, onFinished]
+doctype: guide
+status: active
+---
+
 # Controlling and Managing ArkGraphics 3D Scene Animations
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=bfc96144fd212df11635a7acc693723c4ad0b55f translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 Animations, an important resource type in a 3D scene, is used to control the motion of elements in the scene. For example, to simulate a scene where a person walks, it is difficult to calculate and set the rotation angle of every joint of the person in each frame. When making such an animation, the resource producer saves key frame data of the animation and the interpolator type between key frames in a model file.
 
@@ -76,7 +86,7 @@ ArkGraphics 3D provides APIs for you to play and control animations to achieve t
    
    ``` TypeScript
    // create a new camera.
-   this.cam = await rf.createCamera({ 'name': 'Camera' });
+   this.cam = await rf.createCamera({ name: 'Camera' });
    // set the camera.
    this.cam.enabled = true;
    this.cam.position.z = 5;

@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=fc50c8d990bffee49b4e7ddbe84b245946468e4c translatedAt=2026-11-03T05:40:17.706Z pushedAt=2026-11-03T07:39:13.126Z nl=1 -->
 
 This topic describes how to obtain properties of a key. Before the operation, ensure that the key exists in HUKS.
 >**NOTE**
@@ -20,7 +21,7 @@ The [Group Key](huks-group-key-overview.md) feature is supported since API versi
 
 2. Use [getKeyItemProperties](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksgetkeyitemproperties9) to obtain the properties of the key based on **keyAlias** and **options**. **options** is a reserved parameter and is left empty currently.
 
-3. You can find the key properties in the **properties** field in the [HuksReturnResult](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksreturnresult9) object.
+3. The [HuksReturnResult](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksreturnresult9) object is returned through the callback, and the obtained property set is in the **properties** field.
 
 <!-- @[obtaining_key_attribute_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/GetKeyAttributes/entry/src/main/ets/pages/GetKeyAttributes.ets) -->
 
@@ -57,11 +58,11 @@ let huksOptions: huks.HuksOptions = {
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
   return new Promise<void>((resolve, reject) => {
     try {
-      huks.generateKeyItem(keyAlias, huksOptions, (error, data) => {
+      huks.generateKeyItem(keyAlias, huksOptions, (error) => {
         if (error) {
           reject(error);
         } else {
-          resolve(data);
+          resolve();
         }
       });
     } catch (error) {
@@ -74,8 +75,8 @@ async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions)
   console.info(`enter promise generateKeyItem`);
   try {
     await generateKeyItem(keyAlias, huksOptions)
-      .then((data) => {
-        console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
+      .then(() => {
+        console.info(`promise: generateKeyItem success`);
       })
       .catch((error: Error) => {
         console.error(`promise: generateKeyItem failed, ${JSON.stringify(error)}`);
@@ -111,4 +112,3 @@ function check(): string {
   }
 }
 ```
-<!--no_check-->

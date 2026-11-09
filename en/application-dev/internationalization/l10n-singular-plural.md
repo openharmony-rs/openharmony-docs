@@ -3,11 +3,12 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=263fc44e1b5959e8c1296eb31ffa52a516237ea1 translatedAt=2026-11-03T09:17:02.335Z pushedAt=2026-11-03T09:17:02.335Z nl=1 -->
 
-Requirements on the singular and plural formats of nouns or unit expressions vary according to languages. Some languages do not distinguish singular and plural forms, while some other languages have two forms or more. For example, singular and plural forms are extensively used in English, but not Chinese. Different from English, quantifiers are used to express quantities in Chinese.
+Requirements for singular and plural forms of nouns or unit expressions vary by language. Some languages do not distinguish singular and plural forms, some have two forms, and others have multiple forms. For example, English nouns have singular and plural forms, while Chinese nouns do not; Chinese uses quantifiers to express quantities.
 
 Singular and plural numbers are usually distinguished by the following categories:
 

@@ -4,9 +4,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @yyuehao-->
 <!--Designer: @yyuehao-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=58ff40ad92758153f7b55166a9e6e0a0e9be5d28 translatedAt=2026-07-13T09:33:48.568Z pushedAt=2026-07-14T07:10:30.060Z -->
+<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-03T02:53:56.445Z pushedAt=2026-11-03T03:00:03.869Z nl=1 -->
 
 ## When to Use
 
@@ -17,6 +17,7 @@ Window layout mainly includes the following capabilities:
 - [Managing window size or aspect ratio limits](#managing-the-window-size-or-aspect-ratio-limits): By setting the minimum/maximum size constraints and aspect ratio limits of a window, the adjustable range and display ratio of the window can be constrained.
 
 - [Adjusting the window position and size](#adjusting-the-window-position-and-size): Set the position coordinates of a window on the screen and the width and height dimensions of the window, and provide query and listening capabilities for window position and size changes.
+
 
 Proper use of window layout capabilities helps developers:
 
@@ -45,6 +46,7 @@ The system provides multiple configuration methods for window size constraints. 
 | Configured via the [abilities](../quick-start/module-configuration-file.md#abilities) tag in the [module.json5 configuration file](../quick-start/module-configuration-file.md) | Low (static configuration) | vp | Takes effect after the app is installed | When window size constraints need to be preset, serving as the default configuration for the app<br/>This takes effect for the main window corresponding to the current UIAbility. |
 | Default system constraints | Low (system default) | vp | Takes effect after the app is installed | When the app does not need to specify window size constraints and follows the system default constraints (the system default constraints vary based on different products and window types). |
 
+
 ### Window Content Aspect Ratio Limit
 
 The window aspect ratio limit applies to the following typical scenarios:
@@ -59,8 +61,8 @@ Currently, apps can call the following APIs to set the aspect ratio limit for th
 
 | API | Function | Applicable Scenario | Effective Scope |
 | -------- | -------- | -------- | -------- |
-| [setAspectRatio()](../reference/apis-arkui/arkts-apis-window-Window.md#setaspectratio10) | Sets the aspect ratio of the window content layout (excluding decorations such as borders and title bars). This ratio parameter is persisted by default. | - Configuring the same content aspect ratio for multiple launch instances of the same app. When a main window of the same app calls this API and the aspect ratio takes effect, subsequently opened main windows will continue to use this aspect ratio. | Main window in [Free Window](freeform-window-overview.md#freeform-window) state |
-| [setContentAspectRatio()](../reference/apis-arkui/arkts-apis-window-Window.md#setcontentaspectratio21) | Sets the aspect ratio of the window content layout (excluding decorations such as borders and title bars).<br/>The window width and height will adjust according to changes in the window border decoration size or visibility, and it supports configuring whether this ratio parameter is persisted. | - Customizing the main window title bar size and visibility<br/>- Setting the aspect ratio for a single main window individually | Main window in [Free Window](freeform-window-overview.md#freeform-window) state |
+| [setAspectRatio()](../reference/apis-arkui/arkts-apis-window-Window.md#setaspectratio10) | Sets the aspect ratio of the window content layout (excluding decorations such as borders and title bars). This ratio parameter is persisted by default. | - Configuring the same content aspect ratio for multiple launch instances of the same app. When a main window of the same app calls this API and the aspect ratio takes effect, subsequently opened main windows will continue to use this aspect ratio. | Main window in [Freeform Window](freeform-window-overview.md#freeform-window) state |
+| [setContentAspectRatio()](../reference/apis-arkui/arkts-apis-window-Window.md#setcontentaspectratio21) | Sets the aspect ratio of the window content layout (excluding decorations such as borders and title bars).<br/>The window width and height will adjust according to changes in the window border decoration size or visibility, and it supports configuring whether this ratio parameter is persisted. | - Customizing the main window title bar size and visibility<br/>- Setting the aspect ratio for a single main window individually | Main window in [Freeform Window](freeform-window-overview.md#freeform-window) state |
 
 Sample
 
@@ -70,7 +72,7 @@ Sample
 // Index.ets
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
 const TAG = 'IndexPage';
@@ -116,6 +118,7 @@ const TAG = 'IndexPage';
 
 ## Adjusting the Window Position and Size
 
+
 ### Setting the Initial Position and Size of the Main Window at Startup
 
 The initial position and size of an app window at startup can be set. This is available through the following two methods.
@@ -141,7 +144,7 @@ The initial position and size of an app window at startup can be set. This is av
   > 
   > - It is recommended to configure both **windowLeft** and **windowTop**. When the window position exceeds the specified screen area, the system will constrain the window to remain visible within the screen bounds.
 
-- Configure the default size and position of the app's main window through the [metadata tag](window-config-m.md#metadata) under the [abilities](../quick-start/module-configuration-file.md#abilities) in the [module.json5 configuration file](../quick-start/module-configuration-file.md).
+- Configure the default size and position of the app's main window through the [metadata tag](window-config-m.md#metadata) under the [abilities](../quick-start/module-configuration-file.md#abilities) in the [module.json5 configuration file](../quick-start/module-configuration-file.md).  
 
   The values and their meanings of **name** are described as follows:
 
@@ -156,7 +159,7 @@ The initial position and size of an app window at startup can be set. This is av
 
 After a window is created, you can dynamically adjust its position and size through APIs.
 
-- Adjust the window position: The **moveWindowTo()** APIs can be used to adjust the window position. Currently, multiple move APIs are provided for adjusting the window position in different coordinate system scenarios.
+- Adjust the window position: The **moveWindowTo()** APIs can be used to adjust the window position. Currently, multiple move APIs are provided for adjusting the window position in different coordinate system scenarios.  
 
   > **NOTE**
   > 
@@ -189,13 +192,13 @@ After a window is created, you can dynamically adjust its position and size thro
   Sample
 
   <!-- @[sub_move_resize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+  
   ``` TypeScript
   // EntryAbility.ets
   import { UIAbility } from '@kit.AbilityKit';
   import { window, display } from '@kit.ArkUI';
   import { BusinessError } from '@kit.BasicServicesKit';
-  import hilog from '@ohos.hilog';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
   
   const DOMAIN = 0x0000;
   const TAG = 'Sample_AdjustLayout';
@@ -256,7 +259,7 @@ After a window is created, you can dynamically adjust its position and size thro
 
 Currently, the following two window dragging capabilities are provided.
 
-- You can use [startMoving()](../reference/apis-arkui/arkts-apis-window-Window.md#startmoving14) or [startMoving()](../reference/apis-arkui/arkts-apis-window-Window.md#startmoving15) with an offset parameter to enable window drag movement. After this API is successfully called, the window will follow the mouse or touch point movement.
+- You can use [startMoving()](../reference/apis-arkui/arkts-apis-window-Window.md#startmoving14) or [startMoving()](../reference/apis-arkui/arkts-apis-window-Window.md#startmoving15) with an offset parameter to enable window drag movement. After this API is successfully called, the window will follow the mouse or touch point movement.  
 
   > **NOTE**
   > 
@@ -269,17 +272,16 @@ Currently, the following two window dragging capabilities are provided.
   Applicable scenario:
 
   - When customizing the window title bar, add drag movement capability to the title bar area.
-
   - Implement a custom draggable area for the window.
 
   Sample:
 
   <!-- @[startMoving](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/pages/SubWindowPage.ets) -->
-
+  
   ``` TypeScript
   import { window } from '@kit.ArkUI';
   import { BusinessError } from '@kit.BasicServicesKit';
-  import hilog from '@ohos.hilog';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
   
   const DOMAIN = 0x0000;
   const TAG = 'Sample_AdjustLayout';
@@ -416,12 +418,12 @@ Currently, the following two window dragging capabilities are provided.
   > During drag resizing, the window size is subject to [WindowLimits](../reference/apis-arkui/arkts-apis-window-i.md#windowlimits11) constraints.
 
   <!-- @[enableDrag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   // Index.ets
   import { window } from '@kit.ArkUI';
   import { BusinessError } from '@kit.BasicServicesKit';
-  import hilog from '@ohos.hilog';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
   
   const DOMAIN = 0x0000;
   const TAG = 'IndexPage';

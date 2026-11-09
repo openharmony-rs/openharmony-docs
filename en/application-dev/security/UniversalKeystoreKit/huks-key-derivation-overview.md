@@ -6,12 +6,13 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=fc50c8d990bffee49b4e7ddbe84b245946468e4c translatedAt=2026-11-03T05:39:28.727Z pushedAt=2026-11-03T07:39:04.554Z nl=1 -->
 
-To stretch keys into longer keys or to obtain keys in the required format, you can use the HUKS APIs to derive one or more secrete keys from a key (base key) by using a pseudorandom function.
+In cryptography, a key derivation function (KDF) uses a pseudorandom function to derive one or more keys from a secret value such as a master password.
 
 > **NOTE**<br>
 >
-> * In HUKS, only the keys managed by HUKS can be used for key derivation.  
+> * In HUKS, only the keys managed by HUKS can be used for key derivation.   
 > * Key derivation is not supported<!--RP2--> by mini-system devices<!--RP2End-->.
 > * Using an existing key alias as the alias of the key generated from derivation will overwrite the existing key.
 

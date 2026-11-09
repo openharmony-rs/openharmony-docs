@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍ArkTS模块化运行的原理和加载流程，涵盖ECMAScript模块规范和CommonJS模块规范，支持ets/ts/js/json/Native模块的加载、解析和执行。"
 keywords: [ArkTS, 模块化, 运行原理, 模块加载, ECMAScript模块, CommonJS模块, 动态加载, 延迟加载, 模块图]
 doctype: guide

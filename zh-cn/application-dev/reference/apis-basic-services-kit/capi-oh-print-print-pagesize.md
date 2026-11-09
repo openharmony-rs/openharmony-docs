@@ -16,7 +16,7 @@ Print_PageSize用于表示打印任务中的纸张尺寸信息，包含纸张ID�
 
 **起始版本：** 12
 
-**相关模块：** [OH_Print](capi-oh-print.md)
+**相关模块：** [Print](capi-oh-print.md)
 
 **所在头文件：** [ohprint.h](capi-ohprint-h.md)
 

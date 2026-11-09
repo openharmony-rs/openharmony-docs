@@ -1,12 +1,11 @@
 # YUV Capture (C/C++)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=45526eba67080b876eb51af31a33be43ae26f701 translatedAt=2026-07-13T13:21:40.484Z pushedAt=2026-07-21T10:35:00.182Z -->
+<!-- md-trans-meta sourceCommit=1e84646d0ce16389ced3427b8686d563fa9a8308 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Starting from API version 23, Camera Kit provides the capability to capture images in YUV format. Compared with regular photo capture, YUV photo capture obtains unencoded image data, fully preserving the raw luminance and chrominance information captured by the sensor, making it suitable for video encoding or professional processing. However, the capture process incurs higher power consumption, and saving the images requires more storage space.
 
@@ -16,14 +15,30 @@ For detailed camera API descriptions, see [OH_Camera](../../reference/apis-camer
 
 1. Import the NDK APIs, which provide camera-related properties and methods. The import method is as follows:
 
-   ```c++
-   // Include the NDK header files.
+   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.h) -->
+   
+   ``` C
    #include <cstdint>
-   #include <cstdlib>
-   #include <cstring>
-   #include <string.h>
-   #include <new>
+   #include <cstdio>
+   #include <fcntl.h>
+   #include <map>
+   #include <string>
+   #include <vector>
+   #include <native_buffer/native_buffer.h>
+   #include "iostream"
+   #include "mutex"
+   
    #include "hilog/log.h"
+   #include "ohcamera/camera.h"
+   #include "ohcamera/camera_input.h"
+   #include "ohcamera/capture_session.h"
+   #include "ohcamera/photo_output.h"
+   #include "ohcamera/preview_output.h"
+   #include "ohcamera/video_output.h"
+   #include "ohcamera/camera_manager.h"
+   #include "common/log_common.h"
+   
+   #include "multimedia/image_framework/image/image_native.h"
    #include "multimedia/image_framework/image/image_source_native.h"
    #include "multimedia/image_framework/image/image_packer_native.h"
    #include "multimedia/media_library/media_access_helper_capi.h"
@@ -31,14 +46,10 @@ For detailed camera API descriptions, see [OH_Camera](../../reference/apis-camer
    #include "multimedia/media_library/media_asset_capi.h"
    #include "multimedia/media_library/media_asset_change_request_capi.h"
    #include "multimedia/media_library/media_asset_manager_capi.h"
-   #include "ohcamera/camera.h"
-   #include "ohcamera/camera_input.h"
-   #include "ohcamera/camera_manager.h"
-   #include "ohcamera/capture_session.h"
+   #include "multimedia/media_library/moving_photo_capi.h"
    #include "ohcamera/photo_native.h"
-   #include "ohcamera/photo_output.h"
-   #include "ohcamera/preview_output.h"
-   #include "ohcamera/video_output.h"
+   #include <window_manager/oh_display_info.h>
+   #include <window_manager/oh_display_manager.h>
    ```
 
 2. Link the relevant dynamic libraries in the CMake script.
@@ -65,20 +76,24 @@ For detailed camera API descriptions, see [OH_Camera](../../reference/apis-camer
 
    Use the [OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithSceneMode()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedfullcameraoutputcapabilitywithscenemode) method to obtain the capabilities of all output streams supported by the current device, including preview streams, photo streams, and video streams. The output streams are in the respective profile fields of `CameraOutputCapability`, where the photo stream supports the YUV format. Different types of output streams need to be added depending on the specified camera device mode [Camera_SceneMode](../../reference/apis-camera-kit/capi-camera-h.md#camera_scenemode).
 
-   ```c++
-   Camera_OutputCapability* GetSupportedFullCameraOutputCapability(Camera_Manager* cameraManager, Camera_Device &camera)
+   <!-- @[get_full_outputCapability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   
+   ``` C++
+   Camera_OutputCapability* NDKCamera::GetSupportedFullCameraOutputCapability(Camera_Manager* cameraManager,
+       Camera_Device &camera)
    {
-        Camera_OutputCapability* cameraOutputCapability = nullptr;
-        // Obtain the output stream capabilities supported by the camera device.
-        const Camera_Profile* previewProfile = nullptr;
-        const Camera_Profile* photoProfile = nullptr;
-        Camera_ErrorCode ret = OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithSceneMode(cameraManager, &camera,
-            Camera_SceneMode::NORMAL_PHOTO, &cameraOutputCapability);
-        if (cameraOutputCapability == nullptr || ret != CAMERA_OK) {
-            OH_LOG_ERROR(LOG_APP, "OH_CameraManager_GetSupportedCameraOutputCapability failed.");
-            return nullptr;
-        }
-        return cameraOutputCapability;
+       Camera_OutputCapability* cameraOutputCapability = nullptr;
+       // Obtain the output stream capabilities supported by the camera device.
+       const Camera_Profile* previewProfile = nullptr;
+       const Camera_Profile* photoProfile = nullptr;
+       Camera_ErrorCode ret = OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithSceneMode(cameraManager, &camera,
+           Camera_SceneMode::NORMAL_PHOTO, &cameraOutputCapability);
+       if (cameraOutputCapability == nullptr || ret != CAMERA_OK) {
+           OH_LOG_ERROR(LOG_APP, "OH_CameraManager_GetSupportedCameraOutputCapability failed.");
+           return cameraOutputCapability;
+       }
+       // ...
+       return cameraOutputCapability;
    }
    ```
 
@@ -88,18 +103,25 @@ For detailed camera API descriptions, see [OH_Camera](../../reference/apis-camer
 
    The full output capability `cameraOutputCapability` supported by the camera in a specified mode can be obtained via [OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithSceneMode()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedfullcameraoutputcapabilitywithscenemode). For details, see step 2. From the `photoProfiles` in `cameraOutputCapability`, select a profile that supports the YUV format as the `photoProfile` parameter for creating the photo output stream.
 
-   ```c++
-   Camera_PhotoOutput* CreatePhotoOutput(Camera_Manager* cameraManager, const Camera_Profile* photoProfile)
+   <!-- @[create_photo_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   
+   ``` C++
+   Camera_ErrorCode NDKCamera::CreatePhotoOutputWithoutSurfaceId()
    {
-       Camera_PhotoOutput* photoOutput = nullptr;
+       DRAWING_LOGD("NDKCamera::CreatePhotoOutputWithoutSurfaceId into createWithoutSurfaceID branch!");
+       OH_LOG_INFO(LOG_APP, "CreatePhotoOutputWithoutSurfaceId format: %{public}d!", cameraProfile_->format);
+       OH_LOG_INFO(LOG_APP, "CreatePhotoOutputWithoutSurfaceId width: %{public}d!", cameraProfile_->size.width);
+       OH_LOG_INFO(LOG_APP, "CreatePhotoOutputWithoutSurfaceId height: %{public}d!", cameraProfile_->size.height);
        // Create the photo stream directly without passing a surfaceId.
-       Camera_ErrorCode ret = OH_CameraManager_CreatePhotoOutputWithoutSurface(cameraManager, photoProfile, &photoOutput);
-       if (photoOutput == nullptr || ret != CAMERA_OK) {
-           OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreatePhotoOutputWithoutSurface failed.");
+       ret_ = OH_CameraManager_CreatePhotoOutputWithoutSurface(cameraManager_, cameraProfile_, &photoOutput_);
+       if (photoOutput_ == nullptr || ret_ != CAMERA_OK) {
+           OH_LOG_ERROR(LOG_APP, "CreatePhotoOutputWithoutSurfaceId failed.");
+           return CAMERA_INVALID_ARGUMENT;
        }
-       return photoOutput;
+       PhotoOutputRegisterCallback();
+       return ret_;
    }
-   ```  
+   ```
 
 6. Register the one-shot photo capture (PhotoAvailable) or deferred photo capture (PhotoAssetAvailable) callback. If the app needs to receive images quickly, the [deferred photo capture (PhotoAssetAvailable)](./native-camera-deferred-capture.md) callback is recommended.
 
@@ -110,20 +132,26 @@ For detailed camera API descriptions, see [OH_Camera](../../reference/apis-camer
    - **One-shot photo capture (PhotoAvailable) development**:
 
      - Register the one-shot photo capture callback before the session [OH_CaptureSession_CommitConfig](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig).
-
      - Obtain image information in the one-shot photo capture callback function, parse the pixelMap data, and perform custom service processing.
-
-     - Pass the processed pixelMap to the ArkTS side via the callback for image display or for saving the image to a file through a security component.
-
+     - Pass the processed pixelMap via the callback to the ArkTS side for image display or for saving the image to a file through a security component.
      - Unregister the one-shot photo capture callback after use.
 
-     ```c++
-     // One-shot photo capture callback function.
+     <!-- @[set_photo_single_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->    
+     
+     ``` C++
+     // Callback function for one-shot photo capture.
      void OnPhotoAvailable(Camera_PhotoOutput* photoOutput, OH_PhotoNative* photo)
      {
          OH_LOG_INFO(LOG_APP, "OnPhotoAvailable start!");
+         OH_ImageNative* imageNative;
+         Camera_ErrorCode errCode = OH_PhotoNative_GetMainImage(photo, &imageNative);
+         if (errCode != CAMERA_OK || imageNative == nullptr) {
+             OH_LOG_ERROR(LOG_APP, "OH_PhotoNative_GetMainImage call failed, errorCode: %{public}d", errCode);
+             return;
+         }
+         OH_LOG_INFO(LOG_APP, "OH_PhotoNative_GetMainImage success!");
          OH_PictureNative* picture;
-         Camera_ErrorCode errCode = OH_PhotoNative_GetUncompressedImage(photo, &picture);
+         errCode = OH_PhotoNative_GetUncompressedImage(photo, &picture);
          if (errCode != CAMERA_OK || picture == nullptr) {
              OH_LOG_ERROR(LOG_APP, "OH_PhotoNative_GetUncompressedImage call failed, errorCode: %{public}d", errCode);
              return;
@@ -133,26 +161,29 @@ For detailed camera API descriptions, see [OH_Camera](../../reference/apis-camer
          OH_PixelmapNative* mainPixelmap;
          Image_ErrorCode imageErr = OH_PictureNative_GetMainPixelmap(picture, &mainPixelmap);
          if (imageErr != IMAGE_SUCCESS || mainPixelmap == nullptr) {
-             OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetImageSize call failed, errorCode: %{public}d", imageErr);
+             OH_LOG_ERROR(LOG_APP, "OH_PictureNative_GetMainPixelmap call failed, errorCode: %{public}d", imageErr);
              return;
          }
+         pixelMap = nullptr;
+         pixelMap = mainPixelmap;
          OH_LOG_INFO(LOG_APP, "OH_PictureNative_GetMainPixelmap success");
-         // Obtain the total number of bytes occupied by all pixels in the main image Pixelmap.
+     
          uint32_t byteCount = 0;
+         // Obtain the total number of bytes occupied by all pixels in the main image Pixelmap.
          imageErr = OH_PixelmapNative_GetByteCount(mainPixelmap, &byteCount);
          OH_LOG_INFO(LOG_APP, "OH_PixelmapNative_GetByteCount count:%{public}u", byteCount);
          // Obtain the image pixel information of the main image.
          OH_Pixelmap_ImageInfo* imageInfo;
          imageErr = OH_PixelmapNative_GetImageInfo(mainPixelmap, imageInfo);
          OH_LOG_INFO(LOG_APP, "OH_PixelmapNative_GetImageInfo errorCode:%{public}d", imageErr);
-
-         uint32_t width = 0;
-         uint32_t height = 0;
-         uint32_t rowStride = 0;
+     
+         uint32_t width;
+         uint32_t height;
+         uint32_t rowStride;
          int32_t pixelFormat = PIXEL_FORMAT::PIXEL_FORMAT_UNKNOWN;
          int32_t alphaMode = PIXELMAP_ALPHA_TYPE::PIXELMAP_ALPHA_TYPE_UNKNOWN;
          int32_t alphaType = PIXELMAP_ALPHA_TYPE::PIXELMAP_ALPHA_TYPE_UNKNOWN;
-         // Obtain the width from the main image pixel information.
+         // Obtain the width from the image pixel information of the main image.
          OH_PixelmapImageInfo_GetWidth(imageInfo, &width);
          // Obtain the height from the main image pixel information.
          OH_PixelmapImageInfo_GetHeight(imageInfo, &height);
@@ -160,18 +191,19 @@ For detailed camera API descriptions, see [OH_Camera](../../reference/apis-camer
          OH_PixelmapImageInfo_GetRowStride(imageInfo, &rowStride);
          // Obtain the pixel format from the main image pixel information.
          OH_PixelmapImageInfo_GetPixelFormat(imageInfo, &pixelFormat);
-         // Obtain the alpha channel type from the main image pixel information.
+         // Obtain the alpha mode from the main image pixel information.
          OH_PixelmapImageInfo_GetAlphaMode(imageInfo, &alphaMode);
-         // Obtain the default alpha type from the main image pixel information.
+         // Obtain the alpha type from the main image pixel information.
          OH_PixelmapImageInfo_GetAlphaType(imageInfo, &alphaType);
-         OH_LOG_INFO(LOG_APP, "OH_PixelmapNative_GetImageInfo width:%{public}u height:%{public}u rowStride:%{public}u pixelFormat:%{public}d alphaMode:%{public}d alphaType:%{public}d", width, height, rowStride, pixelFormat, alphaMode, alphaType);
+         OH_LOG_INFO(LOG_APP, "OH_PixelmapNative_GetImageInfo w: %{public}d, h: %{public}d,"
+             "rowStride: %{public}d, pixelFormat: %{public}d, alphaMode: %{public}d, alphaType:"
+             "%{public}d", width, height, rowStride, pixelFormat, alphaMode, alphaType);
         // Release resources.
-         OH_PixelmapNative_Release(mainPixelmap);
          OH_PictureNative_Release(picture);
      }
-
+     
      // Register the one-shot photo capture callback.
-     Camera_ErrorCode PhotoOutputRegisterPhotoAvailableCallback(Camera_PhotoOutput* photoOutput)
+     Camera_ErrorCode NDKCamera::PhotoOutputRegisterPhotoAvailableCallback(Camera_PhotoOutput* photoOutput)
      {
          OH_LOG_INFO(LOG_APP, "PhotoOutputRegisterPhotoAvailableCallback start!");
          Camera_ErrorCode ret = OH_PhotoOutput_RegisterPhotoAvailableCallback(photoOutput, OnPhotoAvailable);
@@ -181,9 +213,9 @@ For detailed camera API descriptions, see [OH_Camera](../../reference/apis-camer
          OH_LOG_INFO(LOG_APP, "PhotoOutputRegisterPhotoAvailableCallback return with ret code: %{public}d!", ret);
          return ret;
      }
-
+     
      // Unregister the one-shot photo capture callback.
-     Camera_ErrorCode PhotoOutputUnRegisterPhotoAvailableCallback(Camera_PhotoOutput* photoOutput)
+     Camera_ErrorCode NDKCamera::PhotoOutputUnRegisterPhotoAvailableCallback(Camera_PhotoOutput* photoOutput)
      {
          OH_LOG_INFO(LOG_APP, "PhotoOutputUnRegisterPhotoAvailableCallback start!");
          Camera_ErrorCode ret = OH_PhotoOutput_UnregisterPhotoAvailableCallback(photoOutput, OnPhotoAvailable);
@@ -195,35 +227,35 @@ For detailed camera API descriptions, see [OH_Camera](../../reference/apis-camer
      }
      ```
 
-   - **Deferred photo capture (PhotoAvailable) development**:
+   - **Deferred photo capture (PhotoAssetAvailable) development process**:
 
      - Register the deferred photo capture callback before the session [OH_CaptureSession_CommitConfig](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig).
-
      - In the deferred photo capture callback function, obtain the image information, parse the pixelMap data, and perform custom service processing.
-
      - Pass the processed pixelMap via the callback to the ArkTS side for image display or for saving the image to a file through a security component.
-
      - After calling [OH_PhotoOutput_Capture](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_capture) to take a photo, promptly call [OH_MediaAssetChangeRequest_SaveCameraPhoto](../../reference/apis-media-library-kit/capi-media-asset-change-request-capi-h.md#oh_mediaassetchangerequest_savecameraphoto) to save the image or [OH_MediaAssetChangeRequest_DiscardCameraPhoto](../../reference/apis-media-library-kit/capi-media-asset-change-request-capi-h.md#oh_mediaassetchangerequest_discardcameraphoto) to discard it. Otherwise, subsequent photo capture will be affected.
-
      - Unregister the deferred photo capture callback function after use.
 
-     ```c++
-     // Declare the quick image return callback.
-     void OnRequestQuickImageDataPreparedWithDetails(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type, OH_ImageSourceNative* imageSourceNative, OH_PictureNative* pictureNative)
+     <!-- @[set_photo_double_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
+     
+     ``` C++
+     // Declare the quick return photo callback.
+     void OnRequestQuickImageDataPreparedWithDetails(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId,
+         MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type, OH_ImageSourceNative* imageSourceNative,
+         OH_PictureNative* pictureNative)
      {
          OH_LOG_INFO(LOG_APP, "OnRequestQuickImageDataPreparedWithDetails start!");
          if (!pictureNative && !imageSourceNative) {
-             OH_LOG_ERROR(LOG_APP, "OnRequestQuickImageDataPreparedWithDetails, pictureNative and imageSourceNative are null.");
+             OH_LOG_ERROR(LOG_APP, "pictureNative and imageSourceNative are null.");
              return;
          } else if (!pictureNative && imageSourceNative) {
              OH_LOG_ERROR(LOG_APP, "OnRequestQuickImageDataPreparedWithDetails, pictureNative is null.");
          } else if (pictureNative && !imageSourceNative) {
              OH_LOG_ERROR(LOG_APP, "OnRequestQuickImageDataPreparedWithDetails, imageSourceNative is null.");
          } else {
-             OH_LOG_INFO(LOG_APP, "OnRequestQuickImageDataPreparedWithDetails, pictureNative and imageSourceNative are not null.");
+             OH_LOG_INFO(LOG_APP, "pictureNative and imageSourceNative are not null.");
          }
      }
-
+     
      // Deferred photo capture callback function.
      void OnPhotoAssetAvailable(Camera_PhotoOutput* photoOutput, OH_MediaAsset* mediaAsset)
      {
@@ -232,25 +264,17 @@ For detailed camera API descriptions, see [OH_Camera](../../reference/apis-camer
              OH_LOG_ERROR(LOG_APP, "OnPhotoAssetAvailable invalid error, mediaAsset is null.");
              return;
          }
-         // Obtain the URI information from mediaAsset.
-         const char* uri = nullptr;
-         MediaLibrary_ErrorCode result = OH_MediaAsset_GetUri(mediaAsset, &uri);
-         if (uri == nullptr || result != MEDIA_LIBRARY_OK) {
-             OH_LOG_ERROR(LOG_APP, "OnPhotoAssetAvailable failed to get uri.");
-         }
-         // Obtain the displayName information from mediaAsset.
-         const char* displayName = nullptr;
-         result = OH_MediaAsset_GetDisplayName(mediaAsset, &displayName);
-         if (displayName == nullptr || result != MEDIA_LIBRARY_OK) {
-             OH_LOG_ERROR(LOG_APP, "OnPhotoAssetAvailable failed to get displayName.");
-         }
-         // Create a media asset management object.
+         // Attempt to obtain the URI information from mediaAsset.
+         NDKCamera::MediaAssetGetUri(mediaAsset);
+         // Attempt to obtain the displayName information from mediaAsset.
+         NDKCamera::MediaAssetGetDisplayName(mediaAsset);
+         // Create a media asset manager object.
          OH_MediaAssetManager* mediaAssetManager = OH_MediaAssetManager_Create();
          if (mediaAssetManager == nullptr) {
              OH_LOG_ERROR(LOG_APP, "OnPhotoAssetAvailable failed to create mediaAssetManager.");
              return;
          }
-
+     
          // Create a media asset change request.
          OH_MediaAssetChangeRequest* changeRequest = OH_MediaAssetChangeRequest_Create(mediaAsset);
          if (changeRequest == nullptr) {
@@ -260,12 +284,14 @@ For detailed camera API descriptions, see [OH_Camera](../../reference/apis-camer
          MediaLibrary_RequestOptions requestOptions;
          requestOptions.deliveryMode = MEDIA_LIBRARY_BALANCED_MODE;
          MediaLibrary_RequestId requestId;
-         result = OH_MediaAssetManager_QuickRequestImage(mediaAssetManager, mediaAsset, requestOptions, &requestId, OnRequestQuickImageDataPreparedWithDetails);
+         result = OH_MediaAssetManager_QuickRequestImage(mediaAssetManager, mediaAsset, requestOptions, &requestId,
+             OnRequestQuickImageDataPreparedWithDetails);
          if (result != MEDIA_LIBRARY_OK) {
              OH_LOG_ERROR(LOG_APP, "OnPhotoAssetAvailable failed to quick image.");
          }
-         // Create a media asset save change request.
-         result = OH_MediaAssetChangeRequest_SaveCameraPhoto(changeRequest, MediaLibrary_ImageFileType::MEDIA_LIBRARY_IMAGE_JPEG);
+         // Create the media asset save change request.
+         result = OH_MediaAssetChangeRequest_SaveCameraPhoto(changeRequest,
+             MediaLibrary_ImageFileType::MEDIA_LIBRARY_IMAGE_JPEG);
          if (result != MEDIA_LIBRARY_OK) {
              OH_LOG_ERROR(LOG_APP, "OnPhotoAssetAvailable failed to save camera photo.");
          }
@@ -274,9 +300,9 @@ For detailed camera API descriptions, see [OH_Camera](../../reference/apis-camer
              OH_LOG_ERROR(LOG_APP, "OnPhotoAssetAvailable failed to apply changes.");
          }
      }
-
+     
      // Register the deferred photo capture callback function.
-     Camera_ErrorCode RegisterPhotoAssetAvailable(Camera_PhotoOutput* photoOutput)
+     Camera_ErrorCode NDKCamera::RegisterPhotoAssetAvailable(Camera_PhotoOutput* photoOutput)
      {
          Camera_ErrorCode ret = OH_PhotoOutput_RegisterPhotoAssetAvailableCallback(photoOutput, OnPhotoAssetAvailable);
          if (ret != CAMERA_OK) {
@@ -285,7 +311,7 @@ For detailed camera API descriptions, see [OH_Camera](../../reference/apis-camer
          return ret;
      }
      // Unregister the deferred photo capture callback function.
-     Camera_ErrorCode UnregisterPhotoAssetAvailable(Camera_PhotoOutput* photoOutput)
+     Camera_ErrorCode NDKCamera::UnregisterPhotoAssetAvailable(Camera_PhotoOutput* photoOutput)
      {
          Camera_ErrorCode ret = OH_PhotoOutput_UnregisterPhotoAssetAvailableCallback(photoOutput, OnPhotoAssetAvailable);
          if (ret != CAMERA_OK) {
@@ -301,15 +327,27 @@ For detailed camera API descriptions, see [OH_Camera](../../reference/apis-camer
 
    Execute the photo capture task via the [OH_PhotoOutput_Capture()](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_capture) method.
 
-   ```c++
-   Camera_ErrorCode Capture(Camera_PhotoOutput* photoOutput)
+   <!-- @[take_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   
+   ``` C++
+   Camera_ErrorCode NDKCamera::TakePicture(int32_t degree)
    {
-       Camera_ErrorCode ret = OH_PhotoOutput_Capture(photoOutput);
-       if (ret == CAMERA_OK) {
-           OH_LOG_INFO(LOG_APP, "OH_PhotoOutput_Capture success ");
-       } else {
-           OH_LOG_ERROR(LOG_APP, "OH_PhotoOutput_Capture failed. %d ", ret);
-       }
+       Camera_ErrorCode ret = CAMERA_OK;
+       Camera_ImageRotation imageRotation;
+       bool isMirSupported;
+       OH_PhotoOutput_IsMirrorSupported(photoOutput_, &isMirSupported);
+       OH_PhotoOutput_GetPhotoRotation(photoOutput_, degree, &imageRotation);
+       imageRotation = Camera_ImageRotation::CAMERA_IMAGE_ROTATION_0;
+   
+       Camera_PhotoCaptureSetting curPhotoSetting = {
+           quality : QUALITY_LEVEL_HIGH,
+           rotation : imageRotation,
+           mirror : isMirSupported
+       };
+       ret = OH_PhotoOutput_Capture_WithCaptureSetting(photoOutput_, curPhotoSetting);
+       OH_LOG_INFO(LOG_APP, "TakePicture get quality %{public}d, rotation %{public}d, mirror %{public}d",
+           curPhotoSetting.quality, curPhotoSetting.rotation, curPhotoSetting.mirror);
+       OH_LOG_INFO(LOG_APP, "TakePicture ret = %{public}d.", ret);
        return ret;
    }
    ```
@@ -320,21 +358,26 @@ During camera app development, the photo output stream status can be monitored a
 
 - The result of photo capture start can be obtained by registering the fixed `onFrameStart` callback function to listen for the event when `photoOutput` is created successfully. This callback is triggered upon the first exposure of a photo.
 
-  ```c++
-  void PhotoOutputOnFrameStart(Camera_PhotoOutput* photoOutput)
+  <!-- @[photo_output_start_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  
+  ``` C++
+  void PhotoOutputOnFrameStart(Camera_PhotoOutput *photoOutput)
   {
       OH_LOG_INFO(LOG_APP, "PhotoOutputOnFrameStart");
   }
-  void PhotoOutputOnFrameShutter(Camera_PhotoOutput* photoOutput, Camera_FrameShutterInfo* info)
+  
+  void PhotoOutputOnFrameShutter(Camera_PhotoOutput *photoOutput, Camera_FrameShutterInfo *info)
   {
       OH_LOG_INFO(LOG_APP, "PhotoOutputOnFrameShutter");
   }
   ```
 
 - The result of photo capture end can be listened for by registering the fixed `onFrameEnd` callback function when `photoOutput` is created successfully.
-
-  ```c++
-  void PhotoOutputOnFrameEnd(Camera_PhotoOutput* photoOutput, int32_t frameCount)
+  
+  <!-- @[photo_output_end_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  
+  ``` C++
+  void PhotoOutputOnFrameEnd(Camera_PhotoOutput *photoOutput, int32_t frameCount)
   {
       OH_LOG_INFO(LOG_APP, "PhotoOutput frameCount = %{public}d", frameCount);
   }
@@ -342,14 +385,16 @@ During camera app development, the photo output stream status can be monitored a
 
 - The result of whether the next photo can be captured can be listened for by registering the `captureReady` callback function when `photoOutput` is created successfully. This callback is triggered when the next photo is ready for capture, and the event returns information about the readiness of the next photo.
 
-  ```c++
-  static bool g_captureReadyFlag = false;
-  void CaptureReadyCb(Camera_PhotoOutput* photoOutput) {
-    g_captureReadyFlag = true;
-    OH_LOG_INFO(LOG_APP, "PhotoOutputOnCaptureReady captureReadyFlag = %{public}d", g_captureReadyFlag);
+  <!-- @[capture_ready_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  
+  ``` C++
+  void CaptureReadyCb(Camera_PhotoOutput* photoOutput)
+  {
+      g_captureReadyFlag = true;
+      OH_LOG_INFO(LOG_APP, "PhotoOutputOnCaptureReady captureReadyFlag = %{public}d", g_captureReadyFlag);
   }
-
-  void OnPhotoOutputOnCaptureReady(Camera_PhotoOutput* photoOutput)
+  
+  void NDKCamera::RegisterCaptureReadyCallback(Camera_PhotoOutput* photoOutput)
   {
       OH_LOG_INFO(LOG_APP, "PhotoOutputOnCaptureReady");
       Camera_ErrorCode ret = OH_PhotoOutput_RegisterCaptureReadyCallback(photoOutput, CaptureReadyCb);
@@ -358,30 +403,11 @@ During camera app development, the photo output stream status can be monitored a
 
 - You can listen for error results of the photo output stream by registering a fixed `onError` callback function. The callback returns the corresponding error code when the photo output API encounters an error. For details about the error codes, see [Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode).
 
-  ```c++
-  void PhotoOutputOnError(Camera_PhotoOutput* photoOutput, Camera_ErrorCode errorCode)
+  <!-- @[photo_output_error_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  
+  ``` C++
+  void PhotoOutputOnError(Camera_PhotoOutput *photoOutput, Camera_ErrorCode errorCode)
   {
       OH_LOG_INFO(LOG_APP, "PhotoOutput errorCode = %{public}d", errorCode);
-  }
-  ```
-
-  ```c++
-  PhotoOutput_Callbacks* GetPhotoOutputListener()
-  {
-      static PhotoOutput_Callbacks photoOutputListener = {
-          .onFrameStart = PhotoOutputOnFrameStart,
-          .onFrameShutter = PhotoOutputOnFrameShutter,
-          .onFrameEnd = PhotoOutputOnFrameEnd,
-          .onError = PhotoOutputOnError
-      };
-      return &photoOutputListener;
-  }
-  Camera_ErrorCode RegisterPhotoOutputCallback(Camera_PhotoOutput* photoOutput)
-  {
-      Camera_ErrorCode ret = OH_PhotoOutput_RegisterCallback(photoOutput, GetPhotoOutputListener());
-      if (ret != CAMERA_OK) {
-          OH_LOG_ERROR(LOG_APP, "OH_PhotoOutput_RegisterCallback failed.");
-      }
-      return ret;
   }
   ```

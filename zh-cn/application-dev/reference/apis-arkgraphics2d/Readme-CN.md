@@ -4,7 +4,7 @@
 <!--Subsystem: Graphic-->
 <!--Owner: @hangmengxin; @oh_wangxk-->
 <!--Designer: @wanyanglan; @KejiePeng-->
-<!--Tester: @nobuggers; @LiTongguan2026-->
+<!--Tester: @nobuggers; @yhl0101; @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 
 - ArkTS API<!--arkgraphics-arkts-->
@@ -162,6 +162,7 @@
     - [Rect](capi-nativewindow-rect.md)
     - [OHHDRMetaData](capi-nativewindow-ohhdrmetadata.md)
     - [OHExtDataHandle](capi-nativewindow-ohextdatahandle.md)
+    - [OH_NativeWindow_ScreenInfoRect](capi-nativewindow-oh-nativewindow-screeninforect.md)
     - [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)
     - [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md)
     - [NativePixelMap_](capi-drawing-nativepixelmap-.md)

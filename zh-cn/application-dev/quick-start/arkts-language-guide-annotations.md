@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍ArkTS注解特性的声明与使用方法，涵盖自定义注解、注解导入导出、.d.ets文件中的注解、重复注解与继承及源码态注解等内容。"
+keywords: [ArkTS, 注解, Annotation, 自定义注解, 注解导入导出, 源码态注解, .d.ets, 重复注解]
+doctype: guide
+status: active
+---
+
 # 注解
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

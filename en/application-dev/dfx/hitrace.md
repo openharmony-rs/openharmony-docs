@@ -6,15 +6,17 @@
 <!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=9b41559870778475344764be8fd1231b5e38dd06 translatedAt=2026-07-30T03:06:22.164Z pushedAt=2026-07-30T08:50:23.581Z -->
+<!-- md-trans-meta sourceCommit=9b41559870778475344764be8fd1231b5e38dd06 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 The hitrace command-line tool provides trace information capture capabilities, supporting the collection of trace points provided by the system and trace points set by developers in apps using the [HiTraceMeter API](hitracemeter-intro.md). This tool supports multiple methods for capturing trace information in text format or binary format, helping you observe program running status and locate faults.
+
 
 ## Environment Requirements
 
 - The environment for OpenHarmony Device Connector (hdc) has been set up. For details, see [Environment Setup](hdc.md#environment-setup).
 
 - The devices are properly connected and **hdc shell** is executed.
+
 
 ## Command Description
 
@@ -48,15 +50,19 @@ The hitrace command-line tool provides trace information capture capabilities, s
 >
 > Trace information can be saved in text or binary format. The trace information in text format can be viewed using a text editor, and the trace information in binary format can be analyzed using the [Smartperf_Host](https://gitcode.com/openharmony/developtools_smartperf_host). You can download the tool from [developtools_smartperf_host Release](https://gitcode.com/openharmony/developtools_smartperf_host/releases).
 
+
 ## Examples
 
 ### Querying Help Information
+
 
 ```shell
 hitrace -h
 ```
 
+
 **Example**
+
 
 ```shell
 $ hitrace -h
@@ -100,6 +106,7 @@ options include:
   --get_level            Query the system parameter "persist.hitrace.level.threshold",
                          which can control the level threshold of tracing.
 ```
+
 
 ### Displaying the Tag List in hitrace
 
@@ -203,6 +210,7 @@ $ hitrace -l
 ......
 ```
 
+
 ### Capturing Text Trace Data of a Specified Duration
 
 If the **-o** parameter is not specified, the captured trace content is displayed in the CLI by default. The following command is used to collect data for 10 seconds, with the buffer size set to **204800** KB and the tag to **app**.
@@ -212,6 +220,7 @@ hitrace -t 10 -b 204800 app
 ```
 
 **Example**
+
 
 ```shell
 $ hitrace -t 10 -b 204800 app
@@ -233,13 +242,17 @@ $ hitrace -t 10 -b 204800 app
 2025/06/04 10:15:02 TraceFinish done.
 ```
 
+
 Specify the **-o** option to save trace information to a specified directory. You are advised to save it to the **/data/local/tmp** directory.
+
 
 ```shell
 hitrace -t 10 -b 204800 app -o /data/local/tmp/test.ftrace
 ```
 
+
 **Example**
+
 
 ```shell
 $ hitrace -t 10 -b 204800 app -o /data/local/tmp/test.ftrace
@@ -249,6 +262,7 @@ $ hitrace -t 10 -b 204800 app -o /data/local/tmp/test.ftrace
 2025/06/04 10:19:57 TraceFinish done.
 ```
 
+
 ### Capturing Binary Trace Data of a Specified Duration
 
 When the command carries the **--raw** parameter, it can capture trace in binary format. When capturing trace in binary format, specifying a path is not supported, and the trace is fixedly saved under the path **/data/log/hitrace**. After the capture is complete, the absolute path of the generated file is displayed in the command-line window.
@@ -257,7 +271,9 @@ When the command carries the **--raw** parameter, it can capture trace in binary
 hitrace -t 10 -b 204800 app --raw
 ```
 
+
 **Example**
+
 
 ```shell
 $ hitrace -t 10 -b 204800 app --raw
@@ -267,6 +283,7 @@ $ hitrace -t 10 -b 204800 app --raw
 2025/06/04 10:21:27 capture done, output files:
     /data/log/hitrace/record_trace_20250604102116@590322-695861087.sys
 ```
+
 
 ### Capturing Text Trace Data in Snapshot Mode
 
@@ -391,21 +408,28 @@ To stop the collection, run any of the following commands:
     2025/06/04 16:26:11 end capture trace.
     ```
 
+
 ### Capturing Binary Trace Data in Snapshot Mode
 
+
 When binary trace data is captured in snapshot mode, **tag** cannot be specified. By default, the following tags are collected:
+
 
 ```shell
 "net", "dsched", "graphic", "multimodalinput", "dinput", "ark", "ace", "window","zaudio", "daudio", "zmedia", "dcamera", "zcamera", "dhfwk", "app", "gresource", "ability", "power", "samgr", "ffrt", "nweb", "hdf", "virse", "workq", "ipa", "sched", "freq", "disk", "sync", "binder", "mmc", "membus", "load"
 ```
 
+
 Run the following command to start capturing binary trace data:
+
 
 ```shell
 hitrace --start_bgsrv
 ```
 
+
 **Example**
+
 
 ```shell
 $ hitrace --start_bgsrv
@@ -413,16 +437,18 @@ $ hitrace --start_bgsrv
 2025/06/04 16:44:54 OpenSnapshot done.
 ```
 
+
 Use the following command to export the trace information in the current buffer to a file. Binary format trace supports specifying a path (currently only supports setting the path to **/data/local/tmp**) for export or displaying in the command-line window.
+
 
 ```shell
 hitrace --dump_bgsrv
 ```
 
+
 **Example 1**:
 
 The standard snapshot mode command without specifying a path is as follows:
-
 ```shell
 $ hitrace --dump_bgsrv
 2025/06/04 16:50:34 hitrace enter, running_state is SNAPSHOT_DUMP
@@ -433,7 +459,6 @@ $ hitrace --dump_bgsrv
 **Example 2**:
 
 Starting from API version 24, snapshot mode supports specifying a path, for example:
-
 ```shell
 $ hitrace --dump_bgsrv -o /data/local/tmp/test.sys
 2025/06/04 16:50:34 hitrace enter, running_state is SNAPSHOT_DUMP
@@ -443,17 +468,21 @@ $ hitrace --dump_bgsrv -o /data/local/tmp/test.sys
 
 Run the following command to stop the collection:
 
+
 ```shell
 hitrace --stop_bgsrv
 ```
 
+
 **Example**
+
 
 ```shell
 $ hitrace --stop_bgsrv
 2025/06/04 16:52:51 hitrace enter, running_state is SNAPSHOT_STOP
 2025/06/04 16:52:52 CloseSnapshot done.
 ```
+
 
 ### Capturing Trace Data in Record Mode
 
@@ -468,7 +497,6 @@ hitrace --trace_begin --record -b 204800 --file_size 102400 app graphic
 **Example 1**:
 
 The recording mode without specifying a path is as follows:
-
 ```shell
 $ hitrace --trace_begin --record -b 204800 --file_size 102400 app graphic
 2025/06/04 17:03:37 hitrace enter, running_state is RECORDING_LONG_BEGIN_RECORD
@@ -479,7 +507,6 @@ $ hitrace --trace_begin --record -b 204800 --file_size 102400 app graphic
 **Example 2**:
 
 Starting from API version 24, recording mode supports specifying a path, for example:
-
 ```shell
 $ hitrace --trace_begin --record sched app -o /data/local/tmp --total_size 1024000
 2025/06/04 17:03:37 hitrace enter, running_state is RECORDING_LONG_BEGIN_RECORD
@@ -487,13 +514,17 @@ $ hitrace --trace_begin --record sched app -o /data/local/tmp --total_size 10240
 2025/06/04 17:03:37 trace capturing.
 ```
 
+
 After the collection is complete, run the following command to stop the collection. The absolute path of the generated file is displayed in the CLI.
+
 
 ```shell
 hitrace --trace_finish --record
 ```
 
+
 **Example**
+
 
 ```shell
 $ hitrace --trace_finish --record
@@ -503,6 +534,7 @@ $ hitrace --trace_finish --record
     /data/log/hitrace/record_trace_20250604170423@614508-554071886.sys
     /data/log/hitrace/record_trace_20250604170552@614597-598551039.sys
 ```
+
 
 ### Compressing Trace Data
 
@@ -519,6 +551,7 @@ $ hitrace -z -b 102400 -t 10 sched freq idle disk -o /data/local/tmp/test.ftrace
 2024/11/14 12:00:29 trace read done, output: /data/local/tmp/test.ftrace
 2024/11/14 12:00:29 TraceFinish done.
 ```
+
 
 ### Setting and Querying the Trace Level Threshold
 
@@ -545,8 +578,8 @@ $ hitrace --get_level
 2025/08/16 10:34:29 the current trace level threshold is Info
 ```
 
-<!--Del-->
 
+<!--Del-->
 ### Configuring Boot Trace
 
 Boot trace is used to capture trace data during the early stage of system boot (when manual intervention is difficult). After you run `hitrace --boot_trace` to write the capture configuration, the system automatically starts the capture task through init during subsequent boot processes and saves the binary trace file to the `/data/local/tmp/` directory.
@@ -567,7 +600,7 @@ The following prerequisites must be met to use boot trace, which can be queried 
 The command format is as follows:
 
 ```shell
-hitrace --boot_trace [parameter] tag1 [tag2 ...]
+hitrace --boot_trace [options] tag1 [tag2 ...]
 hitrace --boot_trace off
 ```
 
@@ -608,14 +641,12 @@ $ hitrace --boot_trace off
 The recommended operation procedure is as follows:
 
 1. Enter the device shell through `hdc shell` and switch to root permissions.
-
 2. Run `hitrace --boot_trace [parameters] tag...` to write the boot trace configuration.
-
 3. Restart the device and check whether the expected trace file is generated in the `/data/local/tmp/` directory. It is recommended to wait for the configured capture duration before checking to ensure that capture and disk writing are complete.
-
 4. After use, run `hitrace --boot_trace off` to disable the boot trace feature.
 
 <!--DelEnd-->
+
 
 ## Trace File Names
 
@@ -632,7 +663,9 @@ $ hitrace --dump_bgsrv
     /data/log/hitrace/trace_20250701215441@6016-653165227.sys
 ```
 
+
 ## FAQs
+
 
 ### What should I do if error code 1 is displayed after the hitrace command is executed?
 
@@ -650,6 +683,7 @@ $ hitrace --dump_bgsrv
 
 Error code 1 indicates that the HiView process is abnormal. You can restart the mobile phone and collect data again.
 
+
 ### What should I do if the error message "not support category on this device" is displayed after the hitrace command is executed?
 
 **Symptom**
@@ -665,6 +699,7 @@ $ hitrace -t 10 aaa
 **Possible Causes and Solution**
 
 The tag specified in the command does not exist. You are advised to run the **hitrace -l** command to view the supported tags.
+
 
 ### What should I do if error code 1004 is displayed after the hitrace command is executed?
 
@@ -687,21 +722,21 @@ $ hitrace --dump_bgsrv
 2. When the disk space is full, no new trace file is generated. You are advised to release the disk space and ensure that the available space is greater than 500 MB. Then collect the trace data again.
 
 ### Error "illegal path" After Executing the hitrace Command
-
-**Symptom Description**
-
-An error occurs after the hitrace command is executed, and "illegal path" is displayed in the command-line window.
-
+ 
+ **Symptom Description**
+ 
+ An error occurs after the hitrace command is executed, and "illegal path" is displayed in the command-line window.
+ 
 ```shell
 $ hitrace --dump_bgsrv -o /data/local/test
 2026/03/27 17:25:58 hitrace enter, running_state is SNAPSHOT_DUMP
 2026/03/27 17:25:58 error: illegal path
 ```
 
-**Possible Causes and Solution**
-
-"illegal path" indicates that the specified path is invalid. Possible causes include:
-
-1. When capturing trace in binary format, the output file path specified by the **-o** parameter is not **/data/local/tmp** or its subdirectory. Change it to **/data/local/tmp** or its subdirectory.
-
-2. In recording mode, the output file path specified by the **-o** parameter is not **/data/local/tmp** or its subdirectory. Change it to **/data/local/tmp** or its subdirectory.
+ **Possible Causes and Solution**
+ 
+ "illegal path" indicates that the specified path is invalid. Possible causes include:
+ 
+ 1. When capturing trace in binary format, the output file path specified by the **-o** parameter is not **/data/local/tmp** or its subdirectory. Change it to **/data/local/tmp** or its subdirectory.
+ 
+ 2. In recording mode, the output file path specified by the **-o** parameter is not **/data/local/tmp** or its subdirectory. Change it to **/data/local/tmp** or its subdirectory.

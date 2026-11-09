@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D"]
+description: "Describes how NativeFence uses fenceFd to synchronize GPU and CPU memory access, including blocking waits, indefinite waits, closing, and validity checks in C/C++ graphics applications."
+keywords: [NativeFence, fenceFd, memory access synchronization, GPU and CPU synchronization, blocking wait, synchronization signal, shared memory]
+doctype: guide
+status: active
+---
+
 # GPU/CPU Memory Access Sync (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
@@ -5,7 +13,8 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=094ced2c1714888f81b48ee277d1e52615f35dc2 translatedAt=2026-10-19T01:27:35.443Z pushedAt=2026-10-19T10:02:05.419Z -->
+<!-- md-trans-meta sourceCommit=f6a29bb7b5e04ec485b4b13e6a2eda953b1edd57 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 ## Overview
 

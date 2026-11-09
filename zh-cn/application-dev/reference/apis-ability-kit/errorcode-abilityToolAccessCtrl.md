@@ -7,7 +7,7 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
-安全访问围栏服务模块提供了CLI工具执行认证ticket的获取能力，适用于需要获取CLI工具执行凭据的场景。
+安全访问围栏服务模块提供了CLI工具执行认证ticket的获取能力，以及应用控制权限的查询与请求能力，适用于需要获取CLI工具执行凭据或管控应用控制权限的场景。
 
 > **说明：**
 >
@@ -28,6 +28,9 @@ Invalid Parameter. Error message: messageInfo.
 1. CLI命令名称或子命令名称为空。
 2. ticketExpireTimeMs超过60秒（60000毫秒）。
 3. cliCmdInfos列表为空或长度超过300。
+4. appInfo列表为空。
+5. bundleName取值非法。
+6. context参数无效（仅[requestControlAppPermissionFromUser()](js-apis-abilityToolAccessCtrl.md#abilitytoolaccessctrlrequestcontrolapppermissionfromuser)接口）。
 
 **处理步骤**
 

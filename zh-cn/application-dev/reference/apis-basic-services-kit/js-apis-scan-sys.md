@@ -41,7 +41,7 @@ addScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt;vo
 
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。resolve表示接口调用成功，reject表示接口调用失败。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -55,8 +55,7 @@ addScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt;vo
 **示例：**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 // uniqueId可通过getAddedScanners()获取已添加扫描仪的唯一ID，或从scan.on('scanDeviceAdd')事件回调中获得
 let uniqueId: string = 'unique_scanner_001';
@@ -91,7 +90,7 @@ deleteScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt
 
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。resolve表示接口调用成功，reject表示接口调用失败。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -105,8 +104,7 @@ deleteScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt
 **示例：**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 // uniqueId可通过getAddedScanners()获取已添加扫描仪的唯一ID，或从scan.on('scanDeviceAdd')事件回调中获得
 let uniqueId: string = 'unique_scanner_001';
@@ -148,8 +146,7 @@ getAddedScanners(): Promise&lt;ScannerDevice[]&gt;
 **示例：**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 scan.getAddedScanners().then((scanners: scan.ScannerDevice[]) => {
     console.info('get added scanners success: ' + JSON.stringify(scanners));

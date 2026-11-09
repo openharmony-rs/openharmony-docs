@@ -57,10 +57,9 @@
 
 3. 在"CMakeLists.txt"文件中，添加源文件和动态库。
 
-   ```cmake
-   add_library(entry SHARED napi_init.cpp)
-   # 新增动态库依赖libhiappevent_ndk.z.so和libhilog_ndk.z.so(日志输出)
-   target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
+   <!-- @[eventsub_cmake_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/CMakeLists.txt) -->
+   
+   ``` cmake
    set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
    set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
    # 检查是否存在entry/build目录
@@ -68,7 +67,10 @@
    # 解压jsoncpp-1.9.6.tar.gz到entry/build，得到jsoncpp头文件的目录
    execute_process(COMMAND tar -xzf ${GZ_FILE} -C ${DEST_DIR}
        WORKING_DIRECTORY ${DEST_DIR})
-
+   
+   add_library(entry SHARED napi_init.cpp)
+   # 新增动态库依赖libhiappevent_ndk.z.so和libhilog_ndk.z.so(日志输出)
+   target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
    # 新增三方库依赖libjsoncpp.so(解析订阅事件中的json字符串)
    target_link_libraries(entry PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/${OHOS_ARCH}/lib/libjsoncpp.so)
    target_include_directories(entry PRIVATE ${DEST_DIR}/jsoncpp-1.9.6/include/json)
@@ -401,9 +403,9 @@
 
 ### 验证观察者是否订阅到崩溃事件
 
-从API版本26.2.0开始，若应用已经使能固定在重新启动之后收到事件回调，HiAppEvent会在应用重启后，将崩溃事件上报给已注册的监听并完成回调。
+从API版本26.1.0开始，若应用已经使能固定在重新启动之后收到事件回调，HiAppEvent会在应用重启后，将崩溃事件上报给已注册的监听并完成回调。
 
-在API版本26.2.0之前或应用未使能固定在应用重启后收到事件回调，事件回调将遵循“尽快送达”原则：
+在API版本26.1.0之前或应用未使能固定在应用重启后收到事件回调，事件回调将遵循“尽快送达”原则：
 
 - 故障日志生成后，一旦满足回调时机，立即执行回调；
 - 未能及时送达的事件回调，将保留至应用下次重启后再行送达。

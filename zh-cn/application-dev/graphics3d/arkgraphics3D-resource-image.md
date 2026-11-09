@@ -1,9 +1,17 @@
+---
+kits: ["ArkGraphics 3D / 方舟3D图形"]
+description: "介绍基于JPEG、PNG、KTX格式创建3D纹理图片资源的能力，演示通过SceneResourceFactory.createImage()加载图片并绑定到Shader材质的BASE_COLOR_Image输入属性，实现模型表面贴图替换。"
+keywords: [ArkGraphics 3D, 3D渲染, 纹理, 贴图]
+doctype: guide
+status: active
+---
+
 # 创建并使用图片资源
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
 
 图片（Image）：3D渲染中的二维纹理资源，本质为存储像素数据的内存缓冲区（buffer）。它提供物体表面渲染所需的数据，包括基础颜色、法线、金属度、粗糙度和环境遮蔽等贴图，也可作为材质或自定义着色器的纹理输入，最终决定物体表面的外观。

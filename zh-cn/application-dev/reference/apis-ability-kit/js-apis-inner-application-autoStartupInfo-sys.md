@@ -27,6 +27,7 @@
 | abilityName                 | string  | 否   | 否   | 应用程序的Ability名称，用于标识启动的具体Ability组件。  |
 | abilityTypeName             | string  | 否   | 是   | 应用程序的Ability类型。                        |
 | appCloneIndex<sup>12+</sup> | number  | 否   | 是   | 分身应用索引。默认值为0，表示主应用。            |
+| isDirectBoot | boolean | 否 | 是 | 应用组件的自启动时机。true表示在用户解锁前自启动，false表示在用户解锁后自启动。默认值为false。<br>**起始版本：** 26.1.0<br>**说明：**<br>解锁：指设备开机或用户冷启动后，应用所属用户首次完成解锁。<br>2. 解锁前自启动仅支持UIAbility，且仅在PC/2in1设备上生效。<br>3. 设置为true时，目标应用需申请并获得[ohos.permission.ALLOW_DIRECT_BOOT](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionallow_direct_boot)权限。未获授该权限时，设置接口返回错误码16000206。|
 | userId<sup>20+</sup>        | number  | 是   | 是   | 应用程序所属的用户ID，用于区分同一设备上不同用户账号下的应用。      |
 | setterUserId<sup>20+</sup>  | number  | 是   | 是   | 设置者的用户ID，记录了将当前应用设置为开机自启动的用户ID。         |
 | canUserModify<sup>20+</sup> | boolean | 是   | 是   | 表示是否允许开发者修改此应用的开机自启动状态，true表示允许，false表示不允许。默认值为false。 |
@@ -48,5 +49,25 @@ autoStartupManager.setApplicationAutoStartup({
     return;
   }
   console.info(`setApplicationAutoStartup success.`);
+});
+```
+
+以下示例将目标UIAbility设置为用户解锁前自启动。目标应用需事先申请并获授ohos.permission.ALLOW_DIRECT_BOOT权限。
+
+```ts
+import { autoStartupManager, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const startupInfo: common.AutoStartupInfo = {
+  bundleName: 'com.example.autostartupapp',
+  moduleName: 'entry',
+  abilityName: 'EntryAbility',
+  isDirectBoot: true
+};
+
+autoStartupManager.setApplicationAutoStartup(startupInfo).then(() => {
+  console.info('setApplicationAutoStartup success.');
+}).catch((err: BusinessError) => {
+  console.error(`setApplicationAutoStartup failed, err code: ${err.code}, err msg: ${err.message}.`);
 });
 ```
