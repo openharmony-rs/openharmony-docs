@@ -773,10 +773,6 @@ scrollPlaceholder(provider?: PlaceholderProvider)
 
 > **说明：**
 >
-> - 占位提供者为[PlaceholderProvider](../arkts-apis-placeholderregister.md#placeholderprovider)类型：在UI线程滚动过程中同步调用，须为纯计算，入参为即将创建的瀑布流子组件索引，返回[PlaceholderOptions](../arkts-apis-placeholderregister.md#placeholderoptions)表示该项的占位信息，返回undefined表示该瀑布流子组件不需要占位。
->
-> - [PlaceholderOptions](../arkts-apis-placeholderregister.md#placeholderoptions)包含id和size两个可选字段：id为占位模板的ID，占位模板须为全局、无参、只读静态渲染的`@Builder({ isPlaceholder: true })`函数，经wrapBuilder包装后通过UIContext的[getPlaceholderRegister()](../arkts-apis-uicontext-uicontext.md#getplaceholderregister)注册；size为占位的建议尺寸，越接近真实瀑布流子组件的尺寸，替换时的视觉跳动越小；size的宽高不建议大于当前滚动容器可视范围的宽高，否则可能导致性能劣化或AppFreeze。
->
 > - provider返回undefined，或返回的id为空、未注册时，使用系统默认占位，且滚动不中断。
 >
 > - 真实瀑布流子组件创建完成后，在[FlowItem](ts-container-flowitem.md)的正常布局约束下重新布局并替换占位，同时保持滚动锚点。
@@ -795,7 +791,7 @@ scrollPlaceholder(provider?: PlaceholderProvider)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| provider | [PlaceholderProvider](../arkts-apis-placeholderregister.md#placeholderprovider) | 否   | 瀑布流子组件的占位提供者。未设置此属性时，关闭滚动占位，WaterFlow保持既有行为（含syncLoad语义）。 |
+| provider | [PlaceholderProvider](../arkts-apis-placeholderregister.md#placeholderprovider) | 否   | 瀑布流子组件的占位提供者，返回undefined表示该瀑布流子组件不需要占位。未设置此属性时，关闭滚动占位，WaterFlow保持既有行为（含syncLoad语义）。 |
 
 ### scrollPlaceholder
 
@@ -804,10 +800,6 @@ scrollPlaceholder(provider: PlaceholderProvider | undefined)
 设置WaterFlow组件的滚动占位提供者。当框架预测在剩余帧预算内创建下一个瀑布流子组件会导致超帧时，先为该项显示占位组件，真实瀑布流子组件在UI线程分帧创建，以减少快速滚动时的丢帧。
 
 > **说明：**
->
-> - 占位提供者为[PlaceholderProvider](../arkts-apis-placeholderregister.md#placeholderprovider)类型：在UI线程滚动过程中同步调用，须为纯计算，入参为即将创建的瀑布流子组件索引，返回[PlaceholderOptions](../arkts-apis-placeholderregister.md#placeholderoptions)表示该项的占位信息，返回undefined表示该瀑布流子组件不需要占位。
->
-> - [PlaceholderOptions](../arkts-apis-placeholderregister.md#placeholderoptions)包含id和size两个可选字段：id为占位模板的ID，占位模板须为全局、无参、只读静态渲染的`@Builder({ isPlaceholder: true })`函数，经wrapBuilder包装后通过UIContext的[getPlaceholderRegister()](../arkts-apis-uicontext-uicontext.md#getplaceholderregister)注册；size为占位的建议尺寸，越接近真实瀑布流子组件的尺寸，替换时的视觉跳动越小；size的宽高不建议大于当前滚动容器可视范围的宽高，否则可能导致性能劣化或AppFreeze。
 >
 > - provider返回undefined，或返回的id为空、未注册时，使用系统默认占位，且滚动不中断。
 >
@@ -825,7 +817,7 @@ scrollPlaceholder(provider: PlaceholderProvider | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| provider | [PlaceholderProvider](../arkts-apis-placeholderregister.md#placeholderprovider) \| undefined | 是   | 瀑布流子组件的占位提供者。未设置或设置为undefined时，关闭滚动占位，WaterFlow保持既有行为（含syncLoad语义）。 |
+| provider | [PlaceholderProvider](../arkts-apis-placeholderregister.md#placeholderprovider) \| undefined | 是   | 瀑布流子组件的占位提供者，返回undefined表示该瀑布流子组件不需要占位。未设置或设置为undefined时，关闭滚动占位，WaterFlow保持既有行为（含syncLoad语义）。 |
 
 ## 事件
 
