@@ -40,6 +40,7 @@ import { relationalStore } from '@kit.ArkData';
 | isSearchable<sup>11+</sup> | boolean | 否 | 是 | 指定数据库是否支持搜索，true表示支持搜索，false表示不支持搜索，默认不支持搜索。<br/>**系统接口：** 此接口为系统接口。<br/>从API version 11开始，支持此可选参数。<br/> |
 | haMode<sup>12+</sup> | [HAMode](#hamode12) | 否 | 是 | 指定关系型数据库存储的高可用性模式，SINGLE表示将数据写入单个关系型数据库存储，MAIN_REPLICA表示将数据写入主关系型数据库存储和副本关系型数据库存储，但不支持加密场景和attach场景。MAIN_REPLICA会导致数据库写入性能的劣化，默认为SINGLE。<br/>**系统接口：** 此接口为系统接口。<br/>从API version 12开始，支持此可选参数。<br/> |
 | autoCleanDeviceDirtyData | boolean | 否 | 是 | 指定本地设备是否自动清理远端设备删除后同步过来的数据，true表示自动清理，false表示手动清理，默认自动清理。若设置为false，需要主动调用[cleanDeviceDirtyData](#cleandevicedirtydata)进行脏数据清理。<br/>[多设备协同表模式](../../database/data-sync-of-rdb-store.md#数据同步存储机制)分布式数据表配置不生效。<br/>**系统接口：** 此接口为系统接口。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
+| dumpStackOnFileDel | boolean | 否 | 是 | 是否启用数据库文件删除时的调用栈打印功能，用于定位数据库文件被意外删除的问题。<br>true表示打开数据库后，直接通过文件接口删除数据库文件（db、wal、shm）时打印调用栈信息；false表示不启用，保持文件已设置的调用栈打印开关不变。默认值为false。<br>仅对主数据库和副本数据库的db、wal、shm文件生效，不包括journal、binlog等数据库辅助文件。<br>该参数依赖设备文件系统的文件删除调用栈打印能力，文件系统不支持时不生效，且不影响打开数据库。<br>**系统接口：** 此接口为系统接口。<br/>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## HAMode<sup>12+</sup>
 
