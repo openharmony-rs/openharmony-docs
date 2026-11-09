@@ -488,6 +488,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
     <!-- @[camera_flash](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
     ``` TypeScript
+    // 闪光灯。
     hasFlashFn(flashMode: camera.FlashMode): void {
       try {
         // 检测是否有闪光灯。
@@ -529,6 +530,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
     <!-- @[camera_setZoomRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
     ``` TypeScript
+    // 变焦。
     setZoomRatioFn(zoomRatio: number): void {
       Logger.info(TAG, `setZoomRatioFn value ${zoomRatio}`);
       // 获取支持的变焦范围。
@@ -551,27 +553,27 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
     ```
 
     <!-- @[camera_setExposureBias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-   
+
     ``` TypeScript
-     // 曝光补偿。
-     setExposureBiasFn(exposureBias: number,
-       session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
-       // 查询曝光补偿范围。
-       let biasRangeArray: number[] | undefined = [];
-       try {
-         biasRangeArray = session?.getExposureBiasRange();
-         if (biasRangeArray == undefined || biasRangeArray.length !== 2 ||
-           exposureBias < biasRangeArray[0] || exposureBias > biasRangeArray[1]) {
-           console.error(`invalid exposureBias.`);
-           return;
-         }
-         // 设置曝光补偿。
-         session?.setExposureBias(exposureBias);
-       } catch (error) {
-         let err = error as BusinessError;
-         console.error(`setExposureBiasFn failed, err code: ${err.code}.`);
-       }
-     }
+    // 曝光补偿。
+    setExposureBiasFn(exposureBias: number,
+      session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
+      // 查询曝光补偿范围。
+      let biasRangeArray: number[] | undefined = [];
+      try {
+        biasRangeArray = session?.getExposureBiasRange();
+        if (biasRangeArray == undefined || biasRangeArray.length !== 2 ||
+          exposureBias < biasRangeArray[0] || exposureBias > biasRangeArray[1]) {
+          console.error(`invalid exposureBias.`);
+          return;
+        }
+        // 设置曝光补偿。
+        session?.setExposureBias(exposureBias);
+      } catch (error) {
+        let err = error as BusinessError;
+        console.error(`setExposureBiasFn failed, err code: ${err.code}.`);
+      }
+    }
     ```
 
     <!-- @[camera_setFocusMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
