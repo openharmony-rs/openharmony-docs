@@ -235,7 +235,7 @@ export async function activatePermissionExample(context: common.UIAbilityContext
 
 ## 外接存储介质授权保留机制
 
-从API version 26.0.1开始，新增外接存储介质授权保留机制。
+从API版本26.0.1开始，新增外接存储介质授权保留机制。
 
 当外接存储介质（如U盘、TF卡等）被拔出时，系统会清除该介质下所有的临时授权，并保留该介质下所有已持久化的授权记录。当同一介质再次插入时，系统自动恢复该介质下已保留的持久化授权至可用状态，无需用户重新授权。
 
