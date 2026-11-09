@@ -1098,3 +1098,53 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   }
 }
 ```
+
+### onPasswordFailed
+
+onPasswordFailed(cumulativeFailedCount: number, userId: number): void
+
+锁屏密码认证失败事件回调。当锁屏密码认证失败时触发此回调，指纹、人脸等生物识别认证失败不会触发。需要通过接口[adminManager.subscribeManagedEventSync](./js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync)注册MANAGED_EVENT_PASSWORD_FAILED事件。锁屏密码认证成功后累计失败次数重置为0，设备重启后累计失败次数不清零。累计失败次数达到200后，后续锁屏密码认证失败将不再触发此回调。
+
+多个MDM应用订阅此事件时，每个MDM应用都能独立收到回调。多用户场景下，每个用户的累计失败次数独立计数，互不影响。存在隐私空间时，输入与主空间和隐私空间都不匹配的密码时，主空间和隐私空间的累计失败计数均加1；输入隐私空间的正确密码时，隐私空间的累计失败次数重置为0，主空间不变；输入主空间的正确密码时，主空间和隐私空间的累计失败次数均重置为0。
+
+**起始版本：** 26.1.0
+
+**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名                | 类型   | 必填 | 说明                                 |
+| -------------------- | ------ | ---- | ----------------------------------- |
+| cumulativeFailedCount | number | 是   | 锁屏密码认证失败的累计次数。取值范围：[0, 200]。             |
+| userId               | number | 是   | 发生锁屏密码认证失败的用户ID。           |
+
+**示例：**
+
+```ts
+import { EnterpriseAdminExtensionAbility, adminManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let events: Array<adminManager.ManagedEvent> = [
+  // 锁屏密码认证失败事件
+  adminManager.ManagedEvent.MANAGED_EVENT_PASSWORD_FAILED];
+try {
+  adminManager.subscribeManagedEventSync(wantTemp, events);
+  console.info('Succeeded in subscribing managed event.');
+} catch (err) {
+  console.error(`Failed to subscribe managed event. Code: ${err.code}, message: ${err.message}`);
+}
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  // 回调实现
+  onPasswordFailed(cumulativeFailedCount: number, userId: number) {
+    console.info(`Password authentication failed, userId: ${userId}, cumulativeFailedCount: ${cumulativeFailedCount}.`);
+  }
+}
+```
