@@ -167,8 +167,8 @@ getSessionDescriptorsForAudioZone(userId: number): Promise\<Array\<Readonly\<AVS
  
 | 错误码ID | 错误信息 | 
 | -------- | ---------------------------------------- | 
-| 201 |  Permission verification failed. The application does not have the permission required to call the API.  | 
-| 202 |  Permission verification failed. A non-system application calls a system API.  |
+| 201 | Permission denied. |
+| 202 | Not System App. |
 | 6700101  |  Session service is not running.  | 
  
 **示例：** 
