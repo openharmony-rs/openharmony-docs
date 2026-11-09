@@ -1778,6 +1778,39 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **起始版本**：26.0.1
 
+## ohos.permission.ALLOW_CROSS_APP_IPC
+
+允许同一开发者的应用之间进行IPC通信。
+
+<!--RP121-->
+应用需要在HarmonyAppProvision配置文件中修改"app-services-capabilities"字段来添加ipcGroupId，配置了相同ipcGroupId的应用之间才可完成跨应用IPC通信。
+
+配置样例：
+
+```json5
+{
+  // ...
+  "acls":{
+    "allowed-acls":[
+      "ohos.permission.ALLOW_CROSS_APP_IPC"
+    ]
+  },
+  "app-services-capabilities": {
+    "ohos.permission.ALLOW_CROSS_APP_IPC": {"ipcGroupIds": ["ipcGroupId0000", "ipcGroupId1000"]}
+  }
+}
+```
+
+<!--RP121End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.1
+
 ## ohos.permission.INPUT_RECORDING
 
 允许应用监听输入事件。
