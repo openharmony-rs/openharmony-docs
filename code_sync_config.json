@@ -51834,5 +51834,25 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/dfx/cppcrash-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":477,
+						"name":"CppCrash_Stack_Overflow_C++",
+						"start_line":467
+					},
+					{
+						"end_line":520,
+						"name":"CppCrash_Sigpipe_Test_C++",
+						"start_line":485
+					}
+				]
+			}
+		]
 	}
 ]
