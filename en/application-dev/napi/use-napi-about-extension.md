@@ -701,7 +701,7 @@ Call **napi_coerce_to_native_binding_object** to add the **detach()** and **atta
 
 ### Example
 
-**napi_run_event_loop、napi_stop_event_loop**
+**napi_run_event_loop, napi_stop_event_loop**
 
 See [Running or Stopping an Event Loop in an Asynchronous Thread Using Node-API Extensions](use-napi-event-loop.md)
 
@@ -716,7 +716,7 @@ See [Running or Stopping an Event Loop in an Asynchronous Thread Using Node-API 
 
 ### Example
 
-**napi_create_ark_runtime、napi_destroy_ark_runtime**
+**napi_create_ark_runtime, napi_destroy_ark_runtime**
 
 See [Creating an ArkTs Runtime Environment Using Node-API](use-napi-ark-runtime.md).
 
@@ -1572,7 +1572,7 @@ testNapi.testNapiWrapEnhance();
 
 ### Example
 
-**napi_create_callsite_info、napi_delete_callsite_info、napi_get_property_with_callsite_info、napi_set_property_with_callsite_info**
+**napi_create_callsite_info, napi_delete_callsite_info, napi_get_property_with_callsite_info, napi_set_property_with_callsite_info**
 
 [Accelerating Property Access Using Extended Node-APIs](use-napi-about-fast-property-access.md)
 
@@ -1601,6 +1601,6 @@ testNapi.testNapiWrapEnhance();
 
 ### Example
 
-**napi_open_microtask_scope、napi_close_microtask_scope**
+**napi_open_microtask_scope, napi_close_microtask_scope**
 
 [Restricting Microtask Execution Using Node-API Extensions](use-napi-about-microtask.md)

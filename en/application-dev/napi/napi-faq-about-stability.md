@@ -127,7 +127,7 @@ In addition, you can enable the Ark multi-thread check during development to int
 
 - References:  
 
-  [napi_create_reference、napi_delete_reference](use-napi-life-cycle.md)  
+  [napi_create_reference, napi_delete_reference](use-napi-life-cycle.md)  
 
   [Ark Runtime APIs](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615). 
 

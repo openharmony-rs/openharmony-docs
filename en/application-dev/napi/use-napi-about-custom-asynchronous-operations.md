@@ -40,7 +40,7 @@ The following table lists the APIs provided by the Node-API module for customizi
 
 If you are just starting out with Node-API, see [Node-API Development Process](use-napi-process.md). The following demonstrates only the C++ and ArkTS code involved in the APIs for customizing async operations.
 
-### napi_async_init、napi_async_destroy
+### napi_async_init, napi_async_destroy
 
 Use **napi_async_init** to create an async context, and use **napi_async_destroy** to destroy an async context. Note that these APIs do not support capabilities related to **async_hook**.
 
@@ -48,7 +48,7 @@ Use **napi_async_init** to create an async context, and use **napi_async_destroy
 
 Use **napi_make_callback** to call and execute an ArkTS callback after an async operation is complete.
 
-### napi_open_callback_scope、napi_close_callback_scope
+### napi_open_callback_scope, napi_close_callback_scope
 
 Use **napi_open_callback_scope** to create a scope for the callback, and then use **napi_close_callback_scope** to close the scope after the asynchronous operation is complete.
 

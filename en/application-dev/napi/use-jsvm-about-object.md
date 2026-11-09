@@ -384,7 +384,7 @@ static JSVM_Value InstanceOf(JSVM_Env env, JSVM_CallbackInfo info)
     if (status != JSVM_OK) {
         OH_LOG_ERROR(LOG_APP, "JSVM InstanceOf fail");
     } else {
-        OH_LOG_INFO(LOG_APP, "JSVM InstanceOf：%{public}d", result);
+        OH_LOG_INFO(LOG_APP, "JSVM InstanceOf: %{public}d", result);
     }
     JSVM_Value returnValue = nullptr;
     OH_JSVM_GetBoolean(env, result, &returnValue);
@@ -414,7 +414,7 @@ const char* SRC_CALL_NATIVE = R"JS(class Person {
 
 Expected result:
 ```ts
-JSVM InstanceOf：1
+JSVM InstanceOf: 1
 ```
 
 ### OH_JSVM_TypeTagObject

@@ -917,7 +917,7 @@ ArkTS code:
 // Use napi_create_dataview to develop arrays.
 const arrayBuffer = new ArrayBuffer(16);
 const dataView = testNapi.createDataView(arrayBuffer) as DataView;
-hilog.info(0x0000, 'testTag', 'Test Node-API dataView：%{public}d', dataView.byteLength);
+hilog.info(0x0000, 'testTag', 'Test Node-API dataView: %{public}d', dataView.byteLength);
 hilog.info(0x0000, 'testTag', 'Test Node-API dataView first data: %{public}d', dataView.getInt8(0));
 ```
 

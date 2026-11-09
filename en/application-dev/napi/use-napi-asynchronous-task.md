@@ -329,7 +329,7 @@ You can use a callback or a promise to implement asynchronous calls as required.
    const port = worker.workerPort;
    
    port.onmessage = (e : MessageEvents) => {
-       console.info('Worker thread received data:', e.data.num1 + '、' + e.data.num2);
+       console.info('Worker thread received data:', e.data.num1 + ', ' + e.data.num2);
        nativeModule.asyncWork(e.data.num1, e.data.num2, (result: number) => {
            port.postMessage(result);
        });
@@ -358,7 +358,7 @@ You can use a callback or a promise to implement asynchronous calls as required.
 
    ``` txt
    Execution result: 
-   Worker thread received data: 123、456  
+   Worker thread received data: 123, 456  
    result is 579
    ```
 
@@ -375,7 +375,7 @@ You can use a callback or a promise to implement asynchronous calls as required.
 
    @Concurrent
    function nativeCall(num1 : number, num2 : number): void {
-     console.info('Taskpool thread received data:', + num1 + '、' + num2);
+     console.info('Taskpool thread received data:', + num1 + ', ' + num2);
      nativeModule.asyncWork(num1, num2, (result: number) => {
        hilog.info(0x0000, 'XXX', 'result is: %{public}d', result);
      });
@@ -399,7 +399,7 @@ You can use a callback or a promise to implement asynchronous calls as required.
 
    ``` txt
    Execution result: 
-   Taskpool thread received data: 123、456  
+   Taskpool thread received data: 123, 456  
    result is 579
    ```
 
