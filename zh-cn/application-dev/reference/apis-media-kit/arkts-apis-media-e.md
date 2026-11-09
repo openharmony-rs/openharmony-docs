@@ -127,7 +127,7 @@ Codec MIME类型枚举。
 | MD_KEY_MIME_TYPE<sup>23+</sup>  | 'mime_type'  | 表示轨道的mime_type类型，其对应键值类型为string。对于音视频轨道，该值与MD_KEY_CODEC_MIME相同。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 | MD_KEY_REFERENCE_TRACK_IDS<sup>23+</sup>  | 'ref_track_ids'  | 表示此轨道与其他轨道的引用关系，其对应键值类型为string，以逗号分隔。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 | MD_KEY_TRACK_REFERENCE_TYPE<sup>23+</sup>  | 'track_ref_type'  | 表示此轨道作为辅助轨的辅助类型，其对应键值类型为string。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
-| MD_KEY_TRACK_PLAYABLE<sup>26.1.0+</sup>  | 'is_playable'  | 表示该Track是否可以正常播放，其对应键值类型为boolean。true表示可以正常播放，false表示不可以正常播放。<br>**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| MD_KEY_TRACK_PLAYABLE  | 'is_playable'  | 表示此轨道是否可以正常播放，其对应键值类型为boolean。true表示可以正常播放，false表示不可以正常播放。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 ## FetchResult<sup>23+</sup>
 
 表示批量获取缩略图操作结果的枚举。
@@ -486,7 +486,7 @@ Codec MIME类型枚举。
 
 ## PlaybackCommand
 
-可执行的播控指令枚举定义，用于应用在[prepare()](arkts-apis-media-AVPlayer.md#prepare9)完成后，查询该片源是否可以执行对应的播放控制操作。
+表示可执行的播控指令枚举。用于应用在[prepare()](arkts-apis-media-AVPlayer.md#prepare9)完成后，查询该片源是否可以执行对应的播放控制操作。
 
 **起始版本：** 26.1.0
 
@@ -498,7 +498,7 @@ Codec MIME类型枚举。
 
 | 名称                       | 值   | 说明                                   |
 | -------------------------- | ---- | -------------------------------------- |
-| PLAYBACK_COMMAND_SEEK | 0    | 表示SEEK（跳转）操作。可通过[checkSupportPlaybackCommand](arkts-apis-media-AVPlayer.md#checksupportplaybackcommand)查询当前片源是否支持该操作。 |
+| PLAYBACK_COMMAND_SEEK | 0    | 表示视频跳转操作。可通过[checkSupportPlaybackCommand](arkts-apis-media-AVPlayer.md#checksupportplaybackcommand)查询当前片源是否支持该操作。 |
 | PLAYBACK_COMMAND_RATE | 1    | 表示调整播放速率的操作。可通过[checkSupportPlaybackCommand](arkts-apis-media-AVPlayer.md#checksupportplaybackcommand)查询当前片源是否支持该操作。 |
 
 ## AudioEncoder<sup>(deprecated)</sup>

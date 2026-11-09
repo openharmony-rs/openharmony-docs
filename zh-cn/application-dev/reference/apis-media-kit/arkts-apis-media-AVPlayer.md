@@ -629,7 +629,7 @@ checkSupportPlaybackCommand(command: PlaybackCommand): Promise\<boolean>
 
 | 类型           | 说明                                       |
 | -------------- | ------------------------------------------ |
-| Promise\<boolean> | Promise对象，返回查询结果。**true**表示可以执行该命令；**false**表示不允许执行该命令。 |
+| Promise\<boolean> | Promise对象。返回true表示可以执行该命令；返回false表示不可以执行该命令。 |
 
 **错误码：**
 
@@ -637,7 +637,7 @@ checkSupportPlaybackCommand(command: PlaybackCommand): Promise\<boolean>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. |
+| 5400102  | Operation not allowed. If this function is invoked before Prepare(), it is returned. |
 
 **示例：**
 
