@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "使用ArkTS或C/C++配置内录模式，处理异步授权与PCM回调，并设置播放流隐私保护。"
+keywords: [录制系统音频, 内录模式, 媒体音频内录, 排除应用自身声音, 内录授权, 内录启动结果回调, 播放流内录策略, 录制其他应用声音]
+doctype: guide
+status: active
+---
+
 # 实现录制系统音频
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
