@@ -195,7 +195,7 @@ standby状态下也可以直接调用[OH_AudioRenderer_Pause](#oh_audiorenderer_
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向通过[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频播放流。 |
 | bool on | 进入或退出standby状态，true表示进入，false表示退出。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
