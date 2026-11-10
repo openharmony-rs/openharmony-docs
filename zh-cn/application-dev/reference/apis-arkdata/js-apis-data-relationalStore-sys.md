@@ -819,6 +819,7 @@ querySharingResource(predicates: RdbPredicates, columns?: Array&lt;string&gt;): 
 
 | **错误码ID** | **错误信息**           |
 |-----------|-------------|
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. 4. The columns must be a string array. |
 | 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error.                      |
@@ -887,6 +888,7 @@ querySharingResource(predicates: RdbPredicates, callback: AsyncCallback&lt;Resul
 
 | **错误码ID** | **错误信息**      |
 |-----------|------|
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. |
 | 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error.          |
@@ -957,6 +959,7 @@ querySharingResource(predicates: RdbPredicates, columns: Array&lt;string&gt;, ca
 
 | **错误码ID** | **错误信息**       |
 |-----------|--------------|
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. 4. The columns must be a string array. |
 | 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error.            |
