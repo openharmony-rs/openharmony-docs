@@ -50,7 +50,7 @@
 - 备份数据存储在[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md#want)的parameters字段中，序列化后总大小上限为200KB，不适合存放大数据（如长文本草稿、大段编辑内容），此类数据使用[超大数据分流](#超大数据分流)。
 - [onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)必须返回`ALL_AGREE`，否则数据不写入磁盘；若应用实现了[onSaveStateAsync()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestateasync20)（API版本20起），系统不再调用同步版onSaveState()，两者不要同时使用。
 - Want parameters的值只支持String/Number/Boolean等基本类型以及由它们组成的对象和数组，函数、Map/Set、Date、类实例不可直接传输，需先转换（详见[函数与类实例等字段的转换](#函数与类实例等字段的转换)）。
-- Navigation参数序列化存在窄约束（嵌套深度、属性个数、字符串长度等限制，具体阈值属于系统内部实现、不对外承诺），违规属性会被静默丢弃且无告警，恢复后的页面必须做[参数为空降级](#参数为空降级)，不应依赖任何具体阈值。
+- Navigation参数序列化有多项限制（嵌套深度、属性个数、字符串长度等，具体阈值属于系统内部实现、不对外承诺），违规属性会被静默丢弃且无告警，恢复后的页面必须做[参数为空降级](#参数为空降级)，不应依赖任何具体阈值。
 
 **功能与设备**
 
